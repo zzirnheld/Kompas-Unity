@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Energizing Lichen",
-	"effText": "Spores.\nWhen I'm activated, reshuffle a dead Fungus. Pulse me. Gain 1 pip.",
+	"effText": "Spores.\nWhen I'm activated, if you have less than 5 pips, reshuffle a dead Fungus. Gain 1 pip. Pulse adjacent cards.",
 	"effects": [
 		{
 			"blurb": "Energize",
@@ -14,6 +14,19 @@
 				}
 			},
 			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition": "Player Value Flouts Number Restriction",
+					"cardValue": {
+						"value": "Pips"
+					},
+					"playerValueNumberRestriction": {
+						"numberRestrictions": [
+							"<=Constant"
+						],
+						"constant": 4
+					}
+				},
 				{
 					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction": {
@@ -34,6 +47,31 @@
 				{
 					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
 					"xModifier": 1
+				},
+				{
+					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Board","Character","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["Adjacent to Source"],
+							"mustBeEmpty":false
+						}
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.ActivateSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ActivateSubeffect, Assembly-CSharp",
+					"activate":false
+				},
+				{
+					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete":true,
+					"remainingTargets": 1,
+					"jumpIndices":[5]
 				}
 			]
 		}
@@ -43,7 +81,7 @@
 	],
 	"n": 1,
 	"e": 5,
-	"s": 4,
+	"s": 5,
 	"w": 0,
 	"subtypes": [
 		"Fruiting",

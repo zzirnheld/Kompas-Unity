@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Calming Puffcap",
-	"effText": "Spores.\nWhen a W X non-Fungus character is activated, give them -X / 2 W until they move.",
+	"effText": "Spores.\nWhen a W > 0 non-Fungus character is activated, discard an E X Fungus. Give the activated character -X W until they move.",
 	"effects": [
 		{
 			"blurb": "Delirium",
@@ -15,24 +15,54 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character",
-							"Subtypes Exclude"
+							"Subtypes Exclude",
+							"Card Value Fits Number Restriction"
 						],
 						"subtypesExclude": [
 							"Fungus"
-						]
+						],
+						"cardValue": {
+							"value": "W"
+						},
+						"cardValueNumberRestriction": {
+							"numberRestrictions": [
+								">=Constant"
+							],
+							"constant":1
+						}
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Ethereal for Unfinding to discard",
+						"cardRestrictions": [
+							"Friendly",
+							"Hand",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Fungus"
+						]
+					}
 				},
 				{
 					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
 					"cardValue": {
-						"value": "W"
+						"value": "E"
 					},
 					"xMultiplier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type": "KompasServer.Effects.TemporaryCardStatChangeSubeffect, Assembly-CSharp",

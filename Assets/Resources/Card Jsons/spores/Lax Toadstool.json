@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Lax Toadstool",
-	"effText": "Spores.\nWhen a non-Fungus character is activated, negate them until they attack.",
+	"effText": "Spores.\nWhen an unnegated non-Fungus character is activated, discard a Fungus. Negate the activated character until they attack.",
 	"effects": [
 		{
 			"blurb": "Delirium",
@@ -15,6 +15,7 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character",
+							"Unnegated",
 							"Subtypes Exclude"
 						],
 						"subtypesExclude": [
@@ -24,6 +25,26 @@
 				}
 			},
 			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Fungus for Lax Toadstool to discard",
+						"cardRestrictions": [
+							"Friendly",
+							"Hand",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Fungus"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp"
+				},
 				{
 					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},

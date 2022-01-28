@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Soothing Roundcap",
-	"effText": "Spores.\nWhen an N X non-Fungus character is activated, give them -X N until their effect goes on the stack.",
+	"effText": "Spores.\nWhen an N X > 0 non-Fungus character is activated, give them -X N until their effect triggers.",
 	"effects": [
 		{
 			"blurb": "Delirium",
@@ -19,7 +19,16 @@
 						],
 						"subtypesExclude": [
 							"Fungus"
-						]
+						],
+						"cardValue": {
+							"value": "N"
+						},
+						"cardValueNumberRestriction": {
+							"numberRestrictions": [
+								">=Constant"
+							],
+							"constant":1
+						}
 					}
 				}
 			},

@@ -87,6 +87,7 @@ namespace KompasCore.Effects
         public const string Hurt = "Hurt";
 
         public const string Negated = "Negated";
+        public const string Unnegated = "Unnegated";
         public const string Activated = "Activated";
 
         public const string HasMovement = "Has Movement";
@@ -273,6 +274,7 @@ namespace KompasCore.Effects
             Hurt => potentialTarget?.Hurt ?? false,
             Activated => potentialTarget?.Activated ?? false,
             Negated => potentialTarget?.Negated ?? false,
+            Unnegated => !(potentialTarget?.Negated ?? true),
             HasMovement => potentialTarget?.SpacesCanMove > 0,
             OutOfMovement => potentialTarget?.SpacesCanMove <= 0,
 

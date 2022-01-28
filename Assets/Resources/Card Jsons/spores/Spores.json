@@ -1,0 +1,67 @@
+{
+	"cardType": 83,
+	"cardName": "Spores",
+	"effText": "Cast only adjacent to a Fungus.\nPulse adjacent cards.",
+	"effects": [
+		{
+			"blurb": "Simple",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+                {
+                    "$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+                    "cardRestriction":
+                    {
+                        "cardRestrictions":["Board","Character","Space Fits Restriction"],
+                        "spaceRestriction":
+                        {
+                            "spaceRestrictions":["Adjacent to Source"],
+                            "mustBeEmpty":false
+                        }
+                    }
+                },
+                {
+                    "$type":"KompasServer.Effects.ActivateSubeffect, Assembly-CSharp"
+                },
+                {
+                    "$type":"KompasServer.Effects.ActivateSubeffect, Assembly-CSharp",
+                    "activate":false
+                },
+                {
+                    "$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+                    "delete":true,
+                    "jumpIndices":[1]
+                }
+			]
+		}
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Default Normal Restrictions",
+			"Adjacent to Card Fitting Restriction"
+		],
+		"effectRestrictions": [
+			"Default Effect Restrictions",
+			"Adjacent to Card Fitting Restriction"
+		],
+		"adjacentCardRestriction": {
+			"cardRestrictions": [
+				"Subtypes Include"
+			],
+			"subtypesInclude": [
+				"Fungus"
+			]
+		}
+	},
+	"c": 1,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypeText": "Simple"
+}

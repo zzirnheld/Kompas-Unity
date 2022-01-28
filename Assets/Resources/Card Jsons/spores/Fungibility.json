@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Fungibility",
-	"effText": "Hand->discard X Fungi. Gain X pips. Draw 1.",
+	"effText": "Hand->discard X Fungi. Gain X pips or draw X.",
 	"effects": [
 		{
 			"triggerData": {
@@ -38,11 +38,28 @@
 					]
 				},
 				{
+					"$type": "KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"choiceBlurb": "Gain X pips or draw X?",
+					"optionBlurbs": [
+						"Pips",
+						"Draw"
+					],
+					"jumpIndices": [
+						4,
+						6
+					],
+					"hasDefault": false
+				},
+				{
 					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"xMultiplier": 1
 				}
 			]
 		}
