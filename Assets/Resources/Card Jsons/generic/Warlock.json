@@ -1,7 +1,7 @@
 {
     "cardType":67,
     "cardName":"Warlock",
-    "effText":"The first 5 times each turn you play a card that costs exactly 1, gain a pip.",
+    "effText":"The first time each turn you play another card that costs exactly 1, gain a pip.",
     "effects":[
         {
             "triggerData":
@@ -15,7 +15,10 @@
                                            "No Stackable"],
                     "cardRestriction":
                     {
-                        "cardRestrictions":["Card Value Fits Number Restriction"],
+                        "cardRestrictions":[
+                            "Different from Source",
+                            "Card Value Fits Number Restriction"
+                        ],
                         "cardValue":{
                             "value":"Cost"
                         },
@@ -23,8 +26,7 @@
                             "numberRestrictions":["==Constant"],
                             "constant":1
                         }
-                    },
-                    "maxTimesPerTurn":5
+                    }
                 }
             },
             "subeffects":[
@@ -36,8 +38,8 @@
         }
     ],
     "n":1,
-    "e":5,
-    "s":6,
-    "w":0,
+    "e":1,
+    "s":1,
+    "w":1,
     "subtypeText":"Mage"
 }
