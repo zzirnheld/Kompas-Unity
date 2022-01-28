@@ -8,12 +8,14 @@ namespace KompasServer.Effects
 
         protected override IEnumerable<HangingEffect> CreateHangingEffects()
         {
+            var contextCopy = Context.Copy;
+            contextCopy.SetResumeInfo(Effect.CardTargets, Effect.SpaceTargets);
             var tempNegation = new HangingNegationEffect(serverGame: ServerGame,
                                                          triggerRestriction: triggerRestriction,
                                                          endCondition: endCondition,
                                                          fallOffCondition: fallOffCondition,
                                                          fallOffRestriction: CreateFallOffRestriction(CardTarget),
-                                                         currentContext: Context,
+                                                         currentContext: contextCopy,
                                                          target: CardTarget,
                                                          source: this,
                                                          negated: negated);

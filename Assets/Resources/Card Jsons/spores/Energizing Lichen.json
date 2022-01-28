@@ -17,7 +17,7 @@
 				{
 					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
 					"condition": "Player Value Flouts Number Restriction",
-					"cardValue": {
+					"playerValue": {
 						"value": "Pips"
 					},
 					"playerValueNumberRestriction": {

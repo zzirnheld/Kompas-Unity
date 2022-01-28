@@ -42,6 +42,8 @@ namespace KompasServer.Effects
             }
 
             var buff = Buff;
+            var contextCopy = Context.Copy;
+            contextCopy.SetResumeInfo(Effect.CardTargets, Effect.SpaceTargets);
 
             foreach (var card in cards)
             {
@@ -51,7 +53,7 @@ namespace KompasServer.Effects
                                                  fallOffCondition: fallOffCondition,
                                                  fallOffRestriction: CreateFallOffRestriction(card),
                                                  sourceEff: Effect,
-                                                 currentContext: Context,
+                                                 currentContext: contextCopy,
                                                  buffRecipient: card,
                                                  buff: buff);
             }

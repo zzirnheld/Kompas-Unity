@@ -80,7 +80,7 @@ namespace KompasCore.Effects
         public int cardInfoIndex = -1;
 
         /// <summary>
-        /// The index of player. If 0, this, if 1, enemy. 
+        /// The index of player in the player targets list
         /// </summary>
         public int playerIndex = -1;
 

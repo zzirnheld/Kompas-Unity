@@ -86,8 +86,8 @@ namespace KompasCore.Effects
         public void SetResumeInfo(IEnumerable<GameCard> targets, IEnumerable<Space> spaces, int? startIndex = null)
         {
             if (startIndex.HasValue) StartIndex = startIndex.Value;
-            Targets = new List<GameCard>(targets);
-            Spaces = new List<Space>(spaces);
+            Targets = targets == null ? new List<GameCard>() : new List<GameCard>(targets);
+            Spaces = spaces == null ? new List<Space>() : new List<Space>(spaces);
         }
 
         /// <summary>

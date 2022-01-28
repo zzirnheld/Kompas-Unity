@@ -47,6 +47,8 @@ namespace KompasServer.Effects
                 throw new InvalidLocationException(CardTarget.Location, CardTarget, ChangedStatsOfCardOffBoard);
 
             Debug.Log($"Creating temp NESW buff effect during context {Context}");
+            var contextCopy = Context.Copy;
+            contextCopy.SetResumeInfo(Effect.CardTargets, Effect.SpaceTargets);
 
             var temp = new TemporaryCardStatChange(game: ServerGame,
                                              triggerRestriction: triggerRestriction,
@@ -54,7 +56,7 @@ namespace KompasServer.Effects
                                              fallOffCondition: fallOffCondition,
                                              fallOffRestriction: CreateFallOffRestriction(CardTarget),
                                              sourceEff: Effect,
-                                             currentContext: Context,
+                                             currentContext: contextCopy,
                                              buffRecipient: CardTarget,
                                              buff: Buff);
 
