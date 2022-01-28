@@ -1,14 +1,15 @@
 {
-	"cardType": 83,
-	"cardName": "Silent Conversion",
-	"effText": "Kill a character adjacent to me and a Cultist. Deck-summon a Cultist Follower where they were.",
+	"cardType": 67,
+	"cardName": "Silent Ritualist",
+	"effText": "When turns start, tribute a character. Deck->cast a Silent spell where they were.",
 	"effects": [
 		{
+			"blurb": "Ritual",
 			"triggerData": {
-				"triggerCondition": "Play",
+				"triggerCondition": "Turn Start",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card is Main Card"
+						"This Card in Play"
 					]
 				}
 			},
@@ -16,26 +17,12 @@
 				{
 					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction": {
-						"blurb": "to convert",
+						"blurb": "ritual sacrifice",
 						"cardRestrictions": [
 							"Board",
 							"Character",
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Source",
-								"Adjacent to a Card that Fits Restriction"
-							],
-							"adjacencyRestriction": {
-								"cardRestrictions": [
-									"Subtypes Include"
-								],
-								"subtypesInclude": [
-									"Cultist"
-								]
-							}
-						}
+                            "Friendly"
+						]
 					}
 				},
 				{
@@ -50,13 +37,13 @@
 					"cardRestriction": {
 						"blurb": "Silent convert",
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Friendly",
 							"Deck",
-							"Character"
+							"Spell",
+							"Subtypes Include"
 						],
 						"subtypesInclude": [
-							"Cultist Follower"
+							"Silent"
 						]
 					}
 				},
@@ -66,9 +53,9 @@
 			]
 		}
 	],
-	"c": 4,
-	"spellTypes": [
-		"Simple"
-	],
-	"subtypeText": "Silent Simple"
+	"n": 4,
+	"e": 1,
+	"s": 3,
+	"w": 1,
+	"subtypeText": "Cultist"
 }

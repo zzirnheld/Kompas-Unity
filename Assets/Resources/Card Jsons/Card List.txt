@@ -91,6 +91,7 @@ cultists/Silent Conversion
 cultists/Silent Devotion
 cultists/Silent Fanatic
 cultists/Silent Recruiter
+cultists/Silent Ritualist
 cultists/Unwavering Devotion
 cultists/We Are Yet Unworthy
 cultists/Zealous Convert

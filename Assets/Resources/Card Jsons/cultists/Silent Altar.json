@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Silent Altar",
-	"effText": "When a Cultist here dies, I get +1C.\nYou can tribute Altars with total C 31 to hand- or deck-summon any character.",
+	"effText": "When a character here dies, give me +1 C.\nDuring your turn, you can tribute Altars with total C 31 to hand-> or deck->summon any character.",
 	"effects": [
 		{
 			"triggerData": {
@@ -9,23 +9,18 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"Main Card Fits Restriction Before",
-						"Space Fits Restriction",
 						"This Card in Play"
 					],
-					"spaceRestriction": {
-						"spaceRestrictions": [
-							"In Source's AOE"
-						],
-						"mustBeEmpty": false
-					},
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Subtypes Include",
+							"Space Fits Restriction",
 							"Board"
 						],
-						"subtypesInclude": [
-							"Cultist"
-						]
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"In Source's AOE"
+							]
+						}
 					}
 				}
 			},
@@ -57,7 +52,7 @@
 							"Spell",
 							"Subtypes Include",
 							"Friendly",
-							"Hand",
+							"Board",
 							"Not Already Target"
 						],
 						"subtypesInclude": [
@@ -106,8 +101,12 @@
 						"blurb": "culmination of the Silent Altar Ritual",
 						"cardRestrictions": [
 							"Friendly",
-							"Deck",
+							"Multiple Possible Locations",
 							"Character"
+						],
+						"locations": [
+							3,
+							4
 						]
 					}
 				},
@@ -127,10 +126,10 @@
 			]
 		}
 	],
-	"c": 5,
+	"c": 2,
 	"spellTypes": [
 		"Radial"
 	],
-	"subtypeText": "Altar Radial",
-	"radius": 1
+	"subtypeText": "Silent Altar Radial",
+	"radius": 2
 }
