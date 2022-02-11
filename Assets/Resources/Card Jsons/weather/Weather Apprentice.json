@@ -1,38 +1,45 @@
 {
-	"cardType":67,
-	"cardName":"Weather Apprentice",
-	"effText":"When a distinct character moves to Weather I’m also in, echo them.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Weather Apprentice",
+	"effText": "When a distinct character moves to Weather I'm also in, echo them.",
+	"effects": [
 		{
-            "blurb":"Learn the Weather",
-			"triggerData":
-			{
-				"triggerCondition":"Move",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
-					"cardRestriction":{
-						"cardRestrictions":["Is Character","Distinct Name from Source","Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["In AOE Source is Also In"],
-							"mustBeEmpty":false
+			"blurb": "Learn the Weather",
+			"triggerData": {
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Distinct Name from Source",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"In AOE Source is Also In"
+							],
+							"mustBeEmpty": false
 						}
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
 				}
 			]
 		}
 	],
-	"n":2,
-	"e":4,
-	"s":2,
-	"w":0,
-	"subtypeText":"Skyknight-in-Training"
+	"n": 2,
+	"e": 4,
+	"s": 2,
+	"w": 0,
+	"subtypeText": "Skyknight-in-Training"
 }

@@ -1,32 +1,35 @@
 {
-	"cardType":67,
-	"cardName":"Growing Boye",
-	"effText":"Territorial.\nWhen I attack, give me +5 S.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Growing Boye",
+	"effText": "Territorial.\nWhen I attack, give me +5 S.",
+	"effects": [
 		{
-			"blurb":"Damage Boost",
-			"triggerData":
-			{
-				"triggerCondition":"Attack",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"blurb": "Damage Boost",
+			"triggerData": {
+				"triggerCondition": "Attack",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"sMod":5
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"sModifier": 5
 				}
 			]
 		}
 	],
-	"keywords":["Territorial"],
-	"n":2,
-	"e":6,
-	"s":4,
-	"w":1,
-	"subtypeText":"Chonky Flying Dragon"
+	"keywords": [
+		"Territorial"
+	],
+	"n": 2,
+	"e": 6,
+	"s": 4,
+	"w": 1,
+	"subtypeText": "Chonky Flying Dragon"
 }

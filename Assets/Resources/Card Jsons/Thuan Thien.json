@@ -1,43 +1,59 @@
 {
-	"cardType":65,
-	"cardName":"Thuan Thien",
-	"effText":"The first time each round this character fights, set X to their W, then give them +X W.",
-	"effects":[
+	"cardType": 65,
+	"cardName": "Thuan Thien",
+	"effText": "The first time each round this character fights, set X to their W, then give them +X W.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Battle Start",
-				"triggerRestriction":{
-					"triggerRestrictions":["Augmented Card Triggered","Max Per Round"]
+			"triggerData": {
+				"triggerCondition": "Battle Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"Augmented Card is Main Card",
+						"Max Per Round"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
-					"cardValue":{
-						"value":"W"
+					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "W"
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"wMult":1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"wMultiplier": 1
 				}
 			]
 		}
 	],
-	"PlayRestriction":{
-		"normalRestrictions":["Augment Normal Restrictions","On Card that Fits Restriction"],
-		"effectRestrictions":["Augment Effect Restrictions","On Card that Fits Restriction"],
-		"onCardRestriction":{
-			"cardRestrictions":["Subtypes Include","Friendly","Board"],
-			"subtypesInclude":["Warrior"]
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Augment Normal Restrictions",
+			"On Card that Fits Restriction"
+		],
+		"effectRestrictions": [
+			"Augment Effect Restrictions",
+			"On Card that Fits Restriction"
+		],
+		"onCardRestriction": {
+			"cardRestrictions": [
+				"Subtypes Include",
+				"Friendly",
+				"Board"
+			],
+			"subtypesInclude": [
+				"Warrior"
+			]
 		}
 	},
-	"a":3,
-	"subtypeText":"Sword",
-	"augSubtypes":["Warrior"]
+	"a": 3,
+	"subtypeText": "Sword",
+	"augSubtypes": [
+		"Warrior"
+	]
 }

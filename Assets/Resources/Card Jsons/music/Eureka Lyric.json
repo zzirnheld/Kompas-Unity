@@ -1,61 +1,73 @@
 {
-	"cardType":83,
-	"cardName":"Eureka Lyric",
-	"effText":"When I'm cast, draw 3 cards, but hand->annihilate 3 cards when I vanish. (If I'm dispelled first, you never annihilate cards.)",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Eureka Lyric",
+	"effText": "When I'm cast, draw 3 cards, but hand->annihilate 3 cards when I vanish. (If I'm dispelled first, you never annihilate cards.)",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
-					"xModifier":3
+					"$type": "KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"xModifier": 3
 				},
 				{
-					"$type":"KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
-					"numTimesToDelay":0,
-					"jumpIndices":[2],
-					"fallOffCondition":"",
-					"endCondition":"Vanish",
-					"triggerRestriction":{
-						"triggerRestrictions":["This Card Triggered"]
+					"$type": "KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"numTimesToDelay": 0,
+					"jumpIndices": [
+						2
+					],
+					"fallOffCondition": "",
+					"endCondition": "Vanish",
+					"triggerRestriction": {
+						"triggerRestrictions": [
+							"This Card is Main Card"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"cards for Eureka Lyric to annihilate",
-						"cardRestrictions":["Friendly","Hand"]
+					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "cards for Eureka Lyric to annihilate",
+						"cardRestrictions": [
+							"Friendly",
+							"Hand"
+						]
 					},
-					"listRestriction":{
-						"listRestrictions":["Min Can Choose","Max Can Choose"],
-                        "minCanChoose":3,
-						"maxCanChoose":3
+					"listRestriction": {
+						"listRestrictions": [
+							"Min Can Choose",
+							"Max Can Choose"
+						],
+						"minCanChoose": 3,
+						"maxCanChoose": 3
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp",
-                    "targetIndex":-1
+					"$type": "KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp",
+					"targetIndex": -1
 				},
 				{
-					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp",
-                    "targetIndex":-2
+					"$type": "KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp",
+					"targetIndex": -2
 				},
 				{
-					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp",
-                    "targetIndex":-3
+					"$type": "KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp",
+					"targetIndex": -3
 				}
 			]
 		}
 	],
-	"c":2,
-	"spellTypes":["Vanishing"],
-	"duration":2,
-	"subtypeText":"Vanishing 2 Music"
+	"c": 2,
+	"spellTypes": [
+		"Vanishing"
+	],
+	"duration": 2,
+	"subtypeText": "Vanishing 2 Music"
 }

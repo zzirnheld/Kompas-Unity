@@ -18,7 +18,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMod":-1
+					"eModifier":-1
 				}
 			]
 		},
@@ -28,7 +28,7 @@
 				"blurb":"Lovers fleeing together",
 				"triggerCondition":"Play",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered","Triggerer Fits Restriction"],
+					"triggerRestrictions":["This Card is Main Card","Main Card Fits Restriction Before"],
 					"cardRestriction":{
 						"cardRestrictions":["Hand"]
 					}
@@ -48,7 +48,7 @@
 					"spaceRestriction":
 					{
 						"blurb":"where to summon the other Fleeing Lover",
-						"spaceRestrictions":["Can Play Target to This Space","Adjacent to Source"]
+						"spaceRestrictions":["Can Play Card Target to This Space","Adjacent to Source"]
 					}
 				},
 				{

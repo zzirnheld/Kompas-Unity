@@ -8,7 +8,7 @@
 			{
 				"triggerCondition":"Attack",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+					"triggerRestrictions":["This Card is Main Card"]
 				}
 			},
 			"subeffects":[
@@ -17,14 +17,14 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMod":-1
+					"eModifier":-1
 				},
 				{
 					"$type":"KompasServer.Effects.TargetDefenderSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMod":-1
+					"eModifier":-1
 				}
 			]	
 		}

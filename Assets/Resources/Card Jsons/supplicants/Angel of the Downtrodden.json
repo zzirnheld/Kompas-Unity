@@ -31,12 +31,12 @@
 					"cardRestriction":
 					{
 						"blurb":"Supplicants' Plea",
-						"cardRestrictions":["Friendly","Deck","Is Spell","Subtypes Include","Card Value Fits X Restriction"],
+						"cardRestrictions":["Friendly","Deck","Spell","Subtypes Include","Card Value Fits Number Restriction"],
 						"cardValue":{
 							"value":"C"
 						},
-						"xRestriction":{
-							"xRestrictions":["<=X"]
+						"cardValueNumberRestriction":{
+							"numberRestrictions":["<=X"]
 						},
 						"subtypesInclude":["Plea"]
 					},
@@ -47,7 +47,7 @@
 					"spaceRestriction":
 					{
 						"blurb":"where to play Supplicants' Plea",
-						"spaceRestrictions":["Can Play Target to This Space"]
+						"spaceRestrictions":["Can Play Card Target to This Space"]
 					}
 				},
 				{

@@ -1,84 +1,90 @@
 {
-	"cardType":67,
-	"cardName":"Arbiterary",
-	"effText":"When a friendly Augment is attached, give it +1 A. If it's A X, I'm in a corner, and it's attached to an enemy Avatar, give the Avatar -X E, attach it to me, and reset its A.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Arbiterary",
+	"effText": "When a friendly Augment is attached, give it +1 A. If it's A X, I'm in a corner, and it's attached to an enemy Avatar, give the Avatar -X E, attach it to me, and reset its A.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"blurb":"Score Pass",
-				"triggerCondition":"Augment Attached",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
-					"cardRestriction":
-					{
-						"cardRestrictions":["Friendly"]
+			"triggerData": {
+				"blurb": "Score Pass",
+				"triggerCondition": "Augment Attached",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Friendly"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
-					"cardValue":{
-						"value":"A"
+					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "A"
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"aMod":1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"aModifier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
-					"condition":"Target Violates Restriction",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["Corner"],
-							"mustBeEmpty":false
+					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition": "Target Violates Restriction",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Corner"
+							]
 						}
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.TargetTargetsAugmentedCardSubeffect, Assembly-CSharp",
-					"targetIndex":-2
+					"$type": "KompasServer.Effects.TargetTargetsAugmentedCardSubeffect, Assembly-CSharp",
+					"targetIndex": -2
 				},
 				{
-					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
-					"condition":"Target Violates Restriction",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Avatar","Enemy"]
+					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition": "Target Violates Restriction",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Avatar",
+							"Enemy"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMult":-1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMultiplier": -1
 				},
 				{
-					"$type":"KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
-					"targetIndex":-3,
-					"attachmentTarget":-2
+					"$type": "KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
+					"targetIndex": -3,
+					"attachmentTarget": -2
 				},
 				{
-					"$type":"KompasServer.Effects.ResetStatsSubeffect, Assembly-CSharp",
-					"targetIndex":-3,
-					"resetA":true
+					"$type": "KompasServer.Effects.ResetStatsSubeffect, Assembly-CSharp",
+					"targetIndex": -3,
+					"resetA": true
 				}
 			]
 		}
 	],
-	"n":1,
-	"e":7,
-	"s":11,
-	"w":3,
-	"subtypeText":"Teammate"
+	"n": 1,
+	"e": 7,
+	"s": 11,
+	"w": 3,
+	"subtypeText": "Teammate"
 }

@@ -1,30 +1,35 @@
 {
-	"cardType":67,
-	"cardName":"VIII - Fortitude",
-	"effText":"The first three times each turn a friendly character attacks, draw 1.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "VIII - Fortitude",
+	"effText": "The first three times each turn a friendly character attacks, draw 1.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Attack",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Max Per Turn"],
-					"cardRestriction":{
-						"cardRestrictions":["Friendly"]
+			"triggerData": {
+				"triggerCondition": "Attack",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before",
+						"Max Per Turn"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Friendly"
+						]
 					},
-					"maxTimesPerTurn":3
+					"maxTimesPerTurn": 3
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
 				}
-			]	
+			]
 		}
 	],
-	"n":2,
-	"e":7,
-	"s":6,
-	"w":4,
-	"subtypeText":"Tarocco Mage"
+	"n": 2,
+	"e": 7,
+	"s": 6,
+	"w": 4,
+	"subtypeText": "Tarocco Mage"
 }

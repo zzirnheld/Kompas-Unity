@@ -1,30 +1,32 @@
 {
-	"cardType":67,
-	"cardName":"V - The Hierophant",
-	"effText":"When you draw X cards, give me +XW.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "V - The Hierophant",
+	"effText": "When you draw X cards, give me +XW.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Draw",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Controller Triggered"]
+			"triggerData": {
+				"triggerCondition": "Draw",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Controller Triggered"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"wMult":1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"wMultiplier": 1
 				}
-			]	
+			]
 		}
 	],
-	"n":2,
-	"e":1,
-	"s":2,
-	"w":1,
-	"subtypeText":"Tarocco Mage"
+	"n": 2,
+	"e": 1,
+	"s": 2,
+	"w": 1,
+	"subtypeText": "Tarocco Mage"
 }

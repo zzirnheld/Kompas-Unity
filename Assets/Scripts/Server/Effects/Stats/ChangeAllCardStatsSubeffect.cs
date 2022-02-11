@@ -16,7 +16,7 @@ namespace KompasServer.Effects
             {
                 cardRestrictions = new string[]
                 {
-                    CardRestriction.IsCharacter,
+                    CardRestriction.Character,
                     CardRestriction.Board
                 }
             };
@@ -26,8 +26,8 @@ namespace KompasServer.Effects
         public override Task<ResolutionInfo> Resolve()
         {
             var targets = ServerGame.Cards.Where(c => cardRestriction.IsValidCard(c, Context));
-            var stats = (NVal, EVal, SVal, WVal, CVal, AVal);
-            foreach (var c in targets) c.AddToStats(stats, Effect);
+            var buff = Buff;
+            foreach (var c in targets) c.AddToStats(buff, Effect);
 
             return Task.FromResult(ResolutionInfo.Next);
         }

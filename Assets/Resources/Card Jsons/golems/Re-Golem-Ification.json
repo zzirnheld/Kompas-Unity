@@ -8,7 +8,7 @@
 			{
 				"triggerCondition":"Play",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+					"triggerRestrictions":["This Card is Main Card"]
 				}
 			},
 			"subeffects":[
@@ -36,12 +36,12 @@
 					"cardRestriction":
 					{
 						"blurb":"to re-golem-ificate",
-						"cardRestrictions":["Subtypes Include","Friendly","Discard","Card Value Fits X Restriction"],
+						"cardRestrictions":["Subtypes Include","Friendly","Discard","Card Value Fits Number Restriction"],
 						"cardValue":{
 							"value":"Cost"
 						},
-						"xRestriction":{
-							"xRestrictions":["=X"]
+						"cardValueNumberRestriction":{
+							"numberRestrictions":["=X"]
 						},
 						"subtypesInclude":["Golem"]
 					}

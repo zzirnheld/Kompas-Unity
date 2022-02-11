@@ -1,46 +1,55 @@
 {
-	"cardType":67,
-	"cardName":"Swordguild Instructor",
-	"effText":"Once each friendly turn, you can give an adjacent Warrior +1 W.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Swordguild Instructor",
+	"effText": "Once each friendly turn, you can give an adjacent Warrior +1 W.",
+	"effects": [
 		{
-			"activationRestriction":{
-				"activationRestrictionArray":[
+			"activationRestriction": {
+				"activationRestrictionArray": [
 					"Max Times Per Turn",
 					"Friendly Turn",
 					"Default"
 				]
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"Warrior for Instructor to give +1 W",
-						"cardRestrictions":["Subtypes Include","Is Character","Board","Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["Adjacent to Source"],
-							"mustBeEmpty":false
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Warrior for Instructor to give +1 W",
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Character",
+							"Board",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Source"
+							]
 						},
-						"subtypesInclude":["Warrior"]
+						"subtypesInclude": [
+							"Warrior"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"nMod":0,
-					"eMod":0,
-					"sMod":0,
-					"wMod":1,
-					"targetIndex":0
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"nModifier": 0,
+					"eModifier": 0,
+					"sModifier": 0,
+					"wModifier": 1,
+					"targetIndex": 0
 				}
 			]
 		}
 	],
-	"n":1,
-	"e":2,
-	"s":3,
-	"w":3,
-	"subtypes":["Swordguild","Warrior"],
-	"subtypeText":"Swordguild Warrior"
+	"n": 1,
+	"e": 2,
+	"s": 3,
+	"w": 3,
+	"subtypes": [
+		"Swordguild",
+		"Warrior"
+	],
+	"subtypeText": "Swordguild Warrior"
 }

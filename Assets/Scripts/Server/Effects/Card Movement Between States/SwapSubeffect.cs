@@ -14,12 +14,12 @@ namespace KompasServer.Effects
         {
             if (CardTarget == null)
                 throw new NullCardException(TargetWasNull);
-            else if (forbidNotBoard && CardTarget.Location != CardLocation.Field)
+            else if (forbidNotBoard && CardTarget.Location != CardLocation.Board)
                 throw new InvalidLocationException(CardTarget.Location, CardTarget, MovedCardOffBoard);
 
             if (SecondTarget == null)
                 throw new NullCardException(TargetWasNull);
-            else if (forbidNotBoard && SecondTarget.Location != CardLocation.Field)
+            else if (forbidNotBoard && SecondTarget.Location != CardLocation.Board)
                 throw new InvalidLocationException(SecondTarget.Location, SecondTarget, MovedCardOffBoard);
 
             CardTarget.Move(SecondTarget.Position, false, ServerEffect);

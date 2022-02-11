@@ -156,7 +156,7 @@ namespace KompasClient.UI
             if (CurrShown.Unique)
             {
                 //deal with unique cards
-                var copies = clientGame.Cards.Where(c => c.Location == CardLocation.Field && c.IsFriendlyCopyOf(CurrShown));
+                var copies = clientGame.Cards.Where(c => c.Location == CardLocation.Board && c.IsFriendlyCopyOf(CurrShown));
                 foreach (var copy in copies)
                 {
                     copy.cardCtrl.ShowUniqueCopy(true);

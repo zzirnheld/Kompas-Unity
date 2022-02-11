@@ -1,100 +1,118 @@
 {
-	"cardType":83,
-	"cardName":"Sonic Resonator",
-	"effText":"When a character moves, give me +1 C, but set my turn count to -1.\nWhen I vanish having C X, deck->summon distinct Speedemons with total S < X. Move each 1 space.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Sonic Resonator",
+	"effText": "When a character moves, give me +1 C, but set my turn count to -1.\nWhen I vanish having C X, deck->summon distinct Speedemons with total S < X. Move each 1 space.",
+	"effects": [
 		{
-			"blurb":"Sonic +C",
-			"triggerData":
-			{
-				"blurb":"Sonic +C",
-				"triggerCondition":"Move",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play"]
+			"blurb": "Sonic +C",
+			"triggerData": {
+				"blurb": "Sonic +C",
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"cMod":1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"cModifier": 1
 				},
-                {
-                    "$type":"KompasServer.Effects.SetTurnsOnBoardSubeffect, Assembly-CSharp",
-                    "xMultiplier":0,
-                    "xModifier":-1
-                }
+				{
+					"$type": "KompasServer.Effects.SetTurnsOnBoardSubeffect, Assembly-CSharp",
+					"xMultiplier": 0,
+					"xModifier": -1
+				}
 			]
 		},
 		{
-			"blurb":"Resound",
-			"triggerData":
-			{
-				"blurb":"Resound",
-				"triggerCondition":"Vanish",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"blurb": "Resound",
+			"triggerData": {
+				"blurb": "Resound",
+				"triggerCondition": "Vanish",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByTriggeringCardValueSubeffect, Assembly-CSharp",
-					"cardValue":{
-						"value":"C"
+					"$type": "KompasServer.Effects.SetXByTriggeringCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "C"
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"Speedemon to resonate",
-						"cardRestrictions":["Is Character","Deck","Subtypes Include","Card Value Fits X Restriction","Distinct Name from Other Targets"],
-						"subtypesInclude":["Speedemon"],
-						"cardValue":{
-							"value":"S"
+					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Speedemon to resonate",
+						"cardRestrictions": [
+							"Character",
+							"Deck",
+							"Subtypes Include",
+							"Card Value Fits Number Restriction",
+							"Distinct Name from Other Targets"
+						],
+						"subtypesInclude": [
+							"Speedemon"
+						],
+						"cardValue": {
+							"value": "S"
 						},
-						"xRestriction":{
-							"xRestrictions":["<=X"]
+						"cardValueNumberRestriction": {
+							"numberRestrictions": [
+								"<=X"
+							]
 						}
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
-					"cardValue":{
-						"value":"S",
-                        "multiplier":-1
+					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "S",
+						"multiplier": -1
 					},
-					"change":true
+					"xMultiplier": 1,
+					"change": true
 				},
 				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":
-					{
-						"blurb":"where to play newly resonated Speedemon",
-						"spaceRestrictions":["Can Play Target to This Space"]
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where to play newly resonated Speedemon",
+						"spaceRestrictions": [
+							"Can Play Card Target to This Space",
+							"Empty"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ConditionalJumpSubeffect, Assembly-CSharp",
-					"condition":"X >= Constant",
-					"constant":1,
-					"jumpIndices":[2]
+					"$type": "KompasServer.Effects.ConditionalJumpSubeffect, Assembly-CSharp",
+					"condition": "X >= Constant",
+					"constant": 1,
+					"jumpIndices": [
+						2
+					]
 				}
 			]
 		}
 	],
-	"c":1,
-	"spellTypes":["Vanishing"],
-	"subtypeText":"Vanishing",
-	"duration":1
+	"c": 1,
+	"spellTypes": [
+		"Vanishing"
+	],
+	"subtypeText": "Vanishing",
+	"duration": 1
 }

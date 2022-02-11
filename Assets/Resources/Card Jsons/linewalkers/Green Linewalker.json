@@ -1,42 +1,50 @@
 {
-	"cardType":67,
-	"cardName":"Green Linewalker",
-	"effText":"Linewalk.\nWhen I move X spaces, give characters within 1 space of me (including me) +X W.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Green Linewalker",
+	"effText": "Linewalk.\nWhen I move X spaces, give characters within 1 space of me (including me) +X W.",
+	"effects": [
 		{
-			"blurb":"Red Linewalked",
-			"triggerData":
-			{
-				"triggerCondition":"Move",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"blurb": "Red Linewalked",
+			"triggerData": {
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Is Character","Board","Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["Distance to Source Fits X Restriction"],
-							"distanceXRestriction":{
-								"xRestrictions":["<=Constant"],
-								"constant":1
-							},
-							"mustBeEmpty":false
+					"$type": "KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Distance to Source Fits X Restriction"
+							],
+							"distanceXRestriction": {
+								"numberRestrictions": [
+									"<=Constant"
+								],
+								"constant": 1
+							}
 						}
 					},
-					"wMult":1
+					"wMultiplier": 1
 				}
 			]
 		}
 	],
-	"keywords":["Linewalk"],
-	"n":1,
-	"e":1,
-	"s":5,
-	"w":0,
-	"subtypeText":"Linewalker Mage"
+	"keywords": [
+		"Linewalk"
+	],
+	"n": 1,
+	"e": 1,
+	"s": 5,
+	"w": 0,
+	"subtypeText": "Linewalker Mage"
 }

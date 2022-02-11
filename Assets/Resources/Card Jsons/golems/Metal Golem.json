@@ -1,61 +1,69 @@
 {
-	"cardType":67,
-	"cardName":"Metal Golem",
-	"effText":"Golem.\nWhen I'm activated, set two characters' N to 0.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Metal Golem",
+	"effText": "Golem.\nWhen I'm activated, set two characters' N to 0.",
+	"effects": [
 		{
-			"blurb":"Go to Bonky Jail",
-			"triggerData":
-			{
-				"triggerCondition":"Activate",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"blurb": "Go to Bonky Jail",
+			"triggerData": {
+				"triggerCondition": "Activate",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"first character for Metal Golem to set N to 0",
-						"cardRestrictions":["Is Character","Board"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "first character for Metal Golem to set N to 0",
+						"cardRestrictions": [
+							"Character",
+							"Board"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SetCardStatsSubeffect, Assembly-CSharp",
-					"nVal":0
+					"$type": "KompasServer.Effects.SetCardStatsSubeffect, Assembly-CSharp",
+					"nVal": 0
 				},
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"second character for Metal Golem to set N to 0",
-						"cardRestrictions":["Is Character","Board","Not Already Target"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "second character for Metal Golem to set N to 0",
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Not Already Target"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SetCardStatsSubeffect, Assembly-CSharp",
-					"nVal":0
+					"$type": "KompasServer.Effects.SetCardStatsSubeffect, Assembly-CSharp",
+					"nVal": 0
 				}
 			]
 		}
 	],
-	"MovementRestriction":{
-		"normalRestrictionsFromJson":[
+	"MovementRestriction": {
+		"normalRestrictionsFromJson": [
 			"Default",
 			"Activated"
 		]
 	},
-	"AttackRestriction":{
-		"attackRestrictionsArray":[
+	"AttackRestriction": {
+		"attackRestrictionsArray": [
 			"Default",
 			"This is Activated"
 		]
 	},
-	"n":3,
-	"e":6,
-	"s":4,
-	"w":5,
-	"subtypes":["Golem"],
-	"subtypeText":"Golem"
+	"n": 3,
+	"e": 6,
+	"s": 4,
+	"w": 5,
+	"subtypes": [
+		"Golem"
+	],
+	"subtypeText": "Golem"
 }

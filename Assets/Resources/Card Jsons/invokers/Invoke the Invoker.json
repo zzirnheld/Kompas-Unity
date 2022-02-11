@@ -1,69 +1,93 @@
 {
-	"cardType":83,
-	"cardName":"Invoke the Invoker",
-	"effText":"Hand->reshuffle 2 Spirits. Hand->summon an Invoker.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Invoke the Invoker",
+	"effText": "Hand->reshuffle 2 Spirits. Hand->summon an Invoker.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"for Invoke the Invoker to reshuffle (1/2)",
-						"cardRestrictions":["Subtypes Include","Friendly","Hand","Not Already Target"],
-						"subtypesInclude":["Spirit"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "for Invoke the Invoker to reshuffle (1/2)",
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Friendly",
+							"Hand",
+							"Not Already Target"
+						],
+						"subtypesInclude": [
+							"Spirit"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"for Invoke the Invoker to reshuffle (2/2)",
-						"cardRestrictions":["Subtypes Include","Friendly","Hand","Not Already Target"],
-						"subtypesInclude":["Spirit"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "for Invoke the Invoker to reshuffle (2/2)",
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Friendly",
+							"Hand",
+							"Not Already Target"
+						],
+						"subtypesInclude": [
+							"Spirit"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp",
-					"targetIndex":-1
+					"$type": "KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp",
+					"targetIndex": -1
 				},
 				{
-					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp",
-					"targetIndex":-2
+					"$type": "KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp",
+					"targetIndex": -2
 				},
 				{
-					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
-					"maxCanChoose":1,
-					"cardRestriction":
-					{
-						"blurb":"Invoker to summon",
-						"cardRestrictions":["Friendly","Subtypes Include","Multiple Possible Locations"],
-						"subtypesInclude":["Invoker"],
-						"locations":[3]
+					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"maxCanChoose": 1,
+					"cardRestriction": {
+						"blurb": "Invoker to summon",
+						"cardRestrictions": [
+							"Friendly",
+							"Subtypes Include",
+							"Multiple Possible Locations"
+						],
+						"subtypesInclude": [
+							"Invoker"
+						],
+						"locations": [
+							3
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":
-					{
-						"blurb":"where to Invoke",
-						"spaceRestrictions":["Can Play Target to This Space"]
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where to Invoke",
+						"spaceRestrictions": [
+							"Can Play Card Target to This Space",
+							"Empty"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				}
-			]	
+			]
 		}
 	],
-	"c":1,
-	"spellTypes":["Simple"],
-	"subtypeText":"Simple"
+	"c": 1,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypeText": "Simple"
 }

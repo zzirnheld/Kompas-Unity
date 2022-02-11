@@ -1,47 +1,62 @@
 {
-	"cardType":67,
-	"cardName":"Outpoured Anger",
-	"effText":"Shaper.\nWhen a distinct Shaper moves, move me adjacent to them.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Outpoured Anger",
+	"effText": "Shaper.\nWhen a distinct Shaper moves, move me adjacent to them.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Move",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
-					"cardRestriction":{
-						"cardRestrictions":["Friendly","Distinct Name from Source","Subtypes Include"],
-						"subtypesInclude":["Shaper"]
+			"triggerData": {
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Friendly",
+							"Distinct Name from Source",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Shaper"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":
-					{
-						"blurb":"to move Outpoured Anger to",
-						"spaceRestrictions":["Adjacent to Target"]
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "to move Outpoured Anger to",
+						"spaceRestrictions": [
+							"Adjacent to Card Target",
+							"Empty"
+						]
 					},
-					"targetIndex":-2
+					"targetIndex": -2
 				},
 				{
-					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
 				}
-			]	
+			]
 		}
 	],
-	"keywords":["Shape"],
-	"n":0,
-	"e":1,
-	"s":4,
-	"w":5,
-	"subtypes":["Ethereal","Shaper"],
-	"subtypeText":"Ethereal Shaper"
+	"keywords": [
+		"Shape"
+	],
+	"n": 0,
+	"e": 1,
+	"s": 4,
+	"w": 5,
+	"subtypes": [
+		"Ethereal",
+		"Shaper"
+	],
+	"subtypeText": "Ethereal Shaper"
 }

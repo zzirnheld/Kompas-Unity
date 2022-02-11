@@ -1,4 +1,4 @@
 ﻿public enum CardLocation
 {
-    Nowhere, Field, Discard, Hand, Deck, Annihilation
+    Nowhere, Board, Discard, Hand, Deck, Annihilation
 }

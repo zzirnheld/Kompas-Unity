@@ -35,7 +35,7 @@ namespace KompasCore.Cards
 
         public GameCardBase() : base() { }
 
-        public GameCardBase(int n, int e, int s, int w, int c, int a,
+        public GameCardBase(CardStats stats,
                         string subtext, string[] spellTypes,
                         bool fast, bool unique,
                         int radius, int duration,
@@ -44,7 +44,7 @@ namespace KompasCore.Cards
                         string subtypeText,
                         string[] augSubtypes)
         {
-            SetInfo(n, e, s, w, c, a,
+            SetInfo(stats,
                     subtext, spellTypes,
                     fast, unique,
                     radius, duration,
@@ -54,23 +54,23 @@ namespace KompasCore.Cards
                     augSubtypes);
         }
 
-        public bool Hurt => CardType == 'C' && Location == CardLocation.Field && E < BaseE;
+        public bool Hurt => CardType == 'C' && Location == CardLocation.Board && E < BaseE;
 
         #region distance/adjacency
         public Space SubjectivePosition => Controller.SubjectiveCoords(Position);
 
         public int RadialDistanceTo(Space space)
-            => Location == CardLocation.Field ? Position.RadialDistanceTo(space) : int.MaxValue;
+            => Location == CardLocation.Board ? Position.RadialDistanceTo(space) : int.MaxValue;
         public int DistanceTo(Space space)
-            => Location == CardLocation.Field ? Position.DistanceTo(space) : int.MaxValue;
+            => Location == CardLocation.Board ? Position.DistanceTo(space) : int.MaxValue;
         public int DistanceTo(GameCardBase card) => DistanceTo(card.Position);
 
         public bool WithinSpaces(int numSpaces, GameCardBase card)
-            => card != null && card.Location == CardLocation.Field && Location == CardLocation.Field && DistanceTo(card) <= numSpaces;
+            => card != null && card.Location == CardLocation.Board && Location == CardLocation.Board && DistanceTo(card) <= numSpaces;
 
-        public bool IsAdjacentTo(GameCardBase card) => Location == CardLocation.Field && card != null
-            && card.Location == CardLocation.Field && Position.AdjacentTo(card.Position);
-        public bool IsAdjacentTo(Space space) => Location == CardLocation.Field && Position.AdjacentTo(space);
+        public bool IsAdjacentTo(GameCardBase card) => Location == CardLocation.Board && card != null
+            && card.Location == CardLocation.Board && Position.AdjacentTo(card.Position);
+        public bool IsAdjacentTo(Space space) => Location == CardLocation.Board && Position.AdjacentTo(space);
 
         /// <summary>
         /// Whether <paramref name="space"/> is in this card's AOE if this card is at <paramref name="mySpace"/>
@@ -78,7 +78,7 @@ namespace KompasCore.Cards
         public bool SpaceInAOE(Space space, Space mySpace)
             => SpellSubtypes != null && SpellSubtypes.Any(s => s switch
             {
-                RadialSubtype => mySpace.DistanceTo(space) <= Radius,
+                RadialSubtype => (mySpace?.DistanceTo(space) ?? 50) <= Radius,
                 _ => false
             });
         public bool SpaceInAOE(Space space) => SpaceInAOE(space, Position);
@@ -91,8 +91,8 @@ namespace KompasCore.Cards
         /// </summary>
         public bool CardInAOE(GameCardBase c) => CardInAOE(c, Position);
 
-        public bool SameColumn(Space space) => Location == CardLocation.Field && Position.SameColumn(space);
-        public bool SameColumn(GameCardBase c) => c.Location == CardLocation.Field && SameColumn(c.Position);
+        public bool SameColumn(Space space) => Location == CardLocation.Board && Position.SameColumn(space);
+        public bool SameColumn(GameCardBase c) => c.Location == CardLocation.Board && SameColumn(c.Position);
 
         /// <summary>
         /// Returns whether the <paramref name="space"/> passed in is in front of this card
@@ -123,15 +123,15 @@ namespace KompasCore.Cards
         public bool CardBehind(GameCardBase card) => SpaceBehind(card.Position);
 
         public bool SpaceDirectlyInFront(Space space)
-            => Location == CardLocation.Field && Controller.SubjectiveCoords(space) == SubjectivePosition.DueNorth;
+            => Location == CardLocation.Board && Controller.SubjectiveCoords(space) == SubjectivePosition.DueNorth;
 
         public bool CardDirectlyInFront(GameCardBase card)
-            => card.Location == CardLocation.Field && SpaceDirectlyInFront(card.Position);
+            => card.Location == CardLocation.Board && SpaceDirectlyInFront(card.Position);
 
-        public bool SameDiagonal(Space space) => Location == CardLocation.Field && Position.SameDiagonal(space);
-        public bool SameDiagonal(GameCardBase card) => card?.Location == CardLocation.Field && SameDiagonal(card.Position);
+        public bool SameDiagonal(Space space) => Location == CardLocation.Board && Position.SameDiagonal(space);
+        public bool SameDiagonal(GameCardBase card) => card?.Location == CardLocation.Board && SameDiagonal(card.Position);
 
-        public bool InCorner() => Location == CardLocation.Field && Position.IsCorner;
+        public bool InCorner() => Location == CardLocation.Board && Position.IsCorner;
 
         /// <summary>
         /// Refers to this situation: <br></br>
@@ -144,7 +144,7 @@ namespace KompasCore.Cards
         /// <returns></returns>
         public bool SpaceDirectlyAwayFrom((int x, int y) space, GameCardBase card)
         {
-            if (card.Location != CardLocation.Field || Location != CardLocation.Field) return false;
+            if (card.Location != CardLocation.Board || Location != CardLocation.Board) return false;
             int xDiffCard = card.Position.x - Position.x;
             int yDiffCard = card.Position.y - Position.y;
             int xDiffSpace = space.x - Position.x;
@@ -206,7 +206,7 @@ namespace KompasCore.Cards
 
         protected void SetInfo(GameCard card)
         {
-            SetInfo(card.N, card.E, card.S, card.W, card.C, card.A,
+            SetInfo(card.Stats,
                         card.Subtext, card.SpellSubtypes,
                         card.Fast, card.Unique,
                         card.Radius, card.Duration,

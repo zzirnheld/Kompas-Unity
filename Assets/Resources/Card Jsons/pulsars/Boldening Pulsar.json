@@ -1,76 +1,98 @@
 {
-	"cardType":67,
-	"cardName":"Boldening Pulsar",
-	"effText":"When your Avatar's S changes, give adjacent characters:\n+S: +1 E.\n-S: -1 E.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Boldening Pulsar",
+	"effText": "When your Avatar's S changes, give adjacent characters:\n+S: +1 E.\n-S: -1 E.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"blurb":"Embolden",
-				"triggerCondition":"S Change",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","X Fits Restriction","Triggerer Fits Restriction"],
-					"xRestriction":{
-						"xRestrictions":[">0"]
+			"triggerData": {
+				"blurb": "Embolden",
+				"triggerCondition": "S Change",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"X Fits Restriction",
+						"Main Card Fits Restriction Before"
+					],
+					"xRestriction": {
+						"numberRestrictions": [
+							">0"
+						]
 					},
-					"cardRestriction":
-					{
-						"cardRestrictions":["Board","Avatar","Friendly"]
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Board",
+							"Avatar",
+							"Friendly"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Is Character","Board","Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["Adjacent to Source"],
-							"mustBeEmpty":false
+					"$type": "KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Source"
+							]
 						}
 					},
-					"eMod":1
+					"eModifier": 1
 				}
-			]	
+			]
 		},
 		{
-			"triggerData":
-			{
-				"blurb":"Unbolden",
-				"triggerCondition":"S Change",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","X Fits Restriction","Triggerer Fits Restriction"],
-					"xRestriction":{
-						"xRestrictions":["<0"]
+			"triggerData": {
+				"blurb": "Unbolden",
+				"triggerCondition": "S Change",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"X Fits Restriction",
+						"Main Card Fits Restriction Before"
+					],
+					"xRestriction": {
+						"numberRestrictions": [
+							"<0"
+						]
 					},
-					"cardRestriction":
-					{
-						"cardRestrictions":["Board","Avatar","Friendly"]
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Board",
+							"Avatar",
+							"Friendly"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Is Character","Board","Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["Adjacent to Source"],
-							"mustBeEmpty":false
+					"$type": "KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Source"
+							]
 						}
 					},
-					"eMod":-1
+					"eModifier": -1
 				}
-			]	
+			]
 		}
 	],
-	"n":2,
-	"e":3,
-	"s":3,
-	"w":3,
-	"subtypeText":"Pulsar"
+	"n": 2,
+	"e": 3,
+	"s": 3,
+	"w": 3,
+	"subtypeText": "Pulsar"
 }

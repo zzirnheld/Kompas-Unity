@@ -1,63 +1,70 @@
 {
-	"cardType":67,
-	"cardName":"Gunpowder Golem",
-	"effText":"Golem.\nWhen I'm activated, set X to my W. Give me and a distinct Summoned character -X E.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Gunpowder Golem",
+	"effText": "Golem.\nWhen I'm activated, set X to my W. Give me and a distinct Summoned character -X E.",
+	"effects": [
 		{
-			"blurb":"Boom",
-			"triggerData":
-			{
-				"triggerCondition":"Activate",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"blurb": "Boom",
+			"triggerData": {
+				"triggerCondition": "Activate",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
-					"cardValue":{
-						"value":"W"
+					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "W"
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMult":-1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMultiplier": -1
 				},
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"Summoned character for Gunpowder Golem to give -X E",
-						"cardRestrictions":["Is Character","Summoned","Board","Distinct Name from Source"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Summoned character for Gunpowder Golem to give -X E",
+						"cardRestrictions": [
+							"Character",
+							"Summoned",
+							"Board",
+							"Distinct Name from Source"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMult":-1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMultiplier": -1
 				}
 			]
 		}
 	],
-	"MovementRestriction":{
-		"normalRestrictionsFromJson":[
+	"MovementRestriction": {
+		"normalRestrictionsFromJson": [
 			"Default",
 			"Activated"
 		]
 	},
-	"AttackRestriction":{
-		"attackRestrictionsArray":[
+	"AttackRestriction": {
+		"attackRestrictionsArray": [
 			"Default",
 			"This is Activated"
 		]
 	},
-	"n":5,
-	"e":3,
-	"s":4,
-	"w":7,
-	"subtypes":["Golem"],
-	"subtypeText":"Golem"
+	"n": 5,
+	"e": 3,
+	"s": 4,
+	"w": 7,
+	"subtypes": [
+		"Golem"
+	],
+	"subtypeText": "Golem"
 }

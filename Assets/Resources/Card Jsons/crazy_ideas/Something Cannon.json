@@ -1,39 +1,42 @@
 {
-	"cardType":67,
-	"cardName":"Something Cannon",
-	"effText":"When I’m summoned, I attack a character.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Something Cannon",
+	"effText": "When I'm summoned, I attack a character.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"character for Something Cannon to blast",
-						"cardRestrictions":["Is Character","Board"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "character for Something Cannon to blast",
+						"cardRestrictions": [
+							"Character",
+							"Board"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
-					"attackerIndex":-2,
-					"targetIndex":-1
+					"$type": "KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
+					"attackerIndex": -2,
+					"targetIndex": -1
 				}
-			]	
+			]
 		}
 	],
-	"n":0,
-	"e":1,
-	"s":5,
-	"w":3,
-	"subtypeText":"Crazy Idea"
+	"n": 0,
+	"e": 1,
+	"s": 5,
+	"w": 3,
+	"subtypeText": "Crazy Idea"
 }

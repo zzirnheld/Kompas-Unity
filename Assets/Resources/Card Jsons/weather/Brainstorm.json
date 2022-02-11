@@ -1,53 +1,65 @@
 {
-	"cardType":83,
-	"cardName":"Brainstorm",
-	"effText":"Weather.\nWhen a character arrives here, their controller draws 1 card, then hand->bottomdecks 1 card.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Brainstorm",
+	"effText": "Weather.\nWhen a character arrives here, their controller draws 1 card, then hand->bottomdecks 1 card.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"blurb":"Inspiration strikes",
-				"triggerCondition":"Arrive",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Coords Fit Restriction"],
-					"cardRestriction":{
-						"cardRestrictions":["Is Character"]
+			"triggerData": {
+				"blurb": "Inspiration strikes",
+				"triggerCondition": "Arrive",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before",
+						"Space Fits Restriction"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character"
+						]
 					},
-					"spaceRestriction":
-					{
-						"mustBeEmpty":false,
-						"spaceRestrictions":["In AOE"]
+					"spaceRestriction": {
+						"mustBeEmpty": false,
+						"spaceRestrictions": [
+							"In Source's AOE"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.TargetTargetsControllerSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTargetsControllerSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"the idea struck from your head",
-						"cardRestrictions":["Friendly","Hand"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "the idea struck from your head",
+						"cardRestrictions": [
+							"Friendly",
+							"Hand"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.BottomdeckSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.BottomdeckSubeffect, Assembly-CSharp"
 				}
-			]	
+			]
 		}
 	],
-	"keywords":["Weather"],
-	"unique":true,
-	"c":6,
-	"spellTypes":["Radial"],
-	"subtypeText":"Weather Radial",
-	"radius":1
+	"keywords": [
+		"Weather"
+	],
+	"unique": true,
+	"c": 6,
+	"spellTypes": [
+		"Radial"
+	],
+	"subtypeText": "Weather Radial",
+	"radius": 1
 }

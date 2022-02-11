@@ -1,75 +1,103 @@
 {
-	"cardType":83,
-	"cardName":"Self-Destruct Button",
-	"effText":"Ificate.\nDestroy a distinct friendly Crazy Idea. Rehand all friendly discarded Crazy Ideas. Discard 1-3 cards.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Self-Destruct Button",
+	"effText": "Ificate.\nDestroy a distinct friendly Crazy Idea. Rehand all friendly discarded Crazy Ideas. Discard 1-3 cards.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"No! Not the Self-Destruct Button installed on all Ificator (TM) systems!",
-						"cardRestrictions":["Friendly","Board","Distinct Name from Source","Subtypes Include"],
-						"subtypesInclude":["Crazy Idea"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "No! Not the Self-Destruct Button installed on all Ificator (TM) systems!",
+						"cardRestrictions": [
+							"Friendly",
+							"Board",
+							"Distinct Name from Source",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Crazy Idea"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Friendly","Discard","Subtypes Include"],
-						"subtypesInclude":["Crazy Idea"]
+					"$type": "KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Friendly",
+							"Discard",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Crazy Idea"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
-					"delete":true,
-					"jumpIndices":[4]
+					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete": true,
+					"jumpIndices": [
+						4
+					]
 				},
 				{
-					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"oh, and the self-destruct button on the -ificator in my hand, too. Curse you.",
-						"cardRestrictions":["Friendly","Hand"]
+					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "oh, and the self-destruct button on the -ificator in my hand, too. Curse you.",
+						"cardRestrictions": [
+							"Friendly",
+							"Hand"
+						]
 					},
-					"listRestriction":{
-						"listRestrictions":["Min Can Choose","Max Can Choose"],
-                        "minCanChoose":1,
-						"maxCanChoose":3
+					"listRestriction": {
+						"listRestrictions": [
+							"Min Can Choose",
+							"Max Can Choose"
+						],
+						"minCanChoose": 1,
+						"maxCanChoose": 3
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
-					"delete":true,
-					"jumpIndices":[7]
+					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete": true,
+					"jumpIndices": [
+						7
+					]
 				}
 			]
 		}
 	],
-	"keywords":["Ificate"],
-	"c":5,
-	"spellTypes":["Simple"],
-	"subtypes":["Simple","Crazy Idea"],
-	"subtypeText":"Simple Crazy Idea Ificator"
+	"keywords": [
+		"Ificate"
+	],
+	"c": 5,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypes": [
+		"Simple",
+		"Crazy Idea"
+	],
+	"subtypeText": "Simple Crazy Idea Ificator"
 }

@@ -1,66 +1,84 @@
 {
-	"cardType":67,
-	"cardName":"Silent Fanatic",
-	"effText":"When I die, deck-summon 2 Cultist Followers.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Silent Fanatic",
+	"effText": "When I die, deck-summon 2 Cultist Followers.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"blurb":"Deck-summon followers",
-				"triggerCondition":"Discard",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered","From Field"]
+			"triggerData": {
+				"blurb": "Deck-summon followers",
+				"triggerCondition": "Discard",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card",
+						"From Field"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
-					"maxCanChoose":1,
-					"cardRestriction":
-					{
-						"blurb":"Silent Cult Follower to bloodcurse (1/2)",
-						"cardRestrictions":["Subtypes Include","Friendly","Deck","Is Character"],
-						"subtypesInclude":["Cultist Follower"]
+					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"maxCanChoose": 1,
+					"cardRestriction": {
+						"blurb": "Silent Cult Follower to bloodcurse (1/2)",
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Friendly",
+							"Deck",
+							"Character"
+						],
+						"subtypesInclude": [
+							"Cultist Follower"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":
-					{
-						"blurb":"where to play Bloodcurser's new bloodcurse (1/2)",
-						"spaceRestrictions":["Can Play Target to This Space"]
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where to play Bloodcurser's new bloodcurse (1/2)",
+						"spaceRestrictions": [
+							"Can Play Card Target to This Space",
+							"Empty"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
-					"maxCanChoose":1,
-					"cardRestriction":
-					{
-						"blurb":"Silent Cult Follower to bloodcurse (2/2)",
-						"cardRestrictions":["Subtypes Include","Friendly","Deck","Is Character"],
-						"subtypesInclude":["Cultist Follower"]
+					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"maxCanChoose": 1,
+					"cardRestriction": {
+						"blurb": "Silent Cult Follower to bloodcurse (2/2)",
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Friendly",
+							"Deck",
+							"Character"
+						],
+						"subtypesInclude": [
+							"Cultist Follower"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":
-					{
-						"blurb":"where to play Bloodcurser's new bloodcurse (2/2)",
-						"spaceRestrictions":["Can Play Target to This Space"]
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where to play Bloodcurser's new bloodcurse (2/2)",
+						"spaceRestrictions": [
+							"Can Play Card Target to This Space",
+							"Empty"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				}
 			]
 		}
 	],
-	"n":5,
-	"e":1,
-	"s":5,
-	"w":3,
-	"subtypeText":"Cultist"
+	"n": 5,
+	"e": 1,
+	"s": 5,
+	"w": 3,
+	"subtypeText": "Cultist"
 }

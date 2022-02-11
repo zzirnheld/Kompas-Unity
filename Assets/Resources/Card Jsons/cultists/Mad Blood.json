@@ -1,75 +1,103 @@
 {
-	"cardType":83,
-	"cardName":"Mad Blood",
-	"effText":"The first time each turn a friendly Cultist dies, annihilate me and deck-summon 2 Cultist Followers. (If this effect is Negated, it can trigger again another turn.)",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Mad Blood",
+	"effText": "The first time each turn a friendly Cultist dies, annihilate me and deck-summon 2 Cultist Followers. (If this effect is Negated, it can trigger again another turn.)",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"blurb":"Mad Bloodcurse",
-				"triggerCondition":"Discard",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","From Field","Max Per Turn"],
-					"cardRestriction":
-					{
-						"cardRestrictions":["Is Character","Board","Friendly","Subtypes Include"],
-						"subtypesInclude":["Cultist"]
+			"triggerData": {
+				"blurb": "Mad Bloodcurse",
+				"triggerCondition": "Discard",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before",
+						"From Field",
+						"Max Per Turn"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Friendly",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Cultist"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
-					"maxCanChoose":1,
-					"cardRestriction":
-					{
-						"blurb":"Silent Cult Follower to bloodcurse (1/2)",
-						"cardRestrictions":["Subtypes Include","Friendly","Deck","Is Character"],
-						"subtypesInclude":["Cultist Follower"]
+					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"maxCanChoose": 1,
+					"cardRestriction": {
+						"blurb": "Silent Cult Follower to bloodcurse (1/2)",
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Friendly",
+							"Deck",
+							"Character"
+						],
+						"subtypesInclude": [
+							"Cultist Follower"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":
-					{
-						"blurb":"where to play Mad Blood's new bloodcurse (1/2)",
-						"spaceRestrictions":["Can Play Target to This Space"]
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where to play Mad Blood's new bloodcurse (1/2)",
+						"spaceRestrictions": [
+							"Can Play Card Target to This Space",
+							"Empty"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
-					"maxCanChoose":1,
-					"cardRestriction":
-					{
-						"blurb":"Silent Cult Follower to bloodcurse (2/2)",
-						"cardRestrictions":["Subtypes Include","Friendly","Deck","Is Character"],
-						"subtypesInclude":["Cultist Follower"]
+					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"maxCanChoose": 1,
+					"cardRestriction": {
+						"blurb": "Silent Cult Follower to bloodcurse (2/2)",
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Friendly",
+							"Deck",
+							"Character"
+						],
+						"subtypesInclude": [
+							"Cultist Follower"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":
-					{
-						"blurb":"where to play Mad Blood's new bloodcurse (2/2)",
-						"spaceRestrictions":["Can Play Target to This Space"]
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where to play Mad Blood's new bloodcurse (2/2)",
+						"spaceRestrictions": [
+							"Can Play Card Target to This Space",
+							"Empty"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				}
-			]	
+			]
 		}
 	],
-	"c":2,
-	"spellTypes":["Enchant"],
-	"subtypeText":"Enchant"
+	"c": 2,
+	"spellTypes": [
+		"Enchant"
+	],
+	"subtypeText": "Enchant"
 }

@@ -7,7 +7,7 @@
             "blurb":"Speed Shoes",
             "triggerCondition":"Move",
             "triggerRestriction":{
-                "triggerRestrictions":["This Card Triggered","Stackable Source Fits Restriction"],
+                "triggerRestrictions":["This Card is Main Card","Stackable Source Fits Restriction Now"],
                 "sourceRestriction":{
                     "cardRestrictions":["Not Source","Source Doesn't Augment"]
                 }
@@ -24,9 +24,9 @@
                     "spaceRestriction":
                     {
                         "blurb":"where for speed victim to move",
-                        "spaceRestrictions":["Opposite Direction From Target Than Space","Distance to Target Fits X Restriction"],
+                        "spaceRestrictions":["Opposite Direction from Source to Space as Source to Space Target","Distance to Card Target Fits X Restriction"],
                         "distanceXRestriction":{
-                            "xRestrictions":["=X"]
+                            "numberRestrictions":["=X"]
                         }
 					},
 					"xModifier":1

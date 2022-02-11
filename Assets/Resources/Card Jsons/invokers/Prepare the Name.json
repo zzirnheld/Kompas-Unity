@@ -1,38 +1,46 @@
 {
-	"cardType":83,
-	"cardName":"Prepare the Name",
-	"effText":"Hand-topdeck a Spirit. Gain 3 pips.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Prepare the Name",
+	"effText": "Hand-topdeck a Spirit. Gain 3 pips.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"blurb":"Prepare the Name",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"triggerData": {
+				"triggerCondition": "Play",
+				"blurb": "Prepare the Name",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"Spirit whose name to prepare",
-						"cardRestrictions":["Friendly","Hand","Subtypes Include"],
-						"subtypesInclude":["Spirit"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Spirit whose name to prepare",
+						"cardRestrictions": [
+							"Friendly",
+							"Hand",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Spirit"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.TopdeckSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TopdeckSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
-					"xModifier":3
+					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xModifier": 3
 				}
 			]
 		}
 	],
-	"c":1,
-	"spellTypes":["Simple"],
-	"subtypeText":""
+	"c": 1,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypeText": ""
 }

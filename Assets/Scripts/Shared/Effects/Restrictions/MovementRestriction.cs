@@ -121,7 +121,7 @@ namespace KompasCore.Effects
             Default => true,
 
             //normal restrictions
-            InPlay => Card.Location == CardLocation.Field,
+            InPlay => Card.Location == CardLocation.Board,
             DistinctSpace => !Card.Position.Equals(destination),
             IsCharacter => Card.CardType == 'C',
             CanMoveEnoughSpaces => Card.SpacesCanMove >= Card.Game.boardCtrl.ShortestEmptyPath(Card, destination),

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace KompasServer.Effects
 {
-    public class TemporaryNESWBuffSubeffect : HangingEffectSubeffect
+    public class TemporaryCardStatChangeSubeffect : HangingEffectSubeffect
     {
         public int nModifier = 0;
         public int eModifier = 0;
@@ -13,6 +13,13 @@ namespace KompasServer.Effects
         public int cModifier = 0;
         public int aModifier = 0;
 
+        public int nDivisor = 1;
+        public int eDivisor = 1;
+        public int sDivisor = 1;
+        public int wDivisor = 1;
+        public int cDivisor = 1;
+        public int aDivisor = 1;
+
         public int nMultiplier = 0;
         public int eMultiplier = 0;
         public int sMultiplier = 0;
@@ -20,28 +27,38 @@ namespace KompasServer.Effects
         public int cMultiplier = 0;
         public int aMultiplier = 0;
 
+        protected CardStats Buff
+        {
+            get
+            {
+                CardStats buff = (nMultiplier, eMultiplier, sMultiplier, wMultiplier, cMultiplier, aMultiplier);
+                buff *= Effect.X;
+                buff += (nModifier, eModifier, sModifier, wModifier, cModifier, aModifier);
+                buff /= (nDivisor, eDivisor, sDivisor, wDivisor, cDivisor, aDivisor);
+                return buff;
+            }
+        }
+
         protected override IEnumerable<HangingEffect> CreateHangingEffects()
         {
             if (CardTarget == null)
                 throw new NullCardException(TargetWasNull);
-            else if (forbidNotBoard && CardTarget.Location != CardLocation.Field)
+            else if (forbidNotBoard && CardTarget.Location != CardLocation.Board)
                 throw new InvalidLocationException(CardTarget.Location, CardTarget, ChangedStatsOfCardOffBoard);
 
             Debug.Log($"Creating temp NESW buff effect during context {Context}");
-            var temp = new TemporaryNESWBuff(game: ServerGame,
+            var contextCopy = Context.Copy;
+            contextCopy.SetResumeInfo(Effect.CardTargets, Effect.SpaceTargets);
+
+            var temp = new TemporaryCardStatChange(game: ServerGame,
                                              triggerRestriction: triggerRestriction,
                                              endCondition: endCondition,
                                              fallOffCondition: fallOffCondition,
                                              fallOffRestriction: CreateFallOffRestriction(CardTarget),
                                              sourceEff: Effect,
-                                             currentContext: Context,
+                                             currentContext: contextCopy,
                                              buffRecipient: CardTarget,
-                                             nBuff: nModifier + Effect.X * nMultiplier,
-                                             eBuff: eModifier + Effect.X * eMultiplier,
-                                             sBuff: sModifier + Effect.X * sMultiplier,
-                                             wBuff: wModifier + Effect.X * wMultiplier,
-                                             cBuff: cModifier + Effect.X * cMultiplier,
-                                             aBuff: aModifier + Effect.X * aMultiplier);
+                                             buff: Buff);
 
             return new List<HangingEffect>() { temp };
         }

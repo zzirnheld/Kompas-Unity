@@ -5,7 +5,7 @@
 		"blurb":"Wisp Summon",
 		"triggerCondition":"Play",
 		"triggerRestriction":{
-			"triggerRestrictions":["This Card Triggered"]
+			"triggerRestrictions":["This Card is Main Card"]
 		}
 	},
 	"subeffects":[
@@ -17,9 +17,9 @@
 			"spaceRestriction":
 			{
 				"blurb":"where Wisp to move",
-				"spaceRestrictions":["Can Move Target to This Space","Distance to Target Fits X Restriction"],
+				"spaceRestrictions":["Can Move Card Target to This Space","Distance to Card Target Fits X Restriction"],
 				"distanceXRestriction":{
-					"xRestrictions":["=X"]
+					"numberRestrictions":["=X"]
 				}
 			},
 			"xModifier":1

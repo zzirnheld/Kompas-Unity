@@ -1,0 +1,93 @@
+{
+	"cardType": 67,
+	"cardName": "Calming Puffcap",
+	"effText": "Spores.\nWhen a W > 0 non-Fungus character is activated, discard an E X Fungus. Give the activated character -X W until they move.",
+	"effects": [
+		{
+			"blurb": "Delirium",
+			"triggerData": {
+				"triggerCondition": "Activate",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Subtypes Exclude",
+							"Card Value Fits Number Restriction"
+						],
+						"subtypesExclude": [
+							"Fungus"
+						],
+						"cardValue": {
+							"value": "W"
+						},
+						"cardValueNumberRestriction": {
+							"numberRestrictions": [
+								">=Constant"
+							],
+							"constant":1
+						}
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Ethereal for Unfinding to discard",
+						"cardRestrictions": [
+							"Friendly",
+							"Hand",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Fungus"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "E"
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.TemporaryCardStatChangeSubeffect, Assembly-CSharp",
+					"wMultiplier": -1,
+					"wDivisor":2,
+					"endCondition": "Move",
+					"triggerRestriction": {
+						"triggerRestrictions": [
+							"Main Card is a Secondary Context Card Target"
+						]
+					}
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Spores"
+	],
+	"n": 1,
+	"e": 6,
+	"s": 5,
+	"w": 1,
+	"subtypes": [
+		"Fruiting",
+		"Fungus"
+	],
+	"subtypeText": "Fruiting Fungus"
+}

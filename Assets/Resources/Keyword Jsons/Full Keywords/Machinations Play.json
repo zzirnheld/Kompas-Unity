@@ -4,7 +4,7 @@
 		"triggerCondition":"Play",
 		"blurb":"C to 0",
 		"triggerRestriction":{
-			"triggerRestrictions":["This Card Triggered"]
+			"triggerRestrictions":["This Card is Main Card"]
 		}
 	},
 	"subeffects":[

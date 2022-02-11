@@ -1,35 +1,50 @@
 {
-	"cardType":83,
-	"cardName":"Dagaz",
-	"effText":"Runic.\nWhen you cast another Rune, gain a pip.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Dagaz",
+	"effText": "Runic.\nWhen you cast another Rune, gain a pip.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
-					"cardRestriction":{
-						"cardRestrictions":["Different from Source","Is Spell","Subtypes Include"],
-						"subtypesInclude":["Rune"]
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Different from Source",
+							"Spell",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Rune"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
-					"xModifier":1
+					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xModifier": 1
 				}
-			]	
+			]
 		}
 	],
-	"PlayRestriction":{
-		"normalRestrictions":["Cannot be Played Normally"]
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Cannot be Played Normally"
+		]
 	},
-	"c":1,
-	"unique":true,
-	"spellTypes":["Vanishing"],
-	"subtypes":["Rune","Vanishing"],
-	"subtypeText":"Rune Vanishing",
-	"duration":1
+	"c": 1,
+	"unique": true,
+	"spellTypes": [
+		"Vanishing"
+	],
+	"subtypes": [
+		"Rune",
+		"Vanishing"
+	],
+	"subtypeText": "Rune Vanishing",
+	"duration": 1
 }

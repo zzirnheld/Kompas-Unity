@@ -1,47 +1,55 @@
 {
-	"cardType":67,
-	"cardName":"Dragonseeker",
-	"effText":"You can hand-reshuffle your SX Dragon to give me +X/2 S.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Dragonseeker",
+	"effText": "You can hand-reshuffle your SX Dragon to give me +X/2 S.",
+	"effects": [
 		{
-			"blurb":"Dragonseek",
-			"activationRestriction":{
-				"activationRestrictionArray":["Default"]
+			"blurb": "Dragonseek",
+			"activationRestriction": {
+				"activationRestrictionArray": [
+					"Default"
+				]
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"for Dragonseeker to reshuffle",
-						"cardRestrictions":["Friendly","Hand","Is Character","Subtypes Include"],
-						"subtypesInclude":["Dragon"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "for Dragonseeker to reshuffle",
+						"cardRestrictions": [
+							"Friendly",
+							"Hand",
+							"Character",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Dragon"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
-					"cardValue":{
-						"value":"S"
+					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "S"
 					},
-					"xMultiplier":1,
-					"xDivisor":2
+					"xMultiplier": 1,
+					"xDivisor": 2
 				},
 				{
-					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"sMult":1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"sMultiplier": 1
 				}
 			]
 		}
 	],
-	"n":3,
-	"e":5,
-	"s":5,
-	"w":5,
-	"subtypeText":"Draconic Mage"
+	"n": 3,
+	"e": 5,
+	"s": 5,
+	"w": 5,
+	"subtypeText": "Draconic Mage"
 }

@@ -1,70 +1,97 @@
 {
-	"cardType":67,
-	"cardName":"Emezene, Who Reads the Breeze",
-	"effText":"When you cast Radial Weather encompassing X Skyknights, including me, search your deck's top X for a card.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Emezene, Who Reads the Breeze",
+	"effText": "When you cast Radial Weather encompassing X Skyknights, including me, search your deck's top X for a card.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"blurb":"Watch for Truth",
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Controller Triggered","Triggerer Now Fits Restriction"],
-					"cardRestriction":{
-						"cardRestrictions":["Friendly","Is Spell","Subtypes Include","Spell Subtypes"],
-						"subtypesInclude":["Weather"],
-                        "spellSubtypes":["Radial"]
+			"triggerData": {
+				"blurb": "Watch for Truth",
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before",
+						"Controller Triggered",
+						"Main Card Fits Restriction After"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Friendly",
+							"Spell",
+							"Subtypes Include",
+							"Spell Subtypes"
+						],
+						"subtypesInclude": [
+							"Weather"
+						],
+						"spellSubtypes": [
+							"Radial"
+						]
 					},
-					"nowRestriction":{
-						"cardRestrictions":["Source in This' AOE"]
+					"nowRestriction": {
+						"cardRestrictions": [
+							"Source in This' AOE"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
-					"whatToCount":"Cards Fitting Restriction",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Board","Subtypes Include","Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["In Target's AOE"],
-							"mustBeEmpty":false
+					"$type": "KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"whatToCount": "Cards Fitting Restriction",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Board",
+							"Subtypes Include",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"In Card Target's AOE"
+							]
 						},
-						"subtypesInclude":["Skyknight"]
+						"subtypesInclude": [
+							"Skyknight"
+						]
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.ChooseFromListSaveRestSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"card for Emezene to read in the breeze",
-						"cardRestrictions":["Friendly","Deck","Index<X"]
+					"$type": "KompasServer.Effects.ChooseFromListSaveRestSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "card for Emezene to read in the breeze",
+						"cardRestrictions": [
+							"Friendly",
+							"Deck",
+							"Index<X"
+						]
 					},
-					"restRestriction":
-					{
-						"cardRestrictions":["Friendly","Deck","Index<X","Not Already Target"]
+					"restRestriction": {
+						"cardRestrictions": [
+							"Friendly",
+							"Deck",
+							"Index<X",
+							"Not Already Target"
+						]
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.BottomdeckRestSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.BottomdeckRestSubeffect, Assembly-CSharp"
 				}
 			]
 		}
 	],
-	"n":1,
-	"e":4,
-	"s":4,
-	"w":4,
-	"unique":true,
-	"subtypeText":"Skyknight Mage"
+	"n": 1,
+	"e": 4,
+	"s": 4,
+	"w": 4,
+	"unique": true,
+	"subtypeText": "Skyknight Mage"
 }

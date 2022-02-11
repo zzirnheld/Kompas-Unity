@@ -1,36 +1,40 @@
 {
-	"cardType":67,
-	"cardName":"Resonator Resonator",
-	"effText":"When turns start, search your deck for \"Sonic Resonator\".",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Resonator Resonator",
+	"effText": "When turns start, search your deck for \"Sonic Resonator\".",
+	"effects": [
 		{
-			"blurb":"Resonate",
-			"triggerData":
-			{
-				"triggerCondition":"Turn Start",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play"]
+			"blurb": "Resonate",
+			"triggerData": {
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"Ready to resonate?",
-						"cardRestrictions":["Friendly","Deck","Name Is"],
-                        "nameIs":"Sonic Resonator"
+					"$type": "KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Ready to resonate?",
+						"cardRestrictions": [
+							"Friendly",
+							"Deck",
+							"Name Is"
+						],
+						"nameIs": "Sonic Resonator"
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
 				}
-			]	
+			]
 		}
 	],
-	"n":1,
-	"e":1,
-	"s":2,
-	"w":2,
-	"subtypeText":"Machine"
+	"n": 1,
+	"e": 1,
+	"s": 2,
+	"w": 2,
+	"subtypeText": "Machine"
 }

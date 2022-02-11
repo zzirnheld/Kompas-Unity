@@ -9,9 +9,9 @@
 			{
 				"triggerCondition":"Discard",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
+					"triggerRestrictions":["This Card in Play","Main Card Fits Restriction Before"],
 					"cardRestriction":{
-						"cardRestrictions":["Board","Negated","Friendly","Is Spell"]
+						"cardRestrictions":["Board","Negated","Friendly","Spell"]
 					}
 				}
 			},

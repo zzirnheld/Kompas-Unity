@@ -16,7 +16,7 @@ namespace KompasServer.Effects
         public string condition;
 
         public CardRestriction cardRestriction = new CardRestriction();
-        public XRestriction xRestriction = new XRestriction();
+        public NumberRestriction xRestriction = new NumberRestriction();
         public int constant;
 
         public override void Initialize(ServerEffect eff, int subeffIndex)

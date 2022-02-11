@@ -1,37 +1,48 @@
 {
-	"cardType":83,
-	"cardName":"Unfinding",
-	"effText":"Hand->discard an Ethereal. Draw 2 cards.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Unfinding",
+	"effText": "Hand->discard an Ethereal. Draw 2 cards.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":{
-						"blurb":"Ethereal for Unfinding to discard",
-						"cardRestrictions":["Friendly","Hand","Subtypes Include"],
-						"subtypesInclude":["Ethereal"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Ethereal for Unfinding to discard",
+						"cardRestrictions": [
+							"Friendly",
+							"Hand",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Ethereal"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
-					"xModifier":2
+					"$type": "KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"xModifier": 2
 				}
-			]	
+			]
 		}
 	],
-	"c":1,
-	"spellTypes":["Simple"],
-	"subtypes":["Simple"],
-	"subtypeText":"Simple"
+	"c": 1,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypes": [
+		"Simple"
+	],
+	"subtypeText": "Simple"
 }

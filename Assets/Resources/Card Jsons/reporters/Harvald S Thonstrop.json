@@ -1,87 +1,102 @@
 {
-	"cardType":67,
-	"cardName":"Harvald S Thonstrop",
-	"effText":"The first time each round an enemy card is revealed, Invoke. Set X to the Invoked character's S. Give the enemy Avatar +X E.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Harvald S Thonstrop",
+	"effText": "The first time each round an enemy card is revealed, Invoke. Set X to the Invoked character's S. Give the enemy Avatar +X E.",
+	"effects": [
 		{
-            "blurb":"I knEW IT",
-			"triggerData":
-			{
-				"triggerCondition":"Revealed",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Max Per Round","Triggerer Fits Restriction"],
-					"cardRestriction":
-					{
-						"cardRestrictions":["Enemy"]
+			"blurb": "I knEW IT",
+			"triggerData": {
+				"triggerCondition": "Revealed",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Max Per Round",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Enemy"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
-					"cardValue":{
-						"value":"S"
+					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "S"
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.MillSubeffect, Assembly-CSharp",
-					"xModifier":1
+					"$type": "KompasServer.Effects.MillSubeffect, Assembly-CSharp",
+					"xModifier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.ConditionalJumpSubeffect, Assembly-CSharp",
-					"condition":"Target Violates Restriction",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Is Character","Card Value Fits X Restriction"],
-						"cardValue":{
-							"value":"S"
+					"$type": "KompasServer.Effects.ConditionalJumpSubeffect, Assembly-CSharp",
+					"condition": "Target Violates Restriction",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Card Value Fits Number Restriction"
+						],
+						"cardValue": {
+							"value": "S"
 						},
-						"xRestriction":{
-							"xRestrictions":["<X"]
+						"cardValueNumberRestriction": {
+							"numberRestrictions": [
+								"<X"
+							]
 						}
 					},
-					"jumpIndices":[2],
-					"xMultiplier":1
+					"jumpIndices": [
+						2
+					],
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":
-					{
-						"blurb":"where to Invoke",
-						"spaceRestrictions":["Can Play Target to This Space"]
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where to Invoke",
+						"spaceRestrictions": [
+							"Can Play Card Target to This Space",
+							"Empty"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
-					"cardValue":{
-						"value":"S"
+					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "S"
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.AutoTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":{
-						"cardRestrictions":["Avatar","Enemy"]
+					"$type": "KompasServer.Effects.AutoTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Avatar",
+							"Enemy"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMult":1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMultiplier": 1
 				}
-			]	
+			]
 		}
 	],
-	"unique":true,
-	"n":3,
-	"e":5,
-	"s":8,
-	"w":5,
-	"subtypeText":"Crazy Intoxicated Reporter Person"
+	"unique": true,
+	"n": 3,
+	"e": 5,
+	"s": 8,
+	"w": 5,
+	"subtypeText": "Crazy Intoxicated Reporter Person"
 }

@@ -1,40 +1,50 @@
 {
-	"cardType":83,
-	"cardName":"Muggyclouds",
-	"effText":"Weather.\nWhen a character arrives here, give them -1 S.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Muggyclouds",
+	"effText": "Weather.\nWhen a character arrives here, give them -1 S.",
+	"effects": [
 		{
-			"blurb":"Dispiriting clouds",
-			"triggerData":
-			{
-				"triggerCondition":"Arrive",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Coords Fit Restriction","Triggerer Fits Restriction"],
-					"cardRestriction":{
-						"cardRestrictions":["Is Character"]
+			"blurb": "Dispiriting clouds",
+			"triggerData": {
+				"triggerCondition": "Arrive",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Space Fits Restriction",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character"
+						]
 					},
-					"spaceRestriction":
-					{
-						"mustBeEmpty":false,
-						"spaceRestrictions":["In AOE"]
+					"spaceRestriction": {
+						"mustBeEmpty": false,
+						"spaceRestrictions": [
+							"In Source's AOE"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"sMod":-1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"sModifier": -1
 				}
-			]	
+			]
 		}
 	],
-	"keywords":["Weather"],
-	"unique":true,
-	"c":1,
-	"spellTypes":["Radial"],
-	"subtypeText":"Weather Radial",
-	"radius":3
+	"keywords": [
+		"Weather"
+	],
+	"unique": true,
+	"c": 1,
+	"spellTypes": [
+		"Radial"
+	],
+	"subtypeText": "Weather Radial",
+	"radius": 3
 }

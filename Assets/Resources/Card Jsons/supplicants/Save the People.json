@@ -1,52 +1,64 @@
 {
-	"cardType":83,
-	"cardName":"Save the People",
-	"effText":"When turns start, shuffle your deck. Then, if your topdeck is a Supplicant, deck-summon it.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Save the People",
+	"effText": "When turns start, shuffle your deck. Then, if your topdeck is a Supplicant, deck-summon it.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Turn Start",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play"]
+			"triggerData": {
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.ShuffleDeckSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.ShuffleDeckSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.AutoTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"for Haemopoten to draw",
-						"cardRestrictions":["Friendly","Deck","Index<C"],
-						"constant":1
+					"$type": "KompasServer.Effects.AutoTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "for Haemopoten to draw",
+						"cardRestrictions": [
+							"Friendly",
+							"Deck",
+							"Index<C"
+						],
+						"constant": 1
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
-					"condition":"Target Violates Restriction",
-					"cardRestriction":{
-						"cardRestrictions":["Subtypes Include"],
-						"subtypesInclude":["Supplicant"]
+					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition": "Target Violates Restriction",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Supplicant"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":
-					{
-						"blurb":"where for Save the People to deck-summon its Supplicant",
-						"spaceRestrictions":["Can Play Target to This Space"]
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where for Save the People to deck-summon its Supplicant",
+						"spaceRestrictions": [
+							"Can Play Card Target to This Space",
+							"Empty"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				}
 			]
 		}
 	],
-	"c":2,
-	"spellTypes":["Enchant"],
-	"subtypeText":"Enchant Plea"
+	"c": 2,
+	"spellTypes": [
+		"Enchant"
+	],
+	"subtypeText": "Enchant Plea"
 }

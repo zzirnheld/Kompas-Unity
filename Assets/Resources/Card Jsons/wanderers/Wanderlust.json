@@ -1,72 +1,93 @@
 {
-	"cardType":83,
-	"cardName":"Wanderlust",
-	"effText":"Choose a friendly Summoned character. Repeat the following any number of times:\nReshuffle the last chosen S X character. Hand->summon an S <= X + 1 character.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Wanderlust",
+	"effText": "Choose a friendly Summoned character. Repeat the following any number of times:\nReshuffle the last chosen S X character. Hand->summon an S <= X + 1 character.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"friendly character to wander",
-						"cardRestrictions":["Is Character","Board","Friendly","Summoned"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "friendly character to wander",
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Friendly",
+							"Summoned"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
-					"cardValue":{
-						"value":"S"
+					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "S"
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"for Wanderlust to hand-summon",
-						"cardRestrictions":["Is Character","Friendly","Hand","Card Value Fits X Restriction"],
-						"cardValue":{
-							"value":"S"
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "for Wanderlust to hand-summon",
+						"cardRestrictions": [
+							"Character",
+							"Friendly",
+							"Hand",
+							"Card Value Fits Number Restriction"
+						],
+						"cardValue": {
+							"value": "S"
 						},
-						"xRestriction":{
-							"xRestrictions":["<=X"]
+						"cardValueNumberRestriction": {
+							"numberRestrictions": [
+								"<=X"
+							]
 						}
 					},
-					"xMultiplier":1,
-					"xModifier":1
+					"xMultiplier": 1,
+					"xModifier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":
-					{
-						"blurb":"where Wanderlust to hand-summon",
-						"spaceRestrictions":["Can Play Target to This Space"]
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where Wanderlust to hand-summon",
+						"spaceRestrictions": [
+							"Can Play Card Target to This Space",
+							"Empty"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
-					"choiceBlurb":"Reshuffle to summon again?",
-					"optionBlurbs":["Yes","No"],
-					"jumpIndices":[1,100]
+					"$type": "KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"choiceBlurb": "Reshuffle to summon again?",
+					"optionBlurbs": [
+						"Yes",
+						"No"
+					],
+					"jumpIndices": [
+						1,
+						100
+					]
 				}
-			]	
+			]
 		}
 	],
-	"c":1,
-	"spellTypes":["Simple"],
-	"subtypeText":"Simple"
+	"c": 1,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypeText": "Simple"
 }

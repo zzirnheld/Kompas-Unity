@@ -1,34 +1,41 @@
 {
-	"cardType":83,
-	"cardName":"Touch of the Divine",
-	"effText":"When a friendly character is negated, give them +2 NESW.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Touch of the Divine",
+	"effText": "When a friendly character is negated, give them +2 NESW.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Negate",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
-					"cardRestriction":{
-						"cardRestrictions":["Friendly","Is Character"]
+			"triggerData": {
+				"triggerCondition": "Negate",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Friendly",
+							"Character"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"nMod":2,
-					"eMod":2,
-					"sMod":2,
-					"wMod":2
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"nModifier": 2,
+					"eModifier": 2,
+					"sModifier": 2,
+					"wModifier": 2
 				}
 			]
 		}
 	],
-	"c":2,
-	"spellTypes":["Enchant"],
-	"subtypeText":"Enchant Plea"
+	"c": 2,
+	"spellTypes": [
+		"Enchant"
+	],
+	"subtypeText": "Enchant Plea"
 }

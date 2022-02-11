@@ -1,0 +1,61 @@
+{
+	"cardType": 67,
+	"cardName": "Cranialrotkin",
+	"effText": "Spores.\nWhen I die, pulse characters adjacent to where I died.",
+	"effects": [
+		{
+			"blurb": "Rot",
+			"triggerData": {
+				"triggerCondition": "Discard",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card",
+						"From Field"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.TargetTriggeringCardsCoordsSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Board",
+							"Character",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Space Target"
+							]
+						}
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.ActivateSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.ActivateSubeffect, Assembly-CSharp",
+					"activate": false
+				},
+				{
+					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete": true,
+					"jumpIndices": [
+						2
+					]
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Spores"
+	],
+	"n": 1,
+	"e": 1,
+	"s": 2,
+	"w": 1,
+	"subtypeText": "Cultist Follower"
+}

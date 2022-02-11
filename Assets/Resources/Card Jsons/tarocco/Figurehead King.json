@@ -1,55 +1,68 @@
 {
-	"cardType":83,
-	"cardName":"Figurehead King",
-	"effText":"Choose a card in your hand, then reshuffle the other X. Gain X pips.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Figurehead King",
+	"effText": "Choose a card in your hand, then reshuffle the other X. Gain X pips.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Friendly","Hand"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Friendly",
+							"Hand"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Friendly","Hand","Not Already Target"]
+					"$type": "KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Friendly",
+							"Hand",
+							"Not Already Target"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp",
-					"targetIndex":0
+					"$type": "KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp",
+					"targetIndex": 0
 				},
 				{
-					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.CountXLoopSubeffect, Assembly-CSharp",
-					"canDecline":false,
-					"jumpIndices":[3]
+					"$type": "KompasServer.Effects.CountXLoopSubeffect, Assembly-CSharp",
+					"canDecline": false,
+					"jumpIndices": [
+						3
+					]
 				},
 				{
-					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
-					"xMultiplier":1
+					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xMultiplier": 1
 				}
 			]
 		}
 	],
-	"c":1,
-	"spellTypes":["Simple"],
-	"subtypes":["Tarocco","Simple"],
-	"subtypeText":"Tarocco Simple"
+	"c": 1,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypes": [
+		"Tarocco",
+		"Simple"
+	],
+	"subtypeText": "Tarocco Simple"
 }

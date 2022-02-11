@@ -1,42 +1,52 @@
 {
-	"cardType":67,
-	"cardName":"XVII - The Star",
-	"effText":"When an enemy character arrives adjacent to a Summoned Tarocco, draw 1 card.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "XVII - The Star",
+	"effText": "When an enemy character arrives adjacent to a Summoned Tarocco, draw 1 card.",
+	"effects": [
 		{
-			"blurb":"[redacted] upon a XVII",
-			"triggerData":
-			{
-				"blurb":"When you [redacted] upon a XVII",
-				"triggerCondition":"Arrive",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
-					"cardRestriction":
-					{
-						"cardRestrictions":["Is Character","Enemy","Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["Adjacent to a Card that Fits Restriction"],
-							"adjacencyRestriction":
-							{
-								"cardRestrictions":["Summoned","Subtypes Include"],
-								"subtypesInclude":["Tarocco"]
+			"blurb": "[redacted] upon a XVII",
+			"triggerData": {
+				"blurb": "When you [redacted] upon a XVII",
+				"triggerCondition": "Arrive",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Enemy",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to a Card that Fits Restriction"
+							],
+							"adjacencyRestriction": {
+								"cardRestrictions": [
+									"Summoned",
+									"Subtypes Include"
+								],
+								"subtypesInclude": [
+									"Tarocco"
+								]
 							},
-							"mustBeEmpty":false
+							"mustBeEmpty": false
 						}
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
 				}
 			]
 		}
 	],
-	"n":1,
-	"e":2,
-	"s":4,
-	"w":6,
-	"subtypeText":"Tarocco Mage"
+	"n": 1,
+	"e": 2,
+	"s": 4,
+	"w": 6,
+	"subtypeText": "Tarocco Mage"
 }

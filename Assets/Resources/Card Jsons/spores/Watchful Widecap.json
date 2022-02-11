@@ -1,0 +1,55 @@
+{
+	"cardType": 67,
+	"cardName": "Watchful Widecap",
+	"effText": "Spores.\nWhen a character is summoned adjacent to me, pulse me.",
+	"effects": [
+		{
+			"blurb": "Watching",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Space Fits Restriction",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character"
+						]
+					},
+					"spaceRestriction": {
+						"spaceRestrictions": [
+							"Adjacent to Source"
+						],
+						"mustBeEmpty": false
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.ActivateSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.ActivateSubeffect, Assembly-CSharp",
+					"activate": false
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Spores"
+	],
+	"n": 1,
+	"e": 2,
+	"s": 3,
+	"w": 2,
+	"subtypes": [
+		"Sensing",
+		"Fungus"
+	],
+	"subtypeText": "Sensing Fungus"
+}

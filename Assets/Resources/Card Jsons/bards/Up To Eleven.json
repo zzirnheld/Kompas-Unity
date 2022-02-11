@@ -1,30 +1,39 @@
 {
-	"cardType":83,
-	"cardName":"Up To Eleven",
-	"effText":"Echo all Music.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Up To Eleven",
+	"effText": "Echo all Music.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.ResummonAllSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Board","Subtypes Include"],
-						"subtypesInclude":["Music"]
+					"$type": "KompasServer.Effects.ResummonAllSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Board",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Music"
+						]
 					}
 				}
-			]	
+			]
 		}
 	],
-	"c":2,
-	"spellTypes":["Simple"],
-	"subtypes":["Simple"],
-	"subtypeText":"Simple"
+	"c": 2,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypes": [
+		"Simple"
+	],
+	"subtypeText": "Simple"
 }

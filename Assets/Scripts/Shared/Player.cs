@@ -28,6 +28,8 @@ public abstract class Player : MonoBehaviour
     //this is not a property so it can be assigned in the inspector for client players
     public int index;
 
+    public bool HandFull => handCtrl.HandSize >= HandSizeLimit;
+
     //friendly
     public DeckController deckCtrl;
     public DiscardController discardCtrl;

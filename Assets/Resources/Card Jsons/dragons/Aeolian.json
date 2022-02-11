@@ -1,48 +1,54 @@
 {
-	"cardType":67,
-	"cardName":"Aeolian",
-	"effText":"Territorial.\nWhen I attack a character, move them X spaces, then give them -X E. (You can move them anywhere.)",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Aeolian",
+	"effText": "Territorial.\nWhen I attack a character, move them X spaces, then give them -X E. (You can move them anywhere.)",
+	"effects": [
 		{
-			"blurb":"Air Breath",
-			"triggerData":
-			{
-				"blurb":"Air Breath",
-				"triggerCondition":"Attack",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"blurb": "Air Breath",
+			"triggerData": {
+				"blurb": "Air Breath",
+				"triggerCondition": "Attack",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetDefenderSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetDefenderSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":{
-						"blurb":"where for Aeolian to move its target",
-						"spaceRestrictions":["Empty","Can Move Target to This Space"]
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where for Aeolian to move its target",
+						"spaceRestrictions": [
+							"Empty",
+							"Can Move Card Target to This Space"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
-					"whatToCount":"Distance Between Target and Target Space",
-					"xMultiplier":1
+					"$type": "KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"whatToCount": "Distance Between Target and Target Space",
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMult":-1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMultiplier": -1
 				}
-			]	
+			]
 		}
 	],
-	"keywords":["Territorial"],
-	"n":5,
-	"e":10,
-	"s":11,
-	"w":11,
-	"subtypeText":"Dragon"
+	"keywords": [
+		"Territorial"
+	],
+	"n": 5,
+	"e": 10,
+	"s": 11,
+	"w": 11,
+	"subtypeText": "Dragon"
 }

@@ -1,37 +1,43 @@
 {
-	"cardType":67,
-	"cardName":"Flippant Emo Daughter",
-	"effText":"When you play a Crazy Idea, give me +2 ESW.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Flippant Emo Daughter",
+	"effText": "When you play a Crazy Idea, give me +2 ESW.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Controller Triggered"],
-					"cardRestriction":
-					{
-						"cardRestrictions":["Subtypes Include"],
-						"subtypesInclude":["Crazy Idea"]
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before",
+						"Controller Triggered"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Crazy Idea"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMod":2,
-					"sMod":2,
-					"wMod":2
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eModifier": 2,
+					"sModifier": 2,
+					"wModifier": 2
 				}
-			]	
+			]
 		}
 	],
-	"n":3,
-	"e":1,
-	"s":3,
-	"w":1,
-	"subtypeText":"Crazy Emo"
+	"n": 3,
+	"e": 1,
+	"s": 3,
+	"w": 1,
+	"subtypeText": "Crazy Emo"
 }

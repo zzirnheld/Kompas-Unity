@@ -1,92 +1,114 @@
 {
-	"cardType":83,
-	"cardName":"Coalescing Stardust",
-	"effText":"When your Avatar gets +X or -X S, give me matching +X or -X C.\nAfter I'm cast, delay 2 turns.\nSet X to my C. Deck->summon an S <= X Pulsar.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Coalescing Stardust",
+	"effText": "When your Avatar gets +X or -X S, give me matching +X or -X C.\nAfter I'm cast, delay 2 turns.\nSet X to my C. Deck->summon an S <= X Pulsar.",
+	"effects": [
 		{
-			"blurb":"Coalesce +C",
-			"triggerData":
-			{
-				"blurb":"Coalesce +C",
-				"triggerCondition":"S Change",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","This Card in Play"],
-					"cardRestriction":
-					{
-						"cardRestrictions":["Board","Avatar","Friendly"]
+			"blurb": "Coalesce +C",
+			"triggerData": {
+				"blurb": "Coalesce +C",
+				"triggerCondition": "S Change",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before",
+						"This Card in Play"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Board",
+							"Avatar",
+							"Friendly"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"cMult":1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"cMultiplier": 1
 				}
 			]
 		},
 		{
-			"blurb":"Coalesce Summon",
-			"triggerData":
-			{
-				"blurb":"Coalesce Summon",
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"blurb": "Coalesce Summon",
+			"triggerData": {
+				"blurb": "Coalesce Summon",
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
-					"numTimesToDelay":1,
-					"jumpIndices":[1],
-					"endCondition":"Turn Start"
+					"$type": "KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"numTimesToDelay": 1,
+					"jumpIndices": [
+						1
+					],
+					"endCondition": "Turn Start"
 				},
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
-					"cardValue":{
-						"value":"C"
+					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "C"
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
-					"maxCanChoose":1,
-					"cardRestriction":
-					{
-						"blurb":"Pulsar to coalesce",
-						"cardRestrictions":["Subtypes Include","Friendly","Deck","Is Character","Card Value Fits X Restriction"],
-						"cardValue":{
-							"value":"S"
+					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"maxCanChoose": 1,
+					"cardRestriction": {
+						"blurb": "Pulsar to coalesce",
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Friendly",
+							"Deck",
+							"Character",
+							"Card Value Fits Number Restriction"
+						],
+						"cardValue": {
+							"value": "S"
 						},
-						"xRestriction":{
-							"xRestrictions":["<=X"]
+						"xRestriction": {
+							"numberRestrictions": [
+								"<=X"
+							]
 						},
-						"subtypesInclude":["Pulsar"]
+						"subtypesInclude": [
+							"Pulsar"
+						]
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":
-					{
-						"blurb":"where to play newly coalesced Pulsar",
-						"spaceRestrictions":["Can Play Target to This Space"]
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where to play newly coalesced Pulsar",
+						"spaceRestrictions": [
+							"Can Play Card Target to This Space",
+							"Empty"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				}
 			]
 		}
 	],
-	"c":1,
-	"spellTypes":["Delayed"],
-	"subtypeText":"Delayed",
-	"duration":2
+	"c": 1,
+	"spellTypes": [
+		"Delayed"
+	],
+	"subtypeText": "Delayed",
+	"duration": 2
 }

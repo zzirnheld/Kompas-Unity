@@ -17,15 +17,15 @@
 					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Is Character","Board","Subtypes Include","Space Fits Restriction"],
+						"cardRestrictions":["Character","Board","Subtypes Include","Space Fits Restriction"],
 						"spaceRestriction":
 						{
-							"spaceRestrictions":["In AOE"],
+							"spaceRestrictions":["In Source's AOE"],
 							"mustBeEmpty":false
 						},
 						"subtypesInclude":["Supplicant"]
 					},
-					"eMod":1
+					"eModifier":1
 				}
 			]	
 		},

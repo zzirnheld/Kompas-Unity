@@ -1,34 +1,42 @@
 {
-	"cardType":83,
-	"cardName":"Getcha Getcha Getcha",
-	"effText":"Comeback Play.\nWhen a friendly character is augmented, give them +1 N.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Getcha Getcha Getcha",
+	"effText": "Comeback Play.\nWhen a friendly character is augmented, give them +1 N.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"blurb":"Getcha Getcha Getcha",
-				"triggerCondition":"Augmented",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
-					"cardRestriction":{
-						"cardRestrictions":["Friendly"]
+			"triggerData": {
+				"blurb": "Getcha Getcha Getcha",
+				"triggerCondition": "Augmented",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Friendly"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"nMod":1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"nModifier": 1
 				}
 			]
 		}
 	],
-	"keywords":["Comeback Play"],
-	"c":1,
-	"spellTypes":["Vanishing"],
-	"duration":1,
-	"subtypeText":"Team Play Vanishing"
+	"keywords": [
+		"Comeback Play"
+	],
+	"c": 1,
+	"spellTypes": [
+		"Vanishing"
+	],
+	"duration": 1,
+	"subtypeText": "Team Play Vanishing"
 }

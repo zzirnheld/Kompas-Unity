@@ -9,7 +9,7 @@
 			{
 				"triggerCondition":"Augment Attached",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered","Secondary Card Fits Restriction"],
+					"triggerRestrictions":["This Card is Main Card","Secondary Card Fits Restriction Before"],
 					"cardRestriction":
 					{
 						"cardRestrictions":["Subtypes Include"],
@@ -22,11 +22,11 @@
 					"$type":"KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.TemporaryNESWBuffSubeffect, Assembly-CSharp",
+					"$type":"KompasServer.Effects.TemporaryCardStatChangeSubeffect, Assembly-CSharp",
 					"eModifier":6,
 					"endCondition":"Augment Detached",
 					"triggerRestriction":{
-						"triggerRestrictions":["This Card Triggered"]
+						"triggerRestrictions":["This Card is Main Card"]
 					}
 				}
 			]

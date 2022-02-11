@@ -1,52 +1,62 @@
 {
-	"cardType":67,
-	"cardName":"The Mystical Medical Doc",
-	"effText":"When a character moves, dispel a friendly spell, discard 1 card, and draw 1 card.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "The Mystical Medical Doc",
+	"effText": "When a character moves, dispel a friendly spell, discard 1 card, and draw 1 card.",
+	"effects": [
 		{
-			"blurb":"At the pinnacle",
-			"triggerData":
-			{
-				"triggerCondition":"Move",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
-					"cardRestriction":{
-						"cardRestrictions":["Is Character"]
+			"blurb": "At the pinnacle",
+			"triggerData": {
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"shifting my",
-						"cardRestrictions":["Is Spell","Friendly","Board"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "shifting my",
+						"cardRestrictions": [
+							"Spell",
+							"Friendly",
+							"Board"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.DispelSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DispelSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":{
-						"blurb":"physical form",
-						"cardRestrictions":["Friendly","Hand"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "physical form",
+						"cardRestrictions": [
+							"Friendly",
+							"Hand"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
 				}
-			]	
+			]
 		}
 	],
-	"n":3,
-	"e":5,
-	"s":6,
-	"w":5,
-	"unique":true,
-	"subtypeText":"Crazy Bard"
+	"n": 3,
+	"e": 5,
+	"s": 6,
+	"w": 5,
+	"unique": true,
+	"subtypeText": "Crazy Bard"
 }

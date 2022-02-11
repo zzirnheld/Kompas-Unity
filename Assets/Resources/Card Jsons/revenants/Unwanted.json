@@ -1,39 +1,52 @@
 {
-	"cardType":67,
-	"cardName":"Unwanted",
-	"effText":"Revenant.\nWhen I'm summoned, discard a Revenant and draw 1.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Unwanted",
+	"effText": "Revenant.\nWhen I'm summoned, discard a Revenant and draw 1.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":{
-						"blurb":"for Unwanted to discard",
-						"cardRestrictions":["Friendly","Hand","Subtypes Include"],
-						"subtypesInclude":["Revenant"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "for Unwanted to discard",
+						"cardRestrictions": [
+							"Friendly",
+							"Hand",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Revenant"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
 				}
-			]	
+			]
 		}
 	],
-	"keywords":["Revenant Die","Revenant Revive"],
-	"n":0,
-	"e":3,
-	"s":6,
-	"w":3,
-	"subtypes":["Ethereal","Revenant"],
-	"subtypeText":"Ethereal Revenant"
+	"keywords": [
+		"Revenant Die",
+		"Revenant Revive"
+	],
+	"n": 0,
+	"e": 3,
+	"s": 6,
+	"w": 3,
+	"subtypes": [
+		"Ethereal",
+		"Revenant"
+	],
+	"subtypeText": "Ethereal Revenant"
 }

@@ -106,7 +106,7 @@ namespace KompasCore.Cards
 
         public override bool Summoned
         {
-            get => CardType != 'C' || Location == CardLocation.Field;
+            get => CardType != 'C' || Location == CardLocation.Board;
             protected set
             {
                 throw new NotImplementedException($"Tried to set summoned on list of actual GameCard {this}");
@@ -114,8 +114,6 @@ namespace KompasCore.Cards
         }
         public virtual bool CanRemove => true;
         public virtual int CombatDamage => W;
-        public (int n, int e, int s, int w) CharStats => (N, E, S, W);
-        public (int n, int e, int s, int w, int c, int a) Stats => (N, E, S, W, C, A);
         #endregion stats
 
         #region positioning
@@ -315,7 +313,7 @@ namespace KompasCore.Cards
 
             SetSpacesMoved(0, true);
             SetAttacksThisTurn(0, true);
-            if (Location == CardLocation.Field) TurnsOnBoard++;
+            if (Location == CardLocation.Board) TurnsOnBoard++;
         }
 
         public void ResetForStack()
@@ -341,8 +339,8 @@ namespace KompasCore.Cards
             //can't add a null augment
             if (augment == null) 
                 throw new NullAugmentException(stackSrc, this, "Can't add a null augment");
-            if (Location != CardLocation.Field) 
-                throw new CardNotHereException(CardLocation.Field, this, "Can't put an augment on a card not in play!");
+            if (Location != CardLocation.Board) 
+                throw new CardNotHereException(CardLocation.Board, this, "Can't put an augment on a card not in play!");
 
             augment.Remove(stackSrc);
 
@@ -397,7 +395,7 @@ namespace KompasCore.Cards
         /// Shorthand for modifying a card's stats all at once.
         /// On the server, this only notifies the clients of stat changes once.
         /// </summary>
-        public virtual void SetStats((int n, int e, int s, int w, int c, int a) stats, IStackable stackSrc = null)
+        public virtual void SetStats(CardStats stats, IStackable stackSrc = null)
         {
             SetN(stats.n, stackSrc, notify: false);
             SetE(stats.e, stackSrc, notify: false);
@@ -411,8 +409,8 @@ namespace KompasCore.Cards
         /// Shorthand for modifying a card's stats all at once.
         /// On the server, this only notifies the clients of stat changes once.
         /// </summary>
-        public void AddToStats((int n, int e, int s, int w, int c, int a) stats, IStackable stackSrc = null)
-            => SetStats((N + stats.n, E + stats.e, S + stats.s, W + stats.w, C + stats.c, A + stats.a), stackSrc);
+        public void AddToStats(CardStats buff, IStackable stackSrc = null)
+            => SetStats(Stats + buff, stackSrc);
 
         public void SwapCharStats(GameCard other, bool swapN = true, bool swapE = true, bool swapS = true, bool swapW = true)
         {

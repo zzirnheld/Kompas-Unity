@@ -1,40 +1,51 @@
 {
-	"cardType":83,
-	"cardName":"Figurehead Jack",
-	"effText":"Draw 1 card, hand-bottomdeck a Tarocco, and draw another card.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Figurehead Jack",
+	"effText": "Draw 1 card, hand-bottomdeck a Tarocco, and draw another card.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"for Jack to hand-bottomdeck",
-						"cardRestrictions":["Friendly","Hand","Subtypes Include"],
-						"subtypesInclude":["Tarocco"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "for Jack to hand-bottomdeck",
+						"cardRestrictions": [
+							"Friendly",
+							"Hand",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Tarocco"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.BottomdeckSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.BottomdeckSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
 				}
-			]	
+			]
 		}
 	],
-	"c":1,
-	"spellTypes":["Simple"],
-	"subtypes":["Tarocco","Simple"],
-	"subtypeText":"Tarocco Simple"
+	"c": 1,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypes": [
+		"Tarocco",
+		"Simple"
+	],
+	"subtypeText": "Tarocco Simple"
 }

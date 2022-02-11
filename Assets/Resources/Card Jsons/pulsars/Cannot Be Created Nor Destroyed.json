@@ -1,67 +1,85 @@
 {
-	"cardType":83,
-	"cardName":"Cannot Be Created Nor Destroyed",
-	"effText":"When turns start, discard->reshuffle all X friendly Pulsars, give your Avatar +-X S, and draw 1 card.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Cannot Be Created Nor Destroyed",
+	"effText": "When turns start, discard->reshuffle all X friendly Pulsars, give your Avatar +-X S, and draw 1 card.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"blurb":"Repurpose Starstuff",
-				"triggerCondition":"Turn Start",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play"]
+			"triggerData": {
+				"blurb": "Repurpose Starstuff",
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Friendly","Discard","Subtypes Include"],
-						"subtypesInclude":["Pulsar"]
+					"$type": "KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Friendly",
+							"Discard",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Pulsar"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.CountXLoopSubeffect, Assembly-CSharp",
-					"canDecline":false,
-					"jumpIndices":[1]
+					"$type": "KompasServer.Effects.CountXLoopSubeffect, Assembly-CSharp",
+					"canDecline": false,
+					"jumpIndices": [
+						1
+					]
 				},
 				{
-					"$type":"KompasServer.Effects.TargetAvatarSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetAvatarSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
-					"choiceBlurb":"Give +X S or -X S?",
-					"optionBlurbs":["+X S","-X S"],
-					"jumpIndices":[6,8],
-					"hasDefault":false
+					"$type": "KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"choiceBlurb": "Give +X S or -X S?",
+					"optionBlurbs": [
+						"+X S",
+						"-X S"
+					],
+					"jumpIndices": [
+						6,
+						8
+					],
+					"hasDefault": false
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"sMult":1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"sMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.JumpSubeffect, Assembly-CSharp",
-					"jumpIndices":[9]
+					"$type": "KompasServer.Effects.JumpSubeffect, Assembly-CSharp",
+					"jumpIndices": [
+						9
+					]
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"sMult":-1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"sMultiplier": -1
 				},
 				{
-					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
 				}
-			]	
+			]
 		}
 	],
-	"c":1,
-	"unique":true,
-	"spellTypes":["Enchant"],
-	"subtypeText":"Enchant"
+	"c": 1,
+	"unique": true,
+	"spellTypes": [
+		"Enchant"
+	],
+	"subtypeText": "Enchant"
 }

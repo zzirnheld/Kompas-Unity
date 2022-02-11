@@ -1,47 +1,59 @@
 {
-	"cardType":83,
-	"cardName":"Soulflare",
-	"effText":"Hand->annihilate X Revenants. Draw X. Gain X pips.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Soulflare",
+	"effText": "Hand->annihilate X Revenants. Draw X. Gain X pips.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"for Soulflare to annihilate",
-						"cardRestrictions":["Friendly","Hand","Subtypes Include"],
-						"subtypesInclude":["Revenant"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "for Soulflare to annihilate",
+						"cardRestrictions": [
+							"Friendly",
+							"Hand",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Revenant"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.CountXLoopSubeffect, Assembly-CSharp",
-					"canDecline":true,
-					"jumpIndices":[0]
+					"$type": "KompasServer.Effects.CountXLoopSubeffect, Assembly-CSharp",
+					"canDecline": true,
+					"jumpIndices": [
+						0
+					]
 				},
 				{
-					"$type":"KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
-					"xMultiplier":1
+					"$type": "KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
-					"xMultiplier":1
+					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xMultiplier": 1
 				}
-			]	
+			]
 		}
 	],
-	"c":3,
-	"spellTypes":["Simple"],
-	"subtypes":["Simple"],
-	"subtypeText":"Simple"
+	"c": 3,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypes": [
+		"Simple"
+	],
+	"subtypeText": "Simple"
 }

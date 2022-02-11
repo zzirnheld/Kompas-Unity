@@ -1,38 +1,41 @@
 {
-	"cardType":67,
-	"cardName":"Cultist of the Silent",
-	"effText":"When I die, discard->reshuffle me.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Cultist of the Silent",
+	"effText": "When I die, discard->reshuffle me.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"blurb":"Reshuffle",
-				"triggerCondition":"Discard",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered","From Field"]
+			"triggerData": {
+				"blurb": "Reshuffle",
+				"triggerCondition": "Discard",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card",
+						"From Field"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
-					"condition":"Target Violates Restriction",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Discard"]
+					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition": "Target Violates Restriction",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Discard"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
 				}
 			]
 		}
 	],
-	"n":1,
-	"e":1,
-	"s":1,
-	"w":1,
-	"subtypeText":"Cultist Follower"
+	"n": 1,
+	"e": 1,
+	"s": 1,
+	"w": 1,
+	"subtypeText": "Cultist Follower"
 }

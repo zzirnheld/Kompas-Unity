@@ -1,59 +1,81 @@
 {
-	"cardType":83,
-	"cardName":"One Step Ahead",
-	"effText":"When I'm cast, choose a Mech in your deck. Delay 1 turn, then delay until a friendly Mech dies. Deck->hand the chosen Mech, and repeat this process.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "One Step Ahead",
+	"effText": "When I'm cast, choose a Mech in your deck. Delay 1 turn, then delay until a friendly Mech dies. Deck->hand the chosen Mech, and repeat this process.",
+	"effects": [
 		{
-			"blurb":"Always thinking",
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"blurb": "Always thinking",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"Mech plan",
-						"cardRestrictions":["Is Character","Friendly","Deck","Subtypes Include"],
-						"subtypesInclude":["Mech"]
+					"$type": "KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Mech plan",
+						"cardRestrictions": [
+							"Character",
+							"Friendly",
+							"Deck",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Mech"
+						]
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
-					"numTimesToDelay":0,
-					"jumpIndices":[2],
-					"endCondition":"Turn Start"
+					"$type": "KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"numTimesToDelay": 0,
+					"jumpIndices": [
+						2
+					],
+					"endCondition": "Turn Start"
 				},
 				{
-					"$type":"KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
-					"numTimesToDelay":0,
-					"jumpIndices":[3],
-					"endCondition":"Discard",
-					"triggerRestriction":{
-						"triggerRestrictions":["Triggerer Fits Restriction"],
-						"cardRestriction":
-						{
-							"cardRestrictions":["Subtypes Include","Board","Friendly"],
-							"subtypesInclude":["Mech"]
+					"$type": "KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"numTimesToDelay": 0,
+					"jumpIndices": [
+						3
+					],
+					"endCondition": "Discard",
+					"triggerRestriction": {
+						"triggerRestrictions": [
+							"Main Card Fits Restriction Before"
+						],
+						"cardRestriction": {
+							"cardRestrictions": [
+								"Subtypes Include",
+								"Board",
+								"Friendly"
+							],
+							"subtypesInclude": [
+								"Mech"
+							]
 						}
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.JumpSubeffect, Assembly-CSharp",
-					"jumpIndices":[0]
+					"$type": "KompasServer.Effects.JumpSubeffect, Assembly-CSharp",
+					"jumpIndices": [
+						0
+					]
 				}
-			]	
+			]
 		}
 	],
-	"c":1,
-	"spellTypes":["Enchant"],
-	"subtypeText":"Enchant"
+	"c": 1,
+	"spellTypes": [
+		"Enchant"
+	],
+	"subtypeText": "Enchant"
 }

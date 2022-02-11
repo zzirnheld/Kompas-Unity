@@ -1,45 +1,58 @@
 {
-	"cardType":65,
-	"cardName":"Sportyball",
-	"effText":"Pass Back.\nThe first two times each turn a character arrives adjacent to me, attach me to them.",
-	"effects":[
+	"cardType": 65,
+	"cardName": "Sportyball",
+	"effText": "Pass Back.\nThe first two times each turn a character arrives adjacent to me, attach me to them.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"blurb":"Catch!",
-				"triggerCondition":"Arrive",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Max Per Turn","Coords Fit Restriction","Triggerer Fits Restriction"],
-					"maxTimesPerTurn":2,
-					"cardRestriction":
-					{
-						"cardRestrictions":["Is Character","Different from Augmented Card"]
+			"triggerData": {
+				"blurb": "Catch!",
+				"triggerCondition": "Arrive",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Max Per Turn",
+						"Space Fits Restriction",
+						"Main Card Fits Restriction Before"
+					],
+					"maxTimesPerTurn": 2,
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Different from Augmented Card"
+						]
 					},
-					"spaceRestriction":
-					{
-						"spaceRestrictions":["Adjacent to Source"],
-						"mustBeEmpty":false
+					"spaceRestriction": {
+						"spaceRestrictions": [
+							"Adjacent to Source"
+						],
+						"mustBeEmpty": false
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.AttachSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.AttachSubeffect, Assembly-CSharp"
 				}
 			]
 		}
 	],
-	"keywords":["Pass Back"],
-	"PlayRestriction":{
-		"normalRestrictions":["Augment Normal Restrictions"],
-		"effectRestrictions":["Augment Effect Restrictions"]
+	"keywords": [
+		"Pass Back"
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Augment Normal Restrictions"
+		],
+		"effectRestrictions": [
+			"Augment Effect Restrictions"
+		]
 	},
-	"a":1,
-	"subtypeText":"Sportsball"
+	"a": 1,
+	"subtypeText": "Sportsball"
 }

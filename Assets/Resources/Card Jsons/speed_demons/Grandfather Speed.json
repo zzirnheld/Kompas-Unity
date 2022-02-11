@@ -1,37 +1,43 @@
 {
-	"cardType":67,
-	"cardName":"Grandfather Speed",
-	"effText":"Geminii.\nWhen I'm summoned, deck->hand \"Ready!\"",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Grandfather Speed",
+	"effText": "Geminii.\nWhen I'm summoned, deck->hand \"Ready!\"",
+	"effects": [
 		{
-			"blurb":"Ready?",
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"blurb": "Ready?",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"Ready for Set to search",
-						"cardRestrictions":["Friendly","Deck","Name Is"],
-                        "nameIs":"Ready"
+					"$type": "KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Ready for Set to search",
+						"cardRestrictions": [
+							"Friendly",
+							"Deck",
+							"Name Is"
+						],
+						"nameIs": "Ready"
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
 				}
-			]	
+			]
 		}
 	],
-	"keywords":["Geminii"],
-	"n":1,
-	"e":5,
-	"s":2,
-	"w":0,
-	"subtypeText":"Geminii Machine"
+	"keywords": [
+		"Geminii"
+	],
+	"n": 1,
+	"e": 5,
+	"s": 2,
+	"w": 0,
+	"subtypeText": "Geminii Machine"
 }

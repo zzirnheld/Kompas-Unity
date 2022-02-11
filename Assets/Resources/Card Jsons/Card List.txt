@@ -4,6 +4,8 @@ generic/Lonely Titan
 generic/Flighty Survivor
 generic/Volatile Autocannon
 generic/Spellbombsetter
+generic/Lifetide
+generic/Warlock
 aquatic/Big Tuna
 aquatic/Changing Tides
 aquatic/Fishing
@@ -89,6 +91,7 @@ cultists/Silent Conversion
 cultists/Silent Devotion
 cultists/Silent Fanatic
 cultists/Silent Recruiter
+cultists/Silent Ritualist
 cultists/Unwavering Devotion
 cultists/We Are Yet Unworthy
 cultists/Zealous Convert
@@ -353,6 +356,28 @@ spirits/Overwhelming Anger
 spirits/Spiritual Advice
 spirits/Unfocusing Annoyance
 spirits/Whirlwind of Emotions
+spores/Mockish Rotbloom
+spores/Delirious Sparkbloom
+spores/Lax Toadstool
+spores/Calming Puffcap
+spores/Soothing Roundcap
+spores/Startled Stinkhorn
+spores/Watchful Widecap
+spores/Mobile Mycelium
+spores/Toxic Mycelium
+spores/Energizing Lichen
+spores/Stimulating Moss
+spores/Fungal Networking
+spores/Nutrient Drip
+spores/Fungal Mutation
+spores/Fungal Recomposition
+spores/Scavenging Ooze
+spores/Canker Boll
+spores/Cranialrotkin
+spores/Ecstatizing Sporeslip
+spores/Fungibility
+spores/Spores
+spores/Sporeling
 sportsball/Arbiterary
 sportsball/Forward Dunker
 sportsball/Inside Goalie Defender

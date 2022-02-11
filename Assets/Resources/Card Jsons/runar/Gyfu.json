@@ -1,47 +1,61 @@
 {
-	"cardType":83,
-	"cardName":"Gyfu",
-	"effText":"Runic.\nGive X enemy characters +1 EW. Gain X pips.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Gyfu",
+	"effText": "Runic.\nGive X enemy characters +1 EW. Gain X pips.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"for Gyfu to give +1 EW",
-						"cardRestrictions":["Is Character","Enemy","Board","Not Already Target"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "for Gyfu to give +1 EW",
+						"cardRestrictions": [
+							"Character",
+							"Enemy",
+							"Board",
+							"Not Already Target"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMod":1,
-					"wMod":1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eModifier": 1,
+					"wModifier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.CountXLoopSubeffect, Assembly-CSharp",
-					"canDecline":true,
-					"jumpIndices":[0]
+					"$type": "KompasServer.Effects.CountXLoopSubeffect, Assembly-CSharp",
+					"canDecline": true,
+					"jumpIndices": [
+						0
+					]
 				},
 				{
-					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
-					"xMultiplier":1
+					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xMultiplier": 1
 				}
-			]	
+			]
 		}
 	],
-	"PlayRestriction":{
-		"normalRestrictions":["Cannot be Played Normally"]
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Cannot be Played Normally"
+		]
 	},
-	"c":1,
-	"spellTypes":["Simple"],
-	"subtypes":["Rune","Simple"],
-	"subtypeText":"Rune Simple"
+	"c": 1,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypes": [
+		"Rune",
+		"Simple"
+	],
+	"subtypeText": "Rune Simple"
 }

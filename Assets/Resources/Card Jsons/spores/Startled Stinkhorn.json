@@ -1,0 +1,64 @@
+{
+	"cardType": 67,
+	"cardName": "Startled Stinkhorn",
+	"effText": "Spores.\nWhen an enemy character moves adjacent to a Fungus, pulse me.",
+	"effects": [
+		{
+			"blurb": "Startlement",
+			"triggerData": {
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Space Fits Restriction",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Enemy"
+						]
+					},
+					"spaceRestriction": {
+						"spaceRestrictions": [
+							"Adjacent to a Card that Fits Restriction"
+						],
+						"adjacencyRestriction": {
+							"cardRestrictions": [
+								"Subtypes Include"
+							],
+							"subtypesInclude": [
+								"Fungus"
+							]
+						},
+						"mustBeEmpty": false
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.ActivateSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.ActivateSubeffect, Assembly-CSharp",
+					"activate": false
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Spores"
+	],
+	"n": 1,
+	"e": 3,
+	"s": 3,
+	"w": 0,
+	"subtypes": [
+		"Sensing",
+		"Fungus"
+	],
+	"subtypeText": "Sensing Fungus"
+}

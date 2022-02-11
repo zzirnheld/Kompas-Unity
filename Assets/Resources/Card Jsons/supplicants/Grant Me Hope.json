@@ -9,7 +9,7 @@
 				"blurb":"Grant Hope",
 				"triggerCondition":"Negate",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+					"triggerRestrictions":["This Card is Main Card"]
 				}
 			},
 			"subeffects":[
@@ -18,9 +18,9 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMod":1,
-					"sMod":1,
-					"wMod":1
+					"eModifier":1,
+					"sModifier":1,
+					"wModifier":1
 				},
 				{
 					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
@@ -33,10 +33,10 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"nMod":2,
-					"eMod":2,
-					"sMod":2,
-					"wMod":2
+					"nModifier":2,
+					"eModifier":2,
+					"sModifier":2,
+					"wModifier":2
 				}
 			]
 		}

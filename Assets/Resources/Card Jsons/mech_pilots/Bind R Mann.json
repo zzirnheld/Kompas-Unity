@@ -1,36 +1,36 @@
 {
-	"cardType":67,
-	"cardName":"Bind R Mann",
-	"effText":"During your turn, I can Pilot a Mech, and give it +2 S.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Bind R Mann",
+	"effText": "During your turn, I can Pilot a Mech, and give it +2 S.",
+	"effects": [
 		{
-			"blurb":"Careful Piloting",
-			"activationRestriction":{
-				"activationRestrictionArray":[
+			"blurb": "Careful Piloting",
+			"activationRestriction": {
+				"activationRestrictionArray": [
 					"Friendly Turn",
 					"Default"
 				]
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.KeywordSubeffect, Assembly-CSharp",
-                    "keyword":"Mech Pilot Summon"
+					"$type": "KompasServer.Effects.KeywordSubeffect, Assembly-CSharp",
+					"keyword": "Mech Pilot Summon"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"sMod":2
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"sModifier": 2
 				},
 				{
-					"$type":"KompasServer.Effects.KeywordSubeffect, Assembly-CSharp",
-                    "keyword":"Mech Pilot Return"
+					"$type": "KompasServer.Effects.KeywordSubeffect, Assembly-CSharp",
+					"keyword": "Mech Pilot Return"
 				}
 			]
 		}
 	],
-    "unique":true,
-	"n":2,
-	"e":4,
-	"s":5,
-	"w":4,
-	"subtypeText":"Mech Pilot Person"
+	"unique": true,
+	"n": 2,
+	"e": 4,
+	"s": 5,
+	"w": 4,
+	"subtypeText": "Mech Pilot Person"
 }

@@ -5,13 +5,13 @@
 		"blurb":"Comeback Play",
 		"triggerCondition":"Turn Start",
 		"triggerRestriction":{
-			"triggerRestrictions":["Friendly Turn","This Card Fits Restriction","Card Exists"],
+			"triggerRestrictions":["Friendly Turn","This Card Fits Restriction Now","Card Exists Now"],
 			"cardRestriction":{
 				"cardRestrictions":["Discard"]
 			},
 			"existsRestriction":
 			{
-				"cardRestrictions":["Friendly","Board","Is Augment","Subtypes Include"],
+				"cardRestrictions":["Friendly","Board","Augment","Subtypes Include"],
 				"subtypesInclude":["Sportsball"]
 			}
 		}
@@ -25,7 +25,7 @@
 			"spaceRestriction":
 			{
 				"blurb":"where to make a Comeback Play",
-				"spaceRestrictions":["Can Play Target to This Space"]
+				"spaceRestrictions":["Can Play Card Target to This Space"]
 			}
 		},
 		{

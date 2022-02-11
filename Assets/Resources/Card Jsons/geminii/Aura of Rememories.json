@@ -8,13 +8,13 @@
 			{
 				"triggerCondition":"Play",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Controller Triggered","Triggerer Fits Restriction"],
+					"triggerRestrictions":["This Card in Play","Controller Triggered","Main Card Fits Restriction Before"],
 					"cardRestriction":
 					{
-						"cardRestrictions":["Is Character","Board","Space Fits Restriction"],
+						"cardRestrictions":["Character","Board","Space Fits Restriction"],
 						"spaceRestriction":
 						{
-							"spaceRestrictions":["In AOE"],
+							"spaceRestrictions":["In Source's AOE"],
 							"mustBeEmpty":false
 						}
 					}
@@ -26,8 +26,8 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMod":1,
-					"wMod":1
+					"eModifier":1,
+					"wModifier":1
 				}
 			]
 		}

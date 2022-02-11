@@ -1,51 +1,63 @@
 {
-	"cardType":67,
-	"cardName":"Maya, Mistress of Reality",
-	"effText":"Shape.\nWhen a friendly Shaper moves X spaces, discard 1 card, deal me X damage, and draw X cards.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Maya, Mistress of Reality",
+	"effText": "Shape.\nWhen a friendly Shaper moves X spaces, discard 1 card, deal me X damage, and draw X cards.",
+	"effects": [
 		{
-			"blurb":"Discard Draw",
-			"triggerData":
-			{
-				"triggerCondition":"Move",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
-					"cardRestriction":{
-						"cardRestrictions":["Subtypes Include","Friendly"],
-						"subtypesInclude":["Shaper"]
+			"blurb": "Discard Draw",
+			"triggerData": {
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Friendly"
+						],
+						"subtypesInclude": [
+							"Shaper"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":{
-						"blurb":"for Maya to discard",
-						"cardRestrictions":["Friendly","Hand"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "for Maya to discard",
+						"cardRestrictions": [
+							"Friendly",
+							"Hand"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DamageSubeffect, Assembly-CSharp",
-					"xMultiplier":1
+					"$type": "KompasServer.Effects.DamageSubeffect, Assembly-CSharp",
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
-					"xMultiplier":1
+					"$type": "KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"xMultiplier": 1
 				}
-			]	
+			]
 		}
 	],
-	"keywords":["Shape"],
-	"n":1,
-	"e":7,
-	"s":5,
-	"w":3,
-	"unique":true,
-	"subtypeText":"Ethereal Shaper Mage"
+	"keywords": [
+		"Shape"
+	],
+	"n": 1,
+	"e": 7,
+	"s": 5,
+	"w": 3,
+	"unique": true,
+	"subtypeText": "Ethereal Shaper Mage"
 }

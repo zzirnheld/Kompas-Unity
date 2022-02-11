@@ -1,46 +1,55 @@
 {
-	"cardType":67,
-	"cardName":"Dreamspace",
-	"effText":"When I'm summoned, deck-summon a copy of me.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Dreamspace",
+	"effText": "When I'm summoned, deck-summon a copy of me.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
-					"cardRestriction":{
-						"blurb":"copy of Dreamspace to decksummon",
-						"cardRestrictions":["Friendly","Same Name as Target","Deck"]
+					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "copy of Dreamspace to decksummon",
+						"cardRestrictions": [
+							"Friendly",
+							"Same Name as Target",
+							"Deck"
+						]
 					},
-					"maxCanChoose":1
+					"maxCanChoose": 1
 				},
 				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":
-					{
-						"blurb":"where for Dreamspace to decksummon a copy of itself",
-						"spaceRestrictions":["Can Play Target to This Space"]
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where for Dreamspace to decksummon a copy of itself",
+						"spaceRestrictions": [
+							"Can Play Card Target to This Space",
+							"Empty"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				}
-			]	
+			]
 		}
 	],
-	"n":0,
-	"e":1,
-	"s":4,
-	"w":0,
-	"subtypes":["Ethereal"],
-	"subtypeText":"Ethereal"
+	"n": 0,
+	"e": 1,
+	"s": 4,
+	"w": 0,
+	"subtypes": [
+		"Ethereal"
+	],
+	"subtypeText": "Ethereal"
 }

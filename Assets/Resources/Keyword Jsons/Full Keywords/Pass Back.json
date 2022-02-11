@@ -5,7 +5,7 @@
 		"blurb":"Pass Back",
 		"triggerCondition":"Defend",
 		"triggerRestriction":{
-			"triggerRestrictions":["Augmented Card Triggered"]
+			"triggerRestrictions":["Augmented Card is Main Card"]
 		}
 	},
 	"subeffects":[

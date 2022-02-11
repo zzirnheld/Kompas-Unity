@@ -1,0 +1,38 @@
+{
+	"cardType":67,
+	"cardName":"Putrid Stinkbloom",
+	"effText":"Spores.\nWhen a Fungus is activated, give them +1 E.",
+	"effects":[
+		{
+			"blurb":"Putrition",
+			"triggerData":
+			{
+				"triggerCondition":"Activate",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Main Card Fits Restriction Before"],
+					"cardRestriction":
+					{
+						"cardRestrictions":["Subtypes Include"],
+						"subtypesInclude":["Fungus"]
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eModifier":1
+				}
+			]
+		}
+	],
+    "keywords":["Spores"],
+	"n":1,
+	"e":1,
+	"s":6,
+	"w":1,
+	"subtypes":["Fruiting","Fungus"],
+	"subtypeText":"Fruiting Fungus"
+}

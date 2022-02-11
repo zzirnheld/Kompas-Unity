@@ -1,32 +1,35 @@
 {
-	"cardType":67,
-	"cardName":"Dragon Familiar",
-	"effText":"Territorial.\nWhen I attack, give me +1 N.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Dragon Familiar",
+	"effText": "Territorial.\nWhen I attack, give me +1 N.",
+	"effects": [
 		{
-			"blurb":"Damage Boost",
-			"triggerData":
-			{
-				"triggerCondition":"Attack",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"blurb": "Damage Boost",
+			"triggerData": {
+				"triggerCondition": "Attack",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"wMod":1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"wModifier": 1
 				}
-			]	
+			]
 		}
 	],
-	"keywords":["Territorial"],
-	"n":1,
-	"e":2,
-	"s":2,
-	"w":2,
-	"subtypeText":"Smol Flying Dragon"
+	"keywords": [
+		"Territorial"
+	],
+	"n": 1,
+	"e": 2,
+	"s": 2,
+	"w": 2,
+	"subtypeText": "Smol Flying Dragon"
 }

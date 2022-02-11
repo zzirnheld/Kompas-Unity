@@ -1,68 +1,81 @@
 {
-	"cardType":67,
-	"cardName":"Inside Goalie Defender",
-	"effText":"When your adjacent Avatar is augmented, apply their Augment(s) to another character adjacent to me.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Inside Goalie Defender",
+	"effText": "When your adjacent Avatar is augmented, apply their Augment(s) to another character adjacent to me.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"blurb":"Goal Kick",
-				"triggerCondition":"Augmented",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
-					"cardRestriction":
-					{
-						"cardRestrictions":["Board","Avatar","Friendly","Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["Adjacent to Source"],
-							"mustBeEmpty":false
+			"triggerData": {
+				"blurb": "Goal Kick",
+				"triggerCondition": "Augmented",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Board",
+							"Avatar",
+							"Friendly",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Source"
+							],
+							"mustBeEmpty": false
 						}
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"character to goal-kick Augment to",
-						"cardRestrictions":["Is Character","Board","Different from Target","Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["Adjacent to Source"],
-							"mustBeEmpty":false
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "character to goal-kick Augment to",
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Different from Target",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Source"
+							]
 						}
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.TargetAugmentsSubeffect, Assembly-CSharp",
-					"targetIndex":-2
+					"$type": "KompasServer.Effects.TargetAugmentsSubeffect, Assembly-CSharp",
+					"targetIndex": -2
 				},
 				{
-					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
-					"condition":"Number Targets <= Constant",
-					"constant":2
+					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition": "Number Targets <= Constant",
+					"constant": 2
 				},
 				{
-					"$type":"KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
-					"attachmentTarget":1
+					"$type": "KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
+					"attachmentTarget": 1
 				},
 				{
-					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
-					"delete":true,
-					"remainingTargets":2,
-					"jumpIndices":[4]
+					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete": true,
+					"remainingTargets": 2,
+					"jumpIndices": [
+						4
+					]
 				}
 			]
 		}
 	],
-	"n":1,
-	"e":5,
-	"s":1,
-	"w":0,
-	"subtypeText":"Teammate"
+	"n": 1,
+	"e": 5,
+	"s": 1,
+	"w": 0,
+	"subtypeText": "Teammate"
 }

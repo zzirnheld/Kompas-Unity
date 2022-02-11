@@ -1,77 +1,90 @@
 {
-	"cardType":67,
-	"cardName":"Notcropoten",
-	"effText":"When friendly turns start, you can have me pay X E. Annihilate your deck's top X. Delay 1. Rehand it.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Notcropoten",
+	"effText": "When friendly turns start, you can have me pay X E. Annihilate your deck's top X. Delay 1. Rehand it.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Turn Start",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Friendly Turn"]
+			"triggerData": {
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Friendly Turn"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
-					"cardValue":{
-						"value":"E"
+					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "E"
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.PlayerChooseXSubeffect, Assembly-CSharp",
-					"XRest":{
-						"cardRestrictions":["<=X"]
+					"$type": "KompasServer.Effects.PlayerChooseXSubeffect, Assembly-CSharp",
+					"XRest": {
+						"cardRestrictions": [
+							"<=X"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.PayStatsSubeffect, Assembly-CSharp",
-					"eMult":1
+					"$type": "KompasServer.Effects.PayStatsSubeffect, Assembly-CSharp",
+					"eMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"for Haemopoten to draw",
-						"cardRestrictions":["Friendly","Deck","Index<X"]
+					"$type": "KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "for Haemopoten to draw",
+						"cardRestrictions": [
+							"Friendly",
+							"Deck",
+							"Index<X"
+						]
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.XTimesSubeffect, Assembly-CSharp",
-					"jumpIndices":[6]
+					"$type": "KompasServer.Effects.XTimesSubeffect, Assembly-CSharp",
+					"jumpIndices": [
+						6
+					]
 				},
 				{
-					"$type":"KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
-					"numTimesToDelay":0,
-					"jumpIndices":[8],
-					"fallOffCondition":"",
-					"endCondition":"Turn Start"
+					"$type": "KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"numTimesToDelay": 0,
+					"jumpIndices": [
+						8
+					],
+					"fallOffCondition": "",
+					"endCondition": "Turn Start"
 				},
 				{
-					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
-					"delete":true,
-					"jumpIndices":[8]
+					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete": true,
+					"jumpIndices": [
+						8
+					]
 				}
 			]
 		}
 	],
-	"n":4,
-	"e":3,
-	"s":9,
-	"w":9,
-	"subtypeText":"Dragon Mage"
+	"n": 4,
+	"e": 3,
+	"s": 9,
+	"w": 9,
+	"subtypeText": "Dragon Mage"
 }

@@ -1,0 +1,61 @@
+{
+	"cardType": 67,
+	"cardName": "Silent Ritualist",
+	"effText": "When turns start, tribute a character. Deck->cast a Silent spell where they were.",
+	"effects": [
+		{
+			"blurb": "Ritual",
+			"triggerData": {
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "ritual sacrifice",
+						"cardRestrictions": [
+							"Board",
+							"Character",
+                            "Friendly"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"maxCanChoose": 1,
+					"cardRestriction": {
+						"blurb": "Silent convert",
+						"cardRestrictions": [
+							"Friendly",
+							"Deck",
+							"Spell",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Silent"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"n": 4,
+	"e": 1,
+	"s": 3,
+	"w": 1,
+	"subtypeText": "Cultist"
+}

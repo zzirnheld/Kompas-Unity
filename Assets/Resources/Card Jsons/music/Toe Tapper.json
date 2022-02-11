@@ -1,55 +1,68 @@
 {
-	"cardType":83,
-	"cardName":"Toe Tapper",
-	"effText":"When cards arrive here (including me), give characters here +1 ESW until I vanish.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Toe Tapper",
+	"effText": "When cards arrive here (including me), give characters here +1 ESW until I vanish.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Arrive",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Coords Fit Restriction"],
-					"spaceRestriction":
-					{
-						"mustBeEmpty":false,
-						"spaceRestrictions":["In AOE"]
+			"triggerData": {
+				"triggerCondition": "Arrive",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Space Fits Restriction"
+					],
+					"spaceRestriction": {
+						"mustBeEmpty": false,
+						"spaceRestrictions": [
+							"In Source's AOE"
+						]
 					}
 				}
-            },
-			"subeffects":[
+			},
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Board","Is Character","Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["In AOE"],
-							"mustBeEmpty":false
+					"$type": "KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Board",
+							"Character",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"In Source's AOE"
+							]
 						}
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.TemporaryNESWBuffSubeffect, Assembly-CSharp",
-					"eModifier":1,
-					"sModifier":1,
-					"wModifier":1,
-					"endCondition":"Vanish",
-					"triggerRestriction":{
-						"triggerRestrictions":["This Card Triggered"]
+					"$type": "KompasServer.Effects.TemporaryCardStatChangeSubeffect, Assembly-CSharp",
+					"eModifier": 1,
+					"sModifier": 1,
+					"wModifier": 1,
+					"endCondition": "Vanish",
+					"triggerRestriction": {
+						"triggerRestrictions": [
+							"This Card is Main Card"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
-					"delete":true,
-					"jumpIndices":[1]
+					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete": true,
+					"jumpIndices": [
+						1
+					]
 				}
 			]
 		}
 	],
-	"c":3,
-	"spellTypes":["Vanishing","Radial"],
-	"duration":2,
-    "radius":1,
-	"subtypeText":"Vanishing 2 Radius 1 Music"
+	"c": 3,
+	"spellTypes": [
+		"Vanishing",
+		"Radial"
+	],
+	"duration": 2,
+	"radius": 1,
+	"subtypeText": "Vanishing 2 Radius 1 Music"
 }

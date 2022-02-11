@@ -1,56 +1,64 @@
 {
-	"cardType":67,
-	"cardName":"Forward Dunker",
-	"effText":"The first time each stack I'm augmented, attach my Augments to an adjacent Avatar.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Forward Dunker",
+	"effText": "The first time each stack I'm augmented, attach my Augments to an adjacent Avatar.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"blurb":"Slam Dunk!",
-				"triggerCondition":"Augmented",
-				"triggerRestriction":{
-					"triggerRestrictions":["Max Per Stack","This Card Triggered"]
+			"triggerData": {
+				"blurb": "Slam Dunk!",
+				"triggerCondition": "Augmented",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"Max Per Stack",
+						"This Card is Main Card"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":{
-						"cardRestrictions":["Board","Avatar","Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["Adjacent to Source"],
-							"mustBeEmpty":false
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Board",
+							"Avatar",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Source"
+							]
 						}
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.TargetAugmentsSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetAugmentsSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp",
-					"targetIndex":1
+					"$type": "KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp",
+					"targetIndex": 1
 				},
 				{
-					"$type":"KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
-					"attachmentTarget":0,
-					"targetIndex":-1
+					"$type": "KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
+					"attachmentTarget": 0,
+					"targetIndex": -1
 				},
 				{
-					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
-					"delete":true,
-					"remainingTargets":1,
-					"jumpIndices":[4]
+					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete": true,
+					"remainingTargets": 1,
+					"jumpIndices": [
+						4
+					]
 				}
 			]
 		}
 	],
-	"n":3,
-	"e":2,
-	"s":2,
-	"w":0,
-	"subtypeText":"Teammate"
+	"n": 3,
+	"e": 2,
+	"s": 2,
+	"w": 0,
+	"subtypeText": "Teammate"
 }

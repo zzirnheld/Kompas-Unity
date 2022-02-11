@@ -1,40 +1,49 @@
 {
-	"cardType":83,
-	"cardName":"Forest Fire",
-	"effText":"Give all characters adjacent to at least one Tree -5 E.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Forest Fire",
+	"effText": "Give all characters adjacent to at least one Tree -5 E.",
+	"effects": [
 		{
-			"blurb":"Simple",
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"blurb": "Simple",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Is Character","Board","Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["Adjacent to a Card that Fits Restriction"],
-							"adjacencyRestriction":
-							{
-								"cardRestrictions":["Subtypes Include"],
-								"subtypesInclude":["Tree"]
-							},
-							"mustBeEmpty":false
+					"$type": "KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to a Card that Fits Restriction"
+							],
+							"adjacencyRestriction": {
+								"cardRestrictions": [
+									"Subtypes Include"
+								],
+								"subtypesInclude": [
+									"Tree"
+								]
+							}
 						}
 					},
-					"eMod":-5
+					"eModifier": -5
 				}
 			]
 		}
 	],
-	"c":4,
-	"spellTypes":["Simple"],
-	"subtypeText":"Simple"
+	"c": 4,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypeText": "Simple"
 }

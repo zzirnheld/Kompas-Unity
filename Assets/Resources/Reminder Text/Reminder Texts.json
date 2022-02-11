@@ -127,6 +127,10 @@
 		{
 			"keyword":"Nimble",
 			"reminder":"Can move through cards."
+		},
+		{
+			"keyword":"Spores",
+			"reminder":"The first time each stack I'm activated, pulse adjacent characters. (Activate, then deactivate each.)"
 		}
 	]
 }

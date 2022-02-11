@@ -8,7 +8,7 @@
 			{
 				"triggerCondition":"Play",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+					"triggerRestrictions":["This Card is Main Card"]
 				}
 			},
 			"subeffects":[
@@ -17,7 +17,7 @@
 					"whatToCount":"Cards Fitting Restriction",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Is Character","Board","Friendly","Subtypes Include"],
+						"cardRestrictions":["Character","Board","Friendly","Subtypes Include"],
 						"subtypesInclude":["Supplicant"]
 					},
 					"xMultiplier":1
@@ -26,19 +26,19 @@
 					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Is Character","Board","Subtypes Include"],
+						"cardRestrictions":["Character","Board","Subtypes Include"],
 						"subtypesInclude":["Supplicant"]
 					},
-					"eMult":1
+					"eMultiplier":1
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Is Character","Board","Friendly","Negated","Subtypes Include"],
+						"cardRestrictions":["Character","Board","Friendly","Negated","Subtypes Include"],
 						"subtypesInclude":["Supplicant"]
 					},
-					"wMult":3
+					"wMultiplier":3
 				}
 			]
 		}

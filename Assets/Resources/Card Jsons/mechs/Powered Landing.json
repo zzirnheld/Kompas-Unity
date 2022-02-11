@@ -1,65 +1,78 @@
 {
-	"cardType":65,
-	"cardName":"Powered Landing",
-	"effText":"When you summon a Mech Golem, you can board->attach me to them. They attack a character adjacent to them. Give them +3 W.",
-	"effects":[
+	"cardType": 65,
+	"cardName": "Powered Landing",
+	"effText": "When you summon a Mech Golem, you can board->attach me to them. They attack a character adjacent to them. Give them +3 W.",
+	"effects": [
 		{
-            "blurb":"Landing Blast",
-			"triggerData":{
-				"optional":true,
-				"blurb":"Landing Blast?",
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
-					"cardRestriction":
-					{
-						"cardRestrictions":["Subtypes Include"],
-						"subtypesInclude":["Mech Golem"]
+			"blurb": "Landing Blast",
+			"triggerData": {
+				"optional": true,
+				"blurb": "Landing Blast?",
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Mech Golem"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
-					"attachmentTarget":-1,
-					"targetIndex":-2
+					"$type": "KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
+					"attachmentTarget": -1,
+					"targetIndex": -2
 				},
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"adjacent character for Mech Golem to attack",
-						"cardRestrictions":["Is Character","Board","Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["Adjacent to Target"],
-							"mustBeEmpty":false
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "adjacent character for Mech Golem to attack",
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Card Target"
+							]
 						}
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
-					"targetIndex":-1,
-					"attackerIndex":-2
+					"$type": "KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
+					"targetIndex": -1,
+					"attackerIndex": -2
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"targetIndex":-2,
-					"wMod":3
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"targetIndex": -2,
+					"wModifier": 3
 				}
 			]
 		}
 	],
-	"PlayRestriction":{
-		"normalRestrictions":["Augment Normal Restrictions"],
-		"effectRestrictions":["Augment Effect Restrictions"]
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Augment Normal Restrictions"
+		],
+		"effectRestrictions": [
+			"Augment Effect Restrictions"
+		]
 	},
-	"a":1,
-	"subtypeText":""
+	"a": 1,
+	"subtypeText": ""
 }

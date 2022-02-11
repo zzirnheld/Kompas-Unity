@@ -1,48 +1,51 @@
 {
-	"cardType":67,
-	"cardName":"XI - Justice",
-	"effText":"Once each friendly turn, if your hand has X fewer cards than an enemy, you can draw X cards.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "XI - Justice",
+	"effText": "Once each friendly turn, if your hand has X fewer cards than an enemy, you can draw X cards.",
+	"effects": [
 		{
-			"activationRestriction":{
-				"activationRestrictionArray":[
+			"activationRestriction": {
+				"activationRestrictionArray": [
 					"Max Times Per Turn",
 					"Friendly Turn",
 					"Default"
 				]
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
-					"whatToCount":"Hand Size",
-					"xMultiplier":1
+					"$type": "KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"whatToCount": "Hand Size",
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
-					"whatToCount":"Hand Size",
-					"playerIndex":-2,
-					"change":true,
-					"xMultiplier":-1
+					"$type": "KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"whatToCount": "Hand Size",
+					"playerIndex": -2,
+					"change": true,
+					"xMultiplier": -1
 				},
 				{
-					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
-					"condition":"X<=0"
+					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition": "X<=0"
 				},
 				{
-					"$type":"KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
-					"playerIndex":-2,
-					"xMultiplier":1
+					"$type": "KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"playerIndex": -2,
+					"xMultiplier": 1
 				}
 			]
 		}
 	],
-	"n":5,
-	"e":5,
-	"s":7,
-	"w":7,
-	"subtypes":["Tarocco","Mage"],
-	"subtypeText":"Tarocco Mage"
+	"n": 5,
+	"e": 5,
+	"s": 7,
+	"w": 7,
+	"subtypes": [
+		"Tarocco",
+		"Mage"
+	],
+	"subtypeText": "Tarocco Mage"
 }

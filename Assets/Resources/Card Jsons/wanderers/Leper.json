@@ -1,35 +1,40 @@
 {
-	"cardType":67,
-	"cardName":"Leper",
-	"effText":"Wanderer.\nWhen I'm summoned, give a character -1 W.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Leper",
+	"effText": "Wanderer.\nWhen I'm summoned, give a character -1 W.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Board","Is Character"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Board",
+							"Character"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"wMod":-1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"wModifier": -1
 				}
-			]	
+			]
 		}
 	],
-	"keywords":["Wanderer"],
-	"n":1,
-	"e":2,
-	"s":2,
-	"w":1,
-	"subtypeText":"Wanderer Person"
+	"keywords": [
+		"Wanderer"
+	],
+	"n": 1,
+	"e": 2,
+	"s": 2,
+	"w": 1,
+	"subtypeText": "Wanderer Person"
 }

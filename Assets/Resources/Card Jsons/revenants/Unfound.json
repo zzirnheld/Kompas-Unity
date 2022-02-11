@@ -1,13 +1,19 @@
 {
-	"cardType":67,
-	"cardName":"Unfound",
-	"effText":"Revenant.",
-	"effects":[],
-	"keywords":["Revenant Die","Revenant Revive"],
-	"n":2,
-	"e":3,
-	"s":6,
-	"w":1,
-	"subtypes":["Ethereal","Revenant"],
-	"subtypeText":"Ethereal Revenant"
+	"cardType": 67,
+	"cardName": "Unfound",
+	"effText": "Revenant.",
+	"effects": [],
+	"keywords": [
+		"Revenant Die",
+		"Revenant Revive"
+	],
+	"n": 2,
+	"e": 3,
+	"s": 6,
+	"w": 1,
+	"subtypes": [
+		"Ethereal",
+		"Revenant"
+	],
+	"subtypeText": "Ethereal Revenant"
 }

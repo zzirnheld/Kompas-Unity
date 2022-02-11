@@ -1,68 +1,90 @@
 {
-	"cardType":67,
-	"cardName":"Runechanneler",
-	"effText":"Once each friendly turn, you can reshuffle X of your discarded Runes to hand-cast a C <= X Rune.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Runechanneler",
+	"effText": "Once each friendly turn, you can reshuffle X of your discarded Runes to hand-cast a C <= X Rune.",
+	"effects": [
 		{
-			"activationRestriction":{
-				"activationRestrictionArray":[
+			"activationRestriction": {
+				"activationRestrictionArray": [
 					"Max Times Per Turn",
 					"Friendly Turn",
 					"Default"
 				]
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"Rune for Runechanneler to reshuffle",
-						"cardRestrictions":["Subtypes Include","Friendly","Discard"],
-						"subtypesInclude":["Rune"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Rune for Runechanneler to reshuffle",
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Friendly",
+							"Discard"
+						],
+						"subtypesInclude": [
+							"Rune"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.CountXLoopSubeffect, Assembly-CSharp",
-					"canDecline":true,
-					"jumpIndices":[0]
+					"$type": "KompasServer.Effects.CountXLoopSubeffect, Assembly-CSharp",
+					"canDecline": true,
+					"jumpIndices": [
+						0
+					]
 				},
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"Rune for Runechanneler to cast",
-						"cardRestrictions":["Subtypes Include","Is Spell","Friendly","Hand","Can Be Played","Card Value Fits X Restriction"],
-						"cardValue":{
-							"value":"C"
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Rune for Runechanneler to cast",
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Spell",
+							"Friendly",
+							"Hand",
+							"Can Be Played",
+							"Card Value Fits Number Restriction"
+						],
+						"cardValue": {
+							"value": "C"
 						},
-						"xRestriction":{
-							"xRestrictions":["<=X"]
+						"cardValueNumberRestriction": {
+							"numberRestrictions": [
+								"<=X"
+							]
 						},
-						"subtypesInclude":["Rune"]
+						"subtypesInclude": [
+							"Rune"
+						]
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":
-					{
-						"blurb":"where for Runechanneler to cast its target Rune",
-						"spaceRestrictions":["Can Play Target to This Space"]
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where for Runechanneler to cast its target Rune",
+						"spaceRestrictions": [
+							"Can Play Card Target to This Space",
+							"Empty"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				}
 			]
 		}
 	],
-	"n":2,
-	"e":4,
-	"s":5,
-	"w":4,
-	"subtypes":["Runar","Mage"],
-	"subtypeText":"Runar Mage"
+	"n": 2,
+	"e": 4,
+	"s": 5,
+	"w": 4,
+	"subtypes": [
+		"Runar",
+		"Mage"
+	],
+	"subtypeText": "Runar Mage"
 }

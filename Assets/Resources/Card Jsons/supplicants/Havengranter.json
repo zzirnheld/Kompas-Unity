@@ -1,43 +1,51 @@
 {
-	"cardType":67,
-	"cardName":"Havengranter",
-	"effText":"When turns start, hand-summon an S <= 1 character adjacent to me.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Havengranter",
+	"effText": "When turns start, hand-summon an S <= 1 character adjacent to me.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Turn Start",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play"]
+			"triggerData": {
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"for Empress to hand-summon",
-						"cardRestrictions":["Is Character","Friendly","Hand","S<=C"],
-						"constant":1
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "for Empress to hand-summon",
+						"cardRestrictions": [
+							"Character",
+							"Friendly",
+							"Hand",
+							"S<=C"
+						],
+						"constant": 1
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":
-					{
-						"blurb":"where Havengranter to hand-summon",
-						"spaceRestrictions":["Adjacent to Source","Can Play Target to This Space"]
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where Havengranter to hand-summon",
+						"spaceRestrictions": [
+							"Adjacent to Source",
+							"Can Play Card Target to This Space",
+							"Empty"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				}
 			]
 		}
 	],
-	"n":0,
-	"e":5,
-	"s":5,
-	"w":0,
-	"subtypeText":"Kind Person"
+	"n": 0,
+	"e": 5,
+	"s": 5,
+	"w": 0,
+	"subtypeText": "Kind Person"
 }

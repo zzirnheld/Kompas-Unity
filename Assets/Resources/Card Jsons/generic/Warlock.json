@@ -1,0 +1,45 @@
+{
+    "cardType":67,
+    "cardName":"Warlock",
+    "effText":"The first time each turn you play another card that costs exactly 1, gain a pip.",
+    "effects":[
+        {
+            "triggerData":
+            {
+                "triggerCondition":"Play",
+                "triggerRestriction":{
+                    "triggerRestrictions":["This Card in Play",
+                                           "Controller Triggered",
+                                           "Main Card Fits Restriction Before",
+                                           "Max Per Turn",
+                                           "No Stackable"],
+                    "cardRestriction":
+                    {
+                        "cardRestrictions":[
+                            "Different from Source",
+                            "Card Value Fits Number Restriction"
+                        ],
+                        "cardValue":{
+                            "value":"Cost"
+                        },
+                        "cardValueNumberRestriction":{
+                            "numberRestrictions":["==Constant"],
+                            "constant":1
+                        }
+                    }
+                }
+            },
+            "subeffects":[
+                {
+                    "$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+                    "xModifier":1
+                }
+            ]
+        }
+    ],
+    "n":1,
+    "e":1,
+    "s":1,
+    "w":1,
+    "subtypeText":"Mage"
+}

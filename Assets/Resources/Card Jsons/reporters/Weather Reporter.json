@@ -1,53 +1,63 @@
 {
-	"cardType":67,
-	"cardName":"Weather Reporter",
-	"effText":"When an enemy card is revealed, pip hand->summon a character at half cost (if you can).",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Weather Reporter",
+	"effText": "When an enemy card is revealed, pip hand->summon a character at half cost (if you can).",
+	"effects": [
 		{
-            "blurb":"Weather Report",
-			"triggerData":
-			{
-				"triggerCondition":"Revealed",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
-					"cardRestriction":
-					{
-						"cardRestrictions":["Enemy"]
+			"blurb": "Weather Report",
+			"triggerData": {
+				"triggerCondition": "Revealed",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Enemy"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"for Weather Reporter to hand-summon",
-						"cardRestrictions":["Is Character","Friendly","Hand","Can Be Played","Effect Controller can Afford Cost"],
-						"costDivisor":2
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "for Weather Reporter to hand-summon",
+						"cardRestrictions": [
+							"Character",
+							"Friendly",
+							"Hand",
+							"Can Be Played",
+							"Effect Controller can Afford Cost"
+						],
+						"costDivisor": 2
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
-					"xMultiplier":1,
-					"xDivisor":2
+					"$type": "KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
+					"xMultiplier": 1,
+					"xDivisor": 2
 				},
 				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":
-					{
-						"blurb":"where Weather Reporter to hand-summon",
-						"spaceRestrictions":["Can Play Target to This Space"]
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where Weather Reporter to hand-summon",
+						"spaceRestrictions": [
+							"Can Play Card Target to This Space",
+							"Empty"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				}
-			]	
+			]
 		}
 	],
-	"n":1,
-	"e":1,
-	"s":1,
-	"w":1,
-	"subtypeText":"Weather Reporter Person"
+	"n": 1,
+	"e": 1,
+	"s": 1,
+	"w": 1,
+	"subtypeText": "Weather Reporter Person"
 }

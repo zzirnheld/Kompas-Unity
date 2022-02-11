@@ -9,7 +9,7 @@
 				"blurb":"BEGONE! SWAT!",
 				"triggerCondition":"Arrive",
 				"triggerRestriction":{
-					"triggerRestrictions":["Coords Fit Restriction"],
+					"triggerRestrictions":["Space Fits Restriction"],
 					"spaceRestriction":
 					{
 						"spaceRestrictions":["Adjacent to Source"],
@@ -23,7 +23,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMod":-1
+					"eModifier":-1
 				}
 			]	
 		}

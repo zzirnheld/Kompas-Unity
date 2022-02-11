@@ -1,9 +1,10 @@
 ﻿using KompasCore.Cards;
 using System.Linq;
+using UnityEngine;
 
 namespace KompasCore.Effects
 {
-    public class XRestriction
+    public class NumberRestriction
     {
         public const string Positive = ">0";
         public const string Negative = "<0";
@@ -23,7 +24,7 @@ namespace KompasCore.Effects
         public const string LessThanAvatarCardValue = "<Avatar";
         public const string GreaterThanAvatarCardValue = ">Avatar";
 
-        public string[] xRestrictions;
+        public string[] numberRestrictions;
 
         public int constant;
 
@@ -65,10 +66,17 @@ namespace KompasCore.Effects
             _ => throw new System.ArgumentException($"Invalid X restriction {r} in X Restriction."),
         };
 
+        private bool IsRestrictionValidDebug(string r, int x)
+        {
+            bool answer = IsRestrictionValid(r, x);
+            if (!answer) Debug.Log($"{x} flouts {r} when effect count is {Subeffect?.Count}");
+            return answer;
+        }
+
         public bool IsValidNumber(int x)
         {
             if (!initialized) throw new System.ArgumentException("X restriction not initialized!");
-            return xRestrictions.All(r => IsRestrictionValid(r, x));
+            return numberRestrictions.All(r => IsRestrictionValid(r, x));
         }
     }
 }

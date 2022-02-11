@@ -1,64 +1,77 @@
 {
-	"cardType":83,
-	"cardName":"Mad Jukes",
-	"effText":"Comeback Play.\nWhen a friendly character wielding Augments with total A X moves, give adjacent characters -X W.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Mad Jukes",
+	"effText": "Comeback Play.\nWhen a friendly character wielding Augments with total A X moves, give adjacent characters -X W.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"blurb":"Mad Jukes My Dude!",
-				"triggerCondition":"Move",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
-					"cardRestriction":
-					{
-						"cardRestrictions":["Is Character","Friendly","Augmented"]
+			"triggerData": {
+				"blurb": "Mad Jukes My Dude!",
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Friendly",
+							"Augmented"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.SetXSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.SetXSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.TargetAugmentsSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetAugmentsSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
-					"cardValue":{
-						"value":"A"
+					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "A"
 					},
-					"change":true,
-					"xMultiplier":1
+					"change": true,
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
-					"delete":true,
-					"remainingTargets":1,
-					"jumpIndices":[3]
+					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete": true,
+					"remainingTargets": 1,
+					"jumpIndices": [
+						3
+					]
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Is Character","Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["Adjacent to Target"],
-							"mustBeEmpty":false
+					"$type": "KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Card Target"
+							]
 						}
 					},
-					"wMult":-1
+					"wMultiplier": -1
 				}
 			]
 		}
 	],
-	"keywords":["Comeback Play"],
-	"c":1,
-	"spellTypes":["Vanishing"],
-	"duration":1,
-	"subtypeText":"Team Play Vanishing"
+	"keywords": [
+		"Comeback Play"
+	],
+	"c": 1,
+	"spellTypes": [
+		"Vanishing"
+	],
+	"duration": 1,
+	"subtypeText": "Team Play Vanishing"
 }

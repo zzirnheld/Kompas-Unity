@@ -19,62 +19,66 @@ namespace KompasCore.Effects
         #region space restrictions
         //adjacency
         public const string AdjacentToSource = "Adjacent to Source";
-        public const string AdjacentToTarget = "Adjacent to Target";
-        public const string AdjacentToCoords = "Adjacent to Coords";
+        public const string AdjacentToCardTarget = "Adjacent to Card Target";
+        public const string AdjacentToSpaceTarget = "Adjacent to Space Target";
         public const string AdjacentToCardRestriction = "Adjacent to a Card that Fits Restriction";
 
         public const string ConnectedToSourceBy = "Connected to Source by Cards Fitting Restriction";
         public const string ConnectedToSourceBySpaces = "Connected to Source by Spaces Fitting Restriction";
-        public const string ConnectedToTargetBy = "Connected to Target by";
-        public const string ConnectedToTargetBySpaces = "Connected to Target by Spaces Fitting Restriction";
-        public const string ConnectedToTargetByXSpaces = "Connected to Target by X Spaces Fitting Restriction";
-        public const string ConnectedToAvatarBy = "Connected to Avatar by";
 
-        public const string InAOE = "In AOE";
+        public const string ConnectedToCardTargetBy = "Connected to Card Target by";
+        public const string ConnectedToCardTargetBySpaces = "Connected to Card Target by Spaces Fitting Restriction";
+        public const string ConnectedToCardTargetByXSpaces = "Connected to Card Target by X Spaces Fitting Restriction";
+
+        public const string InSourcesAOE = "In Source's AOE";
         public const string NotInAOE = "Not In AOE";
-        public const string InTargetsAOE = "In Target's AOE";
-        public const string InAOEOf = "In AOE Of";
-        public const string NotInAOEOf = "Not In AOE Of";
+        public const string InCardTargetsAOE = "In Card Target's AOE";
+        public const string InAOEOfCardFittingRestriction = "In AOE of Card Fitting Restriction";
+        public const string NotInAOEOf = "Not In AOE of Card Fitting Restriction";
         public const string LimitAdjacentCardsFittingRestriction = "Limit Number of Adjacent Cards Fitting Restriction";
         public const string InAOEOfNumberFittingRestriction = "In AOE of Number of Cards Fitting Restriction";
         public const string InAOESourceAlsoIn = "In AOE Source is Also In";
 
-        public const string SourceDisplacementToSpaceMatchesCoords = "Source Displacement to Space Matches Coords";
-        public const string SourceToSpaceSameDirectionAsCoords = "Source to Space Same Direction as Coords";
-        public const string SourceToTargetSameDirectionAsCoords = "Source to Target Same Direction as Coords";
-        public const string SubjectiveDisplacementFromSource = "Subjective Displacement from Source";
+        public const string SourceDisplacementToSpaceMatchesSpaceTarget = "Source Displacement to Space Matches Space Target";
+        public const string SourceDisplacementToSpaceSameDirectionAsSpaceTarget 
+            = "Source Displacement to Space Same Direction as Space Target";
+        public const string SourceDisplacementToCardTargetSameDirectionAsSpaceTarget 
+            = "Source Displacement to Card Target Same Direction as Space Target";
+        public const string ConstantSubjectiveDisplacementFromSource = "Constant Subjective Displacement from Source";
         public const string BehindSource = "Behind Source";
 
         //distance
         public const string DistanceToSourceFitsXRestriction = "Distance to Source Fits X Restriction";
-        public const string DistanceToTargetFitsXRestriction = "Distance to Target Fits X Restriction";
-        public const string DistanceToCoordsFitsXRestriction = "Distance to Coords Fits X Restriction";
+        public const string DistanceToCardTargetFitsXRestriction = "Distance to Card Target Fits X Restriction";
+        public const string DistanceToSpaceTargetFitsXRestriction = "Distance to Space Target Fits X Restriction";
 
-        public const string FurtherFromSourceThanTarget = "Further from Source than Target";
-        public const string FurtherFromSourceThanCoords = "Further from Source than Coords";
-        public const string TowardsSourceFromTarget = "Towards Source from Target";
-        public const string TowardsTargetFromSource = "Towards Target from Source";
-        public const string DirectlyAwayFromTarget = "Directly Away from Target";
+        public const string FurtherFromSourceThanCardTarget = "Further from Source than Card Target";
+        public const string FurtherFromSourceThanSpaceTarget = "Further from Source than Space Target";
+        public const string TowardsSourceFromCardTarget = "Towards Source from Card Target";
+        public const string TowardsCardTargetFromSource = "Towards Card Target from Source";
+        public const string DirectlyAwayFromCardTarget = "Directly Away from Card Target";
 
         //misc
-        public const string CanPlayTarget = "Can Play Target to This Space";
-        public const string CanMoveTarget = "Can Move Target to This Space";
+        public const string CanPlayCardTarget = "Can Play Card Target to This Space";
+        public const string CanMoveCardTarget = "Can Move Card Target to This Space";
         public const string CanMoveSource = "Can Move Source to This Space";
         public const string Empty = "Empty";
         public const string Surrounded = "Surrounded";
         public const string CardHereFitsRestriction = "Card Here Fits Restriction";
 
         public const string OnSourcesDiagonal = "On Source's Diagonal";
-        public const string OnTargetsDiagonal = "On Target's Diagonal";
+        public const string OnCardTargetsDiagonal = "On Card Target's Diagonal";
         public const string OnAxisOfLastTwoSpaces = "On Axis of Last Two Spaces";
 
         public const string OnEdge = "On Edge of Board";
         public const string Corner = "Corner";
         //TODO: eventually make a "targetdirection" subeffect that appends the direction as a Space to the list of coords,
         // then replace these with something comparing directions
-        public const string SameDirectionFromTargetAsSpace = "Same Direction From Target As Source From Space";
-        public const string OppositeDirectionFromTargetThanSpace = "Opposite Direction From Target Than Space";
-        public const string DirectionFromSource = "Direction From Source"; //In the direction of Subeffect.Space from source
+        public const string SameDirectionFromSpaceToCardTargetAsSpaceTargetToSource 
+            = "Same Direction from Space to Card Target as Space Target to Source";
+        public const string OppositeDirectionFromSourceToSpaceAsSourceToSpaceTarget 
+            = "Opposite Direction from Source to Space as Source to Space Target";
+        public const string DirectionFromSourceIsSpaceTarget = "Direction from Source is Space Target"; //In the direction of Subeffect.Space from source
         #endregion space restrictions
 
         public string[] spaceRestrictions;
@@ -86,9 +90,9 @@ namespace KompasCore.Effects
         public CardRestriction hereFitsRestriction;
         public CardRestriction inAOEOfRestriction;
 
-        public XRestriction distanceXRestriction;
-        public XRestriction connectedSpacesXRestriction;
-        public XRestriction numberOfCardsInAOEOfRestriction;
+        public NumberRestriction distanceXRestriction;
+        public NumberRestriction connectedSpacesXRestriction;
+        public NumberRestriction numberOfCardsInAOEOfRestriction;
 
         public string[] playRestrictionsToIgnore = new string[0];
 
@@ -98,10 +102,9 @@ namespace KompasCore.Effects
         public int displacementY;
 
         public string blurb = "";
+        //Using rather than an "Empty" restriction for, at this point, historical reasons - TODO fix
         public bool mustBeEmpty = true;
 
-        // Necessary because json doesn't let you have nice things, like constructors with arguments,
-        // so I need to make sure manually that I've bothered to set up relevant arguments.
         private bool initialized = false;
 
         public void Initialize(Subeffect subeffect) => Initialize(subeffect.Source, subeffect.Controller, subeffect.Effect, subeffect);
@@ -135,33 +138,38 @@ namespace KompasCore.Effects
         /// <returns></returns>
         private bool IsRestrictionValid(string restriction, Space space, GameCard theoreticalTarget, ActivationContext context)
         {
-            //would use ?? but GameCard inherits from monobehavior which overrides comparison with null
-            var target = theoreticalTarget != null ? theoreticalTarget : Subeffect?.CardTarget;
+            var target = theoreticalTarget ?? Subeffect?.CardTarget;
 
-            return restriction switch
+            if (space == null)
+            {
+                Debug.LogError("Tried to check a null space in SpaceRestriction!");
+                return false;
+            }
+
+            return restriction != null && restriction switch
             {
                 //adjacency
                 AdjacentToSource => Source.IsAdjacentTo(space),
-                AdjacentToTarget => target?.IsAdjacentTo(space) ?? false,
-                AdjacentToCoords => space.AdjacentTo(Subeffect.SpaceTarget),
+                AdjacentToCardTarget => target.IsAdjacentTo(space),
+                AdjacentToSpaceTarget => space.AdjacentTo(Subeffect.SpaceTarget),
                 AdjacentToCardRestriction => Game.boardCtrl.CardsAdjacentTo(space).Any(c => adjacencyRestriction.IsValidCard(c, context)),
 
                 ConnectedToSourceBy => Game.boardCtrl.AreConnectedBySpaces(Subeffect.Source.Position, space, connectednessRestriction, context),
                 ConnectedToSourceBySpaces 
                     => Game.boardCtrl.AreConnectedBySpaces(Subeffect.Source.Position, space, 
                             s => spaceConnectednessRestriction.IsValidSpace(s, context)),
-                ConnectedToTargetBy => Game.boardCtrl.AreConnectedBySpaces(target.Position, space, connectednessRestriction, context),
-                ConnectedToTargetBySpaces => Game.boardCtrl.AreConnectedBySpaces(target.Position, space, spaceConnectednessRestriction, context),
-                ConnectedToTargetByXSpaces 
+
+                ConnectedToCardTargetBy => Game.boardCtrl.AreConnectedBySpaces(target.Position, space, connectednessRestriction, context),
+                ConnectedToCardTargetBySpaces => Game.boardCtrl.AreConnectedBySpaces(target.Position, space, spaceConnectednessRestriction, context),
+                ConnectedToCardTargetByXSpaces 
                     => Game.boardCtrl.AreConnectedByNumberOfSpacesFittingPredicate(target.Position, space, 
                             s => spaceConnectednessRestriction.IsValidSpace(s, context),
                             connectedSpacesXRestriction.IsValidNumber),
-                ConnectedToAvatarBy => Game.boardCtrl.AreConnectedBySpaces(Source.Controller.Avatar.Position, space, connectednessRestriction, context),
 
-                InAOE => Source.SpaceInAOE(space),
+                InSourcesAOE => Source.SpaceInAOE(space),
                 NotInAOE => !Source.SpaceInAOE(space),
-                InTargetsAOE => target.SpaceInAOE(space),
-                InAOEOf => Game.Cards.Any(c => c.SpaceInAOE(space) && inAOEOfRestriction.IsValidCard(c, context)),
+                InCardTargetsAOE => target.SpaceInAOE(space),
+                InAOEOfCardFittingRestriction => Game.Cards.Any(c => c.SpaceInAOE(space) && inAOEOfRestriction.IsValidCard(c, context)),
                 NotInAOEOf => !Game.Cards.Any(c => c.SpaceInAOE(space) && inAOEOfRestriction.IsValidCard(c, context)),
                 InAOEOfNumberFittingRestriction 
                     => numberOfCardsInAOEOfRestriction.IsValidNumber(Game.Cards.Count(c => c.SpaceInAOE(space) && inAOEOfRestriction.IsValidCard(c, context))),
@@ -171,30 +179,30 @@ namespace KompasCore.Effects
                             .Count() <= adjacencyLimit,
                 InAOESourceAlsoIn => Game.Cards.Any(c => c.SpaceInAOE(space) && c.CardInAOE(Source)),
 
-                SourceDisplacementToSpaceMatchesCoords => Source.Position.DisplacementTo(space) == Subeffect.SpaceTarget,
-                SourceToSpaceSameDirectionAsCoords => Source.Position.DirectionFromThisTo(space) == Subeffect.SpaceTarget,
-                SourceToTargetSameDirectionAsCoords => target.Position.DirectionFromThisTo(space) == Subeffect.SpaceTarget,
-                SubjectiveDisplacementFromSource 
+                SourceDisplacementToSpaceMatchesSpaceTarget => Source.Position.DisplacementTo(space) == Subeffect.SpaceTarget,
+                SourceDisplacementToSpaceSameDirectionAsSpaceTarget => Source.Position.DirectionFromThisTo(space) == Subeffect.SpaceTarget,
+                SourceDisplacementToCardTargetSameDirectionAsSpaceTarget => target.Position.DirectionFromThisTo(space) == Subeffect.SpaceTarget,
+                ConstantSubjectiveDisplacementFromSource 
                     => Controller.SubjectiveCoords(Source.Position).DisplacementTo(Controller.SubjectiveCoords(space)) == (displacementX, displacementY),
                 BehindSource => Source.SpaceBehind(space),
 
                 //distance
                 DistanceToSourceFitsXRestriction => distanceXRestriction.IsValidNumber(Source.DistanceTo(space)),
-                DistanceToTargetFitsXRestriction => distanceXRestriction.IsValidNumber(target.DistanceTo(space)),
-                DistanceToCoordsFitsXRestriction => distanceXRestriction.IsValidNumber(Subeffect.SpaceTarget.DistanceTo(space)),
+                DistanceToCardTargetFitsXRestriction => distanceXRestriction.IsValidNumber(target.DistanceTo(space)),
+                DistanceToSpaceTargetFitsXRestriction => distanceXRestriction.IsValidNumber(Subeffect.SpaceTarget.DistanceTo(space)),
 
-                FurtherFromSourceThanTarget => Source.DistanceTo(space) > Source.DistanceTo(target),
-                FurtherFromSourceThanCoords => Source.DistanceTo(space) > Source.DistanceTo(Subeffect.SpaceTarget),
+                FurtherFromSourceThanCardTarget => Source.DistanceTo(space) > Source.DistanceTo(target),
+                FurtherFromSourceThanSpaceTarget => Source.DistanceTo(space) > Source.DistanceTo(Subeffect.SpaceTarget),
 
-                TowardsSourceFromTarget => Source.DistanceTo(space) < Source.DistanceTo(target),
-                TowardsTargetFromSource => target.DistanceTo(space) < target.DistanceTo(Source),
+                TowardsSourceFromCardTarget => Source.DistanceTo(space) < Source.DistanceTo(target),
+                TowardsCardTargetFromSource => target.DistanceTo(space) < target.DistanceTo(Source),
 
-                DirectlyAwayFromTarget => target.SpaceDirectlyAwayFrom(space, Source),
+                DirectlyAwayFromCardTarget => target.SpaceDirectlyAwayFrom(space, Source),
 
                 //misc
-                CanPlayTarget => target.PlayRestriction.IsValidEffectPlay(space, Subeffect.Effect, Subeffect.PlayerTarget, context, 
+                CanPlayCardTarget => target.PlayRestriction.IsValidEffectPlay(space, Subeffect.Effect, Subeffect.PlayerTarget, context, 
                     ignoring: playRestrictionsToIgnore),
-                CanMoveTarget => target.MovementRestriction.IsValidEffectMove(space),
+                CanMoveCardTarget => target.MovementRestriction.IsValidEffectMove(space),
                 CanMoveSource => Source.MovementRestriction.IsValidEffectMove(space),
 
                 Empty => Game.boardCtrl.IsEmpty(space),
@@ -202,14 +210,16 @@ namespace KompasCore.Effects
                 CardHereFitsRestriction => hereFitsRestriction.IsValidCard(Game.boardCtrl.GetCardAt(space), context),
 
                 OnSourcesDiagonal => Source.SameDiagonal(space),
-                OnTargetsDiagonal => target.SameDiagonal(space),
+                OnCardTargetsDiagonal => target.SameDiagonal(space),
                 OnAxisOfLastTwoSpaces => space.SameAxis(Subeffect.SpaceTarget, Subeffect.Effect.GetSpace(-2)),
 
                 OnEdge => space.IsEdge,
                 Corner => space.IsCorner,
-                SameDirectionFromTargetAsSpace => target.Position.DirectionFromThisTo(space) == Subeffect.SpaceTarget.DirectionFromThisTo(Source.Position),
-                OppositeDirectionFromTargetThanSpace => Source.Position.DirectionFromThisTo(space) * -1 == Source.Position.DirectionFromThisTo(Subeffect.SpaceTarget),
-                DirectionFromSource => Source.Position.DirectionFromThisTo(space) == Subeffect.SpaceTarget,
+                SameDirectionFromSpaceToCardTargetAsSpaceTargetToSource 
+                    => target.Position.DirectionFromThisTo(space) == Subeffect.SpaceTarget.DirectionFromThisTo(Source.Position),
+                OppositeDirectionFromSourceToSpaceAsSourceToSpaceTarget 
+                    => Source.Position.DirectionFromThisTo(space) * -1 == Source.Position.DirectionFromThisTo(Subeffect.SpaceTarget),
+                DirectionFromSourceIsSpaceTarget => Source.Position.DirectionFromThisTo(space) == Subeffect.SpaceTarget,
 
                 _ => throw new ArgumentException($"Invalid space restriction {restriction}", "restriction"),
             };
@@ -226,11 +236,6 @@ namespace KompasCore.Effects
         {
             if (!initialized) throw new ArgumentException("Space restriction not initialized!");
             if (!space.IsValid) throw new InvalidSpaceException(space, "Invalid space to consider for restriction!");
-            if (mustBeEmpty && !Game.boardCtrl.IsEmpty(space))
-            {
-                //Debug.Log($"Space for {Source.CardName} needed to be empty and wasn't.");
-                return false;
-            }
 
             return spaceRestrictions.All(r => IsRestrictionValidWithDebug(r, space, theoreticalTarget, context));
         }

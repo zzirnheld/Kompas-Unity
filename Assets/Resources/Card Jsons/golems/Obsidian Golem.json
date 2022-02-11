@@ -1,49 +1,55 @@
 {
-	"cardType":67,
-	"cardName":"Obsidian Golem",
-	"effText":"Golem.\nWhen I'm activated, I give a Summoned character -5 E.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Obsidian Golem",
+	"effText": "Golem.\nWhen I'm activated, I give a Summoned character -5 E.",
+	"effects": [
 		{
-			"blurb":"Shards of Glass",
-			"triggerData":
-			{
-				"triggerCondition":"Activate",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"blurb": "Shards of Glass",
+			"triggerData": {
+				"triggerCondition": "Activate",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"Summoned character for Obsidian Golem to give -5 E",
-						"cardRestrictions":["Is Character","Summoned","Board"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Summoned character for Obsidian Golem to give -5 E",
+						"cardRestrictions": [
+							"Character",
+							"Summoned",
+							"Board"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMod":-5
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eModifier": -5
 				}
 			]
 		}
 	],
-	"MovementRestriction":{
-		"normalRestrictionsFromJson":[
+	"MovementRestriction": {
+		"normalRestrictionsFromJson": [
 			"Default",
 			"Activated"
 		]
 	},
-	"AttackRestriction":{
-		"attackRestrictionsArray":[
+	"AttackRestriction": {
+		"attackRestrictionsArray": [
 			"Default",
 			"This is Activated"
 		]
 	},
-	"n":4,
-	"e":4,
-	"s":5,
-	"w":7,
-	"subtypes":["Golem"],
-	"subtypeText":"Golem"
+	"n": 4,
+	"e": 4,
+	"s": 5,
+	"w": 7,
+	"subtypes": [
+		"Golem"
+	],
+	"subtypeText": "Golem"
 }

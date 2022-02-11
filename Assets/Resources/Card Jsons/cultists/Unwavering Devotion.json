@@ -1,37 +1,54 @@
 {
-	"cardType":83,
-	"cardName":"Unwavering Devotion",
-	"effText":"When a friendly Cultist dies, give friendly Cultists +1 W.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Unwavering Devotion",
+	"effText": "When a friendly Cultist dies, give friendly Cultists +1 W.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"blurb":"Unwavering Devotion",
-				"triggerCondition":"Discard",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","From Field"],
-					"cardRestriction":
-					{
-						"cardRestrictions":["Is Character","Board","Friendly","Subtypes Include"],
-						"subtypesInclude":["Cultist"]
+			"triggerData": {
+				"blurb": "Unwavering Devotion",
+				"triggerCondition": "Discard",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before",
+						"From Field"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Friendly",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Cultist"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Is Character","Board","Friendly","Subtypes Include"],
-						"subtypesInclude":["Cultist"]
+					"$type": "KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Friendly",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Cultist"
+						]
 					},
-					"wMod":1
+					"wModifier": 1
 				}
-			]	
+			]
 		}
 	],
-	"c":2,
-	"unique":true,
-	"spellTypes":["Enchant"],
-	"subtypeText":"Enchant"
+	"c": 2,
+	"unique": true,
+	"spellTypes": [
+		"Enchant"
+	],
+	"subtypeText": "Silent Enchant"
 }

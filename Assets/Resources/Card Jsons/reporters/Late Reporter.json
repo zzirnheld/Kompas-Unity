@@ -1,81 +1,103 @@
 {
-	"cardType":67,
-	"cardName":"Late Reporter",
-	"effText":"Speedemon.\nWhen another of my own effects moves me from a space, move me back there.\nWhen I move, an enemy can reveal a card. If they don't, give me +1 ESW.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Late Reporter",
+	"effText": "Speedemon.\nWhen another of my own effects moves me from a space, move me back there.\nWhen I move, an enemy can reveal a card. If they don't, give me +1 ESW.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Move",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered","Stackable Source isn't This Effect","Stackable Source is This Card"]
+			"triggerData": {
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card",
+						"Stackable Source isn't This Effect",
+						"Stackable Source Fits Restriction Now"
+					],
+					"sourceRestriction": {
+						"cardRestrictions": [
+							"Is Source"
+						]
+					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardsCoordsSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTriggeringCardsCoordsSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
 				}
 			]
 		},
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Move",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"triggerData": {
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
-					"subeffIndices":[3],
-					"skipIndex":6
+					"$type": "KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
+					"subeffIndices": [
+						3
+					],
+					"skipIndex": 6
 				},
 				{
-					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
-					"choiceBlurb":"Reveal a card?",
-					"optionBlurbs":["Yes","No"],
-					"jumpIndices":[3,6]
+					"$type": "KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"choiceBlurb": "Reveal a card?",
+					"optionBlurbs": [
+						"Yes",
+						"No"
+					],
+					"jumpIndices": [
+						3,
+						6
+					]
 				},
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"spell to reveal",
-						"cardRestrictions":["Controller Matches Player Target","Hand","Hidden"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "spell to reveal",
+						"cardRestrictions": [
+							"Controller Matches Player Target",
+							"Hand",
+							"Hidden"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.RevealSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.RevealSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMod":1,
-					"sMod":1,
-					"wMod":1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eModifier": 1,
+					"sModifier": 1,
+					"wModifier": 1
 				}
 			]
 		}
 	],
-	"keywords":["Speedemon"],
-	"n":2,
-	"e":2,
-	"s":6,
-	"w":2,
-	"subtypeText":"Speedemon Reporter"
+	"keywords": [
+		"Speedemon"
+	],
+	"n": 2,
+	"e": 2,
+	"s": 6,
+	"w": 2,
+	"subtypeText": "Speedemon Reporter"
 }

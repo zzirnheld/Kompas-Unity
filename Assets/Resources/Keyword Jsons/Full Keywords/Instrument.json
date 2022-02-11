@@ -4,7 +4,7 @@
     {
         "triggerCondition":"Play",
         "triggerRestriction":{
-            "triggerRestrictions":["This Card in Play","Coords Fit Restriction"],
+            "triggerRestrictions":["This Card in Play","Space Fits Restriction"],
             "spaceRestriction":
             {
                 "spaceRestrictions":["Adjacent to Source","Card Here Fits Restriction"],

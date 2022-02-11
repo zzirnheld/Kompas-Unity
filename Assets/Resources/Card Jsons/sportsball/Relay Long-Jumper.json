@@ -1,57 +1,65 @@
 {
-	"cardType":67,
-	"cardName":"Relay Long-Jumper",
-	"effText":"When another character moves adjacent to me, attach their Augment(s) to me.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Relay Long-Jumper",
+	"effText": "When another character moves adjacent to me, attach their Augment(s) to me.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"blurb":"Relay Long-Jump",
-				"triggerCondition":"Move",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Coords Fit Restriction","Triggerer Fits Restriction"],
-					"cardRestriction":
-					{
-						"cardRestrictions":["Is Character","Different from Source"]
+			"triggerData": {
+				"blurb": "Relay Long-Jump",
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Space Fits Restriction",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Different from Source"
+						]
 					},
-					"spaceRestriction":
-					{
-						"spaceRestrictions":["Adjacent to Source"],
-						"mustBeEmpty":false
+					"spaceRestriction": {
+						"spaceRestrictions": [
+							"Adjacent to Source"
+						],
+						"mustBeEmpty": false
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.TargetAugmentsSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetAugmentsSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
-					"condition":"Number Targets <= Constant",
-					"constant":2
+					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition": "Number Targets <= Constant",
+					"constant": 2
 				},
 				{
-					"$type":"KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
-					"attachmentTarget":0
+					"$type": "KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
+					"attachmentTarget": 0
 				},
 				{
-					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
-					"delete":true,
-					"remainingTargets":2,
-					"jumpIndices":[4]
+					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete": true,
+					"remainingTargets": 2,
+					"jumpIndices": [
+						4
+					]
 				}
 			]
 		}
 	],
-	"n":5,
-	"e":3,
-	"s":4,
-	"w":0,
-	"subtypeText":"Teammate"
+	"n": 5,
+	"e": 3,
+	"s": 4,
+	"w": 0,
+	"subtypeText": "Teammate"
 }

@@ -1,53 +1,71 @@
 {
-	"cardType":67,
-	"cardName":"Sterrasterr, Who Stirs the Storm",
-	"effText":"When you cast Radial Weather, move an enemy character to a space in it.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Sterrasterr, Who Stirs the Storm",
+	"effText": "When you cast Radial Weather, move an enemy character to a space in it.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"blurb":"Watch for Truth",
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Controller Triggered"],
-					"cardRestriction":{
-						"cardRestrictions":["Friendly","Is Spell","Subtypes Include","Spell Subtypes"],
-						"subtypesInclude":["Weather"],
-                        "spellSubtypes":["Radial"]
+			"triggerData": {
+				"blurb": "Watch for Truth",
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before",
+						"Controller Triggered"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Friendly",
+							"Spell",
+							"Subtypes Include",
+							"Spell Subtypes"
+						],
+						"subtypesInclude": [
+							"Weather"
+						],
+						"spellSubtypes": [
+							"Radial"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"enemy character for Sterrasterr to stir into the storm",
-						"cardRestrictions":["Is Character","Enemy","Board"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "enemy character for Sterrasterr to stir into the storm",
+						"cardRestrictions": [
+							"Character",
+							"Enemy",
+							"Board"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":
-					{
-						"blurb":"where for Sterrasterr to stir the character into the storm",
-						"spaceRestrictions":["In Target's AOE","Can Move Target to This Space"]
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where for Sterrasterr to stir the character into the storm",
+						"spaceRestrictions": [
+							"In Card Target's AOE",
+							"Can Move Card Target to This Space",
+							"Empty"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp",
-					"targetIndex":-2
+					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp",
+					"targetIndex": -2
 				}
 			]
 		}
 	],
-	"n":2,
-	"e":4,
-	"s":6,
-	"w":4,
-	"unique":true,
-	"subtypeText":"Skyknight Mage"
+	"n": 2,
+	"e": 4,
+	"s": 6,
+	"w": 4,
+	"unique": true,
+	"subtypeText": "Skyknight Mage"
 }

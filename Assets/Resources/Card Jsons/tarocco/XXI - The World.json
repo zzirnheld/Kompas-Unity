@@ -1,62 +1,59 @@
 {
-	"cardType":67,
-	"cardName":"XXI - The World",
-	"effText":"When a character dies, discard->reshuffle them. Draw 1 card. Give characters adjacent to where they died +1 EW.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "XXI - The World",
+	"effText": "When a character dies, draw 1 card. Give characters adjacent to where they died +1 EW.",
+	"effects": [
 		{
-			"blurb":"Reshuffle, buff, draw",
-			"triggerData":
-			{
-                "orderPriority":5,
-				"triggerCondition":"Discard",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
-					"cardRestriction":{
-						"cardRestrictions":["Board","Is Character"]
+			"blurb": "The World Goes On",
+			"triggerData": {
+				"orderPriority": 5,
+				"triggerCondition": "Discard",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Board",
+							"Character"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
-					"condition":"Target Violates Restriction",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Discard"]
-					}
+					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTriggeringCardsCoordsSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardsCoordsSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Is Character","Board","Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["Adjacent to Coords"],
-							"mustBeEmpty":false
+					"$type": "KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Space Target"
+							]
 						}
 					},
-					"eMod":1,
-					"wMod":1
+					"eModifier": 1,
+					"wModifier": 1
 				}
 			]
 		}
 	],
-	"n":2,
-	"e":12,
-	"s":12,
-	"w":12,
-	"subtypeText":"Tarocco Mage"
+	"n": 2,
+	"e": 12,
+	"s": 12,
+	"w": 12,
+	"subtypeText": "Tarocco Mage"
 }

@@ -6,22 +6,8 @@ using System.Linq;
 
 namespace KompasServer.Effects
 {
-    public class TemporaryNESWBuffAllSubeffect : HangingEffectSubeffect
+    public class TemporaryCardStatChangeAllSubeffect : TemporaryCardStatChangeSubeffect
     {
-        public int nModifier = 0;
-        public int eModifier = 0;
-        public int sModifier = 0;
-        public int wModifier = 0;
-        public int cModifier = 0;
-        public int aModifier = 0;
-
-        public int nMultiplier = 0;
-        public int eMultiplier = 0;
-        public int sMultiplier = 0;
-        public int wMultiplier = 0;
-        public int cMultiplier = 0;
-        public int aMultiplier = 0;
-
         //default to making sure things are characters before changing their stats
         public CardRestriction cardRestriction;
 
@@ -32,7 +18,7 @@ namespace KompasServer.Effects
             {
                 cardRestrictions = new string[]
                 {
-                    CardRestriction.IsCharacter
+                    CardRestriction.Character
                 }
             };
             cardRestriction.Initialize(this);
@@ -45,33 +31,31 @@ namespace KompasServer.Effects
             IEnumerable<GameCard> cards 
                 = ServerGame.Cards.Where(c => cardRestriction.IsValidCard(c, Context));
 
-            //First make sure are allowed to set their stats. 
-            //Testing here so later changes can maybe be allowed to allow this to occur,
-            //and so test each to be affected before any are affected
+            //First make sure are allowed to set their stats.
+            //Don't affect any card unless all that should be affected, can be.
             foreach (var card in cards)
             {
                 if (card == null)
                     throw new NullCardException(TargetWasNull);
-                else if (forbidNotBoard && card.Location != CardLocation.Field)
+                else if (forbidNotBoard && card.Location != CardLocation.Board)
                     throw new InvalidLocationException(card.Location, card, ChangedStatsOfCardOffBoard);
             }
 
+            var buff = Buff;
+            var contextCopy = Context.Copy;
+            contextCopy.SetResumeInfo(Effect.CardTargets, Effect.SpaceTargets);
+
             foreach (var card in cards)
             {
-                var temp = new TemporaryNESWBuff(game: ServerGame,
+                var temp = new TemporaryCardStatChange(game: ServerGame,
                                                  triggerRestriction: triggerRestriction,
                                                  endCondition: endCondition,
                                                  fallOffCondition: fallOffCondition,
                                                  fallOffRestriction: CreateFallOffRestriction(card),
                                                  sourceEff: Effect,
-                                                 currentContext: Context,
+                                                 currentContext: contextCopy,
                                                  buffRecipient: card,
-                                                 nBuff: nModifier + Effect.X * nMultiplier,
-                                                 eBuff: eModifier + Effect.X * eMultiplier,
-                                                 sBuff: sModifier + Effect.X * sMultiplier,
-                                                 wBuff: wModifier + Effect.X * wMultiplier,
-                                                 cBuff: cModifier + Effect.X * cMultiplier,
-                                                 aBuff: aModifier + Effect.X * aMultiplier);
+                                                 buff: buff);
             }
 
             return effs;

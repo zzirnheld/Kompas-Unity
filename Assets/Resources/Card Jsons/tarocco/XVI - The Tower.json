@@ -1,75 +1,87 @@
 {
-	"cardType":67,
-	"cardName":"XVI - The Tower",
-	"effText":"When something else makes you draw X, give me -X E, draw X, and reshuffle to hand size.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "XVI - The Tower",
+	"effText": "When something else makes you draw X, give me -X E, draw X, and reshuffle to hand size.",
+	"effects": [
 		{
-			"blurb":"Folly",
-			"triggerData":
-			{
-				"triggerCondition":"Draw",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Controller Triggered","Stackable Source isn't This Effect"]
+			"blurb": "Folly",
+			"triggerData": {
+				"triggerCondition": "Draw",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Controller Triggered",
+						"Stackable Source isn't This Effect"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMult":-1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMultiplier": -1
 				},
 				{
-					"$type":"KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
-					"xMultiplier":1
+					"$type": "KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
-					"whatToCount":"Hand Size",
-					"xMultiplier":1
+					"$type": "KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"whatToCount": "Hand Size",
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
-					"whatToCount":"Hand Size Limit",
-					"change":true,
-					"xMultiplier":-1
+					"$type": "KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"whatToCount": "Hand Size Limit",
+					"change": true,
+					"xMultiplier": -1
 				},
 				{
-					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
-					"condition":"X<=0",
-					"xMultiplier":1
+					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition": "X<=0",
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"folly of the Tower",
-						"cardRestrictions":["Friendly","Hand"]
+					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "folly of the Tower",
+						"cardRestrictions": [
+							"Friendly",
+							"Hand"
+						]
 					},
-					"listRestriction":{
-						"listRestrictions":["Min Can Choose: X","Max Can Choose: X"]
+					"listRestriction": {
+						"listRestrictions": [
+							"Min Can Choose: X",
+							"Max Can Choose: X"
+						]
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.BottomdeckSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.BottomdeckSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
-					"delete":true,
-					"jumpIndices":[8]
+					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete": true,
+					"jumpIndices": [
+						8
+					]
 				}
 			]
 		}
 	],
-	"n":0,
-	"e":2,
-	"s":4,
-	"w":0,
-	"subtypes":["Tarocco"],
-	"subtypeText":"Tarocco"
+	"n": 0,
+	"e": 2,
+	"s": 4,
+	"w": 0,
+	"subtypes": [
+		"Tarocco"
+	],
+	"subtypeText": "Tarocco"
 }

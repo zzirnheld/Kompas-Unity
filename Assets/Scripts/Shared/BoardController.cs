@@ -21,7 +21,7 @@ namespace KompasCore.GameCore
 
         public Game game;
 
-        public CardLocation CardLocation => CardLocation.Field;
+        public CardLocation CardLocation => CardLocation.Board;
 
         public static int PosToGridIndex(float pos) 
             => (int)((pos + BoardLenOffset) / (LenOneSpace));
@@ -204,7 +204,7 @@ namespace KompasCore.GameCore
         #region game mechanics
         public virtual void Remove(GameCard toRemove)
         {
-            if (toRemove.Location != CardLocation.Field) 
+            if (toRemove.Location != CardLocation.Board) 
                 throw new CardNotHereException(CardLocation, toRemove, $"Tried to remove {toRemove} not on board");
             if (toRemove.Position == null) 
                 throw new InvalidSpaceException(toRemove.Position, "Can't remove a card from a null space");
@@ -231,7 +231,7 @@ namespace KompasCore.GameCore
         public virtual void Play(GameCard toPlay, Space to, Player controller, IStackable stackSrc = null)
         {
             if (toPlay == null) throw new NullCardException($"Null card to play to {to}");
-            if (toPlay.Location == CardLocation.Field) throw new AlreadyHereException(CardLocation);
+            if (toPlay.Location == CardLocation.Board) throw new AlreadyHereException(CardLocation);
             if (to == null) throw new InvalidSpaceException(to, $"Space to play a card to cannot be null!");
             if (!ValidSpellSpaceFor(toPlay, to)) throw new InvalidSpaceException(to, 
                 $"Tried to play {toPlay} to space {to}. This isn't ok, that's an invalid spell spot.");
@@ -272,8 +272,8 @@ namespace KompasCore.GameCore
             if (!to.IsValid) throw new InvalidSpaceException(to);
             if (card == null) throw new NullCardException("Card to be swapped must not be null");
             if (card.Attached) throw new NotImplementedException();
-            if (card.Location != CardLocation.Field || card != GetCardAt(card.Position)) 
-                throw new CardNotHereException(CardLocation.Field, card,
+            if (card.Location != CardLocation.Board || card != GetCardAt(card.Position)) 
+                throw new CardNotHereException(CardLocation.Board, card,
                     $"{card} not at {card.Position}, {GetCardAt(card.Position)} is there instead");
 
             var (tempX, tempY) = card.Position;

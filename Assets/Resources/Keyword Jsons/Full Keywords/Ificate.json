@@ -4,7 +4,7 @@
 		"blurb":"Ificate",
 		"triggerCondition":"Discard",
 		"triggerRestriction":{
-			"triggerRestrictions":["This Card Triggered","Triggerer Fits Restriction"],
+			"triggerRestrictions":["This Card is Main Card","Main Card Fits Restriction Before"],
 			"cardRestriction":{
 				"cardRestrictions":["Hand"]
 			}
@@ -34,7 +34,7 @@
 			"spaceRestriction":
 			{
 				"blurb":"where Ificator to play targeted Crazy Idea",
-				"spaceRestrictions":["Can Play Target to This Space"]
+				"spaceRestrictions":["Can Play Card Target to This Space"]
 			}
 		},
 		{

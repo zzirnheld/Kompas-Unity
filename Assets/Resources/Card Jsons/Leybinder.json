@@ -1,63 +1,73 @@
 {
-	"cardType":67,
-	"cardName":"Leybinder",
-	"effText":"The first time each turn a character moves X, deal me X damage. Their controller hand-summons an SX character.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Leybinder",
+	"effText": "The first time each turn a character moves X, deal me X damage. Their controller hand-summons an SX character.",
+	"effects": [
 		{
-			"blurb":"Leybind",
-			"triggerData":
-			{
-				"triggerCondition":"Move",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Max Per Turn"]
+			"blurb": "Leybind",
+			"triggerData": {
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Max Per Turn"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DamageSubeffect, Assembly-CSharp",
-					"xMultiplier":1
+					"$type": "KompasServer.Effects.DamageSubeffect, Assembly-CSharp",
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.TargetTargetsControllerSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTargetsControllerSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"for Leybinder to hand-summon",
-						"cardRestrictions":["Is Character","Controller Matches Player Target","Hand","Card Value Fits X Restriction"],
-						"cardValue":{
-							"value":"S"
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "for Leybinder to hand-summon",
+						"cardRestrictions": [
+							"Character",
+							"Controller Matches Player Target",
+							"Hand",
+							"Card Value Fits Number Restriction"
+						],
+						"cardValue": {
+							"value": "S"
 						},
-						"xRestriction":{
-							"xRestrictions":["=X"]
+						"cardValueNumberRestriction": {
+							"numberRestrictions": [
+								"=X"
+							]
 						}
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":
-					{
-						"blurb":"where Leybinder to hand-summon",
-						"spaceRestrictions":["Can Play Target to This Space"]
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where Leybinder to hand-summon",
+						"spaceRestrictions": [
+							"Can Play Card Target to This Space",
+							"Empty"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				}
-			]	
+			]
 		}
 	],
-	"n":1,
-	"e":9,
-	"s":9,
-	"w":9,
-	"subtypeText":"Ley Mage"
+	"n": 1,
+	"e": 9,
+	"s": 9,
+	"w": 9,
+	"subtypeText": "Ley Mage"
 }

@@ -1,52 +1,56 @@
 {
-	"cardType":67,
-	"cardName":"Mach the Porcupine",
-	"effText":"Speedemon. Speedemon. Speedemon.\nWhen I move, give me +1 W.\nAfter I fight, set my W to 0.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Mach the Porcupine",
+	"effText": "Speedemon.\nWhen I move, give me +1 W.\nAfter I fight, set my W to 0.",
+	"effects": [
 		{
-			"blurb":"go fast (req'd)",
-			"triggerData":
-			{
-				"triggerCondition":"Move",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"blurb": "go fast (req'd)",
+			"triggerData": {
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"wMod":1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"wModifier": 1
 				}
 			]
 		},
 		{
-			"blurb":"*drops rings*",
-			"triggerData":
-			{
-				"triggerCondition":"Battle End",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"blurb": "*drops rings*",
+			"triggerData": {
+				"triggerCondition": "Battle End",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.SetCardStatsSubeffect, Assembly-CSharp",
-					"wVal":0
+					"$type": "KompasServer.Effects.SetCardStatsSubeffect, Assembly-CSharp",
+					"wVal": 0
 				}
 			]
 		}
 	],
-    "unique":true,
-	"keywords":["Speedemon","Speedemon","Speedemon"],
-	"n":1,
-	"e":5,
-	"s":5,
-	"w":0,
-	"subtypeText":"Speedemon"
+	"unique": true,
+	"keywords": [
+		"Speedemon"
+	],
+	"n": 1,
+	"e": 4,
+	"s": 4,
+	"w": 0,
+	"subtypeText": "Speedemon"
 }

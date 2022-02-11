@@ -1,53 +1,57 @@
 {
-	"cardType":67,
-	"cardName":"Weird Idea That is Also",
-	"effText":"Once each friendly turn, you can give me -1 E. Hand->discard a card and give a character +1 W.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Weird Idea That is Also",
+	"effText": "Once each friendly turn, you can give me -1 E. Hand->discard a card and give a character +1 W.",
+	"effects": [
 		{
-			"activationRestriction":{
-				"activationRestrictionArray":[
+			"activationRestriction": {
+				"activationRestrictionArray": [
 					"Max Times Per Turn",
 					"Friendly Turn",
 					"Default"
 				]
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMod":-1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eModifier": -1
 				},
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"card in hand that is also discard",
-						"cardRestrictions":["Friendly","Hand"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "card in hand that is also discard",
+						"cardRestrictions": [
+							"Friendly",
+							"Hand"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"character that is also +1 W",
-						"cardRestrictions":["Is Character","Board"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "character that is also +1 W",
+						"cardRestrictions": [
+							"Character",
+							"Board"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"wMod":1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"wModifier": 1
 				}
-			]	
+			]
 		}
 	],
-	"n":1,
-	"e":5,
-	"s":5,
-	"w":5,
-	"subtypeText":"Crazy Idea"
+	"n": 1,
+	"e": 5,
+	"s": 5,
+	"w": 5,
+	"subtypeText": "Crazy Idea"
 }

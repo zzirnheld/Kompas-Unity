@@ -1,36 +1,45 @@
 {
-	"cardType":67,
-	"cardName":"Carla",
-	"effText":"Once each friendly turn, you can discard->hand a friendly Crazy card.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Carla",
+	"effText": "Once each friendly turn, you can discard->hand a friendly Crazy card.",
+	"effects": [
 		{
-			"blurb":"Intern Nonsense",
-			"activationRestriction":{
-				"activationRestrictionArray":[
+			"blurb": "Intern Nonsense",
+			"activationRestriction": {
+				"activationRestrictionArray": [
 					"Max Times Per Turn",
 					"Default"
 				]
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Friendly","Discard","Subtypes Include"],
-                        "subtypesInclude":["Crazy"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Friendly",
+							"Discard",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Crazy"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
 				}
-			]	
+			]
 		}
 	],
-    "unique":true,
-	"n":1,
-	"e":1,
-	"s":1,
-	"w":0,
-	"subtypes":["Crazy","Intern","Person"],
-	"subtypeText":"Crazy Intern Person"
+	"unique": true,
+	"n": 1,
+	"e": 1,
+	"s": 1,
+	"w": 0,
+	"subtypes": [
+		"Crazy",
+		"Intern",
+		"Person"
+	],
+	"subtypeText": "Crazy Intern Person"
 }

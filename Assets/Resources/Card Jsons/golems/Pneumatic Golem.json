@@ -1,68 +1,76 @@
 {
-	"cardType":67,
-	"cardName":"Pneumatic Golem",
-	"effText":"Golem.\nWhen I'm activated, set X to my N. Rehand a character within X spaces of me.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Pneumatic Golem",
+	"effText": "Golem.\nWhen I'm activated, set X to my N. Rehand a character within X spaces of me.",
+	"effects": [
 		{
-			"blurb":"Nope, Go Away",
-			"triggerData":
-			{
-				"triggerCondition":"Activate",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"blurb": "Nope, Go Away",
+			"triggerData": {
+				"triggerCondition": "Activate",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
-					"cardValue":{
-						"value":"N"
+					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "N"
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"character within N spaces of Pneumatic Golem for it to rehand",
-						"cardRestrictions":["Is Character","Board","Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["Distance to Source Fits X Restriction"],
-							"distanceXRestriction":{
-								"xRestrictions":["<=X"],
-								"constant":1
-							},
-							"mustBeEmpty":false
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "character within N spaces of Pneumatic Golem for it to rehand",
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Distance to Source Fits X Restriction"
+							],
+							"distanceXRestriction": {
+								"numberRestrictions": [
+									"<=X"
+								],
+								"constant": 1
+							}
 						}
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
 				}
 			]
 		}
 	],
-	"MovementRestriction":{
-		"normalRestrictionsFromJson":[
+	"MovementRestriction": {
+		"normalRestrictionsFromJson": [
 			"Default",
 			"Activated"
 		]
 	},
-	"AttackRestriction":{
-		"attackRestrictionsArray":[
+	"AttackRestriction": {
+		"attackRestrictionsArray": [
 			"Default",
 			"This is Activated"
 		]
 	},
-	"n":5,
-	"e":4,
-	"s":3,
-	"w":1,
-	"subtypes":["Golem"],
-	"subtypeText":"Golem"
+	"n": 5,
+	"e": 4,
+	"s": 3,
+	"w": 1,
+	"subtypes": [
+		"Golem"
+	],
+	"subtypeText": "Golem"
 }

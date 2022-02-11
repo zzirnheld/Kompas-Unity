@@ -1,43 +1,55 @@
 {
-	"cardType":83,
-	"cardName":"Spiritual Advice",
-	"effText":"Flashback.\nDicard->topdeck X Spirits. Draw 3 * X cards.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Spiritual Advice",
+	"effText": "Flashback.\nDicard->topdeck X Spirits. Draw 3 * X cards.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"for Spiritual Advice to reshuffle",
-						"cardRestrictions":["Friendly","Discard","Subtypes Include"],
-						"subtypesInclude":["Spirit"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "for Spiritual Advice to reshuffle",
+						"cardRestrictions": [
+							"Friendly",
+							"Discard",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Spirit"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.TopdeckSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TopdeckSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.CountXLoopSubeffect, Assembly-CSharp",
-					"canDecline":true,
-					"jumpIndices":[0]
+					"$type": "KompasServer.Effects.CountXLoopSubeffect, Assembly-CSharp",
+					"canDecline": true,
+					"jumpIndices": [
+						0
+					]
 				},
 				{
-					"$type":"KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
-					"xMultiplier":3
+					"$type": "KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"xMultiplier": 3
 				}
-			]	
+			]
 		}
 	],
-	"keywords":["Flashback"],
-	"c":1,
-	"spellTypes":["Simple"],
-	"subtypeText":"Simple"
+	"keywords": [
+		"Flashback"
+	],
+	"c": 1,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypeText": "Simple"
 }

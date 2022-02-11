@@ -1,58 +1,74 @@
 {
-	"cardType":67,
-	"cardName":"Michael on Triangle",
-	"effText":"When friendly turns start, dispel 1 adjacent Music and deck->cast 1 Music where it was.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Michael on Triangle",
+	"effText": "When friendly turns start, dispel 1 adjacent Music and deck->cast 1 Music where it was.",
+	"effects": [
 		{
-            "blurb":"ding ding bitch",
-			"triggerData":
-			{
-				"triggerCondition":"Turn Start",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Friendly Turn"]
+			"blurb": "ding ding bitch",
+			"triggerData": {
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Friendly Turn"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"i said ding ding bitch",
-						"cardRestrictions":["Board","Is Spell","Subtypes Include","Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["Adjacent to Source"],
-							"mustBeEmpty":false
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "i said ding ding bitch",
+						"cardRestrictions": [
+							"Board",
+							"Spell",
+							"Subtypes Include",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Source"
+							]
 						},
-						"subtypesInclude":["Music"]
+						"subtypesInclude": [
+							"Music"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DispelSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DispelSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-                        "blurb":"Music to cast",
-						"cardRestrictions":["Friendly","Deck","Distinct Name from Other Targets","Subtypes Include"],
-						"subtypesInclude":["Music"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Music to cast",
+						"cardRestrictions": [
+							"Friendly",
+							"Deck",
+							"Distinct Name from Other Targets",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Music"
+						]
 					}
 				},
-                {
-                    "$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
-                }
-			]	
+				{
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
+			]
 		}
 	],
-    "unique":true,
-	"n":3,
-	"e":6,
-	"s":4,
-	"w":2,
-	"subtypes":["Bard"],
-	"subtypeText":"Bard"
+	"unique": true,
+	"n": 3,
+	"e": 6,
+	"s": 4,
+	"w": 2,
+	"subtypes": [
+		"Bard"
+	],
+	"subtypeText": "Bard"
 }

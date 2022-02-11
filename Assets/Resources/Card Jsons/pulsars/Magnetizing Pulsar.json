@@ -1,96 +1,130 @@
 {
-	"cardType":67,
-	"cardName":"Magnetizing Pulsar",
-	"effText":"The first time each stack your Avatar's S changes, move another card 1 space:\n+S: towards me.\n-S: away from me.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Magnetizing Pulsar",
+	"effText": "The first time each stack your Avatar's S changes, move another card 1 space:\n+S: towards me.\n-S: away from me.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"blurb":"Attract",
-				"triggerCondition":"S Change",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","X Fits Restriction","Triggerer Fits Restriction","Max Per Stack"],
-					"xRestriction":{
-						"xRestrictions":[">0"]
+			"triggerData": {
+				"blurb": "Attract",
+				"triggerCondition": "S Change",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"X Fits Restriction",
+						"Main Card Fits Restriction Before",
+						"Max Per Stack"
+					],
+					"xRestriction": {
+						"numberRestrictions": [
+							">0"
+						]
 					},
-					"cardRestriction":
-					{
-						"cardRestrictions":["Board","Avatar","Friendly"]
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Board",
+							"Avatar",
+							"Friendly"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"for Magnetizing to attract",
-						"cardRestrictions":["Board","Different from Source"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "for Magnetizing to attract",
+						"cardRestrictions": [
+							"Board",
+							"Different from Source"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":
-					{
-						"blurb":"to move Magnetizing's target to",
-						"spaceRestrictions":["Towards Source from Target","Can Move Target to This Space","Distance to Target Fits X Restriction"],
-                        "distanceXRestriction":{
-                            "xRestrictions":["=X"]
-                        }
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "to move Magnetizing's target to",
+						"spaceRestrictions": [
+							"Towards Source from Card Target",
+							"Can Move Card Target to This Space",
+							"Distance to Card Target Fits X Restriction",
+							"Empty"
+						],
+						"distanceXRestriction": {
+							"numberRestrictions": [
+								"=X"
+							]
+						}
 					},
-					"xModifier":1
+					"xModifier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
 				}
 			]
 		},
 		{
-			"triggerData":
-			{
-				"blurb":"Repel",
-				"triggerCondition":"S Change",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","X Fits Restriction","Triggerer Fits Restriction","Max Per Stack"],
-					"xRestriction":{
-						"xRestrictions":["<0"]
+			"triggerData": {
+				"blurb": "Repel",
+				"triggerCondition": "S Change",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"X Fits Restriction",
+						"Main Card Fits Restriction Before",
+						"Max Per Stack"
+					],
+					"xRestriction": {
+						"numberRestrictions": [
+							"<0"
+						]
 					},
-					"cardRestriction":
-					{
-						"cardRestrictions":["Board","Avatar","Friendly"]
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Board",
+							"Avatar",
+							"Friendly"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"for Magnetizing to repel",
-						"cardRestrictions":["Board","Different from Source"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "for Magnetizing to repel",
+						"cardRestrictions": [
+							"Board",
+							"Different from Source"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":
-					{
-						"blurb":"to move Magnetizing's target to",
-						"spaceRestrictions":["Further from Source than Target","Can Move Target to This Space","Distance to Target Fits X Restriction"],
-                        "distanceXRestriction":{
-                            "xRestrictions":["=X"]
-                        }
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "to move Magnetizing's target to",
+						"spaceRestrictions": [
+							"Further from Source than Card Target",
+							"Can Move Card Target to This Space",
+							"Distance to Card Target Fits X Restriction",
+							"Empty"
+						],
+						"distanceXRestriction": {
+							"numberRestrictions": [
+								"=X"
+							]
+						}
 					},
-					"xModifier":1
+					"xModifier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
 				}
 			]
 		}
 	],
-	"n":2,
-	"e":3,
-	"s":3,
-	"w":3,
-	"subtypeText":"Pulsar"
+	"n": 2,
+	"e": 3,
+	"s": 3,
+	"w": 3,
+	"subtypeText": "Pulsar"
 }

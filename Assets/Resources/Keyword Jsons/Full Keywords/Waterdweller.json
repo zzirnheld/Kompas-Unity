@@ -5,12 +5,12 @@
 		"blurb":"Waterdweller",
 		"triggerCondition":"Stack End",
 		"triggerRestriction":{
-			"triggerRestrictions":["This Card Fits Restriction"],
+			"triggerRestrictions":["This Card Fits Restriction Now"],
 			"cardRestriction":{
 				"cardRestrictions":["Board","Not Avatar","Space Fits Restriction"],
 				"spaceRestriction":
 				{
-					"spaceRestrictions":["Not In AOE Of"],
+					"spaceRestrictions":["Not In AOE of Card Fitting Restriction"],
 					"inAOEOfRestriction":{
 						"cardRestrictions":["Subtypes Include"],
 						"subtypesInclude":["Water"]

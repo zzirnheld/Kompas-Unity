@@ -17,7 +17,8 @@ namespace KompasCore.GameCore
 
         public virtual void Annihilate(GameCard card, IStackable stackSrc = null)
         {
-            if (card.GameLocation.Equals(this)) throw new AlreadyHereException(CardLocation.Annihilation);
+            if (card.GameLocation != null && card.GameLocation.Equals(this)) 
+                throw new AlreadyHereException(CardLocation.Annihilation);
 
             card.Remove(stackSrc);
             Cards.Add(card);

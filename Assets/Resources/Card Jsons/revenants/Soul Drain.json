@@ -1,40 +1,49 @@
 {
-	"cardType":83,
-	"cardName":"Soul Drain",
-	"effText":"When an SX Revenant is annihilated, mill your deck’s top X.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Soul Drain",
+	"effText": "When an SX Revenant is annihilated, mill your deck's top X.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Annihilate",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
-					"cardRestriction":{
-						"cardRestrictions":["Subtypes Include","Is Character"],
-						"subtypesInclude":["Revenant"]
+			"triggerData": {
+				"triggerCondition": "Annihilate",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Character"
+						],
+						"subtypesInclude": [
+							"Revenant"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
-					"cardValue":{
-						"value":"S"
+					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "S"
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.MillSubeffect, Assembly-CSharp",
-					"xMultiplier":1
+					"$type": "KompasServer.Effects.MillSubeffect, Assembly-CSharp",
+					"xMultiplier": 1
 				}
-			]	
+			]
 		}
 	],
-	"c":3,
-	"unique":true,
-	"spellTypes":["Enchant"],
-	"subtypeText":"Enchant"
+	"c": 3,
+	"unique": true,
+	"spellTypes": [
+		"Enchant"
+	],
+	"subtypeText": "Enchant"
 }

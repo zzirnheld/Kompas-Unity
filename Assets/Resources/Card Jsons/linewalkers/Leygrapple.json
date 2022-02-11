@@ -1,54 +1,67 @@
 {
-	"cardType":83,
-	"cardName":"Leygrapple",
-	"effText":"When a character is summoned, move a Linewalker on their diagonal to a space adjacent to that character.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Leygrapple",
+	"effText": "When a character is summoned, move a Linewalker on their diagonal to a space adjacent to that character.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
-					"cardRestriction":
-					{
-						"cardRestrictions":["Is Character"]
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"who will Leygrapple",
-						"cardRestrictions":["Board","Is Character","Subtypes Include","Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["On Target's Diagonal"],
-							"mustBeEmpty":false
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "who will Leygrapple",
+						"cardRestrictions": [
+							"Board",
+							"Character",
+							"Subtypes Include",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"On Card Target's Diagonal"
+							]
 						},
-						"subtypesInclude":["Linewalker"]
+						"subtypesInclude": [
+							"Linewalker"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":
-					{
-						"blurb":"to move that Linewalker to",
-						"spaceRestrictions":["Adjacent to Target"]
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "to move that Linewalker to",
+						"spaceRestrictions": [
+							"Adjacent to Card Target",
+							"Empty"
+						]
 					},
-					"targetIndex":-2
+					"targetIndex": -2
 				},
 				{
-					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
 				}
-			]	
+			]
 		}
 	],
-	"c":1,
-	"spellTypes":["Enchant"],
-	"subtypeText":"Enchant"
+	"c": 1,
+	"spellTypes": [
+		"Enchant"
+	],
+	"subtypeText": "Enchant"
 }

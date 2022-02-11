@@ -22,7 +22,7 @@
 			"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
 			"cardRestriction":{
 				"blurb":"Weather to deck-cast",
-				"cardRestrictions":["Friendly","Deck","Is Spell","Distinct Name from Source","Subtypes Include","Can Be Played"],
+				"cardRestrictions":["Friendly","Deck","Spell","Distinct Name from Source","Subtypes Include","Can Be Played"],
 				"subtypesInclude":["Weather"]
 			},
 			"maxCanChoose":1
@@ -32,7 +32,7 @@
 			"spaceRestriction":
 			{
 				"blurb":"where to cast the Weather",
-				"spaceRestrictions":["Can Play Target to This Space","Adjacent to Coords"],
+				"spaceRestrictions":["Can Play Card Target to This Space","Adjacent to Space Target"],
 				"playRestrictionsToIgnore":["Adjacent to Friendly Card"]
 			}
 		},

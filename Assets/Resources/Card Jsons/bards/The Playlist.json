@@ -1,59 +1,73 @@
 {
-	"cardType":83,
-	"cardName":"The Playlist",
-	"effText":"If your Avatar is a Bard, search your deck for 3 Music spells.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "The Playlist",
+	"effText": "If your Avatar is a Bard, search your deck for 3 Music spells.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetAvatarSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetAvatarSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
-					"condition":"Target Violates Restriction",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Subtypes Include"],
-						"subtypesInclude":["Bard"]
+					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition": "Target Violates Restriction",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Bard"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"Music",
-						"cardRestrictions":["Friendly","Deck","Subtypes Include"],
-						"subtypesInclude":["Music"]
+					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Music",
+						"cardRestrictions": [
+							"Friendly",
+							"Deck",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Music"
+						]
 					},
-					"listRestriction":{
-						"listRestrictions":["Min Can Choose","Max Can Choose"],
-                        "minCanChoose":3,
-						"maxCanChoose":3
+					"listRestriction": {
+						"listRestrictions": [
+							"Min Can Choose",
+							"Max Can Choose"
+						],
+						"minCanChoose": 3,
+						"maxCanChoose": 3
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp",
-                    "targetIndex":-1
+					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp",
+					"targetIndex": -1
 				},
 				{
-					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp",
-                    "targetIndex":-2
+					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp",
+					"targetIndex": -2
 				},
 				{
-					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp",
-                    "targetIndex":-3
+					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp",
+					"targetIndex": -3
 				}
 			]
 		}
 	],
-	"c":2,
-	"spellTypes":["Simple"],
-	"subtypeText":"Simple"
+	"c": 2,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypeText": "Simple"
 }

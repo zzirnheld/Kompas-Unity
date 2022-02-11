@@ -1,0 +1,81 @@
+{
+	"cardType": 67,
+	"cardName": "Stimulating Moss",
+	"effText": "Spores.\nWhen I'm activated, if your hand isn't full, reshuffle a dead Fungus. Draw 1 card. Pulse adjacent cards.",
+	"effects": [
+		{
+			"blurb": "Stimulate",
+			"triggerData": {
+				"triggerCondition": "Activate",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition": "Hand Full"
+				},
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "dead Fungus",
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Character",
+							"Discard"
+						],
+						"subtypesInclude": [
+							"Fungus"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Board","Character","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["Adjacent to Source"],
+							"mustBeEmpty":false
+						}
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.ActivateSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ActivateSubeffect, Assembly-CSharp",
+					"activate":false
+				},
+				{
+					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete":true,
+					"remainingTargets": 1,
+					"jumpIndices":[5]
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Spores"
+	],
+	"n": 1,
+	"e": 5,
+	"s": 5,
+	"w": 0,
+	"subtypes": [
+		"Fruiting",
+		"Fungus"
+	],
+	"subtypeText": "Fruiting Fungus"
+}

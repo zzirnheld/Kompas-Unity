@@ -1,46 +1,60 @@
 {
-	"cardType":67,
-	"cardName":"Iriaid, Who Rides the Skies",
-	"effText":"When you cast Radial Weather, move me to a space in it.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Iriaid, Who Rides the Skies",
+	"effText": "When you cast Radial Weather, move me to a space in it.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"blurb":"Watch for Truth",
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Controller Triggered"],
-					"cardRestriction":{
-						"cardRestrictions":["Friendly","Is Spell","Subtypes Include","Spell Subtypes"],
-						"subtypesInclude":["Weather"],
-                        "spellSubtypes":["Radial"]
+			"triggerData": {
+				"blurb": "Watch for Truth",
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before",
+						"Controller Triggered"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Friendly",
+							"Spell",
+							"Subtypes Include",
+							"Spell Subtypes"
+						],
+						"subtypesInclude": [
+							"Weather"
+						],
+						"spellSubtypes": [
+							"Radial"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":
-					{
-						"spaceRestrictions":["In Target's AOE"]
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"spaceRestrictions": [
+							"In Card Target's AOE",
+							"Empty"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
 				}
 			]
 		}
 	],
-	"n":4,
-	"e":2,
-	"s":5,
-	"w":2,
-	"unique":true,
-	"subtypeText":"Skyknight Warrior"
+	"n": 4,
+	"e": 2,
+	"s": 5,
+	"w": 2,
+	"unique": true,
+	"subtypeText": "Skyknight Warrior"
 }

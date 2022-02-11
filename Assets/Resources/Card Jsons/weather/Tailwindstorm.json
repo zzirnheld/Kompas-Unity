@@ -9,18 +9,18 @@
 			{
 				"triggerCondition":"Move",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Coords Fit Restriction","Triggerer Fits Restriction","X Fits Restriction"],
+					"triggerRestrictions":["This Card in Play","Space Fits Restriction","Main Card Fits Restriction Before","X Fits Restriction"],
 					"cardRestriction":{
-						"cardRestrictions":["Is Character"]
+						"cardRestrictions":["Character"]
 					},
 					"spaceRestriction":
 					{
 						"mustBeEmpty":false,
-						"spaceRestrictions":["In AOE"]
+						"spaceRestrictions":["In Source's AOE"]
 					},
 					"xRestriction":
 					{
-						"xRestrictions":[">=Constant"],
+						"numberRestrictions":[">=Constant"],
 						"constant":2
 					}
 				}
@@ -31,7 +31,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"nMod":1
+					"nModifier":1
 				}
 			]	
 		}

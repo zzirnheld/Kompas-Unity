@@ -1,56 +1,74 @@
 {
-	"cardType":67,
-	"cardName":"Disfigured Beggar",
-	"effText":"Supplicant.\nThe first time each turn another character arrives adjacent to a Supplicant, move that character one space.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Disfigured Beggar",
+	"effText": "Supplicant.\nThe first time each turn another character arrives adjacent to a Supplicant, move that character one space.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"blurb":"Hunger",
-				"triggerCondition":"Arrive",
-				"triggerRestriction":{
-					"triggerRestrictions":["Max Per Turn","This Card in Play","Coords Fit Restriction","Triggerer Fits Restriction"],
-					"cardRestriction":
-					{
-						"cardRestrictions":["Is Character","Different from Source"]
+			"triggerData": {
+				"blurb": "Hunger",
+				"triggerCondition": "Arrive",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"Max Per Turn",
+						"This Card in Play",
+						"Space Fits Restriction",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Different from Source"
+						]
 					},
-					"spaceRestriction":
-					{
-						"mustBeEmpty":false,
-						"spaceRestrictions":["Adjacent to a Card that Fits Restriction"],
-						"adjacencyRestriction":{
-							"cardRestrictions":["Subtypes Include"],
-							"subtypesInclude":["Supplicant"]
+					"spaceRestriction": {
+						"mustBeEmpty": false,
+						"spaceRestrictions": [
+							"Adjacent to a Card that Fits Restriction"
+						],
+						"adjacencyRestriction": {
+							"cardRestrictions": [
+								"Subtypes Include"
+							],
+							"subtypesInclude": [
+								"Supplicant"
+							]
 						}
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":
-					{
-						"blurb":"ok, now move just a little bit more",
-						"spaceRestrictions":["Can Move Target to This Space","Distance to Target Fits X Restriction"],
-                        "distanceXRestriction":{
-                            "xRestrictions":["=X"]
-                        }
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "ok, now move just a little bit more",
+						"spaceRestrictions": [
+							"Can Move Card Target to This Space",
+							"Distance to Card Target Fits X Restriction",
+							"Empty"
+						],
+						"distanceXRestriction": {
+							"numberRestrictions": [
+								"=X"
+							]
+						}
 					},
-					"xModifier":1
+					"xModifier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
 				}
 			]
 		}
 	],
-	"keywords":["Supplicant"],
-	"n":0,
-	"e":1,
-	"s":2,
-	"w":0,
-	"subtypeText":"Supplicant"
+	"keywords": [
+		"Supplicant"
+	],
+	"n": 0,
+	"e": 1,
+	"s": 2,
+	"w": 0,
+	"subtypeText": "Supplicant"
 }

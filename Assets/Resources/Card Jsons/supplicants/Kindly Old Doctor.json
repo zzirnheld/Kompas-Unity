@@ -1,34 +1,40 @@
 {
-	"cardType":67,
-	"cardName":"Kindly Old Doctor",
-	"effText":"When turns start, discard-rehand a friendly Supplicant.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Kindly Old Doctor",
+	"effText": "When turns start, discard-rehand a friendly Supplicant.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Turn Start",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play"]
+			"triggerData": {
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Friendly","Discard","Subtypes Include"],
-						"subtypesInclude":["Supplicant"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Friendly",
+							"Discard",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Supplicant"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
 				}
 			]
 		}
 	],
-	"n":0,
-	"e":5,
-	"s":4,
-	"w":0,
-	"subtypeText":"Kind Doctor"
+	"n": 0,
+	"e": 5,
+	"s": 4,
+	"w": 0,
+	"subtypeText": "Kind Doctor"
 }

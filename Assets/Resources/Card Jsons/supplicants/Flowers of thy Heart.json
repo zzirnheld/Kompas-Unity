@@ -8,10 +8,10 @@
 			{
 				"triggerCondition":"Discard",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
+					"triggerRestrictions":["This Card in Play","Main Card Fits Restriction Before"],
 					"cardRestriction":
 					{
-						"cardRestrictions":["Is Character","Board","Negated"]
+						"cardRestrictions":["Character","Board","Negated"]
 					}
 				}
 			},

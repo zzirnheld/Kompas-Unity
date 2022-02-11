@@ -1,67 +1,78 @@
 {
-	"cardType":67,
-	"cardName":"Clay Golem",
-	"effText":"Golem.\nWhen I'm activated, tribute me and deck->summon where I was a Golem with less S than your Avatar.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Clay Golem",
+	"effText": "Golem.\nWhen I'm activated, tribute me and deck->summon where I was a Golem with less S than your Avatar.",
+	"effects": [
 		{
-			"blurb":"Golemorph",
-			"triggerData":
-			{
-				"triggerCondition":"Activate",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"blurb": "Golemorph",
+			"triggerData": {
+				"triggerCondition": "Activate",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetThisSpaceSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSpaceSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"for Clay Golem to summon",
-						"cardRestrictions":["Subtypes Include","Is Character","Deck","Card Value Fits X Restriction"],
-						"cardValue":{
-							"value":"S"
+					"$type": "KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "for Clay Golem to summon",
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Character",
+							"Deck",
+							"Card Value Fits Number Restriction"
+						],
+						"cardValue": {
+							"value": "S"
 						},
-						"xRestriction":{
-							"xRestrictions":["<Avatar"],
-							"avatarCardValue":{
-								"value":"S"
+						"cardValueNumberRestriction": {
+							"numberRestrictions": [
+								"<Avatar"
+							],
+							"avatarCardValue": {
+								"value": "S"
 							}
 						},
-						"subtypesInclude":["Golem"]
+						"subtypesInclude": [
+							"Golem"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				}
 			]
 		}
 	],
-	"MovementRestriction":{
-		"normalRestrictionsFromJson":[
+	"MovementRestriction": {
+		"normalRestrictionsFromJson": [
 			"Default",
 			"Activated"
 		]
 	},
-	"AttackRestriction":{
-		"attackRestrictionsArray":[
+	"AttackRestriction": {
+		"attackRestrictionsArray": [
 			"Default",
 			"This is Activated"
 		]
 	},
-	"n":1,
-	"e":2,
-	"s":1,
-	"w":2,
-	"subtypes":["Golem"],
-	"subtypeText":"Golem"
+	"n": 1,
+	"e": 2,
+	"s": 1,
+	"w": 2,
+	"subtypes": [
+		"Golem"
+	],
+	"subtypeText": "Golem"
 }

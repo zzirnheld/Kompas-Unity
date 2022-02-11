@@ -1,59 +1,72 @@
 {
-	"cardType":67,
-	"cardName":"Great Scott",
-	"effText":"The first time each turn a character moves, discard 1 card. Draw 1 card. Move the character 1 space.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Great Scott",
+	"effText": "The first time each turn a character moves, discard 1 card. Draw 1 card. Move the character 1 space.",
+	"effects": [
 		{
-			"blurb":"SCARTY, THE MAR!!",
-			"triggerData":
-			{
-				"triggerCondition":"Move",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Max Per Turn"],
-					"cardRestriction":{
-						"cardRestrictions":["Is Character"]
+			"blurb": "SCARTY, THE MAR!!",
+			"triggerData": {
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before",
+						"Max Per Turn"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":{
-						"blurb":"Great Scott, we have to discard something",
-						"cardRestrictions":["Friendly","Hand"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Great Scott, we have to discard something",
+						"cardRestrictions": [
+							"Friendly",
+							"Hand"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":
-					{
-						"blurb":"Great Scott, Marty, move the card!",
-						"spaceRestrictions":["Empty","Can Move Target to This Space","Distance to Target Fits X Restriction"],
-                        "distanceXRestriction":{
-                            "xRestrictions":["=X"]
-                        }
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "Great Scott, Marty, move the card!",
+						"spaceRestrictions": [
+							"Empty",
+							"Can Move Card Target to This Space",
+							"Distance to Card Target Fits X Restriction"
+						],
+						"distanceXRestriction": {
+							"numberRestrictions": [
+								"=X"
+							]
+						}
 					},
-					"xModifier":1
+					"xModifier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
 				}
-			]	
+			]
 		}
 	],
-	"n":1,
-	"e":4,
-	"s":5,
-	"w":4,
-	"unique":true,
-	"subtypeText":"Crazy Doctor"
+	"n": 1,
+	"e": 4,
+	"s": 5,
+	"w": 4,
+	"unique": true,
+	"subtypeText": "Crazy Doctor"
 }

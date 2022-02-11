@@ -12,21 +12,23 @@ namespace KompasServer.Effects
         public int cVal = -1;
         public int aVal = -1;
 
-        public int RealNVal => nVal < 0 ? CardTarget.N : nVal;
-        public int RealEVal => eVal < 0 ? CardTarget.E : eVal;
-        public int RealSVal => sVal < 0 ? CardTarget.S : sVal;
-        public int RealWVal => wVal < 0 ? CardTarget.W : wVal;
-        public int RealCVal => cVal < 0 ? CardTarget.C : cVal;
-        public int RealAVal => aVal < 0 ? CardTarget.A : aVal;
+        private CardStats Stats => new CardStats(
+            nVal < 0 ? CardTarget.N : nVal,
+            eVal < 0 ? CardTarget.E : eVal,
+            sVal < 0 ? CardTarget.S : sVal,
+            wVal < 0 ? CardTarget.W : wVal,
+            cVal < 0 ? CardTarget.C : cVal,
+            aVal < 0 ? CardTarget.A : aVal
+        );
 
         public override Task<ResolutionInfo> Resolve()
         {
             if (CardTarget == null)
                 throw new NullCardException(TargetWasNull);
-            else if (forbidNotBoard && CardTarget.Location != CardLocation.Field)
+            else if (forbidNotBoard && CardTarget.Location != CardLocation.Board)
                 throw new InvalidLocationException(CardTarget.Location, CardTarget, ChangedStatsOfCardOffBoard);
 
-            CardTarget.SetStats((RealNVal, RealEVal, RealSVal, RealWVal, RealCVal, RealAVal), Effect);
+            CardTarget.SetStats(Stats, Effect);
             return Task.FromResult(ResolutionInfo.Next);
         }
     }

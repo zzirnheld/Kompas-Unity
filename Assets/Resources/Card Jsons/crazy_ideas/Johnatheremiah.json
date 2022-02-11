@@ -1,61 +1,72 @@
 {
-	"cardType":67,
-	"cardName":"Johnatheremiah",
-	"effText":"When I'm summoned, choose 1 friendly discarded Crazy Idea. Reshuffle all other X. Give me +X W.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Johnatheremiah",
+	"effText": "When I'm summoned, choose 1 friendly discarded Crazy Idea. Reshuffle all other X. Give me +X W.",
+	"effects": [
 		{
-			"blurb":"Intern Nonsense",
-			"activationRestriction":{
-				"activationRestrictionArray":[
+			"blurb": "Intern Nonsense",
+			"activationRestriction": {
+				"activationRestrictionArray": [
 					"Max Times Per Turn",
 					"Default"
 				]
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Friendly","Hand"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Friendly",
+							"Hand"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Friendly","Hand","Not Already Target"]
+					"$type": "KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Friendly",
+							"Hand",
+							"Not Already Target"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp",
-					"targetIndex":0
+					"$type": "KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp",
+					"targetIndex": 0
 				},
 				{
-					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.CountXLoopSubeffect, Assembly-CSharp",
-					"canDecline":false,
-					"jumpIndices":[3]
+					"$type": "KompasServer.Effects.CountXLoopSubeffect, Assembly-CSharp",
+					"canDecline": false,
+					"jumpIndices": [
+						3
+					]
 				},
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"wMult":1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"wMultiplier": 1
 				}
-			]	
+			]
 		}
 	],
-    "unique":true,
-	"n":1,
-	"e":1,
-	"s":1,
-	"w":0,
-	"subtypes":["Crazy","Intern","Person"],
-	"subtypeText":"Crazy Intern Person"
+	"unique": true,
+	"n": 1,
+	"e": 1,
+	"s": 1,
+	"w": 0,
+	"subtypes": [
+		"Crazy",
+		"Intern",
+		"Person"
+	],
+	"subtypeText": "Crazy Intern Person"
 }

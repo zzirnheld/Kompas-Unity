@@ -1,48 +1,61 @@
 {
-	"cardType":67,
-	"cardName":"Soulcutter the Heartless",
-	"effText":"Revenant.\nWhen a card is annihilated, discard a Revenant, draw 1, and if it's an enemy turn, gain a pip.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Soulcutter the Heartless",
+	"effText": "Revenant.\nWhen a card is annihilated, discard a Revenant, draw 1, and if it's an enemy turn, gain a pip.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Annihilate",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play"]
+			"triggerData": {
+				"triggerCondition": "Annihilate",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":{
-						"blurb":"for Soulcutter to discard",
-						"cardRestrictions":["Friendly","Hand","Subtypes Include"],
-						"subtypesInclude":["Revenant"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "for Soulcutter to discard",
+						"cardRestrictions": [
+							"Friendly",
+							"Hand",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Revenant"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
-					"condition":"Must be Enemy Turn"
+					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition": "Must be Enemy Turn"
 				},
 				{
-					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
-					"xModifier":1
+					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xModifier": 1
 				}
-			]	
+			]
 		}
 	],
-	"keywords":["Revenant Die","Revenant Revive"],
-	"n":2,
-	"e":4,
-	"s":8,
-	"w":4,
-	"unique":true,
-	"subtypes":["Ethereal","Revenant"],
-	"subtypeText":"Ethereal Revenant"
+	"keywords": [
+		"Revenant Die",
+		"Revenant Revive"
+	],
+	"n": 2,
+	"e": 4,
+	"s": 8,
+	"w": 4,
+	"unique": true,
+	"subtypes": [
+		"Ethereal",
+		"Revenant"
+	],
+	"subtypeText": "Ethereal Revenant"
 }

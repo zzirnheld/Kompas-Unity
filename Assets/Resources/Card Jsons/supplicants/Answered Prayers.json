@@ -1,33 +1,40 @@
 {
-	"cardType":83,
-	"cardName":"Answered Prayers",
-	"effText":"When a negated character dies, rehand them (to their owner's hand).",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Answered Prayers",
+	"effText": "When a negated character dies, rehand them (to their owner's hand).",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Discard",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
-					"cardRestriction":{
-						"cardRestrictions":["Is Character","Negated"]
+			"triggerData": {
+				"triggerCondition": "Discard",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Negated"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.TargetTargetsControllerSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTargetsControllerSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
 				}
 			]
 		}
 	],
-	"c":1,
-	"spellTypes":["Enchant"],
-	"subtypeText":"Enchant Plea"
+	"c": 1,
+	"spellTypes": [
+		"Enchant"
+	],
+	"subtypeText": "Enchant Plea"
 }

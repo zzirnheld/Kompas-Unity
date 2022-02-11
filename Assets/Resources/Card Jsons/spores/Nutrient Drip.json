@@ -1,0 +1,40 @@
+{
+	"cardType": 65,
+	"cardName": "Nutrient Drip",
+	"effText": "When turns start, pulse this character (activate, then deactivate them).",
+	"effects": [
+		{
+			"blurb": "Drip",
+			"triggerData": {
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.ActivateSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.ActivateSubeffect, Assembly-CSharp",
+					"activate": false
+				}
+			]
+		}
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Augment Normal Restrictions"
+		],
+		"effectRestrictions": [
+			"Augment Effect Restrictions"
+		]
+	},
+	"a": 1,
+	"subtypeText": ""
+}

@@ -1,52 +1,61 @@
 {
-	"cardType":67,
-	"cardName":"Wispiwisp",
-	"effText":"Wisp.\nWhen I move, kill a friendly SX Wisp and give me +X ESW. (If there's no other Wisps to kill, I die.)",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Wispiwisp",
+	"effText": "Wisp.\nWhen I move, kill a friendly SX Wisp and give me +X ESW. (If there's no other Wisps to kill, I die.)",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Move",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"triggerData": {
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"Wisp for Wispiwisp to wisp",
-						"cardRestrictions":["Subtypes Include","Is Character","Board"],
-						"subtypesInclude":["Wisp"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Wisp for Wispiwisp to wisp",
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Character",
+							"Board"
+						],
+						"subtypesInclude": [
+							"Wisp"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
-					"cardValue":{
-						"value":"S"
+					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "S"
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMult":1,
-					"sMult":1,
-					"wMult":1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMultiplier": 1,
+					"sMultiplier": 1,
+					"wMultiplier": 1
 				}
-			]	
+			]
 		}
 	],
-	"keywords":["Wisp Summon","Wisp Turn Start"],
-	"n":0,
-	"e":1,
-	"s":2,
-	"w":1,
-	"subtypeText":"Wisp"
+	"keywords": [
+		"Wisp Summon",
+		"Wisp Turn Start"
+	],
+	"n": 0,
+	"e": 1,
+	"s": 2,
+	"w": 1,
+	"subtypeText": "Wisp"
 }

@@ -8,7 +8,7 @@
 			{
 				"triggerCondition":"Play",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+					"triggerRestrictions":["This Card is Main Card"]
 				}
 			},
 			"subeffects":[
@@ -32,7 +32,7 @@
 					"cardRestriction":
 					{
 						"blurb":"for Dragon Hatchling to eat (discard)",
-						"cardRestrictions":["Friendly","Is Character","Hand","Subtypes Include"],
+						"cardRestrictions":["Friendly","Character","Hand","Subtypes Include"],
 						"subtypesInclude":["Dragon"]
 					}
 				},
@@ -44,7 +44,7 @@
 					"cardRestriction":
 					{
 						"blurb":"for Dragon Hatchling to become (play)",
-						"cardRestrictions":["Friendly","Is Character","Hand","Subtypes Include","Can Be Played"],
+						"cardRestrictions":["Friendly","Character","Hand","Subtypes Include","Can Be Played"],
 						"subtypesInclude":["Dragon"]
 					}
 				},

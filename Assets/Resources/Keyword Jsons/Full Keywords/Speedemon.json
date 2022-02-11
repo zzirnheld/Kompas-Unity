@@ -5,7 +5,7 @@
 		"blurb":"Speedemon",
 		"triggerCondition":"Move",
 		"triggerRestriction":{
-			"triggerRestrictions":["This Card Triggered","Stackable Source isn't This Effect"]
+			"triggerRestrictions":["This Card is Main Card","Stackable Source isn't This Effect"]
 		}
 	},
 	"subeffects":[
@@ -27,9 +27,9 @@
 			"spaceRestriction":
 			{
 				"blurb":"speeeeeeeeeeeeeeeed",
-				"spaceRestrictions":["Source to Space Same Direction as Coords","Distance to Source Fits X Restriction"],
+				"spaceRestrictions":["Source Displacement to Space Same Direction as Space Target","Distance to Source Fits X Restriction"],
 				"distanceXRestriction":{
-					"xRestrictions":["=X"]
+					"numberRestrictions":["=X"]
 				}
 			},
 			"xModifier":1

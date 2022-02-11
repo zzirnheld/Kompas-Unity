@@ -1,102 +1,117 @@
 {
-	"cardType":67,
-	"cardName":"PL4T00N",
-	"effText":"Golem.\nWhen I kill a character, double my W. If it's now >= 4, give me +15 E. Negate me. I attack an enemy. I attack an enemy.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "PL4T00N",
+	"effText": "Golem.\nWhen I kill a character, double my W. If it's now >= 4, give me +15 E. Negate me. I attack an enemy. I attack an enemy.",
+	"effects": [
 		{
-			"blurb":"Charge up",
-			"triggerData":
-			{
-				"triggerCondition":"Discard",
-				"triggerRestriction":{
-					"triggerRestrictions":["Stackable Source Fits Restriction"],
-					"sourceRestriction":{
-						"cardRestrictions":["Is Source"]
+			"blurb": "Charge up",
+			"triggerData": {
+				"triggerCondition": "Discard",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"Stackable Source Fits Restriction Now"
+					],
+					"sourceRestriction": {
+						"cardRestrictions": [
+							"Is Source"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
-					"cardValue":{
-						"value":"W"
+					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "W"
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"wMult":1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"wMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
-					"condition":"Target Fits Restriction",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Card Value Fits X Restriction"],
-						"cardValue":{
-							"value":"W"
+					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition": "Target Fits Restriction",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Card Value Fits Number Restriction"
+						],
+						"cardValue": {
+							"value": "W"
 						},
-						"xRestriction":{
-							"xRestrictions":["<X"]
+						"cardValueNumberRestriction": {
+							"numberRestrictions": [
+								"<X"
+							]
 						}
 					},
-                    "xModifier":4
+					"xModifier": 4
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMod":15
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eModifier": 15
 				},
 				{
-					"$type":"KompasServer.Effects.NegateSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.NegateSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"character for PL4T00N to blast",
-						"cardRestrictions":["Is Character","Board","Enemy"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "character for PL4T00N to blast",
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Enemy"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
-					"attackerIndex":0,
-					"targetIndex":-1
+					"$type": "KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
+					"attackerIndex": 0,
+					"targetIndex": -1
 				},
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"character for PL4T00N to blast",
-						"cardRestrictions":["Is Character","Board","Enemy"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "character for PL4T00N to blast",
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Enemy"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
-					"attackerIndex":0,
-					"targetIndex":-1
+					"$type": "KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
+					"attackerIndex": 0,
+					"targetIndex": -1
 				}
 			]
 		}
 	],
-	"MovementRestriction":{
-		"normalRestrictionsFromJson":[
+	"MovementRestriction": {
+		"normalRestrictionsFromJson": [
 			"Default",
 			"Activated"
 		]
 	},
-	"AttackRestriction":{
-		"attackRestrictionsArray":[
+	"AttackRestriction": {
+		"attackRestrictionsArray": [
 			"Default",
 			"This is Activated"
 		]
 	},
-	"n":2,
-	"e":6,
-	"s":7,
-	"w":1,
-	"subtypes":["Mech","Golem"],
-	"subtypeText":"Mech Golem"
+	"n": 2,
+	"e": 6,
+	"s": 7,
+	"w": 1,
+	"subtypes": [
+		"Mech",
+		"Golem"
+	],
+	"subtypeText": "Mech Golem"
 }

@@ -1,43 +1,52 @@
 {
-	"cardType":67,
-	"cardName":"Swordmaster",
-	"effText":"Once each friendly turn, you can give an adjacent Warrior +1 EW.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Swordmaster",
+	"effText": "Once each friendly turn, you can give an adjacent Warrior +1 EW.",
+	"effects": [
 		{
-			"activationRestriction":{
-				"activationRestrictionArray":[
+			"activationRestriction": {
+				"activationRestrictionArray": [
 					"Max Times Per Turn",
 					"Friendly Turn",
 					"Default"
 				]
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"adjacent Warrior for Swordmaster to give +1 EW",
-						"cardRestrictions":["Subtypes Include","Is Character","Board","Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["Adjacent to Source"],
-							"mustBeEmpty":false
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "adjacent Warrior for Swordmaster to give +1 EW",
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Character",
+							"Board",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Source"
+							]
 						},
-						"subtypesInclude":["Warrior"]
+						"subtypesInclude": [
+							"Warrior"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMod":1,
-					"wMod":1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eModifier": 1,
+					"wModifier": 1
 				}
 			]
 		}
 	],
-	"n":2,
-	"e":5,
-	"s":6,
-	"w":5,
-	"subtypes":["Swordguild","Warrior"],
-	"subtypeText":"Swordguild Warrior"
+	"n": 2,
+	"e": 5,
+	"s": 6,
+	"w": 5,
+	"subtypes": [
+		"Swordguild",
+		"Warrior"
+	],
+	"subtypeText": "Swordguild Warrior"
 }

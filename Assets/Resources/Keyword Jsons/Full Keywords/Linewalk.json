@@ -3,7 +3,7 @@
 	"activationRestriction":{
 		"activationRestrictionArray":[
 			"Friendly Turn",
-			"This Card Fits Restriction",
+			"This Card Fits Restriction Now",
 			"Default"
 		],
 		"thisCardRestriction":
@@ -24,7 +24,7 @@
 			"spaceRestriction":
 			{
 				"blurb":"to Linewalk to",
-				"spaceRestrictions":["Empty","On Target's Diagonal","Can Move Target to This Space","Connected to Target by Spaces Fitting Restriction"],
+				"spaceRestrictions":["Empty","On Card Target's Diagonal","Can Move Card Target to This Space","Connected to Card Target by Spaces Fitting Restriction"],
 				"spaceConnectednessRestriction":
 				{
 					"mustBeEmpty":true,

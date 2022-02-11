@@ -1,42 +1,51 @@
 {
-	"cardType":67,
-	"cardName":"IV - The Emperor",
-	"effText":"When you draw X cards, give an adjacent Summoned character +X EW.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "IV - The Emperor",
+	"effText": "When you draw X cards, give an adjacent Summoned character +X EW.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Draw",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Controller Triggered"]
+			"triggerData": {
+				"triggerCondition": "Draw",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Controller Triggered"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"Summoned character for Emperor to buff",
-						"cardRestrictions":["Is Character","Board","Summoned","Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["Adjacent to Source"],
-							"mustBeEmpty":false
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Summoned character for Emperor to buff",
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Summoned",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Source"
+							]
 						}
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMult":1,
-					"wMult":1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMultiplier": 1,
+					"wMultiplier": 1
 				}
-			]	
+			]
 		}
 	],
-	"n":1,
-	"e":3,
-	"s":7,
-	"w":8,
-	"subtypes":["Tarocco","Warrior"],
-	"subtypeText":"Tarocco Warrior"
+	"n": 1,
+	"e": 3,
+	"s": 7,
+	"w": 8,
+	"subtypes": [
+		"Tarocco",
+		"Warrior"
+	],
+	"subtypeText": "Tarocco Warrior"
 }

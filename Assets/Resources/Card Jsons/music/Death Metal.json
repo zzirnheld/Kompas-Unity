@@ -8,7 +8,7 @@
 			{
 				"triggerCondition":"Play",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+					"triggerRestrictions":["This Card is Main Card"]
 				}
 			},
 			"subeffects":[
@@ -17,7 +17,7 @@
                     "cardRestriction":
                     {
                         "blurb":"who to die",
-                        "cardRestrictions":["Is Character","Board"]
+                        "cardRestrictions":["Character","Board"]
                     }
                 },
 				{
@@ -30,7 +30,7 @@
 					"fallOffCondition":"",
 					"endCondition":"Vanish",
 					"triggerRestriction":{
-						"triggerRestrictions":["This Card Triggered"]
+						"triggerRestrictions":["This Card is Main Card"]
 					}
 				},
 				{
@@ -41,7 +41,7 @@
 					"spaceRestriction":
 					{
 						"blurb":"where to play the character killed by death metal",
-						"spaceRestrictions":["Can Play Target to This Space"]
+						"spaceRestrictions":["Can Play Card Target to This Space"]
 					}
 				},
 				{

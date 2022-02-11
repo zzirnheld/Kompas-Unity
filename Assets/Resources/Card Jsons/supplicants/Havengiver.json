@@ -19,7 +19,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Supplicant to give safe haven",
-						"cardRestrictions":["Friendly","Discard","Is Character","S<=C","Subtypes Include"],
+						"cardRestrictions":["Friendly","Discard","Character","S<=C","Subtypes Include"],
 						"subtypesInclude":["Supplicant"],
 						"constant":1
 					}
@@ -29,7 +29,7 @@
 					"spaceRestriction":
 					{
 						"blurb":"haven to play the Supplicant",
-						"spaceRestrictions":["Can Play Target to This Space"]
+						"spaceRestrictions":["Can Play Card Target to This Space"]
 					}
 				},
 				{

@@ -1,43 +1,56 @@
 {
-	"cardType":83,
-	"cardName":"Tide Pools",
-	"effText":"When turns start, if I'm in distinct Water, reset my turn count. (Otherwise, vanishes after 2 turns.)",
-	"effects":[
-        {
-            "blurb":"Refill",
-            "triggerData":
-            {
-                "blurb":"Refill",
-                "triggerCondition":"Turn Start",
-                "triggerRestriction":{
-                    "triggerRestrictions":["This Card Fits Restriction"],
-					"cardRestriction":{
-						"cardRestrictions":["Board","Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["In AOE Of"],
-							"inAOEOfRestriction":{
-								"cardRestrictions":["Subtypes Include","Distinct Name from Source"],
-								"subtypesInclude":["Water"]
+	"cardType": 83,
+	"cardName": "Tide Pools",
+	"effText": "When turns start, if I'm in distinct Water, reset my turn count. (Otherwise, vanishes after 2 turns.)",
+	"effects": [
+		{
+			"blurb": "Refill",
+			"triggerData": {
+				"blurb": "Refill",
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card Fits Restriction Now"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Board",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"In AOE of Card Fitting Restriction"
+							],
+							"inAOEOfRestriction": {
+								"cardRestrictions": [
+									"Subtypes Include",
+									"Distinct Name from Source"
+								],
+								"subtypesInclude": [
+									"Water"
+								]
 							},
-							"mustBeEmpty":false
+							"mustBeEmpty": false
 						}
 					}
-                }
-            },
-            "subeffects":[
-                {
-                    "$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-                },
-                {
-                    "$type":"KompasServer.Effects.SetTurnsOnBoardSubeffect, Assembly-CSharp"
-                }
-            ]	
-        }
-    ],
-	"c":1,
-	"spellTypes":["Vanishing","Radial"],
-    "duration":2,
-    "radius":2,
-	"subtypeText":"Vanishing 2 Radial 1 Water"
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.SetTurnsOnBoardSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"c": 1,
+	"spellTypes": [
+		"Vanishing",
+		"Radial"
+	],
+	"duration": 2,
+	"radius": 2,
+	"subtypeText": "Vanishing 2 Radial 1 Water"
 }

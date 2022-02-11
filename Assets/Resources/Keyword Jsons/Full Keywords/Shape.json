@@ -14,7 +14,7 @@
 				"blurb":"to move Shaper to",
 				"spaceRestrictions":["Connected to Source by Cards Fitting Restriction"],
 				"connectednessRestriction":{
-					"cardRestrictions":["Subtypes Include","Is Character","Board"],
+					"cardRestrictions":["Subtypes Include","Character","Board"],
 					"subtypesInclude":["Ethereal"]
 				}
 			}
@@ -30,14 +30,14 @@
 			"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
 			"whatToCount":"Distance to Coords Through",
 			"throughRestriction":{
-				"cardRestrictions":["Subtypes Include","Is Character","Board"],
+				"cardRestrictions":["Subtypes Include","Character","Board"],
 				"subtypesInclude":["Ethereal"]
 			},
 			"xMultiplier":1
 		},
 		{
 			"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-			"eMult":-1
+			"eMultiplier":-1
 		},
 		{
 			"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"

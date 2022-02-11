@@ -18,12 +18,12 @@ namespace KompasServer.Effects
             var target2 = Effect.GetTarget(targetIndices[1]);
             if (target1 == null)
                 throw new NullCardException(TargetWasNull);
-            else if (forbidNotBoard && target1.Location != CardLocation.Field)
+            else if (forbidNotBoard && target1.Location != CardLocation.Board)
                 throw new InvalidLocationException(target1.Location, target1, ChangedStatsOfCardOffBoard);
 
             if (target2 == null)
                 throw new NullCardException(TargetWasNull);
-            else if (forbidNotBoard && target2.Location != CardLocation.Field)
+            else if (forbidNotBoard && target2.Location != CardLocation.Board)
                 throw new InvalidLocationException(target2.Location, target2, ChangedStatsOfCardOffBoard);
 
             target1.SwapCharStats(target2, swapN, swapE, swapS, swapW);

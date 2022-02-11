@@ -1,49 +1,63 @@
 {
-	"cardType":83,
-	"cardName":"Ansuz",
-	"effText":"Runic.\nSet an adjacent character’s N to 1 and ESW to 10.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Ansuz",
+	"effText": "Runic.\nSet an adjacent character's N to 1 and ESW to 10.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Is Character","Board","Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["Adjacent to Source"],
-							"mustBeEmpty":false
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Source"
+							]
 						}
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SetCardStatsSubeffect, Assembly-CSharp",
-					"nVal":1,
-					"eVal":10,
-					"sVal":10,
-					"wVal":10
+					"$type": "KompasServer.Effects.SetCardStatsSubeffect, Assembly-CSharp",
+					"nVal": 1,
+					"eVal": 10,
+					"sVal": 10,
+					"wVal": 10
 				}
-			]	
+			]
 		}
 	],
-	"PlayRestriction":{
-		"normalRestrictions":["Cannot be Played Normally"],
-		"recommendationRestrictions":["Adjacent to Card Fitting Restriction"],
-		"adjacentCardRestriction":
-		{
-			"cardRestrictions":["Is Character"]
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Cannot be Played Normally"
+		],
+		"recommendationRestrictions": [
+			"Adjacent to Card Fitting Restriction"
+		],
+		"adjacentCardRestriction": {
+			"cardRestrictions": [
+				"Character"
+			]
 		}
 	},
-	"c":5,
-	"spellTypes":["Simple"],
-	"subtypes":["Rune","Simple"],
-	"subtypeText":"Rune Simple"
+	"c": 5,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypes": [
+		"Rune",
+		"Simple"
+	],
+	"subtypeText": "Rune Simple"
 }

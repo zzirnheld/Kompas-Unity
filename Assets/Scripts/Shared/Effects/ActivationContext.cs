@@ -18,8 +18,15 @@ namespace KompasCore.Effects
         public List<GameCard> Targets { get; private set; }
         public List<Space> Spaces { get; private set; }
 
-        public ActivationContext Copy 
-            => new ActivationContext(mainCardInfoBefore, MainCardInfoAfter, stackable, player, x, space);
+        public ActivationContext Copy
+        {
+            get
+            {
+                var copy = new ActivationContext(mainCardInfoBefore, MainCardInfoAfter, stackable, player, x, space);
+                copy.SetResumeInfo(Targets, Spaces, StartIndex);
+                return copy;
+            }
+        }
 
         /// <summary>
         /// The information for the main triggering card immediately after the triggering event occurred.
@@ -76,11 +83,11 @@ namespace KompasCore.Effects
         /// <param name="startIndex">The index at which to start resolving the effect (again)</param>
         /// <param name="targets">The targets to resume with, if any</param>
         /// <param name="spaces">The spaces to resume with, if any</param>
-        public void SetResumeInfo(int startIndex, IEnumerable<GameCard> targets, IEnumerable<Space> spaces)
+        public void SetResumeInfo(IEnumerable<GameCard> targets, IEnumerable<Space> spaces, int? startIndex = null)
         {
-            StartIndex = startIndex;
-            Targets = new List<GameCard>(targets);
-            Spaces = new List<Space>(spaces);
+            if (startIndex.HasValue) StartIndex = startIndex.Value;
+            Targets = targets == null ? new List<GameCard>() : new List<GameCard>(targets);
+            Spaces = spaces == null ? new List<Space>() : new List<Space>(spaces);
         }
 
         /// <summary>

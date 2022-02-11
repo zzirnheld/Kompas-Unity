@@ -1,50 +1,71 @@
 {
-	"cardType":65,
-	"cardName":"Durability Core",
-	"effText":"Recoverable.\nWhile equipped, activate this character and give them +5 E.",
-	"effects":[
+	"cardType": 65,
+	"cardName": "Durability Core",
+	"effText": "Recoverable.\nWhile equipped, activate this character and give them +5 E.",
+	"effects": [
 		{
-			"blurb":"Activate",
-			"triggerData":
-			{
-				"blurb":"Activate Golem",
-				"triggerCondition":"Augment Attached",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"blurb": "Activate",
+			"triggerData": {
+				"blurb": "Activate Golem",
+				"triggerCondition": "Augment Attached",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.TemporaryActivationSubeffect, Assembly-CSharp",
-					"endCondition":"Augment Detached",
-					"triggerRestriction":{
-						"triggerRestrictions":["This Card Triggered"]
+					"$type": "KompasServer.Effects.TemporaryActivationSubeffect, Assembly-CSharp",
+					"endCondition": "Augment Detached",
+					"triggerRestriction": {
+						"triggerRestrictions": [
+							"This Card is Main Card"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.TemporaryNESWBuffSubeffect, Assembly-CSharp",
-					"eModifier":5,
-					"endCondition":"Augment Detached",
-					"triggerRestriction":{
-						"triggerRestrictions":["This Card Triggered"]
+					"$type": "KompasServer.Effects.TemporaryCardStatChangeSubeffect, Assembly-CSharp",
+					"eModifier": 5,
+					"endCondition": "Augment Detached",
+					"triggerRestriction": {
+						"triggerRestrictions": [
+							"This Card is Main Card"
+						]
 					}
 				}
 			]
 		}
 	],
-	"keywords":["Recoverable"],
-	"PlayRestriction":{
-		"normalRestrictions":["Augment Normal Restrictions","On Card that Fits Restriction"],
-		"effectRestrictions":["Augment Effect Restrictions","On Card that Fits Restriction"],
-		"onCardRestriction":{
-			"cardRestrictions":["Subtypes Include","Friendly","Board"],
-			"subtypesInclude":["Golem"]
+	"keywords": [
+		"Recoverable"
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Augment Normal Restrictions",
+			"On Card that Fits Restriction"
+		],
+		"effectRestrictions": [
+			"Augment Effect Restrictions",
+			"On Card that Fits Restriction"
+		],
+		"onCardRestriction": {
+			"cardRestrictions": [
+				"Subtypes Include",
+				"Friendly",
+				"Board"
+			],
+			"subtypesInclude": [
+				"Golem"
+			]
 		}
 	},
-	"a":3,
-	"subtypeText":"Golem Core",
-	"augSubtypes":["Golem"]
+	"a": 3,
+	"subtypeText": "Golem Core",
+	"augSubtypes": [
+		"Golem"
+	]
 }

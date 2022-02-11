@@ -9,12 +9,14 @@ namespace KompasCore.Networking
     {
         public int cardId;
         public string json;
-        public CardLocation location;
+        public int location;
         public int controllerIndex;
         public int x;
         public int y;
         public bool attached;
         public bool known;
+
+        protected CardLocation Location => (CardLocation)location;
 
         public AddCardPacket() : base(AddCard) { }
 
@@ -22,7 +24,7 @@ namespace KompasCore.Networking
         {
             this.cardId = cardId;
             this.json = json;
-            this.location = location;
+            this.location = (int) location;
             this.controllerIndex = invert ? 1 - controllerIndex : controllerIndex;
         }
 
@@ -43,20 +45,20 @@ namespace KompasCore.Networking
                   x: card.Position?.x ?? 0, y: card.Position?.y ?? 0, attached: card.Attached, known: card.KnownToEnemy, invert: invert)
         { }
 
-        public override Packet Copy() => new AddCardPacket(cardId, json, location, controllerIndex, x, y, attached, known);
+        public override Packet Copy() => new AddCardPacket(cardId, json, Location, controllerIndex, x, y, attached, known);
 
         public override Packet GetInversion(bool known)
         {
-            if (Game.IsHiddenLocation(location))
+            if (Game.IsHiddenLocation(Location))
             {
-                return location switch
+                return Location switch
                 {
                     CardLocation.Hand => new ChangeEnemyHandCountPacket(1),
                     CardLocation.Deck => null,
                     _ => throw new System.ArgumentException($"What should add card packet do when a card is added to the hidden location {location}"),
                 };
             }
-            else return new AddCardPacket(cardId, json, location, controllerIndex, x, y, attached, known, invert: true);
+            else return new AddCardPacket(cardId, json, Location, controllerIndex, x, y, attached, known, invert: true);
         }
     }
 }
@@ -70,10 +72,10 @@ namespace KompasClient.Networking
             var controller = clientGame.ClientPlayers[controllerIndex];
             var card = clientGame.cardRepo.InstantiateClientNonAvatar(json, clientGame, controller, cardId);
             clientGame.cardsByID.Add(cardId, card);
-            switch (location)
+            switch (Location)
             {
                 case CardLocation.Nowhere: break;
-                case CardLocation.Field:
+                case CardLocation.Board:
                     if (attached) clientGame.boardCtrl.GetCardAt((x, y)).AddAugment(card);
                     else card.Play((x, y), controller);
                     break;

@@ -1,40 +1,46 @@
 {
-	"cardType":67,
-	"cardName":"Mind of Flock Controlled Pigeons",
-	"effText":"When I deal combat damage, hand->discard a Crazy Idea and draw 1 card.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Mind of Flock Controlled Pigeons",
+	"effText": "When I deal combat damage, hand->discard a Crazy Idea and draw 1 card.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"blurb":"bawk bawk bawk",
-				"triggerCondition":"Deal Combat Damage",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"triggerData": {
+				"blurb": "bawk bawk bawk",
+				"triggerCondition": "Deal Combat Damage",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"Mind bawk bawk Controlled Pigeons",
-						"cardRestrictions":["Friendly","Hand","Subtypes Include"],
-						"subtypesInclude":["Crazy Idea"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Mind bawk bawk Controlled Pigeons",
+						"cardRestrictions": [
+							"Friendly",
+							"Hand",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Crazy Idea"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
-					"xModifier":1
+					"$type": "KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"xModifier": 1
 				}
-			]	
+			]
 		}
 	],
-	"n":3,
-	"e":1,
-	"s":5,
-	"w":1,
-	"subtypeText":"Crazy Idea"
+	"n": 3,
+	"e": 1,
+	"s": 5,
+	"w": 1,
+	"subtypeText": "Crazy Idea"
 }

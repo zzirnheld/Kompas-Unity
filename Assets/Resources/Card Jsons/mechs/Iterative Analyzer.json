@@ -1,61 +1,81 @@
 {
-	"cardType":65,
-	"cardName":"Iterative Analyzer",
-	"effText":"When this Mech dies, search your deck for a distinct Mech Golem. Delay 1 turn. Discard->hand me.",
-	"effects":[
+	"cardType": 65,
+	"cardName": "Iterative Analyzer",
+	"effText": "When this Mech dies, search your deck for a distinct Mech Golem. Delay 1 turn. Discard->hand me.",
+	"effects": [
 		{
-			"blurb":"Postmortem Analysis",
-			"triggerData":
-			{
-				"triggerCondition":"Discard",
-				"triggerRestriction":{
-					"triggerRestrictions":["Augmented Card Triggered","Triggerer Fits Restriction"],
-					"cardRestriction":
-					{
-						"cardRestrictions":["Subtypes Include"],
-						"subtypesInclude":["Mech"]
+			"blurb": "Postmortem Analysis",
+			"triggerData": {
+				"triggerCondition": "Discard",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"Augmented Card is Main Card",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Mech"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":{
-						"blurb":"for Iterative Analysis to produce",
-						"cardRestrictions":["Friendly","Deck","Distinct Name from Other Targets","Subtypes Include"],
-						"subtypesInclude":["Mech","Golem"]
+					"$type": "KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "for Iterative Analysis to produce",
+						"cardRestrictions": [
+							"Friendly",
+							"Deck",
+							"Distinct Name from Other Targets",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Mech",
+							"Golem"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
-					"numTimesToDelay":0,
-					"jumpIndices":[3],
-					"endCondition":"Turn Start"
+					"$type": "KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"numTimesToDelay": 0,
+					"jumpIndices": [
+						3
+					],
+					"endCondition": "Turn Start"
 				},
-                {
-                    "$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-                },
 				{
-					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
-					"condition":"Target Violates Restriction",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Discard"]
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition": "Target Violates Restriction",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Discard"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
 				}
 			]
 		}
 	],
-	"PlayRestriction":{
-		"normalRestrictions":["Augment Normal Restrictions"],
-		"effectRestrictions":["Augment Effect Restrictions"]
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Augment Normal Restrictions"
+		],
+		"effectRestrictions": [
+			"Augment Effect Restrictions"
+		]
 	},
-	"a":2,
-	"subtypeText":"Device"
+	"a": 2,
+	"subtypeText": "Device"
 }

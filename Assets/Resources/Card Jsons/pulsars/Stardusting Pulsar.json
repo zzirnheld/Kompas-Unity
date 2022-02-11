@@ -1,80 +1,102 @@
 {
-	"cardType":67,
-	"cardName":"Stardusting Pulsar",
-	"effText":"When your Avatar gains S, give a Summoned character +1 NESW.\nWhen your Avatar loses S, give a Summoned character -1 NESW.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Stardusting Pulsar",
+	"effText": "When your Avatar gains S, give a Summoned character +1 NESW.\nWhen your Avatar loses S, give a Summoned character -1 NESW.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"blurb":"Flare",
-				"triggerCondition":"S Change",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","X Fits Restriction","Triggerer Fits Restriction"],
-					"xRestriction":{
-						"xRestrictions":[">0"]
+			"triggerData": {
+				"blurb": "Flare",
+				"triggerCondition": "S Change",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"X Fits Restriction",
+						"Main Card Fits Restriction Before"
+					],
+					"xRestriction": {
+						"numberRestrictions": [
+							">0"
+						]
 					},
-					"cardRestriction":
-					{
-						"cardRestrictions":["Board","Avatar","Friendly"]
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Board",
+							"Avatar",
+							"Friendly"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"Summoned character for Stardusting Pulsar to buff",
-						"cardRestrictions":["Is Character","Board","Summoned"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Summoned character for Stardusting Pulsar to buff",
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Summoned"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"nMod":1,
-					"eMod":1,
-					"sMod":1,
-					"wMod":1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"nModifier": 1,
+					"eModifier": 1,
+					"sModifier": 1,
+					"wModifier": 1
 				}
 			]
 		},
 		{
-			"triggerData":
-			{
-				"blurb":"Diminish",
-				"triggerCondition":"S Change",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","X Fits Restriction","Triggerer Fits Restriction"],
-					"xRestriction":{
-						"xRestrictions":["<0"]
+			"triggerData": {
+				"blurb": "Diminish",
+				"triggerCondition": "S Change",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"X Fits Restriction",
+						"Main Card Fits Restriction Before"
+					],
+					"xRestriction": {
+						"numberRestrictions": [
+							"<0"
+						]
 					},
-					"cardRestriction":
-					{
-						"cardRestrictions":["Board","Avatar","Friendly"]
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Board",
+							"Avatar",
+							"Friendly"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"Summoned character for Stardusting Pulsar to debuff",
-						"cardRestrictions":["Is Character","Board","Summoned"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Summoned character for Stardusting Pulsar to debuff",
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Summoned"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"nMod":-1,
-					"eMod":-1,
-					"sMod":-1,
-					"wMod":-1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"nModifier": -1,
+					"eModifier": -1,
+					"sModifier": -1,
+					"wModifier": -1
 				}
 			]
 		}
 	],
-	"n":2,
-	"e":9,
-	"s":9,
-	"w":9,
-	"subtypeText":"Pulsar"
+	"n": 2,
+	"e": 9,
+	"s": 9,
+	"w": 9,
+	"subtypeText": "Pulsar"
 }

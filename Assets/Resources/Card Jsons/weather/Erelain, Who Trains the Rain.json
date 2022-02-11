@@ -1,43 +1,54 @@
 {
-	"cardType":67,
-	"cardName":"Erelain, Who Trains the Rain",
-	"effText":"When a distinct Skyknight moves to a space in Weather, echo them.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Erelain, Who Trains the Rain",
+	"effText": "When a distinct Skyknight moves to a space in Weather, echo them.",
+	"effects": [
 		{
-            "blurb":"Learn the Weather",
-			"triggerData":
-			{
-				"triggerCondition":"Move",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
-					"cardRestriction":{
-						"cardRestrictions":["Is Character","Distinct Name from Source","Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["In AOE Of"],
-							"inAOEOfRestriction":{
-								"cardRestrictions":["Subtypes Include"],
-								"subtypesInclude":["Weather"]
+			"blurb": "Learn the Weather",
+			"triggerData": {
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Distinct Name from Source",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"In AOE of Card Fitting Restriction"
+							],
+							"inAOEOfRestriction": {
+								"cardRestrictions": [
+									"Subtypes Include"
+								],
+								"subtypesInclude": [
+									"Weather"
+								]
 							},
-							"mustBeEmpty":false
+							"mustBeEmpty": false
 						}
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
 				}
 			]
 		}
 	],
-	"n":4,
-	"e":4,
-	"s":4,
-	"w":0,
-    "unique":true,
-	"subtypeText":"Skyknight"
+	"n": 4,
+	"e": 4,
+	"s": 4,
+	"w": 0,
+	"unique": true,
+	"subtypeText": "Skyknight"
 }

@@ -1,60 +1,77 @@
 {
-	"cardType":83,
-	"cardName":"Just a Little Bit More",
-	"effText":"Ificate.\nDiscard 1 card. Draw 1 card. Move a card 1 space.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Just a Little Bit More",
+	"effText": "Ificate.\nDiscard 1 card. Draw 1 card. Move a card 1 space.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"Just discard a little bit more",
-						"cardRestrictions":["Friendly","Hand"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Just discard a little bit more",
+						"cardRestrictions": [
+							"Friendly",
+							"Hand"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"you! move a little bit to the left...",
-						"cardRestrictions":["Board","Not Avatar"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "you! move a little bit to the left...",
+						"cardRestrictions": [
+							"Board",
+							"Not Avatar"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":
-					{
-						"blurb":"ok, now move just a little bit more",
-						"spaceRestrictions":["Empty","Can Move Target to This Space","Distance to Target Fits X Restriction"],
-                        "distanceXRestriction":{
-                            "xRestrictions":["=X"]
-                        }
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "ok, now move just a little bit more",
+						"spaceRestrictions": [
+							"Empty",
+							"Can Move Card Target to This Space",
+							"Distance to Card Target Fits X Restriction"
+						],
+						"distanceXRestriction": {
+							"numberRestrictions": [
+								"=X"
+							]
+						}
 					},
-					"xModifier":1
+					"xModifier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
 				}
 			]
 		}
 	],
-	"keywords":["Ificate"],
-	"c":5,
-	"spellTypes":["Simple"],
-	"subtypes":["Simple","Crazy Idea"],
-	"subtypeText":"Simple Crazy Idea Ificator"
+	"keywords": [
+		"Ificate"
+	],
+	"c": 5,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypes": [
+		"Simple",
+		"Crazy Idea"
+	],
+	"subtypeText": "Simple Crazy Idea Ificator"
 }

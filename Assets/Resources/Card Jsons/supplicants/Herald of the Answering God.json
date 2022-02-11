@@ -17,7 +17,7 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"blurb":"card to answer prayers",
 					"cardRestriction":{
-						"cardRestrictions":["Board","Is Character","Turn Player Controls"]
+						"cardRestrictions":["Board","Character","Turn Player Controls"]
 					}
 				},
 				{

@@ -1,79 +1,100 @@
 {
-	"cardType":67,
-	"cardName":"Wuonlan, the Inspired",
-	"effText":"When an enemy card arrives adjacent to friendly Music, rehand 1 Music adjacent to the card and hand->cast distinct Music where the Music was.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Wuonlan, the Inspired",
+	"effText": "When an enemy card arrives adjacent to friendly Music, rehand 1 Music adjacent to the card and hand->cast distinct Music where the Music was.",
+	"effects": [
 		{
-			"blurb":"Inspiration!",
-			"triggerData":
-			{
-				"triggerCondition":"Arrive",
-				"triggerRestriction":{
-					"triggerRestrictions":["Coords Fit Restriction","Triggerer Fits Restriction"],
-					"cardRestriction":
-					{
-						"cardRestrictions":["Enemy"]
+			"blurb": "Inspiration!",
+			"triggerData": {
+				"triggerCondition": "Arrive",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"Space Fits Restriction",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Enemy"
+						]
 					},
-					"spaceRestriction":
-					{
-						"spaceRestrictions":["Card Here Fits Restriction"],
-                        "hereFitsRestriction":
-                        {
-                            "cardRestrictions":["Friendly","Subtypes Include"],
-                            "subtypesInclude":["Music"]
-                        },
-						"mustBeEmpty":false
+					"spaceRestriction": {
+						"spaceRestrictions": [
+							"Card Here Fits Restriction"
+						],
+						"hereFitsRestriction": {
+							"cardRestrictions": [
+								"Friendly",
+								"Subtypes Include"
+							],
+							"subtypesInclude": [
+								"Music"
+							]
+						},
+						"mustBeEmpty": false
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"Music to rework",
-						"cardRestrictions":["Board","Subtypes Include","Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["Adjacent to Source"],
-							"mustBeEmpty":false
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Music to rework",
+						"cardRestrictions": [
+							"Board",
+							"Subtypes Include",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Source"
+							]
 						},
-						"subtypesInclude":["Music"]
+						"subtypesInclude": [
+							"Music"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp",
-                    "targetIndex":-2
+					"$type": "KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp",
+					"targetIndex": -2
 				},
 				{
-					"$type":"KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-                        "blurb":"Music to cast",
-						"cardRestrictions":["Friendly","Hand","Distinct Name from Other Targets","Subtypes Include"],
-						"subtypesInclude":["Music"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Music to cast",
+						"cardRestrictions": [
+							"Friendly",
+							"Hand",
+							"Distinct Name from Other Targets",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Music"
+						]
 					}
 				},
-                {
-                    "$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
-                }
-			]	
+				{
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
+			]
 		}
 	],
-    "unique":true,
-	"n":4,
-	"e":6,
-	"s":4,
-	"w":0,
-	"subtypes":["Bard"],
-	"subtypeText":"Bard"
+	"unique": true,
+	"n": 4,
+	"e": 6,
+	"s": 4,
+	"w": 0,
+	"subtypes": [
+		"Bard"
+	],
+	"subtypeText": "Bard"
 }

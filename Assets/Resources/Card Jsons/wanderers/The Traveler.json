@@ -1,68 +1,81 @@
 {
-	"cardType":67,
-	"cardName":"The Traveler",
-	"effText":"Once each friendly turn, you can hand a friendly Summoned S X character. Hand->summon a distinct S <= X + 1 character.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "The Traveler",
+	"effText": "Once each friendly turn, you can hand a friendly Summoned S X character. Hand->summon a distinct S <= X + 1 character.",
+	"effects": [
 		{
-			"activationRestriction":{
-				"activationRestrictionArray":[
+			"activationRestriction": {
+				"activationRestrictionArray": [
 					"Max Times Per Turn",
 					"Default"
 				]
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"character to reshuffle",
-						"cardRestrictions":["Is Character","Board","Friendly","Summoned"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "character to reshuffle",
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Friendly",
+							"Summoned"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
-					"cardValue":{
-						"value":"S"
+					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "S"
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"Wanderer to inspire with music",
-						"cardRestrictions":["Is Character","Friendly","Hand","Distinct Name from Other Targets","Card Value Fits X Restriction"],
-						"cardValue":{
-							"value":"S"
+					"$type": "KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Wanderer to inspire with music",
+						"cardRestrictions": [
+							"Character",
+							"Friendly",
+							"Hand",
+							"Distinct Name from Other Targets",
+							"Card Value Fits Number Restriction"
+						],
+						"cardValue": {
+							"value": "S"
 						},
-						"xRestriction":{
-							"xRestrictions":["<=X"]
+						"cardValueNumberRestriction": {
+							"numberRestrictions": [
+								"<=X"
+							]
 						}
 					},
-					"xMultiplier":1,
-					"xModifier":1
+					"xMultiplier": 1,
+					"xModifier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":
-					{
-						"blurb":"where character to travel to",
-						"spaceRestrictions":["Can Play Target to This Space"]
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where character to travel to",
+						"spaceRestrictions": [
+							"Can Play Card Target to This Space",
+							"Empty"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				}
 			]
 		}
 	],
-	"n":4,
-	"e":4,
-	"s":10,
-	"w":10,
-	"unique":true,
-	"subtypeText":""
+	"n": 4,
+	"e": 4,
+	"s": 10,
+	"w": 10,
+	"unique": true,
+	"subtypeText": ""
 }
