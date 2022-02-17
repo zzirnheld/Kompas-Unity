@@ -22,3 +22,5 @@ Pass Back
 Attended
 Collectible
 Spores
+Vessel Echo
+Vessel Cost Up

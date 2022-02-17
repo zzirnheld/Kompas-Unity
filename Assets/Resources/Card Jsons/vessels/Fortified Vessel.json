@@ -1,0 +1,18 @@
+{
+	"cardType": 67,
+	"cardName": "Fortified Vessel",
+	"effText": "Vessel.",
+	"effects": [],
+	"keywords": [
+		"Geminii"
+	],
+	"n": 3,
+	"e": 5,
+	"s": 5,
+	"w": 5,
+	"subtypes": [
+		"Vessel Cost Up",
+		"Vessel Echo"
+	],
+	"subtypeText": "Vessel"
+}
