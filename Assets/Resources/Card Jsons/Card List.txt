@@ -203,6 +203,7 @@ mechs/Recruitment Drive
 mechs/Collaborative Mechanization
 mechs/One Step Ahead
 mechs/Repair Hub
+memory/Malevolent Memory
 music/Soaring Chorus
 music/Surging Verse
 music/Ringing Bridge
@@ -468,6 +469,11 @@ trees/Strongtree
 trees/The Man Who Replants
 trees/Thinktree
 Unfinding
+vessels/Empty Vessel
+vessels/Fortified Vessel
+vessels/Hardy Vessel
+vessels/Meditative Vessel
+vessels/Unwilling Vessel
 water/High Tide
 water/Nuisance Flooding
 water/Hyper Tide
