@@ -24,6 +24,11 @@ public class ClientCardController : CardController
 
     public ClientCardMouseController mouseCtrl;
 
+    public Material friendlyCardFrameMaterial;
+    public Material enemyCardFrameMaterial;
+
+    public Renderer[] frameObjects;
+
     public bool Revealed
     {
         set => revealedImage.SetActive(value);
@@ -74,6 +79,15 @@ public class ClientCardController : CardController
                 aUnzoomedImage.gameObject.SetActive(true);
                 break;
             default: throw new System.ArgumentException($"Invalid stat highlight setting {settings.statHighlight}");
+        }
+    }
+
+    public override void ShowForCardType(char cardType, bool zoomed)
+    {
+        base.ShowForCardType(cardType, zoomed);
+        foreach(var obj in frameObjects)
+        {
+            obj.material = card.Controller?.Friendly ?? true ? friendlyCardFrameMaterial : enemyCardFrameMaterial;
         }
     }
 }

@@ -1878,6 +1878,18 @@ MonoBehaviour:
     type: 3}
   revealedImage: {fileID: 4144494382504138341}
   mouseCtrl: {fileID: 1889302329618885808}
+  friendlyCardFrameMaterial: {fileID: 2100000, guid: 1ef7c4f92266a324188a9fc43d99af1d,
+    type: 2}
+  enemyCardFrameMaterial: {fileID: 2100000, guid: a02188e681b853e4e963acf536e338d3,
+    type: 2}
+  frameObjects:
+  - {fileID: 2041249242724758295}
+  - {fileID: 7843879369269797758}
+  - {fileID: 1459865746560535612}
+  - {fileID: 1445698045428429994}
+  - {fileID: 5371803203059650614}
+  - {fileID: 8368727464063078377}
+  - {fileID: 2654971432145280166}
 --- !u!114 &-3233482119781338202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2297,7 +2309,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &3625382427676712946
 MonoBehaviour:
   m_ObjectHideFlags: 0

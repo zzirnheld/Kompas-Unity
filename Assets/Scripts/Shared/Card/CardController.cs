@@ -236,7 +236,7 @@ namespace KompasCore.Cards
         /// </summary>
         /// <param name="cardType">Whether the card is a character, spell, or augment.</param>
         /// <param name="zoomed">Whether to show the card as zoomed in or not.</param>
-        public void ShowForCardType(char cardType, bool zoomed)
+        public virtual void ShowForCardType(char cardType, bool zoomed)
         {
             bool isChar = cardType == 'C';
 
