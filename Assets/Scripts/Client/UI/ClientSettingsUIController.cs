@@ -4,17 +4,31 @@ using UnityEngine;
 using TMPro;
 using System;
 using KompasClient.GameCore;
+using System.Linq;
 
 namespace KompasClient.UI
 {
     public class ClientSettingsUIController : MonoBehaviour
     {
+        public static readonly Color32 DefaultFriendlyBlue = new Color32(74, 78, 156, 255);
+        public static readonly Color32 DefaultEnemyRed = new Color32(255, 53, 49, 255);
+
+        public static readonly Color32 FriendlyGold = new Color32(226, 166, 0, 255);
+        public static readonly Color32 EnemySilver = new Color32(128, 128, 128, 255);
+
+        public static readonly Color32[] DefaultFriendlyColorOptions = { DefaultFriendlyBlue, FriendlyGold };
+        public static readonly Color32[] DefaultEnemyColorOptions = { DefaultEnemyRed, EnemySilver };
+        public static readonly string[] DefaultFriendlyColorOptionNames = { "Blue", "Gold" }; //TODO make these swatches
+        public static readonly string[] DefaultEnemyColorOptionNames = { "Red", "Silver" };
+
         public string ClientSettingsPath => Application.persistentDataPath + "/ClientUISettings.json";
         public ClientSettings ClientSettings { get; private set; }
 
         public ClientGame clientGame;
         public TMP_Dropdown statHighlightDropdown;
         public TMP_Dropdown confirmTargetsDropdown;
+        public TMP_Dropdown friendlyColorOptionsDropdown;
+        public TMP_Dropdown enemyColorOptionsDropdown;
         public TMP_InputField zoomThresholdInput;
 
         public void ApplySettings()
@@ -66,6 +80,12 @@ namespace KompasClient.UI
             }
         }
 
+        private int GetFriendlyColorIndex(Color color)
+            => DefaultFriendlyColorOptions.Contains(color) ? Array.IndexOf(DefaultFriendlyColorOptions, color) : 0;
+
+        private int GetEnemyColorIndex(Color color)
+            => DefaultEnemyColorOptions.Contains(color)? Array.IndexOf(DefaultEnemyColorOptions, color) : 0;
+
         public void Show()
         {
             statHighlightDropdown.ClearOptions();
@@ -78,9 +98,21 @@ namespace KompasClient.UI
             {
                 confirmTargetsDropdown.options.Add(new TMP_Dropdown.OptionData() { text = o.ToString() });
             }
+            friendlyColorOptionsDropdown.ClearOptions();
+            foreach (var o in DefaultFriendlyColorOptionNames)
+            {
+                friendlyColorOptionsDropdown.options.Add(new TMP_Dropdown.OptionData() { text = o });
+            }
+            enemyColorOptionsDropdown.ClearOptions();
+            foreach (var o in DefaultEnemyColorOptionNames)
+            {
+                enemyColorOptionsDropdown.options.Add(new TMP_Dropdown.OptionData() { text = o });
+            }
 
             statHighlightDropdown.value = (int) ClientSettings.statHighlight;
             confirmTargetsDropdown.value = (int) ClientSettings.confirmTargets;
+            friendlyColorOptionsDropdown.value = ClientSettings.friendlyColorIndex;
+            enemyColorOptionsDropdown.value = ClientSettings.enemyColorIndex;
             zoomThresholdInput.text = ClientSettings.zoomThreshold.ToString("n1");
 
             gameObject.SetActive(true);
@@ -95,6 +127,30 @@ namespace KompasClient.UI
         public void SetConfirmTargets(int index)
         {
             ClientSettings.confirmTargets = (ConfirmTargets)index;
+            ApplySettings();
+        }
+
+        public void SetFriendlyColor(int index)
+        {
+            if(index < 0 || index >= DefaultFriendlyColorOptions.Length)
+            {
+                //TODO custom colors
+                return;
+            }
+            ClientSettings.FriendlyColor = DefaultFriendlyColorOptions[index];
+            ClientSettings.friendlyColorIndex = index;
+            ApplySettings();
+        }
+
+        public void SetEnemyColor(int index)
+        {
+            if (index < 0 || index >= DefaultEnemyColorOptions.Length)
+            {
+                //TODO custom colors
+                return;
+            }
+            ClientSettings.EnemyColor = DefaultEnemyColorOptions[index];
+            ClientSettings.enemyColorIndex = index;
             ApplySettings();
         }
 
@@ -125,13 +181,55 @@ namespace KompasClient.UI
         public float zoomThreshold;
         public ConfirmTargets confirmTargets;
         public string defaultIP;
+        public byte friendlyColorRed;
+        public byte friendlyColorGreen;
+        public byte friendlyColorBlue;
+        public byte enemyColorRed;
+        public byte enemyColorGreen;
+        public byte enemyColorBlue;
+        public int friendlyColorIndex;
+        public int enemyColorIndex;
+
+        [JsonIgnore]
+        public Color32 FriendlyColor
+        {
+            set
+            {
+                friendlyColorRed = value.r;
+                friendlyColorGreen = value.g;
+                friendlyColorBlue = value.b;
+                Debug.Log($"Setting friendly color to {value}. {friendlyColorRed}, {friendlyColorGreen}, {friendlyColorBlue}");
+            }
+            get
+            {
+                return new Color32(friendlyColorRed, friendlyColorGreen, friendlyColorBlue, 255);
+            }
+        }
+        [JsonIgnore]
+        public Color32 EnemyColor
+        {
+            set
+            {
+                enemyColorRed = value.r;
+                enemyColorGreen = value.g;
+                enemyColorBlue = value.b;
+            }
+            get
+            {
+                return new Color32(enemyColorRed, enemyColorGreen, enemyColorBlue, 255);
+            }
+        }
 
         public static ClientSettings Default => new ClientSettings()
         {
             statHighlight = StatHighlight.NoHighlight,
             zoomThreshold = DefaultZoomThreshold,
             confirmTargets = ConfirmTargets.No,
-            defaultIP = ""
+            defaultIP = "",
+            FriendlyColor = ClientSettingsUIController.DefaultFriendlyBlue,
+            EnemyColor = ClientSettingsUIController.DefaultEnemyRed,
+            friendlyColorIndex = 0,
+            enemyColorIndex = 0
         };
 
         /// <summary>

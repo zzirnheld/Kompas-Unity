@@ -80,14 +80,30 @@ public class ClientCardController : CardController
                 break;
             default: throw new System.ArgumentException($"Invalid stat highlight setting {settings.statHighlight}");
         }
+
+        Debug.Log($"setting color to {settings.FriendlyColor}");
+        friendlyCardFrameMaterial.color = settings.FriendlyColor;
+        enemyCardFrameMaterial.color = settings.EnemyColor;
+        ShowFrameColor();
+    }
+
+    private void ShowFrameColor()
+    {
+        if (card.Controller == null)
+        {
+            //no controller yet, don't bother showing color
+            return;
+        }
+        Material material = card.Controller.Friendly ? friendlyCardFrameMaterial : enemyCardFrameMaterial;
+        foreach (var obj in frameObjects)
+        {
+            obj.material = material;
+        }
     }
 
     public override void ShowForCardType(char cardType, bool zoomed)
     {
         base.ShowForCardType(cardType, zoomed);
-        foreach(var obj in frameObjects)
-        {
-            obj.material = card.Controller?.Friendly ?? true ? friendlyCardFrameMaterial : enemyCardFrameMaterial;
-        }
+        ShowFrameColor();
     }
 }
