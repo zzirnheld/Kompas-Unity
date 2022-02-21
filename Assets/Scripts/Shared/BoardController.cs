@@ -38,6 +38,12 @@ namespace KompasCore.GameCore
         #region helper methods
         public int IndexOf(GameCard card) => card.Position.Index;
 
+        private bool IsSpaceEmptyOfSpells(Space space)
+        {
+            var cardThere = GetCardAt(space);
+            return cardThere == null || cardThere.CardType != 'S';
+        }
+
         /// <summary>
         /// Checks whether there's too many spells already next to an Avatar
         /// </summary>
@@ -53,17 +59,10 @@ namespace KompasCore.GameCore
             //true for non-spells
             if (card == null || card.CardType != 'S') return true;
 
-            var (x, y) = space;
-            //if it's a spell going to a relevant location, count other adjacent spells to the avatar
-            if (x >= 5 && y >= 5 && space != (5, 5)) 
-                return CardsAdjacentTo(Space.FarCorner)
-                    .Count(c => c != card && c.CardType == 'S' && c.Controller == card.Controller) < 1;
-            else if (x <= 1 && y <= 1 && space != (1, 1)) 
-                return CardsAdjacentTo(Space.NearCorner)
-                    .Count(c => c != card && c.CardType == 'S' && c.Controller == card.Controller) < 1;
+            int dist = ShortestPath(card.Controller.Avatar.Position, card.Controller.Enemy.Avatar.Position, s => s != space && IsSpaceEmptyOfSpells(s));
 
             //if it's not in a relevant location, everything is fine
-            return true;
+            return dist < NoPathExists;
         }
 
         public bool Surrounded(Space s) => s.AdjacentSpaces.All(s => !IsEmpty(s));

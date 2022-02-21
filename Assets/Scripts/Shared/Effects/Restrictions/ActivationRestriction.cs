@@ -20,7 +20,7 @@ namespace KompasCore.Effects
         public const string Location = "Location";
         public const string ControllerActivates = "Controller Activates";
         public const string NotNegated = "Not Negated";
-        public const string CardExists = "Card Exists";
+        public const string CardExists = "Card Exists Now";
         public const string ThisFitsRestriction = "This Card Fits Restriction";
         public const string NotCurrentlyActivated = "Not Currently Activated";
         public const string NothingHappening = "Nothing Happening";

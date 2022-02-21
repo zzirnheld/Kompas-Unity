@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Stardusting Pulsar",
-	"effText": "When your Avatar gains S, give a Summoned character +1 NESW.\nWhen your Avatar loses S, give a Summoned character -1 NESW.",
+	"effText": "When your Avatar's S changes, give a Summoned character:\n+S: +1 NESW.\n-S: -1 NESW.",
 	"effects": [
 		{
 			"triggerData": {

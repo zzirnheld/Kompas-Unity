@@ -279,7 +279,7 @@ namespace KompasCore.Effects
             OutOfMovement => potentialTarget?.SpacesCanMove <= 0,
 
             //positioning
-            SpaceFitsRestriction => spaceRestriction.IsValidSpace(potentialTarget?.Position ?? Space.Nowhere, context),
+            SpaceFitsRestriction => potentialTarget.Position != null && spaceRestriction.IsValidSpace(potentialTarget.Position, context),
             SourceInThisAOE => potentialTarget?.CardInAOE(Source) ?? false,
             IndexInListGTC => potentialTarget?.IndexInList > constant,
             IndexInListLTC => potentialTarget?.IndexInList < constant,
