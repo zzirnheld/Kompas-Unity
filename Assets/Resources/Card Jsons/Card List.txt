@@ -202,6 +202,7 @@ memory/Memory Guide
 memory/Remembering
 memory/Rememberance
 memory/Rememory Guide
+memory/Vesselformation
 music/Soaring Chorus
 music/Surging Verse
 music/Ringing Bridge
