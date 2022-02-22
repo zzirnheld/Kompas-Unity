@@ -43,6 +43,7 @@ namespace KompasCore.Effects
         public const string TurnPlayerControls = "Turn Player Controls";
 
         public const string ControllerMatchesCardTarget = "Controller Matches Card Target's";
+        public const string ControllerDoesntMatchCardTarget = "Controller Doesn't Match Card Target's";
         public const string ControllerMatchesPlayerTarget = "Controller Matches Player Target";
         public const string ControllerIsntPlayerTarget = "Controller Isn't Player Target";
 
@@ -232,6 +233,7 @@ namespace KompasCore.Effects
             TurnPlayerControls  => potentialTarget?.Controller == Subeffect.Game.TurnPlayer,
 
             ControllerMatchesCardTarget         => potentialTarget?.Controller == Subeffect.CardTarget.Controller,
+            ControllerDoesntMatchCardTarget     => potentialTarget?.Controller != Subeffect.CardTarget.Controller,
             ControllerMatchesPlayerTarget   => potentialTarget?.Controller == Subeffect.PlayerTarget,
             ControllerIsntPlayerTarget      => potentialTarget?.Controller != Subeffect.PlayerTarget,
 

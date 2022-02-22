@@ -1,0 +1,46 @@
+{
+	"cardType": 65,
+	"cardName": "Deja Vu",
+	"effText": "When a distinct Memory summons this character, echo them.",
+	"effects": [
+		{
+			"blurb": "Creative Idea",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"Augmented Card is Main Card",
+						"Stackable Source Fits Restriction Now"
+					],
+					"sourceRestriction": {
+						"cardRestrictions": [
+							"Distinct Name from Source",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Memory"
+						]
+					}
+				}
+			},
+			"subeffects": [
+                {
+                    "$type":"KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+                },
+				{
+					"$type": "KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Augment Normal Restrictions"
+		],
+		"effectRestrictions": [
+			"Augment Effect Restrictions"
+		]
+	},
+	"a": 1,
+	"subtypeText": "Memory"
+}

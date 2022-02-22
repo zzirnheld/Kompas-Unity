@@ -1,0 +1,37 @@
+{
+	"cardType": 83,
+	"cardName": "Remembering",
+	"effText": "When a Memory echoes a character, echo that character.",
+	"effects": [
+		{
+			"blurb": "Remember",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Stackable Source Fits Restriction Now"
+					],
+					"sourceRestriction": {
+						"cardRestrictions": [
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Memory"
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"c": 4,
+	"subtypeText": "Enchant"
+}

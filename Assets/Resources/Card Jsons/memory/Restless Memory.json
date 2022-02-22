@@ -1,0 +1,75 @@
+{
+	"cardType": 65,
+	"cardName": "Restless Memory",
+	"effText": "When this character is summoned, move them 1 space, then give them -1 N.\nWhen turns start, echo this character.",
+	"effects": [
+		{
+			"blurb": "Creative Idea",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"Augmented Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+                {
+                    "$type":"KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+                },
+				{
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"spaceRestrictions": [
+							"Empty",
+							"Can Move Card Target to This Space",
+							"Distance to Card Target Fits X Restriction"
+						],
+						"distanceXRestriction": {
+							"numberRestrictions": [
+								"=X"
+							]
+						}
+					},
+					"xModifier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"nModifier": -1
+				}
+			]
+		},
+		{
+			"blurb": "Creative Echoing",
+			"triggerData": {
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play"
+					]
+				}
+			},
+			"subeffects": [
+                {
+                    "$type":"KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+                },
+				{
+					"$type": "KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Augment Normal Restrictions"
+		],
+		"effectRestrictions": [
+			"Augment Effect Restrictions"
+		]
+	},
+	"a": 3,
+	"subtypeText": "Memory"
+}

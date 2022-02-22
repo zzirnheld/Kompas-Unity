@@ -1,0 +1,71 @@
+{
+	"cardType": 65,
+	"cardName": "Powerhungry Memory",
+	"effText": "During your turn, you can destroy another Memory attached to this character. Echo this character. Dispel an adjacent spell.",
+	"effects": [
+		{
+			"blurb": "Hunger for Power",
+			"activationRestriction": {
+				"activationRestrictionArray": [
+					"Default"
+				]
+			},
+			"subeffects": [
+                {
+                    "$type":"KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+                },
+                {
+                    "$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+                    "cardRestriction":
+                    {
+                        "blurb":"to destroy",
+                        "cardRestrictions":[
+                            "Board",
+                            "Augment",
+                            "Augments Current Target",
+                            "Subtypes Include"
+                        ],
+						"subtypesInclude": [
+							"Memory"
+						]
+                    }
+                },
+				{
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.ResummonSubeffect, Assembly-CSharp",
+                    "targetIndex":-2
+				},
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Board",
+							"Spell",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Source"
+							]
+						}
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.DispelSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Augment Normal Restrictions"
+		],
+		"effectRestrictions": [
+			"Augment Effect Restrictions"
+		]
+	},
+	"a": 3,
+	"subtypeText": "Memory"
+}

@@ -1,0 +1,72 @@
+{
+	"cardType": 67,
+	"cardName": "Bestower of Memories",
+	"effText": "When you attach a Memory to a Vessel normally, deck->attach a copy of that Memory to the same Vessel.",
+	"effects": [
+		{
+            "blurb": "Bestow Memory",
+			"triggerData": {
+				"triggerCondition": "Augment Attached",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Controller Triggered",
+						"Main Card Fits Restriction After",
+                        "No Stackable"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+                            "Subtypes Include",
+                            "Augments Card Fitting Restriction"
+                        ],
+						"subtypesInclude": [
+							"Memory"
+						],
+						"augmentRestriction": {
+							"cardRestrictions": [
+                                "Subtypes Include"
+							],
+                            "subtypesInclude": [
+                                "Vessel"
+                            ]
+						}
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.TargetTargetsAugmentedCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.AutoTargetSubeffect, Assembly-CSharp",
+					"tiebreakerDirection":"Any",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Friendly",
+							"Deck",
+                            "Same Name as Target",
+							"Can Be Played"
+						]
+					},
+					"targetIndex": -2
+				},
+				{
+					"$type": "KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp",
+					"targetIndex": -2
+				},
+				{
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+    "unique":true,
+	"n": 1,
+	"e": 8,
+	"s": 10,
+	"w": 8,
+	"subtypeText": "Mage"
+}

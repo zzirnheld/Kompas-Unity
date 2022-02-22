@@ -1,0 +1,59 @@
+{
+	"cardType": 65,
+	"cardName": "Creative Memory",
+	"effText": "When this character is summoned, draw 1 card.\nWhen turns start, give the turn player 1 pip. Echo this character.",
+	"effects": [
+		{
+			"blurb": "Creative Idea",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"Augmented Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+				}
+			]
+		},
+		{
+			"blurb": "Creative Echoing",
+			"triggerData": {
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play"
+					]
+				}
+			},
+			"subeffects": [
+                {
+                    "$type":"KompasServer.Effects.TargetTurnPlayerSubeffect, Assembly-CSharp"
+                },
+				{
+					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xModifier": 1
+				},
+                {
+                    "$type":"KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+                },
+				{
+					"$type": "KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Augment Normal Restrictions"
+		],
+		"effectRestrictions": [
+			"Augment Effect Restrictions"
+		]
+	},
+	"a": 1,
+	"subtypeText": "Memory"
+}

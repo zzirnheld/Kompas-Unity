@@ -117,19 +117,7 @@ Dreamfog
 Durendal
 Fight
 Fodderbin
-geminii/Bestower of Memories
-geminii/Echoed Lives
-geminii/Empty Vessel
-geminii/Malevolent Vessel
-geminii/Memory Guide
-geminii/Past Lives
-geminii/Pastknower Vessel
-geminii/Recaller Vessel
-geminii/Reincarnation
 geminii/Rememories
-geminii/Resummon
-geminii/Revered Vessel
-geminii/Cloud of Rememories
 golems/Animancer
 golems/Antiprecatium Golem
 golems/Clay Golem
@@ -204,6 +192,16 @@ mechs/Collaborative Mechanization
 mechs/One Step Ahead
 mechs/Repair Hub
 memory/Malevolent Memory
+memory/Creative Memory
+memory/Deja Vu
+memory/Powerhungry Memory
+memory/Paranoid Memory
+memory/Restless Memory
+memory/Bestower of Memories
+memory/Memory Guide
+memory/Remembering
+memory/Rememberance
+memory/Rememory Guide
 music/Soaring Chorus
 music/Surging Verse
 music/Ringing Bridge

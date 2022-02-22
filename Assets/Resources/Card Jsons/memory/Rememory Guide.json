@@ -1,0 +1,72 @@
+{
+	"cardType": 67,
+	"cardName": "Rememory Guide",
+	"effText": "When you summon a Vessel, give them +1 W if it's your turn, or +1 E if it's not.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Friendly Turn",
+						"Controller Triggered",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+                            "Subtypes Include"
+                        ],
+						"subtypesInclude": [
+							"Vessel"
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"wMultiplier": 1
+				}
+			]
+		},
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Enemy Turn",
+						"Controller Triggered",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+                            "Subtypes Include"
+                        ],
+						"subtypesInclude": [
+							"Vessel"
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMultiplier": 1
+				}
+			]
+		}
+	],
+	"n": 1,
+	"e": 3,
+	"s": 2,
+	"w": 0,
+	"subtypeText": "Mage"
+}
