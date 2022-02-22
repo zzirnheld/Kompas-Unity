@@ -61,7 +61,7 @@
 				},
 				{
 					"$type": "KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
-					"attachmentTarget": -2,
+					"targetToAttachTo": -2,
 					"targetIndex": -1
 				}
 			]

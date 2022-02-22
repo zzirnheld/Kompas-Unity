@@ -38,6 +38,26 @@
 				},
 				{
 					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"blurb": "Vessel to get a copy of the memory",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Board",
+                            "Subtypes Include",
+							"Wields No Augment Fitting Restriction"
+						],
+						"subtypesInclude": [
+							"Vessel"
+						],
+						"augmentRestriction": {
+							"cardRestrictions": [
+								"Same Name as Target"
+							]
+						}
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"blurb": "Copy of the memory to attach",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Friendly",
@@ -49,29 +69,13 @@
 							2,
 							4
 						]
-					}
+					},
+					"targetIndex": -2
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Friendly",
-							"Board",
-							"Wields No Augment Fitting Restriction"
-						],
-						"augmentRestriction": {
-							"cardRestrictions": [
-								"Same Name as Target"
-							]
-						}
-					}
-				},
-				{
-					"$type": "KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp",
-					"targetIndex":-2
+					"$type": "KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
+					"targetToAttachTo": -2,
+					"targetIndex": -1
 				}
 			]
 		}
