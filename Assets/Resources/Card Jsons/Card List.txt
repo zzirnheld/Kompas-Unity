@@ -206,6 +206,7 @@ mechs/Recruitment Drive
 mechs/Collaborative Mechanization
 mechs/One Step Ahead
 mechs/Repair Hub
+mechs/Buffer Shield
 music/Soaring Chorus
 music/Surging Verse
 music/Ringing Bridge

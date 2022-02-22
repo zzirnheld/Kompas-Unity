@@ -10,7 +10,7 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card is Main Card",
-                        "SecondaryCardFitsRestrictionBefore"
+                        "Secondary Card Fits Restriction Before"
 					],
                     "cardRestriction": {
 						"cardRestrictions": [
