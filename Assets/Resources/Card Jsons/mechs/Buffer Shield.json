@@ -1,7 +1,7 @@
 {
 	"cardType":65,
 	"cardName":"Buffer Shield",
-	"effText":"While equipped, give this Mech +6 E.",
+	"effText":"While equipped, give this character +3 E.\nWhen enemy turns start, discard->attach me to a Mech.",
 	"effects":[
 		{
 			"blurb":"Buffer",
@@ -9,12 +9,7 @@
 			{
 				"triggerCondition":"Augment Attached",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card is Main Card","Secondary Card Fits Restriction Before"],
-					"cardRestriction":
-					{
-						"cardRestrictions":["Subtypes Include"],
-						"subtypesInclude":["Mech"]
-					}
+					"triggerRestrictions":["This Card is Main Card"]
 				}
 			},
 			"subeffects":[
@@ -23,11 +18,51 @@
 				},
 				{
 					"$type":"KompasServer.Effects.TemporaryCardStatChangeSubeffect, Assembly-CSharp",
-					"eModifier":6,
+					"eModifier":3,
 					"endCondition":"Augment Detached",
 					"triggerRestriction":{
 						"triggerRestrictions":["This Card is Main Card"]
 					}
+				}
+			]
+		},
+		{
+			"triggerData": {
+				"blurb": "Buffer Recharge",
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"Enemy Turn",
+						"This Card Fits Restriction Now"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Discard"
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "for Buffer Shield to attach to",
+						"cardRestrictions": [
+							"Board",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Mech"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
+					"attachmentTarget": -2,
+					"targetIndex": -1
 				}
 			]
 		}

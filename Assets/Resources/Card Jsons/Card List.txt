@@ -6,6 +6,7 @@ generic/Volatile Autocannon
 generic/Spellbombsetter
 generic/Lifetide
 generic/Warlock
+generic/Juan Puntsch-Mann
 aquatic/Big Tuna
 aquatic/Changing Tides
 aquatic/Fishing
@@ -177,6 +178,8 @@ mech_golems/N0T3
 mech_golems/53G45C4NTUR14N 00
 mech_golems/C4RR13R
 mech_golems/B0U550L3
+mech_golems/P4R5154N
+mech_golems/5P33DRUNN3R
 mech_pilots/Standard Pilot
 mech_pilots/Runn R Mann
 mech_pilots/Heel R Mann
@@ -191,6 +194,7 @@ mechs/Recruitment Drive
 mechs/Collaborative Mechanization
 mechs/One Step Ahead
 mechs/Repair Hub
+mechs/Buffer Shield
 memory/Malevolent Memory
 memory/Creative Memory
 memory/Deja Vu

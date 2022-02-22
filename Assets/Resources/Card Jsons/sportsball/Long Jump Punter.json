@@ -18,7 +18,7 @@
 				{
 					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction": {
-						"blurb": "character within 2 spaces to punt Augment to",
+						"blurb": "character within 4 spaces to punt Augment to",
 						"cardRestrictions": [
 							"Character",
 							"Board",

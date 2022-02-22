@@ -20,6 +20,7 @@ namespace KompasCore.Effects
 
         public const string ThisIsActive = "This is Activated";
         public const string NotNormally = "Not Normally";
+        public const string DefenderFitsRestriction = "Defender Fits Card Restriction";
 
         public static readonly string[] DefaultAttackRestrictions = { ThisIsCharacter, DefenderIsCharacter, DefenderIsAdjacent, DefenderIsEnemy,
             FriendlyTurn, MaxPerTurn, NothingHappening, InPlay };
@@ -27,18 +28,22 @@ namespace KompasCore.Effects
         public static readonly string[] AtAllRestrictions = { ThisIsCharacter, FriendlyTurn, MaxPerTurn, InPlay };
 
         public readonly List<string> attackRestrictions = new List<string> { Default };
-        public string[] attackRestrictionsArray = null;
+        public string[] attackRestrictionsToIgnore = { };
         public int maxAttacks = 1;
+
+        public CardRestriction defenderRestriction;
 
         public GameCard Card { get; private set; }
 
         public void SetInfo(GameCard card)
         {
             Card = card;
-            if (attackRestrictionsArray == null || attackRestrictionsArray.Contains(Default)) 
-                attackRestrictions.AddRange(DefaultAttackRestrictions);
 
-            if (attackRestrictionsArray != null) attackRestrictions.AddRange(attackRestrictionsArray);
+            if (attackRestrictions.Contains(Default)) attackRestrictions.AddRange(DefaultAttackRestrictions);
+            attackRestrictions.RemoveAll(attackRestrictionsToIgnore.Contains);
+
+            defenderRestriction?.Initialize(Card, effect: default, subeffect: default);
+
             Debug.Log($"Finished initializing attack restriction for {Card.CardName} with restrictions: {string.Join(", ", attackRestrictions)}");
         }
 

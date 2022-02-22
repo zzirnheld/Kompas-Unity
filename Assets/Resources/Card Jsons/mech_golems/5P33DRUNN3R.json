@@ -1,22 +1,16 @@
 {
 	"cardType": 67,
-	"cardName": "51NG3",
-	"effText": "Golem.\nWhile I'm activated, when turns start, give adjacent enemy characters -1 E.",
+	"cardName": "5P33DRUNN3R",
+	"effText": "Speedemon. Golem.\nWhen I'm activated, give adjacent characters +2 N.",
 	"effects": [
 		{
-			"blurb": "Fire see monkey do",
+			"blurb": "5P33DRUN 5TR4T5",
 			"triggerData": {
-				"triggerCondition": "Turn Start",
+				"triggerCondition": "Activate",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card in Play",
-						"This Card Fits Restriction Now"
-					],
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Activated"
-						]
-					}
+						"This Card is Main Card"
+					]
 				}
 			},
 			"subeffects": [
@@ -26,7 +20,6 @@
 						"cardRestrictions": [
 							"Character",
 							"Board",
-							"Enemy",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
@@ -35,7 +28,7 @@
 							]
 						}
 					},
-					"eModifier": -1
+					"nModifier": 2
 				}
 			]
 		}
@@ -52,10 +45,13 @@
 			"This is Activated"
 		]
 	},
-	"n": 2,
-	"e": 5,
+	"keywords": [
+		"Speedemon"
+	],
+	"n": 3,
+	"e": 3,
 	"s": 7,
-	"w": 6,
+	"w": 7,
 	"subtypes": [
 		"Mech",
 		"Golem"
