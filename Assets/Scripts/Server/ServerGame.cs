@@ -45,7 +45,7 @@ namespace KompasServer.GameCore
         public ServerEffect CurrEffect { get; set; }
         public override IStackable CurrStackEntry => EffectsController.CurrStackEntry;
         public override IEnumerable<IStackable> StackEntries => EffectsController.StackEntries;
-        public override bool NothingHappening => EffectsController.NothingHappening && Players.All(s => s.passedPriority);
+        public override bool NothingHappening => EffectsController.NothingHappening && Players.All(s => s.PassedPriority);
 
         public override int TurnCount 
         { 
@@ -292,7 +292,7 @@ namespace KompasServer.GameCore
             }
 
             //Debug.Log($"Checking validity of playing {card.CardName} to {to}");
-            return card.PlayRestriction.IsValidNormalPlay(to, player, checkCanAffordCost: true);
+            return card.PlayRestriction.IsValidNormalPlay(to, player);
         }
 
         public bool IsValidNormalAttach(GameCard card, Space to, ServerPlayer player)
@@ -303,10 +303,10 @@ namespace KompasServer.GameCore
                 return true;
             }
 
-            Debug.Log($"Checking validity augment of {card.CardName} to {to}, on {boardCtrl.GetCardAt(to)}");
+            //Debug.Log($"Checking validity augment of {card.CardName} to {to}, on {boardCtrl.GetCardAt(to)}");
             return card != null && card.CardType == 'A' && to.IsValid
                 && !boardCtrl.IsEmpty(to)
-                && card.PlayRestriction.IsValidNormalPlay(to, player, checkCanAffordCost: true);
+                && card.PlayRestriction.IsValidNormalPlay(to, player);
         }
 
         public bool IsValidNormalMove(GameCard toMove, Space to, Player by)
@@ -317,7 +317,7 @@ namespace KompasServer.GameCore
                 return true;
             }
 
-            Debug.Log($"Checking validity of moving {toMove.CardName} to {to}");
+            //Debug.Log($"Checking validity of moving {toMove.CardName} to {to}");
             if (toMove.Position == to) return false;
             else return toMove.MovementRestriction.IsValidNormalMove(to);
         }
@@ -330,7 +330,7 @@ namespace KompasServer.GameCore
                 return attacker != null && defender != null;
             }
 
-            Debug.Log($"Checking validity of attack of {attacker.CardName} on {defender} by {instigator.index}");
+            //Debug.Log($"Checking validity of attack of {attacker.CardName} on {defender} by {instigator.index}");
             return attacker.AttackRestriction.IsValidAttack(defender, stackSrc: null);
         }
         #endregion

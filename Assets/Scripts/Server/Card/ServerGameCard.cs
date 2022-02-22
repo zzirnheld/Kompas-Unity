@@ -114,7 +114,7 @@ namespace KompasServer.Cards
             ServerEffects = effects;
             int i = 0;
             foreach (var eff in effects) eff.SetInfo(this, game, owner, i++);
-            Debug.Log($"Setting card with effects: {string.Join(", ", effects.Select(e => e.ToString()))}");
+            //Debug.Log($"Setting card with effects: {string.Join(", ", effects.Select(e => e.ToString()))}");
             ServerGame = game;
             ServerController = ServerOwner = owner;
         }
@@ -161,7 +161,7 @@ namespace KompasServer.Cards
 
         public override void Remove(IStackable stackSrc = null)
         {
-            Debug.Log($"Trying to remove {CardName} from {Location}");
+            //Debug.Log($"Trying to remove {CardName} from {Location}");
 
             //proc the trigger before actually removing anything
             var player = stackSrc?.Controller ?? Controller;
@@ -201,11 +201,12 @@ namespace KompasServer.Cards
         #region stats
         public override void SetN(int n, IStackable stackSrc = null, bool notify = true)
         {
+            if (n == N) return;
             var context = new ActivationContext(mainCardBefore: this, stackable: stackSrc, player: stackSrc?.Controller, x: n - N);
             EffectsController.TriggerForCondition(Trigger.NChange, context);
-            EffectsController.TriggerForCondition(Trigger.StatNumberChange, context);
+            //EffectsController.TriggerForCondition(Trigger.StatNumberChange, context);
             var setContext = new ActivationContext(mainCardBefore: this, stackable: stackSrc, player: stackSrc?.Controller, x: n);
-            EffectsController.TriggerForCondition(Trigger.NSet, setContext);
+            //EffectsController.TriggerForCondition(Trigger.NSet, setContext);
             base.SetN(n, stackSrc);
             context.CacheCardInfoAfter();
             setContext.CacheCardInfoAfter();
@@ -215,11 +216,12 @@ namespace KompasServer.Cards
 
         public override void SetE(int e, IStackable stackSrc = null, bool notify = true)
         {
+            if (e == E) return;
             var context = new ActivationContext(mainCardBefore: this, stackable: stackSrc, player: stackSrc?.Controller, x: e - E);
             EffectsController.TriggerForCondition(Trigger.EChange, context);
-            EffectsController.TriggerForCondition(Trigger.StatNumberChange, context);
+            //EffectsController.TriggerForCondition(Trigger.StatNumberChange, context);
             var setContext = new ActivationContext(mainCardBefore: this, stackable: stackSrc, player: stackSrc?.Controller, x: e);
-            EffectsController.TriggerForCondition(Trigger.ESet, setContext);
+            //EffectsController.TriggerForCondition(Trigger.ESet, setContext);
             base.SetE(e, stackSrc);
             context.CacheCardInfoAfter();
             setContext.CacheCardInfoAfter();
@@ -236,11 +238,12 @@ namespace KompasServer.Cards
 
         public override void SetS(int s, IStackable stackSrc = null, bool notify = true)
         {
+            if (s == S) return;
             var context = new ActivationContext(mainCardBefore: this, stackable: stackSrc, player: stackSrc?.Controller, x: s - S);
             EffectsController.TriggerForCondition(Trigger.SChange, context);
-            EffectsController.TriggerForCondition(Trigger.StatNumberChange, context);
+            //EffectsController.TriggerForCondition(Trigger.StatNumberChange, context);
             var setContext = new ActivationContext(mainCardBefore: this, stackable: stackSrc, player: stackSrc?.Controller, x: s);
-            EffectsController.TriggerForCondition(Trigger.SSet, setContext);
+            //EffectsController.TriggerForCondition(Trigger.SSet, setContext);
             base.SetS(s, stackSrc);
             context.CacheCardInfoAfter();
             setContext.CacheCardInfoAfter();
@@ -250,11 +253,12 @@ namespace KompasServer.Cards
 
         public override void SetW(int w, IStackable stackSrc = null, bool notify = true)
         {
+            if (w == W) return;
             var context = new ActivationContext(mainCardBefore: this, stackable: stackSrc, player: stackSrc?.Controller, x: w - W);
             EffectsController.TriggerForCondition(Trigger.WChange, context);
-            EffectsController.TriggerForCondition(Trigger.StatNumberChange, context);
+            //EffectsController.TriggerForCondition(Trigger.StatNumberChange, context);
             var setContext = new ActivationContext(mainCardBefore: this, stackable: stackSrc, player: stackSrc?.Controller, x: w);
-            EffectsController.TriggerForCondition(Trigger.WSet, setContext);
+            //EffectsController.TriggerForCondition(Trigger.WSet, setContext);
             base.SetW(w, stackSrc);
             context.CacheCardInfoAfter();
             setContext.CacheCardInfoAfter();
@@ -264,11 +268,12 @@ namespace KompasServer.Cards
 
         public override void SetC(int c, IStackable stackSrc = null, bool notify = true)
         {
+            if (c == C) return;
             var context = new ActivationContext(mainCardBefore: this, stackable: stackSrc, player: stackSrc?.Controller, x: c - C);
             EffectsController.TriggerForCondition(Trigger.CChange, context);
-            EffectsController.TriggerForCondition(Trigger.StatNumberChange, context);
+            //EffectsController.TriggerForCondition(Trigger.StatNumberChange, context);
             var setContext = new ActivationContext(mainCardBefore: this, stackable: stackSrc, player: stackSrc?.Controller, x: c);
-            EffectsController.TriggerForCondition(Trigger.CSet, setContext);
+            //EffectsController.TriggerForCondition(Trigger.CSet, setContext);
             base.SetC(c, stackSrc);
             context.CacheCardInfoAfter();
             setContext.CacheCardInfoAfter();
@@ -278,11 +283,12 @@ namespace KompasServer.Cards
 
         public override void SetA(int a, IStackable stackSrc = null, bool notify = true)
         {
+            if (a == A) return;
             var context = new ActivationContext(mainCardBefore: this, stackable: stackSrc, player: stackSrc?.Controller, x: a - A);
             EffectsController.TriggerForCondition(Trigger.AChange, context);
-            EffectsController.TriggerForCondition(Trigger.StatNumberChange, context);
+            //EffectsController.TriggerForCondition(Trigger.StatNumberChange, context);
             var setContext = new ActivationContext(mainCardBefore: this, stackable: stackSrc, player: stackSrc?.Controller, x: a);
-            EffectsController.TriggerForCondition(Trigger.ASet, setContext);
+            //EffectsController.TriggerForCondition(Trigger.ASet, setContext);
             base.SetA(a, stackSrc);
             context.CacheCardInfoAfter();
             setContext.CacheCardInfoAfter();

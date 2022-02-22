@@ -17,6 +17,9 @@ namespace KompasCore.GameCore
 
         public virtual void Annihilate(GameCard card, IStackable stackSrc = null)
         {
+            if (card == null) throw new NullCardException("Cannot add null card to hand");
+            Debug.Log($"Annihilating {card.CardName} from {card.Location}");
+
             if (card.GameLocation != null && card.GameLocation.Equals(this)) 
                 throw new AlreadyHereException(CardLocation.Annihilation);
 

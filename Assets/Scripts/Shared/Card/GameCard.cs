@@ -123,7 +123,8 @@ namespace KompasCore.Cards
             get => position;
             set
             {
-                Debug.Log($"Position of {CardName} set to {value}");
+                if (null != value) Debug.Log($"Position of {CardName} set to {value}");
+
                 position = value;
                 //card controller will be null on server. not using null ? because of monobehavior
                 if (cardCtrl != null) cardCtrl.SetPhysicalLocation(Location);
@@ -226,7 +227,7 @@ namespace KompasCore.Cards
             protected set
             {
                 location = value;
-                Debug.Log($"Card {ID} named {CardName} location set to {Location}");
+                //Debug.Log($"Card {ID} named {CardName} location set to {Location}");
                 if (cardCtrl != null) cardCtrl.SetPhysicalLocation(Location);
                 //else Debug.LogWarning($"Missing a card control. Is this a debug card?");
             }
@@ -340,7 +341,9 @@ namespace KompasCore.Cards
             if (augment == null) 
                 throw new NullAugmentException(stackSrc, this, "Can't add a null augment");
             if (Location != CardLocation.Board) 
-                throw new CardNotHereException(CardLocation.Board, this, "Can't put an augment on a card not in play!");
+                throw new CardNotHereException(CardLocation.Board, this, $"Can't put an augment on a card not in {Location}!");
+
+            Debug.Log($"Attaching {augment.CardName} from {augment.Location} to {CardName} in {Location}");
 
             augment.Remove(stackSrc);
 

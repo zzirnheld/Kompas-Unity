@@ -120,7 +120,7 @@ namespace KompasServer.Effects
             if (stackable == null) await StackEmptied();
             else
             {
-                Debug.Log($"Resolving next stack entry: {stackable}, {context}");
+                //Debug.Log($"Resolving next stack entry: {stackable}, {context}");
                 //inform the players that they no longer can respond, in case they were somehow still thinking they could
                 foreach (var p in ServerGame.ServerPlayers) p.ServerNotifier.RequestNoResponse();
 
@@ -174,10 +174,15 @@ namespace KompasServer.Effects
 
         /// <summary>
         /// Clears the passed priority flag for all players
+        /// NOTE: DOESN'T DO ANYTHING RIGHT NOW, since fast effects have been removed from the game,
+        /// so to save time, we don't ask players if they have a response.
+        /// IF I ever add back fast effects, have it be smarter and allow players
+        /// to tell the server in advance if they want to respond,
+        /// to avoid having to go back and forth constantly in big stacks
         /// </summary>
         public void ResetPassingPriority()
         {
-            foreach (var player in ServerGame.ServerPlayers) player.passedPriority = false;
+            foreach (var player in ServerGame.ServerPlayers) player.ResetPassedPriority();
         }
         #endregion the stack
 
@@ -272,7 +277,7 @@ namespace KompasServer.Effects
             await CheckAllTriggers(ServerGame.TurnServerPlayer);
 
             var playersHoldingPriority = ServerGame.ServerPlayers
-                .Where(player => !player.passedPriority)
+                .Where(player => !player.PassedPriority)
                 .ToArray(); //call toArray so that we don't create the collection twice.
 
             //for any player that is holding priority, request a response from them
@@ -335,7 +340,7 @@ namespace KompasServer.Effects
                     .ToArray();
                 if (!validTriggers.Any()) return;
                 var triggers = new TriggersTriggered(triggers: validTriggers, context: context);
-                Debug.Log($"Triggers triggered: {string.Join(", ", triggers.triggers.Select(t => t.Blurb))}");
+                Debug.Log($"Triggers triggered: {string.Join(", ", triggers.triggers.Select(t => t.Source.ID + t.Blurb))}");
                 lock (triggerStackLock)
                 {
                     triggeredTriggers.Enqueue(triggers);

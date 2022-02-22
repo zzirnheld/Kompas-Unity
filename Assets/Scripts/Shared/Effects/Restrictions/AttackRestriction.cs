@@ -44,7 +44,7 @@ namespace KompasCore.Effects
 
             defenderRestriction?.Initialize(Card, effect: default, subeffect: default);
 
-            Debug.Log($"Finished initializing attack restriction for {Card.CardName} with restrictions: {string.Join(", ", attackRestrictions)}");
+            //Debug.Log($"Finished initializing attack restriction for {Card.CardName} with restrictions: {string.Join(", ", attackRestrictions)}");
         }
 
         private bool RestrictionValid(string restriction, GameCard defender, IStackable stackSrc) => restriction switch

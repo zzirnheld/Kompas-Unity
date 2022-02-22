@@ -185,6 +185,7 @@ public class CardRepository : MonoBehaviour
             return null;
         }
 
+        //Destroy card components irrelevant to a server avatar
         var avatarObj = Instantiate(CardPrefab);
         var cardComponents = avatarObj
             .GetComponents(typeof(GameCard))
@@ -231,13 +232,10 @@ public class CardRepository : MonoBehaviour
             return null;
         }
 
+        //Destroy card components irrelevant to a server non-avatar
         var cardComponents = cardObj
             .GetComponents(typeof(GameCard))
             .Where(c => c is AvatarServerGameCard || !(c is ServerGameCard));
-        foreach (var c in cardComponents)
-        {
-            Debug.Log($"going to delete {c.GetType()}");
-        }
         foreach (var c in cardComponents) Destroy(c);
 
         var cardCtrlComponents = cardObj
@@ -283,6 +281,7 @@ public class CardRepository : MonoBehaviour
         }
         var avatarObj = Instantiate(CardPrefab);
 
+        //Destroy card components irrelevant to a client avatar
         var cardComponents = avatarObj
             .GetComponents(typeof(GameCard))
             .Where(c => !(c is AvatarClientGameCard));
@@ -333,6 +332,7 @@ public class CardRepository : MonoBehaviour
         }
         var cardObj = Instantiate(CardPrefab);
 
+        //Destroy card components irrelevant to a client non-avatar
         var cardComponents = cardObj
             .GetComponents(typeof(GameCard))
             .Where(c => c is AvatarClientGameCard || !(c is ClientGameCard));
