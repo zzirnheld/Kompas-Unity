@@ -39,16 +39,13 @@
                     "$type":"KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
                 },
 				{
-					"$type": "KompasServer.Effects.ResummonSubeffect, Assembly-CSharp",
-                    "targetIndex":-2
+					"$type": "KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type": "KompasServer.Effects.ResummonSubeffect, Assembly-CSharp",
-                    "targetIndex":-2
+					"$type": "KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type": "KompasServer.Effects.ResummonSubeffect, Assembly-CSharp",
-                    "targetIndex":-2
+					"$type": "KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
 				}
 			]
 		}

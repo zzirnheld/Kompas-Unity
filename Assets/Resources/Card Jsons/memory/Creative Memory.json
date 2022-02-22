@@ -1,8 +1,31 @@
 {
 	"cardType": 65,
 	"cardName": "Creative Memory",
-	"effText": "When turns start, echo this character. The turn player draws 1 card.",
+	"effText": "When this character is summoned, if the turn player's hand isn't full, they draw 1 card.\nWhen turns start, echo this character. ",
 	"effects": [
+		{
+			"blurb": "Spurt of Creativity",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"Augmented Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+                {
+                    "$type":"KompasServer.Effects.TargetTurnPlayerSubeffect, Assembly-CSharp"
+                },
+				{
+					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition": "Hand Full"
+				},
+				{
+					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+				}
+			]
+		},
 		{
 			"blurb": "Creative Echoing",
 			"triggerData": {
@@ -19,12 +42,6 @@
                 },
 				{
 					"$type": "KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
-				},
-                {
-                    "$type":"KompasServer.Effects.TargetTurnPlayerSubeffect, Assembly-CSharp"
-                },
-				{
-					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
 				}
 			]
 		}

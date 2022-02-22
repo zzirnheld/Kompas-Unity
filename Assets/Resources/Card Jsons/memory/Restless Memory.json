@@ -1,10 +1,10 @@
 {
 	"cardType": 65,
 	"cardName": "Restless Memory",
-	"effText": "When this character is summoned, move them 1 space, then give them -1 N.\nWhen turns start, echo this character.",
+	"effText": "When this character is summoned, move them 1 space, then give them -1 N.\nWhen this character moves normally, echo them.",
 	"effects": [
 		{
-			"blurb": "Creative Idea",
+			"blurb": "Restless Movement",
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
@@ -43,12 +43,13 @@
 			]
 		},
 		{
-			"blurb": "Creative Echoing",
+			"blurb": "Restless Echoes",
 			"triggerData": {
-				"triggerCondition": "Turn Start",
+				"triggerCondition": "Move",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card in Play"
+						"Augmented Card is Main Card",
+						"No Stackable"
 					]
 				}
 			},
