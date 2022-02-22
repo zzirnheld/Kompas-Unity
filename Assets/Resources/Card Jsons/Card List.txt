@@ -203,6 +203,9 @@ memory/Remembering
 memory/Rememberance
 memory/Rememory Guide
 memory/Vesselformation
+memory/Immortal Memory
+memory/Corporeal Recall
+memory/Memorial Augury
 music/Soaring Chorus
 music/Surging Verse
 music/Ringing Bridge

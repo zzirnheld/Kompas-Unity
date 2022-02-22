@@ -76,12 +76,15 @@
 					"cardRestriction": {
 						"blurb": "Memories to recover",
 						"cardRestrictions": [
-							"Discard"
+							"Discard",
+                            "Subtypes Include"
+                        ],
+						"subtypesInclude": [
+							"Memory"
 						]
 					},
 					"listRestriction": {
 						"listRestrictions": [
-							"Min Can Choose: X",
 							"Max Can Choose: X"
 						]
 					},

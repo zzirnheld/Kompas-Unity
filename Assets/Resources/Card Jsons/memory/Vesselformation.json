@@ -54,6 +54,7 @@
 						"value": "A",
                         "multiplier":-1
 					},
+					"change":true,
 					"xMultiplier": 1
 				},
 				{

@@ -1,0 +1,71 @@
+{
+	"cardType": 65,
+	"cardName": "Immortal Memory",
+	"effText": "When this character attacks a W X character, give this character +X E. Echo them.\nWhen turns start, annihilate this character.",
+	"effects": [
+		{
+			"blurb": "Remembered Immortality",
+			"triggerData": {
+				"triggerCondition": "Attack",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"Augmented Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+                {
+                    "$type":"KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+                },
+				{
+					"$type": "KompasServer.Effects.TargetOtherInFightSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "W"
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMultiplier": 1,
+                    "targetIndex": -2
+				},
+				{
+					"$type": "KompasServer.Effects.ResummonSubeffect, Assembly-CSharp",
+                    "targetIndex": -2
+				}
+			]
+		},
+		{
+			"blurb": "Immortal Hubris",
+			"triggerData": {
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Augment Normal Restrictions"
+		],
+		"effectRestrictions": [
+			"Augment Effect Restrictions"
+		]
+	},
+	"a": 3,
+	"subtypeText": "Memory"
+}
