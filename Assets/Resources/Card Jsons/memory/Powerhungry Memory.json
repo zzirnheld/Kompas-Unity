@@ -1,41 +1,25 @@
 {
 	"cardType": 65,
 	"cardName": "Powerhungry Memory",
-	"effText": "During your turn, you can destroy another Memory attached to this character. Echo this character. Dispel an adjacent spell.",
+	"effText": "When this character is summoned, give them +3 W. Dispel an adjacent spell.",
 	"effects": [
 		{
-			"blurb": "Hunger for Power",
-			"activationRestriction": {
-				"activationRestrictionArray": [
-					"Default"
-				]
+			"blurb": "Powerhunger",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"Augmented Card is Main Card"
+					]
+				}
 			},
 			"subeffects": [
                 {
                     "$type":"KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
                 },
-                {
-                    "$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-                    "cardRestriction":
-                    {
-                        "blurb":"to destroy",
-                        "cardRestrictions":[
-                            "Board",
-                            "Augment",
-                            "Augments Current Target",
-                            "Subtypes Include"
-                        ],
-						"subtypesInclude": [
-							"Memory"
-						]
-                    }
-                },
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type": "KompasServer.Effects.ResummonSubeffect, Assembly-CSharp",
-                    "targetIndex":-2
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"wModifier": 3
 				},
 				{
 					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",

@@ -8,11 +8,10 @@
 		"Vessel Cost Up"
 	],
 	"n": 0,
-	"e": 4,
-	"s": 2,
+	"e": 3,
+	"s": 1,
 	"w": 1,
 	"subtypes": [
-		"Vessel Cost Up",
 		"Vessel Echo"
 	],
 	"subtypeText": "Vessel"

@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Rememory Guide",
-	"effText": "When you summon a Vessel, give them +1 W if it's your turn, or +1 E if it's not.",
+	"effText": "When you summon a Vessel adjacent to me, give them +1 EW.",
 	"effects": [
 		{
 			"triggerData": {
@@ -9,9 +9,9 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Friendly Turn",
 						"Controller Triggered",
-						"Main Card Fits Restriction Before"
+						"Main Card Fits Restriction Before",
+						"Space Fits Restriction"
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
@@ -19,6 +19,11 @@
                         ],
 						"subtypesInclude": [
 							"Vessel"
+						]
+					},
+					"spaceRestriction": {
+						"spaceRestrictions": [
+							"Adjacent to Source"
 						]
 					}
 				}
@@ -29,37 +34,8 @@
 				},
 				{
 					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eModifier": 1,
 					"wModifier": 1
-				}
-			]
-		},
-		{
-			"triggerData": {
-				"triggerCondition": "Play",
-				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Enemy Turn",
-						"Controller Triggered",
-						"Main Card Fits Restriction Before"
-					],
-					"cardRestriction": {
-						"cardRestrictions": [
-                            "Subtypes Include"
-                        ],
-						"subtypesInclude": [
-							"Vessel"
-						]
-					}
-				}
-			},
-			"subeffects": [
-				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eModifier": 1
 				}
 			]
 		}

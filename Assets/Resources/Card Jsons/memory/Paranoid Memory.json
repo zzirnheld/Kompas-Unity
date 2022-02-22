@@ -1,7 +1,7 @@
 {
 	"cardType": 65,
 	"cardName": "Paranoid Memory",
-	"effText": "When this character is summoned, give them +1 E.\nWhen this character defends, echo them twice.",
+	"effText": "When this character is summoned, give them +1 E.\nWhen this character defends, echo them. Echo them. Echo them.",
 	"effects": [
 		{
 			"blurb": "Paranoid curling-up",
@@ -38,6 +38,10 @@
                 {
                     "$type":"KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
                 },
+				{
+					"$type": "KompasServer.Effects.ResummonSubeffect, Assembly-CSharp",
+                    "targetIndex":-2
+				},
 				{
 					"$type": "KompasServer.Effects.ResummonSubeffect, Assembly-CSharp",
                     "targetIndex":-2

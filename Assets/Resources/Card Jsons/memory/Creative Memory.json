@@ -1,37 +1,8 @@
 {
 	"cardType": 65,
 	"cardName": "Creative Memory",
-	"effText": "When this Vessel is summoned, if your hand isn't full, draw 1 card.\nWhen turns start, give the turn player 1 pip. Echo this character.",
+	"effText": "When turns start, echo this character. The turn player draws 1 card.",
 	"effects": [
-		{
-			"blurb": "Creative Idea",
-			"triggerData": {
-				"triggerCondition": "Play",
-				"triggerRestriction": {
-					"triggerRestrictions": [
-						"Augmented Card is Main Card",
-						"Main Card Fits Restriction Before"
-					],
-					"cardRestriction": {
-						"cardRestrictions": [
-                            "Subtypes Include"
-                        ],
-						"subtypesInclude": [
-							"Vessel"
-						]
-					}
-				}
-			},
-			"subeffects": [
-				{
-					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
-					"condition": "Hand Full"
-				},
-				{
-					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
-				}
-			]
-		},
 		{
 			"blurb": "Creative Echoing",
 			"triggerData": {
@@ -44,17 +15,16 @@
 			},
 			"subeffects": [
                 {
-                    "$type":"KompasServer.Effects.TargetTurnPlayerSubeffect, Assembly-CSharp"
-                },
-				{
-					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
-					"xModifier": 1
-				},
-                {
                     "$type":"KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
                 },
 				{
 					"$type": "KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
+				},
+                {
+                    "$type":"KompasServer.Effects.TargetTurnPlayerSubeffect, Assembly-CSharp"
+                },
+				{
+					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
 				}
 			]
 		}
@@ -67,6 +37,6 @@
 			"Augment Effect Restrictions"
 		]
 	},
-	"a": 2,
+	"a": 1,
 	"subtypeText": "Memory"
 }

@@ -12,7 +12,6 @@
 	"s": 1,
 	"w": 1,
 	"subtypes": [
-		"Vessel Cost Up",
 		"Vessel Echo"
 	],
 	"subtypeText": "Vessel"

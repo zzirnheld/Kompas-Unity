@@ -24,6 +24,7 @@ namespace KompasCore.Effects
         private const string ThisCardFitsRestriction = "This Card Fits Restriction Now";
 
         private const string StackableSourceFitsRestriction = "Stackable Source Fits Restriction Now";
+        private const string MainCardIsStackableSource = "Main Card is Stackable Source";
 
         private const string MainCardFitsRestrictionBefore = "Main Card Fits Restriction Before";
         private const string MainCardsAugmentedCardBeforeFitsRestriction = "Main Card's Augmented Card Before Fits Restriction";
@@ -129,6 +130,7 @@ namespace KompasCore.Effects
             MainCardsAugmentedCardBeforeFitsRestriction => cardRestriction.IsValidCard(context.mainCardInfoBefore.AugmentedCard, context),
             MainCardIsASecondaryContextCardTarget => secondary?.Targets?.Any(c => c == context.mainCardInfoBefore?.Card) ?? false,
 
+            MainCardIsStackableSource => context.stackable?.Source == context.mainCardInfoBefore.Card,
             StackableSourceFitsRestriction => sourceRestriction.IsValidCard(context.stackable?.Source, context),
             StackableSourceNotThisEffect => context.stackable != SourceEffect,
             ContextsStackablesMatch => context.stackable == secondary?.stackable,

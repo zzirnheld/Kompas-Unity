@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Remembering",
-	"effText": "When a Memory echoes a character, echo that character.",
+	"effText": "When a Vessel echoes themselves, echo that character.",
 	"effects": [
 		{
 			"blurb": "Remember",
@@ -10,6 +10,7 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
+						"Main Card is Stackable Source",
 						"Stackable Source Fits Restriction Now"
 					],
 					"sourceRestriction": {
@@ -17,7 +18,7 @@
 							"Subtypes Include"
 						],
 						"subtypesInclude": [
-							"Memory"
+							"Vessel"
 						]
 					}
 				}

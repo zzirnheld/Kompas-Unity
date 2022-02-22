@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Bestower of Memories",
-	"effText": "When you attach a Memory to a Vessel normally, deck->attach a copy of that Memory to a distinct Vessel.",
+	"effText": "When you attach a Memory to a Vessel, deck-> or discard->attach a copy of that Memory to a Vessel without a copy.",
 	"effects": [
 		{
             "blurb": "Bestow Memory",
@@ -11,9 +11,7 @@
 					"triggerRestrictions": [
 						"This Card in Play",
 						"Controller Triggered",
-						"Main Card Fits Restriction After",
-                        "No Stackable",
-						"Max Per Stack"
+						"Main Card Fits Restriction After"
 					],
 					"nowRestriction": {
 						"cardRestrictions": [
@@ -39,27 +37,41 @@
 					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetTargetsAugmentedCardSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type": "KompasServer.Effects.AutoTargetSubeffect, Assembly-CSharp",
-					"tiebreakerDirection":"Any",
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Friendly",
-							"Deck",
+							"Multiple Possible Locations",
                             "Same Name as Target",
 							"Can Be Played"
+						],
+						"locations": [
+							2,
+							4
 						]
-					},
-					"targetIndex": -2
+					}
 				},
 				{
-					"$type": "KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp",
-					"targetIndex": -2
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Friendly",
+							"Board",
+							"Wields No Augment Fitting Restriction"
+						],
+						"augmentRestriction": {
+							"cardRestrictions": [
+								"Same Name as Target"
+							]
+						}
+					}
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp",
+					"targetIndex":-2
 				}
 			]
 		}

@@ -1,10 +1,10 @@
 {
 	"cardType": 65,
 	"cardName": "Malevolent Memory",
-	"effText": "When this character is summoned, give them +3 W.\nDuring your turn, you can have this character attack an adjacent character they're enemies with. Echo this character.",
+	"effText": "When this character is summoned, they attack an adjacent character they're enemies with. Give them +5 W.",
 	"effects": [
 		{
-			"blurb": "Malevolent Sharpening",
+			"blurb": "Malevolence",
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
@@ -12,25 +12,6 @@
 						"Augmented Card is Main Card"
 					]
 				}
-			},
-			"subeffects": [
-				{
-					"$type": "KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"wModifier": 3
-				}
-			]
-		},
-		{
-			"blurb": "Malevolent Attack",
-			"activationRestriction": {
-				"activationRestrictionArray": [
-					"Max Times Per Turn",
-					"Default"
-				],
-				"maxTimes": 1
 			},
 			"subeffects": [
                 {
@@ -54,7 +35,8 @@
                     "targetIndex":-1
                 },
 				{
-					"$type": "KompasServer.Effects.ResummonSubeffect, Assembly-CSharp",
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"wModifier": 3,
                     "targetIndex":-2
 				}
 			]
