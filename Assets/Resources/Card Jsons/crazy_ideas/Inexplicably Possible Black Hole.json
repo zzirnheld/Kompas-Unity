@@ -43,7 +43,7 @@
 		}
 	],
 	"AttackRestriction": {
-		"attackRestrictionsArray": [
+		"attackRestrictions": [
 			"Default",
 			"Not Normally"
 		]

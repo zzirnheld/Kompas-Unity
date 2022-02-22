@@ -44,9 +44,9 @@ namespace KompasCore.Effects
         public static readonly string[] AugmentEffectRestrictions = { StandardSpellRestriction, OnBoardCardFriendlyOrAdjacent, CheckUnique };
 
         public List<string> normalRestrictions = null;
-        public string[] normalRestrictionsToIgnore = new string[0];
+        public string[] normalRestrictionsToIgnore = { };
         public List<string> effectRestrictions = null;
-        public string[] effectRestrictionsToIgnore = new string[0];
+        public string[] effectRestrictionsToIgnore = { };
         public List<string> recommendationRestrictions = null;
 
         public CardRestriction onCardRestriction;

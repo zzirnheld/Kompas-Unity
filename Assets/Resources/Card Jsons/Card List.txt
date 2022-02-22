@@ -189,6 +189,7 @@ mech_golems/N0T3
 mech_golems/53G45C4NTUR14N 00
 mech_golems/C4RR13R
 mech_golems/B0U550L3
+mech_golems/P4R51S4N
 mech_pilots/Standard Pilot
 mech_pilots/Runn R Mann
 mech_pilots/Heel R Mann

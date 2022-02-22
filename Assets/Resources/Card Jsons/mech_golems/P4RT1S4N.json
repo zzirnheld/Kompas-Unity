@@ -1,0 +1,48 @@
+{
+	"cardType": 67,
+	"cardName": "P4RT1S4N",
+	"effText": "Golem.\nI can attack characters 2 spaces from me, not just adjacent ones.",
+	"effects": [],
+	"MovementRestriction": {
+		"normalRestrictionsFromJson": [
+			"Default",
+			"Activated"
+		]
+	},
+	"AttackRestriction": {
+		"attackRestrictions": [
+			"Default",
+			"This is Activated",
+            "Defender Fits Card Restriction"
+		],
+        "attackRestrictionsToIgnore": [
+            "Defender is Adjacent"
+        ],
+        "defenderRestriction" : {
+            "cardRestrictions": [
+                "Different from Source",
+                "Space Fits Restriction"
+            ],
+            "spaceRestriction": {
+                "spaceRestrictions": [
+                    "Distance to Source Fits X Restriction"
+                ],
+                "distanceXRestriction": {
+                    "numberRestrictions": [
+                        "<=Constant"
+                    ],
+                    "constant": 2
+                }
+            }
+        }
+	},
+	"n": 4,
+	"e": 4,
+	"s": 7,
+	"w": 7,
+	"subtypes": [
+		"Mech",
+		"Golem"
+	],
+	"subtypeText": "Mech Golem"
+}

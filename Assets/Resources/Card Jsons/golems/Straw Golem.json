@@ -85,7 +85,7 @@
 		]
 	},
 	"AttackRestriction": {
-		"attackRestrictionsArray": [
+		"attackRestrictions": [
 			"Default",
 			"This is Activated"
 		]

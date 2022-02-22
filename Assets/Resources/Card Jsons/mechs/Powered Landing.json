@@ -1,13 +1,11 @@
 {
 	"cardType": 65,
 	"cardName": "Powered Landing",
-	"effText": "When you summon a Mech Golem, you can board->attach me to them. They attack a character adjacent to them. Give them +3 W.",
+	"effText": "When you summon a Mech Golem, board->attach me to them. They attack another character within 2 spaces of them. Give them +4 W.",
 	"effects": [
 		{
 			"blurb": "Landing Blast",
 			"triggerData": {
-				"optional": true,
-				"blurb": "Landing Blast?",
 				"triggerCondition": "Play",
 				"triggerRestriction": {
 					"triggerRestrictions": [
@@ -39,16 +37,23 @@
 				{
 					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction": {
-						"blurb": "adjacent character for Mech Golem to attack",
+						"blurb": "character within 4 spaces to have this Mech attack",
 						"cardRestrictions": [
 							"Character",
 							"Board",
+							"Different from Source",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
 							"spaceRestrictions": [
-								"Adjacent to Card Target"
-							]
+								"Distance to Source Fits X Restriction"
+							],
+							"distanceXRestriction": {
+								"numberRestrictions": [
+									"<=Constant"
+								],
+								"constant": 2
+							}
 						}
 					}
 				},
