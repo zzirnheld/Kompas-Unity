@@ -4,12 +4,13 @@
 	"effText": "Vessel.",
 	"effects": [],
 	"keywords": [
-		"Geminii"
+		"Vessel Echo",
+		"Vessel Cost Up"
 	],
 	"n": 0,
 	"e": 4,
 	"s": 2,
-	"w": 0,
+	"w": 1,
 	"subtypes": [
 		"Vessel Cost Up",
 		"Vessel Echo"

@@ -1,7 +1,7 @@
 {
 	"cardType": 65,
 	"cardName": "Malevolent Memory",
-	"effText": "When this character is summoned, give them +2 W.\nDuring your turn, you can have this character attack an adjacent character they're enemies with. Echo this character.",
+	"effText": "When this character is summoned, give them +3 W.\nDuring your turn, you can have this character attack an adjacent character they're enemies with. Echo this character.",
 	"effects": [
 		{
 			"blurb": "Malevolent Sharpening",
@@ -19,7 +19,7 @@
 				},
 				{
 					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"wModifier": 2
+					"wModifier": 3
 				}
 			]
 		},

@@ -26,8 +26,13 @@
 						"cardRestrictions": [
 							"Board",
 							"Character",
-							"Adjacent to Source"
-						]
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Source"
+							]
+						}
 					}
 				},
 				{

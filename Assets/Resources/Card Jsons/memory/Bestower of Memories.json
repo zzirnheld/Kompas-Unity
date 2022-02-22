@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Bestower of Memories",
-	"effText": "When you attach a Memory to a Vessel normally, deck->attach a copy of that Memory to the same Vessel.",
+	"effText": "When you attach a Memory to a Vessel normally, deck->attach a copy of that Memory to a distinct Vessel.",
 	"effects": [
 		{
             "blurb": "Bestow Memory",
@@ -12,9 +12,10 @@
 						"This Card in Play",
 						"Controller Triggered",
 						"Main Card Fits Restriction After",
-                        "No Stackable"
+                        "No Stackable",
+						"Max Per Stack"
 					],
-					"cardRestriction": {
+					"nowRestriction": {
 						"cardRestrictions": [
                             "Subtypes Include",
                             "Augments Card Fitting Restriction"

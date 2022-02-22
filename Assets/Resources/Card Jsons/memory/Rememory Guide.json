@@ -29,7 +29,7 @@
 				},
 				{
 					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"wMultiplier": 1
+					"wModifier": 1
 				}
 			]
 		},
@@ -59,14 +59,14 @@
 				},
 				{
 					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMultiplier": 1
+					"eModifier": 1
 				}
 			]
 		}
 	],
 	"n": 1,
-	"e": 3,
-	"s": 2,
+	"e": 2,
+	"s": 1,
 	"w": 0,
 	"subtypeText": "Mage"
 }

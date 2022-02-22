@@ -1,7 +1,7 @@
 {
 	"cardType": 65,
 	"cardName": "Creative Memory",
-	"effText": "When this character is summoned, draw 1 card.\nWhen turns start, give the turn player 1 pip. Echo this character.",
+	"effText": "When this Vessel is summoned, if your hand isn't full, draw 1 card.\nWhen turns start, give the turn player 1 pip. Echo this character.",
 	"effects": [
 		{
 			"blurb": "Creative Idea",
@@ -9,11 +9,24 @@
 				"triggerCondition": "Play",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"Augmented Card is Main Card"
-					]
+						"Augmented Card is Main Card",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+                            "Subtypes Include"
+                        ],
+						"subtypesInclude": [
+							"Vessel"
+						]
+					}
 				}
 			},
 			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition": "Hand Full"
+				},
 				{
 					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
 				}
@@ -54,6 +67,6 @@
 			"Augment Effect Restrictions"
 		]
 	},
-	"a": 1,
+	"a": 2,
 	"subtypeText": "Memory"
 }

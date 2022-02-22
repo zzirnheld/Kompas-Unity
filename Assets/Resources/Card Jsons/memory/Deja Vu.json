@@ -1,10 +1,10 @@
 {
 	"cardType": 65,
 	"cardName": "Deja Vu",
-	"effText": "When a distinct Memory summons this character, echo them.",
+	"effText": "When a Memory summons this character, echo them.",
 	"effects": [
 		{
-			"blurb": "Creative Idea",
+			"blurb": "Deja Vu",
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
@@ -14,7 +14,6 @@
 					],
 					"sourceRestriction": {
 						"cardRestrictions": [
-							"Distinct Name from Source",
 							"Subtypes Include"
 						],
 						"subtypesInclude": [
@@ -42,5 +41,5 @@
 		]
 	},
 	"a": 1,
-	"subtypeText": "Memory"
+	"subtypeText": ""
 }

@@ -171,6 +171,7 @@ namespace KompasCore.Effects
 
             spaceRestriction?.Initialize(source, effect.Controller, effect, subeffect);
 
+            augmentRestriction?.Initialize(source, effect, subeffect);
             secondaryRestriction?.Initialize(source, effect, subeffect);
             adjacentCardRestriction?.Initialize(source, effect, subeffect);
             connectednessRestriction?.Initialize(source, effect, subeffect);
