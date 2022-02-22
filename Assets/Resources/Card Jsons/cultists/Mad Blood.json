@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Mad Blood",
-	"effText": "When a friendly Cultist dies, annihilate me and deck->summon 2 Cultist Followers. (If I'm already annihilated, don't.)",
+	"effText": "When a friendly Cultist dies, annihilate me and deck->summon 2 Cultist Followers.",
 	"effects": [
 		{
 			"triggerData": {

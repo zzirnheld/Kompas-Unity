@@ -6,6 +6,7 @@ generic/Volatile Autocannon
 generic/Spellbombsetter
 generic/Lifetide
 generic/Warlock
+generic/Juan Puntsch-Mann
 aquatic/Big Tuna
 aquatic/Changing Tides
 aquatic/Fishing
