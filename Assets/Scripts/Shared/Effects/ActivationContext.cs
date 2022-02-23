@@ -13,6 +13,8 @@ namespace KompasCore.Effects
         public readonly int? x;
         public readonly Space space;
 
+        private readonly string asString;
+
         // Used for resuming delayed effects
         public int StartIndex { get; private set; }
         public List<GameCard> Targets { get; private set; }
@@ -52,6 +54,18 @@ namespace KompasCore.Effects
             this.player = player;
             this.x = x;
             this.space = space;
+
+            var sb = new System.Text.StringBuilder();
+
+            if (mainCardInfoBefore != null) sb.Append($"Card: {mainCardInfoBefore.CardName}, ");
+            if (stackable != null) sb.Append($"Stackable {stackable}, ");
+            if (player != null) sb.Append($"Triggerer: {player.index}, ");
+            if (x != null)  sb.Append($"X: {x}, ");
+            if (space != null) sb.Append($"Space: {space}, ");
+            if (Targets != null) sb.Append($"Targets: {string.Join(", ", Targets)}, ");
+            if (StartIndex != 0) sb.Append($"Starting at {StartIndex}");
+
+            asString = sb.ToString();
         }
 
         public ActivationContext(GameCard mainCardBefore = null,
@@ -120,17 +134,7 @@ namespace KompasCore.Effects
 
         public override string ToString()
         {
-            var sb = new System.Text.StringBuilder();
-
-            sb.Append(mainCardInfoBefore == null ? "No triggering card, " : $"Card: {mainCardInfoBefore.CardName}, ");
-            sb.Append(stackable == null ? "No triggering stackable, " : $"Stackable {stackable}, ");
-            sb.Append(player == null ? "No triggering player, " : $"Triggerer: {player.index}, ");
-            sb.Append(x == null ? "No X, " : $"X: {x}, ");
-            sb.Append(space == null ? "No space, " : $"Space: {space}, ");
-            sb.Append(Targets == null ? "No targets, " : $"Targets: {string.Join(", ", Targets)}, ");
-            sb.Append($"Starting at {StartIndex}");
-
-            return sb.ToString();
+            return asString;
         }
     }
 }

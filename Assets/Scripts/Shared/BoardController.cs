@@ -235,7 +235,7 @@ namespace KompasCore.GameCore
             if (!ValidSpellSpaceFor(toPlay, to)) throw new InvalidSpaceException(to, 
                 $"Tried to play {toPlay} to space {to}. This isn't ok, that's an invalid spell spot.");
 
-            Debug.Log($"In boardctrl, playing {toPlay.CardName} to {to} with stack source {stackSrc}");
+            Debug.Log($"In boardctrl, playing {toPlay.CardName} currently in {toPlay.Location} to {to}");
 
             //augments can't be played to a regular space.
             if (toPlay.CardType == 'A')

@@ -228,7 +228,7 @@ namespace KompasCore.Effects
         private bool IsRestrictionValidWithDebug(string r, Space space, GameCard theoreticalTarget, ActivationContext context)
         {
             bool success = IsRestrictionValid(r, space, theoreticalTarget, context);
-            if (!success) Debug.Log($"Space resetriction {r} was flouted by {space}");
+            //if (!success) Debug.Log($"Space resetriction {r} was flouted by {space}");
             return success;
         }
 

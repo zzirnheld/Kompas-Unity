@@ -28,6 +28,7 @@ namespace KompasCore.GameCore
 
         protected virtual void AddCard(GameCard card, IStackable stackSrc = null)
         {
+            Debug.Log($"Adding {card.CardName} to deck from {card.Location}");
             card.Remove(stackSrc);
             card.GameLocation = this;
             card.Controller = Owner;

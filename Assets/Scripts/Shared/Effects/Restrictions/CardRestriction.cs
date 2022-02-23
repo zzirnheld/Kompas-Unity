@@ -183,7 +183,7 @@ namespace KompasCore.Effects
             cardValue?.Initialize(source);
 
             initialized = true;
-            Debug.Log($"Initialized {this}");
+            //Debug.Log($"Initialized {this}");
         }
 
         public override string ToString()

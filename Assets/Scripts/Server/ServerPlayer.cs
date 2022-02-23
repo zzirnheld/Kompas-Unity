@@ -74,11 +74,15 @@ namespace KompasServer.GameCore
             try
             {
                 if (serverGame.IsValidNormalPlay(card, space, this)) card.Play(space, this, payCost: true);
-                else ServerNotifier.NotifyPutBack();
+                else
+                {
+                    Debug.LogError($"Player {index} attempted an invalid play of {card} to {space}.");
+                    ServerNotifier.NotifyPutBack();
+                }
             }
             catch (KompasException ke)
             {
-                Debug.LogError(ke);
+                Debug.LogError($"Player {index} attempted an invalid play of {card} to {space}. Resulting exception:\n{ke}");
                 ServerNotifier.NotifyPutBack();
             }
             await serverGame.EffectsController.CheckForResponse();

@@ -46,7 +46,13 @@ public abstract class Player : MonoBehaviour
     /// <summary>
     /// Whether the player has yet passed priority
     /// </summary>
-    public bool passedPriority = false;
+    public bool PassedPriority { get; private set; } = false;
+
+    public void ResetPassedPriority()
+    {
+        //NOTE: now that fast effects aren't a thing, don't waste time asking for players to pass priority
+        PassedPriority = true;
+    }
 
     public virtual void SetInfo(TcpClient tcpClient, int index)
     {

@@ -19,6 +19,9 @@ namespace KompasCore.GameCore
         //adding/removing cards
         public virtual void Add(GameCard card, IStackable stackSrc = null)
         {
+            if (card == null) throw new NullCardException("Cannot add null card to hand");
+            Debug.Log($"Discarding {card.CardName} from {card.Location}");
+
             card.Remove(stackSrc);
             Discard.Add(card);
             card.Controller = Owner;

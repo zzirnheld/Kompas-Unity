@@ -10,7 +10,7 @@ namespace KompasCore.Effects
         public const string EffectPushedToStack = "Effect Pushed to Stack";
 
         //change card stats
-        public const string StatNumberChange = "Stat Number Change";
+        //public const string StatNumberChange = "Stat Number Change";
         public const string Activate = "Activate";
         public const string Deactivate = "Deactivate";
         public const string Negate = "Negate";
@@ -22,12 +22,14 @@ namespace KompasCore.Effects
         public const string CChange = "C Change";
         public const string AChange = "A Change";
         //X will be equal to the stat's new value
+        /*
         public const string NSet = "N Set";
         public const string ESet = "E Set";
         public const string SSet = "S Set";
         public const string WSet = "W Set";
         public const string CSet = "C Set";
         public const string ASet = "A Set";
+        */
 
         //combat
         public const string Defends = "Defend";
@@ -64,9 +66,9 @@ namespace KompasCore.Effects
 
         public static readonly string[] TriggerConditions = {
             TurnStart, StackEnd, EffectPushedToStack,
-            StatNumberChange, Activate, Deactivate, Negate,
+            Activate, Deactivate, Negate,
             NChange, EChange, SChange, WChange, CChange, AChange,
-            NSet, ESet, SSet, WSet, CSet, ASet,
+            //NSet, ESet, SSet, WSet, CSet, ASet,
             Defends, Attacks, TakeCombatDamage, DealCombatDamage, Battles, BattleEnds, 
             EachDraw, DrawX, Arrive, Play, Discard, Rehand, Reshuffle, Topdeck, Bottomdeck, ToDeck, Move, Annhilate, Remove, LeaveAOE,
             AugmentAttached, AugmentDetached, Augmented, 

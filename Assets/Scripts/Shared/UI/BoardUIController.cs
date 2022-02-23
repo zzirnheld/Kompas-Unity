@@ -47,7 +47,7 @@ namespace KompasCore.UI
                         cue.ShowCanMove();
                     else if (card.AttackRestriction.IsValidAttack(boardCtrl.GetCardAt((i, j)), stackSrc: null))
                         cue.ShowCanAttack();
-                    else if (card.PlayRestriction.IsRecommendedNormalPlay((i, j), card.Controller, checkCanAffordCost: true))
+                    else if (card.PlayRestriction.IsRecommendedNormalPlay((i, j), card.Controller))
                         cue.ShowCanPlay();
                     else
                         cue.ShowCanNone();

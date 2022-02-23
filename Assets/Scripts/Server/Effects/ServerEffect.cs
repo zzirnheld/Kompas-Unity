@@ -198,7 +198,7 @@ namespace KompasServer.Effects
             if (index >= subeffects.Length) {
                 return ResolutionInfo.Impossible("Subeffect index out of bounds.");
             }
-            Debug.Log($"Resolving subeffect of type {subeffects[index].GetType()}");
+            //Debug.Log($"Resolving subeffect of type {subeffects[index].GetType()}");
             SubeffectIndex = index;
             ServerController.ServerNotifier.NotifyEffectX(Source, EffectIndex, X);
             try
@@ -261,12 +261,14 @@ namespace KompasServer.Effects
 
         public override string ToString()
         {
+            return $"Effect {EffectIndex} of {Source.CardName}";
+            /*
             var sb = new System.Text.StringBuilder();
 
             sb.Append($"Effect of {Source.CardName}: ");
             foreach (var s in Subeffects) sb.Append($"{s.GetType()}, ");
 
-            return sb.ToString();
+            return sb.ToString();*/
         }
     }
 }

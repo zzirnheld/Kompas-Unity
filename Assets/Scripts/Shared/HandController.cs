@@ -21,6 +21,7 @@ namespace KompasCore.GameCore
         {
             if (card == null) throw new NullCardException("Cannot add null card to hand");
 
+            Debug.Log($"Handing {card.CardName} from {card.Location}");
             card.Remove(stackSrc);
 
             hand.Add(card);

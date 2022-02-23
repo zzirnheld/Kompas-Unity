@@ -102,7 +102,7 @@ namespace KompasCore.Effects
             FromHand => Card.Location == CardLocation.Hand,
             StandardPlayRestriction => Card.Game.ValidStandardPlaySpace(space, Card.Controller),
             StandardSpellRestriction => Card.Game.ValidSpellSpaceFor(Card, space),
-            HasCostInPips => PlayerCanAffordCost(true, Card.Controller),
+            HasCostInPips => PlayerCanAffordCost(Card.Controller),
 
             EmptySpace => Card.Game.boardCtrl.IsEmpty(space),
             OnBoardCardFriendlyOrAdjacent => IsValidAugSpace(space, player),
@@ -126,11 +126,11 @@ namespace KompasCore.Effects
         };
 
         private bool IsValidPlay(Space to) => to != null && to.IsValid;
-        private bool PlayerCanAffordCost(bool checkCanAffordCost, Player player) => !checkCanAffordCost || player.Pips >= Card.Cost;
+        private bool PlayerCanAffordCost(Player player) => player.Pips >= Card.Cost;
 
-        public bool IsValidNormalPlay(Space to, Player player, bool checkCanAffordCost = false, string[] ignoring = default)
+        public bool IsValidNormalPlay(Space to, Player player, string[] ignoring = default)
             => IsValidPlay(to)
-                && PlayerCanAffordCost(checkCanAffordCost, player)
+                && PlayerCanAffordCost(player)
                 && normalRestrictions
                     .Except(ignoring ?? new string[0])
                     .All(r => IsRestrictionValid(r, to, player, default, true));
@@ -148,8 +148,8 @@ namespace KompasCore.Effects
             return recommendationRestrictions.All(r => IsRestrictionValid(r, space, controller, context: context, normal: normal));
         }
 
-        public bool IsRecommendedNormalPlay(Space space, Player player, bool checkCanAffordCost = false)
-            => IsValidNormalPlay(space, player, checkCanAffordCost)
+        public bool IsRecommendedNormalPlay(Space space, Player player)
+            => IsValidNormalPlay(space, player)
             && IsRecommendedPlay(space, player, context: default, normal: true);
     }
 }
