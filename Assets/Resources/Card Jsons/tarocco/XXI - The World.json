@@ -29,6 +29,12 @@
 					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
 				},
 				{
+					"$type": "KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+				},
+				{
 					"$type": "KompasServer.Effects.TargetTriggeringCardsCoordsSubeffect, Assembly-CSharp"
 				},
 				{

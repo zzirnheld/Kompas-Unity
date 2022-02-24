@@ -1,7 +1,7 @@
 {
 	"cardType": 65,
 	"cardName": "Creative Memory",
-	"effText": "When this character is summoned, if the turn player's hand isn't full, they draw 1 card.\nWhen turns start, echo this character. ",
+	"effText": "When this character is summoned, if your hand isn't full, draw 1 card.\nWhen turns start, echo this character. ",
 	"effects": [
 		{
 			"blurb": "Spurt of Creativity",
@@ -14,9 +14,6 @@
 				}
 			},
 			"subeffects": [
-                {
-                    "$type":"KompasServer.Effects.TargetTurnPlayerSubeffect, Assembly-CSharp"
-                },
 				{
 					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
 					"condition": "Hand Full"

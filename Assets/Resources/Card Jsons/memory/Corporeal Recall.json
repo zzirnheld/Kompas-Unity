@@ -43,6 +43,9 @@
 					"xMultiplier": 1
 				},
 				{
+					"$type": "KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+				},
+				{
 					"$type": "KompasServer.Effects.LoopSubeffect, Assembly-CSharp",
 					"canDecline": true,
 					"jumpIndices": [

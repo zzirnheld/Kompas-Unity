@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Figurehead King",
-	"effText": "Choose a card in your hand, then reshuffle the other X. Gain X pips.",
+	"effText": "Choose a card in your hand, then reshuffle the other X. Gain X / 2 pips.",
 	"effects": [
 		{
 			"triggerData": {
@@ -51,7 +51,8 @@
 				},
 				{
 					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
-					"xMultiplier": 1
+					"xMultiplier": 1,
+					"xDivisor": 2
 				}
 			]
 		}
