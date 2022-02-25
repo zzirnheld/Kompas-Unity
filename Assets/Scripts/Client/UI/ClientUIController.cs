@@ -82,6 +82,9 @@ namespace KompasClient.UI
         //card view ui
         public CardInfoViewClientUIController cardInfoViewUICtrl;
 
+        //top right detailed effects control ui
+        public GameObject detailedEffectsCtrlUIObject;
+
         public GameCard CardToActivateEffectsFor
         {
             set => activatorUICtrl.nextShowFor = value;
@@ -121,6 +124,7 @@ namespace KompasClient.UI
         public void ApplySettings(ClientSettings clientSettings)
         {
             ipInputField.text = clientSettings.defaultIP;
+            detailedEffectsCtrlUIObject.SetActive(clientSettings.showAdvancedEffectsSettings);
         }
 
         public override void Refresh()

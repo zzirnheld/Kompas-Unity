@@ -180,15 +180,16 @@ namespace KompasClient.UI
         public StatHighlight statHighlight;
         public float zoomThreshold;
         public ConfirmTargets confirmTargets;
+        public bool showAdvancedEffectsSettings = false;
         public string defaultIP;
-        public byte friendlyColorRed;
-        public byte friendlyColorGreen;
-        public byte friendlyColorBlue;
-        public byte enemyColorRed;
-        public byte enemyColorGreen;
-        public byte enemyColorBlue;
-        public int friendlyColorIndex;
-        public int enemyColorIndex;
+        public byte friendlyColorRed = ClientSettingsUIController.DefaultFriendlyBlue.r;
+        public byte friendlyColorGreen = ClientSettingsUIController.DefaultFriendlyBlue.g;
+        public byte friendlyColorBlue = ClientSettingsUIController.DefaultFriendlyBlue.b;
+        public byte enemyColorRed = ClientSettingsUIController.DefaultEnemyRed.r;
+        public byte enemyColorGreen = ClientSettingsUIController.DefaultEnemyRed.g;
+        public byte enemyColorBlue = ClientSettingsUIController.DefaultEnemyRed.b;
+        public int friendlyColorIndex = 0;
+        public int enemyColorIndex = 0;
 
         [JsonIgnore]
         public Color32 FriendlyColor
@@ -225,6 +226,7 @@ namespace KompasClient.UI
             statHighlight = StatHighlight.NoHighlight,
             zoomThreshold = DefaultZoomThreshold,
             confirmTargets = ConfirmTargets.No,
+            showAdvancedEffectsSettings = false,
             defaultIP = "",
             FriendlyColor = ClientSettingsUIController.DefaultFriendlyBlue,
             EnemyColor = ClientSettingsUIController.DefaultEnemyRed,
