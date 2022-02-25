@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KompasCore.Effects;
+using System;
 using System.Linq;
 using UnityEngine;
 
@@ -22,32 +23,32 @@ namespace KompasCore.Cards
         public virtual int N
         {
             get => n < 0 ? 0 : n;
-            protected set => n = value;
+            private set => n = value;
         }
         public virtual int E
         {
             get => e < 0 ? 0 : e;
-            protected set => e = value;
+            private set => e = value;
         }
         public virtual int S
         {
             get => s < 0 ? 0 : s;
-            protected set => s = value;
+            private set => s = value;
         }
         public virtual int W
         {
             get => w < 0 ? 0 : w;
-            protected set => w = value;
+            private set => w = value;
         }
         public virtual int C
         {
             get => c < 0 ? 0 : c;
-            protected set => c = value;
+            private set => c = value;
         }
         public virtual int A
         {
             get => a < 0 ? 0 : a;
-            protected set => a = value;
+            private set => a = value;
         }
 
         public CardStats Stats => (N, E, S, W, C, A);
@@ -126,7 +127,7 @@ namespace KompasCore.Cards
                                        string subtypeText,
                                        string[] augSubtypes)
         {
-            (N, E, S, W, C, A) = stats;
+            SetStats(stats);
 
             //set sprites if they aren't already set correctly 
             //(check this by card name. cards should never have a pic that doesn't match their name)
@@ -195,6 +196,29 @@ namespace KompasCore.Cards
             if (compare != 0) return compare;
 
             return 0;
+        }
+
+        /* This must happen through setters, not properties, so that notifications and stack sending
+         * can be managed as intended. */
+        public virtual void SetN(int n, IStackable stackSrc, bool onlyStatBeingSet = true) => N = n;
+        public virtual void SetE(int e, IStackable stackSrc, bool onlyStatBeingSet = true) => E = e;
+        public virtual void SetS(int s, IStackable stackSrc, bool onlyStatBeingSet = true) => S = s;
+        public virtual void SetW(int w, IStackable stackSrc, bool onlyStatBeingSet = true) => W = w;
+        public virtual void SetC(int c, IStackable stackSrc, bool onlyStatBeingSet = true) => C = c;
+        public virtual void SetA(int a, IStackable stackSrc, bool onlyStatBeingSet = true) => A = a;
+
+        /// <summary>
+        /// Shorthand for modifying a card's stats all at once.
+        /// On the server, this only notifies the clients of stat changes once.
+        /// </summary>
+        public virtual void SetStats(CardStats stats, IStackable stackSrc = null)
+        {
+            SetN(stats.n, stackSrc, onlyStatBeingSet: false);
+            SetE(stats.e, stackSrc, onlyStatBeingSet: false);
+            SetS(stats.s, stackSrc, onlyStatBeingSet: false);
+            SetW(stats.w, stackSrc, onlyStatBeingSet: false);
+            SetC(stats.c, stackSrc, onlyStatBeingSet: false);
+            SetA(stats.a, stackSrc, onlyStatBeingSet: false);
         }
     }
 }

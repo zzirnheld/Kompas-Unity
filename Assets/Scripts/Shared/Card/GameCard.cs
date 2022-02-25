@@ -50,37 +50,6 @@ namespace KompasCore.Cards
         public int BaseC => serializedCard.c;
         public int BaseA => serializedCard.a;
 
-        public override int N
-        {
-            get => base.N;
-            protected set => cardCtrl.N = base.N = value;
-        }
-        public override int E
-        {
-            get => base.E;
-            protected set => cardCtrl.E = base.E = value;
-        }
-        public override int S
-        {
-            get => base.S;
-            protected set => cardCtrl.S = base.S = value;
-        }
-        public override int W
-        {
-            get => base.W;
-            protected set => cardCtrl.W = base.W = value;
-        }
-        public override int C
-        {
-            get => base.C;
-            protected set => cardCtrl.C = base.C = value;
-        }
-        public override int A
-        {
-            get => base.A;
-            protected set => cardCtrl.A = base.A = value;
-        }
-
         public int Negations { get; private set; } = 0;
         public override bool Negated
         {
@@ -362,14 +331,42 @@ namespace KompasCore.Cards
         #endregion augments
 
         #region statfuncs
-        /* This must happen through setters, not properties, so that notifications and stack sending
-         * can be managed as intended. */
-        public virtual void SetN(int n, IStackable stackSrc = null, bool notify = true) => N = n;
-        public virtual void SetE(int e, IStackable stackSrc = null, bool notify = true) => E = e;
-        public virtual void SetS(int s, IStackable stackSrc = null, bool notify = true) => S = s;
-        public virtual void SetW(int w, IStackable stackSrc = null, bool notify = true) => W = w;
-        public virtual void SetC(int c, IStackable stackSrc = null, bool notify = true) => C = c;
-        public virtual void SetA(int a, IStackable stackSrc = null, bool notify = true) => A = a;
+        public override void SetN(int n, IStackable stackSrc, bool onlyStatBeingSet = true)
+        {
+            base.SetN(n, stackSrc, onlyStatBeingSet);
+            cardCtrl.N = N;
+        }
+
+        public override void SetE(int e, IStackable stackSrc, bool onlyStatBeingSet = true)
+        {
+            base.SetE(e, stackSrc, onlyStatBeingSet);
+            cardCtrl.E = E;
+        }
+
+        public override void SetS(int s, IStackable stackSrc, bool onlyStatBeingSet = true)
+        {
+            base.SetS(s, stackSrc, onlyStatBeingSet);
+            cardCtrl.S = S;
+        }
+
+        public override void SetW(int w, IStackable stackSrc, bool onlyStatBeingSet = true)
+        {
+            base.SetW(w, stackSrc, onlyStatBeingSet);
+            cardCtrl.W = W;
+        }
+
+        public override void SetC(int c, IStackable stackSrc, bool onlyStatBeingSet = true)
+        {
+            base.SetC(c, stackSrc, onlyStatBeingSet);
+            cardCtrl.C = C;
+        }
+
+        public override void SetA(int a, IStackable stackSrc, bool onlyStatBeingSet = true)
+        {
+            base.SetA(a, stackSrc, onlyStatBeingSet);
+            cardCtrl.A = A;
+        }
+
         /// <summary>
         /// Inflicts the given amount of damage, which can affect both shield and E. Used by attacks and (rarely) by effects.
         /// </summary>
@@ -381,10 +378,10 @@ namespace KompasCore.Cards
         /// </summary>
         public virtual void SetCharStats(int n, int e, int s, int w, IStackable stackSrc = null)
         {
-            SetN(n, stackSrc, notify: false);
-            SetE(e, stackSrc, notify: false);
-            SetS(s, stackSrc, notify: false);
-            SetW(w, stackSrc, notify: false);
+            SetN(n, stackSrc, onlyStatBeingSet: false);
+            SetE(e, stackSrc, onlyStatBeingSet: false);
+            SetS(s, stackSrc, onlyStatBeingSet: false);
+            SetW(w, stackSrc, onlyStatBeingSet: false);
         }
 
         /// <summary>
@@ -393,20 +390,6 @@ namespace KompasCore.Cards
         /// </summary>
         public void AddToCharStats(int n, int e, int s, int w, IStackable stackSrc = null)
             => SetCharStats(N + n, E + e, S + s, W + w, stackSrc: stackSrc);
-
-        /// <summary>
-        /// Shorthand for modifying a card's stats all at once.
-        /// On the server, this only notifies the clients of stat changes once.
-        /// </summary>
-        public virtual void SetStats(CardStats stats, IStackable stackSrc = null)
-        {
-            SetN(stats.n, stackSrc, notify: false);
-            SetE(stats.e, stackSrc, notify: false);
-            SetS(stats.s, stackSrc, notify: false);
-            SetW(stats.w, stackSrc, notify: false);
-            SetC(stats.c, stackSrc, notify: false);
-            SetA(stats.a, stackSrc, notify: false);
-        }
 
         /// <summary>
         /// Shorthand for modifying a card's stats all at once.

@@ -9,15 +9,6 @@ namespace KompasServer.Cards
 {
     public class AvatarServerGameCard : ServerGameCard
     {
-        public override int E 
-        { 
-            get => base.E;
-            protected set
-            {
-                base.E = value;
-                LoseIfDead();
-            }
-        }
         public override bool Summoned => false;
         public override bool IsAvatar => true;
 
@@ -29,6 +20,12 @@ namespace KompasServer.Cards
             if(unfortunate != null && unfortunate != this && !unfortunate.IsAvatar) 
                 unfortunate.Owner.annihilationCtrl.Annihilate(unfortunate, stackSrc: stackSrc);
             Move(to: corner, normalMove: false, stackSrc: stackSrc);
+        }
+
+        public override void SetE(int e, IStackable stackSrc, bool onlyStatBeingSet = true)
+        {
+            base.SetE(e, stackSrc, onlyStatBeingSet);
+            LoseIfDead();
         }
 
         public void LoseIfDead()
