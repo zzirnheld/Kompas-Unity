@@ -203,6 +203,7 @@ namespace KompasCore.Cards
                 };
                 aug.transform.localPosition = new Vector3(x, 0.2f * ((i / 4) + 1), z);
                 i++;
+                aug.cardCtrl.SetRotation();
             }
         }
 

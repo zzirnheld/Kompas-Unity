@@ -37,14 +37,7 @@ namespace KompasCore.Cards
 
         #region stats
         public int BaseN => serializedCard.n;
-        public override int BaseE
-        {
-            get => serializedCard.e;
-            protected set
-            {
-                throw new NotImplementedException($"Tried to set base e of actual GameCard {this}");
-            }
-        }
+        public override int BaseE => serializedCard.e;
         public int BaseS => serializedCard.s;
         public int BaseW => serializedCard.w;
         public int BaseC => serializedCard.c;
@@ -146,8 +139,8 @@ namespace KompasCore.Cards
                 augmentedCard = value;
                 if (augmentedCard != null)
                 {
-                    Position = augmentedCard.Position;
                     Location = augmentedCard.Location;
+                    Position = augmentedCard.Position;
                 }
             }
         }

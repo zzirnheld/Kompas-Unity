@@ -23,7 +23,7 @@ namespace KompasCore.Cards
         public abstract bool KnownToEnemy { get; set; }
 
         public abstract PlayRestriction PlayRestriction { get; protected set; }
-        public abstract int BaseE { get; protected set; }
+        public abstract int BaseE { get; }
 
         public abstract bool Activated { get; protected set; }
         public abstract bool Negated { get; protected set; }
@@ -179,7 +179,9 @@ namespace KompasCore.Cards
         public override bool KnownToEnemy { get; set; }
 
         public override PlayRestriction PlayRestriction { get; protected set; }
-        public override int BaseE { get; protected set; }
+
+        private int baseE;
+        public override int BaseE { get => baseE; }
 
         public override bool Activated { get; protected set; }
         public override bool Negated { get; protected set; }
@@ -225,7 +227,7 @@ namespace KompasCore.Cards
             Augments = card.Augments.ToArray();
             KnownToEnemy = card.KnownToEnemy;
             PlayRestriction = card.PlayRestriction;
-            BaseE = card.BaseE;
+            baseE = card.BaseE;
             Activated = card.Activated;
             Negated = card.Negated;
             SpacesMoved = card.SpacesMoved;
