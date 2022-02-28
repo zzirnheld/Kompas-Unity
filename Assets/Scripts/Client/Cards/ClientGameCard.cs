@@ -101,8 +101,8 @@ namespace KompasClient.Cards
         public override void SetN(int n, IStackable stackSrc = null, bool notify = true)
         {
             base.SetN(n, stackSrc, notify);
-            if (ClientGame.clientUICtrl.ShownCard == this)
-                ClientGame.clientUICtrl.Refresh();
+            if (ClientGame?.clientUICtrl.ShownCard == this)
+                ClientGame?.clientUICtrl.Refresh();
         }
     }
 }

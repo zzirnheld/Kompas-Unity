@@ -19838,7 +19838,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -401.15}
+  m_AnchoredPosition: {x: -0.000030517578, y: -401.14996}
   m_SizeDelta: {x: 280, y: 57.35}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1241039935
@@ -26371,7 +26371,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 140, y: -215.75}
+  m_AnchoredPosition: {x: 140, y: -215.75005}
   m_SizeDelta: {x: 280, y: 84.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1580719362
@@ -27069,7 +27069,7 @@ MonoBehaviour:
   activatorUICtrl: {fileID: 71818826}
   escapeMenuUICtrl: {fileID: 357244920}
   cardInfoViewUICtrl: {fileID: 2083542047}
-  detailedEffectsCtrlUIObject: {fileID: 0}
+  detailedEffectsCtrlUIObject: {fileID: 1580719360}
 --- !u!1 &1623620544
 GameObject:
   m_ObjectHideFlags: 0

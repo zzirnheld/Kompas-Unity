@@ -37,7 +37,7 @@ namespace KompasCore.Cards
 
         #region stats
         public int BaseN => serializedCard.n;
-        public override int BaseE => serializedCard.e;
+        public override int BaseE => serializedCard?.e ?? default;
         public int BaseS => serializedCard.s;
         public int BaseW => serializedCard.w;
         public int BaseC => serializedCard.c;
@@ -106,7 +106,7 @@ namespace KompasCore.Cards
 
         public override IEnumerable<GameCard> AdjacentCards
         {
-            get => Game.boardCtrl.CardsAdjacentTo(Position);
+            get => Game?.boardCtrl.CardsAdjacentTo(Position) ?? new List<GameCard>();
             protected set
             {
                 throw new NotImplementedException($"Tried to set adjacent cards of actual GameCard {this}");

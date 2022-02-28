@@ -16,8 +16,8 @@ namespace KompasServer.Cards
         public ServerGame ServerGame { get; private set; }
         public override Game Game => ServerGame;
 
-        public ServerEffectsController EffectsController => ServerGame.EffectsController;
-        public ServerNotifier ServerNotifier => ServerController.ServerNotifier;
+        public ServerEffectsController EffectsController => ServerGame?.EffectsController;
+        public ServerNotifier ServerNotifier => ServerController?.ServerNotifier;
 
         private ServerPlayer serverController;
         public ServerPlayer ServerController
@@ -115,7 +115,7 @@ namespace KompasServer.Cards
             int i = 0;
             foreach (var eff in effects) eff.SetInfo(this, game, owner, i++);
             //it's CardBase.SetInfo which resets stats, which sets the properties, which doesn't know whether or not to notify
-            ServerNotifier.NotifyStats(this);
+            ServerNotifier?.NotifyStats(this);
             //Debug.Log($"Setting card with effects: {string.Join(", ", effects.Select(e => e.ToString()))}");
             ServerGame = game;
             ServerController = ServerOwner = owner;
@@ -207,7 +207,7 @@ namespace KompasServer.Cards
             var context = new ActivationContext(mainCardBefore: this, stackable: stackSrc, player: stackSrc?.Controller, x: n - N);
             base.SetN(n, stackSrc);
             context.CacheCardInfoAfter();
-            EffectsController.TriggerForCondition(Trigger.NChange, context);
+            EffectsController?.TriggerForCondition(Trigger.NChange, context);
 
             if (onlyStatBeingSet) ServerNotifier.NotifyStats(this);
         }
@@ -218,7 +218,7 @@ namespace KompasServer.Cards
             var context = new ActivationContext(mainCardBefore: this, stackable: stackSrc, player: stackSrc?.Controller, x: e - E);
             base.SetE(e, stackSrc);
             context.CacheCardInfoAfter();
-            EffectsController.TriggerForCondition(Trigger.EChange, context);
+            EffectsController?.TriggerForCondition(Trigger.EChange, context);
 
             if (onlyStatBeingSet) ServerNotifier.NotifyStats(this);
 
@@ -236,7 +236,7 @@ namespace KompasServer.Cards
             var context = new ActivationContext(mainCardBefore: this, stackable: stackSrc, player: stackSrc?.Controller, x: s - S);
             base.SetS(s, stackSrc);
             context.CacheCardInfoAfter();
-            EffectsController.TriggerForCondition(Trigger.SChange, context);
+            EffectsController?.TriggerForCondition(Trigger.SChange, context);
 
             if (onlyStatBeingSet) ServerNotifier.NotifyStats(this);
         }
@@ -247,7 +247,7 @@ namespace KompasServer.Cards
             var context = new ActivationContext(mainCardBefore: this, stackable: stackSrc, player: stackSrc?.Controller, x: w - W);
             base.SetW(w, stackSrc);
             context.CacheCardInfoAfter();
-            EffectsController.TriggerForCondition(Trigger.WChange, context);
+            EffectsController?.TriggerForCondition(Trigger.WChange, context);
 
             if (onlyStatBeingSet) ServerNotifier.NotifyStats(this);
         }
@@ -258,7 +258,7 @@ namespace KompasServer.Cards
             var context = new ActivationContext(mainCardBefore: this, stackable: stackSrc, player: stackSrc?.Controller, x: c - C);
             base.SetC(c, stackSrc);
             context.CacheCardInfoAfter();
-            EffectsController.TriggerForCondition(Trigger.CChange, context);
+            EffectsController?.TriggerForCondition(Trigger.CChange, context);
 
             if (onlyStatBeingSet) ServerNotifier.NotifyStats(this);
         }
@@ -269,7 +269,7 @@ namespace KompasServer.Cards
             var context = new ActivationContext(mainCardBefore: this, stackable: stackSrc, player: stackSrc?.Controller, x: a - A);
             base.SetA(a, stackSrc);
             context.CacheCardInfoAfter();
-            EffectsController.TriggerForCondition(Trigger.AChange, context);
+            EffectsController?.TriggerForCondition(Trigger.AChange, context);
 
             if (onlyStatBeingSet) ServerNotifier.NotifyStats(this);
         }
@@ -289,7 +289,7 @@ namespace KompasServer.Cards
         public override void SetStats(CardStats stats, IStackable stackSrc = null)
         {
             base.SetStats(stats, stackSrc);
-            ServerNotifier.NotifyStats(this);
+            ServerNotifier?.NotifyStats(this);
         }
 
         public override void SetNegated(bool negated, IStackable stackSrc = null)
