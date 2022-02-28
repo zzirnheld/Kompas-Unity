@@ -210,6 +210,8 @@ memory/Vesselformation
 memory/Immortal Memory
 memory/Corporeal Recall
 memory/Memorial Augury
+memory/Recall
+memory/Uncall For
 music/Soaring Chorus
 music/Surging Verse
 music/Ringing Bridge

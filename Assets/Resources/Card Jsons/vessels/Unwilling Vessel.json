@@ -20,7 +20,7 @@
 				{
 					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction": {
-						"blurb": "ENCORE!",
+						"blurb": "I don't want to remember!",
 						"cardRestrictions": [
 							"Augment",
 							"Board",
@@ -43,13 +43,13 @@
 					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
 				},
 				{
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
 					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
 					"eMultiplier": 1,
 					"sMultiplier": 1,
 					"wMultiplier": 1
-				},
-				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
