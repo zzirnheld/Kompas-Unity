@@ -75,15 +75,14 @@
 		}
 	],
 	"keywords": [
-		"Vessel Echo",
-		"Vessel Cost Up"
+		"Vessel Echo"
 	],
 	"n": 1,
 	"e": 1,
 	"s": 1,
 	"w": 1,
 	"subtypes": [
-		"Vessel Echo"
+		"Vessel"
 	],
 	"subtypeText": "Vessel"
 }

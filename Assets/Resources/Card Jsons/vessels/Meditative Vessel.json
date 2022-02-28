@@ -4,15 +4,14 @@
 	"effText": "Vessel.",
 	"effects": [],
 	"keywords": [
-		"Vessel Echo",
-		"Vessel Cost Up"
+		"Vessel Echo"
 	],
 	"n": 0,
 	"e": 3,
 	"s": 1,
 	"w": 1,
 	"subtypes": [
-		"Vessel Echo"
+		"Vessel"
 	],
 	"subtypeText": "Vessel"
 }
