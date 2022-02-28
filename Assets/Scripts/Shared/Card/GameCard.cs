@@ -139,7 +139,7 @@ namespace KompasCore.Cards
                 augmentedCard = value;
                 if (augmentedCard != null)
                 {
-                    Location = augmentedCard.Location;
+                    GameLocation = augmentedCard.GameLocation;
                     Position = augmentedCard.Position;
                 }
             }
