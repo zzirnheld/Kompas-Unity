@@ -109,7 +109,7 @@ namespace KompasServer.Cards
         {
             if (InitialCardValues == null)
             {
-                Debug.Log("Tried to reset card whose info was never set! This should only happen at game start");
+                Debug.Log("Tried to reset card whose info was never set! This should only be the case at game start");
                 return;
             }
 
@@ -121,8 +121,8 @@ namespace KompasServer.Cards
 
             if (Effects != null) foreach (var eff in Effects) eff.Reset();
             //instead of setting negations or activations to 0, so that it updates the client correctly
-            while (Negated) Negated = false;
-            while (Activated) Activated = false;
+            while (Negated) SetNegated(false);
+            while (Activated) SetActivated(false);
         }
 
         public void SetInitialCardInfo(SerializableCard serializedCard, ServerGame game, ServerPlayer owner, ServerEffect[] effects, int id)
@@ -134,7 +134,6 @@ namespace KompasServer.Cards
             ServerGame = game;
             ServerOwner = owner;
             ServerController = owner;
-            ServerNotifier?.NotifyStats(this);
         }
 
         public override void Vanish()
@@ -305,7 +304,10 @@ namespace KompasServer.Cards
         {
             if (Negated != negated)
             {
+                //Notify of value being set to, even if it won't actually change whether the card is negated or not
+                //so that the client can know how many negations a card has
                 ServerNotifier.NotifySetNegated(this, negated);
+
                 var context = new ActivationContext(mainCardBefore: this, stackable: stackSrc, player: stackSrc?.Controller);
                 context.CacheCardInfoAfter();
                 if (negated) EffectsController.TriggerForCondition(Trigger.Negate, context);
@@ -318,7 +320,10 @@ namespace KompasServer.Cards
             var context = new ActivationContext(mainCardBefore: this, stackable: stackSrc, player: stackSrc?.Controller);
             if (Activated != activated)
             {
+                //Notify of value being set to, even if it won't actually change whether the card is activated or not,
+                //so that the client can know how many activations a card has
                 ServerNotifier.NotifyActivate(this, activated);
+
                 context.CacheCardInfoAfter();
                 if (activated) EffectsController.TriggerForCondition(Trigger.Activate, context);
                 else EffectsController.TriggerForCondition(Trigger.Deactivate, context);

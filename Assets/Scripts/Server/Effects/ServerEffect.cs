@@ -135,8 +135,9 @@ namespace KompasServer.Effects
             X = context.x ?? 0;
 
             cardTargets.Clear();
-            if (context.Targets != null) cardTargets.AddRange(context.Targets);
-            if (context.Spaces != null) spaceTargets.AddRange(context.Spaces);
+            //Add the targets one by one so the client knows that they're current targets
+            if (context.Targets != null) context.Targets.ForEach(AddTarget);
+            if (context.Spaces != null) context.Spaces.ForEach(AddSpace);
 
             spaceTargets.Clear();
 
@@ -260,16 +261,6 @@ namespace KompasServer.Effects
             serverGame.ServerControllerOf(card).ServerNotifier.RemoveTarget(Source, EffectIndex, card);
         }
 
-        public override string ToString()
-        {
-            return $"Effect {EffectIndex} of {Source.CardName}";
-            /*
-            var sb = new System.Text.StringBuilder();
-
-            sb.Append($"Effect of {Source.CardName}: ");
-            foreach (var s in Subeffects) sb.Append($"{s.GetType()}, ");
-
-            return sb.ToString();*/
-        }
+        public override string ToString() => $"Effect {EffectIndex} of {Source.CardName}";
     }
 }

@@ -78,7 +78,6 @@ namespace KompasClient.Networking
                 Packet.UpdateCardNumericStats => JsonConvert.DeserializeObject<ChangeCardNumericStatsClientPacket>(json),
                 Packet.NegateCard => JsonConvert.DeserializeObject<NegateCardClientPacket>(json),
                 Packet.ActivateCard => JsonConvert.DeserializeObject<ActivateCardClientPacket>(json),
-                Packet.ResetCard => JsonConvert.DeserializeObject<ResetCardClientPacket>(json),
                 Packet.ChangeCardController => JsonConvert.DeserializeObject<ChangeCardControllerClientPacket>(json),
                 Packet.SetPips => JsonConvert.DeserializeObject<SetPipsClientPacket>(json),
                 Packet.AttacksThisTurn => JsonConvert.DeserializeObject<AttacksThisTurnClientPacket>(json),

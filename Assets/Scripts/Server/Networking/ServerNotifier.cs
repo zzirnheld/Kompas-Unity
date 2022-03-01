@@ -142,9 +142,6 @@ namespace KompasServer.Networking
         public void NotifyActivate(GameCard card, bool activated)
             => SendToBothInverting(new ActivateCardPacket(card.ID, activated), card.KnownToEnemy);
 
-        public void NotifyResetCard(GameCard card)
-            => SendToBothInverting(new ResetCardPacket(card.ID), card.KnownToEnemy);
-
         public void NotifyChangeController(GameCard card, Player controller)
             => SendToBothInverting(new ChangeCardControllerPacket(card.ID, controller.index, invert: Player.index != 0), card.KnownToEnemy);
         #endregion card stats
