@@ -1,7 +1,7 @@
 {
 	"cardType": 65,
 	"cardName": "Malevolent Memory",
-	"effText": "When this character is summoned, give them +5 W.\nWhen this character attacks, echo them.",
+	"effText": "When this character is summoned, give them +3 W.\nWhen this character attacks, echo them.",
 	"effects": [
 		{
 			"blurb": "Directed Malevolence",
@@ -19,7 +19,7 @@
                 },
 				{
 					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"wModifier": 5
+					"wModifier": 3
 				}
 			]
 		},

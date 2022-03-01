@@ -1,7 +1,7 @@
 {
 	"cardType": 65,
 	"cardName": "Powerhungry Memory",
-	"effText": "When this character is summoned, dispel an adjacent spell. Give them +3 W.\nWhen this character attacks, echo them.",
+	"effText": "When this character is summoned, dispel an adjacent spell. Give them +5 W.\nWhen this character attacks, echo them.",
 	"effects": [
 		{
 			"blurb": "Powerhunger",
@@ -37,7 +37,7 @@
                 },
 				{
 					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"wModifier": 3
+					"wModifier": 5
 				}
 			]
 		},
