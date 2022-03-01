@@ -5,6 +5,7 @@ using TMPro;
 using System;
 using KompasClient.GameCore;
 using System.Linq;
+using UnityEngine.UI;
 
 namespace KompasClient.UI
 {
@@ -30,6 +31,7 @@ namespace KompasClient.UI
         public TMP_Dropdown friendlyColorOptionsDropdown;
         public TMP_Dropdown enemyColorOptionsDropdown;
         public TMP_InputField zoomThresholdInput;
+        public Toggle showAdvancedEffectUIToggle;
 
         public void ApplySettings()
         {
@@ -114,6 +116,7 @@ namespace KompasClient.UI
             friendlyColorOptionsDropdown.value = ClientSettings.friendlyColorIndex;
             enemyColorOptionsDropdown.value = ClientSettings.enemyColorIndex;
             zoomThresholdInput.text = ClientSettings.zoomThreshold.ToString("n1");
+            showAdvancedEffectUIToggle.isOn = ClientSettings.showAdvancedEffectsSettings;
 
             gameObject.SetActive(true);
         }
@@ -161,6 +164,12 @@ namespace KompasClient.UI
                 ClientSettings.zoomThreshold = ClientSettings.DefaultZoomThreshold;
 
             zoomThresholdInput.text = ClientSettings.zoomThreshold.ToString("n1");
+            ApplySettings();
+        }
+
+        public void SetShowAdvancedEffectResponseUI(bool show)
+        {
+            ClientSettings.showAdvancedEffectsSettings = show;
             ApplySettings();
         }
 
