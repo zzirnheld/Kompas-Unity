@@ -23,14 +23,14 @@ public class CardRepository : MonoBehaviour
     public const string partialKeywordFolderPath = "Keyword Jsons/Partial Keywords/";
     public const string partialKeywordListFilePath = partialKeywordFolderPath + "Keyword List";
 
-    private static readonly JsonSerializerSettings cardLoadingSettings = new JsonSerializerSettings 
+    private static readonly JsonSerializerSettings cardLoadingSettings = new JsonSerializerSettings
     {
         TypeNameHandling = TypeNameHandling.Auto,
         MaxDepth = null,
-        ReferenceLoopHandling = ReferenceLoopHandling.Serialize 
+        ReferenceLoopHandling = ReferenceLoopHandling.Serialize
     };
 
-    private static readonly string[] cardNamesToIgnore = new string[] 
+    private static readonly string[] cardNamesToIgnore = new string[]
     {
         "Square Kompas Logo"
     };

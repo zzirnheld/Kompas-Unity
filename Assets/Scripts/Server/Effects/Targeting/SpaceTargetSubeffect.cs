@@ -34,9 +34,9 @@ namespace KompasServer.Effects
         /// <see langword="false"/> otherwise</returns>
         public bool WillBePossibleIfCardTargeted(GameCard theoreticalTarget)
         {
-            for(int x = 0; x < 7; x++)
+            for (int x = 0; x < 7; x++)
             {
-                for(int y = 0; y < 7; y++)
+                for (int y = 0; y < 7; y++)
                 {
                     if (spaceRestriction.IsValidSpace((x, y), Context, theoreticalTarget)) return true;
                 }
@@ -48,9 +48,9 @@ namespace KompasServer.Effects
         public override async Task<ResolutionInfo> Resolve()
         {
             var spaces = ValidSpaces.Select(s => (s.x, s.y)).ToArray();
-            var recommendedSpaces 
-                = ForPlay 
-                ? spaces.Where(s => CardTarget.PlayRestriction.IsRecommendedPlay(s, PlayerTarget, Context, normal: false)).ToArray() 
+            var recommendedSpaces
+                = ForPlay
+                ? spaces.Where(s => CardTarget.PlayRestriction.IsRecommendedPlay(s, PlayerTarget, Context, normal: false)).ToArray()
                 : spaces;
             if (spaces.Length > 0)
             {

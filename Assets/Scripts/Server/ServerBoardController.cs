@@ -88,7 +88,7 @@ namespace KompasServer.GameCore
             //actually perform the swap
             base.Swap(card, to, playerInitiated);
 
-            foreach(var ctxt in moveContexts)
+            foreach (var ctxt in moveContexts)
             {
                 ctxt.CacheCardInfoAfter();
             }

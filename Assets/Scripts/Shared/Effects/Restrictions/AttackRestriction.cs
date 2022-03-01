@@ -78,7 +78,7 @@ namespace KompasCore.Effects
 
         private bool IsGameSetUp() => Card != null && Card.Game != null;
 
-        public bool IsValidAttack(GameCard defender, IStackable stackSrc) 
+        public bool IsValidAttack(GameCard defender, IStackable stackSrc)
             => IsGameSetUp() && defender != null && attackRestrictions.All(r => RestrictionValid(r, defender, stackSrc));
 
         /// <summary>

@@ -24,7 +24,7 @@ namespace KompasClient.UI
             foreach (var obj in images) Destroy(obj);
             images.Clear();
 
-            foreach(var c in targets)
+            foreach (var c in targets)
             {
                 var obj = Instantiate(cardImagePrefab, parent: targetsObjParent);
                 images.Add(obj);

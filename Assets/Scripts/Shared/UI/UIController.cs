@@ -44,7 +44,7 @@ namespace KompasCore.UI
 
         private GameCard hoveredCard;
 
-        public GameCard ShownCard { get; protected set;}
+        public GameCard ShownCard { get; protected set; }
 
         public bool DebugMode { get { return debugToggle.isOn; } }
 

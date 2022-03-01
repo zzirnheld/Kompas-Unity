@@ -58,9 +58,9 @@ namespace KompasCore.Effects
             TurnStart, StackEnd, EffectPushedToStack,
             Activate, Deactivate, Negate,
             NChange, EChange, SChange, WChange, CChange, AChange,
-            Defends, Attacks, TakeCombatDamage, DealCombatDamage, Battles, BattleEnds, 
+            Defends, Attacks, TakeCombatDamage, DealCombatDamage, Battles, BattleEnds,
             EachDraw, DrawX, Arrive, Play, Discard, Rehand, Reshuffle, Topdeck, Bottomdeck, ToDeck, Move, Annhilate, Remove, LeaveAOE,
-            AugmentAttached, AugmentDetached, Augmented, 
+            AugmentAttached, AugmentDetached, Augmented,
             Revealed, Vanish
         };
 

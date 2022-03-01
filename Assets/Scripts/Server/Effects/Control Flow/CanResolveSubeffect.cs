@@ -17,7 +17,7 @@ namespace KompasServer.Effects
             if (impossible == default) return Task.FromResult(ResolutionInfo.Next);
             else
             {
-                if(skipIndex == -1) return Task.FromResult(ResolutionInfo.Impossible($"{impossible} could not have resolved."));
+                if (skipIndex == -1) return Task.FromResult(ResolutionInfo.Impossible($"{impossible} could not have resolved."));
                 else return Task.FromResult(ResolutionInfo.Index(skipIndex));
             }
         }

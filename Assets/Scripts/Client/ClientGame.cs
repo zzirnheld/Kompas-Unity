@@ -39,14 +39,14 @@ namespace KompasClient.GameCore
         //targeting
         public int targetsWanted;
         private GameCard[] currentPotentialTargets;
-        public GameCard[] CurrentPotentialTargets 
-        { 
-            get => currentPotentialTargets; 
+        public GameCard[] CurrentPotentialTargets
+        {
+            get => currentPotentialTargets;
             private set
             {
                 currentPotentialTargets = value;
                 ShowValidCardTargets();
-            } 
+            }
         }
 
         private (int, int)[] currentPotentialSpaces;
@@ -70,8 +70,8 @@ namespace KompasClient.GameCore
         //dirty card set
         private readonly HashSet<GameCard> dirtyCardList = new HashSet<GameCard>();
 
-        public override int Leyload 
-        { 
+        public override int Leyload
+        {
             get => base.Leyload;
             set
             {

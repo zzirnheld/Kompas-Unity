@@ -138,7 +138,7 @@ namespace KompasCore.Effects
             StackableIsThisEffect => context.stackable == SourceEffect,
             NoStackable => context.stackable == null,
 
-            MainCardAfterFurtherFromSourceThanBefore 
+            MainCardAfterFurtherFromSourceThanBefore
                 => ThisCard.DistanceTo(context.MainCardInfoAfter.Position) > ThisCard.DistanceTo(context.mainCardInfoBefore.Position),
 
             //other non-card triggering things
@@ -166,7 +166,7 @@ namespace KompasCore.Effects
             _ => throw new ArgumentException($"Invalid trigger restriction {restriction}"),
         };
 
-        
+
         private bool IsRestrictionValidDebug(string r, ActivationContext ctxt, ActivationContext secondary)
         {
             var success = IsRestrictionValid(r, ctxt, secondary);

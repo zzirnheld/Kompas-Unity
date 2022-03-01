@@ -19,10 +19,10 @@ public class ClientCameraController : MonoBehaviour
     public float RotationAngle => Mathf.Log10(transform.position.y) * RotationFactorBase;
     public bool Zoomed => transform.position.y <= ZoomThreshold;
 
-    public Vector3 Down     => PanFactor * Vector3.down;
-    public Vector3 Up       => PanFactor * Vector3.up;
-    public Vector3 Left     => PanFactor * Vector3.left;
-    public Vector3 Right    => PanFactor * Vector3.right;
+    public Vector3 Down => PanFactor * Vector3.down;
+    public Vector3 Up => PanFactor * Vector3.up;
+    public Vector3 Left => PanFactor * Vector3.left;
+    public Vector3 Right => PanFactor * Vector3.right;
 
     public ClientGame clientGame;
 
@@ -36,7 +36,7 @@ public class ClientCameraController : MonoBehaviour
         if (transform.position.y > MinCameraHeight || Input.mouseScrollDelta.y < 0)
         {
             var tempHeight = transform.position.y;
-            if(clientGame.canZoom && !EventSystem.current.IsPointerOverGameObject())
+            if (clientGame.canZoom && !EventSystem.current.IsPointerOverGameObject())
                 transform.Translate(ZoomFactor * Input.mouseScrollDelta.y * Vector3.forward);
 
             //if just crossed the threshold for showing cards as zoomed or no, update cards accordingly

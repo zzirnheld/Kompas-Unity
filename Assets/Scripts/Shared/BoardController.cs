@@ -23,7 +23,7 @@ namespace KompasCore.GameCore
 
         public CardLocation CardLocation => CardLocation.Board;
 
-        public static int PosToGridIndex(float pos) 
+        public static int PosToGridIndex(float pos)
             => (int)((pos + BoardLenOffset) / (LenOneSpace));
 
         public static float GridIndexToPos(int gridIndex)
@@ -90,7 +90,7 @@ namespace KompasCore.GameCore
             }
 
             foreach (var s in space.AdjacentSpaces)
-            { 
+            {
                 var card = GetCardAt(s);
                 if (card != null) list.Add(card);
             }
@@ -108,7 +108,7 @@ namespace KompasCore.GameCore
         public List<GameCard> CardsAndAugsWhere(Func<GameCard, bool> predicate)
         {
             var list = new List<GameCard>();
-            foreach(var card in Board)
+            foreach (var card in Board)
             {
                 if (predicate(card)) list.Add(card);
                 if (card != null) list.AddRange(card.Augments.Where(predicate));
@@ -203,15 +203,15 @@ namespace KompasCore.GameCore
         #region game mechanics
         public virtual void Remove(GameCard toRemove)
         {
-            if (toRemove.Location != CardLocation.Board) 
+            if (toRemove.Location != CardLocation.Board)
                 throw new CardNotHereException(CardLocation, toRemove, $"Tried to remove {toRemove} not on board");
-            if (toRemove.Position == null) 
+            if (toRemove.Position == null)
                 throw new InvalidSpaceException(toRemove.Position, "Can't remove a card from a null space");
 
             var (x, y) = toRemove.Position;
-            if(Board[x, y] == toRemove) 
+            if (Board[x, y] == toRemove)
                 RemoveFromBoard(toRemove.Position);
-            else 
+            else
                 throw new CardNotHereException(CardLocation, toRemove, $"Card thinks it's at {toRemove.Position}, but {Board[x, y]} is there");
         }
 
@@ -232,7 +232,7 @@ namespace KompasCore.GameCore
             if (toPlay == null) throw new NullCardException($"Null card to play to {to}");
             if (toPlay.Location == CardLocation.Board) throw new AlreadyHereException(CardLocation);
             if (to == null) throw new InvalidSpaceException(to, $"Space to play a card to cannot be null!");
-            if (!ValidSpellSpaceFor(toPlay, to)) throw new InvalidSpaceException(to, 
+            if (!ValidSpellSpaceFor(toPlay, to)) throw new InvalidSpaceException(to,
                 $"Tried to play {toPlay} to space {to}. This isn't ok, that's an invalid spell spot.");
 
             Debug.Log($"In boardctrl, playing {toPlay.CardName} currently in {toPlay.Location} to {to}");
@@ -271,7 +271,7 @@ namespace KompasCore.GameCore
             if (!to.IsValid) throw new InvalidSpaceException(to);
             if (card == null) throw new NullCardException("Card to be swapped must not be null");
             if (card.Attached) throw new NotImplementedException();
-            if (card.Location != CardLocation.Board || card != GetCardAt(card.Position)) 
+            if (card.Location != CardLocation.Board || card != GetCardAt(card.Position))
                 throw new CardNotHereException(CardLocation.Board, card,
                     $"{card} not at {card.Position}, {GetCardAt(card.Position)} is there instead");
 
@@ -362,7 +362,7 @@ namespace KompasCore.GameCore
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            for(int i = 0; i < 7; i++)
+            for (int i = 0; i < 7; i++)
             {
                 for (int j = 0; j < 7; j++)
                 {

@@ -24,12 +24,12 @@ namespace KompasCore.Networking
         {
             this.cardId = cardId;
             this.json = json;
-            this.location = (int) location;
+            this.location = (int)location;
             this.controllerIndex = invert ? 1 - controllerIndex : controllerIndex;
         }
 
-        public AddCardPacket(int cardId, string json, CardLocation location, int controllerIndex, 
-            int x, int y, bool attached, bool known, bool invert = false) 
+        public AddCardPacket(int cardId, string json, CardLocation location, int controllerIndex,
+            int x, int y, bool attached, bool known, bool invert = false)
             : this(cardId, json, location, controllerIndex, invert)
         {
             this.x = invert ? 6 - x : x;
@@ -41,7 +41,7 @@ namespace KompasCore.Networking
         //TODO allow for card to be added with stats not as defaults.
         //this will require using a json library that allows for polymorphism-ish stuff
         public AddCardPacket(GameCard card, bool invert = false)
-            : this(cardId: card.ID, json: card.BaseJson, location: card.Location, controllerIndex: card.ControllerIndex, 
+            : this(cardId: card.ID, json: card.BaseJson, location: card.Location, controllerIndex: card.ControllerIndex,
                   x: card.Position?.x ?? 0, y: card.Position?.y ?? 0, attached: card.Attached, known: card.KnownToEnemy, invert: invert)
         { }
 

@@ -17,7 +17,7 @@ namespace KompasServer.Cards
             if (Location == CardLocation.Nowhere) return;
             var corner = Space.AvatarCornerFor(ControllerIndex);
             var unfortunate = Game.boardCtrl.GetCardAt(corner);
-            if(unfortunate != null && unfortunate != this && !unfortunate.IsAvatar) 
+            if (unfortunate != null && unfortunate != this && !unfortunate.IsAvatar)
                 unfortunate.Owner.annihilationCtrl.Annihilate(unfortunate, stackSrc: stackSrc);
             Move(to: corner, normalMove: false, stackSrc: stackSrc);
         }

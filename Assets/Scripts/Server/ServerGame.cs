@@ -47,8 +47,8 @@ namespace KompasServer.GameCore
         public override IEnumerable<IStackable> StackEntries => EffectsController.StackEntries;
         public override bool NothingHappening => EffectsController.NothingHappening && Players.All(s => s.PassedPriority);
 
-        public override int TurnCount 
-        { 
+        public override int TurnCount
+        {
             get => base.TurnCount;
             protected set
             {
@@ -57,8 +57,8 @@ namespace KompasServer.GameCore
             }
         }
 
-        public override int Leyload 
-        { 
+        public override int Leyload
+        {
             get => base.Leyload;
             set
             {
@@ -190,7 +190,7 @@ namespace KompasServer.GameCore
             FirstTurnPlayer = Random.value > 0.5f ? 0 : 1;
             TurnPlayerIndex = FirstTurnPlayer;
 
-            foreach (var p in ServerPlayers) 
+            foreach (var p in ServerPlayers)
             {
                 p.ServerNotifier.SetFirstTurnPlayer(FirstTurnPlayer);
                 p.Avatar.SetN(0, stackSrc: null);
@@ -218,7 +218,7 @@ namespace KompasServer.GameCore
             ResetCardsForTurn();
 
             GiveTurnPlayerPips();
-            if(notFirstTurn) Draw(TurnPlayerIndex);
+            if (notFirstTurn) Draw(TurnPlayerIndex);
 
             //do hand size
             EffectsController.PushToStack(new ServerHandSizeStackable(this, TurnServerPlayer), default);

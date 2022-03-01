@@ -134,7 +134,7 @@ namespace KompasCore.Effects
         /// <param name="choices">The list of cards to collectively evaluate.</param>
         /// <returns><see langword="true"/> if the cards fit all the required restrictions collectively, 
         /// <see langword="false"/> otherwise</returns>
-        public bool IsValidCardList(IEnumerable<GameCard> choices, IEnumerable<GameCard> potentialTargets) 
+        public bool IsValidCardList(IEnumerable<GameCard> choices, IEnumerable<GameCard> potentialTargets)
             => choices != null
                 && !choices.Except(potentialTargets).Any() //Are there any choices that aren't potential targets?
                 && listRestrictions.All(r => IsRestrictionValid(r, choices));
@@ -168,7 +168,7 @@ namespace KompasCore.Effects
             _ => throw new System.ArgumentException($"Invalid list restriction {restriction}", "restriction"),
         };
 
-        public bool ExistsValidChoice(IEnumerable<GameCard> potentialTargets) 
+        public bool ExistsValidChoice(IEnumerable<GameCard> potentialTargets)
             => listRestrictions.All(r => DoesRestrictionAllowValidChoice(r, potentialTargets));
 
         public override string ToString()

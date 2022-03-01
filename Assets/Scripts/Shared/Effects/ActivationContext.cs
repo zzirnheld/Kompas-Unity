@@ -60,7 +60,7 @@ namespace KompasCore.Effects
             if (mainCardInfoBefore != null) sb.Append($"Card: {mainCardInfoBefore.CardName}, ");
             if (stackable != null) sb.Append($"Stackable {stackable}, ");
             if (player != null) sb.Append($"Triggerer: {player.index}, ");
-            if (x != null)  sb.Append($"X: {x}, ");
+            if (x != null) sb.Append($"X: {x}, ");
             if (space != null) sb.Append($"Space: {space}, ");
             if (Targets != null) sb.Append($"Targets: {string.Join(", ", Targets)}, ");
             if (StartIndex != 0) sb.Append($"Starting at {StartIndex}");
@@ -112,11 +112,11 @@ namespace KompasCore.Effects
         /// (like the attacker on a defends proc)</param>
         private void CacheCardInfoAfter(GameCard mainCard, GameCard secondaryCard = null)
         {
-            if (MainCardInfoAfter != null) 
+            if (MainCardInfoAfter != null)
                 throw new System.ArgumentException("Already initialized MainCardInfoAfter on this context");
-            else if (mainCardInfoBefore == null) 
+            else if (mainCardInfoBefore == null)
                 throw new System.ArgumentNullException("Never stored mainCardInfoBefore, why are you creating MainCardInfoAfter?");
-            else 
+            else
                 MainCardInfoAfter = GameCardInfo.CardInfoOf(mainCard);
 
             if (secondaryCard != null)

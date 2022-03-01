@@ -47,14 +47,7 @@ namespace KompasServer.Cards
         public ServerEffect[] ServerEffects { get; private set; }
         public override IEnumerable<Effect> Effects => ServerEffects;
 
-        public override bool IsAvatar
-        {
-            get => false;
-            protected set
-            {
-                throw new System.NotImplementedException($"Tried to set isAvatar actual GameCard {this}");
-            }
-        }
+        public override bool IsAvatar => false;
 
         public override CardLocation Location
         {
@@ -77,8 +70,8 @@ namespace KompasServer.Cards
                     case CardLocation.Deck:
                         KnownToEnemy = false;
                         break;
-                    //Otherwise, KnownToEnemy doesn't change, if it's been added to the hand
-                    //discard->rehand is public, but deck->rehand is private, for example
+                        //Otherwise, KnownToEnemy doesn't change, if it's been added to the hand
+                        //discard->rehand is public, but deck->rehand is private, for example
                 }
             }
         }
@@ -92,7 +85,7 @@ namespace KompasServer.Cards
                 bool old = knownToEnemy;
                 knownToEnemy = value;
                 //update clients if changed
-                if(old != value) ServerNotifier.NotifyKnownToEnemy(this, old);
+                if (old != value) ServerNotifier.NotifyKnownToEnemy(this, old);
             }
         }
 
@@ -121,12 +114,13 @@ namespace KompasServer.Cards
             ServerController = ServerOwner = owner;
         }
 
+        /*
         public override void ResetCard()
         {
             //notify first so reset values get set to their proper things
             ServerNotifier.NotifyResetCard(this);
             base.ResetCard();
-        }
+        }*/
 
         public override void Vanish()
         {
@@ -138,7 +132,7 @@ namespace KompasServer.Cards
 
         public override void AddAugment(GameCard augment, IStackable stackSrc = null)
         {
-            var attachedContext = new ActivationContext(mainCardBefore: augment, secondaryCardBefore: this, 
+            var attachedContext = new ActivationContext(mainCardBefore: augment, secondaryCardBefore: this,
                 space: Position, stackable: stackSrc, player: Controller);
             var augmentedContext = new ActivationContext(mainCardBefore: this, secondaryCardBefore: augment,
                 space: Position, stackable: stackSrc, player: Controller);
@@ -172,13 +166,13 @@ namespace KompasServer.Cards
             var cardsThisLeft = Location == CardLocation.Board ?
                 Game.boardCtrl.CardsAndAugsWhere(c => c != null && c.CardInAOE(this)).ToList() :
                 new List<GameCard>();
-            var leaveContexts = cardsThisLeft.Select(c => 
+            var leaveContexts = cardsThisLeft.Select(c =>
                 new ActivationContext(mainCardBefore: this, secondaryCardBefore: c, stackable: stackSrc, player: player));
 
             base.Remove(stackSrc);
 
             context.CacheCardInfoAfter();
-            foreach(var lc in leaveContexts)
+            foreach (var lc in leaveContexts)
             {
                 lc.CacheCardInfoAfter();
             }

@@ -32,14 +32,14 @@ namespace KompasCore.Effects
         public const string DefaultNormal = "Default Normal Restrictions";
         public const string DefaultEffect = "Default Effect Restrictions";
         public static readonly string[] DefaultNormalRestrictions =
-            { PlayedByCardOwner, FromHand, StandardPlayRestriction, EmptySpace, StandardSpellRestriction, 
+            { PlayedByCardOwner, FromHand, StandardPlayRestriction, EmptySpace, StandardSpellRestriction,
             FriendlyTurnIfNotFast, HasCostInPips, FastOrNothingIsResolving, CheckUnique };
         public static readonly string[] DefaultEffectRestrictions = { StandardSpellRestriction, StandardPlayRestriction, EmptySpace, CheckUnique };
 
         public const string AugNormal = "Augment Normal Restrictions";
         public const string AugEffect = "Augment Effect Restrictions";
         public static readonly string[] AugmentNormalRestrictions =
-            { PlayedByCardOwner, FromHand, OnBoardCardFriendlyOrAdjacent, OnCharacter, StandardSpellRestriction, 
+            { PlayedByCardOwner, FromHand, OnBoardCardFriendlyOrAdjacent, OnCharacter, StandardSpellRestriction,
             FriendlyTurnIfNotFast, HasCostInPips, FastOrNothingIsResolving, CheckUnique };
         public static readonly string[] AugmentEffectRestrictions = { StandardSpellRestriction, OnBoardCardFriendlyOrAdjacent, CheckUnique };
 
@@ -65,15 +65,15 @@ namespace KompasCore.Effects
             //if (recommendationRestrictions.Count > 0) 
             //  Debug.Log($"More than one recommendation restriction: {string.Join(recommendationRestrictions)}");
 
-            if (normalRestrictions.Contains(DefaultNormal)) 
+            if (normalRestrictions.Contains(DefaultNormal))
                 normalRestrictions.AddRange(DefaultNormalRestrictions);
-            if (normalRestrictions.Contains(AugNormal)) 
+            if (normalRestrictions.Contains(AugNormal))
                 normalRestrictions.AddRange(AugmentNormalRestrictions);
             normalRestrictions.RemoveAll(normalRestrictionsToIgnore.Contains);
 
-            if (effectRestrictions.Contains(DefaultEffect)) 
+            if (effectRestrictions.Contains(DefaultEffect))
                 effectRestrictions.AddRange(DefaultEffectRestrictions);
-            if (effectRestrictions.Contains(AugEffect)) 
+            if (effectRestrictions.Contains(AugEffect))
                 effectRestrictions.AddRange(AugmentEffectRestrictions);
             effectRestrictions.RemoveAll(effectRestrictionsToIgnore.Contains);
 
@@ -91,7 +91,7 @@ namespace KompasCore.Effects
                 && (cardThere.Controller == player || cardThere.AdjacentCards.Any(c => c.Controller == player));
         }
 
-        private bool IsRestrictionValid(string r, Space space, Player player, ActivationContext context, bool normal) => r!= null && r switch
+        private bool IsRestrictionValid(string r, Space space, Player player, ActivationContext context, bool normal) => r != null && r switch
         {
             DefaultNormal => true,
             DefaultEffect => true,
@@ -135,7 +135,7 @@ namespace KompasCore.Effects
                     .Except(ignoring ?? new string[0])
                     .All(r => IsRestrictionValid(r, to, player, default, true));
 
-        public bool IsValidEffectPlay(Space to, Effect effect, Player controller, ActivationContext context, string[] ignoring = default) 
+        public bool IsValidEffectPlay(Space to, Effect effect, Player controller, ActivationContext context, string[] ignoring = default)
             => IsValidPlay(to)
                 && effectRestrictions
                     .Except(ignoring ?? new string[0])

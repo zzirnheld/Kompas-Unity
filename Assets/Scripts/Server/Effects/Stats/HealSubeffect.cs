@@ -11,7 +11,7 @@ namespace KompasServer.Effects
                 throw new NullCardException(TargetWasNull);
             else if (forbidNotBoard && CardTarget.Location != CardLocation.Board)
                 throw new InvalidLocationException(CardTarget.Location, CardTarget, ChangedStatsOfCardOffBoard);
-            else if (CardTarget.E >= CardTarget.BaseE) 
+            else if (CardTarget.E >= CardTarget.BaseE)
                 throw new InvalidCardException(CardTarget, TooMuchEForHeal);
 
             CardTarget.SetE(CardTarget.BaseE, stackSrc: ServerEffect);

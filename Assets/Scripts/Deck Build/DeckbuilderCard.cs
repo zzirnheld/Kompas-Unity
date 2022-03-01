@@ -74,7 +74,7 @@ namespace KompasDeckbuilder
                 deckbuildCtrl.RemoveFromDeck(this);
         }
 
-        public void OnPointerDown(PointerEventData eventData) 
+        public void OnPointerDown(PointerEventData eventData)
         {
             if (eventData.button == PointerEventData.InputButton.Left)
                 deckbuildCtrl.CurrentDrag = this;

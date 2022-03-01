@@ -44,7 +44,7 @@ namespace KompasServer.Effects
         //this is factored out so i can maybe eventually add some indication of whether an attack is still gonna be valid
         private bool StillValidAttack
         {
-            get => attacker.Location == CardLocation.Board 
+            get => attacker.Location == CardLocation.Board
                 && defender.Location == CardLocation.Board
                 && attacker.Position == attackerInitialSpace
                 && defender.Position == defenderInitialSpace;
@@ -71,13 +71,13 @@ namespace KompasServer.Effects
             //get damage from both, before either takes any damage, in case effects matter on hp
             int attackerDmg = attacker.CombatDamage;
             int defenderDmg = defender.CombatDamage;
-            var attackerDealContext = new ActivationContext(mainCardBefore: attacker, secondaryCardBefore: defender, 
+            var attackerDealContext = new ActivationContext(mainCardBefore: attacker, secondaryCardBefore: defender,
                 stackable: this, player: Controller, x: attackerDmg);
-            var defenderDealContext = new ActivationContext(mainCardBefore: defender, secondaryCardBefore: attacker, 
+            var defenderDealContext = new ActivationContext(mainCardBefore: defender, secondaryCardBefore: attacker,
                 stackable: this, player: Controller, x: defenderDmg);
-            var attackerTakeContext = new ActivationContext(mainCardBefore: attacker, secondaryCardBefore: defender, 
+            var attackerTakeContext = new ActivationContext(mainCardBefore: attacker, secondaryCardBefore: defender,
                 stackable: this, player: Controller, x: defenderDmg);
-            var defenderTakeContext = new ActivationContext(mainCardBefore: defender, secondaryCardBefore: attacker, 
+            var defenderTakeContext = new ActivationContext(mainCardBefore: defender, secondaryCardBefore: attacker,
                 stackable: this, player: Controller, x: attackerDmg);
             //deal the damage
             defender.TakeDamage(attackerDmg, stackSrc: this);

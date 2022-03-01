@@ -34,7 +34,7 @@ namespace KompasClient.Cards
             set
             {
                 clientController = value;
-                if(cardCtrl != null) cardCtrl.SetRotation();
+                if (cardCtrl != null) cardCtrl.SetRotation();
             }
         }
         public override Player Controller
@@ -52,14 +52,7 @@ namespace KompasClient.Cards
 
         public ClientEffect[] ClientEffects { get; private set; }
         public override IEnumerable<Effect> Effects => ClientEffects;
-        public override bool IsAvatar
-        {
-            get => false;
-            protected set
-            {
-                throw new System.NotImplementedException($"Tried to set isAvatar actual GameCard {this}");
-            }
-        }
+        public override bool IsAvatar => false;
         public ClientCardMouseController mouseCtrl;
         public ClientCardController clientCardCtrl;
 
@@ -95,7 +88,7 @@ namespace KompasClient.Cards
         {
             base.ResetCard();
 
-            if(cardCtrl != null) cardCtrl.ShowForCardType(CardType, ClientCameraController.Main.Zoomed);
+            if (cardCtrl != null) cardCtrl.ShowForCardType(CardType, ClientCameraController.Main.Zoomed);
         }
 
         public override void SetN(int n, IStackable stackSrc = null, bool notify = true)

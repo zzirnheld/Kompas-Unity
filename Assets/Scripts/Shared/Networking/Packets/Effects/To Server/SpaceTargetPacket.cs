@@ -27,7 +27,7 @@ namespace KompasServer.Networking
     {
         public Task Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
         {
-            if(player.index != 0)
+            if (player.index != 0)
             {
                 x = 6 - x;
                 y = 6 - y;

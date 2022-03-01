@@ -85,7 +85,7 @@ namespace KompasCore.Cards
         {
             get
             {
-                if(CardType == 'A') return AugmentSubtypes == null ? "" : $"Augment: {string.Join(",", AugmentSubtypes)}";
+                if (CardType == 'A') return AugmentSubtypes == null ? "" : $"Augment: {string.Join(",", AugmentSubtypes)}";
                 else if (CardType == 'S')
                 {
                     return (SpellSubtypes.FirstOrDefault()) switch
@@ -151,13 +151,13 @@ namespace KompasCore.Cards
             AugmentSubtypes = augSubtypes;
         }
 
-        protected void SetInfo(SerializableCard card) 
+        protected void SetInfo(SerializableCard card)
             => SetInfo((card.n, card.e, card.s, card.w, card.c, card.a),
                        card.subtext, card.spellTypes,
                        card.fast, card.unique,
                        card.radius, card.duration,
                        card.cardType, card.cardName,
-                       card.effText, 
+                       card.effText,
                        card.subtypeText,
                        card.augSubtypes);
 

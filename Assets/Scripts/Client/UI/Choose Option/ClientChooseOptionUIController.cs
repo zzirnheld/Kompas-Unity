@@ -25,7 +25,7 @@ namespace KompasClient.UI
             choiceBlurbText.text = showX ? $"{choiceBlurb} (X = {x})" : choiceBlurb;
 
             int i = 0;
-            foreach(var blurb in optionBlurbs)
+            foreach (var blurb in optionBlurbs)
             {
                 var obj = Instantiate(optionPrefab, optionsGridParent);
                 obj.transform.SetSiblingIndex(0);

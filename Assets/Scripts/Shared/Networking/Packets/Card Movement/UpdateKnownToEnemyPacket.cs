@@ -9,7 +9,7 @@ namespace KompasCore.Networking
         public int id;
 
         public UpdateKnownToEnemyPacket() : base(KnownToEnemy) { }
-        
+
         public UpdateKnownToEnemyPacket(bool known, int id) : this()
         {
             this.known = known;

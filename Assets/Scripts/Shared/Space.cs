@@ -87,7 +87,7 @@ public class Space
 
     public bool SameColumn(Space other) => x - y == other.x - other.y;
     public bool SameDiagonal(Space other) => x == other.x || y == other.y;
-    public bool SameAxis(Space a, Space b) 
+    public bool SameAxis(Space a, Space b)
         => (((a.x - b.x) % (a.x - x) == 0) || ((a.x - x) % (a.x - b.x) == 0))
         && (((a.y - b.y) % (a.y - y) == 0) || ((a.y - y) % (a.y - b.y) == 0));
 

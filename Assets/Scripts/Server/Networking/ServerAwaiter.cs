@@ -73,8 +73,8 @@ namespace KompasServer.Networking
                         return answer;
                     }
                 }
-                
-                await Task.Delay(DefaultDelay); 
+
+                await Task.Delay(DefaultDelay);
             }
         }
 
@@ -101,7 +101,7 @@ namespace KompasServer.Networking
                         return;
                     }
                 }
-                
+
                 await Task.Delay(DefaultDelay);
             }
         }

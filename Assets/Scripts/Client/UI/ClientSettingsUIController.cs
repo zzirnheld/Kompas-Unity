@@ -86,12 +86,12 @@ namespace KompasClient.UI
             => DefaultFriendlyColorOptions.Contains(color) ? Array.IndexOf(DefaultFriendlyColorOptions, color) : 0;
 
         private int GetEnemyColorIndex(Color color)
-            => DefaultEnemyColorOptions.Contains(color)? Array.IndexOf(DefaultEnemyColorOptions, color) : 0;
+            => DefaultEnemyColorOptions.Contains(color) ? Array.IndexOf(DefaultEnemyColorOptions, color) : 0;
 
         public void Show()
         {
             statHighlightDropdown.ClearOptions();
-            foreach(var o in Enum.GetValues(typeof(StatHighlight)))
+            foreach (var o in Enum.GetValues(typeof(StatHighlight)))
             {
                 statHighlightDropdown.options.Add(new TMP_Dropdown.OptionData() { text = o.ToString() });
             }
@@ -111,8 +111,8 @@ namespace KompasClient.UI
                 enemyColorOptionsDropdown.options.Add(new TMP_Dropdown.OptionData() { text = o });
             }
 
-            statHighlightDropdown.value = (int) ClientSettings.statHighlight;
-            confirmTargetsDropdown.value = (int) ClientSettings.confirmTargets;
+            statHighlightDropdown.value = (int)ClientSettings.statHighlight;
+            confirmTargetsDropdown.value = (int)ClientSettings.confirmTargets;
             friendlyColorOptionsDropdown.value = ClientSettings.friendlyColorIndex;
             enemyColorOptionsDropdown.value = ClientSettings.enemyColorIndex;
             zoomThresholdInput.text = ClientSettings.zoomThreshold.ToString("n1");
@@ -135,7 +135,7 @@ namespace KompasClient.UI
 
         public void SetFriendlyColor(int index)
         {
-            if(index < 0 || index >= DefaultFriendlyColorOptions.Length)
+            if (index < 0 || index >= DefaultFriendlyColorOptions.Length)
             {
                 //TODO custom colors
                 return;

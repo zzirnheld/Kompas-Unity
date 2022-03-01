@@ -89,7 +89,7 @@ namespace KompasCore.Effects
             Card = card;
 
             normalRestrictions.AddRange(normalRestrictionsFromJson);
-            if (normalRestrictionsFromJson.Contains(Default)) 
+            if (normalRestrictionsFromJson.Contains(Default))
                 normalRestrictions.AddRange(defaultNormalMovementRestrictions);
             normalRestrictions.RemoveAll(s => normalRestrictionsToIgnore.Contains(s));
 

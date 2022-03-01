@@ -132,7 +132,7 @@ namespace KompasServer.GameCore
 
         public async Task TryEndTurn()
         {
-            if (serverGame.NothingHappening && serverGame.TurnPlayer == this) 
+            if (serverGame.NothingHappening && serverGame.TurnPlayer == this)
                 await serverGame.SwitchTurn();
         }
         #endregion Player Control Methods

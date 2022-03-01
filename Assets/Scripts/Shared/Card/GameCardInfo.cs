@@ -13,7 +13,7 @@ namespace KompasCore.Cards
         public abstract Player Controller { get; set; }
         public abstract Player Owner { get; protected set; }
         public abstract bool Summoned { get; protected set; }
-        public abstract bool IsAvatar { get; protected set; }
+        public abstract bool IsAvatar { get; }
         public abstract GameCard AugmentedCard { get; protected set; }
         public abstract IEnumerable<GameCard> Augments { get; protected set; }
         /// <summary>
@@ -173,7 +173,8 @@ namespace KompasCore.Cards
         public override Player Controller { get; set; }
         public override Player Owner { get; protected set; }
         public override bool Summoned { get; protected set; }
-        public override bool IsAvatar { get; protected set; }
+        private bool isAvatar;
+        public override bool IsAvatar => isAvatar;
         public override GameCard AugmentedCard { get; protected set; }
         public override IEnumerable<GameCard> Augments { get; protected set; }
         public override bool KnownToEnemy { get; set; }
@@ -222,7 +223,7 @@ namespace KompasCore.Cards
             Controller = card.Controller;
             Owner = card.Owner;
             Summoned = card.Summoned;
-            IsAvatar = card.IsAvatar;
+            isAvatar = card.IsAvatar;
             AugmentedCard = card.AugmentedCard;
             Augments = card.Augments.ToArray();
             KnownToEnemy = card.KnownToEnemy;

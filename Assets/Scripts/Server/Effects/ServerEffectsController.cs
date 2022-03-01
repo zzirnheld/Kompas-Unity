@@ -43,16 +43,16 @@ namespace KompasServer.Effects
         private bool currentlyCheckingResponses = false;
         private int currStackIndex;
         private IServerStackable currStackEntry;
-        public IServerStackable CurrStackEntry 
+        public IServerStackable CurrStackEntry
         {
             get => currStackEntry;
             private set
             {
                 currStackEntry = value;
                 currStackIndex = stack.Count;
-            } 
+            }
         }
-        
+
         //nothing is happening if nothing is in the stack, nothing is currently resolving, and no one is waiting to add something to the stack.
         public bool NothingHappening => stack.Empty && CurrStackEntry == null;
 
@@ -62,14 +62,14 @@ namespace KompasServer.Effects
 
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("Stack:");
-            foreach(var s in stack.StackEntries)
+            foreach (var s in stack.StackEntries)
             {
                 sb.AppendLine(s.ToString());
             }
 
             sb.AppendLine("Currently Resolving:");
             sb.AppendLine(CurrStackEntry.ToString());
-            if(CurrStackEntry is ServerEffect se)
+            if (CurrStackEntry is ServerEffect se)
             {
                 if (se.CardTargets.Any())
                 {
@@ -163,9 +163,9 @@ namespace KompasServer.Effects
                 }
             }
             //Remove effect from hanging/delayed
-            foreach(var triggerCondition in Trigger.TriggerConditions.Where(hangingEffectMap.ContainsKey))
+            foreach (var triggerCondition in Trigger.TriggerConditions.Where(hangingEffectMap.ContainsKey))
             {
-                foreach(var hangingEff in hangingEffectMap[triggerCondition].ToArray())
+                foreach (var hangingEff in hangingEffectMap[triggerCondition].ToArray())
                 {
                     if (hangingEff.sourceEff == eff) RemoveHangingEffect(hangingEff);
                 }
@@ -205,14 +205,14 @@ namespace KompasServer.Effects
 
             //if any triggers have not been responded to, make them get responded to.
             //this is saved so that we know what trigger to okay or not if it's responded
-            foreach(var t in stillValid)
+            foreach (var t in stillValid)
             {
                 if (!t.Responded) await t.Ask(triggered.context.x ?? 0);
             }
 
             //now that all optional triggers have been answered, time to deal with ordering.
             //if a player only has one trigger, don't bother asking them for an order.
-            foreach(var p in ServerGame.Players)
+            foreach (var p in ServerGame.Players)
             {
                 var thisPlayers = stillValid.Where(t => t.serverEffect.Controller == p && t.Confirmed);
                 if (thisPlayers.Count() == 1) thisPlayers.First().Order = 1;
@@ -239,7 +239,7 @@ namespace KompasServer.Effects
             foreach (var t in confirmed.Where(t => t.serverEffect.Controller == turnPlayer.Enemy).OrderBy(t => t.Order))
                 PushToStack(t.serverEffect, triggered.context);
         }
-        
+
         /// <summary>
         /// Checks all triggers to see if any need to be addressed before stack resolution can continue.
         /// </summary>
@@ -252,7 +252,7 @@ namespace KompasServer.Effects
             while (triggeredTriggers.Any())
             {
                 await CheckTriggers(turnPlayer: turnPlayer);
-                foreach(var tList in triggerMap.Values)
+                foreach (var tList in triggerMap.Values)
                 {
                     foreach (var t in tList) t.ResetConfirmation();
                 }
@@ -301,7 +301,7 @@ namespace KompasServer.Effects
 
         private void ResolveHangingEffects(string condition, ActivationContext context)
         {
-            if(hangingEffectMap.ContainsKey(condition))
+            if (hangingEffectMap.ContainsKey(condition))
             {
                 foreach (var toEnd in hangingEffectMap[condition].ToArray())
                 {
@@ -352,7 +352,7 @@ namespace KompasServer.Effects
         public void RegisterTrigger(string condition, ServerTrigger trigger)
         {
             Debug.Log($"Registering a new trigger from card {trigger.serverEffect.Source.CardName} to condition {condition}");
-            if (!triggerMap.ContainsKey(condition)) 
+            if (!triggerMap.ContainsKey(condition))
                 triggerMap.Add(condition, new List<ServerTrigger>());
 
             triggerMap[condition].Add(trigger);

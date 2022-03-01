@@ -23,7 +23,7 @@ namespace KompasServer.Effects
                 return Task.FromResult(ResolutionInfo.Impossible(NoValidCardTarget));
 
             var potentialTargets = CardTarget.Augments.Where(c => cardRestriction.IsValidCard(c, Context));
-            foreach(var c in potentialTargets) ServerEffect.AddTarget(c);
+            foreach (var c in potentialTargets) ServerEffect.AddTarget(c);
             return Task.FromResult(ResolutionInfo.Next);
         }
     }

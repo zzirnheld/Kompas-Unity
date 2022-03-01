@@ -183,7 +183,7 @@ namespace KompasCore.Cards
 
         //misc
         private CardLocation location;
-        public override CardLocation Location 
+        public override CardLocation Location
         {
             get => location;
             protected set
@@ -196,7 +196,7 @@ namespace KompasCore.Cards
         }
 
         private IGameLocation gameLocation;
-        public IGameLocation GameLocation 
+        public IGameLocation GameLocation
         {
             get => gameLocation;
             set
@@ -300,9 +300,9 @@ namespace KompasCore.Cards
         public virtual void AddAugment(GameCard augment, IStackable stackSrc = null)
         {
             //can't add a null augment
-            if (augment == null) 
+            if (augment == null)
                 throw new NullAugmentException(stackSrc, this, "Can't add a null augment");
-            if (Location != CardLocation.Board) 
+            if (Location != CardLocation.Board)
                 throw new CardNotHereException(CardLocation.Board, this, $"Can't put an augment on a card not in {Location}!");
 
             Debug.Log($"Attaching {augment.CardName} from {augment.Location} to {CardName} in {Location}");
@@ -459,7 +459,7 @@ namespace KompasCore.Cards
             Discard(stackSrc);
         }
 
-        public virtual void Reveal(IStackable stackSrc = null) 
+        public virtual void Reveal(IStackable stackSrc = null)
         {
             //Reveal should only succeed if the card is not known to the enemy
             if (KnownToEnemy) throw new AlreadyKnownException(this);

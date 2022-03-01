@@ -6,7 +6,7 @@ namespace KompasServer.Effects
     {
         public override Task<ResolutionInfo> Resolve()
         {
-            RemoveTarget(); 
+            RemoveTarget();
             return Task.FromResult(ResolutionInfo.Next);
         }
     }

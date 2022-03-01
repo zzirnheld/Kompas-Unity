@@ -92,13 +92,13 @@ namespace KompasClient.UI
 
         public int FriendlyPips
         {
-            set => friendlyPipsText.text 
+            set => friendlyPipsText.text
                 = $"{value} (+{clientGame.Leyload + (clientGame.FriendlyTurn ? 2 : 1)}) Friendly Pips";
         }
 
         public int EnemyPips
         {
-            set => enemyPipsText.text 
+            set => enemyPipsText.text
                 = $"{value} (+{clientGame.Leyload + (clientGame.FriendlyTurn ? 1 : 2)}) Enemy Pips";
         }
         public int Leyload

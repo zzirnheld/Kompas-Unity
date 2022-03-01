@@ -17,8 +17,8 @@ namespace KompasServer.Effects
         private readonly ActivationContext savedContext;
         private readonly bool removeIfEnd;
 
-        public HangingEffect(ServerGame serverGame, TriggerRestriction triggerRestriction, string endCondition, 
-            string fallOffCondition, TriggerRestriction fallOffRestriction, 
+        public HangingEffect(ServerGame serverGame, TriggerRestriction triggerRestriction, string endCondition,
+            string fallOffCondition, TriggerRestriction fallOffRestriction,
             Effect sourceEff, ActivationContext currentContext, bool removeIfEnd)
         {
             this.serverGame = serverGame != null ? serverGame : throw new System.ArgumentNullException("serverGame", "ServerGame in HangingEffect must not be null");

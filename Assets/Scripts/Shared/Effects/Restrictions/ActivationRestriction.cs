@@ -28,11 +28,11 @@ namespace KompasCore.Effects
         public const string Default = "Default";
         public static readonly string[] DefaultRestrictions = { ControllerActivates, NotNegated, InPlay, NotCurrentlyActivated, FriendlyTurn, NothingHappening };
 
-        public static readonly string[] AtAllRestrictions = 
+        public static readonly string[] AtAllRestrictions =
             { TimesPerTurn, TimesPerRound, FriendlyTurn, EnemyTurn, NotNegated, InPlay, Location, ThisFitsRestriction, NotCurrentlyActivated };
 
         public int maxTimes = 1;
-        public int location = (int) CardLocation.Board;
+        public int location = (int)CardLocation.Board;
         public CardRestriction existsRestriction;
         public CardRestriction thisCardRestriction;
 
@@ -43,7 +43,7 @@ namespace KompasCore.Effects
         {
             Effect = eff;
 
-            if(activationRestrictionArray == null) ActivationRestrictions.Add(Never);
+            if (activationRestrictionArray == null) ActivationRestrictions.Add(Never);
             else
             {
                 ActivationRestrictions.AddRange(activationRestrictionArray);

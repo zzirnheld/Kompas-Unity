@@ -20,7 +20,7 @@ namespace KompasClient.UI
         public void Initialize(IClientStackable stackable)
         {
             var primary = stackable.PrimarySprite;
-            if(primary != null) primaryImage.sprite = primary;
+            if (primary != null) primaryImage.sprite = primary;
             primaryImage.gameObject.SetActive(primary != null);
 
             var secondary = stackable.SecondarySprite;

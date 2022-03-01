@@ -11,7 +11,7 @@ namespace KompasServer.Effects
         {
             if (CardTarget == null) throw new NullCardException(TargetWasNull);
 
-            CardTarget.Reshuffle(CardTarget.Owner, Effect); 
+            CardTarget.Reshuffle(CardTarget.Owner, Effect);
             return Task.FromResult(ResolutionInfo.Next);
         }
     }

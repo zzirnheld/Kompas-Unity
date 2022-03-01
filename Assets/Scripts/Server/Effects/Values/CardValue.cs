@@ -39,14 +39,14 @@ namespace KompasCore.Effects
 
             int intermediateValue = value switch
             {
-                Nimbleness       => card.N,
-                Endurance        => card.E,
-                SummoningCost    => card.S,
-                Wounding         => card.W,
-                CastingCost      => card.C,
-                AugmentCost      => card.A,
+                Nimbleness => card.N,
+                Endurance => card.E,
+                SummoningCost => card.S,
+                Wounding => card.W,
+                CastingCost => card.C,
+                AugmentCost => card.A,
 
-                Cost             => card.Cost,
+                Cost => card.Cost,
                 NumberOfAugments => card.Augments.Count(),
                 DistanceToSource => card.DistanceTo(Source),
                 _ => throw new ArgumentException($"Invalid value string {value}", "value"),
@@ -61,7 +61,7 @@ namespace KompasCore.Effects
             int intermediateValue = num * multiplier / divisor + modifier;
             switch (value)
             {
-                case Nimbleness: 
+                case Nimbleness:
                     card.SetN(intermediateValue, stackSrc: stackSrc);
                     break;
                 case Endurance:

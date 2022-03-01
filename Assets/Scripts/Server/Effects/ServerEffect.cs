@@ -31,8 +31,8 @@ namespace KompasServer.Effects
         public ServerSubeffect OnImpossible = null;
         public bool CanDeclineTarget = false;
 
-        public override bool Negated 
-        { 
+        public override bool Negated
+        {
             get => base.Negated;
             set
             {
@@ -139,7 +139,7 @@ namespace KompasServer.Effects
             if (context.Spaces != null) spaceTargets.AddRange(context.Spaces);
 
             spaceTargets.Clear();
-            
+
             playerTargets.Clear();
             playerTargets.Add(Controller);
 
@@ -195,7 +195,8 @@ namespace KompasServer.Effects
 
         public async Task<ResolutionInfo> ResolveSubeffect(int index)
         {
-            if (index >= subeffects.Length) {
+            if (index >= subeffects.Length)
+            {
                 return ResolutionInfo.Impossible("Subeffect index out of bounds.");
             }
             //Debug.Log($"Resolving subeffect of type {subeffects[index].GetType()}");

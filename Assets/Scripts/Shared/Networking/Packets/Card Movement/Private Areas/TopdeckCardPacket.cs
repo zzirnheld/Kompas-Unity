@@ -34,7 +34,7 @@ namespace KompasClient.Networking
         {
             var controller = clientGame.ClientPlayers[controllerIndex];
             var card = clientGame.GetCardWithID(cardId);
-            if(card != null) card.Topdeck(controller);
+            if (card != null) card.Topdeck(controller);
         }
     }
 }

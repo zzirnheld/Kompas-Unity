@@ -20,9 +20,9 @@ namespace KompasCore.UI
 
         private void Awake()
         {
-            for(int i = 0; i < 7; i++)
+            for (int i = 0; i < 7; i++)
             {
-                for(int j = 0; j < 7; j++)
+                for (int j = 0; j < 7; j++)
                 {
                     GameObject cue = Instantiate(spaceCueControllerPrefab, transform);
                     cue.transform.localPosition = GridIndicesToCuePos(i, j);
@@ -37,9 +37,9 @@ namespace KompasCore.UI
 
             currShowingFor = card;
 
-            for(int i = 0; i < 7; i++)
+            for (int i = 0; i < 7; i++)
             {
-                for(int j = 0; j < 7; j++)
+                for (int j = 0; j < 7; j++)
                 {
                     var cue = spaceCueControllers[i, j];
 
@@ -64,9 +64,9 @@ namespace KompasCore.UI
 
         public void ShowSpaceTargets(Func<(int, int), bool> predicate)
         {
-            for(int x = 0; x < 7; x++)
+            for (int x = 0; x < 7; x++)
             {
-                for(int y = 0; y < 7; y++)
+                for (int y = 0; y < 7; y++)
                 {
                     spaceCueControllers[x, y].ShowCanTarget(predicate((x, y)));
                 }

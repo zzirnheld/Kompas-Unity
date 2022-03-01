@@ -29,9 +29,10 @@ namespace KompasServer.GameCore
             var context = new ActivationContext(mainCardBefore: card, secondaryCardBefore: cause, stackable: stackSrc, player: Owner);
             bool wasKnown = card.KnownToEnemy;
             base.Add(card, stackSrc);
+            ServerNotifier.NotifyDiscard(card, wasKnown);
+            card.ResetCard();
             context.CacheCardInfoAfter();
             EffectsController.TriggerForCondition(Trigger.Discard, context);
-            ServerNotifier.NotifyDiscard(card, wasKnown);
         }
     }
 }
