@@ -21,7 +21,7 @@ namespace KompasDeckbuilder
 
         public virtual void SetInfo(DeckbuildSearchController searchCtrl, SerializableCard card, bool inDeck)
         {
-            SetInfo(card);
+            SetCardInformation(card);
             SetImage(CardName);
             cardSearchController = searchCtrl;
         }

@@ -73,22 +73,15 @@ namespace KompasClient.Cards
             base.Remove(stackSrc);
         }
 
-        public virtual void SetInfo(SerializableCard serializedCard, ClientGame game, ClientPlayer owner, ClientEffect[] effects, int id)
+        public void SetInitialCardInfo(SerializableCard serializedCard, ClientGame game, ClientPlayer owner, ClientEffect[] effects, int id)
         {
-            base.SetInfo(serializedCard, id);
+            base.SetCardInfo(serializedCard, id);
             ClientGame = game;
             ClientController = ClientOwner = owner;
             ClientEffects = effects;
             mouseCtrl.ClientGame = game;
             int i = 0;
             foreach (var eff in effects) eff.SetInfo(this, game, i++, owner);
-        }
-
-        public override void ResetCard()
-        {
-            base.ResetCard();
-
-            if (cardCtrl != null) cardCtrl.ShowForCardType(CardType, ClientCameraController.Main.Zoomed);
         }
 
         public override void SetN(int n, IStackable stackSrc = null, bool notify = true)

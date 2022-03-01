@@ -31,17 +31,17 @@ namespace KompasCore.Cards
             }
         }
 
-        private SerializableCard serializedCard;
+        protected SerializableCard InitialCardValues { get; private set; }
 
         public bool CurrentlyVisible => gameObject.activeSelf;
 
         #region stats
-        public int BaseN => serializedCard.n;
-        public override int BaseE => serializedCard?.e ?? default;
-        public int BaseS => serializedCard.s;
-        public int BaseW => serializedCard.w;
-        public int BaseC => serializedCard.c;
-        public int BaseA => serializedCard.a;
+        public int BaseN => InitialCardValues.n;
+        public override int BaseE => InitialCardValues?.e ?? default;
+        public int BaseS => InitialCardValues.s;
+        public int BaseW => InitialCardValues.w;
+        public int BaseC => InitialCardValues.c;
+        public int BaseA => InitialCardValues.a;
 
         public int Negations { get; private set; } = 0;
         public override bool Negated
@@ -94,24 +94,11 @@ namespace KompasCore.Cards
             }
         }
 
-        public override int IndexInList
-        {
-            get => GameLocation?.IndexOf(this) ?? -1;
-            protected set
-            {
-                throw new NotImplementedException($"Tried to set index in list of actual GameCard {this}");
-            }
-        }
+        public override int IndexInList => GameLocation?.IndexOf(this) ?? -1;
         public bool InHiddenLocation => Game.IsHiddenLocation(Location);
 
         public override IEnumerable<GameCard> AdjacentCards
-        {
-            get => Game?.boardCtrl.CardsAdjacentTo(Position) ?? new List<GameCard>();
-            protected set
-            {
-                throw new NotImplementedException($"Tried to set adjacent cards of actual GameCard {this}");
-            }
-        }
+            => Game?.boardCtrl.CardsAdjacentTo(Position) ?? new List<GameCard>();
 
         public bool AlreadyCopyOnBoard => Game.BoardHasCopyOf(this);
 
@@ -220,12 +207,12 @@ namespace KompasCore.Cards
             return sb.ToString();
         }
 
-        public void SetInfo(SerializableCard serializedCard, int id)
+        protected virtual void SetCardInfo(SerializableCard serializedCard, int id)
         {
-            base.SetInfo(serializedCard); //base is redundant but adds clarity
+            SetCardInformation(serializedCard);
 
-            this.ID = id;
-            this.serializedCard = serializedCard;
+            ID = id;
+            InitialCardValues = serializedCard;
 
             MovementRestriction = serializedCard.MovementRestriction ?? new MovementRestriction();
             MovementRestriction.SetInfo(this);
@@ -240,31 +227,6 @@ namespace KompasCore.Cards
         }
 
         /// <summary>
-        /// Resets any of the card's values that might be different from their originals.
-        /// Should be called when cards move out the discard, or into the hand, deck, or annihilation
-        /// </summary>
-        public virtual void ResetCard()
-        {
-            if (serializedCard == null)
-            {
-                Debug.Log("Tried to reset card whose info was never set! This should only happen at game start");
-                return;
-            }
-
-            // Set info in CardBase
-            base.SetInfo(serializedCard);
-
-            TurnsOnBoard = 0;
-            SetSpacesMoved(0, true);
-            SetAttacksThisTurn(0, true);
-
-            if (Effects != null) foreach (var eff in Effects) eff.Reset();
-            //instead of setting negations or activations to 0, so that it updates the client correctly
-            while (Negated) Negated = false;
-            while (Activated) Activated = false;
-        }
-
-        /// <summary>
         /// Resets anything that needs to be reset for the start of the turn.
         /// </summary>
         public virtual void ResetForTurn(Player turnPlayer)
@@ -274,8 +236,8 @@ namespace KompasCore.Cards
                 eff.ResetForTurn(turnPlayer);
             }
 
-            SetSpacesMoved(0, true);
-            SetAttacksThisTurn(0, true);
+            SetSpacesMoved(0);
+            SetAttacksThisTurn(0);
             if (Location == CardLocation.Board) TurnsOnBoard++;
         }
 
@@ -408,11 +370,11 @@ namespace KompasCore.Cards
         public virtual void SetNegated(bool negated, IStackable stackSrc = null) => Negated = negated;
         public virtual void SetActivated(bool activated, IStackable stackSrc = null) => Activated = activated;
 
-        public virtual void SetSpacesMoved(int spacesMoved, bool fromReset = false)
+        public virtual void SetSpacesMoved(int spacesMoved)
             => SpacesMoved = spacesMoved;
-        public virtual void SetAttacksThisTurn(int attacksThisTurn, bool fromReset = false)
+        public virtual void SetAttacksThisTurn(int attacksThisTurn)
             => this.attacksThisTurn = attacksThisTurn;
-        public virtual void SetTurnsOnBoard(int turnsOnBoard, IStackable stackSrc = null, bool fromReset = false)
+        public virtual void SetTurnsOnBoard(int turnsOnBoard, IStackable stackSrc = null)
             => TurnsOnBoard = turnsOnBoard;
         #endregion statfuncs
 

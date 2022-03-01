@@ -127,17 +127,10 @@ namespace KompasClient.UI
             detailedEffectsCtrlUIObject.SetActive(clientSettings.showAdvancedEffectsSettings);
         }
 
-        public override void Refresh()
-        {
-            base.Refresh();
-            var avatar = clientGame.Players[0]?.Avatar;
-        }
-
         public override bool ShowInfoFor(GameCard card, bool refresh = false)
         {
-            bool reshow = ShownCard != card || refresh;
             bool success = base.ShowInfoFor(card, refresh);
-            if (reshow) cardInfoViewUICtrl.ShowInfoFor(card, refresh);
+            if (success) cardInfoViewUICtrl.ShowInfoFor(card, refresh);
             return success;
         }
 

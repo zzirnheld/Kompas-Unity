@@ -151,7 +151,7 @@ namespace KompasCore.Cards
             AugmentSubtypes = augSubtypes;
         }
 
-        protected void SetInfo(SerializableCard card)
+        protected void SetCardInformation(SerializableCard card)
             => SetInfo((card.n, card.e, card.s, card.w, card.c, card.a),
                        card.subtext, card.spellTypes,
                        card.fast, card.unique,

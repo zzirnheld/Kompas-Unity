@@ -28,7 +28,7 @@ namespace KompasServer.Cards
                 serverController = value;
                 cardCtrl.SetRotation();
                 ServerNotifier.NotifyChangeController(this, ServerController);
-                foreach (var eff in Effects.Where(e => e != null)) eff.Controller = value;
+                foreach (var eff in Effects) eff.Controller = value;
             }
         }
         public override Player Controller
@@ -101,26 +101,41 @@ namespace KompasServer.Cards
             return sb.ToString();
         }
 
-        public virtual void SetInfo(SerializableCard serializedCard, ServerGame game, ServerPlayer owner, ServerEffect[] effects, int id)
+        /// <summary>
+        /// Resets any of the card's values that might be different from their originals.
+        /// Should be called when cards move out the discard, or into the hand, deck, or annihilation
+        /// </summary>
+        public void ResetCard()
         {
-            base.SetInfo(serializedCard, id);
+            if (InitialCardValues == null)
+            {
+                Debug.Log("Tried to reset card whose info was never set! This should only happen at game start");
+                return;
+            }
+
+            SetCardInfo(InitialCardValues, ID);
+
+            SetTurnsOnBoard(0);
+            SetSpacesMoved(0);
+            SetAttacksThisTurn(0);
+
+            if (Effects != null) foreach (var eff in Effects) eff.Reset();
+            //instead of setting negations or activations to 0, so that it updates the client correctly
+            while (Negated) Negated = false;
+            while (Activated) Activated = false;
+        }
+
+        public void SetInitialCardInfo(SerializableCard serializedCard, ServerGame game, ServerPlayer owner, ServerEffect[] effects, int id)
+        {
+            SetCardInfo(serializedCard, id);
             ServerEffects = effects;
             int i = 0;
             foreach (var eff in effects) eff.SetInfo(this, game, owner, i++);
-            //it's CardBase.SetInfo which resets stats, which sets the properties, which doesn't know whether or not to notify
-            ServerNotifier?.NotifyStats(this);
-            //Debug.Log($"Setting card with effects: {string.Join(", ", effects.Select(e => e.ToString()))}");
             ServerGame = game;
-            ServerController = ServerOwner = owner;
+            ServerOwner = owner;
+            ServerController = owner;
+            ServerNotifier?.NotifyStats(this);
         }
-
-        /*
-        public override void ResetCard()
-        {
-            //notify first so reset values get set to their proper things
-            ServerNotifier.NotifyResetCard(this);
-            base.ResetCard();
-        }*/
 
         public override void Vanish()
         {
@@ -311,17 +326,16 @@ namespace KompasServer.Cards
             base.SetActivated(activated, stackSrc);
         }
 
-        public override void SetSpacesMoved(int spacesMoved, bool fromReset = false)
+        public override void SetSpacesMoved(int spacesMoved)
         {
-            base.SetSpacesMoved(spacesMoved, fromReset);
-            if (ServerController != null && !fromReset) ServerController.ServerNotifier.NotifySpacesMoved(this);
+            if (SpacesMoved != spacesMoved) ServerNotifier?.NotifySpacesMoved(this);
+            base.SetSpacesMoved(spacesMoved);
         }
 
-        public override void SetAttacksThisTurn(int attacksThisTurn, bool fromReset = false)
+        public override void SetAttacksThisTurn(int attacksThisTurn)
         {
-            base.SetAttacksThisTurn(attacksThisTurn, fromReset);
-            if (ServerController != null && !fromReset) ServerController.ServerNotifier.NotifyAttacksThisTurn(this);
-            // Debug.Log($"Setting attacks this turn for {CardName} to {attacksThisTurn}");
+            if (AttacksThisTurn != attacksThisTurn) ServerNotifier?.NotifyAttacksThisTurn(this);
+            base.SetAttacksThisTurn(attacksThisTurn);
         }
         #endregion stats
     }

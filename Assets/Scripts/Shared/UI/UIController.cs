@@ -42,8 +42,6 @@ namespace KompasCore.UI
         //selection variables
         public GameCard SelectedCard { get; protected set; }
 
-        private GameCard hoveredCard;
-
         public GameCard ShownCard { get; protected set; }
 
         public bool DebugMode { get { return debugToggle.isOn; } }
@@ -85,20 +83,19 @@ namespace KompasCore.UI
         public virtual void SelectCard(GameCard card, Game.TargetMode targetMode, bool fromClick)
         {
             SelectedCard = card;
-            ShowInfoFor(card);
+            ShowInfoFor(card, refresh: true);
         }
 
         public void SelectCard(GameCard card, bool fromClick)
         {
-            if (card == null) SelectCard(null, Game.TargetMode.Free, fromClick);
-            else SelectCard(card, card.Game.targetMode, fromClick);
+            var targetMode = card == null ? Game.TargetMode.Free : card.Game.targetMode;
+            SelectCard(card, targetMode, fromClick);
         }
 
-        public void HoverOver(GameCard card)
-        {
-            hoveredCard = card;
-            if (card != null) ShowInfoFor(card);
-            else ShowInfoFor(SelectedCard);
-        }
+        /// <summary>
+        /// Shows information for the <paramref name="card"/>, as you hover over it.
+        /// If the <paramref name="card"/> is null, shows information for the currently selected card, if any.
+        /// </summary>
+        public void HoverOver(GameCard card) => ShowInfoFor(card ?? SelectedCard);
     }
 }
