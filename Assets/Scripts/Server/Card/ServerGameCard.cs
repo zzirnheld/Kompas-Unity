@@ -147,9 +147,9 @@ namespace KompasServer.Cards
         public override void AddAugment(GameCard augment, IStackable stackSrc = null)
         {
             var attachedContext = new ActivationContext(mainCardBefore: augment, secondaryCardBefore: this,
-                space: Position, stackable: stackSrc, player: Controller);
+                space: Position, stackable: stackSrc, player: stackSrc?.Controller ?? Controller);
             var augmentedContext = new ActivationContext(mainCardBefore: this, secondaryCardBefore: augment,
-                space: Position, stackable: stackSrc, player: Controller);
+                space: Position, stackable: stackSrc, player: stackSrc?.Controller ?? Controller);
             bool wasKnown = augment.KnownToEnemy;
             base.AddAugment(augment, stackSrc);
             attachedContext.CacheCardInfoAfter();
