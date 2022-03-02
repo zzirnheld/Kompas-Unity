@@ -333,14 +333,16 @@ namespace KompasServer.Cards
 
         public override void SetSpacesMoved(int spacesMoved)
         {
-            if (SpacesMoved != spacesMoved) ServerNotifier?.NotifySpacesMoved(this);
+            bool changed = SpacesMoved != spacesMoved;
             base.SetSpacesMoved(spacesMoved);
+            if (changed) ServerNotifier?.NotifySpacesMoved(this);
         }
 
         public override void SetAttacksThisTurn(int attacksThisTurn)
         {
-            if (AttacksThisTurn != attacksThisTurn) ServerNotifier?.NotifyAttacksThisTurn(this);
+            bool changed = AttacksThisTurn != attacksThisTurn;
             base.SetAttacksThisTurn(attacksThisTurn);
+            if (changed) ServerNotifier?.NotifyAttacksThisTurn(this);
         }
         #endregion stats
     }
