@@ -1,7 +1,7 @@
 {
 	"cardType": 65,
 	"cardName": "Sportyball",
-	"effText": "Pass Back.\nThe first two times each turn a character arrives adjacent to me, attach me to them.",
+	"effText": "Pass Back. Recoverable.\nThe first two times each turn a character arrives adjacent to me, attach me to them.",
 	"effects": [
 		{
 			"triggerData": {
@@ -43,7 +43,8 @@
 		}
 	],
 	"keywords": [
-		"Pass Back"
+		"Pass Back",
+		"Recoverable"
 	],
 	"PlayRestriction": {
 		"normalRestrictions": [
