@@ -1,7 +1,7 @@
 {
 	"cardType": 65,
 	"cardName": "Paranoid Memory",
-	"effText": "When this character is summoned, give them +1 E.\nWhen this character defends, echo them. Echo them. Echo them.",
+	"effText": "When this character is summoned, give them +1 E.\nWhen this avatn't character defends, echo them. Echo them. Echo them.",
 	"effects": [
 		{
 			"blurb": "Paranoid curling-up",
@@ -52,12 +52,19 @@
 	],
 	"PlayRestriction": {
 		"normalRestrictions": [
-			"Augment Normal Restrictions"
+			"Augment Normal Restrictions",
+			"On Card that Fits Restriction"
 		],
 		"effectRestrictions": [
-			"Augment Effect Restrictions"
-		]
+			"Augment Effect Restrictions",
+			"On Card that Fits Restriction"
+		],
+		"onCardRestriction": {
+			"cardRestrictions": [
+				"Summoned"
+			]
+		}
 	},
 	"a": 3,
-	"subtypeText": "Memory"
+	"subtypeText": "Sword: Summoned"
 }

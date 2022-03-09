@@ -9,8 +9,17 @@
 				"triggerCondition": "Augment Attached",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card is Main Card"
-					]
+						"This Card is Main Card",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Golem"
+						]
+					}
 				}
 			},
 			"subeffects": [
@@ -34,8 +43,17 @@
 				"triggerCondition": "Discard",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"Augmented Card is Main Card"
-					]
+						"Augmented Card is Main Card",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Golem"
+						]
+					}
 				}
 			},
 			"subeffects": [
@@ -119,5 +137,8 @@
 		]
 	},
 	"a": 3,
-	"subtypeText": "Golem Core"
+	"subtypeText": "Golem Core",
+	"augSubtypes": [
+		"Golem"
+	]
 }
