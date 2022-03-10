@@ -1,7 +1,7 @@
 {
 	"cardType": 65,
 	"cardName": "Thuan Thien",
-	"effText": "The first time each round this character fights, set X to their W, then give them +X W.",
+	"effText": "The first time each round this W X character fights, give them +X W.",
 	"effects": [
 		{
 			"triggerData": {
