@@ -114,7 +114,7 @@ namespace KompasCore.Effects
 
             OnCharacter => Card.Game.boardCtrl.GetCardAt(space)?.CardType == 'C',
             OnCardFittingRestriction => onCardRestriction.IsValidCard(Card.Game.boardCtrl.GetCardAt(space), context),
-            OnAugmentSubtypes => Card.AugmentSubtypes.All(st => Card.Game.boardCtrl.GetCardAt(space)?.AugmentSubtypes.Contains(st) ?? false),
+            OnAugmentSubtypes => Card.AugmentSubtypes?.All(st => Card.Game.boardCtrl.GetCardAt(space)?.AugmentSubtypes.Contains(st) ?? false) ?? true,
             OnCardFloutingRestriction => onCardFloutedRestriction.IsValidCard(Card.Game.boardCtrl.GetCardAt(space), context),
 
             NotNormally => !normal,
