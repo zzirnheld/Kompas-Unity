@@ -21,6 +21,7 @@ namespace KompasCore.Effects
         public const string SameNameAsSource = "Same Name as Source";
         public const string DistinctNameFromTargets = "Distinct Name from Other Targets";
         public const string DistinctNameFromSource = "Distinct Name from Source";
+        public const string Unique = "Unique";
 
         //different
         public const string DifferentFromSource = "Different from Source";
@@ -80,6 +81,7 @@ namespace KompasCore.Effects
         public const string LocationInList = "Multiple Possible Locations";
 
         public const string Hidden = "Hidden";
+        public const string Revealed = "Revealed";
 
         //stats
         public const string CardValueFitsNumberRestriction = "Card Value Fits Number Restriction";
@@ -212,6 +214,7 @@ namespace KompasCore.Effects
                 SameNameAsSource => potentialTarget?.CardName == Source.CardName,
                 DistinctNameFromTargets => Effect.CardTargets.All(card => card.CardName != potentialTarget?.CardName),
                 DistinctNameFromSource => Source.CardName != potentialTarget?.CardName,
+                Unique => potentialTarget?.Unique ?? false,
 
                 //different
                 DifferentFromSource => potentialTarget?.Card != Source,
@@ -271,6 +274,7 @@ namespace KompasCore.Effects
                 Annihilated => potentialTarget?.Location == CardLocation.Annihilation,
                 LocationInList => locations.Contains(potentialTarget?.Location ?? CardLocation.Nowhere),
                 Hidden => !potentialTarget?.KnownToEnemy ?? false,
+                Revealed => potentialTarget?.KnownToEnemy ?? false,
 
                 //stats
                 CardValueFitsNumberRestriction => cardValueNumberRestriction.IsValidNumber(cardValue.GetValueOf(potentialTarget)),
@@ -319,7 +323,7 @@ namespace KompasCore.Effects
 
         /* This exists to debug a card restriction,
          * but should not be usually used because it prints a ton*/
-        public bool IsRestrictionValidDebug(string restriction, GameCardBase potentialTarget, int x, ActivationContext context)
+        private bool IsRestrictionValidDebug(string restriction, GameCardBase potentialTarget, int x, ActivationContext context)
         {
             bool answer = IsRestrictionValid(restriction, potentialTarget, x, context);
             if (!answer) Debug.Log($"{potentialTarget?.CardName} flouts {restriction}");

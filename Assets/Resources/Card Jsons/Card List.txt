@@ -7,6 +7,7 @@ generic/Spellbombsetter
 generic/Lifetide
 generic/Warlock
 generic/Juan Puntsch-Mann
+generic/Price of Fame
 aquatic/Big Tuna
 aquatic/Changing Tides
 aquatic/Fishing
@@ -72,6 +73,7 @@ crazy_Ideas/Something Cannon
 crazy_Ideas/Stupid Idea Generator
 crazy_Ideas/Jacob-John Binglejeimer Schmitzel
 crazy_Ideas/Johnatheremiah
+crazy_Ideas/Ideate
 The Intern
 crazy_Ideas/Timothy
 crazy_Ideas/Wait Hold Up
@@ -257,6 +259,7 @@ reporters/Temp Reporter
 reporters/Weather Reporter
 reporters/Well-Read Reporter
 reporters/Late Reporter
+reporters/May Waycroft
 revenants/Death of a Soul
 revenants/Revenance
 revenants/Revivance
@@ -514,6 +517,7 @@ weather/Blizzard
 weather/Fog
 weather/Brainstorm
 weather/Thundersun
+weather/Drainfog
 weather/Iriaid, Who Rides the Skies
 weather/Emezene, Who Reads the Breeze
 weather/Outaroud, Who Scouts the Clouds
