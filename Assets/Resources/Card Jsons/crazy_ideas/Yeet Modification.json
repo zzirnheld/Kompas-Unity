@@ -17,8 +17,10 @@
 					"blurb": "card to slightly yeet",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Board"
-						]
+							"Board",
+							"Space Restriction Valid With This Target Chosen"
+						],
+						"spaceRestrictionIndex":1
 					}
 				},
 				{

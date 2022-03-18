@@ -46,7 +46,7 @@ namespace KompasClient.Networking
 
                 listRestriction.Initialize(null);
             }
-            catch(System.ArgumentException)
+            catch (System.ArgumentException)
             {
                 Debug.LogError($"Error loading list restriction from json: {listRestrictionJson}");
             }

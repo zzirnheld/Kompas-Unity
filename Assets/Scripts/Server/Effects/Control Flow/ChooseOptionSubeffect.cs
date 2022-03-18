@@ -21,7 +21,7 @@ namespace KompasServer.Effects
         public override async Task<ResolutionInfo> Resolve()
         {
             int choice = -1;
-            while(choice < 0 || choice >= jumpIndices.Length)
+            while (choice < 0 || choice >= jumpIndices.Length)
             {
                 choice = await AskForOptionChoice();
             }

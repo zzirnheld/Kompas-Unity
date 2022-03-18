@@ -91,7 +91,7 @@ namespace KompasClient.GameCore
             CurrSearchData = null; //thank god for garbage collection lol :upside down smiley:
 
             if (clientSearchUICtrl.SearchLength == 0) clientSearchUICtrl.HideSearch();
-            else if(searchStack.Count > 0) StartSearch(searchStack.Pop());
+            else if (searchStack.Count > 0) StartSearch(searchStack.Pop());
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace KompasClient.GameCore
         /// <param name="nextTarget"></param>
         private void AddTarget(GameCard nextTarget)
         {
-            if(CurrSearchData == null)
+            if (CurrSearchData == null)
             {
                 Debug.LogError($"Called target card on {nextTarget.CardName} while there's no list of potential targets");
                 return;

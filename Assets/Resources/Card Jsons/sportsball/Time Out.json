@@ -38,7 +38,7 @@
 				{
 					"$type":"KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
 					"targetIndex":-1,
-					"attachmentTarget":0
+					"targetToAttachTo":0
 				},
 				{
 					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",

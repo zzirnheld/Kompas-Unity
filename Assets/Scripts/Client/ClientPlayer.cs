@@ -15,13 +15,13 @@ namespace KompasClient.GameCore
         public override Player Enemy => ClientEnemy;
         public override bool Friendly => index == 0;
 
-        public override int Pips 
-        { 
+        public override int Pips
+        {
             get => base.Pips;
             set
             {
                 base.Pips = value;
-                if (index == 0) clientGame.clientUICtrl.FriendlyPips = Pips; 
+                if (index == 0) clientGame.clientUICtrl.FriendlyPips = Pips;
                 else clientGame.clientUICtrl.EnemyPips = Pips;
                 pipsUICtrl.Pips = value;
             }

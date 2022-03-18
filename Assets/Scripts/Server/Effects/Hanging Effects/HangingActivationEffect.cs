@@ -9,8 +9,8 @@ namespace KompasServer.Effects
         private readonly GameCard target;
         private readonly ServerSubeffect source;
 
-        public HangingActivationEffect(ServerGame serverGame, TriggerRestriction triggerRestriction, string endCondition, 
-            string fallOffCondition, TriggerRestriction fallOffRestriction, 
+        public HangingActivationEffect(ServerGame serverGame, TriggerRestriction triggerRestriction, string endCondition,
+            string fallOffCondition, TriggerRestriction fallOffRestriction,
             Effect sourceEff, ActivationContext currentContext, GameCard target, ServerSubeffect source)
             : base(serverGame, triggerRestriction, endCondition, fallOffCondition, fallOffRestriction, sourceEff, currentContext, removeIfEnd: true)
         {

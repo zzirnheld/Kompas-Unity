@@ -64,7 +64,7 @@ namespace KompasCore.Cards
         public Image cardImageImage;
         //public Image zoomMaskImage;
 
-        public int N 
+        public int N
         {
             set
             {
@@ -128,7 +128,7 @@ namespace KompasCore.Cards
             aoeController.Hide();
 
             //is the card augmenting something?
-            if(card.Attached)
+            if (card.Attached)
             {
                 gameObject.SetActive(true);
                 card.AugmentedCard.cardCtrl.SpreadOutAugs();
@@ -188,7 +188,7 @@ namespace KompasCore.Cards
             var augCount = card.Augments.Count();
             float scale = 0.4f; // / ((float)((augCount + 3) / 4));
             int i = 0;
-            foreach(var aug in card.Augments)
+            foreach (var aug in card.Augments)
             {
                 aug.transform.parent = card.transform;
                 aug.transform.localScale = new Vector3(scale, scale, scale);
@@ -203,6 +203,7 @@ namespace KompasCore.Cards
                 };
                 aug.transform.localPosition = new Vector3(x, 0.2f * ((i / 4) + 1), z);
                 i++;
+                aug.cardCtrl.SetRotation();
             }
         }
 

@@ -37,7 +37,7 @@ namespace KompasClient.UI
 
         public void OnClick()
         {
-            if(Index == -1) Index = triggerOrderUI.CurrIndex++;
+            if (Index == -1) Index = triggerOrderUI.CurrIndex++;
             else
             {
                 Index = -1;

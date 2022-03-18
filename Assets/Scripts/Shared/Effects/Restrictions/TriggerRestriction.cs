@@ -1,6 +1,7 @@
 ﻿using KompasCore.Cards;
 using KompasCore.GameCore;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -24,6 +25,7 @@ namespace KompasCore.Effects
         private const string ThisCardFitsRestriction = "This Card Fits Restriction Now";
 
         private const string StackableSourceFitsRestriction = "Stackable Source Fits Restriction Now";
+        private const string MainCardIsStackableSource = "Main Card is Stackable Source";
 
         private const string MainCardFitsRestrictionBefore = "Main Card Fits Restriction Before";
         private const string MainCardsAugmentedCardBeforeFitsRestriction = "Main Card's Augmented Card Before Fits Restriction";
@@ -61,7 +63,7 @@ namespace KompasCore.Effects
         private const string MaxPerStack = "Max Per Stack";
         #endregion trigger conditions
 
-        private static readonly string[] ReevalationRestrictions = { MaxPerTurn, MaxPerRound, MaxPerStack };
+        private static readonly ISet<string> ReevalationRestrictions = new HashSet<string>(new string[] { MaxPerTurn, MaxPerRound, MaxPerStack });
 
         public static readonly string[] DefaultFallOffRestrictions = { ThisCardIsMainCard, ThisCardInPlay };
 
@@ -129,13 +131,14 @@ namespace KompasCore.Effects
             MainCardsAugmentedCardBeforeFitsRestriction => cardRestriction.IsValidCard(context.mainCardInfoBefore.AugmentedCard, context),
             MainCardIsASecondaryContextCardTarget => secondary?.Targets?.Any(c => c == context.mainCardInfoBefore?.Card) ?? false,
 
+            MainCardIsStackableSource => context.stackable?.Source == context.mainCardInfoBefore.Card,
             StackableSourceFitsRestriction => sourceRestriction.IsValidCard(context.stackable?.Source, context),
             StackableSourceNotThisEffect => context.stackable != SourceEffect,
             ContextsStackablesMatch => context.stackable == secondary?.stackable,
             StackableIsThisEffect => context.stackable == SourceEffect,
             NoStackable => context.stackable == null,
 
-            MainCardAfterFurtherFromSourceThanBefore 
+            MainCardAfterFurtherFromSourceThanBefore
                 => ThisCard.DistanceTo(context.MainCardInfoAfter.Position) > ThisCard.DistanceTo(context.mainCardInfoBefore.Position),
 
             //other non-card triggering things
@@ -163,13 +166,14 @@ namespace KompasCore.Effects
             _ => throw new ArgumentException($"Invalid trigger restriction {restriction}"),
         };
 
-        /*
-        private bool RestrictionValidDebug(string r, ActivationContext ctxt, ActivationContext secondary)
+
+        private bool IsRestrictionValidDebug(string r, ActivationContext ctxt, ActivationContext secondary)
         {
-            var success = RestrictionValid(r, ctxt, secondary);
-            if (!success) Debug.Log($"Trigger for {ThisCard.CardName} invalid at restriction {r} for {ctxt}");
+            var success = IsRestrictionValid(r, ctxt, secondary);
+            //TODO: tie this to a compiler flag/ifdef sort of thing
+            //if (!success) Debug.Log($"Trigger for {ThisCard.CardName} invalid at restriction {r} for {ctxt}");
             return success;
-        }*/
+        }
 
         /// <summary>
         /// Checks whether this trigger restriction is valid for the given context where the trigger occurred.
@@ -184,7 +188,7 @@ namespace KompasCore.Effects
 
             try
             {
-                return triggerRestrictions.All(r => IsRestrictionValid(r, context, secondary: secondary));
+                return triggerRestrictions.All(r => IsRestrictionValidDebug(r, context, secondary: secondary));
             }
             catch (NullReferenceException nullref)
             {
@@ -206,6 +210,6 @@ namespace KompasCore.Effects
         /// </summary>
         /// <returns></returns>
         public bool IsStillValidTriggeringContext(ActivationContext context)
-            => triggerRestrictions.Intersect(ReevalationRestrictions).All(r => IsRestrictionValid(r, context));
+            => ReevalationRestrictions.Intersect(triggerRestrictions).All(r => IsRestrictionValid(r, context));
     }
 }

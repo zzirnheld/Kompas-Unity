@@ -40,7 +40,7 @@ namespace KompasClient.Networking
         public void Execute(ClientGame clientGame)
         {
             var card = clientGame.GetCardWithID(cardId);
-            if(card != null) card.Discard();
+            if (card != null) card.Discard();
         }
     }
 }

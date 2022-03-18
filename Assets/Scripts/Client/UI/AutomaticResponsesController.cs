@@ -8,7 +8,7 @@ namespace KompasClient.UI
 
         public void Show()
         {
-            foreach(var o in autoResponses) o.SetActive(true);
+            foreach (var o in autoResponses) o.SetActive(true);
         }
 
         public void Hide()

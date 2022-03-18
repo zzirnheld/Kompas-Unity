@@ -25,6 +25,7 @@ namespace KompasCore.Cards
         public virtual void OnMouseDrag()
         {
             if (EventSystem.current.IsPointerOverGameObject()) return;
+
             //don't allow dragging cards if we're awaiting a target
             if (Game.targetMode != Game.TargetMode.Free) return;
 
@@ -35,10 +36,13 @@ namespace KompasCore.Cards
         public virtual void OnMouseExit()
         {
             if (EventSystem.current.IsPointerOverGameObject()) return;
-            //don't allow dragging cards if we're awaiting a target
-            if (Game.targetMode != Game.TargetMode.Free) return;
 
             bool mouseDown = Input.GetMouseButton(0);
+            //If the mouse isn't held down rn, then we want to stop showing whatever we're currently showing.
+            if (!mouseDown && !dragging) Game.uiCtrl.HoverOver(null);
+
+            //don't allow dragging cards if we're awaiting a target
+            if (Game.targetMode != Game.TargetMode.Free) return;
             if (dragging)
             {
                 if (mouseDown) GoToMouse();

@@ -31,55 +31,17 @@ namespace KompasCore.Cards
             }
         }
 
-        private SerializableCard serializedCard;
+        protected SerializableCard InitialCardValues { get; private set; }
 
         public bool CurrentlyVisible => gameObject.activeSelf;
 
         #region stats
-        public int BaseN => serializedCard.n;
-        public override int BaseE
-        {
-            get => serializedCard.e;
-            protected set
-            {
-                throw new NotImplementedException($"Tried to set base e of actual GameCard {this}");
-            }
-        }
-        public int BaseS => serializedCard.s;
-        public int BaseW => serializedCard.w;
-        public int BaseC => serializedCard.c;
-        public int BaseA => serializedCard.a;
-
-        public override int N
-        {
-            get => base.N;
-            protected set => cardCtrl.N = base.N = value;
-        }
-        public override int E
-        {
-            get => base.E;
-            protected set => cardCtrl.E = base.E = value;
-        }
-        public override int S
-        {
-            get => base.S;
-            protected set => cardCtrl.S = base.S = value;
-        }
-        public override int W
-        {
-            get => base.W;
-            protected set => cardCtrl.W = base.W = value;
-        }
-        public override int C
-        {
-            get => base.C;
-            protected set => cardCtrl.C = base.C = value;
-        }
-        public override int A
-        {
-            get => base.A;
-            protected set => cardCtrl.A = base.A = value;
-        }
+        public int BaseN => InitialCardValues.n;
+        public override int BaseE => InitialCardValues?.e ?? default;
+        public int BaseS => InitialCardValues.s;
+        public int BaseW => InitialCardValues.w;
+        public int BaseC => InitialCardValues.c;
+        public int BaseA => InitialCardValues.a;
 
         public int Negations { get; private set; } = 0;
         public override bool Negated
@@ -132,24 +94,11 @@ namespace KompasCore.Cards
             }
         }
 
-        public override int IndexInList
-        {
-            get => GameLocation?.IndexOf(this) ?? -1;
-            protected set
-            {
-                throw new NotImplementedException($"Tried to set index in list of actual GameCard {this}");
-            }
-        }
+        public override int IndexInList => GameLocation?.IndexOf(this) ?? -1;
         public bool InHiddenLocation => Game.IsHiddenLocation(Location);
 
         public override IEnumerable<GameCard> AdjacentCards
-        {
-            get => Game.boardCtrl.CardsAdjacentTo(Position);
-            protected set
-            {
-                throw new NotImplementedException($"Tried to set adjacent cards of actual GameCard {this}");
-            }
-        }
+            => Game?.boardCtrl.CardsAdjacentTo(Position) ?? new List<GameCard>();
 
         public bool AlreadyCopyOnBoard => Game.BoardHasCopyOf(this);
 
@@ -177,8 +126,8 @@ namespace KompasCore.Cards
                 augmentedCard = value;
                 if (augmentedCard != null)
                 {
+                    GameLocation = augmentedCard.GameLocation;
                     Position = augmentedCard.Position;
-                    Location = augmentedCard.Location;
                 }
             }
         }
@@ -221,7 +170,7 @@ namespace KompasCore.Cards
 
         //misc
         private CardLocation location;
-        public override CardLocation Location 
+        public override CardLocation Location
         {
             get => location;
             protected set
@@ -234,7 +183,7 @@ namespace KompasCore.Cards
         }
 
         private IGameLocation gameLocation;
-        public IGameLocation GameLocation 
+        public IGameLocation GameLocation
         {
             get => gameLocation;
             set
@@ -258,12 +207,12 @@ namespace KompasCore.Cards
             return sb.ToString();
         }
 
-        public void SetInfo(SerializableCard serializedCard, int id)
+        protected virtual void SetCardInfo(SerializableCard serializedCard, int id)
         {
-            base.SetInfo(serializedCard); //base is redundant but adds clarity
+            SetCardInformation(serializedCard);
 
-            this.ID = id;
-            this.serializedCard = serializedCard;
+            ID = id;
+            InitialCardValues = serializedCard;
 
             MovementRestriction = serializedCard.MovementRestriction ?? new MovementRestriction();
             MovementRestriction.SetInfo(this);
@@ -278,31 +227,6 @@ namespace KompasCore.Cards
         }
 
         /// <summary>
-        /// Resets any of the card's values that might be different from their originals.
-        /// Should be called when cards move out the discard, or into the hand, deck, or annihilation
-        /// </summary>
-        public virtual void ResetCard()
-        {
-            if (serializedCard == null)
-            {
-                Debug.Log("Tried to reset card whose info was never set! This should only happen at game start");
-                return;
-            }
-
-            // Set info in CardBase
-            base.SetInfo(serializedCard);
-
-            TurnsOnBoard = 0;
-            SetSpacesMoved(0, true);
-            SetAttacksThisTurn(0, true);
-
-            if (Effects != null) foreach (var eff in Effects) eff.Reset();
-            //instead of setting negations or activations to 0, so that it updates the client correctly
-            while (Negated) Negated = false;
-            while (Activated) Activated = false;
-        }
-
-        /// <summary>
         /// Resets anything that needs to be reset for the start of the turn.
         /// </summary>
         public virtual void ResetForTurn(Player turnPlayer)
@@ -312,8 +236,8 @@ namespace KompasCore.Cards
                 eff.ResetForTurn(turnPlayer);
             }
 
-            SetSpacesMoved(0, true);
-            SetAttacksThisTurn(0, true);
+            SetSpacesMoved(0);
+            SetAttacksThisTurn(0);
             if (Location == CardLocation.Board) TurnsOnBoard++;
         }
 
@@ -338,9 +262,9 @@ namespace KompasCore.Cards
         public virtual void AddAugment(GameCard augment, IStackable stackSrc = null)
         {
             //can't add a null augment
-            if (augment == null) 
+            if (augment == null)
                 throw new NullAugmentException(stackSrc, this, "Can't add a null augment");
-            if (Location != CardLocation.Board) 
+            if (Location != CardLocation.Board)
                 throw new CardNotHereException(CardLocation.Board, this, $"Can't put an augment on a card not in {Location}!");
 
             Debug.Log($"Attaching {augment.CardName} from {augment.Location} to {CardName} in {Location}");
@@ -362,14 +286,42 @@ namespace KompasCore.Cards
         #endregion augments
 
         #region statfuncs
-        /* This must happen through setters, not properties, so that notifications and stack sending
-         * can be managed as intended. */
-        public virtual void SetN(int n, IStackable stackSrc = null, bool notify = true) => N = n;
-        public virtual void SetE(int e, IStackable stackSrc = null, bool notify = true) => E = e;
-        public virtual void SetS(int s, IStackable stackSrc = null, bool notify = true) => S = s;
-        public virtual void SetW(int w, IStackable stackSrc = null, bool notify = true) => W = w;
-        public virtual void SetC(int c, IStackable stackSrc = null, bool notify = true) => C = c;
-        public virtual void SetA(int a, IStackable stackSrc = null, bool notify = true) => A = a;
+        public override void SetN(int n, IStackable stackSrc, bool onlyStatBeingSet = true)
+        {
+            base.SetN(n, stackSrc, onlyStatBeingSet);
+            cardCtrl.N = N;
+        }
+
+        public override void SetE(int e, IStackable stackSrc, bool onlyStatBeingSet = true)
+        {
+            base.SetE(e, stackSrc, onlyStatBeingSet);
+            cardCtrl.E = E;
+        }
+
+        public override void SetS(int s, IStackable stackSrc, bool onlyStatBeingSet = true)
+        {
+            base.SetS(s, stackSrc, onlyStatBeingSet);
+            cardCtrl.S = S;
+        }
+
+        public override void SetW(int w, IStackable stackSrc, bool onlyStatBeingSet = true)
+        {
+            base.SetW(w, stackSrc, onlyStatBeingSet);
+            cardCtrl.W = W;
+        }
+
+        public override void SetC(int c, IStackable stackSrc, bool onlyStatBeingSet = true)
+        {
+            base.SetC(c, stackSrc, onlyStatBeingSet);
+            cardCtrl.C = C;
+        }
+
+        public override void SetA(int a, IStackable stackSrc, bool onlyStatBeingSet = true)
+        {
+            base.SetA(a, stackSrc, onlyStatBeingSet);
+            cardCtrl.A = A;
+        }
+
         /// <summary>
         /// Inflicts the given amount of damage, which can affect both shield and E. Used by attacks and (rarely) by effects.
         /// </summary>
@@ -381,10 +333,10 @@ namespace KompasCore.Cards
         /// </summary>
         public virtual void SetCharStats(int n, int e, int s, int w, IStackable stackSrc = null)
         {
-            SetN(n, stackSrc, notify: false);
-            SetE(e, stackSrc, notify: false);
-            SetS(s, stackSrc, notify: false);
-            SetW(w, stackSrc, notify: false);
+            SetN(n, stackSrc, onlyStatBeingSet: false);
+            SetE(e, stackSrc, onlyStatBeingSet: false);
+            SetS(s, stackSrc, onlyStatBeingSet: false);
+            SetW(w, stackSrc, onlyStatBeingSet: false);
         }
 
         /// <summary>
@@ -393,20 +345,6 @@ namespace KompasCore.Cards
         /// </summary>
         public void AddToCharStats(int n, int e, int s, int w, IStackable stackSrc = null)
             => SetCharStats(N + n, E + e, S + s, W + w, stackSrc: stackSrc);
-
-        /// <summary>
-        /// Shorthand for modifying a card's stats all at once.
-        /// On the server, this only notifies the clients of stat changes once.
-        /// </summary>
-        public virtual void SetStats(CardStats stats, IStackable stackSrc = null)
-        {
-            SetN(stats.n, stackSrc, notify: false);
-            SetE(stats.e, stackSrc, notify: false);
-            SetS(stats.s, stackSrc, notify: false);
-            SetW(stats.w, stackSrc, notify: false);
-            SetC(stats.c, stackSrc, notify: false);
-            SetA(stats.a, stackSrc, notify: false);
-        }
 
         /// <summary>
         /// Shorthand for modifying a card's stats all at once.
@@ -432,11 +370,11 @@ namespace KompasCore.Cards
         public virtual void SetNegated(bool negated, IStackable stackSrc = null) => Negated = negated;
         public virtual void SetActivated(bool activated, IStackable stackSrc = null) => Activated = activated;
 
-        public virtual void SetSpacesMoved(int spacesMoved, bool fromReset = false)
+        public virtual void SetSpacesMoved(int spacesMoved)
             => SpacesMoved = spacesMoved;
-        public virtual void SetAttacksThisTurn(int attacksThisTurn, bool fromReset = false)
+        public virtual void SetAttacksThisTurn(int attacksThisTurn)
             => this.attacksThisTurn = attacksThisTurn;
-        public virtual void SetTurnsOnBoard(int turnsOnBoard, IStackable stackSrc = null, bool fromReset = false)
+        public virtual void SetTurnsOnBoard(int turnsOnBoard, IStackable stackSrc = null)
             => TurnsOnBoard = turnsOnBoard;
         #endregion statfuncs
 
@@ -483,7 +421,7 @@ namespace KompasCore.Cards
             Discard(stackSrc);
         }
 
-        public virtual void Reveal(IStackable stackSrc = null) 
+        public virtual void Reveal(IStackable stackSrc = null)
         {
             //Reveal should only succeed if the card is not known to the enemy
             if (KnownToEnemy) throw new AlreadyKnownException(this);

@@ -93,11 +93,11 @@ namespace KompasServer.Networking
         public void NotifyDecrementHand() => SendPacket(new ChangeEnemyHandCountPacket(-1));
 
         public void NotifyAnnhilate(GameCard toAnnhilate, bool wasKnown)
-            => SendToBothInverting(new AnnihilateCardPacket(toAnnhilate.ID, toAnnhilate.BaseJson, toAnnhilate.ControllerIndex, invert: Player.index != 0), 
+            => SendToBothInverting(new AnnihilateCardPacket(toAnnhilate.ID, toAnnhilate.BaseJson, toAnnhilate.ControllerIndex, invert: Player.index != 0),
                 known: wasKnown);
 
         public void NotifyTopdeck(GameCard card, bool wasKnown)
-            => SendToBothInverting(new TopdeckCardPacket(card.ID, card.OwnerIndex, invert: Player.index != 0), 
+            => SendToBothInverting(new TopdeckCardPacket(card.ID, card.OwnerIndex, invert: Player.index != 0),
                 known: wasKnown);
 
         public void NotifyBottomdeck(GameCard card, bool wasKnown)
@@ -133,7 +133,7 @@ namespace KompasServer.Networking
         public void NotifySpacesMoved(GameCard card)
             => SendToBothInverting(new SpacesMovedPacket(card.ID, card.SpacesMoved), card.KnownToEnemy);
 
-        public void NotifyAttacksThisTurn(GameCard card) 
+        public void NotifyAttacksThisTurn(GameCard card)
             => SendToBothInverting(new AttacksThisTurnPacket(card.ID, card.AttacksThisTurn), card.KnownToEnemy);
 
         public void NotifySetNegated(GameCard card, bool negated)
@@ -141,9 +141,6 @@ namespace KompasServer.Networking
 
         public void NotifyActivate(GameCard card, bool activated)
             => SendToBothInverting(new ActivateCardPacket(card.ID, activated), card.KnownToEnemy);
-
-        public void NotifyResetCard(GameCard card)
-            => SendToBothInverting(new ResetCardPacket(card.ID), card.KnownToEnemy);
 
         public void NotifyChangeController(GameCard card, Player controller)
             => SendToBothInverting(new ChangeCardControllerPacket(card.ID, controller.index, invert: Player.index != 0), card.KnownToEnemy);
@@ -157,17 +154,17 @@ namespace KompasServer.Networking
             => SendPacket(new GetSpaceTargetPacket(cardName, targetBlurb, spaces, recommendedSpaces));
         #endregion request targets
 
-        public void NotifyAttackStarted(GameCard atk, GameCard def, Player initiator) 
+        public void NotifyAttackStarted(GameCard atk, GameCard def, Player initiator)
             => SendToBoth(new AttackStartedPacket(atk.ID, def.ID, initiator.index));
 
         #region other effect stuff
-        public void ChooseEffectOption(string cardName, string choiceBlurb, string[] optionBlurbs, bool hasDefault, bool showX, int x) 
+        public void ChooseEffectOption(string cardName, string choiceBlurb, string[] optionBlurbs, bool hasDefault, bool showX, int x)
             => SendPacket(new GetEffectOptionPacket(cardName, choiceBlurb, optionBlurbs, hasDefault, showX, x));
 
         public void EffectResolving(ServerEffect eff)
             => SendToBothInverting(new EffectResolvingPacket(eff.Source.ID, eff.EffectIndex, eff.Controller.index, invert: Player.index != 0));
 
-        public void NotifyEffectActivated(ServerEffect eff) 
+        public void NotifyEffectActivated(ServerEffect eff)
             => SendToBoth(new EffectActivatedPacket(eff.Source.ID, eff.EffectIndex));
 
         public void RemoveStackEntry(int i) => SendToBoth(new RemoveStackEntryPacket(i));
@@ -175,7 +172,7 @@ namespace KompasServer.Networking
         public void EffectImpossible() => SendToBoth(new EffectImpossiblePacket());
 
         public void RequestResponse() => SendPacket(new ToggleAllowResponsesPacket(true));
-        
+
         public void RequestNoResponse() => SendPacket(new ToggleAllowResponsesPacket(false));
 
         /// <summary>
@@ -205,7 +202,7 @@ namespace KompasServer.Networking
 
         public void DiscardSimples() => SendToBoth(new DiscardSimplesPacket());
 
-        public void AskForTrigger(ServerTrigger t, int x, bool showX) 
+        public void AskForTrigger(ServerTrigger t, int x, bool showX)
             => SendToBothInverting(new OptionalTriggerPacket(t.serverEffect.Source.ID, t.serverEffect.EffectIndex, x, showX));
 
         public void GetTriggerOrder(IEnumerable<ServerTrigger> triggers)

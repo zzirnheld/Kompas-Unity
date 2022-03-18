@@ -24,7 +24,7 @@ namespace KompasCore.Cards
         public int s;
         public int w;
         public int c;
-        public string[] spellTypes;
+        public string[] spellTypes = { };
         public int radius;
         public int duration;
         public int a;

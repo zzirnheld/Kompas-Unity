@@ -29,7 +29,7 @@ namespace KompasClient.UI
         public int SearchLength => Searching ? CurrSearchData.toSearch.Length : 1;
         private int NextSearchIndex
         {
-            get 
+            get
             {
                 //if not holding shift and you're only choosing one item,
                 //or you're holding shift but you're choosing more than one item,
@@ -43,7 +43,7 @@ namespace KompasClient.UI
                             return i;
                     }
                 }
-                
+
                 //fallback
                 return (searchIndex + 1) % SearchLength;
             }
@@ -57,8 +57,8 @@ namespace KompasClient.UI
                 //find the last different card to skip to
                 if (!(Input.GetKey(KeyCode.LeftShift) ^ CurrSearchData.listRestriction.ChooseMultiple))
                 {
-                    for (int i = (searchIndex - 1) + (searchIndex == 0 ? SearchLength : 0); 
-                        i != searchIndex; 
+                    for (int i = (searchIndex - 1) + (searchIndex == 0 ? SearchLength : 0);
+                        i != searchIndex;
                         i = (i - 1) + (i == 0 ? SearchLength : 0))
                     {
                         //if they're not the same, not just not identical references, which is what != checks
@@ -76,7 +76,7 @@ namespace KompasClient.UI
 
         private void Update()
         {
-            if(Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.LeftShift)) ReshowSearchShownIfSearching();
+            if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.LeftShift)) ReshowSearchShownIfSearching();
         }
 
         #region search
@@ -114,7 +114,7 @@ namespace KompasClient.UI
 
         public void HideIfNotShowingCurrSearchIndex()
         {
-            if (!Searching || searchIndex >= SearchLength || cardInfoView.CurrShown != CurrSearchData.toSearch[searchIndex]) 
+            if (!Searching || searchIndex >= SearchLength || cardInfoView.CurrShown != CurrSearchData.toSearch[searchIndex])
                 HideSearch();
         }
 
@@ -154,7 +154,7 @@ namespace KompasClient.UI
 
             endButton.SetActive(CurrSearchData.HaveEnough);
             var progress = CurrSearchData.SearchProgress;
-            if(progress != null) clientUICtrl.UpdateCurrState(numTargetsChosen: progress);
+            if (progress != null) clientUICtrl.UpdateCurrState(numTargetsChosen: progress);
         }
 
         /// <summary>
@@ -163,7 +163,7 @@ namespace KompasClient.UI
         /// </summary>
         public void ReshowSearchShown() => SearchShowIndex(searchIndex);
 
-        public void ReshowSearchShownIfSearching () { if (Searching) ReshowSearchShown(); }
+        public void ReshowSearchShownIfSearching() { if (Searching) ReshowSearchShown(); }
         #endregion
     }
 }

@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Thinktree",
-	"effText": "When I gain E, draw 1 card.",
+	"effText": "The first time each stack I gain E, draw 1 card.",
 	"effects": [
 		{
 			"triggerData": {
@@ -9,6 +9,7 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
+						"Max Per Stack",
 						"X Fits Restriction",
 						"This Card is Main Card"
 					],

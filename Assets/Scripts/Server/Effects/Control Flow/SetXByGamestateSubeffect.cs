@@ -39,21 +39,21 @@ namespace KompasServer.Effects
             {
                 return whatToCount switch
                 {
-                    HandSize                => PlayerTarget.handCtrl.HandSize,
-                    HandSizeLimit           => PlayerTarget.HandSizeLimit,
+                    HandSize => PlayerTarget.handCtrl.HandSize,
+                    HandSizeLimit => PlayerTarget.HandSizeLimit,
                     DistanceToCoordsThrough => Game.boardCtrl.ShortestPath(Source, SpaceTarget, throughRestriction, Context),
                     DistanceBetweenTargetAndCoords => CardTarget.DistanceTo(SpaceTarget),
-                    DistanceFromSourceToTarget     => Source.DistanceTo(CardTarget),
+                    DistanceFromSourceToTarget => Source.DistanceTo(CardTarget),
 
-                    CardsFittingRestriction 
+                    CardsFittingRestriction
                         => Game.Cards.Where(c => cardRestriction.IsValidCard(c, Context)).Count(),
-                    TotalCardValueOfCardsFittingRestriction 
+                    TotalCardValueOfCardsFittingRestriction
                         => Game.Cards.Where(c => cardRestriction.IsValidCard(c, Context)).Sum(cardValue.GetValueOf),
-                    MaxCardValueOfCardsFittingRestriction 
+                    MaxCardValueOfCardsFittingRestriction
                         => Game.Cards.Where(c => cardRestriction.IsValidCard(c, Context)).Max(cardValue.GetValueOf),
 
-                    EffectUsesThisTurn  => Effect.TimesUsedThisTurn,
-                    NumberOfTargets     => Effect.CardTargets.Count(),
+                    EffectUsesThisTurn => Effect.TimesUsedThisTurn,
+                    NumberOfTargets => Effect.CardTargets.Count(),
 
                     _ => throw new System.ArgumentException($"Invalid 'what to count' string {whatToCount} in x by gamestate value subeffect"),
                 };

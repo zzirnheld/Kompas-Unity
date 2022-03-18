@@ -34,7 +34,7 @@ public struct CardStats
         => (m * stats.n, m * stats.e, m * stats.s, m * stats.w, m * stats.c, m * stats.a);
 
     public static CardStats operator /(CardStats dividend, CardStats divisor)
-        => (dividend.n / divisor.n, dividend.e / divisor.e, dividend.s / divisor.s, dividend.w / divisor.w, 
+        => (dividend.n / divisor.n, dividend.e / divisor.e, dividend.s / divisor.s, dividend.w / divisor.w,
             dividend.c / divisor.c, dividend.a / divisor.a);
 
     public static CardStats operator *(CardStats stats, int m) => m * stats;

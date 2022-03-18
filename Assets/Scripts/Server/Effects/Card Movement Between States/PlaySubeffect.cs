@@ -1,5 +1,6 @@
 ﻿using KompasCore.Exceptions;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace KompasServer.Effects
 {
@@ -11,7 +12,8 @@ namespace KompasServer.Effects
         {
             if (CardTarget == null) throw new NullCardException(TargetWasNull);
 
-            CardTarget.Play(SpaceTarget, PlayerTarget, Effect);
+            Debug.Log($"Stack source is {Effect}");
+            CardTarget.Play(SpaceTarget, PlayerTarget, stackSrc: Effect);
             return Task.FromResult(ResolutionInfo.Next);
         }
     }

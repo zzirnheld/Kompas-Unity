@@ -6,6 +6,7 @@
         {
             "triggerData":
             {
+				"orderPriority": 5,
                 "triggerCondition":"Play",
                 "triggerRestriction":{
                     "triggerRestrictions":["This Card in Play",

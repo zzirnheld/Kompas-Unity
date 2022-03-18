@@ -13,9 +13,9 @@ namespace KompasServer.GameCore
             var context = new ActivationContext(mainCardBefore: card, stackable: stackSrc, player: stackSrc?.Controller);
             bool wasKnown = card.KnownToEnemy;
             base.Annihilate(card, stackSrc);
+            ServerGame.ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyAnnhilate(card, wasKnown);
             context.CacheCardInfoAfter();
             ServerGame.EffectsController.TriggerForCondition(Trigger.Annhilate, context);
-            ServerGame.ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyAnnhilate(card, wasKnown);
         }
     }
 }

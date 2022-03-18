@@ -32,7 +32,7 @@ namespace KompasDeckbuilder
         public TMP_Text EffectText;
 
         private Sprite CardBack;
-        private readonly List<ReminderTextClientUIController> reminderCtrls 
+        private readonly List<ReminderTextClientUIController> reminderCtrls
             = new List<ReminderTextClientUIController>();
         public Transform remindersParent;
         public GameObject reminderPrefab;

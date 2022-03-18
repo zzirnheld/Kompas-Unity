@@ -9,11 +9,11 @@ namespace KompasCore.Cards
     {
         public abstract GameCard Card { get; protected set; }
         public abstract CardLocation Location { get; protected set; }
-        public abstract int IndexInList { get; protected set; }
+        public abstract int IndexInList { get; }
         public abstract Player Controller { get; set; }
         public abstract Player Owner { get; protected set; }
         public abstract bool Summoned { get; protected set; }
-        public abstract bool IsAvatar { get; protected set; }
+        public abstract bool IsAvatar { get; }
         public abstract GameCard AugmentedCard { get; protected set; }
         public abstract IEnumerable<GameCard> Augments { get; protected set; }
         /// <summary>
@@ -23,13 +23,13 @@ namespace KompasCore.Cards
         public abstract bool KnownToEnemy { get; set; }
 
         public abstract PlayRestriction PlayRestriction { get; protected set; }
-        public abstract int BaseE { get; protected set; }
+        public abstract int BaseE { get; }
 
         public abstract bool Activated { get; protected set; }
         public abstract bool Negated { get; protected set; }
         public abstract int SpacesMoved { get; protected set; }
         public abstract int SpacesCanMove { get; protected set; }
-        public abstract IEnumerable<GameCard> AdjacentCards { get; protected set; }
+        public abstract IEnumerable<GameCard> AdjacentCards { get; }
 
         public abstract Space Position { get; set; }
 
@@ -169,25 +169,31 @@ namespace KompasCore.Cards
         public override GameCard Card { get; protected set; }
 
         public override CardLocation Location { get; protected set; }
-        public override int IndexInList { get; protected set; }
         public override Player Controller { get; set; }
         public override Player Owner { get; protected set; }
         public override bool Summoned { get; protected set; }
-        public override bool IsAvatar { get; protected set; }
+        private bool isAvatar;
+        public override bool IsAvatar => isAvatar;
         public override GameCard AugmentedCard { get; protected set; }
         public override IEnumerable<GameCard> Augments { get; protected set; }
         public override bool KnownToEnemy { get; set; }
 
         public override PlayRestriction PlayRestriction { get; protected set; }
-        public override int BaseE { get; protected set; }
 
         public override bool Activated { get; protected set; }
         public override bool Negated { get; protected set; }
         public override int SpacesMoved { get; protected set; }
         public override int SpacesCanMove { get; protected set; }
-        public override IEnumerable<GameCard> AdjacentCards { get; protected set; }
-
         public override Space Position { get; set; }
+
+        private int indexInList;
+        public override int IndexInList => indexInList;
+
+        private int baseE;
+        public override int BaseE { get => baseE; }
+
+        private IEnumerable<GameCard> adjacentCards;
+        public override IEnumerable<GameCard> AdjacentCards => adjacentCards;
 
         /// <summary>
         /// Snapshots the information of a card.
@@ -216,21 +222,21 @@ namespace KompasCore.Cards
                         card.AugmentSubtypes);
             Card = card;
             Location = card.Location;
-            IndexInList = card.IndexInList;
+            indexInList = card.IndexInList;
             Controller = card.Controller;
             Owner = card.Owner;
             Summoned = card.Summoned;
-            IsAvatar = card.IsAvatar;
+            isAvatar = card.IsAvatar;
             AugmentedCard = card.AugmentedCard;
             Augments = card.Augments.ToArray();
             KnownToEnemy = card.KnownToEnemy;
             PlayRestriction = card.PlayRestriction;
-            BaseE = card.BaseE;
+            baseE = card.BaseE;
             Activated = card.Activated;
             Negated = card.Negated;
             SpacesMoved = card.SpacesMoved;
             SpacesCanMove = card.SpacesCanMove;
-            AdjacentCards = card.AdjacentCards.ToArray();
+            adjacentCards = card.AdjacentCards.ToArray();
             Position = card.Position?.Copy;
         }
 

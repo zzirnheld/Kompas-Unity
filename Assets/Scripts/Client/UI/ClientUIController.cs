@@ -82,6 +82,9 @@ namespace KompasClient.UI
         //card view ui
         public CardInfoViewClientUIController cardInfoViewUICtrl;
 
+        //top right detailed effects control ui
+        public GameObject detailedEffectsCtrlUIObject;
+
         public GameCard CardToActivateEffectsFor
         {
             set => activatorUICtrl.nextShowFor = value;
@@ -89,13 +92,13 @@ namespace KompasClient.UI
 
         public int FriendlyPips
         {
-            set => friendlyPipsText.text 
+            set => friendlyPipsText.text
                 = $"{value} (+{clientGame.Leyload + (clientGame.FriendlyTurn ? 2 : 1)}) Friendly Pips";
         }
 
         public int EnemyPips
         {
-            set => enemyPipsText.text 
+            set => enemyPipsText.text
                 = $"{value} (+{clientGame.Leyload + (clientGame.FriendlyTurn ? 1 : 2)}) Enemy Pips";
         }
         public int Leyload
@@ -121,19 +124,13 @@ namespace KompasClient.UI
         public void ApplySettings(ClientSettings clientSettings)
         {
             ipInputField.text = clientSettings.defaultIP;
-        }
-
-        public override void Refresh()
-        {
-            base.Refresh();
-            var avatar = clientGame.Players[0]?.Avatar;
+            detailedEffectsCtrlUIObject.SetActive(clientSettings.showAdvancedEffectsSettings);
         }
 
         public override bool ShowInfoFor(GameCard card, bool refresh = false)
         {
-            bool reshow = ShownCard != card || refresh;
             bool success = base.ShowInfoFor(card, refresh);
-            if (reshow) cardInfoViewUICtrl.ShowInfoFor(card, refresh);
+            if (success) cardInfoViewUICtrl.ShowInfoFor(card, refresh);
             return success;
         }
 

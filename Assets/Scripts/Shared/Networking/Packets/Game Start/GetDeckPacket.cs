@@ -3,7 +3,8 @@ using KompasCore.Networking;
 
 namespace KompasCore.Networking
 {
-    public class GetDeckPacket : Packet {
+    public class GetDeckPacket : Packet
+    {
         public GetDeckPacket() : base(GetDeck) { }
 
         public override Packet Copy() => new GetDeckPacket();

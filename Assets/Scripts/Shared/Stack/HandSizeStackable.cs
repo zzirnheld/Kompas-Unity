@@ -28,9 +28,10 @@ namespace KompasCore.Effects
         }
 
         private CardRestriction handSizeCardRestriction;
-        public CardRestriction HandSizeCardRestriction 
+        public CardRestriction HandSizeCardRestriction
         {
-            get {
+            get
+            {
                 if (handSizeCardRestriction == null)
                 {
                     handSizeCardRestriction = new CardRestriction()

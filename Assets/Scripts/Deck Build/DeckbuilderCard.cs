@@ -21,7 +21,7 @@ namespace KompasDeckbuilder
 
         public virtual void SetInfo(DeckbuildSearchController searchCtrl, SerializableCard card, bool inDeck)
         {
-            SetInfo(card);
+            SetCardInformation(card);
             SetImage(CardName);
             cardSearchController = searchCtrl;
         }
@@ -74,7 +74,7 @@ namespace KompasDeckbuilder
                 deckbuildCtrl.RemoveFromDeck(this);
         }
 
-        public void OnPointerDown(PointerEventData eventData) 
+        public void OnPointerDown(PointerEventData eventData)
         {
             if (eventData.button == PointerEventData.InputButton.Left)
                 deckbuildCtrl.CurrentDrag = this;

@@ -62,7 +62,7 @@ namespace KompasClient.Networking
             int[] effIndices = new int[count];
             int[] orders = new int[count];
             int i = 0;
-            foreach(var (t, o) in triggers)
+            foreach (var (t, o) in triggers)
             {
                 cardIds[i] = t.Source.ID;
                 effIndices[i] = t.Effect.EffectIndex;

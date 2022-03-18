@@ -9,8 +9,8 @@
 			"reminder":"During friendly turns, you can use a space of movement and give me -X E to move me through X Ethereal characters."
 		},
 		{
-			"keyword":"Geminii.",
-			"reminder":"You can pip echo me."
+			"keyword":"Vessel.",
+			"reminder":"During your turn, you can destroy a Memory attached to me. Echo me."
 		},
 		{
 			"keyword":"Revenant.",

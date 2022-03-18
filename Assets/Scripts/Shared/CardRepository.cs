@@ -23,14 +23,14 @@ public class CardRepository : MonoBehaviour
     public const string partialKeywordFolderPath = "Keyword Jsons/Partial Keywords/";
     public const string partialKeywordListFilePath = partialKeywordFolderPath + "Keyword List";
 
-    private static readonly JsonSerializerSettings cardLoadingSettings = new JsonSerializerSettings 
+    private static readonly JsonSerializerSettings cardLoadingSettings = new JsonSerializerSettings
     {
         TypeNameHandling = TypeNameHandling.Auto,
         MaxDepth = null,
-        ReferenceLoopHandling = ReferenceLoopHandling.Serialize 
+        ReferenceLoopHandling = ReferenceLoopHandling.Serialize
     };
 
-    private static readonly string[] cardNamesToIgnore = new string[] 
+    private static readonly string[] cardNamesToIgnore = new string[]
     {
         "Square Kompas Logo"
     };
@@ -198,7 +198,7 @@ public class CardRepository : MonoBehaviour
         foreach (var c in cardCtrlComponents) Destroy(c);
 
         var avatar = avatarObj.GetComponents<AvatarServerGameCard>().Where(c => c is AvatarServerGameCard).First();
-        avatar.SetInfo(card, serverGame, owner, effects.ToArray(), id);
+        avatar.SetInitialCardInfo(card, serverGame, owner, effects.ToArray(), id);
         avatar.cardCtrl.SetImage(avatar.CardName, false);
         serverGame.cardsByID.Add(id, avatar);
         return avatar;
@@ -247,7 +247,7 @@ public class CardRepository : MonoBehaviour
         var card = cardObj.GetComponents<ServerGameCard>().Where(c => !(c is AvatarServerGameCard)).First();
         cardObj.GetComponents<CardController>().Where(c => !(c is ClientCardController)).First().card = card;
 
-        card.SetInfo(cardInfo, serverGame, owner, effects.ToArray(), id);
+        card.SetInitialCardInfo(cardInfo, serverGame, owner, effects.ToArray(), id);
         card.cardCtrl.SetImage(card.CardName, false);
         return card;
     }
@@ -296,7 +296,7 @@ public class CardRepository : MonoBehaviour
         var avatar = avatarObj.GetComponents<AvatarClientGameCard>().Where(c => c is AvatarClientGameCard).First();
         avatarObj.GetComponents<CardController>().Where(c => c is ClientCardController).First().card = avatar;
 
-        avatar.SetInfo(cardInfo, clientGame, owner, effects.ToArray(), id);
+        avatar.SetInitialCardInfo(cardInfo, clientGame, owner, effects.ToArray(), id);
         avatar.gameObject.GetComponentInChildren<ClientCardMouseController>().ClientGame = clientGame;
         avatar.cardCtrl.SetImage(avatar.CardName, false);
         clientGame.cardsByID.Add(id, avatar);
@@ -350,7 +350,7 @@ public class CardRepository : MonoBehaviour
         ctrl.mouseCtrl.Card = card;
 
         Debug.Log($"Successfully created a card? {card != null} for json {json}");
-        card.SetInfo(cardInfo, clientGame, owner, effects.ToArray(), id);
+        card.SetInitialCardInfo(cardInfo, clientGame, owner, effects.ToArray(), id);
         card.cardCtrl.SetImage(card.CardName, false);
         card.gameObject.GetComponentInChildren<ClientCardMouseController>().ClientGame = clientGame;
         card.clientCardCtrl.ApplySettings(clientGame.clientUISettingsCtrl.ClientSettings);

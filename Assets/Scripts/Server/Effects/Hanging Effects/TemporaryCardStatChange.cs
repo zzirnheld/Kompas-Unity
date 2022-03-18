@@ -9,7 +9,7 @@ namespace KompasServer.Effects
         private readonly GameCard buffRecipient;
         private readonly CardStats buff;
 
-        public TemporaryCardStatChange(ServerGame game, TriggerRestriction triggerRestriction, string endCondition, 
+        public TemporaryCardStatChange(ServerGame game, TriggerRestriction triggerRestriction, string endCondition,
             string fallOffCondition, TriggerRestriction fallOffRestriction, Effect sourceEff,
             ActivationContext currentContext, GameCard buffRecipient, CardStats buff)
             : base(game, triggerRestriction, endCondition, fallOffCondition, fallOffRestriction, sourceEff, currentContext, removeIfEnd: true)

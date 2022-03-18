@@ -41,7 +41,7 @@ namespace KompasClient.UI
 
         public ClientGame clientGame;
 
-        private readonly List<ClientUseEffectButtonController> effBtns 
+        private readonly List<ClientUseEffectButtonController> effBtns
             = new List<ClientUseEffectButtonController>();
         public Transform effBtnsParent;
         public GameObject effBtnPrefab;
@@ -75,7 +75,7 @@ namespace KompasClient.UI
             bool reshow = card != CurrShown || refresh;
             CurrShown = card;
 
-            if(reshow) ShowForCurrShown();
+            if (reshow) ShowForCurrShown();
         }
 
         private void ShowViewForCardType()

@@ -40,7 +40,7 @@ namespace KompasClient.Networking
         public void Execute(ClientGame clientGame)
         {
             var card = clientGame.GetCardWithID(sourceCardId);
-            if(card == null)
+            if (card == null)
             {
                 Debug.LogWarning($"Could not find card with id {sourceCardId}");
                 return;

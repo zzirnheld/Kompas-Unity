@@ -1,0 +1,36 @@
+{
+	"blurb":"Vessel",
+	"activationRestriction":{
+		"activationRestrictionArray":[
+			"Default"
+		]
+	},
+	"subeffects":[
+		{
+			"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+		},
+		{
+			"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+			"cardRestriction":
+			{
+				"blurb":"to destroy",
+				"cardRestrictions":[
+					"Board",
+					"Augment",
+					"Augments Current Target",
+					"Subtypes Include"
+				],
+				"subtypesInclude": [
+					"Memory"
+				]
+			}
+		},
+		{
+			"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+		},
+		{
+			"$type": "KompasServer.Effects.ResummonSubeffect, Assembly-CSharp",
+			"targetIndex":-2
+		}
+	]	
+}

@@ -22,6 +22,7 @@ namespace KompasCore.Effects
 
         public const string ControllerCanPayCost = "Can Pay Cost"; //effect's controller is able to pay the cost of all of them together
         public const string DistinctCosts = "Distinct Costs";
+        public const string Distinct = "Distinct";
 
         public const string MinOfX = "Min Can Choose: X";
         public const string MaxOfX = "Max Can Choose: X";
@@ -110,6 +111,7 @@ namespace KompasCore.Effects
 
             ControllerCanPayCost => Subeffect.Controller.Pips >= cards.Sum(c => c.Cost),
             DistinctCosts => cards.Select(c => c.Cost).Distinct().Count() == cards.Count(),
+            Distinct => cards.Select(c => c.CardName).Distinct().Count() == cards.Count(),
 
             MinOfX => cards.Count() <= Subeffect.Effect.X,
             MaxOfX => cards.Count() <= Subeffect.Effect.X,
@@ -132,7 +134,7 @@ namespace KompasCore.Effects
         /// <param name="choices">The list of cards to collectively evaluate.</param>
         /// <returns><see langword="true"/> if the cards fit all the required restrictions collectively, 
         /// <see langword="false"/> otherwise</returns>
-        public bool IsValidCardList(IEnumerable<GameCard> choices, IEnumerable<GameCard> potentialTargets) 
+        public bool IsValidCardList(IEnumerable<GameCard> choices, IEnumerable<GameCard> potentialTargets)
             => choices != null
                 && !choices.Except(potentialTargets).Any() //Are there any choices that aren't potential targets?
                 && listRestrictions.All(r => IsRestrictionValid(r, choices));
@@ -157,7 +159,8 @@ namespace KompasCore.Effects
             MinCanChoose => potentialTargets.Count() >= minCanChoose,
 
             ControllerCanPayCost => CanPayCost(potentialTargets),
-            DistinctCosts => potentialTargets.Select(c => c.Cost).Distinct().Count() > (HasMin ? 0 : minCanChoose),
+            DistinctCosts => potentialTargets.Select(c => c.Cost).Distinct().Count() > (HasMin ? minCanChoose : 0),
+            Distinct => potentialTargets.Select(c => c.CardName).Count() > (HasMin ? minCanChoose : 0),
 
             MaxOfX => true,
             MaxCanChoose => true,
@@ -165,7 +168,7 @@ namespace KompasCore.Effects
             _ => throw new System.ArgumentException($"Invalid list restriction {restriction}", "restriction"),
         };
 
-        public bool ExistsValidChoice(IEnumerable<GameCard> potentialTargets) 
+        public bool ExistsValidChoice(IEnumerable<GameCard> potentialTargets)
             => listRestrictions.All(r => DoesRestrictionAllowValidChoice(r, potentialTargets));
 
         public override string ToString()

@@ -1,12 +1,12 @@
 {
 	"cardType": 67,
 	"cardName": "IX - The Hermit",
-	"effText": "Once each turn, when you draw X cards, you can move a card X slots.",
+	"effText": "Once each turn, when you draw X cards, you can move a card X spaces.",
 	"effects": [
 		{
 			"triggerData": {
 				"optional": true,
-				"blurb": "Move card X slots?",
+				"blurb": "Move card X spaces?",
 				"triggerCondition": "Draw",
 				"triggerRestriction": {
 					"triggerRestrictions": [
@@ -22,8 +22,10 @@
 					"cardRestriction": {
 						"blurb": "for Hermit to move",
 						"cardRestrictions": [
-							"Board"
-						]
+							"Board",
+							"Space Restriction Valid With This Target Chosen"
+						],
+						"spaceRestrictionIndex":1
 					}
 				},
 				{

@@ -13,7 +13,7 @@ namespace KompasServer.Networking
         public GameObject GamePrefab;
         public UIController UICtrl;
         public CardRepository CardRepo;
-        
+
         private TcpListener listener;
         private List<ServerGame> games;
         private ServerGame currGame = null;
@@ -25,7 +25,7 @@ namespace KompasServer.Networking
             {
                 listener = new TcpListener(IPAddress.Any, NetworkController.port);
             }
-            catch(System.Exception e)
+            catch (System.Exception e)
             {
                 Debug.LogError(e.Message);
             }

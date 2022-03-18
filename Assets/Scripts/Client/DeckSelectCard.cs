@@ -12,7 +12,7 @@ namespace KompasClient.UI
 
         public void SetInfo(SerializableCard card, DeckSelectUIController uiCtrl)
         {
-            base.SetInfo(card);
+            base.SetCardInformation(card);
             UICtrl = uiCtrl;
             SetImage(CardName);
         }

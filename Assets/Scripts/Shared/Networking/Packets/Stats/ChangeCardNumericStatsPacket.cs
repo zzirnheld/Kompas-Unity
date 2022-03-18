@@ -19,7 +19,7 @@ namespace KompasCore.Networking
         public ChangeCardNumericStatsPacket(int cardId, CardStats stats, int spacesMoved) : this()
         {
             this.cardId = cardId;
-            (n, e, s, w, c, a) =  stats;
+            (n, e, s, w, c, a) = stats;
             this.spacesMoved = spacesMoved;
         }
 

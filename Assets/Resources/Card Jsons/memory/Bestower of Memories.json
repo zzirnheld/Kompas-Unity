@@ -1,0 +1,89 @@
+{
+	"cardType": 67,
+	"cardName": "Bestower of Memories",
+	"effText": "When you attach a Memory to a Vessel, deck-> or discard->attach a copy of that Memory to a Vessel without a copy.",
+	"effects": [
+		{
+            "blurb": "Bestow Memory",
+			"triggerData": {
+				"triggerCondition": "Augment Attached",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Controller Triggered",
+						"Main Card Fits Restriction After"
+					],
+					"nowRestriction": {
+						"cardRestrictions": [
+                            "Subtypes Include",
+                            "Augments Card Fitting Restriction"
+                        ],
+						"subtypesInclude": [
+							"Memory"
+						],
+						"augmentRestriction": {
+							"cardRestrictions": [
+                                "Subtypes Include"
+							],
+                            "subtypesInclude": [
+                                "Vessel"
+                            ]
+						}
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"blurb": "Vessel to get a copy of the memory",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Board",
+                            "Subtypes Include",
+							"Wields No Augment Fitting Restriction"
+						],
+						"subtypesInclude": [
+							"Vessel"
+						],
+						"augmentRestriction": {
+							"cardRestrictions": [
+								"Same Name as Target"
+							]
+						}
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"blurb": "Copy of the memory to attach",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Friendly",
+							"Multiple Possible Locations",
+                            "Same Name as Target",
+							"Can Be Played"
+						],
+						"locations": [
+							2,
+							4
+						]
+					},
+					"targetIndex": -2
+				},
+				{
+					"$type": "KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
+					"targetToAttachTo": -2,
+					"targetIndex": -1
+				}
+			]
+		}
+	],
+    "unique":true,
+	"n": 1,
+	"e": 8,
+	"s": 10,
+	"w": 8,
+	"subtypeText": "Mage"
+}

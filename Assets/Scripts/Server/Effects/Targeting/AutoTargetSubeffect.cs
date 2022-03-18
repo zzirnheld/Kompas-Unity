@@ -36,11 +36,11 @@ namespace KompasServer.Effects
                 potentialTarget = tiebreakerDirection switch
                 {
                     Maximum => potentialTargets.OrderByDescending(tiebreakerValue.GetValueOf).First(),
-                    Any     => potentialTargets.First(),
-                    _       => potentialTargets.Single(),
+                    Any => potentialTargets.First(),
+                    _ => potentialTargets.Single(),
                 };
             }
-            catch (System.InvalidOperationException) 
+            catch (System.InvalidOperationException)
             {
                 Debug.LogError($"More than one card fit the card restriction {cardRestriction} " +
                     $"for the effect {Effect.blurb} of {Source.CardName}. Those cards were {potentialTargets}");

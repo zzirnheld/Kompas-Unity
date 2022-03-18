@@ -30,7 +30,7 @@ namespace KompasClient.UI
 
             CurrIndex = 0;
 
-            foreach(var t in toAdd)
+            foreach (var t in toAdd)
             {
                 var prefab = Instantiate(triggerPrefab, triggerObjectsParent);
                 var ctrl = prefab.GetComponent<TriggerUIController>();
@@ -48,7 +48,7 @@ namespace KompasClient.UI
 
         public void AutoOrder()
         {
-            foreach(var t in triggerUIs
+            foreach (var t in triggerUIs
                 .Where(t => t.Index < 0)
                 .OrderBy(t => t.Trigger.TriggerData.orderPriority)) //defaults to asending order
             {

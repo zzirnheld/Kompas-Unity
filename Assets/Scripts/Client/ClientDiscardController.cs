@@ -17,7 +17,7 @@ namespace KompasClient.GameCore
         public override void SpreadOutCards()
         {
             int x = 0, y = 0;
-            for(int i = 0; i < Discard.Count; i++)
+            for (int i = 0; i < Discard.Count; i++)
             {
                 Discard[i].transform.localPosition = new Vector3(2f * (x + y), 0f, -2f * y);
 

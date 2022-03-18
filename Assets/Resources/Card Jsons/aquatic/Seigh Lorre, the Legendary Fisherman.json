@@ -20,8 +20,10 @@
 						"blurb": "what will sail",
 						"cardRestrictions": [
 							"Board",
-							"Space Fits Restriction"
+							"Space Fits Restriction",
+							"Space Restriction Valid With This Target Chosen"
 						],
+						"spaceRestrictionIndex":1,
 						"spaceRestriction": {
 							"spaceRestrictions": [
 								"In AOE of Card Fitting Restriction"

@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "XXI - The World",
-	"effText": "When a character dies, draw 1 card. Give characters adjacent to where they died +1 EW.",
+	"effText": "When a character dies, both players draw 1 card. Give characters adjacent to where they died +1 EW.",
 	"effects": [
 		{
 			"blurb": "The World Goes On",
@@ -24,6 +24,12 @@
 			"subeffects": [
 				{
 					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
 				},
 				{
 					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"

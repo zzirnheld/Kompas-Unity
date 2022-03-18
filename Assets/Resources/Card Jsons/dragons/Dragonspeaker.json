@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Dragonspeaker",
-	"effText": "You can kill a distinct friendly SX character to give me +2 * X S and draw 1.",
+	"effText": "You can kill a distinct friendly SX character to give me +2 * X S. If your Avatar is \"Mother of Dragons\", draw 1.",
 	"effects": [
 		{
 			"blurb": "Dragonspeak",
@@ -39,6 +39,19 @@
 				{
 					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
 					"sMultiplier": 2
+				},
+				{
+					"$type": "KompasServer.Effects.TargetAvatarSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition": "Target Violates Restriction",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Name Is"
+						],
+						"nameIs": "Mother of Dragons"
+					}
 				},
 				{
 					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"

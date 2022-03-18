@@ -30,7 +30,7 @@ namespace KompasClient.Effects
 
         public string StackableBlurb => blurb;
 
-        public void SetInfo (GameCard thisCard, ClientGame clientGame, int effectIndex, ClientPlayer owner)
+        public void SetInfo(GameCard thisCard, ClientGame clientGame, int effectIndex, ClientPlayer owner)
         {
             base.SetInfo(thisCard, effectIndex, owner);
             this.ClientGame = clientGame;

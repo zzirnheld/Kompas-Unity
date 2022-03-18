@@ -46,8 +46,8 @@ namespace KompasClient.Cards
         {
             //remove thing even if hovering over something.
             ClientGame.clientUICtrl.CardToActivateEffectsFor = null;
-            ClientGame.clientUICtrl.cardInfoViewUICtrl.searchUICtrl.ReshowSearchShownIfSearching();
             base.OnMouseExit();
+            ClientGame.clientUICtrl.cardInfoViewUICtrl.searchUICtrl.ReshowSearchShownIfSearching();
         }
 
         public override void OnMouseOver()
@@ -56,11 +56,6 @@ namespace KompasClient.Cards
             //it's just a memory access per frame. it should be fine.
             //if it leads to counterintuitive behavior, add the is over game object check
             ClientGame.clientUICtrl.CardToActivateEffectsFor = Card;
-            /*if(Input.GetKeyDown(KeyCode.LeftAlt) || Input.GetKeyDown(KeyCode.RightAlt))
-            {
-                ClientGame.clientUICtrl.cardInfoViewUICtrl.CurrShown = Card;
-            }*/
-            ClientGame.clientUICtrl.ShowInfoFor(Card);
             base.OnMouseOver();
         }
 

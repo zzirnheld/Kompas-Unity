@@ -78,7 +78,7 @@ namespace KompasDeckbuilder
 
         private void Update()
         {
-            if(Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl))
+            if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl))
             {
                 if (Input.GetKeyUp(KeyCode.S)) SaveDeck();
                 //other control shortcuts here

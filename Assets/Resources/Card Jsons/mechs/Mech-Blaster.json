@@ -34,7 +34,6 @@
 						"cardRestrictions": [
 							"Board",
 							"Character",
-							"Subtypes Include",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {

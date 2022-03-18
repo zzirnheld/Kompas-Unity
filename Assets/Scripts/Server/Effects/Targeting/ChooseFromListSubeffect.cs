@@ -60,7 +60,7 @@ namespace KompasServer.Effects
             switch (orderBy)
             {
                 case NoOrder: return possibleTargets;
-                case Closest: 
+                case Closest:
                     int minDist = possibleTargets.Min(c => c.DistanceTo(Source));
                     return possibleTargets.Where(c => c.DistanceTo(Source) == minDist);
                 default: throw new System.ArgumentException($"Invalid ordering in choose from list");

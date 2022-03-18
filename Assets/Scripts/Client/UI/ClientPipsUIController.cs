@@ -18,7 +18,7 @@ namespace KompasClient.UI
 
         public void ShowPipsFor(int value)
         {
-            foreach(var obj in objsList) Destroy(obj);
+            foreach (var obj in objsList) Destroy(obj);
             objsList.Clear();
 
             Vector3 offset = Vector3.zero;

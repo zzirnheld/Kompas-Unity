@@ -32,7 +32,7 @@ namespace KompasCore.Networking
         public const string ActivateEffectAction = "Player Activate Effect Action";
 
         //effect commands
-            //from client to server
+        //from client to server
         public const string CardTargetChosen = "Card Target Chosen";
         public const string SpaceTargetChosen = "Space Target Chosen";
         public const string XSelectionChosen = "X Value Chosen";
@@ -42,12 +42,12 @@ namespace KompasCore.Networking
         public const string ChooseEffectOption = "Choose Effect Option";
         public const string PassPriority = "Pass Priority";
         public const string ChooseTriggerOrder = "Choose Trigger Order";
-            //from server to client
-            //targeting
+        //from server to client
+        //targeting
         public const string GetCardTarget = "Get Card Target";
         public const string GetListChoices = "Get List Choices";
         public const string GetSpaceTarget = "Get Space Target";
-            //other effect
+        //other effect
         public const string GetEffectOption = "Get Effect Option";
         public const string EffectResolving = "Effect Resolving";
         public const string EffectActivated = "Effect Activated";
@@ -83,13 +83,13 @@ namespace KompasCore.Networking
         //card movement (from server to client)
         public const string PutCardsBack = "Put Cards Back";
         public const string KnownToEnemy = "Update Known To Enemy";
-            //public locations
+        //public locations
         public const string PlayCard = "Play Card";
         public const string AttachCard = "Attach Card";
         public const string MoveCard = "Move Card";
         public const string DiscardCard = "Discard Card";
         public const string AnnihilateCard = "Annihilate Card";
-            //private locations
+        //private locations
         public const string RehandCard = "Rehand Card";
         public const string TopdeckCard = "Topdeck Card";
         public const string ReshuffleCard = "Reshuffle Card";

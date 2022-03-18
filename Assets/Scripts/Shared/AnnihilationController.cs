@@ -20,7 +20,7 @@ namespace KompasCore.GameCore
             if (card == null) throw new NullCardException("Cannot add null card to hand");
             Debug.Log($"Annihilating {card.CardName} from {card.Location}");
 
-            if (card.GameLocation != null && card.GameLocation.Equals(this)) 
+            if (card.GameLocation != null && card.GameLocation.Equals(this))
                 throw new AlreadyHereException(CardLocation.Annihilation);
 
             card.Remove(stackSrc);
@@ -32,7 +32,7 @@ namespace KompasCore.GameCore
 
         public virtual void Remove(GameCard card)
         {
-            if (!Cards.Contains(card)) 
+            if (!Cards.Contains(card))
                 throw new CardNotHereException(CardLocation.Annihilation, card, "Card was not in annihilation, couldn't be removed");
 
             Cards.Remove(card);

@@ -5,6 +5,7 @@ using TMPro;
 using System;
 using KompasClient.GameCore;
 using System.Linq;
+using UnityEngine.UI;
 
 namespace KompasClient.UI
 {
@@ -30,6 +31,7 @@ namespace KompasClient.UI
         public TMP_Dropdown friendlyColorOptionsDropdown;
         public TMP_Dropdown enemyColorOptionsDropdown;
         public TMP_InputField zoomThresholdInput;
+        public Toggle showAdvancedEffectUIToggle;
 
         public void ApplySettings()
         {
@@ -84,12 +86,12 @@ namespace KompasClient.UI
             => DefaultFriendlyColorOptions.Contains(color) ? Array.IndexOf(DefaultFriendlyColorOptions, color) : 0;
 
         private int GetEnemyColorIndex(Color color)
-            => DefaultEnemyColorOptions.Contains(color)? Array.IndexOf(DefaultEnemyColorOptions, color) : 0;
+            => DefaultEnemyColorOptions.Contains(color) ? Array.IndexOf(DefaultEnemyColorOptions, color) : 0;
 
         public void Show()
         {
             statHighlightDropdown.ClearOptions();
-            foreach(var o in Enum.GetValues(typeof(StatHighlight)))
+            foreach (var o in Enum.GetValues(typeof(StatHighlight)))
             {
                 statHighlightDropdown.options.Add(new TMP_Dropdown.OptionData() { text = o.ToString() });
             }
@@ -109,11 +111,12 @@ namespace KompasClient.UI
                 enemyColorOptionsDropdown.options.Add(new TMP_Dropdown.OptionData() { text = o });
             }
 
-            statHighlightDropdown.value = (int) ClientSettings.statHighlight;
-            confirmTargetsDropdown.value = (int) ClientSettings.confirmTargets;
+            statHighlightDropdown.value = (int)ClientSettings.statHighlight;
+            confirmTargetsDropdown.value = (int)ClientSettings.confirmTargets;
             friendlyColorOptionsDropdown.value = ClientSettings.friendlyColorIndex;
             enemyColorOptionsDropdown.value = ClientSettings.enemyColorIndex;
             zoomThresholdInput.text = ClientSettings.zoomThreshold.ToString("n1");
+            showAdvancedEffectUIToggle.isOn = ClientSettings.showAdvancedEffectsSettings;
 
             gameObject.SetActive(true);
         }
@@ -132,7 +135,7 @@ namespace KompasClient.UI
 
         public void SetFriendlyColor(int index)
         {
-            if(index < 0 || index >= DefaultFriendlyColorOptions.Length)
+            if (index < 0 || index >= DefaultFriendlyColorOptions.Length)
             {
                 //TODO custom colors
                 return;
@@ -164,6 +167,12 @@ namespace KompasClient.UI
             ApplySettings();
         }
 
+        public void SetShowAdvancedEffectResponseUI(bool show)
+        {
+            ClientSettings.showAdvancedEffectsSettings = show;
+            ApplySettings();
+        }
+
         public void Hide()
         {
             gameObject.SetActive(false);
@@ -180,15 +189,16 @@ namespace KompasClient.UI
         public StatHighlight statHighlight;
         public float zoomThreshold;
         public ConfirmTargets confirmTargets;
+        public bool showAdvancedEffectsSettings = false;
         public string defaultIP;
-        public byte friendlyColorRed;
-        public byte friendlyColorGreen;
-        public byte friendlyColorBlue;
-        public byte enemyColorRed;
-        public byte enemyColorGreen;
-        public byte enemyColorBlue;
-        public int friendlyColorIndex;
-        public int enemyColorIndex;
+        public byte friendlyColorRed = ClientSettingsUIController.DefaultFriendlyBlue.r;
+        public byte friendlyColorGreen = ClientSettingsUIController.DefaultFriendlyBlue.g;
+        public byte friendlyColorBlue = ClientSettingsUIController.DefaultFriendlyBlue.b;
+        public byte enemyColorRed = ClientSettingsUIController.DefaultEnemyRed.r;
+        public byte enemyColorGreen = ClientSettingsUIController.DefaultEnemyRed.g;
+        public byte enemyColorBlue = ClientSettingsUIController.DefaultEnemyRed.b;
+        public int friendlyColorIndex = 0;
+        public int enemyColorIndex = 0;
 
         [JsonIgnore]
         public Color32 FriendlyColor
@@ -225,6 +235,7 @@ namespace KompasClient.UI
             statHighlight = StatHighlight.NoHighlight,
             zoomThreshold = DefaultZoomThreshold,
             confirmTargets = ConfirmTargets.No,
+            showAdvancedEffectsSettings = false,
             defaultIP = "",
             FriendlyColor = ClientSettingsUIController.DefaultFriendlyBlue,
             EnemyColor = ClientSettingsUIController.DefaultEnemyRed,

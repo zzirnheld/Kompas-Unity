@@ -1,0 +1,102 @@
+{
+	"cardType": 83,
+	"cardName": "Corporeal Recall",
+	"effText": "When turns start, hand-> or discard->reshuffle Memories with total A X. Deck->summon an S <= X Vessel. ",
+	"effects": [
+		{
+			"blurb": "Recall Corporeal Form",
+			"triggerData": {
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "for Corporeal Recall to reshuffle",
+						"cardRestrictions": [
+							"Friendly",
+							"Multiple Possible Locations",
+							"Augment",
+                            "Subtypes Include"
+                        ],
+						"subtypesInclude": [
+							"Memory"
+						],
+						"locations": [
+							2,
+							3
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "A",
+                        "multiplier":1
+					},
+					"change":true,
+					"xMultiplier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.LoopSubeffect, Assembly-CSharp",
+					"canDecline": true,
+					"jumpIndices": [
+						0
+					]
+				},
+				{
+					"$type": "KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Corporeal form to recall",
+						"cardRestrictions": [
+							"Character",
+							"Friendly",
+							"Deck",
+							"Can Be Played",
+							"Subtypes Include",
+							"Card Value Fits Number Restriction"
+						],
+						"subtypesInclude": [
+							"Vessel"
+						],
+						"cardValue": {
+							"value": "S"
+						},
+						"cardValueNumberRestriction": {
+							"numberRestrictions": [
+								"<=X"
+							]
+						}
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where to recall corporeal form",
+						"spaceRestrictions": [
+							"Can Play Card Target to This Space",
+							"Empty"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"c": 3,
+	"spellTypes": [
+		"Enchant"
+	],
+	"subtypeText": "Enchant"
+}

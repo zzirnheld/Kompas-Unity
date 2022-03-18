@@ -116,7 +116,7 @@ namespace KompasCore.Networking
             if (numBytesRead == numBytesToRead)
             {
                 var (p, json) = Deserialize(bytesRead);
-                if(p != Packet.Invalid) packets.Enqueue((p, json));
+                if (p != Packet.Invalid) packets.Enqueue((p, json));
                 awaitingInt = true;
                 bytesRead = new byte[sizeof(int)];
                 numBytesRead = 0;

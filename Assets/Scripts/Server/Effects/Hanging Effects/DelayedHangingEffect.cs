@@ -19,7 +19,7 @@ namespace KompasServer.Effects
 
         public DelayedHangingEffect(ServerGame game, TriggerRestriction triggerRestriction, string endCondition,
             string fallOffCondition, TriggerRestriction fallOffRestriction, Effect sourceEff, ActivationContext currentContext,
-            int numTimesToDelay, ServerEffect toResume, int indexToResumeResolution, ServerPlayer controller, 
+            int numTimesToDelay, ServerEffect toResume, int indexToResumeResolution, ServerPlayer controller,
             IEnumerable<GameCard> targets, IEnumerable<Space> spaces,
             bool clearIfResolve)
             : base(game, triggerRestriction, endCondition, fallOffCondition, fallOffRestriction, sourceEff, currentContext, clearIfResolve)

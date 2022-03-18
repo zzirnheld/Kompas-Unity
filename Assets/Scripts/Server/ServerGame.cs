@@ -47,8 +47,8 @@ namespace KompasServer.GameCore
         public override IEnumerable<IStackable> StackEntries => EffectsController.StackEntries;
         public override bool NothingHappening => EffectsController.NothingHappening && Players.All(s => s.PassedPriority);
 
-        public override int TurnCount 
-        { 
+        public override int TurnCount
+        {
             get => base.TurnCount;
             protected set
             {
@@ -57,8 +57,8 @@ namespace KompasServer.GameCore
             }
         }
 
-        public override int Leyload 
-        { 
+        public override int Leyload
+        {
             get => base.Leyload;
             set
             {
@@ -181,21 +181,21 @@ namespace KompasServer.GameCore
 
         public async Task StartGame()
         {
-            //set initial pips (based on avatars' S)
+            //set initial pips to 0
             Debug.Log($"Starting game. Player 0 avatar is null? {Players[0].Avatar == null}. Player 1 is null? {Players[1].Avatar == null}.");
-            Players[0].Pips = 0; //Players[1].Avatar.S / 2;
-            Players[1].Pips = 0; //Players[0].Avatar.S / 2;
+            Players[0].Pips = 0;
+            Players[1].Pips = 0;
 
             //determine who goes first and tell the players
-            FirstTurnPlayer = TurnPlayerIndex = Random.value > 0.5f ? 0 : 1;
+            FirstTurnPlayer = Random.value > 0.5f ? 0 : 1;
+            TurnPlayerIndex = FirstTurnPlayer;
 
-            foreach (var p in ServerPlayers) 
+            foreach (var p in ServerPlayers)
             {
                 p.ServerNotifier.SetFirstTurnPlayer(FirstTurnPlayer);
-                p.Avatar.SetN(p.Avatar.N - AvatarNPenalty);
-                p.Avatar.SetE(p.Avatar.E + AvatarEBonus);
-                p.Avatar.SetW(p.Avatar.W - AvatarWPenalty);
-                //p.Avatar.SetShield(AvatarShield);
+                p.Avatar.SetN(0, stackSrc: null);
+                p.Avatar.SetE(p.Avatar.E + AvatarEBonus, stackSrc: null);
+                p.Avatar.SetW(0, stackSrc: null);
                 DrawX(p.index, 5, stackSrc: null);
             }
 
@@ -218,7 +218,7 @@ namespace KompasServer.GameCore
             ResetCardsForTurn();
 
             GiveTurnPlayerPips();
-            if(notFirstTurn) Draw(TurnPlayerIndex);
+            if (notFirstTurn) Draw(TurnPlayerIndex);
 
             //do hand size
             EffectsController.PushToStack(new ServerHandSizeStackable(this, TurnServerPlayer), default);
