@@ -35,9 +35,10 @@ namespace KompasCore.Effects
         public const string InCardTargetsAOE = "In Card Target's AOE";
         public const string InAOEOfCardFittingRestriction = "In AOE of Card Fitting Restriction";
         public const string NotInAOEOf = "Not In AOE of Card Fitting Restriction";
-        public const string LimitAdjacentCardsFittingRestriction = "Limit Number of Adjacent Cards Fitting Restriction";
         public const string InAOEOfNumberFittingRestriction = "In AOE of Number of Cards Fitting Restriction";
         public const string InAOESourceAlsoIn = "In AOE Source is Also In";
+        public const string SourceInSpaceOverlapsCardRestriction 
+            = "If Source Were In The Targeted Space, It Would Overlap Card Restriction";
 
         public const string SourceDisplacementToSpaceMatchesSpaceTarget = "Source Displacement to Space Matches Space Target";
         public const string SourceDisplacementToSpaceSameDirectionAsSpaceTarget
@@ -89,6 +90,7 @@ namespace KompasCore.Effects
         public SpaceRestriction spaceConnectednessRestriction;
         public CardRestriction hereFitsRestriction;
         public CardRestriction inAOEOfRestriction;
+        public CardRestriction overlapRestriction;
 
         public NumberRestriction distanceXRestriction;
         public NumberRestriction connectedSpacesXRestriction;
@@ -121,11 +123,17 @@ namespace KompasCore.Effects
             limitAdjacencyRestriction?.Initialize(source, effect, subeffect);
             hereFitsRestriction?.Initialize(source, effect, subeffect);
             inAOEOfRestriction?.Initialize(source, effect, subeffect);
+            overlapRestriction?.Initialize(source, effect, subeffect);
             distanceXRestriction?.Initialize(source, subeffect);
             connectedSpacesXRestriction?.Initialize(source, subeffect);
             numberOfCardsInAOEOfRestriction?.Initialize(source, subeffect);
 
             initialized = true;
+        }
+
+        private bool CardInSpaceOverlapsCardRestriction(GameCard card, Space potentialSpace, ActivationContext context)
+        {
+            return Game.Cards.Any(c => overlapRestriction.IsValidCard(c, context) && card.Overlaps(c, potentialSpace));
         }
 
         /// <summary>
@@ -171,13 +179,11 @@ namespace KompasCore.Effects
                 InCardTargetsAOE => target.SpaceInAOE(space),
                 InAOEOfCardFittingRestriction => Game.Cards.Any(c => c.SpaceInAOE(space) && inAOEOfRestriction.IsValidCard(c, context)),
                 NotInAOEOf => !Game.Cards.Any(c => c.SpaceInAOE(space) && inAOEOfRestriction.IsValidCard(c, context)),
-                InAOEOfNumberFittingRestriction
-                    => numberOfCardsInAOEOfRestriction.IsValidNumber(Game.Cards.Count(c => c.SpaceInAOE(space) && inAOEOfRestriction.IsValidCard(c, context))),
-                LimitAdjacentCardsFittingRestriction
-                    => Game.boardCtrl.CardsAdjacentTo(space)
-                            .Where(c => limitAdjacencyRestriction.IsValidCard(c, context))
-                            .Count() <= adjacencyLimit,
+                InAOEOfNumberFittingRestriction => numberOfCardsInAOEOfRestriction.IsValidNumber(
+                    Game.Cards.Count(c => c.SpaceInAOE(space) && inAOEOfRestriction.IsValidCard(c, context))
+                    ),
                 InAOESourceAlsoIn => Game.Cards.Any(c => c.SpaceInAOE(space) && c.CardInAOE(Source)),
+                SourceInSpaceOverlapsCardRestriction => CardInSpaceOverlapsCardRestriction(Source, space, context),
 
                 SourceDisplacementToSpaceMatchesSpaceTarget => Source.Position.DisplacementTo(space) == Subeffect.SpaceTarget,
                 SourceDisplacementToSpaceSameDirectionAsSpaceTarget => Source.Position.DirectionFromThisTo(space) == Subeffect.SpaceTarget,
@@ -202,8 +208,8 @@ namespace KompasCore.Effects
                 //misc
                 CanPlayCardTarget => target.PlayRestriction.IsValidEffectPlay(space, Subeffect.Effect, Subeffect.PlayerTarget, context,
                     ignoring: playRestrictionsToIgnore),
-                CanMoveCardTarget => target.MovementRestriction.IsValidEffectMove(space),
-                CanMoveSource => Source.MovementRestriction.IsValidEffectMove(space),
+                CanMoveCardTarget => target.MovementRestriction.IsValidEffectMove(space, context),
+                CanMoveSource => Source.MovementRestriction.IsValidEffectMove(space, context),
 
                 Empty => Game.boardCtrl.IsEmpty(space),
                 Surrounded => Game.boardCtrl.Surrounded(space),

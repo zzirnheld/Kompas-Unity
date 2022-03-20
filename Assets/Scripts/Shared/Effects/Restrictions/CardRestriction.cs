@@ -56,6 +56,7 @@ namespace KompasCore.Effects
         //subtypes
         public const string SubtypesInclude = "Subtypes Include";
         public const string SubtypesExclude = "Subtypes Exclude";
+        public const string SubtypesIncludeAnyOf = "Subtypes Include Any Of";
 
         //is
         public const string IsSource = "Is Source";
@@ -100,6 +101,8 @@ namespace KompasCore.Effects
         public const string SpaceFitsRestriction = "Space Fits Restriction";
 
         public const string SourceInThisAOE = "Source in This' AOE"; //whether the source card is in the potential target's aoe
+        public const string CardHasCardRestrictionInAOE = "Card has Card Restriction in its AOE";
+        public const string CardDoesntHaveCardRestrictionInAOE = "Card doesn't have Card Restriction in its AOE";
 
         public const string IndexInListGTC = "Index>C";
         public const string IndexInListLTC = "Index<C";
@@ -122,6 +125,7 @@ namespace KompasCore.Effects
         public string nameIs;
         public string[] subtypesInclude;
         public string[] subtypesExclude;
+        public string[] subtypesIncludeAnyOf;
         public int constant;
         public CardLocation[] locations;
         public string[] spellSubtypes;
@@ -142,6 +146,7 @@ namespace KompasCore.Effects
         public CardRestriction connectednessRestriction;
         public CardRestriction attackedCardRestriction;
         public CardRestriction inAOEOfRestriction;
+        public CardRestriction hasInAOERestriction;
         public CardRestriction augmentRestriction;
 
         public SpaceRestriction spaceRestriction;
@@ -179,6 +184,7 @@ namespace KompasCore.Effects
             connectednessRestriction?.Initialize(source, effect, subeffect);
             attackedCardRestriction?.Initialize(source, effect, subeffect);
             inAOEOfRestriction?.Initialize(source, effect, subeffect);
+            hasInAOERestriction?.Initialize(source, effect, subeffect);
 
             cardValueNumberRestriction?.Initialize(source, subeffect);
 
@@ -191,6 +197,14 @@ namespace KompasCore.Effects
         public override string ToString()
         {
             return $"Card Restriction.\nRestrictions: {string.Join(", ", cardRestrictions)}";
+        }
+
+        private bool HasCardRestrictionInAOE(GameCardBase cardToTest, int x, ActivationContext context)
+        {
+            if (cardToTest == null) return false;
+            if (cardToTest.Location != CardLocation.Board) return false;
+
+            return Source.Game.Cards.Any(c => cardToTest.CardInAOE(c) && hasInAOERestriction.IsValidCard(c, x, context));
         }
 
         /// <summary>
@@ -249,6 +263,7 @@ namespace KompasCore.Effects
                 //subtypes
                 SubtypesInclude => subtypesInclude.All(s => potentialTarget?.SubtypeText.Contains(s) ?? false),
                 SubtypesExclude => subtypesExclude.All(s => !potentialTarget?.SubtypeText.Contains(s) ?? false),
+                SubtypesIncludeAnyOf => subtypesIncludeAnyOf.Any(s => potentialTarget?.SubtypeText.Contains(s) ?? false),
 
                 //is
                 IsSource => potentialTarget?.Card == Source,
@@ -288,6 +303,8 @@ namespace KompasCore.Effects
                 //positioning
                 SpaceFitsRestriction => potentialTarget.Position != null && spaceRestriction.IsValidSpace(potentialTarget.Position, context),
                 SourceInThisAOE => potentialTarget?.CardInAOE(Source) ?? false,
+                CardHasCardRestrictionInAOE => HasCardRestrictionInAOE(potentialTarget, x, context),
+                CardDoesntHaveCardRestrictionInAOE => !HasCardRestrictionInAOE(potentialTarget, x, context),
                 IndexInListGTC => potentialTarget?.IndexInList > constant,
                 IndexInListLTC => potentialTarget?.IndexInList < constant,
                 IndexInListLTX => potentialTarget?.IndexInList < x,

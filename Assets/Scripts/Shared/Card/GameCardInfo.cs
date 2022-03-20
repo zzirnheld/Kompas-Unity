@@ -90,6 +90,15 @@ namespace KompasCore.Cards
         /// Whether <paramref name="c"/> is in the aoe of <see cref="this"/> card.
         /// </summary>
         public bool CardInAOE(GameCardBase c) => CardInAOE(c, Position);
+        /// <summary>
+        /// Whether <paramref name="c"/> and this card have any spaces shared between their AOEs,
+        /// if this card is at <paramref name="mySpace"/>
+        /// </summary>
+        public bool Overlaps(GameCardBase c, Space mySpace) => Space.Spaces.Any(s => SpaceInAOE(s, mySpace) && c.SpaceInAOE(s));
+        /// <summary>
+        /// Whether <paramref name="c"/> and this card have any spaces shared between their AOEs
+        /// </summary>
+        public bool Overlaps(GameCardBase c) => Overlaps(c, Position);
 
         public bool SameColumn(Space space) => Location == CardLocation.Board && Position.SameColumn(space);
         public bool SameColumn(GameCardBase c) => c.Location == CardLocation.Board && SameColumn(c.Position);

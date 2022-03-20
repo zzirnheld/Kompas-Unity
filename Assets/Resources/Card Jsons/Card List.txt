@@ -161,6 +161,7 @@ Kusanagi
 Leybinder
 Leybinding
 Leylasher
+light_shade/Light
 linewalkers/Blue Linewalker
 linewalkers/Cyan Linewalker
 linewalkers/Green Linewalker
