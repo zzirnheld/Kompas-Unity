@@ -49,6 +49,30 @@
             ]	
         }
 	],
+	"MovementRestriction": {
+		"normalRestrictionsFromJson": [
+			"Default",
+			"Destination Must Flout Space Restriction"
+		],
+		"effectRestrictionsFromJson": [
+			"Default",
+			"Destination Must Flout Space Restriction"
+		],
+		"floutedDestinationSpaceRestriction": {
+			"spaceRestrictions": [
+				"If Source Were In The Targeted Space, It Would Overlap Card Restriction"
+			],
+			"overlapRestriction": {
+				"cardRestrictions": [
+					"Subtypes Include Any Of"
+				],
+				"subtypesIncludeAnyOf": [
+					"Light",
+                    "Shade"
+				]
+			}
+		}
+	},
 	"PlayRestriction": {
 		"normalRestrictions": [
             "Default Normal Restrictions",
