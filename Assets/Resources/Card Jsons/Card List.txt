@@ -162,6 +162,7 @@ Leybinder
 Leybinding
 Leylasher
 light_shade/Light
+light_shade/Shade
 linewalkers/Blue Linewalker
 linewalkers/Cyan Linewalker
 linewalkers/Green Linewalker
