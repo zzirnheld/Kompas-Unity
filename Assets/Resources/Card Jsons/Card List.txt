@@ -217,6 +217,9 @@ memory/Memorial Augury
 memory/Recall
 memory/Uncall For
 moths/Rouge Rogue Moth
+moths/Disarming Rogue Moth
+moths/Massive Moon Moth
+moths/Searing Sun Moth
 music/Soaring Chorus
 music/Surging Verse
 music/Ringing Bridge

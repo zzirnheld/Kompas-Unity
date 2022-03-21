@@ -1,0 +1,77 @@
+{
+	"cardType": 67,
+	"cardName": "Searing Sun Moth",
+	"effText": "Stealth.\nWhen I attack a W X character in Light, give a Summoned character -1E and a distinct character +1E.",
+	"effects": [
+		{
+			"blurb": "oh? hello there",
+			"triggerData": {
+				"triggerCondition": "Attack",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card",
+                        "Secondary Card Fits Restriction Before"
+					],
+                    "secondaryCardRestriction": {
+						"cardRestrictions": [
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"In AOE of Card Fitting Restriction"
+							],
+							"inAOEOfRestriction": {
+								"cardRestrictions": [
+									"Subtypes Include"
+								],
+								"subtypesInclude": [
+									"Light"
+								]
+							}
+						}
+                    }
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "character for Sun to give -1 E",
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Summoned"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eModifier": -1
+				},
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "character for Sun to give +1 E",
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Distinct Name from Other Targets"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eModifier": 1
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Stealth"
+	],
+	"n": 3,
+	"e": 3,
+	"s": 4,
+	"w": 4,
+	"subtypeText": "Brilliant Flying Moth"
+}

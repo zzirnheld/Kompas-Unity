@@ -70,6 +70,7 @@ namespace KompasCore.Effects
         public string[] triggerRestrictions = new string[0];
         public CardRestriction cardRestriction;
         public CardRestriction nowRestriction;
+        public CardRestriction secondaryCardRestriction;
         public CardRestriction adjacencyRestriction;
         public CardRestriction existsRestriction;
         public NumberRestriction xRestriction;
@@ -102,8 +103,9 @@ namespace KompasCore.Effects
             SourceEffect = effect;
 
             cardRestriction?.Initialize(thisCard, effect, subeffect);
-            existsRestriction?.Initialize(thisCard, effect, subeffect);
             nowRestriction?.Initialize(thisCard, effect, subeffect);
+            secondaryCardRestriction?.Initialize(thisCard, effect, subeffect);
+            existsRestriction?.Initialize(thisCard, effect, subeffect);
             spaceRestriction?.Initialize(thisCard, thisCard.Controller, effect, subeffect);
             sourceRestriction?.Initialize(thisCard, effect, subeffect);
             xRestriction?.Initialize(thisCard);
@@ -126,7 +128,7 @@ namespace KompasCore.Effects
             ThisCardFitsRestriction => cardRestriction.IsValidCard(ThisCard, context),
 
             MainCardFitsRestrictionBefore => cardRestriction.IsValidCard(context.mainCardInfoBefore, context),
-            SecondaryCardFitsRestrictionBefore => cardRestriction.IsValidCard(context.secondaryCardInfoBefore, context),
+            SecondaryCardFitsRestrictionBefore => secondaryCardRestriction.IsValidCard(context.secondaryCardInfoBefore, context),
             MainCardFitsRestrictionAfter => nowRestriction.IsValidCard(context.MainCardInfoAfter, context),
             MainCardsAugmentedCardBeforeFitsRestriction => cardRestriction.IsValidCard(context.mainCardInfoBefore.AugmentedCard, context),
             MainCardIsASecondaryContextCardTarget => secondary?.Targets?.Any(c => c == context.mainCardInfoBefore?.Card) ?? false,
