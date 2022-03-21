@@ -1,0 +1,52 @@
+{
+	"cardType": 67,
+	"cardName": "Poodle Moth",
+	"effText": "Stealth, and after I move that way, hand me. Hand->summon a distinct Moth where I was. (I was misidentified.)",
+	"effects": [
+		{
+			"blurb": "Stealth, but, like, blushes",
+            "triggerData": {
+                "triggerCondition": "Turn Start",
+                "triggerRestriction": {
+                    "triggerRestrictions": [
+                        "This Card in Play",
+                        "Enemy Turn"
+                    ]
+                }
+            },
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.KeywordSubeffect, Assembly-CSharp",
+					"keyword": "Stealth But"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSpaceSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "the Poodle Moth was actually",
+						"cardRestrictions": [
+							"Character",
+							"Friendly",
+							"Hand",
+							"Can Be Played",
+							"Distinct Name from Source"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"n": 2,
+	"e": 1,
+	"s": 1,
+	"w": 0,
+	"subtypeText": "Smol Fuzzy Flying Moth"
+}

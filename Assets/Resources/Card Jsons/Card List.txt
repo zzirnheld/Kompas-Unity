@@ -221,6 +221,7 @@ moths/Disarming Rogue Moth
 moths/Massive Moon Moth
 moths/Searing Sun Moth
 moths/Ravenous Leymoth
+moths/Poodle Moth
 music/Soaring Chorus
 music/Surging Verse
 music/Ringing Bridge
