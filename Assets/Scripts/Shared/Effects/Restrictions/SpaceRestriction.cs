@@ -91,6 +91,7 @@ namespace KompasCore.Effects
         public CardRestriction hereFitsRestriction;
         public CardRestriction inAOEOfRestriction;
         public CardRestriction overlapRestriction;
+        public CardRestriction alsoInAOEOfRestriction;
 
         public NumberRestriction distanceXRestriction;
         public NumberRestriction connectedSpacesXRestriction;
@@ -124,11 +125,26 @@ namespace KompasCore.Effects
             hereFitsRestriction?.Initialize(source, effect, subeffect);
             inAOEOfRestriction?.Initialize(source, effect, subeffect);
             overlapRestriction?.Initialize(source, effect, subeffect);
+            alsoInAOEOfRestriction?.Initialize(source, effect, subeffect);
+
             distanceXRestriction?.Initialize(source, subeffect);
             connectedSpacesXRestriction?.Initialize(source, subeffect);
             numberOfCardsInAOEOfRestriction?.Initialize(source, subeffect);
 
             initialized = true;
+        }
+
+        private bool IsConnectedToTargetByXSpaces(Space space, GameCard target, ActivationContext context)
+        {
+            return Game.boardCtrl.AreConnectedByNumberOfSpacesFittingPredicate(target.Position, space,
+                            s => spaceConnectednessRestriction.IsValidSpace(s, context),
+                            connectedSpacesXRestriction.IsValidNumber);
+        }
+
+        private bool InAOEOfNumberOfCardsFittingRestriction(Space space, ActivationContext context)
+        {
+            var count = Game.Cards.Count(c => c.SpaceInAOE(space) && inAOEOfRestriction.IsValidCard(c, context));
+            return numberOfCardsInAOEOfRestriction.IsValidNumber(count);
         }
 
         private bool CardInSpaceOverlapsCardRestriction(GameCard card, Space potentialSpace, ActivationContext context)
@@ -169,20 +185,15 @@ namespace KompasCore.Effects
 
                 ConnectedToCardTargetBy => Game.boardCtrl.AreConnectedBySpaces(target.Position, space, connectednessRestriction, context),
                 ConnectedToCardTargetBySpaces => Game.boardCtrl.AreConnectedBySpaces(target.Position, space, spaceConnectednessRestriction, context),
-                ConnectedToCardTargetByXSpaces
-                    => Game.boardCtrl.AreConnectedByNumberOfSpacesFittingPredicate(target.Position, space,
-                            s => spaceConnectednessRestriction.IsValidSpace(s, context),
-                            connectedSpacesXRestriction.IsValidNumber),
+                ConnectedToCardTargetByXSpaces => IsConnectedToTargetByXSpaces(space, target, context),
 
                 InSourcesAOE => Source.SpaceInAOE(space),
                 NotInAOE => !Source.SpaceInAOE(space),
                 InCardTargetsAOE => target.SpaceInAOE(space),
                 InAOEOfCardFittingRestriction => Game.Cards.Any(c => c.SpaceInAOE(space) && inAOEOfRestriction.IsValidCard(c, context)),
                 NotInAOEOf => !Game.Cards.Any(c => c.SpaceInAOE(space) && inAOEOfRestriction.IsValidCard(c, context)),
-                InAOEOfNumberFittingRestriction => numberOfCardsInAOEOfRestriction.IsValidNumber(
-                    Game.Cards.Count(c => c.SpaceInAOE(space) && inAOEOfRestriction.IsValidCard(c, context))
-                    ),
-                InAOESourceAlsoIn => Game.Cards.Any(c => c.SpaceInAOE(space) && c.CardInAOE(Source)),
+                InAOEOfNumberFittingRestriction => InAOEOfNumberOfCardsFittingRestriction(space, context),
+                InAOESourceAlsoIn => Game.Cards.Any(c => c.SpaceInAOE(space) && c.CardInAOE(Source) && alsoInAOEOfRestriction.IsValidCard(c, context)),
                 SourceInSpaceOverlapsCardRestriction => CardInSpaceOverlapsCardRestriction(Source, space, context),
 
                 SourceDisplacementToSpaceMatchesSpaceTarget => Source.Position.DisplacementTo(space) == Subeffect.SpaceTarget,

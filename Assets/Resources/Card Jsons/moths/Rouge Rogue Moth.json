@@ -1,0 +1,61 @@
+{
+	"cardType": 67,
+	"cardName": "Rouge Rogue Moth",
+	"effText": "Stealth.\nWhen I attack from Shade, double my W.",
+	"effects": [
+		{
+			"blurb": "hello there",
+			"triggerData": {
+				"triggerCondition": "Attack",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card",
+						"This Card Fits Restriction Now"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"In AOE of Card Fitting Restriction"
+							],
+							"inAOEOfRestriction": {
+								"cardRestrictions": [
+									"Subtypes Include"
+								],
+								"subtypesInclude": [
+									"Shade"
+								]
+							}
+						}
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "W"
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"wMultiplier": 1
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Stealth"
+	],
+	"n": 3,
+	"e": 3,
+	"s": 4,
+	"w": 4,
+	"subtypeText": "Shady Flying Warrior Moth"
+}

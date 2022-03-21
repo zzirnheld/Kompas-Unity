@@ -216,6 +216,7 @@ memory/Corporeal Recall
 memory/Memorial Augury
 memory/Recall
 memory/Uncall For
+moths/Rouge Rogue Moth
 music/Soaring Chorus
 music/Surging Verse
 music/Ringing Bridge

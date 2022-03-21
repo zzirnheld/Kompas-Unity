@@ -1,0 +1,61 @@
+{
+	"blurb":"Stealth",
+    "triggerData": {
+        "triggerCondition": "Turn Start",
+        "triggerRestriction": {
+            "triggerRestrictions": [
+                "This Card in Play",
+                "Enemy Turn"
+            ]
+        }
+    },
+	"subeffects":[
+        {
+            "$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+            "spaceRestriction": {
+                "blurb": "where on the Lines to bring them",
+                "spaceRestrictions": [
+                    "In AOE Source is Also In",
+                    "Can Move Card Target to This Space"
+                ],
+                "alsoInAOEOfRestriction": {
+                    "cardRestrictions": [
+                        "Subtypes Include"
+                    ],
+                    "subtypesInclude": [
+                        "Shade"
+                    ]
+                }
+            }
+        },
+        {
+            "$type": "KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+            "numTimesToDelay": 0,
+            "jumpIndices": [
+                2
+            ],
+            "fallOffCondition": "Turn Start",
+            "endCondition": "Arrive",
+            "triggerRestriction": {
+                "triggerRestrictions": [
+                    "Main Card Fits Restriction After"
+                ],
+                "nowRestriction": {
+                    "cardRestrictions": [
+                        "Source in This' AOE",
+                        "Subtypes Include"
+                    ],
+                    "subtypesInclude": [
+                        "Light"
+                    ]
+                }
+            }
+        },
+        {
+            "$type": "KompasServer.Effects.TargetThisSpaceSubeffect, Assembly-CSharp"
+        },
+        {
+            "$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+        }
+	]	
+}
