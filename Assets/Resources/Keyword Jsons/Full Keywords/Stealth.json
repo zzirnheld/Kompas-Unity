@@ -13,7 +13,7 @@
         {
             "$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
             "spaceRestriction": {
-                "blurb": "where on the Lines to bring them",
+                "blurb": "Stealth position to 'actually' be in",
                 "spaceRestrictions": [
                     "In AOE Source is Also In",
                     "Can Move Card Target to This Space"
@@ -52,10 +52,10 @@
             }
         },
         {
-            "$type": "KompasServer.Effects.TargetThisSpaceSubeffect, Assembly-CSharp"
+            "$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
         },
         {
             "$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
         }
-	]	
+	]
 }

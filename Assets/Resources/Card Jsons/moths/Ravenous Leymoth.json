@@ -1,18 +1,18 @@
 {
 	"cardType": 67,
-	"cardName": "Disarming Rogue Moth",
-	"effText": "Stealth.\nWhen I attack a W X character in Light, give them -X W.",
+	"cardName": "Ravenous Leymoth",
+	"effText": "Stealth.\nWhen I attack from Shade, give the defending S X character -XS, and me +XESW.",
 	"effects": [
 		{
-			"blurb": "oh? hello there",
+			"blurb": "*slurps your fluids*",
 			"triggerData": {
 				"triggerCondition": "Attack",
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card is Main Card",
-                        "Secondary Card Fits Restriction Before"
+						"This Card Fits Restriction Now"
 					],
-                    "secondaryCardRestriction": {
+					"cardRestriction": {
 						"cardRestrictions": [
 							"Space Fits Restriction"
 						],
@@ -25,11 +25,11 @@
 									"Subtypes Include"
 								],
 								"subtypesInclude": [
-									"Light"
+									"Shade"
 								]
 							}
 						}
-                    }
+					}
 				}
 			},
 			"subeffects": [
@@ -39,13 +39,22 @@
 				{
 					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
 					"cardValue": {
-						"value": "W"
+						"value": "S"
 					},
 					"xMultiplier": 1
 				},
 				{
 					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"wMultiplier": -1
+					"sMultiplier": -1
+				},
+				{
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMultiplier": 1,
+					"sMultiplier": 1,
+					"wMultiplier": 1
 				}
 			]
 		}
@@ -54,8 +63,8 @@
 		"Stealth"
 	],
 	"n": 3,
-	"e": 3,
-	"s": 4,
-	"w": 4,
-	"subtypeText": "Brilliant Flying Warrior Moth"
+	"e": 1,
+	"s": 5,
+	"w": 1,
+	"subtypeText": "Shady Flying Moth"
 }
