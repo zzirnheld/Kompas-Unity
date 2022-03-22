@@ -165,6 +165,8 @@ light_shade/Light
 light_shade/Shade
 light_shade/Keeper of the Hooded Lantern
 light_shade/Dristzanti, the Illuminator
+light_shade/Shadecreeper
+light_shade/Illalli, the Brilliant
 linewalkers/Blue Linewalker
 linewalkers/Cyan Linewalker
 linewalkers/Green Linewalker
