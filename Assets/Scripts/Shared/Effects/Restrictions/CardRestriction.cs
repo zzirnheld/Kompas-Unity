@@ -103,6 +103,10 @@ namespace KompasCore.Effects
         public const string SourceInThisAOE = "Source in This' AOE"; //whether the source card is in the potential target's aoe
         public const string CardHasCardRestrictionInAOE = "Card has Card Restriction in its AOE";
         public const string CardDoesntHaveCardRestrictionInAOE = "Card doesn't have Card Restriction in its AOE";
+        public const string WouldBeInAOEOfCardTargetIfCardTargetWereAtSpaceTarget 
+            = "Would Be In AOE Of Card Target If Card Target Were At Space Target";
+        public const string WouldOverlapCardTargetIfCardTargetWereAtSpaceTarget
+            = "Would Overlap Card Target If Card Target Were At Space Target";
 
         public const string IndexInListGTC = "Index>C";
         public const string IndexInListLTC = "Index<C";
@@ -118,6 +122,7 @@ namespace KompasCore.Effects
         public const string SpaceRestrictionValidIfThisTargetChosen = "Space Restriction Valid With This Target Chosen";
         public const string AttackingCardFittingRestriction = "Attacking Card Fitting Restriction";
         public const string EffectIsOnTheStack = "Effect is on the Stack";
+
         #endregion restrictions
 
         public string[] cardRestrictions = new string[0];
@@ -205,6 +210,22 @@ namespace KompasCore.Effects
             if (cardToTest.Location != CardLocation.Board) return false;
 
             return Source.Game.Cards.Any(c => cardToTest.CardInAOE(c) && hasInAOERestriction.IsValidCard(c, x, context));
+        }
+
+        private bool WouldCardBeInAOEOfCardTargetIfCardTargetWereAtSpaceTarget(GameCardBase cardToTest, GameCardBase cardTarget, Space space)
+        {
+            if (cardToTest == null) return false;
+            if (space == null) return false;
+
+            return cardTarget.CardInAOE(cardToTest, space);
+        }
+
+        private bool WouldCardOverlapCardTargetIfCardTargetWereAtSpaceTarget(GameCardBase cardToTest, GameCardBase cardTarget, Space space)
+        {
+            if (cardToTest == null) return false;
+            if (space == null) return false;
+
+            return cardTarget.Overlaps(cardToTest, space);
         }
 
         /// <summary>
@@ -305,6 +326,10 @@ namespace KompasCore.Effects
                 SourceInThisAOE => potentialTarget?.CardInAOE(Source) ?? false,
                 CardHasCardRestrictionInAOE => HasCardRestrictionInAOE(potentialTarget, x, context),
                 CardDoesntHaveCardRestrictionInAOE => !HasCardRestrictionInAOE(potentialTarget, x, context),
+                WouldBeInAOEOfCardTargetIfCardTargetWereAtSpaceTarget 
+                    => WouldCardBeInAOEOfCardTargetIfCardTargetWereAtSpaceTarget(potentialTarget, Subeffect.CardTarget, Subeffect.SpaceTarget),
+                WouldOverlapCardTargetIfCardTargetWereAtSpaceTarget
+                    => WouldCardOverlapCardTargetIfCardTargetWereAtSpaceTarget(potentialTarget, Subeffect.CardTarget, Subeffect.SpaceTarget),
                 IndexInListGTC => potentialTarget?.IndexInList > constant,
                 IndexInListLTC => potentialTarget?.IndexInList < constant,
                 IndexInListLTX => potentialTarget?.IndexInList < x,

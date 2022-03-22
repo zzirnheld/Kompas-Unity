@@ -1,0 +1,81 @@
+{
+	"cardType": 67,
+	"cardName": "Keeper of the Hooded Lantern",
+	"effText": "When I arrive, reshuffle all Shade I'm in. Deck->cast Light to a space adjacent to me.",
+	"effects": [
+		{
+            "blurb": "Who goes there?",
+			"triggerData": {
+				"triggerCondition": "Arrive",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Source in This' AOE"
+						],
+						"subtypesInclude": [
+							"Shade"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete": true,
+					"jumpIndices": [
+						1
+					]
+				},
+				{
+					"$type": "KompasServer.Effects.AutoTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Friendly",
+							"Deck",
+							"Spell"
+						],
+						"subtypesInclude": [
+							"Light"
+						]
+					},
+					"tiebreakerDirection":"Any"
+				},
+				{
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where to cast the Weather",
+						"spaceRestrictions": [
+							"Can Play Card Target to This Space",
+							"Space Fits Restriction",
+							"Empty"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Source"
+							]
+						}
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"n": 1,
+	"e": 6,
+	"s": 4,
+	"w": 4,
+	"subtypeText": "Illuminating Mage"
+}

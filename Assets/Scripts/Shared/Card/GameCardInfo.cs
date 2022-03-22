@@ -76,9 +76,9 @@ namespace KompasCore.Cards
         /// Whether <paramref name="space"/> is in this card's AOE if this card is at <paramref name="mySpace"/>
         /// </summary>
         public bool SpaceInAOE(Space space, Space mySpace)
-            => SpellSubtypes != null && SpellSubtypes.Any(s => s switch
+            => space != null && mySpace != null && SpellSubtypes != null && SpellSubtypes.Any(s => s switch
             {
-                RadialSubtype => (mySpace?.DistanceTo(space) ?? 50) <= Radius,
+                RadialSubtype => mySpace.DistanceTo(space) <= Radius,
                 _ => false
             });
         public bool SpaceInAOE(Space space) => SpaceInAOE(space, Position);

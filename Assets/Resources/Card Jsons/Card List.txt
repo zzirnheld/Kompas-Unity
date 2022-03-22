@@ -163,6 +163,8 @@ Leybinding
 Leylasher
 light_shade/Light
 light_shade/Shade
+light_shade/Keeper of the Hooded Lantern
+light_shade/Dristzanti, the Illuminator
 linewalkers/Blue Linewalker
 linewalkers/Cyan Linewalker
 linewalkers/Green Linewalker
