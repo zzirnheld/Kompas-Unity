@@ -1,0 +1,63 @@
+{
+	"cardType": 83,
+	"cardName": "Call of the Moon",
+	"effText": "When Light arrives, move a Moth to a space in it. (By default, this will resolve after any Stealth triggers.)",
+	"effects": [
+		{
+			"blurb": "brOther, the mOOn",
+			"triggerData": {
+				"orderPriority": 5,
+				"triggerCondition": "Arrive",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Light"
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Moth that feels the call",
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Moth"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "mOOn",
+						"spaceRestrictions": [
+							"Empty",
+							"Can Move Card Target to This Space",
+							"In Card Target's AOE"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"c": 1,
+	"spellTypes": [
+		"Enchant"
+	],
+	"subtypeText": "Enchant"
+}

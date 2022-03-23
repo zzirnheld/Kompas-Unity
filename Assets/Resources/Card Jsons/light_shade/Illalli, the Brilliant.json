@@ -52,8 +52,8 @@
 			]
 		},
 		{
+			"blurb": "Blinding Lights",
 			"triggerData": {
-				"blurb": "Watch for Truth",
 				"triggerCondition": "Arrive",
 				"triggerRestriction": {
 					"triggerRestrictions": [

@@ -167,6 +167,7 @@ light_shade/Keeper of the Hooded Lantern
 light_shade/Dristzanti, the Illuminator
 light_shade/Shadecreeper
 light_shade/Illalli, the Brilliant
+light_shade/Lightbulb Idea
 linewalkers/Blue Linewalker
 linewalkers/Cyan Linewalker
 linewalkers/Green Linewalker
@@ -226,6 +227,9 @@ moths/Massive Moon Moth
 moths/Searing Sun Moth
 moths/Ravenous Leymoth
 moths/Poodle Moth
+moths/Mothmisidentification
+moths/Call of the Moon
+moths/Cloaked in Shadow
 music/Soaring Chorus
 music/Surging Verse
 music/Ringing Bridge
