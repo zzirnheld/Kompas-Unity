@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Prophet of Mercy",
-	"effText": "When turns start, set X to the number of adjacent Supplicants. Deck-cast a C <= X Plea.",
+	"effText": "When I start turns adjacent to X Supplicants, deck-cast a C <= X Plea.",
 	"effects": [
 		{
 			"triggerData": {

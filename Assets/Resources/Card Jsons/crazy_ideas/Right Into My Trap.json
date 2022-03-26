@@ -23,8 +23,7 @@
 							"subtypesInclude": [
 								"Crazy"
 							]
-						},
-						"mustBeEmpty": false
+						}
 					}
 				}
 			},
@@ -43,9 +42,5 @@
 		"Ificate"
 	],
 	"c": 5,
-	"spellTypes": [
-		"Radial"
-	],
-	"subtypeText": "Crazy Idea Enchant Ificator",
-	"radius": 1
+	"subtypeText": "Crazy Idea Enchant Ificator"
 }

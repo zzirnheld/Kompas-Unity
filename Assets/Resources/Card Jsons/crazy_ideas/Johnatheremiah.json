@@ -4,12 +4,14 @@
 	"effText": "When I'm summoned, choose 1 friendly discarded Crazy Idea. Reshuffle all other X. Give me +X W.",
 	"effects": [
 		{
-			"blurb": "Intern Nonsense",
-			"activationRestriction": {
-				"activationRestrictionArray": [
-					"Max Times Per Turn",
-					"Default"
-				]
+			"blurb":"Intern Nonsense",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
 			},
 			"subeffects": [
 				{
@@ -17,7 +19,7 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Friendly",
-							"Hand"
+							"Discard"
 						]
 					}
 				},
@@ -26,7 +28,7 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Friendly",
-							"Hand",
+							"Discard",
 							"Not Already Target"
 						]
 					}
