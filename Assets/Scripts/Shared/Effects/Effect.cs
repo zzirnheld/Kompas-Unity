@@ -30,6 +30,7 @@ namespace KompasCore.Effects
         //we don't care about informing players of the contents of these. yet. but we might later
         public readonly List<GameCardInfo> cardInfoTargets = new List<GameCardInfo>();
         public readonly List<Player> playerTargets = new List<Player>();
+        public readonly List<IStackable> stackableTargets = new List<IStackable>();
         public readonly List<GameCard> rest = new List<GameCard>();
 
         public IEnumerable<GameCard> CardTargets => cardTargets;
@@ -88,7 +89,7 @@ namespace KompasCore.Effects
         public virtual bool CanBeActivatedAtAllBy(Player activator)
             => Trigger == null && activationRestriction != null && activationRestriction.IsPotentiallyValidActivation(activator);
 
-        public T GetItem<T>(IEnumerable<T> enumerable, int index)
+        public static T GetItem<T>(IEnumerable<T> enumerable, int index)
         {
             int trueIndex = index < 0 ? index + enumerable.Count() : index;
             if (trueIndex < 0) return default;

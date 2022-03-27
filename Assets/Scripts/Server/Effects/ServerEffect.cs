@@ -135,14 +135,15 @@ namespace KompasServer.Effects
             X = context.x ?? 0;
 
             cardTargets.Clear();
-            //Add the targets one by one so the client knows that they're current targets
-            if (context.Targets != null) context.Targets.ForEach(AddTarget);
-            if (context.Spaces != null) context.Spaces.ForEach(AddSpace);
-
             spaceTargets.Clear();
-
             playerTargets.Clear();
+            stackableTargets.Clear();
+
+            //Add the targets one by one so the client knows that they're current targets
+            if (context.CardTargets != null) context.CardTargets.ForEach(AddTarget);
+            if (context.SpaceTargets != null) context.SpaceTargets.ForEach(AddSpace);
             playerTargets.Add(Controller);
+            if (context.stackable != null) stackableTargets.Add(context.stackable);
 
             //notify relevant to this effect starting
             ServerController.ServerNotifier.NotifyEffectX(Source, EffectIndex, X);
