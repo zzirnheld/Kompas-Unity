@@ -56,7 +56,7 @@ namespace KompasServer.Effects
         protected override void Resolve(ActivationContext context)
         {
             var myContext = context.Copy;
-            myContext.SetResumeInfo(targets, spaces, indexToResumeResolution);
+            myContext.SetResumeInfo(targets, spaces, default, default, default, default, indexToResumeResolution);
             serverGame.EffectsController.PushToStack(toResume, controller, myContext);
         }
     }

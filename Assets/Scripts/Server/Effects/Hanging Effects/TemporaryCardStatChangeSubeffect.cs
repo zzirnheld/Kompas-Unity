@@ -48,7 +48,8 @@ namespace KompasServer.Effects
 
             Debug.Log($"Creating temp NESW buff effect during context {Context}");
             var contextCopy = Context.Copy;
-            contextCopy.SetResumeInfo(Effect.CardTargets, Effect.SpaceTargets);
+            contextCopy.SetResumeInfo(Effect.CardTargets, Effect.SpaceTargets, Effect.stackableTargets,
+                CardTarget, SpaceTarget, StackableTarget);
 
             var temp = new TemporaryCardStatChange(game: ServerGame,
                                              triggerRestriction: triggerRestriction,

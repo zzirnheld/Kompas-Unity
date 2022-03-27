@@ -43,7 +43,8 @@ namespace KompasServer.Effects
 
             var buff = Buff;
             var contextCopy = Context.Copy;
-            contextCopy.SetResumeInfo(Effect.CardTargets, Effect.SpaceTargets);
+            contextCopy.SetResumeInfo(Effect.CardTargets, Effect.SpaceTargets, Effect.stackableTargets,
+                CardTarget, SpaceTarget, StackableTarget);
 
             foreach (var card in cards)
             {
