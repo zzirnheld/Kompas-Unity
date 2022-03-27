@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Roth'Ka Spymaster",
-	"effText": "Once per friendly turn, you can hand a friendly summon. If it's a spy, it gains -1S.",
+	"effText": "Once per friendly turn, you can rehand a friendly summon. If it's a spy, it gains -1S.",
 	"effects":[
 		{
 			"blurb": "Retrieve",

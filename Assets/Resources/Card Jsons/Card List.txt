@@ -230,6 +230,7 @@ Notcropoten
 orcs/Clever Decoy
 orcs/Escape Route
 orcs/Glimmer of Hope
+orcs/Raven Scout
 orcs/Roth Agent
 orcs/Roth Assassin
 orcs/Roth Avenger

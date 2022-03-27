@@ -44,6 +44,9 @@
 				},
 				{
 					"$type": "KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"jumpIndices": [
+						6
+					],
 					"endCondition": "Battle End",
 					"triggerRestriction": {
 						"triggerRestrictions": [

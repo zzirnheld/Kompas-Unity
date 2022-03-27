@@ -11,21 +11,29 @@
 	},
 	"subeffects": [
 		{
-			"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+			"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+			"listRestriction": {
+				"listRestrictions": [
+					"Min Can Choose"
+				],
+				"minCanChoose": 0
+			},
 			"cardRestriction": {
 				"blurb": "Burn cards for smite",
-				"cardRestrictions": [ "Friendly", "Hand"]
+				"cardRestrictions": [ "Friendly", "Hand" ]
+			}
+		},
+		{
+			"$type": "KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+			"whatToCount": "Cards Fitting Restriction",
+			"cardRestriction": {
+				"cardRestrictions": [
+					"Already Target"
+				]
 			}
 		},
 		{
 			"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
-		},
-		{
-			"$type": "KompasServer.Effects.CountXLoopSubeffect, Assembly-CSharp",
-			"canDecline": true,
-			"jumpIndices": [
-				0
-			]
 		},
 		{
 			"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
