@@ -1,0 +1,46 @@
+{
+	"cardType": 67,
+	"cardName": "Roth'Drek Phantom",
+	"effText": "Ambush.\n Pay 2 pips -> Hand this card.",
+	"effects": [
+		{
+			"blurb": "Withdraw",
+			"activationRestriction": {
+				"activationRestrictionArray": [
+					"Max Times Per Turn",
+					"Friendly Turn",
+					"Default"
+				]
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
+					"subeffIndices": [ 1 ]
+				},
+				{
+					"$type": "KompasServer.Effects.PayPipsSubeffect, Assembly-CSharp",
+					"xMultiplier": 0,
+					"xModifier": 2
+				},
+				{
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"keywords":[
+		"Ambush"
+	],
+	"n": 4,
+	"e": 3,
+	"s": 7,
+	"w": 7,
+	"subtypes": [
+		"Orc",
+		"Spy"
+	],
+	"subtypeText": "Orc Spy"
+}

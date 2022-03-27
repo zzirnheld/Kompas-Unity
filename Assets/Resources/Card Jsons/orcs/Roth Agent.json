@@ -1,0 +1,37 @@
+{
+	"cardType": 67,
+	"cardName": "Roth Agent",
+	"effText": "Ambush.\n When you rehand this card, draw 1.",
+	"effects": [
+		{
+			"blurb": "Supplies have been recovered.",
+			"triggerData": {
+				"triggerCondition": "Rehand",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"xMultiplier": 1,
+					"xModifier": 1
+				}
+			]
+		}
+	],
+	"keywords":[
+		"Ambush"
+	],
+	"n": 3,
+	"e": 1,
+	"s": 2,
+	"w": 1,
+	"subtypes": [
+		"Orc",
+		"Spy"
+	],
+	"subtypeText": "Orc Spy"
+}

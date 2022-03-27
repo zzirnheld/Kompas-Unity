@@ -1,0 +1,54 @@
+{
+	"cardType": 67,
+	"cardName": "Roth'Ka Spymaster",
+	"effText": "Once per friendly turn, you can hand a friendly summon. If it's a spy, it gains -1S.",
+	"effects":[
+		{
+			"blurb": "Retrieve",
+			"activationRestriction": {
+				"activationRestrictionArray": [
+					"Max Times Per Turn",
+					"Friendly Turn",
+					"Default"
+				]
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Hand a friendly summon",
+						"cardRestrictions": [
+							"Different from Source",
+							"Friendly",
+							"Character",
+							"Board"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"forbidNotBoard": false,
+					"sModifier": -1,
+					"cardRestriction": {
+						"subtypesInclude": [
+							"Spy"
+						]
+					}
+
+				}
+			]
+		}
+	],
+	"n": 3,
+	"e": 5,
+	"s": 5,
+	"w": 1,
+	"subtypes": [
+		"Orc",
+		"Spy"
+	],
+	"subtypeText": "Orc Spy"
+}

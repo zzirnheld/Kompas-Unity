@@ -227,6 +227,16 @@ music/Backup Track
 music/Hard Rock
 None Defy the Lines
 Notcropoten
+orcs/Clever Decoy
+orcs/Escape Route
+orcs/Glimmer of Hope
+orcs/Roth Agent
+orcs/Roth Assassin
+orcs/Roth Avenger
+orcs/Roth Guerilla
+orcs/Roth'Drek Phantom
+orcs/Roth'Ka Spymaster
+orcs/Unassuming Bush
 pulsars/Accelerating Pulsar
 pulsars/Boldening Pulsar
 pulsars/Cannot Be Created Nor Destroyed
