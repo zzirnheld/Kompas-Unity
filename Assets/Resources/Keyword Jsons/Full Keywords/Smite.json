@@ -30,10 +30,18 @@
 				"cardRestrictions": [
 					"Already Target"
 				]
-			}
+			},
+			"xMultiplier": 1
 		},
 		{
 			"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+		},
+		{
+			"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+			"delete": true,
+			"jumpIndices": [
+				2
+			]
 		},
 		{
 			"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
