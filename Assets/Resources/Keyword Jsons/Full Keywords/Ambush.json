@@ -42,6 +42,13 @@
 					"Stackable is Secondary Delayed Stackable Target"
 				]
 			}
+		},
+		{
+			"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+		},
+		{
+			"$type": "KompasServer.Effects.SpendAttacksSubeffect, Assembly-CSharp",
+			"xModifier": 1
 		}
 	]
 }
