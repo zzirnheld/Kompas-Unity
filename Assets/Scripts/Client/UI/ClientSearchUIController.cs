@@ -87,7 +87,7 @@ namespace KompasClient.UI
             SearchShowIndex(searchIndex);
             if (CurrSearchData.targetingSearch) searchTargetButtonText.text = "Choose";
             else searchTargetButtonText.text = "Cancel";
-            cardSearchView.SetActive(CurrSearchData.AnyToSearchNotVisible);
+            cardSearchView.SetActive(CurrSearchData.ShouldShowSearchUI);
         }
 
         /// <summary>
@@ -141,7 +141,7 @@ namespace KompasClient.UI
                 return;
             }
 
-            cardSearchView.SetActive(CurrSearchData.AnyToSearchNotVisible);
+            cardSearchView.SetActive(CurrSearchData.ShouldShowSearchUI);
 
             var toShow = CurrSearchData.toSearch[index];
             cardInfoView.ShowInfoFor(toShow);
