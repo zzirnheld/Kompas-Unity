@@ -35,7 +35,8 @@ namespace KompasClient.GameCore
             /// <summary>
             /// Whether any cards currently able to be searched can't currently be seen and clicked on.
             /// </summary>
-            public bool AnyToSearchNotVisible => toSearch.Any(c => !c.CurrentlyVisible);
+            private bool AnyToSearchNotVisible => toSearch.Any(c => !c.CurrentlyVisible);
+            public bool ShouldShowSearchUI => AnyToSearchNotVisible || HaveEnough || !listRestriction.HasMax;
 
             public string SearchProgress
             {
@@ -45,8 +46,8 @@ namespace KompasClient.GameCore
                     if (listRestriction == null) return null;
                     else if (listRestriction.HasMin && listRestriction.HasMax)
                         return $"{numSearched} / {listRestriction.minCanChoose} - {listRestriction.maxCanChoose}";
-                    else if (listRestriction.HasMax) return $"{numSearched} / {listRestriction.maxCanChoose}";
-                    else if (listRestriction.HasMin) return $"{numSearched} / {listRestriction.minCanChoose}";
+                    else if (listRestriction.HasMax) return $"{numSearched} / {listRestriction.maxCanChoose}-";
+                    else if (listRestriction.HasMin) return $"{numSearched} / {listRestriction.minCanChoose}+";
                     else return null;
                 }
             }
@@ -58,7 +59,7 @@ namespace KompasClient.GameCore
         /// <summary>
         /// Whether there's currently any card that the player can target in their search, that isn't visible right in front of them.
         /// </summary>
-        public bool CanSearchNotVisibleCard => CurrSearchData.HasValue && CurrSearchData.Value.AnyToSearchNotVisible;
+        public bool ShouldShowSearchUI => CurrSearchData?.ShouldShowSearchUI ?? false;
 
         public ClientGame clientGame;
         public ClientSearchUIController clientSearchUICtrl;
@@ -79,7 +80,7 @@ namespace KompasClient.GameCore
             Debug.Log($"Searching a list of {data.toSearch.Length} cards: {string.Join(",", data.toSearch.Select(c => c.CardName))}");
 
             //initiate search process
-            if (CanSearchNotVisibleCard) clientSearchUICtrl.StartShowingSearch();
+            if (ShouldShowSearchUI) clientSearchUICtrl.StartShowingSearch();
         }
 
         /// <summary>
