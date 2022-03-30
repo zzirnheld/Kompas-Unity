@@ -36,7 +36,7 @@ namespace KompasClient.GameCore
             /// Whether any cards currently able to be searched can't currently be seen and clicked on.
             /// </summary>
             private bool AnyToSearchNotVisible => toSearch.Any(c => !c.CurrentlyVisible);
-            public bool ShouldShowSearchUI => AnyToSearchNotVisible || !listRestriction.HasMin || !listRestriction.HasMax;
+            public bool ShouldShowSearchUI => AnyToSearchNotVisible || HaveEnough || !listRestriction.HasMax;
 
             public string SearchProgress
             {
