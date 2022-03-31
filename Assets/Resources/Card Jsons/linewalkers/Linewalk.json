@@ -39,8 +39,10 @@
 							"Connected to Card Target by Spaces Fitting Restriction"
 						],
 						"spaceConnectednessRestriction": {
-							"mustBeEmpty": true,
-							"spaceRestrictions": []
+							"spaceRestrictions": [
+								"Empty",
+								"On Card Target's Diagonal"
+							]
 						}
 					}
 				},

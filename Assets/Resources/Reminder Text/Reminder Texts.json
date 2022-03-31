@@ -2,11 +2,11 @@
 	"keywordReminderTexts": [
 		{
 			"keyword": "Linewalk.",
-			"reminder": "During friendly turns, you can count me as moving as many spaces as I can to move me through empty spaces to any space along my diagonal."
+			"reminder": "During friendly turns, I can spend my available movement to move myself through empty spaces to any space along my diagonal."
 		},
 		{
 			"keyword": "Shape.",
-			"reminder": "During friendly turns, you can use a space of movement and give me -X E to move me through X Ethereal characters."
+			"reminder": "During friendly turns, I can spend a space of movement and give myself -X E to move myself through X Ethereal characters."
 		},
 		{
 			"keyword": "Vessel.",
@@ -34,11 +34,11 @@
 		},
 		{
 			"keyword": "Runic.",
-			"reminder": "Can’t be cast normally."
+			"reminder": "Can't be cast normally."
 		},
 		{
 			"keyword": "Golem.",
-			"reminder": "While I’m inactive, I can’t attack or move."
+			"reminder": "While I'm inactive, I can't attack or move."
 		},
 		{
 			"keyword": "Supplicant.",
@@ -50,7 +50,7 @@
 		},
 		{
 			"keyword": "Weather Event.",
-			"reminder": "Can’t be played normally during friendly turns. Must be played in two Weathers."
+			"reminder": "Can't be played normally during friendly turns. Must be played in two Weathers."
 		},
 		{
 			"keyword": "martyr",
@@ -122,7 +122,7 @@
 		},
 		{
 			"keyword": "Pilot a Mech",
-			"reminder": "Annihilate me. Hand->summon a Mech Golem where I was and activate it, but when it dies, summon me where it was, and negate me until the next turn starts."
+			"reminder": "Annihilate me. Hand->summon a Mech Golem where I was and activate it. When it dies, summon me where it was and negate me until the next turn starts."
 		},
 		{
 			"keyword": "Nimble",
@@ -134,11 +134,11 @@
 		},
 		{
 			"keyword": "Ambush.",
-			"reminder": "When I'm summoned, I attack an adjacent enemy."
+			"reminder": "When I'm summoned, I attack an adjacent W X enemy. Give them -X W until the battle ends."
 		},
 		{
 			"keyword": "Smite.",
-			"reminder": "When I attack, discard X cards to give me +2XW for the battle."
+			"reminder": "When I attack, hand->discard X cards. Give me +2X W until the battle ends."
 		}
 	]
 }
