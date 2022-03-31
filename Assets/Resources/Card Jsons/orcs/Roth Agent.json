@@ -9,8 +9,14 @@
 				"triggerCondition": "Rehand",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card is Main Card"
-					]
+						"This Card is Main Card",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Board"
+						]
+					}
 				}
 			},
 			"subeffects": [
