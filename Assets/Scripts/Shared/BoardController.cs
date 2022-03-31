@@ -12,8 +12,8 @@ namespace KompasCore.GameCore
     //Not abstract because Client uses this base class
     public class BoardController : MonoBehaviour, IGameLocation
     {
-        public const int SpacesInGrid = 7;
-        public const float BoardLenOffset = 7f;
+        public const int SpacesInGrid = Space.BoardLen;
+        public const float BoardLenOffset = Space.BoardLenf;
         public const float LenOneSpace = 2f;
         public const float SpaceOffset = LenOneSpace / 2f;
         public const float CardHeight = 0.15f;
@@ -153,8 +153,8 @@ namespace KompasCore.GameCore
         {
             if (start == destination) return 0;
 
-            int[,] dist = new int[7, 7];
-            bool[,] seen = new bool[7, 7];
+            int[,] dist = new int[Space.BoardLen, Space.BoardLen];
+            bool[,] seen = new bool[Space.BoardLen, Space.BoardLen];
 
             var queue = new Queue<Space>();
 
@@ -362,9 +362,9 @@ namespace KompasCore.GameCore
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < Space.BoardLen; i++)
             {
-                for (int j = 0; j < 7; j++)
+                for (int j = 0; j < Space.BoardLen; j++)
                 {
                     var card = Board[i, j];
                     if (card != null) sb.Append($"At {i}, {j}, {card.CardName} id {card.ID}");

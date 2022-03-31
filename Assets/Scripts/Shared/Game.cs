@@ -77,9 +77,9 @@ namespace KompasCore.GameCore
             else
             {
                 //iterate through all possible spaces
-                for (int i = 0; i < 7; i++)
+                for (int i = 0; i < Space.BoardLen; i++)
                 {
-                    for (int j = 0; j < 7; j++)
+                    for (int j = 0; j < Space.BoardLen; j++)
                     {
                         //if there *is* a possible space to play it to, they're not surrounded
                         if (boardCtrl.ExistsCardOnBoard(c => IsFriendlyAdjacentToCoords((i, j), c, friendly))) return false;

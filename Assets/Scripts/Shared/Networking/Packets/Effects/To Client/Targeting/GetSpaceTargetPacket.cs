@@ -18,8 +18,8 @@ namespace KompasCore.Networking
         {
             this.cardName = cardName;
             this.targetBlurb = targetBlurb;
-            this.possibleSpaces = possibleSpaces.Select(s => s.x * 7 + s.y).ToArray();
-            this.recommendedSpaces = recommendedSpaces.Select(s => s.x * 7 + s.y).ToArray();
+            this.possibleSpaces = possibleSpaces.Select(s => s.x * Space.BoardLen + s.y).ToArray();
+            this.recommendedSpaces = recommendedSpaces.Select(s => s.x * Space.BoardLen + s.y).ToArray();
         }
     }
 }
@@ -32,7 +32,7 @@ namespace KompasClient.Networking
         {
             clientGame.targetMode = Game.TargetMode.SpaceTarget;
             //TODO check whether client setting says "yes recommendations" or not
-            clientGame.CurrentPotentialSpaces = recommendedSpaces.Select(s => (s / 7, s % 7)).ToArray();
+            clientGame.CurrentPotentialSpaces = recommendedSpaces.Select(s => (s / Space.BoardLen, s % Space.BoardLen)).ToArray();
             clientGame.clientUICtrl.SetCurrState($"Choose {cardName}'s Space Target", targetBlurb);
         }
     }

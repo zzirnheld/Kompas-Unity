@@ -34,9 +34,9 @@ namespace KompasServer.Effects
         /// <see langword="false"/> otherwise</returns>
         public bool WillBePossibleIfCardTargeted(GameCard theoreticalTarget)
         {
-            for (int x = 0; x < 7; x++)
+            for (int x = 0; x < Space.BoardLen; x++)
             {
-                for (int y = 0; y < 7; y++)
+                for (int y = 0; y < Space.BoardLen; y++)
                 {
                     if (spaceRestriction.IsValidSpace((x, y), Context, theoreticalTarget)) return true;
                 }
