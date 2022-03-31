@@ -17,7 +17,18 @@
 					"$type": "KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetAttackerSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "What creature does the camouflage look like?",
+						"cardRestrictions": [
+							"Friendly",
+							"Hand",
+							"Hidden"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.RevealSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
@@ -25,6 +36,9 @@
 						"value": "W"
 					},
 					"xMultiplier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.TargetAttackerSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",

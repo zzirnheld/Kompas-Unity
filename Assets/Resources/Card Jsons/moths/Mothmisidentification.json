@@ -20,6 +20,7 @@
 						"cardRestrictions": [
 							"Friendly",
 							"Hand",
+							"Hidden",
 							"Subtypes Include"
 						],
 						"subtypesInclude": [
