@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Roth'Ka Spymaster",
-	"effText": "Once per friendly turn, you can rehand a friendly summon. If it's a spy, it gains -1S.",
+	"effText": "Once each friendly turn, you can board->hand a friendly character. If they're a spy, give them -1 S.",
 	"effects":[
 		{
 			"blurb": "Retrieve",
@@ -29,15 +29,21 @@
 					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"forbidNotBoard": false,
-					"sModifier": -1,
+					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition": "Target Violates Restriction",
 					"cardRestriction": {
+						"cardRestrictions": [
+							"Subtypes Include"
+						],
 						"subtypesInclude": [
 							"Spy"
 						]
 					}
-
+				},
+				{
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"forbidNotBoard": false,
+					"sModifier": -1
 				}
 			]
 		}

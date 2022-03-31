@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Roth Agent",
-	"effText": "Ambush.\n When you rehand this card, draw 1.",
+	"effText": "Ambush.\nWhen you board->hand me, draw 1 card.",
 	"effects": [
 		{
 			"blurb": "Supplies have been recovered.",

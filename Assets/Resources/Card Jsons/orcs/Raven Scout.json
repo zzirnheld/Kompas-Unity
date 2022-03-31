@@ -3,10 +3,10 @@
 	"cardName": "Raven Scout",
 	"effText": "<i>An ill omen.</i>",
 	"effects": [],
-	"n": 5,
+	"n": 3,
 	"e": 1,
-	"s": 2,
-	"w": 1,
+	"s": 1,
+	"w": 0,
 	"subtypes": [
 		"Beast",
 		"Spy"

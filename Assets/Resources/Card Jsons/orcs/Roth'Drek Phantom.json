@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Roth'Drek Phantom",
-	"effText": "Ambush.\n Pay 2 pips -> Hand this card.",
+	"effText": "Ambush.\nDuring your turn, you can pay 2 pips to hand this card.",
 	"effects": [
 		{
 			"blurb": "Withdraw",

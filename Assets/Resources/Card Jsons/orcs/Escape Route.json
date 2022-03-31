@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Escape Route",
-	"effText": "Once per turn, pay 2 pips -> Rehand a friendly adjacent summon.",
+	"effText": "During your turn, you can hand an adjacent character.",
 	"effects": [
 		{
 			"blurb": "Escape",

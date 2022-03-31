@@ -1,7 +1,7 @@
 {
 	"cardType": 65,
 	"cardName": "Clever Decoy",
-	"effText": "When this character is attacked, negate all damage and rehand them after the battle.",
+	"effText": "When this character defends, give their W X attacker -X W until the fight ends. After the fight, rehand this character.",
 	"effects": [
 		{
 			"blurb": "Decoy!",
