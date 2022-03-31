@@ -230,6 +230,9 @@ moths/Poodle Moth
 moths/Mothmisidentification
 moths/Call of the Moon
 moths/Cloaked in Shadow
+moths/Faerie Moth
+moths/Hidden Pupa
+moths/Initimitation
 music/Soaring Chorus
 music/Surging Verse
 music/Ringing Bridge

@@ -1,0 +1,36 @@
+{
+	"cardType": 67,
+	"cardName": "Faerie Moth",
+	"effText": "Stealth, and echo me.\nWhen I'm summoned in Light, draw 1 card.",
+	"effects": [
+		{
+			"blurb": "Faerie stealth",
+            "triggerData": {
+                "triggerCondition": "Turn Start",
+                "triggerRestriction": {
+                    "triggerRestrictions": [
+                        "This Card in Play",
+                        "Enemy Turn"
+                    ]
+                }
+            },
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.KeywordSubeffect, Assembly-CSharp",
+					"keyword": "Stealth But"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSpaceSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"n": 2,
+	"e": 1,
+	"s": 2,
+	"w": 0,
+	"subtypeText": "Ethereal Flying Moth"
+}

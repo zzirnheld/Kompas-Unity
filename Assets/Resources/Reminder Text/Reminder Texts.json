@@ -131,6 +131,10 @@
 		{
 			"keyword":"Spores",
 			"reminder":"The first time each stack I'm activated, pulse adjacent characters. (Activate, then deactivate each.)"
+		},
+		{
+			"keyword":"Stealth",
+			"reminder":"When enemy turns start, pick a Space in the same Shade I'm in. If it gets lit up this turn (Light arrives encompassing it), move me there."
 		}
 	]
 }
