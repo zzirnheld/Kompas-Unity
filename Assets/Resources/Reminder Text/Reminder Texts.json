@@ -139,6 +139,10 @@
 		{
 			"keyword": "Smite.",
 			"reminder": "When I attack, hand->discard X cards. Give me +2X W until the battle ends."
+		},
+		{
+			"keyword": "Artillery",
+			"reminder": "Once per turn, pay 1 pip to give -X E to an enemy on the board."
 		}
 	]
 }

@@ -235,8 +235,11 @@ orcs/Roth Agent
 orcs/Roth Assassin
 orcs/Roth Avenger
 orcs/Roth Guerilla
+orcs/Roth Warrior
+orcs/Roth'Drek Champion
 orcs/Roth'Drek Phantom
 orcs/Roth'Ka Spymaster
+orcs/Spiked Barricade
 orcs/Unassuming Bush
 pulsars/Accelerating Pulsar
 pulsars/Boldening Pulsar

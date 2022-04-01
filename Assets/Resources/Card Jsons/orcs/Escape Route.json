@@ -7,16 +7,11 @@
 			"blurb": "Escape",
 			"activationRestriction": {
 				"activationRestrictionArray": [
-					"Max Times Per Turn",
 					"Friendly Turn",
 					"Default"
 				]
 			},
 			"subeffects": [
-				{
-					"$type": "KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
-					"subeffIndices": [ 2 ]
-				},
 				{
 					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction": {
@@ -29,11 +24,6 @@
 						],
 						"spaceRestriction": { "spaceRestrictions": [ "Adjacent to Source" ] }
 					}
-				},
-				{
-					"$type": "KompasServer.Effects.PayPipsSubeffect, Assembly-CSharp",
-					"xMultiplier": 0,
-					"xModifier": 2
 				},
 				{
 					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"

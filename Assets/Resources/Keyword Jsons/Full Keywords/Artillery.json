@@ -1,0 +1,33 @@
+{
+	"blurb": "Artillery",
+	"activationRestriction": {
+		"activationRestrictionArray": [
+			"Max Times Per Turn",
+			"Friendly Turn",
+			"Default"
+		]
+	},
+	"subeffects": [
+		{
+			"$type": "KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
+			"subeffIndices": [ 2 ]
+		},
+		{
+			"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+			"cardRestriction": {
+				"blurb": "Pick a target to attack",
+				"cardRestrictions": [ "Enemy", "Character", "Board" ]
+			}
+		},
+		{
+			"$type": "KompasServer.Effects.PayPipsSubeffect, Assembly-CSharp",
+			"xMultiplier": 0,
+			"xModifier": 1
+		},
+		{
+			"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+			"eModifier": "Arg",
+			"eMultiplier": -1
+		}
+	]
+}
