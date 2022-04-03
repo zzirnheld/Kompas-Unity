@@ -74,7 +74,7 @@ public class CardRepository : MonoBehaviour
             var jsonAsset = Resources.Load<TextAsset>(cardJsonsFolderPath + filenameClean);
             if (jsonAsset == null)
             {
-                Debug.LogError($"Failed to load json for {filenameClean}");
+                Debug.LogError($"Failed to load json file for {filenameClean}");
                 continue;
             }
             string json = jsonAsset.text;

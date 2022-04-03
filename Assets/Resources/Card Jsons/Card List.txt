@@ -232,7 +232,7 @@ moths/Call of the Moon
 moths/Cloaked in Shadow
 moths/Faerie Moth
 moths/Hidden Pupa
-moths/Initimitation
+moths/Intimitation
 music/Soaring Chorus
 music/Surging Verse
 music/Ringing Bridge
