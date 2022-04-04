@@ -235,6 +235,7 @@ moths/Faerie Moth
 moths/Hidden Pupa
 moths/Intimitation
 moths/Hummingbird Hawkmoth
+moths/Atlas Moth
 music/Soaring Chorus
 music/Surging Verse
 music/Ringing Bridge
