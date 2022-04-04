@@ -168,6 +168,7 @@ light_shade/Dristzanti, the Illuminator
 light_shade/Shadecreeper
 light_shade/Illalli, the Brilliant
 light_shade/Lightbulb Idea
+light_shade/Light Up
 linewalkers/Blue Linewalker
 linewalkers/Cyan Linewalker
 linewalkers/Green Linewalker

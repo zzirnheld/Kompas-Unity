@@ -118,7 +118,7 @@ namespace KompasCore.Effects
         private bool IsRestrictionValid(string restriction, ActivationContext context, ActivationContext secondary = default) => restriction switch
         {
             //card triggering stuff
-            ThisCardIsMainCard => context.mainCardInfoBefore.Card == ThisCard,
+            ThisCardIsMainCard => context.mainCardInfoBefore?.Card == ThisCard,
             ThisCardIsSecondaryCard => context.secondaryCardInfoBefore.Card == ThisCard,
             AugmentedCardIsMainCard => context.mainCardInfoBefore.Augments.Contains(ThisCard),
 

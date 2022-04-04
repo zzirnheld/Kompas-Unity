@@ -11,6 +11,9 @@
     },
 	"subeffects":[
         {
+            "$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+        },
+        {
             "$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
             "spaceRestriction": {
                 "blurb": "Stealth position to 'actually' be in",
@@ -50,9 +53,6 @@
                     ]
                 }
             }
-        },
-        {
-            "$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
         },
         {
             "$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
