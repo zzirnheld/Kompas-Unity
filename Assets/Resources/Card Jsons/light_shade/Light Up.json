@@ -43,16 +43,6 @@
 			]
 		}
 	],
-	"PlayRestriction": {
-		"recommendationRestrictions": [
-			"Adjacent to Card Fitting Restriction"
-		],
-		"adjacentCardRestriction": {
-			"cardRestrictions": [
-				"Spell"
-			]
-		}
-	},
 	"c": 2,
 	"spellTypes": [
 		"Simple"

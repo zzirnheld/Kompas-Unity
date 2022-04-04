@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Shade",
-	"effText": "Can't overlap Light or Shade.\nIf nothing is happening and there's enemy characters here, reshuffle me and deck->cast Light where I was.",
+	"effText": "If nothing is happening and there's enemy characters here, reshuffle me and deck->cast Light where I was.",
 	"effects": [
 		{
             "blurb":"Light Up",
@@ -49,54 +49,6 @@
             ]	
         }
 	],
-	"MovementRestriction": {
-		"normalRestrictionsFromJson": [
-			"Default",
-			"Destination Must Flout Space Restriction"
-		],
-		"effectRestrictionsFromJson": [
-			"Default",
-			"Destination Must Flout Space Restriction"
-		],
-		"floutedDestinationSpaceRestriction": {
-			"spaceRestrictions": [
-				"If Source Were In The Targeted Space, It Would Overlap Card Restriction"
-			],
-			"overlapRestriction": {
-				"cardRestrictions": [
-					"Subtypes Include Any Of"
-				],
-				"subtypesIncludeAnyOf": [
-					"Light",
-                    "Shade"
-				]
-			}
-		}
-	},
-	"PlayRestriction": {
-		"normalRestrictions": [
-            "Default Normal Restrictions",
-			"Space Must Flout Restriction"
-		],
-		"effectRestrictions": [
-			"Default Effect Restrictions",
-			"Space Must Flout Restriction"
-		],
-        "floutedSpaceRestriction": {
-			"spaceRestrictions": [
-				"If Source Were In The Targeted Space, It Would Overlap Card Restriction"
-			],
-			"overlapRestriction": {
-				"cardRestrictions": [
-					"Subtypes Include Any Of"
-				],
-				"subtypesIncludeAnyOf": [
-					"Light",
-                    "Shade"
-				]
-			}
-		}
-	},
 	"c": 1,
 	"spellTypes": [
 		"Radial"

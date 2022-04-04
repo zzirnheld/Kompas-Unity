@@ -1,0 +1,34 @@
+{
+	"cardType": 67,
+	"cardName": "Fleetleg Hawkmoth",
+	"effText": "Stealth.\nCan only be played in Shade.",
+	"effects": [],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Default Normal Restrictions",
+			"Space Must Fit Restriction"
+		],
+		"effectRestrictions": [
+			"Default Effect Restrictions",
+			"Space Must Fit Restriction"
+		],
+		"spaceRestriction": {
+			"spaceRestrictions": [
+				"In AOE of Card Fitting Restriction"
+			],
+			"inAOEOfRestriction": {
+				"cardRestrictions": [
+					"Subtypes Include"
+				],
+				"subtypesInclude": [
+					"Shade"
+				]
+			}
+		}
+	},
+	"n": 4,
+	"e": 2,
+	"s": 2,
+	"w": 4,
+	"subtypeText": "Flying Moth"
+}

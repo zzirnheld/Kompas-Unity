@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Searing Sun Moth",
-	"effText": "Stealth.\nWhen I attack a W X character in Light, give a Summoned character -1E and a distinct character +1E.",
+	"effText": "Stealth.\nWhen I attack a character in Light, give a Summoned character -1E and a distinct character +1E.",
 	"effects": [
 		{
 			"blurb": "oh? hello there",
@@ -70,8 +70,8 @@
 		"Stealth"
 	],
 	"n": 3,
-	"e": 1,
+	"e": 7,
 	"s": 5,
-	"w": 7,
+	"w": 1,
 	"subtypeText": "Brilliant Flying Moth"
 }

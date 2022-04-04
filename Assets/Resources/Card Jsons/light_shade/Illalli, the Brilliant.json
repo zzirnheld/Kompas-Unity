@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Illalli, the Brilliant",
-	"effText": "Once each friendly turn, you can reshuffle some Light I'm in. Deck->cast Shade where it was.\nWhen Light arrives, give any enemy characters in it -5 W for the turn.",
+	"effText": "Once each friendly turn, you can reshuffle some Light I'm in. Deck->cast Shade where it was.\nWhen an enemy character is lit up, give them -5 W.",
 	"effects": [
 		{
 			"blurb": "Brilliate!",
