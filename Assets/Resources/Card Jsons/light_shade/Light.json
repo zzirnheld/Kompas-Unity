@@ -13,7 +13,7 @@
                     "cardRestriction":{
                         "cardRestrictions":["Board","Card doesn't have Card Restriction in its AOE"],
                         "hasInAOERestriction":{
-                            "cardRestrictions":["Enemy"]
+                            "cardRestrictions":["Enemy","Character"]
                         }
                     }
                 }

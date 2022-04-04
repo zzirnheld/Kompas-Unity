@@ -115,6 +115,7 @@ public class CardRepository : MonoBehaviour
         var partialKeywords = partialKeywordList.Replace('\r', '\n').Split('\n').Where(s => !string.IsNullOrEmpty(s));
         foreach (string keyword in partialKeywords)
         {
+            Debug.Log($"Loading partial keyword {keyword}");
             string json = Resources.Load<TextAsset>(partialKeywordFolderPath + keyword).text;
             partialKeywordJsons.Add(keyword, json);
         }
@@ -143,7 +144,11 @@ public class CardRepository : MonoBehaviour
 
     public ServerSubeffect[] InstantiateServerPartialKeyword(string keyword)
     {
-        if (!partialKeywordJsons.ContainsKey(keyword)) return new ServerSubeffect[0];
+        if (!partialKeywordJsons.ContainsKey(keyword))
+        {
+            Debug.Log($"No partial keword json found for {keyword}");
+            return new ServerSubeffect[0];
+        }
 
         return JsonConvert.DeserializeObject<ServerSubeffect[]>(partialKeywordJsons[keyword], cardLoadingSettings);
     }

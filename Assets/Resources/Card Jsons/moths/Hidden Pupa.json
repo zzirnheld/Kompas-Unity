@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Hidden Pupa",
-	"effText": "Stealth.\nWhen I'm summoned, choose a Moth in your deck. After my Stealth moves me, tribute me and deck->summon a copy of it where I was.",
+	"effText": "Stealth, and after I move that way, tribute me. Deck->summon a distinct Moth where I was, that you picked when I was summoned.",
 	"effects": [
 		{
 			"blurb": "Pupate",
