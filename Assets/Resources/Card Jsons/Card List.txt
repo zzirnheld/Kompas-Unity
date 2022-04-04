@@ -234,7 +234,7 @@ moths/Cloaked in Shadow
 moths/Faerie Moth
 moths/Hidden Pupa
 moths/Intimitation
-moths/Fleetleg Hawkmoth
+moths/Hummingbird Hawkmoth
 music/Soaring Chorus
 music/Surging Verse
 music/Ringing Bridge
