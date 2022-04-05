@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "XI - Justice",
-	"effText": "Once each friendly turn, if your hand has X fewer cards than an enemy, you can draw X cards.",
+	"effText": "Once each friendly turn, you can draw 1 card until you have as many in hand as your enemy.",
 	"effects": [
 		{
 			"activationRestriction": {
@@ -32,15 +32,22 @@
 					"condition": "X<=0"
 				},
 				{
-					"$type": "KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp",
 					"playerIndex": -2,
 					"xMultiplier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.LoopSubeffect, Assembly-CSharp",
+					"canDecline": true,
+					"jumpIndices": [
+						1
+					]
 				}
 			]
 		}
 	],
-	"n": 5,
-	"e": 5,
+	"n": 7,
+	"e": 7,
 	"s": 7,
 	"w": 7,
 	"subtypes": [

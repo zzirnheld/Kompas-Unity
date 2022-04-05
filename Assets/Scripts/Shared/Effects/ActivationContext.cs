@@ -17,15 +17,21 @@ namespace KompasCore.Effects
 
         // Used for resuming delayed effects
         public int StartIndex { get; private set; }
-        public List<GameCard> Targets { get; private set; }
-        public List<Space> Spaces { get; private set; }
+        public List<GameCard> CardTargets { get; private set; }
+        public GameCard DelayedCardTarget { get; private set; }
+        public List<Space> SpaceTargets { get; private set; }
+        public Space DelayedSpaceTarget { get; private set; }
+        public List<IStackable> StackableTargets { get; private set; }
+        public IStackable DelayedStackableTarget { get; private set; }
 
         public ActivationContext Copy
         {
             get
             {
                 var copy = new ActivationContext(mainCardInfoBefore, MainCardInfoAfter, stackable, player, x, space);
-                copy.SetResumeInfo(Targets, Spaces, StartIndex);
+                copy.SetResumeInfo(CardTargets, SpaceTargets, StackableTargets,
+                    DelayedCardTarget, DelayedSpaceTarget, DelayedStackableTarget,
+                    StartIndex);
                 return copy;
             }
         }
@@ -62,7 +68,7 @@ namespace KompasCore.Effects
             if (player != null) sb.Append($"Triggerer: {player.index}, ");
             if (x != null) sb.Append($"X: {x}, ");
             if (space != null) sb.Append($"Space: {space}, ");
-            if (Targets != null) sb.Append($"Targets: {string.Join(", ", Targets)}, ");
+            if (CardTargets != null) sb.Append($"Targets: {string.Join(", ", CardTargets)}, ");
             if (StartIndex != 0) sb.Append($"Starting at {StartIndex}");
 
             asString = sb.ToString();
@@ -97,11 +103,17 @@ namespace KompasCore.Effects
         /// <param name="startIndex">The index at which to start resolving the effect (again)</param>
         /// <param name="targets">The targets to resume with, if any</param>
         /// <param name="spaces">The spaces to resume with, if any</param>
-        public void SetResumeInfo(IEnumerable<GameCard> targets, IEnumerable<Space> spaces, int? startIndex = null)
+        public void SetResumeInfo(IEnumerable<GameCard> targets, IEnumerable<Space> spaces, IEnumerable<IStackable> stackables,
+            GameCard delayedCardTarget, Space delayedSpaceTarget, IStackable delayedStackableTarget,
+            int? startIndex = null)
         {
+            CardTargets = targets == null ? new List<GameCard>() : new List<GameCard>(targets);
+            SpaceTargets = spaces == null ? new List<Space>() : new List<Space>(spaces);
+            StackableTargets = stackables == null ? new List<IStackable>() : new List<IStackable>(stackables);
+            DelayedCardTarget = delayedCardTarget;
+            DelayedSpaceTarget = delayedSpaceTarget;
+            DelayedStackableTarget = delayedStackableTarget;
             if (startIndex.HasValue) StartIndex = startIndex.Value;
-            Targets = targets == null ? new List<GameCard>() : new List<GameCard>(targets);
-            Spaces = spaces == null ? new List<Space>() : new List<Space>(spaces);
         }
 
         /// <summary>

@@ -1,12 +1,11 @@
 {
 	"cardType": 67,
 	"cardName": "IX - The Hermit",
-	"effText": "Once each turn, when you draw X cards, you can move a card X spaces.",
+	"effText": "When you draw X cards, move an enemy character X spaces.",
 	"effects": [
 		{
+			"blurb": "May you find solitude",
 			"triggerData": {
-				"optional": true,
-				"blurb": "Move card X spaces?",
 				"triggerCondition": "Draw",
 				"triggerRestriction": {
 					"triggerRestrictions": [
@@ -23,6 +22,8 @@
 						"blurb": "for Hermit to move",
 						"cardRestrictions": [
 							"Board",
+							"Enemy",
+							"Character",
 							"Space Restriction Valid With This Target Chosen"
 						],
 						"spaceRestrictionIndex":1
@@ -51,9 +52,9 @@
 			]
 		}
 	],
-	"n": 2,
-	"e": 2,
-	"s": 2,
+	"n": 4,
+	"e": 4,
+	"s": 4,
 	"w": 2,
 	"subtypes": [
 		"Tarocco",

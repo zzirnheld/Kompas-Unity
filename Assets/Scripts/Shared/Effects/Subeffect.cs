@@ -85,6 +85,11 @@ namespace KompasCore.Effects
         public int playerIndex = -1;
 
         /// <summary>
+        /// The index of the stackable in the stackable targets list
+        /// </summary>
+        public int stackableIndex = -1;
+
+        /// <summary>
         /// Index for the subeffect to jump to, if it's not going to the next one for some reason
         /// </summary>
         public int[] jumpIndices;
@@ -122,6 +127,7 @@ namespace KompasCore.Effects
         public Space SpaceTarget => Effect.GetSpace(spaceIndex);
         public GameCardInfo CardInfoTarget => Effect.GetItem(Effect.cardInfoTargets, cardInfoIndex);
         public Player PlayerTarget => Effect.GetPlayer(playerIndex);
+        public IStackable StackableTarget => Effect.GetItem(Effect.stackableTargets, stackableIndex);
         public int JumpIndex => Effect.GetItem(jumpIndices, jumpIndicesIndex);
 
         public void RemoveTarget()

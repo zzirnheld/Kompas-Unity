@@ -16,7 +16,8 @@ namespace KompasServer.Effects
             else if (defender == null)
                 throw new NullCardException("Defender was null");
 
-            ServerGame.Attack(attacker, defender, ServerEffect.ServerController);
+            var atk = ServerGame.Attack(attacker, defender, ServerEffect.ServerController);
+            Effect.stackableTargets.Add(atk);
             return Task.FromResult(ResolutionInfo.Next);
         }
     }

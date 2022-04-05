@@ -42,11 +42,16 @@ namespace KompasCore.Effects
         private const string StackableSourceIsMainCard = "Stackable Source is Main Card";
         private const string StackableSourceNotThisEffect = "Stackable Source isn't This Effect";
 
+        private const string MainCardIsSecondaryDelayedCardTarget = "Main Card is Secondary Delayed Card Target";
+        private const string SpaceIsSecondaryDelayedSpaceTarget = "Space is Secondary Delayed Space Target";
+        private const string StackableIsSecondaryDelayedStackableTarget = "Stackable is Secondary Delayed Stackable Target";
+
         private const string NoStackable = "No Stackable"; //Aka "Normally"
         private const string NotFromEffect = "Not From Effect"; //But can be from attack
 
         private const string ContextsStackablesMatch = "Contexts Stackables Match";
         private const string StackableIsThisEffect = "Stackable is This Effect";
+        private const string StackableIsASecondaryContextStackableTarget = "Stackable is Secondary Context Stackable Target";
 
         private const string ControllerTriggered = "Controller Triggered";
         private const string EnemyTriggered = "Enemy Triggered";
@@ -131,22 +136,27 @@ namespace KompasCore.Effects
             SecondaryCardFitsRestrictionBefore => secondaryCardRestriction.IsValidCard(context.secondaryCardInfoBefore, context),
             MainCardFitsRestrictionAfter => nowRestriction.IsValidCard(context.MainCardInfoAfter, context),
             MainCardsAugmentedCardBeforeFitsRestriction => cardRestriction.IsValidCard(context.mainCardInfoBefore.AugmentedCard, context),
-            MainCardIsASecondaryContextCardTarget => secondary?.Targets?.Any(c => c == context.mainCardInfoBefore?.Card) ?? false,
+            MainCardIsASecondaryContextCardTarget => secondary?.CardTargets?.Any(c => c == context.mainCardInfoBefore?.Card) ?? false,
 
             MainCardIsStackableSource => context.stackable?.Source == context.mainCardInfoBefore.Card,
             StackableSourceFitsRestriction => sourceRestriction.IsValidCard(context.stackable?.Source, context),
             StackableSourceNotThisEffect => context.stackable != SourceEffect,
             ContextsStackablesMatch => context.stackable == secondary?.stackable,
             StackableIsThisEffect => context.stackable == SourceEffect,
+            StackableIsASecondaryContextStackableTarget => secondary?.StackableTargets?.Any(s => s == context.stackable) ?? false,
             NoStackable => context.stackable == null,
 
             MainCardAfterFurtherFromSourceThanBefore
                 => ThisCard.DistanceTo(context.MainCardInfoAfter.Position) > ThisCard.DistanceTo(context.mainCardInfoBefore.Position),
 
+            MainCardIsSecondaryDelayedCardTarget => context.mainCardInfoBefore.Card == secondary?.DelayedCardTarget,
+            SpaceIsSecondaryDelayedSpaceTarget => context.space == secondary?.DelayedSpaceTarget,
+            StackableIsSecondaryDelayedStackableTarget => context.stackable == secondary?.DelayedStackableTarget,
+
             //other non-card triggering things
             SpaceFitsRestriction => context.space != null && spaceRestriction.IsValidSpace(context.space, context),
 
-            XFitsRestriction => context.x != null && xRestriction.IsValidNumber(context.x.Value),
+            XFitsRestriction => context.x.HasValue && xRestriction.IsValidNumber(context.x.Value),
             StackableSourceIsMainCard => context.stackable is Effect eff && eff.Source == context.mainCardInfoBefore.Card,
 
             ControllerTriggered => context.player == ThisCard.Controller,
