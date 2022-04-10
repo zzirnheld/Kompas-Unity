@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Shade",
-	"effText": "If nothing is happening and there's enemy characters here, reshuffle me and deck->cast Light where I was.",
+	"effText": "If there's ANY enemy characters here and nothing else is happening, swap me for Light in your deck.",
 	"effects": [
 		{
             "blurb":"Light Up",

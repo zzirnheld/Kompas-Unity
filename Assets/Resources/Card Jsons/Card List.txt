@@ -98,6 +98,9 @@ cultists/Silent Ritualist
 cultists/Unwavering Devotion
 cultists/We Are Yet Unworthy
 cultists/Zealous Convert
+cultists/Bloodsilencer
+cultists/Silentbellringer
+cultists/Silent Twin
 Demagogue
 dragons/Aeolian
 dragons/Cidian
