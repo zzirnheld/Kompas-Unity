@@ -1,6 +1,6 @@
 {
 	"cardType": 67,
-	"cardName": "Shadecreeper",
+	"cardName": "Trake, Shadecreeper",
 	"effText": "Stealth.\nOnce each friendly turn, you can move Shade I'm in by 1 space.",
 	"effects": [
 		{
@@ -55,5 +55,5 @@
 	"e": 1,
 	"s": 1,
 	"w": 1,
-	"subtypeText": "Shady Mage"
+	"subtypeText": "Shady Brilliant Mage"
 }

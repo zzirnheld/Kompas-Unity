@@ -1,5 +1,6 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
+using KompasCore.Exceptions;
 using KompasCore.GameCore;
 using KompasServer.Effects;
 using KompasServer.Networking;
@@ -66,7 +67,7 @@ namespace KompasServer.GameCore
         protected override void Swap(GameCard card, Space to, bool playerInitiated, IStackable stackSrc = null)
         {
             //calculate distance before doing the swap
-            var from = card.Position.Copy;
+            var from = card.Position?.Copy;
             var at = GetCardAt(to);
             var player = playerInitiated ? card.Controller : stackSrc?.Controller;
 
@@ -74,15 +75,18 @@ namespace KompasServer.GameCore
             var moveContexts = new List<ActivationContext>();
             var leaveContexts = new List<ActivationContext>();
 
-            var (fromCardMoveContexts, fromCardLeaveContexts) = GetContextsForMove(card, from, to, player, stackSrc);
-            moveContexts.AddRange(fromCardMoveContexts);
-            leaveContexts.AddRange(fromCardLeaveContexts);
-
-            if (at != null)
+            if (from != null)
             {
-                var (atCardMoveContexts, atCardLeaveContexts) = GetContextsForMove(at, to, from, player, stackSrc);
-                moveContexts.AddRange(atCardMoveContexts);
-                leaveContexts.AddRange(atCardLeaveContexts);
+                var (fromCardMoveContexts, fromCardLeaveContexts) = GetContextsForMove(card, from, to, player, stackSrc);
+                moveContexts.AddRange(fromCardMoveContexts);
+                leaveContexts.AddRange(fromCardLeaveContexts);
+
+                if (at != null)
+                {
+                    var (atCardMoveContexts, atCardLeaveContexts) = GetContextsForMove(at, to, from, player, stackSrc);
+                    moveContexts.AddRange(atCardMoveContexts);
+                    leaveContexts.AddRange(atCardLeaveContexts);
+                }
             }
 
             //actually perform the swap

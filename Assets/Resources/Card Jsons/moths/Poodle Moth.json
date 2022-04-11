@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Poodle Moth",
-	"effText": "Stealth, and after I move that way, hand me. Hand->summon a distinct Moth where I was, that you picked when I was summoned. (I was misidentified.)",
+	"effText": "Stealth, and after I move that way, hand me. Hand->summon a distinct Moth where I was, that you picked when I was summoned. They attack an adjacent character.",
 	"effects": [
 		{
 			"blurb": "Pupate",
@@ -61,6 +61,29 @@
 				{
 					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp",
 					"targetIndex":0
+				},
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "enemy character to attack",
+						"cardRestrictions": [
+							"Character",
+							"Enemy",
+							"Board",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Card Target"
+							]
+						}
+					},
+					"targetIndex":0
+				},
+				{
+					"$type": "KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
+					"targetIndex": -1,
+					"attackerIndex": 0
 				}
 			]
 		}

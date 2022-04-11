@@ -101,6 +101,7 @@ cultists/Zealous Convert
 cultists/Bloodsilencer
 cultists/Silentbellringer
 cultists/Silent Twin
+cultists/Mindless Silent
 Demagogue
 dragons/Aeolian
 dragons/Cidian
@@ -119,6 +120,7 @@ dragons/Hungry Dragonling
 dragons/Growing Boye
 dragons/Earthwapmer
 dragons/Dragonking
+dragons/Cyrian
 Dreamfog
 Durendal
 Fight
@@ -149,6 +151,7 @@ golems/Gold Golem
 golems/Core Scrambling
 golems/Scrap Golem
 golems/Backup Power Core
+golems/Stone Golem
 Haemopoten
 instruments/Assaulting Batterie
 instruments/Gratuitous Sax
@@ -166,7 +169,7 @@ Leybinding
 Leylasher
 light_shade/Light
 light_shade/Shade
-light_shade/Keeper of the Hooded Lantern
+light_shade/The Keeper of the Hooded Lantern
 light_shade/Dristzanti, the Illuminator
 light_shade/Shadecreeper
 light_shade/Illalli, the Brilliant

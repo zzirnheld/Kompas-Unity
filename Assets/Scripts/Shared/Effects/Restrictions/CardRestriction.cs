@@ -181,7 +181,7 @@ namespace KompasCore.Effects
             Source = source;
             Effect = effect;
 
-            spaceRestriction?.Initialize(source, effect.Controller, effect, subeffect);
+            spaceRestriction?.Initialize(source, effect?.Controller, effect, subeffect);
 
             augmentRestriction?.Initialize(source, effect, subeffect);
             secondaryRestriction?.Initialize(source, effect, subeffect);

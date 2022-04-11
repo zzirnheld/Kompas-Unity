@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Hidden Pupa",
-	"effText": "Stealth, and after I move that way, tribute me. Deck->summon a distinct Moth where I was, that you picked when I was summoned.",
+	"effText": "Stealth, and after I move that way, tribute me. Deck->summon a distinct Moth where I was, that you picked when I was summoned. They attack an adjacent character.",
 	"effects": [
 		{
 			"blurb": "Pupate",
@@ -71,6 +71,29 @@
 				},
 				{
 					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "enemy character to attack",
+						"cardRestrictions": [
+							"Character",
+							"Enemy",
+							"Board",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Card Target"
+							]
+						}
+					},
+					"targetIndex": -1
+				},
+				{
+					"$type": "KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
+					"targetIndex": -1,
+					"attackerIndex": -2
 				}
 			]
 		}

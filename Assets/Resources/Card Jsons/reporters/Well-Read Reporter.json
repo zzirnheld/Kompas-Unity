@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Well-Read Reporter",
-	"effText": "When you cast a CX spell, ask an enemy to reveal a C > X spell. If they don't, give me +2 NEWS.",
+	"effText": "When you cast a CX spell, ask an enemy to reveal a C > X spell. If they don't, give me +1 NEWS.",
 	"effects": [
 		{
 			"blurb": "Reveal a spell?",
@@ -84,10 +84,10 @@
 				},
 				{
 					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"nModifier": 2,
-					"eModifier": 2,
-					"sModifier": 2,
-					"wModifier": 2
+					"nModifier": 1,
+					"eModifier": 1,
+					"sModifier": 1,
+					"wModifier": 1
 				}
 			]
 		}

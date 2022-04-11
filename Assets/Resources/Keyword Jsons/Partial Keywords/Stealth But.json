@@ -24,7 +24,7 @@
         "$type": "KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
         "numTimesToDelay": 0,
         "jumpIndices": [
-            4
+            3
         ],
         "fallOffCondition": "Turn Start",
         "endCondition": "Arrive",

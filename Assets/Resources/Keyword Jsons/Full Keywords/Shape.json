@@ -33,7 +33,8 @@
 				"cardRestrictions":["Subtypes Include","Character","Board"],
 				"subtypesInclude":["Ethereal"]
 			},
-			"xMultiplier":1
+			"xMultiplier":1,
+			"xModifier":-1
 		},
 		{
 			"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
