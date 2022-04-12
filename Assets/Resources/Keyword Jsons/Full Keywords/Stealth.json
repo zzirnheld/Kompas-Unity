@@ -55,6 +55,15 @@
             }
         },
         {
+            "$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+            "condition": "Space Target Violates Restriction",
+            "spaceRestriction": {
+                "spaceRestrictions": [
+                    "Empty"
+                ]
+            }
+        },
+        {
             "$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
         },
         {
