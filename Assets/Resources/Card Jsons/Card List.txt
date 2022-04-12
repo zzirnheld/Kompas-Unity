@@ -175,6 +175,9 @@ light_shade/Shadecreeper
 light_shade/Illalli, the Brilliant
 light_shade/Lightbulb Idea
 light_shade/Light Up
+light_shade/Turn Off
+light_shade/Brillaume of the City
+light_shade/Inspirelight
 linewalkers/Blue Linewalker
 linewalkers/Cyan Linewalker
 linewalkers/Green Linewalker
