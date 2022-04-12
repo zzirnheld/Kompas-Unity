@@ -171,7 +171,7 @@ light_shade/Light
 light_shade/Shade
 light_shade/The Keeper of the Hooded Lantern
 light_shade/Dristzanti, the Illuminator
-light_shade/Shadecreeper
+light_shade/Trake, Shadecreeper
 light_shade/Illalli, the Brilliant
 light_shade/Lightbulb Idea
 light_shade/Light Up
