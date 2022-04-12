@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Cloaked in Shadow",
-	"effText": "When Shade arrives, give Moths there +1 N.",
+	"effText": "When Shade arrives, give Moths there +1 NESW.",
 	"effects": [
 		{
 			"blurb": "The darkness hides us",
@@ -43,7 +43,10 @@
 							"Moth"
 						]
 					},
-					"nModifier": 1
+					"nModifier": 1,
+					"eModifier": 1,
+					"sModifier": 1,
+					"wModifier": 1
 				}
 			]
 		}
