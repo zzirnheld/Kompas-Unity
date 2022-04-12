@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Searing Sun Moth",
-	"effText": "Stealth.\nWhen I attack a character in Light, give a Summoned character -1E and a distinct character +1E.",
+	"effText": "Stealth.\nWhen a Moth attacks a character in Light, give a Summoned character -1E and a distinct character +1E.",
 	"effects": [
 		{
 			"blurb": "oh? hello there",
@@ -10,8 +10,19 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card is Main Card",
+						"Main Card Fits Restriction Before",
                         "Secondary Card Fits Restriction Before"
 					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Board",
+							"Friendly",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Moth"
+						]
+					},
                     "secondaryCardRestriction": {
 						"cardRestrictions": [
 							"Space Fits Restriction"

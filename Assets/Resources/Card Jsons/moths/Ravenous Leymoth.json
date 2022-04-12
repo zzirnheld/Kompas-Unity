@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Ravenous Leymoth",
-	"effText": "Stealth.\nWhen I attack from Shade, give the defending S X character -XS, and me +XESW.",
+	"effText": "Stealth.\nWhen a Moth attacks a character in Light, give the defending S X character -X S, and the Moth +X ESW.",
 	"effects": [
 		{
 			"blurb": "*slurps your fluids*",
@@ -10,9 +10,20 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card is Main Card",
-						"This Card Fits Restriction Now"
+						"Main Card Fits Restriction Before",
+                        "Secondary Card Fits Restriction Before"
 					],
 					"cardRestriction": {
+						"cardRestrictions": [
+							"Board",
+							"Friendly",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Moth"
+						]
+					},
+                    "secondaryCardRestriction": {
 						"cardRestrictions": [
 							"Space Fits Restriction"
 						],
@@ -25,11 +36,11 @@
 									"Subtypes Include"
 								],
 								"subtypesInclude": [
-									"Shade"
+									"Light"
 								]
 							}
 						}
-					}
+                    }
 				}
 			},
 			"subeffects": [
@@ -48,7 +59,7 @@
 					"sMultiplier": -1
 				},
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetAttackerSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",

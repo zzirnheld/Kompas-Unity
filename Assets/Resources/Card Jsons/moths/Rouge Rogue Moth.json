@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Rouge Rogue Moth",
-	"effText": "Stealth.\nWhen I attack from Shade, double my W.",
+	"effText": "Stealth.\nWhen a Moth attacks a character in Light, double their W.",
 	"effects": [
 		{
 			"blurb": "hello there",
@@ -10,9 +10,20 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card is Main Card",
-						"This Card Fits Restriction Now"
+						"Main Card Fits Restriction Before",
+                        "Secondary Card Fits Restriction Before"
 					],
 					"cardRestriction": {
+						"cardRestrictions": [
+							"Board",
+							"Friendly",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Moth"
+						]
+					},
+                    "secondaryCardRestriction": {
 						"cardRestrictions": [
 							"Space Fits Restriction"
 						],
@@ -25,16 +36,16 @@
 									"Subtypes Include"
 								],
 								"subtypesInclude": [
-									"Shade"
+									"Light"
 								]
 							}
 						}
-					}
+                    }
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetAttackerSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",

@@ -1,26 +1,46 @@
 {
 	"cardType": 83,
 	"cardName": "Call of the Moon",
-	"effText": "When Light arrives, move a Moth to a space in it. (By default, this will resolve after any Stealth triggers.)",
+	"effText": "When a friendly Moth attacks a character in Light, give the Moth +1 NESW.",
 	"effects": [
 		{
 			"blurb": "brOther, the mOOn",
 			"triggerData": {
-				"orderPriority": 5,
-				"triggerCondition": "Arrive",
+				"triggerCondition": "Attack",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card in Play",
-						"Main Card Fits Restriction Before"
+						"This Card is Main Card",
+						"Main Card Fits Restriction Before",
+                        "Secondary Card Fits Restriction Before"
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
+							"Board",
+							"Friendly",
 							"Subtypes Include"
 						],
 						"subtypesInclude": [
-							"Light"
+							"Moth"
 						]
-					}
+					},
+                    "secondaryCardRestriction": {
+						"cardRestrictions": [
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"In AOE of Card Fitting Restriction"
+							],
+							"inAOEOfRestriction": {
+								"cardRestrictions": [
+									"Subtypes Include"
+								],
+								"subtypesInclude": [
+									"Light"
+								]
+							}
+						}
+                    }
 				}
 			},
 			"subeffects": [

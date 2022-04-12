@@ -18,7 +18,14 @@ namespace KompasServer.Effects
         protected TriggerRestriction CreateFallOffRestriction(GameCard card)
         {
             //conditions for falling off
-            var triggerRest = new TriggerRestriction() { triggerRestrictions = fallOffRestrictions };
+            TriggerRestriction triggerRest = null;
+            //TODO have the ability for a player to configure a custom fall off restriction
+            if (triggerRest == null)
+            {
+                triggerRest = fallOffCondition == Trigger.Remove ?
+                    new TriggerRestriction() { triggerRestrictions = fallOffRestrictions } :
+                    new TriggerRestriction() { triggerRestrictions = { } };
+            }
             triggerRest.Initialize(Game, card, thisTrigger: null, effect: Effect);
             return triggerRest;
         }

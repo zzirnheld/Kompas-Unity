@@ -1,18 +1,29 @@
 {
 	"cardType": 67,
 	"cardName": "Massive Moon Moth",
-	"effText": "Stealth.\nWhen I attack from Shade, swap the W of a Summoned character with the E of a summoned character within 2 spaces of the first.",
+	"effText": "Stealth.\nWhen a Moth attacks a character in Light, swap the W of a Summoned character with the E of a summoned character within 2 spaces of the first.",
 	"effects": [
 		{
-			"blurb": "this is my friend the moon",
+			"blurb": "this is my friend the moon moth",
 			"triggerData": {
 				"triggerCondition": "Attack",
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card is Main Card",
-						"This Card Fits Restriction Now"
+						"Main Card Fits Restriction Before",
+                        "Secondary Card Fits Restriction Before"
 					],
 					"cardRestriction": {
+						"cardRestrictions": [
+							"Board",
+							"Friendly",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Moth"
+						]
+					},
+                    "secondaryCardRestriction": {
 						"cardRestrictions": [
 							"Space Fits Restriction"
 						],
@@ -25,11 +36,11 @@
 									"Subtypes Include"
 								],
 								"subtypesInclude": [
-									"Shade"
+									"Light"
 								]
 							}
 						}
-					}
+                    }
 				}
 			},
 			"subeffects": [

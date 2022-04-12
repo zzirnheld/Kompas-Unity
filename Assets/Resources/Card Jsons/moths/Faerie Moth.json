@@ -1,32 +1,57 @@
 {
 	"cardType": 67,
 	"cardName": "Faerie Moth",
-	"effText": "Stealth, and echo me.\nWhen I'm summoned in Light, draw 1 card.",
+	"effText": "Stealth.\nWhen a Moth attacks a character in Light, draw 1 card.",
 	"effects": [
 		{
 			"blurb": "Faerie stealth",
-            "triggerData": {
-                "triggerCondition": "Turn Start",
-                "triggerRestriction": {
-                    "triggerRestrictions": [
-                        "This Card in Play",
-                        "Enemy Turn"
-                    ]
-                }
-            },
+			"triggerData": {
+				"triggerCondition": "Attack",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card",
+						"Main Card Fits Restriction Before",
+                        "Secondary Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Board",
+							"Friendly",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Moth"
+						]
+					},
+                    "secondaryCardRestriction": {
+						"cardRestrictions": [
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"In AOE of Card Fitting Restriction"
+							],
+							"inAOEOfRestriction": {
+								"cardRestrictions": [
+									"Subtypes Include"
+								],
+								"subtypesInclude": [
+									"Light"
+								]
+							}
+						}
+                    }
+				}
+			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.KeywordSubeffect, Assembly-CSharp",
-					"keyword": "Stealth But"
-				},
-				{
-					"$type":"KompasServer.Effects.TargetThisSpaceSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type": "KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
 				}
 			]
 		}
+	],
+	"keywords": [
+		"Stealth"
 	],
 	"n": 2,
 	"e": 2,

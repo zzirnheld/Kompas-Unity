@@ -1,24 +1,49 @@
 {
 	"cardType": 67,
 	"cardName": "Squadron Hawkmoth",
-	"effText": "Stealth, and if my chosen space gets lit up, deck->hand a copy of me.",
+	"effText": "Stealth.\nWhen a Moth attacks a character in Light, deck->hand a copy of me.",
 	"effects": [
 		{
-			"blurb": "Stealth together",
-            "triggerData": {
-                "triggerCondition": "Turn Start",
-                "triggerRestriction": {
-                    "triggerRestrictions": [
-                        "This Card in Play",
-                        "Enemy Turn"
-                    ]
-                }
-            },
+			"blurb": "Attack together",
+			"triggerData": {
+				"triggerCondition": "Attack",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card",
+						"Main Card Fits Restriction Before",
+                        "Secondary Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Board",
+							"Friendly",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Moth"
+						]
+					},
+                    "secondaryCardRestriction": {
+						"cardRestrictions": [
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"In AOE of Card Fitting Restriction"
+							],
+							"inAOEOfRestriction": {
+								"cardRestrictions": [
+									"Subtypes Include"
+								],
+								"subtypesInclude": [
+									"Light"
+								]
+							}
+						}
+                    }
+				}
+			},
 			"subeffects": [
-				{
-					"$type": "KompasServer.Effects.KeywordSubeffect, Assembly-CSharp",
-					"keyword": "Stealth But"
-				},
 				{
 					"$type": "KompasServer.Effects.AutoTargetSubeffect, Assembly-CSharp",
 					"cardRestriction": {
@@ -39,6 +64,9 @@
 				}
 			]
 		}
+	],
+	"keywords": [
+		"Stealth"
 	],
 	"n": 1,
 	"e": 1,
