@@ -227,6 +227,8 @@ music/Backup Track
 music/Hard Rock
 None Defy the Lines
 Notcropoten
+orcs/Alkorath'Kil, Fury in the Blood
+orcs/Bind the Blood
 orcs/Clever Decoy
 orcs/Escape Route
 orcs/Glimmer of Hope

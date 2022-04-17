@@ -1,0 +1,18 @@
+{
+	"blurb": "+1 C",
+	"triggerData": {
+		"triggerCondition": "Turn Start",
+		"triggerRestriction": {
+			"triggerRestrictions": [ "This Card in Play", "Friendly Turn" ]
+		}
+	},
+	"subeffects": [
+		{
+			"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+		},
+		{
+			"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+			"cModifier": 1
+		}
+	]
+}

@@ -1,0 +1,18 @@
+{
+	"blurb": "+1 S",
+	"triggerData": {
+		"triggerCondition": "Play",
+		"triggerRestriction": {
+			"triggerRestrictions": [ "This Card is Main Card" ]
+		}
+	},
+	"subeffects": [
+		{
+			"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+		},
+		{
+			"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+			"sModifier": 1
+		}
+	]
+}
