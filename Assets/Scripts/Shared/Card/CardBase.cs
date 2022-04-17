@@ -138,17 +138,17 @@ namespace KompasCore.Cards
             }
             //else Debug.Log("Names match. Set Info not updating pics.");
 
-            Subtext = subtext;
+            Subtext = subtext; //TODO un-deprecate and use as an override for constructed subtype text from the subtypes array
             SpellSubtypes = spellTypes;
             Fast = fast;
             Unique = unique;
             Radius = radius;
             Duration = duration;
             CardType = cardType;
-            CardName = cardName;
-            EffText = effText;
-            SubtypeText = subtypeText;
-            AugmentSubtypes = augSubtypes;
+            CardName = cardName ?? throw new ArgumentException($"A card is missing a name.");
+            EffText = effText ?? throw new ArgumentException($"Card {CardName} is missing effect text");
+            SubtypeText = subtypeText ?? string.Empty;
+            AugmentSubtypes = augSubtypes; //Null indicates a lack of required augment subtypes
         }
 
         protected void SetCardInformation(SerializableCard card)
