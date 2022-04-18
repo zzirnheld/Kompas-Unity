@@ -407,9 +407,10 @@ namespace KompasCore.Cards
 
         public void Play(Space to, Player controller, IStackable stackSrc = null, bool payCost = false)
         {
+            var costToPay = Cost;
             Game.boardCtrl.Play(this, to, controller, stackSrc);
 
-            if (payCost) controller.Pips -= Cost;
+            if (payCost) controller.Pips -= costToPay;
         }
 
         public void Move(Space to, bool normalMove, IStackable stackSrc = null)
