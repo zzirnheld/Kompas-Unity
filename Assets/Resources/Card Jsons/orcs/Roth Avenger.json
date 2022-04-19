@@ -7,10 +7,10 @@
 		"Ambush",
 		"Smite"
 	],
-	"n": 2,
-	"e": 3,
+	"n": 1,
+	"e": 4,
 	"s": 2,
-	"w": 1,
+	"w": 2,
 	"subtypes": [
 		"Orc",
 		"Paladin"

@@ -229,6 +229,7 @@ None Defy the Lines
 Notcropoten
 orcs/Alkorath'Kil, Fury in the Blood
 orcs/Bind the Blood
+orcs/Bind the Shadows
 orcs/Clever Decoy
 orcs/Escape Route
 orcs/Glimmer of Hope
@@ -239,7 +240,9 @@ orcs/Roth Avenger
 orcs/Roth Guerilla
 orcs/Roth Warrior
 orcs/Roth'Drek Champion
+orcs/Roth'Drek Crusader
 orcs/Roth'Drek Phantom
+orcs/Roth'Ka Inquisitor
 orcs/Roth'Ka Spymaster
 orcs/Spiked Barricade
 orcs/Unassuming Bush

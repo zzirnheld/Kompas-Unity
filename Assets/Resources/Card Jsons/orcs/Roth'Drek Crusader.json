@@ -1,0 +1,42 @@
+{
+	"cardType": 67,
+	"cardName": "Roth'Ka Crusader",
+	"effText": "Smite.\nWhen I kill an enemy, draw 1.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Discard",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Stackable Source Fits Restriction Now"
+					],
+					"sourceRestriction": {
+						"cardRestrictions": [
+							"Is Source"
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"xMultiplier": 1,
+					"xModifier": 1
+				}
+			]
+		}
+	],
+	"keywords":[
+		"Smite"
+	],
+	"n": 1,
+	"e": 11,
+	"s": 7,
+	"w": 6,
+	"subtypes": [
+		"Orc",
+		"Paladin"
+	],
+	"subtypeText": "Orc Paladin"
+}

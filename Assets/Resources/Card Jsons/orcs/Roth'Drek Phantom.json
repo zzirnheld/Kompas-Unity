@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Roth'Drek Phantom",
-	"effText": "Ambush.\nDuring your turn, you can pay 2 pips to hand this card.",
+	"effText": "Ambush.\nOnce per turn, you can rehand me. When you do, I gain -2S.",
 	"effects": [
 		{
 			"blurb": "Withdraw",
@@ -14,19 +14,15 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
-					"subeffIndices": [ 1 ]
-				},
-				{
-					"$type": "KompasServer.Effects.PayPipsSubeffect, Assembly-CSharp",
-					"xMultiplier": 0,
-					"xModifier": 2
-				},
-				{
 					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"forbidNotBoard": false,
+					"sModifier": -2
 				}
 			]
 		}

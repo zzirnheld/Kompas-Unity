@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Roth'Ka Spymaster",
-	"effText": "Once each friendly turn, you can board->hand a friendly character. If they're a spy, give them -1 S.",
+	"effText": "Once each friendly turn, you can board->hand a friendly character. If they're a spy, give them -1 S and draw 1.",
 	"effects":[
 		{
 			"blurb": "Retrieve",
@@ -44,6 +44,11 @@
 					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
 					"forbidNotBoard": false,
 					"sModifier": -1
+				},
+				{
+					"$type": "KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"xMultiplier": 1,
+					"xModifier": 1
 				}
 			]
 		}

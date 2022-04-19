@@ -1,12 +1,13 @@
 {
 	"cardType": 67,
 	"cardName": "Escape Route",
-	"effText": "During your turn, you can hand an adjacent character.",
+	"effText": "Once during your turn, you can rehand an adjacent friendly summon.",
 	"effects": [
 		{
 			"blurb": "Escape",
 			"activationRestriction": {
 				"activationRestrictionArray": [
+					"Max Times Per Turn",
 					"Friendly Turn",
 					"Default"
 				]
@@ -33,7 +34,7 @@
 	],
 	"n": 0,
 	"e": 6,
-	"s": 4,
+	"s": 2,
 	"w": 0,
 	"subtypes": [
 		"Structure"

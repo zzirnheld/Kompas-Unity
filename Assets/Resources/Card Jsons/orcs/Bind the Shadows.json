@@ -1,17 +1,17 @@
 {
 	"cardType": 83,
-	"cardName": "Bind the Blood",
-	"effText": "Whenever an orc in my area attacks, it gains +1W.\nWhenever a summon in my area dies, you may choose an Orc in your hand. If it's not revealed, reveal it, then it gains -2S.",
+	"cardName": "Bind the Shadows",
+	"effText": "Whenever an orc is summoned in my area, it gains +3W until the next turn.\nWhenever a summon in my area is rehanded, you may choose an Orc in your hand. If it's not revealed, reveal it, then it gains -2S.",
 	"effects": [
 		{
 			"triggerData": {
-				"triggerCondition": "Attack",
+				"triggerCondition": "Play",
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Main Card Fits Restriction Before"
+						"Main Card Fits Restriction After"
 					],
-					"cardRestriction": {
+					"nowRestriction": {
 						"cardRestrictions": [
 							"Different from Source",
 							"Character",
@@ -25,18 +25,22 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetAttackerSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"wModifier": 1
+					"$type": "KompasServer.Effects.TemporaryCardStatChangeSubeffect, Assembly-CSharp",
+					"wModifier": 3,
+					"endCondition": "Turn Start",
+					"triggerRestriction": {
+						"triggerRestrictions": []
+					}
 				}
 			]
 		},
 		{
 			"triggerData": {
 				"optional": true,
-				"triggerCondition": "Discard",
+				"triggerCondition": "Rehand",
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
