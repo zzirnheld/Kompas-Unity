@@ -68,7 +68,13 @@ namespace KompasCore.Effects
         private const string MaxPerStack = "Max Per Stack";
         #endregion trigger conditions
 
+        private static readonly string[] RequiringCardRestriction = 
+            { ThisCardFitsRestriction, MainCardFitsRestrictionBefore, SecondaryCardFitsRestrictionBefore, MainCardsAugmentedCardBeforeFitsRestriction };
         private static readonly string[] RequiringNowRestriction = { MainCardFitsRestrictionAfter };
+        private static readonly string[] RequiringExistsRestriction = { CardExistsNow };
+        private static readonly string[] RequiringSourceRestriction = { StackableSourceFitsRestriction };
+        private static readonly string[] RequiringNumberRestriction = { XFitsRestriction };
+        private static readonly string[] RequiringSpaceRestriction = { SpaceFitsRestriction };
 
         private static readonly ISet<string> ReevalationRestrictions = new HashSet<string>(new string[] { MaxPerTurn, MaxPerRound, MaxPerStack });
 
@@ -77,14 +83,10 @@ namespace KompasCore.Effects
         public string[] triggerRestrictions = new string[0];
         public CardRestriction cardRestriction;
         public CardRestriction nowRestriction;
-        public CardRestriction adjacencyRestriction;
+        public CardRestriction sourceRestriction;
         public CardRestriction existsRestriction;
         public NumberRestriction xRestriction;
         public SpaceRestriction spaceRestriction;
-        public CardRestriction sourceRestriction;
-
-        public CardRestriction cardsFittingCardRestriction;
-        public NumberRestriction cardsFittingXRestriction;
 
         public int maxTimesPerTurn = 1;
         public int maxPerRound = 1;
@@ -116,8 +118,18 @@ namespace KompasCore.Effects
             xRestriction?.Initialize(thisCard);
 
             //Verify that any relevant restrictions exist
+            if (triggerRestrictions.Intersect(RequiringCardRestriction).Any())
+                throw new ArgumentNullException("cardRestriction", $"Must be populated for any of these restrictions: {RequiringCardRestriction}");
             if (triggerRestrictions.Intersect(RequiringNowRestriction).Any())
                 throw new ArgumentNullException("nowRestriction", $"Must be populated for any of these restrictions: {RequiringNowRestriction}");
+            if (triggerRestrictions.Intersect(RequiringExistsRestriction).Any())
+                throw new ArgumentNullException("existsRestriction", $"Must be populated for any of these restrictions: {RequiringExistsRestriction}");
+            if (triggerRestrictions.Intersect(RequiringSourceRestriction).Any())
+                throw new ArgumentNullException("sourceRestriction", $"Must be populated for any of these restrictions: {RequiringSourceRestriction}");
+            if (triggerRestrictions.Intersect(RequiringNumberRestriction).Any())
+                throw new ArgumentNullException("numberRestriction", $"Must be populated for any of these restrictions: {RequiringNumberRestriction}");
+            if (triggerRestrictions.Intersect(RequiringSpaceRestriction).Any())
+                throw new ArgumentNullException("spaceRestriction", $"Must be populated for any of these restrictions: {RequiringSpaceRestriction}");
 
             initialized = true;
             //Debug.Log($"Initializing trigger restriction for {thisCard?.CardName}. game is null? {game}");
