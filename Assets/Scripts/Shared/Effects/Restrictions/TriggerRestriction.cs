@@ -68,6 +68,8 @@ namespace KompasCore.Effects
         private const string MaxPerStack = "Max Per Stack";
         #endregion trigger conditions
 
+        private static readonly string[] RequiringNowRestriction = { MainCardFitsRestrictionAfter };
+
         private static readonly ISet<string> ReevalationRestrictions = new HashSet<string>(new string[] { MaxPerTurn, MaxPerRound, MaxPerStack });
 
         public static readonly string[] DefaultFallOffRestrictions = { ThisCardIsMainCard, ThisCardInPlay };
@@ -112,6 +114,10 @@ namespace KompasCore.Effects
             spaceRestriction?.Initialize(thisCard, thisCard.Controller, effect, subeffect);
             sourceRestriction?.Initialize(thisCard, effect, subeffect);
             xRestriction?.Initialize(thisCard);
+
+            //Verify that any relevant restrictions exist
+            if (triggerRestrictions.Intersect(RequiringNowRestriction).Any())
+                throw new ArgumentNullException("nowRestriction", $"Must be populated for any of these restrictions: {RequiringNowRestriction}");
 
             initialized = true;
             //Debug.Log($"Initializing trigger restriction for {thisCard?.CardName}. game is null? {game}");
