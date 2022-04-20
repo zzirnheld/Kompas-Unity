@@ -19,6 +19,7 @@ namespace KompasServer.Effects
         public const string TargetFitsRestriction = "Target Fits Restriction";
 
         public const string SpaceTargetViolatesRestriction = "Space Target Violates Restriction";
+        public const string SpaceTargetFitsRestriction = "Space Target Fits Restriction";
 
         public const string SourceViolatesRestriction = "Source Violates Restriction";
         public const string NumTargetsLTEConstant = "Number Targets <= Constant";
@@ -67,6 +68,9 @@ namespace KompasServer.Effects
 
                     TargetViolatesRestriction => !cardRestriction.IsValidCard(CardTarget, Context),
                     TargetFitsRestriction => cardRestriction.IsValidCard(CardTarget, Context),
+
+                    SpaceTargetViolatesRestriction => !spaceRestriction.IsValidSpace(SpaceTarget, Context),
+                    SpaceTargetFitsRestriction => spaceRestriction.IsValidSpace(SpaceTarget, Context),
 
                     SourceViolatesRestriction => !cardRestriction.IsValidCard(Source, Context),
                     NumTargetsLTEConstant => Effect.CardTargets.Count() <= constant,

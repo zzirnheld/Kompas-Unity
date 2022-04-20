@@ -33,7 +33,10 @@ namespace KompasCore.Effects
         public const string Character = "Character";
         public const string Spell = "Spell";
         public const string Augment = "Augment";
+
+        public const string NotCharacter = "Not Character";
         public const string NotAugment = "Not Augment";
+
         public const string SpellSubtypes = "Spell Subtypes";
 
         //control
@@ -262,6 +265,7 @@ namespace KompasCore.Effects
                 Spell => potentialTarget?.CardType == 'S',
                 Augment => potentialTarget?.CardType == 'A',
 
+                NotCharacter => potentialTarget?.CardType != 'C',
                 NotAugment => potentialTarget?.CardType != 'A',
                 SpellSubtypes => potentialTarget?.SpellSubtypes.Intersect(spellSubtypes).Any() ?? false,
 

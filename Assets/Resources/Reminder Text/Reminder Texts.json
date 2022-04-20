@@ -134,7 +134,7 @@
 		},
 		{
 			"keyword":"Stealth",
-			"reminder":"When enemy turns start, pick a space in the same Shade I'm in. If it gets lit up this turn (Light arrives encompassing it), move me there, and I attack an adjacent character."
+			"reminder":"When enemy turns start, choose a space in Shade. If it gets lit up this turn, move me there, swapping me with any card already there. I attack an adjacent enemy character, if I can."
 		}
 	]
 }

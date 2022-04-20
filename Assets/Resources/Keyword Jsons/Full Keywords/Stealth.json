@@ -16,12 +16,11 @@
         {
             "$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
             "spaceRestriction": {
-                "blurb": "Stealth position to 'actually' be in",
                 "spaceRestrictions": [
-                    "In AOE Source is Also In",
+                    "In AOE of Card Fitting Restriction",
                     "Can Move Card Target to This Space"
                 ],
-                "alsoInAOEOfRestriction": {
+                "inAOEOfRestriction": {
                     "cardRestrictions": [
                         "Subtypes Include"
                     ],
@@ -52,15 +51,6 @@
                         "Light"
                     ]
                 }
-            }
-        },
-        {
-            "$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
-            "condition": "Space Target Violates Restriction",
-            "spaceRestriction": {
-                "spaceRestrictions": [
-                    "Empty"
-                ]
             }
         },
         {
