@@ -118,17 +118,17 @@ namespace KompasCore.Effects
             xRestriction?.Initialize(thisCard);
 
             //Verify that any relevant restrictions exist
-            if (triggerRestrictions.Intersect(RequiringCardRestriction).Any())
+            if (triggerRestrictions.Intersect(RequiringCardRestriction).Any() && cardRestriction == null)
                 throw new ArgumentNullException("cardRestriction", $"Must be populated for any of these restrictions: {RequiringCardRestriction}");
-            if (triggerRestrictions.Intersect(RequiringNowRestriction).Any())
+            if (triggerRestrictions.Intersect(RequiringNowRestriction).Any() && nowRestriction == null)
                 throw new ArgumentNullException("nowRestriction", $"Must be populated for any of these restrictions: {RequiringNowRestriction}");
-            if (triggerRestrictions.Intersect(RequiringExistsRestriction).Any())
+            if (triggerRestrictions.Intersect(RequiringExistsRestriction).Any() && existsRestriction == null)
                 throw new ArgumentNullException("existsRestriction", $"Must be populated for any of these restrictions: {RequiringExistsRestriction}");
-            if (triggerRestrictions.Intersect(RequiringSourceRestriction).Any())
+            if (triggerRestrictions.Intersect(RequiringSourceRestriction).Any() && sourceRestriction == null)
                 throw new ArgumentNullException("sourceRestriction", $"Must be populated for any of these restrictions: {RequiringSourceRestriction}");
-            if (triggerRestrictions.Intersect(RequiringNumberRestriction).Any())
-                throw new ArgumentNullException("numberRestriction", $"Must be populated for any of these restrictions: {RequiringNumberRestriction}");
-            if (triggerRestrictions.Intersect(RequiringSpaceRestriction).Any())
+            if (triggerRestrictions.Intersect(RequiringNumberRestriction).Any() && xRestriction == null)
+                throw new ArgumentNullException("xRestriction", $"Must be populated for any of these restrictions: {RequiringNumberRestriction}");
+            if (triggerRestrictions.Intersect(RequiringSpaceRestriction).Any() && spaceRestriction == null)
                 throw new ArgumentNullException("spaceRestriction", $"Must be populated for any of these restrictions: {RequiringSpaceRestriction}");
 
             initialized = true;
