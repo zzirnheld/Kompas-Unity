@@ -45,6 +45,6 @@
 	"spellTypes": [
 		"Radial"
 	],
-	"subtypeText": "Radial Water Weather",
+	"subtypeText": "Water Weather Effect Radius",
 	"radius": 3
 }

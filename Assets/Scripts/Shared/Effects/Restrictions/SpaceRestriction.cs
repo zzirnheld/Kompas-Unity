@@ -89,6 +89,7 @@ namespace KompasCore.Effects
         public SpaceRestriction spaceConnectednessRestriction;
         public CardRestriction hereFitsRestriction;
         public CardRestriction inAOEOfRestriction;
+        public CardRestriction alsoInAOEOfRestriction;
 
         public NumberRestriction distanceXRestriction;
         public NumberRestriction connectedSpacesXRestriction;
@@ -121,6 +122,8 @@ namespace KompasCore.Effects
             limitAdjacencyRestriction?.Initialize(source, effect, subeffect);
             hereFitsRestriction?.Initialize(source, effect, subeffect);
             inAOEOfRestriction?.Initialize(source, effect, subeffect);
+            alsoInAOEOfRestriction?.Initialize(source, effect, subeffect);
+
             distanceXRestriction?.Initialize(source, subeffect);
             connectedSpacesXRestriction?.Initialize(source, subeffect);
             numberOfCardsInAOEOfRestriction?.Initialize(source, subeffect);
@@ -177,7 +180,8 @@ namespace KompasCore.Effects
                     => Game.boardCtrl.CardsAdjacentTo(space)
                             .Where(c => limitAdjacencyRestriction.IsValidCard(c, context))
                             .Count() <= adjacencyLimit,
-                InAOESourceAlsoIn => Game.Cards.Any(c => c.SpaceInAOE(space) && c.CardInAOE(Source)),
+                InAOESourceAlsoIn => Game.Cards.Any(c => c.SpaceInAOE(space) && c.CardInAOE(Source) 
+                                                    && (alsoInAOEOfRestriction?.IsValidCard(c, context) ?? true)),
 
                 SourceDisplacementToSpaceMatchesSpaceTarget => Source.Position.DisplacementTo(space) == Subeffect.SpaceTarget,
                 SourceDisplacementToSpaceSameDirectionAsSpaceTarget => Source.Position.DirectionFromThisTo(space) == Subeffect.SpaceTarget,

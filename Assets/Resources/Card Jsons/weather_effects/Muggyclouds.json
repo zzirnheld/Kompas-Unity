@@ -45,6 +45,6 @@
 	"spellTypes": [
 		"Radial"
 	],
-	"subtypeText": "Weather Radial",
+	"subtypeText": "Weather Effect Radius",
 	"radius": 3
 }

@@ -53,6 +53,6 @@
 	"spellTypes": [
 		"Radial"
 	],
-	"subtypeText": "Water Weather Radial 1",
+	"subtypeText": "Water Weather Effect Radius 1",
 	"radius": 1
 }
