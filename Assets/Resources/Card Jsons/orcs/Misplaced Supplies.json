@@ -1,0 +1,55 @@
+{
+	"cardType": 65,
+	"cardName": "Misplaced Supplies",
+	"effText": "When this character is board->handed, draw 1 card and gain 1 pip.\nWhen a friendly summon survives a fight, discard->attach me to them.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Rehand",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Augmented Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.PayPipsSubeffect, Assembly-CSharp",
+					"xMultiplier": 0,
+					"xModifier": -1
+				},
+				{
+					"$type": "KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"xMultiplier": 1,
+					"xModifier": 1
+				}
+			]
+		},
+		{
+			"triggerData": {
+				"triggerCondition": "Battle End",
+				"triggerRestriction": {
+					
+				}
+			}
+		}
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Augment Normal Restrictions",
+			"On Card that Fits Restriction"
+		],
+		"onCardRestriction": {
+			"cardRestrictions": [
+				"Friendly",
+				"Board"
+			]
+		}
+	},
+	"a": 1,
+	"subtypeText": "Loot",
+	"augSubtypes": [
+		"Spy"
+	]
+}
