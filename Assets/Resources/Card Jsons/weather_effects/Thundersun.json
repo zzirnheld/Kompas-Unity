@@ -1,14 +1,15 @@
 {
 	"cardType": 83,
-	"cardName": "Puffyclouds",
-	"effText": "Weather.\nWhen a character arrives here, give them +1 S.",
+	"cardName": "Thundersun",
+	"effText": "Weather Effect: Five times per turn, give both players a pip.",
 	"effects": [
 		{
-			"blurb": "Inspiring clouds",
 			"triggerData": {
+				"blurb": "Thundersun",
 				"triggerCondition": "Arrive",
 				"triggerRestriction": {
 					"triggerRestrictions": [
+						"Max Per Turn",
 						"This Card in Play",
 						"Space Fits Restriction",
 						"Main Card Fits Restriction Before"
@@ -23,28 +24,35 @@
 						"spaceRestrictions": [
 							"In Source's AOE"
 						]
-					}
+					},
+					"maxTimesPerTurn": 5
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xMultiplier": 0,
+					"xModifier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"sModifier": 1
+					"$type": "KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xMultiplier": 0,
+					"xModifier": 1
 				}
 			]
 		}
 	],
 	"keywords": [
-		"Weather"
+		"Weather Effect Cast"
 	],
 	"unique": true,
-	"c": 1,
+	"c": 9,
 	"spellTypes": [
 		"Radial"
 	],
-	"subtypeText": "Weather Radial",
-	"radius": 2
+	"subtypeText": "Water Weather Radial 1",
+	"radius": 1
 }

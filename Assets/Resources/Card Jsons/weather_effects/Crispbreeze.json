@@ -1,10 +1,10 @@
 {
 	"cardType": 83,
-	"cardName": "Fog",
-	"effText": "Weather.\nWhen an WX character arrives here, give them -X W until they leave.",
+	"cardName": "Crispbreeze",
+	"effText": "Weather Effect: +1 W.",
 	"effects": [
 		{
-			"blurb": "Can't see",
+			"blurb": "Crispy",
 			"triggerData": {
 				"triggerCondition": "Arrive",
 				"triggerRestriction": {
@@ -31,32 +31,20 @@
 					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type": "KompasServer.Effects.TemporaryCardStatChangeSubeffect, Assembly-CSharp",
-					"wMultiplier": -1,
-					"endCondition": "Leave AOE",
-					"triggerRestriction": {
-						"triggerRestrictions": [
-							"Main Card is a Secondary Context Card Target",
-							"Secondary Card Fits Restriction Before"
-						],
-						"cardRestriction": {
-							"cardRestrictions": [
-								"Is Source"
-							]
-						}
-					}
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"wModifier": 1
 				}
 			]
 		}
 	],
 	"keywords": [
-		"Weather"
+		"Weather Effect Cast"
 	],
 	"unique": true,
-	"c": 3,
+	"c": 2,
 	"spellTypes": [
 		"Radial"
 	],
-	"subtypeText": "Radial Water Weather",
+	"subtypeText": "Weather Radial",
 	"radius": 2
 }

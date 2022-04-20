@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Muggyclouds",
-	"effText": "Weather.\nWhen a character arrives here, give them -1 S.",
+	"effText": "Weather Effect: -1 S.",
 	"effects": [
 		{
 			"blurb": "Dispiriting clouds",
@@ -38,7 +38,7 @@
 		}
 	],
 	"keywords": [
-		"Weather"
+		"Weather Effect Cast"
 	],
 	"unique": true,
 	"c": 1,

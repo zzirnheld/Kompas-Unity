@@ -1,10 +1,10 @@
 {
 	"cardType": 83,
-	"cardName": "Peltrain",
-	"effText": "Weather.\nWhen a character arrives here, give them -4 W.",
+	"cardName": "Dapplesun",
+	"effText": "Weather Effect: +1 E.",
 	"effects": [
 		{
-			"blurb": "Rain depression",
+			"blurb": "Sun smiles",
 			"triggerData": {
 				"triggerCondition": "Arrive",
 				"triggerRestriction": {
@@ -32,19 +32,19 @@
 				},
 				{
 					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"wModifier": -4
+					"eModifier": 1
 				}
 			]
 		}
 	],
 	"keywords": [
-		"Weather"
+		"Weather Effect Cast"
 	],
 	"unique": true,
-	"c": 2,
+	"c": 3,
 	"spellTypes": [
 		"Radial"
 	],
-	"subtypeText": "Radial Water Weather",
-	"radius": 3
+	"subtypeText": "Weather Radial",
+	"radius": 2
 }

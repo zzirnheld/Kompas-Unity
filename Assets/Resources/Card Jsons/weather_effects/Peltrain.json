@@ -1,10 +1,10 @@
 {
 	"cardType": 83,
-	"cardName": "Flashflood",
-	"effText": "Weather.\nWhen a character arrives here, give them -1 N.",
+	"cardName": "Peltrain",
+	"effText": "Weather Effect: -4 W.",
 	"effects": [
 		{
-			"blurb": "Floodwaters",
+			"blurb": "Rain depression",
 			"triggerData": {
 				"triggerCondition": "Arrive",
 				"triggerRestriction": {
@@ -32,19 +32,19 @@
 				},
 				{
 					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"nModifier": -1
+					"wModifier": -4
 				}
 			]
 		}
 	],
 	"keywords": [
-		"Weather"
+		"Weather Effect Cast"
 	],
 	"unique": true,
-	"c": 7,
+	"c": 2,
 	"spellTypes": [
 		"Radial"
 	],
 	"subtypeText": "Radial Water Weather",
-	"radius": 2
+	"radius": 3
 }

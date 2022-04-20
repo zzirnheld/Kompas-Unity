@@ -1,8 +1,7 @@
 {
-	"blurb":"Weather",
+	"blurb":"Shifting Weather Effects",
 	"triggerData":
 	{
-		"blurb":"Weather",
 		"triggerCondition":"Turn Start",
 		"triggerRestriction":{
 			"triggerRestrictions":["This Card in Play"]

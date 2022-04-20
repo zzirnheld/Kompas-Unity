@@ -45,12 +45,12 @@
 			"reminder":"When I fight, kill me."
 		},
 		{
-			"keyword":"Weather.",
-			"reminder":"When turns start, annihilate me. Deck->cast a different Weather adjacent to where I was."
+			"keyword":"Weather Effect",
+			"reminder":"When a non-Weather character arrives here, apply the listed effect. When turns start, annihilate me and deck->cast a Weather Effect 1 space from where I was."
 		},
 		{
-			"keyword":"Weather Event.",
-			"reminder":"Can’t be played normally during friendly turns. Must be played in two Weathers."
+			"keyword":"Weather Event",
+			"reminder":"Can only be played in the overlap of 2 Weather Effects. When I'm summoned on an enemy turn, apply the listed effect."
 		},
 		{
 			"keyword":"martyr",

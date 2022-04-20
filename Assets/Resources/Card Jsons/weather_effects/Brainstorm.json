@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Brainstorm",
-	"effText": "Weather.\nWhen a character arrives here, their controller draws 1 card, then hand->bottomdecks 1 card.",
+	"effText": "Weather Effect: Their controller draws 1 card, then hand->bottomdecks 1 card.",
 	"effects": [
 		{
 			"triggerData": {
@@ -53,7 +53,7 @@
 		}
 	],
 	"keywords": [
-		"Weather"
+		"Weather Effect Cast"
 	],
 	"unique": true,
 	"c": 6,

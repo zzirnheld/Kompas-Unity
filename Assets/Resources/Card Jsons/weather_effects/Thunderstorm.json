@@ -1,15 +1,14 @@
 {
 	"cardType": 83,
-	"cardName": "Thundersun",
-	"effText": "Weather.\nThe first five times each turn a character arrives here, give both players a pip.",
+	"cardName": "Thunderstorm",
+	"effText": "Weather Effect: -3 E.",
 	"effects": [
 		{
+			"blurb": "Thunderstrike",
 			"triggerData": {
-				"blurb": "Thundersun",
 				"triggerCondition": "Arrive",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"Max Per Turn",
 						"This Card in Play",
 						"Space Fits Restriction",
 						"Main Card Fits Restriction Before"
@@ -24,23 +23,16 @@
 						"spaceRestrictions": [
 							"In Source's AOE"
 						]
-					},
-					"maxTimesPerTurn": 5
+					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
-					"xMultiplier": 0,
-					"xModifier": 1
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
-				},
-				{
-					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
-					"xMultiplier": 0,
-					"xModifier": 1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eModifier": -3
 				}
 			]
 		}
@@ -49,10 +41,10 @@
 		"Weather"
 	],
 	"unique": true,
-	"c": 9,
+	"c": 5,
 	"spellTypes": [
 		"Radial"
 	],
-	"subtypeText": "Water Weather Radial 1",
-	"radius": 1
+	"subtypeText": "Radial Water Weather",
+	"radius": 3
 }

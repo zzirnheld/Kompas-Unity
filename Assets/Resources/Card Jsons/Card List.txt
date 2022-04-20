@@ -503,30 +503,18 @@ wanderers/Wander Home
 wanderers/Wanderer
 wanderers/Wanderlust
 wanderers/Wisewoman
-weather/Dapplesun
-weather/Puffyclouds
-weather/Crispbreeze
-weather/Flashflood
-weather/Peltrain
-weather/Muggyclouds
-weather/Thunderstorm
-weather/Blizzard
-weather/Fog
-weather/Brainstorm
-weather/Thundersun
-weather/Iriaid, Who Rides the Skies
-weather/Emezene, Who Reads the Breeze
-weather/Outaroud, Who Scouts the Clouds
-weather/Zussastuss, Who Trusts the Gusts
-weather/Sterrasterr, Who Stirs the Storm
-weather/Erelain, Who Trains the Rain
-weather/Cloudshift
-weather/Stormfront
-weather/Unusual Weather
-weather/Lightning Elemental
-weather/Shardstorm Elemental
-weather/Hailstrike Elemental
-weather/Weather Apprentice
+weather_effects/Dapplesun
+weather_effects/Puffyclouds
+weather_effects/Crispbreeze
+weather_effects/Flashflood
+weather_effects/Peltrain
+weather_effects/Muggyclouds
+weather_effects/Thunderstorm
+weather_effects/Blizzard
+weather_effects/Fog
+weather_effects/Brainstorm
+weather_effects/Thundersun
+weather_support/Cloudshift
 wisps/Erratic Wisps
 wisps/Flippiwisp
 wisps/Here'n'gone

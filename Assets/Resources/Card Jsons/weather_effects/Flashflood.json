@@ -1,10 +1,10 @@
 {
 	"cardType": 83,
-	"cardName": "Crispbreeze",
-	"effText": "Weather.\nWhen a character arrives here, give them +1 W.",
+	"cardName": "Flashflood",
+	"effText": "Weather Effect: -1 N.",
 	"effects": [
 		{
-			"blurb": "Crispy",
+			"blurb": "Floodwaters",
 			"triggerData": {
 				"triggerCondition": "Arrive",
 				"triggerRestriction": {
@@ -32,19 +32,19 @@
 				},
 				{
 					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"wModifier": 1
+					"nModifier": -1
 				}
 			]
 		}
 	],
 	"keywords": [
-		"Weather"
+		"Weather Effect Cast"
 	],
 	"unique": true,
-	"c": 2,
+	"c": 7,
 	"spellTypes": [
 		"Radial"
 	],
-	"subtypeText": "Weather Radial",
+	"subtypeText": "Radial Water Weather",
 	"radius": 2
 }
