@@ -35,7 +35,7 @@
 						"Enemy Turn",
 						"This Card Fits Restriction Now"
 					],
-					"cardRestriction": {
+					"selfRestriction": {
 						"cardRestrictions": [
 							"Discard"
 						]
