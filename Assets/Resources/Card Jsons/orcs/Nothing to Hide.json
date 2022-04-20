@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Nothing to Hide",
-	"effText": "Reveal your hand, including X Spies. Orcs in your hand gain -1S. Draw X cards.",
+	"effText": "Reveal your hand, including X Spies. Give Orcs in your hand -1 S. Draw X cards.",
 	"effects": [
 		{
 			"blurb": "Simple",

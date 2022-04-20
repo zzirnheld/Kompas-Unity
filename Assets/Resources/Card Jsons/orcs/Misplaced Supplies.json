@@ -1,7 +1,7 @@
 {
 	"cardType": 65,
 	"cardName": "Misplaced Supplies",
-	"effText": "When this character is board->handed, draw 1 card and gain 1 pip.\nWhen a friendly summon survives a fight, discard->attach me to them.",
+	"effText": "When this character is board->handed, draw 1 card and gain 1 pip.\nWhen a friendly character survives a fight, discard->attach me to them.",
 	"effects": [
 		{
 			"triggerData": {
@@ -30,22 +30,40 @@
 			"triggerData": {
 				"triggerCondition": "Battle End",
 				"triggerRestriction": {
-					
+					"triggerRestrictions": [
+						"Main Card Fits Restriction Before",
+						"This Card Fits Restriction Now"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Board",
+							"Friendly"
+						]
+					},
+					"selfRestriction": {
+						"cardRestrictions": [
+							"Discard"
+						]
+					}
 				}
-			}
+			},
+			"subEffects": [
+				{
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.AttachSubeffect, Assembly-CSharp"
+				}
+			]
 		}
 	],
 	"PlayRestriction": {
 		"normalRestrictions": [
-			"Augment Normal Restrictions",
-			"On Card that Fits Restriction"
+			"Augment Normal Restrictions"
 		],
-		"onCardRestriction": {
-			"cardRestrictions": [
-				"Friendly",
-				"Board"
-			]
-		}
+		"effectRestrictions": [
+			"Augment Effect Restrictions"
+		]
 	},
 	"a": 1,
 	"subtypeText": "Loot",
