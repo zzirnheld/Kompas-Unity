@@ -1,0 +1,84 @@
+{
+	"cardType": 67,
+	"cardName": "Blizzard Squall",
+	"effText": "Weather Event: Set the N of all enemies in the same Weather Effect as me to 0.",
+	"effects": [
+		{
+			"blurb": "Freeze",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.SetAllCardStatsSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Board",
+                            "Enemy",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"In AOE Source is Also In"
+							],
+							"alsoInAOEOfRestriction": {
+								"cardRestrictions": [
+									"Subtypes Include"
+								],
+								"subtypesInclude": [
+									"Weather"
+								]
+							}
+						}
+					},
+					"nVal": 0
+				}
+			]
+		}
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Default Normal Restrictions",
+			"Enemy Turn",
+			"Space Must Fit Restriction"
+		],
+		"spaceRestriction": {
+			"spaceRestrictions": [
+				"In AOE of Number of Cards Fitting Restriction"
+			],
+			"inAOEOfRestriction": {
+				"cardRestrictions": [
+					"Subtypes Include"
+				],
+				"subtypesInclude": [
+					"Weather"
+				]
+			},
+			"numberOfCardsInAOEOfRestriction": {
+				"numberRestrictions": [
+					">=Constant"
+				],
+				"constant": 2
+			}
+		},
+		"recommendationRestrictions": [
+			"Adjacent to Card Fitting Restriction"
+		],
+		"adjacentCardRestriction": {
+			"cardRestrictions": [
+				"Character"
+			]
+		}
+	},
+	"n": 4,
+	"e": 7,
+	"s": 4,
+	"w": 4,
+	"subtypeText": "Weather Event Elemental"
+}

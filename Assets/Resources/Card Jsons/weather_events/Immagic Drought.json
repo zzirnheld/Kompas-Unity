@@ -1,0 +1,90 @@
+{
+	"cardType": 67,
+	"cardName": "Immagic Drought",
+	"effText": "Weather Event: Negate all enemy characters in the same Weather Effect as me, until the next turn starts.",
+	"effects": [
+		{
+			"blurb": "Dessicate",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Board",
+                            "Enemy",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"In AOE Source is Also In"
+							],
+							"alsoInAOEOfRestriction": {
+								"cardRestrictions": [
+									"Subtypes Include"
+								],
+								"subtypesInclude": [
+									"Weather"
+								]
+							}
+						}
+                    }
+				},
+				{
+					"$type": "KompasServer.Effects.TemporaryNegateSubeffect, Assembly-CSharp",
+					"endCondition": "Turn Start",
+					"triggerRestriction": {
+						"triggerRestrictions": []
+					}
+				}
+			]
+		}
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Default Normal Restrictions",
+			"Enemy Turn",
+			"Space Must Fit Restriction"
+		],
+		"spaceRestriction": {
+			"spaceRestrictions": [
+				"In AOE of Number of Cards Fitting Restriction"
+			],
+			"inAOEOfRestriction": {
+				"cardRestrictions": [
+					"Subtypes Include"
+				],
+				"subtypesInclude": [
+					"Weather"
+				]
+			},
+			"numberOfCardsInAOEOfRestriction": {
+				"numberRestrictions": [
+					">=Constant"
+				],
+				"constant": 2
+			}
+		},
+		"recommendationRestrictions": [
+			"Adjacent to Card Fitting Restriction"
+		],
+		"adjacentCardRestriction": {
+			"cardRestrictions": [
+				"Character"
+			]
+		}
+	},
+	"n": 1,
+	"e": 7,
+	"s": 4,
+	"w": 2,
+	"subtypeText": "Weather Event Elemental"
+}
