@@ -1,13 +1,14 @@
 {
 	"cardType": 83,
 	"cardName": "Bind the Shadows",
-	"effText": "Whenever an orc is summoned in my area, it gains +3W until the next turn.\nWhenever a summon in my area is rehanded, you may choose an Orc in your hand. If it's not revealed, reveal it, then it gains -2S.",
+	"effText": "When you summon an Orc here, give them +3 W until the next turn.\nWhen a character here is handed, choose an Orc in your hand. If it's not revealed, reveal it. Regardless, give it -2 S.",
 	"effects": [
 		{
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
 					"triggerRestrictions": [
+						"Controller Triggered",
 						"This Card in Play",
 						"Main Card Fits Restriction After"
 					],
@@ -39,7 +40,6 @@
 		},
 		{
 			"triggerData": {
-				"optional": true,
 				"triggerCondition": "Rehand",
 				"triggerRestriction": {
 					"triggerRestrictions": [
@@ -71,12 +71,12 @@
 					}
 				},
 				{
+					"$type": "KompasServer.Effects.RevealSubeffect, Assembly-CSharp"
+				},
+				{
 					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
 					"forbidNotBoard": false,
 					"sModifier": -2
-				},
-				{
-					"$type": "KompasServer.Effects.RevealSubeffect, Assembly-CSharp"
 				}
 			]
 		}

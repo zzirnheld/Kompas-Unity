@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Bind the Blood",
-	"effText": "Whenever an orc in my area attacks, it gains +1W.\nWhenever a summon in my area dies, you may choose an Orc in your hand. If it's not revealed, reveal it, then it gains -2S.",
+	"effText": "When an Orc here attacks, give them +1 W.\nWhen a character here dies, choose an Orc in your hand. If it's not revealed, reveal it. Regardless, give it -2 S.",
 	"effects": [
 		{
 			"triggerData": {
@@ -35,7 +35,6 @@
 		},
 		{
 			"triggerData": {
-				"optional": true,
 				"triggerCondition": "Discard",
 				"triggerRestriction": {
 					"triggerRestrictions": [
@@ -67,12 +66,12 @@
 					}
 				},
 				{
+					"$type": "KompasServer.Effects.RevealSubeffect, Assembly-CSharp"
+				},
+				{
 					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
 					"forbidNotBoard": false,
 					"sModifier": -2
-				},
-				{
-					"$type": "KompasServer.Effects.RevealSubeffect, Assembly-CSharp"
 				}
 			]
 		}
