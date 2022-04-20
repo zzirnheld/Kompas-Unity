@@ -69,8 +69,9 @@ namespace KompasCore.Effects
         #endregion trigger conditions
 
         private static readonly string[] RequiringCardRestriction = 
-            { ThisCardFitsRestriction, MainCardFitsRestrictionBefore, SecondaryCardFitsRestrictionBefore, MainCardsAugmentedCardBeforeFitsRestriction };
+            { MainCardFitsRestrictionBefore, SecondaryCardFitsRestrictionBefore, MainCardsAugmentedCardBeforeFitsRestriction };
         private static readonly string[] RequiringNowRestriction = { MainCardFitsRestrictionAfter };
+        private static readonly string[] RequiringSelfRestriction = { ThisCardFitsRestriction };
         private static readonly string[] RequiringExistsRestriction = { CardExistsNow };
         private static readonly string[] RequiringSourceRestriction = { StackableSourceFitsRestriction };
         private static readonly string[] RequiringNumberRestriction = { XFitsRestriction };
@@ -83,6 +84,7 @@ namespace KompasCore.Effects
         public string[] triggerRestrictions = new string[0];
         public CardRestriction cardRestriction;
         public CardRestriction nowRestriction;
+        public CardRestriction selfRestriction;
         public CardRestriction sourceRestriction;
         public CardRestriction existsRestriction;
         public NumberRestriction xRestriction;
@@ -122,6 +124,8 @@ namespace KompasCore.Effects
                 throw new ArgumentNullException("cardRestriction", $"Must be populated for any of these restrictions: {RequiringCardRestriction}");
             if (triggerRestrictions.Intersect(RequiringNowRestriction).Any() && nowRestriction == null)
                 throw new ArgumentNullException("nowRestriction", $"Must be populated for any of these restrictions: {RequiringNowRestriction}");
+            if (triggerRestrictions.Intersect(RequiringSelfRestriction).Any() && selfRestriction == null)
+                throw new ArgumentNullException("selfRestriction", $"Must be populated for any of these restrictions: {RequiringSelfRestriction}");
             if (triggerRestrictions.Intersect(RequiringExistsRestriction).Any() && existsRestriction == null)
                 throw new ArgumentNullException("existsRestriction", $"Must be populated for any of these restrictions: {RequiringExistsRestriction}");
             if (triggerRestrictions.Intersect(RequiringSourceRestriction).Any() && sourceRestriction == null)

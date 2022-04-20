@@ -5,7 +5,7 @@
 		"triggerCondition":"Stack End",
 		"triggerRestriction":{
 			"triggerRestrictions":["This Card Fits Restriction Now","Number of Cards Fitting Restriction Fits X Restriction"],
-			"cardRestriction":{
+			"selfRestriction":{
 				"cardRestrictions":["Board","Not Avatar"]
 			},
             "cardsFittingCardRestriction":{

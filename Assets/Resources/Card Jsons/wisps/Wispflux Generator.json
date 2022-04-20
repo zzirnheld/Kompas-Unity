@@ -13,7 +13,7 @@
 						"This Card in Play",
 						"This Card Fits Restriction Now"
 					],
-					"cardRestriction": {
+					"selfRestriction": {
 						"cardRestrictions": [
 							"Space Fits Restriction"
 						],

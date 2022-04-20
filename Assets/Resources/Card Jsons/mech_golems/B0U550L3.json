@@ -11,7 +11,7 @@
 					"This Card Fits Restriction Now",
 					"Default"
 				],
-				"cardRestriction": {
+				"selfRestriction": {
 					"cardRestrictions": [
 						"Activated"
 					]

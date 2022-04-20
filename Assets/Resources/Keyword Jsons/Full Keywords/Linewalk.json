@@ -6,7 +6,7 @@
 			"This Card Fits Restriction Now",
 			"Default"
 		],
-		"thisCardRestriction":
+		"selfRestriction":
 		{
 			"cardRestrictions":["Has Movement"]
 		}
