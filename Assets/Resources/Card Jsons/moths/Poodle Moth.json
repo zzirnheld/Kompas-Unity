@@ -1,10 +1,10 @@
 {
 	"cardType": 67,
 	"cardName": "Poodle Moth",
-	"effText": "Stealth, and after I move that way, hand me. Hand->summon a distinct Moth where I was, that you picked when I was summoned. They attack an adjacent character.",
+	"effText": "Stealth.\nWhen I'm summoned, choose a Moth in your hand. When I attack a character in Light, reshuffle me and summon them where I was. They attack whoever I was attacking.",
 	"effects": [
 		{
-			"blurb": "Pupate",
+			"blurb": "Reidentify",
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
@@ -36,18 +36,31 @@
 					"jumpIndices": [
 						2
 					],
-					"endCondition": "Move",
-                    "triggerRestriction": {
-                        "triggerRestrictions": [
-                            "This Card is Main Card",
-                            "Stackable Source Fits Restriction Now"
-                        ],
-                        "sourceRestriction": {
-                            "cardRestrictions": [
-                                "Is Source"
-                            ]
-                        }
-                    }
+					"endCondition": "Attack",
+					"triggerRestriction": {
+						"triggerRestrictions": [
+							"This Card is Main Card",
+							"Secondary Card Fits Restriction Before"
+						],
+						"secondaryCardRestriction": {
+							"cardRestrictions": [
+								"Space Fits Restriction"
+							],
+							"spaceRestriction": {
+								"spaceRestrictions": [
+									"In AOE of Card Fitting Restriction"
+								],
+								"inAOEOfRestriction": {
+									"cardRestrictions": [
+										"Subtypes Include"
+									],
+									"subtypesInclude": [
+										"Light"
+									]
+								}
+							}
+						}
+					}
 				},
 				{
 					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
@@ -56,7 +69,7 @@
 					"$type": "KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp",
