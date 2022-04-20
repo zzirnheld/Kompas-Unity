@@ -1,13 +1,12 @@
 {
 	"cardType": 67,
 	"cardName": "Roth'Drek Phantom",
-	"effText": "Ambush.\nOnce per turn, you can rehand me. When you do, I gain -2S.",
+	"effText": "Ambush.\nDuring your turn, you can hand me, then give me -2S.",
 	"effects": [
 		{
 			"blurb": "Withdraw",
 			"activationRestriction": {
 				"activationRestrictionArray": [
-					"Max Times Per Turn",
 					"Friendly Turn",
 					"Default"
 				]
