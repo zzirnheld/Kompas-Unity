@@ -322,7 +322,7 @@ namespace KompasCore.Effects
         public bool IsRestrictionValidDebug(string restriction, GameCardBase potentialTarget, int x, ActivationContext context)
         {
             bool answer = IsRestrictionValid(restriction, potentialTarget, x, context);
-            if (!answer) Debug.Log($"{potentialTarget?.CardName} flouts {restriction}");
+            //if (!answer) Debug.Log($"{potentialTarget?.CardName} flouts {restriction}");
             return answer;
         }
 
@@ -338,7 +338,7 @@ namespace KompasCore.Effects
 
             try
             {
-                return cardRestrictions.All(r => IsRestrictionValid(r, potentialTarget, x, context));
+                return cardRestrictions.All(r => IsRestrictionValidDebug(r, potentialTarget, x, context));
             }
             catch (ArgumentException ae)
             {

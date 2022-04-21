@@ -250,6 +250,7 @@ orcs/Roth'Kil Blood Acolyte
 orcs/Roth'Kil Shadow Acolyte
 orcs/Spiked Barricade
 orcs/Unassuming Bush
+orcs/Misplaced Supplies
 pulsars/Accelerating Pulsar
 pulsars/Boldening Pulsar
 pulsars/Cannot Be Created Nor Destroyed

@@ -115,6 +115,7 @@ namespace KompasCore.Effects
             cardRestriction?.Initialize(thisCard, effect, subeffect);
             existsRestriction?.Initialize(thisCard, effect, subeffect);
             nowRestriction?.Initialize(thisCard, effect, subeffect);
+            selfRestriction?.Initialize(thisCard, effect, subeffect);
             spaceRestriction?.Initialize(thisCard, thisCard.Controller, effect, subeffect);
             sourceRestriction?.Initialize(thisCard, effect, subeffect);
             xRestriction?.Initialize(thisCard);
@@ -150,7 +151,7 @@ namespace KompasCore.Effects
             ThisCardInPlay => ThisCard.Location == CardLocation.Board,
             CardExistsNow => ThisCard.Game.Cards.Any(c => existsRestriction.IsValidCard(c, context)),
 
-            ThisCardFitsRestriction => cardRestriction.IsValidCard(ThisCard, context),
+            ThisCardFitsRestriction => selfRestriction.IsValidCard(ThisCard, context),
 
             MainCardFitsRestrictionBefore => cardRestriction.IsValidCard(context.mainCardInfoBefore, context),
             SecondaryCardFitsRestrictionBefore => cardRestriction.IsValidCard(context.secondaryCardInfoBefore, context),

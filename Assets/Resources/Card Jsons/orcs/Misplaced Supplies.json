@@ -52,7 +52,12 @@
 					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type": "KompasServer.Effects.AttachSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
+					"targetToAttachTo": -2,
+					"targetIndex": -1
 				}
 			]
 		}
