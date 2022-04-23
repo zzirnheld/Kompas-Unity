@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Send Home",
-	"effText": "Annihilate a character adjacent to me and a Shaper.",
+	"effText": "Cast only adjacent to a Shaper.\nAnnihilate an adjacent character.",
 	"effects": [
 		{
 			"triggerData": {
@@ -45,29 +45,21 @@
 		}
 	],
 	"PlayRestriction": {
-		"recommendationRestrictions": [
+		"normalRestrictions": [
+			"Default Normal Restrictions",
+			"Adjacent to Card Fitting Restriction"
+		],
+		"effectRestrictions": [
+			"Default Effect Restrictions",
 			"Adjacent to Card Fitting Restriction"
 		],
 		"adjacentCardRestriction": {
 			"cardRestrictions": [
-				"Character",
-				"Enemy",
-				"Space Fits Restriction"
+				"Subtypes Include"
 			],
-			"spaceRestriction": {
-				"spaceRestrictions": [
-					"Adjacent to a Card that Fits Restriction"
-				],
-				"adjacencyRestriction": {
-					"cardRestrictions": [
-						"Subtypes Include"
-					],
-					"subtypesInclude": [
-						"Shaper"
-					]
-				},
-				"mustBeEmpty": false
-			}
+			"subtypesInclude": [
+				"Shaper"
+			]
 		}
 	},
 	"c": 4,
