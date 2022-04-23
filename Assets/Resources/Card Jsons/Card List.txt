@@ -515,6 +515,11 @@ weather_effects/Fog
 weather_effects/Brainstorm
 weather_effects/Thundersun
 weather_support/Cloudshift
+weather_events/Lightning Elemental
+weather_events/Blizzard Squall
+weather_events/Immagic Drought
+weather_events/Roll of Leythunder
+weather_events/Windstorm of Etaqua
 wisps/Erratic Wisps
 wisps/Flippiwisp
 wisps/Here'n'gone

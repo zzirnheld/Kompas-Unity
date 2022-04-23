@@ -1,10 +1,10 @@
 {
 	"cardType": 67,
-	"cardName": "Immagic Drought",
-	"effText": "Weather Event: Negate all enemy characters in the same Weather Effect as me, until the next turn starts.",
+	"cardName": "Roll of Leythunder",
+	"effText": "Weather Event: Dispel all non-Weather spells in the same Weather Effect as me.",
 	"effects": [
 		{
-			"blurb": "Dessicate",
+			"blurb": "Leythunder",
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
@@ -19,9 +19,8 @@
 					"$type": "KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
 					"cardRestriction": {
 						"cardRestrictions": [
+							"Summoned",
 							"Character",
-							"Board",
-                            "Enemy",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
@@ -37,14 +36,10 @@
 								]
 							}
 						}
-                    }
+					}
 				},
 				{
-					"$type": "KompasServer.Effects.TemporaryNegateSubeffect, Assembly-CSharp",
-					"endCondition": "Turn Start",
-					"triggerRestriction": {
-						"triggerRestrictions": []
-					}
+					"$type": "KompasServer.Effects.DispelSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",

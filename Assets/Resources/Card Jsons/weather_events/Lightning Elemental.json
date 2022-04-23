@@ -9,7 +9,8 @@
 				"triggerCondition": "Play",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card is Main Card"
+						"This Card is Main Card",
+						"Enemy Turn"
 					]
 				}
 			},
@@ -49,8 +50,17 @@
 	"PlayRestriction": {
 		"normalRestrictions": [
 			"Default Normal Restrictions",
-			"Enemy Turn",
 			"Space Must Fit Restriction"
+		],
+		"normalRestrictionsToIgnore": [
+			"Adjacent to Friendly Card"
+		],
+		"effectRestrictions": [
+			"Default Effect Restrictions",
+			"Space Must Fit Restriction"
+		],
+		"effectRestrictionsToIgnore": [
+			"Adjacent to Friendly Card"
 		],
 		"spaceRestriction": {
 			"spaceRestrictions": [
@@ -70,14 +80,6 @@
 				],
 				"constant": 2
 			}
-		},
-		"recommendationRestrictions": [
-			"Adjacent to Card Fitting Restriction"
-		],
-		"adjacentCardRestriction": {
-			"cardRestrictions": [
-				"Character"
-			]
 		}
 	},
 	"n": 5,
