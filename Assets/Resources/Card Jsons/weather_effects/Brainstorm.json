@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Brainstorm",
-	"effText": "Weather Effect: Their controller draws 1 card, then hand->bottomdecks 1 card.",
+	"effText": "Weather Condition: Their controller draws 1 card, then hand->bottomdecks 1 card.",
 	"effects": [
 		{
 			"triggerData": {
@@ -53,13 +53,13 @@
 		}
 	],
 	"keywords": [
-		"Weather Effect Cast"
+		"Weather Condition Cast"
 	],
 	"unique": true,
 	"c": 6,
 	"spellTypes": [
 		"Radial"
 	],
-	"subtypeText": "Weather Effect Radius",
+	"subtypeText": "Weather Condition Radius",
 	"radius": 1
 }

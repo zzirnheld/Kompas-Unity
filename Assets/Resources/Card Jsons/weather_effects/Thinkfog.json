@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Thinkfog",
-	"effText":"Weather Effect: Their controller can pay 1 pip to draw 1 card.",
+	"effText":"Weather Condition: Their controller can pay 1 pip to draw 1 card.",
 	"effects":[
 		{
 			"triggerData":
@@ -48,10 +48,10 @@
 			]	
 		}
 	],
-	"keywords":["Weather Effect Cast"],
+	"keywords":["Weather Condition Cast"],
 	"unique":true,
 	"c":6,
 	"spellTypes":["Radial"],
-	"subtypeText":"Weather Effect Radius",
+	"subtypeText":"Weather Condition Radius",
 	"radius":1
 }

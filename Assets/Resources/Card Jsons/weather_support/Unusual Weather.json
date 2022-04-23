@@ -1,0 +1,60 @@
+{
+	"cardType": 83,
+	"cardName": "Unusual Weather",
+	"effText": "When Weather Conditions arrive, echo any turn player characters in them.",
+	"effects": [
+		{
+			"blurb": "It looks like [9!8sd9l1a###",
+			"triggerData": {
+				"triggerCondition": "Arrive",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+                        "This Card in Play",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Weather",
+                            "Condition"
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Turn Player Controls",
+							"Character",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+                                "In Card Target's AOE"
+							]
+						}
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete": true,
+					"jumpIndices": [
+						2
+					]
+				}
+			]
+		}
+	],
+	"c": 3,
+	"subtypeText": "Enchant"
+}

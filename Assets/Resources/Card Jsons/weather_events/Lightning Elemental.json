@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Lightning Elemental",
-	"effText": "Weather Event: Give an enemy character in the same Weather Effect as me -7 E.",
+	"effText": "Weather Event: Give an enemy character in the same Weather Condition as me -7 E.",
 	"effects": [
 		{
 			"blurb": "Strike Lightning",

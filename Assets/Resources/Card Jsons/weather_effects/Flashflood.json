@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Flashflood",
-	"effText": "Weather Effect: -1 N.",
+	"effText": "Weather Condition: -1 N.",
 	"effects": [
 		{
 			"blurb": "Floodwaters",
@@ -38,13 +38,13 @@
 		}
 	],
 	"keywords": [
-		"Weather Effect Cast"
+		"Weather Condition Cast"
 	],
 	"unique": true,
 	"c": 7,
 	"spellTypes": [
 		"Radial"
 	],
-	"subtypeText": "Water Weather Effect Radius",
+	"subtypeText": "Water Weather Condition Radius",
 	"radius": 2
 }

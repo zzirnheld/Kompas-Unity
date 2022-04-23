@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Roll of Leythunder",
-	"effText": "Weather Event: Dispel all non-Weather spells in the same Weather Effect as me.",
+	"effText": "Weather Event: Dispel all non-Weather spells in the same Weather Condition as me.",
 	"effects": [
 		{
 			"blurb": "Leythunder",
@@ -20,8 +20,12 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Summoned",
-							"Character",
+							"Spell",
+							"Subtypes Exclude",
 							"Space Fits Restriction"
+						],
+						"subtypesExclude": [
+							"Weather"
 						],
 						"spaceRestriction": {
 							"spaceRestrictions": [

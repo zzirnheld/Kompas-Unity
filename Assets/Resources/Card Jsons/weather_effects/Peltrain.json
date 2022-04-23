@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Peltrain",
-	"effText": "Weather Effect: -4 W.",
+	"effText": "Weather Condition: -4 W.",
 	"effects": [
 		{
 			"blurb": "Rain depression",
@@ -38,13 +38,13 @@
 		}
 	],
 	"keywords": [
-		"Weather Effect Cast"
+		"Weather Condition Cast"
 	],
 	"unique": true,
 	"c": 2,
 	"spellTypes": [
 		"Radial"
 	],
-	"subtypeText": "Water Weather Effect Radius",
+	"subtypeText": "Water Weather Condition Radius",
 	"radius": 3
 }

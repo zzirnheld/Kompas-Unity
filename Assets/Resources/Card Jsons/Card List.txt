@@ -7,6 +7,7 @@ generic/Spellbombsetter
 generic/Lifetide
 generic/Warlock
 generic/Juan Puntsch-Mann
+generic/Altar of Amnesia
 aquatic/Big Tuna
 aquatic/Changing Tides
 aquatic/Fishing
@@ -515,6 +516,8 @@ weather_effects/Fog
 weather_effects/Brainstorm
 weather_effects/Thundersun
 weather_support/Cloudshift
+weather_support/Thunderous Echo
+weather_support/Unusual Weather
 weather_events/Lightning Elemental
 weather_events/Blizzard Squall
 weather_events/Immagic Drought

@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Puffyclouds",
-	"effText": "Weather Effect: +1 S.",
+	"effText": "Weather Condition: +1 S.",
 	"effects": [
 		{
 			"blurb": "Inspiring clouds",
@@ -45,6 +45,6 @@
 	"spellTypes": [
 		"Radial"
 	],
-	"subtypeText": "Weather Effect Radius",
+	"subtypeText": "Weather Condition Radius",
 	"radius": 2
 }

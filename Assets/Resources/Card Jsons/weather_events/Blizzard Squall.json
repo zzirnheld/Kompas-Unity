@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Blizzard Squall",
-	"effText": "Weather Event: Set the N of all enemies in the same Weather Effect as me to 0.",
+	"effText": "Weather Event: Set the N of all enemies in the same Weather Condition as me to 0.",
 	"effects": [
 		{
 			"blurb": "Freeze",

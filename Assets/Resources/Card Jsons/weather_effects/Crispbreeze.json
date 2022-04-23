@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Crispbreeze",
-	"effText": "Weather Effect: +1 W.",
+	"effText": "Weather Condition: +1 W.",
 	"effects": [
 		{
 			"blurb": "Crispy",
@@ -38,13 +38,13 @@
 		}
 	],
 	"keywords": [
-		"Weather Effect Cast"
+		"Weather Condition Cast"
 	],
 	"unique": true,
 	"c": 2,
 	"spellTypes": [
 		"Radial"
 	],
-	"subtypeText": "Weather Effect Radius",
+	"subtypeText": "Weather Condition Radius",
 	"radius": 2
 }

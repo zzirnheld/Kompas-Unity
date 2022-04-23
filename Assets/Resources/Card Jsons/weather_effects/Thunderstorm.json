@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Thunderstorm",
-	"effText": "Weather Effect: -3 E.",
+	"effText": "Weather Condition: -3 E.",
 	"effects": [
 		{
 			"blurb": "Thunderstrike",
@@ -45,6 +45,6 @@
 	"spellTypes": [
 		"Radial"
 	],
-	"subtypeText": "Water Weather Effect Radius",
+	"subtypeText": "Water Weather Condition Radius",
 	"radius": 3
 }

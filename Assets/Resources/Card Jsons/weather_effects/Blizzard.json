@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Blizzard",
-	"effText": "Weather Effect: -Their N until they leave.",
+	"effText": "Weather Condition: -Their N until they leave.",
 	"effects": [
 		{
 			"blurb": "Out in the cold",
@@ -57,13 +57,13 @@
 		}
 	],
 	"keywords": [
-		"Weather Effect Cast"
+		"Weather Condition Cast"
 	],
 	"unique": true,
 	"c": 3,
 	"spellTypes": [
 		"Radial"
 	],
-	"subtypeText": "Water Weather Effect Radius",
+	"subtypeText": "Water Weather Condition Radius",
 	"radius": 2
 }

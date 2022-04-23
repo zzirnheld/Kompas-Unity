@@ -10,7 +10,7 @@ Machinations Play
 Machinations Reup
 Comeback Play
 Supplicant
-Weather Effect Cast
+Weather Condition Cast
 Wisp Summon
 Wisp Turn Start
 Flashback

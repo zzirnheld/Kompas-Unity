@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Dapplesun",
-	"effText": "Weather Effect: +1 E.",
+	"effText": "Weather Condition: +1 E.",
 	"effects": [
 		{
 			"blurb": "Sun smiles",
@@ -38,13 +38,13 @@
 		}
 	],
 	"keywords": [
-		"Weather Effect Cast"
+		"Weather Condition Cast"
 	],
 	"unique": true,
 	"c": 3,
 	"spellTypes": [
 		"Radial"
 	],
-	"subtypeText": "Weather Effect Radius",
+	"subtypeText": "Weather Condition Radius",
 	"radius": 2
 }

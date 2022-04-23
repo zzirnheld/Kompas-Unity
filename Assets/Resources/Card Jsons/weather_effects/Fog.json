@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Fog",
-	"effText": "Weather Effect: -Their W until they leave.",
+	"effText": "Weather Condition: -Their W until they leave.",
 	"effects": [
 		{
 			"blurb": "Can't see",
@@ -57,13 +57,13 @@
 		}
 	],
 	"keywords": [
-		"Weather Effect Cast"
+		"Weather Condition Cast"
 	],
 	"unique": true,
 	"c": 3,
 	"spellTypes": [
 		"Radial"
 	],
-	"subtypeText": "Water Weather Effect Radius",
+	"subtypeText": "Water Weather Condition Radius",
 	"radius": 2
 }
