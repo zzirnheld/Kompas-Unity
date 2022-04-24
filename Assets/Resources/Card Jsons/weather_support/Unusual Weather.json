@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Unusual Weather",
-	"effText": "When Weather Conditions arrive, echo any turn player characters in them.",
+	"effText": "When Weather Events arrive, echo any number of characters in the same Weather Condition as them.",
 	"effects": [
 		{
 			"blurb": "It looks like [9!8sd9l1a###",
@@ -18,7 +18,7 @@
 						],
 						"subtypesInclude": [
 							"Weather",
-                            "Condition"
+                            "Event"
 						]
 					}
 				}
@@ -28,17 +28,25 @@
 					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Turn Player Controls",
+							"Not Already Target",
 							"Character",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
 							"spaceRestrictions": [
-                                "In Card Target's AOE"
-							]
+								"In AOE Source is Also In"
+							],
+							"alsoInAOEOfRestriction": {
+								"cardRestrictions": [
+									"Subtypes Include"
+								],
+								"subtypesInclude": [
+									"Weather"
+								]
+							}
 						}
 					}
 				},
@@ -46,10 +54,9 @@
 					"$type": "KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
-					"delete": true,
+					"$type": "KompasServer.Effects.LoopSubeffect, Assembly-CSharp",
 					"jumpIndices": [
-						2
+						1
 					]
 				}
 			]
