@@ -1,7 +1,7 @@
 {
-	"cardType": 65,
+	"cardType": 83,
 	"cardName": "Misplaced Supplies",
-	"effText": "When this character is board->handed, draw 1 card and gain 1 pip.\nWhen a friendly character survives a fight, discard->attach me to them.",
+	"effText": "When an enemy character defends, discard->cast me to an adjacent space of their controller's choice.\nWhen you board->hand a character here, gain 1 pip, draw 1 card, and dispel me.'",
 	"effects": [
 		{
 			"triggerData": {
@@ -9,8 +9,16 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Augmented Card is Main Card"
-					]
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Friendly",
+							"Charcter",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": { "spaceRestrictions": [ "In Source's AOE" ] }
+					}
 				}
 			},
 			"subeffects": [
@@ -28,7 +36,7 @@
 		},
 		{
 			"triggerData": {
-				"triggerCondition": "Battle End",
+				"triggerCondition": "Defend",
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"Main Card Fits Restriction Before",
@@ -37,7 +45,7 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Board",
-							"Friendly"
+							"Enemy"
 						]
 					},
 					"selfRestriction": {
@@ -52,27 +60,32 @@
 					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
+					"$type": "KompasServer.Effects.TargetTargetsControllerSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "Drop your loot!",
+						"spaceRestrictions": [ "Can Play Card Target to This Space", "Adjacent to Card Target" ]
+					}
+				},
+				{
 					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type": "KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
-					"targetToAttachTo": -2,
-					"targetIndex": -1
+					"$type": "KompasServer.Effects.TargetTargetsControllerSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				}
 			]
 		}
 	],
-	"PlayRestriction": {
-		"normalRestrictions": [
-			"Augment Normal Restrictions"
-		],
-		"effectRestrictions": [
-			"Augment Effect Restrictions"
-		]
-	},
-	"a": 1,
-	"subtypeText": "Loot",
-	"augSubtypes": [
-		"Spy"
-	]
+	"c": 1,
+	"spellTypes": [
+		"Enchant",
+		"Radial"
+	],
+	"radius": 1,
+	"subtypeText": "Radial 1 Loot Enchant"
 }
