@@ -72,7 +72,7 @@
 					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction": {
 						"blurb": "Drop your loot!",
-						"spaceRestrictions": [ "Can Play Card Target to This Space", "Adjacent to Card Target" ]
+						"spaceRestrictions": [ "Empty", "Adjacent to Card Target" ]
 					}
 				},
 				{
