@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
-	"cardName": "Hagall",
-	"effText": "Runic.\nWhen turns start, I give all characters here -2 NEW.",
+	"cardName": "Sapping Stone",
+	"effText": "When turns start, I give all characters here -1 EW.",
 	"effects": [
 		{
 			"triggerData": {
@@ -27,24 +27,17 @@
 							]
 						}
 					},
-					"nModifier": -2,
-					"eModifier": -2,
-					"wModifier": -2
+					"eModifier": -1,
+					"wModifier": -1
 				}
 			]
 		}
 	],
-	"PlayRestriction": {
-		"normalRestrictions": [
-			"Cannot be Played Normally"
-		]
-	},
 	"c": 1,
 	"spellTypes": [
 		"Radial"
 	],
 	"subtypes": [
-		"Rune",
 		"Radial"
 	],
 	"subtypeText": "Rune Radial",
