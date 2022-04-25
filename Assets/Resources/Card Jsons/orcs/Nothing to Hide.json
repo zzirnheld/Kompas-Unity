@@ -21,7 +21,16 @@
 					}
 				},
 				{
+					"$type": "KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
+					"jumpIndices": [
+						3
+					]
+				},
+				{
 					"$type": "KompasServer.Effects.RevealSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.ClearOnImpossibleSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
@@ -46,7 +55,7 @@
 					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
 					"delete": true,
 					"jumpIndices": [
-						4
+						6
 					]
 				},
 				{
