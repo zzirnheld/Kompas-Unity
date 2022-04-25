@@ -31,6 +31,12 @@
 					"$type": "KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
 					"xMultiplier": 1,
 					"xModifier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.DispelSubeffect, Assembly-CSharp"
 				}
 			]
 		},
