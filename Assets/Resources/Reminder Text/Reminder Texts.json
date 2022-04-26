@@ -134,7 +134,7 @@
 		},
 		{
 			"keyword": "Ambush.",
-			"reminder": "When I'm summoned, I attack an adjacent W X enemy. Give them -X W until the battle ends."
+			"reminder": "When I'm summoned, I attack an adjacent W X enemy. Give them -X W until the battle ends. This uses my attack for the turn."
 		},
 		{
 			"keyword": "Smite.",

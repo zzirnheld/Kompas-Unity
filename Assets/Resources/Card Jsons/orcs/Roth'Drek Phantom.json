@@ -1,15 +1,27 @@
 {
 	"cardType": 67,
 	"cardName": "Roth'Drek Phantom",
-	"effText": "Ambush.\nDuring your turn, you can hand me, then give me -2S.",
+	"effText": "Ambush.\nWhen I'm board-> or discard->handed, give me -2S.",
 	"effects": [
 		{
 			"blurb": "Withdraw",
-			"activationRestriction": {
-				"activationRestrictionArray": [
-					"Friendly Turn",
-					"Default"
-				]
+			"triggerData": {
+				"triggerCondition": "Rehand",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card",
+						"This Card Fits Restriction Now"
+					],
+					"selfRestriction": {
+						"cardRestrictions":[
+							"Multiple Possible Locations"
+						],
+						"locations": [
+							1,
+							2
+						]
+					}
+				}
 			},
 			"subeffects": [
 				{
@@ -30,7 +42,7 @@
 		"Ambush"
 	],
 	"n": 7,
-	"e": 4,
+	"e": 7,
 	"s": 7,
 	"w": 7,
 	"subtypes": [
