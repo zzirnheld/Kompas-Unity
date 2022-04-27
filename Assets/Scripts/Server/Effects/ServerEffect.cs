@@ -201,7 +201,7 @@ namespace KompasServer.Effects
             {
                 return ResolutionInfo.Impossible("Subeffect index out of bounds.");
             }
-            //Debug.Log($"Resolving subeffect of type {subeffects[index].GetType()}");
+            Debug.Log($"Resolving subeffect of type {subeffects[index].GetType()}");
             SubeffectIndex = index;
             ServerController.ServerNotifier.NotifyEffectX(Source, EffectIndex, X);
             try

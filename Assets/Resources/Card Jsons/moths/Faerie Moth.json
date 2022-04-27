@@ -1,0 +1,61 @@
+{
+	"cardType": 67,
+	"cardName": "Faerie Moth",
+	"effText": "Stealth.\nWhen a Moth attacks a character in Light, draw 1 card.",
+	"effects": [
+		{
+			"blurb": "Faerie stealth",
+			"triggerData": {
+				"triggerCondition": "Attack",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card",
+						"Main Card Fits Restriction Before",
+                        "Secondary Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Board",
+							"Friendly",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Moth"
+						]
+					},
+                    "secondaryCardRestriction": {
+						"cardRestrictions": [
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"In AOE of Card Fitting Restriction"
+							],
+							"inAOEOfRestriction": {
+								"cardRestrictions": [
+									"Subtypes Include"
+								],
+								"subtypesInclude": [
+									"Light"
+								]
+							}
+						}
+                    }
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Stealth"
+	],
+	"n": 2,
+	"e": 2,
+	"s": 2,
+	"w": 2,
+	"subtypeText": "Ethereal Flying Moth"
+}

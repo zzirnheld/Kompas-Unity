@@ -46,13 +46,17 @@
 				{
 					"$type": "KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
 					"cardRestriction": {
-						"blurb": "Runar for Odal to deck-summon",
+						"blurb": "Inheritor Runar",
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Character",
 							"Friendly",
 							"Deck",
+							"Can Be Played",
+							"Subtypes Include",
 							"Card Value Fits Number Restriction"
+						],
+						"subtypesInclude": [
+							"Runar"
 						],
 						"cardValue": {
 							"value": "S"
@@ -61,11 +65,9 @@
 							"numberRestrictions": [
 								"<=X"
 							]
-						},
-						"subtypesInclude": [
-							"Runar"
-						]
-					}
+						}
+					},
+					"xMultiplier": 1
 				},
 				{
 					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",

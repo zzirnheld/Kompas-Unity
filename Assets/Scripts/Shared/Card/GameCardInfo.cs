@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace KompasCore.Cards
 {
@@ -76,9 +77,9 @@ namespace KompasCore.Cards
         /// Whether <paramref name="space"/> is in this card's AOE if this card is at <paramref name="mySpace"/>
         /// </summary>
         public bool SpaceInAOE(Space space, Space mySpace)
-            => SpellSubtypes != null && SpellSubtypes.Any(s => s switch
+            => space != null && mySpace != null && SpellSubtypes != null && SpellSubtypes.Any(s => s switch
             {
-                RadialSubtype => (mySpace?.DistanceTo(space) ?? 50) <= Radius,
+                RadialSubtype => mySpace.DistanceTo(space) <= Radius,
                 _ => false
             });
         public bool SpaceInAOE(Space space) => SpaceInAOE(space, Position);
@@ -90,6 +91,15 @@ namespace KompasCore.Cards
         /// Whether <paramref name="c"/> is in the aoe of <see cref="this"/> card.
         /// </summary>
         public bool CardInAOE(GameCardBase c) => CardInAOE(c, Position);
+        /// <summary>
+        /// Whether <paramref name="c"/> and this card have any spaces shared between their AOEs,
+        /// if this card is at <paramref name="mySpace"/>
+        /// </summary>
+        public bool Overlaps(GameCardBase c, Space mySpace) => Space.Spaces.Any(s => SpaceInAOE(s, mySpace) && c.SpaceInAOE(s));
+        /// <summary>
+        /// Whether <paramref name="c"/> and this card have any spaces shared between their AOEs
+        /// </summary>
+        public bool Overlaps(GameCardBase c) => Overlaps(c, Position);
 
         public bool SameColumn(Space space) => Location == CardLocation.Board && Position.SameColumn(space);
         public bool SameColumn(GameCardBase c) => c.Location == CardLocation.Board && SameColumn(c.Position);
@@ -206,7 +216,14 @@ namespace KompasCore.Cards
             if (card == null) return null;
 
             var cardInfo = card.gameObject.AddComponent<GameCardInfo>();
-            cardInfo.SetInfo(card);
+            try
+            {
+                cardInfo.SetInfo(card);
+            }
+            catch (System.ArgumentNullException e)
+            {
+                Debug.Log($"Got an argument null exception while initializing a card info. If the game has started, this is bad. {e}");
+            }
             return cardInfo;
         }
 

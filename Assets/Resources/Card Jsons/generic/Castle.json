@@ -36,7 +36,7 @@
 					"spaceRestriction": {
 						"blurb": "Corner to move them to",
 						"spaceRestrictions": [
-							"Can Move Target to This Space",
+							"Can Move Card Target to This Space",
 							"Corner",
 							"Empty"
 						]

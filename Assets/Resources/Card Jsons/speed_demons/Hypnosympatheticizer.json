@@ -35,7 +35,8 @@
 						"spaceRestrictions": [
 							"Same Direction from Space to Card Target as Space Target to Source",
 							"Distance to Card Target Fits X Restriction",
-							"Empty"
+							"Empty",
+							"Can Move Card Target to This Space"
 						],
 						"distanceXRestriction": {
 							"numberRestrictions": [

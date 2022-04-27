@@ -131,6 +131,11 @@
 		{
 			"keyword":"Spores",
 			"reminder":"The first time each stack I'm activated, pulse adjacent characters. (Activate, then deactivate each.)"
+		},
+		{
+			"keyword":"Stealth",
+			"reminder":"When enemy turns start, choose a space in Shade. If it gets lit up this turn, move/swap me with anything there. Once everyone has unstealthed, I attack an adjacent enemy character.",
+			"technicalReminder":"When enemy turns start, choose a space in Shade. If Light arrvies encompassing it this turn, move me there, swapping me with any card already there. After the stack ends, I attack an adjacent enemy character, if I can."
 		}
 	]
 }

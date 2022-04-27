@@ -7,6 +7,7 @@ generic/Spellbombsetter
 generic/Lifetide
 generic/Warlock
 generic/Juan Puntsch-Mann
+generic/Price of Fame
 aquatic/Big Tuna
 aquatic/Changing Tides
 aquatic/Fishing
@@ -72,6 +73,7 @@ crazy_Ideas/Something Cannon
 crazy_Ideas/Stupid Idea Generator
 crazy_Ideas/Jacob-John Binglejeimer Schmitzel
 crazy_Ideas/Johnatheremiah
+crazy_Ideas/Ideate
 The Intern
 crazy_Ideas/Timothy
 crazy_Ideas/Wait Hold Up
@@ -96,6 +98,10 @@ cultists/Silent Ritualist
 cultists/Unwavering Devotion
 cultists/We Are Yet Unworthy
 cultists/Zealous Convert
+cultists/Bloodsilencer
+cultists/Silentbellringer
+cultists/Silent Twin
+cultists/Mindless Silent
 Demagogue
 dragons/Aeolian
 dragons/Cidian
@@ -114,6 +120,7 @@ dragons/Hungry Dragonling
 dragons/Growing Boye
 dragons/Earthwapmer
 dragons/Dragonking
+dragons/Cyrian
 Dreamfog
 Durendal
 Fight
@@ -144,6 +151,7 @@ golems/Gold Golem
 golems/Core Scrambling
 golems/Scrap Golem
 golems/Backup Power Core
+golems/Stone Golem
 Haemopoten
 instruments/Assaulting Batterie
 instruments/Gratuitous Sax
@@ -159,6 +167,17 @@ Kusanagi
 Leybinder
 Leybinding
 Leylasher
+light_shade/Light
+light_shade/Shade
+light_shade/The Keeper of the Hooded Lantern
+light_shade/Dristzanti, the Illuminator
+light_shade/Trake, Shadecreeper
+light_shade/Illalli, the Brilliant
+light_shade/Lightbulb Idea
+light_shade/Light Up
+light_shade/Turn Off
+light_shade/Brillaume of the City
+light_shade/Inspirelight
 linewalkers/Blue Linewalker
 linewalkers/Cyan Linewalker
 linewalkers/Green Linewalker
@@ -212,6 +231,20 @@ memory/Corporeal Recall
 memory/Memorial Augury
 memory/Recall
 memory/Uncall For
+moths/Rouge Rogue Moth
+moths/Disarming Rogue Moth
+moths/Massive Moon Moth
+moths/Searing Sun Moth
+moths/Ravenous Leymoth
+moths/Poodle Moth
+moths/Mothmisidentification
+moths/Call of the Moon
+moths/Cloaked in Shadow
+moths/Faerie Moth
+moths/Hidden Pupa
+moths/Intimitation
+moths/Hummingbird Hawkmoth
+moths/Atlas Moth
 music/Soaring Chorus
 music/Surging Verse
 music/Ringing Bridge
@@ -257,6 +290,7 @@ reporters/Temp Reporter
 reporters/Weather Reporter
 reporters/Well-Read Reporter
 reporters/Late Reporter
+reporters/May Waycroft
 revenants/Death of a Soul
 revenants/Revenance
 revenants/Revivance
@@ -514,6 +548,7 @@ weather/Blizzard
 weather/Fog
 weather/Brainstorm
 weather/Thundersun
+weather/Drainfog
 weather/Iriaid, Who Rides the Skies
 weather/Emezene, Who Reads the Breeze
 weather/Outaroud, Who Scouts the Clouds

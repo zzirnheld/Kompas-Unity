@@ -1,0 +1,63 @@
+{
+	"cardType": 67,
+	"cardName": "Silentbellringer",
+	"effText": "When I'm summoned normally, deck->hand a Cultist.\nWhen friendly turns start, echo me.",
+	"effects": [
+		{
+			"blurb": "DOOM, sayeth the bell",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card",
+						"No Stackable"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"maxCanChoose": 1,
+					"cardRestriction": {
+						"blurb": "Cultist for Silentbellringer to search",
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Friendly",
+							"Deck"
+						],
+						"subtypesInclude": [
+							"Cultist"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				}
+			]
+		},
+		{
+			"blurb": "The bell tolls...",
+			"triggerData": {
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"n": 5,
+	"e": 5,
+	"s": 5,
+	"w": 5,
+	"subtypeText": "Cultist"
+}

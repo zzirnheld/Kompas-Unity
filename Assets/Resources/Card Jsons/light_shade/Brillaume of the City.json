@@ -1,0 +1,57 @@
+{
+	"cardType": 67,
+	"cardName": "Brillaume of the City",
+	"effText": "Thrice each friendly turn, you can move a Light or Shade to a space adjacent to a friendly character.",
+	"effects": [
+		{
+			"blurb": "Creep",
+			"activationRestriction": {
+				"activationRestrictionArray": [
+					"Max Times Per Turn",
+					"Default"
+				],
+                "maxTimes":3
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"blurb": "card to slightly yeet",
+					"cardRestriction": {
+						"cardRestrictions": [
+                            "Board",
+                            "Subtypes Include Any Of"
+						],
+						"subtypesIncludeAnyOf": [
+                            "Light",
+							"Shade"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where to slightly yeet target card",
+						"spaceRestrictions": [
+							"Can Move Card Target to This Space",
+							"Empty",
+                            "Adjacent to a Card that Fits Restriction"
+                        ],
+                        "adjacencyRestriction": {
+                            "cardRestrictions": [
+                                "Friendly"
+                            ]
+                        }
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"n": 3,
+	"e": 3,
+	"s": 3,
+	"w": 3,
+	"subtypeText": "Brilliant Mage"
+}

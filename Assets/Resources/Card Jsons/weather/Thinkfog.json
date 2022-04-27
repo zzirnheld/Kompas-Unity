@@ -1,6 +1,6 @@
 {
 	"cardType":83,
-	"cardName":"Fog",
+	"cardName":"Thinkfog",
 	"effText":"Weather.\nWhen a character arrives here, their controller can pay a pip to draw 1 card.",
 	"effects":[
 		{

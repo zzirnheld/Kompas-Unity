@@ -1,0 +1,56 @@
+{
+	"cardType": 83,
+	"cardName": "Turn Off",
+	"effText": "Hand X friendly Light. Draw X cards. Gain X pips.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "dododododododoododdooooo",
+						"cardRestrictions": [
+							"Friendly",
+							"Board",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Light"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.CountXLoopSubeffect, Assembly-CSharp",
+					"canDecline": true,
+					"jumpIndices": [
+						0
+					]
+				},
+				{
+					"$type": "KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"xMultiplier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xMultiplier": 1
+				}
+			]
+		}
+	],
+	"c": 1,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypeText": "Simple"
+}

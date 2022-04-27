@@ -21,6 +21,7 @@ namespace KompasCore.Effects
         public const string SameNameAsSource = "Same Name as Source";
         public const string DistinctNameFromTargets = "Distinct Name from Other Targets";
         public const string DistinctNameFromSource = "Distinct Name from Source";
+        public const string Unique = "Unique";
 
         //different
         public const string DifferentFromSource = "Different from Source";
@@ -32,7 +33,10 @@ namespace KompasCore.Effects
         public const string Character = "Character";
         public const string Spell = "Spell";
         public const string Augment = "Augment";
+
+        public const string NotCharacter = "Not Character";
         public const string NotAugment = "Not Augment";
+
         public const string SpellSubtypes = "Spell Subtypes";
 
         //control
@@ -55,6 +59,7 @@ namespace KompasCore.Effects
         //subtypes
         public const string SubtypesInclude = "Subtypes Include";
         public const string SubtypesExclude = "Subtypes Exclude";
+        public const string SubtypesIncludeAnyOf = "Subtypes Include Any Of";
 
         //is
         public const string IsSource = "Is Source";
@@ -80,6 +85,7 @@ namespace KompasCore.Effects
         public const string LocationInList = "Multiple Possible Locations";
 
         public const string Hidden = "Hidden";
+        public const string Revealed = "Revealed";
 
         //stats
         public const string CardValueFitsNumberRestriction = "Card Value Fits Number Restriction";
@@ -98,6 +104,12 @@ namespace KompasCore.Effects
         public const string SpaceFitsRestriction = "Space Fits Restriction";
 
         public const string SourceInThisAOE = "Source in This' AOE"; //whether the source card is in the potential target's aoe
+        public const string CardHasCardRestrictionInAOE = "Card has Card Restriction in its AOE";
+        public const string CardDoesntHaveCardRestrictionInAOE = "Card doesn't have Card Restriction in its AOE";
+        public const string WouldBeInAOEOfCardTargetIfCardTargetWereAtSpaceTarget 
+            = "Would Be In AOE Of Card Target If Card Target Were At Space Target";
+        public const string WouldOverlapCardTargetIfCardTargetWereAtSpaceTarget
+            = "Would Overlap Card Target If Card Target Were At Space Target";
 
         public const string IndexInListGTC = "Index>C";
         public const string IndexInListLTC = "Index<C";
@@ -113,6 +125,7 @@ namespace KompasCore.Effects
         public const string SpaceRestrictionValidIfThisTargetChosen = "Space Restriction Valid With This Target Chosen";
         public const string AttackingCardFittingRestriction = "Attacking Card Fitting Restriction";
         public const string EffectIsOnTheStack = "Effect is on the Stack";
+
         #endregion restrictions
 
         public string[] cardRestrictions = new string[0];
@@ -120,6 +133,7 @@ namespace KompasCore.Effects
         public string nameIs;
         public string[] subtypesInclude;
         public string[] subtypesExclude;
+        public string[] subtypesIncludeAnyOf;
         public int constant;
         public CardLocation[] locations;
         public string[] spellSubtypes;
@@ -140,6 +154,7 @@ namespace KompasCore.Effects
         public CardRestriction connectednessRestriction;
         public CardRestriction attackedCardRestriction;
         public CardRestriction inAOEOfRestriction;
+        public CardRestriction hasInAOERestriction;
         public CardRestriction augmentRestriction;
 
         public SpaceRestriction spaceRestriction;
@@ -169,7 +184,7 @@ namespace KompasCore.Effects
             Source = source;
             Effect = effect;
 
-            spaceRestriction?.Initialize(source, effect.Controller, effect, subeffect);
+            spaceRestriction?.Initialize(source, effect?.Controller, effect, subeffect);
 
             augmentRestriction?.Initialize(source, effect, subeffect);
             secondaryRestriction?.Initialize(source, effect, subeffect);
@@ -177,6 +192,7 @@ namespace KompasCore.Effects
             connectednessRestriction?.Initialize(source, effect, subeffect);
             attackedCardRestriction?.Initialize(source, effect, subeffect);
             inAOEOfRestriction?.Initialize(source, effect, subeffect);
+            hasInAOERestriction?.Initialize(source, effect, subeffect);
 
             cardValueNumberRestriction?.Initialize(source, subeffect);
 
@@ -189,6 +205,30 @@ namespace KompasCore.Effects
         public override string ToString()
         {
             return $"Card Restriction.\nRestrictions: {string.Join(", ", cardRestrictions)}";
+        }
+
+        private bool HasCardRestrictionInAOE(GameCardBase cardToTest, int x, ActivationContext context)
+        {
+            if (cardToTest == null) return false;
+            if (cardToTest.Location != CardLocation.Board) return false;
+
+            return Source.Game.Cards.Any(c => cardToTest.CardInAOE(c) && hasInAOERestriction.IsValidCard(c, x, context));
+        }
+
+        private bool WouldCardBeInAOEOfCardTargetIfCardTargetWereAtSpaceTarget(GameCardBase cardToTest, GameCardBase cardTarget, Space space)
+        {
+            if (cardToTest == null) return false;
+            if (space == null) return false;
+
+            return cardTarget.CardInAOE(cardToTest, space);
+        }
+
+        private bool WouldCardOverlapCardTargetIfCardTargetWereAtSpaceTarget(GameCardBase cardToTest, GameCardBase cardTarget, Space space)
+        {
+            if (cardToTest == null) return false;
+            if (space == null) return false;
+
+            return cardTarget.Overlaps(cardToTest, space);
         }
 
         /// <summary>
@@ -212,6 +252,7 @@ namespace KompasCore.Effects
                 SameNameAsSource => potentialTarget?.CardName == Source.CardName,
                 DistinctNameFromTargets => Effect.CardTargets.All(card => card.CardName != potentialTarget?.CardName),
                 DistinctNameFromSource => Source.CardName != potentialTarget?.CardName,
+                Unique => potentialTarget?.Unique ?? false,
 
                 //different
                 DifferentFromSource => potentialTarget?.Card != Source,
@@ -224,6 +265,7 @@ namespace KompasCore.Effects
                 Spell => potentialTarget?.CardType == 'S',
                 Augment => potentialTarget?.CardType == 'A',
 
+                NotCharacter => potentialTarget?.CardType != 'C',
                 NotAugment => potentialTarget?.CardType != 'A',
                 SpellSubtypes => potentialTarget?.SpellSubtypes.Intersect(spellSubtypes).Any() ?? false,
 
@@ -246,6 +288,7 @@ namespace KompasCore.Effects
                 //subtypes
                 SubtypesInclude => subtypesInclude.All(s => potentialTarget?.SubtypeText.Contains(s) ?? false),
                 SubtypesExclude => subtypesExclude.All(s => !potentialTarget?.SubtypeText.Contains(s) ?? false),
+                SubtypesIncludeAnyOf => subtypesIncludeAnyOf.Any(s => potentialTarget?.SubtypeText.Contains(s) ?? false),
 
                 //is
                 IsSource => potentialTarget?.Card == Source,
@@ -271,6 +314,7 @@ namespace KompasCore.Effects
                 Annihilated => potentialTarget?.Location == CardLocation.Annihilation,
                 LocationInList => locations.Contains(potentialTarget?.Location ?? CardLocation.Nowhere),
                 Hidden => !potentialTarget?.KnownToEnemy ?? false,
+                Revealed => potentialTarget?.KnownToEnemy ?? false,
 
                 //stats
                 CardValueFitsNumberRestriction => cardValueNumberRestriction.IsValidNumber(cardValue.GetValueOf(potentialTarget)),
@@ -284,6 +328,12 @@ namespace KompasCore.Effects
                 //positioning
                 SpaceFitsRestriction => potentialTarget.Position != null && spaceRestriction.IsValidSpace(potentialTarget.Position, context),
                 SourceInThisAOE => potentialTarget?.CardInAOE(Source) ?? false,
+                CardHasCardRestrictionInAOE => HasCardRestrictionInAOE(potentialTarget, x, context),
+                CardDoesntHaveCardRestrictionInAOE => !HasCardRestrictionInAOE(potentialTarget, x, context),
+                WouldBeInAOEOfCardTargetIfCardTargetWereAtSpaceTarget 
+                    => WouldCardBeInAOEOfCardTargetIfCardTargetWereAtSpaceTarget(potentialTarget, Subeffect.CardTarget, Subeffect.SpaceTarget),
+                WouldOverlapCardTargetIfCardTargetWereAtSpaceTarget
+                    => WouldCardOverlapCardTargetIfCardTargetWereAtSpaceTarget(potentialTarget, Subeffect.CardTarget, Subeffect.SpaceTarget),
                 IndexInListGTC => potentialTarget?.IndexInList > constant,
                 IndexInListLTC => potentialTarget?.IndexInList < constant,
                 IndexInListLTX => potentialTarget?.IndexInList < x,
@@ -319,7 +369,7 @@ namespace KompasCore.Effects
 
         /* This exists to debug a card restriction,
          * but should not be usually used because it prints a ton*/
-        public bool IsRestrictionValidDebug(string restriction, GameCardBase potentialTarget, int x, ActivationContext context)
+        private bool IsRestrictionValidDebug(string restriction, GameCardBase potentialTarget, int x, ActivationContext context)
         {
             bool answer = IsRestrictionValid(restriction, potentialTarget, x, context);
             if (!answer) Debug.Log($"{potentialTarget?.CardName} flouts {restriction}");

@@ -1,0 +1,72 @@
+{
+	"cardType": 67,
+	"cardName": "May Waycroft",
+	"effText": "When an enemy plays a card normally, if the card was revealed, give friendly Reporters +1 NEWS. Regardless, they reveal a card.",
+	"effects": [
+		{
+            "blurb":"The Value of Accountability",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Enemy Triggered",
+						"No Stackable"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.ConditionalJumpSubeffect, Assembly-CSharp",
+					"condition": "Main Triggering Card Flouted Restriction Before",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Revealed"
+						]
+					},
+					"jumpIndices": [
+						3
+					]
+				},
+				{
+					"$type": "KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Friendly",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Reporter"
+						]
+					},
+					"nModifier": 1,
+					"eModifier": 1,
+					"sModifier": 1,
+					"wModifier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "card to reveal",
+						"cardRestrictions": [
+							"Controller Matches Player Target",
+							"Hand",
+							"Hidden"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.RevealSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"unique": true,
+	"n": 1,
+	"e": 8,
+	"s": 6,
+	"w": 4,
+	"subtypeText": "Reporter Activist Mage Person"
+}
