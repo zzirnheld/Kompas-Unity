@@ -18,7 +18,7 @@ namespace KompasServer.Effects
             else
             {
                 Debug.Log($"Paying {ToPay} pips for target cost");
-                ServerGame.GivePlayerPips(ServerPlayer, ServerPlayer.Pips - ToPay);
+                ServerPlayer.Pips -= ToPay;
                 return Task.FromResult(ResolutionInfo.Next);
             }
         }
