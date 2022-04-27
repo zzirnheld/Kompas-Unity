@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Heart Eater",
-	"effText": "When a friendly character dies, I get + 1EW.",
+	"effText": "When a character dies, give me +1 EW.",
 	"effects": [
 		{
 			"triggerData": {

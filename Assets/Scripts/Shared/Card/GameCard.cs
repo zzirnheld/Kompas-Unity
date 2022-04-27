@@ -376,6 +376,9 @@ namespace KompasCore.Cards
             => this.attacksThisTurn = attacksThisTurn;
         public virtual void SetTurnsOnBoard(int turnsOnBoard, IStackable stackSrc = null)
             => TurnsOnBoard = turnsOnBoard;
+
+        public void SetDuration(int duration)
+            => Duration = duration;
         #endregion statfuncs
 
         #region moveCard

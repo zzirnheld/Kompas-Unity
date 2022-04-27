@@ -1,0 +1,26 @@
+{
+	"cardType": 67,
+	"cardName": "Stone Golem",
+	"effText": "Golem.",
+	"effects": [],
+	"MovementRestriction": {
+		"normalRestrictionsFromJson": [
+			"Default",
+			"Activated"
+		]
+	},
+	"AttackRestriction": {
+		"attackRestrictions": [
+			"Default",
+			"This is Activated"
+		]
+	},
+	"n": 5,
+	"e": 7,
+	"s": 5,
+	"w": 7,
+	"subtypes": [
+		"Golem"
+	],
+	"subtypeText": "Golem"
+}

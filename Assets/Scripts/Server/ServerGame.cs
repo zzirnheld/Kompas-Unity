@@ -83,29 +83,35 @@ namespace KompasServer.GameCore
             currPlayerCount++;
 
             //if at least two players, start the game startup process by getting avatars
-            if (currPlayerCount >= 2) GetDecks();
+            if (currPlayerCount >= 2)
+            {
+                foreach (ServerPlayer p in ServerPlayers) GetDeckFrom(p);
+            }
 
             return currPlayerCount;
         }
 
         private void GetDeckFrom(ServerPlayer player) => player.ServerNotifier.GetDecklist();
 
-        public void GetDecks()
-        {
-            //ask the players for their avatars (and decks at the same time)
-            foreach (ServerPlayer p in ServerPlayers) GetDeckFrom(p);
-
-            //if avatars are returned, then set the pips to start with and start the game
-            //that should happen in server network controller
-        }
-
         //TODO for future logic like limited cards, etc.
         private bool ValidDeck(List<string> deck)
         {
-            if (uiCtrl.DebugMode) return true;
-            if (deck.Count < MinDeckSize) return false;
             //first name should be that of the Avatar
-            if (!cardRepo.CardNameIsCharacter(deck[0])) return false;
+            if (!cardRepo.CardNameIsCharacter(deck[0]))
+            {
+                Debug.LogError($"{deck[0]} isn't a character, so it can't be the Avatar");
+                return false;
+            }
+            if (uiCtrl.DebugMode)
+            {
+                Debug.LogWarning("Debug mode enabled, always accepting a decklist");
+                return true;
+            }
+            if (deck.Count < MinDeckSize)
+            {
+                Debug.LogError($"Deck {deck} too small");
+                return false;
+            }
 
             return true;
         }
@@ -121,30 +127,21 @@ namespace KompasServer.GameCore
         {
             List<string> deck = SanitizeDeck(decklist);
 
-            if (!ValidDeck(deck))
+            if (ValidDeck(deck)) player.ServerNotifier.DeckAccepted();
+            else
             {
-                Debug.LogError($"INVALID DECK {decklist}");
-                //request deck again from that player
                 GetDeckFrom(player);
                 return;
             }
-            else player.ServerNotifier.DeckAccepted();
 
             AvatarServerGameCard avatar;
             lock (AddCardsLock)
             {
                 //otherwise, set the avatar and rest of the deck
-                avatar = cardRepo.InstantiateServerAvatar(deck[0], this, player, cardCount++);
-                if (avatar == null)
-                {
-                    Debug.LogError($"Error in loading avatar for {decklist}");
-                    GetDeckFrom(player);
-                    return;
-                }
+                avatar = cardRepo.InstantiateServerAvatar(deck[0], this, player, cardCount++) ??
+                    throw new System.ArgumentException($"Failed to load avatar for card {deck[0]}");
+                deck.RemoveAt(0); //take out avatar before telling player to add the rest of the deck
             }
-
-            //take out avatar before telling player to add the rest of the deck
-            deck.RemoveAt(0);
 
             foreach (string name in deck)
             {
@@ -152,29 +149,20 @@ namespace KompasServer.GameCore
                 lock (AddCardsLock)
                 {
                     card = cardRepo.InstantiateServerNonAvatar(name, this, player, cardCount);
+                    if (card == null) continue;
                     cardsByID.Add(cardCount, card);
                     cardCount++;
                 }
+                Debug.Log($"Adding new card {card.CardName} with id {card.ID}");
                 player.deckCtrl.ShuffleIn(card);
-                if (card != null) Debug.Log($"Adding new card {card.CardName} with id {card.ID}");
                 player.ServerNotifier.NotifyCreateCard(card, wasKnown: false);
             }
 
-            Debug.Log($"Setting avatar for player {player.index}");
             player.Avatar = avatar;
-            Space to = player.index == 0 ? Space.NearCorner : Space.FarCorner;
-            avatar.Play(to, player, new GameStartStackable());
-            /*
-            bool playedAvatar = avatar.Play(player.index * 6, player.index * 6, player);
-            Debug.Log($"Successfully played avatar? {playedAvatar}");
-            */
-            //if both players have decks now, then start the game
+            avatar.Play(player.AvatarCorner, player, new GameStartStackable());
             lock (CheckAvatarsLock)
             {
-                foreach (Player p in Players)
-                {
-                    if (p.Avatar == null) return;
-                }
+                if (Players.Any(player => player.Avatar == null)) return;
             }
             await StartGame();
         }
@@ -217,7 +205,7 @@ namespace KompasServer.GameCore
             TurnServerPlayer.ServerNotifier.NotifyYourTurn();
             ResetCardsForTurn();
 
-            GiveTurnPlayerPips();
+            TurnPlayer.Pips += Leyload;
             if (notFirstTurn) Draw(TurnPlayerIndex);
 
             //do hand size
@@ -244,8 +232,8 @@ namespace KompasServer.GameCore
         {
             List<GameCard> drawn = new List<GameCard>();
             Player controller = Players[player];
-            int i;
-            for (i = 0; i < x; i++)
+            int cardsDrawn;
+            for (cardsDrawn = 0; cardsDrawn < x; cardsDrawn++)
             {
                 var toDraw = controller.deckCtrl.Topdeck;
                 if (toDraw == null) break;
@@ -255,19 +243,12 @@ namespace KompasServer.GameCore
                 EffectsController.TriggerForCondition(Trigger.EachDraw, eachDrawContext);
                 drawn.Add(toDraw);
             }
-            var context = new ActivationContext(stackable: stackSrc, player: controller, x: i);
+            var context = new ActivationContext(stackable: stackSrc, player: controller, x: cardsDrawn);
             EffectsController.TriggerForCondition(Trigger.DrawX, context);
             return drawn;
         }
         public GameCard Draw(int player, IStackable stackSrc = null)
-        {
-            var drawn = DrawX(player, 1, stackSrc);
-            return drawn.Count > 0 ? drawn[0] : null;
-        }
-
-        public void GivePlayerPips(Player player, int pipsToSet) => player.Pips = pipsToSet;
-
-        public void GiveTurnPlayerPips() => GivePlayerPips(TurnPlayer, TurnPlayer.Pips + Leyload);
+            => DrawX(player, 1, stackSrc).FirstOrDefault();
 
         /// <param name="manual">Whether a player instigated the attack without an effect.</param>
         /// <returns>The Attack object created by starting this attack</returns>
@@ -282,60 +263,6 @@ namespace KompasServer.GameCore
             if (manual) attacker.SetAttacksThisTurn(attacker.attacksThisTurn + 1);
             return attack;
         }
-
-        #region check validity
-        public bool IsValidNormalPlay(GameCard card, Space to, ServerPlayer player)
-        {
-            if (card == null) return false;
-            if (uiCtrl.DebugMode)
-            {
-                Debug.LogWarning("Debug mode, always return true for valid play");
-                return true;
-            }
-
-            //Debug.Log($"Checking validity of playing {card.CardName} to {to}");
-            return card.PlayRestriction.IsValidNormalPlay(to, player);
-        }
-
-        public bool IsValidNormalAttach(GameCard card, Space to, ServerPlayer player)
-        {
-            if (uiCtrl.DebugMode)
-            {
-                Debug.LogWarning("Debug mode, always return true for valid augment");
-                return true;
-            }
-
-            //Debug.Log($"Checking validity augment of {card.CardName} to {to}, on {boardCtrl.GetCardAt(to)}");
-            return card != null && card.CardType == 'A' && to.IsValid
-                && !boardCtrl.IsEmpty(to)
-                && card.PlayRestriction.IsValidNormalPlay(to, player);
-        }
-
-        public bool IsValidNormalMove(GameCard toMove, Space to, Player by)
-        {
-            if (uiCtrl.DebugMode)
-            {
-                Debug.LogWarning("Debug mode, always return true for valid move");
-                return true;
-            }
-
-            //Debug.Log($"Checking validity of moving {toMove.CardName} to {to}");
-            if (toMove.Position == to) return false;
-            else return toMove.MovementRestriction.IsValidNormalMove(to);
-        }
-
-        public bool ValidAttack(GameCard attacker, GameCard defender, ServerPlayer instigator)
-        {
-            if (uiCtrl.DebugMode)
-            {
-                Debug.LogWarning("Debug mode, always return true for valid attack");
-                return attacker != null && defender != null;
-            }
-
-            //Debug.Log($"Checking validity of attack of {attacker.CardName} on {defender} by {instigator.index}");
-            return attacker.AttackRestriction.IsValidAttack(defender, stackSrc: null);
-        }
-        #endregion
 
         public override GameCard GetCardWithID(int id) => cardsByID.ContainsKey(id) ? cardsByID[id] : null;
 

@@ -30,6 +30,7 @@ namespace KompasCore.Effects
         public const string AdjacentToCardFittingRestriction = "Adjacent to Card Fitting Restriction";
 
         public const string SpaceFitsRestriction = "Space Must Fit Restriction";
+        public const string SpaceMustFloutRestriction = "Space Must Flout Restriction";
 
         public const string DefaultNormal = "Default Normal Restrictions";
         public const string DefaultEffect = "Default Effect Restrictions";
@@ -56,6 +57,7 @@ namespace KompasCore.Effects
         public CardRestriction adjacentCardRestriction;
 
         public SpaceRestriction spaceRestriction;
+        public SpaceRestriction floutedSpaceRestriction;
 
         public void SetInfo(GameCard card)
         {
@@ -83,6 +85,7 @@ namespace KompasCore.Effects
             onCardRestriction?.Initialize(Card, effect: default, subeffect: default);
             adjacentCardRestriction?.Initialize(Card, effect: default, subeffect: default);
             spaceRestriction?.Initialize(Card, Card.Controller, effect: default, subeffect: default);
+            floutedSpaceRestriction?.Initialize(Card, Card.Controller, effect: default, subeffect: default);
             //Debug.Log($"Finished setting info for play restriction of card {card.CardName}");
         }
 
@@ -131,6 +134,7 @@ namespace KompasCore.Effects
             CheckUnique => !(Card.Unique && Card.AlreadyCopyOnBoard),
             AdjacentToCardFittingRestriction => Card.Game.boardCtrl.CardsAdjacentTo(space).Any(c => adjacentCardRestriction.IsValidCard(c, context)),
             SpaceFitsRestriction => spaceRestriction.IsValidSpace(space, context),
+            SpaceMustFloutRestriction => !floutedSpaceRestriction.IsValidSpace(space, context),
 
             _ => throw new System.ArgumentException($"You forgot to check play restriction {r}", "r"),
         };

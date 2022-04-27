@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "XVIII - The Moon",
-	"effText": "When you draw, you can swap the W of a Summoned character with the E of a Summoned character within 2 spaces of the first.",
+	"effText": "When you draw, swap the E or W of two Summoned characters within 2 spaces of each other.",
 	"effects": [
 		{
 			"blurb": "Swap EW",
@@ -19,7 +19,7 @@
 				{
 					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction": {
-						"blurb": "character whose W to swap",
+						"blurb": "character to swap",
 						"cardRestrictions": [
 							"Character",
 							"Board",
@@ -30,11 +30,12 @@
 				{
 					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction": {
-						"blurb": "character whose E to swap",
+						"blurb": "other character to swap",
 						"cardRestrictions": [
 							"Character",
 							"Board",
 							"Summoned",
+							"Not Already Target",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
@@ -51,11 +52,38 @@
 					}
 				},
 				{
+					"$type": "KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"choiceBlurb": "Swap W or swap E?",
+					"optionBlurbs": [
+						"Swap W",
+						"Swap E"
+					],
+					"jumpIndices": [
+						3,
+						5
+					],
+					"hasDefault": false
+				},
+				{
 					"$type": "KompasServer.Effects.SwapStatSubeffect, Assembly-CSharp",
 					"targetIndex": -2,
 					"secondTargetIndex": -1,
 					"firstTargetStat": {
 						"value": "W"
+					},
+					"secondTargetStat": {
+						"value": "W"
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.SwapStatSubeffect, Assembly-CSharp",
+					"targetIndex": -2,
+					"secondTargetIndex": -1,
+					"firstTargetStat": {
+						"value": "E"
 					},
 					"secondTargetStat": {
 						"value": "E"
@@ -64,7 +92,7 @@
 			]
 		}
 	],
-	"n": 3,
+	"n": 4,
 	"e": 9,
 	"s": 9,
 	"w": 0,

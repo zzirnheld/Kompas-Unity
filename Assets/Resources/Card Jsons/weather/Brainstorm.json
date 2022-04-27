@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Brainstorm",
-	"effText": "Weather.\nWhen a character arrives here, their controller draws 1 card, then hand->bottomdecks 1 card.",
+	"effText": "Weather.\nWhen a character arrives here, their controller hand->bottomdecks 1 card, then draws 1 card.",
 	"effects": [
 		{
 			"triggerData": {
@@ -34,9 +34,6 @@
 					"$type": "KompasServer.Effects.TargetTargetsControllerSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
-				},
-				{
 					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction": {
 						"blurb": "the idea struck from your head",
@@ -48,6 +45,9 @@
 				},
 				{
 					"$type": "KompasServer.Effects.BottomdeckSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
 				}
 			]
 		}

@@ -1,0 +1,120 @@
+{
+	"cardType": 67,
+	"cardName": "Poodle Moth",
+	"effText": "Stealth.\nWhen I'm summoned, choose a Moth in your hand. On another turn, when I attack a character in Light, swap me for them. They attack who I was attacking.",
+	"effects": [
+		{
+			"blurb": "Reidentify",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "(It's actually not a poodle moth)",
+						"cardRestrictions": [
+							"Character",
+							"Friendly",
+							"Hand",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Moth"
+						]
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"numTimesToDelay": 0,
+					"jumpIndices": [
+						2
+					],
+					"endCondition": "Turn Start"
+				},
+				{
+					"$type": "KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"numTimesToDelay": 0,
+					"jumpIndices": [
+						3
+					],
+					"endCondition": "Attack",
+					"triggerRestriction": {
+						"triggerRestrictions": [
+							"This Card is Main Card",
+							"Secondary Card Fits Restriction Before"
+						],
+						"secondaryCardRestriction": {
+							"cardRestrictions": [
+								"Space Fits Restriction"
+							],
+							"spaceRestriction": {
+								"spaceRestrictions": [
+									"In AOE of Card Fitting Restriction"
+								],
+								"inAOEOfRestriction": {
+									"cardRestrictions": [
+										"Subtypes Include"
+									],
+									"subtypesInclude": [
+										"Light"
+									]
+								}
+							}
+						}
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp",
+					"targetIndex":0
+				},
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "enemy character to attack",
+						"cardRestrictions": [
+							"Character",
+							"Enemy",
+							"Board",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Card Target"
+							]
+						}
+					},
+					"targetIndex":0
+				},
+				{
+					"$type": "KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
+					"targetIndex": -1,
+					"attackerIndex": 0
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Stealth"
+	],
+	"n": 2,
+	"e": 1,
+	"s": 1,
+	"w": 0,
+	"subtypeText": "Smol Fuzzy Flying Moth"
+}

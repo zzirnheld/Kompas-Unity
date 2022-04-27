@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "XXI - The World",
-	"effText": "When a character dies, both players draw 1 card. Give characters adjacent to where they died +1 EW.",
+	"effText": "When a character dies, draw 1 card, then bottomdeck it if you're above your hand size limit.",
 	"effects": [
 		{
 			"blurb": "The World Goes On",
@@ -29,35 +29,29 @@
 					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"whatToCount": "Hand Size",
+					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"whatToCount": "Hand Size Limit",
+					"change": true,
+					"xMultiplier": -1
 				},
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardsCoordsSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition": "X<=0",
+					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Character",
-							"Board",
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Space Target"
-							]
-						}
-					},
-					"eModifier": 1,
-					"wModifier": 1
+					"$type": "KompasServer.Effects.BottomdeckSubeffect, Assembly-CSharp",
+					"targetIndex": -1
 				}
 			]
 		}
 	],
-	"n": 2,
+	"n": 8,
 	"e": 12,
 	"s": 12,
 	"w": 12,

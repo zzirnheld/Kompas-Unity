@@ -1,0 +1,58 @@
+{
+	"cardType": 83,
+	"cardName": "Shade",
+	"effText": "If there's ANY enemy characters here and nothing else is happening, swap me for Light in your deck.",
+	"effects": [
+		{
+            "blurb":"Light Up",
+            "triggerData":
+            {
+                "triggerCondition":"Stack End",
+                "triggerRestriction":{
+                    "triggerRestrictions":["This Card Fits Restriction Now"],
+                    "cardRestriction":{
+                        "cardRestrictions":["Board","Card has Card Restriction in its AOE"],
+                        "hasInAOERestriction":{
+                            "cardRestrictions":["Enemy","Character"]
+                        }
+                    }
+                }
+            },
+            "subeffects":[
+                {
+                    "$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+                },
+				{
+					"$type": "KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.AutoTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Friendly",
+							"Deck",
+							"Spell"
+						],
+						"subtypesInclude": [
+							"Light"
+						]
+					},
+					"tiebreakerDirection":"Any"
+				},
+				{
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
+            ]	
+        }
+	],
+	"c": 1,
+	"spellTypes": [
+		"Radial"
+	],
+	"subtypeText": "Shade",
+	"radius": 2
+}

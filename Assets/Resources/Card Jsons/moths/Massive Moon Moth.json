@@ -1,0 +1,102 @@
+{
+	"cardType": 67,
+	"cardName": "Massive Moon Moth",
+	"effText": "Stealth.\nWhen a Moth attacks a character in Light, swap the W of two characters within 2 spaces of each other.",
+	"effects": [
+		{
+			"blurb": "this is my friend the moon moth",
+			"triggerData": {
+				"triggerCondition": "Attack",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card",
+						"Main Card Fits Restriction Before",
+                        "Secondary Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Board",
+							"Friendly",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Moth"
+						]
+					},
+                    "secondaryCardRestriction": {
+						"cardRestrictions": [
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"In AOE of Card Fitting Restriction"
+							],
+							"inAOEOfRestriction": {
+								"cardRestrictions": [
+									"Subtypes Include"
+								],
+								"subtypesInclude": [
+									"Light"
+								]
+							}
+						}
+                    }
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "character whose W to swap",
+						"cardRestrictions": [
+							"Character",
+							"Board"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "other character whose W to swap",
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Not Already Target",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Distance to Card Target Fits X Restriction"
+							],
+							"distanceXRestriction": {
+								"numberRestrictions": [
+									"<=Constant"
+								],
+								"constant": 2
+							}
+						}
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.SwapStatSubeffect, Assembly-CSharp",
+					"targetIndex": -2,
+					"secondTargetIndex": -1,
+					"firstTargetStat": {
+						"value": "W"
+					},
+					"secondTargetStat": {
+						"value": "W"
+					}
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Stealth"
+	],
+	"n": 3,
+	"e": 7,
+	"s": 5,
+	"w": 1,
+	"subtypeText": "Shady Flying Moth"
+}

@@ -1,0 +1,59 @@
+{
+	"cardType": 67,
+	"cardName": "Trake, Shadecreeper",
+	"effText": "Stealth.\nOnce each friendly turn, you can move Shade I'm in by 1 space.",
+	"effects": [
+		{
+			"blurb": "Creep",
+			"activationRestriction": {
+				"activationRestrictionArray": [
+					"Max Times Per Turn",
+					"Default"
+				]
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"blurb": "card to slightly yeet",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Source in This' AOE"
+						],
+						"subtypesInclude": [
+							"Shade"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where to slightly yeet target card",
+						"spaceRestrictions": [
+							"Can Move Card Target to This Space",
+							"Distance to Card Target Fits X Restriction",
+							"Empty"
+						],
+						"distanceXRestriction": {
+							"numberRestrictions": [
+								"=X"
+							]
+						}
+					},
+					"xModifier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Stealth"
+	],
+	"n": 1,
+	"e": 1,
+	"s": 1,
+	"w": 1,
+	"subtypeText": "Shady Brilliant Mage"
+}

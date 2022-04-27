@@ -70,7 +70,7 @@
 		},
 		{
 			"keyword": "Flashback.",
-			"reminder": "You can pip discard->cast me, then annihilate me. (If this ability is resolving and I’m not in the discard pile, it fails.)"
+			"reminder": "You can pip discard->cast me, then annihilate me. (If this ability is resolving and I'm not in the discard pile, it fails.)"
 		},
 		{
 			"keyword": "Wanderer.",
@@ -143,6 +143,11 @@
 		{
 			"keyword": "Artillery",
 			"reminder": "Once per turn, pay 1 pip to give -X E to an enemy on the board."
+		},
+		{
+			"keyword":"Stealth",
+			"reminder":"When enemy turns start, choose a space in Shade. If it gets lit up this turn, move/swap me with anything there. Once everyone has unstealthed, I attack an adjacent enemy character.",
+			"technicalReminder":"When enemy turns start, choose a space in Shade. If Light arrvies encompassing it this turn, move me there, swapping me with any card already there. After the stack ends, I attack an adjacent enemy character, if I can."
 		}
 	]
 }
