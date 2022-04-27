@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Heart Eater",
-	"effText": "When a character dies, give characters adjacent to where they died + 1EW.",
+	"effText": "When a character dies, give me +1 EW.",
 	"effects": [
 		{
 			"triggerData": {

@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Massive Moon Moth",
-	"effText": "Stealth.\nWhen a Moth attacks a character in Light, swap the W of a Summoned character with the E of a summoned character within 2 spaces of the first.",
+	"effText": "Stealth.\nWhen a Moth attacks a character in Light, swap the W of two characters within 2 spaces of each other.",
 	"effects": [
 		{
 			"blurb": "this is my friend the moon moth",
@@ -50,19 +50,18 @@
 						"blurb": "character whose W to swap",
 						"cardRestrictions": [
 							"Character",
-							"Board",
-							"Summoned"
+							"Board"
 						]
 					}
 				},
 				{
 					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction": {
-						"blurb": "character whose E to swap",
+						"blurb": "other character whose W to swap",
 						"cardRestrictions": [
 							"Character",
 							"Board",
-							"Summoned",
+							"Not Already Target",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
@@ -86,7 +85,7 @@
 						"value": "W"
 					},
 					"secondTargetStat": {
-						"value": "E"
+						"value": "W"
 					}
 				}
 			]

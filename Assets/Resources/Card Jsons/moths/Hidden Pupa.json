@@ -80,6 +80,7 @@
 							"Same Name as Target"
 						]
 					},
+					"targetIndex":0,
 					"tiebreakerDirection":"Any"
 				},
 				{

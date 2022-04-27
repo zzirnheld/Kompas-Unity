@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace KompasCore.Cards
 {
@@ -215,7 +216,14 @@ namespace KompasCore.Cards
             if (card == null) return null;
 
             var cardInfo = card.gameObject.AddComponent<GameCardInfo>();
-            cardInfo.SetInfo(card);
+            try
+            {
+                cardInfo.SetInfo(card);
+            }
+            catch (System.ArgumentNullException e)
+            {
+                Debug.Log($"Got an argument null exception while initializing a card info. If the game has started, this is bad. {e}");
+            }
             return cardInfo;
         }
 
