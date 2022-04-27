@@ -54,7 +54,7 @@ namespace KompasServer.Effects
         }
 
         //nothing is happening if nothing is in the stack, nothing is currently resolving, and no one is waiting to add something to the stack.
-        public bool NothingHappening => stack.Empty && CurrStackEntry == null;
+        public bool NothingHappening => stack.Empty && CurrStackEntry == null && !currentlyCheckingResponses;
 
         public override string ToString()
         {
@@ -207,6 +207,7 @@ namespace KompasServer.Effects
             //this is saved so that we know what trigger to okay or not if it's responded
             foreach (var t in stillValid)
             {
+                //TODO this doesn't stop any subsequent calls to CheckTriggers
                 if (!t.Responded) await t.Ask(triggered.context.x ?? 0);
             }
 
