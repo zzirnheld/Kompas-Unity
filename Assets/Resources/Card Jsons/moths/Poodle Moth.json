@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Poodle Moth",
-	"effText": "Stealth.\nWhen I'm summoned, choose a Moth in your hand. When I attack a character in Light, reshuffle me and summon them where I was. They attack whoever I was attacking.",
+	"effText": "Stealth.\nWhen I'm summoned, choose a Moth in your hand. On another turn, when I attack a character in Light, reshuffle me and summon them where I was. They attack who I was attacking.",
 	"effects": [
 		{
 			"blurb": "Reidentify",
@@ -35,6 +35,14 @@
 					"numTimesToDelay": 0,
 					"jumpIndices": [
 						2
+					],
+					"endCondition": "Turn Start"
+				},
+				{
+					"$type": "KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"numTimesToDelay": 0,
+					"jumpIndices": [
+						3
 					],
 					"endCondition": "Attack",
 					"triggerRestriction": {
