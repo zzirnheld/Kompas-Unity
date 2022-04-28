@@ -1,0 +1,121 @@
+{
+	"cardType": 67,
+	"cardName": "Skillingbinder",
+	"effText": "When an enemy character in Weather uses their effect, hand->summon a Weather Event adjacent to them (in Weather overlap).",
+	"effects": [
+		{
+			"blurb": "Bind the show of skill",
+			"triggerData": {
+				"triggerCondition": "Effect Pushed to Stack",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Stackable Source Fits Restriction Now"
+					],
+					"sourceRestriction": {
+						"cardRestrictions": [
+							"Enemy",
+							"Character",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction":
+						{
+							"spaceRestrictions": [
+								"In AOE of Card Fitting Restriction"
+							],
+							"inAOEOfRestriction": {
+								"cardRestrictions": [
+									"Subtypes Include"
+								],
+								"subtypesInclude": [
+									"Weather"
+								]
+							}
+						}
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp",
+					"secondary":true
+				},
+                {
+                    "$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+                    "condition": "No Space Fits Restriction",
+                    "spaceRestriction": {
+                        "spaceRestrictions": [
+                            "Empty",
+                            "Adjacent to Card Target",
+                            "In AOE of Number of Cards Fitting Restriction"
+                        ],
+                        "inAOEOfRestriction": {
+                            "cardRestrictions": [
+                                "Subtypes Include"
+                            ],
+                            "subtypesInclude": [
+                                "Weather"
+                            ]
+                        },
+                        "numberOfCardsInAOEOfRestriction": {
+                            "numberRestrictions": [
+                                ">=Constant"
+                            ],
+                            "constant": 2
+                        }
+                    }
+                },
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Weather Event to hand->summon",
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Character",
+							"Friendly",
+							"Hand"
+						],
+						"subtypesInclude": [
+							"Weather",
+                            "Event"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where Empress to hand-summon",
+						"spaceRestrictions": [
+							"Empty",
+                            "Adjacent to Card Target",
+                            "In AOE of Number of Cards Fitting Restriction",
+							"Can Play Card Target to This Space"
+                        ],
+                        "inAOEOfRestriction": {
+                            "cardRestrictions": [
+                                "Subtypes Include"
+                            ],
+                            "subtypesInclude": [
+                                "Weather"
+                            ]
+                        },
+                        "numberOfCardsInAOEOfRestriction": {
+                            "numberRestrictions": [
+                                ">=Constant"
+                            ],
+                            "constant": 2
+                        }
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"n": 4,
+	"e": 4,
+	"s": 4,
+	"w": 4,
+	"subtypeText": "Skyknight Mage"
+}

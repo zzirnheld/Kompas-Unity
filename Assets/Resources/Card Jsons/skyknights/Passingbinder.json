@@ -1,0 +1,75 @@
+{
+	"cardType": 67,
+	"cardName": "Passingbinder",
+	"effText": "When an enemy character dies in the overlap of Weather, hand->summon a Weather Event where they were.",
+	"effects": [
+		{
+			"blurb": "Bind the soul",
+			"triggerData": {
+				"triggerCondition": "Discard",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+                            "Enemy",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction":
+						{
+							"spaceRestrictions": [
+                                "In AOE of Number of Cards Fitting Restriction"
+                            ],
+                            "inAOEOfRestriction": {
+                                "cardRestrictions": [
+                                    "Subtypes Include"
+                                ],
+                                "subtypesInclude": [
+                                    "Weather"
+                                ]
+                            },
+                            "numberOfCardsInAOEOfRestriction": {
+                                "numberRestrictions": [
+                                    ">=Constant"
+                                ],
+                                "constant": 2
+                            }
+						}
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.TargetTriggeringCardsCoordsSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Weather Event to hand->summon",
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Character",
+							"Friendly",
+							"Hand"
+						],
+						"subtypesInclude": [
+							"Weather",
+                            "Event"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"n": 4,
+	"e": 4,
+	"s": 4,
+	"w": 4,
+	"subtypeText": "Skyknight Mage"
+}

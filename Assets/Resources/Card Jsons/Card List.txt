@@ -407,6 +407,10 @@ shapers/Infolding Hopelessness
 shapers/Kindred Spirit
 
 skyknights/Fearstrikebinder
+skyknights/Venturebinder
+skyknights/Skillingbinder
+skyknights/Magerybinder
+skyknights/Passingbinder
 
 speed_demons/Coach Speed
 speed_demons/Mr Power Vacuum

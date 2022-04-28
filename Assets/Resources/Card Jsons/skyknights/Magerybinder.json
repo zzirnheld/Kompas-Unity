@@ -1,0 +1,137 @@
+{
+	"cardType": 67,
+	"cardName": "Magerybinder",
+	"effText": "When an enemy casts a spell in Weather, hand->summon a Weather Event in the overlap of that Weather with other Weather",
+	"effects": [
+		{
+			"blurb": "Bind the magic",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before",
+						"Enemy Triggered"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Spell",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction":
+						{
+							"spaceRestrictions": [
+								"In AOE of Card Fitting Restriction"
+							],
+							"inAOEOfRestriction": {
+								"cardRestrictions": [
+									"Subtypes Include"
+								],
+								"subtypesInclude": [
+									"Weather"
+								]
+							}
+						}
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp",
+					"secondary":true
+				},
+                {
+                    "$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+                    "condition": "No Space Fits Restriction",
+                    "spaceRestriction": {
+                        "spaceRestrictions": [
+                            "Empty",
+                            "In AOE of Number of Cards Fitting Restriction",
+                            "In AOE Card Target is Also In"
+                        ],
+                        "inAOEOfRestriction": {
+                            "cardRestrictions": [
+                                "Subtypes Include"
+                            ],
+                            "subtypesInclude": [
+                                "Weather"
+                            ]
+                        },
+                        "numberOfCardsInAOEOfRestriction": {
+                            "numberRestrictions": [
+                                ">=Constant"
+                            ],
+                            "constant": 2
+                        },
+                        "alsoInAOEOfRestriction": {
+                            "cardRestrictions": [
+                                "Subtypes Include"
+                            ],
+                            "subtypesInclude": [
+                                "Weather"
+                            ]
+                        }
+                    }
+                },
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Weather Event to hand->summon",
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Character",
+							"Friendly",
+							"Hand"
+						],
+						"subtypesInclude": [
+							"Weather",
+                            "Event"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where Empress to hand-summon",
+						"spaceRestrictions": [
+							"Empty",
+							"Can Play Card Target to This Space",
+                            "In AOE of Number of Cards Fitting Restriction",
+                            "In AOE Card Target is Also In"
+                        ],
+                        "inAOEOfRestriction": {
+                            "cardRestrictions": [
+                                "Subtypes Include"
+                            ],
+                            "subtypesInclude": [
+                                "Weather"
+                            ]
+                        },
+                        "numberOfCardsInAOEOfRestriction": {
+                            "numberRestrictions": [
+                                ">=Constant"
+                            ],
+                            "constant": 2
+                        },
+                        "alsoInAOEOfRestriction": {
+                            "cardRestrictions": [
+                                "Subtypes Include"
+                            ],
+                            "subtypesInclude": [
+                                "Weather"
+                            ]
+                        }
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"n": 4,
+	"e": 4,
+	"s": 4,
+	"w": 4,
+	"subtypeText": "Skyknight Mage"
+}
