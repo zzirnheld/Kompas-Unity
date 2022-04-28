@@ -21,7 +21,8 @@
 						"cardRestrictions": [
 							"Board",
 							"Character",
-                            "Friendly"
+                            "Friendly",
+							"Summoned"
 						]
 					}
 				},

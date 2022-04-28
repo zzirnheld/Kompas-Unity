@@ -14,39 +14,44 @@ namespace KompasCore.GameCore
 
         public CardLocation CardLocation => CardLocation.Discard;
 
-        public readonly List<GameCard> Discard = new List<GameCard>();
+        protected readonly List<GameCard> discard = new List<GameCard>();
 
         //adding/removing cards
-        public virtual void Add(GameCard card, IStackable stackSrc = null)
+        public virtual bool Discard(GameCard card, IStackable stackSrc = null)
         {
             if (card == null) throw new NullCardException("Cannot add null card to hand");
-            Debug.Log($"Discarding {card.CardName} from {card.Location}");
 
-            card.Remove(stackSrc);
-            Discard.Add(card);
-            card.Controller = Owner;
-            card.GameLocation = this;
-            card.Position = null;
+            //Check if the card is successfully removed (if it's not, it's probably an avatar)
+            bool successful = card.Remove(stackSrc);
+            if (successful)
+            {
+                Debug.Log($"Discarding {card.CardName}");
+                discard.Add(card);
+                card.Controller = Owner;
+                card.GameLocation = this;
+                card.Position = null;
+            }
+            return successful;
         }
 
         public virtual void Remove(GameCard card)
         {
-            if (!Discard.Contains(card)) throw new CardNotHereException(CardLocation.Discard, card);
+            if (!discard.Contains(card)) throw new CardNotHereException(CardLocation.Discard, card);
 
-            Discard.Remove(card);
+            discard.Remove(card);
             SpreadOutCards();
         }
 
         public int IndexOf(GameCard card)
         {
-            return Discard.IndexOf(card);
+            return discard.IndexOf(card);
         }
 
         public List<GameCard> CardsThatFit(Func<GameCardBase, bool> cardRestriction)
         {
             List<GameCard> cards = new List<GameCard>();
 
-            foreach (GameCard c in Discard)
+            foreach (GameCard c in discard)
             {
                 if (cardRestriction(c)) cards.Add(c);
             }
@@ -56,11 +61,11 @@ namespace KompasCore.GameCore
 
         public virtual void SpreadOutCards()
         {
-            int wrapLen = (int)(Mathf.Sqrt(Discard.Count) + 0.5f);
+            int wrapLen = (int)(Mathf.Sqrt(discard.Count) + 0.5f);
             int x = 0, y = 0;
-            for (int i = 0; i < Discard.Count; i++)
+            for (int i = 0; i < discard.Count; i++)
             {
-                Discard[i].transform.localPosition = new Vector3(2f * x, 0f, -2f * y);
+                discard[i].transform.localPosition = new Vector3(2f * x, 0f, -2f * y);
 
                 x = (x + 1) % wrapLen;
                 if (x == 0) y++;

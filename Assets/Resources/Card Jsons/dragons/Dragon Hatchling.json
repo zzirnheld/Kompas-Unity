@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Dragon Hatchling",
-	"effText":"After I'm summoned, delay 1 turn, then tribute me, discard a Dragon, and hand-summon a Dragon where I was.",
+	"effText":"After I'm summoned, delay 1 turn, then tribute me, hand->discard a Dragon, and hand-summon a Dragon where I was.",
 	"effects":[
 		{
 			"triggerData":

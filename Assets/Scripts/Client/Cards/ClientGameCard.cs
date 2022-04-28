@@ -67,10 +67,10 @@ namespace KompasClient.Cards
             }
         }
 
-        public override void Remove(IStackable stackSrc = null)
+        public override bool Remove(IStackable stackSrc = null)
         {
             ClientGame.MarkCardDirty(this);
-            base.Remove(stackSrc);
+            return base.Remove(stackSrc);
         }
 
         public void SetInitialCardInfo(SerializableCard serializedCard, ClientGame game, ClientPlayer owner, ClientEffect[] effects, int id)

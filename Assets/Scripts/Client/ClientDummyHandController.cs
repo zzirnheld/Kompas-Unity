@@ -18,7 +18,7 @@ public class ClientDummyHandController : ClientHandController
         var card = GameObject.Instantiate(dummyCardPrefab, parent: gameObject.transform).GetComponent<DummyClientGameCard>();
         card.SetClientGame(clientGame);
         dummyHand.Add(card);
-        Add(card);
+        Hand(card);
     }
 
     public override void DecrementHand() => Remove(dummyHand.LastOrDefault());

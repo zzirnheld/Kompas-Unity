@@ -1,0 +1,91 @@
+{
+	"blurb":"Stealth",
+    "triggerData": {
+        "triggerCondition": "Turn Start",
+        "triggerRestriction": {
+            "triggerRestrictions": [
+                "This Card in Play",
+                "Enemy Turn"
+            ]
+        }
+    },
+	"subeffects":[
+        {
+            "$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+        },
+        {
+            "$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+            "spaceRestriction": {
+                "spaceRestrictions": [
+                    "In AOE of Card Fitting Restriction",
+                    "Can Move Card Target to This Space"
+                ],
+                "inAOEOfRestriction": {
+                    "cardRestrictions": [
+                        "Subtypes Include"
+                    ],
+                    "subtypesInclude": [
+                        "Shade"
+                    ]
+                }
+            }
+        },
+        {
+            "$type": "KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+            "numTimesToDelay": 0,
+            "jumpIndices": [
+                3
+            ],
+            "fallOffCondition": "Turn Start",
+            "endCondition": "Arrive",
+            "triggerRestriction": {
+                "triggerRestrictions": [
+                    "Main Card Fits Restriction After"
+                ],
+                "nowRestriction": {
+                    "cardRestrictions": [
+                        "Source in This' AOE",
+                        "Subtypes Include"
+                    ],
+                    "subtypesInclude": [
+                        "Light"
+                    ]
+                }
+            }
+        },
+        {
+            "$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+        },
+        {
+            "$type": "KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+            "numTimesToDelay": 0,
+            "jumpIndices": [
+                5
+            ],
+            "fallOffCondition": "",
+            "endCondition": "Stack End"
+        },
+        {
+            "$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+            "cardRestriction": {
+                "blurb": "enemy character to attack",
+                "cardRestrictions": [
+                    "Character",
+                    "Enemy",
+                    "Board",
+                    "Space Fits Restriction"
+                ],
+                "spaceRestriction": {
+                    "spaceRestrictions": [
+                        "Adjacent to Card Target"
+                    ]
+                }
+            }
+        },
+        {
+            "$type": "KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
+            "targetIndex": -1,
+            "attackerIndex": -2
+        }
+	]
+}

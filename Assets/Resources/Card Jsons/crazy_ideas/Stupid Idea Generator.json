@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Stupid Idea Generator",
-	"effText": "Ificate.\nWhen enemy turns start, discard 1 card, draw 1 card.",
+	"effText": "Ificate.\nWhen enemy turns start, hand->discard 1 card, draw 1 card.",
 	"effects": [
 		{
 			"triggerData": {

@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Wait Hold Up",
-	"effText": "Ificate.\nDiscard 1 card. Draw 1 card. Move an enemy character up to 3 spaces.",
+	"effText": "Ificate.\nHand->discard 1 card. Draw 1 card. Move an enemy character up to 3 spaces.",
 	"effects": [
 		{
 			"triggerData": {

@@ -30,7 +30,8 @@
 				"spaceRestrictions":[
 					"Source Displacement to Space Same Direction as Space Target",
 					"Distance to Source Fits X Restriction",
-					"Can Move Card Target to This Space"
+					"Can Move Card Target to This Space",
+					"Empty"
 				],
 				"distanceXRestriction":{
 					"numberRestrictions":["=X"]

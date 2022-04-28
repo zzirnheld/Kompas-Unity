@@ -34,9 +34,6 @@
 					"$type": "KompasServer.Effects.TargetTargetsControllerSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
-				},
-				{
 					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction": {
 						"blurb": "the idea struck from your head",
@@ -48,6 +45,9 @@
 				},
 				{
 					"$type": "KompasServer.Effects.BottomdeckSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
 				}
 			]
 		}

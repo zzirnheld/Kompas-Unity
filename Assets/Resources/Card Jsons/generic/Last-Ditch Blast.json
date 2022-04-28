@@ -1,0 +1,63 @@
+{
+	"cardType": 65,
+	"cardName": "Last-Ditch Blast",
+	"effText": "When this E X character defends from a W > X character, give both -7 E.",
+	"effects": [
+        {
+            "blurb":"Blast",
+            "triggerData":
+            {
+                "triggerCondition": "Defend",
+                "triggerRestriction": {
+                    "triggerRestrictions": [
+                        "Augmented Card is Main Card",
+                        "Secondary Card Fits Restriction Before"
+					],
+                    "secondaryCardRestriction": {
+						"cardRestrictions": [
+							"Card Value Fits Number Restriction"
+						],
+						"cardValue": {
+							"value": "W"
+						},
+						"cardValueNumberRestriction": {
+							"numberRestrictions": [
+								">Source"
+							],
+							"cardValue": {
+								"value": "E"
+							}
+						}
+                    }
+                }
+            },
+            "subeffects":[
+				{
+					"$type": "KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eModifier": -7
+				},
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp",
+					"secondary":true
+				},
+				{
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eModifier": -7
+				}
+            ]
+        }
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Augment Normal Restrictions"
+		],
+		"effectRestrictions": [
+			"Augment Effect Restrictions"
+		]
+	},
+	"a": 2,
+	"subtypeText": "Explosive"
+}

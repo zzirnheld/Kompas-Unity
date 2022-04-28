@@ -17,6 +17,10 @@ namespace KompasServer.Effects
         public const string MustBeEnemyTurn = "Must be Enemy Turn";
         public const string TargetViolatesRestriction = "Target Violates Restriction";
         public const string TargetFitsRestriction = "Target Fits Restriction";
+
+        public const string SpaceTargetViolatesRestriction = "Space Target Violates Restriction";
+        public const string SpaceTargetFitsRestriction = "Space Target Fits Restriction";
+
         public const string SourceViolatesRestriction = "Source Violates Restriction";
         public const string NumTargetsLTEConstant = "Number Targets <= Constant";
         public const string HandFull = "Hand Full";
@@ -25,6 +29,8 @@ namespace KompasServer.Effects
 
         public int constant = 0;
         public CardRestriction cardRestriction;
+
+        public SpaceRestriction spaceRestriction;
 
         public PlayerValue playerValue;
         public NumberRestriction playerValueNumberRestriction;
@@ -36,6 +42,8 @@ namespace KompasServer.Effects
             base.Initialize(eff, subeffIndex);
             cardRestriction ??= new CardRestriction();
             cardRestriction.Initialize(this);
+
+            spaceRestriction?.Initialize(this);
 
             playerValueNumberRestriction?.Initialize(eff.Source, this);
         }
@@ -60,6 +68,9 @@ namespace KompasServer.Effects
 
                     TargetViolatesRestriction => !cardRestriction.IsValidCard(CardTarget, Context),
                     TargetFitsRestriction => cardRestriction.IsValidCard(CardTarget, Context),
+
+                    SpaceTargetViolatesRestriction => !spaceRestriction.IsValidSpace(SpaceTarget, Context),
+                    SpaceTargetFitsRestriction => spaceRestriction.IsValidSpace(SpaceTarget, Context),
 
                     SourceViolatesRestriction => !cardRestriction.IsValidCard(Source, Context),
                     NumTargetsLTEConstant => Effect.CardTargets.Count() <= constant,

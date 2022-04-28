@@ -46,7 +46,7 @@
 							"Main Card is a Secondary Context Card Target",
 							"Secondary Card Fits Restriction Before"
 						],
-						"cardRestriction": {
+						"secondaryCardRestriction": {
 							"cardRestrictions": [
 								"Is Source"
 							]

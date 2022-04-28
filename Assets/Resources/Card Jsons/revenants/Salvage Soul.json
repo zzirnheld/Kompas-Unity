@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Salvage Soul",
-	"effText": "Rehand a friendly Revenant. Draw 1. Discard 1.",
+	"effText": "Rehand a friendly Revenant. Draw 1. Hand->discard 1.",
 	"effects": [
 		{
 			"triggerData": {

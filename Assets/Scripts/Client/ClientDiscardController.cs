@@ -11,15 +11,15 @@ namespace KompasClient.GameCore
 
         public void OnMouseDown()
         {
-            ClientGame.searchCtrl.StartSearch(Discard.ToArray(), null, targetingSearch: false);
+            ClientGame.searchCtrl.StartSearch(discard.ToArray(), null, targetingSearch: false);
         }
 
         public override void SpreadOutCards()
         {
             int x = 0, y = 0;
-            for (int i = 0; i < Discard.Count; i++)
+            for (int i = 0; i < discard.Count; i++)
             {
-                Discard[i].transform.localPosition = new Vector3(2f * (x + y), 0f, -2f * y);
+                discard[i].transform.localPosition = new Vector3(2f * (x + y), 0f, -2f * y);
 
                 x = (x + 1) % WrapLen;
                 if (x == 0) y++;

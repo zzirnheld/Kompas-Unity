@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Fungal Mutation",
-	"effText": "When turns start, discard 1 Fungus. Search your deck's top 5 cards for a Fungus.",
+	"effText": "When turns start, hand->discard 1 Fungus. Search your deck's top 5 cards for a Fungus.",
 	"effects": [
 		{
 			"blurb": "Mutate",

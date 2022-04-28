@@ -1,0 +1,59 @@
+{
+	"cardType": 83,
+	"cardName": "Cloaked in Shadow",
+	"effText": "When Shade arrives, give Moths there +1 NESW.",
+	"effects": [
+		{
+			"blurb": "The darkness hides us",
+			"triggerData": {
+				"triggerCondition": "Arrive",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Shade"
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Space Fits Restriction",
+							"Subtypes Include"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"In Card Target's AOE"
+							]
+						},
+						"subtypesInclude": [
+							"Moth"
+						]
+					},
+					"nModifier": 1,
+					"eModifier": 1,
+					"sModifier": 1,
+					"wModifier": 1
+				}
+			]
+		}
+	],
+	"c": 1,
+	"spellTypes": [
+		"Enchant"
+	],
+	"subtypeText": "Enchant"
+}

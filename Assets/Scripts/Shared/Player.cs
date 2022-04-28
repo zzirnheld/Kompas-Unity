@@ -29,6 +29,7 @@ public abstract class Player : MonoBehaviour
     public int index;
 
     public bool HandFull => handCtrl.HandSize >= HandSizeLimit;
+    public Space AvatarCorner => index == 0 ? Space.NearCorner : Space.FarCorner;
 
     //friendly
     public DeckController deckCtrl;

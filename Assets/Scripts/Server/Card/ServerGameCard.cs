@@ -169,7 +169,7 @@ namespace KompasServer.Cards
             EffectsController.TriggerForCondition(Trigger.AugmentDetached, context);
         }
 
-        public override void Remove(IStackable stackSrc = null)
+        public override bool Remove(IStackable stackSrc = null)
         {
             //Debug.Log($"Trying to remove {CardName} from {Location}");
 
@@ -183,7 +183,7 @@ namespace KompasServer.Cards
             var leaveContexts = cardsThisLeft.Select(c =>
                 new ActivationContext(mainCardBefore: this, secondaryCardBefore: c, stackable: stackSrc, player: player));
 
-            base.Remove(stackSrc);
+            var ret = base.Remove(stackSrc);
 
             context.CacheCardInfoAfter();
             foreach (var lc in leaveContexts)
@@ -195,6 +195,7 @@ namespace KompasServer.Cards
             //copy the colleciton  so that you can edit the original
             var augments = Augments.ToArray();
             foreach (var aug in augments) aug.Discard(stackSrc);
+            return ret;
         }
 
         public override void Reveal(IStackable stackSrc = null)

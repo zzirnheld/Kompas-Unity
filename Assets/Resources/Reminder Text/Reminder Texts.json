@@ -70,11 +70,11 @@
 		},
 		{
 			"keyword":"Flashback.",
-			"reminder":"You can pip discard->cast me, then annihilate me. (If this ability is resolving and I’m not in the discard pile, it fails.)"
+			"reminder":"You can pip discard->cast me, then annihilate me."
 		},
 		{
 			"keyword":"Wanderer.",
-			"reminder":"When turns start, set X to my S. Reshuffle me and deck->summon an S X - 1 Wanderer where I was. (Since the summoned character won't have been on the board when the turn started, their turn start effect, if any, doesn't trigger.)"
+			"reminder":"When turns start, swap me for a Wanderer in your deck with less S. (They won't wander until next turn.)"
 		},
 		{
 			"keyword":"Charge:",
@@ -131,6 +131,11 @@
 		{
 			"keyword":"Spores",
 			"reminder":"The first time each stack I'm activated, pulse adjacent characters. (Activate, then deactivate each.)"
+		},
+		{
+			"keyword":"Stealth",
+			"reminder":"When enemy turns start, choose a space in Shade. If it gets lit up this turn, move/swap me with anything there. Once everyone has unstealthed, I attack an adjacent enemy character.",
+			"technicalReminder":"When enemy turns start, choose a space in Shade. If Light arrvies encompassing it this turn, move me there, swapping me with any card already there. After the stack ends, I attack an adjacent enemy character, if I can."
 		}
 	]
 }

@@ -12,7 +12,7 @@
 						"This Card is Main Card",
                         "Secondary Card Fits Restriction Before"
 					],
-                    "cardRestriction": {
+                    "secondaryCardRestriction": {
 						"cardRestrictions": [
 							"Summoned"
 						]

@@ -1,0 +1,57 @@
+{
+	"cardType": 65,
+	"cardName": "Draining Shield",
+	"effText": "When this character defends from a W X character, destroy me, then give them +2 * X E.",
+	"effects": [
+        {
+            "blurb":"Drain",
+            "triggerData":
+            {
+                "triggerCondition":"Defend",
+                "triggerRestriction": {
+                    "triggerRestrictions": [
+                        "Augmented Card is Main Card"
+                    ]
+                }
+            },
+            "subeffects":[
+				{
+					"$type": "KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.TargetAttackerSubeffect, Assembly-CSharp"
+				},
+                {
+                    "$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+                },
+				{
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp",
+                    "targetIndex": 2
+				},
+				{
+					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "S"
+					},
+					"xMultiplier": 1,
+                    "targetIndex": 1
+				},
+				{
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMultiplier": 2,
+                    "targetIndex": 0
+				}
+            ]
+        }
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Augment Normal Restrictions"
+		],
+		"effectRestrictions": [
+			"Augment Effect Restrictions"
+		]
+	},
+	"a": 1,
+	"subtypeText": ""
+}

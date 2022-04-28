@@ -8,8 +8,13 @@ namespace KompasServer.Effects
     {
         public const string NoCardFitsRestriction = "No Card Fits Restriction";
         public const string CardFitsRestriction = "Card Fits Restriction";
+
         public const string TargetFitsRestriction = "Target Fits Restriction";
         public const string TargetViolatesRestriction = "Target Violates Restriction";
+
+        public const string MainTriggeringCardFitRestrictionBefore = "Main Triggering Card Fit Restriction Before";
+        public const string MainTriggeringCardFloutedRestrictionBefore = "Main Triggering Card Flouted Restriction Before";
+
         public const string XGreaterEqualConstant = "X >= Constant";
         public const string XFitsRestriction = "X Fits Restriction";
 
@@ -34,8 +39,13 @@ namespace KompasServer.Effects
                 {
                     CardFitsRestriction => Game.Cards.Any(c => cardRestriction.IsValidCard(c, Context)),
                     NoCardFitsRestriction => !Game.Cards.Any(c => cardRestriction.IsValidCard(c, Context)),
+
                     TargetFitsRestriction => cardRestriction.IsValidCard(CardTarget, Context),
                     TargetViolatesRestriction => !cardRestriction.IsValidCard(CardTarget, Context),
+
+                    MainTriggeringCardFitRestrictionBefore => cardRestriction.IsValidCard(Context.mainCardInfoBefore, Context),
+                    MainTriggeringCardFloutedRestrictionBefore => !cardRestriction.IsValidCard(Context.mainCardInfoBefore, Context),
+
                     XGreaterEqualConstant => Effect.X >= constant,
                     XFitsRestriction => xRestriction.IsValidNumber(Effect.X),
                     _ => throw new System.ArgumentException($"Invalid conditional jump condition {condition}"),

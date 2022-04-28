@@ -2,6 +2,7 @@
 using KompasCore.Effects;
 using KompasCore.Exceptions;
 using KompasServer.Effects;
+using KompasServer.GameCore.Extensions;
 using KompasServer.Networking;
 using System.Net.Sockets;
 using System.Threading.Tasks;
@@ -58,7 +59,11 @@ namespace KompasServer.GameCore
         {
             try
             {
-                if (serverGame.IsValidNormalAttach(aug, space, this)) aug.Play(space, this, payCost: true);
+                if (serverGame.IsValidNormalAttach(aug, space, this))
+                {
+                    aug.Play(space, this, payCost: true);
+                    await serverGame.EffectsController.CheckForResponse();
+                }
                 else ServerNotifier.NotifyPutBack();
             }
             catch (KompasException ke)
@@ -66,14 +71,17 @@ namespace KompasServer.GameCore
                 Debug.LogError(ke);
                 ServerNotifier.NotifyPutBack();
             }
-            await serverGame.EffectsController.CheckForResponse();
         }
 
         public async Task TryPlay(GameCard card, Space space)
         {
             try
             {
-                if (serverGame.IsValidNormalPlay(card, space, this)) card.Play(space, this, payCost: true);
+                if (serverGame.IsValidNormalPlay(card, space, this))
+                {
+                    card.Play(space, this, payCost: true);
+                    await serverGame.EffectsController.CheckForResponse();
+                }
                 else
                 {
                     Debug.LogError($"Player {index} attempted an invalid play of {card} to {space}.");
@@ -85,7 +93,6 @@ namespace KompasServer.GameCore
                 Debug.LogError($"Player {index} attempted an invalid play of {card} to {space}. Resulting exception:\n{ke}");
                 ServerNotifier.NotifyPutBack();
             }
-            await serverGame.EffectsController.CheckForResponse();
         }
 
         public async Task TryMove(GameCard toMove, Space space)
@@ -93,7 +100,11 @@ namespace KompasServer.GameCore
             //if it's not a valid place to do, put the cards back
             try
             {
-                if (serverGame.IsValidNormalMove(toMove, space, this)) toMove.Move(space, true);
+                if (serverGame.IsValidNormalMove(toMove, space, this))
+                {
+                    toMove.Move(space, true);
+                    await serverGame.EffectsController.CheckForResponse();
+                }
                 else ServerNotifier.NotifyPutBack();
             }
             catch (KompasException ke)
@@ -101,7 +112,6 @@ namespace KompasServer.GameCore
                 Debug.LogError(ke);
                 ServerNotifier.NotifyPutBack();
             }
-            await serverGame.EffectsController.CheckForResponse();
         }
 
         /// <summary>

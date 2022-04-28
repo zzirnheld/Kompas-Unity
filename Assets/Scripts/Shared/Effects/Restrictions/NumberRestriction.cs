@@ -24,11 +24,13 @@ namespace KompasCore.Effects
         public const string LessThanAvatarCardValue = "<Avatar";
         public const string GreaterThanAvatarCardValue = ">Avatar";
 
+        public const string GreaterThanSourceCardValue = ">Source";
+
         public string[] numberRestrictions;
 
         public int constant;
 
-        public CardValue avatarCardValue;
+        public CardValue cardValue;
 
         public GameCard Source { get; private set; }
         public Subeffect Subeffect { get; private set; }
@@ -39,7 +41,7 @@ namespace KompasCore.Effects
         {
             Source = source;
             Subeffect = subeffect;
-            avatarCardValue?.Initialize(Source);
+            cardValue?.Initialize(Source);
             initialized = true;
         }
 
@@ -60,8 +62,8 @@ namespace KompasCore.Effects
 
             LessThanEffectArg => x < Subeffect.Effect.arg,
 
-            LessThanAvatarCardValue => x < avatarCardValue.GetValueOf(Source.Controller.Avatar),
-            GreaterThanAvatarCardValue => x > avatarCardValue.GetValueOf(Source.Controller.Avatar),
+            LessThanAvatarCardValue => x < cardValue.GetValueOf(Source.Controller.Avatar),
+            GreaterThanAvatarCardValue => x > cardValue.GetValueOf(Source.Controller.Avatar),
 
             _ => throw new System.ArgumentException($"Invalid X restriction {r} in X Restriction."),
         };
