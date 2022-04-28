@@ -36,11 +36,10 @@
 					"value":"S"
 				},
 				"cardValueNumberRestriction":{
-					"numberRestrictions":["=X"]
+					"numberRestrictions":["<X"]
 				}
 			},
-			"xMultiplier":1,
-			"xModifier":-1
+			"xMultiplier":1
 		},
 		{
 			"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"

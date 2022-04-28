@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Mysterious Attractive Person",
-	"effText": "Wanderer.\nWhen I'm summoned, reshuffle an enemy S X character. Their controller deck->summons an S < X character.",
+	"effText": "Wanderer.\nWhen I'm summoned, choose a character. Their controller swaps them with one in their deck that costs 1 less.",
 	"effects": [
 		{
 			"triggerData": {
@@ -19,8 +19,7 @@
 						"blurb": "character to attract",
 						"cardRestrictions": [
 							"Character",
-							"Board",
-							"Enemy"
+							"Board"
 						]
 					}
 				},
@@ -52,11 +51,12 @@
 						},
 						"cardValueNumberRestriction": {
 							"numberRestrictions": [
-								"<X"
+								"=X"
 							]
 						}
 					},
-					"xMultiplier": 1
+					"xMultiplier": 1,
+					"xModifier": -1
 				},
 				{
 					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",

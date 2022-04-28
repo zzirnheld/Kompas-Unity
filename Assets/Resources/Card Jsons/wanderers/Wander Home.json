@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Wander Home",
-	"effText": "Reshuffle an adjacent friendly S X Wanderer. Deck->summon an S < X character. Reshuffle another adjacent S X character. Their former controller deck->summons an S < X character.",
+	"effText": "Swap an adjacent friendly Wanderer for a Wanderer in your deck that costs less. Choose another character (doesn't have to be a Wanderer). Their controller does the same.",
 	"effects": [
 		{
 			"triggerData": {

@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Troubadour",
-	"effText": "Wanderer.\nWhen I'm summoned, reshuffle a friendly Summoned S X character. Deck->summon an S X - 1 character.",
+	"effText": "Wanderer.\nWhen I'm summoned, swap a friendly character for a Wanderer in your deck with less S.",
 	"effects": [
 		{
 			"triggerData": {
@@ -53,12 +53,11 @@
 						},
 						"cardValueNumberRestriction": {
 							"numberRestrictions": [
-								"=X"
+								"<X"
 							]
 						}
 					},
-					"xMultiplier": 1,
-					"xModifier": -1
+					"xMultiplier": 1
 				},
 				{
 					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",

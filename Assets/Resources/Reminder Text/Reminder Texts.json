@@ -74,7 +74,7 @@
 		},
 		{
 			"keyword":"Wanderer.",
-			"reminder":"When turns start, set X to my S. Reshuffle me and deck->summon an S X - 1 Wanderer where I was. (Since the summoned character won't have been on the board when the turn started, their turn start effect, if any, doesn't trigger.)"
+			"reminder":"When turns start, swap me for a Wanderer in your deck with less S. (They won't wander until next turn.)"
 		},
 		{
 			"keyword":"Charge:",
