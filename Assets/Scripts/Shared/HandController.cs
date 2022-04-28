@@ -12,25 +12,30 @@ namespace KompasCore.GameCore
         public Player Owner;
 
         public CardLocation CardLocation => CardLocation.Hand;
-        public readonly List<GameCard> hand = new List<GameCard>();
+
+        protected readonly List<GameCard> hand = new List<GameCard>();
 
         public int HandSize => hand.Count;
         public int IndexOf(GameCard card) => hand.IndexOf(card);
 
-        public virtual void Add(GameCard card, IStackable stackSrc = null)
+        public virtual bool Hand(GameCard card, IStackable stackSrc = null)
         {
             if (card == null) throw new NullCardException("Cannot add null card to hand");
 
-            Debug.Log($"Handing {card.CardName} from {card.Location}");
-            card.Remove(stackSrc);
+            var successful = card.Remove(stackSrc);
+            if (successful)
+            {
+                Debug.Log($"Handing {card.CardName}");
 
-            hand.Add(card);
-            card.GameLocation = this;
-            card.Position = null;
-            card.Controller = Owner; //TODO should this be before or after the prev line?
+                hand.Add(card);
+                card.GameLocation = this;
+                card.Position = null;
+                card.Controller = Owner; //TODO should this be before or after the prev line?
 
-            card.transform.rotation = Quaternion.Euler(90, 0, 0);
-            SpreadOutCards();
+                card.transform.rotation = Quaternion.Euler(90, 0, 0);
+                SpreadOutCards();
+            }
+            return successful;
         }
 
         public virtual void Remove(GameCard card)

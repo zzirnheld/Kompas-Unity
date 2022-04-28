@@ -16,43 +16,59 @@ namespace KompasServer.GameCore
         public override Player Owner => owner;
         public ServerPlayer owner;
 
-        protected override void AddCard(GameCard card, IStackable stackSrc = null)
+        protected override bool AddToDeck(GameCard card, IStackable stackSrc = null)
         {
             var context = new ActivationContext(mainCardBefore: card, stackable: stackSrc, player: Owner);
-            base.AddCard(card);
-            context.CacheCardInfoAfter();
-            EffectsController.TriggerForCondition(Trigger.ToDeck, context);
-            owner.ServerNotifier.NotifyDeckCount(Deck.Count);
+            bool successfulAdd = base.AddToDeck(card);
+            if (successfulAdd)
+            {
+                context.CacheCardInfoAfter();
+                EffectsController.TriggerForCondition(Trigger.ToDeck, context);
+                owner.ServerNotifier.NotifyDeckCount(Deck.Count);
+            }
+            return successfulAdd;
         }
 
-        public override void PushBottomdeck(GameCard card, IStackable stackSrc = null)
+        public override bool PushBottomdeck(GameCard card, IStackable stackSrc = null)
         {
             var context = new ActivationContext(mainCardBefore: card, stackable: stackSrc, player: Owner);
             bool wasKnown = card.KnownToEnemy;
-            base.PushBottomdeck(card, stackSrc);
-            context.CacheCardInfoAfter();
-            EffectsController.TriggerForCondition(Trigger.Bottomdeck, context);
-            ServerNotifier.NotifyBottomdeck(card, wasKnown);
+            bool successful = base.PushBottomdeck(card, stackSrc);
+            if (successful)
+            {
+                context.CacheCardInfoAfter();
+                EffectsController.TriggerForCondition(Trigger.Bottomdeck, context);
+                ServerNotifier.NotifyBottomdeck(card, wasKnown);
+            }
+            return successful;
         }
 
-        public override void PushTopdeck(GameCard card, IStackable stackSrc = null)
+        public override bool PushTopdeck(GameCard card, IStackable stackSrc = null)
         {
             var context = new ActivationContext(mainCardBefore: card, stackable: stackSrc, player: Owner);
             bool wasKnown = card.KnownToEnemy;
-            base.PushTopdeck(card, stackSrc);
-            context.CacheCardInfoAfter();
-            EffectsController.TriggerForCondition(Trigger.Topdeck, context);
-            ServerNotifier.NotifyTopdeck(card, wasKnown);
+            bool successful = base.PushTopdeck(card, stackSrc);
+            if (successful)
+            {
+                context.CacheCardInfoAfter();
+                EffectsController.TriggerForCondition(Trigger.Topdeck, context);
+                ServerNotifier.NotifyTopdeck(card, wasKnown);
+            }
+            return successful;
         }
 
-        public override void ShuffleIn(GameCard card, IStackable stackSrc = null)
+        public override bool ShuffleIn(GameCard card, IStackable stackSrc = null)
         {
             var context = new ActivationContext(mainCardBefore: card, stackable: stackSrc, player: Owner);
             bool wasKnown = card.KnownToEnemy;
-            base.ShuffleIn(card, stackSrc);
-            context.CacheCardInfoAfter();
-            EffectsController.TriggerForCondition(Trigger.Reshuffle, context);
-            ServerNotifier.NotifyReshuffle(card, wasKnown);
+            bool successful = base.ShuffleIn(card, stackSrc);
+            if (successful)
+            {
+                context.CacheCardInfoAfter();
+                EffectsController.TriggerForCondition(Trigger.Reshuffle, context);
+                ServerNotifier.NotifyReshuffle(card, wasKnown);
+            }
+            return successful;
         }
 
         public override void Remove(GameCard card)

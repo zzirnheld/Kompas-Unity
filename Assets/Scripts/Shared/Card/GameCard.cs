@@ -382,21 +382,28 @@ namespace KompasCore.Cards
         #endregion statfuncs
 
         #region moveCard
-        //so that notify stuff can be sent in the server
-        public virtual void Remove(IStackable stackSrc = null)
+        /// <summary>
+        /// Removes the card from its current location
+        /// </summary>
+        /// <param name="stackSrc">The stackable (if any) that caused the card's game location to change</param>
+        /// <returns><see langword="true"/> if the card was successfully removed, 
+        /// <see langword="false"/> if the card is an avatar that got sent back</returns>
+        public virtual bool Remove(IStackable stackSrc = null)
         {
             // Debug.Log($"Removing {CardName} id {ID} from {Location}");
 
-            if (Location == CardLocation.Nowhere) return;
+            if (Location == CardLocation.Nowhere) return true;
 
             if (Attached) Detach(stackSrc);
             else GameLocation.Remove(this);
+            //If it got to either of these, it's not an avatar that failed to get removed
+            return true;
         }
 
         public virtual void Vanish() => Discard();
-        public void Discard(IStackable stackSrc = null) => Controller.discardCtrl.Add(this, stackSrc);
+        public void Discard(IStackable stackSrc = null) => Controller.discardCtrl.Discard(this, stackSrc);
 
-        public void Rehand(Player controller, IStackable stackSrc = null) => controller.handCtrl.Add(this, stackSrc);
+        public void Rehand(Player controller, IStackable stackSrc = null) => controller.handCtrl.Hand(this, stackSrc);
         public void Rehand(IStackable stackSrc = null) => Rehand(Controller, stackSrc);
 
         public void Reshuffle(Player controller, IStackable stackSrc = null) => controller.deckCtrl.ShuffleIn(this, stackSrc);

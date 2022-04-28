@@ -13,7 +13,7 @@ namespace KompasServer.GameCore
         public ServerNotifier ServerNotifier => ServerGame.ServerPlayers[Owner.index].ServerNotifier;
         public ServerEffectsController EffectsController => ServerGame.EffectsController;
 
-        public override void Add(GameCard card, IStackable stackSrc = null)
+        public override bool Discard(GameCard card, IStackable stackSrc = null)
         {
             GameCard cause = null;
             if (stackSrc is Effect eff) cause = eff.Source;
@@ -28,10 +28,14 @@ namespace KompasServer.GameCore
             }
             var context = new ActivationContext(mainCardBefore: card, secondaryCardBefore: cause, stackable: stackSrc, player: Owner);
             bool wasKnown = card.KnownToEnemy;
-            base.Add(card, stackSrc);
-            ServerNotifier.NotifyDiscard(card, wasKnown);
-            context.CacheCardInfoAfter();
-            EffectsController.TriggerForCondition(Trigger.Discard, context);
+            bool successful = base.Discard(card, stackSrc);
+            if (successful)
+            {
+                ServerNotifier.NotifyDiscard(card, wasKnown);
+                context.CacheCardInfoAfter();
+                EffectsController.TriggerForCondition(Trigger.Discard, context);
+            }
+            return successful;
         }
     }
 }
