@@ -8,6 +8,11 @@ generic/Lifetide
 generic/Warlock
 generic/Juan Puntsch-Mann
 generic/Price of Fame
+generic/Crack Geode
+generic/Collective Dispel
+generic/Weigh Down
+generic/Bindsquash
+generic/Draining Shield
 aquatic/Big Tuna
 aquatic/Changing Tides
 aquatic/Fishing

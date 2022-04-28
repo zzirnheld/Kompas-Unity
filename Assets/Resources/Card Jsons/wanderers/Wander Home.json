@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Wander Home",
-	"effText": "Swap an adjacent friendly Wanderer for a Wanderer in your deck that costs less. Choose another adjacent character. Their controller does the same.",
+	"effText": "Swap an adjacent friendly Wanderer for a lower cost Wanderer in your deck. Swap another character for a lower cost character of their controller's choice from their deck.",
 	"effects": [
 		{
 			"triggerData": {
