@@ -1,10 +1,10 @@
 {
 	"cardType": 67,
-	"cardName": "Roll of Leythunder",
-	"effText": "Weather Event: Dispel all non-Weather spells in the same Weather Condition as me.",
+	"cardName": "Leyhail Elemental",
+	"effText": "Weather Event: Repeat for each card in Weather I'm also in: give their controller a pip.",
 	"effects": [
 		{
-			"blurb": "Leythunder",
+			"blurb": "Leyhailstones",
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
@@ -19,12 +19,7 @@
 					"$type": "KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Spell",
-							"Subtypes Exclude",
 							"Space Fits Restriction"
-						],
-						"subtypesExclude": [
-							"Weather"
 						],
 						"spaceRestriction": {
 							"spaceRestrictions": [
@@ -42,7 +37,11 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.DispelSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTargetsControllerSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xModifier": 1
 				},
 				{
 					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
@@ -89,9 +88,9 @@
 			}
 		}
 	},
-	"n": 1,
-	"e": 7,
+	"n": 4,
+	"e": 4,
 	"s": 4,
-	"w": 2,
+	"w": 4,
 	"subtypeText": "Weather Event Elemental"
 }

@@ -11,8 +11,12 @@ namespace KompasServer.Effects
         public const string XLessThanEqual0 = "X<=0";
         public const string XGreaterThanConst = "X>C";
         public const string XLessThanConst = "X<C";
+
         public const string NoneFitRestriction = "None Fit Restriction";
         public const string AnyFitRestriction = "Any Fit Restriction";
+
+        public const string NoSpaceFitsRestriction = "No Space Fits Restriction";
+
         public const string MustBeFriendlyTurn = "Must be Friendly Turn";
         public const string MustBeEnemyTurn = "Must be Enemy Turn";
         public const string TargetViolatesRestriction = "Target Violates Restriction";
@@ -62,6 +66,8 @@ namespace KompasServer.Effects
 
                     NoneFitRestriction => !ServerGame.Cards.Any(c => cardRestriction.IsValidCard(c, Context)),
                     AnyFitRestriction => ServerGame.Cards.Any(c => cardRestriction.IsValidCard(c, Context)),
+
+                    NoSpaceFitsRestriction => !Space.Spaces.Any(s => spaceRestriction.IsValidSpace(s, Context, CardTarget)),
 
                     MustBeFriendlyTurn => ServerGame.TurnPlayer != Effect.Controller,
                     MustBeEnemyTurn => ServerGame.TurnPlayer == Effect.Controller,
