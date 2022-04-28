@@ -48,6 +48,7 @@ namespace KompasCore.Effects
 
         private const string NoStackable = "No Stackable"; //Aka "Normally"
         private const string NotFromEffect = "Not From Effect"; //But can be from attack
+        public const string FromAttack = "From Attack";
 
         private const string ContextsStackablesMatch = "Contexts Stackables Match";
         private const string StackableIsThisEffect = "Stackable is This Effect";
@@ -168,6 +169,7 @@ namespace KompasCore.Effects
             FromField => context.mainCardInfoBefore.Location == CardLocation.Board,
             FromDeck => context.mainCardInfoBefore.Location == CardLocation.Deck,
             NotFromEffect => !(context.stackable is Effect),
+            FromAttack => context.stackable is Attack,
 
             //max
             MaxPerRound => ThisTrigger.Effect.TimesUsedThisRound < maxPerRound,

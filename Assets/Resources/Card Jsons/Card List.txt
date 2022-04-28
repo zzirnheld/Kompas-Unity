@@ -13,6 +13,9 @@ generic/Collective Dispel
 generic/Weigh Down
 generic/Bindsquash
 generic/Draining Shield
+generic/Last-Ditch Blast
+generic/Explosive Armor
+generic/Proximity Debinder
 aquatic/Big Tuna
 aquatic/Changing Tides
 aquatic/Fishing

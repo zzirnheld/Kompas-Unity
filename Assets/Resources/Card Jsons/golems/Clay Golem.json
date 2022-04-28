@@ -40,7 +40,7 @@
 							"numberRestrictions": [
 								"<Avatar"
 							],
-							"avatarCardValue": {
+							"cardValue": {
 								"value": "S"
 							}
 						},
