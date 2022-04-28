@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Lax Toadstool",
-	"effText": "Spores.\nWhen an unnegated non-Fungus character is activated, discard a Fungus. Negate the activated character until they attack.",
+	"effText": "Spores.\nWhen an unnegated non-Fungus character is activated, hand->discard a Fungus. Negate the activated character until they attack.",
 	"effects": [
 		{
 			"blurb": "Delirium",

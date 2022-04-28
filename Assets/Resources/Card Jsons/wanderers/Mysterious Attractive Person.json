@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Mysterious Attractive Person",
-	"effText": "Wanderer.\nWhen I'm summoned, choose a character. Their controller swaps them with one in their deck that costs 1 less.",
+	"effText": "Wanderer.\nWhen I'm summoned, choose a character. Their controller swaps them with one in their deck that costs exactly 1 less.",
 	"effects": [
 		{
 			"triggerData": {
