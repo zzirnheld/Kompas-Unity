@@ -47,8 +47,8 @@ generic/Unfinding
 aquatic/Big Tuna
 aquatic/Changing Tides
 aquatic/Fishing
-aquatic/Ma Rinner, the Legendary Fisherwoman
-aquatic/Seigh Lorre, the Legendary Fisherman
+aquatic/Ma Rinner
+aquatic/Seigh Lorre
 aquatic/Heptastar
 aquatic/Expected Shark
 aquatic/Unexpected Shark
@@ -600,6 +600,7 @@ weather_effects/Thundersun
 weather_support/Cloudshift
 weather_support/Thunderous Echo
 weather_support/Unusual Weather
+weather_support/Eventful Weather
 
 weather_events/Lightning Elemental
 weather_events/Blizzard Squall
