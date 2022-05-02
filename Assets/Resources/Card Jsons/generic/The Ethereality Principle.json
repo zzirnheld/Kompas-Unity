@@ -1,0 +1,62 @@
+{
+	"cardType": 83,
+	"cardName": "The Ethereality Principle",
+	"effText": "When you revive an S X Ethereal character, discard your deck's top X. Put one of those cards back on top.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+                        "Controller Triggered",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Character"
+						],
+						"subtypesInclude": [
+							"Ethereal"
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "S"
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.MillSubeffect, Assembly-CSharp",
+					"xMultiplier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Remnant to put back on top",
+						"cardRestrictions": [
+							"Already Target"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.TopdeckSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"c": 3,
+	"unique": true,
+	"spellTypes": [
+		"Enchant"
+	],
+	"subtypeText": "Enchant"
+}

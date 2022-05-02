@@ -16,6 +16,7 @@ generic/Draining Shield
 generic/Last-Ditch Blast
 generic/Explosive Armor
 generic/Proximity Debinder
+generic/The Ethereality Principle
 aquatic/Big Tuna
 aquatic/Changing Tides
 aquatic/Fishing
