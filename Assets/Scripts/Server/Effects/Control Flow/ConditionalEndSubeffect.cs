@@ -11,8 +11,12 @@ namespace KompasServer.Effects
         public const string XLessThanEqual0 = "X<=0";
         public const string XGreaterThanConst = "X>C";
         public const string XLessThanConst = "X<C";
+
         public const string NoneFitRestriction = "None Fit Restriction";
         public const string AnyFitRestriction = "Any Fit Restriction";
+        public const string NumberOfCardsFittingRestrictionFitsNumberRestriction =
+            "Number of Cards Fitting CardRestriction Fits NumberRestriction";
+
         public const string MustBeFriendlyTurn = "Must be Friendly Turn";
         public const string MustBeEnemyTurn = "Must be Enemy Turn";
         public const string TargetViolatesRestriction = "Target Violates Restriction";
@@ -29,8 +33,8 @@ namespace KompasServer.Effects
 
         public int constant = 0;
         public CardRestriction cardRestriction;
-
         public SpaceRestriction spaceRestriction;
+        public NumberRestriction numberRestriction;
 
         public PlayerValue playerValue;
         public NumberRestriction playerValueNumberRestriction;
@@ -40,12 +44,18 @@ namespace KompasServer.Effects
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
             base.Initialize(eff, subeffIndex);
-            cardRestriction ??= new CardRestriction();
-            cardRestriction.Initialize(this);
+            cardRestriction?.Initialize(this);
 
             spaceRestriction?.Initialize(this);
+            numberRestriction?.Initialize(Source, this);
 
             playerValueNumberRestriction?.Initialize(eff.Source, this);
+        }
+
+        private bool doesNumberOfCardsFittingRestrictionFitNumberRestriction()
+        {
+            int number = ServerGame.Cards.Where(c => cardRestriction.IsValidCard(c, Context)).Count();
+            return numberRestriction.IsValidNumber(number);
         }
 
         private bool ShouldEnd
@@ -62,6 +72,7 @@ namespace KompasServer.Effects
 
                     NoneFitRestriction => !ServerGame.Cards.Any(c => cardRestriction.IsValidCard(c, Context)),
                     AnyFitRestriction => ServerGame.Cards.Any(c => cardRestriction.IsValidCard(c, Context)),
+                    NumberOfCardsFittingRestrictionFitsNumberRestriction => doesNumberOfCardsFittingRestrictionFitNumberRestriction(),
 
                     MustBeFriendlyTurn => ServerGame.TurnPlayer != Effect.Controller,
                     MustBeEnemyTurn => ServerGame.TurnPlayer == Effect.Controller,

@@ -66,7 +66,7 @@
 		},
 		{
 			"keyword":"Invoke",
-			"reminder":"Mill until you mill a character with S < my S. Revive them."
+			"reminder":"Discard your deck's top card until you discard an appropriate character. Revive them."
 		},
 		{
 			"keyword":"Flashback.",

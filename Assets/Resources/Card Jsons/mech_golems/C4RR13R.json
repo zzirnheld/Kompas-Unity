@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "C4RR13R",
-	"effText": "Golem.\nWhen I'm activated, I Invoke a Mech Golem. Activate it. Delay 1 turn. Kill me, then hand me.",
+	"effText": "Golem.\nWhen I'm activated, I Invoke a Mech Golem that costs less than me. Activate it.",
 	"effects": [
 		{
 			"blurb": "C4RRY1NG TH1S WH0L3 T34M",
@@ -70,23 +70,6 @@
 				},
 				{
 					"$type": "KompasServer.Effects.ActivateSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type": "KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
-					"numTimesToDelay": 0,
-					"jumpIndices": [
-						8
-					],
-					"endCondition": "Turn Start"
-				},
-				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
 				}
 			]
 		}
