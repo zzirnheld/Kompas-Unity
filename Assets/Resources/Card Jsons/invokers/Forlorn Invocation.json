@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
-	"cardName": "Invoke the Invoker",
-	"effText": "Flashback.\nShow a Spirit. Invoke an Invoker. Topdeck that Spirit.",
+	"cardName": "Forlorn Invocation",
+	"effText": "Flashback.\nCast only adjacent to an Invoker.\nInvoke a NON-Spirit.",
 	"effects": [
 		{
 			"triggerData": {
@@ -14,23 +14,6 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction": {
-						"blurb": "Spirit to reveal for Invoke the Invoker",
-						"cardRestrictions": [
-							"Friendly",
-							"Hand",
-							"Subtypes Include"
-						],
-						"subtypesInclude": [
-							"Spirit"
-						]
-					}
-				},
-				{
-					"$type": "KompasServer.Effects.ShowSubeffect, Assembly-CSharp"
-				},
-				{
 					"$type": "KompasServer.Effects.MillSubeffect, Assembly-CSharp",
 					"xModifier": 1
 				},
@@ -39,21 +22,21 @@
 					"condition": "Target Violates Restriction",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Subtypes Include"
+							"Subtypes Exclude"
 						],
-						"subtypesInclude": [
-							"Invoker"
+						"subtypesExclude": [
+							"Spirit"
 						]
 					},
 					"jumpIndices": [
-						2
+						0
 					],
 					"xMultiplier": 1
 				},
 				{
 					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction": {
-						"blurb": "where to Invoke the Invoker",
+						"blurb": "where to Invoke the Spirit",
 						"spaceRestrictions": [
 							"Can Play Card Target to This Space",
 							"Empty"
@@ -62,9 +45,6 @@
 				},
 				{
 					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
-				},
-				{
-					"$type": "KompasServer.Effects.TopdeckSubeffect, Assembly-CSharp"
 				}
 			]
 		}
@@ -72,7 +52,25 @@
 	"keywords": [
 		"Flashback"
 	],
-	"c": 4,
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Default Normal Restrictions",
+			"Adjacent to Card Fitting Restriction"
+		],
+		"effectRestrictions": [
+			"Default Effect Restrictions",
+			"Adjacent to Card Fitting Restriction"
+		],
+		"adjacentCardRestriction": {
+			"cardRestrictions": [
+				"Subtypes Include"
+			],
+			"subtypesInclude": [
+				"Invoker"
+			]
+		}
+	},
+	"c": 3,
 	"spellTypes": [
 		"Simple"
 	],

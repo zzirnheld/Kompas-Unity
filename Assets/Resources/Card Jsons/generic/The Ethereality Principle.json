@@ -15,7 +15,8 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Subtypes Include",
-							"Character"
+							"Character",
+							"Discard"
 						],
 						"subtypesInclude": [
 							"Ethereal"

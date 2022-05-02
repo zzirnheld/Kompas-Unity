@@ -172,6 +172,9 @@ invokers/Invoke the Invoker
 invokers/Prepare the Name
 invokers/Segascanturian Invoker
 invokers/Waungh Invoker
+invokers/Novice Invocation
+invokers/Forlorn Invocation
+invokers/Peruser of Ancient Texts
 Kusanagi
 Leybinder
 Leybinding
