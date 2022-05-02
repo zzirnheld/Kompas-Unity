@@ -1,0 +1,72 @@
+{
+	"cardType": 67,
+	"cardName": "Infectious Displeasure",
+	"effText": "When I'm revived, choose an enemy character. Give all X enemy characters connected to them -X NESW.",
+	"effects": [
+		{
+			"blurb": "Displeasure",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Discard"
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Enemy",
+							"Board",
+							"Space Fits Restriction"
+						],
+                        "spaceRestriction":
+                        {
+                            "spaceRestrictions": [
+                                "Connected to Card Target by Cards Fitting Restriction"
+                            ],
+                            "connectednessRestriction": {
+                                "cardRestrictions": [
+                                    "Enemy",
+                                    "Character",
+                                    "Board"
+                                ]
+                            }
+                        }
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"whatToCount": "Number of Targets",
+					"xMultiplier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Already Target"
+						]
+					},
+					"nMultiplier": -1,
+					"eMultiplier": -1,
+					"sMultiplier": -1,
+					"wMultiplier": -1
+				}
+			]
+		}
+	],
+	"n": 7,
+	"e": 6,
+	"s": 6,
+	"w": 4,
+	"subtypeText": "Ethereal Spirit"
+}

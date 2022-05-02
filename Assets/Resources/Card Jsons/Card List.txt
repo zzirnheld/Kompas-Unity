@@ -407,6 +407,11 @@ spirits/Overwhelming Anger
 spirits/Spiritual Advice
 spirits/Unfocusing Annoyance
 spirits/Whirlwind of Emotions
+spirits/Infectious Displeasure
+spirits/Nailbiting Anxiety
+spirits/Brightsmiling Excitement
+spirits/Hog Wildness
+spirits/Lizard Calm
 spores/Mockish Rotbloom
 spores/Delirious Sparkbloom
 spores/Lax Toadstool

@@ -1,0 +1,52 @@
+{
+	"cardType": 67,
+	"cardName": "Lizard Calm",
+	"effText": "When I'm revived, give a Summoned E X character +X E.",
+	"effects": [
+		{
+			"blurb": "Calm",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Discard"
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Board",
+							"Character"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "E"
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMultiplier": 1
+				}
+			]
+		}
+	],
+	"n": 6,
+	"e": 7,
+	"s": 6,
+	"w": 6,
+	"subtypeText": "Ethereal Spirit"
+}
