@@ -416,6 +416,7 @@ spirits/Nailbiting Anxiety
 spirits/Brightsmiling Excitement
 spirits/Hog Wildness
 spirits/Lizard Calm
+spirits/Boundless Creativity
 spores/Mockish Rotbloom
 spores/Delirious Sparkbloom
 spores/Lax Toadstool
