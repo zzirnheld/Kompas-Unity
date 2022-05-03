@@ -16,6 +16,7 @@ public class ClientDummyHandController : ClientHandController
     public override void IncrementHand()
     {
         var card = GameObject.Instantiate(dummyCardPrefab, parent: gameObject.transform).GetComponent<DummyClientGameCard>();
+        card.Controller = Owner;
         card.SetClientGame(clientGame);
         dummyHand.Add(card);
         Hand(card);
@@ -36,11 +37,5 @@ public class ClientDummyHandController : ClientHandController
 
         //remove the card from the real hand if it's actually there
         base.Remove(card);
-    }
-
-    public override void SpreadOutCards()
-    {
-        base.SpreadOutCards();
-        foreach (var c in hand) c.transform.eulerAngles = new Vector3(0, 0, 180);
     }
 }
