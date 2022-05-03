@@ -148,6 +148,7 @@ namespace KompasCore.Cards
                 case CardLocation.Discard:
                     card.gameObject.transform.SetParent(card.Controller.discardObject.transform);
                     card.Controller.discardCtrl.SpreadOutCards();
+                    SetRotation();
                     gameObject.SetActive(true);
                     break;
                 case CardLocation.Board:
@@ -155,7 +156,7 @@ namespace KompasCore.Cards
                     card.gameObject.transform.SetParent(card.Game.boardObject.transform);
                     MoveTo(card.Position);
                     SetRotation();
-                    if (card.CardType == 'S' && card.SpellSubtypes.Any(s => s == CardBase.RadialSubtype)) aoeController.Show(card.Radius);
+                    if (card.SpellSubtypes.Any(CardBase.RadialSubtype.Equals)) aoeController.Show(card.Radius);
                     gameObject.SetActive(true);
                     break;
                 case CardLocation.Hand:
@@ -208,7 +209,12 @@ namespace KompasCore.Cards
         }
 
         public void SetRotation()
-            => card.transform.eulerAngles = new Vector3(0, 180 + 180 * card.ControllerIndex, 0);
+        {
+            Debug.Log($"Setting rotation of {card.CardName}, controlled by {card.ControllerIndex}, known? {card.KnownToEnemy}");
+            int yRotation = 180 * card.ControllerIndex;
+            int zRotation = 180 * (card.KnownToEnemy ? 0 : card.ControllerIndex);
+            card.transform.eulerAngles = new Vector3(0, yRotation, zRotation);
+        }
 
         private void ReloadImages(string cardFileName)
         {
@@ -308,19 +314,19 @@ namespace KompasCore.Cards
             SetImage(card.CardName, zoomed);
         }
 
-        public void ShowValidTarget(bool valid = true) => validTargetObject.SetActive(valid);
+        public virtual void ShowValidTarget(bool valid = true) => validTargetObject.SetActive(valid);
 
-        public void ShowCurrentTarget(bool current = true) => currentTargetObject.SetActive(current);
+        public virtual void ShowCurrentTarget(bool current = true) => currentTargetObject.SetActive(current);
 
-        public void HideTarget()
+        public virtual void HideTarget()
         {
             validTargetObject.SetActive(false);
             currentTargetObject.SetActive(false);
         }
 
-        public void ShowUniqueCopy(bool copy = true) => uniqueCopyObject.SetActive(copy);
+        public virtual void ShowUniqueCopy(bool copy = true) => uniqueCopyObject.SetActive(copy);
 
-        public void ShowPrimaryOfStackable(bool show = true) => primaryStackableObject.SetActive(show);
-        public void ShowSecondaryOfStackable(bool show = true) => secondaryStackableObject.SetActive(show);
+        public virtual void ShowPrimaryOfStackable(bool show = true) => primaryStackableObject.SetActive(show);
+        public virtual void ShowSecondaryOfStackable(bool show = true) => secondaryStackableObject.SetActive(show);
     }
 }

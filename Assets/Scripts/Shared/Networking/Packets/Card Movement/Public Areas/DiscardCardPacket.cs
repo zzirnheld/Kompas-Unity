@@ -28,7 +28,7 @@ namespace KompasCore.Networking
         public override Packet GetInversion(bool known)
         {
             if (known) return new DiscardCardPacket(cardId, json, controllerIndex, invert: true);
-            else return new AddCardPacket(cardId, json, CardLocation.Discard, controllerIndex, invert: true);
+            else return new AddCardPacket(cardId, json, CardLocation.Discard, controllerIndex, nowKnown: true, invert: true);
         }
     }
 }

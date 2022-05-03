@@ -110,6 +110,7 @@ namespace KompasClient.GameCore
 
             var owner = ClientPlayers[player];
             var avatar = cardRepo.InstantiateClientAvatar(json, this, owner, avatarID);
+            avatar.KnownToEnemy = true;
             owner.Avatar = avatar;
             Space to = player == 0 ? Space.NearCorner : Space.FarCorner;
             avatar.Play(to, owner);
