@@ -65,10 +65,10 @@
 		}
 	],
 	"keywords": [
-		"Weather"
+		"Weather Condition Cast"
 	],
 	"unique": true,
-	"c": 4,
+	"c": 2,
 	"spellTypes": [
 		"Radial"
 	],

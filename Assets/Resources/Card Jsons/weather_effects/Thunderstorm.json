@@ -38,7 +38,7 @@
 		}
 	],
 	"keywords": [
-		"Weather"
+		"Weather Condition Cast"
 	],
 	"unique": true,
 	"c": 5,
@@ -46,5 +46,5 @@
 		"Radial"
 	],
 	"subtypeText": "Water Weather Condition Radius",
-	"radius": 3
+	"radius": 2
 }
