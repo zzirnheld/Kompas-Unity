@@ -10,7 +10,6 @@ namespace KompasCore.Cards
         public CardController cardCtrl;
 
         public GameObject aoeBlock;
-        public MeshRenderer aoeBlockRenderer;
 
         public void Show(int aoe)
         {

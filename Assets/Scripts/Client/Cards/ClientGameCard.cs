@@ -22,6 +22,9 @@ namespace KompasClient.Cards
                 if (cardCtrl != null)
                 {
                     cardCtrl.ShowForCardType(CardType, ClientCameraController.Main.Zoomed);
+                }
+                if (clientCardCtrl != null)
+                {
                     clientCardCtrl.Revealed = KnownToEnemy && InHiddenLocation;
                 }
             }
