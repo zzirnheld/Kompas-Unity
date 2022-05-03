@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Passingbinder",
-	"effText": "When an enemy character dies in the overlap of Weather, hand->summon a Weather Event where they were.",
+	"effText": "When an enemy character dies in Weather, hand->summon a Weather Event in that same Weather's overlap with other Weather.",
 	"effects": [
 		{
 			"blurb": "Bind the soul",
@@ -60,6 +60,40 @@
                             "Event"
 						]
 					}
+				},
+				{
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where Empress to hand-summon",
+						"spaceRestrictions": [
+							"Empty",
+                            "In AOE of Number of Cards Fitting Restriction",
+                            "In AOE Space Target is Also In"
+                        ],
+                        "inAOEOfRestriction": {
+                            "cardRestrictions": [
+                                "Subtypes Include"
+                            ],
+                            "subtypesInclude": [
+                                "Weather"
+                            ]
+                        },
+                        "numberOfCardsInAOEOfRestriction": {
+                            "numberRestrictions": [
+                                ">=Constant"
+                            ],
+                            "constant": 2
+                        },
+                        "alsoInAOEOfRestriction": {
+                            "cardRestrictions": [
+                                "Subtypes Include"
+                            ],
+                            "subtypesInclude": [
+                                "Weather"
+                            ]
+                        }
+					},
+					"targetIndex": -2
 				},
 				{
 					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"

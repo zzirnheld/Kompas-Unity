@@ -6,7 +6,7 @@
 		{
 			"blurb": "Bind the curiosity",
 			"triggerData": {
-				"triggerCondition": "Defend",
+				"triggerCondition": "Arrive",
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",

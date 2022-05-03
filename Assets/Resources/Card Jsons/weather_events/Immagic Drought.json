@@ -91,9 +91,9 @@
 			}
 		}
 	},
-	"n": 1,
+	"n": 4,
 	"e": 7,
 	"s": 4,
-	"w": 2,
+	"w": 4,
 	"subtypeText": "Weather Event Elemental"
 }

@@ -33,15 +33,15 @@
 					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
-					"maxCanChoose": 1,
+					"$type": "KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
 					"cardRestriction": {
 						"blurb": "Silent convert",
 						"cardRestrictions": [
 							"Friendly",
 							"Deck",
 							"Spell",
-							"Subtypes Include"
+							"Subtypes Include",
+							"Can be Played to Target Space"
 						],
 						"subtypesInclude": [
 							"Silent"

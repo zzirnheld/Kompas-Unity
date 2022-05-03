@@ -50,7 +50,7 @@
 		},
 		{
 			"keyword":"Weather Event",
-			"reminder":"Can only be played in the overlap of 2 Weather Conditions.\nWhen I'm summoned on an enemy turn, apply the listed effect."
+			"reminder":"Must be played in the overlap of Weather Conditions, but doesn't have to be played adjacent to a friendly card.\nWhen I'm summoned on an enemy turn, apply the listed effect."
 		},
 		{
 			"keyword":"martyr",

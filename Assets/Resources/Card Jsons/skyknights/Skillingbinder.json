@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Skillingbinder",
-	"effText": "When an enemy character in Weather uses their effect, hand->summon a Weather Event adjacent to them (in Weather overlap).",
+	"effText": "When an enemy character in Weather uses their effect, hand->summon a Weather Event in that Weather's overlap with other Weather.",
 	"effects": [
 		{
 			"blurb": "Bind the show of skill",
@@ -46,8 +46,8 @@
                     "spaceRestriction": {
                         "spaceRestrictions": [
                             "Empty",
-                            "Adjacent to Card Target",
-                            "In AOE of Number of Cards Fitting Restriction"
+                            "In AOE of Number of Cards Fitting Restriction",
+                            "In AOE Card Target is Also In"
                         ],
                         "inAOEOfRestriction": {
                             "cardRestrictions": [
@@ -87,9 +87,8 @@
 						"blurb": "where Empress to hand-summon",
 						"spaceRestrictions": [
 							"Empty",
-                            "Adjacent to Card Target",
                             "In AOE of Number of Cards Fitting Restriction",
-							"Can Play Card Target to This Space"
+                            "In AOE Card Target is Also In"
                         ],
                         "inAOEOfRestriction": {
                             "cardRestrictions": [
@@ -104,8 +103,17 @@
                                 ">=Constant"
                             ],
                             "constant": 2
+                        },
+                        "alsoInAOEOfRestriction": {
+                            "cardRestrictions": [
+                                "Subtypes Include"
+                            ],
+                            "subtypesInclude": [
+                                "Weather"
+                            ]
                         }
-					}
+					},
+					"targetIndex": -2
 				},
 				{
 					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"

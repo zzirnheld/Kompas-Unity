@@ -60,7 +60,7 @@
 		"Weather Condition Cast"
 	],
 	"unique": true,
-	"c": 3,
+	"c": 2,
 	"spellTypes": [
 		"Radial"
 	],

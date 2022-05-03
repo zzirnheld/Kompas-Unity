@@ -38,6 +38,7 @@ namespace KompasCore.Effects
         public const string InAOEOfNumberFittingRestriction = "In AOE of Number of Cards Fitting Restriction";
         public const string InAOESourceAlsoIn = "In AOE Source is Also In";
         public const string InAOECardTargetAlsoIn = "In AOE Card Target is Also In";
+        public const string InAOESpaceTargetAlsoIn = "In AOE Space Target is Also In";
         public const string SourceInSpaceOverlapsCardRestriction 
             = "If Source Were In The Targeted Space, It Would Overlap Card Restriction";
 
@@ -197,6 +198,7 @@ namespace KompasCore.Effects
                 InAOEOfNumberFittingRestriction => InAOEOfNumberOfCardsFittingRestriction(space, context),
                 InAOESourceAlsoIn => Game.Cards.Any(c => c.SpaceInAOE(space) && c.CardInAOE(Source) && alsoInAOEOfRestriction.IsValidCard(c, context)),
                 InAOECardTargetAlsoIn => Game.Cards.Any(c => c.SpaceInAOE(space) && c.CardInAOE(target) && alsoInAOEOfRestriction.IsValidCard(c, context)),
+                InAOESpaceTargetAlsoIn => Game.Cards.Any(c => c.SpaceInAOE(space) && c.SpaceInAOE(Subeffect.SpaceTarget) && alsoInAOEOfRestriction.IsValidCard(c, context)),
                 SourceInSpaceOverlapsCardRestriction => CardInSpaceOverlapsCardRestriction(Source, space, context),
 
                 SourceDisplacementToSpaceMatchesSpaceTarget => Source.Position.DisplacementTo(space) == Subeffect.SpaceTarget,

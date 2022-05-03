@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Fearstrikebinder",
-	"effText": "When a friendly character defends, hand->summon a Weather Event adjacent to their attacker (in Weather overlap).",
+	"effText": "When a friendly character defends in Weather, hand->summon a Weather Event in that Weather's overlap with other Weather.",
 	"effects": [
 		{
 			"blurb": "Bind the fear",
@@ -10,12 +10,27 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Main Card Fits Restriction Before"
+						"Main Card Fits Restriction After"
 					],
-					"cardRestriction": {
+					"nowRestriction": {
 						"cardRestrictions": [
-							"Friendly"
-						]
+							"Friendly",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction":
+						{
+							"spaceRestrictions": [
+								"In AOE of Card Fitting Restriction"
+							],
+							"inAOEOfRestriction": {
+								"cardRestrictions": [
+									"Subtypes Include"
+								],
+								"subtypesInclude": [
+									"Weather"
+								]
+							}
+						}
 					}
 				}
 			},
@@ -30,8 +45,8 @@
                     "spaceRestriction": {
                         "spaceRestrictions": [
                             "Empty",
-                            "Adjacent to Card Target",
-                            "In AOE of Number of Cards Fitting Restriction"
+                            "In AOE of Number of Cards Fitting Restriction",
+                            "In AOE Card Target is Also In"
                         ],
                         "inAOEOfRestriction": {
                             "cardRestrictions": [
@@ -71,9 +86,8 @@
 						"blurb": "where Empress to hand-summon",
 						"spaceRestrictions": [
 							"Empty",
-                            "Adjacent to Card Target",
                             "In AOE of Number of Cards Fitting Restriction",
-							"Can Play Card Target to This Space"
+                            "In AOE Card Target is Also In"
                         ],
                         "inAOEOfRestriction": {
                             "cardRestrictions": [
@@ -88,8 +102,17 @@
                                 ">=Constant"
                             ],
                             "constant": 2
+                        },
+                        "alsoInAOEOfRestriction": {
+                            "cardRestrictions": [
+                                "Subtypes Include"
+                            ],
+                            "subtypesInclude": [
+                                "Weather"
+                            ]
                         }
-					}
+					},
+					"targetIndex": -2
 				},
 				{
 					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
