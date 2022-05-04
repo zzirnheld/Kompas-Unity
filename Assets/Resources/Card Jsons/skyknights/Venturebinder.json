@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Venturebinder",
-	"effText": "When an enemy character enters Weather, hand->summon a Weather Event adjacent to them (in Weather overlap).",
+	"effText": "When an enemy character enters Weather, hand->summon a Weather Event in that weather's overlap.",
 	"effects": [
 		{
 			"blurb": "Bind the curiosity",
@@ -57,8 +57,7 @@
 			},
 			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp",
-					"secondary":true
+					"$type": "KompasServer.Effects.TargetTriggeringCardsCoordsSubeffect, Assembly-CSharp"
 				},
                 {
                     "$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
@@ -66,7 +65,7 @@
                     "spaceRestriction": {
                         "spaceRestrictions": [
                             "Empty",
-                            "Adjacent to Card Target",
+                            "In AOE Space Target is Also In",
                             "In AOE of Number of Cards Fitting Restriction"
                         ],
                         "inAOEOfRestriction": {
@@ -107,9 +106,9 @@
 						"blurb": "where Empress to hand-summon",
 						"spaceRestrictions": [
 							"Empty",
-                            "Adjacent to Card Target",
                             "In AOE of Number of Cards Fitting Restriction",
-							"Can Play Card Target to This Space"
+							"Can Play Card Target to This Space",
+                            "In AOE Space Target is Also In"
                         ],
                         "inAOEOfRestriction": {
                             "cardRestrictions": [

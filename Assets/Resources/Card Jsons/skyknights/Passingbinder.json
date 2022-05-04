@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Passingbinder",
-	"effText": "When an enemy character dies in Weather, hand->summon a Weather Event in that same Weather's overlap with other Weather.",
+	"effText": "When an enemy character dies in Weather, hand->summon a Weather Event in that Weather's overlap.",
 	"effects": [
 		{
 			"blurb": "Bind the soul",
@@ -43,8 +43,41 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardsCoordsSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTriggeringCoordsSubeffect, Assembly-CSharp"
 				},
+                {
+                    "$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+                    "condition": "No Space Fits Restriction",
+                    "spaceRestriction": {
+                        "spaceRestrictions": [
+                            "Empty",
+                            "In AOE of Number of Cards Fitting Restriction",
+                            "In AOE Card Target is Also In"
+                        ],
+                        "inAOEOfRestriction": {
+                            "cardRestrictions": [
+                                "Subtypes Include"
+                            ],
+                            "subtypesInclude": [
+                                "Weather"
+                            ]
+                        },
+                        "numberOfCardsInAOEOfRestriction": {
+                            "numberRestrictions": [
+                                ">=Constant"
+                            ],
+                            "constant": 2
+                        },
+                        "alsoInAOEOfRestriction": {
+                            "cardRestrictions": [
+                                "Subtypes Include"
+                            ],
+                            "subtypesInclude": [
+                                "Weather"
+                            ]
+                        }
+                    }
+                },
 				{
 					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction": {
@@ -68,6 +101,7 @@
 						"spaceRestrictions": [
 							"Empty",
                             "In AOE of Number of Cards Fitting Restriction",
+							"Can Play Card Target to This Space",
                             "In AOE Space Target is Also In"
                         ],
                         "inAOEOfRestriction": {

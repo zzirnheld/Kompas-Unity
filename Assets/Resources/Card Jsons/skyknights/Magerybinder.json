@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Magerybinder",
-	"effText": "When an enemy casts a spell in Weather, hand->summon a Weather Event in the overlap of that Weather with other Weather.",
+	"effText": "When an enemy casts a spell in Weather, hand->summon a Weather Event in that Weather's overlap.",
 	"effects": [
 		{
 			"blurb": "Bind the magic",
@@ -37,8 +37,7 @@
 			},
 			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp",
-					"secondary":true
+					"$type": "KompasServer.Effects.TargetTriggeringCardsCoordsSubeffect, Assembly-CSharp"
 				},
                 {
                     "$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
@@ -96,7 +95,8 @@
 						"spaceRestrictions": [
 							"Empty",
                             "In AOE of Number of Cards Fitting Restriction",
-                            "In AOE Card Target is Also In"
+							"Can Play Card Target to This Space",
+                            "In AOE Space Target is Also In"
                         ],
                         "inAOEOfRestriction": {
                             "cardRestrictions": [

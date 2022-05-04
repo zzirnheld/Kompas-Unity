@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Fearstrikebinder",
-	"effText": "When a friendly character defends in Weather, hand->summon a Weather Event in that Weather's overlap with other Weather.",
+	"effText": "When a friendly character defends in Weather, hand->summon a Weather Event that Weather's overlap.",
 	"effects": [
 		{
 			"blurb": "Bind the fear",
@@ -36,8 +36,7 @@
 			},
 			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp",
-					"secondary":true
+					"$type": "KompasServer.Effects.TargetTriggeringCardsCoordsSubeffect, Assembly-CSharp"
 				},
                 {
                     "$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
@@ -46,7 +45,7 @@
                         "spaceRestrictions": [
                             "Empty",
                             "In AOE of Number of Cards Fitting Restriction",
-                            "In AOE Card Target is Also In"
+                            "In AOE Space Target is Also In"
                         ],
                         "inAOEOfRestriction": {
                             "cardRestrictions": [
