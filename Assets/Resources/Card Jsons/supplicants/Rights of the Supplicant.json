@@ -18,7 +18,8 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.TargetAttackerSubeffect, Assembly-CSharp"
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp",
+					"secondary":true
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",

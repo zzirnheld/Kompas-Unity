@@ -15,13 +15,12 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp",
+					"secondary":true
 				},
 				{
-					"$type": "KompasServer.Effects.TargetOtherInFightSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"$type": "KompasServer.Effects.SetXByTriggeringCardValueSubeffect, Assembly-CSharp",
+					"secondary":true,
 					"cardValue": {
 						"value": "W"
 					},

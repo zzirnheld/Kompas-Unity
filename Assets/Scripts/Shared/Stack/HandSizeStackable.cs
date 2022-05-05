@@ -46,5 +46,7 @@ namespace KompasCore.Effects
                 return handSizeCardRestriction;
             }
         }
+
+        public GameCard GetCause(GameCard withRespectTo) => Source;
     }
 }

@@ -114,7 +114,7 @@ namespace KompasServer.Effects
 
         public void PushedToStack(ServerGame game, ServerPlayer ctrl)
         {
-            ActivationContext context = new ActivationContext(stackable: this);
+            ActivationContext context = new ActivationContext(stackableCause: this);
             EffectsController.TriggerForCondition(Trigger.EffectPushedToStack, context);
             TimesUsedThisRound++;
             TimesUsedThisTurn++;
@@ -143,7 +143,7 @@ namespace KompasServer.Effects
             if (context.CardTargets != null) context.CardTargets.ForEach(AddTarget);
             if (context.SpaceTargets != null) context.SpaceTargets.ForEach(AddSpace);
             playerTargets.Add(Controller);
-            if (context.stackable != null) stackableTargets.Add(context.stackable);
+            if (context.stackableCause != null) stackableTargets.Add(context.stackableCause);
 
             //notify relevant to this effect starting
             ServerController.ServerNotifier.NotifyEffectX(Source, EffectIndex, X);

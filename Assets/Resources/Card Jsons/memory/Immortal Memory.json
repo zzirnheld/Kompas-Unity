@@ -18,7 +18,8 @@
                     "$type":"KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
                 },
 				{
-					"$type": "KompasServer.Effects.TargetOtherInFightSubeffect, Assembly-CSharp"
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp",
+					"secondary":true
 				},
 				{
 					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
