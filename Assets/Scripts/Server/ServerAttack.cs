@@ -32,8 +32,10 @@ namespace KompasServer.Effects
         {
             ServerController.ServerNotifier.NotifyAttackStarted(attacker, defender, controller);
 
-            var attackerContext = new ActivationContext(mainCardBefore: attacker, secondaryCardBefore: defender, stackable: this, player: Controller);
-            var defenderContext = new ActivationContext(mainCardBefore: defender, secondaryCardBefore: attacker, stackable: this, player: Controller);
+            var attackerContext = new ActivationContext(mainCardBefore: attacker, secondaryCardBefore: defender, 
+                stackable: this, eventCauseOverride: attacker, player: Controller);
+            var defenderContext = new ActivationContext(mainCardBefore: defender, secondaryCardBefore: attacker, 
+                stackable: this, eventCauseOverride: attacker, player: Controller);
             attackerContext.CacheCardInfoAfter();
             defenderContext.CacheCardInfoAfter();
             EffCtrl.TriggerForCondition(Trigger.Attacks, attackerContext);
@@ -52,8 +54,10 @@ namespace KompasServer.Effects
 
         public Task StartResolution(ActivationContext context)
         {
-            var attackerContext = new ActivationContext(mainCardBefore: attacker, secondaryCardBefore: defender, stackable: this, player: Controller);
-            var defenderContext = new ActivationContext(mainCardBefore: defender, secondaryCardBefore: attacker, stackable: this, player: Controller);
+            var attackerContext = new ActivationContext(mainCardBefore: attacker, secondaryCardBefore: defender, 
+                stackable: this, eventCauseOverride: attacker, player: Controller);
+            var defenderContext = new ActivationContext(mainCardBefore: defender, secondaryCardBefore: attacker, 
+                stackable: this, eventCauseOverride: attacker, player: Controller);
             if (StillValidAttack)
             {
                 //deal the damage
