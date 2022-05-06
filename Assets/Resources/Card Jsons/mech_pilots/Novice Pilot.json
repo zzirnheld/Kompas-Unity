@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Novice Pilot",
-	"effText":"During your turn, I can Pilot a Mech, but give it -3 NESW.",
+	"effText":"I can Pilot a Mech, but give it -3 NESW.",
 	"effects":[
 		{
 			"blurb":"Substandard Piloting",

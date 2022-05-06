@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Runecarver",
-	"effText": "Once each friendly turn, you can reshuffle a Rune from your hand, field, or discard to draw 2 cards.",
+	"effText": "Once each turn, you can reshuffle a Rune from your hand, field, or discard to draw 2 cards.",
 	"effects": [
 		{
 			"activationRestriction": {
