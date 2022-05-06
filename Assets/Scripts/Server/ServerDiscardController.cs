@@ -26,7 +26,7 @@ namespace KompasServer.GameCore
                 else throw new System.ArgumentException($"Why is {card} neither the attacker nor defender, nor augmenting them, " +
                     $"in the attack {atk} that caused it to be discarded?");
             }
-            var context = new ActivationContext(mainCardBefore: card, secondaryCardBefore: cause, stackable: stackSrc, player: Owner);
+            var context = new ActivationContext(mainCardBefore: card, secondaryCardBefore: cause, stackableCause: stackSrc, player: Owner);
             bool wasKnown = card.KnownToEnemy;
             bool successful = base.Discard(card, stackSrc);
             if (successful)

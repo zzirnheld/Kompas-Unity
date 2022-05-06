@@ -237,13 +237,13 @@ namespace KompasServer.GameCore
             {
                 var toDraw = controller.deckCtrl.Topdeck;
                 if (toDraw == null) break;
-                var eachDrawContext = new ActivationContext(mainCardBefore: toDraw, stackable: stackSrc, player: controller);
+                var eachDrawContext = new ActivationContext(mainCardBefore: toDraw, stackableCause: stackSrc, player: controller);
                 toDraw.Rehand(controller, stackSrc);
                 eachDrawContext.CacheCardInfoAfter();
                 EffectsController.TriggerForCondition(Trigger.EachDraw, eachDrawContext);
                 drawn.Add(toDraw);
             }
-            var context = new ActivationContext(stackable: stackSrc, player: controller, x: cardsDrawn);
+            var context = new ActivationContext(stackableCause: stackSrc, player: controller, x: cardsDrawn);
             EffectsController.TriggerForCondition(Trigger.DrawX, context);
             return drawn;
         }
@@ -252,14 +252,14 @@ namespace KompasServer.GameCore
 
         /// <param name="manual">Whether a player instigated the attack without an effect.</param>
         /// <returns>The Attack object created by starting this attack</returns>
-        public ServerAttack Attack(GameCard attacker, GameCard defender, ServerPlayer instigator, bool manual = false)
+        public ServerAttack Attack(GameCard attacker, GameCard defender, ServerPlayer instigator, IStackable stackSrc, bool manual = false)
         {
             Debug.Log($"{attacker.CardName} attacking {defender.CardName} at {defender.Position}");
             //push the attack to the stack, then check if any player wants to respond before resolving it
             var attack = new ServerAttack(this, instigator, attacker, defender);
             EffectsController.PushToStack(attack, new ActivationContext());
             //check for triggers related to the attack (if this were in the constructor, the triggers would go on the stack under the attack
-            attack.Declare();
+            attack.Declare(stackSrc);
             if (manual) attacker.SetAttacksThisTurn(attacker.attacksThisTurn + 1);
             return attack;
         }
