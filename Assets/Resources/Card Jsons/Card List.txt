@@ -355,29 +355,29 @@ runar/Thurisaz
 runar/Tiwaz
 runar/Uruz
 runar/Wynn
-shapers/Dreamhook
-shapers/Dreammist
-shapers/Dreamscape
+shapers/support/Dreamhook
+shapers/support/Dreammist
+shapers/support/Dreamscape
 Dreamspace
-shapers/Evasive Ectoplasm
-shapers/Grudges Unforgotten
-shapers/He Who Knew Runes
-shapers/Maya, Mistress of Reality
-shapers/Outpoured Anger
-shapers/Pseudopod
-shapers/Send Home
-shapers/Shape Unbound
-shapers/Twin Spirit
-shapers/Unstable Dreaming
-shapers/Untethered Spirit
-shapers/Who Searched For Grudges
-shapers/Whose Anger Draws Fear
-shapers/Whose Past Disintegrates
-shapers/Riali, Master of Irrealities
-shapers/Trailing Dreammist
-shapers/Tethered Dreammist
-shapers/Infolding Hopelessness
-shapers/Kindred Spirit
+shapers/shapers/Evasive Ectoplasm
+shapers/shapers/Grudges Unforgotten
+shapers/shapers/He Who Knew Runes
+shapers/shapers/Maya, Mistress of Reality
+shapers/shapers/Outpoured Anger
+shapers/support/Pseudopod
+shapers/support/Send Home
+shapers/support/Shape Unbound
+shapers/shapers/Twin Spirit
+shapers/support/Unstable Dreaming
+shapers/support/Untethered Spirit
+shapers/shapers/Who Searched For Grudges
+shapers/shapers/Whose Anger Draws Fear
+shapers/shapers/Whose Past Disintegrates
+shapers/shapers/Riali, Master of Irrealities
+shapers/shapers/Trailing Dreammist
+shapers/shapers/Tethered Dreammist
+shapers/shapers/Infolding Hopelessness
+shapersshapers//Kindred Spirit
 Shatter the Warranty
 speed_demons/Coach Speed
 speed_demons/Mr Power Vacuum
