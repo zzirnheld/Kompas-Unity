@@ -6,5 +6,7 @@ namespace KompasCore.Effects
     {
         Player Controller { get; }
         GameCard Source { get; }
+
+        GameCard GetCause (GameCard withRespectTo);
     }
 }

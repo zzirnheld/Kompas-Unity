@@ -18,7 +18,7 @@ namespace KompasServer.GameCore
 
         protected override bool AddToDeck(GameCard card, IStackable stackSrc = null)
         {
-            var context = new ActivationContext(mainCardBefore: card, stackable: stackSrc, player: Owner);
+            var context = new ActivationContext(mainCardBefore: card, stackableCause: stackSrc, player: Owner);
             bool successfulAdd = base.AddToDeck(card);
             if (successfulAdd)
             {
@@ -31,7 +31,7 @@ namespace KompasServer.GameCore
 
         public override bool PushBottomdeck(GameCard card, IStackable stackSrc = null)
         {
-            var context = new ActivationContext(mainCardBefore: card, stackable: stackSrc, player: Owner);
+            var context = new ActivationContext(mainCardBefore: card, stackableCause: stackSrc, player: Owner);
             bool wasKnown = card.KnownToEnemy;
             bool successful = base.PushBottomdeck(card, stackSrc);
             if (successful)
@@ -45,7 +45,7 @@ namespace KompasServer.GameCore
 
         public override bool PushTopdeck(GameCard card, IStackable stackSrc = null)
         {
-            var context = new ActivationContext(mainCardBefore: card, stackable: stackSrc, player: Owner);
+            var context = new ActivationContext(mainCardBefore: card, stackableCause: stackSrc, player: Owner);
             bool wasKnown = card.KnownToEnemy;
             bool successful = base.PushTopdeck(card, stackSrc);
             if (successful)
@@ -59,7 +59,7 @@ namespace KompasServer.GameCore
 
         public override bool ShuffleIn(GameCard card, IStackable stackSrc = null)
         {
-            var context = new ActivationContext(mainCardBefore: card, stackable: stackSrc, player: Owner);
+            var context = new ActivationContext(mainCardBefore: card, stackableCause: stackSrc, player: Owner);
             bool wasKnown = card.KnownToEnemy;
             bool successful = base.ShuffleIn(card, stackSrc);
             if (successful)

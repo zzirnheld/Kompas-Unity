@@ -6,12 +6,61 @@ namespace KompasCore.Effects
     public class ActivationContext
     {
         // Information about the relevant triggering situation
+        /// <summary>
+        /// Information about the primary card involved in the triggering event,
+        /// stashed before the triggering event
+        /// </summary>
         public readonly GameCardInfo mainCardInfoBefore;
+
+        /// <summary>
+        /// Information about the secondary card involved in the triggering event,
+        /// stashed before the triggering event.
+        /// The secondary card is often something like "the other card in the attack"
+        /// </summary>
         public readonly GameCardInfo secondaryCardInfoBefore;
-        public readonly IStackable stackable;
+
+        /// <summary>
+        /// The card that caused the triggering event.<br/>
+        /// - If an event happened because of an effect, this is the effect's source.<br/>
+        /// - If an event is to do with how an attack proceeds, 
+        ///  like the fight starting or ending, or combat damage being dealt,
+        ///  the attacker is considered to have caused the attack.<br/>
+        /// - If an event happened because of an attack, 
+        ///  excluding any triggers directly related to the attack itself,
+        ///  this is the other card involved in the attack.
+        ///  (Think a character dying during a fight. That was caused by the other card.)
+        /// </summary>
+        public readonly GameCardInfo cardCause;
+
+        /// <summary>
+        /// The object on the stack that caused this event to occur.
+        /// For example, if an effect caused an attack to start, this would be the effect.
+        /// </summary>
+        public readonly IStackable stackableCause;
+
+        /// <summary>
+        /// The object on the stack that this trigger describes an event related to.
+        /// For example, if this is an "Attack" event, the stackableEvent is that attack.
+        /// </summary>
+        public readonly IStackable stackableEvent;
+
         public readonly Player player;
         public readonly int? x;
         public readonly Space space;
+
+
+        /// <summary>
+        /// The information for the main triggering card,
+        /// stashed immediately after the triggering event occurred.
+        /// </summary>
+        public GameCardInfo MainCardInfoAfter { get; private set; }
+
+        /// <summary>
+        /// The information for the secondary triggering card,
+        /// stashed immediately after the triggering event occurred.
+        /// The secondary card could be the defender in an "Attack" trigger, etc.
+        /// </summary>
+        public GameCardInfo SecondaryCardInfoAfter { get; private set; }
 
         private readonly string asString;
 
@@ -28,7 +77,14 @@ namespace KompasCore.Effects
         {
             get
             {
-                var copy = new ActivationContext(mainCardInfoBefore, MainCardInfoAfter, stackable, player, x, space);
+                var copy = new ActivationContext(mainCardInfoBefore: mainCardInfoBefore, 
+                    secondaryCardInfoBefore: secondaryCardInfoBefore, 
+                    cardCause: cardCause, 
+                    stackableCause: stackableCause,
+                    stackableEvent: stackableEvent,
+                    player: player, 
+                    x: x, 
+                    space: space);
                 copy.SetResumeInfo(CardTargets, SpaceTargets, StackableTargets,
                     DelayedCardTarget, DelayedSpaceTarget, DelayedStackableTarget,
                     StartIndex);
@@ -36,27 +92,20 @@ namespace KompasCore.Effects
             }
         }
 
-        /// <summary>
-        /// The information for the main triggering card immediately after the triggering event occurred.
-        /// </summary>
-        public GameCardInfo MainCardInfoAfter { get; private set; }
-
-        /// <summary>
-        /// The information for the secondary triggering card immediately after the triggering event occurred.
-        /// The secondary card could be the defender in an attacks trigger, etc.
-        /// </summary>
-        public GameCardInfo SecondaryCardInfoAfter { get; private set; }
-
         private ActivationContext(GameCardInfo mainCardInfoBefore,
                                   GameCardInfo secondaryCardInfoBefore,
-                                  IStackable stackable,
+                                  GameCardInfo cardCause,
+                                  IStackable stackableCause,
+                                  IStackable stackableEvent,
                                   Player player,
                                   int? x,
                                   Space space)
         {
             this.mainCardInfoBefore = mainCardInfoBefore;
             this.secondaryCardInfoBefore = secondaryCardInfoBefore;
-            this.stackable = stackable;
+            this.cardCause = cardCause;
+            this.stackableCause = stackableCause;
+            this.stackableEvent = stackableEvent;
             this.player = player;
             this.x = x;
             this.space = space;
@@ -64,7 +113,9 @@ namespace KompasCore.Effects
             var sb = new System.Text.StringBuilder();
 
             if (mainCardInfoBefore != null) sb.Append($"Card: {mainCardInfoBefore.CardName}, ");
-            if (stackable != null) sb.Append($"Stackable {stackable}, ");
+            if (secondaryCardInfoBefore != null) sb.Append($"Secondary Card: {secondaryCardInfoBefore.CardName}, ");
+            if (cardCause != null) sb.Append($"Card cause: {cardCause.CardName}, ");
+            if (stackableCause != null) sb.Append($"Stackable Cause: {stackableCause}, ");
             if (player != null) sb.Append($"Triggerer: {player.index}, ");
             if (x != null) sb.Append($"X: {x}, ");
             if (space != null) sb.Append($"Space: {space}, ");
@@ -76,16 +127,22 @@ namespace KompasCore.Effects
 
         public ActivationContext(GameCard mainCardBefore = null,
                                  GameCard secondaryCardBefore = null,
-                                 IStackable stackable = null,
+                                 GameCard eventCauseOverride = null,
+                                 IStackable stackableCause = null,
+                                 IStackable stackableEvent = null,
                                  Player player = null,
                                  int? x = null,
                                  Space space = null)
-            : this(GameCardInfo.CardInfoOf(mainCardBefore),
-                   GameCardInfo.CardInfoOf(secondaryCardBefore),
-                   stackable,
-                   player,
-                   x,
-                   space?.Copy)
+            : this(mainCardInfoBefore: GameCardInfo.CardInfoOf(mainCardBefore),
+                   secondaryCardInfoBefore: GameCardInfo.CardInfoOf(secondaryCardBefore),
+                   //Set the event cause either as the override if one is provided,
+                   //or as the stackable's cause if not.
+                   cardCause: GameCardInfo.CardInfoOf(eventCauseOverride ?? stackableCause?.GetCause(mainCardBefore?.Card)),
+                   stackableCause: stackableCause,
+                   stackableEvent: stackableEvent,
+                   player: player,
+                   x: x,
+                   space: space?.Copy)
         { }
 
         ~ActivationContext()

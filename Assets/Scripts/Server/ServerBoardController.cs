@@ -18,7 +18,7 @@ namespace KompasServer.GameCore
 
         public override void Play(GameCard toPlay, Space to, Player controller, IStackable stackSrc = null)
         {
-            var context = new ActivationContext(mainCardBefore: toPlay, stackable: stackSrc, player: controller, space: to);
+            var context = new ActivationContext(mainCardBefore: toPlay, stackableCause: stackSrc, player: controller, space: to);
             bool wasKnown = toPlay.KnownToEnemy;
             base.Play(toPlay, to, controller);
             context.CacheCardInfoAfter();
@@ -40,26 +40,26 @@ namespace KompasServer.GameCore
             var cardsMoverLeftBehind = CardsAndAugsWhere(c => c != null && card.CardInAOE(c) && !card.CardInAOE(c, to));
 
             //Add contexts for 
-            moveContexts.Add(new ActivationContext(mainCardBefore: card, stackable: stackSrc, space: to,
+            moveContexts.Add(new ActivationContext(mainCardBefore: card, stackableCause: stackSrc, space: to,
                 player: player, x: distance));
             //Cards that from card is no longer in the AOE of
             leaveContexts.AddRange(cardsMoverLeft.Select(c =>
-                new ActivationContext(mainCardBefore: card, secondaryCardBefore: c, stackable: stackSrc, player: player)));
+                new ActivationContext(mainCardBefore: card, secondaryCardBefore: c, stackableCause: stackSrc, player: player)));
             //Cards that from card no longer has in its aoe
             leaveContexts.AddRange(cardsMoverLeftBehind.Select(c =>
-                new ActivationContext(mainCardBefore: c, secondaryCardBefore: card, stackable: stackSrc, player: player)));
+                new ActivationContext(mainCardBefore: c, secondaryCardBefore: card, stackableCause: stackSrc, player: player)));
             //trigger for first card's augments
             foreach (var aug in card.Augments)
             {
                 //Add contexts for 
-                moveContexts.Add(new ActivationContext(mainCardBefore: aug, stackable: stackSrc, space: to,
+                moveContexts.Add(new ActivationContext(mainCardBefore: aug, stackableCause: stackSrc, space: to,
                     player: player, x: distance));
                 //Cards that from aug is no longer in the AOE of
                 leaveContexts.AddRange(cardsMoverLeft.Select(c =>
-                    new ActivationContext(mainCardBefore: aug, secondaryCardBefore: c, stackable: stackSrc, player: player)));
+                    new ActivationContext(mainCardBefore: aug, secondaryCardBefore: c, stackableCause: stackSrc, player: player)));
                 //Cards that from aug no longer has in its aoe
                 leaveContexts.AddRange(cardsMoverLeftBehind.Select(c =>
-                    new ActivationContext(mainCardBefore: c, secondaryCardBefore: aug, stackable: stackSrc, player: player)));
+                    new ActivationContext(mainCardBefore: c, secondaryCardBefore: aug, stackableCause: stackSrc, player: player)));
             }
             return (moveContexts, leaveContexts);
         }

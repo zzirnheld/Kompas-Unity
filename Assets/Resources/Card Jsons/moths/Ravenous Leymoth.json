@@ -9,7 +9,7 @@
 				"triggerCondition": "Attack",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card is Main Card",
+						"This Card in Play",
 						"Main Card Fits Restriction Before",
                         "Secondary Card Fits Restriction Before"
 					],
@@ -45,7 +45,8 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetDefenderSubeffect, Assembly-CSharp"
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp",
+					"secondary":true
 				},
 				{
 					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
@@ -59,7 +60,7 @@
 					"sMultiplier": -1
 				},
 				{
-					"$type": "KompasServer.Effects.TargetAttackerSubeffect, Assembly-CSharp"
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
