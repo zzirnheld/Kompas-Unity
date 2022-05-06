@@ -25,3 +25,4 @@ Spores
 Vessel Echo
 Vessel Cost Up
 Stealth
+Evasive

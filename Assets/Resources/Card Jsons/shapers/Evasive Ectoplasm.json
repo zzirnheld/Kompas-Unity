@@ -1,46 +1,12 @@
 {
 	"cardType": 67,
 	"cardName": "Evasive Ectoplasm",
-	"effText": "Shape.\nThe first time each round I fight a W X character, give them -X W for that fight.",
+	"effText": "Shape. Evasive.",
 	"effects": [
-		{
-			"triggerData": {
-				"triggerCondition": "Battle Start",
-				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card",
-						"Max Per Round"
-					]
-				}
-			},
-			"subeffects": [
-				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp",
-					"secondary":true
-				},
-				{
-					"$type": "KompasServer.Effects.SetXByTriggeringCardValueSubeffect, Assembly-CSharp",
-					"secondary":true,
-					"cardValue": {
-						"value": "W"
-					},
-					"xMultiplier": 1
-				},
-				{
-					"$type": "KompasServer.Effects.TemporaryCardStatChangeSubeffect, Assembly-CSharp",
-					"wMultiplier": -1,
-					"endCondition": "Battle End",
-					"triggerRestriction": {
-						"triggerRestrictions": [
-							"Contexts Stackables Match"
-						]
-					}
-				}
-			]
-		}
 	],
 	"keywords": [
-		"Shape"
+		"Shape",
+		"Evasive"
 	],
 	"n": 1,
 	"e": 2,
