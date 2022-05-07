@@ -4,27 +4,27 @@ using UnityEngine;
 
 namespace KompasCore.Effects.Identities
 {
-    public interface ActivationContextSpaceIdentity
+    public interface IActivationContextSpaceIdentity
     {
         public Space SpaceFrom(ActivationContext context);
     }
 
-    public class MainCardBeforeSpaceIdentity : ActivationContextSpaceIdentity
+    public class MainCardBeforeSpaceIdentity : IActivationContextSpaceIdentity
     {
         public Space SpaceFrom(ActivationContext context) => context.mainCardInfoBefore.Position;
     }
 
-    public class ContextSpaceSpaceIdentity : ActivationContextSpaceIdentity
+    public class ContextSpaceSpaceIdentity : IActivationContextSpaceIdentity
     {
         public Space SpaceFrom(ActivationContext context) => context.space;
     }
 
-    public class TwoSpaceIdentityTriggerSpaceIdentity : ActivationContextSpaceIdentity
+    public class TwoSpaceIdentityTriggerSpaceIdentity : IActivationContextSpaceIdentity
     {
-        public ActivationContextSpaceIdentity firstSpaceIdentity;
-        public ActivationContextSpaceIdentity secondSpaceIdentity;
+        public IActivationContextSpaceIdentity firstSpaceIdentity;
+        public IActivationContextSpaceIdentity secondSpaceIdentity;
 
-        public TwoSpaceIdentity compositionSpaceIdentity;
+        public ITwoSpaceIdentity compositionSpaceIdentity;
 
         public Space SpaceFrom(ActivationContext context)
         {

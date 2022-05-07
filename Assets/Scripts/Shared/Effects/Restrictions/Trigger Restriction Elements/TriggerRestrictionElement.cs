@@ -1,3 +1,4 @@
+using KompasCore.Cards;
 using KompasCore.Effects.Identities;
 using System;
 
@@ -5,6 +6,8 @@ namespace KompasCore.Effects.Restrictions
 {
     public abstract class TriggerRestrictionElement
     {
+        public bool primaryContext;
+
         protected TriggerRestriction Parent { get; private set; }
 
         private bool initialized = false;
@@ -31,8 +34,7 @@ namespace KompasCore.Effects.Restrictions
     public class SpaceTriggerRestrictionElement : TriggerRestrictionElement
     {
         public SpaceRestriction spaceRestriction;
-        public ActivationContextSpaceIdentity spaceIdentity;
-        public bool primaryContext;
+        public IActivationContextSpaceIdentity spaceIdentity;
 
         public override void Initialize(TriggerRestriction parent)
         {
@@ -44,6 +46,20 @@ namespace KompasCore.Effects.Restrictions
             ActivationContext contextToConsider = primaryContext ? context : secondaryContext;
             Space space = spaceIdentity.SpaceFrom(contextToConsider);
             return spaceRestriction.IsValidSpace(space, context);
+        }
+    }
+
+    public class CardTriggerRestrictionElement : TriggerRestrictionElement
+    {
+        public CardRestriction cardRestriction;
+        public IActivationContextCardIdentity activationContextCardIdentity;
+
+
+        protected override bool IsValidContextLogic(ActivationContext context, ActivationContext secondaryContext)
+        {
+            ActivationContext contextToConsider = primaryContext ? context : secondaryContext;
+            GameCard card = activationContextCardIdentity.GameCardFromContext(contextToConsider);
+            return cardRestriction.IsValidCard(card, contextToConsider);
         }
     }
 }
