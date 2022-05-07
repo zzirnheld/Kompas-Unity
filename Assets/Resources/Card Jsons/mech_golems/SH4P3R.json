@@ -1,0 +1,77 @@
+{
+	"cardType": 67,
+	"cardName": "PH453R",
+	"effText": "Nimble Golem.\nWhen I move directly across a card, destroy it and give me -1 E.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card",
+						"X Fits Restriction"
+					],
+					"xRestriction": {
+						"numberRestrictions": [
+							">=Constant"
+						],
+						"constant": 3
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "An oviparous mamal? ORRY THE OVIPAROUS MAMMAL?",
+						"cardRestrictions": [
+							"Friendly",
+							"Hand"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"wModifier": 3
+				}
+			]
+		}
+    ],
+	"MovementRestriction": {
+		"normalRestrictionsFromJson": [
+			"Default",
+			"Activated",
+			"Can Move Enough Through Empty or Restricted Spaces"
+		],
+		"normalRestrictionsToIgnore": [
+			"Can Move Enough Spaces"
+		],
+		"throughSpacesRestriction": {
+			"spaceRestrictions": []
+		}
+	},
+	"AttackRestriction": {
+		"attackRestrictions": [
+			"Default",
+			"This is Activated"
+		]
+	},
+	"keywords": [
+		"Evasive"
+	],
+	"n": 2,
+	"e": 4,
+	"s": 7,
+	"w": 4,
+	"subtypes": [
+		"Mech",
+		"Golem"
+	],
+	"subtypeText": "Mech Golem"
+}

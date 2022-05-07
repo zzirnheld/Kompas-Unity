@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
-	"cardName": "54MUR41",
-	"effText": "Nimble Speedemon Golem.",
+	"cardName": "PH453R",
+	"effText": "Nimble Evasive Golem.",
 	"effects": [],
 	"MovementRestriction": {
 		"normalRestrictionsFromJson": [
@@ -23,12 +23,12 @@
 		]
 	},
 	"keywords": [
-		"Speedemon"
+		"Evasive"
 	],
-	"n": 2,
-	"e": 4,
+	"n": 3,
+	"e": 3,
 	"s": 7,
-	"w": 7,
+	"w": 3,
 	"subtypes": [
 		"Mech",
 		"Golem"

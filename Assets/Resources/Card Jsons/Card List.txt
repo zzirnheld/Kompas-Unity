@@ -16,6 +16,7 @@ generic/Draining Shield
 generic/Last-Ditch Blast
 generic/Explosive Armor
 generic/Proximity Debinder
+generic/Yank
 aquatic/Big Tuna
 aquatic/Changing Tides
 aquatic/Fishing

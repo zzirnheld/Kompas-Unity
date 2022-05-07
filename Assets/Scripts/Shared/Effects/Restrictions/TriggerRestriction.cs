@@ -38,6 +38,7 @@ namespace KompasCore.Effects
         private const string CardExistsNow = "Card Exists Now";
 
         private const string SpaceFitsRestriction = "Space Fits Restriction";
+
         private const string XFitsRestriction = "X Fits Restriction";
         private const string StackableSourceIsMainCard = "Stackable Source is Main Card";
         private const string StackableSourceNotThisEffect = "Stackable Source isn't This Effect";
@@ -48,7 +49,7 @@ namespace KompasCore.Effects
 
         private const string NoStackable = "No Stackable"; //Aka "Normally"
         private const string NotFromEffect = "Not From Effect"; //But can be from attack
-        public const string FromAttack = "From Attack";
+        private const string FromAttack = "From Attack";
 
         private const string ContextsStackablesMatch = "Contexts Stackables Match";
         private const string StackableIsThisEffect = "Stackable is This Effect";
