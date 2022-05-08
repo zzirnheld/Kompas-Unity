@@ -22,10 +22,12 @@ namespace KompasCore.Effects.Restrictions
         public bool IsValidContext(ActivationContext context, ActivationContext secondaryContext = default)
         {
             if (!initialized) throw new NotImplementedException($"You failed to initialize a new TriggerRestrictionElement of type {this.GetType()}");
-            return IsValidContextLogic(context, secondaryContext);
+
+            ActivationContext contextToConsider = primaryContext ? context : secondaryContext;
+            return IsValidContextLogic(contextToConsider);
         }
 
-        protected abstract bool IsValidContextLogic(ActivationContext context, ActivationContext secondaryContext);
+        protected abstract bool IsValidContextLogic(ActivationContext context);
     }
 
     /// <summary>
@@ -41,10 +43,9 @@ namespace KompasCore.Effects.Restrictions
             base.Initialize(parent);
         }
 
-        protected override bool IsValidContextLogic(ActivationContext context, ActivationContext secondaryContext)
+        protected override bool IsValidContextLogic(ActivationContext context)
         {
-            ActivationContext contextToConsider = primaryContext ? context : secondaryContext;
-            Space space = spaceIdentity.SpaceFrom(contextToConsider);
+            Space space = spaceIdentity.SpaceFrom(context);
             return spaceRestriction.IsValidSpace(space, context);
         }
     }
@@ -52,14 +53,12 @@ namespace KompasCore.Effects.Restrictions
     public class CardTriggerRestrictionElement : TriggerRestrictionElement
     {
         public CardRestriction cardRestriction;
-        public IActivationContextCardIdentity activationContextCardIdentity;
+        public ActivationContextCardIdentity activationContextCardIdentity;
 
-
-        protected override bool IsValidContextLogic(ActivationContext context, ActivationContext secondaryContext)
+        protected override bool IsValidContextLogic(ActivationContext context)
         {
-            ActivationContext contextToConsider = primaryContext ? context : secondaryContext;
-            GameCard card = activationContextCardIdentity.GameCardFromContext(contextToConsider);
-            return cardRestriction.IsValidCard(card, contextToConsider);
+            GameCard card = activationContextCardIdentity.GameCardFromContext(context);
+            return cardRestriction.IsValidCard(card, context);
         }
     }
 }

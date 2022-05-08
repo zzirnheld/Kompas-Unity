@@ -7,16 +7,10 @@
 			"triggerData": {
 				"triggerCondition": "Move",
 				"triggerRestriction": {
-					"triggerRestrictions": [
+					"triggerRestrictionElements": [
 						"This Card is Main Card",
 						"X Fits Restriction"
-					],
-					"xRestriction": {
-						"numberRestrictions": [
-							">=Constant"
-						],
-						"constant": 3
-					}
+					]
 				}
 			},
 			"subeffects": [

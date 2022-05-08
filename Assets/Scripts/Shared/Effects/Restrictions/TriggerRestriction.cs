@@ -1,4 +1,5 @@
 ﻿using KompasCore.Cards;
+using KompasCore.Effects.Restrictions;
 using KompasCore.GameCore;
 using System;
 using System.Collections.Generic;
@@ -91,6 +92,8 @@ namespace KompasCore.Effects
         public int maxPerRound = 1;
         public int maxPerStack = 1;
         public int distance = 1;
+
+        public TriggerRestrictionElement[] triggerRestrictionElements = { };
 
         public GameCard ThisCard { get; private set; }
 
@@ -203,7 +206,8 @@ namespace KompasCore.Effects
 
             try
             {
-                return triggerRestrictions.All(r => IsRestrictionValidDebug(r, context, secondary: secondary));
+                return triggerRestrictions.All(r => IsRestrictionValidDebug(r, context, secondary: secondary))
+                    && triggerRestrictionElements.All(tre => tre.IsValidContext(context, secondaryContext: secondary));
             }
             catch (NullReferenceException nullref)
             {
