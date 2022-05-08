@@ -7,6 +7,7 @@ generic/Spellbombsetter
 generic/Lifetide
 generic/Warlock
 generic/Juan Puntsch-Mann
+generic/Sapping Stone
 generic/Price of Fame
 generic/Crack Geode
 generic/Collective Dispel
@@ -268,6 +269,30 @@ music/Backup Track
 music/Hard Rock
 None Defy the Lines
 Notcropoten
+orcs/Alkorath'Kil, Fury in the Blood
+orcs/Bind the Blood
+orcs/Bind the Shadows
+orcs/Clever Decoy
+orcs/Escape Route
+orcs/Glimmer of Hope
+orcs/Malgonir'Kil, Secrets in the Shadows
+orcs/Nothing to Hide
+orcs/Raven Scout
+orcs/Roth Agent
+orcs/Roth Assassin
+orcs/Roth Avenger
+orcs/Roth Guerilla
+orcs/Roth Warrior
+orcs/Roth'Drek Champion
+orcs/Roth'Drek Crusader
+orcs/Roth'Drek Phantom
+orcs/Roth'Ka Inquisitor
+orcs/Roth'Ka Spymaster
+orcs/Roth'Kil Blood Acolyte
+orcs/Roth'Kil Shadow Acolyte
+orcs/Spiked Barricade
+orcs/Unassuming Bush
+orcs/Misplaced Supplies
 pulsars/Accelerating Pulsar
 pulsars/Boldening Pulsar
 pulsars/Cannot Be Created Nor Destroyed

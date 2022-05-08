@@ -6,7 +6,7 @@
 		"triggerCondition":"Turn Start",
 		"triggerRestriction":{
 			"triggerRestrictions":["Friendly Turn","This Card Fits Restriction Now","Card Exists Now"],
-			"cardRestriction":{
+			"selfRestriction":{
 				"cardRestrictions":["Discard"]
 			},
 			"existsRestriction":

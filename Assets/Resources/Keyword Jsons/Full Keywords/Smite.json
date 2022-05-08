@@ -1,0 +1,60 @@
+{
+	"blurb": "Smite",
+	"triggerData": {
+		"blurb": "Smite",
+		"triggerCondition": "Attack",
+		"triggerRestriction": {
+			"triggerRestrictions": [
+				"This Card is Main Card"
+			]
+		}
+	},
+	"subeffects": [
+		{
+			"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+			"listRestriction": {
+				"listRestrictions": [
+					"Min Can Choose"
+				],
+				"minCanChoose": 0
+			},
+			"cardRestriction": {
+				"blurb": "Burn cards for smite",
+				"cardRestrictions": [ "Friendly", "Hand" ]
+			}
+		},
+		{
+			"$type": "KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+			"whatToCount": "Cards Fitting Restriction",
+			"cardRestriction": {
+				"cardRestrictions": [
+					"Already Target"
+				]
+			},
+			"xMultiplier": 1
+		},
+		{
+			"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+		},
+		{
+			"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+			"delete": true,
+			"jumpIndices": [
+				2
+			]
+		},
+		{
+			"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+		},
+		{
+			"$type": "KompasServer.Effects.TemporaryCardStatChangeSubeffect, Assembly-CSharp",
+			"wMultiplier": 2,
+			"endCondition": "Battle End",
+			"triggerRestriction": {
+				"triggerRestriction": [
+					"Contexts Stackables Match"
+				]
+			}
+		}
+	]
+}

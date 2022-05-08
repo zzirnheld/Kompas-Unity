@@ -1,0 +1,588 @@
+using System.Collections;
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+
+public struct MeshData
+{
+    public Vector3[] Verts;
+    public int[] Tris;
+}
+
+public enum CostType
+{
+    S,
+    A,
+    C
+}
+
+public class VoxelCard : MonoBehaviour
+{
+    public static float PI4 = Mathf.PI / 4.0f;
+
+    public bool RebuildOnChange;
+    [Range(0.001f, 0.1f)]
+    public float FrameThickness;
+    [Range(0.1f, 0.7f)]
+    public float TypePlacardWidth;
+    public bool HasN, HasE, HasSAC, HasW, HasR, HasD;
+
+    private Mesh CardMesh;
+    
+    public void OnInspectorChange()
+    {
+        if (RebuildOnChange)
+        {
+            Generate();
+        }
+    }
+
+    public void Generate()
+    {
+        MeshData newMesh = BuildMesh();
+        ApplyMesh(newMesh);
+        //Texture2D newTexture = BuildTexture();            These haven't been implemented yet
+        //ApplyTexture(newTexture);
+        //List<TextMeshPro> textBoxes = BuildTextBoxes();
+        //ApplyText(textBoxes);
+    }
+
+    private MeshData BuildMesh()
+    {
+        List<Vector3> verts = new List<Vector3>();
+        List<int> tris = new List<int>();
+        void addTri(int v1, int v2, int v3) => tris.AddRange(new List<int> { v1, v2, v3 });
+        Vector3 findInnerAngle(Vector3 center, Vector3 side1, Vector3 side2)
+        {
+            Vector3 avg = ((side1 - center).normalized + (side2 - center).normalized) * 0.5f;
+            return avg.normalized;
+        }
+
+        //Build card base
+
+        //Build card base verts counter-clockwise around origin from (1, 0, 0)
+        for(int i = 0; i < 8; i++)
+        {
+            verts.Add(new Vector3(Mathf.Cos(PI4 * i), FrameThickness / 12.0f, Mathf.Sin(PI4 * i))); //front
+            verts.Add(new Vector3(Mathf.Cos(PI4 * i), -FrameThickness / 12.0f, Mathf.Sin(PI4 * i))); //back
+        }
+
+        //Build card base edge tris counter-clockwise around origin from right, front and back
+        for(int i = 0; i < 8; i += 2)
+        {
+            int v1 = i;
+            int v2 = (i + 7) % 8;
+            int v3 = (i + 1) % 8;
+            addTri(v1 * 2, v2 * 2, v3 * 2); //front face
+            addTri(v1 * 2 + 1, v3 * 2 + 1, v2 * 2 + 1); //back face
+        }
+
+        //Build card base center tris, front and back
+        addTri(14, 06, 02);    //front UR
+        addTri(06, 14, 10);    //front LL
+        addTri(15, 03, 07);    //back UR
+        addTri(07, 11, 15);    //back LL
+
+        //Build 3/4 of outer frame. Current number of verts is 16.
+        int vI = 16;
+        //Build modifier vectors, clockwise around origin from (-FrameThickness, 0, 0)
+        List<Vector2> modifiers = new List<Vector2>();
+        for(int i = 4; i <= 10; i++)
+        {
+            modifiers.Add(new Vector2(Mathf.Cos(PI4 * i), Mathf.Sin(PI4 * i)) * FrameThickness);
+        }
+
+        //Build 3/4 outer frame vertices counter-clockwise around origin from (1, 0, 0)
+        for(int i = 0; i < 8; i++)
+        {
+            foreach (Vector3 mod in modifiers)
+            {
+                float modX = 1.0f + mod.x;
+                verts.Add(new Vector3(Mathf.Cos(PI4 * i) * modX, mod.y, Mathf.Sin(PI4 * i) * modX));
+            }
+        }
+
+        //Build 3/4 outer frame tris. hope you've been following along cause I don't feel like explaining the order.
+        for(int i = 0; i < 8; i++)
+        {
+            for(int j = 0; j < modifiers.Count - 1; j++)
+            {
+                int v1 = vI + modifiers.Count * i + j;  //sorry the vI and v1 are a little confusing
+                int v2 = v1 + 1;
+                int v3 = vI + modifiers.Count * ((i + 1) % 8) + j;
+                int v4 = v3 + 1;
+
+                addTri(v1, v2, v3);
+                addTri(v2, v4, v3);
+            }
+        }
+
+        //Build name placard. Current number of verts is <math>, so cheat
+        vI = verts.Count;
+        float height = FrameThickness / 3.0f;
+
+        //We want six verts
+        //More cheating
+        float upperX = Mathf.Lerp(verts[2].x, verts[4].x, 0.25f);
+        float upperZ = Mathf.Lerp(verts[2].z, verts[4].z, 0.25f);
+        float lowerX = Mathf.Lerp(verts[0].x, verts[2].x, 0.75f);
+        float lowerZ = Mathf.Lerp(verts[0].z, verts[2].z, 0.75f);
+
+        //Right side, bottom to top
+        verts.Add(new Vector3( lowerX, height, lowerZ));
+        verts.Add(new Vector3( verts[2].x, height, verts[2].z));
+        verts.Add(new Vector3( upperX, height, upperZ));
+
+        //Left side, bottom to top
+        verts.Add(new Vector3( -lowerX, height, lowerZ));
+        verts.Add(new Vector3( -verts[2].x, height, verts[2].z));
+        verts.Add(new Vector3( -upperX, height, upperZ));
+
+        //Friendly reminder, Unity winds triangles clockwise
+        addTri(vI + 0, vI + 3, vI + 1);
+        addTri(vI + 1, vI + 3, vI + 4);
+        addTri(vI + 1, vI + 4, vI + 2);
+        addTri(vI + 2, vI + 4, vI + 5);
+
+        //Consistency is for nerds. Type placard
+        vI += 6;
+        height /= 2.0f;
+
+        //Just four verts this time
+        upperX = TypePlacardWidth;
+        lowerX = TypePlacardWidth - 0.1f;
+        lowerZ = Mathf.Lerp(verts[0].z, verts[2].z, 0.5f);
+
+        //Right side, bottom to top
+        verts.Add(new Vector3(lowerX, height, lowerZ));
+        verts.Add(new Vector3(upperX, height, verts[2].z));
+
+        //Left side, same deal
+        verts.Add(new Vector3(-lowerX, height, lowerZ));
+        verts.Add(new Vector3(-upperX, height, verts[2].z));
+
+        //Time to trihard
+        addTri(vI + 0, vI + 2, vI + 1);
+        addTri(vI + 1, vI + 2, vI + 3);
+
+        //NOW FOR THE FUN PART
+        //The non-modular part of the inner frame
+        vI += 4;
+        //let's finish rounding out our modifiers, adding a copy of [0] so we don't have to play mod games
+        for (int i = 11; i <= 12; i++)
+        {
+            modifiers.Add(new Vector2(Mathf.Cos(PI4 * i), Mathf.Sin(PI4 * i)) * FrameThickness);
+        }
+
+        //Calulate edge points for thick part of frames
+        Vector3 edgeInnerThick = new Vector3(Mathf.Lerp(verts[2].x, verts[4].x, 0.75f), 0, Mathf.Lerp(verts[2].z, verts[4].z, 0.25f));
+        Vector3 edgeOuterThick = new Vector3(edgeInnerThick.x, 0, Mathf.Lerp(verts[2].z, verts[4].z, 0.75f));
+        Vector3 edgeThin = new Vector3(Mathf.Lerp(verts[2].x, verts[4].x, 0.25f), 0, edgeInnerThick.z);
+
+        //Starting with the UR corner at y = 0 and working our way up, going counter-clockwise
+        for (int i = 8; i >=6; i--)
+        {
+            int vIlocal = verts.Count;
+            float modX = 1.0f + modifiers[i].x;
+            verts.Add(new Vector3(edgeInnerThick.x, modifiers[i].y, edgeInnerThick.z + modifiers[i].x));
+            verts.Add(new Vector3(edgeThin.x * modX, modifiers[i].y, edgeThin.z * modX));
+            verts.Add(verts[2] * modX + modifiers[i].y * Vector3.up);
+            verts.Add(new Vector3(verts[vIlocal + 1].z, verts[vIlocal + 1].y, verts[vIlocal + 1].x));
+            verts.Add(new Vector3(verts[vIlocal].z, verts[vIlocal].y, verts[vIlocal].x));
+        }
+        //add the last two vertices
+        verts.Add(new Vector3(edgeOuterThick.x, modifiers[6].y, edgeOuterThick.z));
+        verts.Add(new Vector3(edgeOuterThick.z, modifiers[6].y, edgeOuterThick.x));
+
+        //and 22 triangles
+        for(int i = 0; i < 5; i++)
+        {
+            int v1 = vI + i;
+            int v2 = v1 + 1;
+            int v3 = v1 + 5;
+            int v4 = v3 + 1;
+            int v5 = v3 + 5;
+            int v6 = v5 + 1;
+
+            addTri(v1, v3, v2);
+            addTri(v3, v4, v2);
+            addTri(v3, v5, v4);
+            addTri(v5, v6, v4);
+        }
+        addTri(vI + 10, vI + 15, vI + 11);
+        addTri(vI + 14, vI + 13, vI + 16);
+
+        //UL corner inner frame
+        //Some more cheating, but reflected across the x axis. Have to be careful with order so we can reuse our tris
+        for (int i = 0; i < 3; i++) {
+            for (int j = 4; j >= 0; j--)
+            {
+                int vIlocal = vI + 5 * i + j;
+                verts.Add(new Vector3(-verts[vIlocal].x, verts[vIlocal].y, verts[vIlocal].z));
+            }
+        }
+        //Good luck figuring out what's going on, but I promise it works
+        verts.Add(new Vector3(-verts[vI + 16].x, verts[vI + 16].y, verts[vI + 16].z));
+        verts.Add(new Vector3(-verts[vI + 15].x, verts[vI + 15].y, verts[vI + 15].z));
+
+        //Now to copy our tris
+        for (int i = 0; i < 22; i++)
+        {
+            int triI = tris.Count - 66;
+            addTri(tris[triI] + 17, tris[triI + 1] + 17, tris[triI + 2] + 17);
+        }
+
+        //For the lower corners, we're just going to generate the thick parts of the frame for now.
+        //The thin parts will depend on whether the modular stat tabs are present.
+        int copyVI = vI;
+        vI = verts.Count;
+
+        //frame verts
+        for(int i = 0; i < 2; i++)
+        {
+            int copyVIlocal = copyVI + 17 * i;
+
+            for (int j = 0; j < 3; j++)
+            {
+                verts.Add(new Vector3(-verts[copyVIlocal + 0].x, verts[copyVIlocal + 0].y, -verts[copyVIlocal + 0].z));
+                verts.Add(new Vector3(-verts[copyVIlocal + 1].x, verts[copyVIlocal + 1].y, -verts[copyVIlocal + 1].z));
+                verts.Add(new Vector3(-verts[copyVIlocal + 3].x, verts[copyVIlocal + 3].y, -verts[copyVIlocal + 3].z));
+                verts.Add(new Vector3(-verts[copyVIlocal + 4].x, verts[copyVIlocal + 4].y, -verts[copyVIlocal + 4].z));
+
+                copyVIlocal += 5;
+            }
+            verts.Add(new Vector3(-verts[copyVIlocal + 0].x, verts[copyVIlocal + 0].y, -verts[copyVIlocal + 0].z));
+            verts.Add(new Vector3(-verts[copyVIlocal + 1].x, verts[copyVIlocal + 1].y, -verts[copyVIlocal + 1].z));
+        }
+
+        //triangles
+        for(int i = 0; i < 4; i++)
+        {
+            int vIlocal = vI + 2 * i + (i > 1 ? 10 : 0);
+            addTri(vIlocal + 0, vIlocal + 4, vIlocal + 1);
+            addTri(vIlocal + 4, vIlocal + 5, vIlocal + 1);
+            addTri(vIlocal + 4, vIlocal + 8, vIlocal + 5);
+            addTri(vIlocal + 8, vIlocal + 9, vIlocal + 5);
+
+            addTri(vIlocal + 8, i % 2 == 0 ? vIlocal + 12 : vIlocal + 11, vIlocal + 9);
+        }
+
+        //Home stretch - modular stat tabs
+
+        //NESW first
+        bool[] makeTab = { HasN, HasE, HasSAC, HasW };
+
+        for(int i = 0; i < 4; i++)
+        {
+            vI = verts.Count;
+
+            if (makeTab[i])
+            {
+                float tabLowerX = Mathf.Lerp(verts[4].x, verts[2].x, 0.1875f);
+                //make a tab
+                //start with the placard
+                verts.Add(new Vector3(0.0f, FrameThickness / 2.0f, 1.0f));
+                verts.Add(new Vector3(edgeOuterThick.x, FrameThickness / 2.0f, edgeOuterThick.z));
+                verts.Add(new Vector3(-edgeOuterThick.x, FrameThickness / 2.0f, edgeOuterThick.z));
+                verts.Add(new Vector3(tabLowerX, FrameThickness / 2.0f, edgeInnerThick.z));
+                verts.Add(new Vector3(-tabLowerX, FrameThickness / 2.0f, edgeInnerThick.z));
+                verts.Add(new Vector3(0.0f, FrameThickness / 2.0f, verts[2].z));
+
+                addTri(vI + 0, vI + 1, vI + 2);
+                addTri(vI + 1, vI + 5, vI + 2);
+                addTri(vI + 1, vI + 3, vI + 5);
+                addTri(vI + 2, vI + 5, vI + 4);
+
+                //build upper edge, clockwise
+                verts.Add(verts[vI + 0] + Vector3.up * (FrameThickness / 2.0f));
+                verts.Add(verts[vI + 1] + Vector3.up * (FrameThickness / 2.0f));
+                verts.Add(verts[vI + 3] + Vector3.up * (FrameThickness / 2.0f));
+                verts.Add(verts[vI + 5] + Vector3.up * (FrameThickness / 2.0f));
+                verts.Add(verts[vI + 4] + Vector3.up * (FrameThickness / 2.0f));
+                verts.Add(verts[vI + 2] + Vector3.up * (FrameThickness / 2.0f));
+
+                //find inner angles and build verts, triangles
+                Vector3 innerAngle;
+                for (int j = 0; j <= 6; j++)
+                {
+                    int vIlocal = vI + (j % 6) + 6;
+                    int ccwNeighbor = vI + ((j + 5) % 6) + 6;
+
+                    if(j != 6)
+                    {
+                        int cwNeighbor = vI + ((j + 1) % 6) + 6;
+                        innerAngle = findInnerAngle(verts[vIlocal], verts[ccwNeighbor], verts[cwNeighbor]);
+                        verts.Add(new Vector3(verts[vIlocal].x + innerAngle.x * modifiers[5].x, modifiers[5].y, verts[vIlocal].z + innerAngle.z * modifiers[5].x));
+                        verts.Add(new Vector3(verts[vIlocal].x + innerAngle.x * modifiers[4].x, modifiers[4].y, verts[vIlocal].z + innerAngle.z * modifiers[4].x));
+                    }
+
+                    if(j != 0)
+                    {
+                        int v1 = vIlocal;
+                        int v2 = ccwNeighbor;
+                        int v3 = v1 + 6 + (j % 6);
+                        int v4 = v2 + 6 + ((j + 5) % 6);
+                        int v5 = v3 + 1;
+                        int v6 = v4 + 1;
+                        addTri(v1, v3, v2);
+                        addTri(v2, v3, v4);
+                        addTri(v3, v5, v4);
+                        addTri(v4, v5, v6);
+                    }
+                }
+
+                //Outer frame and fill holes
+                verts.Add(new Vector3(-edgeInnerThick.x, FrameThickness, edgeInnerThick.z));
+                verts.Add(new Vector3(verts[vI + 24].x, modifiers[7].y, verts[vI + 24].z + modifiers[7].x));
+                verts.Add(new Vector3(verts[vI + 24].x, modifiers[0].y, verts[vI + 24].z + modifiers[0].x));
+
+                innerAngle = findInnerAngle(verts[vI + 10], verts[vI + 24], verts[vI + 09]);
+                verts.Add(new Vector3(verts[vI + 10].x + innerAngle.x * modifiers[5].x, modifiers[5].y, verts[vI + 10].z + innerAngle.z * modifiers[5].x));
+                verts.Add(new Vector3(verts[vI + 10].x + innerAngle.x * modifiers[4].x, modifiers[4].y, verts[vI + 10].z + innerAngle.z * modifiers[4].x));
+
+                verts.Add(new Vector3(0.0f, modifiers[7].y, verts[vI + 09].z + modifiers[7].x));
+                verts.Add(new Vector3(0.0f, modifiers[0].y, verts[vI + 09].z + modifiers[0].x));
+
+                innerAngle = findInnerAngle(verts[vI + 08], new Vector3(edgeInnerThick.x, FrameThickness, edgeInnerThick.z), verts[vI + 09]);
+                verts.Add(new Vector3(verts[vI + 08].x + innerAngle.x * modifiers[5].x, modifiers[5].y, verts[vI + 08].z + innerAngle.z * modifiers[5].x));
+                verts.Add(new Vector3(verts[vI + 08].x + innerAngle.x * modifiers[4].x, modifiers[4].y, verts[vI + 08].z + innerAngle.z * modifiers[4].x));
+
+                verts.Add(new Vector3(edgeInnerThick.x, FrameThickness, edgeInnerThick.z));
+                verts.Add(new Vector3(verts[vI + 33].x, modifiers[7].y, verts[vI + 33].z + modifiers[7].x));
+                verts.Add(new Vector3(verts[vI + 33].x, modifiers[0].y, verts[vI + 33].z + modifiers[0].x));
+
+                addTri(vI + 11, vI + 10, vI + 24);
+                addTri(vI + 24, vI + 10, vI + 27);
+                addTri(vI + 24, vI + 27, vI + 25);
+                addTri(vI + 25, vI + 27, vI + 28);
+                addTri(vI + 25, vI + 28, vI + 26);
+
+                addTri(vI + 10, vI + 09, vI + 29);
+                addTri(vI + 10, vI + 29, vI + 27);
+                addTri(vI + 27, vI + 29, vI + 30);
+                addTri(vI + 27, vI + 30, vI + 28);
+
+                addTri(vI + 09, vI + 08, vI + 31);
+                addTri(vI + 09, vI + 31, vI + 29);
+                addTri(vI + 29, vI + 31, vI + 32);
+                addTri(vI + 29, vI + 32, vI + 30);
+
+                addTri(vI + 08, vI + 07, vI + 33);
+                addTri(vI + 08, vI + 33, vI + 34);
+                addTri(vI + 08, vI + 34, vI + 31);
+                addTri(vI + 31, vI + 34, vI + 35);
+                addTri(vI + 31, vI + 35, vI + 32);
+            }
+            else
+            {
+                //make a thick frame
+                verts.Add(new Vector3(0.0f, FrameThickness, 1.0f));
+                verts.Add(new Vector3(edgeOuterThick.x, FrameThickness, edgeOuterThick.z));
+                verts.Add(new Vector3(-edgeOuterThick.x, FrameThickness, edgeOuterThick.z));
+                verts.Add(new Vector3(edgeInnerThick.x, FrameThickness, edgeInnerThick.z));
+                verts.Add(new Vector3(-edgeInnerThick.x, FrameThickness, edgeInnerThick.z));
+                verts.Add(new Vector3(verts[vI + 3].x, modifiers[7].y, verts[vI + 3].z + modifiers[7].x));
+                verts.Add(new Vector3(verts[vI + 4].x, modifiers[7].y, verts[vI + 4].z + modifiers[7].x));
+                verts.Add(new Vector3(verts[vI + 3].x, modifiers[0].y, verts[vI + 3].z + modifiers[0].x));
+                verts.Add(new Vector3(verts[vI + 4].x, modifiers[0].y, verts[vI + 4].z + modifiers[0].x));
+
+                addTri(vI + 0, vI + 1, vI + 2);
+                addTri(vI + 1, vI + 3, vI + 2);
+                addTri(vI + 2, vI + 3, vI + 4);
+                addTri(vI + 3, vI + 5, vI + 4);
+                addTri(vI + 4, vI + 5, vI + 6);
+                addTri(vI + 5, vI + 7, vI + 6);
+                addTri(vI + 6, vI + 7, vI + 8);
+            }
+
+            //rotate vertices
+            for(int j = vI; j < verts.Count; j++)
+            {
+                float newX = verts[j].x * Mathf.Cos(-2 * PI4 * i) - verts[j].z * Mathf.Sin(-2 * PI4 * i);
+                float newZ = verts[j].x * Mathf.Sin(-2 * PI4 * i) + verts[j].z * Mathf.Cos(-2 * PI4 * i);
+                verts[j] = new Vector3(newX, verts[j].y, newZ);
+            }
+        }
+
+        //RD
+        bool[] makeTabDR = { HasR, HasD };
+
+        for(int i = 0; i < 2; i++)
+        {
+            vI = verts.Count;
+            Vector3 thinFrameBorder = new Vector3(Mathf.Lerp(verts[4].x, verts[2].x, 0.25f), 0.0f, Mathf.Lerp(verts[4].z, verts[2].z, 0.25f));
+
+            if (makeTabDR[i])
+            {
+                float tabLowerX = Mathf.Lerp(verts[4].x, verts[2].x, 0.1875f);
+                //make a tab
+                //start with the placard
+                verts.Add(new Vector3(0.0f, FrameThickness / 2.0f, 1.0f));
+                verts.Add(new Vector3(edgeOuterThick.x, FrameThickness / 2.0f, edgeOuterThick.z));
+                verts.Add(new Vector3(-edgeOuterThick.x, FrameThickness / 2.0f, edgeOuterThick.z));
+                verts.Add(new Vector3(tabLowerX, FrameThickness / 2.0f, edgeInnerThick.z));
+                verts.Add(new Vector3(-tabLowerX, FrameThickness / 2.0f, edgeInnerThick.z));
+                verts.Add(new Vector3(0.0f, FrameThickness / 2.0f, verts[2].z));
+
+                addTri(vI + 0, vI + 1, vI + 2);
+                addTri(vI + 1, vI + 5, vI + 2);
+                addTri(vI + 1, vI + 3, vI + 5);
+                addTri(vI + 2, vI + 5, vI + 4);
+
+                //build upper edge, clockwise
+                verts.Add(verts[vI + 0] + Vector3.up * (FrameThickness / 2.0f));
+                verts.Add(verts[vI + 1] + Vector3.up * (FrameThickness / 2.0f));
+                verts.Add(verts[vI + 3] + Vector3.up * (FrameThickness / 2.0f));
+                verts.Add(verts[vI + 5] + Vector3.up * (FrameThickness / 2.0f));
+                verts.Add(verts[vI + 4] + Vector3.up * (FrameThickness / 2.0f));
+                verts.Add(verts[vI + 2] + Vector3.up * (FrameThickness / 2.0f));
+
+                //find inner angles and build verts, triangles
+                List<Vector3> innerAngles = new List<Vector3>();
+                Vector3 innerAngle;
+                for (int j = 0; j <= 6; j++)
+                {
+                    int vIlocal = vI + (j % 6) + 6;
+                    int ccwNeighbor = vI + ((j + 5) % 6) + 6;
+
+                    if (j != 6)
+                    {
+                        int cwNeighbor = vI + ((j + 1) % 6) + 6;
+                        innerAngle = findInnerAngle(verts[vIlocal], verts[ccwNeighbor], verts[cwNeighbor]);
+                        verts.Add(new Vector3(verts[vIlocal].x + innerAngle.x * modifiers[5].x, modifiers[5].y, verts[vIlocal].z + innerAngle.z * modifiers[5].x));
+                        verts.Add(new Vector3(verts[vIlocal].x + innerAngle.x * modifiers[4].x, modifiers[4].y, verts[vIlocal].z + innerAngle.z * modifiers[4].x));
+                        innerAngles.Add(innerAngle);
+                    }
+
+                    if (j != 0)
+                    {
+                        int v1 = vIlocal;
+                        int v2 = ccwNeighbor;
+                        int v3 = v1 + 6 + (j % 6);
+                        int v4 = v2 + 6 + ((j + 5) % 6);
+                        int v5 = v3 + 1;
+                        int v6 = v4 + 1;
+                        addTri(v1, v3, v2);
+                        addTri(v2, v3, v4);
+                        addTri(v3, v5, v4);
+                        addTri(v4, v5, v6);
+                    }
+                }
+
+                //outer edge
+                verts.Add(new Vector3(verts[vI + 7].x + Mathf.Sqrt(3) * 0.5f * modifiers[5].x, modifiers[5].y, verts[vI + 7].z - 0.5f * modifiers[5].x));
+                verts.Add(new Vector3(verts[vI + 7].x + Mathf.Sqrt(3) * 0.5f * modifiers[4].x, modifiers[4].y, verts[vI + 7].z - 0.5f * modifiers[4].x));
+
+                verts.Add(new Vector3(verts[vI + 8].x - innerAngles[2].x * modifiers[5].x, modifiers[5].y, verts[vI + 8].z - innerAngles[2].z * modifiers[5].x));
+                verts.Add(new Vector3(verts[vI + 8].x - innerAngles[2].x * modifiers[4].x, modifiers[4].y, verts[vI + 8].z - innerAngles[2].z * modifiers[4].x));
+
+                verts.Add(new Vector3(0.0f, modifiers[7].y, verts[vI + 09].z + modifiers[7].x));
+                verts.Add(new Vector3(0.0f, modifiers[0].y, verts[vI + 09].z + modifiers[0].x));
+
+                verts.Add(new Vector3(verts[vI + 10].x + innerAngles[2].x * modifiers[5].x, modifiers[5].y, verts[vI + 10].z - innerAngles[2].z * modifiers[5].x));
+                verts.Add(new Vector3(verts[vI + 10].x + innerAngles[2].x * modifiers[4].x, modifiers[4].y, verts[vI + 10].z - innerAngles[2].z * modifiers[4].x));
+
+                verts.Add(new Vector3(verts[vI + 11].x - Mathf.Sqrt(3) * 0.5f * modifiers[5].x, modifiers[5].y, verts[vI + 11].z - 0.5f * modifiers[5].x));
+                verts.Add(new Vector3(verts[vI + 11].x - Mathf.Sqrt(3) * 0.5f * modifiers[4].x, modifiers[4].y, verts[vI + 11].z - 0.5f * modifiers[4].x));
+
+                addTri(vI + 07, vI + 24, vI + 08);
+                addTri(vI + 08, vI + 24, vI + 26);
+                addTri(vI + 24, vI + 25, vI + 26);
+                addTri(vI + 26, vI + 25, vI + 27);
+
+                addTri(vI + 08, vI + 26, vI + 09);
+                addTri(vI + 09, vI + 26, vI + 28);
+                addTri(vI + 26, vI + 27, vI + 28);
+                addTri(vI + 28, vI + 27, vI + 29);
+
+                addTri(vI + 09, vI + 28, vI + 10);
+                addTri(vI + 10, vI + 28, vI + 30);
+                addTri(vI + 28, vI + 29, vI + 30);
+                addTri(vI + 30, vI + 29, vI + 31);
+
+                addTri(vI + 10, vI + 30, vI + 11);
+                addTri(vI + 11, vI + 30, vI + 32);
+                addTri(vI + 30, vI + 31, vI + 32);
+                addTri(vI + 32, vI + 31, vI + 33);
+            }
+            else
+            {
+                //make a thin frame
+                float midModX = 1.0f + modifiers[7].x;
+                float lowModX = 1.0f + modifiers[0].x;
+                verts.Add(new Vector3(-thinFrameBorder.x, FrameThickness, thinFrameBorder.z));
+                verts.Add(new Vector3(verts[vI + 0].x * midModX, modifiers[7].y, verts[vI + 0].z * midModX));
+                verts.Add(new Vector3(verts[vI + 0].x * lowModX, modifiers[0].y, verts[vI + 0].z * lowModX));
+                verts.Add(new Vector3(0.0f, FrameThickness, 1.0f));
+                verts.Add(new Vector3(verts[vI + 3].x * midModX, modifiers[7].y, verts[vI + 3].z * midModX));
+                verts.Add(new Vector3(verts[vI + 3].x * lowModX, modifiers[0].y, verts[vI + 3].z * lowModX));
+                verts.Add(new Vector3(thinFrameBorder.x, FrameThickness, thinFrameBorder.z));
+                verts.Add(new Vector3(verts[vI + 6].x * midModX, modifiers[7].y, verts[vI + 6].z * midModX));
+                verts.Add(new Vector3(verts[vI + 6].x * lowModX, modifiers[0].y, verts[vI + 6].z * lowModX));
+
+                addTri(vI + 0, vI + 3, vI + 4);
+                addTri(vI + 0, vI + 4, vI + 1);
+                addTri(vI + 1, vI + 4, vI + 5);
+                addTri(vI + 1, vI + 5, vI + 2);
+
+                addTri(vI + 3, vI + 6, vI + 7);
+                addTri(vI + 3, vI + 7, vI + 4);
+                addTri(vI + 4, vI + 7, vI + 8);
+                addTri(vI + 4, vI + 8, vI + 5);
+            }
+
+            //rotate vertices
+            for(int j = vI; j < verts.Count; j++)
+            {
+                float newX = verts[j].x * Mathf.Cos(-PI4 * (3 + 2 * i)) - verts[j].z * Mathf.Sin(-PI4 * (3 + 2 * i));
+                float newZ = verts[j].x * Mathf.Sin(-PI4 * (3 + 2 * i)) + verts[j].z * Mathf.Cos(-PI4 * (3 + 2 * i));
+                verts[j] = new Vector3(newX, verts[j].y, newZ);
+            }
+        }
+
+        //Phew, we made it. Send the data back.
+        MeshData newMesh = new MeshData();
+        newMesh.Verts = verts.ToArray();
+        newMesh.Tris = tris.ToArray();
+        return newMesh;
+    }
+
+    private void ApplyMesh(MeshData newMesh)
+    {
+        MeshFilter filter = gameObject.GetComponent<MeshFilter>();
+        MeshCollider collider = gameObject.GetComponent<MeshCollider>();
+
+        if(CardMesh == null)
+        {
+            CardMesh = new Mesh();
+        }
+
+        CardMesh.Clear();
+        CardMesh.vertices = newMesh.Verts;
+        CardMesh.triangles = newMesh.Tris;
+        CardMesh.RecalculateNormals();
+
+        filter.sharedMesh = CardMesh;
+        collider.sharedMesh = CardMesh;
+    }
+
+    //private Texture2D BuildTexture()
+    //{
+
+    //}
+
+    //private void ApplyTexture(Texture2D newTexture)
+    //{
+
+    //}
+
+    //private List<TextMeshPro> BuildTextBoxes()
+    //{
+
+    //}
+
+    //private void ApplyText(List<TextMeshPro> textBoxes)
+    //{
+
+    //}
+}

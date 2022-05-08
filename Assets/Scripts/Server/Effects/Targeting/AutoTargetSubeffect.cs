@@ -11,6 +11,7 @@ namespace KompasServer.Effects
     {
         public const string Maximum = "Maximum";
         public const string Any = "Any";
+        public const string RandomCard = "Random";
 
         public CardRestriction cardRestriction;
         public CardValue tiebreakerValue;
@@ -26,6 +27,12 @@ namespace KompasServer.Effects
 
         public override bool IsImpossible() => !Game.Cards.Any(c => cardRestriction.IsValidCard(c, Context));
 
+        private GameCard GetRandomCard(GameCard[] cards)
+        {
+            var random = new System.Random();
+            return cards[random.Next(cards.Length)];
+        }
+
         public override Task<ResolutionInfo> Resolve()
         {
             GameCard potentialTarget = null;
@@ -37,6 +44,7 @@ namespace KompasServer.Effects
                 {
                     Maximum => potentialTargets.OrderByDescending(tiebreakerValue.GetValueOf).First(),
                     Any => potentialTargets.First(),
+                    RandomCard => GetRandomCard(potentialTargets.ToArray()),
                     _ => potentialTargets.Single(),
                 };
             }

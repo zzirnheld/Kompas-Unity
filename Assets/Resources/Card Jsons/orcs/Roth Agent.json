@@ -1,0 +1,43 @@
+{
+	"cardType": 67,
+	"cardName": "Roth Agent",
+	"effText": "Ambush.\nWhen you board->hand me, draw 1 card.",
+	"effects": [
+		{
+			"blurb": "Supplies have been recovered.",
+			"triggerData": {
+				"triggerCondition": "Rehand",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Board"
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"xMultiplier": 1,
+					"xModifier": 1
+				}
+			]
+		}
+	],
+	"keywords":[
+		"Ambush"
+	],
+	"n": 3,
+	"e": 1,
+	"s": 2,
+	"w": 1,
+	"subtypes": [
+		"Orc",
+		"Spy"
+	],
+	"subtypeText": "Orc Spy"
+}
