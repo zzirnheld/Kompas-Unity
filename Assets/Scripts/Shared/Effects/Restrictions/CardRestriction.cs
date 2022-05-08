@@ -160,7 +160,7 @@ namespace KompasCore.Effects
 
         public SpaceRestriction spaceRestriction;
 
-        public ICardRestrictionElement[] cardRestrictionElements = new ICardRestrictionElement[0];
+        public CardRestrictionElement[] cardRestrictionElements = { };
 
         public GameCard Source { get; private set; }
         public Player Controller => Effect?.Controller ?? Source?.Controller;
@@ -200,6 +200,11 @@ namespace KompasCore.Effects
             cardValueNumberRestriction?.Initialize(source, subeffect);
 
             cardValue?.Initialize(source);
+
+            foreach(var cre in cardRestrictionElements)
+            {
+                cre.Initialize(new RestrictionContext(game: source.Game, source: source, subeffect: subeffect));
+            }
 
             initialized = true;
             //Debug.Log($"Initialized {this}");

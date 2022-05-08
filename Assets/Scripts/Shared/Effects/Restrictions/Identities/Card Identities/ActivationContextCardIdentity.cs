@@ -37,7 +37,7 @@ namespace KompasCore.Effects.Identities
 
     public class GameContextCardIdentity : ActivationContextCardIdentity
     {
-        public IGamestateCardIdentity gamestateCardIdentity;
+        public GamestateCardIdentity gamestateCardIdentity;
 
         protected override GameCardBase CardFromLogic(ActivationContext context)
             => gamestateCardIdentity.CardFrom(context.game, context);
