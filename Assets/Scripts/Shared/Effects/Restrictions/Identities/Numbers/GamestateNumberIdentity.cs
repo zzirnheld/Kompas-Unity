@@ -13,15 +13,15 @@ namespace KompasCore.Effects.Identities
             initialized = true;
         }
 
-        protected abstract int NumberLogic();
+        protected abstract int NumberLogic { get; }
 
-        public int Number() => initialized ? NumberLogic()
+        public int Number => initialized ? NumberLogic
                 : throw new System.NotImplementedException("You forgot to initialize an ActivationContextSpaceIdentity!");
     }
 
-    public class RelationshipNumberIdentity : GamestateNumberIdentity
+    public class SelectorNumberIdentity : GamestateNumberIdentity
     {
-        public INumberRelationship numberRelationship;
+        public INumberSelector numberSelector;
         public GamestateNumbersIdentity numbersIdentity;
 
         public override void Initialize(RestrictionContext restrictionContext)
@@ -30,7 +30,7 @@ namespace KompasCore.Effects.Identities
             numbersIdentity.Initialize(restrictionContext);
         }
 
-        protected override int NumberLogic()
-            => numberRelationship.Apply(numbersIdentity.Numbers());
+        protected override int NumberLogic
+            => numberSelector.Apply(numbersIdentity.Numbers());
     }
 }

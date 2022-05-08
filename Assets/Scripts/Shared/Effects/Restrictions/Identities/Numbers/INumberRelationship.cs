@@ -1,20 +1,17 @@
-using System.Collections.Generic;
-using System.Linq;
-
-namespace KompasCore.Effects.Identities
+namespace KompasCore.Effects.Relationships
 {
     public interface INumberRelationship
     {
-        public int Apply(ICollection<int> numbers);
+        public bool Compare(int a, int b);
     }
 
-    public class MaximumNumberRelationship : INumberRelationship
+    public class GreaterThan : INumberRelationship
     {
-        public int Apply(ICollection<int> numbers) => numbers.Max();
+        public bool Compare(int a, int b) => a > b;
     }
 
-    public class MinimumNumberRelationship : INumberRelationship
+    public class Equal : INumberRelationship
     {
-        public int Apply(ICollection<int> numbers) => numbers.Min();
+        public bool Compare(int a, int b) => a == b;
     }
 }

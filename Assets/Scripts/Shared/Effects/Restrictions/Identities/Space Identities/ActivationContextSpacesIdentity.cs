@@ -25,6 +25,10 @@ namespace KompasServer.Effects.Identities
                 : throw new System.NotImplementedException("You forgot to initialize an ActivationContextSpaceIdentity!");
     }
 
+    /// <summary>
+    /// Spaces where they are in some defined relationship with respect to the other two defined spaces.
+    /// For example, spaces that are between (relationship) the source card's space and the target space (two defined spaces).
+    /// </summary>
     public class ThreeSpaceRelationshipContextSpacesIdentity : ActivationContextSpacesIdentity
     {
         public ActivationContextSpaceIdentity firstSpaceIdentity;

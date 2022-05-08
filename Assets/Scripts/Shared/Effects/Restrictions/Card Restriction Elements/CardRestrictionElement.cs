@@ -17,20 +17,21 @@ namespace KompasCore.Effects.Restrictions
             initialized = true;
         }
 
-        public bool FitsRestriction(GameCardBase card) => initialized ? FitsRestrictionLogic(card)
+        public bool FitsRestriction(GameCardBase card, ActivationContext context) => initialized ? FitsRestrictionLogic(card, context)
             : throw new System.NotImplementedException("You failed to initialize a Card Restriction Element");
 
-        protected abstract bool FitsRestrictionLogic(GameCardBase card);
+        protected abstract bool FitsRestrictionLogic(GameCardBase card, ActivationContext context);
     }
 
     public class CardExistsRestrictionElement : CardRestrictionElement
     {
-        protected override bool FitsRestrictionLogic(GameCardBase card) => card != null;
+        protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
+            => card != null;
     }
 
     public class EnemyCardRestrictionElement : CardRestrictionElement
     {
-        protected override bool FitsRestrictionLogic(GameCardBase card)
+        protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
             => card.Controller != RestrictionContext.source.Controller;
     }
 
@@ -40,7 +41,22 @@ namespace KompasCore.Effects.Restrictions
 
         private ICollection<CardLocation> Locations => locations.Select(CardLocationHelpers.FromString).ToArray();
 
-        protected override bool FitsRestrictionLogic(GameCardBase card)
+        protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
             => Locations.Any(loc => card.Location == loc);
+    }
+
+    public class PositionCardRestrictionElement : CardRestrictionElement
+    {
+        public SpaceRestriction spaceRestriction;
+
+        public override void Initialize(RestrictionContext restrictionContext)
+        {
+            base.Initialize(restrictionContext);
+            spaceRestriction.Initialize(source: restrictionContext.source, controller: restrictionContext.source.Controller,
+                effect: restrictionContext.subeffect.Effect, subeffect: restrictionContext.subeffect);
+        }
+
+        protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
+            => spaceRestriction.IsValidSpace(card.Position, context);
     }
 }

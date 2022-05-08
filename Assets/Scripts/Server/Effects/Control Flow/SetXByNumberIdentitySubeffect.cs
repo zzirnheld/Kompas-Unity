@@ -12,6 +12,6 @@ namespace KompasServer.Effects
             numberIdentity.Initialize(restrictionContext: RestrictionContext);
         }
 
-        public override int BaseCount => numberIdentity.Number();
+        public override int BaseCount => numberIdentity.Number;
     }
 }

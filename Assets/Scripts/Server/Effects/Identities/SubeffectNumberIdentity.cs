@@ -16,9 +16,9 @@ namespace KompasServer.Effects.Identities
             initialized = true;
         }
 
-        protected abstract int NumberLogic();
+        protected abstract int NumberLogic { get; }
 
-        public int Number() => initialized ? NumberLogic()
+        public int Number => initialized ? NumberLogic
             : throw new System.NotImplementedException("You forgot to initialize an ActivationContextSpaceIdentity!");
     }
 
@@ -32,6 +32,16 @@ namespace KompasServer.Effects.Identities
             numberIdentity.Initialize(restrictionContext);
         }
 
-        protected override int NumberLogic() => numberIdentity.Number();
+        protected override int NumberLogic => numberIdentity.Number;
+    }
+
+    public class XSubeffectNumberIdentity : SubeffectNumberIdentity
+    {
+        public int multiplier = 1;
+        public int modifier = 0;
+        public int divisor = 1;
+
+        protected override int NumberLogic
+            => (RestrictionContext.subeffect.Effect.X * multiplier / divisor) + modifier;
     }
 }
