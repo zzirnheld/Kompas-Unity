@@ -20,6 +20,8 @@ namespace KompasServer.Effects
 
         public ServerPlayer ServerPlayer => PlayerTarget as ServerPlayer;
 
+        public RestrictionContext RestrictionContext => new RestrictionContext(game: Game, source: Source, subeffect: this);
+
         /// <summary>
         /// Sets up the subeffect with whatever necessary values.
         /// Usually also initializes any restrictions the effects are using.

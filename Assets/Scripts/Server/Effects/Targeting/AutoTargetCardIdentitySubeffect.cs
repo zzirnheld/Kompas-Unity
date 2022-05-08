@@ -7,6 +7,12 @@ namespace KompasServer.Effects
     {
         public SubeffectCardIdentity subeffectCardIdentity;
 
+        public override void Initialize(ServerEffect eff, int subeffIndex)
+        {
+            base.Initialize(eff, subeffIndex);
+            subeffectCardIdentity.Initialize(restrictionContext: RestrictionContext);
+        }
+
         public override Task<ResolutionInfo> Resolve()
         {
             var card = subeffectCardIdentity.GetCard();
