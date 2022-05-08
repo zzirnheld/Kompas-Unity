@@ -10,11 +10,13 @@ namespace KompasCore.Effects
     {
         public readonly Game game;
         public readonly GameCard source;
+        public readonly Subeffect subeffect;
 
-        public RestrictionContext(Game game, GameCard source)
+        public RestrictionContext(Game game, GameCard source, Subeffect subeffect = default)
         {
             this.game = game;
             this.source = source;
+            this.subeffect = subeffect;
         }
     }
 }

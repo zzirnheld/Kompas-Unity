@@ -36,13 +36,21 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction": {
-						"blurb": "An oviparous mamal? ORRY THE OVIPAROUS MAMMAL?",
-						"cardRestrictions": [
-							"Friendly",
-							"Hand"
-						]
+					"$type": "KompasServer.Effects.AutoTargetCardIdentitySubeffect, Assembly-CSharp",
+					"subeffectCardIdentity": {
+                        "$type": "KompasCore.Effects.Restrictions.ActivationContextSubeffectCardIdentity, Assembly-CSharp",
+                        "contextCardIdentity": {
+                            "$type": "KompasCore.Effects.Restrictions.CardAtPositionContextCardIdentity, Assembly-CSharp",
+                            "cardPositionIdentity": {
+                                "$type": "KompasCore.Effects.Identities.TwoSpaceIdentityContextSpaceIdentity, Assembly-CSharp",
+                                "firstSpaceIdentity": {
+                                    "$type": "KompasCore.Effects.Identities.CardPositionContextSpaceIdentity, Assembly-CSharp",
+                                    "cardIdentity": { "$type": "KompasCore.Effects.Identities.MainCardBeforeCardIdentity, Assembly-CSharp" }
+                                },
+                                "secondSpaceIdentity": { "$type": "KompasCore.Effects.Identities.ContextSpaceIdentity, Assembly-CSharp" },
+                                "compositionSpaceIdentity": { "$type": "KompasCore.Effects.Identities.SpaceBetweenTwoSpaceIdentity, Assembly-CSharp" }
+                            }
+                        }
 					}
 				},
 				{
@@ -53,7 +61,7 @@
 				},
 				{
 					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"wModifier": 3
+					"eModifier": -1
 				}
 			]
 		}
@@ -77,9 +85,6 @@
 			"This is Activated"
 		]
 	},
-	"keywords": [
-		"Evasive"
-	],
 	"n": 2,
 	"e": 4,
 	"s": 7,
