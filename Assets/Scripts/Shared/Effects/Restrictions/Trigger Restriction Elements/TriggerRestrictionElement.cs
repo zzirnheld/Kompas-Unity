@@ -6,7 +6,7 @@ namespace KompasCore.Effects.Restrictions
 {
     public abstract class TriggerRestrictionElement
     {
-        public bool primaryContext;
+        public bool primaryContext = true;
 
         protected TriggerRestriction TriggerRestriction { get; private set; }
         protected RestrictionContext RestrictionContext { get; private set; }

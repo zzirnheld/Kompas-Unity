@@ -1,4 +1,5 @@
 ﻿using KompasCore.Cards;
+using KompasCore.Effects.Restrictions;
 using KompasCore.Exceptions;
 using KompasCore.GameCore;
 using Newtonsoft.Json;
@@ -83,7 +84,7 @@ namespace KompasCore.Effects
         public const string DirectionFromSourceIsSpaceTarget = "Direction from Source is Space Target"; //In the direction of Subeffect.Space from source
         #endregion space restrictions
 
-        public string[] spaceRestrictions;
+        public string[] spaceRestrictions = { };
         public CardRestriction adjacencyRestriction;
         public CardRestriction limitAdjacencyRestriction;
         public int adjacencyLimit;
@@ -111,6 +112,8 @@ namespace KompasCore.Effects
 
         private bool initialized = false;
 
+        public SpaceRestrictionElement[] spaceRestrictionElements = { };
+
         public void Initialize(Subeffect subeffect) => Initialize(subeffect.Source, subeffect.Controller, subeffect.Effect, subeffect);
 
         public void Initialize(GameCard source, Player controller, Effect effect, Subeffect subeffect)
@@ -131,6 +134,11 @@ namespace KompasCore.Effects
             distanceXRestriction?.Initialize(source, subeffect);
             connectedSpacesXRestriction?.Initialize(source, subeffect);
             numberOfCardsInAOEOfRestriction?.Initialize(source, subeffect);
+
+            foreach(var sre in spaceRestrictionElements)
+            {
+                sre.Initialize(new RestrictionContext(game: source.Game, source: source, subeffect: subeffect));
+            }
 
             initialized = true;
         }
@@ -256,7 +264,8 @@ namespace KompasCore.Effects
             if (!initialized) throw new ArgumentException("Space restriction not initialized!");
             if (!space.IsValid) throw new InvalidSpaceException(space, "Invalid space to consider for restriction!");
 
-            return spaceRestrictions.All(r => IsRestrictionValidWithDebug(r, space, theoreticalTarget, context));
+            return spaceRestrictions.All(r => IsRestrictionValidWithDebug(r, space, theoreticalTarget, context))
+                && spaceRestrictionElements.All(sre => sre.FitsRestriction(space, context));
         }
 
         public override string ToString()

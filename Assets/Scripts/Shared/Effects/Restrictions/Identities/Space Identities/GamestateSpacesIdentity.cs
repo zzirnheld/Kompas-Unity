@@ -26,6 +26,12 @@ namespace KompasCore.Effects.Identities
     {
         public GamestateCardsIdentity cardsIdentity;
 
+        public override void Initialize(RestrictionContext restrictionContext)
+        {
+            base.Initialize(restrictionContext);
+            cardsIdentity.Initialize(restrictionContext);
+        }
+
         protected override ICollection<Space> SpaceLogic()
             => cardsIdentity.CardsFrom(RestrictionContext.game).Select(c => c.Position).ToArray();
     }

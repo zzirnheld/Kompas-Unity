@@ -120,6 +120,11 @@ namespace KompasCore.Effects
             sourceRestriction?.Initialize(thisCard, effect, subeffect);
             xRestriction?.Initialize(thisCard);
 
+            foreach (var tre in triggerRestrictionElements)
+            {
+                tre.Initialize(this);
+            }
+
             initialized = true;
             //Debug.Log($"Initializing trigger restriction for {thisCard?.CardName}. game is null? {game}");
         }

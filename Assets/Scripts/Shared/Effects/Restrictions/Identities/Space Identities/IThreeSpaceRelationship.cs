@@ -15,7 +15,7 @@ namespace KompasCore.Effects.Identities
         public bool Evaluate(Space a, Space b, Space c);
     }
 
-    public class BetweenSpaceRelationship
+    public class BetweenSpaceRelationship : IThreeSpaceRelationship
     {
         public bool Evaluate(Space a, Space b, Space c)
             => c.Between(a, b);

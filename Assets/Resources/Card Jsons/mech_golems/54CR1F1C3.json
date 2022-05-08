@@ -40,15 +40,18 @@
                                     "cardIdentity": { "$type": "KompasCore.Effects.Identities.ThisCardIdentity, Assembly-CSharp" }
                                 },
                                 "destinationsIdentity": {
-                                    "$type": "KompasCore.Effects.Identities.AllGameCardsIdentity, Assembly-CSharp",
-                                    "cardRestriction": {
-                                        "cardRestrictionElements": [
-                                            { "$type": "KompasCore.Effects.Restrictions.EnemyCardRestrictionElement, Assembly-CSharp" },
-                                            {
-                                                "$type": "KompasCore.Effects.Restrictions.LocationCardRestrictionElement, Assembly-CSharp",
-                                                "locations": [ "Board" ]
-                                            }
-                                        ]
+                                    "$type": "KompasCore.Effects.Identities.PositionsOfGameSpaceIdentity, Assembly-CSharp",
+                                    "cardsIdentity": {
+                                        "$type": "KompasCore.Effects.Identities.AllGameCardsIdentity, Assembly-CSharp",
+                                        "cardRestriction": {
+                                            "cardRestrictionElements": [
+                                                { "$type": "KompasCore.Effects.Restrictions.EnemyCardRestrictionElement, Assembly-CSharp" },
+                                                {
+                                                    "$type": "KompasCore.Effects.Restrictions.LocationCardRestrictionElement, Assembly-CSharp",
+                                                    "locations": [ "Board" ]
+                                                }
+                                            ]
+                                        }
                                     }
                                 }
                             }
@@ -61,20 +64,20 @@
 					"cardRestriction": {
 						"cardRestrictionElements": [
                             {
-                                "$type": "KompasServer.Effects.PositionCardRestrictionElement, Assembly-CSharp",
+                                "$type": "KompasCore.Effects.Restrictions.PositionCardRestrictionElement, Assembly-CSharp",
                                 "spaceRestriction": {
-                                    "spaceRestrictionElements": {
-                                        "$type": "KompasServer.Effects.DistanceToCardSpaceRestrictionElement, Assembly-CSharp",
+                                    "spaceRestrictionElements": [{
+                                        "$type": "KompasCore.Effects.Restrictions.DistanceToCardSpaceRestrictionElement, Assembly-CSharp",
                                         "originIdentity": {
                                             "$type": "KompasServer.Effects.Identities.GamestateSubeffectSpaceIdentity, Assembly-CSharp",
                                             "spaceIdentity": {
-                                                "$type": "KompasCore.Effects.Identities.CardPositionContextSpaceIdentity, Assembly-CSharp",
+                                                "$type": "KompasCore.Effects.Identities.PositionOfGameSpaceIdentity, Assembly-CSharp",
                                                 "cardIdentity": { "$type": "KompasCore.Effects.Identities.ThisCardIdentity, Assembly-CSharp" }
                                             }
                                         },
-                                        "numberIdentity": { "$type": "KompasCore.Effects.Identities.XSubeffectNumberIdentity, Assembly-CSharp" },
+                                        "numberIdentity": { "$type": "KompasServer.Effects.Identities.XSubeffectNumberIdentity, Assembly-CSharp" },
                                         "numberRelationship": { "$type": "KompasCore.Effects.Relationships.Equal, Assembly-CSharp" }
-                                    }
+                                    }]
                                 }
                             }
 						]

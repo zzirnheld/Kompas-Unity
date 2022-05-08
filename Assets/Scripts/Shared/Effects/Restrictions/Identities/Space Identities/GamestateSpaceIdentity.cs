@@ -23,6 +23,12 @@ namespace KompasCore.Effects.Identities
     {
         public GamestateCardIdentity cardIdentity;
 
+        public override void Initialize(RestrictionContext restrictionContext)
+        {
+            base.Initialize(restrictionContext);
+            cardIdentity.Initialize(restrictionContext);
+        }
+
         protected override Space SpaceLogic() => cardIdentity.CardFrom(RestrictionContext.game).Position;
     }
 }

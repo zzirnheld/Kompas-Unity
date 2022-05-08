@@ -36,6 +36,13 @@ namespace KompasServer.Effects.Identities
 
         public IThreeSpaceRelationship threeSpaceRelationship;
 
+        public override void Initialize(RestrictionContext restrictionContext)
+        {
+            base.Initialize(restrictionContext);
+            firstSpaceIdentity.Initialize(restrictionContext);
+            secondSpaceIdentity.Initialize(restrictionContext);
+        }
+
         protected override ICollection<Space> SpacesFromLogic(ActivationContext context)
         {
             Space first = firstSpaceIdentity.SpaceFrom(context);
