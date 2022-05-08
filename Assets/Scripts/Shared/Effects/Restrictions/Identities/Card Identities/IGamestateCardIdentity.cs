@@ -12,14 +12,14 @@ namespace KompasCore.Effects.Identities
     /// </summary>
     public interface IGamestateCardIdentity
     {
-        public GameCard GameCardFrom(Game game, ActivationContext context = default);
+        public GameCard CardFrom(Game game, ActivationContext context = default);
     }
 
     public class AnyGameCardIdentity : IGamestateCardIdentity
     {
         public IGamestateCardsIdentity gamestateCardsIdentity;
 
-        public GameCard GameCardFrom(Game game, ActivationContext context = default)
+        public GameCard CardFrom(Game game, ActivationContext context = default)
             => gamestateCardsIdentity.GameCardsFrom(game, context).FirstOrDefault();
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace KompasCore.Effects.Identities
@@ -12,8 +13,13 @@ namespace KompasCore.Effects.Identities
         public Space SpaceFrom(Space first, Space second);
     }
 
-    public class DisplacementSpaceIdentity : ITwoSpaceIdentity
+    public class DisplacementTwoSpaceIdentity : ITwoSpaceIdentity
     {
         public Space SpaceFrom(Space first, Space second) => first.DisplacementTo(second);
+    }
+
+    public class SpaceBetweenTwoSpaceIdentity : ITwoSpaceIdentity
+    {
+        public Space SpaceFrom(Space first, Space second) => first.DirectlyBetween(second);
     }
 }

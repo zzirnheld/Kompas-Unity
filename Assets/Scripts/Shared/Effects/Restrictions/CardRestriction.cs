@@ -1,4 +1,5 @@
 ﻿using KompasCore.Cards;
+using KompasCore.Effects.Restrictions;
 using KompasServer.Effects;
 using System;
 using System.Linq;
@@ -158,6 +159,8 @@ namespace KompasCore.Effects
         public CardRestriction augmentRestriction;
 
         public SpaceRestriction spaceRestriction;
+
+        public ICardRestrictionElement[] cardRestrictionElements = new ICardRestrictionElement[0];
 
         public GameCard Source { get; private set; }
         public Player Controller => Effect?.Controller ?? Source?.Controller;
@@ -388,7 +391,8 @@ namespace KompasCore.Effects
 
             try
             {
-                return cardRestrictions.All(r => IsRestrictionValid(r, potentialTarget, x, context));
+                return cardRestrictions.All(r => IsRestrictionValid(r, potentialTarget, x, context))
+                    && cardRestrictionElements.All(cre => cre.FitsRestriction(potentialTarget));
             }
             catch (ArgumentException ae)
             {

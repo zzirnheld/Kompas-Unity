@@ -7,26 +7,50 @@ namespace KompasCore.Effects.Identities
     {
         private bool initialized;
 
-        public void Initialize()
+        protected RestrictionContext RestrictionContext { get; private set; }
+
+        public void Initialize(RestrictionContext restrictionContext)
         {
+            RestrictionContext = restrictionContext;
 
             initialized = true;
         }
 
-        public GameCard GameCardFromContext(ActivationContext context)
-        {
-            if (!initialized) throw new NotImplementedException("Failed to initialize an ActivationContextCardIdentity!");
-            return GameCardFromContextLogic(context);
-        }
+        protected abstract GameCardBase CardFromLogic(ActivationContext context);
 
-        protected abstract GameCard GameCardFromContextLogic(ActivationContext context);
+        public GameCardBase CardFrom(ActivationContext context)
+            => initialized ? CardFromLogic(context)
+                : throw new NotImplementedException("You forgot to initialize an ActivationContextCardIdentity!");
+    }
+
+    public class ThisCardContextCardIdentity : ActivationContextCardIdentity
+    {
+        protected override GameCardBase CardFromLogic(ActivationContext context)
+            => RestrictionContext.source;
+    }
+
+    public class MainCardBeforeCardIdentity : ActivationContextCardIdentity
+    {
+        protected override GameCardBase CardFromLogic(ActivationContext context)
+            => context.mainCardInfoBefore;
     }
 
     public class GameContextCardIdentity : ActivationContextCardIdentity
     {
         public IGamestateCardIdentity gamestateCardIdentity;
 
-        protected override GameCard GameCardFromContextLogic(ActivationContext context)
-            => gamestateCardIdentity.GameCardFrom(context.game, context);
+        protected override GameCardBase CardFromLogic(ActivationContext context)
+            => gamestateCardIdentity.CardFrom(context.game, context);
+    }
+
+    public class CardAtPositionContextCardIdentity : ActivationContextCardIdentity
+    {
+        public ActivationContextSpaceIdentity cardPositionIdentity;
+
+        protected override GameCardBase CardFromLogic(ActivationContext context)
+        {
+            var finalSpace = cardPositionIdentity.SpaceFrom(context);
+            return context.game.boardCtrl.GetCardAt(finalSpace);
+        }
     }
 }

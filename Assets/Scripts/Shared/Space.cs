@@ -94,6 +94,17 @@ public class Space
     public bool NorthOf(Space other) => x > other.x || y > other.y;
     public Space DueNorth => new Space(x + 1, y + 1);
 
+    /// <summary>
+    /// Returns the space directly between this space and the other one
+    /// </summary>
+    /// <param name="other"></param>
+    /// <returns></returns>
+    public Space DirectlyBetween(Space other)
+    {
+        if (!SameDiagonal(other)) return default;
+        else return AdjacentSpaces.Intersect(other.AdjacentSpaces).FirstOrDefault();
+    }
+
     public Space DirectionFromThisTo(Space other)
     {
         (int x, int y) diff = (other.x - x, other.y - y);

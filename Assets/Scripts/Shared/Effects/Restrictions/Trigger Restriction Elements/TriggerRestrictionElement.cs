@@ -8,13 +8,15 @@ namespace KompasCore.Effects.Restrictions
     {
         public bool primaryContext;
 
-        protected TriggerRestriction Parent { get; private set; }
+        protected TriggerRestriction TriggerRestriction { get; private set; }
+        protected RestrictionContext RestrictionContext { get; private set; }
 
         private bool initialized = false;
 
-        public virtual void Initialize(TriggerRestriction parent)
+        public virtual void Initialize(TriggerRestriction triggerRestriction)
         {
-            Parent = parent;
+            TriggerRestriction = triggerRestriction;
+            RestrictionContext = new RestrictionContext(triggerRestriction.Game, triggerRestriction.ThisCard);
 
             initialized = true;
         }
@@ -30,17 +32,47 @@ namespace KompasCore.Effects.Restrictions
         protected abstract bool IsValidContextLogic(ActivationContext context);
     }
 
+    public class ThisCardInPlayTriggerRestrictionElement : TriggerRestrictionElement
+    {
+        protected override bool IsValidContextLogic(ActivationContext context)
+            => TriggerRestriction.ThisCard.Location == CardLocation.Board;
+    }
+
+    public class CardsMatchTriggerRestrictionElement : TriggerRestrictionElement
+    {
+        public ActivationContextCardIdentity firstCardIdentity;
+        public ActivationContextCardIdentity secondCardIdentity;
+
+        public override void Initialize(TriggerRestriction triggerRestriction)
+        {
+            base.Initialize(triggerRestriction);
+
+            firstCardIdentity.Initialize(RestrictionContext);
+            secondCardIdentity.Initialize(RestrictionContext);
+        }
+
+        protected override bool IsValidContextLogic(ActivationContext context)
+        {
+            var first = firstCardIdentity.CardFrom(context);
+            var second = secondCardIdentity.CardFrom(context);
+            return first.Card == second.Card;
+        }
+    }
+
+
     /// <summary>
     /// An element of 
     /// </summary>
-    public class SpaceTriggerRestrictionElement : TriggerRestrictionElement
+    public class SpaceRestrictionTriggerRestrictionElement : TriggerRestrictionElement
     {
         public SpaceRestriction spaceRestriction;
-        public IActivationContextSpaceIdentity spaceIdentity;
+        public ActivationContextSpaceIdentity spaceIdentity;
 
         public override void Initialize(TriggerRestriction parent)
         {
             base.Initialize(parent);
+
+            spaceIdentity.Initialize(RestrictionContext);
         }
 
         protected override bool IsValidContextLogic(ActivationContext context)
@@ -50,14 +82,21 @@ namespace KompasCore.Effects.Restrictions
         }
     }
 
-    public class CardTriggerRestrictionElement : TriggerRestrictionElement
+    public class CardRestrictionTriggerRestrictionElement : TriggerRestrictionElement
     {
         public CardRestriction cardRestriction;
         public ActivationContextCardIdentity activationContextCardIdentity;
 
+        public override void Initialize(TriggerRestriction triggerRestriction)
+        {
+            base.Initialize(triggerRestriction);
+
+            activationContextCardIdentity.Initialize(RestrictionContext);
+        }
+
         protected override bool IsValidContextLogic(ActivationContext context)
         {
-            GameCard card = activationContextCardIdentity.GameCardFromContext(context);
+            var card = activationContextCardIdentity.CardFrom(context);
             return cardRestriction.IsValidCard(card, context);
         }
     }
