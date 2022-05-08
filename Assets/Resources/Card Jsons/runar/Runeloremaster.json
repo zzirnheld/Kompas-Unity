@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Runeloremaster",
-	"effText": "Thrice each friendly turn, you can pip hand-cast a Rune.",
+	"effText": "Thrice each turn, you can pip hand-cast a Rune.",
 	"effects": [
 		{
 			"blurb": "Master Runelore",

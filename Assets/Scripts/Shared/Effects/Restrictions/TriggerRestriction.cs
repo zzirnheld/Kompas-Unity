@@ -48,6 +48,7 @@ namespace KompasCore.Effects
 
         private const string NoStackable = "No Stackable"; //Aka "Normally"
         private const string NotFromEffect = "Not From Effect"; //But can be from attack
+        public const string FromAttack = "From Attack";
 
         private const string ContextsStackablesMatch = "Contexts Stackables Match";
         private const string StackableIsThisEffect = "Stackable is This Effect";
@@ -162,26 +163,26 @@ namespace KompasCore.Effects
             MainCardsAugmentedCardBeforeFitsRestriction => cardRestriction.IsValidCard(context.mainCardInfoBefore.AugmentedCard, context),
             MainCardIsASecondaryContextCardTarget => secondary?.CardTargets?.Any(c => c == context.mainCardInfoBefore?.Card) ?? false,
 
-            MainCardIsStackableSource => context.stackable?.Source == context.mainCardInfoBefore.Card,
-            StackableSourceFitsRestriction => sourceRestriction.IsValidCard(context.stackable?.Source, context),
-            StackableSourceNotThisEffect => context.stackable != SourceEffect,
-            ContextsStackablesMatch => context.stackable == secondary?.stackable,
-            StackableIsThisEffect => context.stackable == SourceEffect,
-            StackableIsASecondaryContextStackableTarget => secondary?.StackableTargets?.Any(s => s == context.stackable) ?? false,
-            NoStackable => context.stackable == null,
+            MainCardIsStackableSource => context.stackableCause?.Source == context.mainCardInfoBefore.Card,
+            StackableSourceFitsRestriction => sourceRestriction.IsValidCard(context.stackableCause?.Source, context),
+            StackableSourceNotThisEffect => context.stackableCause != SourceEffect,
+            ContextsStackablesMatch => context.stackableCause == secondary?.stackableCause,
+            StackableIsThisEffect => context.stackableCause == SourceEffect,
+            StackableIsASecondaryContextStackableTarget => secondary?.StackableTargets?.Any(s => s == context.stackableCause) ?? false,
+            NoStackable => context.stackableCause == null,
 
             MainCardAfterFurtherFromSourceThanBefore
                 => ThisCard.DistanceTo(context.MainCardInfoAfter.Position) > ThisCard.DistanceTo(context.mainCardInfoBefore.Position),
 
             MainCardIsSecondaryDelayedCardTarget => context.mainCardInfoBefore.Card == secondary?.DelayedCardTarget,
             SpaceIsSecondaryDelayedSpaceTarget => context.space == secondary?.DelayedSpaceTarget,
-            StackableIsSecondaryDelayedStackableTarget => context.stackable == secondary?.DelayedStackableTarget,
+            StackableIsSecondaryDelayedStackableTarget => context.stackableCause == secondary?.DelayedStackableTarget,
 
             //other non-card triggering things
             SpaceFitsRestriction => context.space != null && spaceRestriction.IsValidSpace(context.space, context),
 
             XFitsRestriction => context.x.HasValue && xRestriction.IsValidNumber(context.x.Value),
-            StackableSourceIsMainCard => context.stackable is Effect eff && eff.Source == context.mainCardInfoBefore.Card,
+            StackableSourceIsMainCard => context.stackableCause is Effect eff && eff.Source == context.mainCardInfoBefore.Card,
 
             ControllerTriggered => context.player == ThisCard.Controller,
             EnemyTriggered => context.player != ThisCard.Controller,
@@ -191,7 +192,8 @@ namespace KompasCore.Effects
             EnemyTurn => Game.TurnPlayer != ThisCard.Controller,
             FromField => context.mainCardInfoBefore.Location == CardLocation.Board,
             FromDeck => context.mainCardInfoBefore.Location == CardLocation.Deck,
-            NotFromEffect => !(context.stackable is Effect),
+            NotFromEffect => !(context.stackableCause is Effect),
+            FromAttack => context.stackableCause is Attack,
 
             //max
             MaxPerRound => ThisTrigger.Effect.TimesUsedThisRound < maxPerRound,

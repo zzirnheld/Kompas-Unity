@@ -105,5 +105,7 @@ namespace KompasCore.Effects
         public void AddSpace(Space space) => spaceTargets.Add(space.Copy);
 
         public override string ToString() => $"Effect of {(Source == null ? "Nothing???" : Source.CardName)}";
+
+        public GameCard GetCause(GameCard withRespectTo) => Source;
     }
 }

@@ -1,11 +1,11 @@
 {
 	"cardType": 83,
 	"cardName": "Revenance",
-	"effText": "When you draw a Revenant, you can discard it and draw 1.\n(Vanishes when a turn starts.)",
+	"effText": "When you draw a Revenant, you can hand->discard it and draw 1.\n(Vanishes when a turn starts.)",
 	"effects": [
 		{
 			"triggerData": {
-				"blurb": "Discard the drawn Revenant to draw 1?",
+				"blurb": "Hand->discard the drawn Revenant to draw 1?",
 				"optional": true,
 				"triggerCondition": "Each Card Drawn",
 				"triggerRestriction": {

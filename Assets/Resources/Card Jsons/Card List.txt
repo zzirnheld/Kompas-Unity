@@ -9,6 +9,14 @@ generic/Warlock
 generic/Juan Puntsch-Mann
 generic/Sapping Stone
 generic/Price of Fame
+generic/Crack Geode
+generic/Collective Dispel
+generic/Weigh Down
+generic/Bindsquash
+generic/Draining Shield
+generic/Last-Ditch Blast
+generic/Explosive Armor
+generic/Proximity Debinder
 aquatic/Big Tuna
 aquatic/Changing Tides
 aquatic/Fishing

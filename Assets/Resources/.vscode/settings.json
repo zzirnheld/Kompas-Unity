@@ -1,7 +1,7 @@
 {
     "files.exclude": {
-        "**/*.meta": true,
-        "**/*.png": true,
-        "**/*.png*": true
+        "**/**.meta": true,
+        "**/**.png": true,
+        "**/**.png**": true
     }
 }

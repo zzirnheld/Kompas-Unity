@@ -27,3 +27,4 @@ Vessel Cost Up
 Ambush
 Smite
 Stealth
+Evasive

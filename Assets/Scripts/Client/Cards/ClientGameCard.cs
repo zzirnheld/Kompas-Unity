@@ -22,7 +22,7 @@ namespace KompasClient.Cards
                 if (cardCtrl != null)
                 {
                     cardCtrl.ShowForCardType(CardType, ClientCameraController.Main.Zoomed);
-                    clientCardCtrl.Revealed = KnownToEnemy && InHiddenLocation;
+                    UpdateRevealed();
                 }
             }
         }
@@ -63,14 +63,14 @@ namespace KompasClient.Cards
             set
             {
                 knownToEnemy = value;
-                clientCardCtrl.Revealed = KnownToEnemy && InHiddenLocation;
+                UpdateRevealed();
             }
         }
 
-        public override void Remove(IStackable stackSrc = null)
+        public override bool Remove(IStackable stackSrc = null)
         {
             ClientGame.MarkCardDirty(this);
-            base.Remove(stackSrc);
+            return base.Remove(stackSrc);
         }
 
         public void SetInitialCardInfo(SerializableCard serializedCard, ClientGame game, ClientPlayer owner, ClientEffect[] effects, int id)
@@ -89,6 +89,20 @@ namespace KompasClient.Cards
             base.SetN(n, stackSrc, notify);
             if (ClientGame?.clientUICtrl.ShownCard == this)
                 ClientGame?.clientUICtrl.Refresh();
+        }
+
+        /// <summary>
+        /// Updates the clientCardCtrl to show the little revealed eye iff the card:<br/>
+        /// - is known to enemy<br/>
+        /// - is in an otherwise hidden location<br/>
+        /// - is controlled by an enemy<br/>
+        /// </summary>
+        private void UpdateRevealed()
+        {
+            if (clientCardCtrl != null)
+            {
+                clientCardCtrl.Revealed = KnownToEnemy && InHiddenLocation && !Owner.Friendly;
+            }
         }
     }
 }

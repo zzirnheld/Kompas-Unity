@@ -1,0 +1,39 @@
+{
+	"cardType": 65,
+	"cardName": "Proximity Debinder",
+	"effText": "When this character dies fighting, rehand the character they were fighting.",
+	"effects": [
+        {
+            "blurb":"Debind",
+			"triggerData": {
+				"triggerCondition": "Discard",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card",
+						"From Field",
+                        "From Attack"
+					]
+				}
+			},
+            "subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp",
+					"secondary":true
+				},
+				{
+					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				}
+            ]
+        }
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Augment Normal Restrictions"
+		],
+		"effectRestrictions": [
+			"Augment Effect Restrictions"
+		]
+	},
+	"a": 5,
+	"subtypeText": "Explosive"
+}

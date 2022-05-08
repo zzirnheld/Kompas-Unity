@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Runechanneler",
-	"effText": "Once each friendly turn, you can reshuffle X of your discarded Runes to hand-cast a C <= X Rune.",
+	"effText": "Once each turn, you can reshuffle X of your discarded Runes to hand-cast a C <= X Rune.",
 	"effects": [
 		{
 			"activationRestriction": {

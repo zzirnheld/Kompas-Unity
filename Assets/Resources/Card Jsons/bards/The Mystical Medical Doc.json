@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "The Mystical Medical Doc",
-	"effText": "When a character moves, dispel a friendly spell, discard 1 card, and draw 1 card.",
+	"effText": "When a character moves, dispel a friendly spell, hand->discard 1 card, and draw 1 card.",
 	"effects": [
 		{
 			"blurb": "At the pinnacle",

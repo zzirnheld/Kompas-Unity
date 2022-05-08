@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Swordguild Trainer",
-	"effText": "Once each friendly turn, I can give an adjacent Warrior +1 N.",
+	"effText": "Once each turn, I can give an adjacent Warrior +1 N.",
 	"effects": [
 		{
 			"activationRestriction": {

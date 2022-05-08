@@ -343,6 +343,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &3283930200777941314
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4354621341532770592}
+  m_Layer: 0
+  m_Name: EMPTY AOE PLACEHOLDER
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4354621341532770592
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3283930200777941314}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7105685457778891330}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4046630991650668047
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,6 +465,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7105685457778891330}
   - component: {fileID: 2240642709126700617}
+  - component: {fileID: 6771697672028358406}
   m_Layer: 0
   m_Name: Dummy Card
   m_TagString: Untagged
@@ -462,6 +493,7 @@ Transform:
   - {fileID: 290413246079323055}
   - {fileID: 5729374395671955682}
   - {fileID: 7978366656895530284}
+  - {fileID: 4354621341532770592}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -478,10 +510,74 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   simpleSprite: {fileID: 0}
-  cardCtrl: {fileID: 0}
+  cardCtrl: {fileID: 6771697672028358406}
   attacksThisTurn: 0
   mouseCtrl: {fileID: 0}
   clientCardCtrl: {fileID: 0}
+--- !u!114 &6771697672028358406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6108902677084055633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2e0f5c31fb60da4a81ad6a434305e02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  card: {fileID: 2240642709126700617}
+  aoeController: {fileID: 0}
+  zoomedCharFrame: {fileID: 0}
+  zoomedAllFrame: {fileID: 0}
+  unzoomedCharFrame: {fileID: 0}
+  unzoomedAllFrame: {fileID: 0}
+  zoomedCharStatBackgrounds: {fileID: 0}
+  unzoomedCharStatBackgrounds: {fileID: 0}
+  zoomedSpellStatBackgrounds: {fileID: 0}
+  unzoomedSpellStatBackgrounds: {fileID: 0}
+  zoomedAugStatBackgrounds: {fileID: 0}
+  unzoomedAugStatBackgrounds: {fileID: 0}
+  zoomedNText: {fileID: 0}
+  zoomedEText: {fileID: 0}
+  zoomedSText: {fileID: 0}
+  zoomedWText: {fileID: 0}
+  zoomedCText: {fileID: 0}
+  zoomedAText: {fileID: 0}
+  unzoomedNText: {fileID: 0}
+  unzoomedEText: {fileID: 0}
+  unzoomedSText: {fileID: 0}
+  unzoomedWText: {fileID: 0}
+  unzoomedCText: {fileID: 0}
+  unzoomedAText: {fileID: 0}
+  zoomedNameText: {fileID: 0}
+  zoomedSubtypesText: {fileID: 0}
+  zoomedEffText: {fileID: 0}
+  currentTargetObject: {fileID: 0}
+  validTargetObject: {fileID: 0}
+  uniqueCopyObject: {fileID: 0}
+  primaryStackableObject: {fileID: 0}
+  secondaryStackableObject: {fileID: 0}
+  attackOscillator: {fileID: 0}
+  effectOscillator: {fileID: 0}
+  cardImageImage: {fileID: 0}
+  nUnzoomedImage: {fileID: 0}
+  eUnzoomedImage: {fileID: 0}
+  sUnzoomedImage: {fileID: 0}
+  wUnzoomedImage: {fileID: 0}
+  cUnzoomedImage: {fileID: 0}
+  aUnzoomedImage: {fileID: 0}
+  zoomedHazeImage: {fileID: 0}
+  zoomedCharHaze: {fileID: 0}
+  zoomedNonCharHaze: {fileID: 0}
+  unzoomedHazeImage: {fileID: 0}
+  unzoomedCharHaze: {fileID: 0}
+  unzoomedNonCharHaze: {fileID: 0}
+  revealedImage: {fileID: 0}
+  mouseCtrl: {fileID: 0}
+  friendlyCardFrameMaterial: {fileID: 0}
+  enemyCardFrameMaterial: {fileID: 0}
+  frameObjects: []
 --- !u!1 &6573815698744709121
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Reporter Reportar",
-	"effText": "Once each friendly turn, you can reveal an SX Reporter. Your opponent can reveal an SX character. If they don't, pip deck->summon an S <= X character at half cost.",
+	"effText": "Once each turn, you can reveal an SX Reporter. Your opponent can reveal an SX character. If they don't, pip deck->summon an S <= X character at half cost.",
 	"effects": [
 		{
 			"activationRestriction": {

@@ -16,6 +16,8 @@ namespace KompasServer.Effects
 
         public ServerPlayer ServerController => null;
 
+        public GameCard GetCause(GameCard withRespectTo) => Source;
+
         public Task StartResolution(ActivationContext context)
         {
             throw new System.NotImplementedException();

@@ -26,33 +26,50 @@ namespace KompasCore.GameCore
         public GameCard Topdeck => Deck.FirstOrDefault();
         public GameCard Bottomdeck => Deck.LastOrDefault();
 
-        protected virtual void AddCard(GameCard card, IStackable stackSrc = null)
+        /// <summary>
+        /// Sets the card's information to match this deck, but doesn't set its index.
+        /// </summary>
+        /// <param name="card">The card to add to this deck</param>
+        /// <returns><see langword="true"/> if the add was completely successful.<br></br>
+        /// <see langword="false"/> if the add failed in a way that isn't considered "impossible" (i.e. removing an avatar)</returns>
+        protected virtual bool AddToDeck(GameCard card, IStackable stackSrc = null)
         {
-            Debug.Log($"Adding {card.CardName} to deck from {card.Location}");
-            card.Remove(stackSrc);
-            card.GameLocation = this;
-            card.Controller = Owner;
-            card.Position = null;
+            //Check if the card is successfully removed (if it's not, it's probably an avatar)
+            if (card.Remove(stackSrc))
+            {
+                Debug.Log($"Adding {card.CardName} to deck from {card.Location}");
+                card.GameLocation = this;
+                card.Controller = Owner;
+                card.Position = null;
+                return true;
+            }
+            return false;
         }
 
         //adding and removing cards
-        public virtual void PushTopdeck(GameCard card, IStackable stackSrc = null)
+        public virtual bool PushTopdeck(GameCard card, IStackable stackSrc = null)
         {
-            AddCard(card, stackSrc);
-            Deck.Insert(0, card);
+            bool ret = AddToDeck(card, stackSrc);
+            if (ret) Deck.Insert(0, card);
+            return ret;
         }
 
-        public virtual void PushBottomdeck(GameCard card, IStackable stackSrc = null)
+        public virtual bool PushBottomdeck(GameCard card, IStackable stackSrc = null)
         {
-            AddCard(card, stackSrc);
-            Deck.Add(card);
+            bool ret = AddToDeck(card, stackSrc);
+            if (ret) Deck.Add(card);
+            return ret;
         }
 
-        public virtual void ShuffleIn(GameCard card, IStackable stackSrc = null)
+        public virtual bool ShuffleIn(GameCard card, IStackable stackSrc = null)
         {
-            AddCard(card, stackSrc);
-            Deck.Add(card);
-            Shuffle();
+            bool ret = AddToDeck(card, stackSrc);
+            if (ret)
+            {
+                Deck.Add(card);
+                Shuffle();
+            }
+            return ret;
         }
 
         /// <summary>

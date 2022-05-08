@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Soulcutter the Heartless",
-	"effText": "Revenant.\nWhen a card is annihilated, discard a Revenant, draw 1, and if it's an enemy turn, gain a pip.",
+	"effText": "Revenant.\nWhen a card is annihilated, hand->discard a Revenant, draw 1, and if it's an enemy turn, gain a pip.",
 	"effects": [
 		{
 			"triggerData": {
