@@ -33,8 +33,10 @@ namespace KompasCore.Effects.Identities
                 cards.Initialize(restrictionContext);
             }
 
-            protected override ICollection<Space> AbstractLogic
-                => cards.CardsFrom(RestrictionContext.game).Select(c => c.Position).ToArray();
+            protected override ICollection<Space> AbstractLogic => cards.CardsFrom(RestrictionContext.game)
+                .Select(c => c.Position)
+                .Where(space => space != null)
+                .ToArray();
         }
     }
 }
