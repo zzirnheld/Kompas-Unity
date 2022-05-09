@@ -6,6 +6,7 @@ using UnityEngine;
 public struct MeshData
 {
     public Vector3[] Verts;
+    public Vector2[] UVs;
     public int[] Tris;
 }
 
@@ -20,42 +21,79 @@ public class VoxelCard : MonoBehaviour
 {
     public static float PI4 = Mathf.PI / 4.0f;
 
-    public bool RebuildOnChange;
+    public bool RebuildMeshOnChange;
+    public bool RebuildTextureOnChange;
     [Range(0.001f, 0.1f)]
     public float FrameThickness;
     [Range(0.1f, 0.7f)]
     public float TypePlacardWidth;
     public bool HasN, HasE, HasSAC, HasW, HasR, HasD;
+    public int TextureResolution;
+    public Sprite FrameTexture;
+    public Sprite NamePlacardTexture;
+    public Sprite TypePlacardTexture;
+    public Sprite NTexture;
+    public Sprite ETexture;
+    public Sprite SACTexture;
+    public Sprite WTexture;
+    public Sprite RTexture;
+    public Sprite DTexture;
+    public Sprite CharacterArt;
+    public Sprite EffectTextTexture;
+    public Sprite CardBackTexture;
 
     private Mesh CardMesh;
     
     public void OnInspectorChange()
     {
-        if (RebuildOnChange)
+        if (RebuildMeshOnChange)
         {
-            Generate();
+            GenerateMesh();
+        }
+        if (RebuildTextureOnChange)
+        {
+            GenerateTexture();
         }
     }
 
     public void Generate()
     {
+        GenerateMesh();
+        GenerateTexture();
+        //List<TextMeshPro> textBoxes = BuildTextBoxes();   //Not Implemented
+        //ApplyText(textBoxes);
+    }
+
+    public void GenerateMesh()
+    {
         MeshData newMesh = BuildMesh();
         ApplyMesh(newMesh);
-        //Texture2D newTexture = BuildTexture();            These haven't been implemented yet
-        //ApplyTexture(newTexture);
-        //List<TextMeshPro> textBoxes = BuildTextBoxes();
-        //ApplyText(textBoxes);
+    }
+
+    public void GenerateTexture()
+    {
+        Texture2D newTexture = BuildTexture();
+        ApplyTexture(newTexture);
     }
 
     private MeshData BuildMesh()
     {
         List<Vector3> verts = new List<Vector3>();
+        List<Vector2> uvs = new List<Vector2>();
         List<int> tris = new List<int>();
         void addTri(int v1, int v2, int v3) => tris.AddRange(new List<int> { v1, v2, v3 });
         Vector3 findInnerAngle(Vector3 center, Vector3 side1, Vector3 side2)
         {
             Vector3 avg = ((side1 - center).normalized + (side2 - center).normalized) * 0.5f;
             return avg.normalized;
+        }
+        void addUV(Vector3 point, int texture)
+        {
+            if (texture == 0) point *= 1.0f / (1.0f + FrameThickness);
+            float uvX = (point.x + 1.0f) * 0.5f;
+            float uvY = (point.z + 1.0f) * 0.5f;
+
+            uvs.Add(new Vector2((uvX + (texture % 3)) / 3.0f, (uvY + (texture / 3)) / 2.0f));
         }
 
         //Build card base
@@ -82,6 +120,13 @@ public class VoxelCard : MonoBehaviour
         addTri(06, 14, 10);    //front LL
         addTri(15, 03, 07);    //back UR
         addTri(07, 11, 15);    //back LL
+
+        //add front verts to front texture, back verts to back texture
+        for(int i = 0; i < 16; i += 2)
+        {
+            addUV(verts[i], 4);
+            addUV(verts[i + 1], 5);
+        }
 
         //Build 3/4 of outer frame. Current number of verts is 16.
         int vI = 16;
@@ -117,6 +162,12 @@ public class VoxelCard : MonoBehaviour
             }
         }
 
+        //add frame verts to frame texture
+        for(int i = vI; i < verts.Count; i++)
+        {
+            addUV(verts[i], 0);
+        }
+
         //Build name placard. Current number of verts is <math>, so cheat
         vI = verts.Count;
         float height = FrameThickness / 3.0f;
@@ -144,6 +195,12 @@ public class VoxelCard : MonoBehaviour
         addTri(vI + 1, vI + 4, vI + 2);
         addTri(vI + 2, vI + 4, vI + 5);
 
+        //add name placard verts to name placard texture
+        for(int i = vI; i < verts.Count; i++)
+        {
+            addUV(verts[i], 1);
+        }
+
         //Consistency is for nerds. Type placard
         vI += 6;
         height /= 2.0f;
@@ -164,6 +221,12 @@ public class VoxelCard : MonoBehaviour
         //Time to trihard
         addTri(vI + 0, vI + 2, vI + 1);
         addTri(vI + 1, vI + 2, vI + 3);
+
+        //and uvs again
+        for(int i = vI; i < verts.Count; i++)
+        {
+            addUV(verts[i], 2);
+        }
 
         //NOW FOR THE FUN PART
         //The non-modular part of the inner frame
@@ -186,7 +249,7 @@ public class VoxelCard : MonoBehaviour
             float modX = 1.0f + modifiers[i].x;
             verts.Add(new Vector3(edgeInnerThick.x, modifiers[i].y, edgeInnerThick.z + modifiers[i].x));
             verts.Add(new Vector3(edgeThin.x * modX, modifiers[i].y, edgeThin.z * modX));
-            verts.Add(verts[2] * modX + modifiers[i].y * Vector3.up);
+            verts.Add(new Vector3(verts[2].x * modX, modifiers[i].y, verts[2].z * modX));
             verts.Add(new Vector3(verts[vIlocal + 1].z, verts[vIlocal + 1].y, verts[vIlocal + 1].x));
             verts.Add(new Vector3(verts[vIlocal].z, verts[vIlocal].y, verts[vIlocal].x));
         }
@@ -194,8 +257,8 @@ public class VoxelCard : MonoBehaviour
         verts.Add(new Vector3(edgeOuterThick.x, modifiers[6].y, edgeOuterThick.z));
         verts.Add(new Vector3(edgeOuterThick.z, modifiers[6].y, edgeOuterThick.x));
 
-        //and 22 triangles
-        for(int i = 0; i < 5; i++)
+        //and 18 triangles
+        for(int i = 0; i < 4; i++)
         {
             int v1 = vI + i;
             int v2 = v1 + 1;
@@ -226,10 +289,16 @@ public class VoxelCard : MonoBehaviour
         verts.Add(new Vector3(-verts[vI + 15].x, verts[vI + 15].y, verts[vI + 15].z));
 
         //Now to copy our tris
-        for (int i = 0; i < 22; i++)
+        for (int i = 0; i < 18; i++)
         {
-            int triI = tris.Count - 66;
+            int triI = tris.Count - 54;
             addTri(tris[triI] + 17, tris[triI + 1] + 17, tris[triI + 2] + 17);
+        }
+
+        //add everything to UVs
+        for(int i = vI; i < verts.Count; i++)
+        {
+            addUV(verts[i], 0);
         }
 
         //For the lower corners, we're just going to generate the thick parts of the frame for now.
@@ -265,6 +334,12 @@ public class VoxelCard : MonoBehaviour
             addTri(vIlocal + 8, vIlocal + 9, vIlocal + 5);
 
             addTri(vIlocal + 8, i % 2 == 0 ? vIlocal + 12 : vIlocal + 11, vIlocal + 9);
+        }
+
+        //uv
+        for(int i = vI; i < verts.Count; i++)
+        {
+            addUV(verts[i], 0);
         }
 
         //Home stretch - modular stat tabs
@@ -401,6 +476,16 @@ public class VoxelCard : MonoBehaviour
                 float newX = verts[j].x * Mathf.Cos(-2 * PI4 * i) - verts[j].z * Mathf.Sin(-2 * PI4 * i);
                 float newZ = verts[j].x * Mathf.Sin(-2 * PI4 * i) + verts[j].z * Mathf.Cos(-2 * PI4 * i);
                 verts[j] = new Vector3(newX, verts[j].y, newZ);
+
+                //because some parts of this need different textures, we need to be a little sneaky with the UVs
+                if(makeTab[i] && j - vI < 6)
+                {
+                    addUV(verts[j], 3);
+                }
+                else
+                {
+                    addUV(verts[j], 0);
+                }
             }
         }
 
@@ -537,13 +622,26 @@ public class VoxelCard : MonoBehaviour
                 float newX = verts[j].x * Mathf.Cos(-PI4 * (3 + 2 * i)) - verts[j].z * Mathf.Sin(-PI4 * (3 + 2 * i));
                 float newZ = verts[j].x * Mathf.Sin(-PI4 * (3 + 2 * i)) + verts[j].z * Mathf.Cos(-PI4 * (3 + 2 * i));
                 verts[j] = new Vector3(newX, verts[j].y, newZ);
+
+                //because some parts of this need different textures, we need to be a little sneaky with the UVs
+                if (makeTab[i] && j - vI < 6)
+                {
+                    addUV(verts[j], 3);
+                }
+                else
+                {
+                    addUV(verts[j], 0);
+                }
             }
         }
 
         //Phew, we made it. Send the data back.
-        MeshData newMesh = new MeshData();
-        newMesh.Verts = verts.ToArray();
-        newMesh.Tris = tris.ToArray();
+        MeshData newMesh = new MeshData
+        {
+            Verts = verts.ToArray(),
+            UVs = uvs.ToArray(),
+            Tris = tris.ToArray()
+        };
         return newMesh;
     }
 
@@ -559,6 +657,7 @@ public class VoxelCard : MonoBehaviour
 
         CardMesh.Clear();
         CardMesh.vertices = newMesh.Verts;
+        CardMesh.uv = newMesh.UVs;
         CardMesh.triangles = newMesh.Tris;
         CardMesh.RecalculateNormals();
 
@@ -566,15 +665,295 @@ public class VoxelCard : MonoBehaviour
         collider.sharedMesh = CardMesh;
     }
 
-    //private Texture2D BuildTexture()
-    //{
+    private Texture2D BuildTexture()
+    {
+        Texture2D newTexture = new Texture2D(TextureResolution * 3, TextureResolution * 2, TextureFormat.ARGB32, false);
 
-    //}
+        Vector2Int FrameSamplingStartIndex;
+        float FrameSamplingIncrement;
 
-    //private void ApplyTexture(Texture2D newTexture)
-    //{
+        if(FrameTexture.texture.width > FrameTexture.texture.height)
+        {
+            FrameSamplingStartIndex = new Vector2Int((FrameTexture.texture.width - FrameTexture.texture.height) / 2, 0);
+            FrameSamplingIncrement = (float)FrameTexture.texture.height / TextureResolution;
+        }
+        else
+        {
+            FrameSamplingStartIndex = new Vector2Int((FrameTexture.texture.height - FrameTexture.texture.width) / 2, 0);
+            FrameSamplingIncrement = (float)FrameTexture.texture.width / TextureResolution;
+        }
 
-    //}
+        Vector2Int NamePlacardSamplingStartIndex;
+        float NamePlacardSamplingIncrement;
+
+        if (NamePlacardTexture.texture.width > NamePlacardTexture.texture.height)
+        {
+            NamePlacardSamplingStartIndex = new Vector2Int((NamePlacardTexture.texture.width - NamePlacardTexture.texture.height) / 2, 0);
+            NamePlacardSamplingIncrement = (float)NamePlacardTexture.texture.height / TextureResolution;
+        }
+        else
+        {
+            NamePlacardSamplingStartIndex = new Vector2Int((NamePlacardTexture.texture.height - NamePlacardTexture.texture.width) / 2, 0);
+            NamePlacardSamplingIncrement = (float)NamePlacardTexture.texture.width / TextureResolution;
+        }
+
+        Vector2Int TypePlacardSamplingStartIndex;
+        float TypePlacardSamplingIncrement;
+
+        if (TypePlacardTexture.texture.width > TypePlacardTexture.texture.height)
+        {
+            TypePlacardSamplingStartIndex = new Vector2Int((TypePlacardTexture.texture.width - TypePlacardTexture.texture.height) / 2, 0);
+            TypePlacardSamplingIncrement = (float)TypePlacardTexture.texture.height / TextureResolution;
+        }
+        else
+        {
+            TypePlacardSamplingStartIndex = new Vector2Int((TypePlacardTexture.texture.height - TypePlacardTexture.texture.width) / 2, 0);
+            TypePlacardSamplingIncrement = (float)TypePlacardTexture.texture.width / TextureResolution;
+        }
+
+        Vector2Int NSamplingStartIndex;
+        float NSamplingIncrement;
+
+        if (NTexture.texture.width > NTexture.texture.height)
+        {
+            NSamplingStartIndex = new Vector2Int((NTexture.texture.width - NTexture.texture.height) / 2, 0);
+            NSamplingIncrement = (float)NTexture.texture.height / TextureResolution;
+        }
+        else
+        {
+            NSamplingStartIndex = new Vector2Int((NTexture.texture.height - NTexture.texture.width) / 2, 0);
+            NSamplingIncrement = (float)NTexture.texture.width / TextureResolution;
+        }
+
+        Vector2Int ESamplingStartIndex;
+        float ESamplingIncrement;
+
+        if (ETexture.texture.width > ETexture.texture.height)
+        {
+            ESamplingStartIndex = new Vector2Int((ETexture.texture.width - ETexture.texture.height) / 2, 0);
+            ESamplingIncrement = (float)ETexture.texture.height / TextureResolution;
+        }
+        else
+        {
+            ESamplingStartIndex = new Vector2Int((ETexture.texture.height - ETexture.texture.width) / 2, 0);
+            ESamplingIncrement = (float)ETexture.texture.width / TextureResolution;
+        }
+
+        Vector2Int SACSamplingStartIndex;
+        float SACSamplingIncrement;
+
+        if (SACTexture.texture.width > SACTexture.texture.height)
+        {
+            SACSamplingStartIndex = new Vector2Int((SACTexture.texture.width - SACTexture.texture.height) / 2, 0);
+            SACSamplingIncrement = (float)SACTexture.texture.height / TextureResolution;
+        }
+        else
+        {
+            SACSamplingStartIndex = new Vector2Int((SACTexture.texture.height - SACTexture.texture.width) / 2, 0);
+            SACSamplingIncrement = (float)SACTexture.texture.width / TextureResolution;
+        }
+
+        Vector2Int WSamplingStartIndex;
+        float WSamplingIncrement;
+
+        if (WTexture.texture.width > WTexture.texture.height)
+        {
+            WSamplingStartIndex = new Vector2Int((WTexture.texture.width - WTexture.texture.height) / 2, 0);
+            WSamplingIncrement = (float)WTexture.texture.height / TextureResolution;
+        }
+        else
+        {
+            WSamplingStartIndex = new Vector2Int((WTexture.texture.height - WTexture.texture.width) / 2, 0);
+            WSamplingIncrement = (float)WTexture.texture.width / TextureResolution;
+        }
+
+        Vector2Int RSamplingStartIndex;
+        float RSamplingIncrement;
+
+        if (RTexture.texture.width > RTexture.texture.height)
+        {
+            RSamplingStartIndex = new Vector2Int((RTexture.texture.width - RTexture.texture.height) / 2, 0);
+            RSamplingIncrement = (float)RTexture.texture.height / TextureResolution;
+        }
+        else
+        {
+            RSamplingStartIndex = new Vector2Int((RTexture.texture.height - RTexture.texture.width) / 2, 0);
+            RSamplingIncrement = (float)RTexture.texture.width / TextureResolution;
+        }
+
+        Vector2Int DSamplingStartIndex;
+        float DSamplingIncrement;
+
+        if (DTexture.texture.width > DTexture.texture.height)
+        {
+            DSamplingStartIndex = new Vector2Int((DTexture.texture.width - DTexture.texture.height) / 2, 0);
+            DSamplingIncrement = (float)DTexture.texture.height / TextureResolution;
+        }
+        else
+        {
+            DSamplingStartIndex = new Vector2Int((DTexture.texture.height - DTexture.texture.width) / 2, 0);
+            DSamplingIncrement = (float)DTexture.texture.width / TextureResolution;
+        }
+
+        Vector2Int CharacterArtSamplingStartIndex;
+        float CharacterArtSamplingIncrement;
+
+        if (CharacterArt.texture.width > CharacterArt.texture.height)
+        {
+            CharacterArtSamplingStartIndex = new Vector2Int((CharacterArt.texture.width - CharacterArt.texture.height) / 2, 0);
+            CharacterArtSamplingIncrement = CharacterArt.texture.height * 24.0f / (TextureResolution * 17.0f);
+            CharacterArtSamplingStartIndex += (int)(CharacterArt.texture.height / 17.0f) * Vector2Int.right;
+            CharacterArtSamplingStartIndex += (int)(CharacterArt.texture.height * 2.0f / 17.0f) * Vector2Int.down;
+        }
+        else
+        {
+            CharacterArtSamplingStartIndex = new Vector2Int((CharacterArt.texture.height - CharacterArt.texture.width) / 2, 0);
+            CharacterArtSamplingIncrement = CharacterArt.texture.width * 24.0f / (TextureResolution * 17.0f);
+            CharacterArtSamplingStartIndex += (int)(CharacterArt.texture.width / 17.0f) * Vector2Int.right;
+            CharacterArtSamplingStartIndex += (int)(CharacterArt.texture.width * 2.0f / 17.0f) * Vector2Int.down;
+        }
+
+        Vector2Int EffectTextSamplingStartIndex;
+        float EffectTextSamplingIncrement;
+
+        if (EffectTextTexture.texture.width > EffectTextTexture.texture.height)
+        {
+            EffectTextSamplingStartIndex = new Vector2Int((EffectTextTexture.texture.width - EffectTextTexture.texture.height) / 2, 0);
+            EffectTextSamplingIncrement = (float)EffectTextTexture.texture.height / TextureResolution;
+        }
+        else
+        {
+            EffectTextSamplingStartIndex = new Vector2Int((EffectTextTexture.texture.height - EffectTextTexture.texture.width) / 2, 0);
+            EffectTextSamplingIncrement = (float)EffectTextTexture.texture.width / TextureResolution;
+        }
+
+        Vector2Int CardBackSamplingStartIndex;
+        float CardBackSamplingIncrement;
+
+        if (CardBackTexture.texture.width > CardBackTexture.texture.height)
+        {
+            CardBackSamplingStartIndex = new Vector2Int((CardBackTexture.texture.width - CardBackTexture.texture.height) / 2, 0);
+            CardBackSamplingIncrement = (float)CardBackTexture.texture.height / TextureResolution;
+        }
+        else
+        {
+            CardBackSamplingStartIndex = new Vector2Int((CardBackTexture.texture.height - CardBackTexture.texture.width) / 2, 0);
+            CardBackSamplingIncrement = (float)CardBackTexture.texture.width / TextureResolution;
+        }
+
+        for (int x = 0; x < TextureResolution; x++)
+        {
+            for (int y = 0; y < TextureResolution; y++)
+            {
+                Vector2Int position;
+                Vector2Int samplePosition;
+
+                //Frame texture
+                position = new Vector2Int(x, y);
+                samplePosition = new Vector2Int(FrameSamplingStartIndex.x + (int)(FrameSamplingIncrement * x), FrameSamplingStartIndex.y + (int)(FrameSamplingIncrement * y));
+                newTexture.SetPixel(position.x, position.y, FrameTexture.texture.GetPixel(samplePosition.x, samplePosition.y));
+
+                //Name placard texture
+                position += TextureResolution * Vector2Int.right;
+                samplePosition = new Vector2Int(NamePlacardSamplingStartIndex.x + (int)(NamePlacardSamplingIncrement * x), NamePlacardSamplingStartIndex.y + (int)(NamePlacardSamplingIncrement * y));
+                newTexture.SetPixel(position.x, position.y, NamePlacardTexture.texture.GetPixel(samplePosition.x, samplePosition.y));
+
+                //Type placard texture
+                position += TextureResolution * Vector2Int.right;
+                samplePosition = new Vector2Int(TypePlacardSamplingStartIndex.x + (int)(TypePlacardSamplingIncrement * x), TypePlacardSamplingStartIndex.y + (int)(TypePlacardSamplingIncrement * y));
+                newTexture.SetPixel(position.x, position.y, TypePlacardTexture.texture.GetPixel(samplePosition.x, samplePosition.y));
+
+                //Stats placards texture
+                position = new Vector2Int(x, TextureResolution + y);
+                Vector2Int statsStartIndex;
+                float statsIncrement;
+                Sprite statsTexture;
+                if(x < TextureResolution / 3)
+                {
+                    if(y > TextureResolution / 3)
+                    {
+                        statsStartIndex = WSamplingStartIndex;
+                        statsIncrement = WSamplingIncrement;
+                        statsTexture = WTexture;
+                    }
+                    else
+                    {
+                        statsStartIndex = DSamplingStartIndex;
+                        statsIncrement = DSamplingIncrement;
+                        statsTexture = DTexture;
+                    }
+                }
+                else if (x < 2 * TextureResolution / 3)
+                {
+                    if(y > TextureResolution / 2)
+                    {
+                        statsStartIndex = NSamplingStartIndex;
+                        statsIncrement = NSamplingIncrement;
+                        statsTexture = NTexture;
+                    }
+                    else
+                    {
+                        statsStartIndex = SACSamplingStartIndex;
+                        statsIncrement = SACSamplingIncrement;
+                        statsTexture = SACTexture;
+                    }
+                }
+                else
+                {
+                    if (y > TextureResolution / 3)
+                    {
+                        statsStartIndex = ESamplingStartIndex;
+                        statsIncrement = ESamplingIncrement;
+                        statsTexture = ETexture;
+                    }
+                    else
+                    {
+                        statsStartIndex = RSamplingStartIndex;
+                        statsIncrement = RSamplingIncrement;
+                        statsTexture = RTexture;
+                    }
+                }
+                samplePosition = new Vector2Int(statsStartIndex.x + (int)(statsIncrement * x), statsStartIndex.y + (int)(statsIncrement * y));
+                newTexture.SetPixel(position.x, position.y, statsTexture.texture.GetPixel(samplePosition.x, samplePosition.y));
+
+                //Art and effect text texture
+                position += TextureResolution * Vector2Int.right;
+                Vector2Int frontStartIndex = EffectTextSamplingStartIndex;
+                float frontIncrement = EffectTextSamplingIncrement;
+                Sprite frontTexture = EffectTextTexture;
+                if(x < TextureResolution * 0.5f * (1 - FrameThickness))
+                {
+                    if (y > TextureResolution / 12.0f && y < 19.0f * TextureResolution / 24.0f)
+                    {
+                        frontStartIndex = CharacterArtSamplingStartIndex;
+                        frontIncrement = CharacterArtSamplingIncrement;
+                        frontTexture = CharacterArt;
+                    }
+                }
+                else if(x < TextureResolution * 0.5f * (1 + FrameThickness))
+                {
+                    frontStartIndex = FrameSamplingStartIndex;
+                    frontIncrement = FrameSamplingIncrement;
+                    frontTexture = FrameTexture;
+                }
+                samplePosition = new Vector2Int(frontStartIndex.x + (int)(frontIncrement * x), frontStartIndex.y + (int)(frontIncrement * y));
+                newTexture.SetPixel(position.x, position.y, frontTexture.texture.GetPixel(samplePosition.x, samplePosition.y));
+
+                //Card back texture
+                position += TextureResolution * Vector2Int.right;
+                samplePosition = new Vector2Int(CardBackSamplingStartIndex.x + (int)(CardBackSamplingIncrement * x), CardBackSamplingStartIndex.y + (int)(CardBackSamplingIncrement * y));
+                newTexture.SetPixel(position.x, position.y, CardBackTexture.texture.GetPixel(samplePosition.x, samplePosition.y));
+            }
+        }
+
+        newTexture.Apply();
+        return newTexture;
+    }
+
+    private void ApplyTexture(Texture2D newTexture)
+    {
+        gameObject.GetComponent<MeshRenderer>().sharedMaterial.SetTexture("_MainTex", newTexture);
+    }
 
     //private List<TextMeshPro> BuildTextBoxes()
     //{
