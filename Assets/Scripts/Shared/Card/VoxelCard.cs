@@ -624,7 +624,7 @@ public class VoxelCard : MonoBehaviour
                 verts[j] = new Vector3(newX, verts[j].y, newZ);
 
                 //because some parts of this need different textures, we need to be a little sneaky with the UVs
-                if (makeTab[i] && j - vI < 6)
+                if (makeTabDR[i] && j - vI < 6)
                 {
                     addUV(verts[j], 3);
                 }
