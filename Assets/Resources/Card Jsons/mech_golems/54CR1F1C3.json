@@ -30,7 +30,7 @@
 					"$type": "KompasServer.Effects.SetXByNumberIdentitySubeffect, Assembly-CSharp",
 					"numberIdentity": {
 						"$type": "KompasServer.Effects.Identities.SubeffectNumberIdentities.Selector, Assembly-CSharp",
-						"selector": { "$type": "KompasCore.Effects.Identities.selectors.Minimum, Assembly-CSharp" },
+						"selector": { "$type": "KompasCore.Effects.Identities.NumberSelectors.Minimum, Assembly-CSharp" },
 						"numbers": {
 							"$type": "KompasServer.Effects.Identities.SubeffectManyNumbersIdentities.Distances, Assembly-CSharp",
 							"origin": {
@@ -40,10 +40,10 @@
 							"destinations": {
 								"$type": "KompasServer.Effects.Identities.SubeffectManySpacesIdentities.PositionsOfEach, Assembly-CSharp",
 								"cards": {
-									"$type": "KompasServer.Effects.Identities.SubeffectManyCardsIdentities.FittingRestriction, Assembly-CSharp",
+									"$type": "KompasCore.Effects.Identities.GamestateManyCardsIdentities.FittingRestriction, Assembly-CSharp",
 									"cardRestriction": {
 										"cardRestrictionElements": [
-											{ "$type": "KompasCore.Effects.Restrictions.CardRestrictionElement.EnemyCard, Assembly-CSharp" }
+											{ "$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.EnemyCard, Assembly-CSharp" }
 										]
 									}
 								}
@@ -57,14 +57,14 @@
 					"cardRestriction": {
 						"cardRestrictionElements": [
                             {
-                                "$type": "KompasCore.Effects.Restrictions.CardRestrictionElement.PositionFitsRestriction, Assembly-CSharp",
+                                "$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.PositionFitsRestriction, Assembly-CSharp",
                                 "spaceRestriction": {
                                     "spaceRestrictionElements": [
 										{
 											"$type": "KompasCore.Effects.Restrictions.SpaceRestrictionElements.CompareDistance, Assembly-CSharp",
 											"distanceTo": {
 												"$type": "KompasServer.Effects.Identities.SubeffectSpaceIdentities.PositionOf, Assembly-CSharp",
-												"cardIdentity": { "$type": "KompasServer.Effects.Identities.GamestateCardIdentities.ThisCard, Assembly-CSharp" }
+												"whosePosition": { "$type": "KompasCore.Effects.Identities.GamestateCardIdentities.ThisCard, Assembly-CSharp" }
 											},
 											"number": { "$type": "KompasServer.Effects.Identities.SubeffectNumberIdentities.X, Assembly-CSharp" },
 											"comparison": { "$type": "KompasCore.Effects.Relationships.NumberRelationships.Equal, Assembly-CSharp" }

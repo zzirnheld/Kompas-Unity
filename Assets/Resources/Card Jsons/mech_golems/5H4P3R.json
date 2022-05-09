@@ -24,7 +24,7 @@
 					"cardsIdentity": {
 						"$type": "KompasServer.Effects.Identities.SubeffectManyCardsIdentities.CardsInPositions, Assembly-CSharp",
 						"positions": {
-							"$type": "KompasServer.Effects.Identities.SubeffectManySpacesIdentity.ThreeSpaceRelationship, Assembly-CSharp",
+							"$type": "KompasServer.Effects.Identities.SubeffectManySpacesIdentities.ThreeSpaceRelationship, Assembly-CSharp",
 							"firstSpace": {
 								"$type": "KompasServer.Effects.Identities.SubeffectSpaceIdentities.PositionOf, Assembly-CSharp",
 								"whosePosition": {
@@ -34,7 +34,10 @@
 									}
 								}
 							},
-							"secondSpace": { "$type": "KompasCore.Effects.Identities.ActivationContextSpaceIdentities.ContextSpace, Assembly-CSharp" },
+							"secondSpace": {
+								"$type": "KompasServer.Effects.Identities.SubeffectSpaceIdentities.FromActivationContext, Assembly-CSharp",
+								"space": { "$type": "KompasCore.Effects.Identities.ActivationContextSpaceIdentities.ContextSpace, Assembly-CSharp" }
+							},
 							"thirdSpaceRelationship": { "$type": "KompasCore.Effects.Identities.ThreeSpaceRelationships.Between, Assembly-CSharp" }
 						}
 					}
