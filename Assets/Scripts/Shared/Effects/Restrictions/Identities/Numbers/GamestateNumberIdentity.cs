@@ -2,14 +2,14 @@ namespace KompasCore.Effects.Identities
 {
     public abstract class GamestateNumberIdentity : ContextInitializeableBase, IContextInitializeable
     {
-        protected abstract int NumberLogic { get; }
+        protected abstract int AbstractNumber { get; }
 
         public int Number
         {
             get
             {
                 ComplainIfNotInitialized();
-                return NumberLogic;
+                return AbstractNumber;
             }
         }
     }
@@ -18,17 +18,17 @@ namespace KompasCore.Effects.Identities
     {
         public class Selector : GamestateNumberIdentity
         {
-            public INumberSelector numberSelector;
-            public GamestateManyNumbersIdentity numbersIdentity;
+            public INumberSelector selector;
+            public GamestateManyNumbersIdentity numbers;
 
             public override void Initialize(RestrictionContext restrictionContext)
             {
                 base.Initialize(restrictionContext);
-                numbersIdentity.Initialize(restrictionContext);
+                numbers.Initialize(restrictionContext);
             }
 
-            protected override int NumberLogic
-                => numberSelector.Apply(numbersIdentity.Numbers);
+            protected override int AbstractNumber
+                => selector.Apply(numbers.Numbers);
         }
     }
 }

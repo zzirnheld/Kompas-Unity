@@ -13,18 +13,18 @@ namespace KompasCore.Effects.Identities
 
     namespace ActivationContextSpaceIdentities
     {
-        public class CardPosition : ActivationContextSpaceIdentity
+        public class PositionOf : ActivationContextSpaceIdentity
         {
-            public ActivationContextCardIdentity cardIdentity;
+            public ActivationContextCardIdentity whosePosition;
 
             public override void Initialize(RestrictionContext restrictionContext)
             {
-                cardIdentity.Initialize(restrictionContext);
+                whosePosition.Initialize(restrictionContext);
                 base.Initialize(restrictionContext);
             }
 
             protected override Space AbstractSpaceFrom(ActivationContext context)
-                => cardIdentity.CardFrom(context).Position;
+                => whosePosition.CardFrom(context).Position;
         }
 
         public class ContextSpace : ActivationContextSpaceIdentity
@@ -35,23 +35,23 @@ namespace KompasCore.Effects.Identities
 
         public class TwoSpaceIdentity : ActivationContextSpaceIdentity
         {
-            public ActivationContextSpaceIdentity firstSpaceIdentity;
-            public ActivationContextSpaceIdentity secondSpaceIdentity;
+            public ActivationContextSpaceIdentity firstSpace;
+            public ActivationContextSpaceIdentity secondSpace;
 
-            public ITwoSpaceIdentity compositionSpaceIdentity;
+            public ITwoSpaceIdentity relationship;
 
             public override void Initialize(RestrictionContext restrictionContext)
             {
-                firstSpaceIdentity.Initialize(restrictionContext);
-                secondSpaceIdentity.Initialize(restrictionContext);
+                firstSpace.Initialize(restrictionContext);
+                secondSpace.Initialize(restrictionContext);
                 base.Initialize(restrictionContext);
             }
 
             protected override Space AbstractSpaceFrom(ActivationContext context)
             {
-                Space first = firstSpaceIdentity.SpaceFrom(context);
-                Space second = secondSpaceIdentity.SpaceFrom(context);
-                return compositionSpaceIdentity.SpaceFrom(first, second);
+                Space first = firstSpace.SpaceFrom(context);
+                Space second = secondSpace.SpaceFrom(context);
+                return relationship.SpaceFrom(first, second);
             }
         }
     }

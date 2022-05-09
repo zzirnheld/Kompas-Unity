@@ -23,25 +23,25 @@ namespace KompasCore.Effects.Restrictions
         /// </summary>
         public class CompareDistance : SpaceRestrictionElement
         {
-            public SubeffectSpaceIdentity originIdentity;
-            public SubeffectNumberIdentity numberIdentity;
-            public INumberRelationship numberRelationship;
+            public SubeffectSpaceIdentity distanceTo;
+            public SubeffectNumberIdentity number;
+            public INumberRelationship comparison;
 
             public override void Initialize(RestrictionContext restrictionContext)
             {
                 base.Initialize(restrictionContext);
-                originIdentity.Initialize(restrictionContext);
-                numberIdentity.Initialize(restrictionContext);
+                distanceTo.Initialize(restrictionContext);
+                number.Initialize(restrictionContext);
             }
 
             protected override bool AbstractIsValidSpace(Space space, ActivationContext context)
             {
-                var origin = originIdentity.Space;
+                var origin = this.distanceTo.Space;
                 int distance = origin.DistanceTo(space);
 
-                int number = numberIdentity.Number;
+                int number = this.number.Number;
 
-                return numberRelationship.Compare(distance, number);
+                return comparison.Compare(distance, number);
             }
         }
     }

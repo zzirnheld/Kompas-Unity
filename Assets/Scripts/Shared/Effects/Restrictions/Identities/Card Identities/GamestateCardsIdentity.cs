@@ -21,7 +21,7 @@ namespace KompasCore.Effects.Identities
 
     namespace GamestateManyCardsIdentities
     {
-        public class All : GamestateCardsIdentity
+        public class FittingRestriction : GamestateCardsIdentity
         {
             public CardRestriction cardRestriction;
 

@@ -24,15 +24,28 @@ namespace KompasServer.Effects.Identities
         /// </summary>
         public class FromGamestate : SubeffectSpaceIdentity
         {
-            public GamestateSpaceIdentity spaceIdentity;
+            public GamestateSpaceIdentity spaceFromGamestate;
 
             public override void Initialize(RestrictionContext restrictionContext)
             {
                 base.Initialize(restrictionContext);
-                spaceIdentity.Initialize(restrictionContext);
+                spaceFromGamestate.Initialize(restrictionContext);
             }
 
-            protected override Space AbstractSpace => spaceIdentity.Space;
+            protected override Space AbstractSpace => spaceFromGamestate.Space;
+        }
+
+        public class PositionOf : SubeffectSpaceIdentity
+        {
+            public SubeffectCardIdentity whosePosition;
+
+            public override void Initialize(RestrictionContext restrictionContext)
+            {
+                base.Initialize(restrictionContext);
+                whosePosition.Initialize(restrictionContext);
+            }
+
+            protected override Space AbstractSpace => whosePosition.Card.Position;
         }
     }
 }

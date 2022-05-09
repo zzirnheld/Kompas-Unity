@@ -1,9 +1,10 @@
+using KompasCore.Effects;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace KompasCore.Effects.Identities
+namespace KompasServer.Effects.Identities
 {
-    public abstract class GamestateManyNumbersIdentity : ContextInitializeableBase, IContextInitializeable
+    public abstract class SubeffectManyNumbersIdentity : ContextInitializeableBase, IContextInitializeable
     {
         protected abstract ICollection<int> AbstractNumbers { get; }
 
@@ -17,12 +18,12 @@ namespace KompasCore.Effects.Identities
         }
     }
 
-    namespace GamestateManyNumbersIdentities
+    namespace SubeffectManyNumbersIdentities
     {
-        public class Distances : GamestateManyNumbersIdentity
+        public class Distances : SubeffectManyNumbersIdentity
         {
-            public GamestateSpaceIdentity origin;
-            public GamestateManySpacesIdentity destinations;
+            public SubeffectSpaceIdentity origin;
+            public SubeffectManySpacesIdentity destinations;
 
             public override void Initialize(RestrictionContext restrictionContext)
             {

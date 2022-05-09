@@ -176,6 +176,8 @@ namespace KompasCore.Effects
         /// <param name="subeff"></param>
         public void Initialize(Subeffect subeff) => Initialize(subeff.Source, subeff.Effect, subeff);
 
+        public void Initialize(RestrictionContext rc) => Initialize(source: rc.source, effect: rc.subeffect?.Effect, subeffect: rc.subeffect);
+
         /// <summary>
         /// Initializes this card restriction to match the given information.
         /// </summary>

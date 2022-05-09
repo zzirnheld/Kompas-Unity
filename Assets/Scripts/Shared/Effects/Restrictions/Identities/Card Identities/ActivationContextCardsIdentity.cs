@@ -16,7 +16,7 @@ namespace KompasServer.Effects.Identities
         }
     }
 
-    namespace ActivationContextCardIdentities
+    namespace ActivationContextManyCardsIdentities
     {
         public class CardsInPositions : ActivationContextCardsIdentity
         {

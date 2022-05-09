@@ -1,4 +1,5 @@
 using KompasCore.Effects;
+using KompasCore.Effects.Identities;
 using KompasCore.Effects.Relationships;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,34 +37,46 @@ namespace KompasServer.Effects.Identities
         }
 
         /// <summary>
-        /// Spaces for whom the distance between them and a defined space, compared to the given number, is in some relationship.
-        /// For example, spaces whose distance between them and this card's space (defined space), are greater than (relationship) X (the given number).
-        /// <br/>
-        /// NOTE: The comparison's LHS is the distance, and RHS is the number.
+        /// Spaces where they are in some defined relationship with respect to the other two defined spaces.
+        /// For example, spaces that are between (relationship) the source card's space and the target space (two defined spaces).
         /// </summary>
-        public class CompareDistance : SubeffectManySpacesIdentity
+        public class ThreeSpaceRelationship : SubeffectManySpacesIdentity
         {
-            public SubeffectSpaceIdentity originIdentity;
-            public SubeffectNumberIdentity numberIdentity;
-            public INumberRelationship numberRelationship;
+            public SubeffectSpaceIdentity firstSpace;
+            public SubeffectSpaceIdentity secondSpace;
+
+            public IThreeSpaceRelationship thirdSpaceRelationship;
 
             public override void Initialize(RestrictionContext restrictionContext)
             {
                 base.Initialize(restrictionContext);
-                originIdentity.Initialize(restrictionContext);
-                numberIdentity.Initialize(restrictionContext);
+                firstSpace.Initialize(restrictionContext);
+                secondSpace.Initialize(restrictionContext);
             }
 
             protected override ICollection<Space> AbstractSpaces
             {
                 get
                 {
-                    var origin = originIdentity.Space;
-                    int number = numberIdentity.Number;
-
-                    return Space.Spaces.Where(s => numberRelationship.Compare(origin.DistanceTo(s), number)).ToArray();
+                    Space first = firstSpace.Space;
+                    Space second = secondSpace.Space;
+                    return Space.Spaces.Where(space => thirdSpaceRelationship.Evaluate(first, second, space)).ToArray();
                 }
             }
+        }
+
+        public class PositionsOfEach : SubeffectManySpacesIdentity
+        {
+            public GamestateCardsIdentity cards;
+
+            public override void Initialize(RestrictionContext restrictionContext)
+            {
+                base.Initialize(restrictionContext);
+                cards.Initialize(restrictionContext);
+            }
+
+            protected override ICollection<Space> AbstractSpaces
+                => cards.CardsFrom(RestrictionContext.game).Select(c => c.Position).ToArray();
         }
     }
 }

@@ -116,6 +116,9 @@ namespace KompasCore.Effects
 
         public void Initialize(Subeffect subeffect) => Initialize(subeffect.Source, subeffect.Controller, subeffect.Effect, subeffect);
 
+        public void Initialize(RestrictionContext rc) =>
+            Initialize(source: rc.source, controller: rc.subeffect?.Controller, effect: rc.subeffect?.Effect, subeffect: rc.subeffect);
+
         public void Initialize(GameCard source, Player controller, Effect effect, Subeffect subeffect)
         {
             Subeffect = subeffect;

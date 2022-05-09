@@ -22,16 +22,16 @@ namespace KompasServer.Effects.Identities
     {
         public class FromActivationContext : SubeffectCardIdentity
         {
-            public ActivationContextCardIdentity contextCardIdentity;
+            public ActivationContextCardIdentity cardFromContext;
 
             public override void Initialize(RestrictionContext restrictionContext)
             {
                 base.Initialize(restrictionContext);
-                contextCardIdentity.Initialize(restrictionContext);
+                cardFromContext.Initialize(restrictionContext);
             }
 
             protected override GameCardBase AbstractCard
-                => contextCardIdentity.CardFrom(RestrictionContext.subeffect.Context);
+                => cardFromContext.CardFrom(RestrictionContext.subeffect.Context);
         }
 
         public class ByIndex : SubeffectCardIdentity
@@ -40,6 +40,11 @@ namespace KompasServer.Effects.Identities
 
             protected override GameCardBase AbstractCard
                 => RestrictionContext.subeffect.Effect.GetTarget(index);
+        }
+
+        public class ThisCard : SubeffectCardIdentity
+        {
+            protected override GameCardBase AbstractCard => RestrictionContext.source;
         }
     }
 }

@@ -22,16 +22,16 @@ namespace KompasCore.Effects.Identities
     {
         public class Any : GamestateCardIdentity
         {
-            public GamestateCardsIdentity gamestateCardsIdentity;
+            public GamestateCardsIdentity ofTheseCards;
 
             public override void Initialize(RestrictionContext restrictionContext)
             {
                 base.Initialize(restrictionContext);
-                gamestateCardsIdentity.Initialize(restrictionContext);
+                ofTheseCards.Initialize(restrictionContext);
             }
 
             protected override GameCard AbstractCardFrom(Game game, ActivationContext context)
-                => gamestateCardsIdentity.CardsFrom(game, context).FirstOrDefault();
+                => ofTheseCards.CardsFrom(game, context).FirstOrDefault();
         }
 
         public class ThisCard : GamestateCardIdentity

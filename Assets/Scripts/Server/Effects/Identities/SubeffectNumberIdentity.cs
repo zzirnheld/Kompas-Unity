@@ -41,5 +41,19 @@ namespace KompasServer.Effects.Identities
             protected override int AbstractNumber
                 => (RestrictionContext.subeffect.Effect.X * multiplier / divisor) + modifier;
         }
+        public class Selector : SubeffectNumberIdentity
+        {
+            public INumberSelector selector;
+            public SubeffectManyNumbersIdentity numbers;
+
+            public override void Initialize(RestrictionContext restrictionContext)
+            {
+                base.Initialize(restrictionContext);
+                numbers.Initialize(restrictionContext);
+            }
+
+            protected override int AbstractNumber
+                => selector.Apply(numbers.Numbers);
+        }
     }
 }

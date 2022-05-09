@@ -18,15 +18,15 @@ namespace KompasCore.Effects.Identities
     {
         public class PositionOf : GamestateSpaceIdentity
         {
-            public GamestateCardIdentity cardIdentity;
+            public GamestateCardIdentity card;
 
             public override void Initialize(RestrictionContext restrictionContext)
             {
                 base.Initialize(restrictionContext);
-                cardIdentity.Initialize(restrictionContext);
+                card.Initialize(restrictionContext);
             }
 
-            protected override Space AbstractSpace => cardIdentity.CardFrom(RestrictionContext.game).Position;
+            protected override Space AbstractSpace => card.CardFrom(RestrictionContext.game).Position;
         }
     }
 }

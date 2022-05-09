@@ -36,7 +36,7 @@ namespace KompasCore.Effects.Restrictions
                 => Locations.Any(loc => card.Location == loc);
         }
 
-        public class Position : CardRestrictionElement
+        public class PositionFitsRestriction : CardRestrictionElement
         {
             public SpaceRestriction spaceRestriction;
 

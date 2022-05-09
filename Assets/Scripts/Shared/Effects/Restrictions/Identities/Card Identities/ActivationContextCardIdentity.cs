@@ -27,33 +27,33 @@ namespace KompasCore.Effects.Identities
                 => context.mainCardInfoBefore;
         }
 
-        public class FromGame : ActivationContextCardIdentity
+        public class FromGamestate : ActivationContextCardIdentity
         {
-            public GamestateCardIdentity gamestateCardIdentity;
+            public GamestateCardIdentity cardFromGamestate;
 
             public override void Initialize(RestrictionContext restrictionContext)
             {
                 base.Initialize(restrictionContext);
-                gamestateCardIdentity.Initialize(restrictionContext);
+                cardFromGamestate.Initialize(restrictionContext);
             }
 
             protected override GameCardBase CardFromAbstract(ActivationContext context)
-                => gamestateCardIdentity.CardFrom(context.game, context);
+                => cardFromGamestate.CardFrom(context.game, context);
         }
 
         public class CardAtPosition : ActivationContextCardIdentity
         {
-            public ActivationContextSpaceIdentity cardPositionIdentity;
+            public ActivationContextSpaceIdentity position;
 
             public override void Initialize(RestrictionContext restrictionContext)
             {
                 base.Initialize(restrictionContext);
-                cardPositionIdentity.Initialize(restrictionContext);
+                position.Initialize(restrictionContext);
             }
 
             protected override GameCardBase CardFromAbstract(ActivationContext context)
             {
-                var finalSpace = cardPositionIdentity.SpaceFrom(context);
+                var finalSpace = position.SpaceFrom(context);
                 return context.game.boardCtrl.GetCardAt(finalSpace);
             }
         }

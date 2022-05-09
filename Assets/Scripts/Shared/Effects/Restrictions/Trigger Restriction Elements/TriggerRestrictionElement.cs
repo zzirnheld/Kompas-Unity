@@ -28,20 +28,20 @@ namespace KompasCore.Effects.Restrictions
 
         public class CardsMatch : TriggerRestrictionElement
         {
-            public ActivationContextCardIdentity firstCardIdentity;
-            public ActivationContextCardIdentity secondCardIdentity;
+            public ActivationContextCardIdentity firstCard;
+            public ActivationContextCardIdentity secondCard;
 
             public override void Initialize(RestrictionContext restrictionContext)
             {
                 base.Initialize(restrictionContext);
-                firstCardIdentity.Initialize(RestrictionContext);
-                secondCardIdentity.Initialize(RestrictionContext);
+                firstCard.Initialize(RestrictionContext);
+                secondCard.Initialize(RestrictionContext);
             }
 
             protected override bool AbstractIsValidContext(ActivationContext context)
             {
-                var first = firstCardIdentity.CardFrom(context);
-                var second = secondCardIdentity.CardFrom(context);
+                var first = firstCard.CardFrom(context);
+                var second = secondCard.CardFrom(context);
                 return first.Card == second.Card;
             }
         }
@@ -53,35 +53,34 @@ namespace KompasCore.Effects.Restrictions
         public class SpaceFitsRestriction : TriggerRestrictionElement
         {
             public SpaceRestriction spaceRestriction;
-            public ActivationContextSpaceIdentity spaceIdentity;
+            public ActivationContextSpaceIdentity space;
 
             public override void Initialize(RestrictionContext restrictionContext)
             {
                 base.Initialize(restrictionContext);
-                spaceIdentity.Initialize(RestrictionContext);
+                space.Initialize(RestrictionContext);
+                spaceRestriction.Initialize(restrictionContext);
             }
 
             protected override bool AbstractIsValidContext(ActivationContext context)
-            {
-                Space space = spaceIdentity.SpaceFrom(context);
-                return spaceRestriction.IsValidSpace(space, context);
-            }
+                => spaceRestriction.IsValidSpace(space.SpaceFrom(context), context);
         }
 
         public class CardFitsRestriction : TriggerRestrictionElement
         {
             public CardRestriction cardRestriction;
-            public ActivationContextCardIdentity activationContextCardIdentity;
+            public ActivationContextCardIdentity card;
 
             public override void Initialize(RestrictionContext restrictionContext)
             {
                 base.Initialize(restrictionContext);
-                activationContextCardIdentity.Initialize(RestrictionContext);
+                card.Initialize(restrictionContext);
+                cardRestriction.Initialize(restrictionContext);
             }
 
             protected override bool AbstractIsValidContext(ActivationContext context)
             {
-                var card = activationContextCardIdentity.CardFrom(context);
+                var card = this.card.CardFrom(context);
                 return cardRestriction.IsValidCard(card, context);
             }
         }

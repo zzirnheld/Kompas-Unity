@@ -19,8 +19,28 @@ namespace KompasServer.Effects.Identities
         protected abstract ICollection<GameCardBase> AbstractCards { get; }
     }
 
+    public interface ISubeffectManyCardsIdentity : IContextInitializeable
+    {
+        public ICollection<GameCardBase> Cards { get; }
+    }
+
     namespace SubeffectManyCardsIdentities
     {
+        public class FittingRestriction : SubeffectManyCardsIdentity
+        {
+            public CardRestriction cardRestriction;
+
+            public override void Initialize(RestrictionContext restrictionContext)
+            {
+                base.Initialize(restrictionContext);
+                cardRestriction.Initialize(source: restrictionContext.source, restrictionContext.subeffect?.Effect, restrictionContext.subeffect);
+            }
+
+            protected override ICollection<GameCardBase> AbstractCards => RestrictionContext.game.Cards
+                .Where(card => cardRestriction.IsValidCard(card, RestrictionContext.subeffect.Context))
+                .ToArray();
+        }
+
         public class CardsInPositions : SubeffectManyCardsIdentity
         {
             public SubeffectManySpacesIdentity positions;
@@ -44,16 +64,16 @@ namespace KompasServer.Effects.Identities
 
         public class FromActivationContext : SubeffectManyCardsIdentity
         {
-            public ActivationContextCardsIdentity cardsIdentity;
+            public ActivationContextCardsIdentity cardsFromContext;
 
             public override void Initialize(RestrictionContext restrictionContext)
             {
                 base.Initialize(restrictionContext);
-                cardsIdentity.Initialize(restrictionContext);
+                cardsFromContext.Initialize(restrictionContext);
             }
 
             protected override ICollection<GameCardBase> AbstractCards
-                => cardsIdentity.CardsFrom(RestrictionContext.subeffect.Context);
+                => cardsFromContext.CardsFrom(RestrictionContext.subeffect.Context);
         }
     }
 }

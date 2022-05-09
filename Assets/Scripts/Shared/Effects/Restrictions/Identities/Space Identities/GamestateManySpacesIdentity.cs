@@ -21,16 +21,16 @@ namespace KompasCore.Effects.Identities
     {
         public class PositionsOfEach : GamestateManySpacesIdentity
         {
-            public GamestateCardsIdentity cardsIdentity;
+            public GamestateCardsIdentity cards;
 
             public override void Initialize(RestrictionContext restrictionContext)
             {
                 base.Initialize(restrictionContext);
-                cardsIdentity.Initialize(restrictionContext);
+                cards.Initialize(restrictionContext);
             }
 
             protected override ICollection<Space> AbstractLogic
-                => cardsIdentity.CardsFrom(RestrictionContext.game).Select(c => c.Position).ToArray();
+                => cards.CardsFrom(RestrictionContext.game).Select(c => c.Position).ToArray();
         }
     }
 }

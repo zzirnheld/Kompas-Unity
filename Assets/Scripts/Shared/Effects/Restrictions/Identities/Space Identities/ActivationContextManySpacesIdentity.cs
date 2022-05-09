@@ -24,23 +24,23 @@ namespace KompasServer.Effects.Identities
         /// </summary>
         public class ThreeSpaceRelationship : ActivationContextManySpacesIdentity
         {
-            public ActivationContextSpaceIdentity firstSpaceIdentity;
-            public ActivationContextSpaceIdentity secondSpaceIdentity;
+            public ActivationContextSpaceIdentity firstSpace;
+            public ActivationContextSpaceIdentity secondSpace;
 
-            public IThreeSpaceRelationship threeSpaceRelationship;
+            public IThreeSpaceRelationship thirdSpaceRelationship;
 
             public override void Initialize(RestrictionContext restrictionContext)
             {
                 base.Initialize(restrictionContext);
-                firstSpaceIdentity.Initialize(restrictionContext);
-                secondSpaceIdentity.Initialize(restrictionContext);
+                firstSpace.Initialize(restrictionContext);
+                secondSpace.Initialize(restrictionContext);
             }
 
             protected override ICollection<Space> AbstractSpacesFrom(ActivationContext context)
             {
-                Space first = firstSpaceIdentity.SpaceFrom(context);
-                Space second = secondSpaceIdentity.SpaceFrom(context);
-                return Space.Spaces.Where(space => threeSpaceRelationship.Evaluate(first, second, space)).ToArray();
+                Space first = firstSpace.SpaceFrom(context);
+                Space second = secondSpace.SpaceFrom(context);
+                return Space.Spaces.Where(space => thirdSpaceRelationship.Evaluate(first, second, space)).ToArray();
             }
         }
     }
