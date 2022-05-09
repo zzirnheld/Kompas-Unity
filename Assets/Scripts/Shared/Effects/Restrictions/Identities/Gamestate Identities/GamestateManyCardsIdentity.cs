@@ -10,7 +10,9 @@ namespace KompasCore.Effects.Identities
     }
 
     /// <summary>
-    /// Identifies a collection of cards, based on the current gamestate
+    /// Identifies a collection of cards, based on the current gamestate.
+    /// (Eventually, can be used whether or not the caller does or doesn't care about an ActivationContext,
+    /// but that interface doesn't even exist yet.)
     /// </summary>
     public abstract class GamestateManyCardsIdentityBase : ContextInitializeableBase,
         INoActivationContextManyCardsIdentity

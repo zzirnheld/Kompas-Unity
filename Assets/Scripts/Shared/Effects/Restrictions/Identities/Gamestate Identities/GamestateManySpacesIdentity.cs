@@ -8,6 +8,10 @@ namespace KompasCore.Effects.Identities
         public ICollection<Space> Spaces { get; }
     }
 
+    /// <summary>
+    /// Identifies a collection of spaces.
+    /// Can be used whether or not the caller does or doesn't care about an ActivationContext.
+    /// </summary>
     public abstract class GamestateManySpacesIdentityBase : ContextInitializeableBase,
         IActivationContextManySpacesIdentity, INoActivationContextManySpacesIdentity
     {

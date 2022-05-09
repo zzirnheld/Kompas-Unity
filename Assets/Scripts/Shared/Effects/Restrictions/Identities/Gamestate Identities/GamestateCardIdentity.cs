@@ -1,6 +1,5 @@
 using KompasCore.Cards;
 using KompasCore.GameCore;
-using KompasServer.Effects.Identities;
 using System.Linq;
 
 namespace KompasCore.Effects.Identities
@@ -12,6 +11,7 @@ namespace KompasCore.Effects.Identities
 
     /// <summary>
     /// Gets a single card from the current gamestate.
+    /// Can be used whether or not the caller does or doesn't care about an ActivationContext.
     /// </summary>
     public abstract class GamestateCardIdentityBase : ContextInitializeableBase, 
         IActivationContextCardIdentity, INoActivationContextCardIdentity

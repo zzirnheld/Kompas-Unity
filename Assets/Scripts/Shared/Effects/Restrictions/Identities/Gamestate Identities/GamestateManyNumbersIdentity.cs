@@ -9,6 +9,10 @@ namespace KompasCore.Effects.Identities
         public ICollection<int> Numbers { get; }
     }
 
+    /// <summary>
+    /// Identifies a collection of numbers, like distances or stats of a whole bunch of cards.
+    /// Can be used whether or not the caller does or doesn't care about an ActivationContext.
+    /// </summary>
     public abstract class GamestateManyNumbersIdentityBase : ContextInitializeableBase,
         INoActivationContextManyNumbersIdentity
     {

@@ -5,6 +5,10 @@ namespace KompasCore.Effects.Identities
         public Space Space { get; }
     }
 
+    /// <summary>
+    /// Uniquely identifies a space.
+    /// Can be used whether or not the caller does or doesn't care about an ActivationContext.
+    /// </summary>
     public abstract class GamestateSpaceIdentity : ContextInitializeableBase,
         IActivationContextSpaceIdentity, INoActivationContextSpaceIdentity
     {
