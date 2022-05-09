@@ -6,7 +6,12 @@ using System.Linq;
 
 namespace KompasServer.Effects.Identities
 {
-    public abstract class SubeffectManySpacesIdentity : ContextInitializeableBase, IContextInitializeable
+    public interface ISubeffectManySpacesIdentity : IContextInitializeable
+    {
+        public ICollection<Space> Spaces { get; }
+    }
+
+    public abstract class SubeffectManySpacesIdentity : ContextInitializeableBase, ISubeffectManySpacesIdentity
     {
         public ICollection<Space> Spaces
         {
@@ -42,8 +47,8 @@ namespace KompasServer.Effects.Identities
         /// </summary>
         public class ThreeSpaceRelationship : SubeffectManySpacesIdentity
         {
-            public SubeffectSpaceIdentity firstSpace;
-            public SubeffectSpaceIdentity secondSpace;
+            public ISubeffectSpaceIdentity firstSpace;
+            public ISubeffectSpaceIdentity secondSpace;
 
             public IThreeSpaceRelationship thirdSpaceRelationship;
 

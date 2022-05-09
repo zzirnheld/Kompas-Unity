@@ -1,11 +1,16 @@
 using KompasCore.Cards;
-using KompasCore.Effects;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace KompasServer.Effects.Identities
+namespace KompasCore.Effects.Identities
 {
-    public abstract class ActivationContextCardsIdentity : ContextInitializeableBase, IContextInitializeable
+    public interface IActivationContextManyCardsIdentity : IContextInitializeable
+    {
+        public ICollection<GameCardBase> CardsFrom(ActivationContext context);
+    }
+
+    public abstract class ActivationContextManyCardsIdentityBase : ContextInitializeableBase,
+        IActivationContextManyCardsIdentity
     {
         protected abstract ICollection<GameCardBase> AbstractCardsFrom(ActivationContext context);
 
@@ -18,9 +23,9 @@ namespace KompasServer.Effects.Identities
 
     namespace ActivationContextManyCardsIdentities
     {
-        public class CardsInPositions : ActivationContextCardsIdentity
+        public class CardsInPositions : ActivationContextManyCardsIdentityBase
         {
-            public ActivationContextManySpacesIdentity positions;
+            public IActivationContextManySpacesIdentity positions;
 
             public override void Initialize(RestrictionContext restrictionContext)
             {

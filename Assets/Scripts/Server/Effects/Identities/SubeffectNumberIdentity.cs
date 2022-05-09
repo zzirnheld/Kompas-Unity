@@ -3,7 +3,12 @@ using KompasCore.Effects.Identities;
 
 namespace KompasServer.Effects.Identities
 {
-    public abstract class SubeffectNumberIdentity : ContextInitializeableBase, IContextInitializeable
+    public interface ISubeffectNumberIdentity : IContextInitializeable
+    {
+        public int Number { get; }
+    }
+
+    public abstract class SubeffectNumberIdentityBase : ContextInitializeableBase, ISubeffectNumberIdentity
     {
         protected abstract int AbstractNumber { get; }
 
@@ -19,7 +24,7 @@ namespace KompasServer.Effects.Identities
 
     namespace SubeffectNumberIdentities
     {
-        public class FromGamestate : SubeffectNumberIdentity
+        public class FromGamestate : SubeffectNumberIdentityBase
         {
             public GamestateNumberIdentity numberIdentity;
 
@@ -32,7 +37,7 @@ namespace KompasServer.Effects.Identities
             protected override int AbstractNumber => numberIdentity.Number;
         }
 
-        public class X : SubeffectNumberIdentity
+        public class X : SubeffectNumberIdentityBase
         {
             public int multiplier = 1;
             public int modifier = 0;
@@ -41,10 +46,10 @@ namespace KompasServer.Effects.Identities
             protected override int AbstractNumber
                 => (RestrictionContext.subeffect.Effect.X * multiplier / divisor) + modifier;
         }
-        public class Selector : SubeffectNumberIdentity
+        public class Selector : SubeffectNumberIdentityBase
         {
             public INumberSelector selector;
-            public SubeffectManyNumbersIdentity numbers;
+            public ISubeffectManyNumbersIdentity numbers;
 
             public override void Initialize(RestrictionContext restrictionContext)
             {

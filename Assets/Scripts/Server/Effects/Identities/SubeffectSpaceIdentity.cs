@@ -3,7 +3,12 @@ using KompasCore.Effects.Identities;
 
 namespace KompasServer.Effects.Identities
 {
-    public abstract class SubeffectSpaceIdentity : ContextInitializeableBase, IContextInitializeable
+    public interface ISubeffectSpaceIdentity : IContextInitializeable
+    {
+        public Space Space { get; }
+    }
+
+    public abstract class SubeffectSpaceIdentityBase : ContextInitializeableBase, ISubeffectSpaceIdentity
     {
         protected abstract Space AbstractSpace { get; }
 
@@ -22,7 +27,7 @@ namespace KompasServer.Effects.Identities
         /// <summary>
         /// Forwards on the logic to a GamestateSpaceIdentity
         /// </summary>
-        public class FromGamestate : SubeffectSpaceIdentity
+        public class FromGamestate : SubeffectSpaceIdentityBase
         {
             public GamestateSpaceIdentity spaceFromGamestate;
 
@@ -35,9 +40,9 @@ namespace KompasServer.Effects.Identities
             protected override Space AbstractSpace => spaceFromGamestate.Space;
         }
 
-        public class PositionOf : SubeffectSpaceIdentity
+        public class PositionOf : SubeffectSpaceIdentityBase
         {
-            public SubeffectCardIdentity whosePosition;
+            public ISubeffectCardIdentity whosePosition;
 
             public override void Initialize(RestrictionContext restrictionContext)
             {

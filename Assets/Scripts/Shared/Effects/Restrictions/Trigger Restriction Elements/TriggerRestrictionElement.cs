@@ -28,8 +28,8 @@ namespace KompasCore.Effects.Restrictions
 
         public class CardsMatch : TriggerRestrictionElement
         {
-            public ActivationContextCardIdentity firstCard;
-            public ActivationContextCardIdentity secondCard;
+            public IActivationContextCardIdentity firstCard;
+            public IActivationContextCardIdentity secondCard;
 
             public override void Initialize(RestrictionContext restrictionContext)
             {
@@ -53,7 +53,7 @@ namespace KompasCore.Effects.Restrictions
         public class SpaceFitsRestriction : TriggerRestrictionElement
         {
             public SpaceRestriction spaceRestriction;
-            public ActivationContextSpaceIdentity space;
+            public IActivationContextSpaceIdentity space;
 
             public override void Initialize(RestrictionContext restrictionContext)
             {
@@ -69,7 +69,7 @@ namespace KompasCore.Effects.Restrictions
         public class CardFitsRestriction : TriggerRestrictionElement
         {
             public CardRestriction cardRestriction;
-            public ActivationContextCardIdentity card;
+            public IActivationContextCardIdentity card;
 
             public override void Initialize(RestrictionContext restrictionContext)
             {

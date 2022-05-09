@@ -1,6 +1,9 @@
+using KompasServer.Effects.Identities;
+
 namespace KompasCore.Effects.Identities
 {
-    public abstract class GamestateNumberIdentity : ContextInitializeableBase, IContextInitializeable
+    public abstract class GamestateNumberIdentity : ContextInitializeableBase,
+        ISubeffectNumberIdentity
     {
         protected abstract int AbstractNumber { get; }
 
@@ -15,20 +18,5 @@ namespace KompasCore.Effects.Identities
     }
 
     namespace GamestateNumberIdentities
-    {
-        public class Selector : GamestateNumberIdentity
-        {
-            public INumberSelector selector;
-            public GamestateManyNumbersIdentity numbers;
-
-            public override void Initialize(RestrictionContext restrictionContext)
-            {
-                base.Initialize(restrictionContext);
-                numbers.Initialize(restrictionContext);
-            }
-
-            protected override int AbstractNumber
-                => selector.Apply(numbers.Numbers);
-        }
-    }
+    { }
 }

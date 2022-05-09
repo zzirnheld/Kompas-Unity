@@ -1,5 +1,6 @@
 using KompasCore.Cards;
 using KompasCore.Effects;
+using KompasCore.Effects.Identities;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -37,7 +38,7 @@ namespace KompasServer.Effects.Identities
             }
 
             protected override ICollection<GameCardBase> AbstractCards => RestrictionContext.game.Cards
-                .Where(card => cardRestriction.IsValidCard(card, RestrictionContext.subeffect.Context))
+                .Where(card => cardRestriction.IsValidCard(card, RestrictionContext.subeffect.CurrentContext))
                 .ToArray();
         }
 
@@ -64,7 +65,7 @@ namespace KompasServer.Effects.Identities
 
         public class FromActivationContext : SubeffectManyCardsIdentity
         {
-            public ActivationContextCardsIdentity cardsFromContext;
+            public IActivationContextManyCardsIdentity cardsFromContext;
 
             public override void Initialize(RestrictionContext restrictionContext)
             {
@@ -73,7 +74,7 @@ namespace KompasServer.Effects.Identities
             }
 
             protected override ICollection<GameCardBase> AbstractCards
-                => cardsFromContext.CardsFrom(RestrictionContext.subeffect.Context);
+                => cardsFromContext.CardsFrom(RestrictionContext.subeffect.CurrentContext);
         }
     }
 }

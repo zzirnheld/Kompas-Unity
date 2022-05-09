@@ -1,5 +1,6 @@
 using KompasCore.Cards;
 using KompasCore.GameCore;
+using KompasServer.Effects.Identities;
 using System.Linq;
 
 namespace KompasCore.Effects.Identities
@@ -7,15 +8,22 @@ namespace KompasCore.Effects.Identities
     /// <summary>
     /// Gets a single card from the current gamestate.
     /// </summary>
-    public abstract class GamestateCardIdentity : ContextInitializeableBase, IContextInitializeable
+    public abstract class GamestateCardIdentity : ContextInitializeableBase, 
+        IActivationContextCardIdentity, ISubeffectCardIdentity
     {
-        protected abstract GameCard AbstractCardFrom(Game game, ActivationContext context);
+        protected abstract GameCardBase AbstractCardFrom(Game game, ActivationContext context);
 
-        public GameCard CardFrom(Game game, ActivationContext context = default)
+        public GameCardBase CardFrom(Game game, ActivationContext context = default)
         {
             ComplainIfNotInitialized();
             return AbstractCardFrom(game, context);
         }
+
+        public GameCardBase CardFrom(ActivationContext context)
+            => CardFrom(context.game, context);
+
+        public GameCardBase Card 
+            => CardFrom(RestrictionContext.game, RestrictionContext.subeffect?.CurrentContext);
     }
 
     namespace GamestateCardIdentities
@@ -30,13 +38,13 @@ namespace KompasCore.Effects.Identities
                 ofTheseCards.Initialize(restrictionContext);
             }
 
-            protected override GameCard AbstractCardFrom(Game game, ActivationContext context)
+            protected override GameCardBase AbstractCardFrom(Game game, ActivationContext context)
                 => ofTheseCards.CardsFrom(game, context).FirstOrDefault();
         }
 
         public class ThisCard : GamestateCardIdentity
         {
-            protected override GameCard AbstractCardFrom(Game game, ActivationContext context)
+            protected override GameCardBase AbstractCardFrom(Game game, ActivationContext context)
                 => RestrictionContext.source;
         }
     }

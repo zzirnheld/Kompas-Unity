@@ -13,6 +13,6 @@ namespace KompasServer.Effects
         }
 
         public override int BaseCount
-            => Game.boardCtrl.CardsAndAugsWhere(c => cardRestriction.IsValidCard(c, Context)).Count;
+            => Game.boardCtrl.CardsAndAugsWhere(c => cardRestriction.IsValidCard(c, CurrentContext)).Count;
     }
 }

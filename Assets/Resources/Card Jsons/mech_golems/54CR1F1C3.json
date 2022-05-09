@@ -35,7 +35,7 @@
 							"$type": "KompasServer.Effects.Identities.SubeffectManyNumbersIdentities.Distances, Assembly-CSharp",
 							"origin": {
 								"$type": "KompasServer.Effects.Identities.SubeffectSpaceIdentities.PositionOf, Assembly-CSharp",
-								"whosePosition": { "$type": "KompasServer.Effects.Identities.SubeffectCardIdentities.ThisCard, Assembly-CSharp" }
+								"whosePosition": { "$type": "KompasServer.Effects.Identities.GamestateCardIdentities.ThisCard, Assembly-CSharp" }
 							},
 							"destinations": {
 								"$type": "KompasServer.Effects.Identities.SubeffectManySpacesIdentities.PositionsOfEach, Assembly-CSharp",
@@ -67,7 +67,7 @@
                                         "$type": "KompasCore.Effects.Restrictions.SpaceRestrictionElements.CompareDistance, Assembly-CSharp",
                                         "distanceTo": {
                                             "$type": "KompasServer.Effects.Identities.SubeffectSpaceIdentities.PositionOf, Assembly-CSharp",
-											"cardIdentity": { "$type": "KompasServer.Effects.Identities.SubeffectCardIdentities.ThisCard, Assembly-CSharp" }
+											"cardIdentity": { "$type": "KompasServer.Effects.Identities.GamestateCardIdentities.ThisCard, Assembly-CSharp" }
                                         },
                                         "number": { "$type": "KompasServer.Effects.Identities.SubeffectNumberIdentities.X, Assembly-CSharp" },
                                         "comparison": { "$type": "KompasCore.Effects.Relationships.NumberRelationships.Equal, Assembly-CSharp" }

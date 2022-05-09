@@ -2,7 +2,12 @@ using KompasCore.Cards;
 
 namespace KompasCore.Effects.Identities
 {
-    public abstract class ActivationContextCardIdentity : ContextInitializeableBase, IContextInitializeable
+    public interface IActivationContextCardIdentity : IContextInitializeable
+    {
+        public GameCardBase CardFrom(ActivationContext context);
+    }
+
+    public abstract class ActivationContextCardIdentityBase : ContextInitializeableBase, IActivationContextCardIdentity
     {
         public GameCardBase CardFrom(ActivationContext context)
         {
@@ -15,19 +20,19 @@ namespace KompasCore.Effects.Identities
 
     namespace ActivationContextCardIdentities
     {
-        public class ThisCard : ActivationContextCardIdentity
+        public class ThisCard : ActivationContextCardIdentityBase
         {
             protected override GameCardBase CardFromAbstract(ActivationContext context)
                 => RestrictionContext.source;
         }
 
-        public class MainCardBefore : ActivationContextCardIdentity
+        public class MainCardBefore : ActivationContextCardIdentityBase
         {
             protected override GameCardBase CardFromAbstract(ActivationContext context)
                 => context.mainCardInfoBefore;
         }
 
-        public class FromGamestate : ActivationContextCardIdentity
+        public class FromGamestate : ActivationContextCardIdentityBase
         {
             public GamestateCardIdentity cardFromGamestate;
 
@@ -41,9 +46,9 @@ namespace KompasCore.Effects.Identities
                 => cardFromGamestate.CardFrom(context.game, context);
         }
 
-        public class CardAtPosition : ActivationContextCardIdentity
+        public class CardAtPosition : ActivationContextCardIdentityBase
         {
-            public ActivationContextSpaceIdentity position;
+            public IActivationContextSpaceIdentity position;
 
             public override void Initialize(RestrictionContext restrictionContext)
             {

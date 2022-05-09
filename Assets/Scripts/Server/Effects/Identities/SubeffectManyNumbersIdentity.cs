@@ -4,7 +4,13 @@ using System.Linq;
 
 namespace KompasServer.Effects.Identities
 {
-    public abstract class SubeffectManyNumbersIdentity : ContextInitializeableBase, IContextInitializeable
+    public interface ISubeffectManyNumbersIdentity : IContextInitializeable
+    {
+        public ICollection<int> Numbers { get; }
+    }
+
+    public abstract class SubeffectManyNumbersIdentityBase : ContextInitializeableBase,
+        ISubeffectManyNumbersIdentity
     {
         protected abstract ICollection<int> AbstractNumbers { get; }
 
@@ -20,9 +26,9 @@ namespace KompasServer.Effects.Identities
 
     namespace SubeffectManyNumbersIdentities
     {
-        public class Distances : SubeffectManyNumbersIdentity
+        public class Distances : SubeffectManyNumbersIdentityBase
         {
-            public SubeffectSpaceIdentity origin;
+            public ISubeffectSpaceIdentity origin;
             public SubeffectManySpacesIdentity destinations;
 
             public override void Initialize(RestrictionContext restrictionContext)

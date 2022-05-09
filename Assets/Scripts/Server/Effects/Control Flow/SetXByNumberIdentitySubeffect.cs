@@ -4,7 +4,7 @@ namespace KompasServer.Effects
 {
     public class SetXByNumberIdentitySubeffect : SetXSubeffect
     {
-        public SubeffectNumberIdentity numberIdentity;
+        public ISubeffectNumberIdentity numberIdentity;
 
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {

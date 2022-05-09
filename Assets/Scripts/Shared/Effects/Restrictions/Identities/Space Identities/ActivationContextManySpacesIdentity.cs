@@ -3,9 +3,14 @@ using KompasCore.Effects.Identities;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace KompasServer.Effects.Identities
+namespace KompasCore.Effects.Identities
 {
-    public abstract class ActivationContextManySpacesIdentity : ContextInitializeableBase, IContextInitializeable
+    public interface IActivationContextManySpacesIdentity : IContextInitializeable
+    {
+        public ICollection<Space> SpacesFrom(ActivationContext context);
+    }
+
+    public abstract class ActivationContextManySpacesIdentityBase : ContextInitializeableBase, IActivationContextManySpacesIdentity
     {
         protected abstract ICollection<Space> AbstractSpacesFrom(ActivationContext context);
 
@@ -22,10 +27,10 @@ namespace KompasServer.Effects.Identities
         /// Spaces where they are in some defined relationship with respect to the other two defined spaces.
         /// For example, spaces that are between (relationship) the source card's space and the target space (two defined spaces).
         /// </summary>
-        public class ThreeSpaceRelationship : ActivationContextManySpacesIdentity
+        public class ThreeSpaceRelationship : ActivationContextManySpacesIdentityBase
         {
-            public ActivationContextSpaceIdentity firstSpace;
-            public ActivationContextSpaceIdentity secondSpace;
+            public IActivationContextSpaceIdentity firstSpace;
+            public IActivationContextSpaceIdentity secondSpace;
 
             public IThreeSpaceRelationship thirdSpaceRelationship;
 

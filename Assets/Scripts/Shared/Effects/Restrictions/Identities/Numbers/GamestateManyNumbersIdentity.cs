@@ -1,9 +1,11 @@
+using KompasServer.Effects.Identities;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace KompasCore.Effects.Identities
 {
-    public abstract class GamestateManyNumbersIdentity : ContextInitializeableBase, IContextInitializeable
+    public abstract class GamestateManyNumbersIdentity : ContextInitializeableBase,
+        ISubeffectManyNumbersIdentity
     {
         protected abstract ICollection<int> AbstractNumbers { get; }
 

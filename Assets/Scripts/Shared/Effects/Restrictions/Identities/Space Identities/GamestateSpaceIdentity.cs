@@ -1,6 +1,9 @@
+using KompasServer.Effects.Identities;
+
 namespace KompasCore.Effects.Identities
 {
-    public abstract class GamestateSpaceIdentity : ContextInitializeableBase, IContextInitializeable
+    public abstract class GamestateSpaceIdentity : ContextInitializeableBase,
+        IActivationContextSpaceIdentity, ISubeffectSpaceIdentity
     {
         protected abstract Space AbstractSpace { get; }
 
@@ -12,6 +15,8 @@ namespace KompasCore.Effects.Identities
                 return AbstractSpace;
             }
         }
+
+        public Space SpaceFrom(ActivationContext context) => Space;
     }
 
     namespace GamestateSpaceIdentities

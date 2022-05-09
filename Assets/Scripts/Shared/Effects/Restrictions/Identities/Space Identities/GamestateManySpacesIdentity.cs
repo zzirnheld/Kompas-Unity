@@ -1,9 +1,11 @@
+using KompasServer.Effects.Identities;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace KompasCore.Effects.Identities
 {
-    public abstract class GamestateManySpacesIdentity : ContextInitializeableBase, IContextInitializeable
+    public abstract class GamestateManySpacesIdentity : ContextInitializeableBase,
+        IActivationContextManySpacesIdentity, ISubeffectManySpacesIdentity
     {
         protected abstract ICollection<Space> AbstractLogic { get; }
 
@@ -15,6 +17,8 @@ namespace KompasCore.Effects.Identities
                 return AbstractLogic;
             }
         }
+
+        public ICollection<Space> SpacesFrom(ActivationContext context) => Spaces;
     }
 
     namespace GamestateManySpacesIdentities

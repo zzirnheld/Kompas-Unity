@@ -54,7 +54,7 @@ namespace KompasServer.Effects
 
         private IEnumerable<GameCard> GetPossibleTargets()
         {
-            var possibleTargets = ServerGame.Cards.Where(c => cardRestriction.IsValidCard(c, Context));
+            var possibleTargets = ServerGame.Cards.Where(c => cardRestriction.IsValidCard(c, CurrentContext));
             if (!possibleTargets.Any()) return new GameCard[0];
 
             switch (orderBy)

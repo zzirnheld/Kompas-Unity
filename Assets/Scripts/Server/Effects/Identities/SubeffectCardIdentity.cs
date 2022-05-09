@@ -4,7 +4,12 @@ using KompasCore.Effects.Identities;
 
 namespace KompasServer.Effects.Identities
 {
-    public abstract class SubeffectCardIdentity : ContextInitializeableBase, IContextInitializeable
+    public interface ISubeffectCardIdentity : IContextInitializeable
+    {
+        public GameCardBase Card { get; }
+    }
+
+    public abstract class SubeffectCardIdentityBase : ContextInitializeableBase, ISubeffectCardIdentity
     {
         public GameCardBase Card
         {
@@ -20,9 +25,9 @@ namespace KompasServer.Effects.Identities
 
     namespace SubeffectCardIdentities
     {
-        public class FromActivationContext : SubeffectCardIdentity
+        public class FromActivationContext : SubeffectCardIdentityBase
         {
-            public ActivationContextCardIdentity cardFromContext;
+            public IActivationContextCardIdentity cardFromContext;
 
             public override void Initialize(RestrictionContext restrictionContext)
             {
@@ -31,20 +36,15 @@ namespace KompasServer.Effects.Identities
             }
 
             protected override GameCardBase AbstractCard
-                => cardFromContext.CardFrom(RestrictionContext.subeffect.Context);
+                => cardFromContext.CardFrom(RestrictionContext.subeffect.CurrentContext);
         }
 
-        public class ByIndex : SubeffectCardIdentity
+        public class ByIndex : SubeffectCardIdentityBase
         {
             public int index;
 
             protected override GameCardBase AbstractCard
                 => RestrictionContext.subeffect.Effect.GetTarget(index);
-        }
-
-        public class ThisCard : SubeffectCardIdentity
-        {
-            protected override GameCardBase AbstractCard => RestrictionContext.source;
         }
     }
 }

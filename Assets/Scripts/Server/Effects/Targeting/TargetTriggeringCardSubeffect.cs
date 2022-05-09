@@ -11,7 +11,7 @@ namespace KompasServer.Effects
 
         public override Task<ResolutionInfo> Resolve()
         {
-            var cardInfoToTarget = secondary ? Context.secondaryCardInfoBefore : Context.mainCardInfoBefore;
+            var cardInfoToTarget = secondary ? CurrentContext.secondaryCardInfoBefore : CurrentContext.mainCardInfoBefore;
             if (cardInfoToTarget == null) throw new NullCardException(NoValidCardTarget);
 
             if (info) ServerEffect.cardInfoTargets.Add(cardInfoToTarget);

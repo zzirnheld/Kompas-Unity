@@ -1,6 +1,11 @@
 namespace KompasCore.Effects.Identities
 {
-    public abstract class ActivationContextSpaceIdentity : ContextInitializeableBase, IContextInitializeable
+    public interface IActivationContextSpaceIdentity : IContextInitializeable
+    {
+        public Space SpaceFrom(ActivationContext context);
+    }
+
+    public abstract class ActivationContextSpaceIdentityBase : ContextInitializeableBase, IActivationContextSpaceIdentity
     {
         protected abstract Space AbstractSpaceFrom(ActivationContext context);
 
@@ -13,9 +18,9 @@ namespace KompasCore.Effects.Identities
 
     namespace ActivationContextSpaceIdentities
     {
-        public class PositionOf : ActivationContextSpaceIdentity
+        public class PositionOf : ActivationContextSpaceIdentityBase
         {
-            public ActivationContextCardIdentity whosePosition;
+            public IActivationContextCardIdentity whosePosition;
 
             public override void Initialize(RestrictionContext restrictionContext)
             {
@@ -27,16 +32,16 @@ namespace KompasCore.Effects.Identities
                 => whosePosition.CardFrom(context).Position;
         }
 
-        public class ContextSpace : ActivationContextSpaceIdentity
+        public class ContextSpace : ActivationContextSpaceIdentityBase
         {
             protected override Space AbstractSpaceFrom(ActivationContext context)
                 => context.space;
         }
 
-        public class TwoSpaceIdentity : ActivationContextSpaceIdentity
+        public class TwoSpaceIdentity : ActivationContextSpaceIdentityBase
         {
-            public ActivationContextSpaceIdentity firstSpace;
-            public ActivationContextSpaceIdentity secondSpace;
+            public IActivationContextSpaceIdentity firstSpace;
+            public IActivationContextSpaceIdentity secondSpace;
 
             public ITwoSpaceIdentity relationship;
 
