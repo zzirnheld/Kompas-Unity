@@ -4,8 +4,13 @@ using System.Linq;
 
 namespace KompasCore.Effects.Identities
 {
-    public abstract class GamestateManyNumbersIdentity : ContextInitializeableBase,
-        ISubeffectManyNumbersIdentity
+    public interface INoActivationContextManyNumbersIdentity : IContextInitializeable
+    {
+        public ICollection<int> Numbers { get; }
+    }
+
+    public abstract class GamestateManyNumbersIdentityBase : ContextInitializeableBase,
+        INoActivationContextManyNumbersIdentity
     {
         protected abstract ICollection<int> AbstractNumbers { get; }
 
@@ -21,10 +26,10 @@ namespace KompasCore.Effects.Identities
 
     namespace GamestateManyNumbersIdentities
     {
-        public class Distances : GamestateManyNumbersIdentity
+        public class Distances : GamestateManyNumbersIdentityBase
         {
-            public GamestateSpaceIdentity origin;
-            public GamestateManySpacesIdentity destinations;
+            public INoActivationContextSpaceIdentity origin;
+            public INoActivationContextManySpacesIdentity destinations;
 
             public override void Initialize(RestrictionContext restrictionContext)
             {

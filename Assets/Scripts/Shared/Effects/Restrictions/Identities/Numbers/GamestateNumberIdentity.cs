@@ -1,9 +1,12 @@
-using KompasServer.Effects.Identities;
-
 namespace KompasCore.Effects.Identities
 {
-    public abstract class GamestateNumberIdentity : ContextInitializeableBase,
-        ISubeffectNumberIdentity
+    public interface INoActivationContextNumberIdentity : IContextInitializeable
+    {
+        public int Number { get; }
+    }
+
+    public abstract class GamestateNumberIdentityBase : ContextInitializeableBase,
+        INoActivationContextNumberIdentity
     {
         protected abstract int AbstractNumber { get; }
 

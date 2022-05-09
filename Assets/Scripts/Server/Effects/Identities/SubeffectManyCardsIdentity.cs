@@ -6,7 +6,8 @@ using System.Linq;
 
 namespace KompasServer.Effects.Identities
 {
-    public abstract class SubeffectManyCardsIdentity : ContextInitializeableBase, IContextInitializeable
+    public abstract class SubeffectManyCardsIdentity : SubeffectInitializeableBase,
+        IContextInitializeable
     {
         public ICollection<GameCardBase> Cards
         {
@@ -18,11 +19,6 @@ namespace KompasServer.Effects.Identities
         }
 
         protected abstract ICollection<GameCardBase> AbstractCards { get; }
-    }
-
-    public interface ISubeffectManyCardsIdentity : IContextInitializeable
-    {
-        public ICollection<GameCardBase> Cards { get; }
     }
 
     namespace SubeffectManyCardsIdentities
@@ -44,7 +40,7 @@ namespace KompasServer.Effects.Identities
 
         public class CardsInPositions : SubeffectManyCardsIdentity
         {
-            public SubeffectManySpacesIdentity positions;
+            public INoActivationContextManySpacesIdentity positions;
 
             public override void Initialize(RestrictionContext restrictionContext)
             {

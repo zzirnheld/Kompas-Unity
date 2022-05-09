@@ -4,12 +4,8 @@ using KompasCore.Effects.Identities;
 
 namespace KompasServer.Effects.Identities
 {
-    public interface ISubeffectCardIdentity : IContextInitializeable
-    {
-        public GameCardBase Card { get; }
-    }
-
-    public abstract class SubeffectCardIdentityBase : ContextInitializeableBase, ISubeffectCardIdentity
+    public abstract class SubeffectCardIdentityBase : SubeffectInitializeableBase,
+        INoActivationContextCardIdentity
     {
         public GameCardBase Card
         {

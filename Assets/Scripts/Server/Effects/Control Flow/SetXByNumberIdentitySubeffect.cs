@@ -1,10 +1,10 @@
-using KompasServer.Effects.Identities;
+using KompasCore.Effects.Identities;
 
 namespace KompasServer.Effects
 {
     public class SetXByNumberIdentitySubeffect : SetXSubeffect
     {
-        public ISubeffectNumberIdentity numberIdentity;
+        public INoActivationContextNumberIdentity numberIdentity;
 
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {

@@ -2,7 +2,12 @@ using System;
 
 namespace KompasCore.Effects
 {
-    public abstract class ContextInitializeableBase
+    public interface IContextInitializeable
+    {
+        public void Initialize(RestrictionContext restrictionContext);
+    }
+
+    public abstract class ContextInitializeableBase : IContextInitializeable
     {
         protected bool Initialized { get; private set; }
 
@@ -15,14 +20,21 @@ namespace KompasCore.Effects
             Initialized = true;
         }
 
-        protected void ComplainIfNotInitialized()
+        protected virtual void ComplainIfNotInitialized()
         {
             if (!Initialized) throw new NotImplementedException($"You forgot to initialize a {GetType()}!");
         }
     }
 
-    public interface IContextInitializeable
+    /// <summary>
+    /// A wrapper inheritor of ContextInitializeableBase that also checks that the restriction context has a subeffect
+    /// </summary>
+    public abstract class SubeffectInitializeableBase : ContextInitializeableBase
     {
-        public void Initialize(RestrictionContext restrictionContext);
+        public override void Initialize(RestrictionContext restrictionContext)
+        {
+            if (restrictionContext.subeffect == null) throw new ArgumentNullException($"{GetType()} must be initialized by/with a Subeffect");
+            base.Initialize(restrictionContext);
+        }
     }
 }

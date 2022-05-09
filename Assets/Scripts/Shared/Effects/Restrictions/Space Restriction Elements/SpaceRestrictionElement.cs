@@ -1,3 +1,4 @@
+using KompasCore.Effects.Identities;
 using KompasCore.Effects.Relationships;
 using KompasServer.Effects.Identities;
 
@@ -23,8 +24,8 @@ namespace KompasCore.Effects.Restrictions
         /// </summary>
         public class CompareDistance : SpaceRestrictionElement
         {
-            public ISubeffectSpaceIdentity distanceTo;
-            public ISubeffectNumberIdentity number;
+            public INoActivationContextSpaceIdentity distanceTo;
+            public INoActivationContextNumberIdentity number;
             public INumberRelationship comparison;
 
             public override void Initialize(RestrictionContext restrictionContext)

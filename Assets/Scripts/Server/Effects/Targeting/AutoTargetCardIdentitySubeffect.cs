@@ -1,11 +1,11 @@
-using KompasServer.Effects.Identities;
+using KompasCore.Effects.Identities;
 using System.Threading.Tasks;
 
 namespace KompasServer.Effects
 {
     public class AutoTargetCardIdentitySubeffect : ServerSubeffect
     {
-        public ISubeffectCardIdentity subeffectCardIdentity;
+        public INoActivationContextCardIdentity subeffectCardIdentity;
 
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {

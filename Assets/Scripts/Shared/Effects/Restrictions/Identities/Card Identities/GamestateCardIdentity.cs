@@ -5,11 +5,16 @@ using System.Linq;
 
 namespace KompasCore.Effects.Identities
 {
+    public interface INoActivationContextCardIdentity : IContextInitializeable
+    {
+        public GameCardBase Card { get; }
+    }
+
     /// <summary>
     /// Gets a single card from the current gamestate.
     /// </summary>
-    public abstract class GamestateCardIdentity : ContextInitializeableBase, 
-        IActivationContextCardIdentity, ISubeffectCardIdentity
+    public abstract class GamestateCardIdentityBase : ContextInitializeableBase, 
+        IActivationContextCardIdentity, INoActivationContextCardIdentity
     {
         protected abstract GameCardBase AbstractCardFrom(Game game, ActivationContext context);
 
@@ -28,9 +33,9 @@ namespace KompasCore.Effects.Identities
 
     namespace GamestateCardIdentities
     {
-        public class Any : GamestateCardIdentity
+        public class Any : GamestateCardIdentityBase
         {
-            public GamestateCardsIdentity ofTheseCards;
+            public INoActivationContextManyCardsIdentity ofTheseCards;
 
             public override void Initialize(RestrictionContext restrictionContext)
             {
@@ -39,10 +44,10 @@ namespace KompasCore.Effects.Identities
             }
 
             protected override GameCardBase AbstractCardFrom(Game game, ActivationContext context)
-                => ofTheseCards.CardsFrom(game, context).FirstOrDefault();
+                => ofTheseCards.Cards.FirstOrDefault();
         }
 
-        public class ThisCard : GamestateCardIdentity
+        public class ThisCard : GamestateCardIdentityBase
         {
             protected override GameCardBase AbstractCardFrom(Game game, ActivationContext context)
                 => RestrictionContext.source;

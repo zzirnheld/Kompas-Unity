@@ -1,17 +1,12 @@
 using KompasCore.Effects;
 using KompasCore.Effects.Identities;
-using KompasCore.Effects.Relationships;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace KompasServer.Effects.Identities
 {
-    public interface ISubeffectManySpacesIdentity : IContextInitializeable
-    {
-        public ICollection<Space> Spaces { get; }
-    }
-
-    public abstract class SubeffectManySpacesIdentity : ContextInitializeableBase, ISubeffectManySpacesIdentity
+    public abstract class SubeffectManySpacesIdentity : SubeffectInitializeableBase,
+        INoActivationContextManySpacesIdentity
     {
         public ICollection<Space> Spaces
         {
@@ -47,8 +42,8 @@ namespace KompasServer.Effects.Identities
         /// </summary>
         public class ThreeSpaceRelationship : SubeffectManySpacesIdentity
         {
-            public ISubeffectSpaceIdentity firstSpace;
-            public ISubeffectSpaceIdentity secondSpace;
+            public INoActivationContextSpaceIdentity firstSpace;
+            public INoActivationContextSpaceIdentity secondSpace;
 
             public IThreeSpaceRelationship thirdSpaceRelationship;
 
@@ -72,7 +67,7 @@ namespace KompasServer.Effects.Identities
 
         public class PositionsOfEach : SubeffectManySpacesIdentity
         {
-            public GamestateCardsIdentity cards;
+            public INoActivationContextManyCardsIdentity cards;
 
             public override void Initialize(RestrictionContext restrictionContext)
             {
@@ -80,7 +75,7 @@ namespace KompasServer.Effects.Identities
                 cards.Initialize(restrictionContext);
             }
 
-            protected override ICollection<Space> AbstractSpaces => cards.CardsFrom(RestrictionContext.game)
+            protected override ICollection<Space> AbstractSpaces => cards.Cards
                 .Select(c => c.Position)
                 .Where(space => space != null)
                 .ToArray();
