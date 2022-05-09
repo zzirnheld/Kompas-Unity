@@ -210,6 +210,7 @@ mech_golems/P4RT154N
 mech_golems/5P33DRUNN3R
 mech_golems/5H4P3R
 mech_golems/54CR1F1C3
+mech_golems/GL455C4NN0N
 mech_pilots/Standard Pilot
 mech_pilots/Runn R Mann
 mech_pilots/Heel R Mann
