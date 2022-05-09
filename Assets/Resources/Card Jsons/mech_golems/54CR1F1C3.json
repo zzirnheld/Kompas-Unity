@@ -1,0 +1,113 @@
+{
+	"cardType": 67,
+	"cardName": "54CR1F1C3",
+	"effText": "Golem.\nAfter I'm activated, delay 2 turns. Destroy the closest enemy card(s) to me (all of them, if tied).",
+	"effects": [
+		{
+            "blurb": "54CR1F1C3!!!",
+			"triggerData": {
+				"triggerCondition": "Activate",
+				"triggerRestriction": {
+					"triggerRestrictionElements": [
+                        {
+                            "$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.CardsMatch, Assembly-CSharp",
+                            "firstCard": { "$type": "KompasCore.Effects.Identities.GamestateCardIdentities.ThisCard, Assembly-CSharp" },
+                            "secondCard": { "$type": "KompasCore.Effects.Identities.ActivationContextCardIdentities.MainCardBefore, Assembly-CSharp" }
+                        }
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"numTimesToDelay": 1,
+					"jumpIndices": [
+						1
+					],
+					"endCondition": "Turn Start"
+				},
+				{
+					"$type": "KompasServer.Effects.SetXByNumberIdentitySubeffect, Assembly-CSharp",
+					"numberIdentity": {
+						"$type": "KompasServer.Effects.Identities.SubeffectNumberIdentities.Selector, Assembly-CSharp",
+						"selector": { "$type": "KompasCore.Effects.Identities.NumberSelectors.Minimum, Assembly-CSharp" },
+						"numbers": {
+							"$type": "KompasServer.Effects.Identities.SubeffectManyNumbersIdentities.Distances, Assembly-CSharp",
+							"origin": {
+								"$type": "KompasServer.Effects.Identities.SubeffectSpaceIdentities.PositionOf, Assembly-CSharp",
+								"whosePosition": { "$type": "KompasCore.Effects.Identities.GamestateCardIdentities.ThisCard, Assembly-CSharp" }
+							},
+							"destinations": {
+								"$type": "KompasServer.Effects.Identities.SubeffectManySpacesIdentities.PositionsOfEach, Assembly-CSharp",
+								"cards": {
+									"$type": "KompasCore.Effects.Identities.GamestateManyCardsIdentities.FittingRestriction, Assembly-CSharp",
+									"cardRestriction": {
+										"cardRestrictionElements": [
+											{ "$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.EnemyCard, Assembly-CSharp" }
+										]
+									}
+								}
+							}
+                        }
+                    },
+					"xMultiplier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictionElements": [
+                            {
+                                "$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.PositionFitsRestriction, Assembly-CSharp",
+                                "spaceRestriction": {
+                                    "spaceRestrictionElements": [
+										{
+											"$type": "KompasCore.Effects.Restrictions.SpaceRestrictionElements.CompareDistance, Assembly-CSharp",
+											"distanceTo": {
+												"$type": "KompasServer.Effects.Identities.SubeffectSpaceIdentities.PositionOf, Assembly-CSharp",
+												"whosePosition": { "$type": "KompasCore.Effects.Identities.GamestateCardIdentities.ThisCard, Assembly-CSharp" }
+											},
+											"number": { "$type": "KompasServer.Effects.Identities.SubeffectNumberIdentities.X, Assembly-CSharp" },
+											"comparison": { "$type": "KompasCore.Effects.Relationships.NumberRelationships.Equal, Assembly-CSharp" }
+										}
+									]
+                                }
+                            }
+						]
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete": true,
+					"jumpIndices": [
+						2
+					]
+				}
+			]
+		}
+    ],
+	"MovementRestriction": {
+		"normalRestrictionsFromJson": [
+			"Default",
+			"Activated"
+		]
+	},
+	"AttackRestriction": {
+		"attackRestrictions": [
+			"Default",
+			"This is Activated"
+		]
+	},
+	"n": 7,
+	"e": 9,
+	"s": 7,
+	"w": 1,
+	"subtypes": [
+		"Mech",
+		"Golem"
+	],
+	"subtypeText": "Mech Golem"
+}

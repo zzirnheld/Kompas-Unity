@@ -10,7 +10,7 @@ namespace KompasServer.GameCore
 
         public override bool Annihilate(GameCard card, IStackable stackSrc = null)
         {
-            var context = new ActivationContext(mainCardBefore: card, stackableCause: stackSrc, player: stackSrc?.Controller);
+            var context = new ActivationContext(game: ServerGame, mainCardBefore: card, stackableCause: stackSrc, player: stackSrc?.Controller);
             bool wasKnown = card.KnownToEnemy;
             bool actuallyAnnihilated = base.Annihilate(card, stackSrc);
             if (actuallyAnnihilated)

@@ -29,7 +29,7 @@ namespace KompasServer.Effects
             var effs = new List<HangingEffect>();
 
             IEnumerable<GameCard> cards
-                = ServerGame.Cards.Where(c => cardRestriction.IsValidCard(c, Context));
+                = ServerGame.Cards.Where(c => cardRestriction.IsValidCard(c, CurrentContext));
 
             //First make sure are allowed to set their stats.
             //Don't affect any card unless all that should be affected, can be.
@@ -42,7 +42,7 @@ namespace KompasServer.Effects
             }
 
             var buff = Buff;
-            var contextCopy = Context.Copy;
+            var contextCopy = CurrentContext.Copy;
             contextCopy.SetResumeInfo(Effect.CardTargets, Effect.SpaceTargets, Effect.stackableTargets,
                 CardTarget, SpaceTarget, StackableTarget);
 

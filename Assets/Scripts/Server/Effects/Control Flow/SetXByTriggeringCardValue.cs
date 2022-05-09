@@ -14,7 +14,7 @@ namespace KompasServer.Effects
         }
 
         public override int BaseCount => cardValue.GetValueOf(secondary ? 
-            Context.secondaryCardInfoBefore :
-            Context.mainCardInfoBefore);
+            CurrentContext.secondaryCardInfoBefore :
+            CurrentContext.mainCardInfoBefore);
     }
 }

@@ -40,7 +40,7 @@ namespace KompasServer.Effects
 
         public override Task<ResolutionInfo> Resolve()
         {
-            var targets = ServerGame.Cards.Where(c => cardRestriction.IsValidCard(c, Context));
+            var targets = ServerGame.Cards.Where(c => cardRestriction.IsValidCard(c, CurrentContext));
             foreach (var card in targets)
             {
                 if (forbidNotBoard && card.Location != CardLocation.Board)
