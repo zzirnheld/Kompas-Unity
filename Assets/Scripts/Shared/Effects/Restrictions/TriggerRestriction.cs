@@ -122,7 +122,7 @@ namespace KompasCore.Effects
 
             foreach (var tre in triggerRestrictionElements)
             {
-                tre.Initialize(this);
+                tre.Initialize(new RestrictionContext(game: Game, source: thisCard, subeffect: subeffect));
             }
 
             initialized = true;

@@ -1,34 +1,32 @@
 namespace KompasCore.Effects.Identities
 {
-    public abstract class GamestateSpaceIdentity
+    public abstract class GamestateSpaceIdentity : ContextInitializeableBase, IContextInitializeable
     {
-        private bool initialized;
+        protected abstract Space AbstractSpace { get; }
 
-        protected RestrictionContext RestrictionContext { get; private set; }
-
-        public virtual void Initialize(RestrictionContext restrictionContext)
+        public Space Space
         {
-            RestrictionContext = restrictionContext;
-
-            initialized = true;
+            get
+            {
+                ComplainIfNotInitialized();
+                return AbstractSpace;
+            }
         }
-
-        protected abstract Space SpaceLogic();
-
-        public Space Space() => initialized ? SpaceLogic()
-                : throw new System.NotImplementedException("You forgot to initialize an ActivationContextSpaceIdentity!");
     }
 
-    public class PositionOfGameSpaceIdentity : GamestateSpaceIdentity
+    namespace GamestateSpaceIdentities
     {
-        public GamestateCardIdentity cardIdentity;
-
-        public override void Initialize(RestrictionContext restrictionContext)
+        public class PositionOf : GamestateSpaceIdentity
         {
-            base.Initialize(restrictionContext);
-            cardIdentity.Initialize(restrictionContext);
-        }
+            public GamestateCardIdentity cardIdentity;
 
-        protected override Space SpaceLogic() => cardIdentity.CardFrom(RestrictionContext.game).Position;
+            public override void Initialize(RestrictionContext restrictionContext)
+            {
+                base.Initialize(restrictionContext);
+                cardIdentity.Initialize(restrictionContext);
+            }
+
+            protected override Space AbstractSpace => cardIdentity.CardFrom(RestrictionContext.game).Position;
+        }
     }
 }

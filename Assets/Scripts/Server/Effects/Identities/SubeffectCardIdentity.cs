@@ -1,49 +1,45 @@
 using KompasCore.Cards;
 using KompasCore.Effects;
 using KompasCore.Effects.Identities;
-using System;
 
 namespace KompasServer.Effects.Identities
 {
-    public abstract class SubeffectCardIdentity
+    public abstract class SubeffectCardIdentity : ContextInitializeableBase, IContextInitializeable
     {
-        private bool initialized;
-
-        protected RestrictionContext RestrictionContext { get; private set; }
-
-        public virtual void Initialize(RestrictionContext restrictionContext)
+        public GameCardBase Card
         {
-            RestrictionContext = restrictionContext;
-
-            initialized = true;
+            get
+            {
+                ComplainIfNotInitialized();
+                return AbstractCard;
+            }
         }
 
-        public GameCardBase GetCard() => initialized ? GetCardLogic()
-            : throw new NotImplementedException("You forgot to initialize a SubeffectCardIdentity!");
-
-
-        protected abstract GameCardBase GetCardLogic();
+        protected abstract GameCardBase AbstractCard { get; }
     }
 
-    public class ActivationContextSubeffectCardIdentity : SubeffectCardIdentity
+    namespace SubeffectCardIdentities
     {
-        public ActivationContextCardIdentity contextCardIdentity;
-
-        public override void Initialize(RestrictionContext restrictionContext)
+        public class FromActivationContext : SubeffectCardIdentity
         {
-            base.Initialize(restrictionContext);
-            contextCardIdentity.Initialize(restrictionContext);
+            public ActivationContextCardIdentity contextCardIdentity;
+
+            public override void Initialize(RestrictionContext restrictionContext)
+            {
+                base.Initialize(restrictionContext);
+                contextCardIdentity.Initialize(restrictionContext);
+            }
+
+            protected override GameCardBase AbstractCard
+                => contextCardIdentity.CardFrom(RestrictionContext.subeffect.Context);
         }
 
-        protected override GameCardBase GetCardLogic() 
-            => contextCardIdentity.CardFrom(RestrictionContext.subeffect.Context);
-    }
+        public class ByIndex : SubeffectCardIdentity
+        {
+            public int index;
 
-    public class ByIndexSubeffectCardIdentity : SubeffectCardIdentity
-    {
-        public int index;
-
-        protected override GameCardBase GetCardLogic()
-            => RestrictionContext.subeffect.Effect.GetTarget(index);
+            protected override GameCardBase AbstractCard
+                => RestrictionContext.subeffect.Effect.GetTarget(index);
+        }
     }
 }

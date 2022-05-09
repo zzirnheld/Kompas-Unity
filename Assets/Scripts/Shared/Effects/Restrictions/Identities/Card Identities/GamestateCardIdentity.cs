@@ -7,37 +7,37 @@ namespace KompasCore.Effects.Identities
     /// <summary>
     /// Gets a single card from the current gamestate.
     /// </summary>
-    public abstract class GamestateCardIdentity
+    public abstract class GamestateCardIdentity : ContextInitializeableBase, IContextInitializeable
     {
-        private bool initialized;
+        protected abstract GameCard AbstractCardFrom(Game game, ActivationContext context);
 
-        protected RestrictionContext RestrictionContext { get; private set; }
-
-        public virtual void Initialize(RestrictionContext restrictionContext)
+        public GameCard CardFrom(Game game, ActivationContext context = default)
         {
-            RestrictionContext = restrictionContext;
+            ComplainIfNotInitialized();
+            return AbstractCardFrom(game, context);
+        }
+    }
 
-            initialized = true;
+    namespace GamestateCardIdentities
+    {
+        public class Any : GamestateCardIdentity
+        {
+            public GamestateCardsIdentity gamestateCardsIdentity;
+
+            public override void Initialize(RestrictionContext restrictionContext)
+            {
+                base.Initialize(restrictionContext);
+                gamestateCardsIdentity.Initialize(restrictionContext);
+            }
+
+            protected override GameCard AbstractCardFrom(Game game, ActivationContext context)
+                => gamestateCardsIdentity.CardsFrom(game, context).FirstOrDefault();
         }
 
-        protected abstract GameCard CardFromLogic(Game game, ActivationContext context);
-
-        public GameCard CardFrom(Game game, ActivationContext context = default) 
-            => initialized ? CardFromLogic(game, context)
-                : throw new System.NotImplementedException("You forgot to initialize an ActivationContextSpaceIdentity!");
-    }
-
-    public class AnyGameCardIdentity : GamestateCardIdentity
-    {
-        public GamestateCardsIdentity gamestateCardsIdentity;
-
-        protected override GameCard CardFromLogic(Game game, ActivationContext context)
-            => gamestateCardsIdentity.CardsFrom(game, context).FirstOrDefault();
-    }
-
-    public class ThisCardIdentity : GamestateCardIdentity
-    {
-        protected override GameCard CardFromLogic(Game game, ActivationContext context)
-            => RestrictionContext.source;
+        public class ThisCard : GamestateCardIdentity
+        {
+            protected override GameCard AbstractCardFrom(Game game, ActivationContext context)
+                => RestrictionContext.source;
+        }
     }
 }

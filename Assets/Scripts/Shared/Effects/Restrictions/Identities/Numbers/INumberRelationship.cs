@@ -5,13 +5,16 @@ namespace KompasCore.Effects.Relationships
         public bool Compare(int a, int b);
     }
 
-    public class GreaterThan : INumberRelationship
+    namespace NumberRelationships
     {
-        public bool Compare(int a, int b) => a > b;
-    }
+        public class GreaterThan : INumberRelationship
+        {
+            public bool Compare(int a, int b) => a > b;
+        }
 
-    public class Equal : INumberRelationship
-    {
-        public bool Compare(int a, int b) => a == b;
+        public class Equal : INumberRelationship
+        {
+            public bool Compare(int a, int b) => a == b;
+        }
     }
 }

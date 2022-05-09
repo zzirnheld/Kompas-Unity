@@ -11,9 +11,9 @@
 				"triggerRestriction": {
 					"triggerRestrictionElements": [
                         {
-                            "$type": "KompasCore.Effects.Restrictions.CardsMatchTriggerRestrictionElement, Assembly-CSharp",
-                            "firstCardIdentity": { "$type": "KompasCore.Effects.Identities.ThisCardContextCardIdentity, Assembly-CSharp" },
-                            "secondCardIdentity": { "$type": "KompasCore.Effects.Identities.MainCardBeforeCardIdentity, Assembly-CSharp" }
+                            "$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.CardsMatch, Assembly-CSharp",
+                            "firstCardIdentity": { "$type": "KompasCore.Effects.Identities.ActivationContextCardIdentities.ThisCard, Assembly-CSharp" },
+                            "secondCardIdentity": { "$type": "KompasCore.Effects.Identities.ActivationContextCardIdentities.MainCardBefore, Assembly-CSharp" }
                         }
 					]
 				}
@@ -22,17 +22,17 @@
 				{
 					"$type": "KompasServer.Effects.TargetAllCardsIdentitySubeffect, Assembly-CSharp",
 					"cardsIdentity": {
-                        "$type": "KompasServer.Effects.Identities.ActivationContextSubeffectCardsIdentity, Assembly-CSharp",
+                        "$type": "KompasServer.Effects.Identities.SubeffectManyCardsIdentities.FromActivationContext, Assembly-CSharp",
                         "cardsIdentity": {
-                            "$type": "KompasServer.Effects.Identities.CardsInPositionsContextCardsIdentity, Assembly-CSharp",
-                            "spacesIdentity": {
-                                "$type": "KompasServer.Effects.Identities.ThreeSpaceRelationshipContextSpacesIdentity, Assembly-CSharp",
+                            "$type": "KompasServer.Effects.Identities.ActivationContextCardIdentities.CardsInPositions, Assembly-CSharp",
+                            "positions": {
+                                "$type": "KompasServer.Effects.Identities.ActivationContextManySpacesIdentities.ThreeSpaceRelationship, Assembly-CSharp",
                                 "firstSpaceIdentity": {
-                                    "$type": "KompasCore.Effects.Identities.CardPositionContextSpaceIdentity, Assembly-CSharp",
-                                    "cardIdentity": { "$type": "KompasCore.Effects.Identities.MainCardBeforeCardIdentity, Assembly-CSharp" }
+                                    "$type": "KompasCore.Effects.Identities.ActivationContextSpaceIdentities.CardPosition, Assembly-CSharp",
+                                    "cardIdentity": { "$type": "KompasCore.Effects.Identities.ActivationContextCardIdentities.MainCardBefore, Assembly-CSharp" }
                                 },
-                                "secondSpaceIdentity": { "$type": "KompasCore.Effects.Identities.ContextSpaceIdentity, Assembly-CSharp" },
-                                "threeSpaceRelationship": { "$type": "KompasCore.Effects.Identities.BetweenSpaceRelationship, Assembly-CSharp" }
+                                "secondSpaceIdentity": { "$type": "KompasCore.Effects.Identities.ActivationContextSpaceIdentities.ContextSpace, Assembly-CSharp" },
+                                "threeSpaceRelationship": { "$type": "KompasCore.Effects.Identities.ThreeSpaceRelationships.Between, Assembly-CSharp" }
                             }
                         }
 					}

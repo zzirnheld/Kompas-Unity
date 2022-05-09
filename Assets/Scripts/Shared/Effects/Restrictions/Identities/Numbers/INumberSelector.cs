@@ -8,13 +8,16 @@ namespace KompasCore.Effects.Identities
         public int Apply(ICollection<int> numbers);
     }
 
-    public class MaximumNumberSelector : INumberSelector
+    namespace NumberSelectors
     {
-        public int Apply(ICollection<int> numbers) => numbers.Max();
-    }
+        public class Maximum : INumberSelector
+        {
+            public int Apply(ICollection<int> numbers) => numbers.Max();
+        }
 
-    public class MinimumNumberSelector : INumberSelector
-    {
-        public int Apply(ICollection<int> numbers) => numbers.Min();
+        public class Minimum : INumberSelector
+        {
+            public int Apply(ICollection<int> numbers) => numbers.Min();
+        }
     }
 }

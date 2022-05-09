@@ -265,7 +265,7 @@ namespace KompasCore.Effects
             if (!space.IsValid) throw new InvalidSpaceException(space, "Invalid space to consider for restriction!");
 
             return spaceRestrictions.All(r => IsRestrictionValidWithDebug(r, space, theoreticalTarget, context))
-                && spaceRestrictionElements.All(sre => sre.FitsRestriction(space, context));
+                && spaceRestrictionElements.All(sre => sre.IsValidSpace(space, context));
         }
 
         public override string ToString()

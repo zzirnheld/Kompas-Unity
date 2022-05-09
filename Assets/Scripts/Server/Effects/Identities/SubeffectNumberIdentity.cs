@@ -3,45 +3,43 @@ using KompasCore.Effects.Identities;
 
 namespace KompasServer.Effects.Identities
 {
-    public abstract class SubeffectNumberIdentity
+    public abstract class SubeffectNumberIdentity : ContextInitializeableBase, IContextInitializeable
     {
-        private bool initialized;
+        protected abstract int AbstractNumber { get; }
 
-        protected RestrictionContext RestrictionContext { get; private set; }
-
-        public virtual void Initialize(RestrictionContext restrictionContext)
+        public int Number
         {
-            RestrictionContext = restrictionContext;
-
-            initialized = true;
+            get
+            {
+                ComplainIfNotInitialized();
+                return AbstractNumber;
+            }
         }
-
-        protected abstract int NumberLogic { get; }
-
-        public int Number => initialized ? NumberLogic
-            : throw new System.NotImplementedException("You forgot to initialize an ActivationContextSpaceIdentity!");
     }
 
-    public class GamestateSubeffectNumberIdentity : SubeffectNumberIdentity
+    namespace SubeffectNumberIdentities
     {
-        public GamestateNumberIdentity numberIdentity;
-
-        public override void Initialize(RestrictionContext restrictionContext)
+        public class FromGamestate : SubeffectNumberIdentity
         {
-            base.Initialize(restrictionContext);
-            numberIdentity.Initialize(restrictionContext);
+            public GamestateNumberIdentity numberIdentity;
+
+            public override void Initialize(RestrictionContext restrictionContext)
+            {
+                base.Initialize(restrictionContext);
+                numberIdentity.Initialize(restrictionContext);
+            }
+
+            protected override int AbstractNumber => numberIdentity.Number;
         }
 
-        protected override int NumberLogic => numberIdentity.Number;
-    }
+        public class X : SubeffectNumberIdentity
+        {
+            public int multiplier = 1;
+            public int modifier = 0;
+            public int divisor = 1;
 
-    public class XSubeffectNumberIdentity : SubeffectNumberIdentity
-    {
-        public int multiplier = 1;
-        public int modifier = 0;
-        public int divisor = 1;
-
-        protected override int NumberLogic
-            => (RestrictionContext.subeffect.Effect.X * multiplier / divisor) + modifier;
+            protected override int AbstractNumber
+                => (RestrictionContext.subeffect.Effect.X * multiplier / divisor) + modifier;
+        }
     }
 }
