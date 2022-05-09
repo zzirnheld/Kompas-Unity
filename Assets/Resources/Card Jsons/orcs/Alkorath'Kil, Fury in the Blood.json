@@ -1,0 +1,123 @@
+{
+	"cardType": 67,
+	"cardName": "Alkorath'Kil, Fury in the Blood",
+	"effText": "Cannot be avatar.\nWhen friendly turns start, discard->hand any number of Orcs.\nWhen a battle starts or a character dies, give all Orcs +3 EW.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Friendly Turn"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"listRestriction": {
+						"listRestrictions": [
+							"Min Can Choose"
+						],
+						"minCanChoose": 0
+					},
+					"cardRestriction": {
+						"blurb": "Return Orcs to the Fray",
+						"cardRestrictions": [ "Friendly", "Discard", "Subtypes Include" ],
+						"subtypesInclude": [ "Orc" ]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete": true,
+					"jumpIndices": [
+						1
+					]
+				}
+			]
+		},
+		{
+			"triggerData": {
+				"triggerCondition": "Battle Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [ "Board", "Character", "Subtypes Include" ],
+						"subtypesInclude": [ "Orc" ]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"wModifier": 3,
+					"eModifier": 3
+				},
+				{
+					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete": true,
+					"jumpIndices": [
+						1
+					]
+				}
+			]
+		},
+		{
+			"triggerData": {
+				"triggerCondition": "Discard",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Different from Source",
+							"Character",
+							"Board"
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [ "Board", "Character", "Subtypes Include" ],
+						"subtypesInclude": [ "Orc" ]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"wModifier": 3,
+					"eModifier": 3
+				},
+				{
+					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete": true,
+					"jumpIndices": [
+						1
+					]
+				}
+			]
+		}
+	],
+	"n": 1,
+	"e": 20,
+	"s": 16,
+	"w": 15,
+	"subtypes": [
+		"Orc",
+		"God"
+	],
+	"subtypeText": "Orc God"
+}

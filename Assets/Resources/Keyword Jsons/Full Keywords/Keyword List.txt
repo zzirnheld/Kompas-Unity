@@ -24,5 +24,7 @@ Collectible
 Spores
 Vessel Echo
 Vessel Cost Up
+Ambush
+Smite
 Stealth
 Evasive

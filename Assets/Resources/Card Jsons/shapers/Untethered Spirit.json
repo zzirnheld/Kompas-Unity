@@ -11,7 +11,7 @@
 						"This Card is Main Card",
 						"This Card Fits Restriction Now"
 					],
-					"cardRestriction": {
+					"selfRestriction": {
 						"cardRestrictions": [
 							"Space Fits Restriction"
 						],

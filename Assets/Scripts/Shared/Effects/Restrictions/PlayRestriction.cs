@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using KompasCore.Cards;
 using System.Linq;
+using UnityEngine;
 
 namespace KompasCore.Effects
 {
@@ -95,6 +96,13 @@ namespace KompasCore.Effects
                 && (cardThere.Controller == player || cardThere.AdjacentCards.Any(c => c.Controller == player));
         }
 
+        private bool IsOnAugmentSubtypes(Space space)
+        {
+            var subtypes = Card.Game.boardCtrl.GetCardAt(space)?.SubtypeText;
+            Debug.Log($"Subtypes: {subtypes}");
+            return Card.AugmentSubtypes?.All(st => subtypes?.Contains(st) ?? false) ?? true;
+        }
+
         private bool IsRestrictionValid(string r, Space space, Player player, ActivationContext context, bool normal) => r != null && r switch
         {
             DefaultNormal => true,
@@ -117,7 +125,7 @@ namespace KompasCore.Effects
 
             OnCharacter => Card.Game.boardCtrl.GetCardAt(space)?.CardType == 'C',
             OnCardFittingRestriction => onCardRestriction.IsValidCard(Card.Game.boardCtrl.GetCardAt(space), context),
-            OnAugmentSubtypes => Card.AugmentSubtypes?.All(st => Card.Game.boardCtrl.GetCardAt(space)?.AugmentSubtypes.Contains(st) ?? false) ?? true,
+            OnAugmentSubtypes => IsOnAugmentSubtypes(space),
             OnCardFloutingRestriction => onCardFloutedRestriction.IsValidCard(Card.Game.boardCtrl.GetCardAt(space), context),
 
             NotNormally => !normal,

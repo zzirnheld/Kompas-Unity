@@ -1,0 +1,45 @@
+{
+	"cardType": 83,
+	"cardName": "Sapping Stone",
+	"effText": "When turns start, I give all characters here -1 EW.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"In Source's AOE"
+							]
+						}
+					},
+					"eModifier": -1,
+					"wModifier": -1
+				}
+			]
+		}
+	],
+	"c": 1,
+	"spellTypes": [
+		"Radial"
+	],
+	"subtypes": [
+		"Radial"
+	],
+	"subtypeText": "Rune Radial",
+	"radius": 1
+}

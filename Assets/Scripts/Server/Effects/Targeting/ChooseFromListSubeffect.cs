@@ -80,6 +80,11 @@ namespace KompasServer.Effects
                     $"{string.Join(",", potentialTargets.Select(c => c.CardName))}");
                 return await NoPossibleTargets();
             }
+            else if (!potentialTargets.Any())
+            {
+                //If there's no potential targets, but no targets is a valid choice, then just go to the next effect
+                return ResolutionInfo.Next;
+            }
 
             IEnumerable<GameCard> targets = null;
             while (!AddListIfLegal(targets))

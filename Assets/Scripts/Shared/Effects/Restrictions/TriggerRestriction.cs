@@ -71,6 +71,15 @@ namespace KompasCore.Effects
         private const string MaxPerStack = "Max Per Stack";
         #endregion trigger conditions
 
+        private static readonly string[] RequiringCardRestriction = 
+            { MainCardFitsRestrictionBefore, SecondaryCardFitsRestrictionBefore, MainCardsAugmentedCardBeforeFitsRestriction };
+        private static readonly string[] RequiringNowRestriction = { MainCardFitsRestrictionAfter };
+        private static readonly string[] RequiringSelfRestriction = { ThisCardFitsRestriction };
+        private static readonly string[] RequiringExistsRestriction = { CardExistsNow };
+        private static readonly string[] RequiringSourceRestriction = { StackableSourceFitsRestriction };
+        private static readonly string[] RequiringNumberRestriction = { XFitsRestriction };
+        private static readonly string[] RequiringSpaceRestriction = { SpaceFitsRestriction };
+
         private static readonly ISet<string> ReevalationRestrictions = new HashSet<string>(new string[] { MaxPerTurn, MaxPerRound, MaxPerStack });
 
         public static readonly string[] DefaultFallOffRestrictions = { ThisCardIsMainCard, ThisCardInPlay };
@@ -80,13 +89,11 @@ namespace KompasCore.Effects
         public CardRestriction nowRestriction;
         public CardRestriction secondaryCardRestriction;
         public CardRestriction adjacencyRestriction;
+        public CardRestriction selfRestriction;
+        public CardRestriction sourceRestriction;
         public CardRestriction existsRestriction;
         public NumberRestriction xRestriction;
         public SpaceRestriction spaceRestriction;
-        public CardRestriction sourceRestriction;
-
-        public CardRestriction cardsFittingCardRestriction;
-        public NumberRestriction cardsFittingXRestriction;
 
         public int maxTimesPerTurn = 1;
         public int maxPerRound = 1;
@@ -116,6 +123,7 @@ namespace KompasCore.Effects
             nowRestriction?.Initialize(thisCard, effect, subeffect);
             secondaryCardRestriction?.Initialize(thisCard, effect, subeffect);
             existsRestriction?.Initialize(thisCard, effect, subeffect);
+            selfRestriction?.Initialize(thisCard, effect, subeffect);
             spaceRestriction?.Initialize(thisCard, thisCard.Controller, effect, subeffect);
             sourceRestriction?.Initialize(thisCard, effect, subeffect);
             xRestriction?.Initialize(thisCard);
@@ -124,6 +132,22 @@ namespace KompasCore.Effects
             {
                 tre.Initialize(new RestrictionContext(game: Game, source: thisCard, subeffect: subeffect));
             }
+            
+            //Verify that any relevant restrictions exist
+            if (triggerRestrictions.Intersect(RequiringCardRestriction).Any() && cardRestriction == null)
+                throw new ArgumentNullException("cardRestriction", $"Must be populated for any of these restrictions: {RequiringCardRestriction}");
+            if (triggerRestrictions.Intersect(RequiringNowRestriction).Any() && nowRestriction == null)
+                throw new ArgumentNullException("nowRestriction", $"Must be populated for any of these restrictions: {RequiringNowRestriction}");
+            if (triggerRestrictions.Intersect(RequiringSelfRestriction).Any() && selfRestriction == null)
+                throw new ArgumentNullException("selfRestriction", $"Must be populated for any of these restrictions: {RequiringSelfRestriction}");
+            if (triggerRestrictions.Intersect(RequiringExistsRestriction).Any() && existsRestriction == null)
+                throw new ArgumentNullException("existsRestriction", $"Must be populated for any of these restrictions: {RequiringExistsRestriction}");
+            if (triggerRestrictions.Intersect(RequiringSourceRestriction).Any() && sourceRestriction == null)
+                throw new ArgumentNullException("sourceRestriction", $"Must be populated for any of these restrictions: {RequiringSourceRestriction}");
+            if (triggerRestrictions.Intersect(RequiringNumberRestriction).Any() && xRestriction == null)
+                throw new ArgumentNullException("xRestriction", $"Must be populated for any of these restrictions: {RequiringNumberRestriction}");
+            if (triggerRestrictions.Intersect(RequiringSpaceRestriction).Any() && spaceRestriction == null)
+                throw new ArgumentNullException("spaceRestriction", $"Must be populated for any of these restrictions: {RequiringSpaceRestriction}");
 
             initialized = true;
             //Debug.Log($"Initializing trigger restriction for {thisCard?.CardName}. game is null? {game}");
@@ -140,7 +164,7 @@ namespace KompasCore.Effects
             ThisCardInPlay => ThisCard.Location == CardLocation.Board,
             CardExistsNow => ThisCard.Game.Cards.Any(c => existsRestriction.IsValidCard(c, context)),
 
-            ThisCardFitsRestriction => cardRestriction.IsValidCard(ThisCard, context),
+            ThisCardFitsRestriction => selfRestriction.IsValidCard(ThisCard, context),
 
             MainCardFitsRestrictionBefore => cardRestriction.IsValidCard(context.mainCardInfoBefore, context),
             SecondaryCardFitsRestrictionBefore => secondaryCardRestriction.IsValidCard(context.secondaryCardInfoBefore, context),
