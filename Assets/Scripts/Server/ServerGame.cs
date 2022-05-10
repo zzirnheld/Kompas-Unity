@@ -212,7 +212,7 @@ namespace KompasServer.GameCore
             EffectsController.PushToStack(new ServerHandSizeStackable(this, TurnServerPlayer), default);
 
             //trigger turn start effects
-            var context = new ActivationContext(player: TurnServerPlayer);
+            var context = new ActivationContext(game: this, player: TurnServerPlayer);
             EffectsController.TriggerForCondition(Trigger.TurnStart, context);
 
             await EffectsController.CheckForResponse();
@@ -237,13 +237,13 @@ namespace KompasServer.GameCore
             {
                 var toDraw = controller.deckCtrl.Topdeck;
                 if (toDraw == null) break;
-                var eachDrawContext = new ActivationContext(mainCardBefore: toDraw, stackableCause: stackSrc, player: controller);
+                var eachDrawContext = new ActivationContext(game: this, mainCardBefore: toDraw, stackableCause: stackSrc, player: controller);
                 toDraw.Rehand(controller, stackSrc);
                 eachDrawContext.CacheCardInfoAfter();
                 EffectsController.TriggerForCondition(Trigger.EachDraw, eachDrawContext);
                 drawn.Add(toDraw);
             }
-            var context = new ActivationContext(stackableCause: stackSrc, player: controller, x: cardsDrawn);
+            var context = new ActivationContext(game: this, stackableCause: stackSrc, player: controller, x: cardsDrawn);
             EffectsController.TriggerForCondition(Trigger.DrawX, context);
             return drawn;
         }
@@ -257,7 +257,7 @@ namespace KompasServer.GameCore
             Debug.Log($"{attacker.CardName} attacking {defender.CardName} at {defender.Position}");
             //push the attack to the stack, then check if any player wants to respond before resolving it
             var attack = new ServerAttack(this, instigator, attacker, defender);
-            EffectsController.PushToStack(attack, new ActivationContext());
+            EffectsController.PushToStack(attack, new ActivationContext(game: this, stackableCause: stackSrc, stackableEvent: attack, player: instigator));
             //check for triggers related to the attack (if this were in the constructor, the triggers would go on the stack under the attack
             attack.Declare(stackSrc);
             if (manual) attacker.SetAttacksThisTurn(attacker.attacksThisTurn + 1);

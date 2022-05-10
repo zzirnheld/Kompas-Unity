@@ -25,7 +25,7 @@ namespace KompasServer.Effects
             tiebreakerValue?.Initialize(eff.Source);
         }
 
-        public override bool IsImpossible() => !Game.Cards.Any(c => cardRestriction.IsValidCard(c, Context));
+        public override bool IsImpossible() => !Game.Cards.Any(c => cardRestriction.IsValidCard(c, CurrentContext));
 
         private GameCard GetRandomCard(GameCard[] cards)
         {
@@ -39,7 +39,7 @@ namespace KompasServer.Effects
             IEnumerable<GameCard> potentialTargets = null;
             try
             {
-                potentialTargets = Game.Cards.Where(c => cardRestriction.IsValidCard(c, Context));
+                potentialTargets = Game.Cards.Where(c => cardRestriction.IsValidCard(c, CurrentContext));
                 potentialTarget = tiebreakerDirection switch
                 {
                     Maximum => potentialTargets.OrderByDescending(tiebreakerValue.GetValueOf).First(),

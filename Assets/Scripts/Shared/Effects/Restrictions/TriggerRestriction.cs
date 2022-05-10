@@ -1,4 +1,5 @@
 ﻿using KompasCore.Cards;
+using KompasCore.Effects.Restrictions;
 using KompasCore.GameCore;
 using System;
 using System.Collections.Generic;
@@ -38,6 +39,7 @@ namespace KompasCore.Effects
         private const string CardExistsNow = "Card Exists Now";
 
         private const string SpaceFitsRestriction = "Space Fits Restriction";
+
         private const string XFitsRestriction = "X Fits Restriction";
         private const string StackableSourceIsMainCard = "Stackable Source is Main Card";
         private const string StackableSourceNotThisEffect = "Stackable Source isn't This Effect";
@@ -48,7 +50,7 @@ namespace KompasCore.Effects
 
         private const string NoStackable = "No Stackable"; //Aka "Normally"
         private const string NotFromEffect = "Not From Effect"; //But can be from attack
-        public const string FromAttack = "From Attack";
+        private const string FromAttack = "From Attack";
 
         private const string ContextsStackablesMatch = "Contexts Stackables Match";
         private const string StackableIsThisEffect = "Stackable is This Effect";
@@ -98,6 +100,8 @@ namespace KompasCore.Effects
         public int maxPerStack = 1;
         public int distance = 1;
 
+        public TriggerRestrictionElement[] triggerRestrictionElements = { };
+
         public GameCard ThisCard { get; private set; }
 
         public Trigger ThisTrigger { get; private set; }
@@ -124,6 +128,11 @@ namespace KompasCore.Effects
             sourceRestriction?.Initialize(thisCard, effect, subeffect);
             xRestriction?.Initialize(thisCard);
 
+            foreach (var tre in triggerRestrictionElements)
+            {
+                tre.Initialize(new RestrictionContext(game: Game, source: thisCard, subeffect: subeffect));
+            }
+            
             //Verify that any relevant restrictions exist
             if (triggerRestrictions.Intersect(RequiringCardRestriction).Any() && cardRestriction == null)
                 throw new ArgumentNullException("cardRestriction", $"Must be populated for any of these restrictions: {RequiringCardRestriction}");
@@ -226,7 +235,8 @@ namespace KompasCore.Effects
 
             try
             {
-                return triggerRestrictions.All(r => IsRestrictionValidDebug(r, context, secondary: secondary));
+                return triggerRestrictions.All(r => IsRestrictionValidDebug(r, context, secondary: secondary))
+                    && triggerRestrictionElements.All(tre => tre.IsValidContext(context, secondaryContext: secondary));
             }
             catch (NullReferenceException nullref)
             {

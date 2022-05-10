@@ -1,4 +1,5 @@
 ﻿using KompasCore.Cards;
+using KompasCore.Effects.Restrictions;
 using KompasServer.Effects;
 using System;
 using System.Linq;
@@ -159,6 +160,8 @@ namespace KompasCore.Effects
 
         public SpaceRestriction spaceRestriction;
 
+        public CardRestrictionElement[] cardRestrictionElements = { };
+
         public GameCard Source { get; private set; }
         public Player Controller => Effect?.Controller ?? Source?.Controller;
         public Effect Effect { get; private set; }
@@ -172,6 +175,8 @@ namespace KompasCore.Effects
         /// </summary>
         /// <param name="subeff"></param>
         public void Initialize(Subeffect subeff) => Initialize(subeff.Source, subeff.Effect, subeff);
+
+        public void Initialize(RestrictionContext rc) => Initialize(source: rc.source, effect: rc.subeffect?.Effect, subeffect: rc.subeffect);
 
         /// <summary>
         /// Initializes this card restriction to match the given information.
@@ -197,6 +202,11 @@ namespace KompasCore.Effects
             cardValueNumberRestriction?.Initialize(source, subeffect);
 
             cardValue?.Initialize(source);
+
+            foreach(var cre in cardRestrictionElements)
+            {
+                cre.Initialize(new RestrictionContext(game: source.Game, source: source, subeffect: subeffect));
+            }
 
             initialized = true;
             //Debug.Log($"Initialized {this}");
@@ -388,7 +398,8 @@ namespace KompasCore.Effects
 
             try
             {
-                return cardRestrictions.All(r => IsRestrictionValidDebug(r, potentialTarget, x, context));
+                return cardRestrictions.All(r => IsRestrictionValid(r, potentialTarget, x, context))
+                    && cardRestrictionElements.All(cre => cre.FitsRestriction(potentialTarget, context));
             }
             catch (ArgumentException ae)
             {

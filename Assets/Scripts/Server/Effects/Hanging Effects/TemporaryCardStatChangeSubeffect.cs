@@ -46,8 +46,8 @@ namespace KompasServer.Effects
             else if (forbidNotBoard && CardTarget.Location != CardLocation.Board)
                 throw new InvalidLocationException(CardTarget.Location, CardTarget, ChangedStatsOfCardOffBoard);
 
-            Debug.Log($"Creating temp NESW buff effect during context {Context}");
-            var contextCopy = Context.Copy;
+            Debug.Log($"Creating temp NESW buff effect during context {CurrentContext}");
+            var contextCopy = CurrentContext.Copy;
             contextCopy.SetResumeInfo(Effect.CardTargets, Effect.SpaceTargets, Effect.stackableTargets,
                 CardTarget, SpaceTarget, StackableTarget);
 

@@ -13,9 +13,9 @@ namespace KompasServer.Effects
 
         protected override IEnumerable<HangingEffect> CreateHangingEffects()
         {
-            Debug.Log($"Is context null? {Context == null}");
+            Debug.Log($"Is context null? {CurrentContext == null}");
             Debug.Log($"Are jump indices null? {jumpIndices == null}");
-            ActivationContext contextCopy = Context.Copy;
+            ActivationContext contextCopy = CurrentContext.Copy;
             contextCopy.SetResumeInfo(Effect.CardTargets, Effect.SpaceTargets, Effect.stackableTargets,
                 CardTarget, SpaceTarget, StackableTarget,
                 JumpIndex);

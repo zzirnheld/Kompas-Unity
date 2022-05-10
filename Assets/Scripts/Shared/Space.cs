@@ -94,6 +94,36 @@ public class Space
     public bool NorthOf(Space other) => x > other.x || y > other.y;
     public Space DueNorth => new Space(x + 1, y + 1);
 
+    /// <summary>
+    /// Returns the space directly between this space and the other one
+    /// </summary>
+    /// <param name="other"></param>
+    /// <returns></returns>
+    public Space DirectlyBetween(Space other)
+    {
+        if (!SameDiagonal(other)) return default;
+        else return AdjacentSpaces.Intersect(other.AdjacentSpaces).FirstOrDefault();
+    }
+
+    /// <summary>
+    /// Whether this space is between the two others.
+    /// "Between" is ill-defined for 3 spaces not on the same diagonal.
+    /// </summary>
+    /// <param name="a"></param>
+    /// <param name="b"></param>
+    /// <returns></returns>
+    public bool Between(Space a, Space b)
+    {
+        if (a == null) throw new ArgumentNullException("a", "First space of 'between' was null");
+        if (b == null) throw new ArgumentNullException("b", "Second space of 'between' was null");
+
+        if (a.x == b.x && b.x == x) return (a.y > y && b.y < y) || (a.y < y && b.y > y);
+        if (a.y == b.y && b.y == y) return (a.x > x && b.x < x) || (a.x < x && b.x > x);
+
+        //If not on either of the same diagonals, "between" is ill-defined.
+        return false;
+    }
+
     public Space DirectionFromThisTo(Space other)
     {
         (int x, int y) diff = (other.x - x, other.y - y);
