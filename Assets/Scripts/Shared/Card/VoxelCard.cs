@@ -32,12 +32,12 @@ public class VoxelCard : MonoBehaviour
     public Sprite FrameTexture;
     public Sprite NamePlacardTexture;
     public Sprite TypePlacardTexture;
-    public Color NColor;
-    public Color EColor;
-    public Color SACColor;
-    public Color WColor;
-    public Color RColor;
-    public Color DColor;
+    public Sprite NTexture;
+    public Sprite ETexture;
+    public Sprite SACTexture;
+    public Sprite WTexture;
+    public Sprite RTexture;
+    public Sprite DTexture;
     public Sprite CharacterArt;
     public Sprite EffectTextTexture;
     public Sprite CardBackTexture;
@@ -711,6 +711,90 @@ public class VoxelCard : MonoBehaviour
             TypePlacardSamplingIncrement = (float)TypePlacardTexture.texture.width / TextureResolution;
         }
 
+        Vector2Int NSamplingStartIndex;
+        float NSamplingIncrement;
+
+        if (NTexture.texture.width > NTexture.texture.height)
+        {
+            NSamplingStartIndex = new Vector2Int((NTexture.texture.width - NTexture.texture.height) / 2, 0);
+            NSamplingIncrement = (float)NTexture.texture.height / TextureResolution;
+        }
+        else
+        {
+            NSamplingStartIndex = new Vector2Int((NTexture.texture.height - NTexture.texture.width) / 2, 0);
+            NSamplingIncrement = (float)NTexture.texture.width / TextureResolution;
+        }
+
+        Vector2Int ESamplingStartIndex;
+        float ESamplingIncrement;
+
+        if (ETexture.texture.width > ETexture.texture.height)
+        {
+            ESamplingStartIndex = new Vector2Int((ETexture.texture.width - ETexture.texture.height) / 2, 0);
+            ESamplingIncrement = (float)ETexture.texture.height / TextureResolution;
+        }
+        else
+        {
+            ESamplingStartIndex = new Vector2Int((ETexture.texture.height - ETexture.texture.width) / 2, 0);
+            ESamplingIncrement = (float)ETexture.texture.width / TextureResolution;
+        }
+
+        Vector2Int SACSamplingStartIndex;
+        float SACSamplingIncrement;
+
+        if (SACTexture.texture.width > SACTexture.texture.height)
+        {
+            SACSamplingStartIndex = new Vector2Int((SACTexture.texture.width - SACTexture.texture.height) / 2, 0);
+            SACSamplingIncrement = (float)SACTexture.texture.height / TextureResolution;
+        }
+        else
+        {
+            SACSamplingStartIndex = new Vector2Int((SACTexture.texture.height - SACTexture.texture.width) / 2, 0);
+            SACSamplingIncrement = (float)SACTexture.texture.width / TextureResolution;
+        }
+
+        Vector2Int WSamplingStartIndex;
+        float WSamplingIncrement;
+
+        if (WTexture.texture.width > WTexture.texture.height)
+        {
+            WSamplingStartIndex = new Vector2Int((WTexture.texture.width - WTexture.texture.height) / 2, 0);
+            WSamplingIncrement = (float)WTexture.texture.height / TextureResolution;
+        }
+        else
+        {
+            WSamplingStartIndex = new Vector2Int((WTexture.texture.height - WTexture.texture.width) / 2, 0);
+            WSamplingIncrement = (float)WTexture.texture.width / TextureResolution;
+        }
+
+        Vector2Int RSamplingStartIndex;
+        float RSamplingIncrement;
+
+        if (RTexture.texture.width > RTexture.texture.height)
+        {
+            RSamplingStartIndex = new Vector2Int((RTexture.texture.width - RTexture.texture.height) / 2, 0);
+            RSamplingIncrement = (float)RTexture.texture.height / TextureResolution;
+        }
+        else
+        {
+            RSamplingStartIndex = new Vector2Int((RTexture.texture.height - RTexture.texture.width) / 2, 0);
+            RSamplingIncrement = (float)RTexture.texture.width / TextureResolution;
+        }
+
+        Vector2Int DSamplingStartIndex;
+        float DSamplingIncrement;
+
+        if (DTexture.texture.width > DTexture.texture.height)
+        {
+            DSamplingStartIndex = new Vector2Int((DTexture.texture.width - DTexture.texture.height) / 2, 0);
+            DSamplingIncrement = (float)DTexture.texture.height / TextureResolution;
+        }
+        else
+        {
+            DSamplingStartIndex = new Vector2Int((DTexture.texture.height - DTexture.texture.width) / 2, 0);
+            DSamplingIncrement = (float)DTexture.texture.width / TextureResolution;
+        }
+
         Vector2Int CharacterArtSamplingStartIndex;
         float CharacterArtSamplingIncrement;
 
@@ -781,41 +865,56 @@ public class VoxelCard : MonoBehaviour
 
                 //Stats placards texture
                 position = new Vector2Int(x, TextureResolution + y);
-                Color statsColor;
+                Vector2Int statsStartIndex;
+                float statsIncrement;
+                Sprite statsTexture;
                 if(x < TextureResolution / 3)
                 {
                     if(y > TextureResolution / 3)
                     {
-                        statsColor = WColor;
+                        statsStartIndex = WSamplingStartIndex;
+                        statsIncrement = WSamplingIncrement;
+                        statsTexture = WTexture;
                     }
                     else
                     {
-                        statsColor = DColor;
+                        statsStartIndex = DSamplingStartIndex;
+                        statsIncrement = DSamplingIncrement;
+                        statsTexture = DTexture;
                     }
                 }
                 else if (x < 2 * TextureResolution / 3)
                 {
                     if(y > TextureResolution / 2)
                     {
-                        statsColor = NColor;
+                        statsStartIndex = NSamplingStartIndex;
+                        statsIncrement = NSamplingIncrement;
+                        statsTexture = NTexture;
                     }
                     else
                     {
-                        statsColor = SACColor;
+                        statsStartIndex = SACSamplingStartIndex;
+                        statsIncrement = SACSamplingIncrement;
+                        statsTexture = SACTexture;
                     }
                 }
                 else
                 {
                     if (y > TextureResolution / 3)
                     {
-                        statsColor = EColor;
+                        statsStartIndex = ESamplingStartIndex;
+                        statsIncrement = ESamplingIncrement;
+                        statsTexture = ETexture;
                     }
                     else
                     {
-                        statsColor = RColor;
+                        statsStartIndex = RSamplingStartIndex;
+                        statsIncrement = RSamplingIncrement;
+                        statsTexture = RTexture;
                     }
                 }
-                newTexture.SetPixel(position.x, position.y, statsColor);
+                samplePosition = new Vector2Int(statsStartIndex.x + (int)(statsIncrement * x), statsStartIndex.y + (int)(statsIncrement * y));
+                newTexture.SetPixel(position.x, position.y, statsTexture.texture.GetPixel(samplePosition.x, samplePosition.y));
 
                 //Art and effect text texture
                 position += TextureResolution * Vector2Int.right;
