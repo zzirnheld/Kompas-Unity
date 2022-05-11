@@ -1,11 +1,13 @@
-using KompasServer.Effects.Identities;
+using KompasCore.Cards;
+using KompasCore.Effects.Identities;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace KompasServer.Effects
 {
     public class TargetAllCardsIdentitySubeffect : ServerSubeffect
     {
-        public SubeffectManyCardsIdentity cardsIdentity;
+        public INoActivationContextIdentity<ICollection<GameCardBase>> cardsIdentity;
 
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
@@ -15,7 +17,7 @@ namespace KompasServer.Effects
 
         public override Task<ResolutionInfo> Resolve()
         {
-            var cards = cardsIdentity.Cards;
+            var cards = cardsIdentity.Item;
             if (cards.Count == 0) return Task.FromResult(ResolutionInfo.Impossible(NoValidCardTarget));
 
             foreach (var card in cards)

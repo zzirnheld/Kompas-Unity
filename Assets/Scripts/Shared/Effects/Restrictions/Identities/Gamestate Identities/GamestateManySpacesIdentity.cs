@@ -3,21 +3,16 @@ using System.Linq;
 
 namespace KompasCore.Effects.Identities
 {
-    public interface INoActivationContextManySpacesIdentity : IContextInitializeable
-    {
-        public ICollection<Space> Spaces { get; }
-    }
-
     /// <summary>
     /// Identifies a collection of spaces.
     /// Can be used whether or not the caller does or doesn't care about an ActivationContext.
     /// </summary>
     public abstract class GamestateManySpacesIdentityBase : ContextInitializeableBase,
-        IActivationContextManySpacesIdentity, INoActivationContextManySpacesIdentity
+        IActivationContextIdentity<ICollection<Space>>, INoActivationContextIdentity<ICollection<Space>>
     {
         protected abstract ICollection<Space> AbstractLogic { get; }
 
-        public ICollection<Space> Spaces
+        public ICollection<Space> Item
         {
             get
             {
@@ -26,7 +21,7 @@ namespace KompasCore.Effects.Identities
             }
         }
 
-        public ICollection<Space> SpacesFrom(ActivationContext context) => Spaces;
+        public ICollection<Space> From(ActivationContext context) => Item;
     }
 
     namespace GamestateManySpacesIdentities

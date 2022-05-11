@@ -7,9 +7,9 @@ using System.Linq;
 namespace KompasServer.Effects.Identities
 {
     public abstract class SubeffectManyCardsIdentity : SubeffectInitializeableBase,
-        IContextInitializeable
+        IContextInitializeable, INoActivationContextIdentity<ICollection<GameCardBase>>
     {
-        public ICollection<GameCardBase> Cards
+        public ICollection<GameCardBase> Item
         {
             get
             {
@@ -40,7 +40,7 @@ namespace KompasServer.Effects.Identities
 
         public class CardsInPositions : SubeffectManyCardsIdentity
         {
-            public INoActivationContextManySpacesIdentity positions;
+            public INoActivationContextIdentity<ICollection<Space>> positions;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {
@@ -52,7 +52,7 @@ namespace KompasServer.Effects.Identities
             {
                 get
                 {
-                    var spaces = positions.Spaces;
+                    var spaces = positions.Item;
                     var cards = spaces.Select(InitializationContext.game.boardCtrl.GetCardAt).Where(s => s != null).ToArray();
                     return cards;
                 }
@@ -61,7 +61,7 @@ namespace KompasServer.Effects.Identities
 
         public class FromActivationContext : SubeffectManyCardsIdentity
         {
-            public IActivationContextManyCardsIdentity cardsFromContext;
+            public IActivationContextIdentity<ICollection<GameCardBase>> cardsFromContext;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {
@@ -70,7 +70,7 @@ namespace KompasServer.Effects.Identities
             }
 
             protected override ICollection<GameCardBase> AbstractCards
-                => cardsFromContext.CardsFrom(InitializationContext.subeffect.CurrentContext);
+                => cardsFromContext.From(InitializationContext.subeffect.CurrentContext);
         }
     }
 }

@@ -33,7 +33,7 @@ namespace KompasCore.Effects
     {
         public override void Initialize(EffectInitializationContext initializationContext)
         {
-            if (InitializationContext.subeffect == null) throw new ArgumentNullException($"{GetType()} must be initialized by/with a Subeffect");
+            if (initializationContext.subeffect == null) throw new ArgumentNullException($"{GetType()} must be initialized by/with a Subeffect");
             base.Initialize(initializationContext);
         }
     }

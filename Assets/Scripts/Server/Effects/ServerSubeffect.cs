@@ -21,9 +21,9 @@ namespace KompasServer.Effects
         public ServerPlayer ServerPlayer => PlayerTarget as ServerPlayer;
 
         public EffectInitializationContext DefaultRestrictionContext
-            => CreateRestrictionContext(null);
+            => CreateInitializationContext(null);
 
-        protected EffectInitializationContext CreateRestrictionContext(Trigger trigger)
+        protected EffectInitializationContext CreateInitializationContext(Trigger trigger)
             => new EffectInitializationContext(game: Game, source: Source, effect: Effect, trigger: trigger, subeffect: this);
 
         /// <summary>

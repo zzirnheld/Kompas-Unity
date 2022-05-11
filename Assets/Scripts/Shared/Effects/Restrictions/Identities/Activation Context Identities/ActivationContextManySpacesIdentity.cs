@@ -5,16 +5,12 @@ using System.Linq;
 
 namespace KompasCore.Effects.Identities
 {
-    public interface IActivationContextManySpacesIdentity : IContextInitializeable
-    {
-        public ICollection<Space> SpacesFrom(ActivationContext context);
-    }
-
-    public abstract class ActivationContextManySpacesIdentityBase : ContextInitializeableBase, IActivationContextManySpacesIdentity
+    public abstract class ActivationContextManySpacesIdentityBase : ContextInitializeableBase, 
+        IActivationContextIdentity<ICollection<Space>>
     {
         protected abstract ICollection<Space> AbstractSpacesFrom(ActivationContext context);
 
-        public ICollection<Space> SpacesFrom(ActivationContext context)
+        public ICollection<Space> From(ActivationContext context)
         {
             ComplainIfNotInitialized();
             return AbstractSpacesFrom(context);
@@ -29,8 +25,8 @@ namespace KompasCore.Effects.Identities
         /// </summary>
         public class ThreeSpaceRelationship : ActivationContextManySpacesIdentityBase
         {
-            public IActivationContextSpaceIdentity firstSpace;
-            public IActivationContextSpaceIdentity secondSpace;
+            public IActivationContextIdentity<Space> firstSpace;
+            public IActivationContextIdentity<Space> secondSpace;
 
             public IThreeSpaceRelationship thirdSpaceRelationship;
 
@@ -43,8 +39,8 @@ namespace KompasCore.Effects.Identities
 
             protected override ICollection<Space> AbstractSpacesFrom(ActivationContext context)
             {
-                Space first = firstSpace.SpaceFrom(context);
-                Space second = secondSpace.SpaceFrom(context);
+                Space first = firstSpace.From(context);
+                Space second = secondSpace.From(context);
                 return Space.Spaces.Where(space => thirdSpaceRelationship.Evaluate(first, second, space)).ToArray();
             }
         }

@@ -1,5 +1,5 @@
+using KompasCore.Cards;
 using KompasCore.Effects.Identities;
-using System;
 
 namespace KompasCore.Effects.Restrictions
 {
@@ -28,8 +28,8 @@ namespace KompasCore.Effects.Restrictions
 
         public class CardsMatch : TriggerRestrictionElement
         {
-            public IActivationContextCardIdentity firstCard;
-            public IActivationContextCardIdentity secondCard;
+            public IActivationContextIdentity<GameCardBase> firstCard;
+            public IActivationContextIdentity<GameCardBase> secondCard;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {
@@ -40,8 +40,8 @@ namespace KompasCore.Effects.Restrictions
 
             protected override bool AbstractIsValidContext(ActivationContext context)
             {
-                var first = firstCard.CardFrom(context);
-                var second = secondCard.CardFrom(context);
+                var first = firstCard.From(context);
+                var second = secondCard.From(context);
                 return first.Card == second.Card;
             }
         }
@@ -53,7 +53,7 @@ namespace KompasCore.Effects.Restrictions
         public class SpaceFitsRestriction : TriggerRestrictionElement
         {
             public SpaceRestriction spaceRestriction;
-            public IActivationContextSpaceIdentity space;
+            public IActivationContextIdentity<Space> space;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {
@@ -63,13 +63,13 @@ namespace KompasCore.Effects.Restrictions
             }
 
             protected override bool AbstractIsValidContext(ActivationContext context)
-                => spaceRestriction.IsValidSpace(space.SpaceFrom(context), context);
+                => spaceRestriction.IsValidSpace(space.From(context), context);
         }
 
         public class CardFitsRestriction : TriggerRestrictionElement
         {
             public CardRestriction cardRestriction;
-            public IActivationContextCardIdentity card;
+            public IActivationContextIdentity<GameCardBase> card;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {
@@ -80,7 +80,7 @@ namespace KompasCore.Effects.Restrictions
 
             protected override bool AbstractIsValidContext(ActivationContext context)
             {
-                var card = this.card.CardFrom(context);
+                var card = this.card.From(context);
                 return cardRestriction.IsValidCard(card, context);
             }
         }

@@ -2,17 +2,10 @@ using KompasCore.Cards;
 
 namespace KompasCore.Effects.Identities
 {
-    /// <summary>
-    /// Uniquely identifies a singular card, w/r/t an ActivationContext
-    /// </summary>
-    public interface IActivationContextCardIdentity : IContextInitializeable
+    public abstract class ActivationContextCardIdentityBase : ContextInitializeableBase, 
+        IActivationContextIdentity<GameCardBase>
     {
-        public GameCardBase CardFrom(ActivationContext context);
-    }
-
-    public abstract class ActivationContextCardIdentityBase : ContextInitializeableBase, IActivationContextCardIdentity
-    {
-        public GameCardBase CardFrom(ActivationContext context)
+        public GameCardBase From(ActivationContext context)
         {
             ComplainIfNotInitialized();
             return CardFromAbstract(context);
@@ -32,7 +25,7 @@ namespace KompasCore.Effects.Identities
 
         public class CardAtPosition : ActivationContextCardIdentityBase
         {
-            public IActivationContextSpaceIdentity position;
+            public IActivationContextIdentity<Space> position;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {
@@ -42,7 +35,7 @@ namespace KompasCore.Effects.Identities
 
             protected override GameCardBase CardFromAbstract(ActivationContext context)
             {
-                var finalSpace = position.SpaceFrom(context);
+                var finalSpace = position.From(context);
                 return context.game.boardCtrl.GetCardAt(finalSpace);
             }
         }

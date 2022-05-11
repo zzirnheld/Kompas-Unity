@@ -5,9 +5,9 @@ using KompasCore.Effects.Identities;
 namespace KompasServer.Effects.Identities
 {
     public abstract class SubeffectCardIdentityBase : SubeffectInitializeableBase,
-        INoActivationContextCardIdentity
+        INoActivationContextIdentity<GameCardBase>
     {
-        public GameCardBase Card
+        public GameCardBase Item
         {
             get
             {
@@ -23,7 +23,7 @@ namespace KompasServer.Effects.Identities
     {
         public class FromActivationContext : SubeffectCardIdentityBase
         {
-            public IActivationContextCardIdentity cardFromContext;
+            public IActivationContextIdentity<GameCardBase> cardFromContext;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {
@@ -32,7 +32,7 @@ namespace KompasServer.Effects.Identities
             }
 
             protected override GameCardBase AbstractCard
-                => cardFromContext.CardFrom(InitializationContext.subeffect.CurrentContext);
+                => cardFromContext.From(InitializationContext.subeffect.CurrentContext);
         }
 
         /// <summary>

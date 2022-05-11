@@ -1,3 +1,4 @@
+using KompasCore.Cards;
 using KompasCore.Effects.Identities;
 using KompasCore.Effects.Relationships;
 using KompasServer.Effects.Identities;
@@ -30,8 +31,8 @@ namespace KompasCore.Effects.Restrictions
         /// </summary>
         public class CompareDistance : SpaceRestrictionElement
         {
-            public INoActivationContextSpaceIdentity distanceTo;
-            public INoActivationContextNumberIdentity number;
+            public INoActivationContextIdentity<Space> distanceTo;
+            public INoActivationContextIdentity<int> number;
             public INumberRelationship comparison;
 
             public override void Initialize(EffectInitializationContext initializationContext)
@@ -43,10 +44,10 @@ namespace KompasCore.Effects.Restrictions
 
             protected override bool AbstractIsValidSpace(Space space, ActivationContext context)
             {
-                var origin = this.distanceTo.Space;
+                var origin = this.distanceTo.Item;
                 int distance = origin.DistanceTo(space);
 
-                int number = this.number.Number;
+                int number = this.number.Item;
 
                 return comparison.Compare(distance, number);
             }
@@ -57,8 +58,8 @@ namespace KompasCore.Effects.Restrictions
         /// </summary>
         public class AdjacentTo : SpaceRestrictionElement
         {
-            public INoActivationContextCardIdentity card;
-            public INoActivationContextSpaceIdentity space;
+            public INoActivationContextIdentity<GameCardBase> card;
+            public INoActivationContextIdentity<Space> space;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {
@@ -75,7 +76,7 @@ namespace KompasCore.Effects.Restrictions
 
             protected override bool AbstractIsValidSpace(Space space, ActivationContext context)
             {
-                if (card != null) return card.Card.IsAdjacentTo(space);
+                if (card != null) return card.Item.IsAdjacentTo(space);
                 else if (space != null) return space.AdjacentTo(space);
                 else throw new System.NotImplementedException($"You forgot to account for some weird case for {InitializationContext.source}");
             }
@@ -86,7 +87,7 @@ namespace KompasCore.Effects.Restrictions
         /// </summary>
         public class CanMoveCard : SpaceRestrictionElement
         {
-            public INoActivationContextCardIdentity toMove;
+            public INoActivationContextIdentity<GameCardBase> toMove;
 
             public bool normalMove = false;
 
@@ -98,8 +99,8 @@ namespace KompasCore.Effects.Restrictions
 
             protected override bool AbstractIsValidSpace(Space space, ActivationContext context)
                 => normalMove 
-                ? toMove.Card.Card.MovementRestriction.IsValidNormalMove(space)
-                : toMove.Card.Card.MovementRestriction.IsValidEffectMove(space, context);
+                ? toMove.Item.Card.MovementRestriction.IsValidNormalMove(space)
+                : toMove.Item.Card.MovementRestriction.IsValidEffectMove(space, context);
         }
     }
 }

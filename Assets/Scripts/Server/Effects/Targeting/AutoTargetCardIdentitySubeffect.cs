@@ -1,3 +1,4 @@
+using KompasCore.Cards;
 using KompasCore.Effects.Identities;
 using System.Threading.Tasks;
 
@@ -5,7 +6,7 @@ namespace KompasServer.Effects
 {
     public class AutoTargetCardIdentitySubeffect : ServerSubeffect
     {
-        public INoActivationContextCardIdentity subeffectCardIdentity;
+        public INoActivationContextIdentity<GameCardBase> subeffectCardIdentity;
 
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
@@ -15,7 +16,7 @@ namespace KompasServer.Effects
 
         public override Task<ResolutionInfo> Resolve()
         {
-            var card = subeffectCardIdentity.Card;
+            var card = subeffectCardIdentity.Item;
             if (card == null) return Task.FromResult(ResolutionInfo.Impossible(NoValidCardTarget));
 
             Effect.AddTarget(card.Card);

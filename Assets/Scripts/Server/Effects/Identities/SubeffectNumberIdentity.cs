@@ -1,14 +1,15 @@
 using KompasCore.Effects;
 using KompasCore.Effects.Identities;
+using System.Collections.Generic;
 
 namespace KompasServer.Effects.Identities
 {
     public abstract class SubeffectNumberIdentityBase : SubeffectInitializeableBase,
-        INoActivationContextNumberIdentity
+        INoActivationContextIdentity<int>
     {
         protected abstract int AbstractNumber { get; }
 
-        public int Number
+        public int Item
         {
             get
             {
@@ -32,7 +33,7 @@ namespace KompasServer.Effects.Identities
         public class Selector : SubeffectNumberIdentityBase
         {
             public INumberSelector selector;
-            public INoActivationContextManyNumbersIdentity numbers;
+            public INoActivationContextIdentity<ICollection<int>> numbers;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {
@@ -41,7 +42,7 @@ namespace KompasServer.Effects.Identities
             }
 
             protected override int AbstractNumber
-                => selector.Apply(numbers.Numbers);
+                => selector.Apply(numbers.Item);
         }
     }
 }

@@ -25,7 +25,7 @@ namespace KompasServer.Effects
                     new TriggerRestriction() { triggerRestrictions = TriggerRestriction.DefaultFallOffRestrictions } :
                     new TriggerRestriction() { triggerRestrictions = { } };
             }
-            triggerRest.Initialize(initializationContext: CreateRestrictionContext(null));
+            triggerRest.Initialize(initializationContext: CreateInitializationContext(null));
             return triggerRest;
         }
 
@@ -33,7 +33,7 @@ namespace KompasServer.Effects
         {
             base.Initialize(eff, subeffIndex);
             triggerRestriction ??= new TriggerRestriction();
-            triggerRestriction.Initialize(CreateRestrictionContext(null));
+            triggerRestriction.Initialize(CreateInitializationContext(null));
             //Debug.LogWarning($"Are jump indices null? {jumpIndices == null}");
         }
 

@@ -4,21 +4,16 @@ using System.Linq;
 
 namespace KompasCore.Effects.Identities
 {
-    public interface INoActivationContextManyNumbersIdentity : IContextInitializeable
-    {
-        public ICollection<int> Numbers { get; }
-    }
-
     /// <summary>
     /// Identifies a collection of numbers, like distances or stats of a whole bunch of cards.
     /// Can be used whether or not the caller does or doesn't care about an ActivationContext.
     /// </summary>
     public abstract class GamestateManyNumbersIdentityBase : ContextInitializeableBase,
-        INoActivationContextManyNumbersIdentity
+        INoActivationContextIdentity<ICollection<int>>
     {
         protected abstract ICollection<int> AbstractNumbers { get; }
 
-        public ICollection<int> Numbers
+        public ICollection<int> Item
         {
             get
             {
@@ -32,8 +27,8 @@ namespace KompasCore.Effects.Identities
     {
         public class Distances : GamestateManyNumbersIdentityBase
         {
-            public INoActivationContextSpaceIdentity origin;
-            public INoActivationContextManySpacesIdentity destinations;
+            public INoActivationContextIdentity<Space> origin;
+            public INoActivationContextIdentity<ICollection<Space>> destinations;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {
@@ -46,8 +41,8 @@ namespace KompasCore.Effects.Identities
             {
                 get
                 {
-                    var origin = this.origin.Space;
-                    var destinations = this.destinations.Spaces;
+                    var origin = this.origin.Item;
+                    var destinations = this.destinations.Item;
                     return destinations.Select(dest => origin.DistanceTo(dest)).ToArray();
                 }
             }

@@ -4,31 +4,26 @@ using System.Linq;
 
 namespace KompasCore.Effects.Identities
 {
-    public interface INoActivationContextCardIdentity : IContextInitializeable
-    {
-        public GameCardBase Card { get; }
-    }
-
     /// <summary>
     /// Gets a single card from the current gamestate.
     /// Can be used whether or not the caller does or doesn't care about an ActivationContext.
     /// </summary>
     public abstract class GamestateCardIdentityBase : ContextInitializeableBase, 
-        IActivationContextCardIdentity, INoActivationContextCardIdentity
+        IActivationContextIdentity<GameCardBase>, INoActivationContextIdentity<GameCardBase>
     {
         protected abstract GameCardBase AbstractCardFrom(Game game, ActivationContext context);
 
-        public GameCardBase CardFrom(Game game, ActivationContext context = default)
+        public GameCardBase From(Game game, ActivationContext context = default)
         {
             ComplainIfNotInitialized();
             return AbstractCardFrom(game, context);
         }
 
-        public GameCardBase CardFrom(ActivationContext context)
-            => CardFrom(context.game, context);
+        public GameCardBase From(ActivationContext context)
+            => From(context.game, context);
 
-        public GameCardBase Card 
-            => CardFrom(InitializationContext.game, InitializationContext.subeffect?.CurrentContext);
+        public GameCardBase Item 
+            => From(InitializationContext.game, InitializationContext.subeffect?.CurrentContext);
     }
 
     namespace GamestateCardIdentities
@@ -55,10 +50,10 @@ namespace KompasCore.Effects.Identities
 
         public class AugmentedCard : GamestateCardIdentityBase
         {
-            public INoActivationContextCardIdentity ofThisCard;
+            public INoActivationContextIdentity<GameCardBase> ofThisCard;
 
             protected override GameCardBase AbstractCardFrom(Game game, ActivationContext context)
-                => ofThisCard.Card.AugmentedCard;
+                => ofThisCard.Item.AugmentedCard;
         }
     }
 }

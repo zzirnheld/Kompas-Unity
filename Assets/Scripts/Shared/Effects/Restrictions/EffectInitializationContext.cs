@@ -29,5 +29,16 @@ namespace KompasCore.Effects
             this.trigger = trigger;
             this.subeffect = subeffect;
         }
+
+        public override string ToString()
+        {
+            string str = $"Game {game}, Source card {source}";
+
+            if (effect != null) str += $", Effect {effect}";
+            if (trigger != null) str += $", Trigger {trigger}";
+            if (subeffect != null) str += $", Subeffect {subeffect}";
+
+            return base.ToString();
+        }
     }
 }

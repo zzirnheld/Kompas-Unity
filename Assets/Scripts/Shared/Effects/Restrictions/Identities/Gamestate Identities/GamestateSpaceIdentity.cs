@@ -1,8 +1,10 @@
+using KompasCore.Cards;
+
 namespace KompasCore.Effects.Identities
 {
-    public interface INoActivationContextSpaceIdentity : IContextInitializeable
+    public interface INoActivationContextIdentity<ReturnType> : IContextInitializeable
     {
-        public Space Space { get; }
+        public ReturnType Item { get; }
     }
 
     /// <summary>
@@ -10,11 +12,11 @@ namespace KompasCore.Effects.Identities
     /// Can be used whether or not the caller does or doesn't care about an ActivationContext.
     /// </summary>
     public abstract class GamestateSpaceIdentity : ContextInitializeableBase,
-        IActivationContextSpaceIdentity, INoActivationContextSpaceIdentity
+        IActivationContextIdentity<Space>, INoActivationContextIdentity<Space>
     {
         protected abstract Space AbstractSpace { get; }
 
-        public Space Space
+        public Space Item
         {
             get
             {
@@ -23,14 +25,14 @@ namespace KompasCore.Effects.Identities
             }
         }
 
-        public Space SpaceFrom(ActivationContext context) => Space;
+        public Space From(ActivationContext context) => Item;
     }
 
     namespace GamestateSpaceIdentities
     {
         public class PositionOf : GamestateSpaceIdentity
         {
-            public INoActivationContextCardIdentity card;
+            public INoActivationContextIdentity<GameCardBase> card;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {
@@ -38,7 +40,7 @@ namespace KompasCore.Effects.Identities
                 card.Initialize(InitializationContext);
             }
 
-            protected override Space AbstractSpace => card.Card.Position;
+            protected override Space AbstractSpace => card.Item.Position;
         }
     }
 }

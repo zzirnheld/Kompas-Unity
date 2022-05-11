@@ -6,9 +6,9 @@ using System.Linq;
 namespace KompasServer.Effects.Identities
 {
     public abstract class SubeffectManySpacesIdentity : SubeffectInitializeableBase,
-        INoActivationContextManySpacesIdentity
+        INoActivationContextIdentity<ICollection<Space>>
     {
-        public ICollection<Space> Spaces
+        public ICollection<Space> Item
         {
             get
             {
@@ -42,8 +42,8 @@ namespace KompasServer.Effects.Identities
         /// </summary>
         public class ThreeSpaceRelationship : SubeffectManySpacesIdentity
         {
-            public INoActivationContextSpaceIdentity firstSpace;
-            public INoActivationContextSpaceIdentity secondSpace;
+            public INoActivationContextIdentity<Space> firstSpace;
+            public INoActivationContextIdentity<Space> secondSpace;
 
             public IThreeSpaceRelationship thirdSpaceRelationship;
 
@@ -58,8 +58,8 @@ namespace KompasServer.Effects.Identities
             {
                 get
                 {
-                    Space first = firstSpace.Space;
-                    Space second = secondSpace.Space;
+                    Space first = firstSpace.Item;
+                    Space second = secondSpace.Item;
                     return Space.Spaces.Where(space => thirdSpaceRelationship.Evaluate(first, second, space)).ToArray();
                 }
             }

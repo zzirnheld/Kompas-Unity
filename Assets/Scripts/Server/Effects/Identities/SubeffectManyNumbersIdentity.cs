@@ -6,11 +6,11 @@ using System.Linq;
 namespace KompasServer.Effects.Identities
 {
     public abstract class SubeffectManyNumbersIdentityBase : SubeffectInitializeableBase,
-        INoActivationContextManyNumbersIdentity
+        INoActivationContextIdentity<ICollection<int>>
     {
         protected abstract ICollection<int> AbstractNumbers { get; }
 
-        public ICollection<int> Numbers
+        public ICollection<int> Item
         {
             get
             {
@@ -24,8 +24,8 @@ namespace KompasServer.Effects.Identities
     {
         public class Distances : SubeffectManyNumbersIdentityBase
         {
-            public INoActivationContextSpaceIdentity origin;
-            public INoActivationContextManySpacesIdentity destinations;
+            public INoActivationContextIdentity<Space> origin;
+            public INoActivationContextIdentity<ICollection<Space>> destinations;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {
@@ -38,8 +38,8 @@ namespace KompasServer.Effects.Identities
             {
                 get
                 {
-                    var origin = this.origin.Space;
-                    var destinations = this.destinations.Spaces;
+                    var origin = this.origin.Item;
+                    var destinations = this.destinations.Item;
                     return destinations.Select(dest => origin.DistanceTo(dest)).ToArray();
                 }
             }
