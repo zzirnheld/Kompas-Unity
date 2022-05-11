@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Bind the Blood",
-	"effText": "When an Orc here attacks, give them +1 W.\nWhen a character here dies, choose an Orc in your hand. If it's not revealed, reveal it. Regardless, give it -2 S.",
+	"effText": "When an Orc here attacks, give them +1 W, and if they kill their target, give an Orc in your hand -2 S.",
 	"effects": [
 		{
 			"triggerData": {
@@ -30,29 +30,27 @@
 				{
 					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
 					"wModifier": 1
-				}
-			]
-		},
-		{
-			"triggerData": {
-				"triggerCondition": "Discard",
-				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Main Card Fits Restriction Before"
+				},
+				{
+					"$type": "KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"numTimesToDelay": 0,
+					"jumpIndices": [
+						3
 					],
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Different from Source",
-							"Character",
-							"Board",
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": { "spaceRestrictions": [ "In Source's AOE" ] }
+					"fallOffCondition": "Battle End",
+					"fallOffRestriction": {
+						"triggerRestrictions": [
+							"Stackable is Secondary Delayed Stackable Target"
+						]
+					},
+					"endCondition": "Discard",
+					"triggerRestriction": {
+						"triggerRestrictions": [
+							"Stackable is Secondary Delayed Stackable Target",
+							"Main Card is a Secondary Context Card Target"
+						]
 					}
-				}
-			},
-			"subeffects": [
+				},
 				{
 					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction": {
@@ -68,7 +66,7 @@
 				{
 					"$type": "KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
 					"jumpIndices": [
-						3
+						6
 					]
 				},
 				{

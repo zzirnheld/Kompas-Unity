@@ -20,7 +20,7 @@ namespace KompasServer.Effects
                     CardRestriction.Board
                 }
             };
-            cardRestriction.Initialize(this);
+            cardRestriction.Initialize(DefaultRestrictionContext);
         }
 
         public override Task<ResolutionInfo> Resolve()

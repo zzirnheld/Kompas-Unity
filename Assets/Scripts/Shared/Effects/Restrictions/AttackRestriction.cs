@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace KompasCore.Effects
 {
-    public class AttackRestriction
+    public class AttackRestriction : ContextInitializeableBase
     {
         public const string ThisIsCharacter = "This is Character";
         public const string DefenderIsCharacter = "Defender is Character";
@@ -33,16 +33,16 @@ namespace KompasCore.Effects
 
         public CardRestriction defenderRestriction;
 
-        public GameCard Card { get; private set; }
+        public GameCard Card => RestrictionContext.source;
 
-        public void SetInfo(GameCard card)
+        public override void Initialize(RestrictionContext restrictionContext)
         {
-            Card = card;
+            base.Initialize(restrictionContext);
 
             if (attackRestrictions.Contains(Default)) attackRestrictions.AddRange(DefaultAttackRestrictions);
             attackRestrictions.RemoveAll(attackRestrictionsToIgnore.Contains);
 
-            defenderRestriction?.Initialize(Card, effect: default, subeffect: default);
+            defenderRestriction?.Initialize(restrictionContext);
 
             //Debug.Log($"Finished initializing attack restriction for {Card.CardName} with restrictions: {string.Join(", ", attackRestrictions)}");
         }
@@ -79,7 +79,10 @@ namespace KompasCore.Effects
         private bool IsGameSetUp() => Card != null && Card.Game != null;
 
         public bool IsValidAttack(GameCard defender, IStackable stackSrc)
-            => IsGameSetUp() && defender != null && attackRestrictions.All(r => RestrictionValid(r, defender, stackSrc));
+        {
+            ComplainIfNotInitialized();
+            return IsGameSetUp() && defender != null && attackRestrictions.All(r => RestrictionValid(r, defender, stackSrc));
+        }
 
         /// <summary>
         /// Checks to see if this card could attack, if there were to ever be a valid attack target.
@@ -88,7 +91,10 @@ namespace KompasCore.Effects
         /// <returns><see langword="true"/> If this character can attack at all, 
         /// <see langword="false"/> otherwise.</returns>
         public bool CouldAttackValidTarget(IStackable stackSrc)
-            => IsGameSetUp() && attackRestrictions.Intersect(AtAllRestrictions).All(r => RestrictionValid(r, null, stackSrc));
+        {
+            ComplainIfNotInitialized();
+            return IsGameSetUp() && attackRestrictions.Intersect(AtAllRestrictions).All(r => RestrictionValid(r, null, stackSrc));
+        }
 
         /// <summary>
         /// Checks to see if this card can currently attack (any card).
@@ -96,6 +102,9 @@ namespace KompasCore.Effects
         /// <returns><see langword="true"/> If any card in the game fits this card's atack restriction, 
         /// <see langword="false"/> otherwise.</returns>
         public bool CanAttackAnyCard(IStackable stackSrc)
-            => IsGameSetUp() && Card.Game.boardCtrl.ExistsCardOnBoard(c => IsValidAttack(c, stackSrc));
+        {
+            ComplainIfNotInitialized();
+            return IsGameSetUp() && Card.Game.boardCtrl.ExistsCardOnBoard(c => IsValidAttack(c, stackSrc));
+        }
     }
 }

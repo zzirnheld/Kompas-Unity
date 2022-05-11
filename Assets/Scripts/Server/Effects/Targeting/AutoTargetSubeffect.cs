@@ -21,8 +21,8 @@ namespace KompasServer.Effects
         {
             base.Initialize(eff, subeffIndex);
             cardRestriction ??= new CardRestriction();
-            cardRestriction.Initialize(this);
-            tiebreakerValue?.Initialize(eff.Source);
+            cardRestriction.Initialize(DefaultRestrictionContext);
+            tiebreakerValue?.Initialize(DefaultRestrictionContext);
         }
 
         public override bool IsImpossible() => !Game.Cards.Any(c => cardRestriction.IsValidCard(c, CurrentContext));

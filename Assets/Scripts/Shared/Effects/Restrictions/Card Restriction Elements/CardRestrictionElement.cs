@@ -44,8 +44,7 @@ namespace KompasCore.Effects.Restrictions
             public override void Initialize(RestrictionContext restrictionContext)
             {
                 base.Initialize(restrictionContext);
-                spaceRestriction.Initialize(source: restrictionContext.source, controller: restrictionContext.source.Controller,
-                    effect: restrictionContext.subeffect.Effect, subeffect: restrictionContext.subeffect);
+                spaceRestriction.Initialize(restrictionContext);
             }
 
             protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)

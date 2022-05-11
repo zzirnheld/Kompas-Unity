@@ -16,8 +16,8 @@ namespace KompasServer.Effects
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
             base.Initialize(eff, subeffIndex);
-            cardRestriction ??= new CardRestriction();
-            cardRestriction.Initialize(this);
+
+            cardRestriction.Initialize(DefaultRestrictionContext);
         }
 
         public override bool IsImpossible() => !Game.Cards.Any(c => cardRestriction.IsValidCard(c, CurrentContext));

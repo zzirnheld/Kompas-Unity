@@ -21,7 +21,7 @@ namespace KompasServer.Effects
                     CardRestriction.Character
                 }
             };
-            cardRestriction.Initialize(this);
+            cardRestriction.Initialize(DefaultRestrictionContext);
         }
 
         protected override IEnumerable<HangingEffect> CreateHangingEffects()

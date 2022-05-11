@@ -5,10 +5,10 @@ using UnityEngine;
 
 namespace KompasCore.Effects
 {
-    public class ActivationRestriction
+    public class ActivationRestriction : ContextInitializeableBase
     {
-        public Effect Effect { get; private set; }
-        public GameCard Card => Effect.Source;
+        public Effect Effect => RestrictionContext.effect;
+        public GameCard Card => RestrictionContext.source;
 
         public const string Never = "Never";
 
@@ -39,9 +39,9 @@ namespace KompasCore.Effects
         private readonly List<string> ActivationRestrictions = new List<string>();
         public string[] activationRestrictionArray = null;
 
-        public void Initialize(Effect eff)
+        public override void Initialize(RestrictionContext restrictionContext)
         {
-            Effect = eff;
+            base.Initialize(restrictionContext);
 
             if (activationRestrictionArray == null) ActivationRestrictions.Add(Never);
             else
@@ -50,8 +50,8 @@ namespace KompasCore.Effects
                 if (activationRestrictionArray.Contains("Default"))
                     ActivationRestrictions.AddRange(DefaultRestrictions);
 
-                existsRestriction?.Initialize(eff.Source, eff, subeffect: default);
-                thisCardRestriction?.Initialize(eff.Source, eff, subeffect: default);
+                existsRestriction?.Initialize(restrictionContext);
+                thisCardRestriction?.Initialize(restrictionContext);
 
                 Debug.Log($"Initializing activation restriction for {Card.CardName} " +
                     $"with restrictions: {string.Join(", ", ActivationRestrictions)}");

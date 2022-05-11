@@ -40,12 +40,10 @@ namespace KompasServer.Effects
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
             base.Initialize(eff, subeffIndex);
-            cardRestriction ??= new CardRestriction();
-            cardRestriction.Initialize(this);
 
-            spaceRestriction?.Initialize(this);
-
-            playerValueNumberRestriction?.Initialize(eff.Source, this);
+            cardRestriction?.Initialize(DefaultRestrictionContext);
+            spaceRestriction?.Initialize(DefaultRestrictionContext);
+            playerValueNumberRestriction?.Initialize(DefaultRestrictionContext);
         }
 
         private bool ShouldEnd

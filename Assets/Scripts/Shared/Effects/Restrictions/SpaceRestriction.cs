@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace KompasCore.Effects
 {
-    public class SpaceRestriction
+    public class SpaceRestriction : ContextInitializeableBase
     {
         public Subeffect Subeffect { get; private set; }
         public GameCard Source { get; private set; }
@@ -110,40 +110,29 @@ namespace KompasCore.Effects
         //Using rather than an "Empty" restriction for, at this point, historical reasons - TODO fix
         public bool mustBeEmpty = true;
 
-        private bool initialized = false;
-
         public SpaceRestrictionElement[] spaceRestrictionElements = { };
 
-        public void Initialize(Subeffect subeffect) => Initialize(subeffect.Source, subeffect.Controller, subeffect.Effect, subeffect);
-
-        public void Initialize(RestrictionContext rc) =>
-            Initialize(source: rc.source, controller: rc.subeffect?.Controller, effect: rc.subeffect?.Effect, subeffect: rc.subeffect);
-
-        public void Initialize(GameCard source, Player controller, Effect effect, Subeffect subeffect)
+        public override void Initialize(RestrictionContext restrictionContext)
         {
-            Subeffect = subeffect;
-            Source = source;
-            Effect = effect;
+            base.Initialize(restrictionContext);
 
-            adjacencyRestriction?.Initialize(source, effect, subeffect);
-            connectednessRestriction?.Initialize(source, effect, subeffect);
-            spaceConnectednessRestriction?.Initialize(source, controller, effect, subeffect);
-            limitAdjacencyRestriction?.Initialize(source, effect, subeffect);
-            hereFitsRestriction?.Initialize(source, effect, subeffect);
-            inAOEOfRestriction?.Initialize(source, effect, subeffect);
-            overlapRestriction?.Initialize(source, effect, subeffect);
-            alsoInAOEOfRestriction?.Initialize(source, effect, subeffect);
+            adjacencyRestriction?.Initialize(restrictionContext);
+            connectednessRestriction?.Initialize(restrictionContext);
+            spaceConnectednessRestriction?.Initialize(restrictionContext);
+            limitAdjacencyRestriction?.Initialize(restrictionContext);
+            hereFitsRestriction?.Initialize(restrictionContext);
+            inAOEOfRestriction?.Initialize(restrictionContext);
+            overlapRestriction?.Initialize(restrictionContext);
+            alsoInAOEOfRestriction?.Initialize(restrictionContext);
 
-            distanceXRestriction?.Initialize(source, subeffect);
-            connectedSpacesXRestriction?.Initialize(source, subeffect);
-            numberOfCardsInAOEOfRestriction?.Initialize(source, subeffect);
+            distanceXRestriction?.Initialize(restrictionContext);
+            connectedSpacesXRestriction?.Initialize(restrictionContext);
+            numberOfCardsInAOEOfRestriction?.Initialize(restrictionContext);
 
-            foreach(var sre in spaceRestrictionElements)
+            foreach (var sre in spaceRestrictionElements)
             {
-                sre.Initialize(new RestrictionContext(game: source.Game, source: source, subeffect: subeffect));
+                sre.Initialize(restrictionContext);
             }
-
-            initialized = true;
         }
 
         private bool IsConnectedToTargetByXSpaces(Space space, GameCard target, ActivationContext context)
@@ -264,7 +253,7 @@ namespace KompasCore.Effects
 
         public bool IsValidSpace(Space space, ActivationContext context, GameCard theoreticalTarget = null)
         {
-            if (!initialized) throw new ArgumentException("Space restriction not initialized!");
+            ComplainIfNotInitialized();
             if (!space.IsValid) throw new InvalidSpaceException(space, "Invalid space to consider for restriction!");
 
             return spaceRestrictions.All(r => IsRestrictionValidWithDebug(r, space, theoreticalTarget, context))

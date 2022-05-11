@@ -27,8 +27,9 @@ namespace KompasServer.Effects
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
             base.Initialize(eff, subeffIndex);
-            cardRestriction.Initialize(this);
-            xRestriction.Initialize(Source);
+
+            cardRestriction.Initialize(DefaultRestrictionContext);
+            xRestriction.Initialize(DefaultRestrictionContext);
         }
 
         private bool ShouldJump

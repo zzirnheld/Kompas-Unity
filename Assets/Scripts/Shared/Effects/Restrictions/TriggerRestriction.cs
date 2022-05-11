@@ -10,7 +10,7 @@ namespace KompasCore.Effects
 {
     public class TriggerRestriction
     {
-        public Game Game { get; private set; }
+        //public Game Game { get; private set; }
 
         #region trigger restrictions
         private const string ThisCardIsMainCard = "This Card is Main Card";
@@ -102,35 +102,40 @@ namespace KompasCore.Effects
 
         public TriggerRestrictionElement[] triggerRestrictionElements = { };
 
+        public RestrictionContext RestrictionContext { get; private set; }
+
+        private GameCard ThisCard => RestrictionContext.source;
+        private Effect SourceEffect => RestrictionContext.effect;
+        private Game Game => RestrictionContext.game;
+        private Trigger ThisTrigger => RestrictionContext.trigger;
+
+        /*
         public GameCard ThisCard { get; private set; }
 
         public Trigger ThisTrigger { get; private set; }
         public Effect SourceEffect { get; private set; }
-        public Subeffect Subeffect { get; private set; }
+        public Subeffect Subeffect { get; private set; }*/
 
         // Necessary because json doesn't let you have nice things, like constructors with arguments,
         // so I need to make sure manually that I've bothered to set up relevant arguments.
         private bool initialized = false;
 
-        public void Initialize(Game game, GameCard thisCard, Trigger thisTrigger, Effect effect, Subeffect subeffect = default)
+        public void Initialize(RestrictionContext restrictionContext)
         {
-            Game = game;
-            ThisCard = thisCard;
-            ThisTrigger = thisTrigger;
-            SourceEffect = effect;
+            RestrictionContext = restrictionContext;
 
-            cardRestriction?.Initialize(thisCard, effect, subeffect);
-            nowRestriction?.Initialize(thisCard, effect, subeffect);
-            secondaryCardRestriction?.Initialize(thisCard, effect, subeffect);
-            existsRestriction?.Initialize(thisCard, effect, subeffect);
-            selfRestriction?.Initialize(thisCard, effect, subeffect);
-            spaceRestriction?.Initialize(thisCard, thisCard.Controller, effect, subeffect);
-            sourceRestriction?.Initialize(thisCard, effect, subeffect);
-            xRestriction?.Initialize(thisCard);
+            cardRestriction?.Initialize(restrictionContext);
+            nowRestriction?.Initialize(restrictionContext);
+            secondaryCardRestriction?.Initialize(restrictionContext);
+            existsRestriction?.Initialize(restrictionContext);
+            selfRestriction?.Initialize(restrictionContext);
+            spaceRestriction?.Initialize(restrictionContext);
+            sourceRestriction?.Initialize(restrictionContext);
+            xRestriction?.Initialize(restrictionContext);
 
             foreach (var tre in triggerRestrictionElements)
             {
-                tre.Initialize(new RestrictionContext(game: Game, source: thisCard, subeffect: subeffect));
+                tre.Initialize(restrictionContext);
             }
             
             //Verify that any relevant restrictions exist

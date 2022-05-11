@@ -14,8 +14,8 @@ namespace KompasServer.Effects
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
             base.Initialize(eff, subeffIndex);
-            spaceRestriction ??= new SpaceRestriction();
-            spaceRestriction.Initialize(this);
+
+            spaceRestriction.Initialize(DefaultRestrictionContext);
         }
         public IEnumerable<Space> ValidSpaces => Space.Spaces
                 .Where(s => spaceRestriction.IsValidSpace(s, CurrentContext, theoreticalTarget: CardTarget))

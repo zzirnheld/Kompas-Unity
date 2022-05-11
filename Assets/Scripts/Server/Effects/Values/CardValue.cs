@@ -26,15 +26,21 @@ namespace KompasCore.Effects
         public int divisor = 1;
         public int modifier = 0;
 
-        public GameCard Source { get; private set; }
+        public RestrictionContext RestrictionContext { get; private set; }
+        private bool initialized = false;
 
-        public void Initialize(GameCard source)
+        public GameCard Source => RestrictionContext.source;
+
+        public void Initialize(RestrictionContext restrictionContext)
         {
-            Source = source;
+            RestrictionContext = restrictionContext;
+
+            initialized = true;
         }
 
         public int GetValueOf(GameCardBase card)
         {
+            if (!initialized) throw new NotImplementedException($"Neglected to initialize a card value for {value}");
             if (card == null) throw new NullCardException("Cannot get value of null card");
 
             int intermediateValue = value switch

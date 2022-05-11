@@ -29,7 +29,7 @@ namespace KompasServer.Effects.Identities
             public override void Initialize(RestrictionContext restrictionContext)
             {
                 base.Initialize(restrictionContext);
-                spaceRestriction.Initialize(restrictionContext.source, restrictionContext.source.Controller, restrictionContext.subeffect.Effect, restrictionContext.subeffect);
+                spaceRestriction.Initialize(restrictionContext);
             }
 
             protected override ICollection<Space> AbstractSpaces

@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace KompasCore.Effects
 {
-    public class CardRestriction
+    public class CardRestriction : ContextInitializeableBase
     {
         public Subeffect Subeffect { get; private set; }
 
@@ -162,54 +162,34 @@ namespace KompasCore.Effects
 
         public CardRestrictionElement[] cardRestrictionElements = { };
 
-        public GameCard Source { get; private set; }
-        public Player Controller => Effect?.Controller ?? Source?.Controller;
-        public Effect Effect { get; private set; }
-
         public string blurb = "";
 
-        private bool initialized = false;
+        public GameCard Source => RestrictionContext.source;
+        public Player Controller => RestrictionContext.Controller;
+        public Effect Effect => RestrictionContext.effect;
 
-        /// <summary>
-        /// Initializes this card restriction to match information found on this subeffect.
-        /// </summary>
-        /// <param name="subeff"></param>
-        public void Initialize(Subeffect subeff) => Initialize(subeff.Source, subeff.Effect, subeff);
-
-        public void Initialize(RestrictionContext rc) => Initialize(source: rc.source, effect: rc.subeffect?.Effect, subeffect: rc.subeffect);
-
-        /// <summary>
-        /// Initializes this card restriction to match the given information.
-        /// </summary>
-        /// <param name="source"></param>
-        /// <param name="effect"></param>
-        public void Initialize(GameCard source, Effect effect, Subeffect subeffect)
+        public override void Initialize(RestrictionContext restrictionContext)
         {
-            Subeffect = subeffect;
-            Source = source;
-            Effect = effect;
+            base.Initialize(restrictionContext);
 
-            spaceRestriction?.Initialize(source, effect?.Controller, effect, subeffect);
+            spaceRestriction?.Initialize(restrictionContext);
 
-            augmentRestriction?.Initialize(source, effect, subeffect);
-            secondaryRestriction?.Initialize(source, effect, subeffect);
-            adjacentCardRestriction?.Initialize(source, effect, subeffect);
-            connectednessRestriction?.Initialize(source, effect, subeffect);
-            attackedCardRestriction?.Initialize(source, effect, subeffect);
-            inAOEOfRestriction?.Initialize(source, effect, subeffect);
-            hasInAOERestriction?.Initialize(source, effect, subeffect);
+            augmentRestriction?.Initialize(restrictionContext);
+            secondaryRestriction?.Initialize(restrictionContext);
+            adjacentCardRestriction?.Initialize(restrictionContext);
+            connectednessRestriction?.Initialize(restrictionContext);
+            attackedCardRestriction?.Initialize(restrictionContext);
+            inAOEOfRestriction?.Initialize(restrictionContext);
+            hasInAOERestriction?.Initialize(restrictionContext);
 
-            cardValueNumberRestriction?.Initialize(source, subeffect);
+            cardValueNumberRestriction?.Initialize(restrictionContext);
 
-            cardValue?.Initialize(source);
+            cardValue?.Initialize(restrictionContext);
 
-            foreach(var cre in cardRestrictionElements)
+            foreach (var cre in cardRestrictionElements)
             {
-                cre.Initialize(new RestrictionContext(game: source.Game, source: source, subeffect: subeffect));
+                cre.Initialize(restrictionContext);
             }
-
-            initialized = true;
-            //Debug.Log($"Initialized {this}");
         }
 
         public override string ToString()
@@ -394,7 +374,7 @@ namespace KompasCore.Effects
         /// <returns><see langword="true"/> if the card fits all restrictions, <see langword="false"/> if it doesn't fit at least one</returns>
         private bool IsValidCard(GameCardBase potentialTarget, int x, ActivationContext context)
         {
-            if (!initialized) throw new ArgumentException("Card restriction not initialized!");
+            ComplainIfNotInitialized();
 
             try
             {

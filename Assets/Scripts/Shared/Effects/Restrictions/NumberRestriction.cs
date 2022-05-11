@@ -32,16 +32,15 @@ namespace KompasCore.Effects
 
         public CardValue cardValue;
 
-        public GameCard Source { get; private set; }
-        public Subeffect Subeffect { get; private set; }
+        public RestrictionContext RestrictionContext { get; private set; }
+        public GameCard Source => RestrictionContext.source;
+        public Subeffect Subeffect => RestrictionContext.subeffect;
 
         private bool initialized = false;
 
-        public void Initialize(GameCard source, Subeffect subeffect = null)
+        public void Initialize(RestrictionContext restrictionContext)
         {
-            Source = source;
-            Subeffect = subeffect;
-            cardValue?.Initialize(Source);
+            RestrictionContext = restrictionContext;
             initialized = true;
         }
 

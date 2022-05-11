@@ -31,9 +31,9 @@ namespace KompasServer.Effects
         {
             base.Initialize(eff, subeffIndex);
             cardRestriction ??= new CardRestriction();
-            cardRestriction.Initialize(this);
+            cardRestriction.Initialize(DefaultRestrictionContext);
             listRestriction ??= ListRestriction.Default;
-            listRestriction.Initialize(this);
+            listRestriction.Initialize(DefaultRestrictionContext);
         }
 
         public override bool IsImpossible()

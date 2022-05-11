@@ -30,7 +30,7 @@ namespace KompasServer.Effects.Identities
             public override void Initialize(RestrictionContext restrictionContext)
             {
                 base.Initialize(restrictionContext);
-                cardRestriction.Initialize(source: restrictionContext.source, restrictionContext.subeffect?.Effect, restrictionContext.subeffect);
+                cardRestriction.Initialize(restrictionContext);
             }
 
             protected override ICollection<GameCardBase> AbstractCards => RestrictionContext.game.Cards
