@@ -52,5 +52,13 @@ namespace KompasCore.Effects.Identities
             protected override GameCardBase AbstractCardFrom(Game game, ActivationContext context)
                 => RestrictionContext.source;
         }
+
+        public class AugmentedCard : GamestateCardIdentityBase
+        {
+            public INoActivationContextCardIdentity ofThisCard;
+
+            protected override GameCardBase AbstractCardFrom(Game game, ActivationContext context)
+                => ofThisCard.Card.AugmentedCard;
+        }
     }
 }

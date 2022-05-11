@@ -84,5 +84,17 @@ namespace KompasCore.Effects.Restrictions
                 return cardRestriction.IsValidCard(card, context);
             }
         }
+
+        public class FriendlyTurn : TriggerRestrictionElement
+        {
+            protected override bool AbstractIsValidContext(ActivationContext context)
+                => RestrictionContext.game.TurnPlayer == RestrictionContext.source.Controller;
+        }
+
+        public class EnemyTurn : TriggerRestrictionElement
+        {
+            protected override bool AbstractIsValidContext(ActivationContext context)
+                => RestrictionContext.game.TurnPlayer != RestrictionContext.source.Controller;
+        }
     }
 }

@@ -162,6 +162,7 @@ golems/Core Scrambling
 golems/Scrap Golem
 golems/Backup Power Core
 golems/Stone Golem
+golems/Recoverable Core
 Haemopoten
 instruments/Assaulting Batterie
 instruments/Gratuitous Sax

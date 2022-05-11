@@ -20,19 +20,6 @@ namespace KompasServer.Effects.Identities
 
     namespace SubeffectSpaceIdentities
     {
-        public class PositionOf : SubeffectSpaceIdentityBase
-        {
-            public INoActivationContextCardIdentity whosePosition;
-
-            public override void Initialize(RestrictionContext restrictionContext)
-            {
-                base.Initialize(restrictionContext);
-                whosePosition.Initialize(restrictionContext);
-            }
-
-            protected override Space AbstractSpace => whosePosition.Card.Position;
-        }
-
         public class FromActivationContext : SubeffectSpaceIdentityBase
         {
             public IActivationContextSpaceIdentity space;
@@ -45,6 +32,19 @@ namespace KompasServer.Effects.Identities
 
             protected override Space AbstractSpace
                 => space.SpaceFrom(RestrictionContext.subeffect.CurrentContext);
+        }
+
+        public class PositionOf : SubeffectSpaceIdentityBase
+        {
+            public INoActivationContextCardIdentity whosePosition;
+
+            public override void Initialize(RestrictionContext restrictionContext)
+            {
+                base.Initialize(restrictionContext);
+                whosePosition.Initialize(restrictionContext);
+            }
+
+            protected override Space AbstractSpace => whosePosition.Card.Position;
         }
     }
 }

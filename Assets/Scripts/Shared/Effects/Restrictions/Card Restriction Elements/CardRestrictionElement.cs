@@ -50,5 +50,19 @@ namespace KompasCore.Effects.Restrictions
             protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
                 => spaceRestriction.IsValidSpace(card.Position, context);
         }
+
+        public class SubtypesInclude : CardRestrictionElement
+        {
+            public string[] subtypes;
+
+            public override void Initialize(RestrictionContext restrictionContext)
+            {
+                base.Initialize(restrictionContext);
+                if (subtypes == null) throw new System.NotImplementedException($"You forgot to provide a subtypes array!");
+            }
+
+            protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
+                => subtypes.All(subtype => card.SubtypeText.Contains(subtype));
+        }
     }
 }
