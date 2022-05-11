@@ -35,9 +35,14 @@ namespace KompasServer.Effects.Identities
                 => cardFromContext.CardFrom(RestrictionContext.subeffect.CurrentContext);
         }
 
-        public class ByIndex : SubeffectCardIdentityBase
+        /// <summary>
+        /// Gets a card according to a target index.
+        /// Negative indices index from the end of the targets array,
+        /// so target -1 is the last target chosen.
+        /// </summary>
+        public class Target : SubeffectCardIdentityBase
         {
-            public int index;
+            public int index = -1;
 
             protected override GameCardBase AbstractCard
                 => RestrictionContext.subeffect.Effect.GetTarget(index);

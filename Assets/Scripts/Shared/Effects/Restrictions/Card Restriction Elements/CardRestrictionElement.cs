@@ -1,4 +1,5 @@
 using KompasCore.Cards;
+using KompasCore.Effects.Identities;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -49,6 +50,24 @@ namespace KompasCore.Effects.Restrictions
 
             protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
                 => spaceRestriction.IsValidSpace(card.Position, context);
+        }
+
+        /// <summary>
+        /// Helper class for checking whether a card is adjacent to another card.
+        /// For simplicity reasons, default checks whether the card is adjacent to this one.
+        /// </summary>
+        public class AdjacentTo : CardRestrictionElement
+        {
+            public INoActivationContextCardIdentity adjacentTo = new Identities.GamestateCardIdentities.ThisCard();
+
+            public override void Initialize(RestrictionContext restrictionContext)
+            {
+                base.Initialize(restrictionContext);
+                adjacentTo.Initialize(restrictionContext);
+            }
+
+            protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
+                => adjacentTo.Card.IsAdjacentTo(card);
         }
 
         public class SubtypesInclude : CardRestrictionElement
