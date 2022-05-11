@@ -9,7 +9,7 @@ namespace KompasServer.Effects
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
             base.Initialize(eff, subeffIndex);
-            numberIdentity.Initialize(restrictionContext: DefaultRestrictionContext);
+            numberIdentity.Initialize(initializationContext: DefaultRestrictionContext);
         }
 
         public override int BaseCount => numberIdentity.Number;

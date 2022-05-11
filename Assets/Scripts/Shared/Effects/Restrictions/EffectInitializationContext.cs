@@ -6,7 +6,7 @@ namespace KompasCore.Effects
     /// <summary>
     /// An object to hold all the parameters required to initialize any restriction/restriction elemnt
     /// </summary>
-    public struct RestrictionContext
+    public struct EffectInitializationContext
     {
         public readonly Game game;
         public readonly GameCard source;
@@ -18,7 +18,7 @@ namespace KompasCore.Effects
 
         public Player Controller => effect?.Controller ?? source?.Controller;
 
-        public RestrictionContext(Game game, GameCard source, 
+        public EffectInitializationContext(Game game, GameCard source, 
             Effect effect = default, Trigger trigger = default, Subeffect subeffect = default)
         {
             this.game = game;

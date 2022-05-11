@@ -4,18 +4,18 @@ namespace KompasCore.Effects
 {
     public interface IContextInitializeable
     {
-        public void Initialize(RestrictionContext restrictionContext);
+        public void Initialize(EffectInitializationContext initializationContext);
     }
 
     public abstract class ContextInitializeableBase : IContextInitializeable
     {
         protected bool Initialized { get; private set; }
 
-        protected RestrictionContext RestrictionContext { get; private set; }
+        protected EffectInitializationContext InitializationContext { get; private set; }
 
-        public virtual void Initialize(RestrictionContext restrictionContext)
+        public virtual void Initialize(EffectInitializationContext initializationContext)
         {
-            RestrictionContext = restrictionContext;
+            InitializationContext = initializationContext;
 
             Initialized = true;
         }
@@ -31,10 +31,10 @@ namespace KompasCore.Effects
     /// </summary>
     public abstract class SubeffectInitializeableBase : ContextInitializeableBase
     {
-        public override void Initialize(RestrictionContext restrictionContext)
+        public override void Initialize(EffectInitializationContext initializationContext)
         {
-            if (restrictionContext.subeffect == null) throw new ArgumentNullException($"{GetType()} must be initialized by/with a Subeffect");
-            base.Initialize(restrictionContext);
+            if (InitializationContext.subeffect == null) throw new ArgumentNullException($"{GetType()} must be initialized by/with a Subeffect");
+            base.Initialize(initializationContext);
         }
     }
 }

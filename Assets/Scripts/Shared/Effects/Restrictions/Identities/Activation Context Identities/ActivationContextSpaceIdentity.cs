@@ -22,10 +22,10 @@ namespace KompasCore.Effects.Identities
         {
             public IActivationContextCardIdentity whosePosition;
 
-            public override void Initialize(RestrictionContext restrictionContext)
+            public override void Initialize(EffectInitializationContext initializationContext)
             {
-                whosePosition.Initialize(restrictionContext);
-                base.Initialize(restrictionContext);
+                whosePosition.Initialize(initializationContext);
+                base.Initialize(initializationContext);
             }
 
             protected override Space AbstractSpaceFrom(ActivationContext context)
@@ -45,11 +45,11 @@ namespace KompasCore.Effects.Identities
 
             public ITwoSpaceIdentity relationship;
 
-            public override void Initialize(RestrictionContext restrictionContext)
+            public override void Initialize(EffectInitializationContext initializationContext)
             {
-                firstSpace.Initialize(restrictionContext);
-                secondSpace.Initialize(restrictionContext);
-                base.Initialize(restrictionContext);
+                firstSpace.Initialize(initializationContext);
+                secondSpace.Initialize(initializationContext);
+                base.Initialize(initializationContext);
             }
 
             protected override Space AbstractSpaceFrom(ActivationContext context)

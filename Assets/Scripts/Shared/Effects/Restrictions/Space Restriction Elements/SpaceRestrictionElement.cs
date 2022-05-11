@@ -20,7 +20,7 @@ namespace KompasCore.Effects.Restrictions
         public class Empty : SpaceRestrictionElement
         {
             protected override bool AbstractIsValidSpace(Space space, ActivationContext context)
-                => RestrictionContext.game.boardCtrl.IsEmpty(space);
+                => InitializationContext.game.boardCtrl.IsEmpty(space);
         }
 
         /// <summary>
@@ -34,11 +34,11 @@ namespace KompasCore.Effects.Restrictions
             public INoActivationContextNumberIdentity number;
             public INumberRelationship comparison;
 
-            public override void Initialize(RestrictionContext restrictionContext)
+            public override void Initialize(EffectInitializationContext initializationContext)
             {
-                base.Initialize(restrictionContext);
-                distanceTo.Initialize(restrictionContext);
-                number.Initialize(restrictionContext);
+                base.Initialize(initializationContext);
+                distanceTo.Initialize(initializationContext);
+                number.Initialize(initializationContext);
             }
 
             protected override bool AbstractIsValidSpace(Space space, ActivationContext context)
@@ -60,24 +60,24 @@ namespace KompasCore.Effects.Restrictions
             public INoActivationContextCardIdentity card;
             public INoActivationContextSpaceIdentity space;
 
-            public override void Initialize(RestrictionContext restrictionContext)
+            public override void Initialize(EffectInitializationContext initializationContext)
             {
-                base.Initialize(restrictionContext);
-                card.Initialize(restrictionContext);
-                space.Initialize(restrictionContext);
+                base.Initialize(initializationContext);
+                card.Initialize(initializationContext);
+                space.Initialize(initializationContext);
                 if (card == null && space == null)
                     throw new System.NotImplementedException($"Forgot to provide a space or card to be adjacent to " +
-                        $"in the effect of {restrictionContext.source}");
+                        $"in the effect of {InitializationContext.source}");
                 else if (card != null && space != null)
                     throw new System.NotImplementedException($"Provided both a space and a card to be adjacent to " +
-                        $"in the effect of {restrictionContext.source}");
+                        $"in the effect of {InitializationContext.source}");
             }
 
             protected override bool AbstractIsValidSpace(Space space, ActivationContext context)
             {
                 if (card != null) return card.Card.IsAdjacentTo(space);
                 else if (space != null) return space.AdjacentTo(space);
-                else throw new System.NotImplementedException($"You forgot to account for some weird case for {RestrictionContext.source}");
+                else throw new System.NotImplementedException($"You forgot to account for some weird case for {InitializationContext.source}");
             }
         }
 
@@ -90,10 +90,10 @@ namespace KompasCore.Effects.Restrictions
 
             public bool normalMove = false;
 
-            public override void Initialize(RestrictionContext restrictionContext)
+            public override void Initialize(EffectInitializationContext initializationContext)
             {
-                base.Initialize(restrictionContext);
-                toMove.Initialize(restrictionContext);
+                base.Initialize(initializationContext);
+                toMove.Initialize(initializationContext);
             }
 
             protected override bool AbstractIsValidSpace(Space space, ActivationContext context)

@@ -64,7 +64,7 @@ namespace KompasCore.Effects
             Controller = owner;
 
             blurb = string.IsNullOrEmpty(blurb) ? $"Effect of {source.CardName}" : blurb;
-            activationRestriction?.Initialize(new RestrictionContext(game: Game, source: Source, effect: this));
+            activationRestriction?.Initialize(new EffectInitializationContext(game: Game, source: Source, effect: this));
             TimesUsedThisTurn = 0;
         }
 

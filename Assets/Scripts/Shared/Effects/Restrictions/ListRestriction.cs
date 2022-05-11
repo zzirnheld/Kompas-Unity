@@ -10,7 +10,7 @@ namespace KompasCore.Effects
     public class ListRestriction : ContextInitializeableBase
     {
         [JsonIgnore]
-        public Subeffect Subeffect => RestrictionContext.subeffect;
+        public Subeffect Subeffect => InitializationContext.subeffect;
 
         //if i end up living towards the heat death of the universe,
         //i will refactor this to instead be objects that get deserialized.
@@ -85,9 +85,9 @@ namespace KompasCore.Effects
         /// Initializes the list restriction to know who its daddy is, and make any shtuff match up
         /// </summary>
         /// <param name="subeffect"></param>
-        public override void Initialize(RestrictionContext restrictionContext)
+        public override void Initialize(EffectInitializationContext initializationContext)
         {
-            base.Initialize(restrictionContext);
+            base.Initialize(initializationContext);
             if (minCanChoose < 0 && listRestrictions.Contains(MaxCanChoose))
                 minCanChoose = maxCanChoose;
         }

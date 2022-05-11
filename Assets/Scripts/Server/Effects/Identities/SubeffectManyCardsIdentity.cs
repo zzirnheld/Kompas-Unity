@@ -27,14 +27,14 @@ namespace KompasServer.Effects.Identities
         {
             public CardRestriction cardRestriction;
 
-            public override void Initialize(RestrictionContext restrictionContext)
+            public override void Initialize(EffectInitializationContext initializationContext)
             {
-                base.Initialize(restrictionContext);
-                cardRestriction.Initialize(restrictionContext);
+                base.Initialize(initializationContext);
+                cardRestriction.Initialize(initializationContext);
             }
 
-            protected override ICollection<GameCardBase> AbstractCards => RestrictionContext.game.Cards
-                .Where(card => cardRestriction.IsValidCard(card, RestrictionContext.subeffect.CurrentContext))
+            protected override ICollection<GameCardBase> AbstractCards => InitializationContext.game.Cards
+                .Where(card => cardRestriction.IsValidCard(card, InitializationContext.subeffect.CurrentContext))
                 .ToArray();
         }
 
@@ -42,10 +42,10 @@ namespace KompasServer.Effects.Identities
         {
             public INoActivationContextManySpacesIdentity positions;
 
-            public override void Initialize(RestrictionContext restrictionContext)
+            public override void Initialize(EffectInitializationContext initializationContext)
             {
-                base.Initialize(restrictionContext);
-                positions.Initialize(restrictionContext);
+                base.Initialize(initializationContext);
+                positions.Initialize(initializationContext);
             }
 
             protected override ICollection<GameCardBase> AbstractCards
@@ -53,7 +53,7 @@ namespace KompasServer.Effects.Identities
                 get
                 {
                     var spaces = positions.Spaces;
-                    var cards = spaces.Select(RestrictionContext.game.boardCtrl.GetCardAt).Where(s => s != null).ToArray();
+                    var cards = spaces.Select(InitializationContext.game.boardCtrl.GetCardAt).Where(s => s != null).ToArray();
                     return cards;
                 }
             }
@@ -63,14 +63,14 @@ namespace KompasServer.Effects.Identities
         {
             public IActivationContextManyCardsIdentity cardsFromContext;
 
-            public override void Initialize(RestrictionContext restrictionContext)
+            public override void Initialize(EffectInitializationContext initializationContext)
             {
-                base.Initialize(restrictionContext);
-                cardsFromContext.Initialize(restrictionContext);
+                base.Initialize(initializationContext);
+                cardsFromContext.Initialize(initializationContext);
             }
 
             protected override ICollection<GameCardBase> AbstractCards
-                => cardsFromContext.CardsFrom(RestrictionContext.subeffect.CurrentContext);
+                => cardsFromContext.CardsFrom(InitializationContext.subeffect.CurrentContext);
         }
     }
 }

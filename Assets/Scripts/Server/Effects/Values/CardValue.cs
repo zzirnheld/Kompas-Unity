@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace KompasCore.Effects
 {
-    public class CardValue
+    public class CardValue : ContextInitializeableBase
     {
         #region values
         private const string Nimbleness = "N";
@@ -26,21 +26,11 @@ namespace KompasCore.Effects
         public int divisor = 1;
         public int modifier = 0;
 
-        public RestrictionContext RestrictionContext { get; private set; }
-        private bool initialized = false;
-
-        public GameCard Source => RestrictionContext.source;
-
-        public void Initialize(RestrictionContext restrictionContext)
-        {
-            RestrictionContext = restrictionContext;
-
-            initialized = true;
-        }
+        public GameCard Source => InitializationContext.source;
 
         public int GetValueOf(GameCardBase card)
         {
-            if (!initialized) throw new NotImplementedException($"Neglected to initialize a card value for {value}");
+            ComplainIfNotInitialized();
             if (card == null) throw new NullCardException("Cannot get value of null card");
 
             int intermediateValue = value switch

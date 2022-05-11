@@ -28,7 +28,7 @@ namespace KompasCore.Effects.Identities
             => CardFrom(context.game, context);
 
         public GameCardBase Card 
-            => CardFrom(RestrictionContext.game, RestrictionContext.subeffect?.CurrentContext);
+            => CardFrom(InitializationContext.game, InitializationContext.subeffect?.CurrentContext);
     }
 
     namespace GamestateCardIdentities
@@ -37,10 +37,10 @@ namespace KompasCore.Effects.Identities
         {
             public INoActivationContextManyCardsIdentity ofTheseCards;
 
-            public override void Initialize(RestrictionContext restrictionContext)
+            public override void Initialize(EffectInitializationContext initializationContext)
             {
-                base.Initialize(restrictionContext);
-                ofTheseCards.Initialize(restrictionContext);
+                base.Initialize(initializationContext);
+                ofTheseCards.Initialize(initializationContext);
             }
 
             protected override GameCardBase AbstractCardFrom(Game game, ActivationContext context)
@@ -50,7 +50,7 @@ namespace KompasCore.Effects.Identities
         public class ThisCard : GamestateCardIdentityBase
         {
             protected override GameCardBase AbstractCardFrom(Game game, ActivationContext context)
-                => RestrictionContext.source;
+                => InitializationContext.source;
         }
 
         public class AugmentedCard : GamestateCardIdentityBase

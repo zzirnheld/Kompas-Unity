@@ -7,8 +7,8 @@ namespace KompasCore.Effects
 {
     public class ActivationRestriction : ContextInitializeableBase
     {
-        public Effect Effect => RestrictionContext.effect;
-        public GameCard Card => RestrictionContext.source;
+        public Effect Effect => InitializationContext.effect;
+        public GameCard Card => InitializationContext.source;
 
         public const string Never = "Never";
 
@@ -39,9 +39,9 @@ namespace KompasCore.Effects
         private readonly List<string> ActivationRestrictions = new List<string>();
         public string[] activationRestrictionArray = null;
 
-        public override void Initialize(RestrictionContext restrictionContext)
+        public override void Initialize(EffectInitializationContext initializationContext)
         {
-            base.Initialize(restrictionContext);
+            base.Initialize(initializationContext);
 
             if (activationRestrictionArray == null) ActivationRestrictions.Add(Never);
             else
@@ -50,8 +50,8 @@ namespace KompasCore.Effects
                 if (activationRestrictionArray.Contains("Default"))
                     ActivationRestrictions.AddRange(DefaultRestrictions);
 
-                existsRestriction?.Initialize(restrictionContext);
-                thisCardRestriction?.Initialize(restrictionContext);
+                existsRestriction?.Initialize(initializationContext);
+                thisCardRestriction?.Initialize(initializationContext);
 
                 Debug.Log($"Initializing activation restriction for {Card.CardName} " +
                     $"with restrictions: {string.Join(", ", ActivationRestrictions)}");

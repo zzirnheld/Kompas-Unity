@@ -164,31 +164,31 @@ namespace KompasCore.Effects
 
         public string blurb = "";
 
-        public GameCard Source => RestrictionContext.source;
-        public Player Controller => RestrictionContext.Controller;
-        public Effect Effect => RestrictionContext.effect;
+        public GameCard Source => InitializationContext.source;
+        public Player Controller => InitializationContext.Controller;
+        public Effect Effect => InitializationContext.effect;
 
-        public override void Initialize(RestrictionContext restrictionContext)
+        public override void Initialize(EffectInitializationContext initializationContext)
         {
-            base.Initialize(restrictionContext);
+            base.Initialize(initializationContext);
 
-            spaceRestriction?.Initialize(restrictionContext);
+            spaceRestriction?.Initialize(initializationContext);
 
-            augmentRestriction?.Initialize(restrictionContext);
-            secondaryRestriction?.Initialize(restrictionContext);
-            adjacentCardRestriction?.Initialize(restrictionContext);
-            connectednessRestriction?.Initialize(restrictionContext);
-            attackedCardRestriction?.Initialize(restrictionContext);
-            inAOEOfRestriction?.Initialize(restrictionContext);
-            hasInAOERestriction?.Initialize(restrictionContext);
+            augmentRestriction?.Initialize(initializationContext);
+            secondaryRestriction?.Initialize(initializationContext);
+            adjacentCardRestriction?.Initialize(initializationContext);
+            connectednessRestriction?.Initialize(initializationContext);
+            attackedCardRestriction?.Initialize(initializationContext);
+            inAOEOfRestriction?.Initialize(initializationContext);
+            hasInAOERestriction?.Initialize(initializationContext);
 
-            cardValueNumberRestriction?.Initialize(restrictionContext);
+            cardValueNumberRestriction?.Initialize(initializationContext);
 
-            cardValue?.Initialize(restrictionContext);
+            cardValue?.Initialize(initializationContext);
 
             foreach (var cre in cardRestrictionElements)
             {
-                cre.Initialize(restrictionContext);
+                cre.Initialize(initializationContext);
             }
         }
 

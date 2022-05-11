@@ -34,10 +34,10 @@ namespace KompasCore.Effects.Identities
         {
             public IActivationContextSpaceIdentity position;
 
-            public override void Initialize(RestrictionContext restrictionContext)
+            public override void Initialize(EffectInitializationContext initializationContext)
             {
-                base.Initialize(restrictionContext);
-                position.Initialize(restrictionContext);
+                base.Initialize(initializationContext);
+                position.Initialize(initializationContext);
             }
 
             protected override GameCardBase CardFromAbstract(ActivationContext context)

@@ -25,7 +25,7 @@ namespace KompasServer.Effects
                     new TriggerRestriction() { triggerRestrictions = TriggerRestriction.DefaultFallOffRestrictions } :
                     new TriggerRestriction() { triggerRestrictions = { } };
             }
-            triggerRest.Initialize(restrictionContext: CreateRestrictionContext(null));
+            triggerRest.Initialize(initializationContext: CreateRestrictionContext(null));
             return triggerRest;
         }
 

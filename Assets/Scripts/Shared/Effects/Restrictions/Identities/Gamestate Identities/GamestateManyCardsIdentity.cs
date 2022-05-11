@@ -35,14 +35,14 @@ namespace KompasCore.Effects.Identities
         {
             public CardRestriction cardRestriction;
 
-            public override void Initialize(RestrictionContext restrictionContext)
+            public override void Initialize(EffectInitializationContext initializationContext)
             {
-                base.Initialize(restrictionContext);
-                cardRestriction.Initialize(restrictionContext);
+                base.Initialize(initializationContext);
+                cardRestriction.Initialize(initializationContext);
             }
 
             protected override ICollection<GameCardBase> AbstractCards
-                => RestrictionContext.game.Cards.Where(c => cardRestriction.IsValidCard(c, default)).ToArray();
+                => InitializationContext.game.Cards.Where(c => cardRestriction.IsValidCard(c, default)).ToArray();
         }
     }
 }

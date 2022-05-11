@@ -57,12 +57,12 @@ namespace KompasCore.Effects
         public SpaceRestriction spaceRestriction;
         public SpaceRestriction floutedSpaceRestriction;
 
-        public RestrictionContext RestrictionContext { get; private set; }
-        public GameCard Card => RestrictionContext.source;
+        public EffectInitializationContext initializationContext { get; private set; }
+        public GameCard Card => InitializationContext.source;
 
-        public override void Initialize(RestrictionContext restrictionContext)
+        public override void Initialize(EffectInitializationContext initializationContext)
         {
-            base.Initialize(restrictionContext);
+            base.Initialize(initializationContext);
 
             normalRestrictions ??= new List<string> { DefaultNormal };
             effectRestrictions ??= new List<string> { DefaultEffect };
@@ -83,10 +83,10 @@ namespace KompasCore.Effects
             effectRestrictions.RemoveAll(effectRestrictionsToIgnore.Contains);
 
 
-            onCardRestriction?.Initialize(restrictionContext);
-            adjacentCardRestriction?.Initialize(restrictionContext);
-            spaceRestriction?.Initialize(restrictionContext);
-            floutedSpaceRestriction?.Initialize(restrictionContext);
+            onCardRestriction?.Initialize(initializationContext);
+            adjacentCardRestriction?.Initialize(initializationContext);
+            spaceRestriction?.Initialize(initializationContext);
+            floutedSpaceRestriction?.Initialize(initializationContext);
             //Debug.Log($"Finished setting info for play restriction of card {card.CardName}");
         }
 

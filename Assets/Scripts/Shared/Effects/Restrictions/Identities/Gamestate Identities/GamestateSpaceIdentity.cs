@@ -32,10 +32,10 @@ namespace KompasCore.Effects.Identities
         {
             public INoActivationContextCardIdentity card;
 
-            public override void Initialize(RestrictionContext restrictionContext)
+            public override void Initialize(EffectInitializationContext initializationContext)
             {
-                base.Initialize(restrictionContext);
-                card.Initialize(restrictionContext);
+                base.Initialize(InitializationContext);
+                card.Initialize(InitializationContext);
             }
 
             protected override Space AbstractSpace => card.Card.Position;

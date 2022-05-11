@@ -25,14 +25,14 @@ namespace KompasServer.Effects.Identities
         {
             public IActivationContextCardIdentity cardFromContext;
 
-            public override void Initialize(RestrictionContext restrictionContext)
+            public override void Initialize(EffectInitializationContext initializationContext)
             {
-                base.Initialize(restrictionContext);
-                cardFromContext.Initialize(restrictionContext);
+                base.Initialize(initializationContext);
+                cardFromContext.Initialize(initializationContext);
             }
 
             protected override GameCardBase AbstractCard
-                => cardFromContext.CardFrom(RestrictionContext.subeffect.CurrentContext);
+                => cardFromContext.CardFrom(InitializationContext.subeffect.CurrentContext);
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace KompasServer.Effects.Identities
             public int index = -1;
 
             protected override GameCardBase AbstractCard
-                => RestrictionContext.subeffect.Effect.GetTarget(index);
+                => InitializationContext.subeffect.Effect.GetTarget(index);
         }
     }
 }

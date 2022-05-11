@@ -34,11 +34,11 @@ namespace KompasCore.Effects.Identities
 
             public IThreeSpaceRelationship thirdSpaceRelationship;
 
-            public override void Initialize(RestrictionContext restrictionContext)
+            public override void Initialize(EffectInitializationContext initializationContext)
             {
-                base.Initialize(restrictionContext);
-                firstSpace.Initialize(restrictionContext);
-                secondSpace.Initialize(restrictionContext);
+                base.Initialize(initializationContext);
+                firstSpace.Initialize(initializationContext);
+                secondSpace.Initialize(initializationContext);
             }
 
             protected override ICollection<Space> AbstractSpacesFrom(ActivationContext context)

@@ -24,24 +24,24 @@ namespace KompasServer.Effects.Identities
         {
             public IActivationContextSpaceIdentity space;
 
-            public override void Initialize(RestrictionContext restrictionContext)
+            public override void Initialize(EffectInitializationContext initializationContext)
             {
-                base.Initialize(restrictionContext);
-                space.Initialize(restrictionContext);
+                base.Initialize(initializationContext);
+                space.Initialize(initializationContext);
             }
 
             protected override Space AbstractSpace
-                => space.SpaceFrom(RestrictionContext.subeffect.CurrentContext);
+                => space.SpaceFrom(InitializationContext.subeffect.CurrentContext);
         }
 
         public class PositionOf : SubeffectSpaceIdentityBase
         {
             public INoActivationContextCardIdentity whosePosition;
 
-            public override void Initialize(RestrictionContext restrictionContext)
+            public override void Initialize(EffectInitializationContext initializationContext)
             {
-                base.Initialize(restrictionContext);
-                whosePosition.Initialize(restrictionContext);
+                base.Initialize(initializationContext);
+                whosePosition.Initialize(initializationContext);
             }
 
             protected override Space AbstractSpace => whosePosition.Card.Position;

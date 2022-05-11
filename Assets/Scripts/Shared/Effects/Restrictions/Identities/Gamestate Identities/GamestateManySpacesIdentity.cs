@@ -35,10 +35,10 @@ namespace KompasCore.Effects.Identities
         {
             public INoActivationContextManyCardsIdentity cards;
 
-            public override void Initialize(RestrictionContext restrictionContext)
+            public override void Initialize(EffectInitializationContext initializationContext)
             {
-                base.Initialize(restrictionContext);
-                cards.Initialize(restrictionContext);
+                base.Initialize(initializationContext);
+                cards.Initialize(initializationContext);
             }
 
             protected override ICollection<Space> AbstractLogic => cards.Cards

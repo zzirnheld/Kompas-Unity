@@ -24,7 +24,7 @@ namespace KompasCore.Effects.Restrictions
         public class EnemyCard : CardRestrictionElement
         {
             protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
-                => card.Controller != RestrictionContext.source.Controller;
+                => card.Controller != InitializationContext.source.Controller;
         }
 
         public class Location : CardRestrictionElement
@@ -41,10 +41,10 @@ namespace KompasCore.Effects.Restrictions
         {
             public SpaceRestriction spaceRestriction;
 
-            public override void Initialize(RestrictionContext restrictionContext)
+            public override void Initialize(EffectInitializationContext initializationContext)
             {
-                base.Initialize(restrictionContext);
-                spaceRestriction.Initialize(restrictionContext);
+                base.Initialize(initializationContext);
+                spaceRestriction.Initialize(initializationContext);
             }
 
             protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
@@ -59,10 +59,10 @@ namespace KompasCore.Effects.Restrictions
         {
             public INoActivationContextCardIdentity adjacentTo = new Identities.GamestateCardIdentities.ThisCard();
 
-            public override void Initialize(RestrictionContext restrictionContext)
+            public override void Initialize(EffectInitializationContext initializationContext)
             {
-                base.Initialize(restrictionContext);
-                adjacentTo.Initialize(restrictionContext);
+                base.Initialize(initializationContext);
+                adjacentTo.Initialize(initializationContext);
             }
 
             protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
@@ -73,9 +73,9 @@ namespace KompasCore.Effects.Restrictions
         {
             public string[] subtypes;
 
-            public override void Initialize(RestrictionContext restrictionContext)
+            public override void Initialize(EffectInitializationContext initializationContext)
             {
-                base.Initialize(restrictionContext);
+                base.Initialize(initializationContext);
                 if (subtypes == null) throw new System.NotImplementedException($"You forgot to provide a subtypes array!");
             }
 

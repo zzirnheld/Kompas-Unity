@@ -27,11 +27,11 @@ namespace KompasServer.Effects.Identities
             public INoActivationContextSpaceIdentity origin;
             public INoActivationContextManySpacesIdentity destinations;
 
-            public override void Initialize(RestrictionContext restrictionContext)
+            public override void Initialize(EffectInitializationContext initializationContext)
             {
-                base.Initialize(restrictionContext);
-                origin.Initialize(restrictionContext);
-                destinations.Initialize(restrictionContext);
+                base.Initialize(initializationContext);
+                origin.Initialize(initializationContext);
+                destinations.Initialize(initializationContext);
             }
 
             protected override ICollection<int> AbstractNumbers

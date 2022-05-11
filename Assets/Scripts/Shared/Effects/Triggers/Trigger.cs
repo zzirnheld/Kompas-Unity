@@ -77,7 +77,7 @@ namespace KompasCore.Effects
         {
             TriggerData = triggerData;
             Effect = effect;
-            triggerData.triggerRestriction.Initialize(new RestrictionContext(game: effect.Game, source: effect.Source, effect: effect, trigger: this));
+            triggerData.triggerRestriction.Initialize(new EffectInitializationContext(game: effect.Game, source: effect.Source, effect: effect, trigger: this));
         }
     }
 }

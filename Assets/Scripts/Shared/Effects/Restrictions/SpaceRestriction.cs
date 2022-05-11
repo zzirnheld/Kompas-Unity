@@ -112,26 +112,26 @@ namespace KompasCore.Effects
 
         public SpaceRestrictionElement[] spaceRestrictionElements = { };
 
-        public override void Initialize(RestrictionContext restrictionContext)
+        public override void Initialize(EffectInitializationContext initializationContext)
         {
-            base.Initialize(restrictionContext);
+            base.Initialize(initializationContext);
 
-            adjacencyRestriction?.Initialize(restrictionContext);
-            connectednessRestriction?.Initialize(restrictionContext);
-            spaceConnectednessRestriction?.Initialize(restrictionContext);
-            limitAdjacencyRestriction?.Initialize(restrictionContext);
-            hereFitsRestriction?.Initialize(restrictionContext);
-            inAOEOfRestriction?.Initialize(restrictionContext);
-            overlapRestriction?.Initialize(restrictionContext);
-            alsoInAOEOfRestriction?.Initialize(restrictionContext);
+            adjacencyRestriction?.Initialize(initializationContext);
+            connectednessRestriction?.Initialize(initializationContext);
+            spaceConnectednessRestriction?.Initialize(initializationContext);
+            limitAdjacencyRestriction?.Initialize(initializationContext);
+            hereFitsRestriction?.Initialize(initializationContext);
+            inAOEOfRestriction?.Initialize(initializationContext);
+            overlapRestriction?.Initialize(initializationContext);
+            alsoInAOEOfRestriction?.Initialize(initializationContext);
 
-            distanceXRestriction?.Initialize(restrictionContext);
-            connectedSpacesXRestriction?.Initialize(restrictionContext);
-            numberOfCardsInAOEOfRestriction?.Initialize(restrictionContext);
+            distanceXRestriction?.Initialize(initializationContext);
+            connectedSpacesXRestriction?.Initialize(initializationContext);
+            numberOfCardsInAOEOfRestriction?.Initialize(initializationContext);
 
             foreach (var sre in spaceRestrictionElements)
             {
-                sre.Initialize(restrictionContext);
+                sre.Initialize(initializationContext);
             }
         }
 

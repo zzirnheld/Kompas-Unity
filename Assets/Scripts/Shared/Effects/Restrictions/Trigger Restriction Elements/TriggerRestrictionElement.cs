@@ -23,7 +23,7 @@ namespace KompasCore.Effects.Restrictions
         public class ThisCardInPlay : TriggerRestrictionElement
         {
             protected override bool AbstractIsValidContext(ActivationContext context)
-                => RestrictionContext.source.Location == CardLocation.Board;
+                => InitializationContext.source.Location == CardLocation.Board;
         }
 
         public class CardsMatch : TriggerRestrictionElement
@@ -31,11 +31,11 @@ namespace KompasCore.Effects.Restrictions
             public IActivationContextCardIdentity firstCard;
             public IActivationContextCardIdentity secondCard;
 
-            public override void Initialize(RestrictionContext restrictionContext)
+            public override void Initialize(EffectInitializationContext initializationContext)
             {
-                base.Initialize(restrictionContext);
-                firstCard.Initialize(RestrictionContext);
-                secondCard.Initialize(RestrictionContext);
+                base.Initialize(initializationContext);
+                firstCard.Initialize(initializationContext);
+                secondCard.Initialize(initializationContext);
             }
 
             protected override bool AbstractIsValidContext(ActivationContext context)
@@ -55,11 +55,11 @@ namespace KompasCore.Effects.Restrictions
             public SpaceRestriction spaceRestriction;
             public IActivationContextSpaceIdentity space;
 
-            public override void Initialize(RestrictionContext restrictionContext)
+            public override void Initialize(EffectInitializationContext initializationContext)
             {
-                base.Initialize(restrictionContext);
-                space.Initialize(RestrictionContext);
-                spaceRestriction.Initialize(restrictionContext);
+                base.Initialize(initializationContext);
+                space.Initialize(initializationContext);
+                spaceRestriction.Initialize(initializationContext);
             }
 
             protected override bool AbstractIsValidContext(ActivationContext context)
@@ -71,11 +71,11 @@ namespace KompasCore.Effects.Restrictions
             public CardRestriction cardRestriction;
             public IActivationContextCardIdentity card;
 
-            public override void Initialize(RestrictionContext restrictionContext)
+            public override void Initialize(EffectInitializationContext initializationContext)
             {
-                base.Initialize(restrictionContext);
-                card.Initialize(restrictionContext);
-                cardRestriction.Initialize(restrictionContext);
+                base.Initialize(initializationContext);
+                card.Initialize(initializationContext);
+                cardRestriction.Initialize(initializationContext);
             }
 
             protected override bool AbstractIsValidContext(ActivationContext context)
@@ -88,13 +88,13 @@ namespace KompasCore.Effects.Restrictions
         public class FriendlyTurn : TriggerRestrictionElement
         {
             protected override bool AbstractIsValidContext(ActivationContext context)
-                => RestrictionContext.game.TurnPlayer == RestrictionContext.source.Controller;
+                => InitializationContext.game.TurnPlayer == InitializationContext.source.Controller;
         }
 
         public class EnemyTurn : TriggerRestrictionElement
         {
             protected override bool AbstractIsValidContext(ActivationContext context)
-                => RestrictionContext.game.TurnPlayer != RestrictionContext.source.Controller;
+                => InitializationContext.game.TurnPlayer != InitializationContext.source.Controller;
         }
     }
 }

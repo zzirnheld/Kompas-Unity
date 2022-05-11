@@ -44,7 +44,7 @@ namespace KompasClient.Networking
                 if (string.IsNullOrEmpty(listRestrictionJson)) listRestriction = ListRestriction.Default;
                 else listRestriction = JsonConvert.DeserializeObject<ListRestriction>(listRestrictionJson);
 
-                listRestriction.Initialize(new RestrictionContext(game: clientGame, source: default));
+                listRestriction.Initialize(new EffectInitializationContext(game: clientGame, source: default));
             }
             catch (System.ArgumentException)
             {

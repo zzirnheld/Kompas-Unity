@@ -26,10 +26,10 @@ namespace KompasServer.Effects.Identities
         {
             public SpaceRestriction spaceRestriction;
 
-            public override void Initialize(RestrictionContext restrictionContext)
+            public override void Initialize(EffectInitializationContext initializationContext)
             {
-                base.Initialize(restrictionContext);
-                spaceRestriction.Initialize(restrictionContext);
+                base.Initialize(initializationContext);
+                spaceRestriction.Initialize(initializationContext);
             }
 
             protected override ICollection<Space> AbstractSpaces
@@ -47,11 +47,11 @@ namespace KompasServer.Effects.Identities
 
             public IThreeSpaceRelationship thirdSpaceRelationship;
 
-            public override void Initialize(RestrictionContext restrictionContext)
+            public override void Initialize(EffectInitializationContext initializationContext)
             {
-                base.Initialize(restrictionContext);
-                firstSpace.Initialize(restrictionContext);
-                secondSpace.Initialize(restrictionContext);
+                base.Initialize(initializationContext);
+                firstSpace.Initialize(initializationContext);
+                secondSpace.Initialize(initializationContext);
             }
 
             protected override ICollection<Space> AbstractSpaces
@@ -69,10 +69,10 @@ namespace KompasServer.Effects.Identities
         {
             public INoActivationContextManyCardsIdentity cards;
 
-            public override void Initialize(RestrictionContext restrictionContext)
+            public override void Initialize(EffectInitializationContext initializationContext)
             {
-                base.Initialize(restrictionContext);
-                cards.Initialize(restrictionContext);
+                base.Initialize(initializationContext);
+                cards.Initialize(initializationContext);
             }
 
             protected override ICollection<Space> AbstractSpaces => cards.Cards

@@ -214,13 +214,13 @@ namespace KompasCore.Cards
             ID = id;
             InitialCardValues = serializedCard;
 
-            RestrictionContext restrictionContext = new RestrictionContext(Game, this);
+            EffectInitializationContext initializationContext = new EffectInitializationContext(Game, this);
             MovementRestriction = serializedCard.MovementRestriction ?? new MovementRestriction();
-            MovementRestriction.Initialize(restrictionContext);
+            MovementRestriction.Initialize(initializationContext);
             AttackRestriction = serializedCard.AttackRestriction ?? new AttackRestriction();
-            AttackRestriction.Initialize(restrictionContext);
+            AttackRestriction.Initialize(initializationContext);
             PlayRestriction = serializedCard.PlayRestriction ?? new PlayRestriction();
-            PlayRestriction.Initialize(restrictionContext);
+            PlayRestriction.Initialize(initializationContext);
 
             cardCtrl.ShowForCardType(CardType, false);
 

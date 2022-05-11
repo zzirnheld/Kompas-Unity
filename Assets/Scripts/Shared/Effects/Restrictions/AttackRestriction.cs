@@ -33,16 +33,16 @@ namespace KompasCore.Effects
 
         public CardRestriction defenderRestriction;
 
-        public GameCard Card => RestrictionContext.source;
+        public GameCard Card => InitializationContext.source;
 
-        public override void Initialize(RestrictionContext restrictionContext)
+        public override void Initialize(EffectInitializationContext initializationContext)
         {
-            base.Initialize(restrictionContext);
+            base.Initialize(initializationContext);
 
             if (attackRestrictions.Contains(Default)) attackRestrictions.AddRange(DefaultAttackRestrictions);
             attackRestrictions.RemoveAll(attackRestrictionsToIgnore.Contains);
 
-            defenderRestriction?.Initialize(restrictionContext);
+            defenderRestriction?.Initialize(initializationContext);
 
             //Debug.Log($"Finished initializing attack restriction for {Card.CardName} with restrictions: {string.Join(", ", attackRestrictions)}");
         }

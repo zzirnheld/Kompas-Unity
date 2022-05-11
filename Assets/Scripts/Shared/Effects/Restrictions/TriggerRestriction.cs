@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace KompasCore.Effects
 {
-    public class TriggerRestriction
+    public class TriggerRestriction : ContextInitializeableBase
     {
         //public Game Game { get; private set; }
 
@@ -102,12 +102,10 @@ namespace KompasCore.Effects
 
         public TriggerRestrictionElement[] triggerRestrictionElements = { };
 
-        public RestrictionContext RestrictionContext { get; private set; }
-
-        private GameCard ThisCard => RestrictionContext.source;
-        private Effect SourceEffect => RestrictionContext.effect;
-        private Game Game => RestrictionContext.game;
-        private Trigger ThisTrigger => RestrictionContext.trigger;
+        private GameCard ThisCard => InitializationContext.source;
+        private Effect SourceEffect => InitializationContext.effect;
+        private Game Game => InitializationContext.game;
+        private Trigger ThisTrigger => InitializationContext.trigger;
 
         /*
         public GameCard ThisCard { get; private set; }
@@ -116,26 +114,22 @@ namespace KompasCore.Effects
         public Effect SourceEffect { get; private set; }
         public Subeffect Subeffect { get; private set; }*/
 
-        // Necessary because json doesn't let you have nice things, like constructors with arguments,
-        // so I need to make sure manually that I've bothered to set up relevant arguments.
-        private bool initialized = false;
-
-        public void Initialize(RestrictionContext restrictionContext)
+        public override void Initialize(EffectInitializationContext initializationContext)
         {
-            RestrictionContext = restrictionContext;
+            base.Initialize(initializationContext);
 
-            cardRestriction?.Initialize(restrictionContext);
-            nowRestriction?.Initialize(restrictionContext);
-            secondaryCardRestriction?.Initialize(restrictionContext);
-            existsRestriction?.Initialize(restrictionContext);
-            selfRestriction?.Initialize(restrictionContext);
-            spaceRestriction?.Initialize(restrictionContext);
-            sourceRestriction?.Initialize(restrictionContext);
-            xRestriction?.Initialize(restrictionContext);
+            cardRestriction?.Initialize(initializationContext);
+            nowRestriction?.Initialize(initializationContext);
+            secondaryCardRestriction?.Initialize(initializationContext);
+            existsRestriction?.Initialize(initializationContext);
+            selfRestriction?.Initialize(initializationContext);
+            spaceRestriction?.Initialize(initializationContext);
+            sourceRestriction?.Initialize(initializationContext);
+            xRestriction?.Initialize(initializationContext);
 
             foreach (var tre in triggerRestrictionElements)
             {
-                tre.Initialize(restrictionContext);
+                tre.Initialize(initializationContext);
             }
             
             //Verify that any relevant restrictions exist
@@ -154,7 +148,6 @@ namespace KompasCore.Effects
             if (triggerRestrictions.Intersect(RequiringSpaceRestriction).Any() && spaceRestriction == null)
                 throw new ArgumentNullException("spaceRestriction", $"Must be populated for any of these restrictions: {RequiringSpaceRestriction}");
 
-            initialized = true;
             //Debug.Log($"Initializing trigger restriction for {thisCard?.CardName}. game is null? {game}");
         }
 
@@ -236,7 +229,7 @@ namespace KompasCore.Effects
         /// <returns></returns>
         public bool IsValidTriggeringContext(ActivationContext context, ActivationContext secondary = default)
         {
-            if (!initialized) throw new ArgumentException("Trigger restriction not initialized!");
+            ComplainIfNotInitialized();
 
             try
             {

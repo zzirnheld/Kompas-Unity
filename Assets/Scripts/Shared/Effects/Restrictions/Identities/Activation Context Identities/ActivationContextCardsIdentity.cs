@@ -27,16 +27,16 @@ namespace KompasCore.Effects.Identities
         {
             public IActivationContextManySpacesIdentity positions;
 
-            public override void Initialize(RestrictionContext restrictionContext)
+            public override void Initialize(EffectInitializationContext initializationContext)
             {
-                base.Initialize(restrictionContext);
-                positions.Initialize(restrictionContext);
+                base.Initialize(initializationContext);
+                positions.Initialize(initializationContext);
             }
 
             protected override ICollection<GameCardBase> AbstractCardsFrom(ActivationContext context)
             {
                 var spaces = positions.SpacesFrom(context);
-                return spaces.Select(RestrictionContext.game.boardCtrl.GetCardAt).Where(s => s != null).ToArray();
+                return spaces.Select(InitializationContext.game.boardCtrl.GetCardAt).Where(s => s != null).ToArray();
             }
         }
     }
