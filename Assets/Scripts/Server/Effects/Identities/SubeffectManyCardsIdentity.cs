@@ -70,7 +70,7 @@ namespace KompasServer.Effects.Identities
             }
 
             protected override ICollection<GameCardBase> AbstractCards
-                => cardsFromContext.From(InitializationContext.subeffect.CurrentContext);
+                => cardsFromContext.From(InitializationContext.subeffect.CurrentContext, default);
         }
     }
 }

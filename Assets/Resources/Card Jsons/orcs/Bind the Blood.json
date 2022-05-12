@@ -25,7 +25,11 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetAttackerSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.AutoTargetCardIdentitySubeffect, Assembly-CSharp",
+                    "subeffectCardIdentity": {
+						"$type": "KompasServer.Effects.Identities.SubeffectCardIdentities.FromActivationContext, Assembly-CSharp",
+                        "cardFromContext": { "$type": "KompasCore.Effects.Identities.ActivationContextCardIdentities.MainCardBefore, Assembly-CSharp" }
+                    }
 				},
 				{
 					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
@@ -39,15 +43,33 @@
 					],
 					"fallOffCondition": "Battle End",
 					"fallOffRestriction": {
-						"triggerRestrictions": [
-							"Stackable is Secondary Delayed Stackable Target"
+						"triggerRestrictionElements": [
+							{
+								"$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.StackablesMatch, Assembly-CSharp",
+								"firstCard": { "$type": "KompasCore.Effects.Identities.SubeffectStackableIdentities.StackableIndex, Assembly-CSharp" },
+								"secondCard": { "$type": "KompasCore.Effects.Identities.ActivationContextStackableIdentities.StackableCause, Assembly-CSharp" }
+							}
 						]
 					},
 					"endCondition": "Discard",
 					"triggerRestriction": {
-						"triggerRestrictions": [
-							"Stackable is Secondary Delayed Stackable Target",
-							"Main Card is a Secondary Context Card Target"
+						"triggerRestrictionElements": [
+							{
+								"$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.StackablesMatch, Assembly-CSharp",
+								"firstCard": { "$type": "KompasCore.Effects.Identities.SubeffectStackableIdentities.StackableIndex, Assembly-CSharp" },
+								"secondCard": { "$type": "KompasCore.Effects.Identities.ActivationContextStackableIdentities.StackableCause, Assembly-CSharp" }
+							},
+							{
+								"$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.CardsMatch, Assembly-CSharp",
+								"firstCard": { "$type": "KompasCore.Effects.Identities.ActivationContextCardIdentities.MainCardBefore, Assembly-CSharp" },
+								"secondCard": {
+									"$type": "KompasServer.Effects.Identities.SubeffectCardIdentities.FromActivationContext, Assembly-CSharp",
+									"secondary": true,
+                        			"cardFromContext": {
+										"$type": "KompasCore.Effects.Identities.ActivationContextCardIdentities.MainCardBefore, Assembly-CSharp"
+									}
+								}
+							}
 						]
 					}
 				},
@@ -83,11 +105,10 @@
 			]
 		}
 	],
-	"c": 4,
+	"c": 2,
 	"spellTypes": [
-		"Enchant",
 		"Radial"
 	],
 	"radius": 2,
-	"subtypeText": "Radial 2 Enchant"
+	"subtypeText": "Radius 2"
 }

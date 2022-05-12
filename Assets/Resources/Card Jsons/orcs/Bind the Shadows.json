@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Bind the Shadows",
-	"effText": "When you summon an Orc here, give them +3 W until the next turn.\nWhen a character here is handed, choose an Orc in your hand. If it's not revealed, reveal it. Regardless, give it -2 S.",
+	"effText": "When you summon an Orc here, give them +3 W until the next turn. If you hand them this turn, give an Orc in your hand -2 S.",
 	"effects": [
 		{
 			"triggerData": {
@@ -35,33 +35,40 @@
 					"triggerRestriction": {
 						"triggerRestrictions": []
 					}
-				}
-			]
-		},
-		{
-			"triggerData": {
-				"triggerCondition": "Rehand",
-				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Main Card Fits Restriction Before"
+				},
+				{
+					"$type": "KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"numTimesToDelay": 0,
+					"jumpIndices": [
+						3
 					],
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Different from Source",
-							"Character",
-							"Board",
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": { "spaceRestrictions": [ "In Source's AOE" ] }
+					"fallOffCondition": "Turn Start",
+					"endCondition": "Hand",
+					"triggerRestriction": {
+						"triggerRestrictionElements": [
+							{
+								"$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.StackablesMatch, Assembly-CSharp",
+								"firstCard": { "$type": "KompasCore.Effects.Identities.SubeffectStackableIdentities.StackableIndex, Assembly-CSharp" },
+								"secondCard": { "$type": "KompasCore.Effects.Identities.ActivationContextStackableIdentities.StackableCause, Assembly-CSharp" }
+							},
+							{
+								"$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.CardsMatch, Assembly-CSharp",
+								"firstCard": { "$type": "KompasCore.Effects.Identities.ActivationContextCardIdentities.MainCardBefore, Assembly-CSharp" },
+								"secondCard": {
+									"$type": "KompasServer.Effects.Identities.SubeffectCardIdentities.FromActivationContext, Assembly-CSharp",
+									"secondary": true,
+                        			"cardFromContext": {
+										"$type": "KompasCore.Effects.Identities.ActivationContextCardIdentities.MainCardBefore, Assembly-CSharp"
+									}
+								}
+							}
+						]
 					}
-				}
-			},
-			"subeffects": [
+				},
 				{
 					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction": {
-						"blurb": "Bind shadows to a card",
+						"blurb": "Bind blood to a card",
 						"cardRestrictions": [
 							"Friendly",
 							"Hand",
@@ -73,7 +80,7 @@
 				{
 					"$type": "KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
 					"jumpIndices": [
-						3
+						6
 					]
 				},
 				{
@@ -90,11 +97,10 @@
 			]
 		}
 	],
-	"c": 4,
+	"c": 2,
 	"spellTypes": [
-		"Enchant",
 		"Radial"
 	],
 	"radius": 2,
-	"subtypeText": "Radial 2 Enchant"
+	"subtypeText": "Radius 2"
 }

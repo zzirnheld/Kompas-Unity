@@ -2,21 +2,9 @@ using KompasCore.Cards;
 
 namespace KompasCore.Effects.Identities
 {
-    public abstract class ActivationContextSpaceIdentityBase : ContextInitializeableBase, 
-        IActivationContextIdentity<Space>
-    {
-        protected abstract Space AbstractSpaceFrom(ActivationContext context);
-
-        public Space From(ActivationContext context)
-        {
-            ComplainIfNotInitialized();
-            return AbstractSpaceFrom(context);
-        }
-    }
-
     namespace ActivationContextSpaceIdentities
     {
-        public class PositionOf : ActivationContextSpaceIdentityBase
+        public class PositionOf : ActivationContextIdentityBase<Space>
         {
             public IActivationContextIdentity<GameCardBase> whosePosition;
 
@@ -26,17 +14,17 @@ namespace KompasCore.Effects.Identities
                 base.Initialize(initializationContext);
             }
 
-            protected override Space AbstractSpaceFrom(ActivationContext context)
-                => whosePosition.From(context).Position;
+            protected override Space AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
+                => whosePosition.From(context, secondaryContext).Position;
         }
 
-        public class ContextSpace : ActivationContextSpaceIdentityBase
+        public class ContextSpace : ActivationContextIdentityBase<Space>
         {
-            protected override Space AbstractSpaceFrom(ActivationContext context)
+            protected override Space AbstractItemFrom(ActivationContext context)
                 => context.space;
         }
 
-        public class TwoSpaceIdentity : ActivationContextSpaceIdentityBase
+        public class TwoSpaceIdentity : ActivationContextIdentityBase<Space>
         {
             public IActivationContextIdentity<Space> firstSpace;
             public IActivationContextIdentity<Space> secondSpace;
@@ -50,10 +38,10 @@ namespace KompasCore.Effects.Identities
                 base.Initialize(initializationContext);
             }
 
-            protected override Space AbstractSpaceFrom(ActivationContext context)
+            protected override Space AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
             {
-                Space first = firstSpace.From(context);
-                Space second = secondSpace.From(context);
+                Space first = firstSpace.From(context, secondaryContext);
+                Space second = secondSpace.From(context, secondaryContext);
                 return relationship.SpaceFrom(first, second);
             }
         }

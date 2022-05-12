@@ -19,7 +19,7 @@ namespace KompasCore.Effects.Identities
             return AbstractCardFrom(game, context);
         }
 
-        public GameCardBase From(ActivationContext context)
+        public GameCardBase From(ActivationContext context, ActivationContext secondaryContext)
             => From(context.game, context);
 
         public GameCardBase Item 

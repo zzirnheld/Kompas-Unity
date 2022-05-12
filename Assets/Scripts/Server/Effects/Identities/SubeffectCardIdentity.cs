@@ -32,7 +32,7 @@ namespace KompasServer.Effects.Identities
             }
 
             protected override GameCardBase AbstractCard
-                => cardFromContext.From(InitializationContext.subeffect.CurrentContext);
+                => cardFromContext.From(InitializationContext.subeffect.CurrentContext, default);
         }
 
         /// <summary>

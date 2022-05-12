@@ -25,7 +25,7 @@ namespace KompasCore.Effects.Identities
             }
         }
 
-        public Space From(ActivationContext context) => Item;
+        public Space From(ActivationContext context, ActivationContext secondaryContext) => Item;
     }
 
     namespace GamestateSpaceIdentities

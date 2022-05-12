@@ -2,28 +2,16 @@ using KompasCore.Cards;
 
 namespace KompasCore.Effects.Identities
 {
-    public abstract class ActivationContextCardIdentityBase : ContextInitializeableBase, 
-        IActivationContextIdentity<GameCardBase>
-    {
-        public GameCardBase From(ActivationContext context)
-        {
-            ComplainIfNotInitialized();
-            return CardFromAbstract(context);
-        }
-
-        protected abstract GameCardBase CardFromAbstract(ActivationContext context);
-    }
-
     namespace ActivationContextCardIdentities
     {
 
-        public class MainCardBefore : ActivationContextCardIdentityBase
+        public class MainCardBefore : ActivationContextIdentityBase<GameCardBase>
         {
-            protected override GameCardBase CardFromAbstract(ActivationContext context)
+            protected override GameCardBase AbstractItemFrom(ActivationContext context)
                 => context.mainCardInfoBefore;
         }
 
-        public class CardAtPosition : ActivationContextCardIdentityBase
+        public class CardAtPosition : ActivationContextIdentityBase<GameCardBase>
         {
             public IActivationContextIdentity<Space> position;
 
@@ -33,11 +21,19 @@ namespace KompasCore.Effects.Identities
                 position.Initialize(initializationContext);
             }
 
-            protected override GameCardBase CardFromAbstract(ActivationContext context)
+            protected override GameCardBase AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
             {
-                var finalSpace = position.From(context);
+                var finalSpace = position.From(context, secondaryContext);
                 return context.game.boardCtrl.GetCardAt(finalSpace);
             }
+        }
+
+        public class TargetIndex : ActivationContextIdentityBase<GameCardBase>
+        {
+            public int index = -1;
+
+            protected override GameCardBase AbstractItemFrom(ActivationContext contextToConsider)
+                => Effect.GetItem(contextToConsider.CardTargets, index);
         }
     }
 }

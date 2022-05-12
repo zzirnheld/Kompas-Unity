@@ -35,7 +35,15 @@ namespace KompasServer.Effects.Identities
             }
 
             protected override IStackable AbstractStackable
-                => stackable.From(InitializationContext.subeffect.CurrentContext);
+                => stackable.From(InitializationContext.subeffect.CurrentContext, default);
+        }
+
+        public class StackableIndex : SubeffectStackableIdentity
+        {
+            public int index = -1;
+
+            protected override IStackable AbstractStackable
+                => Effect.GetItem(InitializationContext.effect.stackableTargets, index);
         }
     }
 }

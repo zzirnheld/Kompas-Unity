@@ -4,21 +4,9 @@ using System.Linq;
 
 namespace KompasCore.Effects.Identities
 {
-    public abstract class ActivationContextManyCardsIdentityBase : ContextInitializeableBase,
-        IActivationContextIdentity<ICollection<GameCardBase>>
-    {
-        protected abstract ICollection<GameCardBase> AbstractCardsFrom(ActivationContext context);
-
-        public ICollection<GameCardBase> From(ActivationContext context)
-        {
-            ComplainIfNotInitialized();
-            return AbstractCardsFrom(context);
-        }
-    }
-
     namespace ActivationContextManyCardsIdentities
     {
-        public class CardsInPositions : ActivationContextManyCardsIdentityBase
+        public class CardsInPositions : ActivationContextIdentityBase<ICollection<GameCardBase>>
         {
             public IActivationContextIdentity<ICollection<Space>> positions;
 
@@ -28,9 +16,9 @@ namespace KompasCore.Effects.Identities
                 positions.Initialize(initializationContext);
             }
 
-            protected override ICollection<GameCardBase> AbstractCardsFrom(ActivationContext context)
+            protected override ICollection<GameCardBase> AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
             {
-                var spaces = positions.From(context);
+                var spaces = positions.From(context, secondaryContext);
                 return spaces.Select(InitializationContext.game.boardCtrl.GetCardAt).Where(s => s != null).ToArray();
             }
         }

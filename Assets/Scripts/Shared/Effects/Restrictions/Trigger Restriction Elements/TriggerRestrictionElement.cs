@@ -5,25 +5,49 @@ namespace KompasCore.Effects.Restrictions
 {
     public abstract class TriggerRestrictionElement : ContextInitializeableBase, IContextInitializeable
     {
-        public bool primaryContext = true;
-
         public bool IsValidContext(ActivationContext context, ActivationContext secondaryContext = default)
         {
             ComplainIfNotInitialized();
-
-            ActivationContext contextToConsider = primaryContext ? context : secondaryContext;
-            return AbstractIsValidContext(contextToConsider);
+            return AbstractIsValidContext(context, secondaryContext);
         }
 
-        protected abstract bool AbstractIsValidContext(ActivationContext context);
+        protected abstract bool AbstractIsValidContext(ActivationContext context, ActivationContext secondaryContext);
     }
 
     namespace TriggerRestrictionElements
     {
         public class ThisCardInPlay : TriggerRestrictionElement
         {
-            protected override bool AbstractIsValidContext(ActivationContext context)
+            protected override bool AbstractIsValidContext(ActivationContext context, ActivationContext secondaryContext)
                 => InitializationContext.source.Location == CardLocation.Board;
+        }
+
+        public class FriendlyTurn : TriggerRestrictionElement
+        {
+            protected override bool AbstractIsValidContext(ActivationContext context, ActivationContext secondaryContext)
+                => InitializationContext.game.TurnPlayer == InitializationContext.source.Controller;
+        }
+
+        public class EnemyTurn : TriggerRestrictionElement
+        {
+            protected override bool AbstractIsValidContext(ActivationContext context, ActivationContext secondaryContext)
+                => InitializationContext.game.TurnPlayer != InitializationContext.source.Controller;
+        }
+
+        public class StackablesMatch : TriggerRestrictionElement
+        {
+            public IActivationContextIdentity<IStackable> firstStackable;
+            public IActivationContextIdentity<IStackable> secondStackable;
+
+            public override void Initialize(EffectInitializationContext initializationContext)
+            {
+                base.Initialize(initializationContext);
+                firstStackable.Initialize(initializationContext);
+                secondStackable.Initialize(initializationContext);
+            }
+
+            protected override bool AbstractIsValidContext(ActivationContext context, ActivationContext secondaryContext)
+                => firstStackable.From(context, secondaryContext) == secondStackable.From(context, secondaryContext);
         }
 
         public class CardsMatch : TriggerRestrictionElement
@@ -38,10 +62,10 @@ namespace KompasCore.Effects.Restrictions
                 secondCard.Initialize(initializationContext);
             }
 
-            protected override bool AbstractIsValidContext(ActivationContext context)
+            protected override bool AbstractIsValidContext(ActivationContext context, ActivationContext secondaryContext)
             {
-                var first = firstCard.From(context);
-                var second = secondCard.From(context);
+                var first = firstCard.From(context, secondaryContext);
+                var second = secondCard.From(context, secondaryContext);
                 return first.Card == second.Card;
             }
         }
@@ -62,8 +86,8 @@ namespace KompasCore.Effects.Restrictions
                 spaceRestriction.Initialize(initializationContext);
             }
 
-            protected override bool AbstractIsValidContext(ActivationContext context)
-                => spaceRestriction.IsValidSpace(space.From(context), context);
+            protected override bool AbstractIsValidContext(ActivationContext context, ActivationContext secondaryContext)
+                => spaceRestriction.IsValidSpace(space.From(context, secondaryContext), context);
         }
 
         public class CardFitsRestriction : TriggerRestrictionElement
@@ -78,23 +102,11 @@ namespace KompasCore.Effects.Restrictions
                 cardRestriction.Initialize(initializationContext);
             }
 
-            protected override bool AbstractIsValidContext(ActivationContext context)
+            protected override bool AbstractIsValidContext(ActivationContext context, ActivationContext secondaryContext)
             {
-                var card = this.card.From(context);
+                var card = this.card.From(context, secondaryContext);
                 return cardRestriction.IsValidCard(card, context);
             }
-        }
-
-        public class FriendlyTurn : TriggerRestrictionElement
-        {
-            protected override bool AbstractIsValidContext(ActivationContext context)
-                => InitializationContext.game.TurnPlayer == InitializationContext.source.Controller;
-        }
-
-        public class EnemyTurn : TriggerRestrictionElement
-        {
-            protected override bool AbstractIsValidContext(ActivationContext context)
-                => InitializationContext.game.TurnPlayer != InitializationContext.source.Controller;
         }
     }
 }

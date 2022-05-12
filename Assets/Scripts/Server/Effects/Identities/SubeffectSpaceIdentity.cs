@@ -32,7 +32,7 @@ namespace KompasServer.Effects.Identities
             }
 
             protected override Space AbstractSpace
-                => space.From(InitializationContext.subeffect.CurrentContext);
+                => space.From(InitializationContext.subeffect.CurrentContext, default);
         }
 
         public class PositionOf : SubeffectSpaceIdentityBase
