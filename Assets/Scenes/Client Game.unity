@@ -10021,7 +10021,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pipIntervals: 0500000001000000
   pipsPrefabs:
-  - {fileID: 8305099513132462644, guid: 90a2d65118617cd47b3dbc44119670d2, type: 3}
+  - {fileID: 7763906538448627419, guid: 2b22702362635be478b55c600f3305d2, type: 3}
   - {fileID: 6844806107006139539, guid: bd9a313146287654fa3ee31d26396099, type: 3}
   pipsPrefabsOffsets:
   - {x: -0.75, y: 0, z: 0.75}
