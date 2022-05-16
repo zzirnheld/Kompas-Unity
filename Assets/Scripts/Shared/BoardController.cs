@@ -320,7 +320,7 @@ namespace KompasCore.GameCore
             foreach (GameCard c in Board)
             {
                 if (c == null) continue;
-                else if (c.CardType == 'S')
+                else// if (c.CardType == 'S')
                 {
                     foreach (string s in c.SpellSubtypes)
                     {

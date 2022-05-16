@@ -112,6 +112,9 @@ namespace KompasCore.Effects
 
         public SpaceRestrictionElement[] spaceRestrictionElements = { };
 
+        public Func<Space, bool> AsThroughPredicate(ActivationContext context)
+            => s => IsValidSpace(s, context);
+
         public override void Initialize(EffectInitializationContext initializationContext)
         {
             base.Initialize(initializationContext);

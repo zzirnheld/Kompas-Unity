@@ -57,6 +57,11 @@ namespace KompasCore.Effects
 
         public virtual bool Negated { get; set; }
 
+        /// <summary>
+        /// The keyword this effect is from, if it's a full keyword
+        /// </summary>
+        public string Keyword { get; set; }
+
         protected void SetInfo(GameCard source, int effIndex, Player owner)
         {
             Source = source ?? throw new ArgumentNullException("source", "Effect cannot be attached to null card");

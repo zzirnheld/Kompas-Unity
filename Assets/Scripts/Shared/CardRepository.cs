@@ -222,11 +222,12 @@ public class CardRepository : MonoBehaviour
             effects.AddRange(cardInfo.effects);
             for (int i = 0; i < cardInfo.keywords.Length; i++)
             {
-                var s = cardInfo.keywords[i];
-                Debug.Log($"Trying to add keyword {s}");
-                var keywordJson = keywordJsons[s];
+                var keywordName = cardInfo.keywords[i];
+                Debug.Log($"Trying to add keyword {keywordName}");
+                var keywordJson = keywordJsons[keywordName];
                 var eff = JsonConvert.DeserializeObject<ServerEffect>(keywordJson, cardLoadingSettings);
                 eff.arg = cardInfo.keywordArgs.Length > i ? cardInfo.keywordArgs[i] : 0;
+                eff.Keyword = keywordName;
                 effects.Add(eff);
             }
         }

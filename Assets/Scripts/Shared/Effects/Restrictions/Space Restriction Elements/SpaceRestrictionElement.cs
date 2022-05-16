@@ -102,5 +102,22 @@ namespace KompasCore.Effects.Restrictions
                 ? toMove.Item.Card.MovementRestriction.IsValidNormalMove(space)
                 : toMove.Item.Card.MovementRestriction.IsValidEffectMove(space, context);
         }
+
+        public class CardFitsRestriction : SpaceRestrictionElement
+        {
+            public CardRestriction restriction;
+
+            public override void Initialize(EffectInitializationContext initializationContext)
+            {
+                base.Initialize(initializationContext);
+                restriction.Initialize(initializationContext);
+            }
+
+            protected override bool AbstractIsValidSpace(Space space, ActivationContext context)
+            {
+                var card = InitializationContext.game.boardCtrl.GetCardAt(space);
+                return restriction.IsValidCard(card, context);
+            }
+        }
     }
 }

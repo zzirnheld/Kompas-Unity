@@ -72,4 +72,15 @@ namespace KompasCore.Effects
             return numberRestrictions.All(r => IsRestrictionValid(r, x));
         }
     }
+
+    public abstract class NumberRestrictionElement : ContextInitializeableBase
+    {
+        public bool IsValidNumber(int number)
+        {
+            ComplainIfNotInitialized();
+            return AbstractIsValidNumber(number);
+        }
+
+        protected abstract bool AbstractIsValidNumber(int number);
+    }
 }

@@ -21,5 +21,6 @@ namespace KompasCore.Effects.Identities
     }
 
     namespace GamestateNumberIdentities
-    { }
+    {
+    }
 }

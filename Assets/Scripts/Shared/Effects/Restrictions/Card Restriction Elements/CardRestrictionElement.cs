@@ -7,8 +7,12 @@ namespace KompasCore.Effects.Restrictions
 {
     public abstract class CardRestrictionElement : ContextInitializeableBase
     {
-        public bool FitsRestriction(GameCardBase card, ActivationContext context) => Initialized ? FitsRestrictionLogic(card, context)
-            : throw new System.NotImplementedException("You failed to initialize a Card Restriction Element");
+        public bool FitsRestriction(GameCardBase card, ActivationContext context)
+        {
+            ComplainIfNotInitialized();
+
+            return card != null && FitsRestrictionLogic(card, context);
+        }
 
         protected abstract bool FitsRestrictionLogic(GameCardBase card, ActivationContext context);
     }
