@@ -47,5 +47,12 @@ namespace KompasServer.Effects.Identities
 
             protected override Space AbstractSpace => whosePosition.Item.Position;
         }
+
+        public class Target : SubeffectSpaceIdentityBase
+        {
+            public int index = -1;
+
+            protected override Space AbstractSpace => InitializationContext.effect.GetSpace(index);
+        }
     }
 }

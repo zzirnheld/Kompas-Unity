@@ -1,6 +1,7 @@
 using KompasCore.Cards;
 using KompasCore.Effects.Identities;
 using KompasCore.Effects.Relationships;
+using System.Linq;
 
 namespace KompasCore.Effects.Restrictions
 {
@@ -157,6 +158,22 @@ namespace KompasCore.Effects.Restrictions
                 var card = this.card.From(context, secondaryContext);
                 return cardRestriction.IsValidCard(card, context);
             }
+        }
+
+        public class TriggerKeyword : TriggerRestrictionElement
+        {
+            public string keyword;
+
+            private TriggerRestrictionElement[] triggerRestrictionElements;
+
+            public override void Initialize(EffectInitializationContext initializationContext)
+            {
+                base.Initialize(initializationContext);
+                triggerRestrictionElements = CardRepository.InstantiateTriggerKeyword(keyword);
+            }
+
+            protected override bool AbstractIsValidContext(ActivationContext context, ActivationContext secondaryContext)
+                => triggerRestrictionElements.All(tre => tre.IsValidContext(context, secondaryContext));
         }
     }
 }

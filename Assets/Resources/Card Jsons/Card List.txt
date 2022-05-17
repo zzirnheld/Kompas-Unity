@@ -385,6 +385,8 @@ runar/Thurisaz
 runar/Tiwaz
 runar/Uruz
 runar/Wynn
+shapers/Irrilmist
+shapers/Ephemera
 shapers/Dreamhook
 shapers/Dreammist
 shapers/Dreamscape

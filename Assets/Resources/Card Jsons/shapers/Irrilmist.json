@@ -1,0 +1,69 @@
+{
+	"cardType": 67,
+	"cardName": "Irrilmist",
+	"effText": "Evasive Shape.\nWhen a Shaper Shapes through me, hand me and move an Ethereal to where I was.",
+	"effects": [
+		{
+			"triggerData": {
+				"blurb": "Condense",
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictionElements": [
+                        { "$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.ThisCardInPlay, Assembly-CSharp" },
+                        {
+                            "$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.TriggerKeyword, Assembly-CSharp",
+                            "keyword": "Shaped Through"
+                        }
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Ethereal to where Irrilmist was",
+                        "cardRestrictionElements": [
+                            {
+                                "$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.Location, Assembly-CSharp",
+                                "locations": [ "Board" ]
+                            },
+                            {
+                                "$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.SubtypesInclude, Assembly-CSharp",
+                                "subtypes": [ "Ethereal" ]
+                            },
+                            {
+                                "$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.CanMoveTo, Assembly-CSharp",
+                                "destination": { "$type": "KompasServer.Effects.Identities.SubeffectSpaceIdentities.Target, Assembly-CSharp" }
+                            }
+                        ]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Shape",
+		"Evasive"
+	],
+	"n": 1,
+	"e": 3,
+	"s": 2,
+	"w": 1,
+	"subtypes": [
+		"Ethereal",
+        "Shaper"
+	],
+	"subtypeText": "Ethereal Shaper"
+}

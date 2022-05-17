@@ -33,9 +33,15 @@ namespace KompasCore.Effects.Restrictions
 
         public class Location : CardRestrictionElement
         {
-            public string[] locations = { };
+            public string[] locations;
 
             private ICollection<CardLocation> Locations => locations.Select(CardLocationHelpers.FromString).ToArray();
+
+            public override void Initialize(EffectInitializationContext initializationContext)
+            {
+                base.Initialize(initializationContext);
+                if (locations == null) throw new System.ArgumentNullException("locations");
+            }
 
             protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
                 => Locations.Any(loc => card.Location == loc);
@@ -80,11 +86,30 @@ namespace KompasCore.Effects.Restrictions
             public override void Initialize(EffectInitializationContext initializationContext)
             {
                 base.Initialize(initializationContext);
-                if (subtypes == null) throw new System.NotImplementedException($"You forgot to provide a subtypes array!");
+                if (subtypes == null) throw new System.ArgumentNullException("subtypes");
             }
 
             protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
                 => subtypes.All(subtype => card.SubtypeText.Contains(subtype));
+        }
+
+        public class CanMoveTo : CardRestrictionElement
+        {
+            //public IActivationContextIdentity<Space> contextDestination;
+            public INoActivationContextIdentity<Space> destination;
+
+            public override void Initialize(EffectInitializationContext initializationContext)
+            {
+                base.Initialize(initializationContext);
+                /*if (contextDestination == null && noContextDestiantion == null)
+                    throw new System.ArgumentNullException("CanMoveTo has neither a contextual, nor a non-contextual, destination");
+
+                contextDestination?.Initialize(initializationContext);*/
+                destination?.Initialize(initializationContext);
+            }
+
+            protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
+                => card.MovementRestriction.IsValidEffectMove(destination.Item, context);
         }
     }
 }
