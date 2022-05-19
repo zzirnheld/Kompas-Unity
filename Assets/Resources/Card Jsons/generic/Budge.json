@@ -1,0 +1,70 @@
+{
+	"cardType": 83,
+	"cardName": "Budge",
+	"effText": "Move an adjacent card 1 space. Draw 1 card.",
+	"effects": [
+		{
+			"blurb": "Budge",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictionElements": [
+                        {
+                            "$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.CardsMatch, Assembly-CSharp",
+                            "firstCard": { "$type": "KompasCore.Effects.Identities.GamestateCardIdentities.ThisCard, Assembly-CSharp" },
+                            "secondCard": { "$type": "KompasCore.Effects.Identities.ActivationContextCardIdentities.MainCardBefore, Assembly-CSharp" }
+                        }
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Card to budge",
+						"cardRestrictionElements": [
+                            { "$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.AdjacentTo, Assembly-CSharp" }
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "Space to budge it to",
+                        "spaceRestrictionElements": [
+                            { "$type": "KompasCore.Effects.Restrictions.SpaceRestrictionElements.Empty, Assembly-CSharp" },
+                            {
+                                "$type": "KompasCore.Effects.Restrictions.SpaceRestrictionElements.CanMoveCard, Assembly-CSharp",
+                                "toMove": { "$type": "KompasServer.Effects.Identities.SubeffectCardIdentities.Target, Assembly-CSharp" }
+                            },
+                            {
+                                "$type": "KompasCore.Effects.Restrictions.SpaceRestrictionElements.CompareDistance, Assembly-CSharp",
+                                "distanceTo": {
+                                    "$type": "KompasServer.Effects.Identities.SubeffectSpaceIdentities.PositionOf, Assembly-CSharp",
+                                    "whosePosition": { "$type": "KompasServer.Effects.Identities.SubeffectCardIdentities.Target, Assembly-CSharp" }
+                                },
+                                "number": { 
+                                    "$type": "KompasServer.Effects.Identities.SubeffectNumberIdentities.X, Assembly-CSharp",
+                                    "multiplier": 0,
+                                    "modifier": 1
+                                },
+                                "comparison": { "$type": "KompasCore.Effects.Relationships.NumberRelationships.Equal, Assembly-CSharp" }
+                            }
+                        ]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"c": 2,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypeText": ""
+}

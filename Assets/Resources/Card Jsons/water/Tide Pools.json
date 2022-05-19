@@ -12,7 +12,7 @@
 					"triggerRestrictions": [
 						"This Card Fits Restriction Now"
 					],
-					"cardRestriction": {
+					"selfRestriction": {
 						"cardRestrictions": [
 							"Board",
 							"Space Fits Restriction"

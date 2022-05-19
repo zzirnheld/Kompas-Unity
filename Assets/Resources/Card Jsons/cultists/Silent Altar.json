@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Silent Altar",
-	"effText": "When a character here dies, give me +1 C.\nDuring your turn, you can tribute Altars with total C 31 to hand-> or deck->summon any character.",
+	"effText": "When a character here dies, give me +1 C.\nYou can tribute Altars with total C 31 to hand-> or deck->summon any character.",
 	"effects": [
 		{
 			"triggerData": {
@@ -131,5 +131,5 @@
 		"Radial"
 	],
 	"subtypeText": "Silent Altar Radial",
-	"radius": 2
+	"radius": 4
 }

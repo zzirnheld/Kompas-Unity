@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace KompasCore.Effects
 {
-    public class CardValue
+    public class CardValue : ContextInitializeableBase
     {
         #region values
         private const string Nimbleness = "N";
@@ -26,15 +26,11 @@ namespace KompasCore.Effects
         public int divisor = 1;
         public int modifier = 0;
 
-        public GameCard Source { get; private set; }
-
-        public void Initialize(GameCard source)
-        {
-            Source = source;
-        }
+        public GameCard Source => InitializationContext.source;
 
         public int GetValueOf(GameCardBase card)
         {
+            ComplainIfNotInitialized();
             if (card == null) throw new NullCardException("Cannot get value of null card");
 
             int intermediateValue = value switch

@@ -10,7 +10,7 @@ Machinations Play
 Machinations Reup
 Comeback Play
 Supplicant
-Weather
+Weather Condition Cast
 Wisp Summon
 Wisp Turn Start
 Flashback
@@ -24,4 +24,7 @@ Collectible
 Spores
 Vessel Echo
 Vessel Cost Up
+Ambush
+Smite
 Stealth
+Evasive

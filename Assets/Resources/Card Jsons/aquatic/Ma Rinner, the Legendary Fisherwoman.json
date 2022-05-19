@@ -1,6 +1,6 @@
 {
 	"cardType": 67,
-	"cardName": "Ma Rinner, the Legendary Fisherwoman",
+	"cardName": "Ma Rinner",
 	"effText": "Waterborn.\nWhen turns start, draw 2. Then, unless I'm in Water, hand->bottomdeck 3.",
 	"effects": [
 		{

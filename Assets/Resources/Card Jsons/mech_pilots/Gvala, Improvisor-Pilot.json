@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Gvala, Improvisor-Pilot",
-	"effText": "When I'm summoned, I Pilot a Mech, and when I return, unnegate me for the turn.",
+	"effText": "When I'm summoned, I Pilot a Mech, and if it dies, I return unnegated and do it again.",
 	"effects": [
 		{
 			"blurb": "Improvised Piloting",

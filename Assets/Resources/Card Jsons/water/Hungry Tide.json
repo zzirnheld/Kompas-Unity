@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Hungry Tide",
-	"effText": "During your turn, you can hand->annihilate 2 Water spells to search your deck for an Aquatic character.",
+	"effText": "You can hand->annihilate 2 Water spells to search your deck for an Aquatic character.",
 	"effects": [
 		{
 			"blurb": "The Tide Hungers",

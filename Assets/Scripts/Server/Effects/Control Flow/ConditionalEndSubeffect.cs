@@ -17,6 +17,8 @@ namespace KompasServer.Effects
         public const string NumberOfCardsFittingRestrictionFitsNumberRestriction =
             "Number of Cards Fitting CardRestriction Fits NumberRestriction";
 
+        public const string NoSpaceFitsRestriction = "No Space Fits Restriction";
+
         public const string MustBeFriendlyTurn = "Must be Friendly Turn";
         public const string MustBeEnemyTurn = "Must be Enemy Turn";
         public const string TargetViolatesRestriction = "Target Violates Restriction";
@@ -44,17 +46,16 @@ namespace KompasServer.Effects
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
             base.Initialize(eff, subeffIndex);
-            cardRestriction?.Initialize(this);
 
-            spaceRestriction?.Initialize(this);
-            numberRestriction?.Initialize(Source, this);
-
-            playerValueNumberRestriction?.Initialize(eff.Source, this);
+            cardRestriction?.Initialize(DefaultRestrictionContext);
+            spaceRestriction?.Initialize(DefaultRestrictionContext);
+            numberRestriction?.Initialize(DefaultRestrictionContext);
+            playerValueNumberRestriction?.Initialize(DefaultRestrictionContext);
         }
 
         private bool doesNumberOfCardsFittingRestrictionFitNumberRestriction()
         {
-            int number = ServerGame.Cards.Where(c => cardRestriction.IsValidCard(c, Context)).Count();
+            int number = ServerGame.Cards.Where(c => cardRestriction.IsValidCard(c, CurrentContext)).Count();
             return numberRestriction.IsValidNumber(number);
         }
 
@@ -70,20 +71,22 @@ namespace KompasServer.Effects
                     XGreaterThanConst => ServerEffect.X > constant,
                     XLessThanConst => ServerEffect.X < constant,
 
-                    NoneFitRestriction => !ServerGame.Cards.Any(c => cardRestriction.IsValidCard(c, Context)),
-                    AnyFitRestriction => ServerGame.Cards.Any(c => cardRestriction.IsValidCard(c, Context)),
+                    NoneFitRestriction => !ServerGame.Cards.Any(c => cardRestriction.IsValidCard(c, CurrentContext)),
+                    AnyFitRestriction => ServerGame.Cards.Any(c => cardRestriction.IsValidCard(c, CurrentContext)),
                     NumberOfCardsFittingRestrictionFitsNumberRestriction => doesNumberOfCardsFittingRestrictionFitNumberRestriction(),
+
+                    NoSpaceFitsRestriction => !Space.Spaces.Any(s => spaceRestriction.IsValidSpace(s, CurrentContext, CardTarget)),
 
                     MustBeFriendlyTurn => ServerGame.TurnPlayer != Effect.Controller,
                     MustBeEnemyTurn => ServerGame.TurnPlayer == Effect.Controller,
 
-                    TargetViolatesRestriction => !cardRestriction.IsValidCard(CardTarget, Context),
-                    TargetFitsRestriction => cardRestriction.IsValidCard(CardTarget, Context),
+                    TargetViolatesRestriction => !cardRestriction.IsValidCard(CardTarget, CurrentContext),
+                    TargetFitsRestriction => cardRestriction.IsValidCard(CardTarget, CurrentContext),
 
-                    SpaceTargetViolatesRestriction => !spaceRestriction.IsValidSpace(SpaceTarget, Context),
-                    SpaceTargetFitsRestriction => spaceRestriction.IsValidSpace(SpaceTarget, Context),
+                    SpaceTargetViolatesRestriction => !spaceRestriction.IsValidSpace(SpaceTarget, CurrentContext),
+                    SpaceTargetFitsRestriction => spaceRestriction.IsValidSpace(SpaceTarget, CurrentContext),
 
-                    SourceViolatesRestriction => !cardRestriction.IsValidCard(Source, Context),
+                    SourceViolatesRestriction => !cardRestriction.IsValidCard(Source, CurrentContext),
                     NumTargetsLTEConstant => Effect.CardTargets.Count() <= constant,
                     HandFull => PlayerTarget.HandFull,
                     PlayerValueFitsNumberRestriction => playerValueNumberRestriction.IsValidNumber(playerValue.GetValueOf(PlayerTarget)),

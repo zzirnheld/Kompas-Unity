@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Weird Idea That is Also",
-	"effText": "Once each friendly turn, you can give me -1 E. Hand->discard a card and give a character +1 W.",
+	"effText": "Once each turn, you can give me -1 E. Hand->discard a card and give a character +1 W.",
 	"effects": [
 		{
 			"activationRestriction": {

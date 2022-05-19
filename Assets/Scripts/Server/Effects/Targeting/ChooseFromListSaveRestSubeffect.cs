@@ -14,12 +14,12 @@ namespace KompasServer.Effects
         {
             base.Initialize(eff, subeffIndex);
             if (restRestriction == null) restRestriction = cardRestriction;
-            else restRestriction.Initialize(this);
+            else restRestriction.Initialize(DefaultRestrictionContext);
         }
 
         protected override Task<ResolutionInfo> NoPossibleTargets()
         {
-            var rest = ServerGame.Cards.Where(c => restRestriction.IsValidCard(c, Context));
+            var rest = ServerGame.Cards.Where(c => restRestriction.IsValidCard(c, CurrentContext));
             ServerEffect.rest.AddRange(rest);
             return base.NoPossibleTargets();
         }
@@ -27,7 +27,7 @@ namespace KompasServer.Effects
         protected override void AddList(IEnumerable<GameCard> choices)
         {
             base.AddList(choices);
-            var rest = ServerGame.Cards.Where(c => restRestriction.IsValidCard(c, Context) && !choices.Contains(c));
+            var rest = ServerGame.Cards.Where(c => restRestriction.IsValidCard(c, CurrentContext) && !choices.Contains(c));
             ServerEffect.rest.AddRange(rest);
         }
     }

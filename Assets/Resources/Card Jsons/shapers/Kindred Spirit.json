@@ -1,14 +1,14 @@
 {
 	"cardType": 67,
 	"cardName": "Kindred Spirit",
-	"effText": "Attended 2. Shape.",
+	"effText": "Attended 1. Shape.",
 	"effects": [],
 	"keywords": [
 		"Attended",
 		"Shape"
 	],
 	"keywordArgs": [
-		2
+		1
 	],
 	"n": 2,
 	"e": 5,

@@ -1,0 +1,114 @@
+{
+	"cardType": 67,
+	"cardName": "Ma Rinner",
+	"effText": "Waterborn.\nWhen turns start, draw 2. Then, unless I'm in Water, hand->bottomdeck 3.",
+	"effects": [
+		{
+			"blurb": "Fish",
+			"triggerData": {
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"xModifier": 2
+				},
+				{
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition": "Target Fits Restriction",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"In AOE of Card Fitting Restriction"
+							],
+							"inAOEOfRestriction": {
+								"cardRestrictions": [
+									"Subtypes Include"
+								],
+								"subtypesInclude": [
+									"Water"
+								]
+							}
+						}
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "cards for Ma Rinner to bottomdeck",
+						"cardRestrictions": [
+							"Friendly",
+							"Hand"
+						]
+					},
+					"listRestriction": {
+						"listRestrictions": [
+							"Min Can Choose",
+							"Max Can Choose"
+						],
+						"minCanChoose": 3,
+						"maxCanChoose": 3
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.BottomdeckSubeffect, Assembly-CSharp",
+					"targetIndex": -1
+				},
+				{
+					"$type": "KompasServer.Effects.BottomdeckSubeffect, Assembly-CSharp",
+					"targetIndex": -2
+				},
+				{
+					"$type": "KompasServer.Effects.BottomdeckSubeffect, Assembly-CSharp",
+					"targetIndex": -3
+				}
+			]
+		}
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Default Normal Restrictions",
+			"Space Must Fit Restriction"
+		],
+		"normalRestrictionsToIgnore": [
+			"Adjacent to Friendly Card"
+		],
+		"effectRestrictions": [
+			"Default Effect Restrictions",
+			"Space Must Fit Restriction"
+		],
+		"effectRestrictionsToIgnore": [
+			"Adjacent to Friendly Card"
+		],
+		"spaceRestriction": {
+			"spaceRestrictions": [
+				"In AOE of Card Fitting Restriction"
+			],
+			"inAOEOfRestriction": {
+				"cardRestrictions": [
+					"Subtypes Include"
+				],
+				"subtypesInclude": [
+					"Water"
+				]
+			}
+		}
+	},
+	"unique": true,
+	"n": 1,
+	"e": 3,
+	"s": 5,
+	"w": 7,
+	"subtypeText": "Aquatic Fisherman Person"
+}

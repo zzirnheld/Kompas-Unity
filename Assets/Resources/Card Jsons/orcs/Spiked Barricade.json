@@ -1,0 +1,20 @@
+{
+	"cardType": 67,
+	"cardName": "Spiked Barricade",
+	"effText": "Can't attack.",
+	"AttackRestriction": {
+		"attackRestrictions": [
+			"Default",
+			"Not Normally"
+		]
+	},
+	"effects": [],
+	"n": 0,
+	"e": 8,
+	"s": 2,
+	"w": 5,
+	"subtypes": [
+		"Structure"
+	],
+	"subtypeText": "Structure"
+}

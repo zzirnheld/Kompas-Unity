@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "B0U550L3",
-	"effText": "Golem.\nWhile activated, Once each friendly turn, you can move me across an adjacent card, then you can give it -3 E.",
+	"effText": "Golem.\nWhile activated, Once each turn, you can move me across an adjacent card, then you can give it -3 E.",
 	"effects": [
 		{
 			"blurb": "C0MP455",
@@ -11,7 +11,7 @@
 					"This Card Fits Restriction Now",
 					"Default"
 				],
-				"cardRestriction": {
+				"selfRestriction": {
 					"cardRestrictions": [
 						"Activated"
 					]

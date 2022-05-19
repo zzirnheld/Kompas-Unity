@@ -109,7 +109,7 @@ namespace KompasServer.Effects
             foreach (var c in ServerGame.Cards) c.ResetForStack();
             ServerGame.boardCtrl.ClearSpells();
             ServerGame.ServerPlayers.First().ServerNotifier.StackEmpty();
-            TriggerForCondition(Trigger.StackEnd, new ActivationContext());
+            TriggerForCondition(Trigger.StackEnd, new ActivationContext(game: ServerGame));
             //Must check whether I *should* check for response to avoid an infinite loop
             if (!stack.Empty || triggeredTriggers.Any()) await CheckForResponse();
         }

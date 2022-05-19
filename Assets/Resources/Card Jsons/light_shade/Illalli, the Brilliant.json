@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Illalli, the Brilliant",
-	"effText": "Once each friendly turn, you can swap Light I'm in for Shade from your deck.\nWhen an enemy character is lit up, give them -5 W.",
+	"effText": "Once each turn, you can swap Light I'm in for Shade from your deck.\nWhen an enemy character is lit up, give them -5 W.",
 	"effects": [
 		{
 			"blurb": "Brilliate!",

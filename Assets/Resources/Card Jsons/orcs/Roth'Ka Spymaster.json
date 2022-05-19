@@ -1,0 +1,65 @@
+{
+	"cardType": 67,
+	"cardName": "Roth'Ka Spymaster",
+	"effText": "Once each friendly turn, you can board->hand a friendly character. If they're a spy, give them -1 S and draw 1.",
+	"effects":[
+		{
+			"blurb": "Retrieve",
+			"activationRestriction": {
+				"activationRestrictionArray": [
+					"Max Times Per Turn",
+					"Friendly Turn",
+					"Default"
+				]
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Hand a friendly summon",
+						"cardRestrictions": [
+							"Different from Source",
+							"Friendly",
+							"Character",
+							"Board"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition": "Target Violates Restriction",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Spy"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"forbidNotBoard": false,
+					"sModifier": -1
+				},
+				{
+					"$type": "KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"xMultiplier": 1,
+					"xModifier": 1
+				}
+			]
+		}
+	],
+	"n": 4,
+	"e": 8,
+	"s": 7,
+	"w": 3,
+	"subtypes": [
+		"Orc",
+		"Spy"
+	],
+	"subtypeText": "Orc Spy"
+}

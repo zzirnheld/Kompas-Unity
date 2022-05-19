@@ -1,19 +1,18 @@
 {
-	"blurb":"+1 C",
-	"triggerData":
-	{
-		"triggerCondition":"Turn Start",
-		"triggerRestriction":{
-			"triggerRestrictions":["This Card in Play","Friendly Turn"]
+	"blurb": "+1 C",
+	"triggerData": {
+		"triggerCondition": "Turn Start",
+		"triggerRestriction": {
+			"triggerRestrictions": [ "This Card in Play", "Friendly Turn" ]
 		}
 	},
-	"subeffects":[
+	"subeffects": [
 		{
-			"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+			"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 		},
 		{
-			"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-			"cModifier":1
+			"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+			"cModifier": 1
 		}
-	]	
+	]
 }

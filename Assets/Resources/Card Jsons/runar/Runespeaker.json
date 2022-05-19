@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Runespeaker",
-	"effText": "Once each friendly turn, you can pip hand-cast a Rune, then search your deck's top 10 cards for a different Rune. Bottomdeck the rest.",
+	"effText": "Once each turn, you can pip hand-cast a Rune, then search your deck's top 10 cards for a different Rune. Bottomdeck the rest.",
 	"effects": [
 		{
 			"activationRestriction": {

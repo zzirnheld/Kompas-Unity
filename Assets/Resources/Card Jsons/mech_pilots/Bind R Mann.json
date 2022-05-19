@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Bind R Mann",
-	"effText": "During your turn, I can Pilot a Mech, and give it +2 S.",
+	"effText": "I can Pilot a Mech, and give it +2 S.",
 	"effects": [
 		{
 			"blurb": "Careful Piloting",

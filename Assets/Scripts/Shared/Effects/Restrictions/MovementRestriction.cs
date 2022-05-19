@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace KompasCore.Effects
 {
-    public class MovementRestriction
+    public class MovementRestriction : ContextInitializeableBase
     {
         private const string Default = "Default";
 
@@ -78,7 +78,7 @@ namespace KompasCore.Effects
         public SpaceRestriction throughSpacesRestriction;
         public SpaceRestriction floutedDestinationSpaceRestriction;
 
-        public GameCard Card { get; private set; }
+        public GameCard Card => InitializationContext.source;
 
         /// <summary>
         /// Sets the restriction's info.
@@ -86,9 +86,9 @@ namespace KompasCore.Effects
         /// to catch any other required intitialization at compile time.
         /// </summary>
         /// <param name="card"></param>
-        public void SetInfo(GameCard card)
+        public override void Initialize(EffectInitializationContext initializationContext)
         {
-            Card = card;
+            base.Initialize(initializationContext);
 
             normalRestrictions.AddRange(normalRestrictionsFromJson);
             if (normalRestrictionsFromJson.Contains(Default))
@@ -99,8 +99,8 @@ namespace KompasCore.Effects
             if (effectRestrictionsFromJson.Contains(Default))
                 effectRestrictions.AddRange(defaultEffectMovementRestrictions);
 
-            throughSpacesRestriction?.Initialize(card, card.Controller, effect: default, subeffect: default);
-            floutedDestinationSpaceRestriction?.Initialize(Card, Card.Controller, effect: default, subeffect: default);
+            throughSpacesRestriction?.Initialize(initializationContext);
+            floutedDestinationSpaceRestriction?.Initialize(initializationContext);
         }
 
         private bool CardAtDestinationCanMoveHere(Space space, ActivationContext context)

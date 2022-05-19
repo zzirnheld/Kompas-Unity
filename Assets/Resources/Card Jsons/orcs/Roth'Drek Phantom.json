@@ -1,0 +1,53 @@
+{
+	"cardType": 67,
+	"cardName": "Roth'Drek Phantom",
+	"effText": "Ambush.\nWhen I'm board-> or discard->handed, give me -2S.",
+	"effects": [
+		{
+			"blurb": "Withdraw",
+			"triggerData": {
+				"triggerCondition": "Rehand",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card",
+						"This Card Fits Restriction Now"
+					],
+					"selfRestriction": {
+						"cardRestrictions":[
+							"Multiple Possible Locations"
+						],
+						"locations": [
+							1,
+							2
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"forbidNotBoard": false,
+					"sModifier": -2
+				}
+			]
+		}
+	],
+	"keywords":[
+		"Ambush"
+	],
+	"n": 7,
+	"e": 7,
+	"s": 7,
+	"w": 7,
+	"subtypes": [
+		"Orc",
+		"Spy"
+	],
+	"subtypeText": "Orc Spy"
+}

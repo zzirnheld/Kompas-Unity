@@ -1,0 +1,97 @@
+{
+	"cardType": 67,
+	"cardName": "Roll of Leythunder",
+	"effText": "Weather Event: Dispel all non-Weather spells in the same Weather Condition as me.",
+	"effects": [
+		{
+			"blurb": "Leythunder",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card",
+						"Enemy Turn"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Spell",
+							"Subtypes Exclude",
+							"Space Fits Restriction"
+						],
+						"subtypesExclude": [
+							"Weather"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"In AOE Source is Also In"
+							],
+							"alsoInAOEOfRestriction": {
+								"cardRestrictions": [
+									"Subtypes Include"
+								],
+								"subtypesInclude": [
+									"Weather"
+								]
+							}
+						}
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.DispelSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete": true,
+					"jumpIndices": [
+						1
+					]
+				}
+			]
+		}
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Default Normal Restrictions",
+			"Space Must Fit Restriction"
+		],
+		"normalRestrictionsToIgnore": [
+			"Adjacent to Friendly Card"
+		],
+		"effectRestrictions": [
+			"Default Effect Restrictions",
+			"Space Must Fit Restriction"
+		],
+		"effectRestrictionsToIgnore": [
+			"Adjacent to Friendly Card"
+		],
+		"spaceRestriction": {
+			"spaceRestrictions": [
+				"In AOE of Number of Cards Fitting Restriction"
+			],
+			"inAOEOfRestriction": {
+				"cardRestrictions": [
+					"Subtypes Include"
+				],
+				"subtypesInclude": [
+					"Weather"
+				]
+			},
+			"numberOfCardsInAOEOfRestriction": {
+				"numberRestrictions": [
+					">=Constant"
+				],
+				"constant": 2
+			}
+		}
+	},
+	"n": 1,
+	"e": 7,
+	"s": 4,
+	"w": 5,
+	"subtypeText": "Weather Event Elemental"
+}

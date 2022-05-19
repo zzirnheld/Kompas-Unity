@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Golden Linewalker",
-	"effText": "Linewalk. Attended 2.",
+	"effText": "Linewalk. Attended 1.",
 	"effects": [],
 	"keywords": [
 		"Linewalk",
@@ -9,7 +9,7 @@
 	],
 	"keywordArgs": [
 		-1,
-		2
+		1
 	],
 	"n": 1,
 	"e": 6,

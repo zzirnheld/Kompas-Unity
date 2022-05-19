@@ -1,0 +1,35 @@
+{
+	"cardType": 83,
+	"cardName": "Thunderous Echo",
+	"effText": "When you hand->summon a Weather Event, echo it.",
+	"effects": [
+		{
+			"blurb": "Thunderous Echo",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before",
+						"Controller Triggered"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Hand"
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"c": 1,
+	"subtypeText": "Enchant"
+}

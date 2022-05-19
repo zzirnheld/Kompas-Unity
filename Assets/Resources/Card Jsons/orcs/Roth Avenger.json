@@ -1,0 +1,19 @@
+{
+	"cardType": 67,
+	"cardName": "Roth Avenger",
+	"effText": "Ambush. Smite.",
+	"effects": [],
+	"keywords":[
+		"Ambush",
+		"Smite"
+	],
+	"n": 1,
+	"e": 4,
+	"s": 2,
+	"w": 2,
+	"subtypes": [
+		"Orc",
+		"Paladin"
+	],
+	"subtypeText": "Orc Paladin"
+}

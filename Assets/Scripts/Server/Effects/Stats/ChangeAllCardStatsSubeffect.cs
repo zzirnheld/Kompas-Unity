@@ -20,12 +20,12 @@ namespace KompasServer.Effects
                     CardRestriction.Board
                 }
             };
-            cardRestriction.Initialize(this);
+            cardRestriction.Initialize(DefaultRestrictionContext);
         }
 
         public override Task<ResolutionInfo> Resolve()
         {
-            var targets = ServerGame.Cards.Where(c => cardRestriction.IsValidCard(c, Context));
+            var targets = ServerGame.Cards.Where(c => cardRestriction.IsValidCard(c, CurrentContext));
             var buff = Buff;
             foreach (var c in targets) c.AddToStats(buff, Effect);
 

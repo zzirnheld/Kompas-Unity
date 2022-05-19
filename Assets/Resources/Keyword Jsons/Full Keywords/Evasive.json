@@ -1,0 +1,36 @@
+{
+    "blurb": "Evasive",
+    "triggerData": {
+        "triggerCondition": "Battle Start",
+        "triggerRestriction": {
+            "triggerRestrictions": [
+                "This Card is Main Card",
+                "Max Per Round"
+            ]
+        }
+    },
+    "subeffects": [
+        {
+            "$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp",
+            "secondary":true
+        },
+        {
+            "$type": "KompasServer.Effects.SetXByTriggeringCardValueSubeffect, Assembly-CSharp",
+            "secondary":true,
+            "cardValue": {
+                "value": "W"
+            },
+            "xMultiplier": 1
+        },
+        {
+            "$type": "KompasServer.Effects.TemporaryCardStatChangeSubeffect, Assembly-CSharp",
+            "wMultiplier": -1,
+            "endCondition": "Battle End",
+            "triggerRestriction": {
+                "triggerRestrictions": [
+                    "Contexts Stackables Match"
+                ]
+            }
+        }
+    ]
+}

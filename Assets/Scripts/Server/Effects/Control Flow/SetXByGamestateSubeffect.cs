@@ -28,9 +28,10 @@ namespace KompasServer.Effects
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
             base.Initialize(eff, subeffIndex);
-            throughRestriction?.Initialize(this);
-            cardRestriction?.Initialize(this);
-            cardValue?.Initialize(eff.Source);
+
+            throughRestriction?.Initialize(DefaultRestrictionContext);
+            cardRestriction?.Initialize(DefaultRestrictionContext);
+            cardValue?.Initialize(DefaultRestrictionContext);
         }
 
         public override int BaseCount
@@ -41,16 +42,16 @@ namespace KompasServer.Effects
                 {
                     HandSize => PlayerTarget.handCtrl.HandSize,
                     HandSizeLimit => PlayerTarget.HandSizeLimit,
-                    DistanceToCoordsThrough => Game.boardCtrl.ShortestPath(Source, SpaceTarget, throughRestriction, Context),
+                    DistanceToCoordsThrough => Game.boardCtrl.ShortestPath(Source, SpaceTarget, throughRestriction, CurrentContext),
                     DistanceBetweenTargetAndCoords => CardTarget.DistanceTo(SpaceTarget),
                     DistanceFromSourceToTarget => Source.DistanceTo(CardTarget),
 
                     CardsFittingRestriction
-                        => Game.Cards.Where(c => cardRestriction.IsValidCard(c, Context)).Count(),
+                        => Game.Cards.Where(c => cardRestriction.IsValidCard(c, CurrentContext)).Count(),
                     TotalCardValueOfCardsFittingRestriction
-                        => Game.Cards.Where(c => cardRestriction.IsValidCard(c, Context)).Sum(cardValue.GetValueOf),
+                        => Game.Cards.Where(c => cardRestriction.IsValidCard(c, CurrentContext)).Sum(cardValue.GetValueOf),
                     MaxCardValueOfCardsFittingRestriction
-                        => Game.Cards.Where(c => cardRestriction.IsValidCard(c, Context)).Max(cardValue.GetValueOf),
+                        => Game.Cards.Where(c => cardRestriction.IsValidCard(c, CurrentContext)).Max(cardValue.GetValueOf),
 
                     EffectUsesThisTurn => Effect.TimesUsedThisTurn,
                     NumberOfTargets => Effect.CardTargets.Count(),

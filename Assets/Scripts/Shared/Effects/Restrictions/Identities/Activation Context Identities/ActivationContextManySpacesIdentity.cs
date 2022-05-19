@@ -1,0 +1,36 @@
+using KompasCore.Effects;
+using KompasCore.Effects.Identities;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace KompasCore.Effects.Identities
+{
+    namespace ActivationContextManySpacesIdentities
+    {
+        /// <summary>
+        /// Spaces where they are in some defined relationship with respect to the other two defined spaces.
+        /// For example, spaces that are between (relationship) the source card's space and the target space (two defined spaces).
+        /// </summary>
+        public class ThreeSpaceRelationship : ActivationContextIdentityBase<ICollection<Space>>
+        {
+            public IActivationContextIdentity<Space> firstSpace;
+            public IActivationContextIdentity<Space> secondSpace;
+
+            public IThreeSpaceRelationship thirdSpaceRelationship;
+
+            public override void Initialize(EffectInitializationContext initializationContext)
+            {
+                base.Initialize(initializationContext);
+                firstSpace.Initialize(initializationContext);
+                secondSpace.Initialize(initializationContext);
+            }
+
+            protected override ICollection<Space> AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
+            {
+                Space first = firstSpace.From(context, secondaryContext);
+                Space second = secondSpace.From(context, secondaryContext);
+                return Space.Spaces.Where(space => thirdSpaceRelationship.Evaluate(first, second, space)).ToArray();
+            }
+        }
+    }
+}
