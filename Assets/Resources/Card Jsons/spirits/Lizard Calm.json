@@ -1,10 +1,10 @@
 {
 	"cardType": 67,
-	"cardName": "Overwhelming Anger",
-	"effText": "When I'm revived, set X to my E. Give an adjacent character -X E.",
+	"cardName": "Lizard Calm",
+	"effText": "When I'm revived, give a Summoned E X character +X E.",
 	"effects": [
 		{
-			"blurb": "Anger",
+			"blurb": "Calm",
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
@@ -22,7 +22,13 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Board",
+							"Character"
+						]
+					}
 				},
 				{
 					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
@@ -32,30 +38,15 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Board",
-							"Character",
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Source"
-							]
-						}
-					}
-				},
-				{
 					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMultiplier": -1
+					"eMultiplier": 1
 				}
 			]
 		}
 	],
-	"n": 7,
+	"n": 6,
 	"e": 7,
 	"s": 6,
-	"w": 1,
+	"w": 6,
 	"subtypeText": "Ethereal Spirit"
 }

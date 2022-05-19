@@ -1,10 +1,10 @@
 {
 	"cardType": 67,
-	"cardName": "Unfocusing Annoyance",
-	"effText": "When I'm revived, dispel an adjacent enemy spell.",
+	"cardName": "Nailbiting Anxiety",
+	"effText": "When I'm revived, set a character's N to 0.",
 	"effects": [
 		{
-			"blurb": "Annoyance",
+			"blurb": "Anxiety",
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
@@ -24,28 +24,23 @@
 				{
 					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction": {
+						"blurb": "character to overwhelm with anxiety",
 						"cardRestrictions": [
-							"Board",
-							"Spell",
-							"Enemy",
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Source"
-							]
-						}
+							"Character",
+							"Board"
+						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.DispelSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.SetCardStatsSubeffect, Assembly-CSharp",
+					"nVal": 0
 				}
 			]
 		}
 	],
 	"n": 7,
-	"e": 1,
+	"e": 8,
 	"s": 6,
-	"w": 8,
+	"w": 0,
 	"subtypeText": "Ethereal Spirit"
 }

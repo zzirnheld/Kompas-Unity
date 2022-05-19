@@ -1,10 +1,10 @@
 {
 	"cardType": 67,
-	"cardName": "Overwhelming Anger",
-	"effText": "When I'm revived, set X to my E. Give an adjacent character -X E.",
+	"cardName": "Brightsmiling Excitement",
+	"effText": "When I'm revived, give an N X character +X N.",
 	"effects": [
 		{
-			"blurb": "Anger",
+			"blurb": "Excitement",
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
@@ -22,40 +22,31 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
-					"cardValue": {
-						"value": "E"
-					},
-					"xMultiplier": 1
-				},
-				{
 					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Board",
-							"Character",
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Source"
-							]
-						}
+							"Character"
+						]
 					}
 				},
 				{
+					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "N"
+					},
+					"xMultiplier": 1
+				},
+				{
 					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMultiplier": -1
+					"nMultiplier": 1
 				}
 			]
 		}
 	],
-	"n": 7,
-	"e": 7,
+	"n": 5,
+	"e": 3,
 	"s": 6,
-	"w": 1,
+	"w": 8,
 	"subtypeText": "Ethereal Spirit"
 }

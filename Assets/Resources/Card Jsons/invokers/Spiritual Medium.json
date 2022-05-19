@@ -1,0 +1,42 @@
+{
+	"cardType": 67,
+	"cardName": "Spiritual Medium",
+	"effText": "Once each friendly turn, you can show a Spirit. Deck->hand an Invocation, then topdeck the Spirit.",
+	"effects": [
+		{
+			"blurb": "DOOM cometh!",
+			"activationRestriction": {
+				"activationRestrictionArray": [
+					"Max Times Per Turn",
+					"Friendly Turn",
+					"Default"
+				]
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"maxCanChoose": 1,
+					"cardRestriction": {
+						"blurb": "Cultist for Doomsayer to search",
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Friendly",
+							"Deck"
+						],
+						"subtypesInclude": [
+							"Cultist"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"n": 2,
+	"e": 2,
+	"s": 2,
+	"w": 2,
+	"subtypeText": "Cultist"
+}

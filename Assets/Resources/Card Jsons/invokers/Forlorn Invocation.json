@@ -1,12 +1,11 @@
 {
-	"cardType": 67,
-	"cardName": "Waungh Invoker",
-	"effText": "When I attack, I Invoke a character that costs less than me.",
+	"cardType": 83,
+	"cardName": "Forlorn Invocation",
+	"effText": "Flashback.\nCast only adjacent to an Invoker.\nInvoke a NON-Spirit.",
 	"effects": [
 		{
 			"triggerData": {
-				"blurb": "Invoke",
-				"triggerCondition": "Attack",
+				"triggerCondition": "Play",
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card is Main Card"
@@ -14,16 +13,6 @@
 				}
 			},
 			"subeffects": [
-				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
-					"cardValue": {
-						"value": "S"
-					},
-					"xMultiplier": 1
-				},
 				{
 					"$type": "KompasServer.Effects.MillSubeffect, Assembly-CSharp",
 					"xModifier": 1
@@ -33,27 +22,21 @@
 					"condition": "Target Violates Restriction",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Character",
-							"Card Value Fits Number Restriction"
+							"Subtypes Exclude"
 						],
-						"cardValue": {
-							"value": "S"
-						},
-						"cardValueNumberRestriction": {
-							"numberRestrictions": [
-								"<X"
-							]
-						}
+						"subtypesExclude": [
+							"Spirit"
+						]
 					},
 					"jumpIndices": [
-						2
+						0
 					],
 					"xMultiplier": 1
 				},
 				{
 					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction": {
-						"blurb": "where to Invoke",
+						"blurb": "where to Invoke the Spirit",
 						"spaceRestrictions": [
 							"Can Play Card Target to This Space",
 							"Empty"
@@ -66,9 +49,30 @@
 			]
 		}
 	],
-	"n": 2,
-	"e": 3,
-	"s": 7,
-	"w": 0,
-	"subtypeText": "Invoker Mage"
+	"keywords": [
+		"Flashback"
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Default Normal Restrictions",
+			"Adjacent to Card Fitting Restriction"
+		],
+		"effectRestrictions": [
+			"Default Effect Restrictions",
+			"Adjacent to Card Fitting Restriction"
+		],
+		"adjacentCardRestriction": {
+			"cardRestrictions": [
+				"Subtypes Include"
+			],
+			"subtypesInclude": [
+				"Invoker"
+			]
+		}
+	},
+	"c": 3,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypeText": "Simple Invocation"
 }

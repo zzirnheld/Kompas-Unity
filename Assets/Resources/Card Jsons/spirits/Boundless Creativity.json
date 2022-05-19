@@ -1,10 +1,10 @@
 {
 	"cardType": 67,
-	"cardName": "Generous Pleasure",
-	"effText": "When I'm revived, gain 4 pips.",
+	"cardName": "Boundless Creativity",
+	"effText": "When I'm revived, draw 3 cards.",
 	"effects": [
 		{
-			"blurb": "Pleasure",
+			"blurb": "Creativity",
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
@@ -22,15 +22,15 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
-					"xModifier": 4
+					"$type": "KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"xModifier": 3
 				}
 			]
 		}
 	],
 	"n": 6,
-	"e": 10,
+	"e": 1,
 	"s": 6,
-	"w": 0,
+	"w": 7,
 	"subtypeText": "Ethereal Spirit"
 }

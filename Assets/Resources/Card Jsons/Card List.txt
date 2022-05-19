@@ -18,6 +18,7 @@ generic/Draining Shield
 generic/Last-Ditch Blast
 generic/Explosive Armor
 generic/Proximity Debinder
+generic/The Ethereality Principle
 generic/Bind the Aggression
 generic/Binding Site
 generic/Bound Offering
@@ -45,6 +46,7 @@ generic/Thuan Thien
 generic/Trapped Offering
 generic/Unfinding
 generic/Yank
+generic/Ethereate
 
 aquatic/Big Tuna
 aquatic/Changing Tides
@@ -190,11 +192,15 @@ instruments/Gratuitous Sax
 instruments/Gratuitous Violins
 instruments/Horny Jail
 instruments/Resonating Tringle
+
 invokers/Haguaughan Invoker
 invokers/Invoke the Invoker
 invokers/Prepare the Name
 invokers/Segascanturian Invoker
 invokers/Waungh Invoker
+invokers/Novice Invocation
+invokers/Forlorn Invocation
+invokers/Peruser of Ancient Texts
 
 light_shade/Light
 light_shade/Shade
@@ -472,6 +478,12 @@ spirits/Overwhelming Anger
 spirits/Spiritual Advice
 spirits/Unfocusing Annoyance
 spirits/Whirlwind of Emotions
+spirits/Infectious Displeasure
+spirits/Nailbiting Anxiety
+spirits/Brightsmiling Excitement
+spirits/Hog Wildness
+spirits/Lizard Calm
+spirits/Boundless Creativity
 
 spores/Mockish Rotbloom
 spores/Delirious Sparkbloom

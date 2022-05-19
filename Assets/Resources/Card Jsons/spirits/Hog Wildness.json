@@ -1,10 +1,10 @@
 {
 	"cardType": 67,
-	"cardName": "Overwhelming Anger",
-	"effText": "When I'm revived, set X to my E. Give an adjacent character -X E.",
+	"cardName": "Hog Wildness",
+	"effText": "When I'm revived, give a W X character +X W.",
 	"effects": [
 		{
-			"blurb": "Anger",
+			"blurb": "Wildness",
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
@@ -22,40 +22,31 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
-					"cardValue": {
-						"value": "E"
-					},
-					"xMultiplier": 1
-				},
-				{
 					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Board",
-							"Character",
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Source"
-							]
-						}
+							"Character"
+						]
 					}
 				},
 				{
+					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "W"
+					},
+					"xMultiplier": 1
+				},
+				{
 					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMultiplier": -1
+					"wMultiplier": 1
 				}
 			]
 		}
 	],
-	"n": 7,
-	"e": 7,
+	"n": 6,
+	"e": 6,
 	"s": 6,
-	"w": 1,
+	"w": 6,
 	"subtypeText": "Ethereal Spirit"
 }

@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Allconsuming Frustration",
-	"effText": "When I'm revived, negate an adjacent character.",
+	"effText": "When I'm revived, negate an adjacent enemy character.",
 	"effects": [
 		{
 			"blurb": "Frustration",
@@ -27,6 +27,7 @@
 						"cardRestrictions": [
 							"Board",
 							"Character",
+							"Enemy",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
@@ -42,7 +43,7 @@
 			]
 		}
 	],
-	"n": 2,
+	"n": 6,
 	"e": 6,
 	"s": 6,
 	"w": 6,
