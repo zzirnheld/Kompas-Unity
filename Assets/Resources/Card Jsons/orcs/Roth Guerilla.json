@@ -1,0 +1,18 @@
+{
+	"cardType": 67,
+	"cardName": "Roth Guerilla",
+	"effText": "Ambush.",
+	"effects": [],
+	"keywords":[
+		"Ambush"
+	],
+	"n": 2,
+	"e": 6,
+	"s": 3,
+	"w": 3,
+	"subtypes": [
+		"Orc",
+		"Warrior"
+	],
+	"subtypeText": "Orc Warrior"
+}

@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Rayla, Head Mann",
-	"effText": "During your turn, I can Pilot a Mech, and give it +1 NESW.",
+	"effText": "I can Pilot a Mech, and give it +1 NESW.",
 	"effects": [
 		{
 			"blurb": "Leading Piloting",

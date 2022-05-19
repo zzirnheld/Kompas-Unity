@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Standard Pilot",
-	"effText": "During your turn, I can Pilot a Mech.",
+	"effText": "I can Pilot a Mech.",
 	"effects": [
 		{
 			"blurb": "Standard Piloting",

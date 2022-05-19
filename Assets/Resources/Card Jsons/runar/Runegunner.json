@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Runegunner",
-	"effText": "Once each friendly turn, you can hand->cast a Rune, X spaces from me (following normal placement rules). X times: pip echo it.",
+	"effText": "Once each turn, you can hand->cast a Rune, X spaces from me (following normal placement rules). X times: pip echo it.",
 	"effects": [
 		{
 			"activationRestriction": {

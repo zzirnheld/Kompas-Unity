@@ -10,11 +10,12 @@ namespace KompasServer.Effects
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
             base.Initialize(eff, subeffIndex);
-            cardValue?.Initialize(eff.Source);
+
+            cardValue?.Initialize(DefaultRestrictionContext);
         }
 
         public override int BaseCount => cardValue.GetValueOf(secondary ? 
-            Context.secondaryCardInfoBefore :
-            Context.mainCardInfoBefore);
+            CurrentContext.secondaryCardInfoBefore :
+            CurrentContext.mainCardInfoBefore);
     }
 }

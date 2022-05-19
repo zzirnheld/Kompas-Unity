@@ -1,0 +1,114 @@
+{
+	"cardType": 83,
+	"cardName": "Bind the Blood",
+	"effText": "When an Orc here attacks, give them +1 W, and if they kill their target, give an Orc in your hand -2 S.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Attack",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Different from Source",
+							"Character",
+							"Space Fits Restriction",
+							"Subtypes Include"
+						],
+						"spaceRestriction": { "spaceRestrictions": [ "In Source's AOE" ] },
+						"subtypesInclude": [ "Orc" ]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.AutoTargetCardIdentitySubeffect, Assembly-CSharp",
+                    "subeffectCardIdentity": {
+						"$type": "KompasServer.Effects.Identities.SubeffectCardIdentities.FromActivationContext, Assembly-CSharp",
+                        "cardFromContext": { "$type": "KompasCore.Effects.Identities.ActivationContextCardIdentities.MainCardBefore, Assembly-CSharp" }
+                    }
+				},
+				{
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"wModifier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"numTimesToDelay": 0,
+					"jumpIndices": [
+						3
+					],
+					"fallOffCondition": "Battle End",
+					"fallOffRestriction": {
+						"triggerRestrictionElements": [
+							{
+								"$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.StackablesMatch, Assembly-CSharp",
+								"firstStackable": { "$type": "KompasCore.Effects.Identities.SubeffectStackableIdentities.StackableIndex, Assembly-CSharp" },
+								"secondStackable": { "$type": "KompasCore.Effects.Identities.ActivationContextStackableIdentities.StackableCause, Assembly-CSharp" }
+							}
+						]
+					},
+					"endCondition": "Discard",
+					"triggerRestriction": {
+						"triggerRestrictionElements": [
+							{
+								"$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.StackablesMatch, Assembly-CSharp",
+								"firstStackable": { "$type": "KompasCore.Effects.Identities.SubeffectStackableIdentities.StackableIndex, Assembly-CSharp" },
+								"secondStackable": { "$type": "KompasCore.Effects.Identities.ActivationContextStackableIdentities.StackableCause, Assembly-CSharp" }
+							},
+							{
+								"$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.CardsMatch, Assembly-CSharp",
+								"firstCard": { "$type": "KompasCore.Effects.Identities.ActivationContextCardIdentities.MainCardBefore, Assembly-CSharp" },
+								"secondCard": {
+									"$type": "KompasServer.Effects.Identities.SubeffectCardIdentities.FromActivationContext, Assembly-CSharp",
+									"secondary": true,
+                        			"cardFromContext": {
+										"$type": "KompasCore.Effects.Identities.ActivationContextCardIdentities.MainCardBefore, Assembly-CSharp"
+									}
+								}
+							}
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Bind blood to a card",
+						"cardRestrictions": [
+							"Friendly",
+							"Hand",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [ "Orc" ]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
+					"jumpIndices": [
+						6
+					]
+				},
+				{
+					"$type": "KompasServer.Effects.RevealSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.ClearOnImpossibleSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"forbidNotBoard": false,
+					"sModifier": -2
+				}
+			]
+		}
+	],
+	"c": 2,
+	"spellTypes": [
+		"Radial"
+	],
+	"radius": 2,
+	"subtypeText": "Radius 2"
+}

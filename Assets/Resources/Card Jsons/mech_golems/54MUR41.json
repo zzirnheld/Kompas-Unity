@@ -13,8 +13,7 @@
 			"Can Move Enough Spaces"
 		],
 		"throughSpacesRestriction": {
-			"spaceRestrictions": [],
-			"mustBeEmpty": false
+			"spaceRestrictions": []
 		}
 	},
 	"AttackRestriction": {

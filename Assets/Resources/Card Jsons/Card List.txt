@@ -8,6 +8,7 @@ generic/Lifetide
 generic/Warlock
 generic/Juan Puntsch-Mann
 generic/Altar of Amnesia
+generic/Sapping Stone
 generic/Price of Fame
 generic/Crack Geode
 generic/Collective Dispel
@@ -43,6 +44,7 @@ generic/The Unspeakable
 generic/Thuan Thien
 generic/Trapped Offering
 generic/Unfinding
+generic/Yank
 
 aquatic/Big Tuna
 aquatic/Changing Tides
@@ -182,8 +184,8 @@ golems/Core Scrambling
 golems/Scrap Golem
 golems/Backup Power Core
 golems/Stone Golem
+golems/Recoverable Core
 
-instruments/Assaulting Batterie
 instruments/Gratuitous Sax
 instruments/Gratuitous Violins
 instruments/Horny Jail
@@ -228,6 +230,9 @@ mech_golems/C4RR13R
 mech_golems/B0U550L3
 mech_golems/P4RT154N
 mech_golems/5P33DRUNN3R
+mech_golems/5H4P3R
+mech_golems/54CR1F1C3
+mech_golems/GL455C4NN0N
 
 mech_pilots/Standard Pilot
 mech_pilots/Runn R Mann
@@ -292,6 +297,31 @@ music/Glory Metal
 music/4 33
 music/Backup Track
 music/Hard Rock
+
+orcs/Alkorath'Kil, Fury in the Blood
+orcs/Bind the Blood
+orcs/Bind the Shadows
+orcs/Clever Decoy
+orcs/Escape Route
+orcs/Glimmer of Hope
+orcs/Malgonir'Kil, Secrets in the Shadows
+orcs/Nothing to Hide
+orcs/Raven Scout
+orcs/Roth Agent
+orcs/Roth Assassin
+orcs/Roth Avenger
+orcs/Roth Guerilla
+orcs/Roth Warrior
+orcs/Roth'Drek Champion
+orcs/Roth'Drek Crusader
+orcs/Roth'Drek Phantom
+orcs/Roth'Ka Inquisitor
+orcs/Roth'Ka Spymaster
+orcs/Roth'Kil Blood Acolyte
+orcs/Roth'Kil Shadow Acolyte
+orcs/Spiked Barricade
+orcs/Unassuming Bush
+orcs/Misplaced Supplies
 
 pulsars/Accelerating Pulsar
 pulsars/Boldening Pulsar
@@ -382,10 +412,11 @@ runar/Tiwaz
 runar/Uruz
 runar/Wynn
 
+shapers/Irrilmist
+shapers/Ephemera
 shapers/Dreamhook
 shapers/Dreammist
 shapers/Dreamscape
-
 shapers/Evasive Ectoplasm
 shapers/Grudges Unforgotten
 shapers/He Who Knew Runes

@@ -165,6 +165,20 @@ namespace KompasClient.UI
             }
         }
 
+        private void ShowPipsAvailableForCost()
+        {
+            ClientPlayer clientPlayer = CurrShown.Controller as ClientPlayer;
+            if (CurrShown.Location == CardLocation.Hand && CurrShown.Cost <= CurrShown.Controller.Pips)
+            {
+                Debug.Log($"Have enough pips, showing cost for {CurrShown.Cost}");
+                clientPlayer.pipsUICtrl.HighlightPipsFor(CurrShown.Cost);
+            }
+            else
+            {
+                clientPlayer.pipsUICtrl.HighlightPipsFor(0);
+            }
+        }
+
         public void ShowForCurrShown()
         {
             foreach (var c in shownUniqueCopies) c.cardCtrl.ShowUniqueCopy(false);
@@ -192,6 +206,7 @@ namespace KompasClient.UI
             searchUICtrl.HideIfNotShowingCurrSearchIndex();
 
             ShowUniqueCopies();
+            ShowPipsAvailableForCost();
 
             gameObject.SetActive(true);
         }

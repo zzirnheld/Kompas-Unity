@@ -1,10 +1,13 @@
 ﻿using KompasCore.Cards;
+using KompasCore.GameCore;
 using System.Collections.Generic;
 
 namespace KompasCore.Effects
 {
     public class ActivationContext
     {
+        public readonly Game game;
+
         // Information about the relevant triggering situation
         /// <summary>
         /// Information about the primary card involved in the triggering event,
@@ -77,7 +80,8 @@ namespace KompasCore.Effects
         {
             get
             {
-                var copy = new ActivationContext(mainCardInfoBefore: mainCardInfoBefore, 
+                var copy = new ActivationContext(game: game,
+                    mainCardInfoBefore: mainCardInfoBefore, 
                     secondaryCardInfoBefore: secondaryCardInfoBefore, 
                     cardCause: cardCause, 
                     stackableCause: stackableCause,
@@ -92,7 +96,8 @@ namespace KompasCore.Effects
             }
         }
 
-        private ActivationContext(GameCardInfo mainCardInfoBefore,
+        private ActivationContext(Game game,
+                                  GameCardInfo mainCardInfoBefore,
                                   GameCardInfo secondaryCardInfoBefore,
                                   GameCardInfo cardCause,
                                   IStackable stackableCause,
@@ -101,6 +106,7 @@ namespace KompasCore.Effects
                                   int? x,
                                   Space space)
         {
+            this.game = game;
             this.mainCardInfoBefore = mainCardInfoBefore;
             this.secondaryCardInfoBefore = secondaryCardInfoBefore;
             this.cardCause = cardCause;
@@ -125,7 +131,8 @@ namespace KompasCore.Effects
             asString = sb.ToString();
         }
 
-        public ActivationContext(GameCard mainCardBefore = null,
+        public ActivationContext(Game game,
+                                 GameCard mainCardBefore = null,
                                  GameCard secondaryCardBefore = null,
                                  GameCard eventCauseOverride = null,
                                  IStackable stackableCause = null,
@@ -133,7 +140,8 @@ namespace KompasCore.Effects
                                  Player player = null,
                                  int? x = null,
                                  Space space = null)
-            : this(mainCardInfoBefore: GameCardInfo.CardInfoOf(mainCardBefore),
+            : this(game: game,
+                   mainCardInfoBefore: GameCardInfo.CardInfoOf(mainCardBefore),
                    secondaryCardInfoBefore: GameCardInfo.CardInfoOf(secondaryCardBefore),
                    //Set the event cause either as the override if one is provided,
                    //or as the stackable's cause if not.

@@ -13,20 +13,19 @@ namespace KompasServer.Effects
         public virtual bool ContinueResolution => true;
 
         public string fallOffCondition = Trigger.Remove;
-        public string[] fallOffRestrictions = TriggerRestriction.DefaultFallOffRestrictions;
+        public TriggerRestriction fallOffRestriction;
 
         protected TriggerRestriction CreateFallOffRestriction(GameCard card)
         {
             //conditions for falling off
-            TriggerRestriction triggerRest = null;
-            //TODO have the ability for a player to configure a custom fall off restriction
+            TriggerRestriction triggerRest = fallOffRestriction;
             if (triggerRest == null)
             {
                 triggerRest = fallOffCondition == Trigger.Remove ?
-                    new TriggerRestriction() { triggerRestrictions = fallOffRestrictions } :
+                    new TriggerRestriction() { triggerRestrictions = TriggerRestriction.DefaultFallOffRestrictions } :
                     new TriggerRestriction() { triggerRestrictions = { } };
             }
-            triggerRest.Initialize(Game, card, thisTrigger: null, effect: Effect);
+            triggerRest.Initialize(initializationContext: CreateInitializationContext(null));
             return triggerRest;
         }
 
@@ -34,7 +33,7 @@ namespace KompasServer.Effects
         {
             base.Initialize(eff, subeffIndex);
             triggerRestriction ??= new TriggerRestriction();
-            triggerRestriction.Initialize(Game, ThisCard, thisTrigger: null, effect: Effect, subeffect: this);
+            triggerRestriction.Initialize(CreateInitializationContext(null));
             //Debug.LogWarning($"Are jump indices null? {jumpIndices == null}");
         }
 

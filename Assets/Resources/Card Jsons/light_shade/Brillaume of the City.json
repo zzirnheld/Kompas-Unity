@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Brillaume of the City",
-	"effText": "Thrice each friendly turn, you can move a Light or Shade to a space adjacent to a friendly character.",
+	"effText": "Thrice each turn, you can move a Light or Shade to a space adjacent to a friendly character.",
 	"effects": [
 		{
 			"blurb": "Creep",

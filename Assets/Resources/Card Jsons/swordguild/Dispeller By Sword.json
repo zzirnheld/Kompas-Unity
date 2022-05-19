@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Dispeller by Sword",
-	"effText": "Once each friendly turn, if I'm adjacent to X Warriors, you can dispel a C <= X spell.",
+	"effText": "Once each turn, if I'm adjacent to X Warriors, you can dispel a C <= X spell.",
 	"effects": [
 		{
 			"activationRestriction": {

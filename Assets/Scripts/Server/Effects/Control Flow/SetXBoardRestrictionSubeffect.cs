@@ -9,10 +9,10 @@ namespace KompasServer.Effects
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
             base.Initialize(eff, subeffIndex);
-            cardRestriction.Initialize(this);
+            cardRestriction.Initialize(DefaultRestrictionContext);
         }
 
         public override int BaseCount
-            => Game.boardCtrl.CardsAndAugsWhere(c => cardRestriction.IsValidCard(c, Context)).Count;
+            => Game.boardCtrl.CardsAndAugsWhere(c => cardRestriction.IsValidCard(c, CurrentContext)).Count;
     }
 }

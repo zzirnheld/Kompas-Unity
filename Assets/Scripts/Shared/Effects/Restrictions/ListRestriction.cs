@@ -7,10 +7,10 @@ using Newtonsoft.Json;
 
 namespace KompasCore.Effects
 {
-    public class ListRestriction
+    public class ListRestriction : ContextInitializeableBase
     {
         [JsonIgnore]
-        public Subeffect Subeffect { get; private set; }
+        public Subeffect Subeffect => InitializationContext.subeffect;
 
         //if i end up living towards the heat death of the universe,
         //i will refactor this to instead be objects that get deserialized.
@@ -85,9 +85,9 @@ namespace KompasCore.Effects
         /// Initializes the list restriction to know who its daddy is, and make any shtuff match up
         /// </summary>
         /// <param name="subeffect"></param>
-        public void Initialize(Subeffect subeffect)
+        public override void Initialize(EffectInitializationContext initializationContext)
         {
-            Subeffect = subeffect;
+            base.Initialize(initializationContext);
             if (minCanChoose < 0 && listRestrictions.Contains(MaxCanChoose))
                 minCanChoose = maxCanChoose;
         }
@@ -135,9 +135,12 @@ namespace KompasCore.Effects
         /// <returns><see langword="true"/> if the cards fit all the required restrictions collectively, 
         /// <see langword="false"/> otherwise</returns>
         public bool IsValidCardList(IEnumerable<GameCard> choices, IEnumerable<GameCard> potentialTargets)
-            => choices != null
+        {
+            ComplainIfNotInitialized();
+            return choices != null
                 && !choices.Except(potentialTargets).Any() //Are there any choices that aren't potential targets?
                 && listRestrictions.All(r => IsRestrictionValid(r, choices));
+        }
 
         private bool CanPayCost(IEnumerable<GameCard> potentialTargets)
         {
@@ -169,7 +172,10 @@ namespace KompasCore.Effects
         };
 
         public bool ExistsValidChoice(IEnumerable<GameCard> potentialTargets)
-            => listRestrictions.All(r => DoesRestrictionAllowValidChoice(r, potentialTargets));
+        {
+            ComplainIfNotInitialized();
+            return listRestrictions.All(r => DoesRestrictionAllowValidChoice(r, potentialTargets));
+        }
 
         public override string ToString()
         {

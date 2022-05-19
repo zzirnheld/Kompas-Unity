@@ -31,9 +31,9 @@ namespace KompasServer.Effects
         {
             base.Initialize(eff, subeffIndex);
             cardRestriction ??= new CardRestriction();
-            cardRestriction.Initialize(this);
+            cardRestriction.Initialize(DefaultRestrictionContext);
             listRestriction ??= ListRestriction.Default;
-            listRestriction.Initialize(this);
+            listRestriction.Initialize(DefaultRestrictionContext);
         }
 
         public override bool IsImpossible()
@@ -54,7 +54,7 @@ namespace KompasServer.Effects
 
         private IEnumerable<GameCard> GetPossibleTargets()
         {
-            var possibleTargets = ServerGame.Cards.Where(c => cardRestriction.IsValidCard(c, Context));
+            var possibleTargets = ServerGame.Cards.Where(c => cardRestriction.IsValidCard(c, CurrentContext));
             if (!possibleTargets.Any()) return new GameCard[0];
 
             switch (orderBy)
@@ -79,6 +79,11 @@ namespace KompasServer.Effects
                 Debug.Log($"List restriction {listRestriction} finds no possible list of targets among potential targets" +
                     $"{string.Join(",", potentialTargets.Select(c => c.CardName))}");
                 return await NoPossibleTargets();
+            }
+            else if (!potentialTargets.Any())
+            {
+                //If there's no potential targets, but no targets is a valid choice, then just go to the next effect
+                return ResolutionInfo.Next;
             }
 
             IEnumerable<GameCard> targets = null;

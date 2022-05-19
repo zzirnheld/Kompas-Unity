@@ -1,4 +1,5 @@
 ﻿using KompasCore.Cards;
+using KompasCore.Effects.Restrictions;
 using KompasCore.Exceptions;
 using KompasCore.GameCore;
 using Newtonsoft.Json;
@@ -8,7 +9,7 @@ using UnityEngine;
 
 namespace KompasCore.Effects
 {
-    public class SpaceRestriction
+    public class SpaceRestriction : ContextInitializeableBase
     {
         public Subeffect Subeffect { get; private set; }
         public GameCard Source { get; private set; }
@@ -85,7 +86,7 @@ namespace KompasCore.Effects
         public const string DirectionFromSourceIsSpaceTarget = "Direction from Source is Space Target"; //In the direction of Subeffect.Space from source
         #endregion space restrictions
 
-        public string[] spaceRestrictions;
+        public string[] spaceRestrictions = { };
         public CardRestriction adjacencyRestriction;
         public CardRestriction limitAdjacencyRestriction;
         public int adjacencyLimit;
@@ -111,30 +112,32 @@ namespace KompasCore.Effects
         //Using rather than an "Empty" restriction for, at this point, historical reasons - TODO fix
         public bool mustBeEmpty = true;
 
-        private bool initialized = false;
+        public SpaceRestrictionElement[] spaceRestrictionElements = { };
 
-        public void Initialize(Subeffect subeffect) => Initialize(subeffect.Source, subeffect.Controller, subeffect.Effect, subeffect);
+        public Func<Space, bool> AsThroughPredicate(ActivationContext context)
+            => s => IsValidSpace(s, context);
 
-        public void Initialize(GameCard source, Player controller, Effect effect, Subeffect subeffect)
+        public override void Initialize(EffectInitializationContext initializationContext)
         {
-            Subeffect = subeffect;
-            Source = source;
-            Effect = effect;
+            base.Initialize(initializationContext);
 
-            adjacencyRestriction?.Initialize(source, effect, subeffect);
-            connectednessRestriction?.Initialize(source, effect, subeffect);
-            spaceConnectednessRestriction?.Initialize(source, controller, effect, subeffect);
-            limitAdjacencyRestriction?.Initialize(source, effect, subeffect);
-            hereFitsRestriction?.Initialize(source, effect, subeffect);
-            inAOEOfRestriction?.Initialize(source, effect, subeffect);
-            overlapRestriction?.Initialize(source, effect, subeffect);
-            alsoInAOEOfRestriction?.Initialize(source, effect, subeffect);
+            adjacencyRestriction?.Initialize(initializationContext);
+            connectednessRestriction?.Initialize(initializationContext);
+            spaceConnectednessRestriction?.Initialize(initializationContext);
+            limitAdjacencyRestriction?.Initialize(initializationContext);
+            hereFitsRestriction?.Initialize(initializationContext);
+            inAOEOfRestriction?.Initialize(initializationContext);
+            overlapRestriction?.Initialize(initializationContext);
+            alsoInAOEOfRestriction?.Initialize(initializationContext);
 
-            distanceXRestriction?.Initialize(source, subeffect);
-            connectedSpacesXRestriction?.Initialize(source, subeffect);
-            numberOfCardsInAOEOfRestriction?.Initialize(source, subeffect);
+            distanceXRestriction?.Initialize(initializationContext);
+            connectedSpacesXRestriction?.Initialize(initializationContext);
+            numberOfCardsInAOEOfRestriction?.Initialize(initializationContext);
 
-            initialized = true;
+            foreach (var sre in spaceRestrictionElements)
+            {
+                sre.Initialize(initializationContext);
+            }
         }
 
         private bool IsConnectedToTargetByXSpaces(Space space, GameCard target, ActivationContext context)
@@ -257,10 +260,11 @@ namespace KompasCore.Effects
 
         public bool IsValidSpace(Space space, ActivationContext context, GameCard theoreticalTarget = null)
         {
-            if (!initialized) throw new ArgumentException("Space restriction not initialized!");
+            ComplainIfNotInitialized();
             if (!space.IsValid) throw new InvalidSpaceException(space, "Invalid space to consider for restriction!");
 
-            return spaceRestrictions.All(r => IsRestrictionValidWithDebug(r, space, theoreticalTarget, context));
+            return spaceRestrictions.All(r => IsRestrictionValidWithDebug(r, space, theoreticalTarget, context))
+                && spaceRestrictionElements.All(sre => sre.IsValidSpace(space, context));
         }
 
         public override string ToString()

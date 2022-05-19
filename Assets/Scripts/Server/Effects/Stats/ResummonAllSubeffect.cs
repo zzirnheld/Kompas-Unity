@@ -12,14 +12,14 @@ namespace KompasServer.Effects
         {
             base.Initialize(eff, subeffIndex);
             cardRestriction ??= new CardRestriction();
-            cardRestriction.Initialize(this);
+            cardRestriction.Initialize(DefaultRestrictionContext);
         }
 
         public override Task<ResolutionInfo> Resolve()
         {
-            foreach (var c in Game.boardCtrl.CardsWhere(c => cardRestriction.IsValidCard(c, Context)))
+            foreach (var c in Game.boardCtrl.CardsWhere(c => cardRestriction.IsValidCard(c, CurrentContext)))
             {
-                var ctxt = new ActivationContext(mainCardBefore: c, stackableCause: Effect, player: EffectController, space: c.Position);
+                var ctxt = new ActivationContext(game: ServerGame, mainCardBefore: c, stackableCause: Effect, player: EffectController, space: c.Position);
                 ctxt.CacheCardInfoAfter();
                 ServerEffect.EffectsController.TriggerForCondition(Trigger.Play, ctxt);
                 ServerEffect.EffectsController.TriggerForCondition(Trigger.Arrive, ctxt);

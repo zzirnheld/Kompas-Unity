@@ -1,13 +1,12 @@
 using System.Collections.Generic;
 using KompasCore.Cards;
 using System.Linq;
+using UnityEngine;
 
 namespace KompasCore.Effects
 {
-    public class PlayRestriction
+    public class PlayRestriction : ContextInitializeableBase
     {
-        public GameCard Card { get; private set; }
-
         public const string PlayedByCardOwner = "Played By Card Owner";
         public const string FromHand = "From Hand";
         public const string StandardPlayRestriction = "Adjacent to Friendly Card";
@@ -58,9 +57,12 @@ namespace KompasCore.Effects
         public SpaceRestriction spaceRestriction;
         public SpaceRestriction floutedSpaceRestriction;
 
-        public void SetInfo(GameCard card)
+        public EffectInitializationContext initializationContext { get; private set; }
+        public GameCard Card => InitializationContext.source;
+
+        public override void Initialize(EffectInitializationContext initializationContext)
         {
-            Card = card;
+            base.Initialize(initializationContext);
 
             normalRestrictions ??= new List<string> { DefaultNormal };
             effectRestrictions ??= new List<string> { DefaultEffect };
@@ -81,10 +83,10 @@ namespace KompasCore.Effects
             effectRestrictions.RemoveAll(effectRestrictionsToIgnore.Contains);
 
 
-            onCardRestriction?.Initialize(Card, effect: default, subeffect: default);
-            adjacentCardRestriction?.Initialize(Card, effect: default, subeffect: default);
-            spaceRestriction?.Initialize(Card, Card.Controller, effect: default, subeffect: default);
-            floutedSpaceRestriction?.Initialize(Card, Card.Controller, effect: default, subeffect: default);
+            onCardRestriction?.Initialize(initializationContext);
+            adjacentCardRestriction?.Initialize(initializationContext);
+            spaceRestriction?.Initialize(initializationContext);
+            floutedSpaceRestriction?.Initialize(initializationContext);
             //Debug.Log($"Finished setting info for play restriction of card {card.CardName}");
         }
 
@@ -93,6 +95,13 @@ namespace KompasCore.Effects
             var cardThere = Card.Game.boardCtrl.GetCardAt(space);
             return cardThere != null && cardThere.CardType != 'A'
                 && (cardThere.Controller == player || cardThere.AdjacentCards.Any(c => c.Controller == player));
+        }
+
+        private bool IsOnAugmentSubtypes(Space space)
+        {
+            var subtypes = Card.Game.boardCtrl.GetCardAt(space)?.SubtypeText;
+            Debug.Log($"Subtypes: {subtypes}");
+            return Card.AugmentSubtypes?.All(st => subtypes?.Contains(st) ?? false) ?? true;
         }
 
         private bool IsRestrictionValid(string r, Space space, Player player, ActivationContext context, bool normal) => r != null && r switch
@@ -117,7 +126,7 @@ namespace KompasCore.Effects
 
             OnCharacter => Card.Game.boardCtrl.GetCardAt(space)?.CardType == 'C',
             OnCardFittingRestriction => onCardRestriction.IsValidCard(Card.Game.boardCtrl.GetCardAt(space), context),
-            OnAugmentSubtypes => Card.AugmentSubtypes?.All(st => Card.Game.boardCtrl.GetCardAt(space)?.AugmentSubtypes.Contains(st) ?? false) ?? true,
+            OnAugmentSubtypes => IsOnAugmentSubtypes(space),
             OnCardFloutingRestriction => onCardFloutedRestriction.IsValidCard(Card.Game.boardCtrl.GetCardAt(space), context),
 
             NotNormally => !normal,
@@ -131,7 +140,11 @@ namespace KompasCore.Effects
             _ => throw new System.ArgumentException($"You forgot to check play restriction {r}", "r"),
         };
 
-        private bool IsValidPlay(Space to) => to != null && to.IsValid;
+        private bool IsValidPlay(Space to)
+        {
+            ComplainIfNotInitialized();
+            return to != null && to.IsValid;
+        }
         private bool PlayerCanAffordCost(Player player) => player.Pips >= Card.Cost;
 
         public bool IsValidNormalPlay(Space to, Player player, string[] ignoring = default)
@@ -148,14 +161,12 @@ namespace KompasCore.Effects
                     .All(r => IsRestrictionValid(r, to, controller, context, normal: false));
 
         public bool IsRecommendedPlay(Space space, Player controller, ActivationContext context, bool normal)
-        //=> recommendationRestrictions.All(r => RestrictionValid(r, x, y, controller, normal: normal));
-        {
-            //Debug.Log($"Checking {space} against recommendations {string.Join(", ", recommendationRestrictions)}");
-            return recommendationRestrictions.All(r => IsRestrictionValid(r, space, controller, context: context, normal: normal));
-        }
+            => IsValidPlay(space) 
+                && recommendationRestrictions
+                    .All(r => IsRestrictionValid(r, space, controller, context: context, normal: normal));
 
         public bool IsRecommendedNormalPlay(Space space, Player player)
             => IsValidNormalPlay(space, player)
-            && IsRecommendedPlay(space, player, context: default, normal: true);
+                && IsRecommendedPlay(space, player, context: default, normal: true);
     }
 }

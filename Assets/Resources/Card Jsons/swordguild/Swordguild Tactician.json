@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Swordguild Tactician",
-	"effText": "Once each friendly turn, I can give an adjacent Warrior +5 E or +5 W.",
+	"effText": "Once each turn, I can give an adjacent Warrior +5 E or +5 W.",
 	"effects": [
 		{
 			"activationRestriction": {

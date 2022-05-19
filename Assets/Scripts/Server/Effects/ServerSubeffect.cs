@@ -20,6 +20,12 @@ namespace KompasServer.Effects
 
         public ServerPlayer ServerPlayer => PlayerTarget as ServerPlayer;
 
+        public EffectInitializationContext DefaultRestrictionContext
+            => CreateInitializationContext(null);
+
+        protected EffectInitializationContext CreateInitializationContext(Trigger trigger)
+            => new EffectInitializationContext(game: Game, source: Source, effect: Effect, trigger: trigger, subeffect: this);
+
         /// <summary>
         /// Sets up the subeffect with whatever necessary values.
         /// Usually also initializes any restrictions the effects are using.
@@ -34,9 +40,8 @@ namespace KompasServer.Effects
         }
 
         /// <summary>
-        /// Server Subeffect resolve method. Does whatever this type of subeffect does,
-        /// then returns a ResolutionInfo struct containing what to do next.
-        /// <returns><see langword="true"/> if the effect finished resolving successfully, <see langword="false"/> if it's awaiting response</returns>
+        /// Server Subeffect resolve method. Does whatever this type of subeffect does
+        /// <returns>A ResolutionInfo object describing what to do next</returns>
         /// </summary>
         public abstract Task<ResolutionInfo> Resolve();
 

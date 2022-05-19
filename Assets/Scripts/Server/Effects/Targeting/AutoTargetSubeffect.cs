@@ -11,6 +11,7 @@ namespace KompasServer.Effects
     {
         public const string Maximum = "Maximum";
         public const string Any = "Any";
+        public const string RandomCard = "Random";
 
         public CardRestriction cardRestriction;
         public CardValue tiebreakerValue;
@@ -20,11 +21,17 @@ namespace KompasServer.Effects
         {
             base.Initialize(eff, subeffIndex);
             cardRestriction ??= new CardRestriction();
-            cardRestriction.Initialize(this);
-            tiebreakerValue?.Initialize(eff.Source);
+            cardRestriction.Initialize(DefaultRestrictionContext);
+            tiebreakerValue?.Initialize(DefaultRestrictionContext);
         }
 
-        public override bool IsImpossible() => !Game.Cards.Any(c => cardRestriction.IsValidCard(c, Context));
+        public override bool IsImpossible() => !Game.Cards.Any(c => cardRestriction.IsValidCard(c, CurrentContext));
+
+        private GameCard GetRandomCard(GameCard[] cards)
+        {
+            var random = new System.Random();
+            return cards[random.Next(cards.Length)];
+        }
 
         public override Task<ResolutionInfo> Resolve()
         {
@@ -32,11 +39,12 @@ namespace KompasServer.Effects
             IEnumerable<GameCard> potentialTargets = null;
             try
             {
-                potentialTargets = Game.Cards.Where(c => cardRestriction.IsValidCard(c, Context));
+                potentialTargets = Game.Cards.Where(c => cardRestriction.IsValidCard(c, CurrentContext));
                 potentialTarget = tiebreakerDirection switch
                 {
                     Maximum => potentialTargets.OrderByDescending(tiebreakerValue.GetValueOf).First(),
                     Any => potentialTargets.First(),
+                    RandomCard => GetRandomCard(potentialTargets.ToArray()),
                     _ => potentialTargets.Single(),
                 };
             }

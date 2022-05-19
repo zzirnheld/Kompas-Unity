@@ -13,8 +13,8 @@ namespace KompasServer.Effects
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
             base.Initialize(eff, subeffIndex);
-            firstTargetStat?.Initialize(eff.Source);
-            secondTargetStat?.Initialize(eff.Source);
+            firstTargetStat?.Initialize(DefaultRestrictionContext);
+            secondTargetStat?.Initialize(DefaultRestrictionContext);
         }
 
         public override Task<ResolutionInfo> Resolve()

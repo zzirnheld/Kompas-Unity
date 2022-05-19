@@ -3,6 +3,7 @@ using KompasClient.Effects;
 using KompasClient.GameCore;
 using KompasClient.UI;
 using KompasCore.Cards;
+using KompasCore.Effects.Restrictions;
 using KompasDeckbuilder;
 using KompasServer.Cards;
 using KompasServer.Effects;
@@ -23,6 +24,9 @@ public class CardRepository : MonoBehaviour
     public const string partialKeywordFolderPath = "Keyword Jsons/Partial Keywords/";
     public const string partialKeywordListFilePath = partialKeywordFolderPath + "Keyword List";
 
+    public const string triggerKeywordFolderPath = "Keyword Jsons/Trigger Keywords/";
+    public const string triggerKeywordListFilePath = triggerKeywordFolderPath + "Keyword List";
+
     private static readonly JsonSerializerSettings cardLoadingSettings = new JsonSerializerSettings
     {
         TypeNameHandling = TypeNameHandling.Auto,
@@ -38,8 +42,11 @@ public class CardRepository : MonoBehaviour
     private static readonly Dictionary<string, string> cardJsons = new Dictionary<string, string>();
     private static readonly Dictionary<string, int> cardNameIDs = new Dictionary<string, int>();
     private static readonly List<string> cardNames = new List<string>();
+
     private static readonly Dictionary<string, string> keywordJsons = new Dictionary<string, string>();
     private static readonly Dictionary<string, string> partialKeywordJsons = new Dictionary<string, string>();
+    private static readonly Dictionary<string, string> keywordTriggerJsons = new Dictionary<string, string>();
+
     private static bool initalized = false;
 
     public static IEnumerable<string> CardJsons => cardJsons.Values;
@@ -119,6 +126,15 @@ public class CardRepository : MonoBehaviour
             Debug.Log($"Loading partial keyword {keyword}");
             string json = Resources.Load<TextAsset>(partialKeywordFolderPath + keyword).text;
             partialKeywordJsons.Add(keyword, json);
+        }
+
+        string triggerKeywordList = Resources.Load<TextAsset>(triggerKeywordListFilePath).text;
+        var triggerKeywords = triggerKeywordList.Replace('\r', '\n').Split('\n').Where(s => !string.IsNullOrEmpty(s));
+        foreach (string keyword in triggerKeywords)
+        {
+            Debug.Log($"Loading partial keyword {keyword}");
+            string json = Resources.Load<TextAsset>(triggerKeywordFolderPath + keyword).text;
+            triggerKeywordJsons.Add(keyword, json);
         }
     }
 
@@ -223,11 +239,12 @@ public class CardRepository : MonoBehaviour
             effects.AddRange(cardInfo.effects);
             for (int i = 0; i < cardInfo.keywords.Length; i++)
             {
-                var s = cardInfo.keywords[i];
-                Debug.Log($"Trying to add keyword {s}");
-                var keywordJson = keywordJsons[s];
+                var keywordName = cardInfo.keywords[i];
+                Debug.Log($"Trying to add keyword {keywordName}");
+                var keywordJson = keywordJsons[keywordName];
                 var eff = JsonConvert.DeserializeObject<ServerEffect>(keywordJson, cardLoadingSettings);
                 eff.arg = cardInfo.keywordArgs.Length > i ? cardInfo.keywordArgs[i] : 0;
+                eff.Keyword = keywordName;
                 effects.Add(eff);
             }
         }
@@ -432,5 +449,16 @@ public class CardRepository : MonoBehaviour
         => jsons.Select(json => SerializableCardFromJson(json)).Where(card => card != null);
 
     public static IEnumerable<SerializableCard> SerializableCards => GetSerializableCards(CardJsons);
+
+    public static TriggerRestrictionElement[] InstantiateTriggerKeyword(string keyword)
+    {
+        if (!partialKeywordJsons.ContainsKey(keyword))
+        {
+            Debug.Log($"No partial keword json found for {keyword}");
+            return new TriggerRestrictionElement[0];
+        }
+
+        return JsonConvert.DeserializeObject<TriggerRestrictionElement[]>(triggerKeywordJsons[keyword], cardLoadingSettings);
+    }
     #endregion Create Cards
 }

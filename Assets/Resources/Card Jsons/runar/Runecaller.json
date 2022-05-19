@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Runecaller",
-	"effText": "Once each friendly turn, you can pip hand-cast a Rune.",
+	"effText": "Once each turn, you can pip hand-cast a Rune.",
 	"effects": [
 		{
 			"activationRestriction": {

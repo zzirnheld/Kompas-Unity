@@ -27,8 +27,9 @@ namespace KompasServer.Effects
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
             base.Initialize(eff, subeffIndex);
-            cardRestriction.Initialize(this);
-            xRestriction.Initialize(Source);
+
+            cardRestriction.Initialize(DefaultRestrictionContext);
+            xRestriction.Initialize(DefaultRestrictionContext);
         }
 
         private bool ShouldJump
@@ -37,14 +38,14 @@ namespace KompasServer.Effects
             {
                 return condition switch
                 {
-                    CardFitsRestriction => Game.Cards.Any(c => cardRestriction.IsValidCard(c, Context)),
-                    NoCardFitsRestriction => !Game.Cards.Any(c => cardRestriction.IsValidCard(c, Context)),
+                    CardFitsRestriction => Game.Cards.Any(c => cardRestriction.IsValidCard(c, CurrentContext)),
+                    NoCardFitsRestriction => !Game.Cards.Any(c => cardRestriction.IsValidCard(c, CurrentContext)),
 
-                    TargetFitsRestriction => cardRestriction.IsValidCard(CardTarget, Context),
-                    TargetViolatesRestriction => !cardRestriction.IsValidCard(CardTarget, Context),
+                    TargetFitsRestriction => cardRestriction.IsValidCard(CardTarget, CurrentContext),
+                    TargetViolatesRestriction => !cardRestriction.IsValidCard(CardTarget, CurrentContext),
 
-                    MainTriggeringCardFitRestrictionBefore => cardRestriction.IsValidCard(Context.mainCardInfoBefore, Context),
-                    MainTriggeringCardFloutedRestrictionBefore => !cardRestriction.IsValidCard(Context.mainCardInfoBefore, Context),
+                    MainTriggeringCardFitRestrictionBefore => cardRestriction.IsValidCard(CurrentContext.mainCardInfoBefore, CurrentContext),
+                    MainTriggeringCardFloutedRestrictionBefore => !cardRestriction.IsValidCard(CurrentContext.mainCardInfoBefore, CurrentContext),
 
                     XGreaterEqualConstant => Effect.X >= constant,
                     XFitsRestriction => xRestriction.IsValidNumber(Effect.X),

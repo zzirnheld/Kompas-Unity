@@ -1,0 +1,51 @@
+{
+	"cardType": 67,
+	"cardName": "Roth'Kil Blood Acolyte",
+	"effText": "Once each friendly turn, you can give me -1 E to discard->hand an Orc.",
+	"effects":[
+		{
+			"blurb": "Quicken the Blood",
+			"activationRestriction": {
+				"activationRestrictionArray": [
+					"Max Times Per Turn",
+					"Friendly Turn",
+					"Default"
+				]
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Orc to Return",
+						"cardRestrictions": [
+							"Friendly",
+							"Character",
+							"Discard",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [ "Orc" ]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eModifier": -1
+				}
+			]
+		}
+	],
+	"n": 1,
+	"e": 4,
+	"s": 2,
+	"w": 0,
+	"subtypes": [
+		"Orc",
+		"Priest"
+	],
+	"subtypeText": "Orc Priest"
+}

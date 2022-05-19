@@ -1,36 +1,36 @@
 {
-	"keywordReminderTexts":[
+	"keywordReminderTexts": [
 		{
-			"keyword":"Linewalk.",
-			"reminder":"During friendly turns, you can move me through empty spaces, to any space along my diagonal. This counts as moving as many spaces as I can."
+			"keyword": "Linewalk.",
+			"reminder": "During friendly turns, you can move me through empty spaces, to any space along my diagonal. This counts as moving as many spaces as I can."
 		},
 		{
-			"keyword":"Shape.",
-			"reminder":"During friendly turns, you can use a space of movement and give me -X E to move me through X Ethereal characters."
+			"keyword": "Shape.",
+			"reminder": "During friendly turns, I can spend a space of movement and give myself -X E to move myself through X Ethereal characters."
 		},
 		{
 			"keyword":"Vessel.",
-			"reminder":"During your turn, you can destroy a Memory attached to me. Echo me."
+			"reminder":"You can destroy a Memory attached to me. Echo me."
 		},
 		{
-			"keyword":"Revenant.",
-			"reminder":"When I die, annihilate me.\nDuring friendly turns, you can pip revive me at half cost."
+			"keyword": "Revenant.",
+			"reminder": "When I die, annihilate me.\nDuring friendly turns, you can pip revive me at half cost."
 		},
 		{
-			"keyword":"Ificate.",
-			"reminder":"When I'm hand->discarded, discard->cast a DIFFERENT Crazy Idea for 1 pip."
+			"keyword": "Ificate.",
+			"reminder": "When I'm hand->discarded, discard->cast a DIFFERENT Crazy Idea for 1 pip."
 		},
 		{
-			"keyword":"Recoverable.",
-			"reminder":"When this character dies (while I'm equipped), rehand me."
+			"keyword": "Recoverable.",
+			"reminder": "When this character dies (while I'm equipped), rehand me."
 		},
 		{
-			"keyword":"Territorial.",
-			"reminder":"When turns start, move an adjacent character 1 space, then I attack them."
+			"keyword": "Territorial.",
+			"reminder": "When turns start, move an adjacent character 1 space, then I attack them."
 		},
 		{
-			"keyword":"Comeback Play.",
-			"reminder":"When friendly turns start while there's a friendly Sportsball augment, discard->cast me."
+			"keyword": "Comeback Play.",
+			"reminder": "When friendly turns start while there's a friendly Sportsball augment, discard->cast me."
 		},
 		{
 			"keyword":"Runic.",
@@ -41,8 +41,8 @@
 			"reminder":"While I'm inactive, I can't attack or move."
 		},
 		{
-			"keyword":"Supplicant.",
-			"reminder":"When I fight, kill me."
+			"keyword": "Supplicant.",
+			"reminder": "When I fight, kill me."
 		},
 		{
 			"keyword":"Weather Condition",
@@ -53,18 +53,19 @@
 			"reminder":"Must be played in the overlap of Weather Conditions, but doesn't have to be played adjacent to a friendly card.\nWhen I'm summoned on an enemy turn, apply the listed effect."
 		},
 		{
-			"keyword":"martyr",
-			"reminder":"A character is martyred when they die during an enemy turn."
+			"keyword": "martyr",
+			"reminder": "A character is martyred when they die during an enemy turn."
 		},
 		{
 			"keyword":"Wisp.",
 			"reminder":"When I'm summoned, or when turns start, move me 1 space."
 		},
 		{
-			"keyword":"Invoke",
-			"reminder":"Mill until you mill a character with S < my S. Revive them."
+			"keyword": "Invoke",
+			"reminder": "Mill until you mill a character with S < my S. Revive them."
 		},
 		{
+
 			"keyword":"Flashback.",
 			"reminder":"You can pip discard->cast me, then annihilate me."
 		},
@@ -77,53 +78,69 @@
 			"reminder":"I can move during enemy turns. (Otherwise, the same rules apply as normal: nothing must be happening, I must have enough N, etc.)"
 		},
 		{
-			"keyword":"Waterborn",
-			"reminder":"Must be played in Water, but doesn't have to be played adjacent to a friendly card."
+			"keyword": "Waterborn",
+			"reminder": "Must be played in Water, but doesn't have to be played adjacent to a friendly card."
 		},
 		{
-			"keyword":"Waterdweller",
-			"reminder":"When nothing is happening, if I'm not in Water, kill me."
+			"keyword": "Waterdweller",
+			"reminder": "When nothing is happening, if I'm not in Water, kill me."
 		},
 		{
-			"keyword":"Speedemon",
-			"reminder":"After I move in a straight line by something other than this effect, move me 1 space in the same direction."
+			"keyword": "Speedemon",
+			"reminder": "After I move in a straight line by something other than this effect, move me 1 space in the same direction."
 		},
 		{
-			"keyword":"Instrument",
-			"reminder":"Can only be attached to a character not already wielding an Instrument.\nAfter Music is cast adjacent to me, delay until the stack ends. Dispel it."
+			"keyword": "Instrument",
+			"reminder": "Can only be attached to a character not already wielding an Instrument.\nAfter Music is cast adjacent to me, delay until the stack ends. Dispel it."
 		},
 		{
-			"keyword":"Pass Back",
-			"reminder":"When this character defends, attach me to your Avatar."
+			"keyword": "Pass Back",
+			"reminder": "When this character defends, attach me to your Avatar."
 		},
 		{
-			"keyword":"Attended",
-			"reminder":"When nothing is happening and I'm adjacent to fewer than that many friendly characters, I die."
+			"keyword": "Attended",
+			"reminder": "When nothing is happening and I'm adjacent to fewer than that many friendly characters, I die."
 		},
 		{
-			"keyword":"secondary heading",
-			"reminder":"Northeast, northwest, southeast, or southwest."
+			"keyword": "secondary heading",
+			"reminder": "Northeast, northwest, southeast, or southwest."
 		},
 		{
-			"keyword":"Collectible",
-			"reminder":"When a character kills this character, attach me to the killer."
+			"keyword": "Collectible",
+			"reminder": "When a character kills this character, attach me to the killer."
 		},
 		{
-			"keyword":"Pilot a Mech",
-			"reminder":"Annihilate me. Hand->summon a Mech Golem where I was and activate it, but when it dies, summon me where it was, and negate me until the next turn starts."
+			"keyword": "Pilot a Mech",
+			"reminder": "Annihilate me. Hand->summon a Mech Golem where I was and activate it. When it dies, summon me where it was and negate me until the next turn starts."
 		},
 		{
-			"keyword":"Nimble",
-			"reminder":"Can move through cards."
+			"keyword": "Nimble",
+			"reminder": "Can move through cards."
 		},
 		{
-			"keyword":"Spores",
-			"reminder":"The first time each stack I'm activated, pulse adjacent characters. (Activate, then deactivate each.)"
+			"keyword": "Spores",
+			"reminder": "The first time each stack I'm activated, pulse adjacent characters. (Activate, then deactivate each.)"
+		},
+		{
+			"keyword": "Ambush.",
+			"reminder": "When I'm summoned, I attack an adjacent W X enemy. Give them -X W until the battle ends. This uses my attack for the turn."
+		},
+		{
+			"keyword": "Smite.",
+			"reminder": "When I attack, hand->discard X cards. Give me +2X W until the battle ends."
+		},
+		{
+			"keyword": "Artillery",
+			"reminder": "Once per turn, pay 1 pip to give -X E to an enemy on the board."
 		},
 		{
 			"keyword":"Stealth",
 			"reminder":"When enemy turns start, choose a space in Shade. If it gets lit up this turn, move/swap me with anything there. Once everyone has unstealthed, I attack an adjacent enemy character.",
 			"technicalReminder":"When enemy turns start, choose a space in Shade. If Light arrvies encompassing it this turn, move me there, swapping me with any card already there. After the stack ends, I attack an adjacent enemy character, if I can."
+		},
+		{
+			"keyword":"Evasive",
+			"reminder":"The first time each round I fight a W X character, give them -X W for that fight."
 		}
 	]
 }

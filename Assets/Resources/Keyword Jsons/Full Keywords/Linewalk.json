@@ -24,16 +24,16 @@
 			"spaceRestriction":
 			{
 				"blurb":"to Linewalk to",
-				"spaceRestrictions": [
+				"spaceRestrictions":[
 					"Empty",
 					"On Card Target's Diagonal",
 					"Can Move Card Target to This Space",
 					"Connected to Card Target by Spaces Fitting Restriction"
 				],
-				"spaceConnectednessRestriction":
-				{
+				"spaceConnectednessRestriction": {
 					"spaceRestrictions": [
-						"Empty"
+						"Empty",
+						"On Card Target's Diagonal"
 					]
 				}
 			}
