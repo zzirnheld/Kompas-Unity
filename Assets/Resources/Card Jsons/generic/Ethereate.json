@@ -1,0 +1,67 @@
+{
+	"cardType": 83,
+	"cardName": "Ethereate",
+	"effText": "Revive an Ethereal, but annihilate them once the stack ends.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictionElements": [
+                        {
+                            "$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.CardsMatch, Assembly-CSharp",
+                            "firstCard": { "$type": "KompasCore.Effects.Identities.GamestateCardIdentities.ThisCard, Assembly-CSharp" },
+                            "secondCard": { "$type": "KompasCore.Effects.Identities.ActivationContextCardIdentities.MainCardBefore, Assembly-CSharp" }
+                        }
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Ethereal to revive",
+                        "cardRestrictionElements": [
+                            { "$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.FriendlyCard, Assembly-CSharp" },
+                            { "$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.Character, Assembly-CSharp" },
+                            {
+                                "$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.Location, Assembly-CSharp",
+                                "locations": [ "Hand" ]
+                            },
+                            {
+                                "$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.SubtypesInclude, Assembly-CSharp",
+                                "subtypes": [ "Ethereal" ]
+                            }
+                        ]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where to revive the Ethereal",
+                        "spaceRestrictionElements": [
+                            { "$type": "KompasCore.Effects.Restrictions.SpaceRestrictionElements.Empty, Assembly-CSharp" },
+                            {
+                                "$type": "KompasCore.Effects.Restrictions.SpaceRestrictionElements.CanPlayCard, Assembly-CSharp",
+                                "toPlay": { "$type": "KompasServer.Effects.Identities.SubeffectCardIdentities.Target, Assembly-CSharp" }
+                            }
+                        ]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.HangingAnnihilationSubeffect, Assembly-CSharp",
+					"endCondition": "Stack End",
+					"triggerRestriction": { }
+				}
+			]
+		}
+	],
+	"c": 1,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypeText": ""
+}

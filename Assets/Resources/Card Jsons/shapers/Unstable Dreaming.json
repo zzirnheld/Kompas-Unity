@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Unstable Dreaming",
-	"effText": "When I'm cast, hand->summon a Shaper, but annihilate them when friendly turns start.",
+	"effText": "Hand->summon a Shaper, but annihilate them when friendly turns start.",
 	"effects": [
 		{
 			"triggerData": {
@@ -32,10 +32,13 @@
 					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction": {
 						"blurb": "where to handsummon the Shaper",
-						"spaceRestrictions": [
-							"Can Play Card Target to This Space",
-							"Empty"
-						]
+                        "spaceRestrictionElements": [
+                            { "$type": "KompasCore.Effects.Restrictions.SpaceRestrictionElements.Empty, Assembly-CSharp" },
+                            {
+                                "$type": "KompasCore.Effects.Restrictions.SpaceRestrictionElements.CanPlayCard, Assembly-CSharp",
+                                "toPlay": { "$type": "KompasServer.Effects.Identities.SubeffectCardIdentities.Target, Assembly-CSharp" }
+                            }
+                        ]
 					}
 				},
 				{

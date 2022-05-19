@@ -46,6 +46,7 @@ generic/Thuan Thien
 generic/Trapped Offering
 generic/Unfinding
 generic/Yank
+generic/Ethereate
 
 aquatic/Big Tuna
 aquatic/Changing Tides
