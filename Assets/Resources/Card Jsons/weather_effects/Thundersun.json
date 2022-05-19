@@ -1,0 +1,58 @@
+{
+	"cardType": 83,
+	"cardName": "Thundersun",
+	"effText": "Weather Condition: Five times per turn, give both players a pip.",
+	"effects": [
+		{
+			"triggerData": {
+				"blurb": "Thundersun",
+				"triggerCondition": "Arrive",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"Max Per Turn",
+						"This Card in Play",
+						"Space Fits Restriction",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character"
+						]
+					},
+					"spaceRestriction": {
+						"mustBeEmpty": false,
+						"spaceRestrictions": [
+							"In Source's AOE"
+						]
+					},
+					"maxTimesPerTurn": 5
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xMultiplier": 0,
+					"xModifier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xMultiplier": 0,
+					"xModifier": 1
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Weather Condition Cast"
+	],
+	"unique": true,
+	"c": 9,
+	"spellTypes": [
+		"Radial"
+	],
+	"subtypeText": "Water Weather Condition Radius 1",
+	"radius": 1
+}

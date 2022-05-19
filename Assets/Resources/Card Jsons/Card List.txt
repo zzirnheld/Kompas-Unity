@@ -7,6 +7,7 @@ generic/Spellbombsetter
 generic/Lifetide
 generic/Warlock
 generic/Juan Puntsch-Mann
+generic/Altar of Amnesia
 generic/Sapping Stone
 generic/Price of Fame
 generic/Crack Geode
@@ -17,12 +18,39 @@ generic/Draining Shield
 generic/Last-Ditch Blast
 generic/Explosive Armor
 generic/Proximity Debinder
+generic/Bind the Aggression
+generic/Binding Site
+generic/Bound Offering
+generic/Chain Dispel
+generic/Correctly Sized Crane
+generic/The Intern
+generic/Demagogue
+generic/Dreamfog
+generic/Durendal
+generic/Fight
+generic/Fodderbin
+generic/Haemopoten
+generic/Kusanagi
+generic/Leybinder
+generic/Leybinding
+generic/Leylasher
+generic/None Defy the Lines
+generic/Notcropoten
+generic/Rebinding
+generic/Ride the Winds
+generic/Dreamspace
+generic/Shatter the Warranty
+generic/The Unspeakable
+generic/Thuan Thien
+generic/Trapped Offering
+generic/Unfinding
 generic/Yank
+
 aquatic/Big Tuna
 aquatic/Changing Tides
 aquatic/Fishing
-aquatic/Ma Rinner, the Legendary Fisherwoman
-aquatic/Seigh Lorre, the Legendary Fisherman
+aquatic/Ma Rinner
+aquatic/Seigh Lorre
 aquatic/Heptastar
 aquatic/Expected Shark
 aquatic/Unexpected Shark
@@ -37,6 +65,7 @@ aquatic/Here Be Monsters
 aquatic/Wave
 aquatic/Raincaller Carp
 aquatic/Inevitable Crab
+
 bards/Jolambertino, Indeci Compos
 bards/Wuonlan, the Inspired
 bards/Henry, Whose Bass is Based
@@ -57,11 +86,7 @@ bards/Up To Eleven
 bards/Encore
 bards/Beat Drop
 bards/Finale
-Bind the Aggression
-Binding Site
-Bound Offering
-Chain Dispel
-Correctly Sized Crane
+
 crazy_Ideas/A Frayed Knot
 crazy_Ideas/Acid Lava Pit of Ghost Piranhas
 crazy_Ideas/Ballroom-Disco Breakdance Competition
@@ -84,13 +109,13 @@ crazy_Ideas/Stupid Idea Generator
 crazy_Ideas/Jacob-John Binglejeimer Schmitzel
 crazy_Ideas/Johnatheremiah
 crazy_Ideas/Ideate
-The Intern
 crazy_Ideas/Timothy
 crazy_Ideas/Wait Hold Up
 crazy_Ideas/Weird Idea That is Also
 crazy_Ideas/Yeet Modification
 crazy_Ideas/Yeeterator
 crazy_Ideas/Carla
+
 cultists/Altar Builder
 cultists/Bloodcurser
 cultists/Cultist of the Silent
@@ -112,7 +137,7 @@ cultists/Bloodsilencer
 cultists/Silentbellringer
 cultists/Silent Twin
 cultists/Mindless Silent
-Demagogue
+
 dragons/Aeolian
 dragons/Cidian
 dragons/Dragonbinder
@@ -131,10 +156,7 @@ dragons/Growing Boye
 dragons/Earthwapmer
 dragons/Dragonking
 dragons/Cyrian
-Dreamfog
-Durendal
-Fight
-Fodderbin
+
 geminii/Rememories
 golems/Animancer
 golems/Antiprecatium Golem
@@ -163,8 +185,7 @@ golems/Scrap Golem
 golems/Backup Power Core
 golems/Stone Golem
 golems/Recoverable Core
-Haemopoten
-instruments/Assaulting Batterie
+
 instruments/Gratuitous Sax
 instruments/Gratuitous Violins
 instruments/Horny Jail
@@ -174,10 +195,7 @@ invokers/Invoke the Invoker
 invokers/Prepare the Name
 invokers/Segascanturian Invoker
 invokers/Waungh Invoker
-Kusanagi
-Leybinder
-Leybinding
-Leylasher
+
 light_shade/Light
 light_shade/Shade
 light_shade/The Keeper of the Hooded Lantern
@@ -189,6 +207,7 @@ light_shade/Light Up
 light_shade/Turn Off
 light_shade/Brillaume of the City
 light_shade/Inspirelight
+
 linewalkers/Blue Linewalker
 linewalkers/Cyan Linewalker
 linewalkers/Green Linewalker
@@ -200,6 +219,7 @@ linewalkers/White Linewalker
 linewalkers/Yellow Linewalker
 linewalkers/Leygrapple
 linewalkers/Golden Linewalker
+
 mech_golems/QU4RG3
 mech_golems/51NG3
 mech_golems/54MUR41
@@ -213,6 +233,7 @@ mech_golems/5P33DRUNN3R
 mech_golems/5H4P3R
 mech_golems/54CR1F1C3
 mech_golems/GL455C4NN0N
+
 mech_pilots/Standard Pilot
 mech_pilots/Runn R Mann
 mech_pilots/Heel R Mann
@@ -220,6 +241,7 @@ mech_pilots/Bind R Mann
 mech_pilots/Gunn R Mann
 mech_pilots/Rayla, Head Mann
 mech_pilots/Gvala, Improvisor-Pilot
+
 mechs/Powered Landing
 mechs/Mech-Blaster
 mechs/Iterative Analyzer
@@ -228,6 +250,7 @@ mechs/Collaborative Mechanization
 mechs/One Step Ahead
 mechs/Repair Hub
 mechs/Buffer Shield
+
 memory/Malevolent Memory
 memory/Creative Memory
 memory/Deja Vu
@@ -245,6 +268,7 @@ memory/Corporeal Recall
 memory/Memorial Augury
 memory/Recall
 memory/Uncall For
+
 moths/Rouge Rogue Moth
 moths/Disarming Rogue Moth
 moths/Massive Moon Moth
@@ -259,6 +283,7 @@ moths/Hidden Pupa
 moths/Intimitation
 moths/Hummingbird Hawkmoth
 moths/Atlas Moth
+
 music/Soaring Chorus
 music/Surging Verse
 music/Ringing Bridge
@@ -272,8 +297,7 @@ music/Glory Metal
 music/4 33
 music/Backup Track
 music/Hard Rock
-None Defy the Lines
-Notcropoten
+
 orcs/Alkorath'Kil, Fury in the Blood
 orcs/Bind the Blood
 orcs/Bind the Shadows
@@ -298,6 +322,7 @@ orcs/Roth'Kil Shadow Acolyte
 orcs/Spiked Barricade
 orcs/Unassuming Bush
 orcs/Misplaced Supplies
+
 pulsars/Accelerating Pulsar
 pulsars/Boldening Pulsar
 pulsars/Cannot Be Created Nor Destroyed
@@ -312,7 +337,7 @@ pulsars/Stardusting Pulsar
 pulsars/Starheart
 pulsars/Starstuff
 pulsars/Supernova
-Rebinding
+
 reporters/Al Angus Aston
 reporters/Angry Reporter
 reporters/Fast Talker
@@ -329,6 +354,7 @@ reporters/Weather Reporter
 reporters/Well-Read Reporter
 reporters/Late Reporter
 reporters/May Waycroft
+
 revenants/Death of a Soul
 revenants/Revenance
 revenants/Revivance
@@ -347,7 +373,7 @@ revenants/Unpresent
 revenants/Unseen
 revenants/Unsought
 revenants/Unwanted
-Ride the Winds
+
 runar/Algiz
 runar/Ansuz
 runar/Berkanan
@@ -385,12 +411,12 @@ runar/Thurisaz
 runar/Tiwaz
 runar/Uruz
 runar/Wynn
+
 shapers/Irrilmist
 shapers/Ephemera
 shapers/Dreamhook
 shapers/Dreammist
 shapers/Dreamscape
-Dreamspace
 shapers/Evasive Ectoplasm
 shapers/Grudges Unforgotten
 shapers/He Who Knew Runes
@@ -410,7 +436,13 @@ shapers/Trailing Dreammist
 shapers/Tethered Dreammist
 shapers/Infolding Hopelessness
 shapers/Kindred Spirit
-Shatter the Warranty
+
+skyknights/Fearstrikebinder
+skyknights/Venturebinder
+skyknights/Skillingbinder
+skyknights/Magerybinder
+skyknights/Passingbinder
+
 speed_demons/Coach Speed
 speed_demons/Mr Power Vacuum
 speed_demons/Boing Boing Launcher Guy
@@ -432,6 +464,7 @@ speed_demons/Soul of Speed
 speed_demons/The Sonic Boom
 speed_demons/Sound Barrier
 speed_demons/Mach the Porcupine
+
 spirits/A Lot of Disappointment
 spirits/Allconsuming Frustration
 spirits/Generous Pleasure
@@ -439,6 +472,7 @@ spirits/Overwhelming Anger
 spirits/Spiritual Advice
 spirits/Unfocusing Annoyance
 spirits/Whirlwind of Emotions
+
 spores/Mockish Rotbloom
 spores/Delirious Sparkbloom
 spores/Lax Toadstool
@@ -461,6 +495,7 @@ spores/Ecstatizing Sporeslip
 spores/Fungibility
 spores/Spores
 spores/Sporeling
+
 sportsball/Arbiterary
 sportsball/Forward Dunker
 sportsball/Inside Goalie Defender
@@ -481,6 +516,7 @@ sportsball/Goal-Net Touchdown
 sportsball/Rocket-Propelled Ball Juice
 sportsball/Overwhelming Ball Skills
 sportsball/Penalty Box
+
 supplicants/Answered Prayers
 supplicants/Deliver Us
 supplicants/Desperate Footpad
@@ -496,6 +532,7 @@ supplicants/Prophet of Mercy
 supplicants/Save the People
 supplicants/Touch of the Divine
 supplicants/Widowed Mother
+
 swordguild/Dispeller by Sword
 swordguild/Squire
 swordguild/Swordguild Bannerman
@@ -509,6 +546,7 @@ swordguild/Swordguild Trainer
 swordguild/Swordmaster
 swordguild/Swordmystic
 swordguild/The General
+
 tarocco/Figurehead Jack
 tarocco/Figurehead King
 tarocco/Figurehead Knight
@@ -534,9 +572,7 @@ tarocco/XVII - The Star
 tarocco/XVIII - The Moon
 tarocco/XX - Judgement
 tarocco/XXI - The World
-The Unspeakable
-Thuan Thien
-Trapped Offering
+
 trees/Choketree
 trees/Custodian of the Forest
 trees/Flameborn Seedling
@@ -550,18 +586,20 @@ trees/Sharetree
 trees/Strongtree
 trees/The Man Who Replants
 trees/Thinktree
-Unfinding
+
 vessels/Empty Vessel
 vessels/Fortified Vessel
 vessels/Hardy Vessel
 vessels/Meditative Vessel
 vessels/Unwilling Vessel
+
 water/High Tide
 water/Nuisance Flooding
 water/Hyper Tide
 water/Placid Waters
 water/Tide Pools
 water/Hungry Tide
+
 wanderers/At Home in the World
 wanderers/Leper
 wanderers/Leyseer
@@ -577,31 +615,31 @@ wanderers/Wander Home
 wanderers/Wanderer
 wanderers/Wanderlust
 wanderers/Wisewoman
-weather/Dapplesun
-weather/Puffyclouds
-weather/Crispbreeze
-weather/Flashflood
-weather/Peltrain
-weather/Muggyclouds
-weather/Thunderstorm
-weather/Blizzard
-weather/Fog
-weather/Brainstorm
-weather/Thundersun
-weather/Drainfog
-weather/Iriaid, Who Rides the Skies
-weather/Emezene, Who Reads the Breeze
-weather/Outaroud, Who Scouts the Clouds
-weather/Zussastuss, Who Trusts the Gusts
-weather/Sterrasterr, Who Stirs the Storm
-weather/Erelain, Who Trains the Rain
-weather/Cloudshift
-weather/Stormfront
-weather/Unusual Weather
-weather/Lightning Elemental
-weather/Shardstorm Elemental
-weather/Hailstrike Elemental
-weather/Weather Apprentice
+
+weather_effects/Dapplesun
+weather_effects/Puffyclouds
+weather_effects/Crispbreeze
+weather_effects/Flashflood
+weather_effects/Peltrain
+weather_effects/Muggyclouds
+weather_effects/Thunderstorm
+weather_effects/Blizzard
+weather_effects/Fog
+weather_effects/Brainstorm
+weather_effects/Thundersun
+
+weather_support/Cloudshift
+weather_support/Thunderous Echo
+weather_support/Unusual Weather
+weather_support/Eventful Weather
+
+weather_events/Lightning Elemental
+weather_events/Blizzard Squall
+weather_events/Immagic Drought
+weather_events/Roll of Leythunder
+weather_events/Windstorm of Etaqua
+weather_events/Leyhail Elemental
+
 wisps/Erratic Wisps
 wisps/Flippiwisp
 wisps/Here'n'gone

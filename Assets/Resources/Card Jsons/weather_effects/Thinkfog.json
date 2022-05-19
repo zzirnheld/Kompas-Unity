@@ -1,0 +1,57 @@
+{
+	"cardType":83,
+	"cardName": "Thinkfog",
+	"effText": "Weather Condition: Their controller can pay 1 pip to draw 1 card.",
+	"effects": [
+		{
+			"triggerData":
+			{
+				"blurb":"Fog",
+				"triggerCondition":"Arrive",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Main Card Fits Restriction Before","Space Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Character"]
+					},
+					"spaceRestriction":
+					{
+						"mustBeEmpty":false,
+						"spaceRestrictions":["In Source's AOE"]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetTargetsControllerSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
+					"subeffIndices":[4]
+				},
+				{
+					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"choiceBlurb":"Pay 1 pip to draw?",
+					"optionBlurbs":["Yes","No"],
+					"jumpIndices":[4,100]
+				},
+				{
+					"$type":"KompasServer.Effects.PayPipsSubeffect, Assembly-CSharp",
+					"xMultiplier":0,
+					"xModifier":1
+				},
+				{
+					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+				}
+			]	
+		}
+	],
+	"keywords":["Weather Condition Cast"],
+	"unique":true,
+	"c":6,
+	"spellTypes":["Radial"],
+	"subtypeText":"Weather Condition Radius",
+	"radius":1
+}

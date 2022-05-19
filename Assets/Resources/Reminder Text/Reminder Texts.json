@@ -2,7 +2,7 @@
 	"keywordReminderTexts": [
 		{
 			"keyword": "Linewalk.",
-			"reminder": "During friendly turns, I can spend my available movement to move myself through empty spaces to any space along my diagonal."
+			"reminder": "During friendly turns, you can move me through empty spaces, to any space along my diagonal. This counts as moving as many spaces as I can."
 		},
 		{
 			"keyword": "Shape.",
@@ -14,11 +14,11 @@
 		},
 		{
 			"keyword": "Revenant.",
-			"reminder": "When I die, annihilate me. During friendly turns, you can pip revive me at half cost."
+			"reminder": "When I die, annihilate me.\nDuring friendly turns, you can pip revive me at half cost."
 		},
 		{
 			"keyword": "Ificate.",
-			"reminder": "When I'm hand->discarded, choose another discarded Crazy Idea. Pay a pip and play it."
+			"reminder": "When I'm hand->discarded, discard->cast a DIFFERENT Crazy Idea for 1 pip."
 		},
 		{
 			"keyword": "Recoverable.",
@@ -33,36 +33,32 @@
 			"reminder": "When friendly turns start while there's a friendly Sportsball augment, discard->cast me."
 		},
 		{
-			"keyword": "Runic.",
-			"reminder": "Can't be cast normally."
+			"keyword":"Runic.",
+			"reminder":"Can't be cast normally."
 		},
 		{
-			"keyword": "Golem.",
-			"reminder": "While I'm inactive, I can't attack or move."
+			"keyword":"Golem.",
+			"reminder":"While I'm inactive, I can't attack or move."
 		},
 		{
 			"keyword": "Supplicant.",
 			"reminder": "When I fight, kill me."
 		},
 		{
-			"keyword": "Weather.",
-			"reminder": "When turns start, annihilate me. Deck->cast a different Weather adjacent to where I was."
+			"keyword":"Weather Condition",
+			"reminder":"When a non-Weather character arrives here, apply the listed effect.\nWhen turns start, deck->cast a Weather Condition adjacent to me, then annihilate me."
 		},
 		{
-			"keyword": "Weather Event.",
-			"reminder": "Can't be played normally during friendly turns. Must be played in two Weathers."
+			"keyword":"Weather Event",
+			"reminder":"Must be played in the overlap of Weather Conditions, but doesn't have to be played adjacent to a friendly card.\nWhen I'm summoned on an enemy turn, apply the listed effect."
 		},
 		{
 			"keyword": "martyr",
 			"reminder": "A character is martyred when they die during an enemy turn."
 		},
 		{
-			"keyword": "Machinations.",
-			"reminder": "When I'm cast, set my C to 0. When friendly turns start, give me +1 C."
-		},
-		{
-			"keyword": "Wisp.",
-			"reminder": "When I'm summoned, move me 1 space. When turns start, move me 1 space."
+			"keyword":"Wisp.",
+			"reminder":"When I'm summoned, or when turns start, move me 1 space."
 		},
 		{
 			"keyword": "Invoke",
@@ -78,16 +74,8 @@
 			"reminder":"When turns start, swap me for a Wanderer in your deck with less S. (They won't wander until next turn.)"
 		},
 		{
-			"keyword": "Charge:",
-			"reminder": "When I'm activated by a card connected to me by Conductors..."
-		},
-		{
-			"keyword": "Charge X:",
-			"reminder": "When I'm activated by a card connected to me by X Conductors..."
-		},
-		{
-			"keyword": "Agile",
-			"reminder": "I can move during enemy turns. (Otherwise, the same rules apply as normal: nothing must be happening, I must have enough N, etc.)"
+			"keyword":"Agile",
+			"reminder":"I can move during enemy turns. (Otherwise, the same rules apply as normal: nothing must be happening, I must have enough N, etc.)"
 		},
 		{
 			"keyword": "Waterborn",
@@ -103,7 +91,7 @@
 		},
 		{
 			"keyword": "Instrument",
-			"reminder": "Can only be attached to a character not already wielding an Instrument. After Music is cast adjacent to me, delay until the stack ends. Dispel it."
+			"reminder": "Can only be attached to a character not already wielding an Instrument.\nAfter Music is cast adjacent to me, delay until the stack ends. Dispel it."
 		},
 		{
 			"keyword": "Pass Back",

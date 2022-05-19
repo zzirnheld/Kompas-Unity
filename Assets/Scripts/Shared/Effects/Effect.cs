@@ -97,8 +97,7 @@ namespace KompasCore.Effects
         public static T GetItem<T>(IEnumerable<T> enumerable, int index)
         {
             int trueIndex = index < 0 ? index + enumerable.Count() : index;
-            if (trueIndex < 0) return default;
-            return enumerable.ElementAt(trueIndex);
+            return enumerable.ElementAtOrDefault(trueIndex);
         }
 
         public GameCard GetTarget(int num) => GetItem(cardTargets, num);

@@ -1,6 +1,6 @@
 {
 	"cardType": 67,
-	"cardName": "Seigh Lorre, the Legendary Fisherman",
+	"cardName": "Seigh Lorre",
 	"effText": "Waterborn.\nWhen turns start, move a card in Water through spaces in Water to another empty space.",
 	"effects": [
 		{

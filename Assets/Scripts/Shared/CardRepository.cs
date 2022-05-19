@@ -72,6 +72,7 @@ public class CardRepository : MonoBehaviour
 
         foreach (string filename in cardFilenameArray)
         {
+            if (string.IsNullOrEmpty(filename)) continue;
             //sanitize the filename. for some reason, doing substring fixes stuff
             string filenameClean = filename.Substring(0, filename.Length);
             //don't add duplicate cards

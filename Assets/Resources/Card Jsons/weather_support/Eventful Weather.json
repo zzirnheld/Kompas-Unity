@@ -1,0 +1,64 @@
+{
+	"cardType": 83,
+	"cardName": "Eventful Weather",
+	"effText": "When you cast Weather Conditions, mill your topdeck. If it's a Weather Event, hand it, otherwise bottomdeck it.",
+	"effects": [
+		{
+			"blurb": "Oh. Oh no.",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before",
+						"Controller Triggered"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Spell",
+							"Friendly"
+						],
+						"subtypesInclude": [
+							"Weather",
+                            "Condition"
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.MillSubeffect, Assembly-CSharp",
+					"xModifier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.ConditionalJumpSubeffect, Assembly-CSharp",
+					"condition": "Target Violates Restriction",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Weather",
+                            "Event"
+						]
+					},
+					"jumpIndices": [
+						4
+					]
+				},
+				{
+					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.BottomdeckSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"c": 2,
+	"subtypeText": "Enchant"
+}
