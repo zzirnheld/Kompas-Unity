@@ -149,7 +149,7 @@ namespace KompasCore.Effects
 
         private bool InAOEOfNumberOfCardsFittingRestriction(Space space, ActivationContext context)
         {
-            var count = Game.Cards.Count(c => c.SpaceInAOE(space) && inAOEOfRestriction.IsValidCard(c, context));
+            var count = Game.Cards.Count(c => c.IsSpaceInMyAOE(space) && inAOEOfRestriction.IsValidCard(c, context));
             return numberOfCardsInAOEOfRestriction.IsValidNumber(count);
         }
 
@@ -193,15 +193,15 @@ namespace KompasCore.Effects
                 ConnectedToCardTargetBySpaces => Game.boardCtrl.AreConnectedBySpaces(target.Position, space, spaceConnectednessRestriction, context),
                 ConnectedToCardTargetByXSpaces => IsConnectedToTargetByXSpaces(space, target, context),
 
-                InSourcesAOE => Source.SpaceInAOE(space),
-                NotInAOE => !Source.SpaceInAOE(space),
-                InCardTargetsAOE => target.SpaceInAOE(space),
-                InAOEOfCardFittingRestriction => Game.Cards.Any(c => c.SpaceInAOE(space) && inAOEOfRestriction.IsValidCard(c, context)),
-                NotInAOEOf => !Game.Cards.Any(c => c.SpaceInAOE(space) && inAOEOfRestriction.IsValidCard(c, context)),
+                InSourcesAOE => Source.IsSpaceInMyAOE(space),
+                NotInAOE => !Source.IsSpaceInMyAOE(space),
+                InCardTargetsAOE => target.IsSpaceInMyAOE(space),
+                InAOEOfCardFittingRestriction => Game.Cards.Any(c => c.IsSpaceInMyAOE(space) && inAOEOfRestriction.IsValidCard(c, context)),
+                NotInAOEOf => !Game.Cards.Any(c => c.IsSpaceInMyAOE(space) && inAOEOfRestriction.IsValidCard(c, context)),
                 InAOEOfNumberFittingRestriction => InAOEOfNumberOfCardsFittingRestriction(space, context),
-                InAOESourceAlsoIn => Game.Cards.Any(c => c.SpaceInAOE(space) && c.CardInAOE(Source) && alsoInAOEOfRestriction.IsValidCard(c, context)),
-                InAOECardTargetAlsoIn => Game.Cards.Any(c => c.SpaceInAOE(space) && c.CardInAOE(target) && alsoInAOEOfRestriction.IsValidCard(c, context)),
-                InAOESpaceTargetAlsoIn => Game.Cards.Any(c => c.SpaceInAOE(space) && c.SpaceInAOE(Subeffect.SpaceTarget) && alsoInAOEOfRestriction.IsValidCard(c, context)),
+                InAOESourceAlsoIn => Game.Cards.Any(c => c.IsSpaceInMyAOE(space) && c.IsCardInMyAOE(Source) && alsoInAOEOfRestriction.IsValidCard(c, context)),
+                InAOECardTargetAlsoIn => Game.Cards.Any(c => c.IsSpaceInMyAOE(space) && c.IsCardInMyAOE(target) && alsoInAOEOfRestriction.IsValidCard(c, context)),
+                InAOESpaceTargetAlsoIn => Game.Cards.Any(c => c.IsSpaceInMyAOE(space) && c.IsSpaceInMyAOE(Subeffect.SpaceTarget) && alsoInAOEOfRestriction.IsValidCard(c, context)),
                 SourceInSpaceOverlapsCardRestriction => CardInSpaceOverlapsCardRestriction(Source, space, context),
 
                 SourceDisplacementToSpaceMatchesSpaceTarget => Source.Position.DisplacementTo(space) == Subeffect.SpaceTarget,

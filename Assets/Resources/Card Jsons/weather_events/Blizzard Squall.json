@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Blizzard Squall",
-	"effText": "Weather Event: Set the N of all enemies in the same Weather Condition as me to 0.",
+	"effText": "Weather Event: Give each enemy character -1 N.",
 	"effects": [
 		{
 			"blurb": "Freeze",
@@ -16,29 +16,41 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.SetAllCardStatsSubeffect, Assembly-CSharp",
+					"$type": "KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Character",
-							"Board",
-                            "Enemy",
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"In AOE Source is Also In"
-							],
-							"alsoInAOEOfRestriction": {
-								"cardRestrictions": [
-									"Subtypes Include"
-								],
-								"subtypesInclude": [
-									"Weather"
-								]
-							}
+						"cardRestriction": {
+							"cardRestrictionElements": [
+								{
+									"$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.Encompasses, Assembly-CSharp",
+									"encompassedCard": { "$type": "KompasCore.Effects.Identities.GamestateCardIdentities.ThisCard, Assembly-CSharp" }
+								},
+								{
+									"$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.SubtypesInclude, Assembly-CSharp",
+									"subtypes": [ "Weather" ]
+								}
+							]
+						}
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"cardsIdentity": {
+						"$type": "KompasServer.Effects.Identities.SubeffectManyCardsIdentities.CardsInAOE, Assembly-CSharp",
+						"whoseAOE":  { "$type": "KompasServer.Effects.Identities.SubeffectCardIdentities.Target, Assembly-CSharp" },
+						"cardRestriction": {
+							"cardRestrictionElements": [
+								{ "$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.EnemyCard, Assembly-CSharp" }
+							]
 						}
 					},
-					"nVal": 0
+					"nModifier": -1
+				},
+				{
+					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete": true,
+					"jumpIndices": [
+						1
+					]
 				}
 			]
 		}

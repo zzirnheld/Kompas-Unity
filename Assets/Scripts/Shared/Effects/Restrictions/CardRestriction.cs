@@ -202,7 +202,7 @@ namespace KompasCore.Effects
             if (cardToTest == null) return false;
             if (cardToTest.Location != CardLocation.Board) return false;
 
-            return Source.Game.Cards.Any(c => cardToTest.CardInAOE(c) && hasInAOERestriction.IsValidCard(c, x, context));
+            return Source.Game.Cards.Any(c => cardToTest.IsCardInMyAOE(c) && hasInAOERestriction.IsValidCard(c, x, context));
         }
 
         private bool WouldCardBeInAOEOfCardTargetIfCardTargetWereAtSpaceTarget(GameCardBase cardToTest, GameCardBase cardTarget, Space space)
@@ -210,7 +210,7 @@ namespace KompasCore.Effects
             if (cardToTest == null) return false;
             if (space == null) return false;
 
-            return cardTarget.CardInAOE(cardToTest, space);
+            return cardTarget.IsCardInMyAOE(cardToTest, space);
         }
 
         private bool WouldCardOverlapCardTargetIfCardTargetWereAtSpaceTarget(GameCardBase cardToTest, GameCardBase cardTarget, Space space)
@@ -317,7 +317,7 @@ namespace KompasCore.Effects
 
                 //positioning
                 SpaceFitsRestriction => potentialTarget.Position != null && spaceRestriction.IsValidSpace(potentialTarget.Position, context),
-                SourceInThisAOE => potentialTarget?.CardInAOE(Source) ?? false,
+                SourceInThisAOE => potentialTarget?.IsCardInMyAOE(Source) ?? false,
                 CardHasCardRestrictionInAOE => HasCardRestrictionInAOE(potentialTarget, x, context),
                 CardDoesntHaveCardRestrictionInAOE => !HasCardRestrictionInAOE(potentialTarget, x, context),
                 WouldBeInAOEOfCardTargetIfCardTargetWereAtSpaceTarget 

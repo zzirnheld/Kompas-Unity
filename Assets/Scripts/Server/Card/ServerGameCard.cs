@@ -178,7 +178,7 @@ namespace KompasServer.Cards
             var context = new ActivationContext(game: ServerGame, mainCardBefore: this, stackableCause: stackSrc, player: player);
 
             var cardsThisLeft = Location == CardLocation.Board ?
-                Game.boardCtrl.CardsAndAugsWhere(c => c != null && c.CardInAOE(this)).ToList() :
+                Game.boardCtrl.CardsAndAugsWhere(c => c != null && c.IsCardInMyAOE(this)).ToList() :
                 new List<GameCard>();
             var leaveContexts = cardsThisLeft.Select(c =>
                 new ActivationContext(game: ServerGame, mainCardBefore: this, secondaryCardBefore: c, stackableCause: stackSrc, player: player));

@@ -77,26 +77,26 @@ namespace KompasCore.Cards
         /// <summary>
         /// Whether <paramref name="space"/> is in this card's AOE if this card is at <paramref name="mySpace"/>
         /// </summary>
-        public bool SpaceInAOE(Space space, Space mySpace)
+        public bool IsSpaceInMyAOE(Space space, Space mySpace)
             => space != null && mySpace != null && SpellSubtypes != null && SpellSubtypes.Any(s => s switch
             {
                 RadialSubtype => mySpace.DistanceTo(space) <= Radius,
                 _ => false
             });
-        public bool SpaceInAOE(Space space) => SpaceInAOE(space, Position);
+        public bool IsSpaceInMyAOE(Space space) => IsSpaceInMyAOE(space, Position);
         /// <summary>
         /// Whether <paramref name="c"/> is in this card's AOE if this card is at <paramref name="mySpace"/>
         /// </summary>
-        public bool CardInAOE(GameCardBase c, Space mySpace) => SpaceInAOE(c.Position, mySpace);
+        public bool IsCardInMyAOE(GameCardBase c, Space mySpace) => IsSpaceInMyAOE(c.Position, mySpace);
         /// <summary>
         /// Whether <paramref name="c"/> is in the aoe of <see cref="this"/> card.
         /// </summary>
-        public bool CardInAOE(GameCardBase c) => CardInAOE(c, Position);
+        public bool IsCardInMyAOE(GameCardBase c) => IsCardInMyAOE(c, Position);
         /// <summary>
         /// Whether <paramref name="c"/> and this card have any spaces shared between their AOEs,
         /// if this card is at <paramref name="mySpace"/>
         /// </summary>
-        public bool Overlaps(GameCardBase c, Space mySpace) => Space.Spaces.Any(s => SpaceInAOE(s, mySpace) && c.SpaceInAOE(s));
+        public bool Overlaps(GameCardBase c, Space mySpace) => Space.Spaces.Any(s => IsSpaceInMyAOE(s, mySpace) && c.IsSpaceInMyAOE(s));
         /// <summary>
         /// Whether <paramref name="c"/> and this card have any spaces shared between their AOEs
         /// </summary>

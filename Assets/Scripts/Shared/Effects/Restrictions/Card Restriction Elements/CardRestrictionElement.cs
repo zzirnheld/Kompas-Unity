@@ -95,8 +95,7 @@ namespace KompasCore.Effects.Restrictions
 
         public class CanMoveTo : CardRestrictionElement
         {
-            //public IActivationContextIdentity<Space> contextDestination;
-            public INoActivationContextIdentity<Space> destination;
+            public IActivationContextIdentity<Space> destination;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {
@@ -105,11 +104,39 @@ namespace KompasCore.Effects.Restrictions
                     throw new System.ArgumentNullException("CanMoveTo has neither a contextual, nor a non-contextual, destination");
 
                 contextDestination?.Initialize(initializationContext);*/
-                destination?.Initialize(initializationContext);
+                destination.Initialize(initializationContext);
             }
 
             protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
-                => card.MovementRestriction.IsValidEffectMove(destination.Item, context);
+                => card.MovementRestriction.IsValidEffectMove(destination.From(context, default), context);
+        }
+
+        public class Encompasses : CardRestrictionElement
+        {
+            public IActivationContextIdentity<GameCardBase> encompassedCard;
+
+            public override void Initialize(EffectInitializationContext initializationContext)
+            {
+                base.Initialize(initializationContext);
+                encompassedCard.Initialize(initializationContext);
+            }
+
+            protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
+                => card.IsCardInMyAOE(encompassedCard.From(context, default));
+        }
+
+        public class InAOEOf : CardRestrictionElement
+        {
+            public IActivationContextIdentity<GameCardBase> inAOEOf;
+
+            public override void Initialize(EffectInitializationContext initializationContext)
+            {
+                base.Initialize(initializationContext);
+                inAOEOf.Initialize(initializationContext);
+            }
+
+            protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
+                => inAOEOf.From(context, default).IsCardInMyAOE(card);
         }
     }
 }
