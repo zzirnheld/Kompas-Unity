@@ -45,12 +45,16 @@
 			"reminder": "When I fight, kill me.\nWhen another character arrives adjacent to a Supplicant:"
 		},
 		{
-			"keyword":"Weather Condition",
-			"reminder":"When a non-Weather character arrives here, apply the listed effect.\nWhen turns start, deck->cast a Weather Condition adjacent to me, then annihilate me."
+			"keyword": "Weather Condition",
+			"reminder": "When a non-Weather character arrives here, apply the listed effect.\nWhen turns start, deck->cast a Weather Condition adjacent to me, then annihilate me."
 		},
 		{
-			"keyword":"Weather Event",
-			"reminder":"Summon me only in Weather overlap.\nWhen I'm summoned during an enemy turn, each Weather Condition I'm in does this to each card in it:"
+			"keyword": "Weather Event",
+			"reminder": "Summon me only in Weather overlap.\nWhen I'm summoned during an enemy turn, each Weather Condition I'm in does this to each card in it:"
+		},
+		{
+			"keyword": "Spin a Storm",
+			"reminder": "Hand->summon a Weather Event in that Weather Condition's overlap with another Weather Condition."
 		},
 		{
 			"keyword": "martyr",

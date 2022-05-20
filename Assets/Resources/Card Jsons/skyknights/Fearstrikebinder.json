@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Fearstrikebinder",
-	"effText": "When a friendly character defends in Weather, hand->summon a Weather Event that Weather's overlap.",
+	"effText": "When a friendly character defends in Weather, Spin a Storm there.",
 	"effects": [
 		{
 			"blurb": "Bind the fear",
@@ -36,85 +36,8 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardsCoordsSubeffect, Assembly-CSharp"
-				},
-                {
-                    "$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
-                    "condition": "No Space Fits Restriction",
-                    "spaceRestriction": {
-                        "spaceRestrictions": [
-                            "Empty",
-                            "In AOE of Number of Cards Fitting Restriction",
-                            "In AOE Space Target is Also In"
-                        ],
-                        "inAOEOfRestriction": {
-                            "cardRestrictions": [
-                                "Subtypes Include"
-                            ],
-                            "subtypesInclude": [
-                                "Weather"
-                            ]
-                        },
-                        "numberOfCardsInAOEOfRestriction": {
-                            "numberRestrictions": [
-                                ">=Constant"
-                            ],
-                            "constant": 2
-                        }
-                    }
-                },
-				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction": {
-						"blurb": "Weather Event to hand->summon",
-						"cardRestrictions": [
-							"Subtypes Include",
-							"Character",
-							"Friendly",
-							"Hand"
-						],
-						"subtypesInclude": [
-							"Weather",
-                            "Event"
-						]
-					}
-				},
-				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction": {
-						"blurb": "where Empress to hand-summon",
-						"spaceRestrictions": [
-							"Empty",
-                            "In AOE of Number of Cards Fitting Restriction",
-                            "In AOE Card Target is Also In"
-                        ],
-                        "inAOEOfRestriction": {
-                            "cardRestrictions": [
-                                "Subtypes Include"
-                            ],
-                            "subtypesInclude": [
-                                "Weather"
-                            ]
-                        },
-                        "numberOfCardsInAOEOfRestriction": {
-                            "numberRestrictions": [
-                                ">=Constant"
-                            ],
-                            "constant": 2
-                        },
-                        "alsoInAOEOfRestriction": {
-                            "cardRestrictions": [
-                                "Subtypes Include"
-                            ],
-                            "subtypesInclude": [
-                                "Weather"
-                            ]
-                        }
-					},
-					"targetIndex": -2
-				},
-				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.KeywordSubeffect, Assembly-CSharp",
+					"keyword": "Spin a Storm"
 				}
 			]
 		}
