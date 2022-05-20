@@ -42,7 +42,7 @@
 		},
 		{
 			"keyword": "Supplicant.",
-			"reminder": "When I fight, kill me."
+			"reminder": "When I fight, kill me.\nWhen another character arrives adjacent to a Supplicant:"
 		},
 		{
 			"keyword":"Weather Condition",
@@ -50,7 +50,7 @@
 		},
 		{
 			"keyword":"Weather Event",
-			"reminder":"Must be played in the overlap of Weather Conditions, but doesn't have to be played adjacent to a friendly card.\nWhen I'm summoned on an enemy turn, apply the listed effect."
+			"reminder":"Summon me only in Weather overlap.\nWhen I'm summoned during an enemy turn, each Weather Condition I'm in does this to each card in it:"
 		},
 		{
 			"keyword": "martyr",
@@ -65,7 +65,6 @@
 			"reminder":"Discard your deck's top card until you discard an appropriate character. Revive them."
 		},
 		{
-
 			"keyword":"Flashback.",
 			"reminder":"You can pip discard->cast me, then annihilate me."
 		},

@@ -1,18 +1,17 @@
 {
 	"cardType":83,
-	"cardName":"Rights of the Supplicant",
-	"effText":"When a Supplicant defends, give their attacker -1 EW. (This enchant must be in play when the attack is declared to trigger the effect.)",
-	"effects":[
+	"cardName": "Rights of the Supplicant",
+	"effText": "When a character attacks a Supplicant, give the attacker -1 EW.",
+	"effects": [
 		{
 			"triggerData":
 			{
-				"triggerCondition":"Defend",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Main Card Fits Restriction Before"],
-					"cardRestriction":
-					{
-						"cardRestrictions":["Subtypes Include"],
-						"subtypesInclude":["Supplicant"]
+				"triggerCondition": "Defend",
+				"triggerRestriction": {
+					"triggerRestrictions": ["This Card in Play","Main Card Fits Restriction Before"],
+					"cardRestriction": {
+						"cardRestrictions": [ "Subtypes Include" ],
+						"subtypesInclude": [ "Supplicant" ]
 					}
 				}
 			},
@@ -29,7 +28,7 @@
 			]	
 		}
 	],
-	"c":1,
-	"spellTypes":["Enchant"],
-	"subtypeText":"Enchant"
+	"c": 1,
+	"spellTypes": [ "Enchant" ],
+	"subtypeText": "Enchant"
 }

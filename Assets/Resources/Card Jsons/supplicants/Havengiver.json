@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Havengiver",
-	"effText":"When turns start, you can revive an S <= 1 Supplicant.",
+	"effText":"When turns start, revive a Supplicant.",
 	"effects":[
 		{
 			"triggerData":
@@ -19,9 +19,8 @@
 					"cardRestriction":
 					{
 						"blurb":"Supplicant to give safe haven",
-						"cardRestrictions":["Friendly","Discard","Character","S<=C","Subtypes Include"],
-						"subtypesInclude":["Supplicant"],
-						"constant":1
+						"cardRestrictions":["Friendly","Discard","Character","Subtypes Include"],
+						"subtypesInclude":["Supplicant"]
 					}
 				},
 				{
@@ -38,9 +37,9 @@
 			]
 		}
 	],
-	"n":1,
-	"e":3,
-	"s":4,
-	"w":3,
-	"subtypeText":"Supplicant"
+	"n":2,
+	"e":2,
+	"s":2,
+	"w":0,
+	"subtypeText": "Kind Person"
 }

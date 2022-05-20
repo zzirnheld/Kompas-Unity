@@ -529,21 +529,28 @@ sportsball/Rocket-Propelled Ball Juice
 sportsball/Overwhelming Ball Skills
 sportsball/Penalty Box
 
-supplicants/Answered Prayers
-supplicants/Deliver Us
 supplicants/Desperate Footpad
 supplicants/Disfigured Beggar
-supplicants/Find Me Find Peace
-supplicants/God of Mercy
-supplicants/Havengranter
 supplicants/Hungry Children
-supplicants/Kindly Old Doctor
-supplicants/Not Thrones and Crowns
 supplicants/Ostracized Leper
-supplicants/Prophet of Mercy
+supplicants/Widowed Mother
+
+supplicants/Fleeing Lovers
+supplicants/Sickly Old Man
+
+supplicants/Answered Prayers
+supplicants/Deliver Us
+supplicants/Find Me Find Peace
+supplicants/Not Thrones and Crowns
 supplicants/Save the People
 supplicants/Touch of the Divine
-supplicants/Widowed Mother
+supplicants/Protect Us
+
+supplicants/God of Mercy
+supplicants/Kindly Old Doctor
+supplicants/Prophet of Mercy
+supplicants/Havengiver
+supplicants/Havengranter
 
 swordguild/Dispeller by Sword
 swordguild/Squire
