@@ -1,7 +1,6 @@
 using KompasCore.Cards;
 using KompasCore.Effects.Identities;
 using KompasCore.Effects.Relationships;
-using KompasServer.Effects.Identities;
 
 namespace KompasCore.Effects.Restrictions
 {
@@ -80,6 +79,20 @@ namespace KompasCore.Effects.Restrictions
                 else if (space != null) return space.AdjacentTo(space);
                 else throw new System.NotImplementedException($"You forgot to account for some weird case for {InitializationContext.source}");
             }
+        }
+
+        public class InAOE : SpaceRestrictionElement
+        {
+            public IActivationContextIdentity<GameCardBase> inAOEOf;
+
+            public override void Initialize(EffectInitializationContext initializationContext)
+            {
+                base.Initialize(initializationContext);
+                inAOEOf.Initialize(initializationContext);
+            }
+
+            protected override bool AbstractIsValidSpace(Space space, ActivationContext context)
+                => inAOEOf.From(context, default).IsSpaceInMyAOE(space);
         }
 
         /// <summary>

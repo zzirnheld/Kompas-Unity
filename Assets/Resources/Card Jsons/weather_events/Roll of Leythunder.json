@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Roll of Leythunder",
-	"effText": "Weather Event: Dispel all non-Weather spells in the same Weather Condition as me.",
+	"effText": "Weather Event: Negate each enemy card until the next turn starts. If it was a spell you already negated, dispel it..",
 	"effects": [
 		{
 			"blurb": "Leythunder",
@@ -18,31 +18,69 @@
 				{
 					"$type": "KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Spell",
-							"Subtypes Exclude",
-							"Space Fits Restriction"
-						],
-						"subtypesExclude": [
-							"Weather"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"In AOE Source is Also In"
-							],
-							"alsoInAOEOfRestriction": {
-								"cardRestrictions": [
-									"Subtypes Include"
-								],
-								"subtypesInclude": [
-									"Weather"
-								]
-							}
+						"cardRestriction": {
+							"cardRestrictionElements": [
+								{
+									"$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.Encompasses, Assembly-CSharp",
+									"encompassedCard": { "$type": "KompasCore.Effects.Identities.GamestateCardIdentities.ThisCard, Assembly-CSharp" }
+								},
+								{
+									"$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.SubtypesInclude, Assembly-CSharp",
+									"subtypes": [ "Weather" ]
+								}
+							]
 						}
 					}
 				},
 				{
+					"$type": "KompasServer.Effects.JumpSubeffect, Assembly-CSharp",
+					"jumpIndices": [
+						6
+					]
+				},
+				{
+					"$type": "KompasServer.Effects.ConditionalJumpSubeffect, Assembly-CSharp",
+					"condition": "Target Violates Restriction",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Negated",
+							"Spell"
+						]
+					},
+					"jumpIndices": [
+						5
+					]
+				},
+				{
 					"$type": "KompasServer.Effects.DispelSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.JumpSubeffect, Assembly-CSharp",
+					"jumpIndices": [
+						6
+					]
+				},
+				{
+					"$type": "KompasServer.Effects.TemporaryNegateSubeffect, Assembly-CSharp",
+					"endCondition": "Turn Start",
+					"triggerRestriction": {
+						"triggerRestrictions": []
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.ForEachCardLoopSubeffect, Assembly-CSharp",
+					"cards": {
+						"$type": "KompasServer.Effects.Identities.SubeffectManyCardsIdentities.CardsInAOE, Assembly-CSharp",
+						"whoseAOE":  { "$type": "KompasServer.Effects.Identities.SubeffectCardIdentities.Target, Assembly-CSharp" },
+						"cardRestriction": {
+							"cardRestrictionElements": [
+								{ "$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.EnemyCard, Assembly-CSharp" }
+							]
+						}
+					},
+					"jumpIndices": [
+						1
+					]
 				},
 				{
 					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",

@@ -1,10 +1,10 @@
 {
 	"cardType": 67,
-	"cardName": "Windstorm of Etaqua",
-	"effText": "Weather Event: Move each card in each Weather to a space in the same Weather.",
+	"cardName": "Leyhail Elemental",
+	"effText": "Weather Event: Give each character's controller 1 pip.",
 	"effects": [
 		{
-			"blurb": "Blow away",
+			"blurb": "Leyhailstones",
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
@@ -39,30 +39,10 @@
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction": {
-						"blurb": "Space to move a card to",
-                        "spaceRestrictionElements": [
-                            { "$type": "KompasCore.Effects.Restrictions.SpaceRestrictionElements.Empty, Assembly-CSharp" },
-                            {
-                                "$type": "KompasCore.Effects.Restrictions.SpaceRestrictionElements.CanMoveCard, Assembly-CSharp",
-                                "toMove": {
-									"$type": "KompasServer.Effects.Identities.SubeffectCardIdentities.Target, Assembly-CSharp",
-									"index": -1
-								}
-                            },
-                            {
-                                "$type": "KompasCore.Effects.Restrictions.SpaceRestrictionElements.inAOEOf, Assembly-CSharp",
-                                "inAOEOf": {
-									"$type": "KompasServer.Effects.Identities.SubeffectCardIdentities.Target, Assembly-CSharp",
-									"index": -2
-								}
-                            }
-                        ]
-					}
+					"$type": "KompasServer.Effects.TargetTargetsControllerSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type": "KompasServer.Effects.ForEachCardLoopSubeffect, Assembly-CSharp",
@@ -124,9 +104,9 @@
 			}
 		}
 	},
-	"n": 9,
-	"e": 3,
+	"n": 2,
+	"e": 5,
 	"s": 4,
-	"w": 3,
+	"w": 7,
 	"subtypeText": "Weather Event Elemental"
 }

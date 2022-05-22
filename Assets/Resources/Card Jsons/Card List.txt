@@ -654,10 +654,10 @@ weather_support/Eventful Weather
 
 weather_events/Lightning Elemental
 weather_events/Blizzard Squall
-weather_events/Immagic Drought
 weather_events/Roll of Leythunder
 weather_events/Windstorm of Etaqua
 weather_events/Leyhail Elemental
+weather_events/Brainstorm Elemental
 
 wisps/Erratic Wisps
 wisps/Flippiwisp

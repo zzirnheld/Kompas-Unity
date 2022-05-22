@@ -28,16 +28,26 @@ namespace KompasServer.Effects
         {
             base.OnLoopExit();
             cardsToLoopOver = default;
+
+            PruneTargets();
+            lastTarget = default;
+        }
+
+        private void PruneTargets()
+        {
+            if (lastTarget != default)
+            {
+                while (CardTarget != lastTarget) RemoveTarget();
+            }
         }
 
         protected override bool ShouldContinueLoop
         {
             get
             {
+                PruneTargets();
                 if (cardsToLoopOver.Count > 0)
                 {
-                    while (CardTarget != lastTarget) RemoveTarget();
-
                     lastTarget = cardsToLoopOver[0].Card;
                     cardsToLoopOver.RemoveAt(0);
                     Effect.AddTarget(lastTarget);
