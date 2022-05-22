@@ -1,12 +1,12 @@
 {
 	"cardType": 67,
 	"cardName": "Segascanturian Invoker",
-	"effText": "When an opponent plays a card adjacent to me, Invoke.",
+	"effText": "When an enemy card arrives adjacent to me, I Invoke a character with less S than me.",
 	"effects": [
 		{
 			"triggerData": {
 				"blurb": "Invoke",
-				"triggerCondition": "Play",
+				"triggerCondition": "Arrive",
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",

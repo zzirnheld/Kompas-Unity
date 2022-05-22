@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Not Thrones and Crowns",
-	"effText": "Move each enemy character adjacent to a friendly Supplicant anywhere else, if you can.",
+	"effText": "Move each enemy adjacent to a friendly Supplicant to any other space.",
 	"effects": [
 		{
 			"triggerData": {
@@ -17,7 +17,6 @@
 					"$type": "KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Character",
 							"Enemy",
 							"Board",
 							"Space Fits Restriction"
@@ -38,6 +37,12 @@
 					}
 				},
 				{
+					"$type": "KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
+					"jumpIndices": [
+						4
+					]
+				},
+				{
 					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction": {
 						"blurb": "where to move the supplicant's attacker",
@@ -49,6 +54,9 @@
 				},
 				{
 					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.ClearOnImpossibleSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",

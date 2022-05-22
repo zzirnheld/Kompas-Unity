@@ -1,0 +1,89 @@
+{
+	"cardType": 83,
+	"cardName": "Invocation Ripples",
+	"effText": "When your Invoker summons an S X character, discard your deck's top X. Revive a Spirit among them.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+                        "Controller Triggered",
+						"Main Card Fits Restriction Before",
+                        "Stackable Source Fits Restriction Now"
+                    ],
+                    "sourceRestriction":
+                    {
+                        "cardRestrictions": [
+                            "Subtypes Include"
+                        ],
+                        "subtypesInclude": [
+                            "Invoker"
+                        ]
+                    },
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Character"
+						],
+						"subtypesInclude": [
+							"Ethereal"
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "S"
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.MillSubeffect, Assembly-CSharp",
+					"xMultiplier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Spirit to ripple into",
+						"cardRestrictions": [
+							"Character",
+							"Subtypes Include",
+							"Can Be Played",
+							"Already Target"
+						],
+						"subtypesInclude": [
+							"Spirit"
+						]
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where to ripple the spirit into",
+						"spaceRestrictions": [
+							"Can Play Card Target to This Space",
+							"Empty"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"c": 3,
+	"unique": true,
+	"spellTypes": [
+		"Enchant"
+	],
+	"subtypeText": "Enchant"
+}

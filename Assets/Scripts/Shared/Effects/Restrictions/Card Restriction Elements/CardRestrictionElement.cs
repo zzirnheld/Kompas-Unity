@@ -25,10 +25,22 @@ namespace KompasCore.Effects.Restrictions
                 => card != null;
         }
 
+        public class FriendlyCard : CardRestrictionElement
+        {
+            protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
+                => card.Controller == InitializationContext.source.Controller;
+        }
+
         public class EnemyCard : CardRestrictionElement
         {
             protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
                 => card.Controller != InitializationContext.source.Controller;
+        }
+
+        public class Character : CardRestrictionElement
+        {
+            protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
+                => card.CardType == 'C';
         }
 
         public class Location : CardRestrictionElement

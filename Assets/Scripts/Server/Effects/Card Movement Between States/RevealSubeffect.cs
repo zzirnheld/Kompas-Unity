@@ -5,7 +5,7 @@ namespace KompasServer.Effects
 {
     public class RevealSubeffect : CardChangeStateSubeffect
     {
-        public override bool IsImpossible() => CardTarget == null;
+        public override bool IsImpossible() => CardTarget == null || CardTarget.KnownToEnemy;
 
         public override Task<ResolutionInfo> Resolve()
         {

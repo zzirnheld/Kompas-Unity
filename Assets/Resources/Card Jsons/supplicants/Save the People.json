@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Save the People",
-	"effText": "When turns start, shuffle your deck. Then, if your topdeck is a Supplicant, deck-summon it.",
+	"effText": "When turns start, discard your deck's top card. If it's a Supplicant, summon it.",
 	"effects": [
 		{
 			"triggerData": {
@@ -14,19 +14,8 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.ShuffleDeckSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type": "KompasServer.Effects.AutoTargetSubeffect, Assembly-CSharp",
-					"cardRestriction": {
-						"blurb": "for Haemopoten to draw",
-						"cardRestrictions": [
-							"Friendly",
-							"Deck",
-							"Index<C"
-						],
-						"constant": 1
-					}
+					"$type": "KompasServer.Effects.MillSubeffect, Assembly-CSharp",
+					"xMultiplier": 1
 				},
 				{
 					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",

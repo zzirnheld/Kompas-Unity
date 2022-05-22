@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Unfocusing Annoyance",
-	"effText": "When I'm revived, dispel an adjacent spell.",
+	"effText": "When I'm revived, dispel an adjacent enemy spell.",
 	"effects": [
 		{
 			"blurb": "Annoyance",
@@ -27,6 +27,7 @@
 						"cardRestrictions": [
 							"Board",
 							"Spell",
+							"Enemy",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
@@ -42,7 +43,7 @@
 			]
 		}
 	],
-	"n": 1,
+	"n": 7,
 	"e": 1,
 	"s": 6,
 	"w": 8,

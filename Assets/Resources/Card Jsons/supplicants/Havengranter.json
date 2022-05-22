@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Havengranter",
-	"effText": "When turns start, hand-summon an S <= 1 character adjacent to me.",
+	"effText": "When turns start, hand-summon an S 1 character adjacent to me.",
 	"effects": [
 		{
 			"triggerData": {
@@ -15,16 +15,23 @@
 			"subeffects": [
 				{
 					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction": {
-						"blurb": "for Empress to hand-summon",
-						"cardRestrictions": [
+                    "cardRestriction":
+                    {
+						"blurb": "for Havengranter to hand-summon",
+                        "cardRestrictions": [
 							"Character",
 							"Friendly",
 							"Hand",
-							"S<=C"
-						],
-						"constant": 1
-					}
+                            "Card Value Fits Number Restriction"
+                        ],
+                        "cardValue": {
+                            "value": "S"
+                        },
+                        "cardValueNumberRestriction": {
+                            "numberRestrictions": ["==Constant"],
+                            "constant": 1
+                        }
+                    }
 				},
 				{
 					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
@@ -43,9 +50,9 @@
 			]
 		}
 	],
-	"n": 0,
-	"e": 5,
-	"s": 5,
+	"n": 2,
+	"e": 2,
+	"s": 2,
 	"w": 0,
 	"subtypeText": "Kind Person"
 }

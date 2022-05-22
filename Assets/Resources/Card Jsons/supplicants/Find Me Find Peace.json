@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Find Me Find Peace",
-	"effText": "Search your deck's top 7 cards for any number of Supplicants.",
+	"effText": "Deck->hand any number of Supplicants from your deck's top 7 cards.",
 	"effects": [
 		{
 			"triggerData": {

@@ -14,6 +14,8 @@ namespace KompasServer.Effects
 
         public const string NoneFitRestriction = "None Fit Restriction";
         public const string AnyFitRestriction = "Any Fit Restriction";
+        public const string NumberOfCardsFittingRestrictionFitsNumberRestriction =
+            "Number of Cards Fitting CardRestriction Fits NumberRestriction";
 
         public const string NoSpaceFitsRestriction = "No Space Fits Restriction";
 
@@ -33,8 +35,8 @@ namespace KompasServer.Effects
 
         public int constant = 0;
         public CardRestriction cardRestriction;
-
         public SpaceRestriction spaceRestriction;
+        public NumberRestriction numberRestriction;
 
         public PlayerValue playerValue;
         public NumberRestriction playerValueNumberRestriction;
@@ -47,7 +49,14 @@ namespace KompasServer.Effects
 
             cardRestriction?.Initialize(DefaultRestrictionContext);
             spaceRestriction?.Initialize(DefaultRestrictionContext);
+            numberRestriction?.Initialize(DefaultRestrictionContext);
             playerValueNumberRestriction?.Initialize(DefaultRestrictionContext);
+        }
+
+        private bool doesNumberOfCardsFittingRestrictionFitNumberRestriction()
+        {
+            int number = ServerGame.Cards.Where(c => cardRestriction.IsValidCard(c, CurrentContext)).Count();
+            return numberRestriction.IsValidNumber(number);
         }
 
         private bool ShouldEnd
@@ -64,8 +73,9 @@ namespace KompasServer.Effects
 
                     NoneFitRestriction => !ServerGame.Cards.Any(c => cardRestriction.IsValidCard(c, CurrentContext)),
                     AnyFitRestriction => ServerGame.Cards.Any(c => cardRestriction.IsValidCard(c, CurrentContext)),
+                    NumberOfCardsFittingRestrictionFitsNumberRestriction => doesNumberOfCardsFittingRestrictionFitNumberRestriction(),
 
-                    NoSpaceFitsRestriction => !Space.Spaces.Any(s => spaceRestriction.IsValidSpace(s, Context, CardTarget)),
+                    NoSpaceFitsRestriction => !Space.Spaces.Any(s => spaceRestriction.IsValidSpace(s, CurrentContext, CardTarget)),
 
                     MustBeFriendlyTurn => ServerGame.TurnPlayer != Effect.Controller,
                     MustBeEnemyTurn => ServerGame.TurnPlayer == Effect.Controller,

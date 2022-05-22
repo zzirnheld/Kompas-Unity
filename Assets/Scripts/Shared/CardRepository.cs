@@ -45,7 +45,7 @@ public class CardRepository : MonoBehaviour
 
     private static readonly Dictionary<string, string> keywordJsons = new Dictionary<string, string>();
     private static readonly Dictionary<string, string> partialKeywordJsons = new Dictionary<string, string>();
-    private static readonly Dictionary<string, string> keywordTriggerJsons = new Dictionary<string, string>();
+    private static readonly Dictionary<string, string> triggerKeywordJsons = new Dictionary<string, string>();
 
     private static bool initalized = false;
 

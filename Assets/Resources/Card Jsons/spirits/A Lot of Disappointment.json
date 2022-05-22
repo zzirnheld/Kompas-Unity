@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "A Lot of Disappointment",
-	"effText": "When I'm revived, set X to my W, then give an adjacent character -X W.",
+	"effText": "When I'm revived, set X to my W. Give an adjacent character -X W.",
 	"effects": [
 		{
 			"blurb": "Disappointment",
@@ -53,9 +53,9 @@
 			]
 		}
 	],
-	"n": 1,
-	"e": 7,
+	"n": 5,
+	"e": 3,
 	"s": 6,
-	"w": 7,
+	"w": 8,
 	"subtypeText": "Ethereal Spirit"
 }

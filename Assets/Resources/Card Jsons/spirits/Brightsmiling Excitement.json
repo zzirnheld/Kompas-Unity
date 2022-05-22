@@ -1,0 +1,52 @@
+{
+	"cardType": 67,
+	"cardName": "Brightsmiling Excitement",
+	"effText": "When I'm revived, give an N X character +X N.",
+	"effects": [
+		{
+			"blurb": "Excitement",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Discard"
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Board",
+							"Character"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "N"
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"nMultiplier": 1
+				}
+			]
+		}
+	],
+	"n": 5,
+	"e": 3,
+	"s": 6,
+	"w": 8,
+	"subtypeText": "Ethereal Spirit"
+}

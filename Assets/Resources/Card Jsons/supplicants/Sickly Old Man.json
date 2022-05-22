@@ -1,27 +1,10 @@
 {
 	"cardType":67,
 	"cardName":"Sickly Old Man",
-	"effText":"When turns start, give me -1 E.",
-	"effects":[
-		{
-			"triggerData":
-			{
-				"blurb":"Old Man's sickness",
-				"triggerCondition":"Turn Start",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play"]
-				}
-			},
-			"subeffects":[
-				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eModifier":-1
-				}
-			]
-		}
+	"effText":"Supplicant.",
+	"effects":[ ],
+	"keywords": [
+		"Supplicant"
 	],
 	"n":1,
 	"e":1,

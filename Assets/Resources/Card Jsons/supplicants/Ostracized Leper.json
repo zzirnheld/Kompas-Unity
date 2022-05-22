@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Ostracized Leper",
-	"effText": "Supplicant.\nWhen another character arrives adjacent to a Supplicant, give that character -1 E.",
+	"effText": "Supplicant: Give that character -1 E.",
 	"effects": [
 		{
 			"triggerData": {

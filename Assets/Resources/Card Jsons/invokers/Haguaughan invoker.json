@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Haguaughan Invoker",
-	"effText": "When turns start, if I'm adjacent to an enemy Avatar, Invoke.",
+	"effText": "When I start turns adjacent to an enemy Avatar, I Invoke a character with less S than me.",
 	"effects": [
 		{
 			"triggerData": {

@@ -1,0 +1,52 @@
+{
+	"cardType": 67,
+	"cardName": "Hog Wildness",
+	"effText": "When I'm revived, give a W X character +X W.",
+	"effects": [
+		{
+			"blurb": "Wildness",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Discard"
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Board",
+							"Character"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "W"
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"wMultiplier": 1
+				}
+			]
+		}
+	],
+	"n": 6,
+	"e": 6,
+	"s": 6,
+	"w": 6,
+	"subtypeText": "Ethereal Spirit"
+}

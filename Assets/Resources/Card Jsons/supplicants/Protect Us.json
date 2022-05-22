@@ -1,17 +1,17 @@
 {
-	"cardType":83,
-	"cardName":"Protect Us",
-	"effText":"Set X to the number of friendly Supplicants. Give all friendly Supplicants +X E. Give all friendly Negated Supplicants +X W.",
+	"cardType": 83,
+	"cardName": "Protect Us",
+	"effText": "Give all X friendly Supplicants +X E. Give all friendly Negated Supplicants +2 * X W.",
 	"effects":[
 		{
 			"triggerData":
 			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card is Main Card"]
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": ["This Card is Main Card"]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
 					"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
 					"whatToCount":"Cards Fitting Restriction",
@@ -43,8 +43,7 @@
 			]
 		}
 	],
-	"c":3,
-	"unique":true,
-	"spellTypes":["Simple"],
-	"subtypeText":"Simple Plea"
+	"c": 1,
+	"spellTypes": [ "Simple" ],
+	"subtypeText": "Simple Plea"
 }

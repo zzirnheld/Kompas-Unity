@@ -42,15 +42,19 @@
 		},
 		{
 			"keyword": "Supplicant.",
-			"reminder": "When I fight, kill me."
+			"reminder": "When I fight, kill me.\nWhen another character arrives adjacent to a Supplicant:"
 		},
 		{
-			"keyword":"Weather Condition",
-			"reminder":"When a non-Weather character arrives here, apply the listed effect.\nWhen turns start, deck->cast a Weather Condition adjacent to me, then annihilate me."
+			"keyword": "Weather Condition",
+			"reminder": "When a non-Weather character arrives here, apply the listed effect.\nWhen turns start, deck->cast a Weather Condition adjacent to me, then annihilate me."
 		},
 		{
-			"keyword":"Weather Event",
-			"reminder":"Must be played in the overlap of Weather Conditions, but doesn't have to be played adjacent to a friendly card.\nWhen I'm summoned on an enemy turn, apply the listed effect."
+			"keyword": "Weather Event",
+			"reminder": "Summon me only in Weather overlap.\nWhen I'm summoned during an enemy turn, each Weather Condition I'm in does this to each card in it:"
+		},
+		{
+			"keyword": "Spin a Storm",
+			"reminder": "Hand->summon a Weather Event in that Weather Condition's overlap with another Weather Condition."
 		},
 		{
 			"keyword": "martyr",
@@ -61,11 +65,10 @@
 			"reminder":"When I'm summoned, or when turns start, move me 1 space."
 		},
 		{
-			"keyword": "Invoke",
-			"reminder": "Mill until you mill a character with S < my S. Revive them."
+			"keyword":"Invoke",
+			"reminder":"Discard your deck's top card until you discard an appropriate character. Revive them."
 		},
 		{
-
 			"keyword":"Flashback.",
 			"reminder":"You can pip discard->cast me, then annihilate me."
 		},

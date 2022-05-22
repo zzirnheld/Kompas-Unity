@@ -160,7 +160,7 @@ namespace KompasCore.Cards
         public int AttacksThisTurn => attacksThisTurn;
 
         //restrictions
-        public MovementRestriction MovementRestriction { get; private set; }
+        public override MovementRestriction MovementRestriction { get; protected set; }
         public AttackRestriction AttackRestriction { get; private set; }
         public override PlayRestriction PlayRestriction { get; protected set; }
 
