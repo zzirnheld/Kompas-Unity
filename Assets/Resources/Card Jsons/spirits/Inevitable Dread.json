@@ -1,0 +1,56 @@
+{
+	"cardType": 67,
+	"cardName": "Inevitable Dread",
+	"effText": "When you revive a Spirit, revive me.",
+	"effects": [
+		{
+			"blurb": "Dread",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"Main Card Fits Restriction Before",
+						"This Card Fits Restriction Now"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Discard"
+						]
+					},
+					"selfRestriction": {
+						"cardRestrictions": [
+							"Discard"
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where to revive the Dread",
+                        "spaceRestrictionElements": [
+                            { "$type": "KompasCore.Effects.Restrictions.SpaceRestrictionElements.Empty, Assembly-CSharp" },
+                            {
+                                "$type": "KompasCore.Effects.Restrictions.SpaceRestrictionElements.CanPlayCard, Assembly-CSharp",
+                                "toPlay": { "$type": "KompasServer.Effects.Identities.SubeffectCardIdentities.Target, Assembly-CSharp" }
+                            }
+                        ]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"n": 7,
+	"e": 3,
+	"s": 8,
+	"w": 5,
+	"subtypeText": "Ethereal Spirit"
+}
