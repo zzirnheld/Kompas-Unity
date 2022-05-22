@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Leyhail Elemental",
-	"effText": "Weather Event: Repeat for each card in Weather I'm also in: give their controller a pip.",
+	"effText": "Weather Event: Give each character's controller 1 pip.",
 	"effects": [
 		{
 			"blurb": "Leyhailstones",
@@ -18,30 +18,47 @@
 				{
 					"$type": "KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"In AOE Source is Also In"
-							],
-							"alsoInAOEOfRestriction": {
-								"cardRestrictions": [
-									"Subtypes Include"
-								],
-								"subtypesInclude": [
-									"Weather"
-								]
-							}
+						"cardRestriction": {
+							"cardRestrictionElements": [
+								{
+									"$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.Encompasses, Assembly-CSharp",
+									"encompassedCard": { "$type": "KompasCore.Effects.Identities.GamestateCardIdentities.ThisCard, Assembly-CSharp" }
+								},
+								{
+									"$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.SubtypesInclude, Assembly-CSharp",
+									"subtypes": [ "Weather" ]
+								}
+							]
 						}
 					}
+				},
+				{
+					"$type": "KompasServer.Effects.JumpSubeffect, Assembly-CSharp",
+					"jumpIndices": [
+						4
+					]
 				},
 				{
 					"$type": "KompasServer.Effects.TargetTargetsControllerSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
-					"xModifier": 1
+					"xMultiplier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.ForEachCardLoopSubeffect, Assembly-CSharp",
+					"cards": {
+						"$type": "KompasServer.Effects.Identities.SubeffectManyCardsIdentities.CardsInAOE, Assembly-CSharp",
+						"whoseAOE":  { "$type": "KompasServer.Effects.Identities.SubeffectCardIdentities.Target, Assembly-CSharp" },
+						"cardRestriction": {
+							"cardRestrictionElements": [
+								{ "$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.EnemyCard, Assembly-CSharp" }
+							]
+						}
+					},
+					"jumpIndices": [
+						1
+					]
 				},
 				{
 					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",

@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Lightning Elemental",
-	"effText": "Weather Event: Give an enemy character in the same Weather Condition as me -7 E.",
+	"effText": "Weather Event: give each enemy character -3 E.",
 	"effects": [
 		{
 			"blurb": "Strike Lightning",
@@ -16,33 +16,41 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
 					"cardRestriction": {
-						"blurb": "character to strike with lightning",
-						"cardRestrictions": [
-							"Enemy",
-							"Character",
-							"Board",
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"In AOE Source is Also In"
-							],
-							"alsoInAOEOfRestriction": {
-								"cardRestrictions": [
-									"Subtypes Include"
-								],
-								"subtypesInclude": [
-									"Weather"
-								]
-							}
+						"cardRestriction": {
+							"cardRestrictionElements": [
+								{
+									"$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.Encompasses, Assembly-CSharp",
+									"encompassedCard": { "$type": "KompasCore.Effects.Identities.GamestateCardIdentities.ThisCard, Assembly-CSharp" }
+								},
+								{
+									"$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.SubtypesInclude, Assembly-CSharp",
+									"subtypes": [ "Weather" ]
+								}
+							]
 						}
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eModifier": -7
+					"$type": "KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"cardsIdentity": {
+						"$type": "KompasServer.Effects.Identities.SubeffectManyCardsIdentities.CardsInAOE, Assembly-CSharp",
+						"whoseAOE":  { "$type": "KompasServer.Effects.Identities.SubeffectCardIdentities.Target, Assembly-CSharp" },
+						"cardRestriction": {
+							"cardRestrictionElements": [
+								{ "$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.EnemyCard, Assembly-CSharp" }
+							]
+						}
+					},
+					"eModifier": -3
+				},
+				{
+					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete": true,
+					"jumpIndices": [
+						1
+					]
 				}
 			]
 		}

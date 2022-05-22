@@ -1,10 +1,10 @@
 {
 	"cardType": 67,
-	"cardName": "Immagic Drought",
-	"effText": "Weather Event: Give each enemy character -1 N.",
+	"cardName": "Downerdraft",
+	"effText": "Weather Event: give each enemy character -3 W.",
 	"effects": [
 		{
-			"blurb": "Dessicate",
+			"blurb": "Strike Lightning",
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
@@ -18,33 +18,32 @@
 				{
 					"$type": "KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Character",
-							"Board",
-                            "Enemy",
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"In AOE Source is Also In"
-							],
-							"alsoInAOEOfRestriction": {
-								"cardRestrictions": [
-									"Subtypes Include"
-								],
-								"subtypesInclude": [
-									"Weather"
-								]
-							}
+						"cardRestriction": {
+							"cardRestrictionElements": [
+								{
+									"$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.Encompasses, Assembly-CSharp",
+									"encompassedCard": { "$type": "KompasCore.Effects.Identities.GamestateCardIdentities.ThisCard, Assembly-CSharp" }
+								},
+								{
+									"$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.SubtypesInclude, Assembly-CSharp",
+									"subtypes": [ "Weather" ]
+								}
+							]
 						}
-                    }
+					}
 				},
 				{
-					"$type": "KompasServer.Effects.TemporaryNegateSubeffect, Assembly-CSharp",
-					"endCondition": "Turn Start",
-					"triggerRestriction": {
-						"triggerRestrictions": []
-					}
+					"$type": "KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"cardsIdentity": {
+						"$type": "KompasServer.Effects.Identities.SubeffectManyCardsIdentities.CardsInAOE, Assembly-CSharp",
+						"whoseAOE":  { "$type": "KompasServer.Effects.Identities.SubeffectCardIdentities.Target, Assembly-CSharp" },
+						"cardRestriction": {
+							"cardRestrictionElements": [
+								{ "$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.EnemyCard, Assembly-CSharp" }
+							]
+						}
+					},
+					"wModifier": -5
 				},
 				{
 					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
@@ -91,9 +90,9 @@
 			}
 		}
 	},
-	"n": 4,
-	"e": 7,
+	"n": 5,
+	"e": 3,
 	"s": 4,
-	"w": 4,
+	"w": 7,
 	"subtypeText": "Weather Event Elemental"
 }

@@ -7,6 +7,10 @@ namespace KompasServer.Effects
     {
         public bool canDecline = false;
 
+        private bool inLoop = false;
+
+        protected virtual bool ShouldContinueLoop => true;
+
         protected virtual void OnLoopExit()
         {
             //make the "no other targets" button disappear
@@ -17,10 +21,15 @@ namespace KompasServer.Effects
             }
         }
 
-        protected virtual bool ShouldContinueLoop => true;
+        protected virtual void OnLoopEnter()
+        {
+            inLoop = true;
+        }
 
         public override Task<ResolutionInfo> Resolve()
         {
+            if (!inLoop) OnLoopEnter();
+
             //loop again if necessary
             Debug.Log($"im in ur loop of type {GetType()}, the one that jumps to {JumpIndex}");
             if (ShouldContinueLoop)
@@ -45,6 +54,8 @@ namespace KompasServer.Effects
             //let parent know the loop is over
             if (ServerEffect.OnImpossible == this) ServerEffect.OnImpossible = null;
             ServerEffect.CanDeclineTarget = false;
+
+            inLoop = false;
 
             //do anything necessary to clean up the loop
             OnLoopExit();
