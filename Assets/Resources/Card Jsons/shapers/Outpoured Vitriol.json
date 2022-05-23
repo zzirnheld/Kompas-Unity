@@ -1,0 +1,46 @@
+{
+	"cardType": 67,
+	"cardName": "Outpoured Vitriol",
+	"effText": "Shape.\nWhen a Shaper Shapes through me, give me +2 NSW.",
+	"effects": [
+		{
+			"triggerData": {
+				"blurb": "Condense",
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictionElements": [
+                        { "$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.ThisCardInPlay, Assembly-CSharp" },
+                        {
+                            "$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.TriggerKeyword, Assembly-CSharp",
+                            "keyword": "Shaped Through"
+                        }
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"nModifier": 2,
+					"sModifier": 2,
+					"wModifier": 2
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Shape",
+		"Evasive"
+	],
+	"n": 0,
+	"e": 6,
+	"s": 4,
+	"w": 4,
+	"subtypes": [
+		"Ethereal",
+        "Shaper"
+	],
+	"subtypeText": "Ethereal Shaper"
+}

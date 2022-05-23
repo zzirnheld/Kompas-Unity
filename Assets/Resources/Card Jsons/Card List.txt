@@ -443,6 +443,11 @@ shapers/Tethered Dreammist
 shapers/Infolding Hopelessness
 shapers/Kindred Spirit
 
+shapers/Golranner Smoke
+shapers/Gapfillermist
+shapers/Outpoured Vitriol
+shapers/Thrillmist
+
 skyknights/Fearstrikebinder
 skyknights/Venturebinder
 skyknights/Skillingbinder

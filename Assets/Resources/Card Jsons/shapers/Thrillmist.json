@@ -1,0 +1,51 @@
+{
+	"cardType": 67,
+	"cardName": "Thrillmist",
+	"effText": "Shape.\nWhen a Shaper Shapes through me, give us both +3 W.",
+	"effects": [
+		{
+			"triggerData": {
+				"blurb": "Thrill",
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictionElements": [
+                        { "$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.ThisCardInPlay, Assembly-CSharp" },
+                        {
+                            "$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.TriggerKeyword, Assembly-CSharp",
+                            "keyword": "Shaped Through"
+                        }
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"wModifier": 3
+				},
+				{
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"wModifier": 3
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Shape",
+		"Evasive"
+	],
+	"n": 1,
+	"e": 5,
+	"s": 3,
+	"w": 1,
+	"subtypes": [
+		"Ethereal",
+        "Shaper"
+	],
+	"subtypeText": "Ethereal Shaper"
+}
