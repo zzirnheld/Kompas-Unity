@@ -20,6 +20,7 @@ public enum CostType
 public class VoxelCard : MonoBehaviour
 {
     public static float PI4 = Mathf.PI / 4.0f;
+    public Material BaseMaterial;
 
     public bool RebuildMeshOnChange;
     public bool RebuildTextureOnChange;
@@ -29,18 +30,64 @@ public class VoxelCard : MonoBehaviour
     public float TypePlacardWidth;
     public bool HasN, HasE, HasSAC, HasW, HasR, HasD;
     public int TextureResolution;
+
     public Sprite FrameTexture;
+    [Range(0.0f, 1.0f)]
+    public float FrameMetallic;
+    [Range(0.0f, 1.0f)]
+    public float FrameGloss;
+
     public Sprite NamePlacardTexture;
+    [Range(0.0f, 1.0f)]
+    public float NamePlacardMetallic;
+    [Range(0.0f, 1.0f)]
+    public float NamePlacardGloss;
+
     public Sprite TypePlacardTexture;
+    [Range(0.0f, 1.0f)]
+    public float TypePlacardMetallic;
+    [Range(0.0f, 1.0f)]
+    public float TypePlacardGloss;
+
+    public bool ApplyStatColors;
+    [Range(0.0f, 1.0f)]
+    public float StatsMetallic;
+    [Range(0.0f, 1.0f)]
+    public float StatsGloss;
+
     public Sprite NTexture;
+    public Color NColor;
+
     public Sprite ETexture;
+    public Color EColor;
+
     public Sprite SACTexture;
+    public Color SACColor;
+
     public Sprite WTexture;
+    public Color WColor;
+
     public Sprite RTexture;
+
     public Sprite DTexture;
+
     public Sprite CharacterArt;
+    [Range(0.0f, 1.0f)]
+    public float CharacterArtMetallic;
+    [Range(0.0f, 1.0f)]
+    public float CharacterArtGloss;
+
     public Sprite EffectTextTexture;
+    [Range(0.0f, 1.0f)]
+    public float EffectTextMetallic;
+    [Range(0.0f, 1.0f)]
+    public float EffectTextGloss;
+
     public Sprite CardBackTexture;
+    [Range(0.0f, 1.0f)]
+    public float CardBackMetallic;
+    [Range(0.0f, 1.0f)]
+    public float CardBackGloss;
 
     private Mesh CardMesh;
     
@@ -72,8 +119,8 @@ public class VoxelCard : MonoBehaviour
 
     public void GenerateTexture()
     {
-        Texture2D newTexture = BuildTexture();
-        ApplyTexture(newTexture);
+        List<Texture2D> newTextures = BuildTexture();
+        ApplyTexture(newTextures);
     }
 
     private MeshData BuildMesh()
@@ -89,7 +136,7 @@ public class VoxelCard : MonoBehaviour
         }
         void addUV(Vector3 point, int texture)
         {
-            if (texture == 0) point *= 1.0f / (1.0f + FrameThickness);
+            if (texture == 0) point *= 1.0f / (1.0f + 2.0f * FrameThickness);
             float uvX = (point.x + 1.0f) * 0.5f;
             float uvY = (point.z + 1.0f) * 0.5f;
 
@@ -665,9 +712,10 @@ public class VoxelCard : MonoBehaviour
         collider.sharedMesh = CardMesh;
     }
 
-    private Texture2D BuildTexture()
+    private List<Texture2D> BuildTexture()
     {
         Texture2D newTexture = new Texture2D(TextureResolution * 3, TextureResolution * 2, TextureFormat.ARGB32, false);
+        Texture2D metalness = new Texture2D(TextureResolution * 3, TextureResolution * 2, TextureFormat.ARGB32, false);
 
         Vector2Int FrameSamplingStartIndex;
         float FrameSamplingIncrement;
@@ -851,17 +899,47 @@ public class VoxelCard : MonoBehaviour
                 //Frame texture
                 position = new Vector2Int(x, y);
                 samplePosition = new Vector2Int(FrameSamplingStartIndex.x + (int)(FrameSamplingIncrement * x), FrameSamplingStartIndex.y + (int)(FrameSamplingIncrement * y));
-                newTexture.SetPixel(position.x, position.y, FrameTexture.texture.GetPixel(samplePosition.x, samplePosition.y));
+                Color frameColor = FrameTexture.texture.GetPixel(samplePosition.x, samplePosition.y);
+                if (ApplyStatColors)
+                {
+                    Vector2 normalizedXY = new Vector2(((float)x / TextureResolution - FrameThickness) / (1.0f - 2.0f * FrameThickness), ((float)y / TextureResolution - FrameThickness) / (1.0f - 2.0f * FrameThickness));
+                    if (normalizedXY.y > 7.1f / 12.0f || normalizedXY.y < 4.9f / 12.0f)
+                    {
+                        if (HasW && normalizedXY.x < 1.0f / 9.3f && normalizedXY.x > (4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.y) * (1.0f / 24.0f) && normalizedXY.x > -(4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.y) * (1.0f / 24.0f))
+                        {
+                            Recolor(ref frameColor, WColor);
+                        }
+                        else if (HasE && normalizedXY.x > 1.0f - 1.0f / 9.3f && normalizedXY.x - 1.0f < (4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.y) * (1.0f / 24.0f) && normalizedXY.x - 1.0f < -(4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.y) * (1.0f / 24.0f))
+                        {
+                            Recolor(ref frameColor, EColor);
+                        }
+                    }
+                    if (normalizedXY.x > 7.1f / 12.0f || normalizedXY.x < 4.9f / 12.0f)
+                    {
+                        if (HasSAC && normalizedXY.y < 1.0f / 9.3f && normalizedXY.y > (4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.x) * (1.0f / 24.0f) && normalizedXY.y > -(4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.x) * (1.0f / 24.0f))
+                        {
+                            Recolor(ref frameColor, SACColor);
+                        }
+                        else if (HasN && normalizedXY.y > 1.0f - 1.0f / 9.3f && normalizedXY.y - 1.0f < (4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.x) * (1.0f / 24.0f) && normalizedXY.y - 1.0f < -(4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.x) * (1.0f / 24.0f))
+                        {
+                            Recolor(ref frameColor, NColor);
+                        }
+                    }
+                }
+                newTexture.SetPixel(position.x, position.y, frameColor);
+                metalness.SetPixel(position.x, position.y, new Color(FrameMetallic, 0.0f, 0.0f, FrameGloss));
 
                 //Name placard texture
                 position += TextureResolution * Vector2Int.right;
                 samplePosition = new Vector2Int(NamePlacardSamplingStartIndex.x + (int)(NamePlacardSamplingIncrement * x), NamePlacardSamplingStartIndex.y + (int)(NamePlacardSamplingIncrement * y));
                 newTexture.SetPixel(position.x, position.y, NamePlacardTexture.texture.GetPixel(samplePosition.x, samplePosition.y));
+                metalness.SetPixel(position.x, position.y, new Color(NamePlacardMetallic, 0.0f, 0.0f, NamePlacardGloss));
 
                 //Type placard texture
                 position += TextureResolution * Vector2Int.right;
                 samplePosition = new Vector2Int(TypePlacardSamplingStartIndex.x + (int)(TypePlacardSamplingIncrement * x), TypePlacardSamplingStartIndex.y + (int)(TypePlacardSamplingIncrement * y));
                 newTexture.SetPixel(position.x, position.y, TypePlacardTexture.texture.GetPixel(samplePosition.x, samplePosition.y));
+                metalness.SetPixel(position.x, position.y, new Color(TypePlacardMetallic, 0.0f, 0.0f, TypePlacardGloss));
 
                 //Stats placards texture
                 position = new Vector2Int(x, TextureResolution + y);
@@ -915,12 +993,14 @@ public class VoxelCard : MonoBehaviour
                 }
                 samplePosition = new Vector2Int(statsStartIndex.x + (int)(statsIncrement * x), statsStartIndex.y + (int)(statsIncrement * y));
                 newTexture.SetPixel(position.x, position.y, statsTexture.texture.GetPixel(samplePosition.x, samplePosition.y));
+                metalness.SetPixel(position.x, position.y, new Color(StatsMetallic, 0.0f, 0.0f, StatsGloss));
 
                 //Art and effect text texture
                 position += TextureResolution * Vector2Int.right;
                 Vector2Int frontStartIndex = EffectTextSamplingStartIndex;
                 float frontIncrement = EffectTextSamplingIncrement;
                 Sprite frontTexture = EffectTextTexture;
+                Color frontMetallic = new Color(EffectTextMetallic, 0.0f, 0.0f, EffectTextGloss);
                 if(x < TextureResolution * 0.5f * (1 - FrameThickness))
                 {
                     if (y > TextureResolution / 12.0f && y < 19.0f * TextureResolution / 24.0f)
@@ -928,6 +1008,7 @@ public class VoxelCard : MonoBehaviour
                         frontStartIndex = CharacterArtSamplingStartIndex;
                         frontIncrement = CharacterArtSamplingIncrement;
                         frontTexture = CharacterArt;
+                        frontMetallic = new Color(CharacterArtMetallic, 0.0f, 0.0f, CharacterArtGloss);
                     }
                 }
                 else if(x < TextureResolution * 0.5f * (1 + FrameThickness))
@@ -935,24 +1016,35 @@ public class VoxelCard : MonoBehaviour
                     frontStartIndex = FrameSamplingStartIndex;
                     frontIncrement = FrameSamplingIncrement;
                     frontTexture = FrameTexture;
+                    frontMetallic = new Color(FrameMetallic, 0.0f, 0.0f, FrameGloss);
                 }
                 samplePosition = new Vector2Int(frontStartIndex.x + (int)(frontIncrement * x), frontStartIndex.y + (int)(frontIncrement * y));
                 newTexture.SetPixel(position.x, position.y, frontTexture.texture.GetPixel(samplePosition.x, samplePosition.y));
+                metalness.SetPixel(position.x, position.y, frontMetallic);
 
                 //Card back texture
                 position += TextureResolution * Vector2Int.right;
                 samplePosition = new Vector2Int(CardBackSamplingStartIndex.x + (int)(CardBackSamplingIncrement * x), CardBackSamplingStartIndex.y + (int)(CardBackSamplingIncrement * y));
                 newTexture.SetPixel(position.x, position.y, CardBackTexture.texture.GetPixel(samplePosition.x, samplePosition.y));
+                metalness.SetPixel(position.x, position.y, new Color(CardBackMetallic, 0.0f, 0.0f, CardBackGloss));
             }
         }
 
         newTexture.Apply();
-        return newTexture;
+        metalness.Apply();
+        return new List<Texture2D> { newTexture, metalness };
     }
 
-    private void ApplyTexture(Texture2D newTexture)
+    private void ApplyTexture(List<Texture2D> newTextures)
     {
-        gameObject.GetComponent<MeshRenderer>().sharedMaterial.SetTexture("_MainTex", newTexture);
+        Material mat = gameObject.GetComponent<MeshRenderer>().sharedMaterial;
+        if(mat == null)
+        {
+            mat = new Material(BaseMaterial);
+        }
+        mat.SetTexture("_MainTex", newTextures[0]);
+        mat.SetTexture("_MetallicGlossMap", newTextures[1]);
+        gameObject.GetComponent<MeshRenderer>().sharedMaterial = mat;
     }
 
     //private List<TextMeshPro> BuildTextBoxes()
@@ -964,4 +1056,11 @@ public class VoxelCard : MonoBehaviour
     //{
 
     //}
+
+    public static void Recolor(ref Color target, Color newColor)
+    {
+        Color.RGBToHSV(target, out float tH, out float tS, out float tV);
+        Color.RGBToHSV(newColor, out float nH, out float nS, out float nV);
+        target = Color.HSVToRGB(nH, 0.8f * nS + 0.2f * tS, tV * nV);
+    }
 }
