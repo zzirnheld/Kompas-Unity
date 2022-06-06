@@ -1,0 +1,76 @@
+{
+	"cardType": 67,
+	"cardName": "Painted Wall",
+	"effText": "Can't move or attack normally.\nWhen a Structure defends, if they're connected to me by Structures, draw 1 card.",
+	"effects": [
+		{
+			"blurb": "The walls remember",
+			"triggerData": {
+				"triggerCondition": "Defend",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Structure"
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
+				},
+                {
+                    "$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+                },
+				{
+					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition": "Space Target Violates Restriction",
+                    "spaceRestriction":
+                    {
+                        "spaceRestrictions": [
+                            "Connected to Card Target by Cards Fitting Restriction"
+                        ],
+                        "connectednessRestriction": {
+                            "cardRestrictions": [
+                                "Subtypes Include"
+                            ],
+                            "subtypesInclude": [
+                                "Structure"
+                            ]
+                        }
+                    }
+				},
+				{
+					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"AttackRestriction": {
+		"attackRestrictions": [
+			"Default",
+			"Not Normally"
+		]
+	},
+	"MovementRestriction": {
+		"normalRestrictionsFromJson": [
+			"Default",
+			"Not Normally"
+		]
+	},
+	"n": 0,
+	"e": 14,
+	"s": 4,
+	"w": 0,
+	"subtypeText": "Maya Structure"
+}

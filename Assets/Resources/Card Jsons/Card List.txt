@@ -226,6 +226,13 @@ linewalkers/Yellow Linewalker
 linewalkers/Leygrapple
 linewalkers/Golden Linewalker
 
+maya/structures/Basic Wall
+maya/structures/City Wall
+maya/structures/Graven Wall
+maya/structures/Painted Wall
+maya/structures/Volatile Wall
+maya/structures/Temple Layer
+
 mech_golems/QU4RG3
 mech_golems/51NG3
 mech_golems/54MUR41

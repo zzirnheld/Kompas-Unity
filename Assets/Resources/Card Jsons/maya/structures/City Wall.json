@@ -1,0 +1,23 @@
+{
+	"cardType": 67,
+	"cardName": "City Wall",
+	"effText": "Can't move or attack normally.",
+	"effects": [],
+	"AttackRestriction": {
+		"attackRestrictions": [
+			"Default",
+			"Not Normally"
+		]
+	},
+	"MovementRestriction": {
+		"normalRestrictionsFromJson": [
+			"Default",
+			"Not Normally"
+		]
+	},
+	"n": 0,
+	"e": 9,
+	"s": 2,
+	"w": 0,
+	"subtypeText": "Maya Structure"
+}
