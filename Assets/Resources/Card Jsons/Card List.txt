@@ -226,6 +226,8 @@ linewalkers/Yellow Linewalker
 linewalkers/Leygrapple
 linewalkers/Golden Linewalker
 
+maya/craftspeople/Reconstructor
+
 maya/structures/Basic Wall
 maya/structures/City Wall
 maya/structures/Graven Wall
