@@ -1,0 +1,43 @@
+{
+	"cardType": 67,
+	"cardName": "City Planner",
+	"effText": "When turns start, deck->hand a Structure.",
+	"effects": [
+		{
+			"blurb": "Plan new structures",
+			"triggerData": {
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"maxCanChoose": 1,
+					"cardRestriction": {
+						"blurb": "Structure to plan out",
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Friendly",
+							"Deck"
+						],
+						"subtypesInclude": [
+							"Structure"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"n": 1,
+	"e": 6,
+	"s": 4,
+	"w": 0,
+	"subtypeText": "Maya Craftsperson"
+}

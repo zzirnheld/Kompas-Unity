@@ -1,0 +1,53 @@
+{
+	"cardType": 67,
+	"cardName": "Stonefitter",
+	"effText": "When turns start, give Structures connected to me by Structures +4 E.",
+	"effects": [
+		{
+			"blurb": "Fit Stones",
+			"triggerData": {
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Subtypes Include",
+							"Space Fits Restriction"
+						],
+						"subtypesInclude": [
+							"Structure"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+                                "Connected to Card Target by Cards Fitting Restriction"
+                            ],
+                            "connectednessRestriction": {
+                                "cardRestrictions": [
+                                    "Subtypes Include"
+                                ],
+                                "subtypesInclude": [
+                                    "Structure"
+                                ]
+                            }
+						}
+					},
+					"eModifier": 4
+				}
+			]
+		}
+	],
+	"n": 1,
+	"e": 2,
+	"s": 1,
+	"w": 0,
+	"subtypeText": "Maya Craftsperson"
+}

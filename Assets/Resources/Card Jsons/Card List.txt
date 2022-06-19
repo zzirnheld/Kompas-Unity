@@ -227,6 +227,12 @@ linewalkers/Leygrapple
 linewalkers/Golden Linewalker
 
 maya/craftspeople/Reconstructor
+maya/craftspeople/Master Repairman
+maya/craftspeople/Stele Eulogist
+maya/craftspeople/Stonefitter
+maya/craftspeople/Glyphcarver
+maya/craftspeople/Stonesalvager
+maya/craftspeople/City Planner
 
 maya/structures/Basic Wall
 maya/structures/City Wall

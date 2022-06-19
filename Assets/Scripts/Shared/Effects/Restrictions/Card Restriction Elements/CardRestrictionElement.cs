@@ -102,7 +102,7 @@ namespace KompasCore.Effects.Restrictions
             }
 
             protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
-                => subtypes.All(subtype => card.SubtypeText.Contains(subtype));
+                => subtypes.All(card.HasSubtype);
         }
 
         public class CanMoveTo : CardRestrictionElement

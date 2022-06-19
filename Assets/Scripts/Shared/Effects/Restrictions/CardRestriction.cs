@@ -276,9 +276,9 @@ namespace KompasCore.Effects
                 NotAvatar => !potentialTarget?.IsAvatar ?? false,
 
                 //subtypes
-                SubtypesInclude => subtypesInclude.All(s => potentialTarget?.SubtypeText.Contains(s) ?? false),
-                SubtypesExclude => subtypesExclude.All(s => !potentialTarget?.SubtypeText.Contains(s) ?? false),
-                SubtypesIncludeAnyOf => subtypesIncludeAnyOf.Any(s => potentialTarget?.SubtypeText.Contains(s) ?? false),
+                SubtypesInclude => subtypesInclude.All(s => potentialTarget?.HasSubtype(s) ?? false),
+                SubtypesExclude => subtypesExclude.All(s => !potentialTarget?.HasSubtype(s) ?? false),
+                SubtypesIncludeAnyOf => subtypesIncludeAnyOf.Any(s => potentialTarget?.HasSubtype(s) ?? false),
 
                 //is
                 IsSource => potentialTarget?.Card == Source,

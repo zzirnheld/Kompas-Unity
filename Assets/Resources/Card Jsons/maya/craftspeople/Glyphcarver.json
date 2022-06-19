@@ -1,0 +1,46 @@
+{
+	"cardType": 67,
+	"cardName": "Glyphcarver",
+	"effText": "When turns start, give adjacent Structures +5 EW",
+	"effects": [
+		{
+			"blurb": "Carve Glyphs",
+			"triggerData": {
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Subtypes Include",
+							"Space Fits Restriction"
+						],
+						"subtypesInclude": [
+							"Structure"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Source"
+							]
+						}
+					},
+					"eModifier": 5,
+					"wModifier": 5
+				}
+			]
+		}
+	],
+	"n": 1,
+	"e": 6,
+	"s": 4,
+	"w": 0,
+	"subtypeText": "Maya Craftsperson"
+}
