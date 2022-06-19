@@ -241,6 +241,8 @@ maya/structures/Painted Wall
 maya/structures/Volatile Wall
 maya/structures/Temple Layer
 
+maya/support/Designated Defense
+
 mech_golems/QU4RG3
 mech_golems/51NG3
 mech_golems/54MUR41

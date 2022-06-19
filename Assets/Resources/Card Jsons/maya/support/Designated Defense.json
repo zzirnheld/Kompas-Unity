@@ -1,0 +1,61 @@
+{
+	"cardType": 83,
+	"cardName": "Designated Defense",
+	"effText": "When turns start, an enemy chooses ANY space for you to deck->summon a Structure to.",
+	"effects": [
+		{
+            "blurb": "Designate construction",
+			"triggerData": {
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "Space for your enemy to play a Structure to",
+						"spaceRestrictions": [
+							"Empty"
+                        ]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Designated build site",
+						"cardRestrictions": [
+							"Friendly",
+							"Deck",
+							"Character",
+							"Subtypes Include",
+							"Can be Played to Target Space"
+						],
+						"subtypesInclude": [
+							"Structure"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"c": 2,
+	"spellTypes": [
+		"Vanishing"
+	],
+	"subtypes": [
+		"Vanishing",
+		"Maya"
+	],
+	"subtypeText": "Maya Vanishing",
+	"duration": 3
+}
