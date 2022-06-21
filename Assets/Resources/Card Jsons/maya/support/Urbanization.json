@@ -4,7 +4,7 @@
 	"effText": "Must Contain: Structure.\nWhen friendly turns start, Invoke a Maya Structure here.",
 	"effects": [
 		{
-			"blurb": "Exchanging ideas in the grand plaza",
+			"blurb": "Urbanizing",
 			"triggerData": {
 				"triggerCondition": "Turn Start",
 				"triggerRestriction": {
@@ -15,7 +15,40 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.MillSubeffect, Assembly-CSharp",
+					"xModifier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.ConditionalJumpSubeffect, Assembly-CSharp",
+					"condition": "Target Violates Restriction",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+                            "Maya",
+							"Structure"
+						]
+					},
+					"jumpIndices": [
+						0
+					],
+					"xMultiplier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where to Invoke that Structure",
+						"spaceRestrictions": [
+							"Empty",
+							"Can Play Card Target to This Space",
+							"In Source's AOE"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				}
 			]
 		}
@@ -27,6 +60,6 @@
 	"spellTypes": [
 		"Radial"
 	],
-	"subtypeText": "Radius 2",
-	"radius": 2
+	"subtypeText": "Radius 1",
+	"radius": 1
 }

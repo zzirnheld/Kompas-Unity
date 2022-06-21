@@ -245,6 +245,8 @@ maya/support/Designated Defense
 maya/support/Shore Up
 maya/support/Resistive Empowerment
 maya/support/Dense Cities
+maya/support/Grand Plaza
+maya/support/Urbanization
 
 mech_golems/QU4RG3
 mech_golems/51NG3
