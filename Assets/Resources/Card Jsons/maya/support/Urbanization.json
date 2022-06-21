@@ -1,0 +1,32 @@
+{
+	"cardType": 83,
+	"cardName": "Urbanization",
+	"effText": "Must Contain: Structure.\nWhen friendly turns start, Invoke a Maya Structure here.",
+	"effects": [
+		{
+			"blurb": "Exchanging ideas in the grand plaza",
+			"triggerData": {
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Must Contain"
+	],
+	"c": 2,
+	"spellTypes": [
+		"Radial"
+	],
+	"subtypeText": "Radius 2",
+	"radius": 2
+}
