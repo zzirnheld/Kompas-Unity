@@ -37,6 +37,7 @@ namespace KompasCore.Effects
         private const string SecondaryCardFitsRestrictionBefore = "Secondary Card Fits Restriction Before";
 
         private const string CardExistsNow = "Card Exists Now";
+        private const string NoCardExistsNow = "No Card Exists Now";
 
         private const string SpaceFitsRestriction = "Space Fits Restriction";
 
@@ -107,13 +108,6 @@ namespace KompasCore.Effects
         private Game Game => InitializationContext.game;
         private Trigger ThisTrigger => InitializationContext.trigger;
 
-        /*
-        public GameCard ThisCard { get; private set; }
-
-        public Trigger ThisTrigger { get; private set; }
-        public Effect SourceEffect { get; private set; }
-        public Subeffect Subeffect { get; private set; }*/
-
         public override void Initialize(EffectInitializationContext initializationContext)
         {
             base.Initialize(initializationContext);
@@ -161,6 +155,7 @@ namespace KompasCore.Effects
 
             ThisCardInPlay => ThisCard.Location == CardLocation.Board,
             CardExistsNow => ThisCard.Game.Cards.Any(c => existsRestriction.IsValidCard(c, context)),
+            NoCardExistsNow => !ThisCard.Game.Cards.Any(c => existsRestriction.IsValidCard(c, context)),
 
             ThisCardFitsRestriction => selfRestriction.IsValidCard(ThisCard, context),
 

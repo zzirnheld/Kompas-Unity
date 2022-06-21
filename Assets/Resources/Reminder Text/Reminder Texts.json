@@ -144,6 +144,10 @@
 		{
 			"keyword":"Evasive",
 			"reminder":"The first time each round I fight a W X character, give them -X W for that fight."
+		},
+		{
+			"keyword":"Must contain",
+			"reminder":"If there's no appropriate cards here, dispel me."
 		}
 	]
 }
