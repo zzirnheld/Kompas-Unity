@@ -242,6 +242,9 @@ maya/structures/Volatile Wall
 maya/structures/Temple Layer
 
 maya/support/Designated Defense
+maya/support/Shore Up
+maya/support/Resistive Empowerment
+maya/support/Dense Cities
 
 mech_golems/QU4RG3
 mech_golems/51NG3
