@@ -6,7 +6,7 @@ namespace KompasCore.Effects.Identities
     /// but that interface doesn't even exist yet.)
     /// </summary>
     public abstract class GamestateNumberIdentityBase : ContextInitializeableBase,
-        INoActivationContextIdentity<int>
+        INoActivationContextIdentity<int>, IActivationContextIdentity<int>
     {
         protected abstract int AbstractNumber { get; }
 
@@ -18,9 +18,19 @@ namespace KompasCore.Effects.Identities
                 return AbstractNumber;
             }
         }
+
+        public int From(ActivationContext context, ActivationContext secondaryContext) => Item;
     }
 
     namespace GamestateNumberIdentities
     {
+        public class Constant : GamestateNumberIdentityBase
+        {
+            public static Constant ONE => new Constant { constant = 1 };
+
+            public int constant;
+
+            protected override int AbstractNumber => constant;
+        }
     }
 }

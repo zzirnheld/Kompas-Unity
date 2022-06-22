@@ -2,6 +2,8 @@ using KompasCore.Cards;
 using KompasCore.Effects.Identities;
 using KompasCore.Effects.Relationships;
 using KompasServer.Effects.Identities;
+using KompasCore.Effects.Identities.GamestateNumberIdentities;
+using System.Linq;
 
 namespace KompasCore.Effects.Restrictions
 {
@@ -79,6 +81,32 @@ namespace KompasCore.Effects.Restrictions
                 if (card != null) return card.Item.IsAdjacentTo(space);
                 else if (space != null) return space.AdjacentTo(space);
                 else throw new System.NotImplementedException($"You forgot to account for some weird case for {InitializationContext.source}");
+            }
+        }
+
+        public class WithinDistanceOfNumberOfCards : SpaceRestrictionElement
+        {
+            public CardRestriction cardRestriction;
+
+            public INoActivationContextIdentity<int> numberOfCards = Constant.ONE;
+            public INoActivationContextIdentity<int> distance = Constant.ONE;
+
+            public bool excludeSelf = true;
+
+            public override void Initialize(EffectInitializationContext initializationContext)
+            {
+                base.Initialize(initializationContext);
+                cardRestriction.Initialize(initializationContext);
+                numberOfCards.Initialize(initializationContext);
+                distance.Initialize(initializationContext);
+            }
+
+            protected override bool AbstractIsValidSpace(Space space, ActivationContext context)
+            {
+                return InitializationContext.game.Cards
+                    .Where(c => c.DistanceTo(space) < distance.Item)
+                    .Where(c => cardRestriction.IsValidCard(c, context))
+                    .Count() >= numberOfCards.Item;
             }
         }
 
