@@ -226,6 +226,8 @@ linewalkers/Yellow Linewalker
 linewalkers/Leygrapple
 linewalkers/Golden Linewalker
 
+maya/The Feathered Serpent
+
 maya/craftspeople/Reconstructor
 maya/craftspeople/Master Repairman
 maya/craftspeople/Stele Eulogist

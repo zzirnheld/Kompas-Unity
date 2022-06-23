@@ -4,24 +4,9 @@ using KompasCore.Effects.Identities;
 
 namespace KompasServer.Effects.Identities
 {
-    public abstract class SubeffectSpaceIdentityBase : SubeffectInitializeableBase,
-        INoActivationContextIdentity<Space>
-    {
-        protected abstract Space AbstractSpace { get; }
-
-        public Space Item
-        {
-            get
-            {
-                ComplainIfNotInitialized();
-                return AbstractSpace;
-            }
-        }
-    }
-
     namespace SubeffectSpaceIdentities
     {
-        public class FromActivationContext : SubeffectSpaceIdentityBase
+        public class FromActivationContext : SubeffectIdentityBase<Space>
         {
             public IActivationContextIdentity<Space> space;
 
@@ -31,11 +16,11 @@ namespace KompasServer.Effects.Identities
                 space.Initialize(initializationContext);
             }
 
-            protected override Space AbstractSpace
+            protected override Space AbstractItem
                 => space.From(InitializationContext.subeffect.CurrentContext, default);
         }
 
-        public class PositionOf : SubeffectSpaceIdentityBase
+        public class PositionOf : SubeffectIdentityBase<Space>
         {
             public INoActivationContextIdentity<GameCardBase> whosePosition;
 
@@ -45,14 +30,14 @@ namespace KompasServer.Effects.Identities
                 whosePosition.Initialize(initializationContext);
             }
 
-            protected override Space AbstractSpace => whosePosition.Item.Position;
+            protected override Space AbstractItem => whosePosition.Item.Position;
         }
 
-        public class Target : SubeffectSpaceIdentityBase
+        public class Target : SubeffectIdentityBase<Space>
         {
             public int index = -1;
 
-            protected override Space AbstractSpace => InitializationContext.effect.GetSpace(index);
+            protected override Space AbstractItem => InitializationContext.effect.GetSpace(index);
         }
     }
 }

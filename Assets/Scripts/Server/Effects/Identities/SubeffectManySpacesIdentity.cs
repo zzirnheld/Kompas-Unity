@@ -5,24 +5,9 @@ using System.Linq;
 
 namespace KompasServer.Effects.Identities
 {
-    public abstract class SubeffectManySpacesIdentity : SubeffectInitializeableBase,
-        INoActivationContextIdentity<ICollection<Space>>
-    {
-        public ICollection<Space> Item
-        {
-            get
-            {
-                ComplainIfNotInitialized();
-                return AbstractSpaces;
-            }
-        }
-
-        protected abstract ICollection<Space> AbstractSpaces { get; }
-    }
-
     namespace SubeffectManySpacesIdentities
     {
-        public class ByRestriction : SubeffectManySpacesIdentity
+        public class ByRestriction : SubeffectIdentityBase<ICollection<Space>>
         {
             public SpaceRestriction spaceRestriction;
 
@@ -32,7 +17,7 @@ namespace KompasServer.Effects.Identities
                 spaceRestriction.Initialize(initializationContext);
             }
 
-            protected override ICollection<Space> AbstractSpaces
+            protected override ICollection<Space> AbstractItem
                 => Space.Spaces.Where(s => spaceRestriction.IsValidSpace(s, default)).ToArray();
         }
 
@@ -40,7 +25,7 @@ namespace KompasServer.Effects.Identities
         /// Spaces where they are in some defined relationship with respect to the other two defined spaces.
         /// For example, spaces that are between (relationship) the source card's space and the target space (two defined spaces).
         /// </summary>
-        public class ThreeSpaceRelationship : SubeffectManySpacesIdentity
+        public class ThreeSpaceRelationship : SubeffectIdentityBase<ICollection<Space>>
         {
             public INoActivationContextIdentity<Space> firstSpace;
             public INoActivationContextIdentity<Space> secondSpace;
@@ -54,7 +39,7 @@ namespace KompasServer.Effects.Identities
                 secondSpace.Initialize(initializationContext);
             }
 
-            protected override ICollection<Space> AbstractSpaces
+            protected override ICollection<Space> AbstractItem
             {
                 get
                 {
@@ -65,7 +50,7 @@ namespace KompasServer.Effects.Identities
             }
         }
 
-        public class PositionsOfEach : SubeffectManySpacesIdentity
+        public class PositionsOfEach : SubeffectIdentityBase<ICollection<Space>>
         {
             public INoActivationContextManyCardsIdentity cards;
 
@@ -75,7 +60,7 @@ namespace KompasServer.Effects.Identities
                 cards.Initialize(initializationContext);
             }
 
-            protected override ICollection<Space> AbstractSpaces => cards.Cards
+            protected override ICollection<Space> AbstractItem => cards.Cards
                 .Select(c => c.Position)
                 .Where(space => space != null)
                 .ToArray();

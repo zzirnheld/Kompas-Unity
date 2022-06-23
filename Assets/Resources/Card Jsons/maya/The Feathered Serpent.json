@@ -1,0 +1,109 @@
+{
+	"cardType": 67,
+	"cardName": "The Feathered Serpent",
+	"effText": "Can only be played to a space connected to all corners by characters.\nI can tribute a Person adjacent to a Structure to attack an extra time.",
+	"effects": [
+		{
+			"activationRestriction": {
+				"activationRestrictionArray": [
+					"Default"
+				]
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "ritual sacrifice",
+						"cardRestrictions": [
+							"Board",
+							"Character",
+                            "Friendly",
+							"Summoned",
+							"Subtypes Include",
+                            "Space Fits Restriction"
+                        ],
+						"subtypesInclude": [
+                            "Person"
+                        ],
+                        "spaceRestriction": {
+                            "spaceRestrictions": [
+                                "Adjacent to a Card that Fits Restriction"
+                            ],
+                            "adjacencyRestriction": {
+                                "cardRestrictions": [
+                                    "Subtypes Include"
+                                ],
+                                "subtypesInclude": [
+                                    "Structure"
+                                ]
+                            }
+                        }
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "adjacent character for Malevolent Vessel to attack",
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Source"
+							]
+						}
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
+					"targetIndex": -2,
+					"attackerIndex": -1
+				}
+			]
+		}
+    ],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Default Normal Restrictions",
+			"Space Must Fit Restriction"
+		],
+		"effectRestrictions": [
+			"Default Effect Restrictions",
+			"Space Must Fit Restriction"
+		],
+		"spaceRestriction": {
+            "spaceRestrictionElements": [
+                {
+                    "$type": "KompasCore.Effects.Restrictions.SpaceRestrictionElements.ConnectedTo, Assembly-CSharp",
+                    "spaces": { "$type": "KompasServer.Effects.Identities.SubeffectManySpacesIdentities.Corners, Assembly-CSharp", },
+                    "byRestriction": {
+                        "spaceRestrictionElements": [
+                            {
+                                "$type": "KompasCore.Effects.Restrictions.SpaceRestrictionElements.CardFitsRestriction, Assembly-CSharp",
+                                "restriction": {
+                                    "cardRestrictionElements": [
+                                        { "$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.Character, Assembly-CSharp" }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+		}
+	},
+    "unique": true,
+	"n": 10,
+	"e": 50,
+	"s": 10,
+	"w": 10,
+	"subtypeText": "Flying Serpent God"
+}

@@ -4,33 +4,18 @@ using System.Collections.Generic;
 
 namespace KompasServer.Effects.Identities
 {
-    public abstract class SubeffectNumberIdentityBase : SubeffectInitializeableBase,
-        INoActivationContextIdentity<int>
-    {
-        protected abstract int AbstractNumber { get; }
-
-        public int Item
-        {
-            get
-            {
-                ComplainIfNotInitialized();
-                return AbstractNumber;
-            }
-        }
-    }
-
     namespace SubeffectNumberIdentities
     {
-        public class X : SubeffectNumberIdentityBase
+        public class X : SubeffectIdentityBase<int>
         {
             public int multiplier = 1;
             public int modifier = 0;
             public int divisor = 1;
 
-            protected override int AbstractNumber
+            protected override int AbstractItem
                 => (InitializationContext.subeffect.Effect.X * multiplier / divisor) + modifier;
         }
-        public class Selector : SubeffectNumberIdentityBase
+        public class Selector : SubeffectIdentityBase<int>
         {
             public INumberSelector selector;
             public INoActivationContextIdentity<ICollection<int>> numbers;
@@ -41,7 +26,7 @@ namespace KompasServer.Effects.Identities
                 numbers.Initialize(initializationContext);
             }
 
-            protected override int AbstractNumber
+            protected override int AbstractItem
                 => selector.Apply(numbers.Item);
         }
     }
