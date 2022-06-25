@@ -11,11 +11,11 @@ namespace KompasCore.Effects
 {
     public class SpaceRestriction : ContextInitializeableBase
     {
-        public Subeffect Subeffect { get; private set; }
-        public GameCard Source { get; private set; }
-        public Game Game => Source.Game;
-        public Player Controller => Source.Controller;
-        public Effect Effect { get; private set; }
+        public Subeffect Subeffect => InitializationContext.subeffect;
+        public GameCard Source => InitializationContext.source;
+        public Game Game => InitializationContext.game;
+        public Player Controller => InitializationContext.Controller;
+        public Effect Effect => InitializationContext.effect;
 
         #region space restrictions
         //adjacency
@@ -225,10 +225,10 @@ namespace KompasCore.Effects
                 DirectlyAwayFromCardTarget => target.SpaceDirectlyAwayFrom(space, Source),
 
                 //misc
-                CanPlayCardTarget => target.PlayRestriction.IsValidEffectPlay(space, Subeffect.Effect, Subeffect.PlayerTarget, context,
-                    ignoring: playRestrictionsToIgnore),
-                CanMoveCardTarget => target.MovementRestriction.IsValidEffectMove(space, context),
-                CanMoveSource => Source.MovementRestriction.IsValidEffectMove(space, context),
+                CanPlayCardTarget => target?.PlayRestriction?.IsValidEffectPlay(space, Subeffect?.Effect, Subeffect?.PlayerTarget, context,
+                    ignoring: playRestrictionsToIgnore) ?? false,
+                CanMoveCardTarget => target?.MovementRestriction?.IsValidEffectMove(space, context) ?? false,
+                CanMoveSource => Source?.MovementRestriction?.IsValidEffectMove(space, context) ?? false,
 
                 Empty => Game.boardCtrl.IsEmpty(space),
                 Occupied => !Game.boardCtrl.IsEmpty(space),

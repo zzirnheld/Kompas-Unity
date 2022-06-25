@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "The Feathered Serpent",
-	"effText": "Can only be played to a space connected to all corners by characters.\nI can tribute a Person adjacent to a Structure to attack an extra time.",
+	"effText": "Can only be played to a space connected to all corners by cards.\nI can tribute a Person adjacent to a Structure to attack an extra time.",
 	"effects": [
 		{
 			"activationRestriction": {
@@ -90,7 +90,7 @@
                                 "$type": "KompasCore.Effects.Restrictions.SpaceRestrictionElements.CardFitsRestriction, Assembly-CSharp",
                                 "restriction": {
                                     "cardRestrictionElements": [
-                                        { "$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.Character, Assembly-CSharp" }
+                                        { "$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.CardExists, Assembly-CSharp" }
                                     ]
                                 }
                             }

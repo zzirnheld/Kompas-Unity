@@ -1,4 +1,5 @@
 ﻿using KompasCore.Cards;
+using KompasCore.GameCore;
 using KompasCore.Effects.Restrictions;
 using KompasServer.Effects;
 using System;
@@ -9,7 +10,7 @@ namespace KompasCore.Effects
 {
     public class CardRestriction : ContextInitializeableBase
     {
-        public Subeffect Subeffect { get; private set; }
+        public Subeffect Subeffect => InitializationContext.subeffect;
 
         #region restrictions
         //targets
@@ -167,6 +168,7 @@ namespace KompasCore.Effects
         public GameCard Source => InitializationContext.source;
         public Player Controller => InitializationContext.Controller;
         public Effect Effect => InitializationContext.effect;
+        public Game Game => InitializationContext.game;
 
         public override void Initialize(EffectInitializationContext initializationContext)
         {
@@ -341,7 +343,7 @@ namespace KompasCore.Effects
                 Augmented => potentialTarget?.Augments.Any() ?? false,
 
                 CanBePlayed
-                    => Subeffect.Game.ExistsEffectPlaySpace(potentialTarget?.PlayRestriction, Effect),
+                    => Game.ExistsEffectPlaySpace(potentialTarget?.PlayRestriction, Effect),
                 CanPlayToTargetSpace
                     => potentialTarget?.PlayRestriction.IsValidEffectPlay(Subeffect.SpaceTarget, Effect, Subeffect.PlayerTarget, context) ?? false,
                 CanPlayTargetToThisCharactersSpace
