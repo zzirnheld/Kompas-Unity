@@ -94,8 +94,7 @@ public class CardRepository : MonoBehaviour
             SerializableCard card = null;
             try
             {
-                card = JsonConvert.DeserializeObject<SerializableCard>(json,
-                    new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto });
+                card = JsonConvert.DeserializeObject<SerializableCard>(json, cardLoadingSettings);
             }
             catch (JsonReaderException e)
             {
@@ -282,16 +281,14 @@ public class CardRepository : MonoBehaviour
 
         try
         {
-            cardInfo = JsonConvert.DeserializeObject<ClientSerializableCard>(json,
-                    new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto, MaxDepth = null, ReferenceLoopHandling = ReferenceLoopHandling.Serialize });
+            cardInfo = JsonConvert.DeserializeObject<ClientSerializableCard>(json, cardLoadingSettings);
             if (cardInfo.cardType != 'C') return null;
             effects.AddRange(cardInfo.effects);
             for (int i = 0; i < cardInfo.keywords.Length; i++)
             {
                 var s = cardInfo.keywords[i];
                 var keywordJson = keywordJsons[s];
-                var eff = JsonConvert.DeserializeObject<ClientEffect>(keywordJson,
-                    new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto, MaxDepth = null, ReferenceLoopHandling = ReferenceLoopHandling.Serialize });
+                var eff = JsonConvert.DeserializeObject<ClientEffect>(keywordJson, cardLoadingSettings);
                 eff.arg = cardInfo.keywordArgs.Length > i ? cardInfo.keywordArgs[i] : 0;
                 effects.Add(eff);
             }
@@ -334,15 +331,13 @@ public class CardRepository : MonoBehaviour
 
         try
         {
-            cardInfo = JsonConvert.DeserializeObject<ClientSerializableCard>(json,
-                    new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto, MaxDepth = null, ReferenceLoopHandling = ReferenceLoopHandling.Serialize });
+            cardInfo = JsonConvert.DeserializeObject<ClientSerializableCard>(json, cardLoadingSettings);
             effects.AddRange(cardInfo.effects);
             for (int i = 0; i < cardInfo.keywords.Length; i++)
             {
                 var s = cardInfo.keywords[i];
                 var keywordJson = keywordJsons[s];
-                var eff = JsonConvert.DeserializeObject<ClientEffect>(keywordJson,
-                    new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto, ReferenceLoopHandling = ReferenceLoopHandling.Serialize });
+                var eff = JsonConvert.DeserializeObject<ClientEffect>(keywordJson, cardLoadingSettings);
                 eff.arg = cardInfo.keywordArgs.Length > i ? cardInfo.keywordArgs[i] : 0;
                 effects.Add(eff);
             }
@@ -384,7 +379,7 @@ public class CardRepository : MonoBehaviour
     {
         try
         {
-            SerializableCard serializableCard = JsonConvert.DeserializeObject<SerializableCard>(json);
+            SerializableCard serializableCard = JsonConvert.DeserializeObject<SerializableCard>(json, cardLoadingSettings);
             DeckSelectCard card = Instantiate(prefab, parent);
             card.SetInfo(serializableCard, uiCtrl);
             return card;
@@ -401,21 +396,21 @@ public class CardRepository : MonoBehaviour
     {
         try
         {
-            SerializableCard serializableCard = JsonConvert.DeserializeObject<SerializableCard>(json);
+            SerializableCard serializableCard = JsonConvert.DeserializeObject<SerializableCard>(json, cardLoadingSettings);
             switch (serializableCard.cardType)
             {
                 case 'C':
-                    SerializableCard serializableChar = JsonConvert.DeserializeObject<SerializableCard>(json);
+                    SerializableCard serializableChar = JsonConvert.DeserializeObject<SerializableCard>(json, cardLoadingSettings);
                     var charCard = Instantiate(DeckbuilderCharPrefab).GetComponent<DeckbuilderCharCard>();
                     charCard.SetInfo(searchCtrl, serializableChar, inDeck);
                     return charCard;
                 case 'S':
-                    SerializableCard serializableSpell = JsonConvert.DeserializeObject<SerializableCard>(json);
+                    SerializableCard serializableSpell = JsonConvert.DeserializeObject<SerializableCard>(json, cardLoadingSettings);
                     var spellCard = Instantiate(DeckbuilderSpellPrefab).GetComponent<DeckbuilderSpellCard>();
                     spellCard.SetInfo(searchCtrl, serializableSpell, inDeck);
                     return spellCard;
                 case 'A':
-                    SerializableCard serializableAug = JsonConvert.DeserializeObject<SerializableCard>(json);
+                    SerializableCard serializableAug = JsonConvert.DeserializeObject<SerializableCard>(json, cardLoadingSettings);
                     var augCard = Instantiate(DeckbuilderAugPrefab).GetComponent<DeckbuilderAugCard>();
                     augCard.SetInfo(searchCtrl, serializableAug, inDeck);
                     return augCard;
@@ -436,7 +431,8 @@ public class CardRepository : MonoBehaviour
     {
         try
         {
-            return JsonConvert.DeserializeObject<SerializableCard>(json);
+            //Debug.Log($"Deserializing {json}");
+            return JsonConvert.DeserializeObject<SerializableCard>(json, cardLoadingSettings);
         }
         catch (System.ArgumentException e)
         {

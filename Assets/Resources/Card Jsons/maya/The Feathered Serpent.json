@@ -83,7 +83,7 @@
             "spaceRestrictionElements": [
                 {
                     "$type": "KompasCore.Effects.Restrictions.SpaceRestrictionElements.ConnectedTo, Assembly-CSharp",
-                    "spaces": { "$type": "KompasServer.Effects.Identities.SubeffectManySpacesIdentities.Corners, Assembly-CSharp", },
+                    "spaces": { "$type": "KompasCore.Effects.Identities.GamestateManySpacesIdentities.Corners, Assembly-CSharp" },
                     "byRestriction": {
                         "spaceRestrictionElements": [
                             {
