@@ -44,6 +44,9 @@
 					"$type": "KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
 					"targetIndex": -1,
 					"attackerIndex": -2
+				},
+				{
+					"$type": "KompasServer.Effects.NegateSubeffect, Assembly-CSharp"
 				}
 			]
 		}

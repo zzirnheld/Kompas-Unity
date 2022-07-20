@@ -90,6 +90,9 @@
 					"jumpIndices": [
 						2
 					]
+				},
+				{
+					"$type": "KompasServer.Effects.NegateSubeffect, Assembly-CSharp"
 				}
 			]
 		}
