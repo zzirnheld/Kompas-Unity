@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "C4RR13R",
-	"effText": "Golem.\nWhen I'm activated, I Invoke a Mech Golem that costs less than me. Activate it.",
+	"effText": "Golem.\nWhen I'm activated, I Invoke a Mech Golem and activate it.",
 	"effects": [
 		{
 			"blurb": "C4RRY1NG TH1S WH0L3 T34M",
@@ -40,15 +40,7 @@
 						"subtypesInclude": [
 							"Mech",
 							"Golem"
-						],
-						"cardValue": {
-							"value": "S"
-						},
-						"cardValueNumberRestriction": {
-							"numberRestrictions": [
-								"<X"
-							]
-						}
+						]
 					},
 					"jumpIndices": [
 						2
@@ -88,7 +80,7 @@
 	},
 	"n": 4,
 	"e": 2,
-	"s": 8,
+	"s": 10,
 	"w": 2,
 	"subtypes": [
 		"Mech",
