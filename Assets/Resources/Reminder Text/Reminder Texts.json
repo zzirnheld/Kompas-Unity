@@ -144,6 +144,10 @@
 		{
 			"keyword":"Evasive",
 			"reminder":"The first time each round I fight a W X character, give them -X W for that fight."
+		},
+		{
+			"keyword":"Mech Ultimate",
+			"reminder":"When I attack, give me +10 S. When my S becomes at least 30, do the following, then negate me:"
 		}
 	]
 }

@@ -123,5 +123,44 @@ namespace KompasCore.Effects.Restrictions
             protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
                 => card.MovementRestriction.IsValidEffectMove(destination.Item, context);
         }
+
+        public class Not : CardRestrictionElement
+        {
+            public CardRestrictionElement element;
+
+            public override void Initialize(EffectInitializationContext initializationContext)
+            {
+                base.Initialize(initializationContext);
+                element.Initialize(initializationContext);
+            }
+
+            protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
+                => !element.FitsRestriction(card, context);
+        }
+
+        public class Fighting : CardRestrictionElement
+        {
+            /// <summary>
+            /// Can be null to represent checking whether the card is in any fight at all
+            /// </summary>
+            public IActivationContextIdentity<GameCardBase> fightingWho;
+
+            public override void Initialize(EffectInitializationContext initializationContext)
+            {
+                base.Initialize(initializationContext);
+                fightingWho?.Initialize(initializationContext);
+            }
+
+            private bool IsValidFight(GameCardBase card, ActivationContext context, IStackable stackEntry)
+            {
+                var fightingWhoCard = fightingWho?.From(context, default);
+                return stackEntry is Attack attack
+                    && (attack.attacker == card || attack.defender == card)
+                    && (fightingWho == null || attack.attacker == fightingWhoCard || attack.defender == fightingWhoCard);
+            }
+
+            protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
+                => InitializationContext.game.StackEntries.Any(stackEntry => IsValidFight(card, context, stackEntry));
+        }
     }
 }

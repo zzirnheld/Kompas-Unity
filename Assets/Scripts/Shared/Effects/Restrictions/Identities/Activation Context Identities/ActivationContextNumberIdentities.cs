@@ -1,3 +1,4 @@
+using KompasCore.Cards;
 using System.Linq;
 
 namespace KompasCore.Effects.Identities.ActivationContextNumberIdentities
@@ -63,5 +64,21 @@ namespace KompasCore.Effects.Identities.ActivationContextNumberIdentities
             var numberValues = numbers.Select(n => n.From(context, secondaryContext)).ToArray();
             return operation.Perform(numberValues);
         }
+    }
+
+    public class FromCardValue : ActivationContextIdentityBase<int>
+    {
+        public IActivationContextIdentity<GameCardBase> card;
+        public CardValue cardValue;
+
+        public override void Initialize(EffectInitializationContext initializationContext)
+        {
+            base.Initialize(initializationContext);
+            card.Initialize(initializationContext);
+            cardValue.Initialize(initializationContext);
+        }
+
+        protected override int AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
+            => cardValue.GetValueOf(card.From(context, secondaryContext));
     }
 }
