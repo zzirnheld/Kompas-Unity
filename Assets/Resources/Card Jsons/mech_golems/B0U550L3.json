@@ -1,39 +1,30 @@
 {
 	"cardType": 67,
 	"cardName": "B0U550L3",
-	"effText": "Golem.\nWhile activated, Once each turn, you can move me across an adjacent card, then you can give it -3 E.",
+	"effText": "Golem.\nMech Ultimate: Move up to one character per diagonal as far as possible along that diagonal.",
 	"effects": [
 		{
 			"blurb": "C0MP455",
-			"activationRestriction": {
-				"activationRestrictionArray": [
-					"Max Times Per Turn",
-					"This Card Fits Restriction Now",
-					"Default"
-				],
-				"selfRestriction": {
-					"cardRestrictions": [
-						"Activated"
+			"triggerData": {
+				"triggerCondition": "S Change",
+				"triggerRestriction": {
+					"triggerRestrictionElements": [
+                        {
+                            "$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.TriggerKeyword, Assembly-CSharp",
+                            "keyword": "Mech Ultimate"
+                        }
 					]
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetThisSpaceSubeffect, Assembly-CSharp"
-				},
-				{
 					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction": {
-						"blurb": "to grapple across",
+						"blurb": "to throw NE",
 						"cardRestrictions": [
 							"Board",
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Source"
-							]
-						}
+							"Character"
+						]
 					}
 				},
 				{
@@ -84,9 +75,9 @@
 			"This is Activated"
 		]
 	},
-	"n": 1,
+	"n": 5,
 	"e": 5,
-	"s": 7,
+	"s": 10,
 	"w": 7,
 	"subtypes": [
 		"Mech",

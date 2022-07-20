@@ -6,7 +6,7 @@
 		{
             "blurb": "54CR1F1C3!!!",
 			"triggerData": {
-				"triggerCondition": "Activate",
+				"triggerCondition": "S Change",
 				"triggerRestriction": {
 					"triggerRestrictionElements": [
                         {
