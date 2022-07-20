@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Bind R Mann",
-	"effText": "I can Pilot a Mech, and give it +2 S.",
+	"effText": "I can Pilot a Mech, and give it +10 S.",
 	"effects": [
 		{
 			"blurb": "Careful Piloting",
@@ -18,7 +18,7 @@
 				},
 				{
 					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"sModifier": 2
+					"sModifier": 10
 				},
 				{
 					"$type": "KompasServer.Effects.KeywordSubeffect, Assembly-CSharp",
