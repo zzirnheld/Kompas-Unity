@@ -97,6 +97,9 @@
 			]
 		}
     ],
+	"keywords": [
+		"Mech Ultimate Charge"
+	],
 	"MovementRestriction": {
 		"normalRestrictionsFromJson": [
 			"Default",

@@ -28,3 +28,4 @@ Ambush
 Smite
 Stealth
 Evasive
+Mech Ultimate Charge
