@@ -644,29 +644,29 @@ wanderers/Wanderer
 wanderers/Wanderlust
 wanderers/Wisewoman
 
-weather_effects/Dapplesun
-weather_effects/Puffyclouds
-weather_effects/Crispbreeze
-weather_effects/Flashflood
-weather_effects/Peltrain
-weather_effects/Muggyclouds
-weather_effects/Thunderstorm
-weather_effects/Blizzard
-weather_effects/Fog
-weather_effects/Brainstorm
-weather_effects/Thundersun
+weather/effects/Dapplesun
+weather/effects/Puffyclouds
+weather/effects/Crispbreeze
+weather/effects/Flashflood
+weather/effects/Peltrain
+weather/effects/Muggyclouds
+weather/effects/Thunderstorm
+weather/effects/Blizzard
+weather/effects/Fog
+weather/effects/Brainstorm
+weather/effects/Thundersun
 
-weather_support/Cloudshift
-weather_support/Thunderous Echo
-weather_support/Unusual Weather
-weather_support/Eventful Weather
+weather/support/Cloudshift
+weather/support/Thunderous Echo
+weather/support/Unusual Weather
+weather/support/Eventful Weather
 
-weather_events/Lightning Elemental
-weather_events/Blizzard Squall
-weather_events/Immagic Drought
-weather_events/Roll of Leythunder
-weather_events/Windstorm of Etaqua
-weather_events/Leyhail Elemental
+weather/events/Lightning Elemental
+weather/events/Blizzard Squall
+weather/events/Immagic Drought
+weather/events/Roll of Leythunder
+weather/events/Windstorm of Etaqua
+weather/events/Leyhail Elemental
 
 wisps/Erratic Wisps
 wisps/Flippiwisp
