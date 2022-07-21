@@ -448,12 +448,6 @@ shapers/Whose Past Disintegrates
 shapers/Maya, Mistress of Reality
 shapers/Riali, Master of Irrealities
 
-skyknights/Fearstrikebinder
-skyknights/Venturebinder
-skyknights/Skillingbinder
-skyknights/Magerybinder
-skyknights/Passingbinder
-
 speed_demons/Coach Speed
 speed_demons/Mr Power Vacuum
 speed_demons/Boing Boing Launcher Guy
@@ -667,6 +661,12 @@ weather/events/Immagic Drought
 weather/events/Roll of Leythunder
 weather/events/Windstorm of Etaqua
 weather/events/Leyhail Elemental
+
+weather/skyknights/Fearstrikebinder
+weather/skyknights/Venturebinder
+weather/skyknights/Skillingbinder
+weather/skyknights/Magerybinder
+weather/skyknights/Passingbinder
 
 wisps/Erratic Wisps
 wisps/Flippiwisp
