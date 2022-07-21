@@ -1,6 +1,6 @@
 {
 	"cardType": 67,
-	"cardName": "He Who Knew Runes",
+	"cardName": "Runedmemory",
 	"effText": "Shape.\nWhen I move X spaces, hand->cast a C X Shaping.",
 	"effects": [
 		{

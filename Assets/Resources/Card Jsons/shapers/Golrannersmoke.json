@@ -1,17 +1,17 @@
 {
 	"cardType": 67,
-	"cardName": "Evasive Ectoplasm",
-	"effText": "Shape. Evasive.",
+	"cardName": "Golrannersmoke",
+	"effText": "Shape. Ambush.",
 	"effects": [
 	],
 	"keywords": [
 		"Shape",
-		"Evasive"
+		"Ambush"
 	],
 	"n": 1,
-	"e": 2,
-	"s": 3,
-	"w": 3,
+	"e": 6,
+	"s": 4,
+	"w": 4,
 	"subtypes": [
 		"Ethereal",
 		"Shaper"

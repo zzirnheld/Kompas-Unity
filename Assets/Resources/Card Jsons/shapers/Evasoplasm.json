@@ -1,17 +1,17 @@
 {
 	"cardType": 67,
-	"cardName": "Golranner Smoke",
-	"effText": "Shape. Ambush.",
+	"cardName": "Evasoplasm",
+	"effText": "Shape. Evasive.",
 	"effects": [
 	],
 	"keywords": [
 		"Shape",
-		"Ambush"
+		"Evasive"
 	],
 	"n": 1,
-	"e": 6,
-	"s": 4,
-	"w": 4,
+	"e": 2,
+	"s": 3,
+	"w": 3,
 	"subtypes": [
 		"Ethereal",
 		"Shaper"

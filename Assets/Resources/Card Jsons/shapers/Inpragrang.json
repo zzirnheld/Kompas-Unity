@@ -1,45 +1,42 @@
 {
 	"cardType": 67,
-	"cardName": "Outpoured Anger",
-	"effText": "Shaper.\nWhen a distinct Shaper moves, move me adjacent to them.",
+	"cardName": "Inpragrang",
+	"effText": "Shape.\nWhen I move, move a distinct Shaper to a space adjacent to me",
 	"effects": [
 		{
 			"triggerData": {
 				"triggerCondition": "Move",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card in Play",
-						"Main Card Fits Restriction Before"
-					],
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Friendly",
 							"Distinct Name from Source",
-							"Subtypes Include"
+							"Subtypes Include",
+							"Board"
 						],
 						"subtypesInclude": [
 							"Shaper"
 						]
 					}
-				}
-			},
-			"subeffects": [
-				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction": {
-						"blurb": "to move Outpoured Anger to",
+						"blurb": "where to move the Shaper",
 						"spaceRestrictions": [
-							"Adjacent to Card Target",
+							"Adjacent to Source",
+							"Can Move Card Target to This Space",
 							"Empty"
 						]
-					},
-					"targetIndex": -2
+					}
 				},
 				{
 					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
@@ -50,10 +47,10 @@
 	"keywords": [
 		"Shape"
 	],
-	"n": 0,
-	"e": 1,
+	"n": 3,
+	"e": 4,
 	"s": 4,
-	"w": 5,
+	"w": 4,
 	"subtypes": [
 		"Ethereal",
 		"Shaper"

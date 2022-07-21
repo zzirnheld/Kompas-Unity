@@ -411,22 +411,22 @@ shapers/support/spells/Send Home
 shapers/support/spells/Shape Unbound
 shapers/support/spells/Unstable Dreaming
 
-shapers/Evasive Ectoplasm
+shapers/Eddieself
+shapers/Evasoplasm
 shapers/Gapfillermist
-shapers/Golranner Smoke
-shapers/Grudges Unforgotten
-shapers/He Who Knew Runes
-shapers/Infolding Hopelessness
+shapers/Golrannersmoke
+shapers/Grudgesmud
+shapers/Inpragrang
+shapers/Heavypresence
 shapers/Irrilmist
+shapers/Lessreck
 shapers/Kindred Spirit
-shapers/Outpoured Anger
-shapers/Outpoured Vitriol
+shapers/Manyself
+shapers/Outpragrang
 shapers/Thrillmist
-shapers/Trailing Dreammist
 shapers/Twin Spirit
-shapers/Who Searched For Grudges
-shapers/Whose Anger Draws Fear
-shapers/Whose Past Disintegrates
+shapers/Pale Ardentfire
+shapers/Runedmemory
 
 shapers/Maya, Mistress of Reality
 shapers/Riali, Master of Irrealities
