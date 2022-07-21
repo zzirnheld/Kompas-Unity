@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "We Are Yet Unworthy",
-	"effText": "Tribute an adjacent Cultist. Hand-reshuffle a card. Draw 2. Gain 2 Pips. Annihilate me.",
+	"effText": "Tribute an adjacent Cultist, hand->reshuffle a card, and annihilate me. Draw 2 cards and gain 2 Pips.",
 	"effects": [
 		{
 			"triggerData": {
@@ -52,18 +52,18 @@
 					"$type": "KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
 				},
 				{
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+				},
+				{
 					"$type": "KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
 					"xModifier": 2
 				},
 				{
 					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
 					"xModifier": 2
-				},
-				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type": "KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
 				}
 			]
 		}

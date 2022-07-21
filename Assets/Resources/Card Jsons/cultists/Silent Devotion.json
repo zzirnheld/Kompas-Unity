@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Silent Devotion",
-	"effText": "When friendly turns start, deck-summon a Cultist Follower.",
+	"effText": "When friendly turns start, deck->summon a Cultist Follower.",
 	"effects": [
 		{
 			"triggerData": {

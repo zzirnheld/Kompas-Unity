@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Cyclical Sacrifice",
-	"effText": "Reshuffle X of your dead Cultists. Gain X pips. Annihilate me.",
+	"effText": "Discard->reshuffle X Cultists. Gain X pips. Annihilate me.",
 	"effects": [
 		{
 			"triggerData": {
@@ -18,7 +18,6 @@
 					"cardRestriction": {
 						"blurb": "for Cyclical Sacrifice to reshuffle",
 						"cardRestrictions": [
-							"Friendly",
 							"Discard",
 							"Subtypes Include"
 						],

@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Deafening Silence",
-	"effText": "Set X to the number of your dead Cultists. Give a character -X EW.",
+	"effText": "If you have X dead Cultists, give a character -X EW.",
 	"effects": [
 		{
 			"triggerData": {
