@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Remembering",
-	"effText": "When a Vessel echoes themselves, echo that character.",
+	"effText": "When a Vessel echoes themselves, echo them again.",
 	"effects": [
 		{
 			"blurb": "Remember",

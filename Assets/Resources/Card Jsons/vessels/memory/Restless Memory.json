@@ -1,7 +1,7 @@
 {
 	"cardType": 65,
 	"cardName": "Restless Memory",
-	"effText": "When this character is summoned, move them 1 space, then give them -1 N.\nWhen this character moves normally, echo them.",
+	"effText": "When this character is summoned, move them 1 space.\nWhen this character moves normally, echo them.",
 	"effects": [
 		{
 			"blurb": "Restless Movement",
@@ -35,10 +35,6 @@
 				},
 				{
 					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"nModifier": -1
 				}
 			]
 		},
@@ -71,6 +67,6 @@
 			"Augment Effect Restrictions"
 		]
 	},
-	"a": 2,
+	"a": 3,
 	"subtypeText": "Memory"
 }

@@ -267,24 +267,6 @@ mechs/One Step Ahead
 mechs/Repair Hub
 mechs/Buffer Shield
 
-memory/Malevolent Memory
-memory/Creative Memory
-memory/Deja Vu
-memory/Powerhungry Memory
-memory/Paranoid Memory
-memory/Restless Memory
-memory/Bestower of Memories
-memory/Memory Guide
-memory/Remembering
-memory/Rememberance
-memory/Rememory Guide
-memory/Vesselformation
-memory/Immortal Memory
-memory/Corporeal Recall
-memory/Memorial Augury
-memory/Recall
-memory/Uncall For
-
 orcs/Alkorath'Kil, Fury in the Blood
 orcs/Bind the Blood
 orcs/Bind the Shadows
@@ -585,6 +567,24 @@ vessels/Fortified Vessel
 vessels/Hardy Vessel
 vessels/Meditative Vessel
 vessels/Unwilling Vessel
+
+vessels/memory/Malevolent Memory
+vessels/memory/Creative Memory
+vessels/memory/Deja Vu
+vessels/memory/Powerhungry Memory
+vessels/memory/Paranoid Memory
+vessels/memory/Restless Memory
+vessels/memory/Bestower of Memories
+vessels/memory/Memory Guide
+vessels/memory/Remembering
+vessels/memory/Rememberance
+vessels/memory/Rememory Guide
+vessels/memory/Vesselformation
+vessels/memory/Immortal Memory
+vessels/memory/Corporeal Recall
+vessels/memory/Memorial Augury
+vessels/memory/Recall
+vessels/memory/Uncall For
 
 wanderers/At Home in the World
 wanderers/Leper

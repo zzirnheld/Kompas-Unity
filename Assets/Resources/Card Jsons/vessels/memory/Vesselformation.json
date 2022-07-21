@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Vesselformation",
-	"effText": "When a Vessel with base cost X dies, discard->annihilate Memories with total A > X. Deck->summon a copy of that Vessel.",
+	"effText": "When a Vessel with printed S X dies, discard->annihilate Memories with total A > X. Deck->summon a copy of that Vessel.",
 	"effects": [
 		{
 			"blurb": "Form vessel",
