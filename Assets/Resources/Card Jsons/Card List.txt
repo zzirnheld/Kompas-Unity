@@ -77,34 +77,35 @@ aquatic/water/Placid Waters
 aquatic/water/Tide Pools
 aquatic/water/Hungry Tide
 
-crazy_Ideas/A Frayed Knot
-crazy_Ideas/Acid Lava Pit of Ghost Piranhas
-crazy_Ideas/Ballroom-Disco Breakdance Competition
-crazy_Ideas/Bounce Pad
-crazy_Ideas/Dr. Thierr Dumachmartres
-crazy_Ideas/Flippant Emo Daughter
-crazy_Ideas/Giant Ball of Tinfoil
-crazy_Ideas/Great Scott
-crazy_Ideas/Just a Little Bit More
-crazy_Ideas/Listen to Reason
-crazy_Ideas/Inexplicably Possible Black Hole
-crazy_Ideas/MAXIMUM OVERDRIVE
-crazy_Ideas/Mind of Flock Controlled Pigeons
-crazy_Ideas/Orry the Oviparous Mammal
-crazy_Ideas/Right Into My Trap
-crazy_Ideas/Self-Destruct Button
-crazy_Ideas/Shifting Tile Maze Path Blocker
-crazy_Ideas/Something Cannon
-crazy_Ideas/Stupid Idea Generator
-crazy_Ideas/Jacob-John Binglejeimer Schmitzel
-crazy_Ideas/Johnatheremiah
-crazy_Ideas/Ideate
-crazy_Ideas/Timothy
-crazy_Ideas/Wait Hold Up
-crazy_Ideas/Weird Idea That is Also
-crazy_Ideas/Yeet Modification
-crazy_Ideas/Yeeterator
-crazy_Ideas/Carla
+crazy_ideas/ificators/A Frayed Knot
+crazy_ideas/ificators/Ballroom-Disco Breakdance Competition
+crazy_ideas/ificators/Just a Little Bit More
+crazy_ideas/ificators/MAXIMUM OVERDRIVE
+crazy_ideas/ificators/Right Into My Trap
+crazy_ideas/ificators/Self-Destruct Button
+crazy_ideas/ificators/Stupid Idea Generator
+crazy_ideas/ificators/Wait Hold Up
+crazy_ideas/ificators/Yeet Modification
+crazy_idea/ificatorss/Yeeterator
+
+crazy_ideas/support/Dr. Thierr Dumachmartres
+crazy_ideas/support/Flippant Emo Daughter
+crazy_ideas/support/Great Scott
+crazy_ideas/support/Listen to Reason
+crazy_ideas/support/Jacob-John Binglejeimer Schmitzel
+crazy_ideas/support/Johnatheremiah
+crazy_ideas/support/Ideate
+crazy_ideas/support/Timothy
+crazy_ideas/support/Carla
+
+crazy_ideas/Acid Lava Pit of Ghost Piranhas
+crazy_ideas/Bounce Pad
+crazy_ideas/Giant Ball of Tinfoil
+crazy_ideas/Inexplicably Possible Black Hole
+crazy_ideas/Mind of Flock Controlled Pigeons
+crazy_ideas/Orry the Oviparous Mammal
+crazy_ideas/Something Cannon
+crazy_ideas/Weird Idea That is Also
 
 cultists/Altar Builder
 cultists/Bloodcurser

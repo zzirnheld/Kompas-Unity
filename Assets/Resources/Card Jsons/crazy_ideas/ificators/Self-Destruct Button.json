@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Self-Destruct Button",
-	"effText": "Ificate.\nDestroy a distinct friendly Crazy Idea. Rehand all friendly discarded Crazy Ideas. Hand->discard 1-3 cards.",
+	"effText": "Ificate.\nDestroy another friendly Crazy Idea. Discard->hand all friendly Crazy Ideas. Hand->discard up to 3 cards.",
 	"effects": [
 		{
 			"triggerData": {
@@ -20,7 +20,7 @@
 						"cardRestrictions": [
 							"Friendly",
 							"Board",
-							"Distinct Name from Source",
+							"Different from Source",
 							"Subtypes Include"
 						],
 						"subtypesInclude": [
@@ -71,7 +71,7 @@
 							"Min Can Choose",
 							"Max Can Choose"
 						],
-						"minCanChoose": 1,
+						"minCanChoose": 0,
 						"maxCanChoose": 3
 					}
 				},

@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Failed Idea",
-	"effText":"When you hand->discard an Ificator, mill a Crazy Idea, then discard me (from wherever I am by then).",
+	"effText":"When you hand->discard an Ificator, deck->discard a Crazy Idea, then discard me.",
 	"effects":[
 		{
 			"triggerData":

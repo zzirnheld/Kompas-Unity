@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Stupid Idea Generator",
-	"effText": "Ificate.\nWhen enemy turns start, hand->discard 1 card, draw 1 card.",
+	"effText": "Ificate.\nWhen enemy turns start, hand->discard 1 card and draw 1 card.",
 	"effects": [
 		{
 			"triggerData": {
@@ -37,7 +37,7 @@
 	"keywords": [
 		"Ificate"
 	],
-	"c": 5,
+	"c": 2,
 	"spellTypes": [
 		"Enchant"
 	],
