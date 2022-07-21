@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Fast Talker",
-	"effText": "When you draw X, ask your opponent to reveal X cards. If they don't, give me +X/2 ESW.",
+	"effText": "When you draw X, your enemy can reveal X cards. If they don't, give me +X/2 ESW.",
 	"effects": [
 		{
 			"triggerData": {

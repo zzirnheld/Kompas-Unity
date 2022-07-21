@@ -331,7 +331,7 @@ reporters/Fast Talker
 reporters/Field Report
 reporters/Frontline Reporter
 reporters/Harvald S Thonstrop
-reporters/Nature Reporter
+reporters/Arborealist, Nature Reporter
 reporters/Newsflash!
 reporters/Online Reporter
 reporters/Reporter Reportar
