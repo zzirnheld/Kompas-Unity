@@ -1,15 +1,27 @@
 {
 	"cardType": 83,
 	"cardName": "Shifting Tides",
-	"effText": "You can dispel friendly Water to hand->cast Water where it was.",
+	"effText": "When friendly Water vanishes, hand->cast Water where it was.",
 	"effects": [
 		{
 			"blurb": "The Tide Shifts",
 			"activationRestriction": {
-				"activationRestrictionArray": [
-					"Friendly Turn",
-					"Default"
-				]
+				"triggerCondition": "Vanish",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Friendly",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Water"
+						]
+					}
+				}
 			},
 			"subeffects": [
 				{

@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Sacrifice to the Old Sea Gods",
-	"effText": "Annihilate an adjacent friendly Aquatic card, then me. Deck->cast Water where it was. Draw 1.",
+	"effText": "Annihilate an adjacent friendly Aquatic card, then me. Deck->cast Water where it was. Draw 1 card.",
 	"effects": [
 		{
 			"triggerData": {
