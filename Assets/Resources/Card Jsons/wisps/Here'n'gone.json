@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Here'n'gone",
-	"effText": "When I'm cast, deck->summon 3 Wisps here, but kill them when I'm removed (basically when the stack empties).",
+	"effText": "When I'm cast, deck->summon 3 Wisps here, but kill them when I vanish.",
 	"effects": [
 		{
 			"triggerData": {

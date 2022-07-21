@@ -62,7 +62,7 @@
 		},
 		{
 			"keyword":"Wisp.",
-			"reminder":"When I'm summoned, or when turns start, move me 1 space."
+			"reminder":"When I'm summoned, or when turns start, move me 1 space. When I move:"
 		},
 		{
 			"keyword":"Invoke",

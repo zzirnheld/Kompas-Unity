@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Flippiwisp",
-	"effText": "Wisp.\nWhen I move, both players can each pay 1 pip to hand->discard 1 card and draw 1 card.",
+	"effText": "Wisp: Both players hand->discard 1 card and draw 1 card.",
 	"effects": [
 		{
 			"triggerData": {
@@ -14,34 +14,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
-					"subeffIndices": [
-						3,
-						4
-					],
-					"skipIndex": 8
-				},
-				{
-					"$type": "KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
-					"choiceBlurb": "Pay 1 pip, hand->discard 1, and draw 1?",
-					"optionBlurbs": [
-						"Yes",
-						"No"
-					],
-					"jumpIndices": [
-						2,
-						7
-					]
-				},
-				{
 					"$type": "KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
 					"jumpIndices": [
-						7
+						4
 					]
-				},
-				{
-					"$type": "KompasServer.Effects.PayPipsSubeffect, Assembly-CSharp",
-					"xModifier": 1
 				},
 				{
 					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
@@ -63,29 +39,6 @@
 				},
 				{
 					"$type": "KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
-				},
-				{
-					"$type": "KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
-					"subeffIndices": [
-						11,
-						12
-					]
-				},
-				{
-					"$type": "KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
-					"choiceBlurb": "Pay 1 pip, hand->discard 1, and draw 1?",
-					"optionBlurbs": [
-						"Yes",
-						"No"
-					],
-					"jumpIndices": [
-						11,
-						100
-					]
-				},
-				{
-					"$type": "KompasServer.Effects.PayPipsSubeffect, Assembly-CSharp",
-					"xModifier": 1
 				},
 				{
 					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
