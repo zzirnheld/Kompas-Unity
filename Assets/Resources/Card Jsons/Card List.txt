@@ -47,6 +47,7 @@ generic/Trapped Offering
 generic/Unfinding
 generic/Yank
 generic/Ethereate
+generic/Rememories
 
 aquatic/support/Fishing
 aquatic/support/Shifting Tides
@@ -146,39 +147,33 @@ dragons/Earthwapmer
 dragons/Dragonking
 dragons/Cyrian
 
-geminii/Rememories
-golems/Animancer
+golems/support/Animancer
+golems/support/Modular Golem Cores
+golems/support/Slight Golemodifications
+golems/support/Core Scrambling
+golems/support/
+
+golems/cores/Combustion Core
+golems/cores/Defense Core
+golems/cores/Durability Core
+golems/cores/Speed Core
+golems/cores/Contingency Core
+
 golems/Antiprecatium Golem
 golems/Clay Golem
-golems/Combustion Core
-golems/Defense Core
-golems/Durability Core
 golems/Earth Golem
 golems/Gunpowder Golem
 golems/Ice Golem
 golems/Magma Golem
 golems/Metal Golem
-golems/Modular Golem Cores
 golems/Obsidian Golem
 golems/Pneumatic Golem
-golems/Slight Golemodifications
-golems/Speed Core
 golems/Straw Golem
 golems/Strength Core
 golems/Tallow Golem
-golems/Taunt Core
 golems/Woolen Golem
 golems/Gold Golem
-golems/Core Scrambling
-golems/Scrap Golem
-golems/Backup Power Core
 golems/Stone Golem
-golems/Recoverable Core
-
-instruments/Gratuitous Sax
-instruments/Gratuitous Violins
-instruments/Horny Jail
-instruments/Resonating Tringle
 
 invokers/Haguaughan Invoker
 invokers/Invoke the Invoker
@@ -188,6 +183,20 @@ invokers/Waungh Invoker
 invokers/Novice Invocation
 invokers/Forlorn Invocation
 invokers/Peruser of Ancient Texts
+
+invokers/spirits/A Lot of Disappointment
+invokers/spirits/Allconsuming Frustration
+invokers/spirits/Generous Pleasure
+invokers/spirits/Overwhelming Anger
+invokers/spirits/Spiritual Advice
+invokers/spirits/Unfocusing Annoyance
+invokers/spirits/Whirlwind of Emotions
+invokers/spirits/Infectious Displeasure
+invokers/spirits/Nailbiting Anxiety
+invokers/spirits/Brightsmiling Excitement
+invokers/spirits/Hog Wildness
+invokers/spirits/Lizard Calm
+invokers/spirits/Boundless Creativity
 
 light_shade/Light
 light_shade/Shade
@@ -442,20 +451,6 @@ speedemons/Coach Lap
 speedemons/Soul of Speed
 speedemons/The Sonic Boom
 speedemons/Mach the Porcupine
-
-spirits/A Lot of Disappointment
-spirits/Allconsuming Frustration
-spirits/Generous Pleasure
-spirits/Overwhelming Anger
-spirits/Spiritual Advice
-spirits/Unfocusing Annoyance
-spirits/Whirlwind of Emotions
-spirits/Infectious Displeasure
-spirits/Nailbiting Anxiety
-spirits/Brightsmiling Excitement
-spirits/Hog Wildness
-spirits/Lizard Calm
-spirits/Boundless Creativity
 
 spores/Mockish Rotbloom
 spores/Delirious Sparkbloom

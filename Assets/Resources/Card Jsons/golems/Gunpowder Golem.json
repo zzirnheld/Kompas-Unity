@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Gunpowder Golem",
-	"effText": "Golem.\nWhen I'm activated, set X to my W. Give me and a distinct Summoned character -X E.",
+	"effText": "Golem.\nWhen I'm activated, set X to my W. Give me and a distinct summon -X E.",
 	"effects": [
 		{
 			"blurb": "Boom",
@@ -31,7 +31,7 @@
 				{
 					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction": {
-						"blurb": "Summoned character for Gunpowder Golem to give -X E",
+						"blurb": "summon for Gunpowder Golem to give -X E",
 						"cardRestrictions": [
 							"Character",
 							"Summoned",

@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Clay Golem",
-	"effText": "Golem.\nWhen I'm activated, tribute me and deck->summon where I was a Golem with less S than your Avatar.",
+	"effText": "Golem.\nWhen I'm activated, tribute me. Deck->summon a Golem where I was.",
 	"effects": [
 		{
 			"blurb": "Golemorph",
@@ -30,23 +30,11 @@
 						"cardRestrictions": [
 							"Subtypes Include",
 							"Character",
-							"Deck",
-							"Card Value Fits Number Restriction"
+							"Deck"
 						],
 						"cardValue": {
 							"value": "S"
-						},
-						"cardValueNumberRestriction": {
-							"numberRestrictions": [
-								"<Avatar"
-							],
-							"cardValue": {
-								"value": "S"
-							}
-						},
-						"subtypesInclude": [
-							"Golem"
-						]
+						}
 					}
 				},
 				{

@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "IV - The Emperor",
-	"effText": "When you draw X cards, give an adjacent Summoned character +X EW.",
+	"effText": "When you draw X cards, give an adjacent summon +X EW.",
 	"effects": [
 		{
 			"triggerData": {
@@ -17,7 +17,7 @@
 				{
 					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction": {
-						"blurb": "Summoned character for Emperor to buff",
+						"blurb": "summon for Emperor to buff",
 						"cardRestrictions": [
 							"Character",
 							"Board",

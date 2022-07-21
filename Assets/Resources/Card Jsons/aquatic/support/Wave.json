@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Wave",
-	"effText": "Choose a Water spell. Remember any Summoned characters in it. Move the Water through empty spaces in Water. Move all those characters to spaces in that Water.",
+	"effText": "Choose a Water spell. Remember any summons in it. Move the Water through empty spaces in Water. Move all those characters to spaces in that Water.",
 	"effects": [
 		{
 			"triggerData": {
