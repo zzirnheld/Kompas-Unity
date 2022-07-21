@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Figurehead Queen",
-	"effText": "When you draw X cards, give me +X C.\nAfter I'm cast, delay 1 turn.\nSet X to my C. Deck->summon an S <= X Tarocco.",
+	"effText": "When you draw X cards, give me +X C.\n1 turn after I'm cast, deck->summon a Tarocco with S <= my C.",
 	"effects": [
 		{
 			"blurb": "+X C",
