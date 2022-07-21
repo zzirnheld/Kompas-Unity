@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Swordguild Medic",
-	"effText": "Once each turn, I can give an adjacent Warrior +1 E.",
+	"effText": "Once each turn, you can give an adjacent Warrior +1 E.",
 	"effects": [
 		{
 			"activationRestriction": {
@@ -39,10 +39,10 @@
 			]
 		}
 	],
-	"n": 1,
+	"n": 3,
 	"e": 4,
 	"s": 4,
-	"w": 3,
+	"w": 4,
 	"subtypes": [
 		"Swordguild",
 		"Warrior"
