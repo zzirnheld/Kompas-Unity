@@ -1,44 +1,58 @@
 {
 	"cardType": 67,
 	"cardName": "N0T3",
-	"effText": "Golem.\nWhen I attack a character, delay until I fight them again. Give them -3 E.",
+	"effText": "Golem.\nMech Ultimate: Double my E. I attack a character I'm already attacking.",
 	"effects": [
 		{
-			"blurb": "Charge up",
+			"blurb": "B1NG B0NG",
 			"triggerData": {
-				"triggerCondition": "Attack",
+				"triggerCondition": "S Change",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"triggerRestrictionElements": [
+                        {
+                            "$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.TriggerKeyword, Assembly-CSharp",
+                            "keyword": "Mech Ultimate"
+                        }
 					]
 				}
 			},
 			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp",
-					"secondary":true
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type": "KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
-					"jumpIndices": [
-						2
-					],
-					"endCondition": "Defend",
-					"triggerRestriction": {
-						"triggerRestrictions": [
-							"Main Card is a Secondary Context Card Target",
-							"This Card is Secondary Card"
-						]
+					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "E"
 					},
-					"clearWhenResume": true,
-					"targetIndex": 0
+					"xMultiplier": 1
 				},
 				{
 					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eModifier": -3
+					"eMultiplier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "R350N4T3",
+						"cardRestrictions": [
+							"Is Defending From Source"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
+					"targetIndex": -1,
+					"attackerIndex": -2
+				},
+				{
+					"$type": "KompasServer.Effects.NegateSubeffect, Assembly-CSharp"
 				}
 			]
 		}
+	],
+	"keywords": [
+		"Mech Ultimate Charge"
 	],
 	"MovementRestriction": {
 		"normalRestrictionsFromJson": [
@@ -55,7 +69,7 @@
 	"n": 2,
 	"e": 8,
 	"s": 7,
-	"w": 4,
+	"w": 8,
 	"subtypes": [
 		"Mech",
 		"Golem"

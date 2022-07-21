@@ -1,21 +1,19 @@
 {
 	"cardType": 67,
 	"cardName": "PL4T00N",
-	"effText": "Golem.\nWhen I kill a character, double my W. If it's now >= 4, give me +15 E. Negate me. I attack an enemy. I attack an enemy.",
+	"effText": "Golem.\nMech Ultimate: Triple my E. I attack up to 2 characters I'm not already fighting.",
 	"effects": [
 		{
-			"blurb": "Charge up",
+			"blurb": "R0LL 0UT",
 			"triggerData": {
-				"triggerCondition": "Discard",
+				"triggerCondition": "S Change",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"Stackable Source Fits Restriction Now"
-					],
-					"sourceRestriction": {
-						"cardRestrictions": [
-							"Is Source"
-						]
-					}
+					"triggerRestrictionElements": [
+                        {
+                            "$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.TriggerKeyword, Assembly-CSharp",
+                            "keyword": "Mech Ultimate"
+                        }
+					]
 				}
 			},
 			"subeffects": [
@@ -25,73 +23,58 @@
 				{
 					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
 					"cardValue": {
-						"value": "W"
+						"value": "E"
 					},
 					"xMultiplier": 1
 				},
 				{
 					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"wMultiplier": 1
+					"eMultiplier": 2
 				},
 				{
-					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
-					"condition": "Target Fits Restriction",
+					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Card Value Fits Number Restriction"
-						],
-						"cardValue": {
-							"value": "W"
-						},
-						"cardValueNumberRestriction": {
-							"numberRestrictions": [
-								"<X"
-							]
-						}
+						"blurb": "5PR34D 0UT",
+						"cardRestrictionElements": [
+                            { 
+								"$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.Not, Assembly-CSharp",
+								"element": {
+									"$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.Fighting, Assembly-CSharp",
+									"fightingWho": { "$type": "KompasCore.Effects.Identities.GamestateCardIdentities.ThisCard, Assembly-CSharp" }
+								}
+							}
+						]
 					},
-					"xModifier": 4
+					"listRestriction": {
+						"listRestrictions": [
+							"Min Can Choose",
+							"Max Can Choose"
+						],
+						"minCanChoose": 0,
+						"maxCanChoose": 2
+					}
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eModifier": 15
+					"$type": "KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
+					"targetIndex": -1,
+					"attackerIndex": 0
+				},
+				{
+					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete": true,
+					"remainingTargets": 1,
+					"jumpIndices": [
+						4
+					]
 				},
 				{
 					"$type": "KompasServer.Effects.NegateSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction": {
-						"blurb": "character for PL4T00N to blast",
-						"cardRestrictions": [
-							"Character",
-							"Board",
-							"Enemy"
-						]
-					}
-				},
-				{
-					"$type": "KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
-					"attackerIndex": 0,
-					"targetIndex": -1
-				},
-				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction": {
-						"blurb": "character for PL4T00N to blast",
-						"cardRestrictions": [
-							"Character",
-							"Board",
-							"Enemy"
-						]
-					}
-				},
-				{
-					"$type": "KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
-					"attackerIndex": 0,
-					"targetIndex": -1
 				}
 			]
 		}
+	],
+	"keywords": [
+		"Mech Ultimate Charge"
 	],
 	"MovementRestriction": {
 		"normalRestrictionsFromJson": [

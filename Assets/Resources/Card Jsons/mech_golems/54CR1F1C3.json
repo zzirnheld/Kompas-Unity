@@ -1,31 +1,22 @@
 {
 	"cardType": 67,
 	"cardName": "54CR1F1C3",
-	"effText": "Golem.\nAfter I'm activated, delay 2 turns. Destroy the closest enemy card(s) to me (all of them, if tied).",
+	"effText": "Golem.\nMech Ultimate: Destroy the closest character(s) to me that I'm not fighting.",
 	"effects": [
 		{
             "blurb": "54CR1F1C3!!!",
 			"triggerData": {
-				"triggerCondition": "Activate",
+				"triggerCondition": "S Change",
 				"triggerRestriction": {
 					"triggerRestrictionElements": [
                         {
-                            "$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.CardsMatch, Assembly-CSharp",
-                            "firstCard": { "$type": "KompasCore.Effects.Identities.GamestateCardIdentities.ThisCard, Assembly-CSharp" },
-                            "secondCard": { "$type": "KompasCore.Effects.Identities.ActivationContextCardIdentities.MainCardBefore, Assembly-CSharp" }
+                            "$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.TriggerKeyword, Assembly-CSharp",
+                            "keyword": "Mech Ultimate"
                         }
 					]
 				}
 			},
 			"subeffects": [
-				{
-					"$type": "KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
-					"numTimesToDelay": 1,
-					"jumpIndices": [
-						1
-					],
-					"endCondition": "Turn Start"
-				},
 				{
 					"$type": "KompasServer.Effects.SetXByNumberIdentitySubeffect, Assembly-CSharp",
 					"numberIdentity": {
@@ -43,7 +34,14 @@
 									"$type": "KompasCore.Effects.Identities.GamestateManyCardsIdentities.FittingRestriction, Assembly-CSharp",
 									"cardRestriction": {
 										"cardRestrictionElements": [
-											{ "$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.EnemyCard, Assembly-CSharp" }
+											{ "$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.EnemyCard, Assembly-CSharp" },
+											{ 
+												"$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.Not, Assembly-CSharp",
+												"element": {
+													"$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.Fighting, Assembly-CSharp",
+													"fightingWho": { "$type": "KompasCore.Effects.Identities.GamestateCardIdentities.ThisCard, Assembly-CSharp" }
+												}
+											}
 										]
 									}
 								}
@@ -71,7 +69,14 @@
 										}
 									]
                                 }
-                            }
+                            },
+							{ 
+								"$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.Not, Assembly-CSharp",
+								"element": {
+									"$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.Fighting, Assembly-CSharp",
+									"fightingWho": { "$type": "KompasCore.Effects.Identities.GamestateCardIdentities.ThisCard, Assembly-CSharp" }
+								}
+							}
 						]
 					},
 					"xMultiplier": 1
@@ -85,10 +90,16 @@
 					"jumpIndices": [
 						2
 					]
+				},
+				{
+					"$type": "KompasServer.Effects.NegateSubeffect, Assembly-CSharp"
 				}
 			]
 		}
     ],
+	"keywords": [
+		"Mech Ultimate Charge"
+	],
 	"MovementRestriction": {
 		"normalRestrictionsFromJson": [
 			"Default",
@@ -103,7 +114,7 @@
 	},
 	"n": 7,
 	"e": 9,
-	"s": 7,
+	"s": 10,
 	"w": 1,
 	"subtypes": [
 		"Mech",
