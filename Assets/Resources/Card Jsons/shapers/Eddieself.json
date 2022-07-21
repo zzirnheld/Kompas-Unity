@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Eddieself",
-	"effText": "Shape.\nWhen I move X spaces, hand->summon an SX Ethereal where I moved from.",
+	"effText": "Shape.\nWhen I move X spaces, hand->summon an SX Ethereal to the space I left.",
 	"effects": [
 		{
 			"blurb": "Empower the Shaper",
