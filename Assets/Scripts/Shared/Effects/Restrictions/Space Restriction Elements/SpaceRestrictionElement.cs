@@ -2,6 +2,8 @@ using KompasCore.Cards;
 using KompasCore.Effects.Identities;
 using KompasCore.Effects.Relationships;
 using KompasServer.Effects.Identities;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace KompasCore.Effects.Restrictions
 {
@@ -58,6 +60,7 @@ namespace KompasCore.Effects.Restrictions
         /// </summary>
         public class AdjacentTo : SpaceRestrictionElement
         {
+            public INoActivationContextIdentity<ICollection<GameCardBase>> anyOfTheseCards;
             public INoActivationContextIdentity<GameCardBase> card;
             public INoActivationContextIdentity<Space> space;
 
@@ -74,10 +77,11 @@ namespace KompasCore.Effects.Restrictions
                         $"in the effect of {InitializationContext.source}");
             }
 
-            protected override bool AbstractIsValidSpace(Space space, ActivationContext context)
+            protected override bool AbstractIsValidSpace(Space toTest, ActivationContext context)
             {
-                if (card != null) return card.Item.IsAdjacentTo(space);
-                else if (space != null) return space.AdjacentTo(space);
+                if (anyOfTheseCards != null) return anyOfTheseCards.Item.Any(c => c.IsAdjacentTo(toTest));
+                else if (card != null) return card.Item.IsAdjacentTo(toTest);
+                else if (space != null) return space.Item.AdjacentTo(toTest);
                 else throw new System.NotImplementedException($"You forgot to account for some weird case for {InitializationContext.source}");
             }
         }

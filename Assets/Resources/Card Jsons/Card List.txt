@@ -417,35 +417,36 @@ runar/Tiwaz
 runar/Uruz
 runar/Wynn
 
-shapers/Irrilmist
-shapers/Ephemera
-shapers/Dreamhook
-shapers/Dreammist
-shapers/Dreamscape
+shapers/support/characters/Dreammist
+shapers/support/characters/Ephemera
+shapers/support/characters/Untethered Spirit
+
+shapers/support/spells/Dreamhook
+shapers/support/spells/Dreamscape
+shapers/support/spells/Pseudopod
+shapers/support/spells/Send Home
+shapers/support/spells/Shape Unbound
+shapers/support/spells/Unstable Dreaming
+
 shapers/Evasive Ectoplasm
+shapers/Gapfillermist
+shapers/Golranner Smoke
 shapers/Grudges Unforgotten
 shapers/He Who Knew Runes
-shapers/Maya, Mistress of Reality
+shapers/Infolding Hopelessness
+shapers/Irrilmist
+shapers/Kindred Spirit
 shapers/Outpoured Anger
-shapers/Pseudopod
-shapers/Send Home
-shapers/Shape Unbound
+shapers/Outpoured Vitriol
+shapers/Thrillmist
+shapers/Trailing Dreammist
 shapers/Twin Spirit
-shapers/Unstable Dreaming
-shapers/Untethered Spirit
 shapers/Who Searched For Grudges
 shapers/Whose Anger Draws Fear
 shapers/Whose Past Disintegrates
-shapers/Riali, Master of Irrealities
-shapers/Trailing Dreammist
-shapers/Tethered Dreammist
-shapers/Infolding Hopelessness
-shapers/Kindred Spirit
 
-shapers/Golranner Smoke
-shapers/Gapfillermist
-shapers/Outpoured Vitriol
-shapers/Thrillmist
+shapers/Maya, Mistress of Reality
+shapers/Riali, Master of Irrealities
 
 skyknights/Fearstrikebinder
 skyknights/Venturebinder
@@ -596,18 +597,22 @@ tarocco/XVIII - The Moon
 tarocco/XX - Judgement
 tarocco/XXI - The World
 
+trees/support/characters/Custodian of the Forest
+trees/support/characters/Master Graftsman
+trees/support/characters/The Man Who Replants
+
+trees/support/spells/Bark Salve
+trees/support/spells/Forest Fire
+trees/support/spells/Mulch
+trees/support/spells/Pruning
+trees/support/spells/Regrowth
+
 trees/Choketree
-trees/Custodian of the Forest
 trees/Flameborn Seedling
-trees/Forest Fire
 trees/Lithetree
-trees/Master Graftsman
-trees/Pruning
-trees/Regrowth
 trees/Seedling
 trees/Sharetree
 trees/Strongtree
-trees/The Man Who Replants
 trees/Thinktree
 
 vessels/Empty Vessel

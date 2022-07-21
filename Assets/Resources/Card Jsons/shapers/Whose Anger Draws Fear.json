@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Whose Anger Draws Fear",
-	"effText": "Summon me only adjacent to an Ethereal. Shape.\nWhen I attack, move my target directly away from me one space. If you can't, annihilate them.",
+	"effText": "Shape.\nWhen I attack a character, move them 1 space directly away from me. If you can't, annihilate them.",
 	"effects": [
 		{
 			"triggerData": {
@@ -58,27 +58,9 @@
 	"keywords": [
 		"Shape"
 	],
-	"PlayRestriction": {
-		"normalRestrictions": [
-			"Default Normal Restrictions",
-			"Adjacent to Card Fitting Restriction"
-		],
-		"effectRestrictions": [
-			"Default Effect Restrictions",
-			"Adjacent to Card Fitting Restriction"
-		],
-		"adjacentCardRestriction": {
-			"cardRestrictions": [
-				"Subtypes Include"
-			],
-			"subtypesInclude": [
-				"Ethereal"
-			]
-		}
-	},
 	"n": 1,
-	"e": 4,
-	"s": 4,
+	"e": 6,
+	"s": 5,
 	"w": 0,
 	"subtypes": [
 		"Ethereal",

@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Who Searched For Grudges",
-	"effText": "Shape.\nWhen I'm summoned, hand->discard 2 cards. If you can't, tribute me.",
+	"effText": "Shape.\nWhen I'm summoned, hand->discard 2 cards or kill me.",
 	"effects": [
 		{
 			"triggerData": {
@@ -14,10 +14,24 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
+					"$type": "KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
+					"subeffIndices": [
+						2
+					],
+					"skipIndex": 6
+				},
+				{
+					"$type": "KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"choiceBlurb": "Discard 2 cards or kill me?",
+					"optionBlurbs": [
+						"Discard 2",
+						"Kill me"
+					],
 					"jumpIndices": [
+						2,
 						6
-					]
+					],
+					"showX": true
 				},
 				{
 					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
@@ -48,9 +62,6 @@
 					"$type": "KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type": "KompasServer.Effects.ClearOnImpossibleSubeffect, Assembly-CSharp"
-				},
-				{
 					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
@@ -65,7 +76,7 @@
 	"n": 1,
 	"e": 4,
 	"s": 2,
-	"w": 2,
+	"w": 3,
 	"subtypes": [
 		"Ethereal",
 		"Shaper"

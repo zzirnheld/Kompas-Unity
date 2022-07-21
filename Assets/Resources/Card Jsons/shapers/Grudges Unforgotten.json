@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Grudges Unforgotten",
-	"effText": "Shape.\nWhen I'm summoned, annhilate a Summoned SX Ethereal and give me +X EW.",
+	"effText": "Shape.\nWhen I'm summoned, annhilate a friendly SX Ethereal and give me +X EW.",
 	"effects": [
 		{
 			"triggerData": {
@@ -18,10 +18,11 @@
 					"cardRestriction": {
 						"blurb": "Ethereal for Grudges Unforgotten to annihilate and absorb",
 						"cardRestrictions": [
-							"Subtypes Include",
+							"Friendly",
 							"Character",
 							"Board",
-							"Summoned"
+							"Summoned",
+							"Subtypes Include"
 						],
 						"subtypesInclude": [
 							"Ethereal"
