@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
-	"cardName": "Runepainter",
-	"effText": "Once each turn, you can pip hand-cast a Rune, then search your deck's top 10 cards for a copy of that Rune. Bottomdeck the rest.",
+	"cardName": "Runespeaker",
+	"effText": "Runecast, and search your deck's top 10 cards for a different Rune.",
 	"effects": [
 		{
 			"activationRestriction": {
@@ -15,7 +15,7 @@
 				{
 					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction": {
-						"blurb": "Rune for Runepainter to cast",
+						"blurb": "Rune for Runespeaker to cast",
 						"cardRestrictions": [
 							"Subtypes Include",
 							"Spell",
@@ -32,7 +32,7 @@
 				{
 					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction": {
-						"blurb": "where for Runepainter to cast its target Rune",
+						"blurb": "where for Runespeaker to cast its target Rune",
 						"spaceRestrictions": [
 							"Can Play Card Target to This Space",
 							"Empty"
@@ -55,11 +55,11 @@
 				{
 					"$type": "KompasServer.Effects.ChooseFromListSaveRestSubeffect, Assembly-CSharp",
 					"cardRestriction": {
-						"blurb": "Rune for Runepainter to search (to hand)",
+						"blurb": "Rune for Runespeaker to search (to hand)",
 						"cardRestrictions": [
 							"Subtypes Include",
 							"Friendly",
-							"Same Name as Target",
+							"Distinct Name from Other Targets",
 							"Deck",
 							"Index<C"
 						],
@@ -91,12 +91,8 @@
 		}
 	],
 	"n": 1,
-	"e": 3,
-	"s": 3,
-	"w": 3,
-	"subtypes": [
-		"Runar",
-		"Mage"
-	],
+	"e": 6,
+	"s": 6,
+	"w": 5,
 	"subtypeText": "Runar Mage"
 }

@@ -1,13 +1,12 @@
 {
 	"cardType": 67,
-	"cardName": "Runecaller",
-	"effText": "Once each turn, you can pip hand-cast a Rune.",
+	"cardName": "Runerunner",
+	"effText": "Runecast.",
 	"effects": [
 		{
 			"activationRestriction": {
 				"activationRestrictionArray": [
 					"Max Times Per Turn",
-					"Friendly Turn",
 					"Default"
 				]
 			},
@@ -15,7 +14,7 @@
 				{
 					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction": {
-						"blurb": "Rune for Runecaller to cast",
+						"blurb": "Rune for Runerunner to cast",
 						"cardRestrictions": [
 							"Subtypes Include",
 							"Spell",
@@ -32,7 +31,7 @@
 				{
 					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction": {
-						"blurb": "where for Runecaller to cast its target Rune",
+						"blurb": "where for Runerunner to cast its target Rune",
 						"spaceRestrictions": [
 							"Can Play Card Target to This Space",
 							"Empty"
@@ -49,10 +48,10 @@
 			]
 		}
 	],
-	"n": 0,
-	"e": 1,
-	"s": 1,
-	"w": 1,
+	"n": 2,
+	"e": 2,
+	"s": 2,
+	"w": 2,
 	"subtypes": [
 		"Runar",
 		"Mage"

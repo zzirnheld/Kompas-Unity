@@ -1,27 +1,30 @@
 {
 	"cardType": 67,
-	"cardName": "Runegunner",
-	"effText": "Once each turn, you can hand->cast a Rune, X spaces from me (following normal placement rules). X times: pip echo it.",
+	"cardName": "Runeloremaster",
+	"effText": "Runecast up to 3 times each turn.",
 	"effects": [
 		{
+			"blurb": "Master Runelore",
 			"activationRestriction": {
 				"activationRestrictionArray": [
 					"Max Times Per Turn",
+					"Friendly Turn",
 					"Default"
 				],
-				"maxTimes": 1
+				"maxTimes": 3
 			},
 			"subeffects": [
 				{
 					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction": {
-						"blurb": "Rune for Runegunner to cast",
+						"blurb": "Rune for Runeloremaster to cast",
 						"cardRestrictions": [
 							"Subtypes Include",
 							"Spell",
 							"Friendly",
 							"Hand",
-							"Can Be Played"
+							"Can Be Played",
+							"Effect Controller can Afford Cost"
 						],
 						"subtypesInclude": [
 							"Rune"
@@ -31,7 +34,7 @@
 				{
 					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction": {
-						"blurb": "where for Runegunner to cast its target Rune",
+						"blurb": "where for Runeloremaster to cast its target Rune",
 						"spaceRestrictions": [
 							"Can Play Card Target to This Space",
 							"Empty"
@@ -39,34 +42,19 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
-				},
-				{
-					"$type": "KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
-					"whatToCount": "Distance From Source to Target",
-					"xMultiplier": 1
-				},
-				{
 					"$type": "KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type": "KompasServer.Effects.XTimesSubeffect, Assembly-CSharp",
-					"jumpIndices": [
-						4
-					]
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				}
 			]
 		}
 	],
-	"unique": true,
 	"n": 1,
-	"e": 7,
+	"e": 10,
 	"s": 10,
-	"w": 9,
+	"w": 10,
 	"subtypes": [
 		"Runar",
 		"Mage"

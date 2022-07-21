@@ -6,7 +6,7 @@
 		{
 			"triggerData": {
 				"optional": true,
-				"blurb": "Dispel a C <= X spell? (X is the number of cards you just drew)",
+				"blurb": "Dispel a C <= X spell?",
 				"triggerCondition": "Draw",
 				"triggerRestriction": {
 					"triggerRestrictions": [

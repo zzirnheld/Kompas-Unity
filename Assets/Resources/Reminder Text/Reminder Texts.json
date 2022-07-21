@@ -148,6 +148,10 @@
 		{
 			"keyword":"Mech Ultimate",
 			"reminder":"When I attack, give me +10 S. When my S becomes at least 30, do the following, then negate me:"
+		},
+		{
+			"keyword":"Runecast",
+			"reminder":"Once each turn, you can pip hand->cast a Rune."
 		}
 	]
 }

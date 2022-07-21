@@ -1,27 +1,27 @@
 {
 	"cardType": 67,
-	"cardName": "Runerunner",
-	"effText": "Once each turn, you can pip hand-cast a Rune.",
+	"cardName": "Runegunner",
+	"effText": "Runecast, and if you cast it X spaces from me, pip echo it X times (or as many as you have pips for).",
 	"effects": [
 		{
 			"activationRestriction": {
 				"activationRestrictionArray": [
 					"Max Times Per Turn",
 					"Default"
-				]
+				],
+				"maxTimes": 1
 			},
 			"subeffects": [
 				{
 					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction": {
-						"blurb": "Rune for Runerunner to cast",
+						"blurb": "Rune for Runegunner to cast",
 						"cardRestrictions": [
 							"Subtypes Include",
 							"Spell",
 							"Friendly",
 							"Hand",
-							"Can Be Played",
-							"Effect Controller can Afford Cost"
+							"Can Be Played"
 						],
 						"subtypesInclude": [
 							"Rune"
@@ -31,7 +31,7 @@
 				{
 					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction": {
-						"blurb": "where for Runerunner to cast its target Rune",
+						"blurb": "where for Runegunner to cast its target Rune",
 						"spaceRestrictions": [
 							"Can Play Card Target to This Space",
 							"Empty"
@@ -39,19 +39,34 @@
 					}
 				},
 				{
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"whatToCount": "Distance From Source to Target",
+					"xMultiplier": 1
+				},
+				{
 					"$type": "KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.XTimesSubeffect, Assembly-CSharp",
+					"jumpIndices": [
+						4
+					]
 				}
 			]
 		}
 	],
-	"n": 2,
-	"e": 2,
-	"s": 2,
-	"w": 2,
+	"unique": true,
+	"n": 1,
+	"e": 7,
+	"s": 10,
+	"w": 9,
 	"subtypes": [
 		"Runar",
 		"Mage"

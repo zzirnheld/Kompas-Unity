@@ -1,23 +1,21 @@
 {
 	"cardType": 67,
-	"cardName": "Runeloremaster",
-	"effText": "Thrice each turn, you can pip hand-cast a Rune.",
+	"cardName": "Runecaller",
+	"effText": "Runecast.",
 	"effects": [
 		{
-			"blurb": "Master Runelore",
 			"activationRestriction": {
 				"activationRestrictionArray": [
 					"Max Times Per Turn",
 					"Friendly Turn",
 					"Default"
-				],
-				"maxTimes": 3
+				]
 			},
 			"subeffects": [
 				{
 					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction": {
-						"blurb": "Rune for Runeloremaster to cast",
+						"blurb": "Rune for Runecaller to cast",
 						"cardRestrictions": [
 							"Subtypes Include",
 							"Spell",
@@ -34,7 +32,7 @@
 				{
 					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction": {
-						"blurb": "where for Runeloremaster to cast its target Rune",
+						"blurb": "where for Runecaller to cast its target Rune",
 						"spaceRestrictions": [
 							"Can Play Card Target to This Space",
 							"Empty"
@@ -51,10 +49,10 @@
 			]
 		}
 	],
-	"n": 1,
-	"e": 10,
-	"s": 10,
-	"w": 10,
+	"n": 0,
+	"e": 1,
+	"s": 1,
+	"w": 1,
 	"subtypes": [
 		"Runar",
 		"Mage"

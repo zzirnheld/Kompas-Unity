@@ -6,7 +6,6 @@
 		{
 			"blurb": "Judgement",
 			"triggerData": {
-				"blurb": "Kill an S <= X character? (X is the number of cards you just drew)",
 				"triggerCondition": "Draw",
 				"triggerRestriction": {
 					"triggerRestrictions": [
