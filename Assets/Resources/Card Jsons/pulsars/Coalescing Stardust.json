@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Coalescing Stardust",
-	"effText": "When your Avatar gets + or -X S, give me matching + or -X C.\nAfter I'm cast, delay 2 turns. Set X to my C. Deck->summon an S <= X Pulsar.",
+	"effText": "When your Avatar's S changes, change my C by the same amount.\n2 turns after I'm cast, deck->summon a Pulsar with less S than my C.",
 	"effects": [
 		{
 			"blurb": "Coalesce +C",
@@ -78,7 +78,7 @@
 						},
 						"cardValueNumberRestriction": {
 							"numberRestrictions": [
-								"<=X"
+								"<X"
 							]
 						},
 						"subtypesInclude": [
