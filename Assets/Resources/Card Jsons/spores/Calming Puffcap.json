@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Calming Puffcap",
-	"effText": "Spores.\nWhen a W > 0 non-Fungus character is activated, hand->discard an E X Fungus. Give the activated character -X W until they move.",
+	"effText": "Spores.\nWhen a W > 0 non-Fungus is activated, hand->discard an E X Fungus to give them -X W until they move.",
 	"effects": [
 		{
 			"blurb": "Delirium",

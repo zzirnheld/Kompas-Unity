@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Sporeling",
-	"effText": "Spores.\nAfter I'm summoned, delay 2 turns, then tribute me and deck->summon a Fungus where I was. Pulse them.",
+	"effText": "Spores.\n2 turns after I'm summoned, tribute me. Deck->summon a Fungus where I was. Pulse them.",
 	"effects": [
 		{
 			"triggerData": {
