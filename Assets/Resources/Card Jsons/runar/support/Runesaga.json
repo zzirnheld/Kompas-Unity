@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Runesaga",
-	"effText": "Must be cast normally. Give any Summoned Runar +25 ESW. Hand-cast any number of spells (for free. Yes, seriously. You just have to have a Runar to buff first).",
+	"effText": "MUST be cast normally.\nGive a Runar summon +25 ESW, then hand-cast any number of spells. (Yes, seriously, for free.)",
 	"effects": [
 		{
 			"triggerData": {

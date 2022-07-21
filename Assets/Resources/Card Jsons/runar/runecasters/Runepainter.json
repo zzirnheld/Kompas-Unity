@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Runepainter",
-	"effText": "Runecast, and search your deck's top 10 cards for a copy of that Rune.",
+	"effText": "Runecast, and hand a copy of that Rune from your deck's top 10 cards.",
 	"effects": [
 		{
 			"activationRestriction": {

@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Runestones",
-	"effText": "The first time each turn you cast a Rune, you can search your deck for a Rune.",
+	"effText": "The first time each turn you cast a Rune, deck->hand a Rune.",
 	"effects": [
 		{
 			"triggerData": {
