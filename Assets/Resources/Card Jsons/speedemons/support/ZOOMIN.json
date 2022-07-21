@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "ZOOMIN",
-	"effText": "Move a character 1 space. Move a character 1 space! MOVE A CHARACTER 1 SPACE!",
+	"effText": "Move a card 1 space. Move a card 1 space! MOVE A CARD 1 SPACE!",
 	"effects": [
 		{
 			"triggerData": {
@@ -16,17 +16,16 @@
 				{
 					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction": {
-						"blurb": "you! move a little bit to the left...",
+						"blurb": "zoom",
 						"cardRestrictions": [
-							"Board",
-							"Not Avatar"
+							"Board"
 						]
 					}
 				},
 				{
 					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction": {
-						"blurb": "ok, now move just a little bit more",
+						"blurb": "zoom",
 						"spaceRestrictions": [
 							"Can Move Card Target to This Space",
 							"Distance to Card Target Fits X Restriction",
@@ -46,17 +45,16 @@
 				{
 					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction": {
-						"blurb": "you! move a little bit to the left...",
+						"blurb": "Zoom!",
 						"cardRestrictions": [
-							"Board",
-							"Not Avatar"
+							"Board"
 						]
 					}
 				},
 				{
 					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction": {
-						"blurb": "ok, now move just a little bit more",
+						"blurb": "Zoom!",
 						"spaceRestrictions": [
 							"Can Move Card Target to This Space",
 							"Distance to Card Target Fits X Restriction",
@@ -76,17 +74,16 @@
 				{
 					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction": {
-						"blurb": "you! move a little bit to the left...",
+						"blurb": "ZOOM!",
 						"cardRestrictions": [
-							"Board",
-							"Not Avatar"
+							"Board"
 						]
 					}
 				},
 				{
 					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction": {
-						"blurb": "ok, now move just a little bit more",
+						"blurb": "ZOOM!",
 						"spaceRestrictions": [
 							"Can Move Card Target to This Space",
 							"Distance to Card Target Fits X Restriction",

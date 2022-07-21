@@ -448,27 +448,28 @@ shapers/Whose Past Disintegrates
 shapers/Maya, Mistress of Reality
 shapers/Riali, Master of Irrealities
 
-speed_demons/Coach Speed
-speed_demons/Mr Power Vacuum
-speed_demons/Boing Boing Launcher Guy
-speed_demons/Fairy Dust Tooter Scooter
-speed_demons/Dust Eater
-speed_demons/Fanatic Follower
-speed_demons/Hypnosympatheticizer
-speed_demons/Supportive Grandparent
-speed_demons/ZOOMIN
-speed_demons/Sonic Resonator
-speed_demons/Ready
-speed_demons/Set
-speed_demons/GO
-speed_demons/Choo Choo Brain
-speed_demons/Grandfather Speed
-speed_demons/Resonator Resonator
-speed_demons/Coach Lap
-speed_demons/Soul of Speed
-speed_demons/The Sonic Boom
-speed_demons/Sound Barrier
-speed_demons/Mach the Porcupine
+speedemons/support/Dust Eater
+speedemons/support/Fanatic Follower
+speedemons/support/Supportive Grandparent
+speedemons/support/ZOOMIN
+speedemons/support/Sound Barrier
+speedemons/support/Grandfather Speed
+speedemons/support/Resonator Resonator
+speedemons/support/Sonic Resonator
+speedemons/support/Ready
+speedemons/support/Set
+speedemons/support/GO
+
+speedemons/Coach Speed
+speedemons/Mr Power Vacuum
+speedemons/Boing Boing Launcher Guy
+speedemons/Fairy Dust Tooter Scooter
+speedemons/Hypnosympatheticizer
+speedemons/Choo Choo Brain
+speedemons/Coach Lap
+speedemons/Soul of Speed
+speedemons/The Sonic Boom
+speedemons/Mach the Porcupine
 
 spirits/A Lot of Disappointment
 spirits/Allconsuming Frustration
