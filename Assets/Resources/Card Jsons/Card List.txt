@@ -68,27 +68,6 @@ aquatic/Wave
 aquatic/Raincaller Carp
 aquatic/Inevitable Crab
 
-bards/Jolambertino, Indeci Compos
-bards/Wuonlan, the Inspired
-bards/Henry, Whose Bass is Based
-bards/Meti, Prima Diva
-bards/Master Caster, Recorder Bdaster
-bards/Eli, Quadruple Hornist
-bards/Dave with the Fonky Keytar
-bards/Earblaster, Tuba Master
-bards/Michael on Triangle
-bards/The Mystical Medical Doc
-bards/Reyna, Basoonist Backstage
-bards/Impro Visio, Dealing with Nonsezna
-bards/Eldir Samplei, Bestower of Horns
-bards/Zach, Sky Singer
-bards/Bards Get Inspiration
-bards/The Playlist
-bards/Up To Eleven
-bards/Encore
-bards/Beat Drop
-bards/Finale
-
 crazy_Ideas/A Frayed Knot
 crazy_Ideas/Acid Lava Pit of Ghost Piranhas
 crazy_Ideas/Ballroom-Disco Breakdance Competition
@@ -204,15 +183,29 @@ invokers/Peruser of Ancient Texts
 
 light_shade/Light
 light_shade/Shade
-light_shade/The Keeper of the Hooded Lantern
-light_shade/Dristzanti, the Illuminator
-light_shade/Trake, Shadecreeper
-light_shade/Illalli, the Brilliant
-light_shade/Lightbulb Idea
-light_shade/Light Up
-light_shade/Turn Off
-light_shade/Brillaume of the City
-light_shade/Inspirelight
+
+light_shade/support/The Keeper of the Hooded Lantern
+light_shade/support/Dristzanti, the Illuminator
+light_shade/support/Trake, Shadecreeper
+light_shade/support/Illalli, the Brilliant
+light_shade/support/Lightbulb Idea
+light_shade/support/Light Up
+light_shade/support/Turn Off
+light_shade/support/Brillaume of the City
+light_shade/support/Inspirelight
+
+light_shade/moths/Rouge Rogue Moth
+light_shade/moths/Disarming Rogue Moth
+light_shade/moths/Massive Moon Moth
+light_shade/moths/Searing Sun Moth
+light_shade/moths/Ravenous Leymoth
+light_shade/moths/Mothmisidentification
+light_shade/moths/Call of the Moon
+light_shade/moths/Cloaked in Shadow
+light_shade/moths/Faerie Moth
+light_shade/moths/Intimitation
+light_shade/moths/Hummingbird Hawkmoth
+light_shade/moths/Atlas Moth
 
 linewalkers/Blue Linewalker
 linewalkers/Cyan Linewalker
@@ -226,26 +219,26 @@ linewalkers/Yellow Linewalker
 linewalkers/Leygrapple
 linewalkers/Golden Linewalker
 
-mech_golems/QU4RG3
-mech_golems/51NG3
-mech_golems/54MUR41
-mech_golems/PL4T00N
-mech_golems/N0T3
-mech_golems/53G45C4NTUR14N 00
-mech_golems/C4RR13R
-mech_golems/P4RT154N
-mech_golems/5P33DRUNN3R
-mech_golems/5H4P3R
-mech_golems/54CR1F1C3
-mech_golems/GL455C4NN0N
+mechs/golems/QU4RG3
+mechs/golems/51NG3
+mechs/golems/54MUR41
+mechs/golems/PL4T00N
+mechs/golems/N0T3
+mechs/golems/53G45C4NTUR14N 00
+mechs/golems/C4RR13R
+mechs/golems/P4RT154N
+mechs/golems/5P33DRUNN3R
+mechs/golems/5H4P3R
+mechs/golems/54CR1F1C3
+mechs/golems/GL455C4NN0N
 
-mech_pilots/Standard Pilot
-mech_pilots/Runn R Mann
-mech_pilots/Heel R Mann
-mech_pilots/Bind R Mann
-mech_pilots/Gunn R Mann
-mech_pilots/Rayla, Head Mann
-mech_pilots/Gvala, Improvisor-Pilot
+mechs/pilots/Standard Pilot
+mechs/pilots/Runn R Mann
+mechs/pilots/Heel R Mann
+mechs/pilots/Bind R Mann
+mechs/pilots/Gunn R Mann
+mechs/pilots/Rayla, Head Mann
+mechs/pilots/Gvala, Improvisor-Pilot
 
 mechs/Powered Landing
 mechs/Mech-Blaster
@@ -273,35 +266,6 @@ memory/Corporeal Recall
 memory/Memorial Augury
 memory/Recall
 memory/Uncall For
-
-moths/Rouge Rogue Moth
-moths/Disarming Rogue Moth
-moths/Massive Moon Moth
-moths/Searing Sun Moth
-moths/Ravenous Leymoth
-moths/Poodle Moth
-moths/Mothmisidentification
-moths/Call of the Moon
-moths/Cloaked in Shadow
-moths/Faerie Moth
-moths/Hidden Pupa
-moths/Intimitation
-moths/Hummingbird Hawkmoth
-moths/Atlas Moth
-
-music/Soaring Chorus
-music/Surging Verse
-music/Ringing Bridge
-music/Eureka Lyric
-music/Toe Tapper
-music/A Real Headbanger
-music/Chonky Noise Rock Bass
-music/Music for Aerports
-music/Play Them Leylines Like a Banjo
-music/Glory Metal
-music/4 33
-music/Backup Track
-music/Hard Rock
 
 orcs/Alkorath'Kil, Fury in the Blood
 orcs/Bind the Blood

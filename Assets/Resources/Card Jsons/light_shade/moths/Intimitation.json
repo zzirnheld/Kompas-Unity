@@ -1,7 +1,7 @@
 {
 	"cardType": 65,
 	"cardName": "Intimitation",
-	"effText": "When this Summoned Moth defends, reveal a W X character. Give the attacker -X W.",
+	"effText": "When this Moth summon defends, reveal a W X character. Give the attacker -X W.",
 	"effects": [
 		{
 			"triggerData": {

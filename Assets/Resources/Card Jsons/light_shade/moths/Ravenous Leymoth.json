@@ -1,10 +1,10 @@
 {
 	"cardType": 67,
-	"cardName": "Rouge Rogue Moth",
-	"effText": "Stealth.\nWhen a Moth attacks a character in Light, double their W.",
+	"cardName": "Ravenous Leymoth",
+	"effText": "Stealth.\nWhen a Moth attacks an S X character in Light, give the defender -X S and the Moth +X ESW.",
 	"effects": [
 		{
-			"blurb": "hello there",
+			"blurb": "*slurps your fluids*",
 			"triggerData": {
 				"triggerCondition": "Attack",
 				"triggerRestriction": {
@@ -45,17 +45,27 @@
 			},
 			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp",
+					"secondary":true
 				},
 				{
 					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
 					"cardValue": {
-						"value": "W"
+						"value": "S"
 					},
 					"xMultiplier": 1
 				},
 				{
 					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"sMultiplier": -1
+				},
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMultiplier": 1,
+					"sMultiplier": 1,
 					"wMultiplier": 1
 				}
 			]
@@ -64,9 +74,9 @@
 	"keywords": [
 		"Stealth"
 	],
-	"n": 4,
-	"e": 4,
-	"s": 4,
-	"w": 4,
-	"subtypeText": "Shady Flying Warrior Moth"
+	"n": 5,
+	"e": 3,
+	"s": 5,
+	"w": 3,
+	"subtypeText": "Shady Flying Moth"
 }

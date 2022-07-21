@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Disarming Rogue Moth",
-	"effText": "Stealth.\nWhen a friendly Moth attacks a W X character in Light, give the defender -X W.",
+	"effText": "Stealth.\nWhen a friendly Moth attacks a character in Light, set the defender's W to 0.",
 	"effects": [
 		{
 			"blurb": "oh? hello there",

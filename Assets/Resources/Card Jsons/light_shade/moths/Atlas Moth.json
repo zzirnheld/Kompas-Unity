@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
-	"cardName": "Hummingbird Hawkmoth",
-	"effText": "Stealth.\nCan only be played in Shade.",
+	"cardName": "Atlas Moth",
+	"effText": "Stealth.\nSummon only in Shade.",
 	"effects": [],
 	"PlayRestriction": {
 		"normalRestrictions": [
@@ -26,9 +26,9 @@
 			}
 		}
 	},
-	"n": 4,
-	"e": 2,
-	"s": 2,
-	"w": 4,
-	"subtypeText": "Flying Moth"
+	"n": 1,
+	"e": 7,
+	"s": 4,
+	"w": 7,
+	"subtypeText": "Moth but Not Very Good at Flying"
 }
