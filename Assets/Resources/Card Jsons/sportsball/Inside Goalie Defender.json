@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Inside Goalie Defender",
-	"effText": "When your adjacent Avatar is augmented, apply their Augment(s) to another character adjacent to me.",
+	"effText": "When you augment your adjacent Avatar, apply their Augment(s) to another character adjacent to me.",
 	"effects": [
 		{
 			"triggerData": {
@@ -10,7 +10,8 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Main Card Fits Restriction Before"
+						"Main Card Fits Restriction Before",
+						"Controller Triggered"
 					],
 					"cardRestriction": {
 						"cardRestrictions": [

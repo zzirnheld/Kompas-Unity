@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Penalty Box",
-	"effText": "Comeback Play.\nWhen a character wielding a Sportsball defends here, rehand them.",
+	"effText": "Comeback Play.\nWhen an enemy wielding a Sportsball defends here, hand them.",
 	"effects": [
 		{
 			"blurb": "Time out!",
@@ -15,6 +15,7 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
+							"Enemy",
 							"Wields Augment Fitting Restriction",
 							"Space Fits Restriction"
 						],

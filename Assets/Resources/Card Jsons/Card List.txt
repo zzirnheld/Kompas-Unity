@@ -495,7 +495,7 @@ sportsball/Whats Gonna Work
 sportsball/Getcha Getcha Getcha
 sportsball/Go! Play Sportsball!
 sportsball/Goal-Net Touchdown
-sportsball/Rocket-Propelled Ball Juice
+sportsball/Rocket-Propelled Ball
 sportsball/Overwhelming Ball Skills
 sportsball/Penalty Box
 

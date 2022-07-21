@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Arbiterary",
-	"effText": "When a friendly Augment is attached, give it +1 A. If it's A X, I'm in a corner, and it's attached to an enemy Avatar, give the Avatar -X E, attach it to me, and reset its A.",
+	"effText": "When you attach an Augment, give it +1 A. If you attached it to an enemy Avatar, it has A X, and I'm in a corner; give the Avatar -X E, attach it to me, and reset its A.",
 	"effects": [
 		{
 			"triggerData": {
@@ -10,13 +10,8 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Main Card Fits Restriction Before"
-					],
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Friendly"
-						]
-					}
+						"Controller Triggered"
+					]
 				}
 			},
 			"subeffects": [
