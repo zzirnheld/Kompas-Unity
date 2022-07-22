@@ -1,7 +1,7 @@
 {
 	"cardType": 65,
 	"cardName": "Clever Decoy",
-	"effText": "When this character defends, give their W X attacker -X W until the fight ends. After the fight, rehand this character.",
+	"effText": "When this character defends, give their W X attacker -X W until the fight ends. After the fight, hand this character.",
 	"effects": [
 		{
 			"blurb": "Decoy!",

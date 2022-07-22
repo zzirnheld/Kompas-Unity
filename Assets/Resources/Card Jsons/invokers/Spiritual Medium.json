@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Spiritual Medium",
-	"effText": "Once each friendly turn, you can show a Spirit. Deck->hand an Invocation, then topdeck the Spirit.",
+	"effText": "Once each turn, you can show a Spirit. Deck->hand an Invocation, then topdeck the Spirit.",
 	"effects": [
 		{
 			"blurb": "DOOM cometh!",

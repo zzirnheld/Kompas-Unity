@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Roth'Ka Inquisitor",
-	"effText": "Smite.\nWhen you hand->discard an S0 Simple Spell, cast it.",
+	"effText": "Smite.\nWhen you hand->discard an S 0 spell, cast it.",
 	"effects": [
 		{
 			"triggerData": {
@@ -35,7 +35,7 @@
 				{
 					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction": {
-						"blurb": "Choose Spell Target",
+						"blurb": "Choose space to cast the spell",
 						"spaceRestrictions": [ "Can Play Card Target to This Space" ]
 					}
 				},

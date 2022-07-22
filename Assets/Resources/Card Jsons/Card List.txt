@@ -267,30 +267,33 @@ mechs/One Step Ahead
 mechs/Repair Hub
 mechs/Buffer Shield
 
+orcs/smiters/freebies/Glimmer of Hope
+orcs/smiters/freebies/Unassuming Bush
+
+orcs/smiters/Roth Avenger
+orcs/smiters/Roth'Drek Crusader
+orcs/smiters/Roth'Ka Inquisitor
+
+orcs/spies/support/Bind the Blood
+orcs/spies/support/Bind the Shadows
+orcs/spies/support/Clever Decoy
+orcs/spies/support/Escape Route
+orcs/spies/support/Misplaced Supplies
+orcs/spies/support/Nothing to Hide
+
+orcs/spies/Raven Scout
+orcs/spies/Roth Agent
+orcs/spies/Roth Assassin
+orcs/spies/Roth'Drek Phantom
+orcs/spies/Roth'Ka Spymaster
+
 orcs/Alkorath'Kil, Fury in the Blood
-orcs/Bind the Blood
-orcs/Bind the Shadows
-orcs/Clever Decoy
-orcs/Escape Route
-orcs/Glimmer of Hope
 orcs/Malgonir'Kil, Secrets in the Shadows
-orcs/Nothing to Hide
-orcs/Raven Scout
-orcs/Roth Agent
-orcs/Roth Assassin
-orcs/Roth Avenger
 orcs/Roth Guerilla
 orcs/Roth Warrior
 orcs/Roth'Drek Champion
-orcs/Roth'Drek Crusader
-orcs/Roth'Drek Phantom
-orcs/Roth'Ka Inquisitor
-orcs/Roth'Ka Spymaster
 orcs/Roth'Kil Blood Acolyte
 orcs/Roth'Kil Shadow Acolyte
-orcs/Spiked Barricade
-orcs/Unassuming Bush
-orcs/Misplaced Supplies
 
 pulsars/Accelerating Pulsar
 pulsars/Boldening Pulsar

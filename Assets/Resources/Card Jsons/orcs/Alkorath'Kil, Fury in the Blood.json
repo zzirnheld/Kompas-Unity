@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Alkorath'Kil, Fury in the Blood",
-	"effText": "Cannot be avatar.\nWhen friendly turns start, discard->hand any number of Orcs.\nWhen a battle starts or a character dies, give all Orcs +3 EW.",
+	"effText": "Can't be Avatar.\nWhen friendly turns start, discard->hand any number of Orcs.\nWhen a battle starts or a character dies, give all Orcs +3 EW.",
 	"effects": [
 		{
 			"triggerData": {

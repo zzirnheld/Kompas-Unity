@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Roth'Ka Crusader",
-	"effText": "Smite.\nWhen I kill an enemy, draw 1.",
+	"effText": "Smite.\nWhen I kill a character, draw 1.",
 	"effects": [
 		{
 			"triggerData": {
@@ -13,6 +13,7 @@
 					],
 					"sourceRestriction": {
 						"cardRestrictions": [
+							"Character",
 							"Is Source"
 						]
 					}
