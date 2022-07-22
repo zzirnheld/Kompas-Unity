@@ -1,13 +1,14 @@
 {
 	"cardType": 67,
 	"cardName": "Arborealist, Nature Reporter",
-	"effText": "When I gain E, an enemy can reveal a character with more E than me. If they don't, give adjacent characters +1 NEWS.",
+	"effText": "The first time each stack I gain E, an enemy can reveal a character with more E than me. If they don't, give friendly characters +1 NEWS.",
 	"effects": [
 		{
 			"triggerData": {
 				"triggerCondition": "E Change",
 				"triggerRestriction": {
 					"triggerRestrictions": [
+						"Max Per Stack",
 						"This Card in Play",
 						"X Fits Restriction",
 						"This Card is Main Card"
@@ -84,8 +85,7 @@
 						"cardRestrictions": [
 							"Character",
 							"Board",
-							"Friendly",
-							"Distinct Name from Source"
+							"Friendly"
 						]
 					},
 					"nModifier": 1,
