@@ -86,7 +86,7 @@ crazy_ideas/ificators/Self-Destruct Button
 crazy_ideas/ificators/Stupid Idea Generator
 crazy_ideas/ificators/Wait Hold Up
 crazy_ideas/ificators/Yeet Modification
-crazy_idea/ificatorss/Yeeterator
+crazy_ideas/ificators/Yeeterator
 
 crazy_ideas/support/Dr. Thierr Dumachmartres
 crazy_ideas/support/Flippant Emo Daughter
@@ -152,12 +152,12 @@ golems/support/Animancer
 golems/support/Modular Golem Cores
 golems/support/Slight Golemodifications
 golems/support/Core Scrambling
-golems/support/
 
 golems/cores/Combustion Core
 golems/cores/Defense Core
 golems/cores/Durability Core
 golems/cores/Speed Core
+golems/cores/Strength Core
 golems/cores/Contingency Core
 
 golems/Antiprecatium Golem
@@ -170,7 +170,6 @@ golems/Metal Golem
 golems/Obsidian Golem
 golems/Pneumatic Golem
 golems/Straw Golem
-golems/Strength Core
 golems/Tallow Golem
 golems/Woolen Golem
 golems/Gold Golem
@@ -401,7 +400,7 @@ shapers/Eddieself
 shapers/Evasoplasm
 shapers/Gapfillermist
 shapers/Golrannersmoke
-shapers/Grudgesmud
+shapers/Grudgemud
 shapers/Inpragrang
 shapers/Heavypresence
 shapers/Irrilmist
