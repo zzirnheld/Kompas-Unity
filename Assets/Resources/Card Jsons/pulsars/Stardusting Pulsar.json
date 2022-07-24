@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Stardusting Pulsar",
-	"effText": "When your Avatar's S changes, give a Summoned character:\n+S: +1 NESW.\n-S: -1 NESW.",
+	"effText": "When your Avatar's S changes, give a summon:\n+S: +1 NESW.\n-S: -1 NESW.",
 	"effects": [
 		{
 			"triggerData": {
@@ -31,7 +31,7 @@
 				{
 					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction": {
-						"blurb": "Summoned character for Stardusting Pulsar to buff",
+						"blurb": "summon for Stardusting Pulsar to buff",
 						"cardRestrictions": [
 							"Character",
 							"Board",
@@ -76,7 +76,7 @@
 				{
 					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction": {
-						"blurb": "Summoned character for Stardusting Pulsar to debuff",
+						"blurb": "summon for Stardusting Pulsar to debuff",
 						"cardRestrictions": [
 							"Character",
 							"Board",

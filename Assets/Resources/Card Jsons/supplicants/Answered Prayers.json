@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Answered Prayers",
-	"effText": "When a negated character dies, hand them (to their owner's hand).",
+	"effText": "When a negated character dies, hand them.",
 	"effects": [
 		{
 			"triggerData": {

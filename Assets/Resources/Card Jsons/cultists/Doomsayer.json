@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Doomsayer",
-	"effText": "Once each turn, you can search your deck for a Cultist.",
+	"effText": "Once each turn, you can deck->hand a Cultist.",
 	"effects": [
 		{
 			"blurb": "DOOM cometh!",

@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Forward Dunker",
-	"effText": "The first time each stack I'm augmented, attach my Augments to an adjacent Avatar.",
+	"effText": "When you augment me, attach my Augments to an adjacent Avatar.",
 	"effects": [
 		{
 			"triggerData": {
@@ -9,8 +9,8 @@
 				"triggerCondition": "Augmented",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"Max Per Stack",
-						"This Card is Main Card"
+						"This Card is Main Card",
+						"Controller Triggered"
 					]
 				}
 			},

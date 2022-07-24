@@ -1,0 +1,88 @@
+{
+	"cardType": 65,
+	"cardName": "Clever Decoy",
+	"effText": "When this character defends, give their W X attacker -X W until the fight ends. After the fight, hand this character.",
+	"effects": [
+		{
+			"blurb": "Decoy!",
+			"triggerData": {
+				"blurb": "It's just a piece of wood!?",
+				"triggerCondition": "Defend",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Augmented Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.TargetOtherInFightSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "W"
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.TemporaryCardStatChangeSubeffect, Assembly-CSharp",
+					"wMultiplier": -1,
+					"endCondition": "Battle End",
+					"triggerRestriction": {
+						"triggerRestrictions": [
+							"Contexts Stackables Match"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"jumpIndices": [
+						6
+					],
+					"endCondition": "Battle End",
+					"triggerRestriction": {
+						"triggerRestrictions": [
+							"Contexts Stackables Match"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Augment Normal Restrictions",
+			"On Card that Fits Restriction"
+		],
+		"effectRestrictions": [
+			"Augment Effect Restrictions",
+			"On Card that Fits Restriction"
+		],
+		"onCardRestriction": {
+			"cardRestrictions": [
+				"Subtypes Include",
+				"Friendly",
+				"Board"
+			],
+			"subtypesInclude": [
+				"Spy"
+			]
+		}
+	},
+	"a": 1,
+	"subtypeText": "Tool",
+	"augSubtypes": [
+		"Spy"
+	]
+}

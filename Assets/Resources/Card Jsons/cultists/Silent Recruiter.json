@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Silent Recruiter",
-	"effText": "Once each turn, if I'm adjacent to an enemy card, you can deck-summon a Cultist Follower",
+	"effText": "Once each turn, if I'm adjacent to an enemy card, you can deck->summon a Cultist Follower",
 	"effects": [
 		{
 			"blurb": "Recruit",
@@ -59,7 +59,7 @@
 	],
 	"n": 6,
 	"e": 1,
-	"s": 4,
+	"s": 3,
 	"w": 1,
 	"subtypeText": "Cultist"
 }

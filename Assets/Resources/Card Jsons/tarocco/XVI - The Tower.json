@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "XVI - The Tower",
-	"effText": "When something else makes you draw X, give me -X E, draw X, and reshuffle to hand size.",
+	"effText": "When something else makes you draw X, give me -X E, draw X again, and reshuffle to hand size.",
 	"effects": [
 		{
 			"blurb": "Folly",

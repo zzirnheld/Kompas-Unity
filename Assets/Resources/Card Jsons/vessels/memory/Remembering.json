@@ -1,0 +1,38 @@
+{
+	"cardType": 83,
+	"cardName": "Remembering",
+	"effText": "When a Vessel echoes themselves, echo them again.",
+	"effects": [
+		{
+			"blurb": "Remember",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card is Stackable Source",
+						"Stackable Source Fits Restriction Now"
+					],
+					"sourceRestriction": {
+						"cardRestrictions": [
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Vessel"
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"c": 4,
+	"subtypeText": "Enchant"
+}

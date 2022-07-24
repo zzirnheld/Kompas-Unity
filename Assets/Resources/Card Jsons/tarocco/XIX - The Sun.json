@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "XIX - The Sun",
-	"effText": "When you draw, give a Summoned character -1 E and a distinct character +1 E.",
+	"effText": "When you draw, give a summon -1 E and another character +1 E.",
 	"effects": [
 		{
 			"blurb": "Scorching Heat",
@@ -37,7 +37,7 @@
 						"cardRestrictions": [
 							"Character",
 							"Board",
-							"Distinct Name from Other Targets"
+							"Distinct from Other Targets"
 						]
 					}
 				},

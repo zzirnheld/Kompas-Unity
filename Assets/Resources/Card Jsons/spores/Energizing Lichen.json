@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Energizing Lichen",
-	"effText": "Spores.\nWhen I'm activated, if you have less than 5 pips, reshuffle a dead Fungus. Gain 1 pip. Pulse adjacent cards.",
+	"effText": "Spores.\nWhen I'm activated, reshuffle a dead Fungus to gain 1 pip and pulse adjacent cards.",
 	"effects": [
 		{
 			"blurb": "Energize",
@@ -14,19 +14,6 @@
 				}
 			},
 			"subeffects": [
-				{
-					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
-					"condition": "Player Value Flouts Number Restriction",
-					"playerValue": {
-						"value": "Pips"
-					},
-					"playerValueNumberRestriction": {
-						"numberRestrictions": [
-							"<=Constant"
-						],
-						"constant": 4
-					}
-				},
 				{
 					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction": {

@@ -1,0 +1,60 @@
+{
+	"cardType": 67,
+	"cardName": "Runerunner",
+	"effText": "Runecast.",
+	"effects": [
+		{
+			"activationRestriction": {
+				"activationRestrictionArray": [
+					"Max Times Per Turn",
+					"Default"
+				]
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Rune for Runerunner to cast",
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Spell",
+							"Friendly",
+							"Hand",
+							"Can Be Played",
+							"Effect Controller can Afford Cost"
+						],
+						"subtypesInclude": [
+							"Rune"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where for Runerunner to cast its target Rune",
+						"spaceRestrictions": [
+							"Can Play Card Target to This Space",
+							"Empty"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
+					"xMultiplier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"n": 2,
+	"e": 2,
+	"s": 2,
+	"w": 2,
+	"subtypes": [
+		"Runar",
+		"Mage"
+	],
+	"subtypeText": "Runar Mage"
+}

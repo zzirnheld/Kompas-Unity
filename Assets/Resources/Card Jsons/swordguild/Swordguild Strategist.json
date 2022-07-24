@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Swordguild Strategist",
-	"effText": "Once each turn, I can kill a friendly Warrior with XS, then kill a character with S \u00e2\u2030\u00a4 X.",
+	"effText": "Once each turn, you can kill a friendly Warrior to kill any character with less S.",
 	"effects": [
 		{
 			"activationRestriction": {
@@ -47,7 +47,7 @@
 						},
 						"cardValueNumberRestriction": {
 							"numberRestrictions": [
-								"<=X"
+								"<X"
 							]
 						}
 					},

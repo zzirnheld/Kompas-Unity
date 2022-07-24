@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Harvald S Thonstrop",
-	"effText": "The first time each round an enemy card is revealed, I Invoke an S X character with less S than me. Give the enemy Avatar +X E.",
+	"effText": "The first time each round an enemy card is revealed, I Invoke a character with less S than me.",
 	"effects": [
 		{
 			"blurb": "I knEW IT",
@@ -69,33 +69,13 @@
 				},
 				{
 					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
-				},
-				{
-					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
-					"cardValue": {
-						"value": "S"
-					},
-					"xMultiplier": 1
-				},
-				{
-					"$type": "KompasServer.Effects.AutoTargetSubeffect, Assembly-CSharp",
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Avatar",
-							"Enemy"
-						]
-					}
-				},
-				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMultiplier": 1
 				}
 			]
 		}
 	],
 	"unique": true,
 	"n": 3,
-	"e": 5,
+	"e": 1,
 	"s": 8,
 	"w": 5,
 	"subtypeText": "Crazy Intoxicated Reporter Person"

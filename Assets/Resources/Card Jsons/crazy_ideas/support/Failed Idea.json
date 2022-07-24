@@ -1,0 +1,44 @@
+{
+	"cardType":67,
+	"cardName":"Failed Idea",
+	"effText":"When you hand->discard an Ificator, deck->discard a Crazy Idea, then discard me.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Discard",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Controller Triggered","Main Card Fits Restriction Before"],
+					"cardRestriction":{
+						"cardRestrictions":["Hand","Subtypes Include"],
+                        "subtypesInclude":["Ificator"]
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":{
+						"blurb":"card for Failed Idea to mill",
+						"cardRestrictions":["Friendly","Deck","Subtypes Include"],
+						"subtypesInclude":["Crazy","Idea"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				},
+                {
+                    "$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+                },
+                {
+                    "$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+                }
+			]	
+		}
+	],
+    "n":1,
+    "e":1,
+    "s":1,
+    "w":0,
+	"subtypeText":"Crazy Failure"
+}

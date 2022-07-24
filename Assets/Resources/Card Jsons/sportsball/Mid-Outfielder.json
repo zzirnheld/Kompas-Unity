@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Mid-Outfielder",
-	"effText": "When I'm augmented, move me up to 2 spaces.",
+	"effText": "When you augment me, move me up to 2 spaces.",
 	"effects": [
 		{
 			"triggerData": {
@@ -9,7 +9,8 @@
 				"triggerCondition": "Augmented",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card is Main Card"
+						"This Card is Main Card",
+						"Controller Triggered"
 					]
 				}
 			},

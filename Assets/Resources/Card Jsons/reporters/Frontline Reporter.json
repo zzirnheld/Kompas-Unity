@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Frontline Reporter",
-	"effText": "When I'm summoned, your opponent can reveal a spell. If they don't, draw 2.",
+	"effText": "When I'm summoned, an enemy can reveal a spell. If they don't, draw 2.",
 	"effects": [
 		{
 			"triggerData": {

@@ -1,11 +1,11 @@
 {
 	"cardType": 83,
 	"cardName": "Erratic Wisps",
-	"effText": "The first time each turn a non-Wisp character arrives adjacent to a Wisp(s), move the Wisp(s each) 1 space.",
+	"effText": "The first time each turn a non-Wisp arrives adjacent to a Wisp(s), move the Wisp(s) 1 space.",
 	"effects": [
 		{
 			"triggerData": {
-				"blurb": "Maze Block",
+				"blurb": "Erratic movement",
 				"triggerCondition": "Arrive",
 				"triggerRestriction": {
 					"triggerRestrictions": [
@@ -16,7 +16,6 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Character",
 							"Subtypes Exclude"
 						],
 						"subtypesExclude": [

@@ -1,0 +1,54 @@
+{
+	"cardType": 83,
+	"cardName": "Runestones",
+	"effText": "The first time each turn you cast a Rune, deck->hand a Rune.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before",
+						"Max Per Turn"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Spell",
+							"Friendly"
+						],
+						"subtypesInclude": [
+							"Rune"
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Rune for Runestones to search",
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Friendly",
+							"Deck"
+						],
+						"subtypesInclude": [
+							"Rune"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"c": 4,
+	"unique": true,
+	"spellTypes": [
+		"Enchant"
+	],
+	"subtypeText": "Runar Enchant"
+}

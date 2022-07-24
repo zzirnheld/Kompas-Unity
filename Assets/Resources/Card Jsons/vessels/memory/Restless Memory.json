@@ -1,0 +1,72 @@
+{
+	"cardType": 65,
+	"cardName": "Restless Memory",
+	"effText": "When this character is summoned, move them 1 space.\nWhen this character moves normally, echo them.",
+	"effects": [
+		{
+			"blurb": "Restless Movement",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"Augmented Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+                {
+                    "$type":"KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+                },
+				{
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"spaceRestrictions": [
+							"Empty",
+							"Can Move Card Target to This Space",
+							"Distance to Card Target Fits X Restriction"
+						],
+						"distanceXRestriction": {
+							"numberRestrictions": [
+								"=X"
+							]
+						}
+					},
+					"xModifier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				}
+			]
+		},
+		{
+			"blurb": "Restless Echoes",
+			"triggerData": {
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"Augmented Card is Main Card",
+						"No Stackable"
+					]
+				}
+			},
+			"subeffects": [
+                {
+                    "$type":"KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+                },
+				{
+					"$type": "KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Augment Normal Restrictions"
+		],
+		"effectRestrictions": [
+			"Augment Effect Restrictions"
+		]
+	},
+	"a": 3,
+	"subtypeText": "Memory"
+}

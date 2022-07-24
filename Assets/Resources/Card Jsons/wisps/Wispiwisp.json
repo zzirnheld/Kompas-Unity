@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Wispiwisp",
-	"effText": "Wisp.\nWhen I move, kill a friendly SX Wisp and give me +X ESW. (If there's no other Wisps to kill, I die.)",
+	"effText": "Wisp.\nWhen I move, I MUST kill a friendly SX Wisp and give me +X ESW.",
 	"effects": [
 		{
 			"triggerData": {

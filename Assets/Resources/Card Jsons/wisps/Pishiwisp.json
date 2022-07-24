@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Pishiwisp",
-	"effText": "Wisp.\nWhen I move, move an adjacent distinct character 1 space.",
+	"effText": "Wisp: Move an adjacent distinct character 1 space.",
 	"effects": [
 		{
 			"triggerData": {

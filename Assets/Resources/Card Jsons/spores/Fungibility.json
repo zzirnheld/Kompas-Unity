@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Fungibility",
-	"effText": "Hand->discard X Fungi. Gain X pips or draw X.",
+	"effText": "Hand->discard X Fungi. Either gain X pips or draw X.",
 	"effects": [
 		{
 			"triggerData": {

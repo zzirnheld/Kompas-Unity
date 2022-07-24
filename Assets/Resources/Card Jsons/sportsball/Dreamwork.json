@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Dreamwork",
-	"effText": "When turns start, attach all friendly Sportsball Augments you can to a character adjacent to them.",
+	"effText": "When turns start, attach each possible friendly Sportsball to a character adjacent to them.",
 	"effects": [
 		{
 			"triggerData": {

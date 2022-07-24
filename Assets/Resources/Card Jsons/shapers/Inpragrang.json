@@ -1,0 +1,59 @@
+{
+	"cardType": 67,
+	"cardName": "Inpragrang",
+	"effText": "Shape.\nWhen I move, move a distinct Shaper to a space adjacent to me",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Friendly",
+							"Distinct Name from Source",
+							"Subtypes Include",
+							"Board"
+						],
+						"subtypesInclude": [
+							"Shaper"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where to move the Shaper",
+						"spaceRestrictions": [
+							"Adjacent to Source",
+							"Can Move Card Target to This Space",
+							"Empty"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Shape"
+	],
+	"n": 3,
+	"e": 4,
+	"s": 4,
+	"w": 4,
+	"subtypes": [
+		"Ethereal",
+		"Shaper"
+	],
+	"subtypeText": "Ethereal Shaper"
+}

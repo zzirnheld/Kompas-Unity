@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Wispflux Generator",
-	"effText": "When turns start, if I'm in a corner, give me -1 E and deck->summon a Wisp adjacent to me.",
+	"effText": "When I start turns in a corner, give me -1 E to deck->summon a Wisp adjacent to me.",
 	"effects": [
 		{
 			"blurb": "Generate Wispflux",

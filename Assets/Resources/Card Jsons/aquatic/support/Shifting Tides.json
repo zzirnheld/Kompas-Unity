@@ -1,0 +1,79 @@
+{
+	"cardType": 83,
+	"cardName": "Shifting Tides",
+	"effText": "When friendly Water vanishes, hand->cast Water where it was.",
+	"effects": [
+		{
+			"blurb": "The Tide Shifts",
+			"activationRestriction": {
+				"triggerCondition": "Vanish",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Friendly",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Water"
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Shifting tide",
+						"cardRestrictions": [
+							"Board",
+							"Friendly",
+							"Spell",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Water"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.DispelSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Tide that Shifts In",
+						"cardRestrictions": [
+							"Spell",
+							"Friendly",
+							"Hand",
+							"Can Be Played",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Water"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"c": 1,
+	"spellTypes": [
+		"Enchant"
+	],
+	"subtypes": [
+		"Aquatic",
+		"Enchant"
+	],
+	"subtypeText": "Aquatic Enchant"
+}
