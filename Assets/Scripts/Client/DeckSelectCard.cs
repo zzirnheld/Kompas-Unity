@@ -10,16 +10,25 @@ namespace KompasClient.UI
         public DeckSelectUIController UICtrl;
         public Image Image;
 
+        public override string FileName
+        {
+            get => base.FileName;
+            set
+            {
+                base.FileName = value;
+                SetImage();
+            }
+        }
+
         public void SetInfo(SerializableCard card, DeckSelectUIController uiCtrl)
         {
             base.SetCardInformation(card);
             UICtrl = uiCtrl;
-            SetImage(CardName);
         }
 
-        protected void SetImage(string cardFileName)
+        protected void SetImage()
         {
-            simpleSprite = Resources.Load<Sprite>("Simple Sprites/" + cardFileName);
+            simpleSprite = Resources.Load<Sprite>("Simple Sprites/" + FileName);
             Image.sprite = simpleSprite;
         }
 

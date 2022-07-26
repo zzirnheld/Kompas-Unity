@@ -14,6 +14,16 @@ namespace KompasDeckbuilder
 
         public abstract string BlurbString { get; }
 
+        public override string FileName
+        {
+            get => base.FileName;
+            set
+            {
+                base.FileName = value;
+                SetImage();
+            }
+        }
+
         public void Awake()
         {
             image = GetComponent<Image>();
@@ -22,7 +32,6 @@ namespace KompasDeckbuilder
         public virtual void SetInfo(DeckbuildSearchController searchCtrl, SerializableCard card, bool inDeck)
         {
             SetCardInformation(card);
-            SetImage(CardName);
             cardSearchController = searchCtrl;
         }
 
@@ -62,9 +71,9 @@ namespace KompasDeckbuilder
             cardSearchController.ShowSelectedCard();
         }
 
-        protected void SetImage(string cardFileName)
+        protected void SetImage()
         {
-            simpleSprite = Resources.Load<Sprite>("Simple Sprites/" + cardFileName);
+            simpleSprite = Resources.Load<Sprite>("Simple Sprites/" + FileName);
             image.sprite = simpleSprite;
         }
 

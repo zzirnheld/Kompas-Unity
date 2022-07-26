@@ -311,7 +311,7 @@ namespace KompasCore.Cards
                 effectOscillator.Disable();
             }
 
-            SetImage(card.CardName, zoomed);
+            SetImage(card.FileName, zoomed);
         }
 
         public virtual void ShowValidTarget(bool valid = true) => validTargetObject.SetActive(valid);

@@ -211,6 +211,8 @@ namespace KompasCore.Cards
         {
             SetCardInformation(serializedCard);
 
+            FileName = CardRepository.FileNameFor(CardName);
+
             ID = id;
             InitialCardValues = serializedCard;
 

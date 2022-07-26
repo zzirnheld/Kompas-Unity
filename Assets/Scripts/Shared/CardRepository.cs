@@ -40,6 +40,7 @@ public class CardRepository : MonoBehaviour
     };
 
     private static readonly Dictionary<string, string> cardJsons = new Dictionary<string, string>();
+    private static readonly Dictionary<string, string> cardFileNames = new Dictionary<string, string>();
     private static readonly Dictionary<string, int> cardNameIDs = new Dictionary<string, int>();
     private static readonly List<string> cardNames = new List<string>();
 
@@ -105,6 +106,8 @@ public class CardRepository : MonoBehaviour
 
             //add the cleaned json to the dictionary
             cardJsons.Add(cardName, json);
+            cardFileNames.Add(cardName, filename);
+            Debug.Log($"Entry for {cardName} is {filenameClean}");
             //add the card's name to the list of card names
             cardNameIDs.Add(cardName, cardNames.Count);
             cardNames.Add(cardName);
@@ -382,6 +385,7 @@ public class CardRepository : MonoBehaviour
             SerializableCard serializableCard = JsonConvert.DeserializeObject<SerializableCard>(json, cardLoadingSettings);
             DeckSelectCard card = Instantiate(prefab, parent);
             card.SetInfo(serializableCard, uiCtrl);
+            card.FileName = cardFileNames[card.CardName];
             return card;
         }
         catch (System.ArgumentException argEx)
@@ -403,16 +407,19 @@ public class CardRepository : MonoBehaviour
                     SerializableCard serializableChar = JsonConvert.DeserializeObject<SerializableCard>(json, cardLoadingSettings);
                     var charCard = Instantiate(DeckbuilderCharPrefab).GetComponent<DeckbuilderCharCard>();
                     charCard.SetInfo(searchCtrl, serializableChar, inDeck);
+                    charCard.FileName = cardFileNames[charCard.CardName];
                     return charCard;
                 case 'S':
                     SerializableCard serializableSpell = JsonConvert.DeserializeObject<SerializableCard>(json, cardLoadingSettings);
                     var spellCard = Instantiate(DeckbuilderSpellPrefab).GetComponent<DeckbuilderSpellCard>();
                     spellCard.SetInfo(searchCtrl, serializableSpell, inDeck);
+                    spellCard.FileName = cardFileNames[spellCard.CardName];
                     return spellCard;
                 case 'A':
                     SerializableCard serializableAug = JsonConvert.DeserializeObject<SerializableCard>(json, cardLoadingSettings);
                     var augCard = Instantiate(DeckbuilderAugPrefab).GetComponent<DeckbuilderAugCard>();
                     augCard.SetInfo(searchCtrl, serializableAug, inDeck);
+                    augCard.FileName = cardFileNames[augCard.CardName];
                     return augCard;
                 default:
                     Debug.LogError("Unrecognized type character " + serializableCard.cardType + " in " + json);
@@ -422,7 +429,7 @@ public class CardRepository : MonoBehaviour
         catch (System.ArgumentException argEx)
         {
             //Catch JSON parse error
-            Debug.LogError($"Failed to load {json}, argument exception with message {argEx.Message}");
+            Debug.LogError($"Failed to load {json}, argument exception {argEx}");
             return null;
         }
     }
@@ -456,5 +463,7 @@ public class CardRepository : MonoBehaviour
 
         return JsonConvert.DeserializeObject<TriggerRestrictionElement[]>(triggerKeywordJsons[keyword], cardLoadingSettings);
     }
+
+    public static string FileNameFor(string cardName) => cardFileNames[cardName];
     #endregion Create Cards
 }
