@@ -431,6 +431,7 @@ shapers/Irrilmist
 shapers/Lessreck
 shapers/Kindred Spirit
 shapers/Manyself
+shapers/Moanedrifter
 shapers/Outpragrang
 shapers/Thrillmist
 shapers/Twin Spirit
