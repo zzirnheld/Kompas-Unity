@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Swordguild Quartermaster",
-	"effText": "Once each turn, if I'm adjacent to at least X Warriors, you can gain X pips.",
+	"effText": "Once each turn, if I'm adjacent to X Warriors, you can gain X pips.",
 	"effects": [
 		{
 			"activationRestriction": {

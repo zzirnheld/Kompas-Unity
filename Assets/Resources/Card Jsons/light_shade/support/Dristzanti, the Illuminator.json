@@ -1,0 +1,81 @@
+{
+	"cardType": 67,
+	"cardName": "Dristzanti, the Illuminator",
+	"effText": "Once each turn, you can deck->cast Light to a space in Shade. Reshuffle all Shade that overlaps with it.",
+	"effects": [
+		{
+			"blurb": "Illuminate!",
+			"activationRestriction": {
+				"activationRestrictionArray": [
+					"Max Times Per Turn",
+					"Default"
+				]
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+                    "spaceRestriction": {
+                        "spaceRestrictions": [
+                            "In AOE of Card Fitting Restriction"
+                        ],
+                        "inAOEOfRestriction": {
+                            "cardRestrictions": [
+                                "Subtypes Include"
+                            ],
+                            "subtypesInclude": [
+                                "Shade"
+                            ]
+                        }
+                    }
+				},
+				{
+					"$type": "KompasServer.Effects.AutoTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Friendly",
+							"Deck",
+							"Spell"
+						],
+						"subtypesInclude": [
+							"Light"
+						]
+					},
+					"tiebreakerDirection":"Any"
+				},
+				{
+					"$type": "KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Would Overlap Card Target If Card Target Were At Space Target"
+						],
+						"subtypesInclude": [
+							"Shade"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete": true,
+					"remainingTargets": 1,
+					"jumpIndices": [
+						1
+					]
+				},
+				{
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+    "unique":true,
+	"n": 4,
+	"e": 3,
+	"s": 5,
+	"w": 6,
+	"subtypeText": "Crazy Brilliant Mage"
+}

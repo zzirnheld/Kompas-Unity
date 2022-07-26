@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Runner Fielder",
-	"effText": "When I'm augmented, attach my Augments to the character 2 spaces due N of me.",
+	"effText": "When you augment me, attach my Augments to the character immediately due N of me.",
 	"effects": [
 		{
 			"triggerData": {
@@ -9,7 +9,8 @@
 				"triggerCondition": "Augmented",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card is Main Card"
+						"This Card is Main Card",
+						"Controller Triggered"
 					]
 				}
 			},

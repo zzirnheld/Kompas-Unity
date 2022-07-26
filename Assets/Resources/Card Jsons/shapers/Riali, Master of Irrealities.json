@@ -1,35 +1,49 @@
 {
 	"cardType": 67,
 	"cardName": "Riali, Master of Irrealities",
-	"effText": "Shape.\nWhen a friendly Shaper moves X spaces, give them +X E.",
+	"effText": "Shape.\nWhen a Shaper kills themselves, revive them where they died, but negate them until the next turn.",
 	"effects": [
 		{
 			"blurb": "Empower the Shaper",
 			"triggerData": {
-				"triggerCondition": "Move",
-				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Main Card Fits Restriction Before"
-					],
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Subtypes Include",
-							"Friendly"
-						],
-						"subtypesInclude": [
-							"Shaper"
-						]
+				"triggerCondition": "Discard",
+				"triggerRestrictionElements": [
+					{ "$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.ThisCardInPlay, Assembly-CSharp" },
+					{
+						"$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.CardFitsRestriction, Assembly-CSharp",
+						"cardRestriction": {
+							"cardRestrictionElements": [
+								{
+									"$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.SubtypesInclude, Assembly-CSharp",
+									"subtypes": [ "Shaper" ]
+								}
+							]
+						},
+						"card": { "$type": "KompasCore.Effects.Identities.ActivationContextCardIdentities.MainCardBefore, Assembly-CSharp" }
+					},
+					{
+						"$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.CardsMatch, Assembly-CSharp",
+						"firstCard": { "$type": "KompasCore.Effects.Identities.ActivationContextCardIdentities.Cause, Assembly-CSharp" },
+						"secondCard": { "$type": "KompasCore.Effects.Identities.ActivationContextCardIdentities.MainCardBefore, Assembly-CSharp" }
 					}
-				}
+				]
 			},
 			"subeffects": [
 				{
 					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMultiplier": 1
+					"$type": "KompasServer.Effects.TargetTriggeringCardsCoordsSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.TemporaryNegateSubeffect, Assembly-CSharp",
+					"endCondition": "Turn Start",
+					"triggerRestriction": {
+						"triggerRestrictions": [ ]
+					}
 				}
 			]
 		}

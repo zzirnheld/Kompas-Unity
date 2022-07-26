@@ -47,10 +47,16 @@ generic/Trapped Offering
 generic/Unfinding
 generic/Yank
 generic/Ethereate
+generic/Rememories
+
+aquatic/support/Fishing
+aquatic/support/Shifting Tides
+aquatic/support/Sacrifice to the Old Sea Gods
+aquatic/support/Here Be Monsters
+aquatic/support/Wave
 
 aquatic/Big Tuna
 aquatic/Changing Tides
-aquatic/Fishing
 aquatic/Ma Rinner
 aquatic/Seigh Lorre
 aquatic/Heptastar
@@ -61,62 +67,45 @@ aquatic/Squid Ex Nihilo
 aquatic/Leapingfish
 aquatic/Kraken
 aquatic/Dragon Turtle
-aquatic/Shifting Tides
-aquatic/Sacrifice to the Old Sea Gods
-aquatic/Here Be Monsters
-aquatic/Wave
 aquatic/Raincaller Carp
 aquatic/Inevitable Crab
 
-bards/Jolambertino, Indeci Compos
-bards/Wuonlan, the Inspired
-bards/Henry, Whose Bass is Based
-bards/Meti, Prima Diva
-bards/Master Caster, Recorder Bdaster
-bards/Eli, Quadruple Hornist
-bards/Dave with the Fonky Keytar
-bards/Earblaster, Tuba Master
-bards/Michael on Triangle
-bards/The Mystical Medical Doc
-bards/Reyna, Basoonist Backstage
-bards/Impro Visio, Dealing with Nonsezna
-bards/Eldir Samplei, Bestower of Horns
-bards/Zach, Sky Singer
-bards/Bards Get Inspiration
-bards/The Playlist
-bards/Up To Eleven
-bards/Encore
-bards/Beat Drop
-bards/Finale
+aquatic/water/High Tide
+aquatic/water/Nuisance Flooding
+aquatic/water/Hyper Tide
+aquatic/water/Placid Waters
+aquatic/water/Tide Pools
+aquatic/water/Hungry Tide
 
-crazy_Ideas/A Frayed Knot
-crazy_Ideas/Acid Lava Pit of Ghost Piranhas
-crazy_Ideas/Ballroom-Disco Breakdance Competition
-crazy_Ideas/Bounce Pad
-crazy_Ideas/Dr. Thierr Dumachmartres
-crazy_Ideas/Flippant Emo Daughter
-crazy_Ideas/Giant Ball of Tinfoil
-crazy_Ideas/Great Scott
-crazy_Ideas/Just a Little Bit More
-crazy_Ideas/Listen to Reason
-crazy_Ideas/Inexplicably Possible Black Hole
-crazy_Ideas/MAXIMUM OVERDRIVE
-crazy_Ideas/Mind of Flock Controlled Pigeons
-crazy_Ideas/Orry the Oviparous Mammal
-crazy_Ideas/Right Into My Trap
-crazy_Ideas/Self-Destruct Button
-crazy_Ideas/Shifting Tile Maze Path Blocker
-crazy_Ideas/Something Cannon
-crazy_Ideas/Stupid Idea Generator
-crazy_Ideas/Jacob-John Binglejeimer Schmitzel
-crazy_Ideas/Johnatheremiah
-crazy_Ideas/Ideate
-crazy_Ideas/Timothy
-crazy_Ideas/Wait Hold Up
-crazy_Ideas/Weird Idea That is Also
-crazy_Ideas/Yeet Modification
-crazy_Ideas/Yeeterator
-crazy_Ideas/Carla
+crazy_ideas/ificators/A Frayed Knot
+crazy_ideas/ificators/Ballroom-Disco Breakdance Competition
+crazy_ideas/ificators/Just a Little Bit More
+crazy_ideas/ificators/MAXIMUM OVERDRIVE
+crazy_ideas/ificators/Right Into My Trap
+crazy_ideas/ificators/Self-Destruct Button
+crazy_ideas/ificators/Stupid Idea Generator
+crazy_ideas/ificators/Wait Hold Up
+crazy_ideas/ificators/Yeet Modification
+crazy_ideas/ificators/Yeeterator
+
+crazy_ideas/support/Dr. Thierr Dumachmartres
+crazy_ideas/support/Flippant Emo Daughter
+crazy_ideas/support/Great Scott
+crazy_ideas/support/Listen to Reason
+crazy_ideas/support/Jacob-John Binglejeimer Schmitzel
+crazy_ideas/support/Johnatheremiah
+crazy_ideas/support/Ideate
+crazy_ideas/support/Timothy
+crazy_ideas/support/Carla
+
+crazy_ideas/Acid Lava Pit of Ghost Piranhas
+crazy_ideas/Bounce Pad
+crazy_ideas/Giant Ball of Tinfoil
+crazy_ideas/Inexplicably Possible Black Hole
+crazy_ideas/Mind of Flock Controlled Pigeons
+crazy_ideas/Orry the Oviparous Mammal
+crazy_ideas/Something Cannon
+crazy_ideas/Weird Idea That is Also
 
 cultists/Altar Builder
 cultists/Bloodcurser
@@ -159,39 +148,32 @@ dragons/Earthwapmer
 dragons/Dragonking
 dragons/Cyrian
 
-geminii/Rememories
-golems/Animancer
+golems/support/Animancer
+golems/support/Modular Golem Cores
+golems/support/Slight Golemodifications
+golems/support/Core Scrambling
+
+golems/cores/Combustion Core
+golems/cores/Defense Core
+golems/cores/Durability Core
+golems/cores/Speed Core
+golems/cores/Strength Core
+golems/cores/Contingency Core
+
 golems/Antiprecatium Golem
 golems/Clay Golem
-golems/Combustion Core
-golems/Defense Core
-golems/Durability Core
 golems/Earth Golem
 golems/Gunpowder Golem
 golems/Ice Golem
 golems/Magma Golem
 golems/Metal Golem
-golems/Modular Golem Cores
 golems/Obsidian Golem
 golems/Pneumatic Golem
-golems/Slight Golemodifications
-golems/Speed Core
 golems/Straw Golem
-golems/Strength Core
 golems/Tallow Golem
-golems/Taunt Core
 golems/Woolen Golem
 golems/Gold Golem
-golems/Core Scrambling
-golems/Scrap Golem
-golems/Backup Power Core
 golems/Stone Golem
-golems/Recoverable Core
-
-instruments/Gratuitous Sax
-instruments/Gratuitous Violins
-instruments/Horny Jail
-instruments/Resonating Tringle
 
 invokers/Haguaughan Invoker
 invokers/Invoke the Invoker
@@ -202,17 +184,45 @@ invokers/Novice Invocation
 invokers/Forlorn Invocation
 invokers/Peruser of Ancient Texts
 
+invokers/spirits/A Lot of Disappointment
+invokers/spirits/Allconsuming Frustration
+invokers/spirits/Generous Pleasure
+invokers/spirits/Overwhelming Anger
+invokers/spirits/Spiritual Advice
+invokers/spirits/Unfocusing Annoyance
+invokers/spirits/Whirlwind of Emotions
+invokers/spirits/Infectious Displeasure
+invokers/spirits/Nailbiting Anxiety
+invokers/spirits/Brightsmiling Excitement
+invokers/spirits/Hog Wildness
+invokers/spirits/Lizard Calm
+invokers/spirits/Boundless Creativity
+
 light_shade/Light
 light_shade/Shade
-light_shade/The Keeper of the Hooded Lantern
-light_shade/Dristzanti, the Illuminator
-light_shade/Trake, Shadecreeper
-light_shade/Illalli, the Brilliant
-light_shade/Lightbulb Idea
-light_shade/Light Up
-light_shade/Turn Off
-light_shade/Brillaume of the City
-light_shade/Inspirelight
+
+light_shade/support/The Keeper of the Hooded Lantern
+light_shade/support/Dristzanti, the Illuminator
+light_shade/support/Trake, Shadecreeper
+light_shade/support/Illalli, the Brilliant
+light_shade/support/Lightbulb Idea
+light_shade/support/Light Up
+light_shade/support/Turn Off
+light_shade/support/Brillaume of the City
+light_shade/support/Inspirelight
+
+light_shade/moths/Rouge Rogue Moth
+light_shade/moths/Disarming Rogue Moth
+light_shade/moths/Massive Moon Moth
+light_shade/moths/Searing Sun Moth
+light_shade/moths/Ravenous Leymoth
+light_shade/moths/Mothmisidentification
+light_shade/moths/Call of the Moon
+light_shade/moths/Cloaked in Shadow
+light_shade/moths/Faerie Moth
+light_shade/moths/Intimitation
+light_shade/moths/Hummingbird Hawkmoth
+light_shade/moths/Atlas Moth
 
 linewalkers/Blue Linewalker
 linewalkers/Cyan Linewalker
@@ -250,27 +260,26 @@ maya/support/Dense Cities
 maya/support/Grand Plaza
 maya/support/Urbanization
 
-mech_golems/QU4RG3
-mech_golems/51NG3
-mech_golems/54MUR41
-mech_golems/PL4T00N
-mech_golems/N0T3
-mech_golems/53G45C4NTUR14N 00
-mech_golems/C4RR13R
-mech_golems/B0U550L3
-mech_golems/P4RT154N
-mech_golems/5P33DRUNN3R
-mech_golems/5H4P3R
-mech_golems/54CR1F1C3
-mech_golems/GL455C4NN0N
+mechs/golems/QU4RG3
+mechs/golems/51NG3
+mechs/golems/54MUR41
+mechs/golems/PL4T00N
+mechs/golems/N0T3
+mechs/golems/53G45C4NTUR14N 00
+mechs/golems/C4RR13R
+mechs/golems/P4RT154N
+mechs/golems/5P33DRUNN3R
+mechs/golems/5H4P3R
+mechs/golems/54CR1F1C3
+mechs/golems/GL455C4NN0N
 
-mech_pilots/Standard Pilot
-mech_pilots/Runn R Mann
-mech_pilots/Heel R Mann
-mech_pilots/Bind R Mann
-mech_pilots/Gunn R Mann
-mech_pilots/Rayla, Head Mann
-mech_pilots/Gvala, Improvisor-Pilot
+mechs/pilots/Standard Pilot
+mechs/pilots/Runn R Mann
+mechs/pilots/Heel R Mann
+mechs/pilots/Bind R Mann
+mechs/pilots/Gunn R Mann
+mechs/pilots/Rayla, Head Mann
+mechs/pilots/Gvala, Improvisor-Pilot
 
 mechs/Powered Landing
 mechs/Mech-Blaster
@@ -281,77 +290,33 @@ mechs/One Step Ahead
 mechs/Repair Hub
 mechs/Buffer Shield
 
-memory/Malevolent Memory
-memory/Creative Memory
-memory/Deja Vu
-memory/Powerhungry Memory
-memory/Paranoid Memory
-memory/Restless Memory
-memory/Bestower of Memories
-memory/Memory Guide
-memory/Remembering
-memory/Rememberance
-memory/Rememory Guide
-memory/Vesselformation
-memory/Immortal Memory
-memory/Corporeal Recall
-memory/Memorial Augury
-memory/Recall
-memory/Uncall For
+orcs/smiters/freebies/Glimmer of Hope
+orcs/smiters/freebies/Unassuming Bush
 
-moths/Rouge Rogue Moth
-moths/Disarming Rogue Moth
-moths/Massive Moon Moth
-moths/Searing Sun Moth
-moths/Ravenous Leymoth
-moths/Poodle Moth
-moths/Mothmisidentification
-moths/Call of the Moon
-moths/Cloaked in Shadow
-moths/Faerie Moth
-moths/Hidden Pupa
-moths/Intimitation
-moths/Hummingbird Hawkmoth
-moths/Atlas Moth
+orcs/smiters/Roth Avenger
+orcs/smiters/Roth'Drek Crusader
+orcs/smiters/Roth'Ka Inquisitor
 
-music/Soaring Chorus
-music/Surging Verse
-music/Ringing Bridge
-music/Eureka Lyric
-music/Toe Tapper
-music/A Real Headbanger
-music/Chonky Noise Rock Bass
-music/Music for Aerports
-music/Play Them Leylines Like a Banjo
-music/Glory Metal
-music/4 33
-music/Backup Track
-music/Hard Rock
+orcs/spies/support/Bind the Blood
+orcs/spies/support/Bind the Shadows
+orcs/spies/support/Clever Decoy
+orcs/spies/support/Escape Route
+orcs/spies/support/Misplaced Supplies
+orcs/spies/support/Nothing to Hide
+
+orcs/spies/Raven Scout
+orcs/spies/Roth Agent
+orcs/spies/Roth Assassin
+orcs/spies/Roth'Drek Phantom
+orcs/spies/Roth'Ka Spymaster
 
 orcs/Alkorath'Kil, Fury in the Blood
-orcs/Bind the Blood
-orcs/Bind the Shadows
-orcs/Clever Decoy
-orcs/Escape Route
-orcs/Glimmer of Hope
 orcs/Malgonir'Kil, Secrets in the Shadows
-orcs/Nothing to Hide
-orcs/Raven Scout
-orcs/Roth Agent
-orcs/Roth Assassin
-orcs/Roth Avenger
 orcs/Roth Guerilla
 orcs/Roth Warrior
 orcs/Roth'Drek Champion
-orcs/Roth'Drek Crusader
-orcs/Roth'Drek Phantom
-orcs/Roth'Ka Inquisitor
-orcs/Roth'Ka Spymaster
 orcs/Roth'Kil Blood Acolyte
 orcs/Roth'Kil Shadow Acolyte
-orcs/Spiked Barricade
-orcs/Unassuming Bush
-orcs/Misplaced Supplies
 
 pulsars/Accelerating Pulsar
 pulsars/Boldening Pulsar
@@ -374,7 +339,7 @@ reporters/Fast Talker
 reporters/Field Report
 reporters/Frontline Reporter
 reporters/Harvald S Thonstrop
-reporters/Nature Reporter
+reporters/Arborealist, Nature Reporter
 reporters/Newsflash!
 reporters/Online Reporter
 reporters/Reporter Reportar
@@ -404,115 +369,99 @@ revenants/Unseen
 revenants/Unsought
 revenants/Unwanted
 
-runar/Algiz
-runar/Ansuz
-runar/Berkanan
-runar/Dagaz
-runar/Ehwaz
-runar/Fehu
-runar/Gyfu
-runar/Hagall
-runar/Ihwaz
-runar/Ingwaz
-runar/Isaz
-runar/Jera
-runar/Kaunan
-runar/Laguz
-runar/Mannaz
-runar/Naudiz
-runar/Odal
-runar/Perthro
-runar/Raido
-runar/Runebinding
-runar/Runecaller
-runar/Runecarver
-runar/Runechanneler
-runar/Runegunner
-runar/Runeloremaster
-runar/Runepainter
-runar/Runerunner
-runar/Runesaga
-runar/Runespeaker
-runar/Runestones
-runar/Runewriter
-runar/Runewritten
-runar/Sowilo
-runar/Thurisaz
-runar/Tiwaz
-runar/Uruz
-runar/Wynn
+runar/runes/Algiz
+runar/runes/Ansuz
+runar/runes/Berkanan
+runar/runes/Dagaz
+runar/runes/Ehwaz
+runar/runes/Fehu
+runar/runes/Gyfu
+runar/runes/Hagall
+runar/runes/Ihwaz
+runar/runes/Ingwaz
+runar/runes/Isaz
+runar/runes/Jera
+runar/runes/Kaunan
+runar/runes/Laguz
+runar/runes/Mannaz
+runar/runes/Naudiz
+runar/runes/Odal
+runar/runes/Perthro
+runar/runes/Raido
+runar/runes/Sowilo
+runar/runes/Thurisaz
+runar/runes/Tiwaz
+runar/runes/Uruz
+runar/runes/Wynn
 
-shapers/Irrilmist
-shapers/Ephemera
-shapers/Dreamhook
-shapers/Dreammist
-shapers/Dreamscape
-shapers/Evasive Ectoplasm
-shapers/Grudges Unforgotten
-shapers/He Who Knew Runes
-shapers/Maya, Mistress of Reality
-shapers/Outpoured Anger
-shapers/Pseudopod
-shapers/Send Home
-shapers/Shape Unbound
-shapers/Twin Spirit
-shapers/Unstable Dreaming
-shapers/Untethered Spirit
-shapers/Who Searched For Grudges
-shapers/Whose Anger Draws Fear
-shapers/Whose Past Disintegrates
-shapers/Riali, Master of Irrealities
-shapers/Trailing Dreammist
-shapers/Tethered Dreammist
-shapers/Infolding Hopelessness
-shapers/Kindred Spirit
+runar/support/Runebinding
+runar/support/Runecarver
+runar/support/Runesaga
+runar/support/Runestones
+runar/support/Runewriter
+runar/support/Runewritten
 
-shapers/Golranner Smoke
+runar/runecasters/Runecaller
+runar/runecasters/Runechanneler
+runar/runecasters/Runegunner
+runar/runecasters/Runeloremaster
+runar/runecasters/Runepainter
+runar/runecasters/Runerunner
+runar/runecasters/Runespeaker
+
+shapers/support/characters/Dreammist
+shapers/support/characters/Ephemera
+shapers/support/characters/Untethered Spirit
+
+shapers/support/spells/Dreamhook
+shapers/support/spells/Dreamscape
+shapers/support/spells/Pseudopod
+shapers/support/spells/Send Home
+shapers/support/spells/Shape Unbound
+shapers/support/spells/Unstable Dreaming
+
+shapers/Eddieself
+shapers/Evasoplasm
 shapers/Gapfillermist
-shapers/Outpoured Vitriol
+shapers/Golrannersmoke
+shapers/Grudgemud
+shapers/Inpragrang
+shapers/Heavypresence
+shapers/Irrilmist
+shapers/Lessreck
+shapers/Kindred Spirit
+shapers/Manyself
+shapers/Outpragrang
 shapers/Thrillmist
+shapers/Twin Spirit
+shapers/Pale Ardentfire
+shapers/Runedmemory
 
-skyknights/Fearstrikebinder
-skyknights/Venturebinder
-skyknights/Skillingbinder
-skyknights/Magerybinder
-skyknights/Passingbinder
+shapers/Maya, Mistress of Reality
+shapers/Riali, Master of Irrealities
 
-speed_demons/Coach Speed
-speed_demons/Mr Power Vacuum
-speed_demons/Boing Boing Launcher Guy
-speed_demons/Fairy Dust Tooter Scooter
-speed_demons/Dust Eater
-speed_demons/Fanatic Follower
-speed_demons/Hypnosympatheticizer
-speed_demons/Supportive Grandparent
-speed_demons/ZOOMIN
-speed_demons/Sonic Resonator
-speed_demons/Ready
-speed_demons/Set
-speed_demons/GO
-speed_demons/Choo Choo Brain
-speed_demons/Grandfather Speed
-speed_demons/Resonator Resonator
-speed_demons/Coach Lap
-speed_demons/Soul of Speed
-speed_demons/The Sonic Boom
-speed_demons/Sound Barrier
-speed_demons/Mach the Porcupine
+speedemons/support/Dust Eater
+speedemons/support/Fanatic Follower
+speedemons/support/Supportive Grandparent
+speedemons/support/ZOOMIN
+speedemons/support/Sound Barrier
+speedemons/support/Grandfather Speed
+speedemons/support/Resonator Resonator
+speedemons/support/Sonic Resonator
+speedemons/support/Ready
+speedemons/support/Set
+speedemons/support/GO
 
-spirits/A Lot of Disappointment
-spirits/Allconsuming Frustration
-spirits/Generous Pleasure
-spirits/Overwhelming Anger
-spirits/Spiritual Advice
-spirits/Unfocusing Annoyance
-spirits/Whirlwind of Emotions
-spirits/Infectious Displeasure
-spirits/Nailbiting Anxiety
-spirits/Brightsmiling Excitement
-spirits/Hog Wildness
-spirits/Lizard Calm
-spirits/Boundless Creativity
+speedemons/Coach Speed
+speedemons/Mr Power Vacuum
+speedemons/Boing Boing Launcher Guy
+speedemons/Fairy Dust Tooter Scooter
+speedemons/Hypnosympatheticizer
+speedemons/Choo Choo Brain
+speedemons/Coach Lap
+speedemons/Soul of Speed
+speedemons/The Sonic Boom
+speedemons/Mach the Porcupine
 
 spores/Mockish Rotbloom
 spores/Delirious Sparkbloom
@@ -554,7 +503,7 @@ sportsball/Whats Gonna Work
 sportsball/Getcha Getcha Getcha
 sportsball/Go! Play Sportsball!
 sportsball/Goal-Net Touchdown
-sportsball/Rocket-Propelled Ball Juice
+sportsball/Rocket-Propelled Ball
 sportsball/Overwhelming Ball Skills
 sportsball/Penalty Box
 
@@ -621,18 +570,22 @@ tarocco/XVIII - The Moon
 tarocco/XX - Judgement
 tarocco/XXI - The World
 
+trees/support/characters/Custodian of the Forest
+trees/support/characters/Master Graftsman
+trees/support/characters/The Man Who Replants
+
+trees/support/spells/Bark Salve
+trees/support/spells/Forest Fire
+trees/support/spells/Mulch
+trees/support/spells/Pruning
+trees/support/spells/Regrowth
+
 trees/Choketree
-trees/Custodian of the Forest
 trees/Flameborn Seedling
-trees/Forest Fire
 trees/Lithetree
-trees/Master Graftsman
-trees/Pruning
-trees/Regrowth
 trees/Seedling
 trees/Sharetree
 trees/Strongtree
-trees/The Man Who Replants
 trees/Thinktree
 
 vessels/Empty Vessel
@@ -641,12 +594,23 @@ vessels/Hardy Vessel
 vessels/Meditative Vessel
 vessels/Unwilling Vessel
 
-water/High Tide
-water/Nuisance Flooding
-water/Hyper Tide
-water/Placid Waters
-water/Tide Pools
-water/Hungry Tide
+vessels/memory/Malevolent Memory
+vessels/memory/Creative Memory
+vessels/memory/Deja Vu
+vessels/memory/Powerhungry Memory
+vessels/memory/Paranoid Memory
+vessels/memory/Restless Memory
+vessels/memory/Bestower of Memories
+vessels/memory/Memory Guide
+vessels/memory/Remembering
+vessels/memory/Rememberance
+vessels/memory/Rememory Guide
+vessels/memory/Vesselformation
+vessels/memory/Immortal Memory
+vessels/memory/Corporeal Recall
+vessels/memory/Memorial Augury
+vessels/memory/Recall
+vessels/memory/Uncall For
 
 wanderers/At Home in the World
 wanderers/Leper
@@ -664,29 +628,35 @@ wanderers/Wanderer
 wanderers/Wanderlust
 wanderers/Wisewoman
 
-weather_effects/Dapplesun
-weather_effects/Puffyclouds
-weather_effects/Crispbreeze
-weather_effects/Flashflood
-weather_effects/Peltrain
-weather_effects/Muggyclouds
-weather_effects/Thunderstorm
-weather_effects/Blizzard
-weather_effects/Fog
-weather_effects/Brainstorm
-weather_effects/Thundersun
+weather/effects/Dapplesun
+weather/effects/Puffyclouds
+weather/effects/Crispbreeze
+weather/effects/Flashflood
+weather/effects/Peltrain
+weather/effects/Muggyclouds
+weather/effects/Thunderstorm
+weather/effects/Blizzard
+weather/effects/Fog
+weather/effects/Brainstorm
+weather/effects/Thundersun
 
-weather_support/Cloudshift
-weather_support/Thunderous Echo
-weather_support/Unusual Weather
-weather_support/Eventful Weather
+weather/support/Cloudshift
+weather/support/Thunderous Echo
+weather/support/Unusual Weather
+weather/support/Eventful Weather
 
-weather_events/Lightning Elemental
-weather_events/Blizzard Squall
-weather_events/Immagic Drought
-weather_events/Roll of Leythunder
-weather_events/Windstorm of Etaqua
-weather_events/Leyhail Elemental
+weather/events/Lightning Elemental
+weather/events/Blizzard Squall
+weather/events/Immagic Drought
+weather/events/Roll of Leythunder
+weather/events/Windstorm of Etaqua
+weather/events/Leyhail Elemental
+
+weather/skyknights/Fearstrikebinder
+weather/skyknights/Venturebinder
+weather/skyknights/Skillingbinder
+weather/skyknights/Magerybinder
+weather/skyknights/Passingbinder
 
 wisps/Erratic Wisps
 wisps/Flippiwisp

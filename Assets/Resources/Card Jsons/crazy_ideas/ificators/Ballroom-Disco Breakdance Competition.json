@@ -1,0 +1,57 @@
+{
+	"cardType": 83,
+	"cardName": "Ballroom-Disco Breakdance Competition",
+	"effText": "Ificate.\nAny character that enters the competition loses all their N until another character enters.",
+	"technicalEffText": "Ificate.\nWhen an N X character arrives here, give them -X N until the next time this effect activates.",
+	"effects": [
+		{
+			"triggerData": {
+				"blurb": "LET'S BREAKDANCE",
+				"triggerCondition": "Arrive",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"Space Fits Restriction",
+						"This Card in Play"
+					],
+					"spaceRestriction": {
+						"spaceRestrictions": [
+							"In Source's AOE"
+						],
+						"mustBeEmpty": false
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "N"
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.TemporaryCardStatChangeSubeffect, Assembly-CSharp",
+					"nMultiplier": -1,
+					"endCondition": "Effect Pushed to Stack",
+					"triggerRestriction": {
+						"triggerRestrictions": [
+							"Stackable is This Effect"
+						]
+					}
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Ificate"
+	],
+	"c": 5,
+	"spellTypes": [
+		"Radial"
+	],
+	"subtypeText": "Radial Crazy Idea Ificator",
+	"radius": 3
+}

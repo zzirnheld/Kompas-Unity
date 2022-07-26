@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Late Reporter",
-	"effText": "Speedemon.\nWhen another of my own effects moves me from a space, move me back there.\nWhen I move, an enemy can reveal a card. If they don't, give me +1 ESW.",
+	"effText": "Speedemon, but move me back afterwards.\nWhen I move, an enemy can reveal a card. If they don't, give me +1 ESW.",
 	"effects": [
 		{
 			"triggerData": {

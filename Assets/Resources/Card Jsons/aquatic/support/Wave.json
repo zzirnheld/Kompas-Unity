@@ -1,0 +1,120 @@
+{
+	"cardType": 83,
+	"cardName": "Wave",
+	"effText": "Choose a Water spell. Remember any summons in it. Move the Water through empty spaces in Water. Move all those characters to spaces in that Water.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "What water moves?",
+						"cardRestrictions": [
+							"Board",
+							"Spell",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Water"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where will the wave crash",
+						"spaceRestrictions": [
+							"Can Move Card Target to This Space",
+							"Connected to Card Target by Spaces Fitting Restriction",
+							"Empty"
+						],
+						"spaceConnectednessRestriction": {
+							"spaceRestrictions": [
+								"Empty",
+								"In AOE of Card Fitting Restriction"
+							],
+							"inAOEOfRestriction": {
+								"cardRestrictions": [
+									"Subtypes Include"
+								],
+								"subtypesInclude": [
+									"Water"
+								]
+							}
+						}
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
+					"jumpIndices": [
+						9
+					]
+				},
+				{
+					"$type": "KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Summoned",
+							"Character",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"In Card Target's AOE"
+							]
+						}
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp",
+					"targetIndex": 0
+				},
+				{
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"spaceRestrictions": [
+							"In Card Target's AOE",
+							"Empty"
+						]
+					},
+					"targetIndex": 0
+				},
+				{
+					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete": true,
+					"remainingTargets": 1,
+					"jumpIndices": [
+						5
+					]
+				},
+				{
+					"$type": "KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp",
+					"targetIndex": 0
+				}
+			]
+		}
+	],
+	"c": 1,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypes": [
+		"Aquatic",
+		"Simple"
+	],
+	"subtypeText": "Aquatic Simple"
+}

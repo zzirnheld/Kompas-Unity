@@ -1,0 +1,88 @@
+{
+	"cardType": 67,
+	"cardName": "QU4RG3",
+	"effText": "Golem.\nMech Ultimate: Choose two characters on my diagonal. The first attacks the second.",
+	"effects": [
+		{
+			"blurb": "D15CH4RG3",
+			"triggerData": {
+				"triggerCondition": "S Change",
+				"triggerRestriction": {
+					"triggerRestrictionElements": [
+                        {
+                            "$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.TriggerKeyword, Assembly-CSharp",
+                            "keyword": "Mech Ultimate"
+                        }
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "4TT4CK3R",
+						"cardRestrictions": [
+							"Board",
+							"Character",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"On Card Target's Diagonal"
+							]
+						}
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "D3F3ND3R",
+						"cardRestrictions": [
+							"Board",
+							"Character",
+							"Not Already Target",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"On Card Target's Diagonal"
+							]
+						}
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
+					"targetIndex": -1,
+					"attackerIndex": -2
+				},
+				{
+					"$type": "KompasServer.Effects.NegateSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Mech Ultimate Charge"
+	],
+	"MovementRestriction": {
+		"normalRestrictionsFromJson": [
+			"Default",
+			"Activated"
+		]
+	},
+	"AttackRestriction": {
+		"attackRestrictions": [
+			"Default",
+			"This is Activated"
+		]
+	},
+	"n": 4,
+	"e": 6,
+	"s": 10,
+	"w": 6,
+	"subtypes": [
+		"Mech",
+		"Golem"
+	],
+	"subtypeText": "Mech Golem"
+}

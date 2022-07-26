@@ -1,12 +1,12 @@
 {
 	"cardType": 83,
 	"cardName": "Goal-Net Touchdown",
-	"effText": "Comeback Play.\nWhen a character moves adjacent to an enemy Avatar, apply their Augment(s) to an adjacent enemy Avatar.",
+	"effText": "Comeback Play.\nWhen a character arrives adjacent to an enemy Avatar, apply their Augment(s) to that Avatar.",
 	"effects": [
 		{
 			"triggerData": {
 				"blurb": "Touchdown!",
-				"triggerCondition": "Move",
+				"triggerCondition": "Arrive",
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",

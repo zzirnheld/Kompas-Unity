@@ -1,0 +1,55 @@
+{
+	"cardType": 67,
+	"cardName": "Runecarver",
+	"effText": "Once each turn, you can hand->, field->, or discard->reshuffle a Rune to draw 2 cards.",
+	"effects": [
+		{
+			"activationRestriction": {
+				"activationRestrictionArray": [
+					"Max Times Per Turn",
+					"Friendly Turn",
+					"Default"
+				]
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Rune for Runecarver to reshuffle",
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Friendly",
+							"Multiple Possible Locations"
+						],
+						"locations": [
+							1,
+							2,
+							3
+						],
+						"subtypesInclude": [
+							"Rune"
+						]
+					},
+					"maxCanChoose": 1
+				},
+				{
+					"$type": "KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp",
+					"targetIndex": -1
+				},
+				{
+					"$type": "KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"xModifier": 2
+				}
+			]
+		}
+	],
+	"n": 2,
+	"e": 3,
+	"s": 3,
+	"w": 3,
+	"subtypes": [
+		"Runar",
+		"Mage"
+	],
+	"subtypeText": "Runar Mage"
+}

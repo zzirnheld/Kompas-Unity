@@ -1,0 +1,70 @@
+{
+	"cardType": 83,
+	"cardName": "Mannaz",
+	"effText": "Runic.\nHand a character from your deck's top 10 cards.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
+					"jumpIndices": [
+						4
+					]
+				},
+				{
+					"$type": "KompasServer.Effects.ChooseFromListSaveRestSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "spell for Mannaz to search (to hand)",
+						"cardRestrictions": [
+							"Character",
+							"Friendly",
+							"Deck",
+							"Index<C"
+						],
+						"constant": 10
+					},
+					"restRestriction": {
+						"cardRestrictions": [
+							"Friendly",
+							"Deck",
+							"Index<C",
+							"Not Already Target"
+						],
+						"constant": 10
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.ClearOnImpossibleSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.BottomdeckRestSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Cannot be Played Normally"
+		]
+	},
+	"c": 1,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypes": [
+		"Rune",
+		"Simple"
+	],
+	"subtypeText": "Rune Simple"
+}

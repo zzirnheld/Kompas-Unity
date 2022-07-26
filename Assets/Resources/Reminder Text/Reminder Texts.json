@@ -62,7 +62,7 @@
 		},
 		{
 			"keyword":"Wisp.",
-			"reminder":"When I'm summoned, or when turns start, move me 1 space."
+			"reminder":"When I'm summoned, or when turns start, move me 1 space. When I move:"
 		},
 		{
 			"keyword":"Invoke",
@@ -148,6 +148,14 @@
 		{
 			"keyword":"Must contain",
 			"reminder":"If there's no appropriate cards here, dispel me."
+		},
+		{
+			"keyword":"Mech Ultimate",
+			"reminder":"When I attack, give me +10 S. When my S becomes at least 30, do the following, then negate me:"
+		},
+		{
+			"keyword":"Runecast",
+			"reminder":"Once each turn, you can pip hand->cast a Rune."
 		}
 	]
 }

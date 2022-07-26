@@ -13,7 +13,7 @@
 					],
 					"xRestriction": {
 						"numberRestrictions": [
-							">=Constant"
+							"==Constant"
 						],
 						"constant": 3
 					}

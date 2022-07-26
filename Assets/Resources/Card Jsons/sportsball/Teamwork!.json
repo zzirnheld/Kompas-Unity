@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Teamwork!",
-	"effText": "Comeback Play.\nThe first time each stack a friendly character is augmented, draw 1.",
+	"effText": "Comeback Play.\nThe first time each stack you augment a character, draw 1.",
 	"effects": [
 		{
 			"triggerData": {
@@ -11,13 +11,8 @@
 					"triggerRestrictions": [
 						"This Card in Play",
 						"Max Per Stack",
-						"Main Card Fits Restriction Before"
-					],
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Friendly"
-						]
-					}
+						"Controller Triggered"
+					]
 				}
 			},
 			"subeffects": [

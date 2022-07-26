@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Overwhelming Ball Skills",
-	"effText": "Comeback Play.\nWhen a friendly Augment is attached to an enemy character, give them -1 N.",
+	"effText": "Comeback Play.\nWhen you augment an enemy character, give them -1 NW.",
 	"effects": [
 		{
 			"triggerData": {
@@ -10,11 +10,11 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Main Card Fits Restriction Before"
+						"Main Card Fits Restriction Before",
+						"Controller Triggered"
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Friendly",
 							"Augments Card Fitting Restriction"
 						],
 						"augmentRestriction": {
@@ -31,7 +31,8 @@
 				},
 				{
 					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"nModifier": -1
+					"nModifier": -1,
+					"wModifier": -1
 				}
 			]
 		}

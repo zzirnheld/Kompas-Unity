@@ -1,0 +1,90 @@
+{
+	"cardType": 67,
+	"cardName": "B0U550L3",
+	"effText": "Golem.\nMech Ultimate: Move up to one character per diagonal as far as possible along that diagonal.",
+	"effects": [
+		{
+			"blurb": "C0MP455",
+			"triggerData": {
+				"triggerCondition": "S Change",
+				"triggerRestriction": {
+					"triggerRestrictionElements": [
+                        {
+                            "$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.TriggerKeyword, Assembly-CSharp",
+                            "keyword": "Mech Ultimate"
+                        }
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "to throw NE",
+						"cardRestrictions": [
+							"Board",
+							"Character"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.TargetDirectionSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.AutoSpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"spaceRestrictions": [
+							"Source Displacement to Card Target Same Direction as Space Target",
+							"Distance to Card Target Fits X Restriction",
+							"Empty"
+						],
+						"distanceXRestriction": {
+							"numberRestrictions": [
+								"=X"
+							]
+						}
+					},
+					"xModifier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eModifier": -3,
+					"targetIndex": -2
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Mech Ultimate Charge"
+	],
+	"MovementRestriction": {
+		"normalRestrictionsFromJson": [
+			"Default",
+			"Activated"
+		]
+	},
+	"AttackRestriction": {
+		"attackRestrictions": [
+			"Default",
+			"This is Activated"
+		]
+	},
+	"n": 5,
+	"e": 5,
+	"s": 10,
+	"w": 7,
+	"subtypes": [
+		"Mech",
+		"Golem"
+	],
+	"subtypeText": "Mech Golem"
+}

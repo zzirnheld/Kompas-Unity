@@ -1,0 +1,60 @@
+{
+	"cardType": 83,
+	"cardName": "Tiwaz",
+	"effText": "Runic.\nWhen a friendly character here attacks, give them +1 ESW (before the fight resolves).",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Attack",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Friendly",
+							"Board",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"In Source's AOE"
+							],
+							"mustBeEmpty": false
+						}
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eModifier": 1,
+					"sModifier": 1,
+					"wModifier": 1
+				}
+			]
+		}
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Cannot be Played Normally"
+		]
+	},
+	"c": 1,
+	"spellTypes": [
+		"Enchant",
+		"Radial"
+	],
+	"subtypes": [
+		"Rune",
+		"Enchant",
+		"Radial"
+	],
+	"subtypeText": "Radial 1 Rune Enchant",
+	"radius": 1
+}

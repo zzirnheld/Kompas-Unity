@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Nippiwisp",
-	"effText": "Wisp.\nWhen I move, give an adjacent character -1 W.",
+	"effText": "Wisp: Give an adjacent character -1 W.",
 	"effects": [
 		{
 			"triggerData": {

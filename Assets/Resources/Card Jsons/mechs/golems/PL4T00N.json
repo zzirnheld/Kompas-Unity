@@ -1,0 +1,100 @@
+{
+	"cardType": 67,
+	"cardName": "PL4T00N",
+	"effText": "Golem.\nMech Ultimate: Triple my E. I attack up to 2 characters I'm not already fighting.",
+	"effects": [
+		{
+			"blurb": "R0LL 0UT",
+			"triggerData": {
+				"triggerCondition": "S Change",
+				"triggerRestriction": {
+					"triggerRestrictionElements": [
+                        {
+                            "$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.TriggerKeyword, Assembly-CSharp",
+                            "keyword": "Mech Ultimate"
+                        }
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "E"
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMultiplier": 2
+				},
+				{
+					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "5PR34D 0UT",
+						"cardRestrictionElements": [
+                            { 
+								"$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.Not, Assembly-CSharp",
+								"element": {
+									"$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.Fighting, Assembly-CSharp",
+									"fightingWho": { "$type": "KompasCore.Effects.Identities.GamestateCardIdentities.ThisCard, Assembly-CSharp" }
+								}
+							}
+						]
+					},
+					"listRestriction": {
+						"listRestrictions": [
+							"Min Can Choose",
+							"Max Can Choose"
+						],
+						"minCanChoose": 0,
+						"maxCanChoose": 2
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
+					"targetIndex": -1,
+					"attackerIndex": 0
+				},
+				{
+					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete": true,
+					"remainingTargets": 1,
+					"jumpIndices": [
+						4
+					]
+				},
+				{
+					"$type": "KompasServer.Effects.NegateSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Mech Ultimate Charge"
+	],
+	"MovementRestriction": {
+		"normalRestrictionsFromJson": [
+			"Default",
+			"Activated"
+		]
+	},
+	"AttackRestriction": {
+		"attackRestrictions": [
+			"Default",
+			"This is Activated"
+		]
+	},
+	"n": 2,
+	"e": 6,
+	"s": 7,
+	"w": 1,
+	"subtypes": [
+		"Mech",
+		"Golem"
+	],
+	"subtypeText": "Mech Golem"
+}

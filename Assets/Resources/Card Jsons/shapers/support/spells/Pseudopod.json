@@ -1,0 +1,71 @@
+{
+	"cardType": 83,
+	"cardName": "Pseudopod",
+	"effText": "Move an enemy character to a space adjacent to a friendly Shaper.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "enemy character to move",
+						"cardRestrictions": [
+							"Character",
+							"Enemy",
+							"Board"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where to move the enemy character",
+                        "spaceRestrictionElements": [
+                            { "$type": "KompasCore.Effects.Restrictions.SpaceRestrictionElements.Empty, Assembly-CSharp" },
+                            {
+                                "$type": "KompasCore.Effects.Restrictions.SpaceRestrictionElements.AdjacentTo, Assembly-CSharp",
+                                "anyOfTheseCards": { 
+									"$type": "KompasCore.Effects.Identities.GamestateManyCardsIdentities.FittingRestriction, Assembly-CSharp",
+									"cardRestriction": {
+										"cardRestrictionElements": [
+											{ "$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.FriendlyCard, Assembly-CSharp" },
+											{ "$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.Character, Assembly-CSharp" },
+											{
+												"$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.Location, Assembly-CSharp",
+												"locations": [ "Board" ]
+											},
+											{
+												"$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.SubtypesInclude, Assembly-CSharp",
+												"subtypes": [ "Shaper" ]
+											}
+										]
+									}
+								}
+                            }
+                        ]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"c": 2,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypes": [
+		"Simple",
+		"Shaping"
+	],
+	"subtypeText": "Simple Shaping"
+}

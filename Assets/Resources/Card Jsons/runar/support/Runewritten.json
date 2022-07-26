@@ -1,0 +1,48 @@
+{
+	"cardType": 67,
+	"cardName": "Runewritten",
+	"effText": "When you cast a Rune, give me +1 EW.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before",
+						"Controller Triggered"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Spell",
+							"Friendly"
+						],
+						"subtypesInclude": [
+							"Rune"
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eModifier": 1,
+					"wModifier": 1
+				}
+			]
+		}
+	],
+	"n": 3,
+	"e": 1,
+	"s": 3,
+	"w": 1,
+	"subtypes": [
+		"Runar",
+		"Warrior"
+	],
+	"subtypeText": "Runar Warrior"
+}

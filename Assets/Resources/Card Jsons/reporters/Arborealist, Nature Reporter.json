@@ -1,0 +1,105 @@
+{
+	"cardType": 67,
+	"cardName": "Arborealist, Nature Reporter",
+	"effText": "The first time each stack I gain E, an enemy can reveal a character with more E than me. If they don't, give friendly characters +1 NEWS.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "E Change",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"Max Per Stack",
+						"This Card in Play",
+						"X Fits Restriction",
+						"This Card is Main Card"
+					],
+					"xRestriction": {
+						"numberRestrictions": [
+							">0"
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.SetXByTriggeringCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "E"
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
+					"subeffIndices": [
+						4
+					],
+					"skipIndex": 7
+				},
+				{
+					"$type": "KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"choiceBlurb": "Reveal an E > X character?",
+					"optionBlurbs": [
+						"Yes",
+						"No"
+					],
+					"jumpIndices": [
+						4,
+						7
+					],
+					"showX": true
+				},
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "E > X character to reveal",
+						"cardRestrictions": [
+							"Controller Matches Player Target",
+							"Hand",
+							"Card Value Fits Number Restriction",
+							"Hidden",
+							"Character"
+						],
+						"cardValue": {
+							"value": "E"
+						},
+						"cardValueNumberRestriction": {
+							"numberRestrictions": [
+								">X"
+							]
+						}
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.RevealSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Friendly"
+						]
+					},
+					"nModifier": 1,
+					"eModifier": 1,
+					"sModifier": 1,
+					"wModifier": 1
+				}
+			]
+		}
+	],
+	"unique": true,
+	"n": 1,
+	"e": 3,
+	"s": 4,
+	"w": 3,
+	"subtypeText": "Tree Reporter"
+}

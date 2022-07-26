@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Fungal Recomposition",
-	"effText": "The first time each turn a Fungus dies, deck->discard a distinct Fungus. Draw 1 card.",
+	"effText": "The first time each turn a Fungus dies, deck->discard a distinct Fungus and draw 1 card.",
 	"effects": [
 		{
 			"triggerData": {

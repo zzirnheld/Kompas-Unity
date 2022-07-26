@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Relay Long-Jumper",
-	"effText": "When another character moves adjacent to me, attach their Augment(s) to me.",
+	"effText": "When an augmented character arrives adjacent to me, attach their Augment(s) to me.",
 	"effects": [
 		{
 			"triggerData": {
@@ -16,6 +16,7 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character",
+							"Augmented",
 							"Different from Source"
 						]
 					},

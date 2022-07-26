@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Silent Fanatic",
-	"effText": "When I die, deck-summon 2 Cultist Followers.",
+	"effText": "When I die, deck->summon 2 Cultist Followers.",
 	"effects": [
 		{
 			"triggerData": {
