@@ -4,8 +4,7 @@
 		"activationRestrictionArray":[
 			"Location",
 			"Controller Activates",
-			"Not Negated",
-			"Not Currently Activated"
+			"Not Negated"
 		],
 		"location":2
 	},
