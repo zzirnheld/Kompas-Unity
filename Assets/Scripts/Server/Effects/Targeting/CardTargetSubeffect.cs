@@ -1,5 +1,7 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
+using KompasCore.Effects.Identities;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -9,6 +11,8 @@ namespace KompasServer.Effects
     public class CardTargetSubeffect : ServerSubeffect
     {
         public CardRestriction cardRestriction;
+
+        public IActivationContextIdentity<GameCardBase> toLinkWith;
 
         public enum TargetType { Normal = 0, Debuff = 1 }
         public TargetType targetType;
@@ -64,6 +68,11 @@ namespace KompasServer.Effects
             {
                 ServerEffect.AddTarget(card);
                 ServerPlayer.ServerNotifier.AcceptTarget();
+                if (toLinkWith != null)
+                {
+                    var link = new CardLink(new HashSet<GameCard>() { card, toLinkWith.From(CurrentContext, default).Card }, Effect);
+                    ServerPlayer.ServerNotifier.AddCardLink(link);
+                }
                 return true;
             }
             else
