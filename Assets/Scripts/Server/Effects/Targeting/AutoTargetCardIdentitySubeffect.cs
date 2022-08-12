@@ -11,7 +11,7 @@ namespace KompasServer.Effects
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
             base.Initialize(eff, subeffIndex);
-            subeffectCardIdentity.Initialize(initializationContext: DefaultRestrictionContext);
+            subeffectCardIdentity.Initialize(initializationContext: DefaultInitializationContext);
         }
 
         public override Task<ResolutionInfo> Resolve()

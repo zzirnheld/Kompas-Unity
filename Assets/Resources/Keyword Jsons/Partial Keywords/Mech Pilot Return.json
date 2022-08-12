@@ -10,6 +10,10 @@
         }
     },
     {
+        "$type":"KompasServer.Effects.UnlinkCardsSubeffect, Assembly-CSharp",
+        "cardLinkIndex": 0
+    },
+    {
         "$type":"KompasServer.Effects.TargetTriggeringCardsCoordsSubeffect, Assembly-CSharp"
     },
     {

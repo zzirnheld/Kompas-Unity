@@ -1,4 +1,5 @@
 ﻿using KompasCore.Cards;
+using KompasCore.Effects;
 using KompasCore.Networking;
 using KompasServer.Effects;
 using KompasServer.GameCore;
@@ -211,6 +212,9 @@ namespace KompasServer.Networking
             int[] effIndices = triggers.Select(t => t.serverEffect.EffectIndex).ToArray();
             SendPacket(new GetTriggerOrderPacket(cardIds, effIndices));
         }
+
+        public void AddCardLink(CardLink link) => SendToBoth(new EditCardLinkPacket(link, add: true));
+        public void RemoveCardLink(CardLink link) => SendToBoth(new EditCardLinkPacket(link, add: false));
         #endregion other effect stuff
     }
 }

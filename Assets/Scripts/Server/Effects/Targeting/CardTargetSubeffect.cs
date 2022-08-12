@@ -1,5 +1,7 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
+using KompasCore.Effects.Identities;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -10,6 +12,12 @@ namespace KompasServer.Effects
     {
         public CardRestriction cardRestriction;
 
+        /// <summary>
+        /// Identifies a card that this target should be linked with.
+        /// Usually null, but if you plan on having a delay later, probably a good idea
+        /// </summary>
+        public IActivationContextIdentity<GameCardBase> toLinkWith;
+
         public enum TargetType { Normal = 0, Debuff = 1 }
         public TargetType targetType;
 
@@ -17,7 +25,8 @@ namespace KompasServer.Effects
         {
             base.Initialize(eff, subeffIndex);
 
-            cardRestriction.Initialize(DefaultRestrictionContext);
+            cardRestriction.Initialize(DefaultInitializationContext);
+            toLinkWith?.Initialize(DefaultInitializationContext);
         }
 
         public override bool IsImpossible() => !Game.Cards.Any(c => cardRestriction.IsValidCard(c, CurrentContext));
@@ -64,6 +73,7 @@ namespace KompasServer.Effects
             {
                 ServerEffect.AddTarget(card);
                 ServerPlayer.ServerNotifier.AcceptTarget();
+                if (toLinkWith != null) ServerEffect.CreateCardLink(card, toLinkWith.From(CurrentContext, default)?.Card);
                 return true;
             }
             else

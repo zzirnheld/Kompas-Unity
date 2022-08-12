@@ -375,6 +375,16 @@ public class CardRepository : MonoBehaviour
         card.cardCtrl.SetImage(card.CardName, false);
         card.gameObject.GetComponentInChildren<ClientCardMouseController>().ClientGame = clientGame;
         card.clientCardCtrl.ApplySettings(clientGame.clientUISettingsCtrl.ClientSettings);
+        
+        //handle adding existing card links
+        foreach (var c in card.Game.Cards)
+        {
+            foreach (var link in c.CardLinkHandler.Links)
+            {
+                if (link.CardIDs.Contains(id)) card.CardLinkHandler.AddLink(link);
+            }
+        }
+
         return card;
     }
 

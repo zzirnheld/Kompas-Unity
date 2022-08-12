@@ -29,9 +29,9 @@ namespace KompasServer.Effects
         {
             base.Initialize(eff, subeffIndex);
 
-            throughRestriction?.Initialize(DefaultRestrictionContext);
-            cardRestriction?.Initialize(DefaultRestrictionContext);
-            cardValue?.Initialize(DefaultRestrictionContext);
+            throughRestriction?.Initialize(DefaultInitializationContext);
+            cardRestriction?.Initialize(DefaultInitializationContext);
+            cardValue?.Initialize(DefaultInitializationContext);
         }
 
         public override int BaseCount

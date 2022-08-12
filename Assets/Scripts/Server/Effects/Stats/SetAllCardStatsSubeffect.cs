@@ -35,7 +35,7 @@ namespace KompasServer.Effects
                     CardRestriction.Board
                 }
             };
-            cardRestriction.Initialize(DefaultRestrictionContext);
+            cardRestriction.Initialize(DefaultInitializationContext);
         }
 
         public override Task<ResolutionInfo> Resolve()

@@ -2,6 +2,8 @@
 using KompasCore.Effects;
 using KompasCore.GameCore;
 using KompasServer.GameCore;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -20,11 +22,8 @@ namespace KompasServer.Effects
 
         public ServerPlayer ServerPlayer => PlayerTarget as ServerPlayer;
 
-        public EffectInitializationContext DefaultRestrictionContext
-            => CreateInitializationContext(null);
-
-        protected EffectInitializationContext CreateInitializationContext(Trigger trigger)
-            => new EffectInitializationContext(game: Game, source: Source, effect: Effect, trigger: trigger, subeffect: this);
+        public EffectInitializationContext DefaultInitializationContext
+            => Effect.CreateInitializationContext(this, default);
 
         /// <summary>
         /// Sets up the subeffect with whatever necessary values.

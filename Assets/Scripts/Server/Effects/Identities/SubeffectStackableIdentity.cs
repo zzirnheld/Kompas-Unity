@@ -43,7 +43,7 @@ namespace KompasServer.Effects.Identities
             public int index = -1;
 
             protected override IStackable AbstractStackable
-                => Effect.GetItem(InitializationContext.effect.stackableTargets, index);
+                => EffectHelpers.GetItem(InitializationContext.effect.stackableTargets, index);
         }
     }
 }

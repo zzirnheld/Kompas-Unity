@@ -12,7 +12,7 @@ namespace KompasServer.Effects
             /*var ctxt = DefaultRestrictionContext;
             UnityEngine.Debug.Log($"Initializing with {ctxt}");
             numberIdentity.Initialize(initializationContext: ctxt);*/
-            numberIdentity.Initialize(initializationContext: DefaultRestrictionContext);
+            numberIdentity.Initialize(initializationContext: DefaultInitializationContext);
         }
 
         public override int BaseCount => numberIdentity.Item;

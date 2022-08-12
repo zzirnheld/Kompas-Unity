@@ -10,7 +10,7 @@ namespace KompasServer.Effects
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
             base.Initialize(eff, subeffIndex);
-            XRest.Initialize(DefaultRestrictionContext);
+            XRest.Initialize(DefaultInitializationContext);
         }
 
         private async Task<int> AskForX() => await ServerPlayer.serverAwaiter.GetPlayerXValue();

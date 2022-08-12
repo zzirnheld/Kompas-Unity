@@ -11,7 +11,7 @@ namespace KompasServer.Effects
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
             base.Initialize(eff, subeffIndex);
-            cardValue?.Initialize(DefaultRestrictionContext);
+            cardValue?.Initialize(DefaultInitializationContext);
         }
 
         public override int BaseCount => cardInfo ?

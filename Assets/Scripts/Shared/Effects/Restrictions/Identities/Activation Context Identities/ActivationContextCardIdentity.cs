@@ -37,7 +37,7 @@ namespace KompasCore.Effects.Identities.ActivationContextCardIdentities
         public int index = -1;
 
         protected override GameCardBase AbstractItemFrom(ActivationContext contextToConsider)
-            => Effect.GetItem(contextToConsider.CardTargets, index);
+            => EffectHelpers.GetItem(contextToConsider.CardTargets, index);
     }
 
     public class Cause : ActivationContextIdentityBase<GameCardBase>

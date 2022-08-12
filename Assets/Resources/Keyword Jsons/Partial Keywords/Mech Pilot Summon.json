@@ -15,7 +15,8 @@
             "blurb":"Mech to Pilot",
             "cardRestrictions":["Friendly","Subtypes Include","Character","Hand","Can Be Played"],
             "subtypesInclude":["Mech","Golem"]
-        }
+        },
+        "toLinkWith": { "$type": "KompasCore.Effects.Identities.GamestateCardIdentities.ThisCard, Assembly-CSharp" }
     },
     {
         "$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
