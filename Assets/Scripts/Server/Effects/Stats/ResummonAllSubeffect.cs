@@ -12,7 +12,7 @@ namespace KompasServer.Effects
         {
             base.Initialize(eff, subeffIndex);
             cardRestriction ??= new CardRestriction();
-            cardRestriction.Initialize(DefaultRestrictionContext);
+            cardRestriction.Initialize(DefaultInitializationContext);
         }
 
         public override Task<ResolutionInfo> Resolve()

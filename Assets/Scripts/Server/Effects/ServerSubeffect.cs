@@ -2,6 +2,8 @@
 using KompasCore.Effects;
 using KompasCore.GameCore;
 using KompasServer.GameCore;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -20,11 +22,8 @@ namespace KompasServer.Effects
 
         public ServerPlayer ServerPlayer => PlayerTarget as ServerPlayer;
 
-        public EffectInitializationContext DefaultRestrictionContext
-            => CreateInitializationContext(null);
-
-        protected EffectInitializationContext CreateInitializationContext(Trigger trigger)
-            => new EffectInitializationContext(game: Game, source: Source, effect: Effect, trigger: trigger, subeffect: this);
+        public EffectInitializationContext DefaultInitializationContext
+            => Effect.CreateInitializationContext(this, default);
 
         /// <summary>
         /// Sets up the subeffect with whatever necessary values.
@@ -60,6 +59,16 @@ namespace KompasServer.Effects
         {
             ServerEffect.OnImpossible = null;
             return Task.FromResult(ResolutionInfo.Impossible(why));
+        }
+
+        protected void CreateCardLink(params GameCard[] cards)
+        {
+            GameCard[] validCards = cards.Where(c => c != null).ToArray();
+            //if (validCards.Length <= 1) return; //Don't create a link between one non-null card? nah, do, so we can delete it as expected later
+
+            var link = new CardLink(new HashSet<GameCard>(validCards), Effect);
+            Effect.AddCardLink(link);
+            ServerPlayer.ServerNotifier.AddCardLink(link);
         }
     }
 

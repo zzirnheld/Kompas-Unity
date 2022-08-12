@@ -2,7 +2,6 @@
 using KompasCore.Effects;
 using KompasCore.Cards;
 using System.Threading.Tasks;
-using UnityEngine;
 
 namespace KompasServer.Effects
 {
@@ -25,7 +24,7 @@ namespace KompasServer.Effects
                     new TriggerRestriction() { triggerRestrictions = TriggerRestriction.DefaultFallOffRestrictions } :
                     new TriggerRestriction() { triggerRestrictions = { } };
             }
-            triggerRest.Initialize(initializationContext: CreateInitializationContext(null));
+            triggerRest.Initialize(DefaultInitializationContext);
             return triggerRest;
         }
 
@@ -33,8 +32,7 @@ namespace KompasServer.Effects
         {
             base.Initialize(eff, subeffIndex);
             triggerRestriction ??= new TriggerRestriction();
-            triggerRestriction.Initialize(CreateInitializationContext(null));
-            //Debug.LogWarning($"Are jump indices null? {jumpIndices == null}");
+            triggerRestriction.Initialize(DefaultInitializationContext);
         }
 
         public override Task<ResolutionInfo> Resolve()

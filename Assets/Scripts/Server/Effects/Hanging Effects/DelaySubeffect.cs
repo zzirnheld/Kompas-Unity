@@ -11,6 +11,12 @@ namespace KompasServer.Effects
         public bool clearWhenResume = true;
         public override bool ContinueResolution => false;
 
+        public override void Initialize(ServerEffect eff, int subeffIndex)
+        {
+            base.Initialize(eff, subeffIndex);
+            if (jumpIndices == null) throw new System.ArgumentNullException("jumpIndices");
+        }
+
         protected override IEnumerable<HangingEffect> CreateHangingEffects()
         {
             Debug.Log($"Is context null? {CurrentContext == null}");

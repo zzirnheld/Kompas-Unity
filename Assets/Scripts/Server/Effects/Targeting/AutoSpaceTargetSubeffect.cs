@@ -15,7 +15,7 @@ namespace KompasServer.Effects
         {
             base.Initialize(eff, subeffIndex);
 
-            spaceRestriction.Initialize(DefaultRestrictionContext);
+            spaceRestriction.Initialize(DefaultInitializationContext);
         }
         public IEnumerable<Space> ValidSpaces => Space.Spaces
                 .Where(s => spaceRestriction.IsValidSpace(s, CurrentContext, theoreticalTarget: CardTarget))
