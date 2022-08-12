@@ -9,6 +9,7 @@ namespace KompasCore.Cards
         public GameCard Card { get; }
 
         private readonly List<CardLink> links = new List<CardLink>();
+        public IEnumerable<CardLink> Links => links;
 
         public GameCardCardLinkHandler(GameCard card)
         {

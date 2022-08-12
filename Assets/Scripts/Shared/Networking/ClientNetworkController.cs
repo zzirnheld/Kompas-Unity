@@ -103,6 +103,7 @@ namespace KompasClient.Networking
                 Packet.OptionalTrigger => JsonConvert.DeserializeObject<OptionalTriggerClientPacket>(json),
                 Packet.ToggleAllowResponses => JsonConvert.DeserializeObject<ToggleAllowResponsesClientPacket>(json),
                 Packet.GetTriggerOrder => JsonConvert.DeserializeObject<GetTriggerOrderClientPacket>(json),
+                Packet.EditCardLink => JsonConvert.DeserializeObject<EditCardLinkClientPacket>(json),
                 //misc
                 _ => throw new System.ArgumentException($"Unrecognized command {command} in packet sent to client"),
             };

@@ -26,6 +26,7 @@ namespace KompasServer.Effects
             base.Initialize(eff, subeffIndex);
 
             cardRestriction.Initialize(DefaultInitializationContext);
+            toLinkWith?.Initialize(DefaultInitializationContext);
         }
 
         public override bool IsImpossible() => !Game.Cards.Any(c => cardRestriction.IsValidCard(c, CurrentContext));
