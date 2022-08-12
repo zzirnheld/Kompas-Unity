@@ -20,6 +20,7 @@ namespace KompasCore.Effects
         public const string WChange = "W Change";
         public const string CChange = "C Change";
         public const string AChange = "A Change";
+        public const string Healed = "Healed";
 
         //combat
         public const string Defends = "Defend";

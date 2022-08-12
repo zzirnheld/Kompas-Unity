@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Forest Fire",
-	"effText": "Give all characters adjacent to at least one Tree -5 E.",
+	"effText": "Any number of times: Give a friendly Tree, then all adjacent characters, -4 E.",
 	"effects": [
 		{
 			"blurb": "Simple",
@@ -15,6 +15,23 @@
 			},
 			"subeffects": [
 				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Who to heal",
+						"cardRestrictions": [
+							"Hurt",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Tree"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eModifier": -4
+				},
+				{
 					"$type": "KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
 					"cardRestriction": {
 						"cardRestrictions": [
@@ -24,19 +41,18 @@
 						],
 						"spaceRestriction": {
 							"spaceRestrictions": [
-								"Adjacent to a Card that Fits Restriction"
-							],
-							"adjacencyRestriction": {
-								"cardRestrictions": [
-									"Subtypes Include"
-								],
-								"subtypesInclude": [
-									"Tree"
-								]
-							}
+								"Adjacent to Card Target"
+							]
 						}
 					},
-					"eModifier": -5
+					"eModifier": -4
+				},
+				{
+					"$type": "KompasServer.Effects.LoopSubeffect, Assembly-CSharp",
+					"canDecline": true,
+					"jumpIndices": [
+						0
+					]
 				}
 			]
 		}

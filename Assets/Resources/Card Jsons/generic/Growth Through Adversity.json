@@ -1,0 +1,35 @@
+{
+	"cardType": 83,
+	"cardName": "Growth Through Adversity",
+	"effText": "When you heal a character, give them +5 E.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Healed",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play"
+                    ]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eModifier": 5
+				}
+			]
+		}
+	],
+	"c": 2,
+	"spellTypes": [
+		"Enchant"
+	],
+	"subtypes": [
+		"Enchant"
+	],
+	"subtypeText": "Enchant",
+	"radius": 1
+}

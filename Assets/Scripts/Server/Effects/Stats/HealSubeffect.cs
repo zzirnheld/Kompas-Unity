@@ -1,4 +1,5 @@
-﻿using KompasCore.Exceptions;
+﻿using KompasCore.Effects;
+using KompasCore.Exceptions;
 using System.Threading.Tasks;
 
 namespace KompasServer.Effects
@@ -14,7 +15,9 @@ namespace KompasServer.Effects
             else if (CardTarget.E >= CardTarget.BaseE)
                 throw new InvalidCardException(CardTarget, TooMuchEForHeal);
 
+            int healedFor = CardTarget.BaseE - CardTarget.E;
             CardTarget.SetE(CardTarget.BaseE, stackSrc: ServerEffect);
+            ServerEffect.EffectsController.TriggerForCondition(Trigger.Healed, new ActivationContext(Game, mainCardBefore: CardTarget, stackableCause: Effect, player: EffectController, x: healedFor));
             return Task.FromResult(ResolutionInfo.Next);
         }
     }

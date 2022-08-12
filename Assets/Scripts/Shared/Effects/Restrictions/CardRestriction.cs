@@ -94,6 +94,7 @@ namespace KompasCore.Effects
 
         //misc statlike
         public const string Hurt = "Hurt";
+        public const string Unhurt = "Unhurt";
 
         public const string Negated = "Negated";
         public const string Unnegated = "Unnegated";
@@ -311,6 +312,7 @@ namespace KompasCore.Effects
                 //stats
                 CardValueFitsNumberRestriction => cardValueNumberRestriction.IsValidNumber(cardValue.GetValueOf(potentialTarget)),
                 Hurt => potentialTarget?.Hurt ?? false,
+                Unhurt => !(potentialTarget?.Hurt ?? true),
                 Activated => potentialTarget?.Activated ?? false,
                 Negated => potentialTarget?.Negated ?? false,
                 Unnegated => !(potentialTarget?.Negated ?? true),

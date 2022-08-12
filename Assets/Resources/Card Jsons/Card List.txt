@@ -48,6 +48,7 @@ generic/Unfinding
 generic/Yank
 generic/Ethereate
 generic/Rememories
+generic/Growth Through Adversity
 
 aquatic/support/Fishing
 aquatic/support/Shifting Tides

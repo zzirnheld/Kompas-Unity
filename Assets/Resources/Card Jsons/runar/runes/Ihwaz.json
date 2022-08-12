@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Ihwaz",
-	"effText": "Runic.\nSwap an adjacent card with another card.",
+	"effText": "Runic.\nPip revive a character at half cost (rounding down).",
 	"effects": [
 		{
 			"triggerData": {
@@ -16,32 +16,33 @@
 				{
 					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction": {
-						"blurb": "for Ihwaz to swap (1/2)",
+						"blurb": "for Ihwaz to recast",
 						"cardRestrictions": [
-							"Not Augment",
-							"Board",
-							"Space Fits Restriction"
+							"Character",
+							"Friendly",
+							"Discard",
+							"Can Be Played",
+							"Effect Controller can Afford Cost"
 						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Source"
-							]
-						}
+						"costDivisor": 2
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction": {
-						"blurb": "for Ihwaz to swap (2/2)",
-						"cardRestrictions": [
-							"Not Augment",
-							"Board",
-							"Not Already Target"
+					"$type": "KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
+					"xDivisor": 2
+				},
+				{
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where Ihwaz to recast",
+						"spaceRestrictions": [
+							"Can Play Card Target to This Space",
+							"Empty"
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SwapSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				}
 			]
 		}
@@ -51,7 +52,7 @@
 			"Cannot be Played Normally"
 		]
 	},
-	"c": 4,
+	"c": 1,
 	"spellTypes": [
 		"Simple"
 	],
