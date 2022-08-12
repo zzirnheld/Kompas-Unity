@@ -72,7 +72,7 @@ namespace KompasServer.Effects
             {
                 ServerEffect.AddTarget(card);
                 ServerPlayer.ServerNotifier.AcceptTarget();
-                if (toLinkWith != null) CreateCardLink(card, toLinkWith.From(CurrentContext, default)?.Card);
+                if (toLinkWith != null) ServerEffect.CreateCardLink(card, toLinkWith.From(CurrentContext, default)?.Card);
                 return true;
             }
             else

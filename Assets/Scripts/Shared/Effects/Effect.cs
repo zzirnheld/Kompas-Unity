@@ -103,10 +103,6 @@ namespace KompasCore.Effects
 
         public void AddSpace(Space space) => spaceTargets.Add(space.Copy);
 
-        public void AddCardLink(CardLink cardLink) => cardLinks.Add(cardLink);
-        public void RemoveCardLink(CardLink cardLink) => cardLinks.Remove(cardLink);
-        public void RemoveCardLink(int index) => RemoveCardLink(EffectHelpers.TrueIndex(cardLinks.Count, index));
-
 
         public override string ToString() => $"Effect of {(Source == null ? "Nothing???" : Source.CardName)}";
 

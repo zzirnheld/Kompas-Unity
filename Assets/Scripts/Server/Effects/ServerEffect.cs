@@ -3,6 +3,8 @@ using KompasCore.Effects;
 using KompasCore.Exceptions;
 using KompasCore.GameCore;
 using KompasServer.GameCore;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -260,6 +262,25 @@ namespace KompasServer.Effects
         {
             base.RemoveTarget(card);
             serverGame.ServerControllerOf(card).ServerNotifier.RemoveTarget(Source, EffectIndex, card);
+        }
+
+        public void CreateCardLink(params GameCard[] cards)
+        {
+            GameCard[] validCards = cards.Where(c => c != null).ToArray();
+            //if (validCards.Length <= 1) return; //Don't create a link between one non-null card? nah, do, so we can delete it as expected later
+
+            var link = new CardLink(new HashSet<GameCard>(validCards), this);
+            cardLinks.Add(link);
+            ServerController.ServerNotifier.AddCardLink(link);
+        }
+
+        public void DestroyCardLink(int index)
+        {
+            var link = EffectHelpers.GetItem(cardLinks, index);
+            if (cardLinks.Remove(link))
+            {
+                ServerController.ServerNotifier.RemoveCardLink(link);
+            }
         }
 
         public override string ToString() => $"Effect {EffectIndex} of {Source.CardName}";

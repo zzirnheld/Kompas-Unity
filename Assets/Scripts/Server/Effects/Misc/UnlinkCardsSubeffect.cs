@@ -1,18 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using System.Threading.Tasks;
 
-public class UnlinkCardsSubeffect : MonoBehaviour
+namespace KompasServer.Effects
 {
-    // Start is called before the first frame update
-    void Start()
+    public class UnlinkCardsSubeffect : ServerSubeffect
     {
-        
-    }
+        public int cardLinkIndex = -1;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public override Task<ResolutionInfo> Resolve()
+        {
+            ServerEffect.DestroyCardLink(cardLinkIndex);
+            return Task.FromResult(ResolutionInfo.Next);
+        }
     }
 }

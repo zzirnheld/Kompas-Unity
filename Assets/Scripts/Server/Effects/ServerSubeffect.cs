@@ -60,16 +60,6 @@ namespace KompasServer.Effects
             ServerEffect.OnImpossible = null;
             return Task.FromResult(ResolutionInfo.Impossible(why));
         }
-
-        protected void CreateCardLink(params GameCard[] cards)
-        {
-            GameCard[] validCards = cards.Where(c => c != null).ToArray();
-            //if (validCards.Length <= 1) return; //Don't create a link between one non-null card? nah, do, so we can delete it as expected later
-
-            var link = new CardLink(new HashSet<GameCard>(validCards), Effect);
-            Effect.AddCardLink(link);
-            ServerPlayer.ServerNotifier.AddCardLink(link);
-        }
     }
 
     public struct ResolutionInfo

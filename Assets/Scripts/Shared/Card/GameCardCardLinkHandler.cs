@@ -20,9 +20,9 @@ namespace KompasCore.Cards
             links.Add(cardLink);
         }
 
-        public void CreateLink(HashSet<GameCard> cards, Effect effect)
+        public void CreateLink(IEnumerable<GameCard> cards, Effect effect)
         {
-            var cardLink = new CardLink(cards, effect);
+            var cardLink = new CardLink(new HashSet<GameCard>(cards), effect);
             foreach(var card in cardLink.Cards)
             {
                 card.CardLinkHandler.AddLink(cardLink);
@@ -31,9 +31,9 @@ namespace KompasCore.Cards
 
         private void RemoveLink(CardLink cardLink) => links.Remove(cardLink);
 
-        public void RemoveEquivalentLink(CardLink cardLink)
+        public void RemoveEquivalentLink(IEnumerable<GameCard> cards, Effect effect)
         {
-            var equivLink = links.Where(link => link.Equals(cardLink)).FirstOrDefault();
+            var equivLink = links.FirstOrDefault(link => link.Matches(cards, effect));
             if (equivLink == default) return;
 
             foreach(var card in equivLink.Cards)

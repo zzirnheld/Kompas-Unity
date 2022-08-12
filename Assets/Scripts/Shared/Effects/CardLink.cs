@@ -19,11 +19,9 @@ namespace KompasCore.Effects
             LinkingEffect = linkingEffect;
         }
 
-        public override bool Equals(object obj)
+        public bool Matches(IEnumerable<GameCard> cards, Effect linkingEffect)
         {
-            if (!(obj is CardLink cardLink)) return false;
-
-            return LinkingEffect == cardLink.LinkingEffect && Cards.SetEquals(cardLink.Cards);
+            return LinkingEffect == linkingEffect && Cards.SetEquals(cards);
         }
     }
 }

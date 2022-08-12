@@ -213,10 +213,8 @@ namespace KompasServer.Networking
             SendPacket(new GetTriggerOrderPacket(cardIds, effIndices));
         }
 
-        public void AddCardLink(CardLink link)
-        {
-            SendToBoth(new EditCardLinkPacket(link.Cards.Select(c => c.ID).ToArray(), link.LinkingEffect.EffectIndex, link.LinkingEffect.Source.ID));
-        }
+        public void AddCardLink(CardLink link) => SendToBoth(new EditCardLinkPacket(link, add: true));
+        public void RemoveCardLink(CardLink link) => SendToBoth(new EditCardLinkPacket(link, add: false));
         #endregion other effect stuff
     }
 }
