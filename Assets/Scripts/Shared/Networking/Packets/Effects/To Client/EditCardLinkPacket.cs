@@ -27,12 +27,12 @@ namespace KompasCore.Networking
             this.add = add;
         }
 
-        public EditCardLinkPacket(IEnumerable<GameCard> cards, Effect eff, bool add)
-            : this(cards.Select(c => c.ID).ToArray(), eff.EffectIndex, eff.Source.ID, add)
+        public EditCardLinkPacket(IEnumerable<int> cardIDs, Effect eff, bool add)
+            : this(cardIDs.ToArray(), eff.EffectIndex, eff.Source.ID, add)
         { }
 
         public EditCardLinkPacket(CardLink cardLink, bool add)
-            : this(cardLink.Cards, cardLink.LinkingEffect, add)
+            : this(cardLink.CardIDs, cardLink.LinkingEffect, add)
         { }
 
         public override Packet Copy() => new EditCardLinkPacket(linkedCardsIDs, effIndex, whoseEffectID, add);
@@ -46,13 +46,13 @@ namespace KompasClient.Networking
         public void Execute(ClientGame clientGame)
         {
             var effect = clientGame.GetCardWithID(whoseEffectID)?.Effects.ElementAt(effIndex);
-            var cards = linkedCardsIDs.Select(clientGame.GetCardWithID);
+            var cards = linkedCardsIDs.Select(clientGame.GetCardWithID).Where(c => c != null);
 
             if (effect == default || cards.Count() == 0) throw new System.ArgumentException($"Bad edit card args {linkedCardsIDs}, {effIndex}, {whoseEffectID}");
             var linkHandler = cards.First().CardLinkHandler;
 
-            if (add) linkHandler.CreateLink(cards, effect);
-            else linkHandler.RemoveEquivalentLink(cards, effect);
+            if (add) linkHandler.CreateLink(linkedCardsIDs, effect);
+            else linkHandler.RemoveEquivalentLink(linkedCardsIDs, effect);
         }
     }
 }

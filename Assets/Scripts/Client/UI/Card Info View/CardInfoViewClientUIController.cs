@@ -184,8 +184,9 @@ namespace KompasClient.UI
             ClearShownCardLinks();
             foreach (var link in CurrShown.CardLinkHandler.Links)
             {
-                foreach(var card in link.Cards)
+                foreach(var card in link.CardIDs.Select(clientGame.GetCardWithID))
                 {
+                    if (card == default) continue;
                     shownLinkedCards.Add(card);
                     card.cardCtrl.ShowLinkedCard(true);
                 }

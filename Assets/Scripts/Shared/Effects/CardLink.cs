@@ -10,18 +10,18 @@ namespace KompasCore.Effects
     /// </summary>
     public class CardLink
     {
-        public HashSet<GameCard> Cards { get; }
+        public HashSet<int> CardIDs { get; }
         public Effect LinkingEffect { get; }
 
-        public CardLink(HashSet<GameCard> cards, Effect linkingEffect)
+        public CardLink(HashSet<int> cardIDs, Effect linkingEffect)
         {
-            Cards = cards;
+            CardIDs = cardIDs;
             LinkingEffect = linkingEffect;
         }
 
-        public bool Matches(IEnumerable<GameCard> cards, Effect linkingEffect)
+        public bool Matches(IEnumerable<int> cardIDs, Effect linkingEffect)
         {
-            return LinkingEffect == linkingEffect && Cards.SetEquals(cards);
+            return LinkingEffect == linkingEffect && CardIDs.SetEquals(cardIDs);
         }
     }
 }

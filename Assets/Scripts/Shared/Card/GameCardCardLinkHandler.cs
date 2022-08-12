@@ -16,30 +16,30 @@ namespace KompasCore.Cards
             Card = card;
         }
 
-        private void AddLink(CardLink cardLink)
+        public void AddLink(CardLink cardLink)
         {
             links.Add(cardLink);
         }
 
-        public void CreateLink(IEnumerable<GameCard> cards, Effect effect)
+        public void CreateLink(IEnumerable<int> cardIDs, Effect effect)
         {
-            var cardLink = new CardLink(new HashSet<GameCard>(cards), effect);
-            foreach(var card in cardLink.Cards)
+            var cardLink = new CardLink(new HashSet<int>(cardIDs), effect);
+            foreach(var card in cardIDs.Select(Card.Game.GetCardWithID))
             {
-                card.CardLinkHandler.AddLink(cardLink);
+                card?.CardLinkHandler.AddLink(cardLink);
             }
         }
 
         private void RemoveLink(CardLink cardLink) => links.Remove(cardLink);
 
-        public void RemoveEquivalentLink(IEnumerable<GameCard> cards, Effect effect)
+        public void RemoveEquivalentLink(IEnumerable<int> cardIDs, Effect effect)
         {
-            var equivLink = links.FirstOrDefault(link => link.Matches(cards, effect));
+            var equivLink = links.FirstOrDefault(link => link.Matches(cardIDs, effect));
             if (equivLink == default) return;
 
-            foreach(var card in equivLink.Cards)
+            foreach(var card in equivLink.CardIDs.Select(Card.Game.GetCardWithID))
             {
-                card.CardLinkHandler.RemoveLink(equivLink);
+                card?.CardLinkHandler.RemoveLink(equivLink);
             }
 
             Card.Game.uiCtrl.Refresh();

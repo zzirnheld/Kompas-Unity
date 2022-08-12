@@ -269,7 +269,7 @@ namespace KompasServer.Effects
             GameCard[] validCards = cards.Where(c => c != null).ToArray();
             //if (validCards.Length <= 1) return; //Don't create a link between one non-null card? nah, do, so we can delete it as expected later
 
-            var link = new CardLink(new HashSet<GameCard>(validCards), this);
+            var link = new CardLink(new HashSet<int>(validCards.Select(c => c.ID)), this);
             cardLinks.Add(link);
             ServerController.ServerNotifier.AddCardLink(link);
         }
