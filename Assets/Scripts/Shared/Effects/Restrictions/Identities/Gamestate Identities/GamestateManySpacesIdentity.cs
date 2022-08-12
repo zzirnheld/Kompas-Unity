@@ -3,30 +3,9 @@ using System.Linq;
 
 namespace KompasCore.Effects.Identities
 {
-    /// <summary>
-    /// Identifies a collection of spaces.
-    /// Can be used whether or not the caller does or doesn't care about an ActivationContext.
-    /// </summary>
-    public abstract class GamestateManySpacesIdentityBase : ContextInitializeableBase,
-        IActivationContextIdentity<ICollection<Space>>, INoActivationContextIdentity<ICollection<Space>>
-    {
-        protected abstract ICollection<Space> AbstractLogic { get; }
-
-        public ICollection<Space> Item
-        {
-            get
-            {
-                ComplainIfNotInitialized();
-                return AbstractLogic;
-            }
-        }
-
-        public ICollection<Space> From(ActivationContext context, ActivationContext secondaryContext) => Item;
-    }
-
     namespace GamestateManySpacesIdentities
     {
-        public class PositionsOfEach : GamestateManySpacesIdentityBase
+        public class PositionsOfEach : NoActivationContextIdentityBase<ICollection<Space>>
         {
             public INoActivationContextManyCardsIdentity cards;
 
@@ -36,10 +15,15 @@ namespace KompasCore.Effects.Identities
                 cards.Initialize(initializationContext);
             }
 
-            protected override ICollection<Space> AbstractLogic => cards.Cards
+            protected override ICollection<Space> AbstractItem => cards.Cards
                 .Select(c => c.Position)
                 .Where(space => space != null)
                 .ToArray();
+        }
+
+        public class Corners : NoActivationContextIdentityBase<ICollection<Space>>
+        {
+            protected override ICollection<Space> AbstractItem => Space.Spaces.Where(s => s.IsCorner).ToArray();
         }
     }
 }

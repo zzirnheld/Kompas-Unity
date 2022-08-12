@@ -1,0 +1,44 @@
+{
+	"cardType": 83,
+	"cardName": "Shore Up",
+	"effText": "Give friendly Structures +3 EW. Draw 1 card.",
+	"effects": [
+		{
+			"blurb": "Simple",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Friendly",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Structure"
+						]
+					},
+					"eModifier": 3,
+					"wModifier": 3
+				},
+				{
+					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"c": 1,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypeText": "Simple"
+}

@@ -236,6 +236,30 @@ linewalkers/Yellow Linewalker
 linewalkers/Leygrapple
 linewalkers/Golden Linewalker
 
+maya/The Feathered Serpent
+
+maya/craftspeople/Reconstructor
+maya/craftspeople/Master Repairman
+maya/craftspeople/Stele Eulogist
+maya/craftspeople/Stonefitter
+maya/craftspeople/Glyphcarver
+maya/craftspeople/Stonesalvager
+maya/craftspeople/City Planner
+
+maya/structures/Basic Wall
+maya/structures/City Wall
+maya/structures/Graven Wall
+maya/structures/Painted Wall
+maya/structures/Volatile Wall
+maya/structures/Temple Layer
+
+maya/support/Designated Defense
+maya/support/Shore Up
+maya/support/Resistive Empowerment
+maya/support/Dense Cities
+maya/support/Grand Plaza
+maya/support/Urbanization
+
 mechs/golems/QU4RG3
 mechs/golems/51NG3
 mechs/golems/54MUR41
@@ -407,6 +431,7 @@ shapers/Irrilmist
 shapers/Lessreck
 shapers/Kindred Spirit
 shapers/Manyself
+shapers/Moanedrifter
 shapers/Outpragrang
 shapers/Thrillmist
 shapers/Twin Spirit

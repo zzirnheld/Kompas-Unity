@@ -1,0 +1,76 @@
+{
+	"cardType": 83,
+	"cardName": "Dense Cities",
+	"effText": "When I'm cast adjacent to X Maya Structures, deck->hand X distinct Maya Craftspeople.",
+	"effects": [
+		{
+			"blurb": "Attract craftspeople",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type":"KompasServer.Effects.SetXBoardRestrictionSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Subtypes Include",
+                            "Space Fits Restriction"
+                        ],
+						"subtypesInclude": [
+                            "Maya",
+							"Structure"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+                                "Adjacent to Source"
+                            ]
+						}
+					},
+					"xMultiplier":1
+				},
+				{
+					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Craftspeople move to the cities",
+						"cardRestrictions": [
+							"Friendly",
+							"Deck",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Maya",
+							"Craftsperson"
+						]
+					},
+					"listRestriction": {
+						"listRestrictions": [
+							"Min Can Choose: X",
+							"Max Can Choose: X"
+						]
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete": true,
+					"jumpIndices": [
+						2
+					]
+				}
+			]
+		}
+	],
+	"c": 1,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypeText": ""
+}

@@ -1,0 +1,93 @@
+{
+	"cardType": 83,
+	"cardName": "Extort Tribute",
+	"effText": "Discard an enemy's topdeck. You can pip play it adjacent to 2 Structures.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.AutoTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "for Haemopoten to draw",
+						"cardRestrictions": [
+							"Enemy",
+							"Deck",
+							"Index<C"
+						],
+						"constant": 1
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				},
+                {
+                    "$type":"KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
+                    "subeffIndices": [ 4, 5 ]
+                },
+				{
+					"$type": "KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"choiceBlurb": "Pip play that card?",
+					"optionBlurbs": [
+						"Yes",
+						"No"
+					],
+					"jumpIndices": [
+						4,
+						100
+					]
+				},
+				{
+					"$type": "KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
+					"xMultiplier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "Where to play that card",
+						"spaceRestrictions": [
+							"Can Play Card Target to This Space",
+							"Empty"
+						],
+                        "spaceRestrictionElements": [
+                            {
+                                "$type": "KompasCore.Effects.Restrictions.SpaceRestrictionElements.WithinDistanceOfNumberOfCards, Assembly-CSharp",
+                                "cardRestriction": {
+                                    "cardRestrictions": [
+                                        "Friendly",
+                                        "Subtypes Include"
+                                    ],
+                                    "subtypesInclude": [
+                                        "Structure"
+                                    ]
+                                },
+                                "number": { 
+                                    "$type": "KompasCore.Effects.Identities.GamestateNumberIdentities.Constant, Assembly-CSharp",
+                                    "constant": 2
+                                }
+                            }
+                        ]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"c": 2,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypes": [
+		"Simple"
+	],
+	"subtypeText": "Simple"
+}

@@ -1,0 +1,42 @@
+{
+	"cardType": 67,
+	"cardName": "Temple Layer",
+	"effText": "Can't move or attack normally.\nSummon only adjacent to a Maya Structure.",
+	"effects": [],
+	"AttackRestriction": {
+		"attackRestrictions": [
+			"Default",
+			"Not Normally"
+		]
+	},
+	"MovementRestriction": {
+		"normalRestrictionsFromJson": [
+			"Default",
+			"Not Normally"
+		]
+	},
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Default Normal Restrictions",
+			"Adjacent to Card Fitting Restriction"
+		],
+		"effectRestrictions": [
+			"Default Effect Restrictions",
+			"Adjacent to Card Fitting Restriction"
+		],
+		"adjacentCardRestriction": {
+			"cardRestrictions": [
+				"Subtypes Include"
+			],
+			"subtypesInclude": [
+				"Maya",
+                "Structure"
+			]
+		}
+	},
+	"n": 0,
+	"e": 12,
+	"s": 1,
+	"w": 0,
+	"subtypeText": "Maya Structure"
+}

@@ -14,7 +14,7 @@ namespace KompasServer.Effects
         {
             base.Initialize(eff, subeffIndex);
             if (restRestriction == null) restRestriction = cardRestriction;
-            else restRestriction.Initialize(DefaultRestrictionContext);
+            else restRestriction.Initialize(DefaultInitializationContext);
         }
 
         protected override Task<ResolutionInfo> NoPossibleTargets()

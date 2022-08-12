@@ -47,10 +47,10 @@ namespace KompasServer.Effects
         {
             base.Initialize(eff, subeffIndex);
 
-            cardRestriction?.Initialize(DefaultRestrictionContext);
-            spaceRestriction?.Initialize(DefaultRestrictionContext);
-            numberRestriction?.Initialize(DefaultRestrictionContext);
-            playerValueNumberRestriction?.Initialize(DefaultRestrictionContext);
+            cardRestriction?.Initialize(DefaultInitializationContext);
+            spaceRestriction?.Initialize(DefaultInitializationContext);
+            numberRestriction?.Initialize(DefaultInitializationContext);
+            playerValueNumberRestriction?.Initialize(DefaultInitializationContext);
         }
 
         private bool doesNumberOfCardsFittingRestrictionFitNumberRestriction()

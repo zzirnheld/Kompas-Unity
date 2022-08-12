@@ -1,0 +1,32 @@
+{
+	"cardType": 83,
+	"cardName": "Grand Plaza",
+	"effText": "Must Contain: Structure.\nWhen turns start, draw 1 card.",
+	"effects": [
+		{
+			"blurb": "Exchanging ideas in the grand plaza",
+			"triggerData": {
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Must Contain"
+	],
+	"c": 2,
+	"spellTypes": [
+		"Radial"
+	],
+	"subtypeText": "Radius 2",
+	"radius": 2
+}

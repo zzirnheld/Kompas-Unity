@@ -1,0 +1,48 @@
+{
+	"cardType": 67,
+	"cardName": "Master Repairman",
+	"effText": "When a Structure survives losing E, heal it.",
+	"effects": [
+		{
+            "blurb": "Repair",
+			"triggerData": {
+				"triggerCondition": "E Change",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"X Fits Restriction",
+						"This Card is Main Card",
+						"Main Card Fits Restriction After"
+					],
+					"xRestriction": {
+						"numberRestrictions": [
+							"<0"
+						]
+					},
+					"nowRestriction": {
+						"cardRestrictions": [
+							"Board",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Structure"
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.HealSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"n": 1,
+	"e": 9,
+	"s": 6,
+	"w": 2,
+	"subtypeText": "Maya Craftsperson"
+}

@@ -1,0 +1,77 @@
+{
+	"cardType": 67,
+	"cardName": "Moanedrifter",
+	"effText": "Shape.\nWhen I lose XE, deck->summon an E X Shaper.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "E Change",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"X Fits Restriction",
+						"This Card is Main Card"
+					],
+					"xRestriction": {
+						"numberRestrictions": [
+							"<0"
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "How does the mist condense?",
+						"cardRestrictions": [
+							"Character",
+							"Friendly",
+							"Deck",
+							"Can Be Played",
+							"Subtypes Include",
+							"Card Value Fits Number Restriction"
+						],
+						"subtypesInclude": [
+							"Shaper"
+						],
+						"cardValue": {
+							"value": "E"
+						},
+						"cardValueNumberRestriction": {
+							"numberRestrictions": [
+								"=X"
+							]
+						}
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "Where does the mist condense?",
+						"spaceRestrictions": [
+							"Can Play Card Target to This Space",
+							"Empty"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				},
+			]
+		}
+	],
+	"keywords": [
+		"Shape"
+	],
+	"n": 1,
+	"e": 8,
+	"s": 7,
+	"w": 1,
+	"subtypes": [
+		"Ethereal",
+		"Shaper"
+	],
+	"subtypeText": "Ethereal Shaper"
+}

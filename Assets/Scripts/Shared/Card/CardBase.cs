@@ -118,6 +118,8 @@ namespace KompasCore.Cards
 
         public Sprite simpleSprite;
 
+        public virtual string FileName { get; set; }
+
         protected void SetInfo(CardStats stats,
                                        string subtext, string[] spellTypes,
                                        bool fast, bool unique,

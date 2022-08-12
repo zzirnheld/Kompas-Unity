@@ -1,0 +1,65 @@
+{
+	"cardType": 83,
+	"cardName": "Urbanization",
+	"effText": "Must Contain: Structure.\nWhen friendly turns start, Invoke a Maya Structure here.",
+	"effects": [
+		{
+			"blurb": "Urbanizing",
+			"triggerData": {
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.MillSubeffect, Assembly-CSharp",
+					"xModifier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.ConditionalJumpSubeffect, Assembly-CSharp",
+					"condition": "Target Violates Restriction",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+                            "Maya",
+							"Structure"
+						]
+					},
+					"jumpIndices": [
+						0
+					],
+					"xMultiplier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where to Invoke that Structure",
+						"spaceRestrictions": [
+							"Empty",
+							"Can Play Card Target to This Space",
+							"In Source's AOE"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Must Contain"
+	],
+	"c": 2,
+	"spellTypes": [
+		"Radial"
+	],
+	"subtypeText": "Radius 1",
+	"radius": 1
+}

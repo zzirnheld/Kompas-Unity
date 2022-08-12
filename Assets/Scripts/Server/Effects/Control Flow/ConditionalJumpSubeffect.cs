@@ -28,8 +28,8 @@ namespace KompasServer.Effects
         {
             base.Initialize(eff, subeffIndex);
 
-            cardRestriction.Initialize(DefaultRestrictionContext);
-            xRestriction.Initialize(DefaultRestrictionContext);
+            cardRestriction.Initialize(DefaultInitializationContext);
+            xRestriction.Initialize(DefaultInitializationContext);
         }
 
         private bool ShouldJump

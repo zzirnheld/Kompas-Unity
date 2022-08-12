@@ -47,6 +47,7 @@ namespace KompasCore.Networking
         public const string GetCardTarget = "Get Card Target";
         public const string GetListChoices = "Get List Choices";
         public const string GetSpaceTarget = "Get Space Target";
+        public const string EditCardLink = "Edit Card Link";
         //other effect
         public const string GetEffectOption = "Get Effect Option";
         public const string EffectResolving = "Effect Resolving";

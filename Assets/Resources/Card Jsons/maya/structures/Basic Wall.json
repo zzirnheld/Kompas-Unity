@@ -1,0 +1,23 @@
+{
+	"cardType": 67,
+	"cardName": "Basic Wall",
+	"effText": "Can't move or attack normally.",
+	"effects": [],
+	"AttackRestriction": {
+		"attackRestrictions": [
+			"Default",
+			"Not Normally"
+		]
+	},
+	"MovementRestriction": {
+		"normalRestrictionsFromJson": [
+			"Default",
+			"Not Normally"
+		]
+	},
+	"n": 0,
+	"e": 5,
+	"s": 1,
+	"w": 0,
+	"subtypeText": "Maya Structure"
+}

@@ -54,6 +54,7 @@ namespace KompasClient.UI
         public ClientSearchUIController searchUICtrl;
 
         private readonly List<GameCard> shownUniqueCopies = new List<GameCard>();
+        private readonly HashSet<GameCard> shownLinkedCards = new HashSet<GameCard>();
 
         public ReminderTextsContainer Reminders { get; private set; }
 
@@ -151,8 +152,15 @@ namespace KompasClient.UI
             remindersParent.gameObject.SetActive(reminderCtrls.Any());
         }
 
+        private void ClearShownUniqueCopies()
+        {
+            foreach (var c in shownUniqueCopies) c.cardCtrl.ShowUniqueCopy(false);
+            shownUniqueCopies.Clear();
+        }
+
         private void ShowUniqueCopies()
         {
+            ClearShownUniqueCopies();
             if (CurrShown.Unique)
             {
                 //deal with unique cards
@@ -163,6 +171,32 @@ namespace KompasClient.UI
                     shownUniqueCopies.Add(copy);
                 }
             }
+        }
+
+        private void ClearShownCardLinks()
+        {
+            foreach (var c in shownLinkedCards) c.cardCtrl.ShowLinkedCard(false);
+            shownLinkedCards.Clear();
+        }
+
+        private void ShowCardLinks()
+        {
+            ClearShownCardLinks();
+            foreach (var link in CurrShown.CardLinkHandler.Links)
+            {
+                foreach(var card in link.CardIDs.Select(clientGame.GetCardWithID))
+                {
+                    if (card == default) continue;
+                    shownLinkedCards.Add(card);
+                    card.cardCtrl.ShowLinkedCard(true);
+                }
+            }
+        }
+
+        private void ClearSpecialShownInfo()
+        {
+            ClearShownUniqueCopies();
+            ClearShownCardLinks();
         }
 
         private void ShowPipsAvailableForCost()
@@ -181,12 +215,10 @@ namespace KompasClient.UI
 
         public void ShowForCurrShown()
         {
-            foreach (var c in shownUniqueCopies) c.cardCtrl.ShowUniqueCopy(false);
-            shownUniqueCopies.Clear();
-
             //null means show nothing
             if (CurrShown == null)
             {
+                ClearSpecialShownInfo();
                 gameObject.SetActive(false);
                 return;
             }
@@ -206,6 +238,7 @@ namespace KompasClient.UI
             searchUICtrl.HideIfNotShowingCurrSearchIndex();
 
             ShowUniqueCopies();
+            ShowCardLinks();
             ShowPipsAvailableForCost();
 
             gameObject.SetActive(true);

@@ -4,24 +4,9 @@ using KompasCore.Effects.Identities;
 
 namespace KompasServer.Effects.Identities
 {
-    public abstract class SubeffectCardIdentityBase : SubeffectInitializeableBase,
-        INoActivationContextIdentity<GameCardBase>
-    {
-        public GameCardBase Item
-        {
-            get
-            {
-                ComplainIfNotInitialized();
-                return AbstractCard;
-            }
-        }
-
-        protected abstract GameCardBase AbstractCard { get; }
-    }
-
     namespace SubeffectCardIdentities
     {
-        public class FromActivationContext : SubeffectCardIdentityBase
+        public class FromActivationContext : SubeffectIdentityBase<GameCardBase>
         {
             public IActivationContextIdentity<GameCardBase> cardFromContext;
 
@@ -31,8 +16,8 @@ namespace KompasServer.Effects.Identities
                 cardFromContext.Initialize(initializationContext);
             }
 
-            protected override GameCardBase AbstractCard
-                => cardFromContext.From(InitializationContext.subeffect.CurrentContext, default);
+            protected override GameCardBase AbstractItem =>
+                cardFromContext.From(InitializationContext.subeffect.CurrentContext, default);
         }
 
         /// <summary>
@@ -40,12 +25,11 @@ namespace KompasServer.Effects.Identities
         /// Negative indices index from the end of the targets array,
         /// so target -1 is the last target chosen.
         /// </summary>
-        public class Target : SubeffectCardIdentityBase
+        public class Target : SubeffectIdentityBase<GameCardBase>
         {
             public int index = -1;
 
-            protected override GameCardBase AbstractCard
-                => InitializationContext.subeffect.Effect.GetTarget(index);
+            protected override GameCardBase AbstractItem => InitializationContext.subeffect.Effect.GetTarget(index);
         }
     }
 }

@@ -197,6 +197,8 @@ namespace KompasCore.Cards
 
         public int TurnsOnBoard { get; private set; }
 
+        public GameCardCardLinkHandler CardLinkHandler { get; private set; }
+
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
@@ -210,6 +212,10 @@ namespace KompasCore.Cards
         protected virtual void SetCardInfo(SerializableCard serializedCard, int id)
         {
             SetCardInformation(serializedCard);
+
+            FileName = CardRepository.FileNameFor(CardName);
+
+            CardLinkHandler = new GameCardCardLinkHandler(this);
 
             ID = id;
             InitialCardValues = serializedCard;

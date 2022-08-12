@@ -1,0 +1,38 @@
+{
+	"blurb":"Must Contain",
+	"triggerData":
+	{
+		"triggerCondition":"Stack End",
+		"triggerRestriction":{
+			"triggerRestrictions": [
+                "This Card in Play",
+                "No Card Exists Now"
+            ],
+            "existsRestriction":
+            {
+                "cardRestrictions": [
+                    "Character",
+                    "Board",
+                    "Space Fits Restriction",
+                    "Subtypes Include"
+                ],
+                "spaceRestriction": {
+                    "spaceRestrictions": [
+                        "In Source's AOE"
+                    ]
+                },
+                "subtypesInclude": [
+                    "Structure"
+                ]
+            }
+		}
+	},
+	"subeffects":[
+		{
+			"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+		},
+		{
+			"$type":"KompasServer.Effects.DispelSubeffect, Assembly-CSharp"
+		}
+	]	
+}

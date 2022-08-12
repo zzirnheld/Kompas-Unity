@@ -52,6 +52,7 @@ namespace KompasCore.Cards
         public GameObject currentTargetObject;
         public GameObject validTargetObject;
         public GameObject uniqueCopyObject;
+        public GameObject linkedCardObject;
         public GameObject primaryStackableObject;
         public GameObject secondaryStackableObject;
 
@@ -311,7 +312,7 @@ namespace KompasCore.Cards
                 effectOscillator.Disable();
             }
 
-            SetImage(card.CardName, zoomed);
+            SetImage(card.FileName, zoomed);
         }
 
         public virtual void ShowValidTarget(bool valid = true) => validTargetObject.SetActive(valid);
@@ -325,6 +326,8 @@ namespace KompasCore.Cards
         }
 
         public virtual void ShowUniqueCopy(bool copy = true) => uniqueCopyObject.SetActive(copy);
+
+        public virtual void ShowLinkedCard(bool show = true) => linkedCardObject.SetActive(show);
 
         public virtual void ShowPrimaryOfStackable(bool show = true) => primaryStackableObject.SetActive(show);
         public virtual void ShowSecondaryOfStackable(bool show = true) => secondaryStackableObject.SetActive(show);

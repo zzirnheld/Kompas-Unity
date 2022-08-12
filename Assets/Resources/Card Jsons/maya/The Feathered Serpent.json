@@ -1,0 +1,103 @@
+{
+	"cardType": 67,
+	"cardName": "The Feathered Serpent",
+	"effText": "Can only be played to a space connected to all corners by cards.\nYou can tribute a Person adjacent to a Structure to revive me.",
+	"effects": [
+		{
+			"blurb": "Death Begets Life",
+			"activationRestriction":{
+				"activationRestrictionArray":[
+					"Location",
+					"Controller Activates",
+					"Not Negated"
+				],
+				"location":2
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "ritual sacrifice",
+						"cardRestrictions": [
+							"Board",
+							"Character",
+                            "Friendly",
+							"Summoned",
+							"Subtypes Include",
+                            "Space Fits Restriction"
+                        ],
+						"subtypesInclude": [
+                            "Person"
+                        ],
+                        "spaceRestriction": {
+                            "spaceRestrictions": [
+                                "Adjacent to a Card that Fits Restriction"
+                            ],
+                            "adjacencyRestriction": {
+                                "cardRestrictions": [
+                                    "Subtypes Include"
+                                ],
+                                "subtypesInclude": [
+                                    "Structure"
+                                ]
+                            }
+                        }
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"where to revive the Feathered Serpent",
+						"spaceRestrictions":["Can Play Card Target to This Space"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
+			]
+		}
+    ],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Default Normal Restrictions",
+			"Space Must Fit Restriction"
+		],
+		"effectRestrictions": [
+			"Default Effect Restrictions",
+			"Space Must Fit Restriction"
+		],
+		"spaceRestriction": {
+            "spaceRestrictionElements": [
+                {
+                    "$type": "KompasCore.Effects.Restrictions.SpaceRestrictionElements.ConnectedTo, Assembly-CSharp",
+                    "spaces": { "$type": "KompasCore.Effects.Identities.GamestateManySpacesIdentities.Corners, Assembly-CSharp" },
+                    "byRestriction": {
+                        "spaceRestrictionElements": [
+                            {
+                                "$type": "KompasCore.Effects.Restrictions.SpaceRestrictionElements.CardFitsRestriction, Assembly-CSharp",
+                                "restriction": {
+                                    "cardRestrictionElements": [
+                                        { "$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.CardExists, Assembly-CSharp" }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+		}
+	},
+    "unique": true,
+	"n": 5,
+	"e": 1,
+	"s": 5,
+	"w": 20,
+	"subtypeText": "Flying Serpent God"
+}
