@@ -590,6 +590,15 @@ trees/Sharetree
 trees/Strongtree
 trees/Thinktree
 
+undying/chars/Gravetaleteller
+undying/chars/Paleshade Harvester
+undying/chars/Restless Spirit
+undying/chars/Returning Spirit
+undying/chars/Revivant Spirit
+undying/chars/Tetherbound
+undying/chars/Undying Spirit
+undying/chars/Unfinished Spirit
+
 vessels/Empty Vessel
 vessels/Fortified Vessel
 vessels/Hardy Vessel

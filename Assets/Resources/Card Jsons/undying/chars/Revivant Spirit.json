@@ -1,0 +1,54 @@
+{
+	"cardType": 67,
+	"cardName": "Revivant Spirit",
+	"effText": "Undying.\nYou can pip revive me.",
+	"effects": [
+        {
+            "blurb": "Revive",
+            "activationRestriction":{
+                "activationRestrictionArray":[
+                    "Location",
+                    "Controller Activates",
+                    "Not Negated"
+                ],
+                "location":2
+            },
+            "subeffects":[
+                {
+                    "$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+                },
+                {
+                    "$type": "KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
+                    "subeffIndices": [ 3, 4 ]
+                },
+                {
+                    "$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+                    "spaceRestriction":
+                    {
+                        "blurb": "where to revive the Spirit",
+                        "spaceRestrictions": [ "Can Play Card Target to This Space" ]
+                    }
+                },
+                {
+                    "$type": "KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
+                    "xMultiplier": 1
+                },
+                {
+                    "$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+                }
+            ]
+        }
+	],
+	"keywords": [
+		"Undying"
+	],
+	"n": 2,
+	"e": 3,
+	"s": 3,
+	"w": 3,
+	"subtypes": [
+		"Ethereal",
+		"Spirit"
+	],
+	"subtypeText": "Ethereal Spirit"
+}

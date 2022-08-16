@@ -15,9 +15,8 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.PayPipsSubeffect, Assembly-CSharp",
-					"xMultiplier": 0,
-					"xModifier": -1
+					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xModifier": 1
 				}
 			]
 		}

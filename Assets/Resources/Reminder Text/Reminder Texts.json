@@ -6,7 +6,7 @@
 		},
 		{
 			"keyword": "Shape.",
-			"reminder": "During friendly turns, I can spend a space of movement and give myself -X E to move myself through X Ethereal characters."
+			"reminder": "I can move through X Ethereal characters to an empty space, then I lose X E. This also counts as moving 1 space for N purposes."
 		},
 		{
 			"keyword":"Vessel.",
