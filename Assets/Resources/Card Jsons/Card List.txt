@@ -353,7 +353,6 @@ reporters/May Waycroft
 
 revenants/Death of a Soul
 revenants/Revenance
-revenants/Revivance
 revenants/Salvage Soul
 revenants/Soul Drain
 revenants/Soulcutter the Heartless
@@ -598,6 +597,10 @@ undying/chars/Revivant Spirit
 undying/chars/Tetherbound
 undying/chars/Undying Spirit
 undying/chars/Unfinished Spirit
+
+undying/support/Addictive Augury
+undying/support/Addictive Haemomancy
+undying/support/Circle of Life
 
 vessels/Empty Vessel
 vessels/Fortified Vessel
