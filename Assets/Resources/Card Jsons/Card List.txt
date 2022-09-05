@@ -601,6 +601,7 @@ undying/chars/Unfinished Spirit
 undying/support/Addictive Augury
 undying/support/Addictive Haemomancy
 undying/support/Circle of Life
+undying/support/Endless Shape
 
 vessels/Empty Vessel
 vessels/Fortified Vessel
