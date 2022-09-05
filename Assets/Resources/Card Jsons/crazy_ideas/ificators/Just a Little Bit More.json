@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Just a Little Bit More",
-	"effText": "Ificate.\nHand->discard 1 card. Draw 1 card. Move a card 1 space.",
+	"effText": "Ificate.\nRummage. Move a card 1 space.",
 	"effects": [
 		{
 			"triggerData": {
@@ -14,20 +14,8 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction": {
-						"blurb": "Just hand->discard a little bit more",
-						"cardRestrictions": [
-							"Friendly",
-							"Hand"
-						]
-					}
-				},
-				{
-					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.KeywordSubeffect, Assembly-CSharp",
+					"keyword": "Rummage"
 				},
 				{
 					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",

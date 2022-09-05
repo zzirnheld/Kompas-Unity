@@ -41,6 +41,7 @@
 					"cardRestriction": {
 						"blurb": "Circle of Life",
 						"cardRestrictions": [
+                            "Friendly",
 							"Character",
 							"Discard",
 							"Can Be Played",

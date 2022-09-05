@@ -602,6 +602,7 @@ undying/support/Addictive Augury
 undying/support/Addictive Haemomancy
 undying/support/Circle of Life
 undying/support/Endless Shape
+undying/support/Neverending Search
 
 vessels/Empty Vessel
 vessels/Fortified Vessel

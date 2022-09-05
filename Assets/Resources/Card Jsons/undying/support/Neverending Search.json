@@ -1,11 +1,11 @@
 {
 	"cardType": 83,
-	"cardName": "Wait Hold Up",
-	"effText": "Ificate.\nRummage. Move an enemy character up to 3 spaces.",
+	"cardName": "Neverending Search",
+	"effText": "Endless.\nRummage. Revive, then kill, a character.",
 	"effects": [
 		{
+			"blurb": "Simple",
 			"triggerData": {
-				"blurb": "Wait Hold Up",
 				"triggerCondition": "Play",
 				"triggerRestriction": {
 					"triggerRestrictions": [
@@ -21,46 +21,40 @@
 				{
 					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction": {
-						"blurb": "Wait, Hold Up, what are you moving?",
+						"blurb": "Who to revive, then kill",
 						"cardRestrictions": [
-							"Board",
-							"Enemy"
+                            "Friendly",
+							"Character",
+							"Discard",
+							"Can Be Played"
 						]
 					}
 				},
 				{
 					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction": {
-						"blurb": "Wait Hold Up, WHERE",
+						"blurb": "where to revive that character",
 						"spaceRestrictions": [
-							"Empty",
-							"Can Move Card Target to This Space",
-							"Distance to Card Target Fits X Restriction"
-						],
-						"distanceXRestriction": {
-							"numberRestrictions": [
-								"<=X"
-							]
-						}
-					},
-					"xModifier": 3
+							"Can Play Card Target to This Space",
+							"Empty"
+						]
+					}
 				},
 				{
-					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				}
 			]
 		}
 	],
 	"keywords": [
-		"Ificate"
+		"Undying"
 	],
-	"c": 5,
+	"c": 1,
 	"spellTypes": [
 		"Simple"
 	],
 	"subtypes": [
-		"Simple",
-		"Crazy Idea"
+		"Simple"
 	],
-	"subtypeText": "Crazy Idea Ificator"
+	"subtypeText": "Endless Simple"
 }

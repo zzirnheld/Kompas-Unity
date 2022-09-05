@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Fortunating Pulsar",
-	"effText": "The first three times each turn your Avatar's S changes, each:\n+S: hand->discard 1 card, then draw 1 card.\n-S: give both players a pip.",
+	"effText": "The first three times each turn your Avatar's S changes:\n+S: rummage.\n-S: give both players 1 pip.",
 	"effects": [
 		{
 			"triggerData": {
@@ -31,50 +31,13 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction": {
-						"blurb": "how fortunate, we have to hand->discard something",
-						"cardRestrictions": [
-							"Friendly",
-							"Hand"
-						]
-					}
+					"$type": "KompasServer.Effects.ConditionalJumpSubeffect, Assembly-CSharp",
+					"condition": "X >= Constant",
+					"constant": 0,
+					"jumpIndices": [
+						5
+					]
 				},
-				{
-					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
-				}
-			]
-		},
-		{
-			"triggerData": {
-				"blurb": "Fortune-pip",
-				"triggerCondition": "S Change",
-				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"X Fits Restriction",
-						"Main Card Fits Restriction Before",
-						"Max Per Turn"
-					],
-					"xRestriction": {
-						"numberRestrictions": [
-							"<0"
-						]
-					},
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Board",
-							"Avatar",
-							"Friendly"
-						]
-					},
-					"maxTimesPerTurn": 3
-				}
-			},
-			"subeffects": [
 				{
 					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
 					"xMultiplier": 0,
@@ -87,6 +50,13 @@
 					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
 					"xMultiplier": 0,
 					"xModifier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.KeywordSubeffect, Assembly-CSharp",
+					"keyword": "Rummage"
 				}
 			]
 		}

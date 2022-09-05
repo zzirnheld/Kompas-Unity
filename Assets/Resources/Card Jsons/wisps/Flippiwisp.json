@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Flippiwisp",
-	"effText": "Wisp: Both players hand->discard 1 card and draw 1 card.",
+	"effText": "Wisp: Both players rummage.",
 	"effects": [
 		{
 			"triggerData": {
@@ -41,19 +41,8 @@
 					"$type": "KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Controller Matches Player Target",
-							"Hand"
-						]
-					}
-				},
-				{
-					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.KeywordSubeffect, Assembly-CSharp",
+					"keyword": "Rummage"
 				}
 			]
 		}

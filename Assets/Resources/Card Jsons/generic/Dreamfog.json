@@ -1,12 +1,12 @@
 {
 	"cardType": 67,
 	"cardName": "Dreamfog",
-	"effText": "When a character moves, you can tribute me to gain a pip.",
+	"effText": "When a character moves, you can tribute me to gain 1 pip.",
 	"effects": [
 		{
 			"triggerData": {
 				"optional": true,
-				"blurb": "Tribute Dreamfog to gain a pip?",
+				"blurb": "Tribute Dreamfog to gain 1 pip?",
 				"triggerCondition": "Move",
 				"triggerRestriction": {
 					"triggerRestrictions": [

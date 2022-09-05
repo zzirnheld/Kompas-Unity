@@ -156,6 +156,10 @@
 		{
 			"keyword":"Runecast",
 			"reminder":"Once each turn, you can pip hand->cast a Rune."
+		},
+		{
+			"keyword": "Rummage",
+			"reminder": "Hand->discard 1 card, then draw 1 card."
 		}
 	]
 }

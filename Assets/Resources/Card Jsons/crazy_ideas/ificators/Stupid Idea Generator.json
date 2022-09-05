@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Stupid Idea Generator",
-	"effText": "Ificate.\nWhen enemy turns start, hand->discard 1 card and draw 1 card.",
+	"effText": "Ificate.\nWhen enemy turns start, rummage.",
 	"effects": [
 		{
 			"triggerData": {
@@ -16,20 +16,8 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction": {
-						"blurb": "Stupid Idea to Generate",
-						"cardRestrictions": [
-							"Friendly",
-							"Hand"
-						]
-					}
-				},
-				{
-					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.KeywordSubeffect, Assembly-CSharp",
+					"keyword": "Rummage"
 				}
 			]
 		}
