@@ -75,11 +75,11 @@ namespace KompasClient.Cards
 
         public void SetInitialCardInfo(SerializableCard serializedCard, ClientGame game, ClientPlayer owner, ClientEffect[] effects, int id)
         {
-            base.SetCardInfo(serializedCard, id);
             ClientGame = game;
             ClientController = ClientOwner = owner;
             ClientEffects = effects;
             mouseCtrl.ClientGame = game;
+            base.SetCardInfo(serializedCard, id);
             int i = 0;
             foreach (var eff in effects) eff.SetInfo(this, game, i++, owner);
         }

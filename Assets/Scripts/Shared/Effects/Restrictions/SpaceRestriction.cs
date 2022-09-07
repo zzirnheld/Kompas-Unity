@@ -196,7 +196,7 @@ namespace KompasCore.Effects
                 InSourcesAOE => Source.SpaceInAOE(space),
                 NotInAOE => !Source.SpaceInAOE(space),
                 InCardTargetsAOE => target.SpaceInAOE(space),
-                InAOEOfCardFittingRestriction => Game.Cards.Any(c => c.SpaceInAOE(space) && inAOEOfRestriction.IsValidCard(c, context)),
+                InAOEOfCardFittingRestriction => Game.Cards.Any(c => c != null && c.SpaceInAOE(space) && inAOEOfRestriction.IsValidCard(c, context)),
                 NotInAOEOf => !Game.Cards.Any(c => c.SpaceInAOE(space) && inAOEOfRestriction.IsValidCard(c, context)),
                 InAOEOfNumberFittingRestriction => InAOEOfNumberOfCardsFittingRestriction(space, context),
                 InAOESourceAlsoIn => Game.Cards.Any(c => c.SpaceInAOE(space) && c.CardInAOE(Source) && alsoInAOEOfRestriction.IsValidCard(c, context)),
@@ -253,9 +253,18 @@ namespace KompasCore.Effects
 
         private bool IsRestrictionValidWithDebug(string r, Space space, GameCard theoreticalTarget, ActivationContext context)
         {
-            bool success = IsRestrictionValid(r, space, theoreticalTarget, context);
-            //if (!success) Debug.Log($"Space resetriction {r} was flouted by {space}");
-            return success;
+            bool success;
+            try
+            {
+                success = IsRestrictionValid(r, space, theoreticalTarget, context);
+                if (!success) Debug.Log($"Space resetriction {r} was flouted by {space}");
+                return success;
+            }
+            catch (NullReferenceException nre)
+            {
+                Debug.Log($"Space resetriction {r} was flouted by {space} throwing exception {nre}. Init context was {InitializationContext}");
+                return false;
+            }
         }
 
         public bool IsValidSpace(Space space, ActivationContext context, GameCard theoreticalTarget = null)
