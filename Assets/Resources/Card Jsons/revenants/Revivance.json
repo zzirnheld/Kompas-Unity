@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Revivance",
-	"effText": "When a Revenant is revived, you can move them 1 space.",
+	"effText": "When you revive a Spirit, move them to an adjacent space. If it's occupied, they attack the character there first.",
 	"effects": [
 		{
 			"triggerData": {

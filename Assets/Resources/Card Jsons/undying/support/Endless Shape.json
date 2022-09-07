@@ -1,0 +1,68 @@
+{
+	"cardType": 83,
+	"cardName": "Endless Shape",
+	"effText": "Endless.\nChoose a space adjacent to an Ethereal. Move a friendly Ethereal to that space, then kill them.",
+	"effects": [
+		{
+			"blurb": "Simple",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+                        "blurb": "Space to move an Ethereal to",
+						"spaceRestrictions": [
+							"Adjacent to a Card that Fits Restriction"
+						],
+						"adjacencyRestriction": {
+							"cardRestrictions": [
+								"Subtypes Include"
+							],
+							"subtypesInclude": [
+								"Ethereal"
+							]
+						}
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Friendly Ethereal to move",
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Board",
+							"Friendly"
+						],
+						"subtypesInclude": [
+							"Ethereal"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Undying"
+	],
+	"c": 1,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypes": [
+		"Simple"
+	],
+	"subtypeText": "Endless Simple"
+}

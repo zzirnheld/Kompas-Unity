@@ -30,3 +30,4 @@ Stealth
 Evasive
 Must Contain
 Mech Ultimate Charge
+Undying

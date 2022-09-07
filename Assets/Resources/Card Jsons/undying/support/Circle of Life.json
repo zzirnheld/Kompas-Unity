@@ -1,0 +1,88 @@
+{
+	"cardType": 83,
+	"cardName": "Circle of Life",
+	"effText": "Endless.\nTribute a character. Revive a character that costs less. ",
+	"effects": [
+		{
+			"blurb": "Simple",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Haeomomantic sacrifice",
+						"cardRestrictions": [
+							"Board",
+							"Character",
+                            "Friendly",
+							"Summoned"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "S"
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Circle of Life",
+						"cardRestrictions": [
+                            "Friendly",
+							"Character",
+							"Discard",
+							"Can Be Played",
+							"Card Value Fits Number Restriction"
+						],
+						"cardValue": {
+							"value": "S"
+						},
+						"cardValueNumberRestriction": {
+							"numberRestrictions": [
+								"<X"
+							]
+						}
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where to continue the circle",
+						"spaceRestrictions": [
+							"Can Play Card Target to This Space",
+							"Empty"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Undying"
+	],
+	"c": 1,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypes": [
+		"Simple"
+	],
+	"subtypeText": "Endless Simple"
+}

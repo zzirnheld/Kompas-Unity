@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Wait Hold Up",
-	"effText": "Ificate.\nHand->discard 1 card. Draw 1 card. Move an enemy character up to 3 spaces.",
+	"effText": "Ificate.\nRummage. Move an enemy character up to 3 spaces.",
 	"effects": [
 		{
 			"triggerData": {
@@ -15,20 +15,8 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction": {
-						"blurb": "Wait, Hold Up, what are you discarding?",
-						"cardRestrictions": [
-							"Friendly",
-							"Hand"
-						]
-					}
-				},
-				{
-					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.KeywordSubeffect, Assembly-CSharp",
+					"keyword": "Rummage"
 				},
 				{
 					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",

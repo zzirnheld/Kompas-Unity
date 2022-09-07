@@ -1,0 +1,18 @@
+[
+    {
+        "$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+        "cardRestriction": {
+            "blurb": "Card to discard so you can draw",
+            "cardRestrictions": [
+                "Controller Matches Player Target",
+                "Hand"
+            ]
+        }
+    },
+    {
+        "$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+    },
+    {
+        "$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+    }
+]

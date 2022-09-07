@@ -38,7 +38,7 @@
                     "spaceRestriction":
                     {
                         "spaceRestrictions": [
-                            "Connected to Card Target by Cards Fitting Restriction"
+                            "Connected to Card Target by Spaces Fitting Restriction"
                         ],
                         "connectednessRestriction": {
                             "cardRestrictions": [

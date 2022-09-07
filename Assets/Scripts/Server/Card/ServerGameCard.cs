@@ -93,10 +93,13 @@ namespace KompasServer.Cards
         {
             StringBuilder sb = new StringBuilder();
             sb.Append(base.ToString());
-            foreach (var eff in Effects)
+            if (null != Effects)
             {
-                sb.Append(eff.ToString());
-                sb.Append(", ");
+                foreach (var eff in Effects)
+                {
+                    sb.Append(eff.ToString());
+                    sb.Append(", ");
+                }
             }
             return sb.ToString();
         }
@@ -130,10 +133,10 @@ namespace KompasServer.Cards
             SetCardInfo(serializedCard, id);
             ServerEffects = effects;
             int i = 0;
-            foreach (var eff in effects) eff.SetInfo(this, game, owner, i++);
             ServerGame = game;
             ServerOwner = owner;
             ServerController = owner;
+            foreach (var eff in effects) eff.SetInfo(this, game, owner, i++);
         }
 
         public override void Vanish()

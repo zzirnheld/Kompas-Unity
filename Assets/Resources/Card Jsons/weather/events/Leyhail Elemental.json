@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Leyhail Elemental",
-	"effText": "Weather Event: Repeat for each card in Weather I'm also in: give their controller a pip.",
+	"effText": "Weather Event: Repeat for each card in Weather I'm also in: give their controller 1 pip.",
 	"effects": [
 		{
 			"blurb": "Leyhailstones",

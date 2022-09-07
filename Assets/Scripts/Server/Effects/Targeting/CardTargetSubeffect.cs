@@ -25,6 +25,7 @@ namespace KompasServer.Effects
         {
             base.Initialize(eff, subeffIndex);
 
+            Debug.Log($"DEFAULT INIT CONTEXT {DefaultInitializationContext}");
             cardRestriction.Initialize(DefaultInitializationContext);
             toLinkWith?.Initialize(DefaultInitializationContext);
         }

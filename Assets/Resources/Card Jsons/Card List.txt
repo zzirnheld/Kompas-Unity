@@ -353,7 +353,6 @@ reporters/May Waycroft
 
 revenants/Death of a Soul
 revenants/Revenance
-revenants/Revivance
 revenants/Salvage Soul
 revenants/Soul Drain
 revenants/Soulcutter the Heartless
@@ -589,6 +588,21 @@ trees/Seedling
 trees/Sharetree
 trees/Strongtree
 trees/Thinktree
+
+undying/chars/Gravetaleteller
+undying/chars/Paleshade Harvester
+undying/chars/Restless Spirit
+undying/chars/Returning Spirit
+undying/chars/Revivant Spirit
+undying/chars/Tetherbound
+undying/chars/Undying Spirit
+undying/chars/Unfinished Spirit
+
+undying/support/Addictive Augury
+undying/support/Addictive Haemomancy
+undying/support/Circle of Life
+undying/support/Endless Shape
+undying/support/Neverending Search
 
 vessels/Empty Vessel
 vessels/Fortified Vessel

@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Untethered Spirit",
-	"effText": "When I'm summoned adjacent to a Shaper, gain a pip.",
+	"effText": "When I'm summoned adjacent to a Shaper, gain 1 pip.",
 	"effects": [
 		{
 			"triggerData": {

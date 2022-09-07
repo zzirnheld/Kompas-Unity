@@ -283,6 +283,6 @@ namespace KompasServer.Effects
             }
         }
 
-        public override string ToString() => $"Effect {EffectIndex} of {Source.CardName}";
+        public override string ToString() => $"Effect {EffectIndex} of {Source?.CardName}";
     }
 }

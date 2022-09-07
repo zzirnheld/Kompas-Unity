@@ -45,6 +45,9 @@
 						],
 						"subtypesInclude": [
 							"Silent"
+						],
+						"canPlayIgnoring": [
+							"Adjacent to Friendly Card"
 						]
 					}
 				},

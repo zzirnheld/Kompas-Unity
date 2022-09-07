@@ -1,0 +1,30 @@
+{
+	"triggerData":
+	{
+		"blurb":"Undying",
+		"triggerCondition":"Discard",
+		"triggerRestriction":{
+			"triggerRestrictions": [
+                "This Card is Main Card",
+                "From Field"
+            ]
+		}
+	},
+	"subeffects":[
+		{
+			"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+		},
+        {
+            "$type": "KompasServer.Effects.TargetTriggeringCardsCoordsSubeffect, Assembly-CSharp"
+        },
+        {
+            "$type":"KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+            "numTimesToDelay": 0,
+            "jumpIndices": [ 1 ],
+            "endCondition": "Turn Start"
+        },
+        {
+            "$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+        }
+	]
+}
