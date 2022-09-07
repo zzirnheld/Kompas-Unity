@@ -20,31 +20,49 @@ namespace KompasCore.Cards
         private int w;
         private int c;
         private int a;
+        /// <summary>
+        /// Nimbleness - spaces moveable per turn
+        /// </summary>
         public virtual int N
         {
             get => n < 0 ? 0 : n;
             private set => n = value;
         }
+        /// <summary>
+        /// Endurance - hit points
+        /// </summary>
         public virtual int E
         {
             get => e < 0 ? 0 : e;
             private set => e = value;
         }
+        /// <summary>
+        /// Summoning cost - character's pip cost
+        /// </summary>
         public virtual int S
         {
             get => s < 0 ? 0 : s;
             private set => s = value;
         }
+        /// <summary>
+        /// Wounding - damage
+        /// </summary>
         public virtual int W
         {
             get => w < 0 ? 0 : w;
             private set => w = value;
         }
+        /// <summary>
+        /// Casting cost - spell's pip cost
+        /// </summary>
         public virtual int C
         {
             get => c < 0 ? 0 : c;
             private set => c = value;
         }
+        /// <summary>
+        /// Augment cost - augment's pip cost
+        /// </summary>
         public virtual int A
         {
             get => a < 0 ? 0 : a;

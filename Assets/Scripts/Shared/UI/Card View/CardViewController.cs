@@ -46,19 +46,13 @@ namespace KompasCore.UI
             ShownCard = card;
 
             //Display any relevant information for the card
-            DisplayCardName();
             DisplayCardRulesText();
             DisplayCardNumericStats();
             DisplayCardImage();
         }
 
         /// <summary>
-        /// Display the ShownCard's name
-        /// </summary>
-        protected abstract void DisplayCardName();
-
-        /// <summary>
-        /// Display the ShownCard's rules text, like its type line and effect text
+        /// Display the ShownCard's rules text, like its name, type line, and effect text
         /// </summary>
         protected abstract void DisplayCardRulesText();
 
