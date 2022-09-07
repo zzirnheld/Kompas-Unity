@@ -162,6 +162,8 @@ namespace KompasCore.Effects
 
         public SpaceRestriction spaceRestriction;
 
+        public string[] canPlayIgnoring;
+
         public CardRestrictionElement[] cardRestrictionElements = { };
 
         public string blurb = "";
@@ -173,6 +175,7 @@ namespace KompasCore.Effects
 
         public override void Initialize(EffectInitializationContext initializationContext)
         {
+            Debug.Log($"Initializing card restriction with context {initializationContext}");
             base.Initialize(initializationContext);
 
             spaceRestriction?.Initialize(initializationContext);
@@ -347,7 +350,7 @@ namespace KompasCore.Effects
                 CanBePlayed
                     => Game.ExistsEffectPlaySpace(potentialTarget?.PlayRestriction, Effect),
                 CanPlayToTargetSpace
-                    => potentialTarget?.PlayRestriction.IsValidEffectPlay(Subeffect.SpaceTarget, Effect, Subeffect.PlayerTarget, context) ?? false,
+                    => potentialTarget?.PlayRestriction.IsValidEffectPlay(Subeffect.SpaceTarget, Effect, Subeffect.PlayerTarget, context, ignoring: canPlayIgnoring) ?? false,
                 CanPlayTargetToThisCharactersSpace
                     => Subeffect.CardTarget.PlayRestriction.IsValidEffectPlay(potentialTarget?.Position ?? default, Effect, Subeffect.PlayerTarget, context),
 
@@ -366,7 +369,7 @@ namespace KompasCore.Effects
         private bool IsRestrictionValidDebug(string restriction, GameCardBase potentialTarget, int x, ActivationContext context)
         {
             bool answer = IsRestrictionValid(restriction, potentialTarget, x, context);
-            //if (!answer) Debug.Log($"{potentialTarget?.CardName} flouts {restriction}");
+            if (!answer) Debug.Log($"{potentialTarget} flouts {restriction} in effect of {Source} in context {InitializationContext}");
             return answer;
         }
 
@@ -379,10 +382,11 @@ namespace KompasCore.Effects
         private bool IsValidCard(GameCardBase potentialTarget, int x, ActivationContext context)
         {
             ComplainIfNotInitialized();
+            Debug.Log($"Checking valid target for card while init context is {InitializationContext}");
 
             try
             {
-                return cardRestrictions.All(r => IsRestrictionValid(r, potentialTarget, x, context))
+                return cardRestrictions.All(r => IsRestrictionValidDebug(r, potentialTarget, x, context))
                     && cardRestrictionElements.All(cre => cre.FitsRestriction(potentialTarget, context));
             }
             catch (ArgumentException ae)

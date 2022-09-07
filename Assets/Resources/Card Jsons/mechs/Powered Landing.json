@@ -1,7 +1,7 @@
 {
 	"cardType": 65,
 	"cardName": "Powered Landing",
-	"effText": "When you summon a Mech Golem, board->attach me to them. They attack another character within 2 spaces of them. Give them +4 W.",
+	"effText": "When you summon a Mech Golem, discard->attach me to them. They attack an enemy within 2 spaces of them. Give them +4 W.",
 	"effects": [
 		{
 			"blurb": "Landing Blast",
@@ -9,8 +9,8 @@
 				"triggerCondition": "Play",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card in Play",
-						"Main Card Fits Restriction Before"
+						"Main Card Fits Restriction Before",
+						"This Card Fits Restriction Now"
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
@@ -18,6 +18,11 @@
 						],
 						"subtypesInclude": [
 							"Mech Golem"
+						]
+					},
+					"selfRestriction": {
+						"cardRestrictions": [
+							"Discard"
 						]
 					}
 				}

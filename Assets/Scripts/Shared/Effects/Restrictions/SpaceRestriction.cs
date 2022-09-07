@@ -27,7 +27,7 @@ namespace KompasCore.Effects
         public const string ConnectedToSourceBy = "Connected to Source by Cards Fitting Restriction";
         public const string ConnectedToSourceBySpaces = "Connected to Source by Spaces Fitting Restriction";
 
-        public const string ConnectedToCardTargetBy = "Connected to Card Target by";
+        public const string ConnectedToCardTargetBy = "Connected to Card Target by Cards Fitting Restriction";
         public const string ConnectedToCardTargetBySpaces = "Connected to Card Target by Spaces Fitting Restriction";
         public const string ConnectedToCardTargetByXSpaces = "Connected to Card Target by X Spaces Fitting Restriction";
 

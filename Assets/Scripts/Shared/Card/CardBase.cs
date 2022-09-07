@@ -147,8 +147,8 @@ namespace KompasCore.Cards
             Radius = radius;
             Duration = duration;
             CardType = cardType;
-            CardName = cardName ?? throw new ArgumentNullException($"A card is missing a name.");
-            EffText = effText ?? throw new ArgumentNullException($"Card {CardName} is missing effect text");
+            CardName = cardName ?? throw new ArgumentNullException("cardName", $"A card is missing a name.");
+            EffText = effText ?? throw new ArgumentNullException("effText", $"Card {CardName} is missing effect text");
             SubtypeText = subtypeText ?? string.Empty;
             AugmentSubtypes = augSubtypes; //Null indicates a lack of required augment subtypes
         }

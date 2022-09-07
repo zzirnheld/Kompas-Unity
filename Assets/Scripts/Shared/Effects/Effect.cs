@@ -3,6 +3,7 @@ using KompasCore.GameCore;
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace KompasCore.Effects
 {
@@ -66,6 +67,7 @@ namespace KompasCore.Effects
 
         protected void SetInfo(GameCard source, int effIndex, Player owner)
         {
+            Debug.Log($"Trying to init eff of {source}");
             Source = source ?? throw new ArgumentNullException("source", "Effect cannot be attached to null card");
             EffectIndex = effIndex;
             Controller = owner;

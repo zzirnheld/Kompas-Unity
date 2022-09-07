@@ -38,7 +38,7 @@ namespace KompasCore.Effects
             if (trigger != null) str += $", Trigger {trigger}";
             if (subeffect != null) str += $", Subeffect {subeffect}";
 
-            return base.ToString();
+            return str;
         }
     }
 }

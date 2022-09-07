@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Stupid Idea Generator",
-	"effText": "Ificate.\nWhen enemy turns start, rummage.",
+	"effText": "Ificate.\nWhen turns start, rummage.",
 	"effects": [
 		{
 			"triggerData": {
@@ -9,8 +9,7 @@
 				"triggerCondition": "Turn Start",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card in Play",
-						"Enemy Turn"
+						"This Card in Play"
 					]
 				}
 			},
@@ -25,7 +24,7 @@
 	"keywords": [
 		"Ificate"
 	],
-	"c": 2,
+	"c": 3,
 	"spellTypes": [
 		"Enchant"
 	],

@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 namespace KompasCore.Effects
 {
@@ -15,6 +16,10 @@ namespace KompasCore.Effects
 
         public virtual void Initialize(EffectInitializationContext initializationContext)
         {
+            if (Initialized)
+            {
+                Debug.Log($"Was already initialized with {InitializationContext}, but now being initialized with {initializationContext}");
+            }
             InitializationContext = initializationContext;
 
             Initialized = true;

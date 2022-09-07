@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Forest Fire",
-	"effText": "Any number of times: Give a friendly Tree, then all adjacent characters, -4 E.",
+	"effText": "Any number of times: Give a friendly Tree, then all characters adjacent to it, -4 E.",
 	"effects": [
 		{
 			"blurb": "Simple",
