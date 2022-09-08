@@ -12,8 +12,6 @@ namespace KompasClient.UI
 {
     public class CardInfoViewClientUIController : MonoBehaviour, IPointerExitHandler
     {
-        //public const string DefaultCharFrame = "Misc Card Icons/Character Frame";
-        //public const string DefaultNonCharFrame = "Misc Card Icons/Spell Frame";
         public const string RemindersJsonPath = "Reminder Text/Reminder Texts";
 
         public Sprite charHaze;
@@ -21,30 +19,12 @@ namespace KompasClient.UI
         public Sprite charFrame;
         public Sprite nonCharFrame;
 
-        public TMP_Text nameText;
-        public TMP_Text subtypesText;
-        public TMP_Text nText;
-        public TMP_Text eText;
-        public TMP_Text costText;
-        public TMP_Text wText;
-        public TMP_Text effText;
-
-        public Image cardFrameImage;
-        public Image cardFaceImage;
-        public Image cardImageHaze;
-
         public GameObject conditionParentObject;
         public GameObject negatedObject;
         public GameObject activatedObject;
 
-        public GameObject effButtonsParentObject;
 
         public ClientGame clientGame;
-
-        private readonly List<ClientUseEffectButtonController> effBtns
-            = new List<ClientUseEffectButtonController>();
-        public Transform effBtnsParent;
-        public GameObject effBtnPrefab;
 
         private readonly List<ReminderTextClientUIController> reminderCtrls
             = new List<ReminderTextClientUIController>();
@@ -69,68 +49,6 @@ namespace KompasClient.UI
             var jsonAsset = Resources.Load<TextAsset>(RemindersJsonPath);
             Reminders = JsonConvert.DeserializeObject<ReminderTextsContainer>(jsonAsset.text);
             gameObject.SetActive(false);
-        }
-
-        public void ShowInfoFor(GameCard card, bool refresh = false)
-        {
-            bool reshow = card != CurrShown || refresh;
-            CurrShown = card;
-
-            if (reshow) ShowForCurrShown();
-        }
-
-        private void ShowViewForCardType()
-        {
-            bool isChar = CurrShown.CardType == 'C';
-            if (isChar)
-            {
-                cardFrameImage.sprite = charFrame;
-                cardImageHaze.sprite = charHaze;
-            }
-            else
-            {
-                cardFrameImage.sprite = nonCharFrame;
-                cardImageHaze.sprite = nonCharHaze;
-            }
-            nText.gameObject.SetActive(isChar);
-            eText.gameObject.SetActive(isChar);
-            wText.gameObject.SetActive(isChar);
-        }
-
-        private void ShowCurrShownStats()
-        {
-            nText.text = $"N\n{CurrShown.N}";
-            eText.text = $"E\n{CurrShown.E}";
-            wText.text = $"W\n{CurrShown.W}";
-
-            //TODO after unity updates: make this a switch expression
-            costText.text = CurrShown.CardType switch
-            {
-                'C' => $"S\n{CurrShown.S}",
-                'S' => $"C\n{CurrShown.C}",
-                'A' => $"A\n{CurrShown.A}",
-                _ => throw new System.NotImplementedException(),
-            };
-            nameText.text = CurrShown.CardName;
-            subtypesText.text = CurrShown.QualifiedSubtypeText;
-            effText.text = CurrShown.EffText;
-        }
-
-        private void ShowEffButtons()
-        {
-            var effsArray = CurrShown.Effects.Where(e => e.CanBeActivatedBy(clientGame.Players[0])).ToArray();
-            effButtonsParentObject.SetActive(effsArray.Any());
-            //clear existing effects
-            foreach (var eff in effBtns) Destroy(eff.gameObject);
-            effBtns.Clear();
-            //make buttons for new effs
-            foreach (var eff in effsArray)
-            {
-                var obj = Instantiate(effBtnPrefab, effBtnsParent);
-                var ctrl = obj.GetComponent<ClientUseEffectButtonController>();
-                ctrl.Initialize(eff, clientGame.clientUICtrl);
-                effBtns.Add(ctrl);
-            }
         }
 
         private void ShowReminderText()
@@ -193,26 +111,6 @@ namespace KompasClient.UI
             }
         }
 
-        private void ClearSpecialShownInfo()
-        {
-            ClearShownUniqueCopies();
-            ClearShownCardLinks();
-        }
-
-        private void ShowPipsAvailableForCost()
-        {
-            ClientPlayer clientPlayer = CurrShown.Controller as ClientPlayer;
-            if (CurrShown.Location == CardLocation.Hand && CurrShown.Cost <= CurrShown.Controller.Pips)
-            {
-                Debug.Log($"Have enough pips, showing cost for {CurrShown.Cost}");
-                clientPlayer.pipsUICtrl.HighlightPipsFor(CurrShown.Cost);
-            }
-            else
-            {
-                clientPlayer.pipsUICtrl.HighlightPipsFor(0);
-            }
-        }
-
         public void ShowForCurrShown()
         {
             //null means show nothing
@@ -222,11 +120,6 @@ namespace KompasClient.UI
                 gameObject.SetActive(false);
                 return;
             }
-
-            ShowViewForCardType();
-            cardFaceImage.sprite = CurrShown.simpleSprite;
-
-            ShowCurrShownStats();
 
             conditionParentObject.SetActive(CurrShown.Negated || CurrShown.Activated);
             negatedObject.SetActive(CurrShown.Negated);

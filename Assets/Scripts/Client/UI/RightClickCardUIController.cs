@@ -7,27 +7,30 @@ using UnityEngine.EventSystems;
 
 namespace KompasClient.UI
 {
-    public class EffectActivatorUIController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+    /// <summary>
+    /// Handles the buttons that show when you right-click a card,
+    /// allowing you to activate any effects it has
+    /// </summary>
+    public class RightClickCardUIController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         public ClientUIController clientUICtrl;
-        public GameCard nextShowFor;
-        public bool hoveringOverThis;
 
         public Transform activateableEffParent;
         public GameObject activateableEffPrefab;
         public GameObject cancelButton;
         public TMP_Text cardNameText;
 
+        private bool hoveringOverThis;
+
         private readonly List<ActivatableEffectUIController> effectButtons = new List<ActivatableEffectUIController>();
 
-        //todo: make it so only does it when right click over particular card.
-        //maybe have a reference to this, and have on pointer enter->exit change the card being shown for?
-        //though it should only actually change when the user right clicks or clicks cancel.
-        //the variable would just be to track who it should show for,
-        //and the right click would be in here,
-        //checking if the curring "to be shown for" is null (show nothing/cancel) or non-null
+        void Update()
+        {
+            //If we're not hovering over this and we just released a left click, get rid of the effect activation buttons
+            if (Input.GetMouseButtonUp(0) && !hoveringOverThis) Clear();
+        }
 
-        private void ShowFor(GameCard card)
+        public void Show(GameCard card)
         {
             if (card != null && card.Effects.Any(eff => clientUICtrl.ShowEffect(eff)))
             {
@@ -54,21 +57,16 @@ namespace KompasClient.UI
                 transform.position = Input.mousePosition;
                 gameObject.SetActive(true);
             }
-            else gameObject.SetActive(false);
+            else Clear();
         }
 
-        public void Show() => ShowFor(nextShowFor);
-        public void CancelIfApplicable()
+        /// <summary>
+        /// Clear out data and hide this right-click UI
+        /// </summary>
+        public void Clear()
         {
-            if (!hoveringOverThis) Cancel();
+            gameObject.SetActive(false);
         }
-
-        public void Cancel()
-        {
-            nextShowFor = null;
-            Show();
-        }
-
 
         public void OnPointerExit(PointerEventData eventData) => hoveringOverThis = false;
         public void OnPointerEnter(PointerEventData eventData) => hoveringOverThis = true;

@@ -21,8 +21,20 @@ namespace KompasClient.UI
         private const string AwaitingEnemyResponse = "Awaiting Enemy Response";
 
         public ClientGame clientGame;
+
         //debug UI 
         public InputField debugPipsField;
+
+        //networking
+        public TMP_InputField ipInputField;
+        public GameObject networkingParent;
+
+        //pips
+        public TMP_Text friendlyPipsText;
+        public TMP_Text enemyPipsText;
+
+        //current state text (reminds the player what's happening right now)
+        public TMP_Text currentStateText;
 
         //gamestate values
         public TMP_Text CurrTurnText;
@@ -74,7 +86,7 @@ namespace KompasClient.UI
         public TriggerOrderUIController triggerOrderUI;
 
         //effect activation ui
-        public EffectActivatorUIController activatorUICtrl;
+        public RightClickCardUIController activatorUICtrl;
 
         //escape menu
         public ClientEscapeMenuUIController escapeMenuUICtrl;

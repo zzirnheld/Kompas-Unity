@@ -52,10 +52,8 @@ namespace KompasClient.Cards
 
         public override void OnMouseOver()
         {
-            //reset it every time in case exit reset it after on mouse enter would have set it.
-            //it's just a memory access per frame. it should be fine.
-            //if it leads to counterintuitive behavior, add the is over game object check
-            ClientGame.clientUICtrl.CardToActivateEffectsFor = Card;
+            if (Input.GetMouseButtonDown(1)) ClientGame.clientUICtrl.activatorUICtrl.Show(Card);
+
             base.OnMouseOver();
         }
 

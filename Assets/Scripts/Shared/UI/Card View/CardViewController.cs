@@ -1,6 +1,4 @@
 using KompasCore.Cards;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace KompasCore.UI
@@ -13,20 +11,20 @@ namespace KompasCore.UI
         /// <summary>
         /// The card currently being shown to the user.
         /// </summary>
-        protected GameCardBase ShownCard;
+        protected GameCard ShownCard;
 
         /// <summary>
         /// The card being "focused" on.
         /// If we're not currently doing something like hovering over another card, this is the one we should be showing
         /// </summary>
-        private GameCardBase focusedCard;
+        private GameCard focusedCard;
 
         /// <summary>
         /// Focus on a given card.
         /// If we're not currently doing something like hovering over another card, this is the one we should be showing
         /// </summary>
         /// <param name="card"></param>
-        public void Focus(GameCardBase card)
+        public void Focus(GameCard card)
         {
             Show(card);
             focusedCard = card;
@@ -46,7 +44,7 @@ namespace KompasCore.UI
         /// </summary>
         /// <param name="card"></param>
         /// <param name="refresh"></param>
-        public void Show(GameCardBase card, bool refresh = false)
+        public void Show(GameCard card, bool refresh = false)
         {
             //Unless explicitly refreshing card, if already showing that card, no-op.
             if (card == ShownCard && !refresh) return;
@@ -55,12 +53,20 @@ namespace KompasCore.UI
             ShownCard = card ?? focusedCard;
 
             //If we're now showing nothing, hide the window and be done
-            if (ShownCard == null)
-            {
-                ShowingInfo = false;
-                return;
-            }
+            if (ShownCard == null) DisplayNothing();
+            else Display();
+        }
 
+        /// <summary>
+        /// Makes everything display nothing/clear out anything it's showing
+        /// </summary>
+        protected virtual void DisplayNothing()
+        {
+            ShowingInfo = false;
+        }
+
+        protected virtual void Display()
+        {
             //If not showing nothing, make sure we're showing information
             ShowingInfo = true;
             //and display any relevant information for the card

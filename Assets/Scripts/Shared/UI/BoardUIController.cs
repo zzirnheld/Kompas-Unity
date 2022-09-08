@@ -11,7 +11,7 @@ namespace KompasCore.UI
         public BoardController boardCtrl;
 
         private readonly SpaceCueController[,] spaceCueControllers = new SpaceCueController[7, 7];
-        private GameCard currShowingFor;
+        private GameCardBase currShowingFor;
 
         private static Vector3 GridIndicesToCuePos(int x, int y)
         {
@@ -31,10 +31,8 @@ namespace KompasCore.UI
             }
         }
 
-        public void ShowForCard(GameCard card, bool forceRefresh = false)
+        public void ShowForCard(GameCardBase card)
         {
-            if (currShowingFor == card && !forceRefresh) return;
-
             currShowingFor = card;
 
             for (int i = 0; i < 7; i++)
@@ -55,7 +53,7 @@ namespace KompasCore.UI
             }
         }
 
-        public void RefreshShownCard() => ShowForCard(currShowingFor, forceRefresh: true);
+        public void RefreshShownCard() => ShowForCard(currShowingFor);
 
         public void ShowNothing()
         {

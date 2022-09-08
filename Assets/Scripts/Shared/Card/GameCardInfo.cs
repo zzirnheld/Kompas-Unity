@@ -25,6 +25,7 @@ namespace KompasCore.Cards
 
         public abstract PlayRestriction PlayRestriction { get; protected set; }
         public abstract MovementRestriction MovementRestriction { get; protected set; }
+        public abstract AttackRestriction AttackRestriction { get; protected set; }
         public abstract int BaseE { get; }
 
         public abstract bool Activated { get; protected set; }
@@ -193,6 +194,7 @@ namespace KompasCore.Cards
 
         public override PlayRestriction PlayRestriction { get; protected set; }
         public override MovementRestriction MovementRestriction { get; protected set; }
+        public override AttackRestriction AttackRestriction { get; protected set; }
 
         public override bool Activated { get; protected set; }
         public override bool Negated { get; protected set; }
@@ -253,6 +255,8 @@ namespace KompasCore.Cards
             KnownToEnemy = card.KnownToEnemy;
             PlayRestriction = card.PlayRestriction;
             MovementRestriction = card.MovementRestriction;
+            AttackRestriction = card.AttackRestriction;
+
             baseE = card.BaseE;
             Activated = card.Activated;
             Negated = card.Negated;

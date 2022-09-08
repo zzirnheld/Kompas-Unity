@@ -161,7 +161,7 @@ namespace KompasCore.Cards
 
         //restrictions
         public override MovementRestriction MovementRestriction { get; protected set; }
-        public AttackRestriction AttackRestriction { get; private set; }
+        public override AttackRestriction AttackRestriction { get; protected set; }
         public override PlayRestriction PlayRestriction { get; protected set; }
 
         //controller/owners

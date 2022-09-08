@@ -17,6 +17,7 @@ namespace KompasClient.GameCore
 
         public override Player[] Players => ClientPlayers;
         public ClientPlayer[] ClientPlayers;
+        public ClientPlayer FriendlyPlayer => ClientPlayers[0];
 
         public Dictionary<int, ClientGameCard> cardsByID = new Dictionary<int, ClientGameCard>();
         public IEnumerable<ClientGameCard> ClientCards => cardsByID.Values;
@@ -31,7 +32,7 @@ namespace KompasClient.GameCore
         public ClientSettings ClientSettings => clientUISettingsCtrl.ClientSettings;
 
         //turn players?
-        public bool FriendlyTurn => TurnPlayerIndex == 0;
+        public bool FriendlyTurn => TurnPlayer == FriendlyPlayer;
 
         //search
         public ClientSearchController searchCtrl;

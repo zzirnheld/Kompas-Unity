@@ -4,7 +4,11 @@ using UnityEngine.UI;
 
 namespace KompasCore.UI
 {
-    public class WorldCardViewController : CardViewController
+    /// <summary>
+    /// Controls showing the card in the main, top-left-of-the-board, location.
+    /// Also delegates any additional gameplay highlights to the appropriate things
+    /// </summary>
+    public abstract class GameMainCardViewController : CardViewController
     {
         [Header("Stats text boxes")]
         public TMP_Text nText;
