@@ -72,6 +72,7 @@ namespace KompasCore.Cards
             if (EventSystem.current.IsPointerOverGameObject()) return;
 
             if (Input.GetMouseButtonDown(1)) Game.uiCtrl.RightClick(Card);
+            //TODO still hover over even if mouse is on the effect/attack blocks, lol
             else Game.uiCtrl.HoverOver(Card);
         }
         #endregion MouseStuff
