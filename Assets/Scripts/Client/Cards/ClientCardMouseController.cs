@@ -1,65 +1,42 @@
 ﻿using KompasClient.GameCore;
+using KompasClient.UI;
 using KompasCore.Cards;
 using KompasCore.GameCore;
+using KompasCore.UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace KompasClient.Cards
 {
+    [RequireComponent(typeof(ClientCardController))]
     public class ClientCardMouseController : CardMouseController
     {
-        //constants
-        //minimum and maximum distances to the board, discard, and deck objects for dragging
-        public const float minBoardLocalX = -7f;
-        public const float maxBoardLocalX = 7f;
-        public const float minBoardLocalY = -7f;
-        public const float maxBoardLocalY = 7f;
-        public const float minDiscardX = 4.5f;
-        public const float maxDiscardX = 5.5f;
-        public const float minDiscardZ = -3.5f;
-        public const float maxDiscardZ = -2.5f;
-        public const float minDeckX = 2.5f;
-        public const float maxDeckX = 3.5f;
-        public const float minDeckZ = -5.5f;
-        public const float maxDeckZ = -4.5f;
-
-        public ClientGame ClientGame;
-        public override Game Game => ClientGame;
-
-        //helper methods
-        public bool WithinIgnoreY(Vector3 position, float minX, float maxX, float minZ, float maxZ)
-        {
-            return position.x > minX && position.x < maxX && position.z > minZ && position.z < maxZ;
-        }
-        public bool WithinIgnoreZ(Vector3 position, float minX, float maxX, float minY, float maxY)
-        {
-            return position.x > minX && position.x < maxX && position.y > minY && position.y < maxY;
-        }
+        public ClientCardController clientCardController;
+        public ClientUIController ClientUIController => clientCardController.ClientUIController;
+        public override UIController UIController => ClientUIController;
 
         public override void OnMouseDrag()
         {
             base.OnMouseDrag();
-            ClientGame.MarkCardDirty(Card);
+            clientCardController.ClientGame.MarkCardDirty(card);
         }
 
         public override void OnMouseExit()
         {
-            //remove thing even if hovering over something.
-            ClientGame.clientUICtrl.CardToActivateEffectsFor = null;
             base.OnMouseExit();
-            ClientGame.clientUICtrl.cardInfoViewUICtrl.searchUICtrl.ReshowSearchShownIfSearching();
+            ClientUIController.cardInfoViewUICtrl.searchUICtrl.ReshowSearchShownIfSearching();
         }
 
         public override void OnMouseOver()
         {
-            if (Input.GetMouseButtonDown(1)) ClientGame.clientUICtrl.activatorUICtrl.Show(Card);
-
             base.OnMouseOver();
+
+            if (Input.GetMouseButtonDown(1)) ClientUIController.rightClickUIController.Show(card);
         }
 
         public override void OnMouseUp()
         {
-            ClientGame.MarkCardDirty(Card);
+            clientCardController.ClientGame.MarkCardDirty(card);
             //don't do anything if we're over an event system object, 
             //because that would let us click on cards underneath prompts
             if (EventSystem.current.IsPointerOverGameObject())
@@ -71,39 +48,13 @@ namespace KompasClient.Cards
             base.OnMouseUp();
 
             //don't allow dragging cards if we're awaiting a target
-            if (Card.Game.targetMode != Game.TargetMode.Free)
+            if (ClientUIController.targetMode != TargetMode.Free)
             {
-                Card.PutBack();
+                clientCardController.PutBack();
                 return;
             }
 
-            //get coords w/r/t gameboard
-            var boardLocalPosition = Game.boardObject.transform.InverseTransformPoint(Card.gameObject.transform.position);
-
-            //then, check if it's on the board, accodring to the local coordinates of the game board)
-            if (WithinIgnoreZ(boardLocalPosition, minBoardLocalX, maxBoardLocalX, minBoardLocalY, maxBoardLocalY))
-            {
-                int x = BoardController.PosToGridIndex(boardLocalPosition.x);
-                int y = BoardController.PosToGridIndex(boardLocalPosition.z);
-
-                //if the card is being moved on the field, that means it's just being moved
-                if (Card.Location == CardLocation.Board)
-                {
-                    var cardThere = Game.boardCtrl.GetCardAt((x, y));
-                    // Debug.Log($"Trying to move/attack to {x}, {y}. The controller index, if any, is {(cardThere == null ? -1 : cardThere.ControllerIndex)}");
-                    //then check if it's an attack or not
-                    if (cardThere != null && cardThere.Controller != Card.Controller)
-                        ClientGame.clientNotifier.RequestAttack(Card, cardThere);
-                    else
-                        ClientGame.clientNotifier.RequestMove(Card, x, y);
-                }
-                //otherwise, it is being played from somewhere like the hand or discard
-                else ClientGame.clientNotifier.RequestPlay(Card, x, y);
-            }
-            else Debug.Log($"Card {Card.CardName} dragged to somewhere off the board, board local pos {boardLocalPosition}. Only putting back.");
-
-            //regardless, put the card where it goes until we know where to properly put it
-            Card.PutBack();
+            ClientUIController.boardUIController.CardDragEnded(clientCardController);
         }
     }
 }

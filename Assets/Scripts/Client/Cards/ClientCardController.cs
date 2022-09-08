@@ -1,109 +1,122 @@
-﻿using KompasClient.Cards;
+﻿using KompasClient.GameCore;
 using KompasClient.UI;
 using KompasCore.Cards;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ClientCardController : CardController
+namespace KompasClient.Cards
 {
-    public Image nUnzoomedImage;
-    public Image eUnzoomedImage;
-    public Image sUnzoomedImage;
-    public Image wUnzoomedImage;
-    public Image cUnzoomedImage;
-    public Image aUnzoomedImage;
-
-    public Image zoomedHazeImage;
-    public Sprite zoomedCharHaze;
-    public Sprite zoomedNonCharHaze;
-    public Image unzoomedHazeImage;
-    public Sprite unzoomedCharHaze;
-    public Sprite unzoomedNonCharHaze;
-
-    public GameObject revealedImage;
-
-    public ClientCardMouseController mouseCtrl;
-
-    public Material friendlyCardFrameMaterial;
-    public Material enemyCardFrameMaterial;
-
-    public Renderer[] frameObjects;
-
-    public bool Revealed
+    public class ClientCardController : CardController
     {
-        set => revealedImage.SetActive(value);
-    }
+        public ClientGameCard clientCard;
 
-    private void OnDestroy()
-    {
-        Debug.Log("Destroying a client card ctrl. Destroying this ctrl's mouse ctrl.");
-        Destroy(mouseCtrl);
-    }
+        [Header("Card display objects")]
+        public Image nUnzoomedImage;
+        public Image eUnzoomedImage;
+        public Image sUnzoomedImage;
+        public Image wUnzoomedImage;
+        public Image cUnzoomedImage;
+        public Image aUnzoomedImage;
 
-    public override void SetPhysicalLocation(CardLocation location)
-    {
-        base.SetPhysicalLocation(location);
+        public Image zoomedHazeImage;
+        public Sprite zoomedCharHaze;
+        public Sprite zoomedNonCharHaze;
+        public Image unzoomedHazeImage;
+        public Sprite unzoomedCharHaze;
+        public Sprite unzoomedNonCharHaze;
 
-        ShowForCardType(card.CardType, ClientCameraController.Main.Zoomed);
-    }
+        public GameObject revealedImage;
 
-    public override void SetImage(string cardFileName, bool zoomed)
-    {
-        base.SetImage(cardFileName, zoomed);
+        public Material friendlyCardFrameMaterial;
+        public Material enemyCardFrameMaterial;
 
-        zoomedHazeImage.enabled = zoomed;
-        zoomedHazeImage.sprite = card.CardType == 'C' ? zoomedCharHaze : zoomedNonCharHaze;
+        public Renderer[] frameObjects;
 
-        unzoomedHazeImage.enabled = !zoomed;
-        unzoomedHazeImage.sprite = card.CardType == 'C' ? unzoomedCharHaze : unzoomedNonCharHaze;
-    }
+        [Header("Dependent MonoBehaviours")]
+        public ClientCardMouseController mouseController;
 
-    public void ApplySettings(ClientSettings settings)
-    {
-        switch (settings.statHighlight)
+        public override GameCard Card => clientCard;
+
+        public ClientGame ClientGame => clientCard.ClientGame;
+        public ClientUIController ClientUIController => ClientGame.clientUICtrl;
+
+        public bool Revealed
         {
-            case StatHighlight.NoHighlight:
-                nUnzoomedImage.gameObject.SetActive(false);
-                eUnzoomedImage.gameObject.SetActive(false);
-                sUnzoomedImage.gameObject.SetActive(false);
-                wUnzoomedImage.gameObject.SetActive(false);
-                cUnzoomedImage.gameObject.SetActive(false);
-                aUnzoomedImage.gameObject.SetActive(false);
-                break;
-            case StatHighlight.ColoredBack:
-                nUnzoomedImage.gameObject.SetActive(true);
-                eUnzoomedImage.gameObject.SetActive(true);
-                sUnzoomedImage.gameObject.SetActive(true);
-                wUnzoomedImage.gameObject.SetActive(true);
-                cUnzoomedImage.gameObject.SetActive(true);
-                aUnzoomedImage.gameObject.SetActive(true);
-                break;
-            default: throw new System.ArgumentException($"Invalid stat highlight setting {settings.statHighlight}");
+            set => revealedImage.SetActive(value);
         }
 
-        Debug.Log($"setting color to {settings.FriendlyColor}");
-        friendlyCardFrameMaterial.color = settings.FriendlyColor;
-        enemyCardFrameMaterial.color = settings.EnemyColor;
-        ShowFrameColor();
-    }
-
-    private void ShowFrameColor()
-    {
-        if (card.Controller == null)
+        private void OnDestroy()
         {
-            //no controller yet, don't bother showing color
-            return;
+            Debug.Log("Destroying a client card ctrl. Destroying this ctrl's mouse ctrl.");
+            Destroy(mouseController);
         }
-        Material material = card.Controller.Friendly ? friendlyCardFrameMaterial : enemyCardFrameMaterial;
-        foreach (var obj in frameObjects)
-        {
-            obj.material = material;
-        }
-    }
 
-    public override void ShowForCardType(char cardType, bool zoomed)
-    {
-        base.ShowForCardType(cardType, zoomed);
-        ShowFrameColor();
+        public override void SetPhysicalLocation(CardLocation location)
+        {
+            base.SetPhysicalLocation(location);
+
+            ShowForCardType(Card.CardType, ClientCameraController.Main.Zoomed);
+        }
+
+        public override void SetImage(string cardFileName, bool zoomed)
+        {
+            base.SetImage(cardFileName, zoomed);
+
+            zoomedHazeImage.enabled = zoomed;
+            zoomedHazeImage.sprite = Card.CardType == 'C' ? zoomedCharHaze : zoomedNonCharHaze;
+
+            unzoomedHazeImage.enabled = !zoomed;
+            unzoomedHazeImage.sprite = Card.CardType == 'C' ? unzoomedCharHaze : unzoomedNonCharHaze;
+        }
+
+        //TODO move this out to something inheriting from CardViewController?
+        public void ApplySettings(ClientSettings settings)
+        {
+            switch (settings.statHighlight)
+            {
+                case StatHighlight.NoHighlight:
+                    nUnzoomedImage.gameObject.SetActive(false);
+                    eUnzoomedImage.gameObject.SetActive(false);
+                    sUnzoomedImage.gameObject.SetActive(false);
+                    wUnzoomedImage.gameObject.SetActive(false);
+                    cUnzoomedImage.gameObject.SetActive(false);
+                    aUnzoomedImage.gameObject.SetActive(false);
+                    break;
+                case StatHighlight.ColoredBack:
+                    nUnzoomedImage.gameObject.SetActive(true);
+                    eUnzoomedImage.gameObject.SetActive(true);
+                    sUnzoomedImage.gameObject.SetActive(true);
+                    wUnzoomedImage.gameObject.SetActive(true);
+                    cUnzoomedImage.gameObject.SetActive(true);
+                    aUnzoomedImage.gameObject.SetActive(true);
+                    break;
+                default: throw new System.ArgumentException($"Invalid stat highlight setting {settings.statHighlight}");
+            }
+
+            Debug.Log($"setting color to {settings.FriendlyColor}");
+            friendlyCardFrameMaterial.color = settings.FriendlyColor;
+            enemyCardFrameMaterial.color = settings.EnemyColor;
+            ShowFrameColor();
+        }
+
+        private void ShowFrameColor()
+        {
+            if (Card.Controller == null)
+            {
+                //no controller yet, don't bother showing color
+                return;
+            }
+            Material material = Card.Controller.Friendly ? friendlyCardFrameMaterial : enemyCardFrameMaterial;
+            foreach (var obj in frameObjects)
+            {
+                obj.material = material;
+            }
+        }
+
+        public override void ShowForCardType(char cardType, bool zoomed)
+        {
+            base.ShowForCardType(cardType, zoomed);
+            ShowFrameColor();
+        }
     }
 }

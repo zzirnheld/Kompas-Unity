@@ -7,15 +7,13 @@ using UnityEngine;
 
 namespace KompasCore.GameCore
 {
-    public abstract class Game : MonoBehaviour
+    public abstract partial class Game : MonoBehaviour
     {
         public const string CardListPath = "Card Jsons/Card List";
 
         // The list of locations where cards generally shouldn't be made visible to the opponent
         public static readonly CardLocation[] HiddenLocations =
             new CardLocation[] { CardLocation.Nowhere, CardLocation.Deck, CardLocation.Hand };
-
-        public enum TargetMode { Free, OnHold, CardTarget, CardTargetList, SpaceTarget, HandSize }
 
         //other scripts
         public UIController uiCtrl;
@@ -39,7 +37,7 @@ namespace KompasCore.GameCore
         public virtual int TurnCount { get; protected set; } = 1;
         public virtual int Leyload { get; set; } = 1;
 
-        public TargetMode targetMode = TargetMode.Free;
+        //public TargetMode targetMode = TargetMode.Free;
 
         public virtual void OnClickBoard(int x, int y) { }
         public virtual void Lose(int controllerIndex) { }

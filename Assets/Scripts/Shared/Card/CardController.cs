@@ -10,12 +10,12 @@ namespace KompasCore.Cards
     /// <summary>
     /// Controls the card's physical behavior.
     /// </summary>
-    public class CardController : MonoBehaviour
+    public abstract class CardController : MonoBehaviour
     {
         public const float LargeUnzoomedTextFontSize = 32f;
         public const float SmallUnzoomedTextFontSize = 22f;
 
-        public GameCard card;
+        public abstract GameCard Card { get; }
 
         public CardAOEController aoeController;
 
@@ -129,45 +129,45 @@ namespace KompasCore.Cards
             aoeController.Hide();
 
             //is the card augmenting something?
-            if (card.Attached)
+            if (Card.Attached)
             {
                 gameObject.SetActive(true);
-                card.AugmentedCard.cardCtrl.SpreadOutAugs();
+                Card.AugmentedCard.cardCtrl.SpreadOutAugs();
                 return;
             }
 
             //Here on out, we assume the card's not an augment
-            card.transform.localScale = Vector3.one;
+            Card.transform.localScale = Vector3.one;
 
             switch (location)
             {
                 case CardLocation.Nowhere: break;
                 case CardLocation.Deck:
-                    card.gameObject.transform.SetParent(card.Controller.deckObject.transform);
+                    Card.gameObject.transform.SetParent(Card.Controller.deckObject.transform);
                     gameObject.SetActive(false);
                     break;
                 case CardLocation.Discard:
-                    card.gameObject.transform.SetParent(card.Controller.discardObject.transform);
-                    card.Controller.discardCtrl.SpreadOutCards();
+                    Card.gameObject.transform.SetParent(Card.Controller.discardObject.transform);
+                    Card.Controller.discardCtrl.SpreadOutCards();
                     SetRotation();
                     gameObject.SetActive(true);
                     break;
                 case CardLocation.Board:
-                    card.gameObject.transform.localScale = Vector3.one;
-                    card.gameObject.transform.SetParent(card.Game.boardObject.transform);
-                    MoveTo(card.Position);
+                    Card.gameObject.transform.localScale = Vector3.one;
+                    Card.gameObject.transform.SetParent(Card.Game.boardObject.transform);
+                    MoveTo(Card.Position);
                     SetRotation();
-                    if (card.SpellSubtypes.Any(CardBase.RadialSubtype.Equals)) aoeController.Show(card.Radius);
+                    if (Card.SpellSubtypes.Any(CardBase.RadialSubtype.Equals)) aoeController.Show(Card.Radius);
                     gameObject.SetActive(true);
                     break;
                 case CardLocation.Hand:
-                    card.gameObject.transform.SetParent(card.Controller.handObject.transform);
-                    card.Controller.handCtrl.SpreadOutCards();
+                    Card.gameObject.transform.SetParent(Card.Controller.handObject.transform);
+                    Card.Controller.handCtrl.SpreadOutCards();
                     gameObject.SetActive(true);
                     break;
                 case CardLocation.Annihilation:
-                    card.gameObject.transform.SetParent(card.Controller.annihilationCtrl.gameObject.transform);
-                    card.Controller.annihilationCtrl.SpreadOutCards();
+                    Card.gameObject.transform.SetParent(Card.Controller.annihilationCtrl.gameObject.transform);
+                    Card.Controller.annihilationCtrl.SpreadOutCards();
                     SetRotation();
                     gameObject.SetActive(true);
                     break;
@@ -187,12 +187,12 @@ namespace KompasCore.Cards
 
         public void SpreadOutAugs()
         {
-            var augCount = card.Augments.Count();
+            var augCount = Card.Augments.Count();
             float scale = 0.4f; // / ((float)((augCount + 3) / 4));
             int i = 0;
-            foreach (var aug in card.Augments)
+            foreach (var aug in Card.Augments)
             {
-                aug.transform.parent = card.transform;
+                aug.transform.parent = Card.transform;
                 aug.transform.localScale = new Vector3(scale, scale, scale);
                 float x, z;
                 (x, z) = (i % 4) switch
@@ -211,10 +211,10 @@ namespace KompasCore.Cards
 
         public void SetRotation()
         {
-            Debug.Log($"Setting rotation of {card.CardName}, controlled by {card.ControllerIndex}, known? {card.KnownToEnemy}");
-            int yRotation = 180 * card.ControllerIndex;
-            int zRotation = 180 * (card.KnownToEnemy ? 0 : card.ControllerIndex);
-            card.transform.eulerAngles = new Vector3(0, yRotation, zRotation);
+            Debug.Log($"Setting rotation of {Card.CardName}, controlled by {Card.ControllerIndex}, known? {Card.KnownToEnemy}");
+            int yRotation = 180 * Card.ControllerIndex;
+            int zRotation = 180 * (Card.KnownToEnemy ? 0 : Card.ControllerIndex);
+            Card.transform.eulerAngles = new Vector3(0, yRotation, zRotation);
         }
 
         private void ReloadImages(string cardFileName)
@@ -281,9 +281,9 @@ namespace KompasCore.Cards
             zoomedNameText.gameObject.SetActive(zoomed);
             zoomedSubtypesText.gameObject.SetActive(zoomed);
             zoomedEffText.gameObject.SetActive(zoomed);
-            zoomedNameText.text = card.CardName;
-            zoomedSubtypesText.text = card.QualifiedSubtypeText;
-            zoomedEffText.text = card.EffText;
+            zoomedNameText.text = Card.CardName;
+            zoomedSubtypesText.text = Card.QualifiedSubtypeText;
+            zoomedEffText.text = Card.EffText;
 
             zoomedAllFrame.SetActive(zoomed);
             unzoomedAllFrame.SetActive(!zoomed);
@@ -292,18 +292,18 @@ namespace KompasCore.Cards
             //unless the card does actually have a possible attack
 
             //only check if card can attack if on field
-            if (card.Location == CardLocation.Board)
+            if (Card.Location == CardLocation.Board)
             {
                 //if you can attack at all, enable the attack indicator
-                if (card.AttackRestriction.CouldAttackValidTarget(null))
+                if (Card.AttackRestriction.CouldAttackValidTarget(null))
                     //oscillate the attack indicator if can attack a card right now
-                    attackOscillator.Enable(card.AttackRestriction.CanAttackAnyCard(null));
+                    attackOscillator.Enable(Card.AttackRestriction.CanAttackAnyCard(null));
                 else attackOscillator.Disable();
 
                 //if you can activate any effect, enable the attack indicator
-                if (card.HasAtAllActivateableEffect)
+                if (Card.HasAtAllActivateableEffect)
                     //oscillate the effect indicator if you can activate an effect right now
-                    effectOscillator.Enable(card.HasCurrentlyActivateableEffect);
+                    effectOscillator.Enable(Card.HasCurrentlyActivateableEffect);
                 else effectOscillator.Disable();
             }
             else
@@ -312,7 +312,7 @@ namespace KompasCore.Cards
                 effectOscillator.Disable();
             }
 
-            SetImage(card.FileName, zoomed);
+            SetImage(Card.FileName, zoomed);
         }
 
         public virtual void ShowValidTarget(bool valid = true) => validTargetObject.SetActive(valid);
@@ -331,5 +331,7 @@ namespace KompasCore.Cards
 
         public virtual void ShowPrimaryOfStackable(bool show = true) => primaryStackableObject.SetActive(show);
         public virtual void ShowSecondaryOfStackable(bool show = true) => secondaryStackableObject.SetActive(show);
+
+        public void PutBack() => SetPhysicalLocation(Card.Location);
     }
 }

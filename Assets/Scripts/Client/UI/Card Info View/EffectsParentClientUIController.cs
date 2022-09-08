@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace KompasClient.UI
 {
-    public class EffectsUIController : MonoBehaviour
+    public class EffectsParentClientUIController : MonoBehaviour
     {
         //public GameObject effButtonsParentObject; //should just be this.gameObject now
         public ClientGameMainCardViewController mainCardViewController;

@@ -253,11 +253,6 @@ namespace KompasCore.Cards
             foreach (var e in Effects) e.TimesUsedThisStack = 0;
         }
 
-        public void PutBack()
-        {
-            if (cardCtrl != null) cardCtrl.SetPhysicalLocation(Location);
-        }
-
         /// <summary>
         /// Accumulates the distance to <paramref name="to"/> into the number of spaces this card moved this turn.
         /// </summary>

@@ -21,6 +21,7 @@ namespace KompasClient.UI
         private const string AwaitingEnemyResponse = "Awaiting Enemy Response";
 
         public ClientGame clientGame;
+        public TargetMode targetMode = TargetMode.Free;
 
         //debug UI 
         public InputField debugPipsField;
@@ -86,7 +87,7 @@ namespace KompasClient.UI
         public TriggerOrderUIController triggerOrderUI;
 
         //effect activation ui
-        public RightClickCardUIController activatorUICtrl;
+        public RightClickCardClientUIController rightClickUIController;
 
         //escape menu
         public ClientEscapeMenuUIController escapeMenuUICtrl;
@@ -97,10 +98,7 @@ namespace KompasClient.UI
         //top right detailed effects control ui
         public GameObject detailedEffectsCtrlUIObject;
 
-        public GameCard CardToActivateEffectsFor
-        {
-            set => activatorUICtrl.nextShowFor = value;
-        }
+        public ClientBoardUIController boardUIController;
 
         public int FriendlyPips
         {
@@ -118,12 +116,10 @@ namespace KompasClient.UI
             set => LeyloadText.text = $"{value} Pips Leyload";
         }
 
+        public override bool AllowDragging => targetMode == TargetMode.Free;
+
         private void Update()
         {
-            //when the user releaes a right click, show eff activation ui.
-            if (Input.GetMouseButtonUp(1)) activatorUICtrl.Show();
-            //when the user releases a left click, deselect any applicable effect activation ui
-            if (Input.GetMouseButtonUp(0)) activatorUICtrl.CancelIfApplicable();
             //when the user presses escape, show the menu.
             if (Input.GetKeyDown(KeyCode.Escape)) escapeMenuUICtrl.Enable();
         }
@@ -138,23 +134,7 @@ namespace KompasClient.UI
             ipInputField.text = clientSettings.defaultIP;
             detailedEffectsCtrlUIObject.SetActive(clientSettings.showAdvancedEffectsSettings);
         }
-
-        public override bool ShowInfoFor(GameCard card, bool refresh = false)
-        {
-            bool success = base.ShowInfoFor(card, refresh);
-            if (success) cardInfoViewUICtrl.ShowInfoFor(card, refresh);
-            return success;
-        }
-
-        public bool ShowEffect(Effect eff) => eff.CanBeActivatedBy(clientGame.Players[0]);
-
-        public override void SelectCard(GameCard card, Game.TargetMode targetMode, bool fromClick)
-        {
-            base.SelectCard(card, targetMode, fromClick);
-            if (fromClick && targetMode != Game.TargetMode.Free && card != null) clientGame.searchCtrl.ToggleTarget(card);
-        }
-
-        public void ReselectSelectedCard(bool fromClick) => SelectCard(SelectedCard, fromClick);
+            //TODO if (fromClick && targetMode != Game.TargetMode.Free && card != null) clientGame.searchCtrl.ToggleTarget(card);
 
         #region connection/game start
         public void Connect(bool acceptEmpty)
@@ -229,8 +209,6 @@ namespace KompasClient.UI
             => SetCurrState(primaryState ?? this.primaryState, secondaryState ?? this.secondaryState, numTargetsChosen ?? string.Empty);
 
         #region effects
-        public void ActivateSelectedCardEff(int index) => ActivateCardEff(ShownCard, index);
-
         public void ActivateCardEff(GameCard card, int index)
             => clientGame.clientNotifier.RequestActivateEffect(card, index);
 

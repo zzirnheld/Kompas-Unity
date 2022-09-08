@@ -1,4 +1,5 @@
 ﻿using KompasCore.Cards;
+using KompasCore.Effects;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -11,7 +12,7 @@ namespace KompasClient.UI
     /// Handles the buttons that show when you right-click a card,
     /// allowing you to activate any effects it has
     /// </summary>
-    public class RightClickCardUIController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+    public class RightClickCardClientUIController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         public ClientUIController clientUICtrl;
 
@@ -32,14 +33,16 @@ namespace KompasClient.UI
 
         public void Show(GameCard card)
         {
-            if (card != null && card.Effects.Any(eff => clientUICtrl.ShowEffect(eff)))
+            Effect[] effects = card?.Effects.Where(ShowEffect).ToArray();
+
+            if (effects?.Any() ?? false)
             {
                 //Destroy all buttons that previously existed
                 foreach (var button in effectButtons) Destroy(button.gameObject);
                 effectButtons.Clear();
 
                 //for each valid effect, create the prefab
-                foreach (var eff in card.Effects.Where(e => clientUICtrl.ShowEffect(e)))
+                foreach (var eff in effects)
                 {
                     var obj = Instantiate(activateableEffPrefab, activateableEffParent);
                     var btn = obj.GetComponent<ActivatableEffectUIController>();
@@ -59,6 +62,8 @@ namespace KompasClient.UI
             }
             else Clear();
         }
+
+        private bool ShowEffect(Effect eff) => eff.CanBeActivatedBy(eff.Game.Players[0]);
 
         /// <summary>
         /// Clear out data and hide this right-click UI

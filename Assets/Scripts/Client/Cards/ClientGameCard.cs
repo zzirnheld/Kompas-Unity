@@ -78,7 +78,7 @@ namespace KompasClient.Cards
             ClientGame = game;
             ClientController = ClientOwner = owner;
             ClientEffects = effects;
-            mouseCtrl.ClientGame = game;
+            mouseCtrl.clientGame = game;
             base.SetCardInfo(serializedCard, id);
             int i = 0;
             foreach (var eff in effects) eff.SetInfo(this, game, i++, owner);

@@ -1,18 +1,24 @@
-﻿using System.Collections.Generic;
+﻿using KompasClient.GameCore;
+using KompasCore.Cards;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace KompasClient.UI
 {
     public class ClientPipsUIController : MonoBehaviour
     {
+        public ClientPlayer player;
+
+        [Header("Pip info")]
+        [Tooltip("The number of pips each of the prefabs represents")]
         public int[] pipIntervals;
+        [Tooltip("The prefab for each of those numbers of pips")]
         public GameObject[] pipsPrefabs;
+        [Tooltip("The vector by which each pip prefab should be offset from the last")]
         public Vector3[] pipsPrefabsOffsets;
 
         private readonly List<GameObject> objsList = new List<GameObject>();
-
         private readonly List<PipRingsController> fivePipControllers = new List<PipRingsController>();
-
         private int numberOfOnePips;
 
         public int Pips
@@ -75,6 +81,13 @@ namespace KompasClient.UI
                 }
                 else fivePipControllers[i].ShowRings(0);
             }
+        }
+
+        public void HighlightPipsFor(GameCard card)
+        {
+            int costToHighlight = card.Location == CardLocation.Hand && card.Cost <= card.Controller.Pips
+                ? ShownCard.Cost
+                : 0;
         }
     }
 }

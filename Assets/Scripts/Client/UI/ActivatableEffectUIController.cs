@@ -8,10 +8,10 @@ namespace KompasClient.UI
     {
         public TMP_Text effNameText;
 
-        private RightClickCardUIController parentCtrl;
+        private RightClickCardClientUIController parentCtrl;
         private Effect eff;
 
-        public (Effect, RightClickCardUIController) Params
+        public (Effect, RightClickCardClientUIController) Params
         {
             set
             {
