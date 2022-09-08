@@ -47,8 +47,8 @@ namespace KompasClient.Networking
             }
             if (!(card.Effects.ElementAt(effIndex).Trigger is ClientTrigger trigger)) return;
 
-            trigger.ClientEffect.ClientController = clientGame.ClientPlayers[playerBeingAsked];
-            clientGame.clientUICtrl.ShowOptionalTrigger(trigger, showX, x);
+            trigger.ClientEffect.ClientController = clientGame.clientPlayers[playerBeingAsked];
+            clientGame.clientUIController.ShowOptionalTrigger(trigger, showX, x);
         }
     }
 }

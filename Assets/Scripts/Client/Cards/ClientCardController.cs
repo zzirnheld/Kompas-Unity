@@ -38,7 +38,7 @@ namespace KompasClient.Cards
         public override GameCard Card => clientCard;
 
         public ClientGame ClientGame => clientCard.ClientGame;
-        public ClientUIController ClientUIController => ClientGame.clientUICtrl;
+        public ClientUIController ClientUIController => ClientGame.clientUIController;
 
         public bool Revealed
         {

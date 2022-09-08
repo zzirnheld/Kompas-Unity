@@ -16,12 +16,10 @@ namespace KompasCore.GameCore
             new CardLocation[] { CardLocation.Nowhere, CardLocation.Deck, CardLocation.Hand };
 
         //other scripts
-        public UIController uiCtrl;
+        public abstract UIController UIController { get; }
 
         //game mechanics
-        public BoardController boardCtrl;
-        //game objects
-        public GameObject boardObject;
+        public abstract BoardController BoardController { get; }
 
         //list of card names 
         public CardRepository cardRepo;
@@ -58,11 +56,11 @@ namespace KompasCore.GameCore
             return Cards.Any(c => c != card && c.Location == CardLocation.Field && c.Controller == card.Controller && c.CardName == card.CardName);
         }*/
 
-        public bool ValidSpellSpaceFor(GameCard card, Space space) => boardCtrl.ValidSpellSpaceFor(card, space);
+        public bool ValidSpellSpaceFor(GameCard card, Space space) => BoardController.ValidSpellSpaceFor(card, space);
 
         private bool IsFriendlyAdjacentToCoords(Space space, GameCard potentialFriendly, Player friendly)
         {
-            return boardCtrl.IsEmpty(space)
+            return BoardController.IsEmpty(space)
                 && potentialFriendly != null && potentialFriendly.IsAdjacentTo(space)
                 && potentialFriendly.Controller == friendly;
         }
@@ -70,7 +68,7 @@ namespace KompasCore.GameCore
         public bool ValidStandardPlaySpace(Space space, Player friendly)
         {
             //first see if there's an adjacent friendly card to this space
-            if (boardCtrl.ExistsCardOnBoard(c => IsFriendlyAdjacentToCoords(space, c, friendly))) return true;
+            if (BoardController.ExistsCardOnBoard(c => IsFriendlyAdjacentToCoords(space, c, friendly))) return true;
             //if there isn't, check if the player is Surrounded
             else
             {
@@ -80,7 +78,7 @@ namespace KompasCore.GameCore
                     for (int j = 0; j < 7; j++)
                     {
                         //if there *is* a possible space to play it to, they're not surrounded
-                        if (boardCtrl.ExistsCardOnBoard(c => IsFriendlyAdjacentToCoords((i, j), c, friendly))) return false;
+                        if (BoardController.ExistsCardOnBoard(c => IsFriendlyAdjacentToCoords((i, j), c, friendly))) return false;
                     }
                 }
                 //if we didn't find a single place to play a card normally, any space is fair game, by the Surrounded rule

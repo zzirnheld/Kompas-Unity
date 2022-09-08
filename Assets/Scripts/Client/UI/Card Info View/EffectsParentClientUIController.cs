@@ -34,7 +34,7 @@ namespace KompasClient.UI
             {
                 var obj = Instantiate(effBtnPrefab, effBtnsParent);
                 var ctrl = obj.GetComponent<ClientUseEffectButtonController>();
-                ctrl.Initialize(eff, ClientGame.clientUICtrl);
+                ctrl.Initialize(eff, ClientGame.clientUIController);
                 effBtns.Add(ctrl);
             }
         }

@@ -16,7 +16,7 @@ namespace KompasServer.Cards
         public ServerGame ServerGame { get; private set; }
         public override Game Game => ServerGame;
 
-        public ServerEffectsController EffectsController => ServerGame?.EffectsController;
+        public ServerEffectsController EffectsController => ServerGame?.effectsController;
         public ServerNotifier ServerNotifier => ServerController?.ServerNotifier;
 
         private ServerPlayer serverController;
@@ -159,7 +159,7 @@ namespace KompasServer.Cards
             augmentedContext.CacheCardInfoAfter();
             EffectsController.TriggerForCondition(Trigger.AugmentAttached, attachedContext);
             EffectsController.TriggerForCondition(Trigger.Augmented, augmentedContext);
-            ServerGame.ServerPlayers[augment.ControllerIndex].ServerNotifier.NotifyAttach(augment, Position, wasKnown);
+            ServerGame.serverPlayers[augment.ControllerIndex].ServerNotifier.NotifyAttach(augment, Position, wasKnown);
         }
 
         protected override void Detach(IStackable stackSrc = null)
@@ -181,7 +181,7 @@ namespace KompasServer.Cards
             var context = new ActivationContext(game: ServerGame, mainCardBefore: this, stackableCause: stackSrc, player: player);
 
             var cardsThisLeft = Location == CardLocation.Board ?
-                Game.boardCtrl.CardsAndAugsWhere(c => c != null && c.CardInAOE(this)).ToList() :
+                Game.BoardController.CardsAndAugsWhere(c => c != null && c.CardInAOE(this)).ToList() :
                 new List<GameCard>();
             var leaveContexts = cardsThisLeft.Select(c =>
                 new ActivationContext(game: ServerGame, mainCardBefore: this, secondaryCardBefore: c, stackableCause: stackSrc, player: player));

@@ -24,8 +24,8 @@ namespace KompasClient.Networking
     {
         public void Execute(ClientGame clientGame)
         {
-            if (enabled) clientGame.clientUICtrl.EnableDecliningTarget();
-            else clientGame.clientUICtrl.DisableDecliningTarget();
+            if (enabled) clientGame.clientUIController.EnableDecliningTarget();
+            else clientGame.clientUIController.DisableDecliningTarget();
         }
     }
 }

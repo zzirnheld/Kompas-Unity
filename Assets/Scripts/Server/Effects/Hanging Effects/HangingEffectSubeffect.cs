@@ -43,7 +43,7 @@ namespace KompasServer.Effects
             //each of the effects needs to be registered, and registered for how it could fall off
             foreach (var eff in effectsApplied)
             {
-                ServerGame.EffectsController.RegisterHangingEffect(endCondition, eff, fallOffCondition);
+                ServerGame.effectsController.RegisterHangingEffect(endCondition, eff, fallOffCondition);
             }
 
             //after all that's done, make it do the next subeffect

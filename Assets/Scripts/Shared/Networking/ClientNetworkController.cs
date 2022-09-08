@@ -27,10 +27,10 @@ namespace KompasClient.Networking
             catch (SocketException e)
             {
                 Debug.LogError($"Failed to connect to {ip}. Stack trace:\n{e.StackTrace}");
-                ClientGame.clientUICtrl.ShowConnectUI();
+                ClientGame.clientUIController.ShowConnectUI();
             }
             Debug.Log("Connected");
-            if (tcpClient.Connected) ClientGame.clientUICtrl.ShowConnectedWaitingUI();
+            if (tcpClient.Connected) ClientGame.clientUIController.ShowConnectedWaitingUI();
             connecting = false;
         }
 

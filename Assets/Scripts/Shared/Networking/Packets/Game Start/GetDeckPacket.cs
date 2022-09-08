@@ -15,6 +15,6 @@ namespace KompasClient.Networking
 {
     public class GetDeckClientPacket : GetDeckPacket, IClientOrderPacket
     {
-        public void Execute(ClientGame clientGame) => clientGame.clientUICtrl.ShowGetDecklistUI();
+        public void Execute(ClientGame clientGame) => clientGame.clientUIController.ShowGetDecklistUI();
     }
 }

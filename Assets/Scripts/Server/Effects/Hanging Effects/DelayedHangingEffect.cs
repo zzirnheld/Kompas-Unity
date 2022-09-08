@@ -57,7 +57,7 @@ namespace KompasServer.Effects
         {
             var myContext = context.Copy;
             myContext.SetResumeInfo(targets, spaces, default, default, default, default, indexToResumeResolution);
-            serverGame.EffectsController.PushToStack(toResume, controller, myContext);
+            serverGame.effectsController.PushToStack(toResume, controller, myContext);
         }
     }
 }

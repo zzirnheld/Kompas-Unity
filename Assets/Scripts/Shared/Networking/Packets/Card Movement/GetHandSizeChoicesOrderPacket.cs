@@ -30,7 +30,7 @@ namespace KompasClient.Networking
     {
         public void Execute(ClientGame clientGame)
         {
-            clientGame.targetMode = Game.TargetMode.HandSize;
+            clientGame.clientUIController.targetMode = TargetMode.HandSize;
             ListRestriction listRestriction = null;
 
             try
@@ -45,7 +45,7 @@ namespace KompasClient.Networking
 
             clientGame.SetPotentialTargets(cardIds, listRestriction);
             //TODO make the blurb plural if asking for multiple targets
-            clientGame.clientUICtrl.SetCurrState("Reshuffle Down to Hand Size");
+            clientGame.clientUIController.SetCurrState("Reshuffle Down to Hand Size");
         }
     }
 }

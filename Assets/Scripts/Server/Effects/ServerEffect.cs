@@ -17,7 +17,7 @@ namespace KompasServer.Effects
 
         public ServerGame serverGame;
         public override Game Game => serverGame;
-        public ServerEffectsController EffectsController => serverGame.EffectsController;
+        public ServerEffectsController EffectsController => serverGame.effectsController;
         public ServerPlayer ServerController { get; set; }
         public override Player Controller
         {
@@ -112,7 +112,7 @@ namespace KompasServer.Effects
         }
 
         public override bool CanBeActivatedBy(Player controller)
-            => serverGame.uiCtrl.DebugMode || base.CanBeActivatedBy(controller);
+            => serverGame.UIController.DebugMode || base.CanBeActivatedBy(controller);
 
         public void PushedToStack(ServerGame game, ServerPlayer ctrl)
         {

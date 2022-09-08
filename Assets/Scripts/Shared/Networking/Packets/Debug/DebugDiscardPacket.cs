@@ -28,7 +28,7 @@ namespace KompasServer.Networking
             var card = serverGame.GetCardWithID(cardId);
             if (card == null)
                 return Task.CompletedTask;
-            else if (serverGame.uiCtrl.DebugMode)
+            else if (serverGame.UIController.DebugMode)
             {
                 UnityEngine.Debug.LogWarning($"Debug discarding card with id {cardId}");
                 card.Discard();

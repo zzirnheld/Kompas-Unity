@@ -24,7 +24,7 @@ namespace KompasCore.Effects.Restrictions
         public class Empty : SpaceRestrictionElement
         {
             protected override bool AbstractIsValidSpace(Space space, ActivationContext context)
-                => InitializationContext.game.boardCtrl.IsEmpty(space);
+                => InitializationContext.game.BoardController.IsEmpty(space);
         }
 
         /// <summary>
@@ -167,7 +167,7 @@ namespace KompasCore.Effects.Restrictions
 
             protected override bool AbstractIsValidSpace(Space space, ActivationContext context)
             {
-                var card = InitializationContext.game.boardCtrl.GetCardAt(space);
+                var card = InitializationContext.game.BoardController.GetCardAt(space);
                 return restriction.IsValidCard(card, context);
             }
         }
@@ -186,7 +186,7 @@ namespace KompasCore.Effects.Restrictions
 
             protected override bool AbstractIsValidSpace(Space space, ActivationContext context)
             {
-                return spaces.Item.All(s => InitializationContext.game.boardCtrl.AreConnectedBySpaces(s, space, byRestriction, context));
+                return spaces.Item.All(s => InitializationContext.game.BoardController.AreConnectedBySpaces(s, space, byRestriction, context));
             }
         }
     }

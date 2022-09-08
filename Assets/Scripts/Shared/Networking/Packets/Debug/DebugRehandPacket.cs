@@ -28,7 +28,7 @@ namespace KompasServer.Networking
             var card = serverGame.GetCardWithID(cardId);
             if (card == null)
                 return Task.CompletedTask;
-            else if (serverGame.uiCtrl.DebugMode)
+            else if (serverGame.UIController.DebugMode)
             {
                 UnityEngine.Debug.LogWarning($"Debug rehanding card with id {cardId}");
                 card.Rehand();

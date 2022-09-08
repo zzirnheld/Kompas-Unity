@@ -26,6 +26,10 @@ namespace KompasClient.UI
             set => ShowPipsFor(value);
         }
 
+        /// <summary>
+        /// Shows a number of pips currently owned by this player
+        /// </summary>
+        /// <param name="value"></param>
         public void ShowPipsFor(int value)
         {
             foreach (var obj in objsList) Destroy(obj);
@@ -54,6 +58,11 @@ namespace KompasClient.UI
             }
         }
 
+        /// <summary>
+        /// Highlights a given number of pips,
+        /// like showning how many pips something would cost.
+        /// </summary>
+        /// <param name="value"></param>
         public void HighlightPipsFor(int value)
         {
             Debug.Log($"Highlighitng {value} pips");
@@ -83,11 +92,18 @@ namespace KompasClient.UI
             }
         }
 
+        /// <summary>
+        /// Shows how many pips that card would cost to play,
+        /// if that card is in the right place
+        /// </summary>
+        /// <param name="card"></param>
         public void HighlightPipsFor(GameCard card)
         {
-            int costToHighlight = card.Location == CardLocation.Hand && card.Cost <= card.Controller.Pips
-                ? ShownCard.Cost
-                : 0;
+            bool showCost = card != null
+                && card.Location == CardLocation.Hand
+                && card.Cost <= card.Controller.Pips;
+            int costToHighlight = showCost ? card.Cost : 0;
+            HighlightPipsFor(costToHighlight);
         }
     }
 }

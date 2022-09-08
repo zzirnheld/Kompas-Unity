@@ -32,7 +32,7 @@ namespace KompasClient.Networking
         {
             var card = clientGame.GetCardWithID(cardId);
             if (card != null) card.Move((x, y), false);
-            clientGame.uiCtrl.Refresh();
+            clientGame.UIController.cardViewController.Refresh();
         }
     }
 }

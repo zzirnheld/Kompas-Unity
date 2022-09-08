@@ -36,7 +36,7 @@ namespace KompasClient.Networking
                 var trigger = card?.Effects.ElementAt(effIndices[i]).Trigger;
                 if (trigger != null) triggers.Add(trigger);
             }
-            clientGame.clientUICtrl.triggerOrderUI.OrderTriggers(triggers);
+            clientGame.clientUIController.triggerOrderUI.OrderTriggers(triggers);
         }
     }
 }

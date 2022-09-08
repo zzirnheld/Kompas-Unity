@@ -13,8 +13,8 @@ namespace KompasServer.GameCore
     {
         public ServerGame ServerGame;
 
-        public ServerNotifier ServerNotifierByIndex(int index) => ServerGame.ServerPlayers[index].ServerNotifier;
-        public ServerEffectsController EffectsController => ServerGame.EffectsController;
+        public ServerNotifier ServerNotifierByIndex(int index) => ServerGame.serverPlayers[index].ServerNotifier;
+        public ServerEffectsController EffectsController => ServerGame.effectsController;
 
         public override void Play(GameCard toPlay, Space to, Player controller, IStackable stackSrc = null)
         {

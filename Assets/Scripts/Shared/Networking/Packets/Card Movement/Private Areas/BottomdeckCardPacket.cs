@@ -32,7 +32,7 @@ namespace KompasClient.Networking
     {
         public void Execute(ClientGame clientGame)
         {
-            var controller = clientGame.ClientPlayers[controllerIndex];
+            var controller = clientGame.clientPlayers[controllerIndex];
             var card = clientGame.GetCardWithID(cardId);
             if (card != null) card.Bottomdeck(controller);
         }

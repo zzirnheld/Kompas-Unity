@@ -98,7 +98,7 @@ namespace KompasCore.Cards
         public bool InHiddenLocation => Game.IsHiddenLocation(Location);
 
         public override IEnumerable<GameCard> AdjacentCards
-            => Game?.boardCtrl.CardsAdjacentTo(Position) ?? new List<GameCard>();
+            => Game?.BoardController.CardsAdjacentTo(Position) ?? new List<GameCard>();
 
         public bool AlreadyCopyOnBoard => Game.BoardHasCopyOf(this);
 
@@ -257,7 +257,7 @@ namespace KompasCore.Cards
         /// Accumulates the distance to <paramref name="to"/> into the number of spaces this card moved this turn.
         /// </summary>
         /// <param name="to">The space being moved to</param>
-        public void CountSpacesMovedTo((int x, int y) to) => SetSpacesMoved(SpacesMoved + Game.boardCtrl.ShortestEmptyPath(this, to));
+        public void CountSpacesMovedTo((int x, int y) to) => SetSpacesMoved(SpacesMoved + Game.BoardController.ShortestEmptyPath(this, to));
 
         #region augments
 
@@ -420,13 +420,13 @@ namespace KompasCore.Cards
         public void Play(Space to, Player controller, IStackable stackSrc = null, bool payCost = false)
         {
             var costToPay = Cost;
-            Game.boardCtrl.Play(this, to, controller, stackSrc);
+            Game.BoardController.Play(this, to, controller, stackSrc);
 
             if (payCost) controller.Pips -= costToPay;
         }
 
         public void Move(Space to, bool normalMove, IStackable stackSrc = null)
-            => Game.boardCtrl.Move(this, to, normalMove, stackSrc);
+            => Game.BoardController.Move(this, to, normalMove, stackSrc);
 
         public void Dispel(IStackable stackSrc = null)
         {

@@ -1,6 +1,7 @@
 ﻿using KompasClient.UI;
 using KompasCore.Cards;
 using KompasCore.Effects;
+using KompasCore.GameCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -162,29 +163,30 @@ namespace KompasClient.GameCore
 
         public void SendTargets(bool confirmed = false)
         {
-            if (clientGame.ClientUISettings.confirmTargets == ConfirmTargets.Prompt && !confirmed)
+            if (clientGame.clientUIController.clientUISettingsCtrl.ClientSettings.confirmTargets == ConfirmTargets.Prompt && !confirmed)
             {
                 confirmTargetsCtrl.Show(CurrSearchData.Value.searched);
                 return;
             }
 
+            var targetMode = clientGame.clientUIController.targetMode;
             Debug.Log($"Sending targets {string.Join(",", CurrSearchData.Value.searched.Select(c => c.CardName))} " +
-                $"while in target mode {clientGame.targetMode}, with a list restriction {CurrSearchData.Value.listRestriction}");
-            if (clientGame.targetMode == ClientGame.TargetMode.HandSize)
+                $"while in target mode {targetMode}, with a list restriction {CurrSearchData.Value.listRestriction}");
+            if (targetMode == TargetMode.HandSize)
                 clientGame.clientNotifier.RequestHandSizeChoices(CurrSearchData.Value.searched.Select(c => c.ID).ToArray());
-            else if (clientGame.targetMode == ClientGame.TargetMode.CardTarget)
+            else if (targetMode == TargetMode.CardTarget)
                 clientGame.clientNotifier.RequestTarget(CurrSearchData.Value.searched.FirstOrDefault());
-            else if (clientGame.targetMode == ClientGame.TargetMode.CardTargetList)
+            else if (targetMode == TargetMode.CardTargetList)
                 clientGame.clientNotifier.RequestListChoices(CurrSearchData.Value.searched);
-            else throw new System.ArgumentException($"Unknown target mode {clientGame.targetMode} in search ctrl");
+            else throw new System.ArgumentException($"Unknown target mode {targetMode} in search ctrl");
 
             //put the relevant card back
-            foreach (var card in CurrSearchData.Value.searched) card.PutBack();
+            foreach (var card in CurrSearchData.Value.searched) card.cardCtrl.PutBack();
 
             ResetSearch();
 
             //and change the game's target mode TODO should this do this
-            clientGame.targetMode = ClientGame.TargetMode.OnHold;
+            clientGame.clientUIController.targetMode = TargetMode.OnHold;
         }
     }
 }

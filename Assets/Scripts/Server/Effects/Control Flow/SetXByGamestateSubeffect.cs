@@ -42,7 +42,7 @@ namespace KompasServer.Effects
                 {
                     HandSize => PlayerTarget.handCtrl.HandSize,
                     HandSizeLimit => PlayerTarget.HandSizeLimit,
-                    DistanceToCoordsThrough => Game.boardCtrl.ShortestPath(Source, SpaceTarget, throughRestriction, CurrentContext),
+                    DistanceToCoordsThrough => Game.BoardController.ShortestPath(Source, SpaceTarget, throughRestriction, CurrentContext),
                     DistanceBetweenTargetAndCoords => CardTarget.DistanceTo(SpaceTarget),
                     DistanceFromSourceToTarget => Source.DistanceTo(CardTarget),
 

@@ -13,24 +13,11 @@ namespace KompasCore.GameCore
     public class BoardController : MonoBehaviour, IGameLocation
     {
         public const int SpacesInGrid = 7;
-        public const float BoardLenOffset = 7f;
-        public const float LenOneSpace = 2f;
-        public const float SpaceOffset = LenOneSpace / 2f;
-        public const float CardHeight = 0.15f;
         public const int NoPathExists = 50;
 
         public Game game;
 
         public CardLocation CardLocation => CardLocation.Board;
-
-        public static int PosToGridIndex(float pos)
-            => (int)((pos + BoardLenOffset) / (LenOneSpace));
-
-        public static float GridIndexToPos(int gridIndex)
-            => (float)((gridIndex * LenOneSpace) + SpaceOffset - BoardLenOffset);
-
-        public static Vector3 GridIndicesToCardPos(int x, int y)
-            => new Vector3(GridIndexToPos(x), CardHeight, GridIndexToPos(y));
 
         public readonly GameCard[,] Board = new GameCard[SpacesInGrid, SpacesInGrid];
 
@@ -339,25 +326,6 @@ namespace KompasCore.GameCore
             }
         }
         #endregion game mechanics
-
-        public void OnMouseDown()
-        {
-            //select nothing
-            game.uiCtrl.SelectCard(null, true);
-
-            if (game.targetMode != Game.TargetMode.SpaceTarget) return;
-
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit hit))
-            {
-                var intersection = transform.InverseTransformPoint(hit.point);
-
-                int xIntersection = PosToGridIndex(intersection.x);
-                int yIntersection = PosToGridIndex(intersection.z);
-                //then, if the game is a clientgame, request a space target
-                game.OnClickBoard(xIntersection, yIntersection);
-            }
-        }
 
         public override string ToString()
         {

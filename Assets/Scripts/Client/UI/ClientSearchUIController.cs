@@ -9,7 +9,6 @@ namespace KompasClient.UI
     public class ClientSearchUIController : MonoBehaviour
     {
         public ClientUIController clientUICtrl;
-        public CardInfoViewClientUIController cardInfoView;
         private ClientGame ClientGame => clientUICtrl.clientGame;
 
         //search buttons
@@ -114,7 +113,7 @@ namespace KompasClient.UI
 
         public void HideIfNotShowingCurrSearchIndex()
         {
-            if (!Searching || searchIndex >= SearchLength || cardInfoView.CurrShown != CurrSearchData.toSearch[searchIndex])
+            if (!Searching || searchIndex >= SearchLength)//TODO deal with this while dealing with new search UI || .CurrShown != CurrSearchData.toSearch[searchIndex])
                 HideSearch();
         }
 
@@ -144,7 +143,7 @@ namespace KompasClient.UI
             cardSearchView.SetActive(CurrSearchData.ShouldShowSearchUI);
 
             var toShow = CurrSearchData.toSearch[index];
-            cardInfoView.ShowInfoFor(toShow);
+            //TODO overhaul cardInfoView.ShowInfoFor(toShow);
             bool currentTgt = CurrSearchData.searched.Contains(toShow);
             alreadySelectedText.SetActive(currentTgt);
             toShow.cardCtrl.ShowCurrentTarget(currentTgt);

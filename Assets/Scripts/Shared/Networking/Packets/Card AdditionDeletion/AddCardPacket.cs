@@ -74,7 +74,7 @@ namespace KompasClient.Networking
     {
         public void Execute(ClientGame clientGame)
         {
-            var controller = clientGame.ClientPlayers[controllerIndex];
+            var controller = clientGame.clientPlayers[controllerIndex];
             var card = clientGame.cardRepo.InstantiateClientNonAvatar(json, clientGame, controller, cardId);
             clientGame.cardsByID.Add(cardId, card);
             card.KnownToEnemy = known;
@@ -82,7 +82,7 @@ namespace KompasClient.Networking
             {
                 case CardLocation.Nowhere: break;
                 case CardLocation.Board:
-                    if (attached) clientGame.boardCtrl.GetCardAt((x, y)).AddAugment(card);
+                    if (attached) clientGame.BoardController.GetCardAt((x, y)).AddAugment(card);
                     else card.Play((x, y), controller);
                     break;
                 case CardLocation.Discard:

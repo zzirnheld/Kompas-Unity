@@ -28,7 +28,7 @@ namespace KompasCore.Effects.Identities.ActivationContextCardIdentities
         protected override GameCardBase AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
         {
             var finalSpace = position.From(context, secondaryContext);
-            return context.game.boardCtrl.GetCardAt(finalSpace);
+            return context.game.BoardController.GetCardAt(finalSpace);
         }
     }
 

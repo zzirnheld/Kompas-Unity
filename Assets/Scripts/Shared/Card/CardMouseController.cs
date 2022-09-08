@@ -46,9 +46,7 @@ namespace KompasCore.Cards
             //If the mouse isn't held down rn, then we want to stop showing whatever we're currently showing.
             if (!mouseDown && !dragging) UIController.cardViewController.Show(null);
 
-            //don't allow dragging cards if we're awaiting a target
-            if (Game.targetMode != Game.TargetMode.Free) return;
-            if (dragging)
+            if (UIController.AllowDragging && dragging)
             {
                 if (mouseDown) GoToMouse();
                 else OnMouseUp();
@@ -62,10 +60,9 @@ namespace KompasCore.Cards
             //don't do anything if we're over an event system object, 
             //because that would let us click on cards underneath prompts
             if (EventSystem.current.IsPointerOverGameObject()) return;
-            Debug.Log($"On mouse up on {card.CardName} in target mode {Game.targetMode} at {transform.position}");
 
             //select cards if the player releases the mouse button while over one
-            Game.uiCtrl.SelectCard(card, true);
+            UIController.cardViewController.Show(card);
 
             if (!dragging) return;
             dragging = false;
@@ -77,7 +74,7 @@ namespace KompasCore.Cards
             if (EventSystem.current.IsPointerOverGameObject()) return;
 
             //TODO still hover over even if mouse is on the effect/attack blocks, lol
-            Game.uiCtrl.cardViewController.Show(card);
+            UIController.cardViewController.Show(card);
         }
         #endregion MouseStuff
     }

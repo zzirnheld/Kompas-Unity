@@ -154,7 +154,7 @@ namespace KompasCore.Cards
                     break;
                 case CardLocation.Board:
                     Card.gameObject.transform.localScale = Vector3.one;
-                    Card.gameObject.transform.SetParent(Card.Game.boardObject.transform);
+                    Card.gameObject.transform.SetParent(Card.Game.BoardController.gameObject.transform);
                     MoveTo(Card.Position);
                     SetRotation();
                     if (Card.SpellSubtypes.Any(CardBase.RadialSubtype.Equals)) aoeController.Show(Card.Radius);
@@ -182,7 +182,7 @@ namespace KompasCore.Cards
         /// </summary>
         private void MoveTo((int x, int y) to)
         {
-            transform.localPosition = BoardController.GridIndicesToCardPos(to.x, to.y);
+            transform.localPosition = BoardUIController.GridIndicesToCardPos(to.x, to.y);
         }
 
         public void SpreadOutAugs()

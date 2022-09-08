@@ -18,7 +18,7 @@ namespace KompasClient.Cards
             protected set
             {
                 base.Location = value;
-                ClientGame.clientUICtrl.Leyload = Game.Leyload;
+                ClientGame.clientUIController.Leyload = Game.Leyload;
                 if (cardCtrl != null)
                 {
                     cardCtrl.ShowForCardType(CardType, ClientCameraController.Main.Zoomed);
@@ -78,7 +78,6 @@ namespace KompasClient.Cards
             ClientGame = game;
             ClientController = ClientOwner = owner;
             ClientEffects = effects;
-            mouseCtrl.clientGame = game;
             base.SetCardInfo(serializedCard, id);
             int i = 0;
             foreach (var eff in effects) eff.SetInfo(this, game, i++, owner);
@@ -87,8 +86,7 @@ namespace KompasClient.Cards
         public override void SetN(int n, IStackable stackSrc = null, bool notify = true)
         {
             base.SetN(n, stackSrc, notify);
-            if (ClientGame?.clientUICtrl.ShownCard == this)
-                ClientGame?.clientUICtrl.Refresh();
+            ClientGame?.clientUIController.cardViewController.Refresh();
         }
 
         /// <summary>

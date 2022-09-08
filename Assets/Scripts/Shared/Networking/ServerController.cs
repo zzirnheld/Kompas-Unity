@@ -1,6 +1,7 @@
 ﻿using KompasCore.Networking;
 using KompasCore.UI;
 using KompasServer.GameCore;
+using KompasServer.UI;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
@@ -11,7 +12,7 @@ namespace KompasServer.Networking
     public class ServerController : MonoBehaviour
     {
         public GameObject GamePrefab;
-        public UIController UICtrl;
+        public ServerUIController serverUIController;
         public CardRepository CardRepo;
 
         private TcpListener listener;
@@ -47,7 +48,7 @@ namespace KompasServer.Networking
                 if (currGame == null)
                 {
                     currGame = Instantiate(GamePrefab).GetComponent<ServerGame>();
-                    currGame.Init(UICtrl, CardRepo);
+                    currGame.Init(serverUIController, CardRepo);
                     games.Add(currGame);
                 }
                 if (currGame.AddPlayer(client) >= 2) currGame = null;

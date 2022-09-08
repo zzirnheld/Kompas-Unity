@@ -14,7 +14,28 @@ namespace KompasClient.UI
         public const float maxBoardLocalY = 7f;
 
         public ClientUIController clientUIController;
-        public ClientBoardController boardController;
+        public ClientBoardController clientBoardController;
+
+        public override UIController UIController => clientUIController;
+        public override BoardController BoardController => clientBoardController;
+
+        public override void OnMouseDown()
+        {
+            base.OnMouseDown();
+
+            if (clientUIController.targetMode != TargetMode.SpaceTarget) return;
+
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out RaycastHit hit))
+            {
+                var intersection = transform.InverseTransformPoint(hit.point);
+
+                int xIntersection = PosToGridIndex(intersection.x);
+                int yIntersection = PosToGridIndex(intersection.z);
+                //then, if the game is a clientgame, request a space target
+                clientBoardController.game.OnClickBoard(xIntersection, yIntersection);
+            }
+        }
 
         public bool CardDragEnded(ClientCardController cardController)
         {
@@ -24,10 +45,10 @@ namespace KompasClient.UI
             //then, check if it's on the board, accodring to the local coordinates of the game board)
             if (WithinIgnoreZ(boardLocalPosition, minBoardLocalX, maxBoardLocalX, minBoardLocalY, maxBoardLocalY))
             {
-                int x = BoardController.PosToGridIndex(boardLocalPosition.x);
-                int y = BoardController.PosToGridIndex(boardLocalPosition.z);
+                int x = PosToGridIndex(boardLocalPosition.x);
+                int y = PosToGridIndex(boardLocalPosition.z);
 
-                boardController.AttemptPutCard(cardController.Card, (x, y));
+                clientBoardController.AttemptPutCard(cardController.Card, (x, y));
 
                 return true;
             }

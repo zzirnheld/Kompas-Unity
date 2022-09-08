@@ -38,7 +38,7 @@ namespace KompasServer.Effects.Identities
                 get
                 {
                     var spaces = positions.Item;
-                    var cards = spaces.Select(InitializationContext.game.boardCtrl.GetCardAt).Where(s => s != null).ToArray();
+                    var cards = spaces.Select(InitializationContext.game.BoardController.GetCardAt).Where(s => s != null).ToArray();
                     return cards;
                 }
             }

@@ -18,7 +18,7 @@ namespace KompasServer.Networking
     {
         public Task Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
         {
-            if (serverGame.uiCtrl.DebugMode)
+            if (serverGame.UIController.DebugMode)
             {
                 UnityEngine.Debug.LogWarning($"Debug drawing");
                 serverGame.Draw(player.index);

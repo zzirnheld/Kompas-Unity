@@ -438,7 +438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5edb3e0ef7d92c1449e4ca7649024eef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardCtrl: {fileID: 1007021757811295171}
+  cardCtrl: {fileID: 0}
   aoeBlock: {fileID: 700094654514714408}
 --- !u!1 &990742212740138240
 GameObject:
@@ -1904,7 +1904,6 @@ GameObject:
   - component: {fileID: 8589791269361689367}
   - component: {fileID: 4888445485465765321}
   - component: {fileID: 4110055565959001442}
-  - component: {fileID: 1007021757811295171}
   - component: {fileID: -3233482119781338202}
   m_Layer: 0
   m_Name: Card Prefab
@@ -1957,10 +1956,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   simpleSprite: {fileID: 0}
-  cardCtrl: {fileID: 1007021757811295171}
+  cardCtrl: {fileID: 0}
   attacksThisTurn: 0
   mouseCtrl: {fileID: 1889302329618885808}
-  clientCardCtrl: {fileID: 1007021757811295171}
+  clientCardCtrl: {fileID: 0}
 --- !u!114 &8589791269361689367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1974,10 +1973,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   simpleSprite: {fileID: 0}
-  cardCtrl: {fileID: 1007021757811295171}
+  cardCtrl: {fileID: 0}
   attacksThisTurn: 0
   mouseCtrl: {fileID: 1889302329618885808}
-  clientCardCtrl: {fileID: 1007021757811295171}
+  clientCardCtrl: {fileID: 0}
 --- !u!114 &4888445485465765321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2008,81 +2007,6 @@ MonoBehaviour:
   simpleSprite: {fileID: 0}
   cardCtrl: {fileID: -3233482119781338202}
   attacksThisTurn: 0
---- !u!114 &1007021757811295171
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3146857051703895276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4138ee4b63d269e4fbede91cec7c3613, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  card: {fileID: 5887324738723848399}
-  aoeController: {fileID: 3800830204807716009}
-  zoomedCharFrame: {fileID: 4269587110842798765}
-  zoomedAllFrame: {fileID: 7187772228533361689}
-  unzoomedCharFrame: {fileID: 1457058967496682558}
-  unzoomedAllFrame: {fileID: 1381182798238114637}
-  zoomedCharStatBackgrounds: {fileID: 6649678038580982359}
-  unzoomedCharStatBackgrounds: {fileID: 4484887762729981957}
-  zoomedSpellStatBackgrounds: {fileID: 6362096710813375021}
-  unzoomedSpellStatBackgrounds: {fileID: 9200787146226218536}
-  zoomedAugStatBackgrounds: {fileID: 2074378642539114013}
-  unzoomedAugStatBackgrounds: {fileID: 7958550959631281897}
-  zoomedNText: {fileID: 43076038857365400}
-  zoomedEText: {fileID: 2927600502923973182}
-  zoomedSText: {fileID: 7969599412030038954}
-  zoomedWText: {fileID: 1127007106016459297}
-  zoomedCText: {fileID: 7223276028854072480}
-  zoomedAText: {fileID: 7959067451288392212}
-  unzoomedNText: {fileID: 3625382428148799892}
-  unzoomedEText: {fileID: 7694190298499242399}
-  unzoomedSText: {fileID: 3625382428050118368}
-  unzoomedWText: {fileID: 3625382429207079244}
-  unzoomedCText: {fileID: 3625382428906105486}
-  unzoomedAText: {fileID: 3625382427361149801}
-  zoomedNameText: {fileID: 3588942748509429628}
-  zoomedSubtypesText: {fileID: 2955007220089311061}
-  zoomedEffText: {fileID: 1355690315343672827}
-  currentTargetObject: {fileID: 2284527895036328886}
-  validTargetObject: {fileID: 1704564887540371528}
-  uniqueCopyObject: {fileID: 8141676246729589860}
-  linkedCardObject: {fileID: 990742212740138240}
-  primaryStackableObject: {fileID: 8376111146485280923}
-  secondaryStackableObject: {fileID: 3737563041996298483}
-  attackOscillator: {fileID: 6079762201271065829}
-  effectOscillator: {fileID: 3077842578521903605}
-  cardImageImage: {fileID: 3907843146035040887}
-  nUnzoomedImage: {fileID: 2406733741436276522}
-  eUnzoomedImage: {fileID: 4394529296884031115}
-  sUnzoomedImage: {fileID: 7436165385321609882}
-  wUnzoomedImage: {fileID: 4895899736895302184}
-  cUnzoomedImage: {fileID: 4670346748216496224}
-  aUnzoomedImage: {fileID: 3038559404034529622}
-  zoomedHazeImage: {fileID: 5715102953295328321}
-  zoomedCharHaze: {fileID: 21300000, guid: 6a72156f301626e4cbd955ff2f237f7b, type: 3}
-  zoomedNonCharHaze: {fileID: 21300000, guid: 7ad7e44fbcc316546b7d0e0095407166, type: 3}
-  unzoomedHazeImage: {fileID: 7979452342085627890}
-  unzoomedCharHaze: {fileID: 21300000, guid: 64e2802baf50ffa418a4bfeebc697210, type: 3}
-  unzoomedNonCharHaze: {fileID: 21300000, guid: e52a33733c8a68548977630f57744a72,
-    type: 3}
-  revealedImage: {fileID: 4144494382504138341}
-  mouseCtrl: {fileID: 1889302329618885808}
-  friendlyCardFrameMaterial: {fileID: 2100000, guid: 1c2bbf1ca0c72ea46b21f07690a2f53a,
-    type: 2}
-  enemyCardFrameMaterial: {fileID: 2100000, guid: a02188e681b853e4e963acf536e338d3,
-    type: 2}
-  frameObjects:
-  - {fileID: 2041249242724758295}
-  - {fileID: 7843879369269797758}
-  - {fileID: 1459865746560535612}
-  - {fileID: 1445698045428429994}
-  - {fileID: 5371803203059650614}
-  - {fileID: 8368727464063078377}
-  - {fileID: 6176604176492895118}
 --- !u!114 &-3233482119781338202
 MonoBehaviour:
   m_ObjectHideFlags: 0

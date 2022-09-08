@@ -93,10 +93,12 @@ namespace KompasClient.UI
         public ClientEscapeMenuUIController escapeMenuUICtrl;
 
         //card view ui
-        public CardInfoViewClientUIController cardInfoViewUICtrl;
+        public ClientGameMainCardViewController cardInfoViewUICtrl;
 
         //top right detailed effects control ui
         public GameObject detailedEffectsCtrlUIObject;
+
+        public ClientSettingsUIController clientUISettingsCtrl;
 
         public ClientBoardUIController boardUIController;
 
@@ -148,8 +150,8 @@ namespace KompasClient.UI
             else if (!IPAddress.TryParse(ip, out _)) return;
 
             //Stash ip
-            clientGame.ClientUISettings.defaultIP = ip;
-            clientGame.clientUISettingsCtrl.SaveSettings();
+            clientGame.ClientSettings.defaultIP = ip;
+            clientGame.clientUIController.clientUISettingsCtrl.SaveSettings();
 
             HideConnectUI();
             clientGame.clientNetworkCtrl.Connect(ip);

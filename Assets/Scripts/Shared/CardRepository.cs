@@ -270,7 +270,8 @@ public class CardRepository : MonoBehaviour
 
         //if don't use .where .first it still grabs components that should be destroyed, and are destroyed as far as i can tell
         var card = cardObj.GetComponents<ServerGameCard>().Where(c => !(c is AvatarServerGameCard)).First();
-        cardObj.GetComponents<CardController>().Where(c => !(c is ClientCardController)).First().Card = card;
+        //TODO assign in inspector
+        //cardObj.GetComponents<CardController>().Where(c => !(c is ClientCardController)).First().Card = card;
 
         card.SetInitialCardInfo(cardInfo, serverGame, owner, effects.ToArray(), id);
         card.cardCtrl.SetImage(card.CardName, false);
@@ -317,13 +318,13 @@ public class CardRepository : MonoBehaviour
 
         //if don't use .where .first it still grabs components that should be destroyed, and are destroyed as far as i can tell
         var avatar = avatarObj.GetComponents<AvatarClientGameCard>().Where(c => c is AvatarClientGameCard).First();
-        avatarObj.GetComponents<CardController>().Where(c => c is ClientCardController).First().Card = avatar;
+        //TODO assign in inspector
+        //avatarObj.GetComponents<CardController>().Where(c => c is ClientCardController).First().Card = avatar;
 
         avatar.SetInitialCardInfo(cardInfo, clientGame, owner, effects.ToArray(), id);
-        avatar.gameObject.GetComponentInChildren<ClientCardMouseController>().clientGame = clientGame;
         avatar.cardCtrl.SetImage(avatar.CardName, false);
         clientGame.cardsByID.Add(id, avatar);
-        avatar.clientCardCtrl.ApplySettings(clientGame.clientUISettingsCtrl.ClientSettings);
+        avatar.clientCardCtrl.ApplySettings(clientGame.clientUIController.clientUISettingsCtrl.ClientSettings);
         return avatar;
     }
 
@@ -367,14 +368,11 @@ public class CardRepository : MonoBehaviour
         //if don't use .where .first it still grabs components that should be destroyed, and are destroyed as far as i can tell
         var card = cardObj.GetComponents<ClientGameCard>().Where(c => !(c is AvatarClientGameCard)).First();
         var ctrl = cardObj.GetComponents<ClientCardController>().Where(c => c is ClientCardController).First();
-        ctrl.card = card;
-        ctrl.mouseCtrl.card = card;
 
         Debug.Log($"Successfully created a card? {card != null} for json {json}");
         card.SetInitialCardInfo(cardInfo, clientGame, owner, effects.ToArray(), id);
         card.cardCtrl.SetImage(card.CardName, false);
-        card.gameObject.GetComponentInChildren<ClientCardMouseController>().clientGame = clientGame;
-        card.clientCardCtrl.ApplySettings(clientGame.clientUISettingsCtrl.ClientSettings);
+        card.clientCardCtrl.ApplySettings(clientGame.clientUIController.clientUISettingsCtrl.ClientSettings);
         
         //handle adding existing card links
         foreach (var c in card.Game.Cards)
