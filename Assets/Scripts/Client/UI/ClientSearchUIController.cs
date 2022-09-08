@@ -146,10 +146,10 @@ namespace KompasClient.UI
             //TODO overhaul cardInfoView.ShowInfoFor(toShow);
             bool currentTgt = CurrSearchData.searched.Contains(toShow);
             alreadySelectedText.SetActive(currentTgt);
-            toShow.cardCtrl.ShowCurrentTarget(currentTgt);
-            toShow.cardCtrl.ShowValidTarget(!currentTgt);
-            nextSearchImage.sprite = CurrSearchData.toSearch[NextSearchIndex].simpleSprite;
-            prevSearchImage.sprite = CurrSearchData.toSearch[PrevSearchIndex].simpleSprite;
+            toShow.CardController.gameCardViewController.ShowCurrentTarget(currentTgt);
+            toShow.CardController.gameCardViewController.ShowValidTarget(!currentTgt);
+            nextSearchImage.sprite = CurrSearchData.toSearch[NextSearchIndex].SimpleSprite;
+            prevSearchImage.sprite = CurrSearchData.toSearch[PrevSearchIndex].SimpleSprite;
 
             endButton.SetActive(CurrSearchData.HaveEnough);
             var progress = CurrSearchData.SearchProgress;

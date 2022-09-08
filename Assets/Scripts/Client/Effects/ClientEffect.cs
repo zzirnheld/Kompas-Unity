@@ -22,8 +22,8 @@ namespace KompasClient.Effects
         public override Subeffect[] Subeffects => DummySubeffects;
         public override Trigger Trigger => ClientTrigger;
 
-        public Sprite PrimarySprite => Source.simpleSprite;
-        public CardController PrimaryCardController => Source.cardCtrl;
+        public Sprite PrimarySprite => Source.SimpleSprite;
+        public CardController PrimaryCardController => Source.CardController;
 
         public Sprite SecondarySprite => default;
         public CardController SecondaryCardController => default;
@@ -41,13 +41,13 @@ namespace KompasClient.Effects
         public override void AddTarget(GameCard card)
         {
             base.AddTarget(card);
-            card.cardCtrl.ShowCurrentTarget(true);
+            card.CardController.gameCardViewController.ShowCurrentTarget(true);
         }
 
         public override void RemoveTarget(GameCard card)
         {
             base.RemoveTarget(card);
-            card.cardCtrl.ShowCurrentTarget(false);
+            card.CardController.gameCardViewController.ShowCurrentTarget(false);
         }
 
         //TODO eventually make client aware of activation contexts

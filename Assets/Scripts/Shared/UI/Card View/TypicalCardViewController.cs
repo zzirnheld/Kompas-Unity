@@ -4,11 +4,7 @@ using UnityEngine.UI;
 
 namespace KompasCore.UI
 {
-    /// <summary>
-    /// Controls showing the card in the main, top-left-of-the-board, location.
-    /// Also delegates any additional gameplay highlights to the appropriate things
-    /// </summary>
-    public abstract class GameMainCardViewController : CardViewController
+    public abstract class TypicalCardViewController : BaseCardViewController
     {
         [Header("Stats text boxes")]
         public TMP_Text nText;
@@ -24,6 +20,23 @@ namespace KompasCore.UI
         [Header("Card face image")]
         public Image cardImageImage;
 
+        [Header("Misc all typical cards")]
+        public ReminderTextParentUIController reminderTextsUIController;
+
+        protected override void DisplayNothing()
+        {
+            base.DisplayNothing();
+
+            reminderTextsUIController.ShowNothing();
+        }
+
+        protected override void Display()
+        {
+            base.Display();
+
+            reminderTextsUIController.ShowReminderText(ShownCard);
+        }
+
         protected override void DisplayCardRulesText()
         {
             nameText.text = ShownCard.CardName;
@@ -37,7 +50,7 @@ namespace KompasCore.UI
             eText.text = $"E\n{ShownCard.E}";
             wText.text = $"W\n{ShownCard.W}";
 
-            switch(ShownCard.CardType)
+            switch (ShownCard.CardType)
             {
                 case 'C':
                     costText.text = $"S\n{ShownCard.S}";
@@ -60,6 +73,7 @@ namespace KompasCore.UI
                     eText.gameObject.SetActive(false);
                     wText.gameObject.SetActive(false);
                     break;
+                default: throw new System.ArgumentException("Failed to account for new card type in displaying card's numeric stats");
             }
         }
 

@@ -28,8 +28,7 @@ namespace KompasClient.UI
 
         protected void SetImage()
         {
-            simpleSprite = Resources.Load<Sprite>("Simple Sprites/" + FileName);
-            Image.sprite = simpleSprite;
+            Image.sprite = SimpleSprite;
         }
 
         public void OnPointerDown(PointerEventData eventData)

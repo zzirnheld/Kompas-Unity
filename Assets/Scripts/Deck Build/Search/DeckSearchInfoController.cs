@@ -15,7 +15,7 @@ namespace KompasDeckbuilder
 
         public void Initialize(DeckbuilderCard card, DeckbuildSearchController cardSearchCtrl)
         {
-            simpleImage.sprite = card.simpleSprite;
+            simpleImage.sprite = card.SimpleSprite;
             cardName.text = card.CardName;
             cardBlurb.text = card.BlurbString;
             this.card = card;

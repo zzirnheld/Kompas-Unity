@@ -134,7 +134,7 @@ namespace KompasCore.Cards
         }
         #endregion
 
-        public Sprite simpleSprite;
+        public Sprite SimpleSprite { get; private set; }
 
         public virtual string FileName { get; set; }
 
@@ -154,7 +154,7 @@ namespace KompasCore.Cards
             if (cardName != CardName)
             {
                 //Debug.Log($"Names are different, changing card pics to match name {card.cardName}");
-                simpleSprite = Resources.Load<Sprite>($"Simple Sprites/{cardName}");
+                SimpleSprite = Resources.Load<Sprite>($"Simple Sprites/{cardName}");
             }
             //else Debug.Log("Names match. Set Info not updating pics.");
 

@@ -52,7 +52,7 @@ namespace KompasCore.GameCore
             for (int i = 0; i < hand.Count; i++)
             {
                 hand[i].transform.localPosition = new Vector3((-0.8f * (float)hand.Count) + ((float)i * 2f), 0, 0);
-                hand[i].cardCtrl.SetRotation();
+                hand[i].CardController.SetRotation();
             }
         }
     }

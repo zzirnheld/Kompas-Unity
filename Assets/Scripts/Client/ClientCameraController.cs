@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 public class ClientCameraController : MonoBehaviour
 {
     public static ClientCameraController Main { get; private set; }
+    public static bool MainZoomed => Main == null ? false : Main.Zoomed;
 
     public const float ZoomFactor = 1f;
     public const float PanFactorBase = 0.4f;

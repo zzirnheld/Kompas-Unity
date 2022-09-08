@@ -1,20 +1,21 @@
+using KompasClient.UI;
 using KompasCore.Cards;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace KompasClient.UI
+namespace KompasCore.UI
 {
-    public class ReminderTextParentClientUIController : MonoBehaviour
+    public class ReminderTextParentUIController : MonoBehaviour
     {
         public const string RemindersJsonPath = "Reminder Text/Reminder Texts";
 
         public Transform remindersParent;
         public GameObject reminderPrefab;
 
-        private readonly List<ReminderTextClientUIController> reminderCtrls
-            = new List<ReminderTextClientUIController>();
+        private readonly List<ReminderTextUIController> reminderCtrls
+            = new List<ReminderTextUIController>();
 
         private ReminderTextsContainer reminders;
 
@@ -24,6 +25,8 @@ namespace KompasClient.UI
             reminders = JsonConvert.DeserializeObject<ReminderTextsContainer>(jsonAsset.text);
             gameObject.SetActive(false);
         }
+
+        public void ShowNothing() => gameObject.SetActive(false);
 
         public void ShowReminderText(GameCard card)
         {
@@ -36,7 +39,7 @@ namespace KompasClient.UI
                 if (card.EffText.Contains(reminder.keyword))
                 {
                     var obj = Instantiate(reminderPrefab, remindersParent);
-                    var ctrl = obj.GetComponent<ReminderTextClientUIController>();
+                    var ctrl = obj.GetComponent<ReminderTextUIController>();
                     ctrl.Initialize(reminder.keyword, reminder.reminder);
                     reminderCtrls.Add(ctrl);
                 }

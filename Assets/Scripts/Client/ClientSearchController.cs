@@ -107,8 +107,8 @@ namespace KompasClient.GameCore
             if (CurrSearchData.Value.searched.Contains(nextTarget))
             {
                 RemoveTarget(nextTarget);
-                nextTarget.cardCtrl.ShowValidTarget();
-                nextTarget.cardCtrl.ShowCurrentTarget(false);
+                nextTarget.CardController.gameCardViewController.ShowValidTarget();
+                nextTarget.CardController.gameCardViewController.ShowCurrentTarget(false);
             }
             //otherwise, deselect
             else AddTarget(nextTarget);
@@ -134,8 +134,8 @@ namespace KompasClient.GameCore
             }
 
             CurrSearchData.Value.searched.Add(nextTarget);
-            nextTarget.cardCtrl.ShowCurrentTarget();
-            nextTarget.cardCtrl.ShowValidTarget(false);
+            nextTarget.CardController.gameCardViewController.ShowCurrentTarget();
+            nextTarget.CardController.gameCardViewController.ShowValidTarget(false);
             // Debug.Log($"Added {nextTarget.CardName}, targets are now {string.Join(",", CurrSearchData.Value.searched.Select(c => c.CardName))}");
 
             var listRestriction = CurrSearchData.Value.listRestriction;
@@ -181,7 +181,7 @@ namespace KompasClient.GameCore
             else throw new System.ArgumentException($"Unknown target mode {targetMode} in search ctrl");
 
             //put the relevant card back
-            foreach (var card in CurrSearchData.Value.searched) card.cardCtrl.PutBack();
+            foreach (var card in CurrSearchData.Value.searched) card.CardController.PutBack();
 
             ResetSearch();
 

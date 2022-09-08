@@ -111,7 +111,7 @@ namespace KompasClient.GameCore
 
         public void PutCardsBack()
         {
-            foreach (var c in dirtyCardList) c.cardCtrl.PutBack();
+            foreach (var c in dirtyCardList) c.CardController.PutBack();
             dirtyCardList.Clear();
         }
 
@@ -166,7 +166,7 @@ namespace KompasClient.GameCore
             //TODO make this better with a dirty list
             foreach (var c in Cards.Where(c => c != null && c.gameObject.activeSelf))
             {
-                c.cardCtrl.ShowForCardType(c.CardType, zoomed);
+                c.CardController.gameCardViewController.Refresh();
             }
         }
 
@@ -198,7 +198,7 @@ namespace KompasClient.GameCore
         {
             ClientCameraController.ZoomThreshold = ClientSettings.zoomThreshold;
             clientUIController.ApplySettings(ClientSettings);
-            foreach (var card in ClientCards) card.clientCardCtrl.ApplySettings(ClientSettings);
+            foreach (var card in Cards) card.CardController.gameCardViewController.Refresh();
         }
 
         #region targeting
@@ -223,7 +223,7 @@ namespace KompasClient.GameCore
         /// </summary>
         public void ShowNoTargets()
         {
-            foreach (var card in Cards) card.cardCtrl.HideTarget();
+            foreach (var card in Cards) card.CardController.gameCardViewController.HideTarget();
         }
 
         /// <summary>
@@ -233,7 +233,7 @@ namespace KompasClient.GameCore
         {
             if (CurrentPotentialTargets != null)
             {
-                foreach (var card in CurrentPotentialTargets) card.cardCtrl.ShowValidTarget();
+                foreach (var card in CurrentPotentialTargets) card.CardController.gameCardViewController.ShowValidTarget();
             }
             else ShowNoTargets();
         }

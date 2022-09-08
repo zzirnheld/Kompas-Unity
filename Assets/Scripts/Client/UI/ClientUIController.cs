@@ -93,7 +93,7 @@ namespace KompasClient.UI
         public ClientEscapeMenuUIController escapeMenuUICtrl;
 
         //card view ui
-        public ClientGameMainCardViewController cardInfoViewUICtrl;
+        public ClientSidebarCardViewController cardInfoViewUICtrl;
 
         //top right detailed effects control ui
         public GameObject detailedEffectsCtrlUIObject;
@@ -262,8 +262,8 @@ namespace KompasClient.UI
             }
         }
 
-        public void ShowOptionalTriggerSource() => currOptionalTrigger?.Source.cardCtrl.ShowPrimaryOfStackable(true);
-        public void HideOptionalTriggerSource() => currOptionalTrigger?.Source.cardCtrl.ShowPrimaryOfStackable(false);
+        public void ShowOptionalTriggerSource() => currOptionalTrigger?.Source.CardController.gameCardViewController.ShowPrimaryOfStackable(true);
+        public void HideOptionalTriggerSource() => currOptionalTrigger?.Source.CardController.gameCardViewController.ShowPrimaryOfStackable(false);
 
         public void RespondToTrigger(bool answer)
         {

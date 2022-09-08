@@ -32,8 +32,8 @@ namespace KompasDeckbuilder
         public TMP_Text EffectText;
 
         private Sprite CardBack;
-        private readonly List<ReminderTextClientUIController> reminderCtrls
-            = new List<ReminderTextClientUIController>();
+        private readonly List<ReminderTextUIController> reminderCtrls
+            = new List<ReminderTextUIController>();
         public Transform remindersParent;
         public GameObject reminderPrefab;
         public ReminderTextsContainer Reminders { get; private set; }
@@ -129,7 +129,7 @@ namespace KompasDeckbuilder
                 if (cardInfo.EffText.Contains(reminder.keyword))
                 {
                     var obj = Instantiate(reminderPrefab, remindersParent);
-                    var ctrl = obj.GetComponent<ReminderTextClientUIController>();
+                    var ctrl = obj.GetComponent<ReminderTextUIController>();
                     ctrl.Initialize(reminder.keyword, reminder.reminder);
                     reminderCtrls.Add(ctrl);
                 }

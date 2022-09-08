@@ -7,25 +7,23 @@ using UnityEngine;
 
 namespace KompasClient.UI
 {
-    public class ClientGameMainCardViewController : GameMainCardViewController
+    public class ClientSidebarCardViewController : SidebarCardViewController
     {
         public ClientGame clientGame;
 
-        [Header("Other things to display card-related info")]
-        public BoardUIController boardUIController;
+        [Header("Client-specific UI Controllers")]
         public EffectsParentClientUIController effectsUIController;
-        public ReminderTextParentClientUIController reminderTextsUIController;
         public ClientPipsUIController pipsUIController;
 
         public ClientSearchUIController searchUICtrl;
 
+        //TODO move to own controller
         private readonly List<GameCard> shownUniqueCopies = new List<GameCard>();
+        //TODO move to own controller
         private readonly HashSet<GameCard> shownLinkedCards = new HashSet<GameCard>();
 
-        public ReminderTextsContainer Reminders { get; private set; }
 
-
-
+        //TODO move these to their own controller
         public GameObject conditionParentObject;
         public GameObject negatedObject;
         public GameObject activatedObject;
@@ -43,8 +41,6 @@ namespace KompasClient.UI
             ClearShownUniqueCopies();
             ClearShownCardLinks();
 
-            //Delegate other responsibilities
-            boardUIController.ShowNothing();
             pipsUIController.HighlightPipsFor(0);
         }
 
@@ -53,11 +49,11 @@ namespace KompasClient.UI
             base.Display();
 
             //Delegate other responsibilities
-            boardUIController.ShowForCard(ShownCard);
             effectsUIController.ShowEffButtons(ShownCard);
             pipsUIController.HighlightPipsFor(ShownCard);
 
-
+            ShowUniqueCopies();
+            ShowCardLinks();
             conditionParentObject.SetActive(ShownCard.Negated || ShownCard.Activated);
             negatedObject.SetActive(ShownCard.Negated);
             activatedObject.SetActive(ShownCard.Activated);
@@ -65,7 +61,7 @@ namespace KompasClient.UI
 
         private void ClearShownUniqueCopies()
         {
-            foreach (var c in shownUniqueCopies) c.cardCtrl.ShowUniqueCopy(false);
+            foreach (var c in shownUniqueCopies) c.CardController.gameCardViewController.ShowUniqueCopy(false);
             shownUniqueCopies.Clear();
         }
 
@@ -78,7 +74,7 @@ namespace KompasClient.UI
                 var copies = clientGame.Cards.Where(c => c.Location == CardLocation.Board && c.IsFriendlyCopyOf(ShownCard));
                 foreach (var copy in copies)
                 {
-                    copy.cardCtrl.ShowUniqueCopy(true);
+                    copy.CardController.gameCardViewController.ShowUniqueCopy(true);
                     shownUniqueCopies.Add(copy);
                 }
             }
@@ -86,7 +82,7 @@ namespace KompasClient.UI
 
         private void ClearShownCardLinks()
         {
-            foreach (var c in shownLinkedCards) c.cardCtrl.ShowLinkedCard(false);
+            foreach (var c in shownLinkedCards) c.CardController.gameCardViewController.ShowLinkedCard(false);
             shownLinkedCards.Clear();
         }
 
@@ -99,7 +95,7 @@ namespace KompasClient.UI
                 {
                     if (card == default) continue;
                     shownLinkedCards.Add(card);
-                    card.cardCtrl.ShowLinkedCard(true);
+                    card.CardController.gameCardViewController.ShowLinkedCard(true);
                 }
             }
         }

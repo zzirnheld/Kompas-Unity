@@ -44,7 +44,7 @@ namespace KompasServer.Networking
             else
             {
                 UnityEngine.Debug.LogError($"Tried to debug set NESW of card with id {cardId} while NOT in debug mode!");
-                card.cardCtrl.PutBack();
+                card.CardController.PutBack();
             }
             return Task.CompletedTask;
         }

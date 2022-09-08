@@ -10,7 +10,7 @@ namespace KompasClient.UI
     public class EffectsParentClientUIController : MonoBehaviour
     {
         //public GameObject effButtonsParentObject; //should just be this.gameObject now
-        public ClientGameMainCardViewController mainCardViewController;
+        public ClientSidebarCardViewController mainCardViewController;
 
         public Transform effBtnsParent;
         public GameObject effBtnPrefab;

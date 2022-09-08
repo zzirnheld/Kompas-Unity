@@ -29,7 +29,7 @@ namespace KompasClient.UI
                 var obj = Instantiate(cardImagePrefab, parent: targetsObjParent);
                 images.Add(obj);
                 Image img = obj.GetComponent<Image>();
-                img.sprite = c.simpleSprite;
+                img.sprite = c.SimpleSprite;
             }
 
             gameObject.SetActive(true);

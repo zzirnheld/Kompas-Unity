@@ -7,11 +7,11 @@ namespace KompasClient.Effects
 {
     public class ClientAttack : Attack, IClientStackable
     {
-        public Sprite PrimarySprite => attacker.simpleSprite;
-        public CardController PrimaryCardController => attacker.cardCtrl;
+        public Sprite PrimarySprite => attacker.SimpleSprite;
+        public CardController PrimaryCardController => attacker.CardController;
 
-        public Sprite SecondarySprite => defender.simpleSprite;
-        public CardController SecondaryCardController => defender.cardCtrl;
+        public Sprite SecondarySprite => defender.SimpleSprite;
+        public CardController SecondaryCardController => defender.CardController;
 
         public string StackableBlurb => $"{attacker.CardName} attacks {defender.CardName}";
 

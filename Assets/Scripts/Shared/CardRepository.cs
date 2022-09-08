@@ -223,7 +223,6 @@ public class CardRepository : MonoBehaviour
 
         var avatar = avatarObj.GetComponents<AvatarServerGameCard>().Where(c => c is AvatarServerGameCard).First();
         avatar.SetInitialCardInfo(card, serverGame, owner, effects.ToArray(), id);
-        avatar.cardCtrl.SetImage(avatar.CardName, false);
         serverGame.cardsByID.Add(id, avatar);
         return avatar;
     }
@@ -274,7 +273,6 @@ public class CardRepository : MonoBehaviour
         //cardObj.GetComponents<CardController>().Where(c => !(c is ClientCardController)).First().Card = card;
 
         card.SetInitialCardInfo(cardInfo, serverGame, owner, effects.ToArray(), id);
-        card.cardCtrl.SetImage(card.CardName, false);
         return card;
     }
 
@@ -322,9 +320,7 @@ public class CardRepository : MonoBehaviour
         //avatarObj.GetComponents<CardController>().Where(c => c is ClientCardController).First().Card = avatar;
 
         avatar.SetInitialCardInfo(cardInfo, clientGame, owner, effects.ToArray(), id);
-        avatar.cardCtrl.SetImage(avatar.CardName, false);
         clientGame.cardsByID.Add(id, avatar);
-        avatar.clientCardCtrl.ApplySettings(clientGame.clientUIController.clientUISettingsCtrl.ClientSettings);
         return avatar;
     }
 
@@ -371,9 +367,8 @@ public class CardRepository : MonoBehaviour
 
         Debug.Log($"Successfully created a card? {card != null} for json {json}");
         card.SetInitialCardInfo(cardInfo, clientGame, owner, effects.ToArray(), id);
-        card.cardCtrl.SetImage(card.CardName, false);
-        card.clientCardCtrl.ApplySettings(clientGame.clientUIController.clientUISettingsCtrl.ClientSettings);
-        
+        card.clientCardController.gameCardViewController.Refresh();
+
         //handle adding existing card links
         foreach (var c in card.Game.Cards)
         {

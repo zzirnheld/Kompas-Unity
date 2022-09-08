@@ -3,7 +3,7 @@ using TMPro;
 
 namespace KompasClient.UI
 {
-    public class ReminderTextClientUIController : MonoBehaviour
+    public class ReminderTextUIController : MonoBehaviour
     {
         public TMP_Text keywordText;
         public TMP_Text descriptionText;

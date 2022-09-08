@@ -19,9 +19,9 @@ namespace KompasClient.Cards
             {
                 base.Location = value;
                 ClientGame.clientUIController.Leyload = Game.Leyload;
-                if (cardCtrl != null)
+                if (CardController != null)
                 {
-                    cardCtrl.ShowForCardType(CardType, ClientCameraController.Main.Zoomed);
+                    CardController.gameCardViewController.Refresh();
                     UpdateRevealed();
                 }
             }
@@ -34,7 +34,7 @@ namespace KompasClient.Cards
             set
             {
                 clientController = value;
-                if (cardCtrl != null) cardCtrl.SetRotation();
+                if (CardController != null) CardController.gameCardViewController.Refresh();
             }
         }
         public override Player Controller
@@ -54,7 +54,8 @@ namespace KompasClient.Cards
         public override IEnumerable<Effect> Effects => ClientEffects;
         public override bool IsAvatar => false;
         public ClientCardMouseController mouseCtrl;
-        public ClientCardController clientCardCtrl;
+        public ClientCardController clientCardController;
+        public override CardController CardController => clientCardController;
 
         private bool knownToEnemy = false;
         public override bool KnownToEnemy
@@ -97,9 +98,9 @@ namespace KompasClient.Cards
         /// </summary>
         private void UpdateRevealed()
         {
-            if (clientCardCtrl != null)
+            if (clientCardController != null)
             {
-                clientCardCtrl.Revealed = KnownToEnemy && InHiddenLocation && !Owner.Friendly;
+                clientCardController.Revealed = KnownToEnemy && InHiddenLocation && !Owner.Friendly;
             }
         }
     }

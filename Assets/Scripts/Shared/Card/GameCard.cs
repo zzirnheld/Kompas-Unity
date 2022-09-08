@@ -19,9 +19,9 @@ namespace KompasCore.Cards
         public const string AugmentCost = "A";
         public const string CostStat = "Cost";
 
+        public abstract CardController CardController { get; }
         public abstract Game Game { get; }
         public int ID { get; private set; }
-        public CardController cardCtrl;
         public override GameCard Card
         {
             get => this;
@@ -89,7 +89,7 @@ namespace KompasCore.Cards
 
                 position = value;
                 //card controller will be null on server. not using null ? because of monobehavior
-                if (cardCtrl != null) cardCtrl.SetPhysicalLocation(Location);
+                if (CardController != null) CardController.SetPhysicalLocation(Location);
                 foreach (var aug in augmentsList) aug.Position = value;
             }
         }
@@ -156,8 +156,12 @@ namespace KompasCore.Cards
             protected set => SpacesMoved = N - value;
         }
 
-        public int attacksThisTurn = 0;
-        public int AttacksThisTurn => attacksThisTurn;
+        public int AttacksThisTurn { get; private set; }
+
+        /// <summary>
+        /// Increment the number of attacks this card has performed this turn
+        /// </summary>
+        public void Attacked() => AttacksThisTurn++;
 
         //restrictions
         public override MovementRestriction MovementRestriction { get; protected set; }
@@ -177,7 +181,7 @@ namespace KompasCore.Cards
             {
                 location = value;
                 //Debug.Log($"Card {ID} named {CardName} location set to {Location}");
-                if (cardCtrl != null) cardCtrl.SetPhysicalLocation(Location);
+                if (CardController != null) CardController.SetPhysicalLocation(Location);
                 //else Debug.LogWarning($"Missing a card control. Is this a debug card?");
             }
         }
@@ -228,7 +232,7 @@ namespace KompasCore.Cards
             PlayRestriction = serializedCard.PlayRestriction ?? new PlayRestriction();
             PlayRestriction.Initialize(initializationContext);
 
-            cardCtrl.ShowForCardType(CardType, false);
+            CardController.gameCardViewController.Refresh();
 
             Debug.Log($"Finished setting up info for card {CardName}");
         }
@@ -291,37 +295,38 @@ namespace KompasCore.Cards
         public override void SetN(int n, IStackable stackSrc, bool onlyStatBeingSet = true)
         {
             base.SetN(n, stackSrc, onlyStatBeingSet);
-            cardCtrl.N = N;
+            //TODO leverage onlyStatBeingSet to only call refresh when necessary. (Will require bookkeeping)
+            CardController.gameCardViewController.Refresh();
         }
 
         public override void SetE(int e, IStackable stackSrc, bool onlyStatBeingSet = true)
         {
             base.SetE(e, stackSrc, onlyStatBeingSet);
-            cardCtrl.E = E;
+            CardController.gameCardViewController.Refresh();
         }
 
         public override void SetS(int s, IStackable stackSrc, bool onlyStatBeingSet = true)
         {
             base.SetS(s, stackSrc, onlyStatBeingSet);
-            cardCtrl.S = S;
+            CardController.gameCardViewController.Refresh();
         }
 
         public override void SetW(int w, IStackable stackSrc, bool onlyStatBeingSet = true)
         {
             base.SetW(w, stackSrc, onlyStatBeingSet);
-            cardCtrl.W = W;
+            CardController.gameCardViewController.Refresh();
         }
 
         public override void SetC(int c, IStackable stackSrc, bool onlyStatBeingSet = true)
         {
             base.SetC(c, stackSrc, onlyStatBeingSet);
-            cardCtrl.C = C;
+            CardController.gameCardViewController.Refresh();
         }
 
         public override void SetA(int a, IStackable stackSrc, bool onlyStatBeingSet = true)
         {
             base.SetA(a, stackSrc, onlyStatBeingSet);
-            cardCtrl.A = A;
+            CardController.gameCardViewController.Refresh();
         }
 
         /// <summary>
@@ -375,7 +380,7 @@ namespace KompasCore.Cards
         public virtual void SetSpacesMoved(int spacesMoved)
             => SpacesMoved = spacesMoved;
         public virtual void SetAttacksThisTurn(int attacksThisTurn)
-            => this.attacksThisTurn = attacksThisTurn;
+            => AttacksThisTurn = attacksThisTurn;
         public virtual void SetTurnsOnBoard(int turnsOnBoard, IStackable stackSrc = null)
             => TurnsOnBoard = turnsOnBoard;
 

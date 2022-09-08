@@ -229,7 +229,6 @@ GameObject:
   - component: {fileID: 3948392805094578988}
   - component: {fileID: 2980843702409283577}
   - component: {fileID: 5371803203059650614}
-  - component: {fileID: 1889302329618885808}
   - component: {fileID: 5003631357137788245}
   m_Layer: 0
   m_Name: Card Frame Bottom
@@ -302,20 +301,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1889302329618885808
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 642374838214709955}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13351909bd3483f4e98c4d1696cf3e85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Card: {fileID: 5887324738723848399}
-  ClientGame: {fileID: 0}
 --- !u!65 &5003631357137788245
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1904,7 +1889,10 @@ GameObject:
   - component: {fileID: 8589791269361689367}
   - component: {fileID: 4888445485465765321}
   - component: {fileID: 4110055565959001442}
-  - component: {fileID: -3233482119781338202}
+  - component: {fileID: 7886279167843408965}
+  - component: {fileID: 745259589303954297}
+  - component: {fileID: 662538351147169323}
+  - component: {fileID: 8232249616109897666}
   m_Layer: 0
   m_Name: Card Prefab
   m_TagString: Untagged
@@ -1955,11 +1943,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2f0bad0f397a8f48b9bf1ff9913be8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  simpleSprite: {fileID: 0}
-  cardCtrl: {fileID: 0}
-  attacksThisTurn: 0
-  mouseCtrl: {fileID: 1889302329618885808}
-  clientCardCtrl: {fileID: 0}
+  mouseCtrl: {fileID: 745259589303954297}
+  clientCardController: {fileID: 7886279167843408965}
 --- !u!114 &8589791269361689367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1972,11 +1957,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5eaf700679447a438067b5b33bda12a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  simpleSprite: {fileID: 0}
-  cardCtrl: {fileID: 0}
-  attacksThisTurn: 0
-  mouseCtrl: {fileID: 1889302329618885808}
-  clientCardCtrl: {fileID: 0}
+  mouseCtrl: {fileID: 745259589303954297}
+  clientCardController: {fileID: 7886279167843408965}
 --- !u!114 &4888445485465765321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1989,9 +1971,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4738e24b32f68694fb5119b5e9f811e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  simpleSprite: {fileID: 0}
-  cardCtrl: {fileID: -3233482119781338202}
-  attacksThisTurn: 0
+  serverCardController: {fileID: 662538351147169323}
 --- !u!114 &4110055565959001442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2004,10 +1984,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bcb8e7268d0fa643be59da4e538ebf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  simpleSprite: {fileID: 0}
-  cardCtrl: {fileID: -3233482119781338202}
-  attacksThisTurn: 0
---- !u!114 &-3233482119781338202
+  serverCardController: {fileID: 662538351147169323}
+--- !u!114 &7886279167843408965
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2016,45 +1994,145 @@ MonoBehaviour:
   m_GameObject: {fileID: 3146857051703895276}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6075e39016768b143af40ac75b10bc93, type: 3}
+  m_Script: {fileID: 11500000, guid: 4138ee4b63d269e4fbede91cec7c3613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card: {fileID: 4888445485465765321}
   aoeController: {fileID: 3800830204807716009}
   zoomedCharFrame: {fileID: 4269587110842798765}
   zoomedAllFrame: {fileID: 7187772228533361689}
   unzoomedCharFrame: {fileID: 1457058967496682558}
   unzoomedAllFrame: {fileID: 1381182798238114637}
-  zoomedCharStatBackgrounds: {fileID: 6649678038580982359}
+  zoomedCharStatBackgrounds: {fileID: 4484887762729981957}
   unzoomedCharStatBackgrounds: {fileID: 4484887762729981957}
   zoomedSpellStatBackgrounds: {fileID: 6362096710813375021}
   unzoomedSpellStatBackgrounds: {fileID: 9200787146226218536}
   zoomedAugStatBackgrounds: {fileID: 2074378642539114013}
   unzoomedAugStatBackgrounds: {fileID: 7958550959631281897}
-  zoomedNText: {fileID: 43076038857365400}
-  zoomedEText: {fileID: 2927600502923973182}
-  zoomedSText: {fileID: 7969599412030038954}
-  zoomedWText: {fileID: 1127007106016459297}
-  zoomedCText: {fileID: 7223276028854072480}
-  zoomedAText: {fileID: 7959067451288392212}
-  unzoomedNText: {fileID: 3625382428148799892}
-  unzoomedEText: {fileID: 7694190298499242399}
-  unzoomedSText: {fileID: 3625382428050118368}
-  unzoomedWText: {fileID: 3625382429207079244}
-  unzoomedCText: {fileID: 3625382428906105486}
-  unzoomedAText: {fileID: 3625382427361149801}
-  zoomedNameText: {fileID: 3588942748509429628}
-  zoomedSubtypesText: {fileID: 2955007220089311061}
-  zoomedEffText: {fileID: 1355690315343672827}
-  currentTargetObject: {fileID: 2284527895036328886}
-  validTargetObject: {fileID: 1704564887540371528}
-  uniqueCopyObject: {fileID: 8141676246729589860}
+  zoomedNText: {fileID: 0}
+  zoomedEText: {fileID: 0}
+  zoomedSText: {fileID: 0}
+  zoomedWText: {fileID: 0}
+  zoomedCText: {fileID: 0}
+  zoomedAText: {fileID: 0}
+  unzoomedNText: {fileID: 0}
+  unzoomedEText: {fileID: 0}
+  unzoomedSText: {fileID: 0}
+  unzoomedWText: {fileID: 0}
+  unzoomedCText: {fileID: 0}
+  unzoomedAText: {fileID: 0}
+  zoomedNameText: {fileID: 0}
+  zoomedSubtypesText: {fileID: 0}
+  zoomedEffText: {fileID: 0}
+  currentTargetObject: {fileID: 0}
+  validTargetObject: {fileID: 0}
+  uniqueCopyObject: {fileID: 0}
   linkedCardObject: {fileID: 0}
-  primaryStackableObject: {fileID: 8376111146485280923}
-  secondaryStackableObject: {fileID: 3737563041996298483}
-  attackOscillator: {fileID: 6079762201271065829}
-  effectOscillator: {fileID: 3077842578521903605}
-  cardImageImage: {fileID: 3907843146035040887}
+  primaryStackableObject: {fileID: 0}
+  secondaryStackableObject: {fileID: 0}
+  attackOscillator: {fileID: 0}
+  effectOscillator: {fileID: 0}
+  cardImageImage: {fileID: 0}
+  clientCard: {fileID: 0}
+  nUnzoomedImage: {fileID: 0}
+  eUnzoomedImage: {fileID: 0}
+  sUnzoomedImage: {fileID: 0}
+  wUnzoomedImage: {fileID: 0}
+  cUnzoomedImage: {fileID: 0}
+  aUnzoomedImage: {fileID: 0}
+  zoomedHazeImage: {fileID: 0}
+  zoomedCharHaze: {fileID: 0}
+  zoomedNonCharHaze: {fileID: 0}
+  unzoomedHazeImage: {fileID: 0}
+  unzoomedCharHaze: {fileID: 0}
+  unzoomedNonCharHaze: {fileID: 0}
+  revealedImage: {fileID: 0}
+  friendlyCardFrameMaterial: {fileID: 0}
+  enemyCardFrameMaterial: {fileID: 0}
+  frameObjects: []
+  mouseController: {fileID: 0}
+--- !u!114 &745259589303954297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3146857051703895276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13351909bd3483f4e98c4d1696cf3e85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  card: {fileID: 0}
+  clientCardController: {fileID: 0}
+--- !u!114 &662538351147169323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3146857051703895276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4f7cc3788bb2584fa341a3ecbf2e30f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aoeController: {fileID: 0}
+  zoomedCharFrame: {fileID: 0}
+  zoomedAllFrame: {fileID: 0}
+  unzoomedCharFrame: {fileID: 0}
+  unzoomedAllFrame: {fileID: 0}
+  zoomedCharStatBackgrounds: {fileID: 0}
+  unzoomedCharStatBackgrounds: {fileID: 0}
+  zoomedSpellStatBackgrounds: {fileID: 0}
+  unzoomedSpellStatBackgrounds: {fileID: 0}
+  zoomedAugStatBackgrounds: {fileID: 0}
+  unzoomedAugStatBackgrounds: {fileID: 0}
+  zoomedNText: {fileID: 0}
+  zoomedEText: {fileID: 0}
+  zoomedSText: {fileID: 0}
+  zoomedWText: {fileID: 0}
+  zoomedCText: {fileID: 0}
+  zoomedAText: {fileID: 0}
+  unzoomedNText: {fileID: 0}
+  unzoomedEText: {fileID: 0}
+  unzoomedSText: {fileID: 0}
+  unzoomedWText: {fileID: 0}
+  unzoomedCText: {fileID: 0}
+  unzoomedAText: {fileID: 0}
+  zoomedNameText: {fileID: 0}
+  zoomedSubtypesText: {fileID: 0}
+  zoomedEffText: {fileID: 0}
+  currentTargetObject: {fileID: 0}
+  validTargetObject: {fileID: 0}
+  uniqueCopyObject: {fileID: 0}
+  linkedCardObject: {fileID: 0}
+  primaryStackableObject: {fileID: 0}
+  secondaryStackableObject: {fileID: 0}
+  attackOscillator: {fileID: 0}
+  effectOscillator: {fileID: 0}
+  cardImageImage: {fileID: 0}
+  serverCard: {fileID: 0}
+--- !u!114 &8232249616109897666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3146857051703895276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cb81b0a6d752834783a57982fcf52e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nText: {fileID: 0}
+  eText: {fileID: 0}
+  costText: {fileID: 0}
+  wText: {fileID: 0}
+  nameText: {fileID: 0}
+  subtypesText: {fileID: 0}
+  effText: {fileID: 0}
+  cardImageImage: {fileID: 0}
+  reminderTextsUIController: {fileID: 0}
 --- !u!1 &3506276986830655662
 GameObject:
   m_ObjectHideFlags: 0

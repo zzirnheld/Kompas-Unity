@@ -47,7 +47,7 @@ namespace KompasDeckbuilder
         {
             cardSearchController.cardViewParentObj.SetActive(true);
 
-            cardSearchController.CardImage.sprite = simpleSprite;
+            cardSearchController.CardImage.sprite = SimpleSprite;
             cardSearchController.CardNameText.text = CardName;
             cardSearchController.SubtypesText.text = QualifiedSubtypeText;
             cardSearchController.EffectText.text = EffText;
@@ -73,8 +73,7 @@ namespace KompasDeckbuilder
 
         protected void SetImage()
         {
-            simpleSprite = Resources.Load<Sprite>("Simple Sprites/" + FileName);
-            image.sprite = simpleSprite;
+            image.sprite = SimpleSprite;
         }
 
         public void OnPointerClick(PointerEventData eventData)

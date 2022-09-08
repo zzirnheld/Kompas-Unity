@@ -6,7 +6,7 @@ namespace KompasCore.UI
     /// <summary>
     /// Defines the behavior for displaying card information, while not specifying the details of the implementation
     /// </summary>
-    public abstract class CardViewController : MonoBehaviour
+    public abstract class BaseCardViewController : MonoBehaviour
     {
         /// <summary>
         /// The card currently being shown to the user.
@@ -85,17 +85,20 @@ namespace KompasCore.UI
         }
 
         /// <summary>
-        /// Display the ShownCard's rules text, like its name, type line, and effect text
+        /// Display the ShownCard's rules text, like its name, type line, and effect text.
+        /// Called only when the card's info changes, or is refreshed
         /// </summary>
         protected abstract void DisplayCardRulesText();
 
         /// <summary>
         /// Display the ShownCard's stats
+        /// Called only when the card's info changes, or is refreshed
         /// </summary>
         protected abstract void DisplayCardNumericStats();
 
         /// <summary>
         /// Display the ShownCard's image, as appropriate
+        /// Called only when the card's info changes, or is refreshed
         /// </summary>
         protected abstract void DisplayCardImage();
 

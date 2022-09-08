@@ -16,6 +16,9 @@ namespace KompasServer.Cards
         public ServerGame ServerGame { get; private set; }
         public override Game Game => ServerGame;
 
+        public ServerCardController serverCardController;
+        public override CardController CardController => serverCardController;
+
         public ServerEffectsController EffectsController => ServerGame?.effectsController;
         public ServerNotifier ServerNotifier => ServerController?.ServerNotifier;
 
@@ -26,7 +29,7 @@ namespace KompasServer.Cards
             set
             {
                 serverController = value;
-                cardCtrl.SetRotation();
+                CardController.SetRotation();
                 ServerNotifier.NotifyChangeController(this, ServerController);
                 foreach (var eff in Effects) eff.Controller = value;
             }
