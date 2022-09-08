@@ -70,7 +70,9 @@ namespace KompasCore.Cards
         {
             //if the mouse is currently over a ui element, don't swap what you're seeing
             if (EventSystem.current.IsPointerOverGameObject()) return;
-            Game.uiCtrl.HoverOver(Card);
+
+            if (Input.GetMouseButtonDown(1)) Game.uiCtrl.RightClick(Card);
+            else Game.uiCtrl.HoverOver(Card);
         }
         #endregion MouseStuff
     }

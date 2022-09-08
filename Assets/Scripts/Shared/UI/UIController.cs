@@ -39,6 +39,8 @@ namespace KompasCore.UI
         public TMP_InputField ipInputField;
         public GameObject networkingParent;
 
+        public WorldCardViewController cardViewController;
+
         //selection variables
         public GameCard SelectedCard { get; protected set; }
 
@@ -96,6 +98,15 @@ namespace KompasCore.UI
         /// Shows information for the <paramref name="card"/>, as you hover over it.
         /// If the <paramref name="card"/> is null, shows information for the currently selected card, if any.
         /// </summary>
-        public void HoverOver(GameCard card) => ShowInfoFor(card ?? SelectedCard);
+        public void HoverOver(GameCard card)
+        {
+            ShowInfoFor(card ?? SelectedCard);
+            cardViewController.Show(card);
+        }
+
+        public void RightClick(GameCard card)
+        {
+            cardViewController.Focus(card);
+        }
     }
 }

@@ -28,9 +28,17 @@ namespace KompasCore.UI
         /// <param name="card"></param>
         public void Focus(GameCardBase card)
         {
-            Show(card, focusedCard == card);
+            Show(card);
             focusedCard = card;
             //TODO handle card search ui locking from being able to focus on any other card
+        }
+
+        /// <summary>
+        /// Force an update to the currently shown card's information being displayed
+        /// </summary>
+        public void Refresh()
+        {
+            Show(ShownCard, true);
         }
 
         /// <summary>
@@ -43,12 +51,31 @@ namespace KompasCore.UI
             //Unless explicitly refreshing card, if already showing that card, no-op.
             if (card == ShownCard && !refresh) return;
 
-            ShownCard = card;
+            //If we're passed in null, we want to show the focused card, if there is one
+            ShownCard = card ?? focusedCard;
 
-            //Display any relevant information for the card
+            //If we're now showing nothing, hide the window and be done
+            if (ShownCard == null)
+            {
+                ShowingInfo = false;
+                return;
+            }
+
+            //If not showing nothing, make sure we're showing information
+            ShowingInfo = true;
+            //and display any relevant information for the card
             DisplayCardRulesText();
             DisplayCardNumericStats();
             DisplayCardImage();
+        }
+
+        /// <summary>
+        /// How to show or hide this card view controller.
+        /// Can override for special behavior, but the default is to just enable/disable the GameObject
+        /// </summary>
+        protected virtual bool ShowingInfo
+        {
+            set => gameObject.SetActive(value);
         }
 
         /// <summary>
