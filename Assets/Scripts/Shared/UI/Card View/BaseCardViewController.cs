@@ -24,11 +24,10 @@ namespace KompasCore.UI
         /// If we're not currently doing something like hovering over another card, this is the one we should be showing
         /// </summary>
         /// <param name="card"></param>
-        public void Focus(GameCard card)
+        public virtual void Focus(GameCard card)
         {
             Show(card);
             focusedCard = card;
-            //TODO handle card search ui locking from being able to focus on any other card
         }
 
         /// <summary>

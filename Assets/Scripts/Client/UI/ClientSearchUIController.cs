@@ -15,9 +15,7 @@ namespace KompasClient.UI
         public GameObject endButton;
 
         //card search
-        public GameObject cardSearchView;
         public GameObject confirmTargetPrompt;
-        //public Image cardSearchImage;
         public GameObject alreadySelectedText;
         public Button searchTargetButton;
         public TMP_Text searchTargetButtonText;
@@ -33,7 +31,7 @@ namespace KompasClient.UI
                 //if not holding shift and you're only choosing one item,
                 //or you're holding shift but you're choosing more than one item,
                 //find the next different card to skip to
-                if (!(Input.GetKey(KeyCode.LeftShift) ^ CurrSearchData.listRestriction.ChooseMultiple))
+                if (Input.GetKey(KeyCode.LeftShift) != CurrSearchData.listRestriction.ChooseMultiple)
                 {
                     for (int i = (searchIndex + 1) % SearchLength; i != searchIndex; i = (i + 1) % SearchLength)
                     {
@@ -84,9 +82,9 @@ namespace KompasClient.UI
             Debug.Assert(Searching, "Curr search data must have a value to show a search.");
             searchIndex = 0;
             SearchShowIndex(searchIndex);
-            if (CurrSearchData.targetingSearch) searchTargetButtonText.text = "Choose";
-            else searchTargetButtonText.text = "Cancel";
-            cardSearchView.SetActive(CurrSearchData.ShouldShowSearchUI);
+
+            searchTargetButtonText.text = CurrSearchData.targetingSearch ? "Choose" : "Cancel";
+            gameObject.SetActive(CurrSearchData.ShouldShowSearchUI);
         }
 
         /// <summary>
@@ -97,24 +95,18 @@ namespace KompasClient.UI
             //if the list to search through is null, we're not searching atm.
             if (!Searching) return;
 
-            if (!CurrSearchData.targetingSearch) ClientGame.searchCtrl.ResetSearch();
-            else
+            if (CurrSearchData.targetingSearch)
             {
                 GameCard searchSelected = CurrSearchData.toSearch[searchIndex];
                 ClientGame.searchCtrl.ToggleTarget(searchSelected);
             }
+            else ClientGame.searchCtrl.ResetSearch();
         }
 
         public void HideSearch()
         {
-            cardSearchView.SetActive(false);
+            gameObject.SetActive(false);
             alreadySelectedText.SetActive(false);
-        }
-
-        public void HideIfNotShowingCurrSearchIndex()
-        {
-            if (!Searching || searchIndex >= SearchLength)//TODO deal with this while dealing with new search UI || .CurrShown != CurrSearchData.toSearch[searchIndex])
-                HideSearch();
         }
 
         public void NextCardSearch()
@@ -137,13 +129,15 @@ namespace KompasClient.UI
             {
                 //Debug.LogWarning("Not searching. Hiding search ui in search show index");
                 HideSearch();
+                clientUICtrl.cardInfoViewUIController.ClearFocusLock();
                 return;
             }
 
-            cardSearchView.SetActive(CurrSearchData.ShouldShowSearchUI);
+            gameObject.SetActive(CurrSearchData.ShouldShowSearchUI);
 
             var toShow = CurrSearchData.toSearch[index];
-            //TODO overhaul cardInfoView.ShowInfoFor(toShow);
+            clientUICtrl.cardInfoViewUIController.Focus(toShow);
+
             bool currentTgt = CurrSearchData.searched.Contains(toShow);
             alreadySelectedText.SetActive(currentTgt);
             toShow.CardController.gameCardViewController.ShowCurrentTarget(currentTgt);

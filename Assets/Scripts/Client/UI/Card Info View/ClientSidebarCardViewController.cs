@@ -28,11 +28,43 @@ namespace KompasClient.UI
         public GameObject negatedObject;
         public GameObject activatedObject;
 
+        /// <summary>
+        /// Whether the current card overrides any attempts to focus on a card, that don't specifically ask to override the focus lock.
+        /// Used primarily for searching
+        /// </summary>
+        private bool focusLocked;
+
         private void Update()
         {
             if (Input.GetKeyUp(KeyCode.LeftAlt) || Input.GetKeyUp(KeyCode.RightAlt))
                 Show(null);
         }
+
+        public override void Focus(GameCard card) => Focus(card, false);
+
+        /// <summary>
+        /// Call with lockFocus = true and card = null to clear out a locked focus and show nothing
+        /// </summary>
+        /// <param name="card"></param>
+        /// <param name="lockFocus"></param>
+        public void Focus(GameCard card, bool lockFocus)
+        {
+            //If we're focus-locked and the most recent card 
+            if (focusLocked && !lockFocus)
+            {
+                Debug.Log($"Client sidebar is currently focus-locked on {card}. Not overriding for {card}");
+                return;
+            }
+
+            //If the card is null, we're trying to clear 
+            focusLocked = lockFocus && card != null;
+            base.Focus(card);
+        }
+
+        /// <summary>
+        /// Stop locking focus on a particular card. We'll still be focused on it, though, until focus shifts to another card
+        /// </summary>
+        public void ClearFocusLock() => focusLocked = false;
 
         protected override void DisplayNothing()
         {

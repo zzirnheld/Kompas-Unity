@@ -18,11 +18,11 @@ namespace KompasClient.GameCore
             public readonly bool targetingSearch;
             public readonly List<GameCard> searched;
 
-            public SearchData(GameCard[] toSearch, ListRestriction searchRestriction, bool targetingSearch, List<GameCard> searched)
+            public SearchData(GameCard[] toSearch, ListRestriction listRestriction, bool targetingSearch, List<GameCard> searched)
             {
                 this.toSearch = toSearch;
                 Array.Sort(this.toSearch);
-                this.listRestriction = searchRestriction;
+                this.listRestriction = listRestriction;
                 this.targetingSearch = targetingSearch;
                 this.searched = searched;
             }
@@ -47,12 +47,17 @@ namespace KompasClient.GameCore
                     if (listRestriction == null) return null;
                     else if (listRestriction.HasMin && listRestriction.HasMax)
                         return $"{numSearched} / {listRestriction.minCanChoose} - {listRestriction.maxCanChoose}";
-                    else if (listRestriction.HasMax) return $"{numSearched} / {listRestriction.maxCanChoose}-";
-                    else if (listRestriction.HasMin) return $"{numSearched} / {listRestriction.minCanChoose}+";
+                    else if (listRestriction.HasMax) return $"{numSearched} / up to {listRestriction.maxCanChoose}";
+                    else if (listRestriction.HasMin) return $"{numSearched} / at least {listRestriction.minCanChoose}";
                     else return null;
                 }
             }
         }
+
+        [Header("Related MonoBehaviours")]
+        public ClientGame clientGame;
+        public ClientSearchUIController clientSearchUICtrl;
+        public ConfirmTargetsUIController confirmTargetsCtrl;
 
         public SearchData? CurrSearchData { get; private set; } = null;
         private readonly Stack<SearchData> searchStack = new Stack<SearchData>();
@@ -61,10 +66,6 @@ namespace KompasClient.GameCore
         /// Whether there's currently any card that the player can target in their search, that isn't visible right in front of them.
         /// </summary>
         public bool ShouldShowSearchUI => CurrSearchData?.ShouldShowSearchUI ?? false;
-
-        public ClientGame clientGame;
-        public ClientSearchUIController clientSearchUICtrl;
-        public ConfirmTargetsUIController confirmTargetsCtrl;
 
         public void StartSearch(GameCard[] list, ListRestriction listRestriction, bool targetingSearch = true)
             => StartSearch(new SearchData(list, listRestriction, targetingSearch, new List<GameCard>()));
