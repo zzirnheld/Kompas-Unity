@@ -1704,8 +1704,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clientUICtrl: {fileID: 1615817260}
-  nextShowFor: {fileID: 0}
-  hoveringOverThis: 0
   activateableEffParent: {fileID: 105003669}
   activateableEffPrefab: {fileID: 1610736878007827402, guid: 573ad6a08452cbe4d8f99086e7118ea0,
     type: 3}
@@ -4127,6 +4125,7 @@ GameObject:
   - component: {fileID: 215586125}
   - component: {fileID: 215586124}
   - component: {fileID: 215586123}
+  - component: {fileID: 215586128}
   m_Layer: 5
   m_Name: Reminder Text Bkgd
   m_TagString: Untagged
@@ -4252,6 +4251,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &215586128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 215586121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37a2516d8945c834cbf50112280b586f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reminderPrefab: {fileID: 172806740024015070, guid: 9bec5b8056b590c4b9bb4a4f76ae71db,
+    type: 3}
 --- !u!1 &221501694
 GameObject:
   m_ObjectHideFlags: 0
@@ -8895,21 +8908,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16d97135d0ca7ce449ae3f6fb9c84e36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiCtrl: {fileID: 1615817260}
-  boardCtrl: {fileID: 4063274800751553632}
-  boardObject: {fileID: 8296172668889192585}
   cardRepo: {fileID: 492080564}
-  targetMode: 0
   AvatarPrefab: {fileID: 3146857051703895276, guid: eedbf9517c9afa440a613c7bf437a80e,
     type: 3}
-  ClientPlayers:
-  - {fileID: 1829834588}
-  - {fileID: 1841194802}
   clientNetworkCtrl: {fileID: 2001968206}
   clientNotifier: {fileID: 2001968207}
-  clientUICtrl: {fileID: 1615817260}
-  clientUISettingsCtrl: {fileID: 1411603331}
+  clientBoardController: {fileID: 0}
   clientEffectsCtrl: {fileID: 492080566}
+  clientPlayers: []
+  clientUIController: {fileID: 0}
   searchCtrl: {fileID: 492080565}
   targetsWanted: 0
   canZoom: 0
@@ -10096,6 +10103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1114e75f4373c4246bc84dd8b734bccd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   pipIntervals: 0500000001000000
   pipsPrefabs:
   - {fileID: 7763906538448627419, guid: 2b22702362635be478b55c600f3305d2, type: 3}
@@ -10557,7 +10565,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clientUICtrl: {fileID: 1615817260}
-  cardInfoView: {fileID: 2083542047}
   endButton: {fileID: 837412196}
   cardSearchView: {fileID: 1970981657}
   confirmTargetPrompt: {fileID: 0}
@@ -27066,33 +27073,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd73a85a5b32d9d41944fc022357a00d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardViewController: {fileID: 0}
   debugToggle: {fileID: 0}
-  augmentPrefab: {fileID: 3571964090298831157, guid: 27714b814dc18a345b10e3bf6c6a154d,
-    type: 3}
-  useEffectButtonPrefab: {fileID: 1940061827561737992, guid: 603f9424733bb0746800706bdfff060d,
-    type: 3}
-  boardUICtrl: {fileID: 4063274800751553634}
-  friendlyPipsText: {fileID: 1687662614}
-  enemyPipsText: {fileID: 1006522080}
-  selectedUIParent: {fileID: 0}
-  selectedCardNameText: {fileID: 0}
-  selectedCardImage: {fileID: 0}
-  selectedCardStatsText: {fileID: 0}
-  selectedCardSubtypesText: {fileID: 0}
-  selectedCardEffText: {fileID: 0}
-  UseEffectParent: {fileID: 0}
-  UseEffectGridParent: {fileID: 0}
-  AugmentPanelParent: {fileID: 0}
-  AugmentGridParent: {fileID: 0}
-  negatedParent: {fileID: 0}
-  activatedParent: {fileID: 0}
-  currentStateText: {fileID: 1847867117}
+  clientGame: {fileID: 492080563}
+  targetMode: 0
+  debugPipsField: {fileID: 0}
   ipInputField: {fileID: 2088912172}
   networkingParent: {fileID: 1659427464}
-  cardViewController: {fileID: 5317695733063564781}
-  thingToSearch: []
-  clientGame: {fileID: 492080563}
-  debugPipsField: {fileID: 0}
+  friendlyPipsText: {fileID: 1687662614}
+  enemyPipsText: {fileID: 1006522080}
+  currentStateText: {fileID: 1847867117}
   CurrTurnText: {fileID: 1554178927}
   EndTurnButton: {fileID: 93767712}
   LeyloadText: {fileID: 84373022}
@@ -27119,10 +27109,12 @@ MonoBehaviour:
   DeckAcceptedParent: {fileID: 259802650}
   ConnectedWaitingParent: {fileID: 410188369}
   triggerOrderUI: {fileID: 1439636313}
-  activatorUICtrl: {fileID: 71818826}
+  rightClickUIController: {fileID: 0}
   escapeMenuUICtrl: {fileID: 357244920}
   cardInfoViewUICtrl: {fileID: 2083542047}
   detailedEffectsCtrlUIObject: {fileID: 1580719360}
+  clientUISettingsCtrl: {fileID: 0}
+  boardUIController: {fileID: 0}
 --- !u!1 &1623620544
 GameObject:
   m_ObjectHideFlags: 0
@@ -30373,6 +30365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1114e75f4373c4246bc84dd8b734bccd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   pipIntervals: 0500000001000000
   pipsPrefabs:
   - {fileID: 8305099513132462644, guid: 90a2d65118617cd47b3dbc44119670d2, type: 3}

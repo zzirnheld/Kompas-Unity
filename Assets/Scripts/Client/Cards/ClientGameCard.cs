@@ -53,7 +53,6 @@ namespace KompasClient.Cards
         public ClientEffect[] ClientEffects { get; private set; }
         public override IEnumerable<Effect> Effects => ClientEffects;
         public override bool IsAvatar => false;
-        public ClientCardMouseController mouseCtrl;
         public ClientCardController clientCardController;
         public override CardController CardController => clientCardController;
 

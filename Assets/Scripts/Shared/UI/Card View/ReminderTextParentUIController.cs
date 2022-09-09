@@ -11,7 +11,6 @@ namespace KompasCore.UI
     {
         public const string RemindersJsonPath = "Reminder Text/Reminder Texts";
 
-        public Transform remindersParent;
         public GameObject reminderPrefab;
 
         private readonly List<ReminderTextUIController> reminderCtrls
@@ -38,13 +37,13 @@ namespace KompasCore.UI
             {
                 if (card.EffText.Contains(reminder.keyword))
                 {
-                    var obj = Instantiate(reminderPrefab, remindersParent);
+                    var obj = Instantiate(reminderPrefab, gameObject.transform);
                     var ctrl = obj.GetComponent<ReminderTextUIController>();
                     ctrl.Initialize(reminder.keyword, reminder.reminder);
                     reminderCtrls.Add(ctrl);
                 }
             }
-            remindersParent.gameObject.SetActive(reminderCtrls.Any());
+            gameObject.SetActive(reminderCtrls.Any());
         }
     }
 }

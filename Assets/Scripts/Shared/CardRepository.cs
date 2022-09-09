@@ -222,6 +222,8 @@ public class CardRepository : MonoBehaviour
         foreach (var c in cardCtrlComponents) Destroy(c);
 
         var avatar = avatarObj.GetComponents<AvatarServerGameCard>().Where(c => c is AvatarServerGameCard).First();
+
+        avatar.serverCardController.serverCard = avatar;
         avatar.SetInitialCardInfo(card, serverGame, owner, effects.ToArray(), id);
         serverGame.cardsByID.Add(id, avatar);
         return avatar;
@@ -316,9 +318,9 @@ public class CardRepository : MonoBehaviour
 
         //if don't use .where .first it still grabs components that should be destroyed, and are destroyed as far as i can tell
         var avatar = avatarObj.GetComponents<AvatarClientGameCard>().Where(c => c is AvatarClientGameCard).First();
-        //TODO assign in inspector
-        //avatarObj.GetComponents<CardController>().Where(c => c is ClientCardController).First().Card = avatar;
 
+        avatar.clientCardController.clientCard = avatar;
+        avatar.clientCardController.mouseController.card = avatar;
         avatar.SetInitialCardInfo(cardInfo, clientGame, owner, effects.ToArray(), id);
         clientGame.cardsByID.Add(id, avatar);
         return avatar;

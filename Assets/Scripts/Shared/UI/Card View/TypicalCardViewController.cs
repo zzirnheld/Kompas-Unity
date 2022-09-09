@@ -27,14 +27,15 @@ namespace KompasCore.UI
         {
             base.DisplayNothing();
 
-            reminderTextsUIController.ShowNothing();
+            //TODO make these each linked to their own CardViewController, so they can leverage the TextMeshPro stuff I googled to make tooltip boxes
+            reminderTextsUIController?.ShowNothing();
         }
 
         protected override void Display()
         {
             base.Display();
 
-            reminderTextsUIController.ShowReminderText(ShownCard);
+            reminderTextsUIController?.ShowReminderText(ShownCard);
         }
 
         protected override void DisplayCardRulesText()
