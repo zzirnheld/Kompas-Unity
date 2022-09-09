@@ -1,0 +1,62 @@
+{
+	"cardType": 65,
+	"cardName": "Hibernation",
+	"effText": "Negate this character.\nWhen I vanish, give them +10 ESW.",
+	"effects": [
+		{
+            "blurb": "Hibernation",
+			"triggerData": {
+				"triggerCondition": "Augment Attached",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.TemporaryNegateSubeffect, Assembly-CSharp",
+					"endCondition": "Augment Detached",
+					"triggerRestriction": {
+						"triggerRestrictions": [
+							"This Card is Main Card"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+                    "endCondition": "Vanish",
+                    "triggerRestriction": {
+                        "triggerRestrictions": [
+                            "This Card is Main Card"
+                        ]
+                    }
+				},
+				{
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eModifier": 10,
+					"sModifier": 10,
+					"wModifier": 10
+				}
+			]
+		}
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Augment Normal Restrictions"
+		],
+		"effectRestrictions": [
+			"Augment Effect Restrictions"
+		]
+	},
+	"spellTypes": [
+		"Vanishing"
+	],
+	"duration": 3,
+	"a": 1,
+	"subtypeText": "Vanishing 3",
+	"augSubtypes": []
+}

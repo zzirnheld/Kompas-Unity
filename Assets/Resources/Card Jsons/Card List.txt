@@ -604,6 +604,19 @@ undying/support/Circle of Life
 undying/support/Endless Shape
 undying/support/Neverending Search
 
+vanilla/characters/Squirrel
+vanilla/characters/Rabbit
+vanilla/characters/Spider
+vanilla/characters/Tortoise
+vanilla/characters/Snake
+vanilla/characters/Deer
+vanilla/characters/Boar
+vanilla/characters/Elephant
+
+vanilla/support/Hibernation
+vanilla/support/See Red
+vanilla/support/Tunnel Vision
+
 vessels/Empty Vessel
 vessels/Fortified Vessel
 vessels/Hardy Vessel
