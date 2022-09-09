@@ -27,6 +27,8 @@ public class ClientCameraController : MonoBehaviour
 
     public ClientGame clientGame;
 
+    public GameObject selectedCardGameObject;
+
     private void Awake()
     {
         Main = this;
@@ -56,5 +58,7 @@ public class ClientCameraController : MonoBehaviour
         if (Input.GetKey(KeyCode.E)) transform.Rotate(Vector3.forward, RotationAngle);
 
         if (Input.GetKeyUp(KeyCode.Space)) transform.eulerAngles = new Vector3(90f, 0f, 0f);
+
+        //selectedCardGameObject.transform.LookAt(transform, Vector3.up);
     }
 }
