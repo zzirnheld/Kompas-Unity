@@ -12,6 +12,7 @@ namespace KompasServer.GameCore
     public class ServerBoardController : BoardController
     {
         public ServerGame ServerGame;
+        public override Game Game => ServerGame;
 
         public ServerNotifier ServerNotifierByIndex(int index) => ServerGame.serverPlayers[index].ServerNotifier;
         public ServerEffectsController EffectsController => ServerGame.effectsController;

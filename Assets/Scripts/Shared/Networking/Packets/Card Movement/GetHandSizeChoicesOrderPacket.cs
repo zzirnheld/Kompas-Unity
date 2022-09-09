@@ -30,7 +30,7 @@ namespace KompasClient.Networking
     {
         public void Execute(ClientGame clientGame)
         {
-            clientGame.clientUIController.targetMode = TargetMode.HandSize;
+            clientGame.clientUIController.TargetMode = TargetMode.HandSize;
             ListRestriction listRestriction = null;
 
             try

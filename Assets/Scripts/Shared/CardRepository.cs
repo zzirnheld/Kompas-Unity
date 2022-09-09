@@ -367,7 +367,7 @@ public class CardRepository : MonoBehaviour
         var card = cardObj.GetComponents<ClientGameCard>().Where(c => !(c is AvatarClientGameCard)).First();
         var ctrl = cardObj.GetComponents<ClientCardController>().Where(c => c is ClientCardController).First();
 
-        Debug.Log($"Successfully created a card? {card != null} for json {json}");
+        Debug.Log($"Successfully created a card? {card != null} for json {json} with controller {ctrl}");
         card.SetInitialCardInfo(cardInfo, clientGame, owner, effects.ToArray(), id);
         card.clientCardController.gameCardViewController.Refresh();
 

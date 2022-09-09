@@ -40,7 +40,7 @@ namespace KompasClient.GameCore
         public IEnumerable<ClientGameCard> ClientCards => cardsByID.Values;
         public override IEnumerable<GameCard> Cards => ClientCards;
 
-        public ClientSettings ClientSettings => clientUIController.clientUISettingsCtrl.ClientSettings;
+        public ClientSettings ClientSettings => clientUIController.clientUISettingsController.ClientSettings;
 
         //turn players?
         public bool FriendlyTurn => TurnPlayer == FriendlyPlayer;
@@ -98,7 +98,7 @@ namespace KompasClient.GameCore
 
         private void Awake()
         {
-            clientUIController.clientUISettingsCtrl.LoadSettings();
+            clientUIController.clientUISettingsController.LoadSettings();
             ApplySettings();
         }
 
@@ -176,8 +176,8 @@ namespace KompasClient.GameCore
         public void Refresh()
         {
             ShowCardsByZoom(ClientCameraController.Main.Zoomed);
-            clientUIController.cardInfoViewUICtrl.Refresh();
-            clientUIController.cardInfoViewUICtrl.searchUICtrl.ReshowSearchShown();
+            clientUIController.cardInfoViewUIController.Refresh();
+            clientUIController.cardInfoViewUIController.searchUICtrl.ReshowSearchShown();
         }
 
         public void EffectActivated(ClientEffect eff)
@@ -188,7 +188,7 @@ namespace KompasClient.GameCore
 
         public void StackEmptied()
         {
-            clientUIController.targetMode = TargetMode.Free;
+            clientUIController.TargetMode = TargetMode.Free;
             clientUIController.SetCurrState("Stack Empty");
             foreach (var c in Cards) c.ResetForStack();
             ShowNoTargets();

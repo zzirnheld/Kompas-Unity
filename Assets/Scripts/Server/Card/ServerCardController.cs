@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace KompasServer.Cards
 {
-    [RequireComponent(typeof(ServerGameCard))]
+    //[RequireComponent(typeof(ServerGameCard))]
     public class ServerCardController : CardController
     {
         public ServerGameCard serverCard;

@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 
 namespace KompasClient.Cards
 {
-    [RequireComponent(typeof(ClientCardController))]
+    //[RequireComponent(typeof(ClientCardController))]
     public class ClientCardMouseController : CardMouseController
     {
         public ClientCardController clientCardController;
@@ -24,7 +24,7 @@ namespace KompasClient.Cards
         public override void OnMouseExit()
         {
             base.OnMouseExit();
-            ClientUIController.cardInfoViewUICtrl.searchUICtrl.ReshowSearchShownIfSearching();
+            ClientUIController.cardInfoViewUIController.searchUICtrl.ReshowSearchShownIfSearching();
         }
 
         public override void OnMouseOver()
@@ -48,7 +48,7 @@ namespace KompasClient.Cards
             base.OnMouseUp();
 
             //don't allow dragging cards if we're awaiting a target
-            if (ClientUIController.targetMode != TargetMode.Free)
+            if (ClientUIController.TargetMode != TargetMode.Free)
             {
                 clientCardController.PutBack();
                 return;

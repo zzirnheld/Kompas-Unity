@@ -232,7 +232,7 @@ namespace KompasCore.Cards
             PlayRestriction = serializedCard.PlayRestriction ?? new PlayRestriction();
             PlayRestriction.Initialize(initializationContext);
 
-            CardController.gameCardViewController.Refresh();
+            CardController.gameCardViewController.Show(this, refresh: true);
 
             Debug.Log($"Finished setting up info for card {CardName}");
         }

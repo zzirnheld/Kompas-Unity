@@ -44,7 +44,7 @@ namespace KompasCore.Cards
 
             bool mouseDown = Input.GetMouseButton(0);
             //If the mouse isn't held down rn, then we want to stop showing whatever we're currently showing.
-            if (!mouseDown && !dragging) UIController.cardViewController.Show(null);
+            if (!mouseDown && !dragging) UIController.CardViewController.Show(null);
 
             if (UIController.AllowDragging && dragging)
             {
@@ -62,7 +62,7 @@ namespace KompasCore.Cards
             if (EventSystem.current.IsPointerOverGameObject()) return;
 
             //select cards if the player releases the mouse button while over one
-            UIController.cardViewController.Show(card);
+            UIController.CardViewController.Focus(card);
 
             if (!dragging) return;
             dragging = false;
@@ -74,7 +74,7 @@ namespace KompasCore.Cards
             if (EventSystem.current.IsPointerOverGameObject()) return;
 
             //TODO still hover over even if mouse is on the effect/attack blocks, lol
-            UIController.cardViewController.Show(card);
+            UIController.CardViewController.Show(card);
         }
         #endregion MouseStuff
     }

@@ -7,7 +7,7 @@ namespace KompasCore.UI
     {
         public const string NoSubtypesUIString = "(No Subtypes)";
 
-        public SidebarCardViewController cardViewController;
+        public abstract SidebarCardViewController CardViewController { get; }
 
         public Toggle debugToggle;
         public bool DebugMode { get { return debugToggle.isOn; } }

@@ -49,7 +49,8 @@ namespace KompasClient.UI
             base.Display();
 
             //Delegate other responsibilities
-            effectsUIController.ShowEffButtons(ShownCard);
+            //TODO also on side, not just on right click
+            effectsUIController?.ShowEffButtons(ShownCard);
             pipsUIController.HighlightPipsFor(ShownCard);
 
             ShowUniqueCopies();

@@ -36,7 +36,7 @@ namespace KompasClient.Networking
     {
         public void Execute(ClientGame clientGame)
         {
-            clientGame.clientUIController.targetMode = list ? TargetMode.CardTargetList : TargetMode.CardTarget;
+            clientGame.clientUIController.TargetMode = list ? TargetMode.CardTargetList : TargetMode.CardTarget;
             ListRestriction listRestriction = null;
 
             try

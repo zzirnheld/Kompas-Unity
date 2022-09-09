@@ -18,7 +18,7 @@ namespace KompasClient.Networking
     {
         public void Execute(ClientGame clientGame)
         {
-            clientGame.clientUIController.targetMode = TargetMode.Free;
+            clientGame.clientUIController.TargetMode = TargetMode.Free;
             clientGame.ClearPotentialTargets();
             clientGame.CurrentPotentialSpaces = null;
             clientGame.clientUIController.SetCurrState("Target Accepted");

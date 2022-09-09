@@ -6,6 +6,7 @@ namespace KompasClient.GameCore
     public class ClientBoardController : BoardController
     {
         public ClientGame clientGame;
+        public override Game Game => clientGame;
 
         /// <summary>
         /// The player has just attempted to put a card into a given space.

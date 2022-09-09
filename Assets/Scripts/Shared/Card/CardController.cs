@@ -103,7 +103,7 @@ namespace KompasCore.Cards
 
         public void SetRotation()
         {
-            Debug.Log($"Setting rotation of {Card.CardName}, controlled by {Card.ControllerIndex}, known? {Card.KnownToEnemy}");
+            //Debug.Log($"Setting rotation of {Card.CardName}, controlled by {Card.ControllerIndex}, known? {Card.KnownToEnemy}");
             int yRotation = 180 * Card.ControllerIndex;
             int zRotation = 180 * (Card.KnownToEnemy ? 0 : Card.ControllerIndex);
             Card.transform.eulerAngles = new Vector3(0, yRotation, zRotation);

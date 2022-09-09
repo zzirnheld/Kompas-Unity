@@ -86,7 +86,7 @@ namespace KompasClient.Cards
         public override void SetN(int n, IStackable stackSrc = null, bool notify = true)
         {
             base.SetN(n, stackSrc, notify);
-            ClientGame?.clientUIController.cardViewController.Refresh();
+            ClientGame?.clientUIController.CardViewController.Refresh();
         }
 
         /// <summary>

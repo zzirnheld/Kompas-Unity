@@ -3116,10 +3116,10 @@ RectTransform:
   m_Father: {fileID: 1520615502}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 40, y: -35}
+  m_SizeDelta: {x: 80, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &113053269
 MonoBehaviour:
@@ -5306,10 +5306,10 @@ RectTransform:
   m_Father: {fileID: 460810450}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 40, y: -35}
+  m_SizeDelta: {x: 80, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &272840184
 MonoBehaviour:
@@ -5817,10 +5817,10 @@ RectTransform:
   m_Father: {fileID: 837412197}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -35}
+  m_SizeDelta: {x: 35.6, y: 22.35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &291272406
 MonoBehaviour:
@@ -8234,10 +8234,10 @@ RectTransform:
   m_Father: {fileID: 1970981658}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 40, y: -35}
+  m_SizeDelta: {x: 80, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &460810451
 MonoBehaviour:
@@ -8913,10 +8913,12 @@ MonoBehaviour:
     type: 3}
   clientNetworkCtrl: {fileID: 2001968206}
   clientNotifier: {fileID: 2001968207}
-  clientBoardController: {fileID: 0}
+  clientBoardController: {fileID: 4063274800751553632}
   clientEffectsCtrl: {fileID: 492080566}
-  clientPlayers: []
-  clientUIController: {fileID: 0}
+  clientPlayers:
+  - {fileID: 1829834588}
+  - {fileID: 1841194802}
+  clientUIController: {fileID: 1615817260}
   searchCtrl: {fileID: 492080565}
   targetsWanted: 0
   canZoom: 0
@@ -14646,10 +14648,10 @@ RectTransform:
   m_Father: {fileID: 1970981658}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 270, y: -35}
+  m_SizeDelta: {x: 100, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &837412198
 MonoBehaviour:
@@ -14843,10 +14845,10 @@ RectTransform:
   m_Father: {fileID: 1970981658}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 150, y: -35}
+  m_SizeDelta: {x: 140, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &839486984
 MonoBehaviour:
@@ -18649,6 +18651,7 @@ GameObject:
   - component: {fileID: 1110181317}
   - component: {fileID: 1110181316}
   - component: {fileID: 1110181314}
+  - component: {fileID: 1110181315}
   m_Layer: 5
   m_Name: Friendly Pips Bkgd
   m_TagString: Untagged
@@ -18691,6 +18694,26 @@ MonoBehaviour:
   m_EffectColor: {r: 0.75294125, g: 0.5803922, b: 0, a: 0.5}
   m_EffectDistance: {x: 3, y: 3}
   m_UseGraphicAlpha: 1
+--- !u!114 &1110181315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1110181312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1114e75f4373c4246bc84dd8b734bccd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1829834588}
+  pipIntervals: 0100000005000000
+  pipsPrefabs:
+  - {fileID: 6844806107006139539, guid: bd9a313146287654fa3ee31d26396099, type: 3}
+  - {fileID: 8305099513132462644, guid: 90a2d65118617cd47b3dbc44119670d2, type: 3}
+  pipsPrefabsOffsets:
+  - {x: 1, y: 0, z: 1}
+  - {x: 1, y: 0, z: 1}
 --- !u!114 &1110181316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20565,10 +20588,10 @@ RectTransform:
   m_Father: {fileID: 1351716572}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 400}
+  m_SizeDelta: {x: 400, y: 400}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1302872125
 MonoBehaviour:
@@ -21420,7 +21443,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1351716572
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21439,10 +21462,10 @@ RectTransform:
   m_Father: {fileID: 2083542045}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 200, y: -225}
+  m_SizeDelta: {x: 400, y: 450}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1351716573
 MonoBehaviour:
@@ -25271,10 +25294,10 @@ RectTransform:
   m_Father: {fileID: 1970981658}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 360, y: -35}
+  m_SizeDelta: {x: 80, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1520615503
 MonoBehaviour:
@@ -27073,19 +27096,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd73a85a5b32d9d41944fc022357a00d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardViewController: {fileID: 0}
   debugToggle: {fileID: 0}
   clientGame: {fileID: 492080563}
-  targetMode: 0
-  debugPipsField: {fileID: 0}
   ipInputField: {fileID: 2088912172}
   networkingParent: {fileID: 1659427464}
   friendlyPipsText: {fileID: 1687662614}
   enemyPipsText: {fileID: 1006522080}
-  currentStateText: {fileID: 1847867117}
   CurrTurnText: {fileID: 1554178927}
   EndTurnButton: {fileID: 93767712}
   LeyloadText: {fileID: 84373022}
+  currentStateText: {fileID: 1847867117}
   CurrStateOverallObj: {fileID: 65052156}
   CurrStateBonusObj: {fileID: 1135853834}
   CurrStateText: {fileID: 1847867117}
@@ -27096,8 +27116,10 @@ MonoBehaviour:
   declineEffectView: {fileID: 1955749635}
   autodeclineEffects: {fileID: 1049328079}
   autoOptionalEff: {fileID: 535984623}
+  detailedEffectsCtrlUIObject: {fileID: 1580719360}
   ConfirmTriggerView: {fileID: 278156756}
   TriggerBlurbText: {fileID: 659674731}
+  triggerOrderUI: {fileID: 1439636313}
   chooseOptionUICtrl: {fileID: 1241039935}
   clientStackUICtrl: {fileID: 634618064}
   DeckSelectCtrl: {fileID: 2134909800}
@@ -27108,13 +27130,11 @@ MonoBehaviour:
   DeckWaitingParent: {fileID: 2061236177}
   DeckAcceptedParent: {fileID: 259802650}
   ConnectedWaitingParent: {fileID: 410188369}
-  triggerOrderUI: {fileID: 1439636313}
-  rightClickUIController: {fileID: 0}
-  escapeMenuUICtrl: {fileID: 357244920}
-  cardInfoViewUICtrl: {fileID: 2083542047}
-  detailedEffectsCtrlUIObject: {fileID: 1580719360}
-  clientUISettingsCtrl: {fileID: 0}
-  boardUIController: {fileID: 0}
+  rightClickUIController: {fileID: 71818826}
+  escapeMenuUIController: {fileID: 357244920}
+  cardInfoViewUIController: {fileID: 5317695733063564781}
+  clientUISettingsController: {fileID: 1411603331}
+  boardUIController: {fileID: 4063274800751553634}
 --- !u!1 &1623620544
 GameObject:
   m_ObjectHideFlags: 0
@@ -31657,10 +31677,10 @@ RectTransform:
   m_Father: {fileID: 1351716572}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 50}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 200, y: -425}
+  m_SizeDelta: {x: 400, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1970981659
 MonoBehaviour:
@@ -32509,10 +32529,10 @@ RectTransform:
   m_Father: {fileID: 839486983}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 70, y: -35}
+  m_SizeDelta: {x: 68.95, y: 22.35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2035045209
 MonoBehaviour:
@@ -32882,7 +32902,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2083542045}
-  - component: {fileID: 2083542047}
   - component: {fileID: 2083542048}
   m_Layer: 5
   m_Name: Card Info UI
@@ -32912,44 +32931,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
---- !u!114 &2083542047
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2083542044}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d56e07897fa4a0940b07da8f6b0a8fcc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  charHaze: {fileID: 21300000, guid: 6a72156f301626e4cbd955ff2f237f7b, type: 3}
-  nonCharHaze: {fileID: 21300000, guid: 7ad7e44fbcc316546b7d0e0095407166, type: 3}
-  charFrame: {fileID: 21300000, guid: 805f4f63db9f099489c7477961a52086, type: 3}
-  nonCharFrame: {fileID: 21300000, guid: f1001fe4da0ee8e4790777b88842dfe5, type: 3}
-  nameText: {fileID: 1097555145}
-  subtypesText: {fileID: 97704967}
-  nText: {fileID: 1733131707}
-  eText: {fileID: 488990007}
-  costText: {fileID: 1397371398}
-  wText: {fileID: 1265342047}
-  effText: {fileID: 1180267854}
-  cardFrameImage: {fileID: 562936776}
-  cardFaceImage: {fileID: 79720238}
-  cardImageHaze: {fileID: 1921143319}
-  conditionParentObject: {fileID: 465835578}
-  negatedObject: {fileID: 634507137}
-  activatedObject: {fileID: 791819291}
-  effButtonsParentObject: {fileID: 1348226043}
-  clientGame: {fileID: 492080563}
-  effBtnsParent: {fileID: 1348226044}
-  effBtnPrefab: {fileID: 1572747400742321398, guid: 345fc4c5c61b21b428c359b54eadf616,
-    type: 3}
-  remindersParent: {fileID: 215586122}
-  reminderPrefab: {fileID: 172806740024015070, guid: 9bec5b8056b590c4b9bb4a4f76ae71db,
-    type: 3}
-  searchUICtrl: {fileID: 588346725}
 --- !u!114 &2083542048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34901,9 +34882,9 @@ GameObject:
   - component: {fileID: 2099336232895433478}
   - component: {fileID: 1739003062279604859}
   - component: {fileID: 1334743737591088204}
-  - component: {fileID: 4063274800751553632}
   - component: {fileID: 4063274800751553633}
   - component: {fileID: 4063274800751553634}
+  - component: {fileID: 4063274800751553632}
   m_Layer: 0
   m_Name: Gameboard Base
   m_TagString: Untagged
@@ -34920,10 +34901,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4063274800751553631}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ebd4d51462d09b43bf4e31715b0de05, type: 3}
+  m_Script: {fileID: 11500000, guid: 31f551bc260173b41bd10596a79d2b73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  game: {fileID: 492080563}
+  clientGame: {fileID: 492080563}
 --- !u!65 &4063274800751553633
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -34946,12 +34927,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 4063274800751553631}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e30f82f41ad83bb4b9ebd10944c9f7d2, type: 3}
+  m_Script: {fileID: 11500000, guid: 84affc0f736afb845993236c2346190e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spaceCueControllerPrefab: {fileID: 6721646274851369500, guid: db85c6b7f288c3a40b526bdfd48b1bfc,
     type: 3}
-  boardCtrl: {fileID: 4063274800751553632}
+  clientUIController: {fileID: 1615817260}
+  clientBoardController: {fileID: 4063274800751553632}
 --- !u!1 &4105869660912711930
 GameObject:
   m_ObjectHideFlags: 0
@@ -35273,7 +35255,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5317695733063564780}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 005a51209e9954a4ba4b33157d5e72a1, type: 3}
+  m_Script: {fileID: 11500000, guid: 09157d8711bf7f4459dfd23ef79af4be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nText: {fileID: 7133324287616732824}
@@ -35284,6 +35266,15 @@ MonoBehaviour:
   subtypesText: {fileID: 5433006505173456469}
   effText: {fileID: 8122172521997692155}
   cardImageImage: {fileID: 6078966050878016375}
+  reminderTextsUIController: {fileID: 0}
+  boardUIController: {fileID: 4063274800751553634}
+  clientGame: {fileID: 492080563}
+  effectsUIController: {fileID: 0}
+  pipsUIController: {fileID: 1110181315}
+  searchUICtrl: {fileID: 588346725}
+  conditionParentObject: {fileID: 465835578}
+  negatedObject: {fileID: 634507137}
+  activatedObject: {fileID: 791819291}
 --- !u!222 &5331197799878394862
 CanvasRenderer:
   m_ObjectHideFlags: 0

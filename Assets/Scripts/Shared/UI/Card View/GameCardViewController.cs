@@ -93,14 +93,22 @@ namespace KompasCore.UI
             eText.gameObject.SetActive(Zoomed && isChar);
             wText.gameObject.SetActive(Zoomed && isChar);
 
+            zoomedCharFrame.SetActive(Zoomed && isChar);
+
             costText.gameObject.SetActive(Zoomed);
             nameText.gameObject.SetActive(Zoomed);
             subtypesText.gameObject.SetActive(Zoomed);
             effText.gameObject.SetActive(Zoomed);
 
+            zoomedAllFrame.SetActive(Zoomed);
+
             unzoomedNText.gameObject.SetActive(!Zoomed && isChar);
             unzoomedEText.gameObject.SetActive(!Zoomed && isChar);
             unzoomedWText.gameObject.SetActive(!Zoomed && isChar);
+
+            unzoomedCharFrame.SetActive(!Zoomed && isChar);
+
+            unzoomedAllFrame.SetActive(!Zoomed);
 
             unzoomedNText.fontSize = UnzoomedFontSizeForValue(ShownCard.N);
             unzoomedEText.fontSize = UnzoomedFontSizeForValue(ShownCard.E);
@@ -137,7 +145,7 @@ namespace KompasCore.UI
             //TODO move settings off of client and into shared
             if (ShownCard.Game is ClientGame clientGame)
             {
-                var settings = clientGame.clientUIController.clientUISettingsCtrl.ClientSettings;
+                var settings = clientGame.clientUIController.clientUISettingsController.ClientSettings;
                 switch (settings.statHighlight)
                 {
                     case StatHighlight.NoHighlight:

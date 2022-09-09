@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 namespace KompasClient.Cards
 {
-    [RequireComponent(typeof(ClientGameCard))]
-    [RequireComponent(typeof(ClientCardMouseController))]
+    //[RequireComponent(typeof(ClientGameCard))]
+    //[RequireComponent(typeof(ClientCardMouseController))]
     public class ClientCardController : CardController
     {
         public ClientGameCard clientCard;

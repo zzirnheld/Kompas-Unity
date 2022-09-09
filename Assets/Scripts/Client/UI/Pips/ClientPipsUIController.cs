@@ -65,10 +65,10 @@ namespace KompasClient.UI
         /// <param name="value"></param>
         public void HighlightPipsFor(int value)
         {
-            Debug.Log($"Highlighitng {value} pips");
+            //Debug.Log($"Highlighitng {value} pips");
             if (value == 0 || (value > numberOfOnePips + (fivePipControllers.Count * 5)))
             {
-                Debug.Log($"Bad value, showing no pips");
+                //Debug.Log($"Bad value {value}, showing no pips");
                 foreach (var fpc in fivePipControllers)
                 {
                     fpc.ShowRings(0);
@@ -84,7 +84,7 @@ namespace KompasClient.UI
             {
                 if (toDisplay > 0)
                 {
-                    Debug.Log($"{toDisplay} rings left to show");
+                    //Debug.Log($"{toDisplay} rings left to show");
                     fivePipControllers[i].ShowRings(Mathf.Min(toDisplay, 5));
                     toDisplay -= 5;
                 }

@@ -23,7 +23,7 @@ namespace KompasClient.UI
         {
             base.OnMouseDown();
 
-            if (clientUIController.targetMode != TargetMode.SpaceTarget) return;
+            if (clientUIController.TargetMode != TargetMode.SpaceTarget) return;
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit))
@@ -33,7 +33,7 @@ namespace KompasClient.UI
                 int xIntersection = PosToGridIndex(intersection.x);
                 int yIntersection = PosToGridIndex(intersection.z);
                 //then, if the game is a clientgame, request a space target
-                clientBoardController.game.OnClickBoard(xIntersection, yIntersection);
+                clientBoardController.Game.OnClickBoard(xIntersection, yIntersection);
             }
         }
 

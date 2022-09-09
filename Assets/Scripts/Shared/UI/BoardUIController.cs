@@ -50,7 +50,7 @@ namespace KompasCore.UI
         public virtual void OnMouseDown()
         {
             //select nothing
-            UIController.cardViewController.Show(null);
+            UIController.CardViewController.Show(null);
         }
 
         public void ShowForCard(GameCardBase card)

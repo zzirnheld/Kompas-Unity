@@ -30,7 +30,7 @@ namespace KompasClient.Networking
             if (card != null)
             {
                 card.SetSpacesMoved(spacesMoved);
-                clientGame.UIController.cardViewController.Refresh();
+                clientGame.UIController.CardViewController.Refresh();
             }
         }
     }

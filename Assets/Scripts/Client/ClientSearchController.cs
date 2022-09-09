@@ -163,13 +163,13 @@ namespace KompasClient.GameCore
 
         public void SendTargets(bool confirmed = false)
         {
-            if (clientGame.clientUIController.clientUISettingsCtrl.ClientSettings.confirmTargets == ConfirmTargets.Prompt && !confirmed)
+            if (clientGame.clientUIController.clientUISettingsController.ClientSettings.confirmTargets == ConfirmTargets.Prompt && !confirmed)
             {
                 confirmTargetsCtrl.Show(CurrSearchData.Value.searched);
                 return;
             }
 
-            var targetMode = clientGame.clientUIController.targetMode;
+            var targetMode = clientGame.clientUIController.TargetMode;
             Debug.Log($"Sending targets {string.Join(",", CurrSearchData.Value.searched.Select(c => c.CardName))} " +
                 $"while in target mode {targetMode}, with a list restriction {CurrSearchData.Value.listRestriction}");
             if (targetMode == TargetMode.HandSize)
@@ -186,7 +186,7 @@ namespace KompasClient.GameCore
             ResetSearch();
 
             //and change the game's target mode TODO should this do this
-            clientGame.clientUIController.targetMode = TargetMode.OnHold;
+            clientGame.clientUIController.TargetMode = TargetMode.OnHold;
         }
     }
 }
