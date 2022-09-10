@@ -136,7 +136,7 @@ namespace KompasClient.UI
             gameObject.SetActive(CurrSearchData.ShouldShowSearchUI);
 
             var toShow = CurrSearchData.toSearch[index];
-            clientUICtrl.cardInfoViewUIController.Focus(toShow);
+            clientUICtrl.cardInfoViewUIController.Focus(toShow, lockFocus: true);
 
             bool currentTgt = CurrSearchData.searched.Contains(toShow);
             alreadySelectedText.SetActive(currentTgt);

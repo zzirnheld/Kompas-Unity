@@ -54,6 +54,7 @@ namespace KompasClient.Cards
                 return;
             }
 
+            ClientUIController.clientGame.searchCtrl.ToggleTarget(clientCardController.Card);
             ClientUIController.boardUIController.CardDragEnded(clientCardController);
         }
     }

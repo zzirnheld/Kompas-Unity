@@ -108,6 +108,7 @@ namespace KompasClient.GameCore
             if (CurrSearchData.Value.searched.Contains(nextTarget))
             {
                 RemoveTarget(nextTarget);
+                //TODO make this stuff be handled by the CardViewCOntroller
                 nextTarget.CardController.gameCardViewController.ShowValidTarget();
                 nextTarget.CardController.gameCardViewController.ShowCurrentTarget(false);
             }
@@ -135,6 +136,7 @@ namespace KompasClient.GameCore
             }
 
             CurrSearchData.Value.searched.Add(nextTarget);
+            //TODO make be handled by card view controller
             nextTarget.CardController.gameCardViewController.ShowCurrentTarget();
             nextTarget.CardController.gameCardViewController.ShowValidTarget(false);
             // Debug.Log($"Added {nextTarget.CardName}, targets are now {string.Join(",", CurrSearchData.Value.searched.Select(c => c.CardName))}");
