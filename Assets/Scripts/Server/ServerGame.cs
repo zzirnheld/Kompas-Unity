@@ -295,5 +295,8 @@ namespace KompasServer.GameCore
 
             Debug.Log(effectsController.ToString());
         }
+
+        public override bool IsCurrentTarget(GameCard card) => false;
+        public override bool IsValidTarget(GameCard card) => false;
     }
 }

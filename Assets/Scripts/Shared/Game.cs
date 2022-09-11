@@ -94,5 +94,8 @@ namespace KompasCore.GameCore
         {
             foreach (var c in Cards) c.ResetForTurn(TurnPlayer);
         }
+
+        public abstract bool IsCurrentTarget(GameCard card);
+        public abstract bool IsValidTarget(GameCard card);
     }
 }

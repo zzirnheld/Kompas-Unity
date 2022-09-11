@@ -18,6 +18,8 @@ namespace KompasClient.UI.Search
         [Tooltip("Prefab of card icon to show each card when searching")]
         public GameObject searchCardPrefab;
 
+        public GameObject endButton;
+
         public ClientSidebarCardViewController cardViewController;
         public ClientSearchController searchController;
 
@@ -41,9 +43,14 @@ namespace KompasClient.UI.Search
         {
             HideSearch();
 
-            if (!Searching) return;
+            if (!Searching)
+            {
+                Debug.Log("Not searching");
+                return;
+            }
 
             gameObject.SetActive(true);
+            endButton.SetActive(CurrSearchData.HaveEnough);
             int col = 0;
             int row = 0;
             foreach(var card in CurrSearchData.toSearch)
@@ -72,6 +79,7 @@ namespace KompasClient.UI.Search
 
             //Do focus last so it can accurately display that the card is now a target
             cardViewController.Focus(searchCardViewController.CardController.Card, lockFocus: true);
+            endButton.SetActive(CurrSearchData.HaveEnough);
         }
     }
 }

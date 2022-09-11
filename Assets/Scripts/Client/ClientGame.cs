@@ -222,7 +222,7 @@ namespace KompasClient.GameCore
         /// </summary>
         public void ShowNoTargets()
         {
-            foreach (var card in Cards) card.CardController.gameCardViewController.HideTarget();
+            foreach (var card in Cards) card.CardController.gameCardViewController.Refresh();
         }
 
         /// <summary>
@@ -232,10 +232,13 @@ namespace KompasClient.GameCore
         {
             if (CurrentPotentialTargets != null)
             {
-                foreach (var card in CurrentPotentialTargets) card.CardController.gameCardViewController.ShowValidTarget();
+                foreach (var card in CurrentPotentialTargets) card.CardController.gameCardViewController.Refresh();
             }
             else ShowNoTargets();
         }
+
+        public override bool IsCurrentTarget(GameCard card) => searchCtrl.CurrSearchData.HasValue && searchCtrl.CurrSearchData.Value.searched.Contains(card);
+        public override bool IsValidTarget(GameCard card) => searchCtrl.CurrSearchData.HasValue && searchCtrl.CurrSearchData.Value.toSearch.Contains(card);
         #endregion targeting
     }
 }

@@ -32,7 +32,7 @@ namespace KompasClient.GameCore
             /// Whether the list restriction of this search data determines that enough cards have <b>already</b> been searched 
             /// that the search can end before the maximum possible number of cards have been searched.
             /// </summary>
-            public bool HaveEnough => listRestriction.HaveEnough(searched.Count);
+            public bool HaveEnough => listRestriction?.HaveEnough(searched.Count) ?? false;
 
             /// <summary>
             /// Whether any cards currently able to be searched can't currently be seen and clicked on.
@@ -83,7 +83,7 @@ namespace KompasClient.GameCore
             Debug.Log($"Searching a list of {data.toSearch.Length} cards: {string.Join(",", data.toSearch.Select(c => c.CardName))}");
 
             //initiate search process
-            if (ShouldShowSearchUI) clientSearchUICtrl.ShowSearch();
+            clientSearchUICtrl.ShowSearch();
         }
 
         /// <summary>
@@ -135,8 +135,6 @@ namespace KompasClient.GameCore
 
             CurrSearchData.Value.searched.Add(nextTarget);
             //TODO make be handled by card view controller
-            nextTarget.CardController.gameCardViewController.ShowCurrentTarget();
-            nextTarget.CardController.gameCardViewController.ShowValidTarget(false);
             // Debug.Log($"Added {nextTarget.CardName}, targets are now {string.Join(",", CurrSearchData.Value.searched.Select(c => c.CardName))}");
 
             var listRestriction = CurrSearchData.Value.listRestriction;
@@ -154,8 +152,6 @@ namespace KompasClient.GameCore
         {
             Debug.Log($"Tried to remove {target} as next target");
             CurrSearchData.Value.searched.Remove(target);
-            target.CardController.gameCardViewController.ShowValidTarget();
-            target.CardController.gameCardViewController.ShowCurrentTarget(false);
             clientGame.clientUIController.cardInfoViewUIController.Refresh();
         }
 

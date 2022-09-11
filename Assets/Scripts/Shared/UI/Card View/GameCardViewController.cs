@@ -9,7 +9,7 @@ using UnityEngine.UI;
 namespace KompasCore.UI
 {
     [RequireComponent(typeof(CardController))]
-    public class GameCardViewController : TypicalCardViewController
+    public class GameCardViewController : GameCardlikeViewController
     {
         public const float LargeUnzoomedTextFontSize = 32f;
         public const float SmallUnzoomedTextFontSize = 22f;
@@ -49,10 +49,8 @@ namespace KompasCore.UI
         public TMP_Text unzoomedCostText;
         public TMP_Text unzoomedWText;
 
-        [Header("Card highlighting")]
         //TODO give these to dummy cards, as empties probably
-        public GameObject currentTargetObject;
-        public GameObject validTargetObject;
+        [Header("Card highlighting")]
         public GameObject uniqueCopyObject;
         public GameObject linkedCardObject;
         public GameObject primaryStackableObject;
@@ -83,6 +81,11 @@ namespace KompasCore.UI
 
             HandleZoom();
             DisplaySpecialEffects();
+        }
+
+        protected override bool ShowingInfo
+        {
+            set => base.ShowingInfo = value && ShownCard?.Location != CardLocation.Deck && ShownCard?.Location != CardLocation.Nowhere;
         }
 
         protected virtual void HandleZoom()
@@ -117,8 +120,9 @@ namespace KompasCore.UI
             unzoomedCostText.fontSize = UnzoomedFontSizeForValue(ShownCard.Cost);
         }
 
-        protected virtual void DisplaySpecialEffects()
+        protected override void DisplaySpecialEffects()
         {
+            base.DisplaySpecialEffects();
             if (ShownCard.Location == CardLocation.Board)
             {
                 //if you can attack at all, enable the attack indicator
@@ -193,17 +197,6 @@ namespace KompasCore.UI
 
             unzoomedHazeImage.enabled = !Zoomed;
             unzoomedHazeImage.sprite = ShownCard.CardType == 'C' ? unzoomedCharHaze : unzoomedNonCharHaze;
-        }
-
-
-        public virtual void ShowValidTarget(bool valid = true) => validTargetObject.SetActive(valid);
-
-        public virtual void ShowCurrentTarget(bool current = true) => currentTargetObject.SetActive(current);
-
-        public virtual void HideTarget()
-        {
-            validTargetObject.SetActive(false);
-            currentTargetObject.SetActive(false);
         }
 
         public virtual void ShowUniqueCopy(bool copy = true) => uniqueCopyObject.SetActive(copy);

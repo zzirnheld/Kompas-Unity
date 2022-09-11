@@ -41,13 +41,13 @@ namespace KompasClient.Effects
         public override void AddTarget(GameCard card)
         {
             base.AddTarget(card);
-            card.CardController.gameCardViewController.ShowCurrentTarget(true);
+            card.CardController.gameCardViewController.Refresh();
         }
 
         public override void RemoveTarget(GameCard card)
         {
             base.RemoveTarget(card);
-            card.CardController.gameCardViewController.ShowCurrentTarget(false);
+            card.CardController.gameCardViewController.Refresh();
         }
 
         //TODO eventually make client aware of activation contexts
