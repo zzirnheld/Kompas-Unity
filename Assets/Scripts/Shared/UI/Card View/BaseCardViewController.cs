@@ -48,7 +48,7 @@ namespace KompasCore.UI
             //Unless explicitly refreshing card, if already showing that card, no-op.
             if (card == ShownCard && !refresh) return;
 
-            Debug.Log($"Asked to display {card}");
+            //Debug.Log($"Asked to display {card}");
             //If we're passed in null, we want to show the focused card, if there is one
             ShownCard = card ?? focusedCard;
 

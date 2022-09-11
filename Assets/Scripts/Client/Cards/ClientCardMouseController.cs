@@ -24,7 +24,7 @@ namespace KompasClient.Cards
         public override void OnMouseExit()
         {
             base.OnMouseExit();
-            ClientUIController.cardInfoViewUIController.searchUICtrl.ReshowSearchShownIfSearching();
+            ClientUIController.cardInfoViewUIController.Refresh();
         }
 
         public override void OnMouseOver()
@@ -47,14 +47,15 @@ namespace KompasClient.Cards
 
             base.OnMouseUp();
 
+            Debug.Log($"Clicked {card} while target mode is {ClientUIController.TargetMode}");
             //don't allow dragging cards if we're awaiting a target
             if (ClientUIController.TargetMode != TargetMode.Free)
             {
+                ClientUIController.clientGame.searchCtrl.ToggleTarget(clientCardController.Card);
                 clientCardController.PutBack();
                 return;
             }
 
-            ClientUIController.clientGame.searchCtrl.ToggleTarget(clientCardController.Card);
             ClientUIController.boardUIController.CardDragEnded(clientCardController);
         }
     }

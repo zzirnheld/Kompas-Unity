@@ -167,7 +167,7 @@ namespace KompasCore.UI
                     default: throw new System.ArgumentException($"Invalid stat highlight setting {settings.statHighlight}");
                 }
 
-                Debug.Log($"setting color to {settings.FriendlyColor}");
+                //Debug.Log($"setting color to {settings.FriendlyColor}");
                 friendlyCardFrameMaterial.color = settings.FriendlyColor;
                 enemyCardFrameMaterial.color = settings.EnemyColor;
             }

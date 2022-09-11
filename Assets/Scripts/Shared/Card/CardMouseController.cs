@@ -68,6 +68,7 @@ namespace KompasCore.Cards
             dragging = false;
         }
 
+        //TODO factor this out to a card controller base class, then inherit it for the search cards?
         public virtual void OnMouseOver()
         {
             //if the mouse is currently over a ui element, don't swap what you're seeing

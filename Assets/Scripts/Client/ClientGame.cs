@@ -177,7 +177,6 @@ namespace KompasClient.GameCore
         {
             ShowCardsByZoom(ClientCameraController.Main.Zoomed);
             clientUIController.cardInfoViewUIController.Refresh();
-            clientUIController.cardInfoViewUIController.searchUICtrl.ReshowSearchShown();
         }
 
         public void EffectActivated(ClientEffect eff)

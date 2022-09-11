@@ -1,4 +1,5 @@
 using KompasClient.GameCore;
+using KompasClient.UI.Search;
 using KompasCore.Cards;
 using KompasCore.UI;
 using System.Collections.Generic;
@@ -15,7 +16,10 @@ namespace KompasClient.UI
         public EffectsParentClientUIController effectsUIController;
         public ClientPipsUIController pipsUIController;
 
-        public ClientSearchUIController searchUICtrl;
+        public SearchUIController searchUICtrl;
+
+        [Tooltip("Whether the card currently being shown is currently selected as a target")]
+        public GameObject alreadySelectedMarker;
 
         //TODO move to own controller
         private readonly List<GameCard> shownUniqueCopies = new List<GameCard>();
@@ -90,6 +94,7 @@ namespace KompasClient.UI
             conditionParentObject.SetActive(ShownCard.Negated || ShownCard.Activated);
             negatedObject.SetActive(ShownCard.Negated);
             activatedObject.SetActive(ShownCard.Activated);
+            alreadySelectedMarker.SetActive(searchUICtrl.CardCurrentlyTargeted(ShownCard));
         }
 
         private void ClearShownUniqueCopies()

@@ -1,4 +1,5 @@
 ﻿using KompasClient.UI;
+using KompasClient.UI.Search;
 using KompasCore.Cards;
 using KompasCore.Effects;
 using KompasCore.GameCore;
@@ -56,7 +57,7 @@ namespace KompasClient.GameCore
 
         [Header("Related MonoBehaviours")]
         public ClientGame clientGame;
-        public ClientSearchUIController clientSearchUICtrl;
+        public SearchUIController clientSearchUICtrl;
         public ConfirmTargetsUIController confirmTargetsCtrl;
 
         public SearchData? CurrSearchData { get; private set; } = null;
@@ -82,7 +83,7 @@ namespace KompasClient.GameCore
             Debug.Log($"Searching a list of {data.toSearch.Length} cards: {string.Join(",", data.toSearch.Select(c => c.CardName))}");
 
             //initiate search process
-            if (ShouldShowSearchUI) clientSearchUICtrl.StartShowingSearch();
+            if (ShouldShowSearchUI) clientSearchUICtrl.ShowSearch();
         }
 
         /// <summary>
@@ -93,8 +94,10 @@ namespace KompasClient.GameCore
             //forget what we were searching through. don't just clear the list because that might clear the actual deck or discard
             CurrSearchData = null; //thank god for garbage collection lol :upside down smiley:
 
-            if (clientSearchUICtrl.SearchLength == 0) clientSearchUICtrl.HideSearch();
-            else if (searchStack.Count > 0) StartSearch(searchStack.Pop());
+            //if (clientSearchUICtrl.SearchLength == 0)
+            clientSearchUICtrl.HideSearch();
+            //TODO fix this old logic? don't think it's necessary
+            //else if (searchStack.Count > 0) StartSearch(searchStack.Pop());
         }
 
         /// <summary>
@@ -105,13 +108,7 @@ namespace KompasClient.GameCore
         public void ToggleTarget(GameCard nextTarget)
         {
             //if it's already selected, deselect it
-            if (CurrSearchData.Value.searched.Contains(nextTarget))
-            {
-                RemoveTarget(nextTarget);
-                //TODO make this stuff be handled by the CardViewCOntroller
-                nextTarget.CardController.gameCardViewController.ShowValidTarget();
-                nextTarget.CardController.gameCardViewController.ShowCurrentTarget(false);
-            }
+            if (CurrSearchData.Value.searched.Contains(nextTarget)) RemoveTarget(nextTarget);
             //otherwise, deselect
             else AddTarget(nextTarget);
         }
@@ -122,6 +119,7 @@ namespace KompasClient.GameCore
         /// <param name="nextTarget"></param>
         private void AddTarget(GameCard nextTarget)
         {
+            Debug.Log($"Tried to add {nextTarget} as next target");
             if (CurrSearchData == null)
             {
                 Debug.LogError($"Called target card on {nextTarget.CardName} while there's no list of potential targets");
@@ -149,13 +147,16 @@ namespace KompasClient.GameCore
             else if (listRestriction.HasMax && CurrSearchData.Value.searched.Count >= listRestriction.maxCanChoose)
                 SendTargets();
 
-            clientSearchUICtrl.ReshowSearchShown();
+            clientGame.clientUIController.cardInfoViewUIController.Refresh();
         }
 
         public void RemoveTarget(GameCard target)
         {
+            Debug.Log($"Tried to remove {target} as next target");
             CurrSearchData.Value.searched.Remove(target);
-            clientSearchUICtrl.ReshowSearchShown();
+            target.CardController.gameCardViewController.ShowValidTarget();
+            target.CardController.gameCardViewController.ShowCurrentTarget(false);
+            clientGame.clientUIController.cardInfoViewUIController.Refresh();
         }
 
         public void ResetCurrentTargets()

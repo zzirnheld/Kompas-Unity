@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 namespace KompasClient.UI
 {
+    //Old version
     public class ClientSearchUIController : MonoBehaviour
     {
         public ClientUIController clientUICtrl;
