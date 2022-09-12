@@ -80,18 +80,20 @@ namespace KompasServer.Effects
                     $"{string.Join(",", potentialTargets.Select(c => c.CardName))}");
                 return await NoPossibleTargets();
             }
-            else if (!potentialTargets.Any())
+
+            //If there's no potential targets, but no targets is a valid choice, then just go to the next effect
+            if (!potentialTargets.Any())
             {
-                //If there's no potential targets, but no targets is a valid choice, then just go to the next effect
+                Debug.Log("An empty list of targets was a valid choice, but there's no targets that can be chosen. Skipping to next effect...");
                 return ResolutionInfo.Next;
             }
 
             IEnumerable<GameCard> targets = null;
-            while (!AddListIfLegal(targets))
+            do
             {
                 targets = await RequestTargets();
                 if (targets == null && ServerEffect.CanDeclineTarget) return ResolutionInfo.Impossible(DeclinedFurtherTargets);
-            }
+            } while (!AddListIfLegal(targets));
 
             return ResolutionInfo.Next;
         }

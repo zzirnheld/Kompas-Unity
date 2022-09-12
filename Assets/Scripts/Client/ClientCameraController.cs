@@ -7,7 +7,7 @@ public class ClientCameraController : MonoBehaviour
     public static ClientCameraController Main { get; private set; }
     public static bool MainZoomed => Main == null ? false : Main.Zoomed;
 
-    public const float ZoomFactor = 1f;
+    public const float ZoomFactor = 3f;
     public const float PanFactorBase = 0.4f;
     public const float RotationFactorBase = 1f;
     public const float MinCameraHeight = 2f;
@@ -28,6 +28,8 @@ public class ClientCameraController : MonoBehaviour
     public ClientGame clientGame;
 
     public GameObject selectedCardGameObject;
+
+    public Camera mainCamera;
 
     private void Awake()
     {

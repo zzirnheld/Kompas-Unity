@@ -9,19 +9,15 @@ namespace KompasCore.UI
 {
     public class ReminderTextParentUIController : MonoBehaviour
     {
-        public const string RemindersJsonPath = "Reminder Text/Reminder Texts";
 
         public GameObject reminderPrefab;
 
         private readonly List<ReminderTextUIController> reminderCtrls
             = new List<ReminderTextUIController>();
 
-        private ReminderTextsContainer reminders;
 
         public void Awake()
         {
-            var jsonAsset = Resources.Load<TextAsset>(RemindersJsonPath);
-            reminders = JsonConvert.DeserializeObject<ReminderTextsContainer>(jsonAsset.text);
             gameObject.SetActive(false);
         }
 
@@ -33,7 +29,7 @@ namespace KompasCore.UI
             foreach (var reminderCtrl in reminderCtrls) Destroy(reminderCtrl.gameObject);
             reminderCtrls.Clear();
             //create new reminders
-            foreach (var reminder in reminders.keywordReminderTexts)
+            foreach (var reminder in CardRepository.Reminders.keywordReminderTexts)
             {
                 if (card.EffText.Contains(reminder.keyword))
                 {

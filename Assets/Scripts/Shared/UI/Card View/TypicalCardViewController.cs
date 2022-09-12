@@ -1,3 +1,4 @@
+using KompasClient.UI;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,28 +22,15 @@ namespace KompasCore.UI
         public Image cardImageImage;
 
         [Header("Misc all typical cards")]
-        public ReminderTextParentUIController reminderTextsUIController;
+        public CardViewReminderTextParentController reminderTextsUIController;
 
-        protected override void DisplayNothing()
-        {
-            base.DisplayNothing();
-
-            //TODO make these each linked to their own CardViewController, so they can leverage the TextMeshPro stuff I googled to make tooltip boxes
-            reminderTextsUIController?.ShowNothing();
-        }
-
-        protected override void Display()
-        {
-            base.Display();
-
-            reminderTextsUIController?.ShowReminderText(ShownCard);
-        }
+        protected virtual string EffTextToDisplay => ShownCard.EffText;
 
         protected override void DisplayCardRulesText()
         {
             nameText.text = ShownCard.CardName;
             subtypesText.text = ShownCard.QualifiedSubtypeText;
-            effText.text = ShownCard.EffText;
+            effText.text = EffTextToDisplay;
         }
 
         protected override void DisplayCardNumericStats()

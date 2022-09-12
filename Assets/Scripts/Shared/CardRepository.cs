@@ -27,6 +27,8 @@ public class CardRepository : MonoBehaviour
     public const string triggerKeywordFolderPath = "Keyword Jsons/Trigger Keywords/";
     public const string triggerKeywordListFilePath = triggerKeywordFolderPath + "Keyword List";
 
+    public const string RemindersJsonPath = "Reminder Text/Reminder Texts";
+
     private static readonly JsonSerializerSettings cardLoadingSettings = new JsonSerializerSettings
     {
         TypeNameHandling = TypeNameHandling.Auto,
@@ -47,6 +49,9 @@ public class CardRepository : MonoBehaviour
     private static readonly Dictionary<string, string> keywordJsons = new Dictionary<string, string>();
     private static readonly Dictionary<string, string> partialKeywordJsons = new Dictionary<string, string>();
     private static readonly Dictionary<string, string> triggerKeywordJsons = new Dictionary<string, string>();
+
+    public static ReminderTextsContainer Reminders { get; private set; }
+    public static ICollection<string> Keywords { get; private set; }
 
     private static bool initalized = false;
 
@@ -138,6 +143,11 @@ public class CardRepository : MonoBehaviour
             string json = Resources.Load<TextAsset>(triggerKeywordFolderPath + keyword).text;
             triggerKeywordJsons.Add(keyword, json);
         }
+
+        var reminderJsonAsset = Resources.Load<TextAsset>(RemindersJsonPath);
+        Reminders = JsonConvert.DeserializeObject<ReminderTextsContainer>(reminderJsonAsset.text);
+        Reminders.Initialize();
+        Keywords = Reminders.keywordReminderTexts.Select(rti => rti.keyword).ToArray();
     }
 
     private bool IsCardToIgnore(string name)

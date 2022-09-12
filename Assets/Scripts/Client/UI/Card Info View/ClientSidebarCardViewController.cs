@@ -4,6 +4,7 @@ using KompasCore.Cards;
 using KompasCore.UI;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 namespace KompasClient.UI
@@ -38,10 +39,36 @@ namespace KompasClient.UI
         /// </summary>
         private bool focusLocked;
 
+        protected override string EffTextToDisplay
+        {
+            get
+            {
+                string effText = base.EffTextToDisplay;
+                foreach (string keyword in CardRepository.Keywords)
+                {
+                    effText = effText.Replace(keyword, $"<link=\"{keyword}\">{keyword}</link>");
+                }
+                return effText;
+            }
+        }
+
         private void Update()
         {
             if (Input.GetKeyUp(KeyCode.LeftAlt) || Input.GetKeyUp(KeyCode.RightAlt))
                 Show(null);
+
+            //check keywords
+            int link = TMP_TextUtilities.FindIntersectingLink(effText, Input.mousePosition, ClientCameraController.Main.mainCamera);
+            List<string> reminders = new List<string>();
+            if (link != -1)
+            {
+                var linkInfo = effText.textInfo.linkInfo[link];
+                var reminderText = CardRepository.Reminders.KeywordToReminder[linkInfo.GetLinkID()];
+                //Debug.Log($"Hovering over {linkInfo.GetLinkID()} with reminder {reminderText}");
+                reminders.Add(reminderText);
+            }
+            reminderTextsUIController.Show(reminders);
+            reminderTextsUIController.transform.position = Input.mousePosition;
         }
 
         public override void Focus(GameCard card) => Focus(card, false);

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using TMPro;
+using System.Collections.Generic;
 
 namespace KompasClient.UI
 {
@@ -18,6 +19,16 @@ namespace KompasClient.UI
     public class ReminderTextsContainer
     {
         public ReminderTextInfo[] keywordReminderTexts;
+
+        public Dictionary<string, string> KeywordToReminder { get; } = new Dictionary<string, string>();
+
+        public void Initialize()
+        {
+            foreach(var rti in keywordReminderTexts)
+            {
+                KeywordToReminder.Add(rti.keyword, rti.reminder);
+            }
+        }
     }
 
     public class ReminderTextInfo
