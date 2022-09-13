@@ -5,7 +5,12 @@ using UnityEngine;
 
 namespace KompasCore.UI
 {
-    public class CardViewReminderTextParentController : MonoBehaviour
+    public interface IReminderTextParentController
+    {
+        public void Show(List<string> reminders);
+    }
+
+    public class CardViewReminderTextParentController : MonoBehaviour, IReminderTextParentController
     {
         public GameObject reminderTextPrefab;
 
@@ -13,6 +18,7 @@ namespace KompasCore.UI
 
         public void Show(List<string> reminders)
         {
+            transform.position = Input.mousePosition;
             foreach (var ctrl in controllers) Destroy(ctrl.gameObject);
             controllers.Clear();
 

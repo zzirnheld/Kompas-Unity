@@ -9,6 +9,6 @@ namespace KompasServer.UI
         public override SidebarCardViewController CardViewController => cardViewController;
 
         public CardViewReminderTextParentController reminderTextParentController;
-        public override CardViewReminderTextParentController ReminderTextParentUIController => reminderTextParentController;
+        public override IReminderTextParentController ReminderTextParentUIController => reminderTextParentController;
     }
 }

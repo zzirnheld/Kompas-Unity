@@ -22,7 +22,7 @@ namespace KompasCore.UI
         [Header("Card face image")]
         public Image cardImageImage;
 
-        public abstract CardViewReminderTextParentController ReminderTextsUIController { get; }
+        public abstract IReminderTextParentController ReminderTextsUIController { get; }
 
         protected virtual Camera Camera => Camera.main;
 
@@ -59,7 +59,6 @@ namespace KompasCore.UI
                     reminders.Add(reminderText);
                 }
                 ReminderTextsUIController.Show(reminders);
-                ReminderTextsUIController.transform.position = Input.mousePosition;
             }
         }
 

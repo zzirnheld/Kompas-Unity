@@ -15,7 +15,7 @@ namespace KompasCore.UI
 
         [Header("Misc all typical cards")]
         public CardViewReminderTextParentController reminderTextsUIController;
-        public override CardViewReminderTextParentController ReminderTextsUIController => reminderTextsUIController;
+        public override IReminderTextParentController ReminderTextsUIController => reminderTextsUIController;
 
         protected override void DisplayNothing()
         {

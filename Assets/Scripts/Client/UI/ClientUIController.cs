@@ -27,7 +27,7 @@ namespace KompasClient.UI
         public ClientGame clientGame;
         public TargetMode TargetMode { get; set; } = TargetMode.Free;
 
-        public override CardViewReminderTextParentController ReminderTextParentUIController => cardInfoViewUIController.ReminderTextsUIController;
+        public override IReminderTextParentController ReminderTextParentUIController => cardInfoViewUIController.ReminderTextsUIController;
 
         [Header("Networking")]
         public TMP_InputField ipInputField;
