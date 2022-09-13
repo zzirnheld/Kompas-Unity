@@ -1,4 +1,5 @@
 using KompasClient.UI;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,10 +22,47 @@ namespace KompasCore.UI
         [Header("Card face image")]
         public Image cardImageImage;
 
-        [Header("Misc all typical cards")]
-        public CardViewReminderTextParentController reminderTextsUIController;
+        public abstract CardViewReminderTextParentController ReminderTextsUIController { get; }
 
-        protected virtual string EffTextToDisplay => ShownCard.EffText;
+        protected virtual Camera Camera => Camera.main;
+
+        protected virtual string EffTextToDisplay
+        {
+            get
+            {
+                string effText = ShownCard?.EffText;
+                foreach (string keyword in CardRepository.Keywords)
+                {
+                    effText = effText.Replace(keyword, $"<link=\"{keyword}\"><b>{keyword}</b></link>");
+                }
+                return effText;
+            }
+        }
+
+        private void Update()
+        {
+            DisplayReminderTextBlurb();
+        }
+
+        private void DisplayReminderTextBlurb()
+        {
+            if (ReminderTextsUIController != null)
+            {
+                //check keywords
+                int link = TMP_TextUtilities.FindIntersectingLink(effText, Input.mousePosition, Camera);
+                List<string> reminders = new List<string>();
+                if (link != -1)
+                {
+                    var linkInfo = effText.textInfo.linkInfo[link];
+                    var reminderText = CardRepository.Reminders.KeywordToReminder[linkInfo.GetLinkID()];
+                    //Debug.Log($"Hovering over {linkInfo.GetLinkID()} with reminder {reminderText}");
+                    reminders.Add(reminderText);
+                }
+                ReminderTextsUIController.Show(reminders);
+                ReminderTextsUIController.transform.position = Input.mousePosition;
+            }
+        }
+
 
         protected override void DisplayCardRulesText()
         {

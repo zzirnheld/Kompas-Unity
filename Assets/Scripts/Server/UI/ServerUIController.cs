@@ -7,5 +7,8 @@ namespace KompasServer.UI
         public override bool AllowDragging => false;
         public SidebarCardViewController cardViewController;
         public override SidebarCardViewController CardViewController => cardViewController;
+
+        public CardViewReminderTextParentController reminderTextParentController;
+        public override CardViewReminderTextParentController ReminderTextParentUIController => reminderTextParentController;
     }
 }

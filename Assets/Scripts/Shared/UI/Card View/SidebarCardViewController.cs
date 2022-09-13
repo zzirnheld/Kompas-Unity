@@ -13,6 +13,10 @@ namespace KompasCore.UI
         [Header("Overall game-related UI controllers")]
         public BoardUIController boardUIController;
 
+        [Header("Misc all typical cards")]
+        public CardViewReminderTextParentController reminderTextsUIController;
+        public override CardViewReminderTextParentController ReminderTextsUIController => reminderTextsUIController;
+
         protected override void DisplayNothing()
         {
             base.DisplayNothing();

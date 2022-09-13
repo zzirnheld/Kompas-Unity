@@ -8,6 +8,9 @@ namespace KompasCore.UI
         public GameObject currentTargetObject;
         public GameObject validTargetObject;
 
+        public override CardViewReminderTextParentController ReminderTextsUIController 
+            => ShownCard?.Game.UIController.ReminderTextParentUIController;
+
         protected virtual void DisplaySpecialEffects()
         {
             currentTargetObject.SetActive(ShownCard.Game.IsCurrentTarget(ShownCard));
