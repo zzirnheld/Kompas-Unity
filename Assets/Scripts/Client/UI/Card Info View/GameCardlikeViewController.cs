@@ -1,3 +1,4 @@
+using KompasCore.Cards;
 using UnityEngine;
 
 namespace KompasCore.UI
@@ -8,13 +9,15 @@ namespace KompasCore.UI
         public GameObject currentTargetObject;
         public GameObject validTargetObject;
 
+        protected GameCard ShownGameCard => shownCard as GameCard;
+
         public override IReminderTextParentController ReminderTextsUIController 
-            => ShownCard?.Game.UIController.ReminderTextParentUIController;
+            => ShownGameCard?.Game.UIController.ReminderTextParentUIController;
 
         protected virtual void DisplaySpecialEffects()
         {
-            currentTargetObject.SetActive(ShownCard.Game.IsCurrentTarget(ShownCard));
-            validTargetObject.SetActive(ShownCard.Game.IsValidTarget(ShownCard));
+            currentTargetObject.SetActive(ShownGameCard.Game.IsCurrentTarget(ShownGameCard));
+            validTargetObject.SetActive(ShownGameCard.Game.IsValidTarget(ShownGameCard));
         }
     }
 }

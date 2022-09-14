@@ -7,7 +7,7 @@ namespace KompasCore.UI
 {
     public interface IReminderTextParentController
     {
-        public void Show(List<string> reminders);
+        public void Show(List<(string, string)> reminders);
     }
 
     public class CardViewReminderTextParentController : MonoBehaviour, IReminderTextParentController
@@ -16,7 +16,7 @@ namespace KompasCore.UI
 
         private readonly List<CardViewReminderTextController> controllers = new List<CardViewReminderTextController>();
 
-        public void Show(List<string> reminders)
+        public void Show(List<(string, string)> reminders)
         {
             transform.position = Input.mousePosition;
             foreach (var ctrl in controllers) Destroy(ctrl.gameObject);
@@ -24,7 +24,7 @@ namespace KompasCore.UI
 
             gameObject.SetActive(reminders.Count > 0);
 
-            foreach(var reminder in reminders)
+            foreach(var (_, reminder) in reminders)
             {
                 var go = Instantiate(reminderTextPrefab, transform);
                 var ctrl = go.GetComponent<CardViewReminderTextController>();

@@ -23,7 +23,7 @@ namespace KompasClient.UI.Search
 
         protected override void DisplaySpecialEffects()
         {
-            currentTargetObject.SetActive(ShownCard.Game.IsCurrentTarget(ShownCard));
+            currentTargetObject.SetActive(ShownGameCard.Game.IsCurrentTarget(ShownGameCard));
         }
 
         public void OnMouseOver()

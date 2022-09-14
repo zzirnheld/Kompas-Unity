@@ -11,6 +11,7 @@ namespace KompasDeckbuilder
     {
         public const int txtExtLen = 4;
         private const string DeckDeleteFailedErrorMsg = "Failed to delete deck, sorry";
+        public const char NBSP = (char)8203;
 
         private string deckFilesFolderPath = "";
 
@@ -87,7 +88,7 @@ namespace KompasDeckbuilder
                     //this isn't working and i'm not yet sure why, but don't feel like investigating this right now
                     //because this is a personal project, not work.
                     //CardSearchCtrl.NameToSearch.text = CardSearchCtrl.CardNameText.text;
-                    CardSearchCtrl.SearchName(CardSearchCtrl.CardNameText.text);
+                    CardSearchCtrl.SearchName(CardSearchCtrl.deckbuilderCardViewController.nameText.text.Trim(NBSP));
                 }
                 else if (Input.GetKeyUp(KeyCode.N))
                 {

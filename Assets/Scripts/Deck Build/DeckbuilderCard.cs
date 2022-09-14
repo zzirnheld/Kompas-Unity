@@ -45,30 +45,12 @@ namespace KompasDeckbuilder
         /// </summary>
         public virtual void Show()
         {
-            cardSearchController.cardViewParentObj.SetActive(true);
-
-            cardSearchController.CardImage.sprite = SimpleSprite;
-            cardSearchController.CardNameText.text = CardName;
-            cardSearchController.SubtypesText.text = QualifiedSubtypeText;
-            cardSearchController.EffectText.text = EffText;
-
-            cardSearchController.nText.gameObject.SetActive(CardType == 'C');
-            cardSearchController.eText.gameObject.SetActive(CardType == 'C');
-            cardSearchController.wText.gameObject.SetActive(CardType == 'C');
-            cardSearchController.nText.text = $"N\n{N}";
-            cardSearchController.eText.text = $"E\n{E}";
-            cardSearchController.wText.text = $"W\n{W}";
-
-            cardSearchController.scaText.text = CardType == 'C' ? $"S\n{S}" :
-                                                CardType == 'S' ? $"C\n{C}" :
-                                              /*CardType == 'A'*/ $"A\n{A}";
-
-            cardSearchController.ShowReminderText(this);
+            cardSearchController.deckbuilderCardViewController.Show(this); //TODO handle compile errors
         }
 
         public void Unshow()
         {
-            cardSearchController.ShowSelectedCard();
+            //TODO
         }
 
         protected void SetImage()

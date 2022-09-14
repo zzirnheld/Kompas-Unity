@@ -11,20 +11,20 @@ namespace KompasCore.UI
         /// <summary>
         /// The card currently being shown to the user.
         /// </summary>
-        protected GameCard ShownCard;
+        protected CardBase shownCard;
 
         /// <summary>
         /// The card being "focused" on.
         /// If we're not currently doing something like hovering over another card, this is the one we should be showing
         /// </summary>
-        private GameCard focusedCard;
+        private CardBase focusedCard;
 
         /// <summary>
         /// Focus on a given card.
         /// If we're not currently doing something like hovering over another card, this is the one we should be showing
         /// </summary>
         /// <param name="card"></param>
-        public virtual void Focus(GameCard card)
+        public virtual void Focus(CardBase card)
         {
             Show(card);
             focusedCard = card;
@@ -35,7 +35,7 @@ namespace KompasCore.UI
         /// </summary>
         public void Refresh()
         {
-            Show(ShownCard, true);
+            Show(shownCard, true);
         }
 
         /// <summary>
@@ -43,17 +43,17 @@ namespace KompasCore.UI
         /// </summary>
         /// <param name="card"></param>
         /// <param name="refresh"></param>
-        public void Show(GameCard card, bool refresh = false)
+        public void Show(CardBase card, bool refresh = false)
         {
             //Unless explicitly refreshing card, if already showing that card, no-op.
-            if (card == ShownCard && !refresh) return;
+            if (card == shownCard && !refresh) return;
 
             //Debug.Log($"Asked to display {card}");
             //If we're passed in null, we want to show the focused card, if there is one
-            ShownCard = card ?? focusedCard;
+            shownCard = card ?? focusedCard;
 
             //If we're now showing nothing, hide the window and be done
-            if (ShownCard == null) DisplayNothing();
+            if (shownCard == null) DisplayNothing();
             else Display();
         }
 

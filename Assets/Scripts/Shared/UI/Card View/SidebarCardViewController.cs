@@ -1,3 +1,4 @@
+using KompasCore.Cards;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,6 +18,8 @@ namespace KompasCore.UI
         public CardViewReminderTextParentController reminderTextsUIController;
         public override IReminderTextParentController ReminderTextsUIController => reminderTextsUIController;
 
+        protected GameCard ShownGameCard => shownCard as GameCard;
+
         protected override void DisplayNothing()
         {
             base.DisplayNothing();
@@ -29,7 +32,7 @@ namespace KompasCore.UI
         {
             base.Display();
 
-            boardUIController.ShowForCard(ShownCard);
+            boardUIController.ShowForCard(ShownGameCard);
         }
     }
 }

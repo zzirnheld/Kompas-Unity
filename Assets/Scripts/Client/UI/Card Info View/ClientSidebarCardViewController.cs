@@ -45,7 +45,7 @@ namespace KompasClient.UI
                 Show(null);
         }
 
-        public override void Focus(GameCard card) => Focus(card, false);
+        public override void Focus(CardBase card) => Focus(card as GameCard, false);
 
         /// <summary>
         /// Call with lockFocus = true and card = null to clear out a locked focus and show nothing
@@ -87,15 +87,15 @@ namespace KompasClient.UI
 
             //Delegate other responsibilities
             //TODO also on side, not just on right click
-            effectsUIController?.ShowEffButtons(ShownCard);
-            pipsUIController.HighlightPipsFor(ShownCard);
+            effectsUIController?.ShowEffButtons(ShownGameCard);
+            pipsUIController.HighlightPipsFor(ShownGameCard);
 
             ShowUniqueCopies();
             ShowCardLinks();
-            conditionParentObject.SetActive(ShownCard.Negated || ShownCard.Activated);
-            negatedObject.SetActive(ShownCard.Negated);
-            activatedObject.SetActive(ShownCard.Activated);
-            alreadySelectedMarker.SetActive(searchUICtrl.CardCurrentlyTargeted(ShownCard));
+            conditionParentObject.SetActive(ShownGameCard.Negated || ShownGameCard.Activated);
+            negatedObject.SetActive(ShownGameCard.Negated);
+            activatedObject.SetActive(ShownGameCard.Activated);
+            alreadySelectedMarker.SetActive(searchUICtrl.CardCurrentlyTargeted(ShownGameCard));
         }
 
         private void ClearShownUniqueCopies()
@@ -107,10 +107,10 @@ namespace KompasClient.UI
         private void ShowUniqueCopies()
         {
             ClearShownUniqueCopies();
-            if (ShownCard.Unique)
+            if (shownCard.Unique)
             {
                 //deal with unique cards
-                var copies = clientGame.Cards.Where(c => c.Location == CardLocation.Board && c.IsFriendlyCopyOf(ShownCard));
+                var copies = clientGame.Cards.Where(c => c.Location == CardLocation.Board && c.IsFriendlyCopyOf(ShownGameCard));
                 foreach (var copy in copies)
                 {
                     copy.CardController.gameCardViewController.ShowUniqueCopy(true);
@@ -128,7 +128,7 @@ namespace KompasClient.UI
         private void ShowCardLinks()
         {
             ClearShownCardLinks();
-            foreach (var link in ShownCard.CardLinkHandler.Links)
+            foreach (var link in ShownGameCard.CardLinkHandler.Links)
             {
                 foreach (var card in link.CardIDs.Select(clientGame.GetCardWithID))
                 {

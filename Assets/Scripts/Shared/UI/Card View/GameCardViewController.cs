@@ -85,12 +85,12 @@ namespace KompasCore.UI
 
         protected override bool ShowingInfo
         {
-            set => base.ShowingInfo = value && ShownCard?.Location != CardLocation.Deck && ShownCard?.Location != CardLocation.Nowhere;
+            set => base.ShowingInfo = value && ShownGameCard?.Location != CardLocation.Deck && ShownGameCard?.Location != CardLocation.Nowhere;
         }
 
         protected virtual void HandleZoom()
         {
-            bool isChar = ShownCard.CardType == 'C';
+            bool isChar = shownCard.CardType == 'C';
 
             nText.gameObject.SetActive(Zoomed && isChar);
             eText.gameObject.SetActive(Zoomed && isChar);
@@ -113,31 +113,31 @@ namespace KompasCore.UI
 
             unzoomedAllFrame.SetActive(!Zoomed);
 
-            unzoomedNText.fontSize = UnzoomedFontSizeForValue(ShownCard.N);
-            unzoomedEText.fontSize = UnzoomedFontSizeForValue(ShownCard.E);
-            unzoomedEText.fontSize = UnzoomedFontSizeForValue(ShownCard.E);
+            unzoomedNText.fontSize = UnzoomedFontSizeForValue(shownCard.N);
+            unzoomedEText.fontSize = UnzoomedFontSizeForValue(shownCard.E);
+            unzoomedEText.fontSize = UnzoomedFontSizeForValue(shownCard.E);
 
-            unzoomedCostText.fontSize = UnzoomedFontSizeForValue(ShownCard.Cost);
+            unzoomedCostText.fontSize = UnzoomedFontSizeForValue(shownCard.Cost);
         }
 
         protected override void DisplaySpecialEffects()
         {
             base.DisplaySpecialEffects();
-            if (ShownCard.Location == CardLocation.Board)
+            if (ShownGameCard.Location == CardLocation.Board)
             {
                 //if you can attack at all, enable the attack indicator
-                if (ShownCard.AttackRestriction.CouldAttackValidTarget(stackSrc: null))
+                if (ShownGameCard.AttackRestriction.CouldAttackValidTarget(stackSrc: null))
                     //oscillate the attack indicator if can attack a card right now
-                    attackOscillator.Enable(ShownCard.AttackRestriction.CanAttackAnyCard(stackSrc: null));
+                    attackOscillator.Enable(ShownGameCard.AttackRestriction.CanAttackAnyCard(stackSrc: null));
                 else attackOscillator.Disable();
 
                 //if you can activate any effect, enable the attack indicator
-                if (ShownCard.HasAtAllActivateableEffect)
+                if (ShownGameCard.HasAtAllActivateableEffect)
                     //oscillate the effect indicator if you can activate an effect right now
-                    effectOscillator.Enable(ShownCard.HasCurrentlyActivateableEffect);
+                    effectOscillator.Enable(ShownGameCard.HasCurrentlyActivateableEffect);
                 else effectOscillator.Disable();
 
-                if (ShownCard.SpellSubtypes.Any(CardBase.RadialSubtype.Equals)) aoeController.Show(ShownCard.Radius);
+                if (shownCard.SpellSubtypes.Any(CardBase.RadialSubtype.Equals)) aoeController.Show(shownCard.Radius);
             }
             else
             {
@@ -147,7 +147,7 @@ namespace KompasCore.UI
             }
 
             //TODO move settings off of client and into shared
-            if (ShownCard.Game is ClientGame clientGame)
+            if (ShownGameCard.Game is ClientGame clientGame)
             {
                 var settings = clientGame.clientUIController.clientUISettingsController.ClientSettings;
                 switch (settings.statHighlight)
@@ -181,11 +181,11 @@ namespace KompasCore.UI
         {
             base.DisplayCardNumericStats();
 
-            unzoomedNText.text = $"{ShownCard.N}";
-            unzoomedEText.text = $"{ShownCard.E}";
-            unzoomedWText.text = $"{ShownCard.W}";
+            unzoomedNText.text = $"{shownCard.N}";
+            unzoomedEText.text = $"{shownCard.E}";
+            unzoomedWText.text = $"{shownCard.W}";
 
-            unzoomedCostText.text = $"{ShownCard.Cost}";
+            unzoomedCostText.text = $"{shownCard.Cost}";
         }
 
         protected override void DisplayCardImage()
@@ -193,10 +193,10 @@ namespace KompasCore.UI
             base.DisplayCardImage();
 
             zoomedHazeImage.enabled = Zoomed;
-            zoomedHazeImage.sprite = ShownCard.CardType == 'C' ? zoomedCharHaze : zoomedNonCharHaze;
+            zoomedHazeImage.sprite = shownCard.CardType == 'C' ? zoomedCharHaze : zoomedNonCharHaze;
 
             unzoomedHazeImage.enabled = !Zoomed;
-            unzoomedHazeImage.sprite = ShownCard.CardType == 'C' ? unzoomedCharHaze : unzoomedNonCharHaze;
+            unzoomedHazeImage.sprite = shownCard.CardType == 'C' ? unzoomedCharHaze : unzoomedNonCharHaze;
         }
 
         public virtual void ShowUniqueCopy(bool copy = true) => uniqueCopyObject.SetActive(copy);
@@ -208,12 +208,12 @@ namespace KompasCore.UI
 
         private void ShowFrameColor()
         {
-            if (ShownCard.Controller == null)
+            if (ShownGameCard.Controller == null)
             {
                 //no controller yet, don't bother showing color
                 return;
             }
-            Material material = ShownCard.Controller.Friendly ? friendlyCardFrameMaterial : enemyCardFrameMaterial;
+            Material material = ShownGameCard.Controller.Friendly ? friendlyCardFrameMaterial : enemyCardFrameMaterial;
             if (material == null) return; //Could be an error (TODO handle) but could be just a server card
 
             foreach (var obj in frameObjects)

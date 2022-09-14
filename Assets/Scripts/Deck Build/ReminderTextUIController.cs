@@ -2,7 +2,7 @@
 using TMPro;
 using System.Collections.Generic;
 
-namespace KompasClient.UI
+namespace KompasDeckbuilder.UI
 {
     public class ReminderTextUIController : MonoBehaviour
     {

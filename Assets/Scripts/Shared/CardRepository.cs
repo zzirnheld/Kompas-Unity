@@ -5,6 +5,7 @@ using KompasClient.UI;
 using KompasCore.Cards;
 using KompasCore.Effects.Restrictions;
 using KompasDeckbuilder;
+using KompasDeckbuilder.UI;
 using KompasServer.Cards;
 using KompasServer.Effects;
 using KompasServer.GameCore;

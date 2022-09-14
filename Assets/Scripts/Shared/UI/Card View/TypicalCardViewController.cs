@@ -30,7 +30,7 @@ namespace KompasCore.UI
         {
             get
             {
-                string effText = ShownCard?.EffText;
+                string effText = shownCard?.EffText;
                 foreach (string keyword in CardRepository.Keywords)
                 {
                     effText = effText.Replace(keyword, $"<link=\"{keyword}\"><b>{keyword}</b></link>");
@@ -50,13 +50,13 @@ namespace KompasCore.UI
             {
                 //check keywords
                 int link = TMP_TextUtilities.FindIntersectingLink(effText, Input.mousePosition, Camera);
-                List<string> reminders = new List<string>();
+                List<(string, string)> reminders = new List<(string, string)>();
                 if (link != -1)
                 {
                     var linkInfo = effText.textInfo.linkInfo[link];
                     var reminderText = CardRepository.Reminders.KeywordToReminder[linkInfo.GetLinkID()];
                     //Debug.Log($"Hovering over {linkInfo.GetLinkID()} with reminder {reminderText}");
-                    reminders.Add(reminderText);
+                    reminders.Add((linkInfo.GetLinkID(), reminderText));
                 }
                 ReminderTextsUIController.Show(reminders);
             }
@@ -65,35 +65,35 @@ namespace KompasCore.UI
 
         protected override void DisplayCardRulesText()
         {
-            nameText.text = ShownCard.CardName;
-            subtypesText.text = ShownCard.QualifiedSubtypeText;
+            nameText.text = shownCard.CardName;
+            subtypesText.text = shownCard.QualifiedSubtypeText;
             effText.text = EffTextToDisplay;
         }
 
         protected override void DisplayCardNumericStats()
         {
-            nText.text = $"N\n{ShownCard.N}";
-            eText.text = $"E\n{ShownCard.E}";
-            wText.text = $"W\n{ShownCard.W}";
+            nText.text = $"N\n{shownCard.N}";
+            eText.text = $"E\n{shownCard.E}";
+            wText.text = $"W\n{shownCard.W}";
 
-            switch (ShownCard.CardType)
+            switch (shownCard.CardType)
             {
                 case 'C':
-                    costText.text = $"S\n{ShownCard.S}";
+                    costText.text = $"S\n{shownCard.S}";
 
                     nText.gameObject.SetActive(true);
                     eText.gameObject.SetActive(true);
                     wText.gameObject.SetActive(true);
                     break;
                 case 'S':
-                    costText.text = $"C\n{ShownCard.C}";
+                    costText.text = $"C\n{shownCard.C}";
 
                     nText.gameObject.SetActive(false);
                     eText.gameObject.SetActive(false);
                     wText.gameObject.SetActive(false);
                     break;
                 case 'A':
-                    costText.text = $"A\n{ShownCard.A}";
+                    costText.text = $"A\n{shownCard.A}";
 
                     nText.gameObject.SetActive(false);
                     eText.gameObject.SetActive(false);
@@ -105,7 +105,7 @@ namespace KompasCore.UI
 
         protected override void DisplayCardImage()
         {
-            string cardFileName = ShownCard.FileName;
+            string cardFileName = shownCard.FileName;
             var cardImageSprite = Resources.Load<Sprite>($"Simple Sprites/{cardFileName}");
             cardImageImage.sprite = cardImageSprite;
         }
