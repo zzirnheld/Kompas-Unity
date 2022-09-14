@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 namespace KompasDeckbuilder.UI
 {
@@ -9,10 +10,16 @@ namespace KompasDeckbuilder.UI
         public TMP_Text keywordText;
         public TMP_Text descriptionText;
 
-        public void Initialize(string keyword, string description)
+        public Outline highlightOutline;
+        public Outline normalOutline;
+
+        public void Initialize(string keyword, string description, bool highlighted)
         {
             keywordText.text = keyword;
             descriptionText.text = description;
+
+            highlightOutline.enabled = highlighted;
+            normalOutline.enabled = !highlighted;
         }
     }
 

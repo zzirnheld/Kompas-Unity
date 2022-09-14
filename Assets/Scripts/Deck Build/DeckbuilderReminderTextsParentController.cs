@@ -9,24 +9,26 @@ namespace KompasDeckbuilder.UI
     {
         private readonly List<ReminderTextUIController> reminderCtrls
             = new List<ReminderTextUIController>();
-        public Transform remindersParent;
         public GameObject reminderPrefab;
         public ReminderTextsContainer Reminders => CardRepository.Reminders;
 
-        public void Show(List<(string, string)> reminders)
+        public void Show(List<(string, string)> reminders) => Show(reminders, null);
+
+        public void Show(List<(string, string)> reminders, string highlightedReminder)
         {
+            //if (reminders.Count > 0) Debug.Log($"Showing reminders {reminders}");
             //clear existing reminders
             foreach (var reminderCtrl in reminderCtrls) Destroy(reminderCtrl.gameObject);
             reminderCtrls.Clear();
             //create new reminders
             foreach (var (keyword, reminder) in reminders)
             {
-                var obj = Instantiate(reminderPrefab, remindersParent);
+                var obj = Instantiate(reminderPrefab, transform);
                 var ctrl = obj.GetComponent<ReminderTextUIController>();
-                ctrl.Initialize(keyword, reminder);
+                ctrl.Initialize(keyword, reminder, keyword == highlightedReminder);
                 reminderCtrls.Add(ctrl);
             }
-            remindersParent.gameObject.SetActive(reminderCtrls.Any());
+            gameObject.SetActive(reminderCtrls.Any());
         }
     }
 }
