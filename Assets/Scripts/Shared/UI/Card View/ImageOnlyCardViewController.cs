@@ -11,7 +11,9 @@ namespace KompasCore.UI
 
         protected override void DisplayCardImage()
         {
-            throw new System.NotImplementedException();
+            string cardFileName = shownCard.FileName;
+            var cardImageSprite = Resources.Load<Sprite>($"Simple Sprites/{cardFileName}");
+            image.sprite = cardImageSprite;
         }
 
         protected override void DisplayCardNumericStats() { }

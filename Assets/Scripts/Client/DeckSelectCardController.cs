@@ -16,7 +16,7 @@ namespace KompasClient.UI
             set
             {
                 Card.FileName = value;
-                SetImage();
+                Refresh();
             }
         }
 
@@ -25,11 +25,6 @@ namespace KompasClient.UI
             Card = new DeckSelectCard(card);
             uiController = uiCtrl;
             Focus(Card);
-        }
-
-        protected void SetImage()
-        {
-            Refresh();
         }
 
         public void OnPointerDown(PointerEventData eventData)
