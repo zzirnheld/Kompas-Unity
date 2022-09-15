@@ -93,9 +93,16 @@ namespace KompasServer.Cards
             }
         }
 
-        public ServerGameCard(ServerCardController serverCardController)
+        public ServerGameCard(ServerSerializableCard card, int id, ServerCardController serverCardController, ServerPlayer owner, ServerEffect[] effects)
+            : base(card, id)
         {
             ServerCardController = serverCardController;
+            //Don't just grab effects from the card, because that won't include keywords
+            ServerEffects = effects;
+            ServerGame = owner.serverGame;
+            ServerOwner = ServerController = owner;
+            foreach (var (index, eff) in effects.Enumerate())
+                eff.SetInfo(this, ServerGame, owner, index);
         }
 
         public override string ToString()
@@ -125,7 +132,7 @@ namespace KompasServer.Cards
                 return;
             }
 
-            SetCardInfo(InitialCardValues, ID);
+            SetInfo(InitialCardValues);
 
             SetTurnsOnBoard(0);
             SetSpacesMoved(0);
@@ -135,17 +142,6 @@ namespace KompasServer.Cards
             //instead of setting negations or activations to 0, so that it updates the client correctly
             while (Negated) SetNegated(false);
             while (Activated) SetActivated(false);
-        }
-
-        public void SetInitialCardInfo(SerializableCard serializedCard, ServerGame game, ServerPlayer owner, ServerEffect[] effects, int id)
-        {
-            SetCardInfo(serializedCard, id);
-            ServerEffects = effects;
-            int i = 0;
-            ServerGame = game;
-            ServerOwner = owner;
-            ServerController = owner;
-            foreach (var eff in effects) eff.SetInfo(this, game, owner, i++);
         }
 
         public override void AddAugment(GameCard augment, IStackable stackSrc = null)

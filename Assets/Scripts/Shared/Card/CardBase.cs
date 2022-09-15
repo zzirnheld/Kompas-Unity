@@ -138,6 +138,18 @@ namespace KompasCore.Cards
 
         public virtual string FileName { get; set; }
 
+        protected CardBase(CardStats stats,
+                                       string subtext, string[] spellTypes,
+                                       bool fast, bool unique,
+                                       int radius, int duration,
+                                       char cardType, string cardName,
+                                       string effText,
+                                       string subtypeText,
+                                       string[] augSubtypes)
+        {
+            SetInfo(stats, subtext, spellTypes, fast, unique, radius, duration, cardType, cardName, effText, subtypeText, augSubtypes);
+        }
+
         protected void SetInfo(CardStats stats,
                                        string subtext, string[] spellTypes,
                                        bool fast, bool unique,
@@ -171,15 +183,13 @@ namespace KompasCore.Cards
             AugmentSubtypes = augSubtypes; //Null indicates a lack of required augment subtypes
         }
 
-        protected void SetCardInformation(SerializableCard card)
-            => SetInfo((card.n, card.e, card.s, card.w, card.c, card.a),
-                       card.subtext, card.spellTypes,
-                       card.fast, card.unique,
-                       card.radius, card.duration,
-                       card.cardType, card.cardName,
-                       card.effText,
-                       card.subtypeText,
-                       card.augSubtypes);
+        protected void SetInfo(SerializableCard serializableCard)
+            => SetInfo((serializableCard.n, serializableCard.e, serializableCard.s, serializableCard.w, serializableCard.c, serializableCard.a),
+                serializableCard.subtext, serializableCard.spellTypes,
+                serializableCard.fast, serializableCard.unique,
+                serializableCard.radius, serializableCard.duration,
+                serializableCard.cardType, serializableCard.cardName,
+                serializableCard.effText, serializableCard.subtypeText, serializableCard.augSubtypes);
 
         public override string ToString()
         {

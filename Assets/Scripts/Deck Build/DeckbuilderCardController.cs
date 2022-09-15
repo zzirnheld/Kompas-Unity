@@ -88,8 +88,15 @@ namespace KompasDeckbuilder
     public class DeckbuilderCard : CardBase
     {
         public DeckbuilderCard(SerializableCard card)
+            : base((card.n, card.e, card.s, card.w, card.c, card.a),
+                       card.subtext, card.spellTypes,
+                       card.fast, card.unique,
+                       card.radius, card.duration,
+                       card.cardType, card.cardName,
+                       card.effText,
+                       card.subtypeText,
+                       card.augSubtypes)
         {
-            SetCardInformation(card);
         }
     }
 }

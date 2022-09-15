@@ -67,25 +67,22 @@ namespace KompasClient.Cards
             }
         }
 
-        public ClientGameCard(ClientCardController clientCardController)
+        public ClientGameCard(SerializableCard serializedCard, int id, ClientPlayer owner, ClientEffect[] effects, ClientCardController clientCardController)
+            : base (serializedCard, id)
         {
             ClientCardController = clientCardController;
+            clientCardController.ClientCard = this;
+
+            ClientGame = owner.clientGame;
+            ClientController = ClientOwner = owner;
+            ClientEffects = effects;
+            foreach (var (index, eff) in effects.Enumerate()) eff.SetInfo(this, ClientGame, index, owner);
         }
 
         public override bool Remove(IStackable stackSrc = null)
         {
             ClientGame.MarkCardDirty(this);
             return base.Remove(stackSrc);
-        }
-
-        public void SetInitialCardInfo(SerializableCard serializedCard, ClientGame game, ClientPlayer owner, ClientEffect[] effects, int id)
-        {
-            ClientGame = game;
-            ClientController = ClientOwner = owner;
-            ClientEffects = effects;
-            base.SetCardInfo(serializedCard, id);
-            int i = 0;
-            foreach (var eff in effects) eff.SetInfo(this, game, i++, owner);
         }
 
         public override void SetN(int n, IStackable stackSrc = null, bool notify = true)

@@ -36,27 +36,6 @@ namespace KompasCore.Cards
 
         public abstract Space Position { get; set; }
 
-        public GameCardBase() : base() { }
-
-        public GameCardBase(CardStats stats,
-                        string subtext, string[] spellTypes,
-                        bool fast, bool unique,
-                        int radius, int duration,
-                        char cardType, string cardName,
-                        string effText,
-                        string subtypeText,
-                        string[] augSubtypes)
-        {
-            SetInfo(stats,
-                    subtext, spellTypes,
-                    fast, unique,
-                    radius, duration,
-                    cardType, cardName,
-                    effText,
-                    subtypeText,
-                    augSubtypes);
-        }
-
         public bool Hurt => CardType == 'C' && Location == CardLocation.Board && E < BaseE;
 
         #region distance/adjacency
@@ -172,6 +151,29 @@ namespace KompasCore.Cards
         #endregion distance/adjacency
 
         public bool HasSubtype(string subtype) => SubtypeText.ToLower().Contains(subtype.ToLower());
+
+
+        protected GameCardBase(CardStats stats,
+                            string subtext, string[] spellTypes,
+                            bool fast, bool unique,
+                            int radius, int duration,
+                            char cardType, string cardName,
+                            string effText,
+                            string subtypeText,
+                            string[] augSubtypes)
+            : base(stats, subtext, spellTypes, fast, unique, radius, duration, cardType, cardName, effText, subtypeText, augSubtypes)
+        { }
+
+        protected GameCardBase(SerializableCard card)
+            : this((card.n, card.e, card.s, card.w, card.c, card.a),
+                       card.subtext, card.spellTypes,
+                       card.fast, card.unique,
+                       card.radius, card.duration,
+                       card.cardType, card.cardName,
+                       card.effText,
+                       card.subtypeText,
+                       card.augSubtypes)
+        { }
     }
 
     /// <summary>
@@ -221,21 +223,19 @@ namespace KompasCore.Cards
         {
             if (card == null) return null;
 
-            var cardInfo = new GameCardInfo();
-            cardInfo.SetInfo(card);
-            return cardInfo;
+            return new GameCardInfo(card);
         }
 
-        protected void SetInfo(GameCard card)
-        {
-            SetInfo(card.Stats,
+        public GameCardInfo(GameCard card)
+            : base(card.Stats,
                         card.Subtext, card.SpellSubtypes,
                         card.Fast, card.Unique,
                         card.Radius, card.Duration,
                         card.CardType, card.CardName,
                         card.EffText,
                         card.SubtypeText,
-                        card.AugmentSubtypes);
+                        card.AugmentSubtypes)
+        {
             Card = card;
             Location = card.Location;
             indexInList = card.IndexInList;

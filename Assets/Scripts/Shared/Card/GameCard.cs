@@ -213,23 +213,30 @@ namespace KompasCore.Cards
             return sb.ToString();
         }
 
-        protected virtual void SetCardInfo(SerializableCard serializedCard, int id)
+        protected GameCard(SerializableCard serializeableCard, int id)
+            : base((serializeableCard.n, serializeableCard.e, serializeableCard.s, serializeableCard.w, serializeableCard.c, serializeableCard.a),
+                       serializeableCard.subtext, serializeableCard.spellTypes,
+                       serializeableCard.fast, serializeableCard.unique,
+                       serializeableCard.radius, serializeableCard.duration,
+                       serializeableCard.cardType, serializeableCard.cardName,
+                       serializeableCard.effText,
+                       serializeableCard.subtypeText,
+                       serializeableCard.augSubtypes)
         {
-            SetCardInformation(serializedCard);
 
             FileName = CardRepository.FileNameFor(CardName);
 
             CardLinkHandler = new GameCardCardLinkHandler(this);
 
             ID = id;
-            InitialCardValues = serializedCard;
+            InitialCardValues = serializeableCard;
 
             EffectInitializationContext initializationContext = new EffectInitializationContext(Game, this);
-            MovementRestriction = serializedCard.MovementRestriction ?? new MovementRestriction();
+            MovementRestriction = serializeableCard.MovementRestriction ?? new MovementRestriction();
             MovementRestriction.Initialize(initializationContext);
-            AttackRestriction = serializedCard.AttackRestriction ?? new AttackRestriction();
+            AttackRestriction = serializeableCard.AttackRestriction ?? new AttackRestriction();
             AttackRestriction.Initialize(initializationContext);
-            PlayRestriction = serializedCard.PlayRestriction ?? new PlayRestriction();
+            PlayRestriction = serializeableCard.PlayRestriction ?? new PlayRestriction();
             PlayRestriction.Initialize(initializationContext);
 
             CardController.gameCardViewController.Show(this, refresh: true);

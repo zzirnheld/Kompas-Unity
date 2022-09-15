@@ -9,7 +9,7 @@ namespace KompasCore.GameCore
 {
     public abstract class HandController : MonoBehaviour, IGameLocation
     {
-        public Player Owner;
+        public abstract Player Owner { get; }
 
         public CardLocation CardLocation => CardLocation.Hand;
 

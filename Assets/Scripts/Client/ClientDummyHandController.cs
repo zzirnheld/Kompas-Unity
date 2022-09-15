@@ -15,10 +15,8 @@ public class ClientDummyHandController : ClientHandController
 
     public override void IncrementHand()
     {
-        var ctrl = GameObject.Instantiate(dummyCardPrefab, parent: gameObject.transform).GetComponent<ClientCardController>();
-        var card = new DummyClientGameCard(ctrl);
-        card.Controller = Owner;
-        card.SetClientGame(clientGame);
+        var ctrl = Instantiate(dummyCardPrefab, parent: gameObject.transform).GetComponent<ClientCardController>();
+        var card = new DummyClientGameCard(owner, ctrl);
         dummyHand.Add(card);
         Hand(card);
     }

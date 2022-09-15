@@ -1404,8 +1404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 406b7c8f19796054b87a44b4481d8a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Owner: {fileID: 1841194802}
-  clientGame: {fileID: 492080563}
+  owner: {fileID: 1841194802}
   dummyCardPrefab: {fileID: 6108902677084055633, guid: cf7cb6ba3babefe409be8060db315fe6,
     type: 3}
 --- !u!4 &60475904
@@ -28547,8 +28546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfe783f7d25f4f24b803f3fb367884cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Owner: {fileID: 1829834588}
-  clientGame: {fileID: 492080563}
+  owner: {fileID: 1829834588}
 --- !u!4 &1921547574
 Transform:
   m_ObjectHideFlags: 0
@@ -32968,8 +32966,8 @@ MonoBehaviour:
   subtypesText: {fileID: 5433006505173456469}
   effText: {fileID: 8122172521997692155}
   cardImageImage: {fileID: 6078966050878016375}
-  reminderTextsUIController: {fileID: 565991505}
   boardUIController: {fileID: 4063274800751553634}
+  reminderTextsUIController: {fileID: 565991505}
   clientGame: {fileID: 492080563}
   effectsUIController: {fileID: 0}
   pipsUIController: {fileID: 1110181315}

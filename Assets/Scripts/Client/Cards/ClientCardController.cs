@@ -10,17 +10,18 @@ namespace KompasClient.Cards
     //[RequireComponent(typeof(ClientCardMouseController))]
     public class ClientCardController : CardController
     {
-        public ClientGameCard clientCard;
 
         public GameObject revealedImage;
 
         [Header("Dependent MonoBehaviours")]
         public ClientCardMouseController mouseController;
 
-        public override GameCard Card => clientCard;
+        public ClientGameCard ClientCard { get; set; }
+        public override GameCard Card => ClientCard;
 
-        public ClientGame ClientGame => clientCard.ClientGame;
+        public ClientGame ClientGame => ClientCard.ClientGame;
         public ClientUIController ClientUIController => ClientGame.clientUIController;
+
 
         public bool Revealed
         {

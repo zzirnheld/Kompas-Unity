@@ -1,5 +1,7 @@
-﻿using KompasCore.Cards.Movement;
+﻿using KompasCore.Cards;
+using KompasCore.Cards.Movement;
 using KompasCore.Effects;
+using KompasServer.Effects;
 using KompasServer.GameCore;
 using System;
 
@@ -37,8 +39,8 @@ namespace KompasServer.Cards
             if (E <= 0) ServerGame.Lose(ControllerIndex);
         }
 
-        public AvatarServerGameCard(ServerCardController serverCardController)
-            : base(serverCardController)
+        public AvatarServerGameCard(ServerSerializableCard card, int id, ServerCardController serverCardController, ServerPlayer owner, ServerEffect[] effects)
+            : base(card, id, serverCardController, owner, effects)
         {
 
         }

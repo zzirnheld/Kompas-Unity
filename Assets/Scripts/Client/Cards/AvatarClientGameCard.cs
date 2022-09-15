@@ -1,7 +1,6 @@
 ﻿using KompasClient.Effects;
 using KompasClient.GameCore;
 using KompasCore.Cards;
-using KompasCore.Effects;
 
 namespace KompasClient.Cards
 {
@@ -10,8 +9,8 @@ namespace KompasClient.Cards
         public override bool Summoned => false;
         public override bool IsAvatar => true;
 
-        public AvatarClientGameCard(ClientCardController clientCardController)
-            : base(clientCardController)
+        public AvatarClientGameCard(SerializableCard serializedCard, ClientPlayer owner, ClientEffect[] effects, int id, ClientCardController clientCardController)
+            : base(serializedCard, id, owner, effects, clientCardController)
         {
 
         }
