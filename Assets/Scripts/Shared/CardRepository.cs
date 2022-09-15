@@ -183,7 +183,7 @@ public class CardRepository : MonoBehaviour
         return card.cardType == 'C';
     }
 
-    public AvatarServerGameCard InstantiateServerAvatar(string cardName, ServerGame serverGame, ServerPlayer owner, int id)
+    public AvatarServerGameCard InstantiateServerAvatar(string cardName, ServerPlayer owner, int id)
     {
         if (!cardJsons.ContainsKey(cardName)) return null;
         ServerSerializableCard card;
@@ -223,11 +223,11 @@ public class CardRepository : MonoBehaviour
         var avatar = new AvatarServerGameCard(card, id, ctrl, owner, effects.ToArray());
 
         avatar.ServerCardController.serverCard = avatar;
-        owner.serverGame.cardsByID.Add(id, avatar);
+        owner.serverGame.AddCard(avatar);
         return avatar;
     }
 
-    public ServerGameCard InstantiateServerNonAvatar(string name, ServerGame serverGame, ServerPlayer owner, int id)
+    public ServerGameCard InstantiateServerNonAvatar(string name, ServerPlayer owner, int id)
     {
         string json = cardJsons[name] ?? throw new System.ArgumentException($"Name {name} not associated with json");
         var cardObj = Instantiate(CardPrefab);
@@ -265,11 +265,11 @@ public class CardRepository : MonoBehaviour
         //if don't use .where .first it still grabs components that should be destroyed, and are destroyed as far as i can tell
         var ctrl = cardObj.GetComponents<ServerCardController>().Where(c => c is ServerCardController).First();
         var card = new ServerGameCard(cardInfo, id, ctrl, owner, effects.ToArray());
-        serverGame.cardsByID.Add(card.ID, card);
+        owner.serverGame.AddCard(card);
         return card;
     }
 
-    public AvatarClientGameCard InstantiateClientAvatar(string json, ClientGame clientGame, ClientPlayer owner, int id)
+    public AvatarClientGameCard InstantiateClientAvatar(string json, ClientPlayer owner, int id)
     {
         ClientSerializableCard cardInfo;
         List<ClientEffect> effects = new List<ClientEffect>();
@@ -308,11 +308,11 @@ public class CardRepository : MonoBehaviour
         var avatar = new AvatarClientGameCard(cardInfo, owner, effects.ToArray(), id, ctrl);
 
         avatar.ClientCardController.mouseController.card = avatar.CardController;
-        clientGame.cardsByID.Add(id, avatar);
+        owner.clientGame.AddCard(avatar);
         return avatar;
     }
 
-    public ClientGameCard InstantiateClientNonAvatar(string json, ClientGame clientGame, ClientPlayer owner, int id)
+    public ClientGameCard InstantiateClientNonAvatar(string json, ClientPlayer owner, int id)
     {
         ClientSerializableCard cardInfo;
         List<ClientEffect> effects = new List<ClientEffect>();
@@ -348,6 +348,7 @@ public class CardRepository : MonoBehaviour
         //if don't use .where .first it still grabs components that should be destroyed, and are destroyed as far as i can tell
         var ctrl = cardObj.GetComponents<ClientCardController>().Where(c => c is ClientCardController).First();
         var card = new ClientGameCard(cardInfo, id, owner, effects.ToArray(), ctrl);
+        owner.clientGame.AddCard(card);
 
         Debug.Log($"Successfully created a card? {card != null} for json {json} with controller {ctrl}");
         card.ClientCardController.gameCardViewController.Refresh();

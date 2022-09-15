@@ -23,10 +23,7 @@ namespace KompasServer.GameCore
     {
         public const int MinDeckSize = 49;
 
-        public const int AvatarNPenalty = 15;
         public const int AvatarEBonus = 15;
-        public const int AvatarWPenalty = 15;
-        public const int AvatarShield = 15;
 
         [Header("Main other scripts")]
         [Tooltip("Handles the stack and effects' resolution")]
@@ -43,9 +40,8 @@ namespace KompasServer.GameCore
         public override UIController UIController => ServerUIController;
 
         //Dictionary of cards, and the forwardings to make that convenient
-        public Dictionary<int, ServerGameCard> cardsByID = new Dictionary<int, ServerGameCard>();
-        public IEnumerable<ServerGameCard> ServerCards => cardsByID.Values;
-        public override IEnumerable<GameCard> Cards => ServerCards;
+        private readonly Dictionary<int, ServerGameCard> cardsByID = new Dictionary<int, ServerGameCard>();
+        public override IEnumerable<GameCard> Cards => cardsByID.Values;
 
         //Players
         public override Player[] Players => serverPlayers;
@@ -85,6 +81,8 @@ namespace KompasServer.GameCore
         //(esp. since async is single threaded, not multithreaded)
         private readonly object AddCardsLock = new object();
         private readonly object CheckAvatarsLock = new object();
+
+        public void AddCard(ServerGameCard card) => cardsByID.Add(card.ID, card);
 
         public void Init(ServerUIController uiController, CardRepository cardRepo)
         {
@@ -157,7 +155,7 @@ namespace KompasServer.GameCore
             lock (AddCardsLock)
             {
                 //otherwise, set the avatar and rest of the deck
-                avatar = cardRepo.InstantiateServerAvatar(deck[0], this, player, cardCount++) ??
+                avatar = cardRepo.InstantiateServerAvatar(deck[0], player, cardCount++) ??
                     throw new System.ArgumentException($"Failed to load avatar for card {deck[0]}");
                 deck.RemoveAt(0); //take out avatar before telling player to add the rest of the deck
             }
@@ -167,7 +165,7 @@ namespace KompasServer.GameCore
                 ServerGameCard card;
                 lock (AddCardsLock)
                 {
-                    card = cardRepo.InstantiateServerNonAvatar(name, this, player, cardCount);
+                    card = cardRepo.InstantiateServerNonAvatar(name, player, cardCount);
                     if (card == null) continue;
                     cardCount++;
                 }

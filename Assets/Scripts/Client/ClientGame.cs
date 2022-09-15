@@ -22,24 +22,25 @@ namespace KompasClient.GameCore
         public ClientNetworkController clientNetworkCtrl;
         public ClientNotifier clientNotifier;
 
-        [Header("Game logic MonoBehaviours")]
+        [Header("Game location controllers")]
         public ClientBoardController clientBoardController;
         public override BoardController BoardController => clientBoardController;
 
+        [Header("Effects")]
         public ClientEffectsController clientEffectsCtrl;
 
+        [Header("Players")]
         public ClientPlayer[] clientPlayers;
         public override Player[] Players => clientPlayers;
         public ClientPlayer FriendlyPlayer => clientPlayers[0];
 
-        [Header("Other MonoBehaviours")]
+        [Header("UI")]
         public ClientUIController clientUIController;
         public override UIController UIController => clientUIController;
 
 
-        public Dictionary<int, ClientGameCard> cardsByID = new Dictionary<int, ClientGameCard>();
-        public IEnumerable<ClientGameCard> ClientCards => cardsByID.Values;
-        public override IEnumerable<GameCard> Cards => ClientCards;
+        private readonly Dictionary<int, ClientGameCard> cardsByID = new Dictionary<int, ClientGameCard>();
+        public override IEnumerable<GameCard> Cards => cardsByID.Values;
 
         public ClientSettings ClientSettings => clientUIController.clientUISettingsController.ClientSettings;
 
@@ -103,6 +104,8 @@ namespace KompasClient.GameCore
             ApplySettings();
         }
 
+        public void AddCard(ClientGameCard card) => cardsByID.Add(card.ID, card);
+
         public void MarkCardDirty(GameCard card) => dirtyCardList.Add(card);
 
         public void PutCardsBack()
@@ -116,7 +119,7 @@ namespace KompasClient.GameCore
             if (player >= 2) throw new System.ArgumentException();
 
             var owner = clientPlayers[player];
-            var avatar = cardRepo.InstantiateClientAvatar(json, this, owner, avatarID);
+            var avatar = cardRepo.InstantiateClientAvatar(json, owner, avatarID);
             avatar.KnownToEnemy = true;
             owner.Avatar = avatar;
             Space to = player == 0 ? Space.NearCorner : Space.FarCorner;
