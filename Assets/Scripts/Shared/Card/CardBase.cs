@@ -250,5 +250,45 @@ namespace KompasCore.Cards
             SetC(stats.c, stackSrc, onlyStatBeingSet: false);
             SetA(stats.a, stackSrc, onlyStatBeingSet: false);
         }
+
+        /// <summary>
+        /// Shorthand for modifying a card's NESW all at once.
+        /// On the server, this only notifies the clients of stat changes once.
+        /// </summary>
+        public virtual void SetCharStats(int n, int e, int s, int w, IStackable stackSrc = null)
+        {
+            SetN(n, stackSrc, onlyStatBeingSet: false);
+            SetE(e, stackSrc, onlyStatBeingSet: false);
+            SetS(s, stackSrc, onlyStatBeingSet: false);
+            SetW(w, stackSrc, onlyStatBeingSet: false);
+        }
+
+        /// <summary>
+        /// Shorthand for modifying a card's NESW all at once.
+        /// On the server, this only notifies the clients of stat changes once.
+        /// </summary>
+        public void AddToCharStats(int n, int e, int s, int w, IStackable stackSrc = null)
+            => SetCharStats(N + n, E + e, S + s, W + w, stackSrc: stackSrc);
+
+        /// <summary>
+        /// Shorthand for modifying a card's stats all at once.
+        /// On the server, this only notifies the clients of stat changes once.
+        /// </summary>
+        public void AddToStats(CardStats buff, IStackable stackSrc = null)
+            => SetStats(Stats + buff, stackSrc);
+
+        public void SwapCharStats(GameCard other, bool swapN = true, bool swapE = true, bool swapS = true, bool swapW = true)
+        {
+            int[] aNewStats = new int[4];
+            int[] bNewStats = new int[4];
+
+            (aNewStats[0], bNewStats[0]) = swapN ? (other.N, N) : (N, other.N);
+            (aNewStats[1], bNewStats[1]) = swapE ? (other.E, E) : (E, other.E);
+            (aNewStats[2], bNewStats[2]) = swapS ? (other.S, S) : (S, other.S);
+            (aNewStats[3], bNewStats[3]) = swapW ? (other.W, W) : (W, other.W);
+
+            SetCharStats(aNewStats[0], aNewStats[1], aNewStats[2], aNewStats[3]);
+            other.SetCharStats(bNewStats[0], bNewStats[1], bNewStats[2], bNewStats[3]);
+        }
     }
 }

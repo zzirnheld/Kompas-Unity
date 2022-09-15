@@ -1,16 +1,14 @@
 ﻿using KompasCore.Cards;
-using UnityEngine;
+using KompasCore.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace KompasClient.UI
 {
-    public class DeckSelectCardController : MonoBehaviour, IPointerDownHandler
+    public class DeckSelectCardController : ImageOnlyCardViewController, IPointerDownHandler
     {
-        public DeckSelectUIController UICtrl;
-        public Image Image;
-
         public DeckSelectCard Card { get; private set; }
+        private DeckSelectUIController uiController;
 
         public string FileName
         {
@@ -25,17 +23,18 @@ namespace KompasClient.UI
         public void SetInfo(SerializableCard card, DeckSelectUIController uiCtrl)
         {
             Card = new DeckSelectCard(card);
-            UICtrl = uiCtrl;
+            uiController = uiCtrl;
+            Focus(Card);
         }
 
         protected void SetImage()
         {
-            Image.sprite = Card.SimpleSprite;
+            Refresh();
         }
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            UICtrl.SelectAsAvatar(this);
+            uiController.SelectAsAvatar(this);
         }
     }
 
@@ -50,7 +49,6 @@ namespace KompasClient.UI
                        card.effText,
                        card.subtypeText,
                        card.augSubtypes)
-        {
-        }
+        { }
     }
 }

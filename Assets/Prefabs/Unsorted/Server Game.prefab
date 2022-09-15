@@ -109,7 +109,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49f017abe78b3c54da0a3bf941eb26fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  game: {fileID: 3349460599440499645}
   ServerGame: {fileID: 3349460599440499645}
 --- !u!1 &2541495787388890033
 GameObject:
@@ -517,8 +516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a345a5d546b4fa479f1e4af75949ed9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Owner: {fileID: 3349460599362718998}
-  ServerGame: {fileID: 3349460599440499645}
+  owner: {fileID: 3349460599362718998}
 --- !u!1 &3349460599440499644
 GameObject:
   m_ObjectHideFlags: 0
@@ -566,15 +564,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 982f74e1d17e85e4cacba2af9442c664, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiCtrl: {fileID: 0}
-  boardCtrl: {fileID: 2758847247348518504}
-  boardObject: {fileID: 2541495787388890033}
   cardRepo: {fileID: 0}
-  targetMode: 0
-  EffectsController: {fileID: 657906863238247598}
-  ServerPlayers:
+  effectsController: {fileID: 657906863238247598}
+  serverPlayers:
   - {fileID: 3349460599362718998}
   - {fileID: 3349460600153624845}
+  serverBoardController: {fileID: 2758847247348518504}
   cardCount: 0
 --- !u!114 &657906863238247598
 MonoBehaviour:
@@ -1073,8 +1068,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a345a5d546b4fa479f1e4af75949ed9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Owner: {fileID: 3349460600153624845}
-  ServerGame: {fileID: 3349460599440499645}
+  owner: {fileID: 3349460600153624845}
 --- !u!1 &6834258840456751864
 GameObject:
   m_ObjectHideFlags: 0

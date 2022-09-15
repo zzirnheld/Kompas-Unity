@@ -249,10 +249,7 @@ namespace KompasCore.Cards
         /// </summary>
         public virtual void ResetForTurn(Player turnPlayer)
         {
-            foreach (Effect eff in Effects)
-            {
-                eff.ResetForTurn(turnPlayer);
-            }
+            foreach (Effect eff in Effects) eff.ResetForTurn(turnPlayer);
 
             SetSpacesMoved(0);
             SetAttacksThisTurn(0);
@@ -285,7 +282,6 @@ namespace KompasCore.Cards
             augment.Remove(stackSrc);
 
             augmentsList.Add(augment);
-            //and update the augment's augmented card, to reflect its new status
             augment.AugmentedCard = this;
         }
 
@@ -337,49 +333,9 @@ namespace KompasCore.Cards
         }
 
         /// <summary>
-        /// Inflicts the given amount of damage, which can affect both shield and E. Used by attacks and (rarely) by effects.
+        /// Inflicts the given amount of damage. Used by attacks and (rarely) by effects.
         /// </summary>
         public virtual void TakeDamage(int dmg, IStackable stackSrc = null) => SetE(E - dmg, stackSrc: stackSrc);
-
-        /// <summary>
-        /// Shorthand for modifying a card's NESW all at once.
-        /// On the server, this only notifies the clients of stat changes once.
-        /// </summary>
-        public virtual void SetCharStats(int n, int e, int s, int w, IStackable stackSrc = null)
-        {
-            SetN(n, stackSrc, onlyStatBeingSet: false);
-            SetE(e, stackSrc, onlyStatBeingSet: false);
-            SetS(s, stackSrc, onlyStatBeingSet: false);
-            SetW(w, stackSrc, onlyStatBeingSet: false);
-        }
-
-        /// <summary>
-        /// Shorthand for modifying a card's NESW all at once.
-        /// On the server, this only notifies the clients of stat changes once.
-        /// </summary>
-        public void AddToCharStats(int n, int e, int s, int w, IStackable stackSrc = null)
-            => SetCharStats(N + n, E + e, S + s, W + w, stackSrc: stackSrc);
-
-        /// <summary>
-        /// Shorthand for modifying a card's stats all at once.
-        /// On the server, this only notifies the clients of stat changes once.
-        /// </summary>
-        public void AddToStats(CardStats buff, IStackable stackSrc = null)
-            => SetStats(Stats + buff, stackSrc);
-
-        public void SwapCharStats(GameCard other, bool swapN = true, bool swapE = true, bool swapS = true, bool swapW = true)
-        {
-            int[] aNewStats = new int[4];
-            int[] bNewStats = new int[4];
-
-            (aNewStats[0], bNewStats[0]) = swapN ? (other.N, N) : (N, other.N);
-            (aNewStats[1], bNewStats[1]) = swapE ? (other.E, E) : (E, other.E);
-            (aNewStats[2], bNewStats[2]) = swapS ? (other.S, S) : (S, other.S);
-            (aNewStats[3], bNewStats[3]) = swapW ? (other.W, W) : (W, other.W);
-
-            SetCharStats(aNewStats[0], aNewStats[1], aNewStats[2], aNewStats[3]);
-            other.SetCharStats(bNewStats[0], bNewStats[1], bNewStats[2], bNewStats[3]);
-        }
 
         public virtual void SetNegated(bool negated, IStackable stackSrc = null) => Negated = negated;
         public virtual void SetActivated(bool activated, IStackable stackSrc = null) => Activated = activated;
@@ -404,8 +360,6 @@ namespace KompasCore.Cards
         /// <see langword="false"/> if the card is an avatar that got sent back</returns>
         public virtual bool Remove(IStackable stackSrc = null)
         {
-            // Debug.Log($"Removing {CardName} id {ID} from {Location}");
-
             if (Location == CardLocation.Nowhere) return true;
 
             if (Attached) Detach(stackSrc);
