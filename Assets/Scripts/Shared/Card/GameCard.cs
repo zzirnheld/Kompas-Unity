@@ -407,38 +407,6 @@ namespace KompasCore.Cards
             return true;
         }
 
-        public virtual void Vanish() => Discard();
-        public void Discard(IStackable stackSrc = null) => Controller.discardCtrl.Discard(this, stackSrc);
-
-        public void Rehand(Player controller, IStackable stackSrc = null) => controller.handCtrl.Hand(this, stackSrc);
-        public void Rehand(IStackable stackSrc = null) => Rehand(Controller, stackSrc);
-
-        public void Reshuffle(Player controller, IStackable stackSrc = null) => controller.deckCtrl.ShuffleIn(this, stackSrc);
-        public void Reshuffle(IStackable stackSrc = null) => Reshuffle(Controller, stackSrc);
-
-        public void Topdeck(Player controller, IStackable stackSrc = null) => controller.deckCtrl.PushTopdeck(this, stackSrc);
-        public void Topdeck(IStackable stackSrc = null) => Topdeck(Controller, stackSrc);
-
-        public void Bottomdeck(Player controller, IStackable stackSrc = null) => controller.deckCtrl.PushBottomdeck(this, stackSrc);
-        public void Bottomdeck(IStackable stackSrc = null) => Bottomdeck(Controller, stackSrc);
-
-        public void Play(Space to, Player controller, IStackable stackSrc = null, bool payCost = false)
-        {
-            var costToPay = Cost;
-            Game.BoardController.Play(this, to, controller, stackSrc);
-
-            if (payCost) controller.Pips -= costToPay;
-        }
-
-        public void Move(Space to, bool normalMove, IStackable stackSrc = null)
-            => Game.BoardController.Move(this, to, normalMove, stackSrc);
-
-        public void Dispel(IStackable stackSrc = null)
-        {
-            SetNegated(true, stackSrc);
-            Discard(stackSrc);
-        }
-
         public virtual void Reveal(IStackable stackSrc = null)
         {
             //Reveal should only succeed if the card is not known to the enemy

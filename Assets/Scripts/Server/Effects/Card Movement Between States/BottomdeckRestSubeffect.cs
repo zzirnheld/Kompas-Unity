@@ -1,4 +1,5 @@
 ﻿using KompasCore.Cards;
+using KompasCore.Cards.Movement;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -15,9 +16,7 @@ namespace KompasServer.Effects
             {
                 n--;
                 int k = rng.Next(n + 1);
-                GameCard value = list[k];
-                list[k] = list[n];
-                list[n] = value;
+                (list[n], list[k]) = (list[k], list[n]);
             }
             return list;
         }

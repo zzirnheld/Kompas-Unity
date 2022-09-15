@@ -3,6 +3,7 @@ using KompasClient.Effects;
 using KompasClient.Networking;
 using KompasClient.UI;
 using KompasCore.Cards;
+using KompasCore.Cards.Movement;
 using KompasCore.Effects;
 using KompasCore.GameCore;
 using KompasCore.UI;

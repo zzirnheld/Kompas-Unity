@@ -97,7 +97,6 @@ namespace KompasClient.Networking
                 Packet.AddTarget => JsonConvert.DeserializeObject<AddTargetClientPacket>(json),
                 Packet.RemoveTarget => JsonConvert.DeserializeObject<RemoveTargetClientPacket>(json),
                 Packet.ToggleDecliningTarget => JsonConvert.DeserializeObject<ToggleDecliningTargetClientPacket>(json),
-                Packet.DiscardSimples => JsonConvert.DeserializeObject<DiscardSimplesClientPacket>(json),
                 Packet.StackEmpty => JsonConvert.DeserializeObject<StackEmptyClientPacket>(json),
                 Packet.EffectImpossible => JsonConvert.DeserializeObject<EffectImpossibleClientPacket>(json),
                 Packet.OptionalTrigger => JsonConvert.DeserializeObject<OptionalTriggerClientPacket>(json),

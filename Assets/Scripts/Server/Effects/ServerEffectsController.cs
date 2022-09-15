@@ -107,7 +107,7 @@ namespace KompasServer.Effects
             //Debug.Log($"Stack is emptied");
             //stack ends
             foreach (var c in ServerGame.Cards) c.ResetForStack();
-            ServerGame.BoardController.ClearSpells();
+            ServerGame.serverBoardController.ClearSpells();
             ServerGame.serverPlayers.First().ServerNotifier.StackEmpty();
             TriggerForCondition(Trigger.StackEnd, new ActivationContext(game: ServerGame));
             //Must check whether I *should* check for response to avoid an infinite loop

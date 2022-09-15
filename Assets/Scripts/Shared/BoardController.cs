@@ -6,6 +6,7 @@ using KompasCore.Effects;
 using KompasCore.Cards;
 using System.Text;
 using KompasCore.Exceptions;
+using KompasCore.Cards.Movement;
 
 namespace KompasCore.GameCore
 {
@@ -299,30 +300,6 @@ namespace KompasCore.GameCore
             else
             {
                 Swap(card, to, playerInitiated, stackSrc);
-            }
-        }
-
-        public void ClearSpells()
-        {
-            foreach (GameCard c in Board)
-            {
-                if (c == null) continue;
-                else// if (c.CardType == 'S')
-                {
-                    foreach (string s in c.SpellSubtypes)
-                    {
-                        switch (s)
-                        {
-                            case CardBase.SimpleSubtype:
-                                c.Discard();
-                                break;
-                            case CardBase.DelayedSubtype:
-                            case CardBase.VanishingSubtype:
-                                if (c.TurnsOnBoard >= c.Duration) c.Vanish();
-                                break;
-                        }
-                    }
-                }
             }
         }
         #endregion game mechanics

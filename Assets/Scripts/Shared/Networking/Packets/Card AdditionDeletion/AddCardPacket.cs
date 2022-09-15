@@ -2,6 +2,7 @@
 using KompasClient.GameCore;
 using KompasCore.GameCore;
 using KompasCore.Cards;
+using KompasCore.Cards.Movement;
 
 namespace KompasCore.Networking
 {
@@ -95,7 +96,7 @@ namespace KompasClient.Networking
                     card.Topdeck();
                     break;
                 case CardLocation.Annihilation:
-                    card.Controller.annihilationCtrl.Annihilate(card);
+                    card.Annihilate();
                     break;
                 default:
                     throw new System.ArgumentException($"Invalid location {location} for Add Card Client Packet to put card");

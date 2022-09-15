@@ -1,4 +1,5 @@
 ﻿using KompasCore.Cards;
+using KompasCore.Cards.Movement;
 using KompasCore.Effects;
 using KompasCore.GameCore;
 using KompasServer.Effects;
@@ -147,14 +148,6 @@ namespace KompasServer.Cards
             foreach (var eff in effects) eff.SetInfo(this, game, owner, i++);
         }
 
-        public override void Vanish()
-        {
-            ActivationContext context = new ActivationContext(game: ServerGame, mainCardBefore: this);
-            base.Vanish();
-            context.CacheCardInfoAfter();
-            EffectsController.TriggerForCondition(Trigger.Vanish, context);
-        }
-
         public override void AddAugment(GameCard augment, IStackable stackSrc = null)
         {
             var attachedContext = new ActivationContext(game: ServerGame, mainCardBefore: augment, secondaryCardBefore: this,
@@ -243,11 +236,7 @@ namespace KompasServer.Cards
             if (onlyStatBeingSet) ServerNotifier.NotifyStats(this);
 
             //kill if applicable
-            DieIfApplicable(stackSrc);
-        }
-        public void DieIfApplicable(IStackable stackSrc)
-        {
-            if (E <= 0 && CardType == 'C' && Summoned) Discard(stackSrc);
+            if (E <= 0 && CardType == 'C' && Summoned) this.Discard(stackSrc);
         }
 
         public override void SetS(int s, IStackable stackSrc, bool onlyStatBeingSet = true)

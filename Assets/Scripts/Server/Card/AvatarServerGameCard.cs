@@ -1,5 +1,7 @@
-﻿using KompasCore.Effects;
+﻿using KompasCore.Cards.Movement;
+using KompasCore.Effects;
 using KompasServer.GameCore;
+using System;
 
 namespace KompasServer.Cards
 {
@@ -14,9 +16,14 @@ namespace KompasServer.Cards
             var corner = Space.AvatarCornerFor(ControllerIndex);
             var unfortunate = Game.BoardController.GetCardAt(corner);
             if (unfortunate != null && unfortunate != this && !unfortunate.IsAvatar)
-                unfortunate.Owner.annihilationCtrl.Annihilate(unfortunate, stackSrc: stackSrc);
+                unfortunate.Annihilate(stackSrc);
             Move(to: corner, normalMove: false, stackSrc: stackSrc);
             return false;
+        }
+
+        private void Move(Space to, bool normalMove, IStackable stackSrc)
+        {
+            throw new NotImplementedException();
         }
 
         public override void SetE(int e, IStackable stackSrc, bool onlyStatBeingSet = true)
