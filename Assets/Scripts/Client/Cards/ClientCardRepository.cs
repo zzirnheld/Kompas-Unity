@@ -11,6 +11,8 @@ namespace KompasClient.Cards
 {
     public class ClientCardRepository : CardRepository
     {
+        public GameObject DeckSelectCardPrefab;
+
         public AvatarClientGameCard InstantiateClientAvatar(string json, ClientPlayer owner, int id)
         {
             ClientSerializableCard cardInfo;

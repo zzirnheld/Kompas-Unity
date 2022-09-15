@@ -1,21 +1,14 @@
-﻿using KompasClient.Cards;
-using KompasClient.Effects;
-using KompasClient.GameCore;
-using KompasClient.UI;
-using KompasCore.Cards;
+﻿using KompasCore.Cards;
 using KompasCore.Effects;
 using KompasCore.Effects.Restrictions;
 using KompasDeckbuilder;
 using KompasDeckbuilder.UI;
-using KompasServer.Cards;
 using KompasServer.Effects;
-using KompasServer.GameCore;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-//TODO split into client/server
 public class CardRepository : MonoBehaviour
 {
     public const string cardJsonsFolderPath = "Card Jsons/";
@@ -46,8 +39,7 @@ public class CardRepository : MonoBehaviour
 
     protected static readonly Dictionary<string, string> cardJsons = new Dictionary<string, string>();
     protected static readonly Dictionary<string, string> cardFileNames = new Dictionary<string, string>();
-    private static readonly Dictionary<string, int> cardNameIDs = new Dictionary<string, int>();
-    private static readonly List<string> cardNames = new List<string>();
+    private static ICollection<string> CardNames => cardJsons.Keys;
 
     protected static readonly Dictionary<string, string> keywordJsons = new Dictionary<string, string>();
     private static readonly Dictionary<string, string> partialKeywordJsons = new Dictionary<string, string>();
@@ -57,34 +49,35 @@ public class CardRepository : MonoBehaviour
     public static ICollection<string> Keywords { get; private set; }
 
     private static bool initalized = false;
+    private static readonly object initializationLock = new object();
 
     public static IEnumerable<string> CardJsons => cardJsons.Values;
 
-    #region prefabs
-    public GameObject DeckSelectCardPrefab;
-
+    //TODO move this out to a DeckbuilderCardRepository
     public GameObject DeckbuilderCharPrefab;
     public GameObject DeckbuilderSpellPrefab;
     public GameObject DeckbuilderAugPrefab;
 
     public GameObject CardPrefab;
-    #endregion prefabs
 
     private void Awake()
     {
-        if (initalized) return;
-        initalized = true;
+        lock (initializationLock)
+        {
+            if (initalized) return;
+            initalized = true;
 
-        InitializeCardJsons();
+            InitializeCardJsons();
 
-        InitializeMapFromJsons(keywordListFilePath, keywordJsonsFolderPath, keywordJsons);
-        InitializeMapFromJsons(partialKeywordListFilePath, partialKeywordFolderPath, partialKeywordJsons);
-        InitializeMapFromJsons(triggerKeywordListFilePath, triggerKeywordFolderPath, triggerKeywordJsons);
+            InitializeMapFromJsons(keywordListFilePath, keywordJsonsFolderPath, keywordJsons);
+            InitializeMapFromJsons(partialKeywordListFilePath, partialKeywordFolderPath, partialKeywordJsons);
+            InitializeMapFromJsons(triggerKeywordListFilePath, triggerKeywordFolderPath, triggerKeywordJsons);
 
-        var reminderJsonAsset = Resources.Load<TextAsset>(RemindersJsonPath);
-        Reminders = JsonConvert.DeserializeObject<ReminderTextsContainer>(reminderJsonAsset.text);
-        Reminders.Initialize();
-        Keywords = Reminders.keywordReminderTexts.Select(rti => rti.keyword).ToArray();
+            var reminderJsonAsset = Resources.Load<TextAsset>(RemindersJsonPath);
+            Reminders = JsonConvert.DeserializeObject<ReminderTextsContainer>(reminderJsonAsset.text);
+            Reminders.Initialize();
+            Keywords = Reminders.keywordReminderTexts.Select(rti => rti.keyword).ToArray();
+        }
     }
 
     private void InitializeCardJsons()
@@ -131,10 +124,6 @@ public class CardRepository : MonoBehaviour
             //add the cleaned json to the dictionary
             cardJsons.Add(cardName, json);
             cardFileNames.Add(cardName, filename);
-            //Debug.Log($"Entry for {cardName} is {filenameClean}");
-            //add the card's name to the list of card names
-            cardNameIDs.Add(cardName, cardNames.Count);
-            cardNames.Add(cardName);
         }
     }
 
@@ -152,12 +141,11 @@ public class CardRepository : MonoBehaviour
     protected List<T> GetKeywordEffects<T>(SerializableCard card) where T : Effect
     {
         List<T> effects = new List<T>();
-        for (int i = 0; i < card.keywords.Length; i++)
+        foreach (var (index, keyword) in card.keywords.Enumerate())
         {
-            var s = card.keywords[i];
-            var keywordJson = keywordJsons[s];
+            var keywordJson = keywordJsons[keyword];
             var eff = JsonConvert.DeserializeObject<T>(keywordJson, cardLoadingSettings);
-            eff.arg = card.keywordArgs.Length > i ? card.keywordArgs[i] : 0;
+            eff.arg = card.keywordArgs.Length > index ? card.keywordArgs[index] : 0;
             effects.Add(eff);
         }
         return effects;
@@ -173,12 +161,14 @@ public class CardRepository : MonoBehaviour
         //if don't use .where .first it still grabs components that should be destroyed, and are destroyed as far as i can tell
         return gameObject.GetComponents<T>().Where(c => c is T).First();
     }
-    public static bool CardExists(string cardName) => cardNameIDs.ContainsKey(cardName);
+
+    public static bool CardExists(string cardName) => CardNames.Contains(cardName);
 
     public string GetJsonFromName(string name)
     {
         if (!cardJsons.ContainsKey(name))
         {
+            //This log exists exclusively for debugging purposes
             Debug.LogError($"No json found for name \"{name ?? "null"}\" of length {name?.Length ?? 0}");
             return null;
         }
@@ -193,7 +183,7 @@ public class CardRepository : MonoBehaviour
     {
         if (!partialKeywordJsons.ContainsKey(keyword))
         {
-            Debug.Log($"No partial keword json found for {keyword}");
+            Debug.LogError($"No partial keyword json found for {keyword}");
             return new ServerSubeffect[0];
         }
 
@@ -251,7 +241,7 @@ public class CardRepository : MonoBehaviour
     {
         if (!partialKeywordJsons.ContainsKey(keyword))
         {
-            Debug.Log($"No partial keword json found for {keyword}");
+            Debug.LogError($"No trigger keyword json found for {keyword}");
             return new TriggerRestrictionElement[0];
         }
 
