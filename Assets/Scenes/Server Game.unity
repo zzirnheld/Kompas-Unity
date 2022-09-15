@@ -438,8 +438,8 @@ MonoBehaviour:
   subtypesText: {fileID: 1440359589}
   effText: {fileID: 628447411}
   cardImageImage: {fileID: 1678456122}
-  reminderTextsUIController: {fileID: 0}
   boardUIController: {fileID: 0}
+  reminderTextsUIController: {fileID: 0}
 --- !u!1 &265800159
 GameObject:
   m_ObjectHideFlags: 0
@@ -1667,6 +1667,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debugToggle: {fileID: 1289263650}
   cardViewController: {fileID: 0}
+  reminderTextParentController: {fileID: 0}
 --- !u!224 &700797939
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3904,7 +3905,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GamePrefab: {fileID: 3349460599440499644, guid: dd8cf138bfe711142b5d4c835facb6b6,
     type: 3}
-  serverUIController: {fileID: 0}
+  serverUIController: {fileID: 700797938}
   CardRepo: {fileID: 1475313887}
 --- !u!4 &1475313886
 Transform:
@@ -3929,7 +3930,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1475313884}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9fb8748191d6744ab4316215e0b0131, type: 3}
+  m_Script: {fileID: 11500000, guid: 35f4c881cc72fdc40922c71663173d1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   DeckSelectCardPrefab: {fileID: 0}

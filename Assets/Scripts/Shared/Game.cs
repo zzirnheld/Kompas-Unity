@@ -21,15 +21,13 @@ namespace KompasCore.GameCore
         //game mechanics
         public abstract BoardController BoardController { get; }
 
-        //list of card names 
-        public CardRepository cardRepo;
-
         public abstract Player[] Players { get; }
         public int TurnPlayerIndex { get; protected set; } = 0;
         public Player TurnPlayer => Players[TurnPlayerIndex];
         public int FirstTurnPlayer { get; protected set; }
 
         //game data
+        public abstract CardRepository CardRepository { get; }
         public abstract IEnumerable<GameCard> Cards { get; }
         public int RoundCount { get; protected set; } = 1;
         public virtual int TurnCount { get; protected set; } = 1;

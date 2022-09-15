@@ -1,4 +1,5 @@
-﻿using KompasClient.Networking;
+﻿using KompasClient.Cards;
+using KompasClient.Networking;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -12,7 +13,7 @@ namespace KompasClient.UI
         public const int txtExtLen = 4;
 
         public ClientNotifier ClientNotifier;
-        public CardRepository CardRepo;
+        public ClientCardRepository CardRepo;
         public DeckSelectCardController CardPrefab;
 
         //ui elements

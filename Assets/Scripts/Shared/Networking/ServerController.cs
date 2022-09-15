@@ -1,5 +1,5 @@
 ﻿using KompasCore.Networking;
-using KompasCore.UI;
+using KompasServer.Cards;
 using KompasServer.GameCore;
 using KompasServer.UI;
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ namespace KompasServer.Networking
     {
         public GameObject GamePrefab;
         public ServerUIController serverUIController;
-        public CardRepository CardRepo;
+        public ServerCardRepository CardRepo;
 
         private TcpListener listener;
         private List<ServerGame> games;

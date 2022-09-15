@@ -15,6 +15,9 @@ namespace KompasClient.GameCore
 {
     public class ClientGame : Game
     {
+        public ClientCardRepository cardRepo;
+        public override CardRepository CardRepository => cardRepo;
+
         [Header("Prefabs")]
         public GameObject AvatarPrefab;
 

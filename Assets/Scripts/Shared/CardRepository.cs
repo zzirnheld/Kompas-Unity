@@ -3,6 +3,7 @@ using KompasClient.Effects;
 using KompasClient.GameCore;
 using KompasClient.UI;
 using KompasCore.Cards;
+using KompasCore.Effects;
 using KompasCore.Effects.Restrictions;
 using KompasDeckbuilder;
 using KompasDeckbuilder.UI;
@@ -31,7 +32,7 @@ public class CardRepository : MonoBehaviour
 
     public const string RemindersJsonPath = "Reminder Text/Reminder Texts";
 
-    private static readonly JsonSerializerSettings cardLoadingSettings = new JsonSerializerSettings
+    protected static readonly JsonSerializerSettings cardLoadingSettings = new JsonSerializerSettings
     {
         TypeNameHandling = TypeNameHandling.Auto,
         MaxDepth = null,
@@ -43,12 +44,12 @@ public class CardRepository : MonoBehaviour
         "Square Kompas Logo"
     };
 
-    private static readonly Dictionary<string, string> cardJsons = new Dictionary<string, string>();
-    private static readonly Dictionary<string, string> cardFileNames = new Dictionary<string, string>();
+    protected static readonly Dictionary<string, string> cardJsons = new Dictionary<string, string>();
+    protected static readonly Dictionary<string, string> cardFileNames = new Dictionary<string, string>();
     private static readonly Dictionary<string, int> cardNameIDs = new Dictionary<string, int>();
     private static readonly List<string> cardNames = new List<string>();
 
-    private static readonly Dictionary<string, string> keywordJsons = new Dictionary<string, string>();
+    protected static readonly Dictionary<string, string> keywordJsons = new Dictionary<string, string>();
     private static readonly Dictionary<string, string> partialKeywordJsons = new Dictionary<string, string>();
     private static readonly Dictionary<string, string> triggerKeywordJsons = new Dictionary<string, string>();
 
@@ -74,6 +75,22 @@ public class CardRepository : MonoBehaviour
         if (initalized) return;
         initalized = true;
 
+        InitializeCardJsons();
+
+        InitializeMapFromJsons(keywordListFilePath, keywordJsonsFolderPath, keywordJsons);
+        InitializeMapFromJsons(partialKeywordListFilePath, partialKeywordFolderPath, partialKeywordJsons);
+        InitializeMapFromJsons(triggerKeywordListFilePath, triggerKeywordFolderPath, triggerKeywordJsons);
+
+        var reminderJsonAsset = Resources.Load<TextAsset>(RemindersJsonPath);
+        Reminders = JsonConvert.DeserializeObject<ReminderTextsContainer>(reminderJsonAsset.text);
+        Reminders.Initialize();
+        Keywords = Reminders.keywordReminderTexts.Select(rti => rti.keyword).ToArray();
+    }
+
+    private void InitializeCardJsons()
+    {
+        static bool isCardToIgnore(string name) => string.IsNullOrWhiteSpace(name) || cardNamesToIgnore.Contains(name);
+
         string cardFilenameList = Resources.Load<TextAsset>(cardListFilePath).text;
         cardFilenameList = cardFilenameList.Replace('\r', '\n');
         string[] cardFilenameArray = cardFilenameList.Split('\n');
@@ -84,7 +101,7 @@ public class CardRepository : MonoBehaviour
             //sanitize the filename. for some reason, doing substring fixes stuff
             string filenameClean = filename.Substring(0, filename.Length);
             //don't add duplicate cards
-            if (IsCardToIgnore(filenameClean) || CardExists(filenameClean)) continue;
+            if (isCardToIgnore(filenameClean) || CardExists(filenameClean)) continue;
 
             //load the json
             var jsonAsset = Resources.Load<TextAsset>(cardJsonsFolderPath + filenameClean);
@@ -99,7 +116,7 @@ public class CardRepository : MonoBehaviour
             json = json.Replace("\r", "");
             json = json.Replace("\t", "");
             //load the cleaned json to get the card's name according to itself
-            SerializableCard card = null;
+            SerializableCard card;
             try
             {
                 card = JsonConvert.DeserializeObject<SerializableCard>(json, cardLoadingSettings);
@@ -114,20 +131,11 @@ public class CardRepository : MonoBehaviour
             //add the cleaned json to the dictionary
             cardJsons.Add(cardName, json);
             cardFileNames.Add(cardName, filename);
-            Debug.Log($"Entry for {cardName} is {filenameClean}");
+            //Debug.Log($"Entry for {cardName} is {filenameClean}");
             //add the card's name to the list of card names
             cardNameIDs.Add(cardName, cardNames.Count);
             cardNames.Add(cardName);
         }
-
-        InitializeMapFromJsons(keywordListFilePath, keywordJsonsFolderPath, keywordJsons);
-        InitializeMapFromJsons(partialKeywordListFilePath, partialKeywordFolderPath, partialKeywordJsons);
-        InitializeMapFromJsons(triggerKeywordListFilePath, triggerKeywordFolderPath, triggerKeywordJsons);
-
-        var reminderJsonAsset = Resources.Load<TextAsset>(RemindersJsonPath);
-        Reminders = JsonConvert.DeserializeObject<ReminderTextsContainer>(reminderJsonAsset.text);
-        Reminders.Initialize();
-        Keywords = Reminders.keywordReminderTexts.Select(rti => rti.keyword).ToArray();
     }
 
     private void InitializeMapFromJsons(string filePath, string folderPath, Dictionary<string, string> dict)
@@ -141,10 +149,29 @@ public class CardRepository : MonoBehaviour
         }
     }
 
-    private bool IsCardToIgnore(string name)
+    protected List<T> GetKeywordEffects<T>(SerializableCard card) where T : Effect
     {
-        if (string.IsNullOrWhiteSpace(name)) return true;
-        return cardNamesToIgnore.Contains(name);
+        List<T> effects = new List<T>();
+        for (int i = 0; i < card.keywords.Length; i++)
+        {
+            var s = card.keywords[i];
+            var keywordJson = keywordJsons[s];
+            var eff = JsonConvert.DeserializeObject<T>(keywordJson, cardLoadingSettings);
+            eff.arg = card.keywordArgs.Length > i ? card.keywordArgs[i] : 0;
+            effects.Add(eff);
+        }
+        return effects;
+    }
+
+    protected T GetCardController<T>(GameObject gameObject) where T : CardController
+    {
+        var cardCtrlComponents = gameObject
+            .GetComponents(typeof(CardController))
+            .Where(c => !(c is T));
+        foreach (var c in cardCtrlComponents) Destroy(c);
+
+        //if don't use .where .first it still grabs components that should be destroyed, and are destroyed as far as i can tell
+        return gameObject.GetComponents<T>().Where(c => c is T).First();
     }
     public static bool CardExists(string cardName) => cardNameIDs.ContainsKey(cardName);
 
@@ -183,206 +210,6 @@ public class CardRepository : MonoBehaviour
         return card.cardType == 'C';
     }
 
-    public AvatarServerGameCard InstantiateServerAvatar(string cardName, ServerPlayer owner, int id)
-    {
-        if (!cardJsons.ContainsKey(cardName)) return null;
-        ServerSerializableCard card;
-        List<ServerEffect> effects = new List<ServerEffect>();
-
-        try
-        {
-            card = JsonConvert.DeserializeObject<ServerSerializableCard>(cardJsons[cardName], cardLoadingSettings);
-            effects.AddRange(card.effects);
-            for (int i = 0; i < card.keywords.Length; i++)
-            {
-                var s = card.keywords[i];
-                var json = keywordJsons[s];
-                var eff = JsonConvert.DeserializeObject<ServerEffect>(json, cardLoadingSettings);
-                eff.arg = card.keywordArgs.Length > i ? card.keywordArgs[i] : 0;
-                effects.Add(eff);
-            }
-        }
-        catch (System.ArgumentException argEx)
-        {
-            //Catch JSON parse error
-            Debug.LogError($"Failed to load {cardName} as Avatar, argument exception with message {argEx.Message}, stack trace:\n" +
-                $"{argEx.StackTrace}\nJson was {cardJsons[cardName]}");
-            return null;
-        }
-
-        //Destroy card components irrelevant to a server avatar
-        var avatarObj = Instantiate(CardPrefab);
-
-        var cardCtrlComponents = avatarObj
-            .GetComponents(typeof(CardController))
-            .Where(c => c is ClientCardController);
-        foreach (var c in cardCtrlComponents) Destroy(c);
-
-        var ctrl = avatarObj.GetComponents<ServerCardController>().Where(c => c is ServerCardController).First();
-
-        var avatar = new AvatarServerGameCard(card, id, ctrl, owner, effects.ToArray());
-
-        avatar.ServerCardController.serverCard = avatar;
-        owner.serverGame.AddCard(avatar);
-        return avatar;
-    }
-
-    public ServerGameCard InstantiateServerNonAvatar(string name, ServerPlayer owner, int id)
-    {
-        string json = cardJsons[name] ?? throw new System.ArgumentException($"Name {name} not associated with json");
-        var cardObj = Instantiate(CardPrefab);
-        ServerSerializableCard cardInfo;
-        List<ServerEffect> effects = new List<ServerEffect>();
-
-        try
-        {
-            cardInfo = JsonConvert.DeserializeObject<ServerSerializableCard>(cardJsons[name], cardLoadingSettings);
-            effects.AddRange(cardInfo.effects);
-            for (int i = 0; i < cardInfo.keywords.Length; i++)
-            {
-                var keywordName = cardInfo.keywords[i];
-                Debug.Log($"Trying to add keyword {keywordName}");
-                var keywordJson = keywordJsons[keywordName];
-                var eff = JsonConvert.DeserializeObject<ServerEffect>(keywordJson, cardLoadingSettings);
-                eff.arg = cardInfo.keywordArgs.Length > i ? cardInfo.keywordArgs[i] : 0;
-                eff.Keyword = keywordName;
-                effects.Add(eff);
-            }
-        }
-        catch (System.ArgumentException argEx)
-        {
-            //Catch JSON parse error
-            Debug.LogError($"Failed to load {json}, argument exception with message {argEx.Message}, stacktrace {argEx.StackTrace}");
-            return null;
-        }
-
-        //Destroy card components irrelevant to a server non-avatar
-        var cardCtrlComponents = cardObj
-            .GetComponents(typeof(CardController))
-            .Where(c => c is ClientCardController);
-        foreach (var c in cardCtrlComponents) Destroy(c);
-
-        //if don't use .where .first it still grabs components that should be destroyed, and are destroyed as far as i can tell
-        var ctrl = cardObj.GetComponents<ServerCardController>().Where(c => c is ServerCardController).First();
-        var card = new ServerGameCard(cardInfo, id, ctrl, owner, effects.ToArray());
-        owner.serverGame.AddCard(card);
-        return card;
-    }
-
-    public AvatarClientGameCard InstantiateClientAvatar(string json, ClientPlayer owner, int id)
-    {
-        ClientSerializableCard cardInfo;
-        List<ClientEffect> effects = new List<ClientEffect>();
-
-        try
-        {
-            cardInfo = JsonConvert.DeserializeObject<ClientSerializableCard>(json, cardLoadingSettings);
-            if (cardInfo.cardType != 'C') return null;
-            effects.AddRange(cardInfo.effects);
-            for (int i = 0; i < cardInfo.keywords.Length; i++)
-            {
-                var s = cardInfo.keywords[i];
-                var keywordJson = keywordJsons[s];
-                var eff = JsonConvert.DeserializeObject<ClientEffect>(keywordJson, cardLoadingSettings);
-                eff.arg = cardInfo.keywordArgs.Length > i ? cardInfo.keywordArgs[i] : 0;
-                effects.Add(eff);
-            }
-        }
-        catch (System.ArgumentException argEx)
-        {
-            //Catch JSON parse error
-            Debug.LogError($"Failed to load client Avatar, argument exception with message {argEx.Message},\n {argEx.StackTrace}, for json:\n{json}");
-            return null;
-        }
-        var avatarObj = Instantiate(CardPrefab);
-
-        //Destroy card components irrelevant to a client avatar
-
-        var cardCtrlComponents = avatarObj
-            .GetComponents(typeof(CardController))
-            .Where(c => !(c is ClientCardController));
-        foreach (var c in cardCtrlComponents) Destroy(c);
-
-        //if don't use .where .first it still grabs components that should be destroyed, and are destroyed as far as i can tell
-        var ctrl = avatarObj.GetComponents<ClientCardController>().Where(c => c is ClientCardController).First();
-        var avatar = new AvatarClientGameCard(cardInfo, owner, effects.ToArray(), id, ctrl);
-
-        avatar.ClientCardController.mouseController.card = avatar.CardController;
-        owner.clientGame.AddCard(avatar);
-        return avatar;
-    }
-
-    public ClientGameCard InstantiateClientNonAvatar(string json, ClientPlayer owner, int id)
-    {
-        ClientSerializableCard cardInfo;
-        List<ClientEffect> effects = new List<ClientEffect>();
-
-        try
-        {
-            cardInfo = JsonConvert.DeserializeObject<ClientSerializableCard>(json, cardLoadingSettings);
-            effects.AddRange(cardInfo.effects);
-            for (int i = 0; i < cardInfo.keywords.Length; i++)
-            {
-                var s = cardInfo.keywords[i];
-                var keywordJson = keywordJsons[s];
-                var eff = JsonConvert.DeserializeObject<ClientEffect>(keywordJson, cardLoadingSettings);
-                eff.arg = cardInfo.keywordArgs.Length > i ? cardInfo.keywordArgs[i] : 0;
-                effects.Add(eff);
-            }
-        }
-        catch (System.ArgumentException argEx)
-        {
-            //Catch JSON parse error
-            Debug.LogError($"Failed to load {json}, argument exception with message {argEx.Message}, {argEx.StackTrace}");
-            return null;
-        }
-        var cardObj = Instantiate(CardPrefab);
-
-        //Destroy card components irrelevant to a client non-avatar
-        //TODO handle cards no longer being monobehaviors
-        var cardCtrlComponents = cardObj
-            .GetComponents(typeof(CardController))
-            .Where(c => !(c is ClientCardController));
-        foreach (var c in cardCtrlComponents) Destroy(c);
-
-        //if don't use .where .first it still grabs components that should be destroyed, and are destroyed as far as i can tell
-        var ctrl = cardObj.GetComponents<ClientCardController>().Where(c => c is ClientCardController).First();
-        var card = new ClientGameCard(cardInfo, id, owner, effects.ToArray(), ctrl);
-        owner.clientGame.AddCard(card);
-
-        Debug.Log($"Successfully created a card? {card != null} for json {json} with controller {ctrl}");
-        card.ClientCardController.gameCardViewController.Refresh();
-
-        //handle adding existing card links
-        foreach (var c in card.Game.Cards)
-        {
-            foreach (var link in c.CardLinkHandler.Links)
-            {
-                if (link.CardIDs.Contains(id)) card.CardLinkHandler.AddLink(link);
-            }
-        }
-
-        return card;
-    }
-
-    public DeckSelectCardController InstantiateDeckSelectCard(string json, Transform parent, DeckSelectCardController prefab, DeckSelectUIController uiCtrl)
-    {
-        try
-        {
-            SerializableCard serializableCard = JsonConvert.DeserializeObject<SerializableCard>(json, cardLoadingSettings);
-            DeckSelectCardController card = Instantiate(prefab, parent);
-            card.SetInfo(serializableCard, uiCtrl);
-            card.FileName = cardFileNames[card.Card.CardName];
-            return card;
-        }
-        catch (System.ArgumentException argEx)
-        {
-            //Catch JSON parse error
-            Debug.LogError($"Failed to load {json}, argument exception with message {argEx.Message}");
-            return null;
-        }
-    }
-
     public DeckbuilderCardController InstantiateDeckbuilderCard(string json, DeckbuildSearchController searchCtrl, bool inDeck)
     {
         try
@@ -401,7 +228,11 @@ public class CardRepository : MonoBehaviour
         }
     }
 
-    public static SerializableCard SerializableCardFromJson(string json)
+
+    public static IEnumerable<SerializableCard> SerializableCards => GetSerializableCards(CardJsons);
+    private static IEnumerable<SerializableCard> GetSerializableCards(IEnumerable<string> jsons)
+        => jsons.Select(json => SerializableCardFromJson(json)).Where(card => card != null);
+    private static SerializableCard SerializableCardFromJson(string json)
     {
         try
         {
@@ -415,10 +246,6 @@ public class CardRepository : MonoBehaviour
         return null;
     }
 
-    public static IEnumerable<SerializableCard> GetSerializableCards(IEnumerable<string> jsons)
-        => jsons.Select(json => SerializableCardFromJson(json)).Where(card => card != null);
-
-    public static IEnumerable<SerializableCard> SerializableCards => GetSerializableCards(CardJsons);
 
     public static TriggerRestrictionElement[] InstantiateTriggerKeyword(string keyword)
     {

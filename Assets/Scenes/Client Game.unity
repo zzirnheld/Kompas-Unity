@@ -7744,9 +7744,9 @@ GameObject:
   m_Component:
   - component: {fileID: 492080562}
   - component: {fileID: 492080563}
-  - component: {fileID: 492080564}
   - component: {fileID: 492080565}
   - component: {fileID: 492080566}
+  - component: {fileID: 492080564}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -7806,7 +7806,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 492080561}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9fb8748191d6744ab4316215e0b0131, type: 3}
+  m_Script: {fileID: 11500000, guid: f09058feb8719ff4f8ed2f60ceb6e094, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   DeckSelectCardPrefab: {fileID: 1316274561394776498, guid: 3701dcd9e71748a4781c867a9608c51d,
@@ -31626,7 +31626,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ClientNotifier: {fileID: 2001968207}
-  CardRepo: {fileID: 492080564}
+  CardRepo: {fileID: 0}
   CardPrefab: {fileID: 7327033155639361755, guid: 3701dcd9e71748a4781c867a9608c51d,
     type: 3}
   DeckNameDropdown: {fileID: 229680483}

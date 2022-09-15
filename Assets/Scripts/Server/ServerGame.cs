@@ -26,6 +26,8 @@ namespace KompasServer.GameCore
         public const int AvatarEBonus = 15;
 
         [Header("Main other scripts")]
+        public ServerCardRepository cardRepo;
+        public override CardRepository CardRepository => cardRepo;
         [Tooltip("Handles the stack and effects' resolution")]
         public ServerEffectsController effectsController;
         [Tooltip("Array of players, in no particular order." +
@@ -84,7 +86,7 @@ namespace KompasServer.GameCore
 
         public void AddCard(ServerGameCard card) => cardsByID.Add(card.ID, card);
 
-        public void Init(ServerUIController uiController, CardRepository cardRepo)
+        public void Init(ServerUIController uiController, ServerCardRepository cardRepo)
         {
             ServerUIController = uiController;
             this.cardRepo = cardRepo;

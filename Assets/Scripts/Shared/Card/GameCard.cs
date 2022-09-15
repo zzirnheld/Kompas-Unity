@@ -197,7 +197,7 @@ namespace KompasCore.Cards
             }
         }
 
-        public string BaseJson => Game.cardRepo.GetJsonFromName(CardName);
+        public string BaseJson => Game.CardRepository.GetJsonFromName(CardName);
 
         public int TurnsOnBoard { get; private set; }
 

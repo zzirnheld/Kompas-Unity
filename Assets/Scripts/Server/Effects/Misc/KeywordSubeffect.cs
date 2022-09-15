@@ -14,7 +14,7 @@ namespace KompasServer.Effects
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
             base.Initialize(eff, subeffIndex);
-            var subeffects = Game.cardRepo.InstantiateServerPartialKeyword(keyword);
+            var subeffects = ServerGame.cardRepo.InstantiateServerPartialKeyword(keyword);
             foreach (var s in subeffects)
             {
                 Debug.Log($"Loaded subeff with jump indices {s.jumpIndices}");
