@@ -42,11 +42,6 @@ namespace KompasServer.GameCore
         public ServerUIController ServerUIController { get; private set; }
         public override UIController UIController => ServerUIController;
 
-        //Locks so we don't run into multithreading problems, but iirc this could break async. look into
-        //(esp. since async is single threaded, not multithreaded)
-        public readonly object AddCardsLock = new object();
-        public readonly object CheckAvatarsLock = new object();
-
         //Dictionary of cards, and the forwardings to make that convenient
         public Dictionary<int, ServerGameCard> cardsByID = new Dictionary<int, ServerGameCard>();
         public IEnumerable<ServerGameCard> ServerCards => cardsByID.Values;
@@ -55,14 +50,15 @@ namespace KompasServer.GameCore
         //Players
         public override Player[] Players => serverPlayers;
         public ServerPlayer TurnServerPlayer => serverPlayers[TurnPlayerIndex];
-        public int cardCount = 0;
+        private int cardCount = 0;
         private int currPlayerCount = 0; //current number of players. shouldn't exceed 2
 
         //Effects-related concepts. Probably TODO move this into EffectsController
         public ServerEffect CurrEffect { get; set; }
         public override IStackable CurrStackEntry => effectsController.CurrStackEntry;
         public override IEnumerable<IStackable> StackEntries => effectsController.StackEntries;
-        public override bool NothingHappening => effectsController.NothingHappening && Players.All(s => s.PassedPriority);
+        public override bool NothingHappening => effectsController.NothingHappening;
+
         public bool GameHasStarted { get; private set; } = false;
 
         public override int TurnCount
@@ -84,6 +80,11 @@ namespace KompasServer.GameCore
                 serverPlayers[0].ServerNotifier.NotifyLeyload(Leyload);
             }
         }
+
+        //Locks so we don't run into multithreading problems, but iirc this could break async. look into
+        //(esp. since async is single threaded, not multithreaded)
+        private readonly object AddCardsLock = new object();
+        private readonly object CheckAvatarsLock = new object();
 
         public void Init(ServerUIController uiController, CardRepository cardRepo)
         {
@@ -168,7 +169,6 @@ namespace KompasServer.GameCore
                 {
                     card = cardRepo.InstantiateServerNonAvatar(name, this, player, cardCount);
                     if (card == null) continue;
-                    cardsByID.Add(cardCount, card);
                     cardCount++;
                 }
                 Debug.Log($"Adding new card {card.CardName} with id {card.ID}");
@@ -202,7 +202,7 @@ namespace KompasServer.GameCore
                 p.Avatar.SetN(0, stackSrc: null);
                 p.Avatar.SetE(p.Avatar.E + AvatarEBonus, stackSrc: null);
                 p.Avatar.SetW(0, stackSrc: null);
-                DrawX(p.index, 5, stackSrc: null);
+                DrawX(p, 5, stackSrc: null);
             }
 
             GameHasStarted = true;
@@ -224,7 +224,7 @@ namespace KompasServer.GameCore
             ResetCardsForTurn();
 
             TurnPlayer.Pips += Leyload;
-            if (notFirstTurn) Draw(TurnPlayerIndex);
+            if (notFirstTurn) Draw(TurnPlayer);
 
             //do hand size
             effectsController.PushToStack(new ServerHandSizeStackable(this, TurnServerPlayer), default);
@@ -246,26 +246,27 @@ namespace KompasServer.GameCore
         }
         #endregion turn
 
-        public List<GameCard> DrawX(int player, int x, IStackable stackSrc = null)
+        public List<GameCard> DrawX(Player controller, int x, IStackable stackSrc = null)
         {
             List<GameCard> drawn = new List<GameCard>();
-            Player controller = Players[player];
             int cardsDrawn;
             for (cardsDrawn = 0; cardsDrawn < x; cardsDrawn++)
             {
                 var toDraw = controller.deckCtrl.Topdeck;
                 if (toDraw == null) break;
+
                 var eachDrawContext = new ActivationContext(game: this, mainCardBefore: toDraw, stackableCause: stackSrc, player: controller);
                 toDraw.Rehand(controller, stackSrc);
                 eachDrawContext.CacheCardInfoAfter();
                 effectsController.TriggerForCondition(Trigger.EachDraw, eachDrawContext);
+
                 drawn.Add(toDraw);
             }
             var context = new ActivationContext(game: this, stackableCause: stackSrc, player: controller, x: cardsDrawn);
             effectsController.TriggerForCondition(Trigger.DrawX, context);
             return drawn;
         }
-        public GameCard Draw(int player, IStackable stackSrc = null)
+        public GameCard Draw(Player player, IStackable stackSrc = null)
             => DrawX(player, 1, stackSrc).FirstOrDefault();
 
         /// <param name="manual">Whether a player instigated the attack without an effect.</param>

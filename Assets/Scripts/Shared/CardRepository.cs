@@ -120,36 +120,25 @@ public class CardRepository : MonoBehaviour
             cardNames.Add(cardName);
         }
 
-        string keywordList = Resources.Load<TextAsset>(keywordListFilePath).text;
-        var keywords = keywordList.Replace('\r', '\n').Split('\n').Where(s => !string.IsNullOrEmpty(s));
-        foreach (string keyword in keywords)
-        {
-            string json = Resources.Load<TextAsset>(keywordJsonsFolderPath + keyword).text;
-            keywordJsons.Add(keyword, json);
-        }
-
-        string partialKeywordList = Resources.Load<TextAsset>(partialKeywordListFilePath).text;
-        var partialKeywords = partialKeywordList.Replace('\r', '\n').Split('\n').Where(s => !string.IsNullOrEmpty(s));
-        foreach (string keyword in partialKeywords)
-        {
-            Debug.Log($"Loading partial keyword {keyword}");
-            string json = Resources.Load<TextAsset>(partialKeywordFolderPath + keyword).text;
-            partialKeywordJsons.Add(keyword, json);
-        }
-
-        string triggerKeywordList = Resources.Load<TextAsset>(triggerKeywordListFilePath).text;
-        var triggerKeywords = triggerKeywordList.Replace('\r', '\n').Split('\n').Where(s => !string.IsNullOrEmpty(s));
-        foreach (string keyword in triggerKeywords)
-        {
-            Debug.Log($"Loading partial keyword {keyword}");
-            string json = Resources.Load<TextAsset>(triggerKeywordFolderPath + keyword).text;
-            triggerKeywordJsons.Add(keyword, json);
-        }
+        InitializeMapFromJsons(keywordListFilePath, keywordJsonsFolderPath, keywordJsons);
+        InitializeMapFromJsons(partialKeywordListFilePath, partialKeywordFolderPath, partialKeywordJsons);
+        InitializeMapFromJsons(triggerKeywordListFilePath, triggerKeywordFolderPath, triggerKeywordJsons);
 
         var reminderJsonAsset = Resources.Load<TextAsset>(RemindersJsonPath);
         Reminders = JsonConvert.DeserializeObject<ReminderTextsContainer>(reminderJsonAsset.text);
         Reminders.Initialize();
         Keywords = Reminders.keywordReminderTexts.Select(rti => rti.keyword).ToArray();
+    }
+
+    private void InitializeMapFromJsons(string filePath, string folderPath, Dictionary<string, string> dict)
+    {
+        string keywordList = Resources.Load<TextAsset>(filePath).text;
+        var keywords = keywordList.Replace('\r', '\n').Split('\n').Where(s => !string.IsNullOrEmpty(s));
+        foreach (string keyword in keywords)
+        {
+            string json = Resources.Load<TextAsset>(folderPath + keyword).text;
+            dict.Add(keyword, json);
+        }
     }
 
     private bool IsCardToIgnore(string name)
@@ -276,6 +265,7 @@ public class CardRepository : MonoBehaviour
         //if don't use .where .first it still grabs components that should be destroyed, and are destroyed as far as i can tell
         var ctrl = cardObj.GetComponents<ServerCardController>().Where(c => c is ServerCardController).First();
         var card = new ServerGameCard(cardInfo, id, ctrl, owner, effects.ToArray());
+        serverGame.cardsByID.Add(card.ID, card);
         return card;
     }
 

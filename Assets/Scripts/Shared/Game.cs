@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace KompasCore.GameCore
 {
-    public abstract partial class Game : MonoBehaviour
+    public abstract class Game : MonoBehaviour
     {
         public const string CardListPath = "Card Jsons/Card List";
 
@@ -27,18 +27,13 @@ namespace KompasCore.GameCore
         public abstract Player[] Players { get; }
         public int TurnPlayerIndex { get; protected set; } = 0;
         public Player TurnPlayer => Players[TurnPlayerIndex];
+        public int FirstTurnPlayer { get; protected set; }
 
         //game data
         public abstract IEnumerable<GameCard> Cards { get; }
-        public int FirstTurnPlayer { get; protected set; }
         public int RoundCount { get; protected set; } = 1;
         public virtual int TurnCount { get; protected set; } = 1;
         public virtual int Leyload { get; set; } = 1;
-
-        //public TargetMode targetMode = TargetMode.Free;
-
-        public virtual void OnClickBoard(int x, int y) { }
-        public virtual void Lose(int controllerIndex) { }
 
         public abstract GameCard GetCardWithID(int id);
 
@@ -51,39 +46,22 @@ namespace KompasCore.GameCore
 
         public bool BoardHasCopyOf(GameCard card)
             => Cards.Any(c => c != card && c.Location == CardLocation.Board && c.Controller == card.Controller && c.CardName == card.CardName);
-        /*{
-            Debug.Log($"Checking if board has copy of {card.CardName} with controller index {card.ControllerIndex}");
-            return Cards.Any(c => c != card && c.Location == CardLocation.Field && c.Controller == card.Controller && c.CardName == card.CardName);
-        }*/
 
         public bool ValidSpellSpaceFor(GameCard card, Space space) => BoardController.ValidSpellSpaceFor(card, space);
 
-        private bool IsFriendlyAdjacentToCoords(Space space, GameCard potentialFriendly, Player friendly)
+        public bool ValidStandardPlaySpace(Space space, Player player)
         {
-            return BoardController.IsEmpty(space)
-                && potentialFriendly != null && potentialFriendly.IsAdjacentTo(space)
-                && potentialFriendly.Controller == friendly;
-        }
+            bool isFriendlyAndAdjacentToCoords(GameCard toTest, Space adjacentTo)
+                => toTest?.Controller == player && toTest.IsAdjacentTo(space);
 
-        public bool ValidStandardPlaySpace(Space space, Player friendly)
-        {
+            bool existsFriendlyAdjacent(Space adjacentTo)
+                => BoardController.ExistsCardOnBoard(c => isFriendlyAndAdjacentToCoords(c, adjacentTo));
+
             //first see if there's an adjacent friendly card to this space
-            if (BoardController.ExistsCardOnBoard(c => IsFriendlyAdjacentToCoords(space, c, friendly))) return true;
+            if (existsFriendlyAdjacent(space)) return true;
             //if there isn't, check if the player is Surrounded
-            else
-            {
-                //iterate through all possible spaces
-                for (int i = 0; i < 7; i++)
-                {
-                    for (int j = 0; j < 7; j++)
-                    {
-                        //if there *is* a possible space to play it to, they're not surrounded
-                        if (BoardController.ExistsCardOnBoard(c => IsFriendlyAdjacentToCoords((i, j), c, friendly))) return false;
-                    }
-                }
-                //if we didn't find a single place to play a card normally, any space is fair game, by the Surrounded rule
-                return true;
-            }
+            //A player can play to any space if there isn't a space that is adjacent to a friendly card
+            else return !Space.Spaces.Any(existsFriendlyAdjacent);
         }
 
         public bool ExistsEffectPlaySpace(PlayRestriction restriction, Effect eff)
@@ -97,5 +75,7 @@ namespace KompasCore.GameCore
 
         public abstract bool IsCurrentTarget(GameCard card);
         public abstract bool IsValidTarget(GameCard card);
+
+        public virtual void Lose(int controllerIndex) { }
     }
 }

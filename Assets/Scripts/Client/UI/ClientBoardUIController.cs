@@ -33,7 +33,7 @@ namespace KompasClient.UI
                 int xIntersection = PosToGridIndex(intersection.x);
                 int yIntersection = PosToGridIndex(intersection.z);
                 //then, if the game is a clientgame, request a space target
-                clientBoardController.Game.OnClickBoard(xIntersection, yIntersection);
+                clientBoardController.clientGame.clientNotifier.RequestSpaceTarget(xIntersection, yIntersection);
             }
         }
 

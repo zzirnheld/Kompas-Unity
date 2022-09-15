@@ -103,11 +103,6 @@ namespace KompasClient.GameCore
             ApplySettings();
         }
 
-        public override void OnClickBoard(int x, int y)
-        {
-            clientNotifier.RequestSpaceTarget(x, y);
-        }
-
         public void MarkCardDirty(GameCard card) => dirtyCardList.Add(card);
 
         public void PutCardsBack()

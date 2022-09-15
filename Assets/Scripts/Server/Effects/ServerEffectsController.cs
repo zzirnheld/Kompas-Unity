@@ -54,7 +54,7 @@ namespace KompasServer.Effects
         }
 
         //nothing is happening if nothing is in the stack, nothing is currently resolving, and no one is waiting to add something to the stack.
-        public bool NothingHappening => stack.Empty && CurrStackEntry == null && !currentlyCheckingResponses;
+        public bool NothingHappening => stack.Empty && CurrStackEntry == null && !currentlyCheckingResponses && ServerGame.Players.All(s => s.PassedPriority);
 
         public override string ToString()
         {
