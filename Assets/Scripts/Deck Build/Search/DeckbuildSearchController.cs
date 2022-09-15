@@ -35,7 +35,7 @@ namespace KompasDeckbuilder
         public CardRepository CardRepo;
 
         //search data
-        private DeckbuilderCard selectedCard;
+        private DeckbuilderCardController selectedCard;
         private List<DeckSearchInfoController> shownCards;
         private string cardNameToSearch = "";
         private string subtypeToSearch = "";
@@ -76,7 +76,7 @@ namespace KompasDeckbuilder
             var jsonAsset = Resources.Load<TextAsset>(RemindersJsonPath);
         }
 
-        public void Select(DeckbuilderCard card)
+        public void Select(DeckbuilderCardController card)
         {
             selectedCard = card;
             card.Show();
@@ -165,7 +165,7 @@ namespace KompasDeckbuilder
             //for each of the jsons, add it to the shown cards to be added
             foreach (string json in jsonsThatFit)
             {
-                DeckbuilderCard newCard = CardRepo.InstantiateDeckbuilderCard(json, this, false);
+                DeckbuilderCardController newCard = CardRepo.InstantiateDeckbuilderCard(json, this, false);
                 if (newCard != null)
                 {
                     var cardInfo = Instantiate(deckSearchInfoObj, CardSearchPaneParentObj.transform).GetComponent<DeckSearchInfoController>();

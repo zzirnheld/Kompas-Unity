@@ -221,15 +221,8 @@ namespace KompasCore.Cards
         {
             if (card == null) return null;
 
-            var cardInfo = card.gameObject.AddComponent<GameCardInfo>();
-            try
-            {
-                cardInfo.SetInfo(card);
-            }
-            catch (System.ArgumentNullException e)
-            {
-                Debug.Log($"Got an argument null exception while initializing a card info. If the game has started, this is bad. {e}");
-            }
+            var cardInfo = new GameCardInfo();
+            cardInfo.SetInfo(card);
             return cardInfo;
         }
 

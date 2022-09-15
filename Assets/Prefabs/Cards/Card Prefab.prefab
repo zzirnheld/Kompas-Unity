@@ -1749,10 +1749,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2157426566985455359}
-  - component: {fileID: 5887324738723848399}
-  - component: {fileID: 8589791269361689367}
-  - component: {fileID: 4888445485465765321}
-  - component: {fileID: 4110055565959001442}
   - component: {fileID: 7886279167843408965}
   - component: {fileID: 745259589303954297}
   - component: {fileID: 662538351147169323}
@@ -1796,58 +1792,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5887324738723848399
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3146857051703895276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2f0bad0f397a8f48b9bf1ff9913be8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clientCardController: {fileID: 7886279167843408965}
---- !u!114 &8589791269361689367
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3146857051703895276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5eaf700679447a438067b5b33bda12a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clientCardController: {fileID: 7886279167843408965}
---- !u!114 &4888445485465765321
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3146857051703895276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4738e24b32f68694fb5119b5e9f811e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  serverCardController: {fileID: 662538351147169323}
---- !u!114 &4110055565959001442
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3146857051703895276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bcb8e7268d0fa643be59da4e538ebf9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  serverCardController: {fileID: 662538351147169323}
 --- !u!114 &7886279167843408965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1861,7 +1805,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameCardViewController: {fileID: 8232249616109897666}
-  clientCard: {fileID: 8589791269361689367}
   revealedImage: {fileID: 4144494382504138341}
   mouseController: {fileID: 745259589303954297}
 --- !u!114 &745259589303954297
@@ -1876,7 +1819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13351909bd3483f4e98c4d1696cf3e85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card: {fileID: 8589791269361689367}
+  card: {fileID: 0}
   clientCardController: {fileID: 7886279167843408965}
 --- !u!114 &662538351147169323
 MonoBehaviour:
@@ -1891,7 +1834,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameCardViewController: {fileID: 8232249616109897666}
-  serverCard: {fileID: 4110055565959001442}
 --- !u!114 &8232249616109897666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1912,7 +1854,8 @@ MonoBehaviour:
   subtypesText: {fileID: 2955007220089311061}
   effText: {fileID: 1355690315343672827}
   cardImageImage: {fileID: 3907843146035040887}
-  reminderTextsUIController: {fileID: 0}
+  currentTargetObject: {fileID: 2284527895036328886}
+  validTargetObject: {fileID: 1704564887540371528}
   aoeController: {fileID: 3800830204807716009}
   zoomedCharFrame: {fileID: 4269587110842798765}
   zoomedAllFrame: {fileID: 7187772228533361689}
@@ -1934,8 +1877,6 @@ MonoBehaviour:
   unzoomedEText: {fileID: 7694190298499242399}
   unzoomedCostText: {fileID: 3625382428050118368}
   unzoomedWText: {fileID: 3625382429207079244}
-  currentTargetObject: {fileID: 2284527895036328886}
-  validTargetObject: {fileID: 1704564887540371528}
   uniqueCopyObject: {fileID: 8141676246729589860}
   linkedCardObject: {fileID: 990742212740138240}
   primaryStackableObject: {fileID: 8376111146485280923}

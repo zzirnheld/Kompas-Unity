@@ -8,7 +8,7 @@ namespace KompasCore.Cards
     public abstract class CardMouseController : MonoBehaviour
     {
         [Header("GameCard that this MouseController handles")]
-        public GameCard card;
+        public CardController card;
 
         public abstract UIController UIController { get; }
         //public abstract Game Game { get; }
@@ -62,7 +62,7 @@ namespace KompasCore.Cards
             if (EventSystem.current.IsPointerOverGameObject()) return;
 
             //select cards if the player releases the mouse button while over one
-            UIController.CardViewController.Focus(card);
+            UIController.CardViewController.Focus(card.Card);
 
             if (!dragging) return;
             dragging = false;
@@ -75,7 +75,7 @@ namespace KompasCore.Cards
             if (EventSystem.current.IsPointerOverGameObject()) return;
 
             //TODO still hover over even if mouse is on the effect/attack blocks, lol
-            UIController.CardViewController.Show(card);
+            UIController.CardViewController.Show(card.Card);
         }
         #endregion MouseStuff
     }

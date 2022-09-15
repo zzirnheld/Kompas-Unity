@@ -18,7 +18,7 @@ namespace KompasClient.Cards
         public override void OnMouseDrag()
         {
             base.OnMouseDrag();
-            clientCardController.ClientGame.MarkCardDirty(card);
+            clientCardController.ClientGame.MarkCardDirty(card.Card);
         }
 
         public override void OnMouseExit()
@@ -31,12 +31,12 @@ namespace KompasClient.Cards
         {
             base.OnMouseOver();
 
-            if (Input.GetMouseButtonDown(1)) ClientUIController.rightClickUIController.Show(card);
+            if (Input.GetMouseButtonDown(1)) ClientUIController.rightClickUIController.Show(card.Card);
         }
 
         public override void OnMouseUp()
         {
-            clientCardController.ClientGame.MarkCardDirty(card);
+            clientCardController.ClientGame.MarkCardDirty(card.Card);
             //don't do anything if we're over an event system object, 
             //because that would let us click on cards underneath prompts
             if (EventSystem.current.IsPointerOverGameObject())
@@ -45,18 +45,20 @@ namespace KompasClient.Cards
                 return;
             }
 
-            base.OnMouseUp();
-
             Debug.Log($"Clicked {card} while target mode is {ClientUIController.TargetMode}");
             //don't allow dragging cards if we're awaiting a target
-            if (ClientUIController.TargetMode != TargetMode.Free)
+            if (ClientUIController.TargetMode != TargetMode.Free && ClientUIController.CardViewController.FocusedCard == card.Card)
             {
                 ClientUIController.clientGame.searchCtrl.ToggleTarget(clientCardController.Card);
                 clientCardController.PutBack();
                 return;
             }
+            else
+            {
+                ClientUIController.boardUIController.CardDragEnded(clientCardController);
+            }
 
-            ClientUIController.boardUIController.CardDragEnded(clientCardController);
+            base.OnMouseUp();
         }
     }
 }

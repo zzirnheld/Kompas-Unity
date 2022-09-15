@@ -464,7 +464,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7105685457778891330}
-  - component: {fileID: 2240642709126700617}
   - component: {fileID: 7486131376144679929}
   - component: {fileID: 7779835756938516968}
   m_Layer: 0
@@ -498,19 +497,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2240642709126700617
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6108902677084055633}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33b7c6d7f62693b49a24ca1719779fc9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clientCardController: {fileID: 7486131376144679929}
 --- !u!114 &7486131376144679929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -524,7 +510,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameCardViewController: {fileID: 7779835756938516968}
-  clientCard: {fileID: 2240642709126700617}
   revealedImage: {fileID: 3283930200777941314}
   mouseController: {fileID: 0}
 --- !u!114 &7779835756938516968
@@ -547,7 +532,8 @@ MonoBehaviour:
   subtypesText: {fileID: 0}
   effText: {fileID: 0}
   cardImageImage: {fileID: 0}
-  reminderTextsUIController: {fileID: 0}
+  currentTargetObject: {fileID: 0}
+  validTargetObject: {fileID: 0}
   aoeController: {fileID: 0}
   zoomedCharFrame: {fileID: 0}
   zoomedAllFrame: {fileID: 0}
@@ -569,8 +555,6 @@ MonoBehaviour:
   unzoomedEText: {fileID: 0}
   unzoomedCostText: {fileID: 0}
   unzoomedWText: {fileID: 0}
-  currentTargetObject: {fileID: 0}
-  validTargetObject: {fileID: 0}
   uniqueCopyObject: {fileID: 0}
   linkedCardObject: {fileID: 0}
   primaryStackableObject: {fileID: 0}

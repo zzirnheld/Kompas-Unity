@@ -61,7 +61,7 @@ namespace KompasCore.GameCore
             //iterate through children, set the z coord
             for (int i = 0; i < Cards.Count; i++)
             {
-                Cards[i].transform.localPosition = new Vector3(spreadOutMultiplier * (float)(max - i), 0, 0);
+                Cards[i].CardController.transform.localPosition = new Vector3(spreadOutMultiplier * (float)(max - i), 0, 0);
             }
         }
     }

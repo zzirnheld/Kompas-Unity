@@ -17,7 +17,7 @@ namespace KompasCore.UI
         /// The card being "focused" on.
         /// If we're not currently doing something like hovering over another card, this is the one we should be showing
         /// </summary>
-        private CardBase focusedCard;
+        public CardBase FocusedCard { get; private set; }
 
         /// <summary>
         /// Focus on a given card.
@@ -27,7 +27,7 @@ namespace KompasCore.UI
         public virtual void Focus(CardBase card)
         {
             Show(card);
-            focusedCard = card;
+            FocusedCard = card;
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace KompasCore.UI
 
             //Debug.Log($"Asked to display {card}");
             //If we're passed in null, we want to show the focused card, if there is one
-            shownCard = card ?? focusedCard;
+            shownCard = card ?? FocusedCard;
 
             //If we're now showing nothing, hide the window and be done
             if (shownCard == null) DisplayNothing();

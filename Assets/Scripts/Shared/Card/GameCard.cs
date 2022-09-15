@@ -33,7 +33,7 @@ namespace KompasCore.Cards
 
         protected SerializableCard InitialCardValues { get; private set; }
 
-        public bool CurrentlyVisible => gameObject.activeSelf;
+        public bool CurrentlyVisible => CardController.gameObject.activeSelf;
 
         #region stats
         public int BaseN => InitialCardValues.n;

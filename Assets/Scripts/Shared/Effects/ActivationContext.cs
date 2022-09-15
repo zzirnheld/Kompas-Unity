@@ -153,15 +153,6 @@ namespace KompasCore.Effects
                    space: space?.Copy)
         { }
 
-        ~ActivationContext()
-        {
-            if (mainCardInfoBefore != null) UnityEngine.Object.Destroy(mainCardInfoBefore);
-            if (MainCardInfoAfter != null) UnityEngine.Object.Destroy(mainCardInfoBefore);
-
-            if (secondaryCardInfoBefore != null) UnityEngine.Object.Destroy(mainCardInfoBefore);
-            if (SecondaryCardInfoAfter != null) UnityEngine.Object.Destroy(mainCardInfoBefore);
-        }
-
         /// <summary>
         /// Set any information relevant to resuming an effect's resolution
         /// </summary>

@@ -1,9 +1,5 @@
-﻿using KompasCore.Cards;
-using KompasCore.Effects;
-using KompasCore.Exceptions;
-using KompasServer.Effects;
+﻿using KompasCore.Effects;
 using KompasServer.GameCore;
-using UnityEngine;
 
 namespace KompasServer.Cards
 {
@@ -32,6 +28,12 @@ namespace KompasServer.Cards
         public void LoseIfDead()
         {
             if (E <= 0) ServerGame.Lose(ControllerIndex);
+        }
+
+        public AvatarServerGameCard(ServerCardController serverCardController)
+            : base(serverCardController)
+        {
+
         }
 
     }

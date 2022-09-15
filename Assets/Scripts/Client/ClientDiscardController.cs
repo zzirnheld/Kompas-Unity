@@ -19,7 +19,7 @@ namespace KompasClient.GameCore
             int x = 0, y = 0;
             for (int i = 0; i < discard.Count; i++)
             {
-                discard[i].transform.localPosition = new Vector3(2f * (x + y), 0f, -2f * y);
+                discard[i].CardController.transform.localPosition = new Vector3(2f * (x + y), 0f, -2f * y);
 
                 x = (x + 1) % WrapLen;
                 if (x == 0) y++;

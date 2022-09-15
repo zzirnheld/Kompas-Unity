@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace KompasCore.Cards
 {
-    public abstract class CardBase : MonoBehaviour, IComparable
+    public abstract class CardBase : IComparable
     {
         public const string SimpleSubtype = "Simple";
         public const string EnchantSubtype = "Enchant";

@@ -13,14 +13,14 @@ namespace KompasClient.UI
 
         public ClientNotifier ClientNotifier;
         public CardRepository CardRepo;
-        public DeckSelectCard CardPrefab;
+        public DeckSelectCardController CardPrefab;
 
         //ui elements
         public TMP_Dropdown DeckNameDropdown;
         public GameObject DeckViewScrollPane;
         public TMP_Text CardsInDeckText;
 
-        public List<DeckSelectCard> currDeck;
+        public List<DeckSelectCardController> currDeck;
 
         private List<string> deckNames;
         private string deckFilesFolderPath;
@@ -29,7 +29,7 @@ namespace KompasClient.UI
         void Start()
         {
             //for now, load an empty list. later, load a default deck?
-            currDeck = new List<DeckSelectCard>();
+            currDeck = new List<DeckSelectCardController>();
             deckFilesFolderPath = Application.persistentDataPath + "/Decks";
 
             //create the directory if doesn't exist
@@ -63,7 +63,7 @@ namespace KompasClient.UI
         {
             for (int i = currDeck.Count - 1; i >= 0; i--)
             {
-                DeckSelectCard c = currDeck[i];
+                DeckSelectCardController c = currDeck[i];
                 currDeck.RemoveAt(i);
                 Destroy(c.gameObject);
             }
@@ -78,7 +78,7 @@ namespace KompasClient.UI
                 return;
             }
 
-            DeckSelectCard toAdd = CardRepo.InstantiateDeckSelectCard(json, DeckViewScrollPane.transform, CardPrefab, this);
+            DeckSelectCardController toAdd = CardRepo.InstantiateDeckSelectCard(json, DeckViewScrollPane.transform, CardPrefab, this);
             if (toAdd == null)
             {
                 Debug.LogError($"Somehow have a DeckbuilderCard with name {name} couldn't be re-instantiated");
@@ -126,18 +126,18 @@ namespace KompasClient.UI
         public void ConfirmSelectedDeck()
         {
             StringBuilder sb = new StringBuilder();
-            foreach (DeckSelectCard card in currDeck)
+            foreach (DeckSelectCardController card in currDeck)
             {
-                sb.Append(card.CardName);
+                sb.Append(card.Card.CardName);
                 sb.Append("\n");
             }
 
             ClientNotifier.RequestDecklistImport(sb.ToString());
         }
 
-        public void SelectAsAvatar(DeckSelectCard card)
+        public void SelectAsAvatar(DeckSelectCardController card)
         {
-            if (card.CardType != 'C' || !currDeck.Contains(card)) return;
+            if (card.Card.CardType != 'C' || !currDeck.Contains(card)) return;
 
             currDeck.Remove(card);
             currDeck.Insert(0, card);

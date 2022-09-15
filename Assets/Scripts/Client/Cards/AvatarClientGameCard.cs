@@ -9,5 +9,11 @@ namespace KompasClient.Cards
     {
         public override bool Summoned => false;
         public override bool IsAvatar => true;
+
+        public AvatarClientGameCard(ClientCardController clientCardController)
+            : base(clientCardController)
+        {
+
+        }
     }
 }

@@ -10,19 +10,19 @@ namespace KompasDeckbuilder
         public TMP_Text cardName;
         public TMP_Text cardBlurb;
 
-        private DeckbuilderCard card;
+        private DeckbuilderCardController card;
         private DeckbuildSearchController cardSearchCtrl;
 
-        public void Initialize(DeckbuilderCard card, DeckbuildSearchController cardSearchCtrl)
+        public void Initialize(DeckbuilderCardController card, DeckbuildSearchController cardSearchCtrl)
         {
-            simpleImage.sprite = card.SimpleSprite;
-            cardName.text = card.CardName;
+            simpleImage.sprite = card.Card.SimpleSprite;
+            cardName.text = card.Card.CardName;
             cardBlurb.text = card.BlurbString;
             this.card = card;
             this.cardSearchCtrl = cardSearchCtrl;
         }
 
-        public void OnClick() => cardSearchCtrl.DeckbuilderCtrl.AddToDeck(card);
+        public void OnClick() => cardSearchCtrl.DeckbuilderCtrl.AddToDeck(card.Card);
 
         public void Kill()
         {
@@ -30,7 +30,5 @@ namespace KompasDeckbuilder
         }
 
         public void Show() => card.Show();
-
-        public void Unshow() => card.Unshow();
     }
 }

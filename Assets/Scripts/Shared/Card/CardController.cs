@@ -29,35 +29,35 @@ namespace KompasCore.Cards
             }
 
             //Here on out, we assume the card's not an augment
-            Card.transform.localScale = Vector3.one;
+            transform.localScale = Vector3.one;
 
             switch (location)
             {
                 case CardLocation.Nowhere: break;
                 case CardLocation.Deck:
-                    Card.gameObject.transform.SetParent(Card.Controller.deckObject.transform);
+                    transform.SetParent(Card.Controller.deckObject.transform);
                     gameObject.SetActive(false);
                     break;
                 case CardLocation.Discard:
-                    Card.gameObject.transform.SetParent(Card.Controller.discardObject.transform);
+                    transform.SetParent(Card.Controller.discardObject.transform);
                     Card.Controller.discardCtrl.SpreadOutCards();
                     SetRotation();
                     gameObject.SetActive(true);
                     break;
                 case CardLocation.Board:
-                    Card.gameObject.transform.localScale = Vector3.one;
-                    Card.gameObject.transform.SetParent(Card.Game.BoardController.gameObject.transform);
+                    transform.localScale = Vector3.one;
+                    transform.SetParent(Card.Game.BoardController.gameObject.transform);
                     MoveTo(Card.Position);
                     SetRotation();
                     gameObject.SetActive(true);
                     break;
                 case CardLocation.Hand:
-                    Card.gameObject.transform.SetParent(Card.Controller.handObject.transform);
+                    transform.SetParent(Card.Controller.handObject.transform);
                     Card.Controller.handCtrl.SpreadOutCards();
                     gameObject.SetActive(true);
                     break;
                 case CardLocation.Annihilation:
-                    Card.gameObject.transform.SetParent(Card.Controller.annihilationCtrl.gameObject.transform);
+                    transform.SetParent(Card.Controller.annihilationCtrl.gameObject.transform);
                     Card.Controller.annihilationCtrl.SpreadOutCards();
                     SetRotation();
                     gameObject.SetActive(true);
@@ -84,8 +84,8 @@ namespace KompasCore.Cards
             int i = 0;
             foreach (var aug in Card.Augments)
             {
-                aug.transform.parent = Card.transform;
-                aug.transform.localScale = new Vector3(scale, scale, scale);
+                aug.CardController.transform.parent = transform;
+                aug.CardController.transform.localScale = new Vector3(scale, scale, scale);
                 float x, z;
                 (x, z) = (i % 4) switch
                 {
@@ -95,7 +95,7 @@ namespace KompasCore.Cards
                     3 => (-0.5f, -0.5f),
                     _ => (0f, 0f),
                 };
-                aug.transform.localPosition = new Vector3(x, 0.2f * ((i / 4) + 1), z);
+                aug.CardController.transform.localPosition = new Vector3(x, 0.2f * ((i / 4) + 1), z);
                 i++;
                 aug.CardController.SetRotation();
             }
@@ -106,7 +106,7 @@ namespace KompasCore.Cards
             //Debug.Log($"Setting rotation of {Card.CardName}, controlled by {Card.ControllerIndex}, known? {Card.KnownToEnemy}");
             int yRotation = 180 * Card.ControllerIndex;
             int zRotation = 180 * (Card.KnownToEnemy ? 0 : Card.ControllerIndex);
-            Card.transform.eulerAngles = new Vector3(0, yRotation, zRotation);
+            transform.eulerAngles = new Vector3(0, yRotation, zRotation);
         }
 
         public void PutBack() => SetPhysicalLocation(Card.Location);

@@ -53,8 +53,8 @@ namespace KompasClient.Cards
         public ClientEffect[] ClientEffects { get; private set; }
         public override IEnumerable<Effect> Effects => ClientEffects;
         public override bool IsAvatar => false;
-        public ClientCardController clientCardController;
-        public override CardController CardController => clientCardController;
+        public ClientCardController ClientCardController { get; private set; }
+        public override CardController CardController => ClientCardController;
 
         private bool knownToEnemy = false;
         public override bool KnownToEnemy
@@ -65,6 +65,11 @@ namespace KompasClient.Cards
                 knownToEnemy = value;
                 UpdateRevealed();
             }
+        }
+
+        public ClientGameCard(ClientCardController clientCardController)
+        {
+            ClientCardController = clientCardController;
         }
 
         public override bool Remove(IStackable stackSrc = null)
@@ -97,9 +102,9 @@ namespace KompasClient.Cards
         /// </summary>
         private void UpdateRevealed()
         {
-            if (clientCardController != null)
+            if (ClientCardController != null)
             {
-                clientCardController.Revealed = KnownToEnemy && InHiddenLocation && !Owner.Friendly;
+                ClientCardController.Revealed = KnownToEnemy && InHiddenLocation && !Owner.Friendly;
             }
         }
     }

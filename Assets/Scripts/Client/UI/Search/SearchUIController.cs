@@ -75,7 +75,8 @@ namespace KompasClient.UI.Search
 
         public void OnClick(SearchCardViewController searchCardViewController)
         {
-            searchController.ToggleTarget(searchCardViewController.CardController.Card);
+            if (cardViewController.FocusedCard == searchCardViewController.CardController.Card)
+                searchController.ToggleTarget(searchCardViewController.CardController.Card);
 
             //Do focus last so it can accurately display that the card is now a target
             cardViewController.Focus(searchCardViewController.CardController.Card, lockFocus: true);

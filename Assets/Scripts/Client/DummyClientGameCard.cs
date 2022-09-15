@@ -8,5 +8,11 @@ namespace KompasClient.Cards
         {
             ClientGame = game;
         }
+
+        public DummyClientGameCard(ClientCardController clientCardController)
+            : base(clientCardController)
+        {
+
+        }
     }
 }

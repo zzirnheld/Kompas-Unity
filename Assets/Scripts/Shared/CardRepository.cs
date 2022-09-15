@@ -223,19 +223,17 @@ public class CardRepository : MonoBehaviour
 
         //Destroy card components irrelevant to a server avatar
         var avatarObj = Instantiate(CardPrefab);
-        var cardComponents = avatarObj
-            .GetComponents(typeof(GameCard))
-            .Where(c => !(c is AvatarServerGameCard));
-        foreach (var c in cardComponents) Destroy(c);
 
         var cardCtrlComponents = avatarObj
             .GetComponents(typeof(CardController))
             .Where(c => c is ClientCardController);
         foreach (var c in cardCtrlComponents) Destroy(c);
 
-        var avatar = avatarObj.GetComponents<AvatarServerGameCard>().Where(c => c is AvatarServerGameCard).First();
+        var ctrl = avatarObj.GetComponents<ServerCardController>().Where(c => c is ServerCardController).First();
 
-        avatar.serverCardController.serverCard = avatar;
+        var avatar = new AvatarServerGameCard(ctrl);
+
+        avatar.ServerCardController.serverCard = avatar;
         avatar.SetInitialCardInfo(card, serverGame, owner, effects.ToArray(), id);
         serverGame.cardsByID.Add(id, avatar);
         return avatar;
@@ -271,18 +269,14 @@ public class CardRepository : MonoBehaviour
         }
 
         //Destroy card components irrelevant to a server non-avatar
-        var cardComponents = cardObj
-            .GetComponents(typeof(GameCard))
-            .Where(c => c is AvatarServerGameCard || !(c is ServerGameCard));
-        foreach (var c in cardComponents) Destroy(c);
-
         var cardCtrlComponents = cardObj
             .GetComponents(typeof(CardController))
             .Where(c => c is ClientCardController);
         foreach (var c in cardCtrlComponents) Destroy(c);
 
         //if don't use .where .first it still grabs components that should be destroyed, and are destroyed as far as i can tell
-        var card = cardObj.GetComponents<ServerGameCard>().Where(c => !(c is AvatarServerGameCard)).First();
+        var ctrl = cardObj.GetComponents<ServerCardController>().Where(c => c is ServerCardController).First();
+        var card = new ServerGameCard(ctrl);
         //TODO assign in inspector
         //cardObj.GetComponents<CardController>().Where(c => !(c is ClientCardController)).First().Card = card;
 
@@ -318,10 +312,6 @@ public class CardRepository : MonoBehaviour
         var avatarObj = Instantiate(CardPrefab);
 
         //Destroy card components irrelevant to a client avatar
-        var cardComponents = avatarObj
-            .GetComponents(typeof(GameCard))
-            .Where(c => !(c is AvatarClientGameCard));
-        foreach (var c in cardComponents) Destroy(c);
 
         var cardCtrlComponents = avatarObj
             .GetComponents(typeof(CardController))
@@ -329,10 +319,11 @@ public class CardRepository : MonoBehaviour
         foreach (var c in cardCtrlComponents) Destroy(c);
 
         //if don't use .where .first it still grabs components that should be destroyed, and are destroyed as far as i can tell
-        var avatar = avatarObj.GetComponents<AvatarClientGameCard>().Where(c => c is AvatarClientGameCard).First();
+        var ctrl = avatarObj.GetComponents<ClientCardController>().Where(c => c is ClientCardController).First();
+        var avatar = new AvatarClientGameCard(ctrl);
 
-        avatar.clientCardController.clientCard = avatar;
-        avatar.clientCardController.mouseController.card = avatar;
+        avatar.ClientCardController.clientCard = avatar;
+        avatar.ClientCardController.mouseController.card = avatar.CardController;
         avatar.SetInitialCardInfo(cardInfo, clientGame, owner, effects.ToArray(), id);
         clientGame.cardsByID.Add(id, avatar);
         return avatar;
@@ -365,23 +356,19 @@ public class CardRepository : MonoBehaviour
         var cardObj = Instantiate(CardPrefab);
 
         //Destroy card components irrelevant to a client non-avatar
-        var cardComponents = cardObj
-            .GetComponents(typeof(GameCard))
-            .Where(c => c is AvatarClientGameCard || !(c is ClientGameCard));
-        foreach (var c in cardComponents) Destroy(c);
-
+        //TODO handle cards no longer being monobehaviors
         var cardCtrlComponents = cardObj
             .GetComponents(typeof(CardController))
             .Where(c => !(c is ClientCardController));
         foreach (var c in cardCtrlComponents) Destroy(c);
 
         //if don't use .where .first it still grabs components that should be destroyed, and are destroyed as far as i can tell
-        var card = cardObj.GetComponents<ClientGameCard>().Where(c => !(c is AvatarClientGameCard)).First();
         var ctrl = cardObj.GetComponents<ClientCardController>().Where(c => c is ClientCardController).First();
+        var card = new ClientGameCard(ctrl);
 
         Debug.Log($"Successfully created a card? {card != null} for json {json} with controller {ctrl}");
         card.SetInitialCardInfo(cardInfo, clientGame, owner, effects.ToArray(), id);
-        card.clientCardController.gameCardViewController.Refresh();
+        card.ClientCardController.gameCardViewController.Refresh();
 
         //handle adding existing card links
         foreach (var c in card.Game.Cards)
@@ -395,14 +382,14 @@ public class CardRepository : MonoBehaviour
         return card;
     }
 
-    public DeckSelectCard InstantiateDeckSelectCard(string json, Transform parent, DeckSelectCard prefab, DeckSelectUIController uiCtrl)
+    public DeckSelectCardController InstantiateDeckSelectCard(string json, Transform parent, DeckSelectCardController prefab, DeckSelectUIController uiCtrl)
     {
         try
         {
             SerializableCard serializableCard = JsonConvert.DeserializeObject<SerializableCard>(json, cardLoadingSettings);
-            DeckSelectCard card = Instantiate(prefab, parent);
+            DeckSelectCardController card = Instantiate(prefab, parent);
             card.SetInfo(serializableCard, uiCtrl);
-            card.FileName = cardFileNames[card.CardName];
+            card.FileName = cardFileNames[card.Card.CardName];
             return card;
         }
         catch (System.ArgumentException argEx)
@@ -413,35 +400,15 @@ public class CardRepository : MonoBehaviour
         }
     }
 
-    public DeckbuilderCard InstantiateDeckbuilderCard(string json, DeckbuildSearchController searchCtrl, bool inDeck)
+    public DeckbuilderCardController InstantiateDeckbuilderCard(string json, DeckbuildSearchController searchCtrl, bool inDeck)
     {
         try
         {
             SerializableCard serializableCard = JsonConvert.DeserializeObject<SerializableCard>(json, cardLoadingSettings);
-            switch (serializableCard.cardType)
-            {
-                case 'C':
-                    SerializableCard serializableChar = JsonConvert.DeserializeObject<SerializableCard>(json, cardLoadingSettings);
-                    var charCard = Instantiate(DeckbuilderCharPrefab).GetComponent<DeckbuilderCharCard>();
-                    charCard.SetInfo(searchCtrl, serializableChar, inDeck);
-                    charCard.FileName = cardFileNames[charCard.CardName];
-                    return charCard;
-                case 'S':
-                    SerializableCard serializableSpell = JsonConvert.DeserializeObject<SerializableCard>(json, cardLoadingSettings);
-                    var spellCard = Instantiate(DeckbuilderSpellPrefab).GetComponent<DeckbuilderSpellCard>();
-                    spellCard.SetInfo(searchCtrl, serializableSpell, inDeck);
-                    spellCard.FileName = cardFileNames[spellCard.CardName];
-                    return spellCard;
-                case 'A':
-                    SerializableCard serializableAug = JsonConvert.DeserializeObject<SerializableCard>(json, cardLoadingSettings);
-                    var augCard = Instantiate(DeckbuilderAugPrefab).GetComponent<DeckbuilderAugCard>();
-                    augCard.SetInfo(searchCtrl, serializableAug, inDeck);
-                    augCard.FileName = cardFileNames[augCard.CardName];
-                    return augCard;
-                default:
-                    Debug.LogError("Unrecognized type character " + serializableCard.cardType + " in " + json);
-                    return null;
-            }
+            var card = Instantiate(DeckbuilderCharPrefab).GetComponent<DeckbuilderCardController>();
+            card.SetInfo(searchCtrl, serializableCard, inDeck);
+            card.FileName = cardFileNames[card.Card.CardName];
+            return card;
         }
         catch (System.ArgumentException argEx)
         {

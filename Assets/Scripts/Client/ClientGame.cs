@@ -131,7 +131,7 @@ namespace KompasClient.GameCore
         {
             card.Remove();
             cardsByID.Remove(card.ID);
-            Destroy(card.gameObject);
+            Destroy(card.CardController.gameObject);
         }
 
         //requesting
@@ -164,7 +164,7 @@ namespace KompasClient.GameCore
         public void ShowCardsByZoom(bool zoomed)
         {
             //TODO make this better with a dirty list
-            foreach (var c in Cards.Where(c => c != null && c.gameObject.activeSelf))
+            foreach (var c in Cards.Where(c => c != null && c.CardController.gameObject.activeSelf))
             {
                 c.CardController.gameCardViewController.Refresh();
             }

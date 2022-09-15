@@ -16,8 +16,8 @@ namespace KompasServer.Cards
         public ServerGame ServerGame { get; private set; }
         public override Game Game => ServerGame;
 
-        public ServerCardController serverCardController;
-        public override CardController CardController => serverCardController;
+        public ServerCardController ServerCardController { get; private set; }
+        public override CardController CardController => ServerCardController;
 
         public ServerEffectsController EffectsController => ServerGame?.effectsController;
         public ServerNotifier ServerNotifier => ServerController?.ServerNotifier;
@@ -90,6 +90,11 @@ namespace KompasServer.Cards
                 //update clients if changed
                 if (old != value) ServerNotifier.NotifyKnownToEnemy(this, old);
             }
+        }
+
+        public ServerGameCard(ServerCardController serverCardController)
+        {
+            ServerCardController = serverCardController;
         }
 
         public override string ToString()

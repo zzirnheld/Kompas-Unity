@@ -5,35 +5,45 @@ using UnityEngine.UI;
 
 namespace KompasClient.UI
 {
-    public class DeckSelectCard : CardBase, IPointerDownHandler
+    public class DeckSelectCardController : MonoBehaviour, IPointerDownHandler
     {
         public DeckSelectUIController UICtrl;
         public Image Image;
 
-        public override string FileName
+        public DeckSelectCard Card { get; private set; }
+
+        public string FileName
         {
-            get => base.FileName;
+            get => Card.FileName;
             set
             {
-                base.FileName = value;
+                Card.FileName = value;
                 SetImage();
             }
         }
 
         public void SetInfo(SerializableCard card, DeckSelectUIController uiCtrl)
         {
-            base.SetCardInformation(card);
+            Card = new DeckSelectCard(card);
             UICtrl = uiCtrl;
         }
 
         protected void SetImage()
         {
-            Image.sprite = SimpleSprite;
+            Image.sprite = Card.SimpleSprite;
         }
 
         public void OnPointerDown(PointerEventData eventData)
         {
             UICtrl.SelectAsAvatar(this);
+        }
+    }
+
+    public class DeckSelectCard : CardBase
+    {
+        public DeckSelectCard(SerializableCard card)
+        {
+            SetCardInformation(card);
         }
     }
 }

@@ -5,21 +5,23 @@ using UnityEngine.UI;
 
 namespace KompasDeckbuilder
 {
-    public abstract class DeckbuilderCard : CardBase, IPointerClickHandler, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler
+    public class DeckbuilderCardController : MonoBehaviour, IPointerClickHandler, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler
     {
         protected DeckbuildSearchController cardSearchController;
         protected DeckbuilderController deckbuildCtrl => cardSearchController.DeckbuilderCtrl;
 
         protected Image image;
 
-        public abstract string BlurbString { get; }
+        public DeckbuilderCard Card { get; private set; }
 
-        public override string FileName
+        public string BlurbString => Card.StatsString + Card.QualifiedSubtypeText;
+
+        public string FileName
         {
-            get => base.FileName;
+            get => Card.FileName;
             set
             {
-                base.FileName = value;
+                Card.FileName = value;
                 SetImage();
             }
         }
@@ -31,7 +33,7 @@ namespace KompasDeckbuilder
 
         public virtual void SetInfo(DeckbuildSearchController searchCtrl, SerializableCard card, bool inDeck)
         {
-            SetCardInformation(card);
+            Card = new DeckbuilderCard(card);
             cardSearchController = searchCtrl;
         }
 
@@ -45,17 +47,12 @@ namespace KompasDeckbuilder
         /// </summary>
         public virtual void Show()
         {
-            cardSearchController.deckbuilderCardViewController.Show(this); //TODO handle compile errors
-        }
-
-        public void Unshow()
-        {
-            //TODO
+            cardSearchController.deckbuilderCardViewController.Show(Card); //TODO handle compile errors
         }
 
         protected void SetImage()
         {
-            image.sprite = SimpleSprite;
+            image.sprite = Card.SimpleSprite;
         }
 
         public void OnPointerClick(PointerEventData eventData)
@@ -86,5 +83,13 @@ namespace KompasDeckbuilder
             deckbuildCtrl.MoveTo(this, index);
         }
 
+    }
+
+    public class DeckbuilderCard : CardBase
+    {
+        public DeckbuilderCard(SerializableCard card)
+        {
+            SetCardInformation(card);
+        }
     }
 }
