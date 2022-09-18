@@ -1423,7 +1423,6 @@ MonoBehaviour:
   subtypesText: {fileID: 1468745133250577119}
   effText: {fileID: 1468745133788226728}
   cardImageImage: {fileID: 1468745132669416431}
-  reminderTextsUIController: {fileID: 0}
   currentTargetObject: {fileID: 9050685348987744233}
   validTargetObject: {fileID: 8458440348466795612}
 --- !u!65 &4837160088802493153
