@@ -85,7 +85,7 @@ namespace KompasCore.UI
             if (renderers.Length > 0)
             {
                 Bounds bounds = renderers[0].bounds;
-                Debug.Log($"encapsualting {bounds}");
+                //Debug.Log($"encapsualting {bounds}");
                 foreach (var rend in renderers) bounds.Encapsulate(rend.bounds);
                 return bounds;
             }

@@ -38,11 +38,6 @@ namespace KompasCore.Cards
                     transform.SetParent(Card.Controller.deckObject.transform);
                     gameObject.SetActive(false);
                     break;
-                case CardLocation.Discard:
-                    transform.SetParent(Card.Controller.discardObject.transform);
-                    SetRotation();
-                    gameObject.SetActive(true);
-                    break;
                 case CardLocation.Board:
                     transform.localScale = Vector3.one;
                     transform.SetParent(Card.Game.BoardController.gameObject.transform);
@@ -51,15 +46,11 @@ namespace KompasCore.Cards
                     gameObject.SetActive(true);
                     break;
                 case CardLocation.Hand:
-                    transform.SetParent(Card.Controller.handObject.transform);
                     Card.Controller.handCtrl.SpreadOutCards();
-                    gameObject.SetActive(true);
                     break;
+                case CardLocation.Discard:
                 case CardLocation.Annihilation:
-                    transform.SetParent(Card.Controller.annihilationCtrl.gameObject.transform);
-                    Card.Controller.annihilationCtrl.SpreadOutCards();
                     SetRotation();
-                    gameObject.SetActive(true);
                     break;
                 default: throw new System.ArgumentException($"Invalid card location {location} to put card physically at");
             }

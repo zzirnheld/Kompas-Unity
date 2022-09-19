@@ -8,17 +8,14 @@ using UnityEngine;
 
 namespace KompasCore.GameCore
 {
-    public class DiscardController : MonoBehaviour, IGameLocation
+    public class DiscardController : AbstractGameLocation
     {
-        public Game game;
-        public Player Owner;
-
         public DiscardUIController discardUIController;
 
-        public CardLocation CardLocation => CardLocation.Discard;
-
         protected readonly List<GameCard> discard = new List<GameCard>();
-        public IReadOnlyCollection<GameCard> CardsInDiscard => discard;
+
+        public override CardLocation CardLocation => CardLocation.Discard;
+        public IReadOnlyCollection<GameCard> Cards => discard;
 
         //adding/removing cards
         public virtual bool Discard(GameCard card, IStackable stackSrc = null)
@@ -31,7 +28,7 @@ namespace KompasCore.GameCore
             {
                 Debug.Log($"Discarding {card.CardName}");
                 discard.Add(card);
-                card.Controller = Owner;
+                card.Controller = owner;
                 card.GameLocation = this;
                 card.Position = null;
                 discardUIController.Refresh();
@@ -39,7 +36,7 @@ namespace KompasCore.GameCore
             return successful;
         }
 
-        public virtual void Remove(GameCard card)
+        public override void Remove(GameCard card)
         {
             if (!discard.Contains(card)) throw new CardNotHereException(CardLocation.Discard, card);
 
@@ -47,10 +44,7 @@ namespace KompasCore.GameCore
             discardUIController.Refresh();
         }
 
-        public int IndexOf(GameCard card)
-        {
-            return discard.IndexOf(card);
-        }
+        public override int IndexOf(GameCard card) => discard.IndexOf(card);
 
         public List<GameCard> CardsThatFit(Func<GameCardBase, bool> cardRestriction)
         {

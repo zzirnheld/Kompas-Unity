@@ -9,9 +9,6 @@ namespace KompasCore.GameCore
 {
     public abstract class DeckController : MonoBehaviour, IGameLocation
     {
-        public const string BLANK_CARD_PATH = "Card Jsons/Blank Card";
-
-        public Game game;
         public abstract Player Owner { get; }
 
         public CardLocation CardLocation => CardLocation.Deck;
@@ -91,9 +88,7 @@ namespace KompasCore.GameCore
             {
                 n--;
                 int k = rng.Next(n + 1);
-                GameCard value = Deck[k];
-                Deck[k] = Deck[n];
-                Deck[n] = value;
+                (Deck[n], Deck[k]) = (Deck[k], Deck[n]);
             }
         }
 

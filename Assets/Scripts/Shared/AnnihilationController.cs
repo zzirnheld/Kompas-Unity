@@ -1,19 +1,21 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
 using KompasCore.Exceptions;
+using KompasCore.UI;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace KompasCore.GameCore
 {
     //Not abstract because Client uses this base class
-    public class AnnihilationController : MonoBehaviour, IGameLocation
+    public class AnnihilationController : AbstractGameLocation
     {
-        public Game game;
-        public Player owner;
+        public AnnihilationUIController annihilationUIController;
 
-        public CardLocation CardLocation => CardLocation.Annihilation;
-        public List<GameCard> Cards { get; } = new List<GameCard>();
+        private readonly List<GameCard> cards = new List<GameCard>();
+
+        public override CardLocation CardLocation => CardLocation.Annihilation;
+        public IReadOnlyCollection<GameCard> Cards => cards;
 
 
         /// <summary>
@@ -33,36 +35,24 @@ namespace KompasCore.GameCore
             //Check if the card is successfully removed (if it's not, it's probably an avatar)
             if (card.Remove(stackSrc))
             {
-                Cards.Add(card);
+                cards.Add(card);
                 card.GameLocation = this;
                 card.Position = null;
-                SpreadOutCards();
+                annihilationUIController.Refresh();
                 return true;
             }
             return false;
         }
 
-        public virtual void Remove(GameCard card)
+        public override void Remove(GameCard card)
         {
-            if (!Cards.Contains(card))
+            if (!cards.Contains(card))
                 throw new CardNotHereException(CardLocation.Annihilation, card, "Card was not in annihilation, couldn't be removed");
 
-            Cards.Remove(card);
-            SpreadOutCards();
+            cards.Remove(card);
+            annihilationUIController.Refresh();
         }
 
-        public int IndexOf(GameCard card) => Cards.IndexOf(card);
-
-        public void SpreadOutCards()
-        {
-            float spreadOutMultiplier = 2f * (owner.index == 0 ? -1f : 1f);
-            int max = Cards.Count - 1;
-
-            //iterate through children, set the z coord
-            for (int i = 0; i < Cards.Count; i++)
-            {
-                Cards[i].CardController.transform.localPosition = new Vector3(spreadOutMultiplier * (float)(max - i), 0, 0);
-            }
-        }
+        public override int IndexOf(GameCard card) => cards.IndexOf(card);
     }
 }

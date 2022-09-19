@@ -6,25 +6,24 @@ using KompasCore.Effects;
 using KompasCore.Cards;
 using System.Text;
 using KompasCore.Exceptions;
-using KompasCore.Cards.Movement;
 
 namespace KompasCore.GameCore
 {
     //Not abstract because Client uses this base class
-    public abstract class BoardController : MonoBehaviour, IGameLocation
+    public abstract class BoardController : AbstractGameLocation
     {
         public const int SpacesInGrid = 7;
         public const int NoPathExists = 50;
 
         public abstract Game Game { get; }
 
-        public CardLocation CardLocation => CardLocation.Board;
+        public override CardLocation CardLocation => CardLocation.Board;
 
         public readonly GameCard[,] Board = new GameCard[SpacesInGrid, SpacesInGrid];
 
         //helper methods
         #region helper methods
-        public int IndexOf(GameCard card) => card.Position.Index;
+        public override int IndexOf(GameCard card) => card.Position.Index;
 
         private bool IsSpaceEmptyOfSpells(Space space)
         {
@@ -189,7 +188,7 @@ namespace KompasCore.GameCore
         #endregion
 
         #region game mechanics
-        public virtual void Remove(GameCard toRemove)
+        public override void Remove(GameCard toRemove)
         {
             if (toRemove.Location != CardLocation.Board)
                 throw new CardNotHereException(CardLocation, toRemove, $"Tried to remove {toRemove} not on board");
@@ -198,15 +197,9 @@ namespace KompasCore.GameCore
 
             var (x, y) = toRemove.Position;
             if (Board[x, y] == toRemove)
-                RemoveFromBoard(toRemove.Position);
+                Board[x, y] = null;
             else
                 throw new CardNotHereException(CardLocation, toRemove, $"Card thinks it's at {toRemove.Position}, but {Board[x, y]} is there");
-        }
-
-        private void RemoveFromBoard(Space space)
-        {
-            var (x, y) = space;
-            Board[x, y] = null;
         }
 
         /// <summary>
@@ -217,11 +210,14 @@ namespace KompasCore.GameCore
         /// <param name="toY">Y coordinate to play the card to</param>
         public virtual void Play(GameCard toPlay, Space to, Player controller, IStackable stackSrc = null)
         {
-            if (toPlay == null) throw new NullCardException($"Null card to play to {to}");
-            if (toPlay.Location == CardLocation.Board) throw new AlreadyHereException(CardLocation);
-            if (to == null) throw new InvalidSpaceException(to, $"Space to play a card to cannot be null!");
-            if (!ValidSpellSpaceFor(toPlay, to)) throw new InvalidSpaceException(to,
-                $"Tried to play {toPlay} to space {to}. This isn't ok, that's an invalid spell spot.");
+            if (toPlay == null)
+                throw new NullCardException($"Null card to play to {to}");
+            if (toPlay.Location == CardLocation.Board)
+                throw new AlreadyHereException(CardLocation);
+            if (to == null)
+                throw new InvalidSpaceException(to, $"Space to play a card to cannot be null!");
+            if (!ValidSpellSpaceFor(toPlay, to))
+                throw new InvalidSpaceException(to, $"Tried to play {toPlay} to space {to}. This isn't ok, that's an invalid spell spot.");
 
             Debug.Log($"In boardctrl, playing {toPlay.CardName} currently in {toPlay.Location} to {to}");
 
@@ -256,9 +252,12 @@ namespace KompasCore.GameCore
         {
             Debug.Log($"Swapping {card?.CardName} to {to}");
 
-            if (!to.IsValid) throw new InvalidSpaceException(to);
-            if (card == null) throw new NullCardException("Card to be swapped must not be null");
-            if (card.Attached) throw new NotImplementedException();
+            if (!to.IsValid)
+                throw new InvalidSpaceException(to);
+            if (card == null)
+                throw new NullCardException("Card to be swapped must not be null");
+            if (card.Attached)
+                throw new NotImplementedException();
             if (card.Location != CardLocation.Board || card != GetCardAt(card.Position))
                 throw new CardNotHereException(CardLocation.Board, card,
                     $"{card} not at {card.Position}, {GetCardAt(card.Position)} is there instead");
@@ -270,8 +269,8 @@ namespace KompasCore.GameCore
             //check valid spell positioning
             string swapDesc = $"Tried to move {card} to space {toX}, {toY}. " +
                     $"{(temp == null ? "" : $"This would swap {temp.CardName} to {tempX}, {tempY}.")}";
-            if (!ValidSpellSpaceFor(card, to)) throw new InvalidSpaceException(to, $"{swapDesc}, but space is an invalid spell space");
-            if (!ValidSpellSpaceFor(temp, from)) throw new InvalidSpaceException(from, $"{swapDesc}, but space is an invalid spell space");
+            if (!ValidSpellSpaceFor(card, to)) throw new InvalidSpaceException(to, $"{swapDesc}, but the destination is an invalid spell space");
+            if (!ValidSpellSpaceFor(temp, from)) throw new InvalidSpaceException(from, $"{swapDesc}, but the start is an invalid spell space");
 
             //then let the cards know they've been moved, but before moving them, so you can count properly
             if (playerInitiated)
@@ -291,16 +290,16 @@ namespace KompasCore.GameCore
         {
             if (card.Attached)
             {
-                if (!to.IsValid) throw new InvalidSpaceException(to, $"Can't move {card} to invalid space");
-                var (toX, toY) = to;
-                if (IsEmpty(to)) throw new NullCardException($"Null card to attach {card} to at {to}");
+                if (!to.IsValid)
+                    throw new InvalidSpaceException(to, $"Can't move {card} to invalid space");
+                if (IsEmpty(to))
+                    throw new NullCardException($"Null card to attach {card} to at {to}");
+
                 card.Remove(stackSrc);
+                var (toX, toY) = to;
                 Board[toX, toY].AddAugment(card, stackSrc);
             }
-            else
-            {
-                Swap(card, to, playerInitiated, stackSrc);
-            }
+            else Swap(card, to, playerInitiated, stackSrc);
         }
         #endregion game mechanics
 

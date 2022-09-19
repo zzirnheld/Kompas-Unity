@@ -92,6 +92,7 @@ namespace KompasCore.UI
         {
             bool isChar = shownCard.CardType == 'C';
 
+            //Zoomed in things
             nText.gameObject.SetActive(Zoomed && isChar);
             eText.gameObject.SetActive(Zoomed && isChar);
             wText.gameObject.SetActive(Zoomed && isChar);
@@ -105,17 +106,21 @@ namespace KompasCore.UI
 
             zoomedAllFrame.SetActive(Zoomed);
 
+            //Unzoomed things
             unzoomedNText.gameObject.SetActive(!Zoomed && isChar);
             unzoomedEText.gameObject.SetActive(!Zoomed && isChar);
             unzoomedWText.gameObject.SetActive(!Zoomed && isChar);
 
             unzoomedCharFrame.SetActive(!Zoomed && isChar);
 
+            unzoomedCostText.gameObject.SetActive(!Zoomed);
+
             unzoomedAllFrame.SetActive(!Zoomed);
 
+            //Handle font sizes
             unzoomedNText.fontSize = UnzoomedFontSizeForValue(shownCard.N);
             unzoomedEText.fontSize = UnzoomedFontSizeForValue(shownCard.E);
-            unzoomedEText.fontSize = UnzoomedFontSizeForValue(shownCard.E);
+            unzoomedWText.fontSize = UnzoomedFontSizeForValue(shownCard.W);
 
             unzoomedCostText.fontSize = UnzoomedFontSizeForValue(shownCard.Cost);
         }

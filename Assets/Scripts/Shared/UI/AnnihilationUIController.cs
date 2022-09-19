@@ -5,12 +5,12 @@ using UnityEngine;
 
 namespace KompasCore.UI
 {
-    public class DiscardUIController : StackableEntitiesController
+    public class AnnihilationUIController : StackableEntitiesController
     {
         public float localXOffset = 2f;
         public float localZOffset = -2f;
-        public DiscardController discardController;
-        protected override IEnumerable<GameObject> Objects => discardController.Cards.Select(c => c.CardController.gameObject);
+        public AnnihilationController annihilationController;
+        protected override IEnumerable<GameObject> Objects => annihilationController.Cards.Select(c => c.CardController.gameObject);
 
         private void TakeOwnershipOf(GameObject obj)
         {

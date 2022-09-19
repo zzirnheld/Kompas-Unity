@@ -1,7 +1,4 @@
 using KompasCore.Effects;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 namespace KompasCore.Cards.Movement
 {
