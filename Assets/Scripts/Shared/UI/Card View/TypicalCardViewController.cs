@@ -39,7 +39,7 @@ namespace KompasCore.UI
             }
         }
 
-        private void Update()
+        protected virtual void Update()
         {
             DisplayReminderTextBlurb();
         }
@@ -56,7 +56,7 @@ namespace KompasCore.UI
                 {
                     var linkInfo = effText.textInfo.linkInfo[link];
                     var reminderText = CardRepository.Reminders.KeywordToReminder[linkInfo.GetLinkID()];
-                    Debug.Log($"Hovering over {linkInfo.GetLinkID()} with reminder {reminderText}");
+                    //Debug.Log($"Hovering over {linkInfo.GetLinkID()} with reminder {reminderText}");
                     reminders.Add((linkInfo.GetLinkID(), reminderText));
                 }
                 ReminderTextsUIController.Show(reminders);

@@ -39,8 +39,9 @@ namespace KompasClient.UI
         /// </summary>
         private bool focusLocked;
 
-        private void Update()
+        protected override void Update()
         {
+            base.Update();
             if (Input.GetKeyUp(KeyCode.LeftAlt) || Input.GetKeyUp(KeyCode.RightAlt))
                 Show(null);
         }
