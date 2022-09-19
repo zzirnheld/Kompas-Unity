@@ -1,6 +1,7 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
 using KompasCore.Exceptions;
+using KompasCore.UI;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,9 +13,12 @@ namespace KompasCore.GameCore
         public Game game;
         public Player Owner;
 
+        public DiscardUIController discardUIController;
+
         public CardLocation CardLocation => CardLocation.Discard;
 
         protected readonly List<GameCard> discard = new List<GameCard>();
+        public IReadOnlyCollection<GameCard> CardsInDiscard => discard;
 
         //adding/removing cards
         public virtual bool Discard(GameCard card, IStackable stackSrc = null)
@@ -30,6 +34,7 @@ namespace KompasCore.GameCore
                 card.Controller = Owner;
                 card.GameLocation = this;
                 card.Position = null;
+                discardUIController.Refresh();
             }
             return successful;
         }
@@ -39,7 +44,7 @@ namespace KompasCore.GameCore
             if (!discard.Contains(card)) throw new CardNotHereException(CardLocation.Discard, card);
 
             discard.Remove(card);
-            SpreadOutCards();
+            discardUIController.Refresh();
         }
 
         public int IndexOf(GameCard card)
@@ -57,19 +62,6 @@ namespace KompasCore.GameCore
             }
 
             return cards;
-        }
-
-        public virtual void SpreadOutCards()
-        {
-            int wrapLen = (int)(Mathf.Sqrt(discard.Count) + 0.5f);
-            int x = 0, y = 0;
-            for (int i = 0; i < discard.Count; i++)
-            {
-                discard[i].CardController.transform.localPosition = new Vector3(2f * x, 0f, -2f * y);
-
-                x = (x + 1) % wrapLen;
-                if (x == 0) y++;
-            }
         }
     }
 }

@@ -40,7 +40,6 @@ namespace KompasCore.Cards
                     break;
                 case CardLocation.Discard:
                     transform.SetParent(Card.Controller.discardObject.transform);
-                    Card.Controller.discardCtrl.SpreadOutCards();
                     SetRotation();
                     gameObject.SetActive(true);
                     break;

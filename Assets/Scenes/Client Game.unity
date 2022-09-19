@@ -3001,6 +3001,7 @@ GameObject:
   - component: {fileID: 116530643}
   - component: {fileID: 116530642}
   - component: {fileID: 116530641}
+  - component: {fileID: 116530646}
   m_Layer: 0
   m_Name: Enemy Discard (Placeholder)
   m_TagString: Untagged
@@ -3022,6 +3023,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   game: {fileID: 492080563}
   Owner: {fileID: 1841194802}
+  discardUIController: {fileID: 116530646}
   ClientGame: {fileID: 492080563}
 --- !u!65 &116530642
 BoxCollider:
@@ -3032,7 +3034,7 @@ BoxCollider:
   m_GameObject: {fileID: 116530640}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -3100,6 +3102,27 @@ Transform:
   m_Father: {fileID: 1841194801}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 135, z: 0}
+--- !u!114 &116530646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116530640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb894a4f22e7a8541b6cd54750927bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collapsedOffset: {x: 0, y: 0.25, z: 0}
+  expandedOffset: {x: 0, y: 0, z: 0}
+  whileExpandedOffset: 0
+  layer: 12
+  colliderPadding: 1.1
+  boxCollider: {fileID: 116530642}
+  localXOffset: 2
+  localZOffset: -2
+  discardController: {fileID: 116530641}
 --- !u!1 &118102910
 GameObject:
   m_ObjectHideFlags: 0
@@ -8350,7 +8373,8 @@ GameObject:
   - component: {fileID: 540378489}
   - component: {fileID: 540378488}
   - component: {fileID: 540378492}
-  m_Layer: 9
+  - component: {fileID: 540378493}
+  m_Layer: 12
   m_Name: Discard (Placeholder)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8366,7 +8390,7 @@ BoxCollider:
   m_GameObject: {fileID: 540378487}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -8448,7 +8472,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   game: {fileID: 492080563}
   Owner: {fileID: 1829834588}
+  discardUIController: {fileID: 540378493}
   ClientGame: {fileID: 492080563}
+--- !u!114 &540378493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 540378487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb894a4f22e7a8541b6cd54750927bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collapsedOffset: {x: 0, y: 0.25, z: 0}
+  expandedOffset: {x: 0, y: 0, z: 0}
+  whileExpandedOffset: 0
+  layer: 12
+  colliderPadding: 1.1
+  boxCollider: {fileID: 540378488}
+  localXOffset: 2
+  localZOffset: -2
+  discardController: {fileID: 540378492}
 --- !u!1 &548798149
 GameObject:
   m_ObjectHideFlags: 0

@@ -18,7 +18,7 @@ namespace KompasCore.UI
         public float colliderPadding = 1.1f;
         public BoxCollider boxCollider;
 
-        private List<GameObject> objects = null;
+        protected virtual IEnumerable<GameObject> Objects { get; private set; } = null;
 
         private bool collapsed = true;
         private Vector3 currOffset = Vector3.zero;
@@ -28,15 +28,21 @@ namespace KompasCore.UI
 
         public void Initalize(ICollection<GameObject> objects)
         {
-            if (this.objects != null) throw new System.ArgumentException("Tried to initialized a StackableEntitiesController that was already initialized!");
+            if (Objects != null) throw new System.ArgumentException("Tried to initialized a StackableEntitiesController that was already initialized!");
 
-            this.objects = new List<GameObject>(objects);
+            Objects = new List<GameObject>(objects);
             Collapse();
+        }
+
+        public void Refresh()
+        {
+            if (collapsed) Collapse();
+            else Expand();
         }
 
         public void Collapse()
         {
-            if (objects == null) throw new System.ArgumentException("Tried to collapse a StackableEntitiesController that wasn't initialized!");
+            if (Objects == null) throw new System.ArgumentException("Tried to collapse a StackableEntitiesController that wasn't initialized!");
             OffsetSelf(0f);
             ShowCollapsed();
             UpdateColliders();
@@ -45,7 +51,7 @@ namespace KompasCore.UI
 
         public void Expand()
         {
-            if (objects == null) throw new System.ArgumentException("Tried to expand a StackableEntitiesController that wasn't initialized!");
+            if (Objects == null) throw new System.ArgumentException("Tried to expand a StackableEntitiesController that wasn't initialized!");
             OffsetSelf(whileExpandedOffset);
             ShowExpanded();
             UpdateColliders();
@@ -65,7 +71,7 @@ namespace KompasCore.UI
 
         private void ShowWithOffset(Vector3 offset)
         {
-            foreach (var (index, obj) in objects.Enumerate())
+            foreach (var (index, obj) in Objects.Enumerate())
             {
                 obj.transform.localPosition = index * offset;
             }
@@ -91,7 +97,7 @@ namespace KompasCore.UI
             bool firstLoop = true;
             Bounds totalBounds = default;
 
-            foreach (GameObject go in objects)
+            foreach (GameObject go in Objects)
             {
                 var bounds = GetChildRendererBounds(go);
                 if (firstLoop)
