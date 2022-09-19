@@ -59,6 +59,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collapsedOffset: {x: 0, y: 0.25, z: 0}
   expandedOffset: {x: 2, y: 0, z: 0}
+  whileExpandedOffset: 1.5
   layer: 12
   colliderPadding: 1.1
   boxCollider: {fileID: 5332128327282008923}

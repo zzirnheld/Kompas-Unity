@@ -8,6 +8,10 @@ namespace KompasCore.UI
         [Header("Item that is going to be stacked")]
         public Vector3 collapsedOffset;
         public Vector3 expandedOffset;
+
+        [Tooltip("Offset for the entire stack while it's expanded")]
+        public float whileExpandedOffset;
+
         public int layer;
         public float colliderPadding = 1.1f;
         public BoxCollider boxCollider;
@@ -16,7 +20,7 @@ namespace KompasCore.UI
 
         private List<GameObject> objects = null;
 
-        private bool collapsed = false;
+        private bool collapsed = true;
 
         public void Initalize(ICollection<GameObject> objects)
         {
@@ -26,9 +30,12 @@ namespace KompasCore.UI
             Collapse();
         }
 
+        private Vector3 LocalMeToCamera => transform.InverseTransformVector(Camera.main.transform.position - transform.position).normalized;
+
         public void Collapse()
         {
             if (objects == null) throw new System.ArgumentException("Tried to collapse a StackableEntitiesController that wasn't initialized!");
+            if (!collapsed) transform.localPosition = transform.localPosition + LocalMeToCamera * (-1f * whileExpandedOffset);
             ShowWithOffset(collapsedOffset);
             collapsed = true;
         }
@@ -36,6 +43,7 @@ namespace KompasCore.UI
         public void Expand()
         {
             if (objects == null) throw new System.ArgumentException("Tried to expand a StackableEntitiesController that wasn't initialized!");
+            if (collapsed) transform.localPosition = transform.localPosition + LocalMeToCamera * (whileExpandedOffset);
             ShowWithOffset(expandedOffset);
             collapsed = false;
         }
