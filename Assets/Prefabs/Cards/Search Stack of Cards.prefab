@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5332128327282008923}
   - component: {fileID: 5332128327282008922}
   m_Layer: 12
-  m_Name: Stackable Entity Prefab
+  m_Name: Search Stack of Cards
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59,7 +59,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collapsedOffset: {x: 0, y: 0.25, z: 0}
   expandedOffset: {x: 2, y: 0, z: 0}
-  whileExpandedOffset: 1.5
+  whileExpandedOffset: 2
   layer: 12
-  colliderPadding: 1.1
+  colliderPadding: 1
   boxCollider: {fileID: 5332128327282008923}
