@@ -1,13 +1,15 @@
 using KompasClient.GameCore;
 using KompasCore.Cards;
+using KompasCore.UI;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 //Second attempt at a search UI controller
 namespace KompasClient.UI.Search
 {
-    public class SearchUIController : MonoBehaviour
+    public class SearchUIController : MonoBehaviour, IEqualityComparer<GameCard>
     {
         [Tooltip("The amount by which to offset each card from each other")]
         public int cardOffset;
@@ -18,13 +20,15 @@ namespace KompasClient.UI.Search
         [Tooltip("Prefab of card icon to show each card when searching")]
         public GameObject searchCardPrefab;
 
+        [Tooltip("Prefab of stackable thing to show a stack of cards while searching")]
+        public GameObject searchStack;
+
         public GameObject endButton;
 
         public ClientSidebarCardViewController cardViewController;
         public ClientSearchController searchController;
 
-        private readonly List<SearchCardViewController> searchCardViewControllers
-            = new List<SearchCardViewController>();
+        private readonly List<GameObject> searchGameObjects = new List<GameObject>();
         private bool Searching => searchController.CurrSearchData.HasValue;
         private ClientSearchController.SearchData CurrSearchData => searchController.CurrSearchData.GetValueOrDefault();
 
@@ -32,12 +36,25 @@ namespace KompasClient.UI.Search
 
         public void HideSearch()
         {
-            foreach (var card in searchCardViewControllers) Destroy(card.gameObject);
-            searchCardViewControllers.Clear();
+            foreach (var go in searchGameObjects) Destroy(go);
+            searchGameObjects.Clear();
             cardViewController.ClearFocusLock();
 
             gameObject.SetActive(false);
         }
+
+        #region Comparison
+        //TODO de-duplicate by location, stats differences
+        //mark location on the card somehow if/when you do, so player knows why they see 2 diff't ones
+        public bool Equals(GameCard a, GameCard b)
+        {
+            return a.CardName == b.CardName
+                && a.Location == b.Location
+                && CurrSearchData.searched.Contains(a) == CurrSearchData.searched.Contains(b);
+        }
+
+        public int GetHashCode(GameCard obj) => obj.CardName.GetHashCode() + obj.Location.GetHashCode() + CurrSearchData.searched.Contains(obj).GetHashCode();
+        #endregion Comparison
 
         public void ShowSearch()
         {
@@ -49,17 +66,26 @@ namespace KompasClient.UI.Search
                 return;
             }
 
+            var toSearch = CurrSearchData.toSearch.GroupBy(c => c, this).ToList();
+
             gameObject.SetActive(true);
             endButton.SetActive(CurrSearchData.HaveEnough);
             int col = 0;
             int row = 0;
-            foreach(var card in CurrSearchData.toSearch)
+            foreach(var stackedCards in toSearch)
             {
-                if (card.CurrentlyVisible) continue;
+                var shownCards = stackedCards.Where(card => !card.CurrentlyVisible).ToList();
 
-                //Create the search view controller
-                var scvcGameObject = Instantiate(searchCardPrefab, transform);
-                scvcGameObject.transform.localPosition = new Vector3(cardOffset * col, 0, cardOffset * row * -1);
+                if (shownCards.Count == 0) continue;
+
+                //Instantiate the stack of cards
+                var stackObject = Instantiate(searchStack, transform);
+                Debug.Log("Instantiating stack object");
+                searchGameObjects.Add(stackObject);
+                var offset = new Vector3(cardOffset * col, 0, cardOffset * row * -1);
+                Debug.Log($"Moving stack object to {offset}");
+                stackObject.transform.localPosition = offset;
+                Debug.Log(stackObject.transform.localPosition);
                 col++;
                 if (col >= maxColumns)
                 {
@@ -67,9 +93,18 @@ namespace KompasClient.UI.Search
                     row++;
                 }
 
-                var scvc = scvcGameObject.GetComponent<SearchCardViewController>();
-                scvc.Initialize(this, card.CardController);
-                searchCardViewControllers.Add(scvc);
+                //Add the cards
+                var stackCtrl = stackObject.GetComponent<StackableEntitiesController>();
+                List<GameObject> cardObjects = new List<GameObject>();
+                foreach(var card in shownCards)
+                {
+                    //Create the search view controller
+                    var scvcGameObject = Instantiate(searchCardPrefab, stackObject.transform);
+                    var scvc = scvcGameObject.GetComponent<SearchCardViewController>();
+                    scvc.Initialize(this, card.CardController);
+                    cardObjects.Add(scvcGameObject);
+                }
+                stackCtrl.Initalize(cardObjects);
             }
         }
 

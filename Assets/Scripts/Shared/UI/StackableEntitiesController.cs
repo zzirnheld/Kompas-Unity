@@ -12,13 +12,15 @@ namespace KompasCore.UI
         public float colliderPadding = 1.1f;
         public BoxCollider boxCollider;
 
-        public int LayerMask => 1 >> layer;
+        public int LayerMask => 1 << layer;
 
         private List<GameObject> objects = null;
 
+        private bool collapsed = false;
+
         public void Initalize(ICollection<GameObject> objects)
         {
-            if (objects != null) throw new System.ArgumentException("Tried to initialized a StackableEntitiesController that was already initialized!");
+            if (this.objects != null) throw new System.ArgumentException("Tried to initialized a StackableEntitiesController that was already initialized!");
 
             this.objects = new List<GameObject>(objects);
             Collapse();
@@ -28,12 +30,14 @@ namespace KompasCore.UI
         {
             if (objects == null) throw new System.ArgumentException("Tried to collapse a StackableEntitiesController that wasn't initialized!");
             ShowWithOffset(collapsedOffset);
+            collapsed = true;
         }
 
         public void Expand()
         {
             if (objects == null) throw new System.ArgumentException("Tried to expand a StackableEntitiesController that wasn't initialized!");
             ShowWithOffset(expandedOffset);
+            collapsed = false;
         }
 
         private void ShowWithOffset(Vector3 offset)
@@ -52,6 +56,7 @@ namespace KompasCore.UI
             if (renderers.Length > 0)
             {
                 Bounds bounds = renderers[0].bounds;
+                Debug.Log($"encapsualting {bounds}");
                 foreach (var rend in renderers) bounds.Encapsulate(rend.bounds);
                 return bounds;
             }
@@ -60,25 +65,34 @@ namespace KompasCore.UI
 
         private void UpdateColliders()
         {
-            Bounds totalBounds = new Bounds();
+            bool firstLoop = true;
+            Bounds totalBounds = default;
 
             foreach (GameObject go in objects)
             {
                 var bounds = GetChildRendererBounds(go);
+                if (firstLoop)
+                {
+                    totalBounds = bounds;
+                    firstLoop = false;
+                }
                 totalBounds.Encapsulate(bounds);
             }
 
             boxCollider.size = totalBounds.size * colliderPadding;
-            boxCollider.center = totalBounds.center;
+            boxCollider.center = transform.InverseTransformPoint(totalBounds.center) + (0.5f * Vector3.down);
         }
 
         private void Update()
         {
-            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hit, Mathf.Infinity, LayerMask)
-                && hit.collider == boxCollider)
+            bool success = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, Mathf.Infinity, LayerMask)
+                && hit.collider == boxCollider;
+            if (success && collapsed)
             {
-
+                Debug.Log("EXPANDING");
+                Expand();
             }
+            else if (!success && !collapsed) Collapse();
         }
     }
 }

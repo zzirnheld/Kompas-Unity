@@ -98,6 +98,7 @@ namespace KompasServer.Cards
         {
             owner.serverGame.AddCard(this);
             ServerCardController = serverCardController;
+            serverCardController.gameCardViewController.Show(this, refresh: true);
             //Don't just grab effects from the card, because that won't include keywords
             ServerEffects = effects;
             ServerGame = owner.serverGame;

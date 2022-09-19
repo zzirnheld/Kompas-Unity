@@ -107,7 +107,10 @@ namespace KompasClient.GameCore
             ApplySettings();
         }
 
-        public void AddCard(ClientGameCard card) => cardsByID.Add(card.ID, card);
+        public void AddCard(ClientGameCard card)
+        {
+            if (card.ID != -1) cardsByID.Add(card.ID, card);
+        }
 
         public void MarkCardDirty(GameCard card) => dirtyCardList.Add(card);
 

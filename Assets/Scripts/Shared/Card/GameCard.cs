@@ -213,8 +213,23 @@ namespace KompasCore.Cards
             return sb.ToString();
         }
 
+        protected GameCard(int id)
+            : base(default,
+                  string.Empty, new string[0],
+                  false, false,
+                  0, 0,
+                  'C', "Dummy Card",
+                  "",
+                  "",
+                  new string[0])
+        {
+            CardLinkHandler = new GameCardCardLinkHandler(this);
+
+            ID = id;
+        }
+
         protected GameCard(SerializableCard serializeableCard, int id)
-            : base((serializeableCard.n, serializeableCard.e, serializeableCard.s, serializeableCard.w, serializeableCard.c, serializeableCard.a),
+            : base(serializeableCard.Stats,
                        serializeableCard.subtext, serializeableCard.spellTypes,
                        serializeableCard.fast, serializeableCard.unique,
                        serializeableCard.radius, serializeableCard.duration,
@@ -238,8 +253,6 @@ namespace KompasCore.Cards
             AttackRestriction.Initialize(initializationContext);
             PlayRestriction = serializeableCard.PlayRestriction ?? new PlayRestriction();
             PlayRestriction.Initialize(initializationContext);
-
-            CardController.gameCardViewController.Show(this, refresh: true);
 
             Debug.Log($"Finished setting up info for card {CardName}");
         }

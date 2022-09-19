@@ -1819,7 +1819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13351909bd3483f4e98c4d1696cf3e85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card: {fileID: 0}
+  card: {fileID: 7886279167843408965}
   clientCardController: {fileID: 7886279167843408965}
 --- !u!114 &662538351147169323
 MonoBehaviour:

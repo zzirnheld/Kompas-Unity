@@ -92,9 +92,12 @@ namespace KompasClient.UI
 
             ShowUniqueCopies();
             ShowCardLinks();
-            conditionParentObject.SetActive(ShownGameCard.Negated || ShownGameCard.Activated);
-            negatedObject.SetActive(ShownGameCard.Negated);
-            activatedObject.SetActive(ShownGameCard.Activated);
+            if (null != conditionParentObject)
+            {
+                conditionParentObject.SetActive(ShownGameCard.Negated || ShownGameCard.Activated);
+                negatedObject.SetActive(ShownGameCard.Negated);
+                activatedObject.SetActive(ShownGameCard.Activated);
+            }
             alreadySelectedMarker.SetActive(searchUICtrl.CardCurrentlyTargeted(ShownGameCard));
         }
 

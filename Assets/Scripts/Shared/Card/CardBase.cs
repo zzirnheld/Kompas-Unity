@@ -147,10 +147,16 @@ namespace KompasCore.Cards
                                        string subtypeText,
                                        string[] augSubtypes)
         {
-            SetInfo(stats, subtext, spellTypes, fast, unique, radius, duration, cardType, cardName, effText, subtypeText, augSubtypes);
+            n = stats.n;
+            e = stats.e;
+            s = stats.s;
+            w = stats.w;
+            c = stats.c;
+            a = stats.a;
+            SetInfo(null, subtext, spellTypes, fast, unique, radius, duration, cardType, cardName, effText, subtypeText, augSubtypes);
         }
 
-        protected void SetInfo(CardStats stats,
+        protected void SetInfo(CardStats? stats,
                                        string subtext, string[] spellTypes,
                                        bool fast, bool unique,
                                        int radius, int duration,
@@ -159,7 +165,7 @@ namespace KompasCore.Cards
                                        string subtypeText,
                                        string[] augSubtypes)
         {
-            SetStats(stats);
+            if (stats.HasValue) SetStats(stats.Value);
 
             //set sprites if they aren't already set correctly 
             //(check this by card name. cards should never have a pic that doesn't match their name)

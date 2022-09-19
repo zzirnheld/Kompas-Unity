@@ -57,7 +57,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95d03204e4c0b504e85096450936595d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collapsedOffset: {x: 0, y: 1, z: 0}
+  collapsedOffset: {x: 0, y: 0.25, z: 0}
   expandedOffset: {x: 2, y: 0, z: 0}
   layer: 12
   colliderPadding: 1.1

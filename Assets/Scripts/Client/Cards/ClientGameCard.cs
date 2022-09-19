@@ -67,6 +67,18 @@ namespace KompasClient.Cards
             }
         }
 
+        protected ClientGameCard(int id, ClientPlayer owner, ClientCardController clientCardController)
+            : base(id)
+        {
+            owner.clientGame.AddCard(this);
+
+            ClientCardController = clientCardController;
+            clientCardController.ClientCard = this;
+
+            ClientGame = owner.clientGame;
+            ClientController = ClientOwner = owner;
+        }
+
         public ClientGameCard(SerializableCard serializedCard, int id, ClientPlayer owner, ClientEffect[] effects, ClientCardController clientCardController)
             : base (serializedCard, id)
         {
@@ -79,6 +91,8 @@ namespace KompasClient.Cards
             ClientController = ClientOwner = owner;
             ClientEffects = effects;
             foreach (var (index, eff) in effects.Enumerate()) eff.SetInfo(this, ClientGame, index, owner);
+
+            clientCardController.gameCardViewController.Show(this, refresh: true);
         }
 
         public override bool Remove(IStackable stackSrc = null)

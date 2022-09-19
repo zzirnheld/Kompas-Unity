@@ -10,7 +10,7 @@ namespace KompasClient.Cards
         }
 
         public DummyClientGameCard(ClientPlayer owner, ClientCardController clientCardController)
-            : base(null, -1, owner, null, clientCardController)
+            : base(-1, owner, clientCardController)
         {
 
         }

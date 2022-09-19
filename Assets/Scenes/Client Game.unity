@@ -14227,6 +14227,8 @@ MonoBehaviour:
   maxColumns: 4
   searchCardPrefab: {fileID: 1468745133697759389, guid: d4ddd27e0cc3e9c43afbd53d5fc51160,
     type: 3}
+  searchStack: {fileID: 5332128327282008925, guid: 1a4489cdceafcd54f8b29c2358a4f6b9,
+    type: 3}
   endButton: {fileID: 1973462910}
   cardViewController: {fileID: 5317695733063564781}
   searchController: {fileID: 492080565}
@@ -23365,68 +23367,6 @@ MonoBehaviour:
   m_FlexibleWidth: 0
   m_FlexibleHeight: 0
   m_LayoutPriority: 1
---- !u!1 &1527660874
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1527660875}
-  - component: {fileID: 1527660876}
-  - component: {fileID: 1527660877}
-  m_Layer: 12
-  m_Name: Stackable Entity Prefab
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1527660875
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1527660874}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1527660876
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1527660874}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1527660877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1527660874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95d03204e4c0b504e85096450936595d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  collapsedOffset: {x: 0, y: 1, z: 0}
-  expandedOffset: {x: 2, y: 0, z: 0}
-  layer: 12
-  colliderPadding: 1.1
-  boxCollider: {fileID: 1527660876}
 --- !u!1 &1528577714
 GameObject:
   m_ObjectHideFlags: 0
