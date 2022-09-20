@@ -55,6 +55,7 @@ namespace KompasCore.UI
         public GameObject linkedCardObject;
         public GameObject primaryStackableObject;
         public GameObject secondaryStackableObject;
+        public GameObject focusedCardObject;
 
         [Header("Can attack/effect indicators")]
         public OscillatingController attackOscillator;
@@ -179,6 +180,8 @@ namespace KompasCore.UI
                 //Debug.Log($"setting color to {settings.FriendlyColor}");
                 friendlyCardFrameMaterial.color = settings.FriendlyColor;
                 enemyCardFrameMaterial.color = settings.EnemyColor;
+
+                focusedCardObject.SetActive(clientGame.clientUIController.cardInfoViewUIController.FocusedCard == FocusedCard);
             }
         }
 

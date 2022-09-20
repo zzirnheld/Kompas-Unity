@@ -10,7 +10,9 @@ namespace KompasCore.UI
         public float localXOffset = 2f;
         public float localZOffset = -2f;
         public AnnihilationController annihilationController;
+
         protected override IEnumerable<GameObject> Objects => annihilationController.Cards.Select(c => c.CardController.gameObject);
+        protected override bool ForceExpand => annihilationController.Cards.Any(c => c == annihilationController.game.UIController.CardViewController.FocusedCard);
 
         private void TakeOwnershipOf(GameObject obj)
         {

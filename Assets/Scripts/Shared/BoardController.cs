@@ -10,20 +10,20 @@ using KompasCore.Exceptions;
 namespace KompasCore.GameCore
 {
     //Not abstract because Client uses this base class
-    public abstract class BoardController : AbstractGameLocation
+    public abstract class BoardController : MonoBehaviour, IGameLocation
     {
         public const int SpacesInGrid = 7;
         public const int NoPathExists = 50;
 
         public abstract Game Game { get; }
 
-        public override CardLocation CardLocation => CardLocation.Board;
+        public CardLocation CardLocation => CardLocation.Board;
 
         public readonly GameCard[,] Board = new GameCard[SpacesInGrid, SpacesInGrid];
 
         //helper methods
         #region helper methods
-        public override int IndexOf(GameCard card) => card.Position.Index;
+        public int IndexOf(GameCard card) => card.Position.Index;
 
         private bool IsSpaceEmptyOfSpells(Space space)
         {
@@ -188,7 +188,7 @@ namespace KompasCore.GameCore
         #endregion
 
         #region game mechanics
-        public override void Remove(GameCard toRemove)
+        public void Remove(GameCard toRemove)
         {
             if (toRemove.Location != CardLocation.Board)
                 throw new CardNotHereException(CardLocation, toRemove, $"Tried to remove {toRemove} not on board");

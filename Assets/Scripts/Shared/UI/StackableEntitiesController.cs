@@ -26,6 +26,29 @@ namespace KompasCore.UI
         private int LayerMask => 1 << layer;
         private Vector3 LocalMeToCamera => transform.InverseTransformVector(Camera.main.transform.position - transform.position).normalized;
 
+        protected virtual bool ForceExpand => false;
+        protected virtual bool ForceCollapse => false;
+
+        private void Update()
+        {
+            if (ForceExpand)
+            {
+                if (collapsed) Expand();
+                return;
+            }
+            else if (ForceCollapse)
+            {
+                if (!collapsed) Collapse();
+                return;
+            }
+
+            bool success = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, Mathf.Infinity, LayerMask)
+                && hit.collider == boxCollider;
+
+            if (success && collapsed) Expand();
+            else if (!success && !collapsed) Collapse();
+        }
+
         public void Initalize(ICollection<GameObject> objects)
         {
             if (Objects != null) throw new System.ArgumentException("Tried to initialized a StackableEntitiesController that was already initialized!");
@@ -112,14 +135,5 @@ namespace KompasCore.UI
             boxCollider.center = transform.InverseTransformPoint(totalBounds.center) + (0.5f * Vector3.down);
         }
         #endregion collider
-
-        private void Update()
-        {
-            bool success = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, Mathf.Infinity, LayerMask)
-                && hit.collider == boxCollider;
-
-            if (success && collapsed) Expand();
-            else if (!success && !collapsed) Collapse();
-        }
     }
 }
