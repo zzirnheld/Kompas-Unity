@@ -74,7 +74,11 @@ namespace KompasClient.GameCore
         public void StartSearch(SearchData data)
         {
             //if the list is empty, don't search
-            if (data.toSearch.Length == 0) return;
+            if (data.toSearch.Length == 0)
+            {
+                clientSearchUICtrl.HideSearch();
+                return;
+            }
 
             //if should search and already searching, remember current search
             if (CurrSearchData.HasValue) searchStack.Push(CurrSearchData.Value);

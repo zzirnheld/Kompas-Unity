@@ -100,7 +100,7 @@ namespace KompasCore.Effects
         private bool IsOnAugmentSubtypes(Space space)
         {
             var subtypes = Card.Game.BoardController.GetCardAt(space)?.SubtypeText;
-            Debug.Log($"Subtypes: {subtypes}");
+           // Debug.Log($"Subtypes: {subtypes}");
             return Card.AugmentSubtypes?.All(st => subtypes?.Contains(st) ?? false) ?? true;
         }
 

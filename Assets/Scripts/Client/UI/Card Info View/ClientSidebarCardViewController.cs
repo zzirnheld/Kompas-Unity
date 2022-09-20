@@ -1,3 +1,4 @@
+using KompasClient.Cards;
 using KompasClient.GameCore;
 using KompasClient.UI.Search;
 using KompasCore.Cards;
@@ -62,9 +63,12 @@ namespace KompasClient.UI
                 return;
             }
 
+            var oldFocus = FocusedCard as ClientGameCard;
             //If the card is null, we're trying to clear 
             focusLocked = lockFocus && card != null;
             base.Focus(card);
+            oldFocus?.CardController.gameCardViewController.Refresh();
+            (FocusedCard as ClientGameCard)?.CardController.gameCardViewController.Refresh();
         }
 
         /// <summary>

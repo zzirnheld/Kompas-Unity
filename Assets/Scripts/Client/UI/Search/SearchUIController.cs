@@ -80,10 +80,10 @@ namespace KompasClient.UI.Search
 
                 //Instantiate the stack of cards
                 var stackObject = Instantiate(searchStack, transform);
-                Debug.Log("Instantiating stack object");
+                //Debug.Log("Instantiating stack object");
                 searchGameObjects.Add(stackObject);
                 var offset = new Vector3(cardOffset * col, 0, cardOffset * row * -1);
-                Debug.Log($"Moving stack object to {offset}");
+                //Debug.Log($"Moving stack object to {offset}");
                 stackObject.transform.localPosition = offset;
                 Debug.Log(stackObject.transform.localPosition);
                 col++;

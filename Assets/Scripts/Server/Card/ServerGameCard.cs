@@ -98,13 +98,16 @@ namespace KompasServer.Cards
         {
             owner.serverGame.AddCard(this);
             ServerCardController = serverCardController;
-            serverCardController.gameCardViewController.Show(this, refresh: true);
+            serverCardController.serverCard = this;
             //Don't just grab effects from the card, because that won't include keywords
+
             ServerEffects = effects;
             ServerGame = owner.serverGame;
             ServerOwner = ServerController = owner;
             foreach (var (index, eff) in effects.Enumerate())
                 eff.SetInfo(this, ServerGame, owner, index);
+
+            serverCardController.gameCardViewController.Focus(this);
         }
 
         public override string ToString()

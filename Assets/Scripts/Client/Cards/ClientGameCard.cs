@@ -92,7 +92,7 @@ namespace KompasClient.Cards
             ClientEffects = effects;
             foreach (var (index, eff) in effects.Enumerate()) eff.SetInfo(this, ClientGame, index, owner);
 
-            clientCardController.gameCardViewController.Show(this, refresh: true);
+            clientCardController.gameCardViewController.Focus(this);
         }
 
         public override bool Remove(IStackable stackSrc = null)

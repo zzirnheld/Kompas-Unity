@@ -26,8 +26,8 @@ namespace KompasCore.UI
         /// <param name="card"></param>
         public virtual void Focus(CardBase card)
         {
-            Show(card);
             FocusedCard = card;
+            Show(card);
         }
 
         /// <summary>

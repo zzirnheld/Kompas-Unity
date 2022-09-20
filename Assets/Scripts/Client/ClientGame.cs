@@ -213,7 +213,6 @@ namespace KompasClient.GameCore
         {
             CurrentPotentialTargets = ids?.Select(i => GetCardWithID(i)).Where(c => c != null).ToArray();
             searchCtrl.StartSearch(CurrentPotentialTargets, listRestriction);
-
         }
 
         public void ClearPotentialTargets()

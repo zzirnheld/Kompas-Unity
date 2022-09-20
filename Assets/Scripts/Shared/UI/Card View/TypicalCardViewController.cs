@@ -46,7 +46,7 @@ namespace KompasCore.UI
 
         protected virtual void DisplayReminderTextBlurb()
         {
-            if (ReminderTextsUIController != null)
+            if (ReminderTextsUIController != null && effText != null && effText.isActiveAndEnabled)
             {
                 //Debug.Log($"Checking keywords at {Input.mousePosition}");
                 //check keywords
