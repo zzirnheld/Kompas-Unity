@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "One Step Ahead",
-	"effText": "When I'm cast, choose a Mech in your deck. Delay 1 turn, then delay until a friendly Mech dies. Deck->hand a copy of the chosen Mech, and repeat this process.",
+	"effText": "When I'm cast, deck->choose a Mech. At least 1 turn later, when a friendly Mech dies, deck->hand a copy of your choice, and repeat this process.",
 	"effects": [
 		{
 			"blurb": "Always thinking",

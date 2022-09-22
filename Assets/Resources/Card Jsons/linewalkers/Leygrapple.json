@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Leygrapple",
-	"effText": "When a character is summoned, choose a Linewalker on the same diagonal. Move the Linewalker adjacent to the other character.",
+	"effText": "When a character is summoned, move a Linewalker on the same diagonal to a space adjacent to the summon.",
 	"effects": [
 		{
 			"triggerData": {

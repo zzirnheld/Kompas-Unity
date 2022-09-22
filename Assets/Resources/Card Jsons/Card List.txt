@@ -265,18 +265,19 @@ maya/support/Dense Cities
 maya/support/Grand Plaza
 maya/support/Urbanization
 
-mechs/golems/QU4RG3
-mechs/golems/51NG3
-mechs/golems/54MUR41
-mechs/golems/PL4T00N
-mechs/golems/N0T3
-mechs/golems/53G45C4NTUR14N 00
-mechs/golems/C4RR13R
-mechs/golems/P4RT154N
-mechs/golems/5P33DRUNN3R
 mechs/golems/5H4P3R
+mechs/golems/5P33DRUNN3R
+mechs/golems/51NG3
+mechs/golems/53G45C4NTUR14N 00
 mechs/golems/54CR1F1C3
+mechs/golems/54MUR41
+mechs/golems/C4RR13R
 mechs/golems/GL455C4NN0N
+mechs/golems/N0T3
+mechs/golems/P4RT154N
+mechs/golems/PH453R
+mechs/golems/PL4T00N
+mechs/golems/QU4RG3
 
 mechs/pilots/Standard Pilot
 mechs/pilots/Runn R Mann

@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Overwhelming Anger",
-	"effText": "When I'm revived, set X to my E. Give an adjacent character -X E.",
+	"effText": "When I'm revived, give an adjacent character -[my E] E.",
 	"effects": [
 		{
 			"blurb": "Anger",

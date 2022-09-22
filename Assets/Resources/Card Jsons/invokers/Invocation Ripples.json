@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Invocation Ripples",
-	"effText": "When your Invoker summons an S X character, discard your deck's top X. Revive a Spirit among them.",
+	"effText": "When your Invoker summons an S X character, discard your deck's top X cards. Revive a Spirit among them.",
 	"effects": [
 		{
 			"triggerData": {

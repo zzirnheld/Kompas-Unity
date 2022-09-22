@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Leypathmaking",
-	"effText": "Hand->reshuffle a Linewalker. Search your deck for two Linewalkers distinct from each other and from the reshuffled Linewalker.",
+	"effText": "Hand->reshuffle a Linewalker. Search your deck for 2 distinct Linewalkers.",
 	"effects": [
 		{
 			"triggerData": {

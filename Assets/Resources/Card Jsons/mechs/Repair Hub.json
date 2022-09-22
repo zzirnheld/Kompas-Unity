@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Repair Hub",
-	"effText": "After a friendly Mech Golem dies here, delay 2 turns, then discard->hand them.",
+	"effText": "2 turns after a friendly Mech Golem dies here, discard->hand them.",
 	"effects": [
 		{
 			"blurb": "Repair Mech",

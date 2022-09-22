@@ -1,7 +1,8 @@
 {
 	"cardType": 83,
 	"cardName": "Shade",
-	"effText": "If there's ANY enemy characters here and nothing else is happening, swap me for Light in your deck.",
+	"effText": "Becomes Light when enemies are here.",
+	"tehnicalEffText": "If there's ANY enemy characters here and nothing else is happening, swap me for Light in your deck.",
 	"effects": [
 		{
             "blurb":"Light Up",

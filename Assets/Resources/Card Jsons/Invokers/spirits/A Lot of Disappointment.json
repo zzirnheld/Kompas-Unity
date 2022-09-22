@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "A Lot of Disappointment",
-	"effText": "When I'm revived, set X to my W. Give an adjacent character -X W.",
+	"effText": "When I'm revived, give an adjacent character -[my S] W.",
 	"effects": [
 		{
 			"blurb": "Disappointment",

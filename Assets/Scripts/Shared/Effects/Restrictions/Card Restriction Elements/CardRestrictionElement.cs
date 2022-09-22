@@ -180,5 +180,11 @@ namespace KompasCore.Effects.Restrictions
             protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
                 => InitializationContext.game.StackEntries.Any(stackEntry => IsValidFight(card, context, stackEntry));
         }
+
+        public class Avatar : CardRestrictionElement
+        {
+            protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
+                => card.IsAvatar;
+        }
     }
 }

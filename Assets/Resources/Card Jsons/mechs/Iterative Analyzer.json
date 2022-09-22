@@ -1,7 +1,7 @@
 {
 	"cardType": 65,
 	"cardName": "Iterative Analyzer",
-	"effText": "When this Mech dies, search your deck for a distinct Mech Golem. Delay 1 turn. Discard->hand me.",
+	"effText": "When this Mech dies, search your deck for a distinct Mech Golem. 1 turn later, discard->hand me.",
 	"effects": [
 		{
 			"blurb": "Postmortem Analysis",

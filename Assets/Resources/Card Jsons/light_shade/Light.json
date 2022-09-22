@@ -1,7 +1,8 @@
 {
 	"cardType": 83,
 	"cardName": "Light",
-	"effText": "If there's NO enemy characters here and nothing else is happening, swap me for Shade in your deck.",
+	"effText": "Becomes Shade when NO enemies are here.",
+	"technicalEffText": "If there's NO enemy characters here and nothing else is happening, swap me for Shade in your deck.",
 	"effects": [
 		{
             "blurb":"Become Shade",

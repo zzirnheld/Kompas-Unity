@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Lizard Calm",
-	"effText": "When I'm revived, give a Summoned E X character +X E.",
+	"effText": "When I'm revived, give an E X summon +X E.",
 	"effects": [
 		{
 			"blurb": "Calm",

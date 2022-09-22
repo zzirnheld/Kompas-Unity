@@ -1,7 +1,7 @@
 {
 	"cardType": 65,
 	"cardName": "Powered Landing",
-	"effText": "When you summon a Mech Golem, discard->attach me to them. They attack an enemy within 2 spaces of them. Give them +4 W.",
+	"effText": "When you summon a Mech Golem, discard->attach me to them. They attack an enemy within 2 spaces of them.\nWhen this character attacks, give them +4 W.",
 	"effects": [
 		{
 			"blurb": "Landing Blast",
@@ -66,14 +66,29 @@
 					"$type": "KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
 					"targetIndex": -1,
 					"attackerIndex": -2
+				}
+			]
+		},
+        {
+            "blurb":"Boom",
+			"triggerData": {
+				"triggerCondition": "Attack",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"Augmented Card is Main Card"
+					]
+				}
+			},
+            "subeffects":[
+				{
+					"$type": "KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"targetIndex": -2,
-					"wModifier": 3
+					"wModifier": 4
 				}
-			]
-		}
+            ]
+        }
 	],
 	"PlayRestriction": {
 		"normalRestrictions": [
