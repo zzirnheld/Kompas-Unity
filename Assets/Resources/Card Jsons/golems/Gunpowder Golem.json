@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Gunpowder Golem",
-	"effText": "Golem.\nWhen I'm activated, set X to my W. Give me and a distinct summon -X E.",
+	"effText": "Golem.\nWhen I'm activated, give me and a distinct summon -[my W] E.",
 	"effects": [
 		{
 			"blurb": "Boom",

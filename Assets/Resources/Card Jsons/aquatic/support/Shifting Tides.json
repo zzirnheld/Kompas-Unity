@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Shifting Tides",
-	"effText": "When friendly Water vanishes, hand->cast Water where it was.",
+	"effText": "When friendly Water vanishes, hand->cast Water where it was, then draw 1 card.",
 	"effects": [
 		{
 			"blurb": "The Tide Shifts",
@@ -63,6 +63,9 @@
 				},
 				{
 					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
 				}
 			]
 		}

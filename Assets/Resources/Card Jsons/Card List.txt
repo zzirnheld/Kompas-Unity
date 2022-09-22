@@ -50,6 +50,7 @@ generic/Ethereate
 generic/Rememories
 generic/Growth Through Adversity
 
+aquatic/support/Changing Tides
 aquatic/support/Fishing
 aquatic/support/Shifting Tides
 aquatic/support/Sacrifice to the Old Sea Gods
@@ -57,7 +58,6 @@ aquatic/support/Here Be Monsters
 aquatic/support/Wave
 
 aquatic/Big Tuna
-aquatic/Changing Tides
 aquatic/Ma Rinner
 aquatic/Seigh Lorre
 aquatic/Heptastar

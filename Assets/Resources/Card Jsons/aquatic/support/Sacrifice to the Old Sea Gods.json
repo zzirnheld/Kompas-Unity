@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Sacrifice to the Old Sea Gods",
-	"effText": "Annihilate an adjacent friendly Aquatic card, then me. Deck->cast Water where it was. Draw 1 card.",
+	"effText": "Hand->annihilate an Aquatic card, then me. Deck->cast Water where I was.",
 	"effects": [
 		{
 			"triggerData": {
@@ -19,28 +19,22 @@
 						"blurb": "adjacent Aquatic card to annihilate",
 						"cardRestrictions": [
 							"Friendly",
-							"Board",
-							"Subtypes Include",
-							"Space Fits Restriction"
+							"Hand",
+							"Subtypes Include"
 						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Source"
-							]
-						},
 						"subtypesInclude": [
 							"Aquatic"
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
-				},
-				{
 					"$type": "KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type": "KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
@@ -63,9 +57,6 @@
 				},
 				{
 					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
-				},
-				{
-					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
 				}
 			]
 		}

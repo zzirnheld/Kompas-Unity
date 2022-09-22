@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Woolen Golem",
-	"effText": "Golem.\nWhen I'm activated, set X to my E. Give me and a distinct character -X W.",
+	"effText": "Golem.\nWhen I'm activated, give me and a distinct character -[my E] W.",
 	"effects": [
 		{
 			"blurb": "Wooly Wool",

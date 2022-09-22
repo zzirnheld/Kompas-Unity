@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Ice Golem",
-	"effText": "Golem.\nWhen I'm activated, set X to my N. Negate a character within X spaces of me until your next turn.",
+	"effText": "Golem.\nWhen I'm activated, negate a character within [my N] spaces of me, until your next turn.",
 	"effects": [
 		{
 			"blurb": "Fun Not Allowed",
