@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Dragon Egg",
-	"effText":"After I'm summoned, delay 2 turns, then tribute me and deck-summon a Dragon where I was.",
+	"effText":"2 turns after I'm summoned, tribute me and deck-summon a Dragon where I was.",
 	"effects":[
 		{
 			"triggerData":
@@ -45,8 +45,8 @@
 		}
 	],
 	"n":0,
-	"e":2,
-	"s":2,
+	"e":9,
+	"s":4,
 	"w":0,
 	"subtypes":[],
 	"subtypeText":""

@@ -1,7 +1,7 @@
 {
 	"cardType": 65,
 	"cardName": "Speed Core",
-	"effText": "Can only augment Golems.\nRecoverable.\nWhile equipped, activate this character and give them +1 N.",
+	"effText": "Recoverable.\nWhile equipped, activate this character and give them +1 N.",
 	"effects": [
 		{
 			"triggerData": {

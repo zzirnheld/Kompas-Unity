@@ -132,6 +132,8 @@ cultists/Mindless Silent
 
 dragons/Aeolian
 dragons/Cidian
+dragons/Dragaboo
+dragons/Dragon Egg
 dragons/Dragonbinder
 dragons/Dragoncaller
 dragons/Dragonseeker
@@ -148,6 +150,8 @@ dragons/Growing Boye
 dragons/Earthwapmer
 dragons/Dragonking
 dragons/Cyrian
+dragons/Pseudodragon
+dragons/Dragon Hatchling
 
 golems/support/Animancer
 golems/support/Modular Golem Cores

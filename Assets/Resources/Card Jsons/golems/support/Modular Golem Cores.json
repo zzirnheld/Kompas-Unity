@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Modular Golem Cores",
-	"effText": "The first time each turn a card arrives adjacent to an augmented Golem, hand all X of one such Golem's augments. Hand->attach up to X Golem Cores to that Golem.",
+	"effText": "The first time each turn a card arrives adjacent to a Golem, hand all X their augments. Hand->attach up to X Golem Cores to them.",
 	"effects": [
 		{
 			"blurb": "Swap Out Modules",

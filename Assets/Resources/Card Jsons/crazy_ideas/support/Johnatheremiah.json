@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Johnatheremiah",
-	"effText": "When I'm summoned, choose 1 friendly discarded Crazy Idea. Reshuffle all other X. Give me +X W.",
+	"effText": "When I'm summoned, choose 1 friendly discarded Crazy Idea, then reshuffle all other X. Give me +X W.",
 	"effects": [
 		{
 			"blurb":"Intern Nonsense",

@@ -1,12 +1,11 @@
 {
 	"cardType": 83,
 	"cardName": "Core Scrambling",
-	"effText": "Once each turn, when a Golem defends, you can discard->apply a Golem Core to them. Their attacker attacks them again. (The Golem's on-activation effect will resolve before the attack.)",
+	"effText": "The first time each turn a Golem defends, discard->apply a Golem Core to them. Their attacker attacks them again.",
 	"effects": [
 		{
 			"blurb": "Core? CORE!",
 			"triggerData": {
-				"optional": true,
 				"blurb": "Discard->apply a core?",
 				"triggerCondition": "Defend",
 				"triggerRestriction": {

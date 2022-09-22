@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Altar Builder",
-	"effText": "When a friendly Cultist dies, give me +1 S.\nI can pay 9S to deck-cast an Altar.",
+	"effText": "When a friendly Cultist dies, give me +1 S.\nI can pay 9 S to deck-cast an Altar.",
 	"effects": [
 		{
 			"triggerData": {

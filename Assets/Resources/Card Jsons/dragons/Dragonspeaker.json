@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Dragonspeaker",
-	"effText": "You can kill a distinct friendly SX character to give me +2 * X S. If your Avatar is \"Mother of Dragons\", draw 1.",
+	"effText": "You can kill a distinct friendly S X character to give me +2 * X S. If you're \"Mother of Dragons\", draw 1.",
 	"effects": [
 		{
 			"blurb": "Dragonspeak",

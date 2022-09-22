@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Antiprecatium Golem",
-	"effText": "Golem.\nWhen I'm activated, set X to my W. Dispel a spell within X spaces of me.",
+	"effText": "Golem.\nWhen I'm activated, dispel a spell within [my W] spaces of me.",
 	"effects": [
 		{
 			"blurb": "Dispel",

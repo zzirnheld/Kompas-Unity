@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Pseudodragon",
-	"effText":"When I attack, give me and my target -1 E.",
+	"effText":"When I attack, give my target -1 E.",
 	"effects":[
 		{
 			"triggerData":
@@ -13,13 +13,6 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eModifier":-1
-				},
-				{
 					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp",
 					"secondary":true
 				},
@@ -30,9 +23,9 @@
 			]	
 		}
 	],
-	"n":3,
-	"e":3,
-	"s":3,
+	"n":2,
+	"e":2,
+	"s":2,
 	"w":2,
 	"subtypes":[],
 	"subtypeText":""

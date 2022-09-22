@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Silent Twin",
-	"effText": "When I'm summoned, deck->summon a Cultist Follower, but kill them immediately.",
+	"effText": "When you summon me, deck->summon a Cultist Follower, but kill them immediately.",
 	"effects": [
 		{
 			"triggerData": {

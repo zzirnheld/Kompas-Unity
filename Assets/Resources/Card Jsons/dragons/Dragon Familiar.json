@@ -4,7 +4,7 @@
 	"effText": "Territorial.\nWhen I attack, give me +1 N.",
 	"effects": [
 		{
-			"blurb": "Damage Boost",
+			"blurb": "Movement Boost",
 			"triggerData": {
 				"triggerCondition": "Attack",
 				"triggerRestriction": {
@@ -27,7 +27,7 @@
 	"keywords": [
 		"Territorial"
 	],
-	"n": 1,
+	"n": 3,
 	"e": 2,
 	"s": 2,
 	"w": 2,
