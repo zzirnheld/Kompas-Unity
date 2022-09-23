@@ -17,7 +17,7 @@
 				{
 					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction": {
-						"blurb": "for Binding Site to bind",
+						"blurb": "to Fanatically Follow",
 						"cardRestrictions": [
 							"Board",
 							"Character",
