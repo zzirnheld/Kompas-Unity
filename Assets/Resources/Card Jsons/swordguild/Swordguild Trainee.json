@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Swordguild Trainee",
-	"effText": "When I start turns adjacent to X Warriors, tribute me to deck->summon an S <= X Swordguild Warrior where I was.",
+	"effText": "When I start a turn adjacent to X Warriors, tribute me to deck->summon an S <= X Swordguild Warrior where I was.",
 	"effects": [
 		{
 			"triggerData": {

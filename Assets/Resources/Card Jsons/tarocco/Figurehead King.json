@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Figurehead King",
-	"effText": "Choose a card in your hand, then reshuffle the other X. Gain X / 2 pips.",
+	"effText": "Choose a Tarocco in your hand, then reshuffle the other X cards. Gain X pips.",
 	"effects": [
 		{
 			"triggerData": {
@@ -18,7 +18,11 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Friendly",
-							"Hand"
+							"Hand",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Tarocco"
 						]
 					}
 				},
@@ -51,8 +55,7 @@
 				},
 				{
 					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
-					"xMultiplier": 1,
-					"xDivisor": 2
+					"xMultiplier": 1
 				}
 			]
 		}

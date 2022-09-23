@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Swordguild Strategist",
-	"effText": "Once each turn, you can kill a friendly Warrior to kill any character with less S.",
+	"effText": "Once each turn, you can tribute a Warrior to kill any character with less S.",
 	"effects": [
 		{
 			"activationRestriction": {

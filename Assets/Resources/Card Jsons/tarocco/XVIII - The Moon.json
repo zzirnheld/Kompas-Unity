@@ -4,9 +4,8 @@
 	"effText": "When you draw, swap the E or W of two summons within 2 spaces of each other.",
 	"effects": [
 		{
-			"blurb": "Swap EW",
+			"blurb": "Swap E or W",
 			"triggerData": {
-				"blurb": "Swap EW",
 				"triggerCondition": "Draw",
 				"triggerRestriction": {
 					"triggerRestrictions": [

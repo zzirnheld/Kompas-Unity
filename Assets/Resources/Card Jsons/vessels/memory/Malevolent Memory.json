@@ -1,7 +1,7 @@
 {
 	"cardType": 65,
 	"cardName": "Malevolent Memory",
-	"effText": "When this character is summoned, give them +3 W.\nWhen this character attacks, echo them.",
+	"effText": "When you echo this character, give them +3 W.\nWhen this character attacks, echo them.",
 	"effects": [
 		{
 			"blurb": "Directed Malevolence",

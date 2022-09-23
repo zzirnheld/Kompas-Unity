@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Rocket-Propelled Ball",
-	"effText": "Comeback Play.\nWhen a friendly Augment is attached to an enemy character, move that character 1 space.",
+	"effText": "Comeback Play.\nWhen you attach an Augment an enemy character, move them 1 space.",
 	"effects": [
 		{
 			"triggerData": {

@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Researcher",
-	"effText": "Wanderer.\nWhen I'm summoned, annihilate any card from your deck. Delay 1 turn. Hand it.",
+	"effText": "Wanderer.\nWhen I'm summoned, annihilate any card from your deck. 1 turn later, hand it.",
 	"effects": [
 		{
 			"triggerData": {

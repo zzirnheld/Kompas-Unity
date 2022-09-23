@@ -1,7 +1,7 @@
 {
 	"cardType": 65,
 	"cardName": "Creative Memory",
-	"effText": "When this character is summoned, draw 1 card.\nWhen turns start, echo this character. ",
+	"effText": "When you echo this character, draw 1 card.\nWhen turns start, echo this character. ",
 	"effects": [
 		{
 			"blurb": "Spurt of Creativity",

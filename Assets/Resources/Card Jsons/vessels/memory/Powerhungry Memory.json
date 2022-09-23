@@ -1,7 +1,7 @@
 {
 	"cardType": 65,
 	"cardName": "Powerhungry Memory",
-	"effText": "When this character is summoned, dispel an adjacent spell. Give them +5 W.\nWhen this character attacks, echo them.",
+	"effText": "When you echo this character, dispel an adjacent spell. Give them +5 W.\nWhen this character attacks, echo them.",
 	"effects": [
 		{
 			"blurb": "Powerhunger",

@@ -39,6 +39,9 @@
 			},
 			"subeffects": [
 				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
 					"$type": "KompasServer.Effects.SetXBoardRestrictionSubeffect, Assembly-CSharp",
 					"cardRestriction": {
 						"cardRestrictions": [
