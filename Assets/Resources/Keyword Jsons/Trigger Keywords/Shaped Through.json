@@ -5,7 +5,7 @@
         "restriction": {
             "stackableRestrictionElements": [
                 {
-                    "$type": "KompasCore.Effects.Restrictions.EffectRestrictionElements.Keyword, Assembly-CSharp",
+                    "$type": "Core.EffectRestriction:Keyword:",
                     "keyword": "Shape"
                 }
             ]
@@ -101,6 +101,6 @@
                 ]
             }
         },
-        "comparison": { "$type": "KompasCore.Effects.Relationships.NumberRelationships.Equal, Assembly-CSharp" }
+        "comparison": { "$type": "Relationships.Number:Equal:" }
     }
 ]

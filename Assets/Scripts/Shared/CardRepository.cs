@@ -132,14 +132,8 @@ public class CardRepository : MonoBehaviour
     private const string subeffReplacement = @"KompasServer.Effects.$1Subeffect, Assembly-CSharp";
 
     //restriction regexes
-    private static readonly Regex coreCardRestrictionRegex = new Regex(@"Core\.CardRestriction:([^:]+):");
-    private const string coreCardRestrictionReplacement = @"KompasCore.Effects.Restrictions.CardRestrictionElements.$1, Assembly-CSharp";
-
-    private static readonly Regex coreTriggerRestrictionRegex = new Regex(@"Core\.TriggerRestriction:([^:]+):");
-    private const string coreTriggerRestrictionReplacement = @"KompasCore.Effects.Restrictions.TriggerRestrictionElements.$1, Assembly-CSharp";
-
-    private static readonly Regex coreSpaceRestrictionRegex = new Regex(@"Core\.SpaceRestriction:([^:]+):");
-    private const string coreSpaceRestrictionReplacement = @"KompasCore.Effects.Restrictions.SpaceRestrictionElements.$1, Assembly-CSharp";
+    private static readonly Regex coreRestrictionRegex = new Regex(@"Core\.([^R]+)Restriction:([^:]+):");
+    private const string coreRestrictionReplacement = @"KompasCore.Effects.Restrictions.$1RestrictionElements.$2, Assembly-CSharp";
 
     //identity regexes
     private static readonly Regex subeffectIdentityRegex = new Regex(@"Subeffect\.([^:]+):([^:]+):");
@@ -151,6 +145,16 @@ public class CardRepository : MonoBehaviour
     private static readonly Regex gamestateIdentityRegex = new Regex(@"Gamestate\.([^:]+):([^:]+):");
     private const string gamestateIdentityReplacement = @"KompasCore.Effects.Identities.Gamestate$1Identities.$2, Assembly-CSharp";
 
+    //relationships
+    private static readonly Regex relationshipRegex = new Regex(@"Relationships\.([^:]+):([^:]+):");
+    private const string relationshipReplacement = @"KompasCore.Effects.Relationships.$1Relationships.$2, Assembly-CSharp";
+
+    private static readonly Regex numberSelectorRegex = new Regex(@"NumberSelector:([^:]+):");
+    private const string numberSelectorReplacement = @"KompasCore.Effects.Identities.NumberSelectors.$1, Assembly-CSharp";
+
+    private static readonly Regex threeSpaceRelationshipRegex = new Regex(@"ThreeSpaceRelationships:([^:]+):");
+    private const string threeSpaceRelationshipReplacement = @"KompasCore.Effects.Identities.ThreeSpaceRelationships.$1, Assembly-CSharp";
+
     private string ReplacePlaceholders(string json)
     {
         //remove problematic chars for from json function
@@ -160,11 +164,15 @@ public class CardRepository : MonoBehaviour
 
         json = subeffRegex.Replace(json, subeffReplacement);
 
-        json = coreCardRestrictionRegex.Replace(json, coreCardRestrictionReplacement);
-        json = coreTriggerRestrictionRegex.Replace(json, coreTriggerRestrictionReplacement);
-        json = coreSpaceRestrictionRegex.Replace(json, coreSpaceRestrictionReplacement)
+        json = coreRestrictionRegex.Replace(json, coreRestrictionReplacement);
 
         json = subeffectIdentityRegex.Replace(json, subeffectIdentityReplacement);
+        json = activationContextIdentityRegex.Replace(json, activationContextIdentityReplacement);
+        json = gamestateIdentityRegex.Replace(json, gamestateIdentityReplacement);
+
+        json = relationshipRegex.Replace(json, relationshipReplacement);
+        json = numberSelectorRegex.Replace(json, numberSelectorReplacement);
+        json = threeSpaceRelationshipRegex.Replace(json, threeSpaceRelationshipReplacement);
 
         return json;
     }

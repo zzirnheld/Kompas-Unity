@@ -20,7 +20,7 @@
 				{
 					"$type": "#Subeffect#CardTarget$",
 					"cardRestriction": {
-						"blurb": "C <= X spell for Temperance to DispelSubeffect, Assembly-CSharp",
+						"blurb": "C <= X spell for Temperance to dispel",
 						"cardRestrictions": [
 							"Spell",
 							"Board",

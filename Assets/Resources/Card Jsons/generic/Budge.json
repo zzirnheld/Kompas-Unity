@@ -48,7 +48,7 @@
                                     "multiplier": 0,
                                     "modifier": 1
                                 },
-                                "comparison": { "$type": "KompasCore.Effects.Relationships.NumberRelationships.Equal, Assembly-CSharp" }
+                                "comparison": { "$type": "Relationships.Number:Equal:" }
                             }
                         ]
 					}

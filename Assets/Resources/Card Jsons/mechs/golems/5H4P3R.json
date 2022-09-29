@@ -38,7 +38,7 @@
 								"$type": "Subeffect.Space:FromActivationContext:",
 								"space": { "$type": "ActivationContext.Space:ContextSpace:" }
 							},
-							"thirdSpaceRelationship": { "$type": "KompasCore.Effects.Identities.ThreeSpaceRelationships.Between, Assembly-CSharp" }
+							"thirdSpaceRelationship": { "$type": "ThreeSpaceRelationships:Between:" }
 						}
 					}
 				},

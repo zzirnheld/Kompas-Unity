@@ -21,7 +21,7 @@
 					"$type": "#Subeffect#SetXByNumberIdentity$",
 					"numberIdentity": {
 						"$type": "Subeffect.Number:Selector:",
-						"selector": { "$type": "KompasCore.Effects.Identities.NumberSelectors.Minimum, Assembly-CSharp" },
+						"selector": { "$type": "NumberSelector:Minimum:, Assembly-CSharp" },
 						"numbers": {
 							"$type": "Subeffect.ManyNumbers:Distances:",
 							"origin": {
@@ -65,7 +65,7 @@
 												"whosePosition": { "$type": "Gamestate.Card:ThisCard:" }
 											},
 											"number": { "$type": "Subeffect.Number:X:" },
-											"comparison": { "$type": "KompasCore.Effects.Relationships.NumberRelationships.Equal, Assembly-CSharp" }
+											"comparison": { "$type": "Relationships.Number:Equal:" }
 										}
 									]
                                 }
