@@ -26,17 +26,13 @@
 						"positions": {
 							"$type": "Subeffect.ManySpaces:ThreeSpaceRelationship:",
 							"firstSpace": {
-								"$type": "Subeffect.Space:PositionOf:",
+								"$type": "ActivationContext.Space:PositionOf:",
 								"whosePosition": {
-									"$type": "Subeffect.Card:FromActivationContext:",
-									"cardFromContext": {
-										"$type": "ActivationContext.Card:MainCardBefore:"
-									}
+									"$type": "ActivationContext.Card:MainCardBefore:"
 								}
 							},
 							"secondSpace": {
-								"$type": "Subeffect.Space:FromActivationContext:",
-								"space": { "$type": "ActivationContext.Space:ContextSpace:" }
+								"$type": "ActivationContext.Space:ContextSpace:"
 							},
 							"thirdSpaceRelationship": { "$type": "ThreeSpaceRelationships:Between:" }
 						}
