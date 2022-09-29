@@ -15,7 +15,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CardTarget$",
 					"cardRestriction": {
 						"blurb": "Avatar to castle",
 						"cardRestrictions": [
@@ -32,7 +32,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#SpaceTarget$",
 					"spaceRestriction": {
 						"blurb": "Corner to move them to",
 						"spaceRestrictions": [
@@ -43,7 +43,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Move$"
 				}
 			]
 		}

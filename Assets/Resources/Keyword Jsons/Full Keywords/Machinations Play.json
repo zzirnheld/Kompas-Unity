@@ -8,10 +8,10 @@
 	},
 	"subeffects": [
 		{
-			"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+			"$type": "#Subeffect#TargetThis$"
 		},
 		{
-			"$type": "KompasServer.Effects.SetCardStatsSubeffect, Assembly-CSharp",
+			"$type": "#Subeffect#SetCardStats$",
 			"cVal": 0
 		}
 	]

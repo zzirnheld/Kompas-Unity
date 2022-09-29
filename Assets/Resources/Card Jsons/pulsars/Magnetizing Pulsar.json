@@ -30,7 +30,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CardTarget$",
 					"cardRestriction": {
 						"blurb": "for Magnetizing to attract",
 						"cardRestrictions": [
@@ -40,7 +40,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#SpaceTarget$",
 					"spaceRestriction": {
 						"blurb": "to move Magnetizing's target to",
 						"spaceRestrictions": [
@@ -58,7 +58,7 @@
 					"xModifier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Move$"
 				}
 			]
 		},
@@ -89,7 +89,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CardTarget$",
 					"cardRestriction": {
 						"blurb": "for Magnetizing to repel",
 						"cardRestrictions": [
@@ -99,7 +99,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#SpaceTarget$",
 					"spaceRestriction": {
 						"blurb": "to move Magnetizing's target to",
 						"spaceRestrictions": [
@@ -117,7 +117,7 @@
 					"xModifier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Move$"
 				}
 			]
 		}

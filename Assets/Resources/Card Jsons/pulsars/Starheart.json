@@ -31,10 +31,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#TargetThis$"
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ChangeCardStats$",
 					"sModifier": 1
 				}
 			]
@@ -72,10 +72,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#TargetThis$"
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ChangeCardStats$",
 					"sModifier": -1
 				}
 			]

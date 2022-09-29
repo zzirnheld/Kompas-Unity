@@ -12,7 +12,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CardTarget$",
 					"cardRestriction": {
 						"blurb": "for Dragonseeker to reshuffle",
 						"cardRestrictions": [
@@ -27,7 +27,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#SetXByTargetCardValue$",
 					"cardValue": {
 						"value": "S"
 					},
@@ -35,13 +35,13 @@
 					"xDivisor": 2
 				},
 				{
-					"$type": "KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Reshuffle$"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#TargetThis$"
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ChangeCardStats$",
 					"sMultiplier": 1
 				}
 			]

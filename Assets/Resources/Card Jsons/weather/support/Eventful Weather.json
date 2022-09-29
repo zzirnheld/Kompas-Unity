@@ -28,11 +28,11 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.MillSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#Mill$",
 					"xModifier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.ConditionalJumpSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ConditionalJump$",
 					"condition": "Target Violates Restriction",
 					"cardRestriction": {
 						"cardRestrictions": [
@@ -48,13 +48,13 @@
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Rehand$"
 				},
 				{
-					"$type": "KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#EndResolution$"
 				},
 				{
-					"$type": "KompasServer.Effects.BottomdeckSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Bottomdeck$"
 				}
 			]
 		}

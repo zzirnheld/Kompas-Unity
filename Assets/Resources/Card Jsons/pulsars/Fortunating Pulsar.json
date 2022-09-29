@@ -31,7 +31,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.ConditionalJumpSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ConditionalJump$",
 					"condition": "X >= Constant",
 					"constant": 0,
 					"jumpIndices": [
@@ -39,23 +39,23 @@
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#AddPips$",
 					"xMultiplier": 0,
 					"xModifier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#TargetEnemy$"
 				},
 				{
-					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#AddPips$",
 					"xMultiplier": 0,
 					"xModifier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#EndResolution$"
 				},
 				{
-					"$type": "KompasServer.Effects.KeywordSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#Keyword$",
 					"keyword": "Rummage"
 				}
 			]

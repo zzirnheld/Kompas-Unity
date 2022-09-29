@@ -15,7 +15,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CardTarget$",
 					"blurb": "character to MAXIMUM OVERDRIVE",
 					"cardRestriction": {
 						"cardRestrictions": [
@@ -31,11 +31,11 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ChangeCardStats$",
 					"wModifier": -7
 				},
 				{
-					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ConditionalEnd$",
 					"condition": "Target Violates Restriction",
 					"cardRestriction": {
 						"cardRestrictions": [
@@ -47,7 +47,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ChangeCardStats$",
 					"nModifier": 5
 				}
 			]

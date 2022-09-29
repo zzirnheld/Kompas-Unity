@@ -14,7 +14,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CardTarget$",
 					"cardRestriction": {
 						"blurb": "Friendly Shaper to move",
 						"cardRestrictions": [
@@ -35,7 +35,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CardTarget$",
 					"cardRestriction": {
 						"blurb": "enemy character to move adjacent to",
 						"cardRestrictions": [
@@ -46,7 +46,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#SpaceTarget$",
 					"spaceRestriction": {
 						"blurb": "where to move the Shaper",
 						"spaceRestrictions": [
@@ -57,10 +57,10 @@
 					"targetIndex": -2
 				},
 				{
-					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Move$"
 				},
 				{
-					"$type": "KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#Attack$",
 					"targetIndex": -2,
 					"attackerIndex": -1
 				}

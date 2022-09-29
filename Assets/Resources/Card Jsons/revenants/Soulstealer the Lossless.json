@@ -14,7 +14,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ChangeAllCardStats$",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character",
@@ -29,11 +29,11 @@
 					"eModifier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ConditionalEnd$",
 					"condition": "Must be Enemy Turn"
 				},
 				{
-					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#AddPips$",
 					"xModifier": 1
 				}
 			]

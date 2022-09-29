@@ -14,7 +14,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CardTarget$",
 					"cardRestriction": {
 						"blurb": "Orc to Return",
 						"cardRestrictions": [
@@ -27,13 +27,13 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Rehand$"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#TargetThis$"
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ChangeCardStats$",
 					"eModifier": -1
 				}
 			]

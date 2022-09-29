@@ -28,13 +28,13 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#TargetThis$"
 				},
 				{
-					"$type": "KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Annihilate$"
 				},
 				{
-					"$type": "KompasServer.Effects.AutoTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#AutoTarget$",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Subtypes Include",
@@ -49,7 +49,7 @@
 					"tiebreakerDirection":"Any"
 				},
 				{
-					"$type": "KompasServer.Effects.AutoTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#AutoTarget$",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Subtypes Include",
@@ -65,7 +65,7 @@
 					"tiebreakerDirection":"Any"
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#SpaceTarget$",
 					"spaceRestriction": {
 						"blurb": "where to play Mad Blood's new bloodcurse (1/2)",
 						"spaceRestrictions": [
@@ -75,10 +75,10 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Play$"
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#SpaceTarget$",
 					"spaceRestriction": {
 						"blurb": "where to play Mad Blood's new bloodcurse (2/2)",
 						"spaceRestrictions": [
@@ -89,7 +89,7 @@
 					"targetIndex":-2
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#Play$",
 					"targetIndex":-2
 				}
 			]

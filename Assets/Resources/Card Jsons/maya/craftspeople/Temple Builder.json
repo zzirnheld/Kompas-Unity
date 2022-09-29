@@ -26,10 +26,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#TargetTriggeringCard$"
 				},
 				{
-					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ChooseFromList$",
 					"cardRestriction": {
 						"blurb": "copy of the Structure to deck->summon",
 						"cardRestrictions": [
@@ -41,7 +41,7 @@
 					"maxCanChoose": 1
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#SpaceTarget$",
 					"spaceRestriction": {
 						"blurb": "where for the Temple Builder to decksummon a copy of the Structure",
 						"spaceRestrictions": [
@@ -51,7 +51,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Play$"
 				}
 			]
 		}

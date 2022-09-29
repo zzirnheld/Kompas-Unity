@@ -16,7 +16,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#TargetAll$",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Space Fits Restriction"
@@ -37,14 +37,14 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.TargetTargetsControllerSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#TargetTargetsController$"
 				},
 				{
-					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#AddPips$",
 					"xModifier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#LoopWhileHaveTargets$",
 					"delete": true,
 					"jumpIndices": [
 						1

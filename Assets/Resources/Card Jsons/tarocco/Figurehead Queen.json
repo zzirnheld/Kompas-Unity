@@ -16,10 +16,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#TargetThis$"
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ChangeCardStats$",
 					"cMultiplier": 1
 				}
 			]
@@ -36,7 +36,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#Delay$",
 					"numTimesToDelay": 0,
 					"jumpIndices": [
 						1
@@ -44,14 +44,14 @@
 					"endCondition": "Turn Start"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#TargetThis$"
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByTargetCostSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#SetXByTargetCost$",
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#DeckTarget$",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Friendly",
@@ -75,7 +75,7 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#SpaceTarget$",
 					"spaceRestriction": {
 						"spaceRestrictions": [
 							"Can Play Card Target to This Space",
@@ -84,7 +84,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Play$"
 				}
 			]
 		}

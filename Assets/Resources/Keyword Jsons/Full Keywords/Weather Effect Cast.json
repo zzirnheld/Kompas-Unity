@@ -9,16 +9,16 @@
 	},
 	"subeffects":[
 		{
-			"$type":"KompasServer.Effects.TargetThisSpaceSubeffect, Assembly-CSharp"
+			"$type":"#Subeffect#TargetThisSpace$"
 		},
 		{
-			"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+			"$type":"#Subeffect#TargetThis$"
 		},
 		{
-			"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+			"$type":"#Subeffect#Annihilate$"
 		},
 		{
-			"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+			"$type":"#Subeffect#DeckTarget$",
 			"cardRestriction":{
 				"blurb":"Weather to deck-cast",
 				"cardRestrictions":["Friendly","Deck","Spell","Distinct Name from Source","Subtypes Include","Can Be Played"],
@@ -27,7 +27,7 @@
 			"maxCanChoose":1
 		},
 		{
-			"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+			"$type":"#Subeffect#SpaceTarget$",
 			"spaceRestriction":
 			{
 				"blurb":"where to cast the Weather",
@@ -36,7 +36,7 @@
 			}
 		},
 		{
-			"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+			"$type":"#Subeffect#Play$"
 		}
 	]	
 }

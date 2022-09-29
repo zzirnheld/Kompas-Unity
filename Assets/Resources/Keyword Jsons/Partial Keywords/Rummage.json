@@ -1,6 +1,6 @@
 [
     {
-        "$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+        "$type": "#Subeffect#CardTarget$",
         "cardRestriction": {
             "blurb": "Card to discard so you can draw",
             "cardRestrictions": [
@@ -10,9 +10,9 @@
         }
     },
     {
-        "$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+        "$type": "#Subeffect#Discard$"
     },
     {
-        "$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+        "$type": "#Subeffect#Draw$"
     }
 ]

@@ -15,7 +15,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CardTarget$",
 					"cardRestriction": {
 						"blurb": "dead Fungus",
 						"cardRestrictions": [
@@ -29,14 +29,14 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Reshuffle$"
 				},
 				{
-					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#AddPips$",
 					"xModifier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"$type":"#Subeffect#TargetAll$",
 					"cardRestriction":
 					{
 						"cardRestrictions":["Board","Character","Space Fits Restriction"],
@@ -48,14 +48,14 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.ActivateSubeffect, Assembly-CSharp"
+					"$type":"#Subeffect#Activate$"
 				},
 				{
-					"$type":"KompasServer.Effects.ActivateSubeffect, Assembly-CSharp",
+					"$type":"#Subeffect#Activate$",
 					"activate":false
 				},
 				{
-					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"$type":"#Subeffect#LoopWhileHaveTargets$",
 					"delete":true,
 					"remainingTargets": 1,
 					"jumpIndices":[5]

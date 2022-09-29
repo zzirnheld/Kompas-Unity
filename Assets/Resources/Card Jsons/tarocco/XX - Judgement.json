@@ -16,7 +16,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CardTarget$",
 					"cardRestriction": {
 						"blurb": "character for Judgement to kill",
 						"cardRestrictions": [
@@ -36,7 +36,7 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Discard$"
 				}
 			]
 		}

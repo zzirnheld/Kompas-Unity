@@ -16,7 +16,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#TargetAll$",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character",
@@ -40,14 +40,14 @@
                     }
 				},
 				{
-					"$type": "KompasServer.Effects.TemporaryNegateSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#TemporaryNegate$",
 					"endCondition": "Turn Start",
 					"triggerRestriction": {
 						"triggerRestrictions": []
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#LoopWhileHaveTargets$",
 					"delete": true,
 					"jumpIndices": [
 						1

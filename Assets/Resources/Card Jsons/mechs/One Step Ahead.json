@@ -15,7 +15,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#DeckTarget$",
 					"cardRestriction": {
 						"blurb": "Mech plan",
 						"cardRestrictions": [
@@ -31,7 +31,7 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#Delay$",
 					"numTimesToDelay": 0,
 					"jumpIndices": [
 						2
@@ -39,7 +39,7 @@
 					"endCondition": "Turn Start"
 				},
 				{
-					"$type": "KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#Delay$",
 					"numTimesToDelay": 0,
 					"jumpIndices": [
 						3
@@ -62,7 +62,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.AutoTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#AutoTarget$",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Friendly",
@@ -73,10 +73,10 @@
 					"tiebreakerDirection":"Any"
 				},
 				{
-					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Rehand$"
 				},
 				{
-					"$type": "KompasServer.Effects.JumpSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#Jump$",
 					"jumpIndices": [
 						0
 					]

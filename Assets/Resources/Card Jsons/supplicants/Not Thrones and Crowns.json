@@ -14,7 +14,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#TargetAll$",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Enemy",
@@ -37,13 +37,13 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#SkipToEffectOnImpossible$",
 					"jumpIndices": [
 						4
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#SpaceTarget$",
 					"spaceRestriction": {
 						"blurb": "where to move the supplicant's attacker",
 						"spaceRestrictions": [
@@ -53,13 +53,13 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Move$"
 				},
 				{
-					"$type": "KompasServer.Effects.ClearOnImpossibleSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#ClearOnImpossible$"
 				},
 				{
-					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#LoopWhileHaveTargets$",
 					"delete": true,
 					"jumpIndices": [
 						1

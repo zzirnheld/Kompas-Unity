@@ -22,13 +22,13 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#TargetTriggeringCard$"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetTargetsControllerSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#TargetTargetsController$"
 				},
 				{
-					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Rehand$"
 				}
 			]
 		}

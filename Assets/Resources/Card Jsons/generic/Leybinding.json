@@ -15,7 +15,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#SetXByGamestate$",
 					"whatToCount": "Cards Fitting Restriction",
 					"cardRestriction": {
 						"cardRestrictions": [
@@ -26,7 +26,7 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ChangeAllCardStats$",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character",

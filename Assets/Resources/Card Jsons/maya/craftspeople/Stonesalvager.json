@@ -13,7 +13,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#SetXByGamestate$",
 					"whatToCount": "Total Card Value of Cards Fitting Restriction",
 					"cardValue": {
 						"value": "S"
@@ -33,7 +33,7 @@
                     "comment": "NOTE: this will break if you have an odd total cost of structures 1 less than what you need"
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CardTarget$",
 					"cardRestriction": {
 						"blurb": "Structure to repurpose old stone into",
 						"cardRestrictions": [
@@ -58,7 +58,7 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CardTarget$",
 					"cardRestriction": {
 						"blurb": "Structure whose stone to repuprose",
 						"cardRestrictions": [
@@ -72,7 +72,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#SetXByTargetCardValue$",
 					"cardValue": {
 						"value": "S",
 						"multiplier": -1
@@ -81,7 +81,7 @@
 					"change": true
 				},
 				{
-					"$type": "KompasServer.Effects.ConditionalJumpSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ConditionalJump$",
 					"condition": "X >= Constant",
 					"constant": 1,
 					"jumpIndices": [
@@ -89,7 +89,7 @@
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#SpaceTarget$",
 					"spaceRestriction": {
 						"blurb": "where to summon the chosen Structure",
 						"spaceRestrictions": [
@@ -100,7 +100,7 @@
                     "targetIndex": 0
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#Play$",
                     "targetIndex": 0
 				}
 			]

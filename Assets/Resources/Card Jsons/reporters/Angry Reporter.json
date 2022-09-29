@@ -13,7 +13,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CardTarget$",
 					"cardRestriction": {
 						"blurb": "angry WX character that might attack",
 						"cardRestrictions": [
@@ -23,24 +23,24 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#SetXByTargetCardValue$",
 					"cardValue": {
 						"value": "W"
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#TargetEnemy$"
 				},
 				{
-					"$type": "KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CanResolve$",
 					"subeffIndices": [
 						5
 					],
 					"skipIndex": 8
 				},
 				{
-					"$type": "KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ChooseOption$",
 					"choiceBlurb": "Reveal an cost > X card?",
 					"optionBlurbs": [
 						"Yes",
@@ -53,7 +53,7 @@
 					"showX": true
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CardTarget$",
 					"cardRestriction": {
 						"blurb": "cost > X card to reveal",
 						"cardRestrictions": [
@@ -74,13 +74,13 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.RevealSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Reveal$"
 				},
 				{
-					"$type": "KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#EndResolution$"
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CardTarget$",
 					"cardRestriction": {
 						"blurb": "enemy character to attack",
 						"cardRestrictions": [
@@ -98,7 +98,7 @@
 					"playerIndex": -2
 				},
 				{
-					"$type": "KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#Attack$",
 					"playerIndex": -2,
 					"targetIndex": -1,
 					"attackerIndex": -2

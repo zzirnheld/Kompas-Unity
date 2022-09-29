@@ -37,10 +37,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#TargetTriggeringCard$"
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CardTarget$",
 					"cardRestriction": {
 						"blurb": "Golem to swap out modules",
 						"cardRestrictions": [
@@ -61,20 +61,20 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#SetXByTargetCardValue$",
 					"cardValue": {
 						"value": "Number of Augments"
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.TargetAugmentsSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#TargetAugments$"
 				},
 				{
-					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Rehand$"
 				},
 				{
-					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#LoopWhileHaveTargets$",
 					"delete": true,
 					"remainingTargets": 2,
 					"jumpIndices": [
@@ -82,7 +82,7 @@
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CardTarget$",
 					"cardRestriction": {
 						"blurb": "Golem core for Modular Golem Cores to attach",
 						"cardRestrictions": [
@@ -97,12 +97,12 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#Attach$",
 					"targetToAttachTo": 1,
 					"targetIndex": -1
 				},
 				{
-					"$type": "KompasServer.Effects.XTimesSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#XTimes$",
 					"jumpIndices": [
 						6
 					],

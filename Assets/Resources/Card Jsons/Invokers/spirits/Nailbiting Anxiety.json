@@ -22,7 +22,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CardTarget$",
 					"cardRestriction": {
 						"blurb": "character to overwhelm with anxiety",
 						"cardRestrictions": [
@@ -32,7 +32,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SetCardStatsSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#SetCardStats$",
 					"nVal": 0
 				}
 			]

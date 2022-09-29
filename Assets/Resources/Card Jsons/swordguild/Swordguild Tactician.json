@@ -13,7 +13,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CardTarget$",
 					"cardRestriction": {
 						"blurb": "adjacent Warrior for Tactician to give +5 E or +5 W",
 						"cardRestrictions": [
@@ -33,7 +33,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ChooseOption$",
 					"choiceBlurb": "Give +5 E or +5 W?",
 					"optionBlurbs": [
 						"+5 E",
@@ -46,7 +46,7 @@
 					"hasDefault": false
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ChangeCardStats$",
 					"nModifier": 0,
 					"eModifier": 5,
 					"sModifier": 0,
@@ -54,10 +54,10 @@
 					"targetIndex": 0
 				},
 				{
-					"$type": "KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#EndResolution$"
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ChangeCardStats$",
 					"nModifier": 0,
 					"eModifier": 0,
 					"sModifier": 0,

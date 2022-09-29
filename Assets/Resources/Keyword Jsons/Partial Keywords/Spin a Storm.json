@@ -1,9 +1,9 @@
 [
     {
-        "$type": "KompasServer.Effects.TargetTriggeringCardsCoordsSubeffect, Assembly-CSharp"
+        "$type": "#Subeffect#TargetTriggeringCardsCoords$"
     },
     {
-        "$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+        "$type": "#Subeffect#ConditionalEnd$",
         "condition": "No Space Fits Restriction",
         "spaceRestriction": {
             "spaceRestrictions": [
@@ -28,7 +28,7 @@
         }
     },
     {
-        "$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+        "$type": "#Subeffect#CardTarget$",
         "cardRestriction": {
             "blurb": "Weather Event to hand->summon",
             "cardRestrictions": [
@@ -44,7 +44,7 @@
         }
     },
     {
-        "$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+        "$type": "#Subeffect#SpaceTarget$",
         "spaceRestriction": {
             "blurb": "where to hand->summon the Weather Event",
             "spaceRestrictions": [
@@ -78,6 +78,6 @@
         "targetIndex": -2
     },
     {
-        "$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+        "$type": "#Subeffect#Play$"
     }
 ]

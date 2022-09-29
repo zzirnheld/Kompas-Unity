@@ -14,7 +14,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CardTarget$",
 					"cardRestriction": {
 						"blurb": "No! Not the Self-Destruct Button installed on all Ificator (TM) systems!",
 						"cardRestrictions": [
@@ -29,13 +29,13 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Discard$"
 				},
 				{
-					"$type": "KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#DeleteTarget$"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#TargetAll$",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Friendly",
@@ -48,17 +48,17 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Rehand$"
 				},
 				{
-					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#LoopWhileHaveTargets$",
 					"delete": true,
 					"jumpIndices": [
 						4
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ChooseFromList$",
 					"cardRestriction": {
 						"blurb": "oh, and the self-destruct button on the -ificator in my hand, too. Curse you.",
 						"cardRestrictions": [
@@ -76,10 +76,10 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Discard$"
 				},
 				{
-					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#LoopWhileHaveTargets$",
 					"delete": true,
 					"jumpIndices": [
 						7

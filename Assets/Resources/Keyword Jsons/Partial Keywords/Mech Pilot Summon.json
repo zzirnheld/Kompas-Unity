@@ -1,15 +1,15 @@
 [
     {
-        "$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+        "$type":"#Subeffect#TargetThis$"
     },
     {
-        "$type":"KompasServer.Effects.TargetThisSpaceSubeffect, Assembly-CSharp"
+        "$type":"#Subeffect#TargetThisSpace$"
     },
     {
-        "$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+        "$type":"#Subeffect#Annihilate$"
     },
     {
-        "$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+        "$type":"#Subeffect#CardTarget$",
         "cardRestriction":
         {
             "blurb":"Mech to Pilot",
@@ -19,9 +19,9 @@
         "toLinkWith": { "$type": "KompasCore.Effects.Identities.GamestateCardIdentities.ThisCard, Assembly-CSharp" }
     },
     {
-        "$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+        "$type":"#Subeffect#Play$"
     },
     {
-        "$type":"KompasServer.Effects.ActivateSubeffect, Assembly-CSharp"
+        "$type":"#Subeffect#Activate$"
     }
 ]

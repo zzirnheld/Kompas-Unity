@@ -15,7 +15,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CardTarget$",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Friendly",
@@ -24,7 +24,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#TargetAll$",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Friendly",
@@ -34,27 +34,27 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#DeleteTarget$",
 					"targetIndex": 0
 				},
 				{
-					"$type": "KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Reshuffle$"
 				},
 				{
-					"$type": "KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#DeleteTarget$"
 				},
 				{
-					"$type": "KompasServer.Effects.CountXLoopSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CountXLoop$",
 					"canDecline": false,
 					"jumpIndices": [
 						3
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#TargetThis$"
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ChangeCardStats$",
 					"wMultiplier": 1
 				}
 			]

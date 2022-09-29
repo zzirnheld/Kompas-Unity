@@ -25,7 +25,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CardTarget$",
 					"cardRestriction": {
 						"blurb": "for Maya to discard",
 						"cardRestrictions": [
@@ -35,17 +35,17 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Discard$"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#TargetThis$"
 				},
 				{
-					"$type": "KompasServer.Effects.DamageSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#Damage$",
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#DrawX$",
 					"xMultiplier": 1
 				}
 			]

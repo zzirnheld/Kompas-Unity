@@ -14,7 +14,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#SetXByGamestate$",
 					"whatToCount": "Cards Fitting Restriction",
 					"cardRestriction": {
 						"cardRestrictions": [
@@ -30,7 +30,7 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CardTarget$",
 					"cardRestriction": {
 						"blurb": "character to deafen with silence",
 						"cardRestrictions": [
@@ -40,7 +40,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ChangeCardStats$",
 					"eMultiplier": -1,
 					"wMultiplier": -1
 				}

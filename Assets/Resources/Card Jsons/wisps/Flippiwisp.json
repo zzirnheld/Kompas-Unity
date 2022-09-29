@@ -14,13 +14,13 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#SkipToEffectOnImpossible$",
 					"jumpIndices": [
 						4
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CardTarget$",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Controller Matches Player Target",
@@ -29,19 +29,19 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Discard$"
 				},
 				{
-					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Draw$"
 				},
 				{
-					"$type": "KompasServer.Effects.ClearOnImpossibleSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#ClearOnImpossible$"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#TargetEnemy$"
 				},
 				{
-					"$type": "KompasServer.Effects.KeywordSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#Keyword$",
 					"keyword": "Rummage"
 				}
 			]

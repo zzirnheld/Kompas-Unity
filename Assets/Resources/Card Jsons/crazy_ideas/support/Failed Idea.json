@@ -17,7 +17,7 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"$type":"#Subeffect#DeckTarget$",
 					"cardRestriction":{
 						"blurb":"card for Failed Idea to mill",
 						"cardRestrictions":["Friendly","Deck","Subtypes Include"],
@@ -25,13 +25,13 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type":"#Subeffect#Discard$"
 				},
                 {
-                    "$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+                    "$type":"#Subeffect#TargetThis$"
                 },
                 {
-                    "$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+                    "$type":"#Subeffect#Discard$"
                 }
 			]	
 		}

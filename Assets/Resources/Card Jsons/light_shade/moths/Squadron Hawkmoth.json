@@ -45,7 +45,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.AutoTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#AutoTarget$",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Friendly",
@@ -57,7 +57,7 @@
 					"tiebreakerDirection":"Any"
 				},
 				{
-					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Rehand$"
 				}
 			]
 		}

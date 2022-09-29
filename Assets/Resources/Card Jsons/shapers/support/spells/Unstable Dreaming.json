@@ -14,7 +14,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CardTarget$",
 					"cardRestriction": {
 						"blurb": "Shaper to hand-summon",
 						"cardRestrictions": [
@@ -29,7 +29,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#SpaceTarget$",
 					"spaceRestriction": {
 						"blurb": "where to handsummon the Shaper",
                         "spaceRestrictionElements": [
@@ -42,10 +42,10 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Play$"
 				},
 				{
-					"$type": "KompasServer.Effects.HangingAnnihilationSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#HangingAnnihilation$",
 					"endCondition": "Turn Start",
 					"triggerRestriction": {
 						"triggerRestrictions": [

@@ -16,20 +16,20 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#TargetThis$"
 				},
 				{
-					"$type": "KompasServer.Effects.DamageSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#Damage$",
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#TargetTriggeringCard$"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetTargetsControllerSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#TargetTargetsController$"
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CardTarget$",
 					"cardRestriction": {
 						"blurb": "for Leybinder to hand-summon",
 						"cardRestrictions": [
@@ -50,7 +50,7 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#SpaceTarget$",
 					"spaceRestriction": {
 						"blurb": "where Leybinder to hand-summon",
 						"spaceRestrictions": [
@@ -60,7 +60,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Play$"
 				}
 			]
 		}

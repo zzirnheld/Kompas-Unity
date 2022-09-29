@@ -13,7 +13,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.SetXBoardRestrictionSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#SetXBoardRestriction$",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Subtypes Include",
@@ -33,7 +33,7 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#AddPips$",
 					"xMultiplier": 1,
 					"xModifier": 0
 				}

@@ -16,24 +16,24 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#TargetTriggeringCard$"
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#SetXByTargetCardValue$",
 					"cardValue": {
 						"value": "A"
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ChangeCardStats$",
 					"aModifier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#TargetThis$"
 				},
 				{
-					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ConditionalEnd$",
 					"condition": "Target Violates Restriction",
 					"cardRestriction": {
 						"cardRestrictions": [
@@ -47,11 +47,11 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.TargetTargetsAugmentedCardSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#TargetTargetsAugmentedCard$",
 					"targetIndex": -2
 				},
 				{
-					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ConditionalEnd$",
 					"condition": "Target Violates Restriction",
 					"cardRestriction": {
 						"cardRestrictions": [
@@ -61,16 +61,16 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ChangeCardStats$",
 					"eMultiplier": -1
 				},
 				{
-					"$type": "KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#Attach$",
 					"targetIndex": -3,
 					"targetToAttachTo": -2
 				},
 				{
-					"$type": "KompasServer.Effects.ResetStatsSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ResetStats$",
 					"targetIndex": -3,
 					"resetA": true
 				}

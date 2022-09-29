@@ -15,7 +15,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#DeckTarget$",
 					"cardRestriction": {
 						"blurb": "Crazy Idea to ideate",
 						"cardRestrictions": [
@@ -30,7 +30,7 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type":"#Subeffect#Discard$"
 				}
 			]
 		}

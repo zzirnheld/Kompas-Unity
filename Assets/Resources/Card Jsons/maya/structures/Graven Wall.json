@@ -24,16 +24,16 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#TargetTriggeringCard$"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#TargetTargetsSpace$"
 				},
                 {
-                    "$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+                    "$type":"#Subeffect#TargetThis$"
                 },
 				{
-					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ConditionalEnd$",
 					"condition": "Space Target Violates Restriction",
                     "spaceRestriction":
                     {
@@ -51,7 +51,7 @@
                     }
 				},
 				{
-					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#AddPips$",
 					"xModifier": 1
 				}
 			]

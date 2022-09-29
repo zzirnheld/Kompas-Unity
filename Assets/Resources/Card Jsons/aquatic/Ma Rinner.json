@@ -15,14 +15,14 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#DrawX$",
 					"xModifier": 2
 				},
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#TargetThis$"
 				},
 				{
-					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ConditionalEnd$",
 					"condition": "Target Fits Restriction",
 					"cardRestriction": {
 						"cardRestrictions": [
@@ -44,7 +44,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ChooseFromList$",
 					"cardRestriction": {
 						"blurb": "cards for Ma Rinner to bottomdeck",
 						"cardRestrictions": [
@@ -62,15 +62,15 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.BottomdeckSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#Bottomdeck$",
 					"targetIndex": -1
 				},
 				{
-					"$type": "KompasServer.Effects.BottomdeckSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#Bottomdeck$",
 					"targetIndex": -2
 				},
 				{
-					"$type": "KompasServer.Effects.BottomdeckSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#Bottomdeck$",
 					"targetIndex": -3
 				}
 			]

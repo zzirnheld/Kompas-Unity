@@ -15,10 +15,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#TargetTriggeringCard$"
 				},
 				{
-					"$type": "KompasServer.Effects.TemporaryCardStatChangeSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#TemporaryCardStatChange$",
 					"nModifier": 1,
 					"endCondition": "Turn Start",
 					"triggerRestriction": {

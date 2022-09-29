@@ -15,7 +15,7 @@
 			},
 			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.SetXBoardRestrictionSubeffect, Assembly-CSharp",
+					"$type":"#Subeffect#SetXBoardRestriction$",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Subtypes Include",
@@ -34,7 +34,7 @@
 					"xMultiplier":1
 				},
 				{
-					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ChooseFromList$",
 					"cardRestriction": {
 						"blurb": "Craftspeople move to the cities",
 						"cardRestrictions": [
@@ -56,10 +56,10 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Rehand$"
 				},
 				{
-					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#LoopWhileHaveTargets$",
 					"delete": true,
 					"jumpIndices": [
 						2

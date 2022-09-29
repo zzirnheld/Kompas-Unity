@@ -29,7 +29,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#TargetAll$",
 					"cardRestriction": {
 						"blurb": "Supplicant to give safe haven",
 						"cardRestrictions": [
@@ -45,7 +45,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.TemporaryNegateSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#TemporaryNegate$",
 					"endCondition": "Remove",
 					"triggerRestriction": {
 						"triggerRestrictions": [
@@ -54,7 +54,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#LoopWhileHaveTargets$",
 					"delete": true,
 					"jumpIndices": [
 						1

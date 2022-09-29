@@ -14,7 +14,7 @@
 			},
 			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type":"#Subeffect#CardTarget$",
 					"cardRestriction":{
 						"blurb":"Card to discard",
 						"cardRestrictions": [
@@ -24,10 +24,10 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type":"#Subeffect#Discard$"
 				},
 				{
-					"$type": "KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#DeckTarget$",
 					"cardRestriction": {
 						"blurb": "Invocation to find",
 						"cardRestrictions": [
@@ -41,7 +41,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Rehand$"
 				}
 			]
 		}

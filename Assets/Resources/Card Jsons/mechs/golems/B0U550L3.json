@@ -18,7 +18,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CardTarget$",
 					"cardRestriction": {
 						"blurb": "to throw NE",
 						"cardRestrictions": [
@@ -28,13 +28,13 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#TargetTargetsSpace$"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetDirectionSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#TargetDirection$"
 				},
 				{
-					"$type": "KompasServer.Effects.AutoSpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#AutoSpaceTarget$",
 					"spaceRestriction": {
 						"spaceRestrictions": [
 							"Source Displacement to Card Target Same Direction as Space Target",
@@ -50,13 +50,13 @@
 					"xModifier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#TargetThis$"
 				},
 				{
-					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Move$"
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ChangeCardStats$",
 					"eModifier": -3,
 					"targetIndex": -2
 				}

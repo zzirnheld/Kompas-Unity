@@ -14,7 +14,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#SetXByGamestate$",
 					"whatToCount": "Total Card Value of Cards Fitting Restriction",
 					"cardValue": {
 						"value": "Cost"
@@ -31,16 +31,16 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#TargetThis$"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#TargetTargetsSpace$"
 				},
 				{
-					"$type": "KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Annihilate$"
 				},
 				{
-					"$type": "KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#DeckTarget$",
 					"cardRestriction": {
 						"blurb": "Monster here",
 						"cardRestrictions": [
@@ -66,10 +66,10 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Play$"
 				},
 				{
-					"$type": "KompasServer.Effects.HangingAnnihilationSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#HangingAnnihilation$",
 					"endCondition": "Turn Start",
 					"triggerRestriction": {
 						"triggerRestrictions": [

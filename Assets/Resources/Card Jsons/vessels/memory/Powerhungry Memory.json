@@ -15,7 +15,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CardTarget$",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Board",
@@ -30,13 +30,13 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.DispelSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Dispel$"
 				},
                 {
-                    "$type":"KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+                    "$type":"#Subeffect#TargetAugmentedCard$"
                 },
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ChangeCardStats$",
 					"wModifier": 5
 				}
 			]
@@ -53,10 +53,10 @@
 			},
 			"subeffects": [
                 {
-                    "$type":"KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+                    "$type":"#Subeffect#TargetAugmentedCard$"
                 },
 				{
-					"$type": "KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Resummon$"
 				}
 			]
 		}

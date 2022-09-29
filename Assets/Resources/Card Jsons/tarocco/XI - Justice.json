@@ -13,31 +13,31 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#TargetEnemy$"
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#SetXByGamestate$",
 					"whatToCount": "Hand Size",
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#SetXByGamestate$",
 					"whatToCount": "Hand Size",
 					"playerIndex": -2,
 					"change": true,
 					"xMultiplier": -1
 				},
 				{
-					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ConditionalEnd$",
 					"condition": "X<=0"
 				},
 				{
-					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#Draw$",
 					"playerIndex": -2,
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.LoopSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#Loop$",
 					"canDecline": true,
 					"jumpIndices": [
 						1

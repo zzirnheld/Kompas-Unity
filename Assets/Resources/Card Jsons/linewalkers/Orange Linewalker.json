@@ -14,7 +14,7 @@
 			},
 			"subeffects":[
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CardTarget$",
 					"cardRestriction": {
 						"blurb": "unworthy card in hand",
 						"cardRestrictions": [
@@ -29,10 +29,10 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+					"$type":"#Subeffect#Reshuffle$"
 				},
 				{
-					"$type":"KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"$type":"#Subeffect#DrawX$",
 					"xMultiplier":1
 				}
 			]

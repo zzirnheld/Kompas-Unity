@@ -14,10 +14,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.SetXSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#SetX$"
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CardTarget$",
 					"cardRestriction": {
 						"blurb": "for Mother of Dragons to kill",
 						"cardRestrictions": [
@@ -28,7 +28,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#SetXByTargetCardValue$",
 					"cardValue": {
 						"value": "S"
 					},
@@ -36,17 +36,17 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Annihilate$"
 				},
 				{
-					"$type": "KompasServer.Effects.LoopSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#Loop$",
 					"canDecline": true,
 					"jumpIndices": [
 						1
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CardTarget$",
 					"cardRestriction": {
 						"blurb": "character whose soul to kill",
 						"cardRestrictions": [
@@ -73,7 +73,7 @@
 					"xDivisor": 2
 				},
 				{
-					"$type": "KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Annihilate$"
 				}
 			]
 		}

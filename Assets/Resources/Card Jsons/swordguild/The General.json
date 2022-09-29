@@ -13,13 +13,13 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#SkipToEffectOnImpossible$",
 					"jumpIndices": [
 						6
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.ChooseFromListSaveRestSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ChooseFromListSaveRest$",
 					"maxCanChoose": 1,
 					"cardRestriction": {
 						"blurb": "Warrior for The General to recruit",
@@ -54,7 +54,7 @@
 					"xModifier": 5
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#SpaceTarget$",
 					"spaceRestriction": {
 						"blurb": "where for The General to recruit their Warrior",
 						"spaceRestrictions": [
@@ -64,21 +64,21 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#PayPipsTargetCost$",
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Play$"
 				},
 				{
-					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#LoopWhileHaveTargets$",
 					"delete": true,
 					"jumpIndices": [
 						2
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.BottomdeckRestSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#BottomdeckRest$"
 				}
 			]
 		}

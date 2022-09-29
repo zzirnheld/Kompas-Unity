@@ -15,10 +15,10 @@
 			},
 			"subeffects": [
                 {
-                    "$type":"KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+                    "$type":"#Subeffect#TargetAugmentedCard$"
                 },
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#SpaceTarget$",
 					"spaceRestriction": {
 						"spaceRestrictions": [
 							"Empty",
@@ -34,7 +34,7 @@
 					"xModifier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Move$"
 				}
 			]
 		},
@@ -51,10 +51,10 @@
 			},
 			"subeffects": [
                 {
-                    "$type":"KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+                    "$type":"#Subeffect#TargetAugmentedCard$"
                 },
 				{
-					"$type": "KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Resummon$"
 				}
 			]
 		}

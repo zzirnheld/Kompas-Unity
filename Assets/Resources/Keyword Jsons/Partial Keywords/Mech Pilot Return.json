@@ -1,6 +1,6 @@
 [
     {
-        "$type":"KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+        "$type":"#Subeffect#Delay$",
         "numTimesToDelay":0,
         "jumpIndices":[1],
         "fallOffCondition":"",
@@ -10,20 +10,20 @@
         }
     },
     {
-        "$type":"KompasServer.Effects.UnlinkCardsSubeffect, Assembly-CSharp",
+        "$type":"#Subeffect#UnlinkCards$",
         "cardLinkIndex": 0
     },
     {
-        "$type":"KompasServer.Effects.TargetTriggeringCardsCoordsSubeffect, Assembly-CSharp"
+        "$type":"#Subeffect#TargetTriggeringCardsCoords$"
     },
     {
-        "$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+        "$type":"#Subeffect#TargetThis$"
     },
     {
-        "$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+        "$type":"#Subeffect#Play$"
     },
     {
-        "$type":"KompasServer.Effects.TemporaryNegateSubeffect, Assembly-CSharp",
+        "$type":"#Subeffect#TemporaryNegate$",
         "endCondition":"Turn Start",
         "triggerRestriction":{
             "triggerRestrictions":[]

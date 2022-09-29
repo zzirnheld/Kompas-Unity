@@ -16,7 +16,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.ChangeLeyloadSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ChangeLeyload$",
 					"xModifier": 1
 				}
 			]

@@ -10,7 +10,7 @@
 	},
 	"subeffects":[
 		{
-			"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+			"$type":"#Subeffect#CardTarget$",
 			"cardRestriction":
 			{
 				"blurb":"for Dragon to move and attack",
@@ -23,7 +23,7 @@
 			}
 		},
 		{
-			"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+			"$type":"#Subeffect#SpaceTarget$",
 			"spaceRestriction":
 			{
 				"blurb":"where Dragon to move its target",
@@ -35,13 +35,13 @@
 			"xModifier":1
 		},
 		{
-			"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+			"$type":"#Subeffect#Move$"
 		},
 		{
-			"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+			"$type":"#Subeffect#TargetThis$"
 		},
 		{
-			"$type":"KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
+			"$type":"#Subeffect#Attack$",
 			"attackerIndex":-1,
 			"targetIndex":-2
 		}

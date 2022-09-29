@@ -23,16 +23,16 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#TargetTriggeringCard$"
 				},
 				{
-					"$type": "KompasServer.Effects.SetXSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#SetX$"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetAugmentsSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#TargetAugments$"
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#SetXByTargetCardValue$",
 					"cardValue": {
 						"value": "A"
 					},
@@ -40,7 +40,7 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#LoopWhileHaveTargets$",
 					"delete": true,
 					"remainingTargets": 1,
 					"jumpIndices": [
@@ -48,7 +48,7 @@
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ChangeAllCardStats$",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character",

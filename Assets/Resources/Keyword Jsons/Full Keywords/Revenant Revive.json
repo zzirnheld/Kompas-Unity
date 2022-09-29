@@ -10,14 +10,14 @@
 	},
 	"subeffects":[
 		{
-			"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+			"$type":"#Subeffect#TargetThis$"
 		},
 		{
-			"$type":"KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
+			"$type":"#Subeffect#CanResolve$",
 			"subeffIndices":[3,4]
 		},
 		{
-			"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+			"$type":"#Subeffect#SpaceTarget$",
 			"spaceRestriction":
 			{
 				"blurb":"where to revive the Revenant",
@@ -25,12 +25,12 @@
 			}
 		},
 		{
-			"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
+			"$type":"#Subeffect#PayPipsTargetCost$",
 			"xDivisor":2,
 			"xMultiplier":1
 		},
 		{
-			"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+			"$type":"#Subeffect#Play$"
 		}
 	]
 }

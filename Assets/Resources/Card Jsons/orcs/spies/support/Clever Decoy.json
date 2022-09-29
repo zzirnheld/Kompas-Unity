@@ -17,20 +17,20 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#TargetAugmentedCard$"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetOtherInFightSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#TargetOtherInFight$"
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#SetXByTargetCardValue$",
 					"cardValue": {
 						"value": "W"
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.TemporaryCardStatChangeSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#TemporaryCardStatChange$",
 					"wMultiplier": -1,
 					"endCondition": "Battle End",
 					"triggerRestriction": {
@@ -40,10 +40,10 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#TargetAugmentedCard$"
 				},
 				{
-					"$type": "KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#Delay$",
 					"jumpIndices": [
 						6
 					],
@@ -55,7 +55,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Rehand$"
 				}
 			]
 		}

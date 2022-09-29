@@ -7,6 +7,7 @@ using KompasServer.Effects;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 public class CardRepository : MonoBehaviour
@@ -104,10 +105,10 @@ public class CardRepository : MonoBehaviour
                 continue;
             }
             string json = jsonAsset.text;
-            //remove problematic chars for from json function
-            json = json.Replace('\n', ' ');
-            json = json.Replace("\r", "");
-            json = json.Replace("\t", "");
+
+            //handle tags like subeffs, etc.
+            json = ReplacePlaceholders(json);
+
             //load the cleaned json to get the card's name according to itself
             SerializableCard card;
             try
@@ -127,6 +128,19 @@ public class CardRepository : MonoBehaviour
         }
     }
 
+    private static readonly Regex subeffRegex = new Regex(@"#Subeffect#([^\$]+)\$");
+    private const string subeffReplacement = @"KompasServer.Effects.$1Subeffect, Assembly-CSharp";
+
+    private string ReplacePlaceholders(string json)
+    {
+        //remove problematic chars for from json function
+        json = json.Replace('\n', ' ');
+        json = json.Replace("\r", "");
+        json = json.Replace("\t", "");
+
+        return subeffRegex.Replace(json, subeffReplacement);
+    }
+
     private void InitializeMapFromJsons(string filePath, string folderPath, Dictionary<string, string> dict)
     {
         string keywordList = Resources.Load<TextAsset>(filePath).text;
@@ -134,6 +148,7 @@ public class CardRepository : MonoBehaviour
         foreach (string keyword in keywords)
         {
             string json = Resources.Load<TextAsset>(folderPath + keyword).text;
+            json = ReplacePlaceholders(json);
             dict.Add(keyword, json);
         }
     }

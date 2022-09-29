@@ -14,13 +14,13 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#SkipToEffectOnImpossible$",
 					"jumpIndices": [
 						4
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.ChooseFromListSaveRestSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ChooseFromListSaveRest$",
 					"cardRestriction": {
 						"blurb": "spell for Mannaz to search (to hand)",
 						"cardRestrictions": [
@@ -42,13 +42,13 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.ClearOnImpossibleSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#ClearOnImpossible$"
 				},
 				{
-					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Rehand$"
 				},
 				{
-					"$type": "KompasServer.Effects.BottomdeckRestSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#BottomdeckRest$"
 				}
 			]
 		}

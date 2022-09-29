@@ -13,22 +13,22 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"$type":"#Subeffect#Delay$",
 					"numTimesToDelay":0,
 					"jumpIndices":[1],
 					"endCondition":"Turn Start"
 				},
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type":"#Subeffect#TargetThis$"
 				},
 				{
-					"$type":"KompasServer.Effects.TargetThisSpaceSubeffect, Assembly-CSharp"
+					"$type":"#Subeffect#TargetThisSpace$"
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type":"#Subeffect#Discard$"
 				},
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type":"#Subeffect#CardTarget$",
 					"cardRestriction":
 					{
 						"blurb":"for Dragon Hatchling to eat (discard)",
@@ -37,10 +37,10 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type":"#Subeffect#Discard$"
 				},
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type":"#Subeffect#CardTarget$",
 					"cardRestriction":
 					{
 						"blurb":"for Dragon Hatchling to become (play)",
@@ -49,7 +49,7 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type":"#Subeffect#Play$"
 				}
 			]
 		}

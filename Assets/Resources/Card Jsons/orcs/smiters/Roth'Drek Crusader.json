@@ -21,7 +21,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#DrawX$",
 					"xMultiplier": 1,
 					"xModifier": 1
 				}

@@ -12,19 +12,19 @@
 	},
 	"subeffects":[
 		{
-			"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+			"$type":"#Subeffect#TargetThis$"
 		},
         {
-            "$type": "KompasServer.Effects.TargetTriggeringCardsCoordsSubeffect, Assembly-CSharp"
+            "$type": "#Subeffect#TargetTriggeringCardsCoords$"
         },
         {
-            "$type":"KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+            "$type":"#Subeffect#Delay$",
             "numTimesToDelay": 0,
             "jumpIndices": [ 1 ],
             "endCondition": "Turn Start"
         },
         {
-            "$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+            "$type": "#Subeffect#Play$"
         }
 	]
 }

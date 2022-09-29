@@ -21,7 +21,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ChangeAllCardStats$",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character",
@@ -33,7 +33,7 @@
 					"wModifier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ChangeAllCardStats$",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character",

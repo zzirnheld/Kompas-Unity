@@ -18,13 +18,13 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type":"#Subeffect#TargetThis$"
 				},
 				{
-					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+					"$type":"#Subeffect#Annihilate$"
 				},
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type":"#Subeffect#CardTarget$",
 					"cardRestriction":
 					{
 						"blurb":"OWO SO DRAGONNNNNNNNN",
@@ -33,14 +33,14 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByTargetCostSubeffect, Assembly-CSharp",
+					"$type":"#Subeffect#SetXByTargetCost$",
 					"xMultiplier":1
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type":"#Subeffect#Discard$"
 				},
 				{
-					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"$type":"#Subeffect#AddPips$",
 					"xMultiplier":1
 				}
 			]	

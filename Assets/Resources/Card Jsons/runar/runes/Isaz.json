@@ -14,7 +14,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.SetAllCardStatsSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#SetAllCardStats$",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character",

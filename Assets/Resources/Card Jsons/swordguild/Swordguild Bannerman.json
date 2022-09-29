@@ -15,7 +15,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.SetXBoardRestrictionSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#SetXBoardRestriction$",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Subtypes Include",
@@ -35,7 +35,7 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#Discard$",
 					"cardRestriction": {
 						"blurb": "dead Warrior for Bannerman to reshuffle",
 						"cardRestrictions": [
@@ -49,10 +49,10 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Reshuffle$"
 				},
 				{
-					"$type": "KompasServer.Effects.XTimesSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#XTimes$",
 					"jumpIndices": [
 						1
 					]

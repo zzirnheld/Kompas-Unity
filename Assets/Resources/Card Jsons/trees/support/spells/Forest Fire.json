@@ -15,7 +15,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CardTarget$",
 					"cardRestriction": {
 						"blurb": "Who to heal",
 						"cardRestrictions": [
@@ -28,11 +28,11 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ChangeCardStats$",
 					"eModifier": -4
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ChangeAllCardStats$",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character",
@@ -48,7 +48,7 @@
 					"eModifier": -4
 				},
 				{
-					"$type": "KompasServer.Effects.LoopSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#Loop$",
 					"canDecline": true,
 					"jumpIndices": [
 						0

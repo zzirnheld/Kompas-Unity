@@ -13,7 +13,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CardTarget$",
 					"cardRestriction": {
 						"blurb": "Warrior for Strategist to sacrifice",
 						"cardRestrictions": [
@@ -27,14 +27,14 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByTargetCostSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#SetXByTargetCost$",
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Discard$"
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CardTarget$",
 					"cardRestriction": {
 						"blurb": "character for Strategist to kill",
 						"cardRestrictions": [
@@ -54,7 +54,7 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Discard$"
 				}
 			]
 		}

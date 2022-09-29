@@ -14,7 +14,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CardTarget$",
 					"cardRestriction": {
 						"blurb": "for Starbirth to discard",
 						"cardRestrictions": [
@@ -28,17 +28,17 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Discard$"
 				},
 				{
-					"$type": "KompasServer.Effects.CountXLoopSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CountXLoop$",
 					"canDecline": true,
 					"jumpIndices": [
 						0
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ChooseOption$",
 					"choiceBlurb": "Gain X pips or draw X?",
 					"optionBlurbs": [
 						"Pips",
@@ -51,14 +51,14 @@
 					"hasDefault": false
 				},
 				{
-					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#AddPips$",
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#EndResolution$"
 				},
 				{
-					"$type": "KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#DrawX$",
 					"xMultiplier": 1
 				}
 			]

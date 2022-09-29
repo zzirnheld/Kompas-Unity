@@ -7,14 +7,14 @@
 	},
 	"subeffects":[
 		{
-			"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+			"$type":"#Subeffect#TargetThis$"
 		},
 		{
-			"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
+			"$type":"#Subeffect#PayPipsTargetCost$",
 			"xMultiplier":1
 		},
 		{
-			"$type":"KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
+			"$type":"#Subeffect#Resummon$"
 		}
 	]	
 }

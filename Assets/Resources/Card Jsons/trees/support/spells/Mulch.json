@@ -20,7 +20,7 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"$type":"#Subeffect#TargetAll$",
 					"cardRestriction":
 					{
 						"blurb":"for Haemopoten to draw",
@@ -30,10 +30,10 @@
 					"xMultiplier":1
 				},
 				{
-					"$type":"KompasServer.Effects.HealSubeffect, Assembly-CSharp"
+					"$type":"#Subeffect#Heal$"
 				},
 				{
-					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"$type":"#Subeffect#LoopWhileHaveTargets$",
 					"delete":true,
 					"jumpIndices":[1]
 				}

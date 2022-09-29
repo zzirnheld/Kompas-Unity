@@ -15,17 +15,17 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#TargetEnemy$"
 				},
 				{
-					"$type": "KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CanResolve$",
 					"subeffIndices": [
 						3
 					],
 					"skipIndex": 6
 				},
 				{
-					"$type": "KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ChooseOption$",
 					"choiceBlurb": "Reveal a Cost 1 card?",
 					"optionBlurbs": [
 						"Yes",
@@ -37,7 +37,7 @@
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CardTarget$",
 					"cardRestriction": {
 						"blurb": "fast card to reveal",
 						"cardRestrictions": [
@@ -58,13 +58,13 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.RevealSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Reveal$"
 				},
 				{
-					"$type": "KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#EndResolution$"
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CardTarget$",
 					"playerIndex": -2,
 					"cardRestriction": {
 						"blurb": "friendly Reporter to move",
@@ -86,7 +86,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#SpaceTarget$",
 					"playerIndex": -2,
 					"spaceRestriction": {
 						"blurb": "where for Newsflash! to move it starget",
@@ -97,7 +97,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#Move$",
 					"playerIndex": -2
 				}
 			]

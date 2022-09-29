@@ -8,7 +8,7 @@
 	},
 	"subeffects":[
 		{
-			"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+			"$type":"#Subeffect#SpaceTarget$",
 			"spaceRestriction":
 			{
 				"blurb":"to move Shaper to",
@@ -20,14 +20,14 @@
 			}
 		},
 		{
-			"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+			"$type":"#Subeffect#TargetThis$"
 		},
 		{
-			"$type":"KompasServer.Effects.SpendMovementSubeffect, Assembly-CSharp",
+			"$type":"#Subeffect#SpendMovement$",
 			"xModifier":1
 		},
 		{
-			"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+			"$type":"#Subeffect#SetXByGamestate$",
 			"whatToCount":"Distance to Coords Through",
 			"throughRestriction":{
 				"cardRestrictions":["Subtypes Include","Character","Board"],
@@ -37,11 +37,11 @@
 			"xModifier":-1
 		},
 		{
-			"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+			"$type":"#Subeffect#ChangeCardStats$",
 			"eMultiplier":-1
 		},
 		{
-			"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+			"$type":"#Subeffect#Move$"
 		}
 	]
 }

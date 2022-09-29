@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Hungry Tide",
-	"effText": "You can hand->annihilate 2 Water spells to search your deck for an Aquatic character.\n<i>Vanishes after 2 turns.</i>",
+	"effText": "You can hand->annihilate 2 Water spells to deck->hand an Aquatic character.\n<i>Vanishes after 2 turns.</i>",
 	"effects": [
 		{
 			"blurb": "The Tide Hungers",
@@ -13,7 +13,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ChooseFromList$",
 					"cardRestriction": {
 						"blurb": "to feed the tide",
 						"cardRestrictions": [
@@ -36,14 +36,14 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Annihilate$"
 				},
 				{
-					"$type": "KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#Annihilate$",
 					"targetIndex": -2
 				},
 				{
-					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ChooseFromList$",
 					"cardRestriction": {
 						"blurb": "for the tide to belch",
 						"cardRestrictions": [
@@ -58,7 +58,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Rehand$"
 				}
 			]
 		}

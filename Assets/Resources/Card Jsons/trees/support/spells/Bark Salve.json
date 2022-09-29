@@ -14,7 +14,7 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type":"#Subeffect#CardTarget$",
 					"cardRestriction":
 					{
 						"cardRestrictions":["Board","Character","Hurt","Subtypes Include","Space Fits Restriction"],
@@ -27,10 +27,10 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.HealSubeffect, Assembly-CSharp"
+					"$type":"#Subeffect#Heal$"
 				},
 				{
-					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type":"#Subeffect#Draw$"
 				}
 			]
 		}

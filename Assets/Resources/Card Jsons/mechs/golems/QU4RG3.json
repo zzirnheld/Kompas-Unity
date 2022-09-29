@@ -18,7 +18,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CardTarget$",
 					"cardRestriction": {
 						"blurb": "4TT4CK3R",
 						"cardRestrictions": [
@@ -34,7 +34,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CardTarget$",
 					"cardRestriction": {
 						"blurb": "D3F3ND3R",
 						"cardRestrictions": [
@@ -51,12 +51,12 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#Attack$",
 					"targetIndex": -1,
 					"attackerIndex": -2
 				},
 				{
-					"$type": "KompasServer.Effects.NegateSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Negate$"
 				}
 			]
 		}

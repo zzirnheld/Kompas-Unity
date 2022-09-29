@@ -14,7 +14,7 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"$type":"#Subeffect#ChooseFromList$",
 					"maxCanChoose":1,
 					"cardRestriction":
 					{
@@ -24,7 +24,7 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type":"#Subeffect#Rehand$"
 				}
 			]
 		}

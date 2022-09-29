@@ -24,7 +24,7 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type":"#Subeffect#CardTarget$",
 					"cardRestriction":
 					{
 						"blurb":"friendly character for Crab Robot Crab Minion to give intel",
@@ -32,7 +32,7 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type":"#Subeffect#ChangeCardStats$",
 					"wModifier":1
 				}
 			]	

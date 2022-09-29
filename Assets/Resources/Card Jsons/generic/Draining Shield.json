@@ -16,21 +16,21 @@
             },
             "subeffects":[
 				{
-					"$type": "KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#TargetAugmentedCard$"
 				},
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp",
+					"$type":"#Subeffect#TargetTriggeringCard$",
 					"secondary":true
 				},
                 {
-                    "$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+                    "$type":"#Subeffect#TargetThis$"
                 },
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp",
+					"$type":"#Subeffect#Discard$",
                     "targetIndex": 2
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#SetXByTargetCardValue$",
 					"cardValue": {
 						"value": "S"
 					},
@@ -38,7 +38,7 @@
                     "targetIndex": 1
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ChangeCardStats$",
 					"eMultiplier": 2,
                     "targetIndex": 0
 				}

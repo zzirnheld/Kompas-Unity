@@ -13,17 +13,17 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#TargetEnemy$"
 				},
 				{
-					"$type": "KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CanResolve$",
 					"subeffIndices": [
 						3
 					],
 					"skipIndex": 7
 				},
 				{
-					"$type": "KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ChooseOption$",
 					"choiceBlurb": "Reveal two cards?",
 					"optionBlurbs": [
 						"Yes",
@@ -36,7 +36,7 @@
 					"showX": true
 				},
 				{
-					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ChooseFromList$",
 					"cardRestriction": {
 						"blurb": "cards to reveal",
 						"cardRestrictions": [
@@ -55,21 +55,21 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.RevealSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Reveal$"
 				},
 				{
-					"$type": "KompasServer.Effects.RevealSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#Reveal$",
 					"targetIndex": -2
 				},
 				{
-					"$type": "KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#EndResolution$"
 				},
 				{
-					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#Draw$",
 					"playerIndex": -2
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ChangeAllCardStats$",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character",

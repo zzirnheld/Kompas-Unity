@@ -45,7 +45,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CardTarget$",
 					"cardRestriction": {
 						"blurb": "character whose W to swap",
 						"cardRestrictions": [
@@ -55,7 +55,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CardTarget$",
 					"cardRestriction": {
 						"blurb": "other character whose W to swap",
 						"cardRestrictions": [
@@ -78,7 +78,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SwapStatSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#SwapStat$",
 					"targetIndex": -2,
 					"secondTargetIndex": -1,
 					"firstTargetStat": {

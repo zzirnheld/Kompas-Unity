@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Leypathmaking",
-	"effText": "Hand->reshuffle a Linewalker. Search your deck for 2 distinct Linewalkers.",
+	"effText": "Hand->reshuffle a Linewalker. Deck->hand 2 distinct Linewalkers.",
 	"effects": [
 		{
 			"triggerData": {
@@ -14,7 +14,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CardTarget$",
 					"cardRestriction": {
 						"blurb": "Linewalker for Leypathmaking to reshuffle",
 						"cardRestrictions": [
@@ -28,10 +28,10 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Reshuffle$"
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CardTarget$",
 					"cardRestriction": {
 						"blurb": "Linewalker for Leypathmaking to search",
 						"cardRestrictions": [
@@ -46,7 +46,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CardTarget$",
 					"cardRestriction": {
 						"blurb": "Linewalker for Leypathmaking to search",
 						"cardRestrictions": [
@@ -61,10 +61,10 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Rehand$"
 				},
 				{
-					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#Rehand$",
 					"targetIndex": -2
 				}
 			]

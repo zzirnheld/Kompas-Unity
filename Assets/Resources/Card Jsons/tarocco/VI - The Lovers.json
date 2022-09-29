@@ -18,17 +18,17 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetThisSpaceSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#TargetThisSpace$"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#TargetThis$"
 				},
 				{
-					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#Discard$",
 					"targetIndex": -1
 				},
 				{
-					"$type": "KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#DeckTarget$",
 					"cardRestriction": {
 						"blurb": "Tarocco for Lovers to become",
 						"cardRestrictions": [
@@ -52,7 +52,7 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#Play$",
 					"targetIndex": -1,
 					"SpaceIndex": -1
 				}

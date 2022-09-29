@@ -13,14 +13,14 @@
 	},
 	"subeffects":[
 		{
-			"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+			"$type":"#Subeffect#TargetThis$"
 		},
 		{
-			"$type":"KompasServer.Effects.SpendRemainingMovementSubeffect, Assembly-CSharp",
+			"$type":"#Subeffect#SpendRemainingMovement$",
 			"xModifier":1
 		},
 		{
-			"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+			"$type":"#Subeffect#SpaceTarget$",
 			"spaceRestriction":
 			{
 				"blurb":"to Linewalk to",
@@ -39,7 +39,7 @@
 			}
 		},
 		{
-			"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+			"$type":"#Subeffect#Move$"
 		}
 	]
 }

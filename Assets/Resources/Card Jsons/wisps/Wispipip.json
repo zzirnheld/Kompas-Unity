@@ -14,7 +14,7 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type":"#Subeffect#CardTarget$",
 					"cardRestriction":
 					{
 						"cardRestrictions":["Friendly","Discard","Subtypes Include"],
@@ -22,10 +22,10 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+					"$type":"#Subeffect#Reshuffle$"
 				},
 				{
-					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"$type":"#Subeffect#AddPips$",
 					"xModifier":1
 				}
 			]	

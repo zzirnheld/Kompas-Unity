@@ -14,7 +14,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CardTarget$",
 					"cardRestriction": {
 						"blurb": "for Spiritual Advice to reshuffle",
 						"cardRestrictions": [
@@ -28,17 +28,17 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.TopdeckSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Topdeck$"
 				},
 				{
-					"$type": "KompasServer.Effects.CountXLoopSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CountXLoop$",
 					"canDecline": true,
 					"jumpIndices": [
 						0
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#DrawX$",
 					"xMultiplier": 3
 				}
 			]

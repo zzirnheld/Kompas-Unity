@@ -13,7 +13,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.SetXBoardRestrictionSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#SetXBoardRestriction$",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Subtypes Include",
@@ -27,7 +27,7 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CardTarget$",
 					"cardRestriction": {
 						"blurb": "Warrior for Swordmystic to revive",
 						"cardRestrictions": [
@@ -51,11 +51,11 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#PayPipsTargetCost$",
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#SpaceTarget$",
 					"spaceRestriction": {
 						"blurb": "where for Swordmystic to revive target Warrior",
 						"spaceRestrictions": [
@@ -65,7 +65,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Play$"
 				}
 			]
 		}

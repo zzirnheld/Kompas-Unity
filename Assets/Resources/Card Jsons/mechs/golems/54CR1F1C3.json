@@ -18,7 +18,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.SetXByNumberIdentitySubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#SetXByNumberIdentity$",
 					"numberIdentity": {
 						"$type": "KompasServer.Effects.Identities.SubeffectNumberIdentities.Selector, Assembly-CSharp",
 						"selector": { "$type": "KompasCore.Effects.Identities.NumberSelectors.Minimum, Assembly-CSharp" },
@@ -51,7 +51,7 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#TargetAll$",
 					"cardRestriction": {
 						"cardRestrictionElements": [
                             {
@@ -82,17 +82,17 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Discard$"
 				},
 				{
-					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#LoopWhileHaveTargets$",
 					"delete": true,
 					"jumpIndices": [
 						2
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.NegateSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Negate$"
 				}
 			]
 		}

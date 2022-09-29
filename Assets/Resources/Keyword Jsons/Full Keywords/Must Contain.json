@@ -29,10 +29,10 @@
 	},
 	"subeffects":[
 		{
-			"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+			"$type":"#Subeffect#TargetThis$"
 		},
 		{
-			"$type":"KompasServer.Effects.DispelSubeffect, Assembly-CSharp"
+			"$type":"#Subeffect#Dispel$"
 		}
 	]	
 }

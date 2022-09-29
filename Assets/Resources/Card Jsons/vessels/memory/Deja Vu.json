@@ -21,10 +21,10 @@
 			},
 			"subeffects": [
                 {
-                    "$type":"KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+                    "$type":"#Subeffect#TargetAugmentedCard$"
                 },
 				{
-					"$type": "KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Resummon$"
 				}
 			]
 		}

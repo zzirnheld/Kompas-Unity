@@ -14,7 +14,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CardTarget$",
 					"cardRestriction": {
 						"blurb": "character for Tallow Golem to temporarily activate",
 						"cardRestrictions": [
@@ -24,7 +24,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.TemporaryActivationSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#TemporaryActivation$",
 					"endCondition": "Turn Start",
 					"triggerRestriction": {
 						"triggerRestrictions": [

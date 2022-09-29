@@ -24,10 +24,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Draw$"
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeDurationSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ChangeDuration$",
 					"xMultiplier": 0,
 					"xModifier": -1
 				}

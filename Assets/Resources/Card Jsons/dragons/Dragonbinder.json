@@ -16,7 +16,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.AutoTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#AutoTarget$",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Avatar",
@@ -25,7 +25,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PlayerChooseXSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#PlayerChooseX$",
 					"XRest": {
 						"numberRestrictions": [
 							">0"
@@ -33,14 +33,14 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ChangeCardStats$",
 					"eMultiplier": 2
 				},
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#TargetThis$"
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ChangeCardStats$",
 					"sMultiplier": 1
 				}
 			]

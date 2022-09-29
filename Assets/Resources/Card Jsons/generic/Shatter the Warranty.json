@@ -15,7 +15,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CardTarget$",
 					"cardRestriction": {
 						"blurb": "No! Not the original 1870s porcelain doll torso collection!",
 						"cardRestrictions": [
@@ -32,14 +32,14 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByTargetCostSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#SetXByTargetCost$",
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.DispelSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Dispel$"
 				},
 				{
-					"$type": "KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#DrawX$",
 					"xMultiplier": 1
 				}
 			]

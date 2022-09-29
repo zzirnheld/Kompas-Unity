@@ -1,7 +1,7 @@
 {
 	"cardType": 65,
 	"cardName": "Iterative Analyzer",
-	"effText": "When this Mech dies, search your deck for a distinct Mech Golem. 1 turn later, discard->hand me.",
+	"effText": "When this Mech dies, deck->hand a distinct Mech Golem. 1 turn later, discard->hand me.",
 	"effects": [
 		{
 			"blurb": "Postmortem Analysis",
@@ -24,10 +24,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#TargetTriggeringCard$"
 				},
 				{
-					"$type": "KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#DeckTarget$",
 					"cardRestriction": {
 						"blurb": "for Iterative Analysis to produce",
 						"cardRestrictions": [
@@ -43,7 +43,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#Delay$",
 					"numTimesToDelay": 0,
 					"jumpIndices": [
 						3
@@ -51,10 +51,10 @@
 					"endCondition": "Turn Start"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#TargetThis$"
 				},
 				{
-					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#ConditionalEnd$",
 					"condition": "Target Violates Restriction",
 					"cardRestriction": {
 						"cardRestrictions": [
@@ -63,7 +63,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Rehand$"
 				}
 			]
 		}

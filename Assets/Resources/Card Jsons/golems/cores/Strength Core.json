@@ -15,10 +15,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#TargetAugmentedCard$"
 				},
 				{
-					"$type": "KompasServer.Effects.TemporaryActivationSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#TemporaryActivation$",
 					"endCondition": "Augment Detached",
 					"triggerRestriction": {
 						"triggerRestrictions": [
@@ -27,7 +27,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.TemporaryCardStatChangeSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#TemporaryCardStatChange$",
 					"wModifier": 4,
 					"endCondition": "Augment Detached",
 					"triggerRestriction": {

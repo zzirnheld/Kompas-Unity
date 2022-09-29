@@ -18,7 +18,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#CardTarget$",
 					"cardRestriction": {
 						"blurb": "Ethereal to revive",
                         "cardRestrictionElements": [
@@ -36,7 +36,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#SpaceTarget$",
 					"spaceRestriction": {
 						"blurb": "where to revive the Ethereal",
                         "spaceRestrictionElements": [
@@ -49,10 +49,10 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "#Subeffect#Play$"
 				},
 				{
-					"$type": "KompasServer.Effects.HangingAnnihilationSubeffect, Assembly-CSharp",
+					"$type": "#Subeffect#HangingAnnihilation$",
 					"endCondition": "Stack End",
 					"triggerRestriction": { }
 				}
