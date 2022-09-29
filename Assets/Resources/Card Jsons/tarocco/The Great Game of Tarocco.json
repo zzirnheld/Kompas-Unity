@@ -16,8 +16,13 @@
 					"$type":"Subeffect:SetXBoardRestriction:",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Subtypes Include","Friendly","Board"],
-						"subtypesInclude":["Tarocco"]
+						"cardRestrictions":["Friendly","Board"],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Tarocco" ]
+							}
+						]
 					},
 					"xMultiplier":1
 				},

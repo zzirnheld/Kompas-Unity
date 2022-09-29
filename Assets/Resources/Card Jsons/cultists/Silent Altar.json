@@ -50,13 +50,15 @@
 						"blurb": "Altar(s) to sacrifice",
 						"cardRestrictions": [
 							"Spell",
-							"Subtypes Include",
 							"Friendly",
 							"Board",
 							"Not Already Target"
 						],
-						"subtypesInclude": [
-							"Altar"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Altar" ]
+							}
 						]
 					}
 				},

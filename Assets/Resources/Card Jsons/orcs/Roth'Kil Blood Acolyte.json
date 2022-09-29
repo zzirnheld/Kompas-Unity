@@ -20,10 +20,14 @@
 						"cardRestrictions": [
 							"Friendly",
 							"Character",
-							"Discard",
-							"Subtypes Include"
+							"Discard"
 						],
-						"subtypesInclude": [ "Orc" ]
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Orc" ]
+							}
+						]
 					}
 				},
 				{

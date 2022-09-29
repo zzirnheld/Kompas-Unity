@@ -19,11 +19,13 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Friendly",
-							"Discard",
-							"Subtypes Include"
+							"Discard"
 						],
-						"subtypesInclude": [
-							"Pulsar"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Pulsar" ]
+							}
 						]
 					}
 				},

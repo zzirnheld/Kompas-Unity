@@ -23,11 +23,13 @@
 							],
 							"inAOEOfRestriction": {
 								"cardRestrictions": [
-									"Subtypes Include",
 									"Distinct Name from Source"
 								],
-								"subtypesInclude": [
-									"Water"
+								"cardRestrictionElements": [
+									{
+										"$type": "Core.CardRestriction:SubtypesInclude:",
+										"subtypes": [ "Water" ]
+									}
 								]
 							},
 							"mustBeEmpty": false

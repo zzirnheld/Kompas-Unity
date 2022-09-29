@@ -20,11 +20,13 @@
 						"cardRestrictions": [
 							"Character",
 							"Friendly",
-                            "Subtypes Include",
 							"Space Fits Restriction"
                         ],
-						"subtypesInclude": [
-							"Vessel"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Vessel" ]
+							}
 						],
 						"spaceRestriction": {
 							"spaceRestrictions": [
@@ -49,11 +51,13 @@
 						"blurb": "Memories to search for",
 						"cardRestrictions": [
 							"Deck",
-                            "Friendly",
-                            "Subtypes Include"
+                            "Friendly"
                         ],
-						"subtypesInclude": [
-							"Memory"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Memory" ]
+							}
 						]
 					},
 					"listRestriction": {

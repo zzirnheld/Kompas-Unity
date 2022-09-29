@@ -15,11 +15,13 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Hand"
 						],
-						"subtypesInclude": [
-							"Crazy Idea"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Crazy", "Idea" ]
+							}
 						]
 					}
 				}

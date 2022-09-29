@@ -17,11 +17,13 @@
 					"blurb": "card to slightly yeet",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Source in This' AOE"
 						],
-						"subtypesInclude": [
-							"Shade"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Shape" ]
+							}
 						]
 					}
 				},

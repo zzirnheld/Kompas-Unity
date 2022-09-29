@@ -20,11 +20,13 @@
 						"cardRestrictions": [
 							"Friendly",
 							"Deck",
-							"Index<C",
-							"Subtypes Include"
+							"Index<C"
 						],
-						"subtypesInclude": [
-							"Supplicant"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Supplicant" ]
+							}
 						],
 						"constant": 7
 					}

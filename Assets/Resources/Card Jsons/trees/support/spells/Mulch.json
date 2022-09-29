@@ -13,8 +13,13 @@
 					"triggerRestrictions":["This Card in Play","Main Card Fits Restriction Before"],
 					"cardRestriction":
 					{
-						"cardRestrictions":["Subtypes Include","Board"],
-						"subtypesInclude":["Tree"]
+						"cardRestrictions":["Board"],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Tree" ]
+							}
+						]
 					}
 				}
 			},
@@ -24,8 +29,13 @@
 					"cardRestriction":
 					{
 						"blurb":"for Haemopoten to draw",
-						"cardRestrictions":["Friendly","Board","Subtypes Include"],
-						"subtypesInclude":["Tree"]
+						"cardRestrictions":["Friendly","Board"],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Tree" ]
+							}
+						]
 					},
 					"xMultiplier":1
 				},

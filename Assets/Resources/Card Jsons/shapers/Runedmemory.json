@@ -18,7 +18,6 @@
 					"cardRestriction": {
 						"blurb": "Shaping for He Who Knew Runes to cast",
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Spell",
 							"Friendly",
 							"Hand",
@@ -33,8 +32,11 @@
 								"=X"
 							]
 						},
-						"subtypesInclude": [
-							"Shaping"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Shaping" ]
+							}
 						]
 					},
 					"xMultiplier": 1

@@ -20,23 +20,25 @@
 						"cardRestrictions": [
 							"Character",
 							"Board",
-							"Subtypes Include",
 							"Space Fits Restriction"
 						],
-						"subtypesInclude": [
-							"Structure"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Structure" ]
+							}
 						],
 						"spaceRestriction": {
 							"spaceRestrictions": [
                                 "Connected to Card Target by Cards Fitting Restriction"
                             ],
                             "connectednessRestriction": {
-                                "cardRestrictions": [
-                                    "Subtypes Include"
-                                ],
-                                "subtypesInclude": [
-                                    "Structure"
-                                ]
+								"cardRestrictionElements": [
+									{
+										"$type": "Core.CardRestriction:SubtypesInclude:",
+										"subtypes": [ "Structure" ]
+									}
+								]
                             }
 						}
 					},

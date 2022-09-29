@@ -19,15 +19,17 @@
 					"cardRestriction": {
 						"blurb": "Big Brain Play?",
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Friendly",
 							"Deck",
 							"Spell",
 							"Can Be Played",
 							"Effect Controller can Afford Cost"
 						],
-						"subtypesInclude": [
-							"Team Play"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Team", "Play" ]
+							}
 						]
 					}
 				},

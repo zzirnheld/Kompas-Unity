@@ -18,13 +18,15 @@
 					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Character",
 							"Friendly",
 							"Board"
 						],
-						"subtypesInclude": [
-							"Golem"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Golem" ]
+							}
 						]
 					}
 				},
@@ -40,7 +42,6 @@
 					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Character",
 							"Multiple Possible Locations",
 							"Card Value Fits Number Restriction"
@@ -53,8 +54,11 @@
 								"<=X"
 							]
 						},
-						"subtypesInclude": [
-							"Golem"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Golem" ]
+							}
 						],
 						"locations": [
 							2,

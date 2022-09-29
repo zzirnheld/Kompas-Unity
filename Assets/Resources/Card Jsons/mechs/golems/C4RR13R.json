@@ -34,12 +34,13 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character",
-							"Card Value Fits Number Restriction",
-							"Subtypes Include"
+							"Card Value Fits Number Restriction"
 						],
-						"subtypesInclude": [
-							"Mech",
-							"Golem"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Mech", "Golem" ]
+							}
 						]
 					},
 					"jumpIndices": [

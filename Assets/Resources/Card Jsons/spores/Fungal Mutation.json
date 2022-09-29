@@ -20,11 +20,13 @@
 						"blurb": "Fungus to mutate",
 						"cardRestrictions": [
 							"Friendly",
-							"Hand",
-							"Subtypes Include"
+							"Hand"
 						],
-						"subtypesInclude": [
-							"Fungus"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Fungus" ]
+							}
 						]
 					}
 				},
@@ -44,11 +46,13 @@
 						"cardRestrictions": [
 							"Friendly",
 							"Deck",
-							"Index<C",
-							"Subtypes Include"
+							"Index<C"
 						],
-						"subtypesInclude": [
-							"Fungus"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Fungus" ]
+							}
 						],
 						"constant": 5
 					},

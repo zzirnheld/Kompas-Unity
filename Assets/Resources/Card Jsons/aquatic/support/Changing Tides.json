@@ -19,11 +19,13 @@
 						"blurb": "Changing tide",
 						"cardRestrictions": [
 							"Board",
-							"Spell",
-							"Subtypes Include"
+							"Spell"
 						],
-						"subtypesInclude": [
-							"Water"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Water" ]
+							}
 						]
 					}
 				},

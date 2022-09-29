@@ -58,11 +58,13 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Friendly",
-							"Board",
-							"Subtypes Include"
+							"Board"
 						],
-						"subtypesInclude": [
-							"Speedemon"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Speedemon" ]
+							}
 						]
 					},
 					"xMultiplier": 1

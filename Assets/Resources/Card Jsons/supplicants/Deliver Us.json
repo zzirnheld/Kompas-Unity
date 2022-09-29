@@ -20,11 +20,13 @@
 						"cardRestrictions": [
 							"Character",
 							"Multiple Possible Locations",
-							"Friendly",
-							"Subtypes Include"
+							"Friendly"
 						],
-						"subtypesInclude": [
-							"Supplicant"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Supplicant" ]
+							}
 						],
 						"locations": [
 							1,

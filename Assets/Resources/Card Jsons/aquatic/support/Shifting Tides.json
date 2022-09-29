@@ -14,11 +14,13 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Friendly",
-							"Subtypes Include"
+							"Friendly"
 						],
-						"subtypesInclude": [
-							"Water"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Water" ]
+							}
 						]
 					}
 				}
@@ -31,11 +33,13 @@
 						"cardRestrictions": [
 							"Board",
 							"Friendly",
-							"Spell",
-							"Subtypes Include"
+							"Spell"
 						],
-						"subtypesInclude": [
-							"Water"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Water" ]
+							}
 						]
 					}
 				},
@@ -53,11 +57,13 @@
 							"Spell",
 							"Friendly",
 							"Hand",
-							"Can Be Played",
-							"Subtypes Include"
+							"Can Be Played"
 						],
-						"subtypesInclude": [
-							"Water"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Water" ]
+							}
 						]
 					}
 				},

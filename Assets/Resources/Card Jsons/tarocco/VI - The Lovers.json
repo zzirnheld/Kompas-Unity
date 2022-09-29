@@ -32,7 +32,6 @@
 					"cardRestriction": {
 						"blurb": "Tarocco for Lovers to become",
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Character",
 							"Deck",
 							"Card Value Fits Number Restriction"
@@ -45,8 +44,11 @@
 								"<=X"
 							]
 						},
-						"subtypesInclude": [
-							"Tarocco"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Tarocco" ]
+							}
 						]
 					},
 					"xMultiplier": 1

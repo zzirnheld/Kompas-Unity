@@ -19,11 +19,13 @@
 						"blurb": "Linewalker for Leypathmaking to reshuffle",
 						"cardRestrictions": [
 							"Friendly",
-							"Hand",
-							"Subtypes Include"
+							"Hand"
 						],
-						"subtypesInclude": [
-							"Linewalker"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Linewalker" ]
+							}
 						]
 					}
 				},
@@ -37,11 +39,13 @@
 						"cardRestrictions": [
 							"Friendly",
 							"Deck",
-							"Subtypes Include",
 							"Distinct Name from Other Targets"
 						],
-						"subtypesInclude": [
-							"Linewalker"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Linewalker" ]
+							}
 						]
 					}
 				},
@@ -52,11 +56,13 @@
 						"cardRestrictions": [
 							"Friendly",
 							"Deck",
-							"Subtypes Include",
 							"Distinct Name from Other Targets"
 						],
-						"subtypesInclude": [
-							"Linewalker"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Linewalker" ]
+							}
 						]
 					}
 				},

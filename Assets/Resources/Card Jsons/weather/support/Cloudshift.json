@@ -20,7 +20,6 @@
 						"cardRestrictions": [
 							"Friendly",
 							"Board",
-							"Subtypes Include",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
@@ -28,8 +27,11 @@
 								"Adjacent to Source"
 							]
 						},
-						"subtypesInclude": [
-							"Weather"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Weather" ]
+							}
 						]
 					}
 				},
@@ -45,11 +47,13 @@
 							"Deck",
 							"Spell",
 							"Distinct Name from Other Targets",
-							"Subtypes Include",
 							"Spell Subtypes"
 						],
-						"subtypesInclude": [
-							"Weather"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Weather" ]
+							}
 						],
 						"spellSubtypes": [
 							"Radial"

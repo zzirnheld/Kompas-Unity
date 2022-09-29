@@ -15,19 +15,21 @@
 					],
 					"nowRestriction": {
 						"cardRestrictions": [
-                            "Subtypes Include",
                             "Augments Card Fitting Restriction"
                         ],
-						"subtypesInclude": [
-							"Memory"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Memory" ]
+							}
 						],
 						"augmentRestriction": {
-							"cardRestrictions": [
-                                "Subtypes Include"
-							],
-                            "subtypesInclude": [
-                                "Vessel"
-                            ]
+							"cardRestrictionElements": [
+								{
+									"$type": "Core.CardRestriction:SubtypesInclude:",
+									"subtypes": [ "Vessel" ]
+								}
+							]
 						}
 					}
 				}
@@ -42,11 +44,13 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Board",
-                            "Subtypes Include",
 							"Wields No Augment Fitting Restriction"
 						],
-						"subtypesInclude": [
-							"Vessel"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Vessel" ]
+							}
 						],
 						"augmentRestriction": {
 							"cardRestrictions": [

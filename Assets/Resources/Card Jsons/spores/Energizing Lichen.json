@@ -19,12 +19,14 @@
 					"cardRestriction": {
 						"blurb": "dead Fungus",
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Character",
 							"Discard"
 						],
-						"subtypesInclude": [
-							"Fungus"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Fungus" ]
+							}
 						]
 					}
 				},

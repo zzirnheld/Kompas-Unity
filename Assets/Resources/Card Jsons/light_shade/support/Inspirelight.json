@@ -20,13 +20,14 @@
 					"cardRestriction": {
 						"blurb": "Brilliant Mage who was inspired",
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Friendly",
 							"Deck"
 						],
-						"subtypesInclude": [
-							"Brilliant",
-                            "Mage"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Brilliant", "Mage" ]
+							}
 						]
 					}
 				},
@@ -50,11 +51,11 @@
 				"In AOE of Card Fitting Restriction"
 			],
 			"inAOEOfRestriction": {
-				"cardRestrictions": [
-					"Subtypes Include"
-				],
-				"subtypesInclude": [
-					"Light"
+				"cardRestrictionElements": [
+					{
+						"$type": "Core.CardRestriction:SubtypesInclude:",
+						"subtypes": [ "Light" ]
+					}
 				]
 			}
 		}

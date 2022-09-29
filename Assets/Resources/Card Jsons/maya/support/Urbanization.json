@@ -23,12 +23,13 @@
 					"condition": "Target Violates Restriction",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Character",
-							"Subtypes Include"
+							"Character"
 						],
-						"subtypesInclude": [
-                            "Maya",
-							"Structure"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Maya", "Structure" ]
+							}
 						]
 					},
 					"jumpIndices": [

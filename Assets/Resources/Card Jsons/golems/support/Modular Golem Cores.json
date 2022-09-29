@@ -23,11 +23,13 @@
 							],
 							"adjacencyRestriction": {
 								"cardRestrictions": [
-									"Augmented",
-									"Subtypes Include"
+									"Augmented"
 								],
-								"subtypesInclude": [
-									"Golem"
+								"cardRestrictionElements": [
+									{
+										"$type": "Core.CardRestriction:SubtypesInclude:",
+										"subtypes": [ "Golem" ]
+									}
 								]
 							},
 							"mustBeEmpty": false
@@ -47,11 +49,13 @@
 							"Character",
 							"Board",
 							"Augmented",
-							"Subtypes Include",
 							"Space Fits Restriction"
 						],
-						"subtypesInclude": [
-							"Golem"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Golem" ]
+							}
 						],
 						"spaceRestriction": {
 							"spaceRestrictions": [
@@ -87,12 +91,13 @@
 						"blurb": "Golem core for Modular Golem Cores to attach",
 						"cardRestrictions": [
 							"Augment",
-							"Hand",
-							"Subtypes Include"
+							"Hand"
 						],
-						"subtypesInclude": [
-							"Golem",
-							"Core"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Golem", "Core" ]
+							}
 						]
 					}
 				},

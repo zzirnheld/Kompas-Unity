@@ -14,11 +14,11 @@
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Subtypes Include"
-						],
-						"subtypesInclude": [
-							"Golem"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Golem" ]
+							}
 						]
 					}
 				}
@@ -37,11 +37,13 @@
 						"cardRestrictions": [
 							"Friendly",
 							"Discard",
-							"Augment",
-							"Subtypes Include"
+							"Augment"
 						],
-						"subtypesInclude": [
-							"Golem Core"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Golem", "Core" ]
+							}
 						]
 					}
 				},

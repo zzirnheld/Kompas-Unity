@@ -17,8 +17,13 @@
 					"whatToCount":"Cards Fitting Restriction",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Character","Board","Friendly","Subtypes Include"],
-						"subtypesInclude":["Supplicant"]
+						"cardRestrictions":["Character","Board","Friendly"],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Supplicant" ]
+							}
+						]
 					},
 					"xMultiplier":1
 				},
@@ -26,8 +31,13 @@
 					"$type":"Subeffect:ChangeAllCardStats:",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Character","Board","Subtypes Include"],
-						"subtypesInclude":["Supplicant"]
+						"cardRestrictions":["Character","Board"],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Supplicant" ]
+							}
+						]
 					},
 					"eMultiplier":1
 				},
@@ -35,8 +45,13 @@
 					"$type":"Subeffect:ChangeAllCardStats:",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Character","Board","Friendly","Negated","Subtypes Include"],
-						"subtypesInclude":["Supplicant"]
+						"cardRestrictions":["Character","Board","Friendly","Negated"],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Supplicant" ]
+							}
+						]
 					},
 					"wMultiplier":3
 				}

@@ -29,7 +29,6 @@
 						"cardRestrictions": [
 							"Board",
 							"Character",
-							"Subtypes Include",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
@@ -37,8 +36,11 @@
 								"On Card Target's Diagonal"
 							]
 						},
-						"subtypesInclude": [
-							"Linewalker"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Linewalker" ]
+							}
 						]
 					}
 				},

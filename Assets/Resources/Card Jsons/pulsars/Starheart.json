@@ -18,11 +18,13 @@
 						],
 						"adjacencyRestriction": {
 							"cardRestrictions": [
-								"Not Context Card",
-								"Subtypes Include"
+								"Not Context Card"
 							],
-							"subtypesInclude": [
-								"Pulsar"
+							"cardRestrictionElements": [
+								{
+									"$type": "Core.CardRestriction:SubtypesInclude:",
+									"subtypes": [ "Pulsar" ]
+								}
 							]
 						},
 						"mustBeEmpty": false
@@ -58,11 +60,13 @@
 							],
 							"adjacencyRestriction": {
 								"cardRestrictions": [
-									"Not Context Card",
-									"Subtypes Include"
+									"Not Context Card"
 								],
-								"subtypesInclude": [
-									"Pulsar"
+								"cardRestrictionElements": [
+									{
+										"$type": "Core.CardRestriction:SubtypesInclude:",
+										"subtypes": [ "Pulsar" ]
+									}
 								]
 							},
 							"mustBeEmpty": false

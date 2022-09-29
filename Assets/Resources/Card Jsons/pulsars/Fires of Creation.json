@@ -14,7 +14,6 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Card Value Fits Number Restriction"
 						],
 						"cardValue": {
@@ -28,8 +27,11 @@
 								"value": "S"
 							}
 						},
-						"subtypesInclude": [
-							"Pulsar"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Pulsar" ]
+							}
 						]
 					}
 				}
@@ -52,7 +54,6 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Card Value Fits Number Restriction"
 						],
 						"cardValue": {
@@ -66,8 +67,11 @@
 								"value": "S"
 							}
 						},
-						"subtypesInclude": [
-							"Pulsar"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Pulsar" ]
+							}
 						]
 					}
 				}

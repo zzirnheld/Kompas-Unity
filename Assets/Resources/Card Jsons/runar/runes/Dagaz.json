@@ -14,11 +14,13 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Different from Source",
-							"Spell",
-							"Subtypes Include"
+							"Spell"
 						],
-						"subtypesInclude": [
-							"Rune"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Rune" ]
+							}
 						]
 					}
 				}

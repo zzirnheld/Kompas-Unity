@@ -13,11 +13,11 @@
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Subtypes Include"
-						],
-						"subtypesInclude": [
-							"Mech"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Mech" ]
+							}
 						]
 					}
 				}
@@ -33,12 +33,13 @@
 						"cardRestrictions": [
 							"Friendly",
 							"Deck",
-							"Distinct Name from Other Targets",
-							"Subtypes Include"
+							"Distinct Name from Other Targets"
 						],
-						"subtypesInclude": [
-							"Mech",
-							"Golem"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Mech", "Golem" ]
+							}
 						]
 					}
 				},

@@ -17,11 +17,13 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Friendly",
-							"Discard",
-							"Subtypes Include"
+							"Discard"
 						],
-						"subtypesInclude": [
-							"Crazy"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Crazy", "Idea" ]
+							}
 						]
 					}
 				},

@@ -52,11 +52,13 @@
 					"nowRestriction": {
 						"cardRestrictions": [
 							"Board",
-							"Hurt",
-							"Subtypes Include"
+							"Hurt"
 						],
-						"subtypesInclude": [
-							"Tree"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Tree" ]
+							}
 						]
 					}
 				}

@@ -25,11 +25,11 @@
 								"Not In AOE of Card Fitting Restriction"
 							],
 							"inAOEOfRestriction": {
-								"cardRestrictions": [
-									"Subtypes Include"
-								],
-								"subtypesInclude": [
-									"Weather"
+								"cardRestrictionElements": [
+									{
+										"$type": "Core.CardRestriction:SubtypesInclude:",
+										"subtypes": [ "Weather" ]
+									}
 								]
 							}
 						}
@@ -44,11 +44,11 @@
 								"In AOE of Card Fitting Restriction"
 							],
 							"inAOEOfRestriction": {
-								"cardRestrictions": [
-									"Subtypes Include"
-								],
-								"subtypesInclude": [
-									"Weather"
+								"cardRestrictionElements": [
+									{
+										"$type": "Core.CardRestriction:SubtypesInclude:",
+										"subtypes": [ "Weather" ]
+									}
 								]
 							}
 						}

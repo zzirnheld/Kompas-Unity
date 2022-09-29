@@ -19,12 +19,14 @@
 					"cardRestriction": {
 						"blurb": "Cultist for Doomsayer to search",
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Friendly",
 							"Deck"
 						],
-						"subtypesInclude": [
-							"Cultist"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Cultist" ]
+							}
 						]
 					}
 				},

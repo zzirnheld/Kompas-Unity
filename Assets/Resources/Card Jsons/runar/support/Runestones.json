@@ -14,12 +14,14 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Spell",
 							"Friendly"
 						],
-						"subtypesInclude": [
-							"Rune"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Rune" ]
+							}
 						]
 					}
 				}
@@ -30,12 +32,14 @@
 					"cardRestriction": {
 						"blurb": "Rune for Runestones to search",
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Friendly",
 							"Deck"
 						],
-						"subtypesInclude": [
-							"Rune"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Rune" ]
+							}
 						]
 					}
 				},

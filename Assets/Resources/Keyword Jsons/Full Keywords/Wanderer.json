@@ -30,8 +30,13 @@
 			"cardRestriction":
 			{
 				"blurb":"Wanderer to Wander into",
-				"cardRestrictions":["Character","Deck","Subtypes Include","Card Value Fits Number Restriction"],
-				"subtypesInclude":["Wanderer"],
+				"cardRestrictions":["Character","Deck","Card Value Fits Number Restriction"],
+				"cardRestrictionElements": [
+					{
+						"$type": "Core.CardRestriction:SubtypesInclude:",
+						"subtypes": [ "Wanderer" ]
+					}
+				],
 				"cardValue":{
 					"value":"S"
 				},

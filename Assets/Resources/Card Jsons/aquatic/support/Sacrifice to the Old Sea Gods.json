@@ -19,11 +19,13 @@
 						"blurb": "adjacent Aquatic card to annihilate",
 						"cardRestrictions": [
 							"Friendly",
-							"Hand",
-							"Subtypes Include"
+							"Hand"
 						],
-						"subtypesInclude": [
-							"Aquatic"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Aquatic" ]
+							}
 						]
 					}
 				},
@@ -47,11 +49,13 @@
 							"Spell",
 							"Friendly",
 							"Deck",
-							"Can Be Played",
-							"Subtypes Include"
+							"Can Be Played"
 						],
-						"subtypesInclude": [
-							"Water"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Water" ]
+							}
 						]
 					}
 				},

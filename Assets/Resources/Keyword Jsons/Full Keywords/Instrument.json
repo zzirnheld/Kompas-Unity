@@ -10,8 +10,13 @@
                 "spaceRestrictions":["Adjacent to Source","Card Here Fits Restriction"],
                 "hereFitsRestriction":
                 {
-                    "cardRestrictions":["Friendly","Subtypes Include"],
-                    "subtypesInclude":["Music"]
+                    "cardRestrictions":["Friendly"],
+                    "cardRestrictionElements": [
+                        {
+                            "$type": "Core.CardRestriction:SubtypesInclude:",
+                            "subtypes": [ "Music" ]
+                        }
+                    ]
                 },
                 "mustBeEmpty":false
             }

@@ -20,12 +20,14 @@
 					"cardRestriction": {
 						"blurb": "Structure to plan out",
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Friendly",
 							"Deck"
 						],
-						"subtypesInclude": [
-							"Structure"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Structure" ]
+							}
 						]
 					}
 				},

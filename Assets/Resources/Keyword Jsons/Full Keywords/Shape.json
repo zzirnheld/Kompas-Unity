@@ -14,8 +14,13 @@
 				"blurb":"to move Shaper to",
 				"spaceRestrictions":["Connected to Source by Cards Fitting Restriction"],
 				"connectednessRestriction":{
-					"cardRestrictions":["Subtypes Include","Character","Board"],
-					"subtypesInclude":["Ethereal"]
+					"cardRestrictions":["Character","Board"],
+					"cardRestrictionElements": [
+						{
+							"$type": "Core.CardRestriction:SubtypesInclude:",
+							"subtypes": [ "Ethereal" ]
+						}
+					]
 				}
 			}
 		},
@@ -30,8 +35,13 @@
 			"$type":"Subeffect:SetXByGamestate:",
 			"whatToCount":"Distance to Coords Through",
 			"throughRestriction":{
-				"cardRestrictions":["Subtypes Include","Character","Board"],
-				"subtypesInclude":["Ethereal"]
+				"cardRestrictions":["Character","Board"],
+				"cardRestrictionElements": [
+					{
+						"$type": "Core.CardRestriction:SubtypesInclude:",
+						"subtypes": [ "Ethereal" ]
+					}
+				]
 			},
 			"xMultiplier":1,
 			"xModifier":-1

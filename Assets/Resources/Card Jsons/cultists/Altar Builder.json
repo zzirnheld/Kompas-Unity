@@ -15,12 +15,14 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Board",
 							"Friendly"
 						],
-						"subtypesInclude": [
-							"Cultist"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Cultist" ]
+							}
 						]
 					}
 				}
@@ -56,13 +58,15 @@
 					"cardRestriction": {
 						"blurb": "Altar for Altar Builder to play",
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Friendly",
 							"Deck",
 							"Spell"
 						],
-						"subtypesInclude": [
-							"Altar"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Altar" ]
+							}
 						]
 					}
 				},

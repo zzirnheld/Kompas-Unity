@@ -22,11 +22,13 @@
 						"cardRestrictions": [
 							"Character",
 							"Discard",
-							"Subtypes Include",
 							"Can Be Played"
 						],
-						"subtypesInclude": [
-							"Tree"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Tree" ]
+							}
 						]
 					},
 					"xMultiplier": 1

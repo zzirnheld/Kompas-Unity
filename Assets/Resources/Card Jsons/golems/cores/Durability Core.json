@@ -54,12 +54,14 @@
 		],
 		"onCardRestriction": {
 			"cardRestrictions": [
-				"Subtypes Include",
 				"Friendly",
 				"Board"
 			],
-			"subtypesInclude": [
-				"Golem"
+			"cardRestrictionElements": [
+				{
+					"$type": "Core.CardRestriction:SubtypesInclude:",
+					"subtypes": [ "Golem" ]
+				}
 			]
 		}
 	},

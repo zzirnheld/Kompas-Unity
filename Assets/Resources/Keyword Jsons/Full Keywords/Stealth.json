@@ -21,12 +21,12 @@
                     "Can Move Card Target to This Space"
                 ],
                 "inAOEOfRestriction": {
-                    "cardRestrictions": [
-                        "Subtypes Include"
-                    ],
-                    "subtypesInclude": [
-                        "Shade"
-                    ]
+					"cardRestrictionElements": [
+						{
+							"$type": "Core.CardRestriction:SubtypesInclude:",
+							"subtypes": [ "Shade" ]
+						}
+					]
                 }
             }
         },
@@ -44,12 +44,14 @@
                 ],
                 "nowRestriction": {
                     "cardRestrictions": [
-                        "Source in This' AOE",
-                        "Subtypes Include"
+                        "Source in This' AOE"
                     ],
-                    "subtypesInclude": [
-                        "Light"
-                    ]
+					"cardRestrictionElements": [
+						{
+							"$type": "Core.CardRestriction:SubtypesInclude:",
+							"subtypes": [ "Light" ]
+						}
+					]
                 }
             }
         },

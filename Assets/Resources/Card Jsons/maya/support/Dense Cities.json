@@ -21,9 +21,11 @@
 							"Subtypes Include",
                             "Space Fits Restriction"
                         ],
-						"subtypesInclude": [
-                            "Maya",
-							"Structure"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Maya", "Structure" ]
+							}
 						],
 						"spaceRestriction": {
 							"spaceRestrictions": [
@@ -42,9 +44,11 @@
 							"Deck",
 							"Subtypes Include"
 						],
-						"subtypesInclude": [
-							"Maya",
-							"Craftsperson"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Maya", "Craft", "Person" ]
+							}
 						]
 					},
 					"listRestriction": {

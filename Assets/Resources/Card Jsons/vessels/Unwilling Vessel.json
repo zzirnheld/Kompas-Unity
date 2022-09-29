@@ -24,11 +24,13 @@
 						"cardRestrictions": [
 							"Augment",
 							"Board",
-							"Subtypes Include",
 							"Augments Current Target"
 						],
-						"subtypesInclude": [
-							"Memory"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Memory" ]
+							}
 						]
 					}
 				},

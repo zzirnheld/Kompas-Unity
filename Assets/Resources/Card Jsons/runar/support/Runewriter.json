@@ -17,7 +17,6 @@
 					"cardRestriction": {
 						"blurb": "Rune for Runewriter to reshuffle",
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Friendly",
 							"Multiple Possible Locations"
 						],
@@ -26,8 +25,11 @@
 							2,
 							3
 						],
-						"subtypesInclude": [
-							"Rune"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Rune" ]
+							}
 						]
 					},
 					"maxCanChoose": 1
@@ -46,13 +48,15 @@
 					"cardRestriction": {
 						"blurb": "Runar for Runewriter to search (to hand)",
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Friendly",
 							"Deck",
 							"Index<C"
 						],
-						"subtypesInclude": [
-							"Runar"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Runar" ]
+							}
 						],
 						"constant": 10
 					},

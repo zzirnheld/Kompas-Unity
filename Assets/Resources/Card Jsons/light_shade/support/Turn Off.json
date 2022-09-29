@@ -19,11 +19,13 @@
 						"blurb": "dododododododoododdooooo",
 						"cardRestrictions": [
 							"Friendly",
-							"Board",
-							"Subtypes Include"
+							"Board"
 						],
-						"subtypesInclude": [
-							"Light"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Light" ]
+							}
 						]
 					}
 				},

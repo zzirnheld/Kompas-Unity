@@ -17,11 +17,13 @@
 						"cardRestrictions": [
 							"Character",
 							"Board",
-							"Friendly",
-							"Subtypes Include"
+							"Friendly"
 						],
-						"subtypesInclude": [
-							"Cultist"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Cultist" ]
+							}
 						]
 					}
 				}
@@ -33,11 +35,13 @@
 						"cardRestrictions": [
 							"Character",
 							"Board",
-							"Friendly",
-							"Subtypes Include"
+							"Friendly"
 						],
-						"subtypesInclude": [
-							"Cultist"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Cultist" ]
+							}
 						]
 					},
 					"wModifier": 1

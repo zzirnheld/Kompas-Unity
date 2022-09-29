@@ -19,8 +19,13 @@
 					"cardRestriction":
 					{
 						"blurb":"Supplicant to give safe haven",
-						"cardRestrictions":["Friendly","Discard","Character","Subtypes Include"],
-						"subtypesInclude":["Supplicant"]
+						"cardRestrictions":["Friendly","Discard","Character"],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Supplicant" ]
+							}
+						]
 					}
 				},
 				{

@@ -17,11 +17,13 @@
 						"cardRestrictions": [
 							"Character",
 							"Board",
-							"Friendly",
-							"Subtypes Include"
+							"Friendly"
 						],
-						"subtypesInclude": [
-							"Cultist"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Cultist" ]
+							}
 						]
 					}
 				}
@@ -37,13 +39,15 @@
 					"$type": "Subeffect:AutoTarget:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Friendly",
 							"Deck",
 							"Character"
 						],
-						"subtypesInclude": [
-							"Cultist Follower"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Cultist", "Follower" ]
+							}
 						]
 					},
 					"tiebreakerDirection":"Any"
@@ -52,14 +56,16 @@
 					"$type": "Subeffect:AutoTarget:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Friendly",
 							"Deck",
 							"Character",
 							"Not Already Target"
 						],
-						"subtypesInclude": [
-							"Cultist Follower"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Cultist", "Follower" ]
+							}
 						]
 					},
 					"tiebreakerDirection":"Any"

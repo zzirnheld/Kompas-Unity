@@ -18,13 +18,15 @@
 					"cardRestriction": {
 						"blurb": "Shaper to hand-summon",
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Character",
 							"Friendly",
 							"Hand"
 						],
-						"subtypesInclude": [
-							"Shaper"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Shaper" ]
+							}
 						]
 					}
 				},

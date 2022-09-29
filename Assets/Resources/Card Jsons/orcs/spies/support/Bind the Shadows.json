@@ -16,11 +16,15 @@
 						"cardRestrictions": [
 							"Different from Source",
 							"Character",
-							"Space Fits Restriction",
-							"Subtypes Include"
+							"Space Fits Restriction"
 						],
 						"spaceRestriction": { "spaceRestrictions": [ "In Source's AOE" ] },
-						"subtypesInclude": [ "Orc" ]
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Orc" ]
+							}
+						]
 					}
 				}
 			},
@@ -71,10 +75,14 @@
 						"blurb": "Bind blood to a card",
 						"cardRestrictions": [
 							"Friendly",
-							"Hand",
-							"Subtypes Include"
+							"Hand"
 						],
-						"subtypesInclude": [ "Orc" ]
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Orc" ]
+							}
+						]
 					}
 				},
 				{

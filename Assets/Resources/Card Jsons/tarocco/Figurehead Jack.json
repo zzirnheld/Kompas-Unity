@@ -22,11 +22,13 @@
 						"blurb": "for Jack to hand-bottomdeck",
 						"cardRestrictions": [
 							"Friendly",
-							"Hand",
-							"Subtypes Include"
+							"Hand"
 						],
-						"subtypesInclude": [
-							"Tarocco"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Tarocco" ]
+							}
 						]
 					}
 				},

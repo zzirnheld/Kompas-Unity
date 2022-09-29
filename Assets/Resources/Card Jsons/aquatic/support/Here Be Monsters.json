@@ -21,11 +21,13 @@
 					},
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Source in This' AOE"
 						],
-						"subtypesInclude": [
-							"Water"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Water" ]
+							}
 						]
 					},
 					"xMultiplier": 1
@@ -48,11 +50,13 @@
 							"Friendly",
 							"Deck",
 							"Can Be Played",
-							"Subtypes Include",
 							"Card Value Fits Number Restriction"
 						],
-						"subtypesInclude": [
-							"Aquatic"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Squatic" ]
+							}
 						],
 						"cardValue": {
 							"value": "S"

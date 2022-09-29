@@ -18,12 +18,14 @@
 					"cardRestriction": {
 						"blurb": "Wisp for Wispiwisp to wisp",
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Character",
 							"Board"
 						],
-						"subtypesInclude": [
-							"Wisp"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Wisp" ]
+							}
 						]
 					}
 				},

@@ -19,11 +19,13 @@
 						"blurb": "for Soulcutter to discard",
 						"cardRestrictions": [
 							"Friendly",
-							"Hand",
-							"Subtypes Include"
+							"Hand"
 						],
-						"subtypesInclude": [
-							"Revenant"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Revenant" ]
+							}
 						]
 					}
 				},

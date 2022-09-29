@@ -17,13 +17,15 @@
 					"cardRestriction": {
 						"blurb": "for Animancer to discard",
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Friendly",
 							"Hand",
 							"Not Already Target"
 						],
-						"subtypesInclude": [
-							"Golem"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Golem" ]
+							}
 						]
 					}
 				},
@@ -50,7 +52,6 @@
 					"cardRestriction": {
 						"blurb": "for Animancer to search",
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Friendly",
 							"Deck",
 							"Card Value Fits Number Restriction"
@@ -63,8 +64,11 @@
 								"<=X"
 							]
 						},
-						"subtypesInclude": [
-							"Golem"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Golem" ]
+							}
 						]
 					},
 					"xMultiplier": 1,

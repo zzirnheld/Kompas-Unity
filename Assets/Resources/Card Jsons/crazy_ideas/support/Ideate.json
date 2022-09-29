@@ -20,12 +20,13 @@
 						"blurb": "Crazy Idea to ideate",
 						"cardRestrictions": [
 							"Friendly",
-							"Deck",
-							"Subtypes Include"
+							"Deck"
 						],
-						"subtypesInclude": [
-							"Crazy",
-                            "Idea"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Crazy", "Idea" ]
+							}
 						]
 					}
 				},

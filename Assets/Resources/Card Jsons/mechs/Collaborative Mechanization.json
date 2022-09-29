@@ -19,12 +19,13 @@
 						"blurb": "for Collaborative Mechanization to discard",
 						"cardRestrictions": [
 							"Friendly",
-							"Hand",
-							"Subtypes Include"
+							"Hand"
 						],
-						"subtypesInclude": [
-							"Mech",
-							"Pilot"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Mech", "Pilot" ]
+							}
 						]
 					}
 				},
@@ -51,12 +52,13 @@
 						"blurb": "Sign up here, future Pilots!",
 						"cardRestrictions": [
 							"Friendly",
-							"Deck",
-							"Subtypes Include"
+							"Deck"
 						],
-						"subtypesInclude": [
-							"Mech",
-							"Golem"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Mech", "Golem" ]
+							}
 						]
 					},
 					"listRestriction": {

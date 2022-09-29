@@ -19,11 +19,13 @@
 						"cardRestrictions": [
 							"Controller Matches Player Target",
 							"Hand",
-							"Subtypes Include",
 							"Hidden"
 						],
-						"subtypesInclude": [
-							"Reporter"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Reporter" ]
+							}
 						]
 					}
 				},

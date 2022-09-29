@@ -67,7 +67,6 @@
 					"cardRestriction": {
 						"blurb": "Pulsar to coalesce",
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Friendly",
 							"Deck",
 							"Character",
@@ -81,8 +80,11 @@
 								"<X"
 							]
 						},
-						"subtypesInclude": [
-							"Pulsar"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Pulsar" ]
+							}
 						]
 					},
 					"xMultiplier": 1

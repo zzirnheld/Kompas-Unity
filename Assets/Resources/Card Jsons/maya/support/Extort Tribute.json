@@ -57,19 +57,19 @@
                             {
                                 "$type": "Core.SpaceRestriction:CanPlayCard:",
                                 "toPlay": { "$type": "Subeffect.Card:Target:" }
-                            }
-                        ],
-                        "spaceRestrictionElements": [
+                            },
                             {
                                 "$type": "Core.SpaceRestriction:WithinDistanceOfNumberOfCards:",
                                 "cardRestriction": {
                                     "cardRestrictions": [
-                                        "Friendly",
-                                        "Subtypes Include"
+                                        "Friendly"
                                     ],
-                                    "subtypesInclude": [
-                                        "Structure"
-                                    ]
+									"cardRestrictionElements": [
+										{
+											"$type": "Core.CardRestriction:SubtypesInclude:",
+											"subtypes": [ "Structure" ]
+										}
+									]
                                 },
                                 "number": { 
                                     "$type": "Gamestate.Number:Constant:",

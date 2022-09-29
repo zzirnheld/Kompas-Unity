@@ -19,12 +19,14 @@
 						"cardRestrictions": [
 							"Character",
 							"Discard",
-							"Subtypes Include",
 							"Can Be Played",
 							"Effect Controller can Afford Cost"
 						],
-						"subtypesInclude": [
-							"Structure"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Structure" ]
+							}
 						]
 					},
 					"xMultiplier": 1

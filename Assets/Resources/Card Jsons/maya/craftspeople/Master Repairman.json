@@ -21,11 +21,13 @@
 					},
 					"nowRestriction": {
 						"cardRestrictions": [
-							"Board",
-							"Subtypes Include"
+							"Board"
 						],
-						"subtypesInclude": [
-							"Structure"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Structure" ]
+							}
 						]
 					}
 				}

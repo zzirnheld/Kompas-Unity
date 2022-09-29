@@ -32,8 +32,13 @@
 					"cardRestriction":
 					{
 						"blurb":"for Dragon Egg to become",
-						"cardRestrictions":["Subtypes Include","Character","Deck","Can Be Played"],
-						"subtypesInclude":["Dragon"]
+						"cardRestrictions":["Character","Deck","Can Be Played"],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Dragon" ]
+							}
+						]
 					}
 				},
 				{

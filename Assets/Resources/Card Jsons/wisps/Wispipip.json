@@ -17,8 +17,13 @@
 					"$type":"Subeffect:CardTarget:",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Friendly","Discard","Subtypes Include"],
-						"subtypesInclude":["Wisp"]
+						"cardRestrictions":["Friendly","Discard"],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Wisp" ]
+							}
+						]
 					}
 				},
 				{

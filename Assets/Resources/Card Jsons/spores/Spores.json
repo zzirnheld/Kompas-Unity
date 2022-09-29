@@ -51,11 +51,11 @@
 			"Adjacent to Card Fitting Restriction"
 		],
 		"adjacentCardRestriction": {
-			"cardRestrictions": [
-				"Subtypes Include"
-			],
-			"subtypesInclude": [
-				"Fungus"
+			"cardRestrictionElements": [
+				{
+					"$type": "Core.CardRestriction:SubtypesInclude:",
+					"subtypes": [ "Fungus" ]
+				}
 			]
 		}
 	},

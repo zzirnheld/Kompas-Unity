@@ -26,11 +26,11 @@
 							"mustBeEmpty": false
 						},
 						"augmentRestriction": {
-							"cardRestrictions": [
-								"Subtypes Include"
-							],
-							"subtypesInclude": [
-								"Sportsball"
+							"cardRestrictionElements": [
+								{
+									"$type": "Core.CardRestriction:SubtypesInclude:",
+									"subtypes": [ "Sportsball" ]
+								}
 							]
 						}
 					}

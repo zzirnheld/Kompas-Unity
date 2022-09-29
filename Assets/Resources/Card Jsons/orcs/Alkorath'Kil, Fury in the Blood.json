@@ -24,8 +24,13 @@
 					},
 					"cardRestriction": {
 						"blurb": "Return Orcs to the Fray",
-						"cardRestrictions": [ "Friendly", "Discard", "Subtypes Include" ],
-						"subtypesInclude": [ "Orc" ]
+						"cardRestrictions": [ "Friendly", "Discard" ],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Orc" ]
+							}
+						]
 					}
 				},
 				{
@@ -53,8 +58,13 @@
 				{
 					"$type": "Subeffect:TargetAll:",
 					"cardRestriction": {
-						"cardRestrictions": [ "Board", "Character", "Subtypes Include" ],
-						"subtypesInclude": [ "Orc" ]
+						"cardRestrictions": [ "Board", "Character" ],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Orc" ]
+							}
+						]
 					}
 				},
 				{
@@ -92,8 +102,13 @@
 				{
 					"$type": "Subeffect:TargetAll:",
 					"cardRestriction": {
-						"cardRestrictions": [ "Board", "Character", "Subtypes Include" ],
-						"subtypesInclude": [ "Orc" ]
+						"cardRestrictions": [ "Board", "Character" ],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Orc" ]
+							}
+						]
 					}
 				},
 				{

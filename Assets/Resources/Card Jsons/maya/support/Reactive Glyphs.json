@@ -15,12 +15,14 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Friendly",
-							"Subtypes Include"
+							"Friendly"
                         ],
-						"subtypesInclude": [
-                            "Structure"
-                        ]
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Structure" ]
+							}
+						]
 					}
                 }
             },

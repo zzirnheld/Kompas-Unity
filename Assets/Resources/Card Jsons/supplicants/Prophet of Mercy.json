@@ -18,7 +18,6 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Board",
-							"Subtypes Include",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
@@ -26,8 +25,11 @@
 								"Adjacent to Source"
 							]
 						},
-						"subtypesInclude": [
-							"Supplicant"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Supplicant" ]
+							}
 						]
 					},
 					"xMultiplier": 1
@@ -41,7 +43,6 @@
 							"Friendly",
 							"Deck",
 							"Spell",
-							"Subtypes Include",
 							"Card Value Fits Number Restriction"
 						],
 						"cardValue": {
@@ -52,8 +53,11 @@
 								"<=X"
 							]
 						},
-						"subtypesInclude": [
-							"Plea"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Plea" ]
+							}
 						]
 					},
 					"xMultiplier": 1

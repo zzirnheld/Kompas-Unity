@@ -20,11 +20,13 @@
 						"cardRestrictions": [
 							"Character",
 							"Board",
-							"Friendly",
-							"Subtypes Include"
+							"Friendly"
 						],
-						"subtypesInclude": [
-							"Structure"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Structure" ]
+							}
 						]
 					},
 					"eModifier": 7,

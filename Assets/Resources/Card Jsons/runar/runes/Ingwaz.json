@@ -18,7 +18,6 @@
 					"cardRestriction": {
 						"blurb": "for Ingwaz to recast",
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Spell",
 							"Friendly",
 							"Discard",
@@ -26,8 +25,11 @@
 							"Effect Controller can Afford Cost",
 							"Distinct Name from Source"
 						],
-						"subtypesInclude": [
-							"Rune"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Rune" ]
+							}
 						],
 						"costDivisor": 2
 					}

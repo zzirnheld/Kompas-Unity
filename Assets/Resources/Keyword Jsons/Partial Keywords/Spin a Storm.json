@@ -12,11 +12,11 @@
                 "In AOE Space Target is Also In"
             ],
             "inAOEOfRestriction": {
-                "cardRestrictions": [
-                    "Subtypes Include"
-                ],
-                "subtypesInclude": [
-                    "Weather"
+                "cardRestrictionElements": [
+                    {
+                        "$type": "Core.CardRestriction:SubtypesInclude:",
+                        "subtypes": [ "Weather" ]
+                    }
                 ]
             },
             "numberOfCardsInAOEOfRestriction": {
@@ -32,14 +32,15 @@
         "cardRestriction": {
             "blurb": "Weather Event to hand->summon",
             "cardRestrictions": [
-                "Subtypes Include",
                 "Character",
                 "Friendly",
                 "Hand"
             ],
-            "subtypesInclude": [
-                "Weather",
-                "Event"
+            "cardRestrictionElements": [
+                {
+                    "$type": "Core.CardRestriction:SubtypesInclude:",
+                    "subtypes": [ "Weather", "Event" ]
+                }
             ]
         }
     },
@@ -53,11 +54,11 @@
                 "In AOE Card Target is Also In"
             ],
             "inAOEOfRestriction": {
-                "cardRestrictions": [
-                    "Subtypes Include"
-                ],
-                "subtypesInclude": [
-                    "Weather"
+                "cardRestrictionElements": [
+                    {
+                        "$type": "Core.CardRestriction:SubtypesInclude:",
+                        "subtypes": [ "Weather" ]
+                    }
                 ]
             },
             "numberOfCardsInAOEOfRestriction": {
@@ -67,11 +68,11 @@
                 "constant": 2
             },
             "alsoInAOEOfRestriction": {
-                "cardRestrictions": [
-                    "Subtypes Include"
-                ],
-                "subtypesInclude": [
-                    "Weather"
+                "cardRestrictionElements": [
+                    {
+                        "$type": "Core.CardRestriction:SubtypesInclude:",
+                        "subtypes": [ "Weather" ]
+                    }
                 ]
             }
         },

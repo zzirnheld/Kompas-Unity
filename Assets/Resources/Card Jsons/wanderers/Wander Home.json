@@ -21,7 +21,6 @@
 							"Board",
 							"Character",
 							"Friendly",
-							"Subtypes Include",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
@@ -29,8 +28,11 @@
 								"Adjacent to Source"
 							]
 						},
-						"subtypesInclude": [
-							"Wanderer"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Wanderer" ]
+							}
 						]
 					}
 				},
@@ -156,11 +158,13 @@
 		],
 		"adjacentCardRestriction": {
 			"cardRestrictions": [
-				"Character",
-				"Subtypes Include"
+				"Character"
 			],
-			"subtypesInclude": [
-				"Wanderer"
+			"cardRestrictionElements": [
+				{
+					"$type": "Core.CardRestriction:SubtypesInclude:",
+					"subtypes": [ "Wanderer" ]
+				}
 			]
 		}
 	},

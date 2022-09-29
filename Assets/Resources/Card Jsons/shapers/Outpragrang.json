@@ -14,11 +14,13 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Friendly",
-							"Distinct Name from Source",
-							"Subtypes Include"
+							"Distinct Name from Source"
 						],
-						"subtypesInclude": [
-							"Shaper"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Shaper" ]
+							}
 						]
 					}
 				}

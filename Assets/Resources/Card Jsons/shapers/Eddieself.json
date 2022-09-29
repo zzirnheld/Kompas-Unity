@@ -26,11 +26,13 @@
 							"Friendly",
 							"Hand",
 							"Card Value Fits Number Restriction",
-							"Subtypes Include",
 							"Can be Played to Target Space"
 						],
-						"subtypesInclude": [
-							"Ethereal"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Ethereal" ]
+							}
 						],
 						"cardValue": {
 							"value": "S"

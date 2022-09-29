@@ -15,13 +15,14 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Spell",
 							"Friendly"
 						],
-						"subtypesInclude": [
-							"Weather",
-                            "Condition"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Weather", "Condition" ]
+							}
 						]
 					}
 				}
@@ -35,12 +36,11 @@
 					"$type": "Subeffect:ConditionalJump:",
 					"condition": "Target Violates Restriction",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Subtypes Include"
-						],
-						"subtypesInclude": [
-							"Weather",
-                            "Event"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Weather", "Event" ]
+							}
 						]
 					},
 					"jumpIndices": [

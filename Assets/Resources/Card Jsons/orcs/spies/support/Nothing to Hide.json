@@ -42,8 +42,13 @@
 				{
 					"$type": "Subeffect:TargetAll:",
 					"cardRestriction": {
-						"cardRestrictions": [ "Hand", "Friendly", "Character", "Subtypes Include" ],
-						"subtypesInclude": [ "Orc" ]
+						"cardRestrictions": [ "Hand", "Friendly", "Character" ],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Orc" ]
+							}
+						]
 					}
 				},
 				{
@@ -62,8 +67,13 @@
 					"$type": "Subeffect:SetXByGamestate:",
 					"whatToCount": "Cards Fitting Restriction",
 					"cardRestriction": {
-						"cardRestrictions": [ "Hand", "Friendly", "Character", "Subtypes Include" ],
-						"subtypesInclude": [ "Spy" ]
+						"cardRestrictions": [ "Hand", "Friendly", "Character" ],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Spy" ]
+							}
+						]
 					},
 					"xMultiplier": 1
 				},

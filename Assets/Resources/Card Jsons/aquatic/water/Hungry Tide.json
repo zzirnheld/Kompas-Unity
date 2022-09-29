@@ -19,11 +19,13 @@
 						"cardRestrictions": [
 							"Spell",
 							"Friendly",
-							"Hand",
-							"Subtypes Include"
+							"Hand"
 						],
-						"subtypesInclude": [
-							"Water"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Water" ]
+							}
 						]
 					},
 					"listRestriction": {
@@ -48,12 +50,14 @@
 						"blurb": "for the tide to belch",
 						"cardRestrictions": [
 							"Character",
-							"Subtypes Include",
 							"Friendly",
 							"Deck"
 						],
-						"subtypesInclude": [
-							"Aquatic"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Aquatic" ]
+							}
 						]
 					}
 				},

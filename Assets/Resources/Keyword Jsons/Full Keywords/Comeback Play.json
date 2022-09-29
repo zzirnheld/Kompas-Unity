@@ -11,8 +11,13 @@
 			},
 			"existsRestriction":
 			{
-				"cardRestrictions":["Friendly","Board","Augment","Subtypes Include"],
-				"subtypesInclude":["Sportsball"]
+				"cardRestrictions":["Friendly","Board","Augment"],
+				"cardRestrictionElements": [
+					{
+						"$type": "Core.CardRestriction:SubtypesInclude:",
+						"subtypes": [ "Sportsball" ]
+					}
+				]
 			}
 		}
 	},

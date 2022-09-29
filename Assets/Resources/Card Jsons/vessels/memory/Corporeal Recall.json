@@ -21,11 +21,13 @@
 						"cardRestrictions": [
 							"Friendly",
 							"Multiple Possible Locations",
-							"Augment",
-                            "Subtypes Include"
+							"Augment"
                         ],
-						"subtypesInclude": [
-							"Memory"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Memory" ]
+							}
 						],
 						"locations": [
 							2,
@@ -61,11 +63,13 @@
 							"Friendly",
 							"Deck",
 							"Can Be Played",
-							"Subtypes Include",
 							"Card Value Fits Number Restriction"
 						],
-						"subtypesInclude": [
-							"Vessel"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Vessel" ]
+							}
 						],
 						"cardValue": {
 							"value": "S"

@@ -20,12 +20,14 @@
 					"cardRestriction": {
 						"blurb": "Cultist for Silentbellringer to search",
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Friendly",
 							"Deck"
 						],
-						"subtypesInclude": [
-							"Cultist"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Cultist" ]
+							}
 						]
 					}
 				},

@@ -21,7 +21,6 @@
 							"Character",
 							"Friendly",
 							"Board",
-							"Subtypes Include",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
@@ -29,8 +28,11 @@
 								"Adjacent to Source"
 							]
 						},
-						"subtypesInclude": [
-							"Reporter"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Reporter" ]
+							}
 						]
 					}
 				},
@@ -104,7 +106,6 @@
 							"Friendly",
 							"Character",
 							"Deck",
-							"Subtypes Include",
 							"Card Value Fits Number Restriction"
 						],
 						"cardValue": {
@@ -115,8 +116,11 @@
 								"<=X"
 							]
 						},
-						"subtypesInclude": [
-							"Reporter"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Reporter" ]
+							}
 						]
 					},
 					"xMultiplier": 1
@@ -132,12 +136,11 @@
 			"Adjacent to Card Fitting Restriction"
 		],
 		"adjacentCardRestriction": {
-			"cardRestrictions": [
-				"Character",
-				"Subtypes Include"
-			],
-			"subtypesInclude": [
-				"Reporter"
+			"cardRestrictionElements": [
+				{
+					"$type": "Core.CardRestriction:SubtypesInclude:",
+					"subtypes": [ "Reporter" ]
+				}
 			]
 		}
 	},

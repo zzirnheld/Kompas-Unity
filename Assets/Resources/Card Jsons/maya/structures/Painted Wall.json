@@ -13,11 +13,11 @@
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Subtypes Include"
-						],
-						"subtypesInclude": [
-							"Structure"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Structure" ]
+							}
 						]
 					}
 				}
@@ -41,12 +41,12 @@
                             "Connected to Card Target by Spaces Fitting Restriction"
                         ],
                         "connectednessRestriction": {
-                            "cardRestrictions": [
-                                "Subtypes Include"
-                            ],
-                            "subtypesInclude": [
-                                "Structure"
-                            ]
+							"cardRestrictionElements": [
+								{
+									"$type": "Core.CardRestriction:SubtypesInclude:",
+									"subtypes": [ "Structure" ]
+								}
+							]
                         }
                     }
 				},

@@ -17,15 +17,17 @@
 					"cardRestriction": {
 						"blurb": "Rune for Runespeaker to cast",
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Spell",
 							"Friendly",
 							"Hand",
 							"Can Be Played",
 							"Effect Controller can Afford Cost"
 						],
-						"subtypesInclude": [
-							"Rune"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Rune" ]
+							}
 						]
 					}
 				},
@@ -60,14 +62,16 @@
 					"cardRestriction": {
 						"blurb": "Rune for Runespeaker to search (to hand)",
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Friendly",
 							"Distinct Name from Other Targets",
 							"Deck",
 							"Index<C"
 						],
-						"subtypesInclude": [
-							"Rune"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Rune" ]
+							}
 						],
 						"constant": 10
 					},

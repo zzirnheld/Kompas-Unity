@@ -19,8 +19,11 @@
 							"Friendly",
 							"Subtypes Include"
 						],
-						"subtypesInclude": [
-							"Moth"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Moth" ]
+							}
 						]
 					},
                     "secondaryCardRestriction": {
@@ -32,11 +35,11 @@
 								"In AOE of Card Fitting Restriction"
 							],
 							"inAOEOfRestriction": {
-								"cardRestrictions": [
-									"Subtypes Include"
-								],
-								"subtypesInclude": [
-									"Light"
+								"cardRestrictionElements": [
+									{
+										"$type": "Core.CardRestriction:SubtypesInclude:",
+										"subtypes": [ "Light" ]
+									}
 								]
 							}
 						}

@@ -14,11 +14,13 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Board",
-							"Subtypes Include"
+							"Board"
 						],
-						"subtypesInclude": [
-							"Wanderer"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Wanderer" ]
+							}
 						]
 					}
 				}

@@ -20,11 +20,13 @@
 						"cardRestrictions": [
 							"Friendly",
 							"Hand",
-							"Hidden",
-							"Subtypes Include"
+							"Hidden"
 						],
-						"subtypesInclude": [
-							"Moth"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Moth" ]
+							}
 						]
 					}
 				},
@@ -41,11 +43,13 @@
 						"cardRestrictions": [
 							"Friendly",
 							"Deck",
-							"Subtypes Include",
 							"Distinct Name from Other Targets"
 						],
-						"subtypesInclude": [
-							"Moth"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Moth" ]
+							}
 						]
 					}
 				},

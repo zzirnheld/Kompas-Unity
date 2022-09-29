@@ -75,11 +75,13 @@
 					"cardRestriction": {
 						"blurb": "Memories to recover",
 						"cardRestrictions": [
-							"Discard",
-                            "Subtypes Include"
+							"Discard"
                         ],
-						"subtypesInclude": [
-							"Memory"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Memory" ]
+							}
 						]
 					},
 					"listRestriction": {

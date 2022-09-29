@@ -42,11 +42,13 @@
 						"cardRestrictions": [
 							"Character",
 							"Deck",
-							"Subtypes Include",
 							"Card Value Fits Number Restriction"
 						],
-						"subtypesInclude": [
-							"Wanderer"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Wanderer" ]
+							}
 						],
 						"cardValue": {
 							"value": "S"

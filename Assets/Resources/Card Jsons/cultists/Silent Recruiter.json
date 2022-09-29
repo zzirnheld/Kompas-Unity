@@ -31,13 +31,15 @@
 					"cardRestriction": {
 						"blurb": "Silent Cult Follower to recruit",
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Friendly",
 							"Deck",
 							"Character"
 						],
-						"subtypesInclude": [
-							"Cultist Follower"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Cultist", "Follower" ]
+							}
 						]
 					}
 				},

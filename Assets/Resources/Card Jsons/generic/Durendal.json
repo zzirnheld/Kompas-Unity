@@ -35,12 +35,14 @@
 		],
 		"onCardRestriction": {
 			"cardRestrictions": [
-				"Subtypes Include",
 				"Friendly",
 				"Board"
 			],
-			"subtypesInclude": [
-				"Warrior"
+			"cardRestrictionElements": [
+				{
+					"$type": "Core.CardRestriction:SubtypesInclude:",
+					"subtypes": [ "Warrior" ]
+				}
 			]
 		}
 	},

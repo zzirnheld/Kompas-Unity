@@ -22,7 +22,6 @@
 							"Character",
 							"Summoned",
 							"Friendly",
-							"Subtypes Include",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
@@ -30,8 +29,11 @@
 								"Adjacent to Source"
 							]
 						},
-						"subtypesInclude": [
-							"Cultist"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Cultist" ]
+							}
 						]
 					}
 				},
@@ -74,11 +76,13 @@
 		],
 		"adjacentCardRestriction": {
 			"cardRestrictions": [
-				"Character",
-				"Subtypes Include"
+				"Character"
 			],
-			"subtypesInclude": [
-				"Cultist"
+			"cardRestrictionElements": [
+				{
+					"$type": "Core.CardRestriction:SubtypesInclude:",
+					"subtypes": [ "Cultist" ]
+				}
 			]
 		}
 	},

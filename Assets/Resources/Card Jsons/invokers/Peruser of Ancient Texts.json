@@ -31,12 +31,14 @@
 					"cardRestriction": {
 						"blurb": "Invocation to find",
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Friendly",
 							"Deck"
 						],
-						"subtypesInclude": [
-							"Invocation"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Invocation" ]
+							}
 						]
 					}
 				},

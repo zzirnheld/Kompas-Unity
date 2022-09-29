@@ -41,11 +41,13 @@
 						"cardRestrictions": [
 							"Friendly",
 							"Deck",
-							"Character",
-							"Subtypes Include"
+							"Character"
 						],
-						"subtypesInclude": [
-							"Wisp"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Wisp" ]
+							}
 						]
 					},
 					"maxCanChoose": 1

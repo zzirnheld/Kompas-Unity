@@ -18,13 +18,15 @@
 					"cardRestriction": {
 						"blurb": "Wisp to deck->summon",
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Character",
 							"Friendly",
 							"Deck"
 						],
-						"subtypesInclude": [
-							"Wisp"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Wisp" ]
+							}
 						]
 					}
 				},
@@ -62,13 +64,15 @@
 					"cardRestriction": {
 						"blurb": "Wisp to deck->summon",
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Character",
 							"Friendly",
 							"Deck"
 						],
-						"subtypesInclude": [
-							"Wisp"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Wisp" ]
+							}
 						]
 					}
 				},
@@ -106,13 +110,15 @@
 					"cardRestriction": {
 						"blurb": "Wisp to deck->summon",
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Character",
 							"Friendly",
 							"Deck"
 						],
-						"subtypesInclude": [
-							"Wisp"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Wisp" ]
+							}
 						]
 					}
 				},

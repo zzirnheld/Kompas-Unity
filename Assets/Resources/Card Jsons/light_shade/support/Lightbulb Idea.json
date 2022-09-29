@@ -6,18 +6,18 @@
 		{
 			"blurb": "OH!",
 			"triggerData": {
-				"triggerCondition": "Arrive",
+				"triggerCondition": "Play",
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Subtypes Include"
-						],
-						"subtypesInclude": [
-							"Light"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Light" ]
+							}
 						]
 					}
 				}

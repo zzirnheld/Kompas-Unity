@@ -28,11 +28,11 @@
 								"Adjacent to a Card that Fits Restriction"
 							],
 							"adjacencyRestriction": {
-								"cardRestrictions": [
-									"Subtypes Include"
-								],
-								"subtypesInclude": [
-									"Cultist"
+								"cardRestrictionElements": [
+									{
+										"$type": "Core.CardRestriction:SubtypesInclude:",
+										"subtypes": [ "Cultist" ]
+									}
 								]
 							}
 						}
@@ -50,13 +50,15 @@
 					"cardRestriction": {
 						"blurb": "Silent convert",
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Friendly",
 							"Deck",
 							"Character"
 						],
-						"subtypesInclude": [
-							"Cultist Follower"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Cultist", "Follower" ]
+							}
 						]
 					}
 				},

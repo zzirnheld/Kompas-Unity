@@ -19,11 +19,13 @@
 						"blurb": "Revenant for Salvage Soul to rehand",
 						"cardRestrictions": [
 							"Friendly",
-							"Board",
-							"Subtypes Include"
+							"Board"
 						],
-						"subtypesInclude": [
-							"Revenant"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Revenant" ]
+							}
 						]
 					}
 				},

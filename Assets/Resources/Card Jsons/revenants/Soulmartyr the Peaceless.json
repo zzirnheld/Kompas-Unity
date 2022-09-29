@@ -19,11 +19,13 @@
 						"cardRestrictions": [
 							"Character",
 							"Board",
-							"Friendly",
-							"Subtypes Include"
+							"Friendly"
 						],
-						"subtypesInclude": [
-							"Ethereal"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Ethereal" ]
+							}
 						]
 					},
 					"wModifier": 1

@@ -18,11 +18,13 @@
 					"cardRestriction": {
 						"blurb": "for Cyclical Sacrifice to reshuffle",
 						"cardRestrictions": [
-							"Discard",
-							"Subtypes Include"
+							"Discard"
 						],
-						"subtypesInclude": [
-							"Cultist"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Cultist" ]
+							}
 						]
 					}
 				},

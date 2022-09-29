@@ -20,11 +20,13 @@
 						"cardRestrictions": [
 							"Character",
 							"Board",
-							"Subtypes Include",
 							"Space Fits Restriction"
 						],
-						"subtypesInclude": [
-							"Structure"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Structure" ]
+							}
 						],
 						"spaceRestriction": {
 							"spaceRestrictions": [

@@ -13,16 +13,18 @@
                 "cardRestrictions": [
                     "Character",
                     "Board",
-                    "Space Fits Restriction",
-                    "Subtypes Include"
+                    "Space Fits Restriction"
                 ],
                 "spaceRestriction": {
                     "spaceRestrictions": [
                         "In Source's AOE"
                     ]
                 },
-                "subtypesInclude": [
-                    "Structure"
+                "cardRestrictionElements": [
+                    {
+                        "$type": "Core.CardRestriction:SubtypesInclude:",
+                        "subtypes": [ "Structure" ]
+                    }
                 ]
             }
 		}

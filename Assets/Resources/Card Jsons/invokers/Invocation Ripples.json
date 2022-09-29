@@ -15,20 +15,22 @@
                     ],
                     "sourceRestriction":
                     {
-                        "cardRestrictions": [
-                            "Subtypes Include"
-                        ],
-                        "subtypesInclude": [
-                            "Invoker"
-                        ]
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Invoker" ]
+							}
+						]
                     },
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Character"
 						],
-						"subtypesInclude": [
-							"Ethereal"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Ethereal" ]
+							}
 						]
 					}
 				}
@@ -54,12 +56,14 @@
 						"blurb": "Spirit to ripple into",
 						"cardRestrictions": [
 							"Character",
-							"Subtypes Include",
 							"Can Be Played",
 							"Already Target"
 						],
-						"subtypesInclude": [
-							"Spirit"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Spirit" ]
+							}
 						]
 					},
 					"xMultiplier": 1

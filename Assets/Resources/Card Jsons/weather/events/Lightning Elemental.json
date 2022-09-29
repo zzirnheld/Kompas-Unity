@@ -30,11 +30,11 @@
 								"In AOE Source is Also In"
 							],
 							"alsoInAOEOfRestriction": {
-								"cardRestrictions": [
-									"Subtypes Include"
-								],
-								"subtypesInclude": [
-									"Weather"
+								"cardRestrictionElements": [
+									{
+										"$type": "Core.CardRestriction:SubtypesInclude:",
+										"subtypes": [ "Weather" ]
+									}
 								]
 							}
 						}
@@ -67,11 +67,11 @@
 				"In AOE of Number of Cards Fitting Restriction"
 			],
 			"inAOEOfRestriction": {
-				"cardRestrictions": [
-					"Subtypes Include"
-				],
-				"subtypesInclude": [
-					"Weather"
+				"cardRestrictionElements": [
+					{
+						"$type": "Core.CardRestriction:SubtypesInclude:",
+						"subtypes": [ "Weather" ]
+					}
 				]
 			},
 			"numberOfCardsInAOEOfRestriction": {

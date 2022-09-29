@@ -18,11 +18,13 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Discard",
-							"Friendly",
-							"Subtypes Include"
+							"Friendly"
 						],
-						"subtypesInclude": [
-							"Rune"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Rune" ]
+							}
 						]
 					},
 					"xMultiplier": 1
@@ -35,12 +37,14 @@
 							"Spell",
 							"Friendly",
 							"Hand",
-							"Subtypes Include",
 							"Can Be Played",
 							"Card Value Fits Number Restriction"
 						],
-						"subtypesInclude": [
-							"Rune"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Rune" ]
+							}
 						],
 						"cardValue": {
 							"value": "C"
@@ -66,11 +70,13 @@
 						"blurb": "Rune for Runechanneler to reshuffle",
 						"cardRestrictions": [
 							"Friendly",
-							"Discard",
-							"Subtypes Include"
+							"Discard"
 						],
-						"subtypesInclude": [
-							"Rune"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Rune" ]
+							}
 						]
 					},
 					"listRestriction": {

@@ -40,11 +40,13 @@
 							"Friendly",
 							"Deck",
 							"Spell",
-							"Subtypes Include",
 							"Can be Played to Target Space"
 						],
-						"subtypesInclude": [
-							"Silent"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Silent" ]
+							}
 						],
 						"canPlayIgnoring": [
 							"Adjacent to Friendly Card"

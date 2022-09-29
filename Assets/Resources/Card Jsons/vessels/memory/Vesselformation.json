@@ -13,11 +13,11 @@
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-                            "Subtypes Include"
-                        ],
-						"subtypesInclude": [
-							"Vessel"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Vessel" ]
+							}
 						]
 					}
 				}
@@ -40,11 +40,13 @@
 						"cardRestrictions": [
 							"Friendly",
 							"Discard",
-							"Augment",
-                            "Subtypes Include"
+							"Augment"
                         ],
-						"subtypesInclude": [
-							"Memory"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Memory" ]
+							}
 						]
 					}
 				},

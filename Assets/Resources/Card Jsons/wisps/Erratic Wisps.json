@@ -27,11 +27,11 @@
 							"Adjacent to a Card that Fits Restriction"
 						],
 						"adjacencyRestriction": {
-							"cardRestrictions": [
-								"Subtypes Include"
-							],
-							"subtypesInclude": [
-								"Wisp"
+							"cardRestrictionElements": [
+								{
+									"$type": "Core.CardRestriction:SubtypesInclude:",
+									"subtypes": [ "Wisp" ]
+								}
 							]
 						},
 						"mustBeEmpty": false
@@ -48,7 +48,6 @@
 						"cardRestrictions": [
 							"Friendly",
 							"Board",
-							"Subtypes Include",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
@@ -56,8 +55,11 @@
 								"Adjacent to Card Target"
 							]
 						},
-						"subtypesInclude": [
-							"Wisp"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Wisp" ]
+							}
 						]
 					}
 				},

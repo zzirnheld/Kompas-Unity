@@ -72,7 +72,6 @@
 							"Character",
 							"Friendly",
 							"Board",
-							"Subtypes Include",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
@@ -80,8 +79,11 @@
 								"Adjacent to Source"
 							]
 						},
-						"subtypesInclude": [
-							"Reporter"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Reporter" ]
+							}
 						]
 					}
 				},
@@ -108,12 +110,11 @@
 			"Adjacent to Card Fitting Restriction"
 		],
 		"adjacentCardRestriction": {
-			"cardRestrictions": [
-				"Character",
-				"Subtypes Include"
-			],
-			"subtypesInclude": [
-				"Reporter"
+			"cardRestrictionElements": [
+				{
+					"$type": "Core.CardRestriction:SubtypesInclude:",
+					"subtypes": [ "Reporter" ]
+				}
 			]
 		}
 	},

@@ -19,11 +19,13 @@
 					"cardRestriction": {
 						"blurb": "Who to heal",
 						"cardRestrictions": [
-							"Hurt",
-							"Subtypes Include"
+							"Hurt"
 						],
-						"subtypesInclude": [
-							"Tree"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Tree" ]
+							}
 						]
 					}
 				},

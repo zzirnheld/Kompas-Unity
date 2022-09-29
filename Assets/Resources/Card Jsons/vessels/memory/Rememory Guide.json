@@ -14,11 +14,11 @@
 						"Space Fits Restriction"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-                            "Subtypes Include"
-                        ],
-						"subtypesInclude": [
-							"Vessel"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Vessel" ]
+							}
 						]
 					},
 					"spaceRestriction": {

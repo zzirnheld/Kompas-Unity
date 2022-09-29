@@ -22,11 +22,11 @@
 							"Adjacent to a Card that Fits Restriction"
 						],
 						"adjacencyRestriction": {
-							"cardRestrictions": [
-								"Subtypes Include"
-							],
-							"subtypesInclude": [
-								"Ethereal"
+							"cardRestrictionElements": [
+								{
+									"$type": "Core.CardRestriction:SubtypesInclude:",
+									"subtypes": [ "Ethereal" ]
+								}
 							]
 						}
 					}
@@ -36,12 +36,14 @@
 					"cardRestriction": {
 						"blurb": "Friendly Ethereal to move",
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Board",
 							"Friendly"
 						],
-						"subtypesInclude": [
-							"Ethereal"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Ethereal" ]
+							}
 						]
 					}
 				},

@@ -20,11 +20,13 @@
 						"cardRestrictions": [
 							"Discard",
                             "Friendly",
-                            "Subtypes Include",
 							"Distinct Name from Other Targets"
                         ],
-						"subtypesInclude": [
-							"Memory"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Memory" ]
+							}
 						]
 					}
 				},
@@ -37,11 +39,13 @@
 							"Friendly",
 							"Deck",
 							"Can Be Played",
-							"Subtypes Include",
 							"Distinct Name from Other Targets"
 						],
-						"subtypesInclude": [
-							"Vessel"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Vessel" ]
+							}
 						]
 					},
 					"xMultiplier": 1

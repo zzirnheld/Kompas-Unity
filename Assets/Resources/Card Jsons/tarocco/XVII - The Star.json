@@ -26,11 +26,13 @@
 							],
 							"adjacencyRestriction": {
 								"cardRestrictions": [
-									"Summoned",
-									"Subtypes Include"
+									"Summoned"
 								],
-								"subtypesInclude": [
-									"Tarocco"
+								"cardRestrictionElements": [
+									{
+										"$type": "Core.CardRestriction:SubtypesInclude:",
+										"subtypes": [ "Tarocco" ]
+									}
 								]
 							}
 						}
@@ -46,7 +48,6 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Board",
-							"Subtypes Include",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
@@ -54,8 +55,11 @@
 								"Adjacent to Card Target"
 							]
 						},
-						"subtypesInclude": [
-							"Tarocco"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Tarocco" ]
+							}
 						]
 					},
 					"xMultiplier": 1

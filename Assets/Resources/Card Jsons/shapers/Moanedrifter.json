@@ -29,11 +29,13 @@
 							"Friendly",
 							"Deck",
 							"Can Be Played",
-							"Subtypes Include",
 							"Card Value Fits Number Restriction"
 						],
-						"subtypesInclude": [
-							"Shaper"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Shaper" ]
+							}
 						],
 						"cardValue": {
 							"value": "E"
@@ -61,7 +63,7 @@
 				},
 				{
 					"$type": "Subeffect:Play:"
-				},
+				}
 			]
 		}
 	],

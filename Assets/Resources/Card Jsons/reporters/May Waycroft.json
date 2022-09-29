@@ -34,11 +34,13 @@
 						"cardRestrictions": [
 							"Character",
 							"Board",
-							"Friendly",
-							"Subtypes Include"
+							"Friendly"
 						],
-						"subtypesInclude": [
-							"Reporter"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Reporter" ]
+							}
 						]
 					},
 					"nModifier": 1,

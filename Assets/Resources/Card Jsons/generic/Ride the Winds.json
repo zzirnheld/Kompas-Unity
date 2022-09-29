@@ -18,11 +18,13 @@
 						"blurb": "to ride the winds",
 						"cardRestrictions": [
 							"Character",
-							"Board",
-							"Subtypes Include"
+							"Board"
 						],
-						"subtypesInclude": [
-							"Flying"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Flying" ]
+							}
 						]
 					}
 				},

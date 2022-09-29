@@ -26,14 +26,16 @@
 					"cardRestriction": {
 						"blurb": "Rune for Runebinding to cast",
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Spell",
 							"Friendly",
 							"Hand",
 							"Can Be Played"
 						],
-						"subtypesInclude": [
-							"Rune"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Rune" ]
+							}
 						]
 					}
 				},

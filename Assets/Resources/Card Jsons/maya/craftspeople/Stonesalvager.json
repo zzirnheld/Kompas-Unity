@@ -21,11 +21,13 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character",
-							"Discard",
-							"Subtypes Include"
+							"Discard"
 						],
-						"subtypesInclude": [
-							"Structure"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Structure" ]
+							}
 						]
 					},
 					"xMultiplier": 1,
@@ -40,11 +42,13 @@
 							"Character",
 							"Friendly",
 							"Hand",
-							"Card Value Fits Number Restriction",
-							"Subtypes Include"
+							"Card Value Fits Number Restriction"
 						],
-						"subtypesInclude": [
-							"Structure"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Structure" ]
+							}
 						],
 						"cardValue": {
 							"value": "S"
@@ -62,12 +66,14 @@
 					"cardRestriction": {
 						"blurb": "Structure whose stone to repuprose",
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Friendly",
 							"Discard"
 						],
-						"subtypesInclude": [
-							"Structure"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Structure" ]
+							}
 						]
 					}
 				},

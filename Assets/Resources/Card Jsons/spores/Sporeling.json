@@ -35,13 +35,15 @@
 					"cardRestriction": {
 						"blurb": "for Seedling to become",
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Character",
 							"Deck",
 							"Can Be Played"
 						],
-						"subtypesInclude": [
-							"Fungus"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Fungus" ]
+							}
 						]
 					}
 				},

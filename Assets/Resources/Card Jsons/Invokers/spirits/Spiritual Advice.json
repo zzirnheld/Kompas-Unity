@@ -19,11 +19,13 @@
 						"blurb": "for Spiritual Advice to reshuffle",
 						"cardRestrictions": [
 							"Friendly",
-							"Discard",
-							"Subtypes Include"
+							"Discard"
 						],
-						"subtypesInclude": [
-							"Spirit"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Spirit" ]
+							}
 						]
 					}
 				},

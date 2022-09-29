@@ -15,11 +15,13 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Friendly",
-							"Multiple Possible Locations",
-							"Subtypes Include"
+							"Multiple Possible Locations"
 						],
-						"subtypesInclude": [
-							"Wisp"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Wisp" ]
+							}
 						],
 						"locations": [
 							2,

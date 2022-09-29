@@ -11,8 +11,12 @@
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card is Main Card","Stackable Source Fits Restriction Now"],
 					"sourceRestriction":{
-						"cardRestrictions":["Subtypes Include"],
-						"subtypesInclude":["Dragon"]
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Dragon" ]
+							}
+						]
 					}
 				}
 			},
@@ -28,8 +32,13 @@
 					"cardRestriction":
 					{
 						"blurb":"OWO SO DRAGONNNNNNNNN",
-						"cardRestrictions":["Friendly","Hand","Subtypes Include"],
-						"subtypesInclude":["Dragon"]
+						"cardRestrictions":["Friendly","Hand"],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Dragon" ]
+							}
+						]
 					}
 				},
 				{

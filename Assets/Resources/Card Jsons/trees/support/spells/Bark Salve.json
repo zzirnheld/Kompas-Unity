@@ -17,13 +17,18 @@
 					"$type":"Subeffect:CardTarget:",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Board","Character","Hurt","Subtypes Include","Space Fits Restriction"],
+						"cardRestrictions":["Board","Character","Hurt","Space Fits Restriction"],
 						"spaceRestriction":
 						{
 							"spaceRestrictions":["Adjacent to Source"],
 							"mustBeEmpty":false
 						},
-						"subtypesInclude":["Tree"]
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Tree" ]
+							}
+						]
 					}
 				},
 				{

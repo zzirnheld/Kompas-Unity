@@ -20,11 +20,13 @@
 						"cardRestrictions": [
 							"Friendly",
 							"Board",
-							"Different from Source",
-							"Subtypes Include"
+							"Different from Source"
 						],
-						"subtypesInclude": [
-							"Crazy Idea"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Crazy", "Idea" ]
+							}
 						]
 					}
 				},
@@ -39,11 +41,13 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Friendly",
-							"Discard",
-							"Subtypes Include"
+							"Discard"
 						],
-						"subtypesInclude": [
-							"Crazy Idea"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Crazy", "Idea" ]
+							}
 						]
 					}
 				},

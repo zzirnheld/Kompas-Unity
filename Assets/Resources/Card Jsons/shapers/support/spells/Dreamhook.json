@@ -18,7 +18,6 @@
 					"cardRestriction": {
 						"blurb": "Friendly Shaper to move",
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Character",
 							"Friendly",
 							"Board",
@@ -29,8 +28,11 @@
 								"Adjacent to Source"
 							]
 						},
-						"subtypesInclude": [
-							"Shaper"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Shaper" ]
+							}
 						]
 					}
 				},
@@ -73,11 +75,13 @@
 		],
 		"adjacentCardRestriction": {
 			"cardRestrictions": [
-				"Character",
-				"Subtypes Include"
+				"Character"
 			],
-			"subtypesInclude": [
-				"Shaper"
+			"cardRestrictionElements": [
+				{
+					"$type": "Core.CardRestriction:SubtypesInclude:",
+					"subtypes": [ "Shaper" ]
+				}
 			]
 		}
 	},

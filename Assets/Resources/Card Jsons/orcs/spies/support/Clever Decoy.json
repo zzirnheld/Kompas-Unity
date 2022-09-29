@@ -71,12 +71,14 @@
 		],
 		"onCardRestriction": {
 			"cardRestrictions": [
-				"Subtypes Include",
 				"Friendly",
 				"Board"
 			],
-			"subtypesInclude": [
-				"Spy"
+			"cardRestrictionElements": [
+				{
+					"$type": "Core.CardRestriction:SubtypesInclude:",
+					"subtypes": [ "Spy" ]
+				}
 			]
 		}
 	},

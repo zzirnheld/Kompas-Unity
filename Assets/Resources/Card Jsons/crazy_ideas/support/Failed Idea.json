@@ -10,8 +10,13 @@
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Controller Triggered","Main Card Fits Restriction Before"],
 					"cardRestriction":{
-						"cardRestrictions":["Hand","Subtypes Include"],
-                        "subtypesInclude":["Ificator"]
+						"cardRestrictions":["Hand"],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Ificator" ]
+							}
+						]
 					}
 				}
 			},
@@ -20,8 +25,13 @@
 					"$type":"Subeffect:DeckTarget:",
 					"cardRestriction":{
 						"blurb":"card for Failed Idea to mill",
-						"cardRestrictions":["Friendly","Deck","Subtypes Include"],
-						"subtypesInclude":["Crazy","Idea"]
+						"cardRestrictions":["Friendly","Deck"],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Crazy", "Idea" ]
+							}
+						]
 					}
 				},
 				{

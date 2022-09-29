@@ -17,11 +17,13 @@
 						],
 						"adjacencyRestriction": {
 							"cardRestrictions": [
-								"Different from Source",
-								"Subtypes Include"
+								"Different from Source"
 							],
-							"subtypesInclude": [
-								"Speedemon"
+							"cardRestrictionElements": [
+								{
+									"$type": "Core.CardRestriction:SubtypesInclude:",
+									"subtypes": [ "Speedemon" ]
+								}
 							]
 						},
 						"mustBeEmpty": false

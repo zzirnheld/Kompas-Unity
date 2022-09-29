@@ -20,11 +20,13 @@
 						"cardRestrictions": [
 							"Augment",
 							"Friendly",
-							"Board",
-							"Subtypes Include"
+							"Board"
 						],
-						"subtypesInclude": [
-							"Sportsball"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Sportsball" ]
+							}
 						]
 					}
 				},

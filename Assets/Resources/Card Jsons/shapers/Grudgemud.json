@@ -21,11 +21,13 @@
 							"Friendly",
 							"Character",
 							"Board",
-							"Summoned",
-							"Subtypes Include"
+							"Summoned"
 						],
-						"subtypesInclude": [
-							"Ethereal"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Ethereal" ]
+							}
 						]
 					}
 				},

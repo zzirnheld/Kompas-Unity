@@ -17,14 +17,17 @@
 					"$type": "Subeffect:ChooseFromList:",
 					"maxCanChoose": 1,
 					"cardRestriction": {
-						"blurb": "Cultist for Doomsayer to search",
+						"blurb": "Invocation to search",
 						"cardRestrictions": [
 							"Subtypes Include",
 							"Friendly",
 							"Deck"
 						],
-						"subtypesInclude": [
-							"Cultist"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Invocation" ]
+							}
 						]
 					}
 				},

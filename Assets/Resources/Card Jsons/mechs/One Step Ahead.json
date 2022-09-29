@@ -21,11 +21,13 @@
 						"cardRestrictions": [
 							"Character",
 							"Friendly",
-							"Deck",
-							"Subtypes Include"
+							"Deck"
 						],
-						"subtypesInclude": [
-							"Mech"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Mech" ]
+							}
 						]
 					},
 					"xMultiplier": 1
@@ -51,12 +53,14 @@
 						],
 						"cardRestriction": {
 							"cardRestrictions": [
-								"Subtypes Include",
 								"Board",
 								"Friendly"
 							],
-							"subtypesInclude": [
-								"Mech"
+							"cardRestrictionElements": [
+								{
+									"$type": "Core.CardRestriction:SubtypesInclude:",
+									"subtypes": [ "Mech" ]
+								}
 							]
 						}
 					}

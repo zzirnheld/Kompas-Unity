@@ -19,12 +19,12 @@
                             "In AOE of Card Fitting Restriction"
                         ],
                         "inAOEOfRestriction": {
-                            "cardRestrictions": [
-                                "Subtypes Include"
-                            ],
-                            "subtypesInclude": [
-                                "Shade"
-                            ]
+							"cardRestrictionElements": [
+								{
+									"$type": "Core.CardRestriction:SubtypesInclude:",
+									"subtypes": [ "Shade" ]
+								}
+							]
                         }
                     }
 				},
@@ -32,13 +32,15 @@
 					"$type": "Subeffect:AutoTarget:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Friendly",
 							"Deck",
 							"Spell"
 						],
-						"subtypesInclude": [
-							"Light"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Light" ]
+							}
 						]
 					},
 					"tiebreakerDirection":"Any"
@@ -47,11 +49,13 @@
 					"$type": "Subeffect:TargetAll:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Would Overlap Card Target If Card Target Were At Space Target"
 						],
-						"subtypesInclude": [
-							"Shade"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Shade" ]
+							}
 						]
 					}
 				},

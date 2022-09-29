@@ -19,12 +19,14 @@
 					"cardRestriction": {
 						"blurb": "Character to Linewalk",
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Board",
 							"Friendly"
 						],
-						"subtypesInclude": [
-							"Linewalker"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Linewalker" ]
+							}
 						]
 					}
 				},
