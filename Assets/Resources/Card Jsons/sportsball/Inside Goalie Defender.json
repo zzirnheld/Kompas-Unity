@@ -31,10 +31,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetTriggeringCard$"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "character to goal-kick Augment to",
 						"cardRestrictions": [
@@ -51,20 +51,20 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#TargetAugments$",
+					"$type": "Subeffect:TargetAugments:",
 					"targetIndex": -2
 				},
 				{
-					"$type": "#Subeffect#ConditionalEnd$",
+					"$type": "Subeffect:ConditionalEnd:",
 					"condition": "Number Targets <= Constant",
 					"constant": 2
 				},
 				{
-					"$type": "#Subeffect#Attach$",
+					"$type": "Subeffect:Attach:",
 					"targetToAttachTo": 1
 				},
 				{
-					"$type": "#Subeffect#LoopWhileHaveTargets$",
+					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"delete": true,
 					"remainingTargets": 2,
 					"jumpIndices": [

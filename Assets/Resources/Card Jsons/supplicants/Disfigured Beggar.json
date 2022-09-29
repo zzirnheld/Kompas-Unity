@@ -38,10 +38,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetTriggeringCard$"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "#Subeffect#SpaceTarget$",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "ok, now move just a little bit more",
 						"spaceRestrictions": [
@@ -58,7 +58,7 @@
 					"xModifier": 1
 				},
 				{
-					"$type": "#Subeffect#Move$"
+					"$type": "Subeffect:Move:"
 				}
 			]
 		}

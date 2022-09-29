@@ -13,22 +13,22 @@
 			},
 			"subeffects":[
 				{
-					"$type":"#Subeffect#Delay$",
+					"$type":"Subeffect:Delay:",
 					"numTimesToDelay":1,
 					"jumpIndices":[1],
 					"endCondition":"Turn Start"
 				},
 				{
-					"$type":"#Subeffect#TargetThis$"
+					"$type":"Subeffect:TargetThis:"
 				},
 				{
-					"$type":"#Subeffect#TargetThisSpace$"
+					"$type":"Subeffect:TargetThisSpace:"
 				},
 				{
-					"$type":"#Subeffect#Discard$"
+					"$type":"Subeffect:Discard:"
 				},
 				{
-					"$type":"#Subeffect#DeckTarget$",
+					"$type":"Subeffect:DeckTarget:",
 					"cardRestriction":
 					{
 						"blurb":"for Dragon Egg to become",
@@ -37,7 +37,7 @@
 					}
 				},
 				{
-					"$type":"#Subeffect#Play$",
+					"$type":"Subeffect:Play:",
 					"spaceIndex":-1,
 					"targetIndex":-1
 				}

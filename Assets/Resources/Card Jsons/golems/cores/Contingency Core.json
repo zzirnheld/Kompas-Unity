@@ -27,14 +27,14 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#AutoTargetCardIdentity$",
+					"$type": "Subeffect:AutoTargetCardIdentity:",
                     "subeffectCardIdentity": {
 						"$type": "Gamestate.Card:AugmentedCard:",
                         "cardFromContext": { "$type": "Gamestate.Card:ThisCard:" }
                     }
 				},
 				{
-					"$type": "#Subeffect#TemporaryActivation$",
+					"$type": "Subeffect:TemporaryActivation:",
 					"endCondition": "Augment Detached",
 					"triggerRestriction": {
 						"triggerRestrictions": [
@@ -76,14 +76,14 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#AutoTargetCardIdentity$",
+					"$type": "Subeffect:AutoTargetCardIdentity:",
                     "subeffectCardIdentity": {
 						"$type": "Subeffect.Card:FromActivationContext:",
                         "cardFromContext": { "$type": "ActivationContext.Card:MainCardBefore:" }
                     }
 				},
 				{
-					"$type": "#Subeffect#AutoTargetSpaceIdentity$",
+					"$type": "Subeffect:AutoTargetSpaceIdentity:",
                     "spaceIdentity": {
                         "$type": "Subeffect.Space:PositionOf:",
                         "whosePosition": {
@@ -93,7 +93,7 @@
                     }
 				},
 				{
-					"$type": "#Subeffect#Play$"
+					"$type": "Subeffect:Play:"
 				}
 			]
 		}

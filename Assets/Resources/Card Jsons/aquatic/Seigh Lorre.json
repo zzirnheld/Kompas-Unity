@@ -15,7 +15,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "what will sail",
 						"cardRestrictions": [
@@ -40,7 +40,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#SpaceTarget$",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to sail them to",
 						"spaceRestrictions": [
@@ -64,7 +64,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Move$"
+					"$type": "Subeffect:Move:"
 				}
 			]
 		}

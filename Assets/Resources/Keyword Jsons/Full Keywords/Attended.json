@@ -23,10 +23,10 @@
 	},
 	"subeffects":[
 		{
-			"$type":"#Subeffect#TargetThis$"
+			"$type":"Subeffect:TargetThis:"
 		},
 		{
-			"$type":"#Subeffect#Discard$"
+			"$type":"Subeffect:Discard:"
 		}
 	]	
 }

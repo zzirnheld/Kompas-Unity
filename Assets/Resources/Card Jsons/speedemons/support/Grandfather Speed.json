@@ -15,7 +15,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#DeckTarget$",
+					"$type": "Subeffect:DeckTarget:",
 					"cardRestriction": {
 						"blurb": "Ready for Set to search",
 						"cardRestrictions": [
@@ -27,7 +27,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Rehand$"
+					"$type": "Subeffect:Rehand:"
 				}
 			]
 		}

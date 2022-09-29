@@ -15,7 +15,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetAll$",
+					"$type": "Subeffect:TargetAll:",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Hurt",
@@ -29,10 +29,10 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Heal$"
+					"$type": "Subeffect:Heal:"
 				},
 				{
-					"$type": "#Subeffect#LoopWhileHaveTargets$",
+					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"delete": true,
 					"jumpIndices": [
 						1

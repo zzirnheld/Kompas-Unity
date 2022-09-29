@@ -1,15 +1,15 @@
 [
     {
-        "$type":"#Subeffect#TargetThis$"
+        "$type":"Subeffect:TargetThis:"
     },
     {
-        "$type":"#Subeffect#TargetThisSpace$"
+        "$type":"Subeffect:TargetThisSpace:"
     },
     {
-        "$type":"#Subeffect#Annihilate$"
+        "$type":"Subeffect:Annihilate:"
     },
     {
-        "$type":"#Subeffect#CardTarget$",
+        "$type":"Subeffect:CardTarget:",
         "cardRestriction":
         {
             "blurb":"Mech to Pilot",
@@ -19,9 +19,9 @@
         "toLinkWith": { "$type": "Gamestate.Card:ThisCard:" }
     },
     {
-        "$type":"#Subeffect#Play$"
+        "$type":"Subeffect:Play:"
     },
     {
-        "$type":"#Subeffect#Activate$"
+        "$type":"Subeffect:Activate:"
     }
 ]

@@ -15,51 +15,51 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetAll$",
+					"$type": "Subeffect:TargetAll:",
 					"cardRestriction": {
 						"cardRestrictions": [ "Hand", "Friendly" ]
 					}
 				},
 				{
-					"$type": "#Subeffect#SkipToEffectOnImpossible$",
+					"$type": "Subeffect:SkipToEffectOnImpossible:",
 					"jumpIndices": [
 						3
 					]
 				},
 				{
-					"$type": "#Subeffect#Reveal$"
+					"$type": "Subeffect:Reveal:"
 				},
 				{
-					"$type": "#Subeffect#ClearOnImpossible$"
+					"$type": "Subeffect:ClearOnImpossible:"
 				},
 				{
-					"$type": "#Subeffect#LoopWhileHaveTargets$",
+					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"delete": true,
 					"jumpIndices": [
 						1
 					]
 				},
 				{
-					"$type": "#Subeffect#TargetAll$",
+					"$type": "Subeffect:TargetAll:",
 					"cardRestriction": {
 						"cardRestrictions": [ "Hand", "Friendly", "Character", "Subtypes Include" ],
 						"subtypesInclude": [ "Orc" ]
 					}
 				},
 				{
-					"$type": "#Subeffect#ChangeCardStats$",
+					"$type": "Subeffect:ChangeCardStats:",
 					"forbidNotBoard": false,
 					"sModifier": -1
 				},
 				{
-					"$type": "#Subeffect#LoopWhileHaveTargets$",
+					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"delete": true,
 					"jumpIndices": [
 						6
 					]
 				},
 				{
-					"$type": "#Subeffect#SetXByGamestate$",
+					"$type": "Subeffect:SetXByGamestate:",
 					"whatToCount": "Cards Fitting Restriction",
 					"cardRestriction": {
 						"cardRestrictions": [ "Hand", "Friendly", "Character", "Subtypes Include" ],
@@ -68,7 +68,7 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#DrawX$",
+					"$type": "Subeffect:DrawX:",
 					"xMultiplier": 1
 				}
 			]

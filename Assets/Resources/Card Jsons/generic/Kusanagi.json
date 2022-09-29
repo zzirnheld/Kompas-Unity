@@ -15,11 +15,11 @@
 			},
 			"subeffects": [
 				{
-					"$type":"#Subeffect#TargetTriggeringCard$",
+					"$type":"Subeffect:TargetTriggeringCard:",
 					"secondary":true
 				},
 				{
-					"$type": "#Subeffect#ConditionalEnd$",
+					"$type": "Subeffect:ConditionalEnd:",
 					"condition": "Target Violates Restriction",
 					"cardRestriction": {
 						"cardRestrictions": [
@@ -33,7 +33,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#ChangeCardStats$",
+					"$type": "Subeffect:ChangeCardStats:",
 					"wModifier": -5
 				}
 			]

@@ -15,10 +15,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetAugmentedCard$"
+					"$type": "Subeffect:TargetAugmentedCard:"
 				},
 				{
-					"$type": "#Subeffect#ChangeCardStats$",
+					"$type": "Subeffect:ChangeCardStats:",
 					"wModifier": 5
 				}
 			]

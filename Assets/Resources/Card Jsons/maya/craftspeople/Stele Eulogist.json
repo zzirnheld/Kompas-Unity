@@ -27,14 +27,14 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#SetXByTriggeringCardValue$",
+					"$type": "Subeffect:SetXByTriggeringCardValue:",
 					"cardValue": {
 						"value": "S"
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#ChangeAllCardStats$",
+					"$type": "Subeffect:ChangeAllCardStats:",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character",

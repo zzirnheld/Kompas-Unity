@@ -13,7 +13,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Rune for Runegunner to cast",
 						"cardRestrictions": [
@@ -29,7 +29,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#SpaceTarget$",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where for Runegunner to cast its target Rune",
 						"spaceRestrictions": [
@@ -39,22 +39,22 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Play$"
+					"$type": "Subeffect:Play:"
 				},
 				{
-					"$type": "#Subeffect#SetXByGamestate$",
+					"$type": "Subeffect:SetXByGamestate:",
 					"whatToCount": "Distance From Source to Target",
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#PayPipsTargetCost$",
+					"$type": "Subeffect:PayPipsTargetCost:",
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#Resummon$"
+					"$type": "Subeffect:Resummon:"
 				},
 				{
-					"$type": "#Subeffect#XTimes$",
+					"$type": "Subeffect:XTimes:",
 					"jumpIndices": [
 						4
 					]

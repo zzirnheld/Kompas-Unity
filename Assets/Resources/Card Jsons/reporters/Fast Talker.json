@@ -15,17 +15,17 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetEnemy$"
+					"$type": "Subeffect:TargetEnemy:"
 				},
 				{
-					"$type": "#Subeffect#CanResolve$",
+					"$type": "Subeffect:CanResolve:",
 					"subeffIndices": [
 						3
 					],
 					"skipIndex": 7
 				},
 				{
-					"$type": "#Subeffect#ChooseOption$",
+					"$type": "Subeffect:ChooseOption:",
 					"choiceBlurb": "Reveal X cards?",
 					"optionBlurbs": [
 						"Yes",
@@ -38,7 +38,7 @@
 					"showX": true
 				},
 				{
-					"$type": "#Subeffect#ChooseFromList$",
+					"$type": "Subeffect:ChooseFromList:",
 					"cardRestriction": {
 						"blurb": "cards to reveal",
 						"cardRestrictions": [
@@ -56,23 +56,23 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#Reveal$"
+					"$type": "Subeffect:Reveal:"
 				},
 				{
-					"$type": "#Subeffect#LoopWhileHaveTargets$",
+					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"delete": true,
 					"jumpIndices": [
 						4
 					]
 				},
 				{
-					"$type": "#Subeffect#EndResolution$"
+					"$type": "Subeffect:EndResolution:"
 				},
 				{
-					"$type": "#Subeffect#TargetThis$"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "#Subeffect#ChangeCardStats$",
+					"$type": "Subeffect:ChangeCardStats:",
 					"eMultiplier": 1,
 					"eDivisor": 2,
 					"wMultiplier": 1,

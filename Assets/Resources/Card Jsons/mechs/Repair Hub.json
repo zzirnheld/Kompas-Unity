@@ -34,7 +34,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#Delay$",
+					"$type": "Subeffect:Delay:",
 					"numTimesToDelay": 1,
 					"jumpIndices": [
 						1
@@ -42,10 +42,10 @@
 					"endCondition": "Turn Start"
 				},
 				{
-					"$type": "#Subeffect#TargetTriggeringCard$"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "#Subeffect#Rehand$"
+					"$type": "Subeffect:Rehand:"
 				}
 			]
 		}

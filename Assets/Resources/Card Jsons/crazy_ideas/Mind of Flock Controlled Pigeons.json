@@ -15,7 +15,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Mind bawk bawk Controlled Pigeons",
 						"cardRestrictions": [
@@ -29,10 +29,10 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Discard$"
+					"$type": "Subeffect:Discard:"
 				},
 				{
-					"$type": "#Subeffect#DrawX$",
+					"$type": "Subeffect:DrawX:",
 					"xModifier": 1
 				}
 			]

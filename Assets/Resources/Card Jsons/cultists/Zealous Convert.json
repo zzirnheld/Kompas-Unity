@@ -14,7 +14,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#ChooseFromList$",
+					"$type": "Subeffect:ChooseFromList:",
 					"maxCanChoose": 1,
 					"cardRestriction": {
 						"blurb": "Silent Cult Follower to convert",
@@ -30,7 +30,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#SpaceTarget$",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to play Zealous Convert's new convert",
 						"spaceRestrictions": [
@@ -40,7 +40,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Play$"
+					"$type": "Subeffect:Play:"
 				}
 			]
 		}

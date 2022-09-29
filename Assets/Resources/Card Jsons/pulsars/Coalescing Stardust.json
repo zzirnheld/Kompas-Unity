@@ -24,10 +24,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetThis$"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "#Subeffect#ChangeCardStats$",
+					"$type": "Subeffect:ChangeCardStats:",
 					"cMultiplier": 1
 				}
 			]
@@ -44,7 +44,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#Delay$",
+					"$type": "Subeffect:Delay:",
 					"numTimesToDelay": 1,
 					"jumpIndices": [
 						1
@@ -52,17 +52,17 @@
 					"endCondition": "Turn Start"
 				},
 				{
-					"$type": "#Subeffect#TargetThis$"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "#Subeffect#SetXByTargetCardValue$",
+					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "C"
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#ChooseFromList$",
+					"$type": "Subeffect:ChooseFromList:",
 					"maxCanChoose": 1,
 					"cardRestriction": {
 						"blurb": "Pulsar to coalesce",
@@ -88,7 +88,7 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#SpaceTarget$",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to play newly coalesced Pulsar",
 						"spaceRestrictions": [
@@ -98,7 +98,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Play$"
+					"$type": "Subeffect:Play:"
 				}
 			]
 		}

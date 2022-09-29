@@ -16,10 +16,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetTriggeringCardsCoords$"
+					"$type": "Subeffect:TargetTriggeringCardsCoords:"
 				},
 				{
-					"$type": "#Subeffect#TargetAll$",
+					"$type": "Subeffect:TargetAll:",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Board",
@@ -34,14 +34,14 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Activate$"
+					"$type": "Subeffect:Activate:"
 				},
 				{
-					"$type": "#Subeffect#Activate$",
+					"$type": "Subeffect:Activate:",
 					"activate": false
 				},
 				{
-					"$type": "#Subeffect#LoopWhileHaveTargets$",
+					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"delete": true,
 					"jumpIndices": [
 						2

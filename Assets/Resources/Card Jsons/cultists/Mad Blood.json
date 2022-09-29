@@ -28,13 +28,13 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetThis$"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "#Subeffect#Annihilate$"
+					"$type": "Subeffect:Annihilate:"
 				},
 				{
-					"$type": "#Subeffect#AutoTarget$",
+					"$type": "Subeffect:AutoTarget:",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Subtypes Include",
@@ -49,7 +49,7 @@
 					"tiebreakerDirection":"Any"
 				},
 				{
-					"$type": "#Subeffect#AutoTarget$",
+					"$type": "Subeffect:AutoTarget:",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Subtypes Include",
@@ -65,7 +65,7 @@
 					"tiebreakerDirection":"Any"
 				},
 				{
-					"$type": "#Subeffect#SpaceTarget$",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to play Mad Blood's new bloodcurse (1/2)",
 						"spaceRestrictions": [
@@ -75,10 +75,10 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Play$"
+					"$type": "Subeffect:Play:"
 				},
 				{
-					"$type": "#Subeffect#SpaceTarget$",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to play Mad Blood's new bloodcurse (2/2)",
 						"spaceRestrictions": [
@@ -89,7 +89,7 @@
 					"targetIndex":-2
 				},
 				{
-					"$type": "#Subeffect#Play$",
+					"$type": "Subeffect:Play:",
 					"targetIndex":-2
 				}
 			]

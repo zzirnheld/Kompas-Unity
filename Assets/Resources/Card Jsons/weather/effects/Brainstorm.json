@@ -28,13 +28,13 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetTriggeringCard$"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "#Subeffect#TargetTargetsController$"
+					"$type": "Subeffect:TargetTargetsController:"
 				},
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "the idea struck from your head",
 						"cardRestrictions": [
@@ -44,10 +44,10 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Bottomdeck$"
+					"$type": "Subeffect:Bottomdeck:"
 				},
 				{
-					"$type": "#Subeffect#Draw$"
+					"$type": "Subeffect:Draw:"
 				}
 			]
 		}

@@ -14,21 +14,21 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetAvatar$"
+					"$type": "Subeffect:TargetAvatar:"
 				},
 				{
-					"$type": "#Subeffect#ChangeCardStats$",
+					"$type": "Subeffect:ChangeCardStats:",
 					"sModifier": -1
 				},
 				{
-					"$type": "#Subeffect#SetXByTargetCardValue$",
+					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "S"
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#ConditionalJump$",
+					"$type": "Subeffect:ConditionalJump:",
 					"condition": "X >= Constant",
 					"constant": 1,
 					"jumpIndices": [

@@ -14,7 +14,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#DrawX$",
+					"$type": "Subeffect:DrawX:",
 					"xModifier": 2
 				}
 			]

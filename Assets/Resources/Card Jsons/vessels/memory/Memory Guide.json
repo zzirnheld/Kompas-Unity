@@ -13,7 +13,7 @@
 						"Controller Triggered",
 						"Main Card Fits Restriction After"
 					],
-					"cardRestriction": {
+					"nowRestriction": {
 						"cardRestrictions": [
 							"Space Fits Restriction",
                             "Subtypes Include"
@@ -31,13 +31,13 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetTriggeringCard$"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "#Subeffect#TargetTargetsAugmentedCard$"
+					"$type": "Subeffect:TargetTargetsAugmentedCard:"
 				},
 				{
-					"$type": "#Subeffect#Resummon$"
+					"$type": "Subeffect:Resummon:"
 				}
 			]
 		}

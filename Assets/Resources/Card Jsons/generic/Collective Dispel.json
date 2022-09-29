@@ -15,10 +15,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#Draw$"
+					"$type": "Subeffect:Draw:"
 				},
 				{
-					"$type":"#Subeffect#SetXBoardRestriction$",
+					"$type":"Subeffect:SetXBoardRestriction:",
 					"cardRestriction": {
 						"cardRestrictions": [
                             "Space Fits Restriction"
@@ -32,7 +32,7 @@
 					"xMultiplier":1
 				},
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "C <= X spell to dispel",
 						"cardRestrictions": [
@@ -52,7 +52,7 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#Dispel$"
+					"$type": "Subeffect:Dispel:"
 				}
 			]
 		}

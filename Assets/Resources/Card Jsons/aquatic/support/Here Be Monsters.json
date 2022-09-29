@@ -14,7 +14,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#SetXByGamestate$",
+					"$type": "Subeffect:SetXByGamestate:",
 					"whatToCount": "Total Card Value of Cards Fitting Restriction",
 					"cardValue": {
 						"value": "Cost"
@@ -31,16 +31,16 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#TargetThis$"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "#Subeffect#TargetTargetsSpace$"
+					"$type": "Subeffect:TargetTargetsSpace:"
 				},
 				{
-					"$type": "#Subeffect#Annihilate$"
+					"$type": "Subeffect:Annihilate:"
 				},
 				{
-					"$type": "#Subeffect#DeckTarget$",
+					"$type": "Subeffect:DeckTarget:",
 					"cardRestriction": {
 						"blurb": "Monster here",
 						"cardRestrictions": [
@@ -66,10 +66,10 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#Play$"
+					"$type": "Subeffect:Play:"
 				},
 				{
-					"$type": "#Subeffect#HangingAnnihilation$",
+					"$type": "Subeffect:HangingAnnihilation:",
 					"endCondition": "Turn Start",
 					"triggerRestriction": {
 						"triggerRestrictions": [

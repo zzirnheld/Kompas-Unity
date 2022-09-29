@@ -15,17 +15,17 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetAugmentedCard$"
+					"$type": "Subeffect:TargetAugmentedCard:"
 				},
 				{
-					"$type": "#Subeffect#SetXByTargetCardValue$",
+					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "W"
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#ChangeCardStats$",
+					"$type": "Subeffect:ChangeCardStats:",
 					"wMultiplier": 1
 				}
 			]

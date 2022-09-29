@@ -14,7 +14,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "for Ingwaz to recast",
 						"cardRestrictions": [
@@ -33,11 +33,11 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#PayPipsTargetCost$",
+					"$type": "Subeffect:PayPipsTargetCost:",
 					"xDivisor": 2
 				},
 				{
-					"$type": "#Subeffect#SpaceTarget$",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where Ingwaz to recast",
 						"spaceRestrictions": [
@@ -47,7 +47,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Play$"
+					"$type": "Subeffect:Play:"
 				}
 			]
 		}

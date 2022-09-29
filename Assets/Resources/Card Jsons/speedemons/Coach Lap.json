@@ -28,13 +28,13 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetTriggeringCard$"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "#Subeffect#TargetTargetsController$"
+					"$type": "Subeffect:TargetTargetsController:"
 				},
 				{
-					"$type": "#Subeffect#SpaceTarget$",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "next lap?",
 						"spaceRestrictions": [
@@ -51,7 +51,7 @@
 					"xModifier": 1
 				},
 				{
-					"$type": "#Subeffect#Move$"
+					"$type": "Subeffect:Move:"
 				}
 			]
 		}

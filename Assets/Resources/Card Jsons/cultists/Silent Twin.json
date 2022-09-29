@@ -14,7 +14,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#AutoTarget$",
+					"$type": "Subeffect:AutoTarget:",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Subtypes Include",
@@ -29,7 +29,7 @@
 					"tiebreakerDirection":"Any"
 				},
 				{
-					"$type": "#Subeffect#SpaceTarget$",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to play Silent Twin's new convert",
 						"spaceRestrictions": [
@@ -39,10 +39,10 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Play$"
+					"$type": "Subeffect:Play:"
 				},
 				{
-					"$type":"#Subeffect#Discard$"
+					"$type":"Subeffect:Discard:"
 				}
 			]
 		}

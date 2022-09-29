@@ -15,10 +15,10 @@
 			},
 			"subeffects": [
                 {
-                    "$type":"#Subeffect#TargetThis$"
+                    "$type":"Subeffect:TargetThis:"
                 },
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "I don't want to remember!",
 						"cardRestrictions": [
@@ -33,26 +33,26 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#SetXByTargetCardValue$",
+					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "A"
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#Discard$"
+					"$type": "Subeffect:Discard:"
 				},
 				{
-					"$type": "#Subeffect#TargetThis$"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "#Subeffect#ChangeCardStats$",
+					"$type": "Subeffect:ChangeCardStats:",
 					"eMultiplier": 1,
 					"sMultiplier": 1,
 					"wMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#SpaceTarget$",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to move the Unwilling Vessel",
 						"spaceRestrictions": [
@@ -69,7 +69,7 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#Move$"
+					"$type": "Subeffect:Move:"
 				}
 			]
 		}

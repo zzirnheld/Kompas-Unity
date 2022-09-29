@@ -14,7 +14,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Friendly",
@@ -24,7 +24,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Rehand$"
+					"$type": "Subeffect:Rehand:"
 				}
 			]
 		}

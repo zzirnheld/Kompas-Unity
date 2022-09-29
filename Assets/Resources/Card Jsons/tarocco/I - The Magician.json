@@ -14,7 +14,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "for Magician to hand-bottomdeck",
 						"cardRestrictions": [
@@ -24,17 +24,17 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Bottomdeck$"
+					"$type": "Subeffect:Bottomdeck:"
 				},
 				{
-					"$type": "#Subeffect#CountXLoop$",
+					"$type": "Subeffect:CountXLoop:",
 					"canDecline": true,
 					"jumpIndices": [
 						0
 					]
 				},
 				{
-					"$type": "#Subeffect#DrawX$",
+					"$type": "Subeffect:DrawX:",
 					"xMultiplier": 1
 				}
 			]

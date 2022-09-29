@@ -15,7 +15,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Haeomomantic sacrifice",
 						"cardRestrictions": [
@@ -27,10 +27,10 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Discard$"
+					"$type": "Subeffect:Discard:"
 				},
 				{
-					"$type": "#Subeffect#AddPips$",
+					"$type": "Subeffect:AddPips:",
 					"xModifier": 1
 				}
 			]

@@ -28,13 +28,13 @@
 			},
 			"subeffects": [
 				{
-					"$type":"#Subeffect#TargetTriggeringCard$"
+					"$type":"Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type":"#Subeffect#TargetTargetsController$"
+					"$type":"Subeffect:TargetTargetsController:"
 				},
 				{
-					"$type": "#Subeffect#ChooseFromList$",
+					"$type": "Subeffect:ChooseFromList:",
 					"cardRestriction": {
 						"blurb": "The fog is draining",
 						"cardRestrictions": [
@@ -52,14 +52,14 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Discard$"
+					"$type": "Subeffect:Discard:"
 				},
 				{
-					"$type": "#Subeffect#Discard$",
+					"$type": "Subeffect:Discard:",
 					"targetIndex": -2
 				},
 				{
-					"$type":"#Subeffect#Draw$"
+					"$type":"Subeffect:Draw:"
 				}
 			]
 		}

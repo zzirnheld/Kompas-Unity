@@ -1,9 +1,9 @@
 [
     {
-        "$type": "#Subeffect#TargetThis$"
+        "$type": "Subeffect:TargetThis:"
     },
     {
-        "$type": "#Subeffect#SpaceTarget$",
+        "$type": "Subeffect:SpaceTarget:",
         "spaceRestriction": {
             "blurb": "Stealth position to 'actually' be in",
             "spaceRestrictions": [
@@ -21,7 +21,7 @@
         }
     },
     {
-        "$type": "#Subeffect#Delay$",
+        "$type": "Subeffect:Delay:",
         "numTimesToDelay": 0,
         "jumpIndices": [
             3
@@ -44,6 +44,6 @@
         }
     },
     {
-        "$type": "#Subeffect#Move$"
+        "$type": "Subeffect:Move:"
     }
 ]

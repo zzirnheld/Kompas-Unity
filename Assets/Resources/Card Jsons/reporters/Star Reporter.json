@@ -21,7 +21,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#ChangeAllCardStats$",
+					"$type": "Subeffect:ChangeAllCardStats:",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character",
@@ -33,7 +33,7 @@
 					"wModifier": 1
 				},
 				{
-					"$type": "#Subeffect#ChangeAllCardStats$",
+					"$type": "Subeffect:ChangeAllCardStats:",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character",

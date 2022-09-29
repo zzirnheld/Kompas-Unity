@@ -14,10 +14,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetThis$"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "#Subeffect#AutoTarget$",
+					"$type": "Subeffect:AutoTarget:",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Friendly",
@@ -28,7 +28,7 @@
 					"tiebreakerDirection":"Any"
 				},
 				{
-					"$type": "#Subeffect#SpaceTarget$",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to summon Ephemera",
 						"spaceRestrictions": [
@@ -38,7 +38,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Play$"
+					"$type": "Subeffect:Play:"
 				}
 			]
 		},
@@ -58,10 +58,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetThis$"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "#Subeffect#Reshuffle$"
+					"$type": "Subeffect:Reshuffle:"
 				}
 			]
 		}

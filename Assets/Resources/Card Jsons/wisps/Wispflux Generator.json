@@ -28,14 +28,14 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetThis$"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "#Subeffect#ChangeCardStats$",
+					"$type": "Subeffect:ChangeCardStats:",
 					"eModifier": -1
 				},
 				{
-					"$type": "#Subeffect#ChooseFromList$",
+					"$type": "Subeffect:ChooseFromList:",
 					"cardRestriction": {
 						"blurb": "Wispflux to deck->summon",
 						"cardRestrictions": [
@@ -51,7 +51,7 @@
 					"maxCanChoose": 1
 				},
 				{
-					"$type": "#Subeffect#SpaceTarget$",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to generate Wispflux",
 						"spaceRestrictions": [
@@ -68,7 +68,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Play$"
+					"$type": "Subeffect:Play:"
 				}
 			]
 		}

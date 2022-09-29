@@ -14,7 +14,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "fuel for the Choo Choo Brain",
 						"cardRestrictions": [
@@ -24,13 +24,13 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Reshuffle$"
+					"$type": "Subeffect:Reshuffle:"
 				},
 				{
-					"$type": "#Subeffect#TargetThis$"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "#Subeffect#ChangeCardStats$",
+					"$type": "Subeffect:ChangeCardStats:",
 					"eModifier": 2,
 					"sModifier": 2,
 					"wModifier": 2

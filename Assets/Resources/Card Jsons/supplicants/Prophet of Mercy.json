@@ -14,7 +14,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#SetXBoardRestriction$",
+					"$type": "Subeffect:SetXBoardRestriction:",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Board",
@@ -33,7 +33,7 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#ChooseFromList$",
+					"$type": "Subeffect:ChooseFromList:",
 					"maxCanChoose": 1,
 					"cardRestriction": {
 						"blurb": "Supplicants' Plea",
@@ -59,7 +59,7 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#SpaceTarget$",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to play Supplicants' Plea",
 						"spaceRestrictions": [
@@ -69,7 +69,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Play$"
+					"$type": "Subeffect:Play:"
 				}
 			]
 		}

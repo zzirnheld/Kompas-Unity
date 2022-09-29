@@ -14,7 +14,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Runar for Runesaga to give +25 ESW",
 						"cardRestrictions": [
@@ -29,13 +29,13 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#ChangeCardStats$",
+					"$type": "Subeffect:ChangeCardStats:",
 					"eModifier": 25,
 					"sModifier": 25,
 					"wModifier": 25
 				},
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Rune for Runesaga to cast",
 						"cardRestrictions": [
@@ -48,7 +48,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#SpaceTarget$",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where for Runesaga to cast its target Rune",
 						"spaceRestrictions": [
@@ -58,10 +58,10 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Play$"
+					"$type": "Subeffect:Play:"
 				},
 				{
-					"$type": "#Subeffect#Loop$",
+					"$type": "Subeffect:Loop:",
 					"canDecline": true,
 					"jumpIndices": [
 						2

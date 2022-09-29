@@ -13,17 +13,17 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetEnemy$"
+					"$type": "Subeffect:TargetEnemy:"
 				},
 				{
-					"$type": "#Subeffect#CanResolve$",
+					"$type": "Subeffect:CanResolve:",
 					"subeffIndices": [
 						3
 					],
 					"skipIndex": 7
 				},
 				{
-					"$type": "#Subeffect#ChooseOption$",
+					"$type": "Subeffect:ChooseOption:",
 					"choiceBlurb": "Reveal two cards?",
 					"optionBlurbs": [
 						"Yes",
@@ -36,7 +36,7 @@
 					"showX": true
 				},
 				{
-					"$type": "#Subeffect#ChooseFromList$",
+					"$type": "Subeffect:ChooseFromList:",
 					"cardRestriction": {
 						"blurb": "cards to reveal",
 						"cardRestrictions": [
@@ -55,21 +55,21 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Reveal$"
+					"$type": "Subeffect:Reveal:"
 				},
 				{
-					"$type": "#Subeffect#Reveal$",
+					"$type": "Subeffect:Reveal:",
 					"targetIndex": -2
 				},
 				{
-					"$type": "#Subeffect#EndResolution$"
+					"$type": "Subeffect:EndResolution:"
 				},
 				{
-					"$type": "#Subeffect#Draw$",
+					"$type": "Subeffect:Draw:",
 					"playerIndex": -2
 				},
 				{
-					"$type": "#Subeffect#ChangeAllCardStats$",
+					"$type": "Subeffect:ChangeAllCardStats:",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character",

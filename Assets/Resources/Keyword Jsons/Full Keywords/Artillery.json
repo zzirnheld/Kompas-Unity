@@ -9,23 +9,23 @@
 	},
 	"subeffects": [
 		{
-			"$type": "#Subeffect#CanResolve$",
+			"$type": "Subeffect:CanResolve:",
 			"subeffIndices": [ 2 ]
 		},
 		{
-			"$type": "#Subeffect#CardTarget$",
+			"$type": "Subeffect:CardTarget:",
 			"cardRestriction": {
 				"blurb": "Pick a target to barrage",
 				"cardRestrictions": [ "Enemy", "Character", "Board" ]
 			}
 		},
 		{
-			"$type": "#Subeffect#PayPips$",
+			"$type": "Subeffect:PayPips:",
 			"xMultiplier": 0,
 			"xModifier": 1
 		},
 		{
-			"$type": "#Subeffect#ChangeCardStats$",
+			"$type": "Subeffect:ChangeCardStats:",
 			"eModifier": "Arg",
 			"eMultiplier": -1
 		}

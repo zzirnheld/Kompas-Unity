@@ -14,10 +14,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#Draw$"
+					"$type": "Subeffect:Draw:"
 				},
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "for Jack to hand-bottomdeck",
 						"cardRestrictions": [
@@ -31,10 +31,10 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Bottomdeck$"
+					"$type": "Subeffect:Bottomdeck:"
 				},
 				{
-					"$type": "#Subeffect#Draw$"
+					"$type": "Subeffect:Draw:"
 				}
 			]
 		}

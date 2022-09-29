@@ -16,20 +16,20 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetThis$"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "#Subeffect#Damage$",
+					"$type": "Subeffect:Damage:",
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#TargetTriggeringCard$"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "#Subeffect#TargetTargetsController$"
+					"$type": "Subeffect:TargetTargetsController:"
 				},
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "for Leybinder to hand-summon",
 						"cardRestrictions": [
@@ -50,7 +50,7 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#SpaceTarget$",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where Leybinder to hand-summon",
 						"spaceRestrictions": [
@@ -60,7 +60,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Play$"
+					"$type": "Subeffect:Play:"
 				}
 			]
 		}

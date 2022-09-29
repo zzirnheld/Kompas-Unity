@@ -15,7 +15,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#ChooseFromList$",
+					"$type": "Subeffect:ChooseFromList:",
 					"maxCanChoose": 1,
 					"cardRestriction": {
 						"blurb": "Structure to plan out",
@@ -30,7 +30,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Rehand$"
+					"$type": "Subeffect:Rehand:"
 				}
 			]
 		}

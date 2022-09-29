@@ -32,10 +32,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetTriggeringCard$"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "#Subeffect#Heal$"
+					"$type": "Subeffect:Heal:"
 				}
 			]
 		}

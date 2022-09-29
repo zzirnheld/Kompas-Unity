@@ -15,10 +15,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetTriggeringCard$"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "#Subeffect#TemporaryCardStatChange$",
+					"$type": "Subeffect:TemporaryCardStatChange:",
 					"nModifier": 1,
 					"endCondition": "Turn Start",
 					"triggerRestriction": {

@@ -31,10 +31,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetTriggeringCard$"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "#Subeffect#ConditionalEnd$",
+					"$type": "Subeffect:ConditionalEnd:",
 					"condition": "Target Violates Restriction",
 					"cardRestriction": {
 						"cardRestrictions": [
@@ -43,20 +43,20 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Reshuffle$"
+					"$type": "Subeffect:Reshuffle:"
 				},
 				{
-					"$type": "#Subeffect#TargetThis$"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "#Subeffect#Activate$"
+					"$type": "Subeffect:Activate:"
 				},
 				{
-					"$type": "#Subeffect#Activate$",
+					"$type": "Subeffect:Activate:",
 					"activate": false
 				},
 				{
-					"$type": "#Subeffect#ChangeCardStats$",
+					"$type": "Subeffect:ChangeCardStats:",
 					"eModifier": 1,
 					"wModifier": 1
 				}

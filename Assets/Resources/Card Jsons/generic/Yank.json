@@ -15,7 +15,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Spell to yank",
 						"cardRestrictions": [
@@ -25,7 +25,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#SpaceTarget$",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "Space to yank it to",
 						"spaceRestrictions": [
@@ -36,10 +36,10 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Move$"
+					"$type": "Subeffect:Move:"
 				},
 				{
-					"$type": "#Subeffect#Draw$"
+					"$type": "Subeffect:Draw:"
 				}
 			]
 		}

@@ -21,13 +21,13 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetTriggeringCardsCoords$"
+					"$type": "Subeffect:TargetTriggeringCardsCoords:"
 				},
 				{
-					"$type": "#Subeffect#TargetThis$"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "#Subeffect#Move$"
+					"$type": "Subeffect:Move:"
 				}
 			]
 		},
@@ -42,17 +42,17 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetEnemy$"
+					"$type": "Subeffect:TargetEnemy:"
 				},
 				{
-					"$type": "#Subeffect#CanResolve$",
+					"$type": "Subeffect:CanResolve:",
 					"subeffIndices": [
 						3
 					],
 					"skipIndex": 6
 				},
 				{
-					"$type": "#Subeffect#ChooseOption$",
+					"$type": "Subeffect:ChooseOption:",
 					"choiceBlurb": "Reveal a card?",
 					"optionBlurbs": [
 						"Yes",
@@ -64,7 +64,7 @@
 					]
 				},
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "spell to reveal",
 						"cardRestrictions": [
@@ -75,16 +75,16 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Reveal$"
+					"$type": "Subeffect:Reveal:"
 				},
 				{
-					"$type": "#Subeffect#EndResolution$"
+					"$type": "Subeffect:EndResolution:"
 				},
 				{
-					"$type": "#Subeffect#TargetThis$"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "#Subeffect#ChangeCardStats$",
+					"$type": "Subeffect:ChangeCardStats:",
 					"eModifier": 1,
 					"sModifier": 1,
 					"wModifier": 1

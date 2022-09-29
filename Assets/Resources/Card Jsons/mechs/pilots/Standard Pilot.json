@@ -13,11 +13,11 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#Keyword$",
+					"$type": "Subeffect:Keyword:",
 					"keyword": "Mech Pilot Summon"
 				},
 				{
-					"$type": "#Subeffect#Keyword$",
+					"$type": "Subeffect:Keyword:",
 					"keyword": "Mech Pilot Return"
 				}
 			]

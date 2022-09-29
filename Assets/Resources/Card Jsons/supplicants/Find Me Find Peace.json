@@ -15,7 +15,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetAll$",
+					"$type": "Subeffect:TargetAll:",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Friendly",
@@ -30,7 +30,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#AddRest$",
+					"$type": "Subeffect:AddRest:",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Friendly",
@@ -42,17 +42,17 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Rehand$"
+					"$type": "Subeffect:Rehand:"
 				},
 				{
-					"$type": "#Subeffect#LoopWhileHaveTargets$",
+					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"delete": true,
 					"jumpIndices": [
 						2
 					]
 				},
 				{
-					"$type": "#Subeffect#BottomdeckRest$"
+					"$type": "Subeffect:BottomdeckRest:"
 				}
 			]
 		}

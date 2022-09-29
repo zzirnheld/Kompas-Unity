@@ -19,19 +19,19 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetTriggeringCard$"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "#Subeffect#Heal$"
+					"$type": "Subeffect:Heal:"
 				},
 				{
-					"$type": "#Subeffect#TargetThis$"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "#Subeffect#Reshuffle$"
+					"$type": "Subeffect:Reshuffle:"
 				},
 				{
-					"$type": "#Subeffect#Draw$"
+					"$type": "Subeffect:Draw:"
 				}
 			]
 		}

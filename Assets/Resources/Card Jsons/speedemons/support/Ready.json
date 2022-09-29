@@ -14,7 +14,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#DeckTarget$",
+					"$type": "Subeffect:DeckTarget:",
 					"cardRestriction": {
 						"blurb": "Linewalker for Leypathmaking to search",
 						"cardRestrictions": [
@@ -26,10 +26,10 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Rehand$"
+					"$type": "Subeffect:Rehand:"
 				},
 				{
-					"$type": "#Subeffect#DeckTarget$",
+					"$type": "Subeffect:DeckTarget:",
 					"cardRestriction": {
 						"blurb": "Linewalker for Leypathmaking to search",
 						"cardRestrictions": [
@@ -43,7 +43,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Rehand$"
+					"$type": "Subeffect:Rehand:"
 				}
 			]
 		}

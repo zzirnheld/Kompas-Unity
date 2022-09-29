@@ -13,13 +13,13 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#SkipToEffectOnImpossible$",
+					"$type": "Subeffect:SkipToEffectOnImpossible:",
 					"jumpIndices": [
 						6
 					]
 				},
 				{
-					"$type": "#Subeffect#ChooseFromListSaveRest$",
+					"$type": "Subeffect:ChooseFromListSaveRest:",
 					"maxCanChoose": 1,
 					"cardRestriction": {
 						"blurb": "Warrior for The General to recruit",
@@ -54,7 +54,7 @@
 					"xModifier": 5
 				},
 				{
-					"$type": "#Subeffect#SpaceTarget$",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where for The General to recruit their Warrior",
 						"spaceRestrictions": [
@@ -64,21 +64,21 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#PayPipsTargetCost$",
+					"$type": "Subeffect:PayPipsTargetCost:",
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#Play$"
+					"$type": "Subeffect:Play:"
 				},
 				{
-					"$type": "#Subeffect#LoopWhileHaveTargets$",
+					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"delete": true,
 					"jumpIndices": [
 						2
 					]
 				},
 				{
-					"$type": "#Subeffect#BottomdeckRest$"
+					"$type": "Subeffect:BottomdeckRest:"
 				}
 			]
 		}

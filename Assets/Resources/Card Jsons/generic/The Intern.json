@@ -16,7 +16,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#Draw$"
+					"$type": "Subeffect:Draw:"
 				}
 			]
 		}

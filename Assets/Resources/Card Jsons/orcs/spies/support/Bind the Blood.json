@@ -25,18 +25,18 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#AutoTargetCardIdentity$",
+					"$type": "Subeffect:AutoTargetCardIdentity:",
                     "subeffectCardIdentity": {
 						"$type": "Subeffect.Card:FromActivationContext:",
                         "cardFromContext": { "$type": "ActivationContext.Card:MainCardBefore:" }
                     }
 				},
 				{
-					"$type": "#Subeffect#ChangeCardStats$",
+					"$type": "Subeffect:ChangeCardStats:",
 					"wModifier": 1
 				},
 				{
-					"$type": "#Subeffect#Delay$",
+					"$type": "Subeffect:Delay:",
 					"numTimesToDelay": 0,
 					"jumpIndices": [
 						3
@@ -74,7 +74,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Bind blood to a card",
 						"cardRestrictions": [
@@ -86,19 +86,19 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#SkipToEffectOnImpossible$",
+					"$type": "Subeffect:SkipToEffectOnImpossible:",
 					"jumpIndices": [
 						6
 					]
 				},
 				{
-					"$type": "#Subeffect#Reveal$"
+					"$type": "Subeffect:Reveal:"
 				},
 				{
-					"$type": "#Subeffect#ClearOnImpossible$"
+					"$type": "Subeffect:ClearOnImpossible:"
 				},
 				{
-					"$type": "#Subeffect#ChangeCardStats$",
+					"$type": "Subeffect:ChangeCardStats:",
 					"forbidNotBoard": false,
 					"sModifier": -2
 				}

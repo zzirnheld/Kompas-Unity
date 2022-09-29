@@ -15,10 +15,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetThis$"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "#Subeffect#TemporaryCardStatChange$",
+					"$type": "Subeffect:TemporaryCardStatChange:",
 					"wModifier": 6,
 					"endCondition": "Battle End",
 					"triggerRestriction": {

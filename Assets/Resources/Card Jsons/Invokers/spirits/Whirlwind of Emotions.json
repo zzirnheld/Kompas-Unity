@@ -22,13 +22,13 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetThis$"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "#Subeffect#Reshuffle$"
+					"$type": "Subeffect:Reshuffle:"
 				},
 				{
-					"$type": "#Subeffect#ConditionalEnd$",
+					"$type": "Subeffect:ConditionalEnd:",
 					"condition": "Number of Cards Fitting CardRestriction Fits NumberRestriction",
 					"cardRestriction": {
 						"blurb": "for Whirlwind of Emotions to summon",
@@ -54,7 +54,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "for Whirlwind of Emotions to summon",
 						"cardRestrictions": [
@@ -73,7 +73,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#SpaceTarget$",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to summon that Spirit",
 						"spaceRestrictions": [
@@ -83,10 +83,10 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Play$"
+					"$type": "Subeffect:Play:"
 				},
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "for Whirlwind of Emotions to summon",
 						"cardRestrictions": [
@@ -105,7 +105,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#SpaceTarget$",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to summon that Spirit",
 						"spaceRestrictions": [
@@ -115,7 +115,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Play$"
+					"$type": "Subeffect:Play:"
 				}
 			]
 		}

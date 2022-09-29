@@ -15,11 +15,11 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#ConditionalEnd$",
+					"$type": "Subeffect:ConditionalEnd:",
 					"condition": "Hand Full"
 				},
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "dead Fungus",
 						"cardRestrictions": [
@@ -33,13 +33,13 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Reshuffle$"
+					"$type": "Subeffect:Reshuffle:"
 				},
 				{
-					"$type": "#Subeffect#Draw$"
+					"$type": "Subeffect:Draw:"
 				},
 				{
-					"$type":"#Subeffect#TargetAll$",
+					"$type":"Subeffect:TargetAll:",
 					"cardRestriction":
 					{
 						"cardRestrictions":["Board","Character","Space Fits Restriction"],
@@ -51,14 +51,14 @@
 					}
 				},
 				{
-					"$type":"#Subeffect#Activate$"
+					"$type":"Subeffect:Activate:"
 				},
 				{
-					"$type":"#Subeffect#Activate$",
+					"$type":"Subeffect:Activate:",
 					"activate":false
 				},
 				{
-					"$type":"#Subeffect#LoopWhileHaveTargets$",
+					"$type":"Subeffect:LoopWhileHaveTargets:",
 					"delete":true,
 					"remainingTargets": 1,
 					"jumpIndices":[5]

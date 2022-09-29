@@ -15,7 +15,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#DeckTarget$",
+					"$type": "Subeffect:DeckTarget:",
 					"cardRestriction": {
 						"blurb": "Mech plan",
 						"cardRestrictions": [
@@ -31,7 +31,7 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#Delay$",
+					"$type": "Subeffect:Delay:",
 					"numTimesToDelay": 0,
 					"jumpIndices": [
 						2
@@ -39,7 +39,7 @@
 					"endCondition": "Turn Start"
 				},
 				{
-					"$type": "#Subeffect#Delay$",
+					"$type": "Subeffect:Delay:",
 					"numTimesToDelay": 0,
 					"jumpIndices": [
 						3
@@ -62,7 +62,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#AutoTarget$",
+					"$type": "Subeffect:AutoTarget:",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Friendly",
@@ -73,10 +73,10 @@
 					"tiebreakerDirection":"Any"
 				},
 				{
-					"$type": "#Subeffect#Rehand$"
+					"$type": "Subeffect:Rehand:"
 				},
 				{
-					"$type": "#Subeffect#Jump$",
+					"$type": "Subeffect:Jump:",
 					"jumpIndices": [
 						0
 					]

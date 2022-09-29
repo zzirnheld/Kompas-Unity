@@ -14,13 +14,13 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#SkipToEffectOnImpossible$",
+					"$type": "Subeffect:SkipToEffectOnImpossible:",
 					"jumpIndices": [
 						5
 					]
 				},
 				{
-					"$type": "#Subeffect#ChooseFromListSaveRest$",
+					"$type": "Subeffect:ChooseFromListSaveRest:",
 					"cardRestriction": {
 						"blurb": "spell for Perthro to search (to hand)",
 						"cardRestrictions": [
@@ -48,20 +48,20 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#ClearOnImpossible$"
+					"$type": "Subeffect:ClearOnImpossible:"
 				},
 				{
-					"$type": "#Subeffect#Rehand$"
+					"$type": "Subeffect:Rehand:"
 				},
 				{
-					"$type": "#Subeffect#LoopWhileHaveTargets$",
+					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"delete": true,
 					"jumpIndices": [
 						3
 					]
 				},
 				{
-					"$type": "#Subeffect#BottomdeckRest$"
+					"$type": "Subeffect:BottomdeckRest:"
 				}
 			]
 		}

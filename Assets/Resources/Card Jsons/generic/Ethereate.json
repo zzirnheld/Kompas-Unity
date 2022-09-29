@@ -18,7 +18,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Ethereal to revive",
                         "cardRestrictionElements": [
@@ -36,7 +36,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#SpaceTarget$",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to revive the Ethereal",
                         "spaceRestrictionElements": [
@@ -49,10 +49,10 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Play$"
+					"$type": "Subeffect:Play:"
 				},
 				{
-					"$type": "#Subeffect#HangingAnnihilation$",
+					"$type": "Subeffect:HangingAnnihilation:",
 					"endCondition": "Stack End",
 					"triggerRestriction": { }
 				}

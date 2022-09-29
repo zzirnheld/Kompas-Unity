@@ -14,7 +14,7 @@
 			},
 			"subeffects": [
 				{
-					"$type":"#Subeffect#CardTarget$",
+					"$type":"Subeffect:CardTarget:",
 					"cardRestriction":{
 						"blurb":"Card to discard",
 						"cardRestrictions": [
@@ -24,10 +24,10 @@
 					}
 				},
 				{
-					"$type":"#Subeffect#Discard$"
+					"$type":"Subeffect:Discard:"
 				},
 				{
-					"$type": "#Subeffect#DeckTarget$",
+					"$type": "Subeffect:DeckTarget:",
 					"cardRestriction": {
 						"blurb": "Invocation to find",
 						"cardRestrictions": [
@@ -41,7 +41,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Rehand$"
+					"$type": "Subeffect:Rehand:"
 				}
 			]
 		}

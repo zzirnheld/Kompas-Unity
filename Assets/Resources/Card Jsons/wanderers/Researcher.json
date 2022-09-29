@@ -14,7 +14,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#DeckTarget$",
+					"$type": "Subeffect:DeckTarget:",
 					"cardRestriction": {
 						"blurb": "card to research",
 						"cardRestrictions": [
@@ -23,10 +23,10 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Annihilate$"
+					"$type": "Subeffect:Annihilate:"
 				},
 				{
-					"$type": "#Subeffect#Delay$",
+					"$type": "Subeffect:Delay:",
 					"numTimesToDelay": 0,
 					"jumpIndices": [
 						3
@@ -35,7 +35,7 @@
 					"endCondition": "Turn Start"
 				},
 				{
-					"$type": "#Subeffect#Rehand$"
+					"$type": "Subeffect:Rehand:"
 				}
 			]
 		}

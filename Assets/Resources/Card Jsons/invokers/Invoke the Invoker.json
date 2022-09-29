@@ -14,7 +14,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Spirit to reveal for Invoke the Invoker",
 						"cardRestrictions": [
@@ -28,14 +28,14 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Show$"
+					"$type": "Subeffect:Show:"
 				},
 				{
-					"$type": "#Subeffect#Mill$",
+					"$type": "Subeffect:Mill:",
 					"xModifier": 1
 				},
 				{
-					"$type": "#Subeffect#ConditionalJump$",
+					"$type": "Subeffect:ConditionalJump:",
 					"condition": "Target Violates Restriction",
 					"cardRestriction": {
 						"cardRestrictions": [
@@ -51,7 +51,7 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#SpaceTarget$",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to Invoke the Invoker",
 						"spaceRestrictions": [
@@ -61,10 +61,10 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Play$"
+					"$type": "Subeffect:Play:"
 				},
 				{
-					"$type": "#Subeffect#Topdeck$",
+					"$type": "Subeffect:Topdeck:",
 					"targetIndex": 0
 				}
 			]

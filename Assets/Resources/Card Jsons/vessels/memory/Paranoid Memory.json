@@ -15,10 +15,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetAugmentedCard$"
+					"$type": "Subeffect:TargetAugmentedCard:"
 				},
 				{
-					"$type": "#Subeffect#ChangeCardStats$",
+					"$type": "Subeffect:ChangeCardStats:",
 					"eModifier": 1
 				}
 			]
@@ -36,16 +36,16 @@
 			},
 			"subeffects": [
                 {
-                    "$type":"#Subeffect#TargetAugmentedCard$"
+                    "$type":"Subeffect:TargetAugmentedCard:"
                 },
 				{
-					"$type": "#Subeffect#Resummon$"
+					"$type": "Subeffect:Resummon:"
 				},
 				{
-					"$type": "#Subeffect#Resummon$"
+					"$type": "Subeffect:Resummon:"
 				},
 				{
-					"$type": "#Subeffect#Resummon$"
+					"$type": "Subeffect:Resummon:"
 				}
 			]
 		}

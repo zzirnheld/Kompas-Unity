@@ -30,20 +30,20 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetTriggeringCardsCoords$"
+					"$type": "Subeffect:TargetTriggeringCardsCoords:"
 				},
 				{
-					"$type": "#Subeffect#TargetThis$"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "#Subeffect#SetXByTargetCardValue$",
+					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "S"
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"blurb": "card to vakoom",
 					"cardRestriction": {
 						"cardRestrictions": [
@@ -59,7 +59,7 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#Annihilate$"
+					"$type": "Subeffect:Annihilate:"
 				}
 			]
 		}

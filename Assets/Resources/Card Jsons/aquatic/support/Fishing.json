@@ -14,17 +14,17 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#DrawX$",
+					"$type": "Subeffect:DrawX:",
 					"xModifier": 3
 				},
 				{
-					"$type": "#Subeffect#SkipToEffectOnImpossible$",
+					"$type": "Subeffect:SkipToEffectOnImpossible:",
 					"jumpIndices": [
 						6
 					]
 				},
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Aquatic for Fishing to annihilate",
 						"cardRestrictions": [
@@ -38,16 +38,16 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#ClearOnImpossible$"
+					"$type": "Subeffect:ClearOnImpossible:"
 				},
 				{
-					"$type": "#Subeffect#Annihilate$"
+					"$type": "Subeffect:Annihilate:"
 				},
 				{
-					"$type": "#Subeffect#EndResolution$"
+					"$type": "Subeffect:EndResolution:"
 				},
 				{
-					"$type": "#Subeffect#TargetAll$",
+					"$type": "Subeffect:TargetAll:",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Friendly",
@@ -56,10 +56,10 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Annihilate$"
+					"$type": "Subeffect:Annihilate:"
 				},
 				{
-					"$type": "#Subeffect#LoopWhileHaveTargets$",
+					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"delete": true,
 					"jumpIndices": [
 						7

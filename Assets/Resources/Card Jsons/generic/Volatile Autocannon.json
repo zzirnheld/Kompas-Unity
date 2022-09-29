@@ -15,13 +15,13 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetThis$"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "#Subeffect#TargetTargetsSpace$"
+					"$type": "Subeffect:TargetTargetsSpace:"
 				},
 				{
-					"$type": "#Subeffect#SpaceTarget$",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "Direction to fire the cannon",
 						"spaceRestrictions": [
@@ -32,10 +32,10 @@
 					"xModifier": 1
 				},
 				{
-					"$type": "#Subeffect#TargetDirection$"
+					"$type": "Subeffect:TargetDirection:"
 				},
 				{
-					"$type": "#Subeffect#AutoTarget$",
+					"$type": "Subeffect:AutoTarget:",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Space Fits Restriction"
@@ -52,7 +52,7 @@
 					"tiebreakerDirection": "Maximum"
 				},
 				{
-					"$type": "#Subeffect#ChangeCardStats$",
+					"$type": "Subeffect:ChangeCardStats:",
 					"eModifier": -3
 				}
 			]

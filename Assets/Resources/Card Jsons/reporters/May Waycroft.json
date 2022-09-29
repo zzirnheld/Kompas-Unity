@@ -17,7 +17,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#ConditionalJump$",
+					"$type": "Subeffect:ConditionalJump:",
 					"condition": "Main Triggering Card Flouted Restriction Before",
 					"cardRestriction": {
 						"cardRestrictions": [
@@ -29,7 +29,7 @@
 					]
 				},
 				{
-					"$type": "#Subeffect#ChangeAllCardStats$",
+					"$type": "Subeffect:ChangeAllCardStats:",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character",
@@ -47,7 +47,7 @@
 					"wModifier": 1
 				},
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "card to reveal",
 						"cardRestrictions": [
@@ -58,7 +58,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Reveal$"
+					"$type": "Subeffect:Reveal:"
 				}
 			]
 		}

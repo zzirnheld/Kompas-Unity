@@ -14,7 +14,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "for Soulflare to annihilate",
 						"cardRestrictions": [
@@ -28,21 +28,21 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Annihilate$"
+					"$type": "Subeffect:Annihilate:"
 				},
 				{
-					"$type": "#Subeffect#CountXLoop$",
+					"$type": "Subeffect:CountXLoop:",
 					"canDecline": true,
 					"jumpIndices": [
 						0
 					]
 				},
 				{
-					"$type": "#Subeffect#DrawX$",
+					"$type": "Subeffect:DrawX:",
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#AddPips$",
+					"$type": "Subeffect:AddPips:",
 					"xMultiplier": 1
 				}
 			]

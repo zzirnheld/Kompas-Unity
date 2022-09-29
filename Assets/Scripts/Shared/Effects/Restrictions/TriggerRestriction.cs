@@ -73,7 +73,7 @@ namespace KompasCore.Effects
         #endregion trigger conditions
 
         private static readonly string[] RequiringCardRestriction = 
-            { MainCardFitsRestrictionBefore, SecondaryCardFitsRestrictionBefore, MainCardsAugmentedCardBeforeFitsRestriction };
+            { MainCardFitsRestrictionBefore, MainCardsAugmentedCardBeforeFitsRestriction };
         private static readonly string[] RequiringNowRestriction = { MainCardFitsRestrictionAfter };
         private static readonly string[] RequiringSelfRestriction = { ThisCardFitsRestriction };
         private static readonly string[] RequiringExistsRestriction = { CardExistsNow };
@@ -128,19 +128,19 @@ namespace KompasCore.Effects
             
             //Verify that any relevant restrictions exist
             if (triggerRestrictions.Intersect(RequiringCardRestriction).Any() && cardRestriction == null)
-                throw new ArgumentNullException("cardRestriction", $"Must be populated for any of these restrictions: {RequiringCardRestriction}");
+                throw new ArgumentNullException("cardRestriction", $"Must be populated for any of these restrictions: {string.Join(",", RequiringCardRestriction)}");
             if (triggerRestrictions.Intersect(RequiringNowRestriction).Any() && nowRestriction == null)
-                throw new ArgumentNullException("nowRestriction", $"Must be populated for any of these restrictions: {RequiringNowRestriction}");
+                throw new ArgumentNullException("nowRestriction", $"Must be populated for any of these restrictions: {string.Join(",", RequiringNowRestriction)}");
             if (triggerRestrictions.Intersect(RequiringSelfRestriction).Any() && selfRestriction == null)
-                throw new ArgumentNullException("selfRestriction", $"Must be populated for any of these restrictions: {RequiringSelfRestriction}");
+                throw new ArgumentNullException("selfRestriction", $"Must be populated for any of these restrictions: {string.Join(",", RequiringSelfRestriction)}");
             if (triggerRestrictions.Intersect(RequiringExistsRestriction).Any() && existsRestriction == null)
-                throw new ArgumentNullException("existsRestriction", $"Must be populated for any of these restrictions: {RequiringExistsRestriction}");
+                throw new ArgumentNullException("existsRestriction", $"Must be populated for any of these restrictions: {string.Join(",", RequiringExistsRestriction)}");
             if (triggerRestrictions.Intersect(RequiringSourceRestriction).Any() && sourceRestriction == null)
-                throw new ArgumentNullException("sourceRestriction", $"Must be populated for any of these restrictions: {RequiringSourceRestriction}");
+                throw new ArgumentNullException("sourceRestriction", $"Must be populated for any of these restrictions: {string.Join(",", RequiringSourceRestriction)}");
             if (triggerRestrictions.Intersect(RequiringNumberRestriction).Any() && xRestriction == null)
-                throw new ArgumentNullException("xRestriction", $"Must be populated for any of these restrictions: {RequiringNumberRestriction}");
+                throw new ArgumentNullException("xRestriction", $"Must be populated for any of these restrictions: {string.Join(",", RequiringNumberRestriction)}");
             if (triggerRestrictions.Intersect(RequiringSpaceRestriction).Any() && spaceRestriction == null)
-                throw new ArgumentNullException("spaceRestriction", $"Must be populated for any of these restrictions: {RequiringSpaceRestriction}");
+                throw new ArgumentNullException("spaceRestriction", $"Must be populated for any of these restrictions: {string.Join(",", RequiringSpaceRestriction)}");
 
             //Debug.Log($"Initializing trigger restriction for {thisCard?.CardName}. game is null? {game}");
         }

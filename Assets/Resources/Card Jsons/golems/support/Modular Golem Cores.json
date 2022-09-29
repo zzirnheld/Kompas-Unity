@@ -37,10 +37,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetTriggeringCard$"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Golem to swap out modules",
 						"cardRestrictions": [
@@ -61,20 +61,20 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#SetXByTargetCardValue$",
+					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "Number of Augments"
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#TargetAugments$"
+					"$type": "Subeffect:TargetAugments:"
 				},
 				{
-					"$type": "#Subeffect#Rehand$"
+					"$type": "Subeffect:Rehand:"
 				},
 				{
-					"$type": "#Subeffect#LoopWhileHaveTargets$",
+					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"delete": true,
 					"remainingTargets": 2,
 					"jumpIndices": [
@@ -82,7 +82,7 @@
 					]
 				},
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Golem core for Modular Golem Cores to attach",
 						"cardRestrictions": [
@@ -97,12 +97,12 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Attach$",
+					"$type": "Subeffect:Attach:",
 					"targetToAttachTo": 1,
 					"targetIndex": -1
 				},
 				{
-					"$type": "#Subeffect#XTimes$",
+					"$type": "Subeffect:XTimes:",
 					"jumpIndices": [
 						6
 					],

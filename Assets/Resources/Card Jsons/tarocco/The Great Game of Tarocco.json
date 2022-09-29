@@ -13,7 +13,7 @@
 			},
 			"subeffects":[
 				{
-					"$type":"#Subeffect#SetXBoardRestriction$",
+					"$type":"Subeffect:SetXBoardRestriction:",
 					"cardRestriction":
 					{
 						"cardRestrictions":["Subtypes Include","Friendly","Board"],
@@ -22,7 +22,7 @@
 					"xMultiplier":1
 				},
 				{
-					"$type":"#Subeffect#DrawX$",
+					"$type":"Subeffect:DrawX:",
 					"xMultiplier":1
 				}
 			]

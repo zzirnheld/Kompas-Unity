@@ -57,7 +57,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#Keyword$",
+					"$type": "Subeffect:Keyword:",
 					"keyword": "Spin a Storm"
 				}
 			]

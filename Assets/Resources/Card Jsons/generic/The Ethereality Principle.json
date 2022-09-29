@@ -26,21 +26,21 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetTriggeringCard$"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "#Subeffect#SetXByTargetCardValue$",
+					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "S"
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#Mill$",
+					"$type": "Subeffect:Mill:",
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Remnant to put back on top",
 						"cardRestrictions": [
@@ -49,7 +49,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Topdeck$"
+					"$type": "Subeffect:Topdeck:"
 				}
 			]
 		}

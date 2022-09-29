@@ -22,14 +22,14 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#SetXByTriggeringCardValue$",
+					"$type": "Subeffect:SetXByTriggeringCardValue:",
 					"cardValue": {
 						"value": "S"
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "for Sangrian to feed",
 						"cardRestrictions": [
@@ -39,7 +39,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#ChangeCardStats$",
+					"$type": "Subeffect:ChangeCardStats:",
 					"eMultiplier": 1,
 					"sMultiplier": 1,
 					"wMultiplier": 1

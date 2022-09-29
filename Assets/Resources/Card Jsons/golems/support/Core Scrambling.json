@@ -25,13 +25,13 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetTriggeringCard$"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "#Subeffect#TargetTargetsSpace$"
+					"$type": "Subeffect:TargetTargetsSpace:"
 				},
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "CORE!!!1!",
 						"cardRestrictions": [
@@ -46,15 +46,15 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Play$",
+					"$type": "Subeffect:Play:",
 					"targetIndex": -2
 				},
 				{
-					"$type":"#Subeffect#TargetTriggeringCard$",
+					"$type":"Subeffect:TargetTriggeringCard:",
 					"secondary":true
 				},
 				{
-					"$type": "#Subeffect#Attack$",
+					"$type": "Subeffect:Attack:",
 					"targetIndex": -3,
 					"attackerIndex": -1
 				}

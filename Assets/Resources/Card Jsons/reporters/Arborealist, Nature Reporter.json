@@ -22,24 +22,24 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#SetXByTriggeringCardValue$",
+					"$type": "Subeffect:SetXByTriggeringCardValue:",
 					"cardValue": {
 						"value": "E"
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#TargetEnemy$"
+					"$type": "Subeffect:TargetEnemy:"
 				},
 				{
-					"$type": "#Subeffect#CanResolve$",
+					"$type": "Subeffect:CanResolve:",
 					"subeffIndices": [
 						4
 					],
 					"skipIndex": 7
 				},
 				{
-					"$type": "#Subeffect#ChooseOption$",
+					"$type": "Subeffect:ChooseOption:",
 					"choiceBlurb": "Reveal an E > X character?",
 					"optionBlurbs": [
 						"Yes",
@@ -52,7 +52,7 @@
 					"showX": true
 				},
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "E > X character to reveal",
 						"cardRestrictions": [
@@ -74,13 +74,13 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#Reveal$"
+					"$type": "Subeffect:Reveal:"
 				},
 				{
-					"$type": "#Subeffect#EndResolution$"
+					"$type": "Subeffect:EndResolution:"
 				},
 				{
-					"$type": "#Subeffect#ChangeAllCardStats$",
+					"$type": "Subeffect:ChangeAllCardStats:",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character",

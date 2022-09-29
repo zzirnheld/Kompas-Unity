@@ -23,7 +23,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#SpaceTarget$",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"spaceRestrictions": [
 							"Can Move Card Target to This Space",
@@ -39,7 +39,7 @@
 					"xModifier": 1
 				},
 				{
-					"$type": "#Subeffect#Move$"
+					"$type": "Subeffect:Move:"
 				}
 			]
 		}

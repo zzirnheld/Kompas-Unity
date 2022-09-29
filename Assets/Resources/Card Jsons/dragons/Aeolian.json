@@ -16,11 +16,11 @@
 			},
 			"subeffects": [
 				{
-					"$type":"#Subeffect#TargetTriggeringCard$",
+					"$type":"Subeffect:TargetTriggeringCard:",
 					"secondary":true
 				},
 				{
-					"$type": "#Subeffect#SpaceTarget$",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where for Aeolian to move its target",
 						"spaceRestrictions": [
@@ -30,15 +30,15 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#SetXByGamestate$",
+					"$type": "Subeffect:SetXByGamestate:",
 					"whatToCount": "Distance Between Target and Target Space",
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#Move$"
+					"$type": "Subeffect:Move:"
 				},
 				{
-					"$type": "#Subeffect#ChangeCardStats$",
+					"$type": "Subeffect:ChangeCardStats:",
 					"eMultiplier": -1
 				}
 			]

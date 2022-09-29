@@ -28,17 +28,17 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetTriggeringCard$"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "#Subeffect#SetXByTargetCardValue$",
+					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "W"
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#TemporaryCardStatChange$",
+					"$type": "Subeffect:TemporaryCardStatChange:",
 					"wMultiplier": -1,
 					"endCondition": "Leave AOE",
 					"triggerRestriction": {

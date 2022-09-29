@@ -30,25 +30,25 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetThis$"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "#Subeffect#TargetTriggeringCard$"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "#Subeffect#TargetAugments$"
+					"$type": "Subeffect:TargetAugments:"
 				},
 				{
-					"$type": "#Subeffect#ConditionalEnd$",
+					"$type": "Subeffect:ConditionalEnd:",
 					"condition": "Number Targets <= Constant",
 					"constant": 2
 				},
 				{
-					"$type": "#Subeffect#Attach$",
+					"$type": "Subeffect:Attach:",
 					"targetToAttachTo": 0
 				},
 				{
-					"$type": "#Subeffect#LoopWhileHaveTargets$",
+					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"delete": true,
 					"remainingTargets": 2,
 					"jumpIndices": [

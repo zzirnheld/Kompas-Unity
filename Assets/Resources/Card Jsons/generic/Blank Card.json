@@ -14,7 +14,7 @@
 			},
 			"subeffects":[
 				{
-					"$type":"#Subeffect#ChooseFromList$",
+					"$type":"Subeffect:ChooseFromList:",
 					"maxCanChoose":1,
 					"cardRestriction":
 					{
@@ -24,7 +24,7 @@
 					}
 				},
 				{
-					"$type":"#Subeffect#Rehand$"
+					"$type":"Subeffect:Rehand:"
 				}
 			]
 		}

@@ -13,7 +13,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#SetXBoardRestriction$",
+					"$type": "Subeffect:SetXBoardRestriction:",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Subtypes Include",
@@ -33,7 +33,7 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#AddPips$",
+					"$type": "Subeffect:AddPips:",
 					"xMultiplier": 1,
 					"xModifier": 0
 				}

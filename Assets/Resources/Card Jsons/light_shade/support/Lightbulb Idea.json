@@ -24,10 +24,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#Draw$"
+					"$type": "Subeffect:Draw:"
 				},
 				{
-					"$type": "#Subeffect#ChangeDuration$",
+					"$type": "Subeffect:ChangeDuration:",
 					"xMultiplier": 0,
 					"xModifier": -1
 				}

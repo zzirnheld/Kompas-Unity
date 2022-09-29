@@ -16,10 +16,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetAugmentedCard$"
+					"$type": "Subeffect:TargetAugmentedCard:"
 				},
 				{
-					"$type": "#Subeffect#ConditionalEnd$",
+					"$type": "Subeffect:ConditionalEnd:",
 					"condition": "Target Violates Restriction",
 					"cardRestriction": {
 						"cardRestrictions": [
@@ -31,10 +31,10 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Activate$"
+					"$type": "Subeffect:Activate:"
 				},
 				{
-					"$type": "#Subeffect#Activate$",
+					"$type": "Subeffect:Activate:",
 					"activate": false
 				}
 			]

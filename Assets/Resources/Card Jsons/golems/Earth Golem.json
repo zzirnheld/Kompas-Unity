@@ -15,7 +15,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "for Earth Golem to buff or debuff",
 						"cardRestrictions": [
@@ -25,7 +25,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#ChooseOption$",
+					"$type": "Subeffect:ChooseOption:",
 					"choiceBlurb": "Give +1 EW or -1 EW?",
 					"optionBlurbs": [
 						"+1 EW",
@@ -38,15 +38,15 @@
 					"hasDefault": false
 				},
 				{
-					"$type": "#Subeffect#ChangeCardStats$",
+					"$type": "Subeffect:ChangeCardStats:",
 					"eModifier": 1,
 					"wModifier": 1
 				},
 				{
-					"$type": "#Subeffect#EndResolution$"
+					"$type": "Subeffect:EndResolution:"
 				},
 				{
-					"$type": "#Subeffect#ChangeCardStats$",
+					"$type": "Subeffect:ChangeCardStats:",
 					"eModifier": -1,
 					"wModifier": -1
 				}

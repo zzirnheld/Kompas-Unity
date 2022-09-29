@@ -14,10 +14,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetAugmentedCard$"
+					"$type": "Subeffect:TargetAugmentedCard:"
 				},
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "What creature does the camouflage look like?",
 						"cardRestrictions": [
@@ -29,21 +29,21 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Reveal$"
+					"$type": "Subeffect:Reveal:"
 				},
 				{
-					"$type": "#Subeffect#SetXByTargetCardValue$",
+					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "W"
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type":"#Subeffect#TargetTriggeringCard$",
+					"$type":"Subeffect:TargetTriggeringCard:",
 					"secondary":true
 				},
 				{
-					"$type": "#Subeffect#ChangeCardStats$",
+					"$type": "Subeffect:ChangeCardStats:",
 					"wMultiplier": -1
 				}
 			]

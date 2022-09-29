@@ -12,19 +12,19 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#SetXByGamestate$",
+					"$type": "Subeffect:SetXByGamestate:",
 					"whatToCount": "Effect Uses This Turn",
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#TargetThis$"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "#Subeffect#ChangeCardStats$",
+					"$type": "Subeffect:ChangeCardStats:",
 					"eMultiplier": -1
 				},
 				{
-					"$type": "#Subeffect#AutoTarget$",
+					"$type": "Subeffect:AutoTarget:",
 					"cardRestriction": {
 						"blurb": "for Haemopoten to draw",
 						"cardRestrictions": [
@@ -36,10 +36,10 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Annihilate$"
+					"$type": "Subeffect:Annihilate:"
 				},
 				{
-					"$type": "#Subeffect#Delay$",
+					"$type": "Subeffect:Delay:",
 					"numTimesToDelay": 0,
 					"jumpIndices": [
 						6
@@ -48,7 +48,7 @@
 					"endCondition": "Turn Start"
 				},
 				{
-					"$type": "#Subeffect#Rehand$"
+					"$type": "Subeffect:Rehand:"
 				}
 			]
 		}

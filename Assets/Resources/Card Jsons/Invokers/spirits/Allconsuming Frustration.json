@@ -22,7 +22,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Board",
@@ -38,7 +38,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Negate$"
+					"$type": "Subeffect:Negate:"
 				}
 			]
 		}

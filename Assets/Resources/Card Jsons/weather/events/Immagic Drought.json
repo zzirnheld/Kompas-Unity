@@ -16,7 +16,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetAll$",
+					"$type": "Subeffect:TargetAll:",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character",
@@ -40,14 +40,14 @@
                     }
 				},
 				{
-					"$type": "#Subeffect#TemporaryNegate$",
+					"$type": "Subeffect:TemporaryNegate:",
 					"endCondition": "Turn Start",
 					"triggerRestriction": {
 						"triggerRestrictions": []
 					}
 				},
 				{
-					"$type": "#Subeffect#LoopWhileHaveTargets$",
+					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"delete": true,
 					"jumpIndices": [
 						1

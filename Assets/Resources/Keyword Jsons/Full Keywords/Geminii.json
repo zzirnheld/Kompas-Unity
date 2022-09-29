@@ -7,14 +7,14 @@
 	},
 	"subeffects":[
 		{
-			"$type":"#Subeffect#TargetThis$"
+			"$type":"Subeffect:TargetThis:"
 		},
 		{
-			"$type":"#Subeffect#PayPipsTargetCost$",
+			"$type":"Subeffect:PayPipsTargetCost:",
 			"xMultiplier":1
 		},
 		{
-			"$type":"#Subeffect#Resummon$"
+			"$type":"Subeffect:Resummon:"
 		}
 	]	
 }

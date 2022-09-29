@@ -14,11 +14,11 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#Keyword$",
+					"$type": "Subeffect:Keyword:",
 					"keyword": "Rummage"
 				},
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "you! move a little bit to the left...",
 						"cardRestrictions": [
@@ -28,7 +28,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#SpaceTarget$",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "ok, now move just a little bit more",
 						"spaceRestrictions": [
@@ -45,7 +45,7 @@
 					"xModifier": 1
 				},
 				{
-					"$type": "#Subeffect#Move$"
+					"$type": "Subeffect:Move:"
 				}
 			]
 		}

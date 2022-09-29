@@ -18,7 +18,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "to throw NE",
 						"cardRestrictions": [
@@ -28,13 +28,13 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#TargetTargetsSpace$"
+					"$type": "Subeffect:TargetTargetsSpace:"
 				},
 				{
-					"$type": "#Subeffect#TargetDirection$"
+					"$type": "Subeffect:TargetDirection:"
 				},
 				{
-					"$type": "#Subeffect#AutoSpaceTarget$",
+					"$type": "Subeffect:AutoSpaceTarget:",
 					"spaceRestriction": {
 						"spaceRestrictions": [
 							"Source Displacement to Card Target Same Direction as Space Target",
@@ -50,13 +50,13 @@
 					"xModifier": 1
 				},
 				{
-					"$type": "#Subeffect#TargetThis$"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "#Subeffect#Move$"
+					"$type": "Subeffect:Move:"
 				},
 				{
-					"$type": "#Subeffect#ChangeCardStats$",
+					"$type": "Subeffect:ChangeCardStats:",
 					"eModifier": -3,
 					"targetIndex": -2
 				}

@@ -10,10 +10,10 @@
 	},
 	"subeffects":[
 		{
-			"$type":"#Subeffect#TargetThis$"
+			"$type":"Subeffect:TargetThis:"
 		},
 		{
-			"$type":"#Subeffect#SpaceTarget$",
+			"$type":"Subeffect:SpaceTarget:",
 			"spaceRestriction":
 			{
 				"blurb":"where Wisp to move",
@@ -25,7 +25,7 @@
 			"xModifier":1
 		},
 		{
-			"$type":"#Subeffect#Move$"
+			"$type":"Subeffect:Move:"
 		}
 	]	
 }

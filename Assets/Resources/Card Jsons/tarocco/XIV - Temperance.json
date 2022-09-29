@@ -18,7 +18,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "C <= X spell for Temperance to dispel",
 						"cardRestrictions": [
@@ -38,7 +38,7 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#Dispel$"
+					"$type": "Subeffect:Dispel:"
 				}
 			]
 		}

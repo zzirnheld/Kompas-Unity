@@ -15,17 +15,17 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetEnemy$"
+					"$type": "Subeffect:TargetEnemy:"
 				},
 				{
-					"$type": "#Subeffect#CanResolve$",
+					"$type": "Subeffect:CanResolve:",
 					"subeffIndices": [
 						3
 					],
 					"skipIndex": 6
 				},
 				{
-					"$type": "#Subeffect#ChooseOption$",
+					"$type": "Subeffect:ChooseOption:",
 					"choiceBlurb": "Reveal a Cost 1 card?",
 					"optionBlurbs": [
 						"Yes",
@@ -37,7 +37,7 @@
 					]
 				},
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "fast card to reveal",
 						"cardRestrictions": [
@@ -58,13 +58,13 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Reveal$"
+					"$type": "Subeffect:Reveal:"
 				},
 				{
-					"$type": "#Subeffect#EndResolution$"
+					"$type": "Subeffect:EndResolution:"
 				},
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"playerIndex": -2,
 					"cardRestriction": {
 						"blurb": "friendly Reporter to move",
@@ -86,7 +86,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#SpaceTarget$",
+					"$type": "Subeffect:SpaceTarget:",
 					"playerIndex": -2,
 					"spaceRestriction": {
 						"blurb": "where for Newsflash! to move it starget",
@@ -97,7 +97,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Move$",
+					"$type": "Subeffect:Move:",
 					"playerIndex": -2
 				}
 			]

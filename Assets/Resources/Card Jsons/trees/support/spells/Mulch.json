@@ -20,7 +20,7 @@
 			},
 			"subeffects":[
 				{
-					"$type":"#Subeffect#TargetAll$",
+					"$type":"Subeffect:TargetAll:",
 					"cardRestriction":
 					{
 						"blurb":"for Haemopoten to draw",
@@ -30,10 +30,10 @@
 					"xMultiplier":1
 				},
 				{
-					"$type":"#Subeffect#Heal$"
+					"$type":"Subeffect:Heal:"
 				},
 				{
-					"$type":"#Subeffect#LoopWhileHaveTargets$",
+					"$type":"Subeffect:LoopWhileHaveTargets:",
 					"delete":true,
 					"jumpIndices":[1]
 				}

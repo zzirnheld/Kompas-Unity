@@ -22,28 +22,28 @@
 			},
 			"subeffects": [
 				{
-					"$type":"#Subeffect#TargetTriggeringCard$"
+					"$type":"Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type":"#Subeffect#TargetTargetsController$"
+					"$type":"Subeffect:TargetTargetsController:"
 				},
 				{
-					"$type":"#Subeffect#CanResolve$",
+					"$type":"Subeffect:CanResolve:",
 					"subeffIndices":[4]
 				},
 				{
-					"$type":"#Subeffect#ChooseOption$",
+					"$type":"Subeffect:ChooseOption:",
 					"choiceBlurb":"Pay 1 pip to draw?",
 					"optionBlurbs":["Yes","No"],
 					"jumpIndices":[4,100]
 				},
 				{
-					"$type":"#Subeffect#PayPips$",
+					"$type":"Subeffect:PayPips:",
 					"xMultiplier":0,
 					"xModifier":1
 				},
 				{
-					"$type":"#Subeffect#Draw$"
+					"$type":"Subeffect:Draw:"
 				}
 			]	
 		}

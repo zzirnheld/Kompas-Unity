@@ -14,7 +14,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "for Spiritual Advice to reshuffle",
 						"cardRestrictions": [
@@ -28,17 +28,17 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Topdeck$"
+					"$type": "Subeffect:Topdeck:"
 				},
 				{
-					"$type": "#Subeffect#CountXLoop$",
+					"$type": "Subeffect:CountXLoop:",
 					"canDecline": true,
 					"jumpIndices": [
 						0
 					]
 				},
 				{
-					"$type": "#Subeffect#DrawX$",
+					"$type": "Subeffect:DrawX:",
 					"xMultiplier": 3
 				}
 			]

@@ -13,7 +13,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "adjacent Warrior for Tactician to give +5 E or +5 W",
 						"cardRestrictions": [
@@ -33,7 +33,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#ChooseOption$",
+					"$type": "Subeffect:ChooseOption:",
 					"choiceBlurb": "Give +5 E or +5 W?",
 					"optionBlurbs": [
 						"+5 E",
@@ -46,7 +46,7 @@
 					"hasDefault": false
 				},
 				{
-					"$type": "#Subeffect#ChangeCardStats$",
+					"$type": "Subeffect:ChangeCardStats:",
 					"nModifier": 0,
 					"eModifier": 5,
 					"sModifier": 0,
@@ -54,10 +54,10 @@
 					"targetIndex": 0
 				},
 				{
-					"$type": "#Subeffect#EndResolution$"
+					"$type": "Subeffect:EndResolution:"
 				},
 				{
-					"$type": "#Subeffect#ChangeCardStats$",
+					"$type": "Subeffect:ChangeCardStats:",
 					"nModifier": 0,
 					"eModifier": 0,
 					"sModifier": 0,

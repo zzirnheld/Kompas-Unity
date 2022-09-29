@@ -1,9 +1,9 @@
 [
     {
-        "$type": "#Subeffect#TargetTriggeringCardsCoords$"
+        "$type": "Subeffect:TargetTriggeringCardsCoords:"
     },
     {
-        "$type": "#Subeffect#ConditionalEnd$",
+        "$type": "Subeffect:ConditionalEnd:",
         "condition": "No Space Fits Restriction",
         "spaceRestriction": {
             "spaceRestrictions": [
@@ -28,7 +28,7 @@
         }
     },
     {
-        "$type": "#Subeffect#CardTarget$",
+        "$type": "Subeffect:CardTarget:",
         "cardRestriction": {
             "blurb": "Weather Event to hand->summon",
             "cardRestrictions": [
@@ -44,7 +44,7 @@
         }
     },
     {
-        "$type": "#Subeffect#SpaceTarget$",
+        "$type": "Subeffect:SpaceTarget:",
         "spaceRestriction": {
             "blurb": "where to hand->summon the Weather Event",
             "spaceRestrictions": [
@@ -78,6 +78,6 @@
         "targetIndex": -2
     },
     {
-        "$type": "#Subeffect#Play$"
+        "$type": "Subeffect:Play:"
     }
 ]

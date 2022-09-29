@@ -45,7 +45,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#AutoTarget$",
+					"$type": "Subeffect:AutoTarget:",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Friendly",
@@ -57,7 +57,7 @@
 					"tiebreakerDirection":"Any"
 				},
 				{
-					"$type": "#Subeffect#Rehand$"
+					"$type": "Subeffect:Rehand:"
 				}
 			]
 		}

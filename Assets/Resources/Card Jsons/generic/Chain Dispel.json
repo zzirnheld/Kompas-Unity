@@ -14,7 +14,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "spell for Chain Dispel to Dispel",
 						"cardRestrictions": [
@@ -30,13 +30,13 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#SkipToEffectOnImpossible$",
+					"$type": "Subeffect:SkipToEffectOnImpossible:",
 					"jumpIndices": [
 						4
 					]
 				},
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "spell for Chain Dispel to Dispel",
 						"cardRestrictions": [
@@ -53,20 +53,20 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Loop$",
+					"$type": "Subeffect:Loop:",
 					"canDecline": true,
 					"jumpIndices": [
 						2
 					]
 				},
 				{
-					"$type": "#Subeffect#ClearOnImpossible$"
+					"$type": "Subeffect:ClearOnImpossible:"
 				},
 				{
-					"$type": "#Subeffect#Dispel$"
+					"$type": "Subeffect:Dispel:"
 				},
 				{
-					"$type": "#Subeffect#LoopWhileHaveTargets$",
+					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"delete": true,
 					"jumpIndices": [
 						5

@@ -22,14 +22,14 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#Keyword$",
+					"$type": "Subeffect:Keyword:",
 					"keyword": "Rummage"
 				},
 				{
-					"$type": "#Subeffect#TargetTriggeringCard$"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "#Subeffect#SpaceTarget$",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "Great Scott, Marty, what card are we moving!?",
 						"spaceRestrictions": [
@@ -46,7 +46,7 @@
 					"xModifier": 1
 				},
 				{
-					"$type": "#Subeffect#Move$"
+					"$type": "Subeffect:Move:"
 				}
 			]
 		}

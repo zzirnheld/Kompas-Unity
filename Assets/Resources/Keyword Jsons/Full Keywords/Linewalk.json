@@ -13,14 +13,14 @@
 	},
 	"subeffects":[
 		{
-			"$type":"#Subeffect#TargetThis$"
+			"$type":"Subeffect:TargetThis:"
 		},
 		{
-			"$type":"#Subeffect#SpendRemainingMovement$",
+			"$type":"Subeffect:SpendRemainingMovement:",
 			"xModifier":1
 		},
 		{
-			"$type":"#Subeffect#SpaceTarget$",
+			"$type":"Subeffect:SpaceTarget:",
 			"spaceRestriction":
 			{
 				"blurb":"to Linewalk to",
@@ -39,7 +39,7 @@
 			}
 		},
 		{
-			"$type":"#Subeffect#Move$"
+			"$type":"Subeffect:Move:"
 		}
 	]
 }

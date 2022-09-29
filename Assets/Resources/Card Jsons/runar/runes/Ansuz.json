@@ -14,7 +14,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character",
@@ -29,7 +29,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#SetCardStats$",
+					"$type": "Subeffect:SetCardStats:",
 					"nVal": 1,
 					"eVal": 10,
 					"sVal": 10,

@@ -15,7 +15,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetAll$",
+					"$type": "Subeffect:TargetAll:",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Friendly",
@@ -28,23 +28,23 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Reshuffle$"
+					"$type": "Subeffect:Reshuffle:"
 				},
 				{
-					"$type": "#Subeffect#DeleteTarget$"
+					"$type": "Subeffect:DeleteTarget:"
 				},
 				{
-					"$type": "#Subeffect#CountXLoop$",
+					"$type": "Subeffect:CountXLoop:",
 					"canDecline": false,
 					"jumpIndices": [
 						1
 					]
 				},
 				{
-					"$type": "#Subeffect#TargetAvatar$"
+					"$type": "Subeffect:TargetAvatar:"
 				},
 				{
-					"$type": "#Subeffect#ChooseOption$",
+					"$type": "Subeffect:ChooseOption:",
 					"choiceBlurb": "Give +X S or -X S?",
 					"optionBlurbs": [
 						"+X S",
@@ -57,21 +57,21 @@
 					"hasDefault": false
 				},
 				{
-					"$type": "#Subeffect#ChangeCardStats$",
+					"$type": "Subeffect:ChangeCardStats:",
 					"sMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#Jump$",
+					"$type": "Subeffect:Jump:",
 					"jumpIndices": [
 						9
 					]
 				},
 				{
-					"$type": "#Subeffect#ChangeCardStats$",
+					"$type": "Subeffect:ChangeCardStats:",
 					"sMultiplier": -1
 				},
 				{
-					"$type": "#Subeffect#Draw$"
+					"$type": "Subeffect:Draw:"
 				}
 			]
 		}

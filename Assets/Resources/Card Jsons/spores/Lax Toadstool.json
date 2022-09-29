@@ -26,7 +26,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Fungus for Lax Toadstool to discard",
 						"cardRestrictions": [
@@ -40,16 +40,16 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Discard$"
+					"$type": "Subeffect:Discard:"
 				},
 				{
-					"$type": "#Subeffect#DeleteTarget$"
+					"$type": "Subeffect:DeleteTarget:"
 				},
 				{
-					"$type": "#Subeffect#TargetTriggeringCard$"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "#Subeffect#TemporaryNegate$",
+					"$type": "Subeffect:TemporaryNegate:",
 					"endCondition": "Attack",
 					"triggerRestriction": {
 						"triggerRestrictions": [

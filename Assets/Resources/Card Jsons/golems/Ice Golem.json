@@ -15,17 +15,17 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetThis$"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "#Subeffect#SetXByTargetCardValue$",
+					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "N"
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "for Ice Golem to temporarily negate",
 						"cardRestrictions": [
@@ -48,7 +48,7 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#TemporaryNegate$",
+					"$type": "Subeffect:TemporaryNegate:",
 					"endCondition": "Turn Start",
 					"triggerRestriction": {
 						"triggerRestrictions": [

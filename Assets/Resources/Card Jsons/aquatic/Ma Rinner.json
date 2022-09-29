@@ -15,14 +15,14 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#DrawX$",
+					"$type": "Subeffect:DrawX:",
 					"xModifier": 2
 				},
 				{
-					"$type": "#Subeffect#TargetThis$"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "#Subeffect#ConditionalEnd$",
+					"$type": "Subeffect:ConditionalEnd:",
 					"condition": "Target Fits Restriction",
 					"cardRestriction": {
 						"cardRestrictions": [
@@ -44,7 +44,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#ChooseFromList$",
+					"$type": "Subeffect:ChooseFromList:",
 					"cardRestriction": {
 						"blurb": "cards for Ma Rinner to bottomdeck",
 						"cardRestrictions": [
@@ -62,15 +62,15 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Bottomdeck$",
+					"$type": "Subeffect:Bottomdeck:",
 					"targetIndex": -1
 				},
 				{
-					"$type": "#Subeffect#Bottomdeck$",
+					"$type": "Subeffect:Bottomdeck:",
 					"targetIndex": -2
 				},
 				{
-					"$type": "#Subeffect#Bottomdeck$",
+					"$type": "Subeffect:Bottomdeck:",
 					"targetIndex": -3
 				}
 			]

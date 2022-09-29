@@ -18,21 +18,21 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetThis$"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "#Subeffect#SetXByTargetCardValue$",
+					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "E"
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#ChangeCardStats$",
+					"$type": "Subeffect:ChangeCardStats:",
 					"eMultiplier": 2
 				},
 				{
-					"$type": "#Subeffect#ChooseFromList$",
+					"$type": "Subeffect:ChooseFromList:",
 					"cardRestriction": {
 						"blurb": "5PR34D 0UT",
 						"cardRestrictionElements": [
@@ -55,12 +55,12 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Attack$",
+					"$type": "Subeffect:Attack:",
 					"targetIndex": -1,
 					"attackerIndex": 0
 				},
 				{
-					"$type": "#Subeffect#LoopWhileHaveTargets$",
+					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"delete": true,
 					"remainingTargets": 1,
 					"jumpIndices": [
@@ -68,7 +68,7 @@
 					]
 				},
 				{
-					"$type": "#Subeffect#Negate$"
+					"$type": "Subeffect:Negate:"
 				}
 			]
 		}

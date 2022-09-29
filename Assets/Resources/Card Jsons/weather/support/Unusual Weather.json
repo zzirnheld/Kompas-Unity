@@ -25,10 +25,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetTriggeringCard$"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Not Already Target",
@@ -51,10 +51,10 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Resummon$"
+					"$type": "Subeffect:Resummon:"
 				},
 				{
-					"$type": "#Subeffect#Loop$",
+					"$type": "Subeffect:Loop:",
 					"jumpIndices": [
 						1
 					]

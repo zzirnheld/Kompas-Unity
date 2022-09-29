@@ -11,7 +11,7 @@
 	},
 	"subeffects": [
 		{
-			"$type": "#Subeffect#ChooseFromList$",
+			"$type": "Subeffect:ChooseFromList:",
 			"listRestriction": {
 				"listRestrictions": [
 					"Min Can Choose"
@@ -24,7 +24,7 @@
 			}
 		},
 		{
-			"$type": "#Subeffect#SetXByGamestate$",
+			"$type": "Subeffect:SetXByGamestate:",
 			"whatToCount": "Cards Fitting Restriction",
 			"cardRestriction": {
 				"cardRestrictions": [
@@ -34,20 +34,20 @@
 			"xMultiplier": 1
 		},
 		{
-			"$type": "#Subeffect#Discard$"
+			"$type": "Subeffect:Discard:"
 		},
 		{
-			"$type": "#Subeffect#LoopWhileHaveTargets$",
+			"$type": "Subeffect:LoopWhileHaveTargets:",
 			"delete": true,
 			"jumpIndices": [
 				2
 			]
 		},
 		{
-			"$type": "#Subeffect#TargetThis$"
+			"$type": "Subeffect:TargetThis:"
 		},
 		{
-			"$type": "#Subeffect#TemporaryCardStatChange$",
+			"$type": "Subeffect:TemporaryCardStatChange:",
 			"wMultiplier": 2,
 			"endCondition": "Battle End",
 			"triggerRestriction": {

@@ -36,7 +36,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#AddPips$",
+					"$type": "Subeffect:AddPips:",
 					"xModifier": 1
 				}
 			]
@@ -74,7 +74,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#Draw$"
+					"$type": "Subeffect:Draw:"
 				}
 			]
 		}

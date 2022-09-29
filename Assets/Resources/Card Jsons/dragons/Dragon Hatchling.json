@@ -13,22 +13,22 @@
 			},
 			"subeffects":[
 				{
-					"$type":"#Subeffect#Delay$",
+					"$type":"Subeffect:Delay:",
 					"numTimesToDelay":0,
 					"jumpIndices":[1],
 					"endCondition":"Turn Start"
 				},
 				{
-					"$type":"#Subeffect#TargetThis$"
+					"$type":"Subeffect:TargetThis:"
 				},
 				{
-					"$type":"#Subeffect#TargetThisSpace$"
+					"$type":"Subeffect:TargetThisSpace:"
 				},
 				{
-					"$type":"#Subeffect#Discard$"
+					"$type":"Subeffect:Discard:"
 				},
 				{
-					"$type":"#Subeffect#CardTarget$",
+					"$type":"Subeffect:CardTarget:",
 					"cardRestriction":
 					{
 						"blurb":"for Dragon Hatchling to eat (discard)",
@@ -37,10 +37,10 @@
 					}
 				},
 				{
-					"$type":"#Subeffect#Discard$"
+					"$type":"Subeffect:Discard:"
 				},
 				{
-					"$type":"#Subeffect#CardTarget$",
+					"$type":"Subeffect:CardTarget:",
 					"cardRestriction":
 					{
 						"blurb":"for Dragon Hatchling to become (play)",
@@ -49,7 +49,7 @@
 					}
 				},
 				{
-					"$type":"#Subeffect#Play$"
+					"$type":"Subeffect:Play:"
 				}
 			]
 		}

@@ -14,10 +14,10 @@
 			},
 			"subeffects":[
 				{
-					"$type":"#Subeffect#TargetAugmentedCard$"
+					"$type":"Subeffect:TargetAugmentedCard:"
 				},
 				{
-					"$type":"#Subeffect#TemporaryCardStatChange$",
+					"$type":"Subeffect:TemporaryCardStatChange:",
 					"eModifier":3,
 					"endCondition":"Augment Detached",
 					"triggerRestriction":{
@@ -44,10 +44,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetThis$"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "for Buffer Shield to attach to",
 						"cardRestrictions": [
@@ -60,7 +60,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Attach$",
+					"$type": "Subeffect:Attach:",
 					"targetToAttachTo": -2,
 					"targetIndex": -1
 				}

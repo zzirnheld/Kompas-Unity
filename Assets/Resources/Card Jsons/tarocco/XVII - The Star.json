@@ -39,10 +39,10 @@
 			},
 			"subeffects": [
 				{
-					"$type":"#Subeffect#TargetTriggeringCard$"
+					"$type":"Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "#Subeffect#SetXBoardRestriction$",
+					"$type": "Subeffect:SetXBoardRestriction:",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Board",
@@ -61,10 +61,10 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#Draw$"
+					"$type": "Subeffect:Draw:"
 				},
 				{
-					"$type": "#Subeffect#XTimes$",
+					"$type": "Subeffect:XTimes:",
 					"jumpIndices": [
 						2
 					]

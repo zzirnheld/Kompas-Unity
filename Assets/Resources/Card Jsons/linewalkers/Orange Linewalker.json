@@ -14,7 +14,7 @@
 			},
 			"subeffects":[
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "unworthy card in hand",
 						"cardRestrictions": [
@@ -29,10 +29,10 @@
 					}
 				},
 				{
-					"$type":"#Subeffect#Reshuffle$"
+					"$type":"Subeffect:Reshuffle:"
 				},
 				{
-					"$type":"#Subeffect#DrawX$",
+					"$type":"Subeffect:DrawX:",
 					"xMultiplier":1
 				}
 			]

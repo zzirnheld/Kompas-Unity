@@ -21,7 +21,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Who to heal",
 						"cardRestrictions": [
@@ -30,7 +30,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Heal$"
+					"$type": "Subeffect:Heal:"
 				}
 			]
 		}

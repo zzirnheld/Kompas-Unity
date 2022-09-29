@@ -16,10 +16,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#SetX$"
+					"$type": "Subeffect:SetX:"
 				},
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "for Dragonseeker to reshuffle",
 						"cardRestrictions": [
@@ -34,29 +34,29 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#SetX$",
+					"$type": "Subeffect:SetX:",
 					"change": true,
 					"xModifier": 1
 				},
 				{
-					"$type": "#Subeffect#Reshuffle$"
+					"$type": "Subeffect:Reshuffle:"
 				},
 				{
-					"$type": "#Subeffect#Loop$",
+					"$type": "Subeffect:Loop:",
 					"canDecline": true,
 					"jumpIndices": [
 						1
 					]
 				},
 				{
-					"$type": "#Subeffect#TargetThis$"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "#Subeffect#ChangeCardStats$",
+					"$type": "Subeffect:ChangeCardStats:",
 					"sMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#DrawX$",
+					"$type": "Subeffect:DrawX:",
 					"xMultiplier": 1
 				}
 			]

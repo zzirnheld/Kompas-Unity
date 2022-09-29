@@ -14,17 +14,17 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetAvatar$"
+					"$type": "Subeffect:TargetAvatar:"
 				},
 				{
-					"$type": "#Subeffect#SetXByTargetCardValue$",
+					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "S"
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#ChooseOption$",
+					"$type": "Subeffect:ChooseOption:",
 					"choiceBlurb": "Double or halve?",
 					"optionBlurbs": [
 						"Double",
@@ -37,22 +37,22 @@
 					"hasDefault": false
 				},
 				{
-					"$type": "#Subeffect#ChangeCardStats$",
+					"$type": "Subeffect:ChangeCardStats:",
 					"sMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#Jump$",
+					"$type": "Subeffect:Jump:",
 					"jumpIndices": [
 						6
 					]
 				},
 				{
-					"$type": "#Subeffect#ChangeCardStats$",
+					"$type": "Subeffect:ChangeCardStats:",
 					"sMultiplier": -1,
 					"sDivisor": 2
 				},
 				{
-					"$type": "#Subeffect#Draw$"
+					"$type": "Subeffect:Draw:"
 				}
 			]
 		}

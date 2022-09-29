@@ -13,17 +13,17 @@
 			},
 			"subeffects":[
 				{
-					"$type":"#Subeffect#CardTarget$",
+					"$type":"Subeffect:CardTarget:",
 					"cardRestriction":{
 						"blurb":"Card to Cycle",
 						"cardRestrictions":["Friendly","Hand"]
 					}
 				},
 				{
-					"$type":"#Subeffect#Discard$"
+					"$type":"Subeffect:Discard:"
 				},
 				{
-					"$type":"#Subeffect#ChangeLeyload$",
+					"$type":"Subeffect:ChangeLeyload:",
 					"xModifier":1
 				}
 			]	

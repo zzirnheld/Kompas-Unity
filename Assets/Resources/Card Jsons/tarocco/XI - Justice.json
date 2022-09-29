@@ -13,31 +13,31 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetEnemy$"
+					"$type": "Subeffect:TargetEnemy:"
 				},
 				{
-					"$type": "#Subeffect#SetXByGamestate$",
+					"$type": "Subeffect:SetXByGamestate:",
 					"whatToCount": "Hand Size",
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#SetXByGamestate$",
+					"$type": "Subeffect:SetXByGamestate:",
 					"whatToCount": "Hand Size",
 					"playerIndex": -2,
 					"change": true,
 					"xMultiplier": -1
 				},
 				{
-					"$type": "#Subeffect#ConditionalEnd$",
+					"$type": "Subeffect:ConditionalEnd:",
 					"condition": "X<=0"
 				},
 				{
-					"$type": "#Subeffect#Draw$",
+					"$type": "Subeffect:Draw:",
 					"playerIndex": -2,
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#Loop$",
+					"$type": "Subeffect:Loop:",
 					"canDecline": true,
 					"jumpIndices": [
 						1

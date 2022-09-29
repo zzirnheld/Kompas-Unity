@@ -12,19 +12,19 @@
 	},
 	"subeffects":[
 		{
-			"$type":"#Subeffect#TargetThis$"
+			"$type":"Subeffect:TargetThis:"
 		},
         {
-            "$type": "#Subeffect#TargetTriggeringCardsCoords$"
+            "$type": "Subeffect:TargetTriggeringCardsCoords:"
         },
         {
-            "$type":"#Subeffect#Delay$",
+            "$type":"Subeffect:Delay:",
             "numTimesToDelay": 0,
             "jumpIndices": [ 1 ],
             "endCondition": "Turn Start"
         },
         {
-            "$type": "#Subeffect#Play$"
+            "$type": "Subeffect:Play:"
         }
 	]
 }

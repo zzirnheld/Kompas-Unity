@@ -19,17 +19,17 @@
     },
 	"subeffects":[
         {
-            "$type":"#Subeffect#TargetTriggeringCard$"
+            "$type":"Subeffect:TargetTriggeringCard:"
         },
         {
-            "$type":"#Subeffect#Delay$",
+            "$type":"Subeffect:Delay:",
             "numTimesToDelay":0,
             "jumpIndices":[2],
             "fallOffCondition":"",
             "endCondition":"Stack End"
         },
         {
-            "$type":"#Subeffect#Dispel$"
+            "$type":"Subeffect:Dispel:"
         }
 	]	
 }

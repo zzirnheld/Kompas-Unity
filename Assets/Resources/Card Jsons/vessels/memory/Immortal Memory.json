@@ -15,26 +15,26 @@
 			},
 			"subeffects": [
                 {
-                    "$type":"#Subeffect#TargetAugmentedCard$"
+                    "$type":"Subeffect:TargetAugmentedCard:"
                 },
 				{
-					"$type":"#Subeffect#TargetTriggeringCard$",
+					"$type":"Subeffect:TargetTriggeringCard:",
 					"secondary":true
 				},
 				{
-					"$type": "#Subeffect#SetXByTargetCardValue$",
+					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "W"
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#ChangeCardStats$",
+					"$type": "Subeffect:ChangeCardStats:",
 					"eMultiplier": 1,
                     "targetIndex": -2
 				},
 				{
-					"$type": "#Subeffect#Resummon$",
+					"$type": "Subeffect:Resummon:",
                     "targetIndex": -2
 				}
 			]
@@ -51,10 +51,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetAugmentedCard$"
+					"$type": "Subeffect:TargetAugmentedCard:"
 				},
 				{
-					"$type": "#Subeffect#Annihilate$"
+					"$type": "Subeffect:Annihilate:"
 				}
 			]
 		}

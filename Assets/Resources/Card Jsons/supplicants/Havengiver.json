@@ -14,7 +14,7 @@
 			},
 			"subeffects":[
 				{
-					"$type":"#Subeffect#ChooseFromList$",
+					"$type":"Subeffect:ChooseFromList:",
 					"maxCanChoose":1,
 					"cardRestriction":
 					{
@@ -24,7 +24,7 @@
 					}
 				},
 				{
-					"$type":"#Subeffect#SpaceTarget$",
+					"$type":"Subeffect:SpaceTarget:",
 					"spaceRestriction":
 					{
 						"blurb":"haven to play the Supplicant",
@@ -32,7 +32,7 @@
 					}
 				},
 				{
-					"$type":"#Subeffect#Play$"
+					"$type":"Subeffect:Play:"
 				}
 			]
 		}

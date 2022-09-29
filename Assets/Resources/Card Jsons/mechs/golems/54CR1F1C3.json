@@ -18,10 +18,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#SetXByNumberIdentity$",
+					"$type": "Subeffect:SetXByNumberIdentity:",
 					"numberIdentity": {
 						"$type": "Subeffect.Number:Selector:",
-						"selector": { "$type": "NumberSelector:Minimum:, Assembly-CSharp" },
+						"selector": { "$type": "NumberSelector:Minimum:" },
 						"numbers": {
 							"$type": "Subeffect.ManyNumbers:Distances:",
 							"origin": {
@@ -51,7 +51,7 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#TargetAll$",
+					"$type": "Subeffect:TargetAll:",
 					"cardRestriction": {
 						"cardRestrictionElements": [
                             {
@@ -82,17 +82,17 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#Discard$"
+					"$type": "Subeffect:Discard:"
 				},
 				{
-					"$type": "#Subeffect#LoopWhileHaveTargets$",
+					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"delete": true,
 					"jumpIndices": [
 						2
 					]
 				},
 				{
-					"$type": "#Subeffect#Negate$"
+					"$type": "Subeffect:Negate:"
 				}
 			]
 		}

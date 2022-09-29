@@ -29,7 +29,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetAll$",
+					"$type": "Subeffect:TargetAll:",
 					"cardRestriction": {
 						"blurb": "Supplicant to give safe haven",
 						"cardRestrictions": [
@@ -45,7 +45,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#TemporaryNegate$",
+					"$type": "Subeffect:TemporaryNegate:",
 					"endCondition": "Remove",
 					"triggerRestriction": {
 						"triggerRestrictions": [
@@ -54,7 +54,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#LoopWhileHaveTargets$",
+					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"delete": true,
 					"jumpIndices": [
 						1

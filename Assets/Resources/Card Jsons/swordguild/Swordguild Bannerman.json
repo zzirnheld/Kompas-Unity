@@ -15,7 +15,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#SetXBoardRestriction$",
+					"$type": "Subeffect:SetXBoardRestriction:",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Subtypes Include",
@@ -35,7 +35,7 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#Discard$",
+					"$type": "Subeffect:Discard:",
 					"cardRestriction": {
 						"blurb": "dead Warrior for Bannerman to reshuffle",
 						"cardRestrictions": [
@@ -49,10 +49,10 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Reshuffle$"
+					"$type": "Subeffect:Reshuffle:"
 				},
 				{
-					"$type": "#Subeffect#XTimes$",
+					"$type": "Subeffect:XTimes:",
 					"jumpIndices": [
 						1
 					]

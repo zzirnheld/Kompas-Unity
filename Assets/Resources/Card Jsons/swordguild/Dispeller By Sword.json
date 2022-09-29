@@ -13,7 +13,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#SetXBoardRestriction$",
+					"$type": "Subeffect:SetXBoardRestriction:",
 					"cardRestriction": {
 						"blurb": "spell for Dispeller by Sword to dispel",
 						"cardRestrictions": [
@@ -29,7 +29,7 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Spell",
@@ -47,7 +47,7 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#Dispel$",
+					"$type": "Subeffect:Dispel:",
 					"targetIndex": -1
 				}
 			]

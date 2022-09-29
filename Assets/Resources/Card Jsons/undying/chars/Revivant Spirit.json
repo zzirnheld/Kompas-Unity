@@ -15,14 +15,14 @@
             },
             "subeffects":[
                 {
-                    "$type": "#Subeffect#TargetThis$"
+                    "$type": "Subeffect:TargetThis:"
                 },
                 {
-                    "$type": "#Subeffect#CanResolve$",
+                    "$type": "Subeffect:CanResolve:",
                     "subeffIndices": [ 3, 4 ]
                 },
                 {
-                    "$type": "#Subeffect#SpaceTarget$",
+                    "$type": "Subeffect:SpaceTarget:",
                     "spaceRestriction":
                     {
                         "blurb": "where to revive the Spirit",
@@ -30,11 +30,11 @@
                     }
                 },
                 {
-                    "$type": "#Subeffect#PayPipsTargetCost$",
+                    "$type": "Subeffect:PayPipsTargetCost:",
                     "xMultiplier": 1
                 },
                 {
-                    "$type": "#Subeffect#Play$"
+                    "$type": "Subeffect:Play:"
                 }
             ]
         }

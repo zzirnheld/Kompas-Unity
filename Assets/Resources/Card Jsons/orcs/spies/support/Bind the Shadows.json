@@ -26,10 +26,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetTriggeringCard$"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "#Subeffect#TemporaryCardStatChange$",
+					"$type": "Subeffect:TemporaryCardStatChange:",
 					"wModifier": 3,
 					"endCondition": "Turn Start",
 					"triggerRestriction": {
@@ -37,7 +37,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Delay$",
+					"$type": "Subeffect:Delay:",
 					"numTimesToDelay": 0,
 					"jumpIndices": [
 						3
@@ -48,8 +48,8 @@
 						"triggerRestrictionElements": [
 							{
 								"$type": "Core.TriggerRestriction:StackablesMatch:",
-								"firstCard": { "$type": "Subeffect.Stackable:StackableIndex:" },
-								"secondCard": { "$type": "ActivationContext.Stackable:StackableCause:" }
+								"firstStackable": { "$type": "Subeffect.Stackable:StackableIndex:" },
+								"secondStackable": { "$type": "ActivationContext.Stackable:StackableCause:" }
 							},
 							{
 								"$type": "Core.TriggerRestriction:CardsMatch:",
@@ -66,7 +66,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Bind blood to a card",
 						"cardRestrictions": [
@@ -78,19 +78,19 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#SkipToEffectOnImpossible$",
+					"$type": "Subeffect:SkipToEffectOnImpossible:",
 					"jumpIndices": [
 						6
 					]
 				},
 				{
-					"$type": "#Subeffect#Reveal$"
+					"$type": "Subeffect:Reveal:"
 				},
 				{
-					"$type": "#Subeffect#ClearOnImpossible$"
+					"$type": "Subeffect:ClearOnImpossible:"
 				},
 				{
-					"$type": "#Subeffect#ChangeCardStats$",
+					"$type": "Subeffect:ChangeCardStats:",
 					"forbidNotBoard": false,
 					"sModifier": -2
 				}

@@ -15,10 +15,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetAugmentedCard$"
+					"$type": "Subeffect:TargetAugmentedCard:"
 				},
 				{
-					"$type": "#Subeffect#TemporaryActivation$",
+					"$type": "Subeffect:TemporaryActivation:",
 					"endCondition": "Augment Detached",
 					"triggerRestriction": {
 						"triggerRestrictions": [
@@ -27,7 +27,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#TemporaryCardStatChange$",
+					"$type": "Subeffect:TemporaryCardStatChange:",
 					"wModifier": 4,
 					"endCondition": "Augment Detached",
 					"triggerRestriction": {

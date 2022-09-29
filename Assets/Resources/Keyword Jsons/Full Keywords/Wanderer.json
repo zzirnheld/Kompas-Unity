@@ -10,23 +10,23 @@
 	},
 	"subeffects":[
 		{
-			"$type":"#Subeffect#TargetThisSpace$"
+			"$type":"Subeffect:TargetThisSpace:"
 		},
 		{
-			"$type":"#Subeffect#TargetThis$"
+			"$type":"Subeffect:TargetThis:"
 		},
 		{
-			"$type":"#Subeffect#SetXByTargetCardValue$",
+			"$type":"Subeffect:SetXByTargetCardValue:",
 			"cardValue":{
 				"value":"S"
 			},
 			"xMultiplier":1
 		},
 		{
-			"$type":"#Subeffect#Reshuffle$"
+			"$type":"Subeffect:Reshuffle:"
 		},
 		{
-			"$type":"#Subeffect#DeckTarget$",
+			"$type":"Subeffect:DeckTarget:",
 			"cardRestriction":
 			{
 				"blurb":"Wanderer to Wander into",
@@ -42,7 +42,7 @@
 			"xMultiplier":1
 		},
 		{
-			"$type":"#Subeffect#Play$"
+			"$type":"Subeffect:Play:"
 		}
 	]	
 }

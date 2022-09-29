@@ -65,15 +65,18 @@ namespace KompasCore.Effects.Restrictions
             public INoActivationContextIdentity<GameCardBase> card;
             public INoActivationContextIdentity<Space> space;
 
+            private int CountNonNull(params object[] objs) => objs.Where(o => o != null).Count();
+
             public override void Initialize(EffectInitializationContext initializationContext)
             {
                 base.Initialize(initializationContext);
-                card.Initialize(initializationContext);
-                space.Initialize(initializationContext);
-                if (card == null && space == null)
+                anyOfTheseCards?.Initialize(initializationContext);
+                card?.Initialize(initializationContext);
+                space?.Initialize(initializationContext);
+                if (card == null && space == null && anyOfTheseCards == null)
                     throw new System.NotImplementedException($"Forgot to provide a space or card to be adjacent to " +
                         $"in the effect of {InitializationContext.source}");
-                else if (card != null && space != null)
+                else if (CountNonNull(card, space, anyOfTheseCards) > 1)
                     throw new System.NotImplementedException($"Provided both a space and a card to be adjacent to " +
                         $"in the effect of {InitializationContext.source}");
             }

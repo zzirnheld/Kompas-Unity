@@ -15,7 +15,7 @@
 			},
 			"subeffects": [
 				{
-					"$type":"#Subeffect#SetXBoardRestriction$",
+					"$type":"Subeffect:SetXBoardRestriction:",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Subtypes Include",
@@ -34,7 +34,7 @@
 					"xMultiplier":1
 				},
 				{
-					"$type": "#Subeffect#ChooseFromList$",
+					"$type": "Subeffect:ChooseFromList:",
 					"cardRestriction": {
 						"blurb": "Craftspeople move to the cities",
 						"cardRestrictions": [
@@ -56,10 +56,10 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#Rehand$"
+					"$type": "Subeffect:Rehand:"
 				},
 				{
-					"$type": "#Subeffect#LoopWhileHaveTargets$",
+					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"delete": true,
 					"jumpIndices": [
 						2

@@ -17,7 +17,7 @@
 			},
 			"subeffects":[
 				{
-					"$type":"#Subeffect#DeckTarget$",
+					"$type":"Subeffect:DeckTarget:",
 					"cardRestriction":{
 						"blurb":"card for Failed Idea to mill",
 						"cardRestrictions":["Friendly","Deck","Subtypes Include"],
@@ -25,13 +25,13 @@
 					}
 				},
 				{
-					"$type":"#Subeffect#Discard$"
+					"$type":"Subeffect:Discard:"
 				},
                 {
-                    "$type":"#Subeffect#TargetThis$"
+                    "$type":"Subeffect:TargetThis:"
                 },
                 {
-                    "$type":"#Subeffect#Discard$"
+                    "$type":"Subeffect:Discard:"
                 }
 			]	
 		}

@@ -1,6 +1,6 @@
 [
     {
-        "$type": "#Subeffect#CardTarget$",
+        "$type": "Subeffect:CardTarget:",
         "cardRestriction": {
             "blurb": "Card to discard so you can draw",
             "cardRestrictions": [
@@ -10,9 +10,9 @@
         }
     },
     {
-        "$type": "#Subeffect#Discard$"
+        "$type": "Subeffect:Discard:"
     },
     {
-        "$type": "#Subeffect#Draw$"
+        "$type": "Subeffect:Draw:"
     }
 ]

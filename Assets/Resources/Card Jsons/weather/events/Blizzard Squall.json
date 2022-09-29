@@ -16,7 +16,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#SetAllCardStats$",
+					"$type": "Subeffect:SetAllCardStats:",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character",

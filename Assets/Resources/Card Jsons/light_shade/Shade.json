@@ -11,7 +11,7 @@
                 "triggerCondition":"Stack End",
                 "triggerRestriction":{
                     "triggerRestrictions":["This Card Fits Restriction Now"],
-                    "cardRestriction":{
+                    "selfRestriction":{
                         "cardRestrictions":["Board","Card has Card Restriction in its AOE"],
                         "hasInAOERestriction":{
                             "cardRestrictions":["Enemy","Character"]
@@ -21,16 +21,16 @@
             },
             "subeffects":[
                 {
-                    "$type":"#Subeffect#TargetThis$"
+                    "$type":"Subeffect:TargetThis:"
                 },
 				{
-					"$type": "#Subeffect#TargetTargetsSpace$"
+					"$type": "Subeffect:TargetTargetsSpace:"
 				},
 				{
-					"$type": "#Subeffect#Reshuffle$"
+					"$type": "Subeffect:Reshuffle:"
 				},
 				{
-					"$type": "#Subeffect#AutoTarget$",
+					"$type": "Subeffect:AutoTarget:",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Subtypes Include",
@@ -45,7 +45,7 @@
 					"tiebreakerDirection":"Any"
 				},
 				{
-					"$type": "#Subeffect#Play$"
+					"$type": "Subeffect:Play:"
 				}
             ]	
         }

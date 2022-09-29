@@ -40,7 +40,7 @@ public class CardRepository : MonoBehaviour
 
     protected static readonly Dictionary<string, string> cardJsons = new Dictionary<string, string>();
     protected static readonly Dictionary<string, string> cardFileNames = new Dictionary<string, string>();
-    private static ICollection<string> CardNames => cardJsons.Keys;
+    private static IReadOnlyCollection<string> CardNames => cardJsons.Keys;
 
     protected static readonly Dictionary<string, string> keywordJsons = new Dictionary<string, string>();
     private static readonly Dictionary<string, string> partialKeywordJsons = new Dictionary<string, string>();
@@ -126,9 +126,11 @@ public class CardRepository : MonoBehaviour
             cardJsons.Add(cardName, json);
             cardFileNames.Add(cardName, filename);
         }
+
+        Debug.Log(string.Join("\n", CardNames));
     }
 
-    private static readonly Regex subeffRegex = new Regex(@"#Subeffect#([^\$]+)\$");
+    private static readonly Regex subeffRegex = new Regex(@"Subeffect:([^:]+):");
     private const string subeffReplacement = @"KompasServer.Effects.$1Subeffect, Assembly-CSharp";
 
     //restriction regexes
@@ -181,6 +183,7 @@ public class CardRepository : MonoBehaviour
     {
         string keywordList = Resources.Load<TextAsset>(filePath).text;
         var keywords = keywordList.Replace('\r', '\n').Split('\n').Where(s => !string.IsNullOrEmpty(s));
+        Debug.Log($"Keywords list: \n{string.Join("\n", keywords.Select(keyword => $"{keyword} length {keyword.Length}"))}");
         foreach (string keyword in keywords)
         {
             string json = Resources.Load<TextAsset>(folderPath + keyword).text;
@@ -194,6 +197,7 @@ public class CardRepository : MonoBehaviour
         List<T> effects = new List<T>();
         foreach (var (index, keyword) in card.keywords.Enumerate())
         {
+            if (!keywordJsons.ContainsKey(keyword)) Debug.LogError($"Failed to add {keyword} length {keyword.Length} to {card.cardName}");
             var keywordJson = keywordJsons[keyword];
             var eff = JsonConvert.DeserializeObject<T>(keywordJson, cardLoadingSettings);
             eff.arg = card.keywordArgs.Length > index ? card.keywordArgs[index] : 0;
@@ -290,13 +294,20 @@ public class CardRepository : MonoBehaviour
 
     public static TriggerRestrictionElement[] InstantiateTriggerKeyword(string keyword)
     {
-        if (!partialKeywordJsons.ContainsKey(keyword))
+        if (!triggerKeywordJsons.ContainsKey(keyword))
         {
             Debug.LogError($"No trigger keyword json found for {keyword}");
             return new TriggerRestrictionElement[0];
         }
-
-        return JsonConvert.DeserializeObject<TriggerRestrictionElement[]>(triggerKeywordJsons[keyword], cardLoadingSettings);
+        try
+        {
+            return JsonConvert.DeserializeObject<TriggerRestrictionElement[]>(triggerKeywordJsons[keyword], cardLoadingSettings);
+        }
+        catch (JsonReaderException)
+        {
+            Debug.LogError($"Failed to instantiate {keyword}");
+            throw;
+        }
     }
 
     public static string FileNameFor(string cardName) => cardFileNames[cardName];

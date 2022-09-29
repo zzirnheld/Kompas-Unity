@@ -37,13 +37,13 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetThis$"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "#Subeffect#Activate$"
+					"$type": "Subeffect:Activate:"
 				},
 				{
-					"$type": "#Subeffect#Activate$",
+					"$type": "Subeffect:Activate:",
 					"activate": false
 				}
 			]

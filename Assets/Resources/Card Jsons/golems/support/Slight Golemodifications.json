@@ -15,7 +15,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Subtypes Include",
@@ -29,15 +29,15 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#SetXByTargetCost$",
+					"$type": "Subeffect:SetXByTargetCost:",
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#Discard$",
+					"$type": "Subeffect:Discard:",
 					"targetIndex": 0
 				},
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Subtypes Include",
@@ -65,7 +65,7 @@
 					"xModifier": 1
 				},
 				{
-					"$type": "#Subeffect#SpaceTarget$",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"spaceRestrictions": [
 							"Can Play Card Target to This Space",
@@ -74,13 +74,13 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Play$"
+					"$type": "Subeffect:Play:"
 				},
 				{
-					"$type": "#Subeffect#Activate$"
+					"$type": "Subeffect:Activate:"
 				},
 				{
-					"$type": "#Subeffect#Activate$",
+					"$type": "Subeffect:Activate:",
 					"activate": false
 				}
 			]

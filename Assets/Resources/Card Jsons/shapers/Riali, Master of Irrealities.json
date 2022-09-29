@@ -7,39 +7,41 @@
 			"blurb": "Empower the Shaper",
 			"triggerData": {
 				"triggerCondition": "Discard",
-				"triggerRestrictionElements": [
-					{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-					{
-						"$type": "Core.TriggerRestriction:CardFitsRestriction:",
-						"cardRestriction": {
-							"cardRestrictionElements": [
-								{
-									"$type": "Core.CardRestriction:SubtypesInclude:",
-									"subtypes": [ "Shaper" ]
-								}
-							]
+				"triggerRestriction": {
+					"triggerRestrictionElements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"cardRestriction": {
+								"cardRestrictionElements": [
+									{
+										"$type": "Core.CardRestriction:SubtypesInclude:",
+										"subtypes": [ "Shaper" ]
+									}
+								]
+							},
+							"card": { "$type": "ActivationContext.Card:MainCardBefore:" }
 						},
-						"card": { "$type": "ActivationContext.Card:MainCardBefore:" }
-					},
-					{
-						"$type": "Core.TriggerRestriction:CardsMatch:",
-						"firstCard": { "$type": "ActivationContext.Card:Cause:" },
-						"secondCard": { "$type": "ActivationContext.Card:MainCardBefore:" }
-					}
-				]
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"firstCard": { "$type": "ActivationContext.Card:Cause:" },
+							"secondCard": { "$type": "ActivationContext.Card:MainCardBefore:" }
+						}
+					]
+				}
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetTriggeringCard$"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "#Subeffect#TargetTriggeringCardsCoords$"
+					"$type": "Subeffect:TargetTriggeringCardsCoords:"
 				},
 				{
-					"$type": "#Subeffect#Play$"
+					"$type": "Subeffect:Play:"
 				},
 				{
-					"$type": "#Subeffect#TemporaryNegate$",
+					"$type": "Subeffect:TemporaryNegate:",
 					"endCondition": "Turn Start",
 					"triggerRestriction": {
 						"triggerRestrictions": [ ]

@@ -14,11 +14,11 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#Mill$",
+					"$type": "Subeffect:Mill:",
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#ConditionalEnd$",
+					"$type": "Subeffect:ConditionalEnd:",
 					"condition": "Target Violates Restriction",
 					"cardRestriction": {
 						"cardRestrictions": [
@@ -30,7 +30,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#SpaceTarget$",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where for Save the People to deck-summon its Supplicant",
 						"spaceRestrictions": [
@@ -40,7 +40,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Play$"
+					"$type": "Subeffect:Play:"
 				}
 			]
 		}

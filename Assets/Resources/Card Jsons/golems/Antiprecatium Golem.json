@@ -15,17 +15,17 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetThis$"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "#Subeffect#SetXByTargetCardValue$",
+					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "W"
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "spell to stab with green rocks and thereby dispel",
 						"cardRestrictions": [
@@ -48,7 +48,7 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#Dispel$"
+					"$type": "Subeffect:Dispel:"
 				}
 			]
 		}

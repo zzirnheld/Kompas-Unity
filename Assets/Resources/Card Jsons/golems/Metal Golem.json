@@ -15,7 +15,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "first character for Metal Golem to set N to 0",
 						"cardRestrictions": [
@@ -25,11 +25,11 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#SetCardStats$",
+					"$type": "Subeffect:SetCardStats:",
 					"nVal": 0
 				},
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "second character for Metal Golem to set N to 0",
 						"cardRestrictions": [
@@ -40,7 +40,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#SetCardStats$",
+					"$type": "Subeffect:SetCardStats:",
 					"nVal": 0
 				}
 			]

@@ -24,7 +24,7 @@
 			},
 			"subeffects":[
 				{
-					"$type":"#Subeffect#CardTarget$",
+					"$type":"Subeffect:CardTarget:",
 					"cardRestriction":
 					{
 						"blurb":"friendly character for Crab Robot Crab Minion to give intel",
@@ -32,7 +32,7 @@
 					}
 				},
 				{
-					"$type":"#Subeffect#ChangeCardStats$",
+					"$type":"Subeffect:ChangeCardStats:",
 					"wModifier":1
 				}
 			]	

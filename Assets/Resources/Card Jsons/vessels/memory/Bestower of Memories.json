@@ -34,10 +34,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetTriggeringCard$"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"blurb": "Vessel to get a copy of the memory",
 					"cardRestriction": {
 						"cardRestrictions": [
@@ -56,7 +56,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"blurb": "Copy of the memory to attach",
 					"cardRestriction": {
 						"cardRestrictions": [
@@ -73,7 +73,7 @@
 					"targetIndex": -2
 				},
 				{
-					"$type": "#Subeffect#Attach$",
+					"$type": "Subeffect:Attach:",
 					"targetToAttachTo": -2,
 					"targetIndex": -1
 				}

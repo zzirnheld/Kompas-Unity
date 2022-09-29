@@ -15,10 +15,10 @@
 			},
 			"subeffects": [
                 {
-                    "$type":"#Subeffect#TargetAugmentedCard$"
+                    "$type":"Subeffect:TargetAugmentedCard:"
                 },
 				{
-					"$type": "#Subeffect#SpaceTarget$",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"spaceRestrictions": [
 							"Empty",
@@ -34,7 +34,7 @@
 					"xModifier": 1
 				},
 				{
-					"$type": "#Subeffect#Move$"
+					"$type": "Subeffect:Move:"
 				}
 			]
 		},
@@ -51,10 +51,10 @@
 			},
 			"subeffects": [
                 {
-                    "$type":"#Subeffect#TargetAugmentedCard$"
+                    "$type":"Subeffect:TargetAugmentedCard:"
                 },
 				{
-					"$type": "#Subeffect#Resummon$"
+					"$type": "Subeffect:Resummon:"
 				}
 			]
 		}

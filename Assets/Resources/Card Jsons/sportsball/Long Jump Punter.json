@@ -17,7 +17,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "character within 4 spaces to punt Augment to",
 						"cardRestrictions": [
@@ -40,22 +40,22 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#TargetThis$"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "#Subeffect#TargetAugments$"
+					"$type": "Subeffect:TargetAugments:"
 				},
 				{
-					"$type": "#Subeffect#DeleteTarget$",
+					"$type": "Subeffect:DeleteTarget:",
 					"targetIndex": 1
 				},
 				{
-					"$type": "#Subeffect#Attach$",
+					"$type": "Subeffect:Attach:",
 					"targetToAttachTo": 0,
 					"targetIndex": -1
 				},
 				{
-					"$type": "#Subeffect#LoopWhileHaveTargets$",
+					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"delete": true,
 					"remainingTargets": 1,
 					"jumpIndices": [

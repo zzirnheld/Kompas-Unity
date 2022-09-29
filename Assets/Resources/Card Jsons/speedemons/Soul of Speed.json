@@ -26,20 +26,20 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetThis$"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "#Subeffect#TargetTriggeringCardsCoords$"
+					"$type": "Subeffect:TargetTriggeringCardsCoords:"
 				},
 				{
-					"$type": "#Subeffect#TargetTriggeringCardsCoords$",
+					"$type": "Subeffect:TargetTriggeringCardsCoords:",
 					"after": true
 				},
 				{
-					"$type": "#Subeffect#TargetDirection$"
+					"$type": "Subeffect:TargetDirection:"
 				},
 				{
-					"$type": "#Subeffect#AutoSpaceTarget$",
+					"$type": "Subeffect:AutoSpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "speeeeeeeeeeeeeeeed",
 						"spaceRestrictions": [
@@ -56,10 +56,10 @@
 					"xModifier": 1
 				},
 				{
-					"$type": "#Subeffect#Move$"
+					"$type": "Subeffect:Move:"
 				},
 				{
-					"$type": "#Subeffect#ChangeCardStats$",
+					"$type": "Subeffect:ChangeCardStats:",
 					"eModifier": 1,
 					"wModifier": 1
 				}

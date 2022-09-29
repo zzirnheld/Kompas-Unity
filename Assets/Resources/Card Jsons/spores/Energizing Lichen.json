@@ -15,7 +15,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "dead Fungus",
 						"cardRestrictions": [
@@ -29,14 +29,14 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Reshuffle$"
+					"$type": "Subeffect:Reshuffle:"
 				},
 				{
-					"$type": "#Subeffect#AddPips$",
+					"$type": "Subeffect:AddPips:",
 					"xModifier": 1
 				},
 				{
-					"$type":"#Subeffect#TargetAll$",
+					"$type":"Subeffect:TargetAll:",
 					"cardRestriction":
 					{
 						"cardRestrictions":["Board","Character","Space Fits Restriction"],
@@ -48,14 +48,14 @@
 					}
 				},
 				{
-					"$type":"#Subeffect#Activate$"
+					"$type":"Subeffect:Activate:"
 				},
 				{
-					"$type":"#Subeffect#Activate$",
+					"$type":"Subeffect:Activate:",
 					"activate":false
 				},
 				{
-					"$type":"#Subeffect#LoopWhileHaveTargets$",
+					"$type":"Subeffect:LoopWhileHaveTargets:",
 					"delete":true,
 					"remainingTargets": 1,
 					"jumpIndices":[5]

@@ -45,7 +45,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "character whose W to swap",
 						"cardRestrictions": [
@@ -55,7 +55,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "other character whose W to swap",
 						"cardRestrictions": [
@@ -78,7 +78,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#SwapStat$",
+					"$type": "Subeffect:SwapStat:",
 					"targetIndex": -2,
 					"secondTargetIndex": -1,
 					"firstTargetStat": {

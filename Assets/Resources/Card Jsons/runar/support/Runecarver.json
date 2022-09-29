@@ -13,7 +13,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#ChooseFromList$",
+					"$type": "Subeffect:ChooseFromList:",
 					"cardRestriction": {
 						"blurb": "Rune for Runecarver to reshuffle",
 						"cardRestrictions": [
@@ -33,11 +33,11 @@
 					"maxCanChoose": 1
 				},
 				{
-					"$type": "#Subeffect#Reshuffle$",
+					"$type": "Subeffect:Reshuffle:",
 					"targetIndex": -1
 				},
 				{
-					"$type": "#Subeffect#DrawX$",
+					"$type": "Subeffect:DrawX:",
 					"xModifier": 2
 				}
 			]

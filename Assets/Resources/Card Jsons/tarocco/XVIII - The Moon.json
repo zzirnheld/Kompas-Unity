@@ -16,7 +16,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "character to swap",
 						"cardRestrictions": [
@@ -27,7 +27,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "other character to swap",
 						"cardRestrictions": [
@@ -51,7 +51,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#ChooseOption$",
+					"$type": "Subeffect:ChooseOption:",
 					"choiceBlurb": "Swap W or swap E?",
 					"optionBlurbs": [
 						"Swap W",
@@ -64,7 +64,7 @@
 					"hasDefault": false
 				},
 				{
-					"$type": "#Subeffect#SwapStat$",
+					"$type": "Subeffect:SwapStat:",
 					"targetIndex": -2,
 					"secondTargetIndex": -1,
 					"firstTargetStat": {
@@ -75,10 +75,10 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#EndResolution$"
+					"$type": "Subeffect:EndResolution:"
 				},
 				{
-					"$type": "#Subeffect#SwapStat$",
+					"$type": "Subeffect:SwapStat:",
 					"targetIndex": -2,
 					"secondTargetIndex": -1,
 					"firstTargetStat": {

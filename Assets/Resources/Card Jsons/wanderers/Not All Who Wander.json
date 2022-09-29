@@ -25,7 +25,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#Delay$",
+					"$type": "Subeffect:Delay:",
 					"numTimesToDelay": 0,
 					"jumpIndices": [
 						1
@@ -33,7 +33,7 @@
 					"endCondition": "Turn Start"
 				},
 				{
-					"$type": "#Subeffect#Draw$"
+					"$type": "Subeffect:Draw:"
 				}
 			]
 		}

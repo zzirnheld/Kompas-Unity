@@ -29,18 +29,18 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetThis$"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "#Subeffect#TargetTriggeringCard$"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "#Subeffect#Attach$",
+					"$type": "Subeffect:Attach:",
 					"targetToAttachTo": -1,
 					"targetIndex": -2
 				},
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "character within 4 spaces to have this Mech attack",
 						"cardRestrictions": [
@@ -63,7 +63,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Attack$",
+					"$type": "Subeffect:Attack:",
 					"targetIndex": -1,
 					"attackerIndex": -2
 				}
@@ -81,10 +81,10 @@
 			},
             "subeffects":[
 				{
-					"$type": "#Subeffect#TargetAugmentedCard$"
+					"$type": "Subeffect:TargetAugmentedCard:"
 				},
 				{
-					"$type": "#Subeffect#ChangeCardStats$",
+					"$type": "Subeffect:ChangeCardStats:",
 					"wModifier": 4
 				}
             ]

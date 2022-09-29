@@ -23,29 +23,29 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetTriggeringCard$"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "#Subeffect#Draw$"
+					"$type": "Subeffect:Draw:"
 				},
 				{
-					"$type": "#Subeffect#SetXByGamestate$",
+					"$type": "Subeffect:SetXByGamestate:",
 					"whatToCount": "Hand Size",
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#SetXByGamestate$",
+					"$type": "Subeffect:SetXByGamestate:",
 					"whatToCount": "Hand Size Limit",
 					"change": true,
 					"xMultiplier": -1
 				},
 				{
-					"$type": "#Subeffect#ConditionalEnd$",
+					"$type": "Subeffect:ConditionalEnd:",
 					"condition": "X<=0",
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#Bottomdeck$",
+					"$type": "Subeffect:Bottomdeck:",
 					"targetIndex": -1
 				}
 			]

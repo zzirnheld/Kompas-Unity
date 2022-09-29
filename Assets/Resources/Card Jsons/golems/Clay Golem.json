@@ -15,16 +15,16 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetThisSpace$"
+					"$type": "Subeffect:TargetThisSpace:"
 				},
 				{
-					"$type": "#Subeffect#TargetThis$"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "#Subeffect#Discard$"
+					"$type": "Subeffect:Discard:"
 				},
 				{
-					"$type": "#Subeffect#DeckTarget$",
+					"$type": "Subeffect:DeckTarget:",
 					"cardRestriction": {
 						"blurb": "for Clay Golem to summon",
 						"cardRestrictions": [
@@ -38,7 +38,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Play$"
+					"$type": "Subeffect:Play:"
 				}
 			]
 		}

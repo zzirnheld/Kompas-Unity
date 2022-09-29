@@ -14,7 +14,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "character for Tallow Golem to temporarily activate",
 						"cardRestrictions": [
@@ -24,7 +24,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#TemporaryActivation$",
+					"$type": "Subeffect:TemporaryActivation:",
 					"endCondition": "Turn Start",
 					"triggerRestriction": {
 						"triggerRestrictions": [

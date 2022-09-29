@@ -14,7 +14,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "friendly character that should attack",
 						"cardRestrictions": [
@@ -31,7 +31,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "enemy character to attack",
 						"cardRestrictions": [
@@ -48,7 +48,7 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Attack$",
+					"$type": "Subeffect:Attack:",
 					"targetIndex": -1,
 					"attackerIndex": -2
 				}

@@ -18,10 +18,10 @@
 	},
 	"subeffects":[
 		{
-			"$type":"#Subeffect#TargetThis$"
+			"$type":"Subeffect:TargetThis:"
 		},
 		{
-			"$type":"#Subeffect#SpaceTarget$",
+			"$type":"Subeffect:SpaceTarget:",
 			"spaceRestriction":
 			{
 				"blurb":"where to make a Comeback Play",
@@ -29,7 +29,7 @@
 			}
 		},
 		{
-			"$type":"#Subeffect#Play$"
+			"$type":"Subeffect:Play:"
 		}
 	]	
 }

@@ -5,19 +5,31 @@
 	"effects": [
 		{
 			"triggerData": {
-				"triggerCondition": "Healed",
+				"triggerCondition": "E Change",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card in Play"
-                    ]
+						"This Card in Play",
+						"X Fits Restriction",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Hurt"
+						]
+					},
+					"xRestriction": {
+						"numberRestrictions": [
+							">0"
+						]
+					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#TargetTriggeringCard$"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "#Subeffect#ChangeCardStats$",
+					"$type": "Subeffect:ChangeCardStats:",
 					"eModifier": 5
 				}
 			]

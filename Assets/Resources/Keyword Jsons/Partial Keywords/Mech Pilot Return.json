@@ -1,6 +1,6 @@
 [
     {
-        "$type":"#Subeffect#Delay$",
+        "$type":"Subeffect:Delay:",
         "numTimesToDelay":0,
         "jumpIndices":[1],
         "fallOffCondition":"",
@@ -10,20 +10,20 @@
         }
     },
     {
-        "$type":"#Subeffect#UnlinkCards$",
+        "$type":"Subeffect:UnlinkCards:",
         "cardLinkIndex": 0
     },
     {
-        "$type":"#Subeffect#TargetTriggeringCardsCoords$"
+        "$type":"Subeffect:TargetTriggeringCardsCoords:"
     },
     {
-        "$type":"#Subeffect#TargetThis$"
+        "$type":"Subeffect:TargetThis:"
     },
     {
-        "$type":"#Subeffect#Play$"
+        "$type":"Subeffect:Play:"
     },
     {
-        "$type":"#Subeffect#TemporaryNegate$",
+        "$type":"Subeffect:TemporaryNegate:",
         "endCondition":"Turn Start",
         "triggerRestriction":{
             "triggerRestrictions":[]

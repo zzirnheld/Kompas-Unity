@@ -18,13 +18,13 @@
 			},
 			"subeffects":[
 				{
-					"$type":"#Subeffect#TargetThis$"
+					"$type":"Subeffect:TargetThis:"
 				},
 				{
-					"$type":"#Subeffect#Annihilate$"
+					"$type":"Subeffect:Annihilate:"
 				},
 				{
-					"$type":"#Subeffect#CardTarget$",
+					"$type":"Subeffect:CardTarget:",
 					"cardRestriction":
 					{
 						"blurb":"OWO SO DRAGONNNNNNNNN",
@@ -33,14 +33,14 @@
 					}
 				},
 				{
-					"$type":"#Subeffect#SetXByTargetCost$",
+					"$type":"Subeffect:SetXByTargetCost:",
 					"xMultiplier":1
 				},
 				{
-					"$type":"#Subeffect#Discard$"
+					"$type":"Subeffect:Discard:"
 				},
 				{
-					"$type":"#Subeffect#AddPips$",
+					"$type":"Subeffect:AddPips:",
 					"xMultiplier":1
 				}
 			]	

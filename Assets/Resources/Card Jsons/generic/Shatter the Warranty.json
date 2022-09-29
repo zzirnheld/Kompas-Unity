@@ -15,7 +15,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "No! Not the original 1870s porcelain doll torso collection!",
 						"cardRestrictions": [
@@ -32,14 +32,14 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#SetXByTargetCost$",
+					"$type": "Subeffect:SetXByTargetCost:",
 					"xMultiplier": 1
 				},
 				{
-					"$type": "#Subeffect#Dispel$"
+					"$type": "Subeffect:Dispel:"
 				},
 				{
-					"$type": "#Subeffect#DrawX$",
+					"$type": "Subeffect:DrawX:",
 					"xMultiplier": 1
 				}
 			]

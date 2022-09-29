@@ -14,7 +14,7 @@
 			},
 			"subeffects":[
 				{
-					"$type":"#Subeffect#CardTarget$",
+					"$type":"Subeffect:CardTarget:",
 					"cardRestriction":
 					{
 						"cardRestrictions":["Board","Character","Hurt","Subtypes Include","Space Fits Restriction"],
@@ -27,10 +27,10 @@
 					}
 				},
 				{
-					"$type":"#Subeffect#Heal$"
+					"$type":"Subeffect:Heal:"
 				},
 				{
-					"$type":"#Subeffect#Draw$"
+					"$type":"Subeffect:Draw:"
 				}
 			]
 		}

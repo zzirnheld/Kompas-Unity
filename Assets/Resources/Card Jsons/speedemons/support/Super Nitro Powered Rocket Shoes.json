@@ -19,13 +19,13 @@
             },
             "subeffects":[
                 {
-                    "$type":"#Subeffect#TargetAugmentedCard$"
+                    "$type":"Subeffect:TargetAugmentedCard:"
                 },
                 {
-                    "$type":"#Subeffect#TargetTriggeringCardsCoords$"
+                    "$type":"Subeffect:TargetTriggeringCardsCoords:"
                 },
                 {
-                    "$type":"#Subeffect#SpaceTarget$",
+                    "$type":"Subeffect:SpaceTarget:",
                     "spaceRestriction":
                     {
                         "blurb":"where for speed victim to move",
@@ -37,7 +37,7 @@
 					"xModifier":1
                 },
                 {
-                    "$type":"#Subeffect#Move$"
+                    "$type":"Subeffect:Move:"
                 }
             ]
         }	

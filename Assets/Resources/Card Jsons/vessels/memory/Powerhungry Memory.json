@@ -15,7 +15,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "#Subeffect#CardTarget$",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Board",
@@ -30,13 +30,13 @@
 					}
 				},
 				{
-					"$type": "#Subeffect#Dispel$"
+					"$type": "Subeffect:Dispel:"
 				},
                 {
-                    "$type":"#Subeffect#TargetAugmentedCard$"
+                    "$type":"Subeffect:TargetAugmentedCard:"
                 },
 				{
-					"$type": "#Subeffect#ChangeCardStats$",
+					"$type": "Subeffect:ChangeCardStats:",
 					"wModifier": 5
 				}
 			]
@@ -53,10 +53,10 @@
 			},
 			"subeffects": [
                 {
-                    "$type":"#Subeffect#TargetAugmentedCard$"
+                    "$type":"Subeffect:TargetAugmentedCard:"
                 },
 				{
-					"$type": "#Subeffect#Resummon$"
+					"$type": "Subeffect:Resummon:"
 				}
 			]
 		}

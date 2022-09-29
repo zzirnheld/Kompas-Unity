@@ -12,11 +12,11 @@
 	},
 	"subeffects":[
 		{
-			"$type":"#Subeffect#CanResolve$",
+			"$type":"Subeffect:CanResolve:",
 			"subeffIndices":[2]
 		},
 		{
-			"$type":"#Subeffect#CardTarget$",
+			"$type":"Subeffect:CardTarget:",
 			"cardRestriction":
 			{
 				"blurb":"Crazy Idea for Ificator to Ificate",
@@ -25,12 +25,12 @@
 			}
 		},
 		{
-			"$type":"#Subeffect#PayPips$",
+			"$type":"Subeffect:PayPips:",
 			"xMultiplier":0,
 			"xModifier":1
 		},
 		{
-			"$type":"#Subeffect#SpaceTarget$",
+			"$type":"Subeffect:SpaceTarget:",
 			"spaceRestriction":
 			{
 				"blurb":"where Ificator to play targeted Crazy Idea",
@@ -38,7 +38,7 @@
 			}
 		},
 		{
-			"$type":"#Subeffect#Play$"
+			"$type":"Subeffect:Play:"
 		}
 	]
 }
