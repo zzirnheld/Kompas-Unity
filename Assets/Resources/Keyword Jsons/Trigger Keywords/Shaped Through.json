@@ -1,7 +1,7 @@
 [
     {
         "$type": "Core.TriggerRestriction:StackableFitsRestriction:",
-        "stackable": { "$type": "KompasCore.Effects.Identities.ActivationContextStackableIdentities.StackableCause, Assembly-CSharp" },
+        "stackable": { "$type": "ActivationContext.Stackable:StackableCause:" },
         "restriction": {
             "stackableRestrictionElements": [
                 {
@@ -14,22 +14,22 @@
     {
         "$type": "Core.TriggerRestriction:CompareNumbers:",
         "firstNumber": {
-            "$type": "KompasCore.Effects.Identities.ActivationContextNumberIdentities.Operation, Assembly-CSharp",
+            "$type": "ActivationContext.Number:Operation:",
             "numbers": [
                 {
-                    "$type": "KompasCore.Effects.Identities.ActivationContextNumberIdentities.X, Assembly-CSharp",
+                    "$type": "ActivationContext.Number:X:",
                     "multiplier": 0,
                     "modifier": 1
                 },
                 {
-                    "$type": "KompasCore.Effects.Identities.ActivationContextNumberIdentities.Distance, Assembly-CSharp",
+                    "$type": "ActivationContext.Number:Distance:",
                     "firstSpace": {
-                        "$type": "KompasCore.Effects.Identities.ActivationContextSpaceIdentities.PositionOf, Assembly-CSharp",
-                        "whosePosition": { "$type": "KompasCore.Effects.Identities.GamestateCardIdentities.ThisCard, Assembly-CSharp" }
+                        "$type": "ActivationContext.Space:PositionOf:",
+                        "whosePosition": { "$type": "Gamestate.Card:ThisCard:" }
                     },
                     "secondSpace": {
-                        "$type": "KompasCore.Effects.Identities.ActivationContextSpaceIdentities.PositionOf, Assembly-CSharp",
-                        "whosePosition": { "$type": "KompasCore.Effects.Identities.ActivationContextCardIdentities.MainCardBefore, Assembly-CSharp" }
+                        "$type": "ActivationContext.Space:PositionOf:",
+                        "whosePosition": { "$type": "ActivationContext.Card:MainCardBefore:" }
                     },
                     "throughRestriction": {
                         "spaceRestrictionElements": [
@@ -48,14 +48,14 @@
                     }
                 },
                 {
-                    "$type": "KompasCore.Effects.Identities.ActivationContextNumberIdentities.Distance, Assembly-CSharp",
+                    "$type": "ActivationContext.Number:Distance:",
                     "firstSpace": {
-                        "$type": "KompasCore.Effects.Identities.ActivationContextSpaceIdentities.PositionOf, Assembly-CSharp",
-                        "whosePosition": { "$type": "KompasCore.Effects.Identities.GamestateCardIdentities.ThisCard, Assembly-CSharp" }
+                        "$type": "ActivationContext.Space:PositionOf:",
+                        "whosePosition": { "$type": "Gamestate.Card:ThisCard:" }
                     },
                     "secondSpace": {
-                        "$type": "KompasCore.Effects.Identities.ActivationContextSpaceIdentities.PositionOf, Assembly-CSharp",
-                        "whosePosition": { "$type": "KompasCore.Effects.Identities.ActivationContextCardIdentities.MainCardAfter, Assembly-CSharp" }
+                        "$type": "ActivationContext.Space:PositionOf:",
+                        "whosePosition": { "$type": "ActivationContext.Card:MainCardAfter:" }
                     },
                     "throughRestriction": {
                         "spaceRestrictionElements": [
@@ -76,14 +76,14 @@
             ]
         },
         "secondNumber": {
-            "$type": "KompasCore.Effects.Identities.ActivationContextNumberIdentities.Distance, Assembly-CSharp",
+            "$type": "ActivationContext.Number:Distance:",
             "firstSpace": {
-                "$type": "KompasCore.Effects.Identities.ActivationContextSpaceIdentities.PositionOf, Assembly-CSharp",
-                "whosePosition": { "$type": "KompasCore.Effects.Identities.ActivationContextCardIdentities.MainCardBefore, Assembly-CSharp" }
+                "$type": "ActivationContext.Space:PositionOf:",
+                "whosePosition": { "$type": "ActivationContext.Card:MainCardBefore:" }
             },
             "secondSpace": {
-                "$type": "KompasCore.Effects.Identities.ActivationContextSpaceIdentities.PositionOf, Assembly-CSharp",
-                "whosePosition": { "$type": "KompasCore.Effects.Identities.ActivationContextCardIdentities.MainCardAfter, Assembly-CSharp" }
+                "$type": "ActivationContext.Space:PositionOf:",
+                "whosePosition": { "$type": "ActivationContext.Card:MainCardAfter:" }
             },
             "throughRestriction": {
                 "spaceRestrictionElements": [

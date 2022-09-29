@@ -16,7 +16,7 @@
             "cardRestrictions":["Friendly","Subtypes Include","Character","Hand","Can Be Played"],
             "subtypesInclude":["Mech","Golem"]
         },
-        "toLinkWith": { "$type": "KompasCore.Effects.Identities.GamestateCardIdentities.ThisCard, Assembly-CSharp" }
+        "toLinkWith": { "$type": "Gamestate.Card:ThisCard:" }
     },
     {
         "$type":"#Subeffect#Play$"

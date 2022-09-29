@@ -48,17 +48,17 @@
 						"triggerRestrictionElements": [
 							{
 								"$type": "Core.TriggerRestriction:StackablesMatch:",
-								"firstCard": { "$type": "KompasCore.Effects.Identities.SubeffectStackableIdentities.StackableIndex, Assembly-CSharp" },
-								"secondCard": { "$type": "KompasCore.Effects.Identities.ActivationContextStackableIdentities.StackableCause, Assembly-CSharp" }
+								"firstCard": { "$type": "Subeffect.Stackable:StackableIndex:" },
+								"secondCard": { "$type": "ActivationContext.Stackable:StackableCause:" }
 							},
 							{
 								"$type": "Core.TriggerRestriction:CardsMatch:",
-								"firstCard": { "$type": "KompasCore.Effects.Identities.ActivationContextCardIdentities.MainCardBefore, Assembly-CSharp" },
+								"firstCard": { "$type": "ActivationContext.Card:MainCardBefore:" },
 								"secondCard": {
-									"$type": "KompasServer.Effects.Identities.SubeffectCardIdentities.FromActivationContext, Assembly-CSharp",
+									"$type": "Subeffect.Card:FromActivationContext:",
 									"secondary": true,
                         			"cardFromContext": {
-										"$type": "KompasCore.Effects.Identities.ActivationContextCardIdentities.MainCardBefore, Assembly-CSharp"
+										"$type": "ActivationContext.Card:MainCardBefore:"
 									}
 								}
 							}

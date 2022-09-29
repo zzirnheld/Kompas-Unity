@@ -78,9 +78,9 @@
                 {
                     "$type": "Core.SpaceRestriction:ConnectedTo:",
                     "spaces": {
-						"$type": "KompasCore.Effects.Identities.GamestateManySpacesIdentities.PositionsOfEach, Assembly-CSharp",
+						"$type": "Gamestate.ManySpaces:PositionsOfEach:",
 						"cards": {
-							"$type": "KompasCore.Effects.Identities.GamestateManyCardsIdentities.FittingRestriction, Assembly-CSharp",
+							"$type": "Gamestate.ManyCards:FittingRestriction:",
 							"cardRestriction": {
 								"cardRestrictionElements": [
 									{ "$type": "Core.CardRestriction:Avatar:" }

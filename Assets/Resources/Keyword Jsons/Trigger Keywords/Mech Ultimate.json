@@ -1,8 +1,8 @@
 [
     {
         "$type": "Core.TriggerRestriction:CardsMatch:",
-        "firstCard": { "$type": "KompasCore.Effects.Identities.GamestateCardIdentities.ThisCard, Assembly-CSharp" },
-        "secondCard": { "$type": "KompasCore.Effects.Identities.ActivationContextCardIdentities.MainCardBefore, Assembly-CSharp" }
+        "firstCard": { "$type": "Gamestate.Card:ThisCard:" },
+        "secondCard": { "$type": "ActivationContext.Card:MainCardBefore:" }
     }
     {
         "$type": "Core.TriggerRestriction:NumberFitsRestriction:",
@@ -13,8 +13,8 @@
             "constant":30
         },
         "number": {
-            "$type": "KompasCore.Effects.Identities.ActivationContextNumberIdentities.FromCardValue, Assembly-CSharp",
-            "card": { "$type": "KompasCore.Effects.Identities.ActivationContextCardIdentities.MainCardBefore, Assembly-CSharp" },
+            "$type": "ActivationContext.Number:FromCardValue:",
+            "card": { "$type": "ActivationContext.Card:MainCardBefore:" },
             "cardValue": { "value": "S" }
         }
     }

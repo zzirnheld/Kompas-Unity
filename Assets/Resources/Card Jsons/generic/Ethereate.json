@@ -10,8 +10,8 @@
 					"triggerRestrictionElements": [
                         {
                             "$type": "Core.TriggerRestriction:CardsMatch:",
-                            "firstCard": { "$type": "KompasCore.Effects.Identities.GamestateCardIdentities.ThisCard, Assembly-CSharp" },
-                            "secondCard": { "$type": "KompasCore.Effects.Identities.ActivationContextCardIdentities.MainCardBefore, Assembly-CSharp" }
+                            "firstCard": { "$type": "Gamestate.Card:ThisCard:" },
+                            "secondCard": { "$type": "ActivationContext.Card:MainCardBefore:" }
                         }
 					]
 				}
@@ -43,7 +43,7 @@
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {
                                 "$type": "Core.SpaceRestriction:CanPlayCard:",
-                                "toPlay": { "$type": "KompasServer.Effects.Identities.SubeffectCardIdentities.Target, Assembly-CSharp" }
+                                "toPlay": { "$type": "Subeffect.Card:Target:" }
                             }
                         ]
 					}

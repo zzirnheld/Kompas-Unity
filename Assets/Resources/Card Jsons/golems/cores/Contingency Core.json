@@ -20,7 +20,7 @@
                                     }
                                 ]
                             },
-                            "card": { "$type": "KompasCore.Effects.Identities.ActivationContextCardIdentities.MainCardBefore, Assembly-CSharp" }
+                            "card": { "$type": "ActivationContext.Card:MainCardBefore:" }
                         }
 					]
 				}
@@ -29,8 +29,8 @@
 				{
 					"$type": "#Subeffect#AutoTargetCardIdentity$",
                     "subeffectCardIdentity": {
-						"$type": "KompasCore.Effects.Identities.GamestateCardIdentities.AugmentedCard, Assembly-CSharp",
-                        "cardFromContext": { "$type": "KompasCore.Effects.Identities.GamestateCardIdentities.ThisCard, Assembly-CSharp" }
+						"$type": "Gamestate.Card:AugmentedCard:",
+                        "cardFromContext": { "$type": "Gamestate.Card:ThisCard:" }
                     }
 				},
 				{
@@ -54,10 +54,10 @@
                         {
                             "$type": "Core.TriggerRestriction:CardsMatch:",
                             "firstCard": {
-                                "$type": "KompasCore.Effects.Identities.GamestateCardIdentities.AugmentedCard, Assembly-CSharp",
-                                "ofThisCard": { "$type": "KompasCore.Effects.Identities.GamestateCardIdentities.ThisCard, Assembly-CSharp" }
+                                "$type": "Gamestate.Card:AugmentedCard:",
+                                "ofThisCard": { "$type": "Gamestate.Card:ThisCard:" }
                             },
-                            "secondCard": { "$type": "KompasCore.Effects.Identities.ActivationContextCardIdentities.MainCardBefore, Assembly-CSharp" }
+                            "secondCard": { "$type": "ActivationContext.Card:MainCardBefore:" }
                         },
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
@@ -69,7 +69,7 @@
                                     }
                                 ]
                             },
-                            "card": { "$type": "KompasCore.Effects.Identities.ActivationContextCardIdentities.MainCardBefore, Assembly-CSharp" }
+                            "card": { "$type": "ActivationContext.Card:MainCardBefore:" }
                         }
 					]
 				}
@@ -78,17 +78,17 @@
 				{
 					"$type": "#Subeffect#AutoTargetCardIdentity$",
                     "subeffectCardIdentity": {
-						"$type": "KompasServer.Effects.Identities.SubeffectCardIdentities.FromActivationContext, Assembly-CSharp",
-                        "cardFromContext": { "$type": "KompasCore.Effects.Identities.ActivationContextCardIdentities.MainCardBefore, Assembly-CSharp" }
+						"$type": "Subeffect.Card:FromActivationContext:",
+                        "cardFromContext": { "$type": "ActivationContext.Card:MainCardBefore:" }
                     }
 				},
 				{
 					"$type": "#Subeffect#AutoTargetSpaceIdentity$",
                     "spaceIdentity": {
-                        "$type": "KompasServer.Effects.Identities.SubeffectSpaceIdentities.PositionOf, Assembly-CSharp",
+                        "$type": "Subeffect.Space:PositionOf:",
                         "whosePosition": {
-                            "$type": "KompasServer.Effects.Identities.SubeffectCardIdentities.FromActivationContext, Assembly-CSharp",
-                            "cardFromContext": { "$type": "KompasCore.Effects.Identities.ActivationContextCardIdentities.MainCardBefore, Assembly-CSharp" }
+                            "$type": "Subeffect.Card:FromActivationContext:",
+                            "cardFromContext": { "$type": "ActivationContext.Card:MainCardBefore:" }
                         }
                     }
 				},

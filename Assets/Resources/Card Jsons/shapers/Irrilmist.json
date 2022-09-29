@@ -42,7 +42,7 @@
                             },
                             {
                                 "$type": "Core.CardRestriction:CanMoveTo:",
-                                "destination": { "$type": "KompasServer.Effects.Identities.SubeffectSpaceIdentities.Target, Assembly-CSharp" }
+                                "destination": { "$type": "Subeffect.Space:Target:" }
                             }
                         ]
 					}

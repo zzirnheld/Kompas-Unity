@@ -131,6 +131,7 @@ public class CardRepository : MonoBehaviour
     private static readonly Regex subeffRegex = new Regex(@"#Subeffect#([^\$]+)\$");
     private const string subeffReplacement = @"KompasServer.Effects.$1Subeffect, Assembly-CSharp";
 
+    //restriction regexes
     private static readonly Regex coreCardRestrictionRegex = new Regex(@"Core\.CardRestriction:([^:]+):");
     private const string coreCardRestrictionReplacement = @"KompasCore.Effects.Restrictions.CardRestrictionElements.$1, Assembly-CSharp";
 
@@ -139,6 +140,16 @@ public class CardRepository : MonoBehaviour
 
     private static readonly Regex coreSpaceRestrictionRegex = new Regex(@"Core\.SpaceRestriction:([^:]+):");
     private const string coreSpaceRestrictionReplacement = @"KompasCore.Effects.Restrictions.SpaceRestrictionElements.$1, Assembly-CSharp";
+
+    //identity regexes
+    private static readonly Regex subeffectIdentityRegex = new Regex(@"Subeffect\.([^:]+):([^:]+):");
+    private const string subeffectIdentityReplacement = @"KompasServer.Effects.Identities.Subeffect$1Identities.$2, Assembly-CSharp";
+
+    private static readonly Regex activationContextIdentityRegex = new Regex(@"ActivationContext\.([^:]+):([^:]+):");
+    private const string activationContextIdentityReplacement = @"KompasCore.Effects.Identities.ActivationContext$1Identities.$2, Assembly-CSharp";
+
+    private static readonly Regex gamestateIdentityRegex = new Regex(@"Gamestate\.([^:]+):([^:]+):");
+    private const string gamestateIdentityReplacement = @"KompasCore.Effects.Identities.Gamestate$1Identities.$2, Assembly-CSharp";
 
     private string ReplacePlaceholders(string json)
     {
@@ -151,7 +162,9 @@ public class CardRepository : MonoBehaviour
 
         json = coreCardRestrictionRegex.Replace(json, coreCardRestrictionReplacement);
         json = coreTriggerRestrictionRegex.Replace(json, coreTriggerRestrictionReplacement);
-        json = coreSpaceRestrictionRegex.Replace(json, coreSpaceRestrictionReplacement);
+        json = coreSpaceRestrictionRegex.Replace(json, coreSpaceRestrictionReplacement)
+
+        json = subeffectIdentityRegex.Replace(json, subeffectIdentityReplacement);
 
         return json;
     }

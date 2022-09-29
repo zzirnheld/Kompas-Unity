@@ -40,7 +40,7 @@
 								"$type": "Core.CardRestriction:Not:",
 								"element": {
 									"$type": "Core.CardRestriction:Fighting:",
-									"fightingWho": { "$type": "KompasCore.Effects.Identities.GamestateCardIdentities.ThisCard, Assembly-CSharp" }
+									"fightingWho": { "$type": "Gamestate.Card:ThisCard:" }
 								}
 							}
 						]

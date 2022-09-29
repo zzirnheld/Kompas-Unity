@@ -20,18 +20,18 @@
 				{
 					"$type": "#Subeffect#SetXByNumberIdentity$",
 					"numberIdentity": {
-						"$type": "KompasServer.Effects.Identities.SubeffectNumberIdentities.Selector, Assembly-CSharp",
+						"$type": "Subeffect.Number:Selector:",
 						"selector": { "$type": "KompasCore.Effects.Identities.NumberSelectors.Minimum, Assembly-CSharp" },
 						"numbers": {
-							"$type": "KompasServer.Effects.Identities.SubeffectManyNumbersIdentities.Distances, Assembly-CSharp",
+							"$type": "Subeffect.ManyNumbers:Distances:",
 							"origin": {
-								"$type": "KompasServer.Effects.Identities.SubeffectSpaceIdentities.PositionOf, Assembly-CSharp",
-								"whosePosition": { "$type": "KompasCore.Effects.Identities.GamestateCardIdentities.ThisCard, Assembly-CSharp" }
+								"$type": "Subeffect.Space:PositionOf:",
+								"whosePosition": { "$type": "Gamestate.Card:ThisCard:" }
 							},
 							"destinations": {
-								"$type": "KompasServer.Effects.Identities.SubeffectManySpacesIdentities.PositionsOfEach, Assembly-CSharp",
+								"$type": "Subeffect.ManySpaces:PositionsOfEach:",
 								"cards": {
-									"$type": "KompasCore.Effects.Identities.GamestateManyCardsIdentities.FittingRestriction, Assembly-CSharp",
+									"$type": "Gamestate.ManyCards:FittingRestriction:",
 									"cardRestriction": {
 										"cardRestrictionElements": [
 											{ "$type": "Core.CardRestriction:EnemyCard:" },
@@ -39,7 +39,7 @@
 												"$type": "Core.CardRestriction:Not:",
 												"element": {
 													"$type": "Core.CardRestriction:Fighting:",
-													"fightingWho": { "$type": "KompasCore.Effects.Identities.GamestateCardIdentities.ThisCard, Assembly-CSharp" }
+													"fightingWho": { "$type": "Gamestate.Card:ThisCard:" }
 												}
 											}
 										]
@@ -61,10 +61,10 @@
 										{
 											"$type": "Core.SpaceRestriction:CompareDistance:",
 											"distanceTo": {
-												"$type": "KompasServer.Effects.Identities.SubeffectSpaceIdentities.PositionOf, Assembly-CSharp",
-												"whosePosition": { "$type": "KompasCore.Effects.Identities.GamestateCardIdentities.ThisCard, Assembly-CSharp" }
+												"$type": "Subeffect.Space:PositionOf:",
+												"whosePosition": { "$type": "Gamestate.Card:ThisCard:" }
 											},
-											"number": { "$type": "KompasServer.Effects.Identities.SubeffectNumberIdentities.X, Assembly-CSharp" },
+											"number": { "$type": "Subeffect.Number:X:" },
 											"comparison": { "$type": "KompasCore.Effects.Relationships.NumberRelationships.Equal, Assembly-CSharp" }
 										}
 									]
@@ -74,7 +74,7 @@
 								"$type": "Core.CardRestriction:Not:",
 								"element": {
 									"$type": "Core.CardRestriction:Fighting:",
-									"fightingWho": { "$type": "KompasCore.Effects.Identities.GamestateCardIdentities.ThisCard, Assembly-CSharp" }
+									"fightingWho": { "$type": "Gamestate.Card:ThisCard:" }
 								}
 							}
 						]

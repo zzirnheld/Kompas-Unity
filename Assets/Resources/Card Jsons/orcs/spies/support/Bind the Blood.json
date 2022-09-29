@@ -27,8 +27,8 @@
 				{
 					"$type": "#Subeffect#AutoTargetCardIdentity$",
                     "subeffectCardIdentity": {
-						"$type": "KompasServer.Effects.Identities.SubeffectCardIdentities.FromActivationContext, Assembly-CSharp",
-                        "cardFromContext": { "$type": "KompasCore.Effects.Identities.ActivationContextCardIdentities.MainCardBefore, Assembly-CSharp" }
+						"$type": "Subeffect.Card:FromActivationContext:",
+                        "cardFromContext": { "$type": "ActivationContext.Card:MainCardBefore:" }
                     }
 				},
 				{
@@ -46,8 +46,8 @@
 						"triggerRestrictionElements": [
 							{
 								"$type": "Core.TriggerRestriction:StackablesMatch:",
-								"firstStackable": { "$type": "KompasCore.Effects.Identities.SubeffectStackableIdentities.StackableIndex, Assembly-CSharp" },
-								"secondStackable": { "$type": "KompasCore.Effects.Identities.ActivationContextStackableIdentities.StackableCause, Assembly-CSharp" }
+								"firstStackable": { "$type": "Subeffect.Stackable:StackableIndex:" },
+								"secondStackable": { "$type": "ActivationContext.Stackable:StackableCause:" }
 							}
 						]
 					},
@@ -56,17 +56,17 @@
 						"triggerRestrictionElements": [
 							{
 								"$type": "Core.TriggerRestriction:StackablesMatch:",
-								"firstStackable": { "$type": "KompasCore.Effects.Identities.SubeffectStackableIdentities.StackableIndex, Assembly-CSharp" },
-								"secondStackable": { "$type": "KompasCore.Effects.Identities.ActivationContextStackableIdentities.StackableCause, Assembly-CSharp" }
+								"firstStackable": { "$type": "Subeffect.Stackable:StackableIndex:" },
+								"secondStackable": { "$type": "ActivationContext.Stackable:StackableCause:" }
 							},
 							{
 								"$type": "Core.TriggerRestriction:CardsMatch:",
-								"firstCard": { "$type": "KompasCore.Effects.Identities.ActivationContextCardIdentities.MainCardBefore, Assembly-CSharp" },
+								"firstCard": { "$type": "ActivationContext.Card:MainCardBefore:" },
 								"secondCard": {
-									"$type": "KompasServer.Effects.Identities.SubeffectCardIdentities.FromActivationContext, Assembly-CSharp",
+									"$type": "Subeffect.Card:FromActivationContext:",
 									"secondary": true,
                         			"cardFromContext": {
-										"$type": "KompasCore.Effects.Identities.ActivationContextCardIdentities.MainCardBefore, Assembly-CSharp"
+										"$type": "ActivationContext.Card:MainCardBefore:"
 									}
 								}
 							}

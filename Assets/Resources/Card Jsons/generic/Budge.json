@@ -11,8 +11,8 @@
 					"triggerRestrictionElements": [
                         {
                             "$type": "Core.TriggerRestriction:CardsMatch:",
-                            "firstCard": { "$type": "KompasCore.Effects.Identities.GamestateCardIdentities.ThisCard, Assembly-CSharp" },
-                            "secondCard": { "$type": "KompasCore.Effects.Identities.ActivationContextCardIdentities.MainCardBefore, Assembly-CSharp" }
+                            "firstCard": { "$type": "Gamestate.Card:ThisCard:" },
+                            "secondCard": { "$type": "ActivationContext.Card:MainCardBefore:" }
                         }
 					]
 				}
@@ -35,16 +35,16 @@
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {
                                 "$type": "Core.SpaceRestriction:CanMoveCard:",
-                                "toMove": { "$type": "KompasServer.Effects.Identities.SubeffectCardIdentities.Target, Assembly-CSharp" }
+                                "toMove": { "$type": "Subeffect.Card:Target:" }
                             },
                             {
                                 "$type": "Core.SpaceRestriction:CompareDistance:",
                                 "distanceTo": {
-                                    "$type": "KompasServer.Effects.Identities.SubeffectSpaceIdentities.PositionOf, Assembly-CSharp",
-                                    "whosePosition": { "$type": "KompasServer.Effects.Identities.SubeffectCardIdentities.Target, Assembly-CSharp" }
+                                    "$type": "Subeffect.Space:PositionOf:",
+                                    "whosePosition": { "$type": "Subeffect.Card:Target:" }
                                 },
                                 "number": { 
-                                    "$type": "KompasServer.Effects.Identities.SubeffectNumberIdentities.X, Assembly-CSharp",
+                                    "$type": "Subeffect.Number:X:",
                                     "multiplier": 0,
                                     "modifier": 1
                                 },

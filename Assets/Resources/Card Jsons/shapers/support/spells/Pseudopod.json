@@ -33,7 +33,7 @@
                             {
                                 "$type": "Core.SpaceRestriction:AdjacentTo:",
                                 "anyOfTheseCards": { 
-									"$type": "KompasCore.Effects.Identities.GamestateManyCardsIdentities.FittingRestriction, Assembly-CSharp",
+									"$type": "Gamestate.ManyCards:FittingRestriction:",
 									"cardRestriction": {
 										"cardRestrictionElements": [
 											{ "$type": "Core.CardRestriction:FriendlyCard:" },

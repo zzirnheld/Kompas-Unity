@@ -69,7 +69,7 @@
                                     ]
                                 },
                                 "number": { 
-                                    "$type": "KompasCore.Effects.Identities.GamestateNumberIdentities.Constant, Assembly-CSharp",
+                                    "$type": "Gamestate.Number:Constant:",
                                     "constant": 2
                                 }
                             }
