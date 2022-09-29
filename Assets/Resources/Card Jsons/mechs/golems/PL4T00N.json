@@ -10,7 +10,7 @@
 				"triggerRestriction": {
 					"triggerRestrictionElements": [
                         {
-                            "$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.TriggerKeyword, Assembly-CSharp",
+                            "$type": "Core.TriggerRestriction:TriggerKeyword:",
                             "keyword": "Mech Ultimate"
                         }
 					]
@@ -37,9 +37,9 @@
 						"blurb": "5PR34D 0UT",
 						"cardRestrictionElements": [
                             { 
-								"$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.Not, Assembly-CSharp",
+								"$type": "Core.CardRestriction:Not:",
 								"element": {
-									"$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.Fighting, Assembly-CSharp",
+									"$type": "Core.CardRestriction:Fighting:",
 									"fightingWho": { "$type": "KompasCore.Effects.Identities.GamestateCardIdentities.ThisCard, Assembly-CSharp" }
 								}
 							}

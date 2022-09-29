@@ -9,9 +9,9 @@
 				"triggerCondition": "Move",
 				"triggerRestriction": {
 					"triggerRestrictionElements": [
-                        { "$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.ThisCardInPlay, Assembly-CSharp" },
+                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
                         {
-                            "$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.TriggerKeyword, Assembly-CSharp",
+                            "$type": "Core.TriggerRestriction:TriggerKeyword:",
                             "keyword": "Shaped Through"
                         }
 					]
@@ -33,15 +33,15 @@
 						"blurb": "Ethereal to where Irrilmist was",
                         "cardRestrictionElements": [
                             {
-                                "$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.Location, Assembly-CSharp",
+                                "$type": "Core.CardRestriction:Location:",
                                 "locations": [ "Board" ]
                             },
                             {
-                                "$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.SubtypesInclude, Assembly-CSharp",
+                                "$type": "Core.CardRestriction:SubtypesInclude:",
                                 "subtypes": [ "Ethereal" ]
                             },
                             {
-                                "$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.CanMoveTo, Assembly-CSharp",
+                                "$type": "Core.CardRestriction:CanMoveTo:",
                                 "destination": { "$type": "KompasServer.Effects.Identities.SubeffectSpaceIdentities.Target, Assembly-CSharp" }
                             }
                         ]

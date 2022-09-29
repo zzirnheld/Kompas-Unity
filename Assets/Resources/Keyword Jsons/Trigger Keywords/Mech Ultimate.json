@@ -1,11 +1,11 @@
 [
     {
-        "$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.CardsMatch, Assembly-CSharp",
+        "$type": "Core.TriggerRestriction:CardsMatch:",
         "firstCard": { "$type": "KompasCore.Effects.Identities.GamestateCardIdentities.ThisCard, Assembly-CSharp" },
         "secondCard": { "$type": "KompasCore.Effects.Identities.ActivationContextCardIdentities.MainCardBefore, Assembly-CSharp" }
     }
     {
-        "$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.NumberFitsRestriction, Assembly-CSharp",
+        "$type": "Core.TriggerRestriction:NumberFitsRestriction:",
         "restriction": {
             "numberRestrictions": [
                 ">=Constant"

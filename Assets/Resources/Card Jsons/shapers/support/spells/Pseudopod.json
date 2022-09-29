@@ -29,21 +29,21 @@
 					"spaceRestriction": {
 						"blurb": "where to move the enemy character",
                         "spaceRestrictionElements": [
-                            { "$type": "KompasCore.Effects.Restrictions.SpaceRestrictionElements.Empty, Assembly-CSharp" },
+                            { "$type": "Core.SpaceRestriction:Empty:" },
                             {
-                                "$type": "KompasCore.Effects.Restrictions.SpaceRestrictionElements.AdjacentTo, Assembly-CSharp",
+                                "$type": "Core.SpaceRestriction:AdjacentTo:",
                                 "anyOfTheseCards": { 
 									"$type": "KompasCore.Effects.Identities.GamestateManyCardsIdentities.FittingRestriction, Assembly-CSharp",
 									"cardRestriction": {
 										"cardRestrictionElements": [
-											{ "$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.FriendlyCard, Assembly-CSharp" },
-											{ "$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.Character, Assembly-CSharp" },
+											{ "$type": "Core.CardRestriction:FriendlyCard:" },
+											{ "$type": "Core.CardRestriction:Character:" },
 											{
-												"$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.Location, Assembly-CSharp",
+												"$type": "Core.CardRestriction:Location:",
 												"locations": [ "Board" ]
 											},
 											{
-												"$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.SubtypesInclude, Assembly-CSharp",
+												"$type": "Core.CardRestriction:SubtypesInclude:",
 												"subtypes": [ "Shaper" ]
 											}
 										]

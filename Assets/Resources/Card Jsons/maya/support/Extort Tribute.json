@@ -58,7 +58,7 @@
 						],
                         "spaceRestrictionElements": [
                             {
-                                "$type": "KompasCore.Effects.Restrictions.SpaceRestrictionElements.WithinDistanceOfNumberOfCards, Assembly-CSharp",
+                                "$type": "Core.SpaceRestriction:WithinDistanceOfNumberOfCards:",
                                 "cardRestriction": {
                                     "cardRestrictions": [
                                         "Friendly",

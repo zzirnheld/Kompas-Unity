@@ -1,6 +1,6 @@
 [
     {
-        "$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.StackableFitsRestriction, Assembly-CSharp",
+        "$type": "Core.TriggerRestriction:StackableFitsRestriction:",
         "stackable": { "$type": "KompasCore.Effects.Identities.ActivationContextStackableIdentities.StackableCause, Assembly-CSharp" },
         "restriction": {
             "stackableRestrictionElements": [
@@ -12,7 +12,7 @@
         }
     },
     {
-        "$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.CompareNumbers, Assembly-CSharp",
+        "$type": "Core.TriggerRestriction:CompareNumbers:",
         "firstNumber": {
             "$type": "KompasCore.Effects.Identities.ActivationContextNumberIdentities.Operation, Assembly-CSharp",
             "numbers": [
@@ -34,11 +34,11 @@
                     "throughRestriction": {
                         "spaceRestrictionElements": [
                             {
-                                "$type": "KompasCore.Effects.Restrictions.SpaceRestrictionElements.CardFitsRestriction, Assembly-CSharp",
+                                "$type": "Core.SpaceRestriction:CardFitsRestriction:",
                                 "restriction": {
                                     "cardRestrictionElements": [
                                         {
-                                            "$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.SubtypesInclude, Assembly-CSharp",
+                                            "$type": "Core.CardRestriction:SubtypesInclude:",
                                             "subtypes": [ "Ethereal" ]
                                         }
                                     ]
@@ -60,11 +60,11 @@
                     "throughRestriction": {
                         "spaceRestrictionElements": [
                             {
-                                "$type": "KompasCore.Effects.Restrictions.SpaceRestrictionElements.CardFitsRestriction, Assembly-CSharp",
+                                "$type": "Core.SpaceRestriction:CardFitsRestriction:",
                                 "restriction": {
                                     "cardRestrictionElements": [
                                         {
-                                            "$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.SubtypesInclude, Assembly-CSharp",
+                                            "$type": "Core.CardRestriction:SubtypesInclude:",
                                             "subtypes": [ "Ethereal" ]
                                         }
                                     ]
@@ -88,11 +88,11 @@
             "throughRestriction": {
                 "spaceRestrictionElements": [
                     {
-                        "$type": "KompasCore.Effects.Restrictions.SpaceRestrictionElements.CardFitsRestriction, Assembly-CSharp",
+                        "$type": "Core.SpaceRestriction:CardFitsRestriction:",
                         "restriction": {
                             "cardRestrictionElements": [
                                 {
-                                    "$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.SubtypesInclude, Assembly-CSharp",
+                                    "$type": "Core.CardRestriction:SubtypesInclude:",
                                     "subtypes": [ "Ethereal" ]
                                 }
                             ]

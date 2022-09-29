@@ -131,6 +131,15 @@ public class CardRepository : MonoBehaviour
     private static readonly Regex subeffRegex = new Regex(@"#Subeffect#([^\$]+)\$");
     private const string subeffReplacement = @"KompasServer.Effects.$1Subeffect, Assembly-CSharp";
 
+    private static readonly Regex coreCardRestrictionRegex = new Regex(@"Core\.CardRestriction:([^:]+):");
+    private const string coreCardRestrictionReplacement = @"KompasCore.Effects.Restrictions.CardRestrictionElements.$1, Assembly-CSharp";
+
+    private static readonly Regex coreTriggerRestrictionRegex = new Regex(@"Core\.TriggerRestriction:([^:]+):");
+    private const string coreTriggerRestrictionReplacement = @"KompasCore.Effects.Restrictions.TriggerRestrictionElements.$1, Assembly-CSharp";
+
+    private static readonly Regex coreSpaceRestrictionRegex = new Regex(@"Core\.SpaceRestriction:([^:]+):");
+    private const string coreSpaceRestrictionReplacement = @"KompasCore.Effects.Restrictions.SpaceRestrictionElements.$1, Assembly-CSharp";
+
     private string ReplacePlaceholders(string json)
     {
         //remove problematic chars for from json function
@@ -138,7 +147,13 @@ public class CardRepository : MonoBehaviour
         json = json.Replace("\r", "");
         json = json.Replace("\t", "");
 
-        return subeffRegex.Replace(json, subeffReplacement);
+        json = subeffRegex.Replace(json, subeffReplacement);
+
+        json = coreCardRestrictionRegex.Replace(json, coreCardRestrictionReplacement);
+        json = coreTriggerRestrictionRegex.Replace(json, coreTriggerRestrictionReplacement);
+        json = coreSpaceRestrictionRegex.Replace(json, coreSpaceRestrictionReplacement);
+
+        return json;
     }
 
     private void InitializeMapFromJsons(string filePath, string folderPath, Dictionary<string, string> dict)

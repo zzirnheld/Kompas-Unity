@@ -76,14 +76,14 @@
 		"spaceRestriction": {
             "spaceRestrictionElements": [
                 {
-                    "$type": "KompasCore.Effects.Restrictions.SpaceRestrictionElements.ConnectedTo, Assembly-CSharp",
+                    "$type": "Core.SpaceRestriction:ConnectedTo:",
                     "spaces": {
 						"$type": "KompasCore.Effects.Identities.GamestateManySpacesIdentities.PositionsOfEach, Assembly-CSharp",
 						"cards": {
 							"$type": "KompasCore.Effects.Identities.GamestateManyCardsIdentities.FittingRestriction, Assembly-CSharp",
 							"cardRestriction": {
 								"cardRestrictionElements": [
-									{ "$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.Avatar, Assembly-CSharp" }
+									{ "$type": "Core.CardRestriction:Avatar:" }
 								]
 							}
 						}
@@ -91,10 +91,10 @@
                     "byRestriction": {
                         "spaceRestrictionElements": [
                             {
-                                "$type": "KompasCore.Effects.Restrictions.SpaceRestrictionElements.CardFitsRestriction, Assembly-CSharp",
+                                "$type": "Core.SpaceRestriction:CardFitsRestriction:",
                                 "restriction": {
                                     "cardRestrictionElements": [
-                                        { "$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.CardExists, Assembly-CSharp" }
+                                        { "$type": "Core.CardRestriction:CardExists:" }
                                     ]
                                 }
                             }
