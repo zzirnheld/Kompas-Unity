@@ -52,10 +52,13 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "Where to play that card",
-						"spaceRestrictions": [
-							"Can Play Card Target to This Space",
-							"Empty"
-						],
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Subeffect.Card:Target:" }
+                            }
+                        ],
                         "spaceRestrictionElements": [
                             {
                                 "$type": "Core.SpaceRestriction:WithinDistanceOfNumberOfCards:",

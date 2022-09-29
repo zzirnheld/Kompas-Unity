@@ -52,9 +52,11 @@ namespace KompasServer.Effects
             return await ServerPlayer.serverAwaiter.GetCardListTargets(name, blurb, targetIds, JsonConvert.SerializeObject(listRestriction));
         }
 
+        protected virtual bool IsValidTarget(GameCard card) => cardRestriction.IsValidCard(card, CurrentContext);
+
         private IEnumerable<GameCard> GetPossibleTargets()
         {
-            var possibleTargets = ServerGame.Cards.Where(c => cardRestriction.IsValidCard(c, CurrentContext));
+            var possibleTargets = ServerGame.Cards.Where(IsValidTarget);
             if (!possibleTargets.Any()) return new GameCard[0];
 
             switch (orderBy)

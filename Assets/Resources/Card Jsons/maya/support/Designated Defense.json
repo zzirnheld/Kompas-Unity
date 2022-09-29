@@ -21,8 +21,8 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "Space for your enemy to play a Structure to",
-						"spaceRestrictions": [
-							"Empty"
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" }
                         ]
 					}
 				},
@@ -40,10 +40,12 @@
 						"subtypesInclude": [
 							"Structure"
 						]
-					}
+					},
+					"playerIndex": 0
 				},
 				{
-					"$type": "Subeffect:Play:"
+					"$type": "Subeffect:Play:",
+					"playerIndex": 0
 				}
 			]
 		}
