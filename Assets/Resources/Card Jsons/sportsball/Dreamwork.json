@@ -19,10 +19,13 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Augment",
-							"Friendly",
-							"Board"
+							"Friendly"
 						],
 						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Sportsball" ]
@@ -42,14 +45,19 @@
 						"blurb": "adjacent character to attach augment to",
 						"cardRestrictions": [
 							"Character",
-							"Board",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
 							"spaceRestrictions": [
 								"Adjacent to Card Target"
 							]
-						}
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
 					}
 				},
 				{

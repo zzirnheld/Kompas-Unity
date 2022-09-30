@@ -18,8 +18,13 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character",
-							"Enemy",
-							"Board"
+							"Enemy"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					},
 					"eModifier": -3

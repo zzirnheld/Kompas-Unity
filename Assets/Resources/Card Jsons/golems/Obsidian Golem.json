@@ -20,8 +20,13 @@
 						"blurb": "summon for Obsidian Golem to give -5 E",
 						"cardRestrictions": [
 							"Character",
-							"Summoned",
-							"Board"
+							"Summoned"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},

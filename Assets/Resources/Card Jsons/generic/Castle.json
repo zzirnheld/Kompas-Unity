@@ -19,9 +19,14 @@
 					"cardRestriction": {
 						"blurb": "Avatar to castle",
 						"cardRestrictions": [
-							"Board",
 							"Avatar",
 							"Space Fits Restriction"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						],
 						"spaceRestriction": {
 							"spaceRestrictions": [

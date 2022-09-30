@@ -26,8 +26,13 @@
 						"blurb": "who to next be brought low by the Lines",
 						"cardRestrictions": [
 							"Character",
-							"Board",
 							"Not Already Target"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},

@@ -19,14 +19,19 @@
 						"blurb": "character for Sowilo to give -1 E.",
 						"cardRestrictions": [
 							"Character",
-							"Board",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
 							"spaceRestrictions": [
 								"Adjacent to Source"
 							]
-						}
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
 					}
 				},
 				{
@@ -39,7 +44,6 @@
 						"blurb": "other character for Sowilo to give +1 E.",
 						"cardRestrictions": [
 							"Character",
-							"Board",
 							"Not Already Target",
 							"Space Fits Restriction"
 						],
@@ -47,7 +51,13 @@
 							"spaceRestrictions": [
 								"Adjacent to Source"
 							]
-						}
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
 					}
 				},
 				{

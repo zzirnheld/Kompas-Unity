@@ -17,10 +17,13 @@
 					"cardRestriction": {
 						"blurb": "to ride the winds",
 						"cardRestrictions": [
-							"Character",
-							"Board"
+							"Character"
 						],
 						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Flying" ]

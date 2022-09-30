@@ -20,8 +20,13 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character",
-							"Board",
 							"Friendly"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					},
 					"wModifier": 1
@@ -45,8 +50,13 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character",
-							"Board",
 							"Friendly"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					},
 					"eModifier": 1

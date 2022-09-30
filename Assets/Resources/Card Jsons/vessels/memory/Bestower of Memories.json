@@ -43,10 +43,13 @@
 					"blurb": "Vessel to get a copy of the memory",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Board",
 							"Wields No Augment Fitting Restriction"
 						],
 						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Vessel" ]

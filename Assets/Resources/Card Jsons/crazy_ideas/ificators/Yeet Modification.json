@@ -17,10 +17,15 @@
 					"blurb": "card to slightly yeet",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Board",
 							"Space Restriction Valid With This Target Chosen"
 						],
-						"spaceRestrictionIndex":1
+						"spaceRestrictionIndex":1,
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
 					}
 				},
 				{

@@ -20,7 +20,6 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character",
-							"Board",
                             "Enemy",
 							"Space Fits Restriction"
 						],
@@ -36,7 +35,13 @@
 									}
 								]
 							}
-						}
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
 					},
 					"nVal": 0
 				}

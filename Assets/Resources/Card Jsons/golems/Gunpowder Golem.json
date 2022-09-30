@@ -35,8 +35,13 @@
 						"cardRestrictions": [
 							"Character",
 							"Summoned",
-							"Board",
 							"Distinct Name from Source"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},

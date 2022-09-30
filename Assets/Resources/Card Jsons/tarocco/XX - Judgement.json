@@ -21,7 +21,6 @@
 						"blurb": "character for Judgement to kill",
 						"cardRestrictions": [
 							"Character",
-							"Board",
 							"Card Value Fits Number Restriction"
 						],
 						"cardValue": {
@@ -31,7 +30,13 @@
 							"numberRestrictions": [
 								"<=X"
 							]
-						}
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
 					},
 					"xMultiplier": 1
 				},

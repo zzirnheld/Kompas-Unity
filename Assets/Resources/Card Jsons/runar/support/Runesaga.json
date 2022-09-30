@@ -19,10 +19,13 @@
 						"blurb": "Runar for Runesaga to give +25 ESW",
 						"cardRestrictions": [
 							"Character",
-							"Summoned",
-							"Board"
+							"Summoned"
 						],
 						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Runar" ]

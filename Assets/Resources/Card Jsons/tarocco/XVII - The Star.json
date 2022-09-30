@@ -47,7 +47,6 @@
 					"$type": "Subeffect:SetXBoardRestriction:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Board",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
@@ -56,6 +55,10 @@
 							]
 						},
 						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Tarocco" ]

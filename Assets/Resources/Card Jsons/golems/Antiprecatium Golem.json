@@ -30,8 +30,13 @@
 						"blurb": "spell to stab with green rocks and thereby dispel",
 						"cardRestrictions": [
 							"Spell",
-							"Board",
 							"Space Fits Restriction"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						],
 						"spaceRestriction": {
 							"spaceRestrictions": [

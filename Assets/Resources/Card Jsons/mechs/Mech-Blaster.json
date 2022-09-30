@@ -32,7 +32,6 @@
 					"cardRestriction": {
 						"blurb": "who to Mechblast",
 						"cardRestrictions": [
-							"Board",
 							"Character",
 							"Space Fits Restriction"
 						],
@@ -40,7 +39,13 @@
 							"spaceRestrictions": [
 								"On Card Target's Diagonal"
 							]
-						}
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
 					}
 				},
 				{

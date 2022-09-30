@@ -15,10 +15,13 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Board",
 							"Friendly"
 						],
 						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Moth" ]
@@ -51,8 +54,13 @@
 					"cardRestriction": {
 						"blurb": "character whose W to swap",
 						"cardRestrictions": [
-							"Character",
-							"Board"
+							"Character"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},
@@ -62,7 +70,6 @@
 						"blurb": "other character whose W to swap",
 						"cardRestrictions": [
 							"Character",
-							"Board",
 							"Not Already Target",
 							"Space Fits Restriction"
 						],
@@ -76,7 +83,13 @@
 								],
 								"constant": 2
 							}
-						}
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
 					}
 				},
 				{

@@ -19,8 +19,13 @@
 						"blurb": "spell for Chain Dispel to Dispel",
 						"cardRestrictions": [
 							"Spell",
-							"Board",
 							"Space Fits Restriction"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						],
 						"spaceRestriction": {
 							"spaceRestrictions": [
@@ -41,9 +46,14 @@
 						"blurb": "spell for Chain Dispel to Dispel",
 						"cardRestrictions": [
 							"Spell",
-							"Board",
 							"Space Fits Restriction",
 							"Different from Other Targets"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						],
 						"spaceRestriction": {
 							"spaceRestrictions": [

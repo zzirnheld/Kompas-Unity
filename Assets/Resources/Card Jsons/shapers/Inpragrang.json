@@ -18,10 +18,13 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Friendly",
-							"Distinct Name from Source",
-							"Board"
+							"Distinct Name from Source"
 						],
 						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Shaper" ]

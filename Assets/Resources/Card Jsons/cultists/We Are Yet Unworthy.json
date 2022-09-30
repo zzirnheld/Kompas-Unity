@@ -18,7 +18,6 @@
 					"cardRestriction": {
 						"blurb": "unworthy Cultist",
 						"cardRestrictions": [
-							"Board",
 							"Character",
 							"Summoned",
 							"Friendly",
@@ -30,6 +29,10 @@
 							]
 						},
 						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Cultist" ]

@@ -34,8 +34,13 @@
 						"blurb": "character for Woolen Golem to give -XW",
 						"cardRestrictions": [
 							"Character",
-							"Board",
 							"Distinct Name from Source"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},

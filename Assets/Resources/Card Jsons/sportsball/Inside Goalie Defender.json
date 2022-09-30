@@ -15,7 +15,6 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Board",
 							"Avatar",
 							"Friendly",
 							"Space Fits Restriction"
@@ -25,7 +24,13 @@
 								"Adjacent to Source"
 							],
 							"mustBeEmpty": false
-						}
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
 					}
 				}
 			},
@@ -39,7 +44,6 @@
 						"blurb": "character to goal-kick Augment to",
 						"cardRestrictions": [
 							"Character",
-							"Board",
 							"Different from Target",
 							"Space Fits Restriction"
 						],
@@ -47,7 +51,13 @@
 							"spaceRestrictions": [
 								"Adjacent to Source"
 							]
-						}
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
 					}
 				},
 				{

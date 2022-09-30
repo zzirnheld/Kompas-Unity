@@ -20,7 +20,6 @@
 						"cardRestrictions": [
 							"Character",
 							"Friendly",
-							"Board",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
@@ -29,6 +28,10 @@
 							]
 						},
 						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Shaper" ]
@@ -42,8 +45,13 @@
 						"blurb": "enemy character to move adjacent to",
 						"cardRestrictions": [
 							"Character",
-							"Enemy",
-							"Board"
+							"Enemy"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},

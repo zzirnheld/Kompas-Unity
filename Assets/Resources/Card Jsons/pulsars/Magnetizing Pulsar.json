@@ -21,9 +21,14 @@
 					},
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Board",
 							"Avatar",
 							"Friendly"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				}
@@ -34,8 +39,13 @@
 					"cardRestriction": {
 						"blurb": "for Magnetizing to attract",
 						"cardRestrictions": [
-							"Board",
 							"Different from Source"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},
@@ -80,9 +90,14 @@
 					},
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Board",
 							"Avatar",
 							"Friendly"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				}
@@ -93,8 +108,13 @@
 					"cardRestriction": {
 						"blurb": "for Magnetizing to repel",
 						"cardRestrictions": [
-							"Board",
 							"Different from Source"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},

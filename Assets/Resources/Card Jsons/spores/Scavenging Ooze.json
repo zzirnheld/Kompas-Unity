@@ -16,7 +16,6 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character",
-							"Board",
 							"Friendly",
 							"Space Fits Restriction"
 						],
@@ -25,7 +24,13 @@
 								"Adjacent to Source"
 							],
 							"mustBeEmpty": false
-						}
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
 					}
 				}
 			},

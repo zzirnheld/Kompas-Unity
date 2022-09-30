@@ -19,8 +19,13 @@
 						"blurb": "enemy character to move",
 						"cardRestrictions": [
 							"Character",
-							"Enemy",
-							"Board"
+							"Enemy"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},

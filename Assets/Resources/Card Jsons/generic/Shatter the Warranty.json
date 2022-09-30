@@ -20,9 +20,14 @@
 						"blurb": "No! Not the original 1870s porcelain doll torso collection!",
 						"cardRestrictions": [
 							"Friendly",
-							"Board",
 							"Spell",
 							"Space Fits Restriction"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						],
 						"spaceRestriction": {
 							"spaceRestrictions": [

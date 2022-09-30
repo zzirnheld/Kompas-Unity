@@ -24,9 +24,14 @@
 						"blurb": "summon for Hanged Man to also give -X E",
 						"cardRestrictions": [
 							"Character",
-							"Board",
 							"Different from Source",
 							"Summoned"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},

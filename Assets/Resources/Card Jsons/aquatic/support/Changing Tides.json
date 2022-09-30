@@ -18,10 +18,13 @@
 					"cardRestriction": {
 						"blurb": "Changing tide",
 						"cardRestrictions": [
-							"Board",
 							"Spell"
 						],
 						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Water" ]

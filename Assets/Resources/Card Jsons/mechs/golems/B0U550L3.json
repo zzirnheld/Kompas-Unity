@@ -22,8 +22,13 @@
 					"cardRestriction": {
 						"blurb": "to throw NE",
 						"cardRestrictions": [
-							"Board",
 							"Character"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},

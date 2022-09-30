@@ -19,8 +19,13 @@
 					"cardRestriction": {
 						"blurb": "for Earth Golem to buff or debuff",
 						"cardRestrictions": [
-							"Character",
-							"Board"
+							"Character"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},

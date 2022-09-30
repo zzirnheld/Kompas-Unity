@@ -22,7 +22,6 @@
 					"cardRestriction": {
 						"blurb": "4TT4CK3R",
 						"cardRestrictions": [
-							"Board",
 							"Character",
 							"Space Fits Restriction"
 						],
@@ -30,7 +29,13 @@
 							"spaceRestrictions": [
 								"On Card Target's Diagonal"
 							]
-						}
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
 					}
 				},
 				{
@@ -38,7 +43,6 @@
 					"cardRestriction": {
 						"blurb": "D3F3ND3R",
 						"cardRestrictions": [
-							"Board",
 							"Character",
 							"Not Already Target",
 							"Space Fits Restriction"
@@ -47,7 +51,13 @@
 							"spaceRestrictions": [
 								"On Card Target's Diagonal"
 							]
-						}
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
 					}
 				},
 				{

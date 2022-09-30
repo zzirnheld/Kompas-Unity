@@ -12,10 +12,16 @@
                 "triggerRestriction":{
                     "triggerRestrictions":["This Card Fits Restriction Now"],
                     "selfRestriction":{
-                        "cardRestrictions":["Board","Card has Card Restriction in its AOE"],
+                        "cardRestrictions":["Card has Card Restriction in its AOE"],
                         "hasInAOERestriction":{
                             "cardRestrictions":["Enemy","Character"]
-                        }
+                        },
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
                     }
                 }
             },

@@ -19,7 +19,6 @@
 					"cardRestriction": {
 						"blurb": "ritual sacrifice",
 						"cardRestrictions": [
-							"Board",
 							"Character",
                             "Friendly",
 							"Summoned",
@@ -27,6 +26,10 @@
                             "Space Fits Restriction"
                         ],
 						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Person" ]

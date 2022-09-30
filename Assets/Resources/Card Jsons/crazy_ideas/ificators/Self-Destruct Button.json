@@ -19,10 +19,13 @@
 						"blurb": "No! Not the Self-Destruct Button installed on all Ificator (TM) systems!",
 						"cardRestrictions": [
 							"Friendly",
-							"Board",
 							"Different from Source"
 						],
 						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Crazy", "Idea" ]

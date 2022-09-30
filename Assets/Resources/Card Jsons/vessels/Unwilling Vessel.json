@@ -23,10 +23,13 @@
 						"blurb": "I don't want to remember!",
 						"cardRestrictions": [
 							"Augment",
-							"Board",
 							"Augments Current Target"
 						],
 						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Memory" ]

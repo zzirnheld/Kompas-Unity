@@ -33,8 +33,13 @@
 					"cardRestriction": {
 						"blurb": "for Sangrian to feed",
 						"cardRestrictions": [
-							"Board",
 							"Character"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},

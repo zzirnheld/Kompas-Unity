@@ -21,8 +21,13 @@
 						"blurb": "character to swap",
 						"cardRestrictions": [
 							"Character",
-							"Board",
 							"Summoned"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},
@@ -32,7 +37,6 @@
 						"blurb": "other character to swap",
 						"cardRestrictions": [
 							"Character",
-							"Board",
 							"Summoned",
 							"Not Already Target",
 							"Space Fits Restriction"
@@ -47,7 +51,13 @@
 								],
 								"constant": 2
 							}
-						}
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
 					}
 				},
 				{

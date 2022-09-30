@@ -27,7 +27,6 @@
 					"cardRestriction": {
 						"blurb": "who will Leygrapple",
 						"cardRestrictions": [
-							"Board",
 							"Character",
 							"Space Fits Restriction"
 						],
@@ -37,6 +36,10 @@
 							]
 						},
 						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Linewalker" ]

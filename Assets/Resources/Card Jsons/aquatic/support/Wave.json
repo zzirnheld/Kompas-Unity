@@ -18,10 +18,13 @@
 					"cardRestriction": {
 						"blurb": "What water moves?",
 						"cardRestrictions": [
-							"Board",
 							"Spell"
 						],
 						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Water" ]

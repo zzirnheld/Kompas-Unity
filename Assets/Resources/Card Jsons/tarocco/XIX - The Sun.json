@@ -21,8 +21,13 @@
 						"blurb": "character for Sun to give -1 E",
 						"cardRestrictions": [
 							"Character",
-							"Board",
 							"Summoned"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},
@@ -36,9 +41,14 @@
 						"blurb": "character for Sun to give +1 E",
 						"cardRestrictions": [
 							"Character",
-							"Board",
 							"Summoned",
 							"Different from Target"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},

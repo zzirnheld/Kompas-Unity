@@ -15,9 +15,14 @@
 					"existsRestriction": {
 						"cardRestrictions": [
 							"Space Fits Restriction",
-							"Board",
 							"Avatar",
 							"Enemy"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						],
 						"spaceRestriction": {
 							"spaceRestrictions": [

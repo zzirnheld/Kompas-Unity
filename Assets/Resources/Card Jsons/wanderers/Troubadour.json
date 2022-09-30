@@ -19,9 +19,14 @@
 						"blurb": "character to reshuffle",
 						"cardRestrictions": [
 							"Character",
-							"Board",
 							"Friendly",
 							"Summoned"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},

@@ -11,8 +11,12 @@
 			},
 			"existsRestriction":
 			{
-				"cardRestrictions":["Friendly","Board","Augment"],
+				"cardRestrictions":["Friendly","Augment"],
 				"cardRestrictionElements": [
+					{
+						"$type": "Core.CardRestriction:Location:",
+						"locations": [ "Board" ]
+					},
 					{
 						"$type": "Core.CardRestriction:SubtypesInclude:",
 						"subtypes": [ "Sportsball" ]

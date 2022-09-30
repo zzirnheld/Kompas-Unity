@@ -50,7 +50,6 @@
 					"cardRestriction": {
 						"blurb": "character whose soul to kill",
 						"cardRestrictions": [
-							"Board",
 							"Character",
 							"Card Value Fits Number Restriction",
 							"Space Fits Restriction"
@@ -67,7 +66,13 @@
 							"numberRestrictions": [
 								"<=X"
 							]
-						}
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
 					},
 					"xMultiplier": 1,
 					"xDivisor": 2

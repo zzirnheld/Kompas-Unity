@@ -15,11 +15,14 @@
 			{
 				"blurb":"to destroy",
 				"cardRestrictions":[
-					"Board",
 					"Augment",
 					"Augments Current Target"
 				],
 				"cardRestrictionElements": [
+					{
+						"$type": "Core.CardRestriction:Location:",
+						"locations": [ "Board" ]
+					},
 					{
 						"$type": "Core.CardRestriction:SubtypesInclude:",
 						"subtypes": [ "Memory" ]

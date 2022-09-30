@@ -19,9 +19,14 @@
 						"blurb": "friendly character to wander",
 						"cardRestrictions": [
 							"Character",
-							"Board",
 							"Friendly",
 							"Summoned"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},

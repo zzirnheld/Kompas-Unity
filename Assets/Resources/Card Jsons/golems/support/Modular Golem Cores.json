@@ -47,11 +47,14 @@
 						"blurb": "Golem to swap out modules",
 						"cardRestrictions": [
 							"Character",
-							"Board",
 							"Augmented",
 							"Space Fits Restriction"
 						],
 						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Golem" ]

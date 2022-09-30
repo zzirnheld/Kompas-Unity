@@ -7,7 +7,7 @@
 		"triggerRestriction":{
 			"triggerRestrictions":["This Card Fits Restriction Now"],
 			"selfRestriction":{
-				"cardRestrictions":["Board","Not Avatar","Space Fits Restriction"],
+				"cardRestrictions":["Not Avatar","Space Fits Restriction"],
 				"spaceRestriction":
 				{
 					"spaceRestrictions":["Not In AOE of Card Fitting Restriction"],
@@ -20,7 +20,13 @@
 						]
 					},
 					"mustBeEmpty":false
-				}
+				},
+				"cardRestrictionElements": [
+					{
+						"$type": "Core.CardRestriction:Location:",
+						"locations": [ "Board" ]
+					}
+				]
 			}
 		}
 	},

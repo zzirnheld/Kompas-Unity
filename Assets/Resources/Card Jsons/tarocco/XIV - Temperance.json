@@ -23,7 +23,6 @@
 						"blurb": "C <= X spell for Temperance to dispel",
 						"cardRestrictions": [
 							"Spell",
-							"Board",
 							"Card Value Fits Number Restriction"
 						],
 						"cardValue": {
@@ -33,7 +32,13 @@
 							"numberRestrictions": [
 								"<=X"
 							]
-						}
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
 					},
 					"xMultiplier": 1
 				},

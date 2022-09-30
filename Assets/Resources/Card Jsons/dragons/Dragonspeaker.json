@@ -17,9 +17,14 @@
 						"blurb": "for Dragonspeaker to kill",
 						"cardRestrictions": [
 							"Friendly",
-							"Board",
 							"Character",
 							"Distinct Name from Source"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},

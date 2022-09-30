@@ -37,8 +37,13 @@
 						"blurb": "C <= X spell to dispel",
 						"cardRestrictions": [
 							"Spell",
-							"Board",
 							"Card Value Fits Number Restriction"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						],
 						"cardValue": {
 							"value": "C"

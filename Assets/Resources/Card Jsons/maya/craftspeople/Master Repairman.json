@@ -20,10 +20,11 @@
 						]
 					},
 					"nowRestriction": {
-						"cardRestrictions": [
-							"Board"
-						],
 						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Structure" ]

@@ -18,10 +18,13 @@
 					"cardRestriction": {
 						"blurb": "Revenant for Salvage Soul to rehand",
 						"cardRestrictions": [
-							"Friendly",
-							"Board"
+							"Friendly"
 						],
 						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Revenant" ]

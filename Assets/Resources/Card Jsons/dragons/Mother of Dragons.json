@@ -26,9 +26,14 @@
 						"blurb": "for Mother of Dragons to kill",
 						"cardRestrictions": [
 							"Friendly",
-							"Board",
 							"Summoned",
 							"Not Already Target"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},

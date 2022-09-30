@@ -18,9 +18,14 @@
 					"cardRestriction": {
 						"blurb": "for Binding Site to bind",
 						"cardRestrictions": [
-							"Board",
 							"Character",
 							"Space Fits Restriction"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						],
 						"spaceRestriction": {
 							"spaceRestrictions": [

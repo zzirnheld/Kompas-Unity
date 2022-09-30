@@ -21,9 +21,14 @@
 					},
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Board",
 							"Avatar",
 							"Friendly"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					},
 					"maxTimesPerTurn": 3

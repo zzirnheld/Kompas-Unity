@@ -17,8 +17,13 @@
 					"cardRestriction": {
 						"blurb": "angry WX character that might attack",
 						"cardRestrictions": [
-							"Controller Matches Player Target",
-							"Board"
+							"Controller Matches Player Target"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},
@@ -86,14 +91,19 @@
 						"cardRestrictions": [
 							"Character",
 							"Controller Isn't Player Target",
-							"Board",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
 							"spaceRestrictions": [
 								"Adjacent to Card Target"
 							]
-						}
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
 					},
 					"playerIndex": -2
 				},

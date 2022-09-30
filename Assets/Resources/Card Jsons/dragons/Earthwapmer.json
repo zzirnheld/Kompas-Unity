@@ -19,10 +19,13 @@
 					"cardRestriction": {
 						"blurb": "Who to earthwapm",
 						"cardRestrictions": [
-							"Friendly",
-							"Board"
+							"Friendly"
 						],
 						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Dragon" ]

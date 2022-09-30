@@ -20,10 +20,13 @@
 						"cardRestrictions": [
 							"Friendly",
 							"Character",
-							"Board",
 							"Summoned"
 						],
 						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Ethereal" ]

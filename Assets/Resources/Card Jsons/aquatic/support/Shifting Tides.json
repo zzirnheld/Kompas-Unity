@@ -31,11 +31,14 @@
 					"cardRestriction": {
 						"blurb": "Shifting tide",
 						"cardRestrictions": [
-							"Board",
 							"Friendly",
 							"Spell"
 						],
 						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Water" ]

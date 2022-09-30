@@ -19,9 +19,14 @@
 					"cardRestriction": {
 						"blurb": "Spell to yank",
 						"cardRestrictions": [
-							"Board",
 							"Spell"
-                        ]
+                        ],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
 					}
 				},
 				{

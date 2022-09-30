@@ -17,9 +17,14 @@
 						"blurb": "for Dragoncaller to kill",
 						"cardRestrictions": [
 							"Friendly",
-							"Board",
 							"Character",
 							"Summoned"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},

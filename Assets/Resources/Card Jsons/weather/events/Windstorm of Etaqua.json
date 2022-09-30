@@ -21,7 +21,6 @@
 						"blurb": "who next to blow away",
 						"cardRestrictions": [
 							"Character",
-							"Board",
 							"Not Already Target",
 							"Space Fits Restriction"
 						],
@@ -37,7 +36,13 @@
 									}
 								]
 							}
-						}
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
 					}
 				},
 				{

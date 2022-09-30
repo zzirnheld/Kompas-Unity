@@ -18,12 +18,17 @@
 					"blurb": "card to slightly yeet",
 					"cardRestriction": {
 						"cardRestrictions": [
-                            "Board",
                             "Subtypes Include Any Of"
 						],
 						"subtypesIncludeAnyOf": [
                             "Light",
 							"Shade"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},

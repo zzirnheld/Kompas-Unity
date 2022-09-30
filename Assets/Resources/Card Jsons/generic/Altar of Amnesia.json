@@ -17,11 +17,16 @@
 					"cardRestriction": {
 						"blurb": "Which character will die",
 						"cardRestrictions": [
-							"Board",
 							"Character",
 							"Summoned",
 							"Friendly",
 							"Space Fits Restriction"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						],
 						"spaceRestriction": {
 							"spaceRestrictions": [
@@ -41,11 +46,16 @@
 					"cardRestriction": {
 						"blurb": "Whose stats will get set",
 						"cardRestrictions": [
-							"Board",
 							"Character",
 							"Summoned",
 							"Friendly",
 							"Space Fits Restriction"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						],
 						"spaceRestriction": {
 							"spaceRestrictions": [

@@ -20,8 +20,13 @@
 						"blurb": "for Rebinding to kill",
 						"cardRestrictions": [
 							"Friendly",
-							"Board",
 							"Space Fits Restriction"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						],
 						"spaceRestriction": {
 							"spaceRestrictions": [
@@ -45,8 +50,13 @@
 					"cardRestriction": {
 						"blurb": "for Rebinding to buff",
 						"cardRestrictions": [
-							"Board",
 							"Not Already Target"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},
@@ -61,8 +71,13 @@
 					"cardRestriction": {
 						"blurb": "for Rebinding to buff",
 						"cardRestrictions": [
-							"Board",
 							"Not Already Target"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},

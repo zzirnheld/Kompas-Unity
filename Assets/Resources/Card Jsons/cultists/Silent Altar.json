@@ -13,8 +13,13 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Space Fits Restriction",
-							"Board"
+							"Space Fits Restriction"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						],
 						"spaceRestriction": {
 							"spaceRestrictions": [
@@ -51,10 +56,13 @@
 						"cardRestrictions": [
 							"Spell",
 							"Friendly",
-							"Board",
 							"Not Already Target"
 						],
 						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Altar" ]

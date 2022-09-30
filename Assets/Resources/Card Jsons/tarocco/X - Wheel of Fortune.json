@@ -20,8 +20,13 @@
 					"cardRestriction": {
 						"blurb": "character for Wheel of Fortune to swap N of (1/2)",
 						"cardRestrictions": [
-							"Character",
-							"Board"
+							"Character"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},
@@ -31,8 +36,13 @@
 						"blurb": "character for Wheel of Fortune to swap N of (2/2)",
 						"cardRestrictions": [
 							"Character",
-							"Board",
 							"Not Already Target"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},

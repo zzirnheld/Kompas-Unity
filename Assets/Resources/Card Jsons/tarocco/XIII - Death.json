@@ -47,7 +47,6 @@
 						"blurb": "adjacent character for Death to kill",
 						"cardRestrictions": [
 							"Character",
-							"Board",
 							"Card Value Fits Number Restriction",
 							"Space Fits Restriction"
 						],
@@ -63,7 +62,13 @@
 							"numberRestrictions": [
 								"<=X"
 							]
-						}
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
 					},
 					"xMultiplier": 1
 				},

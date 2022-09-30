@@ -15,10 +15,13 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Board",
 							"Friendly"
 						],
 						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Moth" ]
@@ -52,8 +55,13 @@
 						"blurb": "character for Sun to give -1 E",
 						"cardRestrictions": [
 							"Character",
-							"Board",
 							"Summoned"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},
@@ -67,9 +75,14 @@
 						"blurb": "character for Sun to give +1 E",
 						"cardRestrictions": [
 							"Character",
-							"Board",
 							"Summoned",
 							"Not Already Target"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},

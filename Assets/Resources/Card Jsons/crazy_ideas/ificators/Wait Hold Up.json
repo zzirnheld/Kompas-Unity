@@ -23,8 +23,13 @@
 					"cardRestriction": {
 						"blurb": "Wait, Hold Up, what are you moving?",
 						"cardRestrictions": [
-							"Board",
 							"Enemy"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},

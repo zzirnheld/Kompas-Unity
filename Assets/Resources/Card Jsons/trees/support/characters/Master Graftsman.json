@@ -51,10 +51,13 @@
 					},
 					"nowRestriction": {
 						"cardRestrictions": [
-							"Board",
 							"Hurt"
 						],
 						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Tree" ]

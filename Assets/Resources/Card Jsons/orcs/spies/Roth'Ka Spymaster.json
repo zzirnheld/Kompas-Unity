@@ -20,8 +20,13 @@
 						"cardRestrictions": [
 							"Different from Source",
 							"Friendly",
-							"Character",
-							"Board"
+							"Character"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},

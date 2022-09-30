@@ -18,9 +18,14 @@
 					"cardRestriction": {
 						"blurb": "to convert",
 						"cardRestrictions": [
-							"Board",
 							"Character",
 							"Space Fits Restriction"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						],
 						"spaceRestriction": {
 							"spaceRestrictions": [

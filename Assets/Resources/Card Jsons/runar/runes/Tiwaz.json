@@ -15,7 +15,6 @@
 						"cardRestrictions": [
 							"Character",
 							"Friendly",
-							"Board",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
@@ -23,7 +22,13 @@
 								"In Source's AOE"
 							],
 							"mustBeEmpty": false
-						}
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
 					}
 				}
 			},

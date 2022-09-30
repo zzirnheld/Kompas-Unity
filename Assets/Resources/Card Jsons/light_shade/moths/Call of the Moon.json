@@ -15,10 +15,13 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Board",
 							"Friendly"
 						],
 						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Moth" ]
@@ -51,10 +54,13 @@
 					"cardRestriction": {
 						"blurb": "Moth that feels the call",
 						"cardRestrictions": [
-							"Character",
-							"Board"
+							"Character"
 						],
 						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Moth" ]

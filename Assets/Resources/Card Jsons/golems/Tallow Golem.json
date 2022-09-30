@@ -18,8 +18,13 @@
 					"cardRestriction": {
 						"blurb": "character for Tallow Golem to temporarily activate",
 						"cardRestrictions": [
-							"Character",
-							"Board"
+							"Character"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},

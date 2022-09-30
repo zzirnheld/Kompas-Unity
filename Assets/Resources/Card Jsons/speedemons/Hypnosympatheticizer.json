@@ -23,8 +23,13 @@
 					"blurb": "card to sympa",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Board",
 							"Distinct Name from Source"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},

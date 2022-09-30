@@ -83,7 +83,6 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character",
-							"Board",
                             "Enemy",
 							"Space Fits Restriction"
 						],
@@ -91,7 +90,13 @@
 							"spaceRestrictions": [
 								"In Card Target's AOE"
 							]
-						}
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
 					},
 					"wModifier": -5
 				}

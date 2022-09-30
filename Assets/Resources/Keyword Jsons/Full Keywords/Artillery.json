@@ -16,7 +16,13 @@
 			"$type": "Subeffect:CardTarget:",
 			"cardRestriction": {
 				"blurb": "Pick a target to barrage",
-				"cardRestrictions": [ "Enemy", "Character", "Board" ]
+				"cardRestrictions": [ "Enemy", "Character" ],
+				"cardRestrictionElements": [
+					{
+						"$type": "Core.CardRestriction:Location:",
+						"locations": [ "Board" ]
+					}
+				]
 			}
 		},
 		{

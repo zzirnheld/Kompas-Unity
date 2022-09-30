@@ -21,7 +21,6 @@
 					"blurb": "card to vakoom",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Board",
 							"Different from Source",
 							"Space Fits Restriction"
 						],
@@ -29,7 +28,13 @@
 							"spaceRestrictions": [
 								"Adjacent to Space Target"
 							]
-						}
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
 					}
 				},
 				{

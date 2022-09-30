@@ -26,8 +26,13 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Enemy",
-							"Board",
 							"Space Fits Restriction"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						],
                         "spaceRestriction":
                         {
@@ -37,9 +42,14 @@
                             "connectednessRestriction": {
                                 "cardRestrictions": [
                                     "Enemy",
-                                    "Character",
-                                    "Board"
-                                ]
+                                    "Character"
+                                ],
+								"cardRestrictionElements": [
+									{
+										"$type": "Core.CardRestriction:Location:",
+										"locations": [ "Board" ]
+									}
+								]
                             }
                         }
 					}

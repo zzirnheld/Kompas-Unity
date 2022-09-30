@@ -18,9 +18,14 @@
 					"cardRestriction": {
 						"blurb": "Ethereal for Soulselfdestruct to kill",
 						"cardRestrictions": [
-							"Board",
                             "Unique",
 							"Space Fits Restriction"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						],
 						"spaceRestriction": {
 							"spaceRestrictions": [

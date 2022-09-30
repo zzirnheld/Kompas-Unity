@@ -19,8 +19,13 @@
 					"cardRestriction": {
 						"blurb": "for Cyan to move",
 						"cardRestrictions": [
-							"Board",
 							"Distinct Name from Source"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},
