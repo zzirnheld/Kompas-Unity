@@ -19,10 +19,10 @@
 						"blurb": "Vessel to read as an augury",
 						"cardRestrictions": [
 							"Character",
-							"Friendly",
 							"Space Fits Restriction"
                         ],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Vessel" ]
@@ -50,10 +50,10 @@
 					"cardRestriction": {
 						"blurb": "Memories to search for",
 						"cardRestrictions": [
-							"Deck",
-                            "Friendly"
+							"Deck"
                         ],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Memory" ]

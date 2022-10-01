@@ -18,10 +18,10 @@
 					"cardRestriction": {
 						"blurb": "for Spiritual Advice to reshuffle",
 						"cardRestrictions": [
-							"Friendly",
 							"Discard"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Spirit" ]

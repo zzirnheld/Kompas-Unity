@@ -25,8 +25,9 @@
 					"$type":"Subeffect:DeckTarget:",
 					"cardRestriction":{
 						"blurb":"card for Failed Idea to mill",
-						"cardRestrictions":["Friendly","Deck"],
+						"cardRestrictions":["Deck"],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Crazy", "Idea" ]

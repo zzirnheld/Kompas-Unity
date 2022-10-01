@@ -20,12 +20,12 @@
 						"blurb": "ritual sacrifice",
 						"cardRestrictions": [
 							"Character",
-                            "Friendly",
 							"Summoned",
 							"Subtypes Include",
                             "Space Fits Restriction"
                         ],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]

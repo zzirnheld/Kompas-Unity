@@ -70,10 +70,8 @@
 			"On Card that Fits Restriction"
 		],
 		"onCardRestriction": {
-			"cardRestrictions": [
-				"Friendly"
-			],
 			"cardRestrictionElements": [
+				{ "$type": "Core.CardRestriction:Friendly:" },
 				{
 					"$type": "Core.CardRestriction:Location:",
 					"locations": [ "Board" ]

@@ -32,8 +32,8 @@
 					"cardRestriction":
 					{
 						"blurb":"for Haemopoten to draw",
-						"cardRestrictions":["Friendly"],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]

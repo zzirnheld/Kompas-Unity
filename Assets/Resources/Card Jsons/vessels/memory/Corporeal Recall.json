@@ -19,11 +19,11 @@
 					"cardRestriction": {
 						"blurb": "for Corporeal Recall to reshuffle",
 						"cardRestrictions": [
-							"Friendly",
 							"Multiple Possible Locations",
 							"Augment"
                         ],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Memory" ]
@@ -60,12 +60,12 @@
 						"blurb": "Corporeal form to recall",
 						"cardRestrictions": [
 							"Character",
-							"Friendly",
 							"Deck",
 							"Can Be Played",
 							"Card Value Fits Number Restriction"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Vessel" ]

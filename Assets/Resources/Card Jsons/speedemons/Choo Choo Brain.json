@@ -18,8 +18,10 @@
 					"cardRestriction": {
 						"blurb": "fuel for the Choo Choo Brain",
 						"cardRestrictions": [
-							"Friendly",
 							"Hand"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					}
 				},

@@ -48,8 +48,10 @@
 					"cardRestriction": {
 						"blurb": "cards for Ma Rinner to bottomdeck",
 						"cardRestrictions": [
-							"Friendly",
 							"Hand"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					},
 					"listRestriction": {

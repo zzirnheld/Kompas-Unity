@@ -24,8 +24,10 @@
 					"cardRestriction": {
 						"blurb": "card in hand that is also discard",
 						"cardRestrictions": [
-							"Friendly",
 							"Hand"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					}
 				},

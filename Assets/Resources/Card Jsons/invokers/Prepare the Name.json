@@ -19,10 +19,10 @@
 					"cardRestriction": {
 						"blurb": "Spirit whose name to prepare",
 						"cardRestrictions": [
-							"Friendly",
 							"Hand"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Spirit" ]

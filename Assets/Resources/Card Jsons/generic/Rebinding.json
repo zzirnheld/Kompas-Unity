@@ -19,10 +19,10 @@
 					"cardRestriction": {
 						"blurb": "for Rebinding to kill",
 						"cardRestrictions": [
-							"Friendly",
 							"Space Fits Restriction"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]

@@ -24,8 +24,9 @@
 					},
 					"cardRestriction": {
 						"blurb": "Return Orcs to the Fray",
-						"cardRestrictions": [ "Friendly", "Discard" ],
+						"cardRestrictions": [ "Discard" ],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Orc" ]

@@ -20,10 +20,10 @@
 					},
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Avatar",
-							"Friendly"
+							"Avatar"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
@@ -75,10 +75,10 @@
 					},
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Avatar",
-							"Friendly"
+							"Avatar"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]

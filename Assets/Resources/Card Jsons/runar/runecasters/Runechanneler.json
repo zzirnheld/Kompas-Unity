@@ -17,10 +17,10 @@
 					"whatToCount": "Cards Fitting Restriction",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Discard",
-							"Friendly"
+							"Discard"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Rune" ]
@@ -35,12 +35,12 @@
 						"blurb": "Rune for Runechanneler to cast",
 						"cardRestrictions": [
 							"Spell",
-							"Friendly",
 							"Hand",
 							"Can Be Played",
 							"Card Value Fits Number Restriction"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Rune" ]
@@ -69,10 +69,10 @@
 					"cardRestriction": {
 						"blurb": "Rune for Runechanneler to reshuffle",
 						"cardRestrictions": [
-							"Friendly",
 							"Discard"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Rune" ]

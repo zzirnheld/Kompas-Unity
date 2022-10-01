@@ -21,10 +21,10 @@
 					"cardRestriction": {
 						"blurb": "for Jack to hand-bottomdeck",
 						"cardRestrictions": [
-							"Friendly",
 							"Hand"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Tarocco" ]

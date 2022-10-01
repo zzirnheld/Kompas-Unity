@@ -38,8 +38,10 @@
 					"cardRestriction": {
 						"blurb": "Grudges",
 						"cardRestrictions": [
-							"Friendly",
 							"Hand"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					},
 					"listRestriction": {

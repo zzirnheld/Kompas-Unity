@@ -18,7 +18,6 @@
 					"cardRestriction": {
 						"blurb": "Ethereal for Soulselfdestruct to kill",
 						"cardRestrictions": [
-							"Friendly",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
@@ -27,6 +26,7 @@
 							]
 						},
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
@@ -53,10 +53,10 @@
 					"cardRestriction": {
 						"blurb": "card for Salvage Soul to discard",
 						"cardRestrictions": [
-							"Friendly",
 							"Deck"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Revenant" ]

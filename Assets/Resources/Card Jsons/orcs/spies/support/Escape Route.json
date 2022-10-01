@@ -19,9 +19,11 @@
 						"blurb": "Hand a friendly summon",
 						"cardRestrictions": [
 							"Different from Source",
-							"Friendly",
 							"Character",
 							"Space Fits Restriction"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
 						],
 						"spaceRestriction": { "spaceRestrictions": [ "Adjacent to Source" ] }
 					}

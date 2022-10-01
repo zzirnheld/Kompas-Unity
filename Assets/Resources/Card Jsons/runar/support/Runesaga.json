@@ -45,10 +45,12 @@
 						"blurb": "Rune for Runesaga to cast",
 						"cardRestrictions": [
 							"Spell",
-							"Friendly",
 							"Hand",
 							"Not Already Target",
 							"Can Be Played"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					}
 				},

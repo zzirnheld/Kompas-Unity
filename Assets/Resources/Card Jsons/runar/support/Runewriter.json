@@ -17,7 +17,6 @@
 					"cardRestriction": {
 						"blurb": "Rune for Runewriter to reshuffle",
 						"cardRestrictions": [
-							"Friendly",
 							"Multiple Possible Locations"
 						],
 						"locations": [
@@ -26,6 +25,7 @@
 							3
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Rune" ]
@@ -48,11 +48,11 @@
 					"cardRestriction": {
 						"blurb": "Runar for Runewriter to search (to hand)",
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
 							"Index<C"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Runar" ]
@@ -62,12 +62,14 @@
 					},
 					"restRestriction": {
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
 							"Index<C",
 							"Not Already Target"
 						],
-						"constant": 10
+						"constant": 10,
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
+						]
 					}
 				},
 				{

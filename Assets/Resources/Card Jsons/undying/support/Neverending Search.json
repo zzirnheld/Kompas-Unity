@@ -23,10 +23,12 @@
 					"cardRestriction": {
 						"blurb": "Who to revive, then kill",
 						"cardRestrictions": [
-                            "Friendly",
 							"Character",
 							"Discard",
 							"Can Be Played"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					}
 				},

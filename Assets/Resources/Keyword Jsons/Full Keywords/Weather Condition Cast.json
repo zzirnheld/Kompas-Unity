@@ -15,8 +15,9 @@
 			"$type":"Subeffect:DeckTarget:",
 			"cardRestriction":{
 				"blurb":"Weather to deck-cast",
-				"cardRestrictions":["Friendly","Deck","Spell","Distinct Name from Source","Can Be Played"],
+				"cardRestrictions":["Deck","Spell","Distinct Name from Source","Can Be Played"],
 				"cardRestrictionElements": [
+					{ "$type": "Core.CardRestriction:Friendly:" },
 					{
 						"$type": "Core.CardRestriction:SubtypesInclude:",
 						"subtypes": [ "Weather" ]

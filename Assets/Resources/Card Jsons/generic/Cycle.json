@@ -16,7 +16,10 @@
 					"$type":"Subeffect:CardTarget:",
 					"cardRestriction":{
 						"blurb":"Card to Cycle",
-						"cardRestrictions":["Friendly","Hand"]
+						"cardRestrictions":["Hand"],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
+						]
 					}
 				},
 				{
@@ -29,7 +32,7 @@
 			]	
 		}
 	],
-	"c":1,
+	"c":3,
 	"spellTypes":["Enchant"],
 	"subtypeText":"Enchant"
 }

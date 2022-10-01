@@ -20,10 +20,10 @@
 						"blurb": "Invocation to search",
 						"cardRestrictions": [
 							"Subtypes Include",
-							"Friendly",
 							"Deck"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Invocation" ]

@@ -21,7 +21,6 @@
 						"blurb": "for Empress to hand-summon",
 						"cardRestrictions": [
 							"Character",
-							"Friendly",
 							"Hand",
 							"Card Value Fits Number Restriction"
 						],
@@ -32,7 +31,10 @@
 							"numberRestrictions": [
 								"<=X"
 							]
-						}
+						},
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
+						]
 					},
 					"xMultiplier": 1
 				},

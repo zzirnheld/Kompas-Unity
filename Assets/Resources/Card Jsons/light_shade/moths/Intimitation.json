@@ -21,10 +21,12 @@
 					"cardRestriction": {
 						"blurb": "What creature does the camouflage look like?",
 						"cardRestrictions": [
-							"Friendly",
 							"Hand",
 							"Character",
 							"Hidden"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					}
 				},

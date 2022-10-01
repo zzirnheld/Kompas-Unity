@@ -15,10 +15,10 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Spell",
-							"Friendly"
+							"Spell"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Weather", "Condition" ]

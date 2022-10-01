@@ -18,12 +18,12 @@
 						"blurb": "Rune for Runespeaker to cast",
 						"cardRestrictions": [
 							"Spell",
-							"Friendly",
 							"Hand",
 							"Can Be Played",
 							"Effect Controller can Afford Cost"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Rune" ]
@@ -62,12 +62,12 @@
 					"cardRestriction": {
 						"blurb": "Rune for Runespeaker to search (to hand)",
 						"cardRestrictions": [
-							"Friendly",
 							"Distinct Name from Other Targets",
 							"Deck",
 							"Index<C"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Rune" ]
@@ -77,12 +77,14 @@
 					},
 					"restRestriction": {
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
 							"Index<C",
 							"Not Already Target"
 						],
-						"constant": 10
+						"constant": 10,
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
+						]
 					}
 				},
 				{

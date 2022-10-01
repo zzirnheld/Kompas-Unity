@@ -19,7 +19,6 @@
 						"blurb": "Shaping for He Who Knew Runes to cast",
 						"cardRestrictions": [
 							"Spell",
-							"Friendly",
 							"Hand",
 							"Can Be Played",
 							"Card Value Fits Number Restriction"
@@ -33,6 +32,7 @@
 							]
 						},
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Shaping" ]

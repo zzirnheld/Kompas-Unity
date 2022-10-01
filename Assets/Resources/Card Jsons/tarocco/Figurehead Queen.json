@@ -54,7 +54,6 @@
 					"$type": "Subeffect:DeckTarget:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Friendly",
 							"Character",
 							"Deck",
 							"Card Value Fits Number Restriction"
@@ -68,6 +67,7 @@
 							]
 						},
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Tarocco" ]

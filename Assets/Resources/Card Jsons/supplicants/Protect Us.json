@@ -17,8 +17,9 @@
 					"whatToCount":"Cards Fitting Restriction",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Character","Friendly"],
+						"cardRestrictions":["Character"],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
@@ -53,8 +54,9 @@
 					"$type":"Subeffect:ChangeAllCardStats:",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Character","Friendly","Negated"],
+						"cardRestrictions":["Character","Negated"],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]

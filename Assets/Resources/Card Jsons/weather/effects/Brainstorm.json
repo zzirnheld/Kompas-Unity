@@ -38,8 +38,10 @@
 					"cardRestriction": {
 						"blurb": "the idea struck from your head",
 						"cardRestrictions": [
-							"Friendly",
 							"Hand"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					}
 				},

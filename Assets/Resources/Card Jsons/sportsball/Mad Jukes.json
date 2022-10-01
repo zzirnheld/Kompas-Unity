@@ -15,8 +15,10 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character",
-							"Friendly",
 							"Augmented"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					}
 				}

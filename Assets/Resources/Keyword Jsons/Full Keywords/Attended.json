@@ -15,7 +15,10 @@
 				]
 			},
             "cardsFittingCardRestriction":{
-				"cardRestrictions":["Friendly","Space Fits Restriction"],
+				"cardRestrictions":["Space Fits Restriction"],
+				"cardRestrictionElements": [
+					{ "$type": "Core.CardRestriction:Friendly:" }
+				],
                 "spaceRestriction":
                 {
                     "spaceRestrictions":["Adjacent to Source"],

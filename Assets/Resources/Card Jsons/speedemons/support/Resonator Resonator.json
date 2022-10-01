@@ -19,11 +19,13 @@
 					"cardRestriction": {
 						"blurb": "Ready to resonate?",
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
 							"Name Is"
 						],
-						"nameIs": "Sonic Resonator"
+						"nameIs": "Sonic Resonator",
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
+						]
 					}
 				},
 				{

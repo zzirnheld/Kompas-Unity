@@ -33,11 +33,11 @@
 					"cardRestriction": {
 						"blurb": "for Whirlwind of Emotions to summon",
 						"cardRestrictions": [
-							"Friendly",
 							"Multiple Possible Locations",
 							"Character"
                         ],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Spirit" ]
@@ -60,11 +60,11 @@
 					"cardRestriction": {
 						"blurb": "for Whirlwind of Emotions to summon",
 						"cardRestrictions": [
-							"Friendly",
 							"Multiple Possible Locations",
 							"Character"
                         ],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Spirit" ]
@@ -97,11 +97,11 @@
 					"cardRestriction": {
 						"blurb": "for Whirlwind of Emotions to summon",
 						"cardRestrictions": [
-							"Friendly",
 							"Multiple Possible Locations",
 							"Character"
                         ],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Spirit" ]

@@ -28,10 +28,10 @@
 					"cardRestriction": {
 						"blurb": "Aquatic for Fishing to annihilate",
 						"cardRestrictions": [
-							"Friendly",
 							"Hand"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Aquatic" ]
@@ -52,8 +52,10 @@
 					"$type": "Subeffect:TargetAll:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Friendly",
 							"Hand"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					}
 				},

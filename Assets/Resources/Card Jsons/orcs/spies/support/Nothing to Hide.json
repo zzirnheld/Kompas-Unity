@@ -17,7 +17,10 @@
 				{
 					"$type": "Subeffect:TargetAll:",
 					"cardRestriction": {
-						"cardRestrictions": [ "Hand", "Friendly" ]
+						"cardRestrictions": [ "Hand" ],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
+						]
 					}
 				},
 				{
@@ -42,8 +45,9 @@
 				{
 					"$type": "Subeffect:TargetAll:",
 					"cardRestriction": {
-						"cardRestrictions": [ "Hand", "Friendly", "Character" ],
+						"cardRestrictions": [ "Hand", "Character" ],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Orc" ]
@@ -67,8 +71,9 @@
 					"$type": "Subeffect:SetXByGamestate:",
 					"whatToCount": "Cards Fitting Restriction",
 					"cardRestriction": {
-						"cardRestrictions": [ "Hand", "Friendly", "Character" ],
+						"cardRestrictions": [ "Hand", "Character" ],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Spy" ]

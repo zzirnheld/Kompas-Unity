@@ -20,7 +20,6 @@
 						"cardRestrictions": [
 							"Character",
 							"Summoned",
-							"Friendly",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
@@ -29,6 +28,7 @@
 							]
 						},
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
@@ -48,8 +48,10 @@
 					"cardRestriction": {
 						"blurb": "unworthy card in hand",
 						"cardRestrictions": [
-							"Friendly",
 							"Hand"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					}
 				},

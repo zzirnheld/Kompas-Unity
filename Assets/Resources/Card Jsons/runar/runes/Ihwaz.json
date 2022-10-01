@@ -19,12 +19,14 @@
 						"blurb": "for Ihwaz to recast",
 						"cardRestrictions": [
 							"Character",
-							"Friendly",
 							"Discard",
 							"Can Be Played",
 							"Effect Controller can Afford Cost"
 						],
-						"costDivisor": 2
+						"costDivisor": 2,
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
+						]
 					}
 				},
 				{

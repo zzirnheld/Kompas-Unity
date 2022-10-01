@@ -14,10 +14,8 @@
 						"From Field"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Friendly"
-						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
@@ -61,11 +59,11 @@
 					"cardRestriction": {
 						"blurb": "Altar for Altar Builder to play",
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
 							"Spell"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Altar" ]

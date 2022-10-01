@@ -27,9 +27,11 @@
 					"cardRestriction": {
 						"blurb": "copy of Twin Spirit to decksummon",
 						"cardRestrictions": [
-							"Friendly",
 							"Same Name as Target",
 							"Deck"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					},
 					"maxCanChoose": 1

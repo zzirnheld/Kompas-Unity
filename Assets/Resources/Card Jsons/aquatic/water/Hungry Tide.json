@@ -18,10 +18,10 @@
 						"blurb": "to feed the tide",
 						"cardRestrictions": [
 							"Spell",
-							"Friendly",
 							"Hand"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Water" ]
@@ -50,10 +50,10 @@
 						"blurb": "for the tide to belch",
 						"cardRestrictions": [
 							"Character",
-							"Friendly",
 							"Deck"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Aquatic" ]

@@ -26,12 +26,12 @@
 						"blurb": "How does the mist condense?",
 						"cardRestrictions": [
 							"Character",
-							"Friendly",
 							"Deck",
 							"Can Be Played",
 							"Card Value Fits Number Restriction"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Shaper" ]

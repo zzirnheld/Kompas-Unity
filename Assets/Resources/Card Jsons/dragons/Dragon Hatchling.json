@@ -32,8 +32,9 @@
 					"cardRestriction":
 					{
 						"blurb":"for Dragon Hatchling to eat (discard)",
-						"cardRestrictions":["Friendly","Character","Hand"],
+						"cardRestrictions":["Character","Hand"],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Dragon" ]
@@ -49,8 +50,9 @@
 					"cardRestriction":
 					{
 						"blurb":"for Dragon Hatchling to become (play)",
-						"cardRestrictions":["Friendly","Character","Hand","Can Be Played"],
+						"cardRestrictions":["Character","Hand","Can Be Played"],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Dragon" ]

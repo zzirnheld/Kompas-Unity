@@ -17,7 +17,6 @@
 					"cardRestriction": {
 						"blurb": "Rune for Runecarver to reshuffle",
 						"cardRestrictions": [
-							"Friendly",
 							"Multiple Possible Locations"
 						],
 						"locations": [
@@ -26,6 +25,7 @@
 							3
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Rune" ]

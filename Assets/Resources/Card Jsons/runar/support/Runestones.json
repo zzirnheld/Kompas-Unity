@@ -14,10 +14,10 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Spell",
-							"Friendly"
+							"Spell"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Rune" ]
@@ -32,10 +32,10 @@
 					"cardRestriction": {
 						"blurb": "Rune for Runestones to search",
 						"cardRestrictions": [
-							"Friendly",
 							"Deck"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Rune" ]

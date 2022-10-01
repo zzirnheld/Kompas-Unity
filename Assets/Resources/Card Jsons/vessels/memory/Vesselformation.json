@@ -38,11 +38,11 @@
 					"cardRestriction": {
 						"blurb": "for Vesselformation to annihilate",
 						"cardRestrictions": [
-							"Friendly",
 							"Discard",
 							"Augment"
                         ],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Memory" ]
@@ -71,9 +71,11 @@
 					"$type": "Subeffect:AutoTarget:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
 							"Same Name as Target"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					},
 					"tiebreakerDirection":"Any",

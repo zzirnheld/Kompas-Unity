@@ -18,11 +18,11 @@
 						"blurb": "Rune for Runegunner to cast",
 						"cardRestrictions": [
 							"Spell",
-							"Friendly",
 							"Hand",
 							"Can Be Played"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Rune" ]

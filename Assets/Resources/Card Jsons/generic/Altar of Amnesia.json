@@ -19,10 +19,10 @@
 						"cardRestrictions": [
 							"Character",
 							"Summoned",
-							"Friendly",
 							"Space Fits Restriction"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
@@ -48,10 +48,10 @@
 						"cardRestrictions": [
 							"Character",
 							"Summoned",
-							"Friendly",
 							"Space Fits Restriction"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]

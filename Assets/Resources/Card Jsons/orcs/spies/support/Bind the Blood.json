@@ -82,10 +82,10 @@
 					"cardRestriction": {
 						"blurb": "Bind blood to a card",
 						"cardRestrictions": [
-							"Friendly",
 							"Hand"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Orc" ]

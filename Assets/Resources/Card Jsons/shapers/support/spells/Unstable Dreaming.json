@@ -19,10 +19,10 @@
 						"blurb": "Shaper to hand-summon",
 						"cardRestrictions": [
 							"Character",
-							"Friendly",
 							"Hand"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Shaper" ]

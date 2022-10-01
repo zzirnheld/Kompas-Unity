@@ -19,11 +19,11 @@
 					"cardRestriction": {
 						"blurb": "Sportsball",
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
 							"Augment"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Sportsball" ]
@@ -35,8 +35,10 @@
 					"$type": "Subeffect:AutoTarget:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Avatar",
-							"Friendly"
+							"Avatar"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					}
 				},

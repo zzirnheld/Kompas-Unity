@@ -40,11 +40,10 @@
 					"cardRestriction": {
 						"blurb": "Craftspeople move to the cities",
 						"cardRestrictions": [
-							"Friendly",
-							"Deck",
-							"Subtypes Include"
+							"Deck"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Maya", "Craft", "Person" ]

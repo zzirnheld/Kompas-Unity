@@ -35,11 +35,11 @@
 					"cardRestriction": {
 						"blurb": "CORE!!!1!",
 						"cardRestrictions": [
-							"Friendly",
 							"Discard",
 							"Augment"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Golem", "Core" ]

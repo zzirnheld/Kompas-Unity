@@ -20,10 +20,10 @@
 						"blurb": "Haeomomantic sacrifice",
 						"cardRestrictions": [
 							"Character",
-                            "Friendly",
 							"Summoned"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
@@ -46,7 +46,6 @@
 					"cardRestriction": {
 						"blurb": "Circle of Life",
 						"cardRestrictions": [
-                            "Friendly",
 							"Character",
 							"Discard",
 							"Can Be Played",
@@ -59,7 +58,10 @@
 							"numberRestrictions": [
 								"<X"
 							]
-						}
+						},
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
+						]
 					},
 					"xMultiplier": 1
 				},

@@ -18,8 +18,10 @@
 					"cardRestriction": {
 						"blurb": "for Magician to hand-bottomdeck",
 						"cardRestrictions": [
-							"Friendly",
 							"Hand"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					}
 				},

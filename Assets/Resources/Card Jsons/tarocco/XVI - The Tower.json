@@ -51,8 +51,10 @@
 					"cardRestriction": {
 						"blurb": "folly of the Tower",
 						"cardRestrictions": [
-							"Friendly",
 							"Hand"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					},
 					"listRestriction": {

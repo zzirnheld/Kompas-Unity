@@ -17,11 +17,11 @@
 					"cardRestriction": {
 						"blurb": "for Animancer to discard",
 						"cardRestrictions": [
-							"Friendly",
 							"Hand",
 							"Not Already Target"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Golem" ]
@@ -52,7 +52,6 @@
 					"cardRestriction": {
 						"blurb": "for Animancer to search",
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
 							"Card Value Fits Number Restriction"
 						],
@@ -65,6 +64,7 @@
 							]
 						},
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Golem" ]

@@ -19,10 +19,10 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character",
-							"Multiple Possible Locations",
-							"Friendly"
+							"Multiple Possible Locations"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Supplicant" ]
@@ -46,7 +46,6 @@
 					"cardRestriction": {
 						"blurb": "God of the Supplicants",
 						"cardRestrictions": [
-							"Friendly",
 							"Name Is",
 							"Multiple Possible Locations"
 						],
@@ -55,6 +54,9 @@
 							2,
 							3,
 							4
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					}
 				},

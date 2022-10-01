@@ -35,9 +35,11 @@
 					"cardRestriction": {
 						"blurb": "copy of the Structure to deck->summon",
 						"cardRestrictions": [
-							"Friendly",
 							"Same Name as Target",
 							"Deck"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					},
 					"maxCanChoose": 1

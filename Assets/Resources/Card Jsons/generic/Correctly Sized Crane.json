@@ -27,8 +27,10 @@
 					"cardRestriction": {
 						"blurb": "card for Correctly Sized Crane to grab",
 						"cardRestrictions": [
-							"Friendly",
 							"Discard"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					}
 				},

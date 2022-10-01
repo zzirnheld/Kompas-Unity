@@ -28,9 +28,11 @@
 					"cardRestriction": {
 						"blurb": "for Haemopoten to draw",
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
 							"Index<C"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
 						],
 						"constant": 1
 					}

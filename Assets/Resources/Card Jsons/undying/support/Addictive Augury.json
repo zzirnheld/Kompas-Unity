@@ -20,10 +20,10 @@
 						"blurb": "Haeomomantic sacrifice",
 						"cardRestrictions": [
 							"Character",
-                            "Friendly",
 							"Summoned"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]

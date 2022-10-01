@@ -28,7 +28,9 @@
 						},
 						"augmentRestriction":
 						{
-							"cardRestrictions":["Friendly"]
+							"cardRestrictionElements": [
+								{ "$type": "Core.CardRestriction:Friendly:" }
+							]
 						},
 						"cardRestrictionElements": [
 							{

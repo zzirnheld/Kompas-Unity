@@ -18,10 +18,10 @@
 					"cardRestriction": {
 						"blurb": "for Recruitment Drive to discard",
 						"cardRestrictions": [
-							"Friendly",
 							"Hand"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Mech", "Golem" ]
@@ -51,10 +51,10 @@
 					"cardRestriction": {
 						"blurb": "Sign up here, future Pilots!",
 						"cardRestrictions": [
-							"Friendly",
 							"Deck"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Mech", "Pilot" ]

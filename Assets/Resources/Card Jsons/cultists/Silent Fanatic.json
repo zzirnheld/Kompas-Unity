@@ -21,11 +21,11 @@
 					"cardRestriction": {
 						"blurb": "Silent Cult Follower to bloodcurse (1/2)",
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
 							"Character"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Cultist", "Follower" ]
@@ -55,11 +55,11 @@
 					"cardRestriction": {
 						"blurb": "Silent Cult Follower to bloodcurse (2/2)",
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
 							"Character"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Cultist", "Follower" ]

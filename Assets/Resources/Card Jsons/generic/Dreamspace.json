@@ -21,9 +21,11 @@
 					"cardRestriction": {
 						"blurb": "copy of Dreamspace to decksummon",
 						"cardRestrictions": [
-							"Friendly",
 							"Same Name as Target",
 							"Deck"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					},
 					"maxCanChoose": 1

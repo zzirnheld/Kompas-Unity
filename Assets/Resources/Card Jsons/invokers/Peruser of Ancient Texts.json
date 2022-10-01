@@ -18,9 +18,11 @@
 					"cardRestriction":{
 						"blurb":"Card to discard",
 						"cardRestrictions": [
-                            "Friendly",
                             "Hand"
-                        ]
+                        ],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
+						]
 					}
 				},
 				{
@@ -31,10 +33,10 @@
 					"cardRestriction": {
 						"blurb": "Invocation to find",
 						"cardRestrictions": [
-							"Friendly",
 							"Deck"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Invocation" ]

@@ -13,8 +13,9 @@
         "cardRestriction":
         {
             "blurb":"Mech to Pilot",
-            "cardRestrictions":["Friendly","Character","Hand","Can Be Played"],
+            "cardRestrictions":["Character","Hand","Can Be Played"],
             "cardRestrictionElements": [
+                { "$type": "Core.CardRestriction:Friendly:" },
                 {
                     "$type": "Core.CardRestriction:SubtypesInclude:",
                     "subtypes": [ "Mech", "Golem" ]

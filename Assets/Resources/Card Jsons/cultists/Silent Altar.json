@@ -55,10 +55,10 @@
 						"blurb": "Altar(s) to sacrifice",
 						"cardRestrictions": [
 							"Spell",
-							"Friendly",
 							"Not Already Target"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
@@ -110,13 +110,15 @@
 					"cardRestriction": {
 						"blurb": "culmination of the Silent Altar Ritual",
 						"cardRestrictions": [
-							"Friendly",
 							"Multiple Possible Locations",
 							"Character"
 						],
 						"locations": [
 							3,
 							4
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					}
 				},

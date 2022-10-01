@@ -37,11 +37,11 @@
 					"cardRestriction": {
 						"blurb": "Fungus to deconstitute",
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
 							"Distinct Name from Other Targets"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Fungus" ]

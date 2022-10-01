@@ -17,10 +17,10 @@
 						"blurb": "character to reshuffle",
 						"cardRestrictions": [
 							"Character",
-							"Friendly",
 							"Summoned"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
@@ -44,7 +44,6 @@
 						"blurb": "Wanderer to inspire with music",
 						"cardRestrictions": [
 							"Character",
-							"Friendly",
 							"Hand",
 							"Distinct Name from Other Targets",
 							"Card Value Fits Number Restriction"
@@ -56,7 +55,10 @@
 							"numberRestrictions": [
 								"<=X"
 							]
-						}
+						},
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
+						]
 					},
 					"xMultiplier": 1,
 					"xModifier": 1

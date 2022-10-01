@@ -31,12 +31,12 @@
 					"cardRestriction": {
 						"blurb": "Designated build site",
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
 							"Character",
 							"Can be Played to Target Space"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Structure" ]

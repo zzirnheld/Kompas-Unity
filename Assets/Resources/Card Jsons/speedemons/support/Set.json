@@ -33,11 +33,13 @@
 					"cardRestriction": {
 						"blurb": "Ready for Set to search",
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
 							"Name Is"
 						],
-						"nameIs": "Ready"
+						"nameIs": "Ready",
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
+						]
 					}
 				},
 				{
@@ -82,11 +84,13 @@
 					"cardRestriction": {
 						"blurb": "GO for Ready to search",
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
 							"Name Is"
 						],
-						"nameIs": "GO"
+						"nameIs": "GO",
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
+						]
 					}
 				},
 				{

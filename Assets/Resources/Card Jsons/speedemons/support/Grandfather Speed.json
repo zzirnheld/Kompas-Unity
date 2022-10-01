@@ -19,11 +19,13 @@
 					"cardRestriction": {
 						"blurb": "Ready for Set to search",
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
 							"Name Is"
 						],
-						"nameIs": "Ready"
+						"nameIs": "Ready",
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
+						]
 					}
 				},
 				{

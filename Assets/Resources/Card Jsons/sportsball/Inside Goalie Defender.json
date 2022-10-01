@@ -16,7 +16,6 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Avatar",
-							"Friendly",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
@@ -26,6 +25,7 @@
 							"mustBeEmpty": false
 						},
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]

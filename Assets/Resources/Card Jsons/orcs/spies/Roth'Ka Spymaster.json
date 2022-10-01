@@ -19,10 +19,10 @@
 						"blurb": "Hand a friendly summon",
 						"cardRestrictions": [
 							"Different from Source",
-							"Friendly",
 							"Character"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]

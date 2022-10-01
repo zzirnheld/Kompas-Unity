@@ -18,10 +18,10 @@
 					"cardRestriction": {
 						"blurb": "for Starbirth to discard",
 						"cardRestrictions": [
-							"Friendly",
 							"Hand"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Fungus" ]

@@ -16,8 +16,8 @@
 					"$type":"Subeffect:SetXBoardRestriction:",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Friendly"],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]

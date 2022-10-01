@@ -25,11 +25,11 @@
 					"cardRestriction": {
 						"blurb": "for Mother of Dragons to kill",
 						"cardRestrictions": [
-							"Friendly",
 							"Summoned",
 							"Not Already Target"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
@@ -66,7 +66,6 @@
 					"cardRestriction": {
 						"blurb": "for Mother of Dragons to birth",
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
 							"Character",
 							"Index<X",
@@ -81,6 +80,7 @@
 							]
 						},
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Dragon" ]
@@ -89,10 +89,12 @@
 					},
 					"restRestriction": {
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
 							"Index<X",
 							"Not Already Target"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					},
 					"xMultiplier": 1

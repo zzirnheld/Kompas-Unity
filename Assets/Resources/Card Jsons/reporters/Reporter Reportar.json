@@ -98,7 +98,6 @@
 					"cardRestriction": {
 						"blurb": "character to report",
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
 							"Character",
 							"Effect Controller can Afford Cost",
@@ -112,7 +111,10 @@
 								"<=X"
 							]
 						},
-						"costDivisor": 2
+						"costDivisor": 2,
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
+						]
 					}
 				},
 				{

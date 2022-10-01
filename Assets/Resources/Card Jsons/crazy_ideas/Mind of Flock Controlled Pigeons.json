@@ -19,10 +19,10 @@
 					"cardRestriction": {
 						"blurb": "Mind bawk bawk Controlled Pigeons",
 						"cardRestrictions": [
-							"Friendly",
 							"Hand"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Crazy", "Idea" ]

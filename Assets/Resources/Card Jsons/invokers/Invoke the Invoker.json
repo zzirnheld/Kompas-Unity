@@ -18,10 +18,10 @@
 					"cardRestriction": {
 						"blurb": "Spirit to reveal for Invoke the Invoker",
 						"cardRestrictions": [
-							"Friendly",
 							"Hand"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Spirit" ]

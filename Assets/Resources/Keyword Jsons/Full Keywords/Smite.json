@@ -20,7 +20,10 @@
 			},
 			"cardRestriction": {
 				"blurb": "Burn cards for smite",
-				"cardRestrictions": [ "Friendly", "Hand" ]
+				"cardRestrictions": [ "Hand" ],
+				"cardRestrictionElements": [
+					{ "$type": "Core.CardRestriction:Friendly:" }
+				]
 			}
 		},
 		{

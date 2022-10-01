@@ -19,10 +19,12 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Discard",
-							"Friendly",
 							"Name Is"
 						],
-						"nameIs": "Ready"
+						"nameIs": "Ready",
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
+						]
 					},
 					"jumpIndices": [
 						6
@@ -34,11 +36,13 @@
 					"cardRestriction": {
 						"blurb": "Ready for Set to search",
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
 							"Name Is"
 						],
-						"nameIs": "Ready"
+						"nameIs": "Ready",
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
+						]
 					}
 				},
 				{
@@ -56,10 +60,8 @@
 				{
 					"$type": "Subeffect:TargetAll:",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Friendly"
-						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]

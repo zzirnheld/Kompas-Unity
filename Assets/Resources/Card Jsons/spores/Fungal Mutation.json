@@ -19,10 +19,10 @@
 					"cardRestriction": {
 						"blurb": "Fungus to mutate",
 						"cardRestrictions": [
-							"Friendly",
 							"Hand"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Fungus" ]
@@ -44,11 +44,11 @@
 					"cardRestriction": {
 						"blurb": "the result of mutation",
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
 							"Index<C"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Fungus" ]
@@ -58,12 +58,14 @@
 					},
 					"restRestriction": {
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
 							"Index<C",
 							"Not Already Target"
 						],
-						"constant": 5
+						"constant": 5,
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
+						]
 					}
 				},
 				{

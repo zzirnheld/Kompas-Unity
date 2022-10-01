@@ -18,10 +18,10 @@
 					"cardRestriction": {
 						"blurb": "for Soulflare to annihilate",
 						"cardRestrictions": [
-							"Friendly",
 							"Hand"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Revenant" ]

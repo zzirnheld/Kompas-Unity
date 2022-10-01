@@ -15,10 +15,10 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Avatar",
-							"Friendly"
+							"Avatar"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
@@ -72,7 +72,6 @@
 					"cardRestriction": {
 						"blurb": "Pulsar to coalesce",
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
 							"Character",
 							"Card Value Fits Number Restriction"
@@ -86,6 +85,7 @@
 							]
 						},
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Pulsar" ]

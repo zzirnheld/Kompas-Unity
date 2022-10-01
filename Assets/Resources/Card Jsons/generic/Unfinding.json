@@ -18,10 +18,10 @@
 					"cardRestriction": {
 						"blurb": "Ethereal for Unfinding to discard",
 						"cardRestrictions": [
-							"Friendly",
 							"Hand"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Ethereal" ]

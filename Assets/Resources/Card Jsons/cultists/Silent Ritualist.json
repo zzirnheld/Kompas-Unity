@@ -20,10 +20,10 @@
 						"blurb": "ritual sacrifice",
 						"cardRestrictions": [
 							"Character",
-                            "Friendly",
 							"Summoned"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
@@ -42,12 +42,12 @@
 					"cardRestriction": {
 						"blurb": "Silent convert",
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
 							"Spell",
 							"Can be Played to Target Space"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Silent" ]

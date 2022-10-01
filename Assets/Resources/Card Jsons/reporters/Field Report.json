@@ -19,7 +19,6 @@
 						"blurb": "friendly Reporter to set X by S of",
 						"cardRestrictions": [
 							"Character",
-							"Friendly",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
@@ -28,6 +27,7 @@
 							]
 						},
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
@@ -106,7 +106,6 @@
 					"playerIndex": -2,
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Friendly",
 							"Character",
 							"Deck",
 							"Card Value Fits Number Restriction"
@@ -120,6 +119,7 @@
 							]
 						},
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Reporter" ]

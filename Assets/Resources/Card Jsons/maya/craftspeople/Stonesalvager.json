@@ -40,11 +40,11 @@
 						"blurb": "Structure to repurpose old stone into",
 						"cardRestrictions": [
 							"Character",
-							"Friendly",
 							"Hand",
 							"Card Value Fits Number Restriction"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Structure" ]
@@ -66,10 +66,10 @@
 					"cardRestriction": {
 						"blurb": "Structure whose stone to repuprose",
 						"cardRestrictions": [
-							"Friendly",
 							"Discard"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Structure" ]

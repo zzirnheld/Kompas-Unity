@@ -19,10 +19,10 @@
 						"blurb": "friendly character to wander",
 						"cardRestrictions": [
 							"Character",
-							"Friendly",
 							"Summoned"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
@@ -46,7 +46,6 @@
 						"blurb": "for Wanderlust to hand-summon",
 						"cardRestrictions": [
 							"Character",
-							"Friendly",
 							"Hand",
 							"Card Value Fits Number Restriction"
 						],
@@ -57,7 +56,10 @@
 							"numberRestrictions": [
 								"<=X"
 							]
-						}
+						},
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
+						]
 					},
 					"xMultiplier": 1,
 					"xModifier": 1

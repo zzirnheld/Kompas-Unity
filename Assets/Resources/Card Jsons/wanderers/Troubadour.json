@@ -19,10 +19,10 @@
 						"blurb": "character to reshuffle",
 						"cardRestrictions": [
 							"Character",
-							"Friendly",
 							"Summoned"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]

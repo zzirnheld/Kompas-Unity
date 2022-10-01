@@ -18,10 +18,10 @@
 					"cardRestriction": {
 						"blurb": "No! Not the Self-Destruct Button installed on all Ificator (TM) systems!",
 						"cardRestrictions": [
-							"Friendly",
 							"Different from Source"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
@@ -43,10 +43,10 @@
 					"$type": "Subeffect:TargetAll:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Friendly",
 							"Discard"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Crazy", "Idea" ]
@@ -69,10 +69,12 @@
 					"cardRestriction": {
 						"blurb": "oh, and the self-destruct button on the -ificator in my hand, too. Curse you.",
 						"cardRestrictions": [
-							"Friendly",
 							"Hand"
 						]
 					},
+					"cardRestrictionElements": [
+						{ "$type": "Core.CardRestriction:Friendly:" }
+					],
 					"listRestriction": {
 						"listRestrictions": [
 							"Min Can Choose",

@@ -20,10 +20,10 @@
 						"blurb": "Mech plan",
 						"cardRestrictions": [
 							"Character",
-							"Friendly",
 							"Deck"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Mech" ]
@@ -52,10 +52,8 @@
 							"Main Card Fits Restriction Before"
 						],
 						"cardRestriction": {
-							"cardRestrictions": [
-								"Friendly"
-							],
 							"cardRestrictionElements": [
+								{ "$type": "Core.CardRestriction:Friendly:" },
 								{
 									"$type": "Core.CardRestriction:Location:",
 									"locations": [ "Board" ]
@@ -72,9 +70,11 @@
 					"$type": "Subeffect:AutoTarget:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
 							"Same Name as Target"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					},
 					"tiebreakerDirection":"Any"

@@ -39,11 +39,11 @@
 					"cardRestriction": {
 						"blurb": "Wispflux to deck->summon",
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
 							"Character"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Wisp" ]

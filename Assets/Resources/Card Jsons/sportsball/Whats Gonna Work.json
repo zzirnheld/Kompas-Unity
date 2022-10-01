@@ -19,11 +19,13 @@
 					"cardRestriction": {
 						"blurb": "Teamwork",
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
 							"Name Is"
 						],
-						"nameIs": "Teamwork!"
+						"nameIs": "Teamwork!",
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
+						]
 					}
 				},
 				{

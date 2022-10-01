@@ -51,7 +51,6 @@
 					"cardRestriction": {
 						"blurb": "card to hand",
 						"cardRestrictions": [
-							"Friendly",
 							"Discard",
                             "Card Value Fits Number Restriction"
                         ],
@@ -60,7 +59,10 @@
                         },
                         "cardValueNumberRestriction":{
                             "numberRestrictions":["<=X"]
-                        }
+                        },
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
+						]
 					},
                     "xMultiplier":1
 				},

@@ -41,28 +41,11 @@
 	],
 	"PlayRestriction": {
 		"normalRestrictions": [
-			"Augment Normal Restrictions",
-			"On Card that Fits Restriction"
+			"Augment Normal Restrictions"
 		],
 		"effectRestrictions": [
-			"Augment Effect Restrictions",
-			"On Card that Fits Restriction"
-		],
-		"onCardRestriction": {
-			"cardRestrictions": [
-				"Friendly"
-			],
-			"cardRestrictionElements": [
-				{
-					"$type": "Core.CardRestriction:Location:",
-					"locations": [ "Board" ]
-				},
-				{
-					"$type": "Core.CardRestriction:SubtypesInclude:",
-					"subtypes": [ "Warrior" ]
-				}
-			]
-		}
+			"Augment Effect Restrictions"
+		]
 	},
 	"a": 3,
 	"subtypeText": "Sword",

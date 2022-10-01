@@ -31,11 +31,11 @@
 					"cardRestriction": {
 						"blurb": "for Iterative Analysis to produce",
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
 							"Distinct Name from Other Targets"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Mech", "Golem" ]

@@ -19,10 +19,10 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character",
-							"Discard",
-							"Friendly"
+							"Discard"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Cultist" ]

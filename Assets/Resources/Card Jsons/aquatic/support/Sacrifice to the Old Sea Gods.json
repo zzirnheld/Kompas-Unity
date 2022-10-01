@@ -18,10 +18,10 @@
 					"cardRestriction": {
 						"blurb": "adjacent Aquatic card to annihilate",
 						"cardRestrictions": [
-							"Friendly",
 							"Hand"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Aquatic" ]
@@ -47,11 +47,11 @@
 						"blurb": "Tide that Shifts In",
 						"cardRestrictions": [
 							"Spell",
-							"Friendly",
 							"Deck",
 							"Can Be Played"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Water" ]

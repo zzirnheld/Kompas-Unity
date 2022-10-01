@@ -14,8 +14,10 @@
 					],
 					"nowRestriction": {
 						"cardRestrictions": [
-							"Friendly",
 							"Space Fits Restriction"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
 						],
 						"spaceRestriction":
 						{

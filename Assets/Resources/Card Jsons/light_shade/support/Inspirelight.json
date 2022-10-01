@@ -20,10 +20,10 @@
 					"cardRestriction": {
 						"blurb": "Brilliant Mage who was inspired",
 						"cardRestrictions": [
-							"Friendly",
 							"Deck"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Brilliant", "Mage" ]

@@ -18,7 +18,6 @@
 					"cardRestriction": {
 						"blurb": "character to ANNIHILATE",
 						"cardRestrictions": [
-							"Friendly",
 							"Summoned",
 							"Space Fits Restriction"
 						],
@@ -28,6 +27,7 @@
 							]
 						},
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
@@ -48,10 +48,10 @@
 						"blurb": "Shaper to decksummon",
 						"cardRestrictions": [
 							"Character",
-							"Friendly",
 							"Deck"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Shaper" ]
