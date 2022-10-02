@@ -32,9 +32,12 @@
 					"cardRestriction":
 					{
 						"blurb":"OWO SO DRAGONNNNNNNNN",
-						"cardRestrictions":["Hand"],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Hand" ]
+							},
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Dragon" ]

@@ -16,9 +16,12 @@
 					"$type":"Subeffect:CardTarget:",
 					"cardRestriction":{
 						"blurb":"Card to Cycle",
-						"cardRestrictions":["Hand"],
 						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" }
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Hand" ]
+							}
 						]
 					}
 				},

@@ -18,11 +18,14 @@
 					"cardRestriction": {
 						"blurb": "Can't ID this frikkin moth!",
 						"cardRestrictions": [
-							"Hand",
 							"Hidden"
 						],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Moth" ]

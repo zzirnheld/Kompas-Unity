@@ -20,7 +20,6 @@
 						"blurb": "for Havengranter to hand-summon",
                         "cardRestrictions": [
 							"Character",
-							"Hand",
                             "Card Value Fits Number Restriction"
                         ],
                         "cardValue": {
@@ -31,7 +30,11 @@
                             "constant": 1
                         },
 						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" }
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            }
 						]
                     }
 				},

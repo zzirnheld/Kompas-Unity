@@ -37,11 +37,12 @@
 					"$type": "Subeffect:ChooseFromList:",
 					"cardRestriction": {
 						"blurb": "Grudges",
-						"cardRestrictions": [
-							"Hand"
-						],
 						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" }
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            }
 						]
 					},
 					"listRestriction": {

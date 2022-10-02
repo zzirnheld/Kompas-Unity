@@ -18,11 +18,12 @@
 					"$type": "Subeffect:TargetAll:",
 					"cardRestriction": {
 						"blurb": "card for A Frayed Knot to discard",
-						"cardRestrictions": [
-							"Hand"
-						],
 						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" }
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Hand" ]
+							}
 						]
 					}
 				},

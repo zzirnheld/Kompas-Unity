@@ -23,12 +23,15 @@
 						"blurb": "for Trailing Dreammist to hand-summon",
 						"cardRestrictions": [
 							"Character",
-							"Hand",
 							"Card Value Fits Number Restriction",
 							"Can be Played to Target Space"
 						],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Ethereal" ]

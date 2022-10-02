@@ -32,11 +32,14 @@
         "cardRestriction": {
             "blurb": "Weather Event to hand->summon",
             "cardRestrictions": [
-                "Character",
-                "Hand"
+                "Character"
             ],
             "cardRestrictionElements": [
                 { "$type": "Core.CardRestriction:Friendly:" },
+                {
+                    "$type": "Core.CardRestriction:Location:",
+                    "locations": [ "Hand" ]
+                },
                 {
                     "$type": "Core.CardRestriction:SubtypesInclude:",
                     "subtypes": [ "Weather", "Event" ]

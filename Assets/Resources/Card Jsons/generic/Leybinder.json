@@ -35,7 +35,6 @@
 						"cardRestrictions": [
 							"Character",
 							"Controller Matches Player Target",
-							"Hand",
 							"Card Value Fits Number Restriction"
 						],
 						"cardValue": {
@@ -45,7 +44,13 @@
 							"numberRestrictions": [
 								"=X"
 							]
-						}
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Hand" ]
+							}
+						]
 					},
 					"xMultiplier": 1
 				},

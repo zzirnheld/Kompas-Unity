@@ -18,11 +18,14 @@
 					"cardRestriction": {
 						"blurb": "unworthy card in hand",
 						"cardRestrictions": [
-							"Hand",
 							"Distinct Name from Source"
 						],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Linewalker" ]

@@ -4,8 +4,13 @@
         "cardRestriction": {
             "blurb": "Card to discard so you can draw",
             "cardRestrictions": [
-                "Controller Matches Player Target",
-                "Hand"
+                "Controller Matches Player Target"
+            ],
+            "cardRestrictionElements": [
+                {
+                    "$type": "Core.CardRestriction:Location:",
+                    "locations": [ "Hand" ]
+                }
             ]
         }
     },

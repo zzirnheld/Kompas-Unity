@@ -15,7 +15,6 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Spell",
-							"Hand",
 							"Card Value Fits Number Restriction"
 						],
 						"cardValue": {
@@ -24,7 +23,13 @@
 						"cardValueNumberRestriction": {
 							"numberRestrictions": [ "==Constant" ],
 							"constant": 0
-						}
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Hand" ]
+							}
+						]
 					}
 				}
 			},

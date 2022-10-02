@@ -17,11 +17,14 @@
 					"cardRestriction": {
 						"blurb": "to feed the tide",
 						"cardRestrictions": [
-							"Spell",
-							"Hand"
+							"Spell"
 						],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Hand" ]
+							},
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Water" ]

@@ -68,13 +68,14 @@
 					"$type": "Subeffect:ChooseFromList:",
 					"cardRestriction": {
 						"blurb": "oh, and the self-destruct button on the -ificator in my hand, too. Curse you.",
-						"cardRestrictions": [
-							"Hand"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Hand" ]
+							}
 						]
-					},
-					"cardRestrictionElements": [
-						{ "$type": "Core.CardRestriction:Friendly:" }
-					],
+					},,
 					"listRestriction": {
 						"listRestrictions": [
 							"Min Can Choose",

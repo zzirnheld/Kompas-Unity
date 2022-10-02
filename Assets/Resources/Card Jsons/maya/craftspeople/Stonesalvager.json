@@ -40,11 +40,14 @@
 						"blurb": "Structure to repurpose old stone into",
 						"cardRestrictions": [
 							"Character",
-							"Hand",
 							"Card Value Fits Number Restriction"
 						],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Structure" ]

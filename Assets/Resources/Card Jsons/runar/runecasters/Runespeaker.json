@@ -18,12 +18,15 @@
 						"blurb": "Rune for Runespeaker to cast",
 						"cardRestrictions": [
 							"Spell",
-							"Hand",
 							"Can Be Played",
 							"Effect Controller can Afford Cost"
 						],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Rune" ]

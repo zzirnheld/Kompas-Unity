@@ -16,11 +16,14 @@
 					"cardRestriction": {
 						"blurb": "for Dragonseeker to reshuffle",
 						"cardRestrictions": [
-							"Hand",
 							"Character"
 						],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Hand" ]
+							},
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Dragon" ]

@@ -14,6 +14,8 @@ public static class CardLocationHelpers
                 return CardLocation.Board;
             case "Hand":
                 return CardLocation.Hand;
+            case "Discard":
+                return CardLocation.Discard;
             default:
                 throw new System.NotImplementedException($"Unknown string to convert to CardLocation {str}");
         }

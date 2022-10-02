@@ -44,7 +44,6 @@
 						"blurb": "Wanderer to inspire with music",
 						"cardRestrictions": [
 							"Character",
-							"Hand",
 							"Distinct Name from Other Targets",
 							"Card Value Fits Number Restriction"
 						],
@@ -57,7 +56,11 @@
 							]
 						},
 						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" }
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            }
 						]
 					},
 					"xMultiplier": 1,

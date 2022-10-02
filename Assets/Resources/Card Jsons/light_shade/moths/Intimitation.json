@@ -21,12 +21,15 @@
 					"cardRestriction": {
 						"blurb": "What creature does the camouflage look like?",
 						"cardRestrictions": [
-							"Hand",
 							"Character",
 							"Hidden"
 						],
 						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" }
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            }
 						]
 					}
 				},

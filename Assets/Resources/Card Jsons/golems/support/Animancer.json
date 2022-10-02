@@ -17,11 +17,14 @@
 					"cardRestriction": {
 						"blurb": "for Animancer to discard",
 						"cardRestrictions": [
-							"Hand",
 							"Not Already Target"
 						],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Golem" ]

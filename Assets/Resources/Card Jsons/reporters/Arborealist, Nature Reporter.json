@@ -57,7 +57,6 @@
 						"blurb": "E > X character to reveal",
 						"cardRestrictions": [
 							"Controller Matches Player Target",
-							"Hand",
 							"Card Value Fits Number Restriction",
 							"Hidden",
 							"Character"
@@ -69,7 +68,13 @@
 							"numberRestrictions": [
 								">X"
 							]
-						}
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Hand" ]
+							}
+						]
 					},
 					"xMultiplier": 1
 				},

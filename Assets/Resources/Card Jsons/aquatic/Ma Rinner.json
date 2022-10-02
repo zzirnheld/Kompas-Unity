@@ -47,11 +47,12 @@
 					"$type": "Subeffect:ChooseFromList:",
 					"cardRestriction": {
 						"blurb": "cards for Ma Rinner to bottomdeck",
-						"cardRestrictions": [
-							"Hand"
-						],
 						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" }
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Hand" ]
+							}
 						]
 					},
 					"listRestriction": {

@@ -42,7 +42,6 @@
 						"blurb": "fast card to reveal",
 						"cardRestrictions": [
 							"Controller Matches Player Target",
-							"Hand",
 							"Hidden",
 							"Card Value Fits Number Restriction"
 						],
@@ -54,7 +53,13 @@
 								"==Constant"
 							],
 							"constant": 1
-						}
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Hand" ]
+							}
+						]
 					}
 				},
 				{
