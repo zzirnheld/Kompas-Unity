@@ -15,7 +15,6 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character",
-                            "Enemy",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction":
@@ -37,7 +36,10 @@
                                 ],
                                 "constant": 2
                             }
-						}
+						},
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" }
+						]
 					}
 				}
 			},

@@ -24,8 +24,10 @@
 						],
 						"adjacencyRestriction": {
 							"cardRestrictions": [
-								"Avatar",
-								"Enemy"
+								"Avatar"
+							],
+							"cardRestrictionElements": [
+								{ "$type": "Core.CardRestriction:Enemy:" }
 							]
 						},
 						"mustBeEmpty": false
@@ -50,14 +52,16 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Avatar",
-							"Enemy",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
 							"spaceRestrictions": [
 								"Adjacent to Card Target"
 							]
-						}
+						},
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" }
+						]
 					}
 				},
 				{

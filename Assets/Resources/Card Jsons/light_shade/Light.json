@@ -14,9 +14,10 @@
                     "selfRestriction":{
                         "cardRestrictions":["Card doesn't have Card Restriction in its AOE"],
                         "hasInAOERestriction":{
-                            "cardRestrictions":["Enemy","Character"]
+                            "cardRestrictions":["Character"]
                         },
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]

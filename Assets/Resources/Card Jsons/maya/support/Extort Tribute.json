@@ -18,11 +18,13 @@
 					"cardRestriction": {
 						"blurb": "for Haemopoten to draw",
 						"cardRestrictions": [
-							"Enemy",
 							"Deck",
 							"Index<C"
 						],
-						"constant": 1
+						"constant": 1,
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" }
+						]
 					}
 				},
 				{

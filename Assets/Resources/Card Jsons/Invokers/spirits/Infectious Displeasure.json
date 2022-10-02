@@ -30,10 +30,10 @@
 					"$type": "Subeffect:TargetAll:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Enemy",
 							"Space Fits Restriction"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
@@ -46,10 +46,10 @@
                             ],
                             "connectednessRestriction": {
                                 "cardRestrictions": [
-                                    "Enemy",
                                     "Character"
                                 ],
 								"cardRestrictionElements": [
+									{ "$type": "Core.CardRestriction:Enemy:" },
 									{
 										"$type": "Core.CardRestriction:Location:",
 										"locations": [ "Board" ]

@@ -20,8 +20,8 @@
 							{ "$type": "Core.CardRestriction:Friendly:" }
 						],
 						"augmentRestriction": {
-							"cardRestrictions": [
-								"Enemy"
+							"cardRestrictionElements": [
+								{ "$type": "Core.CardRestriction:Enemy:" }
 							]
 						}
 					}

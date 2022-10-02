@@ -13,8 +13,8 @@
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Enemy"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" }
 						]
 					}
 				}
@@ -41,10 +41,10 @@
 					"$type": "Subeffect:ChangeAllCardStats:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Character",
-							"Enemy"
+							"Character"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]

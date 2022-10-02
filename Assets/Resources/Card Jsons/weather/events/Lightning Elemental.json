@@ -20,7 +20,6 @@
 					"cardRestriction": {
 						"blurb": "character to strike with lightning",
 						"cardRestrictions": [
-							"Enemy",
 							"Character",
 							"Space Fits Restriction"
 						],
@@ -38,6 +37,7 @@
 							}
 						},
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]

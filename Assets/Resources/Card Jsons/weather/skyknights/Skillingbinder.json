@@ -14,7 +14,6 @@
 					],
 					"sourceRestriction": {
 						"cardRestrictions": [
-							"Enemy",
 							"Character",
 							"Space Fits Restriction"
 						],
@@ -31,7 +30,10 @@
 									}
 								]
 							}
-						}
+						},
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" }
+						]
 					}
 				}
 			},

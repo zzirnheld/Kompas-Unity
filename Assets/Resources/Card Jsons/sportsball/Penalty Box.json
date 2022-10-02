@@ -15,7 +15,6 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Enemy",
 							"Wields Augment Fitting Restriction",
 							"Space Fits Restriction"
 						],
@@ -32,7 +31,10 @@
 									"subtypes": [ "Sportsball" ]
 								}
 							]
-						}
+						},
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" }
+						]
 					}
 				}
 			},

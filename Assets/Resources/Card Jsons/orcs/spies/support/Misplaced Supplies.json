@@ -50,8 +50,8 @@
 						"This Card Fits Restriction Now"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Enemy"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" }
 						]
 					},
 					"selfRestriction": {

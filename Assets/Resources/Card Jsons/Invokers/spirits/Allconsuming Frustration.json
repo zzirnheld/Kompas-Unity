@@ -31,10 +31,10 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character",
-							"Enemy",
 							"Space Fits Restriction"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]

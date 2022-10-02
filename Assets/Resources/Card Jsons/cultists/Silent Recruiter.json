@@ -13,8 +13,10 @@
 				],
 				"existsRestriction": {
 					"cardRestrictions": [
-						"Enemy",
 						"Space Fits Restriction"
+					],
+					"cardRestrictionElements": [
+						{ "$type": "Core.CardRestriction:Enemy:" }
 					],
 					"spaceRestriction": {
 						"spaceRestrictions": [

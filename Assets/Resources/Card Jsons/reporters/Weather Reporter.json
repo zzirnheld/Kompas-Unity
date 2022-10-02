@@ -13,8 +13,8 @@
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Enemy"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" }
 						]
 					}
 				}

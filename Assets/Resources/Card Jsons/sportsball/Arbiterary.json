@@ -55,8 +55,10 @@
 					"condition": "Target Violates Restriction",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Avatar",
-							"Enemy"
+							"Avatar"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" }
 						]
 					}
 				},

@@ -44,10 +44,10 @@
 					"cardRestriction": {
 						"blurb": "enemy character to move adjacent to",
 						"cardRestrictions": [
-							"Character",
-							"Enemy"
+							"Character"
 						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]

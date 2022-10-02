@@ -22,10 +22,8 @@
 					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Wait, Hold Up, what are you moving?",
-						"cardRestrictions": [
-							"Enemy"
-						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]

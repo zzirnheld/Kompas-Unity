@@ -13,8 +13,8 @@
 						"From Deck"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Enemy"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" }
 						]
 					}
 				}

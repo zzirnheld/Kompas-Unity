@@ -47,7 +47,6 @@
 						"blurb": "character to summon",
 						"cardRestrictions": [
 							"Character",
-							"Enemy",
 							"Deck",
 							"Card Value Fits Number Restriction"
 						],
@@ -58,7 +57,10 @@
 							"numberRestrictions": [
 								"=X"
 							]
-						}
+						},
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" }
+						]
 					},
 					"xMultiplier": 1,
 					"xModifier": -1
