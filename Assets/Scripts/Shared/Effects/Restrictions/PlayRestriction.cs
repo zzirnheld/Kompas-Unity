@@ -57,6 +57,8 @@ namespace KompasCore.Effects
         public SpaceRestriction spaceRestriction;
         public SpaceRestriction floutedSpaceRestriction;
 
+        public string[] augSubtypes;
+
         public EffectInitializationContext initializationContext { get; private set; }
         public GameCard Card => InitializationContext.source;
 
@@ -101,7 +103,7 @@ namespace KompasCore.Effects
         {
             var subtypes = Card.Game.BoardController.GetCardAt(space)?.SubtypeText;
            // Debug.Log($"Subtypes: {subtypes}");
-            return Card.AugmentSubtypes?.All(st => subtypes?.Contains(st) ?? false) ?? true;
+            return augSubtypes?.All(st => subtypes?.Contains(st) ?? false) ?? true;
         }
 
         private bool IsRestrictionValid(string r, Space space, Player player, ActivationContext context, bool normal) => r != null && r switch

@@ -159,9 +159,8 @@ namespace KompasCore.Cards
                             int radius, int duration,
                             char cardType, string cardName,
                             string effText,
-                            string subtypeText,
-                            string[] augSubtypes)
-            : base(stats, subtext, spellTypes, fast, unique, radius, duration, cardType, cardName, effText, subtypeText, augSubtypes)
+                            string subtypeText)
+            : base(stats, subtext, spellTypes, fast, unique, radius, duration, cardType, cardName, effText, subtypeText)
         { }
 
         protected GameCardBase(SerializableCard card)
@@ -171,8 +170,7 @@ namespace KompasCore.Cards
                        card.radius, card.duration,
                        card.cardType, card.cardName,
                        card.effText,
-                       card.subtypeText,
-                       card.augSubtypes)
+                       card.subtypeText)
         { }
     }
 
@@ -233,8 +231,7 @@ namespace KompasCore.Cards
                         card.Radius, card.Duration,
                         card.CardType, card.CardName,
                         card.EffText,
-                        card.SubtypeText,
-                        card.AugmentSubtypes)
+                        card.SubtypeText)
         {
             Card = card;
             Location = card.Location;

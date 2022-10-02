@@ -94,8 +94,7 @@ namespace KompasDeckbuilder
                        card.radius, card.duration,
                        card.cardType, card.cardName,
                        card.effText,
-                       card.subtypeText,
-                       card.augSubtypes)
+                       card.subtypeText)
         {
         }
     }

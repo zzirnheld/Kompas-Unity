@@ -82,7 +82,6 @@ namespace KompasCore.Cards
         public string CardName { get; private set; }
         public string EffText { get; private set; }
         public string SubtypeText { get; private set; }
-        public string[] AugmentSubtypes { get; private set; }
 
         public string QualifiedSubtypeText => AttributesString + SubtypeText + ArgsString;
 
@@ -103,8 +102,7 @@ namespace KompasCore.Cards
         {
             get
             {
-                if (CardType == 'A') return AugmentSubtypes == null ? "" : $"Augment: {string.Join(",", AugmentSubtypes)}";
-                else if (CardType == 'S')
+                if (CardType == 'S')
                 {
                     return (SpellSubtypes.FirstOrDefault()) switch
                     {
@@ -144,8 +142,7 @@ namespace KompasCore.Cards
                                        int radius, int duration,
                                        char cardType, string cardName,
                                        string effText,
-                                       string subtypeText,
-                                       string[] augSubtypes)
+                                       string subtypeText)
         {
             n = stats.n;
             e = stats.e;
@@ -153,7 +150,7 @@ namespace KompasCore.Cards
             w = stats.w;
             c = stats.c;
             a = stats.a;
-            SetInfo(null, subtext, spellTypes, fast, unique, radius, duration, cardType, cardName, effText, subtypeText, augSubtypes);
+            SetInfo(null, subtext, spellTypes, fast, unique, radius, duration, cardType, cardName, effText, subtypeText);
         }
 
         protected void SetInfo(CardStats? stats,
@@ -162,8 +159,7 @@ namespace KompasCore.Cards
                                        int radius, int duration,
                                        char cardType, string cardName,
                                        string effText,
-                                       string subtypeText,
-                                       string[] augSubtypes)
+                                       string subtypeText)
         {
             if (stats.HasValue) SetStats(stats.Value);
 
@@ -186,7 +182,6 @@ namespace KompasCore.Cards
             CardName = cardName ?? throw new ArgumentNullException("cardName", $"A card is missing a name.");
             EffText = effText ?? throw new ArgumentNullException("effText", $"Card {CardName} is missing effect text");
             SubtypeText = subtypeText ?? string.Empty;
-            AugmentSubtypes = augSubtypes; //Null indicates a lack of required augment subtypes
         }
 
         protected void SetInfo(SerializableCard serializableCard)
@@ -195,7 +190,7 @@ namespace KompasCore.Cards
                 serializableCard.fast, serializableCard.unique,
                 serializableCard.radius, serializableCard.duration,
                 serializableCard.cardType, serializableCard.cardName,
-                serializableCard.effText, serializableCard.subtypeText, serializableCard.augSubtypes);
+                serializableCard.effText, serializableCard.subtypeText);
 
         public override string ToString()
         {

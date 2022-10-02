@@ -31,7 +31,6 @@ namespace KompasCore.Cards
         public bool fast;
         public bool unique;
         public string subtext;
-        public string[] augSubtypes;
 
         public CardStats Stats => (n, e, s, w, c, a);
     }

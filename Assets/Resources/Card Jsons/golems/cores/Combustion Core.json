@@ -49,11 +49,11 @@
 		],
 		"effectRestrictions": [
 			"Augment Effect Restrictions"
+		],
+		"augSubtypes": [
+			"Golem"
 		]
 	},
 	"a": 1,
-	"subtypeText": "Golem Core",
-	"augSubtypes": [
-		"Golem"
-	]
+	"subtypeText": "Golem Core"
 }

@@ -220,8 +220,7 @@ namespace KompasCore.Cards
                   0, 0,
                   'C', "Dummy Card",
                   "",
-                  "",
-                  new string[0])
+                  "")
         {
             CardLinkHandler = new GameCardCardLinkHandler(this);
 
@@ -235,8 +234,7 @@ namespace KompasCore.Cards
                        serializeableCard.radius, serializeableCard.duration,
                        serializeableCard.cardType, serializeableCard.cardName,
                        serializeableCard.effText,
-                       serializeableCard.subtypeText,
-                       serializeableCard.augSubtypes)
+                       serializeableCard.subtypeText)
         {
 
             FileName = CardRepository.FileNameFor(CardName);

@@ -37,11 +37,11 @@
 		],
 		"effectRestrictions": [
 			"Augment Effect Restrictions"
+		],
+		"augSubtypes": [
+			"Warrior"
 		]
 	},
 	"a": 3,
-	"subtypeText": "Sword",
-	"augSubtypes": [
-		"Warrior"
-	]
+	"subtypeText": "Sword"
 }

@@ -69,23 +69,10 @@
 			"Augment Effect Restrictions",
 			"On Card that Fits Restriction"
 		],
-		"onCardRestriction": {
-			"cardRestrictionElements": [
-				{ "$type": "Core.CardRestriction:Friendly:" },
-				{
-					"$type": "Core.CardRestriction:Location:",
-					"locations": [ "Board" ]
-				},
-				{
-					"$type": "Core.CardRestriction:SubtypesInclude:",
-					"subtypes": [ "Spy" ]
-				}
-			]
-		}
+		"augSubtypes": [
+			"Spy"
+		]
 	},
 	"a": 1,
-	"subtypeText": "Tool",
-	"augSubtypes": [
-		"Spy"
-	]
+	"subtypeText": "Tool"
 }

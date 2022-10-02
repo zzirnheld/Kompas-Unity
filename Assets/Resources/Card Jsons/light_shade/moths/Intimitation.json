@@ -66,18 +66,12 @@
 		"onCardRestriction": {
 			"cardRestrictions": [
 				"Summoned"
-			],
-			"cardRestrictionElements": [
-				{
-					"$type": "Core.CardRestriction:SubtypesInclude:",
-					"subtypes": [ "Moth" ]
-				}
 			]
-		}
+		},
+		"augSubtypes": [
+			"Moth"
+		]
 	},
 	"a": 1,
-	"subtypeText": "Adaptation",
-	"augSubtypes": [
-		"Moth"
-	]
+	"subtypeText": "Adaptation"
 }
