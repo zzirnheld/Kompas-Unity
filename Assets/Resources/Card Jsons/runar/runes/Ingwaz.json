@@ -19,13 +19,16 @@
 						"blurb": "for Ingwaz to recast",
 						"cardRestrictions": [
 							"Spell",
-							"Discard",
 							"Can Be Played",
 							"Effect Controller can Afford Cost",
 							"Distinct Name from Source"
 						],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							},
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Rune" ]

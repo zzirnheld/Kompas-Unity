@@ -42,11 +42,12 @@
 				{
 					"$type": "Subeffect:TargetAll:",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Discard"
-						],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							},
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Crazy", "Idea" ]
@@ -75,7 +76,7 @@
 								"locations": [ "Hand" ]
 							}
 						]
-					},,
+					},
 					"listRestriction": {
 						"listRestrictions": [
 							"Min Can Choose",

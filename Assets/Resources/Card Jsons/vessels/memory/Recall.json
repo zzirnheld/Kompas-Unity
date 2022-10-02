@@ -18,11 +18,14 @@
 					"cardRestriction": {
 						"blurb": "Memories to recall",
 						"cardRestrictions": [
-							"Discard",
 							"Distinct Name from Other Targets"
                         ],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							},
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Memory" ]

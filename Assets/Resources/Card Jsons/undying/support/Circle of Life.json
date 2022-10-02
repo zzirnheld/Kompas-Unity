@@ -47,7 +47,6 @@
 						"blurb": "Circle of Life",
 						"cardRestrictions": [
 							"Character",
-							"Discard",
 							"Can Be Played",
 							"Card Value Fits Number Restriction"
 						],
@@ -60,7 +59,11 @@
 							]
 						},
 						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" }
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							}
 						]
 					},
 					"xMultiplier": 1

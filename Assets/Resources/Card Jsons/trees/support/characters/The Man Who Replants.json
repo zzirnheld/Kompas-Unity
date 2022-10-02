@@ -21,10 +21,13 @@
 						"blurb": "Tree for the Man to Replant",
 						"cardRestrictions": [
 							"Character",
-							"Discard",
 							"Can Be Played"
 						],
 						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							},
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Tree" ]

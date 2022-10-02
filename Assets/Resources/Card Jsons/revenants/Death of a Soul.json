@@ -19,13 +19,16 @@
 				{
 					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
-						"blurb": "for Mother of Dragons to kill",
+						"blurb": "discard->annihilate revenant",
 						"cardRestrictions": [
-							"Discard",
 							"Not Already Target"
 						],
 						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" }
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							}
 						]
 					}
 				},

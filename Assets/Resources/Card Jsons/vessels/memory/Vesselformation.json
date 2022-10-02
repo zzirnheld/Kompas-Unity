@@ -38,11 +38,14 @@
 					"cardRestriction": {
 						"blurb": "for Vesselformation to annihilate",
 						"cardRestrictions": [
-							"Discard",
 							"Augment"
                         ],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							},
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Memory" ]

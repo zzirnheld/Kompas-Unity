@@ -29,9 +29,6 @@
 					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "card for Correctly Sized Crane to grab",
-						"cardRestrictions": [
-							"Discard"
-						],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{

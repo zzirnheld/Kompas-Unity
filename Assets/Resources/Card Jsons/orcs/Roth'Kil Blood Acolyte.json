@@ -18,11 +18,14 @@
 					"cardRestriction": {
 						"blurb": "Orc to Return",
 						"cardRestrictions": [
-							"Character",
-							"Discard"
+							"Character"
 						],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							},
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Orc" ]

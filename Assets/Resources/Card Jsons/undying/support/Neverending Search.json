@@ -24,11 +24,14 @@
 						"blurb": "Who to revive, then kill",
 						"cardRestrictions": [
 							"Character",
-							"Discard",
 							"Can Be Played"
 						],
 						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" }
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							}
 						]
 					}
 				},

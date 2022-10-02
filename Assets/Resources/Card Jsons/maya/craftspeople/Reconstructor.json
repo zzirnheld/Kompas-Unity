@@ -18,11 +18,14 @@
 						"blurb": "Structure to reconstruct",
 						"cardRestrictions": [
 							"Character",
-							"Discard",
 							"Can Be Played",
 							"Effect Controller can Afford Cost"
 						],
 						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							},
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Structure" ]

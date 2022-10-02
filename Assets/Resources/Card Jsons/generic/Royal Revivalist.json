@@ -18,8 +18,13 @@
 						"blurb": "Sire, who shall we revive?",
 						"cardRestrictions": [
 							"Character",
-							"Discard",
 							"Effect Controller can Afford Cost"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							}
 						]
 					},
 					"xMultiplier": 1

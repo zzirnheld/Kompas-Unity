@@ -18,12 +18,15 @@
 					"condition": "Card Fits Restriction",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Discard",
 							"Name Is"
 						],
 						"nameIs": "Ready",
 						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" }
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							}
 						]
 					},
 					"jumpIndices": [

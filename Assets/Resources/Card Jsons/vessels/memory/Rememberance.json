@@ -18,8 +18,13 @@
 					"cardRestriction": {
 						"blurb": "for Rememberance to annihilate",
 						"cardRestrictions": [
-							"Discard",
 							"Character"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							}
 						]
 					}
 				},
@@ -51,7 +56,6 @@
 					"cardRestriction": {
 						"blurb": "card to hand",
 						"cardRestrictions": [
-							"Discard",
                             "Card Value Fits Number Restriction"
                         ],
                         "cardValue":{
@@ -61,7 +65,11 @@
                             "numberRestrictions":["<=X"]
                         },
 						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" }
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							}
 						]
 					},
                     "xMultiplier":1
@@ -76,10 +84,11 @@
 					"$type": "Subeffect:ChooseFromList:",
 					"cardRestriction": {
 						"blurb": "Memories to recover",
-						"cardRestrictions": [
-							"Discard"
-                        ],
 						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							},
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Memory" ]
