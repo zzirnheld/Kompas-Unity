@@ -369,7 +369,7 @@ namespace KompasCore.Effects
         private bool IsRestrictionValidDebug(string restriction, GameCardBase potentialTarget, int x, ActivationContext context)
         {
             bool answer = IsRestrictionValid(restriction, potentialTarget, x, context);
-            if (!answer) Debug.Log($"{potentialTarget} flouts {restriction} in effect of {Source} in context {InitializationContext}");
+            //if (!answer) Debug.Log($"{potentialTarget} flouts {restriction} in effect of {Source} in context {InitializationContext}");
             return answer;
         }
 
@@ -382,21 +382,16 @@ namespace KompasCore.Effects
         private bool IsValidCard(GameCardBase potentialTarget, int x, ActivationContext context)
         {
             ComplainIfNotInitialized();
-            Debug.Log($"Checking valid target for card while init context is {InitializationContext}");
+            //Debug.Log($"Checking valid target for card while init context is {InitializationContext}");
 
             try
             {
                 return cardRestrictions.All(r => IsRestrictionValidDebug(r, potentialTarget, x, context))
                     && cardRestrictionElements.All(cre => cre.FitsRestriction(potentialTarget, context));
             }
-            catch (ArgumentException ae)
+            catch (SystemException exception) when (exception is NullReferenceException || exception is ArgumentException)
             {
-                Debug.LogError(ae);
-                return false;
-            }
-            catch (NullReferenceException nre)
-            {
-                Debug.LogError(nre);
+                Debug.LogError(exception);
                 return false;
             }
         }

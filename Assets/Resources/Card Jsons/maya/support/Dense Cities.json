@@ -18,7 +18,6 @@
 					"$type":"Subeffect:SetXBoardRestriction:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Subtypes Include",
                             "Space Fits Restriction"
                         ],
 						"cardRestrictionElements": [

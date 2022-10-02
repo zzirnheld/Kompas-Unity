@@ -49,17 +49,29 @@ namespace KompasCore.GameCore
 
         public bool ValidStandardPlaySpace(Space space, Player player)
         {
-            bool isFriendlyAndAdjacentToCoords(GameCard toTest, Space adjacentTo)
-                => toTest?.Controller == player && toTest.IsAdjacentTo(space);
+            /*Debug.Log($"Checking whether player {player?.index} can play a card to {space}. Cards adjacent to that space are" +
+                $"{string.Join(",", space.AdjacentSpaces.Select(BoardController.GetCardAt).Where(c => c != null).Select(c => c.CardName))}");*/
+
+            bool cardAtSpaceIsFriendly(GameCardBase card)
+            {
+                bool isFriendly = card?.Controller == player;
+                //if (isFriendly) Debug.Log($"{card} is at {card?.Position} adjacent and friendy to {space}");
+                return isFriendly;
+            }
 
             bool existsFriendlyAdjacent(Space adjacentTo)
-                => BoardController.ExistsCardOnBoard(c => isFriendlyAndAdjacentToCoords(c, adjacentTo));
+                => adjacentTo.AdjacentSpaces.Any(s => cardAtSpaceIsFriendly(BoardController.GetCardAt(s)));
 
             //first see if there's an adjacent friendly card to this space
             if (existsFriendlyAdjacent(space)) return true;
             //if there isn't, check if the player is Surrounded
             //A player can play to any space if there isn't a space that is adjacent to a friendly card
-            else return !Space.Spaces.Any(existsFriendlyAdjacent);
+            else
+            {
+                bool surrounded = !Space.Spaces.Any(existsFriendlyAdjacent);
+                Debug.Log($"Is player surrounded? {surrounded}");
+                return surrounded;
+            }
         }
 
         public bool ExistsEffectPlaySpace(PlayRestriction restriction, Effect eff)

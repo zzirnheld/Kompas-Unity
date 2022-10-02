@@ -21,7 +21,6 @@
 						"cardRestrictions": [
 							"Character",
 							"Summoned",
-							"Subtypes Include",
                             "Space Fits Restriction"
                         ],
 						"cardRestrictionElements": [

@@ -15,11 +15,9 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:ChooseFromList:",
-					"maxCanChoose": 1,
 					"cardRestriction": {
 						"blurb": "Invocation to search",
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Deck"
 						],
 						"cardRestrictionElements": [
@@ -41,5 +39,5 @@
 	"e": 2,
 	"s": 2,
 	"w": 2,
-	"subtypeText": "Cultist"
+	"subtypeText": "Mage"
 }

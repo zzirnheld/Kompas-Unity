@@ -85,7 +85,7 @@ namespace KompasServer.GameCore
                 }
                 else
                 {
-                    Debug.LogError($"Player {index} attempted an invalid play of {card} to {space}.");
+                    Debug.LogWarning($"Player {index} attempted an invalid play of {card} to {space}.");
                     ServerNotifier.NotifyPutBack();
                 }
             }

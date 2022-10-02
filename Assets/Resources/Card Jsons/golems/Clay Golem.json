@@ -28,13 +28,18 @@
 					"cardRestriction": {
 						"blurb": "for Clay Golem to summon",
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Character",
 							"Deck"
 						],
 						"cardValue": {
 							"value": "S"
-						}
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Golem" ]
+							}
+						]
 					}
 				},
 				{

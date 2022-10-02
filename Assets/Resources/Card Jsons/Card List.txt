@@ -536,20 +536,6 @@ supplicants/Prophet of Mercy
 supplicants/Havengiver
 supplicants/Havengranter
 
-swordguild/Dispeller by Sword
-swordguild/Squire
-swordguild/Swordguild Bannerman
-swordguild/Swordguild Instructor
-swordguild/Swordguild Medic
-swordguild/Swordguild Quartermaster
-swordguild/Swordguild Strategist
-swordguild/Swordguild Tactician
-swordguild/Swordguild Trainee
-swordguild/Swordguild Trainer
-swordguild/Swordmaster
-swordguild/Swordmystic
-swordguild/The General
-
 tarocco/Figurehead Jack
 tarocco/Figurehead King
 tarocco/Figurehead Knight
