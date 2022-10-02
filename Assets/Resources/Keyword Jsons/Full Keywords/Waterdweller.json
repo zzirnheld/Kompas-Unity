@@ -10,16 +10,21 @@
 				"cardRestrictions":["Not Avatar","Space Fits Restriction"],
 				"spaceRestriction":
 				{
-					"spaceRestrictions":["Not In AOE of Card Fitting Restriction"],
-					"inAOEOfRestriction":{
-						"cardRestrictionElements": [
-							{
-								"$type": "Core.CardRestriction:SubtypesInclude:",
-								"subtypes": [ "Water" ]
+					"spaceRestrictionElements": [ {
+						"$type": "Core.SpaceRestriction:Not:",
+						"negated": {
+							"$type": "Core.SpaceRestriction:InAOEOf:",
+							"anyOf": {
+								"$type": "Gamestate.ManyCards:FittingRestriction:",
+								"cardRestriction": {
+								"cardRestrictionElements": [ {
+										"$type": "Core.CardRestriction:SubtypesInclude:",
+										"subtypes": [ "Water" ]
+									} ]
+								}
 							}
-						]
-					},
-					"mustBeEmpty":false
+						}
+					} ]
 				},
 				"cardRestrictionElements": [
 					{

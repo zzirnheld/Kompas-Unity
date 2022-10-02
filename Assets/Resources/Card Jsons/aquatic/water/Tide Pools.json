@@ -23,21 +23,25 @@
 							}
 						],
 						"spaceRestriction": {
-							"spaceRestrictions": [
-								"In AOE of Card Fitting Restriction"
-							],
-							"inAOEOfRestriction": {
-								"cardRestrictions": [
-									"Distinct Name from Source"
-								],
-								"cardRestrictionElements": [
-									{
-										"$type": "Core.CardRestriction:SubtypesInclude:",
-										"subtypes": [ "Water" ]
+							"spaceRestrictionElements": [
+								{
+									"$type": "Core.SpaceRestriction:InAOEOf:",
+									"anyOf": {
+										"$type": "Gamestate.ManyCards:FittingRestriction:",
+										"cardRestriction": {
+											"cardRestrictions": [
+												"Distinct Name from Source"
+											],
+											"cardRestrictionElements": [
+												{
+													"$type": "Core.CardRestriction:SubtypesInclude:",
+													"subtypes": [ "Water" ]
+												}
+											]
+										}
 									}
-								]
-							},
-							"mustBeEmpty": false
+								}
+							]
 						}
 					}
 				}

@@ -30,17 +30,22 @@
 						],
 						"spaceRestrictionIndex":1,
 						"spaceRestriction": {
-							"spaceRestrictions": [
-								"In AOE of Card Fitting Restriction"
-							],
-							"inAOEOfRestriction": {
-								"cardRestrictionElements": [
-									{
-										"$type": "Core.CardRestriction:SubtypesInclude:",
-										"subtypes": [ "Water" ]
+							"spaceRestrictionElements": [
+								{
+									"$type": "Core.SpaceRestriction:InAOEOf:",
+									"anyOf": {
+										"$type": "Gamestate.ManyCards:FittingRestriction:",
+										"cardRestriction": {
+											"cardRestrictionElements": [
+												{
+													"$type": "Core.CardRestriction:SubtypesInclude:",
+													"subtypes": [ "Water" ]
+												}
+											]
+										}
 									}
-								]
-							}
+								}
+							]
 						}
 					}
 				},
@@ -54,17 +59,22 @@
 							"Empty"
 						],
 						"spaceConnectednessRestriction": {
-							"spaceRestrictions": [
-								"In AOE of Card Fitting Restriction"
-							],
-							"inAOEOfRestriction": {
-								"cardRestrictionElements": [
-									{
-										"$type": "Core.CardRestriction:SubtypesInclude:",
-										"subtypes": [ "Water" ]
+							"spaceRestrictionElements": [
+								{
+									"$type": "Core.SpaceRestriction:InAOEOf:",
+									"anyOf": {
+										"$type": "Gamestate.ManyCards:FittingRestriction:",
+										"cardRestriction": {
+											"cardRestrictionElements": [
+												{
+													"$type": "Core.CardRestriction:SubtypesInclude:",
+													"subtypes": [ "Water" ]
+												}
+											]
+										}
 									}
-								]
-							}
+								}
+							]
 						}
 					}
 				},
@@ -90,17 +100,22 @@
 			"Adjacent to Friendly Card"
 		],
 		"spaceRestriction": {
-			"spaceRestrictions": [
-				"In AOE of Card Fitting Restriction"
-			],
-			"inAOEOfRestriction": {
-				"cardRestrictionElements": [
-					{
-						"$type": "Core.CardRestriction:SubtypesInclude:",
-						"subtypes": [ "Water" ]
+			"spaceRestrictionElements": [
+				{
+					"$type": "Core.SpaceRestriction:InAOEOf:",
+					"anyOf": {
+						"$type": "Gamestate.ManyCards:FittingRestriction:",
+						"cardRestriction": {
+							"cardRestrictionElements": [
+								{
+									"$type": "Core.CardRestriction:SubtypesInclude:",
+									"subtypes": [ "Water" ]
+								}
+							]
+						}
 					}
-				]
-			}
+				}
+			]
 		}
 	},
 	"unique": true,

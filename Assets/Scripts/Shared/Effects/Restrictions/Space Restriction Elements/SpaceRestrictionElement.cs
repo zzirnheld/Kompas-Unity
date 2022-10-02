@@ -21,6 +21,20 @@ namespace KompasCore.Effects.Restrictions
 
     namespace SpaceRestrictionElements
     {
+        public class Not : SpaceRestrictionElement
+        {
+            public SpaceRestrictionElement negated;
+
+            public override void Initialize(EffectInitializationContext initializationContext)
+            {
+                base.Initialize(initializationContext);
+                negated.Initialize(initializationContext);
+            }
+
+            protected override bool AbstractIsValidSpace(Space space, ActivationContext context)
+                => !negated.IsValidSpace(space, context);
+        }
+
         public class Empty : SpaceRestrictionElement
         {
             protected override bool AbstractIsValidSpace(Space space, ActivationContext context)
@@ -190,6 +204,38 @@ namespace KompasCore.Effects.Restrictions
             protected override bool AbstractIsValidSpace(Space space, ActivationContext context)
             {
                 return spaces.Item.All(s => InitializationContext.game.BoardController.AreConnectedBySpaces(s, space, byRestriction, context));
+            }
+        }
+
+        public class InAOEOf : SpaceRestrictionElement
+        {
+            public INoActivationContextIdentity<GameCardBase> card;
+            public INoActivationContextIdentity<ICollection<GameCardBase>> anyOf;
+            public INoActivationContextIdentity<ICollection<GameCardBase>> allOf;
+
+            public INoActivationContextIdentity<int> minAnyOfCount;
+
+            public override void Initialize(EffectInitializationContext initializationContext)
+            {
+                base.Initialize(initializationContext);
+                card?.Initialize(initializationContext);
+                anyOf?.Initialize(initializationContext);
+                allOf?.Initialize(initializationContext);
+
+                if (new object[] { card, anyOf, allOf }.All(o => o == null))
+                    throw new System.ArgumentNullException("card", $"Provided no card/s to be in AOE of for {initializationContext.source?.CardName}");
+
+                if (minAnyOfCount == null) minAnyOfCount = Constant.ONE;
+                minAnyOfCount.Initialize(initializationContext);
+            }
+
+            protected override bool AbstractIsValidSpace(Space space, ActivationContext context)
+            {
+                if (card != null && !card.Item.SpaceInAOE(space)) return false;
+                if (anyOf != null && anyOf.Item.Count(c => c.SpaceInAOE(space)) < minAnyOfCount.Item) return false;
+                if (allOf != null && !allOf.Item.All(c => c.SpaceInAOE(space))) return false;
+
+                return true;
             }
         }
     }

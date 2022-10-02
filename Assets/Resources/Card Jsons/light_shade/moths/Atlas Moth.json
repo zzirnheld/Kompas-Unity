@@ -13,17 +13,22 @@
 			"Space Must Fit Restriction"
 		],
 		"spaceRestriction": {
-			"spaceRestrictions": [
-				"In AOE of Card Fitting Restriction"
-			],
-			"inAOEOfRestriction": {
-				"cardRestrictionElements": [
-					{
-						"$type": "Core.CardRestriction:SubtypesInclude:",
-						"subtypes": [ "Shade" ]
+			"spaceRestrictionElements": [
+				{
+					"$type": "Core.SpaceRestriction:InAOEOf:",
+					"anyOf": {
+						"$type": "Gamestate.ManyCards:FittingRestriction:",
+						"cardRestriction": {
+							"cardRestrictionElements": [
+								{
+									"$type": "Core.CardRestriction:SubtypesInclude:",
+									"subtypes": [ "Shade" ]
+								}
+							]
+						}
 					}
-				]
-			}
+				}
+			]
 		}
 	},
 	"n": 1,

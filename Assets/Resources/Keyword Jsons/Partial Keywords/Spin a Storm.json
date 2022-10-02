@@ -5,13 +5,12 @@
     {
         "$type": "Subeffect:ConditionalEnd:",
         "condition": "No Space Fits Restriction",
-        "spaceRestriction": {
+		"spaceRestriction": {
             "spaceRestrictions": [
                 "Empty",
-                "In AOE of Number of Cards Fitting Restriction",
                 "In AOE Space Target is Also In"
             ],
-            "inAOEOfRestriction": {
+            "alsoInAOEOfRestriction": {
                 "cardRestrictionElements": [
                     {
                         "$type": "Core.CardRestriction:SubtypesInclude:",
@@ -19,13 +18,23 @@
                     }
                 ]
             },
-            "numberOfCardsInAOEOfRestriction": {
-                "numberRestrictions": [
-                    ">=Constant"
-                ],
-                "constant": 2
-            }
-        }
+			"spaceRestrictionElements": [ {
+				"$type": "Core.SpaceRestriction:InAOEOf:",
+				"anyOf": {
+					"$type": "Gamestate.ManyCards:FittingRestriction:",
+					"cardRestriction": {
+					"cardRestrictionElements": [ {
+							"$type": "Core.CardRestriction:SubtypesInclude:",
+							"subtypes": [ "Weather" ]
+						} ]
+					}
+				},
+				"minAnyOfCount": { 
+					"$type": "Gamestate.Number:Constant:",
+					"constant": 2
+				}
+			} ]
+		}
     },
     {
         "$type": "Subeffect:CardTarget:",
@@ -49,27 +58,11 @@
     },
     {
         "$type": "Subeffect:SpaceTarget:",
-        "spaceRestriction": {
-            "blurb": "where to hand->summon the Weather Event",
+		"spaceRestriction": {
             "spaceRestrictions": [
                 "Empty",
-                "In AOE of Number of Cards Fitting Restriction",
-                "In AOE Card Target is Also In"
+                "In AOE Space Target is Also In"
             ],
-            "inAOEOfRestriction": {
-                "cardRestrictionElements": [
-                    {
-                        "$type": "Core.CardRestriction:SubtypesInclude:",
-                        "subtypes": [ "Weather" ]
-                    }
-                ]
-            },
-            "numberOfCardsInAOEOfRestriction": {
-                "numberRestrictions": [
-                    ">=Constant"
-                ],
-                "constant": 2
-            },
             "alsoInAOEOfRestriction": {
                 "cardRestrictionElements": [
                     {
@@ -77,8 +70,24 @@
                         "subtypes": [ "Weather" ]
                     }
                 ]
-            }
-        },
+            },
+			"spaceRestrictionElements": [ {
+				"$type": "Core.SpaceRestriction:InAOEOf:",
+				"anyOf": {
+					"$type": "Gamestate.ManyCards:FittingRestriction:",
+					"cardRestriction": {
+					"cardRestrictionElements": [ {
+							"$type": "Core.CardRestriction:SubtypesInclude:",
+							"subtypes": [ "Weather" ]
+						} ]
+					}
+				},
+				"minAnyOfCount": { 
+					"$type": "Gamestate.Number:Constant:",
+					"constant": 2
+				}
+			} ]
+		},
         "targetIndex": -2
     },
     {

@@ -17,17 +17,20 @@
             "$type": "Subeffect:SpaceTarget:",
             "spaceRestriction": {
                 "spaceRestrictions": [
-                    "In AOE of Card Fitting Restriction",
                     "Can Move Card Target to This Space"
                 ],
-                "inAOEOfRestriction": {
-					"cardRestrictionElements": [
-						{
-							"$type": "Core.CardRestriction:SubtypesInclude:",
-							"subtypes": [ "Shade" ]
-						}
-					]
-                }
+                "spaceRestrictionElements": [ {
+                    "$type": "Core.SpaceRestriction:InAOEOf:",
+                    "anyOf": {
+                        "$type": "Gamestate.ManyCards:FittingRestriction:",
+                        "cardRestriction": {
+                        "cardRestrictionElements": [ {
+                                "$type": "Core.CardRestriction:SubtypesInclude:",
+                                "subtypes": [ "Shade" ]
+                            } ]
+                        }
+                    }
+                }]
             }
         },
         {

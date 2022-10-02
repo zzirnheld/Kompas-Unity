@@ -17,25 +17,23 @@
 							"Character",
 							"Space Fits Restriction"
 						],
-						"spaceRestriction":
-						{
-							"spaceRestrictions": [
-                                "In AOE of Number of Cards Fitting Restriction"
-                            ],
-                            "inAOEOfRestriction": {
-								"cardRestrictionElements": [
-									{
-										"$type": "Core.CardRestriction:SubtypesInclude:",
-										"subtypes": [ "Weather" ]
+						"spaceRestriction": {
+							"spaceRestrictionElements": [ {
+								"$type": "Core.SpaceRestriction:InAOEOf:",
+								"anyOf": {
+									"$type": "Gamestate.ManyCards:FittingRestriction:",
+									"cardRestriction": {
+									"cardRestrictionElements": [ {
+											"$type": "Core.CardRestriction:SubtypesInclude:",
+											"subtypes": [ "Weather" ]
+										} ]
 									}
-								]
-                            },
-                            "numberOfCardsInAOEOfRestriction": {
-                                "numberRestrictions": [
-                                    ">=Constant"
-                                ],
-                                "constant": 2
-                            }
+								},
+								"minAnyOfCount": { 
+									"$type": "Gamestate.Number:Constant:",
+									"constant": 2
+								}
+							} ]
 						},
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Enemy:" }

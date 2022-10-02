@@ -14,19 +14,20 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:SpaceTarget:",
-                    "spaceRestriction": {
-                        "spaceRestrictions": [
-                            "In AOE of Card Fitting Restriction"
-                        ],
-                        "inAOEOfRestriction": {
-							"cardRestrictionElements": [
-								{
-									"$type": "Core.CardRestriction:SubtypesInclude:",
-									"subtypes": [ "Shade" ]
+					"spaceRestriction": {
+						"spaceRestrictionElements": [ {
+							"$type": "Core.SpaceRestriction:InAOEOf:",
+							"anyOf": {
+								"$type": "Gamestate.ManyCards:FittingRestriction:",
+								"cardRestriction": {
+								"cardRestrictionElements": [ {
+										"$type": "Core.CardRestriction:SubtypesInclude:",
+										"subtypes": [ "Shade" ]
+									} ]
 								}
-							]
-                        }
-                    }
+							}
+						} ]
+					}
 				},
 				{
 					"$type": "Subeffect:AutoTarget:",
