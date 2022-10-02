@@ -157,18 +157,18 @@ namespace KompasCore.Cards
                             string subtext, string[] spellTypes,
                             bool fast, bool unique,
                             int radius, int duration,
-                            char cardType, string cardName,
+                            char cardType, string cardName, string fileName,
                             string effText,
                             string subtypeText)
-            : base(stats, subtext, spellTypes, fast, unique, radius, duration, cardType, cardName, effText, subtypeText)
+            : base(stats, subtext, spellTypes, fast, unique, radius, duration, cardType, cardName, fileName, effText, subtypeText)
         { }
 
-        protected GameCardBase(SerializableCard card)
+        protected GameCardBase(SerializableCard card, string fileName)
             : this((card.n, card.e, card.s, card.w, card.c, card.a),
                        card.subtext, card.spellTypes,
                        card.fast, card.unique,
                        card.radius, card.duration,
-                       card.cardType, card.cardName,
+                       card.cardType, card.cardName, fileName,
                        card.effText,
                        card.subtypeText)
         { }
@@ -229,7 +229,7 @@ namespace KompasCore.Cards
                         card.Subtext, card.SpellSubtypes,
                         card.Fast, card.Unique,
                         card.Radius, card.Duration,
-                        card.CardType, card.CardName,
+                        card.CardType, card.CardName, card.FileName,
                         card.EffText,
                         card.SubtypeText)
         {

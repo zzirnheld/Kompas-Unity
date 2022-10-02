@@ -9,20 +9,9 @@ namespace KompasClient.UI
     {
         public DeckSelectCard Card { get; private set; }
         private DeckSelectUIController uiController;
-
-        public string FileName
+        public void SetInfo(SerializableCard card, DeckSelectUIController uiCtrl, string fileName)
         {
-            get => Card.FileName;
-            set
-            {
-                Card.FileName = value;
-                Refresh();
-            }
-        }
-
-        public void SetInfo(SerializableCard card, DeckSelectUIController uiCtrl)
-        {
-            Card = new DeckSelectCard(card);
+            Card = new DeckSelectCard(card, fileName);
             uiController = uiCtrl;
             Focus(Card);
         }
@@ -35,12 +24,12 @@ namespace KompasClient.UI
 
     public class DeckSelectCard : CardBase
     {
-        public DeckSelectCard(SerializableCard card)
+        public DeckSelectCard(SerializableCard card, string fileName)
             : base((card.n, card.e, card.s, card.w, card.c, card.a),
                        card.subtext, card.spellTypes,
                        card.fast, card.unique,
                        card.radius, card.duration,
-                       card.cardType, card.cardName,
+                       card.cardType, card.cardName, fileName,
                        card.effText,
                        card.subtypeText)
         { }

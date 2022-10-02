@@ -69,7 +69,7 @@ namespace KompasCore.GameCore
             else
             {
                 bool surrounded = !Space.Spaces.Any(existsFriendlyAdjacent);
-                Debug.Log($"Is player surrounded? {surrounded}");
+                if (surrounded) Debug.Log($"{player} is surrounded!");
                 return surrounded;
             }
         }

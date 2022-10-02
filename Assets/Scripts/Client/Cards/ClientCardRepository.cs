@@ -81,8 +81,7 @@ namespace KompasClient.Cards
             {
                 SerializableCard serializableCard = JsonConvert.DeserializeObject<SerializableCard>(json, cardLoadingSettings);
                 DeckSelectCardController card = Instantiate(prefab, parent);
-                card.SetInfo(serializableCard, uiCtrl);
-                card.FileName = cardFileNames[card.Card.CardName];
+                card.SetInfo(serializableCard, uiCtrl, cardFileNames[serializableCard.cardName]);
                 return card;
             }
             catch (System.ArgumentException argEx)

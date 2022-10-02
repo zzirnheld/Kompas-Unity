@@ -218,7 +218,7 @@ namespace KompasCore.Cards
                   string.Empty, new string[0],
                   false, false,
                   0, 0,
-                  'C', "Dummy Card",
+                  'C', "Dummy Card", "generic/The Intern",
                   "",
                   "")
         {
@@ -232,13 +232,10 @@ namespace KompasCore.Cards
                        serializeableCard.subtext, serializeableCard.spellTypes,
                        serializeableCard.fast, serializeableCard.unique,
                        serializeableCard.radius, serializeableCard.duration,
-                       serializeableCard.cardType, serializeableCard.cardName,
+                       serializeableCard.cardType, serializeableCard.cardName, CardRepository.FileNameFor(serializeableCard.cardName),
                        serializeableCard.effText,
                        serializeableCard.subtypeText)
         {
-
-            FileName = CardRepository.FileNameFor(CardName);
-
             CardLinkHandler = new GameCardCardLinkHandler(this);
 
             ID = id;

@@ -261,8 +261,7 @@ public class CardRepository : MonoBehaviour
         {
             SerializableCard serializableCard = JsonConvert.DeserializeObject<SerializableCard>(json, cardLoadingSettings);
             var card = Instantiate(DeckbuilderCharPrefab).GetComponent<DeckbuilderCardController>();
-            card.SetInfo(searchCtrl, serializableCard, inDeck);
-            card.FileName = cardFileNames[card.Card.CardName];
+            card.SetInfo(searchCtrl, serializableCard, inDeck, FileNameFor(serializableCard.cardName));
             return card;
         }
         catch (System.ArgumentException argEx)

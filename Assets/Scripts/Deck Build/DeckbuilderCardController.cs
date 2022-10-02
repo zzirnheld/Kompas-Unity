@@ -10,31 +10,17 @@ namespace KompasDeckbuilder
         protected DeckbuildSearchController cardSearchController;
         protected DeckbuilderController deckbuildCtrl => cardSearchController.DeckbuilderCtrl;
 
-        protected Image image;
+        public Image image;
 
         public DeckbuilderCard Card { get; private set; }
 
         public string BlurbString => Card.StatsString + Card.QualifiedSubtypeText;
 
-        public string FileName
+        public virtual void SetInfo(DeckbuildSearchController searchCtrl, SerializableCard card, bool inDeck, string fileName)
         {
-            get => Card.FileName;
-            set
-            {
-                Card.FileName = value;
-                SetImage();
-            }
-        }
-
-        public void Awake()
-        {
-            image = GetComponent<Image>();
-        }
-
-        public virtual void SetInfo(DeckbuildSearchController searchCtrl, SerializableCard card, bool inDeck)
-        {
-            Card = new DeckbuilderCard(card);
+            Card = new DeckbuilderCard(card, fileName);
             cardSearchController = searchCtrl;
+            SetImage();
         }
 
         public void Select()
@@ -52,6 +38,7 @@ namespace KompasDeckbuilder
 
         protected void SetImage()
         {
+            Debug.Log("Setting image");
             image.sprite = Card.SimpleSprite;
         }
 
@@ -87,12 +74,12 @@ namespace KompasDeckbuilder
 
     public class DeckbuilderCard : CardBase
     {
-        public DeckbuilderCard(SerializableCard card)
+        public DeckbuilderCard(SerializableCard card, string fileName)
             : base((card.n, card.e, card.s, card.w, card.c, card.a),
                        card.subtext, card.spellTypes,
                        card.fast, card.unique,
                        card.radius, card.duration,
-                       card.cardType, card.cardName,
+                       card.cardType, card.cardName, fileName,
                        card.effText,
                        card.subtypeText)
         {

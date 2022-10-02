@@ -18,7 +18,7 @@ namespace KompasCore.GameCore
         private static readonly System.Random rng = new System.Random();
 
         private readonly List<GameCard> deck = new List<GameCard>();
-        public IReadOnlyCollection<GameCard> Deck => Deck;
+        public IReadOnlyCollection<GameCard> Deck => deck;
 
         public int IndexOf(GameCard card) => deck.IndexOf(card);
         public int DeckSize => deck.Count;

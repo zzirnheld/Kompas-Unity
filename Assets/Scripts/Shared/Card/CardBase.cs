@@ -140,16 +140,13 @@ namespace KompasCore.Cards
                                        string subtext, string[] spellTypes,
                                        bool fast, bool unique,
                                        int radius, int duration,
-                                       char cardType, string cardName,
+                                       char cardType, string cardName, string fileName,
                                        string effText,
                                        string subtypeText)
         {
-            n = stats.n;
-            e = stats.e;
-            s = stats.s;
-            w = stats.w;
-            c = stats.c;
-            a = stats.a;
+            (n, e, s, w, c, a) = stats;
+
+            FileName = fileName;
             SetInfo(null, subtext, spellTypes, fast, unique, radius, duration, cardType, cardName, effText, subtypeText);
         }
 
@@ -167,8 +164,8 @@ namespace KompasCore.Cards
             //(check this by card name. cards should never have a pic that doesn't match their name)
             if (cardName != CardName)
             {
-                //Debug.Log($"Names are different, changing card pics to match name {card.cardName}");
-                SimpleSprite = Resources.Load<Sprite>($"Simple Sprites/{cardName}");
+                //Debug.Log($"Names are different, changing card pics to match name {FileName}");
+                SimpleSprite = Resources.Load<Sprite>($"Simple Sprites/{FileName}");
             }
             //else Debug.Log("Names match. Set Info not updating pics.");
 
