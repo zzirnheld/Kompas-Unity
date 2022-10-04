@@ -1,6 +1,7 @@
 ﻿using KompasClient.GameCore;
 using KompasCore.Cards;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace KompasClient.UI
@@ -17,6 +18,10 @@ namespace KompasClient.UI
         [Tooltip("The vector by which each pip prefab should be offset from the last")]
         public Vector3[] pipsPrefabsOffsets;
 
+        public TMP_Text pipsText;
+        public string pipsTextPrefix;
+        public TMP_Text nextTurnPipsText;
+
         private readonly List<GameObject> objsList = new List<GameObject>();
         private readonly List<PipRingsController> fivePipControllers = new List<PipRingsController>();
         private int numberOfOnePips;
@@ -32,6 +37,9 @@ namespace KompasClient.UI
         /// <param name="value"></param>
         public void ShowPipsFor(int value)
         {
+            pipsText.text = $"{pipsTextPrefix}{value}";
+            nextTurnPipsText.text = $"(+{player.clientGame.Leyload + (player.clientGame.FriendlyTurn ? 2 : 1)} next turn)";
+
             foreach (var obj in objsList) Destroy(obj);
             objsList.Clear();
 
