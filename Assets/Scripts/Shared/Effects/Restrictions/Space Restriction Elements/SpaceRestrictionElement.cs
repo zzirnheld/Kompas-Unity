@@ -168,8 +168,8 @@ namespace KompasCore.Effects.Restrictions
 
             protected override bool AbstractIsValidSpace(Space space, ActivationContext context)
                 => normalPlay
-                ? toPlay.Item.Card.PlayRestriction.IsValidNormalPlay(space, InitializationContext.Controller)
-                : toPlay.Item.Card.PlayRestriction.IsValidEffectPlay(space, InitializationContext.effect, InitializationContext.Controller, context);
+                ? toPlay.Item.Card.PlayRestriction.IsValidNormalPlay(space, InitializationContext.controller)
+                : toPlay.Item.Card.PlayRestriction.IsValidEffectPlay(space, InitializationContext.effect, InitializationContext.controller, context);
         }
 
         public class CardFitsRestriction : SpaceRestrictionElement

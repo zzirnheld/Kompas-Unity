@@ -30,6 +30,7 @@ namespace KompasServer.Effects
 
         private async Task RequestTargets()
         {
+            Debug.Log("Trying to request hand size targets");
             awaitingChoices = true;
 
             var context = new ActivationContext(game: serverGame, stackableCause: this, stackableEvent: this);

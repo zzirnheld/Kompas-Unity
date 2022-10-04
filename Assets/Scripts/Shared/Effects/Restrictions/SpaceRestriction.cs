@@ -14,7 +14,7 @@ namespace KompasCore.Effects
         public Subeffect Subeffect => InitializationContext.subeffect;
         public GameCard Source => InitializationContext.source;
         public Game Game => InitializationContext.game;
-        public Player Controller => InitializationContext.Controller;
+        public Player Controller => InitializationContext.controller;
         public Effect Effect => InitializationContext.effect;
 
         #region space restrictions
@@ -253,11 +253,10 @@ namespace KompasCore.Effects
 
         private bool IsRestrictionValidWithDebug(string r, Space space, GameCard theoreticalTarget, ActivationContext context)
         {
-            bool success;
             try
             {
-                success = IsRestrictionValid(r, space, theoreticalTarget, context);
-                if (!success) Debug.Log($"Space resetriction {r} was flouted by {space}");
+                bool success = IsRestrictionValid(r, space, theoreticalTarget, context);
+                //if (!success) Debug.Log($"Space resetriction {r} was flouted by {space}");
                 return success;
             }
             catch (NullReferenceException nre)

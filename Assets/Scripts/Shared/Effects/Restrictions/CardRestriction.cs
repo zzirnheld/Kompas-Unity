@@ -169,7 +169,7 @@ namespace KompasCore.Effects
         public string blurb = "";
 
         public GameCard Source => InitializationContext.source;
-        public Player Controller => InitializationContext.Controller;
+        public Player Controller => InitializationContext.controller;
         public Effect Effect => InitializationContext.effect;
         public Game Game => InitializationContext.game;
 

@@ -16,10 +16,10 @@ namespace KompasCore.Effects
         public readonly Trigger trigger;
         public readonly Subeffect subeffect;
 
-        public Player Controller => effect?.Controller ?? source?.Controller;
+        public readonly Player controller;
 
         public EffectInitializationContext(Game game, GameCard source, 
-            Effect effect = default, Trigger trigger = default, Subeffect subeffect = default)
+            Effect effect = default, Trigger trigger = default, Subeffect subeffect = default, Player controller = default)
         {
             this.game = game;
             this.source = source;
@@ -28,6 +28,8 @@ namespace KompasCore.Effects
 
             this.trigger = trigger;
             this.subeffect = subeffect;
+
+            this.controller = controller ?? effect?.Controller ?? source?.Controller;
         }
 
         public override string ToString()

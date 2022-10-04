@@ -12,6 +12,7 @@
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "ActivationContext.Card:MainCardBefore:" },
 							"cardRestriction": {
 								"cardRestrictionElements": [
 									{
@@ -19,8 +20,7 @@
 										"subtypes": [ "Shaper" ]
 									}
 								]
-							},
-							"card": { "$type": "ActivationContext.Card:MainCardBefore:" }
+							}
 						},
 						{
 							"$type": "Core.TriggerRestriction:CardsMatch:",
