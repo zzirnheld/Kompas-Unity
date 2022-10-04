@@ -14,7 +14,7 @@ namespace KompasCore.Effects
         public Subeffect Subeffect => InitializationContext.subeffect;
         public GameCard Source => InitializationContext.source;
         public Game Game => InitializationContext.game;
-        public Player Controller => InitializationContext.controller;
+        public Player Controller => InitializationContext.Controller;
         public Effect Effect => InitializationContext.effect;
 
         #region space restrictions
