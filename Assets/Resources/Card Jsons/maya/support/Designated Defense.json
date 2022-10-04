@@ -41,6 +41,9 @@
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Structure" ]
 							}
+						],
+						"canPlayIgnoring": [
+							"Adjacent to Friendly Card"
 						]
 					},
 					"playerIndex": 0

@@ -4,7 +4,7 @@
 	"effText": "Once each turn, you can show a Spirit. Deck->hand an Invocation, then topdeck the Spirit.",
 	"effects": [
 		{
-			"blurb": "DOOM cometh!",
+			"blurb": "I hear a Spirit!",
 			"activationRestriction": {
 				"activationRestrictionArray": [
 					"Max Times Per Turn",
@@ -13,6 +13,26 @@
 				]
 			},
 			"subeffects": [
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "Spirit to reveal for Spiritual Medium",
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            },
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Spirit" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:Show:"
+				},
 				{
 					"$type": "Subeffect:ChooseFromList:",
 					"cardRestriction": {
@@ -31,6 +51,10 @@
 				},
 				{
 					"$type": "Subeffect:Rehand:"
+				},
+				{
+					"$type": "Subeffect:Topdeck:",
+					"targetIndex": 0
 				}
 			]
 		}

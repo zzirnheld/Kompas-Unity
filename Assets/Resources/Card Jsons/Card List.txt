@@ -188,6 +188,7 @@ invokers/Waungh Invoker
 invokers/Novice Invocation
 invokers/Forlorn Invocation
 invokers/Peruser of Ancient Texts
+invokers/Spiritual Medium
 
 invokers/spirits/A Lot of Disappointment
 invokers/spirits/Allconsuming Frustration
