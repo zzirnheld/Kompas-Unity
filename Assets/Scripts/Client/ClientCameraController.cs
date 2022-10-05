@@ -38,17 +38,26 @@ public class ClientCameraController : MonoBehaviour
 
     private void Update()
     {
-        if (transform.position.y > MinCameraHeight || Input.mouseScrollDelta.y < 0)
+        if (Input.mouseScrollDelta.y != 0f)
         {
-            var tempHeight = transform.position.y;
-            if (clientGame.canZoom && !EventSystem.current.IsPointerOverGameObject())
-                transform.Translate(ZoomFactor * Input.mouseScrollDelta.y * Vector3.forward);
+            //Shift-scroll means rotate
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                transform.Rotate(Vector3.forward * Input.mouseScrollDelta.y, RotationAngle);
+            }
+            //Normal scroll means zoom
+            else if (transform.position.y > MinCameraHeight || Input.mouseScrollDelta.y < 0)
+            {
+                var tempHeight = transform.position.y;
+                if (clientGame.canZoom && !EventSystem.current.IsPointerOverGameObject())
+                    transform.Translate(ZoomFactor * Input.mouseScrollDelta.y * Vector3.forward);
 
-            //if just crossed the threshold for showing cards as zoomed or no, update cards accordingly
-            if (tempHeight > ZoomThreshold && transform.position.y <= ZoomThreshold)
-                clientGame.ShowCardsByZoom(true);
-            else if (tempHeight <= ZoomThreshold && transform.position.y > ZoomThreshold)
-                clientGame.ShowCardsByZoom(false);
+                //if just crossed the threshold for showing cards as zoomed or no, update cards accordingly
+                if (tempHeight > ZoomThreshold && transform.position.y <= ZoomThreshold)
+                    clientGame.ShowCardsByZoom(true);
+                else if (tempHeight <= ZoomThreshold && transform.position.y > ZoomThreshold)
+                    clientGame.ShowCardsByZoom(false);
+            }
         }
 
 
