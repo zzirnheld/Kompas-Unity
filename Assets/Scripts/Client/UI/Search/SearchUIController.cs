@@ -72,7 +72,7 @@ namespace KompasClient.UI.Search
             //Clear focus so player must click on card twice to select
             if (CurrSearchData.toSearch.Contains(cardViewController.FocusedCard)
                 && cardViewController.FocusedCard is GameCard gameCard
-                && gameCard.InHiddenLocation)
+                && gameCard.InHiddenLocation) //TODO maybe remove this one? or maybe ignore the top one? dunno
                 cardViewController.Focus(null);
 
             gameObject.SetActive(true);
