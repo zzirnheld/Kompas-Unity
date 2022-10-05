@@ -241,8 +241,10 @@ namespace KompasClient.GameCore
             else ShowNoTargets();
         }
 
-        public override bool IsCurrentTarget(GameCard card) => searchCtrl.CurrSearchData.HasValue && searchCtrl.CurrSearchData.Value.searched.Contains(card);
-        public override bool IsValidTarget(GameCard card) => searchCtrl.CurrSearchData.HasValue && searchCtrl.CurrSearchData.Value.toSearch.Contains(card);
+        public override bool IsCurrentTarget(GameCard card) => searchCtrl.IsCurrentlyTargeted(card);
+        public override bool IsValidTarget(GameCard card) => searchCtrl.IsValidTarget(card);
+
+        public override CardBase FocusedCard => clientUIController.cardInfoViewUIController.FocusedCard;
         #endregion targeting
     }
 }

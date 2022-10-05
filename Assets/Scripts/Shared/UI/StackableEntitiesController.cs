@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace KompasCore.UI
@@ -17,6 +18,9 @@ namespace KompasCore.UI
         public int layer;
         public float colliderPadding = 1.1f;
         public BoxCollider boxCollider;
+
+        public Transform behind;
+        public float behindBoundsMultiplier;
 
         protected virtual IEnumerable<GameObject> Objects { get; private set; } = null;
 
@@ -68,7 +72,7 @@ namespace KompasCore.UI
             if (Objects == null) throw new System.ArgumentException("Tried to collapse a StackableEntitiesController that wasn't initialized!");
             OffsetSelf(0f);
             ShowCollapsed();
-            UpdateColliders();
+            UpdateColliders(false);
             collapsed = true;
         }
 
@@ -77,7 +81,7 @@ namespace KompasCore.UI
             if (Objects == null) throw new System.ArgumentException("Tried to expand a StackableEntitiesController that wasn't initialized!");
             OffsetSelf(whileExpandedOffset);
             ShowExpanded();
-            UpdateColliders();
+            UpdateColliders(true);
             collapsed = false;
         }
 
@@ -85,6 +89,7 @@ namespace KompasCore.UI
         {
             transform.localPosition -= currOffset;
             currOffset = LocalMeToCamera * offset;
+            //if (Objects.Count() > 0) currOffset += transform.TransformPoint(Objects.Last().transform.position) - transform.localPosition;
             transform.localPosition += currOffset;
         }
 
@@ -115,7 +120,7 @@ namespace KompasCore.UI
             else return new Bounds();
         }
 
-        private void UpdateColliders()
+        private void UpdateColliders(bool showBehind)
         {
             bool firstLoop = true;
             Bounds totalBounds = default;
@@ -133,6 +138,14 @@ namespace KompasCore.UI
 
             boxCollider.size = totalBounds.size * colliderPadding;
             boxCollider.center = transform.InverseTransformPoint(totalBounds.center) + (0.5f * Vector3.down);
+
+            behind.gameObject.SetActive(showBehind);
+            if (showBehind)
+            {
+                behind.localScale = totalBounds.extents * behindBoundsMultiplier;
+                behind.position = totalBounds.center;
+                behind.Translate(Vector3.down * 0.5f);
+            }
         }
         #endregion collider
     }

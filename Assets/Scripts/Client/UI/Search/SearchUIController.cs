@@ -32,6 +32,8 @@ namespace KompasClient.UI.Search
         private bool Searching => searchController.CurrSearchData.HasValue;
         private ClientSearchController.SearchData CurrSearchData => searchController.CurrSearchData.GetValueOrDefault();
 
+        private SearchCardViewController lastClicked;
+
         public bool CardCurrentlyTargeted(GameCard card) => searchController.CurrSearchData.HasValue && searchController.CurrSearchData.Value.searched.Contains(card);
 
         public void HideSearch()
@@ -116,6 +118,9 @@ namespace KompasClient.UI.Search
             //Do focus last so it can accurately display that the card is now a target
             cardViewController.Focus(searchCardViewController.CardController.Card, lockFocus: true);
             endButton.SetActive(CurrSearchData.HaveEnough);
+
+            if (lastClicked != null) lastClicked.Refresh();
+            lastClicked = searchCardViewController;
         }
     }
 }

@@ -83,8 +83,10 @@ namespace KompasCore.GameCore
             foreach (var c in Cards) c.ResetForTurn(TurnPlayer);
         }
 
-        public abstract bool IsCurrentTarget(GameCard card);
-        public abstract bool IsValidTarget(GameCard card);
+        public virtual bool IsCurrentTarget(GameCard card) => false;
+        public virtual bool IsValidTarget(GameCard card) => false;
+
+        public virtual CardBase FocusedCard => null;
 
         public virtual void Lose(int controllerIndex) { }
     }

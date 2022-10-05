@@ -1,7 +1,6 @@
 using KompasCore.Cards;
 using KompasCore.UI;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 namespace KompasClient.UI.Search
 {
@@ -23,7 +22,9 @@ namespace KompasClient.UI.Search
 
         protected override void DisplaySpecialEffects()
         {
-            currentTargetObject.SetActive(ShownGameCard.Game.IsCurrentTarget(ShownGameCard));
+            base.DisplaySpecialEffects();
+            //Never show the valid target object. it's implied.
+            validTargetObject.SetActive(false);
         }
 
         public void OnMouseOver()
