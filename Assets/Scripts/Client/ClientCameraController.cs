@@ -8,7 +8,7 @@ public class ClientCameraController : MonoBehaviour
     public static bool MainZoomed => Main == null ? false : Main.Zoomed;
 
     public const float ZoomFactor = 3f;
-    public const float PanFactorBase = 0.04f;
+    public const float PanFactorBase = 0.4f;
     public const float RotationFactorBase = 1f;
     public const float MinCameraHeight = 2f;
     public const float MaxCameraHeight = 30f;
@@ -36,7 +36,7 @@ public class ClientCameraController : MonoBehaviour
         Main = this;
     }
 
-    public void Update()
+    private void Update()
     {
         if (transform.position.y > MinCameraHeight || Input.mouseScrollDelta.y < 0)
         {
@@ -51,16 +51,15 @@ public class ClientCameraController : MonoBehaviour
                 clientGame.ShowCardsByZoom(false);
         }
 
-        if (Input.GetKey(KeyCode.W)) transform.Translate(Up);
-        if (Input.GetKey(KeyCode.S)) transform.Translate(Down);
-        if (Input.GetKey(KeyCode.A)) transform.Translate(Left);
-        if (Input.GetKey(KeyCode.D)) transform.Translate(Right);
 
-        if (Input.GetKey(KeyCode.Q)) transform.Rotate(Vector3.back, RotationAngle);
-        if (Input.GetKey(KeyCode.E)) transform.Rotate(Vector3.forward, RotationAngle);
+        if (Input.GetKey(KeyCode.W)) transform.Translate(Up * Time.deltaTime);
+        if (Input.GetKey(KeyCode.S)) transform.Translate(Down * Time.deltaTime);
+        if (Input.GetKey(KeyCode.A)) transform.Translate(Left * Time.deltaTime);
+        if (Input.GetKey(KeyCode.D)) transform.Translate(Right * Time.deltaTime);
+
+        if (Input.GetKey(KeyCode.Q)) transform.Rotate(Vector3.back * Time.deltaTime, RotationAngle);
+        if (Input.GetKey(KeyCode.E)) transform.Rotate(Vector3.forward * Time.deltaTime, RotationAngle);
 
         if (Input.GetKeyUp(KeyCode.Space)) transform.eulerAngles = new Vector3(90f, 0f, 0f);
-
-        //selectedCardGameObject.transform.LookAt(transform, Vector3.up);
     }
 }
