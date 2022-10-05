@@ -116,7 +116,7 @@ namespace KompasClient.GameCore
 
         public void PutCardsBack()
         {
-            foreach (var c in dirtyCardList) c.CardController.PutBack();
+            foreach (var c in dirtyCardList) if (c.CardController != null) c.CardController.PutBack();
             dirtyCardList.Clear();
         }
 

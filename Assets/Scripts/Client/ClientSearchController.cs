@@ -192,5 +192,9 @@ namespace KompasClient.GameCore
             //and change the game's target mode TODO should this do this
             clientGame.clientUIController.TargetMode = TargetMode.OnHold;
         }
+
+        public bool IsCurrentlyTargeted(GameCard card) => CurrSearchData?.searched.Contains(card) ?? false;
+
+        public bool IsValidTarget(GameCard card) => (CurrSearchData?.toSearch.Contains(card) ?? false) && !IsCurrentlyTargeted(card);
     }
 }

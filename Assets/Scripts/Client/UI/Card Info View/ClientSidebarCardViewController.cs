@@ -67,6 +67,7 @@ namespace KompasClient.UI
             //If the card is null, we're trying to clear 
             focusLocked = lockFocus && card != null;
             base.Focus(card);
+            (card as ClientGameCard)?.CardController.gameCardViewController.Refresh();
             oldFocus?.CardController.gameCardViewController.Refresh();
             (FocusedCard as ClientGameCard)?.CardController.gameCardViewController.Refresh();
         }

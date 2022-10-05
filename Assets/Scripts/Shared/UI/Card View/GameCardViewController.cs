@@ -182,6 +182,9 @@ namespace KompasCore.UI
                 enemyCardFrameMaterial.color = settings.EnemyColor;
 
                 focusedCardObject.SetActive(clientGame.clientUIController.cardInfoViewUIController.FocusedCard == FocusedCard);
+
+                currentTargetObject.SetActive(clientGame.searchCtrl.IsCurrentlyTargeted(ShownGameCard));
+                validTargetObject.SetActive(clientGame.searchCtrl.IsValidTarget(ShownGameCard));
             }
         }
 
