@@ -69,6 +69,11 @@ namespace KompasClient.UI.Search
             }
 
             var toSearch = CurrSearchData.toSearch.GroupBy(c => c, this).ToList();
+            //Clear focus so player must click on card twice to select
+            if (CurrSearchData.toSearch.Contains(cardViewController.FocusedCard)
+                && cardViewController.FocusedCard is GameCard gameCard
+                && gameCard.InHiddenLocation)
+                cardViewController.Focus(null);
 
             gameObject.SetActive(true);
             endButton.SetActive(CurrSearchData.HaveEnough);

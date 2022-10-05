@@ -37,6 +37,13 @@ namespace KompasClient.UI.Search
             searchUIController.cardViewController.Show(CardController.Card);
         }
 
+        public void OnMouseExit()
+        {
+            if (searchUIController.cardViewController.FocusedCard != shownCard
+                && searchUIController.cardViewController.ShownCard == shownCard)
+                searchUIController.cardViewController.Show(null);
+        }
+
         public void OnMouseUp()
         {
             Debug.Log($"Clicked {CardController.Card} for search");

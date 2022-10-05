@@ -18,6 +18,7 @@ namespace KompasCore.UI
         /// If we're not currently doing something like hovering over another card, this is the one we should be showing
         /// </summary>
         public CardBase FocusedCard { get; private set; }
+        public CardBase ShownCard => shownCard;
 
         /// <summary>
         /// Focus on a given card.

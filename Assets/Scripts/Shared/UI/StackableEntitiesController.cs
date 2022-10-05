@@ -28,7 +28,7 @@ namespace KompasCore.UI
         private Vector3 currOffset = Vector3.zero;
 
         private int LayerMask => 1 << layer;
-        private Vector3 LocalMeToCamera => transform.InverseTransformVector(Camera.main.transform.position - transform.position).normalized;
+        private Vector3 LocalMeToCamera => (Camera.main.transform.position - transform.position).normalized;
 
         protected virtual bool ForceExpand => false;
         protected virtual bool ForceCollapse => false;
@@ -87,10 +87,10 @@ namespace KompasCore.UI
 
         private void OffsetSelf(float offset)
         {
-            transform.localPosition -= currOffset;
+            transform.position -= currOffset;
             currOffset = LocalMeToCamera * offset;
-            //if (Objects.Count() > 0) currOffset += transform.TransformPoint(Objects.Last().transform.position) - transform.localPosition;
-            transform.localPosition += currOffset;
+            if (Objects.Count() > 0 && offset != 0) currOffset += Objects.Last().transform.position - transform.position;
+            transform.position += currOffset;
         }
 
         protected virtual void ShowCollapsed() => ShowWithOffset(collapsedOffset);
@@ -144,7 +144,7 @@ namespace KompasCore.UI
             {
                 behind.localScale = totalBounds.extents * behindBoundsMultiplier;
                 behind.position = totalBounds.center;
-                behind.Translate(Vector3.down * 0.5f);
+                behind.Translate(Vector3.down * 0.15f);
             }
         }
         #endregion collider
