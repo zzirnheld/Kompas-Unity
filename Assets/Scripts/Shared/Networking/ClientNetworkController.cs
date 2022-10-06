@@ -37,6 +37,7 @@ namespace KompasClient.Networking
         protected override void Update()
         {
             base.Update();
+            if (connecting) return;
             if (packets.Count != 0) ProcessPacket(packets.Dequeue());
         }
 

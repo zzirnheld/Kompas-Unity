@@ -14,7 +14,7 @@ namespace KompasServer.Effects
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
             base.Initialize(eff, subeffIndex);
-            if (jumpIndices == null) throw new System.ArgumentNullException("jumpIndices");
+            if (jumpIndices == null) throw new System.ArgumentNullException(nameof(jumpIndices));
         }
 
         protected override IEnumerable<HangingEffect> CreateHangingEffects()

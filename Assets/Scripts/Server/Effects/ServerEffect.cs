@@ -68,7 +68,7 @@ namespace KompasServer.Effects
         /// <param name="newSubeffects"></param>
         public void InsertSubeffects(int startingAtIndex, params ServerSubeffect[] newSubeffects)
         {
-            if (newSubeffects == null) throw new System.ArgumentNullException("Can't insert null subeffects");
+            if (newSubeffects == null) throw new System.ArgumentNullException(nameof(newSubeffects), "Can't insert null subeffects");
 
             //First, update the subeffect jump indices
             //Of the subeffects to be inserted

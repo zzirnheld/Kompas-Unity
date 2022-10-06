@@ -139,12 +139,15 @@ namespace KompasCore.UI
             boxCollider.size = totalBounds.size * colliderPadding;
             boxCollider.center = transform.InverseTransformPoint(totalBounds.center) + (0.5f * Vector3.down);
 
-            behind.gameObject.SetActive(showBehind);
-            if (showBehind)
+            if (behind != null)
             {
-                behind.localScale = totalBounds.extents * behindBoundsMultiplier;
-                behind.position = totalBounds.center;
-                behind.Translate(Vector3.down * 0.15f);
+                behind.gameObject.SetActive(showBehind);
+                if (showBehind)
+                {
+                    behind.localScale = totalBounds.extents * behindBoundsMultiplier;
+                    behind.position = totalBounds.center;
+                    behind.Translate(Vector3.down * 0.15f);
+                }
             }
         }
         #endregion collider

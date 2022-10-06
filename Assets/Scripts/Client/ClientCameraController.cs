@@ -8,7 +8,7 @@ public class ClientCameraController : MonoBehaviour
     public static bool MainZoomed => Main == null ? false : Main.Zoomed;
 
     public const float ZoomFactor = 3f;
-    public const float PanFactorBase = 0.4f;
+    public const float PanFactorBase = 4f;
     public const float RotationFactorBase = 1f;
     public const float MinCameraHeight = 2f;
     public const float MaxCameraHeight = 30f;

@@ -160,8 +160,7 @@ namespace KompasClient.GameCore
             clientUIController.ChangeTurn(TurnPlayerIndex);
             if (TurnPlayerIndex == FirstTurnPlayer) RoundCount++;
             TurnCount++;
-            clientUIController.FriendlyPips = Players[0].Pips;
-            clientUIController.EnemyPips = Players[1].Pips;
+            foreach (var player in Players) player.Pips = player.Pips;
         }
 
         public override GameCard GetCardWithID(int id) => cardsByID.ContainsKey(id) ? cardsByID[id] : null;

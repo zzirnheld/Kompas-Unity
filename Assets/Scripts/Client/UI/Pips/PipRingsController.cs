@@ -19,7 +19,7 @@ public class PipRingsController : MonoBehaviour
             ringRigidbodies[i] = rings[i].GetComponent<Rigidbody>();
         }
 
-        InvokeRepeating("AddRandomForce", 0.0f, 0.5f);
+        InvokeRepeating(nameof(AddRandomForce), 0.0f, 0.5f);
     }
 
     private void AddRandomForce()
@@ -34,7 +34,7 @@ public class PipRingsController : MonoBehaviour
 
     public void ShowRings(int numToShow)
     {
-        Debug.Log($"Showing {numToShow} rings");
+        //Debug.Log($"Showing {numToShow} rings");
         transform.rotation = Quaternion.identity;
         //Move last active ring down
         foreach (var ring in rings)

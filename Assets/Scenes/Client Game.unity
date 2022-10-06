@@ -3451,6 +3451,8 @@ MonoBehaviour:
   layer: 12
   colliderPadding: 1.1
   boxCollider: {fileID: 116530642}
+  behind: {fileID: 0}
+  behindBoundsMultiplier: 0
   localXOffset: 2
   localZOffset: -2
   discardController: {fileID: 116530641}
@@ -9676,6 +9678,8 @@ MonoBehaviour:
   layer: 12
   colliderPadding: 1.1
   boxCollider: {fileID: 540378488}
+  behind: {fileID: 0}
+  behindBoundsMultiplier: 0
   localXOffset: 2
   localZOffset: -2
   discardController: {fileID: 540378492}
@@ -10017,7 +10021,7 @@ MonoBehaviour:
   pipIntervals: 0500000001000000
   pipsPrefabs:
   - {fileID: 7763906538448627419, guid: 2b22702362635be478b55c600f3305d2, type: 3}
-  - {fileID: 6844806107006139539, guid: bd9a313146287654fa3ee31d26396099, type: 3}
+  - {fileID: 4381847626582636201, guid: 1f7f8ae00ffcee34b8976dc03e354902, type: 3}
   pipsPrefabsOffsets:
   - {x: -0.75, y: 0, z: 0.75}
   - {x: -0.6, y: 0, z: 0.6}
@@ -12188,6 +12192,8 @@ MonoBehaviour:
   layer: 12
   colliderPadding: 1
   boxCollider: {fileID: 696614911}
+  behind: {fileID: 0}
+  behindBoundsMultiplier: 0
   localXOffset: 2
   localZOffset: -2
   annihilationController: {fileID: 696614910}
@@ -14031,6 +14037,8 @@ MonoBehaviour:
   layer: 12
   colliderPadding: 1
   boxCollider: {fileID: 803167339}
+  behind: {fileID: 0}
+  behindBoundsMultiplier: 0
   localXOffset: 2
   localZOffset: 2
   annihilationController: {fileID: 803167337}
@@ -16797,7 +16805,7 @@ GameObject:
   - component: {fileID: 1006522081}
   - component: {fileID: 1006522080}
   m_Layer: 5
-  m_Name: Friendly Pips Text
+  m_Name: Enemy Pips Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18304,7 +18312,6 @@ GameObject:
   - component: {fileID: 1110181317}
   - component: {fileID: 1110181316}
   - component: {fileID: 1110181314}
-  - component: {fileID: 1110181315}
   m_Layer: 5
   m_Name: Friendly Pips Bkgd
   m_TagString: Untagged
@@ -18347,29 +18354,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0.75294125, g: 0.5803922, b: 0, a: 0.5}
   m_EffectDistance: {x: 3, y: 3}
   m_UseGraphicAlpha: 1
---- !u!114 &1110181315
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1110181312}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1114e75f4373c4246bc84dd8b734bccd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1829834588}
-  pipIntervals: 0100000005000000
-  pipsPrefabs:
-  - {fileID: 6844806107006139539, guid: bd9a313146287654fa3ee31d26396099, type: 3}
-  - {fileID: 8305099513132462644, guid: 90a2d65118617cd47b3dbc44119670d2, type: 3}
-  pipsPrefabsOffsets:
-  - {x: 1, y: 0, z: 1}
-  - {x: 1, y: 0, z: 1}
-  pipsText: {fileID: 0}
-  pipsTextPrefix: 
-  nextTurnPipsText: {fileID: 0}
 --- !u!114 &1110181316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30213,7 +30197,7 @@ MonoBehaviour:
   pipIntervals: 0500000001000000
   pipsPrefabs:
   - {fileID: 7763906538448627419, guid: 2b22702362635be478b55c600f3305d2, type: 3}
-  - {fileID: 6844806107006139539, guid: bd9a313146287654fa3ee31d26396099, type: 3}
+  - {fileID: 4381847626582636201, guid: 1f7f8ae00ffcee34b8976dc03e354902, type: 3}
   pipsPrefabsOffsets:
   - {x: 0.75, y: 0, z: 0.75}
   - {x: 0.6, y: 0, z: 0.6}
@@ -36489,7 +36473,7 @@ MonoBehaviour:
   reminderTextsUIController: {fileID: 565991505}
   clientGame: {fileID: 492080563}
   effectsUIController: {fileID: 0}
-  pipsUIController: {fileID: 1110181315}
+  pipsUIController: {fileID: 561498308}
   searchUICtrl: {fileID: 892030876}
   alreadySelectedMarker: {fileID: 1774972032}
   conditionParentObject: {fileID: 0}

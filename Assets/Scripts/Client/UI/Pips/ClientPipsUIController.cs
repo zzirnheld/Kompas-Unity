@@ -1,6 +1,7 @@
 ﻿using KompasClient.GameCore;
 using KompasCore.Cards;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -23,33 +24,52 @@ namespace KompasClient.UI
         public TMP_Text nextTurnPipsText;
 
         private readonly List<GameObject> objsList = new List<GameObject>();
-        private readonly List<PipRingsController> fivePipControllers = new List<PipRingsController>();
-        private int numberOfOnePips;
 
+        //private readonly Dictionary<int, List<PipRingsController>> pipControllers = new Dictionary<int, List<PipRingsController>>();
+        public Dictionary<int, List<PipRingsController>> pipRingsControllers;
+
+        private int pips;
         public int Pips
         {
-            set => ShowPipsFor(value);
+            set
+            {
+                pips = value;
+                ShowPipsFor(value);
+            }
+            get => pips;
+        }
+
+        private void Awake()
+        {
+            pipRingsControllers = new Dictionary<int, List<PipRingsController>>();
+
+            foreach (var interval in pipIntervals)
+            {
+                Debug.Log($"Intervals added for {interval}");
+                pipRingsControllers[interval] = new List<PipRingsController>();
+            }
+
+            Debug.Log($"Pip controllers are now {string.Join(", ", pipRingsControllers.Keys.Select(k => $"{k}"))} for  {gameObject.name} number {gameObject.GetHashCode()}");
         }
 
         /// <summary>
         /// Shows a number of pips currently owned by this player
         /// </summary>
         /// <param name="value"></param>
-        public void ShowPipsFor(int value)
+        private void ShowPipsFor(int value)
         {
+            Debug.Log($"Updating player {player.index} pips to {value} while leyload is {player.clientGame.Leyload} and turn player is {player.clientGame.TurnPlayer.index}");
             pipsText.text = $"{pipsTextPrefix}{value}";
-            nextTurnPipsText.text = $"(+{player.clientGame.Leyload + (player.clientGame.FriendlyTurn ? 2 : 1)} next turn)";
+            nextTurnPipsText.text = $"(+{player.clientGame.Leyload + (player.clientGame.TurnPlayer.index == player.index ? 2 : 1)} next turn)";
 
             foreach (var obj in objsList) Destroy(obj);
             objsList.Clear();
 
-            fivePipControllers.Clear();
-            numberOfOnePips = 0;
+            foreach (var list in pipRingsControllers.Values) list.Clear();
 
             Vector3 offset = Vector3.zero;
-            for (int i = 0; i < pipIntervals.Length; i++)
+            foreach(var (i, interval) in pipIntervals.Enumerate())
             {
-                int interval = pipIntervals[i];
                 while (value >= interval)
                 {
                     var obj = Instantiate(pipsPrefabs[i], parent: transform);
@@ -58,8 +78,7 @@ namespace KompasClient.UI
                     offset += pipsPrefabsOffsets[i];
                     value -= interval;
 
-                    if (interval == 5) fivePipControllers.Add(obj.GetComponent<PipRingsController>());
-                    else if (interval == 1) numberOfOnePips++;
+                    pipRingsControllers[interval].Add(obj.GetComponent<PipRingsController>());
 
                     objsList.Add(obj);
                 }
@@ -73,11 +92,9 @@ namespace KompasClient.UI
         /// <param name="value"></param>
         public void HighlightPipsFor(int value)
         {
-            //Debug.Log($"Highlighitng {value} pips");
-            if (value == 0 || (value > numberOfOnePips + (fivePipControllers.Count * 5)))
+            if (value == 0 || (value > pips))
             {
-                //Debug.Log($"Bad value {value}, showing no pips");
-                foreach (var fpc in fivePipControllers)
+                foreach(var list in pipRingsControllers.Values) foreach (var fpc in list)
                 {
                     fpc.ShowRings(0);
                 }
@@ -85,18 +102,35 @@ namespace KompasClient.UI
 
             int toDisplay = value;
 
-            //TODO later actually make the one pip rings spin.
-            toDisplay -= numberOfOnePips;
-
-            for (int i = 0; i < fivePipControllers.Count; i++)
+            foreach (int interval in pipIntervals)
             {
-                if (toDisplay > 0)
+                var list = pipRingsControllers[interval];
+
+                foreach (PipRingsController pipRings in list)
                 {
-                    //Debug.Log($"{toDisplay} rings left to show");
-                    fivePipControllers[i].ShowRings(Mathf.Min(toDisplay, 5));
-                    toDisplay -= 5;
+                    if (toDisplay >= interval)
+                    {
+                        pipRings.ShowRings(interval);
+                        toDisplay -= interval;
+                    }
+                    else
+                    {
+                        //Account for situations where you have more of the larger one and not enough of the smaller ones
+                        //Don't pay with pennies if you have to break a nickel anyway
+                        int remainingCapacity = pipRingsControllers
+                            .Where(keyVal => keyVal.Key < interval)
+                            .Select(keyVal => keyVal.Key * keyVal.Value.Count())
+                            .Sum();
+
+                        if (toDisplay > 0 && remainingCapacity < toDisplay)
+                        {
+                            pipRings.ShowRings(toDisplay);
+                            toDisplay = 0;
+                        }
+                        else pipRings.ShowRings(0);
+
+                    }
                 }
-                else fivePipControllers[i].ShowRings(0);
             }
         }
 
