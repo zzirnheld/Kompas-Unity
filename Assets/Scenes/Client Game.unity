@@ -10024,7 +10024,7 @@ MonoBehaviour:
   - {fileID: 4381847626582636201, guid: 1f7f8ae00ffcee34b8976dc03e354902, type: 3}
   pipsPrefabsOffsets:
   - {x: -0.75, y: 0, z: 0.75}
-  - {x: -0.6, y: 0, z: 0.6}
+  - {x: -0.3, y: 0, z: 0.3}
   pipsText: {fileID: 419672787}
   pipsTextPrefix: 'Pips: '
   nextTurnPipsText: {fileID: 2139283024}
@@ -30200,7 +30200,7 @@ MonoBehaviour:
   - {fileID: 4381847626582636201, guid: 1f7f8ae00ffcee34b8976dc03e354902, type: 3}
   pipsPrefabsOffsets:
   - {x: 0.75, y: 0, z: 0.75}
-  - {x: 0.6, y: 0, z: 0.6}
+  - {x: 0.3, y: 0, z: 0.3}
   pipsText: {fileID: 1031544687}
   pipsTextPrefix: 'Pips: '
   nextTurnPipsText: {fileID: 1482303043}
