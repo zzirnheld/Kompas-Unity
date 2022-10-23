@@ -20,7 +20,6 @@ namespace KompasClient.UI
         public Vector3[] pipsPrefabsOffsets;
 
         public TMP_Text pipsText;
-        public string pipsTextPrefix;
         public TMP_Text nextTurnPipsText;
 
         private readonly List<GameObject> objsList = new List<GameObject>();
@@ -59,8 +58,7 @@ namespace KompasClient.UI
         private void ShowPipsFor(int value)
         {
             Debug.Log($"Updating player {player.index} pips to {value} while leyload is {player.clientGame.Leyload} and turn player is {player.clientGame.TurnPlayer.index}");
-            pipsText.text = $"{pipsTextPrefix}{value}";
-            nextTurnPipsText.text = $"(+{player.clientGame.Leyload + (player.clientGame.TurnPlayer.index == player.index ? 2 : 1)} next turn)";
+            nextTurnPipsText.text = $"{player.clientGame.Leyload + (player.clientGame.TurnPlayer.index == player.index ? 2 : 1)}";
 
             foreach (var obj in objsList) Destroy(obj);
             objsList.Clear();
