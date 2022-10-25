@@ -15,26 +15,26 @@
 			},
 			"subeffects": [
                 {
-                    "$type":"KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+                    "$type":"Subeffect:TargetAugmentedCard:"
                 },
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp",
+					"$type":"Subeffect:TargetTriggeringCard:",
 					"secondary":true
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "W"
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeCardStats:",
 					"eMultiplier": 1,
                     "targetIndex": -2
 				},
 				{
-					"$type": "KompasServer.Effects.ResummonSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Resummon:",
                     "targetIndex": -2
 				}
 			]
@@ -51,10 +51,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetAugmentedCard:"
 				},
 				{
-					"$type": "KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Annihilate:"
 				}
 			]
 		}

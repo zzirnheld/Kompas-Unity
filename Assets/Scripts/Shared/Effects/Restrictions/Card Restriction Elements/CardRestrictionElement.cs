@@ -1,5 +1,6 @@
 using KompasCore.Cards;
 using KompasCore.Effects.Identities;
+using KompasCore.Effects.Identities.GamestatePlayerIdentities;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -25,16 +26,36 @@ namespace KompasCore.Effects.Restrictions
                 => card != null;
         }
 
-        public class FriendlyCard : CardRestrictionElement
+        public class Controller : CardRestrictionElement
         {
+            public INoActivationContextIdentity<Player> playerIdentity;
+
+            public override void Initialize(EffectInitializationContext initializationContext)
+            {
+                base.Initialize(initializationContext);
+                playerIdentity.Initialize(initializationContext);
+            }
+
             protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
-                => card.Controller == InitializationContext.source.Controller;
+                => playerIdentity.Item == card.Controller;
         }
 
-        public class EnemyCard : CardRestrictionElement
+        public class Friendly : Controller
         {
-            protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
-                => card.Controller != InitializationContext.source.Controller;
+            public override void Initialize(EffectInitializationContext initializationContext)
+            {
+                playerIdentity = new FriendlyPlayer();
+                base.Initialize(initializationContext);
+            }
+        }
+
+        public class Enemy : Controller
+        {
+            public override void Initialize(EffectInitializationContext initializationContext)
+            {
+                playerIdentity = new EnemyPlayer();
+                base.Initialize(initializationContext);
+            }
         }
 
         public class Character : CardRestrictionElement
@@ -179,6 +200,12 @@ namespace KompasCore.Effects.Restrictions
 
             protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
                 => InitializationContext.game.StackEntries.Any(stackEntry => IsValidFight(card, context, stackEntry));
+        }
+
+        public class Avatar : CardRestrictionElement
+        {
+            protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
+                => card.IsAvatar;
         }
     }
 }

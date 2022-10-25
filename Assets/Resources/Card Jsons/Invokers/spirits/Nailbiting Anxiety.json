@@ -14,25 +14,35 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Character",
-							"Discard"
+							"Character"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							}
 						]
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "character to overwhelm with anxiety",
 						"cardRestrictions": [
-							"Character",
-							"Board"
+							"Character"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SetCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetCardStats:",
 					"nVal": 0
 				}
 			]

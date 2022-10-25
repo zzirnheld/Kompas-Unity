@@ -14,21 +14,21 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetAvatarSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetAvatar:"
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeCardStats:",
 					"sModifier": -1
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "S"
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.ConditionalJumpSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ConditionalJump:",
 					"condition": "X >= Constant",
 					"constant": 1,
 					"jumpIndices": [

@@ -11,12 +11,13 @@ namespace KompasDeckbuilder
     {
         public const int txtExtLen = 4;
         private const string DeckDeleteFailedErrorMsg = "Failed to delete deck, sorry";
+        public const char NBSP = (char)8203;
 
         private string deckFilesFolderPath = "";
 
         //card dragging
-        private DeckbuilderCard currentDrag;
-        public DeckbuilderCard CurrentDrag
+        private DeckbuilderCardController currentDrag;
+        public DeckbuilderCardController CurrentDrag
         {
             get => currentDrag;
             set
@@ -43,7 +44,7 @@ namespace KompasDeckbuilder
 
         //deck data
         private List<string> deckNames;
-        private List<DeckbuilderCard> currDeck;
+        private List<DeckbuilderCardController> currDeck;
         private string currDeckName = "";
         private string LastDeletedName = "";
         private bool IsDeckDirty = false;
@@ -51,7 +52,7 @@ namespace KompasDeckbuilder
         public void Start()
         {
             //for now, load an empty list. later, load a default deck?
-            currDeck = new List<DeckbuilderCard>();
+            currDeck = new List<DeckbuilderCardController>();
             deckFilesFolderPath = Application.persistentDataPath + "/Decks";
 
             //create the directory if doesn't exist
@@ -87,7 +88,7 @@ namespace KompasDeckbuilder
                     //this isn't working and i'm not yet sure why, but don't feel like investigating this right now
                     //because this is a personal project, not work.
                     //CardSearchCtrl.NameToSearch.text = CardSearchCtrl.CardNameText.text;
-                    CardSearchCtrl.SearchName(CardSearchCtrl.CardNameText.text);
+                    CardSearchCtrl.SearchName(CardSearchCtrl.deckbuilderCardViewController.nameText.text.Trim(NBSP));
                 }
                 else if (Input.GetKeyUp(KeyCode.N))
                 {
@@ -178,7 +179,7 @@ namespace KompasDeckbuilder
             Debug.Log("Clearing deck");
             for (int i = currDeck.Count - 1; i >= 0; i--)
             {
-                DeckbuilderCard c = currDeck[i];
+                DeckbuilderCardController c = currDeck[i];
                 currDeck.RemoveAt(i);
                 Destroy(c.gameObject);
             }
@@ -189,9 +190,9 @@ namespace KompasDeckbuilder
         {
             StringBuilder stringBuilder = new StringBuilder();
 
-            foreach (DeckbuilderCard card in currDeck)
+            foreach (DeckbuilderCardController card in currDeck)
             {
-                stringBuilder.AppendLine(card.CardName);
+                stringBuilder.AppendLine(card.Card.CardName);
             }
 
             return stringBuilder.ToString();
@@ -213,7 +214,7 @@ namespace KompasDeckbuilder
             string json = CardRepo.GetJsonFromName(name);
             if (json == null) return;
 
-            DeckbuilderCard toAdd = CardRepo.InstantiateDeckbuilderCard(json, CardSearchCtrl, true);
+            DeckbuilderCardController toAdd = CardRepo.InstantiateDeckbuilderCard(json, CardSearchCtrl, true);
             if (toAdd == null)
             {
                 Debug.LogError($"Somehow have a DeckbuilderCard with name {name} couldn't be re-instantiated");
@@ -314,12 +315,12 @@ namespace KompasDeckbuilder
 
         public void SaveDeck() => SaveDeckAs(currDeckName);
 
-        public void RemoveFromDeck(DeckbuilderCard card)
+        public void RemoveFromDeck(DeckbuilderCardController card)
         {
             if (currDeck.Remove(card))
             {
                 IsDeckDirty = true;
-                LastDeletedName = card.CardName;
+                LastDeletedName = card.Card.CardName;
                 Destroy(card.gameObject);
             }
 
@@ -332,7 +333,7 @@ namespace KompasDeckbuilder
             AddToDeck(LastDeletedName);
         }
 
-        public void MoveTo(DeckbuilderCard card, int index)
+        public void MoveTo(DeckbuilderCardController card, int index)
         {
             if (currDeck.Contains(card))
             {

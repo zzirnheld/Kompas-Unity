@@ -14,52 +14,60 @@
                         "Secondary Card Fits Restriction Before"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Board",
-							"Friendly",
-							"Subtypes Include"
-						],
-						"subtypesInclude": [
-							"Moth"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Moth" ]
+							}
 						]
 					},
                     "secondaryCardRestriction": {
-						"cardRestrictions": [
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"In AOE of Card Fitting Restriction"
-							],
-							"inAOEOfRestriction": {
-								"cardRestrictions": [
-									"Subtypes Include"
-								],
-								"subtypesInclude": [
-									"Light"
-								]
+						"spaceRestrictionElements": [
+							{
+								"$type": "Core.SpaceRestriction:InAOEOf:",
+								"anyOf": {
+									"$type": "Gamestate.ManyCards:FittingRestriction:",
+									"cardRestriction": {
+										"cardRestrictionElements": [
+											{
+												"$type": "Core.CardRestriction:SubtypesInclude:",
+												"subtypes": [ "Light" ]
+											}
+										]
+									}
+								}
 							}
-						}
+						]
                     }
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Moth that feels the call",
 						"cardRestrictions": [
-							"Character",
-							"Board",
-							"Subtypes Include"
+							"Character"
 						],
-						"subtypesInclude": [
-							"Moth"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Moth" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "mOOn",
 						"spaceRestrictions": [
@@ -70,7 +78,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Move:"
 				}
 			]
 		}

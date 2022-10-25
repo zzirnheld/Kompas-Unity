@@ -14,33 +14,37 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Subtypes Include",
-							"Spell",
-							"Friendly"
+							"Spell"
 						],
-						"subtypesInclude": [
-							"Rune"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Rune" ]
+							}
 						]
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:DeckTarget:",
 					"cardRestriction": {
 						"blurb": "Rune for Runestones to search",
 						"cardRestrictions": [
-							"Subtypes Include",
-							"Friendly",
 							"Deck"
 						],
-						"subtypesInclude": [
-							"Rune"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Rune" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Rehand:"
 				}
 			]
 		}

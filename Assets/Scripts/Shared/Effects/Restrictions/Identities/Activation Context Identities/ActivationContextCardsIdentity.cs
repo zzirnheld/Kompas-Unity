@@ -19,7 +19,7 @@ namespace KompasCore.Effects.Identities
             protected override ICollection<GameCardBase> AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
             {
                 var spaces = positions.From(context, secondaryContext);
-                return spaces.Select(InitializationContext.game.boardCtrl.GetCardAt).Where(s => s != null).ToArray();
+                return spaces.Select(InitializationContext.game.BoardController.GetCardAt).Where(s => s != null).ToArray();
             }
         }
     }

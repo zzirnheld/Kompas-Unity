@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Invocation Ripples",
-	"effText": "When your Invoker summons an S X character, discard your deck's top X. Revive a Spirit among them.",
+	"effText": "When your Invoker summons an S X character, discard your deck's top X cards. Revive a Spirit among them.",
 	"effects": [
 		{
 			"triggerData": {
@@ -15,67 +15,74 @@
                     ],
                     "sourceRestriction":
                     {
-                        "cardRestrictions": [
-                            "Subtypes Include"
-                        ],
-                        "subtypesInclude": [
-                            "Invoker"
-                        ]
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Invoker" ]
+							}
+						]
                     },
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Character"
 						],
-						"subtypesInclude": [
-							"Ethereal"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Ethereal" ]
+							}
 						]
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "S"
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.MillSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Mill:",
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Spirit to ripple into",
 						"cardRestrictions": [
 							"Character",
-							"Subtypes Include",
 							"Can Be Played",
 							"Already Target"
 						],
-						"subtypesInclude": [
-							"Spirit"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Spirit" ]
+							}
 						]
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to ripple the spirit into",
-						"spaceRestrictions": [
-							"Can Play Card Target to This Space",
-							"Empty"
-						]
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Subeffect.Card:Target:" }
+                            }
+                        ]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Play:"
 				}
 			]
 		}

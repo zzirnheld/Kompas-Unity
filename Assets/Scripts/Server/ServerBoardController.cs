@@ -1,7 +1,9 @@
 ﻿using KompasCore.Cards;
+using KompasCore.Cards.Movement;
 using KompasCore.Effects;
 using KompasCore.Exceptions;
 using KompasCore.GameCore;
+using KompasServer.Cards;
 using KompasServer.Effects;
 using KompasServer.Networking;
 using System.Collections.Generic;
@@ -12,9 +14,10 @@ namespace KompasServer.GameCore
     public class ServerBoardController : BoardController
     {
         public ServerGame ServerGame;
+        public override Game Game => ServerGame;
 
-        public ServerNotifier ServerNotifierByIndex(int index) => ServerGame.ServerPlayers[index].ServerNotifier;
-        public ServerEffectsController EffectsController => ServerGame.EffectsController;
+        public ServerNotifier ServerNotifierByIndex(int index) => ServerGame.serverPlayers[index].ServerNotifier;
+        public ServerEffectsController EffectsController => ServerGame.effectsController;
 
         public override void Play(GameCard toPlay, Space to, Player controller, IStackable stackSrc = null)
         {
@@ -103,6 +106,34 @@ namespace KompasServer.GameCore
 
             //notify the players
             ServerNotifierByIndex(card.ControllerIndex).NotifyMove(card, to);
+        }
+
+        public void ClearSpells()
+        {
+            foreach (ServerGameCard c in Board)
+            {
+                if (c == null) continue;
+
+                foreach (string s in c.SpellSubtypes)
+                {
+                    switch (s)
+                    {
+                        case CardBase.SimpleSubtype:
+                            c.Discard();
+                            break;
+                        case CardBase.DelayedSubtype:
+                        case CardBase.VanishingSubtype:
+                            if (c.TurnsOnBoard >= c.Duration)
+                            {
+                                ActivationContext context = new ActivationContext(game: ServerGame, mainCardBefore: c);
+                                c.Discard();
+                                context.CacheCardInfoAfter();
+                                EffectsController.TriggerForCondition(Trigger.Vanish, context);
+                            }
+                            break;
+                    }
+                }
+            }
         }
     }
 }

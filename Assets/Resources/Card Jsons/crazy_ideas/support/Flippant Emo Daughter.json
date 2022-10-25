@@ -13,21 +13,21 @@
 						"Controller Triggered"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Subtypes Include"
-						],
-						"subtypesInclude": [
-							"Crazy Idea"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Crazy", "Idea" ]
+							}
 						]
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeCardStats:",
 					"eModifier": 2,
 					"sModifier": 2,
 					"wModifier": 2

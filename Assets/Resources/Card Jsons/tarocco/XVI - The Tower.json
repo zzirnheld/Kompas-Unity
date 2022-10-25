@@ -17,42 +17,45 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeCardStats:",
 					"eMultiplier": -1
 				},
 				{
-					"$type": "KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:DeleteTarget:"
 				},
 				{
-					"$type": "KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:DrawX:",
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetXByGamestate:",
 					"whatToCount": "Hand Size",
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetXByGamestate:",
 					"whatToCount": "Hand Size Limit",
 					"change": true,
 					"xMultiplier": -1
 				},
 				{
-					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ConditionalEnd:",
 					"condition": "X<=0",
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChooseFromList:",
 					"cardRestriction": {
 						"blurb": "folly of the Tower",
-						"cardRestrictions": [
-							"Friendly",
-							"Hand"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            }
 						]
 					},
 					"listRestriction": {
@@ -64,10 +67,10 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.BottomdeckSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Bottomdeck:"
 				},
 				{
-					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"delete": true,
 					"jumpIndices": [
 						8

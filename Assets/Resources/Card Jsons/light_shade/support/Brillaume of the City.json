@@ -14,21 +14,26 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"blurb": "card to slightly yeet",
 					"cardRestriction": {
 						"cardRestrictions": [
-                            "Board",
                             "Subtypes Include Any Of"
 						],
 						"subtypesIncludeAnyOf": [
                             "Light",
 							"Shade"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to slightly yeet target card",
 						"spaceRestrictions": [
@@ -37,14 +42,14 @@
                             "Adjacent to a Card that Fits Restriction"
                         ],
                         "adjacencyRestriction": {
-                            "cardRestrictions": [
-                                "Friendly"
-                            ]
+							"cardRestrictionElements": [
+								{ "$type": "Core.CardRestriction:Friendly:" }
+							]
                         }
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Move:"
 				}
 			]
 		}

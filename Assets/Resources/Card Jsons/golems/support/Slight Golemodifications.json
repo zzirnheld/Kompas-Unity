@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Slight Golemodifications",
-	"effText": "When turns start, tribute an S X Golem. Hand->summon or revive a distinct S <= X + 1 Golem. Discard-apply all Golem Cores the first wielded to the second (temporarily).",
+	"effText": "When turns start, tribute an S X Golem. Hand-> or discard-> summon an S <= X + 1 Golem, and pulse them.",
 	"effects": [
 		{
 			"blurb": "Modify Golem (Slightly)",
@@ -15,57 +15,39 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Subtypes Include",
-							"Character",
-							"Friendly",
-							"Board"
+							"Character"
 						],
-						"subtypesInclude": [
-							"Golem"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Golem" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByTargetCostSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetXByTargetCost:",
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
-					"jumpIndices": [
-						4
-					]
-				},
-				{
-					"$type": "KompasServer.Effects.TargetAugmentsSubeffect, Assembly-CSharp",
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Subtypes Include"
-						],
-						"subtypesInclude": [
-							"Golem",
-							"Core"
-						]
-					}
-				},
-				{
-					"$type": "KompasServer.Effects.ClearOnImpossibleSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Discard:",
 					"targetIndex": 0
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Character",
 							"Multiple Possible Locations",
-							"Card Value Fits Number Restriction",
-							"Distinct Name from Other Targets"
+							"Card Value Fits Number Restriction"
 						],
 						"cardValue": {
 							"value": "S"
@@ -75,8 +57,11 @@
 								"<=X"
 							]
 						},
-						"subtypesInclude": [
-							"Golem"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Golem" ]
+							}
 						],
 						"locations": [
 							2,
@@ -87,47 +72,31 @@
 					"xModifier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
-						"spaceRestrictions": [
-							"Can Play Card Target to This Space",
-							"Empty"
-						]
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Subeffect.Card:Target:" }
+                            }
+                        ]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Play:"
 				},
 				{
-					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
-					"condition": "Target Fits Restriction",
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Character"
-						]
-					},
-					"targetIndex": -2
+					"$type": "Subeffect:Activate:"
 				},
 				{
-					"$type": "KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
-					"targetToAttachTo": -1,
-					"targetIndex": -2
-				},
-				{
-					"$type": "KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp",
-					"targetIndex": -2
-				},
-				{
-					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
-					"remainingTargets": 2,
-					"jumpIndices": [
-						10
-					]
+					"$type": "Subeffect:Activate:",
+					"activate": false
 				}
 			]
 		}
 	],
-	"c": 2,
+	"c": 3,
 	"spellTypes": [
 		"Enchant"
 	],

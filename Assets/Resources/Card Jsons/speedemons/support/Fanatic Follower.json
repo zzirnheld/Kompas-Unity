@@ -15,11 +15,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
-						"blurb": "for Binding Site to bind",
+						"blurb": "to Fanatically Follow",
 						"cardRestrictions": [
-							"Board",
 							"Character",
 							"Space Fits Restriction"
 						],
@@ -27,11 +26,17 @@
 							"spaceRestrictions": [
 								"Adjacent to Source"
 							]
-						}
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Delay:",
 					"jumpIndices": [
 						2
 					],
@@ -45,7 +50,7 @@
 					"targetIndex": 0
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "to move Fanatic Follower to",
 						"spaceRestrictions": [
@@ -56,13 +61,13 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Move:"
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeCardStats:",
 					"eModifier": 1,
 					"wModifier": 1
 				}

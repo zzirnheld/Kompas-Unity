@@ -16,20 +16,24 @@
 						"cardRestrictions": [
 							"Different from Source",
 							"Character",
-							"Space Fits Restriction",
-							"Subtypes Include"
+							"Space Fits Restriction"
 						],
 						"spaceRestriction": { "spaceRestrictions": [ "In Source's AOE" ] },
-						"subtypesInclude": [ "Orc" ]
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Orc" ]
+							}
+						]
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "KompasServer.Effects.TemporaryCardStatChangeSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:TemporaryCardStatChange:",
 					"wModifier": 3,
 					"endCondition": "Turn Start",
 					"triggerRestriction": {
@@ -37,7 +41,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Delay:",
 					"numTimesToDelay": 0,
 					"jumpIndices": [
 						3
@@ -47,18 +51,18 @@
 					"triggerRestriction": {
 						"triggerRestrictionElements": [
 							{
-								"$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.StackablesMatch, Assembly-CSharp",
-								"firstCard": { "$type": "KompasCore.Effects.Identities.SubeffectStackableIdentities.StackableIndex, Assembly-CSharp" },
-								"secondCard": { "$type": "KompasCore.Effects.Identities.ActivationContextStackableIdentities.StackableCause, Assembly-CSharp" }
+								"$type": "Core.TriggerRestriction:StackablesMatch:",
+								"firstStackable": { "$type": "Subeffect.Stackable:StackableIndex:" },
+								"secondStackable": { "$type": "ActivationContext.Stackable:StackableCause:" }
 							},
 							{
-								"$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.CardsMatch, Assembly-CSharp",
-								"firstCard": { "$type": "KompasCore.Effects.Identities.ActivationContextCardIdentities.MainCardBefore, Assembly-CSharp" },
+								"$type": "Core.TriggerRestriction:CardsMatch:",
+								"firstCard": { "$type": "ActivationContext.Card:MainCardBefore:" },
 								"secondCard": {
-									"$type": "KompasServer.Effects.Identities.SubeffectCardIdentities.FromActivationContext, Assembly-CSharp",
+									"$type": "Subeffect.Card:FromActivationContext:",
 									"secondary": true,
                         			"cardFromContext": {
-										"$type": "KompasCore.Effects.Identities.ActivationContextCardIdentities.MainCardBefore, Assembly-CSharp"
+										"$type": "ActivationContext.Card:MainCardBefore:"
 									}
 								}
 							}
@@ -66,31 +70,36 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Bind blood to a card",
-						"cardRestrictions": [
-							"Friendly",
-							"Hand",
-							"Subtypes Include"
-						],
-						"subtypesInclude": [ "Orc" ]
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            },
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Orc" ]
+							}
+						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SkipToEffectOnImpossible:",
 					"jumpIndices": [
 						6
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.RevealSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Reveal:"
 				},
 				{
-					"$type": "KompasServer.Effects.ClearOnImpossibleSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:ClearOnImpossible:"
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeCardStats:",
 					"forbidNotBoard": false,
 					"sModifier": -2
 				}

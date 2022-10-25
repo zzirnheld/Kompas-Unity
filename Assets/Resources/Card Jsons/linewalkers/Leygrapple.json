@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Leygrapple",
-	"effText": "When a character is summoned, choose a Linewalker on the same diagonal. Move the Linewalker adjacent to the other character.",
+	"effText": "When a character is summoned, move a Linewalker on the same diagonal to a space adjacent to the summon.",
 	"effects": [
 		{
 			"triggerData": {
@@ -20,16 +20,14 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "who will Leygrapple",
 						"cardRestrictions": [
-							"Board",
 							"Character",
-							"Subtypes Include",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
@@ -37,13 +35,20 @@
 								"On Card Target's Diagonal"
 							]
 						},
-						"subtypesInclude": [
-							"Linewalker"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Linewalker" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "to move that Linewalker to",
 						"spaceRestrictions": [
@@ -54,7 +59,7 @@
 					"targetIndex": -2
 				},
 				{
-					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Move:"
 				}
 			]
 		}

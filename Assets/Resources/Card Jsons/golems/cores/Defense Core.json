@@ -16,10 +16,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetAugmentedCard:"
 				},
 				{
-					"$type": "KompasServer.Effects.TemporaryActivationSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:TemporaryActivation:",
 					"endCondition": "Augment Detached",
 					"triggerRestriction": {
 						"triggerRestrictions": [
@@ -43,10 +43,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetAugmentedCard:"
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeCardStats:",
 					"eModifier": 4,
 					"wModifier": 4
 				}
@@ -58,27 +58,15 @@
 	],
 	"PlayRestriction": {
 		"normalRestrictions": [
-			"Augment Normal Restrictions",
-			"On Card that Fits Restriction"
+			"Augment Normal Restrictions"
 		],
 		"effectRestrictions": [
-			"Augment Effect Restrictions",
-			"On Card that Fits Restriction"
+			"Augment Effect Restrictions"
 		],
-		"onCardRestriction": {
-			"cardRestrictions": [
-				"Subtypes Include",
-				"Friendly",
-				"Board"
-			],
-			"subtypesInclude": [
-				"Golem"
-			]
-		}
+		"augSubtypes": [
+			"Golem"
+		]
 	},
 	"a": 3,
-	"subtypeText": "Golem Core",
-	"augSubtypes": [
-		"Golem"
-	]
+	"subtypeText": "Golem Core"
 }

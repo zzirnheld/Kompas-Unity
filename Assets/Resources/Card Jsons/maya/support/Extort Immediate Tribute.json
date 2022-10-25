@@ -14,26 +14,28 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.AutoTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:AutoTarget:",
 					"cardRestriction": {
 						"blurb": "for Haemopoten to draw",
 						"cardRestrictions": [
-							"Enemy",
 							"Deck",
 							"Index<C"
 						],
-						"constant": 1
+						"constant": 1,
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" }
+						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Discard:"
 				},
                 {
-                    "$type":"KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
+                    "$type":"Subeffect:CanResolve:",
                     "subeffIndices": [ 4, 5 ]
                 },
 				{
-					"$type": "KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChooseOption:",
 					"choiceBlurb": "Pip play that card?",
 					"optionBlurbs": [
 						"Yes",
@@ -45,31 +47,32 @@
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:PayPipsTargetCost:",
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "Where to play that card",
-						"spaceRestrictions": [
-							"Can Play Card Target to This Space",
-							"Empty"
-						],
                         "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
                             {
-                                "$type": "KompasCore.Effects.Restrictions.SpaceRestrictionElements.WithinDistanceOfNumberOfCards, Assembly-CSharp",
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Subeffect.Card:Target:" }
+                            },
+                            {
+                                "$type": "Core.SpaceRestriction:WithinDistanceOfNumberOfCards:",
                                 "cardRestriction": {
-                                    "cardRestrictions": [
-                                        "Friendly",
-                                        "Subtypes Include"
-                                    ],
-                                    "subtypesInclude": [
-                                        "Structure"
-                                    ]
+									"cardRestrictionElements": [
+										{ "$type": "Core.CardRestriction:Friendly:" },
+										{
+											"$type": "Core.CardRestriction:SubtypesInclude:",
+											"subtypes": [ "Structure" ]
+										}
+									]
                                 },
                                 "number": { 
-                                    "$type": "KompasCore.Effects.Identities.GamestateNumberIdentities.Constant, Assembly-CSharp",
+                                    "$type": "Gamestate.Number:Constant:",
                                     "constant": 2
                                 }
                             }
@@ -77,7 +80,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Play:"
 				}
 			]
 		}

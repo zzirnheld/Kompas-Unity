@@ -14,11 +14,11 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.MillSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Mill:",
 					"xModifier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.ConditionalJumpSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ConditionalJump:",
 					"condition": "Target Violates Restriction",
 					"cardRestriction": {
 						"cardRestrictions": [
@@ -34,17 +34,20 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to Invoke the Spirit",
-						"spaceRestrictions": [
-							"Can Play Card Target to This Space",
-							"Empty"
-						]
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Subeffect.Card:Target:" }
+                            }
+                        ]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Play:"
 				}
 			]
 		}
@@ -62,11 +65,11 @@
 			"Adjacent to Card Fitting Restriction"
 		],
 		"adjacentCardRestriction": {
-			"cardRestrictions": [
-				"Subtypes Include"
-			],
-			"subtypesInclude": [
-				"Invoker"
+			"cardRestrictionElements": [
+				{
+					"$type": "Core.CardRestriction:SubtypesInclude:",
+					"subtypes": [ "Invoker" ]
+				}
 			]
 		}
 	},

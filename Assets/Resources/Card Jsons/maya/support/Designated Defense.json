@@ -15,35 +15,42 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetEnemy:"
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "Space for your enemy to play a Structure to",
-						"spaceRestrictions": [
-							"Empty"
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" }
                         ]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:DeckTarget:",
 					"cardRestriction": {
 						"blurb": "Designated build site",
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
 							"Character",
-							"Subtypes Include",
 							"Can be Played to Target Space"
 						],
-						"subtypesInclude": [
-							"Structure"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Structure" ]
+							}
+						],
+						"canPlayIgnoring": [
+							"Adjacent to Friendly Card"
 						]
-					}
+					},
+					"playerIndex": 0
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Play:",
+					"playerIndex": 0
 				}
 			]
 		}

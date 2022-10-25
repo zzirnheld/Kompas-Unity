@@ -14,14 +14,14 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CanResolve:",
 					"subeffIndices": [
 						2
 					],
 					"skipIndex": 6
 				},
 				{
-					"$type": "KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChooseOption:",
 					"choiceBlurb": "Discard 2 cards or kill me?",
 					"optionBlurbs": [
 						"Discard 2",
@@ -34,12 +34,15 @@
 					"showX": true
 				},
 				{
-					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChooseFromList:",
 					"cardRestriction": {
 						"blurb": "Grudges",
-						"cardRestrictions": [
-							"Friendly",
-							"Hand"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            }
 						]
 					},
 					"listRestriction": {
@@ -52,20 +55,20 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Discard:"
 				},
 				{
-					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Discard:",
 					"targetIndex": -2
 				},
 				{
-					"$type": "KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:EndResolution:"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Discard:"
 				}
 			]
 		}

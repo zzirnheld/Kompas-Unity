@@ -15,22 +15,27 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardsCoordsSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTriggeringCardsCoords:"
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeAllCardStats:",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character",
-							"Enemy",
-							"Board",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
 							"spaceRestrictions": [
 								"Adjacent to Space Target"
 							]
-						}
+						},
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
 					},
 					"eModifier": -1
 				}

@@ -6,28 +6,28 @@
 		{
 			"blurb": "OH!",
 			"triggerData": {
-				"triggerCondition": "Arrive",
+				"triggerCondition": "Play",
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Subtypes Include"
-						],
-						"subtypesInclude": [
-							"Light"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Light" ]
+							}
 						]
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Draw:"
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeDurationSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeDuration:",
 					"xMultiplier": 0,
 					"xModifier": -1
 				}
@@ -42,5 +42,5 @@
 		"Delayed"
 	],
 	"subtypeText": "Delayed",
-	"duration": 7
+	"duration": 12
 }

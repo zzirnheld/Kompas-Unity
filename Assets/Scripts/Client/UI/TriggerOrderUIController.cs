@@ -34,7 +34,7 @@ namespace KompasClient.UI
             {
                 var prefab = Instantiate(triggerPrefab, triggerObjectsParent);
                 var ctrl = prefab.GetComponent<TriggerUIController>();
-                ctrl.SetInfo(this, t.Source.simpleSprite, t);
+                ctrl.SetInfo(this, t.Source.SimpleSprite, t);
                 triggerUIs.Add(ctrl);
             }
 

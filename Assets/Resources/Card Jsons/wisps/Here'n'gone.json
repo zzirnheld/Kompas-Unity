@@ -14,22 +14,24 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Wisp to deck->summon",
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Character",
-							"Friendly",
 							"Deck"
 						],
-						"subtypesInclude": [
-							"Wisp"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Wisp" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to deck->summon the Wisp",
 						"spaceRestrictions": [
@@ -46,10 +48,10 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Play:"
 				},
 				{
-					"$type": "KompasServer.Effects.HangingDiscardSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:HangingDiscard:",
 					"endCondition": "Remove",
 					"triggerRestriction": {
 						"triggerRestrictions": [
@@ -58,22 +60,24 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Wisp to deck->summon",
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Character",
-							"Friendly",
 							"Deck"
 						],
-						"subtypesInclude": [
-							"Wisp"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Wisp" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to deck->summon the Wisp",
 						"spaceRestrictions": [
@@ -90,10 +94,10 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Play:"
 				},
 				{
-					"$type": "KompasServer.Effects.HangingDiscardSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:HangingDiscard:",
 					"endCondition": "Remove",
 					"triggerRestriction": {
 						"triggerRestrictions": [
@@ -102,22 +106,24 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Wisp to deck->summon",
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Character",
-							"Friendly",
 							"Deck"
 						],
-						"subtypesInclude": [
-							"Wisp"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Wisp" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to deck->summon the Wisp",
 						"spaceRestrictions": [
@@ -134,10 +140,10 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Play:"
 				},
 				{
-					"$type": "KompasServer.Effects.HangingDiscardSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:HangingDiscard:",
 					"endCondition": "Remove",
 					"triggerRestriction": {
 						"triggerRestrictions": [

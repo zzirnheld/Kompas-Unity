@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Placid Waters",
-	"effText": "(Doesn't do anything, but it's nice to swim in.)",
+	"effText": "<i>Doesn't do anything, but it's nice to swim in.</i>",
 	"effects": [],
 	"c": 2,
 	"spellTypes": [

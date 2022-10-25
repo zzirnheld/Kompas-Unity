@@ -14,14 +14,19 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "friendly character that should attack",
 						"cardRestrictions": [
 							"Character",
-							"Friendly",
-							"Board",
 							"Space Fits Restriction"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						],
 						"spaceRestriction": {
 							"spaceRestrictions": [
@@ -31,14 +36,19 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "enemy character to attack",
 						"cardRestrictions": [
 							"Character",
-							"Enemy",
-							"Board",
 							"Space Fits Restriction"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						],
 						"spaceRestriction": {
 							"spaceRestrictions": [
@@ -48,7 +58,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Attack:",
 					"targetIndex": -1,
 					"attackerIndex": -2
 				}

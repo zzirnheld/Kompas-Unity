@@ -13,31 +13,33 @@
 						"Controller Triggered",
 						"Main Card Fits Restriction After"
 					],
-					"cardRestriction": {
+					"nowRestriction": {
 						"cardRestrictions": [
-							"Space Fits Restriction",
-                            "Subtypes Include"
+							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
 							"spaceRestrictions": [
 								"Adjacent to Source"
 							]
 						},
-						"subtypesInclude": [
-							"Memory"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Memory" ]
+							}
 						]
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetTargetsAugmentedCardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTargetsAugmentedCard:"
 				},
 				{
-					"$type": "KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Resummon:"
 				}
 			]
 		}

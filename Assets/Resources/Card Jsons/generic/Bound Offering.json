@@ -16,20 +16,20 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Annihilate:"
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByTriggeringCardValueSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetXByTriggeringCardValue:",
 					"cardValue": {
 						"value": "S"
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:AddPips:",
 					"xMultiplier": 1,
 					"xDivisor": 2
 				}

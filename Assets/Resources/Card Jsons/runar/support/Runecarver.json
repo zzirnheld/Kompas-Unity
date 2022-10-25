@@ -13,12 +13,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChooseFromList:",
 					"cardRestriction": {
 						"blurb": "Rune for Runecarver to reshuffle",
 						"cardRestrictions": [
-							"Subtypes Include",
-							"Friendly",
 							"Multiple Possible Locations"
 						],
 						"locations": [
@@ -26,18 +24,22 @@
 							2,
 							3
 						],
-						"subtypesInclude": [
-							"Rune"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Rune" ]
+							}
 						]
 					},
 					"maxCanChoose": 1
 				},
 				{
-					"$type": "KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Reshuffle:",
 					"targetIndex": -1
 				},
 				{
-					"$type": "KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:DrawX:",
 					"xModifier": 2
 				}
 			]

@@ -1,27 +1,37 @@
 [
     {
-        "$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+        "$type":"Subeffect:TargetThis:"
     },
     {
-        "$type":"KompasServer.Effects.TargetThisSpaceSubeffect, Assembly-CSharp"
+        "$type":"Subeffect:TargetThisSpace:"
     },
     {
-        "$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+        "$type":"Subeffect:Annihilate:"
     },
     {
-        "$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+        "$type":"Subeffect:CardTarget:",
         "cardRestriction":
         {
             "blurb":"Mech to Pilot",
-            "cardRestrictions":["Friendly","Subtypes Include","Character","Hand","Can Be Played"],
-            "subtypesInclude":["Mech","Golem"]
+            "cardRestrictions":["Character","Can Be Played"],
+            "cardRestrictionElements": [
+                { "$type": "Core.CardRestriction:Friendly:" },
+                {
+                    "$type": "Core.CardRestriction:Location:",
+                    "locations": [ "Hand" ]
+                },
+                {
+                    "$type": "Core.CardRestriction:SubtypesInclude:",
+                    "subtypes": [ "Mech", "Golem" ]
+                }
+            ]
         },
-        "toLinkWith": { "$type": "KompasCore.Effects.Identities.GamestateCardIdentities.ThisCard, Assembly-CSharp" }
+        "toLinkWith": { "$type": "Gamestate.Card:ThisCard:" }
     },
     {
-        "$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+        "$type":"Subeffect:Play:"
     },
     {
-        "$type":"KompasServer.Effects.ActivateSubeffect, Assembly-CSharp"
+        "$type":"Subeffect:Activate:"
     }
 ]

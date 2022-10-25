@@ -15,23 +15,24 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChooseFromList:",
 					"maxCanChoose": 1,
 					"cardRestriction": {
 						"blurb": "Brilliant Mage who was inspired",
 						"cardRestrictions": [
-							"Subtypes Include",
-							"Friendly",
 							"Deck"
 						],
-						"subtypesInclude": [
-							"Brilliant",
-                            "Mage"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Brilliant", "Mage" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Rehand:"
 				}
 			]
 		}
@@ -46,20 +47,21 @@
 			"Space Must Fit Restriction"
 		],
 		"spaceRestriction": {
-			"spaceRestrictions": [
-				"In AOE of Card Fitting Restriction"
-			],
-			"inAOEOfRestriction": {
-				"cardRestrictions": [
-					"Subtypes Include"
-				],
-				"subtypesInclude": [
-					"Light"
-				]
-			}
+			"spaceRestrictionElements": [ {
+				"$type": "Core.SpaceRestriction:InAOEOf:",
+				"anyOf": {
+					"$type": "Gamestate.ManyCards:FittingRestriction:",
+					"cardRestriction": {
+					"cardRestrictionElements": [ {
+							"$type": "Core.CardRestriction:SubtypesInclude:",
+							"subtypes": [ "Light" ]
+						} ]
+					}
+				}
+			} ]
 		}
 	},
-	"c": 1,
+	"c": 0,
 	"spellTypes": [
 		"Simple"
 	],

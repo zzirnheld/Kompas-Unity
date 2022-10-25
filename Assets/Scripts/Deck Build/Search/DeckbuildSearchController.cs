@@ -6,6 +6,7 @@ using System.Linq;
 using KompasCore.Cards;
 using KompasClient.UI;
 using Newtonsoft.Json;
+using KompasDeckbuilder.UI;
 
 namespace KompasDeckbuilder
 {
@@ -21,22 +22,8 @@ namespace KompasDeckbuilder
         //card data pane ui elements
         public GameObject CardSearchPaneParentObj;
 
-        public GameObject cardViewParentObj;
-        public Image CardImage;
-        public TMP_Text CardNameText;
-        public TMP_Text nText;
-        public TMP_Text eText;
-        public TMP_Text scaText;
-        public TMP_Text wText;
-        public TMP_Text SubtypesText;
-        public TMP_Text EffectText;
-
         private Sprite CardBack;
-        private readonly List<ReminderTextClientUIController> reminderCtrls
-            = new List<ReminderTextClientUIController>();
-        public Transform remindersParent;
-        public GameObject reminderPrefab;
-        public ReminderTextsContainer Reminders { get; private set; }
+        public DeckbuilderCardViewController deckbuilderCardViewController;
 
         //card prefabs
         public GameObject CharPrefab;
@@ -48,7 +35,7 @@ namespace KompasDeckbuilder
         public CardRepository CardRepo;
 
         //search data
-        private DeckbuilderCard selectedCard;
+        private DeckbuilderCardController selectedCard;
         private List<DeckSearchInfoController> shownCards;
         private string cardNameToSearch = "";
         private string subtypeToSearch = "";
@@ -85,62 +72,13 @@ namespace KompasDeckbuilder
 
             //get image to show when no card is selected
             CardBack = Resources.Load<Sprite>(CardBackPath);
-            //show the blank card
-            ShowSelectedCard();
 
             var jsonAsset = Resources.Load<TextAsset>(RemindersJsonPath);
-            Reminders = JsonConvert.DeserializeObject<ReminderTextsContainer>(jsonAsset.text);
         }
 
-        /// <summary>
-        /// Show the card currently selected instead of another one.
-        /// </summary>
-        public void ShowSelectedCard()
-        {
-            cardViewParentObj.SetActive(selectedCard != null);
-            //if there is a selected card, show it
-            if (selectedCard != null) selectedCard.Show();
-            //otherwise, show data for no card, and show the card back as the sprite
-            else
-            {
-                CardImage.sprite = CardBack;
-                CardNameText.text = "";
-                SubtypesText.text = "";
-                EffectText.text = "";
-            }
-
-            ShowReminderText(selectedCard);
-        }
-
-
-        public void ShowReminderText(CardBase cardInfo)
-        {
-            //clear existing reminders
-            foreach (var reminderCtrl in reminderCtrls) Destroy(reminderCtrl.gameObject);
-            reminderCtrls.Clear();
-            if (cardInfo == null)
-            {
-                remindersParent.gameObject.SetActive(false);
-                return;
-            }
-            //create new reminders
-            foreach (var reminder in Reminders.keywordReminderTexts)
-            {
-                if (cardInfo.EffText.Contains(reminder.keyword))
-                {
-                    var obj = Instantiate(reminderPrefab, remindersParent);
-                    var ctrl = obj.GetComponent<ReminderTextClientUIController>();
-                    ctrl.Initialize(reminder.keyword, reminder.reminder);
-                    reminderCtrls.Add(ctrl);
-                }
-            }
-            remindersParent.gameObject.SetActive(reminderCtrls.Any());
-        }
-
-        public void Select(DeckbuilderCard card)
+        public void Select(DeckbuilderCardController card)
         {
             selectedCard = card;
-            cardViewParentObj.SetActive(true);
             card.Show();
         }
 
@@ -227,7 +165,7 @@ namespace KompasDeckbuilder
             //for each of the jsons, add it to the shown cards to be added
             foreach (string json in jsonsThatFit)
             {
-                DeckbuilderCard newCard = CardRepo.InstantiateDeckbuilderCard(json, this, false);
+                DeckbuilderCardController newCard = CardRepo.InstantiateDeckbuilderCard(json, this, false);
                 if (newCard != null)
                 {
                     var cardInfo = Instantiate(deckSearchInfoObj, CardSearchPaneParentObj.transform).GetComponent<DeckSearchInfoController>();

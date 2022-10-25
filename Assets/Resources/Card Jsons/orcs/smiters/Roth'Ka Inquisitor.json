@@ -15,7 +15,6 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Spell",
-							"Hand",
 							"Card Value Fits Number Restriction"
 						],
 						"cardValue": {
@@ -24,23 +23,29 @@
 						"cardValueNumberRestriction": {
 							"numberRestrictions": [ "==Constant" ],
 							"constant": 0
-						}
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Hand" ]
+							}
+						]
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "Choose space to cast the spell",
 						"spaceRestrictions": [ "Can Play Card Target to This Space" ]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Play:"
 				}
 			]
 		}

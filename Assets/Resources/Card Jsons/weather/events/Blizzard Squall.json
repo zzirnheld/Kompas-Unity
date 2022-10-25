@@ -16,12 +16,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.SetAllCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetAllCardStats:",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character",
-							"Board",
-                            "Enemy",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
@@ -29,14 +27,21 @@
 								"In AOE Source is Also In"
 							],
 							"alsoInAOEOfRestriction": {
-								"cardRestrictions": [
-									"Subtypes Include"
-								],
-								"subtypesInclude": [
-									"Weather"
+								"cardRestrictionElements": [
+									{
+										"$type": "Core.CardRestriction:SubtypesInclude:",
+										"subtypes": [ "Weather" ]
+									}
 								]
 							}
-						}
+						},
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
 					},
 					"nVal": 0
 				}
@@ -59,23 +64,22 @@
 			"Adjacent to Friendly Card"
 		],
 		"spaceRestriction": {
-			"spaceRestrictions": [
-				"In AOE of Number of Cards Fitting Restriction"
-			],
-			"inAOEOfRestriction": {
-				"cardRestrictions": [
-					"Subtypes Include"
-				],
-				"subtypesInclude": [
-					"Weather"
-				]
-			},
-			"numberOfCardsInAOEOfRestriction": {
-				"numberRestrictions": [
-					">=Constant"
-				],
-				"constant": 2
-			}
+			"spaceRestrictionElements": [ {
+				"$type": "Core.SpaceRestriction:InAOEOf:",
+				"anyOf": {
+					"$type": "Gamestate.ManyCards:FittingRestriction:",
+					"cardRestriction": {
+					"cardRestrictionElements": [ {
+							"$type": "Core.CardRestriction:SubtypesInclude:",
+							"subtypes": [ "Weather" ]
+						} ]
+					}
+				},
+				"minAnyOfCount": { 
+					"$type": "Gamestate.Number:Constant:",
+					"constant": 2
+				}
+			} ]
 		}
 	},
 	"n": 4,

@@ -15,43 +15,49 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetXByGamestate:",
 					"whatToCount": "Cards Fitting Restriction",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Friendly",
-							"Hand",
-							"Subtypes Include"
-						],
-						"subtypesInclude": [
-							"Crazy Idea"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Hand" ]
+							},
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Crazy", "Idea" ]
+							}
 						]
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:TargetAll:",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Friendly",
-							"Hand"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Hand" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Discard:"
 				},
 				{
-					"$type": "KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:DeleteTarget:"
 				},
 				{
-					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"jumpIndices": [
 						2
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:DrawX:",
 					"xMultiplier": 1
 				}
 			]

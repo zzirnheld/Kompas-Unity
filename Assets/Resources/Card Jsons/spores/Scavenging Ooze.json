@@ -16,8 +16,6 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character",
-							"Board",
-							"Friendly",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
@@ -25,38 +23,48 @@
 								"Adjacent to Source"
 							],
 							"mustBeEmpty": false
-						}
+						},
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ConditionalEnd:",
 					"condition": "Target Violates Restriction",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Discard"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Reshuffle:"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.ActivateSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Activate:"
 				},
 				{
-					"$type": "KompasServer.Effects.ActivateSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Activate:",
 					"activate": false
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeCardStats:",
 					"eModifier": 1,
 					"wModifier": 1
 				}

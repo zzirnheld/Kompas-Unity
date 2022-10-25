@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Revivance",
-	"effText": "When you revive a Spirit, move them to an adjacent space. If it's occupied, they attack the character there first.",
+	"effText": "When you revive a Spirit, move them to an adjacent space.",
 	"effects": [
 		{
 			"triggerData": {
@@ -12,21 +12,21 @@
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Subtypes Include"
-						],
-						"subtypesInclude": [
-							"Revenant"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Revenant" ]
+							}
 						]
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to move the revived Revenant",
 						"spaceRestrictions": [
@@ -42,7 +42,7 @@
 					"xModifier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Move:"
 				}
 			]
 		}

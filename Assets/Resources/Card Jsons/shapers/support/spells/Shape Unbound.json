@@ -14,14 +14,11 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "character to ANNIHILATE",
 						"cardRestrictions": [
-							"Subtypes Include",
-							"Friendly",
 							"Summoned",
-							"Board",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
@@ -29,41 +26,54 @@
 								"Adjacent to Source"
 							]
 						},
-						"subtypesInclude": [
-							"Shaper"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Shaper" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Annihilate:"
 				},
 				{
-					"$type": "KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:DeckTarget:",
 					"cardRestriction": {
 						"blurb": "Shaper to decksummon",
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Character",
-							"Friendly",
 							"Deck"
 						],
-						"subtypesInclude": [
-							"Shaper"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Shaper" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to decksummon the Shaper",
-						"spaceRestrictions": [
-							"Can Play Card Target to This Space",
-							"Empty"
-						]
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Subeffect.Card:Target:" }
+                            }
+                        ]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Play:"
 				}
 			]
 		}
@@ -73,12 +83,11 @@
 			"Adjacent to Card Fitting Restriction"
 		],
 		"adjacentCardRestriction": {
-			"cardRestrictions": [
-				"Character",
-				"Subtypes Include"
-			],
-			"subtypesInclude": [
-				"Shaper"
+			"cardRestrictionElements": [
+				{
+					"$type": "Core.CardRestriction:SubtypesInclude:",
+					"subtypes": [ "Shaper" ]
+				}
 			]
 		}
 	},

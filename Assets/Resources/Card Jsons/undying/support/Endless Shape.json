@@ -15,41 +15,44 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
                         "blurb": "Space to move an Ethereal to",
 						"spaceRestrictions": [
 							"Adjacent to a Card that Fits Restriction"
 						],
 						"adjacencyRestriction": {
-							"cardRestrictions": [
-								"Subtypes Include"
-							],
-							"subtypesInclude": [
-								"Ethereal"
+							"cardRestrictionElements": [
+								{
+									"$type": "Core.CardRestriction:SubtypesInclude:",
+									"subtypes": [ "Ethereal" ]
+								}
 							]
 						}
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Friendly Ethereal to move",
-						"cardRestrictions": [
-							"Subtypes Include",
-							"Board",
-							"Friendly"
-						],
-						"subtypesInclude": [
-							"Ethereal"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Ethereal" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Move:"
 				},
 				{
-					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Discard:"
 				}
 			]
 		}

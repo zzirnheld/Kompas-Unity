@@ -25,6 +25,7 @@ namespace KompasCore.Cards
 
         public abstract PlayRestriction PlayRestriction { get; protected set; }
         public abstract MovementRestriction MovementRestriction { get; protected set; }
+        public abstract AttackRestriction AttackRestriction { get; protected set; }
         public abstract int BaseE { get; }
 
         public abstract bool Activated { get; protected set; }
@@ -34,27 +35,6 @@ namespace KompasCore.Cards
         public abstract IEnumerable<GameCard> AdjacentCards { get; }
 
         public abstract Space Position { get; set; }
-
-        public GameCardBase() : base() { }
-
-        public GameCardBase(CardStats stats,
-                        string subtext, string[] spellTypes,
-                        bool fast, bool unique,
-                        int radius, int duration,
-                        char cardType, string cardName,
-                        string effText,
-                        string subtypeText,
-                        string[] augSubtypes)
-        {
-            SetInfo(stats,
-                    subtext, spellTypes,
-                    fast, unique,
-                    radius, duration,
-                    cardType, cardName,
-                    effText,
-                    subtypeText,
-                    augSubtypes);
-        }
 
         public bool Hurt => CardType == 'C' && Location == CardLocation.Board && E < BaseE;
 
@@ -167,10 +147,31 @@ namespace KompasCore.Cards
         }
 
         public int ShortestPath(Space space, Func<GameCard, bool> throughPredicate)
-            => Card.Game.boardCtrl.ShortestPath(Card.Position, space, throughPredicate);
+            => Card.Game.BoardController.ShortestPath(Card.Position, space, throughPredicate);
         #endregion distance/adjacency
 
         public bool HasSubtype(string subtype) => SubtypeText.ToLower().Contains(subtype.ToLower());
+
+
+        protected GameCardBase(CardStats stats,
+                            string subtext, string[] spellTypes,
+                            bool fast, bool unique,
+                            int radius, int duration,
+                            char cardType, string cardName, string fileName,
+                            string effText,
+                            string subtypeText)
+            : base(stats, subtext, spellTypes, fast, unique, radius, duration, cardType, cardName, fileName, effText, subtypeText)
+        { }
+
+        protected GameCardBase(SerializableCard card, string fileName)
+            : this((card.n, card.e, card.s, card.w, card.c, card.a),
+                       card.subtext, card.spellTypes,
+                       card.fast, card.unique,
+                       card.radius, card.duration,
+                       card.cardType, card.cardName, fileName,
+                       card.effText,
+                       card.subtypeText)
+        { }
     }
 
     /// <summary>
@@ -193,6 +194,7 @@ namespace KompasCore.Cards
 
         public override PlayRestriction PlayRestriction { get; protected set; }
         public override MovementRestriction MovementRestriction { get; protected set; }
+        public override AttackRestriction AttackRestriction { get; protected set; }
 
         public override bool Activated { get; protected set; }
         public override bool Negated { get; protected set; }
@@ -219,28 +221,18 @@ namespace KompasCore.Cards
         {
             if (card == null) return null;
 
-            var cardInfo = card.gameObject.AddComponent<GameCardInfo>();
-            try
-            {
-                cardInfo.SetInfo(card);
-            }
-            catch (System.ArgumentNullException e)
-            {
-                Debug.Log($"Got an argument null exception while initializing a card info. If the game has started, this is bad. {e}");
-            }
-            return cardInfo;
+            return new GameCardInfo(card);
         }
 
-        protected void SetInfo(GameCard card)
-        {
-            SetInfo(card.Stats,
+        public GameCardInfo(GameCard card)
+            : base(card.Stats,
                         card.Subtext, card.SpellSubtypes,
                         card.Fast, card.Unique,
                         card.Radius, card.Duration,
-                        card.CardType, card.CardName,
+                        card.CardType, card.CardName, card.FileName,
                         card.EffText,
-                        card.SubtypeText,
-                        card.AugmentSubtypes);
+                        card.SubtypeText)
+        {
             Card = card;
             Location = card.Location;
             indexInList = card.IndexInList;
@@ -253,6 +245,8 @@ namespace KompasCore.Cards
             KnownToEnemy = card.KnownToEnemy;
             PlayRestriction = card.PlayRestriction;
             MovementRestriction = card.MovementRestriction;
+            AttackRestriction = card.AttackRestriction;
+
             baseE = card.BaseE;
             Activated = card.Activated;
             Negated = card.Negated;

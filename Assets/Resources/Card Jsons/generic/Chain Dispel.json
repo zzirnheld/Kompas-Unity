@@ -14,13 +14,18 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "spell for Chain Dispel to Dispel",
 						"cardRestrictions": [
 							"Spell",
-							"Board",
 							"Space Fits Restriction"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						],
 						"spaceRestriction": {
 							"spaceRestrictions": [
@@ -30,20 +35,25 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SkipToEffectOnImpossible:",
 					"jumpIndices": [
 						4
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "spell for Chain Dispel to Dispel",
 						"cardRestrictions": [
 							"Spell",
-							"Board",
 							"Space Fits Restriction",
 							"Different from Other Targets"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						],
 						"spaceRestriction": {
 							"spaceRestrictions": [
@@ -53,20 +63,20 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.LoopSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Loop:",
 					"canDecline": true,
 					"jumpIndices": [
 						2
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.ClearOnImpossibleSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:ClearOnImpossible:"
 				},
 				{
-					"$type": "KompasServer.Effects.DispelSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Dispel:"
 				},
 				{
-					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"delete": true,
 					"jumpIndices": [
 						5

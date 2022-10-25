@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Dragonspeaker",
-	"effText": "You can kill a distinct friendly SX character to give me +2 * X S. If your Avatar is \"Mother of Dragons\", draw 1.",
+	"effText": "You can kill a distinct friendly S X character to give me +2 * X S. If you're \"Mother of Dragons\", draw 1.",
 	"effects": [
 		{
 			"blurb": "Dragonspeak",
@@ -12,39 +12,44 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "for Dragonspeaker to kill",
 						"cardRestrictions": [
-							"Friendly",
-							"Board",
 							"Character",
 							"Distinct Name from Source"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "S"
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Discard:"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeCardStats:",
 					"sMultiplier": 2
 				},
 				{
-					"$type": "KompasServer.Effects.TargetAvatarSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetAvatar:"
 				},
 				{
-					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ConditionalEnd:",
 					"condition": "Target Violates Restriction",
 					"cardRestriction": {
 						"cardRestrictions": [
@@ -54,7 +59,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Draw:"
 				}
 			]
 		}

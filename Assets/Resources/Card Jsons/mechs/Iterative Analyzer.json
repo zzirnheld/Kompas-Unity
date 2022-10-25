@@ -1,7 +1,7 @@
 {
 	"cardType": 65,
 	"cardName": "Iterative Analyzer",
-	"effText": "When this Mech dies, search your deck for a distinct Mech Golem. Delay 1 turn. Discard->hand me.",
+	"effText": "When this Mech dies, deck->hand a distinct Mech Golem. 1 turn later, discard->hand me.",
 	"effects": [
 		{
 			"blurb": "Postmortem Analysis",
@@ -13,37 +13,38 @@
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Subtypes Include"
-						],
-						"subtypesInclude": [
-							"Mech"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Mech" ]
+							}
 						]
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:DeckTarget:",
 					"cardRestriction": {
 						"blurb": "for Iterative Analysis to produce",
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
-							"Distinct Name from Other Targets",
-							"Subtypes Include"
+							"Distinct Name from Other Targets"
 						],
-						"subtypesInclude": [
-							"Mech",
-							"Golem"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Mech", "Golem" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Delay:",
 					"numTimesToDelay": 0,
 					"jumpIndices": [
 						3
@@ -51,19 +52,22 @@
 					"endCondition": "Turn Start"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ConditionalEnd:",
 					"condition": "Target Violates Restriction",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Discard"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Rehand:"
 				}
 			]
 		}

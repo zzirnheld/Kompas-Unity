@@ -27,11 +27,11 @@
 							"Adjacent to a Card that Fits Restriction"
 						],
 						"adjacencyRestriction": {
-							"cardRestrictions": [
-								"Subtypes Include"
-							],
-							"subtypesInclude": [
-								"Wisp"
+							"cardRestrictionElements": [
+								{
+									"$type": "Core.CardRestriction:SubtypesInclude:",
+									"subtypes": [ "Wisp" ]
+								}
 							]
 						},
 						"mustBeEmpty": false
@@ -40,15 +40,12 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:TargetAll:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Friendly",
-							"Board",
-							"Subtypes Include",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
@@ -56,13 +53,21 @@
 								"Adjacent to Card Target"
 							]
 						},
-						"subtypesInclude": [
-							"Wisp"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Wisp" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where for Erratic Wisps to move a Wisp",
 						"spaceRestrictions": [
@@ -79,10 +84,10 @@
 					"xModifier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Move:"
 				},
 				{
-					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"delete": true,
 					"remainingTargets": 1,
 					"jumpIndices": [

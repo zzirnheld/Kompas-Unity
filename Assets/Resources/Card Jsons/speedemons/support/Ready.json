@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Ready",
-	"effText": "Search your deck for \"Set\". Search your deck for a Speedemon.",
+	"effText": "Deck->hand \"Set\", then a Speedemon.",
 	"effects": [
 		{
 			"triggerData": {
@@ -14,36 +14,40 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:DeckTarget:",
 					"cardRestriction": {
 						"blurb": "Linewalker for Leypathmaking to search",
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
 							"Name Is"
 						],
-						"nameIs": "Set"
-					}
-				},
-				{
-					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type": "KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
-					"cardRestriction": {
-						"blurb": "Linewalker for Leypathmaking to search",
-						"cardRestrictions": [
-							"Friendly",
-							"Deck",
-							"Subtypes Include"
-						],
-						"subtypesInclude": [
-							"Speedemon"
+						"nameIs": "Set",
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Rehand:"
+				},
+				{
+					"$type": "Subeffect:DeckTarget:",
+					"cardRestriction": {
+						"blurb": "Linewalker for Leypathmaking to search",
+						"cardRestrictions": [
+							"Deck"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Speedemon" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:Rehand:"
 				}
 			]
 		}

@@ -7,29 +7,34 @@
 	},
 	"subeffects":[
 		{
-			"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+			"$type":"Subeffect:TargetThis:"
 		},
 		{
-			"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+			"$type":"Subeffect:CardTarget:",
 			"cardRestriction":
 			{
 				"blurb":"to destroy",
 				"cardRestrictions":[
-					"Board",
 					"Augment",
-					"Augments Current Target",
-					"Subtypes Include"
+					"Augments Current Target"
 				],
-				"subtypesInclude": [
-					"Memory"
+				"cardRestrictionElements": [
+					{
+						"$type": "Core.CardRestriction:Location:",
+						"locations": [ "Board" ]
+					},
+					{
+						"$type": "Core.CardRestriction:SubtypesInclude:",
+						"subtypes": [ "Memory" ]
+					}
 				]
 			}
 		},
 		{
-			"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+			"$type":"Subeffect:Discard:"
 		},
 		{
-			"$type": "KompasServer.Effects.ResummonSubeffect, Assembly-CSharp",
+			"$type": "Subeffect:Resummon:",
 			"targetIndex":-2
 		}
 	]	

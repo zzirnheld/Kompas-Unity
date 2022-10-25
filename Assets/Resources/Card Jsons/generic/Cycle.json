@@ -13,23 +13,29 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type":"Subeffect:CardTarget:",
 					"cardRestriction":{
 						"blurb":"Card to Cycle",
-						"cardRestrictions":["Friendly","Hand"]
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Hand" ]
+							}
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type":"Subeffect:Discard:"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeLeyloadSubeffect, Assembly-CSharp",
+					"$type":"Subeffect:ChangeLeyload:",
 					"xModifier":1
 				}
 			]	
 		}
 	],
-	"c":1,
+	"c":3,
 	"spellTypes":["Enchant"],
 	"subtypeText":"Enchant"
 }

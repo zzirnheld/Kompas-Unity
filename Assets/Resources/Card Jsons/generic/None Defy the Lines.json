@@ -15,30 +15,35 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SkipToEffectOnImpossible:",
 					"jumpIndices": [
 						10
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "who to next be brought low by the Lines",
 						"cardRestrictions": [
 							"Character",
-							"Board",
 							"Not Already Target"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SkipToEffectOnImpossible:",
 					"jumpIndices": [
 						5
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where on the Lines to bring them",
 						"spaceRestrictions": [
@@ -50,10 +55,10 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Move:"
 				},
 				{
-					"$type": "KompasServer.Effects.LoopSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Loop:",
 					"jumpIndices": [
 						0
 					]

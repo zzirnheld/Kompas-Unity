@@ -13,79 +13,91 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Rune for Runepainter to cast",
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Spell",
-							"Friendly",
-							"Hand",
 							"Can Be Played",
 							"Effect Controller can Afford Cost"
 						],
-						"subtypesInclude": [
-							"Rune"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            },
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Rune" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where for Runepainter to cast its target Rune",
-						"spaceRestrictions": [
-							"Can Play Card Target to This Space",
-							"Empty"
-						]
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Subeffect.Card:Target:" }
+                            }
+                        ]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:PayPipsTargetCost:",
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Play:"
 				},
 				{
-					"$type": "KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SkipToEffectOnImpossible:",
 					"jumpIndices": [
 						8
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.ChooseFromListSaveRestSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChooseFromListSaveRest:",
 					"cardRestriction": {
 						"blurb": "Rune for Runepainter to search (to hand)",
 						"cardRestrictions": [
-							"Subtypes Include",
-							"Friendly",
 							"Same Name as Target",
 							"Deck",
 							"Index<C"
 						],
-						"subtypesInclude": [
-							"Rune"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Rune" ]
+							}
 						],
 						"constant": 10
 					},
 					"restRestriction": {
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
 							"Index<C",
 							"Not Already Target"
 						],
-						"constant": 10
+						"constant": 10,
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
+						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.ClearOnImpossibleSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:ClearOnImpossible:"
 				},
 				{
-					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Rehand:"
 				},
 				{
-					"$type": "KompasServer.Effects.BottomdeckRestSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:BottomdeckRest:"
 				}
 			]
 		}

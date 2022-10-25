@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Earthwapmer",
-	"effText": "Territorial.\nWhen I attack, rehand a friendly Dragon.",
+	"effText": "Territorial.\nWhen I attack, hand a friendly Dragon.",
 	"effects": [
 		{
 			"blurb": "Earthwap",
@@ -15,21 +15,24 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Who to earthwapm",
-						"cardRestrictions": [
-							"Friendly",
-							"Board",
-							"Subtypes Include"
-						],
-						"subtypesInclude": [
-							"Dragon"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Dragon" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Rehand:"
 				}
 			]
 		}
@@ -37,9 +40,9 @@
 	"keywords": [
 		"Territorial"
 	],
-	"n": 4,
+	"n": 8,
 	"e": 8,
 	"s": 4,
-	"w": 8,
+	"w": 12,
 	"subtypeText": "Flying Dragon"
 }

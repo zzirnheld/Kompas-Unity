@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Right Into My Trap",
-	"effText": "Ificate.\nWhen a character moves adjacent to a Crazy card, give them -5 W.",
+	"effText": "Ificate.\nWhen an enemy moves adjacent to a Crazy card, give them -5 W.",
 	"effects": [
 		{
 			"triggerData": {
@@ -10,18 +10,27 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Space Fits Restriction"
+						"Space Fits Restriction",
+						"Main Card Fits Restriction Before"
 					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" }
+						]
+					},
 					"spaceRestriction": {
 						"spaceRestrictions": [
 							"Adjacent to a Card that Fits Restriction"
 						],
 						"cardRestriction": {
-							"cardRestrictions": [
-								"Subtypes Include"
-							],
-							"subtypesInclude": [
-								"Crazy"
+							"cardRestrictionElements": [
+								{
+									"$type": "Core.CardRestriction:SubtypesInclude:",
+									"subtypes": [ "Crazy" ]
+								}
 							]
 						}
 					}
@@ -29,10 +38,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeCardStats:",
 					"wModifier": -5
 				}
 			]

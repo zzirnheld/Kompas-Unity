@@ -20,24 +20,25 @@
 						],
 						"spaceRestriction":
 						{
-							"spaceRestrictions": [
-								"In AOE of Card Fitting Restriction"
-							],
-							"inAOEOfRestriction": {
-								"cardRestrictions": [
-									"Subtypes Include"
-								],
-								"subtypesInclude": [
-									"Weather"
-								]
-							}
+							"spaceRestrictionElements": [ {
+								"$type": "Core.SpaceRestriction:InAOEOf:",
+								"anyOf": {
+									"$type": "Gamestate.ManyCards:FittingRestriction:",
+									"cardRestriction": {
+									"cardRestrictionElements": [ {
+											"$type": "Core.CardRestriction:SubtypesInclude:",
+											"subtypes": [ "Weather" ]
+										} ]
+									}
+								}
+							}]
 						}
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.KeywordSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Keyword:",
 					"keyword": "Spin a Storm"
 				}
 			]

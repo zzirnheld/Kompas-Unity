@@ -14,18 +14,20 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Vessel to read as an augury",
 						"cardRestrictions": [
 							"Character",
-							"Friendly",
-                            "Subtypes Include",
 							"Space Fits Restriction",
 							"Wields Augment Fitting Restriction"
                         ],
-						"subtypesInclude": [
-							"Vessel"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Vessel" ]
+							}
 						],
 						"spaceRestriction": {
 							"spaceRestrictions": [
@@ -33,52 +35,59 @@
 							]
 						},
                         "augmentRestriction": {
-                            "cardRestrictions": [
-                                "Subtypes Include"
-                            ],
-                            "subtypesInclude": [
-                                "Memory"
-                            ]
+							"cardRestrictionElements": [
+								{
+									"$type": "Core.CardRestriction:SubtypesInclude:",
+									"subtypes": [ "Memory" ]
+								}
+							]
                         }
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetXByGamestate:",
 					"whatToCount": "Cards Fitting Restriction",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Augment",
-							"Board",
-							"Augments Current Target",
-							"Subtypes Include"
+							"Augments Current Target"
 						],
-						"subtypesInclude": [
-							"Memory"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Memory" ]
+							}
 						]
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.TargetAugmentsSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetAugments:"
 				},
 				{
-					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Discard:",
                     "targetIndex": 0
 				},
 				{
-					"$type": "KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:DeckTarget:",
 					"cardRestriction": {
 						"blurb": "Corporeal form to recall",
 						"cardRestrictions": [
 							"Character",
-							"Friendly",
 							"Deck",
 							"Can Be Played",
-							"Subtypes Include",
 							"Card Value Fits Number Restriction"
 						],
-						"subtypesInclude": [
-							"Vessel"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Vessel" ]
+							}
 						],
 						"cardValue": {
 							"value": "S"
@@ -92,39 +101,42 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to recall corporeal form",
-						"spaceRestrictions": [
-							"Can Play Card Target to This Space",
-							"Empty"
-						]
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Subeffect.Card:Target:" }
+                            }
+                        ]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Play:"
 				},
 				{
-					"$type": "KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Attach:",
 					"targetToAttachTo": -1,
 					"targetIndex": -2
 				},
 				{
-					"$type": "KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:DeleteTarget:",
 					"targetIndex": -2
 				},
 				{
-					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"remainingTargets": 2,
 					"jumpIndices": [
 						7
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Resummon:"
 				},
 				{
-					"$type": "KompasServer.Effects.XTimesSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:XTimes:",
 					"jumpIndices": [
 						10
 					]

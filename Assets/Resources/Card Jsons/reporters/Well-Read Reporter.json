@@ -22,24 +22,24 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.SetXByTriggeringCardValueSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetXByTriggeringCardValue:",
 					"cardValue": {
 						"value": "Cost"
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetEnemy:"
 				},
 				{
-					"$type": "KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CanResolve:",
 					"subeffIndices": [
 						4
 					],
 					"skipIndex": 7
 				},
 				{
-					"$type": "KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChooseOption:",
 					"choiceBlurb": "Reveal an C > X spell?",
 					"optionBlurbs": [
 						"Yes",
@@ -52,12 +52,11 @@
 					"showX": true
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "C > X spell to reveal",
 						"cardRestrictions": [
 							"Controller Matches Player Target",
-							"Hand",
 							"Hidden",
 							"Spell",
 							"Card Value Fits Number Restriction"
@@ -69,21 +68,27 @@
 							"numberRestrictions": [
 								">X"
 							]
-						}
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Hand" ]
+							}
+						]
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.RevealSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Reveal:"
 				},
 				{
-					"$type": "KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:EndResolution:"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeCardStats:",
 					"nModifier": 1,
 					"eModifier": 1,
 					"sModifier": 1,

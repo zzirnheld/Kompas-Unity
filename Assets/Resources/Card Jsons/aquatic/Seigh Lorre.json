@@ -15,32 +15,42 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "what will sail",
 						"cardRestrictions": [
-							"Board",
 							"Space Fits Restriction",
 							"Space Restriction Valid With This Target Chosen"
 						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						],
 						"spaceRestrictionIndex":1,
 						"spaceRestriction": {
-							"spaceRestrictions": [
-								"In AOE of Card Fitting Restriction"
-							],
-							"inAOEOfRestriction": {
-								"cardRestrictions": [
-									"Subtypes Include"
-								],
-								"subtypesInclude": [
-									"Water"
-								]
-							}
+							"spaceRestrictionElements": [
+								{
+									"$type": "Core.SpaceRestriction:InAOEOf:",
+									"anyOf": {
+										"$type": "Gamestate.ManyCards:FittingRestriction:",
+										"cardRestriction": {
+											"cardRestrictionElements": [
+												{
+													"$type": "Core.CardRestriction:SubtypesInclude:",
+													"subtypes": [ "Water" ]
+												}
+											]
+										}
+									}
+								}
+							]
 						}
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to sail them to",
 						"spaceRestrictions": [
@@ -49,22 +59,27 @@
 							"Empty"
 						],
 						"spaceConnectednessRestriction": {
-							"spaceRestrictions": [
-								"In AOE of Card Fitting Restriction"
-							],
-							"inAOEOfRestriction": {
-								"cardRestrictions": [
-									"Subtypes Include"
-								],
-								"subtypesInclude": [
-									"Water"
-								]
-							}
+							"spaceRestrictionElements": [
+								{
+									"$type": "Core.SpaceRestriction:InAOEOf:",
+									"anyOf": {
+										"$type": "Gamestate.ManyCards:FittingRestriction:",
+										"cardRestriction": {
+											"cardRestrictionElements": [
+												{
+													"$type": "Core.CardRestriction:SubtypesInclude:",
+													"subtypes": [ "Water" ]
+												}
+											]
+										}
+									}
+								}
+							]
 						}
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Move:"
 				}
 			]
 		}
@@ -85,17 +100,22 @@
 			"Adjacent to Friendly Card"
 		],
 		"spaceRestriction": {
-			"spaceRestrictions": [
-				"In AOE of Card Fitting Restriction"
-			],
-			"inAOEOfRestriction": {
-				"cardRestrictions": [
-					"Subtypes Include"
-				],
-				"subtypesInclude": [
-					"Water"
-				]
-			}
+			"spaceRestrictionElements": [
+				{
+					"$type": "Core.SpaceRestriction:InAOEOf:",
+					"anyOf": {
+						"$type": "Gamestate.ManyCards:FittingRestriction:",
+						"cardRestriction": {
+							"cardRestrictionElements": [
+								{
+									"$type": "Core.CardRestriction:SubtypesInclude:",
+									"subtypes": [ "Water" ]
+								}
+							]
+						}
+					}
+				}
+			]
 		}
 	},
 	"unique": true,

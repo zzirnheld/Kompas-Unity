@@ -14,21 +14,26 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.KeywordSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Keyword:",
 					"keyword": "Rummage"
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "you! move a little bit to the left...",
 						"cardRestrictions": [
-							"Board",
 							"Not Avatar"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "ok, now move just a little bit more",
 						"spaceRestrictions": [
@@ -45,7 +50,7 @@
 					"xModifier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Move:"
 				}
 			]
 		}

@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Yeeterator",
-	"effText": "Ificate.\nThe first time each stack another card moves here, move them to a corner. If you can't, annihilate me.",
+	"effText": "Ificate.\nThe first time each stack another card moves to a space here, yeet them to a corner. If you can't, annihilate me.",
 	"effects": [
 		{
 			"triggerData": {
@@ -29,16 +29,16 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SkipToEffectOnImpossible:",
 					"jumpIndices": [
 						5
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where for Shifting Tile Maze Path Blocker to move its target",
 						"spaceRestrictions": [
@@ -49,19 +49,19 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Move:"
 				},
 				{
-					"$type": "KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:EndResolution:"
 				},
 				{
-					"$type": "KompasServer.Effects.ClearOnImpossibleSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:ClearOnImpossible:"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Annihilate:"
 				}
 			]
 		}

@@ -14,11 +14,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "character to ANNIHILATE",
 						"cardRestrictions": [
-							"Board",
 							"Character",
 							"Space Fits Restriction"
 						],
@@ -28,18 +27,24 @@
 								"Adjacent to a Card that Fits Restriction"
 							],
 							"adjacencyRestriction": {
-								"cardRestrictions": [
-									"Subtypes Include"
-								],
-								"subtypesInclude": [
-									"Cultist"
+								"cardRestrictionElements": [
+									{
+										"$type": "Core.CardRestriction:SubtypesInclude:",
+										"subtypes": [ "Shaper" ]
+									}
 								]
 							}
-						}
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Annihilate:"
 				}
 			]
 		}
@@ -54,11 +59,11 @@
 			"Adjacent to Card Fitting Restriction"
 		],
 		"adjacentCardRestriction": {
-			"cardRestrictions": [
-				"Subtypes Include"
-			],
-			"subtypesInclude": [
-				"Shaper"
+			"cardRestrictionElements": [
+				{
+					"$type": "Core.CardRestriction:SubtypesInclude:",
+					"subtypes": [ "Shaper" ]
+				}
 			]
 		}
 	},

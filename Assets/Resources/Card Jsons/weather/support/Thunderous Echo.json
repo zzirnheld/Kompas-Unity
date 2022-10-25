@@ -14,18 +14,21 @@
 						"Controller Triggered"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Hand"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Hand" ]
+							}
 						]
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Resummon:"
 				}
 			]
 		}

@@ -1,26 +1,31 @@
 {
 	"cardType":65,
 	"cardName":"Super Nitro Powered Rocket Shoes",
-	"effText":"When this character is moved by something other than our effects, move them 1 space in the same direction.",
+	"effText":"When this character moves, move them 1 space in the same direction.",
 	"effects":[
         {
             "blurb":"Speed Shoes",
             "triggerCondition":"Move",
             "triggerRestriction":{
-                "triggerRestrictions":["This Card is Main Card","Stackable Source Fits Restriction Now"],
-                "sourceRestriction":{
-                    "cardRestrictions":["Not Source","Source Doesn't Augment"]
+                "triggerRestrictions":[
+                    "This Card in Play",
+                    "Stackable Source Fits Restriction Now"
+                ],
+                "sourceRestriction": {
+                    "cardRestrictions": [
+                        "Source Augments"
+                    ]
                 }
             },
             "subeffects":[
                 {
-                    "$type":"KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+                    "$type":"Subeffect:TargetAugmentedCard:"
                 },
                 {
-                    "$type":"KompasServer.Effects.TargetTriggeringCardsCoordsSubeffect, Assembly-CSharp"
+                    "$type":"Subeffect:TargetTriggeringCardsCoords:"
                 },
                 {
-                    "$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+                    "$type":"Subeffect:SpaceTarget:",
                     "spaceRestriction":
                     {
                         "blurb":"where for speed victim to move",
@@ -32,7 +37,7 @@
 					"xModifier":1
                 },
                 {
-                    "$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+                    "$type":"Subeffect:Move:"
                 }
             ]
         }	
@@ -41,6 +46,6 @@
 		"normalRestrictions":["Augment Normal Restrictions"],
 		"effectRestrictions":["Augment Effect Restrictions"]
 	},
-	"a":1,
+	"a":4,
 	"subtypeText":"Shoes"
 }

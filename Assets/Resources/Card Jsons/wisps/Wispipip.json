@@ -14,18 +14,24 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type":"Subeffect:CardTarget:",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Friendly","Discard","Subtypes Include"],
-						"subtypesInclude":["Wisp"]
+						"cardRestrictions":["Discard"],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Wisp" ]
+							}
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+					"$type":"Subeffect:Reshuffle:"
 				},
 				{
-					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"$type":"Subeffect:AddPips:",
 					"xModifier":1
 				}
 			]	

@@ -1,5 +1,6 @@
 ﻿using KompasCore.Networking;
 using KompasClient.GameCore;
+using KompasCore.Cards.Movement;
 
 namespace KompasCore.Networking
 {
@@ -33,9 +34,6 @@ namespace KompasClient.Networking
     public class AnnihilateCardClientPacket : AnnihilateCardPacket, IClientOrderPacket
     {
         public void Execute(ClientGame clientGame)
-        {
-            var card = clientGame.GetCardWithID(cardId);
-            if (card != null) card.Owner.annihilationCtrl.Annihilate(card);
-        }
+            => clientGame.GetCardWithID(cardId)?.Annihilate();
     }
 }

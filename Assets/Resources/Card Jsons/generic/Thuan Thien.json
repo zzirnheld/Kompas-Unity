@@ -15,17 +15,17 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetAugmentedCard:"
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "W"
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeCardStats:",
 					"wMultiplier": 1
 				}
 			]
@@ -33,27 +33,15 @@
 	],
 	"PlayRestriction": {
 		"normalRestrictions": [
-			"Augment Normal Restrictions",
-			"On Card that Fits Restriction"
+			"Augment Normal Restrictions"
 		],
 		"effectRestrictions": [
-			"Augment Effect Restrictions",
-			"On Card that Fits Restriction"
+			"Augment Effect Restrictions"
 		],
-		"onCardRestriction": {
-			"cardRestrictions": [
-				"Subtypes Include",
-				"Friendly",
-				"Board"
-			],
-			"subtypesInclude": [
-				"Warrior"
-			]
-		}
+		"augSubtypes": [
+			"Warrior"
+		]
 	},
 	"a": 3,
-	"subtypeText": "Sword",
-	"augSubtypes": [
-		"Warrior"
-	]
+	"subtypeText": "Sword"
 }

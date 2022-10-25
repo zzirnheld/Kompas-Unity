@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Orry the Oviparous Mammal",
-	"effText": "When I move exactly 3 spaces at once, hand->discard a card and give me +3 W.",
+	"effText": "When I move EXACTLY 3 spaces at once, hand->discard a card and give me +3 W.",
 	"effects": [
 		{
 			"triggerData": {
@@ -21,23 +21,26 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "An oviparous mamal? ORRY THE OVIPAROUS MAMMAL?",
-						"cardRestrictions": [
-							"Friendly",
-							"Hand"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Hand" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Discard:"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeCardStats:",
 					"wModifier": 3
 				}
 			]

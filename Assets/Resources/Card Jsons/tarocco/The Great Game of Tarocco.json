@@ -13,16 +13,25 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.SetXBoardRestrictionSubeffect, Assembly-CSharp",
+					"$type":"Subeffect:SetXBoardRestriction:",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Subtypes Include","Friendly","Board"],
-						"subtypesInclude":["Tarocco"]
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Tarocco" ]
+							}
+						]
 					},
 					"xMultiplier":1
 				},
 				{
-					"$type":"KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"$type":"Subeffect:DrawX:",
 					"xMultiplier":1
 				}
 			]

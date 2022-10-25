@@ -17,7 +17,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.ConditionalJumpSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ConditionalJump:",
 					"condition": "Main Triggering Card Flouted Restriction Before",
 					"cardRestriction": {
 						"cardRestrictions": [
@@ -29,16 +29,21 @@
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeAllCardStats:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Character",
-							"Board",
-							"Friendly",
-							"Subtypes Include"
+							"Character"
 						],
-						"subtypesInclude": [
-							"Reporter"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Reporter" ]
+							}
 						]
 					},
 					"nModifier": 1,
@@ -47,18 +52,23 @@
 					"wModifier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "card to reveal",
 						"cardRestrictions": [
 							"Controller Matches Player Target",
-							"Hand",
 							"Hidden"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Hand" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.RevealSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Reveal:"
 				}
 			]
 		}

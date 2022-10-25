@@ -18,11 +18,13 @@
 						],
 						"adjacencyRestriction": {
 							"cardRestrictions": [
-								"Not Context Card",
-								"Subtypes Include"
+								"Not Context Card"
 							],
-							"subtypesInclude": [
-								"Pulsar"
+							"cardRestrictionElements": [
+								{
+									"$type": "Core.CardRestriction:SubtypesInclude:",
+									"subtypes": [ "Pulsar" ]
+								}
 							]
 						},
 						"mustBeEmpty": false
@@ -31,10 +33,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeCardStats:",
 					"sModifier": 1
 				}
 			]
@@ -58,11 +60,13 @@
 							],
 							"adjacencyRestriction": {
 								"cardRestrictions": [
-									"Not Context Card",
-									"Subtypes Include"
+									"Not Context Card"
 								],
-								"subtypesInclude": [
-									"Pulsar"
+								"cardRestrictionElements": [
+									{
+										"$type": "Core.CardRestriction:SubtypesInclude:",
+										"subtypes": [ "Pulsar" ]
+									}
 								]
 							},
 							"mustBeEmpty": false
@@ -72,10 +76,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeCardStats:",
 					"sModifier": -1
 				}
 			]

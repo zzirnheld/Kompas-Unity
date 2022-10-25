@@ -1,7 +1,7 @@
 {
 	"cardType": 65,
 	"cardName": "Creative Memory",
-	"effText": "When this character is summoned, draw 1 card.\nWhen turns start, echo this character. ",
+	"effText": "When you echo this character, draw 1 card.\nWhen turns start, echo this character. ",
 	"effects": [
 		{
 			"blurb": "Spurt of Creativity",
@@ -15,7 +15,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Draw:"
 				}
 			]
 		},
@@ -31,10 +31,10 @@
 			},
 			"subeffects": [
                 {
-                    "$type":"KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+                    "$type":"Subeffect:TargetAugmentedCard:"
                 },
 				{
-					"$type": "KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Resummon:"
 				}
 			]
 		}

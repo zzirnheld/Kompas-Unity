@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Modular Golem Cores",
-	"effText": "The first time each turn a card arrives adjacent to an augmented Golem, hand all X of one such Golem's augments. Hand->attach up to X Golem Cores to that Golem.",
+	"effText": "The first time each turn a card arrives adjacent to a Golem, hand all X their augments. Hand->attach up to X Golem Cores to them.",
 	"effects": [
 		{
 			"blurb": "Swap Out Modules",
@@ -23,11 +23,13 @@
 							],
 							"adjacencyRestriction": {
 								"cardRestrictions": [
-									"Augmented",
-									"Subtypes Include"
+									"Augmented"
 								],
-								"subtypesInclude": [
-									"Golem"
+								"cardRestrictionElements": [
+									{
+										"$type": "Core.CardRestriction:SubtypesInclude:",
+										"subtypes": [ "Golem" ]
+									}
 								]
 							},
 							"mustBeEmpty": false
@@ -37,21 +39,26 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Golem to swap out modules",
 						"cardRestrictions": [
 							"Character",
-							"Board",
 							"Augmented",
-							"Subtypes Include",
 							"Space Fits Restriction"
 						],
-						"subtypesInclude": [
-							"Golem"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Golem" ]
+							}
 						],
 						"spaceRestriction": {
 							"spaceRestrictions": [
@@ -61,20 +68,20 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "Number of Augments"
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.TargetAugmentsSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetAugments:"
 				},
 				{
-					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Rehand:"
 				},
 				{
-					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"delete": true,
 					"remainingTargets": 2,
 					"jumpIndices": [
@@ -82,27 +89,31 @@
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Golem core for Modular Golem Cores to attach",
 						"cardRestrictions": [
-							"Augment",
-							"Hand",
-							"Subtypes Include"
+							"Augment"
 						],
-						"subtypesInclude": [
-							"Golem",
-							"Core"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Hand" ]
+							},
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Golem", "Core" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Attach:",
 					"targetToAttachTo": 1,
 					"targetIndex": -1
 				},
 				{
-					"$type": "KompasServer.Effects.XTimesSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:XTimes:",
 					"jumpIndices": [
 						6
 					],

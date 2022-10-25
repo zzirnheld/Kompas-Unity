@@ -14,14 +14,12 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
                     "cardRestriction":
                     {
 						"blurb": "for Havengranter to hand-summon",
                         "cardRestrictions": [
 							"Character",
-							"Friendly",
-							"Hand",
                             "Card Value Fits Number Restriction"
                         ],
                         "cardValue": {
@@ -30,11 +28,18 @@
                         "cardValueNumberRestriction": {
                             "numberRestrictions": ["==Constant"],
                             "constant": 1
-                        }
+                        },
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            }
+						]
                     }
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where Havengranter to hand-summon",
 						"spaceRestrictions": [
@@ -45,7 +50,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Play:"
 				}
 			]
 		}

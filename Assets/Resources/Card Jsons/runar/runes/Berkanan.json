@@ -14,11 +14,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character",
-							"Board",
 							"Summoned",
 							"Space Fits Restriction"
 						],
@@ -26,11 +25,17 @@
 							"spaceRestrictions": [
 								"Adjacent to Source"
 							]
-						}
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SetCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetCardStats:",
 					"eVal": 5,
 					"wVal": 0
 				}

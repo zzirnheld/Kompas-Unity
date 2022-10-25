@@ -14,13 +14,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "adjacent Weather to annihilate",
 						"cardRestrictions": [
-							"Friendly",
-							"Board",
-							"Subtypes Include",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
@@ -28,28 +25,38 @@
 								"Adjacent to Source"
 							]
 						},
-						"subtypesInclude": [
-							"Weather"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Weather" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Annihilate:"
 				},
 				{
-					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChooseFromList:",
 					"cardRestriction": {
 						"blurb": "Weather to deck-cast",
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
 							"Spell",
 							"Distinct Name from Other Targets",
-							"Subtypes Include",
 							"Spell Subtypes"
 						],
-						"subtypesInclude": [
-							"Weather"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Weather" ]
+							}
 						],
 						"spellSubtypes": [
 							"Radial"
@@ -58,7 +65,7 @@
 					"maxCanChoose": 1
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to cast the Weather",
 						"spaceRestrictions": [
@@ -75,7 +82,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Play:"
 				}
 			]
 		}

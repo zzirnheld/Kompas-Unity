@@ -14,13 +14,16 @@
                         "Secondary Card Fits Restriction Before"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Board",
-							"Friendly",
-							"Subtypes Include"
-						],
-						"subtypesInclude": [
-							"Moth"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Moth" ]
+							}
 						]
 					},
                     "secondaryCardRestriction": {
@@ -28,24 +31,29 @@
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
-							"spaceRestrictions": [
-								"In AOE of Card Fitting Restriction"
-							],
-							"inAOEOfRestriction": {
-								"cardRestrictions": [
-									"Subtypes Include"
-								],
-								"subtypesInclude": [
-									"Light"
-								]
-							}
+							"spaceRestrictionElements": [
+								{
+									"$type": "Core.SpaceRestriction:InAOEOf:",
+									"anyOf": {
+										"$type": "Gamestate.ManyCards:FittingRestriction:",
+										"cardRestriction": {
+											"cardRestrictionElements": [
+												{
+													"$type": "Core.CardRestriction:SubtypesInclude:",
+													"subtypes": [ "Light" ]
+												}
+											]
+										}
+									}
+								}
+							]
 						}
                     }
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Draw:"
 				}
 			]
 		}

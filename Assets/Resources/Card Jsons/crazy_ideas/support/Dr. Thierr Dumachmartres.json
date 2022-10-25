@@ -18,7 +18,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.KeywordSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Keyword:",
 					"keyword": "Rummage"
 				}
 			]

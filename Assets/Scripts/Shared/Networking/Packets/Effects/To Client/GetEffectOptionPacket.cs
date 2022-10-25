@@ -35,11 +35,11 @@ namespace KompasClient.Networking
     {
         public void Execute(ClientGame clientGame)
         {
-            if (hasDefault && clientGame.clientUICtrl.OptionalEffAutoResponse == ClientUIController.OptionalEffYes)
+            if (hasDefault && clientGame.clientUIController.OptionalEffAutoResponse == ClientUIController.OptionalEffYes)
                 clientGame.clientNotifier.RequestChooseEffectOption(0);
-            else if (hasDefault && clientGame.clientUICtrl.OptionalEffAutoResponse == ClientUIController.OptionalEffNo)
+            else if (hasDefault && clientGame.clientUIController.OptionalEffAutoResponse == ClientUIController.OptionalEffNo)
                 clientGame.clientNotifier.RequestChooseEffectOption(1);
-            else clientGame.clientUICtrl.ShowEffectOptions(choiceBlurb, optionBlurbs, showX, x);
+            else clientGame.clientUIController.ShowEffectOptions(choiceBlurb, optionBlurbs, showX, x);
         }
     }
 }

@@ -3,8 +3,10 @@ using KompasClient.Effects;
 using KompasClient.Networking;
 using KompasClient.UI;
 using KompasCore.Cards;
+using KompasCore.Cards.Movement;
 using KompasCore.Effects;
 using KompasCore.GameCore;
+using KompasCore.UI;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -13,25 +15,40 @@ namespace KompasClient.GameCore
 {
     public class ClientGame : Game
     {
+        public ClientCardRepository cardRepo;
+        public override CardRepository CardRepository => cardRepo;
+
+        [Header("Prefabs")]
         public GameObject AvatarPrefab;
 
-        public override Player[] Players => ClientPlayers;
-        public ClientPlayer[] ClientPlayers;
-
-        public Dictionary<int, ClientGameCard> cardsByID = new Dictionary<int, ClientGameCard>();
-        public IEnumerable<ClientGameCard> ClientCards => cardsByID.Values;
-        public override IEnumerable<GameCard> Cards => ClientCards;
-
+        [Header("Networking MonoBehaviours")]
         public ClientNetworkController clientNetworkCtrl;
         public ClientNotifier clientNotifier;
-        public ClientUIController clientUICtrl;
-        public ClientSettingsUIController clientUISettingsCtrl;
+
+        [Header("Game location controllers")]
+        public ClientBoardController clientBoardController;
+        public override BoardController BoardController => clientBoardController;
+
+        [Header("Effects")]
         public ClientEffectsController clientEffectsCtrl;
 
-        public ClientSettings ClientSettings => clientUISettingsCtrl.ClientSettings;
+        [Header("Players")]
+        public ClientPlayer[] clientPlayers;
+        public override Player[] Players => clientPlayers;
+        public ClientPlayer FriendlyPlayer => clientPlayers[0];
+
+        [Header("UI")]
+        public ClientUIController clientUIController;
+        public override UIController UIController => clientUIController;
+
+
+        private readonly Dictionary<int, ClientGameCard> cardsByID = new Dictionary<int, ClientGameCard>();
+        public override IEnumerable<GameCard> Cards => cardsByID.Values;
+
+        public ClientSettings ClientSettings => clientUIController.clientUISettingsController.ClientSettings;
 
         //turn players?
-        public bool FriendlyTurn => TurnPlayerIndex == 0;
+        public bool FriendlyTurn => TurnPlayer == FriendlyPlayer;
 
         //search
         public ClientSearchController searchCtrl;
@@ -56,8 +73,8 @@ namespace KompasClient.GameCore
             set
             {
                 currentPotentialSpaces = value;
-                if (value != null) clientUICtrl.boardUICtrl.ShowSpaceTargets(space => value.Contains(space));
-                else clientUICtrl.boardUICtrl.ShowSpaceTargets(_ => false);
+                if (value != null) clientUIController.boardUIController.ShowSpaceTargets(space => value.Contains(space));
+                else clientUIController.boardUIController.ShowSpaceTargets(_ => false);
             }
         }
 
@@ -65,7 +82,6 @@ namespace KompasClient.GameCore
         public override IEnumerable<IStackable> StackEntries => clientEffectsCtrl.StackEntries;
 
         public bool canZoom = false;
-        public ClientSettings ClientUISettings => clientUISettingsCtrl.ClientSettings;
 
         //dirty card set
         private readonly HashSet<GameCard> dirtyCardList = new HashSet<GameCard>();
@@ -76,7 +92,7 @@ namespace KompasClient.GameCore
             set
             {
                 base.Leyload = value;
-                clientUICtrl.Leyload = Leyload;
+                clientUIController.Leyload = Leyload;
                 //Refresh next turn pips shown.
                 foreach (var player in Players)
                 {
@@ -87,20 +103,20 @@ namespace KompasClient.GameCore
 
         private void Awake()
         {
-            clientUISettingsCtrl.LoadSettings();
+            clientUIController.clientUISettingsController.LoadSettings();
             ApplySettings();
         }
 
-        public override void OnClickBoard(int x, int y)
+        public void AddCard(ClientGameCard card)
         {
-            clientNotifier.RequestSpaceTarget(x, y);
+            if (card.ID != -1) cardsByID.Add(card.ID, card);
         }
 
         public void MarkCardDirty(GameCard card) => dirtyCardList.Add(card);
 
         public void PutCardsBack()
         {
-            foreach (var c in dirtyCardList) c.PutBack();
+            foreach (var c in dirtyCardList) if (c.CardController != null) c.CardController.PutBack();
             dirtyCardList.Clear();
         }
 
@@ -108,8 +124,8 @@ namespace KompasClient.GameCore
         {
             if (player >= 2) throw new System.ArgumentException();
 
-            var owner = ClientPlayers[player];
-            var avatar = cardRepo.InstantiateClientAvatar(json, this, owner, avatarID);
+            var owner = clientPlayers[player];
+            var avatar = cardRepo.InstantiateClientAvatar(json, owner, avatarID);
             avatar.KnownToEnemy = true;
             owner.Avatar = avatar;
             Space to = player == 0 ? Space.NearCorner : Space.FarCorner;
@@ -120,15 +136,15 @@ namespace KompasClient.GameCore
         {
             card.Remove();
             cardsByID.Remove(card.ID);
-            Destroy(card.gameObject);
+            Destroy(card.CardController.gameObject);
         }
 
         //requesting
         public void SetFirstTurnPlayer(int playerIndex)
         {
             FirstTurnPlayer = TurnPlayerIndex = playerIndex;
-            clientUICtrl.ChangeTurn(playerIndex);
-            clientUICtrl.HideGetDecklistUI();
+            clientUIController.ChangeTurn(playerIndex);
+            clientUIController.HideGetDecklistUI();
             RoundCount = 1;
             TurnCount = 1;
             canZoom = true;
@@ -141,11 +157,10 @@ namespace KompasClient.GameCore
         {
             TurnPlayerIndex = index;
             ResetCardsForTurn();
-            clientUICtrl.ChangeTurn(TurnPlayerIndex);
+            clientUIController.ChangeTurn(TurnPlayerIndex);
             if (TurnPlayerIndex == FirstTurnPlayer) RoundCount++;
             TurnCount++;
-            clientUICtrl.FriendlyPips = Players[0].Pips;
-            clientUICtrl.EnemyPips = Players[1].Pips;
+            foreach (var player in Players) player.Pips = player.Pips;
         }
 
         public override GameCard GetCardWithID(int id) => cardsByID.ContainsKey(id) ? cardsByID[id] : null;
@@ -153,9 +168,9 @@ namespace KompasClient.GameCore
         public void ShowCardsByZoom(bool zoomed)
         {
             //TODO make this better with a dirty list
-            foreach (var c in Cards.Where(c => c != null && c.gameObject.activeSelf))
+            foreach (var c in Cards.Where(c => c != null && c.CardController.gameObject.activeSelf))
             {
-                c.cardCtrl.ShowForCardType(c.CardType, zoomed);
+                c.CardController.gameCardViewController.Refresh();
             }
         }
 
@@ -165,20 +180,19 @@ namespace KompasClient.GameCore
         public void Refresh()
         {
             ShowCardsByZoom(ClientCameraController.Main.Zoomed);
-            clientUICtrl.Refresh();
-            clientUICtrl.cardInfoViewUICtrl.searchUICtrl.ReshowSearchShown();
+            clientUIController.cardInfoViewUIController.Refresh();
         }
 
         public void EffectActivated(ClientEffect eff)
         {
-            clientUICtrl.SetCurrState($"{(eff.Controller.Friendly ? "Friendly" : "Enemy")} {eff.Source.CardName} Effect Activated",
+            clientUIController.SetCurrState($"{(eff.Controller.Friendly ? "Friendly" : "Enemy")} {eff.Source.CardName} Effect Activated",
                 eff.blurb);
         }
 
         public void StackEmptied()
         {
-            targetMode = TargetMode.Free;
-            clientUICtrl.SetCurrState("Stack Empty");
+            clientUIController.TargetMode = TargetMode.Free;
+            clientUIController.SetCurrState("Stack Empty");
             foreach (var c in Cards) c.ResetForStack();
             ShowNoTargets();
         }
@@ -186,8 +200,8 @@ namespace KompasClient.GameCore
         public void ApplySettings()
         {
             ClientCameraController.ZoomThreshold = ClientSettings.zoomThreshold;
-            clientUICtrl.ApplySettings(ClientSettings);
-            foreach (var card in ClientCards) card.clientCardCtrl.ApplySettings(ClientSettings);
+            clientUIController.ApplySettings(ClientSettings);
+            foreach (var card in Cards) card.CardController.gameCardViewController.Refresh();
         }
 
         #region targeting
@@ -198,7 +212,6 @@ namespace KompasClient.GameCore
         {
             CurrentPotentialTargets = ids?.Select(i => GetCardWithID(i)).Where(c => c != null).ToArray();
             searchCtrl.StartSearch(CurrentPotentialTargets, listRestriction);
-
         }
 
         public void ClearPotentialTargets()
@@ -212,7 +225,7 @@ namespace KompasClient.GameCore
         /// </summary>
         public void ShowNoTargets()
         {
-            foreach (var card in Cards) card.cardCtrl.HideTarget();
+            foreach (var card in Cards) card.CardController.gameCardViewController.Refresh();
         }
 
         /// <summary>
@@ -222,10 +235,15 @@ namespace KompasClient.GameCore
         {
             if (CurrentPotentialTargets != null)
             {
-                foreach (var card in CurrentPotentialTargets) card.cardCtrl.ShowValidTarget();
+                foreach (var card in CurrentPotentialTargets) card.CardController.gameCardViewController.Refresh();
             }
             else ShowNoTargets();
         }
+
+        public override bool IsCurrentTarget(GameCard card) => searchCtrl.IsCurrentlyTargeted(card);
+        public override bool IsValidTarget(GameCard card) => searchCtrl.IsValidTarget(card);
+
+        public override CardBase FocusedCard => clientUIController.cardInfoViewUIController.FocusedCard;
         #endregion targeting
     }
 }

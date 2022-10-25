@@ -13,17 +13,17 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.StashTargetsCardInfoSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:StashTargetsCardInfo:"
 				},
 				{
-					"$type": "KompasServer.Effects.KeywordSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Keyword:",
 					"keyword": "Mech Pilot Summon"
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "N"
 					},
@@ -31,11 +31,11 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeCardStats:",
 					"nMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "E"
 					},
@@ -43,11 +43,11 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeCardStats:",
 					"eMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "S"
 					},
@@ -55,11 +55,11 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeCardStats:",
 					"sMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "W"
 					},
@@ -67,11 +67,11 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeCardStats:",
 					"wMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.KeywordSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Keyword:",
 					"keyword": "Mech Pilot Return"
 				}
 			]

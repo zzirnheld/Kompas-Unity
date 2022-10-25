@@ -13,19 +13,24 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetXByGamestate:",
 					"whatToCount": "Total Card Value of Cards Fitting Restriction",
 					"cardValue": {
 						"value": "S"
 					},
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Character",
-							"Discard",
-							"Subtypes Include"
+							"Character"
 						],
-						"subtypesInclude": [
-							"Structure"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							},
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Structure" ]
+							}
 						]
 					},
 					"xMultiplier": 1,
@@ -33,18 +38,23 @@
                     "comment": "NOTE: this will break if you have an odd total cost of structures 1 less than what you need"
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Structure to repurpose old stone into",
 						"cardRestrictions": [
 							"Character",
-							"Friendly",
-							"Hand",
-							"Card Value Fits Number Restriction",
-							"Subtypes Include"
+							"Card Value Fits Number Restriction"
 						],
-						"subtypesInclude": [
-							"Structure"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            },
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Structure" ]
+							}
 						],
 						"cardValue": {
 							"value": "S"
@@ -58,21 +68,24 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Structure whose stone to repuprose",
-						"cardRestrictions": [
-							"Subtypes Include",
-							"Friendly",
-							"Discard"
-						],
-						"subtypesInclude": [
-							"Structure"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							},
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Structure" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "S",
 						"multiplier": -1
@@ -81,7 +94,7 @@
 					"change": true
 				},
 				{
-					"$type": "KompasServer.Effects.ConditionalJumpSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ConditionalJump:",
 					"condition": "X >= Constant",
 					"constant": 1,
 					"jumpIndices": [
@@ -89,18 +102,21 @@
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to summon the chosen Structure",
-						"spaceRestrictions": [
-							"Can Play Card Target to This Space",
-							"Empty"
-						]
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Subeffect.Card:Target:" }
+                            }
+                        ]
 					},
                     "targetIndex": 0
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Play:",
                     "targetIndex": 0
 				}
 			]

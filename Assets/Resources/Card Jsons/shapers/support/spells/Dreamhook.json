@@ -14,14 +14,11 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Friendly Shaper to move",
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Character",
-							"Friendly",
-							"Board",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
@@ -29,24 +26,37 @@
 								"Adjacent to Source"
 							]
 						},
-						"subtypesInclude": [
-							"Shaper"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Shaper" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "enemy character to move adjacent to",
 						"cardRestrictions": [
-							"Character",
-							"Enemy",
-							"Board"
+							"Character"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to move the Shaper",
 						"spaceRestrictions": [
@@ -57,10 +67,10 @@
 					"targetIndex": -2
 				},
 				{
-					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Move:"
 				},
 				{
-					"$type": "KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Attack:",
 					"targetIndex": -2,
 					"attackerIndex": -1
 				}
@@ -73,11 +83,13 @@
 		],
 		"adjacentCardRestriction": {
 			"cardRestrictions": [
-				"Character",
-				"Subtypes Include"
+				"Character"
 			],
-			"subtypesInclude": [
-				"Shaper"
+			"cardRestrictionElements": [
+				{
+					"$type": "Core.CardRestriction:SubtypesInclude:",
+					"subtypes": [ "Shaper" ]
+				}
 			]
 		}
 	},

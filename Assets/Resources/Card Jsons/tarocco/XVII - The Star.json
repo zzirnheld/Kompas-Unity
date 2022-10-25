@@ -17,7 +17,6 @@
 					"nowRestriction": {
 						"cardRestrictions": [
 							"Character",
-							"Enemy",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
@@ -26,24 +25,30 @@
 							],
 							"adjacencyRestriction": {
 								"cardRestrictions": [
-									"Summoned",
-									"Subtypes Include"
+									"Summoned"
 								],
-								"subtypesInclude": [
-									"Tarocco"
+								"cardRestrictionElements": [
+									{
+										"$type": "Core.CardRestriction:SubtypesInclude:",
+										"subtypes": [ "Tarocco" ]
+									}
 								]
 							}
-						}
+						},
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" }
+						]
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.SetXBoardRestrictionSubeffect, Assembly-CSharp",
+					"$type":"Subeffect:TargetTriggeringCard:"
+				},
+				{
+					"$type": "Subeffect:SetXBoardRestriction:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Board",
-							"Subtypes Include",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
@@ -51,17 +56,24 @@
 								"Adjacent to Card Target"
 							]
 						},
-						"subtypesInclude": [
-							"Tarocco"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Tarocco" ]
+							}
 						]
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Draw:"
 				},
 				{
-					"$type": "KompasServer.Effects.XTimesSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:XTimes:",
 					"jumpIndices": [
 						2
 					]

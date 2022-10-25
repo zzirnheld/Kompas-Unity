@@ -11,7 +11,7 @@
 	},
 	"subeffects": [
 		{
-			"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+			"$type": "Subeffect:ChooseFromList:",
 			"listRestriction": {
 				"listRestrictions": [
 					"Min Can Choose"
@@ -20,11 +20,17 @@
 			},
 			"cardRestriction": {
 				"blurb": "Burn cards for smite",
-				"cardRestrictions": [ "Friendly", "Hand" ]
+				"cardRestrictionElements": [
+					{ "$type": "Core.CardRestriction:Friendly:" },
+					{
+						"$type": "Core.CardRestriction:Location:",
+						"locations": [ "Hand" ]
+					}
+				]
 			}
 		},
 		{
-			"$type": "KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+			"$type": "Subeffect:SetXByGamestate:",
 			"whatToCount": "Cards Fitting Restriction",
 			"cardRestriction": {
 				"cardRestrictions": [
@@ -34,20 +40,20 @@
 			"xMultiplier": 1
 		},
 		{
-			"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+			"$type": "Subeffect:Discard:"
 		},
 		{
-			"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+			"$type": "Subeffect:LoopWhileHaveTargets:",
 			"delete": true,
 			"jumpIndices": [
 				2
 			]
 		},
 		{
-			"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+			"$type": "Subeffect:TargetThis:"
 		},
 		{
-			"$type": "KompasServer.Effects.TemporaryCardStatChangeSubeffect, Assembly-CSharp",
+			"$type": "Subeffect:TemporaryCardStatChange:",
 			"wMultiplier": 2,
 			"endCondition": "Battle End",
 			"triggerRestriction": {

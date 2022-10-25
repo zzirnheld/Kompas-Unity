@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Linewalk",
-	"effText": "Move a friendly Linewalker though empty spaces to an empty space on their diagonal. Draw 1 card.",
+	"effText": "Move a friendly Linewalker, though empty spaces, to an empty space on their diagonal. Draw 1 card.",
 	"effects": [
 		{
 			"blurb": "Simple Effect",
@@ -15,21 +15,24 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Character to Linewalk",
-						"cardRestrictions": [
-							"Subtypes Include",
-							"Board",
-							"Friendly"
-						],
-						"subtypesInclude": [
-							"Linewalker"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Linewalker" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "to Linewalk to",
 						"spaceRestrictions": [
@@ -47,10 +50,10 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Move:"
 				},
 				{
-					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Draw:"
 				}
 			]
 		}

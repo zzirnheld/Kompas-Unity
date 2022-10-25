@@ -14,38 +14,43 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Shaper to hand-summon",
 						"cardRestrictions": [
-							"Subtypes Include",
-							"Character",
-							"Friendly",
-							"Hand"
+							"Character"
 						],
-						"subtypesInclude": [
-							"Shaper"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            },
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Shaper" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to handsummon the Shaper",
                         "spaceRestrictionElements": [
-                            { "$type": "KompasCore.Effects.Restrictions.SpaceRestrictionElements.Empty, Assembly-CSharp" },
+                            { "$type": "Core.SpaceRestriction:Empty:" },
                             {
-                                "$type": "KompasCore.Effects.Restrictions.SpaceRestrictionElements.CanPlayCard, Assembly-CSharp",
-                                "toPlay": { "$type": "KompasServer.Effects.Identities.SubeffectCardIdentities.Target, Assembly-CSharp" }
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Subeffect.Card:Target:" }
                             }
                         ]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Play:"
 				},
 				{
-					"$type": "KompasServer.Effects.HangingAnnihilationSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:HangingAnnihilation:",
 					"endCondition": "Turn Start",
 					"triggerRestriction": {
 						"triggerRestrictions": [

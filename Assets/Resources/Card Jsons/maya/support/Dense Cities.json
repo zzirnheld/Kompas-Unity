@@ -15,15 +15,16 @@
 			},
 			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.SetXBoardRestrictionSubeffect, Assembly-CSharp",
+					"$type":"Subeffect:SetXBoardRestriction:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Subtypes Include",
                             "Space Fits Restriction"
                         ],
-						"subtypesInclude": [
-                            "Maya",
-							"Structure"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Maya", "Structure" ]
+							}
 						],
 						"spaceRestriction": {
 							"spaceRestrictions": [
@@ -34,17 +35,18 @@
 					"xMultiplier":1
 				},
 				{
-					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChooseFromList:",
 					"cardRestriction": {
 						"blurb": "Craftspeople move to the cities",
 						"cardRestrictions": [
-							"Friendly",
-							"Deck",
-							"Subtypes Include"
+							"Deck"
 						],
-						"subtypesInclude": [
-							"Maya",
-							"Craftsperson"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Maya", "Craft", "Person" ]
+							}
 						]
 					},
 					"listRestriction": {
@@ -56,10 +58,10 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Rehand:"
 				},
 				{
-					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"delete": true,
 					"jumpIndices": [
 						2

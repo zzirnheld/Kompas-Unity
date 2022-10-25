@@ -3,7 +3,11 @@ using KompasCore.GameCore;
 
 public class ClientHandController : HandController
 {
-    public ClientGame clientGame;
+
+    public ClientPlayer owner;
+    public override Player Owner => owner;
+
+    public ClientGame ClientGame => owner.clientGame;
 
     public virtual void IncrementHand()
         => throw new System.NotImplementedException("Can't increment hand of the friendly player!");

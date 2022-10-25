@@ -54,7 +54,7 @@ namespace KompasServer.Effects
         }
 
         //nothing is happening if nothing is in the stack, nothing is currently resolving, and no one is waiting to add something to the stack.
-        public bool NothingHappening => stack.Empty && CurrStackEntry == null && !currentlyCheckingResponses;
+        public bool NothingHappening => stack.Empty && CurrStackEntry == null && !currentlyCheckingResponses && ServerGame.Players.All(s => s.PassedPriority);
 
         public override string ToString()
         {
@@ -107,8 +107,8 @@ namespace KompasServer.Effects
             //Debug.Log($"Stack is emptied");
             //stack ends
             foreach (var c in ServerGame.Cards) c.ResetForStack();
-            ServerGame.boardCtrl.ClearSpells();
-            ServerGame.ServerPlayers.First().ServerNotifier.StackEmpty();
+            ServerGame.serverBoardController.ClearSpells();
+            ServerGame.serverPlayers.First().ServerNotifier.StackEmpty();
             TriggerForCondition(Trigger.StackEnd, new ActivationContext(game: ServerGame));
             //Must check whether I *should* check for response to avoid an infinite loop
             if (!stack.Empty || triggeredTriggers.Any()) await CheckForResponse();
@@ -122,7 +122,7 @@ namespace KompasServer.Effects
             {
                 //Debug.Log($"Resolving next stack entry: {stackable}, {context}");
                 //inform the players that they no longer can respond, in case they were somehow still thinking they could
-                foreach (var p in ServerGame.ServerPlayers) p.ServerNotifier.RequestNoResponse();
+                foreach (var p in ServerGame.serverPlayers) p.ServerNotifier.RequestNoResponse();
 
                 //set the current stack entry to the appropriate value. this is used to check if something is currently resolving.
                 CurrStackEntry = stackable;
@@ -131,7 +131,7 @@ namespace KompasServer.Effects
                 await stackable.StartResolution(context);
 
                 //after it resolves, tell the clients it's done resolving
-                ServerGame.ServerPlayers.First().ServerNotifier.RemoveStackEntry(currStackIndex);
+                ServerGame.serverPlayers.First().ServerNotifier.RemoveStackEntry(currStackIndex);
                 //take note that nothing is resolving
                 CurrStackEntry = null;
                 //and see if there's antyhing to resolve next.
@@ -159,7 +159,7 @@ namespace KompasServer.Effects
                 if (stack.StackEntries.ElementAt(i) == eff)
                 {
                     stack.Cancel(i);
-                    ServerGame.ServerPlayers.First().ServerNotifier.RemoveStackEntry(i - 1);
+                    ServerGame.serverPlayers.First().ServerNotifier.RemoveStackEntry(i - 1);
                 }
             }
             //Remove effect from hanging/delayed
@@ -182,7 +182,7 @@ namespace KompasServer.Effects
         /// </summary>
         public void ResetPassingPriority()
         {
-            foreach (var player in ServerGame.ServerPlayers) player.ResetPassedPriority();
+            foreach (var player in ServerGame.serverPlayers) player.ResetPassedPriority();
         }
         #endregion the stack
 
@@ -226,7 +226,7 @@ namespace KompasServer.Effects
             {
                 //create a list to hold the tasks, so you can get trigger orderings from both players at once.
                 List<Task> triggerOrderings = new List<Task>();
-                foreach (var p in ServerGame.ServerPlayers)
+                foreach (var p in ServerGame.serverPlayers)
                 {
                     var thisPlayers = confirmed.Where(t => t.serverEffect.Controller == p);
                     if (thisPlayers.Any(t => !t.Ordered)) triggerOrderings.Add(p.serverAwaiter.GetTriggerOrder(thisPlayers));
@@ -277,7 +277,7 @@ namespace KompasServer.Effects
 
             await CheckAllTriggers(ServerGame.TurnServerPlayer);
 
-            var playersHoldingPriority = ServerGame.ServerPlayers
+            var playersHoldingPriority = ServerGame.serverPlayers
                 .Where(player => !player.PassedPriority)
                 .ToArray(); //call toArray so that we don't create the collection twice.
 

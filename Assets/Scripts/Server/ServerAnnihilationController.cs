@@ -15,9 +15,9 @@ namespace KompasServer.GameCore
             bool actuallyAnnihilated = base.Annihilate(card, stackSrc);
             if (actuallyAnnihilated)
             {
-                ServerGame.ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyAnnhilate(card, wasKnown);
+                ServerGame.serverPlayers[card.ControllerIndex].ServerNotifier.NotifyAnnhilate(card, wasKnown);
                 context.CacheCardInfoAfter();
-                ServerGame.EffectsController.TriggerForCondition(Trigger.Annhilate, context);
+                ServerGame.effectsController.TriggerForCondition(Trigger.Annhilate, context);
             }
             return actuallyAnnihilated;
         }

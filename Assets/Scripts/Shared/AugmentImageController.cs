@@ -16,9 +16,9 @@ namespace KompasCore.UI
         {
             this.card = card;
             this.uiCtrl = uiCtrl;
-            img.sprite = card.simpleSprite;
+            img.sprite = card.SimpleSprite;
         }
 
-        public void OnPointerEnter(PointerEventData eventData) => uiCtrl.SelectCard(card, false);
+        public void OnPointerEnter(PointerEventData eventData) => uiCtrl.CardViewController.Focus(card);
     }
 }

@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Ma Rinner",
-	"effText": "Waterborn.\nWhen turns start, draw 2. Then, unless I'm in Water, hand->bottomdeck 3.",
+	"effText": "Waterborn.\nWhen turns start, draw 2 cards. Then, unless I'm in Water, hand->bottomdeck 3.",
 	"effects": [
 		{
 			"blurb": "Fish",
@@ -15,41 +15,49 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:DrawX:",
 					"xModifier": 2
 				},
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ConditionalEnd:",
 					"condition": "Target Fits Restriction",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
-							"spaceRestrictions": [
-								"In AOE of Card Fitting Restriction"
-							],
-							"inAOEOfRestriction": {
-								"cardRestrictions": [
-									"Subtypes Include"
-								],
-								"subtypesInclude": [
-									"Water"
-								]
-							}
+							"spaceRestrictionElements": [
+								{
+									"$type": "Core.SpaceRestriction:InAOEOf:",
+									"anyOf": {
+										"$type": "Gamestate.ManyCards:FittingRestriction:",
+										"cardRestriction": {
+											"cardRestrictionElements": [
+												{
+													"$type": "Core.CardRestriction:SubtypesInclude:",
+													"subtypes": [ "Water" ]
+												}
+											]
+										}
+									}
+								}
+							]
 						}
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChooseFromList:",
 					"cardRestriction": {
 						"blurb": "cards for Ma Rinner to bottomdeck",
-						"cardRestrictions": [
-							"Friendly",
-							"Hand"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Hand" ]
+							}
 						]
 					},
 					"listRestriction": {
@@ -62,15 +70,15 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.BottomdeckSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Bottomdeck:",
 					"targetIndex": -1
 				},
 				{
-					"$type": "KompasServer.Effects.BottomdeckSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Bottomdeck:",
 					"targetIndex": -2
 				},
 				{
-					"$type": "KompasServer.Effects.BottomdeckSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Bottomdeck:",
 					"targetIndex": -3
 				}
 			]
@@ -92,17 +100,22 @@
 			"Adjacent to Friendly Card"
 		],
 		"spaceRestriction": {
-			"spaceRestrictions": [
-				"In AOE of Card Fitting Restriction"
-			],
-			"inAOEOfRestriction": {
-				"cardRestrictions": [
-					"Subtypes Include"
-				],
-				"subtypesInclude": [
-					"Water"
-				]
-			}
+			"spaceRestrictionElements": [
+				{
+					"$type": "Core.SpaceRestriction:InAOEOf:",
+					"anyOf": {
+						"$type": "Gamestate.ManyCards:FittingRestriction:",
+						"cardRestriction": {
+							"cardRestrictionElements": [
+								{
+									"$type": "Core.CardRestriction:SubtypesInclude:",
+									"subtypes": [ "Water" ]
+								}
+							]
+						}
+					}
+				}
+			]
 		}
 	},
 	"unique": true,

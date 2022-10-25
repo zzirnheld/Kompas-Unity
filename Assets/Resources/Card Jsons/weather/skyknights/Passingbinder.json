@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Passingbinder",
-	"effText": "When an enemy character dies in Weather, Spin a Storm there.",
+	"effText": "When an enemy dies in Weather, Spin a Storm there.",
 	"effects": [
 		{
 			"blurb": "Bind the soul",
@@ -15,35 +15,35 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character",
-                            "Enemy",
 							"Space Fits Restriction"
 						],
-						"spaceRestriction":
-						{
-							"spaceRestrictions": [
-                                "In AOE of Number of Cards Fitting Restriction"
-                            ],
-                            "inAOEOfRestriction": {
-                                "cardRestrictions": [
-                                    "Subtypes Include"
-                                ],
-                                "subtypesInclude": [
-                                    "Weather"
-                                ]
-                            },
-                            "numberOfCardsInAOEOfRestriction": {
-                                "numberRestrictions": [
-                                    ">=Constant"
-                                ],
-                                "constant": 2
-                            }
-						}
+						"spaceRestriction": {
+							"spaceRestrictionElements": [ {
+								"$type": "Core.SpaceRestriction:InAOEOf:",
+								"anyOf": {
+									"$type": "Gamestate.ManyCards:FittingRestriction:",
+									"cardRestriction": {
+									"cardRestrictionElements": [ {
+											"$type": "Core.CardRestriction:SubtypesInclude:",
+											"subtypes": [ "Weather" ]
+										} ]
+									}
+								},
+								"minAnyOfCount": { 
+									"$type": "Gamestate.Number:Constant:",
+									"constant": 2
+								}
+							} ]
+						},
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" }
+						]
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.KeywordSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Keyword:",
 					"keyword": "Spin a Storm"
 				}
 			]

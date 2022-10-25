@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Tide Pools",
-	"effText": "When turns start, if I'm in distinct Water, reset my turn count. (Otherwise, vanishes after 2 turns.)",
+	"effText": "When turns start, if I'm in distinct Water, reset my turn count. <i>Otherwise, vanishes after 2 turns.</i>",
 	"effects": [
 		{
 			"blurb": "Refill",
@@ -14,33 +14,44 @@
 					],
 					"selfRestriction": {
 						"cardRestrictions": [
-							"Board",
 							"Space Fits Restriction"
 						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						],
 						"spaceRestriction": {
-							"spaceRestrictions": [
-								"In AOE of Card Fitting Restriction"
-							],
-							"inAOEOfRestriction": {
-								"cardRestrictions": [
-									"Subtypes Include",
-									"Distinct Name from Source"
-								],
-								"subtypesInclude": [
-									"Water"
-								]
-							},
-							"mustBeEmpty": false
+							"spaceRestrictionElements": [
+								{
+									"$type": "Core.SpaceRestriction:InAOEOf:",
+									"anyOf": {
+										"$type": "Gamestate.ManyCards:FittingRestriction:",
+										"cardRestriction": {
+											"cardRestrictions": [
+												"Distinct Name from Source"
+											],
+											"cardRestrictionElements": [
+												{
+													"$type": "Core.CardRestriction:SubtypesInclude:",
+													"subtypes": [ "Water" ]
+												}
+											]
+										}
+									}
+								}
+							]
 						}
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.SetTurnsOnBoardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:SetTurnsOnBoard:"
 				}
 			]
 		}

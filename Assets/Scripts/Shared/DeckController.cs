@@ -1,4 +1,5 @@
 ﻿using KompasCore.Cards;
+using KompasCore.Cards.Movement;
 using KompasCore.Effects;
 using KompasCore.Exceptions;
 using System.Collections.Generic;
@@ -9,9 +10,6 @@ namespace KompasCore.GameCore
 {
     public abstract class DeckController : MonoBehaviour, IGameLocation
     {
-        public const string BLANK_CARD_PATH = "Card Jsons/Blank Card";
-
-        public Game game;
         public abstract Player Owner { get; }
 
         public CardLocation CardLocation => CardLocation.Deck;
@@ -19,12 +17,13 @@ namespace KompasCore.GameCore
         //rng for shuffling
         private static readonly System.Random rng = new System.Random();
 
-        public readonly List<GameCard> Deck = new List<GameCard>();
+        private readonly List<GameCard> deck = new List<GameCard>();
+        public IReadOnlyCollection<GameCard> Deck => deck;
 
-        public int IndexOf(GameCard card) => Deck.IndexOf(card);
-        public int DeckSize => Deck.Count;
-        public GameCard Topdeck => Deck.FirstOrDefault();
-        public GameCard Bottomdeck => Deck.LastOrDefault();
+        public int IndexOf(GameCard card) => deck.IndexOf(card);
+        public int DeckSize => deck.Count;
+        public GameCard Topdeck => deck.FirstOrDefault();
+        public GameCard Bottomdeck => deck.LastOrDefault();
 
         /// <summary>
         /// Sets the card's information to match this deck, but doesn't set its index.
@@ -50,14 +49,14 @@ namespace KompasCore.GameCore
         public virtual bool PushTopdeck(GameCard card, IStackable stackSrc = null)
         {
             bool ret = AddToDeck(card, stackSrc);
-            if (ret) Deck.Insert(0, card);
+            if (ret) deck.Insert(0, card);
             return ret;
         }
 
         public virtual bool PushBottomdeck(GameCard card, IStackable stackSrc = null)
         {
             bool ret = AddToDeck(card, stackSrc);
-            if (ret) Deck.Add(card);
+            if (ret) deck.Add(card);
             return ret;
         }
 
@@ -66,7 +65,7 @@ namespace KompasCore.GameCore
             bool ret = AddToDeck(card, stackSrc);
             if (ret)
             {
-                Deck.Add(card);
+                deck.Add(card);
                 Shuffle();
             }
             return ret;
@@ -77,30 +76,37 @@ namespace KompasCore.GameCore
         /// </summary>
         public virtual void Remove(GameCard card)
         {
-            if (!Deck.Contains(card))
+            if (!deck.Contains(card))
                 throw new CardNotHereException(CardLocation, card, $"Couldn't remove {card.CardName} from deck, it wasn't in deck!");
 
-            Deck.Remove(card);
+            deck.Remove(card);
         }
 
         //misc
-        public void Shuffle()
+        public static List<GameCard> Shuffle(List<GameCard> list)
         {
-            int n = Deck.Count;
+            int n = list.Count;
             while (n > 1)
             {
                 n--;
                 int k = rng.Next(n + 1);
-                GameCard value = Deck[k];
-                Deck[k] = Deck[n];
-                Deck[n] = value;
+                (list[n], list[k]) = (list[k], list[n]);
             }
+            return list;
+        }
+
+        public void Shuffle() => Shuffle(deck);
+
+        public static void BottomdeckMany(IEnumerable<GameCard> cards, IStackable stackSrc = null)
+        {
+            var toShuffleInOrder = Shuffle(cards.ToList());
+            toShuffleInOrder.ForEach(c => c.Bottomdeck(stackSrc));
         }
 
         public List<GameCard> CardsThatFitRestriction(CardRestriction cardRestriction, ActivationContext context)
         {
             List<GameCard> cards = new List<GameCard>();
-            foreach (GameCard c in Deck)
+            foreach (GameCard c in deck)
             {
                 if (c != null && cardRestriction.IsValidCard(c, context))
                     cards.Add(c);

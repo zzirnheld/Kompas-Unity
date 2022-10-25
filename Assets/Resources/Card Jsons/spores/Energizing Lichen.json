@@ -15,47 +15,58 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "dead Fungus",
 						"cardRestrictions": [
-							"Subtypes Include",
-							"Character",
-							"Discard"
+							"Character"
 						],
-						"subtypesInclude": [
-							"Fungus"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							},
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Fungus" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Reshuffle:"
 				},
 				{
-					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:AddPips:",
 					"xModifier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"$type":"Subeffect:TargetAll:",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Board","Character","Space Fits Restriction"],
+						"cardRestrictions":["Character","Space Fits Restriction"],
 						"spaceRestriction":
 						{
 							"spaceRestrictions":["Adjacent to Source"],
 							"mustBeEmpty":false
-						}
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.ActivateSubeffect, Assembly-CSharp"
+					"$type":"Subeffect:Activate:"
 				},
 				{
-					"$type":"KompasServer.Effects.ActivateSubeffect, Assembly-CSharp",
+					"$type":"Subeffect:Activate:",
 					"activate":false
 				},
 				{
-					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"$type":"Subeffect:LoopWhileHaveTargets:",
 					"delete":true,
 					"remainingTargets": 1,
 					"jumpIndices":[5]

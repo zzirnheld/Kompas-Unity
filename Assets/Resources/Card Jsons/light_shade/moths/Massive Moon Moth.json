@@ -14,13 +14,16 @@
                         "Secondary Card Fits Restriction Before"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Board",
-							"Friendly",
-							"Subtypes Include"
-						],
-						"subtypesInclude": [
-							"Moth"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Moth" ]
+							}
 						]
 					},
                     "secondaryCardRestriction": {
@@ -28,39 +31,48 @@
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
-							"spaceRestrictions": [
-								"In AOE of Card Fitting Restriction"
-							],
-							"inAOEOfRestriction": {
-								"cardRestrictions": [
-									"Subtypes Include"
-								],
-								"subtypesInclude": [
-									"Light"
-								]
-							}
+							"spaceRestrictionElements": [
+								{
+									"$type": "Core.SpaceRestriction:InAOEOf:",
+									"anyOf": {
+										"$type": "Gamestate.ManyCards:FittingRestriction:",
+										"cardRestriction": {
+											"cardRestrictionElements": [
+												{
+													"$type": "Core.CardRestriction:SubtypesInclude:",
+													"subtypes": [ "Light" ]
+												}
+											]
+										}
+									}
+								}
+							]
 						}
                     }
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "character whose W to swap",
 						"cardRestrictions": [
-							"Character",
-							"Board"
+							"Character"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "other character whose W to swap",
 						"cardRestrictions": [
 							"Character",
-							"Board",
 							"Not Already Target",
 							"Space Fits Restriction"
 						],
@@ -74,11 +86,17 @@
 								],
 								"constant": 2
 							}
-						}
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SwapStatSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SwapStat:",
 					"targetIndex": -2,
 					"secondTargetIndex": -1,
 					"firstTargetStat": {

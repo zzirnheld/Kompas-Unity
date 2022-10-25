@@ -142,7 +142,7 @@ namespace KompasCore.Effects
 
         private bool IsConnectedToTargetByXSpaces(Space space, GameCard target, ActivationContext context)
         {
-            return Game.boardCtrl.AreConnectedByNumberOfSpacesFittingPredicate(target.Position, space,
+            return Game.BoardController.AreConnectedByNumberOfSpacesFittingPredicate(target.Position, space,
                             s => spaceConnectednessRestriction.IsValidSpace(s, context),
                             connectedSpacesXRestriction.IsValidNumber);
         }
@@ -182,15 +182,15 @@ namespace KompasCore.Effects
                 AdjacentToSource => Source.IsAdjacentTo(space),
                 AdjacentToCardTarget => target.IsAdjacentTo(space),
                 AdjacentToSpaceTarget => space.AdjacentTo(Subeffect.SpaceTarget),
-                AdjacentToCardRestriction => Game.boardCtrl.CardsAdjacentTo(space).Any(c => adjacencyRestriction.IsValidCard(c, context)),
+                AdjacentToCardRestriction => Game.BoardController.CardsAdjacentTo(space).Any(c => adjacencyRestriction.IsValidCard(c, context)),
 
-                ConnectedToSourceBy => Game.boardCtrl.AreConnectedBySpaces(Subeffect.Source.Position, space, connectednessRestriction, context),
+                ConnectedToSourceBy => Game.BoardController.AreConnectedBySpaces(Subeffect.Source.Position, space, connectednessRestriction, context),
                 ConnectedToSourceBySpaces
-                    => Game.boardCtrl.AreConnectedBySpaces(Subeffect.Source.Position, space,
+                    => Game.BoardController.AreConnectedBySpaces(Subeffect.Source.Position, space,
                             s => spaceConnectednessRestriction.IsValidSpace(s, context)),
 
-                ConnectedToCardTargetBy => Game.boardCtrl.AreConnectedBySpaces(target.Position, space, connectednessRestriction, context),
-                ConnectedToCardTargetBySpaces => Game.boardCtrl.AreConnectedBySpaces(target.Position, space, spaceConnectednessRestriction, context),
+                ConnectedToCardTargetBy => Game.BoardController.AreConnectedBySpaces(target.Position, space, connectednessRestriction, context),
+                ConnectedToCardTargetBySpaces => Game.BoardController.AreConnectedBySpaces(target.Position, space, spaceConnectednessRestriction, context),
                 ConnectedToCardTargetByXSpaces => IsConnectedToTargetByXSpaces(space, target, context),
 
                 InSourcesAOE => Source.SpaceInAOE(space),
@@ -230,10 +230,10 @@ namespace KompasCore.Effects
                 CanMoveCardTarget => target?.MovementRestriction?.IsValidEffectMove(space, context) ?? false,
                 CanMoveSource => Source?.MovementRestriction?.IsValidEffectMove(space, context) ?? false,
 
-                Empty => Game.boardCtrl.IsEmpty(space),
-                Occupied => !Game.boardCtrl.IsEmpty(space),
-                Surrounded => Game.boardCtrl.Surrounded(space),
-                CardHereFitsRestriction => hereFitsRestriction.IsValidCard(Game.boardCtrl.GetCardAt(space), context),
+                Empty => Game.BoardController.IsEmpty(space),
+                Occupied => !Game.BoardController.IsEmpty(space),
+                Surrounded => Game.BoardController.Surrounded(space),
+                CardHereFitsRestriction => hereFitsRestriction.IsValidCard(Game.BoardController.GetCardAt(space), context),
 
                 OnSourcesDiagonal => Source.SameDiagonal(space),
                 OnCardTargetsDiagonal => target.SameDiagonal(space),
@@ -253,11 +253,10 @@ namespace KompasCore.Effects
 
         private bool IsRestrictionValidWithDebug(string r, Space space, GameCard theoreticalTarget, ActivationContext context)
         {
-            bool success;
             try
             {
-                success = IsRestrictionValid(r, space, theoreticalTarget, context);
-                if (!success) Debug.Log($"Space resetriction {r} was flouted by {space}");
+                bool success = IsRestrictionValid(r, space, theoreticalTarget, context);
+                //if (!success) Debug.Log($"Space resetriction {r} was flouted by {space}");
                 return success;
             }
             catch (NullReferenceException nre)

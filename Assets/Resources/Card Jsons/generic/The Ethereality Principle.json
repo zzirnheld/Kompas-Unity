@@ -14,33 +14,38 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Subtypes Include",
-							"Character",
-							"Discard"
+							"Character"
 						],
-						"subtypesInclude": [
-							"Ethereal"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							},
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Ethereal" ]
+							}
 						]
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "S"
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.MillSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Mill:",
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Remnant to put back on top",
 						"cardRestrictions": [
@@ -49,7 +54,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.TopdeckSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Topdeck:"
 				}
 			]
 		}

@@ -15,7 +15,6 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Enemy",
 							"Wields Augment Fitting Restriction",
 							"Space Fits Restriction"
 						],
@@ -26,22 +25,25 @@
 							"mustBeEmpty": false
 						},
 						"augmentRestriction": {
-							"cardRestrictions": [
-								"Subtypes Include"
-							],
-							"subtypesInclude": [
-								"Sportsball"
+							"cardRestrictionElements": [
+								{
+									"$type": "Core.CardRestriction:SubtypesInclude:",
+									"subtypes": [ "Sportsball" ]
+								}
 							]
-						}
+						},
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" }
+						]
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Rehand:"
 				}
 			]
 		}

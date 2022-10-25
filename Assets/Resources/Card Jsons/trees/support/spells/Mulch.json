@@ -13,27 +13,44 @@
 					"triggerRestrictions":["This Card in Play","Main Card Fits Restriction Before"],
 					"cardRestriction":
 					{
-						"cardRestrictions":["Subtypes Include","Board"],
-						"subtypesInclude":["Tree"]
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Tree" ]
+							}
+						]
 					}
 				}
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"$type":"Subeffect:TargetAll:",
 					"cardRestriction":
 					{
 						"blurb":"for Haemopoten to draw",
-						"cardRestrictions":["Friendly","Board","Subtypes Include"],
-						"subtypesInclude":["Tree"]
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Tree" ]
+							}
+						]
 					},
 					"xMultiplier":1
 				},
 				{
-					"$type":"KompasServer.Effects.HealSubeffect, Assembly-CSharp"
+					"$type":"Subeffect:Heal:"
 				},
 				{
-					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"$type":"Subeffect:LoopWhileHaveTargets:",
 					"delete":true,
 					"jumpIndices":[1]
 				}

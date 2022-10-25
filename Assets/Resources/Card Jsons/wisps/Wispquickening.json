@@ -11,15 +11,17 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Friendly",
-							"Multiple Possible Locations",
-							"Subtypes Include"
+							"Multiple Possible Locations"
 						],
-						"subtypesInclude": [
-							"Wisp"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Wisp" ]
+							}
 						],
 						"locations": [
 							2,
@@ -28,19 +30,22 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Reshuffle:"
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"blurb": "card to slightly yeet",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Board"
+						"blurb": "card to slightly yeet",
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to slightly yeet target card",
 						"spaceRestrictions": [
@@ -57,7 +62,7 @@
 					"xModifier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Move:"
 				}
 			]
 		}

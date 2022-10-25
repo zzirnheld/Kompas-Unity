@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 3211160473117395007}
   - component: {fileID: 3211160473117394979}
   - component: {fileID: 3211160473117394976}
-  - component: {fileID: 3211160473117395006}
   - component: {fileID: 3211160473117394978}
+  - component: {fileID: 6917573389926506579}
   m_Layer: 5
   m_Name: Example Spell Card Button
   m_TagString: Untagged
@@ -62,6 +62,8 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -75,24 +77,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3211160473117395006
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3211160473117395004}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e14629c02f69f54fafa351ce0ec8c4c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  detailedSprite: {fileID: 0}
-  simpleSprite: {fileID: 0}
-  c: 0
-  spellType: 
-  fast: 0
-  subtext: 
 --- !u!114 &3211160473117394978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,7 +94,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 3211160473117395006}
+        - m_Target: {fileID: 6917573389926506579}
+          m_TargetAssemblyTypeName: KompasDeckbuilder.DeckbuilderCardController,
+            Assembly-CSharp
           m_MethodName: Show
           m_Mode: 1
           m_Arguments:
@@ -124,15 +110,17 @@ MonoBehaviour:
   - eventID: 1
     callback:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 3211160473117395006}
-          m_MethodName: Unshow
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
+--- !u!114 &6917573389926506579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3211160473117395004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e306d2abe92d4d45988f200631e4924, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 3211160473117394976}

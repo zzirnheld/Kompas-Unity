@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "GO",
-	"effText": "If there's no friendly discarded \"Set\", search your deck for \"Ready\" and reshuffle me. If there is, move each Speedemon 1 space.",
+	"effText": "If you don't have a discarded \"Set\", deck->hand \"Ready\" and reshuffle me. If there is, move each Speedemon 1 space.",
 	"effects": [
 		{
 			"triggerData": {
@@ -14,15 +14,20 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.ConditionalJumpSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ConditionalJump:",
 					"condition": "Card Fits Restriction",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Discard",
-							"Friendly",
 							"Name Is"
 						],
-						"nameIs": "Ready"
+						"nameIs": "Ready",
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							}
+						]
 					},
 					"jumpIndices": [
 						6
@@ -30,51 +35,56 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:DeckTarget:",
 					"cardRestriction": {
 						"blurb": "Ready for Set to search",
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
 							"Name Is"
 						],
-						"nameIs": "Ready"
+						"nameIs": "Ready",
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
+						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Rehand:"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Reshuffle:"
 				},
 				{
-					"$type": "KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:EndResolution:"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:TargetAll:",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Friendly",
-							"Board",
-							"Subtypes Include"
-						],
-						"subtypesInclude": [
-							"Speedemon"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Speedemon" ]
+							}
 						]
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SkipToEffectOnImpossible:",
 					"jumpIndices": [
 						10
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "ok, now GO!",
 						"spaceRestrictions": [
@@ -91,13 +101,13 @@
 					"xModifier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Move:"
 				},
 				{
-					"$type": "KompasServer.Effects.ClearOnImpossibleSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:ClearOnImpossible:"
 				},
 				{
-					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"delete": true,
 					"jumpIndices": [
 						7

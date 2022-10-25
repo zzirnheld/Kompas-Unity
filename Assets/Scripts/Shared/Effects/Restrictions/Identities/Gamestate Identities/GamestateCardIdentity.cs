@@ -1,4 +1,5 @@
 using KompasCore.Cards;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace KompasCore.Effects.Identities
@@ -7,7 +8,7 @@ namespace KompasCore.Effects.Identities
     {
         public class Any : NoActivationContextIdentityBase<GameCardBase>
         {
-            public INoActivationContextManyCardsIdentity ofTheseCards;
+            public INoActivationContextIdentity<ICollection<GameCardBase>> ofTheseCards;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {
@@ -15,7 +16,7 @@ namespace KompasCore.Effects.Identities
                 ofTheseCards.Initialize(initializationContext);
             }
 
-            protected override GameCardBase AbstractItem => ofTheseCards.Cards.FirstOrDefault();
+            protected override GameCardBase AbstractItem => ofTheseCards.Item.FirstOrDefault();
         }
 
         public class ThisCard : NoActivationContextIdentityBase<GameCardBase>

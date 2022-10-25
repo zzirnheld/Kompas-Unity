@@ -14,15 +14,20 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Character",
-							"Discard"
+							"Character"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							}
 						]
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Draw:"
 				}
 			]
 		}
@@ -31,7 +36,7 @@
 		"Undying"
 	],
 	"n": 3,
-	"e": 3,
+	"e": 4,
 	"s": 5,
 	"w": 3,
 	"subtypes": [

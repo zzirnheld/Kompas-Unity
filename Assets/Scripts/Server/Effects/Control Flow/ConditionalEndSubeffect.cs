@@ -63,7 +63,7 @@ namespace KompasServer.Effects
         {
             get
             {
-                if (condition == null) throw new ArgumentNullException("condition");
+                if (condition == null) throw new ArgumentNullException(nameof(condition));
                 return condition switch
                 {
                     XLessThan0 => ServerEffect.X < 0,

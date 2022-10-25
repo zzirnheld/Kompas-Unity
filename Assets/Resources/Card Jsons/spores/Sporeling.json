@@ -14,7 +14,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Delay:",
 					"numTimesToDelay": 1,
 					"jumpIndices": [
 						1
@@ -22,37 +22,39 @@
 					"endCondition": "Turn Start"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetThisSpaceSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThisSpace:"
 				},
 				{
-					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Discard:"
 				},
 				{
-					"$type": "KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:DeckTarget:",
 					"cardRestriction": {
 						"blurb": "for Seedling to become",
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Character",
 							"Deck",
 							"Can Be Played"
 						],
-						"subtypesInclude": [
-							"Fungus"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Fungus" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Play:"
 				},
                 {
-                    "$type":"KompasServer.Effects.ActivateSubeffect, Assembly-CSharp"
+                    "$type":"Subeffect:Activate:"
                 },
                 {
-                    "$type":"KompasServer.Effects.ActivateSubeffect, Assembly-CSharp",
+                    "$type":"Subeffect:Activate:",
                     "activate":false
                 }
 			]

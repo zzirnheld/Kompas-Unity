@@ -16,25 +16,25 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetAugmentedCard:"
 				},
 				{
-					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ConditionalEnd:",
 					"condition": "Target Violates Restriction",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Subtypes Include"
-						],
-						"subtypesInclude": [
-							"Golem"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Golem" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.ActivateSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Activate:"
 				},
 				{
-					"$type": "KompasServer.Effects.ActivateSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Activate:",
 					"activate": false
 				}
 			]
@@ -49,11 +49,11 @@
 		],
 		"effectRestrictions": [
 			"Augment Effect Restrictions"
+		],
+		"augSubtypes": [
+			"Golem"
 		]
 	},
 	"a": 1,
-	"subtypeText": "Golem Core",
-	"augSubtypes": [
-		"Golem"
-	]
+	"subtypeText": "Golem Core"
 }

@@ -1,9 +1,9 @@
 [
     {
-        "$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+        "$type": "Subeffect:TargetThis:"
     },
     {
-        "$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+        "$type": "Subeffect:SpaceTarget:",
         "spaceRestriction": {
             "blurb": "Stealth position to 'actually' be in",
             "spaceRestrictions": [
@@ -11,17 +11,17 @@
                 "Can Move Card Target to This Space"
             ],
             "alsoInAOEOfRestriction": {
-                "cardRestrictions": [
-                    "Subtypes Include"
-                ],
-                "subtypesInclude": [
-                    "Shade"
+                "cardRestrictionElements": [
+                    {
+                        "$type": "Core.CardRestriction:SubtypesInclude:",
+                        "subtypes": [ "Shade" ]
+                    }
                 ]
             }
         }
     },
     {
-        "$type": "KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+        "$type": "Subeffect:Delay:",
         "numTimesToDelay": 0,
         "jumpIndices": [
             3
@@ -34,16 +34,18 @@
             ],
             "nowRestriction": {
                 "cardRestrictions": [
-                    "Source in This' AOE",
-                    "Subtypes Include"
+                    "Source in This' AOE"
                 ],
-                "subtypesInclude": [
-                    "Light"
+                "cardRestrictionElements": [
+                    {
+                        "$type": "Core.CardRestriction:SubtypesInclude:",
+                        "subtypes": [ "Light" ]
+                    }
                 ]
             }
         }
     },
     {
-        "$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+        "$type": "Subeffect:Move:"
     }
 ]

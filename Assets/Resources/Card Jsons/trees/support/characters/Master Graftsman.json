@@ -22,10 +22,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeCardStats:",
 					"eModifier": -3,
 					"nModifier": 1,
 					"wModifier": 1
@@ -51,22 +51,27 @@
 					},
 					"nowRestriction": {
 						"cardRestrictions": [
-							"Board",
-							"Hurt",
-							"Subtypes Include"
+							"Hurt"
 						],
-						"subtypesInclude": [
-							"Tree"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Tree" ]
+							}
 						]
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "KompasServer.Effects.HealSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Heal:"
 				}
 			]
 		}

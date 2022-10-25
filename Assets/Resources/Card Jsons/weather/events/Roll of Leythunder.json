@@ -16,7 +16,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:TargetAll:",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Spell",
@@ -31,21 +31,21 @@
 								"In AOE Source is Also In"
 							],
 							"alsoInAOEOfRestriction": {
-								"cardRestrictions": [
-									"Subtypes Include"
-								],
-								"subtypesInclude": [
-									"Weather"
+								"cardRestrictionElements": [
+									{
+										"$type": "Core.CardRestriction:SubtypesInclude:",
+										"subtypes": [ "Weather" ]
+									}
 								]
 							}
 						}
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.DispelSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Dispel:"
 				},
 				{
-					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"delete": true,
 					"jumpIndices": [
 						1
@@ -70,23 +70,22 @@
 			"Adjacent to Friendly Card"
 		],
 		"spaceRestriction": {
-			"spaceRestrictions": [
-				"In AOE of Number of Cards Fitting Restriction"
-			],
-			"inAOEOfRestriction": {
-				"cardRestrictions": [
-					"Subtypes Include"
-				],
-				"subtypesInclude": [
-					"Weather"
-				]
-			},
-			"numberOfCardsInAOEOfRestriction": {
-				"numberRestrictions": [
-					">=Constant"
-				],
-				"constant": 2
-			}
+			"spaceRestrictionElements": [ {
+				"$type": "Core.SpaceRestriction:InAOEOf:",
+				"anyOf": {
+					"$type": "Gamestate.ManyCards:FittingRestriction:",
+					"cardRestriction": {
+					"cardRestrictionElements": [ {
+							"$type": "Core.CardRestriction:SubtypesInclude:",
+							"subtypes": [ "Weather" ]
+						} ]
+					}
+				},
+				"minAnyOfCount": { 
+					"$type": "Gamestate.Number:Constant:",
+					"constant": 2
+				}
+			} ]
 		}
 	},
 	"n": 1,

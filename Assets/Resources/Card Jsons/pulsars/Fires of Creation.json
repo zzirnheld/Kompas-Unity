@@ -14,7 +14,6 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Card Value Fits Number Restriction"
 						],
 						"cardValue": {
@@ -28,15 +27,18 @@
 								"value": "S"
 							}
 						},
-						"subtypesInclude": [
-							"Pulsar"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Pulsar" ]
+							}
 						]
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:AddPips:",
 					"xModifier": 1
 				}
 			]
@@ -52,7 +54,6 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Card Value Fits Number Restriction"
 						],
 						"cardValue": {
@@ -66,15 +67,18 @@
 								"value": "S"
 							}
 						},
-						"subtypesInclude": [
-							"Pulsar"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Pulsar" ]
+							}
 						]
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Draw:"
 				}
 			]
 		}

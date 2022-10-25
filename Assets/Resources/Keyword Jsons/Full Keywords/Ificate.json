@@ -12,25 +12,31 @@
 	},
 	"subeffects":[
 		{
-			"$type":"KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
+			"$type":"Subeffect:CanResolve:",
 			"subeffIndices":[2]
 		},
 		{
-			"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+			"$type":"Subeffect:CardTarget:",
 			"cardRestriction":
 			{
 				"blurb":"Crazy Idea for Ificator to Ificate",
-				"cardRestrictions":["Discard","Friendly","Different from Source","Subtypes Include"],
-				"subtypesInclude":["Crazy Idea"]
+				"cardRestrictions":["Discard","Different from Source"],
+				"cardRestrictionElements": [
+					{ "$type": "Core.CardRestriction:Friendly:" },
+					{
+						"$type": "Core.CardRestriction:SubtypesInclude:",
+						"subtypes": [ "Crazy", "Idea" ]
+					}
+				]
 			}
 		},
 		{
-			"$type":"KompasServer.Effects.PayPipsSubeffect, Assembly-CSharp",
+			"$type":"Subeffect:PayPips:",
 			"xMultiplier":0,
 			"xModifier":1
 		},
 		{
-			"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+			"$type":"Subeffect:SpaceTarget:",
 			"spaceRestriction":
 			{
 				"blurb":"where Ificator to play targeted Crazy Idea",
@@ -38,7 +44,7 @@
 			}
 		},
 		{
-			"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+			"$type":"Subeffect:Play:"
 		}
 	]
 }

@@ -7,7 +7,7 @@ namespace KompasServer.Effects
     {
         public override Task<ResolutionInfo> Resolve()
         {
-            ServerGame.Draw(PlayerTarget.index);
+            ServerGame.Draw(PlayerTarget);
             return Task.FromResult(ResolutionInfo.Next);
         }
     }

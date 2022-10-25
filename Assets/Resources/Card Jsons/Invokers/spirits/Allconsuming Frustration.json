@@ -14,21 +14,31 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Character",
-							"Discard"
+							"Character"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							}
 						]
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Board",
 							"Character",
-							"Enemy",
 							"Space Fits Restriction"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						],
 						"spaceRestriction": {
 							"spaceRestrictions": [
@@ -38,7 +48,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.NegateSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Negate:"
 				}
 			]
 		}

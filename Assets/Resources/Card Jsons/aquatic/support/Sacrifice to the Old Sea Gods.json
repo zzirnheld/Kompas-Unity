@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Sacrifice to the Old Sea Gods",
-	"effText": "Annihilate an adjacent friendly Aquatic card, then me. Deck->cast Water where it was. Draw 1 card.",
+	"effText": "Hand->annihilate an Aquatic card, then me. Deck->cast Water where I was.",
 	"effects": [
 		{
 			"triggerData": {
@@ -14,58 +14,54 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "adjacent Aquatic card to annihilate",
-						"cardRestrictions": [
-							"Friendly",
-							"Board",
-							"Subtypes Include",
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Source"
-							]
-						},
-						"subtypesInclude": [
-							"Aquatic"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Hand" ]
+							},
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Aquatic" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Annihilate:"
 				},
 				{
-					"$type": "KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTargetsSpace:"
 				},
 				{
-					"$type": "KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Annihilate:"
 				},
 				{
-					"$type": "KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:DeckTarget:",
 					"cardRestriction": {
 						"blurb": "Tide that Shifts In",
 						"cardRestrictions": [
 							"Spell",
-							"Friendly",
 							"Deck",
-							"Can Be Played",
-							"Subtypes Include"
+							"Can Be Played"
 						],
-						"subtypesInclude": [
-							"Water"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Water" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
-				},
-				{
-					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Play:"
 				}
 			]
 		}

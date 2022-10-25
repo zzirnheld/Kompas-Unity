@@ -15,37 +15,42 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Board",
 							"Character"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Draw:"
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetXByGamestate:",
 					"whatToCount": "Hand Size",
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetXByGamestate:",
 					"whatToCount": "Hand Size Limit",
 					"change": true,
 					"xMultiplier": -1
 				},
 				{
-					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ConditionalEnd:",
 					"condition": "X<=0",
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.BottomdeckSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Bottomdeck:",
 					"targetIndex": -1
 				}
 			]

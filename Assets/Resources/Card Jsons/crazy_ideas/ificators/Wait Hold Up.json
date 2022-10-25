@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Wait Hold Up",
-	"effText": "Ificate.\nRummage. Move an enemy character up to 3 spaces.",
+	"effText": "Ificate.\nRummage. Move an enemy up to 3 spaces.",
 	"effects": [
 		{
 			"triggerData": {
@@ -15,21 +15,24 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.KeywordSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Keyword:",
 					"keyword": "Rummage"
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Wait, Hold Up, what are you moving?",
-						"cardRestrictions": [
-							"Board",
-							"Enemy"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "Wait Hold Up, WHERE",
 						"spaceRestrictions": [
@@ -46,7 +49,7 @@
 					"xModifier": 3
 				},
 				{
-					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Move:"
 				}
 			]
 		}

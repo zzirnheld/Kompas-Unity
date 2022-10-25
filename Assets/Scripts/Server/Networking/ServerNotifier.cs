@@ -201,8 +201,6 @@ namespace KompasServer.Networking
 
         public void DisableDecliningTarget() => SendPacket(new ToggleDecliningTargetPacket(false));
 
-        public void DiscardSimples() => SendToBoth(new DiscardSimplesPacket());
-
         public void AskForTrigger(ServerTrigger t, int x, bool showX)
             => SendToBothInverting(new OptionalTriggerPacket(t.serverEffect.Source.ID, t.serverEffect.EffectIndex, x, showX));
 

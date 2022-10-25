@@ -14,31 +14,35 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SkipToEffectOnImpossible:",
 					"jumpIndices": [
 						5
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.ChooseFromListSaveRestSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChooseFromListSaveRest:",
 					"cardRestriction": {
 						"blurb": "spell for Perthro to search (to hand)",
 						"cardRestrictions": [
 							"Spell",
-							"Friendly",
 							"Deck",
 							"Index<C"
 						],
-						"constant": 10
+						"constant": 10,
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
+						]
 					},
 					"restRestriction": {
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
 							"Index<C",
 							"Not Already Target"
 						],
-						"constant": 10
+						"constant": 10,
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
+						]
 					},
 					"listRestriction": {
 						"listRestrictions": [
@@ -48,20 +52,20 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.ClearOnImpossibleSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:ClearOnImpossible:"
 				},
 				{
-					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Rehand:"
 				},
 				{
-					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"delete": true,
 					"jumpIndices": [
 						3
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.BottomdeckRestSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:BottomdeckRest:"
 				}
 			]
 		}

@@ -9,32 +9,32 @@
 				"triggerCondition": "Augment Attached",
 				"triggerRestriction": {
 					"triggerRestrictionElements": [
-                        { "$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.ThisCardInPlay, Assembly-CSharp" },
+                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
                         {
-                            "$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.CardFitsRestriction, Assembly-CSharp",
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
                             "cardRestriction": {
                                 "cardRestrictionElements": [
                                     {
-                                        "$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.SubtypesInclude, Assembly-CSharp",
+                                        "$type": "Core.CardRestriction:SubtypesInclude:",
                                         "subtypes": [ "Golem" ]
                                     }
                                 ]
                             },
-                            "card": { "$type": "KompasCore.Effects.Identities.ActivationContextCardIdentities.MainCardBefore, Assembly-CSharp" }
+                            "card": { "$type": "ActivationContext.Card:MainCardBefore:" }
                         }
 					]
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.AutoTargetCardIdentitySubeffect, Assembly-CSharp",
+					"$type": "Subeffect:AutoTargetCardIdentity:",
                     "subeffectCardIdentity": {
-						"$type": "KompasCore.Effects.Identities.GamestateCardIdentities.AugmentedCard, Assembly-CSharp",
-                        "cardFromContext": { "$type": "KompasCore.Effects.Identities.GamestateCardIdentities.ThisCard, Assembly-CSharp" }
+						"$type": "Gamestate.Card:AugmentedCard:",
+                        "cardFromContext": { "$type": "Gamestate.Card:ThisCard:" }
                     }
 				},
 				{
-					"$type": "KompasServer.Effects.TemporaryActivationSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:TemporaryActivation:",
 					"endCondition": "Augment Detached",
 					"triggerRestriction": {
 						"triggerRestrictions": [
@@ -49,51 +49,51 @@
 				"triggerCondition": "Discard",
 				"triggerRestriction": {
 					"triggerRestrictionElements": [
-                        { "$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.ThisCardInPlay, Assembly-CSharp" },
-                        { "$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.EnemyTurn, Assembly-CSharp" },
+                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        { "$type": "Core.TriggerRestriction:EnemyTurn:" },
                         {
-                            "$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.CardsMatch, Assembly-CSharp",
+                            "$type": "Core.TriggerRestriction:CardsMatch:",
                             "firstCard": {
-                                "$type": "KompasCore.Effects.Identities.GamestateCardIdentities.AugmentedCard, Assembly-CSharp",
-                                "ofThisCard": { "$type": "KompasCore.Effects.Identities.GamestateCardIdentities.ThisCard, Assembly-CSharp" }
+                                "$type": "Gamestate.Card:AugmentedCard:",
+                                "ofThisCard": { "$type": "Gamestate.Card:ThisCard:" }
                             },
-                            "secondCard": { "$type": "KompasCore.Effects.Identities.ActivationContextCardIdentities.MainCardBefore, Assembly-CSharp" }
+                            "secondCard": { "$type": "ActivationContext.Card:MainCardBefore:" }
                         },
                         {
-                            "$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.CardFitsRestriction, Assembly-CSharp",
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
                             "cardRestriction": {
                                 "cardRestrictionElements": [
                                     {
-                                        "$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.SubtypesInclude, Assembly-CSharp",
+                                        "$type": "Core.CardRestriction:SubtypesInclude:",
                                         "subtypes": [ "Golem" ]
                                     }
                                 ]
                             },
-                            "card": { "$type": "KompasCore.Effects.Identities.ActivationContextCardIdentities.MainCardBefore, Assembly-CSharp" }
+                            "card": { "$type": "ActivationContext.Card:MainCardBefore:" }
                         }
 					]
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.AutoTargetCardIdentitySubeffect, Assembly-CSharp",
+					"$type": "Subeffect:AutoTargetCardIdentity:",
                     "subeffectCardIdentity": {
-						"$type": "KompasServer.Effects.Identities.SubeffectCardIdentities.FromActivationContext, Assembly-CSharp",
-                        "cardFromContext": { "$type": "KompasCore.Effects.Identities.ActivationContextCardIdentities.MainCardBefore, Assembly-CSharp" }
+						"$type": "Subeffect.Card:FromActivationContext:",
+                        "cardFromContext": { "$type": "ActivationContext.Card:MainCardBefore:" }
                     }
 				},
 				{
-					"$type": "KompasServer.Effects.AutoTargetSpaceIdentitySubeffect, Assembly-CSharp",
+					"$type": "Subeffect:AutoTargetSpaceIdentity:",
                     "spaceIdentity": {
-                        "$type": "KompasServer.Effects.Identities.SubeffectSpaceIdentities.PositionOf, Assembly-CSharp",
+                        "$type": "Subeffect.Space:PositionOf:",
                         "whosePosition": {
-                            "$type": "KompasServer.Effects.Identities.SubeffectCardIdentities.FromActivationContext, Assembly-CSharp",
-                            "cardFromContext": { "$type": "KompasCore.Effects.Identities.ActivationContextCardIdentities.MainCardBefore, Assembly-CSharp" }
+                            "$type": "Subeffect.Card:FromActivationContext:",
+                            "cardFromContext": { "$type": "ActivationContext.Card:MainCardBefore:" }
                         }
                     }
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Play:"
 				}
 			]
 		}
@@ -103,27 +103,15 @@
 	],
 	"PlayRestriction": {
 		"normalRestrictions": [
-			"Augment Normal Restrictions",
-			"On Card that Fits Restriction"
+			"Augment Normal Restrictions"
 		],
 		"effectRestrictions": [
-			"Augment Effect Restrictions",
-			"On Card that Fits Restriction"
+			"Augment Effect Restrictions"
 		],
-		"onCardRestriction": {
-			"cardRestrictions": [
-				"Subtypes Include",
-				"Friendly",
-				"Board"
-			],
-			"subtypesInclude": [
-				"Golem"
-			]
-		}
+		"augSubtypes": [
+			"Golem"
+		]
 	},
 	"a": 3,
-	"subtypeText": "Golem Core",
-	"augSubtypes": [
-		"Golem"
-	]
+	"subtypeText": "Golem Core"
 }

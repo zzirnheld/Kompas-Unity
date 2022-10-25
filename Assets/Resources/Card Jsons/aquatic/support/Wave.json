@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Wave",
-	"effText": "Choose a Water spell. Remember any summons in it. Move the Water through empty spaces in Water. Move all those characters to spaces in that Water.",
+	"effText": "Move Water through empty spaces in Water. Move all characters that were in it, to spaces in it where it is now.",
 	"effects": [
 		{
 			"triggerData": {
@@ -14,21 +14,26 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "What water moves?",
 						"cardRestrictions": [
-							"Board",
-							"Spell",
-							"Subtypes Include"
+							"Spell"
 						],
-						"subtypesInclude": [
-							"Water"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Water" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where will the wave crash",
 						"spaceRestrictions": [
@@ -37,29 +42,33 @@
 							"Empty"
 						],
 						"spaceConnectednessRestriction": {
-							"spaceRestrictions": [
-								"Empty",
-								"In AOE of Card Fitting Restriction"
-							],
-							"inAOEOfRestriction": {
-								"cardRestrictions": [
-									"Subtypes Include"
-								],
-								"subtypesInclude": [
-									"Water"
-								]
-							}
+							"spaceRestrictionElements": [
+								{
+									"$type": "Core.SpaceRestriction:InAOEOf:",
+									"anyOf": {
+										"$type": "Gamestate.ManyCards:FittingRestriction:",
+										"cardRestriction": {
+											"cardRestrictionElements": [
+												{
+													"$type": "Core.CardRestriction:SubtypesInclude:",
+													"subtypes": [ "Water" ]
+												}
+											]
+										}
+									}
+								}
+							]
 						}
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SkipToEffectOnImpossible:",
 					"jumpIndices": [
 						9
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:TargetAll:",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Summoned",
@@ -74,11 +83,11 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Move:",
 					"targetIndex": 0
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"spaceRestrictions": [
 							"In Card Target's AOE",
@@ -88,10 +97,10 @@
 					"targetIndex": 0
 				},
 				{
-					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Move:"
 				},
 				{
-					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"delete": true,
 					"remainingTargets": 1,
 					"jumpIndices": [
@@ -99,10 +108,10 @@
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:EndResolution:"
 				},
 				{
-					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Move:",
 					"targetIndex": 0
 				}
 			]

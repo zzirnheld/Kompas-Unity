@@ -8,40 +8,58 @@
 	},
 	"subeffects":[
 		{
-			"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+			"$type":"Subeffect:SpaceTarget:",
 			"spaceRestriction":
 			{
 				"blurb":"to move Shaper to",
 				"spaceRestrictions":["Connected to Source by Cards Fitting Restriction"],
 				"connectednessRestriction":{
-					"cardRestrictions":["Subtypes Include","Character","Board"],
-					"subtypesInclude":["Ethereal"]
+					"cardRestrictions":["Character"],
+					"cardRestrictionElements": [
+						{
+							"$type": "Core.CardRestriction:Location:",
+							"locations": [ "Board" ]
+						},
+						{
+							"$type": "Core.CardRestriction:SubtypesInclude:",
+							"subtypes": [ "Ethereal" ]
+						}
+					]
 				}
 			}
 		},
 		{
-			"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+			"$type":"Subeffect:TargetThis:"
 		},
 		{
-			"$type":"KompasServer.Effects.SpendMovementSubeffect, Assembly-CSharp",
+			"$type":"Subeffect:SpendMovement:",
 			"xModifier":1
 		},
 		{
-			"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+			"$type":"Subeffect:SetXByGamestate:",
 			"whatToCount":"Distance to Coords Through",
 			"throughRestriction":{
-				"cardRestrictions":["Subtypes Include","Character","Board"],
-				"subtypesInclude":["Ethereal"]
+				"cardRestrictions":["Character"],
+				"cardRestrictionElements": [
+					{
+						"$type": "Core.CardRestriction:Location:",
+						"locations": [ "Board" ]
+					},
+					{
+						"$type": "Core.CardRestriction:SubtypesInclude:",
+						"subtypes": [ "Ethereal" ]
+					}
+				]
 			},
 			"xMultiplier":1,
 			"xModifier":-1
 		},
 		{
-			"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+			"$type":"Subeffect:ChangeCardStats:",
 			"eMultiplier":-1
 		},
 		{
-			"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+			"$type":"Subeffect:Move:"
 		}
 	]
 }

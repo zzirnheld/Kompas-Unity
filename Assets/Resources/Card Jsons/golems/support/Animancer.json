@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Animancer",
-	"effText": "During friendly turns, you can hand->discard Golems with total cost X. Search your deck for a cost < X Golem.",
+	"effText": "You can hand->discard Golems with total cost X to deck->hand a cost < X Golem.",
 	"effects": [
 		{
 			"blurb": "It's In Here Somewhere",
@@ -13,22 +13,27 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "for Animancer to discard",
 						"cardRestrictions": [
-							"Subtypes Include",
-							"Friendly",
-							"Hand",
 							"Not Already Target"
 						],
-						"subtypesInclude": [
-							"Golem"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            },
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Golem" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "Cost"
 					},
@@ -36,22 +41,20 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Discard:"
 				},
 				{
-					"$type": "KompasServer.Effects.LoopSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Loop:",
 					"canDecline": true,
 					"jumpIndices": [
 						0
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChooseFromList:",
 					"cardRestriction": {
 						"blurb": "for Animancer to search",
 						"cardRestrictions": [
-							"Subtypes Include",
-							"Friendly",
 							"Deck",
 							"Card Value Fits Number Restriction"
 						],
@@ -63,15 +66,19 @@
 								"<=X"
 							]
 						},
-						"subtypesInclude": [
-							"Golem"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Golem" ]
+							}
 						]
 					},
 					"xMultiplier": 1,
 					"xModifier": -1
 				},
 				{
-					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Rehand:"
 				}
 			]
 		}

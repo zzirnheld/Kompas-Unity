@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Supportive Grandparent",
-	"effText": "When I'm summoned, choose an adjacent character. Whenever they move, give them +1 ESW.",
+	"effText": "When I'm summoned, choose an adjacent character. Each time they move, give them +1 ESW.",
 	"effects": [
 		{
 			"triggerData": {
@@ -14,11 +14,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "for Grandparent to support (i.e. with cookies)",
 						"cardRestrictions": [
-							"Board",
 							"Character",
 							"Space Fits Restriction"
 						],
@@ -26,11 +25,17 @@
 							"spaceRestrictions": [
 								"Adjacent to Source"
 							]
-						}
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Delay:",
 					"jumpIndices": [
 						2
 					],
@@ -43,7 +48,7 @@
 					"clearWhenResume": false
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeCardStats:",
 					"eModifier": 1,
 					"sModifier": 1,
 					"wModifier": 1

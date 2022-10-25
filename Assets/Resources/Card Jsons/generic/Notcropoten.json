@@ -15,17 +15,17 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "E"
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.PlayerChooseXSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:PlayerChooseX:",
 					"XRest": {
 						"cardRestrictions": [
 							"<=X"
@@ -33,35 +33,37 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PayStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:PayStats:",
 					"eMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:DeleteTarget:"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:TargetAll:",
 					"cardRestriction": {
 						"blurb": "for Haemopoten to draw",
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
 							"Index<X"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Annihilate:"
 				},
 				{
-					"$type": "KompasServer.Effects.XTimesSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:XTimes:",
 					"jumpIndices": [
 						6
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Delay:",
 					"numTimesToDelay": 0,
 					"jumpIndices": [
 						8
@@ -70,10 +72,10 @@
 					"endCondition": "Turn Start"
 				},
 				{
-					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Rehand:"
 				},
 				{
-					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"delete": true,
 					"jumpIndices": [
 						8

@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Here Be Monsters",
-	"effText": "Set X to the total cost of Water I'm in. Annihilate me and deck->summon an S <= X Aquatic character where I was, but annihilate them when friendly turns start.",
+	"effText": "When I'm cast in Water with total cost X, annihilate me, then deck->summon an S <= X Aquatic character where I was. Annihilate them when friendly turns start.",
 	"effects": [
 		{
 			"triggerData": {
@@ -14,45 +14,49 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetXByGamestate:",
 					"whatToCount": "Total Card Value of Cards Fitting Restriction",
 					"cardValue": {
 						"value": "Cost"
 					},
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Source in This' AOE"
 						],
-						"subtypesInclude": [
-							"Water"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Water" ]
+							}
 						]
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTargetsSpace:"
 				},
 				{
-					"$type": "KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Annihilate:"
 				},
 				{
-					"$type": "KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:DeckTarget:",
 					"cardRestriction": {
 						"blurb": "Monster here",
 						"cardRestrictions": [
 							"Character",
-							"Friendly",
 							"Deck",
 							"Can Be Played",
-							"Subtypes Include",
 							"Card Value Fits Number Restriction"
 						],
-						"subtypesInclude": [
-							"Aquatic"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Squatic" ]
+							}
 						],
 						"cardValue": {
 							"value": "S"
@@ -66,10 +70,10 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Play:"
 				},
 				{
-					"$type": "KompasServer.Effects.HangingAnnihilationSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:HangingAnnihilation:",
 					"endCondition": "Turn Start",
 					"triggerRestriction": {
 						"triggerRestrictions": [

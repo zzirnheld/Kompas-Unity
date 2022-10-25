@@ -1,3 +1,4 @@
+using KompasCore.Cards;
 using KompasCore.Effects;
 using KompasCore.Effects.Identities;
 using System.Collections.Generic;
@@ -52,7 +53,7 @@ namespace KompasServer.Effects.Identities
 
         public class PositionsOfEach : SubeffectIdentityBase<ICollection<Space>>
         {
-            public INoActivationContextManyCardsIdentity cards;
+            public INoActivationContextIdentity<ICollection<GameCardBase>> cards;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {
@@ -60,7 +61,7 @@ namespace KompasServer.Effects.Identities
                 cards.Initialize(initializationContext);
             }
 
-            protected override ICollection<Space> AbstractItem => cards.Cards
+            protected override ICollection<Space> AbstractItem => cards.Item
                 .Select(c => c.Position)
                 .Where(space => space != null)
                 .ToArray();

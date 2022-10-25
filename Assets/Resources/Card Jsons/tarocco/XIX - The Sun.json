@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "XIX - The Sun",
-	"effText": "When you draw, give a summon -1 E and another character +1 E.",
+	"effText": "When you draw, give a summon -1 E and another +1 E.",
 	"effects": [
 		{
 			"blurb": "Scorching Heat",
@@ -16,33 +16,44 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "character for Sun to give -1 E",
 						"cardRestrictions": [
 							"Character",
-							"Board",
 							"Summoned"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeCardStats:",
 					"eModifier": -1
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "character for Sun to give +1 E",
 						"cardRestrictions": [
 							"Character",
-							"Board",
-							"Distinct from Other Targets"
+							"Summoned",
+							"Different from Target"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeCardStats:",
 					"eModifier": 1
 				}
 			]

@@ -27,16 +27,17 @@ namespace KompasClient.Networking
             catch (SocketException e)
             {
                 Debug.LogError($"Failed to connect to {ip}. Stack trace:\n{e.StackTrace}");
-                ClientGame.clientUICtrl.ShowConnectUI();
+                ClientGame.clientUIController.ShowConnectUI();
             }
             Debug.Log("Connected");
-            if (tcpClient.Connected) ClientGame.clientUICtrl.ShowConnectedWaitingUI();
+            if (tcpClient.Connected) ClientGame.clientUIController.ShowConnectedWaitingUI();
             connecting = false;
         }
 
         protected override void Update()
         {
             base.Update();
+            if (connecting) return;
             if (packets.Count != 0) ProcessPacket(packets.Dequeue());
         }
 
@@ -97,7 +98,6 @@ namespace KompasClient.Networking
                 Packet.AddTarget => JsonConvert.DeserializeObject<AddTargetClientPacket>(json),
                 Packet.RemoveTarget => JsonConvert.DeserializeObject<RemoveTargetClientPacket>(json),
                 Packet.ToggleDecliningTarget => JsonConvert.DeserializeObject<ToggleDecliningTargetClientPacket>(json),
-                Packet.DiscardSimples => JsonConvert.DeserializeObject<DiscardSimplesClientPacket>(json),
                 Packet.StackEmpty => JsonConvert.DeserializeObject<StackEmptyClientPacket>(json),
                 Packet.EffectImpossible => JsonConvert.DeserializeObject<EffectImpossibleClientPacket>(json),
                 Packet.OptionalTrigger => JsonConvert.DeserializeObject<OptionalTriggerClientPacket>(json),

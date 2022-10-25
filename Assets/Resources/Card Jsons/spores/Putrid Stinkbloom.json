@@ -12,17 +12,21 @@
 					"triggerRestrictions":["This Card in Play","Main Card Fits Restriction Before"],
 					"cardRestriction":
 					{
-						"cardRestrictions":["Subtypes Include"],
-						"subtypesInclude":["Fungus"]
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Fungus" ]
+							}
+						]
 					}
 				}
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type":"Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type":"Subeffect:ChangeCardStats:",
 					"eModifier":1
 				}
 			]

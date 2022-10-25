@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Mr Power Vacuum",
-	"effText": "Speedemon.\nWhen I move to a space adjacent to another Speedemon, annihilate a card that costs less than me, adjacent to the space I left.",
+	"effText": "Speedemon.\nWhen I move to a space adjacent to another Speedemon, annihilate a card adjacent to the space I left.",
 	"effects": [
 		{
 			"triggerData": {
@@ -17,11 +17,13 @@
 						],
 						"adjacencyRestriction": {
 							"cardRestrictions": [
-								"Different from Source",
-								"Subtypes Include"
+								"Different from Source"
 							],
-							"subtypesInclude": [
-								"Speedemon"
+							"cardRestrictionElements": [
+								{
+									"$type": "Core.CardRestriction:SubtypesInclude:",
+									"subtypes": [ "Speedemon" ]
+								}
 							]
 						},
 						"mustBeEmpty": false
@@ -30,25 +32,23 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardsCoordsSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTriggeringCardsCoords:"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "S"
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"blurb": "card to vakoom",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Board",
-							"Card Value Fits Number Restriction",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
@@ -56,19 +56,17 @@
 								"Adjacent to Space Target"
 							]
 						},
-						"cardValue": {
-							"value": "Cost"
-						},
-						"cardValueNumberRestriction": {
-							"numberRestrictions": [
-								"<=X"
-							]
-						}
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Annihilate:"
 				}
 			]
 		}

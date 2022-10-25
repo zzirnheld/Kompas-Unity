@@ -15,13 +15,13 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetAugmentedCard:"
 				},
 				{
-					"$type": "KompasServer.Effects.ActivateSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Activate:"
 				},
 				{
-					"$type": "KompasServer.Effects.ActivateSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Activate:",
 					"activate": false
 				}
 			]

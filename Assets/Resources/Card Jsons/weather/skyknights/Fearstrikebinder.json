@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Fearstrikebinder",
-	"effText": "When a friendly character defends in Weather, Spin a Storm there.",
+	"effText": "When a friendly defends in Weather, Spin a Storm there.",
 	"effects": [
 		{
 			"blurb": "Bind the fear",
@@ -14,29 +14,32 @@
 					],
 					"nowRestriction": {
 						"cardRestrictions": [
-							"Friendly",
 							"Space Fits Restriction"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
 						],
 						"spaceRestriction":
 						{
-							"spaceRestrictions": [
-								"In AOE of Card Fitting Restriction"
-							],
-							"inAOEOfRestriction": {
-								"cardRestrictions": [
-									"Subtypes Include"
-								],
-								"subtypesInclude": [
-									"Weather"
-								]
-							}
+							"spaceRestrictionElements": [ {
+								"$type": "Core.SpaceRestriction:InAOEOf:",
+								"anyOf": {
+									"$type": "Gamestate.ManyCards:FittingRestriction:",
+									"cardRestriction": {
+									"cardRestrictionElements": [ {
+											"$type": "Core.CardRestriction:SubtypesInclude:",
+											"subtypes": [ "Weather" ]
+										} ]
+									}
+								}
+							}]
 						}
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.KeywordSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Keyword:",
 					"keyword": "Spin a Storm"
 				}
 			]

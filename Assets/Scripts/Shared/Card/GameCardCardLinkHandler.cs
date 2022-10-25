@@ -42,7 +42,7 @@ namespace KompasCore.Cards
                 card?.CardLinkHandler.RemoveLink(equivLink);
             }
 
-            Card.Game.uiCtrl.Refresh();
+            Card.Game.UIController.CardViewController.Refresh();
         }
     }
 }

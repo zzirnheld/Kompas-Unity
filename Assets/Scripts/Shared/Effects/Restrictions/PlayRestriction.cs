@@ -57,6 +57,8 @@ namespace KompasCore.Effects
         public SpaceRestriction spaceRestriction;
         public SpaceRestriction floutedSpaceRestriction;
 
+        public string[] augSubtypes;
+
         public EffectInitializationContext initializationContext { get; private set; }
         public GameCard Card => InitializationContext.source;
 
@@ -92,16 +94,16 @@ namespace KompasCore.Effects
 
         private bool IsValidAugSpace(Space space, Player player)
         {
-            var cardThere = Card.Game.boardCtrl.GetCardAt(space);
+            var cardThere = Card.Game.BoardController.GetCardAt(space);
             return cardThere != null && cardThere.CardType != 'A'
                 && (cardThere.Controller == player || cardThere.AdjacentCards.Any(c => c.Controller == player));
         }
 
         private bool IsOnAugmentSubtypes(Space space)
         {
-            var subtypes = Card.Game.boardCtrl.GetCardAt(space)?.SubtypeText;
-            Debug.Log($"Subtypes: {subtypes}");
-            return Card.AugmentSubtypes?.All(st => subtypes?.Contains(st) ?? false) ?? true;
+            var subtypes = Card.Game.BoardController.GetCardAt(space)?.SubtypeText;
+           // Debug.Log($"Subtypes: {subtypes}");
+            return augSubtypes?.All(st => subtypes?.Contains(st) ?? false) ?? true;
         }
 
         private bool IsRestrictionValid(string r, Space space, Player player, ActivationContext context, bool normal) => r != null && r switch
@@ -117,23 +119,23 @@ namespace KompasCore.Effects
             StandardSpellRestriction => Card.Game.ValidSpellSpaceFor(Card, space),
             HasCostInPips => PlayerCanAffordCost(Card.Controller),
 
-            EmptySpace => Card.Game.boardCtrl.IsEmpty(space),
+            EmptySpace => Card.Game.BoardController.IsEmpty(space),
             OnBoardCardFriendlyOrAdjacent => IsValidAugSpace(space, player),
 
             FastOrNothingIsResolving => Card.Fast || Card.Game.NothingHappening,
             FriendlyTurnIfNotFast => Card.Fast || Card.Game.TurnPlayer == Card.Controller,
             EnemyTurn => Card.Game.TurnPlayer != Card.Controller,
 
-            OnCharacter => Card.Game.boardCtrl.GetCardAt(space)?.CardType == 'C',
-            OnCardFittingRestriction => onCardRestriction.IsValidCard(Card.Game.boardCtrl.GetCardAt(space), context),
+            OnCharacter => Card.Game.BoardController.GetCardAt(space)?.CardType == 'C',
+            OnCardFittingRestriction => onCardRestriction.IsValidCard(Card.Game.BoardController.GetCardAt(space), context),
             OnAugmentSubtypes => IsOnAugmentSubtypes(space),
-            OnCardFloutingRestriction => onCardFloutedRestriction.IsValidCard(Card.Game.boardCtrl.GetCardAt(space), context),
+            OnCardFloutingRestriction => onCardFloutedRestriction.IsValidCard(Card.Game.BoardController.GetCardAt(space), context),
 
             NotNormally => !normal,
             MustNormally => normal,
 
             CheckUnique => !(Card.Unique && Card.AlreadyCopyOnBoard),
-            AdjacentToCardFittingRestriction => Card.Game.boardCtrl.CardsAdjacentTo(space).Any(c => adjacentCardRestriction.IsValidCard(c, context)),
+            AdjacentToCardFittingRestriction => Card.Game.BoardController.CardsAdjacentTo(space).Any(c => adjacentCardRestriction.IsValidCard(c, context)),
             SpaceFitsRestriction => spaceRestriction.IsValidSpace(space, context),
             SpaceMustFloutRestriction => !floutedSpaceRestriction.IsValidSpace(space, context),
 

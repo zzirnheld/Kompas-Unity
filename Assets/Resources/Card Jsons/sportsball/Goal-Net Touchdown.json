@@ -24,8 +24,10 @@
 						],
 						"adjacencyRestriction": {
 							"cardRestrictions": [
-								"Avatar",
-								"Enemy"
+								"Avatar"
+							],
+							"cardRestrictionElements": [
+								{ "$type": "Core.CardRestriction:Enemy:" }
 							]
 						},
 						"mustBeEmpty": false
@@ -34,10 +36,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ConditionalEnd:",
 					"condition": "Target Violates Restriction",
 					"cardRestriction": {
 						"cardRestrictions": [
@@ -46,35 +48,37 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Avatar",
-							"Enemy",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
 							"spaceRestrictions": [
 								"Adjacent to Card Target"
 							]
-						}
+						},
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" }
+						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.TargetAugmentsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:TargetAugments:",
 					"targetIndex": 0
 				},
 				{
-					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ConditionalEnd:",
 					"condition": "Number Targets <= Constant",
 					"constant": 2
 				},
 				{
-					"$type": "KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Attach:",
 					"targetToAttachTo": 1
 				},
 				{
-					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"delete": true,
 					"remainingTargets": 2,
 					"jumpIndices": [

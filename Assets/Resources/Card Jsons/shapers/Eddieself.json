@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Eddieself",
-	"effText": "Shape.\nWhen I move X spaces, hand->summon an SX Ethereal to the space I left.",
+	"effText": "Shape.\nWhen I move X spaces, hand->summon an S X Ethereal to the space I left.",
 	"effects": [
 		{
 			"blurb": "Empower the Shaper",
@@ -15,22 +15,27 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardsCoordsSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTriggeringCardsCoords:"
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "for Trailing Dreammist to hand-summon",
 						"cardRestrictions": [
 							"Character",
-							"Friendly",
-							"Hand",
 							"Card Value Fits Number Restriction",
-							"Subtypes Include",
 							"Can be Played to Target Space"
 						],
-						"subtypesInclude": [
-							"Ethereal"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            },
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Ethereal" ]
+							}
 						],
 						"cardValue": {
 							"value": "S"
@@ -44,7 +49,7 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Play:"
 				}
 			]
 		}

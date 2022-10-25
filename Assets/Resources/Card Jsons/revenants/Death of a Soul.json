@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Death of a Soul",
-	"effText": "Annihilate friendly dead Revenants with total S X. Annihilate an adjacent S <= X / 2 character.",
+	"effText": "Discard->annihilate your Revenants with total S X. Annihilate an adjacent S <= X / 2 character.",
 	"effects": [
 		{
 			"triggerData": {
@@ -14,21 +14,26 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.SetXSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:SetX:"
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
-						"blurb": "for Mother of Dragons to kill",
+						"blurb": "discard->annihilate revenant",
 						"cardRestrictions": [
-							"Friendly",
-							"Discard",
 							"Not Already Target"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "S"
 					},
@@ -36,21 +41,20 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Annihilate:"
 				},
 				{
-					"$type": "KompasServer.Effects.LoopSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Loop:",
 					"canDecline": true,
 					"jumpIndices": [
 						1
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "character whose soul to kill",
 						"cardRestrictions": [
-							"Board",
 							"Character",
 							"Card Value Fits Number Restriction",
 							"Space Fits Restriction"
@@ -67,13 +71,19 @@
 							"numberRestrictions": [
 								"<=X"
 							]
-						}
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
 					},
 					"xMultiplier": 1,
 					"xDivisor": 2
 				},
 				{
-					"$type": "KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Annihilate:"
 				}
 			]
 		}

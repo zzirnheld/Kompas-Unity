@@ -15,38 +15,45 @@
 					],
 					"nowRestriction": {
 						"cardRestrictions": [
-                            "Subtypes Include",
                             "Augments Card Fitting Restriction"
                         ],
-						"subtypesInclude": [
-							"Memory"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Memory" ]
+							}
 						],
 						"augmentRestriction": {
-							"cardRestrictions": [
-                                "Subtypes Include"
-							],
-                            "subtypesInclude": [
-                                "Vessel"
-                            ]
+							"cardRestrictionElements": [
+								{
+									"$type": "Core.CardRestriction:SubtypesInclude:",
+									"subtypes": [ "Vessel" ]
+								}
+							]
 						}
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"blurb": "Vessel to get a copy of the memory",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Board",
-                            "Subtypes Include",
 							"Wields No Augment Fitting Restriction"
 						],
-						"subtypesInclude": [
-							"Vessel"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Vessel" ]
+							}
 						],
 						"augmentRestriction": {
 							"cardRestrictions": [
@@ -56,11 +63,10 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"blurb": "Copy of the memory to attach",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Friendly",
 							"Multiple Possible Locations",
                             "Same Name as Target",
 							"Can Be Played"
@@ -68,12 +74,15 @@
 						"locations": [
 							2,
 							4
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					},
 					"targetIndex": -2
 				},
 				{
-					"$type": "KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Attach:",
 					"targetToAttachTo": -2,
 					"targetIndex": -1
 				}

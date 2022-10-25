@@ -1,49 +1,32 @@
 using KompasCore.Effects;
 using KompasCore.Effects.Identities;
 
-namespace KompasServer.Effects.Identities
+namespace KompasServer.Effects.Identities.SubeffectStackableIdentities
 {
-    public abstract class SubeffectStackableIdentity : ContextInitializeableBase
+    public class ThisEffect : SubeffectIdentityBase<IStackable>
     {
-        protected abstract IStackable AbstractStackable { get; }
-
-        public IStackable Stackable
-        {
-            get
-            {
-                ComplainIfNotInitialized();
-                return AbstractStackable;
-            }
-        }
+        protected override IStackable AbstractItem => InitializationContext.effect;
     }
 
-    namespace SubeffectStackableIdentities
+    public class FromActivationContext : SubeffectIdentityBase<IStackable>
     {
-        public class ThisEffect : SubeffectStackableIdentity
+        public IActivationContextIdentity<IStackable> stackable;
+
+        public override void Initialize(EffectInitializationContext initializationContext)
         {
-            protected override IStackable AbstractStackable => InitializationContext.effect;
+            base.Initialize(initializationContext);
+            stackable.Initialize(initializationContext);
         }
 
-        public class FromActivationContext : SubeffectStackableIdentity
-        {
-            public IActivationContextIdentity<IStackable> stackable;
+        protected override IStackable AbstractItem
+            => stackable.From(InitializationContext.subeffect.CurrentContext, default);
+    }
 
-            public override void Initialize(EffectInitializationContext initializationContext)
-            {
-                base.Initialize(initializationContext);
-                stackable.Initialize(initializationContext);
-            }
+    public class StackableIndex : SubeffectIdentityBase<IStackable>
+    {
+        public int index = -1;
 
-            protected override IStackable AbstractStackable
-                => stackable.From(InitializationContext.subeffect.CurrentContext, default);
-        }
-
-        public class StackableIndex : SubeffectStackableIdentity
-        {
-            public int index = -1;
-
-            protected override IStackable AbstractStackable
-                => EffectHelpers.GetItem(InitializationContext.effect.stackableTargets, index);
-        }
+        protected override IStackable AbstractItem
+            => EffectHelpers.GetItem(InitializationContext.effect.stackableTargets, index);
     }
 }

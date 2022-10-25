@@ -1,4 +1,5 @@
 ﻿using KompasCore.GameCore;
+using KompasCore.UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -6,8 +7,12 @@ namespace KompasCore.Cards
 {
     public abstract class CardMouseController : MonoBehaviour
     {
-        public GameCard Card;
-        public abstract Game Game { get; }
+        [Header("GameCard that this MouseController handles")]
+        public CardController card;
+
+        public abstract UIController UIController { get; }
+        //public abstract Game Game { get; }
+
         protected bool dragging = false;
 
         #region MouseStuff
@@ -17,7 +22,7 @@ namespace KompasCore.Cards
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
-                Card.gameObject.transform.position = new Vector3(hit.point.x, 1f, hit.point.z);
+                card.gameObject.transform.position = new Vector3(hit.point.x, 1f, hit.point.z);
             }
         }
 
@@ -27,7 +32,7 @@ namespace KompasCore.Cards
             if (EventSystem.current.IsPointerOverGameObject()) return;
 
             //don't allow dragging cards if we're awaiting a target
-            if (Game.targetMode != Game.TargetMode.Free) return;
+            if (!UIController.AllowDragging) return;
 
             dragging = true;
             GoToMouse();
@@ -39,11 +44,9 @@ namespace KompasCore.Cards
 
             bool mouseDown = Input.GetMouseButton(0);
             //If the mouse isn't held down rn, then we want to stop showing whatever we're currently showing.
-            if (!mouseDown && !dragging) Game.uiCtrl.HoverOver(null);
+            if (!mouseDown && !dragging) UIController.CardViewController.Show(null);
 
-            //don't allow dragging cards if we're awaiting a target
-            if (Game.targetMode != Game.TargetMode.Free) return;
-            if (dragging)
+            if (UIController.AllowDragging && dragging)
             {
                 if (mouseDown) GoToMouse();
                 else OnMouseUp();
@@ -57,20 +60,22 @@ namespace KompasCore.Cards
             //don't do anything if we're over an event system object, 
             //because that would let us click on cards underneath prompts
             if (EventSystem.current.IsPointerOverGameObject()) return;
-            Debug.Log($"On mouse up on {Card.CardName} in target mode {Game.targetMode} at {transform.position}");
 
             //select cards if the player releases the mouse button while over one
-            Game.uiCtrl.SelectCard(Card, true);
+            UIController.CardViewController.Focus(card.Card);
 
             if (!dragging) return;
             dragging = false;
         }
 
+        //TODO factor this out to a card controller base class, then inherit it for the search cards?
         public virtual void OnMouseOver()
         {
             //if the mouse is currently over a ui element, don't swap what you're seeing
             if (EventSystem.current.IsPointerOverGameObject()) return;
-            Game.uiCtrl.HoverOver(Card);
+
+            //TODO still hover over even if mouse is on the effect/attack blocks, lol
+            UIController.CardViewController.Show(card.Card);
         }
         #endregion MouseStuff
     }

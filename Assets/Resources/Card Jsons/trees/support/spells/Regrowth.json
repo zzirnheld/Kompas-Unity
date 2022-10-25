@@ -16,20 +16,22 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Who to heal",
 						"cardRestrictions": [
-							"Hurt",
-							"Subtypes Include"
+							"Hurt"
 						],
-						"subtypesInclude": [
-							"Tree"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Tree" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.HealSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Heal:"
 				}
 			]
 		}

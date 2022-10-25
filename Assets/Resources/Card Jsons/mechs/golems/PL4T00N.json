@@ -10,7 +10,7 @@
 				"triggerRestriction": {
 					"triggerRestrictionElements": [
                         {
-                            "$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.TriggerKeyword, Assembly-CSharp",
+                            "$type": "Core.TriggerRestriction:TriggerKeyword:",
                             "keyword": "Mech Ultimate"
                         }
 					]
@@ -18,29 +18,29 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "E"
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeCardStats:",
 					"eMultiplier": 2
 				},
 				{
-					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChooseFromList:",
 					"cardRestriction": {
 						"blurb": "5PR34D 0UT",
 						"cardRestrictionElements": [
                             { 
-								"$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.Not, Assembly-CSharp",
+								"$type": "Core.CardRestriction:Not:",
 								"element": {
-									"$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.Fighting, Assembly-CSharp",
-									"fightingWho": { "$type": "KompasCore.Effects.Identities.GamestateCardIdentities.ThisCard, Assembly-CSharp" }
+									"$type": "Core.CardRestriction:Fighting:",
+									"fightingWho": { "$type": "Gamestate.Card:ThisCard:" }
 								}
 							}
 						]
@@ -55,12 +55,12 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Attack:",
 					"targetIndex": -1,
 					"attackerIndex": 0
 				},
 				{
-					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"delete": true,
 					"remainingTargets": 1,
 					"jumpIndices": [
@@ -68,7 +68,7 @@
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.NegateSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Negate:"
 				}
 			]
 		}

@@ -18,12 +18,11 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
-						"blurb": "C <= X spell for Temperance to DispelSubeffect, Assembly-CSharp",
+						"blurb": "C <= X spell for Temperance to dispel",
 						"cardRestrictions": [
 							"Spell",
-							"Board",
 							"Card Value Fits Number Restriction"
 						],
 						"cardValue": {
@@ -33,12 +32,18 @@
 							"numberRestrictions": [
 								"<=X"
 							]
-						}
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.DispelSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Dispel:"
 				}
 			]
 		}

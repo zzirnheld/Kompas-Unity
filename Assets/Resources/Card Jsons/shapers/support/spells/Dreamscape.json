@@ -14,26 +14,26 @@
 						"Max Per Turn"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Subtypes Include",
-							"Friendly"
-						],
-						"subtypesInclude": [
-							"Shaper"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Shaper" ]
+							}
 						]
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeCardStats:",
 					"nModifier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.HealSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Heal:"
 				}
 			]
 		}

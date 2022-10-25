@@ -1,7 +1,7 @@
 {
 	"cardType": 65,
 	"cardName": "Powered Landing",
-	"effText": "When you summon a Mech Golem, discard->attach me to them. They attack an enemy within 2 spaces of them. Give them +4 W.",
+	"effText": "When you summon a Mech Golem, discard->attach me to them. They attack an enemy within 2 spaces of them.\nWhen this character attacks, give them +4 W.",
 	"effects": [
 		{
 			"blurb": "Landing Blast",
@@ -13,39 +13,41 @@
 						"This Card Fits Restriction Now"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Subtypes Include"
-						],
-						"subtypesInclude": [
-							"Mech Golem"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Mech", "Golem" ]
+							}
 						]
 					},
 					"selfRestriction": {
-						"cardRestrictions": [
-							"Discard"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							}
 						]
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Attach:",
 					"targetToAttachTo": -1,
 					"targetIndex": -2
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "character within 4 spaces to have this Mech attack",
 						"cardRestrictions": [
 							"Character",
-							"Board",
 							"Different from Source",
 							"Space Fits Restriction"
 						],
@@ -59,21 +61,42 @@
 								],
 								"constant": 2
 							}
-						}
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Attack:",
 					"targetIndex": -1,
 					"attackerIndex": -2
-				},
-				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"targetIndex": -2,
-					"wModifier": 3
 				}
 			]
-		}
+		},
+        {
+            "blurb":"Boom",
+			"triggerData": {
+				"triggerCondition": "Attack",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"Augmented Card is Main Card"
+					]
+				}
+			},
+            "subeffects":[
+				{
+					"$type": "Subeffect:TargetAugmentedCard:"
+				},
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"wModifier": 4
+				}
+            ]
+        }
 	],
 	"PlayRestriction": {
 		"normalRestrictions": [

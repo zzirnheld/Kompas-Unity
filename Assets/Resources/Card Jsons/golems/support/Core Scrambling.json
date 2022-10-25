@@ -1,12 +1,11 @@
 {
 	"cardType": 83,
 	"cardName": "Core Scrambling",
-	"effText": "Once each turn, when a Golem defends, you can discard->apply a Golem Core to them. Their attacker attacks them again. (The Golem's on-activation effect will resolve before the attack.)",
+	"effText": "The first time each turn a Golem defends, discard->apply a Golem Core to them. Their attacker attacks them again.",
 	"effects": [
 		{
 			"blurb": "Core? CORE!",
 			"triggerData": {
-				"optional": true,
 				"blurb": "Discard->apply a core?",
 				"triggerCondition": "Defend",
 				"triggerRestriction": {
@@ -15,47 +14,52 @@
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Subtypes Include"
-						],
-						"subtypesInclude": [
-							"Golem"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Golem" ]
+							}
 						]
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTargetsSpace:"
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "CORE!!!1!",
 						"cardRestrictions": [
-							"Friendly",
-							"Discard",
-							"Augment",
-							"Subtypes Include"
+							"Augment"
 						],
-						"subtypesInclude": [
-							"Golem Core"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							},
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Golem", "Core" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Play:",
 					"targetIndex": -2
 				},
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp",
+					"$type":"Subeffect:TargetTriggeringCard:",
 					"secondary":true
 				},
 				{
-					"$type": "KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Attack:",
 					"targetIndex": -3,
 					"attackerIndex": -1
 				}

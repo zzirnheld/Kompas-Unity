@@ -8,26 +8,32 @@
 	},
 	"subeffects":[
         {
-            "$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+            "$type":"Subeffect:TargetAll:",
             "cardRestriction":
             {
-                "cardRestrictions":["Board","Character","Space Fits Restriction"],
+                "cardRestrictions":["Character","Space Fits Restriction"],
                 "spaceRestriction":
                 {
                     "spaceRestrictions":["Adjacent to Source"],
                     "mustBeEmpty":false
-                }
+                },
+                "cardRestrictionElements": [
+                    {
+                        "$type": "Core.CardRestriction:Location:",
+                        "locations": [ "Board" ]
+                    }
+                ]
             }
         },
         {
-            "$type":"KompasServer.Effects.ActivateSubeffect, Assembly-CSharp"
+            "$type":"Subeffect:Activate:"
         },
         {
-            "$type":"KompasServer.Effects.ActivateSubeffect, Assembly-CSharp",
+            "$type":"Subeffect:Activate:",
             "activate":false
         },
         {
-            "$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+            "$type":"Subeffect:LoopWhileHaveTargets:",
             "delete":true,
             "jumpIndices":[1]
         }

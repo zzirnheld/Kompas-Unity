@@ -36,7 +36,7 @@ namespace KompasClient.Networking
     {
         public void Execute(ClientGame clientGame)
         {
-            clientGame.targetMode = list ? Game.TargetMode.CardTargetList : Game.TargetMode.CardTarget;
+            clientGame.clientUIController.TargetMode = list ? TargetMode.CardTargetList : TargetMode.CardTarget;
             ListRestriction listRestriction = null;
 
             try
@@ -53,7 +53,7 @@ namespace KompasClient.Networking
 
             clientGame.SetPotentialTargets(potentialTargetIds, listRestriction);
             //TODO make the blurb plural if asking for multiple targets
-            clientGame.clientUICtrl.SetCurrState($"Choose {sourceCardName}'s Card Target", targetBlurb);
+            clientGame.clientUIController.SetCurrState($"Choose {sourceCardName}'s Card Target", targetBlurb);
         }
     }
 }

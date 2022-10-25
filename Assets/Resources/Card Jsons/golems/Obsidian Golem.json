@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Obsidian Golem",
-	"effText": "Golem.\nWhen I'm activated, I give a summon -5 E.",
+	"effText": "Golem.\nWhen I'm activated, give a summon -5 E.",
 	"effects": [
 		{
 			"blurb": "Shards of Glass",
@@ -15,18 +15,23 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "summon for Obsidian Golem to give -5 E",
 						"cardRestrictions": [
 							"Character",
-							"Summoned",
-							"Board"
+							"Summoned"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeCardStats:",
 					"eModifier": -5
 				}
 			]

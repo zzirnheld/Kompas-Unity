@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Soul Drain",
-	"effText": "When an SX Revenant is annihilated, mill your deck's top X.",
+	"effText": "When an S X Revenant is annihilated, discard your deck's top X.",
 	"effects": [
 		{
 			"triggerData": {
@@ -13,28 +13,30 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Character"
 						],
-						"subtypesInclude": [
-							"Revenant"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Revenant" ]
+							}
 						]
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "S"
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.MillSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Mill:",
 					"xMultiplier": 1
 				}
 			]

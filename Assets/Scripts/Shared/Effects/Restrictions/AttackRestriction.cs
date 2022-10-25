@@ -104,7 +104,7 @@ namespace KompasCore.Effects
         public bool CanAttackAnyCard(IStackable stackSrc)
         {
             ComplainIfNotInitialized();
-            return IsGameSetUp() && Card.Game.boardCtrl.ExistsCardOnBoard(c => IsValidAttack(c, stackSrc));
+            return IsGameSetUp() && Card.Game.BoardController.ExistsCardOnBoard(c => IsValidAttack(c, stackSrc));
         }
     }
 }

@@ -14,20 +14,30 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Character",
-							"Discard"
+							"Character"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							}
 						]
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:TargetAll:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Enemy",
-							"Board",
 							"Space Fits Restriction"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						],
                         "spaceRestriction":
                         {
@@ -36,21 +46,26 @@
                             ],
                             "connectednessRestriction": {
                                 "cardRestrictions": [
-                                    "Enemy",
-                                    "Character",
-                                    "Board"
-                                ]
+                                    "Character"
+                                ],
+								"cardRestrictionElements": [
+									{ "$type": "Core.CardRestriction:Enemy:" },
+									{
+										"$type": "Core.CardRestriction:Location:",
+										"locations": [ "Board" ]
+									}
+								]
                             }
                         }
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetXByGamestate:",
 					"whatToCount": "Number of Targets",
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeAllCardStats:",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Already Target"

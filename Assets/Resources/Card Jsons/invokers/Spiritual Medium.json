@@ -4,7 +4,7 @@
 	"effText": "Once each turn, you can show a Spirit. Deck->hand an Invocation, then topdeck the Spirit.",
 	"effects": [
 		{
-			"blurb": "DOOM cometh!",
+			"blurb": "I hear a Spirit!",
 			"activationRestriction": {
 				"activationRestrictionArray": [
 					"Max Times Per Turn",
@@ -14,22 +14,47 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
-					"maxCanChoose": 1,
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
-						"blurb": "Cultist for Doomsayer to search",
-						"cardRestrictions": [
-							"Subtypes Include",
-							"Friendly",
-							"Deck"
-						],
-						"subtypesInclude": [
-							"Cultist"
+						"blurb": "Spirit to reveal for Spiritual Medium",
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            },
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Spirit" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Show:"
+				},
+				{
+					"$type": "Subeffect:ChooseFromList:",
+					"cardRestriction": {
+						"blurb": "Invocation to search",
+						"cardRestrictions": [
+							"Deck"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Invocation" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:Rehand:"
+				},
+				{
+					"$type": "Subeffect:Topdeck:",
+					"targetIndex": 0
 				}
 			]
 		}
@@ -38,5 +63,5 @@
 	"e": 2,
 	"s": 2,
 	"w": 2,
-	"subtypeText": "Cultist"
+	"subtypeText": "Mage"
 }

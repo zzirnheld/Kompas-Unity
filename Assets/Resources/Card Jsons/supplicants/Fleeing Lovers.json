@@ -17,19 +17,21 @@
 			},
 			"subeffects":[
 				{
-					"$type": "KompasServer.Effects.AutoTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:AutoTarget:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
 							"Character",
 							"Same Name as Target"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					},
 					"tiebreakerDirection":"Any"
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction":
 					{
 						"blurb": "where to summon the other Fleeing Lover",
@@ -40,7 +42,7 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type":"Subeffect:Play:"
 				}
 			]	
 		}

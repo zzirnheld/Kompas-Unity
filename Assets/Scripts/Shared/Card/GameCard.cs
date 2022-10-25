@@ -19,9 +19,9 @@ namespace KompasCore.Cards
         public const string AugmentCost = "A";
         public const string CostStat = "Cost";
 
+        public abstract CardController CardController { get; }
         public abstract Game Game { get; }
         public int ID { get; private set; }
-        public CardController cardCtrl;
         public override GameCard Card
         {
             get => this;
@@ -33,7 +33,7 @@ namespace KompasCore.Cards
 
         protected SerializableCard InitialCardValues { get; private set; }
 
-        public bool CurrentlyVisible => gameObject.activeSelf;
+        public bool CurrentlyVisible => CardController.gameObject.activeSelf;
 
         #region stats
         public int BaseN => InitialCardValues.n;
@@ -89,7 +89,7 @@ namespace KompasCore.Cards
 
                 position = value;
                 //card controller will be null on server. not using null ? because of monobehavior
-                if (cardCtrl != null) cardCtrl.SetPhysicalLocation(Location);
+                if (CardController != null) CardController.SetPhysicalLocation(Location);
                 foreach (var aug in augmentsList) aug.Position = value;
             }
         }
@@ -98,7 +98,7 @@ namespace KompasCore.Cards
         public bool InHiddenLocation => Game.IsHiddenLocation(Location);
 
         public override IEnumerable<GameCard> AdjacentCards
-            => Game?.boardCtrl.CardsAdjacentTo(Position) ?? new List<GameCard>();
+            => Game?.BoardController.CardsAdjacentTo(Position) ?? new List<GameCard>();
 
         public bool AlreadyCopyOnBoard => Game.BoardHasCopyOf(this);
 
@@ -156,12 +156,16 @@ namespace KompasCore.Cards
             protected set => SpacesMoved = N - value;
         }
 
-        public int attacksThisTurn = 0;
-        public int AttacksThisTurn => attacksThisTurn;
+        public int AttacksThisTurn { get; private set; }
+
+        /// <summary>
+        /// Increment the number of attacks this card has performed this turn
+        /// </summary>
+        public void Attacked() => AttacksThisTurn++;
 
         //restrictions
         public override MovementRestriction MovementRestriction { get; protected set; }
-        public AttackRestriction AttackRestriction { get; private set; }
+        public override AttackRestriction AttackRestriction { get; protected set; }
         public override PlayRestriction PlayRestriction { get; protected set; }
 
         //controller/owners
@@ -177,7 +181,7 @@ namespace KompasCore.Cards
             {
                 location = value;
                 //Debug.Log($"Card {ID} named {CardName} location set to {Location}");
-                if (cardCtrl != null) cardCtrl.SetPhysicalLocation(Location);
+                if (CardController != null) CardController.SetPhysicalLocation(Location);
                 //else Debug.LogWarning($"Missing a card control. Is this a debug card?");
             }
         }
@@ -193,7 +197,7 @@ namespace KompasCore.Cards
             }
         }
 
-        public string BaseJson => Game.cardRepo.GetJsonFromName(CardName);
+        public string BaseJson => Game.CardRepository.GetJsonFromName(CardName);
 
         public int TurnsOnBoard { get; private set; }
 
@@ -209,26 +213,41 @@ namespace KompasCore.Cards
             return sb.ToString();
         }
 
-        protected virtual void SetCardInfo(SerializableCard serializedCard, int id)
+        protected GameCard(int id)
+            : base(default,
+                  string.Empty, new string[0],
+                  false, false,
+                  0, 0,
+                  'C', "Dummy Card", "generic/The Intern",
+                  "",
+                  "")
         {
-            SetCardInformation(serializedCard);
-
-            FileName = CardRepository.FileNameFor(CardName);
-
             CardLinkHandler = new GameCardCardLinkHandler(this);
 
             ID = id;
-            InitialCardValues = serializedCard;
+        }
+
+        protected GameCard(SerializableCard serializeableCard, int id)
+            : base(serializeableCard.Stats,
+                       serializeableCard.subtext, serializeableCard.spellTypes,
+                       serializeableCard.fast, serializeableCard.unique,
+                       serializeableCard.radius, serializeableCard.duration,
+                       serializeableCard.cardType, serializeableCard.cardName, CardRepository.FileNameFor(serializeableCard.cardName),
+                       serializeableCard.effText,
+                       serializeableCard.subtypeText)
+        {
+            CardLinkHandler = new GameCardCardLinkHandler(this);
+
+            ID = id;
+            InitialCardValues = serializeableCard;
 
             EffectInitializationContext initializationContext = new EffectInitializationContext(Game, this);
-            MovementRestriction = serializedCard.MovementRestriction ?? new MovementRestriction();
+            MovementRestriction = serializeableCard.MovementRestriction ?? new MovementRestriction();
             MovementRestriction.Initialize(initializationContext);
-            AttackRestriction = serializedCard.AttackRestriction ?? new AttackRestriction();
+            AttackRestriction = serializeableCard.AttackRestriction ?? new AttackRestriction();
             AttackRestriction.Initialize(initializationContext);
-            PlayRestriction = serializedCard.PlayRestriction ?? new PlayRestriction();
+            PlayRestriction = serializeableCard.PlayRestriction ?? new PlayRestriction();
             PlayRestriction.Initialize(initializationContext);
-
-            cardCtrl.ShowForCardType(CardType, false);
 
             Debug.Log($"Finished setting up info for card {CardName}");
         }
@@ -238,10 +257,7 @@ namespace KompasCore.Cards
         /// </summary>
         public virtual void ResetForTurn(Player turnPlayer)
         {
-            foreach (Effect eff in Effects)
-            {
-                eff.ResetForTurn(turnPlayer);
-            }
+            foreach (Effect eff in Effects) eff.ResetForTurn(turnPlayer);
 
             SetSpacesMoved(0);
             SetAttacksThisTurn(0);
@@ -253,16 +269,11 @@ namespace KompasCore.Cards
             foreach (var e in Effects) e.TimesUsedThisStack = 0;
         }
 
-        public void PutBack()
-        {
-            if (cardCtrl != null) cardCtrl.SetPhysicalLocation(Location);
-        }
-
         /// <summary>
         /// Accumulates the distance to <paramref name="to"/> into the number of spaces this card moved this turn.
         /// </summary>
         /// <param name="to">The space being moved to</param>
-        public void CountSpacesMovedTo((int x, int y) to) => SetSpacesMoved(SpacesMoved + Game.boardCtrl.ShortestEmptyPath(this, to));
+        public void CountSpacesMovedTo((int x, int y) to) => SetSpacesMoved(SpacesMoved + Game.BoardController.ShortestEmptyPath(this, to));
 
         #region augments
 
@@ -279,7 +290,6 @@ namespace KompasCore.Cards
             augment.Remove(stackSrc);
 
             augmentsList.Add(augment);
-            //and update the augment's augmented card, to reflect its new status
             augment.AugmentedCard = this;
         }
 
@@ -296,83 +306,44 @@ namespace KompasCore.Cards
         public override void SetN(int n, IStackable stackSrc, bool onlyStatBeingSet = true)
         {
             base.SetN(n, stackSrc, onlyStatBeingSet);
-            cardCtrl.N = N;
+            //TODO leverage onlyStatBeingSet to only call refresh when necessary. (Will require bookkeeping)
+            CardController.gameCardViewController.Refresh();
         }
 
         public override void SetE(int e, IStackable stackSrc, bool onlyStatBeingSet = true)
         {
             base.SetE(e, stackSrc, onlyStatBeingSet);
-            cardCtrl.E = E;
+            CardController.gameCardViewController.Refresh();
         }
 
         public override void SetS(int s, IStackable stackSrc, bool onlyStatBeingSet = true)
         {
             base.SetS(s, stackSrc, onlyStatBeingSet);
-            cardCtrl.S = S;
+            CardController.gameCardViewController.Refresh();
         }
 
         public override void SetW(int w, IStackable stackSrc, bool onlyStatBeingSet = true)
         {
             base.SetW(w, stackSrc, onlyStatBeingSet);
-            cardCtrl.W = W;
+            CardController.gameCardViewController.Refresh();
         }
 
         public override void SetC(int c, IStackable stackSrc, bool onlyStatBeingSet = true)
         {
             base.SetC(c, stackSrc, onlyStatBeingSet);
-            cardCtrl.C = C;
+            CardController.gameCardViewController.Refresh();
         }
 
         public override void SetA(int a, IStackable stackSrc, bool onlyStatBeingSet = true)
         {
             base.SetA(a, stackSrc, onlyStatBeingSet);
-            cardCtrl.A = A;
+            CardController.gameCardViewController.Refresh();
         }
 
         /// <summary>
-        /// Inflicts the given amount of damage, which can affect both shield and E. Used by attacks and (rarely) by effects.
+        /// Inflicts the given amount of damage. Used by attacks and (rarely) by effects.
         /// </summary>
         public virtual void TakeDamage(int dmg, IStackable stackSrc = null) => SetE(E - dmg, stackSrc: stackSrc);
-
-        /// <summary>
-        /// Shorthand for modifying a card's NESW all at once.
-        /// On the server, this only notifies the clients of stat changes once.
-        /// </summary>
-        public virtual void SetCharStats(int n, int e, int s, int w, IStackable stackSrc = null)
-        {
-            SetN(n, stackSrc, onlyStatBeingSet: false);
-            SetE(e, stackSrc, onlyStatBeingSet: false);
-            SetS(s, stackSrc, onlyStatBeingSet: false);
-            SetW(w, stackSrc, onlyStatBeingSet: false);
-        }
-
-        /// <summary>
-        /// Shorthand for modifying a card's NESW all at once.
-        /// On the server, this only notifies the clients of stat changes once.
-        /// </summary>
-        public void AddToCharStats(int n, int e, int s, int w, IStackable stackSrc = null)
-            => SetCharStats(N + n, E + e, S + s, W + w, stackSrc: stackSrc);
-
-        /// <summary>
-        /// Shorthand for modifying a card's stats all at once.
-        /// On the server, this only notifies the clients of stat changes once.
-        /// </summary>
-        public void AddToStats(CardStats buff, IStackable stackSrc = null)
-            => SetStats(Stats + buff, stackSrc);
-
-        public void SwapCharStats(GameCard other, bool swapN = true, bool swapE = true, bool swapS = true, bool swapW = true)
-        {
-            int[] aNewStats = new int[4];
-            int[] bNewStats = new int[4];
-
-            (aNewStats[0], bNewStats[0]) = swapN ? (other.N, N) : (N, other.N);
-            (aNewStats[1], bNewStats[1]) = swapE ? (other.E, E) : (E, other.E);
-            (aNewStats[2], bNewStats[2]) = swapS ? (other.S, S) : (S, other.S);
-            (aNewStats[3], bNewStats[3]) = swapW ? (other.W, W) : (W, other.W);
-
-            SetCharStats(aNewStats[0], aNewStats[1], aNewStats[2], aNewStats[3]);
-            other.SetCharStats(bNewStats[0], bNewStats[1], bNewStats[2], bNewStats[3]);
-        }
 
         public virtual void SetNegated(bool negated, IStackable stackSrc = null) => Negated = negated;
         public virtual void SetActivated(bool activated, IStackable stackSrc = null) => Activated = activated;
@@ -380,7 +351,7 @@ namespace KompasCore.Cards
         public virtual void SetSpacesMoved(int spacesMoved)
             => SpacesMoved = spacesMoved;
         public virtual void SetAttacksThisTurn(int attacksThisTurn)
-            => this.attacksThisTurn = attacksThisTurn;
+            => AttacksThisTurn = attacksThisTurn;
         public virtual void SetTurnsOnBoard(int turnsOnBoard, IStackable stackSrc = null)
             => TurnsOnBoard = turnsOnBoard;
 
@@ -397,46 +368,12 @@ namespace KompasCore.Cards
         /// <see langword="false"/> if the card is an avatar that got sent back</returns>
         public virtual bool Remove(IStackable stackSrc = null)
         {
-            // Debug.Log($"Removing {CardName} id {ID} from {Location}");
-
             if (Location == CardLocation.Nowhere) return true;
 
             if (Attached) Detach(stackSrc);
             else GameLocation.Remove(this);
             //If it got to either of these, it's not an avatar that failed to get removed
             return true;
-        }
-
-        public virtual void Vanish() => Discard();
-        public void Discard(IStackable stackSrc = null) => Controller.discardCtrl.Discard(this, stackSrc);
-
-        public void Rehand(Player controller, IStackable stackSrc = null) => controller.handCtrl.Hand(this, stackSrc);
-        public void Rehand(IStackable stackSrc = null) => Rehand(Controller, stackSrc);
-
-        public void Reshuffle(Player controller, IStackable stackSrc = null) => controller.deckCtrl.ShuffleIn(this, stackSrc);
-        public void Reshuffle(IStackable stackSrc = null) => Reshuffle(Controller, stackSrc);
-
-        public void Topdeck(Player controller, IStackable stackSrc = null) => controller.deckCtrl.PushTopdeck(this, stackSrc);
-        public void Topdeck(IStackable stackSrc = null) => Topdeck(Controller, stackSrc);
-
-        public void Bottomdeck(Player controller, IStackable stackSrc = null) => controller.deckCtrl.PushBottomdeck(this, stackSrc);
-        public void Bottomdeck(IStackable stackSrc = null) => Bottomdeck(Controller, stackSrc);
-
-        public void Play(Space to, Player controller, IStackable stackSrc = null, bool payCost = false)
-        {
-            var costToPay = Cost;
-            Game.boardCtrl.Play(this, to, controller, stackSrc);
-
-            if (payCost) controller.Pips -= costToPay;
-        }
-
-        public void Move(Space to, bool normalMove, IStackable stackSrc = null)
-            => Game.boardCtrl.Move(this, to, normalMove, stackSrc);
-
-        public void Dispel(IStackable stackSrc = null)
-        {
-            SetNegated(true, stackSrc);
-            Discard(stackSrc);
         }
 
         public virtual void Reveal(IStackable stackSrc = null)

@@ -15,9 +15,11 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Friendly",
 							"Character",
 							"Space Fits Restriction"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
 						],
 						"spaceRestriction": {
 							"spaceRestrictions": [
@@ -30,7 +32,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Draw:"
 				}
 			]
 		}

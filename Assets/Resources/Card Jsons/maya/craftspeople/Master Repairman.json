@@ -20,22 +20,25 @@
 						]
 					},
 					"nowRestriction": {
-						"cardRestrictions": [
-							"Board",
-							"Subtypes Include"
-						],
-						"subtypesInclude": [
-							"Structure"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Structure" ]
+							}
 						]
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "KompasServer.Effects.HealSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Heal:"
 				}
 			]
 		}

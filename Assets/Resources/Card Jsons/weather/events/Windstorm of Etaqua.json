@@ -16,12 +16,11 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "who next to blow away",
 						"cardRestrictions": [
 							"Character",
-							"Board",
 							"Not Already Target",
 							"Space Fits Restriction"
 						],
@@ -30,38 +29,44 @@
 								"In AOE Source is Also In"
 							],
 							"alsoInAOEOfRestriction": {
-								"cardRestrictions": [
-									"Subtypes Include"
-								],
-								"subtypesInclude": [
-									"Weather"
+								"cardRestrictionElements": [
+									{
+										"$type": "Core.CardRestriction:SubtypesInclude:",
+										"subtypes": [ "Weather" ]
+									}
 								]
 							}
-						}
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
                     "spaceRestriction": {
                         "spaceRestrictions": [
                             "Empty",
                             "In AOE Source is Also In"
                         ],
                         "alsoInAOEOfRestriction": {
-                            "cardRestrictions": [
-                                "Subtypes Include"
-                            ],
-                            "subtypesInclude": [
-                                "Weather"
-                            ]
+							"cardRestrictionElements": [
+								{
+									"$type": "Core.CardRestriction:SubtypesInclude:",
+									"subtypes": [ "Weather" ]
+								}
+							]
                         }
                     }
 				},
 				{
-					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Move:"
 				},
 				{
-					"$type": "KompasServer.Effects.LoopSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Loop:",
 					"jumpIndices": [
 						0
 					]
@@ -85,23 +90,22 @@
 			"Adjacent to Friendly Card"
 		],
 		"spaceRestriction": {
-			"spaceRestrictions": [
-				"In AOE of Number of Cards Fitting Restriction"
-			],
-			"inAOEOfRestriction": {
-				"cardRestrictions": [
-					"Subtypes Include"
-				],
-				"subtypesInclude": [
-					"Weather"
-				]
-			},
-			"numberOfCardsInAOEOfRestriction": {
-				"numberRestrictions": [
-					">=Constant"
-				],
-				"constant": 2
-			}
+			"spaceRestrictionElements": [ {
+				"$type": "Core.SpaceRestriction:InAOEOf:",
+				"anyOf": {
+					"$type": "Gamestate.ManyCards:FittingRestriction:",
+					"cardRestriction": {
+					"cardRestrictionElements": [ {
+							"$type": "Core.CardRestriction:SubtypesInclude:",
+							"subtypes": [ "Weather" ]
+						} ]
+					}
+				},
+				"minAnyOfCount": { 
+					"$type": "Gamestate.Number:Constant:",
+					"constant": 2
+				}
+			} ]
 		}
 	},
 	"n": 9,

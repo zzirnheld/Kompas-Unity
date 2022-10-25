@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Figurehead King",
-	"effText": "Choose a card in your hand, then reshuffle the other X. Gain X / 2 pips.",
+	"effText": "Choose a Tarocco in your hand, then reshuffle the other X cards. Gain X pips.",
 	"effects": [
 		{
 			"triggerData": {
@@ -14,45 +14,56 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Friendly",
-							"Hand"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            },
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Tarocco" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:TargetAll:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Friendly",
-							"Hand",
 							"Not Already Target"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            }
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:DeleteTarget:",
 					"targetIndex": 0
 				},
 				{
-					"$type": "KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Reshuffle:"
 				},
 				{
-					"$type": "KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:DeleteTarget:"
 				},
 				{
-					"$type": "KompasServer.Effects.CountXLoopSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CountXLoop:",
 					"canDecline": false,
 					"jumpIndices": [
 						3
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
-					"xMultiplier": 1,
-					"xDivisor": 2
+					"$type": "Subeffect:AddPips:",
+					"xMultiplier": 1
 				}
 			]
 		}

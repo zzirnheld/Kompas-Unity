@@ -15,61 +15,68 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Fungus to mutate",
-						"cardRestrictions": [
-							"Friendly",
-							"Hand",
-							"Subtypes Include"
-						],
-						"subtypesInclude": [
-							"Fungus"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            },
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Fungus" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Discard:"
 				},
 				{
-					"$type": "KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SkipToEffectOnImpossible:",
 					"jumpIndices": [
 						6
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.ChooseFromListSaveRestSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChooseFromListSaveRest:",
 					"cardRestriction": {
 						"blurb": "the result of mutation",
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
-							"Index<C",
-							"Subtypes Include"
+							"Index<C"
 						],
-						"subtypesInclude": [
-							"Fungus"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Fungus" ]
+							}
 						],
 						"constant": 5
 					},
 					"restRestriction": {
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
 							"Index<C",
 							"Not Already Target"
 						],
-						"constant": 5
+						"constant": 5,
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
+						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.ClearOnImpossibleSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:ClearOnImpossible:"
 				},
 				{
-					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Rehand:"
 				},
 				{
-					"$type": "KompasServer.Effects.BottomdeckRestSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:BottomdeckRest:"
 				}
 			]
 		}

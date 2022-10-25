@@ -14,31 +14,36 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.AutoTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:AutoTarget:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Friendly",
 							"Same Name as Target",
 							"Deck"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					},
 					"tiebreakerDirection":"Any"
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to summon Ephemera",
-						"spaceRestrictions": [
-							"Can Play Card Target to This Space",
-							"Empty"
-						]
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Subeffect.Card:Target:" }
+                            }
+                        ]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Play:"
 				}
 			]
 		},
@@ -48,9 +53,9 @@
 				"triggerCondition": "Move",
 				"triggerRestriction": {
 					"triggerRestrictionElements": [
-                        { "$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.ThisCardInPlay, Assembly-CSharp" },
+                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
                         {
-                            "$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.TriggerKeyword, Assembly-CSharp",
+                            "$type": "Core.TriggerRestriction:TriggerKeyword:",
                             "keyword": "Shaped Through"
                         }
 					]
@@ -58,10 +63,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Reshuffle:"
 				}
 			]
 		}

@@ -41,7 +41,7 @@ namespace KompasCore.Effects.Identities.ActivationContextNumberIdentities
 
             var contextToConsider = secondary ? secondaryContext : context;
             var predicate = throughRestriction.AsThroughPredicate(contextToConsider);
-            return InitializationContext.game.boardCtrl.ShortestPath(first, second, predicate);
+            return InitializationContext.game.BoardController.ShortestPath(first, second, predicate);
         }
     }
 

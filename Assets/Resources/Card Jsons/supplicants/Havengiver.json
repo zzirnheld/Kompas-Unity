@@ -14,17 +14,23 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"$type":"Subeffect:ChooseFromList:",
 					"maxCanChoose":1,
 					"cardRestriction":
 					{
 						"blurb":"Supplicant to give safe haven",
-						"cardRestrictions":["Friendly","Discard","Character","Subtypes Include"],
-						"subtypesInclude":["Supplicant"]
+						"cardRestrictions":["Discard","Character"],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Supplicant" ]
+							}
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type":"Subeffect:SpaceTarget:",
 					"spaceRestriction":
 					{
 						"blurb":"haven to play the Supplicant",
@@ -32,7 +38,7 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type":"Subeffect:Play:"
 				}
 			]
 		}

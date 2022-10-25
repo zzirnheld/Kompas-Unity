@@ -14,36 +14,44 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Character",
-							"Discard"
+							"Character"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							}
 						]
 					},
 					"selfRestriction": {
-						"cardRestrictions": [
-							"Discard"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							}
 						]
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to revive the Dread",
                         "spaceRestrictionElements": [
-                            { "$type": "KompasCore.Effects.Restrictions.SpaceRestrictionElements.Empty, Assembly-CSharp" },
+                            { "$type": "Core.SpaceRestriction:Empty:" },
                             {
-                                "$type": "KompasCore.Effects.Restrictions.SpaceRestrictionElements.CanPlayCard, Assembly-CSharp",
-                                "toPlay": { "$type": "KompasServer.Effects.Identities.SubeffectCardIdentities.Target, Assembly-CSharp" }
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Subeffect.Card:Target:" }
                             }
                         ]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Play:"
 				}
 			]
 		}

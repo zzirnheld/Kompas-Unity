@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Leypathmaking",
-	"effText": "Hand->reshuffle a Linewalker. Search your deck for two Linewalkers distinct from each other and from the reshuffled Linewalker.",
+	"effText": "Hand->reshuffle a Linewalker. Deck->hand 2 distinct Linewalkers.",
 	"effects": [
 		{
 			"triggerData": {
@@ -14,57 +14,64 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Linewalker for Leypathmaking to reshuffle",
-						"cardRestrictions": [
-							"Friendly",
-							"Hand",
-							"Subtypes Include"
-						],
-						"subtypesInclude": [
-							"Linewalker"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            },
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Linewalker" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Reshuffle:"
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Linewalker for Leypathmaking to search",
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
-							"Subtypes Include",
 							"Distinct Name from Other Targets"
 						],
-						"subtypesInclude": [
-							"Linewalker"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Linewalker" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Linewalker for Leypathmaking to search",
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
-							"Subtypes Include",
 							"Distinct Name from Other Targets"
 						],
-						"subtypesInclude": [
-							"Linewalker"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Linewalker" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Rehand:"
 				},
 				{
-					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Rehand:",
 					"targetIndex": -2
 				}
 			]

@@ -7,39 +7,41 @@
 			"blurb": "Empower the Shaper",
 			"triggerData": {
 				"triggerCondition": "Discard",
-				"triggerRestrictionElements": [
-					{ "$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.ThisCardInPlay, Assembly-CSharp" },
-					{
-						"$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.CardFitsRestriction, Assembly-CSharp",
-						"cardRestriction": {
-							"cardRestrictionElements": [
-								{
-									"$type": "KompasCore.Effects.Restrictions.CardRestrictionElements.SubtypesInclude, Assembly-CSharp",
-									"subtypes": [ "Shaper" ]
-								}
-							]
+				"triggerRestriction": {
+					"triggerRestrictionElements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "ActivationContext.Card:MainCardBefore:" },
+							"cardRestriction": {
+								"cardRestrictionElements": [
+									{
+										"$type": "Core.CardRestriction:SubtypesInclude:",
+										"subtypes": [ "Shaper" ]
+									}
+								]
+							}
 						},
-						"card": { "$type": "KompasCore.Effects.Identities.ActivationContextCardIdentities.MainCardBefore, Assembly-CSharp" }
-					},
-					{
-						"$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.CardsMatch, Assembly-CSharp",
-						"firstCard": { "$type": "KompasCore.Effects.Identities.ActivationContextCardIdentities.Cause, Assembly-CSharp" },
-						"secondCard": { "$type": "KompasCore.Effects.Identities.ActivationContextCardIdentities.MainCardBefore, Assembly-CSharp" }
-					}
-				]
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"firstCard": { "$type": "ActivationContext.Card:Cause:" },
+							"secondCard": { "$type": "ActivationContext.Card:MainCardBefore:" }
+						}
+					]
+				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardsCoordsSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTriggeringCardsCoords:"
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Play:"
 				},
 				{
-					"$type": "KompasServer.Effects.TemporaryNegateSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:TemporaryNegate:",
 					"endCondition": "Turn Start",
 					"triggerRestriction": {
 						"triggerRestrictions": [ ]

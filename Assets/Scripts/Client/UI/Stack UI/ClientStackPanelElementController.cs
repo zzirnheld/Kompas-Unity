@@ -36,8 +36,8 @@ namespace KompasClient.UI
 
         private void ShowStackableRoles(bool show)
         {
-            if (primaryCardCtrl != null) primaryCardCtrl.ShowPrimaryOfStackable(show);
-            if (secondaryCardCtrl != null) secondaryCardCtrl.ShowSecondaryOfStackable(show);
+            if (primaryCardCtrl != null) primaryCardCtrl.gameCardViewController.ShowPrimaryOfStackable(show);
+            if (secondaryCardCtrl != null) secondaryCardCtrl.gameCardViewController.ShowSecondaryOfStackable(show);
         }
 
         public void OnPointerEnter(PointerEventData eventData) => ShowStackableRoles(true);

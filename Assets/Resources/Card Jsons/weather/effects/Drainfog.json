@@ -28,18 +28,23 @@
 			},
 			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type":"Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type":"KompasServer.Effects.TargetTargetsControllerSubeffect, Assembly-CSharp"
+					"$type":"Subeffect:TargetTargetsController:"
 				},
 				{
-					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChooseFromList:",
 					"cardRestriction": {
 						"blurb": "The fog is draining",
 						"cardRestrictions": [
-							"Controller Matches Player Target",
-							"Hand"
+							"Controller Matches Player Target"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Hand" ]
+							}
 						]
 					},
 					"listRestriction": {
@@ -52,14 +57,14 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Discard:"
 				},
 				{
-					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Discard:",
 					"targetIndex": -2
 				},
 				{
-					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type":"Subeffect:Draw:"
 				}
 			]
 		}

@@ -21,8 +21,8 @@ namespace KompasClient.GameCore
             set
             {
                 base.Pips = value;
-                if (index == 0) clientGame.clientUICtrl.FriendlyPips = Pips;
-                else clientGame.clientUICtrl.EnemyPips = Pips;
+                if (index == 0) clientGame.clientUIController.FriendlyPips = Pips;
+                else clientGame.clientUIController.EnemyPips = Pips;
                 pipsUICtrl.Pips = value;
             }
         }

@@ -11,7 +11,7 @@ namespace KompasServer.Effects
 
         public ServerPlayer ServerController { get; }
 
-        private ServerEffectsController EffCtrl => ServerGame.EffectsController;
+        private ServerEffectsController EffCtrl => ServerGame.effectsController;
         private readonly Space attackerInitialSpace;
         private readonly Space defenderInitialSpace;
 

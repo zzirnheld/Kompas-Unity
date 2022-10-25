@@ -9,9 +9,9 @@
 				"triggerCondition": "Move",
 				"triggerRestriction": {
 					"triggerRestrictionElements": [
-                        { "$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.ThisCardInPlay, Assembly-CSharp" },
+                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
                         {
-                            "$type": "KompasCore.Effects.Restrictions.TriggerRestrictionElements.TriggerKeyword, Assembly-CSharp",
+                            "$type": "Core.TriggerRestriction:TriggerKeyword:",
                             "keyword": "Shaped Through"
                         }
 					]
@@ -19,19 +19,19 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "KompasServer.Effects.HealSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Heal:"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Reshuffle:"
 				},
 				{
-					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Draw:"
 				}
 			]
 		}

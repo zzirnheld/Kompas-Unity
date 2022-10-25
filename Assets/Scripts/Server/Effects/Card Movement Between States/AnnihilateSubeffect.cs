@@ -1,4 +1,5 @@
-﻿using KompasCore.Exceptions;
+﻿using KompasCore.Cards.Movement;
+using KompasCore.Exceptions;
 using System.Threading.Tasks;
 
 namespace KompasServer.Effects
@@ -11,7 +12,7 @@ namespace KompasServer.Effects
         {
             if (CardTarget == null) throw new NullCardException(TargetWasNull);
 
-            CardTarget.Owner.annihilationCtrl.Annihilate(CardTarget, Effect);
+            CardTarget.Annihilate(Effect);
             return Task.FromResult(ResolutionInfo.Next);
         }
     }

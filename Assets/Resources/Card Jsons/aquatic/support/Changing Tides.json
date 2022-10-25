@@ -1,0 +1,70 @@
+{
+	"cardType": 83,
+	"cardName": "Changing Tides",
+	"effText": "Move a Water spell up to 2 spaces. Draw 1 card.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "Changing tide",
+						"cardRestrictions": [
+							"Spell"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Water" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "The tide moves",
+						"spaceRestrictions": [
+							"Empty",
+							"Distance to Source Fits X Restriction",
+							"Can Move Card Target to This Space"
+						],
+						"distanceXRestriction": {
+							"numberRestrictions": [
+								"<=X"
+							]
+						}
+					},
+					"xModifier": 2
+				},
+				{
+					"$type": "Subeffect:Move:"
+				},
+				{
+					"$type": "Subeffect:Draw:"
+				}
+			]
+		}
+	],
+	"c": 1,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypes": [
+		"Aquatic",
+		"Simple"
+	],
+	"subtypeText": "Aquatic Simple"
+}

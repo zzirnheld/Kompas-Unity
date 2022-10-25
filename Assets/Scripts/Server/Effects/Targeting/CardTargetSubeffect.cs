@@ -32,8 +32,9 @@ namespace KompasServer.Effects
 
         public override bool IsImpossible() => !Game.Cards.Any(c => cardRestriction.IsValidCard(c, CurrentContext));
 
-        protected virtual int[] PotentialTargetIds
-            => Game.Cards.Where(c => cardRestriction.IsValidCard(c, CurrentContext)).Select(c => c.ID).ToArray();
+        protected virtual IEnumerable<GameCard> TargetCardsSource => Game.Cards;
+        protected virtual IEnumerable<GameCard> PotentialTargets => TargetCardsSource.Where(c => cardRestriction.IsValidCard(c, CurrentContext));
+        protected virtual int[] PotentialTargetIds => PotentialTargets.Select(c => c.ID).ToArray();
 
         protected virtual async Task<GameCard> GetTargets(int[] potentialTargetIds)
         {

@@ -5,18 +5,34 @@ using UnityEngine;
 
 namespace KompasCore.UI
 {
-    public class BoardUIController : MonoBehaviour
+    public abstract class BoardUIController : MonoBehaviour
     {
+        public const float BoardLenOffset = 7f;
+        public const float LenOneSpace = 2f;
+        public const float SpaceOffset = LenOneSpace / 2f;
+        public const float CardHeight = 0.15f;
+
+        public abstract BoardController BoardController { get; }
+        public abstract UIController UIController { get; }
+
         public GameObject spaceCueControllerPrefab;
-        public BoardController boardCtrl;
 
         private readonly SpaceCueController[,] spaceCueControllers = new SpaceCueController[7, 7];
-        private GameCard currShowingFor;
+        private GameCardBase currShowingFor;
 
         private static Vector3 GridIndicesToCuePos(int x, int y)
         {
-            return new Vector3(BoardController.GridIndexToPos(x), 0.01f, BoardController.GridIndexToPos(y));
+            return new Vector3(GridIndexToPos(x), 0.01f, GridIndexToPos(y));
         }
+
+        public static int PosToGridIndex(float pos)
+            => (int)((pos + BoardLenOffset) / (LenOneSpace));
+
+        public static float GridIndexToPos(int gridIndex)
+            => (float)((gridIndex * LenOneSpace) + SpaceOffset - BoardLenOffset);
+
+        public static Vector3 GridIndicesToCardPos(int x, int y)
+            => new Vector3(GridIndexToPos(x), CardHeight, GridIndexToPos(y));
 
         private void Awake()
         {
@@ -31,10 +47,14 @@ namespace KompasCore.UI
             }
         }
 
-        public void ShowForCard(GameCard card, bool forceRefresh = false)
+        public virtual void OnMouseDown()
         {
-            if (currShowingFor == card && !forceRefresh) return;
+            //select nothing
+            UIController.CardViewController.Show(null);
+        }
 
+        public void ShowForCard(GameCardBase card)
+        {
             currShowingFor = card;
 
             for (int i = 0; i < 7; i++)
@@ -45,7 +65,7 @@ namespace KompasCore.UI
 
                     if (card.MovementRestriction.IsValidNormalMove((i, j)))
                         cue.ShowCanMove();
-                    else if (card.AttackRestriction.IsValidAttack(boardCtrl.GetCardAt((i, j)), stackSrc: null))
+                    else if (card.AttackRestriction.IsValidAttack(BoardController.GetCardAt((i, j)), stackSrc: null))
                         cue.ShowCanAttack();
                     else if (card.PlayRestriction.IsRecommendedNormalPlay((i, j), card.Controller))
                         cue.ShowCanPlay();
@@ -55,7 +75,7 @@ namespace KompasCore.UI
             }
         }
 
-        public void RefreshShownCard() => ShowForCard(currShowingFor, forceRefresh: true);
+        public void RefreshShownCard() => ShowForCard(currShowingFor);
 
         public void ShowNothing()
         {

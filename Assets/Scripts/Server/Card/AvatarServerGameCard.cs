@@ -1,9 +1,9 @@
 ﻿using KompasCore.Cards;
+using KompasCore.Cards.Movement;
 using KompasCore.Effects;
-using KompasCore.Exceptions;
 using KompasServer.Effects;
 using KompasServer.GameCore;
-using UnityEngine;
+using System;
 
 namespace KompasServer.Cards
 {
@@ -16,11 +16,16 @@ namespace KompasServer.Cards
         {
             if (Location == CardLocation.Nowhere) return true;
             var corner = Space.AvatarCornerFor(ControllerIndex);
-            var unfortunate = Game.boardCtrl.GetCardAt(corner);
+            var unfortunate = Game.BoardController.GetCardAt(corner);
             if (unfortunate != null && unfortunate != this && !unfortunate.IsAvatar)
-                unfortunate.Owner.annihilationCtrl.Annihilate(unfortunate, stackSrc: stackSrc);
+                unfortunate.Annihilate(stackSrc);
             Move(to: corner, normalMove: false, stackSrc: stackSrc);
             return false;
+        }
+
+        private void Move(Space to, bool normalMove, IStackable stackSrc)
+        {
+            throw new NotImplementedException();
         }
 
         public override void SetE(int e, IStackable stackSrc, bool onlyStatBeingSet = true)
@@ -32,6 +37,12 @@ namespace KompasServer.Cards
         public void LoseIfDead()
         {
             if (E <= 0) ServerGame.Lose(ControllerIndex);
+        }
+
+        public AvatarServerGameCard(ServerSerializableCard card, int id, ServerCardController serverCardController, ServerPlayer owner, ServerEffect[] effects)
+            : base(card, id, serverCardController, owner, effects)
+        {
+
         }
 
     }

@@ -10,8 +10,8 @@ namespace KompasServer.GameCore
     {
         public ServerGame ServerGame;
 
-        public ServerNotifier ServerNotifier => ServerGame.ServerPlayers[Owner.index].ServerNotifier;
-        public ServerEffectsController EffectsController => ServerGame.EffectsController;
+        public ServerNotifier ServerNotifier => ServerGame.serverPlayers[Owner.index].ServerNotifier;
+        public ServerEffectsController EffectsController => ServerGame.effectsController;
 
         public override Player Owner => owner;
         public ServerPlayer owner;

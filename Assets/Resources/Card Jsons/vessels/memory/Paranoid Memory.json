@@ -1,7 +1,7 @@
 {
 	"cardType": 65,
 	"cardName": "Paranoid Memory",
-	"effText": "When this character is summoned, give them +1 E.\nWhen this summon defends, echo them thrice.",
+	"effText": "When you echo this summon, give them +1 E.\nWhen this summon defends, echo them thrice.",
 	"effects": [
 		{
 			"blurb": "Paranoid curling-up",
@@ -15,10 +15,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetAugmentedCard:"
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeCardStats:",
 					"eModifier": 1
 				}
 			]
@@ -36,16 +36,16 @@
 			},
 			"subeffects": [
                 {
-                    "$type":"KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+                    "$type":"Subeffect:TargetAugmentedCard:"
                 },
 				{
-					"$type": "KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Resummon:"
 				},
 				{
-					"$type": "KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Resummon:"
 				},
 				{
-					"$type": "KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Resummon:"
 				}
 			]
 		}

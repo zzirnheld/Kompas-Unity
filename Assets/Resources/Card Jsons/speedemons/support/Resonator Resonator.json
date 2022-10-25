@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Resonator Resonator",
-	"effText": "When turns start, search your deck for \"Sonic Resonator\".",
+	"effText": "When turns start, deck->hand \"Sonic Resonator\".",
 	"effects": [
 		{
 			"blurb": "Resonate",
@@ -15,19 +15,21 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:DeckTarget:",
 					"cardRestriction": {
 						"blurb": "Ready to resonate?",
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
 							"Name Is"
 						],
-						"nameIs": "Sonic Resonator"
+						"nameIs": "Sonic Resonator",
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
+						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Rehand:"
 				}
 			]
 		}

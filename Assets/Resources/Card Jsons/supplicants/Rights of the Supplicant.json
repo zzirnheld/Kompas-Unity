@@ -10,18 +10,22 @@
 				"triggerRestriction": {
 					"triggerRestrictions": ["This Card in Play","Main Card Fits Restriction Before"],
 					"cardRestriction": {
-						"cardRestrictions": [ "Subtypes Include" ],
-						"subtypesInclude": [ "Supplicant" ]
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Supplicant" ]
+							}
+						]
 					}
 				}
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp",
+					"$type":"Subeffect:TargetTriggeringCard:",
 					"secondary":true
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type":"Subeffect:ChangeCardStats:",
 					"eModifier":-1,
 					"wModifier":-1
 				}

@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Skillingbinder",
-	"effText": "When an enemy character in Weather uses their effect, Spin a Storm there.",
+	"effText": "When an enemy in Weather uses their effect, Spin a Storm there.",
 	"effects": [
 		{
 			"blurb": "Bind the show of skill",
@@ -14,30 +14,33 @@
 					],
 					"sourceRestriction": {
 						"cardRestrictions": [
-							"Enemy",
 							"Character",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction":
 						{
-							"spaceRestrictions": [
-								"In AOE of Card Fitting Restriction"
-							],
-							"inAOEOfRestriction": {
-								"cardRestrictions": [
-									"Subtypes Include"
-								],
-								"subtypesInclude": [
-									"Weather"
-								]
-							}
-						}
+							"spaceRestrictionElements": [ {
+								"$type": "Core.SpaceRestriction:InAOEOf:",
+								"anyOf": {
+									"$type": "Gamestate.ManyCards:FittingRestriction:",
+									"cardRestriction": {
+									"cardRestrictionElements": [ {
+											"$type": "Core.CardRestriction:SubtypesInclude:",
+											"subtypes": [ "Weather" ]
+										} ]
+									}
+								}
+							}]
+						},
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" }
+						]
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.KeywordSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Keyword:",
 					"keyword": "Spin a Storm"
 				}
 			]

@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Rocket-Propelled Ball",
-	"effText": "Comeback Play.\nWhen a friendly Augment is attached to an enemy character, move that character 1 space.",
+	"effText": "Comeback Play.\nWhen you attach an Augment an enemy character, move them 1 space.",
 	"effects": [
 		{
 			"triggerData": {
@@ -14,12 +14,14 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Friendly",
 							"Augments Card Fitting Restriction"
 						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
+						],
 						"augmentRestriction": {
-							"cardRestrictions": [
-								"Enemy"
+							"cardRestrictionElements": [
+								{ "$type": "Core.CardRestriction:Enemy:" }
 							]
 						}
 					}
@@ -27,10 +29,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "go",
 						"spaceRestrictions": [
@@ -47,7 +49,7 @@
 					"xModifier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Move:"
 				}
 			]
 		}

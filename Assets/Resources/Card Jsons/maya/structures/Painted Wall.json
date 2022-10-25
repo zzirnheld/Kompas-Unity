@@ -13,27 +13,27 @@
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Subtypes Include"
-						],
-						"subtypesInclude": [
-							"Structure"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Structure" ]
+							}
 						]
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTargetsSpace:"
 				},
                 {
-                    "$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+                    "$type":"Subeffect:TargetThis:"
                 },
 				{
-					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ConditionalEnd:",
 					"condition": "Space Target Violates Restriction",
                     "spaceRestriction":
                     {
@@ -41,17 +41,17 @@
                             "Connected to Card Target by Spaces Fitting Restriction"
                         ],
                         "connectednessRestriction": {
-                            "cardRestrictions": [
-                                "Subtypes Include"
-                            ],
-                            "subtypesInclude": [
-                                "Structure"
-                            ]
+							"cardRestrictionElements": [
+								{
+									"$type": "Core.CardRestriction:SubtypesInclude:",
+									"subtypes": [ "Structure" ]
+								}
+							]
                         }
                     }
 				},
 				{
-					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Draw:"
 				}
 			]
 		}

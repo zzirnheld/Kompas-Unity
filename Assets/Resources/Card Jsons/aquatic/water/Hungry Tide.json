@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Hungry Tide",
-	"effText": "You can hand->annihilate 2 Water spells to search your deck for an Aquatic character.",
+	"effText": "You can hand->annihilate 2 Water spells to deck->hand an Aquatic character.\n<i>Vanishes after 2 turns.</i>",
 	"effects": [
 		{
 			"blurb": "The Tide Hungers",
@@ -13,17 +13,22 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChooseFromList:",
 					"cardRestriction": {
 						"blurb": "to feed the tide",
 						"cardRestrictions": [
-							"Spell",
-							"Friendly",
-							"Hand",
-							"Subtypes Include"
+							"Spell"
 						],
-						"subtypesInclude": [
-							"Water"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Hand" ]
+							},
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Water" ]
+							}
 						]
 					},
 					"listRestriction": {
@@ -36,29 +41,31 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Annihilate:"
 				},
 				{
-					"$type": "KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Annihilate:",
 					"targetIndex": -2
 				},
 				{
-					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChooseFromList:",
 					"cardRestriction": {
 						"blurb": "for the tide to belch",
 						"cardRestrictions": [
 							"Character",
-							"Subtypes Include",
-							"Friendly",
 							"Deck"
 						],
-						"subtypesInclude": [
-							"Aquatic"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Aquatic" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Rehand:"
 				}
 			]
 		}

@@ -10,20 +10,20 @@
 	},
 	"subeffects":[
 		{
-			"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+			"$type":"Subeffect:TargetThis:"
 		},
 		{
-			"$type":"KompasServer.Effects.TargetTriggeringCardsCoordsSubeffect, Assembly-CSharp"
+			"$type":"Subeffect:TargetTriggeringCardsCoords:"
 		},
 		{
-			"$type":"KompasServer.Effects.TargetTriggeringCardsCoordsSubeffect, Assembly-CSharp",
+			"$type":"Subeffect:TargetTriggeringCardsCoords:",
 			"after":true
 		},
 		{
-			"$type":"KompasServer.Effects.TargetDirectionSubeffect, Assembly-CSharp"
+			"$type":"Subeffect:TargetDirection:"
 		},
 		{
-			"$type":"KompasServer.Effects.AutoSpaceTargetSubeffect, Assembly-CSharp",
+			"$type":"Subeffect:AutoSpaceTarget:",
 			"spaceRestriction":
 			{
 				"blurb":"speeeeeeeeeeeeeeeed",
@@ -40,7 +40,7 @@
 			"xModifier":1
 		},
 		{
-			"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+			"$type":"Subeffect:Move:"
 		}
 	]	
 }

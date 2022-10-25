@@ -36,7 +36,7 @@ namespace KompasServer.Networking
             var card = serverGame.GetCardWithID(cardId);
             if (card == null)
                 return Task.CompletedTask;
-            else if (serverGame.uiCtrl.DebugMode)
+            else if (serverGame.UIController.DebugMode)
             {
                 UnityEngine.Debug.LogWarning($"Debug setting NESW to {n}, {e}, {s}, {w} of card with id {cardId}");
                 card.SetCharStats(n, e, s, w);
@@ -44,7 +44,7 @@ namespace KompasServer.Networking
             else
             {
                 UnityEngine.Debug.LogError($"Tried to debug set NESW of card with id {cardId} while NOT in debug mode!");
-                card.PutBack();
+                card.CardController.PutBack();
             }
             return Task.CompletedTask;
         }

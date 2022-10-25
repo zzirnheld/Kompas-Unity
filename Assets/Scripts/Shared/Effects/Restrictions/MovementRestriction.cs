@@ -105,7 +105,7 @@ namespace KompasCore.Effects
 
         private bool CardAtDestinationCanMoveHere(Space space, ActivationContext context)
         {
-            var atDest = Card.Game.boardCtrl.GetCardAt(space);
+            var atDest = Card.Game.BoardController.GetCardAt(space);
             if (atDest == null) return true;
             if (context != default) return atDest.MovementRestriction.IsValidEffectMove(Card.Position, context);
             else if (atDest.Controller != Card.Controller) return false; //TODO later allow for cards that *can* swap with enemies
@@ -114,9 +114,9 @@ namespace KompasCore.Effects
 
         private bool CanMoveThroughEmptyOrRestrictedSpacesTo(Space destination)
         {
-            bool predicate(Space s) => Card.Game.boardCtrl.IsEmpty(s)
+            bool predicate(Space s) => Card.Game.BoardController.IsEmpty(s)
                                     || throughSpacesRestriction.IsValidSpace(s, default);
-            return Card.SpacesCanMove >= Card.Game.boardCtrl.ShortestPath(Card.Position, destination, predicate);
+            return Card.SpacesCanMove >= Card.Game.BoardController.ShortestPath(Card.Position, destination, predicate);
         }
 
         private bool IsRestrictionValid(string restriction, Space destination, ActivationContext context, bool isSwapTarget) => restriction switch
@@ -127,7 +127,7 @@ namespace KompasCore.Effects
             InPlay => Card.Location == CardLocation.Board,
             DistinctSpace => !Card.Position.Equals(destination),
             IsCharacter => Card.CardType == 'C',
-            CanMoveEnoughSpaces => Card.SpacesCanMove >= Card.Game.boardCtrl.ShortestEmptyPath(Card, destination),
+            CanMoveEnoughSpaces => Card.SpacesCanMove >= Card.Game.BoardController.ShortestEmptyPath(Card, destination),
             StandardSpellMoveRestiction => Card.Game.ValidSpellSpaceFor(Card, destination),
             NothingHappening => Card.Game.NothingHappening,
             IsFriendlyTurn => Card.Game.TurnPlayer == Card.Controller,

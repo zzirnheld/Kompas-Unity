@@ -50,6 +50,7 @@ generic/Ethereate
 generic/Rememories
 generic/Growth Through Adversity
 
+aquatic/support/Changing Tides
 aquatic/support/Fishing
 aquatic/support/Shifting Tides
 aquatic/support/Sacrifice to the Old Sea Gods
@@ -57,7 +58,6 @@ aquatic/support/Here Be Monsters
 aquatic/support/Wave
 
 aquatic/Big Tuna
-aquatic/Changing Tides
 aquatic/Ma Rinner
 aquatic/Seigh Lorre
 aquatic/Heptastar
@@ -132,6 +132,8 @@ cultists/Mindless Silent
 
 dragons/Aeolian
 dragons/Cidian
+dragons/Dragaboo
+dragons/Dragon Egg
 dragons/Dragonbinder
 dragons/Dragoncaller
 dragons/Dragonseeker
@@ -148,6 +150,8 @@ dragons/Growing Boye
 dragons/Earthwapmer
 dragons/Dragonking
 dragons/Cyrian
+dragons/Pseudodragon
+dragons/Dragon Hatchling
 
 golems/support/Animancer
 golems/support/Modular Golem Cores
@@ -184,6 +188,7 @@ invokers/Waungh Invoker
 invokers/Novice Invocation
 invokers/Forlorn Invocation
 invokers/Peruser of Ancient Texts
+invokers/Spiritual Medium
 
 invokers/spirits/A Lot of Disappointment
 invokers/spirits/Allconsuming Frustration
@@ -261,18 +266,19 @@ maya/support/Dense Cities
 maya/support/Grand Plaza
 maya/support/Urbanization
 
-mechs/golems/QU4RG3
-mechs/golems/51NG3
-mechs/golems/54MUR41
-mechs/golems/PL4T00N
-mechs/golems/N0T3
-mechs/golems/53G45C4NTUR14N 00
-mechs/golems/C4RR13R
-mechs/golems/P4RT154N
-mechs/golems/5P33DRUNN3R
 mechs/golems/5H4P3R
+mechs/golems/5P33DRUNN3R
+mechs/golems/51NG3
+mechs/golems/53G45C4NTUR14N 00
 mechs/golems/54CR1F1C3
+mechs/golems/54MUR41
+mechs/golems/C4RR13R
 mechs/golems/GL455C4NN0N
+mechs/golems/N0T3
+mechs/golems/P4RT154N
+mechs/golems/PH453R
+mechs/golems/PL4T00N
+mechs/golems/QU4RG3
 
 mechs/pilots/Standard Pilot
 mechs/pilots/Runn R Mann
@@ -530,20 +536,6 @@ supplicants/Kindly Old Doctor
 supplicants/Prophet of Mercy
 supplicants/Havengiver
 supplicants/Havengranter
-
-swordguild/Dispeller by Sword
-swordguild/Squire
-swordguild/Swordguild Bannerman
-swordguild/Swordguild Instructor
-swordguild/Swordguild Medic
-swordguild/Swordguild Quartermaster
-swordguild/Swordguild Strategist
-swordguild/Swordguild Tactician
-swordguild/Swordguild Trainee
-swordguild/Swordguild Trainer
-swordguild/Swordmaster
-swordguild/Swordmystic
-swordguild/The General
 
 tarocco/Figurehead Jack
 tarocco/Figurehead King
