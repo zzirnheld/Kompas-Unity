@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Dense Cities",
-	"effText": "When I'm cast adjacent to X Maya Structures, deck->hand X distinct Maya Craftspeople.",
+	"effText": "When I'm cast on the same Diagonal as X Maya Structures, deck->hand X distinct Maya Craftspeople.",
 	"effects": [
 		{
 			"blurb": "Attract craftspeople",
@@ -14,6 +14,9 @@
 				}
 			},
 			"subeffects": [
+				{
+					"$type": "Subeffect:TargetThis:"
+				},
 				{
 					"$type":"Subeffect:SetXBoardRestriction:",
 					"cardRestriction": {
@@ -28,7 +31,8 @@
 						],
 						"spaceRestriction": {
 							"spaceRestrictions": [
-                                "Adjacent to Source"
+                                "Adjacent to Source",
+								"On Card Target's Diagonal"
                             ]
 						}
 					},
@@ -63,8 +67,9 @@
 				{
 					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"delete": true,
+					"remainingTargets": 1,
 					"jumpIndices": [
-						2
+						3
 					]
 				}
 			]
