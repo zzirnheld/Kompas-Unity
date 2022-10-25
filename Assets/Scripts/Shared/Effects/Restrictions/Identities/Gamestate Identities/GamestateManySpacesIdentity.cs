@@ -26,5 +26,18 @@ namespace KompasCore.Effects.Identities
         {
             protected override ICollection<Space> AbstractItem => Space.Spaces.Where(s => s.IsCorner).ToArray();
         }
+
+        public class Multiple : NoActivationContextIdentityBase<ICollection<Space>>
+        {
+            public INoActivationContextIdentity<Space>[] spaces;
+
+            public override void Initialize(EffectInitializationContext initializationContext)
+            {
+                base.Initialize(initializationContext);
+                foreach (var i in spaces) i.Initialize(initializationContext);
+            }
+
+            protected override ICollection<Space> AbstractItem => spaces.Select(s => s.Item).ToArray();
+        }
     }
 }

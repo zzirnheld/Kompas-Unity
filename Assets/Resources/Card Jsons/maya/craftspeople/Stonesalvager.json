@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Stonesalvager",
-	"effText": "You can hand->summon an S X Structure by discard->reshuffling Structures with total S >= 2*X.",
+	"effText": "You can hand->summon a Structure by discard->reshuffling Structures that cost at least twice as much.",
 	"effects": [
 		{
 			"blurb": "Reconstruct",

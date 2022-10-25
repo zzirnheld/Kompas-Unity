@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Graven Wall",
-	"effText": "Can't move or attack normally.\nWhen a Structure defends, if they're connected to me by Structures, gain 1 pip.",
+	"effText": "Structure.\nIf I'm in a corner when a Structure defends, gain 5 pips.",
 	"effects": [
 		{
 			"blurb": "The walls remember",
@@ -20,39 +20,28 @@
 							}
 						]
 					}
-				}
+				},
+				"triggerRestrictionElements": [
+					{
+						"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+						"cardRestriction": {
+							"cardRestrictions": [
+								"Space Fits Restriction"
+							],
+							"spaceRestriction": {
+								"spaceRestrictions": [
+									"Corner"
+								]
+							}
+						},
+						"card": { "$type": "Gamestate.Card:ThisCard:" }
+					}
+				]
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:TargetTriggeringCard:"
-				},
-				{
-					"$type": "Subeffect:TargetTargetsSpace:"
-				},
-                {
-                    "$type":"Subeffect:TargetThis:"
-                },
-				{
-					"$type": "Subeffect:ConditionalEnd:",
-					"condition": "Space Target Violates Restriction",
-                    "spaceRestriction":
-                    {
-                        "spaceRestrictions": [
-                            "Connected to Card Target by Cards Fitting Restriction"
-                        ],
-                        "connectednessRestriction": {
-							"cardRestrictionElements": [
-								{
-									"$type": "Core.CardRestriction:SubtypesInclude:",
-									"subtypes": [ "Structure" ]
-								}
-							]
-                        }
-                    }
-				},
-				{
 					"$type": "Subeffect:AddPips:",
-					"xModifier": 1
+					"xModifier": 5
 				}
 			]
 		}

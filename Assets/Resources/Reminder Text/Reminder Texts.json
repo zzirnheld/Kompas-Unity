@@ -160,6 +160,10 @@
 		{
 			"keyword": "Rummage",
 			"reminder": "Hand->discard 1 card, then draw 1 card."
+		},
+		{
+			"keyword": "Structure",
+			"reminder": "Can't move or attack normally."
 		}
 	]
 }
