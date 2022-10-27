@@ -242,5 +242,19 @@ namespace KompasCore.Effects.Restrictions
                 return true;
             }
         }
+
+        public class SameDiagonal : SpaceRestrictionElement
+        {
+            public INoActivationContextIdentity<Space> space;
+
+            public override void Initialize(EffectInitializationContext initializationContext)
+            {
+                base.Initialize(initializationContext);
+                space.Initialize(initializationContext);
+            }
+
+            protected override bool AbstractIsValidSpace(Space space, ActivationContext context)
+                => space.SameDiagonal(this.space.Item);
+        }
     }
 }

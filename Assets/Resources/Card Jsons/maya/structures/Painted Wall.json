@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Painted Wall",
-	"effText": "Structure.\nIf I'm in a corner when a Structure defends, draw 5 cards.",
+	"effText": "Structure.\nIf I'm in a corner when a Structure on my diagonal defends, draw 5 cards.",
 	"effects": [
 		{
 			"blurb": "The walls remember",
@@ -17,7 +17,21 @@
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Structure" ]
-							}
+							},
+                            {
+                                "$type": "Core.CardRestriction:PositionFitsRestriction:",
+                                "spaceRestriction": {
+                                    "spaceRestrictionElements": [
+										{
+											"$type": "Core.SpaceRestriction:SameDiagonal:",
+											"space": {
+												"$type": "Subeffect.Space:PositionOf:",
+												"whosePosition": { "$type": "Gamestate.Card:ThisCard:" }
+											}
+										}
+									]
+                                }
+                            }
 						]
 					}
 				},
@@ -59,7 +73,7 @@
 		]
 	},
 	"n": 0,
-	"e": 14,
+	"e": 10,
 	"s": 4,
 	"w": 0,
 	"subtypeText": "Maya Structure"
