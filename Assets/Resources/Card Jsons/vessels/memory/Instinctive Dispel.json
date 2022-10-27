@@ -1,16 +1,31 @@
 {
 	"cardType": 65,
-	"cardName": "Powerhungry Memory",
-	"effText": "When you echo this character, dispel an adjacent spell. Give them +5 W.\nWhen this character attacks, echo them.",
+	"cardName": "Instinctive Dispel",
+	"effText": "When this summon attacks, echo them.\nWhen you echo this summon, dispel an adjacent spell to give them +5 W.",
 	"effects": [
 		{
 			"blurb": "Powerhunger",
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"Augmented Card is Main Card"
-					]
+                    "triggerRestrictionElements": [
+                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardsMatch:",
+                            "firstCard": { "$type": "ActivationContext.Card:MainCardBefore:" },
+                            "secondCard": {
+                                "$type": "Gamestate.Card:AugmentedCard:",
+                                "ofThisCard": { "$type": "Gamestate.Card:ThisCard:" }
+                            }
+                        },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "ActivationContext.Card:MainCardBefore:" },
+                            "cardRestriction": {
+                                "cardRestrictionElements": [ { "$type": "Core.CardRestriction:Summoned:" } ]
+                            }
+                        }
+                    ]
 				}
 			},
 			"subeffects": [

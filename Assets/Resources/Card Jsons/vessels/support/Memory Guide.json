@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Memory Guide",
-	"effText": "When you attach a Memory to an adjacent character, echo the character.",
+	"effText": "When you bestow a Memory unto an adjacent character, echo them.",
 	"effects": [
 		{
             "blurb": "Guide Memory",

@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Rememberance",
-	"effText": "Discard->annihilate a S X character. Discard->hand either a cost <= X card or up to X Memories.",
+	"effText": "Discard->annihilate an S X character. Discard->hand either a cost <= X card or up to X Memories.",
 	"effects": [
 		{
 			"triggerData": {

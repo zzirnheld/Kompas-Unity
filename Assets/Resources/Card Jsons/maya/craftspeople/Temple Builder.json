@@ -49,6 +49,7 @@
                         "spaceRestriction":
                         {
                             "spaceRestrictions": [
+								"Corner",
                                 "Connected to Card Target by Cards Fitting Restriction"
                             ],
                             "connectednessRestriction": {

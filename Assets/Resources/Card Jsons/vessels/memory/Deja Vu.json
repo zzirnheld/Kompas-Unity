@@ -1,7 +1,7 @@
 {
 	"cardType": 65,
 	"cardName": "Deja Vu",
-	"effText": "When a distinct card echoes this character, echo them.",
+	"effText": "When something distinct echoes this character, echo them again.",
 	"effects": [
 		{
 			"blurb": "Deja Vu",
@@ -38,5 +38,5 @@
 		]
 	},
 	"a": 1,
-	"subtypeText": ""
+	"subtypeText": "Memory"
 }
