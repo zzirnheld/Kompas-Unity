@@ -204,32 +204,6 @@ invokers/spirits/Hog Wildness
 invokers/spirits/Lizard Calm
 invokers/spirits/Boundless Creativity
 
-light_shade/Light
-light_shade/Shade
-
-light_shade/support/The Keeper of the Hooded Lantern
-light_shade/support/Dristzanti, the Illuminator
-light_shade/support/Trake, Shadecreeper
-light_shade/support/Illalli, the Brilliant
-light_shade/support/Lightbulb Idea
-light_shade/support/Light Up
-light_shade/support/Turn Off
-light_shade/support/Brillaume of the City
-light_shade/support/Inspirelight
-
-light_shade/moths/Rouge Rogue Moth
-light_shade/moths/Disarming Rogue Moth
-light_shade/moths/Massive Moon Moth
-light_shade/moths/Searing Sun Moth
-light_shade/moths/Ravenous Leymoth
-light_shade/moths/Mothmisidentification
-light_shade/moths/Call of the Moon
-light_shade/moths/Cloaked in Shadow
-light_shade/moths/Faerie Moth
-light_shade/moths/Intimitation
-light_shade/moths/Hummingbird Hawkmoth
-light_shade/moths/Atlas Moth
-
 linewalkers/Blue Linewalker
 linewalkers/Cyan Linewalker
 linewalkers/Green Linewalker
@@ -471,29 +445,6 @@ speedemons/Soul of Speed
 speedemons/The Sonic Boom
 speedemons/Mach the Porcupine
 
-spores/Mockish Rotbloom
-spores/Delirious Sparkbloom
-spores/Lax Toadstool
-spores/Calming Puffcap
-spores/Soothing Roundcap
-spores/Startled Stinkhorn
-spores/Watchful Widecap
-spores/Mobile Mycelium
-spores/Toxic Mycelium
-spores/Energizing Lichen
-spores/Stimulating Moss
-spores/Fungal Networking
-spores/Nutrient Drip
-spores/Fungal Mutation
-spores/Fungal Recomposition
-spores/Scavenging Ooze
-spores/Canker Boll
-spores/Cranialrotkin
-spores/Ecstatizing Sporeslip
-spores/Fungibility
-spores/Spores
-spores/Sporeling
-
 sportsball/Arbiterary
 sportsball/Forward Dunker
 sportsball/Inside Goalie Defender
@@ -514,29 +465,6 @@ sportsball/Goal-Net Touchdown
 sportsball/Rocket-Propelled Ball
 sportsball/Overwhelming Ball Skills
 sportsball/Penalty Box
-
-supplicants/Desperate Footpad
-supplicants/Disfigured Beggar
-supplicants/Hungry Children
-supplicants/Ostracized Leper
-supplicants/Widowed Mother
-
-supplicants/Fleeing Lovers
-supplicants/Sickly Old Man
-
-supplicants/Answered Prayers
-supplicants/Deliver Us
-supplicants/Find Me Find Peace
-supplicants/Not Thrones and Crowns
-supplicants/Save the People
-supplicants/Touch of the Divine
-supplicants/Protect Us
-
-supplicants/God of Mercy
-supplicants/Kindly Old Doctor
-supplicants/Prophet of Mercy
-supplicants/Havengiver
-supplicants/Havengranter
 
 tarocco/Figurehead Jack
 tarocco/Figurehead King
@@ -679,14 +607,3 @@ weather/skyknights/Venturebinder
 weather/skyknights/Skillingbinder
 weather/skyknights/Magerybinder
 weather/skyknights/Passingbinder
-
-wisps/Erratic Wisps
-wisps/Flippiwisp
-wisps/Here'n'gone
-wisps/Nippiwisp
-wisps/Pishiwisp
-wisps/Pricklewisp
-wisps/Sickiwisp
-wisps/Wispflux Generator
-wisps/Wispiwisp
-wisps/Wispquickening

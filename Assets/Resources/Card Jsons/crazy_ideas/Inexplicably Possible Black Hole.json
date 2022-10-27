@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Inexplicably Possible Black Hole",
-	"effText": "Can't attack normally.\nWhen a character arrives normally, move them 1 space towards me.",
+	"effText": "Structure.\nWhen a character arrives normally, move them 1 space towards me.",
 	"effects": [
 		{
 			"blurb": "The Suck",
@@ -48,9 +48,15 @@
 			"Not Normally"
 		]
 	},
+	"MovementRestriction": {
+		"normalRestrictionsFromJson": [
+			"Default",
+			"Not Normally"
+		]
+	},
 	"n": 0,
 	"e": 2,
 	"s": 5,
 	"w": 9,
-	"subtypeText": "Smol Crazy Idea"
+	"subtypeText": "Smol Crazy Idea Structure"
 }
