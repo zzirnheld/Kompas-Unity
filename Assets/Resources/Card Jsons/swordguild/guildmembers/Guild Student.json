@@ -1,0 +1,33 @@
+{
+	"cardType": 67,
+	"cardName": "Guild Student",
+	"effText": "When you summon me normally, echo me.",
+	"effects": [
+		{
+            "blurb": "Study hard",
+			"triggerData":
+			{
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card",
+						"No Stackable"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetThis:"
+				},
+				{
+					"$type": "Subeffect:Resummon:"
+				}
+			]
+		}
+	],
+	"n": 1,
+	"e": 1,
+	"s": 1,
+	"w": 1,
+	"subtypeText": "Swordguild Warrior"
+}

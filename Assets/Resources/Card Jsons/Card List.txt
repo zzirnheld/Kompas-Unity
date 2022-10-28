@@ -234,12 +234,13 @@ maya/structures/Painted Wall
 maya/structures/Volatile Wall
 maya/structures/Temple Layer
 
+maya/support/Accident-Prone Construction
+maya/support/Dense Cities
 maya/support/Designated Defense
 maya/support/Shore Up
 maya/support/Resistive Empowerment
-maya/support/Dense Cities
-maya/support/Grand Plaza
-maya/support/Urbanization
+maya/support/Structural Expansion
+maya/support/Well-Planned Defense
 
 mechs/golems/5H4P3R
 mechs/golems/5P33DRUNN3R
@@ -475,6 +476,7 @@ swordguild/guildmembers/Guild Tiremaster
 swordguild/guildmembers/Guild Trainee
 swordguild/guildmembers/Guildmaster Jade
 swordguild/guildmembers/Guildmaster Obsidian
+swordguild/guildmembers/Guild Student
 
 swordguild/squires/Hardy Squire
 swordguild/squires/Nimble Squire
@@ -566,7 +568,7 @@ vessels/memory/Immortal Soul
 vessels/memory/Instinctive Dispel
 vessels/memory/Intuited Strike
 vessels/memory/Recurring Idea
-vessels/memory/Reflexive Defenses
+vessels/memory/Reflexive Defense
 vessels/memory/Relived Wanderings
 
 vessels/support/Bestower of Memories
