@@ -1,0 +1,48 @@
+{
+	"cardType": 67,
+	"cardName": "Guild Sprintmaster",
+	"effText": "Warrior Trainer: +1 N.",
+	"effects": [
+		{
+			"blurb": "Train N",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Controller Triggered",
+						"Main Card Fits Restriction Before",
+						"Space Fits Restriction"
+					],
+					"spaceRestriction": {
+						"spaceRestrictions": [
+							"Adjacent to Source"
+						]
+					},
+					"cardRestriction": {
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Warrior" ]
+							}
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetTriggeringCard:"
+				},
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"nModifier": 1
+				}
+			]
+		}
+	],
+	"n": 3,
+	"e": 3,
+	"s": 3,
+	"w": 3,
+	"subtypeText": "Swordguild Warrior Trainer"
+}

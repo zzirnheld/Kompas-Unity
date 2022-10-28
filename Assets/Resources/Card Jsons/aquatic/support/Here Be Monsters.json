@@ -55,7 +55,7 @@
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
-								"subtypes": [ "Squatic" ]
+								"subtypes": [ "Aquatic" ]
 							}
 						],
 						"cardValue": {

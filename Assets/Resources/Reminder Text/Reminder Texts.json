@@ -164,6 +164,10 @@
 		{
 			"keyword": "Structure",
 			"reminder": "Can't move or attack normally."
+		},
+		{
+			"keyword": "Warrior Trainer",
+			"reminder": "When you summon a Warrior adjacent to me, give them:"
 		}
 	]
 }

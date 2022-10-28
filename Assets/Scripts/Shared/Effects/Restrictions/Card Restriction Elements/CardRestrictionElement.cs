@@ -228,7 +228,7 @@ namespace KompasCore.Effects.Restrictions
                 if (cardRestriction != null) return cardRestriction.IsValidCard(card, context);
                 if (augments != null) return augments.From(context, null).Contains(card);
                 if (augment != null) return augment.From(context, null) == card;
-                throw new System.ArgumentNullException("augment", "No augment provided for HasAugment CardRestrictionElement");
+                throw new System.ArgumentNullException("augment", $"No augment provided for {this.GetType()} CardRestrictionElement");
             };
 
             public override void Initialize(EffectInitializationContext initializationContext)
@@ -236,7 +236,7 @@ namespace KompasCore.Effects.Restrictions
                 base.Initialize(initializationContext);
 
                 if (AllNull(cardRestriction, augment, augments))
-                    throw new System.ArgumentNullException("augment", "No augment provided for HasAugment CardRestrictionElement");
+                    throw new System.ArgumentNullException("augment", $"No augment provided for {this.GetType()} CardRestrictionElement");
 
                 cardRestriction?.Initialize(initializationContext);
                 augments?.Initialize(initializationContext);
