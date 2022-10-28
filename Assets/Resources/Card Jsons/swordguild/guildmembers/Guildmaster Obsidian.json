@@ -1,0 +1,93 @@
+{
+	"cardType": 67,
+	"cardName": "Guildmaster Obsidian",
+	"effText": "Warrior Trainer: +3 W.\nWhen a friendly W X Warrior dies fighting, give that character they were fighting -X E.",
+	"effects": [
+		{
+			"blurb": "Train W",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Controller Triggered",
+						"Main Card Fits Restriction Before",
+						"Space Fits Restriction"
+					],
+					"spaceRestriction": {
+						"spaceRestrictions": [
+							"Adjacent to Source"
+						]
+					},
+					"cardRestriction": {
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Warrior" ]
+							}
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetTriggeringCard:"
+				},
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"wModifier": 3
+				}
+			]
+		},
+        {
+            "blurb":"Debind",
+			"triggerData": {
+				"triggerCondition": "Discard",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before",
+                        "From Attack"
+					],
+					"cardRestriction": {
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Warrior" ]
+							}
+						]
+					}
+				}
+			},
+            "subeffects":[
+				{
+					"$type": "Subeffect:TargetTriggeringCard:"
+				},
+				{
+					"$type": "Subeffect:SetXByTargetCardValue:",
+					"cardValue": {
+						"value": "W"
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:TargetOtherInFight:"
+				},
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"eMultiplier": -1
+				}
+            ]
+        }
+	],
+	"n": 7,
+	"e": 9,
+	"s": 9,
+	"w": 10,
+	"subtypeText": "Swordguild Warrior Trainer"
+}
