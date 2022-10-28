@@ -1,13 +1,13 @@
 {
 	"cardType": 67,
-	"cardName": "Runechanneler",
-	"effText": "Runecast, but reshuffle X of your discarded Runes rather than paying its cost of X pips.",
+	"cardName": "Guild Ritesmaster",
+	"effText": "Once each turn, you can discard->reshuffle X Warriors to hand->summon an S X Warrior.",
 	"effects": [
 		{
+			"blurb": "Recruit",
 			"activationRestriction": {
 				"activationRestrictionArray": [
 					"Max Times Per Turn",
-					"Friendly Turn",
 					"Default"
 				]
 			},
@@ -24,7 +24,7 @@
 							},
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
-								"subtypes": [ "Rune" ]
+								"subtypes": [ "Warrior" ]
 							}
 						]
 					},
@@ -33,9 +33,9 @@
 				{
 					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
-						"blurb": "Rune for Runechanneler to cast",
+						"blurb": "Warrior for the rites to summon",
 						"cardRestrictions": [
-							"Spell",
+							"Character",
 							"Can Be Played",
 							"Card Value Fits Number Restriction"
 						],
@@ -47,11 +47,11 @@
                             },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
-								"subtypes": [ "Rune" ]
+								"subtypes": [ "Warrior" ]
 							}
 						],
 						"cardValue": {
-							"value": "C"
+							"value": "S"
 						},
 						"cardValueNumberRestriction": {
 							"numberRestrictions": [
@@ -64,14 +64,14 @@
 				{
 					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
-						"value": "C"
+						"value": "S"
 					},
 					"xMultiplier": 1
 				},
 				{
 					"$type": "Subeffect:ChooseFromList:",
 					"cardRestriction": {
-						"blurb": "Rune for Runechanneler to reshuffle",
+						"blurb": "Warriors for Ritesmaster to reshuffle",
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
@@ -80,7 +80,7 @@
 							},
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
-								"subtypes": [ "Rune" ]
+								"subtypes": [ "Warrior" ]
 							}
 						]
 					},
@@ -106,7 +106,7 @@
 				{
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
-						"blurb": "where for Runechanneler to cast its target Rune",
+						"blurb": "where for Ritesmaster to summon the Warrior",
                         "spaceRestrictionElements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {
@@ -124,13 +124,9 @@
 			]
 		}
 	],
-	"n": 2,
-	"e": 4,
+	"n": 1,
+	"e": 5,
 	"s": 5,
-	"w": 4,
-	"subtypes": [
-		"Runar",
-		"Mage"
-	],
-	"subtypeText": "Runar Mage"
+	"w": 3,
+	"subtypeText": "Swordguild Bureaucrat"
 }
