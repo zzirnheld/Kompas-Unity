@@ -27,6 +27,8 @@ namespace KompasCore.Effects
         public const string OnCardFloutingRestriction = "On Card that Flouts Restriction";
         public const string AdjacentToCardFittingRestriction = "Adjacent to Card Fitting Restriction";
 
+        public const string CountExistingCards = "Number of Cards Exist";
+
         public const string SpaceFitsRestriction = "Space Must Fit Restriction";
         public const string SpaceMustFloutRestriction = "Space Must Flout Restriction";
 
@@ -56,6 +58,9 @@ namespace KompasCore.Effects
 
         public SpaceRestriction spaceRestriction;
         public SpaceRestriction floutedSpaceRestriction;
+
+        public NumberRestriction countCardNumberRestriction;
+        public CardRestriction countCardRestriction;
 
         public string[] augSubtypes;
 
@@ -138,6 +143,8 @@ namespace KompasCore.Effects
             AdjacentToCardFittingRestriction => Card.Game.BoardController.CardsAdjacentTo(space).Any(c => adjacentCardRestriction.IsValidCard(c, context)),
             SpaceFitsRestriction => spaceRestriction.IsValidSpace(space, context),
             SpaceMustFloutRestriction => !floutedSpaceRestriction.IsValidSpace(space, context),
+
+            CountExistingCards => countCardNumberRestriction.IsValidNumber(Card.Game.Cards.Count(c => countCardRestriction.IsValidCard(c, context))),
 
             _ => throw new System.ArgumentException($"You forgot to check play restriction {r}", "r"),
         };

@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "City Planner",
-	"effText": "When turns start, deck->hand a Structure.",
+	"effText": "When I start friendly turns adjacent to X Structures, deck->hand X Structures.",
 	"effects": [
 		{
 			"blurb": "Plan new structures",
@@ -9,14 +9,28 @@
 				"triggerCondition": "Turn Start",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card in Play"
+						"This Card in Play",
+						"Friendly Turn"
 					]
 				}
 			},
 			"subeffects": [
 				{
+					"$type": "Subeffect:SetXBoardRestriction:",
+					"cardRestriction": {
+						"cardRestrictions": [ "Space Fits Restriction" ],
+						"spaceRestriction": { "spaceRestrictions": [ "Adjacent to Source" ] },
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Supplicant" ]
+							}
+						]
+					},
+					"xMultiplier": 1
+				},
+				{
 					"$type": "Subeffect:ChooseFromList:",
-					"maxCanChoose": 1,
 					"cardRestriction": {
 						"blurb": "Structure to plan out",
 						"cardRestrictions": [
@@ -29,10 +43,22 @@
 								"subtypes": [ "Structure" ]
 							}
 						]
-					}
+					},
+					"listRestriction": {
+						"listRestrictions": [
+							"Min Can Choose: X",
+							"Max Can Choose: X"
+						]
+					},
+					"xMultiplier": 1
 				},
 				{
 					"$type": "Subeffect:Rehand:"
+				},
+				{
+					"$type": "Subeffect:LoopWhileHaveTargets:",
+					"delete": true,
+					"jumpIndices": [ 2 ]
 				}
 			]
 		}

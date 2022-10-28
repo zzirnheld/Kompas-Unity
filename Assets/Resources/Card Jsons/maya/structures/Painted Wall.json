@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Painted Wall",
-	"effText": "Structure.\nIf I'm in a corner when a Structure on my diagonal defends, draw 5 cards.",
+	"effText": "Structure.\nIf I'm in a corner when a Structure on my diagonal defends, draw 3 cards.",
 	"effects": [
 		{
 			"blurb": "The walls remember",
@@ -55,7 +55,7 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:DrawX:",
-					"xModifier": 5
+					"xModifier": 3
 				}
 			]
 		}

@@ -220,12 +220,10 @@ maya/The Feathered Serpent
 
 maya/craftspeople/City Planner
 maya/craftspeople/Glyphcarver
-maya/craftspeople/Master Repairman
+maya/craftspeople/Repairman
 maya/craftspeople/Reconstructor
-maya/craftspeople/Stoneconjurer
 maya/craftspeople/Stonefitter
 maya/craftspeople/Stonesalvager
-maya/craftspeople/Temple Builder
 
 maya/structures/Basic Wall
 maya/structures/City Wall

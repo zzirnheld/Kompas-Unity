@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Glyphcarver",
-	"effText": "When your Avatar starts turns connected to X Maya Structures in corners, draw X cards.",
+	"effText": "When I start friendly turns adjacent to X Structures, draw X cards.",
 	"effects": [
 		{
 			"blurb": "Carve Glyphs",
@@ -9,55 +9,29 @@
 				"triggerCondition": "Turn Start",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card in Play"
+						"This Card in Play",
+						"Friendly Turn"
 					]
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:TargetAvatar:"
-				},
-				{
-					"$type": "Subeffect:TargetAll:",
+					"$type": "Subeffect:SetXBoardRestriction:",
 					"cardRestriction": {
+						"cardRestrictions": [ "Space Fits Restriction" ],
+						"spaceRestriction": { "spaceRestrictions": [ "Adjacent to Source" ] },
 						"cardRestrictionElements": [
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							},
-							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
-								"subtypes": [ "Maya", "Structure" ]
+								"subtypes": [ "Supplicant" ]
 							}
-						],
-						"cardRestrictions": [
-							"Space Fits Restriction"
-						],
-                        "spaceRestriction":
-                        {
-                            "spaceRestrictions": [
-								"Corner",
-                                "Connected to Card Target by Cards Fitting Restriction"
-                            ],
-                            "connectednessRestriction": {
-								"cardRestrictionElements": [
-									{
-										"$type": "Core.CardRestriction:Location:",
-										"locations": [ "Board" ]
-									}
-								]
-                            }
-                        }
-					}
-				},
-				{
-					"$type": "Subeffect:SetXByGamestate:",
-					"whatToCount": "Number of Targets",
+						]
+					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "Subeffect:AddPips:",
-					"xMultiplier": 1
+					"$type": "Subeffect:DrawX:",
+					"xModifier": 1
 				}
 			]
 		}

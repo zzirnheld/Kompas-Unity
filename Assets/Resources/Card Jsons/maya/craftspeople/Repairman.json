@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
-	"cardName": "Master Repairman",
-	"effText": "When a Structure survives losing E, heal it.",
+	"cardName": "Repairman",
+	"effText": "When an adjacent Structure survives losing E, heal it.",
 	"effects": [
 		{
             "blurb": "Repair",
@@ -20,6 +20,8 @@
 						]
 					},
 					"nowRestriction": {
+						"cardRestrictions": [ "Space Fits Restriction" ],
+						"spaceRestriction": { "spaceRestrictions": [ "Adjacent to Source" ] },
 						"cardRestrictionElements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
@@ -44,8 +46,8 @@
 		}
 	],
 	"n": 1,
-	"e": 9,
-	"s": 6,
-	"w": 2,
+	"e": 4,
+	"s": 3,
+	"w": 1,
 	"subtypeText": "Maya Craftsperson"
 }
