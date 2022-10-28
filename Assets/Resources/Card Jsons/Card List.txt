@@ -466,6 +466,22 @@ sportsball/Rocket-Propelled Ball
 sportsball/Overwhelming Ball Skills
 sportsball/Penalty Box
 
+swordguild/guildmembers/Guild Armsmaster
+swordguild/guildmembers/Guild Pagemaster
+swordguild/guildmembers/Guild Recruiter
+swordguild/guildmembers/Guild Sparmaster
+swordguild/guildmembers/Guild Sprintmaster
+swordguild/guildmembers/Guild Tiremaster
+swordguild/guildmembers/Guild Trainee
+swordguild/guildmembers/Guildmaster Jade
+swordguild/guildmembers/Guildmaster Obsidian
+
+swordguild/squires/Hardy Squire
+swordguild/squires/Nimble Squire
+swordguild/squires/Strong Squire
+
+swordguild/support/Knighthood
+
 tarocco/Figurehead Jack
 tarocco/Figurehead King
 tarocco/Figurehead Knight
