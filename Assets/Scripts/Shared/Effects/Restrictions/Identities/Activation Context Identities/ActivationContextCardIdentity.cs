@@ -40,9 +40,15 @@ namespace KompasCore.Effects.Identities.ActivationContextCardIdentities
             => EffectHelpers.GetItem(contextToConsider.CardTargets, index);
     }
 
-    public class Cause : ActivationContextIdentityBase<GameCardBase>
+    public class CauseBefore : ActivationContextIdentityBase<GameCardBase>
     {
         protected override GameCardBase AbstractItemFrom(ActivationContext contextToConsider)
-            => contextToConsider.cardCause;
+            => contextToConsider.cardCauseBefore;
+    }
+
+    public class CauseAfter : ActivationContextIdentityBase<GameCardBase>
+    {
+        protected override GameCardBase AbstractItemFrom(ActivationContext contextToConsider)
+            => contextToConsider.CauseCardInfoAfter;
     }
 }
