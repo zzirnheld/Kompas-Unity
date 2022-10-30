@@ -10556,7 +10556,7 @@ MonoBehaviour:
   - {x: -0.75, y: 0, z: 0.75}
   - {x: -0.3, y: 0, z: 0.3}
   pipsText: {fileID: 419672787}
-  nextTurnPipsText: {fileID: 2139283024}
+  nextTurnPipsText: {fileID: 1726179813}
 --- !u!1 &562685206
 GameObject:
   m_ObjectHideFlags: 0

@@ -468,6 +468,7 @@ sportsball/Penalty Box
 swordguild/guildmembers/Guild Armsmaster
 swordguild/guildmembers/Guild Pagemaster
 swordguild/guildmembers/Guild Recruiter
+swordguild/guildmembers/Guild Ritesmaster
 swordguild/guildmembers/Guild Sparmaster
 swordguild/guildmembers/Guild Sprintmaster
 swordguild/guildmembers/Guild Tiremaster

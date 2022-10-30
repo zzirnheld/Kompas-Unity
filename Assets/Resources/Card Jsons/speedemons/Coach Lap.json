@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Coach Lap",
-	"effText": "Speedemon.\nWhen another character arrives adjacent to me, their controller moves them 1 space.",
+	"effText": "Speedemon.\nThe first time each stack another character arrives adjacent to me, their controller moves them 1 space.",
 	"effects": [
 		{
 			"blurb": "Lap! Yeah!",
@@ -10,6 +10,7 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"Space Fits Restriction",
+						"Max Per Stack",
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
