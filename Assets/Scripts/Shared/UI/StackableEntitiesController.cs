@@ -49,6 +49,8 @@ namespace KompasCore.UI
             bool success = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, Mathf.Infinity, LayerMask)
                 && hit.collider == boxCollider;
 
+            //if (success) Debug.Log($"Hit {this.GetType()} with raycast");
+
             if (success && collapsed) Expand();
             else if (!success && !collapsed) Collapse();
         }

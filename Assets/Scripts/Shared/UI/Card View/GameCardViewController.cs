@@ -127,6 +127,8 @@ namespace KompasCore.UI
         protected override void DisplaySpecialEffects()
         {
             base.DisplaySpecialEffects();
+            ShowFrameColor();
+
             if (ShownGameCard.Location == CardLocation.Board)
             {
                 //if you can attack at all, enable the attack indicator
