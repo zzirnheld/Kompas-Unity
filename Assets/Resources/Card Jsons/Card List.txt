@@ -476,6 +476,7 @@ swordguild/guildmembers/Guild Trainee
 swordguild/guildmembers/Guildmaster Jade
 swordguild/guildmembers/Guildmaster Obsidian
 swordguild/guildmembers/Guild Student
+swordguild/guildmembers/Guild Form Reviewer
 
 swordguild/squires/Hardy Squire
 swordguild/squires/Nimble Squire
