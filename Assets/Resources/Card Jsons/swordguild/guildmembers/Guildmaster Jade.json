@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Guildmaster Jade",
-	"effText": "Warrior Trainer: +3 E.\nWhen a friendly W X Warrior dies fighting, gain 1 pip.",
+	"effText": "Warrior Trainer: +3 E.\nWhen a friendly Warrior dies fighting, gain 1 pip.",
 	"effects": [
 		{
 			"blurb": "Train E",

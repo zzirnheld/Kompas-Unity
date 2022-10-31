@@ -123,6 +123,7 @@ public class CardRepository : MonoBehaviour
             string cardName = card.cardName;
 
             //add the cleaned json to the dictionary
+            //if this throws a key existing exception, you probably have two cards with the same name field, but diff file names
             cardJsons.Add(cardName, json);
             cardFileNames.Add(cardName, filename);
         }
