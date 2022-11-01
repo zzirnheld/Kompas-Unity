@@ -1,6 +1,7 @@
 using KompasCore.Cards;
 using KompasCore.Effects.Identities;
 using KompasCore.Effects.Relationships;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace KompasCore.Effects.Restrictions
@@ -139,6 +140,29 @@ namespace KompasCore.Effects.Restrictions
 
             protected override bool AbstractIsValidContext(ActivationContext context, ActivationContext secondaryContext)
                 => spaceRestriction.IsValidSpace(space.From(context, secondaryContext), context);
+        }
+
+        public class SpacesFitRestriction : TriggerRestrictionElement
+        {
+            public SpaceRestriction spaceRestriction;
+            public IActivationContextIdentity<ICollection<Space>> spaces;
+
+            public bool any = false;
+
+            public override void Initialize(EffectInitializationContext initializationContext)
+            {
+                base.Initialize(initializationContext);
+                spaces.Initialize(initializationContext);
+                spaceRestriction.Initialize(initializationContext);
+            }
+
+            protected override bool AbstractIsValidContext(ActivationContext context, ActivationContext secondaryContext)
+            {
+                var spacesItem = spaces.From(context, secondaryContext);
+                return any
+                    ? spacesItem.Any(spaceRestriction.IsValidFor(context))
+                    : spacesItem.All(spaceRestriction.IsValidFor(context));
+            }
         }
 
         public class CardFitsRestriction : TriggerRestrictionElement

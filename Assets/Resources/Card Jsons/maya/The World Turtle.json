@@ -1,0 +1,91 @@
+{
+	"cardType": 67,
+	"cardName": "The World Turtle",
+	"effText": "Speedemon, but move me back afterwards.\nIf there are cards in all corners when I arrive, give adjacent characters -10 E.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card",
+						"Stackable Source isn't This Effect",
+						"Stackable Source Fits Restriction Now"
+					],
+					"sourceRestriction": {
+						"cardRestrictions": [
+							"Is Source"
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetTriggeringCardsCoords:"
+				},
+				{
+					"$type": "Subeffect:TargetThis:"
+				},
+				{
+					"$type": "Subeffect:Move:"
+				}
+			]
+		},
+		{
+			"triggerData": {
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					],
+					"triggerRestrictionElements": [
+                        {
+                            "$type": "Core.TriggerRestriction:SpacesFitRestriction:",
+                            "spaces": { "$type": "KompasServer.Effects.Identities.SubeffectManySpacesIdentities.Corners, Assembly-CSharp" },
+                            "spaceRestriction": {
+                                "spaceRestrictionElements": [
+                                    {
+                                        "$type": "Core.SpaceRestriction:Not:",
+                                        "negated": { "$type": "Core.SpaceRestriction:Empty:" }
+                                    }
+                                ]
+                            }
+                        }
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:ChangeAllCardStats:",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Source"
+							]
+						},
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
+					},
+					"eModifier": -10
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Speedemon"
+	],
+	"n": 1,
+	"e": 1,
+	"s": 1,
+	"w": 0,
+	"subtypeText": "Slow Maya Speedemon God"
+}
