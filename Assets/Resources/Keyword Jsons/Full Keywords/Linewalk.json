@@ -17,7 +17,7 @@
 		},
 		{
 			"$type":"Subeffect:SpendRemainingMovement:",
-			"xModifier":1
+			"mult":1
 		},
 		{
 			"$type":"Subeffect:SpaceTarget:",

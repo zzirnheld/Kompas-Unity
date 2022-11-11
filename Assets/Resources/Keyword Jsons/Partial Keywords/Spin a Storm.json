@@ -1,6 +1,6 @@
 [
     {
-        "$type": "Subeffect:TargetTriggeringCardsCoords:"
+        "$type": "Subeffect:TargetTriggeringCardsSpace:"
     },
     {
         "$type": "Subeffect:ConditionalEnd:",

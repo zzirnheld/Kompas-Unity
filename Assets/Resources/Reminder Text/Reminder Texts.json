@@ -168,6 +168,10 @@
 		{
 			"keyword": "Warrior Trainer",
 			"reminder": "When you summon a Warrior adjacent to me, give them:"
+		},
+		{
+			"keyword": "Berserker",
+			"reminder": "No limit on number of attacks each turn."
 		}
 	]
 }

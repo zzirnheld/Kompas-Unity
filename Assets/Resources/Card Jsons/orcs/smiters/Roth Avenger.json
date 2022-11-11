@@ -1,10 +1,26 @@
 {
 	"cardType": 67,
 	"cardName": "Roth Avenger",
-	"effText": "Ambush. Smite.",
-	"effects": [],
+	"effText": "Smite.\nWhen I'm summoned, I Ambush.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:Keyword:",
+					"keyword": "Ambush"
+				}
+			]
+		}
+	],
 	"keywords":[
-		"Ambush",
 		"Smite"
 	],
 	"n": 1,

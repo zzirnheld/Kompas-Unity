@@ -31,3 +31,5 @@ Evasive
 Must Contain
 Mech Ultimate Charge
 Undying
+Soullink
+Trample

@@ -1,0 +1,47 @@
+{
+    "blurb": "Soullink",
+    "triggerData": {
+        "triggerCondition": "Take Combat Damage",
+        "triggerRestriction": {
+            "triggerRestrictions": [
+                "Main Card Fits Restriction Before"
+            ],
+            "cardRestriction": {
+                "cardRestrictions": [
+                    "Is Defending From Source"
+                ]
+            }
+        }
+    },
+    "subeffects": [
+        {
+            "$type": "Subeffect:SetXByTriggeringCardValue:",
+            "cardValue": {
+                "value": "E"
+            },
+            "change": true,
+            "xMultiplier": -1
+        },
+        {
+            "$type":"Subeffect:TargetTriggeringCard:",
+            "secondary":true
+        },
+        {
+            "$type": "Subeffect:ConditionalEnd:",
+            "condition": "X<0"
+        },
+        {
+            "$type": "Subeffect:AutoTarget:",
+            "cardRestriction": {
+                "cardRestrictions": [
+                    "Avatar",
+                    "Controller Matches Card Target's"
+                ]
+            }
+        },
+        {
+            "$type": "Subeffect:ChangeCardStats:",
+            "eMultiplier": -1
+        }
+    ]
+}

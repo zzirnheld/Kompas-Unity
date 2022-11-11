@@ -14,7 +14,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:TargetTriggeringCardsCoords:"
+					"$type": "Subeffect:TargetTriggeringCardsSpace:"
 				},
 				{
 					"$type": "Subeffect:CardTarget:",

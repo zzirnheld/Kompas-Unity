@@ -1,0 +1,30 @@
+{
+	"cardType": 67,
+	"cardName": "B3R53RK3R",
+	"effText": "Berserker. Golem.",
+	"effects": [],
+	"MovementRestriction": {
+		"normalRestrictionsFromJson": [
+			"Default",
+			"Activated"
+		]
+	},
+	"AttackRestriction": {
+		"attackRestrictions": [
+			"Default",
+			"This is Activated"
+		],
+        "attackRestrictionsToIgnore": [
+            "Maximum Per Turn"
+        ]
+	},
+	"n": 4,
+	"e": 8,
+	"s": 10,
+	"w": 8,
+	"subtypes": [
+		"Mech",
+		"Golem"
+	],
+	"subtypeText": "Mech Golem"
+}

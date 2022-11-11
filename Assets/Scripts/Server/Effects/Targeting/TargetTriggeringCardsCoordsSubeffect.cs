@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace KompasServer.Effects
 {
-    public class TargetTriggeringCardsCoordsSubeffect : ServerSubeffect
+    public class TargetTriggeringCardsSpaceSubeffect : ServerSubeffect
     {
         public bool after = false;
 

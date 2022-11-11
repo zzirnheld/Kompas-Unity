@@ -31,10 +31,10 @@
 					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "Subeffect:TargetTriggeringCardsCoords:"
+					"$type": "Subeffect:TargetTriggeringCardsSpace:"
 				},
 				{
-					"$type": "Subeffect:TargetTriggeringCardsCoords:",
+					"$type": "Subeffect:TargetTriggeringCardsSpace:",
 					"after": true
 				},
 				{

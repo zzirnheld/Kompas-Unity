@@ -14,7 +14,7 @@
         "cardLinkIndex": 0
     },
     {
-        "$type":"Subeffect:TargetTriggeringCardsCoords:"
+        "$type":"Subeffect:TargetTriggeringCardsSpace:"
     },
     {
         "$type":"Subeffect:TargetThis:"

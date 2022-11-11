@@ -1,10 +1,24 @@
 {
 	"cardType": 67,
 	"cardName": "Roth Assassin",
-	"effText": "Ambush.",
-	"effects": [],
-	"keywords":[
-		"Ambush"
+	"effText": "When I'm summoned, I Ambush.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:Keyword:",
+					"keyword": "Ambush"
+				}
+			]
+		}
 	],
 	"n": 2,
 	"e": 2,
