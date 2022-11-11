@@ -1,0 +1,45 @@
+{
+	"cardType": 67,
+	"cardName": "4MBU5H3R",
+	"effText": "Golem.\nWhen I become active, I Ambush.",
+	"effects": [
+		{
+			"blurb": "1T'5 4N 4MBU5H",
+			"triggerData": {
+				"triggerCondition": "Activate",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:Keyword:",
+					"keyword": "Ambush"
+				}
+			]
+		}
+	],
+	"MovementRestriction": {
+		"normalRestrictionsFromJson": [
+			"Default",
+			"Activated"
+		]
+	},
+	"AttackRestriction": {
+		"attackRestrictions": [
+			"Default",
+			"This is Activated"
+		]
+	},
+	"n": 5,
+	"e": 3,
+	"s": 10,
+	"w": 10,
+	"subtypes": [
+		"Mech",
+		"Golem"
+	],
+	"subtypeText": "Mech Golem"
+}

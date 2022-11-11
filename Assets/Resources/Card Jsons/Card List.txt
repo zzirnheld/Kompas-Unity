@@ -247,13 +247,15 @@ mechs/golems/51NG3
 mechs/golems/53G45C4NTUR14N 00
 mechs/golems/54CR1F1C3
 mechs/golems/54MUR41
+mechs/golems/B3R53RK3R
 mechs/golems/C4RR13R
+mechs/golems/F4LL1NGT1T4N
 mechs/golems/GL455C4NN0N
-mechs/golems/N0T3
+mechs/golems/H0KUT0
 mechs/golems/P4RT154N
 mechs/golems/PH453R
-mechs/golems/PL4T00N
-mechs/golems/QU4RG3
+mechs/golems/S0ULL1NK3R
+mechs/golems/TR4MPL3R
 
 mechs/pilots/Standard Pilot
 mechs/pilots/Runn R Mann
