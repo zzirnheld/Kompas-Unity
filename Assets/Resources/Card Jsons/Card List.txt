@@ -245,7 +245,6 @@ mechs/golems/5H4P3R
 mechs/golems/5P33DRUNN3R
 mechs/golems/51NG3
 mechs/golems/53G45C4NTUR14N 00
-mechs/golems/54CR1F1C3
 mechs/golems/54MUR41
 mechs/golems/B3R53RK3R
 mechs/golems/C4RR13R

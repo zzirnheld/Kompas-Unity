@@ -187,6 +187,7 @@ public class CardRepository : MonoBehaviour
         Debug.Log($"Keywords list: \n{string.Join("\n", keywords.Select(keyword => $"{keyword} length {keyword.Length}"))}");
         foreach (string keyword in keywords)
         {
+            Debug.Log($"Loading {keyword}");
             string json = Resources.Load<TextAsset>(folderPath + keyword).text;
             json = ReplacePlaceholders(json);
             dict.Add(keyword, json);
