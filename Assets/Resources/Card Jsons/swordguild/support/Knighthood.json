@@ -59,7 +59,8 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "Subeffect:TargetTriggeringCard:"
+					"$type": "Subeffect:TargetTriggeringCard:",
+					"cause": true
 				},
 				{
 					"$type":"Subeffect:TargetTargetsSpace:"

@@ -28,6 +28,12 @@ namespace KompasCore.Effects.Identities
         {
             public INoActivationContextIdentity<GameCardBase> ofThisCard;
 
+            public override void Initialize(EffectInitializationContext initializationContext)
+            {
+                base.Initialize(initializationContext);
+                ofThisCard.Initialize(initializationContext);
+            }
+
             protected override GameCardBase AbstractItem
                 => ofThisCard.Item.AugmentedCard;
         }

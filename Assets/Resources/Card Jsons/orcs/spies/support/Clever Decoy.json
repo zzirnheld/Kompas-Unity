@@ -1,7 +1,7 @@
 {
 	"cardType": 65,
 	"cardName": "Clever Decoy",
-	"effText": "When this character defends, give their W X attacker -X W until the fight ends. After the fight, hand this character.",
+	"effText": "When this summoned Spy defends, give their W X attacker -X W until the fight ends. After the fight, hand this Spy.",
 	"effects": [
 		{
 			"blurb": "Decoy!",

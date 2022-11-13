@@ -47,7 +47,7 @@
 					}
 				},
 				{
-					"$type": "Subeffect:TargetAugmentedCard:"
+					"$type": "Subeffect:TargetTargetsAugmentedCard:"
 				},
 				{
 					"$type": "Subeffect:Discard:",
