@@ -8,6 +8,7 @@
 				"triggerCondition": "Move",
 				"triggerRestriction": {
 					"triggerRestrictions": [
+						"Max Per Stack",
 						"This Card is Main Card",
 						"Stackable Source isn't This Effect",
 						"Stackable Source Fits Restriction Now"
@@ -41,7 +42,7 @@
 					"triggerRestrictionElements": [
                         {
                             "$type": "Core.TriggerRestriction:SpacesFitRestriction:",
-                            "spaces": { "$type": "KompasServer.Effects.Identities.SubeffectManySpacesIdentities.Corners, Assembly-CSharp" },
+                            "spaces": { "$type": "KompasCore.Effects.Identities.GamestateManySpacesIdentities.Corners, Assembly-CSharp" },
                             "spaceRestriction": {
                                 "spaceRestrictionElements": [
                                     {

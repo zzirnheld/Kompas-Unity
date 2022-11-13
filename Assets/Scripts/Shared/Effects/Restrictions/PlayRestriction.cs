@@ -94,6 +94,8 @@ namespace KompasCore.Effects
             adjacentCardRestriction?.Initialize(initializationContext);
             spaceRestriction?.Initialize(initializationContext);
             floutedSpaceRestriction?.Initialize(initializationContext);
+            countCardNumberRestriction?.Initialize(initializationContext);
+            countCardRestriction?.Initialize(initializationContext);
             //Debug.Log($"Finished setting info for play restriction of card {card.CardName}");
         }
 

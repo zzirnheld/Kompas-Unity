@@ -228,6 +228,7 @@ maya/craftspeople/Stonesalvager
 
 maya/structures/Basic Wall
 maya/structures/City Wall
+maya/structures/Rough Wall
 maya/structures/Graven Wall
 maya/structures/Painted Wall
 maya/structures/Volatile Wall

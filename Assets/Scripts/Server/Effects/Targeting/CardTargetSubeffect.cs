@@ -38,7 +38,7 @@ namespace KompasServer.Effects
 
         protected virtual async Task<GameCard> GetTargets(int[] potentialTargetIds)
         {
-            Debug.Log($"Asking for card target among ids {string.Join(", ", potentialTargetIds)}");
+            Debug.Log($"Asking {ServerPlayer.index} (note: controlled by {Controller} for card target among ids {string.Join(", ", potentialTargetIds)}");
             return await ServerPlayer.serverAwaiter.GetCardTarget(Source.CardName, cardRestriction.blurb, potentialTargetIds, null);
         }
 

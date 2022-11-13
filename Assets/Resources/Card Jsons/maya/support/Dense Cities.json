@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Dense Cities",
-	"effText": "When I'm cast on the same diagonal as X Maya Structures, deck->hand X distinct Maya Craftspeople.",
+	"effText": "When I'm cast on the same diagonal as X Maya Structures, deck->hand up to X distinct Maya Craftspeople.",
 	"effects": [
 		{
 			"blurb": "Attract craftspeople",
@@ -43,7 +43,11 @@
 					"cardRestriction": {
 						"blurb": "Craftspeople move to the cities",
 						"cardRestrictions": [
-							"Deck"
+							"Multiple Possible Locations"
+						],
+						"locations": [
+							3,
+							4
 						],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
@@ -55,7 +59,6 @@
 					},
 					"listRestriction": {
 						"listRestrictions": [
-							"Min Can Choose: X",
 							"Max Can Choose: X"
 						]
 					},

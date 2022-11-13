@@ -23,7 +23,7 @@
 						"cardRestrictionElements": [
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
-								"subtypes": [ "Supplicant" ]
+								"subtypes": [ "Structure" ]
 							}
 						]
 					},
@@ -69,9 +69,9 @@
 			]
 		}
 	],
-	"n": 3,
+	"n": 2,
 	"e": 1,
-	"s": 2,
-	"w": 0,
+	"s": 3,
+	"w": 5,
 	"subtypeText": "Maya Craftsperson"
 }

@@ -25,8 +25,8 @@
 										{
 											"$type": "Core.SpaceRestriction:SameDiagonal:",
 											"space": {
-												"$type": "Subeffect.Space:PositionOf:",
-												"whosePosition": { "$type": "Gamestate.Card:ThisCard:" }
+												"$type": "KompasCore.Effects.Identities.GamestateSpaceIdentities.PositionOf, Assembly-CSharp",
+												"card": { "$type": "Gamestate.Card:ThisCard:" }
 											}
 										}
 									]

@@ -105,6 +105,11 @@ namespace KompasCore.UI
 
             zoomedAllFrame.SetActive(Zoomed);
 
+            unzoomedCharStatBackgrounds.SetActive(!Zoomed && isChar);
+            unzoomedAugStatBackgrounds.SetActive(!Zoomed && !isChar);
+            zoomedCharStatBackgrounds.SetActive(Zoomed && isChar);
+            zoomedAugStatBackgrounds.SetActive(Zoomed && !isChar);
+
             //Unzoomed things
             unzoomedNText.gameObject.SetActive(!Zoomed && isChar);
             unzoomedEText.gameObject.SetActive(!Zoomed && isChar);
