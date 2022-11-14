@@ -73,28 +73,28 @@ namespace KompasCore.UI
 
         protected override void DisplayCardNumericStats()
         {
-            nText.text = $"N\n{shownCard.N}";
-            eText.text = $"E\n{shownCard.E}";
-            wText.text = $"W\n{shownCard.W}";
+            nText.text = DisplayN(shownCard.N);
+            eText.text = DisplayE(shownCard.E);
+            wText.text = DisplayW(shownCard.W);
 
             switch (shownCard.CardType)
             {
                 case 'C':
-                    costText.text = $"S\n{shownCard.S}";
+                    costText.text = DisplayS(shownCard.S);
 
                     nText.gameObject.SetActive(true);
                     eText.gameObject.SetActive(true);
                     wText.gameObject.SetActive(true);
                     break;
                 case 'S':
-                    costText.text = $"C\n{shownCard.C}";
+                    costText.text = DisplayC(shownCard.C);
 
                     nText.gameObject.SetActive(false);
                     eText.gameObject.SetActive(false);
                     wText.gameObject.SetActive(false);
                     break;
                 case 'A':
-                    costText.text = $"A\n{shownCard.A}";
+                    costText.text = DisplayA(shownCard.A);
 
                     nText.gameObject.SetActive(false);
                     eText.gameObject.SetActive(false);
@@ -103,6 +103,13 @@ namespace KompasCore.UI
                 default: throw new System.ArgumentException("Failed to account for new card type in displaying card's numeric stats");
             }
         }
+
+        protected virtual string DisplayN(int n) => $"N\n{n}";
+        protected virtual string DisplayE(int e) => $"E\n{e}";
+        protected virtual string DisplayS(int s) => $"S\n{s}";
+        protected virtual string DisplayW(int w) => $"W\n{w}";
+        protected virtual string DisplayC(int c) => $"C\n{c}";
+        protected virtual string DisplayA(int a) => $"A\n{a}";
 
         protected override void DisplayCardImage()
         {
