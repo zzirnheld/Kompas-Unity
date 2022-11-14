@@ -123,6 +123,7 @@ public class CardRepository : MonoBehaviour
             string cardName = card.cardName;
 
             //add the cleaned json to the dictionary
+            //if this throws a key existing exception, you probably have two cards with the same name field, but diff file names
             cardJsons.Add(cardName, json);
             cardFileNames.Add(cardName, filename);
         }
@@ -186,6 +187,7 @@ public class CardRepository : MonoBehaviour
         Debug.Log($"Keywords list: \n{string.Join("\n", keywords.Select(keyword => $"{keyword} length {keyword.Length}"))}");
         foreach (string keyword in keywords)
         {
+            Debug.Log($"Loading {keyword}");
             string json = Resources.Load<TextAsset>(folderPath + keyword).text;
             json = ReplacePlaceholders(json);
             dict.Add(keyword, json);

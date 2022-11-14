@@ -131,7 +131,7 @@ namespace KompasCore.Effects
 
         #endregion restrictions
 
-        public string[] cardRestrictions = new string[0];
+        public string[] cardRestrictions = { };
 
         public string nameIs;
         public string[] subtypesInclude;
@@ -198,10 +198,9 @@ namespace KompasCore.Effects
             }
         }
 
-        public override string ToString()
-        {
-            return $"Card Restriction.\nRestrictions: {string.Join(", ", cardRestrictions)}";
-        }
+        public override string ToString() => $"Card Restriction of {Source?.CardName}." +
+            $"\nRestrictions: {string.Join(", ", cardRestrictions)}" +
+            $"\nRestriction Elements: {string.Join(", ", cardRestrictionElements.Select(r => r))}";
 
         private bool HasCardRestrictionInAOE(GameCardBase cardToTest, int x, ActivationContext context)
         {
@@ -404,5 +403,6 @@ namespace KompasCore.Effects
         /// <returns><see langword="true"/> if the card fits all restrictions, <see langword="false"/> if it doesn't fit at least one</returns>
         public bool IsValidCard(GameCardBase potentialTarget, ActivationContext context)
             => IsValidCard(potentialTarget, Subeffect?.Count ?? 0, context);
+
     }
 }

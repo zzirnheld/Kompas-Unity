@@ -1,0 +1,30 @@
+{
+	"cardType": 67,
+	"cardName": "TR4MPL3R",
+	"effText": "Trample. Golem.",
+	"effects": [],
+	"MovementRestriction": {
+		"normalRestrictionsFromJson": [
+			"Default",
+			"Activated"
+		]
+	},
+	"AttackRestriction": {
+		"attackRestrictions": [
+			"Default",
+			"This is Activated"
+		]
+	},
+	"keywords": [
+		"Trample"
+	],
+	"n": 4,
+	"e": 4,
+	"s": 10,
+	"w": 10,
+	"subtypes": [
+		"Mech",
+		"Golem"
+	],
+	"subtypeText": "Mech Golem"
+}

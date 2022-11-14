@@ -1,59 +1,11 @@
 {
 	"cardType": 67,
 	"cardName": "Obscurian",
-	"effText": "Territorial.\nWhen I deal X more combat damage than my defender's E, give their controller's Avatar -X E.",
-	"effects": [
-		{
-			"blurb": "Dark Breath",
-			"triggerData": {
-				"blurb": "Dark Breath",
-				"triggerCondition": "Take Combat Damage",
-				"triggerRestriction": {
-					"triggerRestrictions": [
-						"Main Card Fits Restriction Before"
-					],
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Is Defending From Source"
-						]
-					}
-				}
-			},
-			"subeffects": [
-				{
-					"$type": "Subeffect:SetXByTriggeringCardValue:",
-					"cardValue": {
-						"value": "E"
-					},
-					"change": true,
-					"xMultiplier": -1
-				},
-				{
-					"$type":"Subeffect:TargetTriggeringCard:",
-					"secondary":true
-				},
-				{
-					"$type": "Subeffect:ConditionalEnd:",
-					"condition": "X<0"
-				},
-				{
-					"$type": "Subeffect:AutoTarget:",
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Avatar",
-							"Controller Matches Card Target's"
-						]
-					}
-				},
-				{
-					"$type": "Subeffect:ChangeCardStats:",
-					"eMultiplier": -1
-				}
-			]
-		}
-	],
+	"effText": "Territorial. Soullink.",
+	"effects": [],
 	"keywords": [
-		"Territorial"
+		"Territorial",
+		"Soullink"
 	],
 	"n": 5,
 	"e": 12,

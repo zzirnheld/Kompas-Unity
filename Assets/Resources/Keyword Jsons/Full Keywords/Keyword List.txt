@@ -24,10 +24,11 @@ Collectible
 Spores
 Vessel Echo
 Vessel Cost Up
-Ambush
 Smite
 Stealth
 Evasive
 Must Contain
 Mech Ultimate Charge
 Undying
+Soullink
+Trample

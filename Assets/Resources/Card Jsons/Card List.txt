@@ -217,42 +217,45 @@ linewalkers/Leygrapple
 linewalkers/Golden Linewalker
 
 maya/The Feathered Serpent
+maya/The World Turtle
 
-maya/craftspeople/Reconstructor
-maya/craftspeople/Master Repairman
-maya/craftspeople/Stele Eulogist
-maya/craftspeople/Stonefitter
-maya/craftspeople/Glyphcarver
-maya/craftspeople/Stonesalvager
 maya/craftspeople/City Planner
+maya/craftspeople/Glyphcarver
+maya/craftspeople/Repairman
+maya/craftspeople/Reconstructor
+maya/craftspeople/Stonefitter
+maya/craftspeople/Stonesalvager
 
 maya/structures/Basic Wall
 maya/structures/City Wall
+maya/structures/Rough Wall
 maya/structures/Graven Wall
 maya/structures/Painted Wall
 maya/structures/Volatile Wall
 maya/structures/Temple Layer
 
+maya/support/Accident-Prone Construction
+maya/support/Dense Cities
 maya/support/Designated Defense
 maya/support/Shore Up
 maya/support/Resistive Empowerment
-maya/support/Dense Cities
-maya/support/Grand Plaza
-maya/support/Urbanization
+maya/support/Structural Expansion
+maya/support/Well-Planned Defense
 
 mechs/golems/5H4P3R
 mechs/golems/5P33DRUNN3R
 mechs/golems/51NG3
 mechs/golems/53G45C4NTUR14N 00
-mechs/golems/54CR1F1C3
 mechs/golems/54MUR41
+mechs/golems/B3R53RK3R
 mechs/golems/C4RR13R
+mechs/golems/F4LL1NGT1T4N
 mechs/golems/GL455C4NN0N
-mechs/golems/N0T3
+mechs/golems/H0KUT0
 mechs/golems/P4RT154N
 mechs/golems/PH453R
-mechs/golems/PL4T00N
-mechs/golems/QU4RG3
+mechs/golems/S0ULL1NK3R
+mechs/golems/TR4MPL3R
 
 mechs/pilots/Standard Pilot
 mechs/pilots/Runn R Mann
@@ -465,6 +468,25 @@ sportsball/Rocket-Propelled Ball
 sportsball/Overwhelming Ball Skills
 sportsball/Penalty Box
 
+swordguild/guildmembers/Guild Armsmaster
+swordguild/guildmembers/Guild Pagemaster
+swordguild/guildmembers/Guild Recruiter
+swordguild/guildmembers/Guild Ritesmaster
+swordguild/guildmembers/Guild Sparmaster
+swordguild/guildmembers/Guild Sprintmaster
+swordguild/guildmembers/Guild Tiremaster
+swordguild/guildmembers/Guild Trainee
+swordguild/guildmembers/Guildmaster Jade
+swordguild/guildmembers/Guildmaster Obsidian
+swordguild/guildmembers/Guild Student
+swordguild/guildmembers/Guild Form Reviewer
+
+swordguild/squires/Hardy Squire
+swordguild/squires/Nimble Squire
+swordguild/squires/Strong Squire
+
+swordguild/support/Knighthood
+
 tarocco/Figurehead Jack
 tarocco/Figurehead King
 tarocco/Figurehead Knight
@@ -543,23 +565,25 @@ vessels/Hardy Vessel
 vessels/Meditative Vessel
 vessels/Unwilling Vessel
 
-vessels/memory/Malevolent Memory
-vessels/memory/Creative Memory
+vessels/memory/Childhood Inspiration
 vessels/memory/Deja Vu
-vessels/memory/Powerhungry Memory
-vessels/memory/Paranoid Memory
-vessels/memory/Restless Memory
-vessels/memory/Bestower of Memories
-vessels/memory/Memory Guide
-vessels/memory/Remembering
-vessels/memory/Rememberance
-vessels/memory/Rememory Guide
-vessels/memory/Vesselformation
-vessels/memory/Immortal Memory
-vessels/memory/Corporeal Recall
-vessels/memory/Memorial Augury
-vessels/memory/Recall
-vessels/memory/Uncall For
+vessels/memory/Immortal Soul
+vessels/memory/Instinctive Dispel
+vessels/memory/Intuited Strike
+vessels/memory/Recurring Idea
+vessels/memory/Reflexive Defense
+vessels/memory/Relived Wanderings
+
+vessels/support/Bestower of Memories
+vessels/support/Collective Memory
+vessels/support/Corporeal Recall
+vessels/support/Memorial Augury
+vessels/support/Memory Guide
+vessels/support/Remembering
+vessels/support/Rememberance
+vessels/support/Rememory Guide
+vessels/support/Uncall For
+vessels/support/Unlock the Past
 
 wanderers/At Home in the World
 wanderers/Leper

@@ -15,7 +15,7 @@
 			"$type":"Subeffect:TargetThis:"
 		},
         {
-            "$type": "Subeffect:TargetTriggeringCardsCoords:"
+            "$type": "Subeffect:TargetTriggeringCardsSpace:"
         },
         {
             "$type":"Subeffect:Delay:",

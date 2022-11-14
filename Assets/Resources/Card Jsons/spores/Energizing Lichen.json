@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Energizing Lichen",
-	"effText": "Spores.\nWhen I'm activated, reshuffle a dead Fungus to gain 1 pip and pulse adjacent cards.",
+	"effText": "Spores.\nWhen I become active, reshuffle a dead Fungus to gain 1 pip and pulse adjacent cards.",
 	"effects": [
 		{
 			"blurb": "Energize",

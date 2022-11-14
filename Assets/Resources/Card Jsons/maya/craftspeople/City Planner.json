@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "City Planner",
-	"effText": "When turns start, deck->hand a Structure.",
+	"effText": "When I start turns adjacent to X Structures, deck->hand X Structures.",
 	"effects": [
 		{
 			"blurb": "Plan new structures",
@@ -15,8 +15,21 @@
 			},
 			"subeffects": [
 				{
+					"$type": "Subeffect:SetXBoardRestriction:",
+					"cardRestriction": {
+						"cardRestrictions": [ "Space Fits Restriction" ],
+						"spaceRestriction": { "spaceRestrictions": [ "Adjacent to Source" ] },
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Structure" ]
+							}
+						]
+					},
+					"xMultiplier": 1
+				},
+				{
 					"$type": "Subeffect:ChooseFromList:",
-					"maxCanChoose": 1,
 					"cardRestriction": {
 						"blurb": "Structure to plan out",
 						"cardRestrictions": [
@@ -29,10 +42,22 @@
 								"subtypes": [ "Structure" ]
 							}
 						]
-					}
+					},
+					"listRestriction": {
+						"listRestrictions": [
+							"Min Can Choose: X",
+							"Max Can Choose: X"
+						]
+					},
+					"xMultiplier": 1
 				},
 				{
 					"$type": "Subeffect:Rehand:"
+				},
+				{
+					"$type": "Subeffect:LoopWhileHaveTargets:",
+					"delete": true,
+					"jumpIndices": [ 2 ]
 				}
 			]
 		}
@@ -40,6 +65,6 @@
 	"n": 1,
 	"e": 6,
 	"s": 4,
-	"w": 0,
+	"w": 3,
 	"subtypeText": "Maya Craftsperson"
 }

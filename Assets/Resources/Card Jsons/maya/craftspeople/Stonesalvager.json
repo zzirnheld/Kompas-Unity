@@ -1,130 +1,77 @@
 {
 	"cardType": 67,
 	"cardName": "Stonesalvager",
-	"effText": "You can hand->summon an S X Structure by discard->reshuffling Structures with total S >= 2*X.",
+	"effText": "When I start turns adjacent to X Structures, discard->reshuffle up to X Structures. Gain 1 pip for each.",
 	"effects": [
 		{
 			"blurb": "Reconstruct",
-			"activationRestriction": {
-				"activationRestrictionArray": [
-					"Max Times Per Turn",
-					"Default"
-				]
+			"triggerData": {
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Friendly Turn"
+					]
+				}
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:SetXByGamestate:",
-					"whatToCount": "Total Card Value of Cards Fitting Restriction",
-					"cardValue": {
-						"value": "S"
-					},
+					"$type": "Subeffect:SetXBoardRestriction:",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Character"
-						],
+						"cardRestrictions": [ "Space Fits Restriction" ],
+						"spaceRestriction": { "spaceRestrictions": [ "Adjacent to Source" ] },
 						"cardRestrictionElements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Discard" ]
-							},
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Structure" ]
 							}
 						]
-					},
-					"xMultiplier": 1,
-                    "xDivisor": 2,
-                    "comment": "NOTE: this will break if you have an odd total cost of structures 1 less than what you need"
-				},
-				{
-					"$type": "Subeffect:CardTarget:",
-					"cardRestriction": {
-						"blurb": "Structure to repurpose old stone into",
-						"cardRestrictions": [
-							"Character",
-							"Card Value Fits Number Restriction"
-						],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-                            {
-                                "$type": "Core.CardRestriction:Location:",
-                                "locations": [ "Hand" ]
-                            },
-							{
-								"$type": "Core.CardRestriction:SubtypesInclude:",
-								"subtypes": [ "Structure" ]
-							}
-						],
-						"cardValue": {
-							"value": "S"
-						},
-						"cardValueNumberRestriction": {
-							"numberRestrictions": [
-								"<=X"
-							]
-						}
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "Subeffect:CardTarget:",
+					"$type": "Subeffect:ChooseFromList:",
 					"cardRestriction": {
-						"blurb": "Structure whose stone to repuprose",
+						"blurb": "Structures to salvage",
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Discard" ]
-							},
-							{
-								"$type": "Core.CardRestriction:SubtypesInclude:",
-								"subtypes": [ "Structure" ]
+								"locations": [ "Hand" ]
 							}
 						]
+					},
+					"listRestriction": {
+						"listRestrictions": [
+							"Min Can Choose",
+							"Max Can Choose: X"
+						],
+						"minCanChoose": 0
 					}
 				},
 				{
-					"$type": "Subeffect:SetXByTargetCardValue:",
-					"cardValue": {
-						"value": "S",
-						"multiplier": -1
-					},
-					"xMultiplier": 1,
-					"change": true
+					"$type": "Subeffect:SetXByGamestate:",
+					"whatToCount": "Number of Targets",
+					"xMultiplier": 1
 				},
 				{
-					"$type": "Subeffect:ConditionalJump:",
-					"condition": "X >= Constant",
-					"constant": 1,
-					"jumpIndices": [
-						2
-					]
+					"$type": "Subeffect:Reshuffle:"
 				},
 				{
-					"$type": "Subeffect:SpaceTarget:",
-					"spaceRestriction": {
-						"blurb": "where to summon the chosen Structure",
-                        "spaceRestrictionElements": [
-                            { "$type": "Core.SpaceRestriction:Empty:" },
-                            {
-                                "$type": "Core.SpaceRestriction:CanPlayCard:",
-                                "toPlay": { "$type": "Subeffect.Card:Target:" }
-                            }
-                        ]
-					},
-                    "targetIndex": 0
+					"$type": "Subeffect:LoopWhileHaveTargets:",
+					"delete": true,
+					"jumpIndices": [ 3 ]
 				},
 				{
-					"$type": "Subeffect:Play:",
-                    "targetIndex": 0
+					"$type": "Subeffect:AddPips:",
+					"xMultiplier": 1
 				}
 			]
 		}
 	],
-	"n": 1,
-	"e": 3,
-	"s": 2,
-	"w": 0,
+	"n": 2,
+	"e": 1,
+	"s": 3,
+	"w": 5,
 	"subtypeText": "Maya Craftsperson"
 }

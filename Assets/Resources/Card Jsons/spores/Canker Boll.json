@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Canker Boll",
-	"effText": "Spores.\nWhen I'm activated, give me +1 E.\nWhen I gain X E, give me +X W.",
+	"effText": "Spores.\nWhen I become active, give me +1 E.\nWhen I gain X E, give me +X W.",
 	"effects": [
 		{
 			"blurb": "The boll grows",

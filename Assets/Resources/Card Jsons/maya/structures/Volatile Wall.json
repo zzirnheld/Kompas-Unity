@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Volatile Wall",
-	"effText": "Can't move or attack normally.",
+	"effText": "Structure.",
 	"effects": [],
 	"AttackRestriction": {
 		"attackRestrictions": [
@@ -17,7 +17,7 @@
 	},
 	"n": 0,
 	"e": 9,
-	"s": 3,
+	"s": 4,
 	"w": 9,
 	"subtypeText": "Maya Structure"
 }

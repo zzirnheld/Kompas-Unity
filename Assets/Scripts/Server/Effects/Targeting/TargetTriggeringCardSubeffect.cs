@@ -8,10 +8,13 @@ namespace KompasServer.Effects
     {
         public bool secondary = false;
         public bool info = false;
+        public bool cause = false;
 
         public override Task<ResolutionInfo> Resolve()
         {
-            var cardInfoToTarget = secondary ? CurrentContext.secondaryCardInfoBefore : CurrentContext.mainCardInfoBefore;
+            var cardInfoToTarget = CurrentContext.mainCardInfoBefore;
+            if (secondary) cardInfoToTarget = CurrentContext.secondaryCardInfoBefore;
+            if (cause) cardInfoToTarget = CurrentContext.cardCauseBefore;
             if (cardInfoToTarget == null) throw new NullCardException(NoValidCardTarget);
 
             if (info) ServerEffect.cardInfoTargets.Add(cardInfoToTarget);

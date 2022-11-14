@@ -275,6 +275,8 @@ namespace KompasCore.Effects
                 && spaceRestrictionElements.All(sre => sre.IsValidSpace(space, context));
         }
 
+        public Func<Space, bool> IsValidFor(ActivationContext context) => s => IsValidSpace(s, context);
+
         public override string ToString()
             => $"Space restriction of card {Source} on subeff {Subeffect}, restrictions {string.Join(",", spaceRestrictions)}";
     }

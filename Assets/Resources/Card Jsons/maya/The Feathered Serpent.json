@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "The Feathered Serpent",
-	"effText": "Summon only in a corner, connected to both Avatars by cards.\nYou can tribute a Person adjacent to a Structure to revive me.",
+	"effText": "Summon only if there's 14 cards on the edge of the board.\nYou can tribute a Person adjacent to a Structure to revive me.",
 	"effects": [
 		{
 			"blurb": "Death Begets Life",
@@ -72,41 +72,25 @@
 	"PlayRestriction": {
 		"normalRestrictions": [
 			"Default Normal Restrictions",
-			"Space Must Fit Restriction"
+			"Number of Cards Exist"
 		],
 		"effectRestrictions": [
 			"Default Effect Restrictions",
-			"Space Must Fit Restriction"
+			"Number of Cards Exist"
 		],
-		"spaceRestriction": {
-            "spaceRestrictionElements": [
-                {
-                    "$type": "Core.SpaceRestriction:ConnectedTo:",
-                    "spaces": {
-						"$type": "Gamestate.ManySpaces:PositionsOfEach:",
-						"cards": {
-							"$type": "Gamestate.ManyCards:FittingRestriction:",
-							"cardRestriction": {
-								"cardRestrictionElements": [
-									{ "$type": "Core.CardRestriction:Avatar:" }
-								]
-							}
-						}
-					},
-                    "byRestriction": {
-                        "spaceRestrictionElements": [
-                            {
-                                "$type": "Core.SpaceRestriction:CardFitsRestriction:",
-                                "restriction": {
-                                    "cardRestrictionElements": [
-                                        { "$type": "Core.CardRestriction:CardExists:" }
-                                    ]
-                                }
-                            }
-                        ]
-                    }
-                }
-            ]
+		"countCardRestriction": {
+			"cardRestrictions": [
+				"Space Fits Restriction"
+			],
+			"spaceRestriction": {
+				"spaceRestrictions": [
+					"On Edge of Board"
+				]
+			}
+		},
+		"countCardNumberRestriction": {
+			"numberRestrictions": [">=Constant"],
+			"constant": 14
 		}
 	},
     "unique": true,

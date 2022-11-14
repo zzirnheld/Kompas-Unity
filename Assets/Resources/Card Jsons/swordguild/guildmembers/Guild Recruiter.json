@@ -1,0 +1,73 @@
+{
+	"cardType": 67,
+	"cardName": "Guild Recruiter",
+	"effText": "When turns start, deck->summon a Squire to a space adjacent to at least 2 Warriors.",
+	"effects": [
+		{
+			"blurb": "Recruit",
+			"triggerData": {
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "where to play the Squire",
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:WithinDistanceOfNumberOfCards:",
+                                "cardRestriction": {
+                                    "numberOfCards": { 
+                                        "$type": "Gamestate.Number:Constant:",
+                                        "constant": 2
+                                    },
+                                    "cardRestrictionElements": [
+                                        {
+                                            "$type": "Core.CardRestriction:SubtypesInclude:",
+                                            "subtypes": [ "Warrior" ]
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Subeffect.Card:Target:" }
+                            }
+                        ]
+					}
+				},
+				{
+					"$type": "Subeffect:DeckTarget:",
+					"cardRestriction": {
+						"blurb": "New Squire",
+						"cardRestrictions": [
+							"Deck",
+							"Character"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Squire" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:Play:"
+				}
+			]
+		}
+	],
+	"n": 2,
+	"e": 2,
+	"s": 2,
+	"w": 2,
+	"subtypeText": "Swordguild Bureaucrat"
+}

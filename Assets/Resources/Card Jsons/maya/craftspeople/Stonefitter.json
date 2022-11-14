@@ -1,57 +1,71 @@
 {
 	"cardType": 67,
 	"cardName": "Stonefitter",
-	"effText": "When turns start, give Structures connected to me by Structures +4 E.",
+	"effText": "When you summon a Structure normally, deck->summon a copy of it adjacent to me.",
 	"effects": [
 		{
-			"blurb": "Fit Stones",
+			"blurb": "Build temple",
 			"triggerData": {
-				"triggerCondition": "Turn Start",
+				"triggerCondition": "Play",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card in Play"
-					]
-				}
-			},
-			"subeffects": [
-				{
-					"$type": "Subeffect:ChangeAllCardStats:",
+						"This Card in Play",
+						"No Stackable",
+						"Main Card Fits Restriction Before"
+					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Character",
-							"Space Fits Restriction"
+							"Different from Source"
 						],
 						"cardRestrictionElements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							},
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Structure" ]
 							}
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetTriggeringCard:"
+				},
+				{
+					"$type": "Subeffect:ChooseFromList:",
+					"cardRestriction": {
+						"blurb": "copy of the Structure to deck->summon",
+						"cardRestrictions": [
+							"Same Name as Target",
+							"Deck"
 						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-                                "Connected to Card Target by Cards Fitting Restriction"
-                            ],
-                            "connectednessRestriction": {
-								"cardRestrictionElements": [
-									{
-										"$type": "Core.CardRestriction:SubtypesInclude:",
-										"subtypes": [ "Structure" ]
-									}
-								]
-                            }
-						}
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
+						]
 					},
-					"eModifier": 4
+					"maxCanChoose": 1
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "where for the Temple Builder to decksummon a copy of the Structure",
+						"spaceRestrictions": [ "Adjacent to Source" ],
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Subeffect.Card:Target:" }
+                            }
+                        ]
+					}
+				},
+				{
+					"$type": "Subeffect:Play:"
 				}
 			]
 		}
 	],
-	"n": 1,
-	"e": 2,
+	"n": 2,
+	"e": 1,
 	"s": 1,
 	"w": 0,
 	"subtypeText": "Maya Craftsperson"

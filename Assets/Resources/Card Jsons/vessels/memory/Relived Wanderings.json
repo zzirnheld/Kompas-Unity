@@ -1,0 +1,67 @@
+{
+	"cardType": 65,
+	"cardName": "Relived Wanderings",
+	"effText": "When you echo this summon, move them 1 space.",
+	"effects": [
+		{
+			"blurb": "Need to go back",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+                    "triggerRestrictionElements": [
+                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardsMatch:",
+                            "firstCard": { "$type": "ActivationContext.Card:MainCardBefore:" },
+                            "secondCard": {
+                                "$type": "Gamestate.Card:AugmentedCard:",
+                                "ofThisCard": { "$type": "Gamestate.Card:ThisCard:" }
+                            }
+                        },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "ActivationContext.Card:MainCardBefore:" },
+                            "cardRestriction": {
+                                "cardRestrictionElements": [ { "$type": "Core.CardRestriction:Summoned:" } ]
+                            }
+                        }
+                    ]
+				}
+			},
+			"subeffects": [
+                {
+                    "$type":"Subeffect:TargetAugmentedCard:"
+                },
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"spaceRestrictions": [
+							"Empty",
+							"Can Move Card Target to This Space",
+							"Distance to Card Target Fits X Restriction"
+						],
+						"distanceXRestriction": {
+							"numberRestrictions": [
+								"=X"
+							]
+						}
+					},
+					"xModifier": 1
+				},
+				{
+					"$type": "Subeffect:Move:"
+				}
+			]
+		}
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Augment Normal Restrictions"
+		],
+		"effectRestrictions": [
+			"Augment Effect Restrictions"
+		]
+	},
+	"a": 1,
+	"subtypeText": "Memory"
+}

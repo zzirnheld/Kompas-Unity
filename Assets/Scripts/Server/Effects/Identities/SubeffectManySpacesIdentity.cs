@@ -66,5 +66,10 @@ namespace KompasServer.Effects.Identities
                 .Where(space => space != null)
                 .ToArray();
         }
+
+        public class Corners : SubeffectIdentityBase<ICollection<Space>>
+        {
+            protected override ICollection<Space> AbstractItem => new Space[] { (0, 0), (0, Space.MaxIndex), (Space.MaxIndex, 0), (Space.MaxIndex, Space.MaxIndex) };
+        }
     }
 }

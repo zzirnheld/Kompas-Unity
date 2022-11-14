@@ -27,7 +27,12 @@ namespace KompasCore.Effects
 
         protected virtual void ComplainIfNotInitialized()
         {
-            if (!Initialized) throw new NotImplementedException($"You forgot to initialize a {GetType()}!");
+            if (!Initialized) throw new NotImplementedException($"You forgot to initialize a {GetType()}!\n{this}");
+        }
+
+        public override string ToString()
+        {
+            return GetType().ToString();
         }
     }
 

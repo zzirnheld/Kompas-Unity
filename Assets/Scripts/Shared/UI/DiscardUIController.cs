@@ -22,12 +22,14 @@ namespace KompasCore.UI
 
         protected override void ShowCollapsed()
         {
+            //Debug.Log($"Showing collapsed discard UI controller for {discardController.owner.index}");
             foreach (var obj in Objects) TakeOwnershipOf(obj);
             base.ShowCollapsed();
         }
 
         protected override void ShowExpanded()
         {
+            //Debug.Log($"Showing expanded discard UI controller for {discardController.owner.index}");
             int wrapLen = Mathf.CeilToInt(Mathf.Sqrt(Objects.Count()));
             int x = 0, y = 0;
             foreach (var obj in Objects)

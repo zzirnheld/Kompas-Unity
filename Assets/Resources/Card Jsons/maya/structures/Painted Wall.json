@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Painted Wall",
-	"effText": "Can't move or attack normally.\nWhen a Structure defends, if they're connected to me by Structures, draw 1 card.",
+	"effText": "Structure.\nIf I'm in a corner when a Structure on my diagonal defends, draw 3 cards.",
 	"effects": [
 		{
 			"blurb": "The walls remember",
@@ -17,41 +17,45 @@
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Structure" ]
-							}
+							},
+                            {
+                                "$type": "Core.CardRestriction:PositionFitsRestriction:",
+                                "spaceRestriction": {
+                                    "spaceRestrictionElements": [
+										{
+											"$type": "Core.SpaceRestriction:SameDiagonal:",
+											"space": {
+												"$type": "KompasCore.Effects.Identities.GamestateSpaceIdentities.PositionOf, Assembly-CSharp",
+												"card": { "$type": "Gamestate.Card:ThisCard:" }
+											}
+										}
+									]
+                                }
+                            }
 						]
 					}
-				}
+				},
+				"triggerRestrictionElements": [
+					{
+						"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+						"cardRestriction": {
+							"cardRestrictions": [
+								"Space Fits Restriction"
+							],
+							"spaceRestriction": {
+								"spaceRestrictions": [
+									"Corner"
+								]
+							}
+						},
+						"card": { "$type": "Gamestate.Card:ThisCard:" }
+					}
+				]
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:TargetTriggeringCard:"
-				},
-				{
-					"$type": "Subeffect:TargetTargetsSpace:"
-				},
-                {
-                    "$type":"Subeffect:TargetThis:"
-                },
-				{
-					"$type": "Subeffect:ConditionalEnd:",
-					"condition": "Space Target Violates Restriction",
-                    "spaceRestriction":
-                    {
-                        "spaceRestrictions": [
-                            "Connected to Card Target by Spaces Fitting Restriction"
-                        ],
-                        "connectednessRestriction": {
-							"cardRestrictionElements": [
-								{
-									"$type": "Core.CardRestriction:SubtypesInclude:",
-									"subtypes": [ "Structure" ]
-								}
-							]
-                        }
-                    }
-				},
-				{
-					"$type": "Subeffect:Draw:"
+					"$type": "Subeffect:DrawX:",
+					"xModifier": 3
 				}
 			]
 		}
@@ -69,7 +73,7 @@
 		]
 	},
 	"n": 0,
-	"e": 14,
+	"e": 10,
 	"s": 4,
 	"w": 0,
 	"subtypeText": "Maya Structure"

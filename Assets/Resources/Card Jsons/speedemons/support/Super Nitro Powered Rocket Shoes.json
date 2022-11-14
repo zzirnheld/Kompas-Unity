@@ -22,7 +22,7 @@
                     "$type":"Subeffect:TargetAugmentedCard:"
                 },
                 {
-                    "$type":"Subeffect:TargetTriggeringCardsCoords:"
+                    "$type":"Subeffect:TargetTriggeringCardsSpace:"
                 },
                 {
                     "$type":"Subeffect:SpaceTarget:",
@@ -46,6 +46,6 @@
 		"normalRestrictions":["Augment Normal Restrictions"],
 		"effectRestrictions":["Augment Effect Restrictions"]
 	},
-	"a":4,
+	"a":2,
 	"subtypeText":"Shoes"
 }

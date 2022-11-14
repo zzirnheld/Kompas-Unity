@@ -39,7 +39,7 @@
 					"$type": "Subeffect:Rehand:"
 				},
 				{
-					"$type": "Subeffect:DeckTarget:",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Wanderer to inspire with music",
 						"cardRestrictions": [

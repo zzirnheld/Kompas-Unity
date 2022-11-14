@@ -3397,7 +3397,7 @@ GameObject:
   - component: {fileID: 116530642}
   - component: {fileID: 116530641}
   - component: {fileID: 116530646}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Enemy Discard (Placeholder)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3517,8 +3517,8 @@ MonoBehaviour:
   boxCollider: {fileID: 116530642}
   behind: {fileID: 0}
   behindBoundsMultiplier: 0
-  localXOffset: 2
-  localZOffset: -2
+  localXOffset: -2
+  localZOffset: 2
   discardController: {fileID: 116530641}
 --- !u!1 &118102910
 GameObject:
@@ -10556,7 +10556,7 @@ MonoBehaviour:
   - {x: -0.75, y: 0, z: 0.75}
   - {x: -0.3, y: 0, z: 0.3}
   pipsText: {fileID: 419672787}
-  nextTurnPipsText: {fileID: 2139283024}
+  nextTurnPipsText: {fileID: 1726179813}
 --- !u!1 &562685206
 GameObject:
   m_ObjectHideFlags: 0

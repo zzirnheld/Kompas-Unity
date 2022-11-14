@@ -19,5 +19,18 @@ namespace KompasCore.Effects.Identities
             protected override ICollection<GameCardBase> AbstractItem
                 => InitializationContext.game.Cards.Where(c => cardRestriction.IsValidCard(c, default)).ToArray();
         }
+
+        public class Multiple : NoActivationContextIdentityBase<ICollection<GameCardBase>>
+        {
+            public INoActivationContextIdentity<GameCardBase>[] cards;
+
+            public override void Initialize(EffectInitializationContext initializationContext)
+            {
+                base.Initialize(initializationContext);
+                foreach (var i in cards) i.Initialize(initializationContext);
+            }
+
+            protected override ICollection<GameCardBase> AbstractItem => cards.Select(s => s.Item).ToArray();
+        }
     }
 }

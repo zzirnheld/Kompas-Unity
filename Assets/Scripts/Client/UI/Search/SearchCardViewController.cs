@@ -20,6 +20,13 @@ namespace KompasClient.UI.Search
             this.searchUIController = searchUIController;
         }
 
+        protected override string DisplayN(int n) => $"{n}";
+        protected override string DisplayE(int e) => $"{e}";
+        protected override string DisplayS(int s) => $"{s}";
+        protected override string DisplayW(int w) => $"{w}";
+        protected override string DisplayC(int c) => $"{c}";
+        protected override string DisplayA(int a) => $"{a}";
+
         protected override void DisplaySpecialEffects()
         {
             base.DisplaySpecialEffects();

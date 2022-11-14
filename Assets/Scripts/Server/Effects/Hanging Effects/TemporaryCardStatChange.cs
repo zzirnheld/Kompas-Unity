@@ -1,5 +1,6 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
+using KompasCore.Exceptions;
 using KompasServer.GameCore;
 
 namespace KompasServer.Effects
@@ -21,6 +22,12 @@ namespace KompasServer.Effects
         }
 
         protected override void Resolve(ActivationContext context)
-            => buffRecipient.AddToStats(-1 * buff, stackSrc: sourceEff);
+        {
+            try
+            {
+                buffRecipient.AddToStats(-1 * buff, stackSrc: sourceEff);
+            }
+            catch (CardNotHereException) { }
+        }
     }
 }

@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Temple Layer",
-	"effText": "Can't move or attack normally.\nSummon only adjacent to a Maya Structure.",
+	"effText": "Structure.\nSummon only adjacent to a Maya Structure.",
 	"effects": [],
 	"AttackRestriction": {
 		"attackRestrictions": [

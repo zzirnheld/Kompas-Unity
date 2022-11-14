@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Basic Wall",
-	"effText": "Can't move or attack normally.",
+	"effText": "Structure.",
 	"effects": [],
 	"AttackRestriction": {
 		"attackRestrictions": [

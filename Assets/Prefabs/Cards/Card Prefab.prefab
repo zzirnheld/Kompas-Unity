@@ -1968,6 +1968,7 @@ MonoBehaviour:
   cardImageImage: {fileID: 3907843146035040887}
   currentTargetObject: {fileID: 2284527895036328886}
   validTargetObject: {fileID: 1704564887540371528}
+  focusedCardObject: {fileID: 2739842473619720394}
   aoeController: {fileID: 3800830204807716009}
   zoomedCharFrame: {fileID: 4269587110842798765}
   zoomedAllFrame: {fileID: 7187772228533361689}
@@ -1993,7 +1994,6 @@ MonoBehaviour:
   linkedCardObject: {fileID: 990742212740138240}
   primaryStackableObject: {fileID: 8376111146485280923}
   secondaryStackableObject: {fileID: 3737563041996298483}
-  focusedCardObject: {fileID: 2739842473619720394}
   attackOscillator: {fileID: 6079762201271065829}
   effectOscillator: {fileID: 3077842578521903605}
   zoomedHazeImage: {fileID: 5715102953295328321}
@@ -2027,7 +2027,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.9134086, y: 1, z: 1.9134086}
+  m_Size: {x: 2.2, y: 0.4, z: 2.2}
   m_Center: {x: 0, y: -0.025000002, z: 0}
 --- !u!1 &3506276986830655662
 GameObject:
@@ -3904,7 +3904,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8962264, g: 0.012682426, b: 0.04350353, a: 0.627451}
+  m_Color: {r: 0.011764714, g: 0.8980392, b: 0.15431948, a: 0.627451}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

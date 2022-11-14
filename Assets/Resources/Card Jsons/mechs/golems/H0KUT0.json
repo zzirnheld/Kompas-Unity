@@ -1,0 +1,71 @@
+{
+	"cardType": 67,
+	"cardName": "H0KUT0",
+	"effText": "Golem.\nIf I'm active when an enemy is summoned, I move to an adjacent space, then attack them.",
+	"effects": [
+		{
+			"blurb": "0M43 W4 M0U 5H1ND31RU",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Enemy Triggered"
+					]
+				},
+				"triggerRestrictionElements": [
+					{
+						"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+						"cardRestriction": { "cardRestrictions": [ "Activated" ] },
+						"card": { "$type": "Gamestate.Card:ThisCard:" }
+					}
+				]
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetTriggeringCard:"
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "where to move the Shaper",
+						"spaceRestrictions": [
+							"Adjacent to Card Target",
+							"Empty"
+						]
+					},
+					"targetIndex": -2
+				},
+				{
+					"$type": "Subeffect:Move:"
+				},
+				{
+					"$type": "Subeffect:Attack:",
+					"targetIndex": -2,
+					"attackerIndex": -1
+				}
+			]
+		}
+	],
+	"MovementRestriction": {
+		"normalRestrictionsFromJson": [
+			"Default",
+			"Activated"
+		]
+	},
+	"AttackRestriction": {
+		"attackRestrictions": [
+			"Default",
+			"This is Activated"
+		]
+	},
+	"n": 5,
+	"e": 3,
+	"s": 10,
+	"w": 10,
+	"subtypes": [
+		"Mech",
+		"Golem"
+	],
+	"subtypeText": "Mech Golem"
+}

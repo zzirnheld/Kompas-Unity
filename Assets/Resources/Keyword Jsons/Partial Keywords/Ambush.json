@@ -1,0 +1,45 @@
+[
+    {
+        "$type": "Subeffect:TargetThis:"
+    },
+    {
+        "$type": "Subeffect:CardTarget:",
+        "cardRestriction": {
+            "blurb": "Choose a target to Ambush",
+            "cardRestrictions": [ "Character", "Space Fits Restriction" ],
+            "cardRestrictionElements": [
+                { "$type": "Core.CardRestriction:Enemy:" }
+            ],
+            "spaceRestriction": { "spaceRestrictions": [ "Adjacent to Source" ] }
+        }
+    },
+    {
+        "$type": "Subeffect:Attack:",
+        "attackerIndex": -2,
+        "targetIndex": -1
+    },
+    {
+        "$type": "Subeffect:SetXByTargetCardValue:",
+        "cardValue": {
+            "value": "W"
+        },
+        "xMultiplier": 1
+    },
+    {
+        "$type": "Subeffect:TemporaryCardStatChange:",
+        "wMultiplier": -1,
+        "endCondition": "Battle End",
+        "triggerRestriction": {
+            "triggerRestrictions": [
+                "Stackable is Secondary Delayed Stackable Target"
+            ]
+        }
+    },
+    {
+        "$type": "Subeffect:TargetThis:"
+    },
+    {
+        "$type": "Subeffect:SpendAttacks:",
+        "xModifier": 1
+    }
+]

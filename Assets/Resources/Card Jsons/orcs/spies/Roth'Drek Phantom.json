@@ -1,8 +1,24 @@
 {
 	"cardType": 67,
 	"cardName": "Roth'Drek Phantom",
-	"effText": "Ambush.\nWhen I'm board-> or discard->handed, give me -2S.",
+	"effText": "When I'm summoned, I Ambush.\nWhen I'm board-> or discard->handed, give me -2S.",
 	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:Keyword:",
+					"keyword": "Ambush"
+				}
+			]
+		},
 		{
 			"blurb": "Withdraw",
 			"triggerData": {

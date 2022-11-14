@@ -1,0 +1,73 @@
+{
+	"cardType": 65,
+	"cardName": "Immortal Soul",
+	"effText": "When this Vessel attacks a W X character, give the Vessel +X E and echo them.",
+	"effects": [
+		{
+			"blurb": "We've fought before",
+			"triggerData": {
+				"triggerCondition": "Attack",
+				"triggerRestriction": {
+					"triggerRestrictionElements": [
+                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardsMatch:",
+                            "firstCard": {
+                                "$type": "Gamestate.Card:AugmentedCard:",
+                                "ofThisCard": { "$type": "Gamestate.Card:ThisCard:" }
+                            },
+                            "secondCard": { "$type": "ActivationContext.Card:MainCardBefore:" }
+                        },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "cardRestriction": {
+                                "cardRestrictionElements": [
+                                    {
+                                        "$type": "Core.CardRestriction:SubtypesInclude:",
+                                        "subtypes": [ "Vessel" ]
+                                    }
+                                ]
+                            },
+                            "card": { "$type": "ActivationContext.Card:MainCardBefore:" }
+                        }
+					]
+				}
+			},
+			"subeffects": [
+                {
+                    "$type":"Subeffect:TargetAugmentedCard:"
+                },
+				{
+					"$type":"Subeffect:TargetTriggeringCard:",
+					"secondary":true
+				},
+				{
+					"$type": "Subeffect:SetXByTargetCardValue:",
+					"cardValue": {
+						"value": "W"
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"eMultiplier": 1,
+                    "targetIndex": -2
+				},
+				{
+					"$type": "Subeffect:Resummon:",
+                    "targetIndex": -2
+				}
+			]
+		}
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Augment Normal Restrictions"
+		],
+		"effectRestrictions": [
+			"Augment Effect Restrictions"
+		]
+	},
+	"a": 1,
+	"subtypeText": "Memory"
+}

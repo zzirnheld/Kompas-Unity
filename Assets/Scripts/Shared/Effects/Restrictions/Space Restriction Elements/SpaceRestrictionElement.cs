@@ -192,12 +192,16 @@ namespace KompasCore.Effects.Restrictions
         public class ConnectedTo : SpaceRestrictionElement
         {
             public INoActivationContextIdentity<ICollection<Space>> spaces;
+            public INoActivationContextIdentity<ICollection<Space>> anyOfTheseSpaces;
             public SpaceRestriction byRestriction;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {
                 base.Initialize(initializationContext);
-                spaces.Initialize(initializationContext);
+                if (spaces == null && anyOfTheseSpaces == null) throw new System.ArgumentNullException("spaces", "Failed to provide spaces for space restriction elements");
+
+                spaces?.Initialize(initializationContext);
+                anyOfTheseSpaces?.Initialize(initializationContext);
                 byRestriction.Initialize(initializationContext);
             }
 
@@ -237,6 +241,20 @@ namespace KompasCore.Effects.Restrictions
 
                 return true;
             }
+        }
+
+        public class SameDiagonal : SpaceRestrictionElement
+        {
+            public INoActivationContextIdentity<Space> space;
+
+            public override void Initialize(EffectInitializationContext initializationContext)
+            {
+                base.Initialize(initializationContext);
+                space.Initialize(initializationContext);
+            }
+
+            protected override bool AbstractIsValidSpace(Space space, ActivationContext context)
+                => space.SameDiagonal(this.space.Item);
         }
     }
 }

@@ -64,9 +64,9 @@ namespace KompasClient.Cards
             card.ClientCardController.gameCardViewController.Refresh();
 
             //handle adding existing card links
-            foreach (var c in card.Game.Cards)
+            foreach (var c in card.Game.Cards.ToArray())
             {
-                foreach (var link in c.CardLinkHandler.Links)
+                foreach (var link in c.CardLinkHandler.Links.ToArray())
                 {
                     if (link.CardIDs.Contains(id)) card.CardLinkHandler.AddLink(link);
                 }

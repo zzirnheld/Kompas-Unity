@@ -10,7 +10,7 @@
 		},
 		{
 			"keyword":"Vessel.",
-			"reminder":"You can destroy a Memory attached to me. Echo me."
+			"reminder":"You can destroy a Memory attached to me to echo me."
 		},
 		{
 			"keyword": "Revenant.",
@@ -160,6 +160,34 @@
 		{
 			"keyword": "Rummage",
 			"reminder": "Hand->discard 1 card, then draw 1 card."
+		},
+		{
+			"keyword": "rummage",
+			"reminder": "Hand->discard 1 card, then draw 1 card."
+		},
+		{
+			"keyword": "Structure",
+			"reminder": "Can't move or attack normally."
+		},
+		{
+			"keyword": "Warrior Trainer",
+			"reminder": "When you summon a Warrior adjacent to me, give them:"
+		},
+		{
+			"keyword": "Berserker",
+			"reminder": "No limit on number of attacks each turn."
+		},
+		{
+			"keyword": "Undying",
+			"reminder": "1 turn after I die, revive me where I died."
+		},
+		{
+			"keyword": "Soullink",
+			"reminder": "When I deal X more damage than my defender has E, give their Avatar -X E."
+		},
+		{
+			"keyword": "Trample",
+			"reminder": "When I deal X more damage than my defender has E, give enemies adjacent to them -X E."
 		}
 	]
 }

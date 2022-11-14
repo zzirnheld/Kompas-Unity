@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Stimulating Moss",
-	"effText": "Spores.\nWhen I'm activated, if your hand isn't full, reshuffle a dead Fungus. Draw 1 card. Pulse adjacent cards.",
+	"effText": "Spores.\nWhen I become active, if your hand isn't full, reshuffle a dead Fungus. Draw 1 card. Pulse adjacent cards.",
 	"effects": [
 		{
 			"blurb": "Stimulate",
