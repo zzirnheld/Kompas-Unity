@@ -68,7 +68,7 @@ namespace KompasCore.GameCore
             //A player can play to any space if there isn't a space that is adjacent to a friendly card
             else
             {
-                bool surrounded = !Space.Spaces.Any(existsFriendlyAdjacent);
+                bool surrounded = !Space.Spaces.Any(s => BoardController.IsEmpty(s) && existsFriendlyAdjacent(s));
                 if (surrounded) Debug.Log($"{player} is surrounded!");
                 return surrounded;
             }
