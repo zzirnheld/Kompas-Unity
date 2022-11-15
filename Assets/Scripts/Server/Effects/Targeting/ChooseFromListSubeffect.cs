@@ -47,7 +47,6 @@ namespace KompasServer.Effects
             string name = Source.CardName;
             string blurb = cardRestriction.blurb;
             int[] targetIds = potentialTargets.Select(c => c.ID).ToArray();
-            listRestriction.PrepareForSending(Effect.X);
             Debug.Log($"Potential targets {string.Join(", ", targetIds)}");
             return await ServerPlayer.serverAwaiter.GetCardListTargets(name, blurb, targetIds, JsonConvert.SerializeObject(listRestriction));
         }
@@ -75,6 +74,7 @@ namespace KompasServer.Effects
         public override async Task<ResolutionInfo> Resolve()
         {
             potentialTargets = GetPossibleTargets();
+            listRestriction.PrepareForSending(Effect.X);
             //if there's no possible valid combo, throw effect impossible
             if (!listRestriction.ExistsValidChoice(potentialTargets))
             {
@@ -87,6 +87,11 @@ namespace KompasServer.Effects
             if (!potentialTargets.Any())
             {
                 Debug.Log("An empty list of targets was a valid choice, but there's no targets that can be chosen. Skipping to next effect...");
+                return ResolutionInfo.Next;
+            }
+            else if (listRestriction.HasMax && listRestriction.maxCanChoose == 0)
+            {
+                Debug.Log("An empty list of targets was a valid choice, and the max to be chosen was 0. Skipping to next effect...");
                 return ResolutionInfo.Next;
             }
 
