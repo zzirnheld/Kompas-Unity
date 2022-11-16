@@ -38,6 +38,9 @@
 			},
 			"subeffects": [
 				{
+					"$type": "Subeffect:TargetTriggeringCardsSpace:"
+				},
+				{
 					"$type": "Subeffect:Keyword:",
 					"keyword": "Spin a Storm"
 				}
@@ -48,5 +51,5 @@
 	"e": 4,
 	"s": 4,
 	"w": 4,
-	"subtypeText": "Skyknight Mage"
+	"subtypeText": "Skyknight Stormspinner Mage"
 }

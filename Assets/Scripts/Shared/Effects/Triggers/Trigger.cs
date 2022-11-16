@@ -55,6 +55,8 @@ namespace KompasCore.Effects
         public const string Revealed = "Revealed";
         public const string Vanish = "Vanish";
 
+        public const string Anything = "Anything";
+
         public static readonly string[] TriggerConditions = {
             TurnStart, StackEnd, EffectPushedToStack,
             Activate, Deactivate, Negate,
@@ -62,7 +64,8 @@ namespace KompasCore.Effects
             Defends, Attacks, TakeCombatDamage, DealCombatDamage, Battles, BattleEnds,
             EachDraw, DrawX, Arrive, Play, Discard, Rehand, Reshuffle, Topdeck, Bottomdeck, ToDeck, Move, Annhilate, Remove, LeaveAOE,
             AugmentAttached, AugmentDetached, Augmented,
-            Revealed, Vanish
+            Revealed, Vanish,
+            Anything
         };
 
         public TriggerData TriggerData { get; }

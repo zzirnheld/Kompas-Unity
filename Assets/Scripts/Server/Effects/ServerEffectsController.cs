@@ -347,6 +347,8 @@ namespace KompasServer.Effects
                     triggeredTriggers.Enqueue(triggers);
                 }
             }
+
+            if (condition != Trigger.Anything) TriggerForCondition(Trigger.Anything, context);
         }
 
         #region register to trigger condition

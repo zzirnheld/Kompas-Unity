@@ -1,0 +1,104 @@
+{
+	"cardType": 67,
+	"cardName": "Pactbinder",
+	"effText": "When you summon a Skyknight normally, deck->hand Weather.\nWhen you cast Weather normally, deck->hand a Skyknight.",
+	"effects": [
+		{
+			"blurb": "Bind weather",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"No Stackable",
+						"Main Card Fits Restriction Before",
+						"Controller Triggered"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Different from Source"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Skyknight" ]
+							}
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:DeckTarget:",
+					"cardRestriction": {
+						"blurb": "Weather for the Pactbinder to bind",
+						"cardRestrictions": [
+							"Deck"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Weather" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:Rehand:"
+				}
+			]
+		},
+		{
+			"blurb": "Bind Skyknight",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"No Stackable",
+						"Main Card Fits Restriction Before",
+						"Controller Triggered"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Different from Source"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Weather" ]
+							}
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:DeckTarget:",
+					"cardRestriction": {
+						"blurb": "Skyknight for the Pactbinder to bind",
+						"cardRestrictions": [
+							"Deck"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Skyknight" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:Rehand:"
+				}
+			]
+		}
+	],
+	"n": 6,
+	"e": 8,
+	"s": 9,
+	"w": 7,
+	"subtypeText": "Skyknight Mage"
+}

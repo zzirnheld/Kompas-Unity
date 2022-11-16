@@ -215,6 +215,7 @@ linewalkers/White Linewalker
 linewalkers/Yellow Linewalker
 linewalkers/Leygrapple
 linewalkers/Golden Linewalker
+linewalkers/Orange Linewalker
 
 maya/The Feathered Serpent
 maya/The World Turtle
@@ -630,3 +631,5 @@ weather/skyknights/Venturebinder
 weather/skyknights/Skillingbinder
 weather/skyknights/Magerybinder
 weather/skyknights/Passingbinder
+weather/skyknights/Pactbinder
+weather/skyknights/Skybinder

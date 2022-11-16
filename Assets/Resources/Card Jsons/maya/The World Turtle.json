@@ -81,12 +81,13 @@
 			]
 		}
 	],
+	"unique": true,
 	"keywords": [
 		"Speedemon"
 	],
-	"n": 2,
+	"n": 1,
 	"e": 5,
-	"s": 2,
+	"s": 1,
 	"w": 0,
 	"subtypeText": "Slow Maya Speedemon God"
 }
