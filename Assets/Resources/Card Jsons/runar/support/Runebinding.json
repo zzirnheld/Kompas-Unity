@@ -1,67 +1,56 @@
 {
 	"cardType": 83,
 	"cardName": "Runebinding",
-	"effText": "When an enemy casts a spell, hand->cast a Rune.",
+	"effText": "The first time each turn you cast a Rune, deck->hand a Mage.",
 	"effects": [
 		{
-			"blurb": "Bind Runes",
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
 						"Main Card Fits Restriction Before",
-						"Enemy Triggered"
+						"Max Per Turn"
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Spell"
-						]
-					}
-				}
-			},
-			"subeffects": [
-				{
-					"$type": "Subeffect:CardTarget:",
-					"cardRestriction": {
-						"blurb": "Rune for Runebinding to cast",
-						"cardRestrictions": [
-							"Spell",
-							"Can Be Played"
 						],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
-                            {
-                                "$type": "Core.CardRestriction:Location:",
-                                "locations": [ "Hand" ]
-                            },
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
 								"subtypes": [ "Rune" ]
 							}
 						]
 					}
-				},
+				}
+			},
+			"subeffects": [
 				{
-					"$type": "Subeffect:SpaceTarget:",
-					"spaceRestriction": {
-						"blurb": "where for Runebinding to cast its target Rune",
-                        "spaceRestrictionElements": [
-                            { "$type": "Core.SpaceRestriction:Empty:" },
-                            {
-                                "$type": "Core.SpaceRestriction:CanPlayCard:",
-                                "toPlay": { "$type": "Subeffect.Card:Target:" }
-                            }
-                        ]
+					"$type": "Subeffect:DeckTarget:",
+					"cardRestriction": {
+						"blurb": "Rune for Runestones to search",
+						"cardRestrictions": [
+							"Deck"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Mage" ]
+							}
+						]
 					}
 				},
 				{
-					"$type": "Subeffect:Play:"
+					"$type": "Subeffect:Rehand:"
 				}
 			]
 		}
 	],
-	"c": 4,
+	"unique": true,
+	"c": 3,
 	"spellTypes": [
 		"Enchant"
 	],
