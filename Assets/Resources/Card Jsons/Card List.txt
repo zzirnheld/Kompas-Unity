@@ -47,7 +47,7 @@ generic/Trapped Offering
 generic/Unfinding
 generic/Yank
 generic/Ethereate
-generic/Rememories
+generic/Empowering Binds
 generic/Growth Through Adversity
 
 aquatic/support/Changing Tides
@@ -352,6 +352,7 @@ revenants/Unpresent
 revenants/Unseen
 revenants/Unsought
 revenants/Unwanted
+revenants/Unforgettable
 
 runar/runes/Algiz
 runar/runes/Ansuz
@@ -555,6 +556,7 @@ vanilla/characters/Snake
 vanilla/characters/Deer
 vanilla/characters/Boar
 vanilla/characters/Elephant
+vanilla/characters/Big Enemy Eater Giant
 
 vanilla/support/Hibernation
 vanilla/support/See Red
@@ -580,8 +582,10 @@ vessels/support/Collective Memory
 vessels/support/Corporeal Recall
 vessels/support/Memorial Augury
 vessels/support/Memory Guide
-vessels/support/Remembering
+vessels/support/Recall
 vessels/support/Rememberance
+vessels/support/Remembering
+vessels/support/Rememories
 vessels/support/Rememory Guide
 vessels/support/Uncall For
 vessels/support/Unlock the Past

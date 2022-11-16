@@ -14,14 +14,12 @@
 			"Default",
 			"This is Activated"
 		],
-        "attackRestrictionsToIgnore": [
-            "Maximum Per Turn"
-        ]
+        "maxAttacks": 3
 	},
 	"n": 4,
-	"e": 8,
+	"e": 16,
 	"s": 10,
-	"w": 8,
+	"w": 4,
 	"subtypes": [
 		"Mech",
 		"Golem"

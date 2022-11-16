@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Bestower of Memories",
-	"effText": "When you attach a Memory to a Vessel, deck-> or discard->attach a copy of that Memory to a Vessel without a copy.",
+	"effText": "When you bestow a Memory unto a Vessel, deck-> or discard->bestow a copy unto a Vessel without one.",
 	"effects": [
 		{
             "blurb": "Bestow Memory",
