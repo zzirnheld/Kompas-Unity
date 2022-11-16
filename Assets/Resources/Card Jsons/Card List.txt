@@ -49,6 +49,7 @@ generic/Yank
 generic/Ethereate
 generic/Empowering Binds
 generic/Growth Through Adversity
+generic/Leyeater
 
 aquatic/support/Changing Tides
 aquatic/support/Fishing
