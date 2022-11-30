@@ -1,38 +1,36 @@
 {
 	"cardType": 65,
 	"cardName": "Tag",
-	"effText": "Bouncy.\nWhen I'm attached from one character to their enemy, draw 1 card and gain 1 pip.",
+	"effText": "Sticky.\nWhen I'm attached from one character to their enemy, draw 1 card and gain 1 pip.",
 	"effects": [
 		{
 			"triggerData": {
-				"blurb": "Bouncy!",
-				"triggerCondition": "Move",
+				"blurb": "Sticky!",
+				"triggerCondition": "Arrive",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"Augmented Card is Main Card"
-					]
+						"This Card in Play",
+						"Max Per Turn",
+						"Space Fits Restriction",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Different from Augmented Card"
+						]
+					},
+					"spaceRestriction": {
+						"spaceRestrictions": [
+							"Adjacent to Source"
+						],
+						"mustBeEmpty": false
+					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:CardTarget:",
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Character",
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Source"
-							]
-						},
-						"cardRestrictionElements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							}
-						]
-					}
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
 					"$type": "Subeffect:TargetThis:"

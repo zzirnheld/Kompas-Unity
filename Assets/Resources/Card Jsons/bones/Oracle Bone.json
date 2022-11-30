@@ -1,0 +1,28 @@
+{
+	"cardType": 67,
+	"cardName": "Oracle Bone",
+	"effText": "When I'm summoned, gain 1 pip.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type":"Subeffect:AddPips:",
+					"xModifier":1
+				}
+			]
+		}
+	],
+	"n": 0,
+	"e": 2,
+	"s": 2,
+	"w": 2,
+	"subtypeText": "Bone"
+}

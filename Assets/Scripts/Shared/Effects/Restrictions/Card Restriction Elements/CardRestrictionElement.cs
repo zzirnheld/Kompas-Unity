@@ -21,6 +21,21 @@ namespace KompasCore.Effects.Restrictions
 
     namespace CardRestrictionElements
     {
+
+        public class Not : CardRestrictionElement
+        {
+            public CardRestrictionElement element;
+
+            public override void Initialize(EffectInitializationContext initializationContext)
+            {
+                base.Initialize(initializationContext);
+                element.Initialize(initializationContext);
+            }
+
+            protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
+                => !element.FitsRestriction(card, context);
+        }
+
         public class CardExists : CardRestrictionElement
         {
             protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
@@ -146,20 +161,6 @@ namespace KompasCore.Effects.Restrictions
                 => card.MovementRestriction.IsValidEffectMove(destination.Item, context);
         }
 
-        public class Not : CardRestrictionElement
-        {
-            public CardRestrictionElement element;
-
-            public override void Initialize(EffectInitializationContext initializationContext)
-            {
-                base.Initialize(initializationContext);
-                element.Initialize(initializationContext);
-            }
-
-            protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
-                => !element.FitsRestriction(card, context);
-        }
-
         public class Fighting : CardRestrictionElement
         {
             /// <summary>
@@ -213,6 +214,20 @@ namespace KompasCore.Effects.Restrictions
         {
             protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
                 => card.Summoned;
+        }
+
+        public class Name : CardRestrictionElement
+        {
+            public string nameIs;
+            public string nameIncludes;
+
+            protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
+            {
+                if (nameIs != null && card.CardName != nameIs) return false;
+                if (nameIncludes != null && !card.CardName.Contains(nameIncludes)) return false;
+
+                return true;
+            }
         }
 
         public abstract class AugmentRestrictionBase : CardRestrictionElement

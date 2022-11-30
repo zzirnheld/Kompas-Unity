@@ -83,6 +83,13 @@ aquatic/water/Placid Waters
 aquatic/water/Tide Pools
 aquatic/water/Hungry Tide
 
+bones/Lengthening Elk
+bones/Cancerous Bone
+bones/Dancing Bone
+bones/Lucky Bone
+bones/Milk Bone
+bones/Oracle Bone
+
 crazy_ideas/ificators/A Frayed Knot
 crazy_ideas/ificators/Ballroom-Disco Breakdance Competition
 crazy_ideas/ificators/Just a Little Bit More

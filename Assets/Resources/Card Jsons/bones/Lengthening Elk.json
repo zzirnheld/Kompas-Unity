@@ -1,0 +1,73 @@
+{
+	"cardType": 67,
+	"cardName": "Lengthening Elk",
+	"effText": "When turns start, move me 1 space and deck->summon a Bone where I was.",
+	"effects": [
+		{
+			"blurb": "Lengthen",
+			"triggerData": {
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetTargetsSpace:"
+				},
+                {
+                    "$type":"Subeffect:TargetThis:"
+                },
+                {
+                    "$type":"Subeffect:SpaceTarget:",
+                    "spaceRestriction":
+                    {
+                        "blurb":"where Elk will lengthen to",
+                        "spaceRestrictions": [
+                            "Can Move Card Target to This Space",
+                            "Distance to Card Target Fits X Restriction"
+                        ],
+                        "distanceXRestriction": {"numberRestrictions": [ "=X" ] }
+                    },
+                    "xModifier":1
+                },
+                {
+                    "$type":"Subeffect:Move:"
+                }
+				{
+					"$type": "Subeffect:DeckTarget:",
+					"cardRestriction": {
+						"blurb": "Elk bone",
+						"cardRestrictions": [
+							"Deck",
+							"Character",
+							"Can be Played to Target Space"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Bone" ]
+							}
+						],
+						"canPlayIgnoring": [
+							"Adjacent to Friendly Card"
+						]
+					},
+                    "spaceIndex": -2
+				},
+				{
+					"$type": "Subeffect:Play:",
+                    "spaceIndex": -2
+				}
+			]
+		}
+	],
+	"n": 0,
+	"e": 1,
+	"s": 3,
+	"w": 4,
+	"subtypeText": "Skeleton Beast"
+}
