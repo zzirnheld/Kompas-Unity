@@ -19,6 +19,20 @@ namespace KompasCore.Effects.Restrictions
 
     namespace TriggerRestrictionElements
     {
+        public class Not : TriggerRestrictionElement
+        {
+            public TriggerRestrictionElement inverted;
+
+            public override void Initialize(EffectInitializationContext initializationContext)
+            {
+                base.Initialize(initializationContext);
+                inverted.Initialize(initializationContext);
+            }
+
+            protected override bool AbstractIsValidContext(ActivationContext context, ActivationContext secondaryContext)
+                => !inverted.IsValidContext(context, secondaryContext);
+        }
+
         public class ThisCardInPlay : TriggerRestrictionElement
         {
             protected override bool AbstractIsValidContext(ActivationContext context, ActivationContext secondaryContext)
@@ -71,6 +85,22 @@ namespace KompasCore.Effects.Restrictions
                 var second = secondCard.From(context, secondaryContext);
                 return first.Card == second.Card;
             }
+        }
+
+        public class PlayersMatch : TriggerRestrictionElement
+        {
+            public IActivationContextIdentity<Player> firstPlayer;
+            public IActivationContextIdentity<Player> secondPlayer;
+
+            public override void Initialize(EffectInitializationContext initializationContext)
+            {
+                base.Initialize(initializationContext);
+                firstPlayer.Initialize(initializationContext);
+                secondPlayer.Initialize(initializationContext);
+            }
+
+            protected override bool AbstractIsValidContext(ActivationContext context, ActivationContext secondaryContext)
+                => firstPlayer.From(context, secondaryContext) == secondPlayer.From(context, secondaryContext);
         }
 
         public class CompareNumbers : TriggerRestrictionElement

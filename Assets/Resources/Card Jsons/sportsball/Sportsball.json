@@ -1,11 +1,11 @@
 {
 	"cardType": 65,
 	"cardName": "Sportsball",
-	"effText": "Pass Back. Recoverable.\nThe first two times each turn this character moves, attach me to an adjacent character.",
+	"effText": "Pass Back. Recoverable.\nBouncy, twice each turn.",
 	"effects": [
 		{
 			"triggerData": {
-				"blurb": "Heads up!",
+				"blurb": "Bouncy!",
 				"triggerCondition": "Move",
 				"triggerRestriction": {
 					"triggerRestrictions": [

@@ -53,6 +53,7 @@ generic/Leyeater
 generic/Greedy Jar
 generic/Very Greedy Jar
 generic/Do You Understand How Greedy This Jar Is
+generic/Tag
 
 aquatic/support/Changing Tides
 aquatic/support/Fishing

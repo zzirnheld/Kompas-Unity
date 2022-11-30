@@ -51,4 +51,15 @@ namespace KompasCore.Effects.Identities.ActivationContextCardIdentities
         protected override GameCardBase AbstractItemFrom(ActivationContext contextToConsider)
             => contextToConsider.CauseCardInfoAfter;
     }
+
+    public class AugmentedCard : ActivationContextIdentityBase<GameCardBase>
+    {
+        public IActivationContextIdentity<GameCardBase> ofThisCard;
+
+        public override void Initialize(EffectInitializationContext initializationContext)
+        {
+            base.Initialize(initializationContext);
+            ofThisCard.Initialize(initializationContext);
+        }
+    }
 }

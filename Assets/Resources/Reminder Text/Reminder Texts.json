@@ -188,6 +188,14 @@
 		{
 			"keyword": "Trample",
 			"reminder": "When I deal X more damage than my defender has E, give enemies adjacent to them -X E."
+		},
+		{
+			"keyword": "Bouncy",
+			"reminder": "When this character arrives, attach me to an adjacent character."
+		},
+		{
+			"keyword": "Sticky",
+			"reminder": "When a character arrives adjacent to me, attach me to them. "
 		}
 	]
 }

@@ -1,0 +1,93 @@
+{
+	"cardType": 65,
+	"cardName": "Tag",
+	"effText": "Bouncy.\nWhen I'm attached from one character to their enemy, draw 1 card and gain 1 pip.",
+	"effects": [
+		{
+			"triggerData": {
+				"blurb": "Bouncy!",
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"Augmented Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Source"
+							]
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:TargetThis:"
+				},
+				{
+					"$type": "Subeffect:Attach:"
+				}
+			]
+		},
+		{
+			"triggerData": {
+				"blurb": "Tag! You're IT!",
+				"triggerCondition": "Augment Detached",
+				"triggerRestriction": {
+					"triggerRestrictionElements": [
+                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        {
+                            "$type": "Core.TriggerRestriction:PlayersMatch:",
+                            "firstCard": { 
+                                "$type": "ActivationContext.Player:ControllerOf:",
+                                "card": {
+                                    "$type": "ActivationContext.Card:AugmentedCard:",
+                                    "ofThisCard": { "$type": "ActivationContext.Card:MainCardBefore:" }
+                                }
+                            },
+                            "secondCard": {
+                                "$type": "ActivationContext.Player:ControllerOf:",
+                                "card": {
+                                    "$type": "Gamestate.Card:AugmentedCard:",
+                                    "ofThisCard": { "$type": "Gamestate.Card:ThisCard:" }
+                                }
+                            }
+                        }
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:Draw:"
+				},
+				{
+					"$type":"Subeffect:AddPips:",
+					"xModifier":1
+				}
+			]
+		}
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Augment Normal Restrictions"
+		],
+		"effectRestrictions": [
+			"Augment Effect Restrictions"
+		]
+	},
+	"a": 1,
+	"subtypeText": ""
+}
