@@ -84,11 +84,20 @@ aquatic/water/Tide Pools
 aquatic/water/Hungry Tide
 
 bones/Lengthening Elk
-bones/Cancerous Bone
-bones/Dancing Bone
-bones/Lucky Bone
-bones/Milk Bone
-bones/Oracle Bone
+
+bones/bones/Baleful Bone
+bones/bones/Boneus Bone
+bones/bones/Cancerous Bone
+bones/bones/Dancing Bone
+bones/bones/Lengthening Bone
+bones/bones/Lucky Bone
+bones/bones/Milk Bone
+bones/bones/Nervous Wishbone
+bones/bones/Oracle Bone
+bones/bones/Thigh Bone
+
+bones/support/Bonecasting
+bones/support/Boneseeing
 
 crazy_ideas/ificators/A Frayed Knot
 crazy_ideas/ificators/Ballroom-Disco Breakdance Competition

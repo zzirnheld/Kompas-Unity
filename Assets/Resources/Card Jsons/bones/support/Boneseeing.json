@@ -1,10 +1,10 @@
 {
 	"cardType": 83,
-	"cardName": "Well-Planned Defense",
-	"effText": "When turns start, hand->summon a Maya Structure to a space on the edge of the board, then draw 1 card.",
+	"cardName": "Boneseeing",
+	"effText": "When turns start, hand->summon a Bone and gain 1 pip.",
 	"effects": [
 		{
-            "blurb": "Planned construction",
+            "blurb": "Bonecast",
 			"triggerData": {
 				"triggerCondition": "Turn Start",
 				"triggerRestriction": {
@@ -18,7 +18,7 @@
 					"$type":"Subeffect:CardTarget:",
 					"cardRestriction":
 					{
-						"blurb":"for Well-Planned Defense to summon",
+						"blurb":"Bone to see pips in",
 						"cardRestrictions":["Character"],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
@@ -28,7 +28,7 @@
 							},
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
-								"subtypes": [ "Maya", "Structure" ]
+								"subtypes": [ "Bone" ]
 							}
 						]
 					}
@@ -36,8 +36,7 @@
 				{
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
-						"blurb": "Space on the edge of the board to play the Structure to",
-						"spaceRestrictions": [ "On Edge of Board" ],
+						"blurb": "where to put the bone",
                         "spaceRestrictionElements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {
@@ -51,19 +50,12 @@
 					"$type": "Subeffect:Play:"
 				},
 				{
-					"$type": "Subeffect:Draw:"
+					"$type":"Subeffect:AddPips:",
+					"xModifier":1
 				}
 			]
 		}
 	],
-	"c": 2,
-	"spellTypes": [
-		"Vanishing"
-	],
-	"subtypes": [
-		"Vanishing",
-		"Maya"
-	],
-	"subtypeText": "Maya Vanishing",
-	"duration": 3
+	"c": 1,
+	"subtypeText": ""
 }
