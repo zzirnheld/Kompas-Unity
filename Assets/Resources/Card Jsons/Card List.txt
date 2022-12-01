@@ -98,6 +98,8 @@ bones/bones/Thigh Bone
 
 bones/support/Bonecasting
 bones/support/Boneseeing
+bones/support/Knucklebones
+bones/support/Bone Integration
 
 crazy_ideas/ificators/A Frayed Knot
 crazy_ideas/ificators/Ballroom-Disco Breakdance Competition
