@@ -230,6 +230,20 @@ namespace KompasCore.Effects.Restrictions
             }
         }
 
+        public class DistinctName : CardRestrictionElement
+        {
+            public IActivationContextIdentity<GameCardBase> from = new Identities.GamestateCardIdentities.ThisCard();
+
+            public override void Initialize(EffectInitializationContext initializationContext)
+            {
+                base.Initialize(initializationContext);
+                from.Initialize(initializationContext);
+            }
+
+            protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
+                => from.From(context, default).CardName != card.CardName;
+        }
+
         public abstract class AugmentRestrictionBase : CardRestrictionElement
         {
             public CardRestriction cardRestriction;

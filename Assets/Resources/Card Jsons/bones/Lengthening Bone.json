@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
-	"cardName": "Lengthening Elk",
-	"effText": "When turns start, move me 1 space and deck->summon a Bone where I was.",
+	"cardName": "Lengthening Bone",
+	"effText": "When turns start, move your \"Lengthening Elk\" 1 space and deck->summon a Bone where it was.",
 	"effects": [
 		{
 			"blurb": "Lengthen",
@@ -14,9 +14,25 @@
 				}
 			},
 			"subeffects": [
-                {
-                    "$type":"Subeffect:TargetThis:"
-                },
+				{
+					"$type": "Subeffect:AutoTarget:",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Name:",
+								"nameIs": "Lengthening Elk"
+							}
+						]
+					}
+				},
 				{
 					"$type": "Subeffect:TargetTargetsSpace:"
 				},
@@ -65,10 +81,9 @@
 			]
 		}
 	],
-	"unique": true,
 	"n": 0,
-	"e": 1,
-	"s": 3,
-	"w": 4,
-	"subtypeText": "Skeleton Beast"
+	"e": 2,
+	"s": 2,
+	"w": 2,
+	"subtypeText": "Bone"
 }

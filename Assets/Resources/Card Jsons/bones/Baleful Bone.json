@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
-	"cardName": "Dancing Bone",
-	"effText": "When I'm summoned, give your \"Lengthening Elk\" and its Bones +1 N.",
+	"cardName": "Baleful Bone",
+	"effText": "When I'm summoned, your \"Lengthening Elk\" attacks an enemy adjacent to them.",
 	"effects": [
 		{
 			"triggerData": {
@@ -14,7 +14,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:ChangeAllCardStats:",
+					"$type": "Subeffect:AutoTarget:",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character"
@@ -30,28 +30,34 @@
 								"nameIs": "Lengthening Elk"
 							}
 						]
-					},
-					"nModifier": 1
+					}
 				},
 				{
-					"$type": "Subeffect:ChangeAllCardStats:",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
+						"blurb": "enemy character to attack",
 						"cardRestrictions": [
-							"Character"
+							"Character",
+							"Space Fits Restriction"
 						],
 						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
+							{ "$type": "Core.CardRestriction:Enemy:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
-							},
-							{
-								"$type": "Core.CardRestriction:SubtypesInclude:",
-								"subtypes": [ "Bone" ]
 							}
-						]
-					},
-					"nModifier": 1
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Card Target"
+							]
+						}
+					}
+				},
+				{
+					"$type": "Subeffect:Attack:",
+					"targetIndex": -1,
+					"attackerIndex": -2
 				}
 			]
 		}
