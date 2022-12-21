@@ -1,0 +1,65 @@
+{
+	"blurb": "Masquerade",
+    "activationRestriction": {
+        "activationRestrictionArray": [
+            "Max Times Per Turn",
+            "Default"
+        ],
+        "maxTimes": 2
+    },
+	"subeffects":[
+		{
+			"$type":"Subeffect:TargetThis:"
+        },
+        {
+            "$type": "Subeffect:CardTarget:",
+            "cardRestriction": {
+                "blurb": "Mask to swap out",
+                "cardRestrictions": [
+                    "Augment",
+                    "Augments Current Target"
+                ],
+                "cardRestrictionElements": [
+                    {
+                        "$type": "Core.CardRestriction:Location:",
+                        "locations": [ "Board" ]
+                    },
+                    {
+                        "$type": "Core.CardRestriction:SubtypesInclude:",
+                        "subtypes": [ "Mask" ]
+                    }
+                ]
+            }
+        },
+        {
+            "$type":"Subeffect:CardTarget:",
+            "cardRestriction":
+            {
+                "blurb": "Mask to swap for",
+                "cardRestrictions": [ "Augment" ],
+                "cardRestrictionElements": [
+                    {
+                        "$type": "Core.CardRestriction:Location:",
+                        "locations": [ "Hand" ]
+                    },
+                    {
+                        "$type": "Core.CardRestriction:SubtypesInclude:",
+                        "subtypes": [ "Mask" ]
+                    }
+                ]
+            }
+        },
+        {
+            "$type": "Subeffect:TargetThis:"
+        },
+        {
+            "$type": "Subeffect:Rehand:",
+            "targetIndex": -3
+        },
+        {
+            "$type": "Subeffect:Attach:",
+            "targetIndex": -2,
+            "targetToAttachTo": -1
+        }
+    ]
+}

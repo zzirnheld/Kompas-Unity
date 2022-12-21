@@ -196,6 +196,10 @@
 		{
 			"keyword": "Sticky",
 			"reminder": "When a character arrives adjacent to me, attach me to them. "
+		},
+		{
+			"keyword": "Masquerade",
+			"reminder": "Twice each turn, you can swap a Mask attached to me for one in your hand."
 		}
 	]
 }

@@ -32,3 +32,4 @@ Mech Ultimate Charge
 Undying
 Soullink
 Trample
+Masquerade
