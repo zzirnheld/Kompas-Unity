@@ -1,7 +1,7 @@
 {
 	"cardType": 65,
-	"cardName": "Mask of Underestimation",
-	"effText": "Mask.\nWhen this summon defends, give the attacker -5 W.",
+	"cardName": "Mask of the Spider",
+	"effText": "Mask.\nWhen this summon defends, give the attacker -3 NW.",
 	"effects": [
         {
             "blurb": "You underestimate me",
@@ -36,7 +36,8 @@
 				},
 				{
 					"$type": "Subeffect:ChangeCardStats:",
-					"wModifier": -5
+					"nModifier": -3,
+					"wModifier": -3
 				}
             ]
         }

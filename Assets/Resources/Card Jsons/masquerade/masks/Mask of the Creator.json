@@ -1,10 +1,10 @@
 {
 	"cardType": 65,
-	"cardName": "Mask of Ideation",
-	"effText": "Mask.\nWhen this character attacks an S X character, draw X cards.",
+	"cardName": "Mask of the Creator",
+	"effText": "Mask.\nWhen this character attacks an S X character, gain X pips.",
 	"effects": [
 		{
-			"blurb": "Dance of Ideation",
+			"blurb": "Dance of Creation",
 			"triggerData": {
 				"triggerCondition": "Attack",
 				"triggerRestriction": {
@@ -34,7 +34,7 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "Subeffect:DrawX:",
+					"$type": "Subeffect:AddPips:",
 					"xMultiplier": 1
 				}
 			]
