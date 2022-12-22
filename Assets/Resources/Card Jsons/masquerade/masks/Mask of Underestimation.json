@@ -1,7 +1,7 @@
 {
 	"cardType": 65,
 	"cardName": "Mask of Underestimation",
-	"effText": "When this summon defends, give the attacker -5 W.",
+	"effText": "Mask.\nWhen this summon defends, give the attacker -5 W.",
 	"effects": [
         {
             "blurb": "You underestimate me",
@@ -43,11 +43,23 @@
 	],
 	"PlayRestriction": {
 		"normalRestrictions": [
-			"Augment Normal Restrictions"
+			"Augment Normal Restrictions",
+			"On Card that Fits Restriction"
 		],
 		"effectRestrictions": [
-			"Augment Effect Restrictions"
-		]
+			"Augment Effect Restrictions",
+			"On Card that Fits Restriction"
+		],
+		"onCardRestriction": {
+            "cardRestrictions": [
+                "Wields No Augment Fitting Restriction"
+            ],
+            "augmentRestriction": {
+                "cardRestrictions": [
+                    "Same Name as Source"
+                ]
+            }
+		}
 	},
 	"a": 3,
 	"subtypeText": "Mask"

@@ -1,7 +1,7 @@
 {
 	"cardType": 65,
 	"cardName": "Mask of the Enemy",
-	"effText": "When this summon defends, give their attacker's Avatar -5 E.",
+	"effText": "Mask.\nWhen this summon defends, give their attacker's Avatar -5 E.",
 	"effects": [
         {
             "blurb": "You underestimate me",
@@ -55,11 +55,23 @@
 	],
 	"PlayRestriction": {
 		"normalRestrictions": [
-			"Augment Normal Restrictions"
+			"Augment Normal Restrictions",
+			"On Card that Fits Restriction"
 		],
 		"effectRestrictions": [
-			"Augment Effect Restrictions"
-		]
+			"Augment Effect Restrictions",
+			"On Card that Fits Restriction"
+		],
+		"onCardRestriction": {
+            "cardRestrictions": [
+                "Wields No Augment Fitting Restriction"
+            ],
+            "augmentRestriction": {
+                "cardRestrictions": [
+                    "Same Name as Source"
+                ]
+            }
+		}
 	},
 	"a": 3,
 	"subtypeText": "Mask"

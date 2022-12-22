@@ -200,6 +200,10 @@
 		{
 			"keyword": "Masquerade",
 			"reminder": "Twice each turn, you can swap a Mask attached to me for one in your hand."
+		},
+		{
+			"keyword": "Mask",
+			"reminder": "Characters can only wear one Mask."
 		}
 	]
 }

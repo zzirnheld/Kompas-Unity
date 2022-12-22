@@ -1,7 +1,7 @@
 {
 	"cardType": 65,
 	"cardName": "Mask of Ideation",
-	"effText": "When this character attacks an S X character, draw X cards.",
+	"effText": "Mask.\nWhen this character attacks an S X character, draw X cards.",
 	"effects": [
 		{
 			"blurb": "Dance of Ideation",
@@ -42,11 +42,23 @@
 	],
 	"PlayRestriction": {
 		"normalRestrictions": [
-			"Augment Normal Restrictions"
+			"Augment Normal Restrictions",
+			"On Card that Fits Restriction"
 		],
 		"effectRestrictions": [
-			"Augment Effect Restrictions"
-		]
+			"Augment Effect Restrictions",
+			"On Card that Fits Restriction"
+		],
+		"onCardRestriction": {
+            "cardRestrictions": [
+                "Wields No Augment Fitting Restriction"
+            ],
+            "augmentRestriction": {
+                "cardRestrictions": [
+                    "Same Name as Source"
+                ]
+            }
+		}
 	},
 	"a": 5,
 	"subtypeText": "Mask"
