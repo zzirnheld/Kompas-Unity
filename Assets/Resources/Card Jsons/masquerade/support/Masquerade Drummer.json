@@ -1,0 +1,52 @@
+{
+	"cardType": 67,
+	"cardName": "Masquerade Drummer",
+	"effText": "When a Dancer attacks normally, then attack the same character a second time.",
+	"effects": [
+		{
+			"blurb": "Drum Attack",
+			"triggerData": {
+				"triggerCondition": "Attack",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before",
+						"No Stackable"
+					],
+					"cardRestriction": {
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Dancer" ]
+							}
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetTriggeringCard:"
+				},
+				{
+					"$type": "Subeffect:TargetTriggeringCard:",
+                    "secondary": true
+				},
+				{
+					"$type": "Subeffect:Attack:",
+					"targetIndex": -1,
+					"attackerIndex": -2
+				}
+			]
+		}
+	],
+	"n": 3,
+	"e": 5,
+	"s": 3,
+	"w": 1,
+	"subtypeText": "Masked Musician"
+}
