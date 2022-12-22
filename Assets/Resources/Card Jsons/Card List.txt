@@ -240,6 +240,25 @@ linewalkers/Leygrapple
 linewalkers/Golden Linewalker
 linewalkers/Orange Linewalker
 
+masquerade/dancers/Durable Dancer
+masquerade/dancers/Nimble Dancer
+masquerade/dancers/Wily Dancer
+
+masquerade/masks/Mask of Enemy Ancestors
+masquerade/masks/Mask of the Creator
+masquerade/masks/Mask of the Earthfather
+masquerade/masks/Mask of the Spider
+masquerade/masks/Mask of the Stormmother
+masquerade/masks/Mask of the Superself
+masquerade/masks/Mask of the Tinkerer
+
+masquerade/support/Ancestral Spincloak
+masquerade/support/Begin the Masquerade
+masquerade/support/Endless Dance
+masquerade/support/Masquerade Drummer
+masquerade/support/Masquerade Singer
+masquerade/support/Masquerade
+
 maya/The Feathered Serpent
 maya/The World Turtle
 
