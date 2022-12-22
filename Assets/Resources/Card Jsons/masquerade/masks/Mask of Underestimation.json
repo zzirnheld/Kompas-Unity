@@ -1,0 +1,54 @@
+{
+	"cardType": 65,
+	"cardName": "Mask of Underestimation",
+	"effText": "When this summon defends, give the attacker -5 W.",
+	"effects": [
+        {
+            "blurb": "You underestimate me",
+            "triggerData":
+            {
+                "triggerCondition": "Defend",
+                "triggerRestriction": {
+                    "triggerRestrictionElements": [
+                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardsMatch:",
+                            "firstCard": { "$type": "ActivationContext.Card:MainCardBefore:" },
+                            "secondCard": {
+                                "$type": "Gamestate.Card:AugmentedCard:",
+                                "ofThisCard": { "$type": "Gamestate.Card:ThisCard:" }
+                            }
+                        },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "ActivationContext.Card:MainCardBefore:" },
+                            "cardRestriction": {
+                                "cardRestrictionElements": [ { "$type": "Core.CardRestriction:Summoned:" } ]
+                            }
+                        }
+                    ]
+                }
+            },
+            "subeffects":[
+				{
+					"$type":"Subeffect:TargetTriggeringCard:",
+					"secondary":true
+				},
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"wModifier": -5
+				}
+            ]
+        }
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Augment Normal Restrictions"
+		],
+		"effectRestrictions": [
+			"Augment Effect Restrictions"
+		]
+	},
+	"a": 3,
+	"subtypeText": "Mask"
+}
