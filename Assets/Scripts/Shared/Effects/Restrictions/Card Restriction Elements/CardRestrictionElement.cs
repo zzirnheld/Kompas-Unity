@@ -80,6 +80,18 @@ namespace KompasCore.Effects.Restrictions
                 => card.CardType == 'C';
         }
 
+        public class Spell : CardRestrictionElement
+        {
+            protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
+                => card.CardType == 'S';
+        }
+
+        public class Augment : CardRestrictionElement
+        {
+            protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
+                => card.CardType == 'A';
+        }
+
         public class Location : CardRestrictionElement
         {
             public string[] locations;

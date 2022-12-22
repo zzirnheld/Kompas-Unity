@@ -1,0 +1,82 @@
+{
+	"cardType": 83,
+	"cardName": "Masquerade",
+	"effText": "Once each turn, you can hand a Dancer's Mask to deck->attach a Mask to that Dancer.",
+	"effects": [
+		{
+			"blurb": "Continue the masquerade",
+			"activationRestriction": {
+				"activationRestrictionArray": [
+					"Max Times Per Turn",
+					"Default"
+				]
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "Mask to be replaced",
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{ "$type": "Core.CardRestriction:Augment:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+                            {
+                                "$type": "Core.CardRestriction:SubtypesInclude:",
+                                "subtypes": [ "Mask" ]
+                            },
+							{
+								"$type": "Core.CardRestriction:Augments:",
+                                "cardRestriction": {
+                                    "cardRestrictionElements": [
+                                        {
+                                            "$type": "Core.CardRestriction:SubtypesInclude:",
+                                            "subtypes": [ "Dancer" ]
+                                        }
+                                    ]
+                                }
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:TargetTargetsAugmentedCard:"
+				},
+				{
+					"$type": "Subeffect:TargetTargetsSpace:"
+				},
+				{
+					"$type": "Subeffect:Rehand:",
+					"targetIndex": -2
+				},
+				{
+					"$type": "Subeffect:ChooseFromList:",
+					"cardRestriction": {
+						"blurb": "new Mask",
+						"cardRestrictions": [
+							"Deck",
+							"Augment"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Mask" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:Play:"
+				}
+			]
+		}
+	],
+	"c": 3,
+	"spellTypes": [
+		"Enchant"
+	],
+	"subtypeText": "Enchant"
+}
