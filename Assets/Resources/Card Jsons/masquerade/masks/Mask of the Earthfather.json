@@ -1,0 +1,64 @@
+{
+	"cardType": 65,
+	"cardName": "Mask of the Earthfather",
+	"effText": "Mask.\nWhen this S X character attacks, give them +X E.",
+	"effects": [
+		{
+			"blurb": "Dance of Humus",
+			"triggerData": {
+				"triggerCondition": "Attack",
+				"triggerRestriction": {
+					"triggerRestrictionElements": [
+                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardsMatch:",
+                            "firstCard": {
+                                "$type": "Gamestate.Card:AugmentedCard:",
+                                "ofThisCard": { "$type": "Gamestate.Card:ThisCard:" }
+                            },
+                            "secondCard": { "$type": "ActivationContext.Card:MainCardBefore:" }
+                        }
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type":"Subeffect:TargetTriggeringCard:"
+				},
+				{
+					"$type": "Subeffect:SetXByTargetCardValue:",
+					"cardValue": {
+						"value": "S"
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"eMultiplier": 1
+				}
+			]
+		}
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Augment Normal Restrictions",
+			"On Card that Fits Restriction"
+		],
+		"effectRestrictions": [
+			"Augment Effect Restrictions",
+			"On Card that Fits Restriction"
+		],
+		"onCardRestriction": {
+            "cardRestrictions": [
+                "Wields No Augment Fitting Restriction"
+            ],
+            "augmentRestriction": {
+                "cardRestrictions": [
+                    "Same Name as Source"
+                ]
+            }
+		}
+	},
+	"a": 5,
+	"subtypeText": "Mask"
+}
