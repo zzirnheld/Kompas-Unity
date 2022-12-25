@@ -6,6 +6,27 @@ namespace KompasCore.Effects.Identities
 {
     namespace GamestateManySpacesIdentities
     {
+        public class All : NoActivationContextIdentityBase<IReadOnlyCollection<Space>>
+        {
+            protected override IReadOnlyCollection<Space> AbstractItem => Space.Spaces.ToList();
+        }
+
+        public class FittingRestriction : NoActivationContextIdentityBase<IReadOnlyCollection<Space>>
+        {
+            public SpaceRestriction restriction;
+            public NoActivationContextIdentityBase<IReadOnlyCollection<Space>> spaces = new All();
+
+            public override void Initialize(EffectInitializationContext initializationContext)
+            {
+                base.Initialize(initializationContext);
+                restriction.Initialize(initializationContext);
+                spaces.Initialize(initializationContext);
+            }
+
+            protected override IReadOnlyCollection<Space> AbstractItem
+                => spaces.Item.Where(s => restriction.IsValidSpace(s, InitializationContext.effect?.CurrActivationContext)).ToList();
+        }
+
         public class PositionsOfEach : NoActivationContextIdentityBase<IReadOnlyCollection<Space>>
         {
             public INoActivationContextIdentity<IReadOnlyCollection<GameCardBase>> cards;

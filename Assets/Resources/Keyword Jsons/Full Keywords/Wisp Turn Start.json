@@ -10,30 +10,48 @@
 	},
 	"subeffects":[
 		{
-			"$type": "Subeffect:TargetAllCardsIdentitySubeffect:",
-			"cardsIdentity": {
-				"$type": "Gamestate.ManyCards:FittingRestriction:",
-				"cardRestriction": {
-					"cardRestrictionElements": [
-						{
-							"$type": "Core.CardRestriction:SubtypesInclude:",
-							"subtypes": [ "Water" ]
+			"$type": "Subeffect:AutoTargetSpaceIdentity:",
+			"subeffectSpaceIdentity": {
+				"$type": "Gamestate.ManyCards:SelectFromMany:",
+				"selector": { "$type": "KompasCore.Effects.Selectors.RandomSelector, Assembly-CSharp" },
+				"spaces": {
+					"$type": "Gamestate.ManySpaces:CompareDistance:",
+					"distanceTo": { 
+						"$type": "Subeffect.Space:PositionOf:",
+						"whosePosition": { "$type": "Gamestate.Card:ThisCard:" }
+					},
+					"spaces": {
+						"$type": "Gamestate.ManySpaces:PositionsOfEach:",
+						"cards": {
+							"$type": "Gamestate.ManyCards:FittingRestriction:",
+							"cardRestriction": {
+								"cardRestrictionElements": [ { "$type": "Core.CardRestriction:Enemy:" } ]
+							}
 						}
-					]
+					}
 				}
 			}
 		},
 		{
-			"$type":"Subeffect:SpaceTarget:",
-			"spaceRestriction":
-			{
-				"blurb":"where Wisp to move",
-				"spaceRestrictions":["Can Move Card Target to This Space","Distance to Card Target Fits X Restriction"],
-				"distanceXRestriction":{
-					"numberRestrictions":["=X"]
+			"$type": "Subeffect:AutoTargetSpaceIdentity:",
+			"subeffectSpaceIdentity": {
+				"$type": "Gamestate.Space:SelectFromMany:",
+				"selector": { "$type": "KompasCore.Effects.Selectors.RandomSelector, Assembly-CSharp" },
+				"spaces": {
+					"$type": "Gamestate.ManySpaces:CompareDistance:",
+					"distanceTo": { "$type": "Subeffect.Space:Target:" },
+					"spaces": {
+						"$type": "Gamestate.ManySpaces:AdjacentSpaces:",
+						"adjacentTo": {
+							"$type": "Subeffect.Space:PositionOf:",
+							"whosePosition": { "$type": "Gamestate.Card:ThisCard:" }
+						}
+					}
 				}
-			},
-			"xModifier":1
+			}
+		},
+		{
+			"$type": "Subeffect:TargetThis:"
 		},
 		{
 			"$type":"Subeffect:Move:"

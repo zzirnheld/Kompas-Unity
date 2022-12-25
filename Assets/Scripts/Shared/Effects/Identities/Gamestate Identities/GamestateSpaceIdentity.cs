@@ -22,7 +22,7 @@ namespace KompasCore.Effects.Identities
         public class SelectFromMany : NoActivationContextIdentityBase<Space>
         {
             public INoActivationContextIdentity<IReadOnlyCollection<Space>> spaces;
-            public Selector selector;
+            public ISelector<Space> selector;// = new RandomSelector<Space>();
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {
@@ -30,7 +30,7 @@ namespace KompasCore.Effects.Identities
                 spaces.Initialize(initializationContext);
             }
 
-            protected override Space AbstractItem => selector.Select<Space>(spaces.Item);
+            protected override Space AbstractItem => selector.Select(spaces.Item);
         }
     }
 }

@@ -5,21 +5,21 @@ namespace KompasServer.Effects
 {
     public class AutoTargetSpaceIdentitySubeffect : ServerSubeffect
     {
-        public INoActivationContextIdentity<Space> spaceIdentity;
+            public INoActivationContextIdentity<Space> subeffectSpaceIdentity;
 
-        public override void Initialize(ServerEffect eff, int subeffIndex)
-        {
-            base.Initialize(eff, subeffIndex);
-            spaceIdentity.Initialize(initializationContext: DefaultInitializationContext);
-        }
+            public override void Initialize(ServerEffect eff, int subeffIndex)
+            {
+                base.Initialize(eff, subeffIndex);
+                subeffectSpaceIdentity.Initialize(initializationContext: DefaultInitializationContext);
+            }
 
-        public override Task<ResolutionInfo> Resolve()
-        {
-            var space = spaceIdentity.Item;
-            if (space == null) return Task.FromResult(ResolutionInfo.Impossible(NoValidSpaceTarget));
+            public override Task<ResolutionInfo> Resolve()
+            {
+                var space = subeffectSpaceIdentity.Item;
+                if (space == null) return Task.FromResult(ResolutionInfo.Impossible(NoValidCardTarget));
 
-            Effect.AddSpace(space);
-            return Task.FromResult(ResolutionInfo.Next);
-        }
+                Effect.AddSpace(space);
+                return Task.FromResult(ResolutionInfo.Next);
+            }
     }
 }
