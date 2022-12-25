@@ -22,17 +22,21 @@
 				{
 					"$type": "Subeffect:TargetAllCardsIdentity:",
 					"cardsIdentity": {
-						"$type": "Subeffect.ManyCards:CardsInPositions:",
+						"$type": "Gamestate.ManyCards:CardsInPositions:",
 						"positions": {
-							"$type": "Subeffect.ManySpaces:ThreeSpaceRelationship:",
+							"$type": "Gamestate.ManySpaces:ThreeSpaceRelationship:",
 							"firstSpace": {
-								"$type": "ActivationContext.Space:PositionOf:",
-								"whosePosition": {
-									"$type": "ActivationContext.Card:MainCardBefore:"
+								"$type": "Subeffect.Card:FromActivationContext:",
+								"cardFromContext": {
+									"$type": "ActivationContext.Space:PositionOf:",
+									"whosePosition": {
+										"$type": "ActivationContext.Card:MainCardBefore:"
+									}
 								}
 							},
 							"secondSpace": {
-								"$type": "ActivationContext.Space:ContextSpace:"
+								"$type": "Subeffect.Space:FromActivationContext:",
+								"space": { "$type": "ActivationContext.Space:ContextSpace:" }
 							},
 							"thirdSpaceRelationship": { "$type": "ThreeSpaceRelationships:Between:" }
 						}

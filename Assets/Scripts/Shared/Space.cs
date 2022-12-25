@@ -60,7 +60,7 @@ public class Space
     public Space DisplacementTo(Space other) => new Space(other.x - x, other.y - y);
 
     public bool AdjacentTo(Space other) => DistanceTo(other) == 1;
-    public IEnumerable<Space> AdjacentSpaces
+    public IReadOnlyCollection<Space> AdjacentSpaces
     {
         get
         {

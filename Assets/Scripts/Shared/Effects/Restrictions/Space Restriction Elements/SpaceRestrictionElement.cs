@@ -75,7 +75,7 @@ namespace KompasCore.Effects.Restrictions
         /// </summary>
         public class AdjacentTo : SpaceRestrictionElement
         {
-            public INoActivationContextIdentity<ICollection<GameCardBase>> anyOfTheseCards;
+            public INoActivationContextIdentity<IReadOnlyCollection<GameCardBase>> anyOfTheseCards;
             public INoActivationContextIdentity<GameCardBase> card;
             public INoActivationContextIdentity<Space> space;
 
@@ -191,8 +191,8 @@ namespace KompasCore.Effects.Restrictions
 
         public class ConnectedTo : SpaceRestrictionElement
         {
-            public INoActivationContextIdentity<ICollection<Space>> spaces;
-            public INoActivationContextIdentity<ICollection<Space>> anyOfTheseSpaces;
+            public INoActivationContextIdentity<IReadOnlyCollection<Space>> spaces;
+            public INoActivationContextIdentity<IReadOnlyCollection<Space>> anyOfTheseSpaces;
             public SpaceRestriction byRestriction;
 
             public override void Initialize(EffectInitializationContext initializationContext)
@@ -214,8 +214,8 @@ namespace KompasCore.Effects.Restrictions
         public class InAOEOf : SpaceRestrictionElement
         {
             public INoActivationContextIdentity<GameCardBase> card;
-            public INoActivationContextIdentity<ICollection<GameCardBase>> anyOf;
-            public INoActivationContextIdentity<ICollection<GameCardBase>> allOf;
+            public INoActivationContextIdentity<IReadOnlyCollection<GameCardBase>> anyOf;
+            public INoActivationContextIdentity<IReadOnlyCollection<GameCardBase>> allOf;
 
             public INoActivationContextIdentity<int> minAnyOfCount;
 

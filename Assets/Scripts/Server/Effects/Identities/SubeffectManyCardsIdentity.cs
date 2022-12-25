@@ -23,30 +23,9 @@ namespace KompasServer.Effects.Identities
                 .ToArray();
         }
 
-        public class CardsInPositions : SubeffectIdentityBase<ICollection<GameCardBase>>
+        public class FromActivationContext : SubeffectIdentityBase<IReadOnlyCollection<GameCardBase>>
         {
-            public INoActivationContextIdentity<ICollection<Space>> positions;
-
-            public override void Initialize(EffectInitializationContext initializationContext)
-            {
-                base.Initialize(initializationContext);
-                positions.Initialize(initializationContext);
-            }
-
-            protected override ICollection<GameCardBase> AbstractItem
-            {
-                get
-                {
-                    var spaces = positions.Item;
-                    var cards = spaces.Select(InitializationContext.game.BoardController.GetCardAt).Where(s => s != null).ToArray();
-                    return cards;
-                }
-            }
-        }
-
-        public class FromActivationContext : SubeffectIdentityBase<ICollection<GameCardBase>>
-        {
-            public IActivationContextIdentity<ICollection<GameCardBase>> cardsFromContext;
+            public IActivationContextIdentity<IReadOnlyCollection<GameCardBase>> cardsFromContext;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {
@@ -54,7 +33,7 @@ namespace KompasServer.Effects.Identities
                 cardsFromContext.Initialize(initializationContext);
             }
 
-            protected override ICollection<GameCardBase> AbstractItem
+            protected override IReadOnlyCollection<GameCardBase> AbstractItem
                 => cardsFromContext.From(InitializationContext.subeffect.CurrentContext, default);
         }
     }

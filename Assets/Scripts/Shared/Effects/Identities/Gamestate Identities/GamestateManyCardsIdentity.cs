@@ -6,7 +6,7 @@ namespace KompasCore.Effects.Identities
 {
     namespace GamestateManyCardsIdentities
     {
-        public class FittingRestriction : NoActivationContextIdentityBase<ICollection<GameCardBase>>
+        public class FittingRestriction : NoActivationContextIdentityBase<IReadOnlyCollection<GameCardBase>>
         {
             public CardRestriction cardRestriction;
 
@@ -16,11 +16,11 @@ namespace KompasCore.Effects.Identities
                 cardRestriction.Initialize(initializationContext);
             }
 
-            protected override ICollection<GameCardBase> AbstractItem
+            protected override IReadOnlyCollection<GameCardBase> AbstractItem
                 => InitializationContext.game.Cards.Where(c => cardRestriction.IsValidCard(c, default)).ToArray();
         }
 
-        public class Multiple : NoActivationContextIdentityBase<ICollection<GameCardBase>>
+        public class Multiple : NoActivationContextIdentityBase<IReadOnlyCollection<GameCardBase>>
         {
             public INoActivationContextIdentity<GameCardBase>[] cards;
 
@@ -30,7 +30,28 @@ namespace KompasCore.Effects.Identities
                 foreach (var i in cards) i.Initialize(initializationContext);
             }
 
-            protected override ICollection<GameCardBase> AbstractItem => cards.Select(s => s.Item).ToArray();
+            protected override IReadOnlyCollection<GameCardBase> AbstractItem => cards.Select(s => s.Item).ToArray();
+        }
+
+        public class CardsInPositions : NoActivationContextIdentityBase<IReadOnlyCollection<GameCardBase>>
+        {
+            public INoActivationContextIdentity<IReadOnlyCollection<Space>> positions;
+
+            public override void Initialize(EffectInitializationContext initializationContext)
+            {
+                base.Initialize(initializationContext);
+                positions.Initialize(initializationContext);
+            }
+
+            protected override IReadOnlyCollection<GameCardBase> AbstractItem
+            {
+                get
+                {
+                    var spaces = positions.Item;
+                    var cards = spaces.Select(InitializationContext.game.BoardController.GetCardAt).Where(s => s != null).ToArray();
+                    return cards;
+                }
+            }
         }
     }
 }

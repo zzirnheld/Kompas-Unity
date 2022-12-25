@@ -259,7 +259,7 @@ namespace KompasCore.Effects.Restrictions
         public abstract class AugmentRestrictionBase : CardRestrictionElement
         {
             public CardRestriction cardRestriction;
-            public IActivationContextIdentity<ICollection<GameCardBase>> augments;
+            public IActivationContextIdentity<IReadOnlyCollection<GameCardBase>> augments;
             public IActivationContextIdentity<GameCardBase> augment;
 
             private static bool AllNull(params object[] objs) => objs.All(o => o == null);

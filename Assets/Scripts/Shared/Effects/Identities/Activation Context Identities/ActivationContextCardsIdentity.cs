@@ -8,7 +8,7 @@ namespace KompasCore.Effects.Identities
     {
         public class CardsInPositions : ActivationContextIdentityBase<ICollection<GameCardBase>>
         {
-            public IActivationContextIdentity<ICollection<Space>> positions;
+            public IActivationContextIdentity<IReadOnlyCollection<Space>> positions;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {

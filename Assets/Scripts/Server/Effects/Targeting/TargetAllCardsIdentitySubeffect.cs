@@ -7,7 +7,7 @@ namespace KompasServer.Effects
 {
     public class TargetAllCardsIdentitySubeffect : ServerSubeffect
     {
-        public INoActivationContextIdentity<ICollection<GameCardBase>> cardsIdentity;
+        public IActivationContextIdentity<IReadOnlyCollection<GameCardBase>> cardsIdentity;
 
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
@@ -17,7 +17,7 @@ namespace KompasServer.Effects
 
         public override Task<ResolutionInfo> Resolve()
         {
-            var cards = cardsIdentity.Item;
+            var cards = cardsIdentity.From(CurrentContext, CurrentContext);
             if (cards.Count == 0) return Task.FromResult(ResolutionInfo.Impossible(NoValidCardTarget));
 
             foreach (var card in cards)

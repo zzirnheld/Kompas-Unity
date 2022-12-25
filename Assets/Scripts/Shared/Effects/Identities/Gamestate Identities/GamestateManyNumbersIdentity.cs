@@ -8,7 +8,7 @@ namespace KompasCore.Effects.Identities
         public class Distances : NoActivationContextIdentityBase<ICollection<int>>
         {
             public INoActivationContextIdentity<Space> origin;
-            public INoActivationContextIdentity<ICollection<Space>> destinations;
+            public INoActivationContextIdentity<IReadOnlyCollection<Space>> destinations;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {

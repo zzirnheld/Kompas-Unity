@@ -22,38 +22,9 @@ namespace KompasServer.Effects.Identities
                 => Space.Spaces.Where(s => spaceRestriction.IsValidSpace(s, default)).ToArray();
         }
 
-        /// <summary>
-        /// Spaces where they are in some defined relationship with respect to the other two defined spaces.
-        /// For example, spaces that are between (relationship) the source card's space and the target space (two defined spaces).
-        /// </summary>
-        public class ThreeSpaceRelationship : SubeffectIdentityBase<ICollection<Space>>
-        {
-            public INoActivationContextIdentity<Space> firstSpace;
-            public INoActivationContextIdentity<Space> secondSpace;
-
-            public IThreeSpaceRelationship thirdSpaceRelationship;
-
-            public override void Initialize(EffectInitializationContext initializationContext)
-            {
-                base.Initialize(initializationContext);
-                firstSpace.Initialize(initializationContext);
-                secondSpace.Initialize(initializationContext);
-            }
-
-            protected override ICollection<Space> AbstractItem
-            {
-                get
-                {
-                    Space first = firstSpace.Item;
-                    Space second = secondSpace.Item;
-                    return Space.Spaces.Where(space => thirdSpaceRelationship.Evaluate(first, second, space)).ToArray();
-                }
-            }
-        }
-
         public class PositionsOfEach : SubeffectIdentityBase<ICollection<Space>>
         {
-            public INoActivationContextIdentity<ICollection<GameCardBase>> cards;
+            public INoActivationContextIdentity<IReadOnlyCollection<GameCardBase>> cards;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {

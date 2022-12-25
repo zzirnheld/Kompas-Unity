@@ -5,19 +5,19 @@ namespace KompasCore.Effects.Identities
 {
     public interface INumberSelector
     {
-        public int Apply(ICollection<int> numbers);
+        public int Apply(IReadOnlyCollection<int> numbers);
     }
 
     namespace NumberSelectors
     {
         public class Maximum : INumberSelector
         {
-            public int Apply(ICollection<int> numbers) => numbers.Max();
+            public int Apply(IReadOnlyCollection<int> numbers) => numbers.Max();
         }
 
         public class Minimum : INumberSelector
         {
-            public int Apply(ICollection<int> numbers) => numbers.Min();
+            public int Apply(IReadOnlyCollection<int> numbers) => numbers.Min();
         }
     }
 }

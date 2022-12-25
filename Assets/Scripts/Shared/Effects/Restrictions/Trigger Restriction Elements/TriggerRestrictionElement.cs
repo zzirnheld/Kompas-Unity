@@ -175,7 +175,7 @@ namespace KompasCore.Effects.Restrictions
         public class SpacesFitRestriction : TriggerRestrictionElement
         {
             public SpaceRestriction spaceRestriction;
-            public IActivationContextIdentity<ICollection<Space>> spaces;
+            public IActivationContextIdentity<IReadOnlyCollection<Space>> spaces;
 
             public bool any = false;
 

@@ -15,10 +15,11 @@ namespace KompasServer.Effects.Identities
             protected override int AbstractItem
                 => (InitializationContext.subeffect.Effect.X * multiplier / divisor) + modifier;
         }
+        
         public class Selector : SubeffectIdentityBase<int>
         {
             public INumberSelector selector;
-            public INoActivationContextIdentity<ICollection<int>> numbers;
+            public INoActivationContextIdentity<IReadOnlyCollection<int>> numbers;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {

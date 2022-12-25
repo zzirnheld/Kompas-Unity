@@ -10,7 +10,18 @@
 	},
 	"subeffects":[
 		{
-			"$type":"Subeffect:TargetThis:"
+			"$type": "Subeffect:TargetAllCardsIdentitySubeffect:",
+			"cardsIdentity": {
+				"$type": "Gamestate.ManyCards:FittingRestriction:",
+				"cardRestriction": {
+					"cardRestrictionElements": [
+						{
+							"$type": "Core.CardRestriction:SubtypesInclude:",
+							"subtypes": [ "Water" ]
+						}
+					]
+				}
+			}
 		},
 		{
 			"$type":"Subeffect:SpaceTarget:",
