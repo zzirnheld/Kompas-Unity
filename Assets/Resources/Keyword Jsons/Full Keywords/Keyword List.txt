@@ -11,8 +11,7 @@ Machinations Reup
 Comeback Play
 Supplicant
 Weather Condition Cast
-Wisp Summon
-Wisp Turn Start
+Wisp
 Flashback
 Wanderer
 Waterdweller

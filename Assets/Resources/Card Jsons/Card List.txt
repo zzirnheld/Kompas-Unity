@@ -679,3 +679,5 @@ weather/skyknights/Magerybinder
 weather/skyknights/Passingbinder
 weather/skyknights/Pactbinder
 weather/skyknights/Skybinder
+
+wisps/wisps/Prickiwisp

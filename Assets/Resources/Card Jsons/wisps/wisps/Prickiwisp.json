@@ -1,0 +1,13 @@
+{
+	"cardType": 67,
+	"cardName": "Prickiwisp",
+	"effText": "Wisp.\nAfter I move, give adjacent enemies -1 E.",
+	"effects": [],
+	"keywords": [ "Wisp" ],
+	"n": 0,
+	"e": 2,
+	"s": 2,
+	"w": 0,
+	"subtypes": [ "Wisp" ],
+	"subtypeText": "Wisp"
+}

@@ -9,22 +9,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using UnityEngine;
+using System.IO;
 
 public class CardRepository : MonoBehaviour
 {
-    public const string cardJsonsFolderPath = "Card Jsons/";
-    public const string cardListFilePath = cardJsonsFolderPath + "Card List";
+    public const string cardJsonsFolderPath = "Card Jsons";
+    public static readonly string cardListFilePath = Path.Combine(cardJsonsFolderPath, "Card List");
 
-    public const string keywordJsonsFolderPath = "Keyword Jsons/Full Keywords/";
-    public const string keywordListFilePath = keywordJsonsFolderPath + "Keyword List";
+    public static readonly string keywordJsonsFolderPath = Path.Combine("Keyword Jsons","Full Keywords");
+    public static readonly string keywordListFilePath = Path.Combine(keywordJsonsFolderPath, "Keyword List");
 
-    public const string partialKeywordFolderPath = "Keyword Jsons/Partial Keywords/";
-    public const string partialKeywordListFilePath = partialKeywordFolderPath + "Keyword List";
+    public static readonly string partialKeywordFolderPath = Path.Combine("Keyword Jsons", "Partial Keywords");
+    public static readonly string partialKeywordListFilePath = Path.Combine(partialKeywordFolderPath, "Keyword List");
 
-    public const string triggerKeywordFolderPath = "Keyword Jsons/Trigger Keywords/";
-    public const string triggerKeywordListFilePath = triggerKeywordFolderPath + "Keyword List";
+    public static readonly string triggerKeywordFolderPath = Path.Combine("Keyword Jsons", "Trigger Keywords");
+    public static readonly string triggerKeywordListFilePath = Path.Combine(triggerKeywordFolderPath, "Keyword List");
 
-    public const string RemindersJsonPath = "Reminder Text/Reminder Texts";
+    public static readonly string RemindersJsonPath = Path.Combine("Reminder Text", "Reminder Texts");
 
     protected static readonly JsonSerializerSettings cardLoadingSettings = new JsonSerializerSettings
     {
@@ -98,7 +99,7 @@ public class CardRepository : MonoBehaviour
             if (isCardToIgnore(filenameClean) || CardExists(filenameClean)) continue;
 
             //load the json
-            var jsonAsset = Resources.Load<TextAsset>(cardJsonsFolderPath + filenameClean);
+            var jsonAsset = Resources.Load<TextAsset>(Path.Combine(cardJsonsFolderPath, filenameClean));
             if (jsonAsset == null)
             {
                 Debug.LogError($"Failed to load json file for {filenameClean}");
@@ -187,8 +188,8 @@ public class CardRepository : MonoBehaviour
         Debug.Log($"Keywords list: \n{string.Join("\n", keywords.Select(keyword => $"{keyword} length {keyword.Length}"))}");
         foreach (string keyword in keywords)
         {
-            Debug.Log($"Loading {keyword}");
-            string json = Resources.Load<TextAsset>(folderPath + keyword).text;
+            Debug.Log($"Loading {keyword} from {Path.Combine(folderPath, keyword)}");
+            string json = Resources.Load<TextAsset>(Path.Combine(folderPath, keyword)).text;
             json = ReplacePlaceholders(json);
             dict.Add(keyword, json);
         }

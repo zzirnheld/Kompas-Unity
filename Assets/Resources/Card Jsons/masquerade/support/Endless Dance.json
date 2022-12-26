@@ -9,9 +9,9 @@
 				"triggerCondition": "Discard",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card in Play"
+						"This Card in Play",
 						"Max Per Turn",
-						"Main Card Fits Restriction Before",
+						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
 						"cardRestrictions": [

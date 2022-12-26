@@ -1,0 +1,145 @@
+{
+	"cardType": 67,
+	"cardName": "Whirlwind of Emotions",
+	"effText": "When I'm revived, reshuffle me, then hand-> or discard->summon 2 friendly Spirits.",
+	"effects": [
+		{
+			"blurb": "Whirlwind",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							}
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetThis:"
+				},
+				{
+					"$type": "Subeffect:Reshuffle:"
+				},
+				{
+					"$type": "Subeffect:ConditionalEnd:",
+					"condition": "Number of Cards Fitting CardRestriction Fits NumberRestriction",
+					"cardRestriction": {
+						"blurb": "for Whirlwind of Emotions to summon",
+						"cardRestrictions": [
+							"Multiple Possible Locations",
+							"Character"
+                        ],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Spirit" ]
+							}
+						],
+						"locations": [
+							2,
+							3
+						]
+					},
+					"numberRestriction": {
+						"numberRestrictions": [
+							"<=Constant"
+						],
+						"constant": 1
+					}
+				},
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "for Whirlwind of Emotions to summon",
+						"cardRestrictions": [
+							"Multiple Possible Locations",
+							"Character"
+                        ],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Spirit" ]
+							}
+						],
+						"locations": [
+							2,
+							3
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "where to summon that Spirit",
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Subeffect.Card:Target:" }
+                            }
+                        ]
+					}
+				},
+				{
+					"$type": "Subeffect:Play:"
+				},
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "for Whirlwind of Emotions to summon",
+						"cardRestrictions": [
+							"Multiple Possible Locations",
+							"Character"
+                        ],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Spirit" ]
+							}
+						],
+						"locations": [
+							2,
+							3
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "where to summon that Spirit",
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Subeffect.Card:Target:" }
+                            }
+                        ]
+					}
+				},
+				{
+					"$type": "Subeffect:Play:"
+				}
+			]
+		}
+	],
+	"n": 7,
+	"e": 7,
+	"s": 6,
+	"w": 7,
+	"subtypeText": "Ethereal Spirit Ghost Tornado"
+}
