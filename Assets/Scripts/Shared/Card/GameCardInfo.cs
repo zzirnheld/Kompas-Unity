@@ -8,32 +8,39 @@ namespace KompasCore.Cards
 {
     public abstract class GameCardBase : CardBase
     {
-        public abstract GameCard Card { get; protected set; }
-        public abstract CardLocation Location { get; protected set; }
+        #region immutable aspects
+        public abstract GameCard Card { get; }
+
         public abstract int IndexInList { get; }
-        public abstract Player Controller { get; set; }
-        public abstract Player Owner { get; protected set; }
-        public abstract bool Summoned { get; protected set; }
+        public abstract Player Owner { get; }
+        public abstract bool Summoned { get; }
         public abstract bool IsAvatar { get; }
+
+        public abstract IReadOnlyCollection<GameCard> AdjacentCards { get; }
+
+        public abstract PlayRestriction PlayRestriction { get; }
+        public abstract MovementRestriction MovementRestriction { get; }
+        public abstract AttackRestriction AttackRestriction { get; }
+        #endregion
+
+        #region mutable aspects
+        public abstract CardLocation Location { get; protected set; }
+        public abstract Player Controller { get; set; }
         public abstract GameCard AugmentedCard { get; protected set; }
-        public abstract IEnumerable<GameCard> Augments { get; protected set; }
+        public abstract IReadOnlyCollection<GameCard> Augments { get; protected set; }
         /// <summary>
         /// Represents whether this card is currently known to the enemy of this player.
         /// TODO: make this also be accurate on client, remembering what thigns have been revealed
         /// </summary>
         public abstract bool KnownToEnemy { get; set; }
 
-        public abstract PlayRestriction PlayRestriction { get; }
-        public abstract MovementRestriction MovementRestriction { get; }
-        public abstract AttackRestriction AttackRestriction { get; }
-
         public abstract bool Activated { get; protected set; }
         public abstract bool Negated { get; protected set; }
         public abstract int SpacesMoved { get; protected set; }
         public abstract int SpacesCanMove { get; protected set; }
-        public abstract IEnumerable<GameCard> AdjacentCards { get; }
 
         public abstract Space Position { get; set; }
+        #endregion
 
         public bool Hurt => CardType == 'C' && Location == CardLocation.Board && E < BaseE;
 
@@ -179,29 +186,20 @@ namespace KompasCore.Cards
     /// </summary>
     public class GameCardInfo : GameCardBase
     {
-        //Note for the unfamiliar: most of these have setters so that inheritors can have setters for the same property names without hiding
-        public override GameCard Card { get; protected set; }
+        #region immutable aspects
+        public override GameCard Card { get; }
 
-        public override CardLocation Location { get; protected set; }
-        public override Player Controller { get; set; }
-        public override Player Owner { get; protected set; }
-        public override bool Summoned { get; protected set; }
+        public override int IndexInList { get; }
+        public override Player Owner { get; }
+        public override bool Summoned { get; }
         public override bool IsAvatar { get; }
-        public override GameCard AugmentedCard { get; protected set; }
-        public override IEnumerable<GameCard> Augments { get; protected set; }
-        public override bool KnownToEnemy { get; set; }
+
+        public override IReadOnlyCollection<GameCard> AdjacentCards { get; }
 
         public override PlayRestriction PlayRestriction { get; }
         public override MovementRestriction MovementRestriction { get; }
         public override AttackRestriction AttackRestriction { get; }
 
-        public override bool Activated { get; protected set; }
-        public override bool Negated { get; protected set; }
-        public override int SpacesMoved { get; protected set; }
-        public override int SpacesCanMove { get; protected set; }
-        public override Space Position { get; set; }
-
-        public override int IndexInList { get; }
 
         public override int BaseN { get; }
         public override int BaseE { get; }
@@ -209,9 +207,22 @@ namespace KompasCore.Cards
         public override int BaseW { get; }
         public override int BaseC { get; }
         public override int BaseA { get; }
+        #endregion
 
-        private IEnumerable<GameCard> adjacentCards;
-        public override IEnumerable<GameCard> AdjacentCards => adjacentCards;
+        #region mutable aspects
+        //Note for the unfamiliar: most of these have setters so that inheritors can have setters for the same property names without hiding
+        public override CardLocation Location { get; protected set; }
+        public override Player Controller { get; set; }
+        public override GameCard AugmentedCard { get; protected set; }
+        public override IReadOnlyCollection<GameCard> Augments { get; protected set; }
+        public override bool KnownToEnemy { get; set; }
+
+        public override bool Activated { get; protected set; }
+        public override bool Negated { get; protected set; }
+        public override int SpacesMoved { get; protected set; }
+        public override int SpacesCanMove { get; protected set; }
+        public override Space Position { get; set; }
+        #endregion
 
         /// <summary>
         /// Snapshots the information of a card.
@@ -255,11 +266,12 @@ namespace KompasCore.Cards
             BaseW = card.BaseW;
             BaseC = card.BaseC;
             BaseA = card.BaseA;
+
             Activated = card.Activated;
             Negated = card.Negated;
             SpacesMoved = card.SpacesMoved;
             SpacesCanMove = card.SpacesCanMove;
-            adjacentCards = card.AdjacentCards.ToArray();
+            AdjacentCards = card.AdjacentCards.ToArray();
             Position = card.Position?.Copy;
         }
 

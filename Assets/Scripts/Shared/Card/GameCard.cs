@@ -22,14 +22,7 @@ namespace KompasCore.Cards
         public abstract CardController CardController { get; }
         public abstract Game Game { get; }
         public int ID { get; private set; }
-        public override GameCard Card
-        {
-            get => this;
-            protected set
-            {
-                throw new NotImplementedException("What are you smoking?");
-            }
-        }
+        public override GameCard Card => this;
 
         protected SerializableCard InitialCardValues { get; private set; }
 
@@ -66,14 +59,7 @@ namespace KompasCore.Cards
             }
         }
 
-        public override bool Summoned
-        {
-            get => CardType != 'C' || Location == CardLocation.Board;
-            protected set
-            {
-                throw new NotImplementedException($"Tried to set summoned on list of actual GameCard {this}");
-            }
-        }
+        public override bool Summoned => CardType != 'C' || Location == CardLocation.Board;
         public virtual bool CanRemove => true;
         public virtual int CombatDamage => W;
         #endregion stats
@@ -97,7 +83,7 @@ namespace KompasCore.Cards
         public override int IndexInList => GameLocation?.IndexOf(this) ?? -1;
         public bool InHiddenLocation => Game.IsHiddenLocation(Location);
 
-        public override IEnumerable<GameCard> AdjacentCards
+        public override IReadOnlyCollection<GameCard> AdjacentCards
             => Game?.BoardController.CardsAdjacentTo(Position) ?? new List<GameCard>();
 
         public bool AlreadyCopyOnBoard => Game.BoardHasCopyOf(this);
@@ -107,7 +93,7 @@ namespace KompasCore.Cards
 
         #region Augments
         private readonly List<GameCard> augmentsList = new List<GameCard>();
-        public override IEnumerable<GameCard> Augments
+        public override IReadOnlyCollection<GameCard> Augments
         {
             get => augmentsList;
             protected set

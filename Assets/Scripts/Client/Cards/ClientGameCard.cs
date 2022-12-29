@@ -44,11 +44,7 @@ namespace KompasClient.Cards
         }
 
         public ClientPlayer ClientOwner { get; private set; }
-        public override Player Owner
-        {
-            get => ClientOwner;
-            protected set => ClientOwner = value as ClientPlayer;
-        }
+        public override Player Owner => ClientOwner;
 
         public ClientEffect[] ClientEffects { get; private set; }
         public override IEnumerable<Effect> Effects => ClientEffects;
