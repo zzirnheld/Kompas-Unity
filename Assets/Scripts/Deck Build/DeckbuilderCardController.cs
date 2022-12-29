@@ -74,6 +74,13 @@ namespace KompasDeckbuilder
 
     public class DeckbuilderCard : CardBase
     {
+        public override int BaseN { get; }
+        public override int BaseE { get; }
+        public override int BaseS { get; }
+        public override int BaseW { get; }
+        public override int BaseC { get; }
+        public override int BaseA { get; }
+
         public DeckbuilderCard(SerializableCard card, string fileName)
             : base((card.n, card.e, card.s, card.w, card.c, card.a),
                        card.subtext, card.spellTypes,
@@ -83,6 +90,12 @@ namespace KompasDeckbuilder
                        card.effText,
                        card.subtypeText)
         {
+            BaseN = card.n;
+            BaseE = card.e;
+            BaseS = card.s;
+            BaseW = card.w;
+            BaseC = card.c;
+            BaseA = card.a;
         }
     }
 }

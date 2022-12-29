@@ -23,10 +23,9 @@ namespace KompasCore.Cards
         /// </summary>
         public abstract bool KnownToEnemy { get; set; }
 
-        public abstract PlayRestriction PlayRestriction { get; protected set; }
-        public abstract MovementRestriction MovementRestriction { get; protected set; }
-        public abstract AttackRestriction AttackRestriction { get; protected set; }
-        public abstract int BaseE { get; }
+        public abstract PlayRestriction PlayRestriction { get; }
+        public abstract MovementRestriction MovementRestriction { get; }
+        public abstract AttackRestriction AttackRestriction { get; }
 
         public abstract bool Activated { get; protected set; }
         public abstract bool Negated { get; protected set; }
@@ -180,21 +179,21 @@ namespace KompasCore.Cards
     /// </summary>
     public class GameCardInfo : GameCardBase
     {
+        //Note for the unfamiliar: most of these have setters so that inheritors can have setters for the same property names without hiding
         public override GameCard Card { get; protected set; }
 
         public override CardLocation Location { get; protected set; }
         public override Player Controller { get; set; }
         public override Player Owner { get; protected set; }
         public override bool Summoned { get; protected set; }
-        private bool isAvatar;
-        public override bool IsAvatar => isAvatar;
+        public override bool IsAvatar { get; }
         public override GameCard AugmentedCard { get; protected set; }
         public override IEnumerable<GameCard> Augments { get; protected set; }
         public override bool KnownToEnemy { get; set; }
 
-        public override PlayRestriction PlayRestriction { get; protected set; }
-        public override MovementRestriction MovementRestriction { get; protected set; }
-        public override AttackRestriction AttackRestriction { get; protected set; }
+        public override PlayRestriction PlayRestriction { get; }
+        public override MovementRestriction MovementRestriction { get; }
+        public override AttackRestriction AttackRestriction { get; }
 
         public override bool Activated { get; protected set; }
         public override bool Negated { get; protected set; }
@@ -202,11 +201,14 @@ namespace KompasCore.Cards
         public override int SpacesCanMove { get; protected set; }
         public override Space Position { get; set; }
 
-        private int indexInList;
-        public override int IndexInList => indexInList;
+        public override int IndexInList { get; }
 
-        private int baseE;
-        public override int BaseE { get => baseE; }
+        public override int BaseN { get; }
+        public override int BaseE { get; }
+        public override int BaseS { get; }
+        public override int BaseW { get; }
+        public override int BaseC { get; }
+        public override int BaseA { get; }
 
         private IEnumerable<GameCard> adjacentCards;
         public override IEnumerable<GameCard> AdjacentCards => adjacentCards;
@@ -235,11 +237,11 @@ namespace KompasCore.Cards
         {
             Card = card;
             Location = card.Location;
-            indexInList = card.IndexInList;
+            IndexInList = card.IndexInList;
             Controller = card.Controller;
             Owner = card.Owner;
             Summoned = card.Summoned;
-            isAvatar = card.IsAvatar;
+            IsAvatar = card.IsAvatar;
             AugmentedCard = card.AugmentedCard;
             Augments = card.Augments.ToArray();
             KnownToEnemy = card.KnownToEnemy;
@@ -247,7 +249,12 @@ namespace KompasCore.Cards
             MovementRestriction = card.MovementRestriction;
             AttackRestriction = card.AttackRestriction;
 
-            baseE = card.BaseE;
+            BaseN = card.BaseN;
+            BaseE = card.BaseE;
+            BaseS = card.BaseS;
+            BaseW = card.BaseW;
+            BaseC = card.BaseC;
+            BaseA = card.BaseA;
             Activated = card.Activated;
             Negated = card.Negated;
             SpacesMoved = card.SpacesMoved;

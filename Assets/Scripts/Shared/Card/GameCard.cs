@@ -36,12 +36,12 @@ namespace KompasCore.Cards
         public bool CurrentlyVisible => CardController.gameObject.activeSelf;
 
         #region stats
-        public int BaseN => InitialCardValues.n;
+        public override int BaseN => InitialCardValues?.n ?? default;
         public override int BaseE => InitialCardValues?.e ?? default;
-        public int BaseS => InitialCardValues.s;
-        public int BaseW => InitialCardValues.w;
-        public int BaseC => InitialCardValues.c;
-        public int BaseA => InitialCardValues.a;
+        public override int BaseS => InitialCardValues?.s ?? default;
+        public override int BaseW => InitialCardValues?.w ?? default;
+        public override int BaseC => InitialCardValues?.c ?? default;
+        public override int BaseA => InitialCardValues?.a ?? default;
 
         public int Negations { get; private set; } = 0;
         public override bool Negated
@@ -164,9 +164,9 @@ namespace KompasCore.Cards
         public void Attacked() => AttacksThisTurn++;
 
         //restrictions
-        public override MovementRestriction MovementRestriction { get; protected set; }
-        public override AttackRestriction AttackRestriction { get; protected set; }
-        public override PlayRestriction PlayRestriction { get; protected set; }
+        public override MovementRestriction MovementRestriction { get; }
+        public override AttackRestriction AttackRestriction { get; }
+        public override PlayRestriction PlayRestriction { get; }
 
         //controller/owners
         public int ControllerIndex => Controller?.index ?? 0;

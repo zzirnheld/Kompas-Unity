@@ -8,6 +8,10 @@ namespace KompasCore.UI
 {
     public abstract class TypicalCardViewController : BaseCardViewController
     {
+        public static readonly Color32 BUFF_OUTLINE_COLOR = new Color32(255, 0, 0, 255);
+        public static readonly Color32 DEBUFF_OUTLINE_COLOR = new Color32(0, 255, 0, 255); //TODO make customizeable
+        public static readonly Color32 BASE_OUTLINE_COLOR = new Color32(0, 0, 0, 255);
+
         [Header("Stats text boxes")]
         public TMP_Text nText;
         public TMP_Text eText;
@@ -71,20 +75,31 @@ namespace KompasCore.UI
             effText.text = EffTextToDisplay;
         }
 
+        private Color32 ColorFromNumbers(int currStatValue, int baseStatValue)
+        {
+            if (currStatValue > baseStatValue) return BUFF_OUTLINE_COLOR;
+            if (currStatValue < baseStatValue) return DEBUFF_OUTLINE_COLOR;
+            else return BASE_OUTLINE_COLOR;
+        }
+
         protected override void DisplayCardNumericStats()
         {
-            nText.text = DisplayN(shownCard.N);
-            eText.text = DisplayE(shownCard.E);
-            wText.text = DisplayW(shownCard.W);
-
             switch (shownCard.CardType)
             {
                 case 'C':
+                    nText.text = DisplayN(shownCard.N);
+                    eText.text = DisplayE(shownCard.E);
+                    wText.text = DisplayW(shownCard.W);
                     costText.text = DisplayS(shownCard.S);
 
                     nText.gameObject.SetActive(true);
                     eText.gameObject.SetActive(true);
                     wText.gameObject.SetActive(true);
+
+                    nText.outlineColor = ColorFromNumbers(shownCard.N, shownCard.BaseN);
+                    eText.outlineColor = ColorFromNumbers(shownCard.E, shownCard.BaseE);
+                    costText.outlineColor = ColorFromNumbers(shownCard.S, shownCard.BaseS);
+                    wText.outlineColor = ColorFromNumbers(shownCard.W, shownCard.BaseW);
                     break;
                 case 'S':
                     costText.text = DisplayC(shownCard.C);
@@ -92,6 +107,8 @@ namespace KompasCore.UI
                     nText.gameObject.SetActive(false);
                     eText.gameObject.SetActive(false);
                     wText.gameObject.SetActive(false);
+
+                    costText.outlineColor = ColorFromNumbers(shownCard.C, shownCard.BaseC);
                     break;
                 case 'A':
                     costText.text = DisplayA(shownCard.A);
@@ -99,6 +116,8 @@ namespace KompasCore.UI
                     nText.gameObject.SetActive(false);
                     eText.gameObject.SetActive(false);
                     wText.gameObject.SetActive(false);
+
+                    costText.outlineColor = ColorFromNumbers(shownCard.A, shownCard.BaseA);
                     break;
                 default: throw new System.ArgumentException("Failed to account for new card type in displaying card's numeric stats");
             }

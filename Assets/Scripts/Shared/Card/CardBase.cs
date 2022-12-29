@@ -69,6 +69,13 @@ namespace KompasCore.Cards
             private set => a = value;
         }
 
+        public abstract int BaseN { get; }
+        public abstract int BaseE { get; }
+        public abstract int BaseS { get; }
+        public abstract int BaseW { get; }
+        public abstract int BaseC { get; }
+        public abstract int BaseA { get; }
+
         public CardStats Stats => (N, E, S, W, C, A);
 
         public bool Fast { get; private set; }
