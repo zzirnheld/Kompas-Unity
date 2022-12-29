@@ -1,10 +1,10 @@
 {
 	"cardType": 67,
-	"cardName": "Prickiwisp",
-	"effText": "Wisp.\nAfter I move, give adjacent enemies -1 E.",
+	"cardName": "Wickiwisp",
+	"effText": "Wisp.\nAfter I move, give adjacent enemies -1 W.",
 	"effects": [
 		{
-			"blurb": "prick",
+			"blurb": "wick",
 			"triggerData": {
 				"triggerCondition": "Move",
 				"triggerRestriction": {
@@ -36,16 +36,16 @@
 							}
 						]
 					},
-					"eModifier": -1
+					"wModifier": -1
 				}
 			]
 		}
 	],
 	"keywords": [ "Wisp" ],
 	"n": 0,
-	"e": 2,
+	"e": 1,
 	"s": 2,
-	"w": 0,
+	"w": 1,
 	"subtypes": [ "Wisp" ],
 	"subtypeText": "Wisp"
 }
