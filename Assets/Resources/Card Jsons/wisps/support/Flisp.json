@@ -64,7 +64,7 @@
                                 "$type": "Gamestate.ManySpaces:AdjacentSpaces:",
                                 "adjacentTo": {
                                     "$type": "Subeffect.Space:PositionOf:",
-                                    "whosePosition": { "$type": "Gamestate.Card:ThisCard:" }
+                                    "whosePosition": { "$type": "Subeffect.Card:Target:" }
                                 }
                             }
                         }

@@ -42,9 +42,11 @@
                         "selector": { "$type": "KompasCore.Effects.Selectors.RandomSpace, Assembly-CSharp" },
                         "spaces": {
                             "$type": "Gamestate.ManySpaces:FittingRestriction:",
-                            {
-                                "$type": "Core.SpaceRestriction:CanPlayCard:",
-                                "toPlay": { "$type": "Subeffect.Card:Target:" }
+                            "restriction": {
+                                "spaceRestrictionElements": [ {
+                                    "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                    "toPlay": { "$type": "Subeffect.Card:Target:" }
+                                } ]
                             }
                         }
                     }

@@ -9,16 +9,8 @@ namespace KompasServer.Effects.Identities
     {
         public bool secondary = false;
 
-        /// <summary>
-        /// Override this one if you ONLY need to know about the context you should actually be considering
-        /// </summary>
-        /// <param name="contextToConsider">The ActivationContext you actually should be considering.</param>
         protected abstract ReturnType AbstractItem { get; }
 
-        /// <summary>
-        /// Gets the abstract stackable from the first one, that only knows about the context to consider,
-        /// then the one that knows about both contexts if the first one came up empty.
-        /// </summary>
         public ReturnType Item
         {
             get
@@ -29,6 +21,9 @@ namespace KompasServer.Effects.Identities
             }
         }
 
+        //Ignores the given contexts, because it'll just use the current context for the subeffect.
+        //Use an explicit ActivationContextIdentity if you want it to not ignore the context,
+        //using the FromContext subeffect identity
         public ReturnType From(ActivationContext context, ActivationContext secondaryContext) => Item;
     }
 }

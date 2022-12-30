@@ -1,0 +1,84 @@
+{
+	"cardType": 83,
+	"cardName": "Dancing Wisps",
+	"effText": "When an enemy arrives adjacent to a Wisp, each Wisp adjacent to that enemy to another random space adjacent to that enemy. (In a random order.)",
+	"effects": [
+		{
+            "blurb": "The Wisps Dance",
+            "triggerCondition": "Arrive",
+            "triggerRestriction": {
+                "triggerRestrictions": [
+                    "This Card in Play",
+                    "Space Fits Restriction"
+                    "Main Card Fits Restriction Before"
+                ],
+                "spaceRestriction": {
+                    "spaceRestrictions": [
+                        "Adjacent to Source"
+                    ],
+                    "mustBeEmpty": false
+                },
+                "cardRestriction": {
+                    "cardRestrictions": [
+                        "Enemy"
+                    ]
+                }
+            },
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetTriggeringCard:"
+				},
+				{
+					"$type": "Subeffect:TargetAllCardsIdentity:",
+					"cardsIdentity": {
+						"$type": "Gamestate.ManyCards:CardsInPositions:",
+						"positions": {
+                            "$type": "Gamestate.ManySpaces:AdjacentSpaces:",
+                            "adjacentTo": {
+                                "$type": "Subeffect.Space:PositionOf:",
+                                "whosePosition": { "$type": "Subeffect.Card:Target:" }
+                            }
+						}
+					}
+                },
+                {
+                    "$type": "Subeffect:AutoTargetSpaceIdentity:",
+                    "subeffectSpaceIdentity": {
+                        "$type": "Gamestate.Space:SelectFromMany:",
+                        "selector": { "$type": "KompasCore.Effects.Selectors.RandomSpace, Assembly-CSharp" },
+                        "spaces": {
+                            "$type": "Gamestate.ManySpaces:FittingRestriction:",
+                            "restriction": {
+                                "spaceRestrictionElements": [ { "$type": "Core.SpaceRestriction:Empty:" } ]
+                            },
+                            "spaces": {
+                                "$type": "Gamestate.ManySpaces:AdjacentSpaces:",
+                                "adjacentTo": {
+                                    "$type": "Subeffect.Space:PositionOf:",
+                                    "whosePosition": {
+                                        "$type": "Subeffect.Card:Target:",
+                                        "index": 0
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "$type":"Subeffect:Move:"
+                },
+				{
+					"$type": "Subeffect:LoopWhileHaveTargets:",
+					"delete": true,
+					"remainingTargets": 1,
+					"jumpIndices": [ 2 ]
+				}
+			]
+		}
+	],
+	"c": 2,
+	"spellTypes": [
+		"Enchant"
+	],
+	"subtypeText": "Enchant"
+}
