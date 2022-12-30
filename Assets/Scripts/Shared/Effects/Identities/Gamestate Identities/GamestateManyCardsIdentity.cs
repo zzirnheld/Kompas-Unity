@@ -69,5 +69,22 @@ namespace KompasCore.Effects.Identities
             protected override IReadOnlyCollection<GameCardBase> AbstractItem
                 => InitializationContext.game.BoardController.Cards.ToArray();
         }
+
+        public class Discard : NoActivationContextIdentityBase<IReadOnlyCollection<GameCardBase>>
+        {
+            public bool friendly = true;
+            public bool enemy = true;
+
+            protected override IReadOnlyCollection<GameCardBase> AbstractItem
+            {
+                get
+                {
+                    var cards = new List<GameCardBase>();
+                    if (friendly) cards.AddRange(InitializationContext.Controller.discardCtrl.Cards);
+                    if (enemy) cards.AddRange(InitializationContext.Controller.Enemy.discardCtrl.Cards);
+                    return cards;
+                }
+            }
+        }
     }
 }

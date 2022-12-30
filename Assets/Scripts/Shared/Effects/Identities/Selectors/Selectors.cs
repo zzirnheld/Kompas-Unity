@@ -1,3 +1,4 @@
+using KompasCore.Cards;
 using System.Linq;
 using System.Collections.Generic;
 
@@ -18,4 +19,5 @@ namespace KompasCore.Effects.Selectors
     //Define types that Newtonsoft is capable of loading
     public class Random : RandomSelector<object> {}
     public class RandomSpace : RandomSelector<Space> {}
+    public class RandomCard : RandomSelector<GameCardBase> {}
 }
