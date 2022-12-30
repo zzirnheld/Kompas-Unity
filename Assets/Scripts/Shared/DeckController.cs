@@ -5,6 +5,7 @@ using KompasCore.Exceptions;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using KompasCore.Helpers;
 
 namespace KompasCore.GameCore
 {
@@ -15,7 +16,6 @@ namespace KompasCore.GameCore
         public CardLocation CardLocation => CardLocation.Deck;
 
         //rng for shuffling
-        private static readonly System.Random rng = new System.Random();
 
         private readonly List<GameCard> deck = new List<GameCard>();
         public IReadOnlyCollection<GameCard> Deck => deck;
@@ -83,24 +83,13 @@ namespace KompasCore.GameCore
         }
 
         //misc
-        public static List<GameCard> Shuffle(List<GameCard> list)
-        {
-            int n = list.Count;
-            while (n > 1)
-            {
-                n--;
-                int k = rng.Next(n + 1);
-                (list[n], list[k]) = (list[k], list[n]);
-            }
-            return list;
-        }
 
-        public void Shuffle() => Shuffle(deck);
+        public void Shuffle() => CollectionsHelper.Shuffle(deck);
 
         public static void BottomdeckMany(IEnumerable<GameCard> cards, IStackable stackSrc = null)
         {
-            var toShuffleInOrder = Shuffle(cards.ToList());
-            toShuffleInOrder.ForEach(c => c.Bottomdeck(stackSrc));
+            var toShuffleInOrder = CollectionsHelper.Shuffle(cards.ToList());
+            foreach (var card in toShuffleInOrder) card.Bottomdeck(stackSrc);
         }
 
         public List<GameCard> CardsThatFitRestriction(CardRestriction cardRestriction, ActivationContext context)

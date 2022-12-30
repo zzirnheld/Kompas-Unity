@@ -19,7 +19,8 @@ namespace KompasCore.GameCore
 
         public CardLocation CardLocation => CardLocation.Board;
 
-        public readonly GameCard[,] Board = new GameCard[SpacesInGrid, SpacesInGrid];
+        protected readonly GameCard[,] Board = new GameCard[SpacesInGrid, SpacesInGrid];
+        public IEnumerable<GameCard> Cards { get { foreach (var card in Board) yield return card; } } 
 
         //helper methods
         #region helper methods

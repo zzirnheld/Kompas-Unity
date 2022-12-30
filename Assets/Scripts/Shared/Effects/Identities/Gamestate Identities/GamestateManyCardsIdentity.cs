@@ -6,13 +6,21 @@ namespace KompasCore.Effects.Identities
 {
     namespace GamestateManyCardsIdentities
     {
+        public class All : NoActivationContextIdentityBase<IReadOnlyCollection<GameCardBase>>
+        {
+            protected override IReadOnlyCollection<GameCardBase> AbstractItem => InitializationContext.game.Cards;
+        }
+
         public class FittingRestriction : NoActivationContextIdentityBase<IReadOnlyCollection<GameCardBase>>
         {
+            public INoActivationContextIdentity<IReadOnlyCollection<GameCardBase>> cards = new All();
+
             public CardRestriction cardRestriction;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {
                 base.Initialize(initializationContext);
+                cards.Initialize(initializationContext);
                 cardRestriction.Initialize(initializationContext);
             }
 
@@ -48,10 +56,18 @@ namespace KompasCore.Effects.Identities
                 get
                 {
                     var spaces = positions.Item;
-                    var cards = spaces.Select(InitializationContext.game.BoardController.GetCardAt).Where(s => s != null).ToArray();
+                    var cards = spaces.Select(InitializationContext.game.BoardController.GetCardAt)
+                        .Where(s => s != null)
+                        .ToArray();
                     return cards;
                 }
             }
+        }
+
+        public class Board : NoActivationContextIdentityBase<IReadOnlyCollection<GameCardBase>>
+        {
+            protected override IReadOnlyCollection<GameCardBase> AbstractItem
+                => InitializationContext.game.BoardController.Cards.ToArray();
         }
     }
 }

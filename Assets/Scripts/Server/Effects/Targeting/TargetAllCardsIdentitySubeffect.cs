@@ -1,5 +1,6 @@
 using KompasCore.Cards;
 using KompasCore.Effects.Identities;
+using KompasCore.Helpers;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -20,7 +21,8 @@ namespace KompasServer.Effects
             var cards = cardsIdentity.From(CurrentContext, CurrentContext);
             if (cards.Count == 0) return Task.FromResult(ResolutionInfo.Impossible(NoValidCardTarget));
 
-            foreach (var card in cards)
+            var shuffledCards = CollectionsHelper.Shuffle<GameCardBase>(cards);
+            foreach (var card in shuffledCards)
             {
                 if (card == null) continue;
                 Effect.AddTarget(card.Card);

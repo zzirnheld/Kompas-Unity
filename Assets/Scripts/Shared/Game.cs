@@ -28,7 +28,7 @@ namespace KompasCore.GameCore
 
         //game data
         public abstract CardRepository CardRepository { get; }
-        public abstract IEnumerable<GameCard> Cards { get; }
+        public abstract IReadOnlyCollection<GameCard> Cards { get; }
         public int RoundCount { get; protected set; } = 1;
         public virtual int TurnCount { get; protected set; } = 1;
         public virtual int Leyload { get; set; } = 1;

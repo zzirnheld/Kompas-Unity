@@ -1,0 +1,98 @@
+{
+	"cardType": 83,
+	"cardName": "Flisp",
+	"effText": "In a random order, move each friendly Wisp 1 random space, then another, then another, closer to their closest enemy.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetAllCardsIdentity:",
+					"cardsIdentity": {
+						"$type": "Gamestate.ManyCards:FittingRestriction:",
+						"cards": { "$type": "Gamestate.ManyCards:Board:" },
+						"cardRestriction": {
+							"cardRestrictionElements": [
+                                { "$type": "Core.CardRestriction:Friendly:" },
+								{
+									"$type": "Core.CardRestriction:SubtypesInclude:",
+									"subtypes": [ "Wisp" ]
+								}
+							]
+						}
+					}
+				},
+                {
+                    "$type": "Subeffect:AutoTargetSpaceIdentity:",
+                    "subeffectSpaceIdentity": {
+                        "$type": "Gamestate.Space:SelectFromMany:",
+                        "selector": { "$type": "KompasCore.Effects.Selectors.RandomSpace, Assembly-CSharp" },
+                        "spaces": {
+                            "$type": "Gamestate.ManySpaces:CompareDistance:",
+                            "distanceTo": { 
+                                "$type": "Subeffect.Space:PositionOf:",
+                                "whosePosition": { "$type": "Subeffect.Card:Target:" }
+                            },
+                            "spaces": {
+                                "$type": "Gamestate.ManySpaces:PositionsOfEach:",
+                                "cards": {
+                                    "$type": "Gamestate.ManyCards:FittingRestriction:",
+                                    "cardRestriction": {
+                                        "cardRestrictionElements": [ { "$type": "Core.CardRestriction:Enemy:" } ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "$type": "Subeffect:AutoTargetSpaceIdentity:",
+                    "subeffectSpaceIdentity": {
+                        "$type": "Gamestate.Space:SelectFromMany:",
+                        "selector": { "$type": "KompasCore.Effects.Selectors.RandomSpace, Assembly-CSharp" },
+                        "spaces": {
+                            "$type": "Gamestate.ManySpaces:CompareDistance:",
+                            "distanceTo": { "$type": "Subeffect.Card:Target:" },
+                            "spaces": {
+                                "$type": "Gamestate.ManySpaces:AdjacentSpaces:",
+                                "adjacentTo": {
+                                    "$type": "Subeffect.Space:PositionOf:",
+                                    "whosePosition": { "$type": "Gamestate.Card:ThisCard:" }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "$type":"Subeffect:Move:"
+                },
+				{
+					"$type": "Subeffect:XTimes:",
+					"jumpIndices": [ 1 ],
+                    "xMultiplier": 0,
+                    "xModifier": 3
+				},
+				{
+					"$type": "Subeffect:LoopWhileHaveTargets:",
+					"delete": true,
+					"jumpIndices": [ 1 ]
+				}
+			]
+		}
+	],
+	"c": 2,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypes": [
+		"Simple"
+	],
+	"subtypeText": "Simple"
+}

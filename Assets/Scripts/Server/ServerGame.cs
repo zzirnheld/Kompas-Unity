@@ -43,7 +43,7 @@ namespace KompasServer.GameCore
 
         //Dictionary of cards, and the forwardings to make that convenient
         private readonly Dictionary<int, ServerGameCard> cardsByID = new Dictionary<int, ServerGameCard>();
-        public override IEnumerable<GameCard> Cards => cardsByID.Values;
+        public override IReadOnlyCollection<GameCard> Cards => cardsByID.Values;
 
         //Players
         public override Player[] Players => serverPlayers;

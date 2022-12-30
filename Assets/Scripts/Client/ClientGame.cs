@@ -43,7 +43,7 @@ namespace KompasClient.GameCore
 
 
         private readonly Dictionary<int, ClientGameCard> cardsByID = new Dictionary<int, ClientGameCard>();
-        public override IEnumerable<GameCard> Cards => cardsByID.Values;
+        public override IReadOnlyCollection<GameCard> Cards => cardsByID.Values;
 
         public ClientSettings ClientSettings => clientUIController.clientUISettingsController.ClientSettings;
 
