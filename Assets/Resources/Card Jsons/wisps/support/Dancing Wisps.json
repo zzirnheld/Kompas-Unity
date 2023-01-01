@@ -9,7 +9,7 @@
             "triggerRestriction": {
                 "triggerRestrictions": [
                     "This Card in Play",
-                    "Space Fits Restriction"
+                    "Space Fits Restriction",
                     "Main Card Fits Restriction Before"
                 ],
                 "spaceRestriction": {
