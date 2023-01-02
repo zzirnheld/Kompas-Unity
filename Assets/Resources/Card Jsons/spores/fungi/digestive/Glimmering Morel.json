@@ -1,10 +1,10 @@
 {
 	"cardType": 67,
-	"cardName": "Dirty Trich",
-	"effText": "Spores.\nWhen a Fungus pulses a summon, give them +1 W if they're a Fungus, or -1 W if not.",
+	"cardName": "Glimmering Morel",
+	"effText": "Spores.\nWhen a Fungus pulses an enemy, gain 1 pip.",
 	"effects": [
 		{
-			"blurb": "What a Dirty Trich",
+			"blurb": "Milk of the enemy",
 			"triggerData": {
 				"triggerCondition": "Activate",
 				"triggerRestriction": {
@@ -21,39 +21,21 @@
                                     }
                                 ]
                             }
+                        },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "ActivationContext.Card:MainCardBefore:" },
+                            "cardRestriction": {
+                                "cardRestrictionElements": [ { "$type": "Core.CardRestriction:Enemy:" } ]
+                            }
                         }
 					]
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:TargetTriggeringCard:"
-				},
-				{
-					"$type": "Subeffect:ConditionalJump:",
-					"condition": "Target Violates Restriction",
-					"cardRestriction": {
-						"cardRestrictionElements": [
-							{
-								"$type": "Core.CardRestriction:SubtypesInclude:",
-								"subtypes": [ "Fungus" ]
-							}
-						]
-					},
-					"jumpIndices": [
-						4
-					]
-				},
-				{
-					"$type": "Subeffect:ChangeCardStats:",
-					"wModifier": 1
-				},
-				{
-					"$type": "Subeffect:EndResolution:"
-				},
-				{
-					"$type": "Subeffect:ChangeCardStats:",
-					"wModifier": -1
+					"$type":"Subeffect:AddPips:",
+					"xModifier":1
 				}
 			]
 		}
@@ -62,9 +44,9 @@
 		"Spores"
 	],
 	"n": 2,
-	"e": 3,
-	"s": 4,
-	"w": 5,
+	"e": 2,
+	"s": 3,
+	"w": 2,
 	"subtypes": [
 		"Fruiting",
 		"Fungus"
