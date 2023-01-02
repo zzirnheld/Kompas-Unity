@@ -33,6 +33,20 @@ namespace KompasCore.Effects.Restrictions
                 => !inverted.IsValidContext(context, secondaryContext);
         }
 
+        public class AnyOf : TriggerRestrictionElement
+        {
+            public TriggerRestrictionElement[] restrictions;
+
+            public override void Initialize(EffectInitializationContext initializationContext)
+            {
+                base.Initialize(initializationContext);
+                foreach (var r in restrictions) r.Initialize(initializationContext);
+            }
+
+            protected override bool AbstractIsValidContext(ActivationContext context, ActivationContext secondaryContext)
+                => restrictions.Any(r => r.IsValidContext(context, secondaryContext));
+        }
+
         public class ThisCardInPlay : TriggerRestrictionElement
         {
             protected override bool AbstractIsValidContext(ActivationContext context, ActivationContext secondaryContext)

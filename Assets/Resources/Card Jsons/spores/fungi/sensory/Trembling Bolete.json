@@ -1,0 +1,102 @@
+{
+	"cardType": 67,
+	"cardName": "Trembling Bolete",
+	"effText": "Spores.\nWhen an enemy moves to or from an adjacent space, I pulse us.",
+	"effects": [
+		{
+			"blurb": "Tremble",
+			"triggerData": {
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictionElements": [
+                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "ActivationContext.Card:MainCardBefore:" },
+                            "cardRestriction": {
+                                "cardRestrictionElements": [ { "$type": "Core.CardRestriction:Enemy:" } ]
+                            }
+                        },
+                        {
+                            "$type": "Core.TriggerRestriction:AnyOf:",
+                            "restrictions": [
+                                {
+                                    "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                                    "card": { "$type": "ActivationContext.Card:MainCardBefore:" },
+                                    "cardRestriction": {
+                                        "cardRestrictionElements": [
+                                            {
+                                                "$type": "Core.CardRestriction:PositionFitsRestriction:",
+                                                "spaceRestriction": {
+                                                    "spaceRestrictionElements": [
+                                                        {
+                                                            "$type": "Core.CardRestriction:AdjacentTo:",
+                                                            "card": { "$type": "Gamestate.Card:ThisCard:" }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                                    "card": { "$type": "ActivationContext.Card:MainCardAfter:" },
+                                    "cardRestriction": {
+                                        "cardRestrictionElements": [
+                                            {
+                                                "$type": "Core.CardRestriction:PositionFitsRestriction:",
+                                                "spaceRestriction": {
+                                                    "spaceRestrictionElements": [
+                                                        {
+                                                            "$type": "Core.CardRestriction:AdjacentTo:",
+                                                            "card": { "$type": "Gamestate.Card:ThisCard:" }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetTriggeringCard:"
+				},
+                {
+                    "$type":"Subeffect:Activate:"
+                },
+                {
+                    "$type":"Subeffect:Activate:",
+                    "activate":false
+                },
+				{
+					"$type": "Subeffect:TargetThis:"
+				},
+                {
+                    "$type":"Subeffect:Activate:"
+                },
+                {
+                    "$type":"Subeffect:Activate:",
+                    "activate":false
+                }
+			]
+		}
+	],
+	"keywords": [
+		"Spores"
+	],
+	"n": 0,
+	"e": 1,
+	"s": 1,
+	"w": 0,
+	"subtypes": [
+		"Sensory",
+		"Fungus"
+	],
+	"subtypeText": "Sensory Fungus"
+}

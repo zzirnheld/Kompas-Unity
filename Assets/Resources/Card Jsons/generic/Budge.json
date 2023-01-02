@@ -23,7 +23,10 @@
 					"cardRestriction": {
 						"blurb": "Card to budge",
 						"cardRestrictionElements": [
-                            { "$type": "Core.CardRestriction:AdjacentTo:" }
+                            {
+								"$type": "Core.CardRestriction:AdjacentTo:",
+								"card": { "$type": "Gamestate.Card:ThisCard:" }
+							}
 						]
 					}
 				},

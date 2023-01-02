@@ -4,7 +4,7 @@
 	"effText": "Spores.\nWhen a Fungus pulses an enemy, deck-> or discard->summon Mycelium.",
 	"effects": [
 		{
-			"blurb": "Milk of the enemy",
+			"blurb": "Army",
 			"triggerData": {
 				"triggerCondition": "Activate",
 				"triggerRestriction": {
@@ -82,8 +82,8 @@
 	"s": 3,
 	"w": 2,
 	"subtypes": [
-		"Fruiting",
+		"Digestive",
 		"Fungus"
 	],
-	"subtypeText": "Fruiting Fungus"
+	"subtypeText": "Digestive Fungus"
 }

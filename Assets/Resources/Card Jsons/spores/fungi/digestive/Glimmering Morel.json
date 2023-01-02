@@ -48,8 +48,8 @@
 	"s": 3,
 	"w": 2,
 	"subtypes": [
-		"Fruiting",
+		"Digestive",
 		"Fungus"
 	],
-	"subtypeText": "Fruiting Fungus"
+	"subtypeText": "Digestive Fungus"
 }

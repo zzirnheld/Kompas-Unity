@@ -35,6 +35,20 @@ namespace KompasCore.Effects.Restrictions
                 => !negated.IsValidSpace(space, context);
         }
 
+        public class AnyOf : SpaceRestrictionElement
+        {
+            public SpaceRestrictionElement[] restrictions;
+
+            public override void Initialize(EffectInitializationContext initializationContext)
+            {
+                base.Initialize(initializationContext);
+                foreach (var r in restrictions) r.Initialize(initializationContext);
+            }
+
+            protected override bool AbstractIsValidSpace(Space space, ActivationContext context)
+                => restrictions.Any(r => r.IsValidSpace(space, context));
+        }
+
         public class Empty : SpaceRestrictionElement
         {
             protected override bool AbstractIsValidSpace(Space space, ActivationContext context)
