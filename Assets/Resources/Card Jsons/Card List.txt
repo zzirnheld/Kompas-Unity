@@ -506,6 +506,10 @@ spores/fungi/sensory/Trembling Bolete
 spores/fungi/mycelium/Mobile Mycelium
 spores/fungi/mycelium/Toxic Mycelium
 
+spores/support/Fungal Networking
+spores/support/Hivemind Sensitivity
+spores/support/Vampiric Spores
+
 sportsball/Arbiterary
 sportsball/Forward Dunker
 sportsball/Inside Goalie Defender

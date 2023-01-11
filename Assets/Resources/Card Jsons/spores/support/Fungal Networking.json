@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Fungal Networking",
-	"effText": "Deck->summon 2 Network Fungi.",
+	"effText": "Deck->summon 2 Mycelia.",
 	"effects": [
 		{
 			"blurb": "Simple",
@@ -26,7 +26,7 @@
 						"cardRestrictionElements": [
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
-								"subtypes": [ "Network", "Fungus" ]
+								"subtypes": [ "Mycelium" ]
 							}
 						]
 					}
@@ -59,7 +59,7 @@
 						"cardRestrictionElements": [
 							{
 								"$type": "Core.CardRestriction:SubtypesInclude:",
-								"subtypes": [ "Network", "Fungus" ]
+								"subtypes": [ "Mycelium" ]
 							}
 						]
 					}
