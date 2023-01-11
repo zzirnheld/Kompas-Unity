@@ -503,6 +503,9 @@ spores/fungi/sensory/Bindshrinking Inkcap
 spores/fungi/sensory/Easily Alarmed Roughstalk
 spores/fungi/sensory/Trembling Bolete
 
+spores/fungi/mycelium/Mobile Mycelium
+spores/fungi/mycelium/Toxic Mycelium
+
 sportsball/Arbiterary
 sportsball/Forward Dunker
 sportsball/Inside Goalie Defender
