@@ -491,6 +491,18 @@ speedemons/Soul of Speed
 speedemons/The Sonic Boom
 speedemons/Mach the Porcupine
 
+spores/fungi/digestive/Armillaria Bulbosa
+spores/fungi/digestive/Glimmering Morel
+spores/fungi/digestive/Saffron Milkcap
+
+spores/fungi/fruiting/Destroying Angel
+spores/fungi/fruiting/Dirty Trich
+spores/fungi/fruiting/Felt-Ringed Agaricus
+
+spores/fungi/sensory/Bindshrinking Inkcap
+spores/fungi/sensory/Easily Alarmed Roughstalk
+spores/fungi/sensory/Trembling Bolete
+
 sportsball/Arbiterary
 sportsball/Forward Dunker
 sportsball/Inside Goalie Defender
@@ -680,4 +692,13 @@ weather/skyknights/Passingbinder
 weather/skyknights/Pactbinder
 weather/skyknights/Skybinder
 
+wisps/support/Dancing wisps
+wisps/support/Flisp
+wisps/support/Wispernova
+wisps/support/Wispflux Generator
+
 wisps/wisps/Prickiwisp
+wisps/wisps/Nippiwisp
+wisps/wisps/Pishiwisp
+wisps/wisps/Pippiwisp
+wisps/wisps/Wickiwisp

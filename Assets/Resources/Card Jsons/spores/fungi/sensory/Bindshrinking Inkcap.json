@@ -27,7 +27,7 @@
                                         "spaceRestriction": {
                                             "spaceRestrictionElements": [
                                                 {
-                                                    "$type": "Core.CardRestriction:AdjacentTo:",
+                                                    "$type": "Core.SpaceRestriction:AdjacentTo:",
                                                     "card": { "$type": "Gamestate.Card:ThisCard:" }
                                                 }
                                             ]
