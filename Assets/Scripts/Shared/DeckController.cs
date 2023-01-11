@@ -84,7 +84,7 @@ namespace KompasCore.GameCore
 
         //misc
 
-        public void Shuffle() => CollectionsHelper.Shuffle(deck);
+        public void Shuffle() => CollectionsHelper.ShuffleInPlace(deck);
 
         public static void BottomdeckMany(IEnumerable<GameCard> cards, IStackable stackSrc = null)
         {
