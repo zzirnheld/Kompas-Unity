@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Soul of Speed",
-	"effText": "Speedemon.\nWhen another Speedemon moves normally, move me the same way they moved and give me +1 EW.",
+	"effText": "Speedemon.\nWhen another Speedemon moves normally, move me the same direction and distance, and give me +1 EW.",
 	"effects": [
 		{
 			"blurb": "Speedsoul",

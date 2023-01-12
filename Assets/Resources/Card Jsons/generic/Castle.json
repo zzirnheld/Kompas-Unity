@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Castle",
-	"effText": "Move a surrounded Avatar to a corner.",
+	"effText": "Teleport a surrounded Avatar to a corner.",
 	"effects": [
 		{
 			"blurb": "Castle an Avatar",

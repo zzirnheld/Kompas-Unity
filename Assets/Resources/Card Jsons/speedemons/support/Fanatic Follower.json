@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Fanatic Follower",
-	"effText": "When I'm summoned, choose an adjacent character. Every time they move, move me adjacent to them and give me +1 EW. (Disgusting.)",
+	"effText": "When I'm summoned, choose an adjacent character. Each time they move, move me adjacent to them and give me +1 EW. (Disgusting.)",
 	"effects": [
 		{
 			"blurb": "DISGOSTIN!",

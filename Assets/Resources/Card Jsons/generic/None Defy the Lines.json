@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "None Defy the Lines",
-	"effText": "Move each character that you can to a space on its diagonal, on the edge of the board.",
+	"effText": "Push each character to their closest edge. (Your choice if tied. You choose the order.)",
 	"effects": [
 		{
 			"blurb": "Simple Effect",

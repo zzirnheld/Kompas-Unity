@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Linewalk",
-	"effText": "Move a friendly Linewalker, though empty spaces, to an empty space on their diagonal. Draw 1 card.",
+	"effText": "Move a friendly Linewalker to an empty space on their diagonal. Draw 1 card.",
 	"effects": [
 		{
 			"blurb": "Simple Effect",

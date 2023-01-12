@@ -151,6 +151,19 @@ namespace KompasCore.Effects.Restrictions
         {
             public INoActivationContextIdentity<GameCardBase> toMove;
 
+            /// <summary>
+            /// Describes any restriction on the spaces between the card and where it needs to go (the space being tested)
+            /// </summary>
+            public SpaceRestriction throughRestriction = new SpaceRestriction() {
+                spaceRestrictionElements = new List<SpaceRestrictionElement> {
+                    new Empty()
+                }
+            };
+
+            public NumberRestriction distanceRestriction = new NumberRestriction() {
+                numberRestrictions = { }
+            };
+
             public bool normalMove = false;
 
             public override void Initialize(EffectInitializationContext initializationContext)
@@ -159,10 +172,21 @@ namespace KompasCore.Effects.Restrictions
                 toMove.Initialize(initializationContext);
             }
 
-            protected override bool AbstractIsValidSpace(Space space, ActivationContext context)
+            private bool FitsMovementRestriction(GameCardBase card, Space space, ActivationContext context)
                 => normalMove 
-                ? toMove.Item.Card.MovementRestriction.IsValidNormalMove(space)
-                : toMove.Item.Card.MovementRestriction.IsValidEffectMove(space, context);
+                    ? card.MovementRestriction.IsValidNormalMove(space)
+                    : card.MovementRestriction.IsValidEffectMove(space, context);
+
+            private bool FitsThroughRestriction(Space source, Space dest, ActivationContext context)
+                => InitializationContext.game.BoardController.AreConnectedByNumberOfSpacesFittingPredicate(source, dest,
+                    s => throughRestriction.IsValidSpace(s, context), distanceRestriction.IsValidNumber);
+
+            protected override bool AbstractIsValidSpace(Space space, ActivationContext context)
+            {
+                var card = toMove.Item.Card;
+                return FitsMovementRestriction(card, space, context) && FitsThroughRestriction(card.Position, space, context);
+            }
+
         }
 
         /// <summary>

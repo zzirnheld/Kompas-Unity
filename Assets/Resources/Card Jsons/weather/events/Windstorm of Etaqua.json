@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Windstorm of Etaqua",
-	"effText": "Weather Event: Move all characters in Weather I'm also in, to another space in Weather I'm in.",
+	"effText": "Weather Event: Move all characters in Weather I'm also in, through spaces in such Weather, to a space in such Weather.",
 	"effects": [
 		{
 			"blurb": "Blow away",

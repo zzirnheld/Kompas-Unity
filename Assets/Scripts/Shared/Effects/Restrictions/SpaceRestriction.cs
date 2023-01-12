@@ -4,6 +4,7 @@ using KompasCore.Exceptions;
 using KompasCore.GameCore;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -112,7 +113,7 @@ namespace KompasCore.Effects
         //Using rather than an "Empty" restriction for, at this point, historical reasons - TODO fix
         public bool mustBeEmpty = true;
 
-        public SpaceRestrictionElement[] spaceRestrictionElements = { };
+        public List<SpaceRestrictionElement> spaceRestrictionElements = new List<SpaceRestrictionElement>();
 
         public Func<Space, bool> AsThroughPredicate(ActivationContext context)
             => s => IsValidSpace(s, context);
