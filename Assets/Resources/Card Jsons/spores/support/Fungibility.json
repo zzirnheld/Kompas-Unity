@@ -4,7 +4,7 @@
 	"effText": "When you summon a Fungus normally, tribute it. Invoke a Fungus where it was.",
 	"effects": [
 		{
-            "blurb": "Planned construction",
+            "blurb": "Funge",
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
@@ -46,9 +46,9 @@
 					"condition": "Target Violates Restriction",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Subtypes Exclude"
+							"Subtypes Include"
 						],
-						"subtypesExclude": [
+						"subtypesInclude": [
 							"Fungus"
 						]
 					},

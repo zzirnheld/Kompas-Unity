@@ -23,14 +23,11 @@
 							"Adjacent to a Card that Fits Restriction"
 						],
 						"adjacencyRestriction": {
-							"cardRestrictions": [
-								"Avatar"
-							],
 							"cardRestrictionElements": [
 								{ "$type": "Core.CardRestriction:Enemy:" },
                                 {
                                     "$type": "Core.CardRestriction:SubtypesInclude:",
-                                    "subtypes": [ "Golem" ]
+                                    "subtypes": [ "Fungus" ]
                                 }
 							]
 						},

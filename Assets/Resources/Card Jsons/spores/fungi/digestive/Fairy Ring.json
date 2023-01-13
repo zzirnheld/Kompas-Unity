@@ -1,13 +1,16 @@
 {
 	"cardType": 67,
 	"cardName": "Fairy Ring",
-	"effText": "Spores.\nWhen a friendly Fungus pulses an enemy, Invoke a Fungus.",
+	"effText": "Spores.\nThe first time each stack a friendly Fungus pulses an enemy, Invoke a Fungus.",
 	"effects": [
 		{
 			"blurb": "Ring around the enemy enemy",
 			"triggerData": {
 				"triggerCondition": "Activate",
 				"triggerRestriction": {
+					"triggerRestrictions": [
+						"Max Per Stack"
+					],
 					"triggerRestrictionElements": [
                         { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
                         {
@@ -42,9 +45,9 @@
 					"condition": "Target Violates Restriction",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Subtypes Exclude"
+							"Subtypes Include"
 						],
-						"subtypesExclude": [
+						"subtypesInclude": [
 							"Fungus"
 						]
 					},

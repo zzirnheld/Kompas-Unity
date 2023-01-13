@@ -84,7 +84,7 @@
 							"mustBeEmpty": false
 						},
 						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
+							{ "$type": "Core.CardRestriction:Enemy:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
