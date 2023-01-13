@@ -11,8 +11,8 @@
 	"s": 1,
 	"w": 0,
 	"subtypes": [
-		"Network",
+		"Mycelium",
 		"Fungus"
 	],
-	"subtypeText": "Network Fungus"
+	"subtypeText": "Mycelium Fungus"
 }

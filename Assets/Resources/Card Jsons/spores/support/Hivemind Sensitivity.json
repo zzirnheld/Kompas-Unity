@@ -38,6 +38,14 @@
 			]
 		}
 	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Augment Normal Restrictions"
+		],
+		"effectRestrictions": [
+			"Augment Effect Restrictions"
+		]
+	},
 	"a": 1,
 	"subtypeText": ""
 }

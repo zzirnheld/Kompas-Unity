@@ -492,6 +492,7 @@ speedemons/The Sonic Boom
 speedemons/Mach the Porcupine
 
 spores/fungi/digestive/Armillaria Bulbosa
+spores/fungi/digestive/Fairy Ring
 spores/fungi/digestive/Glimmering Morel
 spores/fungi/digestive/Saffron Milkcap
 
@@ -500,7 +501,9 @@ spores/fungi/fruiting/Dirty Trich
 spores/fungi/fruiting/Felt-Ringed Agaricus
 
 spores/fungi/sensory/Bindshrinking Inkcap
+spores/fungi/sensory/Button Mushroom
 spores/fungi/sensory/Easily Alarmed Roughstalk
+spores/fungi/sensory/Spring Agaricus
 spores/fungi/sensory/Trembling Bolete
 
 spores/fungi/mycelium/Mobile Mycelium
@@ -509,6 +512,8 @@ spores/fungi/mycelium/Toxic Mycelium
 spores/support/Fungal Networking
 spores/support/Hivemind Sensitivity
 spores/support/Vampiric Spores
+spores/support/Among Us
+spores/support/Fungibility
 
 sportsball/Arbiterary
 sportsball/Forward Dunker

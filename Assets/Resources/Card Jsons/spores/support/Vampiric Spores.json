@@ -52,20 +52,14 @@
 			]
 		}
 	],
-	"keywords": [
-		"Recoverable"
-	],
 	"PlayRestriction": {
 		"normalRestrictions": [
 			"Augment Normal Restrictions"
 		],
 		"effectRestrictions": [
 			"Augment Effect Restrictions"
-		],
-		"augSubtypes": [
-			"Golem"
 		]
 	},
 	"a": 3,
-	"subtypeText": "Golem Core"
+	"subtypeText": ""
 }

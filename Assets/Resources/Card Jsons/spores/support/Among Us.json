@@ -1,0 +1,79 @@
+{
+	"cardType": 83,
+	"cardName": "Among Us",
+	"effText": "Deck->summon a Fungus adjacent to X enemies (but still adjacent to a friendly). Pulse it X times. ",
+	"effects": [
+		{
+			"blurb": "Simple",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:DeckTarget:",
+					"cardRestriction": {
+						"blurb": "Fungus to Among Us",
+						"cardRestrictions": [
+							"Character",
+							"Deck",
+							"Can Be Played"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"subtypes": [ "Fungus" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "where is the Fungus?",
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Subeffect.Card:Target:" }
+                            }
+                        ]
+					}
+				},
+				{
+					"$type": "Subeffect:Play:"
+				},
+				{
+					"$type": "Subeffect:SetXBoardRestriction:",
+					"cardRestriction": {
+						"cardRestrictions": [ "Space Fits Restriction" ],
+						"spaceRestriction": { "spaceRestrictions": [ "Adjacent to Card Target" ] },
+						"cardRestrictionElements": [ { "$type": "Core.CardRestriction:Enemy:" } ]
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:Activate:"
+				},
+				{
+					"$type": "Subeffect:Activate:",
+					"activate": false
+				},
+				{
+					"$type": "Subeffect:XTimes:",
+					"jumpIndices": [ 4 ],
+                    "xMultiplier": 1
+				}
+			]
+		}
+	],
+	"c": 5,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypeText": "Simple"
+}
