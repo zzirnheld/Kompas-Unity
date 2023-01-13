@@ -45,7 +45,6 @@
 					"spaceRestriction": {
 						"blurb": "where to escape the footpad",
 						"spaceRestrictions": [
-							"Can Move Card Target to This Space",
 							"Adjacent to a Card that Fits Restriction",
 							"Empty"
 						],
@@ -56,7 +55,11 @@
 									"subtypes": [ "Supplicant" ]
 								}
 							]
-						}
+						},
+						"spaceRestrictionElements": [ {
+							"$type": "Core.SpaceRestriction:CanMoveCard:",
+							"toMove": { "$type": "Subeffect.Card:Target:" }
+						} ]
 					}
 				},
 				{

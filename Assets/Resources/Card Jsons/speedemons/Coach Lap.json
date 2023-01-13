@@ -38,18 +38,18 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "next lap?",
-						"spaceRestrictions": [
-							"Can Move Card Target to This Space",
-							"Distance to Card Target Fits X Restriction",
-							"Empty"
-						],
-						"distanceXRestriction": {
-							"numberRestrictions": [
-								"=X"
-							]
-						}
-					},
-					"xModifier": 1
+						"spaceRestrictionElements": [ 
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanMoveCard:",
+								"toMove": { "$type": "Subeffect.Card:Target:" },
+								"distanceRestriction": {
+									"numberRestrictions": [ "==Constant" ],
+									"constant": 1
+								}
+							}
+						]
+					}
 				},
 				{
 					"$type": "Subeffect:Move:"

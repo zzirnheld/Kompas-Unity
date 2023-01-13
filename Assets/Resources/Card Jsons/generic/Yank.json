@@ -35,9 +35,12 @@
 						"blurb": "Space to yank it to",
 						"spaceRestrictions": [
 							"Empty",
-                            "Adjacent to Source",
-							"Can Move Card Target to This Space"
-						]
+                            "Adjacent to Source"
+						],
+						"spaceRestrictionElements": [ {
+							"$type": "Core.SpaceRestriction:CanMoveCard:",
+							"toMove": { "$type": "Subeffect.Card:Target:" }
+						} ]
 					}
 				},
 				{

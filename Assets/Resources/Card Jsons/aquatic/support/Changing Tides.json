@@ -38,14 +38,17 @@
 						"blurb": "The tide moves",
 						"spaceRestrictions": [
 							"Empty",
-							"Distance to Source Fits X Restriction",
-							"Can Move Card Target to This Space"
+							"Distance to Source Fits X Restriction"
 						],
 						"distanceXRestriction": {
 							"numberRestrictions": [
 								"<=X"
 							]
-						}
+						},
+						"spaceRestrictionElements": [ {
+							"$type": "Core.SpaceRestriction:CanMoveCard:",
+							"toMove": { "$type": "Subeffect.Card:Target:" }
+						} ]
 					},
 					"xModifier": 2
 				},

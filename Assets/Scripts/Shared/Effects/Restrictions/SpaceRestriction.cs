@@ -65,7 +65,6 @@ namespace KompasCore.Effects
 
         //misc
         public const string CanPlayCardTarget = "Can Play Card Target to This Space";
-        public const string CanMoveCardTarget = "Can Move Card Target to This Space";
         public const string CanMoveSource = "Can Move Source to This Space";
         public const string Empty = "Empty";
         public const string Occupied = "Occupied";
@@ -228,7 +227,6 @@ namespace KompasCore.Effects
                 //misc
                 CanPlayCardTarget => target?.PlayRestriction?.IsValidEffectPlay(space, Subeffect?.Effect, Subeffect?.PlayerTarget, context,
                     ignoring: playRestrictionsToIgnore) ?? false,
-                CanMoveCardTarget => target?.MovementRestriction?.IsValidEffectMove(space, context) ?? false,
                 CanMoveSource => Source?.MovementRestriction?.IsValidEffectMove(space, context) ?? false,
 
                 Empty => Game.BoardController.IsEmpty(space),

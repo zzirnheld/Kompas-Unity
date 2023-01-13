@@ -72,9 +72,12 @@
 						"blurb": "mOOn",
 						"spaceRestrictions": [
 							"Empty",
-							"Can Move Card Target to This Space",
 							"In Card Target's AOE"
-						]
+						],
+						"spaceRestrictionElements": [ {
+							"$type": "Core.SpaceRestriction:CanMoveCard:",
+							"toMove": { "$type": "Subeffect.Card:Target:" }
+						} ]
 					}
 				},
 				{

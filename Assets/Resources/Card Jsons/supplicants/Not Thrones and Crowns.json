@@ -51,9 +51,12 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to move the supplicant's attacker",
-						"spaceRestrictions": [
-							"Can Move Card Target to This Space",
-							"Empty"
+						"spaceRestrictionElements": [ 
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanMoveCard:",
+								"toMove": { "$type": "Subeffect.Card:Target:" }
+							}
 						]
 					}
 				},

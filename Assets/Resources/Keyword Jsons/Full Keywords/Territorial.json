@@ -33,12 +33,15 @@
 			"spaceRestriction":
 			{
 				"blurb":"where Dragon to move its target",
-				"spaceRestrictions":["Can Move Card Target to This Space","Distance to Card Target Fits X Restriction"],
-				"distanceXRestriction":{
-					"numberRestrictions":["=X"]
-				}
-			},
-			"xModifier":1
+				"spaceRestrictionElements": [ {
+					"$type": "Core.SpaceRestriction:CanMoveCard:",
+					"toMove": { "$type": "Subeffect.Card:Target:" },
+					"distanceRestriction": {
+						"numberRestrictions": [ "==Constant" ],
+						"constant": 1
+					}
+				} ]
+			}
 		},
 		{
 			"$type":"Subeffect:Move:"

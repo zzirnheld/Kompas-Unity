@@ -43,9 +43,12 @@
 						"blurb": "where for Shifting Tile Maze Path Blocker to move its target",
 						"spaceRestrictions": [
 							"Empty",
-							"Corner",
-							"Can Move Card Target to This Space"
-						]
+							"Corner"
+						],
+						"spaceRestrictionElements": [ {
+							"$type": "Core.SpaceRestriction:CanMoveCard:",
+							"toMove": { "$type": "Subeffect.Card:Target:" }
+						} ]
 					}
 				},
 				{

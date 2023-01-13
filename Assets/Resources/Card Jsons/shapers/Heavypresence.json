@@ -29,16 +29,17 @@
 						"blurb": "to move Whose Anger Draws Fear's attack target to",
 						"spaceRestrictions": [
 							"Directly Away from Card Target",
-							"Distance to Card Target Fits X Restriction",
 							"Empty"
 						],
-						"distanceXRestriction": {
-							"numberRestrictions": [
-								"=X"
-							]
-						}
-					},
-					"xModifier": 1
+						"spaceRestrictionElements": [ {
+							"$type": "Core.SpaceRestriction:CanMoveCard:",
+							"toMove": { "$type": "Subeffect.Card:Target:" },
+							"distanceRestriction": {
+								"numberRestrictions": [ "==Constant" ],
+								"constant": 1
+							}
+						} ]
+					}
 				},
 				{
 					"$type": "Subeffect:Move:"

@@ -61,7 +61,6 @@
 					"spaceRestriction": {
 						"blurb": "where to move the Unwilling Vessel",
 						"spaceRestrictions": [
-							"Can Move Card Target to This Space",
 							"Distance to Source Fits X Restriction",
 							"Empty"
 						],
@@ -69,7 +68,11 @@
 							"numberRestrictions": [
 								"<=X"
 							]
-						}
+						},
+						"spaceRestrictionElements": [ {
+							"$type": "Core.SpaceRestriction:CanMoveCard:",
+							"toMove": { "$type": "Subeffect.Card:Target:" }
+						} ]
 					},
 					"xMultiplier": 1
 				},

@@ -16,21 +16,24 @@
         {
             "$type": "Subeffect:SpaceTarget:",
             "spaceRestriction": {
-                "spaceRestrictions": [
-                    "Can Move Card Target to This Space"
-                ],
-                "spaceRestrictionElements": [ {
-                    "$type": "Core.SpaceRestriction:InAOEOf:",
-                    "anyOf": {
-                        "$type": "Gamestate.ManyCards:FittingRestriction:",
-                        "cardRestriction": {
-                        "cardRestrictionElements": [ {
-                                "$type": "Core.CardRestriction:SubtypesInclude:",
-                                "subtypes": [ "Shade" ]
-                            } ]
+                "spaceRestrictionElements": [
+                    {
+                        "$type": "Core.SpaceRestriction:InAOEOf:",
+                        "anyOf": {
+                            "$type": "Gamestate.ManyCards:FittingRestriction:",
+                            "cardRestriction": {
+                            "cardRestrictionElements": [ {
+                                    "$type": "Core.CardRestriction:SubtypesInclude:",
+                                    "subtypes": [ "Shade" ]
+                                } ]
+                            }
                         }
+                    },
+                    {
+                        "$type": "Core.SpaceRestriction:CanMoveCard:",
+                        "toMove": { "$type": "Subeffect.Card:Target:" }
                     }
-                }]
+                ]
             }
         },
         {

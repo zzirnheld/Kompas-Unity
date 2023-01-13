@@ -7,8 +7,7 @@
         "spaceRestriction": {
             "blurb": "Stealth position to 'actually' be in",
             "spaceRestrictions": [
-                "In AOE Source is Also In",
-                "Can Move Card Target to This Space"
+                "In AOE Source is Also In"
             ],
             "alsoInAOEOfRestriction": {
                 "cardRestrictionElements": [
@@ -17,7 +16,11 @@
                         "subtypes": [ "Shade" ]
                     }
                 ]
-            }
+            },
+            "spaceRestrictionElements": [ {
+                "$type": "Core.SpaceRestriction:CanMoveCard:",
+                "toMove": { "$type": "Subeffect.Card:Target:" }
+            } ]
         }
     },
     {

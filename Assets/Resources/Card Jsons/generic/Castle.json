@@ -41,10 +41,13 @@
 					"spaceRestriction": {
 						"blurb": "Corner to move them to",
 						"spaceRestrictions": [
-							"Can Move Card Target to This Space",
 							"Corner",
 							"Empty"
-						]
+						],
+						"spaceRestrictionElements": [ {
+							"$type": "Core.SpaceRestriction:CanMoveCard:",
+							"toMove": { "$type": "Subeffect.Card:Target:" }
+						} ]
 					}
 				},
 				{

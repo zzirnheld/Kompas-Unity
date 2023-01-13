@@ -38,9 +38,12 @@
 						"blurb": "where to move the Shaper",
 						"spaceRestrictions": [
 							"Adjacent to Source",
-							"Can Move Card Target to This Space",
 							"Empty"
-						]
+						],
+						"spaceRestrictionElements": [ {
+							"$type": "Core.SpaceRestriction:CanMoveCard:",
+							"toMove": { "$type": "Subeffect.Card:Target:" }
+						} ]
 					}
 				},
 				{

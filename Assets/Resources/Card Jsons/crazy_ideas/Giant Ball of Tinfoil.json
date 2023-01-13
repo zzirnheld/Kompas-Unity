@@ -27,9 +27,12 @@
 						"blurb": "rollinnnnnnnn",
 						"spaceRestrictions": [
 							"Adjacent to Source",
-							"Can Move Card Target to This Space",
 							"Empty"
-						]
+						],
+						"spaceRestrictionElements": [ {
+							"$type": "Core.SpaceRestriction:CanMoveCard:",
+							"toMove": { "$type": "Subeffect.Card:Target:" }
+						} ]
 					}
 				},
 				{
@@ -47,10 +50,13 @@
 						"blurb": "rollinnnnnnnn",
 						"spaceRestrictions": [
 							"Adjacent to Source",
-							"Can Move Card Target to This Space",
 							"On Axis of Last Two Spaces",
 							"Empty"
-						]
+						],
+						"spaceRestrictionElements": [ {
+							"$type": "Core.SpaceRestriction:CanMoveCard:",
+							"toMove": { "$type": "Subeffect.Card:Target:" }
+						} ]
 					}
 				},
 				{

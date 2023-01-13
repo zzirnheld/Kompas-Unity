@@ -100,9 +100,12 @@
 					"playerIndex": -2,
 					"spaceRestriction": {
 						"blurb": "where for Newsflash! to move it starget",
-						"spaceRestrictions": [
-							"Empty",
-							"Can Move Card Target to This Space"
+						"spaceRestrictionElements": [ 
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanMoveCard:",
+								"toMove": { "$type": "Subeffect.Card:Target:" }
+							}
 						]
 					}
 				},

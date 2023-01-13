@@ -38,7 +38,6 @@
 						"spaceRestrictions": [
 							"Empty",
 							"On Card Target's Diagonal",
-							"Can Move Card Target to This Space",
 							"Connected to Card Target by Spaces Fitting Restriction"
 						],
 						"spaceConnectednessRestriction": {
@@ -46,7 +45,11 @@
 								"Empty",
 								"On Card Target's Diagonal"
 							]
-						}
+						},
+						"spaceRestrictionElements": [ {
+							"$type": "Core.SpaceRestriction:CanMoveCard:",
+							"toMove": { "$type": "Subeffect.Card:Target:" }
+						} ]
 					}
 				},
 				{

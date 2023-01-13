@@ -49,9 +49,12 @@
 						"spaceRestrictions": [
 							"Empty",
 							"On Card Target's Diagonal",
-							"On Edge of Board",
-							"Can Move Card Target to This Space"
-						]
+							"On Edge of Board"
+						],
+						"spaceRestrictionElements": [ {
+							"$type": "Core.SpaceRestriction:CanMoveCard:",
+							"toMove": { "$type": "Subeffect.Card:Target:" }
+						} ]
 					}
 				},
 				{

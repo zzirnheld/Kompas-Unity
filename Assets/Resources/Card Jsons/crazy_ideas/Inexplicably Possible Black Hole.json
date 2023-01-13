@@ -31,9 +31,12 @@
 						"spaceRestrictions": [
 							"Adjacent to Card Target",
 							"Towards Source from Card Target",
-							"Can Move Card Target to This Space",
 							"Empty"
-						]
+						],
+						"spaceRestrictionElements": [ {
+							"$type": "Core.SpaceRestriction:CanMoveCard:",
+							"toMove": { "$type": "Subeffect.Card:Target:" }
+						} ]
 					}
 				},
 				{

@@ -33,16 +33,16 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where Cyan to move its target",
-						"spaceRestrictions": [
-							"Can Move Card Target to This Space",
-							"Distance to Card Target Fits X Restriction",
-							"Empty"
-						],
-						"distanceXRestriction": {
-							"numberRestrictions": [
-								"=X"
-							]
-						}
+						"spaceRestrictionElements": [ 
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanMoveCard:",
+								"toMove": { "$type": "Subeffect.Card:Target:" },
+								"distanceRestriction": {
+									"numberRestrictions": [ "=X" ]
+								}
+							}
+						]
 					},
 					"xMultiplier": 1
 				},

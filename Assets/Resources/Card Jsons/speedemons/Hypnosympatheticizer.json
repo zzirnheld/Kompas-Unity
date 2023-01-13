@@ -39,17 +39,17 @@
 						"blurb": "where for speed victim to move",
 						"spaceRestrictions": [
 							"Same Direction from Space to Card Target as Space Target to Source",
-							"Distance to Card Target Fits X Restriction",
-							"Empty",
-							"Can Move Card Target to This Space"
+							"Empty"
 						],
-						"distanceXRestriction": {
-							"numberRestrictions": [
-								"=X"
-							]
-						}
-					},
-					"xModifier": 1
+						"spaceRestrictionElements": [ {
+							"$type": "Core.SpaceRestriction:CanMoveCard:",
+							"toMove": { "$type": "Subeffect.Card:Target:" },
+							"distanceRestriction": {
+								"numberRestrictions": [ "==Constant" ],
+								"constant": 1
+							}
+						} ]
+					}
 				},
 				{
 					"$type": "Subeffect:Move:"

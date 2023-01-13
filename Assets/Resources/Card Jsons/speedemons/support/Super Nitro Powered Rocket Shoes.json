@@ -29,12 +29,16 @@
                     "spaceRestriction":
                     {
                         "blurb":"where for speed victim to move",
-                        "spaceRestrictions":["Opposite Direction from Source to Space as Source to Space Target","Distance to Card Target Fits X Restriction"],
-                        "distanceXRestriction":{
-                            "numberRestrictions":["=X"]
-                        }
-					},
-					"xModifier":1
+                        "spaceRestrictions":["Opposite Direction from Source to Space as Source to Space Target"],
+						"spaceRestrictionElements": [ {
+							"$type": "Core.SpaceRestriction:CanMoveCard:",
+							"toMove": { "$type": "Subeffect.Card:Target:" },
+							"distanceRestriction": {
+								"numberRestrictions": [ "==Constant" ],
+								"constant": 1
+							}
+						} ]
+					}
                 },
                 {
                     "$type":"Subeffect:Move:"

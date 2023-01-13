@@ -37,7 +37,6 @@
 					"spaceRestriction": {
 						"blurb": "where will the wave crash",
 						"spaceRestrictions": [
-							"Can Move Card Target to This Space",
 							"Connected to Card Target by Spaces Fitting Restriction",
 							"Empty"
 						],
@@ -56,6 +55,10 @@
 											]
 										}
 									}
+								},
+								{
+									"$type": "Core.SpaceRestriction:CanMoveCard:",
+									"toMove": { "$type": "Subeffect.Card:Target:" }
 								}
 							]
 						}
