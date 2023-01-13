@@ -25,7 +25,7 @@
 						],
 						"cardRestrictionElements": [
 							{
-								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Mycelium" ]
 							}
 						]
@@ -58,7 +58,7 @@
 						],
 						"cardRestrictionElements": [
 							{
-								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Mycelium" ]
 							}
 						]

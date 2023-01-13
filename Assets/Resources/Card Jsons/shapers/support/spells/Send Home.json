@@ -29,7 +29,7 @@
 							"adjacencyRestriction": {
 								"cardRestrictionElements": [
 									{
-										"$type": "Core.CardRestriction:SubtypesInclude:",
+										"$type": "Core.CardRestriction:Subtypes:",
 										"subtypes": [ "Shaper" ]
 									}
 								]
@@ -61,7 +61,7 @@
 		"adjacentCardRestriction": {
 			"cardRestrictionElements": [
 				{
-					"$type": "Core.CardRestriction:SubtypesInclude:",
+					"$type": "Core.CardRestriction:Subtypes:",
 					"subtypes": [ "Shaper" ]
 				}
 			]

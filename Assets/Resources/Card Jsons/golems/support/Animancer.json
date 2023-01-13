@@ -26,7 +26,7 @@
                                 "locations": [ "Hand" ]
                             },
 							{
-								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Golem" ]
 							}
 						]
@@ -69,7 +69,7 @@
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
-								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Golem" ]
 							}
 						]

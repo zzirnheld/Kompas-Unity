@@ -15,7 +15,7 @@
 					"cardRestriction": {
 						"cardRestrictionElements": [
 							{
-								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Mech" ]
 							}
 						]
@@ -37,7 +37,7 @@
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
-								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Mech", "Golem" ]
 							}
 						]

@@ -17,7 +17,7 @@
 					"cardRestriction": {
 						"cardRestrictionElements": [
 							{
-								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Revenant" ]
 							}
 						]

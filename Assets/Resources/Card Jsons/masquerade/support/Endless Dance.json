@@ -24,7 +24,7 @@
 								"locations": [ "Board" ]
 							},
 							{
-								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Dancer" ]
 							}
 						]
@@ -50,7 +50,7 @@
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
-								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Masked", "Dancer" ]
 							}
 						]

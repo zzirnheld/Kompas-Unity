@@ -33,7 +33,7 @@
 								"locations": [ "Board" ]
 							},
 							{
-								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Shaper" ]
 							}
 						]
@@ -53,7 +53,7 @@
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
-								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Shaper" ]
 							}
 						]
@@ -85,7 +85,7 @@
 		"adjacentCardRestriction": {
 			"cardRestrictionElements": [
 				{
-					"$type": "Core.CardRestriction:SubtypesInclude:",
+					"$type": "Core.CardRestriction:Subtypes:",
 					"subtypes": [ "Shaper" ]
 				}
 			]

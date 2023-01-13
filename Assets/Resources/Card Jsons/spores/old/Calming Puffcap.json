@@ -45,7 +45,7 @@
                                 "locations": [ "Hand" ]
                             },
 							{
-								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Fungus" ]
 							}
 						]

@@ -29,7 +29,7 @@
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
-								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Memory" ]
 							},
 							{
@@ -37,7 +37,7 @@
                                 "cardRestriction": {
                                     "cardRestrictionElements": [
                                         {
-                                            "$type": "Core.CardRestriction:SubtypesInclude:",
+                                            "$type": "Core.CardRestriction:Subtypes:",
                                             "subtypes": [ "Vessel" ]
                                         }
                                     ]
@@ -63,7 +63,7 @@
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
-								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Memory" ]
 							}
 						]

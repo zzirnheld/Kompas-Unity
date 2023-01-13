@@ -17,7 +17,7 @@
                     {
 						"cardRestrictionElements": [
 							{
-								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Invoker" ]
 							}
 						]
@@ -28,7 +28,7 @@
 						],
 						"cardRestrictionElements": [
 							{
-								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Ethereal" ]
 							}
 						]
@@ -61,7 +61,7 @@
 						],
 						"cardRestrictionElements": [
 							{
-								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Spirit" ]
 							}
 						]

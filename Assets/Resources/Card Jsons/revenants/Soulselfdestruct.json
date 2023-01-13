@@ -32,7 +32,7 @@
 								"locations": [ "Board" ]
 							},
 							{
-								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Ethereal" ]
 							}
 						]
@@ -58,7 +58,7 @@
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
-								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Revenant" ]
 							}
 						]
@@ -83,7 +83,7 @@
 		"adjacentCardRestriction": {
 			"cardRestrictionElements": [
 				{
-					"$type": "Core.CardRestriction:SubtypesInclude:",
+					"$type": "Core.CardRestriction:Subtypes:",
 					"subtypes": [ "Ethereal" ]
 				}
 			]

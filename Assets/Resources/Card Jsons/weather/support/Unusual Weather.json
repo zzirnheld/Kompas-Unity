@@ -15,7 +15,7 @@
 					"cardRestriction": {
 						"cardRestrictionElements": [
 							{
-								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Weather", "Event" ]
 							}
 						]
@@ -41,7 +41,7 @@
 							"alsoInAOEOfRestriction": {
 								"cardRestrictionElements": [
 									{
-										"$type": "Core.CardRestriction:SubtypesInclude:",
+										"$type": "Core.CardRestriction:Subtypes:",
 										"subtypes": [ "Weather" ]
 									}
 								]

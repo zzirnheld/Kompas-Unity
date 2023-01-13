@@ -24,7 +24,7 @@
 								"locations": [ "Discard" ]
 							},
 							{
-								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Pulsar" ]
 							}
 						]

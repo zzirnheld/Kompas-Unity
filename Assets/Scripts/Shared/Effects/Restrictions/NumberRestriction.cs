@@ -26,7 +26,7 @@ namespace KompasCore.Effects
 
         public const string GreaterThanSourceCardValue = ">Source";
 
-        public string[] numberRestrictions;
+        public string[] numberRestrictions = {};
 
         public int constant;
 

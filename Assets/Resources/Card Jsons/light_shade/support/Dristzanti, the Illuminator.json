@@ -21,7 +21,7 @@
 								"$type": "Gamestate.ManyCards:FittingRestriction:",
 								"cardRestriction": {
 								"cardRestrictionElements": [ {
-										"$type": "Core.CardRestriction:SubtypesInclude:",
+										"$type": "Core.CardRestriction:Subtypes:",
 										"subtypes": [ "Shade" ]
 									} ]
 								}
@@ -39,7 +39,7 @@
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
-								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Light" ]
 							}
 						]
@@ -54,7 +54,7 @@
 						],
 						"cardRestrictionElements": [
 							{
-								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Shade" ]
 							}
 						]

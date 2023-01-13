@@ -25,7 +25,7 @@
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
-								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Vessel" ]
 							}
 						],
@@ -37,7 +37,7 @@
                         "augmentRestriction": {
 							"cardRestrictionElements": [
 								{
-									"$type": "Core.CardRestriction:SubtypesInclude:",
+									"$type": "Core.CardRestriction:Subtypes:",
 									"subtypes": [ "Memory" ]
 								}
 							]
@@ -58,7 +58,7 @@
 								"locations": [ "Board" ]
 							},
 							{
-								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Memory" ]
 							}
 						]
@@ -85,7 +85,7 @@
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
-								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Vessel" ]
 							}
 						],

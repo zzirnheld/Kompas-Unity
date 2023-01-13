@@ -24,7 +24,7 @@
                                 "locations": [ "Hand" ]
                             },
 							{
-								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Spirit" ]
 							}
 						]
@@ -43,7 +43,7 @@
 					"cardRestriction": {
 						"cardRestrictionElements": [
 							{
-								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Invoker" ]
 							}
 						]

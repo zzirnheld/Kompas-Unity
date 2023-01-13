@@ -29,7 +29,7 @@
 							"alsoInAOEOfRestriction": {
 								"cardRestrictionElements": [
 									{
-										"$type": "Core.CardRestriction:SubtypesInclude:",
+										"$type": "Core.CardRestriction:Subtypes:",
 										"subtypes": [ "Weather" ]
 									}
 								]
@@ -83,7 +83,7 @@
 					"$type": "Gamestate.ManyCards:FittingRestriction:",
 					"cardRestriction": {
 					"cardRestrictionElements": [ {
-							"$type": "Core.CardRestriction:SubtypesInclude:",
+							"$type": "Core.CardRestriction:Subtypes:",
 							"subtypes": [ "Weather" ]
 						} ]
 					}

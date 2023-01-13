@@ -21,7 +21,7 @@
 								"locations": [ "Board" ]
 							},
 							{
-								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Moth" ]
 							}
 						]
@@ -37,7 +37,7 @@
 									"$type": "Gamestate.ManyCards:FittingRestriction:",
 									"cardRestriction": {
 									"cardRestrictionElements": [ {
-											"$type": "Core.CardRestriction:SubtypesInclude:",
+											"$type": "Core.CardRestriction:Subtypes:",
 											"subtypes": [ "Light" ]
 										} ]
 									}

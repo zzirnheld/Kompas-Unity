@@ -33,7 +33,7 @@
 								"locations": [ "Board" ]
 							},
 							{
-								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Reporter" ]
 							}
 						]
@@ -126,7 +126,7 @@
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
-								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Reporter" ]
 							}
 						]
@@ -146,7 +146,7 @@
 		"adjacentCardRestriction": {
 			"cardRestrictionElements": [
 				{
-					"$type": "Core.CardRestriction:SubtypesInclude:",
+					"$type": "Core.CardRestriction:Subtypes:",
 					"subtypes": [ "Reporter" ]
 				}
 			]

@@ -34,7 +34,7 @@
 								"locations": [ "Board" ]
 							},
 							{
-								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Cultist" ]
 							}
 						]
@@ -86,7 +86,7 @@
 			],
 			"cardRestrictionElements": [
 				{
-					"$type": "Core.CardRestriction:SubtypesInclude:",
+					"$type": "Core.CardRestriction:Subtypes:",
 					"subtypes": [ "Cultist" ]
 				}
 			]

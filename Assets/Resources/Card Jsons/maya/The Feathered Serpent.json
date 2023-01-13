@@ -30,7 +30,7 @@
 								"locations": [ "Board" ]
 							},
 							{
-								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Person" ]
 							}
 						],
@@ -41,7 +41,7 @@
                             "adjacencyRestriction": {
 								"cardRestrictionElements": [
 									{
-										"$type": "Core.CardRestriction:SubtypesInclude:",
+										"$type": "Core.CardRestriction:Subtypes:",
 										"subtypes": [ "Structure" ]
 									}
 								]

@@ -28,7 +28,7 @@
 						"adjacencyRestriction": {
 							"cardRestrictionElements": [
 								{
-									"$type": "Core.CardRestriction:SubtypesInclude:",
+									"$type": "Core.CardRestriction:Subtypes:",
 									"subtypes": [ "Supplicant" ]
 								}
 							]
@@ -51,7 +51,7 @@
 						"adjacencyRestriction": {
 							"cardRestrictionElements": [
 								{
-									"$type": "Core.CardRestriction:SubtypesInclude:",
+									"$type": "Core.CardRestriction:Subtypes:",
 									"subtypes": [ "Supplicant" ]
 								}
 							]

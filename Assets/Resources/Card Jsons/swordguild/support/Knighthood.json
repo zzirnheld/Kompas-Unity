@@ -25,7 +25,7 @@
                                         "locations": [ "Board" ]
                                     },
                                     {
-                                        "$type": "Core.CardRestriction:SubtypesInclude:",
+                                        "$type": "Core.CardRestriction:Subtypes:",
                                         "subtypes": [ "Squire" ]
                                     }
                                 ]
@@ -78,7 +78,7 @@
 						"cardValueNumberRestriction": { "numberRestrictions": [ "<=X" ] },
 						"cardRestrictionElements": [
 							{
-								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Warrior" ]
 							}
 						]

@@ -26,7 +26,7 @@
 							"cardRestrictionElements": [
 								{ "$type": "Core.CardRestriction:Enemy:" },
                                 {
-                                    "$type": "Core.CardRestriction:SubtypesInclude:",
+                                    "$type": "Core.CardRestriction:Subtypes:",
                                     "subtypes": [ "Fungus" ]
                                 }
 							]

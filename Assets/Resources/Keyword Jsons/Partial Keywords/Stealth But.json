@@ -12,7 +12,7 @@
             "alsoInAOEOfRestriction": {
                 "cardRestrictionElements": [
                     {
-                        "$type": "Core.CardRestriction:SubtypesInclude:",
+                        "$type": "Core.CardRestriction:Subtypes:",
                         "subtypes": [ "Shade" ]
                     }
                 ]
@@ -41,7 +41,7 @@
                 ],
                 "cardRestrictionElements": [
                     {
-                        "$type": "Core.CardRestriction:SubtypesInclude:",
+                        "$type": "Core.CardRestriction:Subtypes:",
                         "subtypes": [ "Light" ]
                     }
                 ]

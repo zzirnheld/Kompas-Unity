@@ -25,7 +25,7 @@
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
-								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Brilliant", "Mage" ]
 							}
 						]
@@ -53,7 +53,7 @@
 					"$type": "Gamestate.ManyCards:FittingRestriction:",
 					"cardRestriction": {
 					"cardRestrictionElements": [ {
-							"$type": "Core.CardRestriction:SubtypesInclude:",
+							"$type": "Core.CardRestriction:Subtypes:",
 							"subtypes": [ "Light" ]
 						} ]
 					}

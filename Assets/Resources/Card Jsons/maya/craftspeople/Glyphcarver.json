@@ -21,7 +21,7 @@
 						"spaceRestriction": { "spaceRestrictions": [ "Adjacent to Source" ] },
 						"cardRestrictionElements": [
 							{
-								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Structure" ]
 							}
 						]

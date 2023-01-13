@@ -16,7 +16,7 @@
 					"cardRestriction": {
 						"cardRestrictionElements": [
 							{
-								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Golem" ]
 							}
 						]
@@ -44,7 +44,7 @@
 								"locations": [ "Discard" ]
 							},
 							{
-								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Golem", "Core" ]
 							}
 						]

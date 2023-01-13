@@ -20,7 +20,7 @@
 						"spaceRestriction": { "spaceRestrictions": [ "In Source's AOE" ] },
 						"cardRestrictionElements": [
 							{
-								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Orc" ]
 							}
 						]
@@ -88,7 +88,7 @@
                                 "locations": [ "Hand" ]
                             },
 							{
-								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Orc" ]
 							}
 						]

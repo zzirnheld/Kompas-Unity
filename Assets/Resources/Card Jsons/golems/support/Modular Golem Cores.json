@@ -27,7 +27,7 @@
 								],
 								"cardRestrictionElements": [
 									{
-										"$type": "Core.CardRestriction:SubtypesInclude:",
+										"$type": "Core.CardRestriction:Subtypes:",
 										"subtypes": [ "Golem" ]
 									}
 								]
@@ -56,7 +56,7 @@
 								"locations": [ "Board" ]
 							},
 							{
-								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Golem" ]
 							}
 						],
@@ -101,7 +101,7 @@
 								"locations": [ "Hand" ]
 							},
 							{
-								"$type": "Core.CardRestriction:SubtypesInclude:",
+								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Golem", "Core" ]
 							}
 						]
