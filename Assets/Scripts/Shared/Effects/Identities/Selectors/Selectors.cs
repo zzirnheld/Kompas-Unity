@@ -20,4 +20,10 @@ namespace KompasCore.Effects.Selectors
     public class Random : RandomSelector<object> {}
     public class RandomSpace : RandomSelector<Space> {}
     public class RandomCard : RandomSelector<GameCardBase> {}
+
+    public class SortIndex: ISelector<GameCardBase>
+    {
+        public GameCardBase Select(IReadOnlyCollection<GameCardBase> objects)
+            => objects.OrderBy(c => c.IndexInList).FirstOrDefault();
+    }
 }

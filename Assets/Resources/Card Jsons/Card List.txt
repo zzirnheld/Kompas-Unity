@@ -75,6 +75,7 @@ aquatic/Kraken
 aquatic/Dragon Turtle
 aquatic/Raincaller Carp
 aquatic/Inevitable Crab
+aquatic/Myceleocanth
 
 aquatic/water/High Tide
 aquatic/water/Nuisance Flooding
