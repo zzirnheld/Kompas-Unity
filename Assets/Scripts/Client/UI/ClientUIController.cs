@@ -228,6 +228,7 @@ namespace KompasClient.UI
 
         public void DeclineAnotherTarget()
         {
+            Debug.Log("Decline another target");
             DisableDecliningTarget();
             clientGame.clientNotifier.DeclineAnotherTarget();
         }

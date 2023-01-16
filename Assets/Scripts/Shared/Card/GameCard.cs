@@ -213,7 +213,7 @@ namespace KompasCore.Cards
             ID = id;
         }
 
-        protected GameCard(SerializableCard serializeableCard, int id)
+        protected GameCard(SerializableCard serializeableCard, int id, Game game)
             : base(serializeableCard.Stats,
                        serializeableCard.subtext, serializeableCard.spellTypes,
                        serializeableCard.fast, serializeableCard.unique,
@@ -227,7 +227,7 @@ namespace KompasCore.Cards
             ID = id;
             InitialCardValues = serializeableCard;
 
-            EffectInitializationContext initializationContext = new EffectInitializationContext(Game, this);
+            EffectInitializationContext initializationContext = new EffectInitializationContext(game, this); //Can't use property because constructor hasn't gotten there yet
             MovementRestriction = serializeableCard.MovementRestriction ?? new MovementRestriction();
             MovementRestriction.Initialize(initializationContext);
             AttackRestriction = serializeableCard.AttackRestriction ?? new AttackRestriction();

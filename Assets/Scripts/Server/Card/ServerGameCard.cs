@@ -91,7 +91,7 @@ namespace KompasServer.Cards
         }
 
         public ServerGameCard(ServerSerializableCard card, int id, ServerCardController serverCardController, ServerPlayer owner, ServerEffect[] effects)
-            : base(card, id)
+            : base(card, id, owner.serverGame)
         {
             owner.serverGame.AddCard(this);
             ServerCardController = serverCardController;

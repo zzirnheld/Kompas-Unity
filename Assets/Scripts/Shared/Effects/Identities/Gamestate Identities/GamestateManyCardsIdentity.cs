@@ -25,7 +25,7 @@ namespace KompasCore.Effects.Identities
             }
 
             protected override IReadOnlyCollection<GameCardBase> AbstractItem
-                => InitializationContext.game.Cards.Where(c => cardRestriction.IsValidCard(c, default)).ToArray();
+                => cards.Item.Where(c => cardRestriction.IsValidCard(c, default)).ToArray();
         }
 
         public class Multiple : NoActivationContextIdentityBase<IReadOnlyCollection<GameCardBase>>

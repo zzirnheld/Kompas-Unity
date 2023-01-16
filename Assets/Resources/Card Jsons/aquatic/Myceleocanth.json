@@ -18,6 +18,10 @@
 					"$type": "Subeffect:TargetAll:",
 					"cardRestriction": {
                         "cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
                             { "$type": "Core.CardRestriction:Character:" },
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",

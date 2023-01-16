@@ -77,7 +77,7 @@ namespace KompasClient.Cards
         }
 
         public ClientGameCard(SerializableCard serializedCard, int id, ClientPlayer owner, ClientEffect[] effects, ClientCardController clientCardController)
-            : base (serializedCard, id)
+            : base (serializedCard, id, owner.clientGame)
         {
             owner.clientGame.AddCard(this);
 

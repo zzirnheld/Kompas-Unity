@@ -59,6 +59,7 @@ namespace KompasServer.Effects
             while (!AddTargetIfLegal(card))
             {
                 card = await GetTargets(potentialTargetIds);
+                if (ServerEffect.CanDeclineTarget) Debug.Log($"Client is permitted to decline target. Have they done so? {card == null}");
                 if (card == null && ServerEffect.CanDeclineTarget) return ResolutionInfo.Impossible(DeclinedFurtherTargets);
             }
 
