@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Here Be Monsters",
-	"effText": "When I'm cast in Water with total cost X, annihilate me, then deck->summon an S <= X Aquatic character where I was. Annihilate them when friendly turns start.",
+	"effText": "When I'm cast in Water with total cost X, annihilate me, then deck->summon an S <= X Aquatic character where I was.",
 	"effects": [
 		{
 			"triggerData": {
@@ -71,15 +71,6 @@
 				},
 				{
 					"$type": "Subeffect:Play:"
-				},
-				{
-					"$type": "Subeffect:HangingAnnihilation:",
-					"endCondition": "Turn Start",
-					"triggerRestriction": {
-						"triggerRestrictions": [
-							"Friendly Turn"
-						]
-					}
 				}
 			]
 		}

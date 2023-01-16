@@ -127,6 +127,7 @@ namespace KompasCore.Effects
             if (mainCardInfoBefore != null) sb.Append($"Card: {mainCardInfoBefore.CardName}, ");
             if (secondaryCardInfoBefore != null) sb.Append($"Secondary Card: {secondaryCardInfoBefore.CardName}, ");
             if (cardCause != null) sb.Append($"Card cause: {cardCause.CardName}, ");
+            if (stackableEvent != null) sb.Append($"Stackable Event: {stackableEvent}, ");
             if (stackableCause != null) sb.Append($"Stackable Cause: {stackableCause}, ");
             if (player != null) sb.Append($"Triggerer: {player.index}, ");
             if (x != null) sb.Append($"X: {x}, ");

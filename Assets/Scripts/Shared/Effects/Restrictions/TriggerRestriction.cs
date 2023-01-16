@@ -72,7 +72,7 @@ namespace KompasCore.Effects
         private const string MaxPerStack = "Max Per Stack";
         #endregion trigger conditions
 
-        private static readonly string[] RequiringCardRestriction = 
+        private static readonly string[] RequiringCardRestriction =
             { MainCardFitsRestrictionBefore, MainCardsAugmentedCardBeforeFitsRestriction };
         private static readonly string[] RequiringNowRestriction = { MainCardFitsRestrictionAfter };
         private static readonly string[] RequiringSelfRestriction = { ThisCardFitsRestriction };
@@ -125,7 +125,7 @@ namespace KompasCore.Effects
             {
                 tre.Initialize(initializationContext);
             }
-            
+
             //Verify that any relevant restrictions exist
             if (triggerRestrictions.Intersect(RequiringCardRestriction).Any() && cardRestriction == null)
                 throw new ArgumentNullException("cardRestriction", $"Must be populated for any of these restrictions: {string.Join(",", RequiringCardRestriction)}");
@@ -168,7 +168,7 @@ namespace KompasCore.Effects
             MainCardIsStackableSource => context.stackableCause?.Source == context.mainCardInfoBefore.Card,
             StackableSourceFitsRestriction => sourceRestriction.IsValidCard(context.stackableCause?.Source, context),
             StackableSourceNotThisEffect => context.stackableCause != SourceEffect,
-            ContextsStackablesMatch => context.stackableCause == secondary?.stackableCause,
+            ContextsStackablesMatch => StackablesMatch(context, secondary),
             StackableIsThisEffect => context.stackableCause == SourceEffect,
             StackableIsASecondaryContextStackableTarget => secondary?.StackableTargets?.Any(s => s == context.stackableCause) ?? false,
             NoStackable => context.stackableCause == null,
@@ -206,6 +206,11 @@ namespace KompasCore.Effects
             _ => throw new ArgumentException($"Invalid trigger restriction {restriction}"),
         };
 
+        private static bool StackablesMatch(ActivationContext context, ActivationContext secondary)
+        {
+            Debug.Log($"Comparing {context}'s {context.stackableEvent} and {secondary}'s {secondary?.stackableEvent}");
+            return context.stackableEvent == secondary?.stackableEvent;
+        }
 
         private bool IsRestrictionValidDebug(string r, ActivationContext ctxt, ActivationContext secondary)
         {

@@ -22,12 +22,12 @@
 			]
 		}
 	],
-	"c": 3,
+	"c": 4,
 	"spellTypes": [
 		"Vanishing",
 		"Radial"
 	],
 	"duration": 4,
-	"radius": 3,
+	"radius": 4,
 	"subtypeText": "Radial 2 Vanishing 4 Water"
 }
