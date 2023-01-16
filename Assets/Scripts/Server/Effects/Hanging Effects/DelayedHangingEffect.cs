@@ -34,7 +34,7 @@ namespace KompasServer.Effects
             numTimesDelayed = 0;
         }
 
-        protected override bool ShouldResolve(ActivationContext context)
+        public override bool ShouldResolve(ActivationContext context)
         {
             UnityEngine.Debug.Log($"Checking if delayed hanging effect should end for context {context}, {numTimesDelayed}/{numTimesToDelay}");
             //first check any other logic
@@ -53,7 +53,7 @@ namespace KompasServer.Effects
             }
         }
 
-        protected override void Resolve(ActivationContext context)
+        public override void Resolve(ActivationContext context)
         {
             var myContext = context.Copy;
             myContext.SetResumeInfo(targets, spaces, default, default, default, default, indexToResumeResolution);

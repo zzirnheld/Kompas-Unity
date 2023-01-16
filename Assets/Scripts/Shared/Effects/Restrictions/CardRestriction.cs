@@ -372,6 +372,14 @@ namespace KompasCore.Effects
             return answer;
         }
 
+        private bool IsRestrictionElemValidDebug(CardRestrictionElement restriction, GameCardBase potentialTarget, ActivationContext context)
+        {
+            bool answer = restriction.FitsRestriction(potentialTarget, context);
+            //if (!answer) Debug.Log($"{potentialTarget} flouts {restriction} in effect of {Source} in context {InitializationContext}");
+            return answer;
+
+        }
+
         /// <summary>
         /// Checks whether the card in question fits the relevant retrictions, for the given value of X
         /// </summary>
@@ -386,7 +394,7 @@ namespace KompasCore.Effects
             try
             {
                 return cardRestrictions.All(r => IsRestrictionValidDebug(r, potentialTarget, x, context))
-                    && cardRestrictionElements.All(cre => cre.FitsRestriction(potentialTarget, context));
+                    && cardRestrictionElements.All(r => IsRestrictionElemValidDebug(r, potentialTarget, context));
             }
             catch (SystemException exception) when (exception is NullReferenceException || exception is ArgumentException)
             {

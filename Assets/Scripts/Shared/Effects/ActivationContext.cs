@@ -152,7 +152,7 @@ namespace KompasCore.Effects
                    secondaryCardInfoBefore: GameCardInfo.CardInfoOf(secondaryCardBefore),
                    //Set the event cause either as the override if one is provided,
                    //or as the stackable's cause if not.
-                   cardCause: GameCardInfo.CardInfoOf(eventCauseOverride ?? stackableCause?.GetCause(mainCardBefore?.Card)),
+                   cardCause: GameCardInfo.CardInfoOf(eventCauseOverride ?? stackableCause?.GetCause(mainCardBefore)),
                    stackableCause: stackableCause,
                    stackableEvent: stackableEvent,
                    player: player,

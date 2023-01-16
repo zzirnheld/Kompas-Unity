@@ -109,6 +109,7 @@ namespace KompasCore.Cards
             get => augmentedCard;
             protected set
             {
+                Debug.Log($"{CardName} augmenting {augmentedCard} will now be augmenting {value}");
                 augmentedCard = value;
                 if (augmentedCard != null)
                 {
@@ -193,9 +194,9 @@ namespace KompasCore.Cards
         {
             StringBuilder sb = new StringBuilder();
             sb.Append(base.ToString());
-            sb.Append($"id {ID} controlled by {ControllerIndex}, owned by {OwnerIndex}, in location {location}, position {Position}, ");
-            if (Attached) sb.Append($"augmented card is {AugmentedCard.CardName} id {AugmentedCard.ID}, ");
-            if (Augments.Count() > 0) sb.Append($"augments are {string.Join(", ", Augments.Select(c => $"{c.CardName} id {c.ID}"))}");
+            sb.Append($", ID={ID}, Controlled by {ControllerIndex}, Owned by {OwnerIndex}, In Location {location}, Position {Position}, ");
+            if (Attached) sb.Append($"Augmenting {AugmentedCard.CardName} ID={AugmentedCard.ID}, ");
+            if (Augments.Count() > 0) sb.Append($"Augments are {string.Join(", ", Augments.Select(c => $"{c.CardName} ID={c.ID}"))}");
             return sb.ToString();
         }
 

@@ -183,7 +183,7 @@ namespace KompasServer.Cards
                 Game.BoardController.CardsAndAugsWhere(c => c != null && c.CardInAOE(this)).ToList() :
                 new List<GameCard>();
             var leaveContexts = cardsThisLeft.Select(c =>
-                new ActivationContext(game: ServerGame, mainCardBefore: this, secondaryCardBefore: c, stackableCause: stackSrc, player: player));
+                new ActivationContext(game: ServerGame, mainCardBefore: this, secondaryCardBefore: c, stackableCause: stackSrc, player: player)).ToArray();
 
             var ret = base.Remove(stackSrc);
 
@@ -226,6 +226,7 @@ namespace KompasServer.Cards
         public override void SetE(int e, IStackable stackSrc = null, bool onlyStatBeingSet = true)
         {
             if (e == E) return;
+            int oldE = E;
             var context = new ActivationContext(game: ServerGame, mainCardBefore: this, stackableCause: stackSrc, player: stackSrc?.Controller, x: e - E);
             base.SetE(e, stackSrc);
             context.CacheCardInfoAfter();
@@ -234,7 +235,8 @@ namespace KompasServer.Cards
             if (onlyStatBeingSet) ServerNotifier.NotifyStats(this);
 
             //kill if applicable
-            if (E <= 0 && CardType == 'C' && Summoned) this.Discard(stackSrc);
+            Debug.Log($"E changed from {oldE} to {E}. Should it die?");
+            if (E <= 0 && CardType == 'C' && Summoned && Location != CardLocation.Nowhere && Location != CardLocation.Discard) this.Discard(stackSrc);
         }
 
         public override void SetS(int s, IStackable stackSrc, bool onlyStatBeingSet = true)

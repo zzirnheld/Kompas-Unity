@@ -19,7 +19,7 @@ namespace KompasServer.Effects
             target.SetActivated(true, source.ServerEffect);
         }
 
-        protected override void Resolve(ActivationContext context)
+        public override void Resolve(ActivationContext context)
             => target.SetActivated(false, source.ServerEffect);
     }
 }

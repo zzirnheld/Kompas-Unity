@@ -47,6 +47,6 @@ namespace KompasCore.Effects
             }
         }
 
-        public GameCard GetCause(GameCard withRespectTo) => Source;
+        public GameCard GetCause(GameCardBase withRespectTo) => Source;
     }
 }

@@ -23,14 +23,14 @@ namespace KompasCore.Effects
             this.defender = defender != null ? defender : throw new System.ArgumentNullException("defender", "Cannot have null defender");
         }
 
-        public GameCard GetCause(GameCard withRespectTo)
+        public GameCard GetCause(GameCardBase withRespectTo)
         {
             if (withRespectTo == null) throw new System.ArgumentNullException("Why did you try and get the cause of an attack w/r/t a null card?");
-            else if (attacker == withRespectTo) return defender;
-            else if (defender == withRespectTo) return attacker;
+            else if (attacker == withRespectTo.Card) return defender;
+            else if (defender == withRespectTo.Card) return attacker;
             else if (attacker == withRespectTo.AugmentedCard) return defender;
             else if (defender == withRespectTo.AugmentedCard) return attacker;
-            else throw new System.ArgumentException($"Why is {withRespectTo} neither the attacker nor defender, nor augmenting them, " +
+            else throw new System.ArgumentException($"Why is {withRespectTo} neither the attacker {attacker} nor defender {defender}, nor augmenting them, " +
                 $"in the attack {this} that caused something to happen to it?");
         }
     }

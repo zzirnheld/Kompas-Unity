@@ -306,7 +306,11 @@ namespace KompasServer.Effects
             {
                 foreach (var toEnd in hangingEffectMap[condition].ToArray())
                 {
-                    if (toEnd.EndIfApplicable(context)) RemoveHangingEffect(toEnd);
+                    if (toEnd.ShouldResolve(context))
+                    {
+                        if (toEnd.RemoveIfEnd) RemoveHangingEffect(toEnd);
+                        toEnd.Resolve(context);
+                    } 
                 }
             }
 

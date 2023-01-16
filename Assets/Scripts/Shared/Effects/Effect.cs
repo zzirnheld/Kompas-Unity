@@ -108,7 +108,7 @@ namespace KompasCore.Effects
 
         public override string ToString() => $"Effect of {(Source == null ? "Nothing???" : Source.CardName)}";
 
-        public GameCard GetCause(GameCard withRespectTo) => Source;
+        public GameCard GetCause(GameCardBase withRespectTo) => Source;
 
         public EffectInitializationContext CreateInitializationContext(Subeffect subeffect, Trigger trigger)
             => new EffectInitializationContext(game: Game, source: Source, effect: this, trigger: trigger, subeffect: subeffect);

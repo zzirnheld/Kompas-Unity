@@ -21,7 +21,7 @@ namespace KompasServer.Effects
             buffRecipient.AddToStats(buff, stackSrc: sourceEff);
         }
 
-        protected override void Resolve(ActivationContext context)
+        public override void Resolve(ActivationContext context)
         {
             try
             {

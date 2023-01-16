@@ -20,7 +20,7 @@ namespace KompasServer.Effects
             this.target = target;
         }
 
-        protected override void Resolve(ActivationContext context)
+        public override void Resolve(ActivationContext context)
             => target.Discard(sourceEff);
     }
 }
