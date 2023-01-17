@@ -8,8 +8,8 @@ namespace KompasCore.UI
 {
     public abstract class TypicalCardViewController : BaseCardViewController
     {
-        public static readonly Color32 BUFF_OUTLINE_COLOR = new Color32(255, 0, 0, 255);
-        public static readonly Color32 DEBUFF_OUTLINE_COLOR = new Color32(0, 255, 0, 255); //TODO make customizeable
+        public static readonly Color32 BUFF_OUTLINE_COLOR = new Color32(0, 255, 0, 255);
+        public static readonly Color32 DEBUFF_OUTLINE_COLOR = new Color32(255, 0, 0, 255); //TODO make customizeable
         public static readonly Color32 BASE_OUTLINE_COLOR = new Color32(0, 0, 0, 255);
 
         [Header("Stats text boxes")]
