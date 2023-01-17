@@ -48,7 +48,7 @@ namespace KompasClient.Cards
         public override Player Owner => ClientOwner;
 
         public ClientEffect[] ClientEffects { get; private set; }
-        public override IEnumerable<Effect> Effects => ClientEffects;
+        public override IReadOnlyCollection<Effect> Effects => ClientEffects;
         public override bool IsAvatar => false;
         public ClientCardController ClientCardController { get; private set; }
         public override CardController CardController => ClientCardController;

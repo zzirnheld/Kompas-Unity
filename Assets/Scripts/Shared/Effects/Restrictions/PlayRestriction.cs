@@ -129,8 +129,8 @@ namespace KompasCore.Effects
             EmptySpace => Card.Game.BoardController.IsEmpty(space),
             OnBoardCardFriendlyOrAdjacent => IsValidAugSpace(space, player),
 
-            FastOrNothingIsResolving => Card.Fast || Card.Game.NothingHappening,
-            FriendlyTurnIfNotFast => Card.Fast || Card.Game.TurnPlayer == Card.Controller,
+            FastOrNothingIsResolving => Card.Game.NothingHappening,
+            FriendlyTurnIfNotFast => Card.Game.TurnPlayer == Card.Controller,
             EnemyTurn => Card.Game.TurnPlayer != Card.Controller,
 
             OnCharacter => Card.Game.BoardController.GetCardAt(space)?.CardType == 'C',
@@ -141,7 +141,7 @@ namespace KompasCore.Effects
             NotNormally => !normal,
             MustNormally => normal,
 
-            CheckUnique => !(Card.Unique && Card.AlreadyCopyOnBoard),
+            CheckUnique => !(Card.Unique && InitializationContext.game.BoardHasCopyOf(Card)),
             AdjacentToCardFittingRestriction => Card.Game.BoardController.CardsAdjacentTo(space).Any(c => adjacentCardRestriction.IsValidCard(c, context)),
             SpaceFitsRestriction => spaceRestriction.IsValidSpace(space, context),
             SpaceMustFloutRestriction => !floutedSpaceRestriction.IsValidSpace(space, context),

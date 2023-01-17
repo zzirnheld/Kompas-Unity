@@ -55,7 +55,7 @@ public class Space
     public static bool IsValidSpace(int x, int y) => new Space(x, y).IsValid;
 
     public int TaxicabDistanceTo(Space other) => Math.Abs(x - other.x) + Math.Abs(y - other.y);
-    public int RadialDistanceTo(Space other) => Math.Max(Math.Abs(x - other.x), Math.Abs(y - other.y));
+    public int RadiusDistanceTo(Space other) => Math.Max(Math.Abs(x - other.x), Math.Abs(y - other.y));
     public int DistanceTo(Space other) => TaxicabDistanceTo(other);
     public Space DisplacementTo(Space other) => new Space(other.x - x, other.y - y);
 

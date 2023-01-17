@@ -145,6 +145,6 @@
 	"spellTypes": [
 		"Radial"
 	],
-	"subtypeText": "Silent Altar Radial",
+	"subtypeText": "Silent Altar Radius",
 	"radius": 4
 }

@@ -12,6 +12,13 @@ namespace KompasCore.Cards
         public const string DelayedSubtype = "Delayed";
         public const string RadialSubtype = "Radial";
         public const string VanishingSubtype = "Vanishing";
+        public const string Nimbleness = "N";
+        public const string Endurance = "E";
+        public const string SummoningCost = "S";
+        public const string Wounding = "W";
+        public const string CastingCost = "C";
+        public const string AugmentCost = "A";
+        public const string CostStat = "Cost";
 
         #region stats
         private int n;
@@ -78,7 +85,6 @@ namespace KompasCore.Cards
 
         public CardStats Stats => (N, E, S, W, C, A);
 
-        public bool Fast { get; private set; }
         public bool Unique { get; private set; }
 
         public string Subtext { get; private set; }
@@ -90,7 +96,7 @@ namespace KompasCore.Cards
         public string EffText { get; private set; }
         public string SubtypeText { get; private set; }
 
-        public string QualifiedSubtypeText => AttributesString + SubtypeText + ArgsString;
+        public string QualifiedSubtypeText => AttributesString + ArgsString + SubtypeText;
 
         public int Cost
         {
@@ -113,9 +119,9 @@ namespace KompasCore.Cards
                 {
                     return (SpellSubtypes.FirstOrDefault()) switch
                     {
-                        RadialSubtype => $" {Radius} spaces",
-                        DelayedSubtype => $" {Duration} turns",
-                        VanishingSubtype => $" {Duration} turns",
+                        RadialSubtype => $" Radius {Radius}",
+                        DelayedSubtype => $" Delayed {Duration}",
+                        VanishingSubtype => $" Vanishing {Duration}",
                         _ => "",
                     };
                 }
@@ -123,7 +129,7 @@ namespace KompasCore.Cards
                 return "";
             }
         }
-        public string AttributesString => $"{(Fast ? " Fast" : "")}{(Unique ? " Unique" : "")} ";
+        public string AttributesString => $"{(Unique ? " Unique" : "")} ";
         public string StatsString
         {
             get
@@ -145,7 +151,7 @@ namespace KompasCore.Cards
 
         protected CardBase(CardStats stats,
                                        string subtext, string[] spellTypes,
-                                       bool fast, bool unique,
+                                       bool unique,
                                        int radius, int duration,
                                        char cardType, string cardName, string fileName,
                                        string effText,
@@ -154,12 +160,12 @@ namespace KompasCore.Cards
             (n, e, s, w, c, a) = stats;
 
             FileName = fileName;
-            SetInfo(null, subtext, spellTypes, fast, unique, radius, duration, cardType, cardName, effText, subtypeText);
+            SetInfo(null, subtext, spellTypes, unique, radius, duration, cardType, cardName, effText, subtypeText);
         }
 
         protected void SetInfo(CardStats? stats,
                                        string subtext, string[] spellTypes,
-                                       bool fast, bool unique,
+                                       bool unique,
                                        int radius, int duration,
                                        char cardType, string cardName,
                                        string effText,
@@ -178,7 +184,6 @@ namespace KompasCore.Cards
 
             Subtext = subtext; //TODO un-deprecate and use as an override for constructed subtype text from the subtypes array
             SpellSubtypes = spellTypes;
-            Fast = fast;
             Unique = unique;
             Radius = radius;
             Duration = duration;
@@ -191,7 +196,7 @@ namespace KompasCore.Cards
         protected void SetInfo(SerializableCard serializableCard)
             => SetInfo((serializableCard.n, serializableCard.e, serializableCard.s, serializableCard.w, serializableCard.c, serializableCard.a),
                 serializableCard.subtext, serializableCard.spellTypes,
-                serializableCard.fast, serializableCard.unique,
+                serializableCard.unique,
                 serializableCard.radius, serializableCard.duration,
                 serializableCard.cardType, serializableCard.cardName,
                 serializableCard.effText, serializableCard.subtypeText);

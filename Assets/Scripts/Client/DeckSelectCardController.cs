@@ -34,7 +34,7 @@ namespace KompasClient.UI
         public DeckSelectCard(SerializableCard card, string fileName)
             : base((card.n, card.e, card.s, card.w, card.c, card.a),
                        card.subtext, card.spellTypes,
-                       card.fast, card.unique,
+                       card.unique,
                        card.radius, card.duration,
                        card.cardType, card.cardName, fileName,
                        card.effText,

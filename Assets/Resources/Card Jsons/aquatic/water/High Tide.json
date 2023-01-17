@@ -8,7 +8,7 @@
 		"Vanishing",
 		"Radial"
 	],
-	"duration": 2,
 	"radius": 3,
-	"subtypeText": "Radial 3 Vanishing 2 Water"
+	"duration": 2,
+	"subtypeText": "Water"
 }

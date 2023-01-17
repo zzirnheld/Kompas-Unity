@@ -47,8 +47,8 @@ namespace KompasCore.Cards
         #region distance/adjacency
         public Space SubjectivePosition => Controller.SubjectiveCoords(Position);
 
-        public int RadialDistanceTo(Space space)
-            => Location == CardLocation.Board ? Position.RadialDistanceTo(space) : int.MaxValue;
+        public int RadiusDistanceTo(Space space)
+            => Location == CardLocation.Board ? Position.RadiusDistanceTo(space) : int.MaxValue;
         public int DistanceTo(Space space)
             => Location == CardLocation.Board ? Position.DistanceTo(space) : int.MaxValue;
         public int DistanceTo(GameCardBase card) => DistanceTo(card.Position);
@@ -161,18 +161,18 @@ namespace KompasCore.Cards
 
         protected GameCardBase(CardStats stats,
                             string subtext, string[] spellTypes,
-                            bool fast, bool unique,
+                            bool unique,
                             int radius, int duration,
                             char cardType, string cardName, string fileName,
                             string effText,
                             string subtypeText)
-            : base(stats, subtext, spellTypes, fast, unique, radius, duration, cardType, cardName, fileName, effText, subtypeText)
+            : base(stats, subtext, spellTypes, unique, radius, duration, cardType, cardName, fileName, effText, subtypeText)
         { }
 
         protected GameCardBase(SerializableCard card, string fileName)
             : this((card.n, card.e, card.s, card.w, card.c, card.a),
                        card.subtext, card.spellTypes,
-                       card.fast, card.unique,
+                       card.unique,
                        card.radius, card.duration,
                        card.cardType, card.cardName, fileName,
                        card.effText,
@@ -240,7 +240,7 @@ namespace KompasCore.Cards
         public GameCardInfo(GameCard card)
             : base(card.Stats,
                         card.Subtext, card.SpellSubtypes,
-                        card.Fast, card.Unique,
+                        card.Unique,
                         card.Radius, card.Duration,
                         card.CardType, card.CardName, card.FileName,
                         card.EffText,

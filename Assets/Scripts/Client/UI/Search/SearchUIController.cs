@@ -81,7 +81,7 @@ namespace KompasClient.UI.Search
             int row = 0;
             foreach(var stackedCards in toSearch)
             {
-                var shownCards = stackedCards.Where(card => !card.CurrentlyVisible).ToList();
+                var shownCards = stackedCards.Where(card => !card.Controller.gameObject.activeSelf).ToList();
 
                 if (shownCards.Count == 0) continue;
 

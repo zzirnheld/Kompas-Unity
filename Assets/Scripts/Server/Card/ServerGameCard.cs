@@ -46,7 +46,7 @@ namespace KompasServer.Cards
         public override Player Owner => ServerOwner;
 
         public ServerEffect[] ServerEffects { get; private set; }
-        public override IEnumerable<Effect> Effects => ServerEffects;
+        public override IReadOnlyCollection<Effect> Effects => ServerEffects;
 
         public override bool IsAvatar => false;
 

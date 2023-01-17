@@ -11,22 +11,12 @@ namespace KompasCore.Cards
 {
     public abstract class GameCard : GameCardBase
     {
-        public const string Nimbleness = "N";
-        public const string Endurance = "E";
-        public const string SummoningCost = "S";
-        public const string Wounding = "W";
-        public const string CastingCost = "C";
-        public const string AugmentCost = "A";
-        public const string CostStat = "Cost";
-
         public abstract CardController CardController { get; }
         public abstract Game Game { get; }
         public int ID { get; private set; }
         public override GameCard Card => this;
 
         protected SerializableCard InitialCardValues { get; private set; }
-
-        public bool CurrentlyVisible => CardController.gameObject.activeSelf;
 
         #region stats
         public override int BaseN => InitialCardValues?.n ?? default;
@@ -85,10 +75,6 @@ namespace KompasCore.Cards
 
         public override IReadOnlyCollection<GameCard> AdjacentCards
             => Game?.BoardController.CardsAdjacentTo(Position) ?? new List<GameCard>();
-
-        public bool AlreadyCopyOnBoard => Game.BoardHasCopyOf(this);
-
-        public bool IsFriendlyCopyOf(GameCard c) => c != this && c.Controller == Controller && c.CardName == CardName;
         #endregion positioning
 
         #region Augments
@@ -123,16 +109,7 @@ namespace KompasCore.Cards
         #endregion
 
         #region effects
-        public abstract IEnumerable<Effect> Effects { get; }
-        /// <summary>
-        /// Whether there is an effect that is ready to be activated right now
-        /// </summary>
-        public bool HasCurrentlyActivateableEffect => Effects != null && Effects.Count(e => e.CanBeActivatedBy(Controller)) > 0;
-        /// <summary>
-        /// Whether there is any effect that can still be activated (this turn, this round, etc.) 
-        /// even if it can't be activated at this exact moment.
-        /// </summary>
-        public bool HasAtAllActivateableEffect => Effects != null && Effects.Count(e => e.CanBeActivatedAtAllBy(Controller)) > 0;
+        public abstract IReadOnlyCollection<Effect> Effects { get; }
         #endregion effects
 
         //movement
@@ -203,7 +180,7 @@ namespace KompasCore.Cards
         protected GameCard(int id)
             : base(default,
                   string.Empty, new string[0],
-                  false, false,
+                  false,
                   0, 0,
                   'C', "Dummy Card", "generic/The Intern",
                   "",
@@ -217,7 +194,7 @@ namespace KompasCore.Cards
         protected GameCard(SerializableCard serializeableCard, int id, Game game)
             : base(serializeableCard.Stats,
                        serializeableCard.subtext, serializeableCard.spellTypes,
-                       serializeableCard.fast, serializeableCard.unique,
+                       serializeableCard.unique,
                        serializeableCard.radius, serializeableCard.duration,
                        serializeableCard.cardType, serializeableCard.cardName, CardRepository.FileNameFor(serializeableCard.cardName),
                        serializeableCard.effText,

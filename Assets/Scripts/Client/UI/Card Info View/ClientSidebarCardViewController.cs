@@ -113,13 +113,16 @@ namespace KompasClient.UI
             shownUniqueCopies.Clear();
         }
 
+
+        private bool IsFriendlyCopyOf(GameCard a, GameCard b) => a != b && a.Controller == b.Controller && a.CardName == b.CardName;
+
         private void ShowUniqueCopies()
         {
             ClearShownUniqueCopies();
             if (shownCard.Unique)
             {
                 //deal with unique cards
-                var copies = clientGame.Cards.Where(c => c.Location == CardLocation.Board && c.IsFriendlyCopyOf(ShownGameCard));
+                var copies = clientGame.Cards.Where(c => c.Location == CardLocation.Board && IsFriendlyCopyOf(c, ShownGameCard));
                 foreach (var copy in copies)
                 {
                     copy.CardController.gameCardViewController.ShowUniqueCopy(true);

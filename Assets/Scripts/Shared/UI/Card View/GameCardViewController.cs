@@ -129,6 +129,12 @@ namespace KompasCore.UI
             unzoomedCostText.fontSize = UnzoomedFontSizeForValue(shownCard.Cost);
         }
 
+        private static bool HasCurrentlyActivateableEffect(GameCard card)
+            => card.Effects != null && card.Effects.Count(e => e.CanBeActivatedBy(card.Controller)) > 0;
+
+        private static bool HasAtAllActivateableEffect(GameCard card)
+            => card.Effects != null && card.Effects.Count(e => e.CanBeActivatedAtAllBy(card.Controller)) > 0;
+
         protected override void DisplaySpecialEffects()
         {
             base.DisplaySpecialEffects();
@@ -143,9 +149,9 @@ namespace KompasCore.UI
                 else attackOscillator.Disable();
 
                 //if you can activate any effect, enable the attack indicator
-                if (ShownGameCard.HasAtAllActivateableEffect)
+                if (HasAtAllActivateableEffect(ShownGameCard))
                     //oscillate the effect indicator if you can activate an effect right now
-                    effectOscillator.Enable(ShownGameCard.HasCurrentlyActivateableEffect);
+                    effectOscillator.Enable(HasCurrentlyActivateableEffect(ShownGameCard));
                 else effectOscillator.Disable();
 
                 if (shownCard.SpellSubtypes.Any(CardBase.RadialSubtype.Equals)) aoeController.Show(shownCard.Radius);
