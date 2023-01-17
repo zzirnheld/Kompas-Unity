@@ -32,6 +32,12 @@ namespace KompasClient.UI
         public TMP_InputField zoomThresholdInput;
         public Toggle showAdvancedEffectUIToggle;
 
+        public void SaveAndClose()
+        {
+            ApplySettings();
+            Hide();
+        }
+
         public void ApplySettings()
         {
             clientGame.ApplySettings();
