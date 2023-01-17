@@ -45,6 +45,7 @@ namespace KompasClient.UI
             //then, check if it's on the board, accodring to the local coordinates of the game board)
             if (WithinIgnoreZ(boardLocalPosition, minBoardLocalX, maxBoardLocalX, minBoardLocalY, maxBoardLocalY))
             {
+                Debug.Log($"Card {cardController.Card.CardName} dragged to somewhere on the board, board local pos {boardLocalPosition}. Only putting back.");
                 int x = PosToGridIndex(boardLocalPosition.x);
                 int y = PosToGridIndex(boardLocalPosition.z);
 

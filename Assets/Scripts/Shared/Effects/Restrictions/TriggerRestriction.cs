@@ -216,7 +216,7 @@ namespace KompasCore.Effects
         {
             var success = IsRestrictionValid(r, ctxt, secondary);
             //TODO: tie this to a compiler flag/ifdef sort of thing
-            //if (!success) Debug.Log($"Trigger for {ThisCard.CardName} invalid at restriction {r} for {ctxt}");
+            if (!success) Debug.Log($"Trigger for {ThisCard.CardName} invalid at restriction {r} for {ctxt}");
             return success;
         }
 

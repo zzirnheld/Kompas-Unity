@@ -15,7 +15,8 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Character"
+							"Character",
+							"Enemy"
 						]
 					},
 					"spaceRestriction": {
@@ -24,7 +25,7 @@
 						],
 						"adjacencyRestriction": {
 							"cardRestrictionElements": [
-								{ "$type": "Core.CardRestriction:Enemy:" },
+								{ "$type": "Core.CardRestriction:Friendly:" },
                                 {
                                     "$type": "Core.CardRestriction:Subtypes:",
                                     "subtypes": [ "Fungus" ]
