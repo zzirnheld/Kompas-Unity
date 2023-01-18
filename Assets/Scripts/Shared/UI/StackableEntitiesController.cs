@@ -17,13 +17,28 @@ namespace KompasCore.UI
 
         [Header("Collider attributes")]
         public int layer;
+        [Tooltip("Multiplier for the boxcollider's bounds. Should be 1/local scale (consider determining automatically...)")]
         public float colliderPadding = 1.1f;
         public BoxCollider boxCollider;
 
         public Transform behind;
         public float behindBoundsMultiplier;
 
-        protected virtual IEnumerable<GameObject> Objects { get; private set; } = null;
+        private IReadOnlyCollection<GameObject> objects;
+        public virtual IEnumerable<GameObject> Objects
+        {
+            get => objects;
+            set {
+                if (objects != null)
+                {
+                    bool wasCollapsed = collapsed;
+                    Collapse();
+                    collapsed = wasCollapsed;
+                }
+                objects = new List<GameObject>(value);
+                Refresh();
+            }
+        }
 
         private bool collapsed = true;
         private Vector3 currOffset = Vector3.zero;
@@ -54,14 +69,6 @@ namespace KompasCore.UI
 
             if (success && collapsed) Expand();
             else if (!success && !collapsed) Collapse();
-        }
-
-        public void Initalize(ICollection<GameObject> objects)
-        {
-            if (Objects != null) throw new System.ArgumentException("Tried to initialized a StackableEntitiesController that was already initialized!");
-
-            Objects = new List<GameObject>(objects);
-            Collapse();
         }
 
         public void Refresh()

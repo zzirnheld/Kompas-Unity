@@ -81,9 +81,13 @@ namespace KompasClient.UI.Search
             int row = 0;
             foreach(var stackedCards in toSearch)
             {
-                var shownCards = stackedCards.Where(card => !card.Controller.gameObject.activeSelf).ToList();
+                var shownCards = stackedCards.Where(card => !card.CardController.gameObject.activeSelf).ToList();
 
-                if (shownCards.Count == 0) continue;
+                if (shownCards.Count == 0)
+                {
+                    Debug.Log($"None of {string.Join(", ", stackedCards)} are to be shown rn");
+                    continue;
+                }
 
                 //Instantiate the stack of cards
                 var stackObject = Instantiate(searchStack, transform);
@@ -111,7 +115,7 @@ namespace KompasClient.UI.Search
                     scvc.Initialize(this, card.CardController);
                     cardObjects.Add(scvcGameObject);
                 }
-                stackCtrl.Initalize(cardObjects);
+                stackCtrl.Objects = cardObjects;
             }
         }
 

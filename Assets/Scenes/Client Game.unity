@@ -27666,6 +27666,7 @@ MonoBehaviour:
   friendlyPipsText: {fileID: 1687662614}
   enemyPipsText: {fileID: 1006522080}
   CurrTurnText: {fileID: 1554178927}
+  currTurnOutline: {fileID: 2083808513}
   EndTurnButton: {fileID: 93767712}
   LeyloadText: {fileID: 84373022}
   currentStateText: {fileID: 1847867117}

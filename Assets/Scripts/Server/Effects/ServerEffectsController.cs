@@ -41,6 +41,7 @@ namespace KompasServer.Effects
             = new Dictionary<string, List<HangingEffect>>();
 
         private bool currentlyCheckingResponses = false;
+        private bool currentlyCheckingOptionals = false;
         private int currStackIndex;
         private IServerStackable currStackEntry;
         public IServerStackable CurrStackEntry
@@ -54,7 +55,9 @@ namespace KompasServer.Effects
         }
 
         //nothing is happening if nothing is in the stack, nothing is currently resolving, and no one is waiting to add something to the stack.
-        public bool NothingHappening => stack.Empty && CurrStackEntry == null && !currentlyCheckingResponses && ServerGame.Players.All(s => s.PassedPriority);
+        public bool NothingHappening => stack.Empty && CurrStackEntry == null
+            && !currentlyCheckingResponses && !currentlyCheckingOptionals
+            && ServerGame.Players.All(s => s.PassedPriority);
 
         public override string ToString()
         {
@@ -205,11 +208,13 @@ namespace KompasServer.Effects
 
             //if any triggers have not been responded to, make them get responded to.
             //this is saved so that we know what trigger to okay or not if it's responded
+            currentlyCheckingOptionals = true;
             foreach (var t in stillValid)
             {
                 //TODO this doesn't stop any subsequent calls to CheckTriggers
                 if (!t.Responded) await t.Ask(triggered.context.x ?? 0);
             }
+            currentlyCheckingOptionals = false;
 
             //now that all optional triggers have been answered, time to deal with ordering.
             //if a player only has one trigger, don't bother asking them for an order.

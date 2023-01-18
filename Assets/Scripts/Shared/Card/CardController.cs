@@ -11,6 +11,7 @@ namespace KompasCore.Cards
     public abstract class CardController : MonoBehaviour
     {
         public GameCardViewController gameCardViewController;
+        public StackableEntitiesController stackedAugmentsController;
 
         public abstract GameCard Card { get; }
 
@@ -69,25 +70,18 @@ namespace KompasCore.Cards
 
         public void SpreadOutAugs()
         {
-            var augCount = Card.Augments.Count();
-            float scale = 0.4f; // / ((float)((augCount + 3) / 4));
-            int i = 0;
-            foreach (var aug in Card.Augments)
+            Debug.Log($"{Card} has {Card.Augments} and a {stackedAugmentsController}");
+            if (Card.Augments.Count == 0) stackedAugmentsController.gameObject.SetActive(false);
+            else 
             {
-                aug.CardController.transform.parent = transform;
-                aug.CardController.transform.localScale = new Vector3(scale, scale, scale);
-                float x, z;
-                (x, z) = (i % 4) switch
+                var augObjs = Card.Augments.Select(c => c.CardController.gameObject).ToArray();
+                stackedAugmentsController.gameObject.SetActive(true);
+                foreach (var obj in augObjs)
                 {
-                    0 => (-0.5f, 0.5f),
-                    1 => (0.5f, 0.5f),
-                    2 => (0.5f, -0.5f),
-                    3 => (-0.5f, -0.5f),
-                    _ => (0f, 0f),
-                };
-                aug.CardController.transform.localPosition = new Vector3(x, 0.2f * ((i / 4) + 1), z);
-                i++;
-                aug.CardController.SetRotation();
+                    obj.gameObject.transform.parent = stackedAugmentsController.gameObject.transform;
+                    obj.gameObject.transform.localScale = Vector3.one * 2f;
+                }
+                stackedAugmentsController.Objects = augObjs;
             }
         }
 

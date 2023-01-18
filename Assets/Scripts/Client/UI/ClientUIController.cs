@@ -39,6 +39,7 @@ namespace KompasClient.UI
 
         [Header("Turn")]
         public TMP_Text CurrTurnText;
+        public Outline currTurnOutline;
         public GameObject EndTurnButton;
         public TMP_Text LeyloadText;
 
@@ -187,6 +188,8 @@ namespace KompasClient.UI
         public void ChangeTurn(int index)
         {
             CurrTurnText.text = index == 0 ? FriendlyTurn : EnemyTurn;
+            //Debug.Log($"{clientGame}, {clientGame?.ClientSettings}, {clientGame?.ClientSettings?.FriendlyColor}");
+            currTurnOutline.effectColor = index == 0 ? clientGame.ClientSettings.FriendlyColor : clientGame.ClientSettings.EnemyColor;
             EndTurnButton.SetActive(index == 0);
         }
 

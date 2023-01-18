@@ -307,7 +307,10 @@ namespace KompasCore.Cards
         /// <summary>
         /// Inflicts the given amount of damage. Used by attacks and (rarely) by effects.
         /// </summary>
-        public virtual void TakeDamage(int dmg, IStackable stackSrc = null) => SetE(E - dmg, stackSrc: stackSrc);
+        public virtual void TakeDamage(int dmg, IStackable stackSrc = null)
+        {
+            if (Location == CardLocation.Board) SetE(E - dmg, stackSrc: stackSrc);
+        }
 
         public virtual void SetNegated(bool negated, IStackable stackSrc = null) => Negated = negated;
         public virtual void SetActivated(bool activated, IStackable stackSrc = null) => Activated = activated;

@@ -32,6 +32,11 @@ namespace KompasClient.UI
         public TMP_InputField zoomThresholdInput;
         public Toggle showAdvancedEffectUIToggle;
 
+        void Awake()
+        {
+            LoadSettings();
+        }
+
         public void SaveAndClose()
         {
             ApplySettings();
