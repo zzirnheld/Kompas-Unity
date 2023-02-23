@@ -36,8 +36,8 @@ namespace KompasCore.Cards
 
         public abstract bool Activated { get; protected set; }
         public abstract bool Negated { get; protected set; }
-        public abstract int SpacesMoved { get; protected set; }
-        public abstract int SpacesCanMove { get; protected set; }
+        public abstract int SpacesMoved { get; set; }
+        public int SpacesCanMove => N - SpacesMoved;
 
         public abstract Space Position { get; set; }
         #endregion
@@ -219,8 +219,7 @@ namespace KompasCore.Cards
 
         public override bool Activated { get; protected set; }
         public override bool Negated { get; protected set; }
-        public override int SpacesMoved { get; protected set; }
-        public override int SpacesCanMove { get; protected set; }
+        public override int SpacesMoved { get; set; }
         public override Space Position { get; set; }
         #endregion
 
@@ -270,7 +269,6 @@ namespace KompasCore.Cards
             Activated = card.Activated;
             Negated = card.Negated;
             SpacesMoved = card.SpacesMoved;
-            SpacesCanMove = card.SpacesCanMove;
             AdjacentCards = card.AdjacentCards.ToArray();
             Position = card.Position?.Copy;
         }

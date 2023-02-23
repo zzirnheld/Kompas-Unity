@@ -13,8 +13,7 @@ namespace KompasServer.Effects
             int toSpend = (CardTarget.SpacesCanMove * mult / div) + mod;
             if (toSpend <= 0 || CardTarget.SpacesCanMove < toSpend) return Task.FromResult(ResolutionInfo.Impossible(CantAffordStats));
 
-            int toSet = CardTarget.SpacesMoved + toSpend;
-            CardTarget.SetSpacesMoved(toSet);
+            CardTarget.SpacesMoved += toSpend;
             return Task.FromResult(ResolutionInfo.Next);
         }
     }

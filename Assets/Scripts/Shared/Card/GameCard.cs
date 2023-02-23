@@ -113,12 +113,7 @@ namespace KompasCore.Cards
         #endregion effects
 
         //movement
-        public override int SpacesMoved { get; protected set; } = 0;
-        public override int SpacesCanMove
-        {
-            get => N - SpacesMoved;
-            protected set => SpacesMoved = N - value;
-        }
+        public override int SpacesMoved { get; set; } = 0;
 
         public virtual int AttacksThisTurn { get; set; }
 
@@ -158,7 +153,7 @@ namespace KompasCore.Cards
 
         public string BaseJson => Game.CardRepository.GetJsonFromName(CardName);
 
-        public int TurnsOnBoard { get; private set; }
+        public int TurnsOnBoard { get; set; }
 
         public GameCardCardLinkHandler CardLinkHandler { get; private set; }
 
@@ -218,7 +213,7 @@ namespace KompasCore.Cards
         {
             foreach (Effect eff in Effects) eff.ResetForTurn(turnPlayer);
 
-            SetSpacesMoved(0);
+            SpacesMoved = 0;
             AttacksThisTurn = 0;
             if (Location == CardLocation.Board) TurnsOnBoard++;
         }
@@ -232,7 +227,7 @@ namespace KompasCore.Cards
         /// Accumulates the distance to <paramref name="to"/> into the number of spaces this card moved this turn.
         /// </summary>
         /// <param name="to">The space being moved to</param>
-        public void CountSpacesMovedTo((int x, int y) to) => SetSpacesMoved(SpacesMoved + Game.BoardController.ShortestEmptyPath(this, to));
+        public void CountSpacesMovedTo((int x, int y) to) => SpacesMoved += Game.BoardController.ShortestEmptyPath(this, to);
 
         #region augments
 
@@ -309,11 +304,6 @@ namespace KompasCore.Cards
 
         public virtual void SetNegated(bool negated, IStackable stackSrc = null) => Negated = negated;
         public virtual void SetActivated(bool activated, IStackable stackSrc = null) => Activated = activated;
-
-        public virtual void SetSpacesMoved(int spacesMoved)
-            => SpacesMoved = spacesMoved;
-        public virtual void SetTurnsOnBoard(int turnsOnBoard, IStackable stackSrc = null)
-            => TurnsOnBoard = turnsOnBoard;
 
         public void SetDuration(int duration)
             => Duration = duration;

@@ -12,7 +12,7 @@ namespace KompasServer.Effects
             else if (forbidNotBoard && CardTarget.Location != CardLocation.Board)
                 throw new InvalidLocationException(CardTarget.Location, CardTarget, ChangedStatsOfCardOffBoard);
 
-            CardTarget.SetTurnsOnBoard(Count);
+            CardTarget.TurnsOnBoard = Count;
             return Task.FromResult(ResolutionInfo.Next);
         }
     }

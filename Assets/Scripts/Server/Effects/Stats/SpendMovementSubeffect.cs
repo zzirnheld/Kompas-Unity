@@ -14,7 +14,7 @@ namespace KompasServer.Effects
             else if (CardTarget.SpacesCanMove < Count)
                 return Task.FromResult(ResolutionInfo.Impossible(CantAffordStats));
 
-            CardTarget.SetSpacesMoved(CardTarget.SpacesMoved + Count);
+            CardTarget.SpacesMoved += Count;
             return Task.FromResult(ResolutionInfo.Next);
         }
     }

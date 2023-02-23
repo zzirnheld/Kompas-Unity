@@ -37,7 +37,7 @@ namespace KompasClient.Networking
             if (card != null)
             {
                 card.SetStats((n, e, s, w, c, a));
-                card.SetSpacesMoved(spacesMoved);
+                card.SpacesMoved = spacesMoved;
             }
         }
     }
