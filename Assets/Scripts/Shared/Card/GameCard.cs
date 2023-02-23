@@ -122,11 +122,6 @@ namespace KompasCore.Cards
 
         public int AttacksThisTurn { get; private set; }
 
-        /// <summary>
-        /// Increment the number of attacks this card has performed this turn
-        /// </summary>
-        public void Attacked() => AttacksThisTurn++;
-
         //restrictions
         public override MovementRestriction MovementRestriction { get; }
         public override AttackRestriction AttackRestriction { get; }

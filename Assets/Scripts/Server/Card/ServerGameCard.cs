@@ -342,6 +342,7 @@ namespace KompasServer.Cards
         public override void SetAttacksThisTurn(int attacksThisTurn)
         {
             bool changed = AttacksThisTurn != attacksThisTurn;
+            Debug.Log($"Attacks this turn... {AttacksThisTurn}->{attacksThisTurn}. Server notifier {ServerNotifier}, changed? {changed}");
             base.SetAttacksThisTurn(attacksThisTurn);
             if (changed) ServerNotifier?.NotifyAttacksThisTurn(this);
         }

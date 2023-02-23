@@ -135,7 +135,10 @@ namespace KompasServer.Networking
             => SendToBothInverting(new SpacesMovedPacket(card.ID, card.SpacesMoved), card.KnownToEnemy);
 
         public void NotifyAttacksThisTurn(GameCard card)
-            => SendToBothInverting(new AttacksThisTurnPacket(card.ID, card.AttacksThisTurn), card.KnownToEnemy);
+        {
+            Debug.Log("Notifying about attacks this turn...");
+            SendToBothInverting(new AttacksThisTurnPacket(card.ID, card.AttacksThisTurn), card.KnownToEnemy);
+        }
 
         public void NotifySetNegated(GameCard card, bool negated)
             => SendToBothInverting(new NegateCardPacket(card.ID, negated), card.KnownToEnemy);
