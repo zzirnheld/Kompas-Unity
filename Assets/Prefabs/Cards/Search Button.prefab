@@ -1267,6 +1267,12 @@ MonoBehaviour:
   subtypesText: {fileID: 1468745133250577119}
   effText: {fileID: 1468745133788226728}
   cardImageImage: {fileID: 1468745132669416431}
+  neutralStatFontMaterial: {fileID: 2100000, guid: 0b4b432a7da6e644ba50b37e8ba6e5bb,
+    type: 2}
+  buffStatFontMaterial: {fileID: 2100000, guid: 7f5a2128605bc4266812f85f78aa7cea,
+    type: 2}
+  debuffStatFontMaterial: {fileID: 2100000, guid: 7f5a2128605bc4266812f85f78aa7cea,
+    type: 2}
   currentTargetObject: {fileID: 9050685348987744233}
   validTargetObject: {fileID: 8458440348466795612}
   focusedCardObject: {fileID: 2695356955349115892}

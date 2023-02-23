@@ -37572,6 +37572,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09157d8711bf7f4459dfd23ef79af4be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  neutralStatFontMaterial: {fileID: 2100000, guid: 0b4b432a7da6e644ba50b37e8ba6e5bb,
+    type: 2}
+  buffStatFontMaterial: {fileID: 2100000, guid: 4c63f89d5150b1b14a55695fabe17027,
+    type: 2}
+  debuffStatFontMaterial: {fileID: 2100000, guid: e64d09d49b235b084874920f4893dbcd,
+    type: 2}
   nText: {fileID: 7133324287616732824}
   eText: {fileID: 5388360063862344510}
   costText: {fileID: 936209654056565418}

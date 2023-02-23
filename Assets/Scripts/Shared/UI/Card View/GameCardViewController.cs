@@ -127,6 +127,9 @@ namespace KompasCore.UI
             unzoomedWText.fontSize = UnzoomedFontSizeForValue(shownCard.W);
 
             unzoomedCostText.fontSize = UnzoomedFontSizeForValue(shownCard.Cost);
+
+            handleStatColors(nText, eText, costText, wText);
+            handleStatColors(unzoomedNText, unzoomedEText, unzoomedCostText, unzoomedWText);
         }
 
         private static bool HasCurrentlyActivateableEffect(GameCard card)
