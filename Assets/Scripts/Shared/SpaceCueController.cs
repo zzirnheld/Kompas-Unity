@@ -1,43 +1,43 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 namespace KompasCore.UI
 {
     public class SpaceCueController : MonoBehaviour
     {
-        public GameObject canMoveCube;
-        public GameObject canAttackCube;
-        public GameObject canPlayCube;
-
-        public GameObject canTargetCube;
-
-        public void ShowCanMove()
+        public enum CueType
         {
-            canMoveCube.SetActive(true);
-            canAttackCube.SetActive(false);
-            canPlayCube.SetActive(false);
+            Move,
+            MoveOpenGamestate, //Whether the card could be moved if we were in an open gamestate
+            Attack,
+            Play,
+            Target,
         }
 
-        public void ShowCanAttack()
+        private static readonly CueType[] MutuallyExclusiveCues = { CueType.Move, CueType.MoveOpenGamestate, CueType.Attack, CueType.Play };
+
+        [EnumNamedArray(typeof(CueType))]
+        public GameObject[] cueCubes; //Should be in order of the above enum
+
+        public void Show(CueType cue, bool active = true)
         {
-            canMoveCube.SetActive(false);
-            canAttackCube.SetActive(true);
-            canPlayCube.SetActive(false);
+            if (MutuallyExclusiveCues.Contains(cue))
+            {
+                Clear(MutuallyExclusiveCues);
+            }
+
+            cueCubes[(int) cue].SetActive(active);
         }
 
-        public void ShowCanPlay()
+        public void Clear()
         {
-            canMoveCube.SetActive(false);
-            canAttackCube.SetActive(false);
-            canPlayCube.SetActive(true);
+            Clear(MutuallyExclusiveCues);
         }
 
-        public void ShowCanNone()
+        private void Clear(params CueType[] cues)
         {
-            canMoveCube.SetActive(false);
-            canAttackCube.SetActive(false);
-            canPlayCube.SetActive(false);
+            foreach (var ct in cues) cueCubes[(int) ct].SetActive(false);
         }
-
-        public void ShowCanTarget(bool can = true) => canTargetCube.gameObject.SetActive(can);
     }
 }

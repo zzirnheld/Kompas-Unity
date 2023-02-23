@@ -64,13 +64,15 @@ namespace KompasCore.UI
                     var cue = spaceCueControllers[i, j];
 
                     if (card.MovementRestriction.IsValidNormalMove((i, j)))
-                        cue.ShowCanMove();
+                        cue.Show(SpaceCueController.CueType.Move);
+                    else if (card.MovementRestriction.WouldBeValidNormalMove((i, j)))
+                        cue.Show(SpaceCueController.CueType.MoveOpenGamestate);
                     else if (card.AttackRestriction.IsValidAttack(BoardController.GetCardAt((i, j)), stackSrc: null))
-                        cue.ShowCanAttack();
+                        cue.Show(SpaceCueController.CueType.Attack);
                     else if (card.PlayRestriction.IsRecommendedNormalPlay((i, j), card.Controller))
-                        cue.ShowCanPlay();
+                        cue.Show(SpaceCueController.CueType.Play);
                     else
-                        cue.ShowCanNone();
+                        cue.Clear();
                 }
             }
         }
@@ -79,7 +81,7 @@ namespace KompasCore.UI
 
         public void ShowNothing()
         {
-            foreach (var cue in spaceCueControllers) cue.ShowCanNone();
+            foreach (var cue in spaceCueControllers) cue.Clear();
         }
 
         public void ShowSpaceTargets(Func<(int, int), bool> predicate)
@@ -88,7 +90,7 @@ namespace KompasCore.UI
             {
                 for (int y = 0; y < 7; y++)
                 {
-                    spaceCueControllers[x, y].ShowCanTarget(predicate((x, y)));
+                    spaceCueControllers[x, y].Show(SpaceCueController.CueType.Target, predicate((x, y)));
                 }
             }
         }

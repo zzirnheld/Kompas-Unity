@@ -37,7 +37,7 @@ namespace KompasCore.Effects
         private const string NotNormally = "Not Normally";
 
         //Default restrictions are that only characters with enough n can move.
-        public static readonly string[] defaultNormalMovementRestrictions = new string[]
+        public static readonly string[] DefaultNormalMovementRestrictions = new string[]
         {
             InPlay,
             DistinctSpace, IsCharacter,
@@ -46,12 +46,14 @@ namespace KompasCore.Effects
             NothingHappening, IsFriendlyTurn
         };
 
-        public static readonly string[] defaultEffectMovementRestrictions = new string[]
+        public static readonly string[] DefaultEffectMovementRestrictions = new string[]
         {
             InPlay,
             DistinctSpace,
             StandardSpellMoveRestiction
         };
+
+        private static readonly string[] OpenGamestateRequirements = { NothingHappening, IsFriendlyTurn };
 
         /// <summary>
         /// The array to be loaded in and defaults addressed
@@ -92,12 +94,12 @@ namespace KompasCore.Effects
 
             normalRestrictions.AddRange(normalRestrictionsFromJson);
             if (normalRestrictionsFromJson.Contains(Default))
-                normalRestrictions.AddRange(defaultNormalMovementRestrictions);
+                normalRestrictions.AddRange(DefaultNormalMovementRestrictions);
             normalRestrictions.RemoveAll(s => normalRestrictionsToIgnore.Contains(s));
 
             effectRestrictions.AddRange(effectRestrictionsFromJson);
             if (effectRestrictionsFromJson.Contains(Default))
-                effectRestrictions.AddRange(defaultEffectMovementRestrictions);
+                effectRestrictions.AddRange(DefaultEffectMovementRestrictions);
 
             throughSpacesRestriction?.Initialize(initializationContext);
             floutedDestinationSpaceRestriction?.Initialize(initializationContext);
@@ -159,8 +161,11 @@ namespace KompasCore.Effects
         /// <param name="isSwapTarget">Whether this card is the target of a swap. <br></br>
         /// If this is true, ignores "Destination Can Move Here" restriction, because otherwise you would have infinite recursion.</param>
         /// <returns><see langword="true"/> if the card can move to (x, y); <see langword="false"/> otherwise.</returns>
-        public bool IsValidNormalMove(Space space, bool isSwapTarget = false)
-            => space.IsValid && normalRestrictions.All(r => IsRestrictionValid(r, space, context: default, isSwapTarget: isSwapTarget));
+        public bool IsValidNormalMove(Space space, bool isSwapTarget = false, IReadOnlyCollection<string> ignoring = null)
+            => IsValidMove(space, normalRestrictions.Except(normalRestrictionsToIgnore), context: default, isSwapTarget: isSwapTarget, ignoring: ignoring);
+
+        public bool WouldBeValidNormalMove(Space space)
+            => IsValidNormalMove(space, isSwapTarget: false, ignoring: OpenGamestateRequirements);
 
         /// <summary>
         /// Checks whether the card this is attached to can move to (x, y) as part of an effect
@@ -171,6 +176,15 @@ namespace KompasCore.Effects
         /// If this is true, ignores "Destination Can Move Here" restriction, because otherwise you would have infinite recursion.</param>
         /// <returns><see langword="true"/> if the card can move to (x, y); <see langword="false"/> otherwise.</returns>
         public bool IsValidEffectMove(Space space, ActivationContext context, bool isSwapTarget = false)
-            => space.IsValid && effectRestrictions.All(r => IsRestrictionValid(r, space, context, isSwapTarget: isSwapTarget));
+            => IsValidMove(space, effectRestrictions, context, isSwapTarget, null);
+
+        private bool IsValidMove(Space space, IEnumerable<string> restrictions, ActivationContext context, bool isSwapTarget, IReadOnlyCollection<string> ignoring)
+        {
+            if (!space.IsValid) return false;
+
+            return restrictions
+            .Except(ignoring ?? Enumerable.Empty<string>())
+            .All(r => IsRestrictionValid(r, space, context, isSwapTarget));
+        }
     }
 }
