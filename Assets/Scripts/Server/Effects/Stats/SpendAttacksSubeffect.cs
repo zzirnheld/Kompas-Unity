@@ -12,7 +12,7 @@ namespace KompasServer.Effects
             if (CardTarget == null)
                 throw new NullCardException(TargetWasNull);
 
-            CardTarget.SetAttacksThisTurn(CardTarget.AttacksThisTurn + Count);
+            CardTarget.AttacksThisTurn += Count;
             return Task.FromResult(ResolutionInfo.Next);
         }
     }

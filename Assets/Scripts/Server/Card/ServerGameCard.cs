@@ -50,6 +50,16 @@ namespace KompasServer.Cards
 
         public override bool IsAvatar => false;
 
+        public override int AttacksThisTurn {
+            get => base.AttacksThisTurn;
+            set 
+            {
+                bool changed = AttacksThisTurn != value;
+                base.AttacksThisTurn = value;
+                if (changed) ServerNotifier?.NotifyAttacksThisTurn(this);
+            }
+        }
+
         public override CardLocation Location
         {
             get => base.Location;
@@ -138,7 +148,7 @@ namespace KompasServer.Cards
 
             SetTurnsOnBoard(0);
             SetSpacesMoved(0);
-            SetAttacksThisTurn(0);
+            AttacksThisTurn = 0;
 
             if (Effects != null) foreach (var eff in Effects) eff.Reset();
             //instead of setting negations or activations to 0, so that it updates the client correctly
@@ -337,14 +347,6 @@ namespace KompasServer.Cards
             bool changed = SpacesMoved != spacesMoved;
             base.SetSpacesMoved(spacesMoved);
             if (changed) ServerNotifier?.NotifySpacesMoved(this);
-        }
-
-        public override void SetAttacksThisTurn(int attacksThisTurn)
-        {
-            bool changed = AttacksThisTurn != attacksThisTurn;
-            Debug.Log($"Attacks this turn... {AttacksThisTurn}->{attacksThisTurn}. Server notifier {ServerNotifier}, changed? {changed}");
-            base.SetAttacksThisTurn(attacksThisTurn);
-            if (changed) ServerNotifier?.NotifyAttacksThisTurn(this);
         }
         #endregion stats
     }

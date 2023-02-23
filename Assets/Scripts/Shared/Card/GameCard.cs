@@ -120,7 +120,7 @@ namespace KompasCore.Cards
             protected set => SpacesMoved = N - value;
         }
 
-        public int AttacksThisTurn { get; private set; }
+        public virtual int AttacksThisTurn { get; set; }
 
         //restrictions
         public override MovementRestriction MovementRestriction { get; }
@@ -219,7 +219,7 @@ namespace KompasCore.Cards
             foreach (Effect eff in Effects) eff.ResetForTurn(turnPlayer);
 
             SetSpacesMoved(0);
-            SetAttacksThisTurn(0);
+            AttacksThisTurn = 0;
             if (Location == CardLocation.Board) TurnsOnBoard++;
         }
 
@@ -312,8 +312,6 @@ namespace KompasCore.Cards
 
         public virtual void SetSpacesMoved(int spacesMoved)
             => SpacesMoved = spacesMoved;
-        public virtual void SetAttacksThisTurn(int attacksThisTurn)
-            => AttacksThisTurn = attacksThisTurn;
         public virtual void SetTurnsOnBoard(int turnsOnBoard, IStackable stackSrc = null)
             => TurnsOnBoard = turnsOnBoard;
 

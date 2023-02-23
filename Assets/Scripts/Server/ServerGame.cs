@@ -279,7 +279,7 @@ namespace KompasServer.GameCore
             effectsController.PushToStack(attack, new ActivationContext(game: this, stackableCause: stackSrc, stackableEvent: attack, player: instigator));
             //check for triggers related to the attack (if this were in the constructor, the triggers would go on the stack under the attack
             attack.Declare(stackSrc);
-            if (manual) attacker.SetAttacksThisTurn(attacker.AttacksThisTurn + 1);
+            if (manual) attacker.AttacksThisTurn++;
             return attack;
         }
 
