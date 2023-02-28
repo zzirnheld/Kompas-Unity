@@ -318,6 +318,17 @@ mechs/One Step Ahead
 mechs/Repair Hub
 mechs/Buffer Shield
 
+modular/characters/Proof of Conchcept
+modular/characters/Prototapir
+modular/characters/Stork in Progress
+modular/characters/Minimum Viable Produck
+modular/characters/Agile Scrumsnake
+modular/characters/Kanbanorangutan
+
+modular/modules/Endurance Module
+modular/modules/Nimbleness Module
+modular/modules/Wounding Module
+
 orcs/smiters/freebies/Glimmer of Hope
 orcs/smiters/freebies/Unassuming Bush
 
