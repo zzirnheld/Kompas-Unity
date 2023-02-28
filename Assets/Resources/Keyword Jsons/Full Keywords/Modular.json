@@ -1,0 +1,72 @@
+{
+    "triggerData": {
+        "triggerCondition": "Play",
+        "triggerRestriction": {
+            "triggerRestrictions": [
+                "This Card is Main Card"
+            ]
+        }
+    },
+	"subeffects": [
+        {
+            "$type": "Subeffect:SetXByNumberIdentity:",
+            "numberIdentity": {
+                "$type": "Subeffect.Number:Arg:",
+                "multiplier": 1
+            },
+            "xMultiplier": 1
+        },
+        {
+            "$type": "Subeffect:TargetThis:"
+        },
+        {
+            "$type": "Subeffect:ChooseFromList:",
+            "cardRestriction": {
+                "blurb": "Modules to attach",
+                "cardRestrictionElements": [
+                    { "$type": "Core.CardRestriction:Friendly:" },
+                    {
+                        "$type": "Core.CardRestriction:Location:",
+                        "locations": [ "Hand" ]
+                    },
+                    {
+                        "$type": "Core.CardRestriction:Subtypes:",
+                        "subtypes": [ "Module" ]
+                    }
+                ]
+            },
+            "listRestriction": {
+                "listRestrictions": [
+                    "Max Can Choose: X"
+                ]
+            },
+            "xMultiplier": 1
+        },
+        {
+            "$type": "Subeffect:SetXByNumberIdentity:",
+            "numberIdentity": {
+                "$type": "Subeffect.Number:TargetCount:",
+                "multiplier": 1,
+                "modifier": -1
+            },
+            "xMultiplier": 1
+        },
+        {
+            "$type": "Subeffect:Attach:",
+            "targetToAttachTo": 0,
+            "targetIndex": -1
+        },
+        {
+            "$type": "Subeffect:LoopWhileHaveTargets:",
+            "delete": true,
+            "remainingTargets": 1,
+            "jumpIndices": [
+                4
+            ]
+        },
+        {
+            "$type": "Subeffect:DrawX:",
+            "xMultiplier": 1
+        }
+	]
+}

@@ -1,6 +1,8 @@
+using KompasCore.Cards;
 using KompasCore.Effects;
 using KompasCore.Effects.Identities;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace KompasServer.Effects.Identities
 {
@@ -29,6 +31,27 @@ namespace KompasServer.Effects.Identities
 
             protected override int AbstractItem
                 => selector.Apply(numbers.Item);
+        }
+
+        public class Arg : SubeffectIdentityBase<int>
+        {
+            protected override int AbstractItem => InitializationContext.subeffect.Effect.arg;
+        }
+
+        public class TargetCount : SubeffectIdentityBase<int>
+        {
+            public CardRestriction cardRestriction;
+
+            public override void Initialize(EffectInitializationContext initializationContext)
+            {
+                base.Initialize(initializationContext);
+                cardRestriction?.Initialize(initializationContext);
+            }
+
+            private bool Selector(GameCardBase card)
+                => cardRestriction?.IsValidCard(card, InitializationContext.effect.CurrActivationContext) ?? true;
+
+            protected override int AbstractItem => InitializationContext.subeffect.Effect.CardTargets.Count(Selector);
         }
     }
 }

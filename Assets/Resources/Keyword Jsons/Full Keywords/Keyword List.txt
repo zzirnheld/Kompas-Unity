@@ -32,3 +32,5 @@ Undying
 Soullink
 Trample
 Masquerade
+Modular
+Basic Modular
