@@ -6,7 +6,7 @@ namespace KompasCore.Effects.Identities
 {
     namespace ActivationContextManyCardsIdentities
     {
-        public class CardsInPositions : ActivationContextIdentityBase<ICollection<GameCardBase>>
+        public class CardsInPositions : ActivationContextIdentityBase<IReadOnlyCollection<GameCardBase>>
         {
             public IActivationContextIdentity<IReadOnlyCollection<Space>> positions;
 
@@ -16,11 +16,42 @@ namespace KompasCore.Effects.Identities
                 positions.Initialize(initializationContext);
             }
 
-            protected override ICollection<GameCardBase> AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
+            protected override IReadOnlyCollection<GameCardBase> AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
             {
                 var spaces = positions.From(context, secondaryContext);
                 return spaces.Select(InitializationContext.game.BoardController.GetCardAt).Where(s => s != null).ToArray();
             }
+        }
+
+        public class Augments : ActivationContextIdentityBase<IReadOnlyCollection<GameCardBase>>
+        {
+            public IActivationContextIdentity<GameCardBase> card;
+
+            public override void Initialize(EffectInitializationContext initializationContext)
+            {
+                base.Initialize(initializationContext);
+                card.Initialize(initializationContext);
+            }
+
+            protected override IReadOnlyCollection<GameCardBase> AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
+                => card.From(context, secondaryContext).Augments;
+        }
+
+        public class FittingRestriction : ActivationContextIdentityBase<IReadOnlyCollection<GameCardBase>>
+        {
+            public IActivationContextIdentity<IReadOnlyCollection<GameCardBase>> cards = new GamestateManyCardsIdentities.All();
+
+            public CardRestriction cardRestriction;
+
+            public override void Initialize(EffectInitializationContext initializationContext)
+            {
+                base.Initialize(initializationContext);
+                cards.Initialize(initializationContext);
+                cardRestriction.Initialize(initializationContext);
+            }
+
+            protected override IReadOnlyCollection<GameCardBase> AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
+                => cards.From(context, secondaryContext).Where(c => cardRestriction.IsValidCard(c, context)).ToArray();
         }
     }
 }

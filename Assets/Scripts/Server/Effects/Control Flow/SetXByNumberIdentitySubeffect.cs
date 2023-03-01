@@ -4,7 +4,7 @@ namespace KompasServer.Effects
 {
     public class SetXByNumberIdentitySubeffect : SetXSubeffect
     {
-        public INoActivationContextIdentity<int> numberIdentity;
+        public IActivationContextIdentity<int> numberIdentity;
 
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
@@ -15,6 +15,6 @@ namespace KompasServer.Effects
             numberIdentity.Initialize(initializationContext: DefaultInitializationContext);
         }
 
-        public override int BaseCount => numberIdentity.Item;
+        public override int BaseCount => numberIdentity.From(CurrentContext, CurrentContext);
     }
 }
