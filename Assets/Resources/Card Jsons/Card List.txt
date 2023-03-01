@@ -328,6 +328,11 @@ modular/characters/Kanbanorangutan
 modular/modules/Endurance Module
 modular/modules/Nimbleness Module
 modular/modules/Wounding Module
+modular/modules/Composite Defense Module
+modular/modules/Creativity Module
+modular/modules/Energization Module
+modular/modules/Lance Module
+modular/modules/Vampirism Module
 
 orcs/smiters/freebies/Glimmer of Hope
 orcs/smiters/freebies/Unassuming Bush
