@@ -38,10 +38,10 @@ namespace KompasCore.UI
         protected override void ColorFromNumbers(TMP_Text text, (int currStatValue, int baseStatValue) statValues)
         {
             base.ColorFromNumbers(text, statValues);
-            text.color = ColorFromNumbers(statValues.currStatValue, statValues.baseStatValue);
+            text.color = FontColorFromNumbers(statValues.currStatValue, statValues.baseStatValue);
         }
 
-        private Color32 ColorFromNumbers(int currStatValue, int baseStatValue)
+        private Color32 FontColorFromNumbers(int currStatValue, int baseStatValue)
         {
             if (currStatValue < baseStatValue) return DebuffColor;
             if (currStatValue > baseStatValue) return BuffColor;

@@ -130,10 +130,10 @@ namespace KompasCore.UI
 
         protected virtual void ColorFromNumbers(TMP_Text text, (int currStatValue, int baseStatValue) statValues)
         {
-            text.fontMaterial = MaterialFromNumbers(statValues.currStatValue, statValues.baseStatValue);
+            text.fontMaterial = FontMaterialFromNumbers(statValues.currStatValue, statValues.baseStatValue);
         }
 
-        private Material MaterialFromNumbers(int currStatValue, int baseStatValue)
+        private Material FontMaterialFromNumbers(int currStatValue, int baseStatValue)
         {
             if (currStatValue > baseStatValue) return buffStatFontMaterial;
             if (currStatValue < baseStatValue) return debuffStatFontMaterial;
