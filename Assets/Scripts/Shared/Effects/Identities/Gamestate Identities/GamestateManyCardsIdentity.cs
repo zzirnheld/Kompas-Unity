@@ -88,6 +88,23 @@ namespace KompasCore.Effects.Identities
             }
         }
 
+        public class Deck : NoActivationContextIdentityBase<IReadOnlyCollection<GameCardBase>>
+        {
+            public bool friendly = true;
+            public bool enemy = true;
+
+            protected override IReadOnlyCollection<GameCardBase> AbstractItem
+            {
+                get
+                {
+                    var cards = new List<GameCardBase>();
+                    if (friendly) cards.AddRange(InitializationContext.Controller.deckCtrl.Deck);
+                    if (enemy) cards.AddRange(InitializationContext.Controller.Enemy.deckCtrl.Deck);
+                    return cards;
+                }
+            }
+        }
+
         public class Limit : NoActivationContextIdentityBase<IReadOnlyCollection<GameCardBase>>
         {
             public INoActivationContextIdentity<int> limit;
@@ -102,6 +119,23 @@ namespace KompasCore.Effects.Identities
 
             protected override IReadOnlyCollection<GameCardBase> AbstractItem
                 => CollectionsHelper.Shuffle(cards.Item).Take(limit.Item).ToArray();
+        }
+
+        public class Distinct : NoActivationContextIdentityBase<IReadOnlyCollection<GameCardBase>>
+        {
+            public INoActivationContextIdentity<IReadOnlyCollection<GameCardBase>> cards;
+
+            public override void Initialize(EffectInitializationContext initializationContext)
+            {
+                base.Initialize(initializationContext);
+                cards.Initialize(initializationContext);
+            }
+
+            protected override IReadOnlyCollection<GameCardBase> AbstractItem
+                => cards.Item
+                    .GroupBy(c => c.CardName)
+                    .Select(group => group.First())
+                    .ToArray();
         }
     }
 }
