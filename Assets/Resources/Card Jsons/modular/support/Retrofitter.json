@@ -4,13 +4,12 @@
 	"effText": "When an adjacent Modular character attaches a Module to themselves, discard->attach a Module to them.",
 	"effects": [
 		{
-            "blurb": "Guide Memory",
+            "blurb": "Retrofit Module",
 			"triggerData": {
 				"triggerCondition": "Augment Attached",
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Controller Triggered",
 						"Main Card Fits Restriction After"
 					],
 					"nowRestriction": {

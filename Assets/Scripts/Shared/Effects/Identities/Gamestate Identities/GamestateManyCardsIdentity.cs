@@ -1,4 +1,5 @@
 using KompasCore.Cards;
+using KompasCore.Helpers;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -85,6 +86,22 @@ namespace KompasCore.Effects.Identities
                     return cards;
                 }
             }
+        }
+
+        public class Limit : NoActivationContextIdentityBase<IReadOnlyCollection<GameCardBase>>
+        {
+            public INoActivationContextIdentity<int> limit;
+            public INoActivationContextIdentity<IReadOnlyCollection<GameCardBase>> cards;
+
+            public override void Initialize(EffectInitializationContext initializationContext)
+            {
+                base.Initialize(initializationContext);
+                limit.Initialize(initializationContext);
+                cards.Initialize(initializationContext);
+            }
+
+            protected override IReadOnlyCollection<GameCardBase> AbstractItem
+                => CollectionsHelper.Shuffle(cards.Item).Take(limit.Item).ToArray();
         }
     }
 }
