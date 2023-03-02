@@ -342,6 +342,8 @@ modular/support/Retrofitter
 modular/support/Modular Retrograding
 modular/support/Basic Components
 modular/support/Modular Experimenter
+modular/support/Modular Modules
+modular/support/Modular Reconstruction
 
 orcs/smiters/freebies/Glimmer of Hope
 orcs/smiters/freebies/Unassuming Bush
