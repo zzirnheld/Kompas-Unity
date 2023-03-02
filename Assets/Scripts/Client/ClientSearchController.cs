@@ -137,6 +137,13 @@ namespace KompasClient.GameCore
                 return;
             }
 
+            if (CurrSearchData.Value.listRestriction.listRestrictions.Contains(ListRestriction.Distinct)
+                && CurrSearchData.Value.searched.Select(c => c.CardName).Contains(nextTarget.CardName))
+            {
+                Debug.LogError($"Allowed user to target non-distinct card {nextTarget} when they had already seen {string.Join(",", CurrSearchData.Value.searched.Select(c => c.CardName))}");
+                return;
+            }
+
             CurrSearchData.Value.searched.Add(nextTarget);
             //TODO make be handled by card view controller
             // Debug.Log($"Added {nextTarget.CardName}, targets are now {string.Join(",", CurrSearchData.Value.searched.Select(c => c.CardName))}");

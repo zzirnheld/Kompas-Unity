@@ -1,0 +1,84 @@
+{
+	"cardType": 83,
+	"cardName": "Modular Modules",
+	"effText": "Hand->discard an A X Module. Deck->hand X distinct Modukes.\nYou can pay 1 pip and discard->reshuffle 5 cards to discard->hand me.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "Module to discard",
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Module" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:SetXByTargetCardValue:",
+					"cardValue": {
+						"value": "Cost"
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:Discard:"
+				},
+				{
+					"$type": "Subeffect:ChooseFromList:",
+                    "cardRestriction":
+                    {
+                        "cardRestrictions": [ "Augment" ],
+                        "cardRestrictionElements": [
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Deck" ]
+                            },
+                            {
+                                "$type": "Core.CardRestriction:Subtypes:",
+                                "subtypes": [ "Module" ]
+                            }
+                        ]
+                    },
+					"listRestriction": {
+						"listRestrictions": [
+							"Min Can Choose: X",
+							"Max Can Choose: X",
+                            "Distinct"
+						]
+					},
+                    "xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:Rehand:"
+				},
+				{
+					"$type": "Subeffect:LoopWhileHaveTargets:",
+					"delete": true,
+					"jumpIndices": [ 4 ]
+				}
+			]
+		}
+	],
+	"c": 1,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypeText": "Simple"
+}
