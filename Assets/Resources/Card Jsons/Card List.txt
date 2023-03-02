@@ -57,6 +57,8 @@ generic/Tag
 
 generic/removal/Time Flies
 
+generic/cardDraw/Curiosity's Fruit
+
 aquatic/support/Changing Tides
 aquatic/support/Fishing
 aquatic/support/Shifting Tides
