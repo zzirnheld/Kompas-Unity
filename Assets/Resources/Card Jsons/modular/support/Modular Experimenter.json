@@ -1,0 +1,108 @@
+{
+	"cardType": 67,
+	"cardName": "Modular Experimenter",
+	"effText": "Once each turn, you can swap a Module attached to a friendly character for 2 distinct Modules in your hand.",
+	"effects": [
+		{
+			"activationRestriction": {
+				"activationRestrictionArray": [
+					"Max Times Per Turn",
+					"Default"
+				]
+			},
+			"subeffects": [
+				{
+					"$type":"Subeffect:CardTarget:",
+					"cardRestriction":
+					{
+						"blurb": "character whose Module to swap out",
+						"cardRestrictions": [
+                            "Character",
+                            "Wields Augment Fitting Restriction"
+                        ],
+						"augmentRestriction":
+						{
+							"cardRestrictionElements": [
+								{ "$type": "Core.CardRestriction:Friendly:" },
+                                {
+                                    "$type": "Core.CardRestriction:Subtypes:",
+                                    "subtypes": [ "Module" ]
+                                }
+							]
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
+					}
+				},
+                {
+                    "$type": "Subeffect:CardTarget:",
+                    "cardRestriction": {
+                        "blurb": "Module to swap out",
+                        "cardRestrictions": [
+                            "Augment",
+                            "Augments Current Target"
+                        ],
+                        "cardRestrictionElements": [
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Board" ]
+                            },
+                            {
+                                "$type": "Core.CardRestriction:Subtypes:",
+                                "subtypes": [ "Module" ]
+                            }
+                        ]
+                    }
+                },
+				{
+					"$type": "Subeffect:ChooseFromList:",
+                    "cardRestriction":
+                    {
+                        "cardRestrictions": [ "Augment" ],
+                        "cardRestrictionElements": [
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            },
+                            {
+                                "$type": "Core.CardRestriction:Subtypes:",
+                                "subtypes": [ "Module" ]
+                            }
+                        ]
+                    },
+					"listRestriction": {
+						"listRestrictions": [
+							"Min Can Choose",
+							"Max Can Choose"
+						],
+						"minCanChoose": 2,
+						"maxCanChoose": 2
+					}
+				},
+                {
+                    "$type": "Subeffect:Rehand:",
+                    "targetIndex": -3
+                },
+                {
+                    "$type": "Subeffect:Attach:",
+                    "targetIndex": -1,
+                    "targetToAttachTo": -4
+                },
+                {
+                    "$type": "Subeffect:Attach:",
+                    "targetIndex": -2,
+                    "targetToAttachTo": -4
+                }
+			]
+		}
+	],
+	"n": 3,
+	"e": 4,
+	"s": 4,
+	"w": 3,
+	"subtypeText": "Craftsman"
+}
