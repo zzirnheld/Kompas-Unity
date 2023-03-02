@@ -1,0 +1,81 @@
+{
+	"cardType": 67,
+	"cardName": "Retrofitter",
+	"effText": "When an adjacent Modular character attaches a Module to themselves, discard->attach a Module to them.",
+	"effects": [
+		{
+            "blurb": "Guide Memory",
+			"triggerData": {
+				"triggerCondition": "Augment Attached",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Controller Triggered",
+						"Main Card Fits Restriction After"
+					],
+					"nowRestriction": {
+						"cardRestrictions": [
+							"Space Fits Restriction",
+                            "Augments Card Fitting Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Source"
+							]
+						},
+						"augmentRestriction": {
+							"cardRestrictionElements": [
+								{
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Vessel" ]
+								}
+							]
+                        },
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Module" ]
+							}
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetTriggeringCard:"
+				},
+				{
+					"$type": "Subeffect:TargetTargetsAugmentedCard:"
+				},
+				{
+					"$type":"Subeffect:CardTarget:",
+					"cardRestriction":
+					{
+						"blurb": "Module to attach to the Modular character",
+						"cardRestrictions": [ "Augment" ],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Module" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:Attach:",
+					"targetIndex": -1,
+					"targetToAttachTo": -2
+				}
+			]
+		}
+	],
+	"n": 3,
+	"e": 5,
+	"s": 5,
+	"w": 3,
+	"subtypeText": "Craftsman"
+}

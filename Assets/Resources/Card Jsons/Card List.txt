@@ -334,6 +334,8 @@ modular/modules/Energization Module
 modular/modules/Lance Module
 modular/modules/Vampirism Module
 
+modular/support/Retrofitter
+
 orcs/smiters/freebies/Glimmer of Hope
 orcs/smiters/freebies/Unassuming Bush
 
