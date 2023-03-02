@@ -71,10 +71,70 @@
 				{
 					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"delete": true,
+					"remainingTargets": 1,
 					"jumpIndices": [ 4 ]
 				}
 			]
-		}
+		},
+        {
+            "blurb": "Recover me",
+            "activationRestriction": {
+                "activationRestrictionArray":[
+                    "Location",
+                    "Controller Activates",
+                    "Not Negated"
+                ],
+                "location":2
+            },
+            "subeffects": [
+                {
+                    "$type": "Subeffect:TargetThis:"
+                },
+                {
+                    "$type": "Subeffect:CanResolve:",
+                    "subeffIndices": [ 2, 5 ]
+                },
+				{
+					"$type": "Subeffect:ChooseFromList:",
+					"cardRestriction": {
+						"blurb": "cards to reshuffle",
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							}
+						]
+					},
+					"listRestriction": {
+						"listRestrictions": [
+							"Min Can Choose",
+							"Max Can Choose"
+						],
+						"minCanChoose": 5,
+						"maxCanChoose": 5
+					}
+				},
+				{
+					"$type": "Subeffect:Reshuffle:"
+				},
+				{
+					"$type": "Subeffect:LoopWhileHaveTargets:",
+					"delete": true,
+					"remainingTargets": 1,
+					"jumpIndices": [ 3 ]
+				},
+				{
+					"$type":"Subeffect:PayPips:",
+					"xMultiplier":0,
+					"xModifier":1
+				},
+                {
+                    "$type":"Subeffect:Rehand:",
+                    "targetIndex": 0
+                }
+            ]
+        }
 	],
 	"c": 1,
 	"spellTypes": [
