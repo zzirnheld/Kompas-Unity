@@ -1,4 +1,5 @@
 using KompasCore.Cards;
+using KompasCore.Exceptions;
 
 namespace KompasCore.Effects.Identities.ActivationContextCardIdentities
 {
@@ -60,6 +61,19 @@ namespace KompasCore.Effects.Identities.ActivationContextCardIdentities
         {
             base.Initialize(initializationContext);
             ofThisCard.Initialize(initializationContext);
+        }
+
+        protected override GameCardBase AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
+            => ofThisCard.From(context, secondaryContext).AugmentedCard;
+    }
+
+    public class Attacker : ActivationContextIdentityBase<GameCardBase>
+    {
+        protected override GameCardBase AbstractItemFrom(ActivationContext contextToConsider)
+        {
+            if (contextToConsider.stackableEvent is Attack eventAttack) return eventAttack.attacker;
+            if (contextToConsider.stackableCause is Attack causeAttack) return causeAttack.attacker;
+            else throw new NullCardException("Stackable event wasn't an attack!");
         }
     }
 }

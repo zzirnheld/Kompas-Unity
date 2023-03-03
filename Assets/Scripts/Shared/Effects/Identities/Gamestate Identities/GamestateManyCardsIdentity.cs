@@ -42,6 +42,19 @@ namespace KompasCore.Effects.Identities
             protected override IReadOnlyCollection<GameCardBase> AbstractItem => cards.Select(s => s.Item).ToArray();
         }
 
+        public class Augments : NoActivationContextIdentityBase<IReadOnlyCollection<GameCardBase>>
+        {
+            public INoActivationContextIdentity<GameCardBase> card;
+
+            public override void Initialize(EffectInitializationContext initializationContext)
+            {
+                base.Initialize(initializationContext);
+                card.Initialize(initializationContext);
+            }
+
+            protected override IReadOnlyCollection<GameCardBase> AbstractItem => card.Item.Augments;
+        }
+
         public class CardsInPositions : NoActivationContextIdentityBase<IReadOnlyCollection<GameCardBase>>
         {
             public INoActivationContextIdentity<IReadOnlyCollection<Space>> positions;

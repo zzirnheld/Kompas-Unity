@@ -39,5 +39,18 @@ namespace KompasCore.Effects.Identities
             protected override GameCardBase AbstractItem
                 => ofThisCard.Item.AugmentedCard;
         }
+
+        public class Avatar : NoActivationContextIdentityBase<GameCardBase>
+        {
+            public INoActivationContextIdentity<Player> player;
+
+            public override void Initialize(EffectInitializationContext initializationContext)
+            {
+                base.Initialize(initializationContext);
+                player.Initialize(initializationContext);
+            }
+
+            protected override GameCardBase AbstractItem => player.Item.Avatar;
+        }
     }
 }
