@@ -33,10 +33,11 @@ namespace KompasCore.GameCore
         /// <see langword="false"/> if the add failed in a way that isn't considered "impossible" (i.e. removing an avatar)</returns>
         protected virtual bool AddToDeck(GameCard card, IStackable stackSrc = null)
         {
+            if (card == null) throw new NullCardException("Null card to add to deck");
+            //Does not check if card is already in deck, because the functions to move around a card in deck are the same as those to add a card to deck
             //Check if the card is successfully removed (if it's not, it's probably an avatar)
             if (card.Remove(stackSrc))
             {
-                Debug.Log($"Adding {card.CardName} to deck from {card.Location}");
                 card.GameLocation = this;
                 card.Controller = Owner;
                 card.Position = null;

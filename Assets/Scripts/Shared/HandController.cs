@@ -21,6 +21,7 @@ namespace KompasCore.GameCore
         public virtual bool Hand(GameCard card, IStackable stackSrc = null)
         {
             if (card == null) throw new NullCardException("Cannot add null card to hand");
+            if (Equals(card.GameLocation)) throw new AlreadyHereException(CardLocation.Hand);
 
             var successful = card.Remove(stackSrc);
             if (successful)

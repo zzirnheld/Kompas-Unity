@@ -5,6 +5,9 @@
     /// </summary>
     public abstract class CardChangeStateSubeffect : ServerSubeffect
     {
+        public override bool IsImpossible() => CardTarget == null || CardTarget.Location == destination;
+
+        protected abstract CardLocation destination { get; }
 
     }
 }

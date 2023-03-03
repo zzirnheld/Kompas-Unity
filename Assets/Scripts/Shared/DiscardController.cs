@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace KompasCore.GameCore
 {
-    public class DiscardController : AbstractGameLocation
+    public class DiscardController : GameLocation
     {
         public DiscardUIController discardUIController;
 
@@ -20,7 +20,8 @@ namespace KompasCore.GameCore
         //adding/removing cards
         public virtual bool Discard(GameCard card, IStackable stackSrc = null)
         {
-            if (card == null) throw new NullCardException("Cannot add null card to hand");
+            if (card == null) throw new NullCardException("Cannot add null card to discard");
+            if (Equals(card.GameLocation)) throw new AlreadyHereException(CardLocation.Discard);
 
             //Check if the card is successfully removed (if it's not, it's probably an avatar)
             bool successful = card.Remove(stackSrc);

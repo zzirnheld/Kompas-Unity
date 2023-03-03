@@ -15,7 +15,7 @@ namespace KompasCore.GameCore
     /// <summary>
     /// Abstract GameLocation class containing shared logic for GameLocations that don't have to care about server vs client game/player
     /// </summary>
-    public abstract class AbstractGameLocation : MonoBehaviour, IGameLocation
+    public abstract class GameLocation : MonoBehaviour, IGameLocation
     {
         public Game game;
         public Player owner;
@@ -25,5 +25,7 @@ namespace KompasCore.GameCore
         public abstract int IndexOf(GameCard card);
 
         public abstract void Remove(GameCard card);
+
+        public override string ToString() => $"{GetType()} owned by {owner}";
     }
 }

@@ -6,7 +6,7 @@ namespace KompasServer.Effects
 {
     public class DiscardSubeffect : CardChangeStateSubeffect
     {
-        public override bool IsImpossible() => CardTarget == null;
+        protected override CardLocation destination => CardLocation.Discard;
 
         public override Task<ResolutionInfo> Resolve()
         {

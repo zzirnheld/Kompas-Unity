@@ -6,7 +6,7 @@ namespace KompasServer.Effects
     /// <summary>
     /// Like a RevealSubeffect, but isn't impossible if the card is already revealed.
     /// </summary>
-    public class ShowSubeffect : CardChangeStateSubeffect
+    public class ShowSubeffect : ServerSubeffect
     {
         public override bool IsImpossible() => CardTarget == null;
 

@@ -7,6 +7,7 @@ namespace KompasServer.Effects
     public class ReshuffleSubeffect : CardChangeStateSubeffect
     {
         public override bool IsImpossible() => CardTarget == null;
+        protected override CardLocation destination => CardLocation.Deck;
 
         public override Task<ResolutionInfo> Resolve()
         {

@@ -6,7 +6,7 @@ namespace KompasServer.Effects
 {
     public class RehandSubeffect : CardChangeStateSubeffect
     {
-        public override bool IsImpossible() => CardTarget == null;
+        protected override CardLocation destination => CardLocation.Hand;
 
         public override Task<ResolutionInfo> Resolve()
         {

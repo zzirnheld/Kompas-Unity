@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace KompasServer.Effects
 {
-    public class MoveSubeffect : CardChangeStateSubeffect
+    public class MoveSubeffect : ServerSubeffect
     {
         public override Task<ResolutionInfo> Resolve()
         {

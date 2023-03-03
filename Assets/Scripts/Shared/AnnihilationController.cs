@@ -8,7 +8,7 @@ using UnityEngine;
 namespace KompasCore.GameCore
 {
     //Not abstract because Client uses this base class
-    public class AnnihilationController : AbstractGameLocation
+    public class AnnihilationController : GameLocation
     {
         public AnnihilationUIController annihilationUIController;
 
@@ -29,8 +29,7 @@ namespace KompasCore.GameCore
             if (card == null) throw new NullCardException("Cannot add null card to hand");
             Debug.Log($"Annihilating {card.CardName} from {card.Location}");
 
-            if (card.GameLocation != null && card.GameLocation.Equals(this))
-                throw new AlreadyHereException(CardLocation.Annihilation);
+            if (Equals(card.GameLocation)) throw new AlreadyHereException(CardLocation.Annihilation);
 
             //Check if the card is successfully removed (if it's not, it's probably an avatar)
             if (card.Remove(stackSrc))

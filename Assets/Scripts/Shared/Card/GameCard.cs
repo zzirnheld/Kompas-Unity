@@ -146,6 +146,7 @@ namespace KompasCore.Cards
             get => gameLocation;
             set
             {
+                Debug.Log($"{CardName} moving from {gameLocation} to {value}");
                 gameLocation = value;
                 Location = value.CardLocation;
             }

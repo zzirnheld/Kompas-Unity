@@ -6,7 +6,7 @@ namespace KompasServer.Effects
 {
     public class AnnihilateSubeffect : CardChangeStateSubeffect
     {
-        public override bool IsImpossible() => CardTarget == null || CardTarget.Location == CardLocation.Annihilation;
+        protected override CardLocation destination => CardLocation.Annihilation;
 
         public override Task<ResolutionInfo> Resolve()
         {

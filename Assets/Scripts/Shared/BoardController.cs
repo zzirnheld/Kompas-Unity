@@ -237,7 +237,7 @@ namespace KompasCore.GameCore
             //otherwise, put a card to the requested space
             else
             {
-                if (!IsEmpty(to)) throw new AlreadyHereException(CardLocation, "Card already in space to be played to");
+                if (!IsEmpty(to)) throw new AlreadyHereException(CardLocation, "There's already a card in a space to be played to");
                 toPlay.Remove(stackSrc);
                 var (toX, toY) = to;
                 Board[toX, toY] = toPlay;
