@@ -1,7 +1,7 @@
 using KompasCore.Exceptions;
 using System.Threading.Tasks;
 
-namespace KompasServer.Effects.Subeffect
+namespace KompasServer.Effects.Subeffects
 {
     /// <summary>
     /// Like a RevealSubeffect, but isn't impossible if the card is already revealed.

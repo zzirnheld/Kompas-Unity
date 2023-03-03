@@ -3,7 +3,7 @@ using KompasCore.Exceptions;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace KompasServer.Effects.Subeffect
+namespace KompasServer.Effects.Subeffects
 {
     public class TargetAugmentsSubeffect : ServerSubeffect
     {

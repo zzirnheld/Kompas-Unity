@@ -2,7 +2,7 @@
 using KompasCore.Effects;
 using System.Threading.Tasks;
 
-namespace KompasServer.Effects.Subeffect
+namespace KompasServer.Effects.Subeffects
 {
     public class TargetOtherInFightSubeffect : ServerSubeffect
     {

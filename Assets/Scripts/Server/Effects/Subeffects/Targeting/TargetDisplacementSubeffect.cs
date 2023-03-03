@@ -3,7 +3,7 @@ using KompasCore.Exceptions;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace KompasServer.Effects.Subeffect
+namespace KompasServer.Effects.Subeffects
 {
     public class TargetDisplacementSubeffect : ServerSubeffect
     {

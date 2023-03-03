@@ -6,7 +6,7 @@ using KompasCore.Effects;
 using Newtonsoft.Json;
 using UnityEngine;
 
-namespace KompasServer.Effects.Subeffect
+namespace KompasServer.Effects.Subeffects
 {
     public class ChooseFromListSubeffect : ServerSubeffect
     {

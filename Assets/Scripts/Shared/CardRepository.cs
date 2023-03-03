@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using System.IO;
-using KompasServer.Effects.Subeffect;
+using KompasServer.Effects.Subeffects;
 
 public class CardRepository : MonoBehaviour
 {

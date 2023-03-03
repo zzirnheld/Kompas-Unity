@@ -1,6 +1,6 @@
 using KompasCore.Effects.Identities;
 
-namespace KompasServer.Effects.Subeffect
+namespace KompasServer.Effects.Subeffects
 {
     public class SetXByNumberIdentitySubeffect : SetXSubeffect
     {

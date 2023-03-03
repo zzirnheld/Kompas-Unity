@@ -2,7 +2,7 @@
 using KompasCore.Effects;
 using KompasCore.Exceptions;
 using KompasCore.GameCore;
-using KompasServer.Effects.Subeffect;
+using KompasServer.Effects.Subeffects;
 using KompasServer.GameCore;
 using System.Collections.Generic;
 using System.Linq;

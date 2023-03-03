@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace KompasServer.Effects.Subeffect
+namespace KompasServer.Effects.Subeffects
 {
     public class LoopWhileHaveTargetsSubeffect : LoopSubeffect
     {

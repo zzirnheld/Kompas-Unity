@@ -1,6 +1,6 @@
 ﻿using KompasCore.Effects;
 
-namespace KompasServer.Effects.Subeffect
+namespace KompasServer.Effects.Subeffects
 {
     public class SetXBoardRestrictionSubeffect : SetXSubeffect
     {

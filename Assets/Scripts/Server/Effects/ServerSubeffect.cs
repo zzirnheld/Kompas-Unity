@@ -4,7 +4,7 @@ using KompasCore.GameCore;
 using KompasServer.GameCore;
 using System.Threading.Tasks;
 
-namespace KompasServer.Effects.Subeffect
+namespace KompasServer.Effects.Subeffects
 {
     public abstract class ServerSubeffect : KompasCore.Effects.Subeffect
     {

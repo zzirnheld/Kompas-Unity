@@ -1,7 +1,7 @@
 ﻿using KompasCore.Effects;
 using System.Linq;
 
-namespace KompasServer.Effects.Subeffect
+namespace KompasServer.Effects.Subeffects
 {
     public class SetXByGamestateSubeffect : SetXSubeffect
     {

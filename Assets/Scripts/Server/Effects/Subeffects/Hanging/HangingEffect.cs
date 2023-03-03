@@ -2,7 +2,7 @@
 using KompasServer.GameCore;
 using UnityEngine;
 
-namespace KompasServer.Effects.Subeffect.Hanging
+namespace KompasServer.Effects.Subeffects.Hanging
 {
     public abstract class HangingEffect
     {

@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace KompasServer.Effects.Subeffect
+namespace KompasServer.Effects.Subeffects
 {
     /// <summary>
     /// Resolves a specified subeffect if at any point the effect is declared impossible

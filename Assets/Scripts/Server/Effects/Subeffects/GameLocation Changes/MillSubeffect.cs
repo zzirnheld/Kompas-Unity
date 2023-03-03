@@ -1,7 +1,7 @@
 ﻿using KompasCore.Cards.Movement;
 using System.Threading.Tasks;
 
-namespace KompasServer.Effects.Subeffect
+namespace KompasServer.Effects.Subeffects
 {
     public class MillSubeffect : ServerSubeffect
     {
