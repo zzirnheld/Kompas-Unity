@@ -3,7 +3,7 @@ using KompasCore.Cards;
 using KompasCore.Effects;
 using KompasServer.GameCore;
 
-namespace KompasServer.Effects.Hanging
+namespace KompasServer.Effects.Subeffect.Hanging
 {
     public class ActivationSubeffect : HangingEffectSubeffect
     {

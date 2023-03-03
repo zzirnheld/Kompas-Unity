@@ -1,4 +1,4 @@
-﻿namespace KompasServer.Effects
+﻿namespace KompasServer.Effects.Subeffect
 {
     public class SetXByTargetCostSubeffect : SetXSubeffect
     {

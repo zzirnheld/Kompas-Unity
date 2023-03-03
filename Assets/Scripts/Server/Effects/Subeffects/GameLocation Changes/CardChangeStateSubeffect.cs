@@ -1,4 +1,4 @@
-﻿namespace KompasServer.Effects
+﻿namespace KompasServer.Effects.Subeffect
 {
     /// <summary>
     /// Moves cards between discard/field/etc

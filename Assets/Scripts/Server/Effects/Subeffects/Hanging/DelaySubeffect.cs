@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace KompasServer.Effects.Hanging
+namespace KompasServer.Effects.Subeffect.Hanging
 {
     public class DelaySubeffect : HangingEffectSubeffect
     {

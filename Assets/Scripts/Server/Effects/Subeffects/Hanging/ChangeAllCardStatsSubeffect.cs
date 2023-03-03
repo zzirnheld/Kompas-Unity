@@ -4,7 +4,7 @@ using KompasCore.Exceptions;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace KompasServer.Effects.Hanging
+namespace KompasServer.Effects.Subeffect.Hanging
 {
     public class ChangeAllCardStatsSubeffect : ChangeCardStatsSubeffect
     {

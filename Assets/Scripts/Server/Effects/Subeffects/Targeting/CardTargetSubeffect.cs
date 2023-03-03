@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace KompasServer.Effects
+namespace KompasServer.Effects.Subeffect
 {
     public class CardTargetSubeffect : ServerSubeffect
     {

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace KompasServer.Effects
+namespace KompasServer.Effects.Subeffect
 {
     /// <summary>
     /// Gets a target from the effect controller's deck. Shuffles the deck aftewards

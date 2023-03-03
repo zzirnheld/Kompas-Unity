@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace KompasServer.Effects
+namespace KompasServer.Effects.Subeffect
 {
     /// <summary>
     /// Removes any effect currently set to trigger if an effect is declared impossible.

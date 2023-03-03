@@ -5,7 +5,7 @@ using KompasServer.GameCore;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace KompasServer.Effects.Hanging
+namespace KompasServer.Effects.Subeffect.Hanging
 {
     public class ChangeCardStatsSubeffect : HangingEffectSubeffect
     {

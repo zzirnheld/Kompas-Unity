@@ -4,7 +4,7 @@ using KompasCore.Cards.Movement;
 using KompasCore.Effects;
 using KompasServer.GameCore;
 
-namespace KompasServer.Effects.Hanging
+namespace KompasServer.Effects.Subeffect.Hanging
 {
     public class AnnihilationSubeffect : HangingEffectSubeffect
     {

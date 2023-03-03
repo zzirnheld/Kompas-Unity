@@ -2,7 +2,7 @@ using KompasCore.Cards;
 using KompasCore.Exceptions;
 using System.Threading.Tasks;
 
-namespace KompasServer.Effects
+namespace KompasServer.Effects.Subeffect
 {
     public class StashTargetsCardInfoSubeffect : ServerSubeffect
     {

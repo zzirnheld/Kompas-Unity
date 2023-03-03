@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace KompasServer.Effects
+namespace KompasServer.Effects.Subeffect
 {
     /// <summary>
     /// Represents an entire keyword part of an effect,

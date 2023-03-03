@@ -2,14 +2,11 @@
 using KompasCore.Effects;
 using KompasCore.GameCore;
 using KompasServer.GameCore;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using UnityEngine;
 
-namespace KompasServer.Effects
+namespace KompasServer.Effects.Subeffect
 {
-    public abstract class ServerSubeffect : Subeffect
+    public abstract class ServerSubeffect : KompasCore.Effects.Subeffect
     {
         public override Player Controller => EffectController;
         public override Effect Effect => ServerEffect;

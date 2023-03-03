@@ -1,6 +1,6 @@
 ﻿using KompasCore.Effects;
 
-namespace KompasServer.Effects
+namespace KompasServer.Effects.Subeffect
 {
     public class SetXByTargetCardValueSubeffect : SetXSubeffect
     {

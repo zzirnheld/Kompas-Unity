@@ -4,7 +4,7 @@ using KompasCore.Helpers;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace KompasServer.Effects
+namespace KompasServer.Effects.Subeffect
 {
     public class TargetAllCardsIdentitySubeffect : ServerSubeffect
     {

@@ -5,7 +5,7 @@ using KompasServer.GameCore;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Text;
-using KompasServer.Effects.Hanging;
+using KompasServer.Effects.Subeffect.Hanging;
 
 namespace KompasServer.Effects
 {

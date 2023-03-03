@@ -2,6 +2,7 @@
 using KompasCore.Effects;
 using KompasCore.Exceptions;
 using KompasCore.GameCore;
+using KompasServer.Effects.Subeffect;
 using KompasServer.GameCore;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +27,7 @@ namespace KompasServer.Effects
         }
 
         public ServerSubeffect[] subeffects;
-        public override Subeffect[] Subeffects => subeffects;
+        public override KompasCore.Effects.Subeffect[] Subeffects => subeffects;
         public ServerTrigger ServerTrigger { get; private set; }
         public override Trigger Trigger => ServerTrigger;
 

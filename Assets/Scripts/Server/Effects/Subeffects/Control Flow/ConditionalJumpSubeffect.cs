@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace KompasServer.Effects
+namespace KompasServer.Effects.Subeffect
 {
     public class ConditionalJumpSubeffect : ServerSubeffect
     {
