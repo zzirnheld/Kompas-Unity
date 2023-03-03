@@ -1,13 +1,13 @@
-﻿using System.Threading.Tasks;
+﻿using KompasCore.Effects.Identities.GamestateCardIdentities;
 
 namespace KompasServer.Effects.Subeffects
 {
-    public class TargetThis : ServerSubeffect
+    public class TargetThis : AutoTargetCardIdentity
     {
-        public override Task<ResolutionInfo> Resolve()
+        public override void Initialize(ServerEffect eff, int subeffIndex)
         {
-            ServerEffect.AddTarget(ThisCard);
-            return Task.FromResult(ResolutionInfo.Next);
+            subeffectCardIdentity = new ThisCard();
+            base.Initialize(eff, subeffIndex);
         }
     }
 }

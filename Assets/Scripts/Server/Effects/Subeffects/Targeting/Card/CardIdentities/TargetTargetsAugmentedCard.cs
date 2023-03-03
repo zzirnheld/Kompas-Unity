@@ -1,19 +1,17 @@
-﻿using KompasCore.Exceptions;
-using System.Threading.Tasks;
+﻿using KompasCore.Cards;
+using KompasCore.Effects.Identities;
+using KompasCore.Effects.Identities.ActivationContextCardIdentities;
 
 namespace KompasServer.Effects.Subeffects
 {
-    public class TargetTargetsAugmentedCard : ServerSubeffect
+    public class TargetTargetsAugmentedCard : AutoTargetCardIdentity
     {
-        public override Task<ResolutionInfo> Resolve()
+        public IActivationContextIdentity<GameCardBase> card = new TargetIndex();
+
+        public override void Initialize(ServerEffect eff, int subeffIndex)
         {
-            if (CardTarget == null) throw new NullCardException(NoValidCardTarget);
-            else if (!CardTarget.Attached) throw new NullCardException(NoValidCardTarget);
-            else
-            {
-                ServerEffect.AddTarget(CardTarget.AugmentedCard);
-                return Task.FromResult(ResolutionInfo.Next);
-            }
+            subeffectCardIdentity = new AugmentedCard() { ofThisCard = card };
+            base.Initialize(eff, subeffIndex);
         }
     }
 }

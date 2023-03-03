@@ -8,7 +8,7 @@ namespace KompasCore.Effects.Identities
     }
 
     public abstract class ActivationContextIdentityBase<ReturnType> : ContextInitializeableBase,
-        IActivationContextIdentity<ReturnType>
+        IActivationContextIdentity<ReturnType>, INoActivationContextIdentity<ReturnType>
     {
         public bool secondary = false;
 
@@ -40,5 +40,9 @@ namespace KompasCore.Effects.Identities
 
         protected ActivationContext toConsider(ActivationContext context, ActivationContext secondaryContext)
             => secondary ? secondaryContext : context;
+
+
+        //TODO: get rid of the separation between no context and context entirely, except insofar as base classes are concerned.
+        public ReturnType Item => From(InitializationContext.effect.CurrActivationContext, default);
     }
 }

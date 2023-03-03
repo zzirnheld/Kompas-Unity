@@ -1,27 +1,17 @@
 ﻿using KompasCore.Cards;
-using KompasCore.Effects;
-using System.Threading.Tasks;
+using KompasCore.Effects.Identities;
+using KompasCore.Effects.Identities.ActivationContextCardIdentities;
 
 namespace KompasServer.Effects.Subeffects
 {
-    public class TargetOtherInFight : ServerSubeffect
+    public class TargetOtherInFight : AutoTargetCardIdentity
     {
-        public override Task<ResolutionInfo> Resolve()
+        public IActivationContextIdentity<GameCardBase> other = new TargetIndex();
+
+        public override void Initialize(ServerEffect eff, int subeffIndex)
         {
-            if (CurrentContext.stackableCause is KompasCore.Effects.Attack attack)
-            {
-                GameCard newTarget = null;
-                if (attack.attacker == CardTarget) newTarget = attack.defender;
-                else if (attack.defender == CardTarget) newTarget = attack.attacker;
-
-                if (newTarget != null)
-                {
-                    ServerEffect.AddTarget(newTarget);
-                    return Task.FromResult(ResolutionInfo.Next);
-                }
-            }
-
-            return Task.FromResult(ResolutionInfo.Impossible(NoValidCardTarget));
+            subeffectCardIdentity = new OtherInFight() { other = other };
+            base.Initialize(eff, subeffIndex);
         }
     }
 }
