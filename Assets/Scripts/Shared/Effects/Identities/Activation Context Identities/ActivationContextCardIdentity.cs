@@ -76,4 +76,14 @@ namespace KompasCore.Effects.Identities.ActivationContextCardIdentities
             else throw new NullCardException("Stackable event wasn't an attack!");
         }
     }
+
+    public class Defender : ActivationContextIdentityBase<GameCardBase>
+    {
+        protected override GameCardBase AbstractItemFrom(ActivationContext contextToConsider)
+        {
+            if (contextToConsider.stackableEvent is Attack eventAttack) return eventAttack.defender;
+            if (contextToConsider.stackableCause is Attack causeAttack) return causeAttack.defender;
+            else throw new NullCardException("Stackable event wasn't an attack!");
+        }
+    }
 }
