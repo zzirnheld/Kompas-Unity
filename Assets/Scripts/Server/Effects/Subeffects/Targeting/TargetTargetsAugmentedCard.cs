@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace KompasServer.Effects.Subeffects
 {
-    public class TargetTargetsAugmentedCardSubeffect : ServerSubeffect
+    public class TargetTargetsAugmentedCard : ServerSubeffect
     {
         public override Task<ResolutionInfo> Resolve()
         {

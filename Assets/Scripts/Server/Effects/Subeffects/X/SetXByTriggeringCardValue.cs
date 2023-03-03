@@ -2,7 +2,7 @@
 
 namespace KompasServer.Effects.Subeffects
 {
-    public class SetXByTriggeringCardValueSubeffect : SetXSubeffect
+    public class SetXByTriggeringCardValue : SetX
     {
         public CardValue cardValue;
         public bool secondary = false;

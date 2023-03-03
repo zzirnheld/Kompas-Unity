@@ -134,31 +134,31 @@ public class CardRepository : MonoBehaviour
         Debug.Log(string.Join("\n", CardNames));
     }
 
-    private static readonly Regex subeffRegex = new Regex(@"Subeffect:([^:]+):");
-    private const string subeffReplacement = @"KompasServer.Effects.$1Subeffect, Assembly-CSharp";
+    private static readonly Regex subeffRegex = new Regex(@"Subeffect:([^:]+):"); //Subeffect:*:
+    private const string subeffReplacement = @"KompasServer.Effects.Subeffects.$1, Assembly-CSharp";
 
     //restriction regexes
-    private static readonly Regex coreRestrictionRegex = new Regex(@"Core\.([^R]+)Restriction:([^:]+):");
+    private static readonly Regex coreRestrictionRegex = new Regex(@"Core\.([^R]+)Restriction:([^:]+):"); //Core.*Restriction:*:
     private const string coreRestrictionReplacement = @"KompasCore.Effects.Restrictions.$1RestrictionElements.$2, Assembly-CSharp";
 
     //identity regexes
-    private static readonly Regex subeffectIdentityRegex = new Regex(@"Subeffect\.([^:]+):([^:]+):");
+    private static readonly Regex subeffectIdentityRegex = new Regex(@"Subeffect\.([^:]+):([^:]+):"); //Subeffect.*:*:
     private const string subeffectIdentityReplacement = @"KompasServer.Effects.Identities.Subeffect$1Identities.$2, Assembly-CSharp";
 
-    private static readonly Regex activationContextIdentityRegex = new Regex(@"ActivationContext\.([^:]+):([^:]+):");
+    private static readonly Regex activationContextIdentityRegex = new Regex(@"ActivationContext\.([^:]+):([^:]+):"); //ActivationContext.*:*:
     private const string activationContextIdentityReplacement = @"KompasCore.Effects.Identities.ActivationContext$1Identities.$2, Assembly-CSharp";
 
-    private static readonly Regex gamestateIdentityRegex = new Regex(@"Gamestate\.([^:]+):([^:]+):");
+    private static readonly Regex gamestateIdentityRegex = new Regex(@"Gamestate\.([^:]+):([^:]+):"); //Gamestate.*:*:
     private const string gamestateIdentityReplacement = @"KompasCore.Effects.Identities.Gamestate$1Identities.$2, Assembly-CSharp";
 
     //relationships
-    private static readonly Regex relationshipRegex = new Regex(@"Relationships\.([^:]+):([^:]+):");
+    private static readonly Regex relationshipRegex = new Regex(@"Relationships\.([^:]+):([^:]+):"); //Relationships.*:*:
     private const string relationshipReplacement = @"KompasCore.Effects.Relationships.$1Relationships.$2, Assembly-CSharp";
 
-    private static readonly Regex numberSelectorRegex = new Regex(@"NumberSelector:([^:]+):");
+    private static readonly Regex numberSelectorRegex = new Regex(@"NumberSelector:([^:]+):"); //NumberSelector:*:
     private const string numberSelectorReplacement = @"KompasCore.Effects.Identities.NumberSelectors.$1, Assembly-CSharp";
 
-    private static readonly Regex threeSpaceRelationshipRegex = new Regex(@"ThreeSpaceRelationships:([^:]+):");
+    private static readonly Regex threeSpaceRelationshipRegex = new Regex(@"ThreeSpaceRelationships:([^:]+):"); //ThreeSpaceRelationships:*:
     private const string threeSpaceRelationshipReplacement = @"KompasCore.Effects.Identities.ThreeSpaceRelationships.$1, Assembly-CSharp";
 
     private string ReplacePlaceholders(string json)

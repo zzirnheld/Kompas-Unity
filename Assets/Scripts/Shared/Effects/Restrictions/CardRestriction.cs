@@ -358,7 +358,7 @@ namespace KompasCore.Effects
                 EffectIsOnTheStack => Source.Game.StackEntries.Any(e => e is Effect eff && eff.Source == potentialTarget?.Card),
 
                 SpaceRestrictionValidIfThisTargetChosen
-                    => Effect.Subeffects[spaceRestrictionIndex] is SpaceTargetSubeffect spaceTgtSubeff
+                    => Effect.Subeffects[spaceRestrictionIndex] is SpaceTarget spaceTgtSubeff
                     && spaceTgtSubeff.WillBePossibleIfCardTargeted(theoreticalTarget: potentialTarget?.Card),
 
                 _ => throw new ArgumentException($"Invalid card restriction {restriction}", "restriction"),
