@@ -53,7 +53,7 @@
 			"$type": "Subeffect:TargetThis:"
 		},
 		{
-			"$type": "Subeffect:TemporaryCardStatChange:",
+			"$type": "Subeffect:Hanging.ChangeCardStats:",
 			"wMultiplier": 2,
 			"endCondition": "Battle End",
 			"triggerRestriction": {

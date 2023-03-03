@@ -23,7 +23,7 @@
         "$type":"Subeffect:Play:"
     },
     {
-        "$type":"Subeffect:TemporaryNegate:",
+        "$type":"Subeffect:Hanging.Negate:",
         "endCondition":"Turn Start",
         "triggerRestriction":{
             "triggerRestrictions":[]

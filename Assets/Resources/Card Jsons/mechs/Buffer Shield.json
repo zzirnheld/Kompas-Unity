@@ -17,7 +17,7 @@
 					"$type":"Subeffect:TargetAugmentedCard:"
 				},
 				{
-					"$type":"Subeffect:TemporaryCardStatChange:",
+					"$type":"Subeffect:Hanging.ChangeCardStats:",
 					"eModifier":3,
 					"endCondition":"Augment Detached",
 					"triggerRestriction":{

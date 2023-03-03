@@ -4,9 +4,9 @@ using KompasCore.Exceptions;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace KompasServer.Effects
+namespace KompasServer.Effects.Hanging
 {
-    public class TemporaryCardStatChangeAllSubeffect : TemporaryCardStatChangeSubeffect
+    public class ChangeAllCardStatsSubeffect : ChangeCardStatsSubeffect
     {
         //default to making sure things are characters before changing their stats
         public CardRestriction cardRestriction;
@@ -48,7 +48,7 @@ namespace KompasServer.Effects
 
             foreach (var card in cards)
             {
-                var temp = new TemporaryCardStatChange(game: ServerGame,
+                var temp = new ChangeCardStats(game: ServerGame,
                                                  triggerRestriction: triggerRestriction,
                                                  endCondition: endCondition,
                                                  fallOffCondition: fallOffCondition,
@@ -57,6 +57,8 @@ namespace KompasServer.Effects
                                                  currentContext: contextCopy,
                                                  buffRecipient: card,
                                                  buff: buff);
+
+                effs.Add(temp);
             }
 
             return effs;

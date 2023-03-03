@@ -23,7 +23,7 @@
             "xMultiplier": 1
         },
         {
-            "$type": "Subeffect:TemporaryCardStatChange:",
+            "$type": "Subeffect:Hanging.ChangeCardStats:",
             "wMultiplier": -1,
             "endCondition": "Battle End",
             "triggerRestriction": {

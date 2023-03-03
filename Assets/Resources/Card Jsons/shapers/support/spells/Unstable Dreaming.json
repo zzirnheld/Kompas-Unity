@@ -50,7 +50,7 @@
 					"$type": "Subeffect:Play:"
 				},
 				{
-					"$type": "Subeffect:HangingAnnihilation:",
+					"$type": "Subeffect:Hanging.Annihilation:",
 					"endCondition": "Turn Start",
 					"triggerRestriction": {
 						"triggerRestrictions": [

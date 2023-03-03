@@ -29,7 +29,7 @@
 					}
 				},
 				{
-					"$type": "Subeffect:TemporaryActivation:",
+					"$type": "Subeffect:Hanging.Activation:",
 					"endCondition": "Turn Start",
 					"triggerRestriction": {
 						"triggerRestrictions": [

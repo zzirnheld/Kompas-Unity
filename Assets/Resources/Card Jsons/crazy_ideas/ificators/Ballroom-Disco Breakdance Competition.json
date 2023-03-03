@@ -33,7 +33,7 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "Subeffect:TemporaryCardStatChange:",
+					"$type": "Subeffect:Hanging.ChangeCardStats:",
 					"nMultiplier": -1,
 					"endCondition": "Effect Pushed to Stack",
 					"triggerRestriction": {

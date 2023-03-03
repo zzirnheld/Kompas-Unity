@@ -23,7 +23,7 @@
 					"keyword": "Mech Pilot Return"
 				},
 				{
-					"$type": "Subeffect:TemporaryNegate:",
+					"$type": "Subeffect:Hanging.Negate:",
 					"endCondition": "Turn Start",
 					"negated": false,
 					"triggerRestriction": {

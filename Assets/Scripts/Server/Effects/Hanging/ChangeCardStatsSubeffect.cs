@@ -1,10 +1,13 @@
-﻿using KompasCore.Exceptions;
+﻿using KompasCore.Cards;
+using KompasCore.Effects;
+using KompasCore.Exceptions;
+using KompasServer.GameCore;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace KompasServer.Effects
+namespace KompasServer.Effects.Hanging
 {
-    public class TemporaryCardStatChangeSubeffect : HangingEffectSubeffect
+    public class ChangeCardStatsSubeffect : HangingEffectSubeffect
     {
         public int nModifier = 0;
         public int eModifier = 0;
@@ -51,7 +54,7 @@ namespace KompasServer.Effects
             contextCopy.SetResumeInfo(Effect.CardTargets, Effect.SpaceTargets, Effect.stackableTargets,
                 CardTarget, SpaceTarget, StackableTarget);
 
-            var temp = new TemporaryCardStatChange(game: ServerGame,
+            var temp = new ChangeCardStats(game: ServerGame,
                                              triggerRestriction: triggerRestriction,
                                              endCondition: endCondition,
                                              fallOffCondition: fallOffCondition,
@@ -62,6 +65,32 @@ namespace KompasServer.Effects
                                              buff: Buff);
 
             return new List<HangingEffect>() { temp };
+        }
+
+        protected class ChangeCardStats : HangingEffect
+        {
+            private readonly GameCard buffRecipient;
+            private readonly CardStats buff;
+
+            public ChangeCardStats(ServerGame game, TriggerRestriction triggerRestriction, string endCondition,
+                string fallOffCondition, TriggerRestriction fallOffRestriction, Effect sourceEff,
+                ActivationContext currentContext, GameCard buffRecipient, CardStats buff)
+                : base(game, triggerRestriction, endCondition, fallOffCondition, fallOffRestriction, sourceEff, currentContext, removeIfEnd: true)
+            {
+                this.buffRecipient = buffRecipient ?? throw new System.ArgumentNullException(nameof(buffRecipient), "Null characcter card in temporary nesw buff");
+                this.buff = buff;
+
+                buffRecipient.AddToStats(buff, stackSrc: sourceEff);
+            }
+
+            public override void Resolve(ActivationContext context)
+            {
+                try
+                {
+                    buffRecipient.AddToStats(-1 * buff, stackSrc: sourceEff);
+                }
+                catch (CardNotHereException) { }
+            }
         }
     }
 }

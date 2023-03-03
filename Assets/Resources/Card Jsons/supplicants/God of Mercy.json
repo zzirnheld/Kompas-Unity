@@ -50,7 +50,7 @@
 					}
 				},
 				{
-					"$type": "Subeffect:TemporaryNegate:",
+					"$type": "Subeffect:Hanging.Negate:",
 					"endCondition": "Remove",
 					"triggerRestriction": {
 						"triggerRestrictions": [

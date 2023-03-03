@@ -18,7 +18,7 @@
 					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "Subeffect:TemporaryCardStatChange:",
+					"$type": "Subeffect:Hanging.ChangeCardStats:",
 					"cModifier": 1,
 					"endCondition": "Turn Start",
 					"triggerRestriction": {

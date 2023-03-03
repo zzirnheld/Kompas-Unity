@@ -53,7 +53,7 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "Subeffect:TemporaryNegate:",
+					"$type": "Subeffect:Hanging.Negate:",
 					"endCondition": "Turn Start",
 					"triggerRestriction": {
 						"triggerRestrictions": [
