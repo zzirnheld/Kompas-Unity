@@ -1,3 +1,5 @@
+using KompasCore.Exceptions;
+
 namespace KompasCore.Effects.Identities
 {
     public interface IActivationContextIdentity<ReturnType> : IContextInitializeable
@@ -29,9 +31,14 @@ namespace KompasCore.Effects.Identities
         {
             ComplainIfNotInitialized();
 
-            ActivationContext toConsider = secondary ? secondaryContext : context;
+            ActivationContext contextToConsider = toConsider(context, secondaryContext);
 
-            return AbstractItemFrom(toConsider) ?? AbstractItemFrom(context, secondaryContext);
+            return AbstractItemFrom(contextToConsider)
+                ?? AbstractItemFrom(context, secondaryContext)
+                ?? throw new NullCardException($"Neither identity of the context identity returned non-null...");
         }
+
+        protected ActivationContext toConsider(ActivationContext context, ActivationContext secondaryContext)
+            => secondary ? secondaryContext : context;
     }
 }

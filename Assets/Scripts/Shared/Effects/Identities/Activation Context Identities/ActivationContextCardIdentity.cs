@@ -67,23 +67,47 @@ namespace KompasCore.Effects.Identities.ActivationContextCardIdentities
             => ofThisCard.From(context, secondaryContext).AugmentedCard;
     }
 
-    public class Attacker : ActivationContextIdentityBase<GameCardBase>
+    public abstract class InFight : ActivationContextIdentityBase<GameCardBase>
     {
-        protected override GameCardBase AbstractItemFrom(ActivationContext contextToConsider)
+        protected Attack GetAttack(ActivationContext context)
         {
-            if (contextToConsider.stackableEvent is Attack eventAttack) return eventAttack.attacker;
-            if (contextToConsider.stackableCause is Attack causeAttack) return causeAttack.attacker;
+            if (context.stackableEvent is Attack eventAttack) return eventAttack;
+            if (context.stackableCause is Attack causeAttack) return causeAttack;
             else throw new NullCardException("Stackable event wasn't an attack!");
         }
     }
 
-    public class Defender : ActivationContextIdentityBase<GameCardBase>
+    public class Attacker : InFight
     {
         protected override GameCardBase AbstractItemFrom(ActivationContext contextToConsider)
+            => GetAttack(contextToConsider).attacker;
+    }
+
+    public class Defender : InFight
+    {
+        protected override GameCardBase AbstractItemFrom(ActivationContext contextToConsider)
+            => GetAttack(contextToConsider).defender;
+    }
+
+    public class OtherInFight : InFight
+    {
+        public IActivationContextIdentity<GameCardBase> other;
+
+        public override void Initialize(EffectInitializationContext initializationContext)
         {
-            if (contextToConsider.stackableEvent is Attack eventAttack) return eventAttack.defender;
-            if (contextToConsider.stackableCause is Attack causeAttack) return causeAttack.defender;
-            else throw new NullCardException("Stackable event wasn't an attack!");
+            base.Initialize(initializationContext);
+            other.Initialize(initializationContext);
+        }
+
+        protected override GameCardBase AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
+        {
+            Attack attack = GetAttack(toConsider(context, secondaryContext));
+            var otherCard = other.From(context, secondaryContext);
+
+            if (attack.attacker == otherCard) return attack.defender;
+            if (attack.defender == otherCard) return attack.attacker;
+
+            throw new NullCardException($"Neither card of attack {attack} was {otherCard}");
         }
     }
 }
