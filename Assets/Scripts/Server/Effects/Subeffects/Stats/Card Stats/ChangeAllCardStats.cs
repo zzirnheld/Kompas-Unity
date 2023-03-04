@@ -1,4 +1,10 @@
-﻿using KompasCore.Effects;
+﻿using KompasCore.Cards;
+using KompasCore.Effects;
+using KompasCore.Effects.Identities;
+using KompasCore.Effects.Identities.GamestateManyCardsIdentities;
+using KompasCore.Effects.Restrictions;
+using KompasCore.Effects.Restrictions.CardRestrictionElements;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,29 +13,21 @@ namespace KompasServer.Effects.Subeffects
     public class ChangeAllCardStats : ChangeCardStats
     {
         //default to making sure things are characters before changing their stats
-        public CardRestriction cardRestriction;
+        public CardRestriction cardRestriction = new CardRestriction()
+        {
+            cardRestrictionElements = new CardRestrictionElement[] { new Character() }
+        };
+
+        public IActivationContextIdentity<IReadOnlyCollection<GameCardBase>> cardsSource = new Board();
+
 
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
-            base.Initialize(eff, subeffIndex);
-            cardRestriction ??= new CardRestriction()
-            {
-                cardRestrictions = new string[]
-                {
-                    CardRestriction.Character,
-                    CardRestriction.Board
-                }
+            cards ??= new FittingRestriction() {
+                cardRestriction = cardRestriction,
+                cards = cardsSource
             };
-            cardRestriction.Initialize(DefaultInitializationContext);
-        }
-
-        public override Task<ResolutionInfo> Resolve()
-        {
-            var targets = ServerGame.Cards.Where(c => cardRestriction.IsValidCard(c, CurrentContext));
-            var buff = Buff;
-            foreach (var c in targets) c.AddToStats(buff, Effect);
-
-            return Task.FromResult(ResolutionInfo.Next);
+            base.Initialize(eff, subeffIndex);
         }
     }
 }

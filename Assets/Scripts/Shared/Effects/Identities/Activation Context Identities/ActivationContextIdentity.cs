@@ -2,13 +2,13 @@ using KompasCore.Exceptions;
 
 namespace KompasCore.Effects.Identities
 {
-    public interface IActivationContextIdentity<ReturnType> : IContextInitializeable
+    public interface IActivationContextIdentity<ReturnType> : IContextInitializeable, INoActivationContextIdentity<ReturnType>
     {
         public ReturnType From(ActivationContext context, ActivationContext secondaryContext);
     }
 
     public abstract class ActivationContextIdentityBase<ReturnType> : ContextInitializeableBase,
-        IActivationContextIdentity<ReturnType>, INoActivationContextIdentity<ReturnType>
+        IActivationContextIdentity<ReturnType>
     {
         public bool secondary = false;
 

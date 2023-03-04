@@ -1,9 +1,8 @@
-﻿using KompasCore.Exceptions;
-using System.Threading.Tasks;
+﻿using KompasServer.Effects.Identities.SubeffectNumberIdentities;
 
 namespace KompasServer.Effects.Subeffects
 {
-    public class ChangeCardStats : ServerSubeffect
+    public class ChangeCardStats : UpdateCardStats
     {
         public int nModifier = 0;
         public int eModifier = 0;
@@ -26,27 +25,16 @@ namespace KompasServer.Effects.Subeffects
         public int cMultiplier = 0;
         public int aMultiplier = 0;
 
-        protected CardStats Buff
+        public override void Initialize(ServerEffect eff, int subeffIndex)
         {
-            get
-            {
-                CardStats buff = (nMultiplier, eMultiplier, sMultiplier, wMultiplier, cMultiplier, aMultiplier);
-                buff *= Effect.X;
-                buff += (nModifier, eModifier, sModifier, wModifier, cModifier, aModifier);
-                buff /= (nDivisor, eDivisor, sDivisor, wDivisor, cDivisor, aDivisor);
-                return buff;
-            }
-        }
+            nChange ??= new X() { multiplier = nMultiplier, modifier = nModifier, divisor = nDivisor };
+            eChange ??= new X() { multiplier = eMultiplier, modifier = eModifier, divisor = eDivisor };
+            sChange ??= new X() { multiplier = sMultiplier, modifier = sModifier, divisor = sDivisor };
+            wChange ??= new X() { multiplier = wMultiplier, modifier = wModifier, divisor = wDivisor };
+            cChange ??= new X() { multiplier = cMultiplier, modifier = cModifier, divisor = cDivisor };
+            aChange ??= new X() { multiplier = aMultiplier, modifier = aModifier, divisor = aDivisor };
 
-        public override Task<ResolutionInfo> Resolve()
-        {
-            if (CardTarget == null)
-                throw new NullCardException(TargetWasNull);
-            else if (forbidNotBoard && CardTarget.Location != CardLocation.Board)
-                throw new InvalidLocationException(CardTarget.Location, CardTarget, ChangedStatsOfCardOffBoard);
-
-            CardTarget.AddToStats(Buff, Effect);
-            return Task.FromResult(ResolutionInfo.Next);
+            base.Initialize(eff, subeffIndex);
         }
     }
 }

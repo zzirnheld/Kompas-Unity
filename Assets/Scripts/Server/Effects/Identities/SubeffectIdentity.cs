@@ -5,7 +5,7 @@ namespace KompasServer.Effects.Identities
 {
 
     public abstract class SubeffectIdentityBase<ReturnType> : SubeffectInitializeableBase,
-        INoActivationContextIdentity<ReturnType>, IActivationContextIdentity<ReturnType>
+        IActivationContextIdentity<ReturnType>
     {
         public bool secondary = false;
 
