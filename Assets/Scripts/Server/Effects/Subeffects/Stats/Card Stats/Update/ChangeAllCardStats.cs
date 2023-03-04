@@ -5,8 +5,6 @@ using KompasCore.Effects.Identities.GamestateManyCardsIdentities;
 using KompasCore.Effects.Restrictions;
 using KompasCore.Effects.Restrictions.CardRestrictionElements;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace KompasServer.Effects.Subeffects
 {

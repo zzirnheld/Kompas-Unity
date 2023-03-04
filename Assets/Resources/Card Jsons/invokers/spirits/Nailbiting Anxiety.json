@@ -42,7 +42,7 @@
 					}
 				},
 				{
-					"$type": "Subeffect:SetCardStats:",
+					"$type": "Subeffect:SetCardStatsOld:",
 					"nVal": 0
 				}
 			]

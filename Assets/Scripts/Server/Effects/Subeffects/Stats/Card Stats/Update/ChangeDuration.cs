@@ -6,7 +6,7 @@ namespace KompasServer.Effects.Subeffects
     {
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
-            durationChange ??= new X();
+            duration ??= new X();
             base.Initialize(eff, subeffIndex);
         }
     }

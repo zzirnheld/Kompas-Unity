@@ -1,34 +1,38 @@
-﻿using KompasCore.Exceptions;
+using KompasCore.Exceptions;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace KompasServer.Effects.Subeffects
 {
-    public class SetCardStats : ServerSubeffect
+    public class SetCardStats : ChangeCardStatsBase
     {
-        public int nVal = -1;
-        public int eVal = -1;
-        public int sVal = -1;
-        public int wVal = -1;
-        public int cVal = -1;
-        public int aVal = -1;
-
-        private CardStats Stats => new CardStats(
-            nVal < 0 ? CardTarget.N : nVal,
-            eVal < 0 ? CardTarget.E : eVal,
-            sVal < 0 ? CardTarget.S : sVal,
-            wVal < 0 ? CardTarget.W : wVal,
-            cVal < 0 ? CardTarget.C : cVal,
-            aVal < 0 ? CardTarget.A : aVal
-        );
 
         public override Task<ResolutionInfo> Resolve()
         {
-            if (CardTarget == null)
-                throw new NullCardException(TargetWasNull);
-            else if (forbidNotBoard && CardTarget.Location != CardLocation.Board)
-                throw new InvalidLocationException(CardTarget.Location, CardTarget, ChangedStatsOfCardOffBoard);
+            int? nValue = n?.From(CurrentContext, default);
+            int? eValue = e?.From(CurrentContext, default);
+            int? sValue = s?.From(CurrentContext, default);
+            int? wValue = w?.From(CurrentContext, default);
+            int? cValue = c?.From(CurrentContext, default);
+            int? aValue = a?.From(CurrentContext, default);
 
-            CardTarget.SetStats(Stats, Effect);
+            int? turnsOnBoardChange     = turnsOnBoard?.From(CurrentContext, default);
+            int? attacksThisTurnChange  = attacksThisTurn?.From(CurrentContext, default);
+            int? spacesMovedChange      = spacesMoved?.From(CurrentContext, default);
+            int? durationChange         = duration?.From(CurrentContext, default);
+
+            foreach (var card in cards.From(CurrentContext, default).Select(c => c.Card))
+            {
+                ValidateCardOnBoard(card);
+
+                card.SetStats(card.Stats.ReplaceWith((nValue, eValue, sValue, wValue, cValue, aValue)), Effect);
+
+                if (turnsOnBoardChange.HasValue)    card.TurnsOnBoard       = turnsOnBoardChange.Value;
+                if (attacksThisTurnChange.HasValue) card.AttacksThisTurn    = attacksThisTurnChange.Value;
+                if (spacesMovedChange.HasValue)     card.SpacesMoved        = spacesMovedChange.Value;
+                if (durationChange.HasValue)        card.Duration           = durationChange.Value;
+            }
+
             return Task.FromResult(ResolutionInfo.Next);
         }
     }

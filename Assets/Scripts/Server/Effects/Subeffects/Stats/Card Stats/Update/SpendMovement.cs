@@ -8,7 +8,7 @@ namespace KompasServer.Effects.Subeffects
     {
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
-            spacesMovedChange = new X() { multiplier = xMultiplier, modifier = xModifier, divisor = xDivisor };
+            spacesMoved = new X() { multiplier = xMultiplier, modifier = xModifier, divisor = xDivisor };
             base.Initialize(eff, subeffIndex);
         }
     }

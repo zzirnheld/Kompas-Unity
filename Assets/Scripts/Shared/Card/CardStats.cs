@@ -41,4 +41,20 @@ public struct CardStats
 
     public static implicit operator CardStats((int n, int e, int s, int w, int c, int a) stats)
         => new CardStats(stats.n, stats.e, stats.s, stats.w, stats.c, stats.a);
+
+    /// <summary>
+    /// Returns a CardStats where any non-null stat given replaces the value in this CardStats.
+    /// Values that are null in the given stats default to this set of stats' values.
+    /// </summary>
+    public CardStats ReplaceWith((int? n, int? e, int? s, int? w, int? c, int? a) stats)
+    {
+        return (
+            stats.n ?? n,
+            stats.e ?? e,
+            stats.s ?? s,
+            stats.w ?? w,
+            stats.c ?? c,
+            stats.a ?? a
+        );
+    }
 }

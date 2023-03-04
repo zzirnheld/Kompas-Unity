@@ -1,19 +1,13 @@
-﻿using KompasCore.Exceptions;
-using System.Threading.Tasks;
+﻿using KompasServer.Effects.Identities.SubeffectNumberIdentities;
 
 namespace KompasServer.Effects.Subeffects
 {
-    public class SetTurnsOnBoard : ServerSubeffect
+    public class SetTurnsOnBoard : SetCardStats
     {
-        public override Task<ResolutionInfo> Resolve()
+        public override void Initialize(ServerEffect eff, int subeffIndex)
         {
-            if (CardTarget == null)
-                throw new NullCardException(TargetWasNull);
-            else if (forbidNotBoard && CardTarget.Location != CardLocation.Board)
-                throw new InvalidLocationException(CardTarget.Location, CardTarget, ChangedStatsOfCardOffBoard);
-
-            CardTarget.TurnsOnBoard = Count;
-            return Task.FromResult(ResolutionInfo.Next);
+            turnsOnBoard = new X() { multiplier = xMultiplier, modifier = xModifier, divisor = xDivisor };
+            base.Initialize(eff, subeffIndex);
         }
     }
 }

@@ -8,7 +8,7 @@ namespace KompasServer.Effects.Subeffects
 
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
-            attacksThisTurnChange ??= new Constant() { constant = modifier };
+            attacksThisTurn ??= new Constant() { constant = modifier };
             base.Initialize(eff, subeffIndex);
         }
     }
