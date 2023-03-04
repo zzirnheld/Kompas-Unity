@@ -7,7 +7,7 @@ namespace KompasServer.Effects.Subeffects
     /// <summary>
     /// Moves cards between discard/field/etc
     /// </summary>
-    public abstract class CardChangeState : ServerSubeffect
+    public abstract class ChangeGameLocation : ServerSubeffect
     {
         public override bool IsImpossible() => CardTarget == null || CardTarget.Location == destination;
 
@@ -18,10 +18,10 @@ namespace KompasServer.Effects.Subeffects
         {
             if (CardTarget == null) throw new NullCardException(TargetWasNull);
 
-            Move(CardTarget);
+            ChangeLocation(CardTarget);
             return Task.FromResult(ResolutionInfo.Next);
         }
 
-        protected abstract void Move(GameCard card);
+        protected abstract void ChangeLocation(GameCard card);
     }
 }

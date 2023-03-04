@@ -5,15 +5,15 @@ namespace KompasServer.Effects.Subeffects
     public class CountXLoop : Loop
     {
         //if true, increments x each iteration. if false, decrements
-        public bool increment = true;
+        public bool decrement = false;
 
         protected override bool ShouldContinueLoop
         {
             get
             {
                 //count the number of times this happens
-                if (increment) ServerEffect.X++;
-                else ServerEffect.X--;
+                if (decrement) ServerEffect.X--;
+                else ServerEffect.X++;
 
                 //let the effect know that if there are no more targets, then call this for loop exit
                 ServerEffect.OnImpossible = this;
