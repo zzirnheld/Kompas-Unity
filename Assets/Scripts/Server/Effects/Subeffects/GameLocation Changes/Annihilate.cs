@@ -1,6 +1,5 @@
-﻿using KompasCore.Cards.Movement;
-using KompasCore.Exceptions;
-using System.Threading.Tasks;
+﻿using KompasCore.Cards;
+using KompasCore.Cards.Movement;
 
 namespace KompasServer.Effects.Subeffects
 {
@@ -8,12 +7,6 @@ namespace KompasServer.Effects.Subeffects
     {
         protected override CardLocation destination => CardLocation.Annihilation;
 
-        public override Task<ResolutionInfo> Resolve()
-        {
-            if (CardTarget == null) throw new NullCardException(TargetWasNull);
-
-            CardTarget.Annihilate(Effect);
-            return Task.FromResult(ResolutionInfo.Next);
-        }
+        protected override void Move(GameCard card) => card.Annihilate(Effect);
     }
 }
