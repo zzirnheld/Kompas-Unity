@@ -9,7 +9,7 @@ namespace KompasCore.Effects.Identities
     {
         public class Constant : NoActivationContextIdentityBase<int>
         {
-            public static Constant ONE => new Constant { constant = 1 };
+            public static Constant One => new Constant { constant = 1 };
 
             public int constant;
 

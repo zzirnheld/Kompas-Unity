@@ -8,8 +8,8 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
     {
         public CardRestriction cardRestriction;
 
-        public INoActivationContextIdentity<int> numberOfCards = Constant.ONE;
-        public INoActivationContextIdentity<int> distance = Constant.ONE;
+        public INoActivationContextIdentity<int> numberOfCards = Constant.One;
+        public INoActivationContextIdentity<int> distance = Constant.One;
 
         public bool excludeSelf = true;
 

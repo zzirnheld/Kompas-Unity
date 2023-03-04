@@ -25,6 +25,7 @@ namespace KompasServer.Effects.Subeffects
         public IActivationContextIdentity<int> turnsOnBoardChange;
         public IActivationContextIdentity<int> attacksThisTurnChange;
         public IActivationContextIdentity<int> spacesMovedChange;
+        public IActivationContextIdentity<int> durationChange;
 
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
@@ -46,6 +47,7 @@ namespace KompasServer.Effects.Subeffects
             turnsOnBoardChange?.Initialize(initContext);
             attacksThisTurnChange?.Initialize(initContext);
             spacesMovedChange?.Initialize(initContext);
+            durationChange?.Initialize(initContext);
         }
 
         public override Task<ResolutionInfo> Resolve()
@@ -60,6 +62,7 @@ namespace KompasServer.Effects.Subeffects
             int? turnsOnBoardChange = this.turnsOnBoardChange?.From(CurrentContext, default);
             int? attacksThisTurnChange = this.attacksThisTurnChange?.From(CurrentContext, default);
             int? spacesMovedChange = this.spacesMovedChange?.From(CurrentContext, default);
+            int? durationChange = this.durationChange?.From(CurrentContext, default);
 
             foreach (var card in cards.From(CurrentContext, default).Select(c => c.Card))
             {
@@ -68,6 +71,7 @@ namespace KompasServer.Effects.Subeffects
                 if (turnsOnBoardChange.HasValue) card.TurnsOnBoard += turnsOnBoardChange.Value;
                 if (attacksThisTurnChange.HasValue) card.AttacksThisTurn += attacksThisTurnChange.Value;
                 if (spacesMovedChange.HasValue) card.SpacesMoved += spacesMovedChange.Value;
+                if (durationChange.HasValue) card.Duration += durationChange.Value;
             }
 
             return Task.FromResult(ResolutionInfo.Next);

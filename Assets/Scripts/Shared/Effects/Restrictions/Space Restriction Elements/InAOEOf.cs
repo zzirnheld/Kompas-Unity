@@ -24,7 +24,7 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
             if (new object[] { card, anyOf, allOf }.All(o => o == null))
                 throw new System.ArgumentNullException("card", $"Provided no card/s to be in AOE of for {initializationContext.source?.CardName}");
 
-            if (minAnyOfCount == null) minAnyOfCount = Constant.ONE;
+            if (minAnyOfCount == null) minAnyOfCount = Constant.One;
             minAnyOfCount.Initialize(initializationContext);
         }
 

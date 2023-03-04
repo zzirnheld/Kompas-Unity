@@ -90,7 +90,7 @@ namespace KompasCore.Cards
         public string Subtext { get; private set; }
         public string[] SpellSubtypes { get; private set; }
         public int Radius { get; private set; }
-        public int Duration { get; protected set; }
+        public int Duration { get; set; }
         public char CardType { get; private set; }
         public string CardName { get; private set; }
         public string EffText { get; private set; }

@@ -48,7 +48,7 @@
 				},
 				{
 					"$type": "Subeffect:SpendAttacks:",
-					"xModifier": -1
+					"modifier": -1
 				}
 			]
 		}

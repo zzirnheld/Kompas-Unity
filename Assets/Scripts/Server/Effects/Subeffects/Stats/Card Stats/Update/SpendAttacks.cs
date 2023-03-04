@@ -1,0 +1,15 @@
+using KompasCore.Effects.Identities.GamestateNumberIdentities;
+
+namespace KompasServer.Effects.Subeffects
+{
+    public class SpendAttacks : UpdateCardStats
+    {
+        public int modifier = 1;
+
+        public override void Initialize(ServerEffect eff, int subeffIndex)
+        {
+            attacksThisTurnChange ??= new Constant() { constant = modifier };
+            base.Initialize(eff, subeffIndex);
+        }
+    }
+}

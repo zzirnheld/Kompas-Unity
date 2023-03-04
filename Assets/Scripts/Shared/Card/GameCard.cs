@@ -305,9 +305,6 @@ namespace KompasCore.Cards
 
         public virtual void SetNegated(bool negated, IStackable stackSrc = null) => Negated = negated;
         public virtual void SetActivated(bool activated, IStackable stackSrc = null) => Activated = activated;
-
-        public void SetDuration(int duration)
-            => Duration = duration;
         #endregion statfuncs
 
         #region moveCard
