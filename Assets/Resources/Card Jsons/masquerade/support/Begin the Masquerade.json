@@ -65,8 +65,7 @@
 					}
 				},
 				{
-					"$type": "Subeffect:PayPipsTargetCost:",
-					"xMultiplier": 1
+					"$type": "Subeffect:PayPipsTargetCost:"
 				},
 				{
 					"$type": "Subeffect:Play:"

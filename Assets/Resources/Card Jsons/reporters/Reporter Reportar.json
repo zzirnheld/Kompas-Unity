@@ -142,8 +142,7 @@
 				{
 					"$type": "Subeffect:PayPipsTargetCost:",
 					"playerIndex": -2,
-					"xMultiplier": 1,
-					"xDivisor": 2
+					"divisor": 2
 				},
 				{
 					"$type": "Subeffect:Play:",

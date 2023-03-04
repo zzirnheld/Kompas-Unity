@@ -34,7 +34,7 @@
 				},
 				{
 					"$type": "Subeffect:PayPipsTargetCost:",
-					"xDivisor": 2
+					"divisor": 2
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",

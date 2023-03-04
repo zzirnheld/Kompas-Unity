@@ -26,8 +26,7 @@
 		},
 		{
 			"$type":"Subeffect:PayPipsTargetCost:",
-			"xDivisor":2,
-			"xMultiplier":1
+			"divisor":2
 		},
 		{
 			"$type":"Subeffect:Play:"
