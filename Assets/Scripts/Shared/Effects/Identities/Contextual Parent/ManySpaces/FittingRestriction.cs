@@ -8,7 +8,7 @@ namespace KompasCore.Effects.Identities
         public class FittingRestriction : ContextualParentIdentityBase<IReadOnlyCollection<Space>>
         {
             public SpaceRestriction restriction;
-            public IIdentity<IReadOnlyCollection<Space>> spaces = new Leaf.Spaces.All();
+            public IIdentity<IReadOnlyCollection<Space>> spaces = new ManySpaces.All();
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {

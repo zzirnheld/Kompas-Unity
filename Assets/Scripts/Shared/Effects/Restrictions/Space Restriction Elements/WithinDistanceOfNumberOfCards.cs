@@ -1,5 +1,5 @@
 using KompasCore.Effects.Identities;
-using KompasCore.Effects.Identities.GamestateNumberIdentities;
+using KompasCore.Effects.Identities.Numbers;
 using System.Linq;
 
 namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements

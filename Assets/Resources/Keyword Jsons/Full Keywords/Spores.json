@@ -18,7 +18,7 @@
                     "$type": "Gamestate.ManySpaces:AdjacentSpaces:",
                     "adjacentTo": {
                         "$type": "Subeffect.Space:PositionOf:",
-                        "whosePosition": { "$type": "Leaf.Cards:ThisCard:" }
+                        "whosePosition": { "$type": "Cards:ThisCard:" }
                     }
                 }
             }

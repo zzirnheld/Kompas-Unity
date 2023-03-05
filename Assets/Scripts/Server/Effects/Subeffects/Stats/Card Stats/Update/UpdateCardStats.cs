@@ -1,8 +1,5 @@
-using KompasCore.Cards;
-using KompasCore.Effects.Identities.GamestateNumberIdentities;
-using KompasCore.Exceptions;
-using System.Linq;
 using System.Threading.Tasks;
+using KompasCore.Effects.Identities.Numbers;
 
 namespace KompasServer.Effects.Subeffects
 {

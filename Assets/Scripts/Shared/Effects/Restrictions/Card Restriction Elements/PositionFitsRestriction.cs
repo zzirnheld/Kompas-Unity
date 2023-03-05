@@ -23,7 +23,7 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
     /// </summary>
     public class AdjacentTo : PositionFitsRestriction
     {
-        public IIdentity<GameCardBase> adjacentTo = new Identities.Leaf.Cards.ThisCard();
+        public IIdentity<GameCardBase> adjacentTo = new Identities.Cards.ThisCard();
 
         public override void Initialize(EffectInitializationContext initializationContext)
         {

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace KompasCore.Effects.Identities.Leaf.Spaces
+namespace KompasCore.Effects.Identities.ManySpaces
 {
     public class Corners : ContextlessLeafIdentityBase<IReadOnlyCollection<Space>>
     {

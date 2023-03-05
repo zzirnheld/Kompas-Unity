@@ -1,14 +1,11 @@
-namespace KompasCore.Effects.Identities
+namespace KompasCore.Effects.Identities.Numbers
 {
-    namespace GamestateNumberIdentities
+    public class Constant : ContextlessLeafIdentityBase<int>
     {
-        public class Constant : ContextlessLeafIdentityBase<int>
-        {
-            public static Constant One => new Constant { constant = 1 };
+        public static Constant One => new Constant { constant = 1 };
 
-            public int constant;
+        public int constant;
 
-            protected override int AbstractItem => constant;
-        }
+        protected override int AbstractItem => constant;
     }
 }

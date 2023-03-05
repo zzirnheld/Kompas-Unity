@@ -1,4 +1,4 @@
-﻿using KompasCore.Effects.Identities.Leaf.Cards;
+﻿using KompasCore.Effects.Identities.Cards;
 
 namespace KompasServer.Effects.Subeffects
 {

@@ -28,7 +28,7 @@
                                             "spaceRestrictionElements": [
                                                 {
                                                     "$type": "Core.SpaceRestriction:AdjacentTo:",
-                                                    "card": { "$type": "Leaf.Cards:ThisCard:" }
+                                                    "card": { "$type": "Cards:ThisCard:" }
                                                 }
                                             ]
                                         }

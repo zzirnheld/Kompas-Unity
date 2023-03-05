@@ -26,7 +26,7 @@
 											"$type": "Core.SpaceRestriction:SameDiagonal:",
 											"space": {
 												"$type": "KompasCore.Effects.Identities.GamestateSpaceIdentities.PositionOf, Assembly-CSharp",
-												"card": { "$type": "Leaf.Cards:ThisCard:" }
+												"card": { "$type": "Cards:ThisCard:" }
 											}
 										}
 									]
@@ -48,7 +48,7 @@
 								]
 							}
 						},
-						"card": { "$type": "Leaf.Cards:ThisCard:" }
+						"card": { "$type": "Cards:ThisCard:" }
 					}
 				]
 			},

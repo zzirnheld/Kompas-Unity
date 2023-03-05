@@ -11,7 +11,7 @@
         {
             "$type": "Subeffect:SetXByNumberIdentity:",
             "numberIdentity": {
-                "$type": "ActivationContext.Number:Arg:",
+                "$type": "Numbers:Arg:",
                 "multiplier": 1
             },
             "xMultiplier": 1

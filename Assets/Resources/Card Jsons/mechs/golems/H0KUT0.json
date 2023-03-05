@@ -17,7 +17,7 @@
 					{
 						"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 						"cardRestriction": { "cardRestrictions": [ "Activated" ] },
-						"card": { "$type": "Leaf.Cards:ThisCard:" }
+						"card": { "$type": "Cards:ThisCard:" }
 					}
 				]
 			},

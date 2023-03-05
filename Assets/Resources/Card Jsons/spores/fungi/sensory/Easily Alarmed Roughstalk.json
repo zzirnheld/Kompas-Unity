@@ -12,7 +12,7 @@
                         { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
                         {
                             "$type": "Core.TriggerRestriction:CardsMatch:",
-                            "firstCard": { "$type": "Leaf.Cards:ThisCard:" },
+                            "firstCard": { "$type": "Cards:ThisCard:" },
                             "secondCard": { "$type": "ActivationContext.Card:MainCardBefore:" }
                         }
 					]

@@ -42,7 +42,7 @@
 					"triggerRestrictionElements": [
                         {
                             "$type": "Core.TriggerRestriction:SpacesFitRestriction:",
-                            "spaces": { "$type": "Leaf.Spaces:Corners:" },
+                            "spaces": { "$type": "ManySpaces:Corners:" },
                             "spaceRestriction": {
                                 "spaceRestrictionElements": [
                                     {
