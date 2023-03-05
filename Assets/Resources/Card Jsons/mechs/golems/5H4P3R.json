@@ -13,7 +13,7 @@
                         {
                             "$type": "Core.TriggerRestriction:CardsMatch:",
                             "firstCard": { "$type": "Cards:ThisCard:" },
-                            "secondCard": { "$type": "ActivationContext.Card:MainCardBefore:" }
+                            "secondCard": { "$type": "Cards:MainCardBefore:" }
                         }
 					]
 				}
@@ -22,22 +22,16 @@
 				{
 					"$type": "Subeffect:TargetAllCardsIdentity:",
 					"cardsIdentity": {
-						"$type": "Gamestate.ManyCards:CardsInPositions:",
+						"$type": "ManyCards:CardsInPositions:",
 						"positions": {
-							"$type": "Gamestate.ManySpaces:ThreeSpaceRelationship:",
+							"$type": "ManySpaces:ThreeSpaceRelationship:",
 							"firstSpace": {
-								"$type": "Subeffect.Card:FromActivationContext:",
-								"cardFromContext": {
-									"$type": "ActivationContext.Space:PositionOf:",
-									"whosePosition": {
-										"$type": "ActivationContext.Card:MainCardBefore:"
-									}
+								"$type": "Spaces:PositionOf:",
+								"whosePosition": {
+									"$type": "Cards:MainCardBefore:"
 								}
 							},
-							"secondSpace": {
-								"$type": "Subeffect.Space:FromActivationContext:",
-								"space": { "$type": "ActivationContext.Space:ContextSpace:" }
-							},
+							"secondSpace": { "$type": "Spaces:ContextSpace:" },
 							"thirdSpaceRelationship": { "$type": "ThreeSpaceRelationships:Between:" }
 						}
 					}

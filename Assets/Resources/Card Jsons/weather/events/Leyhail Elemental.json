@@ -72,7 +72,7 @@
 			"spaceRestrictionElements": [ {
 				"$type": "Core.SpaceRestriction:InAOEOf:",
 				"anyOf": {
-					"$type": "Gamestate.ManyCards:FittingRestriction:",
+					"$type": "ManyCards:FittingRestriction:",
 					"cardRestriction": {
 					"cardRestrictionElements": [ {
 							"$type": "Core.CardRestriction:Subtypes:",
@@ -81,7 +81,7 @@
 					}
 				},
 				"minAnyOfCount": { 
-					"$type": "Gamestate.Number:Constant:",
+					"$type": "Number:Constant:",
 					"constant": 2
 				}
 			} ]

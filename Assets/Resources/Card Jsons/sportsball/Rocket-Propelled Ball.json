@@ -39,7 +39,7 @@
                             { "$type": "Core.SpaceRestriction:Empty:" },
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
-								"toMove": { "$type": "ActivationContext.Card:TargetIndex:" },
+								"toMove": { "$type": "Cards:TargetIndex:" },
 								"distanceRestriction": {
 									"numberRestrictions": [ "==Constant" ],
 									"constant": 1

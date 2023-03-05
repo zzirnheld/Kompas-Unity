@@ -47,7 +47,7 @@
 						},
 						"spaceRestrictionElements": [ {
 							"$type": "Core.SpaceRestriction:CanMoveCard:",
-							"toMove": { "$type": "ActivationContext.Card:TargetIndex:" }
+							"toMove": { "$type": "Cards:TargetIndex:" }
 						} ]
 					},
 					"xModifier": 2

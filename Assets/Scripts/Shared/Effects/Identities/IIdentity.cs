@@ -3,9 +3,7 @@ using KompasCore.Exceptions;
 namespace KompasCore.Effects.Identities
 {
     /// <summary>
-    /// Can be used whether or not the caller does or doesn't care about an ActivationContext.
-    /// (Eventually, can be used whether or not the caller does or doesn't care about an ActivationContext,
-    /// but that interface doesn't even exist yet.)
+    /// Can be used whether or not the caller does or doesn't care about an ActivationContext)
     /// </summary>
     public interface IIdentity<ReturnType> : IContextInitializeable
     {

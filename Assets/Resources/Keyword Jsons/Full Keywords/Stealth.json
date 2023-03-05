@@ -20,7 +20,7 @@
                     {
                         "$type": "Core.SpaceRestriction:InAOEOf:",
                         "anyOf": {
-                            "$type": "Gamestate.ManyCards:FittingRestriction:",
+                            "$type": "ManyCards:FittingRestriction:",
                             "cardRestriction": {
                             "cardRestrictionElements": [ {
                                     "$type": "Core.CardRestriction:Subtypes:",
@@ -31,7 +31,7 @@
                     },
                     {
                         "$type": "Core.SpaceRestriction:CanMoveCard:",
-                        "toMove": { "$type": "ActivationContext.Card:TargetIndex:" }
+                        "toMove": { "$type": "Cards:TargetIndex:" }
                     }
                 ]
             }

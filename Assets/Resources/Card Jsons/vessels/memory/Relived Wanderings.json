@@ -12,15 +12,15 @@
                         { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
                         {
                             "$type": "Core.TriggerRestriction:CardsMatch:",
-                            "firstCard": { "$type": "ActivationContext.Card:MainCardBefore:" },
+                            "firstCard": { "$type": "Cards:MainCardBefore:" },
                             "secondCard": {
-                                "$type": "Gamestate.Card:AugmentedCard:",
+                                "$type": "Cards:AugmentedCard:",
                                 "ofThisCard": { "$type": "Cards:ThisCard:" }
                             }
                         },
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "card": { "$type": "ActivationContext.Card:MainCardBefore:" },
+                            "card": { "$type": "Cards:MainCardBefore:" },
                             "cardRestriction": {
                                 "cardRestrictionElements": [ { "$type": "Core.CardRestriction:Summoned:" } ]
                             }
@@ -39,7 +39,7 @@
                             { "$type": "Core.SpaceRestriction:Empty:" },
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
-								"toMove": { "$type": "ActivationContext.Card:TargetIndex:" },
+								"toMove": { "$type": "Cards:TargetIndex:" },
 								"distanceRestriction": {
 									"numberRestrictions": [ "==Constant" ],
 									"constant": 1

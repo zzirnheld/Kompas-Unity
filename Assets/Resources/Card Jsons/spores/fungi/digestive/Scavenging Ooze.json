@@ -12,7 +12,7 @@
                         { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "card": { "$type": "ActivationContext.Card:CauseBefore:" },
+                            "card": { "$type": "Cards:CauseBefore:" },
                             "cardRestriction": {
                                 "cardRestrictionElements": [
                                     {
@@ -24,7 +24,7 @@
                         },
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "card": { "$type": "ActivationContext.Card:MainCardBefore:" },
+                            "card": { "$type": "Cards:MainCardBefore:" },
                             "cardRestriction": {
                                 "cardRestrictionElements": [ { "$type": "Core.CardRestriction:Enemy:" } ]
                             }
@@ -36,12 +36,12 @@
 				{
 					"$type": "Subeffect:AutoTargetCardIdentity:",
                     "subeffectCardIdentity": {
-						"$type": "Gamestate.Card:SelectFromMany:",
+						"$type": "Cards:SelectFromMany:",
                         "selector": { "$type": "KompasCore.Effects.Selectors.SortIndex, Assembly-CSharp" },
                         "cards": {
-                            "$type": "Gamestate.ManyCards:FittingRestriction:",
+                            "$type": "ManyCards:FittingRestriction:",
                             "cards": {
-                                "$type": "Gamestate.ManyCards:Discard:",
+                                "$type": "ManyCards:Discard:",
                                 "friendly": true,
                                 "enemy": false
                             }
@@ -54,12 +54,12 @@
 				{
 					"$type": "Subeffect:AutoTargetCardIdentity:",
                     "subeffectCardIdentity": {
-						"$type": "Gamestate.Card:SelectFromMany:",
+						"$type": "Cards:SelectFromMany:",
                         "selector": { "$type": "KompasCore.Effects.Selectors.SortIndex, Assembly-CSharp" },
                         "cards": {
-                            "$type": "Gamestate.ManyCards:FittingRestriction:",
+                            "$type": "ManyCards:FittingRestriction:",
                             "cards": {
-                                "$type": "Gamestate.ManyCards:Discard:",
+                                "$type": "ManyCards:Discard:",
                                 "friendly": false,
                                 "enemy": true
                             }

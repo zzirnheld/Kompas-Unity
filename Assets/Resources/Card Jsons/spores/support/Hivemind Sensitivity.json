@@ -16,10 +16,10 @@
                         {
                             "$type": "Core.TriggerRestriction:CardsMatch:",
                             "firstCard": {
-                                "$type": "Gamestate.Card:AugmentedCard:",
+                                "$type": "Cards:AugmentedCard:",
                                 "ofThisCard": { "$type": "Cards:ThisCard:" }
                             },
-                            "secondCard": { "$type": "ActivationContext.Card:MainCardBefore:" }
+                            "secondCard": { "$type": "Cards:MainCardBefore:" }
                         }
 					]
 				}

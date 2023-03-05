@@ -13,11 +13,11 @@
         {
             "$type": "Subeffect:TargetAllCardsIdentity:",
             "cardsIdentity": {
-                "$type": "Gamestate.ManyCards:CardsInPositions:",
+                "$type": "ManyCards:CardsInPositions:",
                 "positions": {
-                    "$type": "Gamestate.ManySpaces:AdjacentSpaces:",
+                    "$type": "ManySpaces:AdjacentSpaces:",
                     "adjacentTo": {
-                        "$type": "Subeffect.Space:PositionOf:",
+                        "$type": "Spaces:PositionOf:",
                         "whosePosition": { "$type": "Cards:ThisCard:" }
                     }
                 }

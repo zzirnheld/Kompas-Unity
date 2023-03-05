@@ -20,7 +20,7 @@
                                     }
                                 ]
                             },
-                            "card": { "$type": "ActivationContext.Card:MainCardBefore:" }
+                            "card": { "$type": "Cards:MainCardBefore:" }
                         }
 					]
 				}
@@ -29,7 +29,7 @@
 				{
 					"$type": "Subeffect:AutoTargetCardIdentity:",
                     "subeffectCardIdentity": {
-						"$type": "Gamestate.Card:AugmentedCard:",
+						"$type": "Cards:AugmentedCard:",
                         "cardFromContext": { "$type": "Cards:ThisCard:" }
                     }
 				},
@@ -54,10 +54,10 @@
                         {
                             "$type": "Core.TriggerRestriction:CardsMatch:",
                             "firstCard": {
-                                "$type": "Gamestate.Card:AugmentedCard:",
+                                "$type": "Cards:AugmentedCard:",
                                 "ofThisCard": { "$type": "Cards:ThisCard:" }
                             },
-                            "secondCard": { "$type": "ActivationContext.Card:MainCardBefore:" }
+                            "secondCard": { "$type": "Cards:MainCardBefore:" }
                         },
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
@@ -69,7 +69,7 @@
                                     }
                                 ]
                             },
-                            "card": { "$type": "ActivationContext.Card:MainCardBefore:" }
+                            "card": { "$type": "Cards:MainCardBefore:" }
                         }
 					]
 				}
@@ -77,19 +77,13 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:AutoTargetCardIdentity:",
-                    "subeffectCardIdentity": {
-						"$type": "Subeffect.Card:FromActivationContext:",
-                        "cardFromContext": { "$type": "ActivationContext.Card:MainCardBefore:" }
-                    }
+                    "subeffectCardIdentity": { "$type": "Cards:MainCardBefore:" }
 				},
 				{
 					"$type": "Subeffect:AutoTargetSpaceIdentity:",
                     "spaceIdentity": {
-                        "$type": "Subeffect.Space:PositionOf:",
-                        "whosePosition": {
-                            "$type": "Subeffect.Card:FromActivationContext:",
-                            "cardFromContext": { "$type": "ActivationContext.Card:MainCardBefore:" }
-                        }
+                        "$type": "Spaces:PositionOf:",
+                        "whosePosition": { "$type": "Cards:MainCardBefore:" }
                     }
 				},
 				{

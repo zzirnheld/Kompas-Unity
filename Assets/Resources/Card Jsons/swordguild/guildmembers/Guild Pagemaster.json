@@ -39,11 +39,11 @@
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {
                                 "$type": "Core.SpaceRestriction:AdjacentTo:",
-                                "card": { "$type": "ActivationContext.Card:TargetIndex:" }
+                                "card": { "$type": "Cards:TargetIndex:" }
                             },
                             {
                                 "$type": "Core.SpaceRestriction:CanPlayCard:",
-                                "toPlay": { "$type": "ActivationContext.Card:TargetIndex:" }
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
                             }
                         ]
 					}

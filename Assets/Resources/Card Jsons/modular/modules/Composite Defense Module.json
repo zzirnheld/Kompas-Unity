@@ -21,12 +21,12 @@
                 {
                     "$type": "Subeffect:SetXByNumberIdentity:",
                     "numberIdentity": {
-                        "$type": "Gamestate.Number:CountCards:",
+                        "$type": "Number:CountCards:",
                         "cards": {
-                            "$type": "ActivationContext.ManyCards:FittingRestriction:",
+                            "$type": "ManyCards:FittingRestriction:",
                             "cards": {
-                                "$type": "ActivationContext.ManyCards:Augments:",
-                                "card": { "$type": "ActivationContext.Card:TargetIndex:" }
+                                "$type": "ManyCards:Augments:",
+                                "card": { "$type": "Cards:TargetIndex:" }
                             },
                             "cardRestriction": {
                                 "cardRestrictionElements": [

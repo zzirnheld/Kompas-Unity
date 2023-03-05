@@ -12,12 +12,12 @@
                         { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "card": { "$type": "ActivationContext.Card:MainCardBefore:" },
+                            "card": { "$type": "Cards:MainCardBefore:" },
                             "cardRestriction": { "cardRestrictions": [ "Character" ] }
                         },
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "card": { "$type": "ActivationContext.Card:CauseAfter:" },
+                            "card": { "$type": "Cards:CauseAfter:" },
                             "cardRestriction": {
                                 "cardRestrictionElements": [
                                     {

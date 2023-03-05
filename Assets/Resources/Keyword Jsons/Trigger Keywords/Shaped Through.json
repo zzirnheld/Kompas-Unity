@@ -1,7 +1,7 @@
 [
     {
         "$type": "Core.TriggerRestriction:StackableFitsRestriction:",
-        "stackable": { "$type": "ActivationContext.Stackable:StackableCause:" },
+        "stackable": { "$type": "Stackable:StackableCause:" },
         "restriction": {
             "stackableRestrictionElements": [
                 {
@@ -14,22 +14,22 @@
     {
         "$type": "Core.TriggerRestriction:CompareNumbers:",
         "firstNumber": {
-            "$type": "ActivationContext.Number:Operation:",
+            "$type": "Number:Operation:",
             "numbers": [
                 {
-                    "$type": "ActivationContext.Number:X:",
+                    "$type": "Number:X:",
                     "multiplier": 0,
                     "modifier": 1
                 },
                 {
-                    "$type": "ActivationContext.Number:Distance:",
+                    "$type": "Number:Distance:",
                     "firstSpace": {
-                        "$type": "ActivationContext.Space:PositionOf:",
+                        "$type": "Spaces:PositionOf:",
                         "whosePosition": { "$type": "Cards:ThisCard:" }
                     },
                     "secondSpace": {
-                        "$type": "ActivationContext.Space:PositionOf:",
-                        "whosePosition": { "$type": "ActivationContext.Card:MainCardBefore:" }
+                        "$type": "Spaces:PositionOf:",
+                        "whosePosition": { "$type": "Cards:MainCardBefore:" }
                     },
                     "throughRestriction": {
                         "spaceRestrictionElements": [
@@ -48,14 +48,14 @@
                     }
                 },
                 {
-                    "$type": "ActivationContext.Number:Distance:",
+                    "$type": "Number:Distance:",
                     "firstSpace": {
-                        "$type": "ActivationContext.Space:PositionOf:",
+                        "$type": "Spaces:PositionOf:",
                         "whosePosition": { "$type": "Cards:ThisCard:" }
                     },
                     "secondSpace": {
-                        "$type": "ActivationContext.Space:PositionOf:",
-                        "whosePosition": { "$type": "ActivationContext.Card:MainCardAfter:" }
+                        "$type": "Spaces:PositionOf:",
+                        "whosePosition": { "$type": "Cards:MainCardAfter:" }
                     },
                     "throughRestriction": {
                         "spaceRestrictionElements": [
@@ -76,14 +76,14 @@
             ]
         },
         "secondNumber": {
-            "$type": "ActivationContext.Number:Distance:",
+            "$type": "Number:Distance:",
             "firstSpace": {
-                "$type": "ActivationContext.Space:PositionOf:",
-                "whosePosition": { "$type": "ActivationContext.Card:MainCardBefore:" }
+                "$type": "Spaces:PositionOf:",
+                "whosePosition": { "$type": "Cards:MainCardBefore:" }
             },
             "secondSpace": {
-                "$type": "ActivationContext.Space:PositionOf:",
-                "whosePosition": { "$type": "ActivationContext.Card:MainCardAfter:" }
+                "$type": "Spaces:PositionOf:",
+                "whosePosition": { "$type": "Cards:MainCardAfter:" }
             },
             "throughRestriction": {
                 "spaceRestrictionElements": [

@@ -12,7 +12,7 @@
                         {
                             "$type": "Core.TriggerRestriction:CardsMatch:",
                             "firstCard": { "$type": "Cards:ThisCard:" },
-                            "secondCard": { "$type": "ActivationContext.Card:MainCardBefore:" }
+                            "secondCard": { "$type": "Cards:MainCardBefore:" }
                         }
 					]
 				}
@@ -38,16 +38,16 @@
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {
                                 "$type": "Core.SpaceRestriction:CanMoveCard:",
-                                "toMove": { "$type": "ActivationContext.Card:TargetIndex:" }
+                                "toMove": { "$type": "Cards:TargetIndex:" }
                             },
                             {
                                 "$type": "Core.SpaceRestriction:CompareDistance:",
                                 "distanceTo": {
-                                    "$type": "Subeffect.Space:PositionOf:",
-                                    "whosePosition": { "$type": "ActivationContext.Card:TargetIndex:" }
+                                    "$type": "Spaces:PositionOf:",
+                                    "whosePosition": { "$type": "Cards:TargetIndex:" }
                                 },
                                 "number": { 
-                                    "$type": "ActivationContext.Number:X:",
+                                    "$type": "Number:X:",
                                     "multiplier": 0,
                                     "modifier": 1
                                 },

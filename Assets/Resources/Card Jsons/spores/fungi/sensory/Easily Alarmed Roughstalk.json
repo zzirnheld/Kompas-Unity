@@ -13,7 +13,7 @@
                         {
                             "$type": "Core.TriggerRestriction:CardsMatch:",
                             "firstCard": { "$type": "Cards:ThisCard:" },
-                            "secondCard": { "$type": "ActivationContext.Card:MainCardBefore:" }
+                            "secondCard": { "$type": "Cards:MainCardBefore:" }
                         }
 					]
 				}

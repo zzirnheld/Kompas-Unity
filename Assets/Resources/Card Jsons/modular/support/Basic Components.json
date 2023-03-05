@@ -16,11 +16,11 @@
 				{
 					"$type": "Subeffect:TargetAllCardsIdentity:",
 					"cardsIdentity": {
-						"$type": "Gamestate.ManyCards:Distinct:",
+						"$type": "ManyCards:Distinct:",
 						"cards": {
-                            "$type": "Gamestate.ManyCards:FittingRestriction:",
+                            "$type": "ManyCards:FittingRestriction:",
                             "cards": {
-                                "$type": "Gamestate.ManyCards:Deck:",
+                                "$type": "ManyCards:Deck:",
                                 "friendly": true,
                                 "enemy": false
                             },

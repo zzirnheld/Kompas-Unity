@@ -50,16 +50,16 @@
                         {
                             "$type": "Core.TriggerRestriction:PlayersMatch:",
                             "firstCard": { 
-                                "$type": "ActivationContext.Player:ControllerOf:",
+                                "$type": "Player:ControllerOf:",
                                 "card": {
-                                    "$type": "ActivationContext.Card:AugmentedCard:",
-                                    "ofThisCard": { "$type": "ActivationContext.Card:MainCardBefore:" }
+                                    "$type": "Cards:AugmentedCard:",
+                                    "ofThisCard": { "$type": "Cards:MainCardBefore:" }
                                 }
                             },
                             "secondCard": {
-                                "$type": "ActivationContext.Player:ControllerOf:",
+                                "$type": "Player:ControllerOf:",
                                 "card": {
-                                    "$type": "Gamestate.Card:AugmentedCard:",
+                                    "$type": "Cards:AugmentedCard:",
                                     "ofThisCard": { "$type": "Cards:ThisCard:" }
                                 }
                             }
