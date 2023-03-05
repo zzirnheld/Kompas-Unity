@@ -4,15 +4,15 @@ namespace KompasCore.Effects.Identities.Spaces
 {
     public class PositionOf : ContextualParentIdentityBase<Space>
     {
-        public IIdentity<GameCardBase> whosePosition;
+        public IIdentity<GameCardBase> ofThisCard;
 
         public override void Initialize(EffectInitializationContext initializationContext)
         {
-            whosePosition.Initialize(initializationContext);
+            ofThisCard.Initialize(initializationContext);
             base.Initialize(initializationContext);
         }
 
         protected override Space AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
-            => whosePosition.From(context, secondaryContext).Position;
+            => ofThisCard.From(context, secondaryContext).Position;
     }
 }

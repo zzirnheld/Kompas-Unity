@@ -27,7 +27,7 @@
 							"$type": "ManySpaces:ThreeSpaceRelationship:",
 							"firstSpace": {
 								"$type": "Spaces:PositionOf:",
-								"whosePosition": {
+								"ofThisCard": {
 									"$type": "Cards:MainCardBefore:"
 								}
 							},

@@ -18,7 +18,7 @@
 					"$type": "ManySpaces:CompareDistance:",
 					"distanceTo": { 
 						"$type": "Spaces:PositionOf:",
-						"whosePosition": { "$type": "Cards:ThisCard:" }
+						"ofThisCard": { "$type": "Cards:ThisCard:" }
 					},
 					"spaces": {
 						"$type": "ManySpaces:PositionsOfEach:",
@@ -44,7 +44,7 @@
 						"$type": "ManySpaces:AdjacentSpaces:",
 						"adjacentTo": {
 							"$type": "Spaces:PositionOf:",
-							"whosePosition": { "$type": "Cards:ThisCard:" }
+							"ofThisCard": { "$type": "Cards:ThisCard:" }
 						}
 					}
 				}

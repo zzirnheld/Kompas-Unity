@@ -83,7 +83,7 @@
 					"$type": "Subeffect:AutoTargetSpaceIdentity:",
                     "spaceIdentity": {
                         "$type": "Spaces:PositionOf:",
-                        "whosePosition": { "$type": "Cards:MainCardBefore:" }
+                        "ofThisCard": { "$type": "Cards:MainCardBefore:" }
                     }
 				},
 				{

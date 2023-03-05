@@ -44,7 +44,7 @@
                                 "$type": "Core.SpaceRestriction:CompareDistance:",
                                 "distanceTo": {
                                     "$type": "Spaces:PositionOf:",
-                                    "whosePosition": { "$type": "Cards:TargetIndex:" }
+                                    "ofThisCard": { "$type": "Cards:TargetIndex:" }
                                 },
                                 "number": { 
                                     "$type": "Numbers:X:",

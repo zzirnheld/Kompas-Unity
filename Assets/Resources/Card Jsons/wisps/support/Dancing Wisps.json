@@ -36,7 +36,7 @@
                             "$type": "ManySpaces:AdjacentSpaces:",
                             "adjacentTo": {
                                 "$type": "Spaces:PositionOf:",
-                                "whosePosition": { "$type": "Cards:TargetIndex:" }
+                                "ofThisCard": { "$type": "Cards:TargetIndex:" }
                             }
 						}
 					}
@@ -55,7 +55,7 @@
                                 "$type": "ManySpaces:AdjacentSpaces:",
                                 "adjacentTo": {
                                     "$type": "Spaces:PositionOf:",
-                                    "whosePosition": {
+                                    "ofThisCard": {
                                         "$type": "Cards:TargetIndex:",
                                         "index": 0
                                     }

@@ -25,11 +25,11 @@
                     "$type": "Numbers:Distance:",
                     "firstSpace": {
                         "$type": "Spaces:PositionOf:",
-                        "whosePosition": { "$type": "Cards:ThisCard:" }
+                        "ofThisCard": { "$type": "Cards:ThisCard:" }
                     },
                     "secondSpace": {
                         "$type": "Spaces:PositionOf:",
-                        "whosePosition": { "$type": "Cards:MainCardBefore:" }
+                        "ofThisCard": { "$type": "Cards:MainCardBefore:" }
                     },
                     "throughRestriction": {
                         "spaceRestrictionElements": [
@@ -51,11 +51,11 @@
                     "$type": "Numbers:Distance:",
                     "firstSpace": {
                         "$type": "Spaces:PositionOf:",
-                        "whosePosition": { "$type": "Cards:ThisCard:" }
+                        "ofThisCard": { "$type": "Cards:ThisCard:" }
                     },
                     "secondSpace": {
                         "$type": "Spaces:PositionOf:",
-                        "whosePosition": { "$type": "Cards:MainCardAfter:" }
+                        "ofThisCard": { "$type": "Cards:MainCardAfter:" }
                     },
                     "throughRestriction": {
                         "spaceRestrictionElements": [
@@ -79,11 +79,11 @@
             "$type": "Numbers:Distance:",
             "firstSpace": {
                 "$type": "Spaces:PositionOf:",
-                "whosePosition": { "$type": "Cards:MainCardBefore:" }
+                "ofThisCard": { "$type": "Cards:MainCardBefore:" }
             },
             "secondSpace": {
                 "$type": "Spaces:PositionOf:",
-                "whosePosition": { "$type": "Cards:MainCardAfter:" }
+                "ofThisCard": { "$type": "Cards:MainCardAfter:" }
             },
             "throughRestriction": {
                 "spaceRestrictionElements": [
