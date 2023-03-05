@@ -2,9 +2,9 @@ using KompasCore.Cards;
 
 namespace KompasCore.Effects.Identities.ActivationContextSpaceIdentities
 {
-    public class PositionOf : ActivationContextIdentityBase<Space>
+    public class PositionOf : ContextualIdentityBase<Space>
     {
-        public IActivationContextIdentity<GameCardBase> whosePosition;
+        public IIdentity<GameCardBase> whosePosition;
 
         public override void Initialize(EffectInitializationContext initializationContext)
         {
@@ -16,16 +16,16 @@ namespace KompasCore.Effects.Identities.ActivationContextSpaceIdentities
             => whosePosition.From(context, secondaryContext).Position;
     }
 
-    public class ContextSpace : ActivationContextIdentityBase<Space>
+    public class ContextSpace : ContextualLeafIdentityBase<Space>
     {
         protected override Space AbstractItemFrom(ActivationContext context)
             => context.space;
     }
 
-    public class TwoSpaceIdentity : ActivationContextIdentityBase<Space>
+    public class TwoSpaceIdentity : ContextualIdentityBase<Space>
     {
-        public IActivationContextIdentity<Space> firstSpace;
-        public IActivationContextIdentity<Space> secondSpace;
+        public IIdentity<Space> firstSpace;
+        public IIdentity<Space> secondSpace;
 
         public ITwoSpaceIdentity relationship;
 

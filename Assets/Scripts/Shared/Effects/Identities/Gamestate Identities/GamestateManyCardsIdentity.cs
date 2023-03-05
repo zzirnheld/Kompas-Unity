@@ -7,14 +7,14 @@ namespace KompasCore.Effects.Identities
 {
     namespace GamestateManyCardsIdentities
     {
-        public class All : NoActivationContextIdentityBase<IReadOnlyCollection<GameCardBase>>
+        public class All : ContextlessLeafIdentityBase<IReadOnlyCollection<GameCardBase>>
         {
             protected override IReadOnlyCollection<GameCardBase> AbstractItem => InitializationContext.game.Cards;
         }
 
-        public class FittingRestriction : NoActivationContextIdentityBase<IReadOnlyCollection<GameCardBase>>
+        public class FittingRestriction : ContextualIdentityBase<IReadOnlyCollection<GameCardBase>>
         {
-            public INoActivationContextIdentity<IReadOnlyCollection<GameCardBase>> cards = new All();
+            public IIdentity<IReadOnlyCollection<GameCardBase>> cards = new All();
 
             public CardRestriction cardRestriction;
 
@@ -25,13 +25,15 @@ namespace KompasCore.Effects.Identities
                 cardRestriction.Initialize(initializationContext);
             }
 
-            protected override IReadOnlyCollection<GameCardBase> AbstractItem
-                => cards.Item.Where(c => cardRestriction.IsValidCard(c, default)).ToArray();
+            protected override IReadOnlyCollection<GameCardBase> AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
+                => cards.From(context, secondaryContext)
+                        .Where(c => cardRestriction.IsValidCard(c, default))
+                        .ToArray();
         }
 
-        public class Multiple : NoActivationContextIdentityBase<IReadOnlyCollection<GameCardBase>>
+        public class Multiple : ContextualIdentityBase<IReadOnlyCollection<GameCardBase>>
         {
-            public INoActivationContextIdentity<GameCardBase>[] cards;
+            public IIdentity<GameCardBase>[] cards;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {
@@ -39,12 +41,13 @@ namespace KompasCore.Effects.Identities
                 foreach (var i in cards) i.Initialize(initializationContext);
             }
 
-            protected override IReadOnlyCollection<GameCardBase> AbstractItem => cards.Select(s => s.Item).ToArray();
+            protected override IReadOnlyCollection<GameCardBase> AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
+                => cards.Select(s => s.From(context, secondaryContext)).ToArray();
         }
 
-        public class Augments : NoActivationContextIdentityBase<IReadOnlyCollection<GameCardBase>>
+        public class Augments : ContextualIdentityBase<IReadOnlyCollection<GameCardBase>>
         {
-            public INoActivationContextIdentity<GameCardBase> card;
+            public IIdentity<GameCardBase> card;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {
@@ -52,12 +55,13 @@ namespace KompasCore.Effects.Identities
                 card.Initialize(initializationContext);
             }
 
-            protected override IReadOnlyCollection<GameCardBase> AbstractItem => card.Item.Augments;
+            protected override IReadOnlyCollection<GameCardBase> AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
+                => card.From(context, secondaryContext).Augments;
         }
 
-        public class CardsInPositions : NoActivationContextIdentityBase<IReadOnlyCollection<GameCardBase>>
+        public class CardsInPositions : ContextualIdentityBase<IReadOnlyCollection<GameCardBase>>
         {
-            public INoActivationContextIdentity<IReadOnlyCollection<Space>> positions;
+            public IIdentity<IReadOnlyCollection<Space>> positions;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {
@@ -65,26 +69,23 @@ namespace KompasCore.Effects.Identities
                 positions.Initialize(initializationContext);
             }
 
-            protected override IReadOnlyCollection<GameCardBase> AbstractItem
+            protected override IReadOnlyCollection<GameCardBase> AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
             {
-                get
-                {
-                    var spaces = positions.Item;
-                    var cards = spaces.Select(InitializationContext.game.BoardController.GetCardAt)
-                        .Where(s => s != null)
-                        .ToArray();
-                    return cards;
-                }
+                var spaces = positions.From(context, secondaryContext);
+                var cards = spaces.Select(InitializationContext.game.BoardController.GetCardAt)
+                    .Where(s => s != null)
+                    .ToArray();
+                return cards;
             }
         }
 
-        public class Board : NoActivationContextIdentityBase<IReadOnlyCollection<GameCardBase>>
+        public class Board : ContextlessLeafIdentityBase<IReadOnlyCollection<GameCardBase>>
         {
             protected override IReadOnlyCollection<GameCardBase> AbstractItem
                 => InitializationContext.game.BoardController.Cards.ToArray();
         }
 
-        public class Discard : NoActivationContextIdentityBase<IReadOnlyCollection<GameCardBase>>
+        public class Discard : ContextlessLeafIdentityBase<IReadOnlyCollection<GameCardBase>>
         {
             public bool friendly = true;
             public bool enemy = true;
@@ -101,7 +102,7 @@ namespace KompasCore.Effects.Identities
             }
         }
 
-        public class Deck : NoActivationContextIdentityBase<IReadOnlyCollection<GameCardBase>>
+        public class Deck : ContextlessLeafIdentityBase<IReadOnlyCollection<GameCardBase>>
         {
             public bool friendly = true;
             public bool enemy = true;
@@ -118,10 +119,10 @@ namespace KompasCore.Effects.Identities
             }
         }
 
-        public class Limit : NoActivationContextIdentityBase<IReadOnlyCollection<GameCardBase>>
+        public class Limit : ContextualIdentityBase<IReadOnlyCollection<GameCardBase>>
         {
-            public INoActivationContextIdentity<int> limit;
-            public INoActivationContextIdentity<IReadOnlyCollection<GameCardBase>> cards;
+            public IIdentity<int> limit;
+            public IIdentity<IReadOnlyCollection<GameCardBase>> cards;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {
@@ -130,13 +131,15 @@ namespace KompasCore.Effects.Identities
                 cards.Initialize(initializationContext);
             }
 
-            protected override IReadOnlyCollection<GameCardBase> AbstractItem
-                => CollectionsHelper.Shuffle(cards.Item).Take(limit.Item).ToArray();
+            protected override IReadOnlyCollection<GameCardBase> AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
+                => CollectionsHelper.Shuffle(cards.From(context, secondaryContext))
+                    .Take(limit.From(context, secondaryContext))
+                    .ToArray();
         }
 
-        public class Distinct : NoActivationContextIdentityBase<IReadOnlyCollection<GameCardBase>>
+        public class Distinct : ContextualIdentityBase<IReadOnlyCollection<GameCardBase>>
         {
-            public INoActivationContextIdentity<IReadOnlyCollection<GameCardBase>> cards;
+            public IIdentity<IReadOnlyCollection<GameCardBase>> cards;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {
@@ -144,8 +147,8 @@ namespace KompasCore.Effects.Identities
                 cards.Initialize(initializationContext);
             }
 
-            protected override IReadOnlyCollection<GameCardBase> AbstractItem
-                => cards.Item
+            protected override IReadOnlyCollection<GameCardBase> AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
+                => cards.From(context, secondaryContext)
                     .GroupBy(c => c.CardName)
                     .Select(group => group.First())
                     .ToArray();

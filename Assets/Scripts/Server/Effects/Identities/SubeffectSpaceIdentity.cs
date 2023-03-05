@@ -8,7 +8,7 @@ namespace KompasServer.Effects.Identities
     {
         public class FromActivationContext : SubeffectIdentityBase<Space>
         {
-            public IActivationContextIdentity<Space> space;
+            public IIdentity<Space> space;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {
@@ -22,7 +22,7 @@ namespace KompasServer.Effects.Identities
 
         public class PositionOf : SubeffectIdentityBase<Space>
         {
-            public INoActivationContextIdentity<GameCardBase> whosePosition;
+            public IIdentity<GameCardBase> whosePosition;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {

@@ -10,7 +10,7 @@ namespace KompasServer.Effects.Identities.SubeffectStackableIdentities
 
     public class FromActivationContext : SubeffectIdentityBase<IStackable>
     {
-        public IActivationContextIdentity<IStackable> stackable;
+        public IIdentity<IStackable> stackable;
 
         public override void Initialize(EffectInitializationContext initializationContext)
         {

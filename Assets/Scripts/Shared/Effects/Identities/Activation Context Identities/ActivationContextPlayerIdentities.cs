@@ -2,9 +2,9 @@ using KompasCore.Cards;
 
 namespace KompasCore.Effects.Identities.ActivationContextPlayerIdentities
 {
-    public class ControllerOf : ActivationContextIdentityBase<Player>
+    public class ControllerOf : ContextualIdentityBase<Player>
     {
-        public IActivationContextIdentity<GameCardBase> card;
+        public IIdentity<GameCardBase> card;
 
         public override void Initialize(EffectInitializationContext initializationContext)
         {

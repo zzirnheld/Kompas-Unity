@@ -34,7 +34,7 @@ namespace KompasServer.Effects.Subeffects
 
     public class PartialDeckTargetSubeffect : CardTarget
     {
-        public INoActivationContextIdentity<int> numberOfTopCards;
+        public IIdentity<int> numberOfTopCards;
 
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {

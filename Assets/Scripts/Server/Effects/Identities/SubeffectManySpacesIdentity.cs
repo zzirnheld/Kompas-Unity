@@ -24,7 +24,7 @@ namespace KompasServer.Effects.Identities
 
         public class PositionsOfEach : SubeffectIdentityBase<ICollection<Space>>
         {
-            public INoActivationContextIdentity<IReadOnlyCollection<GameCardBase>> cards;
+            public IIdentity<IReadOnlyCollection<GameCardBase>> cards;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {

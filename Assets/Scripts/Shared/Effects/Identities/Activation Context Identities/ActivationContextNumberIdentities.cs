@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace KompasCore.Effects.Identities.ActivationContextNumberIdentities
 {
-    public class X : ActivationContextIdentityBase<int>
+    public class X : ContextualLeafIdentityBase<int>
     {
         public int multiplier = 1;
         public int modifier = 0;
@@ -13,10 +13,10 @@ namespace KompasCore.Effects.Identities.ActivationContextNumberIdentities
             => (contextToConsider.x.GetValueOrDefault() * multiplier / divisor) + modifier;
     }
 
-    public class Distance : ActivationContextIdentityBase<int>
+    public class Distance : ContextualIdentityBase<int>
     {
-        public IActivationContextIdentity<Space> firstSpace;
-        public IActivationContextIdentity<Space> secondSpace;
+        public IIdentity<Space> firstSpace;
+        public IIdentity<Space> secondSpace;
 
         public SpaceRestriction throughRestriction;
 
@@ -45,9 +45,9 @@ namespace KompasCore.Effects.Identities.ActivationContextNumberIdentities
         }
     }
 
-    public class Operation : ActivationContextIdentityBase<int>
+    public class Operation : ContextualIdentityBase<int>
     {
-        public IActivationContextIdentity<int>[] numbers;
+        public IIdentity<int>[] numbers;
         public INumberOperation operation;
 
         public override void Initialize(EffectInitializationContext initializationContext)
@@ -66,9 +66,9 @@ namespace KompasCore.Effects.Identities.ActivationContextNumberIdentities
         }
     }
 
-    public class FromCardValue : ActivationContextIdentityBase<int>
+    public class FromCardValue : ContextualIdentityBase<int>
     {
-        public IActivationContextIdentity<GameCardBase> card;
+        public IIdentity<GameCardBase> card;
         public CardValue cardValue;
 
         public override void Initialize(EffectInitializationContext initializationContext)

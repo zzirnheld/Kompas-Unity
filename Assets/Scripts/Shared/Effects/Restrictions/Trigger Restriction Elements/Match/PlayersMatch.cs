@@ -7,8 +7,8 @@ namespace KompasCore.Effects.Restrictions
     {
         public class PlayersMatch : TriggerRestrictionElement
         {
-            public IActivationContextIdentity<Player> firstPlayer;
-            public IActivationContextIdentity<Player> secondPlayer;
+            public IIdentity<Player> firstPlayer;
+            public IIdentity<Player> secondPlayer;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {

@@ -8,7 +8,7 @@ namespace KompasServer.Effects.Identities
     {
         public class FromActivationContext : SubeffectIdentityBase<Player>
         {
-            public IActivationContextIdentity<Player> playerFromContext;
+            public IIdentity<Player> playerFromContext;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {

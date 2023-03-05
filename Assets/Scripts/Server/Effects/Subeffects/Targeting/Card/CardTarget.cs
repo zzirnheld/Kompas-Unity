@@ -16,7 +16,7 @@ namespace KompasServer.Effects.Subeffects
         /// Identifies a card that this target should be linked with.
         /// Usually null, but if you plan on having a delay later, probably a good idea
         /// </summary>
-        public IActivationContextIdentity<GameCardBase> toLinkWith;
+        public IIdentity<GameCardBase> toLinkWith;
 
         public enum TargetType { Normal = 0, Debuff = 1 }
         public TargetType targetType;

@@ -1,13 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using KompasCore.Cards;
-using KompasCore.Effects.Identities;
 
 namespace KompasCore.Effects.Identities
 {
     namespace GamestateNumberIdentities
     {
-        public class Constant : NoActivationContextIdentityBase<int>
+        public class Constant : ContextlessLeafIdentityBase<int>
         {
             public static Constant One => new Constant { constant = 1 };
 
@@ -16,9 +15,9 @@ namespace KompasCore.Effects.Identities
             protected override int AbstractItem => constant;
         }
 
-        public class CountCards : NoActivationContextIdentityBase<int>
+        public class CountCards : ContextualIdentityBase<int>
         {
-            public INoActivationContextIdentity<IReadOnlyCollection<GameCardBase>> cards = new GamestateManyCardsIdentities.All();
+            public IIdentity<IReadOnlyCollection<GameCardBase>> cards = new GamestateManyCardsIdentities.All();
 
             public CardRestriction cardRestriction = new CardRestriction();
 
@@ -29,7 +28,8 @@ namespace KompasCore.Effects.Identities
                 cardRestriction.Initialize(initializationContext);
             }
 
-            protected override int AbstractItem => cards.Item.Count(c => cardRestriction.IsValidCard(c, default));
+            protected override int AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
+                => cards.From(context, secondaryContext).Count(c => cardRestriction.IsValidCard(c, default));
         }
     }
 }

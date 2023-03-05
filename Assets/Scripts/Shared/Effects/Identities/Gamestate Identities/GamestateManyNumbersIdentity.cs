@@ -5,10 +5,10 @@ namespace KompasCore.Effects.Identities
 {
     namespace GamestateManyNumbersIdentities
     {
-        public class Distances : NoActivationContextIdentityBase<ICollection<int>>
+        public class Distances : ContextualIdentityBase<ICollection<int>>
         {
-            public INoActivationContextIdentity<Space> origin;
-            public INoActivationContextIdentity<IReadOnlyCollection<Space>> destinations;
+            public IIdentity<Space> origin;
+            public IIdentity<IReadOnlyCollection<Space>> destinations;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {
@@ -17,14 +17,11 @@ namespace KompasCore.Effects.Identities
                 destinations.Initialize(initializationContext);
             }
 
-            protected override ICollection<int> AbstractItem
+            protected override ICollection<int> AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
             {
-                get
-                {
-                    var origin = this.origin.Item;
-                    var destinations = this.destinations.Item;
-                    return destinations.Select(dest => origin.DistanceTo(dest)).ToArray();
-                }
+                var origin = this.origin.From(context, secondaryContext);
+                var destinations = this.destinations.From(context, secondaryContext);
+                return destinations.Select(dest => origin.DistanceTo(dest)).ToArray();
             }
         }
     }

@@ -6,7 +6,7 @@ namespace KompasServer.Effects.Subeffects
 {
     public class TargetOtherInFight : AutoTargetCardIdentity
     {
-        public IActivationContextIdentity<GameCardBase> other = new TargetIndex();
+        public IIdentity<GameCardBase> other = new TargetIndex();
 
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {

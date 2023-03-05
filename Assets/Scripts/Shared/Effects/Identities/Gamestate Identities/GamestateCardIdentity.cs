@@ -7,10 +7,10 @@ namespace KompasCore.Effects.Identities
 {
     namespace GamestateCardIdentities
     {
-        public class SelectFromMany : NoActivationContextIdentityBase<GameCardBase>
+        public class SelectFromMany : ContextualIdentityBase<GameCardBase>
         {
             public ISelector<GameCardBase> selector = new RandomCard();
-            public INoActivationContextIdentity<IReadOnlyCollection<GameCardBase>> cards = new GamestateManyCardsIdentities.All();
+            public IIdentity<IReadOnlyCollection<GameCardBase>> cards = new GamestateManyCardsIdentities.All();
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {
@@ -18,26 +18,27 @@ namespace KompasCore.Effects.Identities
                 cards.Initialize(initializationContext);
             }
 
-            protected override GameCardBase AbstractItem => selector.Select(cards.Item);
+            protected override GameCardBase AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
+                => selector.Select(cards.From(context, secondaryContext));
         }
 
-        public class AugmentedCard : NoActivationContextIdentityBase<GameCardBase>
+        public class AugmentedCard : ContextualIdentityBase<GameCardBase>
         {
-            public INoActivationContextIdentity<GameCardBase> ofThisCard;
-
+            public IIdentity<GameCardBase> ofThisCard;
+            
             public override void Initialize(EffectInitializationContext initializationContext)
             {
                 base.Initialize(initializationContext);
                 ofThisCard.Initialize(initializationContext);
             }
 
-            protected override GameCardBase AbstractItem
-                => ofThisCard.Item.AugmentedCard;
+            protected override GameCardBase AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
+                => ofThisCard.From(context, secondaryContext).AugmentedCard;
         }
 
-        public class Avatar : NoActivationContextIdentityBase<GameCardBase>
+        public class Avatar : ContextualIdentityBase<GameCardBase>
         {
-            public INoActivationContextIdentity<Player> player;
+            public IIdentity<Player> player;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {
@@ -45,7 +46,8 @@ namespace KompasCore.Effects.Identities
                 player.Initialize(initializationContext);
             }
 
-            protected override GameCardBase AbstractItem => player.Item.Avatar;
+            protected override GameCardBase AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
+                => player.From(context, secondaryContext).Avatar;
         }
     }
 }

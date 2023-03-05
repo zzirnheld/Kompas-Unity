@@ -2,7 +2,7 @@ using KompasCore.Cards;
 
 namespace KompasCore.Effects.Identities.Leaf.Card
 {
-    public class ThisCard : LeafIdentityBase<GameCardBase>
+    public class ThisCard : ContextlessLeafIdentityBase<GameCardBase>
     {
         protected override GameCardBase AbstractItem => InitializationContext.source;
     }

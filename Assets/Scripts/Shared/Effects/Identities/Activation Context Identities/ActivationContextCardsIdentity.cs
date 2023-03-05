@@ -6,9 +6,9 @@ namespace KompasCore.Effects.Identities
 {
     namespace ActivationContextManyCardsIdentities
     {
-        public class CardsInPositions : ActivationContextIdentityBase<IReadOnlyCollection<GameCardBase>>
+        public class CardsInPositions : ContextualIdentityBase<IReadOnlyCollection<GameCardBase>>
         {
-            public IActivationContextIdentity<IReadOnlyCollection<Space>> positions;
+            public IIdentity<IReadOnlyCollection<Space>> positions;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {
@@ -23,9 +23,9 @@ namespace KompasCore.Effects.Identities
             }
         }
 
-        public class Augments : ActivationContextIdentityBase<IReadOnlyCollection<GameCardBase>>
+        public class Augments : ContextualIdentityBase<IReadOnlyCollection<GameCardBase>>
         {
-            public IActivationContextIdentity<GameCardBase> card;
+            public IIdentity<GameCardBase> card;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {
@@ -37,9 +37,9 @@ namespace KompasCore.Effects.Identities
                 => card.From(context, secondaryContext).Augments;
         }
 
-        public class FittingRestriction : ActivationContextIdentityBase<IReadOnlyCollection<GameCardBase>>
+        public class FittingRestriction : ContextualIdentityBase<IReadOnlyCollection<GameCardBase>>
         {
-            public IActivationContextIdentity<IReadOnlyCollection<GameCardBase>> cards = new GamestateManyCardsIdentities.All();
+            public IIdentity<IReadOnlyCollection<GameCardBase>> cards = new GamestateManyCardsIdentities.All();
 
             public CardRestriction cardRestriction;
 

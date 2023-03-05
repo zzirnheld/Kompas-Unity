@@ -19,7 +19,7 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 
     public class DistinctName : CardRestrictionElement
     {
-        public IActivationContextIdentity<GameCardBase> from = new Identities.GamestateCardIdentities.ThisCard();
+        public IIdentity<GameCardBase> from = new Identities.Leaf.Card.ThisCard();
 
         public override void Initialize(EffectInitializationContext initializationContext)
         {

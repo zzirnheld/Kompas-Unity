@@ -25,7 +25,7 @@ namespace KompasServer.Effects.Identities
 
         public class FromActivationContext : SubeffectIdentityBase<IReadOnlyCollection<GameCardBase>>
         {
-            public IActivationContextIdentity<IReadOnlyCollection<GameCardBase>> cardsFromContext;
+            public IIdentity<IReadOnlyCollection<GameCardBase>> cardsFromContext;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {

@@ -8,8 +8,8 @@ namespace KompasCore.Effects.Restrictions
     {
         public class CompareNumbers : TriggerRestrictionElement
         {
-            public IActivationContextIdentity<int> firstNumber;
-            public IActivationContextIdentity<int> secondNumber;
+            public IIdentity<int> firstNumber;
+            public IIdentity<int> secondNumber;
             public INumberRelationship comparison;
 
             public override void Initialize(EffectInitializationContext initializationContext)

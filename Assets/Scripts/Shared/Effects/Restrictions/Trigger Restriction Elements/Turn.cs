@@ -4,7 +4,7 @@ namespace KompasCore.Effects.Restrictions.TriggerRestrictionElements
 {
     public class Turn : TriggerRestrictionElement
     {
-        public IActivationContextIdentity<Player> turnPlayer;
+        public IIdentity<Player> turnPlayer;
 
         public override void Initialize(EffectInitializationContext initializationContext)
         {

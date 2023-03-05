@@ -16,7 +16,7 @@ namespace KompasServer.Effects.Subeffects
             cardRestrictionElements = new CardRestrictionElement[] { new Character() }
         };
 
-        public IActivationContextIdentity<IReadOnlyCollection<GameCardBase>> cardsSource = new Board();
+        public IIdentity<IReadOnlyCollection<GameCardBase>> cardsSource = new Board();
 
 
         public override void Initialize(ServerEffect eff, int subeffIndex)

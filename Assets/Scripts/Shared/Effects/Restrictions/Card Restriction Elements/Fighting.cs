@@ -9,7 +9,7 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
         /// <summary>
         /// Can be null to represent checking whether the card is in any fight at all
         /// </summary>
-        public IActivationContextIdentity<GameCardBase> fightingWho;
+        public IIdentity<GameCardBase> fightingWho;
         public bool defending = false;
         public bool attacking = false;
 

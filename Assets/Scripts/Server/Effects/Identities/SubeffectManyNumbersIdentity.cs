@@ -9,8 +9,8 @@ namespace KompasServer.Effects.Identities
     {
         public class Distances : SubeffectIdentityBase<ICollection<int>>
         {
-            public INoActivationContextIdentity<Space> origin;
-            public INoActivationContextIdentity<IReadOnlyCollection<Space>> destinations;
+            public IIdentity<Space> origin;
+            public IIdentity<IReadOnlyCollection<Space>> destinations;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {

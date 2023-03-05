@@ -10,8 +10,8 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
     /// </summary>
     public class CompareDistance : SpaceRestrictionElement
     {
-        public INoActivationContextIdentity<Space> distanceTo;
-        public INoActivationContextIdentity<int> number;
+        public IIdentity<Space> distanceTo;
+        public IIdentity<int> number;
         public INumberRelationship comparison;
 
         public override void Initialize(EffectInitializationContext initializationContext)
@@ -23,10 +23,10 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 
         protected override bool AbstractIsValidSpace(Space space, ActivationContext context)
         {
-            var origin = this.distanceTo.Item;
+            var origin = this.distanceTo.From(context, default);
             int distance = origin.DistanceTo(space);
 
-            int number = this.number.Item;
+            int number = this.number.From(context, default);
 
             return comparison.Compare(distance, number);
         }

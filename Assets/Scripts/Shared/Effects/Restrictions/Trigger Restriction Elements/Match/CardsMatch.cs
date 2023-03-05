@@ -8,8 +8,8 @@ namespace KompasCore.Effects.Restrictions
     {
         public class CardsMatch : TriggerRestrictionElement
         {
-            public IActivationContextIdentity<GameCardBase> firstCard;
-            public IActivationContextIdentity<GameCardBase> secondCard;
+            public IIdentity<GameCardBase> firstCard;
+            public IIdentity<GameCardBase> secondCard;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {

@@ -6,8 +6,8 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 {
     public class ConnectedTo : SpaceRestrictionElement
     {
-        public INoActivationContextIdentity<IReadOnlyCollection<Space>> spaces;
-        public INoActivationContextIdentity<IReadOnlyCollection<Space>> anyOfTheseSpaces;
+        public IIdentity<IReadOnlyCollection<Space>> spaces;
+        public IIdentity<IReadOnlyCollection<Space>> anyOfTheseSpaces;
         public SpaceRestriction byRestriction;
 
         public override void Initialize(EffectInitializationContext initializationContext)
@@ -22,7 +22,8 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 
         protected override bool AbstractIsValidSpace(Space space, ActivationContext context)
         {
-            return spaces.Item.All(s => InitializationContext.game.BoardController.AreConnectedBySpaces(s, space, byRestriction, context));
+            return spaces.From(context, default)
+                .All(s => InitializationContext.game.BoardController.AreConnectedBySpaces(s, space, byRestriction, context));
         }
     }
 }

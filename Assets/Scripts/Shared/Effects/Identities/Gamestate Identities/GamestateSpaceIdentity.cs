@@ -6,9 +6,9 @@ namespace KompasCore.Effects.Identities
 {
     namespace GamestateSpaceIdentities
     {
-        public class PositionOf : NoActivationContextIdentityBase<Space>
+        public class PositionOf : ContextualIdentityBase<Space>
         {
-            public INoActivationContextIdentity<GameCardBase> card;
+            public IIdentity<GameCardBase> card;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {
@@ -16,12 +16,13 @@ namespace KompasCore.Effects.Identities
                 card.Initialize(InitializationContext);
             }
 
-            protected override Space AbstractItem => card.Item.Position;
+            protected override Space AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
+                => card.From(context, secondaryContext).Position;
         }
 
-        public class SelectFromMany : NoActivationContextIdentityBase<Space>
+        public class SelectFromMany : ContextualIdentityBase<Space>
         {
-            public INoActivationContextIdentity<IReadOnlyCollection<Space>> spaces;
+            public IIdentity<IReadOnlyCollection<Space>> spaces;
             public ISelector<Space> selector;// = new RandomSelector<Space>();
 
             public override void Initialize(EffectInitializationContext initializationContext)
@@ -30,7 +31,8 @@ namespace KompasCore.Effects.Identities
                 spaces.Initialize(initializationContext);
             }
 
-            protected override Space AbstractItem => selector.Select(spaces.Item);
+            protected override Space AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
+                => selector.Select(spaces.From(context, secondaryContext));
         }
     }
 }

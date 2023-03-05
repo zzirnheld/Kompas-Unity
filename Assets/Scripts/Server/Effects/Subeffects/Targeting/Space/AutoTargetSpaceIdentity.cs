@@ -5,7 +5,7 @@ namespace KompasServer.Effects.Subeffects
 {
     public class AutoTargetSpaceIdentity : ServerSubeffect
     {
-            public INoActivationContextIdentity<Space> subeffectSpaceIdentity;
+            public IIdentity<Space> subeffectSpaceIdentity;
 
             public override void Initialize(ServerEffect eff, int subeffIndex)
             {

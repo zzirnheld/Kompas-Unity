@@ -8,7 +8,7 @@ namespace KompasCore.Effects.Restrictions
         public class StackableFitsRestriction : TriggerRestrictionElement
         {
             public StackableRestriction restriction;
-            public IActivationContextIdentity<IStackable> stackable;
+            public IIdentity<IStackable> stackable;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {

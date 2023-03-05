@@ -21,7 +21,7 @@ namespace KompasServer.Effects.Identities
         public class Selector : SubeffectIdentityBase<int>
         {
             public INumberSelector selector;
-            public INoActivationContextIdentity<IReadOnlyCollection<int>> numbers;
+            public IIdentity<IReadOnlyCollection<int>> numbers;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {

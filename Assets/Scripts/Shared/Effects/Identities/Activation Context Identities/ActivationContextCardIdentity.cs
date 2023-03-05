@@ -4,21 +4,21 @@ using KompasCore.Exceptions;
 namespace KompasCore.Effects.Identities.ActivationContextCardIdentities
 {
 
-    public class MainCardBefore : ActivationContextIdentityBase<GameCardBase>
+    public class MainCardBefore : ContextualLeafIdentityBase<GameCardBase>
     {
         protected override GameCardBase AbstractItemFrom(ActivationContext context)
             => context.mainCardInfoBefore;
     }
 
-    public class MainCardAfter : ActivationContextIdentityBase<GameCardBase>
+    public class MainCardAfter : ContextualLeafIdentityBase<GameCardBase>
     {
         protected override GameCardBase AbstractItemFrom(ActivationContext context)
             => context.MainCardInfoAfter;
     }
 
-    public class CardAtPosition : ActivationContextIdentityBase<GameCardBase>
+    public class CardAtPosition : ContextualIdentityBase<GameCardBase>
     {
-        public IActivationContextIdentity<Space> position;
+        public IIdentity<Space> position;
 
         public override void Initialize(EffectInitializationContext initializationContext)
         {
@@ -33,7 +33,7 @@ namespace KompasCore.Effects.Identities.ActivationContextCardIdentities
         }
     }
 
-    public class TargetIndex : ActivationContextIdentityBase<GameCardBase>
+    public class TargetIndex : ContextualLeafIdentityBase<GameCardBase>
     {
         public int index = -1;
 
@@ -41,21 +41,21 @@ namespace KompasCore.Effects.Identities.ActivationContextCardIdentities
             => EffectHelpers.GetItem(contextToConsider.CardTargets, index);
     }
 
-    public class CauseBefore : ActivationContextIdentityBase<GameCardBase>
+    public class CauseBefore : ContextualLeafIdentityBase<GameCardBase>
     {
         protected override GameCardBase AbstractItemFrom(ActivationContext contextToConsider)
             => contextToConsider.cardCauseBefore;
     }
 
-    public class CauseAfter : ActivationContextIdentityBase<GameCardBase>
+    public class CauseAfter : ContextualLeafIdentityBase<GameCardBase>
     {
         protected override GameCardBase AbstractItemFrom(ActivationContext contextToConsider)
             => contextToConsider.CauseCardInfoAfter;
     }
 
-    public class AugmentedCard : ActivationContextIdentityBase<GameCardBase>
+    public class AugmentedCard : ContextualIdentityBase<GameCardBase>
     {
-        public IActivationContextIdentity<GameCardBase> ofThisCard;
+        public IIdentity<GameCardBase> ofThisCard;
 
         public override void Initialize(EffectInitializationContext initializationContext)
         {
@@ -67,31 +67,21 @@ namespace KompasCore.Effects.Identities.ActivationContextCardIdentities
             => ofThisCard.From(context, secondaryContext).AugmentedCard;
     }
 
-    public abstract class InFight : ActivationContextIdentityBase<GameCardBase>
-    {
-        protected Attack GetAttack(ActivationContext context)
-        {
-            if (context.stackableEvent is Attack eventAttack) return eventAttack;
-            if (context.stackableCause is Attack causeAttack) return causeAttack;
-            else throw new NullCardException("Stackable event wasn't an attack!");
-        }
-    }
-
-    public class Attacker : InFight
+    public class Attacker : ContextualLeafIdentityBase<GameCardBase>
     {
         protected override GameCardBase AbstractItemFrom(ActivationContext contextToConsider)
             => GetAttack(contextToConsider).attacker;
     }
 
-    public class Defender : InFight
+    public class Defender : ContextualLeafIdentityBase<GameCardBase>
     {
         protected override GameCardBase AbstractItemFrom(ActivationContext contextToConsider)
             => GetAttack(contextToConsider).defender;
     }
 
-    public class OtherInFight : InFight
+    public class OtherInFight : ContextualIdentityBase<GameCardBase>
     {
-        public IActivationContextIdentity<GameCardBase> other;
+        public IIdentity<GameCardBase> other;
 
         public override void Initialize(EffectInitializationContext initializationContext)
         {
