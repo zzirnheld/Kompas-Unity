@@ -1,4 +1,4 @@
-using KompasServer.Effects.Identities.SubeffectNumberIdentities;
+using KompasCore.Effects.Identities.ActivationContextNumberIdentities;
 
 namespace KompasServer.Effects.Subeffects
 {

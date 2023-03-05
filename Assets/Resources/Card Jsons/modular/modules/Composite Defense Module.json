@@ -26,7 +26,7 @@
                             "$type": "ActivationContext.ManyCards:FittingRestriction:",
                             "cards": {
                                 "$type": "ActivationContext.ManyCards:Augments:",
-                                "card": { "$type": "Subeffect.Card:Target:" }
+                                "card": { "$type": "ActivationContext.Card:TargetIndex:" }
                             },
                             "cardRestriction": {
                                 "cardRestrictionElements": [

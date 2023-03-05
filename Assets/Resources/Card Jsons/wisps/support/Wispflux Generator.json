@@ -45,7 +45,7 @@
                             "restriction": {
                                 "spaceRestrictionElements": [ {
                                     "$type": "Core.SpaceRestriction:CanPlayCard:",
-                                    "toPlay": { "$type": "Subeffect.Card:Target:" }
+                                    "toPlay": { "$type": "ActivationContext.Card:TargetIndex:" }
                                 } ]
                             }
                         }

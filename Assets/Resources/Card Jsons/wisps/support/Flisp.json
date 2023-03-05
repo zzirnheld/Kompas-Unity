@@ -38,7 +38,7 @@
                             "$type": "Gamestate.ManySpaces:CompareDistance:",
                             "distanceTo": { 
                                 "$type": "Subeffect.Space:PositionOf:",
-                                "whosePosition": { "$type": "Subeffect.Card:Target:" }
+                                "whosePosition": { "$type": "ActivationContext.Card:TargetIndex:" }
                             },
                             "spaces": {
                                 "$type": "Gamestate.ManySpaces:PositionsOfEach:",
@@ -59,12 +59,12 @@
                         "selector": { "$type": "KompasCore.Effects.Selectors.RandomSpace, Assembly-CSharp" },
                         "spaces": {
                             "$type": "Gamestate.ManySpaces:CompareDistance:",
-                            "distanceTo": { "$type": "Subeffect.Card:Target:" },
+                            "distanceTo": { "$type": "ActivationContext.Card:TargetIndex:" },
                             "spaces": {
                                 "$type": "Gamestate.ManySpaces:AdjacentSpaces:",
                                 "adjacentTo": {
                                     "$type": "Subeffect.Space:PositionOf:",
-                                    "whosePosition": { "$type": "Subeffect.Card:Target:" }
+                                    "whosePosition": { "$type": "ActivationContext.Card:TargetIndex:" }
                                 }
                             }
                         }

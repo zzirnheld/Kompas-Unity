@@ -1,6 +1,6 @@
 ﻿using KompasCore.Effects;
+using KompasCore.Effects.Identities.ActivationContextCardIdentities;
 using KompasCore.Effects.Identities.GamestateManyCardsIdentities;
-using KompasServer.Effects.Identities.SubeffectCardIdentities;
 
 namespace KompasServer.Effects.Subeffects
 {
@@ -12,7 +12,7 @@ namespace KompasServer.Effects.Subeffects
         {
             cardsIdentity = new FittingRestriction() {
                 cardRestriction = cardRestriction ?? new CardRestriction(),
-                cards = new Augments() { card = new FromActivationContext() { cardFromContext = new Target() } } };
+                cards = new Augments() { card = new TargetIndex() } };
             base.Initialize(eff, subeffIndex);
         }
     }

@@ -39,7 +39,7 @@
 				"selector": { "$type": "KompasCore.Effects.Selectors.RandomSpace, Assembly-CSharp" },
 				"spaces": {
 					"$type": "Gamestate.ManySpaces:CompareDistance:",
-					"distanceTo": { "$type": "Subeffect.Space:Target:" },
+					"distanceTo": { "$type": "ActivationContext.Space:TargetIndex:" },
 					"spaces": {
 						"$type": "Gamestate.ManySpaces:AdjacentSpaces:",
 						"adjacentTo": {

@@ -38,16 +38,16 @@
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {
                                 "$type": "Core.SpaceRestriction:CanMoveCard:",
-                                "toMove": { "$type": "Subeffect.Card:Target:" }
+                                "toMove": { "$type": "ActivationContext.Card:TargetIndex:" }
                             },
                             {
                                 "$type": "Core.SpaceRestriction:CompareDistance:",
                                 "distanceTo": {
                                     "$type": "Subeffect.Space:PositionOf:",
-                                    "whosePosition": { "$type": "Subeffect.Card:Target:" }
+                                    "whosePosition": { "$type": "ActivationContext.Card:TargetIndex:" }
                                 },
                                 "number": { 
-                                    "$type": "Subeffect.Number:X:",
+                                    "$type": "ActivationContext.Number:X:",
                                     "multiplier": 0,
                                     "modifier": 1
                                 },

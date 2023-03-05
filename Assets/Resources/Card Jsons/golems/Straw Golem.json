@@ -37,7 +37,7 @@
                             { "$type": "Core.SpaceRestriction:Empty:" },
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
-								"toMove": { "$type": "Subeffect.Card:Target:" },
+								"toMove": { "$type": "ActivationContext.Card:TargetIndex:" },
 								"distanceRestriction": {
 									"numberRestrictions": [ "==Constant" ],
 									"constant": 3
@@ -73,7 +73,7 @@
                             { "$type": "Core.SpaceRestriction:Empty:" },
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
-								"toMove": { "$type": "Subeffect.Card:Target:" },
+								"toMove": { "$type": "ActivationContext.Card:TargetIndex:" },
 								"distanceRestriction": {
 									"numberRestrictions": [ "==Constant" ],
 									"constant": 3

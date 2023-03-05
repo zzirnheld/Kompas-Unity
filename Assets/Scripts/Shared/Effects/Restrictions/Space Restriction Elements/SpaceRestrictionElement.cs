@@ -1,5 +1,4 @@
 using KompasCore.Effects.Identities;
-using KompasServer.Effects.Identities;
 using System.Linq;
 
 namespace KompasCore.Effects.Restrictions

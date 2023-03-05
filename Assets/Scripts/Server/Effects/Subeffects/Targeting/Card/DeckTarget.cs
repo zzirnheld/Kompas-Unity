@@ -43,7 +43,7 @@ namespace KompasServer.Effects.Subeffects
         }
 
         protected override IEnumerable<GameCard> TargetCardsSource
-            => Controller.deckCtrl.Deck.Take(numberOfTopCards.Item);
+            => Controller.deckCtrl.Deck.Take(numberOfTopCards.From(CurrentContext, default));
 
         public override bool AddTargetIfLegal(GameCard card)
         {

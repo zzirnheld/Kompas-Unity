@@ -32,7 +32,7 @@
                         "spaceRestrictions":["Opposite Direction from Source to Space as Source to Space Target"],
 						"spaceRestrictionElements": [ {
 							"$type": "Core.SpaceRestriction:CanMoveCard:",
-							"toMove": { "$type": "Subeffect.Card:Target:" },
+							"toMove": { "$type": "ActivationContext.Card:TargetIndex:" },
 							"distanceRestriction": {
 								"numberRestrictions": [ "==Constant" ],
 								"constant": 1

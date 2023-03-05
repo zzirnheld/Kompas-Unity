@@ -1,5 +1,5 @@
-﻿using KompasCore.Effects.Identities.GamestateCardIdentities;
-using KompasServer.Effects.Identities.SubeffectPlayerIdentities;
+﻿using KompasCore.Effects.Identities.ActivationContextPlayerIdentities;
+using KompasCore.Effects.Identities.GamestateCardIdentities;
 
 namespace KompasServer.Effects.Subeffects
 {
@@ -7,7 +7,7 @@ namespace KompasServer.Effects.Subeffects
     {
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
-            subeffectCardIdentity = new Avatar() { player = new FromActivationContext() { playerFromContext = new Target() } };
+            subeffectCardIdentity = new Avatar() { player = new TargetIndex() };
             base.Initialize(eff, subeffIndex);
         }
     }

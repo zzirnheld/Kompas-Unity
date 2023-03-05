@@ -1,8 +1,8 @@
 using KompasCore.Cards;
 using KompasCore.Effects.Identities;
+using KompasCore.Effects.Identities.ActivationContextCardIdentities;
 using KompasCore.Effects.Identities.GamestateManyCardsIdentities;
 using KompasCore.Exceptions;
-using KompasServer.Effects.Identities.SubeffectCardIdentities;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -31,7 +31,7 @@ namespace KompasServer.Effects.Subeffects
         {
             base.Initialize(eff, subeffIndex);
 
-            card ??= new Target() { index = targetIndex };
+            card ??= new TargetIndex() { index = targetIndex };
             cards ??= new Multiple() { cards = new IIdentity<GameCardBase>[] { card } };
 
             var initContext = DefaultInitializationContext;
