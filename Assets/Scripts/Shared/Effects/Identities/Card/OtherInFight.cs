@@ -1,7 +1,7 @@
 using KompasCore.Cards;
 using KompasCore.Exceptions;
 
-namespace KompasCore.Effects.Identities.ActivationContextCardIdentities
+namespace KompasCore.Effects.Identities.Cards
 {
     public class OtherInFight : ContextualParentIdentityBase<GameCardBase>
     {

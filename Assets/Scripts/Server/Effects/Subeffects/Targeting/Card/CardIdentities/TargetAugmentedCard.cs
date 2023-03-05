@@ -1,4 +1,4 @@
-﻿using KompasCore.Effects.Identities.ActivationContextCardIdentities;
+﻿using KompasCore.Effects.Identities.Cards;
 using KompasCore.Effects.Identities.Cards;
 
 namespace KompasServer.Effects.Subeffects

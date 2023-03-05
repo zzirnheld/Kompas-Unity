@@ -1,5 +1,5 @@
 ﻿using KompasCore.Effects.Identities.ActivationContextPlayerIdentities;
-using KompasCore.Effects.Identities.GamestateCardIdentities;
+using KompasCore.Effects.Identities.Cards;
 
 namespace KompasServer.Effects.Subeffects
 {

@@ -1,6 +1,6 @@
 using KompasCore.Cards;
 using KompasCore.Effects.Identities;
-using KompasCore.Effects.Identities.ActivationContextCardIdentities;
+using KompasCore.Effects.Identities.Cards;
 using KompasCore.Effects.Identities.GamestateManyCardsIdentities;
 using KompasCore.Exceptions;
 using System.Collections.Generic;

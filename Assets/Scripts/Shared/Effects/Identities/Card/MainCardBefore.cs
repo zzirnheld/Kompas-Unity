@@ -1,6 +1,6 @@
 using KompasCore.Cards;
 
-namespace KompasCore.Effects.Identities.ActivationContextCardIdentities
+namespace KompasCore.Effects.Identities.Cards
 {
     public class MainCardBefore : ContextualLeafIdentityBase<GameCardBase>
     {

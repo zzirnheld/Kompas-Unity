@@ -1,6 +1,6 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects.Identities;
-using KompasCore.Effects.Identities.ActivationContextCardIdentities;
+using KompasCore.Effects.Identities.Cards;
 
 namespace KompasServer.Effects.Subeffects
 {
