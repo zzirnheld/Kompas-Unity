@@ -35,7 +35,7 @@
 					"$type": "Subeffect:StashTargetsCardInfo:"
 				},
 				{
-					"$type": "Subeffect:Rehand:"
+					"$type": "Subeffect:Hand:"
 				},
 				{
 					"$type": "Subeffect:AutoTarget:",

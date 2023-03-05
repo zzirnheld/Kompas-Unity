@@ -53,7 +53,7 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "Subeffect:Rehand:"
+					"$type": "Subeffect:Hand:"
 				}
 			]
 		}

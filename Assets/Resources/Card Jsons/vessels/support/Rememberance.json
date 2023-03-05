@@ -75,7 +75,7 @@
                     "xMultiplier":1
 				},
 				{
-					"$type": "Subeffect:Rehand:"
+					"$type": "Subeffect:Hand:"
 				},
 				{
 					"$type": "Subeffect:EndResolution:"
@@ -103,7 +103,7 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "Subeffect:Rehand:"
+					"$type": "Subeffect:Hand:"
 				},
 				{
 					"$type": "Subeffect:LoopWhileHaveTargets:",

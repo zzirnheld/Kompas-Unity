@@ -43,7 +43,7 @@
 					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "Subeffect:Rehand:"
+					"$type": "Subeffect:Hand:"
 				}
 			]
 		}

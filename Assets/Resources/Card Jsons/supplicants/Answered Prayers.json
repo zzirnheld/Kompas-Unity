@@ -28,7 +28,7 @@
 					"$type": "Subeffect:TargetTargetsController:"
 				},
 				{
-					"$type": "Subeffect:Rehand:"
+					"$type": "Subeffect:Hand:"
 				}
 			]
 		}

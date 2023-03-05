@@ -28,7 +28,7 @@
 					}
 				},
 				{
-					"$type": "Subeffect:Rehand:"
+					"$type": "Subeffect:Hand:"
 				},
 				{
 					"$type": "Subeffect:DeckTarget:",
@@ -47,7 +47,7 @@
 					}
 				},
 				{
-					"$type": "Subeffect:Rehand:"
+					"$type": "Subeffect:Hand:"
 				}
 			]
 		}

@@ -32,7 +32,7 @@
 					}
 				},
 				{
-					"$type": "Subeffect:Rehand:"
+					"$type": "Subeffect:Hand:"
 				}
 			]
 		},

@@ -50,7 +50,7 @@
 					"endCondition": "Turn Start"
 				},
 				{
-					"$type": "Subeffect:Rehand:"
+					"$type": "Subeffect:Hand:"
 				}
 			]
 		}

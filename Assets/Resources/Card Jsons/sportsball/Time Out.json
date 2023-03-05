@@ -54,7 +54,7 @@
 					"jumpIndices":[3]
 				},
 				{
-					"$type":"Subeffect:Rehand:",
+					"$type":"Subeffect:Hand:",
 					"targetIndex":1
 				}
 			]

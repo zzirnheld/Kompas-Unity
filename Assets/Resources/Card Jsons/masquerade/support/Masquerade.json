@@ -48,7 +48,7 @@
 					"$type": "Subeffect:TargetTargetsSpace:"
 				},
 				{
-					"$type": "Subeffect:Rehand:",
+					"$type": "Subeffect:Hand:",
 					"targetIndex": -2
 				},
 				{

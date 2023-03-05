@@ -29,7 +29,7 @@
 					}
 				},
 				{
-					"$type": "Subeffect:Rehand:"
+					"$type": "Subeffect:Hand:"
 				},
 				{
 					"$type": "Subeffect:LoopWhileHaveTargets:",
@@ -61,7 +61,7 @@
                     "$type": "Subeffect:TargetThis:"
                 },
                 {
-                    "$type":"Subeffect:Rehand:",
+                    "$type":"Subeffect:Hand:",
                     "targetIndex": 0
                 },
 				{

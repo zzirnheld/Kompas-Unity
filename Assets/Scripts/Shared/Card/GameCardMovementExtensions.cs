@@ -6,8 +6,8 @@ namespace KompasCore.Cards.Movement
     {
         public static void Discard(this GameCard card, IStackable stackSrc = null) => card.Controller.discardCtrl.Discard(card, stackSrc);
 
-        public static void Rehand(this GameCard card, Player controller, IStackable stackSrc = null) => controller.handCtrl.Hand(card, stackSrc);
-        public static void Rehand(this GameCard card, IStackable stackSrc = null) => card.Rehand(card.Owner, stackSrc);
+        public static void Hand(this GameCard card, Player controller, IStackable stackSrc = null) => controller.handCtrl.Hand(card, stackSrc);
+        public static void Rehand(this GameCard card, IStackable stackSrc = null) => card.Hand(card.Owner, stackSrc);
 
         public static void Reshuffle(this GameCard card, Player controller, IStackable stackSrc = null) => controller.deckCtrl.ShuffleIn(card, stackSrc);
         public static void Reshuffle(this GameCard card, IStackable stackSrc = null) => card.Reshuffle(card.Owner, stackSrc);

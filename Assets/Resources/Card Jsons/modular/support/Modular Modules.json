@@ -66,7 +66,7 @@
                     "xMultiplier": 1
 				},
 				{
-					"$type": "Subeffect:Rehand:"
+					"$type": "Subeffect:Hand:"
 				},
 				{
 					"$type": "Subeffect:LoopWhileHaveTargets:",
@@ -130,7 +130,7 @@
 					"xModifier":1
 				},
                 {
-                    "$type":"Subeffect:Rehand:",
+                    "$type":"Subeffect:Hand:",
                     "targetIndex": 0
                 }
             ]

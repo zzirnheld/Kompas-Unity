@@ -55,7 +55,7 @@
 					"$type": "Subeffect:ClearOnImpossible:"
 				},
 				{
-					"$type": "Subeffect:Rehand:"
+					"$type": "Subeffect:Hand:"
 				},
 				{
 					"$type": "Subeffect:LoopWhileHaveTargets:",

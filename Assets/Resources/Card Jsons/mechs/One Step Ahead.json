@@ -80,7 +80,7 @@
 					"tiebreakerDirection":"Any"
 				},
 				{
-					"$type": "Subeffect:Rehand:"
+					"$type": "Subeffect:Hand:"
 				},
 				{
 					"$type": "Subeffect:Jump:",
