@@ -2,14 +2,11 @@ using KompasCore.Cards;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace KompasCore.Effects.Identities
+namespace KompasCore.Effects.Identities.ManyCards
 {
-    namespace GamestateManyCardsIdentities
+    public class Board : ContextlessLeafIdentityBase<IReadOnlyCollection<GameCardBase>>
     {
-        public class Board : ContextlessLeafIdentityBase<IReadOnlyCollection<GameCardBase>>
-        {
-            protected override IReadOnlyCollection<GameCardBase> AbstractItem
-                => InitializationContext.game.BoardController.Cards.ToArray();
-        }
+        protected override IReadOnlyCollection<GameCardBase> AbstractItem
+            => InitializationContext.game.BoardController.Cards.ToArray();
     }
 }

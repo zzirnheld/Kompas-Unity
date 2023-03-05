@@ -2,25 +2,22 @@ using KompasCore.Cards;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace KompasCore.Effects.Identities
+namespace KompasCore.Effects.Identities.ManyCards
 {
-    namespace GamestateManyCardsIdentities
+    public class Distinct : ContextualParentIdentityBase<IReadOnlyCollection<GameCardBase>>
     {
-        public class Distinct : ContextualParentIdentityBase<IReadOnlyCollection<GameCardBase>>
+        public IIdentity<IReadOnlyCollection<GameCardBase>> cards;
+
+        public override void Initialize(EffectInitializationContext initializationContext)
         {
-            public IIdentity<IReadOnlyCollection<GameCardBase>> cards;
-
-            public override void Initialize(EffectInitializationContext initializationContext)
-            {
-                base.Initialize(initializationContext);
-                cards.Initialize(initializationContext);
-            }
-
-            protected override IReadOnlyCollection<GameCardBase> AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
-                => cards.From(context, secondaryContext)
-                    .GroupBy(c => c.CardName)
-                    .Select(group => group.First())
-                    .ToArray();
+            base.Initialize(initializationContext);
+            cards.Initialize(initializationContext);
         }
+
+        protected override IReadOnlyCollection<GameCardBase> AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
+            => cards.From(context, secondaryContext)
+                .GroupBy(c => c.CardName)
+                .Select(group => group.First())
+                .ToArray();
     }
 }

@@ -1,7 +1,7 @@
 using KompasCore.Cards;
 using KompasCore.Effects.Identities;
 using KompasCore.Effects.Identities.Cards;
-using KompasCore.Effects.Identities.GamestateManyCardsIdentities;
+using KompasCore.Effects.Identities.ManyCards;
 using KompasCore.Exceptions;
 using System.Collections.Generic;
 using System.Linq;

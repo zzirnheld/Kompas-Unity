@@ -9,7 +9,7 @@ namespace KompasCore.Effects.Identities
 
         public class CountCards : ContextualParentIdentityBase<int>
         {
-            public IIdentity<IReadOnlyCollection<GameCardBase>> cards = new GamestateManyCardsIdentities.All();
+            public IIdentity<IReadOnlyCollection<GameCardBase>> cards = new ManyCards.All();
 
             public CardRestriction cardRestriction = new CardRestriction();
 

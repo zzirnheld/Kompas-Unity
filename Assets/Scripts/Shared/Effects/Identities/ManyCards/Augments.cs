@@ -1,23 +1,20 @@
 using KompasCore.Cards;
 using System.Collections.Generic;
 
-namespace KompasCore.Effects.Identities
+namespace KompasCore.Effects.Identities.ManyCards
 {
-    namespace ActivationContextManyCardsIdentities
+
+    public class Augments : ContextualParentIdentityBase<IReadOnlyCollection<GameCardBase>>
     {
+        public IIdentity<GameCardBase> card;
 
-        public class Augments : ContextualParentIdentityBase<IReadOnlyCollection<GameCardBase>>
+        public override void Initialize(EffectInitializationContext initializationContext)
         {
-            public IIdentity<GameCardBase> card;
-
-            public override void Initialize(EffectInitializationContext initializationContext)
-            {
-                base.Initialize(initializationContext);
-                card.Initialize(initializationContext);
-            }
-
-            protected override IReadOnlyCollection<GameCardBase> AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
-                => card.From(context, secondaryContext).Augments;
+            base.Initialize(initializationContext);
+            card.Initialize(initializationContext);
         }
+
+        protected override IReadOnlyCollection<GameCardBase> AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
+            => card.From(context, secondaryContext).Augments;
     }
 }

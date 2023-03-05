@@ -1,24 +1,21 @@
 using KompasCore.Cards;
 using System.Collections.Generic;
 
-namespace KompasCore.Effects.Identities
+namespace KompasCore.Effects.Identities.ManyCards
 {
-    namespace GamestateManyCardsIdentities
+    public class Deck : ContextlessLeafIdentityBase<IReadOnlyCollection<GameCardBase>>
     {
-        public class Deck : ContextlessLeafIdentityBase<IReadOnlyCollection<GameCardBase>>
-        {
-            public bool friendly = true;
-            public bool enemy = true;
+        public bool friendly = true;
+        public bool enemy = true;
 
-            protected override IReadOnlyCollection<GameCardBase> AbstractItem
+        protected override IReadOnlyCollection<GameCardBase> AbstractItem
+        {
+            get
             {
-                get
-                {
-                    var cards = new List<GameCardBase>();
-                    if (friendly) cards.AddRange(InitializationContext.Controller.deckCtrl.Deck);
-                    if (enemy) cards.AddRange(InitializationContext.Controller.Enemy.deckCtrl.Deck);
-                    return cards;
-                }
+                var cards = new List<GameCardBase>();
+                if (friendly) cards.AddRange(InitializationContext.Controller.deckCtrl.Deck);
+                if (enemy) cards.AddRange(InitializationContext.Controller.Enemy.deckCtrl.Deck);
+                return cards;
             }
         }
     }
