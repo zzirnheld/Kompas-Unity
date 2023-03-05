@@ -1,7 +1,7 @@
 [
     {
         "$type": "Core.TriggerRestriction:StackableFitsRestriction:",
-        "stackable": { "$type": "Stackable:StackableCause:" },
+        "stackable": { "$type": "Stackables:StackableCause:" },
         "restriction": {
             "stackableRestrictionElements": [
                 {
@@ -14,15 +14,15 @@
     {
         "$type": "Core.TriggerRestriction:CompareNumbers:",
         "firstNumber": {
-            "$type": "Number:Operation:",
+            "$type": "Numbers:Operation:",
             "numbers": [
                 {
-                    "$type": "Number:X:",
+                    "$type": "Numbers:X:",
                     "multiplier": 0,
                     "modifier": 1
                 },
                 {
-                    "$type": "Number:Distance:",
+                    "$type": "Numbers:Distance:",
                     "firstSpace": {
                         "$type": "Spaces:PositionOf:",
                         "whosePosition": { "$type": "Cards:ThisCard:" }
@@ -48,7 +48,7 @@
                     }
                 },
                 {
-                    "$type": "Number:Distance:",
+                    "$type": "Numbers:Distance:",
                     "firstSpace": {
                         "$type": "Spaces:PositionOf:",
                         "whosePosition": { "$type": "Cards:ThisCard:" }
@@ -76,7 +76,7 @@
             ]
         },
         "secondNumber": {
-            "$type": "Number:Distance:",
+            "$type": "Numbers:Distance:",
             "firstSpace": {
                 "$type": "Spaces:PositionOf:",
                 "whosePosition": { "$type": "Cards:MainCardBefore:" }

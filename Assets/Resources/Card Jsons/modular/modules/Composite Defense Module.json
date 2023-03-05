@@ -21,7 +21,7 @@
                 {
                     "$type": "Subeffect:SetXByNumberIdentity:",
                     "numberIdentity": {
-                        "$type": "Number:CountCards:",
+                        "$type": "Numbers:CountCards:",
                         "cards": {
                             "$type": "ManyCards:FittingRestriction:",
                             "cards": {

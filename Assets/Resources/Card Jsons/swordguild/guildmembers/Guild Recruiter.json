@@ -24,7 +24,7 @@
                                 "$type": "Core.SpaceRestriction:WithinDistanceOfNumberOfCards:",
                                 "cardRestriction": {
                                     "numberOfCards": { 
-                                        "$type": "Number:Constant:",
+                                        "$type": "Numbers:Constant:",
                                         "constant": 2
                                     },
                                     "cardRestrictionElements": [

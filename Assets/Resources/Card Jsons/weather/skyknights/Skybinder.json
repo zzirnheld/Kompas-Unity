@@ -28,7 +28,7 @@
                 "triggerRestrictionElements": [
                     {
                         "$type": "Core.TriggerRestriction:StackableFitsRestriction:",
-                        "stackable": { "$type": "Stackable:StackableCause:" },
+                        "stackable": { "$type": "Stackables:StackableCause:" },
                         "restriction": {
                             "stackableRestrictionElements": [
                                 {

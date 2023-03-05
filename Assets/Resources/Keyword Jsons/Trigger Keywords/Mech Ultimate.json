@@ -13,7 +13,7 @@
             "constant":30
         },
         "number": {
-            "$type": "Number:FromCardValue:",
+            "$type": "Numbers:FromCardValue:",
             "card": { "$type": "Cards:MainCardBefore:" },
             "cardValue": { "value": "S" }
         }

@@ -36,7 +36,7 @@
                                                 "whosePosition": { "$type": "Cards:TargetIndex:" }
                                             },
                                             "number": { 
-                                                "$type": "Number:Constant:",
+                                                "$type": "Numbers:Constant:",
                                                 "constant": 2
                                             },
                                             "comparison": { "$type": "Relationships.Number:Equal:" }

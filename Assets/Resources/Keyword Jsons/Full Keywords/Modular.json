@@ -45,7 +45,7 @@
         {
             "$type": "Subeffect:SetXByNumberIdentity:",
             "numberIdentity": {
-                "$type": "Number:TargetCount:",
+                "$type": "Numbers:TargetCount:",
                 "multiplier": 1,
                 "modifier": -1
             },

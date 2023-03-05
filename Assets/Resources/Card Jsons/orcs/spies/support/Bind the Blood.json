@@ -47,8 +47,8 @@
 						"triggerRestrictionElements": [
 							{
 								"$type": "Core.TriggerRestriction:StackablesMatch:",
-								"firstStackable": { "$type": "Stackable:StackableIndex:" },
-								"secondStackable": { "$type": "Stackable:StackableCause:" }
+								"firstStackable": { "$type": "Stackables:StackableIndex:" },
+								"secondStackable": { "$type": "Stackables:StackableCause:" }
 							}
 						]
 					},
@@ -57,8 +57,8 @@
 						"triggerRestrictionElements": [
 							{
 								"$type": "Core.TriggerRestriction:StackablesMatch:",
-								"firstStackable": { "$type": "Stackable:StackableIndex:" },
-								"secondStackable": { "$type": "Stackable:StackableCause:" }
+								"firstStackable": { "$type": "Stackables:StackableIndex:" },
+								"secondStackable": { "$type": "Stackables:StackableCause:" }
 							},
 							{
 								"$type": "Core.TriggerRestriction:CardsMatch:",

@@ -81,7 +81,7 @@
 					}
 				},
 				"minAnyOfCount": { 
-					"$type": "Number:Constant:",
+					"$type": "Numbers:Constant:",
 					"constant": 2
 				}
 			} ]

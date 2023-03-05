@@ -47,7 +47,7 @@
                                     "whosePosition": { "$type": "Cards:TargetIndex:" }
                                 },
                                 "number": { 
-                                    "$type": "Number:X:",
+                                    "$type": "Numbers:X:",
                                     "multiplier": 0,
                                     "modifier": 1
                                 },
