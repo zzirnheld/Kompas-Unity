@@ -15,11 +15,4 @@ namespace KompasCore.Effects.Identities.ActivationContextPlayerIdentities
         protected override Player AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
             => card.From(context, secondaryContext).Controller;
     }
-
-    public class TargetIndex : ContextlessLeafIdentityBase<Player>
-    {
-        public int index = -1;
-
-        protected override Player AbstractItem => InitializationContext.effect.GetPlayer(index);
-    }
 }
