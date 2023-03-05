@@ -1,6 +1,6 @@
 using KompasCore.Cards;
 using KompasCore.Effects.Identities;
-using KompasCore.Effects.Identities.GamestatePlayerIdentities;
+using KompasCore.Effects.Identities.Players;
 
 namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 {

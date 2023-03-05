@@ -1,7 +1,7 @@
 using KompasCore.Cards;
 using System.Linq;
 
-namespace KompasCore.Effects.Identities.ActivationContextNumberIdentities
+namespace KompasCore.Effects.Identities.Numbers
 {
 
     public class TargetCount : ContextualParentIdentityBase<int>

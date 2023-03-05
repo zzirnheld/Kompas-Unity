@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using KompasCore.Effects.Identities;
-using KompasCore.Effects.Identities.ActivationContextNumberIdentities;
+using KompasCore.Effects.Identities.Numbers;
 
 namespace KompasServer.Effects.Subeffects
 {

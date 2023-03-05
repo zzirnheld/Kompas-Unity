@@ -1,6 +1,6 @@
 using KompasCore.Cards;
 
-namespace KompasCore.Effects.Identities.ActivationContextNumberIdentities
+namespace KompasCore.Effects.Identities.Numbers
 {
     public class FromCardValue : ContextualParentIdentityBase<int>
     {

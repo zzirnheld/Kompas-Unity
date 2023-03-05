@@ -1,5 +1,5 @@
 ﻿using KompasCore.Effects;
-using KompasCore.Effects.Identities.ActivationContextNumberIdentities;
+using KompasCore.Effects.Identities.Numbers;
 
 namespace KompasServer.Effects.Subeffects
 {

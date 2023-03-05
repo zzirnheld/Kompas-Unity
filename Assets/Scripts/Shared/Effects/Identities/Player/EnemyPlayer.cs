@@ -1,4 +1,4 @@
-namespace KompasCore.Effects.Identities.GamestatePlayerIdentities
+namespace KompasCore.Effects.Identities.Players
 {
 
     public class EnemyPlayer : ContextlessLeafIdentityBase<Player>

@@ -1,4 +1,4 @@
-namespace KompasCore.Effects.Identities.ActivationContextPlayerIdentities
+namespace KompasCore.Effects.Identities.Players
 {
 
     public class TargetIndex : ContextlessLeafIdentityBase<Player>

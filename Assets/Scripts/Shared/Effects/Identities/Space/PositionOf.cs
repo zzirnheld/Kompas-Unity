@@ -1,6 +1,6 @@
 using KompasCore.Cards;
 
-namespace KompasCore.Effects.Identities.ActivationContextSpaceIdentities
+namespace KompasCore.Effects.Identities.Spaces
 {
     public class PositionOf : ContextualParentIdentityBase<Space>
     {

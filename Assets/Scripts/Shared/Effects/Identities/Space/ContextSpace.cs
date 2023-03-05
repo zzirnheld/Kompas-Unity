@@ -1,4 +1,4 @@
-namespace KompasCore.Effects.Identities.ActivationContextSpaceIdentities
+namespace KompasCore.Effects.Identities.Spaces
 {
     public class ContextSpace : ContextualLeafIdentityBase<Space>
     {

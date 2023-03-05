@@ -1,6 +1,6 @@
 using KompasCore.Cards;
 
-namespace KompasCore.Effects.Identities.ActivationContextPlayerIdentities
+namespace KompasCore.Effects.Identities.Players
 {
     public class ControllerOf : ContextualParentIdentityBase<Player>
     {

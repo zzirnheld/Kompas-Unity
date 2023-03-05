@@ -163,17 +163,8 @@ public class CardRepository : MonoBehaviour
     private static readonly Regex playersIdentityRegex = new Regex(@"Players:([^:]+):"); //Players:*:
     private const string playersIdentityReplacement = @"KompasCore.Effects.Identities.Players.$1, Assembly-CSharp";
 
-    private static readonly Regex subeffectIdentityRegex = new Regex(@"Subeffect\.([^:]+):([^:]+):"); //Subeffect.*:*:
-    private const string subeffectIdentityReplacement = @"KompasServer.Effects.Identities.Subeffect$1Identities.$2, Assembly-CSharp";
-
-    private static readonly Regex activationContextIdentityRegex = new Regex(@"ActivationContext\.([^:]+):([^:]+):"); //ActivationContext.*:*:
-    private const string activationContextIdentityReplacement = @"KompasCore.Effects.Identities.ActivationContext$1Identities.$2, Assembly-CSharp";
-
-    private static readonly Regex gamestateIdentityRegex = new Regex(@"Gamestate\.([^:]+):([^:]+):"); //Gamestate.*:*:
-    private const string gamestateIdentityReplacement = @"KompasCore.Effects.Identities.Gamestate$1Identities.$2, Assembly-CSharp";
-
-    private static readonly Regex leafIdentityRegex = new Regex(@"Leaf\.([^:]+):([^:]+):"); //*:*:
-    private const string leafIdentityReplacement = @"KompasCore.Effects.Identities.$1.$2, Assembly-CSharp";
+    private static readonly Regex stackablesIdentityRegex = new Regex(@"Stackables:([^:]+):"); //Stackables:*:
+    private const string stackablesIdentityReplacement = @"KompasCore.Effects.Identities.Stackables.$1, Assembly-CSharp";
 
     //relationships
     private static readonly Regex relationshipRegex = new Regex(@"Relationships\.([^:]+):([^:]+):"); //Relationships.*:*:
@@ -207,12 +198,7 @@ public class CardRepository : MonoBehaviour
         json = numbersIdentityRegex.Replace(json, numbersIdentityReplacement);
         
         json = playersIdentityRegex.Replace(json, playersIdentityReplacement);
-
-        json = subeffectIdentityRegex.Replace(json, subeffectIdentityReplacement);
-        json = activationContextIdentityRegex.Replace(json, activationContextIdentityReplacement);
-        json = gamestateIdentityRegex.Replace(json, gamestateIdentityReplacement);
-
-        json = leafIdentityRegex.Replace(json, leafIdentityReplacement);
+        json = stackablesIdentityRegex.Replace(json, stackablesIdentityReplacement);
 
         json = relationshipRegex.Replace(json, relationshipReplacement);
         json = numberSelectorRegex.Replace(json, numberSelectorReplacement);

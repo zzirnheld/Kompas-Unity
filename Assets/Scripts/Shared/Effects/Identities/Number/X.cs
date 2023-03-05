@@ -1,4 +1,4 @@
-namespace KompasCore.Effects.Identities.ActivationContextNumberIdentities
+namespace KompasCore.Effects.Identities.Numbers
 {
     public class X : ContextualLeafIdentityBase<int>
     {

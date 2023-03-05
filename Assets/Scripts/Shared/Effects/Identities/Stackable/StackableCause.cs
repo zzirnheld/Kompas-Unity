@@ -1,11 +1,8 @@
-namespace KompasCore.Effects.Identities
+namespace KompasCore.Effects.Identities.Stackables
 {
-    namespace ActivationContextStackableIdentities
+    public class StackableCause : ContextualLeafIdentityBase<IStackable>
     {
-        public class StackableCause : ContextualLeafIdentityBase<IStackable>
-        {
-            protected override IStackable AbstractItemFrom(ActivationContext contextToConsider)
-                => contextToConsider.stackableCause;
-        }
+        protected override IStackable AbstractItemFrom(ActivationContext contextToConsider)
+            => contextToConsider.stackableCause;
     }
 }

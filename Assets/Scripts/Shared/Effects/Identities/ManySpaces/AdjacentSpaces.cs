@@ -1,21 +1,18 @@
 using System.Collections.Generic;
 
-namespace KompasCore.Effects.Identities
+namespace KompasCore.Effects.Identities.ManySpaces
 {
-    namespace GamestateManySpacesIdentities
+    public class AdjacentSpaces : ContextualParentIdentityBase<IReadOnlyCollection<Space>>
     {
-        public class AdjacentSpaces : ContextualParentIdentityBase<IReadOnlyCollection<Space>>
+        public IIdentity<Space> adjacentTo;
+
+        public override void Initialize(EffectInitializationContext initializationContext)
         {
-            public IIdentity<Space> adjacentTo;
-
-            public override void Initialize(EffectInitializationContext initializationContext)
-            {
-                base.Initialize(initializationContext);
-                adjacentTo.Initialize(initializationContext);
-            }
-
-            protected override IReadOnlyCollection<Space> AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
-                => adjacentTo.From(context, secondaryContext).AdjacentSpaces;
+            base.Initialize(initializationContext);
+            adjacentTo.Initialize(initializationContext);
         }
+
+        protected override IReadOnlyCollection<Space> AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
+            => adjacentTo.From(context, secondaryContext).AdjacentSpaces;
     }
 }

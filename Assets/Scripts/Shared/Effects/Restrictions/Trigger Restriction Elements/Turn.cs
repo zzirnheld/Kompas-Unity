@@ -20,7 +20,7 @@ namespace KompasCore.Effects.Restrictions.TriggerRestrictionElements
     {
         public override void Initialize(EffectInitializationContext initializationContext)
         {
-            turnPlayer = new Identities.GamestatePlayerIdentities.FriendlyPlayer();
+            turnPlayer = new Identities.Players.FriendlyPlayer();
             base.Initialize(initializationContext);
         }
     }
@@ -29,7 +29,7 @@ namespace KompasCore.Effects.Restrictions.TriggerRestrictionElements
     {
         public override void Initialize(EffectInitializationContext initializationContext)
         {
-            turnPlayer = new Identities.GamestatePlayerIdentities.EnemyPlayer();
+            turnPlayer = new Identities.Players.EnemyPlayer();
             base.Initialize(initializationContext);
         }
     }
