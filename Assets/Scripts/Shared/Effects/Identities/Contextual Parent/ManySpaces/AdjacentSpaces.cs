@@ -4,7 +4,7 @@ namespace KompasCore.Effects.Identities
 {
     namespace GamestateManySpacesIdentities
     {
-        public class AdjacentSpaces : ContextualIdentityBase<IReadOnlyCollection<Space>>
+        public class AdjacentSpaces : ContextualParentIdentityBase<IReadOnlyCollection<Space>>
         {
             public IIdentity<Space> adjacentTo;
 

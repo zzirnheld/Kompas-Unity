@@ -6,7 +6,7 @@ namespace KompasCore.Effects.Identities
 {
     namespace GamestateManyCardsIdentities
     {
-        public class Multiple : ContextualIdentityBase<IReadOnlyCollection<GameCardBase>>
+        public class Multiple : ContextualParentIdentityBase<IReadOnlyCollection<GameCardBase>>
         {
             public IIdentity<GameCardBase>[] cards;
 

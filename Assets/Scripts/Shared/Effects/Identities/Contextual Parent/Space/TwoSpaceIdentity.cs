@@ -1,7 +1,7 @@
 namespace KompasCore.Effects.Identities.ActivationContextSpaceIdentities
 {
 
-    public class TwoSpaceIdentity : ContextualIdentityBase<Space>
+    public class TwoSpaceIdentity : ContextualParentIdentityBase<Space>
     {
         public IIdentity<Space> firstSpace;
         public IIdentity<Space> secondSpace;

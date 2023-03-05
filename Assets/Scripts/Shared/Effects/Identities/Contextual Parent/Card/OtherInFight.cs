@@ -3,7 +3,7 @@ using KompasCore.Exceptions;
 
 namespace KompasCore.Effects.Identities.ActivationContextCardIdentities
 {
-    public class OtherInFight : ContextualIdentityBase<GameCardBase>
+    public class OtherInFight : ContextualParentIdentityBase<GameCardBase>
     {
         public IIdentity<GameCardBase> other;
 

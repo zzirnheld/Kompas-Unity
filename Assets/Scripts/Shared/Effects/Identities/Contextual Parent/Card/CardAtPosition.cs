@@ -2,7 +2,7 @@ using KompasCore.Cards;
 
 namespace KompasCore.Effects.Identities.ActivationContextCardIdentities
 {
-    public class CardAtPosition : ContextualIdentityBase<GameCardBase>
+    public class CardAtPosition : ContextualParentIdentityBase<GameCardBase>
     {
         public IIdentity<Space> position;
 

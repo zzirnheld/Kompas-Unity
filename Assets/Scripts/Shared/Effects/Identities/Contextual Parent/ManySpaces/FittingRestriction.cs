@@ -5,7 +5,7 @@ namespace KompasCore.Effects.Identities
 {
     namespace GamestateManySpacesIdentities
     {
-        public class FittingRestriction : ContextualIdentityBase<IReadOnlyCollection<Space>>
+        public class FittingRestriction : ContextualParentIdentityBase<IReadOnlyCollection<Space>>
         {
             public SpaceRestriction restriction;
             public IIdentity<IReadOnlyCollection<Space>> spaces = new All();

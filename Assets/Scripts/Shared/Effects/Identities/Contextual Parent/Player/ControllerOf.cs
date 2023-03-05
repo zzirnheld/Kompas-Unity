@@ -2,7 +2,7 @@ using KompasCore.Cards;
 
 namespace KompasCore.Effects.Identities.ActivationContextPlayerIdentities
 {
-    public class ControllerOf : ContextualIdentityBase<Player>
+    public class ControllerOf : ContextualParentIdentityBase<Player>
     {
         public IIdentity<GameCardBase> card;
 

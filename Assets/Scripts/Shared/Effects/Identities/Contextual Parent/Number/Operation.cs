@@ -2,7 +2,7 @@ using System.Linq;
 
 namespace KompasCore.Effects.Identities.ActivationContextNumberIdentities
 {
-    public class Operation : ContextualIdentityBase<int>
+    public class Operation : ContextualParentIdentityBase<int>
     {
         public IIdentity<int>[] numbers;
         public INumberOperation operation;

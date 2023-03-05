@@ -5,7 +5,7 @@ namespace KompasCore.Effects.Identities
 {
     namespace GamestateManyNumbersIdentities
     {
-        public class Distances : ContextualIdentityBase<ICollection<int>>
+        public class Distances : ContextualParentIdentityBase<ICollection<int>>
         {
             public IIdentity<Space> origin;
             public IIdentity<IReadOnlyCollection<Space>> destinations;

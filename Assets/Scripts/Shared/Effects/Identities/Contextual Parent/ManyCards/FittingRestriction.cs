@@ -6,7 +6,7 @@ namespace KompasCore.Effects.Identities
 {
     namespace ActivationContextManyCardsIdentities
     {
-        public class FittingRestriction : ContextualIdentityBase<IReadOnlyCollection<GameCardBase>>
+        public class FittingRestriction : ContextualParentIdentityBase<IReadOnlyCollection<GameCardBase>>
         {
             public IIdentity<IReadOnlyCollection<GameCardBase>> cards = new GamestateManyCardsIdentities.All();
 

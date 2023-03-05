@@ -6,7 +6,7 @@ namespace KompasCore.Effects.Identities
 {
     namespace GamestateSpaceIdentities
     {
-        public class PositionOf : ContextualIdentityBase<Space>
+        public class PositionOf : ContextualParentIdentityBase<Space>
         {
             public IIdentity<GameCardBase> card;
 
@@ -20,7 +20,7 @@ namespace KompasCore.Effects.Identities
                 => card.From(context, secondaryContext).Position;
         }
 
-        public class SelectFromMany : ContextualIdentityBase<Space>
+        public class SelectFromMany : ContextualParentIdentityBase<Space>
         {
             public IIdentity<IReadOnlyCollection<Space>> spaces;
             public ISelector<Space> selector;// = new RandomSelector<Space>();

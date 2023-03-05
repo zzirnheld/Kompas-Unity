@@ -4,7 +4,7 @@ using System.Linq;
 namespace KompasCore.Effects.Identities.ActivationContextNumberIdentities
 {
 
-    public class TargetCount : ContextualIdentityBase<int>
+    public class TargetCount : ContextualParentIdentityBase<int>
     {
         public CardRestriction cardRestriction;
 

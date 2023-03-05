@@ -15,7 +15,7 @@ namespace KompasCore.Effects.Identities
     /// <summary>
     /// An identity that needs context, either for itself or to pass on to its children.
     /// </summary>
-    public abstract class ContextualIdentityBase<ReturnType> : ContextInitializeableBase,
+    public abstract class ContextualParentIdentityBase<ReturnType> : ContextInitializeableBase,
         IIdentity<ReturnType>
     {
         public bool secondary = false;
@@ -49,7 +49,7 @@ namespace KompasCore.Effects.Identities
         }
     }
 
-    public abstract class ContextualLeafIdentityBase<ReturnType> : ContextualIdentityBase<ReturnType>
+    public abstract class ContextualLeafIdentityBase<ReturnType> : ContextualParentIdentityBase<ReturnType>
     {
         /// <summary>
         /// Override this one if you ONLY need to know about the context you should actually be considering

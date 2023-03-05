@@ -7,7 +7,7 @@ namespace KompasCore.Effects.Identities
 {
     namespace GamestateManyCardsIdentities
     {
-        public class Limit : ContextualIdentityBase<IReadOnlyCollection<GameCardBase>>
+        public class Limit : ContextualParentIdentityBase<IReadOnlyCollection<GameCardBase>>
         {
             public IIdentity<int> limit;
             public IIdentity<IReadOnlyCollection<GameCardBase>> cards;

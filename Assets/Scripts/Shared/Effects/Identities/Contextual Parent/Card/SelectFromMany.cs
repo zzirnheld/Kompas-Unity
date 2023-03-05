@@ -6,7 +6,7 @@ namespace KompasCore.Effects.Identities
 {
     namespace GamestateCardIdentities
     {
-        public class SelectFromMany : ContextualIdentityBase<GameCardBase>
+        public class SelectFromMany : ContextualParentIdentityBase<GameCardBase>
         {
             public ISelector<GameCardBase> selector = new RandomCard();
             public IIdentity<IReadOnlyCollection<GameCardBase>> cards = new GamestateManyCardsIdentities.All();

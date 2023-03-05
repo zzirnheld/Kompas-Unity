@@ -6,7 +6,7 @@ namespace KompasCore.Effects.Identities
     namespace GamestateCardIdentities
     {
 
-        public class Avatar : ContextualIdentityBase<GameCardBase>
+        public class Avatar : ContextualParentIdentityBase<GameCardBase>
         {
             public IIdentity<Player> player;
 

@@ -5,7 +5,7 @@ namespace KompasCore.Effects.Identities
 {
     namespace GamestateManySpacesIdentities
     {
-        public class CompareDistance : ContextualIdentityBase<IReadOnlyCollection<Space>>
+        public class CompareDistance : ContextualParentIdentityBase<IReadOnlyCollection<Space>>
         {
             public IIdentity<IReadOnlyCollection<Space>> spaces;
             public IIdentity<Space> distanceTo;

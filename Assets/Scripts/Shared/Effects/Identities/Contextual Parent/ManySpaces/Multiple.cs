@@ -5,7 +5,7 @@ namespace KompasCore.Effects.Identities
 {
     namespace GamestateManySpacesIdentities
     {
-        public class Multiple : ContextualIdentityBase<IReadOnlyCollection<Space>>
+        public class Multiple : ContextualParentIdentityBase<IReadOnlyCollection<Space>>
         {
             public IIdentity<Space>[] spaces;
 

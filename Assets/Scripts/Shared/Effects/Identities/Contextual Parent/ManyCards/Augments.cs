@@ -6,7 +6,7 @@ namespace KompasCore.Effects.Identities
     namespace ActivationContextManyCardsIdentities
     {
 
-        public class Augments : ContextualIdentityBase<IReadOnlyCollection<GameCardBase>>
+        public class Augments : ContextualParentIdentityBase<IReadOnlyCollection<GameCardBase>>
         {
             public IIdentity<GameCardBase> card;
 

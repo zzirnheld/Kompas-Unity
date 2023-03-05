@@ -1,6 +1,6 @@
 namespace KompasCore.Effects.Identities.ActivationContextNumberIdentities
 {
-    public class Distance : ContextualIdentityBase<int>
+    public class Distance : ContextualParentIdentityBase<int>
     {
         public IIdentity<Space> firstSpace;
         public IIdentity<Space> secondSpace;

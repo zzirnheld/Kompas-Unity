@@ -3,7 +3,7 @@ using KompasCore.Cards;
 namespace KompasCore.Effects.Identities.ActivationContextCardIdentities
 {
 
-    public class AugmentedCard : ContextualIdentityBase<GameCardBase>
+    public class AugmentedCard : ContextualParentIdentityBase<GameCardBase>
     {
         public IIdentity<GameCardBase> ofThisCard;
 

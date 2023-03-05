@@ -6,7 +6,7 @@ namespace KompasCore.Effects.Identities
 {
     namespace ActivationContextManyCardsIdentities
     {
-        public class CardsInPositions : ContextualIdentityBase<IReadOnlyCollection<GameCardBase>>
+        public class CardsInPositions : ContextualParentIdentityBase<IReadOnlyCollection<GameCardBase>>
         {
             public IIdentity<IReadOnlyCollection<Space>> positions;
 
