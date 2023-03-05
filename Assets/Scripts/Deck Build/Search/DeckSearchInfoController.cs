@@ -8,7 +8,8 @@ namespace KompasDeckbuilder
     {
         public Image simpleImage;
         public TMP_Text cardName;
-        public TMP_Text cardBlurb;
+        public TMP_Text cardStats;
+        public TMP_Text cardSubtypes;
 
         private DeckbuilderCardController card;
         private DeckbuildSearchController cardSearchCtrl;
@@ -17,7 +18,8 @@ namespace KompasDeckbuilder
         {
             simpleImage.sprite = card.Card.SimpleSprite;
             cardName.text = card.Card.CardName;
-            cardBlurb.text = card.BlurbString;
+            cardStats.text = card.Card.StatsString;
+            cardSubtypes.text = card.Card.QualifiedSubtypeText;
             this.card = card;
             this.cardSearchCtrl = cardSearchCtrl;
         }

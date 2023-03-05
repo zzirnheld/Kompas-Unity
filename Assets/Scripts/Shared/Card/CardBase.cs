@@ -129,7 +129,7 @@ namespace KompasCore.Cards
                 return "";
             }
         }
-        public string AttributesString => $"{(Unique ? " Unique" : "")} ";
+        public string AttributesString => $"{(Unique ? "Unique " : "")}";
         public string StatsString
         {
             get

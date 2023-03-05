@@ -14,8 +14,6 @@ namespace KompasDeckbuilder
 
         public DeckbuilderCard Card { get; private set; }
 
-        public string BlurbString => Card.StatsString + Card.QualifiedSubtypeText;
-
         public virtual void SetInfo(DeckbuildSearchController searchCtrl, SerializableCard card, bool inDeck, string fileName)
         {
             Card = new DeckbuilderCard(card, fileName);
