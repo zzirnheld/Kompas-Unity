@@ -1,4 +1,3 @@
-using KompasCore.Cards;
 using KompasCore.Effects.Selectors;
 using System.Collections.Generic;
 
@@ -6,19 +5,6 @@ namespace KompasCore.Effects.Identities
 {
     namespace GamestateSpaceIdentities
     {
-        public class PositionOf : ContextualParentIdentityBase<Space>
-        {
-            public IIdentity<GameCardBase> card;
-
-            public override void Initialize(EffectInitializationContext initializationContext)
-            {
-                base.Initialize(InitializationContext);
-                card.Initialize(InitializationContext);
-            }
-
-            protected override Space AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
-                => card.From(context, secondaryContext).Position;
-        }
 
         public class SelectFromMany : ContextualParentIdentityBase<Space>
         {
