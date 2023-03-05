@@ -16,11 +16,11 @@
 				{
 					"$type": "Subeffect:AutoTargetCardIdentity:",
                     "subeffectCardIdentity": {
-						"$type": "Gamestate.Card:SelectFromMany:",
+						"$type": "Cards:SelectFromMany:",
                         "cards": {
-                            "$type": "Gamestate.ManyCards:FittingRestriction:",
+                            "$type": "ManyCards:FittingRestriction:",
                             "cards": {
-                                "$type": "Gamestate.ManyCards:Discard:",
+                                "$type": "ManyCards:Discard:",
                                 "friendly": true,
                                 "enemy": false
                             },
@@ -38,14 +38,14 @@
                 {
                     "$type": "Subeffect:AutoTargetSpaceIdentity:",
                     "subeffectSpaceIdentity": {
-                        "$type": "Gamestate.Space:SelectFromMany:",
+                        "$type": "Spaces:SelectFromMany:",
                         "selector": { "$type": "KompasCore.Effects.Selectors.RandomSpace, Assembly-CSharp" },
                         "spaces": {
-                            "$type": "Gamestate.ManySpaces:FittingRestriction:",
+                            "$type": "ManySpaces:FittingRestriction:",
                             "restriction": {
                                 "spaceRestrictionElements": [ {
                                     "$type": "Core.SpaceRestriction:CanPlayCard:",
-                                    "toPlay": { "$type": "Subeffect.Card:Target:" }
+                                    "toPlay": { "$type": "Cards:TargetIndex:" }
                                 } ]
                             }
                         }

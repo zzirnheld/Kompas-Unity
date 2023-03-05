@@ -5,7 +5,7 @@ namespace KompasServer.Effects.Subeffects
 {
     public class AutoTargetSpaceIdentity : ServerSubeffect
     {
-            public INoActivationContextIdentity<Space> subeffectSpaceIdentity;
+            public IIdentity<Space> subeffectSpaceIdentity;
 
             public override void Initialize(ServerEffect eff, int subeffIndex)
             {
@@ -15,7 +15,7 @@ namespace KompasServer.Effects.Subeffects
 
             public override Task<ResolutionInfo> Resolve()
             {
-                var space = subeffectSpaceIdentity.Item;
+                var space = subeffectSpaceIdentity.From(CurrentContext, default);
                 if (space == null) return Task.FromResult(ResolutionInfo.Impossible(NoValidCardTarget));
 
                 Effect.AddSpace(space);

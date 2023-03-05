@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using KompasCore.Effects.Identities;
-using KompasServer.Effects.Identities.SubeffectNumberIdentities;
+using KompasCore.Effects.Identities.Numbers;
 
 namespace KompasServer.Effects.Subeffects
 {
@@ -10,7 +10,7 @@ namespace KompasServer.Effects.Subeffects
 
         private int ToPay => pipCost.From(CurrentContext, default);
 
-        public IActivationContextIdentity<int> pipCost = new X();
+        public IIdentity<int> pipCost = new X();
 
         public override Task<ResolutionInfo> Resolve()
         {

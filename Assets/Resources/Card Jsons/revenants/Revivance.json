@@ -33,7 +33,7 @@
                             { "$type": "Core.SpaceRestriction:Empty:" },
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
-								"toMove": { "$type": "Subeffect.Card:Target:" },
+								"toMove": { "$type": "Cards:TargetIndex:" },
 								"distanceRestriction": {
 									"numberRestrictions": [ "==Constant" ],
 									"constant": 1

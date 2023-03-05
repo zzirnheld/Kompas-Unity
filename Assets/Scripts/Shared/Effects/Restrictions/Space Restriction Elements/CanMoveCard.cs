@@ -9,7 +9,7 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
     /// </summary>
     public class CanMoveCard : SpaceRestrictionElement
     {
-        public INoActivationContextIdentity<GameCardBase> toMove;
+        public IIdentity<GameCardBase> toMove;
 
         /// <summary>
         /// Describes any restriction on the spaces between the card and where it needs to go (the space being tested)
@@ -45,7 +45,7 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 
         protected override bool AbstractIsValidSpace(Space space, ActivationContext context)
         {
-            var card = toMove.Item.Card;
+            var card = toMove.From(context, default).Card;
             return FitsMovementRestriction(card, space, context) && FitsThroughRestriction(card.Position, space, context);
         }
 

@@ -38,7 +38,7 @@
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {
                                 "$type": "Core.SpaceRestriction:CanPlayCard:",
-                                "toPlay": { "$type": "Subeffect.Card:Target:" }
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
                             }
                         ]
 					}

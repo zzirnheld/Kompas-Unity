@@ -1,8 +1,8 @@
 [
     {
         "$type": "Core.TriggerRestriction:CardsMatch:",
-        "firstCard": { "$type": "Gamestate.Card:ThisCard:" },
-        "secondCard": { "$type": "ActivationContext.Card:MainCardBefore:" }
+        "firstCard": { "$type": "Cards:ThisCard:" },
+        "secondCard": { "$type": "Cards:MainCardBefore:" }
     },
     {
         "$type": "Core.TriggerRestriction:NumberFitsRestriction:",
@@ -13,8 +13,8 @@
             "constant":30
         },
         "number": {
-            "$type": "ActivationContext.Number:FromCardValue:",
-            "card": { "$type": "ActivationContext.Card:MainCardBefore:" },
+            "$type": "Numbers:FromCardValue:",
+            "card": { "$type": "Cards:MainCardBefore:" },
             "cardValue": { "value": "S" }
         }
     }

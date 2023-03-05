@@ -15,7 +15,7 @@
 						"negated": {
 							"$type": "Core.SpaceRestriction:InAOEOf:",
 							"anyOf": {
-								"$type": "Gamestate.ManyCards:FittingRestriction:",
+								"$type": "ManyCards:FittingRestriction:",
 								"cardRestriction": {
 								"cardRestrictionElements": [ {
 										"$type": "Core.CardRestriction:Subtypes:",

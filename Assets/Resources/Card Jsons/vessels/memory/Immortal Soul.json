@@ -13,10 +13,10 @@
                         {
                             "$type": "Core.TriggerRestriction:CardsMatch:",
                             "firstCard": {
-                                "$type": "Gamestate.Card:AugmentedCard:",
-                                "ofThisCard": { "$type": "Gamestate.Card:ThisCard:" }
+                                "$type": "Cards:AugmentedCard:",
+                                "ofThisCard": { "$type": "Cards:ThisCard:" }
                             },
-                            "secondCard": { "$type": "ActivationContext.Card:MainCardBefore:" }
+                            "secondCard": { "$type": "Cards:MainCardBefore:" }
                         },
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
@@ -28,7 +28,7 @@
                                     }
                                 ]
                             },
-                            "card": { "$type": "ActivationContext.Card:MainCardBefore:" }
+                            "card": { "$type": "Cards:MainCardBefore:" }
                         }
 					]
 				}

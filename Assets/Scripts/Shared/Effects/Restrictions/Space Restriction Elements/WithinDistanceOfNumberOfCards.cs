@@ -1,5 +1,5 @@
 using KompasCore.Effects.Identities;
-using KompasCore.Effects.Identities.GamestateNumberIdentities;
+using KompasCore.Effects.Identities.Numbers;
 using System.Linq;
 
 namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
@@ -8,8 +8,8 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
     {
         public CardRestriction cardRestriction;
 
-        public INoActivationContextIdentity<int> numberOfCards = Constant.One;
-        public INoActivationContextIdentity<int> distance = Constant.One;
+        public IIdentity<int> numberOfCards = Constant.One;
+        public IIdentity<int> distance = Constant.One;
 
         public bool excludeSelf = true;
 
@@ -24,9 +24,9 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
         protected override bool AbstractIsValidSpace(Space space, ActivationContext context)
         {
             return InitializationContext.game.Cards
-                .Where(c => c.DistanceTo(space) < distance.Item)
+                .Where(c => c.DistanceTo(space) < distance.From(context, default))
                 .Where(c => cardRestriction.IsValidCard(c, context))
-                .Count() >= numberOfCards.Item;
+                .Count() >= numberOfCards.From(context, default);
         }
     }
 }

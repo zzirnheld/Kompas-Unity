@@ -27,7 +27,7 @@
                         "blurb":"where Elk will lengthen to",
 						"spaceRestrictionElements": [ {
 							"$type": "Core.SpaceRestriction:CanMoveCard:",
-							"toMove": { "$type": "Subeffect.Card:Target:" },
+							"toMove": { "$type": "Cards:TargetIndex:" },
 							"distanceRestriction": {
 								"numberRestrictions": [ "==Constant" ],
 								"constant": 1

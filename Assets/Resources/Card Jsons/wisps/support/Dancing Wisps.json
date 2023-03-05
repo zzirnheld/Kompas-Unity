@@ -31,12 +31,12 @@
 				{
 					"$type": "Subeffect:TargetAllCardsIdentity:",
 					"cardsIdentity": {
-						"$type": "Gamestate.ManyCards:CardsInPositions:",
+						"$type": "ManyCards:CardsInPositions:",
 						"positions": {
-                            "$type": "Gamestate.ManySpaces:AdjacentSpaces:",
+                            "$type": "ManySpaces:AdjacentSpaces:",
                             "adjacentTo": {
-                                "$type": "Subeffect.Space:PositionOf:",
-                                "whosePosition": { "$type": "Subeffect.Card:Target:" }
+                                "$type": "Spaces:PositionOf:",
+                                "ofThisCard": { "$type": "Cards:TargetIndex:" }
                             }
 						}
 					}
@@ -44,19 +44,19 @@
                 {
                     "$type": "Subeffect:AutoTargetSpaceIdentity:",
                     "subeffectSpaceIdentity": {
-                        "$type": "Gamestate.Space:SelectFromMany:",
+                        "$type": "Spaces:SelectFromMany:",
                         "selector": { "$type": "KompasCore.Effects.Selectors.RandomSpace, Assembly-CSharp" },
                         "spaces": {
-                            "$type": "Gamestate.ManySpaces:FittingRestriction:",
+                            "$type": "ManySpaces:FittingRestriction:",
                             "restriction": {
                                 "spaceRestrictionElements": [ { "$type": "Core.SpaceRestriction:Empty:" } ]
                             },
                             "spaces": {
-                                "$type": "Gamestate.ManySpaces:AdjacentSpaces:",
+                                "$type": "ManySpaces:AdjacentSpaces:",
                                 "adjacentTo": {
-                                    "$type": "Subeffect.Space:PositionOf:",
-                                    "whosePosition": {
-                                        "$type": "Subeffect.Card:Target:",
+                                    "$type": "Spaces:PositionOf:",
+                                    "ofThisCard": {
+                                        "$type": "Cards:TargetIndex:",
                                         "index": 0
                                     }
                                 }

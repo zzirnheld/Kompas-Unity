@@ -1,4 +1,4 @@
-using KompasCore.Effects.Identities.GamestateNumberIdentities;
+using KompasCore.Effects.Identities.Numbers;
 
 namespace KompasServer.Effects.Subeffects
 {

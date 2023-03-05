@@ -38,7 +38,7 @@
                             {
                                 "$type": "Core.SpaceRestriction:AdjacentTo:",
                                 "anyOfTheseCards": { 
-									"$type": "Gamestate.ManyCards:FittingRestriction:",
+									"$type": "ManyCards:FittingRestriction:",
 									"cardRestriction": {
 										"cardRestrictionElements": [
 											{ "$type": "Core.CardRestriction:FriendlyCard:" },

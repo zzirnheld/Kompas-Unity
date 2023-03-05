@@ -26,7 +26,7 @@
                 }
             ]
         },
-        "toLinkWith": { "$type": "Gamestate.Card:ThisCard:" }
+        "toLinkWith": { "$type": "Cards:ThisCard:" }
     },
     {
         "$type":"Subeffect:Play:"

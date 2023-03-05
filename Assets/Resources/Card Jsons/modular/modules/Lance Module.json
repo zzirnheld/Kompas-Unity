@@ -32,11 +32,11 @@
                                         {
                                             "$type": "Core.SpaceRestriction:CompareDistance:",
                                             "distanceTo": {
-                                                "$type": "Subeffect.Space:PositionOf:",
-                                                "whosePosition": { "$type": "Subeffect.Card:Target:" }
+                                                "$type": "Spaces:PositionOf:",
+                                                "ofThisCard": { "$type": "Cards:TargetIndex:" }
                                             },
                                             "number": { 
-                                                "$type": "Gamestate.Number:Constant:",
+                                                "$type": "Numbers:Constant:",
                                                 "constant": 2
                                             },
                                             "comparison": { "$type": "Relationships.Number:Equal:" }

@@ -10,9 +10,9 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
     /// </summary>
     public class AdjacentTo : SpaceRestrictionElement
     {
-        public INoActivationContextIdentity<IReadOnlyCollection<GameCardBase>> anyOfTheseCards;
-        public INoActivationContextIdentity<GameCardBase> card;
-        public INoActivationContextIdentity<Space> space;
+        public IIdentity<IReadOnlyCollection<GameCardBase>> anyOfTheseCards;
+        public IIdentity<GameCardBase> card;
+        public IIdentity<Space> space;
 
         private int CountNonNull(params object[] objs) => objs.Where(o => o != null).Count();
 
@@ -32,9 +32,9 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 
         protected override bool AbstractIsValidSpace(Space toTest, ActivationContext context)
         {
-            if (anyOfTheseCards != null) return anyOfTheseCards.Item.Any(c => c.IsAdjacentTo(toTest));
-            else if (card != null) return card.Item.IsAdjacentTo(toTest);
-            else if (space != null) return space.Item.AdjacentTo(toTest);
+            if (anyOfTheseCards != null) return anyOfTheseCards.From(context, default).Any(c => c.IsAdjacentTo(toTest));
+            else if (card != null) return card.From(context, default).IsAdjacentTo(toTest);
+            else if (space != null) return space.From(context, default).AdjacentTo(toTest);
             else throw new System.NotImplementedException($"You forgot to account for some weird case for {InitializationContext.source}");
         }
     }

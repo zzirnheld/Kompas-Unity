@@ -12,7 +12,7 @@
                         { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "card": { "$type": "ActivationContext.Card:CauseBefore:" },
+                            "card": { "$type": "Cards:CauseBefore:" },
                             "cardRestriction": {
                                 "cardRestrictionElements": [
                                     {
@@ -24,7 +24,7 @@
                         },
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "card": { "$type": "ActivationContext.Card:MainCardBefore:" },
+                            "card": { "$type": "Cards:MainCardBefore:" },
                             "cardRestriction": {
                                 "cardRestrictionElements": [ { "$type": "Core.CardRestriction:Enemy:" } ]
                             }
@@ -63,7 +63,7 @@
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {
                                 "$type": "Core.SpaceRestriction:CanPlayCard:",
-                                "toPlay": { "$type": "Subeffect.Card:Target:" }
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
                             }
                         ]
 					}

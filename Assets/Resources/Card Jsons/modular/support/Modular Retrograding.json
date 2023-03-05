@@ -37,10 +37,10 @@
 				{
 					"$type": "Subeffect:TargetAllCardsIdentity:",
 					"cardsIdentity": {
-						"$type": "Gamestate.ManyCards:Limit:",
-						"cards": { "$type": "Gamestate.ManyCards:Discard:" },
+						"$type": "ManyCards:Limit:",
+						"cards": { "$type": "ManyCards:Discard:" },
 						"limit": {
-							"$type": "Subeffect.Number:X:",
+							"$type": "Numbers:X:",
 							"multiplier": 1
 						}
 					}

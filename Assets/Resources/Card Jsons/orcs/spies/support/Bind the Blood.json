@@ -30,10 +30,7 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:AutoTargetCardIdentity:",
-                    "subeffectCardIdentity": {
-						"$type": "Subeffect.Card:FromActivationContext:",
-                        "cardFromContext": { "$type": "ActivationContext.Card:MainCardBefore:" }
-                    }
+                    "subeffectCardIdentity": { "$type": "Cards:MainCardBefore:" }
 				},
 				{
 					"$type": "Subeffect:ChangeCardStats:",
@@ -50,8 +47,8 @@
 						"triggerRestrictionElements": [
 							{
 								"$type": "Core.TriggerRestriction:StackablesMatch:",
-								"firstStackable": { "$type": "Subeffect.Stackable:StackableIndex:" },
-								"secondStackable": { "$type": "ActivationContext.Stackable:StackableCause:" }
+								"firstStackable": { "$type": "Stackables:StackableIndex:" },
+								"secondStackable": { "$type": "Stackables:StackableCause:" }
 							}
 						]
 					},
@@ -60,18 +57,15 @@
 						"triggerRestrictionElements": [
 							{
 								"$type": "Core.TriggerRestriction:StackablesMatch:",
-								"firstStackable": { "$type": "Subeffect.Stackable:StackableIndex:" },
-								"secondStackable": { "$type": "ActivationContext.Stackable:StackableCause:" }
+								"firstStackable": { "$type": "Stackables:StackableIndex:" },
+								"secondStackable": { "$type": "Stackables:StackableCause:" }
 							},
 							{
 								"$type": "Core.TriggerRestriction:CardsMatch:",
-								"firstCard": { "$type": "ActivationContext.Card:MainCardBefore:" },
+								"firstCard": { "$type": "Cards:MainCardBefore:" },
 								"secondCard": {
-									"$type": "Subeffect.Card:FromActivationContext:",
 									"secondary": true,
-                        			"cardFromContext": {
-										"$type": "ActivationContext.Card:MainCardBefore:"
-									}
+									"$type": "Cards:MainCardBefore:"
 								}
 							}
 						]

@@ -1,5 +1,4 @@
 using KompasCore.Effects.Identities;
-using KompasServer.Effects.Identities;
 using System.Linq;
 
 namespace KompasCore.Effects.Restrictions
@@ -70,7 +69,7 @@ namespace KompasCore.Effects.Restrictions
 
         public class SameDiagonal : SpaceRestrictionElement
         {
-            public INoActivationContextIdentity<Space> space;
+            public IIdentity<Space> space;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {
@@ -79,7 +78,7 @@ namespace KompasCore.Effects.Restrictions
             }
 
             protected override bool AbstractIsValidSpace(Space space, ActivationContext context)
-                => space.SameDiagonal(this.space.Item);
+                => space.SameDiagonal(this.space.From(context, default));
         }
     }
 }

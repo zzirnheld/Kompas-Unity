@@ -10,8 +10,8 @@
 					"triggerRestrictionElements": [
                         {
                             "$type": "Core.TriggerRestriction:CardsMatch:",
-                            "firstCard": { "$type": "Gamestate.Card:ThisCard:" },
-                            "secondCard": { "$type": "ActivationContext.Card:MainCardBefore:" }
+                            "firstCard": { "$type": "Cards:ThisCard:" },
+                            "secondCard": { "$type": "Cards:MainCardBefore:" }
                         }
 					]
 				}
@@ -43,7 +43,7 @@
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {
                                 "$type": "Core.SpaceRestriction:CanPlayCard:",
-                                "toPlay": { "$type": "Subeffect.Card:Target:" }
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
                             }
                         ]
 					}

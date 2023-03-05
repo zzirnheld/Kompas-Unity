@@ -5,8 +5,8 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 {
     public class CanMoveTo : CardRestrictionElement
     {
-        //public IActivationContextIdentity<Space> contextDestination;
-        public INoActivationContextIdentity<Space> destination;
+        //public IIdentity<Space> contextDestination;
+        public IIdentity<Space> destination;
 
         public override void Initialize(EffectInitializationContext initializationContext)
         {
@@ -19,6 +19,6 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
         }
 
         protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
-            => card.MovementRestriction.IsValidEffectMove(destination.Item, context);
+            => card.MovementRestriction.IsValidEffectMove(destination.From(context, default), context);
     }
 }

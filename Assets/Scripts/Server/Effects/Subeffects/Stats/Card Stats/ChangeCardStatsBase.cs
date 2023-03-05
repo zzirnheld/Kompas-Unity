@@ -1,8 +1,8 @@
 using KompasCore.Cards;
 using KompasCore.Effects.Identities;
-using KompasCore.Effects.Identities.GamestateManyCardsIdentities;
+using KompasCore.Effects.Identities.Cards;
+using KompasCore.Effects.Identities.ManyCards;
 using KompasCore.Exceptions;
-using KompasServer.Effects.Identities.SubeffectCardIdentities;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -10,20 +10,20 @@ namespace KompasServer.Effects.Subeffects
 {
     public abstract class ChangeCardStatsBase : ServerSubeffect
     {
-        public IActivationContextIdentity<GameCardBase> card;
-        public IActivationContextIdentity<IReadOnlyCollection<GameCardBase>> cards;
+        public IIdentity<GameCardBase> card;
+        public IIdentity<IReadOnlyCollection<GameCardBase>> cards;
 
-        public IActivationContextIdentity<int> n;
-        public IActivationContextIdentity<int> e;
-        public IActivationContextIdentity<int> s;
-        public IActivationContextIdentity<int> w;
-        public IActivationContextIdentity<int> c;
-        public IActivationContextIdentity<int> a;
+        public IIdentity<int> n;
+        public IIdentity<int> e;
+        public IIdentity<int> s;
+        public IIdentity<int> w;
+        public IIdentity<int> c;
+        public IIdentity<int> a;
 
-        public IActivationContextIdentity<int> turnsOnBoard;
-        public IActivationContextIdentity<int> attacksThisTurn;
-        public IActivationContextIdentity<int> spacesMoved;
-        public IActivationContextIdentity<int> duration;
+        public IIdentity<int> turnsOnBoard;
+        public IIdentity<int> attacksThisTurn;
+        public IIdentity<int> spacesMoved;
+        public IIdentity<int> duration;
 
         protected IEnumerable<GameCard> cardsToAffect => cards.From(CurrentContext, default).Select(c => c.Card);
 
@@ -31,8 +31,8 @@ namespace KompasServer.Effects.Subeffects
         {
             base.Initialize(eff, subeffIndex);
 
-            card ??= new Target() { index = targetIndex };
-            cards ??= new Multiple() { cards = new INoActivationContextIdentity<GameCardBase>[] { card } };
+            card ??= new TargetIndex() { index = targetIndex };
+            cards ??= new Multiple() { cards = new IIdentity<GameCardBase>[] { card } };
 
             var initContext = DefaultInitializationContext;
             cards.Initialize(initContext);

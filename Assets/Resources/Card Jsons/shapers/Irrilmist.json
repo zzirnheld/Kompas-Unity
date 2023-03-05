@@ -42,7 +42,7 @@
                             },
                             {
                                 "$type": "Core.CardRestriction:CanMoveTo:",
-                                "destination": { "$type": "Subeffect.Space:Target:" }
+                                "destination": { "$type": "Spaces:TargetIndex:" }
                             }
                         ]
 					}

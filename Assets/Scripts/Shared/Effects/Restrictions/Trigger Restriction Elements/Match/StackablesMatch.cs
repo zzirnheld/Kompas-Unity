@@ -7,8 +7,8 @@ namespace KompasCore.Effects.Restrictions
     {
         public class StackablesMatch : TriggerRestrictionElement
         {
-            public IActivationContextIdentity<IStackable> firstStackable;
-            public IActivationContextIdentity<IStackable> secondStackable;
+            public IIdentity<IStackable> firstStackable;
+            public IIdentity<IStackable> secondStackable;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {

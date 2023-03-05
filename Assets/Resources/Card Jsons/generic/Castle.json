@@ -46,7 +46,7 @@
 						],
 						"spaceRestrictionElements": [ {
 							"$type": "Core.SpaceRestriction:CanMoveCard:",
-							"toMove": { "$type": "Subeffect.Card:Target:" }
+							"toMove": { "$type": "Cards:TargetIndex:" }
 						} ]
 					}
 				},

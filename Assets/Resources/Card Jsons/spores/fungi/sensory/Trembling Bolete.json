@@ -12,7 +12,7 @@
                         { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "card": { "$type": "ActivationContext.Card:MainCardBefore:" },
+                            "card": { "$type": "Cards:MainCardBefore:" },
                             "cardRestriction": {
                                 "cardRestrictionElements": [ { "$type": "Core.CardRestriction:Enemy:" } ]
                             }
@@ -22,7 +22,7 @@
                             "restrictions": [
                                 {
                                     "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                                    "card": { "$type": "ActivationContext.Card:MainCardBefore:" },
+                                    "card": { "$type": "Cards:MainCardBefore:" },
                                     "cardRestriction": {
                                         "cardRestrictionElements": [
                                             {
@@ -31,7 +31,7 @@
                                                     "spaceRestrictionElements": [
                                                         {
                                                             "$type": "Core.SpaceRestriction:AdjacentTo:",
-                                                            "card": { "$type": "Gamestate.Card:ThisCard:" }
+                                                            "card": { "$type": "Cards:ThisCard:" }
                                                         }
                                                     ]
                                                 }
@@ -41,7 +41,7 @@
                                 },
                                 {
                                     "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                                    "card": { "$type": "ActivationContext.Card:MainCardAfter:" },
+                                    "card": { "$type": "Cards:MainCardAfter:" },
                                     "cardRestriction": {
                                         "cardRestrictionElements": [
                                             {
@@ -50,7 +50,7 @@
                                                     "spaceRestrictionElements": [
                                                         {
                                                             "$type": "Core.SpaceRestriction:AdjacentTo:",
-                                                            "card": { "$type": "Gamestate.Card:ThisCard:" }
+                                                            "card": { "$type": "Cards:ThisCard:" }
                                                         }
                                                     ]
                                                 }

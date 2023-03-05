@@ -12,8 +12,8 @@
                         { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
                         {
                             "$type": "Core.TriggerRestriction:CardsMatch:",
-                            "firstCard": { "$type": "Gamestate.Card:ThisCard:" },
-                            "secondCard": { "$type": "ActivationContext.Card:MainCardBefore:" }
+                            "firstCard": { "$type": "Cards:ThisCard:" },
+                            "secondCard": { "$type": "Cards:MainCardBefore:" }
                         }
 					]
 				}

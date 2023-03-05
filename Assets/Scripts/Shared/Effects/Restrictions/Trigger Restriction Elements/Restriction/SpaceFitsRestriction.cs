@@ -10,7 +10,7 @@ namespace KompasCore.Effects.Restrictions
         public class SpaceFitsRestriction : TriggerRestrictionElement
         {
             public SpaceRestriction spaceRestriction;
-            public IActivationContextIdentity<Space> space;
+            public IIdentity<Space> space;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {
@@ -27,7 +27,7 @@ namespace KompasCore.Effects.Restrictions
         public class SpacesFitRestriction : TriggerRestrictionElement
         {
             public SpaceRestriction spaceRestriction;
-            public IActivationContextIdentity<IReadOnlyCollection<Space>> spaces;
+            public IIdentity<IReadOnlyCollection<Space>> spaces;
 
             public bool any = false;
 

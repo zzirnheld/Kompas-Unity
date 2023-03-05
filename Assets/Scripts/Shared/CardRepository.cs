@@ -142,14 +142,29 @@ public class CardRepository : MonoBehaviour
     private const string coreRestrictionReplacement = @"KompasCore.Effects.Restrictions.$1RestrictionElements.$2, Assembly-CSharp";
 
     //identity regexes
-    private static readonly Regex subeffectIdentityRegex = new Regex(@"Subeffect\.([^:]+):([^:]+):"); //Subeffect.*:*:
-    private const string subeffectIdentityReplacement = @"KompasServer.Effects.Identities.Subeffect$1Identities.$2, Assembly-CSharp";
+    private static readonly Regex cardsIdentityRegex = new Regex(@"Cards:([^:]+):"); //Cards:*:
+    private const string cardsIdentityReplacement = @"KompasCore.Effects.Identities.Cards.$1, Assembly-CSharp";
 
-    private static readonly Regex activationContextIdentityRegex = new Regex(@"ActivationContext\.([^:]+):([^:]+):"); //ActivationContext.*:*:
-    private const string activationContextIdentityReplacement = @"KompasCore.Effects.Identities.ActivationContext$1Identities.$2, Assembly-CSharp";
+    private static readonly Regex manyCardsIdentityRegex = new Regex(@"ManyCards:([^:]+):"); //ManyCards:*:
+    private const string manyCardsIdentityReplacement = @"KompasCore.Effects.Identities.ManyCards.$1, Assembly-CSharp";
 
-    private static readonly Regex gamestateIdentityRegex = new Regex(@"Gamestate\.([^:]+):([^:]+):"); //Gamestate.*:*:
-    private const string gamestateIdentityReplacement = @"KompasCore.Effects.Identities.Gamestate$1Identities.$2, Assembly-CSharp";
+    private static readonly Regex spacesIdentityRegex = new Regex(@"Spaces:([^:]+):"); //Spaces:*:
+    private const string spacesIdentityReplacement = @"KompasCore.Effects.Identities.Spaces.$1, Assembly-CSharp";
+
+    private static readonly Regex manySpacesIdentityRegex = new Regex(@"ManySpaces:([^:]+):"); //ManySpaces:*:
+    private const string manySpacesIdentityReplacement = @"KompasCore.Effects.Identities.ManySpaces.$1, Assembly-CSharp";
+
+    private static readonly Regex numbersIdentityRegex = new Regex(@"Numbers:([^:]+):"); //Numbers:*:
+    private const string numbersIdentityReplacement = @"KompasCore.Effects.Identities.Numbers.$1, Assembly-CSharp";
+
+    private static readonly Regex manyNumbersIdentityRegex = new Regex(@"ManyNumbers:([^:]+):"); //ManyNumbers:*:
+    private const string manyNumbersIdentityReplacement = @"KompasCore.Effects.Identities.ManyNumbers.$1, Assembly-CSharp";
+
+    private static readonly Regex playersIdentityRegex = new Regex(@"Players:([^:]+):"); //Players:*:
+    private const string playersIdentityReplacement = @"KompasCore.Effects.Identities.Players.$1, Assembly-CSharp";
+
+    private static readonly Regex stackablesIdentityRegex = new Regex(@"Stackables:([^:]+):"); //Stackables:*:
+    private const string stackablesIdentityReplacement = @"KompasCore.Effects.Identities.Stackables.$1, Assembly-CSharp";
 
     //relationships
     private static readonly Regex relationshipRegex = new Regex(@"Relationships\.([^:]+):([^:]+):"); //Relationships.*:*:
@@ -172,9 +187,18 @@ public class CardRepository : MonoBehaviour
 
         json = coreRestrictionRegex.Replace(json, coreRestrictionReplacement);
 
-        json = subeffectIdentityRegex.Replace(json, subeffectIdentityReplacement);
-        json = activationContextIdentityRegex.Replace(json, activationContextIdentityReplacement);
-        json = gamestateIdentityRegex.Replace(json, gamestateIdentityReplacement);
+        //Many before single, to not replace the many with a broken thing
+        json = manyCardsIdentityRegex.Replace(json, manyCardsIdentityReplacement);
+        json = cardsIdentityRegex.Replace(json, cardsIdentityReplacement);
+
+        json = manySpacesIdentityRegex.Replace(json, manySpacesIdentityReplacement);
+        json = spacesIdentityRegex.Replace(json, spacesIdentityReplacement);
+
+        json = manyNumbersIdentityRegex.Replace(json, manyNumbersIdentityReplacement);
+        json = numbersIdentityRegex.Replace(json, numbersIdentityReplacement);
+        
+        json = playersIdentityRegex.Replace(json, playersIdentityReplacement);
+        json = stackablesIdentityRegex.Replace(json, stackablesIdentityReplacement);
 
         json = relationshipRegex.Replace(json, relationshipReplacement);
         json = numberSelectorRegex.Replace(json, numberSelectorReplacement);

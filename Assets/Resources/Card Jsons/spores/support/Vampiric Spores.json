@@ -13,14 +13,14 @@
                         {
                             "$type": "Core.TriggerRestriction:CardsMatch:",
                             "firstCard": {
-                                "$type": "Gamestate.Card:AugmentedCard:",
-                                "ofThisCard": { "$type": "Gamestate.Card:ThisCard:" }
+                                "$type": "Cards:AugmentedCard:",
+                                "ofThisCard": { "$type": "Cards:ThisCard:" }
                             },
-                            "secondCard": { "$type": "ActivationContext.Card:CauseBefore:" }
+                            "secondCard": { "$type": "Cards:CauseBefore:" }
                         },
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "card": { "$type": "ActivationContext.Card:MainCardBefore:" },
+                            "card": { "$type": "Cards:MainCardBefore:" },
                             "cardRestriction": {
                                 "cardRestrictionElements": [ { "$type": "Core.CardRestriction:Enemy:" } ]
                             }

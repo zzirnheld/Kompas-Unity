@@ -24,7 +24,7 @@
                                 "$type": "Core.SpaceRestriction:WithinDistanceOfNumberOfCards:",
                                 "cardRestriction": {
                                     "numberOfCards": { 
-                                        "$type": "Gamestate.Number:Constant:",
+                                        "$type": "Numbers:Constant:",
                                         "constant": 2
                                     },
                                     "cardRestrictionElements": [
@@ -37,7 +37,7 @@
                             },
                             {
                                 "$type": "Core.SpaceRestriction:CanPlayCard:",
-                                "toPlay": { "$type": "Subeffect.Card:Target:" }
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
                             }
                         ]
 					}

@@ -42,7 +42,7 @@
 					"triggerRestrictionElements": [
                         {
                             "$type": "Core.TriggerRestriction:SpacesFitRestriction:",
-                            "spaces": { "$type": "KompasCore.Effects.Identities.GamestateManySpacesIdentities.Corners, Assembly-CSharp" },
+                            "spaces": { "$type": "ManySpaces:Corners:" },
                             "spaceRestriction": {
                                 "spaceRestrictionElements": [
                                     {

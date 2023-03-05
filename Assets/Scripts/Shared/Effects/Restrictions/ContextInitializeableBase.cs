@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace KompasCore.Effects
@@ -13,6 +15,8 @@ namespace KompasCore.Effects
         protected bool Initialized { get; private set; }
 
         protected EffectInitializationContext InitializationContext { get; private set; }
+
+        protected virtual IEnumerable<IInitializationRequirement> InitializationRequirements => Enumerable.Empty<IInitializationRequirement>();
 
         public virtual void Initialize(EffectInitializationContext initializationContext)
         {
@@ -36,15 +40,18 @@ namespace KompasCore.Effects
         }
     }
 
-    /// <summary>
-    /// A wrapper inheritor of ContextInitializeableBase that also checks that the restriction context has a subeffect
-    /// </summary>
-    public abstract class SubeffectInitializeableBase : ContextInitializeableBase
+    public interface IInitializationRequirement
     {
-        public override void Initialize(EffectInitializationContext initializationContext)
+        public bool Validate(EffectInitializationContext initializationContext);
+    }
+
+    public class SubeffectInitializationRequirement : IInitializationRequirement
+    {
+        public bool Validate(EffectInitializationContext initializationContext)
         {
             if (initializationContext.subeffect == null) throw new ArgumentNullException($"{GetType()} must be initialized by/with a Subeffect");
-            base.Initialize(initializationContext);
+
+            return true;
         }
     }
 }

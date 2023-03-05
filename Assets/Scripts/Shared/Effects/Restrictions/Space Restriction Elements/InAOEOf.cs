@@ -1,6 +1,6 @@
 using KompasCore.Cards;
 using KompasCore.Effects.Identities;
-using KompasCore.Effects.Identities.GamestateNumberIdentities;
+using KompasCore.Effects.Identities.Numbers;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -8,11 +8,11 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 {
     public class InAOEOf : SpaceRestrictionElement
     {
-        public INoActivationContextIdentity<GameCardBase> card;
-        public INoActivationContextIdentity<IReadOnlyCollection<GameCardBase>> anyOf;
-        public INoActivationContextIdentity<IReadOnlyCollection<GameCardBase>> allOf;
+        public IIdentity<GameCardBase> card;
+        public IIdentity<IReadOnlyCollection<GameCardBase>> anyOf;
+        public IIdentity<IReadOnlyCollection<GameCardBase>> allOf;
 
-        public INoActivationContextIdentity<int> minAnyOfCount;
+        public IIdentity<int> minAnyOfCount;
 
         public override void Initialize(EffectInitializationContext initializationContext)
         {
@@ -30,11 +30,22 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 
         protected override bool AbstractIsValidSpace(Space space, ActivationContext context)
         {
-            if (card != null && !card.Item.SpaceInAOE(space)) return false;
-            if (anyOf != null && anyOf.Item.Count(c => c.SpaceInAOE(space)) < minAnyOfCount.Item) return false;
-            if (allOf != null && !allOf.Item.All(c => c.SpaceInAOE(space))) return false;
+            if (card != null && !ValidateCard(space, context)) return false;
+
+            if (anyOf != null && !ValidateAnyOf(space, context)) return false;
+
+            if (allOf != null && !ValidateAllOf(space, context)) return false;
 
             return true;
         }
+
+        private bool ValidateCard(Space space, ActivationContext context) => card.From(context, default).SpaceInAOE(space);
+
+        private bool ValidateAnyOf(Space space, ActivationContext context) 
+            => minAnyOfCount.From(context, default) <= anyOf.From(context, default)
+                                                            .Count(c => c.SpaceInAOE(space));
+
+        private bool ValidateAllOf(Space space, ActivationContext context)
+            => allOf.From(context, default).All(c => c.SpaceInAOE(space));
     }
 }

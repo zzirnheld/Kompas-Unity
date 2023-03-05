@@ -8,7 +8,7 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
     /// </summary>
     public class CanPlayCard : SpaceRestrictionElement
     {
-        public INoActivationContextIdentity<GameCardBase> toPlay;
+        public IIdentity<GameCardBase> toPlay;
 
         public bool normalPlay = false;
 
@@ -19,8 +19,12 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
         }
 
         protected override bool AbstractIsValidSpace(Space space, ActivationContext context)
-            => normalPlay
-            ? toPlay.Item.Card.PlayRestriction.IsValidNormalPlay(space, InitializationContext.Controller)
-            : toPlay.Item.Card.PlayRestriction.IsValidEffectPlay(space, InitializationContext.effect, InitializationContext.Controller, context);
+        {
+            var restriction = toPlay.From(context, default).PlayRestriction;
+        
+            return normalPlay
+                ? restriction.IsValidNormalPlay(space, InitializationContext.Controller)
+                : restriction.IsValidEffectPlay(space, InitializationContext.effect, InitializationContext.Controller, context);
+        }
     }
 }

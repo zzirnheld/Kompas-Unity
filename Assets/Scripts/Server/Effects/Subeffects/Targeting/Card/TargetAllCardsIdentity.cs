@@ -8,7 +8,7 @@ namespace KompasServer.Effects.Subeffects
 {
     public class TargetAllCardsIdentity : ServerSubeffect
     {
-        public IActivationContextIdentity<IReadOnlyCollection<GameCardBase>> cardsIdentity;
+        public IIdentity<IReadOnlyCollection<GameCardBase>> cardsIdentity;
 
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {

@@ -1,12 +1,12 @@
 using KompasCore.Cards;
 using KompasCore.Effects.Identities;
-using KompasCore.Effects.Identities.GamestatePlayerIdentities;
+using KompasCore.Effects.Identities.Players;
 
 namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 {
     public class Controller : CardRestrictionElement
     {
-        public INoActivationContextIdentity<Player> playerIdentity;
+        public IIdentity<Player> playerIdentity;
 
         public override void Initialize(EffectInitializationContext initializationContext)
         {
@@ -15,7 +15,7 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
         }
 
         protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
-            => playerIdentity.Item == card.Controller;
+            => playerIdentity.From(context, default) == card.Controller;
     }
 
     public class Friendly : Controller

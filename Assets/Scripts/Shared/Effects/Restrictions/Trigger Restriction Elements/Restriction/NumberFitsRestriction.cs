@@ -7,7 +7,7 @@ namespace KompasCore.Effects.Restrictions
     {
         public class NumberFitsRestriction : TriggerRestrictionElement
         {
-            public IActivationContextIdentity<int> number;
+            public IIdentity<int> number;
             public NumberRestriction restriction;
 
             public override void Initialize(EffectInitializationContext initializationContext)

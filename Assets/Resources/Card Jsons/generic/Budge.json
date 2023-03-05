@@ -11,8 +11,8 @@
 					"triggerRestrictionElements": [
                         {
                             "$type": "Core.TriggerRestriction:CardsMatch:",
-                            "firstCard": { "$type": "Gamestate.Card:ThisCard:" },
-                            "secondCard": { "$type": "ActivationContext.Card:MainCardBefore:" }
+                            "firstCard": { "$type": "Cards:ThisCard:" },
+                            "secondCard": { "$type": "Cards:MainCardBefore:" }
                         }
 					]
 				}
@@ -25,7 +25,7 @@
 						"cardRestrictionElements": [
                             {
 								"$type": "Core.CardRestriction:AdjacentTo:",
-								"card": { "$type": "Gamestate.Card:ThisCard:" }
+								"card": { "$type": "Cards:ThisCard:" }
 							}
 						]
 					}
@@ -38,16 +38,16 @@
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {
                                 "$type": "Core.SpaceRestriction:CanMoveCard:",
-                                "toMove": { "$type": "Subeffect.Card:Target:" }
+                                "toMove": { "$type": "Cards:TargetIndex:" }
                             },
                             {
                                 "$type": "Core.SpaceRestriction:CompareDistance:",
                                 "distanceTo": {
-                                    "$type": "Subeffect.Space:PositionOf:",
-                                    "whosePosition": { "$type": "Subeffect.Card:Target:" }
+                                    "$type": "Spaces:PositionOf:",
+                                    "ofThisCard": { "$type": "Cards:TargetIndex:" }
                                 },
                                 "number": { 
-                                    "$type": "Subeffect.Number:X:",
+                                    "$type": "Numbers:X:",
                                     "multiplier": 0,
                                     "modifier": 1
                                 },
