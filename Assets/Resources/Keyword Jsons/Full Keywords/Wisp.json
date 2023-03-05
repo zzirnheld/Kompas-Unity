@@ -18,7 +18,7 @@
 					"$type": "Gamestate.ManySpaces:CompareDistance:",
 					"distanceTo": { 
 						"$type": "Subeffect.Space:PositionOf:",
-						"whosePosition": { "$type": "Gamestate.Card:ThisCard:" }
+						"whosePosition": { "$type": "Leaf.Cards:ThisCard:" }
 					},
 					"spaces": {
 						"$type": "Gamestate.ManySpaces:PositionsOfEach:",
@@ -44,7 +44,7 @@
 						"$type": "Gamestate.ManySpaces:AdjacentSpaces:",
 						"adjacentTo": {
 							"$type": "Subeffect.Space:PositionOf:",
-							"whosePosition": { "$type": "Gamestate.Card:ThisCard:" }
+							"whosePosition": { "$type": "Leaf.Cards:ThisCard:" }
 						}
 					}
 				}

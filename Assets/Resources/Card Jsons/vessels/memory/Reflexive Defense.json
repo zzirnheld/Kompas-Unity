@@ -15,7 +15,7 @@
                             "firstCard": { "$type": "ActivationContext.Card:MainCardBefore:" },
                             "secondCard": {
                                 "$type": "Gamestate.Card:AugmentedCard:",
-                                "ofThisCard": { "$type": "Gamestate.Card:ThisCard:" }
+                                "ofThisCard": { "$type": "Leaf.Cards:ThisCard:" }
                             }
                         },
                         {
@@ -50,7 +50,7 @@
                             "firstCard": { "$type": "ActivationContext.Card:MainCardBefore:" },
                             "secondCard": {
                                 "$type": "Gamestate.Card:AugmentedCard:",
-                                "ofThisCard": { "$type": "Gamestate.Card:ThisCard:" }
+                                "ofThisCard": { "$type": "Leaf.Cards:ThisCard:" }
                             }
                         },
                         {

@@ -60,7 +60,7 @@
                                 "$type": "ActivationContext.Player:ControllerOf:",
                                 "card": {
                                     "$type": "Gamestate.Card:AugmentedCard:",
-                                    "ofThisCard": { "$type": "Gamestate.Card:ThisCard:" }
+                                    "ofThisCard": { "$type": "Leaf.Cards:ThisCard:" }
                                 }
                             }
                         }

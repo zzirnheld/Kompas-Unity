@@ -25,7 +25,7 @@
                     "$type": "ActivationContext.Number:Distance:",
                     "firstSpace": {
                         "$type": "ActivationContext.Space:PositionOf:",
-                        "whosePosition": { "$type": "Gamestate.Card:ThisCard:" }
+                        "whosePosition": { "$type": "Leaf.Cards:ThisCard:" }
                     },
                     "secondSpace": {
                         "$type": "ActivationContext.Space:PositionOf:",
@@ -51,7 +51,7 @@
                     "$type": "ActivationContext.Number:Distance:",
                     "firstSpace": {
                         "$type": "ActivationContext.Space:PositionOf:",
-                        "whosePosition": { "$type": "Gamestate.Card:ThisCard:" }
+                        "whosePosition": { "$type": "Leaf.Cards:ThisCard:" }
                     },
                     "secondSpace": {
                         "$type": "ActivationContext.Space:PositionOf:",

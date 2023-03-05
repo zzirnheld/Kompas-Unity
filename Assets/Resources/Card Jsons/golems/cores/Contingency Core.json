@@ -30,7 +30,7 @@
 					"$type": "Subeffect:AutoTargetCardIdentity:",
                     "subeffectCardIdentity": {
 						"$type": "Gamestate.Card:AugmentedCard:",
-                        "cardFromContext": { "$type": "Gamestate.Card:ThisCard:" }
+                        "cardFromContext": { "$type": "Leaf.Cards:ThisCard:" }
                     }
 				},
 				{
@@ -55,7 +55,7 @@
                             "$type": "Core.TriggerRestriction:CardsMatch:",
                             "firstCard": {
                                 "$type": "Gamestate.Card:AugmentedCard:",
-                                "ofThisCard": { "$type": "Gamestate.Card:ThisCard:" }
+                                "ofThisCard": { "$type": "Leaf.Cards:ThisCard:" }
                             },
                             "secondCard": { "$type": "ActivationContext.Card:MainCardBefore:" }
                         },

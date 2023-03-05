@@ -10,7 +10,7 @@
 					"triggerRestrictionElements": [
                         {
                             "$type": "Core.TriggerRestriction:CardsMatch:",
-                            "firstCard": { "$type": "Gamestate.Card:ThisCard:" },
+                            "firstCard": { "$type": "Leaf.Cards:ThisCard:" },
                             "secondCard": { "$type": "ActivationContext.Card:MainCardBefore:" }
                         }
 					]

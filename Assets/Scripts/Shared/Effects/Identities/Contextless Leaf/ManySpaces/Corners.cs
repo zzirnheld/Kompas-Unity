@@ -1,13 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace KompasCore.Effects.Identities
+namespace KompasCore.Effects.Identities.Leaf.Spaces
 {
-    namespace GamestateManySpacesIdentities
+    public class Corners : ContextlessLeafIdentityBase<IReadOnlyCollection<Space>>
     {
-        public class Corners : ContextlessLeafIdentityBase<IReadOnlyCollection<Space>>
-        {
-            protected override IReadOnlyCollection<Space> AbstractItem => Space.Spaces.Where(s => s.IsCorner).ToArray();
-        }
+        protected override IReadOnlyCollection<Space> AbstractItem => Space.Spaces.Where(s => s.IsCorner).ToArray();
     }
 }

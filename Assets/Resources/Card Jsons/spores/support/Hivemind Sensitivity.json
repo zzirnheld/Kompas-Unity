@@ -17,7 +17,7 @@
                             "$type": "Core.TriggerRestriction:CardsMatch:",
                             "firstCard": {
                                 "$type": "Gamestate.Card:AugmentedCard:",
-                                "ofThisCard": { "$type": "Gamestate.Card:ThisCard:" }
+                                "ofThisCard": { "$type": "Leaf.Cards:ThisCard:" }
                             },
                             "secondCard": { "$type": "ActivationContext.Card:MainCardBefore:" }
                         }
