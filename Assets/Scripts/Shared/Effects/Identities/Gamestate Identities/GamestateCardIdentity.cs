@@ -21,11 +21,6 @@ namespace KompasCore.Effects.Identities
             protected override GameCardBase AbstractItem => selector.Select(cards.Item);
         }
 
-        public class ThisCard : NoActivationContextIdentityBase<GameCardBase>
-        {
-            protected override GameCardBase AbstractItem => InitializationContext.source;
-        }
-
         public class AugmentedCard : NoActivationContextIdentityBase<GameCardBase>
         {
             public INoActivationContextIdentity<GameCardBase> ofThisCard;

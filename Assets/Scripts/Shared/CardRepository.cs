@@ -151,6 +151,9 @@ public class CardRepository : MonoBehaviour
     private static readonly Regex gamestateIdentityRegex = new Regex(@"Gamestate\.([^:]+):([^:]+):"); //Gamestate.*:*:
     private const string gamestateIdentityReplacement = @"KompasCore.Effects.Identities.Gamestate$1Identities.$2, Assembly-CSharp";
 
+    private static readonly Regex leafIdentityRegex = new Regex(@"Leaf\.([^:]+):([^:]+):"); //Leaf.*:*:
+    private const string leafIdentityReplacement = @"KompasCore.Effects.Identities.Leaf.$1.$2, Assembly-CSharp";
+
     //relationships
     private static readonly Regex relationshipRegex = new Regex(@"Relationships\.([^:]+):([^:]+):"); //Relationships.*:*:
     private const string relationshipReplacement = @"KompasCore.Effects.Relationships.$1Relationships.$2, Assembly-CSharp";
@@ -175,6 +178,8 @@ public class CardRepository : MonoBehaviour
         json = subeffectIdentityRegex.Replace(json, subeffectIdentityReplacement);
         json = activationContextIdentityRegex.Replace(json, activationContextIdentityReplacement);
         json = gamestateIdentityRegex.Replace(json, gamestateIdentityReplacement);
+
+        json = leafIdentityRegex.Replace(json, leafIdentityReplacement);
 
         json = relationshipRegex.Replace(json, relationshipReplacement);
         json = numberSelectorRegex.Replace(json, numberSelectorReplacement);

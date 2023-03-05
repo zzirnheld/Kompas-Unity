@@ -29,6 +29,12 @@ namespace KompasServer.Effects.Identities
         {
             public int index = -1;
 
+            public override void Initialize(EffectInitializationContext initializationContext)
+            {
+                base.Initialize(initializationContext);
+                if (index == -1) index = initializationContext.subeffect.targetIndex;
+            }
+
             protected override GameCardBase AbstractItem => InitializationContext.subeffect.Effect.GetTarget(index);
         }
     }

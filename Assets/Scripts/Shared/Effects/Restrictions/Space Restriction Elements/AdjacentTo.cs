@@ -11,7 +11,7 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
     public class AdjacentTo : SpaceRestrictionElement
     {
         public INoActivationContextIdentity<IReadOnlyCollection<GameCardBase>> anyOfTheseCards;
-        public INoActivationContextIdentity<GameCardBase> card;
+        public IIdentity<GameCardBase> card;
         public INoActivationContextIdentity<Space> space;
 
         private int CountNonNull(params object[] objs) => objs.Where(o => o != null).Count();
