@@ -340,4 +340,7 @@ public class CardRepository : MonoBehaviour
 
     public static string FileNameFor(string cardName) => cardFileNames[cardName];
     #endregion Create Cards
+
+
+    public static Sprite LoadSprite(string cardFileName) => Resources.Load<Sprite>($"Simple Sprites/{cardFileName}");
 }

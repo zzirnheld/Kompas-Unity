@@ -178,7 +178,7 @@ namespace KompasCore.Cards
             if (cardName != CardName)
             {
                 //Debug.Log($"Names are different, changing card pics to match name {FileName}");
-                SimpleSprite = Resources.Load<Sprite>($"Simple Sprites/{FileName}");
+                SimpleSprite = CardRepository.LoadSprite(FileName);
             }
             //else Debug.Log("Names match. Set Info not updating pics.");
 

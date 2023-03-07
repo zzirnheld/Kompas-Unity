@@ -7,6 +7,7 @@ namespace KompasDeckbuilder.UI
 {
     public class DeckbuilderCardViewController : TypicalCardViewController
     {
+        [Header("Deckbuilder-specific information")]
         public DeckbuilderReminderTextsParentController reminderTextsParentController;
         public override IReminderTextParentController ReminderTextsUIController => reminderTextsParentController;
 
