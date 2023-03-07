@@ -9,11 +9,14 @@ namespace KompasDeckbuilder.UI.Deck
     /// </summary>
     public class DeckPaneDeckController : MonoBehaviour
     {
+        public DeckBuilderController deckBuilderController;
         public Transform deckParent;
+
+        private CardRepository CardRepo => deckBuilderController.cardRepo;
 
         private IDictionary<string, IList<string>> deckNameToDeckList = new Dictionary<string, IList<string>>();
 
-        private List<DeckbuilderCard> currDeck;
+        private List<DeckbuilderCardController> currDeck;
         private string currDeckName;
 
         public IList<string> Load(string deckName)
@@ -35,9 +38,35 @@ namespace KompasDeckbuilder.UI.Deck
 
         public void Show(string deckName)
         {
+            if (currDeckName == deckName) return;
             if (currDeckName != default) ; //TODO clear old deck
 
-            
+            currDeckName = deckName;
+            var cardNames = deckNameToDeckList[currDeckName];
+
+            foreach (string name in cardNames)
+            {
+                if (!string.IsNullOrWhiteSpace(name)) AddToDeck(name);
+            }
+        }
+
+        public void AddToDeck(string name)
+        {
+            string json = CardRepo.GetJsonFromName(name);
+            if (json == null) return;
+
+            //TODO refactor out whatever CardSearchController is doing there with the selecting thing
+            DeckbuilderCardController toAdd = CardRepo.InstantiateDeckbuilderCard(json, default, true);
+            if (toAdd == null)
+            {
+                Debug.LogError($"Somehow have a DeckbuilderCard with name {name} couldn't be re-instantiated");
+                return;
+            }
+
+            currDeck.Add(toAdd);
+            toAdd.gameObject.SetActive(true);
+            toAdd.transform.SetParent(deckParent);
+            toAdd.transform.localScale = Vector3.one;
         }
     }
 }
