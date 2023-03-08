@@ -2797,6 +2797,7 @@ GameObject:
   m_Component:
   - component: {fileID: 616403612}
   - component: {fileID: 616403613}
+  - component: {fileID: 616403614}
   m_Layer: 5
   m_Name: Search Parent
   m_TagString: Untagged
@@ -2851,6 +2852,23 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &616403614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616403611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 420c55e9c1151b7cb870bb63b1736106, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deckBuilderController: {fileID: 2102974969}
+  deckSearchCardPrefab: {fileID: 3989091764113213402, guid: dc3d6b09a81a899ee83da12be5ba8c4d,
+    type: 3}
+  searchGridParentTransform: {fileID: 690134720}
+  searchText: {fileID: 1057311383}
 --- !u!1 &621262088
 GameObject:
   m_ObjectHideFlags: 0
@@ -5286,10 +5304,11 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: SearchName
-        m_Mode: 0
+      - m_Target: {fileID: 616403614}
+        m_TargetAssemblyTypeName: KompasDeckbuilder.UI.Search.DeckBuildSearchController,
+          Assembly-CSharp
+        m_MethodName: SearchCards
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

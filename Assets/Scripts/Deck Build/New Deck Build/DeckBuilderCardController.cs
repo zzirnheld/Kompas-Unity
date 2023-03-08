@@ -40,6 +40,7 @@ namespace KompasDeckbuilder.UI
 
         private DeckbuilderCard card;
         public string CardName => card.CardName;
+        public Sprite CardSprite => card.SimpleSprite;
 
         public void SetInfo(SerializableCard card, DeckBuilderController deckbuildCtrl, string fileName)
         {

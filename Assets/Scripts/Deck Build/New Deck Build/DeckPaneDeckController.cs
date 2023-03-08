@@ -63,6 +63,7 @@ namespace KompasDeckbuilder.UI.Deck
 
         public void AddToDeck(string name)
         {
+            Debug.Log($"Adding {name} to deck");
             string json = CardRepo.GetJsonFromName(name);
             if (json == null) return;
 
