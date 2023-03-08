@@ -54,8 +54,10 @@ namespace KompasDeckbuilder.UI.Deck
         private void ClearDeck()
         {
             if (currDeck == null) return;
-            
-            foreach (var card in currDeck) Destroy(card);
+
+            Debug.Log("Clearing deck");
+
+            foreach (var card in currDeck) Destroy(card.gameObject);
             currDeck.Clear();
         }
 
