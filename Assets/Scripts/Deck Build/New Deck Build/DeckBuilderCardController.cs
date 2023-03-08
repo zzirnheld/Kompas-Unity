@@ -75,6 +75,7 @@ namespace KompasDeckbuilder.UI
         public void OnPointerEnter(PointerEventData eventData)
         {
             deckbuildCtrl.DragEnteredIndex(transform.GetSiblingIndex());
+            Show();
         }
 
     }

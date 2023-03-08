@@ -34,6 +34,9 @@ namespace KompasDeckbuilder.UI.Deck
                 deckNames.Add(deckName);
                 var decklist = deckController.Load(deckName);
 
+                //var test = GetAvatarImage(decklist);
+                //Debug.Log($"image not null... {test != null}");
+
                 dropdown.options.Add(new TMP_Dropdown.OptionData() {
                     text = deckName,
                     image = GetAvatarImage(decklist) 
@@ -48,10 +51,11 @@ namespace KompasDeckbuilder.UI.Deck
         private Sprite GetAvatarImage(IEnumerable<string> decklist)
         {
             var avatarName = decklist.FirstOrDefault();
+            //Debug.Log($"Getting Avatar image for \"{avatarName}\" (len {avatarName.Length}) from {decklist}");
 
             if (avatarName == null) return null;
 
-            return CardRepository.LoadSprite(avatarName);
+            return CardRepository.LoadSprite(CardRepository.FileNameFor(avatarName));
         }
 
         public void Show(int index) => deckController.Show(dropdown.options[index].text);

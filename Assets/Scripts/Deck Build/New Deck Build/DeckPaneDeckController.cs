@@ -47,6 +47,8 @@ namespace KompasDeckbuilder.UI.Deck
                 .Where(name => !string.IsNullOrWhiteSpace(name));
 
             foreach (string name in cardNames) AddToDeck(name);
+
+            currDeck.FirstOrDefault()?.Show();
         }
 
         private void ClearDeck()

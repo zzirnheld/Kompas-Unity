@@ -348,5 +348,5 @@ public class CardRepository : MonoBehaviour
     #endregion Create Cards
 
 
-    public static Sprite LoadSprite(string cardFileName) => Resources.Load<Sprite>($"Simple Sprites/{cardFileName}");
+    public static Sprite LoadSprite(string cardFileName) => Resources.Load<Sprite>(Path.Combine("Simple Sprites", cardFileName));
 }
