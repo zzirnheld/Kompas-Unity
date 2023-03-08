@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 
 namespace KompasDeckbuilder.UI.Deck
@@ -16,7 +17,7 @@ namespace KompasDeckbuilder.UI.Deck
 
         private IDictionary<string, IList<string>> deckNameToDeckList = new Dictionary<string, IList<string>>();
 
-        private List<DeckbuilderCardController> currDeck;
+        private IList<DeckBuilderCardController> currDeck = new List<DeckBuilderCardController>();
         private string currDeckName;
 
         public IList<string> Load(string deckName)
@@ -39,15 +40,21 @@ namespace KompasDeckbuilder.UI.Deck
         public void Show(string deckName)
         {
             if (currDeckName == deckName) return;
-            if (currDeckName != default) ; //TODO clear old deck
+            ClearDeck();
 
             currDeckName = deckName;
-            var cardNames = deckNameToDeckList[currDeckName];
+            var cardNames = deckNameToDeckList[currDeckName]
+                .Where(name => !string.IsNullOrWhiteSpace(name));
 
-            foreach (string name in cardNames)
-            {
-                if (!string.IsNullOrWhiteSpace(name)) AddToDeck(name);
-            }
+            foreach (string name in cardNames) AddToDeck(name);
+        }
+
+        private void ClearDeck()
+        {
+            if (currDeck == null) return;
+            
+            foreach (var card in currDeck) Destroy(card);
+            currDeck.Clear();
         }
 
         public void AddToDeck(string name)
@@ -55,18 +62,28 @@ namespace KompasDeckbuilder.UI.Deck
             string json = CardRepo.GetJsonFromName(name);
             if (json == null) return;
 
-            //TODO refactor out whatever CardSearchController is doing there with the selecting thing
-            DeckbuilderCardController toAdd = CardRepo.InstantiateDeckbuilderCard(json, default, true);
-            if (toAdd == null)
-            {
-                Debug.LogError($"Somehow have a DeckbuilderCard with name {name} couldn't be re-instantiated");
-                return;
-            }
+            var toAdd = CardRepo.InstantiateDeckBuilderCard(json, deckBuilderController);
 
             currDeck.Add(toAdd);
             toAdd.gameObject.SetActive(true);
             toAdd.transform.SetParent(deckParent);
             toAdd.transform.localScale = Vector3.one;
+        }
+
+        public void RemoveFromDeck(DeckBuilderCardController card)
+        {
+            if (!currDeck.Remove(card)) return;
+
+            Destroy(card);
+        }
+
+        public void ChangeDeckIndex(DeckBuilderCardController card, int index)
+        {
+            if (!currDeck.Remove(card)) return;
+
+            currDeck.Insert(index, card);
+
+            deckNameToDeckList[currDeckName] = currDeck.Select(card => card.CardName).ToArray();
         }
     }
 }

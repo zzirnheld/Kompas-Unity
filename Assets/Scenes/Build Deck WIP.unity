@@ -7682,8 +7682,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe396b808060a2bd59f0a15cb96384c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deckController: {fileID: 0}
-  dropdownController: {fileID: 0}
+  deckController: {fileID: 1880730547}
+  dropdownController: {fileID: 1026250136}
 --- !u!1 &1757887960
 GameObject:
   m_ObjectHideFlags: 0
@@ -8146,6 +8146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 617edd0234fbc4ba8996d3ebaec6c136, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deckBuilderController: {fileID: 2102974969}
   deckParent: {fileID: 657009706}
 --- !u!1 &2017504278
 GameObject:
@@ -8643,6 +8644,8 @@ GameObject:
   - component: {fileID: 2102974966}
   - component: {fileID: 2102974965}
   - component: {fileID: 2102974964}
+  - component: {fileID: 2102974969}
+  - component: {fileID: 2102974968}
   m_Layer: 5
   m_Name: Main Canvas
   m_TagString: Untagged
@@ -8735,6 +8738,37 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &2102974968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102974963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9fb8748191d6744ab4316215e0b0131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DeckbuilderCharPrefab: {fileID: 0}
+  deckBuilderCardPrefab: {fileID: 3989091764113213402, guid: c6763517f7b24098f8d1fde3f945efbf,
+    type: 3}
+  CardPrefab: {fileID: 0}
+--- !u!114 &2102974969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102974963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf4d9a9e668fc49998298f31119736d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardRepo: {fileID: 2102974968}
+  deckPaneController: {fileID: 1680237669}
+  cardViewController: {fileID: 3125237725147365663}
 --- !u!114 &30957411604755050
 MonoBehaviour:
   m_ObjectHideFlags: 0

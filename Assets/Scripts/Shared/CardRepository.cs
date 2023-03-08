@@ -4,7 +4,6 @@ using KompasCore.Effects.Restrictions;
 using KompasCore.Helpers;
 using KompasDeckbuilder;
 using KompasDeckbuilder.UI;
-using KompasServer.Effects;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,11 +56,13 @@ public class CardRepository : MonoBehaviour
 
     public static IEnumerable<string> CardJsons => cardJsons.Values;
 
-    //TODO move this out to a DeckbuilderCardRepository
+    [Header("Old Deck Builder")]
     public GameObject DeckbuilderCharPrefab;
-    public GameObject DeckbuilderSpellPrefab;
-    public GameObject DeckbuilderAugPrefab;
 
+    [Header("New (WIP) Deck Builder")]
+    public GameObject deckBuilderCardPrefab;
+
+    [Header("Standard Game")]
     public GameObject CardPrefab;
 
     private void Awake()
@@ -142,29 +143,29 @@ public class CardRepository : MonoBehaviour
     private const string coreRestrictionReplacement = @"KompasCore.Effects.Restrictions.$1RestrictionElements.$2, Assembly-CSharp";
 
     //identity regexes
-    private static readonly Regex cardsIdentityRegex = new Regex(@"Cards:([^:]+):"); //Cards:*:
-    private const string cardsIdentityReplacement = @"KompasCore.Effects.Identities.Cards.$1, Assembly-CSharp";
+    private static readonly Regex cardsIdentityRegex = new Regex(@"""Cards:([^:]+):"); //"Cards:*:
+    private const string cardsIdentityReplacement = @"""KompasCore.Effects.Identities.Cards.$1, Assembly-CSharp";
 
-    private static readonly Regex manyCardsIdentityRegex = new Regex(@"ManyCards:([^:]+):"); //ManyCards:*:
-    private const string manyCardsIdentityReplacement = @"KompasCore.Effects.Identities.ManyCards.$1, Assembly-CSharp";
+    private static readonly Regex manyCardsIdentityRegex = new Regex(@"""ManyCards:([^:]+):"); //"ManyCards:*:
+    private const string manyCardsIdentityReplacement = @"""KompasCore.Effects.Identities.ManyCards.$1, Assembly-CSharp";
 
-    private static readonly Regex spacesIdentityRegex = new Regex(@"Spaces:([^:]+):"); //Spaces:*:
-    private const string spacesIdentityReplacement = @"KompasCore.Effects.Identities.Spaces.$1, Assembly-CSharp";
+    private static readonly Regex spacesIdentityRegex = new Regex(@"""Spaces:([^:]+):"); //"Spaces:*:
+    private const string spacesIdentityReplacement = @"""KompasCore.Effects.Identities.Spaces.$1, Assembly-CSharp";
 
-    private static readonly Regex manySpacesIdentityRegex = new Regex(@"ManySpaces:([^:]+):"); //ManySpaces:*:
-    private const string manySpacesIdentityReplacement = @"KompasCore.Effects.Identities.ManySpaces.$1, Assembly-CSharp";
+    private static readonly Regex manySpacesIdentityRegex = new Regex(@"""ManySpaces:([^:]+):"); //"ManySpaces:*:
+    private const string manySpacesIdentityReplacement = @"""KompasCore.Effects.Identities.ManySpaces.$1, Assembly-CSharp";
 
-    private static readonly Regex numbersIdentityRegex = new Regex(@"Numbers:([^:]+):"); //Numbers:*:
-    private const string numbersIdentityReplacement = @"KompasCore.Effects.Identities.Numbers.$1, Assembly-CSharp";
+    private static readonly Regex numbersIdentityRegex = new Regex(@"""Numbers:([^:]+):"); //"Numbers:*:
+    private const string numbersIdentityReplacement = @"""KompasCore.Effects.Identities.Numbers.$1, Assembly-CSharp";
 
-    private static readonly Regex manyNumbersIdentityRegex = new Regex(@"ManyNumbers:([^:]+):"); //ManyNumbers:*:
-    private const string manyNumbersIdentityReplacement = @"KompasCore.Effects.Identities.ManyNumbers.$1, Assembly-CSharp";
+    private static readonly Regex manyNumbersIdentityRegex = new Regex(@"""ManyNumbers:([^:]+):"); //"ManyNumbers:*:
+    private const string manyNumbersIdentityReplacement = @"""KompasCore.Effects.Identities.ManyNumbers.$1, Assembly-CSharp";
 
-    private static readonly Regex playersIdentityRegex = new Regex(@"Players:([^:]+):"); //Players:*:
-    private const string playersIdentityReplacement = @"KompasCore.Effects.Identities.Players.$1, Assembly-CSharp";
+    private static readonly Regex playersIdentityRegex = new Regex(@"""Players:([^:]+):"); //"Players:*:
+    private const string playersIdentityReplacement = @"""KompasCore.Effects.Identities.Players.$1, Assembly-CSharp";
 
-    private static readonly Regex stackablesIdentityRegex = new Regex(@"Stackables:([^:]+):"); //Stackables:*:
-    private const string stackablesIdentityReplacement = @"KompasCore.Effects.Identities.Stackables.$1, Assembly-CSharp";
+    private static readonly Regex stackablesIdentityRegex = new Regex(@"""Stackables:([^:]+):"); //"Stackables:*:
+    private const string stackablesIdentityReplacement = @"""KompasCore.Effects.Identities.Stackables.$1, Assembly-CSharp";
 
     //relationships
     private static readonly Regex relationshipRegex = new Regex(@"Relationships\.([^:]+):([^:]+):"); //Relationships.*:*:
@@ -284,21 +285,26 @@ public class CardRepository : MonoBehaviour
         return card.cardType == 'C';
     }
 
-    public DeckbuilderCardController InstantiateDeckbuilderCard(string json, DeckbuildSearchController searchCtrl, bool inDeck)
+    //old version, TODO remove
+    public KompasDeckbuilder.DeckbuilderCardController InstantiateDeckbuilderCard(string json, DeckbuildSearchController searchCtrl, bool inDeck)
     {
-        try
-        {
-            SerializableCard serializableCard = JsonConvert.DeserializeObject<SerializableCard>(json, cardLoadingSettings);
-            var card = Instantiate(DeckbuilderCharPrefab).GetComponent<DeckbuilderCardController>();
-            card.SetInfo(searchCtrl, serializableCard, inDeck, FileNameFor(serializableCard.cardName));
-            return card;
-        }
-        catch (System.ArgumentException argEx)
-        {
-            //Catch JSON parse error
-            Debug.LogError($"Failed to load {json}, argument exception {argEx}");
-            return null;
-        }
+        SerializableCard serializableCard = SerializableCardFromJson(json);
+        if (serializableCard == null) return null;
+
+        var card = Instantiate(DeckbuilderCharPrefab).GetComponent<KompasDeckbuilder.DeckbuilderCardController>();
+        card.SetInfo(searchCtrl, serializableCard, inDeck, FileNameFor(serializableCard.cardName));
+        return card;
+    }
+
+    // new version
+    public KompasDeckbuilder.UI.DeckBuilderCardController InstantiateDeckBuilderCard(string json, DeckBuilderController deckBuilderController)
+    {
+        SerializableCard serializableCard = SerializableCardFromJson(json);
+        if (serializableCard == null) return null;
+
+        var card = Instantiate(deckBuilderCardPrefab).GetComponent<KompasDeckbuilder.UI.DeckBuilderCardController>();
+        card.SetInfo(serializableCard, deckBuilderController, FileNameFor(serializableCard.cardName));
+        return card;
     }
 
 
