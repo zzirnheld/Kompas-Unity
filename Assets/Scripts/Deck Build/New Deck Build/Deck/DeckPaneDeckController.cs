@@ -18,7 +18,8 @@ namespace KompasDeckbuilder.UI.Deck
         private IDictionary<string, IList<string>> deckNameToDeckList = new Dictionary<string, IList<string>>();
 
         private IList<DeckBuilderCardController> currDeck = new List<DeckBuilderCardController>();
-        private string currDeckName;
+        public string CurrDeckName { get; private set; }
+        public IEnumerable<string> CurrDeckList => currDeck.Select(card => card.CardName);
 
         public IList<string> Load(string deckName)
         {
@@ -32,18 +33,18 @@ namespace KompasDeckbuilder.UI.Deck
             decklist = decklist.Replace("\r", "");
             decklist = decklist.Replace("\t", "");
             var cardNames = new List<string>(decklist.Split('\n'));
-            deckNameToDeckList[deckName] = cardNames;
+            NewDeck(deckName, cardNames);
 
             return cardNames;
         }
 
         public void Show(string deckName)
         {
-            if (currDeckName == deckName) return;
+            if (CurrDeckName == deckName) return;
             ClearDeck();
 
-            currDeckName = deckName;
-            var cardNames = deckNameToDeckList[currDeckName]
+            CurrDeckName = deckName;
+            var cardNames = deckNameToDeckList[CurrDeckName]
                 .Where(name => !string.IsNullOrWhiteSpace(name));
 
             foreach (string name in cardNames) AddToDeck(name);
@@ -59,6 +60,11 @@ namespace KompasDeckbuilder.UI.Deck
 
             foreach (var card in currDeck) Destroy(card.gameObject);
             currDeck.Clear();
+        }
+
+        public void NewDeck(string deckName, IList<string> deckList)
+        {
+            deckNameToDeckList[deckName] = deckList;
         }
 
         public void AddToDeck(string name)
@@ -88,7 +94,7 @@ namespace KompasDeckbuilder.UI.Deck
 
             currDeck.Insert(index, card);
 
-            deckNameToDeckList[currDeckName] = currDeck.Select(card => card.CardName).ToArray();
+            deckNameToDeckList[CurrDeckName] = currDeck.Select(card => card.CardName).ToArray();
         }
     }
 }
