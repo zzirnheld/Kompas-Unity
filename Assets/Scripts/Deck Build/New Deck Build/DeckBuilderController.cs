@@ -1,5 +1,6 @@
 using KompasDeckbuilder.UI.Deck;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace KompasDeckbuilder.UI
 {
@@ -18,6 +19,28 @@ namespace KompasDeckbuilder.UI
 
             CurrentDrag.transform.SetSiblingIndex(index);
             deckPaneController.deckController.ChangeDeckIndex(CurrentDrag, index);
+        }
+
+
+        private void Update()
+        {
+            if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl))
+            {
+                if (Input.GetKeyUp(KeyCode.S)) deckPaneController.saveController.SaveDeck();
+                else if (Input.GetKeyUp(KeyCode.N))
+                {
+                    deckPaneController.deckController.ClearDeck();
+                    deckPaneController.saveController.ShowSaveAs();
+                }
+            }
+
+            if (Input.GetKeyUp(KeyCode.Escape)) ToMainMenu();
+        }
+
+        public void ToMainMenu()
+        {
+            //load the main menu scene
+            SceneManager.LoadScene(MainMenuUICtrl.MainMenuScene);
         }
 
     }
