@@ -102,7 +102,7 @@ namespace KompasDeckbuilder.UI.Deck
         {
             if (!currDeck.Remove(card)) return;
 
-            Destroy(card);
+            Destroy(card.gameObject);
         }
 
         public void ChangeDeckIndex(DeckBuilderCardController card, int index)
