@@ -13,12 +13,18 @@ namespace KompasDeckbuilder.UI.Deck
         public DeckPaneDeckController deckController;
         public DeckPaneDropdownController dropdownController;
 
+        public GameObject moreDeckButtonsParent;
 
         public void Start()
         {
             DeckFilesFolderPath ??= Path.Combine(Application.persistentDataPath, "Decks");
             
             dropdownController.Load();
+        }
+
+        public void ShowMoreButtons(bool show)
+        {
+            moreDeckButtonsParent.SetActive(show);
         }
 
     }

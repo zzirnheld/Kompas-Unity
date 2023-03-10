@@ -2234,8 +2234,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
+      - m_Target: {fileID: 1880730547}
+        m_TargetAssemblyTypeName: KompasDeckbuilder.UI.Deck.DeckPaneDeckController,
+          Assembly-CSharp
         m_MethodName: ClearDeck
         m_Mode: 1
         m_Arguments:
@@ -4285,6 +4286,7 @@ GameObject:
   - component: {fileID: 906943953}
   - component: {fileID: 906943952}
   - component: {fileID: 906943951}
+  - component: {fileID: 906943956}
   m_Layer: 5
   m_Name: Delete Deck Button
   m_TagString: Untagged
@@ -4398,9 +4400,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: AskDeleteDeck
+      - m_Target: {fileID: 906943956}
+        m_TargetAssemblyTypeName: KompasDeckbuilder.UI.Deck.DeckPaneDeleteController,
+          Assembly-CSharp
+        m_MethodName: Delete
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4448,6 +4451,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 906943949}
   m_CullTransparentMesh: 0
+--- !u!114 &906943956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 906943949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e1b6b8e692601426b3b5acc4804854f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deckController: {fileID: 1880730547}
+  dropdownController: {fileID: 1026250136}
 --- !u!1 &918853498
 GameObject:
   m_ObjectHideFlags: 0
@@ -4612,8 +4629,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
+      - m_Target: {fileID: 1880730547}
+        m_TargetAssemblyTypeName: KompasDeckbuilder.UI.Deck.DeckPaneDeckController,
+          Assembly-CSharp
         m_MethodName: ClearDeck
         m_Mode: 1
         m_Arguments:
@@ -4624,9 +4642,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: Show
+      - m_Target: {fileID: 1283103236}
+        m_TargetAssemblyTypeName: KompasDeckbuilder.UI.Deck.DeckPaneSaveController,
+          Assembly-CSharp
+        m_MethodName: ShowSaveAs
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5151,8 +5170,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 358.53125, y: -80}
-  m_SizeDelta: {x: 717.0625, y: 50}
+  m_AnchoredPosition: {x: 326.3597, y: -80}
+  m_SizeDelta: {x: 652.7194, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1026276969
 MonoBehaviour:
@@ -5851,9 +5870,9 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1243832649}
-        m_TargetAssemblyTypeName: MoreDeckbuildButtonsController, Assembly-CSharp
-        m_MethodName: ToggleShowMoreButtons
+      - m_Target: {fileID: 1680237669}
+        m_TargetAssemblyTypeName: KompasDeckbuilder.UI.Deck.DeckPaneController, Assembly-CSharp
+        m_MethodName: ShowMoreButtons
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5863,7 +5882,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!1 &1260987101
 GameObject:
   m_ObjectHideFlags: 0
@@ -7763,6 +7782,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deckController: {fileID: 1880730547}
   dropdownController: {fileID: 1026250136}
+  moreDeckButtonsParent: {fileID: 1026276967}
 --- !u!1 &1757887960
 GameObject:
   m_ObjectHideFlags: 0

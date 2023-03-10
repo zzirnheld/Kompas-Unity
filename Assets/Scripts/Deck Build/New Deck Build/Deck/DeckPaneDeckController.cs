@@ -13,10 +13,16 @@ namespace KompasDeckbuilder.UI.Deck
         public DeckBuilderController deckBuilderController;
         public Transform deckParent;
 
+        /// <summary>
+        /// Current decklist that is being shown
+        /// </summary>
         private IList<DeckBuilderCardController> currDeck = new List<DeckBuilderCardController>();
         public string CurrDeckName { get; private set; }
         public IEnumerable<string> CurrDeckList => currDeck.Select(card => card.CardName);
 
+        /// <summary>
+        /// Map from deck name to "ground truth" decklist. Should be updated when a deck is saved.
+        /// </summary>
         private IDictionary<string, IList<string>> deckNameToDeckList = new Dictionary<string, IList<string>>();
 
         private CardRepository CardRepo => deckBuilderController.cardRepo;
@@ -50,6 +56,13 @@ namespace KompasDeckbuilder.UI.Deck
             deckNameToDeckList[deckName] = deckList;
         }
 
+        public void Delete(string deckName)
+        {
+            deckNameToDeckList.Remove(deckName);
+            string filePath = Path.Combine(DeckPaneController.DeckFilesFolderPath, $"{deckName}.txt");
+            File.Delete(filePath);
+        }
+
         public void Show(string deckName, bool refresh = false)
         {
             if (CurrDeckName == deckName && !refresh) return;
@@ -77,7 +90,7 @@ namespace KompasDeckbuilder.UI.Deck
             toAdd.transform.localScale = Vector3.one;
         }
 
-        private void ClearDeck()
+        public void ClearDeck()
         {
             if (currDeck == null) return;
 

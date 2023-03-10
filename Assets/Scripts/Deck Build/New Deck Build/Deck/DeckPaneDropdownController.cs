@@ -62,6 +62,16 @@ namespace KompasDeckbuilder.UI.Deck
             return dropdown.options.Count - 1;
         }
 
+        public void RemoveFromDropdown(string deckName)
+        {
+            var alreadyThere = dropdown.options.FirstOrDefault(option => option.text == deckName);
+            if (alreadyThere == null) return;
+
+            dropdown.options.Remove(alreadyThere);
+            Select(0);
+            dropdown.RefreshShownValue();
+        }
+
         public void Select(int index)
         {
             dropdown.value = index;
