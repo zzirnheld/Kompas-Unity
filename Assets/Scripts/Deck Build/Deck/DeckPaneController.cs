@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
+using KompasCore.Helpers;
 using UnityEngine;
 
 namespace KompasDeckbuilder.UI.Deck
@@ -42,11 +43,7 @@ namespace KompasDeckbuilder.UI.Deck
             if (save) saveController.SaveDeck();
         }
 
-        public void Show (EditMode editMode)
-        {
-            foreach (var go in editModeParents) go.SetActive(false);
-            editModeParents[(int)editMode].SetActive(true);
-        }
+        public void Show (EditMode editMode) => CollectionsHelper.ShowOnly(editModeParents, (int)editMode);
 
     }
 }

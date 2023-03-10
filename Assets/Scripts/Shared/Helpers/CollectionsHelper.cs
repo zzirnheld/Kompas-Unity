@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace KompasCore.Helpers
 {
@@ -19,6 +21,14 @@ namespace KompasCore.Helpers
                 (list[n], list[k]) = (list[k], list[n]);
             }
             return list;
+        }
+
+        public static void ShowOnly(IReadOnlyCollection<GameObject> gameObjects, int index)
+            => ActionOn(gameObjects, index, (go, active) => go.SetActive(active));
+
+        public static void ActionOn<T>(IReadOnlyCollection<T> objects, int index, Action<T, bool> action)
+        {
+            foreach (var (i, go) in objects.Enumerate()) action.Invoke(go, i == index);
         }
     }
 }

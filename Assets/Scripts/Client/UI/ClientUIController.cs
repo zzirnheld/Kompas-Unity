@@ -29,9 +29,7 @@ namespace KompasClient.UI
 
         public override IReminderTextParentController ReminderTextParentUIController => cardInfoViewUIController.ReminderTextsUIController;
 
-        [Header("Networking")]
-        public TMP_InputField ipInputField;
-        public GameObject networkingParent;
+        public ConnectionUIController connectionUIController;
 
         [Header("Pips")]
         public TMP_Text friendlyPipsText;
@@ -127,63 +125,11 @@ namespace KompasClient.UI
 
         public void ApplySettings(ClientSettings clientSettings)
         {
-            ipInputField.text = clientSettings.defaultIP;
+            connectionUIController.ApplySettings(clientSettings);
             detailedEffectsCtrlUIObject.SetActive(clientSettings.showAdvancedEffectsSettings);
         }
             //TODO if (fromClick && targetMode != Game.TargetMode.Free && card != null) clientGame.searchCtrl.ToggleTarget(card);
 
-        #region connection/game start
-        public void Connect(bool acceptEmpty)
-        {
-            string ip = ipInputField.text;
-            if (string.IsNullOrEmpty(ip))
-            {
-                if (acceptEmpty) ip = "127.0.0.1";
-                else return;
-            }
-            else if (!IPAddress.TryParse(ip, out _)) return;
-
-            //Stash ip
-            clientGame.ClientSettings.defaultIP = ip;
-            clientGame.clientUIController.clientUISettingsController.SaveSettings();
-
-            HideConnectUI();
-            clientGame.clientNetworkCtrl.Connect(ip);
-        }
-
-        public void HideConnectUI() => networkingParent.SetActive(false);
-
-        public void ShowConnectedWaitingUI() => ConnectedWaitingParent.SetActive(true);
-
-        public void ShowConnectUI() => networkingParent.SetActive(true);
-
-        public void ShowGetDecklistUI()
-        {
-            ConnectToServerParent.SetActive(false);
-            DeckWaitingParent.SetActive(false);
-            DeckSelectUIParent.SetActive(true);
-            DeckSelectorParent.SetActive(true);
-            DeckSelectConfirmParent.SetActive(true);
-        }
-
-        public void AwaitDeckConfirm()
-        {
-            DeckSelectorParent.SetActive(false);
-            DeckSelectConfirmParent.SetActive(false);
-            DeckAcceptedParent.SetActive(false);
-            DeckWaitingParent.SetActive(true);
-        }
-
-        public void ShowDeckAcceptedUI()
-        {
-            DeckSelectorParent.SetActive(false);
-            DeckSelectConfirmParent.SetActive(false);
-            DeckWaitingParent.SetActive(false);
-            DeckAcceptedParent.SetActive(true);
-        }
-
-        public void HideGetDecklistUI() => DeckSelectUIParent.SetActive(false);
-        #endregion connection/game start
 
         public void ChangeTurn(int index)
         {

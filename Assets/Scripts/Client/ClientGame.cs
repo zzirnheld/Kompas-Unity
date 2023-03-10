@@ -144,7 +144,7 @@ namespace KompasClient.GameCore
         {
             FirstTurnPlayer = TurnPlayerIndex = playerIndex;
             clientUIController.ChangeTurn(playerIndex);
-            clientUIController.HideGetDecklistUI();
+            clientUIController.connectionUIController.Hide();
             RoundCount = 1;
             TurnCount = 1;
             canZoom = true;

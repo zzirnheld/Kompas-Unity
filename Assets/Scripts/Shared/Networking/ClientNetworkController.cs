@@ -6,6 +6,8 @@ using System.Net.Sockets;
 using System.Threading.Tasks;
 using UnityEngine;
 
+using static KompasClient.UI.ConnectionUIController;
+
 namespace KompasClient.Networking
 {
     public class ClientNetworkController : NetworkController
@@ -27,10 +29,16 @@ namespace KompasClient.Networking
             catch (SocketException e)
             {
                 Debug.LogError($"Failed to connect to {ip}. Stack trace:\n{e.StackTrace}");
-                ClientGame.clientUIController.ShowConnectUI();
+                ClientGame.clientUIController.connectionUIController.Show(ConnectionState.ChooseServer);
             }
-            Debug.Log("Connected");
-            if (tcpClient.Connected) ClientGame.clientUIController.ShowConnectedWaitingUI();
+            
+            if (tcpClient.Connected)
+            {
+                Debug.Log("Connected");
+                ClientGame.clientUIController.connectionUIController.Show(ConnectionState.WaitingForPlayer);
+            }
+            else ClientGame.clientUIController.connectionUIController.Show(ConnectionState.ChooseServer);
+
             connecting = false;
         }
 
@@ -39,6 +47,8 @@ namespace KompasClient.Networking
             base.Update();
             if (connecting) return;
             if (packets.Count != 0) ProcessPacket(packets.Dequeue());
+
+            //TODO: if !tcpClient.connected
         }
 
         private IClientOrderPacket FromJson(string command, string json)
