@@ -24,7 +24,8 @@ namespace KompasDeckbuilder.UI.Deck
             File.WriteAllText(filePath, deckList);
 
             deckController.SetDecklist(deckName, deckListArr);
-            dropdownController.AddDeckListToDropdown(deckName, deckListArr);
+            int index = dropdownController.AddDeckListToDropdown(deckName, deckListArr);
+            dropdownController.Select(index);
         }
 
         public void SaveDeck() => SaveDeckAs(deckController.CurrDeckName);

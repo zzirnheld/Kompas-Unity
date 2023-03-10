@@ -44,7 +44,7 @@ namespace KompasDeckbuilder.UI.Deck
             deckController.Show(deckNames[0]);
         }
 
-        public void AddDeckListToDropdown(string deckName, IEnumerable<string> deckList)
+        public int AddDeckListToDropdown(string deckName, IEnumerable<string> deckList)
         {
             var alreadyThere = dropdown.options.FirstOrDefault(option => option.text == deckName);
 
@@ -52,13 +52,20 @@ namespace KompasDeckbuilder.UI.Deck
             {
                 alreadyThere.image = GetAvatarImage(deckList);
                 dropdown.RefreshShownValue();
-                return;
+                return dropdown.options.IndexOf(alreadyThere);
             }
 
             dropdown.options.Add(new TMP_Dropdown.OptionData() {
                 text = deckName,
                 image = GetAvatarImage(deckList) 
             });
+            return dropdown.options.Count - 1;
+        }
+
+        public void Select(int index)
+        {
+            dropdown.value = index;
+            Show(index);
         }
 
         private Sprite GetAvatarImage(IEnumerable<string> deckList)
