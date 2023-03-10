@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using KompasCore.Helpers;
 using KompasDeckbuilder.UI.Deck;
 using TMPro;
 using UnityEngine;
@@ -18,12 +19,12 @@ namespace KompasCore.UI
 
         public void Load()
         {
-            Directory.CreateDirectory(DeckPaneController.DeckFilesFolderPath);
+            Directory.CreateDirectory(DeckLoadHelper.DeckFilesFolderPath);
 
             dropdown.options.Clear();
             var deckNames = new List<string>();
 
-            DirectoryInfo dirInfo = new DirectoryInfo(DeckPaneController.DeckFilesFolderPath);
+            DirectoryInfo dirInfo = new DirectoryInfo(DeckLoadHelper.DeckFilesFolderPath);
             FileInfo[] files = dirInfo.GetFiles("*.txt");
             foreach (FileInfo fi in files)
             {
@@ -44,7 +45,10 @@ namespace KompasCore.UI
             Show(deckNames[0]);
         }
 
-        protected abstract IList<string> LoadDeck(string deckName);
+        /// <summary>
+        /// Should be overridden if you want to do anything else at the moment the deck list is loaded in.
+        /// </summary>
+        protected virtual IList<string> LoadDeck(string deckName) => DeckLoadHelper.LoadDeck(deckName);
         protected abstract void Show(string deckName);
 
 

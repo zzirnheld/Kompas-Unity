@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using KompasCore.Helpers;
 using UnityEngine;
 
 namespace KompasDeckbuilder.UI.Deck
@@ -33,27 +34,8 @@ namespace KompasDeckbuilder.UI.Deck
         /// <returns>A list of card names present in the deck.</returns>
         public IList<string> Load(string deckName)
         {
-            var list = new List<string>();
-
-            string filePath = Path.Combine(DeckPaneController.DeckFilesFolderPath, $"{deckName}.txt");
-            string deckList = File.ReadAllText(filePath);
-
             //These have to be string replaces so they can replace with nothing
-            return SetDecklist(deckName, deckList);
-        }
-
-        public static IList<string> Split(string deckList)
-        {
-            deckList = deckList.Replace("\u200B", "");
-            deckList = deckList.Replace("\r", "");
-            deckList = deckList.Replace("\t", "");
-            var cardNames = new List<string>(deckList.Split('\n'));
-            return cardNames;
-        }
-
-        public IList<string> SetDecklist(string deckName, string deckList)
-        {
-            var cardNames = Split(deckList);
+            var cardNames = DeckLoadHelper.LoadDeck(deckName);
             SetDecklist(deckName, cardNames);
             return cardNames;
         }

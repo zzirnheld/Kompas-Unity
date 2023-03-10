@@ -1,3 +1,4 @@
+using KompasCore.Helpers;
 using TMPro;
 using UnityEngine;
 
@@ -19,7 +20,7 @@ namespace KompasDeckbuilder.UI.Deck
         public void Confirm()
         {
             Debug.Log($"Confirmed {deckName.text} as {deckList.text}");
-            deckPaneController.CreateDeck(deckName.text, DeckPaneDeckController.Split(deckList.text), save: true);
+            deckPaneController.CreateDeck(deckName.text, DeckLoadHelper.CleanAndSplit(deckList.text), save: true);
             Hide();
         }
 
