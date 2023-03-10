@@ -7,6 +7,7 @@ namespace KompasDeckbuilder.UI.Deck
 {
     public class DeckPaneSaveController : MonoBehaviour
     {
+        public DeckPaneController deckPaneController;
         public DeckPaneDeckController deckController;
         public DeckPaneDropdownController dropdownController;
 
@@ -23,9 +24,7 @@ namespace KompasDeckbuilder.UI.Deck
             Debug.Log($"Saving deck to {filePath}:\n{deckList}");
             File.WriteAllText(filePath, deckList);
 
-            deckController.SetDecklist(deckName, deckListArr);
-            int index = dropdownController.AddDeckListToDropdown(deckName, deckListArr);
-            dropdownController.Select(index);
+            deckPaneController.CreateDeck(deckName, deckListArr);
         }
 
         public void SaveDeck() => SaveDeckAs(deckController.CurrDeckName);

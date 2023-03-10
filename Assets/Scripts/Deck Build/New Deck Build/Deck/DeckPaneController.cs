@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ namespace KompasDeckbuilder.UI.Deck
         
         public DeckPaneDeckController deckController;
         public DeckPaneDropdownController dropdownController;
+        public DeckPaneSaveController saveController;
 
         public GameObject moreDeckButtonsParent;
 
@@ -25,6 +27,14 @@ namespace KompasDeckbuilder.UI.Deck
         public void ShowMoreButtons(bool show)
         {
             moreDeckButtonsParent.SetActive(show);
+        }
+
+        public void CreateDeck(string deckName, IList<string> deckList, bool save = false)
+        {
+            deckController.SetDecklist(deckName, deckList);
+            int index = dropdownController.AddDeckListToDropdown(deckName, deckList);
+            dropdownController.Select(index);
+            if (save) saveController.SaveDeck();
         }
 
     }

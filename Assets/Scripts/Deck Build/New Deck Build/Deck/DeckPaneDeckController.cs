@@ -36,15 +36,25 @@ namespace KompasDeckbuilder.UI.Deck
             var list = new List<string>();
 
             string filePath = Path.Combine(DeckPaneController.DeckFilesFolderPath, $"{deckName}.txt");
-            string decklist = File.ReadAllText(filePath);
+            string deckList = File.ReadAllText(filePath);
 
             //These have to be string replaces so they can replace with nothing
-            decklist = decklist.Replace("\u200B", "");
-            decklist = decklist.Replace("\r", "");
-            decklist = decklist.Replace("\t", "");
-            var cardNames = new List<string>(decklist.Split('\n'));
-            SetDecklist(deckName, cardNames);
+            return SetDecklist(deckName, deckList);
+        }
 
+        public static IList<string> Split(string deckList)
+        {
+            deckList = deckList.Replace("\u200B", "");
+            deckList = deckList.Replace("\r", "");
+            deckList = deckList.Replace("\t", "");
+            var cardNames = new List<string>(deckList.Split('\n'));
+            return cardNames;
+        }
+
+        public IList<string> SetDecklist(string deckName, string deckList)
+        {
+            var cardNames = Split(deckList);
+            SetDecklist(deckName, cardNames);
             return cardNames;
         }
 
