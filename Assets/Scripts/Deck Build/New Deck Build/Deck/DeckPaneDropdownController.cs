@@ -32,15 +32,11 @@ namespace KompasDeckbuilder.UI.Deck
                 if (string.IsNullOrWhiteSpace(deckName)) continue;
 
                 deckNames.Add(deckName);
-                var decklist = deckController.Load(deckName);
+                var deckList = deckController.Load(deckName);
 
                 //var test = GetAvatarImage(decklist);
                 //Debug.Log($"image not null... {test != null}");
-
-                dropdown.options.Add(new TMP_Dropdown.OptionData() {
-                    text = deckName,
-                    image = GetAvatarImage(decklist) 
-                });
+                AddDeckListToDropdown(deckName, deckList);
             }
 
             //load initially selected deck
@@ -48,9 +44,26 @@ namespace KompasDeckbuilder.UI.Deck
             deckController.Show(deckNames[0]);
         }
 
-        private Sprite GetAvatarImage(IEnumerable<string> decklist)
+        public void AddDeckListToDropdown(string deckName, IEnumerable<string> deckList)
         {
-            var avatarName = decklist.FirstOrDefault();
+            var alreadyThere = dropdown.options.FirstOrDefault(option => option.text == deckName);
+
+            if (alreadyThere != null)
+            {
+                alreadyThere.image = GetAvatarImage(deckList);
+                dropdown.RefreshShownValue();
+                return;
+            }
+
+            dropdown.options.Add(new TMP_Dropdown.OptionData() {
+                text = deckName,
+                image = GetAvatarImage(deckList) 
+            });
+        }
+
+        private Sprite GetAvatarImage(IEnumerable<string> deckList)
+        {
+            var avatarName = deckList.FirstOrDefault();
             //Debug.Log($"Getting Avatar image for \"{avatarName}\" (len {avatarName.Length}) from {decklist}");
 
             if (avatarName == null) return null;

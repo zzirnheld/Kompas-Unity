@@ -13,14 +13,18 @@ namespace KompasDeckbuilder.UI.Deck
         public DeckBuilderController deckBuilderController;
         public Transform deckParent;
 
-        private CardRepository CardRepo => deckBuilderController.cardRepo;
-
-        private IDictionary<string, IList<string>> deckNameToDeckList = new Dictionary<string, IList<string>>();
-
         private IList<DeckBuilderCardController> currDeck = new List<DeckBuilderCardController>();
         public string CurrDeckName { get; private set; }
         public IEnumerable<string> CurrDeckList => currDeck.Select(card => card.CardName);
 
+        private IDictionary<string, IList<string>> deckNameToDeckList = new Dictionary<string, IList<string>>();
+
+        private CardRepository CardRepo => deckBuilderController.cardRepo;
+
+        /// <summary>
+        /// Loads the file for the given <paramref name="deckName"/> and parses out each card name in the deck.
+        /// </summary>
+        /// <returns>A list of card names present in the deck.</returns>
         public IList<string> Load(string deckName)
         {
             var list = new List<string>();
@@ -33,14 +37,22 @@ namespace KompasDeckbuilder.UI.Deck
             decklist = decklist.Replace("\r", "");
             decklist = decklist.Replace("\t", "");
             var cardNames = new List<string>(decklist.Split('\n'));
-            NewDeck(deckName, cardNames);
+            SetDecklist(deckName, cardNames);
 
             return cardNames;
         }
 
-        public void Show(string deckName)
+        /// <summary>
+        /// Used both for saving old decks and creating new ones.
+        /// </summary>
+        public void SetDecklist(string deckName, IList<string> deckList)
         {
-            if (CurrDeckName == deckName) return;
+            deckNameToDeckList[deckName] = deckList;
+        }
+
+        public void Show(string deckName, bool refresh = false)
+        {
+            if (CurrDeckName == deckName && !refresh) return;
             ClearDeck();
 
             CurrDeckName = deckName;
@@ -52,24 +64,8 @@ namespace KompasDeckbuilder.UI.Deck
             currDeck.FirstOrDefault()?.Show();
         }
 
-        private void ClearDeck()
-        {
-            if (currDeck == null) return;
-
-            Debug.Log("Clearing deck");
-
-            foreach (var card in currDeck) Destroy(card.gameObject);
-            currDeck.Clear();
-        }
-
-        public void NewDeck(string deckName, IList<string> deckList)
-        {
-            deckNameToDeckList[deckName] = deckList;
-        }
-
         public void AddToDeck(string name)
         {
-            Debug.Log($"Adding {name} to deck");
             string json = CardRepo.GetJsonFromName(name);
             if (json == null) return;
 
@@ -79,6 +75,14 @@ namespace KompasDeckbuilder.UI.Deck
             toAdd.gameObject.SetActive(true);
             toAdd.transform.SetParent(deckParent);
             toAdd.transform.localScale = Vector3.one;
+        }
+
+        private void ClearDeck()
+        {
+            if (currDeck == null) return;
+
+            foreach (var card in currDeck) Destroy(card.gameObject);
+            currDeck.Clear();
         }
 
         public void RemoveFromDeck(DeckBuilderCardController card)

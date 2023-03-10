@@ -1,5 +1,6 @@
 using System.IO;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 namespace KompasDeckbuilder.UI.Deck
@@ -7,19 +8,40 @@ namespace KompasDeckbuilder.UI.Deck
     public class DeckPaneSaveController : MonoBehaviour
     {
         public DeckPaneDeckController deckController;
+        public DeckPaneDropdownController dropdownController;
 
-        public void SaveDeckAs(string name)
+        public TMP_InputField deckNameText;
+        public GameObject saveAsView;
+
+        public void SaveDeckAs(string deckName)
         {
             //write to a persistent file
-            string filePath = Path.Combine(DeckPaneController.DeckFilesFolderPath, $"{name}.txt");
+            string filePath = Path.Combine(DeckPaneController.DeckFilesFolderPath, $"{deckName}.txt");
 
-            string decklist = string.Join("\n", deckController.CurrDeckList);
-            Debug.Log($"Saving deck to {filePath}:\n{decklist}");
-            File.WriteAllText(filePath, decklist);
+            var deckListArr = deckController.CurrDeckList.ToArray();
+            string deckList = string.Join("\n", deckListArr);
+            Debug.Log($"Saving deck to {filePath}:\n{deckList}");
+            File.WriteAllText(filePath, deckList);
 
-            deckController.NewDeck(name, deckController.CurrDeckList.ToArray());
+            deckController.SetDecklist(deckName, deckListArr);
+            dropdownController.AddDeckListToDropdown(deckName, deckListArr);
         }
 
         public void SaveDeck() => SaveDeckAs(deckController.CurrDeckName);
+
+        public void ShowSaveAs() => saveAsView.SetActive(true);
+
+        public void HideSaveAs() => saveAsView.SetActive(false);
+
+        public void Confirm()
+        {
+            SaveDeckAs(deckNameText.text);
+            HideSaveAs();
+        }
+
+        public void Cancel(){
+            deckNameText.text = string.Empty;
+            HideSaveAs();
+        }
     }
 }

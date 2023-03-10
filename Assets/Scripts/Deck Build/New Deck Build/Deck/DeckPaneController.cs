@@ -14,7 +14,7 @@ namespace KompasDeckbuilder.UI.Deck
         public DeckPaneDropdownController dropdownController;
 
 
-        public void Awake()
+        public void Start()
         {
             DeckFilesFolderPath ??= Path.Combine(Application.persistentDataPath, "Decks");
             
