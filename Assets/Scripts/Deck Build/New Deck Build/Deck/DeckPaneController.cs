@@ -10,7 +10,12 @@ namespace KompasDeckbuilder.UI.Deck
     public class DeckPaneController : MonoBehaviour
     {
         public static string DeckFilesFolderPath { get; private set; }
-        
+
+        public enum EditMode { Edit, Import, Export }
+
+        [EnumNamedArray(typeof(EditMode))]
+        public GameObject[] editModeParents; //Should be in order of the above enum
+
         public DeckPaneDeckController deckController;
         public DeckPaneDropdownController dropdownController;
         public DeckPaneSaveController saveController;
@@ -35,6 +40,12 @@ namespace KompasDeckbuilder.UI.Deck
             int index = dropdownController.AddDeckListToDropdown(deckName, deckList);
             dropdownController.Select(index);
             if (save) saveController.SaveDeck();
+        }
+
+        public void Show (EditMode editMode)
+        {
+            foreach (var go in editModeParents) go.SetActive(false);
+            editModeParents[(int)editMode].SetActive(true);
         }
 
     }

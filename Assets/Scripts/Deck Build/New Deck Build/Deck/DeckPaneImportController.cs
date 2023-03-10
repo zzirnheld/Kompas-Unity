@@ -6,24 +6,14 @@ namespace KompasDeckbuilder.UI.Deck
     public class DeckPaneImportController : MonoBehaviour
     {
         public DeckPaneController deckPaneController;
-        public GameObject deckEditParent;
-
         public TMP_InputField deckName;
         public TMP_InputField deckList;
-
-        public void Show(bool show)
-        {
-            gameObject.SetActive(show);
-            deckEditParent.SetActive(!show);
-        }
-
-        public void Show() => Show(true);
 
         public void Hide()
         {
             deckName.text = string.Empty;
             deckList.text = string.Empty;
-            Show(false);
+            deckPaneController.Show(DeckPaneController.EditMode.Edit);
         }
 
         public void Confirm()
@@ -32,5 +22,7 @@ namespace KompasDeckbuilder.UI.Deck
             deckPaneController.CreateDeck(deckName.text, DeckPaneDeckController.Split(deckList.text), save: true);
             Hide();
         }
+
+        public void Show() => deckPaneController.Show(DeckPaneController.EditMode.Import);
     }
 }
