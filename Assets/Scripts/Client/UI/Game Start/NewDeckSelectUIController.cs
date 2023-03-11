@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using System.Text;
 using KompasClient.Cards;
+using KompasClient.Networking;
 using KompasCore.Helpers;
 using KompasCore.UI;
 using TMPro;
@@ -9,6 +11,7 @@ namespace KompasClient.UI
 {
     public class NewDeckSelectUIController : DeckDropdownControllerBase
     {
+        public ClientNotifier clientNotifier;
         public ClientCardRepository cardRepository;
         public DeckSelectCardController deckSelectCardPrefab;
         public Transform deckScrollAreaParentTransform;
@@ -63,6 +66,18 @@ namespace KompasClient.UI
 
             currDeck.Add(toAdd);
             SetDeckCountText();
+        }
+
+        public void ConfirmSelectedDeck()
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (DeckSelectCardController card in currDeck)
+            {
+                sb.Append(card.Card.CardName);
+                sb.Append("\n");
+            }
+
+            clientNotifier.RequestDecklistImport(sb.ToString());
         }
     }
 }

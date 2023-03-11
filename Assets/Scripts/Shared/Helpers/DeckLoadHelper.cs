@@ -17,6 +17,17 @@ namespace KompasCore.Helpers
             }
         }
 
+        public static IList<string> LoadDeck(string deckName)
+        {
+            return CleanAndSplit(LoadDeckList(deckName));
+        }
+
+        public static string LoadDeckList(string deckName)
+        {
+            string filePath = Path.Combine(deckFilesFolderPath, $"{deckName}.txt");
+            return File.ReadAllText(filePath);
+        }
+
         public static IList<string> CleanAndSplit(string deckList)
         {
             deckList = deckList.Replace("\u200B", "");
@@ -24,13 +35,6 @@ namespace KompasCore.Helpers
             deckList = deckList.Replace("\t", "");
             var cardNames = new List<string>(deckList.Split('\n'));
             return cardNames;
-        }
-
-        public static IList<string> LoadDeck(string deckName)
-        {
-            string filePath = Path.Combine(deckFilesFolderPath, $"{deckName}.txt");
-            string deckList = File.ReadAllText(filePath);
-            return CleanAndSplit(deckList);
         }
     }
 }

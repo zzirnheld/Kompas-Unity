@@ -1,4 +1,3 @@
-
 using System.Net;
 using KompasClient.GameCore;
 using KompasCore.Helpers;
@@ -9,6 +8,7 @@ namespace KompasClient.UI
 {
     public class ConnectionUIController : MonoBehaviour
     {
+        private const string Localhost = "127.0.0.1";
         public ClientGame clientGame;
         public TMP_InputField ipInputField;
 
@@ -29,7 +29,7 @@ namespace KompasClient.UI
             string ip = ipInputField.text;
             if (string.IsNullOrEmpty(ip))
             {
-                if (acceptEmpty) ip = "127.0.0.1";
+                if (acceptEmpty) ip = Localhost;
                 else return;
             }
             else if (!IPAddress.TryParse(ip, out _)) return;

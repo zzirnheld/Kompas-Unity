@@ -81,7 +81,7 @@ namespace KompasCore.Effects
         public bool IsValidAttack(GameCard defender, IStackable stackSrc)
         {
             ComplainIfNotInitialized();
-            Debug.Log($"{Card.CardName} has attacked {Card.AttacksThisTurn}/{maxAttacks}");
+            //Debug.Log($"{Card.CardName} has attacked {Card.AttacksThisTurn}/{maxAttacks}");
             return IsGameSetUp() && defender != null && attackRestrictions.All(r => RestrictionValid(r, defender, stackSrc));
         }
 

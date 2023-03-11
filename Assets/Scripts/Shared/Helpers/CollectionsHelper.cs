@@ -24,7 +24,7 @@ namespace KompasCore.Helpers
         }
 
         public static void ShowOnly(IReadOnlyCollection<GameObject> gameObjects, int index)
-            => ActionOn(gameObjects, index, (go, active) => go.SetActive(active));
+            => ActionOn(gameObjects, index, (go, active) => go?.SetActive(active));
 
         public static void ActionOn<T>(IReadOnlyCollection<T> objects, int index, Action<T, bool> action)
         {
