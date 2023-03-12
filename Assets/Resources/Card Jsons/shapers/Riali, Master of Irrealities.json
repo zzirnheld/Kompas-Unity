@@ -1,35 +1,48 @@
 {
 	"cardType": 67,
 	"cardName": "Riali, Master of Irrealities",
-	"effText": "Shape.\nWhen a friendly Shaper moves X spaces, give them +X E.",
+	"effText": "Shape.\nWhen a Shaper kills themselves, revive them where they died, with all movement expended.",
 	"effects": [
 		{
 			"blurb": "Empower the Shaper",
 			"triggerData": {
-				"triggerCondition": "Move",
+				"triggerCondition": "Discard",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Main Card Fits Restriction Before"
-					],
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Subtypes Include",
-							"Friendly"
-						],
-						"subtypesInclude": [
-							"Shaper"
-						]
-					}
+					"triggerRestrictionElements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:MainCardBefore:" },
+							"cardRestriction": {
+								"cardRestrictionElements": [
+									{
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Shaper" ]
+									}
+								]
+							}
+						},
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"firstCard": { "$type": "Cards:CauseBefore:" },
+							"secondCard": { "$type": "Cards:MainCardBefore:" }
+						}
+					]
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMultiplier": 1
+					"$type": "Subeffect:TargetTriggeringCardsSpace:"
+				},
+				{
+					"$type": "Subeffect:Play:"
+				},
+				{
+					"$type":"Subeffect:SpendRemainingMovement:",
+					"xModifier":1
 				}
 			]
 		}

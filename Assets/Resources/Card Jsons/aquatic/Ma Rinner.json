@@ -1,0 +1,127 @@
+{
+	"cardType": 67,
+	"cardName": "Ma Rinner",
+	"effText": "Waterborn.\nWhen turns start, draw 2 cards. Then, unless I'm in Water, hand->bottomdeck 3.",
+	"effects": [
+		{
+			"blurb": "Fish",
+			"triggerData": {
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:DrawX:",
+					"xModifier": 2
+				},
+				{
+					"$type": "Subeffect:TargetThis:"
+				},
+				{
+					"$type": "Subeffect:ConditionalEnd:",
+					"condition": "Target Fits Restriction",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictionElements": [
+								{
+									"$type": "Core.SpaceRestriction:InAOEOf:",
+									"anyOf": {
+										"$type": "ManyCards:FittingRestriction:",
+										"cardRestriction": {
+											"cardRestrictionElements": [
+												{
+													"$type": "Core.CardRestriction:Subtypes:",
+													"subtypes": [ "Water" ]
+												}
+											]
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				{
+					"$type": "Subeffect:ChooseFromList:",
+					"cardRestriction": {
+						"blurb": "cards for Ma Rinner to bottomdeck",
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Hand" ]
+							}
+						]
+					},
+					"listRestriction": {
+						"listRestrictions": [
+							"Min Can Choose",
+							"Max Can Choose"
+						],
+						"minCanChoose": 3,
+						"maxCanChoose": 3
+					}
+				},
+				{
+					"$type": "Subeffect:Bottomdeck:",
+					"targetIndex": -1
+				},
+				{
+					"$type": "Subeffect:Bottomdeck:",
+					"targetIndex": -2
+				},
+				{
+					"$type": "Subeffect:Bottomdeck:",
+					"targetIndex": -3
+				}
+			]
+		}
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Default Normal Restrictions",
+			"Space Must Fit Restriction"
+		],
+		"normalRestrictionsToIgnore": [
+			"Adjacent to Friendly Card"
+		],
+		"effectRestrictions": [
+			"Default Effect Restrictions",
+			"Space Must Fit Restriction"
+		],
+		"effectRestrictionsToIgnore": [
+			"Adjacent to Friendly Card"
+		],
+		"spaceRestriction": {
+			"spaceRestrictionElements": [
+				{
+					"$type": "Core.SpaceRestriction:InAOEOf:",
+					"anyOf": {
+						"$type": "ManyCards:FittingRestriction:",
+						"cardRestriction": {
+							"cardRestrictionElements": [
+								{
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Water" ]
+								}
+							]
+						}
+					}
+				}
+			]
+		}
+	},
+	"unique": true,
+	"n": 1,
+	"e": 3,
+	"s": 5,
+	"w": 7,
+	"subtypeText": "Aquatic Fisherperson"
+}

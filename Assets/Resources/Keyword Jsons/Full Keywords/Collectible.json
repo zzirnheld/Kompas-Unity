@@ -9,14 +9,14 @@
 	},
 	"subeffects":[
         {
-            "$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp",
+            "$type":"Subeffect:TargetTriggeringCard:",
             "secondary":true
         },
 		{
-			"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+			"$type":"Subeffect:TargetThis:"
 		},
         {
-            "$type":"KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
+            "$type":"Subeffect:Attach:",
             "targetToAttachTo":-2,
             "targetIndex":-1
         }

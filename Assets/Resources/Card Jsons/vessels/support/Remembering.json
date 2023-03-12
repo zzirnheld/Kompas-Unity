@@ -1,0 +1,38 @@
+{
+	"cardType": 83,
+	"cardName": "Remembering",
+	"effText": "When a Vessel echoes themselves, echo them again.",
+	"effects": [
+		{
+			"blurb": "Remember",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card is Stackable Source",
+						"Stackable Source Fits Restriction Now"
+					],
+					"sourceRestriction": {
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Vessel" ]
+							}
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetTriggeringCard:"
+				},
+				{
+					"$type": "Subeffect:Resummon:"
+				}
+			]
+		}
+	],
+	"c": 3,
+	"subtypeText": "Enchant"
+}

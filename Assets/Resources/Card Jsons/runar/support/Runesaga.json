@@ -1,0 +1,96 @@
+{
+	"cardType": 83,
+	"cardName": "Runesaga",
+	"effText": "MUST be cast normally.\nGive a Runar summon +25 ESW, then hand-cast any number of spells. (Yes, seriously, for free.)",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "Runar for Runesaga to give +25 ESW",
+						"cardRestrictions": [
+							"Character",
+							"Summoned"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Runar" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"eModifier": 25,
+					"sModifier": 25,
+					"wModifier": 25
+				},
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "Rune for Runesaga to cast",
+						"cardRestrictions": [
+							"Spell",
+							"Not Already Target",
+							"Can Be Played"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            }
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "where for Runesaga to cast its target Rune",
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            }
+                        ]
+					}
+				},
+				{
+					"$type": "Subeffect:Play:"
+				},
+				{
+					"$type": "Subeffect:Loop:",
+					"canDecline": true,
+					"jumpIndices": [
+						2
+					]
+				}
+			]
+		}
+	],
+	"PlayRestriction": {
+		"EffectRestrictions": [
+			"Must be Played Normally"
+		]
+	},
+	"c": 25,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypeText": "Simple"
+}

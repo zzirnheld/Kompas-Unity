@@ -1,0 +1,66 @@
+{
+	"cardType": 83,
+	"cardName": "Modular Retrograding",
+	"effText": "When a Modular creature attaches an A X Module to themselves, discard->reshuffle X random cards to gain 1 pip.",
+	"effects": [
+		{
+            "blurb": "Modules in Retrograde",
+			"triggerData": {
+				"triggerCondition": "Augment Attached",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction After"
+					],
+					"nowRestriction": {
+						"cardRestrictions": [
+                            "Augments Card Fitting Restriction"
+						],
+						"augmentRestriction": {
+							"cardRestrictionElements": [
+								{
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Vessel" ]
+								}
+							]
+                        },
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Module" ]
+							}
+						]
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type": "Subeffect:TargetAllCardsIdentity:",
+					"cardsIdentity": {
+						"$type": "ManyCards:Limit:",
+						"cards": { "$type": "ManyCards:Discard:" },
+						"limit": {
+							"$type": "Numbers:X:",
+							"multiplier": 1
+						}
+					}
+				},
+				{
+					"$type": "Subeffect:Reshuffle:"
+				},
+				{
+					"$type": "Subeffect:LoopWhileHaveTargets:",
+					"delete": true,
+					"jumpIndices": [ 1 ]
+				},
+				{
+					"$type":"Subeffect:AddPips:",
+					"xModifier":1
+				}
+			]	
+		}
+	],
+	"c": 3,
+	"spellTypes": [ "Enchant" ],
+	"subtypeText": "Enchant"
+}

@@ -1,0 +1,77 @@
+{
+	"cardType": 83,
+	"cardName": "Mothmisidentification",
+	"effText": "Hand->reshuffle a Moth. Deck->hand a distinct Moth. Draw 1 card. Gain 1 pip.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "Can't ID this frikkin moth!",
+						"cardRestrictions": [
+							"Hidden"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Moth" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:Reveal:"
+				},
+				{
+					"$type": "Subeffect:Reshuffle:"
+				},
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "Ah, that's what moth it was",
+						"cardRestrictions": [
+							"Deck",
+							"Distinct Name from Other Targets"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Moth" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:Hand:"
+				},
+				{
+					"$type": "Subeffect:Draw:"
+				},
+				{
+					"$type": "Subeffect:AddPips:",
+					"xModifier": 1
+				}
+			]
+		}
+	],
+	"c": 1,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypeText": "Simple"
+}

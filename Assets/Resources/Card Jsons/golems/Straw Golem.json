@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Straw Golem",
-	"effText": "Golem.\nWhen I'm activated, move two enemy cards each 3 spaces.",
+	"effText": "Golem.\nWhen I become active, move two enemy cards each 3 spaces.",
 	"effects": [
 		{
 			"blurb": "Go Elsewhere",
@@ -15,65 +15,75 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "enemy card for Straw Golem to move.",
 						"cardRestrictions": [
-							"Board",
-							"Enemy",
 							"Not Augment"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
-						"spaceRestrictions": [
-							"Empty",
-							"Can Move Card Target to This Space",
-							"Distance to Card Target Fits X Restriction"
-						],
-						"distanceXRestriction": {
-							"numberRestrictions": [
-								"=X"
-							]
-						}
-					},
-					"xModifier": 3
+						"spaceRestrictionElements": [ 
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanMoveCard:",
+								"toMove": { "$type": "Cards:TargetIndex:" },
+								"distanceRestriction": {
+									"numberRestrictions": [ "==Constant" ],
+									"constant": 3
+								}
+							}
+						]
+					}
 				},
 				{
-					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Move:"
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "enemy card for Straw Golem to move.",
 						"cardRestrictions": [
-							"Board",
-							"Enemy",
 							"Not Already Target",
 							"Not Augment"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
-						"spaceRestrictions": [
-							"Empty",
-							"Can Move Card Target to This Space",
-							"Distance to Card Target Fits X Restriction"
-						],
-						"distanceXRestriction": {
-							"numberRestrictions": [
-								"=X"
-							]
-						}
-					},
-					"xModifier": 3
+						"spaceRestrictionElements": [ 
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanMoveCard:",
+								"toMove": { "$type": "Cards:TargetIndex:" },
+								"distanceRestriction": {
+									"numberRestrictions": [ "==Constant" ],
+									"constant": 3
+								}
+							}
+						]
+					}
 				},
 				{
-					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Move:"
 				}
 			]
 		}

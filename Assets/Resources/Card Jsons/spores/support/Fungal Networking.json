@@ -1,0 +1,91 @@
+{
+	"cardType": 83,
+	"cardName": "Fungal Networking",
+	"effText": "Deck->summon 2 Mycelia.",
+	"effects": [
+		{
+			"blurb": "Simple",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:DeckTarget:",
+					"cardRestriction": {
+						"blurb": "to network (1/2)",
+						"cardRestrictions": [
+							"Character",
+							"Deck",
+							"Can Be Played"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Mycelium" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "where to network the first target",
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            }
+                        ]
+					}
+				},
+				{
+					"$type": "Subeffect:Play:"
+				},
+				{
+					"$type": "Subeffect:DeckTarget:",
+					"cardRestriction": {
+						"blurb": "to network (2/2)",
+						"cardRestrictions": [
+							"Character",
+							"Deck",
+							"Can Be Played"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Mycelium" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "where to network the second target",
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            }
+                        ]
+					}
+				},
+				{
+					"$type": "Subeffect:Play:"
+				}
+			]
+		}
+	],
+	"c": 1,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypeText": "Simple"
+}

@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Unseen",
-	"effText": "Revenant.\nWhen I'm summoned, hand->discard a Revenant and search your deck for a Revenant.",
+	"effText": "Revenant.\nWhen I'm summoned, hand->discard a Revenant and deck->hand a Revenant.",
 	"effects": [
 		{
 			"triggerData": {
@@ -14,38 +14,43 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "for Unwanted to discard",
-						"cardRestrictions": [
-							"Friendly",
-							"Hand",
-							"Subtypes Include"
-						],
-						"subtypesInclude": [
-							"Revenant"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Revenant" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Discard:"
 				},
 				{
-					"$type": "KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:DeckTarget:",
 					"cardRestriction": {
 						"blurb": "for Unwanted to search",
 						"cardRestrictions": [
-							"Friendly",
-							"Deck",
-							"Subtypes Include"
+							"Deck"
 						],
-						"subtypesInclude": [
-							"Revenant"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Revenant" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Hand:"
 				}
 			]
 		}

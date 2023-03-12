@@ -1,0 +1,53 @@
+{
+	"cardType": 67,
+	"cardName": "Wily Dancer",
+	"effText": "Masquerade.\nWhen I'm summoned, discard->attach a Mask to me.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type":"Subeffect:CardTarget:",
+					"cardRestriction":
+					{
+						"blurb": "Mask to attach to the Nimble Dancer",
+						"cardRestrictions": [ "Augment" ],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Mask" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:TargetThis:"
+				},
+				{
+					"$type": "Subeffect:Attach:",
+					"targetIndex": -2,
+					"targetToAttachTo": -1
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Masquerade"
+	],
+	"n": 3,
+	"e": 1,
+	"s": 5,
+	"w": 5,
+	"subtypeText": "Masked Dancer"
+}

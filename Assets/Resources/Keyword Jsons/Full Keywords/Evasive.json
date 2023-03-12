@@ -11,11 +11,11 @@
     },
     "subeffects": [
         {
-            "$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp",
+            "$type":"Subeffect:TargetTriggeringCard:",
             "secondary":true
         },
         {
-            "$type": "KompasServer.Effects.SetXByTriggeringCardValueSubeffect, Assembly-CSharp",
+            "$type": "Subeffect:SetXByTriggeringCardValue:",
             "secondary":true,
             "cardValue": {
                 "value": "W"
@@ -23,7 +23,7 @@
             "xMultiplier": 1
         },
         {
-            "$type": "KompasServer.Effects.TemporaryCardStatChangeSubeffect, Assembly-CSharp",
+            "$type": "Subeffect:Hanging.ChangeCardStats:",
             "wMultiplier": -1,
             "endCondition": "Battle End",
             "triggerRestriction": {

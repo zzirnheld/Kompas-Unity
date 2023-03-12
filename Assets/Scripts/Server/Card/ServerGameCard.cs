@@ -1,5 +1,7 @@
 ﻿using KompasCore.Cards;
+using KompasCore.Cards.Movement;
 using KompasCore.Effects;
+using KompasCore.Helpers;
 using KompasCore.GameCore;
 using KompasServer.Effects;
 using KompasServer.GameCore;
@@ -16,7 +18,10 @@ namespace KompasServer.Cards
         public ServerGame ServerGame { get; private set; }
         public override Game Game => ServerGame;
 
-        public ServerEffectsController EffectsController => ServerGame?.EffectsController;
+        public ServerCardController ServerCardController { get; private set; }
+        public override CardController CardController => ServerCardController;
+
+        public ServerEffectsController EffectsController => ServerGame?.effectsController;
         public ServerNotifier ServerNotifier => ServerController?.ServerNotifier;
 
         private ServerPlayer serverController;
@@ -26,7 +31,7 @@ namespace KompasServer.Cards
             set
             {
                 serverController = value;
-                cardCtrl.SetRotation();
+                CardController.SetRotation();
                 ServerNotifier.NotifyChangeController(this, ServerController);
                 foreach (var eff in Effects) eff.Controller = value;
             }
@@ -38,16 +43,31 @@ namespace KompasServer.Cards
         }
 
         public ServerPlayer ServerOwner { get; private set; }
-        public override Player Owner
-        {
-            get => ServerOwner;
-            protected set => ServerOwner = value as ServerPlayer;
-        }
+        public override Player Owner => ServerOwner;
 
         public ServerEffect[] ServerEffects { get; private set; }
-        public override IEnumerable<Effect> Effects => ServerEffects;
+        public override IReadOnlyCollection<Effect> Effects => ServerEffects;
 
         public override bool IsAvatar => false;
+
+        public override int SpacesMoved {
+            get => base.SpacesMoved;
+            set {
+                bool changed = SpacesMoved != value;
+                base.SpacesMoved = value;
+                if (changed) ServerNotifier?.NotifySpacesMoved(this);
+            }
+        }
+
+        public override int AttacksThisTurn {
+            get => base.AttacksThisTurn;
+            set 
+            {
+                bool changed = AttacksThisTurn != value;
+                base.AttacksThisTurn = value;
+                if (changed) ServerNotifier?.NotifyAttacksThisTurn(this);
+            }
+        }
 
         public override CardLocation Location
         {
@@ -89,14 +109,34 @@ namespace KompasServer.Cards
             }
         }
 
+        public ServerGameCard(ServerSerializableCard card, int id, ServerCardController serverCardController, ServerPlayer owner, ServerEffect[] effects)
+            : base(card, id, owner.serverGame)
+        {
+            owner.serverGame.AddCard(this);
+            ServerCardController = serverCardController;
+            serverCardController.serverCard = this;
+            //Don't just grab effects from the card, because that won't include keywords
+
+            ServerEffects = effects;
+            ServerGame = owner.serverGame;
+            ServerOwner = ServerController = owner;
+            foreach (var (index, eff) in effects.Enumerate())
+                eff.SetInfo(this, ServerGame, owner, index);
+
+            serverCardController.gameCardViewController.Focus(this);
+        }
+
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
             sb.Append(base.ToString());
-            foreach (var eff in Effects)
+            if (null != Effects)
             {
-                sb.Append(eff.ToString());
-                sb.Append(", ");
+                foreach (var eff in Effects)
+                {
+                    sb.Append(eff.ToString());
+                    sb.Append(", ");
+                }
             }
             return sb.ToString();
         }
@@ -113,35 +153,16 @@ namespace KompasServer.Cards
                 return;
             }
 
-            SetCardInfo(InitialCardValues, ID);
+            SetInfo(InitialCardValues);
 
-            SetTurnsOnBoard(0);
-            SetSpacesMoved(0);
-            SetAttacksThisTurn(0);
+            TurnsOnBoard = 0;
+            SpacesMoved = 0;
+            AttacksThisTurn = 0;
 
             if (Effects != null) foreach (var eff in Effects) eff.Reset();
             //instead of setting negations or activations to 0, so that it updates the client correctly
             while (Negated) SetNegated(false);
             while (Activated) SetActivated(false);
-        }
-
-        public void SetInitialCardInfo(SerializableCard serializedCard, ServerGame game, ServerPlayer owner, ServerEffect[] effects, int id)
-        {
-            SetCardInfo(serializedCard, id);
-            ServerEffects = effects;
-            int i = 0;
-            foreach (var eff in effects) eff.SetInfo(this, game, owner, i++);
-            ServerGame = game;
-            ServerOwner = owner;
-            ServerController = owner;
-        }
-
-        public override void Vanish()
-        {
-            ActivationContext context = new ActivationContext(game: ServerGame, mainCardBefore: this);
-            base.Vanish();
-            context.CacheCardInfoAfter();
-            EffectsController.TriggerForCondition(Trigger.Vanish, context);
         }
 
         public override void AddAugment(GameCard augment, IStackable stackSrc = null)
@@ -156,7 +177,7 @@ namespace KompasServer.Cards
             augmentedContext.CacheCardInfoAfter();
             EffectsController.TriggerForCondition(Trigger.AugmentAttached, attachedContext);
             EffectsController.TriggerForCondition(Trigger.Augmented, augmentedContext);
-            ServerGame.ServerPlayers[augment.ControllerIndex].ServerNotifier.NotifyAttach(augment, Position, wasKnown);
+            ServerGame.serverPlayers[augment.ControllerIndex].ServerNotifier.NotifyAttach(augment, Position, wasKnown);
         }
 
         protected override void Detach(IStackable stackSrc = null)
@@ -178,10 +199,10 @@ namespace KompasServer.Cards
             var context = new ActivationContext(game: ServerGame, mainCardBefore: this, stackableCause: stackSrc, player: player);
 
             var cardsThisLeft = Location == CardLocation.Board ?
-                Game.boardCtrl.CardsAndAugsWhere(c => c != null && c.CardInAOE(this)).ToList() :
+                Game.BoardController.CardsAndAugsWhere(c => c != null && c.CardInAOE(this)).ToList() :
                 new List<GameCard>();
             var leaveContexts = cardsThisLeft.Select(c =>
-                new ActivationContext(game: ServerGame, mainCardBefore: this, secondaryCardBefore: c, stackableCause: stackSrc, player: player));
+                new ActivationContext(game: ServerGame, mainCardBefore: this, secondaryCardBefore: c, stackableCause: stackSrc, player: player)).ToArray();
 
             var ret = base.Remove(stackSrc);
 
@@ -224,6 +245,7 @@ namespace KompasServer.Cards
         public override void SetE(int e, IStackable stackSrc = null, bool onlyStatBeingSet = true)
         {
             if (e == E) return;
+            int oldE = E;
             var context = new ActivationContext(game: ServerGame, mainCardBefore: this, stackableCause: stackSrc, player: stackSrc?.Controller, x: e - E);
             base.SetE(e, stackSrc);
             context.CacheCardInfoAfter();
@@ -232,11 +254,8 @@ namespace KompasServer.Cards
             if (onlyStatBeingSet) ServerNotifier.NotifyStats(this);
 
             //kill if applicable
-            DieIfApplicable(stackSrc);
-        }
-        public void DieIfApplicable(IStackable stackSrc)
-        {
-            if (E <= 0 && CardType == 'C' && Summoned) Discard(stackSrc);
+            Debug.Log($"E changed from {oldE} to {E}. Should it die?");
+            if (E <= 0 && CardType == 'C' && Summoned && Location != CardLocation.Nowhere && Location != CardLocation.Discard) this.Discard(stackSrc);
         }
 
         public override void SetS(int s, IStackable stackSrc, bool onlyStatBeingSet = true)
@@ -330,20 +349,6 @@ namespace KompasServer.Cards
                 else EffectsController.TriggerForCondition(Trigger.Deactivate, context);
             }
             base.SetActivated(activated, stackSrc);
-        }
-
-        public override void SetSpacesMoved(int spacesMoved)
-        {
-            bool changed = SpacesMoved != spacesMoved;
-            base.SetSpacesMoved(spacesMoved);
-            if (changed) ServerNotifier?.NotifySpacesMoved(this);
-        }
-
-        public override void SetAttacksThisTurn(int attacksThisTurn)
-        {
-            bool changed = AttacksThisTurn != attacksThisTurn;
-            base.SetAttacksThisTurn(attacksThisTurn);
-            if (changed) ServerNotifier?.NotifyAttacksThisTurn(this);
         }
         #endregion stats
     }

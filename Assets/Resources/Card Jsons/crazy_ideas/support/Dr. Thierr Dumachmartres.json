@@ -1,0 +1,33 @@
+{
+	"cardType": 67,
+	"cardName": "Dr. Thierr Dumachmartres",
+	"effText": "The first 3 times each turn an enemy plays a card normally, rummage.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Enemy Triggered",
+						"No Stackable",
+						"Max Per Turn"
+					],
+					"maxTimesPerTurn": 3
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:Keyword:",
+					"keyword": "Rummage"
+				}
+			]
+		}
+	],
+	"n": 1,
+	"e": 3,
+	"s": 7,
+	"w": 5,
+	"unique": true,
+	"subtypeText": "Crazy Doctor"
+}

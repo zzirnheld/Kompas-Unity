@@ -15,10 +15,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeCardStats:",
 					"nModifier": 1
 				}
 			]
@@ -27,7 +27,7 @@
 	"keywords": [
 		"Territorial"
 	],
-	"n": 1,
+	"n": 4,
 	"e": 3,
 	"s": 3,
 	"w": 3,

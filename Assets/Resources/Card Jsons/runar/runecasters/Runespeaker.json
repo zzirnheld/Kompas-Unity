@@ -1,0 +1,109 @@
+{
+	"cardType": 67,
+	"cardName": "Runespeaker",
+	"effText": "Runecast, and hand a different Rune from your deck's top 10 cards.",
+	"effects": [
+		{
+			"activationRestriction": {
+				"activationRestrictionArray": [
+					"Max Times Per Turn",
+					"Friendly Turn",
+					"Default"
+				]
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "Rune for Runespeaker to cast",
+						"cardRestrictions": [
+							"Spell",
+							"Can Be Played",
+							"Effect Controller can Afford Cost"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Rune" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "where for Runespeaker to cast its target Rune",
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            }
+                        ]
+					}
+				},
+				{
+					"$type": "Subeffect:PayPipsTargetCost:"
+				},
+				{
+					"$type": "Subeffect:Play:"
+				},
+				{
+					"$type": "Subeffect:SkipToEffectOnImpossible:",
+					"jumpIndices": [
+						8
+					]
+				},
+				{
+					"$type": "Subeffect:ChooseFromListSaveRest:",
+					"cardRestriction": {
+						"blurb": "Rune for Runespeaker to search (to hand)",
+						"cardRestrictions": [
+							"Distinct Name from Other Targets",
+							"Deck",
+							"Index<C"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Rune" ]
+							}
+						],
+						"constant": 10
+					},
+					"restRestriction": {
+						"cardRestrictions": [
+							"Deck",
+							"Index<C",
+							"Not Already Target"
+						],
+						"constant": 10,
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:ClearOnImpossible:"
+				},
+				{
+					"$type": "Subeffect:Hand:"
+				},
+				{
+					"$type": "Subeffect:BottomdeckRest:"
+				}
+			]
+		}
+	],
+	"n": 1,
+	"e": 6,
+	"s": 6,
+	"w": 5,
+	"subtypeText": "Runar Mage"
+}

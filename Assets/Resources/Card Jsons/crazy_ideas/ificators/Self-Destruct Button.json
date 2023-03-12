@@ -1,0 +1,114 @@
+{
+	"cardType": 83,
+	"cardName": "Self-Destruct Button",
+	"effText": "Ificate.\nTribute another Crazy Idea. Discard->hand all your Crazy Ideas. Hand->discard up to 3 cards.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "No! Not the Self-Destruct Button installed on all Ificator (TM) systems!",
+						"cardRestrictions": [
+							"Different from Source"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Crazy", "Idea" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:Discard:"
+				},
+				{
+					"$type": "Subeffect:DeleteTarget:"
+				},
+				{
+					"$type": "Subeffect:TargetAll:",
+					"cardRestriction": {
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Crazy", "Idea" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:Hand:"
+				},
+				{
+					"$type": "Subeffect:LoopWhileHaveTargets:",
+					"delete": true,
+					"jumpIndices": [
+						4
+					]
+				},
+				{
+					"$type": "Subeffect:ChooseFromList:",
+					"cardRestriction": {
+						"blurb": "oh, and the self-destruct button on the -ificator in my hand, too. Curse you.",
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Hand" ]
+							}
+						]
+					},
+					"listRestriction": {
+						"listRestrictions": [
+							"Min Can Choose",
+							"Max Can Choose"
+						],
+						"minCanChoose": 0,
+						"maxCanChoose": 3
+					}
+				},
+				{
+					"$type": "Subeffect:Discard:"
+				},
+				{
+					"$type": "Subeffect:LoopWhileHaveTargets:",
+					"delete": true,
+					"jumpIndices": [
+						7
+					]
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Ificate"
+	],
+	"c": 5,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypes": [
+		"Simple",
+		"Crazy Idea"
+	],
+	"subtypeText": "Simple Crazy Idea Ificator"
+}

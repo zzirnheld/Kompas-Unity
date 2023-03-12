@@ -1,0 +1,46 @@
+{
+	"cardType": 83,
+	"cardName": "Resistive Empowerment",
+	"effText": "Give friendly Structures +7 EW.",
+	"effects": [
+		{
+			"blurb": "Simple",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:ChangeAllCardStats:",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Structure" ]
+							}
+						]
+					},
+					"eModifier": 7,
+					"wModifier": 7
+				}
+			]
+		}
+	],
+	"c": 1,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypeText": "Simple"
+}

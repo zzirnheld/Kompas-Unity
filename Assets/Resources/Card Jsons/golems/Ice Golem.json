@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Ice Golem",
-	"effText": "Golem.\nWhen I'm activated, set X to my N. Negate a character within X spaces of me until your next turn.",
+	"effText": "Golem.\nWhen I become active, negate a character within [my N] spaces of me, until your next turn.",
 	"effects": [
 		{
 			"blurb": "Fun Not Allowed",
@@ -15,23 +15,28 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "N"
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "for Ice Golem to temporarily negate",
 						"cardRestrictions": [
 							"Character",
-							"Board",
 							"Space Fits Restriction"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						],
 						"spaceRestriction": {
 							"spaceRestrictions": [
@@ -48,7 +53,7 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.TemporaryNegateSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Hanging.Negate:",
 					"endCondition": "Turn Start",
 					"triggerRestriction": {
 						"triggerRestrictions": [

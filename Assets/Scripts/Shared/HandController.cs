@@ -9,7 +9,7 @@ namespace KompasCore.GameCore
 {
     public abstract class HandController : MonoBehaviour, IGameLocation
     {
-        public Player Owner;
+        public abstract Player Owner { get; }
 
         public CardLocation CardLocation => CardLocation.Hand;
 
@@ -21,6 +21,7 @@ namespace KompasCore.GameCore
         public virtual bool Hand(GameCard card, IStackable stackSrc = null)
         {
             if (card == null) throw new NullCardException("Cannot add null card to hand");
+            if (Equals(card.GameLocation)) throw new AlreadyHereException(CardLocation.Hand);
 
             var successful = card.Remove(stackSrc);
             if (successful)
@@ -46,13 +47,15 @@ namespace KompasCore.GameCore
             SpreadOutCards();
         }
 
-        public virtual void SpreadOutCards()
+        public void SpreadOutCards()
         {
             //iterate through children, set the z coord
             for (int i = 0; i < hand.Count; i++)
             {
-                hand[i].transform.localPosition = new Vector3((-0.8f * (float)hand.Count) + ((float)i * 2f), 0, 0);
-                hand[i].cardCtrl.SetRotation();
+                hand[i].CardController.transform.parent = transform;
+                hand[i].CardController.transform.localPosition = new Vector3((-0.9f * (float)hand.Count) + ((float)i * 2.25f), 0, 0);
+                hand[i].CardController.SetRotation();
+                hand[i].CardController.gameObject.SetActive(true);
             }
         }
     }

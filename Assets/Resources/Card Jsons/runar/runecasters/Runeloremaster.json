@@ -1,0 +1,70 @@
+{
+	"cardType": 67,
+	"cardName": "Runeloremaster",
+	"effText": "Runecast up to 3 times each turn.",
+	"effects": [
+		{
+			"blurb": "Master Runelore",
+			"activationRestriction": {
+				"activationRestrictionArray": [
+					"Max Times Per Turn",
+					"Friendly Turn",
+					"Default"
+				],
+				"maxTimes": 3
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "Rune for Runeloremaster to cast",
+						"cardRestrictions": [
+							"Spell",
+							"Can Be Played",
+							"Effect Controller can Afford Cost"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Rune" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "where for Runeloremaster to cast its target Rune",
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            }
+                        ]
+					}
+				},
+				{
+					"$type": "Subeffect:PayPipsTargetCost:"
+				},
+				{
+					"$type": "Subeffect:Play:"
+				}
+			]
+		}
+	],
+	"n": 1,
+	"e": 10,
+	"s": 10,
+	"w": 10,
+	"subtypes": [
+		"Runar",
+		"Mage"
+	],
+	"subtypeText": "Runar Mage"
+}

@@ -12,32 +12,37 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "for Dragoncaller to kill",
 						"cardRestrictions": [
-							"Friendly",
-							"Board",
 							"Character",
 							"Summoned"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "S"
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Discard:"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChooseOption:",
 					"choiceBlurb": "Give +2*X ES or SW?",
 					"optionBlurbs": [
 						"ES",
@@ -50,15 +55,15 @@
 					"hasDefault": false
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeCardStats:",
 					"eMultiplier": 2,
 					"sMultiplier": 2
 				},
 				{
-					"$type": "KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:EndResolution:"
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeCardStats:",
 					"sMultiplier": 2,
 					"wMultiplier": 2
 				}

@@ -1,0 +1,48 @@
+{
+	"cardType":65,
+	"cardName": "Time Flies",
+	"effText": "When I start turns with X A, give this summon -X E, then give me +1 A.",
+	"effects":[
+		{
+			"blurb": "doesn't it?",
+			"triggerData": {
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetThis:"
+				},
+				{
+					"$type": "Subeffect:SetXByTargetCardValue:",
+					"cardValue": {
+						"value": "A"
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:TargetAugmentedCard:"
+				},
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"eMultiplier": -1
+				},
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"aModifier": 1,
+                    "targetIndex": -2
+				}
+			]
+		}
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [ "Augment Normal Restrictions" ],
+		"effectRestrictions": [ "Augment Effect Restrictions" ]
+	},
+	"a": 1,
+	"subtypeText": ""
+}

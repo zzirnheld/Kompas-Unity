@@ -1,0 +1,69 @@
+{
+	"cardType": 83,
+	"cardName": "Designated Defense",
+	"effText": "When turns start, an enemy chooses ANY space on the edge of the board. Deck->summon a Structure there (ignoring normal adjacency rules).",
+	"effects": [
+		{
+            "blurb": "Designate construction",
+			"triggerData": {
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetEnemy:"
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "Space for your enemy to play a Structure to",
+						"spaceRestrictions": [ "On Edge of Board" ],
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" }
+                        ]
+					}
+				},
+				{
+					"$type": "Subeffect:DeckTarget:",
+					"cardRestriction": {
+						"blurb": "Designated build site",
+						"cardRestrictions": [
+							"Deck",
+							"Character",
+							"Can be Played to Target Space"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Structure" ]
+							}
+						],
+						"canPlayIgnoring": [
+							"Adjacent to Friendly Card"
+						]
+					},
+					"playerIndex": 0
+				},
+				{
+					"$type": "Subeffect:Play:",
+					"playerIndex": 0
+				}
+			]
+		}
+	],
+	"c": 2,
+	"spellTypes": [
+		"Vanishing"
+	],
+	"subtypes": [
+		"Vanishing",
+		"Maya"
+	],
+	"subtypeText": "Maya Vanishing",
+	"duration": 3
+}

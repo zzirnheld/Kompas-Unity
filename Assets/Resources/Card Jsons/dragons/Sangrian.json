@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Sangrian",
-	"effText": "Territorial.\nWhen an SX character I'm attacking dies, give a character +X ESW.",
+	"effText": "Territorial.\nWhen an S X character I'm attacking dies, give a character +X ESW.",
 	"effects": [
 		{
 			"blurb": "Bloody Breath",
@@ -22,24 +22,29 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.SetXByTriggeringCardValueSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetXByTriggeringCardValue:",
 					"cardValue": {
 						"value": "S"
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "for Sangrian to feed",
 						"cardRestrictions": [
-							"Board",
 							"Character"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeCardStats:",
 					"eMultiplier": 1,
 					"sMultiplier": 1,
 					"wMultiplier": 1

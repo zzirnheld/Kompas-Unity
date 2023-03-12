@@ -1,0 +1,82 @@
+{
+	"cardType": 67,
+	"cardName": "Moanedrifter",
+	"effText": "Shape.\nWhen I lose XE, deck->summon an E X Shaper.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "E Change",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"X Fits Restriction",
+						"This Card is Main Card"
+					],
+					"xRestriction": {
+						"numberRestrictions": [
+							"<0"
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:DeckTarget:",
+					"cardRestriction": {
+						"blurb": "How does the mist condense?",
+						"cardRestrictions": [
+							"Character",
+							"Deck",
+							"Can Be Played",
+							"Card Value Fits Number Restriction"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Shaper" ]
+							}
+						],
+						"cardValue": {
+							"value": "E"
+						},
+						"cardValueNumberRestriction": {
+							"numberRestrictions": [
+								"=X"
+							]
+						}
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "Where does the mist condense?",
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            }
+                        ]
+					}
+				},
+				{
+					"$type": "Subeffect:Play:"
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Shape"
+	],
+	"n": 1,
+	"e": 8,
+	"s": 7,
+	"w": 1,
+	"subtypes": [
+		"Ethereal",
+		"Shaper"
+	],
+	"subtypeText": "Ethereal Shaper"
+}

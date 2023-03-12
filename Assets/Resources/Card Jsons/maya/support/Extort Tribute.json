@@ -1,0 +1,95 @@
+{
+	"cardType": 83,
+	"cardName": "Extort Tribute",
+	"effText": "Discard an enemy's topdeck. You can pip play it adjacent to 2 Structures.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:AutoTarget:",
+					"cardRestriction": {
+						"blurb": "for Haemopoten to draw",
+						"cardRestrictions": [
+							"Deck",
+							"Index<C"
+						],
+						"constant": 1,
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" }
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:Discard:"
+				},
+                {
+                    "$type":"Subeffect:CanResolve:",
+                    "subeffIndices": [ 4, 5 ]
+                },
+				{
+					"$type": "Subeffect:ChooseOption:",
+					"choiceBlurb": "Pip play that card?",
+					"optionBlurbs": [
+						"Yes",
+						"No"
+					],
+					"jumpIndices": [
+						4,
+						100
+					]
+				},
+				{
+					"$type": "Subeffect:PayPipsTargetCost:"
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "Where to play that card",
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            },
+                            {
+                                "$type": "Core.SpaceRestriction:WithinDistanceOfNumberOfCards:",
+                                "cardRestriction": {
+									"cardRestrictionElements": [
+										{ "$type": "Core.CardRestriction:Friendly:" },
+										{
+											"$type": "Core.CardRestriction:Subtypes:",
+											"subtypes": [ "Structure" ]
+										}
+									]
+                                },
+                                "number": { 
+                                    "$type": "Numbers:Constant:",
+                                    "constant": 2
+                                }
+                            }
+                        ]
+					}
+				},
+				{
+					"$type": "Subeffect:Play:"
+				}
+			]
+		}
+	],
+	"c": 2,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypes": [
+		"Simple"
+	],
+	"subtypeText": "Simple"
+}

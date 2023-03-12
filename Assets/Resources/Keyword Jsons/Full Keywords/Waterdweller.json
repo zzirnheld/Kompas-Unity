@@ -7,25 +7,40 @@
 		"triggerRestriction":{
 			"triggerRestrictions":["This Card Fits Restriction Now"],
 			"selfRestriction":{
-				"cardRestrictions":["Board","Not Avatar","Space Fits Restriction"],
+				"cardRestrictions":["Not Avatar","Space Fits Restriction"],
 				"spaceRestriction":
 				{
-					"spaceRestrictions":["Not In AOE of Card Fitting Restriction"],
-					"inAOEOfRestriction":{
-						"cardRestrictions":["Subtypes Include"],
-						"subtypesInclude":["Water"]
-					},
-					"mustBeEmpty":false
-				}
+					"spaceRestrictionElements": [ {
+						"$type": "Core.SpaceRestriction:Not:",
+						"negated": {
+							"$type": "Core.SpaceRestriction:InAOEOf:",
+							"anyOf": {
+								"$type": "ManyCards:FittingRestriction:",
+								"cardRestriction": {
+								"cardRestrictionElements": [ {
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Water" ]
+									} ]
+								}
+							}
+						}
+					} ]
+				},
+				"cardRestrictionElements": [
+					{
+						"$type": "Core.CardRestriction:Location:",
+						"locations": [ "Board" ]
+					}
+				]
 			}
 		}
 	},
 	"subeffects":[
 		{
-			"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+			"$type":"Subeffect:TargetThis:"
 		},
 		{
-			"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+			"$type":"Subeffect:Discard:"
 		}
 	]	
 }

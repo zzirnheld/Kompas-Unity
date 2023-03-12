@@ -10,13 +10,13 @@
 	},
 	"subeffects":[
         {
-            "$type":"KompasServer.Effects.TargetAvatarSubeffect, Assembly-CSharp"
+            "$type":"Subeffect:TargetAvatar:"
         },
 		{
-			"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+			"$type":"Subeffect:TargetThis:"
 		},
         {
-            "$type":"KompasServer.Effects.AttachSubeffect, Assembly-CSharp"
+            "$type":"Subeffect:Attach:"
         }
 	]
 }

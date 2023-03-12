@@ -13,14 +13,14 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.TargetAvatarSubeffect, Assembly-CSharp"
+					"$type":"Subeffect:TargetAvatar:"
 				},
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type":"Subeffect:CardTarget:",
 					"cardRestriction":
 					{
 						"blurb":"character to put in TIME OUT!",
-						"cardRestrictions":["Board","Character","Wields Augment Fitting Restriction","Space Fits Restriction"],
+						"cardRestrictions":["Character","Wields Augment Fitting Restriction","Space Fits Restriction"],
 						"spaceRestriction":
 						{
 							"spaceRestrictions":["Adjacent to Source"],
@@ -28,25 +28,33 @@
 						},
 						"augmentRestriction":
 						{
-							"cardRestrictions":["Friendly"]
-						}
+							"cardRestrictionElements": [
+								{ "$type": "Core.CardRestriction:Friendly:" }
+							]
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.TargetAugmentsSubeffect, Assembly-CSharp"
+					"$type":"Subeffect:TargetAugments:"
 				},
 				{
-					"$type":"KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
+					"$type":"Subeffect:Attach:",
 					"targetIndex":-1,
 					"targetToAttachTo":0
 				},
 				{
-					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"$type":"Subeffect:LoopWhileHaveTargets:",
 					"delete":true,
 					"jumpIndices":[3]
 				},
 				{
-					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp",
+					"$type":"Subeffect:Hand:",
 					"targetIndex":1
 				}
 			]

@@ -1,7 +1,8 @@
 {
 	"cardType": 67,
 	"cardName": "Giant Ball of Tinfoil",
-	"effText": "Can't move or attack normally.\nWhen turns start, choose an adjacent space, then keep moving me 1 space in that direction until you can't. I attack any adjacent character in the direction I was moving.",
+	"effText": "Structure.\nWhen turns start, I roll along a diagonal until I hit a character, who I attack.",
+	"technicalEffText": "Structure.\nWhen turns start, choose an adjacent space, then keep moving me 1 space in that direction until you can't. I attack any adjacent character in the direction I was moving.",
 	"effects": [
 		{
 			"blurb": "THE ENTIRE EASTERN SEABOARD",
@@ -15,54 +16,60 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTargetsSpace:"
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "rollinnnnnnnn",
 						"spaceRestrictions": [
 							"Adjacent to Source",
-							"Can Move Card Target to This Space",
 							"Empty"
-						]
+						],
+						"spaceRestrictionElements": [ {
+							"$type": "Core.SpaceRestriction:CanMoveCard:",
+							"toMove": { "$type": "Cards:TargetIndex:" }
+						} ]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Move:"
 				},
 				{
-					"$type": "KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SkipToEffectOnImpossible:",
 					"jumpIndices": [
 						8
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "rollinnnnnnnn",
 						"spaceRestrictions": [
 							"Adjacent to Source",
-							"Can Move Card Target to This Space",
 							"On Axis of Last Two Spaces",
 							"Empty"
-						]
+						],
+						"spaceRestrictionElements": [ {
+							"$type": "Core.SpaceRestriction:CanMoveCard:",
+							"toMove": { "$type": "Cards:TargetIndex:" }
+						} ]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Move:"
 				},
 				{
-					"$type": "KompasServer.Effects.JumpSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Jump:",
 					"jumpIndices": [
 						5
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.AutoTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:AutoTarget:",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character",
@@ -76,7 +83,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Attack:",
 					"targetIndex": -1,
 					"attackerIndex": -2
 				}
@@ -99,5 +106,5 @@
 	"e": 9,
 	"s": 5,
 	"w": 9,
-	"subtypeText": "Crazy Idea"
+	"subtypeText": "Crazy Idea Structure"
 }

@@ -1,0 +1,92 @@
+{
+	"cardType": 83,
+	"cardName": "Recall",
+	"effText": "Any number of times, for distinct Memories and Vessels: Deck->summon a Vessel, discard->bestowing a Memory unto it.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "Memories to recall",
+						"cardRestrictions": [
+							"Distinct Name from Other Targets"
+                        ],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Memory" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:DeckTarget:",
+					"cardRestriction": {
+						"blurb": "Corporeal form to recall",
+						"cardRestrictions": [
+							"Character",
+							"Deck",
+							"Can Be Played",
+							"Distinct Name from Other Targets"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Vessel" ]
+							}
+						]
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "where to recall corporeal form",
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            }
+                        ]
+					}
+				},
+				{
+					"$type": "Subeffect:Play:"
+				},
+				{
+					"$type": "Subeffect:Attach:",
+					"targetToAttachTo": -1,
+					"targetIndex": -2
+				},
+				{
+					"$type": "Subeffect:Loop:",
+					"canDecline": true,
+					"jumpIndices": [
+						0
+					]
+				}
+			]
+		}
+	],
+	"c": 4,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypeText": "Simple"
+}

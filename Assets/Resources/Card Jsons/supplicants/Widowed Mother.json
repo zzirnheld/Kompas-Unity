@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Widowed Mother",
-	"effText": "Supplicant.\nWhen another character arrives adjacent to a Supplicant, give that character -1 W.",
+	"effText": "Supplicant: give that character -1 W.",
 	"effects": [
 		{
 			"triggerData": {
@@ -25,11 +25,11 @@
 							"Adjacent to a Card that Fits Restriction"
 						],
 						"adjacencyRestriction": {
-							"cardRestrictions": [
-								"Subtypes Include"
-							],
-							"subtypesInclude": [
-								"Supplicant"
+							"cardRestrictionElements": [
+								{
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Supplicant" ]
+								}
 							]
 						}
 					}
@@ -37,10 +37,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeCardStats:",
 					"wModifier": -1
 				}
 			]

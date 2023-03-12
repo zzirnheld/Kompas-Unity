@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Deliver Us",
-	"effText": "If there's at least 10 friendly Supplicants dead or in play, deck-, hand-, or discard- summon a \"God of Mercy\".",
+	"effText": "If you have 10 friendly Supplicants, living or dead, summon a \"God of Mercy\" from anywhere.",
 	"effects": [
 		{
 			"triggerData": {
@@ -14,17 +14,19 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetXByGamestate:",
 					"whatToCount": "Cards Fitting Restriction",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character",
-							"Multiple Possible Locations",
-							"Friendly",
-							"Subtypes Include"
+							"Multiple Possible Locations"
 						],
-						"subtypesInclude": [
-							"Supplicant"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Supplicant" ]
+							}
 						],
 						"locations": [
 							1,
@@ -34,17 +36,16 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ConditionalEnd:",
 					"condition": "X<C",
 					"constant": 10
 				},
 				{
-					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChooseFromList:",
 					"maxCanChoose": 1,
 					"cardRestriction": {
 						"blurb": "God of the Supplicants",
 						"cardRestrictions": [
-							"Friendly",
 							"Name Is",
 							"Multiple Possible Locations"
 						],
@@ -53,21 +54,27 @@
 							2,
 							3,
 							4
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to play God of Mercy",
-						"spaceRestrictions": [
-							"Can Play Card Target to This Space",
-							"Empty"
-						]
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            }
+                        ]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Play:"
 				}
 			]
 		}

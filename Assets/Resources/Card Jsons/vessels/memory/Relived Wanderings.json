@@ -1,0 +1,67 @@
+{
+	"cardType": 65,
+	"cardName": "Relived Wanderings",
+	"effText": "When you echo this summon, move them 1 space.",
+	"effects": [
+		{
+			"blurb": "Need to go back",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+                    "triggerRestrictionElements": [
+                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardsMatch:",
+                            "firstCard": { "$type": "Cards:MainCardBefore:" },
+                            "secondCard": {
+                                "$type": "Cards:AugmentedCard:",
+                                "ofThisCard": { "$type": "Cards:ThisCard:" }
+                            }
+                        },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:MainCardBefore:" },
+                            "cardRestriction": {
+                                "cardRestrictionElements": [ { "$type": "Core.CardRestriction:Summoned:" } ]
+                            }
+                        }
+                    ]
+				}
+			},
+			"subeffects": [
+                {
+                    "$type":"Subeffect:TargetAugmentedCard:"
+                },
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"spaceRestrictionElements": [ 
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanMoveCard:",
+								"toMove": { "$type": "Cards:TargetIndex:" },
+								"distanceRestriction": {
+									"numberRestrictions": [ "==Constant" ],
+									"constant": 1
+								}
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:Move:"
+				}
+			]
+		}
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Augment Normal Restrictions"
+		],
+		"effectRestrictions": [
+			"Augment Effect Restrictions"
+		]
+	},
+	"a": 1,
+	"subtypeText": "Memory"
+}

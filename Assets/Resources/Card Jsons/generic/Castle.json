@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Castle",
-	"effText": "Move a surrounded Avatar to a corner.",
+	"effText": "Teleport a surrounded Avatar to a corner.",
 	"effects": [
 		{
 			"blurb": "Castle an Avatar",
@@ -15,13 +15,18 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Avatar to castle",
 						"cardRestrictions": [
-							"Board",
 							"Avatar",
 							"Space Fits Restriction"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						],
 						"spaceRestriction": {
 							"spaceRestrictions": [
@@ -32,18 +37,21 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "Corner to move them to",
 						"spaceRestrictions": [
-							"Can Move Card Target to This Space",
 							"Corner",
 							"Empty"
-						]
+						],
+						"spaceRestrictionElements": [ {
+							"$type": "Core.SpaceRestriction:CanMoveCard:",
+							"toMove": { "$type": "Cards:TargetIndex:" }
+						} ]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Move:"
 				}
 			]
 		}

@@ -1,0 +1,53 @@
+{
+	"cardType": 83,
+	"cardName": "Light Up",
+	"effText": "Hand me and deck->cast Light were I was.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetThis:"
+				},
+				{
+					"$type": "Subeffect:TargetTargetsSpace:"
+				},
+				{
+					"$type": "Subeffect:Hand:"
+				},
+				{
+					"$type": "Subeffect:AutoTarget:",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Deck",
+							"Spell"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Light" ]
+							}
+						]
+					},
+					"tiebreakerDirection":"Any"
+				},
+				{
+					"$type": "Subeffect:Play:"
+				}
+			]
+		}
+	],
+	"c": 2,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypeText": "Simple"
+}

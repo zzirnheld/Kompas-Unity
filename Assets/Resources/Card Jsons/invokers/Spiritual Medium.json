@@ -1,0 +1,67 @@
+{
+	"cardType": 67,
+	"cardName": "Spiritual Medium",
+	"effText": "Once each turn, you can show a Spirit. Deck->hand an Invocation, then topdeck the Spirit.",
+	"effects": [
+		{
+			"blurb": "I hear a Spirit!",
+			"activationRestriction": {
+				"activationRestrictionArray": [
+					"Max Times Per Turn",
+					"Friendly Turn",
+					"Default"
+				]
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "Spirit to reveal for Spiritual Medium",
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Spirit" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:Show:"
+				},
+				{
+					"$type": "Subeffect:ChooseFromList:",
+					"cardRestriction": {
+						"blurb": "Invocation to search",
+						"cardRestrictions": [
+							"Deck"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Invocation" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:Hand:"
+				},
+				{
+					"$type": "Subeffect:Topdeck:",
+					"targetIndex": 0
+				}
+			]
+		}
+	],
+	"n": 2,
+	"e": 2,
+	"s": 2,
+	"w": 2,
+	"subtypeText": "Mage"
+}

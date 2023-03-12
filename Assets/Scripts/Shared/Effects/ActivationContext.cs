@@ -33,7 +33,7 @@ namespace KompasCore.Effects
         ///  this is the other card involved in the attack.
         ///  (Think a character dying during a fight. That was caused by the other card.)
         /// </summary>
-        public readonly GameCardInfo cardCause;
+        public readonly GameCardInfo cardCauseBefore;
 
         /// <summary>
         /// The object on the stack that caused this event to occur.
@@ -65,6 +65,12 @@ namespace KompasCore.Effects
         /// </summary>
         public GameCardInfo SecondaryCardInfoAfter { get; private set; }
 
+        /// <summary>
+        /// The information for the card that caused the event,
+        /// stashed immediately after the triggering event occurred.
+        /// </summary>
+        public GameCardInfo CauseCardInfoAfter { get; private set; }
+
         private readonly string asString;
 
         // Used for resuming delayed effects
@@ -83,7 +89,7 @@ namespace KompasCore.Effects
                 var copy = new ActivationContext(game: game,
                     mainCardInfoBefore: mainCardInfoBefore, 
                     secondaryCardInfoBefore: secondaryCardInfoBefore, 
-                    cardCause: cardCause, 
+                    cardCause: cardCauseBefore, 
                     stackableCause: stackableCause,
                     stackableEvent: stackableEvent,
                     player: player, 
@@ -109,7 +115,7 @@ namespace KompasCore.Effects
             this.game = game;
             this.mainCardInfoBefore = mainCardInfoBefore;
             this.secondaryCardInfoBefore = secondaryCardInfoBefore;
-            this.cardCause = cardCause;
+            this.cardCauseBefore = cardCause;
             this.stackableCause = stackableCause;
             this.stackableEvent = stackableEvent;
             this.player = player;
@@ -121,6 +127,7 @@ namespace KompasCore.Effects
             if (mainCardInfoBefore != null) sb.Append($"Card: {mainCardInfoBefore.CardName}, ");
             if (secondaryCardInfoBefore != null) sb.Append($"Secondary Card: {secondaryCardInfoBefore.CardName}, ");
             if (cardCause != null) sb.Append($"Card cause: {cardCause.CardName}, ");
+            if (stackableEvent != null) sb.Append($"Stackable Event: {stackableEvent}, ");
             if (stackableCause != null) sb.Append($"Stackable Cause: {stackableCause}, ");
             if (player != null) sb.Append($"Triggerer: {player.index}, ");
             if (x != null) sb.Append($"X: {x}, ");
@@ -145,22 +152,13 @@ namespace KompasCore.Effects
                    secondaryCardInfoBefore: GameCardInfo.CardInfoOf(secondaryCardBefore),
                    //Set the event cause either as the override if one is provided,
                    //or as the stackable's cause if not.
-                   cardCause: GameCardInfo.CardInfoOf(eventCauseOverride ?? stackableCause?.GetCause(mainCardBefore?.Card)),
+                   cardCause: GameCardInfo.CardInfoOf(eventCauseOverride ?? stackableCause?.GetCause(mainCardBefore)),
                    stackableCause: stackableCause,
                    stackableEvent: stackableEvent,
                    player: player,
                    x: x,
                    space: space?.Copy)
         { }
-
-        ~ActivationContext()
-        {
-            if (mainCardInfoBefore != null) UnityEngine.Object.Destroy(mainCardInfoBefore);
-            if (MainCardInfoAfter != null) UnityEngine.Object.Destroy(mainCardInfoBefore);
-
-            if (secondaryCardInfoBefore != null) UnityEngine.Object.Destroy(mainCardInfoBefore);
-            if (SecondaryCardInfoAfter != null) UnityEngine.Object.Destroy(mainCardInfoBefore);
-        }
 
         /// <summary>
         /// Set any information relevant to resuming an effect's resolution
@@ -187,27 +185,29 @@ namespace KompasCore.Effects
         /// <param name="mainCard">The main card whose information to cache</param>
         /// <param name="secondaryCard">The secondary card whose information to cache, if any 
         /// (like the attacker on a defends proc)</param>
-        private void CacheCardInfoAfter(GameCard mainCard, GameCard secondaryCard = null)
+        public void CacheCardInfoAfter()
         {
             if (MainCardInfoAfter != null)
                 throw new System.ArgumentException("Already initialized MainCardInfoAfter on this context");
-            else if (mainCardInfoBefore == null)
-                throw new System.ArgumentNullException("Never stored mainCardInfoBefore, why are you creating MainCardInfoAfter?");
             else
-                MainCardInfoAfter = GameCardInfo.CardInfoOf(mainCard);
+                MainCardInfoAfter = GameCardInfo.CardInfoOf(mainCardInfoBefore.Card);
 
-            if (secondaryCard != null)
+            if (secondaryCardInfoBefore != null)
             {
                 if (SecondaryCardInfoAfter != null)
                     throw new System.ArgumentException("Already initialized SecondaryCardInfoAfter on this context");
-                else if (secondaryCardInfoBefore == null)
-                    throw new System.ArgumentNullException("Never stored secondaryCardInfoBefore, why are you creating SecondaryCardInfoAfter?");
                 else
-                    SecondaryCardInfoAfter = GameCardInfo.CardInfoOf(mainCard);
+                    SecondaryCardInfoAfter = GameCardInfo.CardInfoOf(secondaryCardInfoBefore.Card);
+            }
+
+            if (cardCauseBefore != null)
+            {
+                if (CauseCardInfoAfter != null)
+                    throw new System.ArgumentException("Already initialized CauseCardInfoAfter on this context");
+                else
+                    CauseCardInfoAfter = GameCardInfo.CardInfoOf(cardCauseBefore.Card);
             }
         }
-
-        public void CacheCardInfoAfter() => CacheCardInfoAfter(mainCardInfoBefore.Card, secondaryCardInfoBefore?.Card);
 
         public override string ToString()
         {

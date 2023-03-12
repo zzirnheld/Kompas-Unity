@@ -1,0 +1,55 @@
+{
+	"cardType": 83,
+	"cardName": "Addictive Haemomancy",
+	"effText": "Endless.\nTribute a character. Gain 1 pip.",
+	"effects": [
+		{
+			"blurb": "Simple",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "Haeomomantic sacrifice",
+						"cardRestrictions": [
+							"Character",
+							"Summoned"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:Discard:"
+				},
+				{
+					"$type": "Subeffect:AddPips:",
+					"xModifier": 1
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Undying"
+	],
+	"c": 1,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypes": [
+		"Simple"
+	],
+	"subtypeText": "Endless Simple"
+}

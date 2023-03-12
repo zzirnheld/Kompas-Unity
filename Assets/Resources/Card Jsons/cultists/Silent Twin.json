@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Silent Twin",
-	"effText": "When I'm summoned, deck-summon a Cultist Follower, but kill them immediately.",
+	"effText": "When you summon me, deck->summon a Cultist Follower, but kill them immediately.",
 	"effects": [
 		{
 			"triggerData": {
@@ -14,35 +14,40 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.AutoTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:AutoTarget:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Subtypes Include",
-							"Friendly",
 							"Deck",
 							"Character"
 						],
-						"subtypesInclude": [
-							"Cultist Follower"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Cultist", "Follower" ]
+							}
 						]
 					},
 					"tiebreakerDirection":"Any"
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to play Silent Twin's new convert",
-						"spaceRestrictions": [
-							"Can Play Card Target to This Space",
-							"Empty"
-						]
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            }
+                        ]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Play:"
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type":"Subeffect:Discard:"
 				}
 			]
 		}

@@ -1,0 +1,69 @@
+{
+	"cardType": 83,
+	"cardName": "Wait Hold Up",
+	"effText": "Ificate.\nRummage. Move an enemy up to 3 spaces.",
+	"effects": [
+		{
+			"triggerData": {
+				"blurb": "Wait Hold Up",
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:Keyword:",
+					"keyword": "Rummage"
+				},
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "Wait, Hold Up, what are you moving?",
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "Wait Hold Up, WHERE",
+						"spaceRestrictionElements": [ 
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanMoveCard:",
+								"toMove": { "$type": "Cards:TargetIndex:" },
+								"distanceRestriction": {
+									"numberRestrictions": [ "==Constant" ],
+									"constant": 3
+								}
+							} 
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:Move:"
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Ificate"
+	],
+	"c": 5,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypes": [
+		"Simple",
+		"Crazy Idea"
+	],
+	"subtypeText": "Crazy Idea Ificator"
+}

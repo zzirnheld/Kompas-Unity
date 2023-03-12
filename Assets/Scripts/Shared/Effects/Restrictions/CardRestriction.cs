@@ -1,15 +1,17 @@
 ﻿using KompasCore.Cards;
+using KompasCore.GameCore;
 using KompasCore.Effects.Restrictions;
 using KompasServer.Effects;
 using System;
 using System.Linq;
 using UnityEngine;
+using KompasServer.Effects.Subeffects;
 
 namespace KompasCore.Effects
 {
-    public class CardRestriction
+    public class CardRestriction : ContextInitializeableBase
     {
-        public Subeffect Subeffect { get; private set; }
+        public Subeffect Subeffect => InitializationContext.subeffect;
 
         #region restrictions
         //targets
@@ -93,6 +95,7 @@ namespace KompasCore.Effects
 
         //misc statlike
         public const string Hurt = "Hurt";
+        public const string Unhurt = "Unhurt";
 
         public const string Negated = "Negated";
         public const string Unnegated = "Unnegated";
@@ -129,7 +132,7 @@ namespace KompasCore.Effects
 
         #endregion restrictions
 
-        public string[] cardRestrictions = new string[0];
+        public string[] cardRestrictions = { };
 
         public string nameIs;
         public string[] subtypesInclude;
@@ -160,62 +163,45 @@ namespace KompasCore.Effects
 
         public SpaceRestriction spaceRestriction;
 
-        public CardRestrictionElement[] cardRestrictionElements = { };
+        public string[] canPlayIgnoring;
 
-        public GameCard Source { get; private set; }
-        public Player Controller => Effect?.Controller ?? Source?.Controller;
-        public Effect Effect { get; private set; }
+        public CardRestrictionElement[] cardRestrictionElements = { };
 
         public string blurb = "";
 
-        private bool initialized = false;
+        public GameCard Source => InitializationContext.source;
+        public Player Controller => InitializationContext.Controller;
+        public Effect Effect => InitializationContext.effect;
+        public Game Game => InitializationContext.game;
 
-        /// <summary>
-        /// Initializes this card restriction to match information found on this subeffect.
-        /// </summary>
-        /// <param name="subeff"></param>
-        public void Initialize(Subeffect subeff) => Initialize(subeff.Source, subeff.Effect, subeff);
-
-        public void Initialize(RestrictionContext rc) => Initialize(source: rc.source, effect: rc.subeffect?.Effect, subeffect: rc.subeffect);
-
-        /// <summary>
-        /// Initializes this card restriction to match the given information.
-        /// </summary>
-        /// <param name="source"></param>
-        /// <param name="effect"></param>
-        public void Initialize(GameCard source, Effect effect, Subeffect subeffect)
+        public override void Initialize(EffectInitializationContext initializationContext)
         {
-            Subeffect = subeffect;
-            Source = source;
-            Effect = effect;
+            Debug.Log($"Initializing card restriction with context {initializationContext}");
+            base.Initialize(initializationContext);
 
-            spaceRestriction?.Initialize(source, effect?.Controller, effect, subeffect);
+            spaceRestriction?.Initialize(initializationContext);
 
-            augmentRestriction?.Initialize(source, effect, subeffect);
-            secondaryRestriction?.Initialize(source, effect, subeffect);
-            adjacentCardRestriction?.Initialize(source, effect, subeffect);
-            connectednessRestriction?.Initialize(source, effect, subeffect);
-            attackedCardRestriction?.Initialize(source, effect, subeffect);
-            inAOEOfRestriction?.Initialize(source, effect, subeffect);
-            hasInAOERestriction?.Initialize(source, effect, subeffect);
+            augmentRestriction?.Initialize(initializationContext);
+            secondaryRestriction?.Initialize(initializationContext);
+            adjacentCardRestriction?.Initialize(initializationContext);
+            connectednessRestriction?.Initialize(initializationContext);
+            attackedCardRestriction?.Initialize(initializationContext);
+            inAOEOfRestriction?.Initialize(initializationContext);
+            hasInAOERestriction?.Initialize(initializationContext);
 
-            cardValueNumberRestriction?.Initialize(source, subeffect);
+            cardValueNumberRestriction?.Initialize(initializationContext);
 
-            cardValue?.Initialize(source);
+            cardValue?.Initialize(initializationContext);
 
-            foreach(var cre in cardRestrictionElements)
+            foreach (var cre in cardRestrictionElements)
             {
-                cre.Initialize(new RestrictionContext(game: source.Game, source: source, subeffect: subeffect));
+                cre.Initialize(initializationContext);
             }
-
-            initialized = true;
-            //Debug.Log($"Initialized {this}");
         }
 
-        public override string ToString()
-        {
-            return $"Card Restriction.\nRestrictions: {string.Join(", ", cardRestrictions)}";
-        }
+        public override string ToString() => $"Card Restriction of {Source?.CardName}." +
+            $"\nRestrictions: {string.Join(", ", cardRestrictions)}" +
+            $"\nRestriction Elements: {string.Join(", ", cardRestrictionElements.Select(r => r))}";
 
         private bool HasCardRestrictionInAOE(GameCardBase cardToTest, int x, ActivationContext context)
         {
@@ -296,9 +282,9 @@ namespace KompasCore.Effects
                 NotAvatar => !potentialTarget?.IsAvatar ?? false,
 
                 //subtypes
-                SubtypesInclude => subtypesInclude.All(s => potentialTarget?.SubtypeText.Contains(s) ?? false),
-                SubtypesExclude => subtypesExclude.All(s => !potentialTarget?.SubtypeText.Contains(s) ?? false),
-                SubtypesIncludeAnyOf => subtypesIncludeAnyOf.Any(s => potentialTarget?.SubtypeText.Contains(s) ?? false),
+                SubtypesInclude => subtypesInclude.All(s => potentialTarget?.HasSubtype(s) ?? false),
+                SubtypesExclude => subtypesExclude.All(s => !potentialTarget?.HasSubtype(s) ?? false),
+                SubtypesIncludeAnyOf => subtypesIncludeAnyOf.Any(s => potentialTarget?.HasSubtype(s) ?? false),
 
                 //is
                 IsSource => potentialTarget?.Card == Source,
@@ -329,6 +315,7 @@ namespace KompasCore.Effects
                 //stats
                 CardValueFitsNumberRestriction => cardValueNumberRestriction.IsValidNumber(cardValue.GetValueOf(potentialTarget)),
                 Hurt => potentialTarget?.Hurt ?? false,
+                Unhurt => !(potentialTarget?.Hurt ?? true),
                 Activated => potentialTarget?.Activated ?? false,
                 Negated => potentialTarget?.Negated ?? false,
                 Unnegated => !(potentialTarget?.Negated ?? true),
@@ -361,9 +348,9 @@ namespace KompasCore.Effects
                 Augmented => potentialTarget?.Augments.Any() ?? false,
 
                 CanBePlayed
-                    => Subeffect.Game.ExistsEffectPlaySpace(potentialTarget?.PlayRestriction, Effect),
+                    => Game.ExistsEffectPlaySpace(potentialTarget?.PlayRestriction, Effect),
                 CanPlayToTargetSpace
-                    => potentialTarget?.PlayRestriction.IsValidEffectPlay(Subeffect.SpaceTarget, Effect, Subeffect.PlayerTarget, context) ?? false,
+                    => potentialTarget?.PlayRestriction.IsValidEffectPlay(Subeffect.SpaceTarget, Effect, Subeffect.PlayerTarget, context, ignoring: canPlayIgnoring) ?? false,
                 CanPlayTargetToThisCharactersSpace
                     => Subeffect.CardTarget.PlayRestriction.IsValidEffectPlay(potentialTarget?.Position ?? default, Effect, Subeffect.PlayerTarget, context),
 
@@ -371,7 +358,7 @@ namespace KompasCore.Effects
                 EffectIsOnTheStack => Source.Game.StackEntries.Any(e => e is Effect eff && eff.Source == potentialTarget?.Card),
 
                 SpaceRestrictionValidIfThisTargetChosen
-                    => Effect.Subeffects[spaceRestrictionIndex] is SpaceTargetSubeffect spaceTgtSubeff
+                    => Effect.Subeffects[spaceRestrictionIndex] is SpaceTarget spaceTgtSubeff
                     && spaceTgtSubeff.WillBePossibleIfCardTargeted(theoreticalTarget: potentialTarget?.Card),
 
                 _ => throw new ArgumentException($"Invalid card restriction {restriction}", "restriction"),
@@ -382,8 +369,16 @@ namespace KompasCore.Effects
         private bool IsRestrictionValidDebug(string restriction, GameCardBase potentialTarget, int x, ActivationContext context)
         {
             bool answer = IsRestrictionValid(restriction, potentialTarget, x, context);
-            //if (!answer) Debug.Log($"{potentialTarget?.CardName} flouts {restriction}");
+            //if (!answer) Debug.Log($"{potentialTarget} flouts {restriction} in effect of {Source} in context {InitializationContext}");
             return answer;
+        }
+
+        private bool IsRestrictionElemValidDebug(CardRestrictionElement restriction, GameCardBase potentialTarget, ActivationContext context)
+        {
+            bool answer = restriction.FitsRestriction(potentialTarget, context);
+            //if (!answer) Debug.Log($"{potentialTarget} flouts {restriction} in effect of {Source} in context {InitializationContext}");
+            return answer;
+
         }
 
         /// <summary>
@@ -394,21 +389,17 @@ namespace KompasCore.Effects
         /// <returns><see langword="true"/> if the card fits all restrictions, <see langword="false"/> if it doesn't fit at least one</returns>
         private bool IsValidCard(GameCardBase potentialTarget, int x, ActivationContext context)
         {
-            if (!initialized) throw new ArgumentException("Card restriction not initialized!");
+            ComplainIfNotInitialized();
+            //Debug.Log($"Checking valid target for card while init context is {InitializationContext}");
 
             try
             {
-                return cardRestrictions.All(r => IsRestrictionValid(r, potentialTarget, x, context))
-                    && cardRestrictionElements.All(cre => cre.FitsRestriction(potentialTarget, context));
+                return cardRestrictions.All(r => IsRestrictionValidDebug(r, potentialTarget, x, context))
+                    && cardRestrictionElements.All(r => IsRestrictionElemValidDebug(r, potentialTarget, context));
             }
-            catch (ArgumentException ae)
+            catch (SystemException exception) when (exception is NullReferenceException || exception is ArgumentException)
             {
-                Debug.LogError(ae);
-                return false;
-            }
-            catch (NullReferenceException nre)
-            {
-                Debug.LogError(nre);
+                Debug.LogError(exception);
                 return false;
             }
         }
@@ -421,5 +412,6 @@ namespace KompasCore.Effects
         /// <returns><see langword="true"/> if the card fits all restrictions, <see langword="false"/> if it doesn't fit at least one</returns>
         public bool IsValidCard(GameCardBase potentialTarget, ActivationContext context)
             => IsValidCard(potentialTarget, Subeffect?.Count ?? 0, context);
+
     }
 }

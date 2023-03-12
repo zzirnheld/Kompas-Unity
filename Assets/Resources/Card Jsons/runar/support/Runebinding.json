@@ -1,0 +1,58 @@
+{
+	"cardType": 83,
+	"cardName": "Runebinding",
+	"effText": "The first time each turn you cast a Rune, deck->hand a Mage.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before",
+						"Max Per Turn"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Spell"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Rune" ]
+							}
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:DeckTarget:",
+					"cardRestriction": {
+						"blurb": "Rune for Runestones to search",
+						"cardRestrictions": [
+							"Deck"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Mage" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:Hand:"
+				}
+			]
+		}
+	],
+	"unique": true,
+	"c": 3,
+	"spellTypes": [
+		"Enchant"
+	],
+	"subtypeText": "Runar Enchant"
+}

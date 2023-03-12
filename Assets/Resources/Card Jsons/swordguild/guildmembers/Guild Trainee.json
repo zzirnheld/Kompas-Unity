@@ -1,0 +1,124 @@
+{
+	"cardType": 67,
+	"cardName": "Guild Trainee",
+	"effText": "When a Trainer increases my N/E/W by X, also give me +X S.\nYou can swap me for a distinct Swordguild Warrior in your deck that costs less.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "N Change",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"X Fits Restriction",
+						"This Card is Main Card"
+					],
+					"xRestriction": { "numberRestrictions": [ ">0" ] }
+				}
+			},
+			"subeffects": [
+				{ "$type": "Subeffect:TargetThis:" },
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"sMultiplier": 1
+				}
+			]
+		},
+		{
+			"triggerData": {
+				"triggerCondition": "E Change",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"X Fits Restriction",
+						"This Card is Main Card"
+					],
+					"xRestriction": { "numberRestrictions": [ ">0" ] }
+				}
+			},
+			"subeffects": [
+				{ "$type": "Subeffect:TargetThis:" },
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"sMultiplier": 1
+				}
+			]
+		},
+		{
+			"triggerData": {
+				"triggerCondition": "W Change",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"X Fits Restriction",
+						"This Card is Main Card"
+					],
+					"xRestriction": { "numberRestrictions": [ ">0" ] }
+				}
+			},
+			"subeffects": [
+				{ "$type": "Subeffect:TargetThis:" },
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"sMultiplier": 1
+				}
+			]
+		},
+		{
+			"blurb": "Training Complete",
+			"activationRestriction": {
+				"activationRestrictionArray": [
+					"Friendly Turn",
+					"Default"
+				]
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetThis:"
+				},
+				{
+					"$type": "Subeffect:SetXByTargetCardValue:",
+					"cardValue": {
+						"value": "S"
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:TargetTargetsSpace:"
+				},
+				{
+					"$type": "Subeffect:Reshuffle:"
+				},
+				{
+					"$type": "Subeffect:DeckTarget:",
+					"cardRestriction": {
+						"blurb": "Guild Title",
+						"cardRestrictions": [
+							"Character",
+							"Deck",
+							"Can Be Played",
+							"Card Value Fits Number Restriction"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Swordguild", "Warrior" ]
+							}
+						],
+						"cardValue": { "value": "S" },
+						"cardValueNumberRestriction": { "numberRestrictions": [ "<X" ] }
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:Play:"
+				}
+			]
+		}
+	],
+	"n": 0,
+	"e": 1,
+	"s": 1,
+	"w": 0,
+	"subtypeText": "Swordguild Warrior"
+}

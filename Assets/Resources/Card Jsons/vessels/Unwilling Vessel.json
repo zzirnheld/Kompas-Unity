@@ -15,48 +15,52 @@
 			},
 			"subeffects": [
                 {
-                    "$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+                    "$type":"Subeffect:TargetThis:"
                 },
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "I don't want to remember!",
 						"cardRestrictions": [
 							"Augment",
-							"Board",
-							"Subtypes Include",
 							"Augments Current Target"
 						],
-						"subtypesInclude": [
-							"Memory"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Memory" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "A"
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Discard:"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeCardStats:",
 					"eMultiplier": 1,
 					"sMultiplier": 1,
 					"wMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to move the Unwilling Vessel",
 						"spaceRestrictions": [
-							"Can Move Card Target to This Space",
 							"Distance to Source Fits X Restriction",
 							"Empty"
 						],
@@ -64,12 +68,16 @@
 							"numberRestrictions": [
 								"<=X"
 							]
-						}
+						},
+						"spaceRestrictionElements": [ {
+							"$type": "Core.SpaceRestriction:CanMoveCard:",
+							"toMove": { "$type": "Cards:TargetIndex:" }
+						} ]
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Move:"
 				}
 			]
 		}

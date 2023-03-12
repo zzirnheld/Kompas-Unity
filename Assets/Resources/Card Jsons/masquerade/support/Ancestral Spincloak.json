@@ -1,0 +1,95 @@
+{
+	"cardType":65,
+	"cardName": "Ancestral Spincloak",
+	"effText": "Give this character +5 NESW.\nWhen your Dancer dons a Mask, discard->attach me to them.",
+	"effects":[
+		{
+			"blurb": "Ancestors' power",
+			"triggerData":
+			{
+				"triggerCondition":"Augment Attached",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card is Main Card"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"Subeffect:TargetAugmentedCard:"
+				},
+				{
+					"$type":"Subeffect:Hanging.ChangeCardStats:",
+					"nModifier":5,
+					"eModifier":5,
+					"sModifier":5,
+					"wModifier":5,
+					"endCondition":"Augment Detached",
+					"triggerRestriction":{
+						"triggerRestrictions":["This Card is Main Card"]
+					}
+				}
+			]
+		},
+		{
+            "blurb": "Inherit the costume",
+			"triggerData": {
+				"triggerCondition": "Augment Attached",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"Main Card Fits Restriction After",
+						"This Card Fits Restriction Now"
+					],
+					"nowRestriction": {
+						"cardRestrictions": [
+                            "Augments Card Fitting Restriction"
+                        ],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Mask" ]
+							}
+						],
+						"augmentRestriction": {
+							"cardRestrictionElements": [
+                                { "$type": "Core.CardRestriction:Friendly:" },
+								{
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Dancer" ]
+								}
+							]
+						}
+					},
+					"selfRestriction": {
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							}
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetTriggeringCard:"
+				},
+				{
+					"$type": "Subeffect:TargetTargetsAugmentedCard:"
+				},
+				{
+					"$type": "Subeffect:TargetThis:"
+				},
+				{
+					"$type": "Subeffect:Attach:",
+					"targetToAttachTo": -2,
+					"targetIndex": -1
+				}
+			]
+		}
+	],
+	"PlayRestriction":{
+		"normalRestrictions":["Augment Normal Restrictions"],
+		"effectRestrictions":["Augment Effect Restrictions"]
+	},
+	"a":5,
+	"subtypeText":""
+}

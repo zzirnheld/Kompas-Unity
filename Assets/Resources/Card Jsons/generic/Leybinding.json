@@ -1,0 +1,57 @@
+{
+	"cardType": 83,
+	"cardName": "Leybinding",
+	"effText": "Give all X characters +X S.",
+	"effects": [
+		{
+			"blurb": "Simple",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:SetXByGamestate:",
+					"whatToCount": "Cards Fitting Restriction",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:ChangeAllCardStats:",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						],
+						"cSpaces": 1
+					},
+					"sMultiplier": 1
+				}
+			]
+		}
+	],
+	"c": 1,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypeText": "Ley Simple"
+}

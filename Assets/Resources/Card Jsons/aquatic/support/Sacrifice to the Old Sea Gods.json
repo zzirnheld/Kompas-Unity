@@ -1,0 +1,78 @@
+{
+	"cardType": 83,
+	"cardName": "Sacrifice to the Old Sea Gods",
+	"effText": "Hand->annihilate an Aquatic card, then me. Deck->cast Water where I was.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "adjacent Aquatic card to annihilate",
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Hand" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Aquatic" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:Annihilate:"
+				},
+				{
+					"$type": "Subeffect:TargetThis:"
+				},
+				{
+					"$type": "Subeffect:TargetTargetsSpace:"
+				},
+				{
+					"$type": "Subeffect:Annihilate:"
+				},
+				{
+					"$type": "Subeffect:DeckTarget:",
+					"cardRestriction": {
+						"blurb": "Tide that Shifts In",
+						"cardRestrictions": [
+							"Spell",
+							"Deck",
+							"Can Be Played"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Water" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:Play:"
+				}
+			]
+		}
+	],
+	"c": 1,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypes": [
+		"Aquatic",
+		"Simple"
+	],
+	"subtypeText": "Aquatic Simple"
+}

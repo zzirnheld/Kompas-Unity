@@ -1,0 +1,132 @@
+{
+	"cardType": 83,
+	"cardName": "Wave",
+	"effText": "Move Water through spaces in Water. Move all characters that were in it, to spaces in it where it is now.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "What water moves?",
+						"cardRestrictions": [
+							"Spell"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Water" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "where will the wave crash",
+						"spaceRestrictions": [
+							"Connected to Card Target by Spaces Fitting Restriction",
+							"Empty"
+						],
+						"spaceConnectednessRestriction": {
+							"spaceRestrictionElements": [
+								{
+									"$type": "Core.SpaceRestriction:InAOEOf:",
+									"anyOf": {
+										"$type": "ManyCards:FittingRestriction:",
+										"cardRestriction": {
+											"cardRestrictionElements": [
+												{
+													"$type": "Core.CardRestriction:Subtypes:",
+													"subtypes": [ "Water" ]
+												}
+											]
+										}
+									}
+								},
+								{
+									"$type": "Core.SpaceRestriction:CanMoveCard:",
+									"toMove": { "$type": "Cards:TargetIndex:" }
+								}
+							]
+						}
+					}
+				},
+				{
+					"$type": "Subeffect:SkipToEffectOnImpossible:",
+					"jumpIndices": [
+						9
+					]
+				},
+				{
+					"$type": "Subeffect:TargetAll:",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Summoned",
+							"Character",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"In Card Target's AOE"
+							]
+						}
+					}
+				},
+				{
+					"$type": "Subeffect:Move:",
+					"targetIndex": 0
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"spaceRestrictions": [
+							"In Card Target's AOE",
+							"Empty"
+						]
+					},
+					"targetIndex": 0
+				},
+				{
+					"$type": "Subeffect:Move:"
+				},
+				{
+					"$type": "Subeffect:LoopWhileHaveTargets:",
+					"delete": true,
+					"remainingTargets": 1,
+					"jumpIndices": [
+						5
+					]
+				},
+				{
+					"$type": "Subeffect:EndResolution:"
+				},
+				{
+					"$type": "Subeffect:Move:",
+					"targetIndex": 0
+				}
+			]
+		}
+	],
+	"c": 1,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypes": [
+		"Aquatic",
+		"Simple"
+	],
+	"subtypeText": "Aquatic Simple"
+}

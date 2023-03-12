@@ -1,0 +1,59 @@
+{
+	"cardType": 65,
+	"cardName": "Composite Defense Module",
+	"effText": "When this character defends while wielding X Modules, give them +X NESW.",
+	"effects": [
+		{
+			"blurb": "Composite Defense",
+			"triggerData": {
+				"triggerCondition": "Defend",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Augmented Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetAugmentedCard:"
+				},
+                {
+                    "$type": "Subeffect:SetXByNumberIdentity:",
+                    "numberIdentity": {
+                        "$type": "Numbers:CountCards:",
+                        "cards": {
+                            "$type": "ManyCards:FittingRestriction:",
+                            "cards": {
+                                "$type": "ManyCards:Augments:",
+                                "card": { "$type": "Cards:TargetIndex:" }
+                            },
+                            "cardRestriction": {
+                                "cardRestrictionElements": [
+                                    {
+                                        "$type": "Core.CardRestriction:Subtypes:",
+                                        "subtypes": [ "Module" ]
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "xMultiplier": 1
+                },
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"nMultiplier": 1,
+					"eMultiplier": 1,
+					"sMultiplier": 1,
+					"wMultiplier": 1
+				}
+			]
+		}
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [ "Augment Normal Restrictions" ],
+		"effectRestrictions": [ "Augment Effect Restrictions" ]
+	},
+	"a": 3,
+	"subtypeText": "Module"
+}

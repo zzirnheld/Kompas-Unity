@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Wander Home",
-	"effText": "Swap an adjacent friendly Wanderer for a lower cost Wanderer in your deck. Swap another character for a lower cost character of their controller's choice from their deck.",
+	"effText": "Swap an adjacent friendly Wanderer for a lower cost Wanderer in your deck. A character's controller swaps them for a lower cost characer in their deck.",
 	"effects": [
 		{
 			"triggerData": {
@@ -14,14 +14,11 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "othercharacter to wander home",
 						"cardRestrictions": [
-							"Board",
 							"Character",
-							"Friendly",
-							"Subtypes Include",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
@@ -29,23 +26,31 @@
 								"Adjacent to Source"
 							]
 						},
-						"subtypesInclude": [
-							"Wanderer"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Wanderer" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "S"
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Reshuffle:"
 				},
 				{
-					"$type": "KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:DeckTarget:",
 					"cardRestriction": {
 						"blurb": "character to wander out",
 						"cardRestrictions": [
@@ -66,24 +71,26 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where Ificator to play targeted Crazy Idea",
-						"spaceRestrictions": [
-							"Can Play Card Target to This Space",
-							"Empty"
-						]
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            }
+                        ]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Play:"
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "other character to wander home",
 						"cardRestrictions": [
-							"Board",
 							"Character",
 							"Space Fits Restriction"
 						],
@@ -91,24 +98,30 @@
 							"spaceRestrictions": [
 								"Adjacent to Source"
 							]
-						}
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "S"
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.TargetTargetsControllerSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTargetsController:"
 				},
 				{
-					"$type": "KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Reshuffle:"
 				},
 				{
-					"$type": "KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:DeckTarget:",
 					"cardRestriction": {
 						"blurb": "character to summon",
 						"cardRestrictions": [
@@ -129,17 +142,20 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to play who is wandering home",
-						"spaceRestrictions": [
-							"Can Play Card Target to This Space",
-							"Empty"
-						]
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            }
+                        ]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Play:"
 				}
 			]
 		}
@@ -150,11 +166,13 @@
 		],
 		"adjacentCardRestriction": {
 			"cardRestrictions": [
-				"Character",
-				"Subtypes Include"
+				"Character"
 			],
-			"subtypesInclude": [
-				"Wanderer"
+			"cardRestrictionElements": [
+				{
+					"$type": "Core.CardRestriction:Subtypes:",
+					"subtypes": [ "Wanderer" ]
+				}
 			]
 		}
 	},

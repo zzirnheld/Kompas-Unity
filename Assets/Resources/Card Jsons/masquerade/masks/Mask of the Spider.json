@@ -1,0 +1,67 @@
+{
+	"cardType": 65,
+	"cardName": "Mask of the Spider",
+	"effText": "Mask.\nWhen this summon defends, give the attacker -3 NW.",
+	"effects": [
+        {
+            "blurb": "You underestimate me",
+            "triggerData":
+            {
+                "triggerCondition": "Defend",
+                "triggerRestriction": {
+                    "triggerRestrictionElements": [
+                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardsMatch:",
+                            "firstCard": { "$type": "Cards:MainCardBefore:" },
+                            "secondCard": {
+                                "$type": "Cards:AugmentedCard:",
+                                "ofThisCard": { "$type": "Cards:ThisCard:" }
+                            }
+                        },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:MainCardBefore:" },
+                            "cardRestriction": {
+                                "cardRestrictionElements": [ { "$type": "Core.CardRestriction:Summoned:" } ]
+                            }
+                        }
+                    ]
+                }
+            },
+            "subeffects":[
+				{
+					"$type":"Subeffect:TargetTriggeringCard:",
+					"secondary":true
+				},
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"nModifier": -3,
+					"wModifier": -3
+				}
+            ]
+        }
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Augment Normal Restrictions",
+			"On Card that Fits Restriction"
+		],
+		"effectRestrictions": [
+			"Augment Effect Restrictions",
+			"On Card that Fits Restriction"
+		],
+		"onCardRestriction": {
+            "cardRestrictions": [
+                "Wields No Augment Fitting Restriction"
+            ],
+            "augmentRestriction": {
+                "cardRestrictions": [
+                    "Same Name as Source"
+                ]
+            }
+		}
+	},
+	"a": 3,
+	"subtypeText": "Mask"
+}

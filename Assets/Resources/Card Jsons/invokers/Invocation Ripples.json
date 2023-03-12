@@ -1,0 +1,96 @@
+{
+	"cardType": 83,
+	"cardName": "Invocation Ripples",
+	"effText": "When your Invoker summons an S X character, discard your deck's top X cards. Revive a Spirit among them.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+                        "Controller Triggered",
+						"Main Card Fits Restriction Before",
+                        "Stackable Source Fits Restriction Now"
+                    ],
+                    "sourceRestriction":
+                    {
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Invoker" ]
+							}
+						]
+                    },
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Ethereal" ]
+							}
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetTriggeringCard:"
+				},
+				{
+					"$type": "Subeffect:SetXByTargetCardValue:",
+					"cardValue": {
+						"value": "S"
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:Mill:",
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "Spirit to ripple into",
+						"cardRestrictions": [
+							"Character",
+							"Can Be Played",
+							"Already Target"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Spirit" ]
+							}
+						]
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "where to ripple the spirit into",
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            }
+                        ]
+					}
+				},
+				{
+					"$type": "Subeffect:Play:"
+				}
+			]
+		}
+	],
+	"c": 3,
+	"unique": true,
+	"spellTypes": [
+		"Enchant"
+	],
+	"subtypeText": "Enchant"
+}

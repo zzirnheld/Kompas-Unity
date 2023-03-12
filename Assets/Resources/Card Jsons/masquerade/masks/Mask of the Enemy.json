@@ -1,0 +1,78 @@
+{
+	"cardType": 65,
+	"cardName": "Mask of the Enemy",
+	"effText": "Mask.\nWhen this summon defends, give their attacker's Avatar -5 E.",
+	"effects": [
+        {
+            "blurb": "You underestimate me",
+            "triggerData":
+            {
+                "triggerCondition": "Defend",
+                "triggerRestriction": {
+                    "triggerRestrictionElements": [
+                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardsMatch:",
+                            "firstCard": { "$type": "Cards:MainCardBefore:" },
+                            "secondCard": {
+                                "$type": "Cards:AugmentedCard:",
+                                "ofThisCard": { "$type": "Cards:ThisCard:" }
+                            }
+                        },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:MainCardBefore:" },
+                            "cardRestriction": {
+                                "cardRestrictionElements": [ { "$type": "Core.CardRestriction:Summoned:" } ]
+                            }
+                        }
+                    ]
+                }
+            },
+            "subeffects":[
+				{
+					"$type":"Subeffect:TargetTriggeringCard:",
+                    "secondary": true
+				},
+				{
+					"$type": "Subeffect:TargetTargetsController:"
+				},
+				{
+					"$type": "Subeffect:AutoTarget:",
+					"cardRestriction": {
+						"cardRestrictions": [
+                            "Controller Matches Player Target",
+							"Avatar"
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"eModifier": -5
+				}
+            ]
+        }
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Augment Normal Restrictions",
+			"On Card that Fits Restriction"
+		],
+		"effectRestrictions": [
+			"Augment Effect Restrictions",
+			"On Card that Fits Restriction"
+		],
+		"onCardRestriction": {
+            "cardRestrictions": [
+                "Wields No Augment Fitting Restriction"
+            ],
+            "augmentRestriction": {
+                "cardRestrictions": [
+                    "Same Name as Source"
+                ]
+            }
+		}
+	},
+	"a": 3,
+	"subtypeText": "Mask"
+}

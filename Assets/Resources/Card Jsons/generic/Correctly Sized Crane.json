@@ -1,0 +1,52 @@
+{
+	"cardType": 83,
+	"cardName": "Correctly Sized Crane",
+	"effText": "The first time each turn you hand->discard, discard->hand any friendly card.",
+	"effects": [
+		{
+			"blurb": "Lemme grabbit",
+			"triggerData": {
+				"triggerCondition": "Discard",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before",
+						"Max Per Turn",
+						"Controller Triggered"
+					],
+					"cardRestriction": {
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Hand" ]
+							}
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "card for Correctly Sized Crane to grab",
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:Hand:"
+				}
+			]
+		}
+	],
+	"c": 5,
+	"spellTypes": [
+		"Enchant"
+	],
+	"subtypeText": "Enchant"
+}

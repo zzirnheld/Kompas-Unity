@@ -1,0 +1,95 @@
+{
+	"cardType": 67,
+	"cardName": "Animancer",
+	"effText": "You can hand->discard Golems with total cost X to deck->hand a cost < X Golem.",
+	"effects": [
+		{
+			"blurb": "It's In Here Somewhere",
+			"activationRestriction": {
+				"activationRestrictionArray": [
+					"Friendly Turn",
+					"Default"
+				]
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "for Animancer to discard",
+						"cardRestrictions": [
+							"Not Already Target"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Golem" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:SetXByTargetCardValue:",
+					"cardValue": {
+						"value": "Cost"
+					},
+					"change": true,
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:Discard:"
+				},
+				{
+					"$type": "Subeffect:Loop:",
+					"canDecline": true,
+					"jumpIndices": [
+						0
+					]
+				},
+				{
+					"$type": "Subeffect:ChooseFromList:",
+					"cardRestriction": {
+						"blurb": "for Animancer to search",
+						"cardRestrictions": [
+							"Deck",
+							"Card Value Fits Number Restriction"
+						],
+						"cardValue": {
+							"value": "Cost"
+						},
+						"cardValueNumberRestriction": {
+							"numberRestrictions": [
+								"<=X"
+							]
+						},
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Golem" ]
+							}
+						]
+					},
+					"xMultiplier": 1,
+					"xModifier": -1
+				},
+				{
+					"$type": "Subeffect:Hand:"
+				}
+			]
+		}
+	],
+	"n": 1,
+	"e": 10,
+	"s": 7,
+	"w": 3,
+	"subtypes": [
+		"Mage",
+		"Craftsman"
+	],
+	"subtypeText": "Mage Craftsman"
+}

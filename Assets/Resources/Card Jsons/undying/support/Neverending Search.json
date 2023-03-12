@@ -1,0 +1,68 @@
+{
+	"cardType": 83,
+	"cardName": "Neverending Search",
+	"effText": "Endless.\nRummage. Revive, then kill, a character.",
+	"effects": [
+		{
+			"blurb": "Simple",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:Keyword:",
+					"keyword": "Rummage"
+				},
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "Who to revive, then kill",
+						"cardRestrictions": [
+							"Character",
+							"Can Be Played"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "where to revive that character",
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            }
+                        ]
+					}
+				},
+				{
+					"$type": "Subeffect:Play:"
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Undying"
+	],
+	"c": 1,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypes": [
+		"Simple"
+	],
+	"subtypeText": "Endless Simple"
+}

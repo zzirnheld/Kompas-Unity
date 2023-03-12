@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Inexplicably Possible Black Hole",
-	"effText": "Can't attack normally.\nWhen a character arrives normally, move them 1 space towards me.",
+	"effText": "Structure.\nWhen a character arrives normally, move them 1 space towards me.",
 	"effects": [
 		{
 			"blurb": "The Suck",
@@ -22,22 +22,25 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "e n t e r t h e h o l e",
 						"spaceRestrictions": [
 							"Adjacent to Card Target",
 							"Towards Source from Card Target",
-							"Can Move Card Target to This Space",
 							"Empty"
-						]
+						],
+						"spaceRestrictionElements": [ {
+							"$type": "Core.SpaceRestriction:CanMoveCard:",
+							"toMove": { "$type": "Cards:TargetIndex:" }
+						} ]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Move:"
 				}
 			]
 		}
@@ -48,9 +51,15 @@
 			"Not Normally"
 		]
 	},
+	"MovementRestriction": {
+		"normalRestrictionsFromJson": [
+			"Default",
+			"Not Normally"
+		]
+	},
 	"n": 0,
 	"e": 2,
 	"s": 5,
 	"w": 9,
-	"subtypeText": "Smol Crazy Idea"
+	"subtypeText": "Smol Crazy Idea Structure"
 }

@@ -1,0 +1,120 @@
+{
+	"cardType": 83,
+	"cardName": "ZOOMIN",
+	"effText": "Move a card 1 space. Move a card 1 space! MOVE A CARD 1 SPACE!",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "zoom",
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "zoom",
+						"spaceRestrictionElements": [ 
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanMoveCard:",
+								"toMove": { "$type": "Cards:TargetIndex:" },
+								"distanceRestriction": {
+									"numberRestrictions": [ "==Constant" ],
+									"constant": 1
+								}
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:Move:"
+				},
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "Zoom!",
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "Zoom!",
+						"spaceRestrictionElements": [ 
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanMoveCard:",
+								"toMove": { "$type": "Cards:TargetIndex:" },
+								"distanceRestriction": {
+									"numberRestrictions": [ "==Constant" ],
+									"constant": 1
+								}
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:Move:"
+				},
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "ZOOM!",
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "ZOOM!",
+						"spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanMoveCard:",
+								"toMove": { "$type": "Cards:TargetIndex:" },
+								"distanceRestriction": {
+									"numberRestrictions": [ "==Constant" ],
+									"constant": 1
+								}
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:Move:"
+				}
+			]
+		}
+	],
+	"c": 3,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypeText": "Simple"
+}

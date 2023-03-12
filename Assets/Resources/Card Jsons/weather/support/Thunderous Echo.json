@@ -1,0 +1,38 @@
+{
+	"cardType": 83,
+	"cardName": "Thunderous Echo",
+	"effText": "When you hand->summon a Weather Event, echo it.",
+	"effects": [
+		{
+			"blurb": "Thunderous Echo",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before",
+						"Controller Triggered"
+					],
+					"cardRestriction": {
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Hand" ]
+							}
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetTriggeringCard:"
+				},
+				{
+					"$type": "Subeffect:Resummon:"
+				}
+			]
+		}
+	],
+	"c": 1,
+	"subtypeText": "Enchant"
+}

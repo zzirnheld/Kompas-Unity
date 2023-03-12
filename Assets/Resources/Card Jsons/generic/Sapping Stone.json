@@ -14,12 +14,17 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeAllCardStats:",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character",
-							"Board",
 							"Space Fits Restriction"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						],
 						"spaceRestriction": {
 							"spaceRestrictions": [
@@ -40,6 +45,6 @@
 	"subtypes": [
 		"Radial"
 	],
-	"subtypeText": "Rune Radial",
+	"subtypeText": "Rune Radius",
 	"radius": 1
 }

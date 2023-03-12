@@ -1,0 +1,62 @@
+{
+	"cardType": 67,
+	"cardName": "Brightsmiling Excitement",
+	"effText": "When I'm revived, give an N X character +X N.",
+	"effects": [
+		{
+			"blurb": "Excitement",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							}
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:SetXByTargetCardValue:",
+					"cardValue": {
+						"value": "N"
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"nMultiplier": 1
+				}
+			]
+		}
+	],
+	"n": 5,
+	"e": 3,
+	"s": 6,
+	"w": 8,
+	"subtypeText": "Ethereal Spirit"
+}

@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Revivance",
-	"effText": "When a Revenant is revived, you can move them 1 space.",
+	"effText": "When you revive a Spirit, move them 1 space.",
 	"effects": [
 		{
 			"triggerData": {
@@ -12,37 +12,38 @@
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Subtypes Include"
-						],
-						"subtypesInclude": [
-							"Revenant"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Revenant" ]
+							}
 						]
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to move the revived Revenant",
-						"spaceRestrictions": [
-							"Distance to Card Target Fits X Restriction",
-							"Empty"
-						],
-						"distanceXRestriction": {
-							"numberRestrictions": [
-								"=X"
-							]
-						}
-					},
-					"xModifier": 1
+						"spaceRestrictionElements": [ 
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanMoveCard:",
+								"toMove": { "$type": "Cards:TargetIndex:" },
+								"distanceRestriction": {
+									"numberRestrictions": [ "==Constant" ],
+									"constant": 1
+								}
+							}
+						]
+					}
 				},
 				{
-					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Move:"
 				}
 			]
 		}

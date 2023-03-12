@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Mid-Outfielder",
-	"effText": "When I'm augmented, move me up to 2 spaces.",
+	"effText": "When you augment me, move me up to 2 spaces.",
 	"effects": [
 		{
 			"triggerData": {
@@ -9,33 +9,34 @@
 				"triggerCondition": "Augmented",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card is Main Card"
+						"This Card is Main Card",
+						"Controller Triggered"
 					]
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "wher?",
-						"spaceRestrictions": [
-							"Can Move Card Target to This Space",
-							"Distance to Card Target Fits X Restriction",
-							"Empty"
-						],
-						"distanceXRestriction": {
-							"numberRestrictions": [
-								"<=X"
-							]
-						}
-					},
-					"xModifier": 2
+						"spaceRestrictionElements": [ 
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanMoveCard:",
+								"toMove": { "$type": "Cards:TargetIndex:" },
+								"distanceRestriction": {
+									"numberRestrictions": [ "<=Constant" ],
+									"constant": 2
+								}
+							}
+						]
+					}
 				},
 				{
-					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Move:"
 				}
 			]
 		}

@@ -1,0 +1,57 @@
+{
+	"cardType": 65,
+	"cardName": "See Red",
+	"effText": "Negate this summon, but give them +6 W.",
+	"effects": [
+		{
+            "blurb": "Seeing Red",
+			"triggerData": {
+				"triggerCondition": "Augment Attached",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.Hanging.NegateSubeffect, Assembly-CSharp",
+					"endCondition": "Augment Detached",
+					"triggerRestriction": {
+						"triggerRestrictions": [
+							"This Card is Main Card"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.Hanging.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"wModifier": 6,
+					"endCondition": "Augment Detached",
+					"triggerRestriction": {
+						"triggerRestrictions": [
+							"This Card is Main Card"
+						]
+					}
+				}
+			]
+		}
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Augment Normal Restrictions"
+		],
+		"effectRestrictions": [
+			"Augment Effect Restrictions"
+		]
+	},
+	"spellTypes": [
+		"Vanishing"
+	],
+	"duration": 1,
+	"a": 1,
+	"subtypeText": "Vanishing 1",
+	"augSubtypes": []
+}

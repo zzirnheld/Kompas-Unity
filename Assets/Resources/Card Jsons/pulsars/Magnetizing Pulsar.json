@@ -21,44 +21,54 @@
 					},
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Board",
-							"Avatar",
-							"Friendly"
+							"Avatar"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "for Magnetizing to attract",
 						"cardRestrictions": [
-							"Board",
 							"Different from Source"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "to move Magnetizing's target to",
 						"spaceRestrictions": [
 							"Towards Source from Card Target",
-							"Can Move Card Target to This Space",
-							"Distance to Card Target Fits X Restriction",
 							"Empty"
 						],
-						"distanceXRestriction": {
-							"numberRestrictions": [
-								"=X"
-							]
-						}
-					},
-					"xModifier": 1
+						"spaceRestrictionElements": [ {
+							"$type": "Core.SpaceRestriction:CanMoveCard:",
+							"toMove": { "$type": "Cards:TargetIndex:" },
+							"distanceRestriction": {
+								"numberRestrictions": [ "==Constant" ],
+								"constant": 1
+							}
+						} ]
+					}
 				},
 				{
-					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Move:"
 				}
 			]
 		},
@@ -80,44 +90,54 @@
 					},
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Board",
-							"Avatar",
-							"Friendly"
+							"Avatar"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "for Magnetizing to repel",
 						"cardRestrictions": [
-							"Board",
 							"Different from Source"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "to move Magnetizing's target to",
 						"spaceRestrictions": [
 							"Further from Source than Card Target",
-							"Can Move Card Target to This Space",
-							"Distance to Card Target Fits X Restriction",
 							"Empty"
 						],
-						"distanceXRestriction": {
-							"numberRestrictions": [
-								"=X"
-							]
-						}
-					},
-					"xModifier": 1
+						"spaceRestrictionElements": [ {
+							"$type": "Core.SpaceRestriction:CanMoveCard:",
+							"toMove": { "$type": "Cards:TargetIndex:" },
+							"distanceRestriction": {
+								"numberRestrictions": [ "==Constant" ],
+								"constant": 1
+							}
+						} ]
+					}
 				},
 				{
-					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Move:"
 				}
 			]
 		}

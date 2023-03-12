@@ -16,12 +16,17 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeAllCardStats:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Character",
-							"Board",
-							"Friendly"
+							"Character"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					},
 					"wModifier": 1
@@ -41,12 +46,17 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeAllCardStats:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Character",
-							"Board",
-							"Friendly"
+							"Character"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					},
 					"eModifier": 1

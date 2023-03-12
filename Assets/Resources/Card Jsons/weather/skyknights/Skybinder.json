@@ -1,0 +1,81 @@
+{
+	"cardType": 67,
+	"cardName": "Skyknight",
+	"effText": "When you Spin a Storm, reshuffle all your annihilated Weather.",
+	"effects": [
+		{
+			"blurb": "Bind weather",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before",
+						"Controller Triggered"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Different from Source"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Weather", "Event" ]
+							}
+						]
+					}
+				},
+                "triggerRestrictionElements": [
+                    {
+                        "$type": "Core.TriggerRestriction:StackableFitsRestriction:",
+                        "stackable": { "$type": "Stackables:StackableCause:" },
+                        "restriction": {
+                            "stackableRestrictionElements": [
+                                {
+                                    "$type": "Core.EffectRestriction:Keyword:",
+                                    "keyword": "Spin a Storm"
+                                }
+                            ]
+                        }
+                    }
+                ]
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetAll:",
+					"cardRestriction": {
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Annihilation" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Weather" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:Reshuffle:"
+				},
+				{
+					"$type": "Subeffect:DeleteTarget:"
+				},
+				{
+					"$type": "Subeffect:CountXLoop:",
+					"canDecline": false,
+					"jumpIndices": [
+						1
+					]
+				}
+			]
+		}
+	],
+	"n": 3,
+	"e": 3,
+	"s": 3,
+	"w": 3,
+	"subtypeText": "Skyknight Mage"
+}

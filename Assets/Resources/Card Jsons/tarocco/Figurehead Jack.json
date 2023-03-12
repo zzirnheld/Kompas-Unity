@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Figurehead Jack",
-	"effText": "Draw 1 card, hand-bottomdeck a Tarocco, and draw another card.",
+	"effText": "Draw 1 card. Hand->bottomdeck a Tarocco to draw another card.",
 	"effects": [
 		{
 			"triggerData": {
@@ -14,27 +14,30 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Draw:"
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "for Jack to hand-bottomdeck",
-						"cardRestrictions": [
-							"Friendly",
-							"Hand",
-							"Subtypes Include"
-						],
-						"subtypesInclude": [
-							"Tarocco"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Tarocco" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.BottomdeckSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Bottomdeck:"
 				},
 				{
-					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Draw:"
 				}
 			]
 		}

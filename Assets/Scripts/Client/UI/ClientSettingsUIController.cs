@@ -27,11 +27,21 @@ namespace KompasClient.UI
 
         public ClientGame clientGame;
         public TMP_Dropdown statHighlightDropdown;
-        public TMP_Dropdown confirmTargetsDropdown;
         public TMP_Dropdown friendlyColorOptionsDropdown;
         public TMP_Dropdown enemyColorOptionsDropdown;
         public TMP_InputField zoomThresholdInput;
         public Toggle showAdvancedEffectUIToggle;
+
+        void Awake()
+        {
+            LoadSettings();
+        }
+
+        public void SaveAndClose()
+        {
+            ApplySettings();
+            Hide();
+        }
 
         public void ApplySettings()
         {
@@ -95,11 +105,6 @@ namespace KompasClient.UI
             {
                 statHighlightDropdown.options.Add(new TMP_Dropdown.OptionData() { text = o.ToString() });
             }
-            confirmTargetsDropdown.ClearOptions();
-            foreach (var o in Enum.GetValues(typeof(ConfirmTargets)))
-            {
-                confirmTargetsDropdown.options.Add(new TMP_Dropdown.OptionData() { text = o.ToString() });
-            }
             friendlyColorOptionsDropdown.ClearOptions();
             foreach (var o in DefaultFriendlyColorOptionNames)
             {
@@ -112,7 +117,6 @@ namespace KompasClient.UI
             }
 
             statHighlightDropdown.value = (int)ClientSettings.statHighlight;
-            confirmTargetsDropdown.value = (int)ClientSettings.confirmTargets;
             friendlyColorOptionsDropdown.value = ClientSettings.friendlyColorIndex;
             enemyColorOptionsDropdown.value = ClientSettings.enemyColorIndex;
             zoomThresholdInput.text = ClientSettings.zoomThreshold.ToString("n1");

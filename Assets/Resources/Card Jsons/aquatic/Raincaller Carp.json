@@ -15,39 +15,43 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChooseFromList:",
 					"maxCanChoose": 1,
 					"cardRestriction": {
 						"blurb": "RAIN PLEASE",
 						"cardRestrictions": [
-							"Subtypes Include",
-							"Friendly",
 							"Deck",
 							"Spell",
 							"Can Be Played",
 							"Effect Controller can Afford Cost"
 						],
-						"subtypesInclude": [
-							"Water"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Water" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "RAAAAAAAAAAIN!",
-						"spaceRestrictions": [
-							"Can Play Card Target to This Space",
-							"Empty"
-						]
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            }
+                        ]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
-					"xMultiplier": 1
+					"$type": "Subeffect:PayPipsTargetCost:"
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Play:"
 				}
 			]
 		}

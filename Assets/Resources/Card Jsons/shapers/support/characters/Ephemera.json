@@ -1,0 +1,86 @@
+{
+	"cardType": 67,
+	"cardName": "Ephemera",
+	"effText": "When I'm summoned, deck->summon a copy of me.\nWhen a Shaper Shapes through me, reshuffle me.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetThis:"
+				},
+				{
+					"$type": "Subeffect:AutoTarget:",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Same Name as Target",
+							"Deck"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
+						]
+					},
+					"tiebreakerDirection":"Any"
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "where to summon Ephemera",
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            }
+                        ]
+					}
+				},
+				{
+					"$type": "Subeffect:Play:"
+				}
+			]
+		},
+		{
+			"triggerData": {
+				"blurb": "Dissipate",
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictionElements": [
+                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        {
+                            "$type": "Core.TriggerRestriction:TriggerKeyword:",
+                            "keyword": "Shaped Through"
+                        }
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetThis:"
+				},
+				{
+					"$type": "Subeffect:Reshuffle:"
+				}
+			]
+		}
+	],
+	"n": 0,
+	"e": 1,
+	"s": 1,
+	"w": 0,
+	"subtypes": [
+		"Ethereal"
+	],
+	"spellTypes": [
+		"Vanishing"
+	],
+	"duration": 1,
+	"subtypeText": "Ethereal"
+}

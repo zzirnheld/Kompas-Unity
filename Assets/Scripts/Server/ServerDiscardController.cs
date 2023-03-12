@@ -10,8 +10,8 @@ namespace KompasServer.GameCore
     {
         public ServerGame ServerGame;
 
-        public ServerNotifier ServerNotifier => ServerGame.ServerPlayers[Owner.index].ServerNotifier;
-        public ServerEffectsController EffectsController => ServerGame.EffectsController;
+        public ServerNotifier ServerNotifier => ServerGame.serverPlayers[owner.index].ServerNotifier;
+        public ServerEffectsController EffectsController => ServerGame.effectsController;
 
         public override bool Discard(GameCard card, IStackable stackSrc = null)
         {
@@ -26,7 +26,7 @@ namespace KompasServer.GameCore
                 else throw new System.ArgumentException($"Why is {card} neither the attacker nor defender, nor augmenting them, " +
                     $"in the attack {atk} that caused it to be discarded?");
             }
-            var context = new ActivationContext(game: ServerGame, mainCardBefore: card, secondaryCardBefore: cause, stackableCause: stackSrc, player: Owner);
+            var context = new ActivationContext(game: ServerGame, mainCardBefore: card, secondaryCardBefore: cause, stackableCause: stackSrc, player: owner);
             bool wasKnown = card.KnownToEnemy;
             bool successful = base.Discard(card, stackSrc);
             if (successful)

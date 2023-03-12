@@ -1,0 +1,116 @@
+{
+	"cardType": 67,
+	"cardName": "Windstorm of Etaqua",
+	"effText": "Weather Event: Move all characters in Weather I'm also in, through spaces in such Weather, to a space in such Weather.",
+	"effects": [
+		{
+			"blurb": "Blow away",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card",
+						"Enemy Turn"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "who next to blow away",
+						"cardRestrictions": [
+							"Character",
+							"Not Already Target",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"In AOE Source is Also In"
+							],
+							"alsoInAOEOfRestriction": {
+								"cardRestrictionElements": [
+									{
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Weather" ]
+									}
+								]
+							}
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+                    "spaceRestriction": {
+                        "spaceRestrictions": [
+                            "Empty",
+                            "In AOE Source is Also In"
+                        ],
+                        "alsoInAOEOfRestriction": {
+							"cardRestrictionElements": [
+								{
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Weather" ]
+								}
+							]
+                        }
+                    }
+				},
+				{
+					"$type": "Subeffect:Move:"
+				},
+				{
+					"$type": "Subeffect:Loop:",
+					"jumpIndices": [
+						0
+					]
+				}
+			]
+		}
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Default Normal Restrictions",
+			"Space Must Fit Restriction"
+		],
+		"normalRestrictionsToIgnore": [
+			"Adjacent to Friendly Card"
+		],
+		"effectRestrictions": [
+			"Default Effect Restrictions",
+			"Space Must Fit Restriction"
+		],
+		"effectRestrictionsToIgnore": [
+			"Adjacent to Friendly Card"
+		],
+		"spaceRestriction": {
+			"spaceRestrictionElements": [ {
+				"$type": "Core.SpaceRestriction:InAOEOf:",
+				"anyOf": {
+					"$type": "ManyCards:FittingRestriction:",
+					"cardRestriction": {
+					"cardRestrictionElements": [ {
+							"$type": "Core.CardRestriction:Subtypes:",
+							"subtypes": [ "Weather" ]
+						} ]
+					}
+				},
+				"minAnyOfCount": { 
+					"$type": "Numbers:Constant:",
+					"constant": 2
+				}
+			} ]
+		}
+	},
+	"n": 9,
+	"e": 3,
+	"s": 4,
+	"w": 3,
+	"subtypeText": "Weather Event Elemental"
+}

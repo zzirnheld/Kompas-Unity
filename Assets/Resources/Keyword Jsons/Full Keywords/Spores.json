@@ -1,33 +1,37 @@
 {
 	"blurb":"Spores",
-	"triggerData":{
-		"triggerCondition":"Activate",
-		"triggerRestriction":{
-			"triggerRestrictions":["This Card is Main Card","Max Per Stack"]
+	"triggerData": {
+		"triggerCondition": "Activate",
+		"triggerRestriction": {
+			"triggerRestrictions": [
+                "This Card is Main Card",
+                "Max Per Stack"
+            ]
 		}
 	},
 	"subeffects":[
         {
-            "$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
-            "cardRestriction":
-            {
-                "cardRestrictions":["Board","Character","Space Fits Restriction"],
-                "spaceRestriction":
-                {
-                    "spaceRestrictions":["Adjacent to Source"],
-                    "mustBeEmpty":false
+            "$type": "Subeffect:TargetAllCardsIdentity:",
+            "cardsIdentity": {
+                "$type": "ManyCards:CardsInPositions:",
+                "positions": {
+                    "$type": "ManySpaces:AdjacentSpaces:",
+                    "adjacentTo": {
+                        "$type": "Spaces:PositionOf:",
+                        "ofThisCard": { "$type": "Cards:ThisCard:" }
+                    }
                 }
             }
         },
         {
-            "$type":"KompasServer.Effects.ActivateSubeffect, Assembly-CSharp"
+            "$type":"Subeffect:Activate:"
         },
         {
-            "$type":"KompasServer.Effects.ActivateSubeffect, Assembly-CSharp",
+            "$type":"Subeffect:Activate:",
             "activate":false
         },
         {
-            "$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+            "$type":"Subeffect:LoopWhileHaveTargets:",
             "delete":true,
             "jumpIndices":[1]
         }

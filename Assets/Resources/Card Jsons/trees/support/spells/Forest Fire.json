@@ -1,0 +1,72 @@
+{
+	"cardType": 83,
+	"cardName": "Forest Fire",
+	"effText": "Any number of times: Give a friendly Tree, then all characters adjacent to it, -4 E.",
+	"effects": [
+		{
+			"blurb": "Simple",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "Who to heal",
+						"cardRestrictions": [
+							"Hurt"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Tree" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"eModifier": -4
+				},
+				{
+					"$type": "Subeffect:ChangeAllCardStats:",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Card Target"
+							]
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
+					},
+					"eModifier": -4
+				},
+				{
+					"$type": "Subeffect:Loop:",
+					"canDecline": true,
+					"jumpIndices": [
+						0
+					]
+				}
+			]
+		}
+	],
+	"c": 4,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypeText": "Simple"
+}

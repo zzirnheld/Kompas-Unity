@@ -1,0 +1,96 @@
+{
+	"cardType": 67,
+	"cardName": "Runewriter",
+	"effText": "Once each turn, you can hand->, field->, or discard->reshuffle a Rune to hand a Runar from your deck's top 10 cards.",
+	"effects": [
+		{
+			"activationRestriction": {
+				"activationRestrictionArray": [
+					"Max Times Per Turn",
+					"Friendly Turn",
+					"Default"
+				]
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:ChooseFromList:",
+					"cardRestriction": {
+						"blurb": "Rune for Runewriter to reshuffle",
+						"cardRestrictions": [
+							"Multiple Possible Locations"
+						],
+						"locations": [
+							1,
+							2,
+							3
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Rune" ]
+							}
+						]
+					},
+					"maxCanChoose": 1
+				},
+				{
+					"$type": "Subeffect:Reshuffle:"
+				},
+				{
+					"$type": "Subeffect:SkipToEffectOnImpossible:",
+					"jumpIndices": [
+						7
+					]
+				},
+				{
+					"$type": "Subeffect:ChooseFromListSaveRest:",
+					"cardRestriction": {
+						"blurb": "Runar for Runewriter to search (to hand)",
+						"cardRestrictions": [
+							"Deck",
+							"Index<C"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Runar" ]
+							}
+						],
+						"constant": 10
+					},
+					"restRestriction": {
+						"cardRestrictions": [
+							"Deck",
+							"Index<C",
+							"Not Already Target"
+						],
+						"constant": 10,
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:ClearOnImpossible:"
+				},
+				{
+					"$type": "Subeffect:BottomdeckRest:"
+				},
+				{
+					"$type": "Subeffect:Hand:"
+				}
+			]
+		}
+	],
+	"n": 1,
+	"e": 2,
+	"s": 2,
+	"w": 2,
+	"subtypes": [
+		"Runar",
+		"Mage"
+	],
+	"subtypeText": "Runar Mage"
+}

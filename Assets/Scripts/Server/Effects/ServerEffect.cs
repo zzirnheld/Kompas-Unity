@@ -2,7 +2,10 @@
 using KompasCore.Effects;
 using KompasCore.Exceptions;
 using KompasCore.GameCore;
+using KompasServer.Effects.Subeffects;
 using KompasServer.GameCore;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -15,7 +18,7 @@ namespace KompasServer.Effects
 
         public ServerGame serverGame;
         public override Game Game => serverGame;
-        public ServerEffectsController EffectsController => serverGame.EffectsController;
+        public ServerEffectsController EffectsController => serverGame.effectsController;
         public ServerPlayer ServerController { get; set; }
         public override Player Controller
         {
@@ -24,7 +27,7 @@ namespace KompasServer.Effects
         }
 
         public ServerSubeffect[] subeffects;
-        public override Subeffect[] Subeffects => subeffects;
+        public override KompasCore.Effects.Subeffect[] Subeffects => subeffects;
         public ServerTrigger ServerTrigger { get; private set; }
         public override Trigger Trigger => ServerTrigger;
 
@@ -66,7 +69,7 @@ namespace KompasServer.Effects
         /// <param name="newSubeffects"></param>
         public void InsertSubeffects(int startingAtIndex, params ServerSubeffect[] newSubeffects)
         {
-            if (newSubeffects == null) throw new System.ArgumentNullException("Can't insert null subeffects");
+            if (newSubeffects == null) throw new System.ArgumentNullException(nameof(newSubeffects), "Can't insert null subeffects");
 
             //First, update the subeffect jump indices
             //Of the subeffects to be inserted
@@ -110,7 +113,7 @@ namespace KompasServer.Effects
         }
 
         public override bool CanBeActivatedBy(Player controller)
-            => serverGame.uiCtrl.DebugMode || base.CanBeActivatedBy(controller);
+            => serverGame.UIController.DebugMode || base.CanBeActivatedBy(controller);
 
         public void PushedToStack(ServerGame game, ServerPlayer ctrl)
         {
@@ -262,6 +265,25 @@ namespace KompasServer.Effects
             serverGame.ServerControllerOf(card).ServerNotifier.RemoveTarget(Source, EffectIndex, card);
         }
 
-        public override string ToString() => $"Effect {EffectIndex} of {Source.CardName}";
+        public void CreateCardLink(params GameCard[] cards)
+        {
+            GameCard[] validCards = cards.Where(c => c != null).ToArray();
+            //if (validCards.Length <= 1) return; //Don't create a link between one non-null card? nah, do, so we can delete it as expected later
+
+            var link = new CardLink(new HashSet<int>(validCards.Select(c => c.ID)), this);
+            cardLinks.Add(link);
+            ServerController.ServerNotifier.AddCardLink(link);
+        }
+
+        public void DestroyCardLink(int index)
+        {
+            var link = EffectHelpers.GetItem(cardLinks, index);
+            if (cardLinks.Remove(link))
+            {
+                ServerController.ServerNotifier.RemoveCardLink(link);
+            }
+        }
+
+        public override string ToString() => $"Effect {EffectIndex} of {Source?.CardName}";
     }
 }

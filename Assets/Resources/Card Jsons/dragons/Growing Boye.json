@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Growing Boye",
-	"effText": "Territorial.\nWhen I attack, give me +5 S.",
+	"effText": "Territorial.\nWhen I attack, give me +11 S.",
 	"effects": [
 		{
 			"blurb": "Damage Boost",
@@ -15,10 +15,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeCardStats:",
 					"sModifier": 5
 				}
 			]
@@ -28,8 +28,8 @@
 		"Territorial"
 	],
 	"n": 2,
-	"e": 6,
-	"s": 4,
-	"w": 1,
+	"e": 7,
+	"s": 2,
+	"w": 0,
 	"subtypeText": "Chonky Flying Dragon"
 }

@@ -1,0 +1,79 @@
+{
+	"cardType": 67,
+	"cardName": "F4LL1NGT1T4N",
+	"effText": "Golem.\nI can spend 1 space of movement to teleport to a space adjacent to a friendly Mech.",
+	"effects": [
+		{
+			"blurb": "T3L3P0RT",
+            "activationRestriction":{
+                "activationRestrictionArray":[
+                    "Friendly Turn",
+                    "This Card Fits Restriction",
+                    "Default"
+                ],
+                "thisCardRestriction":
+                {
+                    "cardRestrictions":["Has Movement"]
+                }
+            },
+            "subeffects":[
+                {
+                    "$type":"Subeffect:TargetThis:"
+                },
+                {
+                    "$type":"Subeffect:SpendRemainingMovement:",
+                    "mod":1,
+                    "mult":0
+                },
+                {
+                    "$type":"Subeffect:SpaceTarget:",
+                    "spaceRestriction":
+                    {
+                        "blurb":"to teleport F4LL1NGT1T4N to",
+                        "spaceRestrictions":[
+                            "Empty",
+							"Adjacent to a Card that Fits Restriction"
+						],
+						"cardRestriction": {
+							"cardRestrictionElements": [
+                                { "$type": "Core.CardRestriction:Friendly:" },
+								{
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Mech" ]
+								}
+							]
+						},
+						"spaceRestrictionElements": [ {
+							"$type": "Core.SpaceRestriction:CanMoveCard:",
+							"toMove": { "$type": "Cards:TargetIndex:" }
+						} ]
+                    }
+                },
+                {
+                    "$type":"Subeffect:Move:"
+                }
+            ]
+		}
+	],
+	"MovementRestriction": {
+		"normalRestrictionsFromJson": [
+			"Default",
+			"Activated"
+		]
+	},
+	"AttackRestriction": {
+		"attackRestrictions": [
+			"Default",
+			"This is Activated"
+		]
+	},
+	"n": 4,
+	"e": 8,
+	"s": 10,
+	"w": 8,
+	"subtypes": [
+		"Mech",
+		"Golem"
+	],
+	"subtypeText": "Mech Golem"
+}

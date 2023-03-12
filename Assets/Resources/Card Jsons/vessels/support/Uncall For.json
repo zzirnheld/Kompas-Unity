@@ -1,0 +1,155 @@
+{
+	"cardType": 83,
+	"cardName": "Uncall For",
+	"effText": "Tribute an adjacent character with X Memories. Deck->summon an S <= X Vessel, and discard->bestow the Memories unto them. Echo them X times.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "Vessel to read as an augury",
+						"cardRestrictions": [
+							"Character",
+							"Space Fits Restriction",
+							"Wields Augment Fitting Restriction"
+                        ],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Vessel" ]
+							}
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Source"
+							]
+						},
+                        "augmentRestriction": {
+							"cardRestrictionElements": [
+								{
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Memory" ]
+								}
+							]
+                        }
+					}
+				},
+				{
+					"$type": "Subeffect:SetXByGamestate:",
+					"whatToCount": "Cards Fitting Restriction",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Augment",
+							"Augments Current Target"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Memory" ]
+							}
+						]
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:TargetAugments:"
+				},
+				{
+					"$type": "Subeffect:Discard:",
+                    "targetIndex": 0
+				},
+				{
+					"$type": "Subeffect:DeckTarget:",
+					"cardRestriction": {
+						"blurb": "Corporeal form to recall",
+						"cardRestrictions": [
+							"Character",
+							"Deck",
+							"Can Be Played",
+							"Card Value Fits Number Restriction"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Vessel" ]
+							}
+						],
+						"cardValue": {
+							"value": "S"
+						},
+						"cardValueNumberRestriction": {
+							"numberRestrictions": [
+								"<=X"
+							]
+						}
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "where to recall corporeal form",
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            }
+                        ]
+					}
+				},
+				{
+					"$type": "Subeffect:Play:"
+				},
+				{
+					"$type": "Subeffect:Attach:",
+					"targetToAttachTo": -1,
+					"targetIndex": -2
+				},
+				{
+					"$type": "Subeffect:DeleteTarget:",
+					"targetIndex": -2
+				},
+				{
+					"$type": "Subeffect:LoopWhileHaveTargets:",
+					"remainingTargets": 2,
+					"jumpIndices": [
+						7
+					]
+				},
+				{
+					"$type": "Subeffect:Resummon:"
+				},
+				{
+					"$type": "Subeffect:XTimes:",
+					"jumpIndices": [
+						10
+					]
+				}
+			]
+		}
+	],
+	"c": 3,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypes": [
+		"Simple"
+	],
+	"subtypeText": "Simple"
+}

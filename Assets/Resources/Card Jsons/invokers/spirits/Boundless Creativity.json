@@ -1,0 +1,41 @@
+{
+	"cardType": 67,
+	"cardName": "Boundless Creativity",
+	"effText": "When I'm revived, draw 3 cards.",
+	"effects": [
+		{
+			"blurb": "Creativity",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							}
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:DrawX:",
+					"xModifier": 3
+				}
+			]
+		}
+	],
+	"n": 6,
+	"e": 1,
+	"s": 6,
+	"w": 7,
+	"subtypeText": "Ethereal Spirit"
+}

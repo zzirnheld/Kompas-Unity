@@ -1,0 +1,74 @@
+{
+	"cardType": 83,
+	"cardName": "Wispernova",
+	"effText": "Until you can't:\nPip revive a random Wisp for 1 pip to a random valid space.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:AutoTargetCardIdentity:",
+                    "subeffectCardIdentity": {
+						"$type": "Cards:SelectFromMany:",
+                        "cards": {
+                            "$type": "ManyCards:FittingRestriction:",
+                            "cards": {
+                                "$type": "ManyCards:Discard:",
+                                "friendly": true,
+                                "enemy": false
+                            },
+                            "cardRestriction": {
+                                "cardRestrictionElements": [
+                                    {
+                                        "$type": "Core.CardRestriction:Subtypes:",
+                                        "subtypes": [ "Wisp" ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+				},
+                {
+                    "$type": "Subeffect:AutoTargetSpaceIdentity:",
+                    "subeffectSpaceIdentity": {
+                        "$type": "Spaces:SelectFromMany:",
+                        "selector": { "$type": "KompasCore.Effects.Selectors.RandomSpace, Assembly-CSharp" },
+                        "spaces": {
+                            "$type": "ManySpaces:FittingRestriction:",
+                            "restriction": {
+                                "spaceRestrictionElements": [ {
+                                    "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                    "toPlay": { "$type": "Cards:TargetIndex:" }
+                                } ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "$type": "Subeffect:PayPips:",
+                    "xMultiplier": 0,
+                    "xModifier": 1
+                },
+				{
+					"$type": "Subeffect:Play:"
+				},
+				{
+					"$type": "Subeffect:Jump:",
+					"jumpIndices": [ 0 ]
+				}
+			]
+		}
+	],
+	"c": 0,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypeText": "Simple"
+}

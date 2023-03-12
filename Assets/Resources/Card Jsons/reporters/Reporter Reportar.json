@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Reporter Reportar",
-	"effText": "Once each turn, you can reveal an SX Reporter. Your opponent can reveal an SX character. If they don't, pip deck->summon an S <= X character at half cost.",
+	"effText": "Once each turn, you can reveal an S X Reporter. An enemy can reveal an S X character. If they don't, pip deck->summon an S <= X character at half cost.",
 	"effects": [
 		{
 			"activationRestriction": {
@@ -13,42 +13,47 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "spell to reveal",
 						"cardRestrictions": [
 							"Controller Matches Player Target",
-							"Hand",
-							"Subtypes Include",
 							"Hidden"
 						],
-						"subtypesInclude": [
-							"Reporter"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Hand" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Reporter" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "S"
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.RevealSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Reveal:"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetEnemy:"
 				},
 				{
-					"$type": "KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CanResolve:",
 					"subeffIndices": [
 						6
 					],
 					"skipIndex": 9
 				},
 				{
-					"$type": "KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChooseOption:",
 					"choiceBlurb": "Reveal an SX character?",
 					"optionBlurbs": [
 						"Yes",
@@ -61,12 +66,11 @@
 					"showX": true
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "character to reveal",
 						"cardRestrictions": [
 							"Controller Matches Player Target",
-							"Hand",
 							"Character",
 							"Hidden",
 							"Card Value Fits Number Restriction"
@@ -78,25 +82,30 @@
 							"numberRestrictions": [
 								"=X"
 							]
-						}
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Hand" ]
+							}
+						]
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.RevealSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Reveal:"
 				},
 				{
-					"$type": "KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:EndResolution:"
 				},
 				{
-					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChooseFromList:",
 					"playerIndex": -2,
 					"maxCanChoose": 1,
 					"xMultiplier": 1,
 					"cardRestriction": {
 						"blurb": "character to report",
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
 							"Character",
 							"Effect Controller can Afford Cost",
@@ -110,28 +119,33 @@
 								"<=X"
 							]
 						},
-						"costDivisor": 2
-					}
-				},
-				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"playerIndex": -2,
-					"spaceRestriction": {
-						"blurb": "where for new Reporter to report",
-						"spaceRestrictions": [
-							"Can Play Card Target to This Space",
-							"Empty"
+						"costDivisor": 2,
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"playerIndex": -2,
-					"xMultiplier": 1,
-					"xDivisor": 2
+					"spaceRestriction": {
+						"blurb": "where for new Reporter to report",
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            }
+                        ]
+					}
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp",
+					"$type": "Subeffect:PayPipsTargetCost:",
+					"playerIndex": -2,
+					"divisor": 2
+				},
+				{
+					"$type": "Subeffect:Play:",
 					"playerIndex": -2
 				}
 			]

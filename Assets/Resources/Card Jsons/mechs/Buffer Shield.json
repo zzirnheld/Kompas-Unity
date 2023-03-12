@@ -14,10 +14,10 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+					"$type":"Subeffect:TargetAugmentedCard:"
 				},
 				{
-					"$type":"KompasServer.Effects.TemporaryCardStatChangeSubeffect, Assembly-CSharp",
+					"$type":"Subeffect:Hanging.ChangeCardStats:",
 					"eModifier":3,
 					"endCondition":"Augment Detached",
 					"triggerRestriction":{
@@ -36,31 +36,37 @@
 						"This Card Fits Restriction Now"
 					],
 					"selfRestriction": {
-						"cardRestrictions": [
-							"Discard"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							}
 						]
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "for Buffer Shield to attach to",
-						"cardRestrictions": [
-							"Board",
-							"Subtypes Include"
-						],
-						"subtypesInclude": [
-							"Mech"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Mech" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Attach:",
 					"targetToAttachTo": -2,
 					"targetIndex": -1
 				}

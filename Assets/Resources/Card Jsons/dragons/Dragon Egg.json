@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Dragon Egg",
-	"effText":"After I'm summoned, delay 2 turns, then tribute me and deck-summon a Dragon where I was.",
+	"effText":"2 turns after I'm summoned, tribute me and deck-summon a Dragon where I was.",
 	"effects":[
 		{
 			"triggerData":
@@ -13,31 +13,36 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"$type":"Subeffect:Delay:",
 					"numTimesToDelay":1,
 					"jumpIndices":[1],
 					"endCondition":"Turn Start"
 				},
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type":"Subeffect:TargetThis:"
 				},
 				{
-					"$type":"KompasServer.Effects.TargetThisSpaceSubeffect, Assembly-CSharp"
+					"$type":"Subeffect:TargetThisSpace:"
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type":"Subeffect:Discard:"
 				},
 				{
-					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"$type":"Subeffect:DeckTarget:",
 					"cardRestriction":
 					{
 						"blurb":"for Dragon Egg to become",
-						"cardRestrictions":["Subtypes Include","Character","Deck","Can Be Played"],
-						"subtypesInclude":["Dragon"]
+						"cardRestrictions":["Character","Deck","Can Be Played"],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Dragon" ]
+							}
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp",
+					"$type":"Subeffect:Play:",
 					"spaceIndex":-1,
 					"targetIndex":-1
 				}
@@ -45,8 +50,8 @@
 		}
 	],
 	"n":0,
-	"e":2,
-	"s":2,
+	"e":9,
+	"s":4,
 	"w":0,
 	"subtypes":[],
 	"subtypeText":""

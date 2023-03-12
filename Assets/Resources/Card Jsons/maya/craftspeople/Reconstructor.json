@@ -1,0 +1,65 @@
+{
+	"cardType": 67,
+	"cardName": "Reconstructor",
+	"effText": "Once each turn, you can pip revive a Structure to an adjacent space.",
+	"effects": [
+		{
+			"blurb": "Reconstruct",
+			"activationRestriction": {
+				"activationRestrictionArray": [
+					"Max Times Per Turn",
+					"Default"
+				]
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "Structure to reconstruct",
+						"cardRestrictions": [
+							"Character",
+							"Can Be Played",
+							"Effect Controller can Afford Cost"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Structure" ]
+							}
+						]
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:PayPipsTargetCost:"
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "where to reconstruct the structure",
+						"spaceRestrictions": [ "Adjacent to Source" ],
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            }
+                        ]
+					}
+				},
+				{
+					"$type": "Subeffect:Play:"
+				}
+			]
+		}
+	],
+	"n": 2,
+	"e": 1,
+	"s": 1,
+	"w": 0,
+	"subtypeText": "Maya Craftsperson"
+}

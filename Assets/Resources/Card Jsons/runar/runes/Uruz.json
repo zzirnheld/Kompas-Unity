@@ -1,0 +1,57 @@
+{
+	"cardType": 83,
+	"cardName": "Uruz",
+	"effText": "Runic.\nGive adjacent characters +2 E.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffectTypes": [
+				110
+			],
+			"subeffects": [
+				{
+					"$type": "Subeffect:ChangeAllCardStats:",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Source"
+							]
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
+					},
+					"eModifier": 2
+				}
+			]
+		}
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Cannot be Played Normally"
+		]
+	},
+	"c": 1,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypes": [
+		"Rune",
+		"Simple"
+	],
+	"subtypeText": "Rune Simple"
+}

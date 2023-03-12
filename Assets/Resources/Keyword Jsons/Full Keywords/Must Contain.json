@@ -1,0 +1,43 @@
+{
+	"blurb":"Must Contain",
+	"triggerData":
+	{
+		"triggerCondition":"Stack End",
+		"triggerRestriction":{
+			"triggerRestrictions": [
+                "This Card in Play",
+                "No Card Exists Now"
+            ],
+            "existsRestriction":
+            {
+                "cardRestrictions": [
+                    "Character",
+                    "Space Fits Restriction"
+                ],
+                "spaceRestriction": {
+                    "spaceRestrictions": [
+                        "In Source's AOE"
+                    ]
+                },
+                "cardRestrictionElements": [
+                    {
+                        "$type": "Core.CardRestriction:Location:",
+                        "locations": [ "Board" ]
+                    },
+                    {
+                        "$type": "Core.CardRestriction:Subtypes:",
+                        "subtypes": [ "Structure" ]
+                    }
+                ]
+            }
+		}
+	},
+	"subeffects":[
+		{
+			"$type":"Subeffect:TargetThis:"
+		},
+		{
+			"$type":"Subeffect:Dispel:"
+		}
+	]	
+}

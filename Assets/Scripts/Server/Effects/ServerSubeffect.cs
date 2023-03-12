@@ -3,11 +3,10 @@ using KompasCore.Effects;
 using KompasCore.GameCore;
 using KompasServer.GameCore;
 using System.Threading.Tasks;
-using UnityEngine;
 
-namespace KompasServer.Effects
+namespace KompasServer.Effects.Subeffects
 {
-    public abstract class ServerSubeffect : Subeffect
+    public abstract class ServerSubeffect : KompasCore.Effects.Subeffect
     {
         public override Player Controller => EffectController;
         public override Effect Effect => ServerEffect;
@@ -20,7 +19,8 @@ namespace KompasServer.Effects
 
         public ServerPlayer ServerPlayer => PlayerTarget as ServerPlayer;
 
-        public RestrictionContext RestrictionContext => new RestrictionContext(game: Game, source: Source, subeffect: this);
+        public EffectInitializationContext DefaultInitializationContext
+            => Effect.CreateInitializationContext(this, default);
 
         /// <summary>
         /// Sets up the subeffect with whatever necessary values.
@@ -36,9 +36,8 @@ namespace KompasServer.Effects
         }
 
         /// <summary>
-        /// Server Subeffect resolve method. Does whatever this type of subeffect does,
-        /// then returns a ResolutionInfo struct containing what to do next.
-        /// <returns><see langword="true"/> if the effect finished resolving successfully, <see langword="false"/> if it's awaiting response</returns>
+        /// Server Subeffect resolve method. Does whatever this type of subeffect does
+        /// <returns>A ResolutionInfo object describing what to do next</returns>
         /// </summary>
         public abstract Task<ResolutionInfo> Resolve();
 

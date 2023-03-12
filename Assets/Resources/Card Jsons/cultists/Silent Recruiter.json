@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Silent Recruiter",
-	"effText": "Once each turn, if I'm adjacent to an enemy card, you can deck-summon a Cultist Follower",
+	"effText": "Once each turn, if I'm adjacent to an enemy, you can deck->summon a Cultist Follower",
 	"effects": [
 		{
 			"blurb": "Recruit",
@@ -13,8 +13,10 @@
 				],
 				"existsRestriction": {
 					"cardRestrictions": [
-						"Enemy",
 						"Space Fits Restriction"
+					],
+					"cardRestrictionElements": [
+						{ "$type": "Core.CardRestriction:Enemy:" }
 					],
 					"spaceRestriction": {
 						"spaceRestrictions": [
@@ -26,40 +28,45 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChooseFromList:",
 					"maxCanChoose": 1,
 					"cardRestriction": {
 						"blurb": "Silent Cult Follower to recruit",
 						"cardRestrictions": [
-							"Subtypes Include",
-							"Friendly",
 							"Deck",
 							"Character"
 						],
-						"subtypesInclude": [
-							"Cultist Follower"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Cultist", "Follower" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to play Silent Recruiter's new recruit",
-						"spaceRestrictions": [
-							"Can Play Card Target to This Space",
-							"Empty"
-						]
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            }
+                        ]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Play:"
 				}
 			]
 		}
 	],
 	"n": 6,
 	"e": 1,
-	"s": 4,
+	"s": 3,
 	"w": 1,
 	"subtypeText": "Cultist"
 }

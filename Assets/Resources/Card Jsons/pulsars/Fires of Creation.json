@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Fires of Creation",
-	"effText": "When you summon a Pulsar with more S than your Avatar, gain a pip.\nWhen you summon a Pulsar with less S than your Avatar, draw 1 card.",
+	"effText": "When you summon a Pulsar with:\nMore S than your Avatar: gain 1 pip.\nLess S than your Avatar: draw 1 card.",
 	"effects": [
 		{
 			"triggerData": {
@@ -14,7 +14,6 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Card Value Fits Number Restriction"
 						],
 						"cardValue": {
@@ -28,15 +27,18 @@
 								"value": "S"
 							}
 						},
-						"subtypesInclude": [
-							"Pulsar"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Pulsar" ]
+							}
 						]
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:AddPips:",
 					"xModifier": 1
 				}
 			]
@@ -52,7 +54,6 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Card Value Fits Number Restriction"
 						],
 						"cardValue": {
@@ -66,15 +67,18 @@
 								"value": "S"
 							}
 						},
-						"subtypesInclude": [
-							"Pulsar"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Pulsar" ]
+							}
 						]
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Draw:"
 				}
 			]
 		}

@@ -8,10 +8,10 @@ namespace KompasClient.UI
     {
         public TMP_Text effNameText;
 
-        private EffectActivatorUIController parentCtrl;
+        private RightClickCardClientUIController parentCtrl;
         private Effect eff;
 
-        public (Effect, EffectActivatorUIController) Params
+        public (Effect, RightClickCardClientUIController) Params
         {
             set
             {
@@ -23,7 +23,7 @@ namespace KompasClient.UI
         public void OnClick()
         {
             parentCtrl.clientUICtrl.ActivateCardEff(eff.Source, eff.EffectIndex);
-            parentCtrl.Cancel();
+            parentCtrl.Clear();
         }
     }
 }

@@ -1,0 +1,51 @@
+{
+	"cardType": 67,
+	"cardName": "Wickiwisp",
+	"effText": "Wisp.\nAfter I move, give adjacent enemies -1 W.",
+	"effects": [
+		{
+			"blurb": "wick",
+			"triggerData": {
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetTriggeringCardsSpace:"
+				},
+				{
+					"$type": "Subeffect:ChangeAllCardStats:",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Space Target"
+							]
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
+					},
+					"wModifier": -1
+				}
+			]
+		}
+	],
+	"keywords": [ "Wisp" ],
+	"n": 0,
+	"e": 1,
+	"s": 2,
+	"w": 1,
+	"subtypes": [ "Wisp" ],
+	"subtypeText": "Wisp"
+}

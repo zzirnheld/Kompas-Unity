@@ -1,0 +1,92 @@
+{
+	"cardType": 83,
+	"cardName": "Shifting Tides",
+	"effText": "When friendly Water vanishes, hand->cast Water where it was, then draw 1 card.",
+	"effects": [
+		{
+			"blurb": "The Tide Shifts",
+			"activationRestriction": {
+				"triggerCondition": "Vanish",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Water" ]
+							}
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "Shifting tide",
+						"cardRestrictions": [
+							"Spell"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Water" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:TargetTargetsSpace:"
+				},
+				{
+					"$type": "Subeffect:Dispel:"
+				},
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "Tide that Shifts In",
+						"cardRestrictions": [
+							"Spell",
+							"Can Be Played"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Hand" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Water" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:Play:"
+				},
+				{
+					"$type": "Subeffect:Draw:"
+				}
+			]
+		}
+	],
+	"c": 1,
+	"spellTypes": [
+		"Enchant"
+	],
+	"subtypes": [
+		"Aquatic",
+		"Enchant"
+	],
+	"subtypeText": "Aquatic Enchant"
+}

@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Cyclical Sacrifice",
-	"effText": "Reshuffle X of your dead Cultists. Gain X pips. Annihilate me.",
+	"effText": "Discard->reshuffle X Cultists. Gain X pips. Annihilate me.",
 	"effects": [
 		{
 			"triggerData": {
@@ -14,38 +14,40 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "for Cyclical Sacrifice to reshuffle",
-						"cardRestrictions": [
-							"Friendly",
-							"Discard",
-							"Subtypes Include"
-						],
-						"subtypesInclude": [
-							"Cultist"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Cultist" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Reshuffle:"
 				},
 				{
-					"$type": "KompasServer.Effects.CountXLoopSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CountXLoop:",
 					"canDecline": true,
 					"jumpIndices": [
 						0
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:AddPips:",
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Annihilate:"
 				}
 			]
 		}

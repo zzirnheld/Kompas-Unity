@@ -1,0 +1,37 @@
+{
+	"cardType": 83,
+	"cardName": "Fehu",
+	"effText": "Runic.\nDraw 2.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:DrawX:",
+					"xModifier": 2
+				}
+			]
+		}
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Cannot be Played Normally"
+		]
+	},
+	"c": 1,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypes": [
+		"Rune",
+		"Simple"
+	],
+	"subtypeText": "Rune Simple"
+}

@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Dragon Hatchling",
-	"effText":"After I'm summoned, delay 1 turn, then tribute me, hand->discard a Dragon, and hand-summon a Dragon where I was.",
+	"effText":"1 turn after I'm summoned, tribute me, hand->discard a Dragon, and hand->summon a Dragon where I was.",
 	"effects":[
 		{
 			"triggerData":
@@ -13,43 +13,63 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"$type":"Subeffect:Delay:",
 					"numTimesToDelay":0,
 					"jumpIndices":[1],
 					"endCondition":"Turn Start"
 				},
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type":"Subeffect:TargetThis:"
 				},
 				{
-					"$type":"KompasServer.Effects.TargetThisSpaceSubeffect, Assembly-CSharp"
+					"$type":"Subeffect:TargetThisSpace:"
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type":"Subeffect:Discard:"
 				},
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type":"Subeffect:CardTarget:",
 					"cardRestriction":
 					{
 						"blurb":"for Dragon Hatchling to eat (discard)",
-						"cardRestrictions":["Friendly","Character","Hand","Subtypes Include"],
-						"subtypesInclude":["Dragon"]
+						"cardRestrictions":["Character"],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Hand" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Dragon" ]
+							}
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type":"Subeffect:Discard:"
 				},
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type":"Subeffect:CardTarget:",
 					"cardRestriction":
 					{
 						"blurb":"for Dragon Hatchling to become (play)",
-						"cardRestrictions":["Friendly","Character","Hand","Subtypes Include","Can Be Played"],
-						"subtypesInclude":["Dragon"]
+						"cardRestrictions":["Character","Can Be Played"],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Hand" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Dragon" ]
+							}
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type":"Subeffect:Play:"
 				}
 			]
 		}

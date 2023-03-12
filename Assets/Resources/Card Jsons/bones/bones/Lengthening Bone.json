@@ -1,0 +1,91 @@
+{
+	"cardType": 67,
+	"cardName": "Lengthening Bone",
+	"effText": "When turns start, move your \"Lengthening Elk\" 1 space. Deck->summon a Bone where it was.",
+	"effects": [
+		{
+			"blurb": "Lengthen",
+			"triggerData": {
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:AutoTarget:",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Name:",
+								"nameIs": "Lengthening Elk"
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:TargetTargetsSpace:"
+				},
+                {
+                    "$type":"Subeffect:SpaceTarget:",
+                    "spaceRestriction":
+                    {
+                        "blurb":"where Elk will lengthen to",
+						"spaceRestrictionElements": [ {
+							"$type": "Core.SpaceRestriction:CanMoveCard:",
+							"toMove": { "$type": "Cards:TargetIndex:" },
+							"distanceRestriction": {
+								"numberRestrictions": [ "==Constant" ],
+								"constant": 1
+							}
+						} ]
+                    }
+                },
+                {
+                    "$type":"Subeffect:Move:"
+                },
+				{
+					"$type": "Subeffect:DeckTarget:",
+					"cardRestriction": {
+						"blurb": "Elk bone",
+						"cardRestrictions": [
+							"Deck",
+							"Character",
+							"Can be Played to Target Space"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Bone" ]
+							}
+						],
+						"canPlayIgnoring": [
+							"Adjacent to Friendly Card"
+						]
+					},
+                    "spaceIndex": -2
+				},
+				{
+					"$type": "Subeffect:Play:",
+                    "spaceIndex": -2
+				}
+			]
+		}
+	],
+	"n": 0,
+	"e": 2,
+	"s": 2,
+	"w": 2,
+	"subtypeText": "Bone"
+}

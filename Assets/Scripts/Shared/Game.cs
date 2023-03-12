@@ -15,34 +15,23 @@ namespace KompasCore.GameCore
         public static readonly CardLocation[] HiddenLocations =
             new CardLocation[] { CardLocation.Nowhere, CardLocation.Deck, CardLocation.Hand };
 
-        public enum TargetMode { Free, OnHold, CardTarget, CardTargetList, SpaceTarget, HandSize }
-
         //other scripts
-        public UIController uiCtrl;
+        public abstract UIController UIController { get; }
 
         //game mechanics
-        public BoardController boardCtrl;
-        //game objects
-        public GameObject boardObject;
-
-        //list of card names 
-        public CardRepository cardRepo;
+        public abstract BoardController BoardController { get; }
 
         public abstract Player[] Players { get; }
         public int TurnPlayerIndex { get; protected set; } = 0;
         public Player TurnPlayer => Players[TurnPlayerIndex];
+        public int FirstTurnPlayer { get; protected set; }
 
         //game data
-        public abstract IEnumerable<GameCard> Cards { get; }
-        public int FirstTurnPlayer { get; protected set; }
+        public abstract CardRepository CardRepository { get; }
+        public abstract IReadOnlyCollection<GameCard> Cards { get; }
         public int RoundCount { get; protected set; } = 1;
         public virtual int TurnCount { get; protected set; } = 1;
         public virtual int Leyload { get; set; } = 1;
-
-        public TargetMode targetMode = TargetMode.Free;
-
-        public virtual void OnClickBoard(int x, int y) { }
-        public virtual void Lose(int controllerIndex) { }
 
         public abstract GameCard GetCardWithID(int id);
 
@@ -55,38 +44,33 @@ namespace KompasCore.GameCore
 
         public bool BoardHasCopyOf(GameCard card)
             => Cards.Any(c => c != card && c.Location == CardLocation.Board && c.Controller == card.Controller && c.CardName == card.CardName);
-        /*{
-            Debug.Log($"Checking if board has copy of {card.CardName} with controller index {card.ControllerIndex}");
-            return Cards.Any(c => c != card && c.Location == CardLocation.Field && c.Controller == card.Controller && c.CardName == card.CardName);
-        }*/
 
-        public bool ValidSpellSpaceFor(GameCard card, Space space) => boardCtrl.ValidSpellSpaceFor(card, space);
+        public bool ValidSpellSpaceFor(GameCard card, Space space) => BoardController.ValidSpellSpaceFor(card, space);
 
-        private bool IsFriendlyAdjacentToCoords(Space space, GameCard potentialFriendly, Player friendly)
+        public bool ValidStandardPlaySpace(Space space, Player player)
         {
-            return boardCtrl.IsEmpty(space)
-                && potentialFriendly != null && potentialFriendly.IsAdjacentTo(space)
-                && potentialFriendly.Controller == friendly;
-        }
+            /*Debug.Log($"Checking whether player {player?.index} can play a card to {space}. Cards adjacent to that space are" +
+                $"{string.Join(",", space.AdjacentSpaces.Select(BoardController.GetCardAt).Where(c => c != null).Select(c => c.CardName))}");*/
 
-        public bool ValidStandardPlaySpace(Space space, Player friendly)
-        {
+            bool cardAtSpaceIsFriendly(GameCardBase card)
+            {
+                bool isFriendly = card?.Controller == player;
+                //if (isFriendly) Debug.Log($"{card} is at {card?.Position} adjacent and friendy to {space}");
+                return isFriendly;
+            }
+
+            bool existsFriendlyAdjacent(Space adjacentTo)
+                => adjacentTo.AdjacentSpaces.Any(s => cardAtSpaceIsFriendly(BoardController.GetCardAt(s)));
+
             //first see if there's an adjacent friendly card to this space
-            if (boardCtrl.ExistsCardOnBoard(c => IsFriendlyAdjacentToCoords(space, c, friendly))) return true;
+            if (existsFriendlyAdjacent(space)) return true;
             //if there isn't, check if the player is Surrounded
+            //A player can play to any space if there isn't a space that is adjacent to a friendly card
             else
             {
-                //iterate through all possible spaces
-                for (int i = 0; i < 7; i++)
-                {
-                    for (int j = 0; j < 7; j++)
-                    {
-                        //if there *is* a possible space to play it to, they're not surrounded
-                        if (boardCtrl.ExistsCardOnBoard(c => IsFriendlyAdjacentToCoords((i, j), c, friendly))) return false;
-                    }
-                }
-                //if we didn't find a single place to play a card normally, any space is fair game, by the Surrounded rule
-                return true;
+                bool surrounded = !Space.Spaces.Any(s => BoardController.IsEmpty(s) && existsFriendlyAdjacent(s));
+                if (surrounded) Debug.Log($"{player} is surrounded!");
+                return surrounded;
             }
         }
 
@@ -98,5 +82,12 @@ namespace KompasCore.GameCore
         {
             foreach (var c in Cards) c.ResetForTurn(TurnPlayer);
         }
+
+        public virtual bool IsCurrentTarget(GameCard card) => false;
+        public virtual bool IsValidTarget(GameCard card) => false;
+
+        public virtual CardBase FocusedCard => null;
+
+        public virtual void Lose(int controllerIndex) { }
     }
 }

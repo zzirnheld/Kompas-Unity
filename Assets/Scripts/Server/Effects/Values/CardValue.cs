@@ -6,19 +6,19 @@ using System.Linq;
 
 namespace KompasCore.Effects
 {
-    public class CardValue
+    public class CardValue : ContextInitializeableBase
     {
         #region values
-        private const string Nimbleness = "N";
-        private const string Endurance = "E";
-        private const string SummoningCost = "S";
-        private const string Wounding = "W";
-        private const string CastingCost = "C";
-        private const string AugmentCost = "A";
+        public const string Nimbleness = "N";
+        public const string Endurance = "E";
+        public const string SummoningCost = "S";
+        public const string Wounding = "W";
+        public const string CastingCost = "C";
+        public const string AugmentCost = "A";
 
-        private const string Cost = "Cost";
-        private const string NumberOfAugments = "Number of Augments";
-        private const string DistanceToSource = "Distance to Source";
+        public const string Cost = "Cost";
+        public const string NumberOfAugments = "Number of Augments";
+        public const string DistanceToSource = "Distance to Source";
         #endregion values
 
         public string value;
@@ -26,15 +26,11 @@ namespace KompasCore.Effects
         public int divisor = 1;
         public int modifier = 0;
 
-        public GameCard Source { get; private set; }
-
-        public void Initialize(GameCard source)
-        {
-            Source = source;
-        }
+        public GameCard Source => InitializationContext.source;
 
         public int GetValueOf(GameCardBase card)
         {
+            ComplainIfNotInitialized();
             if (card == null) throw new NullCardException("Cannot get value of null card");
 
             int intermediateValue = value switch

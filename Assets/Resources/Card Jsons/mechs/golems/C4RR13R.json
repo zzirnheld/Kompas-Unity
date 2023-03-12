@@ -1,0 +1,94 @@
+{
+	"cardType": 67,
+	"cardName": "C4RR13R",
+	"effText": "Golem.\nWhen I become active, I Invoke a Mech Golem and activate it.",
+	"effects": [
+		{
+			"blurb": "C4RRY1NG TH1S WH0L3 T34M",
+			"triggerData": {
+				"triggerCondition": "Activate",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetThis:"
+				},
+				{
+					"$type": "Subeffect:SetXByTargetCardValue:",
+					"cardValue": {
+						"value": "S"
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:Mill:",
+					"xModifier": 1
+				},
+				{
+					"$type": "Subeffect:ConditionalJump:",
+					"condition": "Target Violates Restriction",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Card Value Fits Number Restriction"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Mech", "Golem" ]
+							}
+						]
+					},
+					"jumpIndices": [
+						2
+					],
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "where to Invoke",
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            }
+                        ]
+					}
+				},
+				{
+					"$type": "Subeffect:Play:"
+				},
+				{
+					"$type": "Subeffect:Activate:"
+				}
+			]
+		}
+	],
+	"MovementRestriction": {
+		"normalRestrictionsFromJson": [
+			"Default",
+			"Activated"
+		]
+	},
+	"AttackRestriction": {
+		"attackRestrictions": [
+			"Default",
+			"This is Activated"
+		]
+	},
+	"n": 4,
+	"e": 2,
+	"s": 10,
+	"w": 2,
+	"subtypes": [
+		"Mech",
+		"Golem"
+	],
+	"subtypeText": "Mech Golem"
+}

@@ -1,0 +1,130 @@
+{
+	"cardType": 67,
+	"cardName": "Seigh Lorre",
+	"effText": "Waterborn.\nWhen turns start, move a card in Water through spaces in Water to another empty space.",
+	"effects": [
+		{
+			"blurb": "Sail",
+			"triggerData": {
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "what will sail",
+						"cardRestrictions": [
+							"Space Fits Restriction",
+							"Space Restriction Valid With This Target Chosen"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						],
+						"spaceRestrictionIndex":1,
+						"spaceRestriction": {
+							"spaceRestrictionElements": [
+								{
+									"$type": "Core.SpaceRestriction:InAOEOf:",
+									"anyOf": {
+										"$type": "ManyCards:FittingRestriction:",
+										"cardRestriction": {
+											"cardRestrictionElements": [
+												{
+													"$type": "Core.CardRestriction:Subtypes:",
+													"subtypes": [ "Water" ]
+												}
+											]
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "where to sail them to",
+						"spaceRestrictions": [
+							"Connected to Card Target by Spaces Fitting Restriction",
+							"Empty"
+						],
+						"spaceConnectednessRestriction": {
+							"spaceRestrictionElements": [
+								{
+									"$type": "Core.SpaceRestriction:InAOEOf:",
+									"anyOf": {
+										"$type": "ManyCards:FittingRestriction:",
+										"cardRestriction": {
+											"cardRestrictionElements": [
+												{
+													"$type": "Core.CardRestriction:Subtypes:",
+													"subtypes": [ "Water" ]
+												}
+											]
+										}
+									}
+								},
+								{
+									"$type": "Core.SpaceRestriction:CanMoveCard:",
+									"toMove": { "$type": "Cards:TargetIndex:" }
+								}
+							]
+						}
+					}
+				},
+				{
+					"$type": "Subeffect:Move:"
+				}
+			]
+		}
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Default Normal Restrictions",
+			"Space Must Fit Restriction"
+		],
+		"normalRestrictionsToIgnore": [
+			"Adjacent to Friendly Card"
+		],
+		"effectRestrictions": [
+			"Default Effect Restrictions",
+			"Space Must Fit Restriction"
+		],
+		"effectRestrictionsToIgnore": [
+			"Adjacent to Friendly Card"
+		],
+		"spaceRestriction": {
+			"spaceRestrictionElements": [
+				{
+					"$type": "Core.SpaceRestriction:InAOEOf:",
+					"anyOf": {
+						"$type": "ManyCards:FittingRestriction:",
+						"cardRestriction": {
+							"cardRestrictionElements": [
+								{
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Water" ]
+								}
+							]
+						}
+					}
+				}
+			]
+		}
+	},
+	"unique": true,
+	"n": 3,
+	"e": 3,
+	"s": 3,
+	"w": 3,
+	"subtypeText": "Aquatic Fisherperson"
+}

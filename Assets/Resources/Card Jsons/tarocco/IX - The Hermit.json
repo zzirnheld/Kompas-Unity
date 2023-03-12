@@ -17,37 +17,42 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "for Hermit to move",
 						"cardRestrictions": [
-							"Board",
-							"Enemy",
 							"Character",
 							"Space Restriction Valid With This Target Chosen"
 						],
-						"spaceRestrictionIndex":1
+						"spaceRestrictionIndex":1,
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where Hermit to move its target",
-						"spaceRestrictions": [
-							"Can Move Card Target to This Space",
-							"Distance to Card Target Fits X Restriction",
-							"Empty"
-						],
-						"distanceXRestriction": {
-							"numberRestrictions": [
-								"=X"
-							]
-						}
+						"spaceRestrictionElements": [ 
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanMoveCard:",
+								"toMove": { "$type": "Cards:TargetIndex:" },
+								"distanceRestriction": {
+									"numberRestrictions": [ "=X" ]
+								}
+							}
+						]
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Move:"
 				}
 			]
 		}

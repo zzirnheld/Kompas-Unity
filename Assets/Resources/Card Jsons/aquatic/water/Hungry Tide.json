@@ -1,0 +1,81 @@
+{
+	"cardType": 83,
+	"cardName": "Hungry Tide",
+	"effText": "You can hand->annihilate 2 Water spells to deck->hand an Aquatic character.\n<i>Vanishes after 2 turns.</i>",
+	"effects": [
+		{
+			"blurb": "The Tide Hungers",
+			"activationRestriction": {
+				"activationRestrictionArray": [
+					"Friendly Turn",
+					"Default"
+				]
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:ChooseFromList:",
+					"cardRestriction": {
+						"blurb": "to feed the tide",
+						"cardRestrictions": [
+							"Spell"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Hand" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Water" ]
+							}
+						]
+					},
+					"listRestriction": {
+						"listRestrictions": [
+							"Min Can Choose",
+							"Max Can Choose"
+						],
+						"minCanChoose": 2,
+						"maxCanChoose": 2
+					}
+				},
+				{
+					"$type": "Subeffect:Annihilate:"
+				},
+				{
+					"$type": "Subeffect:Annihilate:",
+					"targetIndex": -2
+				},
+				{
+					"$type": "Subeffect:ChooseFromList:",
+					"cardRestriction": {
+						"blurb": "for the tide to belch",
+						"cardRestrictions": [
+							"Character",
+							"Deck"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Aquatic" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:Hand:"
+				}
+			]
+		}
+	],
+	"c": 1,
+	"spellTypes": [
+		"Radial",
+		"Vanishing"
+	],
+	"radius": 2,
+	"duration": 3,
+	"subtypeText": "Water"
+}

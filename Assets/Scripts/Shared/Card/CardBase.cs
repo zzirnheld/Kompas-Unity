@@ -5,13 +5,20 @@ using UnityEngine;
 
 namespace KompasCore.Cards
 {
-    public abstract class CardBase : MonoBehaviour, IComparable
+    public abstract class CardBase : IComparable
     {
         public const string SimpleSubtype = "Simple";
         public const string EnchantSubtype = "Enchant";
         public const string DelayedSubtype = "Delayed";
         public const string RadialSubtype = "Radial";
         public const string VanishingSubtype = "Vanishing";
+        public const string Nimbleness = "N";
+        public const string Endurance = "E";
+        public const string SummoningCost = "S";
+        public const string Wounding = "W";
+        public const string CastingCost = "C";
+        public const string AugmentCost = "A";
+        public const string CostStat = "Cost";
 
         #region stats
         private int n;
@@ -20,53 +27,76 @@ namespace KompasCore.Cards
         private int w;
         private int c;
         private int a;
+        /// <summary>
+        /// Nimbleness - spaces moveable per turn
+        /// </summary>
         public virtual int N
         {
             get => n < 0 ? 0 : n;
             private set => n = value;
         }
+        /// <summary>
+        /// Endurance - hit points
+        /// </summary>
         public virtual int E
         {
             get => e < 0 ? 0 : e;
             private set => e = value;
         }
+        /// <summary>
+        /// Summoning cost - character's pip cost
+        /// </summary>
         public virtual int S
         {
             get => s < 0 ? 0 : s;
             private set => s = value;
         }
+        /// <summary>
+        /// Wounding - damage
+        /// </summary>
         public virtual int W
         {
             get => w < 0 ? 0 : w;
             private set => w = value;
         }
+        /// <summary>
+        /// Casting cost - spell's pip cost
+        /// </summary>
         public virtual int C
         {
             get => c < 0 ? 0 : c;
             private set => c = value;
         }
+        /// <summary>
+        /// Augment cost - augment's pip cost
+        /// </summary>
         public virtual int A
         {
             get => a < 0 ? 0 : a;
             private set => a = value;
         }
 
+        public abstract int BaseN { get; }
+        public abstract int BaseE { get; }
+        public abstract int BaseS { get; }
+        public abstract int BaseW { get; }
+        public abstract int BaseC { get; }
+        public abstract int BaseA { get; }
+
         public CardStats Stats => (N, E, S, W, C, A);
 
-        public bool Fast { get; private set; }
         public bool Unique { get; private set; }
 
         public string Subtext { get; private set; }
         public string[] SpellSubtypes { get; private set; }
         public int Radius { get; private set; }
-        public int Duration { get; protected set; }
+        public int Duration { get; set; }
         public char CardType { get; private set; }
         public string CardName { get; private set; }
         public string EffText { get; private set; }
         public string SubtypeText { get; private set; }
-        public string[] AugmentSubtypes { get; private set; }
 
-        public string QualifiedSubtypeText => AttributesString + SubtypeText + ArgsString;
+        public string QualifiedSubtypeText => AttributesString + ArgsString + SubtypeText;
 
         public int Cost
         {
@@ -85,14 +115,13 @@ namespace KompasCore.Cards
         {
             get
             {
-                if (CardType == 'A') return AugmentSubtypes == null ? "" : $"Augment: {string.Join(",", AugmentSubtypes)}";
-                else if (CardType == 'S')
+                if (CardType == 'S')
                 {
                     return (SpellSubtypes.FirstOrDefault()) switch
                     {
-                        RadialSubtype => $" {Radius} spaces",
-                        DelayedSubtype => $" {Duration} turns",
-                        VanishingSubtype => $" {Duration} turns",
+                        RadialSubtype => $" Radius {Radius}",
+                        DelayedSubtype => $" Delayed {Duration}",
+                        VanishingSubtype => $" Vanishing {Duration}",
                         _ => "",
                     };
                 }
@@ -100,7 +129,7 @@ namespace KompasCore.Cards
                 return "";
             }
         }
-        public string AttributesString => $"{(Fast ? " Fast" : "")}{(Unique ? " Unique" : "")} ";
+        public string AttributesString => $"{(Unique ? "Unique " : "")}";
         public string StatsString
         {
             get
@@ -116,50 +145,61 @@ namespace KompasCore.Cards
         }
         #endregion
 
-        public Sprite simpleSprite;
+        public Sprite SimpleSprite { get; private set; }
 
-        protected void SetInfo(CardStats stats,
+        public virtual string FileName { get; set; }
+
+        protected CardBase(CardStats stats,
                                        string subtext, string[] spellTypes,
-                                       bool fast, bool unique,
+                                       bool unique,
+                                       int radius, int duration,
+                                       char cardType, string cardName, string fileName,
+                                       string effText,
+                                       string subtypeText)
+        {
+            (n, e, s, w, c, a) = stats;
+
+            FileName = fileName;
+            SetInfo(null, subtext, spellTypes, unique, radius, duration, cardType, cardName, effText, subtypeText);
+        }
+
+        protected void SetInfo(CardStats? stats,
+                                       string subtext, string[] spellTypes,
+                                       bool unique,
                                        int radius, int duration,
                                        char cardType, string cardName,
                                        string effText,
-                                       string subtypeText,
-                                       string[] augSubtypes)
+                                       string subtypeText)
         {
-            SetStats(stats);
+            if (stats.HasValue) SetStats(stats.Value);
 
             //set sprites if they aren't already set correctly 
             //(check this by card name. cards should never have a pic that doesn't match their name)
             if (cardName != CardName)
             {
-                //Debug.Log($"Names are different, changing card pics to match name {card.cardName}");
-                simpleSprite = Resources.Load<Sprite>($"Simple Sprites/{cardName}");
+                //Debug.Log($"Names are different, changing card pics to match name {FileName}");
+                SimpleSprite = CardRepository.LoadSprite(FileName);
             }
             //else Debug.Log("Names match. Set Info not updating pics.");
 
             Subtext = subtext; //TODO un-deprecate and use as an override for constructed subtype text from the subtypes array
             SpellSubtypes = spellTypes;
-            Fast = fast;
             Unique = unique;
             Radius = radius;
             Duration = duration;
             CardType = cardType;
-            CardName = cardName ?? throw new ArgumentNullException($"A card is missing a name.");
-            EffText = effText ?? throw new ArgumentNullException($"Card {CardName} is missing effect text");
+            CardName = cardName ?? throw new ArgumentNullException("cardName", $"A card is missing a name.");
+            EffText = effText ?? throw new ArgumentNullException("effText", $"Card {CardName} is missing effect text");
             SubtypeText = subtypeText ?? string.Empty;
-            AugmentSubtypes = augSubtypes; //Null indicates a lack of required augment subtypes
         }
 
-        protected void SetCardInformation(SerializableCard card)
-            => SetInfo((card.n, card.e, card.s, card.w, card.c, card.a),
-                       card.subtext, card.spellTypes,
-                       card.fast, card.unique,
-                       card.radius, card.duration,
-                       card.cardType, card.cardName,
-                       card.effText,
-                       card.subtypeText,
-                       card.augSubtypes);
+        protected void SetInfo(SerializableCard serializableCard)
+            => SetInfo((serializableCard.n, serializableCard.e, serializableCard.s, serializableCard.w, serializableCard.c, serializableCard.a),
+                serializableCard.subtext, serializableCard.spellTypes,
+                serializableCard.unique,
+                serializableCard.radius, serializableCard.duration,
+                serializableCard.cardType, serializableCard.cardName,
+                serializableCard.effText, serializableCard.subtypeText);
 
         public override string ToString()
         {
@@ -219,6 +259,46 @@ namespace KompasCore.Cards
             SetW(stats.w, stackSrc, onlyStatBeingSet: false);
             SetC(stats.c, stackSrc, onlyStatBeingSet: false);
             SetA(stats.a, stackSrc, onlyStatBeingSet: false);
+        }
+
+        /// <summary>
+        /// Shorthand for modifying a card's NESW all at once.
+        /// On the server, this only notifies the clients of stat changes once.
+        /// </summary>
+        public virtual void SetCharStats(int n, int e, int s, int w, IStackable stackSrc = null)
+        {
+            SetN(n, stackSrc, onlyStatBeingSet: false);
+            SetE(e, stackSrc, onlyStatBeingSet: false);
+            SetS(s, stackSrc, onlyStatBeingSet: false);
+            SetW(w, stackSrc, onlyStatBeingSet: false);
+        }
+
+        /// <summary>
+        /// Shorthand for modifying a card's NESW all at once.
+        /// On the server, this only notifies the clients of stat changes once.
+        /// </summary>
+        public void AddToCharStats(int n, int e, int s, int w, IStackable stackSrc = null)
+            => SetCharStats(N + n, E + e, S + s, W + w, stackSrc: stackSrc);
+
+        /// <summary>
+        /// Shorthand for modifying a card's stats all at once.
+        /// On the server, this only notifies the clients of stat changes once.
+        /// </summary>
+        public void AddToStats(CardStats buff, IStackable stackSrc = null)
+            => SetStats(Stats + buff, stackSrc);
+
+        public void SwapCharStats(GameCard other, bool swapN = true, bool swapE = true, bool swapS = true, bool swapW = true)
+        {
+            int[] aNewStats = new int[4];
+            int[] bNewStats = new int[4];
+
+            (aNewStats[0], bNewStats[0]) = swapN ? (other.N, N) : (N, other.N);
+            (aNewStats[1], bNewStats[1]) = swapE ? (other.E, E) : (E, other.E);
+            (aNewStats[2], bNewStats[2]) = swapS ? (other.S, S) : (S, other.S);
+            (aNewStats[3], bNewStats[3]) = swapW ? (other.W, W) : (W, other.W);
+
+            SetCharStats(aNewStats[0], aNewStats[1], aNewStats[2], aNewStats[3]);
+            other.SetCharStats(bNewStats[0], bNewStats[1], bNewStats[2], bNewStats[3]);
         }
     }
 }

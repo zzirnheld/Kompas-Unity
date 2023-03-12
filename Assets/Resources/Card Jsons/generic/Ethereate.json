@@ -1,0 +1,67 @@
+{
+	"cardType": 83,
+	"cardName": "Ethereate",
+	"effText": "Revive an Ethereal, but annihilate them once the stack ends.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictionElements": [
+                        {
+                            "$type": "Core.TriggerRestriction:CardsMatch:",
+                            "firstCard": { "$type": "Cards:ThisCard:" },
+                            "secondCard": { "$type": "Cards:MainCardBefore:" }
+                        }
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "Ethereal to revive",
+                        "cardRestrictionElements": [
+                            { "$type": "Core.CardRestriction:FriendlyCard:" },
+                            { "$type": "Core.CardRestriction:Character:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            },
+                            {
+                                "$type": "Core.CardRestriction:Subtypes:",
+                                "subtypes": [ "Ethereal" ]
+                            }
+                        ]
+					}
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "where to revive the Ethereal",
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            }
+                        ]
+					}
+				},
+				{
+					"$type": "Subeffect:Play:"
+				},
+				{
+					"$type": "Subeffect:Hanging.Annihilation:",
+					"endCondition": "Stack End",
+					"triggerRestriction": { }
+				}
+			]
+		}
+	],
+	"c": 1,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypeText": ""
+}

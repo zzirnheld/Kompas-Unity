@@ -1,0 +1,74 @@
+{
+	"cardType": 83,
+	"cardName": "Mannaz",
+	"effText": "Runic.\nHand a character from your deck's top 10 cards.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:SkipToEffectOnImpossible:",
+					"jumpIndices": [
+						4
+					]
+				},
+				{
+					"$type": "Subeffect:ChooseFromListSaveRest:",
+					"cardRestriction": {
+						"blurb": "spell for Mannaz to search (to hand)",
+						"cardRestrictions": [
+							"Character",
+							"Deck",
+							"Index<C"
+						],
+						"constant": 10,
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
+						]
+					},
+					"restRestriction": {
+						"cardRestrictions": [
+							"Deck",
+							"Index<C",
+							"Not Already Target"
+						],
+						"constant": 10,
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:ClearOnImpossible:"
+				},
+				{
+					"$type": "Subeffect:Hand:"
+				},
+				{
+					"$type": "Subeffect:BottomdeckRest:"
+				}
+			]
+		}
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Cannot be Played Normally"
+		]
+	},
+	"c": 1,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypes": [
+		"Rune",
+		"Simple"
+	],
+	"subtypeText": "Rune Simple"
+}

@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Mother of Dragons",
-	"effText": "When enemy turns start, you can tribute Summoned characters with total S X. Deck->summon an S <= X Dragon from your deck's top X cards, then move it 1 space.",
+	"effText": "When enemy turns start, tribute summons with total S X. Summon an S <= X Dragon from your deck's top X cards, then move it 1 space.",
 	"effects": [
 		{
 			"blurb": "Dragonbirth",
@@ -18,22 +18,27 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.SetXSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:SetX:"
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "for Mother of Dragons to kill",
 						"cardRestrictions": [
-							"Friendly",
-							"Board",
 							"Summoned",
 							"Not Already Target"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "S"
 					},
@@ -41,31 +46,29 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Discard:"
 				},
 				{
-					"$type": "KompasServer.Effects.LoopSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Loop:",
 					"canDecline": true,
 					"jumpIndices": [
 						1
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SkipToEffectOnImpossible:",
 					"jumpIndices": [
 						10
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.ChooseFromListSaveRestSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChooseFromListSaveRest:",
 					"cardRestriction": {
 						"blurb": "for Mother of Dragons to birth",
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
 							"Character",
 							"Index<X",
-							"Subtypes Include",
 							"Card Value Fits Number Restriction"
 						],
 						"cardValue": {
@@ -76,58 +79,67 @@
 								"<=X"
 							]
 						},
-						"subtypesInclude": [
-							"Dragon"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Dragon" ]
+							}
 						]
 					},
 					"restRestriction": {
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
 							"Index<X",
 							"Not Already Target"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where Mother of Dragons to birth",
-						"spaceRestrictions": [
-							"Can Play Card Target to This Space",
-							"Empty"
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            }
+                        ]
+					}
+				},
+				{
+					"$type": "Subeffect:Play:"
+				},
+				{
+					"$type": "Subeffect:ClearOnImpossible:"
+				},
+				{
+					"$type": "Subeffect:BottomdeckRest:"
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "Fly, beloved, fly!",
+						"spaceRestrictionElements": [ 
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanMoveCard:",
+								"toMove": { "$type": "Cards:TargetIndex:" },
+								"distanceRestriction": {
+									"numberRestrictions": [ "==Constant" ],
+									"constant": 1
+								}
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
-				},
-				{
-					"$type": "KompasServer.Effects.ClearOnImpossibleSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type": "KompasServer.Effects.BottomdeckRestSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction": {
-						"blurb": "Fly, beloved, fly!",
-						"spaceRestrictions": [
-							"Empty",
-							"Can Move Card Target to This Space",
-							"Distance to Card Target Fits X Restriction"
-						],
-						"distanceXRestriction": {
-							"numberRestrictions": [
-								"=X"
-							]
-						}
-					},
-					"xModifier": 1
-				},
-				{
-					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Move:"
 				}
 			]
 		}

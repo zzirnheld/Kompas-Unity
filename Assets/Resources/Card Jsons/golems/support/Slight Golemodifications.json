@@ -1,0 +1,104 @@
+{
+	"cardType": 83,
+	"cardName": "Slight Golemodifications",
+	"effText": "When turns start, tribute an S X Golem. Hand-> or discard-> summon an S <= X + 1 Golem, and pulse them.",
+	"effects": [
+		{
+			"blurb": "Modify Golem (Slightly)",
+			"triggerData": {
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Golem" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:SetXByTargetCost:",
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:Discard:",
+					"targetIndex": 0
+				},
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Multiple Possible Locations",
+							"Card Value Fits Number Restriction"
+						],
+						"cardValue": {
+							"value": "S"
+						},
+						"cardValueNumberRestriction": {
+							"numberRestrictions": [
+								"<=X"
+							]
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Golem" ]
+							}
+						],
+						"locations": [
+							2,
+							3
+						]
+					},
+					"xMultiplier": 1,
+					"xModifier": 1
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            }
+                        ]
+					}
+				},
+				{
+					"$type": "Subeffect:Play:"
+				},
+				{
+					"$type": "Subeffect:Activate:"
+				},
+				{
+					"$type": "Subeffect:Activate:",
+					"activate": false
+				}
+			]
+		}
+	],
+	"c": 3,
+	"spellTypes": [
+		"Enchant"
+	],
+	"subtypeText": "Enchant"
+}

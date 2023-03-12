@@ -12,40 +12,48 @@
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Hand"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Hand" ]
+							}
 						]
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChooseFromList:",
 					"cardRestriction": {
 						"blurb": "copy of Twin Spirit to decksummon",
 						"cardRestrictions": [
-							"Friendly",
 							"Same Name as Target",
 							"Deck"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					},
 					"maxCanChoose": 1
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where for Twin Spirit to decksummon a copy of itself",
-						"spaceRestrictions": [
-							"Can Play Card Target to This Space",
-							"Empty"
-						]
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            }
+                        ]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Play:"
 				}
 			]
 		}

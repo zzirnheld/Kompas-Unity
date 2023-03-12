@@ -1,0 +1,84 @@
+{
+	"cardType": 67,
+	"cardName": "Master Graftsman",
+	"effText": "When you summon another character, give them -3 E, but +1 NW.\nWhen you hurt a friendly Tree, heal it.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Controller Triggered",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Different from Source",
+							"Character"
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetTriggeringCard:"
+				},
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"eModifier": -3,
+					"nModifier": 1,
+					"wModifier": 1
+				}
+			]
+		},
+		{
+            "blurb": "Repair",
+			"triggerData": {
+				"triggerCondition": "E Change",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Controller Triggered",
+						"X Fits Restriction",
+						"This Card is Main Card",
+						"Main Card Fits Restriction After"
+					],
+					"xRestriction": {
+						"numberRestrictions": [
+							"<0"
+						]
+					},
+					"nowRestriction": {
+						"cardRestrictions": [
+							"Hurt"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Tree" ]
+							}
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetTriggeringCard:"
+				},
+				{
+					"$type": "Subeffect:Heal:"
+				}
+			]
+		}
+	],
+	"n": 1,
+	"e": 10,
+	"s": 6,
+	"w": 0,
+	"subtypeText": "Person"
+}

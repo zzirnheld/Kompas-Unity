@@ -30,10 +30,10 @@ namespace KompasClient.Networking
     {
         public void Execute(ClientGame clientGame)
         {
-            clientGame.targetMode = Game.TargetMode.SpaceTarget;
+            clientGame.clientUIController.TargetMode = TargetMode.SpaceTarget;
             //TODO check whether client setting says "yes recommendations" or not
             clientGame.CurrentPotentialSpaces = recommendedSpaces.Select(s => (s / 7, s % 7)).ToArray();
-            clientGame.clientUICtrl.SetCurrState($"Choose {cardName}'s Space Target", targetBlurb);
+            clientGame.clientUIController.SetCurrState($"Choose {cardName}'s Space Target", targetBlurb);
         }
     }
 }

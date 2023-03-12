@@ -1,11 +1,11 @@
 {
 	"cardType": 67,
 	"cardName": "XII - The Hanged Man",
-	"effText": "When you draw X cards, give me and a Summoned character -X E.",
+	"effText": "When you draw X cards, give me and another summon -X E.",
 	"effects": [
 		{
+			"blurb": "Symbolic execution",
 			"triggerData": {
-				"blurb": "Give me and a Summoned character -X E? (X is the number of cards you just drew)",
 				"triggerCondition": "Draw",
 				"triggerRestriction": {
 					"triggerRestrictions": [
@@ -16,26 +16,32 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
-						"blurb": "Summoned character for Hanged Man to also give -X E",
+						"blurb": "summon for Hanged Man to also give -X E",
 						"cardRestrictions": [
 							"Character",
-							"Board",
+							"Different from Source",
 							"Summoned"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeCardStats:",
 					"eMultiplier": -1,
 					"targetIndex": 0
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeCardStats:",
 					"eMultiplier": -1,
 					"targetIndex": 1
 				}

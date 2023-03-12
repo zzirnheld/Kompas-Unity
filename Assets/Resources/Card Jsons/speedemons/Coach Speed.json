@@ -1,0 +1,58 @@
+{
+	"cardType": 67,
+	"cardName": "Coach Speed",
+	"effText": "Speedemon.\nOnce each turn, you can move a card 1 space.",
+	"effects": [
+		{
+			"activationRestriction": {
+				"activationRestrictionArray": [
+					"Max Times Per Turn",
+					"Default"
+				]
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "card to teach speed",
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "where to show them speed",
+						"spaceRestrictionElements": [ 
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanMoveCard:",
+								"toMove": { "$type": "Cards:TargetIndex:" },
+								"distanceRestriction": {
+									"numberRestrictions": [ "==Constant" ],
+									"constant": 1
+								}
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:Move:"
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Speedemon"
+	],
+	"n": 3,
+	"e": 1,
+	"s": 5,
+	"w": 1,
+	"unique": true,
+	"subtypeText": "Kind Speedemon"
+}

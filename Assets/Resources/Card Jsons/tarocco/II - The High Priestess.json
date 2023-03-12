@@ -12,49 +12,62 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:DrawX:",
 					"xModifier": 3
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "for High Priestess to topdeck (1/3)",
-						"cardRestrictions": [
-							"Friendly",
-							"Hand"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            }
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.TopdeckSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Topdeck:"
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "for High Priestess to topdeck (2/3)",
 						"cardRestrictions": [
-							"Friendly",
-							"Hand",
 							"Not Already Target"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            }
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.TopdeckSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Topdeck:"
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "for High Priestess to topdeck (3/3)",
 						"cardRestrictions": [
-							"Friendly",
-							"Hand",
 							"Not Already Target"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            }
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.TopdeckSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Topdeck:"
 				}
 			]
 		}

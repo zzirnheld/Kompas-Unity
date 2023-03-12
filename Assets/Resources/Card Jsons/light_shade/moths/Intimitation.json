@@ -1,0 +1,77 @@
+{
+	"cardType": 65,
+	"cardName": "Intimitation",
+	"effText": "When this Moth summon defends, reveal a W X character. Give the attacker -X W.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Defend",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"Augmented Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetAugmentedCard:"
+				},
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "What creature does the camouflage look like?",
+						"cardRestrictions": [
+							"Character",
+							"Hidden"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            }
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:Reveal:"
+				},
+				{
+					"$type": "Subeffect:SetXByTargetCardValue:",
+					"cardValue": {
+						"value": "W"
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type":"Subeffect:TargetTriggeringCard:",
+					"secondary":true
+				},
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"wMultiplier": -1
+				}
+			]
+		}
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Augment Normal Restrictions",
+			"On Card that Fits Restriction"
+		],
+		"effectRestrictions": [
+			"Augment Effect Restrictions",
+			"On Card that Fits Restriction"
+		],
+		"onCardRestriction": {
+			"cardRestrictions": [
+				"Summoned"
+			]
+		},
+		"augSubtypes": [
+			"Moth"
+		]
+	},
+	"a": 1,
+	"subtypeText": "Adaptation"
+}

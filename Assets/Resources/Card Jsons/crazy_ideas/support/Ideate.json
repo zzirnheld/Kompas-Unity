@@ -1,0 +1,47 @@
+{
+	"cardType": 83,
+	"cardName": "Ideate",
+	"effText": "Deck->discard a Crazy Idea.",
+	"effects": [
+		{
+            "blurb":"Ideate",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:DeckTarget:",
+					"cardRestriction": {
+						"blurb": "Crazy Idea to ideate",
+						"cardRestrictions": [
+							"Deck"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Crazy", "Idea" ]
+							}
+						]
+					}
+				},
+				{
+					"$type":"Subeffect:Discard:"
+				}
+			]
+		}
+	],
+	"c": 1,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypes": [
+		"Simple"
+	],
+	"subtypeText": "Crazy Simple"
+}

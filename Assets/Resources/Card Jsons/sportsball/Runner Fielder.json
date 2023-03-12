@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Runner Fielder",
-	"effText": "When I'm augmented, attach my Augments to the character 2 spaces due N of me.",
+	"effText": "When you augment me, attach my Augments to the character immediately due N of me.",
 	"effects": [
 		{
 			"triggerData": {
@@ -9,13 +9,14 @@
 				"triggerCondition": "Augmented",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card is Main Card"
+						"This Card is Main Card",
+						"Controller Triggered"
 					]
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.AutoTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:AutoTarget:",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character",
@@ -31,22 +32,22 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetAugmentsSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetAugments:"
 				},
 				{
-					"$type": "KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:DeleteTarget:",
 					"targetIndex": 1
 				},
 				{
-					"$type": "KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Attach:",
 					"targetToAttachTo": 0,
 					"targetIndex": -1
 				},
 				{
-					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"delete": true,
 					"remainingTargets": 1,
 					"jumpIndices": [

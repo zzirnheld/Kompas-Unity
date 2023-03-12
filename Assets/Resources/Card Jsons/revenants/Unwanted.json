@@ -14,24 +14,27 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "for Unwanted to discard",
-						"cardRestrictions": [
-							"Friendly",
-							"Hand",
-							"Subtypes Include"
-						],
-						"subtypesInclude": [
-							"Revenant"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Revenant" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Discard:"
 				},
 				{
-					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Draw:"
 				}
 			]
 		}

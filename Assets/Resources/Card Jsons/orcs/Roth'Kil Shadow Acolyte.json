@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Roth'Kil Shadow Acolyte",
-	"effText": "Once each friendly turn, you can give me -1 E to draw a card.",
+	"effText": "Once each turn, you can give me -1 E to draw a card.",
 	"effects":[
 		{
 			"blurb": "Seek in Shadow",
@@ -14,14 +14,14 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeCardStats:",
 					"eModifier": -1
 				},
 				{
-					"$type": "KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:DrawX:",
 					"xMultiplier": 1,
 					"xModifier": 1
 				}

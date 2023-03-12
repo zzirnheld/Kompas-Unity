@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Mad Blood",
-	"effText": "When a friendly Cultist dies, annihilate me and deck->summon 2 Cultist Followers.",
+	"effText": "When a friendly Cultist dies, annihilate me to deck->summon 2 Cultist Followers.",
 	"effects": [
 		{
 			"triggerData": {
@@ -15,81 +15,96 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Character",
-							"Board",
-							"Friendly",
-							"Subtypes Include"
+							"Character"
 						],
-						"subtypesInclude": [
-							"Cultist"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Cultist" ]
+							}
 						]
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Annihilate:"
 				},
 				{
-					"$type": "KompasServer.Effects.AutoTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:AutoTarget:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Subtypes Include",
-							"Friendly",
 							"Deck",
 							"Character"
 						],
-						"subtypesInclude": [
-							"Cultist Follower"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Cultist", "Follower" ]
+							}
 						]
 					},
 					"tiebreakerDirection":"Any"
 				},
 				{
-					"$type": "KompasServer.Effects.AutoTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:AutoTarget:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Subtypes Include",
-							"Friendly",
 							"Deck",
 							"Character",
 							"Not Already Target"
 						],
-						"subtypesInclude": [
-							"Cultist Follower"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Cultist", "Follower" ]
+							}
 						]
 					},
 					"tiebreakerDirection":"Any"
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to play Mad Blood's new bloodcurse (1/2)",
-						"spaceRestrictions": [
-							"Can Play Card Target to This Space",
-							"Empty"
-						]
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            }
+                        ]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Play:"
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to play Mad Blood's new bloodcurse (2/2)",
-						"spaceRestrictions": [
-							"Can Play Card Target to This Space",
-							"Empty"
-						]
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            }
+                        ]
 					},
 					"targetIndex":-2
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Play:",
 					"targetIndex":-2
 				}
 			]

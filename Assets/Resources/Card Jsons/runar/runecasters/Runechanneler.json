@@ -1,0 +1,136 @@
+{
+	"cardType": 67,
+	"cardName": "Runechanneler",
+	"effText": "Runecast, but reshuffle X of your discarded Runes rather than paying its cost of X pips.",
+	"effects": [
+		{
+			"activationRestriction": {
+				"activationRestrictionArray": [
+					"Max Times Per Turn",
+					"Friendly Turn",
+					"Default"
+				]
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:SetXByGamestate:",
+					"whatToCount": "Cards Fitting Restriction",
+					"cardRestriction": {
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Rune" ]
+							}
+						]
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "Rune for Runechanneler to cast",
+						"cardRestrictions": [
+							"Spell",
+							"Can Be Played",
+							"Card Value Fits Number Restriction"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Rune" ]
+							}
+						],
+						"cardValue": {
+							"value": "C"
+						},
+						"cardValueNumberRestriction": {
+							"numberRestrictions": [
+								"<=X"
+							]
+						}
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:SetXByTargetCardValue:",
+					"cardValue": {
+						"value": "C"
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:ChooseFromList:",
+					"cardRestriction": {
+						"blurb": "Rune for Runechanneler to reshuffle",
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Rune" ]
+							}
+						]
+					},
+					"listRestriction": {
+						"listRestrictions": [
+							"Min Can Choose: X",
+							"Max Can Choose: X"
+						]
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:Reshuffle:"
+				},
+				{
+					"$type": "Subeffect:LoopWhileHaveTargets:",
+					"delete": true,
+					"remainingTargets": 1,
+					"jumpIndices": [
+						4
+					]
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "where for Runechanneler to cast its target Rune",
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            }
+                        ]
+					},
+					"targetIndex": 0
+				},
+				{
+					"$type": "Subeffect:Play:",
+					"targetIndex": 0
+				}
+			]
+		}
+	],
+	"n": 2,
+	"e": 4,
+	"s": 5,
+	"w": 4,
+	"subtypes": [
+		"Runar",
+		"Mage"
+	],
+	"subtypeText": "Runar Mage"
+}

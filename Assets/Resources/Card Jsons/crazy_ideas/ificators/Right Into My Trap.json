@@ -1,0 +1,55 @@
+{
+	"cardType": 83,
+	"cardName": "Right Into My Trap",
+	"effText": "Ificate.\nWhen an enemy moves adjacent to a Crazy card, give them -5 W.",
+	"effects": [
+		{
+			"triggerData": {
+				"blurb": "Right Into My Trap",
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Space Fits Restriction",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" }
+						]
+					},
+					"spaceRestriction": {
+						"spaceRestrictions": [
+							"Adjacent to a Card that Fits Restriction"
+						],
+						"cardRestriction": {
+							"cardRestrictionElements": [
+								{
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Crazy" ]
+								}
+							]
+						}
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetTriggeringCard:"
+				},
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"wModifier": -5
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Ificate"
+	],
+	"c": 5,
+	"subtypeText": "Crazy Idea Enchant Ificator"
+}

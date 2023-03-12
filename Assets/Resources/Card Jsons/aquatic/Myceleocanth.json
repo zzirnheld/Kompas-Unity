@@ -1,0 +1,109 @@
+{
+	"cardType": 67,
+	"cardName": "Myceleocanth",
+	"effText": "Waterborn Waterdweller. Spores.\nWhen turns start, pulse characters in Water.",
+	"effects": [
+		{
+			"blurb": "Waterborne Spores",
+			"triggerData": {
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetAll:",
+					"cardRestriction": {
+                        "cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+                            { "$type": "Core.CardRestriction:Character:" },
+                            {
+                                "$type": "Core.CardRestriction:PositionFitsRestriction:",
+                                "spaceRestriction": {
+                                    "spaceRestrictionElements": [
+                                        {
+                                            "$type": "Core.SpaceRestriction:InAOEOf:",
+                                            "anyOf": {
+                                                "$type": "ManyCards:FittingRestriction:",
+                                                "cardRestriction": {
+                                                    "cardRestrictionElements": [
+                                                        {
+                                                            "$type": "Core.CardRestriction:Subtypes:",
+                                                            "subtypes": [ "Water" ]
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+					}
+				},
+				{
+					"$type": "Subeffect:Activate:"
+				},
+				{
+					"$type": "Subeffect:Activate:",
+					"activate": false
+				},
+				{
+					"$type": "Subeffect:LoopWhileHaveTargets:",
+					"delete": true,
+					"jumpIndices": [
+						1
+					]
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Waterdweller"
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Default Normal Restrictions",
+			"Space Must Fit Restriction"
+		],
+		"normalRestrictionsToIgnore": [
+			"Adjacent to Friendly Card"
+		],
+		"effectRestrictions": [
+			"Default Effect Restrictions",
+			"Space Must Fit Restriction"
+		],
+		"effectRestrictionsToIgnore": [
+			"Adjacent to Friendly Card"
+		],
+		"spaceRestriction": {
+			"spaceRestrictionElements": [
+				{
+					"$type": "Core.SpaceRestriction:InAOEOf:",
+					"anyOf": {
+						"$type": "ManyCards:FittingRestriction:",
+						"cardRestriction": {
+							"cardRestrictionElements": [
+								{
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Water" ]
+								}
+							]
+						}
+					}
+				}
+			]
+		}
+	},
+	"n": 9,
+	"e": 11,
+	"s": 7,
+	"w": 11,
+	"subtypeText": "Aquatic Fungus Fish Monster"
+}

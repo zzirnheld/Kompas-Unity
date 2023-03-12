@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Invoke the Invoker",
-	"effText": "Hand->reshuffle 2 Spirits. Hand->summon an Invoker.",
+	"effText": "Flashback.\nShow a Spirit. Invoke an Invoker. Topdeck that Spirit.",
 	"effects": [
 		{
 			"triggerData": {
@@ -14,80 +14,74 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
-						"blurb": "for Invoke the Invoker to reshuffle (1/2)",
-						"cardRestrictions": [
-							"Subtypes Include",
-							"Friendly",
-							"Hand",
-							"Not Already Target"
-						],
-						"subtypesInclude": [
-							"Spirit"
+						"blurb": "Spirit to reveal for Invoke the Invoker",
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Spirit" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Show:"
+				},
+				{
+					"$type": "Subeffect:Mill:",
+					"xModifier": 1
+				},
+				{
+					"$type": "Subeffect:ConditionalJump:",
+					"condition": "Target Violates Restriction",
 					"cardRestriction": {
-						"blurb": "for Invoke the Invoker to reshuffle (2/2)",
-						"cardRestrictions": [
-							"Subtypes Include",
-							"Friendly",
-							"Hand",
-							"Not Already Target"
-						],
-						"subtypesInclude": [
-							"Spirit"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Invoker" ]
+							}
 						]
-					}
+					},
+					"jumpIndices": [
+						2
+					],
+					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp",
-					"targetIndex": -1
-				},
-				{
-					"$type": "KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp",
-					"targetIndex": -2
-				},
-				{
-					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
-					"maxCanChoose": 1,
-					"cardRestriction": {
-						"blurb": "Invoker to summon",
-						"cardRestrictions": [
-							"Friendly",
-							"Subtypes Include",
-							"Multiple Possible Locations"
-						],
-						"subtypesInclude": [
-							"Invoker"
-						],
-						"locations": [
-							3
-						]
-					}
-				},
-				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
-						"blurb": "where to Invoke",
-						"spaceRestrictions": [
-							"Can Play Card Target to This Space",
-							"Empty"
-						]
+						"blurb": "where to Invoke the Invoker",
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            }
+                        ]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Play:"
+				},
+				{
+					"$type": "Subeffect:Topdeck:",
+					"targetIndex": 0
 				}
 			]
 		}
 	],
-	"c": 1,
+	"keywords": [
+		"Flashback"
+	],
+	"c": 4,
 	"spellTypes": [
 		"Simple"
 	],
-	"subtypeText": "Simple"
+	"subtypeText": "Simple Invocation"
 }

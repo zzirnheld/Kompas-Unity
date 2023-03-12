@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Al Angus Aston",
-	"effText": "Once each turn, you can ask your opponent to reveal 2 cards. If they don't, give all friendly Reporters +1 NEWS and draw 1. (NEWS is NESW, but thematic.)",
+	"effText": "Once each turn, you can ask an enemy to reveal 2 cards. If they don't, give all friendly Reporters +1 NEWS and draw 1.",
 	"effects": [
 		{
 			"blurb": "SHOW ME 2 CARDS",
@@ -13,17 +13,17 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetEnemy:"
 				},
 				{
-					"$type": "KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CanResolve:",
 					"subeffIndices": [
 						3
 					],
 					"skipIndex": 7
 				},
 				{
-					"$type": "KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChooseOption:",
 					"choiceBlurb": "Reveal two cards?",
 					"optionBlurbs": [
 						"Yes",
@@ -36,13 +36,18 @@
 					"showX": true
 				},
 				{
-					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChooseFromList:",
 					"cardRestriction": {
 						"blurb": "cards to reveal",
 						"cardRestrictions": [
 							"Controller Matches Player Target",
-							"Hand",
 							"Hidden"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Hand" ]
+							}
 						]
 					},
 					"listRestriction": {
@@ -55,30 +60,35 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.RevealSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Reveal:"
 				},
 				{
-					"$type": "KompasServer.Effects.RevealSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Reveal:",
 					"targetIndex": -2
 				},
 				{
-					"$type": "KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:EndResolution:"
 				},
 				{
-					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Draw:",
 					"playerIndex": -2
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeAllCardStats:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Character",
-							"Board",
-							"Friendly",
-							"Subtypes Include"
+							"Character"
 						],
-						"subtypesInclude": [
-							"Reporter"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Reporter" ]
+							}
 						]
 					},
 					"nModifier": 1,

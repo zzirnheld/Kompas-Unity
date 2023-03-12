@@ -20,16 +20,31 @@ namespace KompasClient.UI
         private const string AwaitingResponseMessage = "Awaiting Response";
         private const string AwaitingEnemyResponse = "Awaiting Enemy Response";
 
-        public ClientGame clientGame;
-        //debug UI 
-        public InputField debugPipsField;
+        public const int OptionalEffManual = 0;
+        public const int OptionalEffYes = 1;
+        public const int OptionalEffNo = 2;
 
-        //gamestate values
+        public ClientGame clientGame;
+        public TargetMode TargetMode { get; set; } = TargetMode.Free;
+
+        public override IReminderTextParentController ReminderTextParentUIController => cardInfoViewUIController.ReminderTextsUIController;
+
+        [Header("Networking")]
+        public TMP_InputField ipInputField;
+        public GameObject networkingParent;
+
+        [Header("Pips")]
+        public TMP_Text friendlyPipsText;
+        public TMP_Text enemyPipsText;
+
+        [Header("Turn")]
         public TMP_Text CurrTurnText;
+        public Outline currTurnOutline;
         public GameObject EndTurnButton;
         public TMP_Text LeyloadText;
 
-        //current state
+        [Header("Current State")]
+        public TMP_Text currentStateText;
         public GameObject CurrStateOverallObj;
         public GameObject CurrStateBonusObj;
         public TMP_Text CurrStateText;
@@ -37,7 +52,7 @@ namespace KompasClient.UI
         private string primaryState;
         private string secondaryState;
 
-        //effects
+        [Header("Effects")]
         public InputField xInput;
         public GameObject setXView;
         public GameObject declineAnotherTargetView;
@@ -45,22 +60,23 @@ namespace KompasClient.UI
         public Toggle autodeclineEffects;
         public bool Autodecline => autodeclineEffects.isOn;
         public TMP_Dropdown autoOptionalEff;
-        public const int OptionalEffManual = 0;
-        public const int OptionalEffYes = 1;
-        public const int OptionalEffNo = 2;
         public int OptionalEffAutoResponse => autoOptionalEff.value;
+        public GameObject detailedEffectsCtrlUIObject;
 
+        [Header("Triggers")]
         private Trigger currOptionalTrigger;
         //confirm trigger
         public GameObject ConfirmTriggerView;
         public TMP_Text TriggerBlurbText;
+        //effect ordering
+        public TriggerOrderUIController triggerOrderUI;
         //choose effect option
         public ClientChooseOptionUIController chooseOptionUICtrl;
 
-        //stack ui
+        [Header("Stack UI")]
         public ClientStackPanelController clientStackUICtrl;
 
-        //deck select ui
+        [Header("Deck Select Screen")]
         public DeckSelectUIController DeckSelectCtrl;
         public GameObject DeckSelectUIParent;
         public GameObject ConnectToServerParent;
@@ -70,25 +86,15 @@ namespace KompasClient.UI
         public GameObject DeckAcceptedParent;
         public GameObject ConnectedWaitingParent;
 
-        //effect option ui
-        public TriggerOrderUIController triggerOrderUI;
+        [Header("Effects Activation")]
+        public RightClickCardClientUIController rightClickUIController;
 
-        //effect activation ui
-        public EffectActivatorUIController activatorUICtrl;
-
-        //escape menu
-        public ClientEscapeMenuUIController escapeMenuUICtrl;
-
-        //card view ui
-        public CardInfoViewClientUIController cardInfoViewUICtrl;
-
-        //top right detailed effects control ui
-        public GameObject detailedEffectsCtrlUIObject;
-
-        public GameCard CardToActivateEffectsFor
-        {
-            set => activatorUICtrl.nextShowFor = value;
-        }
+        [Header("Misc")]
+        public ClientEscapeMenuUIController escapeMenuUIController;
+        public ClientSidebarCardViewController cardInfoViewUIController;
+        public override SidebarCardViewController CardViewController => cardInfoViewUIController;
+        public ClientSettingsUIController clientUISettingsController;
+        public ClientBoardUIController boardUIController;
 
         public int FriendlyPips
         {
@@ -106,14 +112,12 @@ namespace KompasClient.UI
             set => LeyloadText.text = $"{value} Pips Leyload";
         }
 
+        public override bool AllowDragging => TargetMode == TargetMode.Free;
+
         private void Update()
         {
-            //when the user releaes a right click, show eff activation ui.
-            if (Input.GetMouseButtonUp(1)) activatorUICtrl.Show();
-            //when the user releases a left click, deselect any applicable effect activation ui
-            if (Input.GetMouseButtonUp(0)) activatorUICtrl.CancelIfApplicable();
             //when the user presses escape, show the menu.
-            if (Input.GetKeyDown(KeyCode.Escape)) escapeMenuUICtrl.Enable();
+            if (Input.GetKeyDown(KeyCode.Escape)) escapeMenuUIController.Enable();
         }
 
         private void Awake()
@@ -126,23 +130,7 @@ namespace KompasClient.UI
             ipInputField.text = clientSettings.defaultIP;
             detailedEffectsCtrlUIObject.SetActive(clientSettings.showAdvancedEffectsSettings);
         }
-
-        public override bool ShowInfoFor(GameCard card, bool refresh = false)
-        {
-            bool success = base.ShowInfoFor(card, refresh);
-            if (success) cardInfoViewUICtrl.ShowInfoFor(card, refresh);
-            return success;
-        }
-
-        public bool ShowEffect(Effect eff) => eff.CanBeActivatedBy(clientGame.Players[0]);
-
-        public override void SelectCard(GameCard card, Game.TargetMode targetMode, bool fromClick)
-        {
-            base.SelectCard(card, targetMode, fromClick);
-            if (fromClick && targetMode != Game.TargetMode.Free && card != null) clientGame.searchCtrl.ToggleTarget(card);
-        }
-
-        public void ReselectSelectedCard(bool fromClick) => SelectCard(SelectedCard, fromClick);
+            //TODO if (fromClick && targetMode != Game.TargetMode.Free && card != null) clientGame.searchCtrl.ToggleTarget(card);
 
         #region connection/game start
         public void Connect(bool acceptEmpty)
@@ -156,8 +144,8 @@ namespace KompasClient.UI
             else if (!IPAddress.TryParse(ip, out _)) return;
 
             //Stash ip
-            clientGame.ClientUISettings.defaultIP = ip;
-            clientGame.clientUISettingsCtrl.SaveSettings();
+            clientGame.ClientSettings.defaultIP = ip;
+            clientGame.clientUIController.clientUISettingsController.SaveSettings();
 
             HideConnectUI();
             clientGame.clientNetworkCtrl.Connect(ip);
@@ -200,6 +188,8 @@ namespace KompasClient.UI
         public void ChangeTurn(int index)
         {
             CurrTurnText.text = index == 0 ? FriendlyTurn : EnemyTurn;
+            //Debug.Log($"{clientGame}, {clientGame?.ClientSettings}, {clientGame?.ClientSettings?.FriendlyColor}");
+            currTurnOutline.effectColor = index == 0 ? clientGame.ClientSettings.FriendlyColor : clientGame.ClientSettings.EnemyColor;
             EndTurnButton.SetActive(index == 0);
         }
 
@@ -217,8 +207,6 @@ namespace KompasClient.UI
             => SetCurrState(primaryState ?? this.primaryState, secondaryState ?? this.secondaryState, numTargetsChosen ?? string.Empty);
 
         #region effects
-        public void ActivateSelectedCardEff(int index) => ActivateCardEff(ShownCard, index);
-
         public void ActivateCardEff(GameCard card, int index)
             => clientGame.clientNotifier.RequestActivateEffect(card, index);
 
@@ -243,6 +231,7 @@ namespace KompasClient.UI
 
         public void DeclineAnotherTarget()
         {
+            Debug.Log("Decline another target");
             DisableDecliningTarget();
             clientGame.clientNotifier.DeclineAnotherTarget();
         }
@@ -270,8 +259,8 @@ namespace KompasClient.UI
             }
         }
 
-        public void ShowOptionalTriggerSource() => currOptionalTrigger?.Source.cardCtrl.ShowPrimaryOfStackable(true);
-        public void HideOptionalTriggerSource() => currOptionalTrigger?.Source.cardCtrl.ShowPrimaryOfStackable(false);
+        public void ShowOptionalTriggerSource() => currOptionalTrigger?.Source.CardController.gameCardViewController.ShowPrimaryOfStackable(true);
+        public void HideOptionalTriggerSource() => currOptionalTrigger?.Source.CardController.gameCardViewController.ShowPrimaryOfStackable(false);
 
         public void RespondToTrigger(bool answer)
         {
@@ -325,21 +314,5 @@ namespace KompasClient.UI
             }
         }
         #endregion flow control
-
-        #region debug
-        public void DebugUpdatePips()
-        {
-            if (debugPipsField.text != "")
-            {
-                int toSetPips = int.Parse(debugPipsField.text);
-                clientGame.clientNotifier.RequestUpdatePips(toSetPips);
-            }
-        }
-
-        public void DebugUpdateEnemyPips(int num)
-        {
-            enemyPipsText.text = "Enemy Pips: " + num;
-        }
-        #endregion debug
     }
 }

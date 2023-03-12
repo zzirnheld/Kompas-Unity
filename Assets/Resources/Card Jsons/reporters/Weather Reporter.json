@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Weather Reporter",
-	"effText": "When an enemy card is revealed, pip hand->summon a character at half cost (if you can).",
+	"effText": "When an enemy card is revealed, pip hand->summon a character at half cost.",
 	"effects": [
 		{
 			"blurb": "Weather Report",
@@ -13,44 +13,51 @@
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Enemy"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" }
 						]
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "for Weather Reporter to hand-summon",
 						"cardRestrictions": [
 							"Character",
-							"Friendly",
-							"Hand",
 							"Can Be Played",
 							"Effect Controller can Afford Cost"
 						],
-						"costDivisor": 2
-					}
-				},
-				{
-					"$type": "KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
-					"xMultiplier": 1,
-					"xDivisor": 2
-				},
-				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction": {
-						"blurb": "where Weather Reporter to hand-summon",
-						"spaceRestrictions": [
-							"Can Play Card Target to This Space",
-							"Empty"
+						"costDivisor": 2,
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            }
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "Subeffect:PayPipsTargetCost:",
+					"divisor": 2
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "where Weather Reporter to hand-summon",
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            }
+                        ]
+					}
+				},
+				{
+					"$type": "Subeffect:Play:"
 				}
 			]
 		}

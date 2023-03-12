@@ -13,8 +13,8 @@
 						"Max Per Turn"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Friendly"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					},
 					"maxTimesPerTurn": 3
@@ -22,7 +22,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Draw:"
 				}
 			]
 		}

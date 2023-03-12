@@ -1,0 +1,60 @@
+{
+	"cardType": 67,
+	"cardName": "Passingbinder",
+	"effText": "When an enemy dies in Weather, Spin a Storm there.",
+	"effects": [
+		{
+			"blurb": "Bind the soul",
+			"triggerData": {
+				"triggerCondition": "Discard",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictionElements": [ {
+								"$type": "Core.SpaceRestriction:InAOEOf:",
+								"anyOf": {
+									"$type": "ManyCards:FittingRestriction:",
+									"cardRestriction": {
+									"cardRestrictionElements": [ {
+											"$type": "Core.CardRestriction:Subtypes:",
+											"subtypes": [ "Weather" ]
+										} ]
+									}
+								},
+								"minAnyOfCount": { 
+									"$type": "Numbers:Constant:",
+									"constant": 2
+								}
+							} ]
+						},
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" }
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetTriggeringCardsSpace:"
+				},
+				{
+					"$type": "Subeffect:Keyword:",
+					"keyword": "Spin a Storm"
+				}
+			]
+		}
+	],
+	"n": 4,
+	"e": 4,
+	"s": 4,
+	"w": 4,
+	"subtypeText": "Skyknight Stormspinner Mage"
+}

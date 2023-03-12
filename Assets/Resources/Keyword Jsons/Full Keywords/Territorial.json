@@ -10,38 +10,47 @@
 	},
 	"subeffects":[
 		{
-			"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+			"$type":"Subeffect:CardTarget:",
 			"cardRestriction":
 			{
 				"blurb":"for Dragon to move and attack",
-				"cardRestrictions":["Board","Character","Space Fits Restriction"],
+				"cardRestrictions":["Character","Space Fits Restriction"],
 				"spaceRestriction":
 				{
 					"spaceRestrictions":["Adjacent to Source"],
 					"mustBeEmpty":false
-				}
+				},
+				"cardRestrictionElements": [
+					{
+						"$type": "Core.CardRestriction:Location:",
+						"locations": [ "Board" ]
+					}
+				]
 			}
 		},
 		{
-			"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+			"$type":"Subeffect:SpaceTarget:",
 			"spaceRestriction":
 			{
 				"blurb":"where Dragon to move its target",
-				"spaceRestrictions":["Can Move Card Target to This Space","Distance to Card Target Fits X Restriction"],
-				"distanceXRestriction":{
-					"numberRestrictions":["=X"]
-				}
-			},
-			"xModifier":1
+				"spaceRestrictionElements": [ {
+					"$type": "Core.SpaceRestriction:CanMoveCard:",
+					"toMove": { "$type": "Cards:TargetIndex:" },
+					"distanceRestriction": {
+						"numberRestrictions": [ "==Constant" ],
+						"constant": 1
+					}
+				} ]
+			}
 		},
 		{
-			"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+			"$type":"Subeffect:Move:"
 		},
 		{
-			"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+			"$type":"Subeffect:TargetThis:"
 		},
 		{
-			"$type":"KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
+			"$type":"Subeffect:Attack:",
 			"attackerIndex":-1,
 			"targetIndex":-2
 		}

@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Orange Linewalker",
-	"effText":"Linewalk.\nWhen I move X spaces, each player can reshuffle their hand and draw X cards. (Players whose hand is empty can't draw.)",
+	"effText":"Linewalk.\nWhen I move X spaces, hand->reshuffle a distinct Linewalker and draw X cards.",
 	"effects":[
 		{
 			"blurb":"Orange Linewalked",
@@ -14,76 +14,30 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
-					"subeffIndices":[3],
-					"skipIndex":8
-				},
-				{
-					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
-					"choiceBlurb":"Reshuffle your hand and draw X?",
-					"optionBlurbs":["Yes","No"],
-					"jumpIndices":[2,7],
-					"showX":true,
-					"xMultiplier":1
-				},
-				{
-					"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
-					"jumpIndices":[7]
-				},
-				{
-					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Friendly","Hand"]
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "unworthy card in hand",
+						"cardRestrictions": [
+							"Distinct Name from Source"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Linewalker" ]
+							}
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+					"$type":"Subeffect:Reshuffle:"
 				},
 				{
-					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
-					"delete":true,
-					"jumpIndices":[4]
-				},
-				{
-					"$type":"KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
-					"xMultiplier":1
-				},
-				{
-					"$type":"KompasServer.Effects.ClearOnImpossibleSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
-					"subeffIndices":[11]
-				},
-				{
-					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
-					"choiceBlurb":"Reshuffle your hand and draw X?",
-					"optionBlurbs":["Yes","No"],
-					"jumpIndices":[11,100],
-					"showX":true,
-					"xMultiplier":1
-				},
-				{
-					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Controller Matches Player Target","Hand"]
-					}
-				},
-				{
-					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
-					"delete":true,
-					"jumpIndices":[12]
-				},
-				{
-					"$type":"KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"$type":"Subeffect:DrawX:",
 					"xMultiplier":1
 				}
 			]
@@ -91,8 +45,8 @@
 	],
 	"keywords":["Linewalk"],
 	"n":1,
-	"e":3,
-	"s":8,
-	"w":3,
+	"e":4,
+	"s":6,
+	"w":4,
 	"subtypeText":"Linewalker Mage"
 }

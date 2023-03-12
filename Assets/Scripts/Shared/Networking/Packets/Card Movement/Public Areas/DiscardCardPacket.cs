@@ -1,6 +1,7 @@
 ﻿using KompasCore.Networking;
 using KompasClient.GameCore;
 using KompasCore.Cards;
+using KompasCore.Cards.Movement;
 
 namespace KompasCore.Networking
 {
@@ -39,8 +40,7 @@ namespace KompasClient.Networking
     {
         public void Execute(ClientGame clientGame)
         {
-            var card = clientGame.GetCardWithID(cardId);
-            if (card != null) card.Discard();
+            clientGame.GetCardWithID(cardId)?.Discard();
         }
     }
 }

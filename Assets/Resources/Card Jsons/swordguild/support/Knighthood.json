@@ -1,0 +1,99 @@
+{
+	"cardType": 83,
+	"cardName": "Knighthood",
+	"effText": "When a Squire with total NESW X survives killing a character, tribute them and deck->summon an S <= X Warrior where they were.",
+	"effects": [
+		{
+            "blurb": "Bestow Knighthood",
+			"triggerData": {
+				"triggerCondition": "Discard",
+				"triggerRestriction": {
+					"triggerRestrictionElements": [
+                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:MainCardBefore:" },
+                            "cardRestriction": { "cardRestrictions": [ "Character" ] }
+                        },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CauseAfter:" },
+                            "cardRestriction": {
+                                "cardRestrictionElements": [
+                                    {
+                                        "$type": "Core.CardRestriction:Location:",
+                                        "locations": [ "Board" ]
+                                    },
+                                    {
+                                        "$type": "Core.CardRestriction:Subtypes:",
+                                        "subtypes": [ "Squire" ]
+                                    }
+                                ]
+                             }
+                        }
+                    ]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:SetXByTriggeringCardValue:",
+					"cardValue": { "value": "N" },
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:SetXByTriggeringCardValue:",
+					"cardValue": { "value": "E" },
+					"change": true,
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:SetXByTriggeringCardValue:",
+					"cardValue": { "value": "S" },
+					"change": true,
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:SetXByTriggeringCardValue:",
+					"cardValue": { "value": "W" },
+					"change": true,
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:TargetTriggeringCard:",
+					"cause": true
+				},
+				{
+					"$type":"Subeffect:TargetTargetsSpace:"
+				},
+				{
+					"$type":"Subeffect:Discard:"
+				},
+				{
+					"$type":"Subeffect:DeckTarget:",
+					"cardRestriction":
+					{
+						"blurb":"for Squire to become",
+						"cardRestrictions": [ "Character", "Deck", "Can Be Played", "Card Value Fits Number Restriction" ],
+						"cardValue": { "value": "S" },
+						"cardValueNumberRestriction": { "numberRestrictions": [ "<=X" ] },
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Warrior" ]
+							}
+						]
+					}
+				},
+				{
+					"$type":"Subeffect:Play:"
+				}
+			]
+		}
+	],
+    "unique": true,
+	"c": 1,
+	"spellTypes": [
+		"Enchant"
+	],
+	"subtypeText": "Enchant"
+}

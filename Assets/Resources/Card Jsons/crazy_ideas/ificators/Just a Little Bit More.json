@@ -1,0 +1,70 @@
+{
+	"cardType": 83,
+	"cardName": "Just a Little Bit More",
+	"effText": "Ificate.\nRummage. Move a card 1 space.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:Keyword:",
+					"keyword": "Rummage"
+				},
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "you! move a little bit to the left...",
+						"cardRestrictions": [
+							"Not Avatar"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "ok, now move just a little bit more",
+						"spaceRestrictionElements": [ 
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanMoveCard:",
+								"toMove": { "$type": "Cards:TargetIndex:" },
+								"distanceRestriction": {
+									"numberRestrictions": [ "==Constant" ],
+									"constant": 1
+								}
+							} 
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:Move:"
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Ificate"
+	],
+	"c": 5,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypes": [
+		"Simple",
+		"Crazy Idea"
+	],
+	"subtypeText": "Simple Crazy Idea Ificator"
+}

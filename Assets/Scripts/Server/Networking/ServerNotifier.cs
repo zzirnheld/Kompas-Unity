@@ -1,4 +1,5 @@
 ﻿using KompasCore.Cards;
+using KompasCore.Effects;
 using KompasCore.Networking;
 using KompasServer.Effects;
 using KompasServer.GameCore;
@@ -134,7 +135,10 @@ namespace KompasServer.Networking
             => SendToBothInverting(new SpacesMovedPacket(card.ID, card.SpacesMoved), card.KnownToEnemy);
 
         public void NotifyAttacksThisTurn(GameCard card)
-            => SendToBothInverting(new AttacksThisTurnPacket(card.ID, card.AttacksThisTurn), card.KnownToEnemy);
+        {
+            Debug.Log("Notifying about attacks this turn...");
+            SendToBothInverting(new AttacksThisTurnPacket(card.ID, card.AttacksThisTurn), card.KnownToEnemy);
+        }
 
         public void NotifySetNegated(GameCard card, bool negated)
             => SendToBothInverting(new NegateCardPacket(card.ID, negated), card.KnownToEnemy);
@@ -200,8 +204,6 @@ namespace KompasServer.Networking
 
         public void DisableDecliningTarget() => SendPacket(new ToggleDecliningTargetPacket(false));
 
-        public void DiscardSimples() => SendToBoth(new DiscardSimplesPacket());
-
         public void AskForTrigger(ServerTrigger t, int x, bool showX)
             => SendToBothInverting(new OptionalTriggerPacket(t.serverEffect.Source.ID, t.serverEffect.EffectIndex, x, showX));
 
@@ -211,6 +213,9 @@ namespace KompasServer.Networking
             int[] effIndices = triggers.Select(t => t.serverEffect.EffectIndex).ToArray();
             SendPacket(new GetTriggerOrderPacket(cardIds, effIndices));
         }
+
+        public void AddCardLink(CardLink link) => SendToBoth(new EditCardLinkPacket(link, add: true));
+        public void RemoveCardLink(CardLink link) => SendToBoth(new EditCardLinkPacket(link, add: false));
         #endregion other effect stuff
     }
 }

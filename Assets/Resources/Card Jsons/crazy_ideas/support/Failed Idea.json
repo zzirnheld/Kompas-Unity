@@ -1,0 +1,55 @@
+{
+	"cardType":67,
+	"cardName":"Failed Idea",
+	"effText":"When you hand->discard an Ificator, deck->discard a Crazy Idea, then tribute me.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Discard",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Controller Triggered","Main Card Fits Restriction Before"],
+					"cardRestriction":{
+						"cardRestrictions":["Hand"],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Ificator" ]
+							}
+						]
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"Subeffect:DeckTarget:",
+					"cardRestriction":{
+						"blurb":"card for Failed Idea to mill",
+						"cardRestrictions":["Deck"],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Crazy", "Idea" ]
+							}
+						]
+					}
+				},
+				{
+					"$type":"Subeffect:Discard:"
+				},
+                {
+                    "$type":"Subeffect:TargetThis:"
+                },
+                {
+                    "$type":"Subeffect:Discard:"
+                }
+			]	
+		}
+	],
+    "n":1,
+    "e":1,
+    "s":1,
+    "w":0,
+	"subtypeText":"Crazy Failure"
+}

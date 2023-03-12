@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Desperate Footpad",
-	"effText": "Supplicant.\nThe first time each stack another character arrives adjacent to a Supplicant, move them to another space adjacent to a Supplicant.",
+	"effText": "Supplicant: The first time each stack, move them to another space adjacent to a Supplicant.",
 	"effects": [
 		{
 			"triggerData": {
@@ -26,11 +26,11 @@
 							"Adjacent to a Card that Fits Restriction"
 						],
 						"adjacencyRestriction": {
-							"cardRestrictions": [
-								"Subtypes Include"
-							],
-							"subtypesInclude": [
-								"Supplicant"
+							"cardRestrictionElements": [
+								{
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Supplicant" ]
+								}
 							]
 						}
 					}
@@ -38,29 +38,32 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to escape the footpad",
 						"spaceRestrictions": [
-							"Can Move Card Target to This Space",
 							"Adjacent to a Card that Fits Restriction",
 							"Empty"
 						],
 						"adjacencyRestriction": {
-							"cardRestrictions": [
-								"Subtypes Include"
-							],
-							"subtypesInclude": [
-								"Supplicant"
+							"cardRestrictionElements": [
+								{
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Supplicant" ]
+								}
 							]
-						}
+						},
+						"spaceRestrictionElements": [ {
+							"$type": "Core.SpaceRestriction:CanMoveCard:",
+							"toMove": { "$type": "Cards:TargetIndex:" }
+						} ]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Move:"
 				}
 			]
 		}

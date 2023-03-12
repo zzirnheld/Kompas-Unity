@@ -1,0 +1,59 @@
+{
+	"cardType": 65,
+	"cardName": "Combustion Core",
+	"effText": "Recoverable.\nWhen turns start, pulse this Golem (activate, then deactivate them).",
+	"effects": [
+		{
+			"blurb": "Choo Choo Activate",
+			"triggerData": {
+				"blurb": "Pulse Golem",
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetAugmentedCard:"
+				},
+				{
+					"$type": "Subeffect:ConditionalEnd:",
+					"condition": "Target Violates Restriction",
+					"cardRestriction": {
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Golem" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:Activate:"
+				},
+				{
+					"$type": "Subeffect:Activate:",
+					"activate": false
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Recoverable"
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Augment Normal Restrictions"
+		],
+		"effectRestrictions": [
+			"Augment Effect Restrictions"
+		],
+		"augSubtypes": [
+			"Golem"
+		]
+	},
+	"a": 1,
+	"subtypeText": "Golem Core"
+}

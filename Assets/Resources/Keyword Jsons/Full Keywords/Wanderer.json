@@ -10,28 +10,33 @@
 	},
 	"subeffects":[
 		{
-			"$type":"KompasServer.Effects.TargetThisSpaceSubeffect, Assembly-CSharp"
+			"$type":"Subeffect:TargetThisSpace:"
 		},
 		{
-			"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+			"$type":"Subeffect:TargetThis:"
 		},
 		{
-			"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+			"$type":"Subeffect:SetXByTargetCardValue:",
 			"cardValue":{
 				"value":"S"
 			},
 			"xMultiplier":1
 		},
 		{
-			"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+			"$type":"Subeffect:Reshuffle:"
 		},
 		{
-			"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+			"$type":"Subeffect:DeckTarget:",
 			"cardRestriction":
 			{
 				"blurb":"Wanderer to Wander into",
-				"cardRestrictions":["Character","Deck","Subtypes Include","Card Value Fits Number Restriction"],
-				"subtypesInclude":["Wanderer"],
+				"cardRestrictions":["Character","Deck","Card Value Fits Number Restriction"],
+				"cardRestrictionElements": [
+					{
+						"$type": "Core.CardRestriction:Subtypes:",
+						"subtypes": [ "Wanderer" ]
+					}
+				],
 				"cardValue":{
 					"value":"S"
 				},
@@ -42,7 +47,7 @@
 			"xMultiplier":1
 		},
 		{
-			"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+			"$type":"Subeffect:Play:"
 		}
 	]	
 }

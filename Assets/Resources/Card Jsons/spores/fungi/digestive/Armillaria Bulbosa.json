@@ -1,0 +1,89 @@
+{
+	"cardType": 67,
+	"cardName": "Armillaria Bulbosa",
+	"effText": "Spores.\nWhen a Fungus pulses an enemy, deck-> or discard->summon Mycelium.",
+	"effects": [
+		{
+			"blurb": "Army",
+			"triggerData": {
+				"triggerCondition": "Activate",
+				"triggerRestriction": {
+					"triggerRestrictionElements": [
+                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CauseBefore:" },
+                            "cardRestriction": {
+                                "cardRestrictionElements": [
+                                    {
+                                        "$type": "Core.CardRestriction:Subtypes:",
+                                        "subtypes": [ "Fungus" ]
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:MainCardBefore:" },
+                            "cardRestriction": {
+                                "cardRestrictionElements": [ { "$type": "Core.CardRestriction:Enemy:" } ]
+                            }
+                        }
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:CardTarget:",
+					"blurb": "Mycelium to summon",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Multiple Possible Locations",
+							"Can Be Played"
+						],
+						"locations": [
+							2,
+							4
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Subtypes:",
+                                "subtypes": [ "Mycelium" ]
+                            }
+						]
+					},
+					"targetIndex": -2
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "Where to summon the Mycelium",
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            }
+                        ]
+					}
+				},
+				{
+					"$type": "Subeffect:Play:"
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Spores"
+	],
+	"n": 2,
+	"e": 2,
+	"s": 3,
+	"w": 2,
+	"subtypes": [
+		"Digestive",
+		"Fungus"
+	],
+	"subtypeText": "Digestive Fungus"
+}

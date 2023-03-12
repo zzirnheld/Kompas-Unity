@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Soulcutter the Heartless",
-	"effText": "Revenant.\nWhen a card is annihilated, hand->discard a Revenant, draw 1, and if it's an enemy turn, gain a pip.",
+	"effText": "Revenant.\nWhen a card is annihilated, hand->discard a Revenant, draw 1, and if it's an enemy turn, gain 1 pip.",
 	"effects": [
 		{
 			"triggerData": {
@@ -14,31 +14,34 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "for Soulcutter to discard",
-						"cardRestrictions": [
-							"Friendly",
-							"Hand",
-							"Subtypes Include"
-						],
-						"subtypesInclude": [
-							"Revenant"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Revenant" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Discard:"
 				},
 				{
-					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Draw:"
 				},
 				{
-					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ConditionalEnd:",
 					"condition": "Must be Enemy Turn"
 				},
 				{
-					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:AddPips:",
 					"xModifier": 1
 				}
 			]

@@ -1,0 +1,65 @@
+{
+	"cardType": 67,
+	"cardName": "Roth'Ka Inquisitor",
+	"effText": "Smite.\nWhen you hand->discard an S 0 spell, cast it.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Discard",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Controller Triggered",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Spell",
+							"Card Value Fits Number Restriction"
+						],
+						"cardValue": {
+							"value": "Cost"
+						},
+						"cardValueNumberRestriction": {
+							"numberRestrictions": [ "==Constant" ],
+							"constant": 0
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Hand" ]
+							}
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetTriggeringCard:"
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "Choose space to cast the spell",
+						"spaceRestrictions": [ "Can Play Card Target to This Space" ]
+					}
+				},
+				{
+					"$type": "Subeffect:Play:"
+				}
+			]
+		}
+	],
+	"keywords":[
+		"Smite"
+	],
+	"n": 1,
+	"e": 10,
+	"s": 10,
+	"w": 4,
+	"subtypes": [
+		"Orc",
+		"Paladin"
+	],
+	"subtypeText": "Orc Paladin"
+}

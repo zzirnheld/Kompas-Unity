@@ -2,6 +2,7 @@
 using KompasClient.GameCore;
 using KompasCore.GameCore;
 using KompasCore.Cards;
+using KompasCore.Cards.Movement;
 
 namespace KompasCore.Networking
 {
@@ -74,15 +75,14 @@ namespace KompasClient.Networking
     {
         public void Execute(ClientGame clientGame)
         {
-            var controller = clientGame.ClientPlayers[controllerIndex];
-            var card = clientGame.cardRepo.InstantiateClientNonAvatar(json, clientGame, controller, cardId);
-            clientGame.cardsByID.Add(cardId, card);
+            var controller = clientGame.clientPlayers[controllerIndex];
+            var card = clientGame.cardRepo.InstantiateClientNonAvatar(json, controller, cardId);
             card.KnownToEnemy = known;
             switch (Location)
             {
                 case CardLocation.Nowhere: break;
                 case CardLocation.Board:
-                    if (attached) clientGame.boardCtrl.GetCardAt((x, y)).AddAugment(card);
+                    if (attached) clientGame.BoardController.GetCardAt((x, y)).AddAugment(card);
                     else card.Play((x, y), controller);
                     break;
                 case CardLocation.Discard:
@@ -95,7 +95,7 @@ namespace KompasClient.Networking
                     card.Topdeck();
                     break;
                 case CardLocation.Annihilation:
-                    card.Controller.annihilationCtrl.Annihilate(card);
+                    card.Annihilate();
                     break;
                 default:
                     throw new System.ArgumentException($"Invalid location {location} for Add Card Client Packet to put card");

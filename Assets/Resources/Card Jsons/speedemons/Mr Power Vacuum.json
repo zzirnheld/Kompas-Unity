@@ -1,0 +1,83 @@
+{
+	"cardType": 67,
+	"cardName": "Mr Power Vacuum",
+	"effText": "Speedemon.\nWhen I move to a space adjacent to another Speedemon, annihilate a card adjacent to the space I left.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card",
+						"Space Fits Restriction"
+					],
+					"spaceRestriction": {
+						"spaceRestrictions": [
+							"Adjacent to a Card that Fits Restriction"
+						],
+						"adjacencyRestriction": {
+							"cardRestrictions": [
+								"Different from Source"
+							],
+							"cardRestrictionElements": [
+								{
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Speedemon" ]
+								}
+							]
+						},
+						"mustBeEmpty": false
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetTriggeringCardsSpace:"
+				},
+				{
+					"$type": "Subeffect:TargetThis:"
+				},
+				{
+					"$type": "Subeffect:SetXByTargetCardValue:",
+					"cardValue": {
+						"value": "S"
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:CardTarget:",
+					"blurb": "card to vakoom",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Space Target"
+							]
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:Annihilate:"
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Speedemon"
+	],
+	"n": 1,
+	"e": 2,
+	"s": 5,
+	"w": 1,
+	"unique": true,
+	"subtypeText": "Speedemon"
+}

@@ -14,39 +14,46 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "character to reshuffle",
 						"cardRestrictions": [
 							"Character",
-							"Board",
-							"Friendly",
 							"Summoned"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "S"
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Reshuffle:"
 				},
 				{
-					"$type": "KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:DeckTarget:",
 					"cardRestriction": {
 						"blurb": "Wanderer to inspire with music",
 						"cardRestrictions": [
 							"Character",
 							"Deck",
-							"Subtypes Include",
 							"Card Value Fits Number Restriction"
 						],
-						"subtypesInclude": [
-							"Wanderer"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Wanderer" ]
+							}
 						],
 						"cardValue": {
 							"value": "S"
@@ -60,17 +67,20 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to play the new Wanderer",
-						"spaceRestrictions": [
-							"Can Play Card Target to This Space",
-							"Empty"
-						]
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            }
+                        ]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Play:"
 				}
 			]
 		}

@@ -1,0 +1,62 @@
+{
+	"cardType": 83,
+	"cardName": "Laguz",
+	"effText": "Runic.\nWhen a character moves to a space here normally, move them 1 space.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Space Fits Restriction",
+						"Max Per Stack",
+						"Not From Effect"
+					],
+					"spaceRestriction": {
+						"spaceRestrictions": [
+							"In Source's AOE"
+						],
+						"mustBeEmpty": false
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanMoveCard:",
+								"toMove": { "$type": "Cards:TargetIndex:" },
+								"distanceRestriction": {
+									"numberRestrictions": [ "==Constant" ],
+									"constant": 1
+								}
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:Move:"
+				}
+			]
+		}
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Cannot be Played Normally"
+		]
+	},
+	"c": 1,
+	"spellTypes": [
+		"Radial"
+	],
+	"subtypes": [
+		"Rune",
+		"Radial"
+	],
+	"subtypeText": "Rune Radius",
+	"radius": 2
+}

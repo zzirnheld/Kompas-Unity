@@ -1,0 +1,56 @@
+{
+	"cardType": 67,
+	"cardName": "Fearstrikebinder",
+	"effText": "When a friendly defends in Weather, Spin a Storm there.",
+	"effects": [
+		{
+			"blurb": "Bind the fear",
+			"triggerData": {
+				"triggerCondition": "Defend",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction After"
+					],
+					"nowRestriction": {
+						"cardRestrictions": [
+							"Space Fits Restriction"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
+						],
+						"spaceRestriction":
+						{
+							"spaceRestrictionElements": [ {
+								"$type": "Core.SpaceRestriction:InAOEOf:",
+								"anyOf": {
+									"$type": "ManyCards:FittingRestriction:",
+									"cardRestriction": {
+									"cardRestrictionElements": [ {
+											"$type": "Core.CardRestriction:Subtypes:",
+											"subtypes": [ "Weather" ]
+										} ]
+									}
+								}
+							}]
+						}
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetTriggeringCardsSpace:"
+				},
+				{
+					"$type": "Subeffect:Keyword:",
+					"keyword": "Spin a Storm"
+				}
+			]
+		}
+	],
+	"n": 4,
+	"e": 4,
+	"s": 4,
+	"w": 4,
+	"subtypeText": "Skyknight Stormspinner Warrior"
+}

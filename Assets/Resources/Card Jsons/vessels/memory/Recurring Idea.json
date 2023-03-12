@@ -1,0 +1,80 @@
+{
+	"cardType": 65,
+	"cardName": "Recurring Idea",
+	"effText": "When I'm destroyed, gain 1 pip.\nWhen turns start, discard->attach me to a Vessel.",
+	"effects": [
+		{
+			"triggerData": {
+				"blurb": "Pip",
+				"triggerCondition": "Discard",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card",
+						"From Field"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:AddPips:",
+					"xModifier": 1
+				}
+			]
+		},
+		{
+			"triggerData": {
+				"blurb": "Recur",
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card Fits Restriction Now"
+					],
+					"selfRestriction": {
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							}
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetThis:"
+				},
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "for Buffer Shield to attach to",
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Vessel" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:Attach:",
+					"targetToAttachTo": -2,
+					"targetIndex": -1
+				}
+			]
+		}
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Augment Normal Restrictions"
+		],
+		"effectRestrictions": [
+			"Augment Effect Restrictions"
+		]
+	},
+	"a": 1,
+	"subtypeText": "Memory"
+}

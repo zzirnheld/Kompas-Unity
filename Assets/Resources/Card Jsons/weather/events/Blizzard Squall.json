@@ -1,0 +1,90 @@
+{
+	"cardType": 67,
+	"cardName": "Blizzard Squall",
+	"effText": "Weather Event: Set the N of all enemies in the same Weather Condition as me to 0.",
+	"effects": [
+		{
+			"blurb": "Freeze",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card",
+						"Enemy Turn"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:SetAllCardStats:",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"In AOE Source is Also In"
+							],
+							"alsoInAOEOfRestriction": {
+								"cardRestrictionElements": [
+									{
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Weather" ]
+									}
+								]
+							}
+						},
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
+					},
+					"nVal": 0
+				}
+			]
+		}
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Default Normal Restrictions",
+			"Space Must Fit Restriction"
+		],
+		"normalRestrictionsToIgnore": [
+			"Adjacent to Friendly Card"
+		],
+		"effectRestrictions": [
+			"Default Effect Restrictions",
+			"Space Must Fit Restriction"
+		],
+		"effectRestrictionsToIgnore": [
+			"Adjacent to Friendly Card"
+		],
+		"spaceRestriction": {
+			"spaceRestrictionElements": [ {
+				"$type": "Core.SpaceRestriction:InAOEOf:",
+				"anyOf": {
+					"$type": "ManyCards:FittingRestriction:",
+					"cardRestriction": {
+					"cardRestrictionElements": [ {
+							"$type": "Core.CardRestriction:Subtypes:",
+							"subtypes": [ "Weather" ]
+						} ]
+					}
+				},
+				"minAnyOfCount": { 
+					"$type": "Numbers:Constant:",
+					"constant": 2
+				}
+			} ]
+		}
+	},
+	"n": 4,
+	"e": 7,
+	"s": 4,
+	"w": 5,
+	"subtypeText": "Weather Event Elemental"
+}

@@ -1,0 +1,80 @@
+{
+	"cardType": 83,
+	"cardName": "None Defy the Lines",
+	"effText": "Push each character to their closest edge. (Your choice if tied. You choose the order.)",
+	"effects": [
+		{
+			"blurb": "Simple Effect",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:SkipToEffectOnImpossible:",
+					"jumpIndices": [
+						10
+					]
+				},
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "who to next be brought low by the Lines",
+						"cardRestrictions": [
+							"Character",
+							"Not Already Target"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:SkipToEffectOnImpossible:",
+					"jumpIndices": [
+						5
+					]
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "where on the Lines to bring them",
+						"spaceRestrictions": [
+							"Empty",
+							"On Card Target's Diagonal",
+							"On Edge of Board"
+						],
+						"spaceRestrictionElements": [ {
+							"$type": "Core.SpaceRestriction:CanMoveCard:",
+							"toMove": { "$type": "Cards:TargetIndex:" }
+						} ]
+					}
+				},
+				{
+					"$type": "Subeffect:Move:"
+				},
+				{
+					"$type": "Subeffect:Loop:",
+					"jumpIndices": [
+						0
+					]
+				}
+			]
+		}
+	],
+	"c": 4,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypes": [
+		"Simple"
+	],
+	"subtypeText": "Simple"
+}

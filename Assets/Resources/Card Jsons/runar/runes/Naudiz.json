@@ -1,0 +1,49 @@
+{
+	"cardType": 83,
+	"cardName": "Naudiz",
+	"effText": "Runic.\nGive all enemy characters -3 E.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:ChangeAllCardStats:",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
+					},
+					"eModifier": -3
+				}
+			]
+		}
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Cannot be Played Normally"
+		]
+	},
+	"c": 5,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypes": [
+		"Rune",
+		"Simple"
+	],
+	"subtypeText": "Rune Simple"
+}

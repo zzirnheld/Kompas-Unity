@@ -1,0 +1,86 @@
+{
+	"cardType": 67,
+	"cardName": "Ravenous Leymoth",
+	"effText": "Stealth.\nWhen a Moth attacks an S X character in Light, give the defender -X S and the Moth +X ESW.",
+	"effects": [
+		{
+			"blurb": "*slurps your fluids*",
+			"triggerData": {
+				"triggerCondition": "Attack",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before",
+                        "Secondary Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Moth" ]
+							}
+						]
+					},
+                    "secondaryCardRestriction": {
+						"cardRestrictions": [
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictionElements": [ {
+								"$type": "Core.SpaceRestriction:InAOEOf:",
+								"anyOf": {
+									"$type": "ManyCards:FittingRestriction:",
+									"cardRestriction": {
+									"cardRestrictionElements": [ {
+											"$type": "Core.CardRestriction:Subtypes:",
+											"subtypes": [ "Light" ]
+										} ]
+									}
+								}
+							} ]
+						}
+                    }
+				}
+			},
+			"subeffects": [
+				{
+					"$type":"Subeffect:TargetTriggeringCard:",
+					"secondary":true
+				},
+				{
+					"$type": "Subeffect:SetXByTargetCardValue:",
+					"cardValue": {
+						"value": "S"
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"sMultiplier": -1
+				},
+				{
+					"$type":"Subeffect:TargetTriggeringCard:"
+				},
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"eMultiplier": 1,
+					"sMultiplier": 1,
+					"wMultiplier": 1
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Stealth"
+	],
+	"n": 5,
+	"e": 3,
+	"s": 5,
+	"w": 3,
+	"subtypeText": "Shady Flying Moth"
+}

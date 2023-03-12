@@ -1,0 +1,77 @@
+{
+	"cardType": 83,
+	"cardName": "Accident-Prone Construction",
+	"effText": "When you summon an S X Structure, give it and all characters adjacent to it -X E.",
+	"effects": [
+		{
+			"blurb": "Rocks fall,",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Different from Source"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Structure" ]
+							}
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type":"Subeffect:TargetTriggeringCard:"
+				},
+				{
+					"$type": "Subeffect:SetXByTargetCardValue:",
+					"cardValue": {
+						"value": "S"
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:ChangeAllCardStats:",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Distance to Card Target Fits X Restriction"
+							],
+							"distanceXRestriction": {
+								"numberRestrictions": [
+									"<=Constant"
+								],
+								"constant": 1
+							}
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
+					},
+					"eMultiplier": -1
+				}
+			]
+		}
+	],
+	"c": 2,
+	"spellTypes": [
+		"Enchant"
+	],
+	"subtypes": [
+		"Enchant"
+	],
+	"subtypeText": "Enchant"
+}

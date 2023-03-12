@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Find Me Find Peace",
-	"effText": "Search your deck's top 7 cards for any number of Supplicants.",
+	"effText": "Deck->hand any number of Supplicants from your deck's top 7 cards.",
 	"effects": [
 		{
 			"triggerData": {
@@ -15,44 +15,48 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:TargetAll:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
-							"Index<C",
-							"Subtypes Include"
+							"Index<C"
 						],
-						"subtypesInclude": [
-							"Supplicant"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Supplicant" ]
+							}
 						],
 						"constant": 7
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.AddRestSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:AddRest:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
 							"Index<C",
 							"Not Already Target"
 						],
-						"constant": 7
+						"constant": 7,
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
+						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Hand:"
 				},
 				{
-					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"delete": true,
 					"jumpIndices": [
 						2
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.BottomdeckRestSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:BottomdeckRest:"
 				}
 			]
 		}

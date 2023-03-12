@@ -1,0 +1,81 @@
+{
+	"cardType": 83,
+	"cardName": "Forlorn Invocation",
+	"effText": "Flashback.\nCast only adjacent to an Invoker.\nInvoke a NON-Spirit.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:Mill:",
+					"xModifier": 1
+				},
+				{
+					"$type": "Subeffect:ConditionalJump:",
+					"condition": "Target Violates Restriction",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Subtypes Exclude"
+						],
+						"subtypesExclude": [
+							"Spirit"
+						]
+					},
+					"jumpIndices": [
+						0
+					],
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "where to Invoke the Spirit",
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            }
+                        ]
+					}
+				},
+				{
+					"$type": "Subeffect:Play:"
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Flashback"
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Default Normal Restrictions",
+			"Adjacent to Card Fitting Restriction"
+		],
+		"effectRestrictions": [
+			"Default Effect Restrictions",
+			"Adjacent to Card Fitting Restriction"
+		],
+		"adjacentCardRestriction": {
+			"cardRestrictionElements": [
+				{
+					"$type": "Core.CardRestriction:Subtypes:",
+					"subtypes": [ "Invoker" ]
+				}
+			]
+		}
+	},
+	"c": 3,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypeText": "Simple Invocation"
+}

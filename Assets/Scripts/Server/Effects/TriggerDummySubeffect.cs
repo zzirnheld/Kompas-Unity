@@ -1,10 +1,10 @@
 ﻿using System.Threading.Tasks;
 
-namespace KompasServer.Effects
+namespace KompasServer.Effects.Subeffects
 {
-    public class TriggerDummySubeffect : ServerSubeffect
+    public class TriggerDummy : ServerSubeffect
     {
-        public TriggerDummySubeffect(ServerEffect eff)
+        public TriggerDummy(ServerEffect eff)
         {
             this.ServerEffect = eff;
         }

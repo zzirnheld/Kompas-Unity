@@ -1,0 +1,72 @@
+{
+	"cardType": 67,
+	"cardName": "Boing Boing Launcher Guy",
+	"effText": "Speedemon.\nAfter I move, push another card adjacent to the space I moved from, 1 space away from there.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetTriggeringCardsSpace:"
+				},
+				{
+					"$type": "Subeffect:CardTarget:",
+					"blurb": "card to boing boing",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Different from Source",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Space Target"
+							]
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "where to boing boing launch that guy",
+						"spaceRestrictions": [
+							"Further from Source than Space Target",
+							"Empty"
+						],
+						"spaceRestrictionElements": [ {
+							"$type": "Core.SpaceRestriction:CanMoveCard:",
+							"toMove": { "$type": "Cards:TargetIndex:" },
+							"distanceRestriction": {
+								"numberRestrictions": [ "==Constant" ],
+								"constant": 1
+							}
+						} ]
+					}
+				},
+				{
+					"$type": "Subeffect:Move:"
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Speedemon"
+	],
+	"n": 1,
+	"e": 3,
+	"s": 3,
+	"w": 3,
+	"subtypeText": "Speedemon"
+}

@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Not Thrones and Crowns",
-	"effText": "Move each enemy character adjacent to a friendly Supplicant anywhere else, if you can.",
+	"effText": "Move each enemy adjacent to a friendly Supplicant to any other space.",
 	"effects": [
 		{
 			"triggerData": {
@@ -14,12 +14,9 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:TargetAll:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Character",
-							"Enemy",
-							"Board",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
@@ -27,31 +24,50 @@
 								"Adjacent to a Card that Fits Restriction"
 							],
 							"adjacencyRestriction": {
-								"cardRestrictions": [
-									"Subtypes Include"
-								],
-								"subtypesInclude": [
-									"Supplicant"
+								"cardRestrictionElements": [
+									{
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Supplicant" ]
+									}
 								]
 							}
-						}
-					}
-				},
-				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction": {
-						"blurb": "where to move the supplicant's attacker",
-						"spaceRestrictions": [
-							"Can Move Card Target to This Space",
-							"Empty"
+						},
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:SkipToEffectOnImpossible:",
+					"jumpIndices": [
+						4
+					]
 				},
 				{
-					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "where to move the supplicant's attacker",
+						"spaceRestrictionElements": [ 
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanMoveCard:",
+								"toMove": { "$type": "Cards:TargetIndex:" }
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:Move:"
+				},
+				{
+					"$type": "Subeffect:ClearOnImpossible:"
+				},
+				{
+					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"delete": true,
 					"jumpIndices": [
 						1

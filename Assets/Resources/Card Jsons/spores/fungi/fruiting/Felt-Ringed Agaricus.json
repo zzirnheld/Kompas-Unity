@@ -1,0 +1,73 @@
+{
+	"cardType": 67,
+	"cardName": "Felt-Ringed Agaricus",
+	"effText": "Spores.\nWhen a Fungus pulses a summon, give them +1 N if they're a Fungus, or -1 N if not.",
+	"effects": [
+		{
+			"blurb": "Felt in your Bones",
+			"triggerData": {
+				"triggerCondition": "Activate",
+				"triggerRestriction": {
+					"triggerRestrictionElements": [
+                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CauseBefore:" },
+                            "cardRestriction": {
+                                "cardRestrictionElements": [
+                                    {
+                                        "$type": "Core.CardRestriction:Subtypes:",
+                                        "subtypes": [ "Fungus" ]
+                                    }
+                                ]
+                            }
+                        }
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetTriggeringCard:"
+				},
+				{
+					"$type": "Subeffect:ConditionalJump:",
+					"condition": "Target Violates Restriction",
+					"cardRestriction": {
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Fungus" ]
+							}
+						]
+					},
+					"jumpIndices": [
+						4
+					]
+				},
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"nModifier": 1
+				},
+				{
+					"$type": "Subeffect:EndResolution:"
+				},
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"nModifier": -1
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Spores"
+	],
+	"n": 3,
+	"e": 2,
+	"s": 3,
+	"w": 2,
+	"subtypes": [
+		"Fruiting",
+		"Fungus"
+	],
+	"subtypeText": "Fruiting Fungus"
+}

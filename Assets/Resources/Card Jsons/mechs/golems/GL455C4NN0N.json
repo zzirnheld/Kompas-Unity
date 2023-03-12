@@ -1,0 +1,65 @@
+{
+	"cardType": 67,
+	"cardName": "GL455C4NN0N",
+	"effText": "Revenant Golem.\nWhen I'm revived, activate me.",
+	"effects": [
+		{
+			"blurb": "Activate",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							}
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetThis:"
+				},
+				{
+					"$type": "Subeffect:Activate:"
+				}
+			]
+		}
+	],
+	"MovementRestriction": {
+		"normalRestrictionsFromJson": [
+			"Default",
+			"Activated"
+        ]
+	},
+	"AttackRestriction": {
+		"attackRestrictions": [
+			"Default",
+			"This is Activated"
+		]
+	},
+	"keywords": [
+		"Revenant Die",
+		"Revenant Revive"
+	],
+	"n": 2,
+	"e": 1,
+	"s": 10,
+	"w": 11,
+	"subtypes": [
+        "Ethereal",
+        "Revenant",
+		"Mech",
+		"Golem"
+	],
+	"subtypeText": "Ethereal Revenant Mech Golem"
+}

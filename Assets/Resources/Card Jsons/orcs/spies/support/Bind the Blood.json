@@ -1,0 +1,117 @@
+{
+	"cardType": 83,
+	"cardName": "Bind the Blood",
+	"effText": "When an Orc here attacks, give them +1 W, and if they kill their target, give an Orc in your hand -2 S.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Attack",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Different from Source",
+							"Character",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": { "spaceRestrictions": [ "In Source's AOE" ] },
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Orc" ]
+							}
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:AutoTargetCardIdentity:",
+                    "subeffectCardIdentity": { "$type": "Cards:MainCardBefore:" }
+				},
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"wModifier": 1
+				},
+				{
+					"$type": "Subeffect:Delay:",
+					"numTimesToDelay": 0,
+					"jumpIndices": [
+						3
+					],
+					"fallOffCondition": "Battle End",
+					"fallOffRestriction": {
+						"triggerRestrictionElements": [
+							{
+								"$type": "Core.TriggerRestriction:StackablesMatch:",
+								"firstStackable": { "$type": "Stackables:StackableIndex:" },
+								"secondStackable": { "$type": "Stackables:StackableCause:" }
+							}
+						]
+					},
+					"endCondition": "Discard",
+					"triggerRestriction": {
+						"triggerRestrictionElements": [
+							{
+								"$type": "Core.TriggerRestriction:StackablesMatch:",
+								"firstStackable": { "$type": "Stackables:StackableIndex:" },
+								"secondStackable": { "$type": "Stackables:StackableCause:" }
+							},
+							{
+								"$type": "Core.TriggerRestriction:CardsMatch:",
+								"firstCard": { "$type": "Cards:MainCardBefore:" },
+								"secondCard": {
+									"secondary": true,
+									"$type": "Cards:MainCardBefore:"
+								}
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "Bind blood to a card",
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Orc" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:SkipToEffectOnImpossible:",
+					"jumpIndices": [
+						6
+					]
+				},
+				{
+					"$type": "Subeffect:Reveal:"
+				},
+				{
+					"$type": "Subeffect:ClearOnImpossible:"
+				},
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"forbidNotBoard": false,
+					"sModifier": -2
+				}
+			]
+		}
+	],
+	"c": 2,
+	"spellTypes": [
+		"Radial"
+	],
+	"radius": 2,
+	"subtypeText": "Radius 2"
+}

@@ -1,35 +1,38 @@
 {
 	"cardType":83,
-	"cardName":"Rights of the Supplicant",
-	"effText":"When a Supplicant defends, give their attacker -1 EW. (This enchant must be in play when the attack is declared to trigger the effect.)",
-	"effects":[
+	"cardName": "Rights of the Supplicant",
+	"effText": "When a character attacks a Supplicant, give the attacker -1 EW.",
+	"effects": [
 		{
 			"triggerData":
 			{
-				"triggerCondition":"Defend",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Main Card Fits Restriction Before"],
-					"cardRestriction":
-					{
-						"cardRestrictions":["Subtypes Include"],
-						"subtypesInclude":["Supplicant"]
+				"triggerCondition": "Defend",
+				"triggerRestriction": {
+					"triggerRestrictions": ["This Card in Play","Main Card Fits Restriction Before"],
+					"cardRestriction": {
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Supplicant" ]
+							}
+						]
 					}
 				}
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp",
+					"$type":"Subeffect:TargetTriggeringCard:",
 					"secondary":true
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type":"Subeffect:ChangeCardStats:",
 					"eModifier":-1,
 					"wModifier":-1
 				}
 			]	
 		}
 	],
-	"c":1,
-	"spellTypes":["Enchant"],
-	"subtypeText":"Enchant"
+	"c": 1,
+	"spellTypes": [ "Enchant" ],
+	"subtypeText": "Enchant"
 }

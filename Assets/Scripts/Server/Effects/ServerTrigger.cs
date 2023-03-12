@@ -56,7 +56,7 @@ namespace KompasServer.Effects
             if (!TriggerConditions.Contains(triggerData.triggerCondition))
                 throw new System.ArgumentNullException("triggerCondition", $"invalid trigger condition for effect of {parent.Source.CardName}");
 
-            parent.serverGame.EffectsController.RegisterTrigger(TriggerCondition, this);
+            parent.serverGame.effectsController.RegisterTrigger(TriggerCondition, this);
         }
 
         /// <summary>

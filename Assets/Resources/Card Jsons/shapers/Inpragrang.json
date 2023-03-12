@@ -1,0 +1,67 @@
+{
+	"cardType": 67,
+	"cardName": "Inpragrang",
+	"effText": "Shape.\nWhen I move, move a distinct Shaper to a space adjacent to me",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Distinct Name from Source"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Shaper" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "where to move the Shaper",
+						"spaceRestrictions": [
+							"Adjacent to Source",
+							"Empty"
+						],
+						"spaceRestrictionElements": [ {
+							"$type": "Core.SpaceRestriction:CanMoveCard:",
+							"toMove": { "$type": "Cards:TargetIndex:" }
+						} ]
+					}
+				},
+				{
+					"$type": "Subeffect:Move:"
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Shape"
+	],
+	"n": 3,
+	"e": 4,
+	"s": 4,
+	"w": 4,
+	"subtypes": [
+		"Ethereal",
+		"Shaper"
+	],
+	"subtypeText": "Ethereal Shaper"
+}

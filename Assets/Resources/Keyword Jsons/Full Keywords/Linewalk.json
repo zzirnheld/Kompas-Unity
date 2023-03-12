@@ -13,21 +13,20 @@
 	},
 	"subeffects":[
 		{
-			"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+			"$type":"Subeffect:TargetThis:"
 		},
 		{
-			"$type":"KompasServer.Effects.SpendRemainingMovementSubeffect, Assembly-CSharp",
-			"xModifier":1
+			"$type":"Subeffect:SpendRemainingMovement:",
+			"mult":1
 		},
 		{
-			"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+			"$type":"Subeffect:SpaceTarget:",
 			"spaceRestriction":
 			{
 				"blurb":"to Linewalk to",
 				"spaceRestrictions":[
 					"Empty",
 					"On Card Target's Diagonal",
-					"Can Move Card Target to This Space",
 					"Connected to Card Target by Spaces Fitting Restriction"
 				],
 				"spaceConnectednessRestriction": {
@@ -35,11 +34,15 @@
 						"Empty",
 						"On Card Target's Diagonal"
 					]
-				}
+				},
+				"spaceRestrictionElements": [ {
+					"$type": "Core.SpaceRestriction:CanMoveCard:",
+					"toMove": { "$type": "Cards:TargetIndex:" }
+				} ]
 			}
 		},
 		{
-			"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+			"$type":"Subeffect:Move:"
 		}
 	]
 }

@@ -1,0 +1,66 @@
+{
+	"cardType": 83,
+	"cardName": "Rocket-Propelled Ball",
+	"effText": "Comeback Play.\nWhen you attach an Augment an enemy character, move them 1 space.",
+	"effects": [
+		{
+			"triggerData": {
+				"blurb": "Rocket my balls!",
+				"triggerCondition": "Augment Attached",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Augments Card Fitting Restriction"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
+						],
+						"augmentRestriction": {
+							"cardRestrictionElements": [
+								{ "$type": "Core.CardRestriction:Enemy:" }
+							]
+						}
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetTriggeringCard:"
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "go",
+						"spaceRestrictionElements": [ 
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanMoveCard:",
+								"toMove": { "$type": "Cards:TargetIndex:" },
+								"distanceRestriction": {
+									"numberRestrictions": [ "==Constant" ],
+									"constant": 1
+								}
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:Move:"
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Comeback Play"
+	],
+	"c": 1,
+	"spellTypes": [
+		"Vanishing"
+	],
+	"duration": 1,
+	"subtypeText": "Team Play Vanishing"
+}

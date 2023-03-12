@@ -14,17 +14,17 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetAvatarSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetAvatar:"
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "S"
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChooseOption:",
 					"choiceBlurb": "Double or halve?",
 					"optionBlurbs": [
 						"Double",
@@ -37,22 +37,22 @@
 					"hasDefault": false
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeCardStats:",
 					"sMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.JumpSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Jump:",
 					"jumpIndices": [
 						6
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeCardStats:",
 					"sMultiplier": -1,
 					"sDivisor": 2
 				},
 				{
-					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Draw:"
 				}
 			]
 		}

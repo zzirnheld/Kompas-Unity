@@ -1,0 +1,44 @@
+{
+	"cardType": 83,
+	"cardName": "Regrowth",
+	"effText": "When friendly turns start, heal a Tree.",
+	"effects": [
+		{
+			"triggerData": {
+				"blurb": "Regrowth",
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Friendly Turn"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "Who to heal",
+						"cardRestrictions": [
+							"Hurt"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Tree" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:Heal:"
+				}
+			]
+		}
+	],
+	"c": 1,
+	"spellTypes": [
+		"Enchant"
+	],
+	"subtypeText": "Enchant"
+}

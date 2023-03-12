@@ -1,0 +1,66 @@
+{
+	"cardType": 83,
+	"cardName": "Sound Barrier",
+	"effText": "When a character moves, give me +1 C for the turn. If my C > 20, annihilate me and give that specific character +10 ESW.",
+	"effects": [
+		{
+			"blurb": "Sound Barrier",
+			"triggerData": {
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetThis:"
+				},
+				{
+					"$type": "Subeffect:Hanging.ChangeCardStats:",
+					"cModifier": 1,
+					"endCondition": "Turn Start",
+					"triggerRestriction": {
+						"triggerRestrictions": []
+					}
+				},
+				{
+					"$type": "Subeffect:ConditionalEnd:",
+					"condition": "Target Fits Restriction",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Card Value Fits Number Restriction"
+						],
+						"cardValue": {
+							"value": "C"
+						},
+						"cardValueNumberRestriction": {
+							"numberRestrictions": [
+								"<=X"
+							]
+						}
+					},
+					"xModifier": 30
+				},
+				{
+					"$type": "Subeffect:Annihilate:"
+				},
+				{
+					"$type": "Subeffect:TargetTriggeringCard:"
+				},
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"eModifier": 15,
+					"sModifier": 15,
+					"wModifier": 15
+				}
+			]
+		}
+	],
+	"c": 1,
+	"spellTypes": [
+		"Enchant"
+	],
+	"subtypeText": "Enchant"
+}

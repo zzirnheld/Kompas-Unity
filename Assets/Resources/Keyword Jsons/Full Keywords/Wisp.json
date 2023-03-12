@@ -1,0 +1,60 @@
+{
+	"blurb":"Wisp Turn Start",
+	"triggerData":
+	{
+		"blurb":"Wisp Turn Start",
+		"triggerCondition":"Turn Start",
+		"triggerRestriction":{
+			"triggerRestrictions":["This Card in Play"]
+		}
+	},
+	"subeffects":[
+		{
+			"$type": "Subeffect:AutoTargetSpaceIdentity:",
+			"subeffectSpaceIdentity": {
+				"$type": "Spaces:SelectFromMany:",
+				"selector": { "$type": "KompasCore.Effects.Selectors.RandomSpace, Assembly-CSharp" },
+				"spaces": {
+					"$type": "ManySpaces:CompareDistance:",
+					"distanceTo": { 
+						"$type": "Spaces:PositionOf:",
+						"ofThisCard": { "$type": "Cards:ThisCard:" }
+					},
+					"spaces": {
+						"$type": "ManySpaces:PositionsOfEach:",
+						"cards": {
+							"$type": "ManyCards:FittingRestriction:",
+							"cardRestriction": {
+								"cardRestrictionElements": [ { "$type": "Core.CardRestriction:Enemy:" } ]
+							}
+						}
+					}
+				}
+			}
+		},
+		{
+			"$type": "Subeffect:AutoTargetSpaceIdentity:",
+			"subeffectSpaceIdentity": {
+				"$type": "Spaces:SelectFromMany:",
+				"selector": { "$type": "KompasCore.Effects.Selectors.RandomSpace, Assembly-CSharp" },
+				"spaces": {
+					"$type": "ManySpaces:CompareDistance:",
+					"distanceTo": { "$type": "Spaces:TargetIndex:" },
+					"spaces": {
+						"$type": "ManySpaces:AdjacentSpaces:",
+						"adjacentTo": {
+							"$type": "Spaces:PositionOf:",
+							"ofThisCard": { "$type": "Cards:ThisCard:" }
+						}
+					}
+				}
+			}
+		},
+		{
+			"$type": "Subeffect:TargetThis:"
+		},
+		{
+			"$type":"Subeffect:Move:"
+		}
+	]	
+}

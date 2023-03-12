@@ -7,6 +7,8 @@ namespace KompasCore.Effects
     {
         #region values
         public const string Pips = "Pips";
+        public const string HandSize = "Hand Size";
+        public const string MaxHandSize = "Max Hand Size";
         #endregion values
 
         public string value;
@@ -21,6 +23,9 @@ namespace KompasCore.Effects
             int intermediateValue = value switch
             {
                 Pips => player.Pips,
+                HandSize => player.handCtrl.HandSize,
+                MaxHandSize => player.HandSizeLimit,
+
                 _ => throw new ArgumentException($"Invalid value string {value}", "value"),
             };
             return intermediateValue * multiplier / divisor + modifier;

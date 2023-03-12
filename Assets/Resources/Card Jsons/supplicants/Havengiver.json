@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Havengiver",
-	"effText":"When turns start, you can revive an S <= 1 Supplicant.",
+	"effText":"When turns start, revive a Supplicant.",
 	"effects":[
 		{
 			"triggerData":
@@ -14,18 +14,23 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"$type":"Subeffect:ChooseFromList:",
 					"maxCanChoose":1,
 					"cardRestriction":
 					{
 						"blurb":"Supplicant to give safe haven",
-						"cardRestrictions":["Friendly","Discard","Character","S<=C","Subtypes Include"],
-						"subtypesInclude":["Supplicant"],
-						"constant":1
+						"cardRestrictions":["Discard","Character"],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Supplicant" ]
+							}
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type":"Subeffect:SpaceTarget:",
 					"spaceRestriction":
 					{
 						"blurb":"haven to play the Supplicant",
@@ -33,14 +38,14 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type":"Subeffect:Play:"
 				}
 			]
 		}
 	],
-	"n":1,
-	"e":3,
-	"s":4,
-	"w":3,
-	"subtypeText":"Supplicant"
+	"n":2,
+	"e":2,
+	"s":2,
+	"w":0,
+	"subtypeText": "Kind Person"
 }

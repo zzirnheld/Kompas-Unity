@@ -1,0 +1,77 @@
+{
+	"cardType": 67,
+	"cardName": "51NG3",
+	"effText": "Golem.\nWhen I attack, give the defender -3 E. If this kills them, I get an extra attack this turn.",
+	"effects": [
+		{
+			"blurb": "G3T S1NG3D",
+			"triggerData": {
+				"triggerCondition": "Attack",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type":"Subeffect:TargetTriggeringCard:",
+					"secondary":true
+				},
+				{
+					"$type": "Subeffect:ConditionalEnd:",
+					"condition": "Target Fits Restriction",
+					"cardRestriction": {
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"eModifier": -3
+				},
+				{
+					"$type": "Subeffect:ConditionalEnd:",
+					"condition": "Target Violates Restriction",
+					"cardRestriction": {
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:SpendAttacks:",
+					"modifier": -1
+				}
+			]
+		}
+	],
+	"MovementRestriction": {
+		"normalRestrictionsFromJson": [
+			"Default",
+			"Activated"
+		]
+	},
+	"AttackRestriction": {
+		"attackRestrictions": [
+			"Default",
+			"This is Activated"
+		]
+	},
+	"n": 5,
+	"e": 5,
+	"s": 10,
+	"w": 3,
+	"subtypes": [
+		"Mech",
+		"Golem"
+	],
+	"subtypeText": "Mech Golem"
+}

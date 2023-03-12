@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "One Step Ahead",
-	"effText": "When I'm cast, choose a Mech in your deck. Delay 1 turn, then delay until a friendly Mech dies. Deck->hand a copy of the chosen Mech, and repeat this process.",
+	"effText": "When I'm cast, deck->choose a Mech. At least 1 turn later, when a friendly Mech dies, deck->hand a copy of your choice, and repeat this process.",
 	"effects": [
 		{
 			"blurb": "Always thinking",
@@ -15,23 +15,25 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:DeckTarget:",
 					"cardRestriction": {
 						"blurb": "Mech plan",
 						"cardRestrictions": [
 							"Character",
-							"Friendly",
-							"Deck",
-							"Subtypes Include"
+							"Deck"
 						],
-						"subtypesInclude": [
-							"Mech"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Mech" ]
+							}
 						]
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Delay:",
 					"numTimesToDelay": 0,
 					"jumpIndices": [
 						2
@@ -39,7 +41,7 @@
 					"endCondition": "Turn Start"
 				},
 				{
-					"$type": "KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Delay:",
 					"numTimesToDelay": 0,
 					"jumpIndices": [
 						3
@@ -50,33 +52,38 @@
 							"Main Card Fits Restriction Before"
 						],
 						"cardRestriction": {
-							"cardRestrictions": [
-								"Subtypes Include",
-								"Board",
-								"Friendly"
-							],
-							"subtypesInclude": [
-								"Mech"
+							"cardRestrictionElements": [
+								{ "$type": "Core.CardRestriction:Friendly:" },
+								{
+									"$type": "Core.CardRestriction:Location:",
+									"locations": [ "Board" ]
+								},
+								{
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Mech" ]
+								}
 							]
 						}
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.AutoTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:AutoTarget:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
 							"Same Name as Target"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					},
 					"tiebreakerDirection":"Any"
 				},
 				{
-					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Hand:"
 				},
 				{
-					"$type": "KompasServer.Effects.JumpSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Jump:",
 					"jumpIndices": [
 						0
 					]

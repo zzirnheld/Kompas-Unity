@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Magma Golem",
-	"effText": "Golem.\nWhen I'm activated, I give all adjacent characters -4 E.",
+	"effText": "Golem.\nWhen I become active, give all adjacent characters -4 E.",
 	"effects": [
 		{
 			"blurb": "Heheh. Grenade.",
@@ -15,12 +15,17 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeAllCardStats:",
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character",
-							"Board",
 							"Space Fits Restriction"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						],
 						"spaceRestriction": {
 							"spaceRestrictions": [

@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Newsflash!",
-	"effText": "Your opponent can reveal a Cost 1 card. If they don't, move an adjacent Reporter anywhere.",
+	"effText": "An enemy can reveal a Cost 1 card. If they don't, teleport an adjacent Reporter anywhere.",
 	"effects": [
 		{
 			"blurb": "Newsflash!",
@@ -15,17 +15,17 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetEnemy:"
 				},
 				{
-					"$type": "KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CanResolve:",
 					"subeffIndices": [
 						3
 					],
 					"skipIndex": 6
 				},
 				{
-					"$type": "KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChooseOption:",
 					"choiceBlurb": "Reveal a Cost 1 card?",
 					"optionBlurbs": [
 						"Yes",
@@ -37,12 +37,11 @@
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "fast card to reveal",
 						"cardRestrictions": [
 							"Controller Matches Player Target",
-							"Hand",
 							"Hidden",
 							"Card Value Fits Number Restriction"
 						],
@@ -54,25 +53,28 @@
 								"==Constant"
 							],
 							"constant": 1
-						}
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Hand" ]
+							}
+						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.RevealSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Reveal:"
 				},
 				{
-					"$type": "KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:EndResolution:"
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"playerIndex": -2,
 					"cardRestriction": {
 						"blurb": "friendly Reporter to move",
 						"cardRestrictions": [
 							"Character",
-							"Friendly",
-							"Board",
-							"Subtypes Include",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
@@ -80,24 +82,35 @@
 								"Adjacent to Source"
 							]
 						},
-						"subtypesInclude": [
-							"Reporter"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Reporter" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"playerIndex": -2,
 					"spaceRestriction": {
 						"blurb": "where for Newsflash! to move it starget",
-						"spaceRestrictions": [
-							"Empty",
-							"Can Move Card Target to This Space"
+						"spaceRestrictionElements": [ 
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanMoveCard:",
+								"toMove": { "$type": "Cards:TargetIndex:" }
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Move:",
 					"playerIndex": -2
 				}
 			]
@@ -108,12 +121,11 @@
 			"Adjacent to Card Fitting Restriction"
 		],
 		"adjacentCardRestriction": {
-			"cardRestrictions": [
-				"Character",
-				"Subtypes Include"
-			],
-			"subtypesInclude": [
-				"Reporter"
+			"cardRestrictionElements": [
+				{
+					"$type": "Core.CardRestriction:Subtypes:",
+					"subtypes": [ "Reporter" ]
+				}
 			]
 		}
 	},

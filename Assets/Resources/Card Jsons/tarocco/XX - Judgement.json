@@ -6,7 +6,6 @@
 		{
 			"blurb": "Judgement",
 			"triggerData": {
-				"blurb": "Kill an S <= X character? (X is the number of cards you just drew)",
 				"triggerCondition": "Draw",
 				"triggerRestriction": {
 					"triggerRestrictions": [
@@ -17,12 +16,11 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "character for Judgement to kill",
 						"cardRestrictions": [
 							"Character",
-							"Board",
 							"Card Value Fits Number Restriction"
 						],
 						"cardValue": {
@@ -32,12 +30,18 @@
 							"numberRestrictions": [
 								"<=X"
 							]
-						}
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Discard:"
 				}
 			]
 		}

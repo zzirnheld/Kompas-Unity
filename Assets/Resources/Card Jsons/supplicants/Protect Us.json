@@ -1,50 +1,78 @@
 {
-	"cardType":83,
-	"cardName":"Protect Us",
-	"effText":"Set X to the number of friendly Supplicants. Give all friendly Supplicants +X E. Give all friendly Negated Supplicants +X W.",
+	"cardType": 83,
+	"cardName": "Protect Us",
+	"effText": "Give all X friendly Supplicants +X E. Give all friendly Negated Supplicants +2 * X W.",
 	"effects":[
 		{
 			"triggerData":
 			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card is Main Card"]
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": ["This Card is Main Card"]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"$type":"Subeffect:SetXByGamestate:",
 					"whatToCount":"Cards Fitting Restriction",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Character","Board","Friendly","Subtypes Include"],
-						"subtypesInclude":["Supplicant"]
+						"cardRestrictions":["Character"],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Supplicant" ]
+							}
+						]
 					},
 					"xMultiplier":1
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"$type":"Subeffect:ChangeAllCardStats:",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Character","Board","Subtypes Include"],
-						"subtypesInclude":["Supplicant"]
+						"cardRestrictions":["Character"],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Supplicant" ]
+							}
+						]
 					},
 					"eMultiplier":1
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"$type":"Subeffect:ChangeAllCardStats:",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Character","Board","Friendly","Negated","Subtypes Include"],
-						"subtypesInclude":["Supplicant"]
+						"cardRestrictions":["Character","Negated"],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Supplicant" ]
+							}
+						]
 					},
 					"wMultiplier":3
 				}
 			]
 		}
 	],
-	"c":3,
-	"unique":true,
-	"spellTypes":["Simple"],
-	"subtypeText":"Simple Plea"
+	"c": 1,
+	"spellTypes": [ "Simple" ],
+	"subtypeText": "Simple Plea"
 }

@@ -1,0 +1,73 @@
+{
+	"cardType": 67,
+	"cardName": "Destroying Angel",
+	"effText": "Spores.\nWhen a Fungus pulses a summon, give them +1 E if they're a Fungus, or -1 E if not.",
+	"effects": [
+		{
+			"blurb": "Angel's Judgement",
+			"triggerData": {
+				"triggerCondition": "Activate",
+				"triggerRestriction": {
+					"triggerRestrictionElements": [
+                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CauseBefore:" },
+                            "cardRestriction": {
+                                "cardRestrictionElements": [
+                                    {
+                                        "$type": "Core.CardRestriction:Subtypes:",
+                                        "subtypes": [ "Fungus" ]
+                                    }
+                                ]
+                            }
+                        }
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetTriggeringCard:"
+				},
+				{
+					"$type": "Subeffect:ConditionalJump:",
+					"condition": "Target Violates Restriction",
+					"cardRestriction": {
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Fungus" ]
+							}
+						]
+					},
+					"jumpIndices": [
+						4
+					]
+				},
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"eModifier": 1
+				},
+				{
+					"$type": "Subeffect:EndResolution:"
+				},
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"eModifier": -1
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Spores"
+	],
+	"n": 2,
+	"e": 5,
+	"s": 5,
+	"w": 5,
+	"subtypes": [
+		"Fruiting",
+		"Fungus"
+	],
+	"subtypeText": "Fruiting Fungus"
+}

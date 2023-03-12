@@ -1,0 +1,94 @@
+{
+	"cardType": 67,
+	"cardName": "Lightning Elemental",
+	"effText": "Weather Event: Give an enemy character in the same Weather Condition as me -7 E.",
+	"effects": [
+		{
+			"blurb": "Strike Lightning",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card",
+						"Enemy Turn"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "character to strike with lightning",
+						"cardRestrictions": [
+							"Character",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"In AOE Source is Also In"
+							],
+							"alsoInAOEOfRestriction": {
+								"cardRestrictionElements": [
+									{
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Weather" ]
+									}
+								]
+							}
+						},
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"eModifier": -7
+				}
+			]
+		}
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Default Normal Restrictions",
+			"Space Must Fit Restriction"
+		],
+		"normalRestrictionsToIgnore": [
+			"Adjacent to Friendly Card"
+		],
+		"effectRestrictions": [
+			"Default Effect Restrictions",
+			"Space Must Fit Restriction"
+		],
+		"effectRestrictionsToIgnore": [
+			"Adjacent to Friendly Card"
+		],
+		"spaceRestriction": {
+			"spaceRestrictionElements": [ {
+				"$type": "Core.SpaceRestriction:InAOEOf:",
+				"anyOf": {
+					"$type": "ManyCards:FittingRestriction:",
+					"cardRestriction": {
+					"cardRestrictionElements": [ {
+							"$type": "Core.CardRestriction:Subtypes:",
+							"subtypes": [ "Weather" ]
+						} ]
+					}
+				},
+				"minAnyOfCount": { 
+					"$type": "Numbers:Constant:",
+					"constant": 2
+				}
+			} ]
+		}
+	},
+	"n": 5,
+	"e": 3,
+	"s": 4,
+	"w": 7,
+	"subtypeText": "Weather Event Elemental"
+}

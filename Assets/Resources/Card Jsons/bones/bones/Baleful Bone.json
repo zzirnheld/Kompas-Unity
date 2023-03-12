@@ -1,0 +1,70 @@
+{
+	"cardType": 67,
+	"cardName": "Baleful Bone",
+	"effText": "When I'm summoned, your \"Lengthening Elk\" attacks an enemy adjacent to them.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:AutoTarget:",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Name:",
+								"nameIs": "Lengthening Elk"
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "enemy character to attack",
+						"cardRestrictions": [
+							"Character",
+							"Space Fits Restriction"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Card Target"
+							]
+						}
+					}
+				},
+				{
+					"$type": "Subeffect:Attack:",
+					"targetIndex": -1,
+					"attackerIndex": -2
+				}
+			]
+		}
+	],
+	"n": 0,
+	"e": 2,
+	"s": 2,
+	"w": 2,
+	"subtypeText": "Bone"
+}

@@ -1,0 +1,44 @@
+{
+	"cardType": 83,
+	"cardName": "Jera",
+	"effText": "Runic.\nIf it's your turn, gain 3 pips and end your turn.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:ConditionalEnd:",
+					"condition": "Must be Friendly Turn"
+				},
+				{
+					"$type": "Subeffect:AddPips:",
+					"xModifier": 3
+				},
+				{
+					"$type": "Subeffect:EndTurn:"
+				}
+			]
+		}
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Cannot be Played Normally"
+		]
+	},
+	"c": 1,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypes": [
+		"Rune",
+		"Simple"
+	],
+	"subtypeText": "Rune Simple"
+}

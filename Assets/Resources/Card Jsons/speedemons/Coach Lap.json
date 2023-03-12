@@ -1,0 +1,69 @@
+{
+	"cardType": 67,
+	"cardName": "Coach Lap",
+	"effText": "Speedemon.\nThe first time each stack another character arrives adjacent to me, their controller moves them 1 space.",
+	"effects": [
+		{
+			"blurb": "Lap! Yeah!",
+			"triggerData": {
+				"triggerCondition": "Arrive",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"Space Fits Restriction",
+						"Max Per Stack",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Different from Source"
+						]
+					},
+					"spaceRestriction": {
+						"spaceRestrictions": [
+							"Adjacent to Source"
+						],
+						"mustBeEmpty": false
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetTriggeringCard:"
+				},
+				{
+					"$type": "Subeffect:TargetTargetsController:"
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "next lap?",
+						"spaceRestrictionElements": [ 
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanMoveCard:",
+								"toMove": { "$type": "Cards:TargetIndex:" },
+								"distanceRestriction": {
+									"numberRestrictions": [ "==Constant" ],
+									"constant": 1
+								}
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:Move:"
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Speedemon"
+	],
+	"n": 1,
+	"e": 3,
+	"s": 4,
+	"w": 5,
+	"unique": true,
+	"subtypeText": "Encouraging Speedemon Person"
+}

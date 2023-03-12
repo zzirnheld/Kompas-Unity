@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Clay Golem",
-	"effText": "Golem.\nWhen I'm activated, tribute me and deck->summon where I was a Golem with less S than your Avatar.",
+	"effText": "Golem.\nWhen I become active, tribute me. Deck->summon a Golem where I was.",
 	"effects": [
 		{
 			"blurb": "Golemorph",
@@ -15,42 +15,35 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetThisSpaceSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThisSpace:"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Discard:"
 				},
 				{
-					"$type": "KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:DeckTarget:",
 					"cardRestriction": {
 						"blurb": "for Clay Golem to summon",
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Character",
-							"Deck",
-							"Card Value Fits Number Restriction"
+							"Deck"
 						],
 						"cardValue": {
 							"value": "S"
 						},
-						"cardValueNumberRestriction": {
-							"numberRestrictions": [
-								"<Avatar"
-							],
-							"cardValue": {
-								"value": "S"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Golem" ]
 							}
-						},
-						"subtypesInclude": [
-							"Golem"
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Play:"
 				}
 			]
 		}

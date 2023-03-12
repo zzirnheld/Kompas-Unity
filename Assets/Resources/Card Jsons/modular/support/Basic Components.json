@@ -1,0 +1,54 @@
+{
+	"cardType": 83,
+	"cardName": "Basic Components",
+	"effText": "Deck->hand as many distinct Basic Modules as possible.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetAllCardsIdentity:",
+					"cardsIdentity": {
+						"$type": "ManyCards:Distinct:",
+						"cards": {
+                            "$type": "ManyCards:FittingRestriction:",
+                            "cards": {
+                                "$type": "ManyCards:Deck:",
+                                "friendly": true,
+                                "enemy": false
+                            },
+                            "cardRestriction": {
+                                "cardRestrictionElements": [
+                                    {
+                                        "$type": "Core.CardRestriction:Subtypes:",
+                                        "subtypes": [ "Basic", "Module" ]
+                                    }
+                                ]
+                            }
+                        }
+					}
+				},
+				{
+					"$type": "Subeffect:Hand:"
+				},
+				{
+					"$type": "Subeffect:LoopWhileHaveTargets:",
+					"delete": true,
+					"jumpIndices": [ 1 ]
+				}
+			]
+		}
+	],
+	"c": 1,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypeText": "Simple"
+}

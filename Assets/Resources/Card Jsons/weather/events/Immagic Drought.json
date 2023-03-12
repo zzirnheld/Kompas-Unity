@@ -1,0 +1,103 @@
+{
+	"cardType": 67,
+	"cardName": "Immagic Drought",
+	"effText": "Weather Event: Negate all enemy characters in the same Weather Condition as me, until the next turn starts.",
+	"effects": [
+		{
+			"blurb": "Dessicate",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card",
+						"Enemy Turn"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetAll:",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"In AOE Source is Also In"
+							],
+							"alsoInAOEOfRestriction": {
+								"cardRestrictionElements": [
+									{
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Weather" ]
+									}
+								]
+							}
+						},
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
+                    }
+				},
+				{
+					"$type": "Subeffect:Hanging.Negate:",
+					"endCondition": "Turn Start",
+					"triggerRestriction": {
+						"triggerRestrictions": []
+					}
+				},
+				{
+					"$type": "Subeffect:LoopWhileHaveTargets:",
+					"delete": true,
+					"jumpIndices": [
+						1
+					]
+				}
+			]
+		}
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Default Normal Restrictions",
+			"Space Must Fit Restriction"
+		],
+		"normalRestrictionsToIgnore": [
+			"Adjacent to Friendly Card"
+		],
+		"effectRestrictions": [
+			"Default Effect Restrictions",
+			"Space Must Fit Restriction"
+		],
+		"effectRestrictionsToIgnore": [
+			"Adjacent to Friendly Card"
+		],
+		"spaceRestriction": {
+			"spaceRestrictionElements": [ {
+				"$type": "Core.SpaceRestriction:InAOEOf:",
+				"anyOf": {
+					"$type": "ManyCards:FittingRestriction:",
+					"cardRestriction": {
+					"cardRestrictionElements": [ {
+							"$type": "Core.CardRestriction:Subtypes:",
+							"subtypes": [ "Weather" ]
+						} ]
+					}
+				},
+				"minAnyOfCount": { 
+					"$type": "Numbers:Constant:",
+					"constant": 2
+				}
+			} ]
+		}
+	},
+	"n": 4,
+	"e": 7,
+	"s": 4,
+	"w": 4,
+	"subtypeText": "Weather Event Elemental"
+}

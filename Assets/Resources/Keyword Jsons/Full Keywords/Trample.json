@@ -1,0 +1,58 @@
+{
+    "blurb": "Trample",
+    "triggerData": {
+        "triggerCondition": "Take Combat Damage",
+        "triggerRestriction": {
+            "triggerRestrictions": [
+                "Main Card Fits Restriction Before"
+            ],
+            "cardRestriction": {
+                "cardRestrictions": [
+                    "Is Defending From Source"
+                ]
+            }
+        }
+    },
+    "subeffects": [
+        {
+            "$type": "Subeffect:SetXByTriggeringCardValue:",
+            "cardValue": {
+                "value": "E"
+            },
+            "change": true,
+            "xMultiplier": -1
+        },
+        {
+            "$type":"Subeffect:TargetTriggeringCard:",
+            "secondary":true
+        },
+        {
+            "$type": "Subeffect:ConditionalEnd:",
+            "condition": "X<0"
+        },
+        {
+            "$type": "Subeffect:TargetTriggeringCardsSpace:"
+        },
+        {
+            "$type": "Subeffect:ChangeAllCardStats:",
+            "cardRestriction": {
+                "cardRestrictions": [
+                    "Character",
+                    "Space Fits Restriction"
+                ],
+                "cardRestrictionElements": [
+                    {
+                        "$type": "Core.CardRestriction:Location:",
+                        "locations": [ "Board" ]
+                    }
+                ],
+                "spaceRestriction": {
+                    "spaceRestrictions": [
+                        "Adjacent to Space Target"
+                    ]
+                }
+            },
+            "eMultiplier": -1
+        }
+    ]
+}

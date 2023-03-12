@@ -1,40 +1,57 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 namespace KompasCore.Effects
 {
     public interface IContextInitializeable
     {
-        public void Initialize(RestrictionContext restrictionContext);
+        public void Initialize(EffectInitializationContext initializationContext);
     }
 
     public abstract class ContextInitializeableBase : IContextInitializeable
     {
         protected bool Initialized { get; private set; }
 
-        protected RestrictionContext RestrictionContext { get; private set; }
+        protected EffectInitializationContext InitializationContext { get; private set; }
 
-        public virtual void Initialize(RestrictionContext restrictionContext)
+        protected virtual IEnumerable<IInitializationRequirement> InitializationRequirements => Enumerable.Empty<IInitializationRequirement>();
+
+        public virtual void Initialize(EffectInitializationContext initializationContext)
         {
-            RestrictionContext = restrictionContext;
+            if (Initialized)
+            {
+                Debug.Log($"Was already initialized with {InitializationContext}, but now being initialized with {initializationContext}");
+            }
+            InitializationContext = initializationContext;
 
             Initialized = true;
         }
 
         protected virtual void ComplainIfNotInitialized()
         {
-            if (!Initialized) throw new NotImplementedException($"You forgot to initialize a {GetType()}!");
+            if (!Initialized) throw new NotImplementedException($"You forgot to initialize a {GetType()}!\n{this}");
+        }
+
+        public override string ToString()
+        {
+            return GetType().ToString();
         }
     }
 
-    /// <summary>
-    /// A wrapper inheritor of ContextInitializeableBase that also checks that the restriction context has a subeffect
-    /// </summary>
-    public abstract class SubeffectInitializeableBase : ContextInitializeableBase
+    public interface IInitializationRequirement
     {
-        public override void Initialize(RestrictionContext restrictionContext)
+        public bool Validate(EffectInitializationContext initializationContext);
+    }
+
+    public class SubeffectInitializationRequirement : IInitializationRequirement
+    {
+        public bool Validate(EffectInitializationContext initializationContext)
         {
-            if (restrictionContext.subeffect == null) throw new ArgumentNullException($"{GetType()} must be initialized by/with a Subeffect");
-            base.Initialize(restrictionContext);
+            if (initializationContext.subeffect == null) throw new ArgumentNullException($"{GetType()} must be initialized by/with a Subeffect");
+
+            return true;
         }
     }
 }

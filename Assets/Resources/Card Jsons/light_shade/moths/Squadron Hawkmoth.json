@@ -1,0 +1,79 @@
+{
+	"cardType": 67,
+	"cardName": "Squadron Hawkmoth",
+	"effText": "Stealth.\nWhen a Moth attacks a character in Light, deck->hand a copy of me.",
+	"effects": [
+		{
+			"blurb": "Attack together",
+			"triggerData": {
+				"triggerCondition": "Attack",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before",
+                        "Secondary Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Moth" ]
+							}
+						]
+					},
+                    "secondaryCardRestriction": {
+						"cardRestrictions": [
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictionElements": [ {
+								"$type": "Core.SpaceRestriction:InAOEOf:",
+								"anyOf": {
+									"$type": "ManyCards:FittingRestriction:",
+									"cardRestriction": {
+									"cardRestrictionElements": [ {
+											"$type": "Core.CardRestriction:Subtypes:",
+											"subtypes": [ "Light" ]
+										} ]
+									}
+								}
+							} ]
+						}
+                    }
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:AutoTarget:",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Deck",
+							"Character",
+							"Same Name as Target"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
+						]
+					},
+					"tiebreakerDirection":"Any"
+				},
+				{
+					"$type": "Subeffect:Hand:"
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Stealth"
+	],
+	"n": 1,
+	"e": 1,
+	"s": 1,
+	"w": 1,
+	"subtypeText": "Collective Flying Moth"
+}

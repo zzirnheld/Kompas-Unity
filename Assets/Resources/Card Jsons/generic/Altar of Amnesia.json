@@ -1,0 +1,124 @@
+{
+	"cardType": 83,
+	"cardName": "Altar of Amnesia",
+	"effText": "During your turn, you can tribute a character here, set another character here's stats to the tributed character's.",
+	"effects": [
+		{
+			"blurb": "You are someone else",
+			"activationRestriction": {
+				"activationRestrictionArray": [
+					"Friendly Turn",
+					"Default"
+				]
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "Which character will die",
+						"cardRestrictions": [
+							"Character",
+							"Summoned",
+							"Space Fits Restriction"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"In Source's AOE"
+							]
+						}
+					}
+				},
+				{
+					"$type": "Subeffect:StashTargetsCardInfo:"
+				},
+				{
+					"$type": "Subeffect:Discard:"
+				},
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "Whose stats will get set",
+						"cardRestrictions": [
+							"Character",
+							"Summoned",
+							"Space Fits Restriction"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"In Source's AOE"
+							]
+						}
+					}
+				},
+				{
+					"$type": "Subeffect:SetXByTargetCardValue:",
+					"cardValue": {
+						"value": "N"
+					},
+					"cardInfo": true,
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"nMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:SetXByTargetCardValue:",
+					"cardValue": {
+						"value": "E"
+					},
+					"cardInfo": true,
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"eMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:SetXByTargetCardValue:",
+					"cardValue": {
+						"value": "S"
+					},
+					"cardInfo": true,
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"sMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:SetXByTargetCardValue:",
+					"cardValue": {
+						"value": "W"
+					},
+					"cardInfo": true,
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"wMultiplier": 1
+				}
+			]
+		}
+	],
+	"c": 2,
+	"spellTypes": [
+		"Radial"
+	],
+	"radius": 1,
+	"subtypeText": "Altar"
+}

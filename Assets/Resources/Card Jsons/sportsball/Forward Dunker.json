@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Forward Dunker",
-	"effText": "The first time each stack I'm augmented, attach my Augments to an adjacent Avatar.",
+	"effText": "When you augment me, attach my Augments to an adjacent Avatar.",
 	"effects": [
 		{
 			"triggerData": {
@@ -9,17 +9,16 @@
 				"triggerCondition": "Augmented",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"Max Per Stack",
-						"This Card is Main Card"
+						"This Card is Main Card",
+						"Controller Triggered"
 					]
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Board",
 							"Avatar",
 							"Space Fits Restriction"
 						],
@@ -27,26 +26,32 @@
 							"spaceRestrictions": [
 								"Adjacent to Source"
 							]
-						}
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetAugmentsSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetAugments:"
 				},
 				{
-					"$type": "KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:DeleteTarget:",
 					"targetIndex": 1
 				},
 				{
-					"$type": "KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Attach:",
 					"targetToAttachTo": 0,
 					"targetIndex": -1
 				},
 				{
-					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"delete": true,
 					"remainingTargets": 1,
 					"jumpIndices": [

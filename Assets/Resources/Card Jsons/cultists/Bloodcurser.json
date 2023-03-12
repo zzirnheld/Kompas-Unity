@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Bloodcurser",
-	"effText": "The first time each round a Cultist dies, give me -2 E and decksummon 2 Cultist Followers.",
+	"effText": "The first time each round a Cultist dies, give me -2 E to deck->summon 2 Cultist Followers.",
 	"effects": [
 		{
 			"triggerData": {
@@ -16,82 +16,97 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Character",
-							"Board",
-							"Friendly",
-							"Subtypes Include"
+							"Character"
 						],
-						"subtypesInclude": [
-							"Cultist"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Cultist" ]
+							}
 						]
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeCardStats:",
 					"eModifier": -2
 				},
 				{
-					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChooseFromList:",
 					"maxCanChoose": 1,
 					"cardRestriction": {
 						"blurb": "Silent Cult Follower to bloodcurse (1/2)",
 						"cardRestrictions": [
-							"Subtypes Include",
-							"Friendly",
 							"Deck",
 							"Character"
 						],
-						"subtypesInclude": [
-							"Cultist Follower"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Cultist", "Follower" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to play Bloodcurser's new bloodcurse (1/2)",
-						"spaceRestrictions": [
-							"Can Play Card Target to This Space",
-							"Empty"
-						]
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            }
+                        ]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Play:"
 				},
 				{
-					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChooseFromList:",
 					"maxCanChoose": 1,
 					"cardRestriction": {
 						"blurb": "Silent Cult Follower to bloodcurse (2/2)",
 						"cardRestrictions": [
-							"Subtypes Include",
-							"Friendly",
 							"Deck",
 							"Character"
 						],
-						"subtypesInclude": [
-							"Cultist Follower"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Cultist", "Follower" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to play Bloodcurser's new bloodcurse (2/2)",
-						"spaceRestrictions": [
-							"Can Play Card Target to This Space",
-							"Empty"
-						]
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            }
+                        ]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Play:"
 				}
 			]
 		}

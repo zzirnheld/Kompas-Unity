@@ -1,0 +1,82 @@
+{
+	"cardType": 83,
+	"cardName": "Drainfog",
+	"effText": "Weather Condition: Their controller hand->discards 2 cards, then draws 1.",
+	"effects": [
+		{
+			"blurb": "So tired",
+			"triggerData": {
+				"triggerCondition": "Arrive",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Space Fits Restriction",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character"
+						]
+					},
+					"spaceRestriction": {
+						"mustBeEmpty": false,
+						"spaceRestrictions": [
+							"In Source's AOE"
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type":"Subeffect:TargetTriggeringCard:"
+				},
+				{
+					"$type":"Subeffect:TargetTargetsController:"
+				},
+				{
+					"$type": "Subeffect:ChooseFromList:",
+					"cardRestriction": {
+						"blurb": "The fog is draining",
+						"cardRestrictions": [
+							"Controller Matches Player Target"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Hand" ]
+							}
+						]
+					},
+					"listRestriction": {
+						"listRestrictions": [
+							"Min Can Choose",
+							"Max Can Choose"
+						],
+						"minCanChoose": 2,
+						"maxCanChoose": 2
+					}
+				},
+				{
+					"$type": "Subeffect:Discard:"
+				},
+				{
+					"$type": "Subeffect:Discard:",
+					"targetIndex": -2
+				},
+				{
+					"$type":"Subeffect:Draw:"
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Weather Condition Cast"
+	],
+	"unique": true,
+	"c": 2,
+	"spellTypes": [
+		"Radial"
+	],
+	"subtypeText": "Radius Water Weather",
+	"radius": 2
+}

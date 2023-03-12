@@ -1,0 +1,115 @@
+{
+	"cardType": 67,
+	"cardName": "Arborealist, Nature Reporter",
+	"effText": "The first time each stack I gain E, an enemy can reveal a character with more E than me. If they don't, give friendly characters +1 NEWS.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "E Change",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"Max Per Stack",
+						"This Card in Play",
+						"X Fits Restriction",
+						"This Card is Main Card"
+					],
+					"xRestriction": {
+						"numberRestrictions": [
+							">0"
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:SetXByTriggeringCardValue:",
+					"cardValue": {
+						"value": "E"
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:TargetEnemy:"
+				},
+				{
+					"$type": "Subeffect:CanResolve:",
+					"subeffIndices": [
+						4
+					],
+					"skipIndex": 7
+				},
+				{
+					"$type": "Subeffect:ChooseOption:",
+					"choiceBlurb": "Reveal an E > X character?",
+					"optionBlurbs": [
+						"Yes",
+						"No"
+					],
+					"jumpIndices": [
+						4,
+						7
+					],
+					"showX": true
+				},
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "E > X character to reveal",
+						"cardRestrictions": [
+							"Controller Matches Player Target",
+							"Card Value Fits Number Restriction",
+							"Hidden",
+							"Character"
+						],
+						"cardValue": {
+							"value": "E"
+						},
+						"cardValueNumberRestriction": {
+							"numberRestrictions": [
+								">X"
+							]
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Hand" ]
+							}
+						]
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:Reveal:"
+				},
+				{
+					"$type": "Subeffect:EndResolution:"
+				},
+				{
+					"$type": "Subeffect:ChangeAllCardStats:",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
+					},
+					"nModifier": 1,
+					"eModifier": 1,
+					"sModifier": 1,
+					"wModifier": 1
+				}
+			]
+		}
+	],
+	"unique": true,
+	"n": 1,
+	"e": 3,
+	"s": 4,
+	"w": 3,
+	"subtypeText": "Tree Reporter"
+}

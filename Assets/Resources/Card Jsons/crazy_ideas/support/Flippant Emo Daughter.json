@@ -1,0 +1,43 @@
+{
+	"cardType": 67,
+	"cardName": "Flippant Emo Daughter",
+	"effText": "When you play a Crazy Idea, give me +2 ESW.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before",
+						"Controller Triggered"
+					],
+					"cardRestriction": {
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Crazy", "Idea" ]
+							}
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetThis:"
+				},
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"eModifier": 2,
+					"sModifier": 2,
+					"wModifier": 2
+				}
+			]
+		}
+	],
+	"n": 3,
+	"e": 1,
+	"s": 3,
+	"w": 1,
+	"subtypeText": "Crazy Emo"
+}

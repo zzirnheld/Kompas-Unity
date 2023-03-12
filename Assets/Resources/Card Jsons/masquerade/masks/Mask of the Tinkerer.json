@@ -1,0 +1,65 @@
+{
+	"cardType": 65,
+	"cardName": "Mask of the Tinkerer",
+	"effText": "Mask.\nWhen this character attacks an S X character, draw X cards.",
+	"effects": [
+		{
+			"blurb": "Dance of Ideation",
+			"triggerData": {
+				"triggerCondition": "Attack",
+				"triggerRestriction": {
+					"triggerRestrictionElements": [
+                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardsMatch:",
+                            "firstCard": {
+                                "$type": "Cards:AugmentedCard:",
+                                "ofThisCard": { "$type": "Cards:ThisCard:" }
+                            },
+                            "secondCard": { "$type": "Cards:MainCardBefore:" }
+                        }
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type":"Subeffect:TargetTriggeringCard:",
+					"secondary":true
+				},
+				{
+					"$type": "Subeffect:SetXByTargetCardValue:",
+					"cardValue": {
+						"value": "S"
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:DrawX:",
+					"xMultiplier": 1
+				}
+			]
+		}
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Augment Normal Restrictions",
+			"On Card that Fits Restriction"
+		],
+		"effectRestrictions": [
+			"Augment Effect Restrictions",
+			"On Card that Fits Restriction"
+		],
+		"onCardRestriction": {
+            "cardRestrictions": [
+                "Wields No Augment Fitting Restriction"
+            ],
+            "augmentRestriction": {
+                "cardRestrictions": [
+                    "Same Name as Source"
+                ]
+            }
+		}
+	},
+	"a": 5,
+	"subtypeText": "Mask"
+}

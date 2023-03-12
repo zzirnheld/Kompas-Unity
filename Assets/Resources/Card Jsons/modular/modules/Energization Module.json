@@ -1,0 +1,30 @@
+{
+	"cardType": 65,
+	"cardName": "Energization Module",
+	"effText": "When turns start, gain 1 pip.",
+	"effects": [
+		{
+			"blurb": "Energize",
+			"triggerData": {
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type":"Subeffect:AddPips:",
+					"xModifier":1
+				}
+			]
+		}
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [ "Augment Normal Restrictions" ],
+		"effectRestrictions": [ "Augment Effect Restrictions" ]
+	},
+	"a": 3,
+	"subtypeText": "Module"
+}

@@ -1,11 +1,11 @@
 {
 	"cardType": 65,
 	"cardName": "Sportsball",
-	"effText": "Pass Back. Recoverable.\nThe first two times each turn this character moves, attach me to an adjacent character.",
+	"effText": "Pass Back. Recoverable.\nBouncy, twice each turn.",
 	"effects": [
 		{
 			"triggerData": {
-				"blurb": "Heads up!",
+				"blurb": "Bouncy!",
 				"triggerCondition": "Move",
 				"triggerRestriction": {
 					"triggerRestrictions": [
@@ -17,10 +17,9 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Board",
 							"Character",
 							"Space Fits Restriction"
 						],
@@ -28,14 +27,20 @@
 							"spaceRestrictions": [
 								"Adjacent to Source"
 							]
-						}
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.AttachSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Attach:"
 				}
 			]
 		}

@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "God of Mercy",
-	"effText": "When I arrive adjacent to a Supplicant, negate adjacent characters until I'm removed.",
+	"effText": "When I arrive adjacent to a Supplicant, negate adjacent characters until I leave play.",
 	"effects": [
 		{
 			"triggerData": {
@@ -17,24 +17,22 @@
 							"Adjacent to a Card that Fits Restriction"
 						],
 						"adjacencyRestriction": {
-							"cardRestrictions": [
-								"Subtypes Include"
-							],
-							"subtypesInclude": [
-								"Supplicant"
+							"cardRestrictionElements": [
+								{
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Supplicant" ]
+								}
 							]
-						},
-						"mustBeEmpty": false
+						}
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:TargetAll:",
 					"cardRestriction": {
 						"blurb": "Supplicant to give safe haven",
 						"cardRestrictions": [
-							"Board",
 							"Character",
 							"Space Fits Restriction"
 						],
@@ -42,11 +40,17 @@
 							"spaceRestrictions": [
 								"Adjacent to Source"
 							]
-						}
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.TemporaryNegateSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Hanging.Negate:",
 					"endCondition": "Remove",
 					"triggerRestriction": {
 						"triggerRestrictions": [
@@ -55,7 +59,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"delete": true,
 					"jumpIndices": [
 						1

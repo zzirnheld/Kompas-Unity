@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Aeolian",
-	"effText": "Territorial.\nWhen I attack a character, move them X spaces, then give them -X E. (You can move them anywhere.)",
+	"effText": "Territorial.\nWhen I attack a character, move them X spaces, then give them -X E. (You can move them anywhere connected by empty spaces.)",
 	"effects": [
 		{
 			"blurb": "Air Breath",
@@ -16,29 +16,32 @@
 			},
 			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp",
+					"$type":"Subeffect:TargetTriggeringCard:",
 					"secondary":true
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where for Aeolian to move its target",
-						"spaceRestrictions": [
-							"Empty",
-							"Can Move Card Target to This Space"
+						"spaceRestrictionElements": [ 
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanMoveCard:",
+								"toMove": { "$type": "Cards:TargetIndex:" }
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetXByGamestate:",
 					"whatToCount": "Distance Between Target and Target Space",
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Move:"
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeCardStats:",
 					"eMultiplier": -1
 				}
 			]

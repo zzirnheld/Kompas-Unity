@@ -1,0 +1,30 @@
+{
+	"triggerData":
+	{
+		"blurb":"Undying",
+		"triggerCondition":"Discard",
+		"triggerRestriction":{
+			"triggerRestrictions": [
+                "This Card is Main Card",
+                "From Field"
+            ]
+		}
+	},
+	"subeffects":[
+		{
+			"$type":"Subeffect:TargetThis:"
+		},
+        {
+            "$type": "Subeffect:TargetTriggeringCardsSpace:"
+        },
+        {
+            "$type":"Subeffect:Delay:",
+            "numTimesToDelay": 0,
+            "jumpIndices": [ 1 ],
+            "endCondition": "Turn Start"
+        },
+        {
+            "$type": "Subeffect:Play:"
+        }
+	]
+}

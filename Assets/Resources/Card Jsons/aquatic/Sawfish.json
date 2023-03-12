@@ -22,17 +22,22 @@
 			"Adjacent to Friendly Card"
 		],
 		"spaceRestriction": {
-			"spaceRestrictions": [
-				"In AOE of Card Fitting Restriction"
-			],
-			"inAOEOfRestriction": {
-				"cardRestrictions": [
-					"Subtypes Include"
-				],
-				"subtypesInclude": [
-					"Water"
-				]
-			}
+			"spaceRestrictionElements": [
+				{
+					"$type": "Core.SpaceRestriction:InAOEOf:",
+					"anyOf": {
+						"$type": "ManyCards:FittingRestriction:",
+						"cardRestriction": {
+							"cardRestrictionElements": [
+								{
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Water" ]
+								}
+							]
+						}
+					}
+				}
+			]
 		}
 	},
 	"n": 2,

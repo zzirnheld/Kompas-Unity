@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Prophet of Mercy",
-	"effText": "When I start turns adjacent to X Supplicants, deck-cast a C <= X Plea.",
+	"effText": "When I start turns adjacent to X Supplicants, deck->cast a C <= X Plea.",
 	"effects": [
 		{
 			"triggerData": {
@@ -14,11 +14,9 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.SetXBoardRestrictionSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetXBoardRestriction:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Board",
-							"Subtypes Include",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
@@ -26,22 +24,27 @@
 								"Adjacent to Source"
 							]
 						},
-						"subtypesInclude": [
-							"Supplicant"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Supplicant" ]
+							}
 						]
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChooseFromList:",
 					"maxCanChoose": 1,
 					"cardRestriction": {
 						"blurb": "Supplicants' Plea",
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
 							"Spell",
-							"Subtypes Include",
 							"Card Value Fits Number Restriction"
 						],
 						"cardValue": {
@@ -52,24 +55,31 @@
 								"<=X"
 							]
 						},
-						"subtypesInclude": [
-							"Plea"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Plea" ]
+							}
 						]
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to play Supplicants' Plea",
-						"spaceRestrictions": [
-							"Can Play Card Target to This Space",
-							"Empty"
-						]
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            }
+                        ]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Play:"
 				}
 			]
 		}

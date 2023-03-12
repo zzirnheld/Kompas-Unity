@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Repair Hub",
-	"effText": "After a friendly Mech Golem dies here, delay 2 turns, then discard->hand them.",
+	"effText": "2 turns after a friendly Mech Golem dies here, discard->hand them.",
 	"effects": [
 		{
 			"blurb": "Repair Mech",
@@ -14,14 +14,16 @@
 						"This Card in Play"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Subtypes Include",
-							"Board",
-							"Friendly"
-						],
-						"subtypesInclude": [
-							"Mech",
-							"Golem"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Mech", "Golem" ]
+							}
 						]
 					},
 					"spaceRestriction": {
@@ -34,7 +36,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Delay:",
 					"numTimesToDelay": 1,
 					"jumpIndices": [
 						1
@@ -42,10 +44,10 @@
 					"endCondition": "Turn Start"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Hand:"
 				}
 			]
 		}

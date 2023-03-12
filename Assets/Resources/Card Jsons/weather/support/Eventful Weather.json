@@ -1,0 +1,64 @@
+{
+	"cardType": 83,
+	"cardName": "Eventful Weather",
+	"effText": "When you cast Weather Conditions, discard your topdeck. If it's a Weather Event, hand it; otherwise, bottomdeck it.",
+	"effects": [
+		{
+			"blurb": "Oh. Oh no.",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before",
+						"Controller Triggered"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Spell"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Weather", "Condition" ]
+							}
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:Mill:",
+					"xModifier": 1
+				},
+				{
+					"$type": "Subeffect:ConditionalJump:",
+					"condition": "Target Violates Restriction",
+					"cardRestriction": {
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Weather", "Event" ]
+							}
+						]
+					},
+					"jumpIndices": [
+						4
+					]
+				},
+				{
+					"$type": "Subeffect:Hand:"
+				},
+				{
+					"$type": "Subeffect:EndResolution:"
+				},
+				{
+					"$type": "Subeffect:Bottomdeck:"
+				}
+			]
+		}
+	],
+	"c": 2,
+	"subtypeText": "Enchant"
+}

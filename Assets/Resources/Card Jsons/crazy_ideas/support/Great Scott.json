@@ -1,0 +1,60 @@
+{
+	"cardType": 67,
+	"cardName": "Great Scott",
+	"effText": "The first time each turn a character moves, rummage. Move the character 1 space.",
+	"effects": [
+		{
+			"blurb": "SCARTY, THE MAR!!",
+			"triggerData": {
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before",
+						"Max Per Turn"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character"
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:Keyword:",
+					"keyword": "Rummage"
+				},
+				{
+					"$type": "Subeffect:TargetTriggeringCard:"
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "Great Scott, Marty, what card are we moving!?",
+						"spaceRestrictionElements": [ 
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanMoveCard:",
+								"toMove": { "$type": "Cards:TargetIndex:" },
+								"distanceRestriction": {
+									"numberRestrictions": [ "==Constant" ],
+									"constant": 1
+								}
+							} 
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:Move:"
+				}
+			]
+		}
+	],
+	"n": 1,
+	"e": 4,
+	"s": 5,
+	"w": 4,
+	"unique": true,
+	"subtypeText": "Crazy Doctor"
+}

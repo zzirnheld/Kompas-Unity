@@ -1,0 +1,50 @@
+{
+	"cardType": 83,
+	"cardName": "Dapplesun",
+	"effText": "Weather Condition: +1 E.",
+	"effects": [
+		{
+			"blurb": "Sun smiles",
+			"triggerData": {
+				"triggerCondition": "Arrive",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Space Fits Restriction",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character"
+						]
+					},
+					"spaceRestriction": {
+						"mustBeEmpty": false,
+						"spaceRestrictions": [
+							"In Source's AOE"
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetTriggeringCard:"
+				},
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"eModifier": 1
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Weather Condition Cast"
+	],
+	"unique": true,
+	"c": 3,
+	"spellTypes": [
+		"Radial"
+	],
+	"subtypeText": "Weather Condition Radius",
+	"radius": 2
+}

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace KompasCore.Effects
 {
-    public class NumberRestriction
+    public class NumberRestriction : ContextInitializeableBase
     {
         public const string Positive = ">0";
         public const string Negative = "<0";
@@ -26,24 +26,15 @@ namespace KompasCore.Effects
 
         public const string GreaterThanSourceCardValue = ">Source";
 
-        public string[] numberRestrictions;
+        public string[] numberRestrictions = {};
 
         public int constant;
 
         public CardValue cardValue;
 
-        public GameCard Source { get; private set; }
-        public Subeffect Subeffect { get; private set; }
-
-        private bool initialized = false;
-
-        public void Initialize(GameCard source, Subeffect subeffect = null)
-        {
-            Source = source;
-            Subeffect = subeffect;
-            cardValue?.Initialize(Source);
-            initialized = true;
-        }
+        public EffectInitializationContext initializationContext { get; private set; }
+        public GameCard Source => InitializationContext.source;
+        public Subeffect Subeffect => InitializationContext.subeffect;
 
         private bool IsRestrictionValid(string r, int x) => r switch
         {
@@ -77,8 +68,19 @@ namespace KompasCore.Effects
 
         public bool IsValidNumber(int x)
         {
-            if (!initialized) throw new System.ArgumentException("X restriction not initialized!");
+            ComplainIfNotInitialized();
             return numberRestrictions.All(r => IsRestrictionValid(r, x));
         }
+    }
+
+    public abstract class NumberRestrictionElement : ContextInitializeableBase
+    {
+        public bool IsValidNumber(int number)
+        {
+            ComplainIfNotInitialized();
+            return AbstractIsValidNumber(number);
+        }
+
+        protected abstract bool AbstractIsValidNumber(int number);
     }
 }

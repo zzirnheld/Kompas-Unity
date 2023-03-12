@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Silent Altar",
-	"effText": "When a character here dies, give me +1 C.\nYou can tribute Altars with total C 31 to hand-> or deck->summon any character.",
+	"effText": "When a character here dies, give me +1 C.\nYou can tribute Altars with total C 13 to hand-> or deck->summon any character.",
 	"effects": [
 		{
 			"triggerData": {
@@ -13,8 +13,13 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Space Fits Restriction",
-							"Board"
+							"Space Fits Restriction"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						],
 						"spaceRestriction": {
 							"spaceRestrictions": [
@@ -26,10 +31,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeCardStats:",
 					"cModifier": 1
 				}
 			]
@@ -42,26 +47,31 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.SetXSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:SetX:"
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Altar(s) to sacrifice",
 						"cardRestrictions": [
 							"Spell",
-							"Subtypes Include",
-							"Friendly",
-							"Board",
 							"Not Already Target"
 						],
-						"subtypesInclude": [
-							"Altar"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Altar" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "Cost"
 					},
@@ -69,7 +79,7 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.ConditionalJumpSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ConditionalJump:",
 					"condition": "X >= Constant",
 					"constant": 31,
 					"jumpIndices": [
@@ -77,51 +87,56 @@
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.LoopSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Loop:",
 					"jumpIndices": [
 						1
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Discard:"
 				},
 				{
-					"$type": "KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:DeleteTarget:"
 				},
 				{
-					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"jumpIndices": [
 						5
 					]
 				},
 				{
-					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChooseFromList:",
 					"maxCanChoose": 1,
 					"cardRestriction": {
 						"blurb": "culmination of the Silent Altar Ritual",
 						"cardRestrictions": [
-							"Friendly",
 							"Multiple Possible Locations",
 							"Character"
 						],
 						"locations": [
 							3,
 							4
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to play the result Silent Altar Ritual",
-						"spaceRestrictions": [
-							"Can Play Card Target to This Space",
-							"Empty"
-						]
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            }
+                        ]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Play:"
 				}
 			]
 		}
@@ -130,6 +145,6 @@
 	"spellTypes": [
 		"Radial"
 	],
-	"subtypeText": "Silent Altar Radial",
-	"radius": 2
+	"subtypeText": "Silent Altar Radius",
+	"radius": 4
 }

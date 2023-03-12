@@ -1,0 +1,87 @@
+{
+	"cardType": 83,
+	"cardName": "Here Be Monsters",
+	"effText": "When I'm cast in Water with total cost X, annihilate me, then deck->summon an S <= X Aquatic character where I was.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:SetXByGamestate:",
+					"whatToCount": "Total Card Value of Cards Fitting Restriction",
+					"cardValue": {
+						"value": "Cost"
+					},
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Source in This' AOE"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Water" ]
+							}
+						]
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:TargetThis:"
+				},
+				{
+					"$type": "Subeffect:TargetTargetsSpace:"
+				},
+				{
+					"$type": "Subeffect:Annihilate:"
+				},
+				{
+					"$type": "Subeffect:DeckTarget:",
+					"cardRestriction": {
+						"blurb": "Monster here",
+						"cardRestrictions": [
+							"Character",
+							"Deck",
+							"Can Be Played",
+							"Card Value Fits Number Restriction"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Aquatic" ]
+							}
+						],
+						"cardValue": {
+							"value": "S"
+						},
+						"cardValueNumberRestriction": {
+							"numberRestrictions": [
+								"<=X"
+							]
+						}
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:Play:"
+				}
+			]
+		}
+	],
+	"c": 2,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypes": [
+		"Aquatic",
+		"Simple"
+	],
+	"subtypeText": "Aquatic Simple"
+}

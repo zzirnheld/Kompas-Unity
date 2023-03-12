@@ -1,0 +1,43 @@
+{
+	"cardType": 67,
+	"cardName": "Glyphcarver",
+	"effText": "When I start turns adjacent to X Structures, draw X cards.",
+	"effects": [
+		{
+			"blurb": "Carve Glyphs",
+			"triggerData": {
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:SetXBoardRestriction:",
+					"cardRestriction": {
+						"cardRestrictions": [ "Space Fits Restriction" ],
+						"spaceRestriction": { "spaceRestrictions": [ "Adjacent to Source" ] },
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Structure" ]
+							}
+						]
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:DrawX:",
+					"xMultiplier": 1
+				}
+			]
+		}
+	],
+	"n": 1,
+	"e": 6,
+	"s": 4,
+	"w": 3,
+	"subtypeText": "Maya Craftsperson"
+}

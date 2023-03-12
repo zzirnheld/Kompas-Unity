@@ -1,0 +1,112 @@
+{
+	"cardType": 83,
+	"cardName": "Bone Integration",
+	"effText": "When turns start, hand a friendly Bone, giving its stats to your \"Lengthening Bone\".",
+	"effects": [
+		{
+            "blurb": "Bonecast",
+			"triggerData": {
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "pick 'em up pick 'em up",
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Bone" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:StashTargetsCardInfo:"
+				},
+				{
+					"$type": "Subeffect:Hand:"
+				},
+				{
+					"$type": "Subeffect:AutoTarget:",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Name:",
+								"nameIs": "Lengthening Elk"
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:SetXByTargetCardValue:",
+					"cardValue": {
+						"value": "N"
+					},
+					"cardInfo": true,
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"nMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:SetXByTargetCardValue:",
+					"cardValue": {
+						"value": "E"
+					},
+					"cardInfo": true,
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"eMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:SetXByTargetCardValue:",
+					"cardValue": {
+						"value": "S"
+					},
+					"cardInfo": true,
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"sMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:SetXByTargetCardValue:",
+					"cardValue": {
+						"value": "W"
+					},
+					"cardInfo": true,
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"wMultiplier": 1
+				}
+			]
+		}
+	],
+	"c": 1,
+	"subtypeText": ""
+}

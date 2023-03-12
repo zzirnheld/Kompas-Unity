@@ -20,6 +20,7 @@ namespace KompasCore.Effects
         public const string WChange = "W Change";
         public const string CChange = "C Change";
         public const string AChange = "A Change";
+        public const string Healed = "Healed";
 
         //combat
         public const string Defends = "Defend";
@@ -54,6 +55,8 @@ namespace KompasCore.Effects
         public const string Revealed = "Revealed";
         public const string Vanish = "Vanish";
 
+        public const string Anything = "Anything";
+
         public static readonly string[] TriggerConditions = {
             TurnStart, StackEnd, EffectPushedToStack,
             Activate, Deactivate, Negate,
@@ -61,7 +64,8 @@ namespace KompasCore.Effects
             Defends, Attacks, TakeCombatDamage, DealCombatDamage, Battles, BattleEnds,
             EachDraw, DrawX, Arrive, Play, Discard, Rehand, Reshuffle, Topdeck, Bottomdeck, ToDeck, Move, Annhilate, Remove, LeaveAOE,
             AugmentAttached, AugmentDetached, Augmented,
-            Revealed, Vanish
+            Revealed, Vanish,
+            Anything
         };
 
         public TriggerData TriggerData { get; }
@@ -77,7 +81,7 @@ namespace KompasCore.Effects
         {
             TriggerData = triggerData;
             Effect = effect;
-            triggerData.triggerRestriction.Initialize(effect.Game, Source, this, effect);
+            triggerData.triggerRestriction.Initialize(new EffectInitializationContext(game: effect.Game, source: effect.Source, effect: effect, trigger: this));
         }
     }
 }

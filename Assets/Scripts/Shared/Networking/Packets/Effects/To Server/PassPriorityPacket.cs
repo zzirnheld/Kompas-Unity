@@ -19,7 +19,7 @@ namespace KompasServer.Networking
         public async Task Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
         {
             //player.PassedPriority = true;
-            await serverGame.EffectsController.CheckForResponse(reset: false);
+            await serverGame.effectsController.CheckForResponse(reset: false);
         }
     }
 }

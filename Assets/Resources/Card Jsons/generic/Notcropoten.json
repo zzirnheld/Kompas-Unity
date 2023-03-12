@@ -1,0 +1,92 @@
+{
+	"cardType": 67,
+	"cardName": "Notcropoten",
+	"effText": "When friendly turns start, you can have me pay X E. Annihilate your deck's top X. Delay 1. Rehand it.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Friendly Turn"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetThis:"
+				},
+				{
+					"$type": "Subeffect:SetXByTargetCardValue:",
+					"cardValue": {
+						"value": "E"
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:PlayerChooseX:",
+					"XRest": {
+						"cardRestrictions": [
+							"<=X"
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:PayStats:",
+					"eMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:DeleteTarget:"
+				},
+				{
+					"$type": "Subeffect:TargetAll:",
+					"cardRestriction": {
+						"blurb": "for Haemopoten to draw",
+						"cardRestrictions": [
+							"Deck",
+							"Index<X"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
+						]
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:Annihilate:"
+				},
+				{
+					"$type": "Subeffect:XTimes:",
+					"jumpIndices": [
+						6
+					]
+				},
+				{
+					"$type": "Subeffect:Delay:",
+					"numTimesToDelay": 0,
+					"jumpIndices": [
+						8
+					],
+					"fallOffCondition": "",
+					"endCondition": "Turn Start"
+				},
+				{
+					"$type": "Subeffect:Hand:"
+				},
+				{
+					"$type": "Subeffect:LoopWhileHaveTargets:",
+					"delete": true,
+					"jumpIndices": [
+						8
+					]
+				}
+			]
+		}
+	],
+	"n": 4,
+	"e": 3,
+	"s": 9,
+	"w": 9,
+	"subtypeText": "Dragon Mage"
+}

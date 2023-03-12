@@ -1,0 +1,72 @@
+{
+	"cardType": 65,
+	"cardName": "Defense Core",
+	"effText": "Recoverable.\nWhile equipped, activate this character. When they defend, give them +4 EW.",
+	"effects": [
+		{
+			"blurb": "Defense Activate!",
+			"triggerData": {
+				"blurb": "Activate Golem",
+				"triggerCondition": "Augment Attached",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetAugmentedCard:"
+				},
+				{
+					"$type": "Subeffect:Hanging.Activation:",
+					"endCondition": "Augment Detached",
+					"triggerRestriction": {
+						"triggerRestrictions": [
+							"This Card is Main Card"
+						]
+					}
+				}
+			]
+		},
+		{
+			"blurb": "You Shouldn't Have Done That",
+			"triggerData": {
+				"blurb": "Golem Defense",
+				"triggerCondition": "Defend",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Augmented Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetAugmentedCard:"
+				},
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"eModifier": 4,
+					"wModifier": 4
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Recoverable"
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Augment Normal Restrictions"
+		],
+		"effectRestrictions": [
+			"Augment Effect Restrictions"
+		],
+		"augSubtypes": [
+			"Golem"
+		]
+	},
+	"a": 3,
+	"subtypeText": "Golem Core"
+}

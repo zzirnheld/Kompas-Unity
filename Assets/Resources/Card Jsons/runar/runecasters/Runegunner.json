@@ -1,0 +1,82 @@
+{
+	"cardType": 67,
+	"cardName": "Runegunner",
+	"effText": "Runecast, and if you cast it X spaces from me, pip echo it X times (or as many as you have pips for).",
+	"effects": [
+		{
+			"activationRestriction": {
+				"activationRestrictionArray": [
+					"Max Times Per Turn",
+					"Default"
+				],
+				"maxTimes": 1
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "Rune for Runegunner to cast",
+						"cardRestrictions": [
+							"Spell",
+							"Can Be Played"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Rune" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "where for Runegunner to cast its target Rune",
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            }
+                        ]
+					}
+				},
+				{
+					"$type": "Subeffect:Play:"
+				},
+				{
+					"$type": "Subeffect:SetXByGamestate:",
+					"whatToCount": "Distance From Source to Target",
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:PayPipsTargetCost:"
+				},
+				{
+					"$type": "Subeffect:Resummon:"
+				},
+				{
+					"$type": "Subeffect:XTimes:",
+					"jumpIndices": [
+						4
+					]
+				}
+			]
+		}
+	],
+	"unique": true,
+	"n": 1,
+	"e": 7,
+	"s": 10,
+	"w": 9,
+	"subtypes": [
+		"Runar",
+		"Mage"
+	],
+	"subtypeText": "Runar Mage"
+}

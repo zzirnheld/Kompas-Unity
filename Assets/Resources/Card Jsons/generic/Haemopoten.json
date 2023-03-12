@@ -1,0 +1,63 @@
+{
+	"cardType": 67,
+	"cardName": "Haemopoten",
+	"effText": "During friendly turns, you can set X to the number of uses of this effect this turn. Give me -X E. Annihilate your topdeck. Delay 1. Rehand it.",
+	"effects": [
+		{
+			"activationRestriction": {
+				"activationRestrictionArray": [
+					"Friendly Turn",
+					"Default"
+				]
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:SetXByGamestate:",
+					"whatToCount": "Effect Uses This Turn",
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:TargetThis:"
+				},
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"eMultiplier": -1
+				},
+				{
+					"$type": "Subeffect:AutoTarget:",
+					"cardRestriction": {
+						"blurb": "for Haemopoten to draw",
+						"cardRestrictions": [
+							"Deck",
+							"Index<C"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
+						],
+						"constant": 1
+					}
+				},
+				{
+					"$type": "Subeffect:Annihilate:"
+				},
+				{
+					"$type": "Subeffect:Delay:",
+					"numTimesToDelay": 0,
+					"jumpIndices": [
+						6
+					],
+					"fallOffCondition": "",
+					"endCondition": "Turn Start"
+				},
+				{
+					"$type": "Subeffect:Hand:"
+				}
+			]
+		}
+	],
+	"n": 1,
+	"e": 11,
+	"s": 10,
+	"w": 9,
+	"subtypeText": "Flying Dragon"
+}

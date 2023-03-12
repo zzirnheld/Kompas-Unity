@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Prepare the Name",
-	"effText": "Hand-topdeck a Spirit. Gain 3 pips.",
+	"effText": "Hand->topdeck a Spirit. Gain 3 pips.",
 	"effects": [
 		{
 			"triggerData": {
@@ -15,24 +15,27 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Spirit whose name to prepare",
-						"cardRestrictions": [
-							"Friendly",
-							"Hand",
-							"Subtypes Include"
-						],
-						"subtypesInclude": [
-							"Spirit"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Spirit" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.TopdeckSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Topdeck:"
 				},
 				{
-					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:AddPips:",
 					"xModifier": 3
 				}
 			]

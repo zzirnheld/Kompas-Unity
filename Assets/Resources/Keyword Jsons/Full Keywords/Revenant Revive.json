@@ -4,21 +4,20 @@
 		"activationRestrictionArray":[
 			"Location",
 			"Controller Activates",
-			"Not Negated",
-			"Not Currently Activated"
+			"Not Negated"
 		],
 		"location":2
 	},
 	"subeffects":[
 		{
-			"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+			"$type":"Subeffect:TargetThis:"
 		},
 		{
-			"$type":"KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
+			"$type":"Subeffect:CanResolve:",
 			"subeffIndices":[3,4]
 		},
 		{
-			"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+			"$type":"Subeffect:SpaceTarget:",
 			"spaceRestriction":
 			{
 				"blurb":"where to revive the Revenant",
@@ -26,12 +25,11 @@
 			}
 		},
 		{
-			"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
-			"xDivisor":2,
-			"xMultiplier":1
+			"$type":"Subeffect:PayPipsTargetCost:",
+			"divisor":2
 		},
 		{
-			"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+			"$type":"Subeffect:Play:"
 		}
 	]
 }

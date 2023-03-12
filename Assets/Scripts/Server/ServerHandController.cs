@@ -8,10 +8,10 @@ namespace KompasServer.GameCore
 {
     public class ServerHandController : HandController
     {
-        public ServerGame ServerGame;
+        public ServerPlayer owner;
+        public override Player Owner => owner;
 
-        public ServerNotifier ServerNotifier => ServerGame.ServerPlayers[Owner.index].ServerNotifier;
-        public ServerEffectsController EffectsController => ServerGame.EffectsController;
+        public ServerGame ServerGame => owner.serverGame;
 
         public override bool Hand(GameCard card, IStackable stackSrc = null)
         {
@@ -21,8 +21,8 @@ namespace KompasServer.GameCore
             if (successful)
             {
                 context.CacheCardInfoAfter();
-                EffectsController.TriggerForCondition(Trigger.Rehand, context);
-                ServerNotifier.NotifyRehand(card, wasKnown);
+                ServerGame.effectsController.TriggerForCondition(Trigger.Rehand, context);
+                owner.ServerNotifier.NotifyRehand(card, wasKnown);
             }
             return successful;
         }

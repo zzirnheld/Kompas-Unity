@@ -1,0 +1,100 @@
+{
+	"cardType": 83,
+	"cardName": "Misplaced Supplies",
+	"effText": "When an enemy defends, discard->cast me to an adjacent space of their controller's choice.\nWhen you board->hand a character here, gain 1 pip, draw 1 card, and dispel me.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Rehand",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Space Fits Restriction"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
+						],
+						"spaceRestriction": { "spaceRestrictions": [ "In Source's AOE" ] }
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:AddPips:",
+					"xModifier": 1
+				},
+				{
+					"$type": "Subeffect:DrawX:",
+					"xMultiplier": 1,
+					"xModifier": 1
+				},
+				{
+					"$type": "Subeffect:TargetThis:"
+				},
+				{
+					"$type": "Subeffect:Dispel:"
+				}
+			]
+		},
+		{
+			"triggerData": {
+				"triggerCondition": "Defend",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"Main Card Fits Restriction Before",
+						"This Card Fits Restriction Now"
+					],
+					"cardRestriction": {
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" }
+						]
+					},
+					"selfRestriction": {
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							}
+						]
+					}
+				}
+			},
+			"subEffects": [
+				{
+					"$type": "Subeffect:TargetTriggeringCard:"
+				},
+				{
+					"$type": "Subeffect:TargetTargetsController:"
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "Drop your loot!",
+						"spaceRestrictions": [ "Empty", "Adjacent to Card Target" ]
+					}
+				},
+				{
+					"$type": "Subeffect:TargetThis:"
+				},
+				{
+					"$type": "Subeffect:TargetTargetsController:"
+				},
+				{
+					"$type": "Subeffect:Play:"
+				}
+			]
+		}
+	],
+	"c": 1,
+	"spellTypes": [
+		"Enchant",
+		"Radial"
+	],
+	"radius": 1,
+	"subtypeText": "Loot Enchant"
+}

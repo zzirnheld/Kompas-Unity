@@ -10,8 +10,13 @@
                 "spaceRestrictions":["Adjacent to Source","Card Here Fits Restriction"],
                 "hereFitsRestriction":
                 {
-                    "cardRestrictions":["Friendly","Subtypes Include"],
-                    "subtypesInclude":["Music"]
+                    "cardRestrictionElements": [
+                        { "$type": "Core.CardRestriction:Friendly:" },
+                        {
+                            "$type": "Core.CardRestriction:Subtypes:",
+                            "subtypes": [ "Music" ]
+                        }
+                    ]
                 },
                 "mustBeEmpty":false
             }
@@ -19,17 +24,17 @@
     },
 	"subeffects":[
         {
-            "$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+            "$type":"Subeffect:TargetTriggeringCard:"
         },
         {
-            "$type":"KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+            "$type":"Subeffect:Delay:",
             "numTimesToDelay":0,
             "jumpIndices":[2],
             "fallOffCondition":"",
             "endCondition":"Stack End"
         },
         {
-            "$type":"KompasServer.Effects.DispelSubeffect, Assembly-CSharp"
+            "$type":"Subeffect:Dispel:"
         }
 	]	
 }

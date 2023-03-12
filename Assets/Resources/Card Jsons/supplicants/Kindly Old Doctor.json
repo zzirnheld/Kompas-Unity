@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Kindly Old Doctor",
-	"effText": "When turns start, discard-rehand a friendly Supplicant.",
+	"effText": "When turns start, discard->hand a character.",
 	"effects": [
 		{
 			"triggerData": {
@@ -14,20 +14,22 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Friendly",
-							"Discard",
-							"Subtypes Include"
+							"Character"
 						],
-						"subtypesInclude": [
-							"Supplicant"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Hand:"
 				}
 			]
 		}
@@ -36,5 +38,5 @@
 	"e": 5,
 	"s": 4,
 	"w": 0,
-	"subtypeText": "Kind Doctor"
+	"subtypeText": "Kind Doctor Person"
 }

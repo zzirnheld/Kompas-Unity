@@ -10,9 +10,8 @@ Machinations Play
 Machinations Reup
 Comeback Play
 Supplicant
-Weather
-Wisp Summon
-Wisp Turn Start
+Weather Condition Cast
+Wisp
 Flashback
 Wanderer
 Waterdweller
@@ -24,7 +23,14 @@ Collectible
 Spores
 Vessel Echo
 Vessel Cost Up
-Ambush
 Smite
 Stealth
 Evasive
+Must Contain
+Mech Ultimate Charge
+Undying
+Soullink
+Trample
+Masquerade
+Modular
+Basic Modular

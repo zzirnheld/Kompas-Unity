@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Mind of Flock Controlled Pigeons",
-	"effText": "When I deal combat damage, hand->discard a Crazy Idea and draw 1 card.",
+	"effText": "When I deal damage, hand->discard a Crazy Idea and draw 1 card.",
 	"effects": [
 		{
 			"triggerData": {
@@ -15,24 +15,27 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Mind bawk bawk Controlled Pigeons",
-						"cardRestrictions": [
-							"Friendly",
-							"Hand",
-							"Subtypes Include"
-						],
-						"subtypesInclude": [
-							"Crazy Idea"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Hand" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Crazy", "Idea" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Discard:"
 				},
 				{
-					"$type": "KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:DrawX:",
 					"xModifier": 1
 				}
 			]

@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Antiprecatium Golem",
-	"effText": "Golem.\nWhen I'm activated, set X to my W. Dispel a spell within X spaces of me.",
+	"effText": "Golem.\nWhen I become active, dispel a spell within [my W] spaces of me.",
 	"effects": [
 		{
 			"blurb": "Dispel",
@@ -15,23 +15,28 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "W"
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "spell to stab with green rocks and thereby dispel",
 						"cardRestrictions": [
 							"Spell",
-							"Board",
 							"Space Fits Restriction"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						],
 						"spaceRestriction": {
 							"spaceRestrictions": [
@@ -48,7 +53,7 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.DispelSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Dispel:"
 				}
 			]
 		}

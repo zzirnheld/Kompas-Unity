@@ -1,0 +1,69 @@
+{
+	"cardType": 67,
+	"cardName": "Faerie Moth",
+	"effText": "Stealth.\nWhen a Moth attacks a character in Light, draw 1 card.",
+	"effects": [
+		{
+			"blurb": "Faerie stealth",
+			"triggerData": {
+				"triggerCondition": "Attack",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before",
+                        "Secondary Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Moth" ]
+							}
+						]
+					},
+                    "secondaryCardRestriction": {
+						"cardRestrictions": [
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictionElements": [
+								{
+									"$type": "Core.SpaceRestriction:InAOEOf:",
+									"anyOf": {
+										"$type": "ManyCards:FittingRestriction:",
+										"cardRestriction": {
+											"cardRestrictionElements": [
+												{
+													"$type": "Core.CardRestriction:Subtypes:",
+													"subtypes": [ "Light" ]
+												}
+											]
+										}
+									}
+								}
+							]
+						}
+                    }
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:Draw:"
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Stealth"
+	],
+	"n": 2,
+	"e": 2,
+	"s": 2,
+	"w": 2,
+	"subtypeText": "Ethereal Flying Moth"
+}

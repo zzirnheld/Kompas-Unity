@@ -1,0 +1,66 @@
+{
+	"cardType": 83,
+	"cardName": "Gyfu",
+	"effText": "Runic.\nGive X enemy characters +1 EW. Gain X pips.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "for Gyfu to give +1 EW",
+						"cardRestrictions": [
+							"Character",
+							"Not Already Target"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"eModifier": 1,
+					"wModifier": 1
+				},
+				{
+					"$type": "Subeffect:CountXLoop:",
+					"canDecline": true,
+					"jumpIndices": [
+						0
+					]
+				},
+				{
+					"$type": "Subeffect:AddPips:",
+					"xMultiplier": 1
+				}
+			]
+		}
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Cannot be Played Normally"
+		]
+	},
+	"c": 1,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypes": [
+		"Rune",
+		"Simple"
+	],
+	"subtypeText": "Rune Simple"
+}

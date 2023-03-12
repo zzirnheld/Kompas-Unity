@@ -1,0 +1,37 @@
+{
+	"cardType": 67,
+	"cardName": "54MUR41",
+	"effText": "Nimble. Speedemon. Golem.",
+	"effects": [],
+	"MovementRestriction": {
+		"normalRestrictionsFromJson": [
+			"Default",
+			"Activated",
+			"Can Move Enough Through Empty or Restricted Spaces"
+		],
+		"normalRestrictionsToIgnore": [
+			"Can Move Enough Spaces"
+		],
+		"throughSpacesRestriction": {
+			"spaceRestrictions": []
+		}
+	},
+	"AttackRestriction": {
+		"attackRestrictions": [
+			"Default",
+			"This is Activated"
+		]
+	},
+	"keywords": [
+		"Speedemon"
+	],
+	"n": 3,
+	"e": 4,
+	"s": 10,
+	"w": 7,
+	"subtypes": [
+		"Mech",
+		"Golem"
+	],
+	"subtypeText": "Mech Golem"
+}

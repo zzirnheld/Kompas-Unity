@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "III - The Empress",
-	"effText": "When you draw X cards, you are absolutely required to hand->summon an S <= X character.",
+	"effText": "When you draw X cards, you MUST hand->summon an S <= X character.",
 	"effects": [
 		{
 			"triggerData": {
@@ -16,13 +16,11 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "for Empress to hand-summon",
 						"cardRestrictions": [
 							"Character",
-							"Friendly",
-							"Hand",
 							"Card Value Fits Number Restriction"
 						],
 						"cardValue": {
@@ -32,22 +30,32 @@
 							"numberRestrictions": [
 								"<=X"
 							]
-						}
+						},
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            }
+						]
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where Empress to hand-summon",
-						"spaceRestrictions": [
-							"Can Play Card Target to This Space",
-							"Empty"
-						]
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            }
+                        ]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Play:"
 				}
 			]
 		}

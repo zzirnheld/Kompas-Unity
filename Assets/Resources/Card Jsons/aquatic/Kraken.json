@@ -22,22 +22,27 @@
 			"Adjacent to Friendly Card"
 		],
 		"spaceRestriction": {
-			"spaceRestrictions": [
-				"In AOE of Card Fitting Restriction"
-			],
-			"inAOEOfRestriction": {
-				"cardRestrictions": [
-					"Subtypes Include"
-				],
-				"subtypesInclude": [
-					"Water"
-				]
-			}
+			"spaceRestrictionElements": [
+				{
+					"$type": "Core.SpaceRestriction:InAOEOf:",
+					"anyOf": {
+						"$type": "ManyCards:FittingRestriction:",
+						"cardRestriction": {
+							"cardRestrictionElements": [
+								{
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Water" ]
+								}
+							]
+						}
+					}
+				}
+			]
 		}
 	},
-	"n": 9,
-	"e": 13,
+	"n": 13,
+	"e": 15,
 	"s": 11,
-	"w": 15,
+	"w": 17,
 	"subtypeText": "Aquatic Monster"
 }

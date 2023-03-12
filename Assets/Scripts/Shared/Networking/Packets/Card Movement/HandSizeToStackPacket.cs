@@ -27,7 +27,7 @@ namespace KompasClient.Networking
     {
         public void Execute(ClientGame clientGame)
         {
-            var controller = clientGame.ClientPlayers[controllerIndex];
+            var controller = clientGame.clientPlayers[controllerIndex];
             clientGame.clientEffectsCtrl.Add(new ClientHandSizeStackable(controller));
         }
     }

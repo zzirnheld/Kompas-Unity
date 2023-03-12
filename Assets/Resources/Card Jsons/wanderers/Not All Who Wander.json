@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Not All Who Wander",
-	"effText": "After you board->reshuffle a Wanderer, delay a turn, then draw 1 card.",
+	"effText": "1 turn after you board->reshuffle a Wanderer, draw 1 card.",
 	"effects": [
 		{
 			"triggerData": {
@@ -13,19 +13,22 @@
 						"This Card in Play"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Board",
-							"Subtypes Include"
-						],
-						"subtypesInclude": [
-							"Wanderer"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Wanderer" ]
+							}
 						]
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Delay:",
 					"numTimesToDelay": 0,
 					"jumpIndices": [
 						1
@@ -33,7 +36,7 @@
 					"endCondition": "Turn Start"
 				},
 				{
-					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Draw:"
 				}
 			]
 		}

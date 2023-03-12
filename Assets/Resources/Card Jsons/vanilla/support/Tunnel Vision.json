@@ -1,0 +1,43 @@
+{
+	"cardType": 83,
+	"cardName": "Tunnel Vision",
+	"effText": "When a friendly character attacks, negate them, but give them +1 ESW (before the fight resolves).",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Attack",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Friendly",
+							"Board"
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eModifier": 1,
+					"sModifier": 1,
+					"wModifier": 1
+				}
+			]
+		}
+	],
+	"c": 1,
+	"spellTypes": [
+		"Enchant"
+	],
+	"subtypes": [
+		"Enchant"
+	],
+	"subtypeText": "Enchant"
+}

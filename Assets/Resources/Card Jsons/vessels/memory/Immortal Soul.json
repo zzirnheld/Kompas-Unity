@@ -1,0 +1,73 @@
+{
+	"cardType": 65,
+	"cardName": "Immortal Soul",
+	"effText": "When this Vessel attacks a W X character, give the Vessel +X E and echo them.",
+	"effects": [
+		{
+			"blurb": "We've fought before",
+			"triggerData": {
+				"triggerCondition": "Attack",
+				"triggerRestriction": {
+					"triggerRestrictionElements": [
+                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardsMatch:",
+                            "firstCard": {
+                                "$type": "Cards:AugmentedCard:",
+                                "ofThisCard": { "$type": "Cards:ThisCard:" }
+                            },
+                            "secondCard": { "$type": "Cards:MainCardBefore:" }
+                        },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "cardRestriction": {
+                                "cardRestrictionElements": [
+                                    {
+                                        "$type": "Core.CardRestriction:Subtypes:",
+                                        "subtypes": [ "Vessel" ]
+                                    }
+                                ]
+                            },
+                            "card": { "$type": "Cards:MainCardBefore:" }
+                        }
+					]
+				}
+			},
+			"subeffects": [
+                {
+                    "$type":"Subeffect:TargetAugmentedCard:"
+                },
+				{
+					"$type":"Subeffect:TargetTriggeringCard:",
+					"secondary":true
+				},
+				{
+					"$type": "Subeffect:SetXByTargetCardValue:",
+					"cardValue": {
+						"value": "W"
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"eMultiplier": 1,
+                    "targetIndex": -2
+				},
+				{
+					"$type": "Subeffect:Resummon:",
+                    "targetIndex": -2
+				}
+			]
+		}
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Augment Normal Restrictions"
+		],
+		"effectRestrictions": [
+			"Augment Effect Restrictions"
+		]
+	},
+	"a": 1,
+	"subtypeText": "Memory"
+}

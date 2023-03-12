@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Metal Golem",
-	"effText": "Golem.\nWhen I'm activated, set two characters' N to 0.",
+	"effText": "Golem.\nWhen I become active, set two characters' N to 0.",
 	"effects": [
 		{
 			"blurb": "Go to Bonky Jail",
@@ -15,32 +15,42 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "first character for Metal Golem to set N to 0",
 						"cardRestrictions": [
-							"Character",
-							"Board"
+							"Character"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SetCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetCardStatsOld:",
 					"nVal": 0
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "second character for Metal Golem to set N to 0",
 						"cardRestrictions": [
 							"Character",
-							"Board",
 							"Not Already Target"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SetCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetCardStatsOld:",
 					"nVal": 0
 				}
 			]

@@ -1,0 +1,55 @@
+{
+	"cardType": 67,
+	"cardName": "Magerybinder",
+	"effText": "When an enemy casts a spell in Weather, Spin a Storm there.",
+	"effects": [
+		{
+			"blurb": "Bind the magic",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction After",
+						"Enemy Triggered"
+					],
+					"nowRestriction": {
+						"cardRestrictions": [
+							"Spell",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction":
+						{
+							"spaceRestrictionElements": [ {
+								"$type": "Core.SpaceRestriction:InAOEOf:",
+								"anyOf": {
+									"$type": "ManyCards:FittingRestriction:",
+									"cardRestriction": {
+									"cardRestrictionElements": [ {
+											"$type": "Core.CardRestriction:Subtypes:",
+											"subtypes": [ "Weather" ]
+										} ]
+									}
+								}
+							}]
+						}
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetTriggeringCardsSpace:"
+				},
+				{
+					"$type": "Subeffect:Keyword:",
+					"keyword": "Spin a Storm"
+				}
+			]
+		}
+	],
+	"n": 4,
+	"e": 4,
+	"s": 4,
+	"w": 4,
+	"subtypeText": "Skyknight Stormspinner Mage"
+}

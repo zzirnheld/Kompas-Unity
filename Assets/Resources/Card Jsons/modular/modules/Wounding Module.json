@@ -1,0 +1,35 @@
+{
+	"cardType": 65,
+	"cardName": "Wounding Module",
+	"effText": "Give this character +2 W.",
+	"effects": [
+		{
+			"blurb": "+2 Wounding",
+			"triggerData": {
+				"triggerCondition": "Augment Attached",
+				"triggerRestriction": {
+					"triggerRestrictions": [ "This Card is Main Card" ]
+				}
+			},
+			"subeffects": [
+				{
+					"$type":"Subeffect:TargetAugmentedCard:"
+				},
+				{
+					"$type": "Subeffect:Hanging.ChangeCardStats:",
+					"wModifier": 2,
+					"endCondition": "Augment Detached",
+					"triggerRestriction": {
+						"triggerRestrictions": [ "This Card is Main Card" ]
+					}
+				}
+			]
+		}
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [ "Augment Normal Restrictions" ],
+		"effectRestrictions": [ "Augment Effect Restrictions" ]
+	},
+	"a": 2,
+	"subtypeText": "Basic Module"
+}

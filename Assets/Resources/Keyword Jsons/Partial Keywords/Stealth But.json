@@ -1,27 +1,30 @@
 [
     {
-        "$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+        "$type": "Subeffect:TargetThis:"
     },
     {
-        "$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+        "$type": "Subeffect:SpaceTarget:",
         "spaceRestriction": {
             "blurb": "Stealth position to 'actually' be in",
             "spaceRestrictions": [
-                "In AOE Source is Also In",
-                "Can Move Card Target to This Space"
+                "In AOE Source is Also In"
             ],
             "alsoInAOEOfRestriction": {
-                "cardRestrictions": [
-                    "Subtypes Include"
-                ],
-                "subtypesInclude": [
-                    "Shade"
+                "cardRestrictionElements": [
+                    {
+                        "$type": "Core.CardRestriction:Subtypes:",
+                        "subtypes": [ "Shade" ]
+                    }
                 ]
-            }
+            },
+            "spaceRestrictionElements": [ {
+                "$type": "Core.SpaceRestriction:CanMoveCard:",
+                "toMove": { "$type": "Cards:TargetIndex:" }
+            } ]
         }
     },
     {
-        "$type": "KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+        "$type": "Subeffect:Delay:",
         "numTimesToDelay": 0,
         "jumpIndices": [
             3
@@ -34,25 +37,18 @@
             ],
             "nowRestriction": {
                 "cardRestrictions": [
-                    "Source in This' AOE",
-                    "Subtypes Include"
+                    "Source in This' AOE"
                 ],
-                "subtypesInclude": [
-                    "Light"
+                "cardRestrictionElements": [
+                    {
+                        "$type": "Core.CardRestriction:Subtypes:",
+                        "subtypes": [ "Light" ]
+                    }
                 ]
             }
         }
     },
     {
-        "$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
-        "condition": "Space Target Violates Restriction",
-        "spaceRestriction": {
-            "spaceRestrictions": [
-                "Empty"
-            ]
-        }
-    },
-    {
-        "$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+        "$type": "Subeffect:Move:"
     }
 ]

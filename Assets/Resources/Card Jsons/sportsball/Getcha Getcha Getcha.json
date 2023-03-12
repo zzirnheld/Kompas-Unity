@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Getcha Getcha Getcha",
-	"effText": "Comeback Play.\nWhen a friendly character is augmented, give them +1 N.",
+	"effText": "Comeback Play.\nWhen you augment a character, give them +1 N.",
 	"effects": [
 		{
 			"triggerData": {
@@ -10,21 +10,16 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Main Card Fits Restriction Before"
-					],
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Friendly"
-						]
-					}
+						"Controller Triggered"
+					]
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeCardStats:",
 					"nModifier": 1
 				}
 			]

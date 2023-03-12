@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "At Home in the World",
-	"effText": "After you board->reshuffle a Wanderer, delay a turn, then gain a pip.",
+	"effText": "1 turn after you board->reshuffle a Wanderer, gain 1 pip.",
 	"effects": [
 		{
 			"triggerData": {
@@ -13,19 +13,22 @@
 						"This Card in Play"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Board",
-							"Subtypes Include"
-						],
-						"subtypesInclude": [
-							"Wanderer"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Wanderer" ]
+							}
 						]
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Delay:",
 					"numTimesToDelay": 0,
 					"jumpIndices": [
 						1
@@ -33,7 +36,7 @@
 					"endCondition": "Turn Start"
 				},
 				{
-					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:AddPips:",
 					"xModifier": 1
 				}
 			]

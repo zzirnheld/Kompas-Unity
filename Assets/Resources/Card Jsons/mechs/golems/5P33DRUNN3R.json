@@ -1,0 +1,65 @@
+{
+	"cardType": 67,
+	"cardName": "5P33DRUNN3R",
+	"effText": "Speedemon. Golem.\nWhen I become active, give adjacent characters +2 N.",
+	"effects": [
+		{
+			"blurb": "5P33DRUN 5TR4T5",
+			"triggerData": {
+				"triggerCondition": "Activate",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:ChangeAllCardStats:",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Source"
+							]
+						},
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
+					},
+					"nModifier": 2
+				}
+			]
+		}
+	],
+	"MovementRestriction": {
+		"normalRestrictionsFromJson": [
+			"Default",
+			"Activated"
+		]
+	},
+	"AttackRestriction": {
+		"attackRestrictions": [
+			"Default",
+			"This is Activated"
+		]
+	},
+	"keywords": [
+		"Speedemon"
+	],
+	"n": 3,
+	"e": 3,
+	"s": 10,
+	"w": 7,
+	"subtypes": [
+		"Mech",
+		"Golem"
+	],
+	"subtypeText": "Mech Golem"
+}

@@ -10,7 +10,7 @@ namespace KompasServer.GameCore.Extensions
         public static bool IsValidNormalPlay(this ServerGame game, GameCard card, Space to, ServerPlayer player)
         {
             if (card == null) return false;
-            if (game.uiCtrl.DebugMode)
+            if (game.UIController.DebugMode)
             {
                 Debug.LogWarning("Debug mode, always return true for valid play");
                 return true;
@@ -22,7 +22,7 @@ namespace KompasServer.GameCore.Extensions
 
         public static bool IsValidNormalAttach(this ServerGame game, GameCard card, Space to, ServerPlayer player)
         {
-            if (game.uiCtrl.DebugMode)
+            if (game.UIController.DebugMode)
             {
                 Debug.LogWarning("Debug mode, always return true for valid augment");
                 return true;
@@ -30,13 +30,13 @@ namespace KompasServer.GameCore.Extensions
 
             //Debug.Log($"Checking validity augment of {card.CardName} to {to}, on {boardCtrl.GetCardAt(to)}");
             return card != null && card.CardType == 'A' && to.IsValid
-                && !game.boardCtrl.IsEmpty(to)
+                && !game.BoardController.IsEmpty(to)
                 && card.PlayRestriction.IsValidNormalPlay(to, player);
         }
 
         public static bool IsValidNormalMove(this ServerGame game, GameCard toMove, Space to, Player by)
         {
-            if (game.uiCtrl.DebugMode)
+            if (game.UIController.DebugMode)
             {
                 Debug.LogWarning("Debug mode, always return true for valid move");
                 return true;
@@ -47,9 +47,9 @@ namespace KompasServer.GameCore.Extensions
             else return toMove.MovementRestriction.IsValidNormalMove(to);
         }
 
-        public static bool ValidAttack(this ServerGame game, GameCard attacker, GameCard defender, ServerPlayer instigator)
+        public static bool IsValidNormalAttack(this ServerGame game, GameCard attacker, GameCard defender, ServerPlayer instigator)
         {
-            if (game.uiCtrl.DebugMode)
+            if (game.UIController.DebugMode)
             {
                 Debug.LogWarning("Debug mode, always return true for valid attack");
                 return attacker != null && defender != null;

@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "We Are Yet Unworthy",
-	"effText": "Tribute an adjacent Cultist. Hand-reshuffle a card. Draw 2. Gain 2 Pips. Annihilate me.",
+	"effText": "Tribute an adjacent Cultist, hand->reshuffle a card, and annihilate me. Draw 2 cards and gain 2 Pips.",
 	"effects": [
 		{
 			"triggerData": {
@@ -14,15 +14,12 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "unworthy Cultist",
 						"cardRestrictions": [
-							"Board",
 							"Character",
 							"Summoned",
-							"Friendly",
-							"Subtypes Include",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
@@ -30,40 +27,51 @@
 								"Adjacent to Source"
 							]
 						},
-						"subtypesInclude": [
-							"Cultist"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Cultist" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Discard:"
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "unworthy card in hand",
-						"cardRestrictions": [
-							"Friendly",
-							"Hand"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Hand" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Reshuffle:"
 				},
 				{
-					"$type": "KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:TargetThis:"
+				},
+				{
+					"$type": "Subeffect:Annihilate:"
+				},
+				{
+					"$type": "Subeffect:DrawX:",
 					"xModifier": 2
 				},
 				{
-					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:AddPips:",
 					"xModifier": 2
-				},
-				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type": "KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
 				}
 			]
 		}
@@ -74,11 +82,13 @@
 		],
 		"adjacentCardRestriction": {
 			"cardRestrictions": [
-				"Character",
-				"Subtypes Include"
+				"Character"
 			],
-			"subtypesInclude": [
-				"Cultist"
+			"cardRestrictionElements": [
+				{
+					"$type": "Core.CardRestriction:Subtypes:",
+					"subtypes": [ "Cultist" ]
+				}
 			]
 		}
 	},

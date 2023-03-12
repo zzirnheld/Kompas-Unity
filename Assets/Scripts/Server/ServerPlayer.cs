@@ -1,4 +1,5 @@
 ﻿using KompasCore.Cards;
+using KompasCore.Cards.Movement;
 using KompasCore.Effects;
 using KompasCore.Exceptions;
 using KompasServer.Effects;
@@ -62,7 +63,7 @@ namespace KompasServer.GameCore
                 if (serverGame.IsValidNormalAttach(aug, space, this))
                 {
                     aug.Play(space, this, payCost: true);
-                    await serverGame.EffectsController.CheckForResponse();
+                    await serverGame.effectsController.CheckForResponse();
                 }
                 else ServerNotifier.NotifyPutBack();
             }
@@ -80,11 +81,11 @@ namespace KompasServer.GameCore
                 if (serverGame.IsValidNormalPlay(card, space, this))
                 {
                     card.Play(space, this, payCost: true);
-                    await serverGame.EffectsController.CheckForResponse();
+                    await serverGame.effectsController.CheckForResponse();
                 }
                 else
                 {
-                    Debug.LogError($"Player {index} attempted an invalid play of {card} to {space}.");
+                    Debug.LogWarning($"Player {index} attempted an invalid play of {card} to {space}.");
                     ServerNotifier.NotifyPutBack();
                 }
             }
@@ -103,7 +104,7 @@ namespace KompasServer.GameCore
                 if (serverGame.IsValidNormalMove(toMove, space, this))
                 {
                     toMove.Move(space, true);
-                    await serverGame.EffectsController.CheckForResponse();
+                    await serverGame.effectsController.CheckForResponse();
                 }
                 else ServerNotifier.NotifyPutBack();
             }
@@ -124,8 +125,8 @@ namespace KompasServer.GameCore
             Debug.Log($"Player {index} trying to activate effect of {effect?.Source?.CardName}");
             if (effect.CanBeActivatedBy(this))
             {
-                serverGame.EffectsController.PushToStack(effect, this, new ActivationContext(game: serverGame, stackableEvent: effect));
-                await serverGame.EffectsController.CheckForResponse();
+                serverGame.effectsController.PushToStack(effect, this, new ActivationContext(game: serverGame, stackableEvent: effect));
+                await serverGame.effectsController.CheckForResponse();
             }
         }
 
@@ -133,10 +134,10 @@ namespace KompasServer.GameCore
         {
             ServerNotifier.NotifyBothPutBack();
 
-            if (serverGame.ValidAttack(attacker, defender, this))
+            if (serverGame.IsValidNormalAttack(attacker, defender, this))
             {
                 serverGame.Attack(attacker, defender, this, stackSrc: default, manual: true);
-                await serverGame.EffectsController.CheckForResponse();
+                await serverGame.effectsController.CheckForResponse();
             }
         }
 

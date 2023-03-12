@@ -1,0 +1,47 @@
+{
+	"cardType": 83,
+	"cardName": "Odal",
+	"effText": "Runic.\nHand me.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetThis:"
+				},
+				{
+					"$type": "Subeffect:Hand:"
+				}
+			]
+		}
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Cannot be Played Normally"
+		],
+		"recommendationRestrictions": [
+			"Adjacent to Card Fitting Restriction"
+		],
+		"adjacentCardRestriction": {
+			"cardRestrictions": [
+				"Character"
+			]
+		}
+	},
+	"c": 0,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypes": [
+		"Rune",
+		"Simple"
+	],
+	"subtypeText": "Rune Simple"
+}

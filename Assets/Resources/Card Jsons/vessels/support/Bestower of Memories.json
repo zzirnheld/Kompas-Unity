@@ -1,0 +1,98 @@
+{
+	"cardType": 67,
+	"cardName": "Bestower of Memories",
+	"effText": "When you bestow a Memory unto a Vessel, deck-> or discard->bestow a copy unto a Vessel without one.",
+	"effects": [
+		{
+            "blurb": "Bestow Memory",
+			"triggerData": {
+				"triggerCondition": "Augment Attached",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Controller Triggered",
+						"Main Card Fits Restriction After"
+					],
+					"nowRestriction": {
+						"cardRestrictions": [
+                            "Augments Card Fitting Restriction"
+                        ],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Memory" ]
+							}
+						],
+						"augmentRestriction": {
+							"cardRestrictionElements": [
+								{
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Vessel" ]
+								}
+							]
+						}
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetTriggeringCard:"
+				},
+				{
+					"$type": "Subeffect:CardTarget:",
+					"blurb": "Vessel to get a copy of the memory",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Wields No Augment Fitting Restriction"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Vessel" ]
+							}
+						],
+						"augmentRestriction": {
+							"cardRestrictions": [
+								"Same Name as Target"
+							]
+						}
+					}
+				},
+				{
+					"$type": "Subeffect:CardTarget:",
+					"blurb": "Copy of the memory to attach",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Multiple Possible Locations",
+                            "Same Name as Target",
+							"Can Be Played"
+						],
+						"locations": [
+							2,
+							4
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
+						]
+					},
+					"targetIndex": -2
+				},
+				{
+					"$type": "Subeffect:Attach:",
+					"targetToAttachTo": -2,
+					"targetIndex": -1
+				}
+			]
+		}
+	],
+    "unique":true,
+	"n": 1,
+	"e": 8,
+	"s": 10,
+	"w": 8,
+	"subtypeText": "Mage"
+}

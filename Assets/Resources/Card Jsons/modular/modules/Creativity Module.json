@@ -1,0 +1,29 @@
+{
+	"cardType": 65,
+	"cardName": "Creativity Module",
+	"effText": "When turns start, gain 1 pip.",
+	"effects": [
+		{
+			"blurb": "Create",
+			"triggerData": {
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:Draw:"
+				}
+			]
+		}
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [ "Augment Normal Restrictions" ],
+		"effectRestrictions": [ "Augment Effect Restrictions" ]
+	},
+	"a": 3,
+	"subtypeText": "Module"
+}

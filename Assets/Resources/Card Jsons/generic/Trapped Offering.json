@@ -1,0 +1,47 @@
+{
+	"cardType": 67,
+	"cardName": "Trapped Offering",
+	"effText": "When I die having X S, annihilate me, gain X/2 pips, and draw 1.",
+	"effects": [
+		{
+			"triggerData": {
+				"blurb": "Annihilate",
+				"triggerCondition": "Discard",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card",
+						"From Field"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetThis:"
+				},
+				{
+					"$type": "Subeffect:Annihilate:"
+				},
+				{
+					"$type": "Subeffect:SetXByTriggeringCardValue:",
+					"cardValue": {
+						"value": "S"
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:AddPips:",
+					"xMultiplier": 1,
+					"xDivisor": 2
+				},
+				{
+					"$type": "Subeffect:Draw:"
+				}
+			]
+		}
+	],
+	"n": 0,
+	"e": 3,
+	"s": 3,
+	"w": 0,
+	"subtypeText": "Offering"
+}

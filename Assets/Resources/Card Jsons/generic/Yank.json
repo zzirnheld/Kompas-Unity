@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Yank",
-	"effText": "Move a spell to an adjacent space. Draw 1 card.",
+	"effText": "Move a spell to a space adjacent to me. Draw 1 card.",
 	"effects": [
 		{
 			"blurb": "The weight of binds",
@@ -15,31 +15,39 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Spell to yank",
 						"cardRestrictions": [
-							"Board",
 							"Spell"
-                        ]
-					}
-				},
-				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction": {
-						"blurb": "Space to yank it to",
-						"spaceRestrictions": [
-							"Empty",
-                            "Adjacent to Source",
-							"Can Move Card Target to This Space"
+                        ],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "Space to yank it to",
+						"spaceRestrictions": [
+							"Empty",
+                            "Adjacent to Source"
+						],
+						"spaceRestrictionElements": [ {
+							"$type": "Core.SpaceRestriction:CanMoveCard:",
+							"toMove": { "$type": "Cards:TargetIndex:" }
+						} ]
+					}
 				},
 				{
-					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Move:"
+				},
+				{
+					"$type": "Subeffect:Draw:"
 				}
 			]
 		}

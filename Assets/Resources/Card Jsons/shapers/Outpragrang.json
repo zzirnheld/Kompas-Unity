@@ -1,0 +1,64 @@
+{
+	"cardType": 67,
+	"cardName": "Outpragrang",
+	"effText": "Shaper.\nWhen a distinct Shaper moves, move me adjacent to them.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Distinct Name from Source"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Shaper" ]
+							}
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetTriggeringCard:"
+				},
+				{
+					"$type": "Subeffect:TargetThis:"
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "to move Outpoured Anger to",
+						"spaceRestrictions": [
+							"Adjacent to Card Target",
+							"Empty"
+						]
+					},
+					"targetIndex": -2
+				},
+				{
+					"$type": "Subeffect:Move:"
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Shape"
+	],
+	"n": 0,
+	"e": 1,
+	"s": 4,
+	"w": 5,
+	"subtypes": [
+		"Ethereal",
+		"Shaper"
+	],
+	"subtypeText": "Ethereal Shaper"
+}

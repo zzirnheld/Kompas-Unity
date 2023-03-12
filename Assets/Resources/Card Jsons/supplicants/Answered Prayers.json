@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Answered Prayers",
-	"effText": "When a negated character dies, rehand them (to their owner's hand).",
+	"effText": "When a negated character dies, hand them.",
 	"effects": [
 		{
 			"triggerData": {
@@ -9,7 +9,8 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Main Card Fits Restriction Before"
+						"Main Card Fits Restriction Before",
+						"From Field"
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
@@ -21,13 +22,13 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetTargetsControllerSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTargetsController:"
 				},
 				{
-					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Hand:"
 				}
 			]
 		}

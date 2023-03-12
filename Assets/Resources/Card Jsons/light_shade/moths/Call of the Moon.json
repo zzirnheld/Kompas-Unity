@@ -1,0 +1,94 @@
+{
+	"cardType": 83,
+	"cardName": "Call of the Moon",
+	"effText": "When a friendly Moth attacks a character in Light, give the Moth +1 NESW.",
+	"effects": [
+		{
+			"blurb": "brOther, the mOOn",
+			"triggerData": {
+				"triggerCondition": "Attack",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card",
+						"Main Card Fits Restriction Before",
+                        "Secondary Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Moth" ]
+							}
+						]
+					},
+                    "secondaryCardRestriction": {
+						"spaceRestrictionElements": [
+							{
+								"$type": "Core.SpaceRestriction:InAOEOf:",
+								"anyOf": {
+									"$type": "ManyCards:FittingRestriction:",
+									"cardRestriction": {
+										"cardRestrictionElements": [
+											{
+												"$type": "Core.CardRestriction:Subtypes:",
+												"subtypes": [ "Light" ]
+											}
+										]
+									}
+								}
+							}
+						]
+                    }
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "Moth that feels the call",
+						"cardRestrictions": [
+							"Character"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Moth" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "mOOn",
+						"spaceRestrictions": [
+							"Empty",
+							"In Card Target's AOE"
+						],
+						"spaceRestrictionElements": [ {
+							"$type": "Core.SpaceRestriction:CanMoveCard:",
+							"toMove": { "$type": "Cards:TargetIndex:" }
+						} ]
+					}
+				},
+				{
+					"$type": "Subeffect:Move:"
+				}
+			]
+		}
+	],
+	"c": 1,
+	"spellTypes": [
+		"Enchant"
+	],
+	"subtypeText": "Enchant"
+}

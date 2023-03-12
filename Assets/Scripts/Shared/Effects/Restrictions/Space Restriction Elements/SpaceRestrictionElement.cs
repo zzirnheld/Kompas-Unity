@@ -1,6 +1,5 @@
 using KompasCore.Effects.Identities;
-using KompasCore.Effects.Relationships;
-using KompasServer.Effects.Identities;
+using System.Linq;
 
 namespace KompasCore.Effects.Restrictions
 {
@@ -17,33 +16,69 @@ namespace KompasCore.Effects.Restrictions
 
     namespace SpaceRestrictionElements
     {
-        /// <summary>
-        /// Gets the distance between the described origin point and the space to be tested,
-        /// gets the described number,
-        /// and compares the distance to the number with the given comparison.
-        /// </summary>
-        public class CompareDistance : SpaceRestrictionElement
+        public class Not : SpaceRestrictionElement
         {
-            public INoActivationContextSpaceIdentity distanceTo;
-            public INoActivationContextNumberIdentity number;
-            public INumberRelationship comparison;
+            public SpaceRestrictionElement negated;
 
-            public override void Initialize(RestrictionContext restrictionContext)
+            public override void Initialize(EffectInitializationContext initializationContext)
             {
-                base.Initialize(restrictionContext);
-                distanceTo.Initialize(restrictionContext);
-                number.Initialize(restrictionContext);
+                base.Initialize(initializationContext);
+                negated.Initialize(initializationContext);
+            }
+
+            protected override bool AbstractIsValidSpace(Space space, ActivationContext context)
+                => !negated.IsValidSpace(space, context);
+        }
+
+        public class AnyOf : SpaceRestrictionElement
+        {
+            public SpaceRestrictionElement[] restrictions;
+
+            public override void Initialize(EffectInitializationContext initializationContext)
+            {
+                base.Initialize(initializationContext);
+                foreach (var r in restrictions) r.Initialize(initializationContext);
+            }
+
+            protected override bool AbstractIsValidSpace(Space space, ActivationContext context)
+                => restrictions.Any(r => r.IsValidSpace(space, context));
+        }
+
+        public class Empty : SpaceRestrictionElement
+        {
+            protected override bool AbstractIsValidSpace(Space space, ActivationContext context)
+                => InitializationContext.game.BoardController.IsEmpty(space);
+        }
+
+        public class CardFitsRestriction : SpaceRestrictionElement
+        {
+            public CardRestriction restriction;
+
+            public override void Initialize(EffectInitializationContext initializationContext)
+            {
+                base.Initialize(initializationContext);
+                restriction.Initialize(initializationContext);
             }
 
             protected override bool AbstractIsValidSpace(Space space, ActivationContext context)
             {
-                var origin = this.distanceTo.Space;
-                int distance = origin.DistanceTo(space);
-
-                int number = this.number.Number;
-
-                return comparison.Compare(distance, number);
+                var card = InitializationContext.game.BoardController.GetCardAt(space);
+                return restriction.IsValidCard(card, context);
             }
+        }
+
+        public class SameDiagonal : SpaceRestrictionElement
+        {
+            public IIdentity<Space> space;
+
+            public override void Initialize(EffectInitializationContext initializationContext)
+            {
+                base.Initialize(initializationContext);
+                space.Initialize(initializationContext);
+            }
+
+            protected override bool AbstractIsValidSpace(Space space, ActivationContext context)
+                => space.SameDiagonal(this.space.From(context, default));
         }
     }
 }

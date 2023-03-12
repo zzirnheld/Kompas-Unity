@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "VI - The Lovers",
-	"effText": "When you draw X cards, you can tribute me. Deck->summon an S <= X Tarocco where I was.",
+	"effText": "When you draw X cards, you can tribute me to deck->summon an S <= X Tarocco where I was.",
 	"effects": [
 		{
 			"blurb": "Better together",
@@ -18,21 +18,20 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetThisSpaceSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThisSpace:"
 				},
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Discard:",
 					"targetIndex": -1
 				},
 				{
-					"$type": "KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:DeckTarget:",
 					"cardRestriction": {
 						"blurb": "Tarocco for Lovers to become",
 						"cardRestrictions": [
-							"Subtypes Include",
 							"Character",
 							"Deck",
 							"Card Value Fits Number Restriction"
@@ -45,14 +44,17 @@
 								"<=X"
 							]
 						},
-						"subtypesInclude": [
-							"Tarocco"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Tarocco" ]
+							}
 						]
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Play:",
 					"targetIndex": -1,
 					"SpaceIndex": -1
 				}

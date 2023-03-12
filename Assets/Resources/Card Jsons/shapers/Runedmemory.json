@@ -1,0 +1,79 @@
+{
+	"cardType": 67,
+	"cardName": "Runedmemory",
+	"effText": "Shape.\nWhen I move X spaces, hand->cast a C X Shaping.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "Shaping for He Who Knew Runes to cast",
+						"cardRestrictions": [
+							"Spell",
+							"Can Be Played",
+							"Card Value Fits Number Restriction"
+						],
+						"cardValue": {
+							"value": "C"
+						},
+						"cardValueNumberRestriction": {
+							"numberRestrictions": [
+								"=X"
+							]
+						},
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Shaping" ]
+							}
+						]
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "where for He Who Knew Runes to cast its target Shaping",
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            }
+                        ]
+					}
+				},
+				{
+					"$type": "Subeffect:Play:"
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Shape"
+	],
+	"n": 1,
+	"e": 6,
+	"s": 4,
+	"w": 4,
+	"subtypes": [
+		"Ethereal",
+		"Shaper",
+		"Mage"
+	],
+	"subtypeText": "Ethereal Shaper Mage"
+}

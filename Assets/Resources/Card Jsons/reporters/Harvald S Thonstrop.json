@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Harvald S Thonstrop",
-	"effText": "The first time each round an enemy card is revealed, Invoke. Set X to the Invoked character's S. Give the enemy Avatar +X E.",
+	"effText": "The first time each round an enemy card is revealed, I Invoke a character with less S than me.",
 	"effects": [
 		{
 			"blurb": "I knEW IT",
@@ -14,29 +14,29 @@
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Enemy"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" }
 						]
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "S"
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.MillSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Mill:",
 					"xModifier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.ConditionalJumpSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ConditionalJump:",
 					"condition": "Target Violates Restriction",
 					"cardRestriction": {
 						"cardRestrictions": [
@@ -58,44 +58,27 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to Invoke",
-						"spaceRestrictions": [
-							"Can Play Card Target to This Space",
-							"Empty"
-						]
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            }
+                        ]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
-				},
-				{
-					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
-					"cardValue": {
-						"value": "S"
-					},
-					"xMultiplier": 1
-				},
-				{
-					"$type": "KompasServer.Effects.AutoTargetSubeffect, Assembly-CSharp",
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Avatar",
-							"Enemy"
-						]
-					}
-				},
-				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMultiplier": 1
+					"$type": "Subeffect:Play:"
 				}
 			]
 		}
 	],
 	"unique": true,
 	"n": 3,
-	"e": 5,
+	"e": 1,
 	"s": 8,
 	"w": 5,
 	"subtypeText": "Crazy Intoxicated Reporter Person"

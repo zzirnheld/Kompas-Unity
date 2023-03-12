@@ -1,0 +1,112 @@
+{
+	"cardType": 67,
+	"cardName": "Illalli, the Brilliant",
+	"effText": "Once each turn, you can swap Light I'm in for Shade in your deck.\nWhen an enemy is lit up, give them -5 W.",
+	"effects": [
+		{
+			"blurb": "Brilliate!",
+			"activationRestriction": {
+				"activationRestrictionArray": [
+					"Max Times Per Turn",
+					"Default"
+				]
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:AutoTarget:",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Source in This' AOE"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Light" ]
+							}
+						]
+					},
+					"tiebreakerDirection":"Any"
+				},
+				{
+					"$type": "Subeffect:TargetTargetsSpace:"
+				},
+				{
+					"$type": "Subeffect:Reshuffle:"
+				},
+				{
+					"$type": "Subeffect:AutoTarget:",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Deck",
+							"Spell"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Shade" ]
+							}
+						]
+					},
+					"tiebreakerDirection":"Any"
+				},
+				{
+					"$type": "Subeffect:Play:"
+				}
+			]
+		},
+		{
+			"blurb": "Blinding Lights",
+			"triggerData": {
+				"triggerCondition": "Arrive",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Light" ]
+							}
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetTriggeringCard:"
+				},
+				{
+					"$type": "Subeffect:ChangeAllCardStats:",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"In Card Target's AOE"
+							]
+						},
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
+					},
+					"wModifier": -5
+				}
+			]
+		}
+	],
+    "unique":true,
+	"n": 6,
+	"e": 6,
+	"s": 6,
+	"w": 6,
+	"subtypeText": "Brilliant Mage"
+}

@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "XV - The Devil",
-	"effText": "When an enemy deck-rehands a card, if your hand isn't full, draw 1 card.",
+	"effText": "When an enemy deck->hands a card, unless your hand is full, draw 1 card.",
 	"effects": [
 		{
 			"triggerData": {
@@ -13,19 +13,19 @@
 						"From Deck"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Enemy"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" }
 						]
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ConditionalEnd:",
 					"condition": "Hand Full"
 				},
 				{
-					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Draw:"
 				}
 			]
 		}

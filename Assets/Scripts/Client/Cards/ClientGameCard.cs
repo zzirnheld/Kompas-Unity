@@ -2,6 +2,7 @@
 using KompasClient.GameCore;
 using KompasCore.Cards;
 using KompasCore.Effects;
+using KompasCore.Helpers;
 using KompasCore.GameCore;
 using System.Collections.Generic;
 
@@ -18,10 +19,10 @@ namespace KompasClient.Cards
             protected set
             {
                 base.Location = value;
-                ClientGame.clientUICtrl.Leyload = Game.Leyload;
-                if (cardCtrl != null)
+                ClientGame.clientUIController.Leyload = Game.Leyload;
+                if (CardController != null)
                 {
-                    cardCtrl.ShowForCardType(CardType, ClientCameraController.Main.Zoomed);
+                    CardController.gameCardViewController.Refresh();
                     UpdateRevealed();
                 }
             }
@@ -34,7 +35,7 @@ namespace KompasClient.Cards
             set
             {
                 clientController = value;
-                if (cardCtrl != null) cardCtrl.SetRotation();
+                if (CardController != null) CardController.gameCardViewController.Refresh();
             }
         }
         public override Player Controller
@@ -44,17 +45,13 @@ namespace KompasClient.Cards
         }
 
         public ClientPlayer ClientOwner { get; private set; }
-        public override Player Owner
-        {
-            get => ClientOwner;
-            protected set => ClientOwner = value as ClientPlayer;
-        }
+        public override Player Owner => ClientOwner;
 
         public ClientEffect[] ClientEffects { get; private set; }
-        public override IEnumerable<Effect> Effects => ClientEffects;
+        public override IReadOnlyCollection<Effect> Effects => ClientEffects;
         public override bool IsAvatar => false;
-        public ClientCardMouseController mouseCtrl;
-        public ClientCardController clientCardCtrl;
+        public ClientCardController ClientCardController { get; private set; }
+        public override CardController CardController => ClientCardController;
 
         private bool knownToEnemy = false;
         public override bool KnownToEnemy
@@ -67,28 +64,44 @@ namespace KompasClient.Cards
             }
         }
 
+        protected ClientGameCard(int id, ClientPlayer owner, ClientCardController clientCardController)
+            : base(id)
+        {
+            owner.clientGame.AddCard(this);
+
+            ClientCardController = clientCardController;
+            clientCardController.ClientCard = this;
+
+            ClientGame = owner.clientGame;
+            ClientController = ClientOwner = owner;
+        }
+
+        public ClientGameCard(SerializableCard serializedCard, int id, ClientPlayer owner, ClientEffect[] effects, ClientCardController clientCardController)
+            : base (serializedCard, id, owner.clientGame)
+        {
+            owner.clientGame.AddCard(this);
+
+            ClientCardController = clientCardController;
+            clientCardController.ClientCard = this;
+
+            ClientGame = owner.clientGame;
+            ClientController = ClientOwner = owner;
+            ClientEffects = effects;
+            foreach (var (index, eff) in effects.Enumerate()) eff.SetInfo(this, ClientGame, index, owner);
+
+            clientCardController.gameCardViewController.Focus(this);
+        }
+
         public override bool Remove(IStackable stackSrc = null)
         {
             ClientGame.MarkCardDirty(this);
             return base.Remove(stackSrc);
         }
 
-        public void SetInitialCardInfo(SerializableCard serializedCard, ClientGame game, ClientPlayer owner, ClientEffect[] effects, int id)
-        {
-            base.SetCardInfo(serializedCard, id);
-            ClientGame = game;
-            ClientController = ClientOwner = owner;
-            ClientEffects = effects;
-            mouseCtrl.ClientGame = game;
-            int i = 0;
-            foreach (var eff in effects) eff.SetInfo(this, game, i++, owner);
-        }
-
         public override void SetN(int n, IStackable stackSrc = null, bool notify = true)
         {
             base.SetN(n, stackSrc, notify);
-            if (ClientGame?.clientUICtrl.ShownCard == this)
-                ClientGame?.clientUICtrl.Refresh();
+            ClientGame?.clientUIController.CardViewController.Refresh();
         }
 
         /// <summary>
@@ -99,9 +112,9 @@ namespace KompasClient.Cards
         /// </summary>
         private void UpdateRevealed()
         {
-            if (clientCardCtrl != null)
+            if (ClientCardController != null)
             {
-                clientCardCtrl.Revealed = KnownToEnemy && InHiddenLocation && !Owner.Friendly;
+                ClientCardController.Revealed = KnownToEnemy && InHiddenLocation && !Owner.Friendly;
             }
         }
     }

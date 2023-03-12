@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Salvage Soul",
-	"effText": "Rehand a friendly Revenant. Draw 1. Hand->discard 1.",
+	"effText": "Rehand a friendly Revenant. Rummage.",
 	"effects": [
 		{
 			"triggerData": {
@@ -14,42 +14,33 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Revenant for Salvage Soul to rehand",
-						"cardRestrictions": [
-							"Friendly",
-							"Board",
-							"Subtypes Include"
-						],
-						"subtypesInclude": [
-							"Revenant"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Revenant" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Hand:"
 				},
 				{
-					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction": {
-						"blurb": "card for Salvage Soul to discard",
-						"cardRestrictions": [
-							"Friendly",
-							"Hand"
-						]
-					}
-				},
-				{
-					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Keyword:",
+					"keyword": "Rummage"
 				}
 			]
 		}
 	],
-	"c": 1,
+	"c": 0,
 	"spellTypes": [
 		"Simple"
 	],

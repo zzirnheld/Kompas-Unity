@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Penalty Box",
-	"effText": "Comeback Play.\nWhen a character wielding a Sportsball defends here, rehand them.",
+	"effText": "Comeback Play.\nWhen an enemy wielding a Sportsball defends here, hand them.",
 	"effects": [
 		{
 			"blurb": "Time out!",
@@ -25,22 +25,25 @@
 							"mustBeEmpty": false
 						},
 						"augmentRestriction": {
-							"cardRestrictions": [
-								"Subtypes Include"
-							],
-							"subtypesInclude": [
-								"Sportsball"
+							"cardRestrictionElements": [
+								{
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Sportsball" ]
+								}
 							]
-						}
+						},
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Enemy:" }
+						]
 					}
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Hand:"
 				}
 			]
 		}

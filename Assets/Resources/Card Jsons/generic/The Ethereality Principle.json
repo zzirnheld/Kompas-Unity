@@ -1,0 +1,68 @@
+{
+	"cardType": 83,
+	"cardName": "The Ethereality Principle",
+	"effText": "When you revive an S X Ethereal character, discard your deck's top X. Put one of those cards back on top.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+                        "Controller Triggered",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Ethereal" ]
+							}
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetTriggeringCard:"
+				},
+				{
+					"$type": "Subeffect:SetXByTargetCardValue:",
+					"cardValue": {
+						"value": "S"
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:Mill:",
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "Remnant to put back on top",
+						"cardRestrictions": [
+							"Already Target"
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:Topdeck:"
+				}
+			]
+		}
+	],
+	"c": 3,
+	"unique": true,
+	"spellTypes": [
+		"Enchant"
+	],
+	"subtypeText": "Enchant"
+}

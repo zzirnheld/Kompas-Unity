@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Doomsayer",
-	"effText": "Once each turn, you can search your deck for a Cultist.",
+	"effText": "Once each turn, you can deck->hand a Cultist.",
 	"effects": [
 		{
 			"blurb": "DOOM cometh!",
@@ -14,22 +14,24 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChooseFromList:",
 					"maxCanChoose": 1,
 					"cardRestriction": {
 						"blurb": "Cultist for Doomsayer to search",
 						"cardRestrictions": [
-							"Subtypes Include",
-							"Friendly",
 							"Deck"
 						],
-						"subtypesInclude": [
-							"Cultist"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Cultist" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Hand:"
 				}
 			]
 		}

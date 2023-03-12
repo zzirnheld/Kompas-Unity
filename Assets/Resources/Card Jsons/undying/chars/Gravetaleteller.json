@@ -1,0 +1,47 @@
+{
+	"cardType": 67,
+	"cardName": "Gravetaleteller",
+	"effText": "Undying.\nWhen I'm revived, draw 1 card.",
+	"effects": [
+		{
+			"blurb": "Taletell",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							}
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:Draw:"
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Undying"
+	],
+	"n": 3,
+	"e": 4,
+	"s": 5,
+	"w": 3,
+	"subtypes": [
+		"Ethereal",
+		"Spirit"
+	],
+	"subtypeText": "Ethereal Spirit"
+}

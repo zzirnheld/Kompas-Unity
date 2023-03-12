@@ -2,23 +2,23 @@
 	"keywordReminderTexts": [
 		{
 			"keyword": "Linewalk.",
-			"reminder": "During friendly turns, I can spend my available movement to move myself through empty spaces to any space along my diagonal."
+			"reminder": "During friendly turns, you can move me through empty spaces, to any space along my diagonal. This counts as moving as many spaces as I can."
 		},
 		{
 			"keyword": "Shape.",
-			"reminder": "During friendly turns, I can spend a space of movement and give myself -X E to move myself through X Ethereal characters."
+			"reminder": "I can move through X Ethereal characters to an empty space, then I lose X E. This also counts as moving 1 space for N purposes."
 		},
 		{
 			"keyword":"Vessel.",
-			"reminder":"You can destroy a Memory attached to me. Echo me."
+			"reminder":"You can destroy a Memory attached to me to echo me."
 		},
 		{
 			"keyword": "Revenant.",
-			"reminder": "When I die, annihilate me. During friendly turns, you can pip revive me at half cost."
+			"reminder": "When I die, annihilate me.\nDuring friendly turns, you can pip revive me at half cost."
 		},
 		{
 			"keyword": "Ificate.",
-			"reminder": "When I'm hand->discarded, choose another discarded Crazy Idea. Pay a pip and play it."
+			"reminder": "When I'm hand->discarded, discard->cast a DIFFERENT Crazy Idea for 1 pip."
 		},
 		{
 			"keyword": "Recoverable.",
@@ -33,43 +33,42 @@
 			"reminder": "When friendly turns start while there's a friendly Sportsball augment, discard->cast me."
 		},
 		{
-			"keyword": "Runic.",
-			"reminder": "Can't be cast normally."
+			"keyword":"Runic.",
+			"reminder":"Can't be cast normally."
 		},
 		{
-			"keyword": "Golem.",
-			"reminder": "While I'm inactive, I can't attack or move."
+			"keyword":"Golem.",
+			"reminder":"While I'm inactive, I can't attack or move."
 		},
 		{
 			"keyword": "Supplicant.",
-			"reminder": "When I fight, kill me."
+			"reminder": "When I fight, kill me.\nWhen another character arrives adjacent to a Supplicant:"
 		},
 		{
-			"keyword": "Weather.",
-			"reminder": "When turns start, annihilate me. Deck->cast a different Weather adjacent to where I was."
+			"keyword": "Weather Condition",
+			"reminder": "When a non-Weather character arrives here, apply the listed effect.\nWhen turns start, deck->cast a Weather Condition adjacent to me, then annihilate me."
 		},
 		{
-			"keyword": "Weather Event.",
-			"reminder": "Can't be played normally during friendly turns. Must be played in two Weathers."
+			"keyword": "Weather Event",
+			"reminder": "Summon me only in Weather overlap.\nWhen I'm summoned during an enemy turn, each Weather Condition I'm in does this to each card in it:"
+		},
+		{
+			"keyword": "Spin a Storm",
+			"reminder": "Hand->summon a Weather Event in that Weather Condition's overlap with another Weather Condition."
 		},
 		{
 			"keyword": "martyr",
 			"reminder": "A character is martyred when they die during an enemy turn."
 		},
 		{
-			"keyword": "Machinations.",
-			"reminder": "When I'm cast, set my C to 0. When friendly turns start, give me +1 C."
+			"keyword":"Wisp.",
+			"reminder":"When I'm summoned, or when turns start, move me 1 space. When I move:"
 		},
 		{
-			"keyword": "Wisp.",
-			"reminder": "When I'm summoned, move me 1 space. When turns start, move me 1 space."
+			"keyword":"Invoke",
+			"reminder":"Discard your deck's top card until you discard an appropriate character. Revive them."
 		},
 		{
-			"keyword": "Invoke",
-			"reminder": "Mill until you mill a character with S < my S. Revive them."
-		},
-		{
-
 			"keyword":"Flashback.",
 			"reminder":"You can pip discard->cast me, then annihilate me."
 		},
@@ -78,16 +77,8 @@
 			"reminder":"When turns start, swap me for a Wanderer in your deck with less S. (They won't wander until next turn.)"
 		},
 		{
-			"keyword": "Charge:",
-			"reminder": "When I'm activated by a card connected to me by Conductors..."
-		},
-		{
-			"keyword": "Charge X:",
-			"reminder": "When I'm activated by a card connected to me by X Conductors..."
-		},
-		{
-			"keyword": "Agile",
-			"reminder": "I can move during enemy turns. (Otherwise, the same rules apply as normal: nothing must be happening, I must have enough N, etc.)"
+			"keyword":"Agile",
+			"reminder":"I can move during enemy turns. (Otherwise, the same rules apply as normal: nothing must be happening, I must have enough N, etc.)"
 		},
 		{
 			"keyword": "Waterborn",
@@ -103,7 +94,7 @@
 		},
 		{
 			"keyword": "Instrument",
-			"reminder": "Can only be attached to a character not already wielding an Instrument. After Music is cast adjacent to me, delay until the stack ends. Dispel it."
+			"reminder": "Can only be attached to a character not already wielding an Instrument.\nAfter Music is cast adjacent to me, delay until the stack ends. Dispel it."
 		},
 		{
 			"keyword": "Pass Back",
@@ -153,6 +144,66 @@
 		{
 			"keyword":"Evasive",
 			"reminder":"The first time each round I fight a W X character, give them -X W for that fight."
+		},
+		{
+			"keyword":"Must contain",
+			"reminder":"If there's no appropriate cards here, dispel me."
+		},
+		{
+			"keyword":"Mech Ultimate",
+			"reminder":"When I attack, give me +10 S. When my S becomes at least 30, do the following, then negate me:"
+		},
+		{
+			"keyword":"Runecast",
+			"reminder":"Once each turn, you can pip hand->cast a Rune."
+		},
+		{
+			"keyword": "Rummage",
+			"reminder": "Hand->discard 1 card, then draw 1 card."
+		},
+		{
+			"keyword": "rummage",
+			"reminder": "Hand->discard 1 card, then draw 1 card."
+		},
+		{
+			"keyword": "Structure",
+			"reminder": "Can't move or attack normally."
+		},
+		{
+			"keyword": "Warrior Trainer",
+			"reminder": "When you summon a Warrior adjacent to me, give them:"
+		},
+		{
+			"keyword": "Berserker",
+			"reminder": "3 attacks each turn."
+		},
+		{
+			"keyword": "Undying",
+			"reminder": "1 turn after I die, revive me where I died."
+		},
+		{
+			"keyword": "Soullink",
+			"reminder": "When I deal X more damage than my defender has E, give their Avatar -X E."
+		},
+		{
+			"keyword": "Trample",
+			"reminder": "When I deal X more damage than my defender has E, give enemies adjacent to them -X E."
+		},
+		{
+			"keyword": "Bouncy",
+			"reminder": "When this character arrives, attach me to an adjacent character."
+		},
+		{
+			"keyword": "Sticky",
+			"reminder": "When a character arrives adjacent to me, attach me to them. "
+		},
+		{
+			"keyword": "Masquerade",
+			"reminder": "Twice each turn, you can swap a Mask attached to me for one in your hand."
+		},
+		{
+			"keyword": "Mask",
+			"reminder": "Characters can only wear one Mask."
 		}
 	]
 }

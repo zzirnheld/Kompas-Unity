@@ -1,0 +1,50 @@
+{
+	"cardType": 83,
+	"cardName": "Puffyclouds",
+	"effText": "Weather Condition: +1 S.",
+	"effects": [
+		{
+			"blurb": "Inspiring clouds",
+			"triggerData": {
+				"triggerCondition": "Arrive",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Space Fits Restriction",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character"
+						]
+					},
+					"spaceRestriction": {
+						"mustBeEmpty": false,
+						"spaceRestrictions": [
+							"In Source's AOE"
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetTriggeringCard:"
+				},
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"sModifier": 1
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Weather Condition Cast"
+	],
+	"unique": true,
+	"c": 1,
+	"spellTypes": [
+		"Radial"
+	],
+	"subtypeText": "Weather Condition Radius",
+	"radius": 4
+}

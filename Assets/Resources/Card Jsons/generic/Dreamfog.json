@@ -1,0 +1,45 @@
+{
+	"cardType": 67,
+	"cardName": "Dreamfog",
+	"effText": "When a character moves, you can tribute me to gain 1 pip.",
+	"effects": [
+		{
+			"triggerData": {
+				"optional": true,
+				"blurb": "Tribute Dreamfog to gain 1 pip?",
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character"
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetThis:"
+				},
+				{
+					"$type": "Subeffect:Discard:"
+				},
+				{
+					"$type": "Subeffect:AddPips:",
+					"xModifier": 1
+				}
+			]
+		}
+	],
+	"n": 1,
+	"e": 1,
+	"s": 1,
+	"w": 1,
+	"subtypes": [
+		"Ethereal"
+	],
+	"subtypeText": "Ethereal"
+}

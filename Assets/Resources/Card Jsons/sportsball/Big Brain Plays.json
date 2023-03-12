@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Big Brain Plays",
-	"effText": "Pip deck-cast a Team Play.",
+	"effText": "Pip deck->cast a Team Play.",
 	"effects": [
 		{
 			"triggerData": {
@@ -14,39 +14,43 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChooseFromList:",
 					"maxCanChoose": 1,
 					"cardRestriction": {
 						"blurb": "Big Brain Play?",
 						"cardRestrictions": [
-							"Subtypes Include",
-							"Friendly",
 							"Deck",
 							"Spell",
 							"Can Be Played",
 							"Effect Controller can Afford Cost"
 						],
-						"subtypesInclude": [
-							"Team Play"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Team", "Play" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "Big Brain Play!",
-						"spaceRestrictions": [
-							"Can Play Card Target to This Space",
-							"Empty"
-						]
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            }
+                        ]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
-					"xMultiplier": 1
+					"$type": "Subeffect:PayPipsTargetCost:"
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Play:"
 				}
 			]
 		}

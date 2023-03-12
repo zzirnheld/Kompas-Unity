@@ -25,7 +25,7 @@ namespace KompasServer.Networking
     {
         public Task Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
         {
-            if (serverGame.uiCtrl.DebugMode)
+            if (serverGame.UIController.DebugMode)
             {
                 UnityEngine.Debug.LogWarning($"Debug setting player {player.index} pips to {numPips}");
                 player.Pips = numPips;

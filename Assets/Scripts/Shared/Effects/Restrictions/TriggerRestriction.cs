@@ -8,9 +8,9 @@ using UnityEngine;
 
 namespace KompasCore.Effects
 {
-    public class TriggerRestriction
+    public class TriggerRestriction : ContextInitializeableBase
     {
-        public Game Game { get; private set; }
+        //public Game Game { get; private set; }
 
         #region trigger restrictions
         private const string ThisCardIsMainCard = "This Card is Main Card";
@@ -37,6 +37,7 @@ namespace KompasCore.Effects
         private const string SecondaryCardFitsRestrictionBefore = "Secondary Card Fits Restriction Before";
 
         private const string CardExistsNow = "Card Exists Now";
+        private const string NoCardExistsNow = "No Card Exists Now";
 
         private const string SpaceFitsRestriction = "Space Fits Restriction";
 
@@ -71,8 +72,8 @@ namespace KompasCore.Effects
         private const string MaxPerStack = "Max Per Stack";
         #endregion trigger conditions
 
-        private static readonly string[] RequiringCardRestriction = 
-            { MainCardFitsRestrictionBefore, SecondaryCardFitsRestrictionBefore, MainCardsAugmentedCardBeforeFitsRestriction };
+        private static readonly string[] RequiringCardRestriction =
+            { MainCardFitsRestrictionBefore, MainCardsAugmentedCardBeforeFitsRestriction };
         private static readonly string[] RequiringNowRestriction = { MainCardFitsRestrictionAfter };
         private static readonly string[] RequiringSelfRestriction = { ThisCardFitsRestriction };
         private static readonly string[] RequiringExistsRestriction = { CardExistsNow };
@@ -102,54 +103,45 @@ namespace KompasCore.Effects
 
         public TriggerRestrictionElement[] triggerRestrictionElements = { };
 
-        public GameCard ThisCard { get; private set; }
+        private GameCard ThisCard => InitializationContext.source;
+        private Effect SourceEffect => InitializationContext.effect;
+        private Game Game => InitializationContext.game;
+        private Trigger ThisTrigger => InitializationContext.trigger;
 
-        public Trigger ThisTrigger { get; private set; }
-        public Effect SourceEffect { get; private set; }
-        public Subeffect Subeffect { get; private set; }
-
-        // Necessary because json doesn't let you have nice things, like constructors with arguments,
-        // so I need to make sure manually that I've bothered to set up relevant arguments.
-        private bool initialized = false;
-
-        public void Initialize(Game game, GameCard thisCard, Trigger thisTrigger, Effect effect, Subeffect subeffect = default)
+        public override void Initialize(EffectInitializationContext initializationContext)
         {
-            Game = game;
-            ThisCard = thisCard;
-            ThisTrigger = thisTrigger;
-            SourceEffect = effect;
+            base.Initialize(initializationContext);
 
-            cardRestriction?.Initialize(thisCard, effect, subeffect);
-            nowRestriction?.Initialize(thisCard, effect, subeffect);
-            secondaryCardRestriction?.Initialize(thisCard, effect, subeffect);
-            existsRestriction?.Initialize(thisCard, effect, subeffect);
-            selfRestriction?.Initialize(thisCard, effect, subeffect);
-            spaceRestriction?.Initialize(thisCard, thisCard.Controller, effect, subeffect);
-            sourceRestriction?.Initialize(thisCard, effect, subeffect);
-            xRestriction?.Initialize(thisCard);
+            cardRestriction?.Initialize(initializationContext);
+            nowRestriction?.Initialize(initializationContext);
+            secondaryCardRestriction?.Initialize(initializationContext);
+            existsRestriction?.Initialize(initializationContext);
+            selfRestriction?.Initialize(initializationContext);
+            spaceRestriction?.Initialize(initializationContext);
+            sourceRestriction?.Initialize(initializationContext);
+            xRestriction?.Initialize(initializationContext);
 
             foreach (var tre in triggerRestrictionElements)
             {
-                tre.Initialize(new RestrictionContext(game: Game, source: thisCard, subeffect: subeffect));
+                tre.Initialize(initializationContext);
             }
-            
+
             //Verify that any relevant restrictions exist
             if (triggerRestrictions.Intersect(RequiringCardRestriction).Any() && cardRestriction == null)
-                throw new ArgumentNullException("cardRestriction", $"Must be populated for any of these restrictions: {RequiringCardRestriction}");
+                throw new ArgumentNullException("cardRestriction", $"Must be populated for any of these restrictions: {string.Join(",", RequiringCardRestriction)}");
             if (triggerRestrictions.Intersect(RequiringNowRestriction).Any() && nowRestriction == null)
-                throw new ArgumentNullException("nowRestriction", $"Must be populated for any of these restrictions: {RequiringNowRestriction}");
+                throw new ArgumentNullException("nowRestriction", $"Must be populated for any of these restrictions: {string.Join(",", RequiringNowRestriction)}");
             if (triggerRestrictions.Intersect(RequiringSelfRestriction).Any() && selfRestriction == null)
-                throw new ArgumentNullException("selfRestriction", $"Must be populated for any of these restrictions: {RequiringSelfRestriction}");
+                throw new ArgumentNullException("selfRestriction", $"Must be populated for any of these restrictions: {string.Join(",", RequiringSelfRestriction)}");
             if (triggerRestrictions.Intersect(RequiringExistsRestriction).Any() && existsRestriction == null)
-                throw new ArgumentNullException("existsRestriction", $"Must be populated for any of these restrictions: {RequiringExistsRestriction}");
+                throw new ArgumentNullException("existsRestriction", $"Must be populated for any of these restrictions: {string.Join(",", RequiringExistsRestriction)}");
             if (triggerRestrictions.Intersect(RequiringSourceRestriction).Any() && sourceRestriction == null)
-                throw new ArgumentNullException("sourceRestriction", $"Must be populated for any of these restrictions: {RequiringSourceRestriction}");
+                throw new ArgumentNullException("sourceRestriction", $"Must be populated for any of these restrictions: {string.Join(",", RequiringSourceRestriction)}");
             if (triggerRestrictions.Intersect(RequiringNumberRestriction).Any() && xRestriction == null)
-                throw new ArgumentNullException("xRestriction", $"Must be populated for any of these restrictions: {RequiringNumberRestriction}");
+                throw new ArgumentNullException("xRestriction", $"Must be populated for any of these restrictions: {string.Join(",", RequiringNumberRestriction)}");
             if (triggerRestrictions.Intersect(RequiringSpaceRestriction).Any() && spaceRestriction == null)
-                throw new ArgumentNullException("spaceRestriction", $"Must be populated for any of these restrictions: {RequiringSpaceRestriction}");
+                throw new ArgumentNullException("spaceRestriction", $"Must be populated for any of these restrictions: {string.Join(",", RequiringSpaceRestriction)}");
 
-            initialized = true;
             //Debug.Log($"Initializing trigger restriction for {thisCard?.CardName}. game is null? {game}");
         }
 
@@ -163,6 +155,7 @@ namespace KompasCore.Effects
 
             ThisCardInPlay => ThisCard.Location == CardLocation.Board,
             CardExistsNow => ThisCard.Game.Cards.Any(c => existsRestriction.IsValidCard(c, context)),
+            NoCardExistsNow => !ThisCard.Game.Cards.Any(c => existsRestriction.IsValidCard(c, context)),
 
             ThisCardFitsRestriction => selfRestriction.IsValidCard(ThisCard, context),
 
@@ -175,7 +168,7 @@ namespace KompasCore.Effects
             MainCardIsStackableSource => context.stackableCause?.Source == context.mainCardInfoBefore.Card,
             StackableSourceFitsRestriction => sourceRestriction.IsValidCard(context.stackableCause?.Source, context),
             StackableSourceNotThisEffect => context.stackableCause != SourceEffect,
-            ContextsStackablesMatch => context.stackableCause == secondary?.stackableCause,
+            ContextsStackablesMatch => StackablesMatch(context, secondary),
             StackableIsThisEffect => context.stackableCause == SourceEffect,
             StackableIsASecondaryContextStackableTarget => secondary?.StackableTargets?.Any(s => s == context.stackableCause) ?? false,
             NoStackable => context.stackableCause == null,
@@ -213,12 +206,17 @@ namespace KompasCore.Effects
             _ => throw new ArgumentException($"Invalid trigger restriction {restriction}"),
         };
 
+        private static bool StackablesMatch(ActivationContext context, ActivationContext secondary)
+        {
+            Debug.Log($"Comparing {context}'s {context.stackableEvent} and {secondary}'s {secondary?.stackableEvent}");
+            return context.stackableEvent == secondary?.stackableEvent;
+        }
 
         private bool IsRestrictionValidDebug(string r, ActivationContext ctxt, ActivationContext secondary)
         {
             var success = IsRestrictionValid(r, ctxt, secondary);
             //TODO: tie this to a compiler flag/ifdef sort of thing
-            //if (!success) Debug.Log($"Trigger for {ThisCard.CardName} invalid at restriction {r} for {ctxt}");
+            if (!success) Debug.Log($"Trigger for {ThisCard.CardName} invalid at restriction {r} for {ctxt}");
             return success;
         }
 
@@ -231,7 +229,7 @@ namespace KompasCore.Effects
         /// <returns></returns>
         public bool IsValidTriggeringContext(ActivationContext context, ActivationContext secondary = default)
         {
-            if (!initialized) throw new ArgumentException("Trigger restriction not initialized!");
+            ComplainIfNotInitialized();
 
             try
             {

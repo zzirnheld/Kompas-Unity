@@ -1,0 +1,64 @@
+{
+	"cardType": 65,
+	"cardName": "Lance Module",
+	"effText": "Once each turn, this character can attack a character exactly 2 spaces from them. (Doesn't cost normal attack.)",
+	"effects": [
+		{
+			"blurb": "Reaching Attack",
+			"activationRestriction": {
+				"activationRestrictionArray": [
+					"Max Times Per Turn",
+					"Default"
+				]
+			},
+			"subeffects": [
+				{
+					"$type":"Subeffect:TargetAugmentedCard:"
+				},
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "enemy character to attack",
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Character:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+                            {
+                                "$type": "Core.CardRestriction:PositionFitsRestriction:",
+                                "spaceRestriction": {
+                                    "spaceRestrictionElements": [
+                                        {
+                                            "$type": "Core.SpaceRestriction:CompareDistance:",
+                                            "distanceTo": {
+                                                "$type": "Spaces:PositionOf:",
+                                                "ofThisCard": { "$type": "Cards:TargetIndex:" }
+                                            },
+                                            "number": { 
+                                                "$type": "Numbers:Constant:",
+                                                "constant": 2
+                                            },
+                                            "comparison": { "$type": "Relationships.Number:Equal:" }
+                                        }
+                                    ]
+                                }
+                            }
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:Attack:",
+					"targetIndex": -1,
+					"attackerIndex": -2
+				}
+			]
+		}
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [ "Augment Normal Restrictions" ],
+		"effectRestrictions": [ "Augment Effect Restrictions" ]
+	},
+	"a": 3,
+	"subtypeText": "Module"
+}

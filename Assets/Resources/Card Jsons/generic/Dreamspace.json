@@ -1,0 +1,60 @@
+{
+	"cardType": 67,
+	"cardName": "Dreamspace",
+	"effText": "When I'm summoned, deck-summon a copy of me.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetThis:"
+				},
+				{
+					"$type": "Subeffect:ChooseFromList:",
+					"cardRestriction": {
+						"blurb": "copy of Dreamspace to decksummon",
+						"cardRestrictions": [
+							"Same Name as Target",
+							"Deck"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
+						]
+					},
+					"maxCanChoose": 1
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "where for Dreamspace to decksummon a copy of itself",
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            }
+                        ]
+					}
+				},
+				{
+					"$type": "Subeffect:Play:"
+				}
+			]
+		}
+	],
+	"n": 0,
+	"e": 1,
+	"s": 4,
+	"w": 0,
+	"subtypes": [
+		"Ethereal"
+	],
+	"subtypeText": "Ethereal"
+}

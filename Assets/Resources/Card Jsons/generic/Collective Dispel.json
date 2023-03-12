@@ -15,10 +15,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Draw:"
 				},
 				{
-					"$type":"KompasServer.Effects.SetXBoardRestrictionSubeffect, Assembly-CSharp",
+					"$type":"Subeffect:SetXBoardRestriction:",
 					"cardRestriction": {
 						"cardRestrictions": [
                             "Space Fits Restriction"
@@ -32,13 +32,18 @@
 					"xMultiplier":1
 				},
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "C <= X spell to dispel",
 						"cardRestrictions": [
 							"Spell",
-							"Board",
 							"Card Value Fits Number Restriction"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						],
 						"cardValue": {
 							"value": "C"
@@ -52,7 +57,7 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.DispelSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Dispel:"
 				}
 			]
 		}

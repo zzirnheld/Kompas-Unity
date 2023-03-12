@@ -1,0 +1,80 @@
+{
+	"cardType": 67,
+	"cardName": "Painted Wall",
+	"effText": "Structure.\nIf I'm in a corner when a Structure on my diagonal defends, draw 3 cards.",
+	"effects": [
+		{
+			"blurb": "The walls remember",
+			"triggerData": {
+				"triggerCondition": "Defend",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Structure" ]
+							},
+                            {
+                                "$type": "Core.CardRestriction:PositionFitsRestriction:",
+                                "spaceRestriction": {
+                                    "spaceRestrictionElements": [
+										{
+											"$type": "Core.SpaceRestriction:SameDiagonal:",
+											"space": {
+												"$type": "KompasCore.Effects.Identities.Spaces.PositionOf, Assembly-CSharp",
+												"card": { "$type": "Cards:ThisCard:" }
+											}
+										}
+									]
+                                }
+                            }
+						]
+					}
+				},
+				"triggerRestrictionElements": [
+					{
+						"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+						"cardRestriction": {
+							"cardRestrictions": [
+								"Space Fits Restriction"
+							],
+							"spaceRestriction": {
+								"spaceRestrictions": [
+									"Corner"
+								]
+							}
+						},
+						"card": { "$type": "Cards:ThisCard:" }
+					}
+				]
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:DrawX:",
+					"xModifier": 3
+				}
+			]
+		}
+	],
+	"AttackRestriction": {
+		"attackRestrictions": [
+			"Default",
+			"Not Normally"
+		]
+	},
+	"MovementRestriction": {
+		"normalRestrictionsFromJson": [
+			"Default",
+			"Not Normally"
+		]
+	},
+	"n": 0,
+	"e": 10,
+	"s": 4,
+	"w": 0,
+	"subtypeText": "Maya Structure"
+}

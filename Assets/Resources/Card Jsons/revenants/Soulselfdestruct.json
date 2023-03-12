@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Soulselfdestruct",
-	"effText": "Kill an adjacent friendly SX Ethereal. Mill X Revenants.",
+	"effText": "Kill an adjacent friendly S X Ethereal. Deck->discard X Revenants.",
 	"effects": [
 		{
 			"triggerData": {
@@ -14,13 +14,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Ethereal for Soulselfdestruct to kill",
 						"cardRestrictions": [
-							"Friendly",
-							"Board",
-							"Subtypes Include",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
@@ -28,40 +25,50 @@
 								"Adjacent to Source"
 							]
 						},
-						"subtypesInclude": [
-							"Ethereal"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Ethereal" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "S"
 					},
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Discard:"
 				},
 				{
-					"$type": "KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:DeckTarget:",
 					"cardRestriction": {
 						"blurb": "card for Salvage Soul to discard",
 						"cardRestrictions": [
-							"Friendly",
-							"Deck",
-							"Subtypes Include"
+							"Deck"
 						],
-						"subtypesInclude": [
-							"Revenant"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Revenant" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Discard:"
 				},
 				{
-					"$type": "KompasServer.Effects.XTimesSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:XTimes:",
 					"jumpIndices": [
 						3
 					]
@@ -74,12 +81,11 @@
 			"Adjacent to Card Fitting Restriction"
 		],
 		"adjacentCardRestriction": {
-			"cardRestrictions": [
-				"Character",
-				"Subtypes Include"
-			],
-			"subtypesInclude": [
-				"Ethereal"
+			"cardRestrictionElements": [
+				{
+					"$type": "Core.CardRestriction:Subtypes:",
+					"subtypes": [ "Ethereal" ]
+				}
 			]
 		}
 	},

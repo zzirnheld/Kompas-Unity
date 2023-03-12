@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Go! Play Sportsball!",
-	"effText": "Deck-attach a Sportsball to your Avatar.",
+	"effText": "Deck->attach a Sportsball to your Avatar.",
 	"effects": [
 		{
 			"triggerData": {
@@ -14,35 +14,39 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChooseFromList:",
 					"maxCanChoose": 1,
 					"cardRestriction": {
 						"blurb": "Sportsball",
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
-							"Augment",
-							"Subtypes Include"
+							"Augment"
 						],
-						"subtypesInclude": [
-							"Sportsball"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Sportsball" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.AutoTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:AutoTarget:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Avatar",
-							"Friendly"
+							"Avatar"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTargetsSpace:"
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Play:",
 					"targetIndex": -2
 				}
 			]

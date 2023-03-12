@@ -1,0 +1,74 @@
+{
+	"cardType": 83,
+	"cardName": "Core Scrambling",
+	"effText": "The first time each turn a Golem defends, discard->apply a Golem Core to them. Their attacker attacks them again.",
+	"effects": [
+		{
+			"blurb": "Core? CORE!",
+			"triggerData": {
+				"blurb": "Discard->apply a core?",
+				"triggerCondition": "Defend",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Golem" ]
+							}
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetTriggeringCard:"
+				},
+				{
+					"$type": "Subeffect:TargetTargetsSpace:"
+				},
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "CORE!!!1!",
+						"cardRestrictions": [
+							"Augment"
+						],
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Discard" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Golem", "Core" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:Play:",
+					"targetIndex": -2
+				},
+				{
+					"$type":"Subeffect:TargetTriggeringCard:",
+					"secondary":true
+				},
+				{
+					"$type": "Subeffect:Attack:",
+					"targetIndex": -3,
+					"attackerIndex": -1
+				}
+			]
+		}
+	],
+	"c": 1,
+	"spellTypes": [
+		"Enchant"
+	],
+	"subtypeText": "Enchant"
+}

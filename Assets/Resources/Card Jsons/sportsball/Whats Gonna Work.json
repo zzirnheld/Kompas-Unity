@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Whats Gonna Work",
-	"effText": "Deck-cast \"Teamwork!\".",
+	"effText": "Deck->cast \"Teamwork!\".",
 	"effects": [
 		{
 			"triggerData": {
@@ -14,30 +14,35 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChooseFromList:",
 					"maxCanChoose": 1,
 					"cardRestriction": {
 						"blurb": "Teamwork",
 						"cardRestrictions": [
-							"Friendly",
 							"Deck",
 							"Name Is"
 						],
-						"nameIs": "Teamwork!"
-					}
-				},
-				{
-					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction": {
-						"blurb": "where to make a Comeback Play",
-						"spaceRestrictions": [
-							"Can Play Card Target to This Space",
-							"Empty"
+						"nameIs": "Teamwork!",
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+						"blurb": "where to make a Comeback Play",
+                        "spaceRestrictionElements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            }
+                        ]
+					}
+				},
+				{
+					"$type": "Subeffect:Play:"
 				}
 			]
 		}

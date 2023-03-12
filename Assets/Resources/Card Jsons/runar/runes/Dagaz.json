@@ -1,0 +1,52 @@
+{
+	"cardType": 83,
+	"cardName": "Dagaz",
+	"effText": "Runic.\nWhen you cast another Rune, gain 1 pip.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Different from Source",
+							"Spell"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Rune" ]
+							}
+						]
+					}
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:AddPips:",
+					"xModifier": 1
+				}
+			]
+		}
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Cannot be Played Normally"
+		]
+	},
+	"c": 1,
+	"unique": true,
+	"spellTypes": [
+		"Vanishing"
+	],
+	"subtypes": [
+		"Rune",
+		"Vanishing"
+	],
+	"subtypeText": "Rune Vanishing",
+	"duration": 1
+}

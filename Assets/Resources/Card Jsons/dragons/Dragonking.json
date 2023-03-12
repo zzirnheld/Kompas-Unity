@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Dragonking",
-	"effText": "Attended 2. Territorial.",
+	"effText": "Attended 2, but Territorial.",
 	"effects": [],
 	"keywords": [
 		"Attended",
@@ -12,7 +12,7 @@
 	],
 	"n": 5,
 	"e": 12,
-	"s": 6,
+	"s": 3,
 	"w": 12,
 	"subtypeText": "Dragon"
 }

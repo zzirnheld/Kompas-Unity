@@ -1,0 +1,44 @@
+{
+	"cardType": 67,
+	"cardName": "Bound Offering",
+	"effText": "When I die having X S, annihilate me and gain X/2 pips.",
+	"effects": [
+		{
+			"triggerData": {
+				"blurb": "Annihilate",
+				"triggerCondition": "Discard",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card",
+						"From Field"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetThis:"
+				},
+				{
+					"$type": "Subeffect:Annihilate:"
+				},
+				{
+					"$type": "Subeffect:SetXByTriggeringCardValue:",
+					"cardValue": {
+						"value": "S"
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:AddPips:",
+					"xMultiplier": 1,
+					"xDivisor": 2
+				}
+			]
+		}
+	],
+	"n": 0,
+	"e": 1,
+	"s": 1,
+	"w": 0,
+	"subtypeText": "Person Offering"
+}

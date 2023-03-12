@@ -1,0 +1,78 @@
+{
+	"cardType": 65,
+	"cardName": "Clever Decoy",
+	"effText": "When this summoned Spy defends, give their W X attacker -X W until the fight ends. After the fight, hand this Spy.",
+	"effects": [
+		{
+			"blurb": "Decoy!",
+			"triggerData": {
+				"blurb": "It's just a piece of wood!?",
+				"triggerCondition": "Defend",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Augmented Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetAugmentedCard:"
+				},
+				{
+					"$type": "Subeffect:TargetOtherInFight:"
+				},
+				{
+					"$type": "Subeffect:SetXByTargetCardValue:",
+					"cardValue": {
+						"value": "W"
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:Hanging.ChangeCardStats:",
+					"wMultiplier": -1,
+					"endCondition": "Battle End",
+					"triggerRestriction": {
+						"triggerRestrictions": [
+							"Contexts Stackables Match"
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:TargetAugmentedCard:"
+				},
+				{
+					"$type": "Subeffect:Delay:",
+					"jumpIndices": [
+						6
+					],
+					"endCondition": "Battle End",
+					"triggerRestriction": {
+						"triggerRestrictions": [
+							"Contexts Stackables Match"
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:Hand:"
+				}
+			]
+		}
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Augment Normal Restrictions",
+			"On Card that Fits Restriction"
+		],
+		"effectRestrictions": [
+			"Augment Effect Restrictions",
+			"On Card that Fits Restriction"
+		],
+		"augSubtypes": [
+			"Spy"
+		]
+	},
+	"a": 1,
+	"subtypeText": "Tool"
+}

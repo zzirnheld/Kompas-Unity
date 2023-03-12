@@ -1,0 +1,101 @@
+{
+	"cardType": 67,
+	"cardName": "53G45C4NTUR1RN 00",
+	"effText": "Golem.\nI can Pilot a Mech, and give them what my stats were.",
+	"effects": [
+		{
+			"blurb": "00 BB",
+			"activationRestriction": {
+				"activationRestrictionArray": [
+					"Friendly Turn",
+					"Default"
+				]
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetThis:"
+				},
+				{
+					"$type": "Subeffect:StashTargetsCardInfo:"
+				},
+				{
+					"$type": "Subeffect:Keyword:",
+					"keyword": "Mech Pilot Summon"
+				},
+				{
+					"$type": "Subeffect:SetXByTargetCardValue:",
+					"cardValue": {
+						"value": "N"
+					},
+					"cardInfo": true,
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"nMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:SetXByTargetCardValue:",
+					"cardValue": {
+						"value": "E"
+					},
+					"cardInfo": true,
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"eMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:SetXByTargetCardValue:",
+					"cardValue": {
+						"value": "S"
+					},
+					"cardInfo": true,
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"sMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:SetXByTargetCardValue:",
+					"cardValue": {
+						"value": "W"
+					},
+					"cardInfo": true,
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:ChangeCardStats:",
+					"wMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:Keyword:",
+					"keyword": "Mech Pilot Return"
+				}
+			]
+		}
+	],
+	"MovementRestriction": {
+		"normalRestrictionsFromJson": [
+			"Default",
+			"Activated"
+		]
+	},
+	"AttackRestriction": {
+		"attackRestrictions": [
+			"Default",
+			"This is Activated"
+		]
+	},
+	"n": 0,
+	"e": 3,
+	"s": 10,
+	"w": 3,
+	"subtypes": [
+		"Mech",
+		"Golem"
+	],
+	"subtypeText": "Mech Golem"
+}

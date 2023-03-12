@@ -1,0 +1,55 @@
+{
+	"cardType": 83,
+	"cardName": "A Frayed Knot",
+	"effText": "Ificate.\nDiscard your hand. (lol)",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"blurb": "A Frayed Knot",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetAll:",
+					"cardRestriction": {
+						"blurb": "card for A Frayed Knot to discard",
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Hand" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:Discard:"
+				},
+				{
+					"$type": "Subeffect:LoopWhileHaveTargets:",
+					"delete": true,
+					"jumpIndices": [
+						1
+					]
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Ificate"
+	],
+	"c": 0,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypes": [
+		"Simple",
+		"Crazy Idea"
+	],
+	"subtypeText": "Simple Crazy Idea Ificator"
+}

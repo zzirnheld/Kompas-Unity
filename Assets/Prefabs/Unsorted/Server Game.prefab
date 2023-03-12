@@ -110,6 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   game: {fileID: 3349460599440499645}
+  owner: {fileID: 0}
   ServerGame: {fileID: 3349460599440499645}
 --- !u!1 &2541495787388890033
 GameObject:
@@ -153,6 +154,8 @@ GameObject:
   m_Component:
   - component: {fileID: 31949036020184974}
   - component: {fileID: 8090786031170266276}
+  - component: {fileID: 6401348086462452755}
+  - component: {fileID: 2248163041538546722}
   m_Layer: 0
   m_Name: Player 1 Annihilation
   m_TagString: Untagged
@@ -188,7 +191,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   game: {fileID: 3349460599440499645}
   owner: {fileID: 3349460599362718998}
+  annihilationUIController: {fileID: 6401348086462452755}
   ServerGame: {fileID: 3349460599440499645}
+--- !u!114 &6401348086462452755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3029189714805109068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39b2c06b99d41744da9a437e9d9a74f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collapsedOffset: {x: 0, y: 0, z: 0}
+  expandedOffset: {x: 0, y: 0, z: 0}
+  whileExpandedOffset: 0
+  layer: 0
+  colliderPadding: 1.1
+  boxCollider: {fileID: 2248163041538546722}
+  localXOffset: 2
+  localZOffset: -2
+  annihilationController: {fileID: 8090786031170266276}
+--- !u!65 &2248163041538546722
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3029189714805109068}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3349460598585194321
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,7 +336,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85a7a339f365ac74f90a68278a75bcdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  game: {fileID: 3349460599440499645}
   ServerGame: {fileID: 3349460599440499645}
   owner: {fileID: 3349460599362718998}
 --- !u!1 &3349460599359394084
@@ -314,6 +351,7 @@ GameObject:
   - component: {fileID: 3349460599359394086}
   - component: {fileID: 3349460599359394085}
   - component: {fileID: 9092473287471686709}
+  - component: {fileID: 6160422976170610636}
   m_Layer: 0
   m_Name: Player 2 Discard (Placeholder)
   m_TagString: Untagged
@@ -411,8 +449,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   game: {fileID: 3349460599440499645}
-  Owner: {fileID: 3349460600153624845}
+  owner: {fileID: 3349460600153624845}
+  discardUIController: {fileID: 6160422976170610636}
   ServerGame: {fileID: 3349460599440499645}
+--- !u!114 &6160422976170610636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3349460599359394084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb894a4f22e7a8541b6cd54750927bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collapsedOffset: {x: 0, y: 0, z: 0}
+  expandedOffset: {x: 0, y: 0, z: 0}
+  whileExpandedOffset: 0
+  layer: 0
+  colliderPadding: 1.1
+  boxCollider: {fileID: 3349460599359394085}
+  localXOffset: 2
+  localZOffset: -2
+  discardController: {fileID: 9092473287471686709}
 --- !u!1 &3349460599362718996
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,8 +577,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a345a5d546b4fa479f1e4af75949ed9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Owner: {fileID: 3349460599362718998}
-  ServerGame: {fileID: 3349460599440499645}
+  owner: {fileID: 3349460599362718998}
 --- !u!1 &3349460599440499644
 GameObject:
   m_ObjectHideFlags: 0
@@ -566,16 +625,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 982f74e1d17e85e4cacba2af9442c664, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiCtrl: {fileID: 0}
-  boardCtrl: {fileID: 2758847247348518504}
-  boardObject: {fileID: 2541495787388890033}
   cardRepo: {fileID: 0}
-  targetMode: 0
-  EffectsController: {fileID: 657906863238247598}
-  ServerPlayers:
+  effectsController: {fileID: 657906863238247598}
+  serverPlayers:
   - {fileID: 3349460599362718998}
   - {fileID: 3349460600153624845}
-  cardCount: 0
+  serverBoardController: {fileID: 2758847247348518504}
 --- !u!114 &657906863238247598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -776,7 +831,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85a7a339f365ac74f90a68278a75bcdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  game: {fileID: 3349460599440499645}
   ServerGame: {fileID: 3349460599440499645}
   owner: {fileID: 3349460600153624845}
 --- !u!1 &3349460600153624844
@@ -931,6 +985,7 @@ GameObject:
   - component: {fileID: 3349460600222469961}
   - component: {fileID: 3349460600222469960}
   - component: {fileID: 6519838488330749444}
+  - component: {fileID: 1860889253043689525}
   m_Layer: 9
   m_Name: Player 1 Discard (Placeholder)
   m_TagString: Untagged
@@ -1028,8 +1083,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   game: {fileID: 3349460599440499645}
-  Owner: {fileID: 3349460599362718998}
+  owner: {fileID: 3349460599362718998}
+  discardUIController: {fileID: 1860889253043689525}
   ServerGame: {fileID: 3349460599440499645}
+--- !u!114 &1860889253043689525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3349460600222469959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb894a4f22e7a8541b6cd54750927bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collapsedOffset: {x: 0, y: 0, z: 0}
+  expandedOffset: {x: 0, y: 0, z: 0}
+  whileExpandedOffset: 0
+  layer: 0
+  colliderPadding: 1.1
+  boxCollider: {fileID: 3349460600222469960}
+  localXOffset: 2
+  localZOffset: -2
+  discardController: {fileID: 6519838488330749444}
 --- !u!1 &3349460600343111959
 GameObject:
   m_ObjectHideFlags: 0
@@ -1073,8 +1150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a345a5d546b4fa479f1e4af75949ed9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Owner: {fileID: 3349460600153624845}
-  ServerGame: {fileID: 3349460599440499645}
+  owner: {fileID: 3349460600153624845}
 --- !u!1 &6834258840456751864
 GameObject:
   m_ObjectHideFlags: 0
@@ -1167,6 +1243,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2698267696536613684}
   - component: {fileID: 1057427032860538886}
+  - component: {fileID: 5473667899886386075}
+  - component: {fileID: 6578580619066064597}
   m_Layer: 0
   m_Name: Player 2 Annihilation
   m_TagString: Untagged
@@ -1202,4 +1280,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   game: {fileID: 3349460599440499645}
   owner: {fileID: 3349460600153624845}
+  annihilationUIController: {fileID: 5473667899886386075}
   ServerGame: {fileID: 3349460599440499645}
+--- !u!114 &5473667899886386075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7006754319411703453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39b2c06b99d41744da9a437e9d9a74f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collapsedOffset: {x: 0, y: 0, z: 0}
+  expandedOffset: {x: 0, y: 0, z: 0}
+  whileExpandedOffset: 0
+  layer: 0
+  colliderPadding: 1.1
+  boxCollider: {fileID: 6578580619066064597}
+  localXOffset: 2
+  localZOffset: -2
+  annihilationController: {fileID: 1057427032860538886}
+--- !u!65 &6578580619066064597
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7006754319411703453}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}

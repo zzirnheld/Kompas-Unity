@@ -1,0 +1,82 @@
+{
+	"cardType": 83,
+	"cardName": "Collective Memory",
+	"effText": "Choose a Memory. Echo all X friendly Vessels bearing a copy of it, X times.",
+	"effects": [
+		{
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "Memory whose bearers will be echoed",
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Memory" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:TargetAll:",
+					"cardRestriction": {
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:HasAugment:",
+                                "cardRestriction": {
+                                    "cardRestrictions": [ "Same Name as Target" ]
+                                }
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:DeleteTarget:",
+					"targetIndex": 0
+				},
+				{
+					"$type": "Subeffect:SetXByGamestate:",
+					"whatToCount": "Number of Targets",
+					"xMultiplier": 1
+				},
+				{
+					"$type": "Subeffect:Resummon:"
+				},
+				{
+					"$type": "Subeffect:XTimes:",
+					"jumpIndices": [
+						4
+					]
+				},
+				{
+					"$type": "Subeffect:LoopWhileHaveTargets:",
+					"delete": true,
+					"jumpIndices": [
+						4
+					]
+				}
+			]
+		}
+	],
+	"c": 3,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypeText": "Simple"
+}

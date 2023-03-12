@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Silent Conversion",
-	"effText": "Kill a character adjacent to me and a Cultist. Deck-summon a Cultist Follower where they were.",
+	"effText": "Kill a character adjacent to me and a Cultist. Deck->summon a Cultist Follower where they were.",
 	"effects": [
 		{
 			"triggerData": {
@@ -14,13 +14,18 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "to convert",
 						"cardRestrictions": [
-							"Board",
 							"Character",
 							"Space Fits Restriction"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						],
 						"spaceRestriction": {
 							"spaceRestrictions": [
@@ -28,40 +33,42 @@
 								"Adjacent to a Card that Fits Restriction"
 							],
 							"adjacencyRestriction": {
-								"cardRestrictions": [
-									"Subtypes Include"
-								],
-								"subtypesInclude": [
-									"Cultist"
+								"cardRestrictionElements": [
+									{
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Cultist" ]
+									}
 								]
 							}
 						}
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetTargetsSpace:"
 				},
 				{
-					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Discard:"
 				},
 				{
-					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChooseFromList:",
 					"maxCanChoose": 1,
 					"cardRestriction": {
 						"blurb": "Silent convert",
 						"cardRestrictions": [
-							"Subtypes Include",
-							"Friendly",
 							"Deck",
 							"Character"
 						],
-						"subtypesInclude": [
-							"Cultist Follower"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Cultist", "Follower" ]
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "Subeffect:Play:"
 				}
 			]
 		}

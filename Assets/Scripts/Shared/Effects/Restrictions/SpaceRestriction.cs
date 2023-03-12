@@ -4,18 +4,19 @@ using KompasCore.Exceptions;
 using KompasCore.GameCore;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 namespace KompasCore.Effects
 {
-    public class SpaceRestriction
+    public class SpaceRestriction : ContextInitializeableBase
     {
-        public Subeffect Subeffect { get; private set; }
-        public GameCard Source { get; private set; }
-        public Game Game => Source.Game;
-        public Player Controller => Source.Controller;
-        public Effect Effect { get; private set; }
+        public Subeffect Subeffect => InitializationContext.subeffect;
+        public GameCard Source => InitializationContext.source;
+        public Game Game => InitializationContext.game;
+        public Player Controller => InitializationContext.Controller;
+        public Effect Effect => InitializationContext.effect;
 
         #region space restrictions
         //adjacency
@@ -27,7 +28,7 @@ namespace KompasCore.Effects
         public const string ConnectedToSourceBy = "Connected to Source by Cards Fitting Restriction";
         public const string ConnectedToSourceBySpaces = "Connected to Source by Spaces Fitting Restriction";
 
-        public const string ConnectedToCardTargetBy = "Connected to Card Target by";
+        public const string ConnectedToCardTargetBy = "Connected to Card Target by Cards Fitting Restriction";
         public const string ConnectedToCardTargetBySpaces = "Connected to Card Target by Spaces Fitting Restriction";
         public const string ConnectedToCardTargetByXSpaces = "Connected to Card Target by X Spaces Fitting Restriction";
 
@@ -38,6 +39,8 @@ namespace KompasCore.Effects
         public const string NotInAOEOf = "Not In AOE of Card Fitting Restriction";
         public const string InAOEOfNumberFittingRestriction = "In AOE of Number of Cards Fitting Restriction";
         public const string InAOESourceAlsoIn = "In AOE Source is Also In";
+        public const string InAOECardTargetAlsoIn = "In AOE Card Target is Also In";
+        public const string InAOESpaceTargetAlsoIn = "In AOE Space Target is Also In";
         public const string SourceInSpaceOverlapsCardRestriction 
             = "If Source Were In The Targeted Space, It Would Overlap Card Restriction";
 
@@ -62,7 +65,6 @@ namespace KompasCore.Effects
 
         //misc
         public const string CanPlayCardTarget = "Can Play Card Target to This Space";
-        public const string CanMoveCardTarget = "Can Move Card Target to This Space";
         public const string CanMoveSource = "Can Move Source to This Space";
         public const string Empty = "Empty";
         public const string Occupied = "Occupied";
@@ -110,45 +112,37 @@ namespace KompasCore.Effects
         //Using rather than an "Empty" restriction for, at this point, historical reasons - TODO fix
         public bool mustBeEmpty = true;
 
-        private bool initialized = false;
+        public List<SpaceRestrictionElement> spaceRestrictionElements = new List<SpaceRestrictionElement>();
 
-        public SpaceRestrictionElement[] spaceRestrictionElements = { };
+        public Func<Space, bool> AsThroughPredicate(ActivationContext context)
+            => s => IsValidSpace(s, context);
 
-        public void Initialize(Subeffect subeffect) => Initialize(subeffect.Source, subeffect.Controller, subeffect.Effect, subeffect);
-
-        public void Initialize(RestrictionContext rc) =>
-            Initialize(source: rc.source, controller: rc.subeffect?.Controller, effect: rc.subeffect?.Effect, subeffect: rc.subeffect);
-
-        public void Initialize(GameCard source, Player controller, Effect effect, Subeffect subeffect)
+        public override void Initialize(EffectInitializationContext initializationContext)
         {
-            Subeffect = subeffect;
-            Source = source;
-            Effect = effect;
+            base.Initialize(initializationContext);
 
-            adjacencyRestriction?.Initialize(source, effect, subeffect);
-            connectednessRestriction?.Initialize(source, effect, subeffect);
-            spaceConnectednessRestriction?.Initialize(source, controller, effect, subeffect);
-            limitAdjacencyRestriction?.Initialize(source, effect, subeffect);
-            hereFitsRestriction?.Initialize(source, effect, subeffect);
-            inAOEOfRestriction?.Initialize(source, effect, subeffect);
-            overlapRestriction?.Initialize(source, effect, subeffect);
-            alsoInAOEOfRestriction?.Initialize(source, effect, subeffect);
+            adjacencyRestriction?.Initialize(initializationContext);
+            connectednessRestriction?.Initialize(initializationContext);
+            spaceConnectednessRestriction?.Initialize(initializationContext);
+            limitAdjacencyRestriction?.Initialize(initializationContext);
+            hereFitsRestriction?.Initialize(initializationContext);
+            inAOEOfRestriction?.Initialize(initializationContext);
+            overlapRestriction?.Initialize(initializationContext);
+            alsoInAOEOfRestriction?.Initialize(initializationContext);
 
-            distanceXRestriction?.Initialize(source, subeffect);
-            connectedSpacesXRestriction?.Initialize(source, subeffect);
-            numberOfCardsInAOEOfRestriction?.Initialize(source, subeffect);
+            distanceXRestriction?.Initialize(initializationContext);
+            connectedSpacesXRestriction?.Initialize(initializationContext);
+            numberOfCardsInAOEOfRestriction?.Initialize(initializationContext);
 
-            foreach(var sre in spaceRestrictionElements)
+            foreach (var sre in spaceRestrictionElements)
             {
-                sre.Initialize(new RestrictionContext(game: source.Game, source: source, subeffect: subeffect));
+                sre.Initialize(initializationContext);
             }
-
-            initialized = true;
         }
 
         private bool IsConnectedToTargetByXSpaces(Space space, GameCard target, ActivationContext context)
         {
-            return Game.boardCtrl.AreConnectedByNumberOfSpacesFittingPredicate(target.Position, space,
+            return Game.BoardController.AreConnectedByNumberOfSpacesFittingPredicate(target.Position, space,
                             s => spaceConnectednessRestriction.IsValidSpace(s, context),
                             connectedSpacesXRestriction.IsValidNumber);
         }
@@ -188,24 +182,26 @@ namespace KompasCore.Effects
                 AdjacentToSource => Source.IsAdjacentTo(space),
                 AdjacentToCardTarget => target.IsAdjacentTo(space),
                 AdjacentToSpaceTarget => space.AdjacentTo(Subeffect.SpaceTarget),
-                AdjacentToCardRestriction => Game.boardCtrl.CardsAdjacentTo(space).Any(c => adjacencyRestriction.IsValidCard(c, context)),
+                AdjacentToCardRestriction => Game.BoardController.CardsAdjacentTo(space).Any(c => adjacencyRestriction.IsValidCard(c, context)),
 
-                ConnectedToSourceBy => Game.boardCtrl.AreConnectedBySpaces(Subeffect.Source.Position, space, connectednessRestriction, context),
+                ConnectedToSourceBy => Game.BoardController.AreConnectedBySpaces(Subeffect.Source.Position, space, connectednessRestriction, context),
                 ConnectedToSourceBySpaces
-                    => Game.boardCtrl.AreConnectedBySpaces(Subeffect.Source.Position, space,
+                    => Game.BoardController.AreConnectedBySpaces(Subeffect.Source.Position, space,
                             s => spaceConnectednessRestriction.IsValidSpace(s, context)),
 
-                ConnectedToCardTargetBy => Game.boardCtrl.AreConnectedBySpaces(target.Position, space, connectednessRestriction, context),
-                ConnectedToCardTargetBySpaces => Game.boardCtrl.AreConnectedBySpaces(target.Position, space, spaceConnectednessRestriction, context),
+                ConnectedToCardTargetBy => Game.BoardController.AreConnectedBySpaces(target.Position, space, connectednessRestriction, context),
+                ConnectedToCardTargetBySpaces => Game.BoardController.AreConnectedBySpaces(target.Position, space, spaceConnectednessRestriction, context),
                 ConnectedToCardTargetByXSpaces => IsConnectedToTargetByXSpaces(space, target, context),
 
                 InSourcesAOE => Source.SpaceInAOE(space),
                 NotInAOE => !Source.SpaceInAOE(space),
                 InCardTargetsAOE => target.SpaceInAOE(space),
-                InAOEOfCardFittingRestriction => Game.Cards.Any(c => c.SpaceInAOE(space) && inAOEOfRestriction.IsValidCard(c, context)),
+                InAOEOfCardFittingRestriction => Game.Cards.Any(c => c != null && c.SpaceInAOE(space) && inAOEOfRestriction.IsValidCard(c, context)),
                 NotInAOEOf => !Game.Cards.Any(c => c.SpaceInAOE(space) && inAOEOfRestriction.IsValidCard(c, context)),
                 InAOEOfNumberFittingRestriction => InAOEOfNumberOfCardsFittingRestriction(space, context),
                 InAOESourceAlsoIn => Game.Cards.Any(c => c.SpaceInAOE(space) && c.CardInAOE(Source) && alsoInAOEOfRestriction.IsValidCard(c, context)),
+                InAOECardTargetAlsoIn => Game.Cards.Any(c => c.SpaceInAOE(space) && c.CardInAOE(target) && alsoInAOEOfRestriction.IsValidCard(c, context)),
+                InAOESpaceTargetAlsoIn => Game.Cards.Any(c => c.SpaceInAOE(space) && c.SpaceInAOE(Subeffect.SpaceTarget) && alsoInAOEOfRestriction.IsValidCard(c, context)),
                 SourceInSpaceOverlapsCardRestriction => CardInSpaceOverlapsCardRestriction(Source, space, context),
 
                 SourceDisplacementToSpaceMatchesSpaceTarget => Source.Position.DisplacementTo(space) == Subeffect.SpaceTarget,
@@ -229,15 +225,14 @@ namespace KompasCore.Effects
                 DirectlyAwayFromCardTarget => target.SpaceDirectlyAwayFrom(space, Source),
 
                 //misc
-                CanPlayCardTarget => target.PlayRestriction.IsValidEffectPlay(space, Subeffect.Effect, Subeffect.PlayerTarget, context,
-                    ignoring: playRestrictionsToIgnore),
-                CanMoveCardTarget => target.MovementRestriction.IsValidEffectMove(space, context),
-                CanMoveSource => Source.MovementRestriction.IsValidEffectMove(space, context),
+                CanPlayCardTarget => target?.PlayRestriction?.IsValidEffectPlay(space, Subeffect?.Effect, Subeffect?.PlayerTarget, context,
+                    ignoring: playRestrictionsToIgnore) ?? false,
+                CanMoveSource => Source?.MovementRestriction?.IsValidEffectMove(space, context) ?? false,
 
-                Empty => Game.boardCtrl.IsEmpty(space),
-                Occupied => !Game.boardCtrl.IsEmpty(space),
-                Surrounded => Game.boardCtrl.Surrounded(space),
-                CardHereFitsRestriction => hereFitsRestriction.IsValidCard(Game.boardCtrl.GetCardAt(space), context),
+                Empty => Game.BoardController.IsEmpty(space),
+                Occupied => !Game.BoardController.IsEmpty(space),
+                Surrounded => Game.BoardController.Surrounded(space),
+                CardHereFitsRestriction => hereFitsRestriction.IsValidCard(Game.BoardController.GetCardAt(space), context),
 
                 OnSourcesDiagonal => Source.SameDiagonal(space),
                 OnCardTargetsDiagonal => target.SameDiagonal(space),
@@ -257,19 +252,29 @@ namespace KompasCore.Effects
 
         private bool IsRestrictionValidWithDebug(string r, Space space, GameCard theoreticalTarget, ActivationContext context)
         {
-            bool success = IsRestrictionValid(r, space, theoreticalTarget, context);
-            //if (!success) Debug.Log($"Space resetriction {r} was flouted by {space}");
-            return success;
+            try
+            {
+                bool success = IsRestrictionValid(r, space, theoreticalTarget, context);
+                //if (!success) Debug.Log($"Space resetriction {r} was flouted by {space}");
+                return success;
+            }
+            catch (NullReferenceException nre)
+            {
+                Debug.Log($"Space resetriction {r} was flouted by {space} throwing exception {nre}. Init context was {InitializationContext}");
+                return false;
+            }
         }
 
         public bool IsValidSpace(Space space, ActivationContext context, GameCard theoreticalTarget = null)
         {
-            if (!initialized) throw new ArgumentException("Space restriction not initialized!");
+            ComplainIfNotInitialized();
             if (!space.IsValid) throw new InvalidSpaceException(space, "Invalid space to consider for restriction!");
 
             return spaceRestrictions.All(r => IsRestrictionValidWithDebug(r, space, theoreticalTarget, context))
                 && spaceRestrictionElements.All(sre => sre.IsValidSpace(space, context));
         }
+
+        public Func<Space, bool> IsValidFor(ActivationContext context) => s => IsValidSpace(s, context);
 
         public override string ToString()
             => $"Space restriction of card {Source} on subeff {Subeffect}, restrictions {string.Join(",", spaceRestrictions)}";

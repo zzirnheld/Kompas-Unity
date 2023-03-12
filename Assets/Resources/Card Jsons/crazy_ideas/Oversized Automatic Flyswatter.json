@@ -19,17 +19,17 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type":"Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type":"Subeffect:ChangeCardStats:",
 					"eModifier":-1
 				}
 			]	
 		}
 	],
 	"n":0,
-	"e":5,
+	"e":9,
 	"s":5,
 	"w":5,
 	"subtypeText":"Crazy Idea"

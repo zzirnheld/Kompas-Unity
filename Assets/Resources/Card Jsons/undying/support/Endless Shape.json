@@ -1,0 +1,71 @@
+{
+	"cardType": 83,
+	"cardName": "Endless Shape",
+	"effText": "Endless.\nChoose a space adjacent to an Ethereal. Teleport a friendly Ethereal to that space, then kill them.",
+	"effects": [
+		{
+			"blurb": "Simple",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card is Main Card"
+					]
+				}
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"spaceRestriction": {
+                        "blurb": "Space to move an Ethereal to",
+						"spaceRestrictions": [
+							"Adjacent to a Card that Fits Restriction"
+						],
+						"adjacencyRestriction": {
+							"cardRestrictionElements": [
+								{
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Ethereal" ]
+								}
+							]
+						}
+					}
+				},
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "Friendly Ethereal to move",
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Ethereal" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:Move:"
+				},
+				{
+					"$type": "Subeffect:Discard:"
+				}
+			]
+		}
+	],
+	"keywords": [
+		"Undying"
+	],
+	"c": 1,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypes": [
+		"Simple"
+	],
+	"subtypeText": "Endless Simple"
+}
