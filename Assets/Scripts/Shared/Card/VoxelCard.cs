@@ -21,10 +21,24 @@ public enum CostType
 public class VoxelCard : MonoBehaviour
 {
     private const float CardBaseThicknessDivisor = 12.0f;
-    private const float CharacterArtLowerBound = 1.0f / 12.0f;
-    private const float CharacterArtUpperBound = 11.0f / 12.0f; //19.0f / 24.0f;
-    private const float CharacterArtSamplingIncrementRatio = 24.0f / 19.0f; // 24.0f / 17.0f;
-    private const float CharacterArtSamplingStartIndexRatio = 1.0f / 17.0f;
+
+    private const float CharacterArtLowerBoundBase = 1.0f / 12.0f;
+    private const float CharacterArtUpperBoundFullArt = 11.0f / 12.0f;
+    private const float CharacterArtUpperBoundHasText = 19.0f / 24.0f;
+
+    private const float CharacterArtSamplingIncrementRatioFullArt = 24.0f / 19.0f;
+    private const float CharacterArtSamplingIncrementRatioHasText = 24.0f / 17.0f;
+
+    private const float CharacterArtSamplingStartIndexRatioBase = 1.0f / 17.0f;
+
+    public bool fullArt;
+    private float CharacterArtLowerBound => CharacterArtLowerBoundBase;
+    private float CharacterArtUpperBound => fullArt ? CharacterArtUpperBoundFullArt : CharacterArtUpperBoundHasText;
+
+    private float CharacterArtSamplingIncrementRatio => fullArt
+        ? CharacterArtSamplingIncrementRatioFullArt
+        : CharacterArtSamplingIncrementRatioHasText;
+    private float CharacterArtSamplingStartIndexRatio => CharacterArtSamplingStartIndexRatioBase;
 
     /// <summary>
     /// Aka 45 degree angle
@@ -891,7 +905,8 @@ public class VoxelCard : MonoBehaviour
             (Vector2Int.right * (int)(squaringFactor + (shorterDimension * CharacterArtSamplingStartIndexRatio)))
             + (Vector2Int.down * (int)(shorterDimension * 2.0f * CharacterArtSamplingStartIndexRatio));
         Debug.Log($"Character art {CharacterArtSamplingIncrement}, {CharacterArtSamplingStartIndex}");
-        CharacterArtSamplingStartIndex = new Vector2Int(-2 * CharacterArtSamplingStartIndex.x, CharacterArtSamplingStartIndex.y); //This is only necessary for full art, it seems
+
+        if (fullArt) CharacterArtSamplingStartIndex = new Vector2Int(-2 * CharacterArtSamplingStartIndex.x, CharacterArtSamplingStartIndex.y);
 
         Vector2Int EffectTextSamplingStartIndex;
         float EffectTextSamplingIncrement;
@@ -1033,7 +1048,8 @@ public class VoxelCard : MonoBehaviour
                 float frontIncrement = EffectTextSamplingIncrement;
                 Sprite frontTexture = EffectTextTexture;
                 Color frontMetallic = new Color(EffectTextMetallic, 0.0f, 0.0f, EffectTextGloss);
-                if(x < TextureResolution)// * 0.5f * (1 - FrameThickness)) TODO: this changes based on whether eff text exists
+                float artRightBound = fullArt ? 1.0f : 0.5f * (1 - FrameThickness);
+                if (x < TextureResolution * artRightBound)
                 {
                     if (y > TextureResolution * CharacterArtLowerBound && y < TextureResolution * CharacterArtUpperBound)
                     {
