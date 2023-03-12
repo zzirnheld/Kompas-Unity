@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -19,6 +20,10 @@ public enum CostType
 
 public class VoxelCard : MonoBehaviour
 {
+    private const float CardBaseThicknessDivisor = 12.0f;
+    /// <summary>
+    /// Aka 45 degree angle
+    /// </summary>
     public static float PI4 = Mathf.PI / 4.0f;
     public Material BaseMaterial;
 
@@ -91,6 +96,8 @@ public class VoxelCard : MonoBehaviour
 
     private Mesh CardMesh;
     
+    private float CardBaseThickness => FrameThickness / CardBaseThicknessDivisor;
+
     public void OnInspectorChange()
     {
         if (RebuildMeshOnChange)
@@ -143,13 +150,21 @@ public class VoxelCard : MonoBehaviour
             uvs.Add(new Vector2((uvX + (texture % 3)) / 3.0f, (uvY + (texture / 3)) / 2.0f));
         }
 
+        (float, float) xy(float angle) => (Mathf.Cos(angle), Mathf.Sin(angle));
+        Vector2 xyVector(float angle)
+        {
+            var (cos, sin) = xy(angle);
+            return new Vector2(cos, sin);
+        }
+
         //Build card base
 
         //Build card base verts counter-clockwise around origin from (1, 0, 0)
         for (int i = 0; i < 8; i++)
         {
-            verts.Add(new Vector3(Mathf.Cos(PI4 * i), FrameThickness / 12.0f, Mathf.Sin(PI4 * i))); //front
-            verts.Add(new Vector3(Mathf.Cos(PI4 * i), -FrameThickness / 12.0f, Mathf.Sin(PI4 * i))); //back
+            var (cos, sin) = xy(PI4 * i);
+            verts.Add(new Vector3(cos, CardBaseThickness, sin)); //front
+            verts.Add(new Vector3(cos, -CardBaseThickness, sin)); //back
         }
 
         //Build card base edge tris counter-clockwise around origin from right, front and back
@@ -181,7 +196,7 @@ public class VoxelCard : MonoBehaviour
         List<Vector2> modifiers = new List<Vector2>();
         for (int i = 4; i <= 10; i++)
         {
-            modifiers.Add(new Vector2(Mathf.Cos(PI4 * i), Mathf.Sin(PI4 * i)) * FrameThickness);
+            modifiers.Add(xyVector(PI4 * i) * FrameThickness);
         }
 
         //Build 3/4 outer frame vertices counter-clockwise around origin from (1, 0, 0)
@@ -190,7 +205,8 @@ public class VoxelCard : MonoBehaviour
             foreach (Vector3 mod in modifiers)
             {
                 float modX = 1.0f + mod.x;
-                verts.Add(new Vector3(Mathf.Cos(PI4 * i) * modX, mod.y, Mathf.Sin(PI4 * i) * modX));
+                var (cos, sin) = xy(PI4 * i);
+                verts.Add(new Vector3(cos * modX, mod.y, sin * modX));
             }
         }
 
@@ -216,7 +232,6 @@ public class VoxelCard : MonoBehaviour
         }
 
 
-        //Build name placard. Current number of verts is <math>, so cheat
         vI = verts.Count;
         vI = CreateNamePlacard(verts, uvs, tris, vI); //TODO: this can now be commented out. make it controlled by a flag
         vI = CreateSubtypePlacard(verts, uvs, tris, vI);
@@ -636,6 +651,7 @@ public class VoxelCard : MonoBehaviour
 
         int CreateNamePlacard(List<Vector3> verts, List<Vector2> uvs, List<int> tris, int vI)
         {
+            //Build name placard. Current number of verts is <math>, so cheat
             float height = FrameThickness / 3.0f;
             //We want six verts
             //More cheating
