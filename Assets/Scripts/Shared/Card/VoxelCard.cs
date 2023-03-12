@@ -146,14 +146,14 @@ public class VoxelCard : MonoBehaviour
         //Build card base
 
         //Build card base verts counter-clockwise around origin from (1, 0, 0)
-        for(int i = 0; i < 8; i++)
+        for (int i = 0; i < 8; i++)
         {
             verts.Add(new Vector3(Mathf.Cos(PI4 * i), FrameThickness / 12.0f, Mathf.Sin(PI4 * i))); //front
             verts.Add(new Vector3(Mathf.Cos(PI4 * i), -FrameThickness / 12.0f, Mathf.Sin(PI4 * i))); //back
         }
 
         //Build card base edge tris counter-clockwise around origin from right, front and back
-        for(int i = 0; i < 8; i += 2)
+        for (int i = 0; i < 8; i += 2)
         {
             int v1 = i;
             int v2 = (i + 7) % 8;
@@ -169,7 +169,7 @@ public class VoxelCard : MonoBehaviour
         addTri(07, 11, 15);    //back LL
 
         //add front verts to front texture, back verts to back texture
-        for(int i = 0; i < 16; i += 2)
+        for (int i = 0; i < 16; i += 2)
         {
             addUV(verts[i], 4);
             addUV(verts[i + 1], 5);
@@ -179,13 +179,13 @@ public class VoxelCard : MonoBehaviour
         int vI = 16;
         //Build modifier vectors, clockwise around origin from (-FrameThickness, 0, 0)
         List<Vector2> modifiers = new List<Vector2>();
-        for(int i = 4; i <= 10; i++)
+        for (int i = 4; i <= 10; i++)
         {
             modifiers.Add(new Vector2(Mathf.Cos(PI4 * i), Mathf.Sin(PI4 * i)) * FrameThickness);
         }
 
         //Build 3/4 outer frame vertices counter-clockwise around origin from (1, 0, 0)
-        for(int i = 0; i < 8; i++)
+        for (int i = 0; i < 8; i++)
         {
             foreach (Vector3 mod in modifiers)
             {
@@ -195,9 +195,9 @@ public class VoxelCard : MonoBehaviour
         }
 
         //Build 3/4 outer frame tris. hope you've been following along cause I don't feel like explaining the order.
-        for(int i = 0; i < 8; i++)
+        for (int i = 0; i < 8; i++)
         {
-            for(int j = 0; j < modifiers.Count - 1; j++)
+            for (int j = 0; j < modifiers.Count - 1; j++)
             {
                 int v1 = vI + modifiers.Count * i + j;  //sorry the vI and v1 are a little confusing
                 int v2 = v1 + 1;
@@ -210,46 +210,18 @@ public class VoxelCard : MonoBehaviour
         }
 
         //add frame verts to frame texture
-        for(int i = vI; i < verts.Count; i++)
+        for (int i = vI; i < verts.Count; i++)
         {
             addUV(verts[i], 0);
         }
 
+
         //Build name placard. Current number of verts is <math>, so cheat
-        vI = verts.Count;
+        float upperX, lowerX, lowerZ;
+
         float height = FrameThickness / 3.0f;
-
-        //We want six verts
-        //More cheating
-        float upperX = Mathf.Lerp(verts[2].x, verts[4].x, 0.25f);
-        float upperZ = Mathf.Lerp(verts[2].z, verts[4].z, 0.25f);
-        float lowerX = Mathf.Lerp(verts[0].x, verts[2].x, 0.75f);
-        float lowerZ = Mathf.Lerp(verts[0].z, verts[2].z, 0.75f);
-
-        //Right side, bottom to top
-        verts.Add(new Vector3( lowerX, height, lowerZ));
-        verts.Add(new Vector3( verts[2].x, height, verts[2].z));
-        verts.Add(new Vector3( upperX, height, upperZ));
-
-        //Left side, bottom to top
-        verts.Add(new Vector3( -lowerX, height, lowerZ));
-        verts.Add(new Vector3( -verts[2].x, height, verts[2].z));
-        verts.Add(new Vector3( -upperX, height, upperZ));
-
-        //Friendly reminder, Unity winds triangles clockwise
-        addTri(vI + 0, vI + 3, vI + 1);
-        addTri(vI + 1, vI + 3, vI + 4);
-        addTri(vI + 1, vI + 4, vI + 2);
-        addTri(vI + 2, vI + 4, vI + 5);
-
-        //add name placard verts to name placard texture
-        for(int i = vI; i < verts.Count; i++)
-        {
-            addUV(verts[i], 1);
-        }
-
-        //Consistency is for nerds. Type placard
-        vI += 6;
+        vI = verts.Count;
+        vI = createNamePlacard(verts, uvs, tris, vI, height); //TODO: this can now be commented out. make it controlled by a flag
         height /= 2.0f;
 
         //Just four verts this time
@@ -270,7 +242,7 @@ public class VoxelCard : MonoBehaviour
         addTri(vI + 1, vI + 2, vI + 3);
 
         //and uvs again
-        for(int i = vI; i < verts.Count; i++)
+        for (int i = vI; i < verts.Count; i++)
         {
             addUV(verts[i], 2);
         }
@@ -290,7 +262,7 @@ public class VoxelCard : MonoBehaviour
         Vector3 edgeThin = new Vector3(Mathf.Lerp(verts[2].x, verts[4].x, 0.25f), 0, edgeInnerThick.z);
 
         //Starting with the UR corner at y = 0 and working our way up, going counter-clockwise
-        for (int i = 8; i >=6; i--)
+        for (int i = 8; i >= 6; i--)
         {
             int vIlocal = verts.Count;
             float modX = 1.0f + modifiers[i].x;
@@ -305,7 +277,7 @@ public class VoxelCard : MonoBehaviour
         verts.Add(new Vector3(edgeOuterThick.z, modifiers[6].y, edgeOuterThick.x));
 
         //and 18 triangles
-        for(int i = 0; i < 4; i++)
+        for (int i = 0; i < 4; i++)
         {
             int v1 = vI + i;
             int v2 = v1 + 1;
@@ -324,7 +296,8 @@ public class VoxelCard : MonoBehaviour
 
         //UL corner inner frame
         //Some more cheating, but reflected across the x axis. Have to be careful with order so we can reuse our tris
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 3; i++)
+        {
             for (int j = 4; j >= 0; j--)
             {
                 int vIlocal = vI + 5 * i + j;
@@ -343,7 +316,7 @@ public class VoxelCard : MonoBehaviour
         }
 
         //add everything to UVs
-        for(int i = vI; i < verts.Count; i++)
+        for (int i = vI; i < verts.Count; i++)
         {
             addUV(verts[i], 0);
         }
@@ -354,7 +327,7 @@ public class VoxelCard : MonoBehaviour
         vI = verts.Count;
 
         //frame verts
-        for(int i = 0; i < 2; i++)
+        for (int i = 0; i < 2; i++)
         {
             int copyVIlocal = copyVI + 17 * i;
 
@@ -372,7 +345,7 @@ public class VoxelCard : MonoBehaviour
         }
 
         //triangles
-        for(int i = 0; i < 4; i++)
+        for (int i = 0; i < 4; i++)
         {
             int vIlocal = vI + 2 * i + (i > 1 ? 10 : 0);
             addTri(vIlocal + 0, vIlocal + 4, vIlocal + 1);
@@ -384,7 +357,7 @@ public class VoxelCard : MonoBehaviour
         }
 
         //uv
-        for(int i = vI; i < verts.Count; i++)
+        for (int i = vI; i < verts.Count; i++)
         {
             addUV(verts[i], 0);
         }
@@ -394,7 +367,7 @@ public class VoxelCard : MonoBehaviour
         //NESW first
         bool[] makeTab = { HasN, HasE, HasSAC, HasW };
 
-        for(int i = 0; i < 4; i++)
+        for (int i = 0; i < 4; i++)
         {
             vI = verts.Count;
 
@@ -430,7 +403,7 @@ public class VoxelCard : MonoBehaviour
                     int vIlocal = vI + (j % 6) + 6;
                     int ccwNeighbor = vI + ((j + 5) % 6) + 6;
 
-                    if(j != 6)
+                    if (j != 6)
                     {
                         int cwNeighbor = vI + ((j + 1) % 6) + 6;
                         innerAngle = findInnerAngle(verts[vIlocal], verts[ccwNeighbor], verts[cwNeighbor]);
@@ -438,7 +411,7 @@ public class VoxelCard : MonoBehaviour
                         verts.Add(new Vector3(verts[vIlocal].x + innerAngle.x * modifiers[4].x, modifiers[4].y, verts[vIlocal].z + innerAngle.z * modifiers[4].x));
                     }
 
-                    if(j != 0)
+                    if (j != 0)
                     {
                         int v1 = vIlocal;
                         int v2 = ccwNeighbor;
@@ -518,14 +491,14 @@ public class VoxelCard : MonoBehaviour
             }
 
             //rotate vertices
-            for(int j = vI; j < verts.Count; j++)
+            for (int j = vI; j < verts.Count; j++)
             {
                 float newX = verts[j].x * Mathf.Cos(-2 * PI4 * i) - verts[j].z * Mathf.Sin(-2 * PI4 * i);
                 float newZ = verts[j].x * Mathf.Sin(-2 * PI4 * i) + verts[j].z * Mathf.Cos(-2 * PI4 * i);
                 verts[j] = new Vector3(newX, verts[j].y, newZ);
 
                 //because some parts of this need different textures, we need to be a little sneaky with the UVs
-                if(makeTab[i] && j - vI < 6)
+                if (makeTab[i] && j - vI < 6)
                 {
                     addUV(verts[j], 3);
                 }
@@ -539,7 +512,7 @@ public class VoxelCard : MonoBehaviour
         //RD
         bool[] makeTabDR = { HasR, HasD };
 
-        for(int i = 0; i < 2; i++)
+        for (int i = 0; i < 2; i++)
         {
             vI = verts.Count;
             Vector3 thinFrameBorder = new Vector3(Mathf.Lerp(verts[4].x, verts[2].x, 0.25f), 0.0f, Mathf.Lerp(verts[4].z, verts[2].z, 0.25f));
@@ -664,7 +637,7 @@ public class VoxelCard : MonoBehaviour
             }
 
             //rotate vertices
-            for(int j = vI; j < verts.Count; j++)
+            for (int j = vI; j < verts.Count; j++)
             {
                 float newX = verts[j].x * Mathf.Cos(-PI4 * (3 + 2 * i)) - verts[j].z * Mathf.Sin(-PI4 * (3 + 2 * i));
                 float newZ = verts[j].x * Mathf.Sin(-PI4 * (3 + 2 * i)) + verts[j].z * Mathf.Cos(-PI4 * (3 + 2 * i));
@@ -690,6 +663,42 @@ public class VoxelCard : MonoBehaviour
             Tris = tris.ToArray()
         };
         return newMesh;
+
+        int createNamePlacard(List<Vector3> verts, List<Vector2> uvs, List<int> tris, int vI, float height)
+        {
+            //We want six verts
+            //More cheating
+            float upperX = Mathf.Lerp(verts[2].x, verts[4].x, 0.25f);
+            float upperZ = Mathf.Lerp(verts[2].z, verts[4].z, 0.25f);
+            float lowerX = Mathf.Lerp(verts[0].x, verts[2].x, 0.75f);
+            float lowerZ = Mathf.Lerp(verts[0].z, verts[2].z, 0.75f);
+
+            //Right side, bottom to top
+
+            verts.Add(new Vector3(lowerX, height, lowerZ));
+            verts.Add(new Vector3(verts[2].x, height, verts[2].z));
+            verts.Add(new Vector3(upperX, height, upperZ));
+
+            //Left side, bottom to top
+            verts.Add(new Vector3(-lowerX, height, lowerZ));
+            verts.Add(new Vector3(-verts[2].x, height, verts[2].z));
+            verts.Add(new Vector3(-upperX, height, upperZ));
+
+            //Friendly reminder, Unity winds triangles clockwise
+            addTri(vI + 0, vI + 3, vI + 1);
+            addTri(vI + 1, vI + 3, vI + 4);
+            addTri(vI + 1, vI + 4, vI + 2);
+            addTri(vI + 2, vI + 4, vI + 5);
+
+            //add name placard verts to name placard texture
+            for (int i = vI; i < verts.Count; i++)
+            {
+                addUV(verts[i], 1);
+            }
+
+            //Consistency is for nerds. Type placard
+            return vI + 6;
+        }
     }
 
     private void ApplyMesh(MeshData newMesh)
