@@ -23,6 +23,7 @@ public class VoxelCard : MonoBehaviour
     private const float CardBaseThicknessDivisor = 12.0f;
     private const float CharacterArtLowerBound = 1.0f / 12.0f;
     private const float CharacterArtUpperBound = 11.0f / 12.0f; //19.0f / 24.0f;
+    private const float CharacterArtSamplingIncrementRatio = 24.0f / 19.0f; // 24.0f / 17.0f;
 
     /// <summary>
     /// Aka 45 degree angle
@@ -884,20 +885,13 @@ public class VoxelCard : MonoBehaviour
         Vector2Int CharacterArtSamplingStartIndex;
         float CharacterArtSamplingIncrement;
 
-        if (CharacterArt.texture.width > CharacterArt.texture.height)
-        {
-            CharacterArtSamplingStartIndex = new Vector2Int((CharacterArt.texture.width - CharacterArt.texture.height) / 2, 0);
-            CharacterArtSamplingIncrement = ((float) CharacterArt.texture.height / (float) TextureResolution) * (24.0f / 17.0f);
-            CharacterArtSamplingStartIndex += (int)(CharacterArt.texture.height / 17.0f) * Vector2Int.right;
-            CharacterArtSamplingStartIndex += (int)(CharacterArt.texture.height * 2.0f / 17.0f) * Vector2Int.down;
-        }
-        else
-        {
-            CharacterArtSamplingStartIndex = new Vector2Int((CharacterArt.texture.height - CharacterArt.texture.width) / 2, 0);
-            CharacterArtSamplingIncrement = CharacterArt.texture.width * 24.0f / (TextureResolution * 17.0f);
-            CharacterArtSamplingStartIndex += (int)(CharacterArt.texture.width / 17.0f) * Vector2Int.right;
-            CharacterArtSamplingStartIndex += (int)(CharacterArt.texture.width * 2.0f / 17.0f) * Vector2Int.down;
-        }
+        int squaringFactor = Mathf.Abs(CharacterArt.texture.width - CharacterArt.texture.height) / 2;
+        float shorterDimension = Mathf.Min(CharacterArt.texture.width, CharacterArt.texture.height);
+
+        CharacterArtSamplingIncrement = (shorterDimension / (float) TextureResolution) * CharacterArtSamplingIncrementRatio;
+        CharacterArtSamplingStartIndex =
+            (Vector2Int.right * (int)(squaringFactor + (shorterDimension / 17.0f)))
+            + (Vector2Int.down * (int)(shorterDimension * 2.0f / 17.0f));
 
         Vector2Int EffectTextSamplingStartIndex;
         float EffectTextSamplingIncrement;
