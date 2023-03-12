@@ -31,6 +31,14 @@ public class VoxelCard : MonoBehaviour
 
     private const float CharacterArtSamplingStartIndexRatioBase = 1.0f / 17.0f;
 
+    public bool TEST_YES;
+    /// <summary>
+    /// A temporary measure until I can properly figure out how Antikronus did the bezel stuff, so I can replicate it for the zoomed-out card.
+    /// That said, the difference is probably basically imperceptible at the distances you see the zoomed-out model at,
+    /// So I'm not going to worry about it much for now.
+    /// </summary>
+    private const float ExtraZoomOutBezel = 0.005f;
+
     public bool fullArt;
     private float CharacterArtLowerBound => CharacterArtLowerBoundBase;
     private float CharacterArtUpperBound => fullArt ? CharacterArtUpperBoundFullArt : CharacterArtUpperBoundHasText;
@@ -264,9 +272,15 @@ public class VoxelCard : MonoBehaviour
         }
 
         //Calulate edge points for thick part of frames
-        Vector3 edgeInnerThick = new Vector3(Mathf.Lerp(verts[2].x, verts[4].x, 0.75f), 0, Mathf.Lerp(verts[2].z, verts[4].z, 0.25f));
-        Vector3 edgeOuterThick = new Vector3(edgeInnerThick.x, 0, Mathf.Lerp(verts[2].z, verts[4].z, 0.75f));
-        Vector3 edgeThin = new Vector3(Mathf.Lerp(verts[2].x, verts[4].x, 0.25f), 0, edgeInnerThick.z);
+        float innerEdgeProportion = fullArt ? 0.25f : 0.25f;
+        Vector3 edgeInnerThick = new Vector3(Mathf.Lerp(verts[2].x, verts[4].x, 1f - innerEdgeProportion), 
+            0,
+            Mathf.Lerp(verts[2].z, verts[4].z, innerEdgeProportion));
+        float outerEdgeProportion = fullArt ? 0.25f : 0.25f;
+        Vector3 edgeOuterThick = new Vector3(Mathf.Lerp(verts[2].x, verts[4].x, 1f - outerEdgeProportion),
+            0,
+            Mathf.Lerp(verts[2].z, verts[4].z, 1f - outerEdgeProportion));
+        Vector3 edgeThin = new Vector3(Mathf.Lerp(verts[2].x, verts[4].x, outerEdgeProportion), 0, edgeInnerThick.z);
 
         //Starting with the UR corner at y = 0 and working our way up, going counter-clockwise
         for (int i = 8; i >= 6; i--)
@@ -651,16 +665,23 @@ public class VoxelCard : MonoBehaviour
 
         void MakeStatCutout(List<Vector3> verts, List<int> tris, int vI, List<Vector2> modifiers, Vector3 edgeInnerThick, Vector3 edgeOuterThick)
         {
-            float tabLowerX = Mathf.Lerp(verts[4].x, verts[2].x, 0.1875f);
+            //float tabLowerXMult = fullArt ? 0.25f : 0.1875f;
+            float tabLowerXMult = 0.1875f;
+            float tabLowerX = Mathf.Lerp(verts[4].x, verts[2].x, tabLowerXMult);
+            Debug.Log($"Interpolating between [4]:{verts[4]} and [2]:{verts[2]} by {tabLowerXMult}");
+            Debug.Log($"edgeOuterThick {edgeOuterThick}; edgeInnerThick {edgeInnerThick}");
+
+            float fullArtPointMult = fullArt ? 0.25f : 0f;
+            float fullArtDragDown = (verts[4].z - verts[2].z) * fullArtPointMult;
             //make a tab
             //start with the placard TODO maniuplate these if i want stat placards to be bigger
             //specifically "edgeOuterThick" or osmething. mess with it
             verts.Add(new Vector3(0.0f, FrameThickness / 2.0f, 1.0f));
             verts.Add(new Vector3(edgeOuterThick.x, FrameThickness / 2.0f, edgeOuterThick.z));
             verts.Add(new Vector3(-edgeOuterThick.x, FrameThickness / 2.0f, edgeOuterThick.z));
-            verts.Add(new Vector3(tabLowerX, FrameThickness / 2.0f, edgeInnerThick.z));
-            verts.Add(new Vector3(-tabLowerX, FrameThickness / 2.0f, edgeInnerThick.z));
-            verts.Add(new Vector3(0.0f, FrameThickness / 2.0f, verts[2].z));
+            verts.Add(new Vector3(tabLowerX, FrameThickness / 2.0f, edgeInnerThick.z - fullArtDragDown));
+            verts.Add(new Vector3(-tabLowerX, FrameThickness / 2.0f, edgeInnerThick.z - fullArtDragDown));
+            verts.Add(new Vector3(0.0f, FrameThickness / 2.0f, verts[2].z - fullArtDragDown)); //Matches z dimension of first clockwise point (the 1-2 PM point)
 
             addTri(vI + 0, vI + 1, vI + 2);
             addTri(vI + 1, vI + 5, vI + 2);
@@ -686,8 +707,12 @@ public class VoxelCard : MonoBehaviour
                 {
                     int cwNeighbor = vI + ((j + 1) % 6) + 6;
                     innerAngle = findInnerAngle(verts[vIlocal], verts[ccwNeighbor], verts[cwNeighbor]);
-                    verts.Add(new Vector3(verts[vIlocal].x + innerAngle.x * modifiers[5].x, modifiers[5].y, verts[vIlocal].z + innerAngle.z * modifiers[5].x));
-                    verts.Add(new Vector3(verts[vIlocal].x + innerAngle.x * modifiers[4].x, modifiers[4].y, verts[vIlocal].z + innerAngle.z * modifiers[4].x));
+                    verts.Add(new Vector3(verts[vIlocal].x + innerAngle.x * modifiers[5].x,
+                        modifiers[5].y,
+                        verts[vIlocal].z + innerAngle.z * modifiers[5].x));
+                    verts.Add(new Vector3(verts[vIlocal].x + innerAngle.x * modifiers[4].x,
+                        modifiers[4].y,
+                        verts[vIlocal].z + innerAngle.z * modifiers[4].x));
                 }
 
                 if (j != 0)
@@ -706,20 +731,22 @@ public class VoxelCard : MonoBehaviour
             }
 
             //Outer frame and fill holes
+            float lowerBezelVertexXAdjustment = ExtraZoomOutBezel;
+            float lowerBezelVertexYAdjustment = fullArtDragDown - lowerBezelVertexXAdjustment;
             verts.Add(new Vector3(-edgeInnerThick.x, FrameThickness, edgeInnerThick.z));
             verts.Add(new Vector3(verts[vI + 24].x, modifiers[7].y, verts[vI + 24].z + modifiers[7].x));
             verts.Add(new Vector3(verts[vI + 24].x, modifiers[0].y, verts[vI + 24].z + modifiers[0].x));
 
             innerAngle = findInnerAngle(verts[vI + 10], verts[vI + 24], verts[vI + 09]);
-            verts.Add(new Vector3(verts[vI + 10].x + innerAngle.x * modifiers[5].x, modifiers[5].y, verts[vI + 10].z + innerAngle.z * modifiers[5].x));
-            verts.Add(new Vector3(verts[vI + 10].x + innerAngle.x * modifiers[4].x, modifiers[4].y, verts[vI + 10].z + innerAngle.z * modifiers[4].x));
+            verts.Add(new Vector3(verts[vI + 10].x + innerAngle.x * modifiers[5].x, modifiers[5].y, verts[vI + 10].z + innerAngle.z * modifiers[5].x - lowerBezelVertexYAdjustment));
+            verts.Add(new Vector3(verts[vI + 10].x + innerAngle.x * modifiers[4].x - lowerBezelVertexXAdjustment, modifiers[4].y, verts[vI + 10].z + innerAngle.z * modifiers[4].x - lowerBezelVertexYAdjustment));
 
             verts.Add(new Vector3(0.0f, modifiers[7].y, verts[vI + 09].z + modifiers[7].x));
             verts.Add(new Vector3(0.0f, modifiers[0].y, verts[vI + 09].z + modifiers[0].x));
 
             innerAngle = findInnerAngle(verts[vI + 08], new Vector3(edgeInnerThick.x, FrameThickness, edgeInnerThick.z), verts[vI + 09]);
-            verts.Add(new Vector3(verts[vI + 08].x + innerAngle.x * modifiers[5].x, modifiers[5].y, verts[vI + 08].z + innerAngle.z * modifiers[5].x));
-            verts.Add(new Vector3(verts[vI + 08].x + innerAngle.x * modifiers[4].x, modifiers[4].y, verts[vI + 08].z + innerAngle.z * modifiers[4].x));
+            verts.Add(new Vector3(verts[vI + 08].x + innerAngle.x * modifiers[5].x + lowerBezelVertexXAdjustment, modifiers[5].y, verts[vI + 08].z + innerAngle.z * modifiers[5].x - lowerBezelVertexYAdjustment));
+            verts.Add(new Vector3(verts[vI + 08].x + innerAngle.x * modifiers[4].x, modifiers[4].y, verts[vI + 08].z + innerAngle.z * modifiers[4].x - lowerBezelVertexYAdjustment));
 
             verts.Add(new Vector3(edgeInnerThick.x, FrameThickness, edgeInnerThick.z));
             verts.Add(new Vector3(verts[vI + 33].x, modifiers[7].y, verts[vI + 33].z + modifiers[7].x));
