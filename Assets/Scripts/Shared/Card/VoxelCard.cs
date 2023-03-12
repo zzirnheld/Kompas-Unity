@@ -217,39 +217,9 @@ public class VoxelCard : MonoBehaviour
 
 
         //Build name placard. Current number of verts is <math>, so cheat
-        float upperX, lowerX, lowerZ;
-
-        float height = FrameThickness / 3.0f;
         vI = verts.Count;
-        vI = createNamePlacard(verts, uvs, tris, vI, height); //TODO: this can now be commented out. make it controlled by a flag
-        height /= 2.0f;
-
-        //Just four verts this time
-        upperX = TypePlacardWidth;
-        lowerX = TypePlacardWidth - 0.1f;
-        lowerZ = Mathf.Lerp(verts[0].z, verts[2].z, 0.5f);
-
-        //Right side, bottom to top
-        verts.Add(new Vector3(lowerX, height, lowerZ));
-        verts.Add(new Vector3(upperX, height, verts[2].z));
-
-        //Left side, same deal
-        verts.Add(new Vector3(-lowerX, height, lowerZ));
-        verts.Add(new Vector3(-upperX, height, verts[2].z));
-
-        //Time to trihard
-        addTri(vI + 0, vI + 2, vI + 1);
-        addTri(vI + 1, vI + 2, vI + 3);
-
-        //and uvs again
-        for (int i = vI; i < verts.Count; i++)
-        {
-            addUV(verts[i], 2);
-        }
-
-        //NOW FOR THE FUN PART
-        //The non-modular part of the inner frame
-        vI += 4;
+        vI = CreateNamePlacard(verts, uvs, tris, vI); //TODO: this can now be commented out. make it controlled by a flag
+        vI = CreateSubtypePlacard(verts, uvs, tris, vI);
         //let's finish rounding out our modifiers, adding a copy of [0] so we don't have to play mod games
         for (int i = 11; i <= 12; i++)
         {
@@ -664,8 +634,9 @@ public class VoxelCard : MonoBehaviour
         };
         return newMesh;
 
-        int createNamePlacard(List<Vector3> verts, List<Vector2> uvs, List<int> tris, int vI, float height)
+        int CreateNamePlacard(List<Vector3> verts, List<Vector2> uvs, List<int> tris, int vI)
         {
+            float height = FrameThickness / 3.0f;
             //We want six verts
             //More cheating
             float upperX = Mathf.Lerp(verts[2].x, verts[4].x, 0.25f);
@@ -698,6 +669,39 @@ public class VoxelCard : MonoBehaviour
 
             //Consistency is for nerds. Type placard
             return vI + 6;
+        }
+
+        int CreateSubtypePlacard(List<Vector3> verts, List<Vector2> uvs, List<int> tris, int vI)
+        {
+            float height = FrameThickness / 6.0f;
+
+            //Just four verts this time
+            float upperX = TypePlacardWidth;
+            float lowerX = TypePlacardWidth - 0.1f;
+            float lowerZ = Mathf.Lerp(verts[0].z, verts[2].z, 0.5f);
+
+            //Right side, bottom to top
+            verts.Add(new Vector3(lowerX, height, lowerZ));
+            verts.Add(new Vector3(upperX, height, verts[2].z));
+
+            //Left side, same deal
+            verts.Add(new Vector3(-lowerX, height, lowerZ));
+            verts.Add(new Vector3(-upperX, height, verts[2].z));
+
+            //Time to trihard
+            addTri(vI + 0, vI + 2, vI + 1);
+            addTri(vI + 1, vI + 2, vI + 3);
+
+            //and uvs again
+            for (int i = vI; i < verts.Count; i++)
+            {
+                addUV(verts[i], 2);
+            }
+
+            //NOW FOR THE FUN PART
+            //The non-modular part of the inner frame
+            vI += 4;
+            return vI;
         }
     }
 
