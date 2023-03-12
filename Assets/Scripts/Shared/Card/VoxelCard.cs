@@ -24,6 +24,7 @@ public class VoxelCard : MonoBehaviour
     private const float CharacterArtLowerBound = 1.0f / 12.0f;
     private const float CharacterArtUpperBound = 11.0f / 12.0f; //19.0f / 24.0f;
     private const float CharacterArtSamplingIncrementRatio = 24.0f / 19.0f; // 24.0f / 17.0f;
+    private const float CharacterArtSamplingStartIndexRatio = 1.0f / 17.0f;
 
     /// <summary>
     /// Aka 45 degree angle
@@ -882,16 +883,13 @@ public class VoxelCard : MonoBehaviour
             DSamplingIncrement = (float)DTexture.texture.width / TextureResolution;
         }
 
-        Vector2Int CharacterArtSamplingStartIndex;
-        float CharacterArtSamplingIncrement;
-
         int squaringFactor = Mathf.Abs(CharacterArt.texture.width - CharacterArt.texture.height) / 2;
         float shorterDimension = Mathf.Min(CharacterArt.texture.width, CharacterArt.texture.height);
 
-        CharacterArtSamplingIncrement = (shorterDimension / (float) TextureResolution) * CharacterArtSamplingIncrementRatio;
-        CharacterArtSamplingStartIndex =
-            (Vector2Int.right * (int)(squaringFactor + (shorterDimension / 17.0f)))
-            + (Vector2Int.down * (int)(shorterDimension * 2.0f / 17.0f));
+        float CharacterArtSamplingIncrement = (shorterDimension / (float) TextureResolution) * CharacterArtSamplingIncrementRatio;
+        Vector2Int CharacterArtSamplingStartIndex =
+            (Vector2Int.right * (int)(squaringFactor + (shorterDimension * CharacterArtSamplingStartIndexRatio)))
+            + (Vector2Int.down * (int)(shorterDimension * 2.0f * CharacterArtSamplingStartIndexRatio));
 
         Vector2Int EffectTextSamplingStartIndex;
         float EffectTextSamplingIncrement;
