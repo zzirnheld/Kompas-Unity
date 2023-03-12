@@ -21,6 +21,9 @@ public enum CostType
 public class VoxelCard : MonoBehaviour
 {
     private const float CardBaseThicknessDivisor = 12.0f;
+    private const float CharacterArtLowerBound = 1.0f / 12.0f;
+    private const float CharacterArtUpperBound = 11.0f / 12.0f; //19.0f / 24.0f;
+
     /// <summary>
     /// Aka 45 degree angle
     /// </summary>
@@ -233,8 +236,8 @@ public class VoxelCard : MonoBehaviour
 
 
         vI = verts.Count;
-        vI = CreateNamePlacard(verts, uvs, tris, vI); //TODO: this can now be commented out. make it controlled by a flag
-        vI = CreateSubtypePlacard(verts, uvs, tris, vI);
+        //vI = CreateNamePlacard(verts, uvs, tris, vI); //TODO: this can now be commented out. make it controlled by a flag
+        //vI = CreateSubtypePlacard(verts, uvs, tris, vI);
         //let's finish rounding out our modifiers, adding a copy of [0] so we don't have to play mod games
         for (int i = 11; i <= 12; i++)
         {
@@ -631,7 +634,8 @@ public class VoxelCard : MonoBehaviour
         {
             float tabLowerX = Mathf.Lerp(verts[4].x, verts[2].x, 0.1875f);
             //make a tab
-            //start with the placard
+            //start with the placard TODO maniuplate these if i want stat placards to be bigger
+            //specifically "edgeOuterThick" or osmething. mess with it
             verts.Add(new Vector3(0.0f, FrameThickness / 2.0f, 1.0f));
             verts.Add(new Vector3(edgeOuterThick.x, FrameThickness / 2.0f, edgeOuterThick.z));
             verts.Add(new Vector3(-edgeOuterThick.x, FrameThickness / 2.0f, edgeOuterThick.z));
@@ -883,7 +887,7 @@ public class VoxelCard : MonoBehaviour
         if (CharacterArt.texture.width > CharacterArt.texture.height)
         {
             CharacterArtSamplingStartIndex = new Vector2Int((CharacterArt.texture.width - CharacterArt.texture.height) / 2, 0);
-            CharacterArtSamplingIncrement = CharacterArt.texture.height * 24.0f / (TextureResolution * 17.0f);
+            CharacterArtSamplingIncrement = ((float) CharacterArt.texture.height / (float) TextureResolution) * (24.0f / 17.0f);
             CharacterArtSamplingStartIndex += (int)(CharacterArt.texture.height / 17.0f) * Vector2Int.right;
             CharacterArtSamplingStartIndex += (int)(CharacterArt.texture.height * 2.0f / 17.0f) * Vector2Int.down;
         }
@@ -964,16 +968,16 @@ public class VoxelCard : MonoBehaviour
                 metalness.SetPixel(position.x, position.y, new Color(FrameMetallic, 0.0f, 0.0f, FrameGloss));
 
                 //Name placard texture
-                position += TextureResolution * Vector2Int.right;
+                /*position += TextureResolution * Vector2Int.right;
                 samplePosition = new Vector2Int(NamePlacardSamplingStartIndex.x + (int)(NamePlacardSamplingIncrement * x), NamePlacardSamplingStartIndex.y + (int)(NamePlacardSamplingIncrement * y));
                 newTexture.SetPixel(position.x, position.y, NamePlacardTexture.texture.GetPixel(samplePosition.x, samplePosition.y));
-                metalness.SetPixel(position.x, position.y, new Color(NamePlacardMetallic, 0.0f, 0.0f, NamePlacardGloss));
+                metalness.SetPixel(position.x, position.y, new Color(NamePlacardMetallic, 0.0f, 0.0f, NamePlacardGloss)); */
 
                 //Type placard texture
-                position += TextureResolution * Vector2Int.right;
+                /* position += TextureResolution * Vector2Int.right;
                 samplePosition = new Vector2Int(TypePlacardSamplingStartIndex.x + (int)(TypePlacardSamplingIncrement * x), TypePlacardSamplingStartIndex.y + (int)(TypePlacardSamplingIncrement * y));
                 newTexture.SetPixel(position.x, position.y, TypePlacardTexture.texture.GetPixel(samplePosition.x, samplePosition.y));
-                metalness.SetPixel(position.x, position.y, new Color(TypePlacardMetallic, 0.0f, 0.0f, TypePlacardGloss));
+                metalness.SetPixel(position.x, position.y, new Color(TypePlacardMetallic, 0.0f, 0.0f, TypePlacardGloss));*/
 
                 //Stats placards texture
                 position = new Vector2Int(x, TextureResolution + y);
@@ -1037,7 +1041,7 @@ public class VoxelCard : MonoBehaviour
                 Color frontMetallic = new Color(EffectTextMetallic, 0.0f, 0.0f, EffectTextGloss);
                 if(x < TextureResolution * 0.5f * (1 - FrameThickness))
                 {
-                    if (y > TextureResolution / 12.0f && y < 19.0f * TextureResolution / 24.0f)
+                    if (y > TextureResolution * CharacterArtLowerBound && y < TextureResolution * CharacterArtUpperBound)
                     {
                         frontStartIndex = CharacterArtSamplingStartIndex;
                         frontIncrement = CharacterArtSamplingIncrement;
