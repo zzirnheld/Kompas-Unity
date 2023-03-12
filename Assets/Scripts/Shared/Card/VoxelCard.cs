@@ -890,6 +890,8 @@ public class VoxelCard : MonoBehaviour
         Vector2Int CharacterArtSamplingStartIndex =
             (Vector2Int.right * (int)(squaringFactor + (shorterDimension * CharacterArtSamplingStartIndexRatio)))
             + (Vector2Int.down * (int)(shorterDimension * 2.0f * CharacterArtSamplingStartIndexRatio));
+        Debug.Log($"Character art {CharacterArtSamplingIncrement}, {CharacterArtSamplingStartIndex}");
+        CharacterArtSamplingStartIndex = new Vector2Int(-2 * CharacterArtSamplingStartIndex.x, CharacterArtSamplingStartIndex.y); //This is only necessary for full art, it seems
 
         Vector2Int EffectTextSamplingStartIndex;
         float EffectTextSamplingIncrement;
@@ -1031,7 +1033,7 @@ public class VoxelCard : MonoBehaviour
                 float frontIncrement = EffectTextSamplingIncrement;
                 Sprite frontTexture = EffectTextTexture;
                 Color frontMetallic = new Color(EffectTextMetallic, 0.0f, 0.0f, EffectTextGloss);
-                if(x < TextureResolution * 0.5f * (1 - FrameThickness))
+                if(x < TextureResolution)// * 0.5f * (1 - FrameThickness)) TODO: this changes based on whether eff text exists
                 {
                     if (y > TextureResolution * CharacterArtLowerBound && y < TextureResolution * CharacterArtUpperBound)
                     {
