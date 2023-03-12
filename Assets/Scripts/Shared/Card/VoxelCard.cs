@@ -150,10 +150,10 @@ public class VoxelCard : MonoBehaviour
             uvs.Add(new Vector2((uvX + (texture % 3)) / 3.0f, (uvY + (texture / 3)) / 2.0f));
         }
 
-        (float, float) xy(float angle) => (Mathf.Cos(angle), Mathf.Sin(angle));
-        Vector2 xyVector(float angle)
+        (float, float) trig(float angle) => (Mathf.Cos(angle), Mathf.Sin(angle));
+        Vector2 trigVector(float angle)
         {
-            var (cos, sin) = xy(angle);
+            var (cos, sin) = trig(angle);
             return new Vector2(cos, sin);
         }
 
@@ -162,7 +162,7 @@ public class VoxelCard : MonoBehaviour
         //Build card base verts counter-clockwise around origin from (1, 0, 0)
         for (int i = 0; i < 8; i++)
         {
-            var (cos, sin) = xy(PI4 * i);
+            var (cos, sin) = trig(PI4 * i);
             verts.Add(new Vector3(cos, CardBaseThickness, sin)); //front
             verts.Add(new Vector3(cos, -CardBaseThickness, sin)); //back
         }
@@ -196,7 +196,7 @@ public class VoxelCard : MonoBehaviour
         List<Vector2> modifiers = new List<Vector2>();
         for (int i = 4; i <= 10; i++)
         {
-            modifiers.Add(xyVector(PI4 * i) * FrameThickness);
+            modifiers.Add(trigVector(PI4 * i) * FrameThickness);
         }
 
         //Build 3/4 outer frame vertices counter-clockwise around origin from (1, 0, 0)
@@ -205,7 +205,7 @@ public class VoxelCard : MonoBehaviour
             foreach (Vector3 mod in modifiers)
             {
                 float modX = 1.0f + mod.x;
-                var (cos, sin) = xy(PI4 * i);
+                var (cos, sin) = trig(PI4 * i);
                 verts.Add(new Vector3(cos * modX, mod.y, sin * modX));
             }
         }
@@ -238,7 +238,7 @@ public class VoxelCard : MonoBehaviour
         //let's finish rounding out our modifiers, adding a copy of [0] so we don't have to play mod games
         for (int i = 11; i <= 12; i++)
         {
-            modifiers.Add(new Vector2(Mathf.Cos(PI4 * i), Mathf.Sin(PI4 * i)) * FrameThickness);
+            modifiers.Add(trigVector(PI4 * i) * FrameThickness);
         }
 
         //Calulate edge points for thick part of frames
@@ -254,8 +254,8 @@ public class VoxelCard : MonoBehaviour
             verts.Add(new Vector3(edgeInnerThick.x, modifiers[i].y, edgeInnerThick.z + modifiers[i].x));
             verts.Add(new Vector3(edgeThin.x * modX, modifiers[i].y, edgeThin.z * modX));
             verts.Add(new Vector3(verts[2].x * modX, modifiers[i].y, verts[2].z * modX));
-            verts.Add(new Vector3(verts[vIlocal + 1].z, verts[vIlocal + 1].y, verts[vIlocal + 1].x));
-            verts.Add(new Vector3(verts[vIlocal].z, verts[vIlocal].y, verts[vIlocal].x));
+            verts.Add(new Vector3(verts[vIlocal + 1].z, verts[vIlocal + 1].y,   verts[vIlocal + 1].x));
+            verts.Add(new Vector3(verts[vIlocal].z,     verts[vIlocal].y,       verts[vIlocal].x));
         }
         //add the last two vertices
         verts.Add(new Vector3(edgeOuterThick.x, modifiers[6].y, edgeOuterThick.z));
@@ -358,100 +358,7 @@ public class VoxelCard : MonoBehaviour
 
             if (makeTab[i])
             {
-                float tabLowerX = Mathf.Lerp(verts[4].x, verts[2].x, 0.1875f);
-                //make a tab
-                //start with the placard
-                verts.Add(new Vector3(0.0f, FrameThickness / 2.0f, 1.0f));
-                verts.Add(new Vector3(edgeOuterThick.x, FrameThickness / 2.0f, edgeOuterThick.z));
-                verts.Add(new Vector3(-edgeOuterThick.x, FrameThickness / 2.0f, edgeOuterThick.z));
-                verts.Add(new Vector3(tabLowerX, FrameThickness / 2.0f, edgeInnerThick.z));
-                verts.Add(new Vector3(-tabLowerX, FrameThickness / 2.0f, edgeInnerThick.z));
-                verts.Add(new Vector3(0.0f, FrameThickness / 2.0f, verts[2].z));
-
-                addTri(vI + 0, vI + 1, vI + 2);
-                addTri(vI + 1, vI + 5, vI + 2);
-                addTri(vI + 1, vI + 3, vI + 5);
-                addTri(vI + 2, vI + 5, vI + 4);
-
-                //build upper edge, clockwise
-                verts.Add(verts[vI + 0] + Vector3.up * (FrameThickness / 2.0f));
-                verts.Add(verts[vI + 1] + Vector3.up * (FrameThickness / 2.0f));
-                verts.Add(verts[vI + 3] + Vector3.up * (FrameThickness / 2.0f));
-                verts.Add(verts[vI + 5] + Vector3.up * (FrameThickness / 2.0f));
-                verts.Add(verts[vI + 4] + Vector3.up * (FrameThickness / 2.0f));
-                verts.Add(verts[vI + 2] + Vector3.up * (FrameThickness / 2.0f));
-
-                //find inner angles and build verts, triangles
-                Vector3 innerAngle;
-                for (int j = 0; j <= 6; j++)
-                {
-                    int vIlocal = vI + (j % 6) + 6;
-                    int ccwNeighbor = vI + ((j + 5) % 6) + 6;
-
-                    if (j != 6)
-                    {
-                        int cwNeighbor = vI + ((j + 1) % 6) + 6;
-                        innerAngle = findInnerAngle(verts[vIlocal], verts[ccwNeighbor], verts[cwNeighbor]);
-                        verts.Add(new Vector3(verts[vIlocal].x + innerAngle.x * modifiers[5].x, modifiers[5].y, verts[vIlocal].z + innerAngle.z * modifiers[5].x));
-                        verts.Add(new Vector3(verts[vIlocal].x + innerAngle.x * modifiers[4].x, modifiers[4].y, verts[vIlocal].z + innerAngle.z * modifiers[4].x));
-                    }
-
-                    if (j != 0)
-                    {
-                        int v1 = vIlocal;
-                        int v2 = ccwNeighbor;
-                        int v3 = v1 + 6 + (j % 6);
-                        int v4 = v2 + 6 + ((j + 5) % 6);
-                        int v5 = v3 + 1;
-                        int v6 = v4 + 1;
-                        addTri(v1, v3, v2);
-                        addTri(v2, v3, v4);
-                        addTri(v3, v5, v4);
-                        addTri(v4, v5, v6);
-                    }
-                }
-
-                //Outer frame and fill holes
-                verts.Add(new Vector3(-edgeInnerThick.x, FrameThickness, edgeInnerThick.z));
-                verts.Add(new Vector3(verts[vI + 24].x, modifiers[7].y, verts[vI + 24].z + modifiers[7].x));
-                verts.Add(new Vector3(verts[vI + 24].x, modifiers[0].y, verts[vI + 24].z + modifiers[0].x));
-
-                innerAngle = findInnerAngle(verts[vI + 10], verts[vI + 24], verts[vI + 09]);
-                verts.Add(new Vector3(verts[vI + 10].x + innerAngle.x * modifiers[5].x, modifiers[5].y, verts[vI + 10].z + innerAngle.z * modifiers[5].x));
-                verts.Add(new Vector3(verts[vI + 10].x + innerAngle.x * modifiers[4].x, modifiers[4].y, verts[vI + 10].z + innerAngle.z * modifiers[4].x));
-
-                verts.Add(new Vector3(0.0f, modifiers[7].y, verts[vI + 09].z + modifiers[7].x));
-                verts.Add(new Vector3(0.0f, modifiers[0].y, verts[vI + 09].z + modifiers[0].x));
-
-                innerAngle = findInnerAngle(verts[vI + 08], new Vector3(edgeInnerThick.x, FrameThickness, edgeInnerThick.z), verts[vI + 09]);
-                verts.Add(new Vector3(verts[vI + 08].x + innerAngle.x * modifiers[5].x, modifiers[5].y, verts[vI + 08].z + innerAngle.z * modifiers[5].x));
-                verts.Add(new Vector3(verts[vI + 08].x + innerAngle.x * modifiers[4].x, modifiers[4].y, verts[vI + 08].z + innerAngle.z * modifiers[4].x));
-
-                verts.Add(new Vector3(edgeInnerThick.x, FrameThickness, edgeInnerThick.z));
-                verts.Add(new Vector3(verts[vI + 33].x, modifiers[7].y, verts[vI + 33].z + modifiers[7].x));
-                verts.Add(new Vector3(verts[vI + 33].x, modifiers[0].y, verts[vI + 33].z + modifiers[0].x));
-
-                addTri(vI + 11, vI + 10, vI + 24);
-                addTri(vI + 24, vI + 10, vI + 27);
-                addTri(vI + 24, vI + 27, vI + 25);
-                addTri(vI + 25, vI + 27, vI + 28);
-                addTri(vI + 25, vI + 28, vI + 26);
-
-                addTri(vI + 10, vI + 09, vI + 29);
-                addTri(vI + 10, vI + 29, vI + 27);
-                addTri(vI + 27, vI + 29, vI + 30);
-                addTri(vI + 27, vI + 30, vI + 28);
-
-                addTri(vI + 09, vI + 08, vI + 31);
-                addTri(vI + 09, vI + 31, vI + 29);
-                addTri(vI + 29, vI + 31, vI + 32);
-                addTri(vI + 29, vI + 32, vI + 30);
-
-                addTri(vI + 08, vI + 07, vI + 33);
-                addTri(vI + 08, vI + 33, vI + 34);
-                addTri(vI + 08, vI + 34, vI + 31);
-                addTri(vI + 31, vI + 34, vI + 35);
-                addTri(vI + 31, vI + 35, vI + 32);
+                MakeStatCutout(verts, tris, vI, modifiers, edgeInnerThick, edgeOuterThick);
             }
             else
             {
@@ -718,6 +625,104 @@ public class VoxelCard : MonoBehaviour
             //The non-modular part of the inner frame
             vI += 4;
             return vI;
+        }
+
+        void MakeStatCutout(List<Vector3> verts, List<int> tris, int vI, List<Vector2> modifiers, Vector3 edgeInnerThick, Vector3 edgeOuterThick)
+        {
+            float tabLowerX = Mathf.Lerp(verts[4].x, verts[2].x, 0.1875f);
+            //make a tab
+            //start with the placard
+            verts.Add(new Vector3(0.0f, FrameThickness / 2.0f, 1.0f));
+            verts.Add(new Vector3(edgeOuterThick.x, FrameThickness / 2.0f, edgeOuterThick.z));
+            verts.Add(new Vector3(-edgeOuterThick.x, FrameThickness / 2.0f, edgeOuterThick.z));
+            verts.Add(new Vector3(tabLowerX, FrameThickness / 2.0f, edgeInnerThick.z));
+            verts.Add(new Vector3(-tabLowerX, FrameThickness / 2.0f, edgeInnerThick.z));
+            verts.Add(new Vector3(0.0f, FrameThickness / 2.0f, verts[2].z));
+
+            addTri(vI + 0, vI + 1, vI + 2);
+            addTri(vI + 1, vI + 5, vI + 2);
+            addTri(vI + 1, vI + 3, vI + 5);
+            addTri(vI + 2, vI + 5, vI + 4);
+
+            //build upper edge, clockwise
+            verts.Add(verts[vI + 0] + Vector3.up * (FrameThickness / 2.0f));
+            verts.Add(verts[vI + 1] + Vector3.up * (FrameThickness / 2.0f));
+            verts.Add(verts[vI + 3] + Vector3.up * (FrameThickness / 2.0f));
+            verts.Add(verts[vI + 5] + Vector3.up * (FrameThickness / 2.0f));
+            verts.Add(verts[vI + 4] + Vector3.up * (FrameThickness / 2.0f));
+            verts.Add(verts[vI + 2] + Vector3.up * (FrameThickness / 2.0f));
+
+            //find inner angles and build verts, triangles
+            Vector3 innerAngle;
+            for (int j = 0; j <= 6; j++)
+            {
+                int vIlocal = vI + (j % 6) + 6;
+                int ccwNeighbor = vI + ((j + 5) % 6) + 6;
+
+                if (j != 6)
+                {
+                    int cwNeighbor = vI + ((j + 1) % 6) + 6;
+                    innerAngle = findInnerAngle(verts[vIlocal], verts[ccwNeighbor], verts[cwNeighbor]);
+                    verts.Add(new Vector3(verts[vIlocal].x + innerAngle.x * modifiers[5].x, modifiers[5].y, verts[vIlocal].z + innerAngle.z * modifiers[5].x));
+                    verts.Add(new Vector3(verts[vIlocal].x + innerAngle.x * modifiers[4].x, modifiers[4].y, verts[vIlocal].z + innerAngle.z * modifiers[4].x));
+                }
+
+                if (j != 0)
+                {
+                    int v1 = vIlocal;
+                    int v2 = ccwNeighbor;
+                    int v3 = v1 + 6 + (j % 6);
+                    int v4 = v2 + 6 + ((j + 5) % 6);
+                    int v5 = v3 + 1;
+                    int v6 = v4 + 1;
+                    addTri(v1, v3, v2);
+                    addTri(v2, v3, v4);
+                    addTri(v3, v5, v4);
+                    addTri(v4, v5, v6);
+                }
+            }
+
+            //Outer frame and fill holes
+            verts.Add(new Vector3(-edgeInnerThick.x, FrameThickness, edgeInnerThick.z));
+            verts.Add(new Vector3(verts[vI + 24].x, modifiers[7].y, verts[vI + 24].z + modifiers[7].x));
+            verts.Add(new Vector3(verts[vI + 24].x, modifiers[0].y, verts[vI + 24].z + modifiers[0].x));
+
+            innerAngle = findInnerAngle(verts[vI + 10], verts[vI + 24], verts[vI + 09]);
+            verts.Add(new Vector3(verts[vI + 10].x + innerAngle.x * modifiers[5].x, modifiers[5].y, verts[vI + 10].z + innerAngle.z * modifiers[5].x));
+            verts.Add(new Vector3(verts[vI + 10].x + innerAngle.x * modifiers[4].x, modifiers[4].y, verts[vI + 10].z + innerAngle.z * modifiers[4].x));
+
+            verts.Add(new Vector3(0.0f, modifiers[7].y, verts[vI + 09].z + modifiers[7].x));
+            verts.Add(new Vector3(0.0f, modifiers[0].y, verts[vI + 09].z + modifiers[0].x));
+
+            innerAngle = findInnerAngle(verts[vI + 08], new Vector3(edgeInnerThick.x, FrameThickness, edgeInnerThick.z), verts[vI + 09]);
+            verts.Add(new Vector3(verts[vI + 08].x + innerAngle.x * modifiers[5].x, modifiers[5].y, verts[vI + 08].z + innerAngle.z * modifiers[5].x));
+            verts.Add(new Vector3(verts[vI + 08].x + innerAngle.x * modifiers[4].x, modifiers[4].y, verts[vI + 08].z + innerAngle.z * modifiers[4].x));
+
+            verts.Add(new Vector3(edgeInnerThick.x, FrameThickness, edgeInnerThick.z));
+            verts.Add(new Vector3(verts[vI + 33].x, modifiers[7].y, verts[vI + 33].z + modifiers[7].x));
+            verts.Add(new Vector3(verts[vI + 33].x, modifiers[0].y, verts[vI + 33].z + modifiers[0].x));
+
+            addTri(vI + 11, vI + 10, vI + 24);
+            addTri(vI + 24, vI + 10, vI + 27);
+            addTri(vI + 24, vI + 27, vI + 25);
+            addTri(vI + 25, vI + 27, vI + 28);
+            addTri(vI + 25, vI + 28, vI + 26);
+
+            addTri(vI + 10, vI + 09, vI + 29);
+            addTri(vI + 10, vI + 29, vI + 27);
+            addTri(vI + 27, vI + 29, vI + 30);
+            addTri(vI + 27, vI + 30, vI + 28);
+
+            addTri(vI + 09, vI + 08, vI + 31);
+            addTri(vI + 09, vI + 31, vI + 29);
+            addTri(vI + 29, vI + 31, vI + 32);
+            addTri(vI + 29, vI + 32, vI + 30);
+
+            addTri(vI + 08, vI + 07, vI + 33);
+            addTri(vI + 08, vI + 33, vI + 34);
+            addTri(vI + 08, vI + 34, vI + 31);
+            addTri(vI + 31, vI + 34, vI + 35);
+            addTri(vI + 31, vI + 35, vI + 32);
         }
     }
 
