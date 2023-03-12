@@ -252,8 +252,11 @@ public class VoxelCard : MonoBehaviour
 
 
         vI = verts.Count;
-        //vI = CreateNamePlacard(verts, uvs, tris, vI); //TODO: this can now be commented out. make it controlled by a flag
-        //vI = CreateSubtypePlacard(verts, uvs, tris, vI);
+        if (!fullArt)
+        {
+            vI = CreateNamePlacard(verts, uvs, tris, vI);
+            vI = CreateSubtypePlacard(verts, uvs, tris, vI);
+        }
         //let's finish rounding out our modifiers, adding a copy of [0] so we don't have to play mod games
         for (int i = 11; i <= 12; i++)
         {
@@ -977,16 +980,16 @@ public class VoxelCard : MonoBehaviour
                 metalness.SetPixel(position.x, position.y, new Color(FrameMetallic, 0.0f, 0.0f, FrameGloss));
 
                 //Name placard texture
-                /*position += TextureResolution * Vector2Int.right;
+                position += TextureResolution * Vector2Int.right;
                 samplePosition = new Vector2Int(NamePlacardSamplingStartIndex.x + (int)(NamePlacardSamplingIncrement * x), NamePlacardSamplingStartIndex.y + (int)(NamePlacardSamplingIncrement * y));
                 newTexture.SetPixel(position.x, position.y, NamePlacardTexture.texture.GetPixel(samplePosition.x, samplePosition.y));
-                metalness.SetPixel(position.x, position.y, new Color(NamePlacardMetallic, 0.0f, 0.0f, NamePlacardGloss)); */
+                metalness.SetPixel(position.x, position.y, new Color(NamePlacardMetallic, 0.0f, 0.0f, NamePlacardGloss));
 
                 //Type placard texture
-                /* position += TextureResolution * Vector2Int.right;
+                position += TextureResolution * Vector2Int.right;
                 samplePosition = new Vector2Int(TypePlacardSamplingStartIndex.x + (int)(TypePlacardSamplingIncrement * x), TypePlacardSamplingStartIndex.y + (int)(TypePlacardSamplingIncrement * y));
                 newTexture.SetPixel(position.x, position.y, TypePlacardTexture.texture.GetPixel(samplePosition.x, samplePosition.y));
-                metalness.SetPixel(position.x, position.y, new Color(TypePlacardMetallic, 0.0f, 0.0f, TypePlacardGloss));*/
+                metalness.SetPixel(position.x, position.y, new Color(TypePlacardMetallic, 0.0f, 0.0f, TypePlacardGloss));
 
                 //Stats placards texture
                 position = new Vector2Int(x, TextureResolution + y);
