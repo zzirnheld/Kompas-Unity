@@ -1139,6 +1139,7 @@ public class VoxelCard : MonoBehaviour
     {
         Color.RGBToHSV(target, out float tH, out float tS, out float tV);
         Color.RGBToHSV(newColor, out float nH, out float nS, out float nV);
-        target = Color.HSVToRGB(nH, 0.8f * nS + 0.2f * tS, tV * nV);
+        //target = Color.HSVToRGB(nH, 0.8f * nS + 0.2f * tS, tV * nV);
+        target = newColor;
     }
 }
