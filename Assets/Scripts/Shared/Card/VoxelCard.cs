@@ -945,7 +945,7 @@ public class VoxelCard : VoxelCardBase
                 float frontIncrement = EffectTextSamplingIncrement;
                 Sprite frontTexture = EffectTextTexture;
                 Color frontMetallic = new Color(EffectTextMetallic, 0.0f, 0.0f, EffectTextGloss);
-                float effTextZoneRatio = 0.42f;
+                float effTextZoneRatio = 0.37f;
                 float artRightBound = fullArt ? 1.0f : effTextZoneRatio * (1f + FrameThickness);
 
                 if(fullArt)
