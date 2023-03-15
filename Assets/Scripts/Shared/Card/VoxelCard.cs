@@ -863,13 +863,6 @@ public class VoxelCard : VoxelCardBase
         (Vector2Int NamePlacardSamplingStartIndex, float NamePlacardSamplingIncrement) = SamplingInformation(NamePlacardTexture);
         (Vector2Int TypePlacardSamplingStartIndex, float TypePlacardSamplingIncrement) = SamplingInformation(TypePlacardTexture);
 
-        (Vector2Int NSamplingStartIndex, float NSamplingIncrement) = SamplingInformation(NTexture);
-        (Vector2Int ESamplingStartIndex, float ESamplingIncrement) = SamplingInformation(ETexture);
-        (Vector2Int SACSamplingStartIndex, float SACSamplingIncrement) = SamplingInformation(SACTexture);
-        (Vector2Int WSamplingStartIndex, float WSamplingIncrement) = SamplingInformation(WTexture);
-        (Vector2Int RSamplingStartIndex, float RSamplingIncrement) = SamplingInformation(RTexture);
-        (Vector2Int DSamplingStartIndex, float DSamplingIncrement) = SamplingInformation(DTexture);
-
         int squaringFactor = Mathf.Abs(CharacterArt.texture.width - CharacterArt.texture.height) / 2;
         float shorterDimension = Mathf.Min(CharacterArt.texture.width, CharacterArt.texture.height);
 
@@ -922,7 +915,7 @@ public class VoxelCard : VoxelCardBase
                 }
                 newTexture.SetPixel(position.x, position.y, frameColor);
                 metalness.SetPixel(position.x, position.y, new Color(FrameMetallic, 0.0f, 0.0f, FrameGloss));
-                
+
                 //Name placard texture
                 position += TextureResolution * Vector2Int.right;
                 samplePosition = new Vector2Int(NamePlacardSamplingStartIndex.x + (int)(NamePlacardSamplingIncrement * x), NamePlacardSamplingStartIndex.y + (int)(NamePlacardSamplingIncrement * y));
@@ -937,54 +930,7 @@ public class VoxelCard : VoxelCardBase
 
                 //Stats placards texture
                 position = new Vector2Int(x, TextureResolution + y);
-                Vector2Int statsStartIndex;
-                float statsIncrement;
-                Sprite statsTexture;
-                if (x < TextureResolution / 3)
-                {
-                    if (y > TextureResolution / 3)
-                    {
-                        statsStartIndex = WSamplingStartIndex;
-                        statsIncrement = WSamplingIncrement;
-                        statsTexture = WTexture;
-                    }
-                    else
-                    {
-                        statsStartIndex = DSamplingStartIndex;
-                        statsIncrement = DSamplingIncrement;
-                        statsTexture = DTexture;
-                    }
-                }
-                else if (x < 2 * TextureResolution / 3)
-                {
-                    if (y > TextureResolution / 2)
-                    {
-                        statsStartIndex = NSamplingStartIndex;
-                        statsIncrement = NSamplingIncrement;
-                        statsTexture = NTexture;
-                    }
-                    else
-                    {
-                        statsStartIndex = SACSamplingStartIndex;
-                        statsIncrement = SACSamplingIncrement;
-                        statsTexture = SACTexture;
-                    }
-                }
-                else
-                {
-                    if (y > TextureResolution / 3)
-                    {
-                        statsStartIndex = ESamplingStartIndex;
-                        statsIncrement = ESamplingIncrement;
-                        statsTexture = ETexture;
-                    }
-                    else
-                    {
-                        statsStartIndex = RSamplingStartIndex;
-                        statsIncrement = RSamplingIncrement;
-                        statsTexture = RTexture;
-                    }
-                }
+                (Vector2Int statsStartIndex, float statsIncrement, Sprite statsTexture) = DetermineRelevantStatValues(x, y);
                 samplePosition = new Vector2Int(statsStartIndex.x + (int)(statsIncrement * x), statsStartIndex.y + (int)(statsIncrement * y));
                 newTexture.SetPixel(position.x, position.y, statsTexture.texture.GetPixel(samplePosition.x, samplePosition.y));
                 metalness.SetPixel(position.x, position.y, new Color(StatsMetallic, 0.0f, 0.0f, StatsGloss));
@@ -1030,6 +976,51 @@ public class VoxelCard : VoxelCardBase
         newTexture.Apply();
         metalness.Apply();
         return new List<Texture2D> { newTexture, metalness };
+    }
+
+    private (Vector2Int, float, Sprite) DetermineRelevantStatValues(int x, int y)
+    {
+
+        (Vector2Int NSamplingStartIndex, float NSamplingIncrement) = SamplingInformation(NTexture);
+        (Vector2Int ESamplingStartIndex, float ESamplingIncrement) = SamplingInformation(ETexture);
+        (Vector2Int SACSamplingStartIndex, float SACSamplingIncrement) = SamplingInformation(SACTexture);
+        (Vector2Int WSamplingStartIndex, float WSamplingIncrement) = SamplingInformation(WTexture);
+        (Vector2Int RSamplingStartIndex, float RSamplingIncrement) = SamplingInformation(RTexture);
+        (Vector2Int DSamplingStartIndex, float DSamplingIncrement) = SamplingInformation(DTexture);
+
+        if (x < TextureResolution / 3)
+        {
+            if (y > TextureResolution / 3)
+            {
+                return (WSamplingStartIndex, WSamplingIncrement, WTexture);
+            }
+            else
+            {
+                return (DSamplingStartIndex, DSamplingIncrement, DTexture);
+            }
+        }
+        else if (x < 2 * TextureResolution / 3)
+        {
+            if (y > TextureResolution / 2)
+            {
+                return (NSamplingStartIndex, NSamplingIncrement, NTexture);
+            }
+            else
+            {
+                return (SACSamplingStartIndex, SACSamplingIncrement, SACTexture);
+            }
+        }
+        else
+        {
+            if (y > TextureResolution / 3)
+            {
+                return (ESamplingStartIndex, ESamplingIncrement, ETexture);
+            }
+            else
+            {
+                return (RSamplingStartIndex, RSamplingIncrement, RTexture);
+            }
+        }
     }
 
     private (Vector2Int, float) SamplingInformation(Sprite sprite)
