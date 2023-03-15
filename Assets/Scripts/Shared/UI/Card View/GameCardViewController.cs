@@ -15,11 +15,15 @@ namespace KompasCore.UI
         public const float SmallUnzoomedTextFontSize = 22f;
         private static float UnzoomedFontSizeForValue(int value) => value < 10 ? LargeUnzoomedTextFontSize : SmallUnzoomedTextFontSize;
 
-        private static bool Zoomed => ClientCameraController.MainZoomed;
+        private bool Zoomed => overrideZoom ? zoomOverrideValue : ClientCameraController.MainZoomed;
+
+        private bool overrideZoom;
+        private bool zoomOverrideValue;
 
         public CardAOEController aoeController;
 
         //public MeshRenderer cardFaceRenderer;
+        /*
         [Header("Card frame")]
         public GameObject zoomedCharFrame;
         public GameObject zoomedAllFrame;
@@ -40,7 +44,7 @@ namespace KompasCore.UI
         public Image sUnzoomedImage;
         public Image wUnzoomedImage;
         public Image cUnzoomedImage;
-        public Image aUnzoomedImage;
+        public Image aUnzoomedImage;*/
 
         //Zoomed-in text is handled by base class
         [Header("Zoomed-out card numeric stats")]
@@ -60,20 +64,13 @@ namespace KompasCore.UI
         public OscillatingController attackOscillator;
         public OscillatingController effectOscillator;
 
-        [Header("Zoom level haze")]
-        public Image zoomedHazeImage;
-        public Sprite zoomedCharHaze;
-        public Sprite zoomedNonCharHaze;
+        public VoxelCardBase zoomedVoxelCard;
+        public VoxelCardBase unzoomedVoxelCard;
 
-        public Image unzoomedHazeImage;
-        public Sprite unzoomedCharHaze;
-        public Sprite unzoomedNonCharHaze;
-
-        [Header("Frame coloring")]
-        public Material friendlyCardFrameMaterial;
-        public Material enemyCardFrameMaterial;
-
-        public Renderer[] frameObjects;
+        /// <summary>
+        /// Used to make sure we don't regenerate the texture unnecessarily
+        /// </summary>
+        private string oldFileName;
 
         protected override void Display()
         {
@@ -89,47 +86,11 @@ namespace KompasCore.UI
 
         protected virtual void HandleZoom()
         {
-            bool isChar = shownCard.CardType == 'C';
-
-            //Zoomed in things
-            nText.gameObject.SetActive(Zoomed && isChar);
-            eText.gameObject.SetActive(Zoomed && isChar);
-            wText.gameObject.SetActive(Zoomed && isChar);
-
-            zoomedCharFrame.SetActive(Zoomed && isChar);
-
-            costText.gameObject.SetActive(Zoomed);
-            nameText.gameObject.SetActive(Zoomed);
-            subtypesText.gameObject.SetActive(Zoomed);
-            effText.gameObject.SetActive(Zoomed);
-
-            zoomedAllFrame.SetActive(Zoomed);
-
-            unzoomedCharStatBackgrounds.SetActive(!Zoomed && isChar);
-            unzoomedAugStatBackgrounds.SetActive(!Zoomed && !isChar);
-            zoomedCharStatBackgrounds.SetActive(Zoomed && isChar);
-            zoomedAugStatBackgrounds.SetActive(Zoomed && !isChar);
-
-            //Unzoomed things
-            unzoomedNText.gameObject.SetActive(!Zoomed && isChar);
-            unzoomedEText.gameObject.SetActive(!Zoomed && isChar);
-            unzoomedWText.gameObject.SetActive(!Zoomed && isChar);
-
-            unzoomedCharFrame.SetActive(!Zoomed && isChar);
-
-            unzoomedCostText.gameObject.SetActive(!Zoomed);
-
-            unzoomedAllFrame.SetActive(!Zoomed);
-
-            //Handle font sizes
-            unzoomedNText.fontSize = UnzoomedFontSizeForValue(shownCard.N);
-            unzoomedEText.fontSize = UnzoomedFontSizeForValue(shownCard.E);
-            unzoomedWText.fontSize = UnzoomedFontSizeForValue(shownCard.W);
-
-            unzoomedCostText.fontSize = UnzoomedFontSizeForValue(shownCard.Cost);
-
             handleStatColors(nText, eText, costText, wText);
             handleStatColors(unzoomedNText, unzoomedEText, unzoomedCostText, unzoomedWText);
+
+            unzoomedVoxelCard.gameObject.SetActive(!Zoomed);
+            zoomedVoxelCard.gameObject.SetActive(Zoomed);
         }
 
         private static bool HasCurrentlyActivateableEffect(GameCard card)
@@ -170,6 +131,7 @@ namespace KompasCore.UI
             if (ShownGameCard.Game is ClientGame clientGame)
             {
                 var settings = clientGame.clientUIController.clientUISettingsController.ClientSettings;
+                /*
                 switch (settings.statHighlight)
                 {
                     case StatHighlight.NoHighlight:
@@ -193,7 +155,7 @@ namespace KompasCore.UI
 
                 //Debug.Log($"setting color to {settings.FriendlyColor}");
                 friendlyCardFrameMaterial.color = settings.FriendlyColor;
-                enemyCardFrameMaterial.color = settings.EnemyColor;
+                enemyCardFrameMaterial.color = settings.EnemyColor;*/
             }
         }
 
@@ -208,15 +170,16 @@ namespace KompasCore.UI
             unzoomedCostText.text = $"{shownCard.Cost}";
         }
 
-        protected override void DisplayCardImage()
+        protected override void DisplayCardImage(Sprite cardImageSprite)
         {
-            base.DisplayCardImage();
+            if (oldFileName == ShownCard.FileName) return;
 
-            zoomedHazeImage.enabled = Zoomed;
-            zoomedHazeImage.sprite = shownCard.CardType == 'C' ? zoomedCharHaze : zoomedNonCharHaze;
+            base.DisplayCardImage(cardImageSprite);
+            //TODO split this out if I ever make chars able to become spells or vice versa
+            zoomedVoxelCard.Init(ShownCard.CardType == 'C', cardImageSprite);
+            unzoomedVoxelCard.Init(ShownCard.CardType == 'C', cardImageSprite);
 
-            unzoomedHazeImage.enabled = !Zoomed;
-            unzoomedHazeImage.sprite = shownCard.CardType == 'C' ? unzoomedCharHaze : unzoomedNonCharHaze;
+            oldFileName = ShownCard.FileName;
         }
 
         public virtual void ShowUniqueCopy(bool copy = true) => uniqueCopyObject.SetActive(copy);
@@ -233,13 +196,14 @@ namespace KompasCore.UI
                 //no controller yet, don't bother showing color
                 return;
             }
+            /*
             Material material = ShownGameCard.Controller.Friendly ? friendlyCardFrameMaterial : enemyCardFrameMaterial;
             if (material == null) return; //Could be an error (TODO handle) but could be just a server card
 
             foreach (var obj in frameObjects)
             {
                 obj.material = material;
-            }
+            }*/
         }
     }
 }
