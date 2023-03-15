@@ -11,14 +11,24 @@ public struct MeshData
     public int[] Tris;
 }
 
-public enum CostType
+public abstract class VoxelCardBase : MonoBehaviour
 {
-    S,
-    A,
-    C
+    protected abstract Sprite CardImage { set; }
+
+    protected abstract bool ShowCardStats { set; }
+
+    protected abstract void ApplyUpdates();
+
+    public void Init(bool isChar, Sprite cardImage)
+    {
+        CardImage = cardImage;
+        ShowCardStats = isChar;
+
+        ApplyUpdates();
+    }
 }
 
-public class VoxelCard : MonoBehaviour
+public class VoxelCard : VoxelCardBase
 {
     private const float CardBaseThicknessDivisor = 12.0f;
 
@@ -60,6 +70,9 @@ public class VoxelCard : MonoBehaviour
     public float FrameThickness;
     [Range(0.1f, 0.7f)]
     public float TypePlacardWidth;
+
+    protected override bool ShowCardStats { set => HasN = HasE = HasW = value; }
+
     public bool HasN, HasE, HasSAC, HasW, HasR, HasD;
     public int TextureResolution;
 
@@ -103,6 +116,8 @@ public class VoxelCard : MonoBehaviour
 
     public Sprite DTexture;
 
+    protected override Sprite CardImage { set { CharacterArt = value; } }
+
     public Sprite CharacterArt;
     [Range(0.0f, 1.0f)]
     public float CharacterArtMetallic;
@@ -127,6 +142,7 @@ public class VoxelCard : MonoBehaviour
 
     public void OnInspectorChange()
     {
+        var start = System.DateTime.Now;
         if (RebuildMeshOnChange)
         {
             GenerateMesh();
@@ -135,7 +151,10 @@ public class VoxelCard : MonoBehaviour
         {
             GenerateTexture();
         }
+        Debug.Log($"Took {System.DateTime.Now - start}");
     }
+
+    protected override void ApplyUpdates() => Generate();
 
     public void Generate()
     {
@@ -1115,7 +1134,7 @@ public class VoxelCard : MonoBehaviour
 
     private void ApplyTexture(List<Texture2D> newTextures)
     {
-        Material mat = gameObject.GetComponent<MeshRenderer>().sharedMaterial;
+        Material mat = gameObject.GetComponent<MeshRenderer>().material;
         if(mat == null)
         {
             mat = new Material(BaseMaterial);
@@ -1139,6 +1158,7 @@ public class VoxelCard : MonoBehaviour
     {
         Color.RGBToHSV(target, out float tH, out float tS, out float tV);
         Color.RGBToHSV(newColor, out float nH, out float nS, out float nV);
-        target = Color.HSVToRGB(nH, 0.8f * nS + 0.2f * tS, tV * nV);
+        //target = Color.HSVToRGB(nH, 0.8f * nS + 0.2f * tS, tV * nV);
+        target = newColor;
     }
 }

@@ -147,11 +147,16 @@ namespace KompasCore.UI
         protected virtual string DisplayC(int c) => $"C\n{c}";
         protected virtual string DisplayA(int a) => $"A\n{a}";
 
-        protected override void DisplayCardImage()
+        protected sealed override void DisplayCardImage()
         {
             string cardFileName = shownCard.FileName;
             var cardImageSprite = Resources.Load<Sprite>($"Simple Sprites/{cardFileName}");
-            cardImageImage.sprite = cardImageSprite;
+            DisplayCardImage(cardImageSprite);
+        }
+
+        protected virtual void DisplayCardImage(Sprite cardImageSprite)
+        {
+            if (cardImageImage != null) cardImageImage.sprite = cardImageSprite;
         }
     }
 }
