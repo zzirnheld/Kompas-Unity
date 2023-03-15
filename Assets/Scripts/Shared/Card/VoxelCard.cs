@@ -33,12 +33,12 @@ public class VoxelCard : VoxelCardBase
 {
     private const float CardBaseThicknessDivisor = 12.0f;
 
-    public const float CharacterArtLowerBoundBase = 1.0f / 12.0f;
+    public const float CharacterArtLowerBoundBase = 0f;//3.0f / 12.0f;
     public const float CharacterArtUpperBoundFullArt = 11.0f / 12.0f;
-    public const float CharacterArtUpperBoundHasText = 19.0f / 24.0f;
+    public const float CharacterArtUpperBoundHasText = 1f;// 19.0f / 24.0f;
 
     public const float CharacterArtSamplingIncrementRatioFullArt = 24.0f / 19.0f;
-    public const float CharacterArtSamplingIncrementRatioHasText = 24.0f / 17.0f;
+    public const float CharacterArtSamplingIncrementRatioHasText = 1f;//24.0f / 21.0f;
 
     public const float CharacterArtSamplingStartIndexRatioBase = 1.0f / 17.0f;
 
@@ -74,7 +74,10 @@ public class VoxelCard : VoxelCardBase
     public bool RebuildMeshOnChange;
     public bool RebuildTextureOnChange;
     [Range(0.001f, 0.1f)]
-    public float FrameThickness;
+    public float frameThickness;
+    [Range(0.001f, 0.1f)]
+    public float frameThicknessFullArt;
+    private float FrameThickness => fullArt ? frameThicknessFullArt : frameThickness;
     [Range(0.1f, 0.7f)]
     public float TypePlacardWidth;
 
@@ -868,8 +871,8 @@ public class VoxelCard : VoxelCardBase
 
         float CharacterArtSamplingIncrement = (shorterDimension / (float) TextureResolution) * CharacterArtSamplingIncrementRatio;
         Vector2Int CharacterArtSamplingStartIndex =
-            (Vector2Int.right * (int)(squaringFactor + (shorterDimension * CharacterArtSamplingStartIndexRatio)))
-            + (Vector2Int.down * (int)(shorterDimension * 2.0f * CharacterArtSamplingStartIndexRatio));
+            (Vector2Int.right * 0)//(int)(squaringFactor + (shorterDimension * CharacterArtSamplingStartIndexRatio)))
+            + (Vector2Int.down * (int)(shorterDimension * -2.0f * CharacterArtSamplingStartIndexRatio));
         //Debug.Log($"Character art {CharacterArtSamplingIncrement}, {CharacterArtSamplingStartIndex}");
 
         if (fullArt) CharacterArtSamplingStartIndex = new Vector2Int(-2 * CharacterArtSamplingStartIndex.x, CharacterArtSamplingStartIndex.y);
@@ -942,24 +945,35 @@ public class VoxelCard : VoxelCardBase
                 float frontIncrement = EffectTextSamplingIncrement;
                 Sprite frontTexture = EffectTextTexture;
                 Color frontMetallic = new Color(EffectTextMetallic, 0.0f, 0.0f, EffectTextGloss);
-                float artRightBound = fullArt ? 1.0f : 0.5f * (1f + FrameThickness);
+                float effTextZoneRatio = 0.42f;
+                float artRightBound = fullArt ? 1.0f : effTextZoneRatio * (1f + FrameThickness);
 
-                if (y > TextureResolution * artRightBound)
+                if(fullArt)
                 {
-                    if (x > TextureResolution * CharacterArtLowerBound && y < TextureResolution * CharacterArtUpperBound)
-                    {
                         frontStartIndex = CharacterArtSamplingStartIndex;
                         frontIncrement = CharacterArtSamplingIncrement;
                         frontTexture = CharacterArt;
                         frontMetallic = new Color(CharacterArtMetallic, 0.0f, 0.0f, CharacterArtGloss);
-                    }
                 }
-                else if (y > TextureResolution * 0.5f * (1 - FrameThickness))
+                else
                 {
-                    frontStartIndex = FrameSamplingStartIndex;
-                    frontIncrement = FrameSamplingIncrement;
-                    frontTexture = FrameTexture;
-                    frontMetallic = new Color(FrameMetallic, 0.0f, 0.0f, FrameGloss);
+                    if (y > TextureResolution * artRightBound)
+                    {
+                        if (x > TextureResolution * CharacterArtLowerBound && x < TextureResolution * CharacterArtUpperBound)
+                        {
+                            frontStartIndex = CharacterArtSamplingStartIndex;
+                            frontIncrement = CharacterArtSamplingIncrement;
+                            frontTexture = CharacterArt;
+                            frontMetallic = new Color(CharacterArtMetallic, 0.0f, 0.0f, CharacterArtGloss);
+                        }
+                    }
+                    else if (y > TextureResolution * effTextZoneRatio * (1 - FrameThickness))
+                    {
+                        frontStartIndex = FrameSamplingStartIndex;
+                        frontIncrement = FrameSamplingIncrement;
+                        frontTexture = FrameTexture;
+                        frontMetallic = new Color(FrameMetallic, 0.0f, 0.0f, FrameGloss);
+                    }
                 }
 
                 samplePosition = new Vector2Int(frontStartIndex.x + (int)(frontIncrement * x), frontStartIndex.y + (int)(frontIncrement * y));
