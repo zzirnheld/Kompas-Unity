@@ -159,7 +159,7 @@ public class VoxelCard : VoxelCardBase
         {
             var meshName = $"Assets/{(fullArt ? "ZoomedOut" : "ZoomedIn")}{(HasN ? "Char" : "Spell")}Mesh.asset";
             var meshFilter = GenerateMesh();
-            if (stashMeshes) AssetDatabase.CreateAsset(meshFilter.sharedMesh, meshName);
+            if (stashMeshes) AssetDatabase.CreateAsset(meshFilter.mesh, meshName);
         }
         if (RebuildTextureOnChange)
         {

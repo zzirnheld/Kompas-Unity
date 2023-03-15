@@ -44,6 +44,8 @@ namespace KompasCore.UI
 
         public GameObject zoomedUI;
         public GameObject unzoomedUI;
+        public GameObject[] charUIs;
+        //public GameObject[] nonCharUIs;
 
         /// <summary>
         /// Used to make sure we don't regenerate the texture unnecessarily
@@ -67,10 +69,13 @@ namespace KompasCore.UI
             handleStatColors(nText, eText, costText, wText);
             handleStatColors(unzoomedNText, unzoomedEText, unzoomedCostText, unzoomedWText);
 
-            voxelCardUser.Set(ShownCard.CardType == 'C', Zoomed, default);
+            bool isChar = ShownCard.CardType == 'C';
+            voxelCardUser.Set(isChar, Zoomed, default);
 
             unzoomedUI.SetActive(!Zoomed);
             zoomedUI.SetActive(Zoomed);
+            foreach (var go in charUIs) go.SetActive(isChar);
+            //foreach (var go in nonCharUIs) go.SetActive(!isChar);
         }
 
         private static bool HasCurrentlyActivateableEffect(GameCard card)
