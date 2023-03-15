@@ -1178,33 +1178,34 @@ public class VoxelCard : VoxelCardBase
         //Debug.Log($"Character art {CharacterArtSamplingIncrement}, {CharacterArtSamplingStartIndex}");
 
         if (fullArt) CharacterArtSamplingStartIndex = new Vector2Int(-2 * CharacterArtSamplingStartIndex.x, CharacterArtSamplingStartIndex.y);
+
+        float artRightBound = fullArt ? 1.0f : 0.5f * (1 - FrameThickness);
+        Vector2Int frontStartIndex = CharacterArtSamplingStartIndex;
+        float frontIncrement = CharacterArtSamplingIncrement;
+        Sprite frontTexture = CharacterArt;
+        Color frontMetallic = new Color(CharacterArtMetallic, 0.0f, 0.0f, CharacterArtGloss);
+        Debug.Log($"Bounds {artRightBound}, {CharacterArtLowerBound}, {CharacterArtUpperBound}\n"
+            + $"Aka {TextureResolution * artRightBound}, {TextureResolution * CharacterArtLowerBound}x{TextureResolution * CharacterArtUpperBound}");
+
         for (int x = 0; x < TextureResolution; x++)
         {
             for (int y = 0; y < TextureResolution; y++)
             {
                 //Art and effect text texture
                 Vector2Int position = new Vector2Int(TextureResolution + x, TextureResolution + y);
-                Vector2Int frontStartIndex = CharacterArtSamplingStartIndex;
-                float frontIncrement = CharacterArtSamplingIncrement;
-                Sprite frontTexture = CharacterArt;
-                Color frontMetallic = new Color(CharacterArtMetallic, 0.0f, 0.0f, CharacterArtGloss);
-                float artRightBound = fullArt ? 1.0f : 0.5f * (1 - FrameThickness);
                 if (x < TextureResolution * artRightBound)
                 {
                     if (y > TextureResolution * CharacterArtLowerBound && y < TextureResolution * CharacterArtUpperBound)
                     {
+                        Vector2Int samplePosition = new Vector2Int(frontStartIndex.x + (int)(frontIncrement * x), frontStartIndex.y + (int)(frontIncrement * y));
+                        newTexture.SetPixel(position.x, position.y, frontTexture.texture.GetPixel(samplePosition.x, samplePosition.y));
+                        metalness.SetPixel(position.x, position.y, frontMetallic);
                     }
-                    else continue;
                 }
-                else
-                {
-                    continue;
-                }
-                Vector2Int samplePosition = new Vector2Int(frontStartIndex.x + (int)(frontIncrement * x), frontStartIndex.y + (int)(frontIncrement * y));
-                newTexture.SetPixel(position.x, position.y, frontTexture.texture.GetPixel(samplePosition.x, samplePosition.y));
-                metalness.SetPixel(position.x, position.y, frontMetallic);
             }
         }
+        newTexture.Apply();
+        metalness.Apply();
     }
 
     private void ApplyTexture(List<Texture2D> newTextures, Material mat)
