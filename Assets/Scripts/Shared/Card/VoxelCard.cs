@@ -99,6 +99,8 @@ public class VoxelCard : VoxelCardBase
     public float TypePlacardMetallic;
     [Range(0.0f, 1.0f)]
     public float TypePlacardGloss;
+    [Range(0.0f, 1.0f)]
+    public float TypePlacardHeight = 0.3f;
 
     public bool ApplyStatColors;
     [Range(0.0f, 1.0f)]
@@ -680,11 +682,11 @@ public class VoxelCard : VoxelCardBase
             //Just four verts this time
             float upperX = TypePlacardWidth;
             float lowerX = TypePlacardWidth - 0.1f;
-            float lowerZ = Mathf.Lerp(verts[0].z, verts[2].z, 0.5f);
+            float lowerZ = verts[2].z - TypePlacardHeight; //Mathf.Lerp(verts[0].z, verts[2].z, 0.5f);
 
             //Right side, bottom to top
             verts.Add(new Vector3(lowerX, height, lowerZ));
-            verts.Add(new Vector3(upperX, height, verts[2].z));
+            verts.Add(new Vector3(upperX, height, verts[2].z)); //don't change
 
             //Left side, same deal
             verts.Add(new Vector3(-lowerX, height, lowerZ));
