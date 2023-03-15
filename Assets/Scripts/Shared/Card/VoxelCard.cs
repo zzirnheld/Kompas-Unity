@@ -710,8 +710,8 @@ public class VoxelCard : VoxelCardBase
 
         void MakeStatCutout(List<Vector3> verts, List<int> tris, int vI, List<Vector2> modifiers, Vector3 edgeInnerThick, Vector3 edgeOuterThick)
         {
-            //float tabLowerXMult = fullArt ? 0.25f : 0.1875f;
-            float tabLowerXMult = 0.1875f;
+            float tabLowerXMult = fullArt ? 0.25f : 0.1875f;
+            //float tabLowerXMult = 0.1875f;
             float tabLowerX = Mathf.Lerp(verts[4].x, verts[2].x, tabLowerXMult);
             //Debug.Log($"Interpolating between [4]:{verts[4]} and [2]:{verts[2]} by {tabLowerXMult}");
             //Debug.Log($"edgeOuterThick {edgeOuterThick}; edgeInnerThick {edgeInnerThick}");
