@@ -916,24 +916,25 @@ public class VoxelCard : VoxelCardBase
                 newTexture.SetPixel(position.x, position.y, frameColor);
                 metalness.SetPixel(position.x, position.y, new Color(FrameMetallic, 0.0f, 0.0f, FrameGloss));
 
+                void Paint(Vector2Int startIndex, float samplingIncrement, Sprite sprite, float metallic, float gloss)
+                {
+                    samplePosition = new Vector2Int(startIndex.x + (int)(samplingIncrement * x), startIndex.y + (int)(samplingIncrement * y));
+                    newTexture.SetPixel(position.x, position.y, sprite.texture.GetPixel(samplePosition.x, samplePosition.y));
+                    metalness.SetPixel(position.x, position.y, new Color(metallic, 0.0f, 0.0f, gloss));
+                }
+
                 //Name placard texture
                 position += TextureResolution * Vector2Int.right;
-                samplePosition = new Vector2Int(NamePlacardSamplingStartIndex.x + (int)(NamePlacardSamplingIncrement * x), NamePlacardSamplingStartIndex.y + (int)(NamePlacardSamplingIncrement * y));
-                newTexture.SetPixel(position.x, position.y, NamePlacardTexture.texture.GetPixel(samplePosition.x, samplePosition.y));
-                metalness.SetPixel(position.x, position.y, new Color(NamePlacardMetallic, 0.0f, 0.0f, NamePlacardGloss));
+                Paint(NamePlacardSamplingStartIndex, NamePlacardSamplingIncrement, NamePlacardTexture, NamePlacardMetallic, NamePlacardGloss);
 
                 //Type placard texture
                 position += TextureResolution * Vector2Int.right;
-                samplePosition = new Vector2Int(TypePlacardSamplingStartIndex.x + (int)(TypePlacardSamplingIncrement * x), TypePlacardSamplingStartIndex.y + (int)(TypePlacardSamplingIncrement * y));
-                newTexture.SetPixel(position.x, position.y, TypePlacardTexture.texture.GetPixel(samplePosition.x, samplePosition.y));
-                metalness.SetPixel(position.x, position.y, new Color(TypePlacardMetallic, 0.0f, 0.0f, TypePlacardGloss));
+                Paint(TypePlacardSamplingStartIndex, TypePlacardSamplingIncrement, TypePlacardTexture, TypePlacardMetallic, TypePlacardGloss);
 
                 //Stats placards texture
                 position = new Vector2Int(x, TextureResolution + y);
                 (Vector2Int statsStartIndex, float statsIncrement, Sprite statsTexture) = DetermineRelevantStatValues(x, y);
-                samplePosition = new Vector2Int(statsStartIndex.x + (int)(statsIncrement * x), statsStartIndex.y + (int)(statsIncrement * y));
-                newTexture.SetPixel(position.x, position.y, statsTexture.texture.GetPixel(samplePosition.x, samplePosition.y));
-                metalness.SetPixel(position.x, position.y, new Color(StatsMetallic, 0.0f, 0.0f, StatsGloss));
+                Paint(statsStartIndex, statsIncrement, statsTexture, StatsMetallic, StatsGloss);
 
                 //Art and effect text texture
                 position = new Vector2Int(TextureResolution + x, TextureResolution + y);
