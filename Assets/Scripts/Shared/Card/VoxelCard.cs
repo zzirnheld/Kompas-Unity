@@ -870,8 +870,10 @@ public class VoxelCard : VoxelCardBase
         float shorterDimension = Mathf.Min(CharacterArt.texture.width, CharacterArt.texture.height);
 
         float CharacterArtSamplingIncrement = (shorterDimension / (float) TextureResolution) * CharacterArtSamplingIncrementRatio;
-        Vector2Int CharacterArtSamplingStartIndex =
-            (Vector2Int.right * 0)//(int)(squaringFactor + (shorterDimension * CharacterArtSamplingStartIndexRatio)))
+        Vector2Int CharacterArtSamplingStartIndex = fullArt
+            ? (Vector2Int.right * (int)(squaringFactor + (shorterDimension * CharacterArtSamplingStartIndexRatio)))
+            + (Vector2Int.down * (int)(shorterDimension * 2.0f * CharacterArtSamplingStartIndexRatio))
+            : (Vector2Int.right * 0)//(int)(squaringFactor + (shorterDimension * CharacterArtSamplingStartIndexRatio)))
             + (Vector2Int.down * (int)(shorterDimension * -2.0f * CharacterArtSamplingStartIndexRatio));
         //Debug.Log($"Character art {CharacterArtSamplingIncrement}, {CharacterArtSamplingStartIndex}");
 
