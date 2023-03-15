@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 
 public struct MeshData
@@ -32,14 +33,14 @@ public class VoxelCard : VoxelCardBase
 {
     private const float CardBaseThicknessDivisor = 12.0f;
 
-    private const float CharacterArtLowerBoundBase = 1.0f / 12.0f;
-    private const float CharacterArtUpperBoundFullArt = 11.0f / 12.0f;
-    private const float CharacterArtUpperBoundHasText = 19.0f / 24.0f;
+    public const float CharacterArtLowerBoundBase = 1.0f / 12.0f;
+    public const float CharacterArtUpperBoundFullArt = 11.0f / 12.0f;
+    public const float CharacterArtUpperBoundHasText = 19.0f / 24.0f;
 
-    private const float CharacterArtSamplingIncrementRatioFullArt = 24.0f / 19.0f;
-    private const float CharacterArtSamplingIncrementRatioHasText = 24.0f / 17.0f;
+    public const float CharacterArtSamplingIncrementRatioFullArt = 24.0f / 19.0f;
+    public const float CharacterArtSamplingIncrementRatioHasText = 24.0f / 17.0f;
 
-    private const float CharacterArtSamplingStartIndexRatioBase = 1.0f / 17.0f;
+    public const float CharacterArtSamplingStartIndexRatioBase = 1.0f / 17.0f;
 
     private const string MainTextureName = "_MainTex";
     private const string MainMetalnessName = "_MetallicGlossMap";
@@ -53,13 +54,15 @@ public class VoxelCard : VoxelCardBase
     private const float ExtraZoomOutBezel = 0.005f;
 
     public bool fullArt;
-    private float CharacterArtLowerBound => CharacterArtLowerBoundBase;
-    private float CharacterArtUpperBound => fullArt ? CharacterArtUpperBoundFullArt : CharacterArtUpperBoundHasText;
+    public static float CharacterArtLowerBound => CharacterArtLowerBoundBase;
+    public static float GetCharacterArtUpperBound(bool fullArt) => fullArt ? CharacterArtUpperBoundFullArt : CharacterArtUpperBoundHasText;
+    private float CharacterArtUpperBound => GetCharacterArtUpperBound(fullArt);
 
-    private float CharacterArtSamplingIncrementRatio => fullArt
+    private float CharacterArtSamplingIncrementRatio => GetCharacterArtSamplingIncrementRatio(fullArt);
+    public static float GetCharacterArtSamplingIncrementRatio(bool fullArt) => fullArt
         ? CharacterArtSamplingIncrementRatioFullArt
         : CharacterArtSamplingIncrementRatioHasText;
-    private float CharacterArtSamplingStartIndexRatio => CharacterArtSamplingStartIndexRatioBase;
+    public static float CharacterArtSamplingStartIndexRatio => CharacterArtSamplingStartIndexRatioBase;
 
     /// <summary>
     /// Aka 45 degree angle
@@ -148,16 +151,21 @@ public class VoxelCard : VoxelCardBase
         //var start = System.DateTime.Now;
         if (RebuildMeshOnChange)
         {
-            GenerateMesh();
+            var meshName = $"Assets/{(fullArt ? "ZoomedOut" : "ZoomedIn")}{(HasN ? "Char" : "Spell")}Mesh.asset";
+            AssetDatabase.CreateAsset(GenerateMesh().mesh, meshName);
         }
         if (RebuildTextureOnChange)
         {
-            GenerateTexture();
+            var textureName = $"Assets/{(fullArt ? "ZoomedOut" : "ZoomedIn")}{(HasN ? "Char" : "Spell")}Texture.asset";
+            var metalnessName = $"Assets/{(fullArt ? "ZoomedOut" : "ZoomedIn")}{(HasN ? "Char" : "Spell")}Metalness.asset";
+            var textures = GenerateTexture();
+            AssetDatabase.CreateAsset(textures[0], textureName);
+            AssetDatabase.CreateAsset(textures[1], metalnessName);
         }
         //Debug.Log($"Took {System.DateTime.Now - start}");
     }
 
-    protected override void ApplyUpdates() => GenerateTexture();
+    protected override void ApplyUpdates() => Generate();
 
     public void Generate()
     {
@@ -169,17 +177,17 @@ public class VoxelCard : VoxelCardBase
         //Debug.Log($"Took {System.DateTime.Now - start}");
     }
 
-    public void GenerateMesh()
+    public MeshFilter GenerateMesh()
     {
         MeshData newMesh = BuildMesh();
-        ApplyMesh(newMesh);
+        return ApplyMesh(newMesh);
     }
 
-    public void GenerateTexture()
+    public List<Texture2D> GenerateTexture()
     {
         var start = System.DateTime.Now;
         Material mat = gameObject.GetComponent<MeshRenderer>().material;
-        bool rebuild = false;
+        bool rebuild = true;
         if(mat == null)
         {
             mat = new Material(BaseMaterial);
@@ -188,6 +196,7 @@ public class VoxelCard : VoxelCardBase
         List<Texture2D> newTextures = BuildTexture(mat.GetTexture(MainTextureName) as Texture2D, mat.GetTexture(MainMetalnessName) as Texture2D, rebuild);
         ApplyTexture(newTextures, mat);
         Debug.Log($"Took {System.DateTime.Now - start}");
+        return newTextures;
     }
 
     private MeshData BuildMesh()
@@ -809,7 +818,7 @@ public class VoxelCard : VoxelCardBase
         }
     }
 
-    private void ApplyMesh(MeshData newMesh)
+    private MeshFilter ApplyMesh(MeshData newMesh)
     {
         MeshFilter filter = gameObject.GetComponent<MeshFilter>();
         MeshCollider collider = gameObject.GetComponent<MeshCollider>();
@@ -827,6 +836,7 @@ public class VoxelCard : VoxelCardBase
 
         filter.sharedMesh = CardMesh;
         collider.sharedMesh = CardMesh;
+        return filter;
     }
 
     private List<Texture2D> BuildTexture(Texture2D oldTexture, Texture2D oldMetalness, bool rebuildAll = true)
@@ -964,7 +974,6 @@ public class VoxelCard : VoxelCardBase
                 DSamplingIncrement = (float)DTexture.texture.width / TextureResolution;
             }
         }
-
         int squaringFactor = Mathf.Abs(CharacterArt.texture.width - CharacterArt.texture.height) / 2;
         float shorterDimension = Mathf.Min(CharacterArt.texture.width, CharacterArt.texture.height);
 
@@ -1114,12 +1123,13 @@ public class VoxelCard : VoxelCardBase
                 }
 
                 //Art and effect text texture
-                position += TextureResolution * Vector2Int.right;
+                position = new Vector2Int(TextureResolution + x, TextureResolution + y);
                 Vector2Int frontStartIndex = EffectTextSamplingStartIndex;
                 float frontIncrement = EffectTextSamplingIncrement;
                 Sprite frontTexture = EffectTextTexture;
                 Color frontMetallic = new Color(EffectTextMetallic, 0.0f, 0.0f, EffectTextGloss);
                 float artRightBound = fullArt ? 1.0f : 0.5f * (1 - FrameThickness);
+
                 if (x < TextureResolution * artRightBound)
                 {
                     if (y > TextureResolution * CharacterArtLowerBound && y < TextureResolution * CharacterArtUpperBound)
@@ -1130,13 +1140,14 @@ public class VoxelCard : VoxelCardBase
                         frontMetallic = new Color(CharacterArtMetallic, 0.0f, 0.0f, CharacterArtGloss);
                     }
                 }
-                else if(x < TextureResolution * 0.5f * (1 + FrameThickness))
+                else if (x < TextureResolution * 0.5f * (1 + FrameThickness))
                 {
                     frontStartIndex = FrameSamplingStartIndex;
                     frontIncrement = FrameSamplingIncrement;
                     frontTexture = FrameTexture;
                     frontMetallic = new Color(FrameMetallic, 0.0f, 0.0f, FrameGloss);
                 }
+
                 samplePosition = new Vector2Int(frontStartIndex.x + (int)(frontIncrement * x), frontStartIndex.y + (int)(frontIncrement * y));
                 newTexture.SetPixel(position.x, position.y, frontTexture.texture.GetPixel(samplePosition.x, samplePosition.y));
                 metalness.SetPixel(position.x, position.y, frontMetallic);
@@ -1152,6 +1163,48 @@ public class VoxelCard : VoxelCardBase
         newTexture.Apply();
         metalness.Apply();
         return new List<Texture2D> { newTexture, metalness };
+    }
+
+    public static void BuildTextureCardArt(int TextureResolution, bool fullArt, float FrameThickness, float CharacterArtUpperBound,
+        float CharacterArtSamplingIncrementRatio, Sprite CharacterArt, float CharacterArtMetallic, float CharacterArtGloss, Texture2D newTexture, Texture2D metalness)
+    {
+        int squaringFactor = Mathf.Abs(CharacterArt.texture.width - CharacterArt.texture.height) / 2;
+        float shorterDimension = Mathf.Min(CharacterArt.texture.width, CharacterArt.texture.height);
+
+        float CharacterArtSamplingIncrement = (shorterDimension / (float) TextureResolution) * CharacterArtSamplingIncrementRatio;
+        Vector2Int CharacterArtSamplingStartIndex =
+            (Vector2Int.right * (int)(squaringFactor + (shorterDimension * CharacterArtSamplingStartIndexRatio)))
+            + (Vector2Int.down * (int)(shorterDimension * 2.0f * CharacterArtSamplingStartIndexRatio));
+        //Debug.Log($"Character art {CharacterArtSamplingIncrement}, {CharacterArtSamplingStartIndex}");
+
+        if (fullArt) CharacterArtSamplingStartIndex = new Vector2Int(-2 * CharacterArtSamplingStartIndex.x, CharacterArtSamplingStartIndex.y);
+        for (int x = 0; x < TextureResolution; x++)
+        {
+            for (int y = 0; y < TextureResolution; y++)
+            {
+                //Art and effect text texture
+                Vector2Int position = new Vector2Int(TextureResolution + x, TextureResolution + y);
+                Vector2Int frontStartIndex = CharacterArtSamplingStartIndex;
+                float frontIncrement = CharacterArtSamplingIncrement;
+                Sprite frontTexture = CharacterArt;
+                Color frontMetallic = new Color(CharacterArtMetallic, 0.0f, 0.0f, CharacterArtGloss);
+                float artRightBound = fullArt ? 1.0f : 0.5f * (1 - FrameThickness);
+                if (x < TextureResolution * artRightBound)
+                {
+                    if (y > TextureResolution * CharacterArtLowerBound && y < TextureResolution * CharacterArtUpperBound)
+                    {
+                    }
+                    else continue;
+                }
+                else
+                {
+                    continue;
+                }
+                Vector2Int samplePosition = new Vector2Int(frontStartIndex.x + (int)(frontIncrement * x), frontStartIndex.y + (int)(frontIncrement * y));
+                newTexture.SetPixel(position.x, position.y, frontTexture.texture.GetPixel(samplePosition.x, samplePosition.y));
+                metalness.SetPixel(position.x, position.y, frontMetallic);
+            }
+        }
     }
 
     private void ApplyTexture(List<Texture2D> newTextures, Material mat)

@@ -22,30 +22,6 @@ namespace KompasCore.UI
 
         public CardAOEController aoeController;
 
-        //public MeshRenderer cardFaceRenderer;
-        /*
-        [Header("Card frame")]
-        public GameObject zoomedCharFrame;
-        public GameObject zoomedAllFrame;
-        public GameObject unzoomedCharFrame;
-        public GameObject unzoomedAllFrame;
-
-        [Header("Stat backgrounds (the colored things)")]
-        public GameObject zoomedCharStatBackgrounds;
-        public GameObject zoomedSpellStatBackgrounds;
-        public GameObject zoomedAugStatBackgrounds;
-
-        public GameObject unzoomedCharStatBackgrounds;
-        public GameObject unzoomedSpellStatBackgrounds;
-        public GameObject unzoomedAugStatBackgrounds;
-
-        public Image nUnzoomedImage;
-        public Image eUnzoomedImage;
-        public Image sUnzoomedImage;
-        public Image wUnzoomedImage;
-        public Image cUnzoomedImage;
-        public Image aUnzoomedImage;*/
-
         //Zoomed-in text is handled by base class
         [Header("Zoomed-out card numeric stats")]
         public TMP_Text unzoomedNText;
@@ -64,10 +40,7 @@ namespace KompasCore.UI
         public OscillatingController attackOscillator;
         public OscillatingController effectOscillator;
 
-        public VoxelCardBase zoomedVoxelChar;
-        public VoxelCardBase unzoomedVoxelChar;
-        public VoxelCardBase zoomedVoxelSpell;
-        public VoxelCardBase unzoomedVoxelSpell;
+        public VoxelCardUser voxelCardUser;
 
         public GameObject zoomedUI;
         public GameObject unzoomedUI;
@@ -94,8 +67,7 @@ namespace KompasCore.UI
             handleStatColors(nText, eText, costText, wText);
             handleStatColors(unzoomedNText, unzoomedEText, unzoomedCostText, unzoomedWText);
 
-            unzoomedVoxelChar.gameObject.SetActive(!Zoomed);
-            zoomedVoxelChar.gameObject.SetActive(Zoomed);
+            voxelCardUser.Set(ShownCard.CardType == 'C', Zoomed, default);
 
             unzoomedUI.SetActive(!Zoomed);
             zoomedUI.SetActive(Zoomed);
@@ -191,16 +163,7 @@ namespace KompasCore.UI
 
             base.DisplayCardImage(cardImageSprite);
             //TODO split this out if I ever make chars able to become spells or vice versa
-            if (ShownCard.CardType == 'C')
-            {
-                zoomedVoxelChar.Init(ShownCard.CardType == 'C', cardImageSprite);
-                unzoomedVoxelChar.Init(ShownCard.CardType == 'C', cardImageSprite);
-            }
-            else
-            {
-                zoomedVoxelSpell.Init(ShownCard.CardType == 'C', cardImageSprite);
-                unzoomedVoxelSpell.Init(ShownCard.CardType == 'C', cardImageSprite);
-            }
+            voxelCardUser.Set(ShownCard.CardType == 'C', Zoomed, cardImageSprite);
 
             oldFileName = ShownCard.FileName;
         }
