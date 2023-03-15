@@ -942,11 +942,11 @@ public class VoxelCard : VoxelCardBase
                 float frontIncrement = EffectTextSamplingIncrement;
                 Sprite frontTexture = EffectTextTexture;
                 Color frontMetallic = new Color(EffectTextMetallic, 0.0f, 0.0f, EffectTextGloss);
-                float artRightBound = fullArt ? 1.0f : 0.5f * (1 - FrameThickness);
+                float artRightBound = fullArt ? 1.0f : 0.5f * (1f + FrameThickness);
 
-                if (x < TextureResolution * artRightBound)
+                if (y > TextureResolution * artRightBound)
                 {
-                    if (y > TextureResolution * CharacterArtLowerBound && y < TextureResolution * CharacterArtUpperBound)
+                    if (x > TextureResolution * CharacterArtLowerBound && y < TextureResolution * CharacterArtUpperBound)
                     {
                         frontStartIndex = CharacterArtSamplingStartIndex;
                         frontIncrement = CharacterArtSamplingIncrement;
@@ -954,7 +954,7 @@ public class VoxelCard : VoxelCardBase
                         frontMetallic = new Color(CharacterArtMetallic, 0.0f, 0.0f, CharacterArtGloss);
                     }
                 }
-                else if (x < TextureResolution * 0.5f * (1 + FrameThickness))
+                else if (y > TextureResolution * 0.5f * (1 - FrameThickness))
                 {
                     frontStartIndex = FrameSamplingStartIndex;
                     frontIncrement = FrameSamplingIncrement;
