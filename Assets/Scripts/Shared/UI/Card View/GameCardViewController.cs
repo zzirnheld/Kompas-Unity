@@ -64,8 +64,13 @@ namespace KompasCore.UI
         public OscillatingController attackOscillator;
         public OscillatingController effectOscillator;
 
-        public VoxelCardBase zoomedVoxelCard;
-        public VoxelCardBase unzoomedVoxelCard;
+        public VoxelCardBase zoomedVoxelChar;
+        public VoxelCardBase unzoomedVoxelChar;
+        public VoxelCardBase zoomedVoxelSpell;
+        public VoxelCardBase unzoomedVoxelSpell;
+
+        public GameObject zoomedUI;
+        public GameObject unzoomedUI;
 
         /// <summary>
         /// Used to make sure we don't regenerate the texture unnecessarily
@@ -89,8 +94,11 @@ namespace KompasCore.UI
             handleStatColors(nText, eText, costText, wText);
             handleStatColors(unzoomedNText, unzoomedEText, unzoomedCostText, unzoomedWText);
 
-            unzoomedVoxelCard.gameObject.SetActive(!Zoomed);
-            zoomedVoxelCard.gameObject.SetActive(Zoomed);
+            unzoomedVoxelChar.gameObject.SetActive(!Zoomed);
+            zoomedVoxelChar.gameObject.SetActive(Zoomed);
+
+            unzoomedUI.SetActive(!Zoomed);
+            zoomedUI.SetActive(Zoomed);
         }
 
         private static bool HasCurrentlyActivateableEffect(GameCard card)
@@ -170,14 +178,29 @@ namespace KompasCore.UI
             unzoomedCostText.text = $"{shownCard.Cost}";
         }
 
+        protected override string DisplayN(int n) => $"{n}";
+        protected override string DisplayE(int e) => $"{e}";
+        protected override string DisplayS(int s) => $"{s}";
+        protected override string DisplayW(int w) => $"{w}";
+        protected override string DisplayC(int c) => $"{c}";
+        protected override string DisplayA(int a) => $"{a}";
+
         protected override void DisplayCardImage(Sprite cardImageSprite)
         {
             if (oldFileName == ShownCard.FileName) return;
 
             base.DisplayCardImage(cardImageSprite);
             //TODO split this out if I ever make chars able to become spells or vice versa
-            zoomedVoxelCard.Init(ShownCard.CardType == 'C', cardImageSprite);
-            unzoomedVoxelCard.Init(ShownCard.CardType == 'C', cardImageSprite);
+            if (ShownCard.CardType == 'C')
+            {
+                zoomedVoxelChar.Init(ShownCard.CardType == 'C', cardImageSprite);
+                unzoomedVoxelChar.Init(ShownCard.CardType == 'C', cardImageSprite);
+            }
+            else
+            {
+                zoomedVoxelSpell.Init(ShownCard.CardType == 'C', cardImageSprite);
+                unzoomedVoxelSpell.Init(ShownCard.CardType == 'C', cardImageSprite);
+            }
 
             oldFileName = ShownCard.FileName;
         }

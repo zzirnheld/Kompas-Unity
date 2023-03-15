@@ -41,6 +41,9 @@ public class VoxelCard : VoxelCardBase
 
     private const float CharacterArtSamplingStartIndexRatioBase = 1.0f / 17.0f;
 
+    private const string MainTextureName = "_MainTex";
+    private const string MainMetalnessName = "_MetallicGlossMap";
+
     public bool TEST_YES;
     /// <summary>
     /// A temporary measure until I can properly figure out how Antikronus did the bezel stuff, so I can replicate it for the zoomed-out card.
@@ -142,7 +145,7 @@ public class VoxelCard : VoxelCardBase
 
     public void OnInspectorChange()
     {
-        var start = System.DateTime.Now;
+        //var start = System.DateTime.Now;
         if (RebuildMeshOnChange)
         {
             GenerateMesh();
@@ -151,17 +154,19 @@ public class VoxelCard : VoxelCardBase
         {
             GenerateTexture();
         }
-        Debug.Log($"Took {System.DateTime.Now - start}");
+        //Debug.Log($"Took {System.DateTime.Now - start}");
     }
 
-    protected override void ApplyUpdates() => Generate();
+    protected override void ApplyUpdates() => GenerateTexture();
 
     public void Generate()
     {
+        //var start = System.DateTime.Now;
         GenerateMesh();
         GenerateTexture();
         //List<TextMeshPro> textBoxes = BuildTextBoxes();   //Not Implemented
         //ApplyText(textBoxes);
+        //Debug.Log($"Took {System.DateTime.Now - start}");
     }
 
     public void GenerateMesh()
@@ -172,8 +177,17 @@ public class VoxelCard : VoxelCardBase
 
     public void GenerateTexture()
     {
-        List<Texture2D> newTextures = BuildTexture();
-        ApplyTexture(newTextures);
+        var start = System.DateTime.Now;
+        Material mat = gameObject.GetComponent<MeshRenderer>().material;
+        bool rebuild = false;
+        if(mat == null)
+        {
+            mat = new Material(BaseMaterial);
+            rebuild = true;
+        }
+        List<Texture2D> newTextures = BuildTexture(mat.GetTexture(MainTextureName) as Texture2D, mat.GetTexture(MainMetalnessName) as Texture2D, rebuild);
+        ApplyTexture(newTextures, mat);
+        Debug.Log($"Took {System.DateTime.Now - start}");
     }
 
     private MeshData BuildMesh()
@@ -687,8 +701,8 @@ public class VoxelCard : VoxelCardBase
             //float tabLowerXMult = fullArt ? 0.25f : 0.1875f;
             float tabLowerXMult = 0.1875f;
             float tabLowerX = Mathf.Lerp(verts[4].x, verts[2].x, tabLowerXMult);
-            Debug.Log($"Interpolating between [4]:{verts[4]} and [2]:{verts[2]} by {tabLowerXMult}");
-            Debug.Log($"edgeOuterThick {edgeOuterThick}; edgeInnerThick {edgeInnerThick}");
+            //Debug.Log($"Interpolating between [4]:{verts[4]} and [2]:{verts[2]} by {tabLowerXMult}");
+            //Debug.Log($"edgeOuterThick {edgeOuterThick}; edgeInnerThick {edgeInnerThick}");
 
             float fullArtPointMult = fullArt ? 0.25f : 0f;
             float fullArtDragDown = (verts[4].z - verts[2].z) * fullArtPointMult;
@@ -815,135 +829,140 @@ public class VoxelCard : VoxelCardBase
         collider.sharedMesh = CardMesh;
     }
 
-    private List<Texture2D> BuildTexture()
+    private List<Texture2D> BuildTexture(Texture2D oldTexture, Texture2D oldMetalness, bool rebuildAll = true)
     {
-        Texture2D newTexture = new Texture2D(TextureResolution * 3, TextureResolution * 2, TextureFormat.ARGB32, false);
-        Texture2D metalness = new Texture2D(TextureResolution * 3, TextureResolution * 2, TextureFormat.ARGB32, false);
+        Texture2D newTexture = rebuildAll || oldTexture == default
+            ? new Texture2D(TextureResolution * 3, TextureResolution * 2, TextureFormat.ARGB32, false)
+            : oldTexture;
+        Texture2D metalness = rebuildAll || oldMetalness == default
+            ? new Texture2D(TextureResolution * 3, TextureResolution * 2, TextureFormat.ARGB32, false)
+            : oldMetalness;
 
-        Vector2Int FrameSamplingStartIndex;
-        float FrameSamplingIncrement;
+        Vector2Int FrameSamplingStartIndex = default;
+        float FrameSamplingIncrement = default;
 
-        if(FrameTexture.texture.width > FrameTexture.texture.height)
-        {
-            FrameSamplingStartIndex = new Vector2Int((FrameTexture.texture.width - FrameTexture.texture.height) / 2, 0);
-            FrameSamplingIncrement = (float)FrameTexture.texture.height / TextureResolution;
-        }
-        else
-        {
-            FrameSamplingStartIndex = new Vector2Int((FrameTexture.texture.height - FrameTexture.texture.width) / 2, 0);
-            FrameSamplingIncrement = (float)FrameTexture.texture.width / TextureResolution;
-        }
+        Vector2Int NamePlacardSamplingStartIndex = default;
+        float NamePlacardSamplingIncrement = default;
 
-        Vector2Int NamePlacardSamplingStartIndex;
-        float NamePlacardSamplingIncrement;
+        Vector2Int TypePlacardSamplingStartIndex = default;
+        float TypePlacardSamplingIncrement = default;
 
-        if (NamePlacardTexture.texture.width > NamePlacardTexture.texture.height)
-        {
-            NamePlacardSamplingStartIndex = new Vector2Int((NamePlacardTexture.texture.width - NamePlacardTexture.texture.height) / 2, 0);
-            NamePlacardSamplingIncrement = (float)NamePlacardTexture.texture.height / TextureResolution;
-        }
-        else
-        {
-            NamePlacardSamplingStartIndex = new Vector2Int((NamePlacardTexture.texture.height - NamePlacardTexture.texture.width) / 2, 0);
-            NamePlacardSamplingIncrement = (float)NamePlacardTexture.texture.width / TextureResolution;
-        }
+        Vector2Int NSamplingStartIndex = default;
+        float NSamplingIncrement = default;
 
-        Vector2Int TypePlacardSamplingStartIndex;
-        float TypePlacardSamplingIncrement;
+        Vector2Int ESamplingStartIndex = default;
+        float ESamplingIncrement = default;
 
-        if (TypePlacardTexture.texture.width > TypePlacardTexture.texture.height)
-        {
-            TypePlacardSamplingStartIndex = new Vector2Int((TypePlacardTexture.texture.width - TypePlacardTexture.texture.height) / 2, 0);
-            TypePlacardSamplingIncrement = (float)TypePlacardTexture.texture.height / TextureResolution;
-        }
-        else
-        {
-            TypePlacardSamplingStartIndex = new Vector2Int((TypePlacardTexture.texture.height - TypePlacardTexture.texture.width) / 2, 0);
-            TypePlacardSamplingIncrement = (float)TypePlacardTexture.texture.width / TextureResolution;
-        }
+        Vector2Int SACSamplingStartIndex = default;
+        float SACSamplingIncrement = default;
+        Vector2Int WSamplingStartIndex = default;
+        float WSamplingIncrement = default;
 
-        Vector2Int NSamplingStartIndex;
-        float NSamplingIncrement;
+        Vector2Int RSamplingStartIndex = default;
+        float RSamplingIncrement = default;
+        Vector2Int DSamplingStartIndex = default;
+        float DSamplingIncrement = default;
+        if (rebuildAll)
+        {
+            if (FrameTexture.texture.width > FrameTexture.texture.height)
+            {
+                FrameSamplingStartIndex = new Vector2Int((FrameTexture.texture.width - FrameTexture.texture.height) / 2, 0);
+                FrameSamplingIncrement = (float)FrameTexture.texture.height / TextureResolution;
+            }
+            else
+            {
+                FrameSamplingStartIndex = new Vector2Int((FrameTexture.texture.height - FrameTexture.texture.width) / 2, 0);
+                FrameSamplingIncrement = (float)FrameTexture.texture.width / TextureResolution;
+            }
 
-        if (NTexture.texture.width > NTexture.texture.height)
-        {
-            NSamplingStartIndex = new Vector2Int((NTexture.texture.width - NTexture.texture.height) / 2, 0);
-            NSamplingIncrement = (float)NTexture.texture.height / TextureResolution;
-        }
-        else
-        {
-            NSamplingStartIndex = new Vector2Int((NTexture.texture.height - NTexture.texture.width) / 2, 0);
-            NSamplingIncrement = (float)NTexture.texture.width / TextureResolution;
-        }
+            if (NamePlacardTexture.texture.width > NamePlacardTexture.texture.height)
+            {
+                NamePlacardSamplingStartIndex = new Vector2Int((NamePlacardTexture.texture.width - NamePlacardTexture.texture.height) / 2, 0);
+                NamePlacardSamplingIncrement = (float)NamePlacardTexture.texture.height / TextureResolution;
+            }
+            else
+            {
+                NamePlacardSamplingStartIndex = new Vector2Int((NamePlacardTexture.texture.height - NamePlacardTexture.texture.width) / 2, 0);
+                NamePlacardSamplingIncrement = (float)NamePlacardTexture.texture.width / TextureResolution;
+            }
 
-        Vector2Int ESamplingStartIndex;
-        float ESamplingIncrement;
+            if (TypePlacardTexture.texture.width > TypePlacardTexture.texture.height)
+            {
+                TypePlacardSamplingStartIndex = new Vector2Int((TypePlacardTexture.texture.width - TypePlacardTexture.texture.height) / 2, 0);
+                TypePlacardSamplingIncrement = (float)TypePlacardTexture.texture.height / TextureResolution;
+            }
+            else
+            {
+                TypePlacardSamplingStartIndex = new Vector2Int((TypePlacardTexture.texture.height - TypePlacardTexture.texture.width) / 2, 0);
+                TypePlacardSamplingIncrement = (float)TypePlacardTexture.texture.width / TextureResolution;
+            }
 
-        if (ETexture.texture.width > ETexture.texture.height)
-        {
-            ESamplingStartIndex = new Vector2Int((ETexture.texture.width - ETexture.texture.height) / 2, 0);
-            ESamplingIncrement = (float)ETexture.texture.height / TextureResolution;
-        }
-        else
-        {
-            ESamplingStartIndex = new Vector2Int((ETexture.texture.height - ETexture.texture.width) / 2, 0);
-            ESamplingIncrement = (float)ETexture.texture.width / TextureResolution;
-        }
+            if (NTexture.texture.width > NTexture.texture.height)
+            {
+                NSamplingStartIndex = new Vector2Int((NTexture.texture.width - NTexture.texture.height) / 2, 0);
+                NSamplingIncrement = (float)NTexture.texture.height / TextureResolution;
+            }
+            else
+            {
+                NSamplingStartIndex = new Vector2Int((NTexture.texture.height - NTexture.texture.width) / 2, 0);
+                NSamplingIncrement = (float)NTexture.texture.width / TextureResolution;
+            }
 
-        Vector2Int SACSamplingStartIndex;
-        float SACSamplingIncrement;
+            if (ETexture.texture.width > ETexture.texture.height)
+            {
+                ESamplingStartIndex = new Vector2Int((ETexture.texture.width - ETexture.texture.height) / 2, 0);
+                ESamplingIncrement = (float)ETexture.texture.height / TextureResolution;
+            }
+            else
+            {
+                ESamplingStartIndex = new Vector2Int((ETexture.texture.height - ETexture.texture.width) / 2, 0);
+                ESamplingIncrement = (float)ETexture.texture.width / TextureResolution;
+            }
 
-        if (SACTexture.texture.width > SACTexture.texture.height)
-        {
-            SACSamplingStartIndex = new Vector2Int((SACTexture.texture.width - SACTexture.texture.height) / 2, 0);
-            SACSamplingIncrement = (float)SACTexture.texture.height / TextureResolution;
-        }
-        else
-        {
-            SACSamplingStartIndex = new Vector2Int((SACTexture.texture.height - SACTexture.texture.width) / 2, 0);
-            SACSamplingIncrement = (float)SACTexture.texture.width / TextureResolution;
-        }
+            if (SACTexture.texture.width > SACTexture.texture.height)
+            {
+                SACSamplingStartIndex = new Vector2Int((SACTexture.texture.width - SACTexture.texture.height) / 2, 0);
+                SACSamplingIncrement = (float)SACTexture.texture.height / TextureResolution;
+            }
+            else
+            {
+                SACSamplingStartIndex = new Vector2Int((SACTexture.texture.height - SACTexture.texture.width) / 2, 0);
+                SACSamplingIncrement = (float)SACTexture.texture.width / TextureResolution;
+            }
 
-        Vector2Int WSamplingStartIndex;
-        float WSamplingIncrement;
+            if (WTexture.texture.width > WTexture.texture.height)
+            {
+                WSamplingStartIndex = new Vector2Int((WTexture.texture.width - WTexture.texture.height) / 2, 0);
+                WSamplingIncrement = (float)WTexture.texture.height / TextureResolution;
+            }
+            else
+            {
+                WSamplingStartIndex = new Vector2Int((WTexture.texture.height - WTexture.texture.width) / 2, 0);
+                WSamplingIncrement = (float)WTexture.texture.width / TextureResolution;
+            }
 
-        if (WTexture.texture.width > WTexture.texture.height)
-        {
-            WSamplingStartIndex = new Vector2Int((WTexture.texture.width - WTexture.texture.height) / 2, 0);
-            WSamplingIncrement = (float)WTexture.texture.height / TextureResolution;
-        }
-        else
-        {
-            WSamplingStartIndex = new Vector2Int((WTexture.texture.height - WTexture.texture.width) / 2, 0);
-            WSamplingIncrement = (float)WTexture.texture.width / TextureResolution;
-        }
 
-        Vector2Int RSamplingStartIndex;
-        float RSamplingIncrement;
+            if (RTexture.texture.width > RTexture.texture.height)
+            {
+                RSamplingStartIndex = new Vector2Int((RTexture.texture.width - RTexture.texture.height) / 2, 0);
+                RSamplingIncrement = (float)RTexture.texture.height / TextureResolution;
+            }
+            else
+            {
+                RSamplingStartIndex = new Vector2Int((RTexture.texture.height - RTexture.texture.width) / 2, 0);
+                RSamplingIncrement = (float)RTexture.texture.width / TextureResolution;
+            }
 
-        if (RTexture.texture.width > RTexture.texture.height)
-        {
-            RSamplingStartIndex = new Vector2Int((RTexture.texture.width - RTexture.texture.height) / 2, 0);
-            RSamplingIncrement = (float)RTexture.texture.height / TextureResolution;
-        }
-        else
-        {
-            RSamplingStartIndex = new Vector2Int((RTexture.texture.height - RTexture.texture.width) / 2, 0);
-            RSamplingIncrement = (float)RTexture.texture.width / TextureResolution;
-        }
-
-        Vector2Int DSamplingStartIndex;
-        float DSamplingIncrement;
-
-        if (DTexture.texture.width > DTexture.texture.height)
-        {
-            DSamplingStartIndex = new Vector2Int((DTexture.texture.width - DTexture.texture.height) / 2, 0);
-            DSamplingIncrement = (float)DTexture.texture.height / TextureResolution;
-        }
-        else
-        {
-            DSamplingStartIndex = new Vector2Int((DTexture.texture.height - DTexture.texture.width) / 2, 0);
-            DSamplingIncrement = (float)DTexture.texture.width / TextureResolution;
+            if (DTexture.texture.width > DTexture.texture.height)
+            {
+                DSamplingStartIndex = new Vector2Int((DTexture.texture.width - DTexture.texture.height) / 2, 0);
+                DSamplingIncrement = (float)DTexture.texture.height / TextureResolution;
+            }
+            else
+            {
+                DSamplingStartIndex = new Vector2Int((DTexture.texture.height - DTexture.texture.width) / 2, 0);
+                DSamplingIncrement = (float)DTexture.texture.width / TextureResolution;
+            }
         }
 
         int squaringFactor = Mathf.Abs(CharacterArt.texture.width - CharacterArt.texture.height) / 2;
@@ -953,7 +972,7 @@ public class VoxelCard : VoxelCardBase
         Vector2Int CharacterArtSamplingStartIndex =
             (Vector2Int.right * (int)(squaringFactor + (shorterDimension * CharacterArtSamplingStartIndexRatio)))
             + (Vector2Int.down * (int)(shorterDimension * 2.0f * CharacterArtSamplingStartIndexRatio));
-        Debug.Log($"Character art {CharacterArtSamplingIncrement}, {CharacterArtSamplingStartIndex}");
+        //Debug.Log($"Character art {CharacterArtSamplingIncrement}, {CharacterArtSamplingStartIndex}");
 
         if (fullArt) CharacterArtSamplingStartIndex = new Vector2Int(-2 * CharacterArtSamplingStartIndex.x, CharacterArtSamplingStartIndex.y);
 
@@ -989,107 +1008,110 @@ public class VoxelCard : VoxelCardBase
         {
             for (int y = 0; y < TextureResolution; y++)
             {
-                Vector2Int position;
+                Vector2Int position = new Vector2Int(x, y);
                 Vector2Int samplePosition;
 
                 //Frame texture
-                position = new Vector2Int(x, y);
-                samplePosition = new Vector2Int(FrameSamplingStartIndex.x + (int)(FrameSamplingIncrement * x), FrameSamplingStartIndex.y + (int)(FrameSamplingIncrement * y));
-                Color frameColor = FrameTexture.texture.GetPixel(samplePosition.x, samplePosition.y);
-                if (ApplyStatColors)
+
+                if (rebuildAll)
                 {
-                    Vector2 normalizedXY = new Vector2(((float)x / TextureResolution - FrameThickness) / (1.0f - 2.0f * FrameThickness), ((float)y / TextureResolution - FrameThickness) / (1.0f - 2.0f * FrameThickness));
-                    if (normalizedXY.y > 7.1f / 12.0f || normalizedXY.y < 4.9f / 12.0f)
+                    samplePosition = new Vector2Int(FrameSamplingStartIndex.x + (int)(FrameSamplingIncrement * x), FrameSamplingStartIndex.y + (int)(FrameSamplingIncrement * y));
+                    Color frameColor = FrameTexture.texture.GetPixel(samplePosition.x, samplePosition.y);
+                    if (ApplyStatColors)
                     {
-                        if (HasW && normalizedXY.x < 1.0f / 9.3f && normalizedXY.x > (4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.y) * (1.0f / 24.0f) && normalizedXY.x > -(4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.y) * (1.0f / 24.0f))
+                        Vector2 normalizedXY = new Vector2(((float)x / TextureResolution - FrameThickness) / (1.0f - 2.0f * FrameThickness), ((float)y / TextureResolution - FrameThickness) / (1.0f - 2.0f * FrameThickness));
+                        if (normalizedXY.y > 7.1f / 12.0f || normalizedXY.y < 4.9f / 12.0f)
                         {
-                            Recolor(ref frameColor, WColor);
+                            if (HasW && normalizedXY.x < 1.0f / 9.3f && normalizedXY.x > (4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.y) * (1.0f / 24.0f) && normalizedXY.x > -(4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.y) * (1.0f / 24.0f))
+                            {
+                                Recolor(ref frameColor, WColor);
+                            }
+                            else if (HasE && normalizedXY.x > 1.0f - 1.0f / 9.3f && normalizedXY.x - 1.0f < (4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.y) * (1.0f / 24.0f) && normalizedXY.x - 1.0f < -(4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.y) * (1.0f / 24.0f))
+                            {
+                                Recolor(ref frameColor, EColor);
+                            }
                         }
-                        else if (HasE && normalizedXY.x > 1.0f - 1.0f / 9.3f && normalizedXY.x - 1.0f < (4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.y) * (1.0f / 24.0f) && normalizedXY.x - 1.0f < -(4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.y) * (1.0f / 24.0f))
+                        if (normalizedXY.x > 7.1f / 12.0f || normalizedXY.x < 4.9f / 12.0f)
                         {
-                            Recolor(ref frameColor, EColor);
+                            if (HasSAC && normalizedXY.y < 1.0f / 9.3f && normalizedXY.y > (4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.x) * (1.0f / 24.0f) && normalizedXY.y > -(4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.x) * (1.0f / 24.0f))
+                            {
+                                Recolor(ref frameColor, SACColor);
+                            }
+                            else if (HasN && normalizedXY.y > 1.0f - 1.0f / 9.3f && normalizedXY.y - 1.0f < (4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.x) * (1.0f / 24.0f) && normalizedXY.y - 1.0f < -(4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.x) * (1.0f / 24.0f))
+                            {
+                                Recolor(ref frameColor, NColor);
+                            }
                         }
                     }
-                    if (normalizedXY.x > 7.1f / 12.0f || normalizedXY.x < 4.9f / 12.0f)
+                    newTexture.SetPixel(position.x, position.y, frameColor);
+                    metalness.SetPixel(position.x, position.y, new Color(FrameMetallic, 0.0f, 0.0f, FrameGloss));
+                    
+                    //Name placard texture
+                    position += TextureResolution * Vector2Int.right;
+                    samplePosition = new Vector2Int(NamePlacardSamplingStartIndex.x + (int)(NamePlacardSamplingIncrement * x), NamePlacardSamplingStartIndex.y + (int)(NamePlacardSamplingIncrement * y));
+                    newTexture.SetPixel(position.x, position.y, NamePlacardTexture.texture.GetPixel(samplePosition.x, samplePosition.y));
+                    metalness.SetPixel(position.x, position.y, new Color(NamePlacardMetallic, 0.0f, 0.0f, NamePlacardGloss));
+
+                    //Type placard texture
+                    position += TextureResolution * Vector2Int.right;
+                    samplePosition = new Vector2Int(TypePlacardSamplingStartIndex.x + (int)(TypePlacardSamplingIncrement * x), TypePlacardSamplingStartIndex.y + (int)(TypePlacardSamplingIncrement * y));
+                    newTexture.SetPixel(position.x, position.y, TypePlacardTexture.texture.GetPixel(samplePosition.x, samplePosition.y));
+                    metalness.SetPixel(position.x, position.y, new Color(TypePlacardMetallic, 0.0f, 0.0f, TypePlacardGloss));
+
+                    //Stats placards texture
+                    position = new Vector2Int(x, TextureResolution + y);
+                    Vector2Int statsStartIndex;
+                    float statsIncrement;
+                    Sprite statsTexture;
+                    if (x < TextureResolution / 3)
                     {
-                        if (HasSAC && normalizedXY.y < 1.0f / 9.3f && normalizedXY.y > (4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.x) * (1.0f / 24.0f) && normalizedXY.y > -(4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.x) * (1.0f / 24.0f))
+                        if (y > TextureResolution / 3)
                         {
-                            Recolor(ref frameColor, SACColor);
+                            statsStartIndex = WSamplingStartIndex;
+                            statsIncrement = WSamplingIncrement;
+                            statsTexture = WTexture;
                         }
-                        else if (HasN && normalizedXY.y > 1.0f - 1.0f / 9.3f && normalizedXY.y - 1.0f < (4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.x) * (1.0f / 24.0f) && normalizedXY.y - 1.0f < -(4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.x) * (1.0f / 24.0f))
+                        else
                         {
-                            Recolor(ref frameColor, NColor);
+                            statsStartIndex = DSamplingStartIndex;
+                            statsIncrement = DSamplingIncrement;
+                            statsTexture = DTexture;
                         }
                     }
-                }
-                newTexture.SetPixel(position.x, position.y, frameColor);
-                metalness.SetPixel(position.x, position.y, new Color(FrameMetallic, 0.0f, 0.0f, FrameGloss));
-
-                //Name placard texture
-                position += TextureResolution * Vector2Int.right;
-                samplePosition = new Vector2Int(NamePlacardSamplingStartIndex.x + (int)(NamePlacardSamplingIncrement * x), NamePlacardSamplingStartIndex.y + (int)(NamePlacardSamplingIncrement * y));
-                newTexture.SetPixel(position.x, position.y, NamePlacardTexture.texture.GetPixel(samplePosition.x, samplePosition.y));
-                metalness.SetPixel(position.x, position.y, new Color(NamePlacardMetallic, 0.0f, 0.0f, NamePlacardGloss));
-
-                //Type placard texture
-                position += TextureResolution * Vector2Int.right;
-                samplePosition = new Vector2Int(TypePlacardSamplingStartIndex.x + (int)(TypePlacardSamplingIncrement * x), TypePlacardSamplingStartIndex.y + (int)(TypePlacardSamplingIncrement * y));
-                newTexture.SetPixel(position.x, position.y, TypePlacardTexture.texture.GetPixel(samplePosition.x, samplePosition.y));
-                metalness.SetPixel(position.x, position.y, new Color(TypePlacardMetallic, 0.0f, 0.0f, TypePlacardGloss));
-
-                //Stats placards texture
-                position = new Vector2Int(x, TextureResolution + y);
-                Vector2Int statsStartIndex;
-                float statsIncrement;
-                Sprite statsTexture;
-                if(x < TextureResolution / 3)
-                {
-                    if(y > TextureResolution / 3)
+                    else if (x < 2 * TextureResolution / 3)
                     {
-                        statsStartIndex = WSamplingStartIndex;
-                        statsIncrement = WSamplingIncrement;
-                        statsTexture = WTexture;
+                        if (y > TextureResolution / 2)
+                        {
+                            statsStartIndex = NSamplingStartIndex;
+                            statsIncrement = NSamplingIncrement;
+                            statsTexture = NTexture;
+                        }
+                        else
+                        {
+                            statsStartIndex = SACSamplingStartIndex;
+                            statsIncrement = SACSamplingIncrement;
+                            statsTexture = SACTexture;
+                        }
                     }
                     else
                     {
-                        statsStartIndex = DSamplingStartIndex;
-                        statsIncrement = DSamplingIncrement;
-                        statsTexture = DTexture;
+                        if (y > TextureResolution / 3)
+                        {
+                            statsStartIndex = ESamplingStartIndex;
+                            statsIncrement = ESamplingIncrement;
+                            statsTexture = ETexture;
+                        }
+                        else
+                        {
+                            statsStartIndex = RSamplingStartIndex;
+                            statsIncrement = RSamplingIncrement;
+                            statsTexture = RTexture;
+                        }
                     }
+                    samplePosition = new Vector2Int(statsStartIndex.x + (int)(statsIncrement * x), statsStartIndex.y + (int)(statsIncrement * y));
+                    newTexture.SetPixel(position.x, position.y, statsTexture.texture.GetPixel(samplePosition.x, samplePosition.y));
+                    metalness.SetPixel(position.x, position.y, new Color(StatsMetallic, 0.0f, 0.0f, StatsGloss));
                 }
-                else if (x < 2 * TextureResolution / 3)
-                {
-                    if(y > TextureResolution / 2)
-                    {
-                        statsStartIndex = NSamplingStartIndex;
-                        statsIncrement = NSamplingIncrement;
-                        statsTexture = NTexture;
-                    }
-                    else
-                    {
-                        statsStartIndex = SACSamplingStartIndex;
-                        statsIncrement = SACSamplingIncrement;
-                        statsTexture = SACTexture;
-                    }
-                }
-                else
-                {
-                    if (y > TextureResolution / 3)
-                    {
-                        statsStartIndex = ESamplingStartIndex;
-                        statsIncrement = ESamplingIncrement;
-                        statsTexture = ETexture;
-                    }
-                    else
-                    {
-                        statsStartIndex = RSamplingStartIndex;
-                        statsIncrement = RSamplingIncrement;
-                        statsTexture = RTexture;
-                    }
-                }
-                samplePosition = new Vector2Int(statsStartIndex.x + (int)(statsIncrement * x), statsStartIndex.y + (int)(statsIncrement * y));
-                newTexture.SetPixel(position.x, position.y, statsTexture.texture.GetPixel(samplePosition.x, samplePosition.y));
-                metalness.SetPixel(position.x, position.y, new Color(StatsMetallic, 0.0f, 0.0f, StatsGloss));
 
                 //Art and effect text texture
                 position += TextureResolution * Vector2Int.right;
@@ -1132,15 +1154,10 @@ public class VoxelCard : VoxelCardBase
         return new List<Texture2D> { newTexture, metalness };
     }
 
-    private void ApplyTexture(List<Texture2D> newTextures)
+    private void ApplyTexture(List<Texture2D> newTextures, Material mat)
     {
-        Material mat = gameObject.GetComponent<MeshRenderer>().material;
-        if(mat == null)
-        {
-            mat = new Material(BaseMaterial);
-        }
-        mat.SetTexture("_MainTex", newTextures[0]);
-        mat.SetTexture("_MetallicGlossMap", newTextures[1]);
+        mat.SetTexture(MainTextureName, newTextures[0]);
+        mat.SetTexture(MainMetalnessName, newTextures[1]);
         gameObject.GetComponent<MeshRenderer>().sharedMaterial = mat;
     }
 

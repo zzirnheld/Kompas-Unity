@@ -8723,7 +8723,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DeckbuilderCharPrefab: {fileID: 0}
   deckBuilderCardPrefab: {fileID: 0}
-  CardPrefab: {fileID: 3146857051703895276, guid: eedbf9517c9afa440a613c7bf437a80e,
+  CardPrefab: {fileID: 732231206546897811, guid: 87f8eebfa85da1101a5ac83cb123b212,
     type: 3}
   DeckSelectCardPrefab: {fileID: 1316274561394776498, guid: 3701dcd9e71748a4781c867a9608c51d,
     type: 3}
@@ -36939,7 +36939,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f2f8fc78acff602489b80fb6ff200f34, type: 2}
+  - {fileID: 2100000, guid: 12c5c6b00d5b91f068069f58c5311c33, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
