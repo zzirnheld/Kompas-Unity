@@ -40,6 +40,13 @@ namespace KompasClient.UI
         /// </summary>
         private bool focusLocked;
 
+        private string oldFileName;
+
+        public VoxelCardUser voxelCardUser;
+        public GameObject rawImageShowing;
+
+        protected override bool ShowingInfo { set { base.ShowingInfo = value; rawImageShowing.SetActive(value); } }
+
         protected override void Update()
         {
             base.Update();
@@ -149,6 +156,17 @@ namespace KompasClient.UI
                     card.CardController.gameCardViewController.ShowLinkedCard(true);
                 }
             }
+        }
+
+        protected override void DisplayCardImage(Sprite cardImageSprite)
+        {
+            if (oldFileName == ShownCard.FileName) return;
+
+            base.DisplayCardImage(cardImageSprite);
+            //TODO split this out if I ever make chars able to become spells or vice versa
+            voxelCardUser.Set(ShownCard.CardType == 'C', true, cardImageSprite);
+
+            oldFileName = ShownCard.FileName;
         }
     }
 }
