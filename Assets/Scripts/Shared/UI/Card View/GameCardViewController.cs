@@ -45,6 +45,7 @@ namespace KompasCore.UI
         public GameObject zoomedUI;
         public GameObject unzoomedUI;
         public GameObject[] charUIs;
+        public TMP_Text costLabel;
         //public GameObject[] nonCharUIs;
 
         /// <summary>
@@ -153,6 +154,8 @@ namespace KompasCore.UI
             unzoomedWText.text = $"{shownCard.W}";
 
             unzoomedCostText.text = $"{shownCard.Cost}";
+
+            costLabel.text = ShownCard.CostCardValue.DisplayName;
         }
 
         protected override string DisplayN(int n) => $"{n}";

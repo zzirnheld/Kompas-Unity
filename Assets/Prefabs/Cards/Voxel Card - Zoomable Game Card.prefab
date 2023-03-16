@@ -1107,6 +1107,7 @@ MonoBehaviour:
   charUIs:
   - {fileID: 3025633920690001761}
   - {fileID: 7953768790424691315}
+  costLabel: {fileID: 732231207781725185}
 --- !u!114 &732231206546897809
 MonoBehaviour:
   m_ObjectHideFlags: 0

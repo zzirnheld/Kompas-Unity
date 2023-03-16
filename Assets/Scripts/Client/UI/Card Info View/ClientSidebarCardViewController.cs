@@ -44,6 +44,8 @@ namespace KompasClient.UI
 
         public VoxelCardUser voxelCardUser;
         public GameObject rawImageShowing;
+        public GameObject charOnlyUI;
+        public TMP_Text costLabel;
 
         protected override bool ShowingInfo { set { base.ShowingInfo = value; rawImageShowing.SetActive(value); } }
 
@@ -112,6 +114,8 @@ namespace KompasClient.UI
                 activatedObject.SetActive(ShownGameCard.Activated);
             }
             alreadySelectedMarker.SetActive(searchUICtrl.CardCurrentlyTargeted(ShownGameCard));
+
+            charOnlyUI.SetActive(ShownCard.CardType == 'C');
         }
 
         private void ClearShownUniqueCopies()
@@ -157,6 +161,19 @@ namespace KompasClient.UI
                 }
             }
         }
+
+        protected override void DisplayCardNumericStats()
+        {
+            base.DisplayCardNumericStats();
+            costLabel.text = ShownCard.CostCardValue.DisplayName;
+        }
+
+        protected override string DisplayN(int n) => $"{n}";
+        protected override string DisplayE(int e) => $"{e}";
+        protected override string DisplayS(int s) => $"{s}";
+        protected override string DisplayW(int w) => $"{w}";
+        protected override string DisplayC(int c) => $"{c}";
+        protected override string DisplayA(int a) => $"{a}";
 
         protected override void DisplayCardImage(Sprite cardImageSprite)
         {
