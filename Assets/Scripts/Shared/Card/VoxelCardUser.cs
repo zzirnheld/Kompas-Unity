@@ -25,28 +25,40 @@ public class VoxelCardUser : MonoBehaviour
 
     public MeshRenderer meshRenderer;
 
-    private Texture2D zoomedTex;
-    private Texture2D unzoomedTex;
-    private Texture2D zoomedMet;
-    private Texture2D unzoomedMet;
+    public Texture2D ZoomedTex { get; private set; }
+    public Texture2D UnzoomedTex { get; private set; }
+    public Texture2D ZoomedMet { get; private set; }
+    public Texture2D UnzoomedMet { get; private set; }
+    
     public void Set(bool isChar, bool zoomed, Sprite cardArt)
     {
         var start = System.DateTime.Now;
-        meshFilter.mesh = isChar
-            ? zoomed ? zoomedCharMesh : unzoomedCharMesh
-            : zoomed ? zoomedSpellMesh : unzoomedSpellMesh;
         //If cardArt is null, don't regen texture
-        var material = meshRenderer.material;
-
         if (cardArt != default)
         {
-            (zoomedTex, zoomedMet) = Copy(isChar ? zoomedCharTex : zoomedSpellTex, isChar ? zoomedCharMetalness : zoomedSpellMetalness, true, cardArt);
-            (unzoomedTex, unzoomedMet) = Copy(isChar ? unzoomedCharTex : unzoomedSpellTex, isChar ? unzoomedCharMetalness : unzoomedSpellMetalness, false, cardArt);
+            (ZoomedTex, ZoomedMet) = Copy(isChar ? zoomedCharTex : zoomedSpellTex, isChar ? zoomedCharMetalness : zoomedSpellMetalness, true, cardArt);
+            (UnzoomedTex, UnzoomedMet) = Copy(isChar ? unzoomedCharTex : unzoomedSpellTex, isChar ? unzoomedCharMetalness : unzoomedSpellMetalness, false, cardArt);
         }
 
-        material.SetTexture(MainTextureName, zoomed ? zoomedTex : unzoomedTex);
-        material.SetTexture(MainMetalnessName, zoomed ? zoomedMet : unzoomedMet);
-        Debug.Log($"Took {System.DateTime.Now - start} with cardArt {cardArt != default}?");
+        Debug.Log($"Regen took {System.DateTime.Now - start} with cardArt {cardArt != default}?");
+        Set(isChar, zoomed, zoomed ? ZoomedTex : UnzoomedTex, zoomed ? ZoomedMet : UnzoomedMet);
+    }
+
+    public void Set(bool isChar, bool zoomed, Texture2D texture, Texture2D metalness)
+    {
+        var mesh = isChar
+            ? zoomed ? zoomedCharMesh : unzoomedCharMesh
+            : zoomed ? zoomedSpellMesh : unzoomedSpellMesh;
+        Set(mesh, texture, metalness);
+    }
+
+    public void Set(Mesh mesh, Texture2D texture, Texture2D metalness)
+    {
+        meshFilter.mesh = mesh;
+
+        var material = meshRenderer.material;
+        material.SetTexture(MainTextureName, texture);
+        material.SetTexture(MainMetalnessName, metalness);
     }
 
     private (Texture2D, Texture2D) Copy(Texture2D oldTexture, Texture2D oldMetalness, bool zoomed, Sprite cardArt)

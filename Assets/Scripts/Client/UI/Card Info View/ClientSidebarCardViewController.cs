@@ -163,8 +163,10 @@ namespace KompasClient.UI
             if (oldFileName == ShownCard.FileName) return;
 
             base.DisplayCardImage(cardImageSprite);
+            bool isChar = ShownCard.CardType == 'C';
             //TODO split this out if I ever make chars able to become spells or vice versa
-            voxelCardUser.Set(ShownCard.CardType == 'C', true, cardImageSprite);
+            var shownVoxelCardUser = ShownGameCard.CardController.gameCardViewController.voxelCardUser;
+            this.voxelCardUser.Set(isChar, true, shownVoxelCardUser.ZoomedTex, shownVoxelCardUser.ZoomedMet);
 
             oldFileName = ShownCard.FileName;
         }
