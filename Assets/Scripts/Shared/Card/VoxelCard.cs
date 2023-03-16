@@ -1062,7 +1062,9 @@ public class VoxelCard : VoxelCardBase
 
         if (fullArt) CharacterArtSamplingStartIndex = new Vector2Int(-2 * CharacterArtSamplingStartIndex.x, CharacterArtSamplingStartIndex.y);
 
-        float artRightBound = fullArt ? 1.0f : 0.5f * (1 - FrameThickness);
+        float effTextZoneRatio = 0.37f;
+        float artRightBound = fullArt ? 1.0f : effTextZoneRatio * (1f + FrameThickness);
+
         Vector2Int frontStartIndex = CharacterArtSamplingStartIndex;
         float frontIncrement = CharacterArtSamplingIncrement;
         Sprite frontTexture = CharacterArt;
@@ -1076,9 +1078,15 @@ public class VoxelCard : VoxelCardBase
             {
                 //Art and effect text texture
                 Vector2Int position = new Vector2Int(TextureResolution + x, TextureResolution + y);
-                if (x < TextureResolution * artRightBound)
+                if (fullArt)
                 {
-                    if (y > TextureResolution * CharacterArtLowerBound && y < TextureResolution * CharacterArtUpperBound)
+                    Vector2Int samplePosition = new Vector2Int(frontStartIndex.x + (int)(frontIncrement * x), frontStartIndex.y + (int)(frontIncrement * y));
+                    newTexture.SetPixel(position.x, position.y, frontTexture.texture.GetPixel(samplePosition.x, samplePosition.y));
+                    metalness.SetPixel(position.x, position.y, frontMetallic);
+                }
+                if (y > TextureResolution * artRightBound)
+                {
+                    if (x > TextureResolution * CharacterArtLowerBound && x < TextureResolution * CharacterArtUpperBound)
                     {
                         Vector2Int samplePosition = new Vector2Int(frontStartIndex.x + (int)(frontIncrement * x), frontStartIndex.y + (int)(frontIncrement * y));
                         newTexture.SetPixel(position.x, position.y, frontTexture.texture.GetPixel(samplePosition.x, samplePosition.y));
