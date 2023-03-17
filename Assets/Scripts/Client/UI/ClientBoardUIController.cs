@@ -1,5 +1,6 @@
 using KompasClient.Cards;
 using KompasClient.GameCore;
+using KompasCore.Cards;
 using KompasCore.GameCore;
 using KompasCore.UI;
 using UnityEngine;
@@ -19,50 +20,19 @@ namespace KompasClient.UI
         public override UIController UIController => clientUIController;
         public override BoardController BoardController => clientBoardController;
 
-        public override void OnMouseDown()
+        public override void Clicked(Space position)
         {
-            base.OnMouseDown();
-
-            if (clientUIController.TargetMode != TargetMode.SpaceTarget) return;
-
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit hit))
+            if (clientUIController.TargetMode == TargetMode.SpaceTarget)
             {
-                var intersection = transform.InverseTransformPoint(hit.point);
-
-                int xIntersection = PosToGridIndex(intersection.x);
-                int yIntersection = PosToGridIndex(intersection.z);
-                //then, if the game is a clientgame, request a space target
-                clientBoardController.clientGame.clientNotifier.RequestSpaceTarget(xIntersection, yIntersection);
+                var (x, y) = position;
+                clientBoardController.clientGame.clientNotifier.RequestSpaceTarget(x, y);
+                return;
             }
-        }
 
-        public bool CardDragEnded(ClientCardController cardController)
-        {
-            //get coords w/r/t gameboard
-            var boardLocalPosition = gameObject.transform.InverseTransformPoint(cardController.gameObject.transform.position);
-
-            //then, check if it's on the board, accodring to the local coordinates of the game board)
-            if (WithinIgnoreZ(boardLocalPosition, minBoardLocalX, maxBoardLocalX, minBoardLocalY, maxBoardLocalY))
-            {
-                Debug.Log($"Card {cardController.Card.CardName} dragged to somewhere on the board, board local pos {boardLocalPosition}. Only putting back.");
-                int x = PosToGridIndex(boardLocalPosition.x);
-                int y = PosToGridIndex(boardLocalPosition.z);
-
-                clientBoardController.AttemptPutCard(cardController.Card, (x, y));
-
-                return true;
-            }
-            else Debug.Log($"Card {cardController.Card.CardName} dragged to somewhere off the board, board local pos {boardLocalPosition}. Only putting back.");
-
-            //regardless, put the card where it goes until we know where to properly put it
-            cardController.PutBack();
-            return false;
-        }
-
-        public bool WithinIgnoreZ(Vector3 position, float minX, float maxX, float minY, float maxY)
-        {
-            return position.x > minX && position.x < maxX && position.y > minY && position.y < maxY;
+            var card = UIController.CardViewController.ShownCard as GameCard;
+            Debug.Log($"Card {card?.CardName} was selected while clicking on space {position}");
+            if (card != null) clientBoardController.AttemptPutCard(card, position);
+            //regardless, select nothing
         }
     }
 }

@@ -17,7 +17,7 @@ namespace KompasCore.UI
 
         public GameObject spaceCueControllerPrefab;
 
-        private readonly SpaceCueController[,] spaceCueControllers = new SpaceCueController[7, 7];
+        private readonly SpaceCueController[,] spaceCueControllers = new SpaceCueController[Space.BoardLen, Space.BoardLen];
         private GameCardBase currShowingFor;
 
         private static Vector3 GridIndicesToCuePos(int x, int y)
@@ -43,6 +43,7 @@ namespace KompasCore.UI
                     GameObject cue = Instantiate(spaceCueControllerPrefab, transform);
                     cue.transform.localPosition = GridIndicesToCuePos(i, j);
                     spaceCueControllers[i, j] = cue.GetComponent<SpaceCueController>();
+                    spaceCueControllers[i, j].Init(this, (i, j));
                 }
             }
         }
@@ -94,5 +95,7 @@ namespace KompasCore.UI
                 }
             }
         }
+
+        public abstract void Clicked(Space position);
     }
 }
