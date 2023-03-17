@@ -40,7 +40,7 @@ public class VoxelCardUser : MonoBehaviour
             (UnzoomedTex, UnzoomedMet) = Copy(isChar ? unzoomedCharTex : unzoomedSpellTex, isChar ? unzoomedCharMetalness : unzoomedSpellMetalness, false, cardArt);
         }
 
-        Debug.Log($"Regen took {System.DateTime.Now - start} with cardArt {cardArt != default}?");
+        //Debug.Log($"Regen took {System.DateTime.Now - start} with cardArt {cardArt != default}?");
         Set(isChar, zoomed, zoomed ? ZoomedTex : UnzoomedTex, zoomed ? ZoomedMet : UnzoomedMet);
     }
 
