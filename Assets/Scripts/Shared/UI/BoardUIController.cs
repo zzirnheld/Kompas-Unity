@@ -96,6 +96,6 @@ namespace KompasCore.UI
             }
         }
 
-        public abstract void Clicked(Space position);
+        public abstract void Clicked(Space position, GameCard focusCardOverride = null);
     }
 }

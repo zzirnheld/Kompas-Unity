@@ -20,7 +20,7 @@ namespace KompasClient.UI
         public override UIController UIController => clientUIController;
         public override BoardController BoardController => clientBoardController;
 
-        public override void Clicked(Space position)
+        public override void Clicked(Space position, GameCard focusCardOverride = null)
         {
             if (clientUIController.TargetMode == TargetMode.SpaceTarget)
             {
@@ -29,7 +29,7 @@ namespace KompasClient.UI
                 return;
             }
 
-            var card = UIController.CardViewController.ShownCard as GameCard;
+            var card = focusCardOverride ?? UIController.CardViewController.FocusedCard as GameCard;
             Debug.Log($"Card {card?.CardName} was selected while clicking on space {position}");
             if (card != null) clientBoardController.AttemptPutCard(card, position);
             //regardless, select nothing

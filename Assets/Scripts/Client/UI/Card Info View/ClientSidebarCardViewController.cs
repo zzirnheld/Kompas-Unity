@@ -3,6 +3,7 @@ using KompasClient.GameCore;
 using KompasClient.UI.Search;
 using KompasCore.Cards;
 using KompasCore.UI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -12,6 +13,8 @@ namespace KompasClient.UI
 {
     public class ClientSidebarCardViewController : SidebarCardViewController
     {
+        private const long DoubleClickMillis = 500;
+
         public ClientGame clientGame;
 
         [Header("Client-specific UI Controllers")]
@@ -47,6 +50,9 @@ namespace KompasClient.UI
         public GameObject charOnlyUI;
         public TMP_Text costLabel;
 
+        private GameCard lastFocus;
+        private DateTime lastFocusTime;
+
         protected override bool ShowingInfo { set { base.ShowingInfo = value; rawImageShowing.SetActive(value); } }
 
         protected override void Update()
@@ -72,12 +78,24 @@ namespace KompasClient.UI
                 return;
             }
 
-            var oldFocus = FocusedCard as ClientGameCard;
+            Debug.Log($"Focusing on {card} while lastFocus is {lastFocus} and FocusedCard is {FocusedCard}");
+            if (lastFocus != card && FocusedCard == card //If we last focused on a different card, and are now clicking the same card as we did a little moment ago
+                && lastFocusTime.AddMilliseconds(DoubleClickMillis) > DateTime.Now)
+            {
+                //Then lastFocus might be trying to swap with a target card, or attack it.
+                boardUIController.Clicked(card.Position, lastFocus);
+                Focus(lastFocus);
+                return;
+            }
+
+            lastFocus = FocusedCard as ClientGameCard;
+            lastFocusTime = DateTime.Now;
+
             //If the card is null, we're trying to clear 
             focusLocked = lockFocus && card != null;
             base.Focus(card);
             (card as ClientGameCard)?.CardController.gameCardViewController.Refresh();
-            oldFocus?.CardController.gameCardViewController.Refresh();
+            lastFocus?.CardController.gameCardViewController.Refresh();
             (FocusedCard as ClientGameCard)?.CardController.gameCardViewController.Refresh();
         }
 

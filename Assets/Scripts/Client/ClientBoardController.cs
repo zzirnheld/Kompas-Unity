@@ -1,5 +1,6 @@
 using KompasCore.Cards;
 using KompasCore.GameCore;
+using UnityEngine;
 
 namespace KompasClient.GameCore
 {
@@ -22,7 +23,7 @@ namespace KompasClient.GameCore
             if (card.Location == CardLocation.Board)
             {
                 var cardThere = GetCardAt(space);
-                // Debug.Log($"Trying to move/attack to {x}, {y}. The controller index, if any, is {(cardThere == null ? -1 : cardThere.ControllerIndex)}");
+                Debug.Log($"Trying to move/attack {card} to {x}, {y}. The controller index, if any, is {(cardThere == null ? -1 : cardThere.ControllerIndex)}, compared to that card's {card?.ControllerIndex}");
                 //then check if it's an attack or not
                 if (cardThere != null && cardThere.Controller != card.Controller)
                     clientGame.clientNotifier.RequestAttack(card, cardThere);
