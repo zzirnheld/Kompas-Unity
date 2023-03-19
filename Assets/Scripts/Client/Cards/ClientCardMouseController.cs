@@ -34,9 +34,9 @@ namespace KompasClient.Cards
         {
             //don't do anything if we're over an event system object, 
             //because that would let us click on cards underneath prompts
-            if (EventSystem.current.IsPointerOverGameObject())
+            if (OverActualUIElement)
             {
-                Debug.Log($"Released card while pointer over event system object");
+                Debug.Log($"Released card while pointer over event system object {EventSystem.current.currentSelectedGameObject.name}");
                 return;
             }
 

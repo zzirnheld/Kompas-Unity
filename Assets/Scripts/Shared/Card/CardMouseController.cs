@@ -12,10 +12,14 @@ namespace KompasCore.Cards
 
         public abstract UIController UIController { get; }
 
+        protected static bool OverActualUIElement => EventSystem.current.IsPointerOverGameObject()
+                && EventSystem.current.currentSelectedGameObject != null
+                && EventSystem.current.currentSelectedGameObject != HandCameraController.Main.rawImage.gameObject;
+
         #region MouseStuff
         public virtual void OnMouseExit()
         {
-            if (EventSystem.current.IsPointerOverGameObject()) return;
+            if (OverActualUIElement) return;
 
             bool mouseDown = Input.GetMouseButton(0);
             //If the mouse isn't held down rn, then we want to stop showing whatever we're currently showing.
@@ -26,7 +30,7 @@ namespace KompasCore.Cards
         {
             //don't do anything if we're over an event system object, 
             //because that would let us click on cards underneath prompts
-            if (EventSystem.current.IsPointerOverGameObject()) return;
+            if (OverActualUIElement) return;
 
             //select cards if the player releases the mouse button while over one
             UIController.CardViewController.Focus(card.Card);
@@ -36,7 +40,7 @@ namespace KompasCore.Cards
         public virtual void OnMouseOver()
         {
             //if the mouse is currently over a ui element, don't swap what you're seeing
-            if (EventSystem.current.IsPointerOverGameObject()) return;
+            //if (EventSystem.current.IsPointerOverGameObject()) return;
 
             //TODO still hover over even if mouse is on the effect/attack blocks, lol
             UIController.CardViewController.Show(card.Card);

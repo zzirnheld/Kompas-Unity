@@ -53,7 +53,8 @@ namespace KompasCore.GameCore
             for (int i = 0; i < hand.Count; i++)
             {
                 hand[i].CardController.transform.parent = transform;
-                hand[i].CardController.transform.localPosition = new Vector3((-0.9f * (float)hand.Count) + ((float)i * 2.25f), 0, 0);
+                float offset = ((float)hand.Count / -2f) + (float)i + 0.5f;
+                hand[i].CardController.transform.localPosition = new Vector3(2.25f * offset, 0, 0);
                 hand[i].CardController.SetRotation();
                 hand[i].CardController.gameObject.SetActive(true);
             }
