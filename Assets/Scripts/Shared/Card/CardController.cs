@@ -70,7 +70,7 @@ namespace KompasCore.Cards
 
         public void SpreadOutAugs()
         {
-            Debug.Log($"{Card} has {Card.Augments} and a {stackedAugmentsController}");
+            //Debug.Log($"{Card} has {Card.Augments} and a {stackedAugmentsController}");
             if (Card.Augments.Count == 0) stackedAugmentsController.gameObject.SetActive(false);
             else 
             {

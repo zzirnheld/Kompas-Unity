@@ -28,6 +28,9 @@ namespace KompasCore.Effects
 
         public GameCard Source => InitializationContext.source;
 
+        //FUTURE: Make this more definitive
+        public string DisplayName => value;
+
         public int GetValueOf(GameCardBase card)
         {
             ComplainIfNotInitialized();

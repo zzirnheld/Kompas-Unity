@@ -259,6 +259,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6721646274851369501}
   - component: {fileID: 6721646274851369502}
+  - component: {fileID: 205127709156608594}
   m_Layer: 0
   m_Name: Space Cue Cubes
   m_TagString: Untagged
@@ -304,11 +305,19 @@ MonoBehaviour:
   - {fileID: 6721646274581163708}
   - {fileID: 8395169904218902214}
   - {fileID: 4279670886152392755}
-  canMoveCube: {fileID: 6721646275107135320}
-  couldMoveInOpenGamestateCube: {fileID: 0}
-  canAttackCube: {fileID: 6721646274581163708}
-  canPlayCube: {fileID: 8395169904218902214}
-  canTargetCube: {fileID: 4279670886152392755}
+--- !u!65 &205127709156608594
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6721646274851369500}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 0.025, z: 1.5}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6721646275107135320
 GameObject:
   m_ObjectHideFlags: 0
@@ -326,7 +335,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6721646275107135321
 Transform:
   m_ObjectHideFlags: 0

@@ -143,6 +143,13 @@ namespace KompasCore.Cards
                 };
             }
         }
+        public CardValue CostCardValue => new CardValue{ value = CardType switch
+        {
+            'C' => CardValue.SummoningCost,
+            'S' => CardValue.CastingCost,
+            'A' => CardValue.AugmentCost,
+            _ => throw new System.NotImplementedException($"Cost Card Value string not implemented for card type {CardType}"),
+        }};
         #endregion
 
         public Sprite SimpleSprite { get; private set; }

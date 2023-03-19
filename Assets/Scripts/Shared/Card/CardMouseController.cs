@@ -11,48 +11,15 @@ namespace KompasCore.Cards
         public CardController card;
 
         public abstract UIController UIController { get; }
-        //public abstract Game Game { get; }
-
-        protected bool dragging = false;
 
         #region MouseStuff
-        private void GoToMouse()
-        {
-            //raycast to get point to drag to
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit hit))
-            {
-                card.gameObject.transform.position = new Vector3(hit.point.x, 1f, hit.point.z);
-            }
-        }
-
-        //actual interaction
-        public virtual void OnMouseDrag()
-        {
-            if (EventSystem.current.IsPointerOverGameObject()) return;
-
-            //don't allow dragging cards if we're awaiting a target
-            if (!UIController.AllowDragging) return;
-
-            dragging = true;
-            GoToMouse();
-        }
-
         public virtual void OnMouseExit()
         {
             if (EventSystem.current.IsPointerOverGameObject()) return;
 
             bool mouseDown = Input.GetMouseButton(0);
             //If the mouse isn't held down rn, then we want to stop showing whatever we're currently showing.
-            if (!mouseDown && !dragging) UIController.CardViewController.Show(null);
-
-            if (UIController.AllowDragging && dragging)
-            {
-                if (mouseDown) GoToMouse();
-                else OnMouseUp();
-
-                dragging = mouseDown;
-            }
+            if (!mouseDown) UIController.CardViewController.Show(null);
         }
 
         public virtual void OnMouseUp()
@@ -63,9 +30,6 @@ namespace KompasCore.Cards
 
             //select cards if the player releases the mouse button while over one
             UIController.CardViewController.Focus(card.Card);
-
-            if (!dragging) return;
-            dragging = false;
         }
 
         //TODO factor this out to a card controller base class, then inherit it for the search cards?

@@ -6,7 +6,7 @@ namespace KompasCore.UI
 {
     public class GameCardlikeViewController : TypicalCardViewController
     {
-        private static readonly Color32 NormalColor = new Color32(0, 0, 0, 255);
+        private static readonly Color32 NormalColor = new Color32(224, 224, 224, 255);
         private static readonly Color32 BuffColor = new Color32(0, 255, 0, 255);
         private static readonly Color32 DebuffColor = new Color32(255, 0, 0, 255);
 

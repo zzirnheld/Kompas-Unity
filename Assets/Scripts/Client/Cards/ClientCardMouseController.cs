@@ -11,33 +11,27 @@ namespace KompasClient.Cards
     //[RequireComponent(typeof(ClientCardController))]
     public class ClientCardMouseController : CardMouseController
     {
+        private const int RightMouseButton = 1;
+
         public ClientCardController clientCardController;
         public ClientUIController ClientUIController => clientCardController.ClientUIController;
         public override UIController UIController => ClientUIController;
-
-        public override void OnMouseDrag()
-        {
-            base.OnMouseDrag();
-            clientCardController.ClientGame.MarkCardDirty(card.Card);
-        }
 
         public override void OnMouseExit()
         {
             base.OnMouseExit();
             ClientUIController.cardInfoViewUIController.Refresh();
-            clientCardController.PutBack();
         }
 
         public override void OnMouseOver()
         {
             base.OnMouseOver();
 
-            if (Input.GetMouseButtonDown(1)) ClientUIController.rightClickUIController.Show(card.Card);
+            if (Input.GetMouseButtonDown(RightMouseButton)) ClientUIController.rightClickUIController.Show(card.Card);
         }
 
         public override void OnMouseUp()
         {
-            clientCardController.ClientGame.MarkCardDirty(card.Card);
             //don't do anything if we're over an event system object, 
             //because that would let us click on cards underneath prompts
             if (EventSystem.current.IsPointerOverGameObject())
@@ -52,12 +46,7 @@ namespace KompasClient.Cards
             {
                 ClientUIController.clientGame.searchCtrl.ToggleTarget(clientCardController.Card);
             }
-            else
-            {
-                ClientUIController.boardUIController.CardDragEnded(clientCardController);
-            }
 
-            clientCardController.PutBack();
             base.OnMouseUp();
         }
     }
