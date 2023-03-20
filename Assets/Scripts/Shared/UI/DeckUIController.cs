@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using KompasCore.Cards;
 using KompasCore.GameCore;
-using UnityEngine;
 
 namespace KompasCore.UI
 {
@@ -10,7 +6,6 @@ namespace KompasCore.UI
     {
         public DeckController deckController;
 
-        protected override IEnumerable<GameCard> Cards => deckController.Cards;
-        protected override BaseCardViewController CardViewController => deckController.Game.UIController.CardViewController;
+        protected override IGameLocation GameLocation => deckController;
     }
 }

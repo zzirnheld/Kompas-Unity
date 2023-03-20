@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using KompasCore.Cards;
+using KompasCore.GameCore;
 using UnityEngine;
 
 namespace KompasCore.UI
@@ -11,8 +12,9 @@ namespace KompasCore.UI
         public float localXOffset = 2f;
         public float localZOffset = -2f;
 
-        protected abstract IEnumerable<GameCard> Cards { get; }
-        protected abstract BaseCardViewController CardViewController { get; }
+        protected abstract IGameLocation GameLocation { get; }
+        protected IEnumerable<GameCard> Cards => GameLocation.Cards;
+        protected BaseCardViewController CardViewController => GameLocation.Game.UIController.CardViewController;
 
         public override IEnumerable<GameObject> Objects => Cards.Select(c => c.CardController.gameObject);
         protected override bool ForceExpand => Cards.Any(c => c == CardViewController.FocusedCard);

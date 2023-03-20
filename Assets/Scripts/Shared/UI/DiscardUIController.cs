@@ -1,6 +1,4 @@
-using KompasCore.Cards;
 using KompasCore.GameCore;
-using System.Collections.Generic;
 
 namespace KompasCore.UI
 {
@@ -8,7 +6,6 @@ namespace KompasCore.UI
     {
         public DiscardController discardController;
 
-        protected override IEnumerable<GameCard> Cards => discardController.Cards;
-        protected override BaseCardViewController CardViewController => discardController.Game.UIController.CardViewController;
+        protected override IGameLocation GameLocation => discardController;
     }
 }
