@@ -73,7 +73,7 @@ namespace KompasCore.UI
             handleStatColors(unzoomedNText, unzoomedEText, unzoomedCostText, unzoomedWText);
 
             bool isChar = ShownCard.CardType == 'C';
-            voxelCardUser.Set(isChar, Zoomed, default);
+            voxelCardUser.Set(isChar, Zoomed, ShownCard.FileName);
 
             unzoomedUI.SetActive(!Zoomed);
             zoomedUI.SetActive(Zoomed);
@@ -171,9 +171,11 @@ namespace KompasCore.UI
         {
             if (oldFileName == ShownCard.FileName) return;
 
+            Debug.Log($"Displaying {ShownCard.CardName} aka {ShownCard.FileName}");
+
             base.DisplayCardImage(cardImageSprite);
             //TODO split this out if I ever make chars able to become spells or vice versa
-            voxelCardUser.Set(ShownCard.CardType == 'C', Zoomed, cardImageSprite);
+            voxelCardUser.Set(ShownCard.CardType == 'C', Zoomed, ShownCard.FileName);
 
             oldFileName = ShownCard.FileName;
         }

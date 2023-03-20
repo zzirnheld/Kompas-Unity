@@ -65,6 +65,8 @@ public class CardRepository : MonoBehaviour
     [Header("Standard Game")]
     public GameObject CardPrefab;
 
+    public static void Init() => InitializeCardJsons();
+
     private void Awake()
     {
         lock (initializationLock)
@@ -85,7 +87,7 @@ public class CardRepository : MonoBehaviour
         }
     }
 
-    private void InitializeCardJsons()
+    private static void InitializeCardJsons()
     {
         static bool isCardToIgnore(string name) => string.IsNullOrWhiteSpace(name) || cardNamesToIgnore.Contains(name);
 
@@ -128,6 +130,7 @@ public class CardRepository : MonoBehaviour
 
             //add the cleaned json to the dictionary
             //if this throws a key existing exception, you probably have two cards with the same name field, but diff file names
+            if (cardJsons.ContainsKey(cardName)) continue;
             cardJsons.Add(cardName, json);
             cardFileNames.Add(cardName, filename);
         }
@@ -177,7 +180,7 @@ public class CardRepository : MonoBehaviour
     private static readonly Regex threeSpaceRelationshipRegex = new Regex(@"ThreeSpaceRelationships:([^:]+):"); //ThreeSpaceRelationships:*:
     private const string threeSpaceRelationshipReplacement = @"KompasCore.Effects.Identities.ThreeSpaceRelationships.$1, Assembly-CSharp";
 
-    private string ReplacePlaceholders(string json)
+    private static string ReplacePlaceholders(string json)
     {
         //remove problematic chars for from json function
         json = json.Replace('\n', ' ');
