@@ -3253,6 +3253,7 @@ MonoBehaviour:
   behind: {fileID: 0}
   behindBoundsMultiplier: 0
   localXOffset: -2
+  localXOffsetByRow: 0
   localZOffset: 2
   discardController: {fileID: 116530641}
 --- !u!1 &118849580
@@ -5116,6 +5117,7 @@ MonoBehaviour:
   behind: {fileID: 0}
   behindBoundsMultiplier: 0
   localXOffset: 2
+  localXOffsetByRow: -4
   localZOffset: -2
   deckController: {fileID: 2534840227050861151}
 --- !u!65 &242881464
@@ -9843,6 +9845,7 @@ MonoBehaviour:
   behind: {fileID: 0}
   behindBoundsMultiplier: 0
   localXOffset: 2
+  localXOffsetByRow: 0
   localZOffset: -2
   discardController: {fileID: 540378492}
 --- !u!1 &548798149
@@ -12584,6 +12587,7 @@ MonoBehaviour:
   behind: {fileID: 0}
   behindBoundsMultiplier: 0
   localXOffset: 2
+  localXOffsetByRow: 0
   localZOffset: -2
   annihilationController: {fileID: 696614913}
 --- !u!114 &696614913
@@ -14349,6 +14353,7 @@ MonoBehaviour:
   behind: {fileID: 0}
   behindBoundsMultiplier: 0
   localXOffset: 2
+  localXOffsetByRow: 0
   localZOffset: 2
   annihilationController: {fileID: 803167340}
 --- !u!65 &803167339

@@ -13,8 +13,10 @@ namespace KompasCore.UI
     public abstract class StackableGameLocationUIController : StackableEntitiesController
     {
         [Header("OVERRIDE: Grid offsets")]
-        [Tooltip("X offset for objects in the grid pattern. Overrides the behavior of the constant vector offset specified in the base class")]
-        public float localXOffset = 2f;
+        [Tooltip("X offset for objects in the grid pattern, multiplied by the column the object is in. Overrides the behavior of the constant vector offset specified in the base class")]
+        public float localXOffset = 2f; //By column
+        [Tooltip("X offset for objects in the grid pattern, multiplied by the row the object is in")]
+        public float localXOffsetByRow = 0f;
         [Tooltip("Z offset for objects in the grid pattern. Overrides the behavior of the constant vector offset specified in the base class")]
         public float localZOffset = -2f;
 
@@ -47,7 +49,7 @@ namespace KompasCore.UI
             foreach (var obj in Objects)
             {
                 TakeOwnershipOf(obj);
-                obj.transform.localPosition = new Vector3(localXOffset * (x + y), 0f, localZOffset * y);
+                obj.transform.localPosition = new Vector3(localXOffset * (x + y) + localXOffsetByRow * y, 0f, localZOffset * y);
 
                 x = (x + 1) % wrapLen;
                 if (x == 0) y++;
