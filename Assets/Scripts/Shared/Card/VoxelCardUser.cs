@@ -122,7 +122,7 @@ public class VoxelCardUser : MonoBehaviour
     private Texture2D Copy(Texture2D baseTexture, Texture2D cardSpecificTexture)
     {
         var texture = new Texture2D(baseTexture.width, baseTexture.height);
-        texture.SetPixels(0, 0, texture.width, texture.height, baseTexture.GetPixels(0, 0, baseTexture.width, baseTexture.height));
+        texture.SetPixels(baseTexture.GetPixels());
         var width = cardSpecificTexture.width;
         var height = cardSpecificTexture.height;
         texture.SetPixels(width, height - 1, width, height, cardSpecificTexture.GetPixels(0, 0, width, height));
