@@ -8,11 +8,11 @@ namespace KompasCore.UI
     public class StackableEntitiesController : MonoBehaviour
     {
         [Header("Offsets")]
-        [Tooltip("Between objects while collapsed")]
+        [Tooltip("Constant offset between objects while collapsed")]
         public Vector3 collapsedOffset;
-        [Tooltip("Between objects while expanded")]
+        [Tooltip("Constant offset between objects while expanded")]
         public Vector3 expandedOffset;
-        [Tooltip("Offset for the entire from parent while it's expanded")]
+        [Tooltip("Constant y offset for the entire from parent while it's expanded")]
         public float whileExpandedOffset;
 
         [Header("Collider attributes")]
@@ -49,7 +49,7 @@ namespace KompasCore.UI
         protected virtual bool ForceExpand => false;
         protected virtual bool ForceCollapse => false;
 
-        private void Update()
+        protected void Update()
         {
             if (ForceExpand)
             {

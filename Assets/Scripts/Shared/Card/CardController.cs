@@ -15,6 +15,8 @@ namespace KompasCore.Cards
 
         public abstract GameCard Card { get; }
 
+        public bool ShownInSearch { get; set; }
+
         public virtual void SetPhysicalLocation(CardLocation location)
         {
             //Debug.Log($"Card controller of {card.CardName} setting physical location in {card.Location} to {card.BoardX}, {card.BoardY}");
@@ -36,8 +38,10 @@ namespace KompasCore.Cards
             {
                 case CardLocation.Nowhere: break;
                 case CardLocation.Deck:
+                    if (ShownInSearch) break;
                     transform.SetParent(Card.Controller.deckObject.transform);
-                    gameObject.SetActive(false);
+                    gameObject.SetActive(false); //Setting active/inactive is also currently handled by the GameCardViewController. 
+                    //TODO: make setActive only be handled by one of these
                     break;
                 case CardLocation.Board:
                     transform.localScale = Vector3.one;

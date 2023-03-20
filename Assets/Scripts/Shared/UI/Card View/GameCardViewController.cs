@@ -62,7 +62,9 @@ namespace KompasCore.UI
 
         protected override bool ShowingInfo
         {
-            set => base.ShowingInfo = value && ShownGameCard?.Location != CardLocation.Deck && ShownGameCard?.Location != CardLocation.Nowhere;
+            set => base.ShowingInfo = value
+                && (ShownGameCard.CardController.ShownInSearch
+                    || (ShownGameCard?.Location != CardLocation.Deck && ShownGameCard?.Location != CardLocation.Nowhere));
         }
 
         protected virtual void HandleZoom()

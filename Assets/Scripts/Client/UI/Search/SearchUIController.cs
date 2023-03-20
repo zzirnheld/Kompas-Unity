@@ -27,6 +27,7 @@ namespace KompasClient.UI.Search
 
         public ClientSidebarCardViewController cardViewController;
         public ClientSearchController searchController;
+        public ClientDeckUIController deckUIController;
 
         private readonly List<GameObject> searchGameObjects = new List<GameObject>();
         private bool Searching => searchController.CurrSearchData.HasValue;
@@ -43,6 +44,8 @@ namespace KompasClient.UI.Search
             cardViewController.ClearFocusLock();
 
             gameObject.SetActive(false);
+
+            deckUIController.StopSearching();
         }
 
         #region Comparison
@@ -68,6 +71,8 @@ namespace KompasClient.UI.Search
                 return;
             }
 
+            deckUIController.ShowSearching(CurrSearchData.toSearch);
+
             var toSearch = CurrSearchData.toSearch.GroupBy(c => c, this).ToList();
             //Clear focus so player must click on card twice to select
             if (CurrSearchData.toSearch.Contains(cardViewController.FocusedCard)
@@ -81,6 +86,7 @@ namespace KompasClient.UI.Search
             int row = 0;
             foreach(var stackedCards in toSearch)
             {
+                //Filter to find out which card are currently visible
                 var shownCards = stackedCards.Where(card => !card.CardController.gameObject.activeSelf).ToList();
 
                 if (shownCards.Count == 0)
