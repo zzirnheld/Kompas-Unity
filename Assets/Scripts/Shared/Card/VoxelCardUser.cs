@@ -37,6 +37,7 @@ public class VoxelCardUser : MonoBehaviour
 
     private static readonly string cardTexturesPath = Path.Join("Assets", "Card Textures");
 
+    /*Uncomment when wanting to regen textures (I don't wanna allow confusing methods while normal code is being used.) also uncomment in VoxelCardUserEditor for the generate button
     public void Generate()
     {
         // Uncomment to regen textures...
@@ -92,6 +93,20 @@ public class VoxelCardUser : MonoBehaviour
         Set(isChar, zoomed, zoomed ? ZoomedTex : UnzoomedTex, zoomed ? ZoomedMet : UnzoomedMet);
     }
 
+    //TODO: refactor this method to copy the section of the texture that has the card face, and remove all the other redundant stuff from the saved textures
+    private (Texture2D, Texture2D) Copy(Texture2D oldTexture, Texture2D oldMetalness, bool zoomed, Sprite cardArt)
+    {
+        var texture = new Texture2D(oldTexture.width, oldTexture.height);
+        texture.SetPixels(oldTexture.GetPixels());
+        texture.Apply();
+        var metalness = new Texture2D(oldMetalness.width, oldMetalness.height);
+        metalness.SetPixels(oldMetalness.GetPixels());
+        metalness.Apply();
+
+        VoxelCard.BuildTextureCardArt(256, !zoomed, 0.0225f, VoxelCard.GetCharacterArtUpperBound(!zoomed), VoxelCard.GetCharacterArtSamplingIncrementRatio(!zoomed), cardArt, 0f, 0f, texture, metalness);
+        return (texture, metalness);
+    }*/
+
     private const string ZoomedTextureFolder = "Assets/Resources/Card Textures/Zoomed/Texture";
     private const string ZoomedMetalnessFolder = "Assets/Resources/Card Textures/Zoomed/Metalness";
     private const string UnzoomedTextureFolder = "Assets/Resources/Card Textures/Unzoomed/Texture";
@@ -145,19 +160,5 @@ public class VoxelCardUser : MonoBehaviour
         var material = meshRenderer.material;
         material.SetTexture(MainTextureName, texture);
         material.SetTexture(MainMetalnessName, metalness);
-    }
-
-    //TODO: refactor this method to copy the section of the texture that has the card face, and remove all the other redundant stuff from the saved textures
-    private (Texture2D, Texture2D) Copy(Texture2D oldTexture, Texture2D oldMetalness, bool zoomed, Sprite cardArt)
-    {
-        var texture = new Texture2D(oldTexture.width, oldTexture.height);
-        texture.SetPixels(oldTexture.GetPixels());
-        texture.Apply();
-        var metalness = new Texture2D(oldMetalness.width, oldMetalness.height);
-        metalness.SetPixels(oldMetalness.GetPixels());
-        metalness.Apply();
-
-        VoxelCard.BuildTextureCardArt(256, !zoomed, 0.0225f, VoxelCard.GetCharacterArtUpperBound(!zoomed), VoxelCard.GetCharacterArtSamplingIncrementRatio(!zoomed), cardArt, 0f, 0f, texture, metalness);
-        return (texture, metalness);
     }
 }

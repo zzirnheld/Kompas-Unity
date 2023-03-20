@@ -19,7 +19,7 @@ public class VoxelCardUserEditor : Editor
         {
             if (GUILayout.Button("Generate"))
             {
-                TargetComponent.Generate();
+                //TargetComponent.Generate();
                 g = true;
             }
             base.OnInspectorGUI();
