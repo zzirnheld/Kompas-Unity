@@ -16,6 +16,9 @@ namespace KompasClient.UI
         [EnumNamedArray(typeof(ConnectionState))]
         public GameObject[] connectionStateParents; //Should be in order of the above enum
 
+        public NewDeckSelectUIController deckSelectUIController;
+        public DeckAcceptedUIController deckAcceptedUIController;
+
         private string defaultIP;
 
         public void ApplySettings(ClientSettings settings)
@@ -45,5 +48,11 @@ namespace KompasClient.UI
         public void Hide() => gameObject.SetActive(false);
 
         public void Show(ConnectionState connectionState) => CollectionsHelper.ShowOnly(connectionStateParents, (int)connectionState);
+
+        public void DeckAccepted()
+        {
+            deckAcceptedUIController.ShowFriendlyAvatar(deckSelectUIController.AvatarFileName);
+            Show(UI.ConnectionUIController.ConnectionState.DeckAccepted);
+        }
     }
 }

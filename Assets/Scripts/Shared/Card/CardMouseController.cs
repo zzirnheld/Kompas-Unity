@@ -1,5 +1,4 @@
-﻿using KompasCore.GameCore;
-using KompasCore.UI;
+﻿using KompasCore.UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
 

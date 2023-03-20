@@ -130,6 +130,8 @@ namespace KompasClient.GameCore
             owner.Avatar = avatar;
             Space to = player == 0 ? Space.NearCorner : Space.FarCorner;
             avatar.Play(to, owner);
+
+            if (player == 1) clientUIController.connectionUIController.deckAcceptedUIController.ShowEnemyAvatar(avatar.FileName);
         }
 
         public void Delete(GameCard card)

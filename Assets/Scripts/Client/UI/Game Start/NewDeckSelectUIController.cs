@@ -19,6 +19,8 @@ namespace KompasClient.UI
 
         private IList<DeckSelectCardController> currDeck = new List<DeckSelectCardController>();
 
+        public string AvatarFileName => currDeck.Count < 1 ? null : currDeck[0].Card.FileName;
+
         private void Start() => Load();
 
         public void SelectionChanged(int index) => Show(dropdown.options[index].text);

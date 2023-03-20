@@ -16,6 +16,6 @@ namespace KompasClient.Networking
     public class DeckAcceptedClientPacket : DeckAcceptedPacket, IClientOrderPacket
     {
         public void Execute(ClientGame clientGame)
-            => clientGame.clientUIController.connectionUIController.Show(UI.ConnectionUIController.ConnectionState.DeckAccepted);
+            => clientGame.clientUIController.connectionUIController.DeckAccepted();
     }
 }
