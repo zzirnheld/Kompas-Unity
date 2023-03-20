@@ -17,6 +17,11 @@ namespace KompasClient.GameCore
         /// <param name="space"></param>
         public void AttemptPutCard(GameCard card, Space space)
         {
+            if (space == null)
+            {
+                Debug.LogWarning($"Tried to put {card} in null space");
+                return;
+            }
             var (x, y) = space;
 
             //if the card is being moved on the field, that means it's just being moved

@@ -34,7 +34,7 @@ namespace KompasClient.Networking
             var controller = clientGame.Players[controllerIndex];
             if (card != null && controller != null) card.Controller = controller;
             //If this fails, it's probably because the card doesn't exist, because it's a card that hasn't been sent to the client.
-            else Debug.Log($"Could not set card controller, card: {card}; controller: {controller}");
+            // else Debug.Log($"Could not set card controller, card: {card}; controller: {controller}");
         }
     }
 }
