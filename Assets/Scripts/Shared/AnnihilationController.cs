@@ -8,14 +8,14 @@ using UnityEngine;
 namespace KompasCore.GameCore
 {
     //Not abstract because Client uses this base class
-    public class AnnihilationController : GameLocation
+    public abstract class AnnihilationController : GameLocation
     {
         public AnnihilationUIController annihilationUIController;
 
         private readonly List<GameCard> cards = new List<GameCard>();
 
         public override CardLocation CardLocation => CardLocation.Annihilation;
-        public IReadOnlyCollection<GameCard> Cards => cards;
+        public override IEnumerable<GameCard> Cards => cards;
 
 
         /// <summary>

@@ -6,7 +6,11 @@ namespace KompasServer.GameCore
 {
     public class ServerAnnihilationController : AnnihilationController
     {
-        public ServerGame ServerGame;
+        public ServerPlayer owner;
+
+        public override Player Owner => Owner;
+
+        public ServerGame ServerGame => owner.game;
 
         public override bool Annihilate(GameCard card, IStackable stackSrc = null)
         {
@@ -15,7 +19,7 @@ namespace KompasServer.GameCore
             bool actuallyAnnihilated = base.Annihilate(card, stackSrc);
             if (actuallyAnnihilated)
             {
-                ServerGame.serverPlayers[card.ControllerIndex].ServerNotifier.NotifyAnnhilate(card, wasKnown);
+                ServerGame.serverPlayers[card.ControllerIndex].notifier.NotifyAnnhilate(card, wasKnown);
                 context.CacheCardInfoAfter();
                 ServerGame.effectsController.TriggerForCondition(Trigger.Annhilate, context);
             }

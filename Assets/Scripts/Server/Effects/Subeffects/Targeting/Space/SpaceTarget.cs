@@ -57,7 +57,7 @@ namespace KompasServer.Effects.Subeffects
                 var (a, b) = (-1, -1);
                 while (!SetTargetIfValid(a, b))
                 {
-                    (a, b) = await ServerPlayer.serverAwaiter.GetSpaceTarget(Source.CardName, spaceRestriction.blurb, spaces, recommendedSpaces);
+                    (a, b) = await ServerPlayer.awaiter.GetSpaceTarget(Source.CardName, spaceRestriction.blurb, spaces, recommendedSpaces);
                     if ((a, b) == (-1, -1) && ServerEffect.CanDeclineTarget) return ResolutionInfo.Impossible(DeclinedFurtherTargets);
                 }
                 return ResolutionInfo.Next;
@@ -76,7 +76,7 @@ namespace KompasServer.Effects.Subeffects
             {
                 Debug.Log($"Adding {x}, {y} as coords");
                 ServerEffect.AddSpace((x, y));
-                ServerPlayer.ServerNotifier.AcceptTarget();
+                ServerPlayer.notifier.AcceptTarget();
                 return true;
             }
             //else Debug.LogError($"{x}, {y} not valid for restriction {spaceRestriction}");

@@ -12,7 +12,7 @@ namespace KompasServer.Effects.Subeffects
     /// </summary>
     public class DeckTargetSubeffect : CardTarget
     {
-        protected override IEnumerable<GameCard> TargetCardsSource => Controller.deckCtrl.Deck;
+        protected override IEnumerable<GameCard> TargetCardsSource => Controller.deckCtrl.Cards;
 
         public override bool AddTargetIfLegal(GameCard card)
         {
@@ -21,7 +21,7 @@ namespace KompasServer.Effects.Subeffects
             {
                 card.Controller.deckCtrl.Shuffle();
                 ServerEffect.AddTarget(card);
-                ServerPlayer.ServerNotifier.AcceptTarget();
+                ServerPlayer.notifier.AcceptTarget();
                 return true;
             }
             else
@@ -43,7 +43,7 @@ namespace KompasServer.Effects.Subeffects
         }
 
         protected override IEnumerable<GameCard> TargetCardsSource
-            => Controller.deckCtrl.Deck.Take(numberOfTopCards.From(CurrentContext, default));
+            => Controller.deckCtrl.Cards.Take(numberOfTopCards.From(CurrentContext, default));
 
         public override bool AddTargetIfLegal(GameCard card)
         {
@@ -52,7 +52,7 @@ namespace KompasServer.Effects.Subeffects
             {
                 DeckController.BottomdeckMany(TargetCardsSource.Where(c => c != card));
                 ServerEffect.AddTarget(card);
-                ServerPlayer.ServerNotifier.AcceptTarget();
+                ServerPlayer.notifier.AcceptTarget();
                 return true;
             }
             else

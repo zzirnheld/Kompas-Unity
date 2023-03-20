@@ -87,7 +87,7 @@ namespace KompasServer.Effects
 
         public async Task Ask(int x)
         {
-            Confirmed = await serverEffect.ServerController.serverAwaiter.GetOptionalTriggerChoice(this, x, TriggerData.showX);
+            Confirmed = await serverEffect.ServerController.awaiter.GetOptionalTriggerChoice(this, x, TriggerData.showX);
             Responded = true;
         }
     }

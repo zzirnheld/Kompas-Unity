@@ -124,7 +124,7 @@ namespace KompasServer.Effects
             TimesUsedThisStack++;
             serverGame = game;
             Controller = ctrl;
-            ctrl.ServerNotifier.NotifyEffectActivated(this);
+            ctrl.notifier.NotifyEffectActivated(this);
         }
 
         #region resolution
@@ -149,8 +149,8 @@ namespace KompasServer.Effects
             if (context.stackableCause != null) stackableTargets.Add(context.stackableCause);
 
             //notify relevant to this effect starting
-            ServerController.ServerNotifier.NotifyEffectX(Source, EffectIndex, X);
-            ServerController.ServerNotifier.EffectResolving(this);
+            ServerController.notifier.NotifyEffectX(Source, EffectIndex, X);
+            ServerController.notifier.EffectResolving(this);
 
             //resolve the effect if possible
             if (Negated) await EffectImpossible(EffectWasNegated);
@@ -206,7 +206,7 @@ namespace KompasServer.Effects
             }
             Debug.Log($"Resolving subeffect of type {subeffects[index].GetType()}");
             SubeffectIndex = index;
-            ServerController.ServerNotifier.NotifyEffectX(Source, EffectIndex, X);
+            ServerController.notifier.NotifyEffectX(Source, EffectIndex, X);
             try
             {
                 return await subeffects[index].Resolve();
@@ -229,7 +229,7 @@ namespace KompasServer.Effects
             cardTargets.Clear();
             rest.Clear();
             OnImpossible = null;
-            ServerController.ServerNotifier.NotifyBothPutBack();
+            ServerController.notifier.NotifyBothPutBack();
         }
 
         /// <summary>
@@ -242,7 +242,7 @@ namespace KompasServer.Effects
             if (OnImpossible == null)
             {
                 //TODO make the notifier tell the client why the effect was impossible
-                ServerController.ServerNotifier.EffectImpossible();
+                ServerController.notifier.EffectImpossible();
                 return ResolutionInfo.End(ResolutionInfo.EndedBecauseImpossible);
             }
             else
@@ -256,13 +256,13 @@ namespace KompasServer.Effects
         public override void AddTarget(GameCard card)
         {
             base.AddTarget(card);
-            serverGame.ServerControllerOf(card).ServerNotifier.SetTarget(Source, EffectIndex, card);
+            serverGame.ServerControllerOf(card).notifier.SetTarget(Source, EffectIndex, card);
         }
 
         public override void RemoveTarget(GameCard card)
         {
             base.RemoveTarget(card);
-            serverGame.ServerControllerOf(card).ServerNotifier.RemoveTarget(Source, EffectIndex, card);
+            serverGame.ServerControllerOf(card).notifier.RemoveTarget(Source, EffectIndex, card);
         }
 
         public void CreateCardLink(params GameCard[] cards)
@@ -272,7 +272,7 @@ namespace KompasServer.Effects
 
             var link = new CardLink(new HashSet<int>(validCards.Select(c => c.ID)), this);
             cardLinks.Add(link);
-            ServerController.ServerNotifier.AddCardLink(link);
+            ServerController.notifier.AddCardLink(link);
         }
 
         public void DestroyCardLink(int index)
@@ -280,7 +280,7 @@ namespace KompasServer.Effects
             var link = EffectHelpers.GetItem(cardLinks, index);
             if (cardLinks.Remove(link))
             {
-                ServerController.ServerNotifier.RemoveCardLink(link);
+                ServerController.notifier.RemoveCardLink(link);
             }
         }
 

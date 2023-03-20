@@ -10,7 +10,7 @@ namespace KompasServer.Effects.Subeffects
         public bool showX = false;
 
         private async Task<int> AskForOptionChoice()
-            => await ServerPlayer.serverAwaiter
+            => await ServerPlayer.awaiter
                 .GetEffectOption(cardName: Source.CardName,
                                  choiceBlurb: choiceBlurb,
                                  optionBlurbs: optionBlurbs,

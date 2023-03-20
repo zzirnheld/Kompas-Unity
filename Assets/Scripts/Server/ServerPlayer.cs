@@ -2,6 +2,7 @@
 using KompasCore.Cards.Movement;
 using KompasCore.Effects;
 using KompasCore.Exceptions;
+using KompasCore.GameCore;
 using KompasServer.Effects;
 using KompasServer.GameCore.Extensions;
 using KompasServer.Networking;
@@ -13,14 +14,15 @@ namespace KompasServer.GameCore
 {
     public class ServerPlayer : Player
     {
-        public ServerPlayer ServerEnemy;
-        public ServerGame serverGame;
-        public ServerNetworkController ServerNetworkCtrl;
-        public ServerNotifier ServerNotifier;
-        public ServerAwaiter serverAwaiter;
+        public ServerPlayer enemy;
+        public ServerGame game;
+        public ServerNetworkController networkController;
+        public ServerNotifier notifier;
+        public ServerAwaiter awaiter;
 
-        public override Player Enemy => ServerEnemy;
+        public override Player Enemy => enemy;
         public override bool Friendly => false;
+        public override Game Game => game;
 
         public override int Pips
         {
@@ -28,7 +30,7 @@ namespace KompasServer.GameCore
             set
             {
                 base.Pips = value;
-                ServerNotifier.NotifySetPips(Pips);
+                notifier.NotifySetPips(Pips);
             }
         }
 
@@ -38,7 +40,7 @@ namespace KompasServer.GameCore
             set
             {
                 base.Avatar = value;
-                ServerNotifier.SetFriendlyAvatar(value.BaseJson, value.ID);
+                notifier.SetFriendlyAvatar(value.BaseJson, value.ID);
             }
         }
 
@@ -46,7 +48,7 @@ namespace KompasServer.GameCore
         {
             base.SetInfo(tcpClient, index);
 
-            ServerNetworkCtrl.SetInfo(tcpClient);
+            networkController.SetInfo(tcpClient);
         }
 
         //If the player tries to do something, it goes here to check if it's ok, then do it if it is ok.
@@ -60,17 +62,17 @@ namespace KompasServer.GameCore
         {
             try
             {
-                if (serverGame.IsValidNormalAttach(aug, space, this))
+                if (game.IsValidNormalAttach(aug, space, this))
                 {
                     aug.Play(space, this, payCost: true);
-                    await serverGame.effectsController.CheckForResponse();
+                    await game.effectsController.CheckForResponse();
                 }
-                else ServerNotifier.NotifyPutBack();
+                else notifier.NotifyPutBack();
             }
             catch (KompasException ke)
             {
                 Debug.LogError(ke);
-                ServerNotifier.NotifyPutBack();
+                notifier.NotifyPutBack();
             }
         }
 
@@ -78,21 +80,21 @@ namespace KompasServer.GameCore
         {
             try
             {
-                if (serverGame.IsValidNormalPlay(card, space, this))
+                if (game.IsValidNormalPlay(card, space, this))
                 {
                     card.Play(space, this, payCost: true);
-                    await serverGame.effectsController.CheckForResponse();
+                    await game.effectsController.CheckForResponse();
                 }
                 else
                 {
                     Debug.LogWarning($"Player {index} attempted an invalid play of {card} to {space}.");
-                    ServerNotifier.NotifyPutBack();
+                    notifier.NotifyPutBack();
                 }
             }
             catch (KompasException ke)
             {
                 Debug.LogError($"Player {index} attempted an invalid play of {card} to {space}. Resulting exception:\n{ke}");
-                ServerNotifier.NotifyPutBack();
+                notifier.NotifyPutBack();
             }
         }
 
@@ -101,17 +103,17 @@ namespace KompasServer.GameCore
             //if it's not a valid place to do, put the cards back
             try
             {
-                if (serverGame.IsValidNormalMove(toMove, space, this))
+                if (game.IsValidNormalMove(toMove, space, this))
                 {
                     toMove.Move(space, true);
-                    await serverGame.effectsController.CheckForResponse();
+                    await game.effectsController.CheckForResponse();
                 }
-                else ServerNotifier.NotifyPutBack();
+                else notifier.NotifyPutBack();
             }
             catch (KompasException ke)
             {
                 Debug.LogError(ke);
-                ServerNotifier.NotifyPutBack();
+                notifier.NotifyPutBack();
             }
         }
 
@@ -125,26 +127,26 @@ namespace KompasServer.GameCore
             Debug.Log($"Player {index} trying to activate effect of {effect?.Source?.CardName}");
             if (effect.CanBeActivatedBy(this))
             {
-                serverGame.effectsController.PushToStack(effect, this, new ActivationContext(game: serverGame, stackableEvent: effect));
-                await serverGame.effectsController.CheckForResponse();
+                game.effectsController.PushToStack(effect, this, new ActivationContext(game: game, stackableEvent: effect));
+                await game.effectsController.CheckForResponse();
             }
         }
 
         public async Task TryAttack(GameCard attacker, GameCard defender)
         {
-            ServerNotifier.NotifyBothPutBack();
+            notifier.NotifyBothPutBack();
 
-            if (serverGame.IsValidNormalAttack(attacker, defender, this))
+            if (game.IsValidNormalAttack(attacker, defender, this))
             {
-                serverGame.Attack(attacker, defender, this, stackSrc: default, manual: true);
-                await serverGame.effectsController.CheckForResponse();
+                game.Attack(attacker, defender, this, stackSrc: default, manual: true);
+                await game.effectsController.CheckForResponse();
             }
         }
 
         public async Task TryEndTurn()
         {
-            if (serverGame.NothingHappening && serverGame.TurnPlayer == this)
-                await serverGame.SwitchTurn();
+            if (game.NothingHappening && game.TurnPlayer == this)
+                await game.SwitchTurn();
         }
         #endregion Player Control Methods
     }

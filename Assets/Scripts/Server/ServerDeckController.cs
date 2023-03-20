@@ -1,4 +1,5 @@
-﻿using KompasCore.Cards;
+﻿using System.Linq;
+using KompasCore.Cards;
 using KompasCore.Effects;
 using KompasCore.GameCore;
 using KompasServer.Effects;
@@ -8,13 +9,13 @@ namespace KompasServer.GameCore
 {
     public class ServerDeckController : DeckController
     {
-        public ServerGame ServerGame;
-
-        public ServerNotifier ServerNotifier => ServerGame.serverPlayers[Owner.index].ServerNotifier;
-        public ServerEffectsController EffectsController => ServerGame.effectsController;
-
-        public override Player Owner => owner;
         public ServerPlayer owner;
+
+        public override Player Owner => Owner;
+        
+        public ServerGame ServerGame => owner.game;
+        public ServerNotifier ServerNotifier => ServerGame.serverPlayers[Owner.index].notifier;
+        public ServerEffectsController EffectsController => ServerGame.effectsController;
 
         protected override bool AddToDeck(GameCard card, IStackable stackSrc = null)
         {
@@ -24,7 +25,7 @@ namespace KompasServer.GameCore
             {
                 context.CacheCardInfoAfter();
                 EffectsController.TriggerForCondition(Trigger.ToDeck, context);
-                owner.ServerNotifier.NotifyDeckCount(Deck.Count);
+                owner.notifier.NotifyDeckCount(Cards.Count());
             }
             return successfulAdd;
         }
@@ -74,7 +75,7 @@ namespace KompasServer.GameCore
         public override void Remove(GameCard card)
         {
             base.Remove(card);
-            owner.ServerNotifier.NotifyDeckCount(Deck.Count);
+            owner.notifier.NotifyDeckCount(Cards.Count());
         }
     }
 }

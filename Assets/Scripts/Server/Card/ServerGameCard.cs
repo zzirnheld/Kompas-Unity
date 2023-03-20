@@ -22,7 +22,7 @@ namespace KompasServer.Cards
         public override CardController CardController => ServerCardController;
 
         public ServerEffectsController EffectsController => ServerGame?.effectsController;
-        public ServerNotifier ServerNotifier => ServerController?.ServerNotifier;
+        public ServerNotifier ServerNotifier => ServerController?.notifier;
 
         private ServerPlayer serverController;
         public ServerPlayer ServerController
@@ -75,7 +75,7 @@ namespace KompasServer.Cards
             protected set
             {
                 if (Location == CardLocation.Hand && value != CardLocation.Hand && !KnownToEnemy)
-                    ServerController.ServerEnemy.ServerNotifier.NotifyDecrementHand();
+                    ServerController.enemy.notifier.NotifyDecrementHand();
 
                 if (Location != value) ResetCard();
 
@@ -110,15 +110,15 @@ namespace KompasServer.Cards
         }
 
         public ServerGameCard(ServerSerializableCard card, int id, ServerCardController serverCardController, ServerPlayer owner, ServerEffect[] effects)
-            : base(card, id, owner.serverGame)
+            : base(card, id, owner.game)
         {
-            owner.serverGame.AddCard(this);
+            owner.game.AddCard(this);
             ServerCardController = serverCardController;
             serverCardController.serverCard = this;
             //Don't just grab effects from the card, because that won't include keywords
 
             ServerEffects = effects;
-            ServerGame = owner.serverGame;
+            ServerGame = owner.game;
             ServerOwner = ServerController = owner;
             foreach (var (index, eff) in effects.Enumerate())
                 eff.SetInfo(this, ServerGame, owner, index);
@@ -177,7 +177,7 @@ namespace KompasServer.Cards
             augmentedContext.CacheCardInfoAfter();
             EffectsController.TriggerForCondition(Trigger.AugmentAttached, attachedContext);
             EffectsController.TriggerForCondition(Trigger.Augmented, augmentedContext);
-            ServerGame.serverPlayers[augment.ControllerIndex].ServerNotifier.NotifyAttach(augment, Position, wasKnown);
+            ServerGame.serverPlayers[augment.ControllerIndex].notifier.NotifyAttach(augment, Position, wasKnown);
         }
 
         protected override void Detach(IStackable stackSrc = null)
@@ -227,7 +227,7 @@ namespace KompasServer.Cards
             EffectsController.TriggerForCondition(Trigger.Revealed, context);
             //logic for actually revealing to client has to happen server-side.
             KnownToEnemy = true;
-            ServerController.ServerEnemy.ServerNotifier.NotifyRevealCard(this);
+            ServerController.enemy.notifier.NotifyRevealCard(this);
         }
 
         #region stats

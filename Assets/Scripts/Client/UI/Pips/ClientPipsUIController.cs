@@ -58,9 +58,9 @@ namespace KompasClient.UI
         /// <param name="value"></param>
         private void ShowPipsFor(int value)
         {
-            Debug.Log($"Updating player {player.index} pips to {value} while leyload is {player.clientGame.Leyload} and turn player is {player.clientGame.TurnPlayer.index}");
+            Debug.Log($"Updating player {player.index} pips to {value} while leyload is {player.game.Leyload} and turn player is {player.game.TurnPlayer.index}");
             pipsText.text = $"{value}";
-            nextTurnPipsText.text = $"{player.clientGame.Leyload + (player.clientGame.TurnPlayer.index == player.index ? 2 : 1)}";
+            nextTurnPipsText.text = $"{player.game.Leyload + (player.game.TurnPlayer.index == player.index ? 2 : 1)}";
 
             foreach (var obj in objsList) Destroy(obj);
             objsList.Clear();

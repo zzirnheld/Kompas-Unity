@@ -13,7 +13,7 @@ namespace KompasServer.Effects.Subeffects
             XRest.Initialize(DefaultInitializationContext);
         }
 
-        private async Task<int> AskForX() => await ServerPlayer.serverAwaiter.GetPlayerXValue();
+        private async Task<int> AskForX() => await ServerPlayer.awaiter.GetPlayerXValue();
 
         public override async Task<ResolutionInfo> Resolve()
         {

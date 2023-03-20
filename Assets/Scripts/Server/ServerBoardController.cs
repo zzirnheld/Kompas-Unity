@@ -16,7 +16,7 @@ namespace KompasServer.GameCore
         public ServerGame ServerGame;
         public override Game Game => ServerGame;
 
-        public ServerNotifier ServerNotifierByIndex(int index) => ServerGame.serverPlayers[index].ServerNotifier;
+        public ServerNotifier ServerNotifierByIndex(int index) => ServerGame.serverPlayers[index].notifier;
         public ServerEffectsController EffectsController => ServerGame.effectsController;
 
         public override void Play(GameCard toPlay, Space to, Player controller, IStackable stackSrc = null)

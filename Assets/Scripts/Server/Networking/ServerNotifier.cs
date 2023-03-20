@@ -45,7 +45,7 @@ namespace KompasServer.Networking
         /// <param name="firstPlayer">First turn player, from the server's perspective</param>
         public void SetFirstTurnPlayer(int firstPlayer)
         {
-            var p = new SetFirstPlayerPacket((firstPlayer + Player.index) % Player.serverGame.Players.Length);
+            var p = new SetFirstPlayerPacket((firstPlayer + Player.index) % Player.game.Players.Length);
             SendPacket(p);
         }
         #endregion game start

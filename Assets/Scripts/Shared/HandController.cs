@@ -7,16 +7,15 @@ using UnityEngine;
 
 namespace KompasCore.GameCore
 {
-    public abstract class HandController : MonoBehaviour, IGameLocation
+    public abstract class HandController : GameLocation
     {
-        public abstract Player Owner { get; }
-
-        public CardLocation CardLocation => CardLocation.Hand;
+        public override CardLocation CardLocation => CardLocation.Hand;
+        public override IEnumerable<GameCard> Cards => hand;
 
         protected readonly List<GameCard> hand = new List<GameCard>();
 
         public int HandSize => hand.Count;
-        public int IndexOf(GameCard card) => hand.IndexOf(card);
+        public override int IndexOf(GameCard card) => hand.IndexOf(card);
 
         public virtual bool Hand(GameCard card, IStackable stackSrc = null)
         {
@@ -38,7 +37,7 @@ namespace KompasCore.GameCore
             return successful;
         }
 
-        public virtual void Remove(GameCard card)
+        public override void Remove(GameCard card)
         {
             if (!hand.Contains(card)) throw new CardNotHereException(CardLocation, card,
                 $"Hand of \n{string.Join(", ", hand.Select(c => c.CardName))}\n doesn't contain {card}, can't remove it!");

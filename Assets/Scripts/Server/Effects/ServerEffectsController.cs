@@ -112,7 +112,7 @@ namespace KompasServer.Effects
             //stack ends
             foreach (var c in ServerGame.Cards) c.ResetForStack();
             ServerGame.serverBoardController.ClearSpells();
-            ServerGame.serverPlayers.First().ServerNotifier.StackEmpty();
+            ServerGame.serverPlayers.First().notifier.StackEmpty();
             TriggerForCondition(Trigger.StackEnd, new ActivationContext(game: ServerGame));
             //Must check whether I *should* check for response to avoid an infinite loop
             if (!stack.Empty || triggeredTriggers.Any()) await CheckForResponse();
@@ -126,7 +126,7 @@ namespace KompasServer.Effects
             {
                 //Debug.Log($"Resolving next stack entry: {stackable}, {context}");
                 //inform the players that they no longer can respond, in case they were somehow still thinking they could
-                foreach (var p in ServerGame.serverPlayers) p.ServerNotifier.RequestNoResponse();
+                foreach (var p in ServerGame.serverPlayers) p.notifier.RequestNoResponse();
 
                 //set the current stack entry to the appropriate value. this is used to check if something is currently resolving.
                 CurrStackEntry = stackable;
@@ -135,7 +135,7 @@ namespace KompasServer.Effects
                 await stackable.StartResolution(context);
 
                 //after it resolves, tell the clients it's done resolving
-                ServerGame.serverPlayers.First().ServerNotifier.RemoveStackEntry(currStackIndex);
+                ServerGame.serverPlayers.First().notifier.RemoveStackEntry(currStackIndex);
                 //take note that nothing is resolving
                 CurrStackEntry = null;
                 //and see if there's antyhing to resolve next.
@@ -163,7 +163,7 @@ namespace KompasServer.Effects
                 if (stack.StackEntries.ElementAt(i) == eff)
                 {
                     stack.Cancel(i);
-                    ServerGame.serverPlayers.First().ServerNotifier.RemoveStackEntry(i - 1);
+                    ServerGame.serverPlayers.First().notifier.RemoveStackEntry(i - 1);
                 }
             }
             //Remove effect from hanging/delayed
@@ -235,7 +235,7 @@ namespace KompasServer.Effects
                 foreach (var p in ServerGame.serverPlayers)
                 {
                     var thisPlayers = confirmed.Where(t => t.serverEffect.Controller == p);
-                    if (thisPlayers.Any(t => !t.Ordered)) triggerOrderings.Add(p.serverAwaiter.GetTriggerOrder(thisPlayers));
+                    if (thisPlayers.Any(t => !t.Ordered)) triggerOrderings.Add(p.awaiter.GetTriggerOrder(thisPlayers));
                 }
                 await Task.WhenAll(triggerOrderings);
             }
@@ -290,7 +290,7 @@ namespace KompasServer.Effects
             //for any player that is holding priority, request a response from them
             if (playersHoldingPriority.Any())
             {
-                foreach (var p in playersHoldingPriority) p.ServerNotifier.RequestResponse();
+                foreach (var p in playersHoldingPriority) p.notifier.RequestResponse();
                 //after asking for responses, then we're done with this CheckForResponse call. 
                 //now, if any more response-inducing events come in, we won't ask for responses an extra time,
                 //nor will we check for triggers an extra time.

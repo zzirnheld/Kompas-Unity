@@ -39,7 +39,7 @@ namespace KompasServer.Effects.Subeffects
         protected virtual async Task<GameCard> GetTargets(int[] potentialTargetIds)
         {
             Debug.Log($"Asking {ServerPlayer.index} (note: controlled by {Controller} for card target among ids {string.Join(", ", potentialTargetIds)}");
-            return await ServerPlayer.serverAwaiter.GetCardTarget(Source.CardName, cardRestriction.blurb, potentialTargetIds, null);
+            return await ServerPlayer.awaiter.GetCardTarget(Source.CardName, cardRestriction.blurb, potentialTargetIds, null);
         }
 
         public override async Task<ResolutionInfo> Resolve()
@@ -75,7 +75,7 @@ namespace KompasServer.Effects.Subeffects
             if (cardRestriction.IsValidCard(card, CurrentContext))
             {
                 ServerEffect.AddTarget(card);
-                ServerPlayer.ServerNotifier.AcceptTarget();
+                ServerPlayer.notifier.AcceptTarget();
                 if (toLinkWith != null) ServerEffect.CreateCardLink(card, toLinkWith.From(CurrentContext, default)?.Card);
                 return true;
             }

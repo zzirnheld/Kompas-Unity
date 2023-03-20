@@ -24,7 +24,7 @@ namespace KompasServer.Effects
             this.serverGame = serverGame;
 
             //tell the players this is here now
-            ServerController.ServerNotifier.NotifyHandSizeToStack();
+            ServerController.notifier.NotifyHandSizeToStack();
         }
         public async Task StartResolution(ActivationContext context) => await RequestTargets();
 
@@ -54,7 +54,7 @@ namespace KompasServer.Effects
             int[] choices = null;
             while (!TryAnswer(choices))
             {
-                choices = await ServerController.serverAwaiter.GetHandSizeChoices(cardIds, listRestrictionJson);
+                choices = await ServerController.awaiter.GetHandSizeChoices(cardIds, listRestrictionJson);
             }
         }
 

@@ -67,24 +67,24 @@ namespace KompasClient.Cards
         protected ClientGameCard(int id, ClientPlayer owner, ClientCardController clientCardController)
             : base(id)
         {
-            owner.clientGame.AddCard(this);
+            owner.game.AddCard(this);
 
             ClientCardController = clientCardController;
             clientCardController.ClientCard = this;
 
-            ClientGame = owner.clientGame;
+            ClientGame = owner.game;
             ClientController = ClientOwner = owner;
         }
 
         public ClientGameCard(SerializableCard serializedCard, int id, ClientPlayer owner, ClientEffect[] effects, ClientCardController clientCardController)
-            : base (serializedCard, id, owner.clientGame)
+            : base (serializedCard, id, owner.game)
         {
-            owner.clientGame.AddCard(this);
+            owner.game.AddCard(this);
 
             ClientCardController = clientCardController;
             clientCardController.ClientCard = this;
 
-            ClientGame = owner.clientGame;
+            ClientGame = owner.game;
             ClientController = ClientOwner = owner;
             ClientEffects = effects;
             foreach (var (index, eff) in effects.Enumerate()) eff.SetInfo(this, ClientGame, index, owner);

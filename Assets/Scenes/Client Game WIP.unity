@@ -3152,10 +3152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd85a6630f870274e8b96a8fb6c70223, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  game: {fileID: 492080563}
-  owner: {fileID: 1841194802}
   discardUIController: {fileID: 116530646}
-  ClientGame: {fileID: 492080563}
+  owner: {fileID: 1841194802}
 --- !u!65 &116530642
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9753,10 +9751,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd85a6630f870274e8b96a8fb6c70223, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  game: {fileID: 492080563}
-  owner: {fileID: 1829834588}
   discardUIController: {fileID: 540378493}
-  ClientGame: {fileID: 492080563}
+  owner: {fileID: 1829834588}
 --- !u!114 &540378493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10173,7 +10169,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 561498306}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15, y: 0, z: -4}
+  m_LocalPosition: {x: -15, y: 0, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12460,7 +12456,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 696614909}
-  - component: {fileID: 696614910}
+  - component: {fileID: 696614913}
   - component: {fileID: 696614912}
   - component: {fileID: 696614911}
   m_Layer: 12
@@ -12485,21 +12481,6 @@ Transform:
   m_Father: {fileID: 1841194801}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &696614910
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 696614908}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd1a16c7087c2234ebde8ea17fe57dce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  game: {fileID: 492080563}
-  owner: {fileID: 1841194802}
-  annihilationUIController: {fileID: 696614912}
 --- !u!65 &696614911
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12535,7 +12516,21 @@ MonoBehaviour:
   behindBoundsMultiplier: 0
   localXOffset: 2
   localZOffset: -2
-  annihilationController: {fileID: 696614910}
+  annihilationController: {fileID: 696614913}
+--- !u!114 &696614913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696614908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efe094b818b0772e9af419058c3ca385, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  annihilationUIController: {fileID: 696614912}
+  owner: {fileID: 1841194802}
 --- !u!1 &698857992
 GameObject:
   m_ObjectHideFlags: 0
@@ -13216,7 +13211,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 733957026}
   m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
-  m_LocalPosition: {x: 10, y: 0, z: 2}
+  m_LocalPosition: {x: -11.35, y: 0, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -13237,7 +13232,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 902ef7bde3583ae45a9a8f8caaafbbe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ClientGame: {fileID: 492080563}
   owner: {fileID: 1829834588}
   deckCountLabel: {fileID: 1730378959}
 --- !u!1 &748852962
@@ -14240,7 +14234,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 803167336}
-  - component: {fileID: 803167337}
+  - component: {fileID: 803167340}
   - component: {fileID: 803167338}
   - component: {fileID: 803167339}
   m_Layer: 12
@@ -14265,21 +14259,6 @@ Transform:
   m_Father: {fileID: 1829834587}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &803167337
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 803167335}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd1a16c7087c2234ebde8ea17fe57dce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  game: {fileID: 492080563}
-  owner: {fileID: 1829834588}
-  annihilationUIController: {fileID: 803167338}
 --- !u!114 &803167338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14302,7 +14281,7 @@ MonoBehaviour:
   behindBoundsMultiplier: 0
   localXOffset: 2
   localZOffset: 2
-  annihilationController: {fileID: 803167337}
+  annihilationController: {fileID: 803167340}
 --- !u!65 &803167339
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14316,6 +14295,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &803167340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 803167335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efe094b818b0772e9af419058c3ca385, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  annihilationUIController: {fileID: 803167338}
+  owner: {fileID: 1829834588}
 --- !u!1 &805097378
 GameObject:
   m_ObjectHideFlags: 0
@@ -31125,15 +31118,15 @@ MonoBehaviour:
   deckCtrl: {fileID: 2534840227050861151}
   discardCtrl: {fileID: 540378492}
   handCtrl: {fileID: 1921547573}
-  annihilationCtrl: {fileID: 803167337}
+  annihilationCtrl: {fileID: 696614913}
   deckObject: {fileID: 2534840227050861150}
   discardObject: {fileID: 540378487}
   handObject: {fileID: 1921547572}
-  ClientEnemy: {fileID: 1841194802}
-  clientGame: {fileID: 492080563}
+  enemy: {fileID: 1841194802}
+  game: {fileID: 492080563}
   pipsUICtrl: {fileID: 561498308}
-  clientDeckCtrl: {fileID: 2534840227050861151}
-  clientHandCtrl: {fileID: 1921547573}
+  deckController: {fileID: 2534840227050861151}
+  handController: {fileID: 1921547573}
 --- !u!1 &1830602624
 GameObject:
   m_ObjectHideFlags: 0
@@ -31674,15 +31667,15 @@ MonoBehaviour:
   deckCtrl: {fileID: 733957028}
   discardCtrl: {fileID: 116530641}
   handCtrl: {fileID: 60475903}
-  annihilationCtrl: {fileID: 696614910}
+  annihilationCtrl: {fileID: 696614913}
   deckObject: {fileID: 733957026}
   discardObject: {fileID: 116530640}
   handObject: {fileID: 60475902}
-  ClientEnemy: {fileID: 1829834588}
-  clientGame: {fileID: 492080563}
+  enemy: {fileID: 1829834588}
+  game: {fileID: 492080563}
   pipsUICtrl: {fileID: 1879040559}
-  clientDeckCtrl: {fileID: 733957028}
-  clientHandCtrl: {fileID: 60475903}
+  deckController: {fileID: 733957028}
+  handController: {fileID: 60475903}
 --- !u!1 &1841687926
 GameObject:
   m_ObjectHideFlags: 0
@@ -32730,7 +32723,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1879040557}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 15, y: 0, z: 4}
+  m_LocalPosition: {x: -15, y: 0, z: 4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -36838,7 +36831,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 1342849796}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -38063,7 +38056,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2534840227050861150}
   m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
-  m_LocalPosition: {x: 10, y: 0, z: -2}
+  m_LocalPosition: {x: -11.35, y: 0, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -38132,7 +38125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 902ef7bde3583ae45a9a8f8caaafbbe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ClientGame: {fileID: 492080563}
   owner: {fileID: 1829834588}
   deckCountLabel: {fileID: 1106341060}
 --- !u!114 &2878731448243166020

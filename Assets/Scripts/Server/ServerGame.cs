@@ -75,7 +75,7 @@ namespace KompasServer.GameCore
             set
             {
                 base.Leyload = value;
-                serverPlayers[0].ServerNotifier.NotifyLeyload(Leyload);
+                serverPlayers[0].notifier.NotifyLeyload(Leyload);
             }
         }
 
@@ -110,7 +110,7 @@ namespace KompasServer.GameCore
             return currPlayerCount;
         }
 
-        private void GetDeckFrom(ServerPlayer player) => player.ServerNotifier.GetDecklist();
+        private void GetDeckFrom(ServerPlayer player) => player.notifier.GetDecklist();
 
         //TODO for future logic like limited cards, etc.
         private bool ValidDeck(List<string> deck)
@@ -146,7 +146,7 @@ namespace KompasServer.GameCore
         {
             List<string> deck = SanitizeDeck(decklist);
 
-            if (ValidDeck(deck)) player.ServerNotifier.DeckAccepted();
+            if (ValidDeck(deck)) player.notifier.DeckAccepted();
             else
             {
                 GetDeckFrom(player);
@@ -173,7 +173,7 @@ namespace KompasServer.GameCore
                 }
                 Debug.Log($"Adding new card {card.CardName} with id {card.ID}");
                 player.deckCtrl.ShuffleIn(card);
-                player.ServerNotifier.NotifyCreateCard(card, wasKnown: false);
+                player.notifier.NotifyCreateCard(card, wasKnown: false);
             }
 
             player.Avatar = avatar;
@@ -198,7 +198,7 @@ namespace KompasServer.GameCore
 
             foreach (var p in serverPlayers)
             {
-                p.ServerNotifier.SetFirstTurnPlayer(FirstTurnPlayer);
+                p.notifier.SetFirstTurnPlayer(FirstTurnPlayer);
                 p.Avatar.SetN(0, stackSrc: null);
                 p.Avatar.SetE(p.Avatar.E + AvatarEBonus, stackSrc: null);
                 p.Avatar.SetW(0, stackSrc: null);
@@ -220,7 +220,7 @@ namespace KompasServer.GameCore
                 TurnCount++;
             }
 
-            TurnServerPlayer.ServerNotifier.NotifyYourTurn();
+            TurnServerPlayer.notifier.NotifyYourTurn();
             ResetCardsForTurn();
 
             TurnPlayer.Pips += Leyload;

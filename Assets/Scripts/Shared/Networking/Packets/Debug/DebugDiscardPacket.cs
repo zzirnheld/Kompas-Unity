@@ -37,7 +37,7 @@ namespace KompasServer.Networking
             else
             {
                 UnityEngine.Debug.LogError($"Tried to debug discard card with id {cardId} while NOT in debug mode!");
-                player.ServerNotifier.NotifyPutBack();
+                player.notifier.NotifyPutBack();
             }
             return Task.CompletedTask;
         }

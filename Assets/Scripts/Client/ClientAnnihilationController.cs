@@ -1,11 +1,11 @@
-﻿using KompasCore.GameCore;
-using UnityEngine;
+using KompasCore.GameCore;
 
 namespace KompasClient.GameCore
 {
-    public class ClientDiscardController : DiscardController
+    public class ClientAnnihilationController : AnnihilationController
     {
         public ClientPlayer owner;
+
         public override Player Owner => owner;
     }
 }

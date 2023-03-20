@@ -48,7 +48,7 @@ namespace KompasServer.Effects.Subeffects
             string blurb = cardRestriction.blurb;
             int[] targetIds = potentialTargets.Select(c => c.ID).ToArray();
             Debug.Log($"Potential targets {string.Join(", ", targetIds)}");
-            return await ServerPlayer.serverAwaiter.GetCardListTargets(name, blurb, targetIds, JsonConvert.SerializeObject(listRestriction));
+            return await ServerPlayer.awaiter.GetCardListTargets(name, blurb, targetIds, JsonConvert.SerializeObject(listRestriction));
         }
 
         protected virtual bool IsValidTarget(GameCard card) => cardRestriction.IsValidCard(card, CurrentContext);
@@ -119,7 +119,7 @@ namespace KompasServer.Effects.Subeffects
             //add all cards in the chosen list to targets
             AddList(choices);
             //everything's cool
-            ServerPlayer.ServerNotifier.AcceptTarget();
+            ServerPlayer.notifier.AcceptTarget();
             return true;
         }
 

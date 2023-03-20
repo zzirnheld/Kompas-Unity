@@ -12,8 +12,8 @@ namespace KompasServer.Effects.Subeffects
             //make the "no other targets" button disappear
             if (canDecline)
             {
-                ServerPlayer.ServerNotifier.DisableDecliningTarget();
-                ServerPlayer.ServerNotifier.AcceptTarget(); // otherwise it keeps them in the now-irrelevant target mode
+                ServerPlayer.notifier.DisableDecliningTarget();
+                ServerPlayer.notifier.AcceptTarget(); // otherwise it keeps them in the now-irrelevant target mode
             }
         }
 
@@ -28,7 +28,7 @@ namespace KompasServer.Effects.Subeffects
                 //tell the client to enable the button to exit the loop
                 if (canDecline)
                 {
-                    ServerPlayer.ServerNotifier.EnableDecliningTarget();
+                    ServerPlayer.notifier.EnableDecliningTarget();
                     ServerEffect.OnImpossible = this;
                     ServerEffect.CanDeclineTarget = true;
                 }

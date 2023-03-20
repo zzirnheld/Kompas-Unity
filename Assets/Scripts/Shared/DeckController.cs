@@ -9,18 +9,16 @@ using KompasCore.Helpers;
 
 namespace KompasCore.GameCore
 {
-    public abstract class DeckController : MonoBehaviour, IGameLocation
+    public abstract class DeckController : GameLocation
     {
-        public abstract Player Owner { get; }
-
-        public CardLocation CardLocation => CardLocation.Deck;
+        public override CardLocation CardLocation => CardLocation.Deck;
 
         //rng for shuffling
 
         private readonly List<GameCard> deck = new List<GameCard>();
-        public IReadOnlyCollection<GameCard> Deck => deck;
+        public override IEnumerable<GameCard> Cards => deck;
 
-        public int IndexOf(GameCard card) => deck.IndexOf(card);
+        public override int IndexOf(GameCard card) => deck.IndexOf(card);
         public int DeckSize => deck.Count;
         public GameCard Topdeck => deck.FirstOrDefault();
         public GameCard Bottomdeck => deck.LastOrDefault();
@@ -75,7 +73,7 @@ namespace KompasCore.GameCore
         /// <summary>
         /// Random access remove from deck
         /// </summary>
-        public virtual void Remove(GameCard card)
+        public override void Remove(GameCard card)
         {
             if (!deck.Contains(card))
                 throw new CardNotHereException(CardLocation, card, $"Couldn't remove {card.CardName} from deck, it wasn't in deck!");

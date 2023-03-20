@@ -8,14 +8,14 @@ using UnityEngine;
 
 namespace KompasCore.GameCore
 {
-    public class DiscardController : GameLocation
+    public abstract class DiscardController : GameLocation
     {
         public DiscardUIController discardUIController;
 
         protected readonly List<GameCard> discard = new List<GameCard>();
 
         public override CardLocation CardLocation => CardLocation.Discard;
-        public IReadOnlyCollection<GameCard> Cards => discard;
+        public override IEnumerable<GameCard> Cards => discard;
 
         //adding/removing cards
         public virtual bool Discard(GameCard card, IStackable stackSrc = null)
@@ -29,7 +29,7 @@ namespace KompasCore.GameCore
             {
                 Debug.Log($"Discarding {card.CardName}");
                 discard.Add(card);
-                card.Controller = owner;
+                card.Controller = Owner;
                 card.GameLocation = this;
                 card.Position = null;
                 discardUIController.Refresh();
