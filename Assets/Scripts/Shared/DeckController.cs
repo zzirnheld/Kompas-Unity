@@ -9,7 +9,7 @@ using KompasCore.Helpers;
 
 namespace KompasCore.GameCore
 {
-    public abstract class DeckController : GameLocation
+    public abstract class DeckController : OwnedGameLocation
     {
         public override CardLocation CardLocation => CardLocation.Deck;
 

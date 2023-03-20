@@ -1,7 +1,6 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Cards.Movement;
 using KompasCore.Effects;
-using KompasCore.Exceptions;
 using KompasCore.GameCore;
 using KompasServer.Cards;
 using KompasServer.Effects;

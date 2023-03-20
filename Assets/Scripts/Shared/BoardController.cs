@@ -9,15 +9,13 @@ using KompasCore.Exceptions;
 
 namespace KompasCore.GameCore
 {
-    //Not abstract because Client uses this base class
     public abstract class BoardController : MonoBehaviour, IGameLocation
     {
         public const int SpacesInGrid = 7;
         public const int NoPathExists = 50;
 
-        public abstract Game Game { get; }
-
         public CardLocation CardLocation => CardLocation.Board;
+        public abstract Game Game { get; }
 
         protected readonly GameCard[,] Board = new GameCard[SpacesInGrid, SpacesInGrid];
         public IEnumerable<GameCard> Cards { get { foreach (var card in Board) yield return card; } } 

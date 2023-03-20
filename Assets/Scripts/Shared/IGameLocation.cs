@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using KompasCore.Cards;
 using UnityEngine;
 
@@ -7,6 +6,7 @@ namespace KompasCore.GameCore
 {
     public interface IGameLocation
     {
+        public Game Game { get; }
         public CardLocation CardLocation { get; }
 
         public IEnumerable<GameCard> Cards { get; }
@@ -16,10 +16,13 @@ namespace KompasCore.GameCore
         public void Remove(GameCard card);
     }
 
-    public abstract class GameLocation : MonoBehaviour, IGameLocation
+    /// <summary>
+    /// Base class for GameLocations owned by a player (from whom we can infer what game they're in)
+    /// </summary>
+    public abstract class OwnedGameLocation : MonoBehaviour, IGameLocation
     {
         public abstract Player Owner { get; }
-        public Game Game => Owner.Game;
+        public virtual Game Game => Owner.Game;
 
         public abstract CardLocation CardLocation { get; }
 

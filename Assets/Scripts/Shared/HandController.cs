@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace KompasCore.GameCore
 {
-    public abstract class HandController : GameLocation
+    public abstract class HandController : OwnedGameLocation
     {
         public override CardLocation CardLocation => CardLocation.Hand;
         public override IEnumerable<GameCard> Cards => hand;

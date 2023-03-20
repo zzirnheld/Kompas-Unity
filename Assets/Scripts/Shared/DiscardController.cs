@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace KompasCore.GameCore
 {
-    public abstract class DiscardController : GameLocation
+    public abstract class DiscardController : OwnedGameLocation
     {
         public DiscardUIController discardUIController;
 

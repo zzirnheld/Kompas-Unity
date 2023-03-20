@@ -8,7 +8,7 @@ using UnityEngine;
 namespace KompasCore.GameCore
 {
     //Not abstract because Client uses this base class
-    public abstract class AnnihilationController : GameLocation
+    public abstract class AnnihilationController : OwnedGameLocation
     {
         public AnnihilationUIController annihilationUIController;
 
