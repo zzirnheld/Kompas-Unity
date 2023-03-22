@@ -5,6 +5,7 @@ using KompasServer.Effects;
 using KompasServer.Effects.Subeffects;
 using KompasServer.GameCore;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -50,40 +51,27 @@ namespace KompasServer.Cards
             }
         }
 
-
+        //TODO catch argument exception - perhaps a child class? - and return null
         public AvatarServerGameCard InstantiateServerAvatar(string cardName, ServerPlayer owner, int id)
         {
             if (!cardJsons.ContainsKey(cardName)) return null;
-            ServerSerializableCard card;
-            List<ServerEffect> effects = new List<ServerEffect>();
+            string json = cardJsons[cardName];
 
-            try
-            {
-                card = JsonConvert.DeserializeObject<ServerSerializableCard>(cardJsons[cardName], cardLoadingSettings);
-                effects.AddRange(card.effects);
-                effects.AddRange(GetKeywordEffects<ServerEffect>(card));
-            }
-            catch (System.ArgumentException argEx)
-            {
-                //Catch JSON parse error
-                Debug.LogError($"Failed to load {cardName} as Avatar, argument exception with message {argEx.Message}, stack trace:\n" +
-                    $"{argEx.StackTrace}\nJson was {cardJsons[cardName]}");
-                return null;
-            }
-
-            //Destroy card components irrelevant to a server avatar
-            var avatarObj = Instantiate(CardPrefab);
-            var ctrl = GetCardController<ServerCardController>(avatarObj);
-
-            var avatar = new AvatarServerGameCard(card, id, ctrl, owner, effects.ToArray());
-
-            avatar.ServerCardController.serverCard = avatar;
-            return avatar;
+            return InstantiateGameCard<AvatarServerGameCard>(json, (cardInfo, effects, ctrl) => new AvatarServerGameCard(cardInfo, id, ctrl, owner, effects));
         }
+
+        private delegate T ConstructCard<T>(ServerSerializableCard cardInfo, ServerEffect[] effects, ServerCardController ctrl)
+            where T : ServerGameCard;
 
         public ServerGameCard InstantiateServerNonAvatar(string name, ServerPlayer owner, int id)
         {
             string json = cardJsons[name] ?? throw new System.ArgumentException($"Name {name} not associated with json");
+            return InstantiateGameCard<ServerGameCard>(json, (cardInfo, effects, ctrl) => new ServerGameCard(cardInfo, id, ctrl, owner, effects));
+        }
+
+        private T InstantiateGameCard<T>(string json, ConstructCard<T> cardConstructor, Action<SerializableCard> validation = null)
+            where T : ServerGameCard
+        {
             var cardObj = Instantiate(CardPrefab);
             ServerSerializableCard cardInfo;
             List<ServerEffect> effects = new List<ServerEffect>();
@@ -91,6 +79,7 @@ namespace KompasServer.Cards
             try
             {
                 cardInfo = JsonConvert.DeserializeObject<ServerSerializableCard>(cardJsons[name], cardLoadingSettings);
+                validation?.Invoke(cardInfo);
                 effects.AddRange(cardInfo.effects);
                 effects.AddRange(GetKeywordEffects<ServerEffect>(cardInfo));
             }
@@ -102,8 +91,7 @@ namespace KompasServer.Cards
             }
 
             var ctrl = GetCardController<ServerCardController>(cardObj);
-            var card = new ServerGameCard(cardInfo, id, ctrl, owner, effects.ToArray());
-            return card;
+            return cardConstructor(cardInfo, effects.ToArray(), ctrl);
         }
     }
 }

@@ -22,13 +22,13 @@ namespace KompasClient.Cards
                 if (cardInfo.cardType != 'C') throw new System.NotImplementedException("Card type for client avatar isn't character!");
             };
 
-            return InstantiateGameCard<AvatarClientGameCard>(json, owner, id, (cardInfo, effects, ctrl) => new AvatarClientGameCard(cardInfo, owner, effects, id, ctrl),
+            return InstantiateGameCard<AvatarClientGameCard>(json, (cardInfo, effects, ctrl) => new AvatarClientGameCard(cardInfo, owner, effects, id, ctrl),
                 validation);
         }
 
         public ClientGameCard InstantiateClientNonAvatar(string json, ClientPlayer owner, int id)
         {
-            var card = InstantiateGameCard<ClientGameCard>(json, owner, id, (cardInfo, effects, ctrl) => new ClientGameCard(cardInfo, id, owner, effects, ctrl));
+            var card = InstantiateGameCard<ClientGameCard>(json, (cardInfo, effects, ctrl) => new ClientGameCard(cardInfo, id, owner, effects, ctrl));
 
             card.ClientCardController.gameCardViewController.Refresh();
 
@@ -47,7 +47,7 @@ namespace KompasClient.Cards
         private delegate T ConstructCard<T>(ClientSerializableCard cardInfo, ClientEffect[] effects, ClientCardController ctrl)
             where T : ClientGameCard;
 
-        private T InstantiateGameCard<T>(string json, ClientPlayer owner, int id, ConstructCard<T> cardConstructor, Action<SerializableCard> validation = null)
+        private T InstantiateGameCard<T>(string json, ConstructCard<T> cardConstructor, Action<SerializableCard> validation = null)
             where T : ClientGameCard
         {
             ClientSerializableCard cardInfo;
