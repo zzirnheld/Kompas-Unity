@@ -5,13 +5,11 @@ using KompasServer.Effects;
 using KompasServer.Effects.Subeffects;
 using KompasServer.GameCore;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace KompasServer.Cards
 {
-    public class ServerCardRepository : GameCardRepository
+    public class ServerCardRepository : GameCardRepository<ServerSerializableCard, ServerEffect, ServerCardController>
     {
         public bool CardNameIsCharacter(string name)
         {
@@ -60,38 +58,10 @@ namespace KompasServer.Cards
             return InstantiateGameCard<AvatarServerGameCard>(json, (cardInfo, effects, ctrl) => new AvatarServerGameCard(cardInfo, id, ctrl, owner, effects));
         }
 
-        private delegate T ConstructCard<T>(ServerSerializableCard cardInfo, ServerEffect[] effects, ServerCardController ctrl)
-            where T : ServerGameCard;
-
         public ServerGameCard InstantiateServerNonAvatar(string name, ServerPlayer owner, int id)
         {
             string json = cardJsons[name] ?? throw new System.ArgumentException($"Name {name} not associated with json");
             return InstantiateGameCard<ServerGameCard>(json, (cardInfo, effects, ctrl) => new ServerGameCard(cardInfo, id, ctrl, owner, effects));
-        }
-
-        private T InstantiateGameCard<T>(string json, ConstructCard<T> cardConstructor, Action<SerializableCard> validation = null)
-            where T : ServerGameCard
-        {
-            var cardObj = Instantiate(CardPrefab);
-            ServerSerializableCard cardInfo;
-            List<ServerEffect> effects = new List<ServerEffect>();
-
-            try
-            {
-                cardInfo = JsonConvert.DeserializeObject<ServerSerializableCard>(cardJsons[name], cardLoadingSettings);
-                validation?.Invoke(cardInfo);
-                effects.AddRange(cardInfo.effects);
-                effects.AddRange(GetKeywordEffects<ServerEffect>(cardInfo));
-            }
-            catch (System.ArgumentException argEx)
-            {
-                //Catch JSON parse error
-                Debug.LogError($"Failed to load {json}, argument exception with message {argEx.Message}, stacktrace {argEx.StackTrace}");
-                return null;
-            }
-
-            var ctrl = GetCardController<ServerCardController>(cardObj);
-            return cardConstructor(cardInfo, effects.ToArray(), ctrl);
         }
     }
 }

@@ -1,4 +1,5 @@
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using KompasCore.Cards;
@@ -9,7 +10,10 @@ using UnityEngine;
 
 namespace KompasCore.GameCore
 {
-    public class GameCardRepository : CardRepository
+    public class GameCardRepository<PSerializableCard, PEffect, PCardController> : CardRepository
+        where PSerializableCard : SerializableCard
+        where PEffect : Effect
+        where PCardController : CardController
     {
         [Header("Standard Game")]
         public GameObject CardPrefab;
@@ -37,6 +41,37 @@ namespace KompasCore.GameCore
                 effects.Add(eff);
             }
             return effects;
+        }
+
+        protected delegate T ConstructCard<T>(PSerializableCard cardInfo, PEffect[] effects, PCardController ctrl);
+
+        protected T InstantiateGameCard<T>(string json, ConstructCard<T> cardConstructor, Action<SerializableCard> validation = null)
+        {
+            PSerializableCard cardInfo;
+            var effects = new List<PEffect>();
+
+            try
+            {
+                cardInfo = JsonConvert.DeserializeObject<PSerializableCard>(cardJsons[name], cardLoadingSettings);
+                validation?.Invoke(cardInfo);
+                
+                foreach (var eff in cardInfo.Effects)
+                {
+                    if (eff is PEffect pEffect) effects.Add(pEffect);
+                    else throw new System.ArgumentException($"Mismatch between type of effect {eff.GetType()} and type parameter for card creation {typeof(PEffect)}");
+                }
+                effects.AddRange(GetKeywordEffects<PEffect>(cardInfo));
+            }
+            catch (System.ArgumentException argEx)
+            {
+                //Catch JSON parse error
+                Debug.LogError($"Failed to load {json}, argument exception with message {argEx.Message}, stacktrace {argEx.StackTrace}");
+                return default;
+            }
+
+            var cardObj = Instantiate(CardPrefab);
+            var ctrl = GetCardController<PCardController>(cardObj);
+            return cardConstructor(cardInfo, effects.ToArray(), ctrl);
         }
     }
 }
