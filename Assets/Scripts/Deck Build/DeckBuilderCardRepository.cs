@@ -11,6 +11,8 @@ namespace KompasDeckbuilder
 {
     public class DeckBuilderCardRepository : CardRepository
     {
+        public GameObject deckBuilderCardPrefab;
+
         public static IEnumerable<SerializableCard> SerializableCards => GetSerializableCards(CardJsons);
         private static IEnumerable<SerializableCard> GetSerializableCards(IEnumerable<string> jsons)
             => jsons.Select(json => SerializableCardFromJson(json)).Where(card => card != null);

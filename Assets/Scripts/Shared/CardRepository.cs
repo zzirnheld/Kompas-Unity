@@ -95,15 +95,6 @@ namespace KompasCore.GameCore
 
         public static IEnumerable<string> CardJsons => cardJsons.Values;
 
-        [Header("Old Deck Builder")]
-        public GameObject DeckbuilderCharPrefab;
-
-        [Header("New (WIP) Deck Builder")]
-        public GameObject deckBuilderCardPrefab;
-
-        [Header("Standard Game")]
-        public GameObject CardPrefab;
-
         public static void Init() => InitializeCardJsons();
 
         private void Awake()

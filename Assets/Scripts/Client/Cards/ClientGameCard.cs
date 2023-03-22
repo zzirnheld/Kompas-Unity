@@ -92,6 +92,10 @@ namespace KompasClient.Cards
             clientCardController.gameCardViewController.Focus(this);
         }
 
+        //Factory, because apparently c# doesn't let you pass constructors?
+        public static ClientGameCard Create(SerializableCard serializedCard, int id, ClientPlayer owner, ClientEffect[] effects, ClientCardController clientCardController)
+            => new ClientGameCard(serializedCard, id, owner, effects, clientCardController);
+
         public override bool Remove(IStackable stackSrc = null)
         {
             ClientGame.MarkCardDirty(this);

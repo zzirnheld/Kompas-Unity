@@ -11895,7 +11895,7 @@ GameObject:
   - component: {fileID: 2102974965}
   - component: {fileID: 2102974964}
   - component: {fileID: 2102974969}
-  - component: {fileID: 2102974968}
+  - component: {fileID: 2102974970}
   m_Layer: 5
   m_Name: Main Canvas
   m_TagString: Untagged
@@ -11988,22 +11988,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &2102974968
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2102974963}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9fb8748191d6744ab4316215e0b0131, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DeckbuilderCharPrefab: {fileID: 0}
-  deckBuilderCardPrefab: {fileID: 3989091764113213402, guid: c6763517f7b24098f8d1fde3f945efbf,
-    type: 3}
-  CardPrefab: {fileID: 0}
 --- !u!114 &2102974969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12016,9 +12000,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbf4d9a9e668fc49998298f31119736d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardRepo: {fileID: 2102974968}
+  cardRepo: {fileID: 2102974970}
   deckPaneController: {fileID: 1680237669}
   cardViewController: {fileID: 3125237725147365663}
+--- !u!114 &2102974970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102974963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cde49c774f4cd32668b722a9b03efb74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DeckbuilderCharPrefab: {fileID: 0}
+  deckBuilderCardPrefab: {fileID: 3989091764113213402, guid: c6763517f7b24098f8d1fde3f945efbf,
+    type: 3}
 --- !u!114 &30957411604755050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13209,7 +13208,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3125237725147365662}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47033dc51e50325449b3e8f34ba2c03e, type: 3}
+  m_Script: {fileID: 11500000, guid: c59c6760b8c9c804190c83c055978787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nText: {fileID: 30957411604755050}
@@ -13220,11 +13219,11 @@ MonoBehaviour:
   subtypesText: {fileID: 3023808291396528807}
   effText: {fileID: 1307332379925172233}
   cardImageImage: {fileID: 3949516501709256581}
-  neutralStatFontMaterial: {fileID: 2100000, guid: 0b4b432a7da6e644ba50b37e8ba6e5bb,
+  neutralStatFontMaterial: {fileID: 2100000, guid: 7f5a2128605bc4266812f85f78aa7cea,
     type: 2}
-  buffStatFontMaterial: {fileID: 2100000, guid: 0b4b432a7da6e644ba50b37e8ba6e5bb,
+  buffStatFontMaterial: {fileID: 2100000, guid: 4c63f89d5150b1b14a55695fabe17027,
     type: 2}
-  debuffStatFontMaterial: {fileID: 2100000, guid: 0b4b432a7da6e644ba50b37e8ba6e5bb,
+  debuffStatFontMaterial: {fileID: 2100000, guid: e64d09d49b235b084874920f4893dbcd,
     type: 2}
   reminderTextsParentController: {fileID: 165729613}
 --- !u!222 &3129838018610511644

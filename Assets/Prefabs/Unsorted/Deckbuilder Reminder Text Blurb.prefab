@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3226243590307594693}
   - component: {fileID: 6089653127195918266}
   - component: {fileID: 5325647732630711181}
-  - component: {fileID: 8452280439469366082}
+  - component: {fileID: 6171768895432781801}
   m_Layer: 5
   m_Name: Deckbuilder Reminder Text Blurb
   m_TagString: Untagged
@@ -138,7 +138,7 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &8452280439469366082
+--- !u!114 &6171768895432781801
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 172806740024015070}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2da1128f3119ab04ca5590ce20c331b5, type: 3}
+  m_Script: {fileID: 11500000, guid: cd3cc828bd0cf5c548e357d230afa991, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   keywordText: {fileID: 2465577877732020117}

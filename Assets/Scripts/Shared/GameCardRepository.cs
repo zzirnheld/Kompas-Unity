@@ -11,6 +11,9 @@ namespace KompasCore.GameCore
 {
     public class GameCardRepository : CardRepository
     {
+        [Header("Standard Game")]
+        public GameObject CardPrefab;
+
         protected T GetCardController<T>(GameObject gameObject) where T : CardController
         {
             var cardCtrlComponents = gameObject

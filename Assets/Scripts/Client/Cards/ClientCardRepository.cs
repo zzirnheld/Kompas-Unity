@@ -4,6 +4,7 @@ using KompasClient.UI;
 using KompasCore.Cards;
 using KompasCore.GameCore;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -16,52 +17,19 @@ namespace KompasClient.Cards
 
         public AvatarClientGameCard InstantiateClientAvatar(string json, ClientPlayer owner, int id)
         {
-            ClientSerializableCard cardInfo;
-            List<ClientEffect> effects = new List<ClientEffect>();
-
-            try
+            Action<SerializableCard> validation = cardInfo =>
             {
-                cardInfo = JsonConvert.DeserializeObject<ClientSerializableCard>(json, cardLoadingSettings);
                 if (cardInfo.cardType != 'C') throw new System.NotImplementedException("Card type for client avatar isn't character!");
+            };
 
-                effects.AddRange(cardInfo.effects);
-                effects.AddRange(GetKeywordEffects<ClientEffect>(cardInfo));
-            }
-            catch (System.ArgumentException argEx)
-            {
-                //Catch JSON parse error
-                Debug.LogError($"Failed to load client Avatar, argument exception with message {argEx.Message},\n {argEx.StackTrace}, for json:\n{json}");
-                return null;
-            }
-
-            var avatarObj = Instantiate(CardPrefab);
-            var ctrl = GetCardController<ClientCardController>(avatarObj);
-            return new AvatarClientGameCard(cardInfo, owner, effects.ToArray(), id, ctrl);
+            return InstantiateGameCard<AvatarClientGameCard>(json, owner, id, (cardInfo, effects, ctrl) => new AvatarClientGameCard(cardInfo, owner, effects, id, ctrl),
+                validation);
         }
 
         public ClientGameCard InstantiateClientNonAvatar(string json, ClientPlayer owner, int id)
         {
-            ClientSerializableCard cardInfo;
-            List<ClientEffect> effects = new List<ClientEffect>();
+            var card = InstantiateGameCard<ClientGameCard>(json, owner, id, (cardInfo, effects, ctrl) => new ClientGameCard(cardInfo, id, owner, effects, ctrl));
 
-            try
-            {
-                cardInfo = JsonConvert.DeserializeObject<ClientSerializableCard>(json, cardLoadingSettings);
-                effects.AddRange(cardInfo.effects);
-                effects.AddRange(GetKeywordEffects<ClientEffect>(cardInfo));
-            }
-            catch (System.ArgumentException argEx)
-            {
-                //Catch JSON parse error
-                Debug.LogError($"Failed to load {json}, argument exception with message {argEx.Message}, {argEx.StackTrace}");
-                return null;
-            }
-
-            var cardObj = Instantiate(CardPrefab);
-            var ctrl = GetCardController<ClientCardController>(cardObj);
-            var card = new ClientGameCard(cardInfo, id, owner, effects.ToArray(), ctrl);
-
-            Debug.Log($"Successfully created a card? {card != null} for json {json} with controller {ctrl}");
             card.ClientCardController.gameCardViewController.Refresh();
 
             //handle adding existing card links
@@ -74,6 +42,34 @@ namespace KompasClient.Cards
             }
 
             return card;
+        }
+
+        private delegate T ConstructCard<T>(ClientSerializableCard cardInfo, ClientEffect[] effects, ClientCardController ctrl)
+            where T : ClientGameCard;
+
+        private T InstantiateGameCard<T>(string json, ClientPlayer owner, int id, ConstructCard<T> cardConstructor, Action<SerializableCard> validation = null)
+            where T : ClientGameCard
+        {
+            ClientSerializableCard cardInfo;
+            var effects = new List<ClientEffect>();
+
+            try
+            {
+                cardInfo = JsonConvert.DeserializeObject<ClientSerializableCard>(json, cardLoadingSettings);
+                validation?.Invoke(cardInfo);
+
+                effects.AddRange(cardInfo.effects);
+                effects.AddRange(GetKeywordEffects<ClientEffect>(cardInfo));
+            }
+            catch (System.ArgumentException argEx) //Catch JSON parse error
+            {
+                Debug.LogError($"Failed to load client card, argument exception with message {argEx.Message},\n {argEx.StackTrace}, for json:\n{json}");
+                return null;
+            }
+
+            var avatarObj = Instantiate(CardPrefab);
+            var ctrl = GetCardController<ClientCardController>(avatarObj);
+            return cardConstructor(cardInfo, effects.ToArray(), ctrl);
         }
 
         public DeckSelectCardController InstantiateDeckSelectCard(string json, Transform parent, DeckSelectCardController prefab, DeckSelectUIController uiCtrl)
