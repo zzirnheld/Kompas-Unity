@@ -1,3 +1,4 @@
+using KompasCore.GameCore;
 using KompasDeckbuilder.UI.Deck;
 using UnityEngine;
 using UnityEngine.SceneManagement;

@@ -1,4 +1,5 @@
 using KompasClient.UI;
+using KompasCore.GameCore;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;

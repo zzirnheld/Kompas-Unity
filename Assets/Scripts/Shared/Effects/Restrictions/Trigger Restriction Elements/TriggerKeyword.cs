@@ -1,4 +1,5 @@
 using System.Linq;
+using KompasCore.GameCore;
 
 namespace KompasCore.Effects.Restrictions
 {

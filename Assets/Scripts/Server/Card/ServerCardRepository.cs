@@ -1,4 +1,5 @@
 using KompasCore.Cards;
+using KompasCore.GameCore;
 using KompasServer.Effects;
 using KompasServer.GameCore;
 using Newtonsoft.Json;
@@ -8,8 +9,17 @@ using UnityEngine;
 
 namespace KompasServer.Cards
 {
-    public class ServerCardRepository : CardRepository
+    public class ServerCardRepository : GameCardRepository
     {
+        public bool CardNameIsCharacter(string name)
+        {
+            if (!CardExists(name)) return false;
+
+            var card = JsonConvert.DeserializeObject<SerializableCard>(cardJsons[name],
+                    new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto });
+            return card.cardType == 'C';
+        }
+
 
         public AvatarServerGameCard InstantiateServerAvatar(string cardName, ServerPlayer owner, int id)
         {

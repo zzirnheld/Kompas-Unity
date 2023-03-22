@@ -2,6 +2,7 @@ using KompasClient.Effects;
 using KompasClient.GameCore;
 using KompasClient.UI;
 using KompasCore.Cards;
+using KompasCore.GameCore;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ using UnityEngine;
 
 namespace KompasClient.Cards
 {
-    public class ClientCardRepository : CardRepository
+    public class ClientCardRepository : GameCardRepository
     {
         public GameObject DeckSelectCardPrefab;
 
