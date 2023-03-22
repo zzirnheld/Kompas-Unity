@@ -10,15 +10,15 @@ using UnityEngine;
 
 namespace KompasCore.GameCore
 {
-    public class GameCardRepository<PSerializableCard, PEffect, PCardController> : CardRepository
-        where PSerializableCard : SerializableCard
-        where PEffect : Effect
-        where PCardController : CardController
+    public class GameCardRepository<TSerializableCard, TEffect, TCardController> : CardRepository
+        where TSerializableCard : SerializableGameCard
+        where TEffect : Effect
+        where TCardController : CardController
     {
         [Header("Standard Game")]
         public GameObject CardPrefab;
 
-        protected T GetCardController<T>(GameObject gameObject) where T : CardController
+        private T GetCardController<T>(GameObject gameObject) where T : TCardController //Prevents casting
         {
             var cardCtrlComponents = gameObject
                 .GetComponents(typeof(CardController))
@@ -29,7 +29,7 @@ namespace KompasCore.GameCore
             return gameObject.GetComponents<T>().Where(c => c is T).First();
         }
 
-        protected IList<T> GetKeywordEffects<T>(SerializableCard card) where T : Effect
+        private IList<T> GetKeywordEffects<T>(SerializableCard card) where T : TEffect //Prevents casting
         {
             var effects = new List<T>();
             foreach (var (index, keyword) in card.keywords.Enumerate())
@@ -43,24 +43,20 @@ namespace KompasCore.GameCore
             return effects;
         }
 
-        protected delegate T ConstructCard<T>(PSerializableCard cardInfo, PEffect[] effects, PCardController ctrl);
+        protected delegate TGameCard ConstructCard<TGameCard>(TSerializableCard cardInfo, TEffect[] effects, TCardController ctrl);
 
-        protected T InstantiateGameCard<T>(string json, ConstructCard<T> cardConstructor, Action<SerializableCard> validation = null)
+        protected TGameCard InstantiateGameCard<TGameCard>(string json, ConstructCard<TGameCard> cardConstructor, Action<SerializableCard> validation = null)
         {
-            PSerializableCard cardInfo;
-            var effects = new List<PEffect>();
+            TSerializableCard cardInfo;
+            var effects = new List<TEffect>();
 
             try
             {
-                cardInfo = JsonConvert.DeserializeObject<PSerializableCard>(cardJsons[name], cardLoadingSettings);
+                cardInfo = JsonConvert.DeserializeObject<TSerializableCard>(json, cardLoadingSettings);
                 validation?.Invoke(cardInfo);
-                
-                foreach (var eff in cardInfo.Effects)
-                {
-                    if (eff is PEffect pEffect) effects.Add(pEffect);
-                    else throw new System.ArgumentException($"Mismatch between type of effect {eff.GetType()} and type parameter for card creation {typeof(PEffect)}");
-                }
-                effects.AddRange(GetKeywordEffects<PEffect>(cardInfo));
+
+                effects.AddRangeWithCast(cardInfo.Effects);
+                effects.AddRange(GetKeywordEffects<TEffect>(cardInfo));
             }
             catch (System.ArgumentException argEx)
             {
@@ -70,7 +66,7 @@ namespace KompasCore.GameCore
             }
 
             var cardObj = Instantiate(CardPrefab);
-            var ctrl = GetCardController<PCardController>(cardObj);
+            var ctrl = GetCardController<TCardController>(cardObj);
             return cardConstructor(cardInfo, effects.ToArray(), ctrl);
         }
     }

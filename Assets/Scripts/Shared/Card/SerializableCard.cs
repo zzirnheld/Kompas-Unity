@@ -35,6 +35,10 @@ namespace KompasCore.Cards
         public string subtext;
 
         public CardStats Stats => (n, e, s, w, c, a);
-        public virtual IEnumerable<Effect> Effects => Enumerable.Empty<Effect>();
-}
+    }
+
+    public abstract class SerializableGameCard : SerializableCard
+    {
+        public abstract IEnumerable<Effect> Effects { get; }
+    }
 }

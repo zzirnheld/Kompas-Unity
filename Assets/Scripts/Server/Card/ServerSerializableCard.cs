@@ -3,7 +3,7 @@ using KompasCore.Cards;
 using KompasCore.Effects;
 using KompasServer.Effects;
 
-public class ServerSerializableCard : SerializableCard
+public class ServerSerializableCard : SerializableGameCard
 {
     public ServerEffect[] effects;
 
