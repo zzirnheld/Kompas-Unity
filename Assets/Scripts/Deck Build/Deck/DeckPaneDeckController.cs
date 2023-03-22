@@ -27,7 +27,7 @@ namespace KompasDeckbuilder.UI.Deck
         /// </summary>
         private IDictionary<string, IList<string>> deckNameToDeckList = new Dictionary<string, IList<string>>();
 
-        private CardRepository CardRepo => deckBuilderController.cardRepo;
+        private DeckBuilderCardRepository CardRepo => deckBuilderController.cardRepo;
 
         /// <summary>
         /// Loads the file for the given <paramref name="deckName"/> and parses out each card name in the deck.

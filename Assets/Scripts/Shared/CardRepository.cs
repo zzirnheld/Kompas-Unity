@@ -1,8 +1,4 @@
 ﻿using KompasCore.Cards;
-using KompasCore.Effects;
-using KompasCore.Effects.Restrictions;
-using KompasCore.Helpers;
-using KompasDeckbuilder;
 using KompasDeckbuilder.UI;
 using Newtonsoft.Json;
 using System.Collections.Generic;
@@ -10,7 +6,6 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using System.IO;
-using KompasServer.Effects.Subeffects;
 
 namespace KompasCore.GameCore
 {
@@ -89,8 +84,8 @@ namespace KompasCore.GameCore
         private static IReadOnlyCollection<string> CardNames => cardJsons.Keys;
 
         protected static readonly Dictionary<string, string> keywordJsons = new Dictionary<string, string>();
-        private static readonly Dictionary<string, string> partialKeywordJsons = new Dictionary<string, string>();
-        private static readonly Dictionary<string, string> triggerKeywordJsons = new Dictionary<string, string>();
+        protected static readonly Dictionary<string, string> partialKeywordJsons = new Dictionary<string, string>();
+        protected static readonly Dictionary<string, string> triggerKeywordJsons = new Dictionary<string, string>();
 
         public static ReminderTextsContainer Reminders { get; private set; }
         public static ICollection<string> Keywords { get; private set; }
@@ -196,20 +191,6 @@ namespace KompasCore.GameCore
             }
         }
 
-        protected List<T> GetKeywordEffects<T>(SerializableCard card) where T : Effect
-        {
-            List<T> effects = new List<T>();
-            foreach (var (index, keyword) in card.keywords.Enumerate())
-            {
-                if (!keywordJsons.ContainsKey(keyword)) Debug.LogError($"Failed to add {keyword} length {keyword.Length} to {card.cardName}");
-                var keywordJson = keywordJsons[keyword];
-                var eff = JsonConvert.DeserializeObject<T>(keywordJson, cardLoadingSettings);
-                eff.arg = card.keywordArgs.Length > index ? card.keywordArgs[index] : 0;
-                effects.Add(eff);
-            }
-            return effects;
-        }
-
         private static string ReplacePlaceholders(string json)
         {
             //remove problematic chars for from json function
@@ -258,69 +239,7 @@ namespace KompasCore.GameCore
         public IEnumerable<string> GetJsonsFromNames(IEnumerable<string> names)
             => names.Select(n => GetJsonFromName(n)).Where(json => json != null);
 
-        public ServerSubeffect[] InstantiateServerPartialKeyword(string keyword)
-        {
-            if (!partialKeywordJsons.ContainsKey(keyword))
-            {
-                Debug.LogError($"No partial keyword json found for {keyword}");
-                return new ServerSubeffect[0];
-            }
-
-            return JsonConvert.DeserializeObject<ServerSubeffect[]>(partialKeywordJsons[keyword], cardLoadingSettings);
-        }
-
-        #region Create Cards
-        // new version
-        public KompasDeckbuilder.UI.DeckBuilderCardController InstantiateDeckBuilderCard(string json, DeckBuilderController deckBuilderController)
-        {
-            SerializableCard serializableCard = SerializableCardFromJson(json);
-            if (serializableCard == null) return null;
-
-            var card = Instantiate(deckBuilderCardPrefab).GetComponent<KompasDeckbuilder.UI.DeckBuilderCardController>();
-            card.SetInfo(serializableCard, deckBuilderController, FileNameFor(serializableCard.cardName));
-            return card;
-        }
-
-
-        public static IEnumerable<SerializableCard> SerializableCards => GetSerializableCards(CardJsons);
-        private static IEnumerable<SerializableCard> GetSerializableCards(IEnumerable<string> jsons)
-            => jsons.Select(json => SerializableCardFromJson(json)).Where(card => card != null);
-        private static SerializableCard SerializableCardFromJson(string json)
-        {
-            try
-            {
-                //Debug.Log($"Deserializing {json}");
-                return JsonConvert.DeserializeObject<SerializableCard>(json, cardLoadingSettings);
-            }
-            catch (System.ArgumentException e)
-            {
-                Debug.LogError($"{json} had argument exception {e.Message}");
-            }
-            return null;
-        }
-
-
-        public static TriggerRestrictionElement[] InstantiateTriggerKeyword(string keyword)
-        {
-            if (!triggerKeywordJsons.ContainsKey(keyword))
-            {
-                Debug.LogError($"No trigger keyword json found for {keyword}");
-                return new TriggerRestrictionElement[0];
-            }
-            try
-            {
-                return JsonConvert.DeserializeObject<TriggerRestrictionElement[]>(triggerKeywordJsons[keyword], cardLoadingSettings);
-            }
-            catch (JsonReaderException)
-            {
-                Debug.LogError($"Failed to instantiate {keyword}");
-                throw;
-            }
-        }
-
         public static string FileNameFor(string cardName) => cardFileNames[cardName];
-        #endregion Create Cards
-
 
         public static Sprite LoadSprite(string cardFileName) => Resources.Load<Sprite>(Path.Combine("Simple Sprites", cardFileName));
     }

@@ -40,7 +40,7 @@ namespace KompasDeckbuilder.UI.Search
 
             string textLower = textToSearch?.ToLower();
 
-            var serializeds = CardRepository.SerializableCards;
+            var serializeds = DeckBuilderCardRepository.SerializableCards;
 
             if (!string.IsNullOrWhiteSpace(textLower))
                 serializeds = serializeds.Where(TextIncludes(textLower));

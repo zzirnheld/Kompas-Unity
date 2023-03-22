@@ -1,10 +1,11 @@
 using KompasCore.Cards;
+using KompasCore.Effects.Restrictions;
 using KompasCore.GameCore;
 using KompasServer.Effects;
+using KompasServer.Effects.Subeffects;
 using KompasServer.GameCore;
 using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace KompasServer.Cards
@@ -18,6 +19,35 @@ namespace KompasServer.Cards
             var card = JsonConvert.DeserializeObject<SerializableCard>(cardJsons[name],
                     new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto });
             return card.cardType == 'C';
+        }
+
+        public ServerSubeffect[] InstantiateServerPartialKeyword(string keyword)
+        {
+            if (!partialKeywordJsons.ContainsKey(keyword))
+            {
+                Debug.LogError($"No partial keyword json found for {keyword}");
+                return new ServerSubeffect[0];
+            }
+
+            return JsonConvert.DeserializeObject<ServerSubeffect[]>(partialKeywordJsons[keyword], cardLoadingSettings);
+        }
+        
+        public static TriggerRestrictionElement[] InstantiateTriggerKeyword(string keyword)
+        {
+            if (!triggerKeywordJsons.ContainsKey(keyword))
+            {
+                Debug.LogError($"No trigger keyword json found for {keyword}");
+                return new TriggerRestrictionElement[0];
+            }
+            try
+            {
+                return JsonConvert.DeserializeObject<TriggerRestrictionElement[]>(triggerKeywordJsons[keyword], cardLoadingSettings);
+            }
+            catch (JsonReaderException)
+            {
+                Debug.LogError($"Failed to instantiate {keyword}");
+                throw;
+            }
         }
 
 

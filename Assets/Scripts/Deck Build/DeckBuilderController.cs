@@ -7,7 +7,7 @@ namespace KompasDeckbuilder.UI
 {
     public class DeckBuilderController : MonoBehaviour
     {
-        public CardRepository cardRepo;
+        public DeckBuilderCardRepository cardRepo;
 
         public DeckPaneController deckPaneController;
         public DeckbuilderCardViewController cardViewController;

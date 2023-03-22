@@ -1,5 +1,5 @@
 using System.Linq;
-using KompasCore.GameCore;
+using KompasServer.Cards;
 
 namespace KompasCore.Effects.Restrictions
 {
@@ -15,7 +15,7 @@ namespace KompasCore.Effects.Restrictions
             public override void Initialize(EffectInitializationContext initializationContext)
             {
                 base.Initialize(initializationContext);
-                triggerRestrictionElements = CardRepository.InstantiateTriggerKeyword(keyword);
+                triggerRestrictionElements = ServerCardRepository.InstantiateTriggerKeyword(keyword);
             }
 
             protected override bool AbstractIsValidContext(ActivationContext context, ActivationContext secondaryContext)
