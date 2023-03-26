@@ -40,6 +40,7 @@ namespace KompasServer.GameCore
         //UI
         public ServerUIController ServerUIController { get; private set; }
         public override UIController UIController => ServerUIController;
+        public override Settings Settings => new ServerSettings();
 
         //Dictionary of cards, and the forwardings to make that convenient
         private readonly Dictionary<int, ServerGameCard> cardsByID = new Dictionary<int, ServerGameCard>();

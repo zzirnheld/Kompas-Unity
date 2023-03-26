@@ -11,19 +11,21 @@ namespace KompasClient.UI
 {
     public class ClientSettingsUIController : MonoBehaviour
     {
-        public static readonly Color32 DefaultFriendlyBlue = new Color32(74, 78, 156, 255);
-        public static readonly Color32 DefaultEnemyRed = new Color32(255, 53, 49, 255);
 
-        public static readonly Color32 FriendlyGold = new Color32(226, 166, 0, 255);
-        public static readonly Color32 EnemySilver = new Color32(128, 128, 128, 255);
-
-        public static readonly Color32[] DefaultFriendlyColorOptions = { DefaultFriendlyBlue, FriendlyGold };
-        public static readonly Color32[] DefaultEnemyColorOptions = { DefaultEnemyRed, EnemySilver };
+        public static readonly Color32[] DefaultFriendlyColorOptions = { ClientSettings.DefaultFriendlyBlue, ClientSettings.FriendlyGold };
+        public static readonly Color32[] DefaultEnemyColorOptions = { ClientSettings.DefaultEnemyRed, ClientSettings.EnemySilver };
         public static readonly string[] DefaultFriendlyColorOptionNames = { "Blue", "Gold" }; //TODO make these swatches
         public static readonly string[] DefaultEnemyColorOptionNames = { "Red", "Silver" };
 
         public string ClientSettingsPath => Application.persistentDataPath + "/ClientUISettings.json";
-        public ClientSettings ClientSettings { get; private set; }
+        public ClientSettings clientSettings;
+        public ClientSettings ClientSettings 
+        {
+            get {
+                if (clientSettings == default) clientSettings = LoadSettings();
+                return clientSettings;
+            }
+        }
 
         public ClientGame clientGame;
         public TMP_Dropdown statHighlightDropdown;
@@ -49,11 +51,12 @@ namespace KompasClient.UI
             SaveSettings();
         }
 
-        public void LoadSettings()
+        public ClientSettings LoadSettings()
         {
+            ClientSettings ret;
             if (!File.Exists(ClientSettingsPath))
             {
-                ClientSettings = ClientSettings.Default;
+                ret = ClientSettings.Default;
                 SaveSettings();
             }
             else
@@ -62,17 +65,18 @@ namespace KompasClient.UI
                 string settingsJson = File.ReadAllText(ClientSettingsPath);
                 try
                 {
-                    if (string.IsNullOrEmpty(settingsJson)) ClientSettings = ClientSettings.Default;
-                    else ClientSettings = JsonConvert.DeserializeObject<ClientSettings>(settingsJson).Cleanup();
+                    if (string.IsNullOrEmpty(settingsJson)) ret = ClientSettings.Default;
+                    else ret = JsonConvert.DeserializeObject<ClientSettings>(settingsJson).Cleanup();
                 }
                 catch (ArgumentException a)
                 {
                     Debug.LogError($"Failed to load settings.\n{a.Message}.\n{a.StackTrace}");
-                    ClientSettings = ClientSettings.Default;
+                    ret = ClientSettings.Default;
                 }
             }
 
             if (gameObject.activeSelf) Show();
+            return ret;
         }
 
         public void SaveSettings()
@@ -180,82 +184,6 @@ namespace KompasClient.UI
         public void Hide()
         {
             gameObject.SetActive(false);
-        }
-    }
-
-    public enum StatHighlight { NoHighlight, ColoredBack }
-    public enum ConfirmTargets { No, Prompt }
-
-    public class ClientSettings
-    {
-        public const float DefaultZoomThreshold = 14f;
-
-        public StatHighlight statHighlight;
-        public float zoomThreshold;
-        public ConfirmTargets confirmTargets;
-        public bool showAdvancedEffectsSettings = false;
-        public string defaultIP;
-        public byte friendlyColorRed = ClientSettingsUIController.DefaultFriendlyBlue.r;
-        public byte friendlyColorGreen = ClientSettingsUIController.DefaultFriendlyBlue.g;
-        public byte friendlyColorBlue = ClientSettingsUIController.DefaultFriendlyBlue.b;
-        public byte enemyColorRed = ClientSettingsUIController.DefaultEnemyRed.r;
-        public byte enemyColorGreen = ClientSettingsUIController.DefaultEnemyRed.g;
-        public byte enemyColorBlue = ClientSettingsUIController.DefaultEnemyRed.b;
-        public int friendlyColorIndex = 0;
-        public int enemyColorIndex = 0;
-
-        [JsonIgnore]
-        public Color32 FriendlyColor
-        {
-            set
-            {
-                friendlyColorRed = value.r;
-                friendlyColorGreen = value.g;
-                friendlyColorBlue = value.b;
-                Debug.Log($"Setting friendly color to {value}. {friendlyColorRed}, {friendlyColorGreen}, {friendlyColorBlue}");
-            }
-            get
-            {
-                return new Color32(friendlyColorRed, friendlyColorGreen, friendlyColorBlue, 255);
-            }
-        }
-        [JsonIgnore]
-        public Color32 EnemyColor
-        {
-            set
-            {
-                enemyColorRed = value.r;
-                enemyColorGreen = value.g;
-                enemyColorBlue = value.b;
-            }
-            get
-            {
-                return new Color32(enemyColorRed, enemyColorGreen, enemyColorBlue, 255);
-            }
-        }
-
-        public static ClientSettings Default => new ClientSettings()
-        {
-            statHighlight = StatHighlight.NoHighlight,
-            zoomThreshold = DefaultZoomThreshold,
-            confirmTargets = ConfirmTargets.No,
-            showAdvancedEffectsSettings = false,
-            defaultIP = "",
-            FriendlyColor = ClientSettingsUIController.DefaultFriendlyBlue,
-            EnemyColor = ClientSettingsUIController.DefaultEnemyRed,
-            friendlyColorIndex = 0,
-            enemyColorIndex = 0
-        };
-
-        /// <summary>
-        /// Updates any json-default values to their regular defaults
-        /// </summary>
-        /// <returns><see cref="this"/></returns>
-        public ClientSettings Cleanup()
-        {
-            if (zoomThreshold == default) zoomThreshold = DefaultZoomThreshold;
-
-            return this;
         }
     }
 }

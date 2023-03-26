@@ -7,6 +7,7 @@ using KompasCore.Effects;
 using KompasCore.Helpers;
 using Newtonsoft.Json;
 using UnityEngine;
+using static VoxelCard;
 
 namespace KompasCore.GameCore
 {
@@ -19,6 +20,85 @@ namespace KompasCore.GameCore
         public GameObject CardPrefab;
 
         //TODO next: maintain a static list of recalculated textures, and grab them from there rather than recalculating for each new copy of a card created
+
+        private static IDictionary<string, (Texture2D, Texture2D, Texture2D, Texture2D)> cardFileNameToTextures;
+        private static Texture2D friendlyZoomedCharTexture;
+        private static Texture2D friendlyZoomedNonCharTexture;
+        private static Texture2D friendlyUnzoomedCharTexture;
+        private static Texture2D friendlyUnzoomedNonCharTexture;
+        private static Texture2D friendlyZoomedCharMetalness;
+        private static Texture2D friendlyZoomedNonCharMetalness;
+        private static Texture2D friendlyUnzoomedCharMetalness;
+        private static Texture2D friendlyUnzoomedNonCharMetalness;
+
+        private static Texture2D enemyZoomedCharTexture;
+        private static Texture2D enemyZoomedNonCharTexture;
+        private static Texture2D enemyUnzoomedCharTexture;
+        private static Texture2D enemyUnzoomedNonCharTexture;
+        private static Texture2D enemyZoomedCharMetalness;
+        private static Texture2D enemyZoomedNonCharMetalness;
+        private static Texture2D enemyUnzoomedCharMetalness;
+        private static Texture2D enemyUnzoomedNonCharMetalness;
+
+        public Sprite frameTexture;
+        public Sprite namePlacardTexture;
+        public Sprite typePlacardTexture;
+        public Sprite effectTextTexture;
+        public Sprite cardBackTexture;
+        public Sprite nTexture;
+        public Sprite eTexture;
+        public Sprite sacTexture;
+        public Sprite wTexture;
+        public Sprite rTexture;
+        public Sprite dTexture;
+
+        private static bool initialized = false;
+        private static object initializationLock = new object();
+
+        public Game game;
+        public Settings Settings
+        {
+            get
+            {
+                if (game != null) return game.Settings;
+                else return default;
+            }
+        }
+
+        protected override void Awake()
+        {
+            base.Awake();
+            lock (initializationLock)
+            {
+                if (initialized) return;
+
+                var textures = new TextureParams.Textures()
+                {
+                    NamePlacardTexture = namePlacardTexture,
+                    TypePlacardTexture = typePlacardTexture,
+                    EffectTextTexture = effectTextTexture,
+                    CardBackTexture = cardBackTexture,
+                    NTexture = nTexture,
+                    ETexture = eTexture,
+                    SACTexture = sacTexture,
+                    WTexture = wTexture,
+                    RTexture = rTexture,
+                    DTexture = dTexture,
+                };
+
+                textures.FrameColorOverride = Settings?.FriendlyColor ?? Settings.DefaultFriendlyBlue;
+                (friendlyZoomedCharTexture, friendlyZoomedCharMetalness) = VoxelCard.BuildTexture(default, default, TextureParams.Params(isZoomed: true, isChar: true, textures), true);
+                (friendlyZoomedNonCharTexture, friendlyZoomedNonCharMetalness) = VoxelCard.BuildTexture(default, default, TextureParams.Params(isZoomed: true, isChar: false, textures), true);
+                (friendlyUnzoomedCharTexture, friendlyUnzoomedCharMetalness) = VoxelCard.BuildTexture(default, default, TextureParams.Params(isZoomed: false, isChar: true, textures), true);
+                (friendlyUnzoomedNonCharTexture, friendlyUnzoomedNonCharMetalness) = VoxelCard.BuildTexture(default, default, TextureParams.Params(isZoomed: false, isChar: false, textures), true);
+
+                textures.FrameColorOverride = Settings?.EnemyColor ?? Settings.DefaultEnemyRed;
+                (enemyZoomedCharTexture, enemyZoomedCharMetalness) = VoxelCard.BuildTexture(default, default, TextureParams.Params(isZoomed: true, isChar: true, textures), true);
+                (enemyZoomedNonCharTexture, enemyZoomedNonCharMetalness) = VoxelCard.BuildTexture(default, default, TextureParams.Params(isZoomed: true, isChar: false, textures), true);
+                (enemyUnzoomedCharTexture, enemyUnzoomedCharMetalness) = VoxelCard.BuildTexture(default, default, TextureParams.Params(isZoomed: false, isChar: true, textures), true);
+                (enemyUnzoomedNonCharTexture, enemyUnzoomedNonCharMetalness) = VoxelCard.BuildTexture(default, default, TextureParams.Params(isZoomed: false, isChar: false, textures), true);
+            }
+        }
 
         private T GetCardController<T>(GameObject gameObject) where T : TCardController //Prevents casting
         {

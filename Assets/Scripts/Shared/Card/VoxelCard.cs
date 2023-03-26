@@ -902,17 +902,20 @@ public class VoxelCard : VoxelCardBase
 
         CharacterArtUpperBound = CharacterArtUpperBound,
 
-        FrameTexture = FrameTexture,
-        NamePlacardTexture = NamePlacardTexture,
-        TypePlacardTexture = TypePlacardTexture,
-        EffectTextTexture = EffectTextTexture,
-        CardBackTexture = CardBackTexture,
-        NTexture = NTexture,
-        ETexture = ETexture,
-        SACTexture = SACTexture,
-        WTexture = WTexture,
-        RTexture = RTexture,
-        DTexture = DTexture,
+        textures = new TextureParams.Textures()
+        {
+            FrameTexture = FrameTexture,
+            NamePlacardTexture = NamePlacardTexture,
+            TypePlacardTexture = TypePlacardTexture,
+            EffectTextTexture = EffectTextTexture,
+            CardBackTexture = CardBackTexture,
+            NTexture = NTexture,
+            ETexture = ETexture,
+            SACTexture = SACTexture,
+            WTexture = WTexture,
+            RTexture = RTexture,
+            DTexture = DTexture,
+        },
     };
 
     public class TextureParams
@@ -978,37 +981,40 @@ public class VoxelCard : VoxelCardBase
             }
         }
 
-        public static TextureParams Params(bool isZoomed, bool isChar, 
-            Sprite FrameTexture, Sprite NamePlacardTexture, Sprite TypePlacardTexture, Sprite EffectTextTexture, Sprite CardBackTexture,
-            Sprite NTexture, Sprite ETexture, Sprite SACTexture, Sprite WTexture, Sprite RTexture, Sprite DTexture)
+        public class Textures
+        {
+            public Sprite FrameTexture;
+            public Color32? FrameColorOverride;
+
+            public Sprite NamePlacardTexture;
+            public Sprite TypePlacardTexture;
+            public Sprite EffectTextTexture;
+            public Sprite CardBackTexture;
+            public Sprite NTexture;
+            public Sprite ETexture;
+            public Sprite SACTexture;
+            public Sprite WTexture;
+            public Sprite RTexture;
+            public Sprite DTexture;
+
+            public Color GetFrameColor(int x, int y) => FrameColorOverride ?? FrameTexture.texture.GetPixel(x, y);
+        }
+
+        public static TextureParams Params(bool isZoomed, bool isChar, Textures textures)
         {
             var ret = isZoomed ? DefaultZoomed : DefaultUnzoomed;
 
-            ret.FrameTexture = FrameTexture;
-            ret.NamePlacardTexture = NamePlacardTexture;
-            ret.TypePlacardTexture = TypePlacardTexture;
-            ret.EffectTextTexture = EffectTextTexture;
-            ret.CardBackTexture = CardBackTexture;
-            ret.NTexture = NTexture;
-            ret.ETexture = ETexture;
-            ret.SACTexture = SACTexture;
-            ret.WTexture = WTexture;
-            ret.RTexture = RTexture;
-            ret.DTexture = DTexture;
+            ret.textures = textures;
 
             return ret;
         }
 
+        internal Textures textures;
+
         internal int TextureResolution;
-        internal Sprite FrameTexture;
-        internal Sprite NamePlacardTexture;
-        internal Sprite TypePlacardTexture;
         internal Sprite CharacterArt;
         internal float CharacterArtSamplingIncrementRatio;
         internal bool fullArt;
-
-        internal Sprite EffectTextTexture;
-        internal Sprite CardBackTexture;
 
         internal bool ApplyStatColors;
         internal float FrameThickness;
@@ -1031,12 +1037,6 @@ public class VoxelCard : VoxelCardBase
         internal float NamePlacardGloss;
         internal float TypePlacardMetallic;
         internal float TypePlacardGloss;
-        internal Sprite NTexture;
-        internal Sprite ETexture;
-        internal Sprite SACTexture;
-        internal Sprite WTexture;
-        internal Sprite RTexture;
-        internal Sprite DTexture;
         internal float StatsMetallic;
         internal float StatsGloss;
         internal float EffectTextMetallic;
@@ -1057,9 +1057,9 @@ public class VoxelCard : VoxelCardBase
             ? new Texture2D(textureParams.TextureResolution * 3, textureParams.TextureResolution * 2, TextureFormat.ARGB32, false)
             : oldMetalness;
 
-        (Vector2Int FrameSamplingStartIndex, float FrameSamplingIncrement) = SamplingInformation(textureParams.FrameTexture, textureParams);
-        (Vector2Int NamePlacardSamplingStartIndex, float NamePlacardSamplingIncrement) = SamplingInformation(textureParams.NamePlacardTexture, textureParams);
-        (Vector2Int TypePlacardSamplingStartIndex, float TypePlacardSamplingIncrement) = SamplingInformation(textureParams.TypePlacardTexture, textureParams);
+        (Vector2Int FrameSamplingStartIndex, float FrameSamplingIncrement) = SamplingInformation(textureParams.textures.FrameTexture, textureParams);
+        (Vector2Int NamePlacardSamplingStartIndex, float NamePlacardSamplingIncrement) = SamplingInformation(textureParams.textures.NamePlacardTexture, textureParams);
+        (Vector2Int TypePlacardSamplingStartIndex, float TypePlacardSamplingIncrement) = SamplingInformation(textureParams.textures.TypePlacardTexture, textureParams);
 
         var charArtTex = textureParams.CharacterArt.texture;
         int squaringFactor = Mathf.Abs(charArtTex.width - charArtTex.height) / 2;
@@ -1075,8 +1075,8 @@ public class VoxelCard : VoxelCardBase
 
         if (textureParams.fullArt) CharacterArtSamplingStartIndex = new Vector2Int(-2 * CharacterArtSamplingStartIndex.x, CharacterArtSamplingStartIndex.y);
 
-        (Vector2Int EffectTextSamplingStartIndex, float EffectTextSamplingIncrement) = SamplingInformation(textureParams.EffectTextTexture, textureParams);
-        (Vector2Int CardBackSamplingStartIndex, float CardBackSamplingIncrement) = SamplingInformation(textureParams.CardBackTexture, textureParams);
+        (Vector2Int EffectTextSamplingStartIndex, float EffectTextSamplingIncrement) = SamplingInformation(textureParams.textures.EffectTextTexture, textureParams);
+        (Vector2Int CardBackSamplingStartIndex, float CardBackSamplingIncrement) = SamplingInformation(textureParams.textures.CardBackTexture, textureParams);
 
         for (int x = 0; x < textureParams.TextureResolution; x++)
         {
@@ -1087,7 +1087,7 @@ public class VoxelCard : VoxelCardBase
 
                 //Frame texture
                 samplePosition = new Vector2Int(FrameSamplingStartIndex.x + (int)(FrameSamplingIncrement * x), FrameSamplingStartIndex.y + (int)(FrameSamplingIncrement * y));
-                Color frameColor = textureParams.FrameTexture.texture.GetPixel(samplePosition.x, samplePosition.y);
+                Color frameColor = textureParams.textures.GetFrameColor(samplePosition.x, samplePosition.y);
                 if (textureParams.ApplyStatColors)
                 {
                     Vector2 normalizedXY = new Vector2(((float)x / textureParams.TextureResolution - textureParams.FrameThickness) / (1.0f - 2.0f * textureParams.FrameThickness), ((float)y / textureParams.TextureResolution - textureParams.FrameThickness) / (1.0f - 2.0f * textureParams.FrameThickness));
@@ -1126,11 +1126,11 @@ public class VoxelCard : VoxelCardBase
 
                 //Name placard texture
                 position += textureParams.TextureResolution * Vector2Int.right;
-                Paint(NamePlacardSamplingStartIndex, NamePlacardSamplingIncrement, textureParams.NamePlacardTexture, textureParams.NamePlacardMetallic, textureParams.NamePlacardGloss);
+                Paint(NamePlacardSamplingStartIndex, NamePlacardSamplingIncrement, textureParams.textures.NamePlacardTexture, textureParams.NamePlacardMetallic, textureParams.NamePlacardGloss);
 
                 //Type placard texture
                 position += textureParams.TextureResolution * Vector2Int.right;
-                Paint(TypePlacardSamplingStartIndex, TypePlacardSamplingIncrement, textureParams.TypePlacardTexture, textureParams.TypePlacardMetallic, textureParams.TypePlacardGloss);
+                Paint(TypePlacardSamplingStartIndex, TypePlacardSamplingIncrement, textureParams.textures.TypePlacardTexture, textureParams.TypePlacardMetallic, textureParams.TypePlacardGloss);
 
                 //Stats placards texture
                 position = new Vector2Int(x, textureParams.TextureResolution + y);
@@ -1141,7 +1141,7 @@ public class VoxelCard : VoxelCardBase
                 position = new Vector2Int(textureParams.TextureResolution + x, textureParams.TextureResolution + y);
                 Vector2Int frontStartIndex = EffectTextSamplingStartIndex;
                 float frontIncrement = EffectTextSamplingIncrement;
-                Sprite frontTexture = textureParams.EffectTextTexture;
+                Sprite frontTexture = textureParams.textures.EffectTextTexture;
                 Color frontMetallic = new Color(textureParams.EffectTextMetallic, 0.0f, 0.0f, textureParams.EffectTextGloss);
                 float effTextZoneRatio = 0.37f;
                 float artRightBound = textureParams.fullArt ? 1.0f : effTextZoneRatio * (1f + textureParams.FrameThickness);
@@ -1169,7 +1169,7 @@ public class VoxelCard : VoxelCardBase
                     {
                         frontStartIndex = FrameSamplingStartIndex;
                         frontIncrement = FrameSamplingIncrement;
-                        frontTexture = textureParams.FrameTexture;
+                        frontTexture = textureParams.textures.FrameTexture;
                         frontMetallic = new Color(textureParams.FrameMetallic, 0.0f, 0.0f, textureParams.FrameGloss);
                     }
                 }
@@ -1181,7 +1181,7 @@ public class VoxelCard : VoxelCardBase
                 //Card back texture
                 position += textureParams.TextureResolution * Vector2Int.right;
                 samplePosition = new Vector2Int(CardBackSamplingStartIndex.x + (int)(CardBackSamplingIncrement * x), CardBackSamplingStartIndex.y + (int)(CardBackSamplingIncrement * y));
-                newTexture.SetPixel(position.x, position.y, textureParams.CardBackTexture.texture.GetPixel(samplePosition.x, samplePosition.y));
+                newTexture.SetPixel(position.x, position.y, textureParams.textures.CardBackTexture.texture.GetPixel(samplePosition.x, samplePosition.y));
                 metalness.SetPixel(position.x, position.y, new Color(textureParams.CardBackMetallic, 0.0f, 0.0f, textureParams.CardBackGloss));
             }
         }
@@ -1194,50 +1194,51 @@ public class VoxelCard : VoxelCardBase
     private static (Vector2Int, float, Sprite) DetermineRelevantStatValues(int x, int y, TextureParams textureParams)
     {
 
-        (Vector2Int NSamplingStartIndex, float NSamplingIncrement) = SamplingInformation(textureParams.NTexture, textureParams);
-        (Vector2Int ESamplingStartIndex, float ESamplingIncrement) = SamplingInformation(textureParams.ETexture, textureParams);
-        (Vector2Int SACSamplingStartIndex, float SACSamplingIncrement) = SamplingInformation(textureParams.SACTexture, textureParams);
-        (Vector2Int WSamplingStartIndex, float WSamplingIncrement) = SamplingInformation(textureParams.WTexture, textureParams);
-        (Vector2Int RSamplingStartIndex, float RSamplingIncrement) = SamplingInformation(textureParams.RTexture, textureParams);
-        (Vector2Int DSamplingStartIndex, float DSamplingIncrement) = SamplingInformation(textureParams.DTexture, textureParams);
+        (Vector2Int NSamplingStartIndex, float NSamplingIncrement) = SamplingInformation(textureParams.textures.NTexture, textureParams);
+        (Vector2Int ESamplingStartIndex, float ESamplingIncrement) = SamplingInformation(textureParams.textures.ETexture, textureParams);
+        (Vector2Int SACSamplingStartIndex, float SACSamplingIncrement) = SamplingInformation(textureParams.textures.SACTexture, textureParams);
+        (Vector2Int WSamplingStartIndex, float WSamplingIncrement) = SamplingInformation(textureParams.textures.WTexture, textureParams);
+        (Vector2Int RSamplingStartIndex, float RSamplingIncrement) = SamplingInformation(textureParams.textures.RTexture, textureParams);
+        (Vector2Int DSamplingStartIndex, float DSamplingIncrement) = SamplingInformation(textureParams.textures.DTexture, textureParams);
 
         if (x < textureParams.TextureResolution / 3)
         {
             if (y > textureParams.TextureResolution / 3)
             {
-                return (WSamplingStartIndex, WSamplingIncrement, textureParams.WTexture);
+                return (WSamplingStartIndex, WSamplingIncrement, textureParams.textures.WTexture);
             }
             else
             {
-                return (DSamplingStartIndex, DSamplingIncrement, textureParams.DTexture);
+                return (DSamplingStartIndex, DSamplingIncrement, textureParams.textures.DTexture);
             }
         }
         else if (x < 2 * textureParams.TextureResolution / 3)
         {
             if (y > textureParams.TextureResolution / 2)
             {
-                return (NSamplingStartIndex, NSamplingIncrement,textureParams. NTexture);
+                return (NSamplingStartIndex, NSamplingIncrement,textureParams.textures. NTexture);
             }
             else
             {
-                return (SACSamplingStartIndex, SACSamplingIncrement, textureParams.SACTexture);
+                return (SACSamplingStartIndex, SACSamplingIncrement, textureParams.textures.SACTexture);
             }
         }
         else
         {
             if (y > textureParams.TextureResolution / 3)
             {
-                return (ESamplingStartIndex, ESamplingIncrement, textureParams.ETexture);
+                return (ESamplingStartIndex, ESamplingIncrement, textureParams.textures.ETexture);
             }
             else
             {
-                return (RSamplingStartIndex, RSamplingIncrement, textureParams.RTexture);
+                return (RSamplingStartIndex, RSamplingIncrement, textureParams.textures.RTexture);
             }
         }
     }
 
     private static (Vector2Int, float) SamplingInformation(Sprite sprite, TextureParams textureParams)
     {
+        if (sprite == default) return (Vector2Int.zero, 0f);
         int maxDim = Mathf.Max(sprite.texture.height, sprite.texture.width);
         int minDim = Mathf.Min(sprite.texture.height, sprite.texture.width);
 

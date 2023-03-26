@@ -97,7 +97,7 @@ namespace KompasCore.GameCore
 
         public static void Init() => InitializeCardJsons();
 
-        private void Awake()
+        protected virtual void Awake()
         {
             lock (initializationLock)
             {

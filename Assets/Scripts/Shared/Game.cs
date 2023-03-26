@@ -17,6 +17,7 @@ namespace KompasCore.GameCore
 
         //other scripts
         public abstract UIController UIController { get; }
+        public abstract Settings Settings { get; }
 
         //game mechanics
         public abstract BoardController BoardController { get; }

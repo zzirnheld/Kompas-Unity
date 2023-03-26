@@ -46,6 +46,7 @@ namespace KompasClient.GameCore
         public override IReadOnlyCollection<GameCard> Cards => cardsByID.Values;
 
         public ClientSettings ClientSettings => clientUIController.clientUISettingsController.ClientSettings;
+        public override Settings Settings => ClientSettings;
 
         //turn players?
         public bool FriendlyTurn => TurnPlayer == FriendlyPlayer;
