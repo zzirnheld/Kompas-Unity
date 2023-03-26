@@ -18,6 +18,8 @@ namespace KompasCore.GameCore
         [Header("Standard Game")]
         public GameObject CardPrefab;
 
+        //TODO next: maintain a static list of recalculated textures, and grab them from there rather than recalculating for each new copy of a card created
+
         private T GetCardController<T>(GameObject gameObject) where T : TCardController //Prevents casting
         {
             var cardCtrlComponents = gameObject

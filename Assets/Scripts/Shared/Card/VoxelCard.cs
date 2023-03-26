@@ -165,9 +165,9 @@ public class VoxelCard : VoxelCardBase
         {
             var textureName = $"Assets/{(fullArt ? "ZoomedOut" : "ZoomedIn")}{(HasN ? "Char" : "Spell")}Texture.asset";
             var metalnessName = $"Assets/{(fullArt ? "ZoomedOut" : "ZoomedIn")}{(HasN ? "Char" : "Spell")}Metalness.asset";
-            var textures = GenerateTexture();
-            if (stashMeshes) AssetDatabase.CreateAsset(textures[0], textureName);
-            if (stashMeshes) AssetDatabase.CreateAsset(textures[1], metalnessName);
+            var (tex, met) = GenerateTexture();
+            if (stashMeshes) AssetDatabase.CreateAsset(tex, textureName);
+            if (stashMeshes) AssetDatabase.CreateAsset(met, metalnessName);
         }
         //Debug.Log($"Took {System.DateTime.Now - start}");
     }
@@ -190,7 +190,11 @@ public class VoxelCard : VoxelCardBase
         return ApplyMesh(newMesh);
     }
 
-    public List<Texture2D> GenerateTexture()
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns>Texture, Metalness</returns>
+    public (Texture2D, Texture2D) GenerateTexture()
     {
         var start = System.DateTime.Now;
         Material mat = gameObject.GetComponent<MeshRenderer>().material;
@@ -200,7 +204,7 @@ public class VoxelCard : VoxelCardBase
             mat = new Material(BaseMaterial);
             rebuild = true;
         }
-        List<Texture2D> newTextures = BuildTexture(mat.GetTexture(MainTextureName) as Texture2D, mat.GetTexture(MainMetalnessName) as Texture2D, rebuild);
+        var newTextures = BuildTexture(mat.GetTexture(MainTextureName) as Texture2D, mat.GetTexture(MainMetalnessName) as Texture2D, MyParams, rebuild);
         ApplyTexture(newTextures, mat);
         Debug.Log($"Took {System.DateTime.Now - start}");
         return newTextures;
@@ -853,73 +857,265 @@ public class VoxelCard : VoxelCardBase
         return filter;
     }
 
-    private List<Texture2D> BuildTexture(Texture2D oldTexture, Texture2D oldMetalness, bool rebuildAll = true)
+    private TextureParams MyParams => new TextureParams()
+    {
+        TextureResolution = TextureResolution,
+        CharacterArt = CharacterArt,
+        CharacterArtSamplingIncrementRatio = CharacterArtSamplingIncrementRatio,
+        fullArt = fullArt,
+
+        ApplyStatColors = ApplyStatColors,
+        FrameThickness = FrameThickness,
+
+        HasN = HasN,
+        HasE = HasE,
+        HasSAC = HasSAC,
+        HasW = HasW,
+        HasR = HasR,
+        HasD = HasD,
+
+        NColor = NColor,
+        EColor = EColor,
+        SACColor = SACColor,
+        WColor = WColor,
+
+        FrameMetallic = FrameMetallic,
+        FrameGloss = FrameGloss,
+
+        NamePlacardMetallic = NamePlacardMetallic,
+        NamePlacardGloss = NamePlacardGloss,
+
+        TypePlacardMetallic = TypePlacardMetallic,
+        TypePlacardGloss = TypePlacardGloss,
+
+        StatsMetallic = StatsMetallic,
+        StatsGloss = StatsGloss,
+
+        EffectTextMetallic = EffectTextMetallic,
+        EffectTextGloss = EffectTextGloss,
+
+        CharacterArtMetallic = CharacterArtMetallic,
+        CharacterArtGloss = CharacterArtGloss,
+
+        CardBackMetallic = CardBackMetallic,
+        CardBackGloss = CardBackGloss,
+
+        CharacterArtUpperBound = CharacterArtUpperBound,
+
+        FrameTexture = FrameTexture,
+        NamePlacardTexture = NamePlacardTexture,
+        TypePlacardTexture = TypePlacardTexture,
+        EffectTextTexture = EffectTextTexture,
+        CardBackTexture = CardBackTexture,
+        NTexture = NTexture,
+        ETexture = ETexture,
+        SACTexture = SACTexture,
+        WTexture = WTexture,
+        RTexture = RTexture,
+        DTexture = DTexture,
+    };
+
+    public class TextureParams
+    {
+        public static TextureParams Default => new TextureParams()
+        {
+            TextureResolution = 256,
+
+            //FrameThickness = 0.0225f,
+
+            HasSAC = true, //Duh
+
+            NColor = new Color32(48, 128, 48, 0),
+            EColor = new Color32(192, 48, 48, 0),
+            SACColor = new Color32(128, 48, 128, 0),
+            WColor = new Color32(0, 128, 128, 0),
+
+            FrameMetallic = 0.75f,
+            FrameGloss = 0.5f,
+
+            NamePlacardMetallic = 0.75f,
+            NamePlacardGloss = 0.5f,
+
+            TypePlacardMetallic = 0.5f,
+            TypePlacardGloss = 0f,
+
+            StatsMetallic = 0f,
+            StatsGloss = 0f,
+
+            EffectTextMetallic = 0f,
+            EffectTextGloss = 0f,
+
+            CharacterArtMetallic = 0f,
+            CharacterArtGloss = 0f,
+
+            CardBackMetallic = 0.75f,
+            CardBackGloss = 0.5f,
+        };
+
+        public static TextureParams DefaultZoomed
+        {
+            get
+            {
+                var zoomed = Default;
+                zoomed.FrameThickness = 0.05f;
+                zoomed.CharacterArtSamplingIncrementRatio = CharacterArtSamplingIncrementRatioHasText;
+                zoomed.fullArt = false;
+                zoomed.CharacterArtUpperBound = CharacterArtUpperBoundHasText;
+                return zoomed;
+            }
+        }
+
+        public static TextureParams DefaultUnzoomed
+        {
+            get
+            {
+                var unzoomed = Default;
+                unzoomed.FrameThickness = 0.0225f;
+                unzoomed.CharacterArtSamplingIncrementRatio = CharacterArtSamplingIncrementRatioFullArt;
+                unzoomed.fullArt = true;
+                unzoomed.CharacterArtUpperBound = CharacterArtUpperBoundFullArt;
+                return unzoomed;
+            }
+        }
+
+        public static TextureParams Params(bool isZoomed, bool isChar, 
+            Sprite FrameTexture, Sprite NamePlacardTexture, Sprite TypePlacardTexture, Sprite EffectTextTexture, Sprite CardBackTexture,
+            Sprite NTexture, Sprite ETexture, Sprite SACTexture, Sprite WTexture, Sprite RTexture, Sprite DTexture)
+        {
+            var ret = isZoomed ? DefaultZoomed : DefaultUnzoomed;
+
+            ret.FrameTexture = FrameTexture;
+            ret.NamePlacardTexture = NamePlacardTexture;
+            ret.TypePlacardTexture = TypePlacardTexture;
+            ret.EffectTextTexture = EffectTextTexture;
+            ret.CardBackTexture = CardBackTexture;
+            ret.NTexture = NTexture;
+            ret.ETexture = ETexture;
+            ret.SACTexture = SACTexture;
+            ret.WTexture = WTexture;
+            ret.RTexture = RTexture;
+            ret.DTexture = DTexture;
+
+            return ret;
+        }
+
+        internal int TextureResolution;
+        internal Sprite FrameTexture;
+        internal Sprite NamePlacardTexture;
+        internal Sprite TypePlacardTexture;
+        internal Sprite CharacterArt;
+        internal float CharacterArtSamplingIncrementRatio;
+        internal bool fullArt;
+
+        internal Sprite EffectTextTexture;
+        internal Sprite CardBackTexture;
+
+        internal bool ApplyStatColors;
+        internal float FrameThickness;
+
+        internal bool HasN;
+        internal bool HasE;
+        internal bool HasSAC;
+        internal bool HasW;
+        internal bool HasR;
+        internal bool HasD;
+
+        internal Color NColor;
+        internal Color EColor;
+        internal Color SACColor;
+        internal Color WColor;
+
+        internal float FrameMetallic;
+        internal float FrameGloss;
+        internal float NamePlacardMetallic;
+        internal float NamePlacardGloss;
+        internal float TypePlacardMetallic;
+        internal float TypePlacardGloss;
+        internal Sprite NTexture;
+        internal Sprite ETexture;
+        internal Sprite SACTexture;
+        internal Sprite WTexture;
+        internal Sprite RTexture;
+        internal Sprite DTexture;
+        internal float StatsMetallic;
+        internal float StatsGloss;
+        internal float EffectTextMetallic;
+        internal float EffectTextGloss;
+        internal float CharacterArtMetallic;
+        internal float CharacterArtGloss;
+        internal float CardBackMetallic;
+        internal float CardBackGloss;
+        internal float CharacterArtUpperBound;
+    }
+
+    public static (Texture2D, Texture2D) BuildTexture(Texture2D oldTexture, Texture2D oldMetalness, TextureParams textureParams, bool rebuildAll = true)
     {
         Texture2D newTexture = rebuildAll || oldTexture == default
-            ? new Texture2D(TextureResolution * 3, TextureResolution * 2, TextureFormat.ARGB32, false)
+            ? new Texture2D(textureParams.TextureResolution * 3, textureParams.TextureResolution * 2, TextureFormat.ARGB32, false)
             : oldTexture;
         Texture2D metalness = rebuildAll || oldMetalness == default
-            ? new Texture2D(TextureResolution * 3, TextureResolution * 2, TextureFormat.ARGB32, false)
+            ? new Texture2D(textureParams.TextureResolution * 3, textureParams.TextureResolution * 2, TextureFormat.ARGB32, false)
             : oldMetalness;
 
-        (Vector2Int FrameSamplingStartIndex, float FrameSamplingIncrement) = SamplingInformation(FrameTexture);
-        (Vector2Int NamePlacardSamplingStartIndex, float NamePlacardSamplingIncrement) = SamplingInformation(NamePlacardTexture);
-        (Vector2Int TypePlacardSamplingStartIndex, float TypePlacardSamplingIncrement) = SamplingInformation(TypePlacardTexture);
+        (Vector2Int FrameSamplingStartIndex, float FrameSamplingIncrement) = SamplingInformation(textureParams.FrameTexture, textureParams);
+        (Vector2Int NamePlacardSamplingStartIndex, float NamePlacardSamplingIncrement) = SamplingInformation(textureParams.NamePlacardTexture, textureParams);
+        (Vector2Int TypePlacardSamplingStartIndex, float TypePlacardSamplingIncrement) = SamplingInformation(textureParams.TypePlacardTexture, textureParams);
 
-        int squaringFactor = Mathf.Abs(CharacterArt.texture.width - CharacterArt.texture.height) / 2;
-        float shorterDimension = Mathf.Min(CharacterArt.texture.width, CharacterArt.texture.height);
+        var charArtTex = textureParams.CharacterArt.texture;
+        int squaringFactor = Mathf.Abs(charArtTex.width - charArtTex.height) / 2;
+        float shorterDimension = Mathf.Min(charArtTex.width, charArtTex.height);
 
-        float CharacterArtSamplingIncrement = (shorterDimension / (float) TextureResolution) * CharacterArtSamplingIncrementRatio;
-        Vector2Int CharacterArtSamplingStartIndex = fullArt
+        float CharacterArtSamplingIncrement = (shorterDimension / (float) textureParams.TextureResolution) * textureParams.CharacterArtSamplingIncrementRatio;
+        Vector2Int CharacterArtSamplingStartIndex = textureParams.fullArt
             ? (Vector2Int.right * (int)(squaringFactor + (shorterDimension * CharacterArtSamplingStartIndexRatio)))
             + (Vector2Int.down * (int)(shorterDimension * 2.0f * CharacterArtSamplingStartIndexRatio))
             : (Vector2Int.right * 0)//(int)(squaringFactor + (shorterDimension * CharacterArtSamplingStartIndexRatio)))
             + (Vector2Int.down * (int)(shorterDimension * -2.0f * CharacterArtSamplingStartIndexRatio));
         //Debug.Log($"Character art {CharacterArtSamplingIncrement}, {CharacterArtSamplingStartIndex}");
 
-        if (fullArt) CharacterArtSamplingStartIndex = new Vector2Int(-2 * CharacterArtSamplingStartIndex.x, CharacterArtSamplingStartIndex.y);
+        if (textureParams.fullArt) CharacterArtSamplingStartIndex = new Vector2Int(-2 * CharacterArtSamplingStartIndex.x, CharacterArtSamplingStartIndex.y);
 
-        (Vector2Int EffectTextSamplingStartIndex, float EffectTextSamplingIncrement) = SamplingInformation(EffectTextTexture);
-        (Vector2Int CardBackSamplingStartIndex, float CardBackSamplingIncrement) = SamplingInformation(CardBackTexture);
+        (Vector2Int EffectTextSamplingStartIndex, float EffectTextSamplingIncrement) = SamplingInformation(textureParams.EffectTextTexture, textureParams);
+        (Vector2Int CardBackSamplingStartIndex, float CardBackSamplingIncrement) = SamplingInformation(textureParams.CardBackTexture, textureParams);
 
-        for (int x = 0; x < TextureResolution; x++)
+        for (int x = 0; x < textureParams.TextureResolution; x++)
         {
-            for (int y = 0; y < TextureResolution; y++)
+            for (int y = 0; y < textureParams.TextureResolution; y++)
             {
                 Vector2Int position = new Vector2Int(x, y);
                 Vector2Int samplePosition;
 
                 //Frame texture
                 samplePosition = new Vector2Int(FrameSamplingStartIndex.x + (int)(FrameSamplingIncrement * x), FrameSamplingStartIndex.y + (int)(FrameSamplingIncrement * y));
-                Color frameColor = FrameTexture.texture.GetPixel(samplePosition.x, samplePosition.y);
-                if (ApplyStatColors)
+                Color frameColor = textureParams.FrameTexture.texture.GetPixel(samplePosition.x, samplePosition.y);
+                if (textureParams.ApplyStatColors)
                 {
-                    Vector2 normalizedXY = new Vector2(((float)x / TextureResolution - FrameThickness) / (1.0f - 2.0f * FrameThickness), ((float)y / TextureResolution - FrameThickness) / (1.0f - 2.0f * FrameThickness));
+                    Vector2 normalizedXY = new Vector2(((float)x / textureParams.TextureResolution - textureParams.FrameThickness) / (1.0f - 2.0f * textureParams.FrameThickness), ((float)y / textureParams.TextureResolution - textureParams.FrameThickness) / (1.0f - 2.0f * textureParams.FrameThickness));
                     if (normalizedXY.y > 7.1f / 12.0f || normalizedXY.y < 4.9f / 12.0f)
                     {
-                        if (HasW && normalizedXY.x < 1.0f / 9.3f && normalizedXY.x > (4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.y) * (1.0f / 24.0f) && normalizedXY.x > -(4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.y) * (1.0f / 24.0f))
+                        if (textureParams.HasW && normalizedXY.x < 1.0f / 9.3f && normalizedXY.x > (4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.y) * (1.0f / 24.0f) && normalizedXY.x > -(4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.y) * (1.0f / 24.0f))
                         {
-                            Recolor(ref frameColor, WColor);
+                            Recolor(ref frameColor, textureParams.WColor);
                         }
-                        else if (HasE && normalizedXY.x > 1.0f - 1.0f / 9.3f && normalizedXY.x - 1.0f < (4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.y) * (1.0f / 24.0f) && normalizedXY.x - 1.0f < -(4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.y) * (1.0f / 24.0f))
+                        else if (textureParams.HasE && normalizedXY.x > 1.0f - 1.0f / 9.3f && normalizedXY.x - 1.0f < (4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.y) * (1.0f / 24.0f) && normalizedXY.x - 1.0f < -(4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.y) * (1.0f / 24.0f))
                         {
-                            Recolor(ref frameColor, EColor);
+                            Recolor(ref frameColor, textureParams.EColor);
                         }
                     }
                     if (normalizedXY.x > 7.1f / 12.0f || normalizedXY.x < 4.9f / 12.0f)
                     {
-                        if (HasSAC && normalizedXY.y < 1.0f / 9.3f && normalizedXY.y > (4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.x) * (1.0f / 24.0f) && normalizedXY.y > -(4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.x) * (1.0f / 24.0f))
+                        if (textureParams.HasSAC && normalizedXY.y < 1.0f / 9.3f && normalizedXY.y > (4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.x) * (1.0f / 24.0f) && normalizedXY.y > -(4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.x) * (1.0f / 24.0f))
                         {
-                            Recolor(ref frameColor, SACColor);
+                            Recolor(ref frameColor, textureParams.SACColor);
                         }
-                        else if (HasN && normalizedXY.y > 1.0f - 1.0f / 9.3f && normalizedXY.y - 1.0f < (4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.x) * (1.0f / 24.0f) && normalizedXY.y - 1.0f < -(4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.x) * (1.0f / 24.0f))
+                        else if (textureParams.HasN && normalizedXY.y > 1.0f - 1.0f / 9.3f && normalizedXY.y - 1.0f < (4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.x) * (1.0f / 24.0f) && normalizedXY.y - 1.0f < -(4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.x) * (1.0f / 24.0f))
                         {
-                            Recolor(ref frameColor, NColor);
+                            Recolor(ref frameColor, textureParams.NColor);
                         }
                     }
                 }
                 newTexture.SetPixel(position.x, position.y, frameColor);
-                metalness.SetPixel(position.x, position.y, new Color(FrameMetallic, 0.0f, 0.0f, FrameGloss));
+                metalness.SetPixel(position.x, position.y, new Color(textureParams.FrameMetallic, 0.0f, 0.0f, textureParams.FrameGloss));
 
                 void Paint(Vector2Int startIndex, float samplingIncrement, Sprite sprite, float metallic, float gloss)
                 {
@@ -929,52 +1125,52 @@ public class VoxelCard : VoxelCardBase
                 }
 
                 //Name placard texture
-                position += TextureResolution * Vector2Int.right;
-                Paint(NamePlacardSamplingStartIndex, NamePlacardSamplingIncrement, NamePlacardTexture, NamePlacardMetallic, NamePlacardGloss);
+                position += textureParams.TextureResolution * Vector2Int.right;
+                Paint(NamePlacardSamplingStartIndex, NamePlacardSamplingIncrement, textureParams.NamePlacardTexture, textureParams.NamePlacardMetallic, textureParams.NamePlacardGloss);
 
                 //Type placard texture
-                position += TextureResolution * Vector2Int.right;
-                Paint(TypePlacardSamplingStartIndex, TypePlacardSamplingIncrement, TypePlacardTexture, TypePlacardMetallic, TypePlacardGloss);
+                position += textureParams.TextureResolution * Vector2Int.right;
+                Paint(TypePlacardSamplingStartIndex, TypePlacardSamplingIncrement, textureParams.TypePlacardTexture, textureParams.TypePlacardMetallic, textureParams.TypePlacardGloss);
 
                 //Stats placards texture
-                position = new Vector2Int(x, TextureResolution + y);
-                (Vector2Int statsStartIndex, float statsIncrement, Sprite statsTexture) = DetermineRelevantStatValues(x, y);
-                Paint(statsStartIndex, statsIncrement, statsTexture, StatsMetallic, StatsGloss);
+                position = new Vector2Int(x, textureParams.TextureResolution + y);
+                (Vector2Int statsStartIndex, float statsIncrement, Sprite statsTexture) = DetermineRelevantStatValues(x, y, textureParams);
+                Paint(statsStartIndex, statsIncrement, statsTexture, textureParams.StatsMetallic, textureParams.StatsGloss);
 
                 //Art and effect text texture
-                position = new Vector2Int(TextureResolution + x, TextureResolution + y);
+                position = new Vector2Int(textureParams.TextureResolution + x, textureParams.TextureResolution + y);
                 Vector2Int frontStartIndex = EffectTextSamplingStartIndex;
                 float frontIncrement = EffectTextSamplingIncrement;
-                Sprite frontTexture = EffectTextTexture;
-                Color frontMetallic = new Color(EffectTextMetallic, 0.0f, 0.0f, EffectTextGloss);
+                Sprite frontTexture = textureParams.EffectTextTexture;
+                Color frontMetallic = new Color(textureParams.EffectTextMetallic, 0.0f, 0.0f, textureParams.EffectTextGloss);
                 float effTextZoneRatio = 0.37f;
-                float artRightBound = fullArt ? 1.0f : effTextZoneRatio * (1f + FrameThickness);
+                float artRightBound = textureParams.fullArt ? 1.0f : effTextZoneRatio * (1f + textureParams.FrameThickness);
 
-                if(fullArt)
+                if(textureParams.fullArt)
                 {
                         frontStartIndex = CharacterArtSamplingStartIndex;
                         frontIncrement = CharacterArtSamplingIncrement;
-                        frontTexture = CharacterArt;
-                        frontMetallic = new Color(CharacterArtMetallic, 0.0f, 0.0f, CharacterArtGloss);
+                        frontTexture = textureParams.CharacterArt;
+                        frontMetallic = new Color(textureParams.CharacterArtMetallic, 0.0f, 0.0f, textureParams.CharacterArtGloss);
                 }
                 else
                 {
-                    if (y > TextureResolution * artRightBound)
+                    if (y > textureParams.TextureResolution * artRightBound)
                     {
-                        if (x > TextureResolution * CharacterArtLowerBound && x < TextureResolution * CharacterArtUpperBound)
+                        if (x > textureParams.TextureResolution * CharacterArtLowerBound && x < textureParams.TextureResolution * textureParams.CharacterArtUpperBound)
                         {
                             frontStartIndex = CharacterArtSamplingStartIndex;
                             frontIncrement = CharacterArtSamplingIncrement;
-                            frontTexture = CharacterArt;
-                            frontMetallic = new Color(CharacterArtMetallic, 0.0f, 0.0f, CharacterArtGloss);
+                            frontTexture = textureParams.CharacterArt;
+                            frontMetallic = new Color(textureParams.CharacterArtMetallic, 0.0f, 0.0f, textureParams.CharacterArtGloss);
                         }
                     }
-                    else if (y > TextureResolution * effTextZoneRatio * (1 - FrameThickness))
+                    else if (y > textureParams.TextureResolution * effTextZoneRatio * (1 - textureParams.FrameThickness))
                     {
                         frontStartIndex = FrameSamplingStartIndex;
                         frontIncrement = FrameSamplingIncrement;
-                        frontTexture = FrameTexture;
-                        frontMetallic = new Color(FrameMetallic, 0.0f, 0.0f, FrameGloss);
+                        frontTexture = textureParams.FrameTexture;
+                        frontMetallic = new Color(textureParams.FrameMetallic, 0.0f, 0.0f, textureParams.FrameGloss);
                     }
                 }
 
@@ -983,69 +1179,69 @@ public class VoxelCard : VoxelCardBase
                 metalness.SetPixel(position.x, position.y, frontMetallic);
 
                 //Card back texture
-                position += TextureResolution * Vector2Int.right;
+                position += textureParams.TextureResolution * Vector2Int.right;
                 samplePosition = new Vector2Int(CardBackSamplingStartIndex.x + (int)(CardBackSamplingIncrement * x), CardBackSamplingStartIndex.y + (int)(CardBackSamplingIncrement * y));
-                newTexture.SetPixel(position.x, position.y, CardBackTexture.texture.GetPixel(samplePosition.x, samplePosition.y));
-                metalness.SetPixel(position.x, position.y, new Color(CardBackMetallic, 0.0f, 0.0f, CardBackGloss));
+                newTexture.SetPixel(position.x, position.y, textureParams.CardBackTexture.texture.GetPixel(samplePosition.x, samplePosition.y));
+                metalness.SetPixel(position.x, position.y, new Color(textureParams.CardBackMetallic, 0.0f, 0.0f, textureParams.CardBackGloss));
             }
         }
 
         newTexture.Apply();
         metalness.Apply();
-        return new List<Texture2D> { newTexture, metalness };
+        return (newTexture, metalness);
     }
 
-    private (Vector2Int, float, Sprite) DetermineRelevantStatValues(int x, int y)
+    private static (Vector2Int, float, Sprite) DetermineRelevantStatValues(int x, int y, TextureParams textureParams)
     {
 
-        (Vector2Int NSamplingStartIndex, float NSamplingIncrement) = SamplingInformation(NTexture);
-        (Vector2Int ESamplingStartIndex, float ESamplingIncrement) = SamplingInformation(ETexture);
-        (Vector2Int SACSamplingStartIndex, float SACSamplingIncrement) = SamplingInformation(SACTexture);
-        (Vector2Int WSamplingStartIndex, float WSamplingIncrement) = SamplingInformation(WTexture);
-        (Vector2Int RSamplingStartIndex, float RSamplingIncrement) = SamplingInformation(RTexture);
-        (Vector2Int DSamplingStartIndex, float DSamplingIncrement) = SamplingInformation(DTexture);
+        (Vector2Int NSamplingStartIndex, float NSamplingIncrement) = SamplingInformation(textureParams.NTexture, textureParams);
+        (Vector2Int ESamplingStartIndex, float ESamplingIncrement) = SamplingInformation(textureParams.ETexture, textureParams);
+        (Vector2Int SACSamplingStartIndex, float SACSamplingIncrement) = SamplingInformation(textureParams.SACTexture, textureParams);
+        (Vector2Int WSamplingStartIndex, float WSamplingIncrement) = SamplingInformation(textureParams.WTexture, textureParams);
+        (Vector2Int RSamplingStartIndex, float RSamplingIncrement) = SamplingInformation(textureParams.RTexture, textureParams);
+        (Vector2Int DSamplingStartIndex, float DSamplingIncrement) = SamplingInformation(textureParams.DTexture, textureParams);
 
-        if (x < TextureResolution / 3)
+        if (x < textureParams.TextureResolution / 3)
         {
-            if (y > TextureResolution / 3)
+            if (y > textureParams.TextureResolution / 3)
             {
-                return (WSamplingStartIndex, WSamplingIncrement, WTexture);
+                return (WSamplingStartIndex, WSamplingIncrement, textureParams.WTexture);
             }
             else
             {
-                return (DSamplingStartIndex, DSamplingIncrement, DTexture);
+                return (DSamplingStartIndex, DSamplingIncrement, textureParams.DTexture);
             }
         }
-        else if (x < 2 * TextureResolution / 3)
+        else if (x < 2 * textureParams.TextureResolution / 3)
         {
-            if (y > TextureResolution / 2)
+            if (y > textureParams.TextureResolution / 2)
             {
-                return (NSamplingStartIndex, NSamplingIncrement, NTexture);
+                return (NSamplingStartIndex, NSamplingIncrement,textureParams. NTexture);
             }
             else
             {
-                return (SACSamplingStartIndex, SACSamplingIncrement, SACTexture);
+                return (SACSamplingStartIndex, SACSamplingIncrement, textureParams.SACTexture);
             }
         }
         else
         {
-            if (y > TextureResolution / 3)
+            if (y > textureParams.TextureResolution / 3)
             {
-                return (ESamplingStartIndex, ESamplingIncrement, ETexture);
+                return (ESamplingStartIndex, ESamplingIncrement, textureParams.ETexture);
             }
             else
             {
-                return (RSamplingStartIndex, RSamplingIncrement, RTexture);
+                return (RSamplingStartIndex, RSamplingIncrement, textureParams.RTexture);
             }
         }
     }
 
-    private (Vector2Int, float) SamplingInformation(Sprite sprite)
+    private static (Vector2Int, float) SamplingInformation(Sprite sprite, TextureParams textureParams)
     {
         int maxDim = Mathf.Max(sprite.texture.height, sprite.texture.width);
         int minDim = Mathf.Min(sprite.texture.height, sprite.texture.width);
 
-        return (new Vector2Int((maxDim - minDim) / 2, 0), (float)minDim / TextureResolution);
+        return (new Vector2Int((maxDim - minDim) / 2, 0), (float)minDim / textureParams.TextureResolution);
     }
 
     public static void BuildTextureCardArt(int TextureResolution, bool fullArt, float FrameThickness, float CharacterArtUpperBound,
@@ -1099,10 +1295,10 @@ public class VoxelCard : VoxelCardBase
         metalness.Apply();
     }
 
-    private void ApplyTexture(List<Texture2D> newTextures, Material mat)
+    private void ApplyTexture((Texture2D tex, Texture2D met) textures, Material mat)
     {
-        mat.SetTexture(MainTextureName, newTextures[0]);
-        mat.SetTexture(MainMetalnessName, newTextures[1]);
+        mat.SetTexture(MainTextureName, textures.tex);
+        mat.SetTexture(MainMetalnessName, textures.met);
         gameObject.GetComponent<MeshRenderer>().sharedMaterial = mat;
     }
 
