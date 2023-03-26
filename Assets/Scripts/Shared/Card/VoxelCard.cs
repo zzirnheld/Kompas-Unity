@@ -860,7 +860,6 @@ public class VoxelCard : VoxelCardBase
     private TextureParams MyParams => new TextureParams()
     {
         TextureResolution = TextureResolution,
-        CharacterArt = CharacterArt,
         CharacterArtSamplingIncrementRatio = CharacterArtSamplingIncrementRatio,
         fullArt = fullArt,
 
@@ -908,6 +907,7 @@ public class VoxelCard : VoxelCardBase
             NamePlacardTexture = NamePlacardTexture,
             TypePlacardTexture = TypePlacardTexture,
             EffectTextTexture = EffectTextTexture,
+            CharacterArt = CharacterArt,
             CardBackTexture = CardBackTexture,
             NTexture = NTexture,
             ETexture = ETexture,
@@ -927,6 +927,7 @@ public class VoxelCard : VoxelCardBase
             //FrameThickness = 0.0225f,
 
             HasSAC = true, //Duh
+            ApplyStatColors = true,
 
             NColor = new Color32(48, 128, 48, 0),
             EColor = new Color32(192, 48, 48, 0),
@@ -989,6 +990,7 @@ public class VoxelCard : VoxelCardBase
             public Sprite NamePlacardTexture;
             public Sprite TypePlacardTexture;
             public Sprite EffectTextTexture;
+            public Sprite CharacterArt;
             public Sprite CardBackTexture;
             public Sprite NTexture;
             public Sprite ETexture;
@@ -1012,7 +1014,6 @@ public class VoxelCard : VoxelCardBase
         internal Textures textures;
 
         internal int TextureResolution;
-        internal Sprite CharacterArt;
         internal float CharacterArtSamplingIncrementRatio;
         internal bool fullArt;
 
@@ -1061,7 +1062,7 @@ public class VoxelCard : VoxelCardBase
         (Vector2Int NamePlacardSamplingStartIndex, float NamePlacardSamplingIncrement) = SamplingInformation(textureParams.textures.NamePlacardTexture, textureParams);
         (Vector2Int TypePlacardSamplingStartIndex, float TypePlacardSamplingIncrement) = SamplingInformation(textureParams.textures.TypePlacardTexture, textureParams);
 
-        var charArtTex = textureParams.CharacterArt.texture;
+        var charArtTex = textureParams.textures.CharacterArt?.texture ?? textureParams.textures.NamePlacardTexture.texture;
         int squaringFactor = Mathf.Abs(charArtTex.width - charArtTex.height) / 2;
         float shorterDimension = Mathf.Min(charArtTex.width, charArtTex.height);
 
@@ -1078,6 +1079,7 @@ public class VoxelCard : VoxelCardBase
         (Vector2Int EffectTextSamplingStartIndex, float EffectTextSamplingIncrement) = SamplingInformation(textureParams.textures.EffectTextTexture, textureParams);
         (Vector2Int CardBackSamplingStartIndex, float CardBackSamplingIncrement) = SamplingInformation(textureParams.textures.CardBackTexture, textureParams);
 
+        Debug.Log($"Recolored color is from {textureParams.NColor}/{textureParams.EColor}/{textureParams.SACColor}/{textureParams.WColor}");
         for (int x = 0; x < textureParams.TextureResolution; x++)
         {
             for (int y = 0; y < textureParams.TextureResolution; y++)
@@ -1095,27 +1097,29 @@ public class VoxelCard : VoxelCardBase
                     {
                         if (textureParams.HasW && normalizedXY.x < 1.0f / 9.3f && normalizedXY.x > (4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.y) * (1.0f / 24.0f) && normalizedXY.x > -(4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.y) * (1.0f / 24.0f))
                         {
-                            Recolor(ref frameColor, textureParams.WColor);
+                            frameColor = Recolor(frameColor, textureParams.WColor);
                         }
                         else if (textureParams.HasE && normalizedXY.x > 1.0f - 1.0f / 9.3f && normalizedXY.x - 1.0f < (4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.y) * (1.0f / 24.0f) && normalizedXY.x - 1.0f < -(4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.y) * (1.0f / 24.0f))
                         {
-                            Recolor(ref frameColor, textureParams.EColor);
+                            frameColor = Recolor(frameColor, textureParams.EColor);
                         }
                     }
                     if (normalizedXY.x > 7.1f / 12.0f || normalizedXY.x < 4.9f / 12.0f)
                     {
                         if (textureParams.HasSAC && normalizedXY.y < 1.0f / 9.3f && normalizedXY.y > (4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.x) * (1.0f / 24.0f) && normalizedXY.y > -(4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.x) * (1.0f / 24.0f))
                         {
-                            Recolor(ref frameColor, textureParams.SACColor);
+                            frameColor = Recolor(frameColor, textureParams.SACColor);
                         }
                         else if (textureParams.HasN && normalizedXY.y > 1.0f - 1.0f / 9.3f && normalizedXY.y - 1.0f < (4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.x) * (1.0f / 24.0f) && normalizedXY.y - 1.0f < -(4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.x) * (1.0f / 24.0f))
                         {
-                            Recolor(ref frameColor, textureParams.NColor);
+                            frameColor = Recolor(frameColor, textureParams.NColor);
                         }
                     }
                 }
                 newTexture.SetPixel(position.x, position.y, frameColor);
                 metalness.SetPixel(position.x, position.y, new Color(textureParams.FrameMetallic, 0.0f, 0.0f, textureParams.FrameGloss));
+
+                //continue;
 
                 void Paint(Vector2Int startIndex, float samplingIncrement, Sprite sprite, float metallic, float gloss)
                 {
@@ -1150,7 +1154,7 @@ public class VoxelCard : VoxelCardBase
                 {
                         frontStartIndex = CharacterArtSamplingStartIndex;
                         frontIncrement = CharacterArtSamplingIncrement;
-                        frontTexture = textureParams.CharacterArt;
+                        frontTexture = textureParams.textures.CharacterArt;
                         frontMetallic = new Color(textureParams.CharacterArtMetallic, 0.0f, 0.0f, textureParams.CharacterArtGloss);
                 }
                 else
@@ -1161,7 +1165,7 @@ public class VoxelCard : VoxelCardBase
                         {
                             frontStartIndex = CharacterArtSamplingStartIndex;
                             frontIncrement = CharacterArtSamplingIncrement;
-                            frontTexture = textureParams.CharacterArt;
+                            frontTexture = textureParams.textures.CharacterArt;
                             frontMetallic = new Color(textureParams.CharacterArtMetallic, 0.0f, 0.0f, textureParams.CharacterArtGloss);
                         }
                     }
@@ -1175,7 +1179,10 @@ public class VoxelCard : VoxelCardBase
                 }
 
                 samplePosition = new Vector2Int(frontStartIndex.x + (int)(frontIncrement * x), frontStartIndex.y + (int)(frontIncrement * y));
-                newTexture.SetPixel(position.x, position.y, frontTexture.texture.GetPixel(samplePosition.x, samplePosition.y));
+                var pixel = frontTexture?.texture.GetPixel(samplePosition.x, samplePosition.y)
+                    ?? textureParams.textures.FrameColorOverride
+                    ?? Color.white;
+                newTexture.SetPixel(position.x, position.y, pixel);
                 metalness.SetPixel(position.x, position.y, frontMetallic);
 
                 //Card back texture
@@ -1313,11 +1320,11 @@ public class VoxelCard : VoxelCardBase
 
     //}
 
-    public static void Recolor(ref Color target, Color newColor)
+    public static Color Recolor(Color target, Color newColor)
     {
-        Color.RGBToHSV(target, out float tH, out float tS, out float tV);
-        Color.RGBToHSV(newColor, out float nH, out float nS, out float nV);
+        //Color.RGBToHSV(target, out float tH, out float tS, out float tV);
+        //Color.RGBToHSV(newColor, out float nH, out float nS, out float nV);
         //target = Color.HSVToRGB(nH, 0.8f * nS + 0.2f * tS, tV * nV);
-        target = newColor;
+        return newColor;
     }
 }

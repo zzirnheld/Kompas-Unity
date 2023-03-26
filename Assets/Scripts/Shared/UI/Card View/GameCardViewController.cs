@@ -55,6 +55,7 @@ namespace KompasCore.UI
 
         protected override void Display()
         {
+            voxelCardUser.cardRepository = ShownGameCard.Game.CardRepository;
             base.Display();
 
             HandleZoom();
@@ -73,7 +74,7 @@ namespace KompasCore.UI
             handleStatColors(unzoomedNText, unzoomedEText, unzoomedCostText, unzoomedWText);
 
             bool isChar = ShownCard.CardType == 'C';
-            voxelCardUser.Set(isChar, Zoomed, ShownCard.FileName);
+            voxelCardUser.Set(ShownCard.FileName, isChar: isChar, zoomed: Zoomed, friendly: ShownGameCard.ControllerIndex == 0);
 
             unzoomedUI.SetActive(!Zoomed);
             zoomedUI.SetActive(Zoomed);
@@ -175,7 +176,7 @@ namespace KompasCore.UI
 
             base.DisplayCardImage(cardImageSprite);
             //TODO split this out if I ever make chars able to become spells or vice versa
-            voxelCardUser.Set(ShownCard.CardType == 'C', Zoomed, ShownCard.FileName);
+            voxelCardUser.Set(ShownCard.FileName, isChar: ShownCard.CardType == 'C', zoomed: Zoomed, friendly: ShownGameCard.ControllerIndex == 0);
 
             oldFileName = ShownCard.FileName;
         }

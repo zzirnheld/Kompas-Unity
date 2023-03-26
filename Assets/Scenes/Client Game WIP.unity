@@ -8930,8 +8930,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f09058feb8719ff4f8ed2f60ceb6e094, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DeckbuilderCharPrefab: {fileID: 0}
-  deckBuilderCardPrefab: {fileID: 0}
+  frameTexture: {fileID: 21300000, guid: 79d41f326f6a792bfba0f3b2bb385289, type: 3}
+  namePlacardTexture: {fileID: 21300000, guid: e1c97e2c4f16ee21798ea6f10822feca, type: 3}
+  typePlacardTexture: {fileID: 21300000, guid: e1c97e2c4f16ee21798ea6f10822feca, type: 3}
+  effectTextTexture: {fileID: 21300000, guid: e1c97e2c4f16ee21798ea6f10822feca, type: 3}
+  cardBackTexture: {fileID: 21300000, guid: 79d41f326f6a792bfba0f3b2bb385289, type: 3}
+  nTexture: {fileID: 21300000, guid: e1c97e2c4f16ee21798ea6f10822feca, type: 3}
+  eTexture: {fileID: 21300000, guid: e1c97e2c4f16ee21798ea6f10822feca, type: 3}
+  sacTexture: {fileID: 21300000, guid: e1c97e2c4f16ee21798ea6f10822feca, type: 3}
+  wTexture: {fileID: 21300000, guid: e1c97e2c4f16ee21798ea6f10822feca, type: 3}
+  rTexture: {fileID: 21300000, guid: e1c97e2c4f16ee21798ea6f10822feca, type: 3}
+  dTexture: {fileID: 21300000, guid: e1c97e2c4f16ee21798ea6f10822feca, type: 3}
+  game: {fileID: 492080563}
   CardPrefab: {fileID: 732231206546897811, guid: 87f8eebfa85da1101a5ac83cb123b212,
     type: 3}
   DeckSelectCardPrefab: {fileID: 1316274561394776498, guid: 3701dcd9e71748a4781c867a9608c51d,
@@ -42734,6 +42744,7 @@ MonoBehaviour:
   unzoomedSpellMetalness: {fileID: 2800000, guid: d12be78a8bc0584a4a2c81fbf61f5c3e,
     type: 2}
   meshRenderer: {fileID: 944419445071788997}
+  cardRepository: {fileID: 0}
 --- !u!223 &5775958695288391404
 Canvas:
   m_ObjectHideFlags: 0

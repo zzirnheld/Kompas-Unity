@@ -108,42 +108,14 @@ public class VoxelCardUser : MonoBehaviour
         return (texture, metalness);
     }*/
 
-    private const string ZoomedTextureFolder = "Assets/Resources/Card Textures/Zoomed/Texture";
-    private const string ZoomedMetalnessFolder = "Assets/Resources/Card Textures/Zoomed/Metalness";
-    private const string UnzoomedTextureFolder = "Assets/Resources/Card Textures/Unzoomed/Texture";
-    private const string UnzoomedMetalnessFolder = "Assets/Resources/Card Textures/Unzoomed/Metalness";
-
-    public void Set(bool isChar, bool zoomed, string cardFileName)
+    public void Set(string cardFileName, bool isChar, bool zoomed, bool friendly)
     {
         var start = System.DateTime.Now;
-        //If cardArt is null, don't regen texture
-        if (ZoomedTex == default)
-        {
-            var zoomedTex = AssetDatabase.LoadAssetAtPath(Path.Combine(ZoomedTextureFolder, $"{cardFileName}.asset"), typeof(Texture2D)) as Texture2D;
-            Debug.Log($"Loading fresh {Path.Combine(ZoomedTextureFolder, $"{cardFileName}.asset")}. Is it null? {zoomedTex == null}");
-            var zoomedMet = AssetDatabase.LoadAssetAtPath(Path.Combine(ZoomedMetalnessFolder, $"{cardFileName}.asset"), typeof(Texture2D)) as Texture2D;
-            var unzoomedTex = AssetDatabase.LoadAssetAtPath(Path.Combine(UnzoomedTextureFolder, $"{cardFileName}.asset"), typeof(Texture2D)) as Texture2D;
-            var unzoomedMet = AssetDatabase.LoadAssetAtPath(Path.Combine(UnzoomedMetalnessFolder, $"{cardFileName}.asset"), typeof(Texture2D)) as Texture2D;
 
-            ZoomedTex = Copy(isChar ? zoomedCharTex : zoomedSpellTex, zoomedTex);
-            ZoomedMet = Copy(isChar ? zoomedCharMetalness : zoomedSpellMetalness, zoomedMet);
-            UnzoomedTex = Copy(isChar ? unzoomedCharTex : unzoomedSpellTex, unzoomedTex);
-            UnzoomedMet = Copy(isChar ? unzoomedCharMetalness : unzoomedSpellMetalness, unzoomedMet);
-        }
+        (ZoomedTex, ZoomedMet, UnzoomedTex, UnzoomedMet) = cardRepository.GetTextures(cardFileName, isChar, friendly);
 
         //Debug.Log($"Regen took {System.DateTime.Now - start} with cardArt {cardfi != default}?");
         Set(isChar, zoomed, zoomed ? ZoomedTex : UnzoomedTex, zoomed ? ZoomedMet : UnzoomedMet);
-    }
-
-    private Texture2D Copy(Texture2D baseTexture, Texture2D cardSpecificTexture)
-    {
-        var texture = new Texture2D(baseTexture.width, baseTexture.height);
-        texture.SetPixels(baseTexture.GetPixels());
-        var width = cardSpecificTexture.width;
-        var height = cardSpecificTexture.height;
-        texture.SetPixels(width, height - 1, width, height, cardSpecificTexture.GetPixels(0, 0, width, height));
-        texture.Apply();
-        return texture;
     }
 
     public void Set(bool isChar, bool zoomed, Texture2D texture, Texture2D metalness)
