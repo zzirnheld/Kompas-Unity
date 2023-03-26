@@ -1007,6 +1007,7 @@ public class VoxelCard : VoxelCardBase
             var ret = isZoomed ? DefaultZoomed : DefaultUnzoomed;
 
             ret.textures = textures;
+            ret.HasN = ret.HasE = ret.HasW = isChar;
 
             return ret;
         }
@@ -1090,18 +1091,23 @@ public class VoxelCard : VoxelCardBase
                 //Frame texture
                 samplePosition = new Vector2Int(FrameSamplingStartIndex.x + (int)(FrameSamplingIncrement * x), FrameSamplingStartIndex.y + (int)(FrameSamplingIncrement * y));
                 Color frameColor = textureParams.textures.GetFrameColor(samplePosition.x, samplePosition.y);
+                var textureResolutionOffset = 0.0225f; //Matches thin frame offset
                 if (textureParams.ApplyStatColors)
                 {
-                    Vector2 normalizedXY = new Vector2(((float)x / textureParams.TextureResolution - textureParams.FrameThickness) / (1.0f - 2.0f * textureParams.FrameThickness), ((float)y / textureParams.TextureResolution - textureParams.FrameThickness) / (1.0f - 2.0f * textureParams.FrameThickness));
+                    Vector2 normalizedXY = new Vector2(((float)x / textureParams.TextureResolution - textureResolutionOffset) / (1.0f - 2.0f * textureResolutionOffset), ((float)y / textureParams.TextureResolution - textureResolutionOffset) / (1.0f - 2.0f * textureResolutionOffset));
                     if (normalizedXY.y > 7.1f / 12.0f || normalizedXY.y < 4.9f / 12.0f)
                     {
                         if (textureParams.HasW && normalizedXY.x < 1.0f / 9.3f && normalizedXY.x > (4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.y) * (1.0f / 24.0f) && normalizedXY.x > -(4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.y) * (1.0f / 24.0f))
                         {
                             frameColor = Recolor(frameColor, textureParams.WColor);
+                            //Debug.Log($"Recoloring W to {frameColor}");
+                            //break;
                         }
                         else if (textureParams.HasE && normalizedXY.x > 1.0f - 1.0f / 9.3f && normalizedXY.x - 1.0f < (4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.y) * (1.0f / 24.0f) && normalizedXY.x - 1.0f < -(4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.y) * (1.0f / 24.0f))
                         {
                             frameColor = Recolor(frameColor, textureParams.EColor);
+                            //Debug.Log($"Recoloring E to {frameColor}");
+                            //break;
                         }
                     }
                     if (normalizedXY.x > 7.1f / 12.0f || normalizedXY.x < 4.9f / 12.0f)
@@ -1109,10 +1115,14 @@ public class VoxelCard : VoxelCardBase
                         if (textureParams.HasSAC && normalizedXY.y < 1.0f / 9.3f && normalizedXY.y > (4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.x) * (1.0f / 24.0f) && normalizedXY.y > -(4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.x) * (1.0f / 24.0f))
                         {
                             frameColor = Recolor(frameColor, textureParams.SACColor);
+                            //Debug.Log($"Recoloring S to {frameColor}");
+                            //break;
                         }
                         else if (textureParams.HasN && normalizedXY.y > 1.0f - 1.0f / 9.3f && normalizedXY.y - 1.0f < (4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.x) * (1.0f / 24.0f) && normalizedXY.y - 1.0f < -(4.97f / 12.0f) * (12.0f - 24.0f * normalizedXY.x) * (1.0f / 24.0f))
                         {
                             frameColor = Recolor(frameColor, textureParams.NColor);
+                            //Debug.Log($"Recoloring N to {frameColor}");
+                            //break;
                         }
                     }
                 }
