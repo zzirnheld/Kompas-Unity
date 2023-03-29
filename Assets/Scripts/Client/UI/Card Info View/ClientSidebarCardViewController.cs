@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace KompasClient.UI
 {
@@ -53,6 +54,51 @@ namespace KompasClient.UI
         private GameCard lastFocus;
         private DateTime lastFocusTime;
 
+        public Camera sidebarCamera;
+        protected override Camera Camera => sidebarCamera;
+
+        public RectTransform clientSidebarRectTransform;
+
+        private Vector3 raw;
+        protected override Vector3 Raw => raw;
+        public float xDivisor; //2f;
+        public float yDivisor;
+        private Vector3 offset;
+        protected override Vector3 ReminderTextMousePosition 
+        {
+            get
+            {
+                var position = Input.mousePosition;
+                //I get the point of the RawImage where I click
+                RectTransformUtility.ScreenPointToLocalPointInRectangle(clientSidebarRectTransform, position, null, out Vector2 localClick);
+                var localClickUnnorm = new Vector2(localClick.x, localClick.y);
+                //My RawImage is 700x700 and the click coordinates are in range (-350,350) so I transform it to (0,700) to then normalize
+                raw = localClickUnnorm;
+                localClick.x = (clientSidebarRectTransform.rect.xMin * -1) - (localClick.x * -1);
+                localClick.y = (clientSidebarRectTransform.rect.yMin * -1) - (localClick.y * -1);
+
+                //I normalize the click coordinates so I get the viewport point to cast a Ray
+                Vector2 viewportClick = new Vector2(localClick.x / clientSidebarRectTransform.rect.size.x, localClick.y / clientSidebarRectTransform.rect.size.y);
+                var viewportPos = Camera.ViewportToScreenPoint(viewportClick);
+                Debug.Log($"{localClickUnnorm}, {localClick} / {clientSidebarRectTransform.rect.size}, {viewportClick}, {viewportPos}");
+                return viewportPos;
+            }
+        }
+
+        private void Awake()
+        {
+            offset = new Vector3(+75f, -effText.canvas.pixelRect.height - 25f + clientSidebarRectTransform.rect.height, 0);
+            Debug.Log($"Offset = {offset}; {clientSidebarRectTransform.rect}; {clientSidebarRectTransform.position}");
+            /*
+            Debug.Log($"Rect is {clientSidebarRectTransform.rect.width} / {clientSidebarRectTransform.rect.height}");
+            var par = (effText.rectTransform.parent as RectTransform).rect;
+            Debug.Log($"Eff text rect is {par} at {par.xMin}-{par.xMax} / {par.yMin}-{par.yMax}"); 
+            xDivisor = 520f / clientSidebarRectTransform.rect.width;
+            yDivisor = 520f / clientSidebarRectTransform.rect.height;*/
+        }
+
+        public bool test = false;
+
         protected override bool ShowingInfo { set { base.ShowingInfo = value; rawImageShowing.SetActive(value); } }
 
         protected override void Update()
@@ -60,6 +106,29 @@ namespace KompasClient.UI
             base.Update();
             if (Input.GetKeyUp(KeyCode.LeftAlt) || Input.GetKeyUp(KeyCode.RightAlt))
                 Show(null);
+
+            if (!test) return;
+            int? lowX = null, lowY = null;
+            int highX = 0, highY = 0;
+            for (int x = 0; x < 600; x += 5)
+            {
+                for (int y = 0; y < 600; y += 5)
+                {
+                    int link = TMP_TextUtilities.FindIntersectingLink(effText, new Vector3(x, y, 0), Camera);
+                    if (link != -1)
+                    {
+                        var linkInfo = effText.textInfo.linkInfo[link];
+                        Debug.Log($"at {x}, {y}, {linkInfo.GetLinkID()}");
+                        lowX ??= x;
+                        lowY ??= y;
+                        highX = Math.Max(x, highX);
+                        highY = Math.Max(y, highY);
+                    }
+                }
+
+            }
+            Debug.Log($"Bounds {lowX}, {lowY}, {highX}, {highY}");
+            test = false;
         }
 
         public override void Focus(CardBase card) => Focus(card as GameCard, false);

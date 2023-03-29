@@ -34,6 +34,7 @@ namespace KompasCore.UI
         public abstract IReminderTextParentController ReminderTextsUIController { get; }
 
         protected virtual Camera Camera => Camera.main;
+        protected virtual Vector3 ReminderTextMousePosition => Input.mousePosition;
 
         protected virtual string EffTextToDisplay
         {
@@ -53,19 +54,26 @@ namespace KompasCore.UI
             DisplayReminderTextBlurb();
         }
 
+        private int i = 0;
+        protected virtual Vector3 Raw => Vector3.zero;
         protected virtual void DisplayReminderTextBlurb()
         {
             if (ReminderTextsUIController != null && effText != null && effText.isActiveAndEnabled)
             {
-                //Debug.Log($"Checking keywords at {Input.mousePosition}");
+                i++;
+                if (i >= 50)
+                {
+                    Debug.Log($"Checking keywords at raw {Raw}, net {ReminderTextMousePosition}");
+                    i = 0;
+                }
                 //check keywords
-                int link = TMP_TextUtilities.FindIntersectingLink(effText, Input.mousePosition, Camera);
+                int link = TMP_TextUtilities.FindIntersectingLink(effText, ReminderTextMousePosition, Camera);
                 List<(string, string)> reminders = new List<(string, string)>();
                 if (link != -1)
                 {
                     var linkInfo = effText.textInfo.linkInfo[link];
                     var reminderText = CardRepository.Reminders.KeywordToReminder[linkInfo.GetLinkID()];
-                    //Debug.Log($"Hovering over {linkInfo.GetLinkID()} with reminder {reminderText}");
+                    Debug.Log($"Hovering over {linkInfo.GetLinkID()} with reminder {reminderText}");
                     reminders.Add((linkInfo.GetLinkID(), reminderText));
                 }
                 ReminderTextsUIController.Show(reminders);
