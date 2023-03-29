@@ -33,6 +33,7 @@ namespace KompasClient.UI
 
         public void Show(GameCard card)
         {
+            Debug.Log($"Showing {card?.CardName}");
             Effect[] effects = card?.Effects.Where(ShowEffect).ToArray();
 
             if (effects?.Any() ?? false)

@@ -17,16 +17,7 @@ namespace KompasClient.UI
 
         private void DoPointerStuff()
         {
-            var position = Input.mousePosition;
-            //I get the point of the RawImage where I click
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(textureRectTransform, position, null, out Vector2 localClick);
-            var localClickUnnorm = new Vector2(localClick.x, localClick.y);
-            //My RawImage is 700x700 and the click coordinates are in range (-350,350) so I transform it to (0,700) to then normalize
-            localClick.x = (textureRectTransform.rect.xMin * -1) - (localClick.x * -1);
-            localClick.y = (textureRectTransform.rect.yMin * -1) - (localClick.y * -1);
-
-            //I normalize the click coordinates so I get the viewport point to cast a Ray
-            Vector2 viewportClick = new Vector2(localClick.x / textureRectTransform.rect.size.x, localClick.y / textureRectTransform.rect.size.y);
+            var viewportClick = ViewportClick(textureRectTransform);
 
             //I have a special layer for the objects I want to detect with my ray
 
@@ -42,6 +33,28 @@ namespace KompasClient.UI
                 if (Input.GetMouseButtonUp(0)) cardCtrl.OnMouseUp();
                 else cardCtrl.OnMouseOver();
             }
+        }
+
+        public static Vector3 ViewportClick(RectTransform rectTransform)
+        {
+            var position = Input.mousePosition;
+            //I get the point of the RawImage where I click
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform, position, null, out Vector2 localClick);
+            var localClickUnnorm = new Vector2(localClick.x, localClick.y);
+            //My RawImage is 700x700 and the click coordinates are in range (-350,350) so I transform it to (0,700) to then normalize
+            localClick.x = (rectTransform.rect.xMin * -1) - (localClick.x * -1);
+            localClick.y = (rectTransform.rect.yMin * -1) - (localClick.y * -1);
+
+            //I normalize the click coordinates so I get the viewport point to cast a Ray
+            Vector2 viewportClick = new Vector2(localClick.x / rectTransform.rect.size.x, localClick.y / rectTransform.rect.size.y);
+            return viewportClick;
+        }
+
+        public static Vector3 ViewportPosition(Camera camera, RectTransform rectTransform)
+        {
+            var viewportPos = camera.ViewportToScreenPoint(ViewportClick(rectTransform));
+            //Debug.Log($"{localClickUnnorm}, {localClick} / {clientSidebarRectTransform.rect.size}, {viewportClick}, {viewportPos}");
+            return viewportPos;
         }
     }
 }
