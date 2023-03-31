@@ -45,7 +45,7 @@ namespace KompasCore.Cards
                     break;
                 case CardLocation.Board:
                     transform.localScale = Vector3.one;
-                    transform.SetParent(Card.Game.BoardController.gameObject.transform);
+                    transform.SetParent(BoardTransform);
                     MoveTo(Card.Position);
                     SetRotation();
                     gameObject.SetActive(true);
@@ -63,6 +63,8 @@ namespace KompasCore.Cards
             SpreadOutAugs();
 
         }
+
+        protected virtual Transform BoardTransform => Card.Game.BoardController.gameObject.transform;
 
         /// <summary>
         /// Updates the local position of this card, given a board position

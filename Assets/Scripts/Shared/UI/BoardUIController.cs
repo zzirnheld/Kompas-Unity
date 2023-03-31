@@ -69,8 +69,8 @@ namespace KompasCore.UI
                 for (int y = 0; y < 7; y++)
                 {
                     if (spaceCueControllers[x, y] != default) continue;
-                    var position = spaceCueControllers[y, x].transform.localPosition;
-                    InstantiateCue(x, y, new Vector3(position.z, position.y, position.x));
+                    var localPosition = spaceCueControllers[y, x].transform.localPosition;
+                    InstantiateCue(x, y, new Vector3(-localPosition.z, localPosition.y, -localPosition.x));
                 }
             }
         }

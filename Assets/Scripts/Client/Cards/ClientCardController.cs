@@ -22,6 +22,8 @@ namespace KompasClient.Cards
         public ClientGame ClientGame => ClientCard.ClientGame;
         public ClientUIController ClientUIController => ClientGame.clientUIController;
 
+        protected override Transform BoardTransform => ClientUIController.boardUIController.spaceCueCubesParent;
+
 
         public bool Revealed
         {

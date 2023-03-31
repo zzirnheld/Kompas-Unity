@@ -28598,7 +28598,7 @@ MonoBehaviour:
   escapeMenuUIController: {fileID: 357244920}
   cardInfoViewUIController: {fileID: 2878731448299248346}
   clientUISettingsController: {fileID: 1411603331}
-  boardUIController: {fileID: 0}
+  boardUIController: {fileID: 1329577224}
 --- !u!1 &1623620544
 GameObject:
   m_ObjectHideFlags: 0
@@ -38787,7 +38787,7 @@ MonoBehaviour:
     type: 2}
   debuffStatFontMaterial: {fileID: 2100000, guid: e64d09d49b235b084874920f4893dbcd,
     type: 2}
-  boardUIController: {fileID: 0}
+  boardUIController: {fileID: 1329577224}
   reminderTextsUIController: {fileID: 565991505}
   clientGame: {fileID: 492080563}
   effectsUIController: {fileID: 0}
