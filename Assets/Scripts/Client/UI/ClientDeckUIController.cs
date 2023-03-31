@@ -44,6 +44,7 @@ namespace KompasClient.UI
         protected override void ShowExpanded()
         {
             base.ShowExpanded();
+            gameObject.SetActive(true);
             deckCardBackObject.SetActive(false);
         }
     }
