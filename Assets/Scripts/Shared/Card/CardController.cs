@@ -19,7 +19,8 @@ namespace KompasCore.Cards
 
         public virtual void SetPhysicalLocation(CardLocation location)
         {
-            //Debug.Log($"Card controller of {card.CardName} setting physical location in {card.Location} to {card.BoardX}, {card.BoardY}");
+            Debug.Log($"Card controller of {Card.CardName} setting physical location in {Card.Location} to {Card.Position}");
+            if (location == CardLocation.Nowhere) return;
 
             gameCardViewController.Refresh();
 
@@ -32,24 +33,21 @@ namespace KompasCore.Cards
             }
 
             //Here on out, we assume the card's not an augment
+            SetRotation();
+            Card.GameLocation.Refresh();
             transform.localScale = Vector3.one;
 
+            /*
             switch (location)
             {
                 case CardLocation.Nowhere: break;
                 case CardLocation.Deck:
                     if (ShownInSearch) break;
-                    transform.SetParent(Card.Controller.deckObject.transform);
-                    gameObject.SetActive(false); //Setting active/inactive is also currently handled by the GameCardViewController. 
+                    //transform.SetParent(Card.Controller.deckObject.transform);
+                    //gameObject.SetActive(false); //Setting active/inactive is also currently handled by the GameCardViewController. 
                     //TODO: make setActive only be handled by one of these
                     break;
                 case CardLocation.Board:
-                    transform.localScale = Vector3.one;
-                    transform.SetParent(BoardTransform);
-                    MoveTo(Card.Position);
-                    SetRotation();
-                    gameObject.SetActive(true);
-                    break;
                 case CardLocation.Hand:
                     Card.Controller.handCtrl.SpreadOutCards();
                     break;
@@ -58,21 +56,13 @@ namespace KompasCore.Cards
                     SetRotation();
                     break;
                 default: throw new System.ArgumentException($"Invalid card location {location} to put card physically at");
-            }
+            }*/
 
             SpreadOutAugs();
 
         }
 
         protected virtual Transform BoardTransform => Card.Game.BoardController.gameObject.transform;
-
-        /// <summary>
-        /// Updates the local position of this card, given a board position
-        /// </summary>
-        private void MoveTo((int x, int y) to)
-        {
-            transform.localPosition = BoardUIController.GridIndicesToCardPos(to.x, to.y);
-        }
 
         public void SpreadOutAugs()
         {
@@ -87,7 +77,7 @@ namespace KompasCore.Cards
                     obj.gameObject.transform.parent = stackedAugmentsController.gameObject.transform;
                     obj.gameObject.transform.localScale = Vector3.one * 2f;
                 }
-                stackedAugmentsController.Objects = augObjs;
+                stackedAugmentsController.ShownObjects = augObjs;
             }
         }
 

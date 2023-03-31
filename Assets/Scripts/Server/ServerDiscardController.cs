@@ -40,5 +40,7 @@ namespace KompasServer.GameCore
             }
             return successful;
         }
+        
+        public override void Refresh() { }
     }
 }

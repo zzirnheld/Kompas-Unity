@@ -29,13 +29,15 @@ namespace KompasCore.GameCore
         /// <param name="card">The card to add to this deck</param>
         /// <returns><see langword="true"/> if the add was completely successful.<br></br>
         /// <see langword="false"/> if the add failed in a way that isn't considered "impossible" (i.e. removing an avatar)</returns>
-        protected virtual bool AddToDeck(GameCard card, IStackable stackSrc = null)
+        protected virtual bool AddToDeck(GameCard card, int? index = null, IStackable stackSrc = null)
         {
             if (card == null) throw new NullCardException("Null card to add to deck");
             //Does not check if card is already in deck, because the functions to move around a card in deck are the same as those to add a card to deck
             //Check if the card is successfully removed (if it's not, it's probably an avatar)
             if (card.Remove(stackSrc))
             {
+                if (index.HasValue) deck.Insert(index.Value, card);
+                else deck.Add(card);
                 card.GameLocation = this;
                 card.Controller = Owner;
                 card.Position = null;
@@ -46,27 +48,15 @@ namespace KompasCore.GameCore
 
         //adding and removing cards
         public virtual bool PushTopdeck(GameCard card, IStackable stackSrc = null)
-        {
-            bool ret = AddToDeck(card, stackSrc);
-            if (ret) deck.Insert(0, card);
-            return ret;
-        }
+            => AddToDeck(card, index: 0, stackSrc: stackSrc);
 
         public virtual bool PushBottomdeck(GameCard card, IStackable stackSrc = null)
-        {
-            bool ret = AddToDeck(card, stackSrc);
-            if (ret) deck.Add(card);
-            return ret;
-        }
+            => AddToDeck(card, stackSrc: stackSrc);
 
         public virtual bool ShuffleIn(GameCard card, IStackable stackSrc = null)
         {
-            bool ret = AddToDeck(card, stackSrc);
-            if (ret)
-            {
-                deck.Add(card);
-                Shuffle();
-            }
+            bool ret = AddToDeck(card, stackSrc: stackSrc);
+            if (ret) Shuffle();
             return ret;
         }
 

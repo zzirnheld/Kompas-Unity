@@ -14,6 +14,8 @@ namespace KompasCore.GameCore
         public int IndexOf(GameCard card);
 
         public void Remove(GameCard card);
+
+        public void Refresh();
     }
 
     /// <summary>
@@ -31,6 +33,8 @@ namespace KompasCore.GameCore
         public abstract int IndexOf(GameCard card);
 
         public abstract void Remove(GameCard card);
+
+        public abstract void Refresh();
 
         public override string ToString() => $"{GetType()} owned by {Owner}";
     }

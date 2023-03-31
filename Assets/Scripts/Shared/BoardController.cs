@@ -6,6 +6,7 @@ using KompasCore.Effects;
 using KompasCore.Cards;
 using System.Text;
 using KompasCore.Exceptions;
+using KompasCore.UI;
 
 namespace KompasCore.GameCore
 {
@@ -18,7 +19,10 @@ namespace KompasCore.GameCore
         public abstract Game Game { get; }
 
         protected readonly GameCard[,] Board = new GameCard[SpacesInGrid, SpacesInGrid];
-        public IEnumerable<GameCard> Cards { get { foreach (var card in Board) yield return card; } } 
+        public IEnumerable<GameCard> Cards { get { foreach (var card in Board) yield return card; } }
+
+        public BoardUIController boardUIController;
+        public void Refresh() => boardUIController.Refresh();
 
         //helper methods
         #region helper methods

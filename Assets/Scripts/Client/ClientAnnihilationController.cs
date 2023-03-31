@@ -1,4 +1,5 @@
 using KompasCore.GameCore;
+using KompasCore.UI;
 
 namespace KompasClient.GameCore
 {

@@ -46,6 +46,8 @@ namespace KompasCore.GameCore
             SpreadOutCards();
         }
 
+        public override void Refresh() => SpreadOutCards();
+
         public void SpreadOutCards()
         {
             //iterate through children, set the z coord

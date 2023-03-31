@@ -17,6 +17,8 @@ namespace KompasCore.GameCore
         public override CardLocation CardLocation => CardLocation.Annihilation;
         public override IEnumerable<GameCard> Cards => cards;
 
+        public override void Refresh() => annihilationUIController.Refresh();
+
 
         /// <summary>
         /// Annihilates the card

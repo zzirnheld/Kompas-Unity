@@ -13314,6 +13314,7 @@ Transform:
   m_Children:
   - {fileID: 1260333434}
   - {fileID: 338975325}
+  - {fileID: 1973723543}
   m_Father: {fileID: 1841194801}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
@@ -13330,6 +13331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: {fileID: 1829834588}
+  deckUIController: {fileID: 1973723541}
   deckCountLabel: {fileID: 1730378959}
 --- !u!1 &748852962
 GameObject:
@@ -34771,6 +34773,77 @@ Transform:
   m_Father: {fileID: 1329577223}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1973723540
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1973723543}
+  - component: {fileID: 1973723542}
+  - component: {fileID: 1973723541}
+  m_Layer: 12
+  m_Name: Deck Expandable
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1973723541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973723540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c7754321846a267eacad5773e0a9819, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collapsedOffset: {x: 0, y: 0.25, z: 0}
+  expandedOffset: {x: 0, y: 0, z: 0}
+  whileExpandedOffset: 0
+  layer: 12
+  colliderPadding: 1.1
+  boxCollider: {fileID: 1973723542}
+  behind: {fileID: 0}
+  behindBoundsMultiplier: 0
+  localXOffset: 2
+  localXOffsetByRow: -4
+  localZOffset: -2
+  deckController: {fileID: 2534840227050861151}
+  deckCardBackObject: {fileID: 1413730457}
+--- !u!65 &1973723542
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973723540}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1973723543
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973723540}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3, y: 0, z: 3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 733957027}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1976730520
 GameObject:
   m_ObjectHideFlags: 0
@@ -38543,6 +38616,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: {fileID: 1829834588}
+  deckUIController: {fileID: 242881463}
   deckCountLabel: {fileID: 1106341060}
 --- !u!114 &2878731448243166020
 MonoBehaviour:
@@ -43106,6 +43180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31f551bc260173b41bd10596a79d2b73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boardUIController: {fileID: 1329577224}
   clientGame: {fileID: 492080563}
 --- !u!65 &4063274800751553633
 BoxCollider:

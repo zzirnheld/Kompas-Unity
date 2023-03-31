@@ -146,5 +146,29 @@ namespace KompasCore.UI
         }
 
         public abstract void Clicked(Space position, GameCard focusCardOverride = null);
+
+        public void Refresh()
+        {
+            foreach (var card in BoardController.Cards.Where(c => c != null))
+            {
+                Place(card.CardController, card.Position);
+            }
+        }
+        
+        private void Place(CardController card, Space position)
+        {
+            card.transform.localScale = Vector3.one;
+            card.transform.SetParent(transform);
+            MoveTo(card, position);
+            card.gameObject.SetActive(true);
+        }
+
+        /// <summary>
+        /// Updates the local position of this card, given a board position
+        /// </summary>
+        private void MoveTo(CardController card, (int x, int y) to)
+        {
+            card.transform.localPosition = GridIndicesToCardPos(to.x, to.y);
+        }
     }
 }

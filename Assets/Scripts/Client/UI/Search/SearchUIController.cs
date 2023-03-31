@@ -121,7 +121,7 @@ namespace KompasClient.UI.Search
                     scvc.Initialize(this, card.CardController);
                     cardObjects.Add(scvcGameObject);
                 }
-                stackCtrl.Objects = cardObjects;
+                stackCtrl.ShownObjects = cardObjects;
             }
         }
 

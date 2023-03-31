@@ -2,12 +2,11 @@
 using KompasClient.UI;
 using KompasCore.Cards;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace KompasClient.Cards
 {
-    //[RequireComponent(typeof(ClientGameCard))]
-    //[RequireComponent(typeof(ClientCardMouseController))]
+    [RequireComponent(typeof(ClientGameCard))]
+    [RequireComponent(typeof(ClientCardMouseController))]
     public class ClientCardController : CardController
     {
 
@@ -23,6 +22,12 @@ namespace KompasClient.Cards
         public ClientUIController ClientUIController => ClientGame.clientUIController;
 
         protected override Transform BoardTransform => ClientUIController.boardUIController.spaceCueCubesParent;
+
+        public override void SetPhysicalLocation(CardLocation location)
+        {
+            base.SetPhysicalLocation(location);
+            ClientUIController.cardInfoViewUIController.Refresh();
+        }
 
 
         public bool Revealed

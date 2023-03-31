@@ -1,4 +1,5 @@
-﻿using KompasCore.GameCore;
+﻿using KompasClient.UI;
+using KompasCore.GameCore;
 using TMPro;
 
 namespace KompasClient.GameCore
@@ -8,6 +9,8 @@ namespace KompasClient.GameCore
         public ClientPlayer owner;
 
         public override Player Owner => owner;
+
+        public ClientDeckUIController deckUIController;
 
         public TMP_Text deckCountLabel;
         public int DeckCount
@@ -23,5 +26,7 @@ namespace KompasClient.GameCore
             //request a draw
             if (Game.Players[0].deckCtrl == this) owner.game.clientNotifier.RequestDraw();
         }
+
+        public override void Refresh() => deckUIController.Refresh();
     }
 }

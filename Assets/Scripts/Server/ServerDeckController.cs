@@ -17,10 +17,10 @@ namespace KompasServer.GameCore
         public ServerNotifier ServerNotifier => ServerGame.serverPlayers[Owner.index].notifier;
         public ServerEffectsController EffectsController => ServerGame.effectsController;
 
-        protected override bool AddToDeck(GameCard card, IStackable stackSrc = null)
+        protected override bool AddToDeck(GameCard card, int? index = null, IStackable stackSrc = null)
         {
             var context = new ActivationContext(game: ServerGame, mainCardBefore: card, stackableCause: stackSrc, player: Owner);
-            bool successfulAdd = base.AddToDeck(card);
+            bool successfulAdd = base.AddToDeck(card, index, stackSrc);
             if (successfulAdd)
             {
                 context.CacheCardInfoAfter();
@@ -77,5 +77,7 @@ namespace KompasServer.GameCore
             base.Remove(card);
             owner.notifier.NotifyDeckCount(Cards.Count());
         }
+        
+        public override void Refresh() { }
     }
 }

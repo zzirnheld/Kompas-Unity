@@ -17,6 +17,8 @@ namespace KompasCore.GameCore
         public override CardLocation CardLocation => CardLocation.Discard;
         public override IEnumerable<GameCard> Cards => discard;
 
+        public override void Refresh() => discardUIController.Refresh();
+
         //adding/removing cards
         public virtual bool Discard(GameCard card, IStackable stackSrc = null)
         {

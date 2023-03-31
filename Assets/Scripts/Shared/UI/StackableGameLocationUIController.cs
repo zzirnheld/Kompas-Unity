@@ -24,19 +24,21 @@ namespace KompasCore.UI
         protected virtual IEnumerable<GameCard> Cards => GameLocation.Cards;
         protected BaseCardViewController CardViewController => GameLocation.Game.UIController.CardViewController;
 
-        public override IEnumerable<GameObject> Objects => Cards.Select(c => c.CardController.gameObject);
+        public override IEnumerable<GameObject> ShownObjects => Cards.Select(c => c.CardController.gameObject);
         protected override bool ForceExpand => Cards.Any(c => c == CardViewController.FocusedCard);
 
         private void TakeOwnershipOf(GameObject obj)
         {
+            //Debug.Log($"{name} taking ownership of {obj}");
+            if (obj.transform.parent != transform) Debug.Log($"{name} Newly taking ownership of {obj}");
             obj.transform.parent = transform;
             obj.SetActive(true);
         }
 
         protected override void ShowCollapsed()
         {
+            TakeOwnership();
             gameObject.SetActive(true);
-            foreach (var obj in Objects) TakeOwnershipOf(obj);
             base.ShowCollapsed();
         }
 
@@ -44,11 +46,11 @@ namespace KompasCore.UI
 
         protected override void ShowExpanded()
         {
-            foreach (var obj in Objects) TakeOwnershipOf(obj);
+            TakeOwnership();
             gameObject.SetActive(true);
-            int wrapLen = WrapLen(Objects.Count());
+            int wrapLen = WrapLen(ShownObjects.Count());
             int x = 0, y = 0;
-            foreach (var obj in Objects)
+            foreach (var obj in ShownObjects)
             {
                 TakeOwnershipOf(obj);
                 obj.transform.localPosition = new Vector3(localXOffset * (x + y) + localXOffsetByRow * y, 0f, localZOffset * y);
@@ -56,6 +58,11 @@ namespace KompasCore.UI
                 x = (x + 1) % wrapLen;
                 if (x == 0) y++;
             }
+        }
+
+        protected void TakeOwnership()
+        {
+            foreach (var obj in GameLocation.Cards.Select(c => c.CardController.gameObject)) TakeOwnershipOf(obj);
         }
     }
 }
