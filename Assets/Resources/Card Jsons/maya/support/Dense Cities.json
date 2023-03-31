@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Dense Cities",
-	"effText": "When I'm cast on the same diagonal as X Maya Structures, deck->hand up to X distinct Maya Craftspeople.",
+	"effText": "Deck->hand up to [number of Maya Structures on my diagonal] distinct Maya Craftspeople.",
 	"effects": [
 		{
 			"blurb": "Attract craftspeople",

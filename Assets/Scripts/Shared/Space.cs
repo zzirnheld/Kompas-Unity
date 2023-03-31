@@ -38,6 +38,10 @@ public class Space
     }
     public static SpaceCollection Spaces => new SpaceCollection();
 
+    //TODO: have the space -> world space calculation here or in board ctrl? regardless, need to add it to the following places:
+    //where space cue controllers are (so can click them)
+    //board control (so can place cards appropriately) GridIndicesToCardPos method.
+
     public Space Copy => new Space(x, y);
 
     public static Space NearCorner => new Space(0, 0);

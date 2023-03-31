@@ -40,11 +40,13 @@ namespace KompasCore.UI
             base.ShowCollapsed();
         }
 
+        protected virtual int WrapLen(int objCount) => Mathf.CeilToInt(Mathf.Sqrt(objCount));
+
         protected override void ShowExpanded()
         {
             foreach (var obj in Objects) TakeOwnershipOf(obj);
             gameObject.SetActive(true);
-            int wrapLen = Mathf.CeilToInt(Mathf.Sqrt(Objects.Count()));
+            int wrapLen = WrapLen(Objects.Count());
             int x = 0, y = 0;
             foreach (var obj in Objects)
             {

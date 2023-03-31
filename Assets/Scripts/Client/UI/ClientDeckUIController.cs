@@ -4,6 +4,7 @@ using KompasClient.GameCore;
 using KompasCore.Cards;
 using KompasCore.GameCore;
 using KompasCore.UI;
+using UnityEngine;
 
 namespace KompasClient.UI
 {
@@ -17,6 +18,7 @@ namespace KompasClient.UI
         protected override bool ForceCollapse => toShow.Count() == 0; //Should be collapsed unless searching
         protected override bool ForceExpand => !ForceCollapse;
         protected override IEnumerable<GameCard> Cards => base.Cards.Where(toShow.Contains);
+        public GameObject deckCardBackObject;
 
         //ShowExpanded will update on next Update()
         public void ShowSearching(IEnumerable<GameCard> toShow)
@@ -25,13 +27,24 @@ namespace KompasClient.UI
             this.toShow = new HashSet<GameCard>(toShow);
             Update();
         }
+
         public void StopSearching()
         {
             foreach (var c in toShow) c.CardController.ShownInSearch = true;
             toShow = Enumerable.Empty<GameCard>();
         }
 
-        
-        protected override void ShowCollapsed() => gameObject.SetActive(false);
+
+        protected override void ShowCollapsed()
+        {
+            gameObject.SetActive(false);
+            deckCardBackObject.SetActive(true);
+        }
+
+        protected override void ShowExpanded()
+        {
+            base.ShowExpanded();
+            deckCardBackObject.SetActive(false);
+        }
     }
 }

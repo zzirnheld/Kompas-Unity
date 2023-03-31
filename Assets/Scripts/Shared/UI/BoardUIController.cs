@@ -1,6 +1,8 @@
 ﻿using KompasCore.Cards;
 using KompasCore.GameCore;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace KompasCore.UI
@@ -17,9 +19,36 @@ namespace KompasCore.UI
 
         public GameObject spaceCueControllerPrefab;
         public Transform spaceCueCubesParent;
-
         private readonly SpaceCueController[,] spaceCueControllers = new SpaceCueController[Space.BoardLen, Space.BoardLen];
         private GameCardBase currShowingFor;
+
+        private enum CueIndex
+        {
+            WestCorner, NW3SW2, NW3SW1, NW3SW0,
+            NW2SW2, NW2SW1, NW2SW0,
+            NW1SW1, NW1SW0,
+            Center
+        }
+        [EnumNamedArray(typeof(CueIndex))]
+        public GameObject[] spaceCueControllerSampling;
+        private static Space CueIndexMapping(CueIndex index) => index switch
+        {
+            CueIndex.WestCorner => (6, 0),
+            CueIndex.NW3SW2 => (6, 1),
+            CueIndex.NW3SW1 => (6, 2),
+            CueIndex.NW3SW0 => (6, 3),
+
+            CueIndex.NW2SW2 => (5, 1),
+            CueIndex.NW2SW1 => (5, 2),
+            CueIndex.NW2SW0 => (5, 3),
+
+            CueIndex.NW1SW1 => (4, 2),
+            CueIndex.NW1SW0 => (4, 3),
+
+            CueIndex.Center => (3, 3),
+
+            _ => throw new System.ArgumentException($"Invalid index {index}", "index")
+        };
 
         private static Vector3 GridIndicesToCuePos(int x, int y)
         {
@@ -37,16 +66,45 @@ namespace KompasCore.UI
 
         private void Awake()
         {
-            for (int i = 0; i < 7; i++)
+            foreach (CueIndex cueIndex in Enum.GetValues(typeof(CueIndex)))
             {
-                for (int j = 0; j < 7; j++)
+                InstantiateCue(cueIndex, false, false);
+                InstantiateCue(cueIndex, true, false);
+                InstantiateCue(cueIndex, false, true);
+                InstantiateCue(cueIndex, true, true);
+            }
+
+            //fill in gaps
+            for (int x = 0; x < 7; x++)
+            {
+                for (int y = 0; y < 7; y++)
                 {
-                    GameObject cue = Instantiate(spaceCueControllerPrefab, spaceCueCubesParent);
-                    cue.transform.localPosition = GridIndicesToCuePos(i, j);
-                    spaceCueControllers[i, j] = cue.GetComponent<SpaceCueController>();
-                    spaceCueControllers[i, j].Init(this, (i, j));
+                    if (spaceCueControllers[x, y] != default) continue;
+                    var position = spaceCueControllers[y, x].transform.localPosition;
+                    InstantiateCue(x, y, new Vector3(position.z, position.y, position.x));
                 }
             }
+        }
+
+        private void InstantiateCue(CueIndex cueIndex, bool flipX, bool flipZ)
+        {
+            var (x, y) = CueIndexMapping(cueIndex);
+            var (i, j) = (flipX ? 6 - x : x, flipZ ? 6 - y : y);
+
+            Debug.Log($"Index {cueIndex} out of range of {spaceCueControllerSampling.Length}");
+            var position = spaceCueControllerSampling[(int)cueIndex].transform.localPosition;
+            var flippedPosition = new Vector3(flipX ? -position.x : position.x, position.y, flipZ ? -position.z : position.z);
+            InstantiateCue(i, j, flippedPosition);
+        }
+
+        private void InstantiateCue(int x, int y, Vector3 localPosition)
+        {
+            if (spaceCueControllers[x, y] != default) return;
+            GameObject cue = Instantiate(spaceCueControllerPrefab, spaceCueCubesParent);
+            cue.transform.localPosition = localPosition;
+            cue.name = $"Cue x{x} y{y}";
+            spaceCueControllers[x, y] = cue.GetComponent<SpaceCueController>();
+            spaceCueControllers[x, y].Init(this, (x, y));
         }
 
         public virtual void OnMouseDown()

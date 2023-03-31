@@ -12,7 +12,7 @@ namespace KompasCore.UI
         public Vector3 collapsedOffset;
         [Tooltip("Constant offset between objects while expanded")]
         public Vector3 expandedOffset;
-        [Tooltip("Constant y offset for the entire from parent while it's expanded")]
+        [Tooltip("Constant offset for the entire from parent while it's expanded (towards the camera)")]
         public float whileExpandedOffset;
 
         [Header("Collider attributes")]
@@ -95,11 +95,11 @@ namespace KompasCore.UI
             collapsed = false;
         }
 
-        private void OffsetSelf(float offset)
+        private void OffsetSelf(float towardsCameraOffset)
         {
             transform.position -= currOffset;
-            currOffset = LocalMeToCamera * offset;
-            if (Objects.Count() > 0 && offset != 0) currOffset += Objects.Last().transform.position - transform.position;
+            currOffset = LocalMeToCamera * towardsCameraOffset;
+            if (Objects.Count() > 0 && towardsCameraOffset != 0) currOffset += Objects.Last().transform.position - transform.position;
             transform.position += currOffset;
         }
 
