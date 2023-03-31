@@ -50,19 +50,8 @@ namespace KompasCore.UI
             _ => throw new System.ArgumentException($"Invalid index {index}", "index")
         };
 
-        private static Vector3 GridIndicesToCuePos(int x, int y)
-        {
-            return new Vector3(GridIndexToPos(x), 0.01f, GridIndexToPos(y));
-        }
-
-        public static int PosToGridIndex(float pos)
-            => (int)((pos + BoardLenOffset) / (LenOneSpace));
-
-        public static float GridIndexToPos(int gridIndex)
-            => (float)((gridIndex * LenOneSpace) + SpaceOffset - BoardLenOffset);
-
-        public static Vector3 GridIndicesToCardPos(int x, int y)
-            => new Vector3(GridIndexToPos(x), CardHeight, GridIndexToPos(y));
+        public static readonly Vector3[,] SpacePositions = new Vector3[7, 7];
+        public static Vector3 GridIndicesToCardPos(int x, int y) => SpacePositions[x, y];
 
         private void Awake()
         {
@@ -105,6 +94,7 @@ namespace KompasCore.UI
             cue.name = $"Cue x{x} y{y}";
             spaceCueControllers[x, y] = cue.GetComponent<SpaceCueController>();
             spaceCueControllers[x, y].Init(this, (x, y));
+            SpacePositions[x, y] = localPosition + new Vector3(0, 0.05f, 0);
         }
 
         public virtual void OnMouseDown()
