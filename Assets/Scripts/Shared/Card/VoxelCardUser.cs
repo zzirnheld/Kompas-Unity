@@ -37,19 +37,25 @@ public class VoxelCardUser : MonoBehaviour
     public CardRepository cardRepository;
 
     private static readonly string cardTexturesPath = Path.Join("Assets", "Card Textures");
+    public Sprite used;
+    public Texture2D copied;
+    public Texture2D last;
+    int skip = 2;
 
-    /*Uncomment when wanting to regen textures (I don't wanna allow confusing methods while normal code is being used.) also uncomment in VoxelCardUserEditor for the generate button
+    //*Uncomment when wanting to regen textures (I don't wanna allow confusing methods while normal code is being used.) also uncomment in VoxelCardUserEditor for the generate button
     public void Generate()
     {
         // Uncomment to regen textures...
         Debug.Log("Generating...");
         CardRepository.Init();
+        int i = 0;
         foreach (var card in CardRepository.SerializableCards)
         {
             var fileName = CardRepository.FileNameFor(card.cardName);
             var cardName = card.cardName;
             var sprite = CardRepository.LoadSprite(fileName);
             if (sprite == null) continue;
+            used = sprite;
             Set(card.cardType == 'C', true, sprite);
 
             var dir = fileName.Split(Path.DirectorySeparatorChar);
@@ -59,10 +65,10 @@ public class VoxelCardUser : MonoBehaviour
             Directory.CreateDirectory($"Assets/Resources/Card Textures/Unzoomed/Texture/{dirName}");
             Directory.CreateDirectory($"Assets/Resources/Card Textures/Unzoomed/Metalness/{dirName}");
 
-            var zoomedTextureName = $"Assets/Resources/Card Textures/Zoomed/Texture/{fileName}.asset";
-            var zoomedMetalnessName = $"Assets/Resources/Card Textures/Zoomed/Metalness/{fileName}.asset";
-            var unzoomedTextureName = $"Assets/Resources/Card Textures/Unzoomed/Texture/{fileName}.asset";
-            var unzoomedMetalnessName = $"Assets/Resources/Card Textures/Unzoomed/Metalness/{fileName}.asset";
+            var zoomedTextureName = $"Assets/Resources/Card Textures/Zoomed/Texture/{fileName}.png";
+            var zoomedMetalnessName = $"Assets/Resources/Card Textures/Zoomed/Metalness/{fileName}.png";
+            var unzoomedTextureName = $"Assets/Resources/Card Textures/Unzoomed/Texture/{fileName}.png";
+            var unzoomedMetalnessName = $"Assets/Resources/Card Textures/Unzoomed/Metalness/{fileName}.png";
 
             var width = ZoomedTex.width / 3;
             var height = ZoomedTex.height / 2;
@@ -75,13 +81,24 @@ public class VoxelCardUser : MonoBehaviour
             var unzoomedMetPortion = new Texture2D(width, height);
             unzoomedMetPortion.SetPixels(0, 0, width, height, UnzoomedMet.GetPixels(width, height - 1, width, height));
 
-            AssetDatabase.CreateAsset(zoomedTexPortion, zoomedTextureName);
-            AssetDatabase.CreateAsset(zoomedMetPortion, zoomedMetalnessName);
-            AssetDatabase.CreateAsset(unzoomedTexPortion, unzoomedTextureName);
-            AssetDatabase.CreateAsset(unzoomedMetPortion, unzoomedMetalnessName);
-            //break;
+            last = zoomedTexPortion;
+
+            SaveAsPng(zoomedTexPortion, zoomedTextureName);
+            SaveAsPng(zoomedMetPortion, zoomedMetalnessName);
+            SaveAsPng(unzoomedTexPortion, unzoomedTextureName);
+            SaveAsPng(unzoomedMetPortion, unzoomedMetalnessName);
+            if(i++ > skip) break;
         }
     }
+
+    private static void SaveAsPng(Texture2D texture, string filePath)
+    {
+        byte[] bytes = texture.EncodeToPNG();
+
+        Debug.Log($"Writing bytes to {filePath}");
+        File.WriteAllBytes(filePath, bytes);
+    }
+
     public void Set(bool isChar, bool zoomed, Sprite sprite)
     {
         var start = System.DateTime.Now;
@@ -89,6 +106,8 @@ public class VoxelCardUser : MonoBehaviour
             //Debug.Log($"Loading fresh {Path.Combine(ZoomedTextureFolder, $"{cardFileName}")}");
         (ZoomedTex, ZoomedMet) = Copy(isChar ? zoomedCharTex : zoomedSpellTex, isChar ? zoomedCharMetalness : zoomedSpellMetalness, true, sprite);
         (UnzoomedTex, UnzoomedMet) = Copy(isChar ? unzoomedCharTex : unzoomedSpellTex, isChar ? unzoomedCharMetalness : unzoomedSpellMetalness, false, sprite);
+
+        copied = ZoomedTex;
 
         //Debug.Log($"Regen took {System.DateTime.Now - start} with cardArt {cardfi != default}?");
         Set(isChar, zoomed, zoomed ? ZoomedTex : UnzoomedTex, zoomed ? ZoomedMet : UnzoomedMet);
@@ -104,9 +123,10 @@ public class VoxelCardUser : MonoBehaviour
         metalness.SetPixels(oldMetalness.GetPixels());
         metalness.Apply();
 
-        VoxelCard.BuildTextureCardArt(256, !zoomed, 0.0225f, VoxelCard.GetCharacterArtUpperBound(!zoomed), VoxelCard.GetCharacterArtSamplingIncrementRatio(!zoomed), cardArt, 0f, 0f, texture, metalness);
+        VoxelCardTextureBuilder.BuildTextureCardArt(256, !zoomed, 0.0225f,
+            VoxelCardTextureBuilder.GetCharacterArtUpperBound(!zoomed), VoxelCardTextureBuilder.GetCharacterArtSamplingIncrementRatio(!zoomed), cardArt, 0f, 0f, texture, metalness);
         return (texture, metalness);
-    }*/
+    }//*/
 
     public void Set(string cardFileName, bool isChar, bool zoomed, bool friendly)
     {

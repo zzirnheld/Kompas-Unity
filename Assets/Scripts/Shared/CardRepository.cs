@@ -6,8 +6,8 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using System.IO;
-using static VoxelCard;
 using UnityEditor;
+using static VoxelCardTextureBuilder;
 
 namespace KompasCore.GameCore
 {
@@ -75,10 +75,10 @@ namespace KompasCore.GameCore
             MaxDepth = null,
             ReferenceLoopHandling = ReferenceLoopHandling.Serialize
         };
-        private const string ZoomedTextureFolder = "Assets/Resources/Card Textures/Zoomed/Texture";
-        private const string ZoomedMetalnessFolder = "Assets/Resources/Card Textures/Zoomed/Metalness";
-        private const string UnzoomedTextureFolder = "Assets/Resources/Card Textures/Unzoomed/Texture";
-        private const string UnzoomedMetalnessFolder = "Assets/Resources/Card Textures/Unzoomed/Metalness";
+        private const string ZoomedTextureFolder = "Resources/Card Textures/Zoomed/Texture";
+        private const string ZoomedMetalnessFolder = "Resources/Card Textures/Zoomed/Metalness";
+        private const string UnzoomedTextureFolder = "Resources/Card Textures/Unzoomed/Texture";
+        private const string UnzoomedMetalnessFolder = "Resources/Card Textures/Unzoomed/Metalness";
 
         public class CardTextures
         {
@@ -302,18 +302,18 @@ namespace KompasCore.GameCore
             };
 
             textures.FrameColorOverride = Settings?.FriendlyColor ?? Settings.DefaultFriendlyBlue;
-            (friendlyZoomedCharTexture, friendlyZoomedCharMetalness) = VoxelCard.BuildTexture(default, default, TextureParams.Params(isZoomed: true, isChar: true, textures), true);
-            (friendlyZoomedNonCharTexture, friendlyZoomedNonCharMetalness) = VoxelCard.BuildTexture(default, default, TextureParams.Params(isZoomed: true, isChar: false, textures), true);
-            (friendlyUnzoomedCharTexture, friendlyUnzoomedCharMetalness) = VoxelCard.BuildTexture(default, default, TextureParams.Params(isZoomed: false, isChar: true, textures), true);
-            (friendlyUnzoomedNonCharTexture, friendlyUnzoomedNonCharMetalness) = VoxelCard.BuildTexture(default, default, TextureParams.Params(isZoomed: false, isChar: false, textures), true);
+            (friendlyZoomedCharTexture, friendlyZoomedCharMetalness) = VoxelCardTextureBuilder.BuildTexture(default, default, TextureParams.Params(isZoomed: true, isChar: true, textures), true);
+            (friendlyZoomedNonCharTexture, friendlyZoomedNonCharMetalness) = VoxelCardTextureBuilder.BuildTexture(default, default, TextureParams.Params(isZoomed: true, isChar: false, textures), true);
+            (friendlyUnzoomedCharTexture, friendlyUnzoomedCharMetalness) = VoxelCardTextureBuilder.BuildTexture(default, default, TextureParams.Params(isZoomed: false, isChar: true, textures), true);
+            (friendlyUnzoomedNonCharTexture, friendlyUnzoomedNonCharMetalness) = VoxelCardTextureBuilder.BuildTexture(default, default, TextureParams.Params(isZoomed: false, isChar: false, textures), true);
 
             Debug.Log("Friendly textures initialized");
 
             textures.FrameColorOverride = Settings?.EnemyColor ?? Settings.DefaultEnemyRed;
-            (enemyZoomedCharTexture, enemyZoomedCharMetalness) = VoxelCard.BuildTexture(default, default, TextureParams.Params(isZoomed: true, isChar: true, textures), true);
-            (enemyZoomedNonCharTexture, enemyZoomedNonCharMetalness) = VoxelCard.BuildTexture(default, default, TextureParams.Params(isZoomed: true, isChar: false, textures), true);
-            (enemyUnzoomedCharTexture, enemyUnzoomedCharMetalness) = VoxelCard.BuildTexture(default, default, TextureParams.Params(isZoomed: false, isChar: true, textures), true);
-            (enemyUnzoomedNonCharTexture, enemyUnzoomedNonCharMetalness) = VoxelCard.BuildTexture(default, default, TextureParams.Params(isZoomed: false, isChar: false, textures), true);
+            (enemyZoomedCharTexture, enemyZoomedCharMetalness) = VoxelCardTextureBuilder.BuildTexture(default, default, TextureParams.Params(isZoomed: true, isChar: true, textures), true);
+            (enemyZoomedNonCharTexture, enemyZoomedNonCharMetalness) = VoxelCardTextureBuilder.BuildTexture(default, default, TextureParams.Params(isZoomed: true, isChar: false, textures), true);
+            (enemyUnzoomedCharTexture, enemyUnzoomedCharMetalness) = VoxelCardTextureBuilder.BuildTexture(default, default, TextureParams.Params(isZoomed: false, isChar: true, textures), true);
+            (enemyUnzoomedNonCharTexture, enemyUnzoomedNonCharMetalness) = VoxelCardTextureBuilder.BuildTexture(default, default, TextureParams.Params(isZoomed: false, isChar: false, textures), true);
 
             Debug.Log("enemy textures initialized");
         }
@@ -326,12 +326,12 @@ namespace KompasCore.GameCore
             {
                 CardTextures baseline = DetermineBaselineTextures(isChar, friendly);
 
-                var zoomedTexCharArt = AssetDatabase.LoadAssetAtPath(Path.Combine(ZoomedTextureFolder, $"{cardFileName}.asset"), typeof(Texture2D)) as Texture2D;
-                var zoomedMetCharArt = AssetDatabase.LoadAssetAtPath(Path.Combine(ZoomedMetalnessFolder, $"{cardFileName}.asset"), typeof(Texture2D)) as Texture2D;
-                var unzoomedTexCharArt = AssetDatabase.LoadAssetAtPath(Path.Combine(UnzoomedTextureFolder, $"{cardFileName}.asset"), typeof(Texture2D)) as Texture2D;
-                var unzoomedMetCharArt = AssetDatabase.LoadAssetAtPath(Path.Combine(UnzoomedMetalnessFolder, $"{cardFileName}.asset"), typeof(Texture2D)) as Texture2D;
+                var zoomedTexCharArt = Resources.Load<Texture2D>(Path.Combine(ZoomedTextureFolder, $"{cardFileName}"));
+                var zoomedMetCharArt = Resources.Load<Texture2D>(Path.Combine(ZoomedMetalnessFolder, $"{cardFileName}"));
+                var unzoomedTexCharArt = Resources.Load<Texture2D>(Path.Combine(UnzoomedTextureFolder, $"{cardFileName}"));
+                var unzoomedMetCharArt = Resources.Load<Texture2D>(Path.Combine(UnzoomedMetalnessFolder, $"{cardFileName}"));
 
-                Debug.Log($"Loading fresh {Path.Combine(ZoomedTextureFolder, $"{cardFileName}.asset")}. Is it null? {zoomedTexCharArt == null}");
+                Debug.Log($"Loading fresh {Path.Combine(ZoomedTextureFolder, $"{cardFileName}")}. Is it null? {zoomedTexCharArt == null}");
 
                 var copiedZoomedTex = Copy(baseline.zoomedTex, zoomedTexCharArt);
                 var copiedZoomedMet = Copy(baseline.zoomedMet, zoomedMetCharArt);
@@ -389,5 +389,7 @@ namespace KompasCore.GameCore
         public static string FileNameFor(string cardName) => cardFileNames[cardName];
 
         public static Sprite LoadSprite(string cardFileName) => Resources.Load<Sprite>(Path.Combine("Simple Sprites", cardFileName));
+
+        public static IEnumerable<SerializableCard> SerializableCards => cardJsons.Values.Select(json => JsonConvert.DeserializeObject<SerializableCard>(json, cardLoadingSettings));
     }
 }
