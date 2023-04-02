@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6053350996792112331}
   - component: {fileID: 1412984167415576969}
   - component: {fileID: 2758847247348518504}
+  - component: {fileID: 1394287551657204159}
   m_Layer: 0
   m_Name: Gameboard Base
   m_TagString: Untagged
@@ -110,7 +111,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49f017abe78b3c54da0a3bf941eb26fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boardUIController: {fileID: 1394287551657204159}
   ServerGame: {fileID: 3349460599440499645}
+--- !u!114 &1394287551657204159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389341283911728683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cc578f47abf833f282c0797ff5882bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spaceCueControllerPrefab: {fileID: 6721646274851369500, guid: db85c6b7f288c3a40b526bdfd48b1bfc,
+    type: 3}
+  spaceCueCubesParent: {fileID: 258710795191279054}
+  spaceCueControllerSampling: []
+  boardController: {fileID: 2758847247348518504}
+  serverUIController: {fileID: 0}
 --- !u!1 &2541495787388890033
 GameObject:
   m_ObjectHideFlags: 0
@@ -213,6 +233,7 @@ MonoBehaviour:
   behind: {fileID: 0}
   behindBoundsMultiplier: 0
   localXOffset: 2
+  localXOffsetByRow: 0
   localZOffset: -2
   annihilationController: {fileID: 8090786031170266276}
 --- !u!65 &2248163041538546722
@@ -473,6 +494,7 @@ MonoBehaviour:
   behind: {fileID: 0}
   behindBoundsMultiplier: 0
   localXOffset: 2
+  localXOffsetByRow: 0
   localZOffset: -2
   discardController: {fileID: 9092473287471686709}
 --- !u!1 &3349460599362718996
@@ -1114,6 +1136,7 @@ MonoBehaviour:
   behind: {fileID: 0}
   behindBoundsMultiplier: 0
   localXOffset: 2
+  localXOffsetByRow: 0
   localZOffset: -2
   discardController: {fileID: 6519838488330749444}
 --- !u!1 &3349460600343111959
@@ -1313,6 +1336,7 @@ MonoBehaviour:
   behind: {fileID: 0}
   behindBoundsMultiplier: 0
   localXOffset: 2
+  localXOffsetByRow: 0
   localZOffset: -2
   annihilationController: {fileID: 1057427032860538886}
 --- !u!65 &6578580619066064597

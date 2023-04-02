@@ -37,7 +37,7 @@
             }
         },
         {
-            "$type": "Subeffect:Delay:",
+            "$type": "Subeffect:Hanging.Delay:",
             "numTimesToDelay": 0,
             "jumpIndices": [
                 3
@@ -65,7 +65,7 @@
             "$type": "Subeffect:Move:"
         },
         {
-            "$type": "Subeffect:Delay:",
+            "$type": "Subeffect:Hanging.Delay:",
             "numTimesToDelay": 0,
             "jumpIndices": [
                 5

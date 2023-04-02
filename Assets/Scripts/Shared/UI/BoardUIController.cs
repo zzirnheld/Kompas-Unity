@@ -53,8 +53,12 @@ namespace KompasCore.UI
         public static readonly Vector3[,] SpacePositions = new Vector3[7, 7];
         public static Vector3 GridIndicesToCardPos(int x, int y) => SpacePositions[x, y];
 
+        public virtual bool InstantiateCues => true;
+
         private void Awake()
         {
+            if (!InstantiateCues) return;
+
             foreach (CueIndex cueIndex in Enum.GetValues(typeof(CueIndex)))
             {
                 InstantiateCue(cueIndex, false, false);

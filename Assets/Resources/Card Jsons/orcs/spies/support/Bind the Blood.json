@@ -37,7 +37,7 @@
 					"wModifier": 1
 				},
 				{
-					"$type": "Subeffect:Delay:",
+					"$type": "Subeffect:Hanging.Delay:",
 					"numTimesToDelay": 0,
 					"jumpIndices": [
 						3

@@ -18,7 +18,7 @@
             "$type": "Subeffect:TargetTriggeringCardsSpace:"
         },
         {
-            "$type":"Subeffect:Delay:",
+            "$type":"Subeffect:Hanging.Delay:",
             "numTimesToDelay": 0,
             "jumpIndices": [ 1 ],
             "endCondition": "Turn Start"

@@ -43,7 +43,7 @@
 					"$type": "Subeffect:TargetAugmentedCard:"
 				},
 				{
-					"$type": "Subeffect:Delay:",
+					"$type": "Subeffect:Hanging.Delay:",
 					"jumpIndices": [
 						6
 					],

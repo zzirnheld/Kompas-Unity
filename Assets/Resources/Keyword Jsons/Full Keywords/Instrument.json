@@ -27,7 +27,7 @@
             "$type":"Subeffect:TargetTriggeringCard:"
         },
         {
-            "$type":"Subeffect:Delay:",
+            "$type":"Subeffect:Hanging.Delay:",
             "numTimesToDelay":0,
             "jumpIndices":[2],
             "fallOffCondition":"",

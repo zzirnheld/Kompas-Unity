@@ -36,6 +36,7 @@ namespace KompasClient.UI
             toShow = Enumerable.Empty<GameCard>();
         }
 
+        protected override int WrapLen(int objCount) => 4;
 
         protected override void ShowCollapsed()
         {

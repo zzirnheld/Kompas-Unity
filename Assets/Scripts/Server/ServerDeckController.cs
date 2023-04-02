@@ -11,7 +11,7 @@ namespace KompasServer.GameCore
     {
         public ServerPlayer owner;
 
-        public override Player Owner => Owner;
+        public override Player Owner => owner;
         
         public ServerGame ServerGame => owner.game;
         public ServerNotifier ServerNotifier => ServerGame.serverPlayers[Owner.index].notifier;

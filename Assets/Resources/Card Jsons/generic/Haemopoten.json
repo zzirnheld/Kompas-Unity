@@ -41,7 +41,7 @@
 					"$type": "Subeffect:Annihilate:"
 				},
 				{
-					"$type": "Subeffect:Delay:",
+					"$type": "Subeffect:Hanging.Delay:",
 					"numTimesToDelay": 0,
 					"jumpIndices": [
 						6

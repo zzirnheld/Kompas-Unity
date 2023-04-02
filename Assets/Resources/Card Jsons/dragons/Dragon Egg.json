@@ -13,7 +13,7 @@
 			},
 			"subeffects":[
 				{
-					"$type":"Subeffect:Delay:",
+					"$type":"Subeffect:Hanging.Delay:",
 					"numTimesToDelay":1,
 					"jumpIndices":[1],
 					"endCondition":"Turn Start"

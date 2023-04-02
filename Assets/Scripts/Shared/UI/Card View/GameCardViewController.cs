@@ -55,6 +55,7 @@ namespace KompasCore.UI
 
         protected override void Display()
         {
+            Debug.Log($"{voxelCardUser}, {voxelCardUser?.cardRepository}, {ShownGameCard}, {ShownGameCard?.Game}, {ShownGameCard?.Game?.CardRepository}");
             voxelCardUser.cardRepository = ShownGameCard.Game.CardRepository;
             base.Display();
 

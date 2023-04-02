@@ -10,7 +10,7 @@ namespace KompasServer.Effects.Subeffects
     /// <summary>
     /// Gets a target from the effect controller's deck. Shuffles the deck aftewards
     /// </summary>
-    public class DeckTargetSubeffect : CardTarget
+    public class DeckTarget : CardTarget
     {
         protected override IEnumerable<GameCard> TargetCardsSource => Controller.deckCtrl.Cards;
 
