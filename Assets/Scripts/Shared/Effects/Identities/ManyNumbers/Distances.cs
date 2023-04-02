@@ -15,7 +15,7 @@ namespace KompasCore.Effects.Identities.ManyNumbers
             destinations.Initialize(initializationContext);
         }
 
-        protected override ICollection<int> AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
+        protected override ICollection<int> AbstractItemFrom(IResolutionContext context, IResolutionContext secondaryContext)
         {
             var origin = this.origin.From(context, secondaryContext);
             var destinations = this.destinations.From(context, secondaryContext);

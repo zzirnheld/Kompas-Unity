@@ -14,7 +14,7 @@ namespace KompasCore.Effects.Identities.ManySpaces
             cards.Initialize(initializationContext);
         }
 
-        protected override IReadOnlyCollection<Space> AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
+        protected override IReadOnlyCollection<Space> AbstractItemFrom(IResolutionContext context, IResolutionContext secondaryContext)
             => cards.From(context, secondaryContext)
                     .Select(c => c.Position)
                     .Where(space => space != null)

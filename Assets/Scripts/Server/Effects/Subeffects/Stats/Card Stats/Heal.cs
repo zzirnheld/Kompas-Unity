@@ -17,7 +17,7 @@ namespace KompasServer.Effects.Subeffects
 
             int healedFor = CardTarget.BaseE - CardTarget.E;
             CardTarget.SetE(CardTarget.BaseE, stackSrc: ServerEffect);
-            ServerEffect.EffectsController.TriggerForCondition(Trigger.Healed, new ActivationContext(Game, mainCardBefore: CardTarget, stackableCause: Effect, player: EffectController, x: healedFor));
+            ServerEffect.EffectsController.TriggerForCondition(Trigger.Healed, new TriggeringEventContext(Game, mainCardBefore: CardTarget, stackableCause: Effect, player: EffectController, x: healedFor));
             return Task.FromResult(ResolutionInfo.Next);
         }
     }

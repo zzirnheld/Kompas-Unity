@@ -5,13 +5,13 @@ namespace KompasCore.Effects.Restrictions
 {
     public abstract class SpaceRestrictionElement : ContextInitializeableBase, IContextInitializeable
     {
-        public bool IsValidSpace(Space space, ActivationContext context)
+        public bool IsValidSpace(Space space, IResolutionContext context)
         {
             ComplainIfNotInitialized();
             return AbstractIsValidSpace(space, context);
         }
 
-        protected abstract bool AbstractIsValidSpace(Space space, ActivationContext context);
+        protected abstract bool AbstractIsValidSpace(Space space, IResolutionContext context);
     }
 
     namespace SpaceRestrictionElements
@@ -26,7 +26,7 @@ namespace KompasCore.Effects.Restrictions
                 negated.Initialize(initializationContext);
             }
 
-            protected override bool AbstractIsValidSpace(Space space, ActivationContext context)
+            protected override bool AbstractIsValidSpace(Space space, IResolutionContext context)
                 => !negated.IsValidSpace(space, context);
         }
 
@@ -40,13 +40,13 @@ namespace KompasCore.Effects.Restrictions
                 foreach (var r in restrictions) r.Initialize(initializationContext);
             }
 
-            protected override bool AbstractIsValidSpace(Space space, ActivationContext context)
+            protected override bool AbstractIsValidSpace(Space space, IResolutionContext context)
                 => restrictions.Any(r => r.IsValidSpace(space, context));
         }
 
         public class Empty : SpaceRestrictionElement
         {
-            protected override bool AbstractIsValidSpace(Space space, ActivationContext context)
+            protected override bool AbstractIsValidSpace(Space space, IResolutionContext context)
                 => InitializationContext.game.BoardController.IsEmpty(space);
         }
 
@@ -60,7 +60,7 @@ namespace KompasCore.Effects.Restrictions
                 restriction.Initialize(initializationContext);
             }
 
-            protected override bool AbstractIsValidSpace(Space space, ActivationContext context)
+            protected override bool AbstractIsValidSpace(Space space, IResolutionContext context)
             {
                 var card = InitializationContext.game.BoardController.GetCardAt(space);
                 return restriction.IsValidCard(card, context);
@@ -77,7 +77,7 @@ namespace KompasCore.Effects.Restrictions
                 space.Initialize(initializationContext);
             }
 
-            protected override bool AbstractIsValidSpace(Space space, ActivationContext context)
+            protected override bool AbstractIsValidSpace(Space space, IResolutionContext context)
                 => space.SameDiagonal(this.space.From(context, default));
         }
     }

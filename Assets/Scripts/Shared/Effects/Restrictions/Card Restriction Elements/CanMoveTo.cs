@@ -18,7 +18,7 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
             destination?.Initialize(initializationContext);
         }
 
-        protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
+        protected override bool FitsRestrictionLogic(GameCardBase card, IResolutionContext context)
             => card.MovementRestriction.IsValidEffectMove(destination.From(context, default), context);
     }
 }

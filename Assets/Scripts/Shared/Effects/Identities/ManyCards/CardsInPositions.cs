@@ -14,7 +14,7 @@ namespace KompasCore.Effects.Identities.ManyCards
             positions.Initialize(initializationContext);
         }
 
-        protected override IReadOnlyCollection<GameCardBase> AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
+        protected override IReadOnlyCollection<GameCardBase> AbstractItemFrom(IResolutionContext context, IResolutionContext secondaryContext)
         {
             var spaces = positions.From(context, secondaryContext);
             return spaces.Select(InitializationContext.game.BoardController.GetCardAt).Where(s => s != null).ToArray();

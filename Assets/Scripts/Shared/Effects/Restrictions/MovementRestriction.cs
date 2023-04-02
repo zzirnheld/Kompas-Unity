@@ -105,7 +105,7 @@ namespace KompasCore.Effects
             floutedDestinationSpaceRestriction?.Initialize(initializationContext);
         }
 
-        private bool CardAtDestinationCanMoveHere(Space space, ActivationContext context)
+        private bool CardAtDestinationCanMoveHere(Space space, IResolutionContext context)
         {
             var atDest = Card.Game.BoardController.GetCardAt(space);
             if (atDest == null) return true;
@@ -121,7 +121,7 @@ namespace KompasCore.Effects
             return Card.SpacesCanMove >= Card.Game.BoardController.ShortestPath(Card.Position, destination, predicate);
         }
 
-        private bool IsRestrictionValid(string restriction, Space destination, ActivationContext context, bool isSwapTarget) => restriction switch
+        private bool IsRestrictionValid(string restriction, Space destination, IResolutionContext context, bool isSwapTarget) => restriction switch
         {
             Default => true,
 
@@ -175,10 +175,10 @@ namespace KompasCore.Effects
         /// <param name="isSwapTarget">Whether this card is the target of a swap. <br></br>
         /// If this is true, ignores "Destination Can Move Here" restriction, because otherwise you would have infinite recursion.</param>
         /// <returns><see langword="true"/> if the card can move to (x, y); <see langword="false"/> otherwise.</returns>
-        public bool IsValidEffectMove(Space space, ActivationContext context, bool isSwapTarget = false)
+        public bool IsValidEffectMove(Space space, IResolutionContext context, bool isSwapTarget = false)
             => IsValidMove(space, effectRestrictions, context, isSwapTarget, null);
 
-        private bool IsValidMove(Space space, IEnumerable<string> restrictions, ActivationContext context, bool isSwapTarget, IReadOnlyCollection<string> ignoring)
+        private bool IsValidMove(Space space, IEnumerable<string> restrictions, IResolutionContext context, bool isSwapTarget, IReadOnlyCollection<string> ignoring)
         {
             if (!space.IsValid) return false;
 

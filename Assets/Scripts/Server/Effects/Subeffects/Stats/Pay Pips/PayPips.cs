@@ -8,7 +8,7 @@ namespace KompasServer.Effects.Subeffects
     {
         public override bool IsImpossible() => PlayerTarget.Pips < ToPay;
 
-        private int ToPay => pipCost.From(CurrentContext, default);
+        private int ToPay => pipCost.From(ResolutionContext, default);
 
         public IIdentity<int> pipCost = new X();
 

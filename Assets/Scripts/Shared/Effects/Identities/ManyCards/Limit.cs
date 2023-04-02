@@ -17,7 +17,7 @@ namespace KompasCore.Effects.Identities.ManyCards
             cards.Initialize(initializationContext);
         }
 
-        protected override IReadOnlyCollection<GameCardBase> AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
+        protected override IReadOnlyCollection<GameCardBase> AbstractItemFrom(IResolutionContext context, IResolutionContext secondaryContext)
             => CollectionsHelper.Shuffle(cards.From(context, secondaryContext))
                 .Take(limit.From(context, secondaryContext))
                 .ToArray();

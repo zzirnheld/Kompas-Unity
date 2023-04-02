@@ -21,7 +21,7 @@ namespace KompasCore.Effects.Identities.ManySpaces
             secondSpace.Initialize(initializationContext);
         }
 
-        protected override ICollection<Space> AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
+        protected override ICollection<Space> AbstractItemFrom(IResolutionContext context, IResolutionContext secondaryContext)
         {
             Space first = firstSpace.From(context, secondaryContext);
             Space second = secondSpace.From(context, secondaryContext);

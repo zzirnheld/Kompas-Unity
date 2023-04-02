@@ -18,7 +18,7 @@ namespace KompasCore.Effects.Restrictions
                 secondCard.Initialize(initializationContext);
             }
 
-            protected override bool AbstractIsValidContext(ActivationContext context, ActivationContext secondaryContext)
+            protected override bool AbstractIsValidContext(TriggeringEventContext context, IResolutionContext secondaryContext)
             {
                 var first = firstCard.From(context, secondaryContext);
                 var second = secondCard.From(context, secondaryContext);

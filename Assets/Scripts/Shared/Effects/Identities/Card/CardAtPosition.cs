@@ -12,10 +12,10 @@ namespace KompasCore.Effects.Identities.Cards
             position.Initialize(initializationContext);
         }
 
-        protected override GameCardBase AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
+        protected override GameCardBase AbstractItemFrom(IResolutionContext context, IResolutionContext secondaryContext)
         {
             var finalSpace = position.From(context, secondaryContext);
-            return context.game.BoardController.GetCardAt(finalSpace);
+            return context.TriggerContext.game.BoardController.GetCardAt(finalSpace);
         }
     }
 }

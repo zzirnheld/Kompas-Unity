@@ -16,7 +16,7 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
             if (locations == null) throw new System.ArgumentNullException("locations");
         }
 
-        protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
+        protected override bool FitsRestrictionLogic(GameCardBase card, IResolutionContext context)
             => Locations.Any(loc => card.Location == loc);
     }
 }

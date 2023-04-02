@@ -66,14 +66,14 @@ namespace KompasServer.Effects
         /// <param name="stackTrigger">The effect or attack that triggered this, if any.</param>
         /// <param name="x">If the action that triggered this has a value of x, it goes here. Otherwise, null.</param>
         /// <returns>Whether all restrictions of the trigger are fulfilled.</returns>
-        public bool ValidForContext(ActivationContext context) => !Source.Negated && TriggerRestriction.IsValidTriggeringContext(context);
+        public bool ValidForTriggeringContext(TriggeringEventContext context) => !Source.Negated && TriggerRestriction.IsValidTriggeringContext(context);
 
         /// <summary>
         /// Rechecks any trigger restrictions that might have changed between the trigger triggering and being ordered.
         /// </summary>
         /// <param name="context"></param>
         /// <returns></returns>
-        public bool StillValidForContext(ActivationContext context) => TriggerRestriction.IsStillValidTriggeringContext(context);
+        public bool StillValidForContext(TriggeringEventContext context) => TriggerRestriction.IsStillValidTriggeringContext(context);
 
         /// <summary>
         /// Resets Confirmed and Responded, for the next time this effect might be triggered

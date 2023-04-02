@@ -18,7 +18,7 @@ namespace KompasServer.Effects.Subeffects
 
         public override Task<ResolutionInfo> Resolve()
         {
-            var cards = cardsIdentity.From(CurrentContext, CurrentContext);
+            var cards = cardsIdentity.From(ResolutionContext, ResolutionContext);
             if (cards.Count == 0) return Task.FromResult(ResolutionInfo.Impossible(NoValidCardTarget));
 
             var shuffledCards = CollectionsHelper.Shuffle<GameCardBase>(cards);

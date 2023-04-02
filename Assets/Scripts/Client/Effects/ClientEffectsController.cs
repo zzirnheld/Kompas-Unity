@@ -13,7 +13,7 @@ namespace KompasClient.Effects
 
         public IEnumerable<IClientStackable> StackEntries => stack.StackEntries;
 
-        public void Add(IClientStackable stackable, ActivationContext context = default)
+        public void Add(IClientStackable stackable, ResolutionContext context = default)
         {
             stack.Push((stackable, context));
             clientStackPanelCtrl.Add(stackable);

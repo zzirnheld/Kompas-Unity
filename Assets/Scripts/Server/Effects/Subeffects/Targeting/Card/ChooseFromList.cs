@@ -51,7 +51,7 @@ namespace KompasServer.Effects.Subeffects
             return await ServerPlayer.awaiter.GetCardListTargets(name, blurb, targetIds, JsonConvert.SerializeObject(listRestriction));
         }
 
-        protected virtual bool IsValidTarget(GameCard card) => cardRestriction.IsValidCard(card, CurrentContext);
+        protected virtual bool IsValidTarget(GameCard card) => cardRestriction.IsValidCard(card, ResolutionContext);
 
         private IEnumerable<GameCard> GetPossibleTargets()
         {

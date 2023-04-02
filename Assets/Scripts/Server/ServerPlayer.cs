@@ -127,7 +127,8 @@ namespace KompasServer.GameCore
             Debug.Log($"Player {index} trying to activate effect of {effect?.Source?.CardName}");
             if (effect.CanBeActivatedBy(this))
             {
-                game.effectsController.PushToStack(effect, this, new ActivationContext(game: game, stackableEvent: effect));
+                var context = new ResolutionContext(new TriggeringEventContext(game: game, stackableEvent: effect));
+                game.effectsController.PushToStack(effect, this, context);
                 await game.effectsController.CheckForResponse();
             }
         }

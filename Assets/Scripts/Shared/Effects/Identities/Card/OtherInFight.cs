@@ -13,9 +13,9 @@ namespace KompasCore.Effects.Identities.Cards
             other.Initialize(initializationContext);
         }
 
-        protected override GameCardBase AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
+        protected override GameCardBase AbstractItemFrom(IResolutionContext context, IResolutionContext secondaryContext)
         {
-            Attack attack = GetAttack(toConsider(context, secondaryContext));
+            Attack attack = GetAttack(ContextToConsider(context, secondaryContext).TriggerContext);
             var otherCard = other.From(context, secondaryContext);
 
             if (attack.attacker == otherCard) return attack.defender;

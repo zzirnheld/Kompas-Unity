@@ -5,13 +5,20 @@ namespace KompasCore.Effects.Restrictions
 {
     public abstract class TriggerRestrictionElement : ContextInitializeableBase, IContextInitializeable
     {
-        public bool IsValidContext(ActivationContext context, ActivationContext secondaryContext = default)
+        public bool useDummyResolutionContext = true;
+
+        public bool IsValidContext(TriggeringEventContext context, IResolutionContext secondaryContext = default)
         {
             ComplainIfNotInitialized();
             return AbstractIsValidContext(context, secondaryContext);
         }
 
-        protected abstract bool AbstractIsValidContext(ActivationContext context, ActivationContext secondaryContext);
+        protected abstract bool AbstractIsValidContext(TriggeringEventContext context, IResolutionContext secondaryContext);
+
+        protected IResolutionContext ContextToConsider(TriggeringEventContext triggeringContext, IResolutionContext resolutionContext)
+            => useDummyResolutionContext
+                ? IResolutionContext.Dummy(triggeringContext)
+                : resolutionContext;
     }
 
     namespace TriggerRestrictionElements
@@ -26,7 +33,7 @@ namespace KompasCore.Effects.Restrictions
                 inverted.Initialize(initializationContext);
             }
 
-            protected override bool AbstractIsValidContext(ActivationContext context, ActivationContext secondaryContext)
+            protected override bool AbstractIsValidContext(TriggeringEventContext context, IResolutionContext secondaryContext)
                 => !inverted.IsValidContext(context, secondaryContext);
         }
 
@@ -40,13 +47,13 @@ namespace KompasCore.Effects.Restrictions
                 foreach (var r in restrictions) r.Initialize(initializationContext);
             }
 
-            protected override bool AbstractIsValidContext(ActivationContext context, ActivationContext secondaryContext)
+            protected override bool AbstractIsValidContext(TriggeringEventContext context, IResolutionContext secondaryContext)
                 => restrictions.Any(r => r.IsValidContext(context, secondaryContext));
         }
 
         public class ThisCardInPlay : TriggerRestrictionElement
         {
-            protected override bool AbstractIsValidContext(ActivationContext context, ActivationContext secondaryContext)
+            protected override bool AbstractIsValidContext(TriggeringEventContext context, IResolutionContext secondaryContext)
                 => InitializationContext.source.Location == CardLocation.Board;
         }
     }

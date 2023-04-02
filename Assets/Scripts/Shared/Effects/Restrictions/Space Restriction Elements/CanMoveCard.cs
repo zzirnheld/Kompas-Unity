@@ -34,16 +34,16 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
             distanceRestriction?.Initialize(initializationContext);
         }
 
-        private bool FitsMovementRestriction(GameCardBase card, Space space, ActivationContext context)
+        private bool FitsMovementRestriction(GameCardBase card, Space space, IResolutionContext context)
             => normalMove 
                 ? card.MovementRestriction.IsValidNormalMove(space)
                 : card.MovementRestriction.IsValidEffectMove(space, context);
 
-        private bool FitsThroughRestriction(Space source, Space dest, ActivationContext context)
+        private bool FitsThroughRestriction(Space source, Space dest, IResolutionContext context)
             => InitializationContext.game.BoardController.AreConnectedByNumberOfSpacesFittingPredicate(source, dest,
                 s => throughRestriction.IsValidSpace(s, context), distanceRestriction.IsValidNumber);
 
-        protected override bool AbstractIsValidSpace(Space space, ActivationContext context)
+        protected override bool AbstractIsValidSpace(Space space, IResolutionContext context)
         {
             var card = toMove.From(context, default).Card;
             return FitsMovementRestriction(card, space, context) && FitsThroughRestriction(card.Position, space, context);

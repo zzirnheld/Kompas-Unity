@@ -6,7 +6,7 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
     {
         public char cardType;
 
-        protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
+        protected override bool FitsRestrictionLogic(GameCardBase card, IResolutionContext context)
             => card.CardType == cardType;
     }
 

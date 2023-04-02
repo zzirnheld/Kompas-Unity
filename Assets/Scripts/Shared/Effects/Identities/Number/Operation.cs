@@ -16,7 +16,7 @@ namespace KompasCore.Effects.Identities.Numbers
             }
         }
 
-        protected override int AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
+        protected override int AbstractItemFrom(IResolutionContext context, IResolutionContext secondaryContext)
         {
             var numberValues = numbers.Select(n => n.From(context, secondaryContext)).ToArray();
             return operation.Perform(numberValues);

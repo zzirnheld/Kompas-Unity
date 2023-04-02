@@ -21,19 +21,15 @@ namespace KompasServer.Effects.Subeffects.Hanging
 
         protected override IEnumerable<HangingEffect> CreateHangingEffects()
         {
-            Debug.Log($"Is context null? {CurrentContext == null}");
+            Debug.Log($"Is context null? {ResolutionContext == null}");
             Debug.Log($"Are jump indices null? {jumpIndices == null}");
-            ActivationContext contextCopy = CurrentContext.Copy;
-            contextCopy.SetResumeInfo(Effect.CardTargets, Effect.SpaceTargets, Effect.stackableTargets,
-                CardTarget, SpaceTarget, StackableTarget,
-                JumpIndex);
             var delay = new DelayEffect(game: ServerGame,
                                                  triggerRestriction: triggerRestriction,
                                                  endCondition: endCondition,
                                                  fallOffCondition: fallOffCondition,
                                                  fallOffRestriction: CreateFallOffRestriction(Source),
                                                  sourceEff: Effect,
-                                                 currentContext: contextCopy,
+                                                 currentContext: ResolutionContext,
                                                  numTimesToDelay: numTimesToDelay,
                                                  toResume: ServerEffect,
                                                  indexToResumeResolution: JumpIndex,
@@ -55,7 +51,7 @@ namespace KompasServer.Effects.Subeffects.Hanging
             private readonly List<Space> spaces;
 
             public DelayEffect(ServerGame game, TriggerRestriction triggerRestriction, string endCondition,
-                string fallOffCondition, TriggerRestriction fallOffRestriction, Effect sourceEff, ActivationContext currentContext,
+                string fallOffCondition, TriggerRestriction fallOffRestriction, Effect sourceEff, ResolutionContext currentContext,
                 int numTimesToDelay, ServerEffect toResume, int indexToResumeResolution, ServerPlayer controller,
                 IEnumerable<GameCard> targets, IEnumerable<Space> spaces,
                 bool clearIfResolve)
@@ -71,7 +67,7 @@ namespace KompasServer.Effects.Subeffects.Hanging
                 numTimesDelayed = 0;
             }
 
-            public override bool ShouldResolve(ActivationContext context)
+            public override bool ShouldResolve(TriggeringEventContext context)
             {
                 UnityEngine.Debug.Log($"Checking if delayed hanging effect should end for context {context}, {numTimesDelayed}/{numTimesToDelay}");
                 //first check any other logic
@@ -90,10 +86,9 @@ namespace KompasServer.Effects.Subeffects.Hanging
                 }
             }
 
-            public override void Resolve(ActivationContext context)
+            public override void Resolve(TriggeringEventContext context)
             {
-                var myContext = context.Copy;
-                myContext.SetResumeInfo(targets, spaces, default, default, default, default, indexToResumeResolution);
+                var myContext = new ResolutionContext(context, indexToResumeResolution, targets, default, spaces, default, default, default);
                 serverGame.effectsController.PushToStack(toResume, controller, myContext);
             }
         }

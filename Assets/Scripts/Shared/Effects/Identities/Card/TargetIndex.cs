@@ -2,11 +2,11 @@ using KompasCore.Cards;
 
 namespace KompasCore.Effects.Identities.Cards
 {
-    public class TargetIndex : ContextualLeafIdentityBase<GameCardBase>
+    public class TargetIndex : EffectContextualLeafIdentityBase<GameCardBase>
     {
         public int index = -1;
 
-        protected override GameCardBase AbstractItemFrom(ActivationContext contextToConsider)
+        protected override GameCardBase AbstractItemFrom(IResolutionContext contextToConsider)
             => EffectHelpers.GetItem(contextToConsider.CardTargets, index);
     }
 }

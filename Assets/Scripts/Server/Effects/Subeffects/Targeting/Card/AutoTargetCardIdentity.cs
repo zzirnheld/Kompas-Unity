@@ -16,7 +16,7 @@ namespace KompasServer.Effects.Subeffects
 
         public override Task<ResolutionInfo> Resolve()
         {
-            var card = subeffectCardIdentity.From(CurrentContext, default);
+            var card = subeffectCardIdentity.From(ResolutionContext, default);
             if (card == null) return Task.FromResult(ResolutionInfo.Impossible(NoValidCardTarget));
 
             Effect.AddTarget(card.Card);

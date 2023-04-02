@@ -5,14 +5,14 @@ namespace KompasCore.Effects.Restrictions
 {
     public abstract class CardRestrictionElement : ContextInitializeableBase
     {
-        public bool FitsRestriction(GameCardBase card, ActivationContext context)
+        public bool FitsRestriction(GameCardBase card, IResolutionContext context)
         {
             ComplainIfNotInitialized();
 
             return card != null && FitsRestrictionLogic(card, context);
         }
 
-        protected abstract bool FitsRestrictionLogic(GameCardBase card, ActivationContext context);
+        protected abstract bool FitsRestrictionLogic(GameCardBase card, IResolutionContext context);
     }
 
     namespace CardRestrictionElements
@@ -28,25 +28,25 @@ namespace KompasCore.Effects.Restrictions
                 element.Initialize(initializationContext);
             }
 
-            protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
+            protected override bool FitsRestrictionLogic(GameCardBase card, IResolutionContext context)
                 => !element.FitsRestriction(card, context);
         }
 
         public class CardExists : CardRestrictionElement
         {
-            protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
+            protected override bool FitsRestrictionLogic(GameCardBase card, IResolutionContext context)
                 => card != null;
         }
 
         public class Avatar : CardRestrictionElement
         {
-            protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
+            protected override bool FitsRestrictionLogic(GameCardBase card, IResolutionContext context)
                 => card.IsAvatar;
         }
 
         public class Summoned : CardRestrictionElement
         {
-            protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
+            protected override bool FitsRestrictionLogic(GameCardBase card, IResolutionContext context)
                 => card.Summoned;
         }
     }

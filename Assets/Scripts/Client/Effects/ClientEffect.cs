@@ -51,7 +51,7 @@ namespace KompasClient.Effects
         }
 
         //TODO eventually make client aware of activation contexts
-        public void Activated(ActivationContext context = default)
+        public void Activated(ResolutionContext context = default)
         {
             TimesUsedThisTurn++;
             TimesUsedThisRound++;
@@ -61,7 +61,7 @@ namespace KompasClient.Effects
             ClientGame.clientEffectsCtrl.Add(this, context);
         }
 
-        public void StartResolution(ActivationContext context)
+        public void StartResolution(TriggeringEventContext context)
         {
             ClientGame.clientUIController.SetCurrState($"Resolving Effect of {Source.CardName}", $"{blurb}");
             cardTargets.Clear();

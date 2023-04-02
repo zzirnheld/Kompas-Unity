@@ -1,10 +1,122 @@
 ﻿using KompasCore.Cards;
 using KompasCore.GameCore;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace KompasCore.Effects
 {
-    public class ActivationContext
+    public interface IResolutionContext
+    {
+        public static IResolutionContext Dummy(TriggeringEventContext triggeringEventContext)
+            => new DummyResolutionContext(triggeringEventContext);
+
+        /// <summary>
+        /// Information describing the event that triggered this effect to occur, if any such event happened. (If it's player-triggered, this is null.) 
+        /// </summary>
+        public TriggeringEventContext TriggerContext { get; }
+
+        public int StartIndex { get; }
+        public List<GameCard> CardTargets { get; }
+        public GameCard DelayedCardTarget { get; }
+        public List<Space> SpaceTargets { get; }
+        public Space DelayedSpaceTarget { get; }
+        public List<IStackable> StackableTargets { get; }
+        public IStackable DelayedStackableTarget { get; }
+
+
+        /// <summary>
+        /// Used for places that need a resolution context (like triggers calling any other identity), but to enforce never having 
+        /// </summary>
+        private class DummyResolutionContext : IResolutionContext
+        {
+            private const string NotImplementedMessage = "Dummy resolution context should never have resolution information checked. Use the secondary (aka stashed) resolution context instead.";
+            public TriggeringEventContext TriggerContext { get; }
+
+            public int StartIndex => throw new System.NotImplementedException(NotImplementedMessage);
+            public List<GameCard> CardTargets => throw new System.NotImplementedException(NotImplementedMessage);
+            public GameCard DelayedCardTarget => throw new System.NotImplementedException(NotImplementedMessage);
+            public List<Space> SpaceTargets => throw new System.NotImplementedException(NotImplementedMessage);
+            public Space DelayedSpaceTarget => throw new System.NotImplementedException(NotImplementedMessage);
+            public List<IStackable> StackableTargets => throw new System.NotImplementedException(NotImplementedMessage);
+            public IStackable DelayedStackableTarget => throw new System.NotImplementedException(NotImplementedMessage);
+
+            public DummyResolutionContext(TriggeringEventContext triggerContext)
+            {
+                TriggerContext = triggerContext;
+            }
+        }
+    }
+
+    public class ResolutionContext : IResolutionContext
+    {
+        public TriggeringEventContext TriggerContext { get; }
+
+        // Used for resuming delayed effects
+        public int StartIndex { get; }
+        public List<GameCard> CardTargets { get; }
+        public GameCard DelayedCardTarget { get; }
+        public List<Space> SpaceTargets { get; }
+        public Space DelayedSpaceTarget { get; }
+        public List<IStackable> StackableTargets { get; }
+        public IStackable DelayedStackableTarget { get; }
+
+        public int X { get; set; }
+
+        public static ResolutionContext PlayerTrigger => new ResolutionContext(default);
+
+        public ResolutionContext(TriggeringEventContext triggerContext)
+        : this(triggerContext, 0,
+            Enumerable.Empty<GameCard>(), default,
+            Enumerable.Empty<Space>(), default,
+            Enumerable.Empty<IStackable>(), default)
+        { }
+
+        public ResolutionContext(TriggeringEventContext triggerContext,
+            int startIndex,
+            IEnumerable<GameCard> cardTargets, GameCard delayedCardTarget,
+            IEnumerable<Space> spaceTargets, Space delayedSpaceTarget,
+            IEnumerable<IStackable> stackableTargets, IStackable delayedStackableTarget)
+        {
+            TriggerContext = triggerContext;
+            StartIndex = startIndex;
+
+            CardTargets = Clone(cardTargets);
+            DelayedCardTarget = delayedCardTarget;
+
+            SpaceTargets = Clone(spaceTargets);
+            DelayedSpaceTarget = delayedSpaceTarget;
+
+            StackableTargets = Clone(stackableTargets);
+            DelayedStackableTarget = delayedStackableTarget;
+
+            X = TriggerContext.x ?? 0;
+        }
+
+        private List<T> Clone<T>(IEnumerable<T> list)
+        {
+            if (list == null) return new List<T>();
+            else return new List<T>(list);
+        }
+
+        public ResolutionContext Copy => new ResolutionContext(TriggerContext, StartIndex,
+            CardTargets, DelayedCardTarget,
+            SpaceTargets, DelayedSpaceTarget,
+            StackableTargets, DelayedStackableTarget);
+
+        public override string ToString()
+        {
+            var sb = new System.Text.StringBuilder();
+            sb.Append(base.ToString());
+            sb.Append(TriggerContext?.ToString());
+
+            if (CardTargets != null) sb.Append($"Targets: {string.Join(", ", CardTargets)}, ");
+            if (StartIndex != 0) sb.Append($"Starting at {StartIndex}");
+
+            return sb.ToString();
+        }
+    }
+
+    public class TriggeringEventContext
     {
         public readonly Game game;
 
@@ -71,38 +183,9 @@ namespace KompasCore.Effects
         /// </summary>
         public GameCardInfo CauseCardInfoAfter { get; private set; }
 
-        private readonly string asString;
+        private readonly string cachedToString;
 
-        // Used for resuming delayed effects
-        public int StartIndex { get; private set; }
-        public List<GameCard> CardTargets { get; private set; }
-        public GameCard DelayedCardTarget { get; private set; }
-        public List<Space> SpaceTargets { get; private set; }
-        public Space DelayedSpaceTarget { get; private set; }
-        public List<IStackable> StackableTargets { get; private set; }
-        public IStackable DelayedStackableTarget { get; private set; }
-
-        public ActivationContext Copy
-        {
-            get
-            {
-                var copy = new ActivationContext(game: game,
-                    mainCardInfoBefore: mainCardInfoBefore, 
-                    secondaryCardInfoBefore: secondaryCardInfoBefore, 
-                    cardCause: cardCauseBefore, 
-                    stackableCause: stackableCause,
-                    stackableEvent: stackableEvent,
-                    player: player, 
-                    x: x, 
-                    space: space);
-                copy.SetResumeInfo(CardTargets, SpaceTargets, StackableTargets,
-                    DelayedCardTarget, DelayedSpaceTarget, DelayedStackableTarget,
-                    StartIndex);
-                return copy;
-            }
-        }
-
-        private ActivationContext(Game game,
+        private TriggeringEventContext(Game game,
                                   GameCardInfo mainCardInfoBefore,
                                   GameCardInfo secondaryCardInfoBefore,
                                   GameCardInfo cardCause,
@@ -132,13 +215,11 @@ namespace KompasCore.Effects
             if (player != null) sb.Append($"Triggerer: {player.index}, ");
             if (x != null) sb.Append($"X: {x}, ");
             if (space != null) sb.Append($"Space: {space}, ");
-            if (CardTargets != null) sb.Append($"Targets: {string.Join(", ", CardTargets)}, ");
-            if (StartIndex != 0) sb.Append($"Starting at {StartIndex}");
 
-            asString = sb.ToString();
+            cachedToString = sb.ToString();
         }
 
-        public ActivationContext(Game game,
+        public TriggeringEventContext(Game game,
                                  GameCard mainCardBefore = null,
                                  GameCard secondaryCardBefore = null,
                                  GameCard eventCauseOverride = null,
@@ -159,25 +240,6 @@ namespace KompasCore.Effects
                    x: x,
                    space: space?.Copy)
         { }
-
-        /// <summary>
-        /// Set any information relevant to resuming an effect's resolution
-        /// </summary>
-        /// <param name="startIndex">The index at which to start resolving the effect (again)</param>
-        /// <param name="targets">The targets to resume with, if any</param>
-        /// <param name="spaces">The spaces to resume with, if any</param>
-        public void SetResumeInfo(IEnumerable<GameCard> targets, IEnumerable<Space> spaces, IEnumerable<IStackable> stackables,
-            GameCard delayedCardTarget, Space delayedSpaceTarget, IStackable delayedStackableTarget,
-            int? startIndex = null)
-        {
-            CardTargets = targets == null ? new List<GameCard>() : new List<GameCard>(targets);
-            SpaceTargets = spaces == null ? new List<Space>() : new List<Space>(spaces);
-            StackableTargets = stackables == null ? new List<IStackable>() : new List<IStackable>(stackables);
-            DelayedCardTarget = delayedCardTarget;
-            DelayedSpaceTarget = delayedSpaceTarget;
-            DelayedStackableTarget = delayedStackableTarget;
-            if (startIndex.HasValue) StartIndex = startIndex.Value;
-        }
 
         /// <summary>
         /// Caches the state of the card(s) relevant to the effect immediately after the triggering event occurred
@@ -209,9 +271,6 @@ namespace KompasCore.Effects
             }
         }
 
-        public override string ToString()
-        {
-            return asString;
-        }
+        public override string ToString() => cachedToString;
     }
 }

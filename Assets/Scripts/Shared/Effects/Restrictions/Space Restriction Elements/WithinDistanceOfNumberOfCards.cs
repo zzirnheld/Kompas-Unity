@@ -21,7 +21,7 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
             distance.Initialize(initializationContext);
         }
 
-        protected override bool AbstractIsValidSpace(Space space, ActivationContext context)
+        protected override bool AbstractIsValidSpace(Space space, IResolutionContext context)
         {
             return InitializationContext.game.Cards
                 .Where(c => c.DistanceTo(space) < distance.From(context, default))

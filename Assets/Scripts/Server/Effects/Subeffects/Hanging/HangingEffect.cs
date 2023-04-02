@@ -16,11 +16,11 @@ namespace KompasServer.Effects.Subeffects.Hanging
         private bool ended = false;
         private readonly TriggerRestriction triggerRestriction;
         protected readonly ServerGame serverGame;
-        private readonly ActivationContext savedContext;
+        private readonly ResolutionContext savedContext;
 
         public HangingEffect(ServerGame serverGame, TriggerRestriction triggerRestriction, string endCondition,
             string fallOffCondition, TriggerRestriction fallOffRestriction,
-            Effect sourceEff, ActivationContext currentContext, bool removeIfEnd)
+            Effect sourceEff, ResolutionContext currentContext, bool removeIfEnd)
         {
             this.serverGame = serverGame != null ? serverGame : throw new System.ArgumentNullException(nameof(serverGame), "ServerGame in HangingEffect must not be null");
             this.triggerRestriction = triggerRestriction ?? throw new System.ArgumentNullException(nameof(triggerRestriction), "Trigger Restriction in HangingEffect must not be null");
@@ -30,13 +30,13 @@ namespace KompasServer.Effects.Subeffects.Hanging
             this.fallOffRestriction = fallOffRestriction;
 
             this.sourceEff = sourceEff;
-            savedContext = currentContext;
+            savedContext = currentContext.Copy;
             RemoveIfEnd = removeIfEnd;
         }
 
-        public virtual bool ShouldBeCanceled(ActivationContext context) => fallOffRestriction.IsValidTriggeringContext(context);
+        public virtual bool ShouldBeCanceled(TriggeringEventContext context) => fallOffRestriction.IsValidTriggeringContext(context);
 
-        public virtual bool ShouldResolve(ActivationContext context)
+        public virtual bool ShouldResolve(TriggeringEventContext context)
         {
             //if we've already ended this hanging effect, we shouldn't end it again.
             if (ended) return false;
@@ -50,7 +50,7 @@ namespace KompasServer.Effects.Subeffects.Hanging
         /// or maybe resuming a delayed effect.
         /// </summary>
         /// <param name="context">The context in which the effect is being resolved.</param>
-        public abstract void Resolve(ActivationContext context);
+        public abstract void Resolve(TriggeringEventContext context);
 
         public override string ToString()
         {

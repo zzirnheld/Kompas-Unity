@@ -1,10 +1,7 @@
 using KompasCore.Cards;
 using KompasCore.Effects;
 using KompasServer.GameCore;
-using System.Collections;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using UnityEngine;
 
 namespace KompasServer.Effects
 {
@@ -18,7 +15,7 @@ namespace KompasServer.Effects
 
         public GameCard GetCause(GameCardBase withRespectTo) => Source;
 
-        public Task StartResolution(ActivationContext context)
+        public Task StartResolution(ResolutionContext context)
         {
             throw new System.NotImplementedException();
         }

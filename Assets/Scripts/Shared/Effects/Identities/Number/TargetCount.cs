@@ -14,10 +14,10 @@ namespace KompasCore.Effects.Identities.Numbers
             cardRestriction?.Initialize(initializationContext);
         }
 
-        private System.Func<GameCardBase, bool> Selector(ActivationContext context)
-            => card => cardRestriction?.IsValidCard(card, InitializationContext.effect.CurrActivationContext) ?? true;
+        private System.Func<GameCardBase, bool> Selector(IResolutionContext context)
+            => card => cardRestriction?.IsValidCard(card, context) ?? true;
 
-        protected override int AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
-            => InitializationContext.subeffect.Effect.CardTargets.Count(Selector(context));
+        protected override int AbstractItemFrom(IResolutionContext context, IResolutionContext secondaryContext)
+            => InitializationContext.subeffect.Effect.CardTargets.Count(Selector(ContextToConsider(context, secondaryContext)));
     }
 }

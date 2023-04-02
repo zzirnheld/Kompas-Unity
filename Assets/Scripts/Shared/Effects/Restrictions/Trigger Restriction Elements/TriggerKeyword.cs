@@ -18,7 +18,7 @@ namespace KompasCore.Effects.Restrictions
                 triggerRestrictionElements = ServerCardRepository.InstantiateTriggerKeyword(keyword);
             }
 
-            protected override bool AbstractIsValidContext(ActivationContext context, ActivationContext secondaryContext)
+            protected override bool AbstractIsValidContext(TriggeringEventContext context, IResolutionContext secondaryContext)
                 => triggerRestrictionElements.All(tre => tre.IsValidContext(context, secondaryContext));
         }
     }

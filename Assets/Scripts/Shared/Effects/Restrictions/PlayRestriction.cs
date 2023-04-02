@@ -113,7 +113,7 @@ namespace KompasCore.Effects
             return augSubtypes?.All(st => subtypes?.Contains(st) ?? false) ?? true;
         }
 
-        private bool IsRestrictionValid(string r, Space space, Player player, ActivationContext context, bool normal) => r != null && r switch
+        private bool IsRestrictionValid(string r, Space space, Player player, IResolutionContext context, bool normal) => r != null && r switch
         {
             DefaultNormal => true,
             DefaultEffect => true,
@@ -165,13 +165,13 @@ namespace KompasCore.Effects
                     .Except(ignoring ?? new string[0])
                     .All(r => IsRestrictionValid(r, to, player, default, true));
 
-        public bool IsValidEffectPlay(Space to, Effect effect, Player controller, ActivationContext context, string[] ignoring = default)
+        public bool IsValidEffectPlay(Space to, Effect effect, Player controller, IResolutionContext context, string[] ignoring = default)
             => IsValidPlay(to)
                 && effectRestrictions
                     .Except(ignoring ?? new string[0])
                     .All(r => IsRestrictionValid(r, to, controller, context, normal: false));
 
-        public bool IsRecommendedPlay(Space space, Player controller, ActivationContext context, bool normal)
+        public bool IsRecommendedPlay(Space space, Player controller, IResolutionContext context, bool normal)
             => IsValidPlay(space) 
                 && recommendationRestrictions
                     .All(r => IsRestrictionValid(r, space, controller, context: context, normal: normal));

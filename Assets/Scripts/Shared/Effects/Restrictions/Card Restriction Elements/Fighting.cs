@@ -22,7 +22,7 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
                 throw new System.ArgumentException("Can't require a card to be attacking and defending using the same Fighting object");
         }
 
-        private bool IsValidFight(GameCardBase card, ActivationContext context, IStackable stackEntry)
+        private bool IsValidFight(GameCardBase card, IResolutionContext context, IStackable stackEntry)
         {
             if (!(stackEntry is Attack attack)) return false;
 
@@ -45,7 +45,7 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
             return attack.attacker == fightingWhoCard || attack.defender == fightingWhoCard;
         }
 
-        protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
+        protected override bool FitsRestrictionLogic(GameCardBase card, IResolutionContext context)
             => InitializationContext.game.StackEntries.Any(stackEntry => IsValidFight(card, context, stackEntry));
     }
 }

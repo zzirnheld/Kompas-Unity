@@ -13,7 +13,7 @@ namespace KompasCore.Effects.Identities.Cards
             ofThisCard.Initialize(initializationContext);
         }
 
-        protected override GameCardBase AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
+        protected override GameCardBase AbstractItemFrom(IResolutionContext context, IResolutionContext secondaryContext)
             => ofThisCard.From(context, secondaryContext).AugmentedCard;
     }
 }

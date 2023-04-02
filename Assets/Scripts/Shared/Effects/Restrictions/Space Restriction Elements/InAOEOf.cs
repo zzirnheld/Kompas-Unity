@@ -28,7 +28,7 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
             minAnyOfCount.Initialize(initializationContext);
         }
 
-        protected override bool AbstractIsValidSpace(Space space, ActivationContext context)
+        protected override bool AbstractIsValidSpace(Space space, IResolutionContext context)
         {
             if (card != null && !ValidateCard(space, context)) return false;
 
@@ -39,13 +39,13 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
             return true;
         }
 
-        private bool ValidateCard(Space space, ActivationContext context) => card.From(context, default).SpaceInAOE(space);
+        private bool ValidateCard(Space space, IResolutionContext context) => card.From(context, default).SpaceInAOE(space);
 
-        private bool ValidateAnyOf(Space space, ActivationContext context) 
+        private bool ValidateAnyOf(Space space, IResolutionContext context) 
             => minAnyOfCount.From(context, default) <= anyOf.From(context, default)
                                                             .Count(c => c.SpaceInAOE(space));
 
-        private bool ValidateAllOf(Space space, ActivationContext context)
+        private bool ValidateAllOf(Space space, IResolutionContext context)
             => allOf.From(context, default).All(c => c.SpaceInAOE(space));
     }
 }

@@ -10,16 +10,13 @@ namespace KompasServer.Effects.Subeffects.Hanging
     {
         protected override IEnumerable<HangingEffect> CreateHangingEffects()
         {
-            var contextCopy = CurrentContext.Copy;
-            contextCopy.SetResumeInfo(Effect.CardTargets, Effect.SpaceTargets, Effect.stackableTargets,
-                CardTarget, SpaceTarget, StackableTarget);
             var eff = new DiscardEffect(serverGame: ServerGame,
                                                triggerRestriction: triggerRestriction,
                                                endCondition: endCondition,
                                                fallOffCondition: fallOffCondition,
                                                sourceEff: Effect,
                                                fallOffRestriction: CreateFallOffRestriction(CardTarget),
-                                               currentContext: contextCopy,
+                                               resolutionContext: ResolutionContext,
                                                target: CardTarget);
             return new List<HangingEffect>() { eff };
         }
@@ -33,13 +30,13 @@ namespace KompasServer.Effects.Subeffects.Hanging
 
             public DiscardEffect(ServerGame serverGame, TriggerRestriction triggerRestriction, string endCondition,
                 string fallOffCondition, TriggerRestriction fallOffRestriction,
-                Effect sourceEff, ActivationContext currentContext, GameCard target)
-                : base(serverGame, triggerRestriction, endCondition, fallOffCondition, fallOffRestriction, sourceEff, currentContext, removeIfEnd: false)
+                Effect sourceEff, ResolutionContext resolutionContext, GameCard target)
+                : base(serverGame, triggerRestriction, endCondition, fallOffCondition, fallOffRestriction, sourceEff, resolutionContext, removeIfEnd: false)
             {
                 this.target = target;
             }
 
-            public override void Resolve(ActivationContext context)
+            public override void Resolve(TriggeringEventContext context)
                 => target.Discard(sourceEff);
         }
     }

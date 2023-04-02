@@ -5,20 +5,20 @@ namespace KompasCore.Effects
 {
     public class EffectStack<StackableType>
     {
-        private readonly List<(StackableType stackable, ActivationContext context)> stack
-            = new List<(StackableType stackable, ActivationContext)>();
+        private readonly List<(StackableType stackable, ResolutionContext context)> stack
+            = new List<(StackableType stackable, ResolutionContext context)>();
 
         public IEnumerable<StackableType> StackEntries => stack.Select(entry => entry.stackable);
 
         public bool Empty => stack.Count == 0;
         public int Count => stack.Count;
 
-        public void Push((StackableType, ActivationContext) entry)
+        public void Push((StackableType, ResolutionContext) entry)
         {
             stack.Add(entry);
         }
 
-        public (StackableType, ActivationContext) Pop()
+        public (StackableType, ResolutionContext) Pop()
         {
             if (stack.Count == 0) return (default, default);
 

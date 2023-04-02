@@ -25,7 +25,7 @@ namespace KompasServer.Effects.Subeffects
         public IIdentity<int> spacesMoved;
         public IIdentity<int> duration;
 
-        protected IEnumerable<GameCard> cardsToAffect => cards.From(CurrentContext, default).Select(c => c.Card);
+        protected IEnumerable<GameCard> cardsToAffect => cards.From(ResolutionContext, default).Select(c => c.Card);
 
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {

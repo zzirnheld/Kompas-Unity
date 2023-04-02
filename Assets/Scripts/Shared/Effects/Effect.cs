@@ -26,10 +26,10 @@ namespace KompasCore.Effects
         public int SubeffectIndex { get; protected set; }
 
         //Targets
-        protected readonly List<GameCard> cardTargets = new List<GameCard>();
-        protected readonly List<Space> spaceTargets = new List<Space>();
-        public IEnumerable<GameCard> CardTargets => cardTargets;
-        public IEnumerable<Space> SpaceTargets => spaceTargets;
+        protected List<GameCard> cardTargets => ResolutionContext.CardTargets;
+        protected List<Space> spaceTargets => ResolutionContext.SpaceTargets;
+        public IList<GameCard> CardTargets => cardTargets;
+        public IList<Space> SpaceTargets => spaceTargets;
 
         protected readonly List<CardLink> cardLinks = new List<CardLink>();
 
@@ -42,7 +42,11 @@ namespace KompasCore.Effects
         /// <summary>
         /// X value for card effect text (not coordinates)
         /// </summary>
-        public int X = 0;
+        public int X
+        {
+            get => ResolutionContext.X;
+            set => ResolutionContext.X = value;
+        }
 
         //Triggering and Activating
         public abstract Trigger Trigger { get; }
@@ -53,7 +57,8 @@ namespace KompasCore.Effects
         public string blurb;
         public int arg; //used for keyword arguments, and such
 
-        public ActivationContext CurrActivationContext { get; protected set; }
+        public ResolutionContext ResolutionContext { get; protected set; }
+        public TriggeringEventContext CurrTriggerContext => ResolutionContext.TriggerContext;
         public int TimesUsedThisTurn { get; protected set; }
         public int TimesUsedThisRound { get; protected set; }
         public int TimesUsedThisStack { get; set; }
@@ -100,7 +105,9 @@ namespace KompasCore.Effects
         public Player GetPlayer(int num) => EffectHelpers.GetItem(playerTargets, num);
 
 
-        public virtual void AddTarget(GameCard card) => cardTargets.Add(card);
+        public virtual void AddTarget(GameCard card) {
+            cardTargets.Add(card);
+        }
         public virtual void RemoveTarget(GameCard card) => cardTargets.Remove(card);
 
         public void AddSpace(Space space) => spaceTargets.Add(space.Copy);

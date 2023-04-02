@@ -15,6 +15,6 @@ namespace KompasServer.Effects.Subeffects
             numberIdentity.Initialize(initializationContext: DefaultInitializationContext);
         }
 
-        public override int BaseCount => numberIdentity.From(CurrentContext, CurrentContext);
+        public override int BaseCount => numberIdentity.From(ResolutionContext, ResolutionContext);
     }
 }

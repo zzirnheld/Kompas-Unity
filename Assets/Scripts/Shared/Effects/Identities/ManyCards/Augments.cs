@@ -14,7 +14,7 @@ namespace KompasCore.Effects.Identities.ManyCards
             card.Initialize(initializationContext);
         }
 
-        protected override IReadOnlyCollection<GameCardBase> AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
+        protected override IReadOnlyCollection<GameCardBase> AbstractItemFrom(IResolutionContext context, IResolutionContext secondaryContext)
             => card.From(context, secondaryContext).Augments;
     }
 }

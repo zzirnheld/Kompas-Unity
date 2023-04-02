@@ -17,7 +17,7 @@ namespace KompasServer.Effects.Subeffects
         public override bool AddTargetIfLegal(GameCard card)
         {
             //evaluate the target. if it's valid, confirm it as the target (that's what the true is for)
-            if (cardRestriction.IsValidCard(card, CurrentContext))
+            if (cardRestriction.IsValidCard(card, ResolutionContext))
             {
                 card.Controller.deckCtrl.Shuffle();
                 ServerEffect.AddTarget(card);
@@ -43,12 +43,12 @@ namespace KompasServer.Effects.Subeffects
         }
 
         protected override IEnumerable<GameCard> TargetCardsSource
-            => Controller.deckCtrl.Cards.Take(numberOfTopCards.From(CurrentContext, default));
+            => Controller.deckCtrl.Cards.Take(numberOfTopCards.From(ResolutionContext, default));
 
         public override bool AddTargetIfLegal(GameCard card)
         {
             //evaluate the target. if it's valid, confirm it as the target (that's what the true is for)
-            if (cardRestriction.IsValidCard(card, CurrentContext))
+            if (cardRestriction.IsValidCard(card, ResolutionContext))
             {
                 DeckController.BottomdeckMany(TargetCardsSource.Where(c => c != card));
                 ServerEffect.AddTarget(card);

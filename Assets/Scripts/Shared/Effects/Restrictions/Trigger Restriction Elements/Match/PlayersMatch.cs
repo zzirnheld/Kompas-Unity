@@ -17,7 +17,7 @@ namespace KompasCore.Effects.Restrictions
                 secondPlayer.Initialize(initializationContext);
             }
 
-            protected override bool AbstractIsValidContext(ActivationContext context, ActivationContext secondaryContext)
+            protected override bool AbstractIsValidContext(TriggeringEventContext context, IResolutionContext secondaryContext)
                 => firstPlayer.From(context, secondaryContext) == secondPlayer.From(context, secondaryContext);
         }
     }

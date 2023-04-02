@@ -38,14 +38,14 @@ namespace KompasServer.Effects.Subeffects
             {
                 return condition switch
                 {
-                    CardFitsRestriction => Game.Cards.Any(c => cardRestriction.IsValidCard(c, CurrentContext)),
-                    NoCardFitsRestriction => !Game.Cards.Any(c => cardRestriction.IsValidCard(c, CurrentContext)),
+                    CardFitsRestriction => Game.Cards.Any(c => cardRestriction.IsValidCard(c, ResolutionContext)),
+                    NoCardFitsRestriction => !Game.Cards.Any(c => cardRestriction.IsValidCard(c, ResolutionContext)),
 
-                    TargetFitsRestriction => cardRestriction.IsValidCard(CardTarget, CurrentContext),
-                    TargetViolatesRestriction => !cardRestriction.IsValidCard(CardTarget, CurrentContext),
+                    TargetFitsRestriction => cardRestriction.IsValidCard(CardTarget, ResolutionContext),
+                    TargetViolatesRestriction => !cardRestriction.IsValidCard(CardTarget, ResolutionContext),
 
-                    MainTriggeringCardFitRestrictionBefore => cardRestriction.IsValidCard(CurrentContext.mainCardInfoBefore, CurrentContext),
-                    MainTriggeringCardFloutedRestrictionBefore => !cardRestriction.IsValidCard(CurrentContext.mainCardInfoBefore, CurrentContext),
+                    MainTriggeringCardFitRestrictionBefore => cardRestriction.IsValidCard(ResolutionContext.TriggerContext.mainCardInfoBefore, ResolutionContext),
+                    MainTriggeringCardFloutedRestrictionBefore => !cardRestriction.IsValidCard(ResolutionContext.TriggerContext.mainCardInfoBefore, ResolutionContext),
 
                     XGreaterEqualConstant => Effect.X >= constant,
                     XFitsRestriction => xRestriction.IsValidNumber(Effect.X),

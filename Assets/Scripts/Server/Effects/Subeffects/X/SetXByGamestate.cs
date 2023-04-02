@@ -42,16 +42,16 @@ namespace KompasServer.Effects.Subeffects
                 {
                     HandSize => PlayerTarget.handCtrl.HandSize,
                     HandSizeLimit => PlayerTarget.HandSizeLimit,
-                    DistanceToCoordsThrough => Game.BoardController.ShortestPath(Source, SpaceTarget, throughRestriction, CurrentContext),
+                    DistanceToCoordsThrough => Game.BoardController.ShortestPath(Source, SpaceTarget, throughRestriction, ResolutionContext),
                     DistanceBetweenTargetAndCoords => CardTarget.DistanceTo(SpaceTarget),
                     DistanceFromSourceToTarget => Source.DistanceTo(CardTarget),
 
                     CardsFittingRestriction
-                        => Game.Cards.Where(c => cardRestriction.IsValidCard(c, CurrentContext)).Count(),
+                        => Game.Cards.Where(c => cardRestriction.IsValidCard(c, ResolutionContext)).Count(),
                     TotalCardValueOfCardsFittingRestriction
-                        => Game.Cards.Where(c => cardRestriction.IsValidCard(c, CurrentContext)).Sum(cardValue.GetValueOf),
+                        => Game.Cards.Where(c => cardRestriction.IsValidCard(c, ResolutionContext)).Sum(cardValue.GetValueOf),
                     MaxCardValueOfCardsFittingRestriction
-                        => Game.Cards.Where(c => cardRestriction.IsValidCard(c, CurrentContext)).Max(cardValue.GetValueOf),
+                        => Game.Cards.Where(c => cardRestriction.IsValidCard(c, ResolutionContext)).Max(cardValue.GetValueOf),
 
                     EffectUsesThisTurn => Effect.TimesUsedThisTurn,
                     NumberOfTargets => Effect.CardTargets.Count(),

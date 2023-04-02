@@ -117,7 +117,7 @@ namespace KompasServer.Effects
 
         public void PushedToStack(ServerGame game, ServerPlayer ctrl)
         {
-            ActivationContext context = new ActivationContext(game: game, stackableCause: this, stackableEvent: this);
+            TriggeringEventContext context = new TriggeringEventContext(game: game, stackableCause: this, stackableEvent: this);
             EffectsController.TriggerForCondition(Trigger.EffectPushedToStack, context);
             TimesUsedThisRound++;
             TimesUsedThisTurn++;
@@ -128,25 +128,18 @@ namespace KompasServer.Effects
         }
 
         #region resolution
-        public async Task StartResolution(ActivationContext context)
+        public async Task StartResolution(ResolutionContext context)
         {
             Debug.Log($"Resolving effect {EffectIndex} of {Source.CardName} in context {context}");
             serverGame.CurrEffect = this;
 
             //set context parameters
-            CurrActivationContext = context;
-            X = context.x ?? 0;
-
-            cardTargets.Clear();
-            spaceTargets.Clear();
-            playerTargets.Clear();
-            stackableTargets.Clear();
-
-            //Add the targets one by one so the client knows that they're current targets
-            if (context.CardTargets != null) context.CardTargets.ForEach(AddTarget);
-            if (context.SpaceTargets != null) context.SpaceTargets.ForEach(AddSpace);
+            ResolutionContext = context;
+            //Notify the targets one by one so the client knows that they're current targets
+            if (context.CardTargets != null) context.CardTargets.ForEach(NotifyAddCardTarget);
+            
             playerTargets.Add(Controller);
-            if (context.stackableCause != null) stackableTargets.Add(context.stackableCause);
+            if (context.TriggerContext.stackableCause != null) stackableTargets.Add(context.TriggerContext.stackableCause);
 
             //notify relevant to this effect starting
             ServerController.notifier.NotifyEffectX(Source, EffectIndex, X);
@@ -256,8 +249,10 @@ namespace KompasServer.Effects
         public override void AddTarget(GameCard card)
         {
             base.AddTarget(card);
-            serverGame.ServerControllerOf(card).notifier.SetTarget(Source, EffectIndex, card);
+            NotifyAddCardTarget(card);
         }
+
+        private void NotifyAddCardTarget(GameCard card) => serverGame.ServerControllerOf(card).notifier.SetTarget(Source, EffectIndex, card);
 
         public override void RemoveTarget(GameCard card)
         {

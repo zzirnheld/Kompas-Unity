@@ -1,8 +1,8 @@
 namespace KompasCore.Effects.Identities.Spaces
 {
-    public class ContextSpace : ContextualLeafIdentityBase<Space>
+    public class ContextSpace : TriggerContextualLeafIdentityBase<Space>
     {
-        protected override Space AbstractItemFrom(ActivationContext context)
+        protected override Space AbstractItemFrom(TriggeringEventContext context)
             => context.space;
     }
 }

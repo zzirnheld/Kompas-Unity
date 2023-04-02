@@ -14,9 +14,9 @@ namespace KompasServer.Effects
         private struct TriggersTriggered
         {
             public IEnumerable<ServerTrigger> triggers;
-            public ActivationContext context;
+            public TriggeringEventContext context;
 
-            public TriggersTriggered(IEnumerable<ServerTrigger> triggers, ActivationContext context)
+            public TriggersTriggered(IEnumerable<ServerTrigger> triggers, TriggeringEventContext context)
             {
                 this.triggers = triggers;
                 this.context = context;
@@ -92,19 +92,22 @@ namespace KompasServer.Effects
         }
 
         #region the stack
-        public void PushToStack(IServerStackable eff, ActivationContext context)
+        public void PushToStack(IServerStackable eff, TriggeringEventContext context)
+            => PushToStack(eff, new ResolutionContext(context));
+
+        public void PushToStack(IServerStackable eff, ResolutionContext context)
         {
             ResetPassingPriority();
             stack.Push((eff, context));
         }
 
-        public void PushToStack(ServerEffect eff, ServerPlayer controller, ActivationContext context)
+        public void PushToStack(ServerEffect eff, ServerPlayer controller, ResolutionContext context)
         {
             eff.PushedToStack(ServerGame, controller);
             PushToStack(eff as IServerStackable, context);
         }
 
-        public void PushToStack(ServerEffect eff, ActivationContext context) => PushToStack(eff, eff.ServerController, context);
+        public void PushToStack(ServerEffect eff, ResolutionContext context) => PushToStack(eff, eff.ServerController, context);
 
         private async Task StackEmptied()
         {
@@ -113,7 +116,7 @@ namespace KompasServer.Effects
             foreach (var c in ServerGame.Cards) c.ResetForStack();
             ServerGame.serverBoardController.ClearSpells();
             ServerGame.serverPlayers.First().notifier.StackEmpty();
-            TriggerForCondition(Trigger.StackEnd, new ActivationContext(game: ServerGame));
+            TriggerForCondition(Trigger.StackEnd, new TriggeringEventContext(game: ServerGame));
             //Must check whether I *should* check for response to avoid an infinite loop
             if (!stack.Empty || triggeredTriggers.Any()) await CheckForResponse();
         }
@@ -306,7 +309,7 @@ namespace KompasServer.Effects
             }
         }
 
-        private void ResolveHangingEffects(string condition, ActivationContext context)
+        private void ResolveHangingEffects(string condition, TriggeringEventContext context)
         {
             if (hangingEffectMap.ContainsKey(condition))
             {
@@ -329,12 +332,12 @@ namespace KompasServer.Effects
             }
         }
 
-        public void TriggerForCondition(string condition, params ActivationContext[] contexts)
+        public void TriggerForCondition(string condition, params TriggeringEventContext[] contexts)
         {
             foreach (var c in contexts) TriggerForCondition(condition, c);
         }
 
-        public void TriggerForCondition(string condition, ActivationContext context)
+        public void TriggerForCondition(string condition, TriggeringEventContext context)
         {
             if (!ServerGame.GameHasStarted) return;
 
@@ -347,7 +350,7 @@ namespace KompasServer.Effects
                 /* Needs to be toArray()ed because cards might move out of correct state after this moment.
                  * Later, when triggers are being ordered, stuff like 1/turn will be rechecked. */
                 var validTriggers = triggerMap[condition]
-                    .Where(t => t.ValidForContext(context))
+                    .Where(t => t.ValidForTriggeringContext(context))
                     .ToArray();
                 if (!validTriggers.Any()) return;
                 var triggers = new TriggersTriggered(triggers: validTriggers, context: context);

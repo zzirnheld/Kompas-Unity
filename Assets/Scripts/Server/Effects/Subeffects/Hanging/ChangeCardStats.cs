@@ -49,10 +49,7 @@ namespace KompasServer.Effects.Subeffects.Hanging
             else if (forbidNotBoard && CardTarget.Location != CardLocation.Board)
                 throw new InvalidLocationException(CardTarget.Location, CardTarget, ChangedStatsOfCardOffBoard);
 
-            Debug.Log($"Creating temp NESW buff effect during context {CurrentContext}");
-            var contextCopy = CurrentContext.Copy;
-            contextCopy.SetResumeInfo(Effect.CardTargets, Effect.SpaceTargets, Effect.stackableTargets,
-                CardTarget, SpaceTarget, StackableTarget);
+            Debug.Log($"Creating temp NESW buff effect during context {ResolutionContext}");
 
             var temp = new ChangeCardStatsEffect(game: ServerGame,
                                              triggerRestriction: triggerRestriction,
@@ -60,7 +57,7 @@ namespace KompasServer.Effects.Subeffects.Hanging
                                              fallOffCondition: fallOffCondition,
                                              fallOffRestriction: CreateFallOffRestriction(CardTarget),
                                              sourceEff: Effect,
-                                             currentContext: contextCopy,
+                                             currentContext: ResolutionContext,
                                              buffRecipient: CardTarget,
                                              buff: Buff);
 
@@ -74,7 +71,7 @@ namespace KompasServer.Effects.Subeffects.Hanging
 
             public ChangeCardStatsEffect(ServerGame game, TriggerRestriction triggerRestriction, string endCondition,
                 string fallOffCondition, TriggerRestriction fallOffRestriction, Effect sourceEff,
-                ActivationContext currentContext, GameCard buffRecipient, CardStats buff)
+                ResolutionContext currentContext, GameCard buffRecipient, CardStats buff)
                 : base(game, triggerRestriction, endCondition, fallOffCondition, fallOffRestriction, sourceEff, currentContext, removeIfEnd: true)
             {
                 this.buffRecipient = buffRecipient ?? throw new System.ArgumentNullException(nameof(buffRecipient), "Null characcter card in temporary nesw buff");
@@ -83,7 +80,7 @@ namespace KompasServer.Effects.Subeffects.Hanging
                 buffRecipient.AddToStats(buff, stackSrc: sourceEff);
             }
 
-            public override void Resolve(ActivationContext context)
+            public override void Resolve(TriggeringEventContext context)
             {
                 try
                 {

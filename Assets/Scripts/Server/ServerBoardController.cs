@@ -20,7 +20,7 @@ namespace KompasServer.GameCore
 
         public override void Play(GameCard toPlay, Space to, Player controller, IStackable stackSrc = null)
         {
-            var context = new ActivationContext(game: ServerGame, mainCardBefore: toPlay, stackableCause: stackSrc, player: controller, space: to);
+            var context = new TriggeringEventContext(game: ServerGame, mainCardBefore: toPlay, stackableCause: stackSrc, player: controller, space: to);
             bool wasKnown = toPlay.KnownToEnemy;
             base.Play(toPlay, to, controller);
             context.CacheCardInfoAfter();
@@ -29,39 +29,39 @@ namespace KompasServer.GameCore
             if (!toPlay.IsAvatar) ServerNotifierByIndex(toPlay.ControllerIndex).NotifyPlay(toPlay, to, wasKnown);
         }
 
-        private (IEnumerable<ActivationContext> moveContexts, IEnumerable<ActivationContext> leaveContexts)
+        private (IEnumerable<TriggeringEventContext> moveContexts, IEnumerable<TriggeringEventContext> leaveContexts)
             GetContextsForMove(GameCard card, Space from, Space to, Player player, IStackable stackSrc)
         {
             int distance = from.DistanceTo(to);
 
-            var moveContexts = new List<ActivationContext>();
-            var leaveContexts = new List<ActivationContext>();
+            var moveContexts = new List<TriggeringEventContext>();
+            var leaveContexts = new List<TriggeringEventContext>();
             //Cards that from card is no longer in the AOE of
             var cardsMoverLeft = CardsAndAugsWhere(c => c != null && c.CardInAOE(card) && !c.SpaceInAOE(to));
             //Cards that from card no longer has in its aoe
             var cardsMoverLeftBehind = CardsAndAugsWhere(c => c != null && card.CardInAOE(c) && !card.CardInAOE(c, to));
 
             //Add contexts for 
-            moveContexts.Add(new ActivationContext(game: ServerGame, mainCardBefore: card, stackableCause: stackSrc, space: to,
+            moveContexts.Add(new TriggeringEventContext(game: ServerGame, mainCardBefore: card, stackableCause: stackSrc, space: to,
                 player: player, x: distance));
             //Cards that from card is no longer in the AOE of
             leaveContexts.AddRange(cardsMoverLeft.Select(c =>
-                new ActivationContext(game: ServerGame, mainCardBefore: card, secondaryCardBefore: c, stackableCause: stackSrc, player: player)));
+                new TriggeringEventContext(game: ServerGame, mainCardBefore: card, secondaryCardBefore: c, stackableCause: stackSrc, player: player)));
             //Cards that from card no longer has in its aoe
             leaveContexts.AddRange(cardsMoverLeftBehind.Select(c =>
-                new ActivationContext(game: ServerGame, mainCardBefore: c, secondaryCardBefore: card, stackableCause: stackSrc, player: player)));
+                new TriggeringEventContext(game: ServerGame, mainCardBefore: c, secondaryCardBefore: card, stackableCause: stackSrc, player: player)));
             //trigger for first card's augments
             foreach (var aug in card.Augments)
             {
                 //Add contexts for 
-                moveContexts.Add(new ActivationContext(game: ServerGame, mainCardBefore: aug, stackableCause: stackSrc, space: to,
+                moveContexts.Add(new TriggeringEventContext(game: ServerGame, mainCardBefore: aug, stackableCause: stackSrc, space: to,
                     player: player, x: distance));
                 //Cards that from aug is no longer in the AOE of
                 leaveContexts.AddRange(cardsMoverLeft.Select(c =>
-                    new ActivationContext(game: ServerGame, mainCardBefore: aug, secondaryCardBefore: c, stackableCause: stackSrc, player: player)));
+                    new TriggeringEventContext(game: ServerGame, mainCardBefore: aug, secondaryCardBefore: c, stackableCause: stackSrc, player: player)));
                 //Cards that from aug no longer has in its aoe
                 leaveContexts.AddRange(cardsMoverLeftBehind.Select(c =>
-                    new ActivationContext(game: ServerGame, mainCardBefore: c, secondaryCardBefore: aug, stackableCause: stackSrc, player: player)));
+                    new TriggeringEventContext(game: ServerGame, mainCardBefore: c, secondaryCardBefore: aug, stackableCause: stackSrc, player: player)));
             }
             return (moveContexts, leaveContexts);
         }
@@ -74,8 +74,8 @@ namespace KompasServer.GameCore
             var player = playerInitiated ? card.Controller : stackSrc?.Controller;
 
             //then trigger appropriate triggers. list of contexts:
-            var moveContexts = new List<ActivationContext>();
-            var leaveContexts = new List<ActivationContext>();
+            var moveContexts = new List<TriggeringEventContext>();
+            var leaveContexts = new List<TriggeringEventContext>();
 
             if (from != null)
             {
@@ -124,7 +124,7 @@ namespace KompasServer.GameCore
                         case CardBase.VanishingSubtype:
                             if (c.TurnsOnBoard >= c.Duration)
                             {
-                                ActivationContext context = new ActivationContext(game: ServerGame, mainCardBefore: c);
+                                TriggeringEventContext context = new TriggeringEventContext(game: ServerGame, mainCardBefore: c);
                                 c.Discard();
                                 context.CacheCardInfoAfter();
                                 EffectsController.TriggerForCondition(Trigger.Vanish, context);

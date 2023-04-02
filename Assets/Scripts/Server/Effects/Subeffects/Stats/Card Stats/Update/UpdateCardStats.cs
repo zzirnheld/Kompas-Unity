@@ -18,17 +18,17 @@ namespace KompasServer.Effects.Subeffects
 
         public override Task<ResolutionInfo> Resolve()
         {
-            int nChange = n.From(CurrentContext, default);
-            int eChange = e.From(CurrentContext, default);
-            int sChange = s.From(CurrentContext, default);
-            int wChange = w.From(CurrentContext, default);
-            int cChange = c.From(CurrentContext, default);
-            int aChange = a.From(CurrentContext, default);
+            int nChange = n.From(ResolutionContext, default);
+            int eChange = e.From(ResolutionContext, default);
+            int sChange = s.From(ResolutionContext, default);
+            int wChange = w.From(ResolutionContext, default);
+            int cChange = c.From(ResolutionContext, default);
+            int aChange = a.From(ResolutionContext, default);
 
-            int? turnsOnBoardChange     = turnsOnBoard?.From(CurrentContext, default);
-            int? attacksThisTurnChange  = attacksThisTurn?.From(CurrentContext, default);
-            int? spacesMovedChange      = spacesMoved?.From(CurrentContext, default);
-            int? durationChange         = duration?.From(CurrentContext, default);
+            int? turnsOnBoardChange     = turnsOnBoard?.From(ResolutionContext, default);
+            int? attacksThisTurnChange  = attacksThisTurn?.From(ResolutionContext, default);
+            int? spacesMovedChange      = spacesMoved?.From(ResolutionContext, default);
+            int? durationChange         = duration?.From(ResolutionContext, default);
 
             foreach (var card in cardsToAffect)
             {

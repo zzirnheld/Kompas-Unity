@@ -18,7 +18,7 @@ namespace KompasCore.Effects.Identities.Numbers
             cardRestriction.Initialize(initializationContext);
         }
 
-        protected override int AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
+        protected override int AbstractItemFrom(IResolutionContext context, IResolutionContext secondaryContext)
             => cards.From(context, secondaryContext).Count(c => cardRestriction.IsValidCard(c, default));
     }
 }

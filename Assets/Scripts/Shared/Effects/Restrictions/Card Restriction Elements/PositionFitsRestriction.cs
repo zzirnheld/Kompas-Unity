@@ -13,7 +13,7 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
             spaceRestriction.Initialize(initializationContext);
         }
 
-        protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
+        protected override bool FitsRestrictionLogic(GameCardBase card, IResolutionContext context)
             => spaceRestriction.IsValidSpace(card.Position, context);
     }
 
@@ -33,7 +33,7 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
             base.Initialize(initializationContext);
         }
 
-        protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
+        protected override bool FitsRestrictionLogic(GameCardBase card, IResolutionContext context)
             => adjacentTo.From(context, default).IsAdjacentTo(card);
     }
 }

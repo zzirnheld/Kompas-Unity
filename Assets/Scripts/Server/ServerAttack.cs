@@ -32,9 +32,9 @@ namespace KompasServer.Effects
         {
             ServerController.notifier.NotifyAttackStarted(attacker, defender, controller);
 
-            var attackerContext = new ActivationContext(game: ServerGame, mainCardBefore: attacker, secondaryCardBefore: defender, 
+            var attackerContext = new TriggeringEventContext(game: ServerGame, mainCardBefore: attacker, secondaryCardBefore: defender, 
                 stackableCause: stackSrc, stackableEvent: this, eventCauseOverride: attacker, player: Controller);
-            var defenderContext = new ActivationContext(game: ServerGame, mainCardBefore: defender, secondaryCardBefore: attacker, 
+            var defenderContext = new TriggeringEventContext(game: ServerGame, mainCardBefore: defender, secondaryCardBefore: attacker, 
                 stackableCause: stackSrc, stackableEvent: this, eventCauseOverride: attacker, player: Controller);
             attackerContext.CacheCardInfoAfter();
             defenderContext.CacheCardInfoAfter();
@@ -52,11 +52,11 @@ namespace KompasServer.Effects
                 && defender.Position == defenderInitialSpace;
         }
 
-        public Task StartResolution(ActivationContext context)
+        public Task StartResolution(ResolutionContext context)
         {
-            var attackerContext = new ActivationContext(game: ServerGame, mainCardBefore: attacker, secondaryCardBefore: defender, 
+            var attackerContext = new TriggeringEventContext(game: ServerGame, mainCardBefore: attacker, secondaryCardBefore: defender, 
                 stackableCause: this, stackableEvent: this, eventCauseOverride: attacker, player: Controller);
-            var defenderContext = new ActivationContext(game: ServerGame, mainCardBefore: defender, secondaryCardBefore: attacker, 
+            var defenderContext = new TriggeringEventContext(game: ServerGame, mainCardBefore: defender, secondaryCardBefore: attacker, 
                 stackableCause: this, stackableEvent: this, eventCauseOverride: attacker, player: Controller);
             if (StillValidAttack)
             {
@@ -75,13 +75,13 @@ namespace KompasServer.Effects
             //get damage from both, before either takes any damage, in case effects matter on hp
             int attackerDmg = attacker.CombatDamage;
             int defenderDmg = defender.CombatDamage;
-            var attackerDealContext = new ActivationContext(game: ServerGame, mainCardBefore: attacker, secondaryCardBefore: defender,
+            var attackerDealContext = new TriggeringEventContext(game: ServerGame, mainCardBefore: attacker, secondaryCardBefore: defender,
                 stackableCause: this, stackableEvent: this, player: Controller, x: attackerDmg);
-            var defenderDealContext = new ActivationContext(game: ServerGame, mainCardBefore: defender, secondaryCardBefore: attacker,
+            var defenderDealContext = new TriggeringEventContext(game: ServerGame, mainCardBefore: defender, secondaryCardBefore: attacker,
                 stackableCause: this, stackableEvent: this, player: Controller, x: defenderDmg);
-            var attackerTakeContext = new ActivationContext(game: ServerGame, mainCardBefore: attacker, secondaryCardBefore: defender,
+            var attackerTakeContext = new TriggeringEventContext(game: ServerGame, mainCardBefore: attacker, secondaryCardBefore: defender,
                 stackableCause: this, stackableEvent: this, player: Controller, x: defenderDmg);
-            var defenderTakeContext = new ActivationContext(game: ServerGame, mainCardBefore: defender, secondaryCardBefore: attacker,
+            var defenderTakeContext = new TriggeringEventContext(game: ServerGame, mainCardBefore: defender, secondaryCardBefore: attacker,
                 stackableCause: this, stackableEvent: this, player: Controller, x: attackerDmg);
             //deal the damage
             defender.TakeDamage(attackerDmg, stackSrc: this);

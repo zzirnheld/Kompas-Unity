@@ -17,7 +17,7 @@ namespace KompasCore.Effects.Identities.ManyCards
             cardRestriction.Initialize(initializationContext);
         }
 
-        protected override IReadOnlyCollection<GameCardBase> AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
+        protected override IReadOnlyCollection<GameCardBase> AbstractItemFrom(IResolutionContext context, IResolutionContext secondaryContext)
             => cards.From(context, secondaryContext).Where(c => cardRestriction.IsValidCard(c, context)).ToArray();
     }
 }

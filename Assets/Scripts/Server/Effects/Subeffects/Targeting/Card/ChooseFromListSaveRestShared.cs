@@ -19,7 +19,7 @@ namespace KompasServer.Effects.Subeffects
             chooseRestriction.Initialize(DefaultInitializationContext);
         }
 
-        protected override bool IsValidTarget(GameCard card) => base.IsValidTarget(card) && chooseRestriction.IsValidCard(card, CurrentContext);
+        protected override bool IsValidTarget(GameCard card) => base.IsValidTarget(card) && chooseRestriction.IsValidCard(card, ResolutionContext);
 
         protected override Task<ResolutionInfo> NoPossibleTargets()
         {

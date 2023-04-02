@@ -114,7 +114,7 @@ namespace KompasCore.Effects
 
         public List<SpaceRestrictionElement> spaceRestrictionElements = new List<SpaceRestrictionElement>();
 
-        public Func<Space, bool> AsThroughPredicate(ActivationContext context)
+        public Func<Space, bool> AsThroughPredicate(IResolutionContext context)
             => s => IsValidSpace(s, context);
 
         public override void Initialize(EffectInitializationContext initializationContext)
@@ -140,20 +140,20 @@ namespace KompasCore.Effects
             }
         }
 
-        private bool IsConnectedToTargetByXSpaces(Space space, GameCard target, ActivationContext context)
+        private bool IsConnectedToTargetByXSpaces(Space space, GameCard target, IResolutionContext context)
         {
             return Game.BoardController.AreConnectedByNumberOfSpacesFittingPredicate(target.Position, space,
                             s => spaceConnectednessRestriction.IsValidSpace(s, context),
                             connectedSpacesXRestriction.IsValidNumber);
         }
 
-        private bool InAOEOfNumberOfCardsFittingRestriction(Space space, ActivationContext context)
+        private bool InAOEOfNumberOfCardsFittingRestriction(Space space, IResolutionContext context)
         {
             var count = Game.Cards.Count(c => c.SpaceInAOE(space) && inAOEOfRestriction.IsValidCard(c, context));
             return numberOfCardsInAOEOfRestriction.IsValidNumber(count);
         }
 
-        private bool CardInSpaceOverlapsCardRestriction(GameCard card, Space potentialSpace, ActivationContext context)
+        private bool CardInSpaceOverlapsCardRestriction(GameCard card, Space potentialSpace, IResolutionContext context)
         {
             return Game.Cards.Any(c => overlapRestriction.IsValidCard(c, context) && card.Overlaps(c, potentialSpace));
         }
@@ -166,7 +166,7 @@ namespace KompasCore.Effects
         /// <param name="y">The y coordinate of the space</param>
         /// <param name="theoreticalTarget">If this space restriction is being considered with a theoretical additional target, this is it</param>
         /// <returns></returns>
-        private bool IsRestrictionValid(string restriction, Space space, GameCard theoreticalTarget, ActivationContext context)
+        private bool IsRestrictionValid(string restriction, Space space, GameCard theoreticalTarget, IResolutionContext context)
         {
             var target = theoreticalTarget ?? Subeffect?.CardTarget;
 
@@ -250,7 +250,7 @@ namespace KompasCore.Effects
             };
         }
 
-        private bool IsRestrictionValidWithDebug(string r, Space space, GameCard theoreticalTarget, ActivationContext context)
+        private bool IsRestrictionValidWithDebug(string r, Space space, GameCard theoreticalTarget, IResolutionContext context)
         {
             try
             {
@@ -265,7 +265,7 @@ namespace KompasCore.Effects
             }
         }
 
-        public bool IsValidSpace(Space space, ActivationContext context, GameCard theoreticalTarget = null)
+        public bool IsValidSpace(Space space, IResolutionContext context, GameCard theoreticalTarget = null)
         {
             ComplainIfNotInitialized();
             if (!space.IsValid) throw new InvalidSpaceException(space, "Invalid space to consider for restriction!");
@@ -274,7 +274,7 @@ namespace KompasCore.Effects
                 && spaceRestrictionElements.All(sre => sre.IsValidSpace(space, context));
         }
 
-        public Func<Space, bool> IsValidFor(ActivationContext context) => s => IsValidSpace(s, context);
+        public Func<Space, bool> IsValidFor(IResolutionContext context) => s => IsValidSpace(s, context);
 
         public override string ToString()
             => $"Space restriction of card {Source} on subeff {Subeffect}, restrictions {string.Join(",", spaceRestrictions)}";

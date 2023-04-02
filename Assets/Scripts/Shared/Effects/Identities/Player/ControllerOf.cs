@@ -12,7 +12,7 @@ namespace KompasCore.Effects.Identities.Players
             card.Initialize(initializationContext);
         }
 
-        protected override Player AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
+        protected override Player AbstractItemFrom(IResolutionContext context, IResolutionContext secondaryContext)
             => card.From(context, secondaryContext).Controller;
     }
 }

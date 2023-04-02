@@ -14,7 +14,7 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 
         private static bool AllNull(params object[] objs) => objs.All(o => o == null);
 
-        protected Func<GameCardBase, bool> IsValidAug(ActivationContext context) => card =>
+        protected Func<GameCardBase, bool> IsValidAug(IResolutionContext context) => card =>
         {
             if (cardRestriction != null) return cardRestriction.IsValidCard(card, context);
             if (augments != null) return augments.From(context, null).Contains(card);
@@ -40,13 +40,13 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
     {
         public bool all = false; //default to any
 
-        protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context) 
+        protected override bool FitsRestrictionLogic(GameCardBase card, IResolutionContext context) 
             => all ? card.Augments.All(IsValidAug(context)) : card.Augments.Any(IsValidAug(context));
     }
 
     public class Augments : AugmentRestrictionBase
     {
-        protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
+        protected override bool FitsRestrictionLogic(GameCardBase card, IResolutionContext context)
             => IsValidAug(context)(card.AugmentedCard);
     }
 }

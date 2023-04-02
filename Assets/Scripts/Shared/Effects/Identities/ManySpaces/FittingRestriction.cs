@@ -15,8 +15,8 @@ namespace KompasCore.Effects.Identities.ManySpaces
             spaces.Initialize(initializationContext);
         }
 
-        protected override IReadOnlyCollection<Space> AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
+        protected override IReadOnlyCollection<Space> AbstractItemFrom(IResolutionContext context, IResolutionContext secondaryContext)
             => spaces.From(context, secondaryContext)
-                .Where(s => restriction.IsValidSpace(s, InitializationContext.effect?.CurrActivationContext)).ToList();
+                .Where(s => restriction.IsValidSpace(s, InitializationContext.effect?.ResolutionContext)).ToList();
     }
 }

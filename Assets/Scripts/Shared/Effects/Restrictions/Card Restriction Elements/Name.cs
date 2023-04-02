@@ -8,7 +8,7 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
         public string nameIs;
         public string nameIncludes;
 
-        protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
+        protected override bool FitsRestrictionLogic(GameCardBase card, IResolutionContext context)
         {
             if (nameIs != null && card.CardName != nameIs) return false;
             if (nameIncludes != null && !card.CardName.Contains(nameIncludes)) return false;
@@ -27,7 +27,7 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
             from.Initialize(initializationContext);
         }
 
-        protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
+        protected override bool FitsRestrictionLogic(GameCardBase card, IResolutionContext context)
             => from.From(context, default).CardName != card.CardName;
     }
 }

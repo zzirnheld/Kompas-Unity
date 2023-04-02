@@ -2,9 +2,9 @@ using KompasCore.Cards;
 
 namespace KompasCore.Effects.Identities.Cards
 {
-    public class MainCardAfter : ContextualLeafIdentityBase<GameCardBase>
+    public class MainCardAfter : TriggerContextualLeafIdentityBase<GameCardBase>
     {
-        protected override GameCardBase AbstractItemFrom(ActivationContext context)
+        protected override GameCardBase AbstractItemFrom(TriggeringEventContext context)
             => context.MainCardInfoAfter;
     }
 }

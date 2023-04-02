@@ -15,7 +15,7 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
             if (subtypes == null) throw new System.ArgumentNullException("subtypes");
         }
 
-        protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
+        protected override bool FitsRestrictionLogic(GameCardBase card, IResolutionContext context)
         //If you're excluding all subtypes (exclude = true) you want all subtypes to not be present on the card (all = false)
         //If you're including all subtypes (exclude = false) you want all subtypes to be present on the card (all = true)
             => exclude != subtypes.All(card.HasSubtype);

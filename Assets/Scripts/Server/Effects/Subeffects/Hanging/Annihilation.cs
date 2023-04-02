@@ -10,16 +10,13 @@ namespace KompasServer.Effects.Subeffects.Hanging
     {
         protected override IEnumerable<HangingEffect> CreateHangingEffects()
         {
-            var contextCopy = CurrentContext.Copy;
-            contextCopy.SetResumeInfo(Effect.CardTargets, Effect.SpaceTargets, Effect.stackableTargets,
-                CardTarget, SpaceTarget, StackableTarget);
             var eff = new AnnihilationEffect(serverGame: ServerGame,
                                                     triggerRestriction: triggerRestriction,
                                                     endCondition: endCondition,
                                                     fallOffCondition: fallOffCondition,
                                                     fallOffRestriction: CreateFallOffRestriction(CardTarget),
                                                     sourceEff: Effect,
-                                                    currentContext: contextCopy,
+                                                    resolutionContext: ResolutionContext,
                                                     target: CardTarget);
             return new List<HangingEffect>() { eff };
         }
@@ -33,13 +30,13 @@ namespace KompasServer.Effects.Subeffects.Hanging
 
             public AnnihilationEffect(ServerGame serverGame, TriggerRestriction triggerRestriction, string endCondition,
                 string fallOffCondition, TriggerRestriction fallOffRestriction,
-                Effect sourceEff, ActivationContext currentContext, GameCard target)
-                : base(serverGame, triggerRestriction, endCondition, fallOffCondition, fallOffRestriction, sourceEff, currentContext, removeIfEnd: true)
+                Effect sourceEff, ResolutionContext resolutionContext, GameCard target)
+                : base(serverGame, triggerRestriction, endCondition, fallOffCondition, fallOffRestriction, sourceEff, resolutionContext, removeIfEnd: true)
             {
                 this.target = target;
             }
 
-            public override void Resolve(ActivationContext context) => target.Annihilate(sourceEff);
+            public override void Resolve(TriggeringEventContext context) => target.Annihilate(sourceEff);
 
             public override string ToString()
             {

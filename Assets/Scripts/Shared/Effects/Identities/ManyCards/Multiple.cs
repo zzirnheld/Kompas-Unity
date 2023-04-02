@@ -14,7 +14,7 @@ namespace KompasCore.Effects.Identities.ManyCards
             foreach (var i in cards) i.Initialize(initializationContext);
         }
 
-        protected override IReadOnlyCollection<GameCardBase> AbstractItemFrom(ActivationContext context, ActivationContext secondaryContext)
+        protected override IReadOnlyCollection<GameCardBase> AbstractItemFrom(IResolutionContext context, IResolutionContext secondaryContext)
             => cards.Select(s => s.From(context, secondaryContext)).ToArray();
     }
 }

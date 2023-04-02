@@ -9,19 +9,19 @@ namespace KompasServer.Effects.Subeffects
 
         public override Task<ResolutionInfo> Resolve()
         {
-            int? nValue = n?.From(CurrentContext, default);
-            int? eValue = e?.From(CurrentContext, default);
-            int? sValue = s?.From(CurrentContext, default);
-            int? wValue = w?.From(CurrentContext, default);
-            int? cValue = c?.From(CurrentContext, default);
-            int? aValue = a?.From(CurrentContext, default);
+            int? nValue = n?.From(ResolutionContext, default);
+            int? eValue = e?.From(ResolutionContext, default);
+            int? sValue = s?.From(ResolutionContext, default);
+            int? wValue = w?.From(ResolutionContext, default);
+            int? cValue = c?.From(ResolutionContext, default);
+            int? aValue = a?.From(ResolutionContext, default);
 
-            int? turnsOnBoardChange     = turnsOnBoard?.From(CurrentContext, default);
-            int? attacksThisTurnChange  = attacksThisTurn?.From(CurrentContext, default);
-            int? spacesMovedChange      = spacesMoved?.From(CurrentContext, default);
-            int? durationChange         = duration?.From(CurrentContext, default);
+            int? turnsOnBoardChange     = turnsOnBoard?.From(ResolutionContext, default);
+            int? attacksThisTurnChange  = attacksThisTurn?.From(ResolutionContext, default);
+            int? spacesMovedChange      = spacesMoved?.From(ResolutionContext, default);
+            int? durationChange         = duration?.From(ResolutionContext, default);
 
-            foreach (var card in cards.From(CurrentContext, default).Select(c => c.Card))
+            foreach (var card in cards.From(ResolutionContext, default).Select(c => c.Card))
             {
                 ValidateCardOnBoard(card);
 

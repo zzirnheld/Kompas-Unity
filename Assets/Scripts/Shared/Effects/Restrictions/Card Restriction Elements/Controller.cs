@@ -14,7 +14,7 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
             playerIdentity.Initialize(initializationContext);
         }
 
-        protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
+        protected override bool FitsRestrictionLogic(GameCardBase card, IResolutionContext context)
             => playerIdentity.From(context, default) == card.Controller;
     }
 

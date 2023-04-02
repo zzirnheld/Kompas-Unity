@@ -29,7 +29,7 @@ namespace KompasServer.Effects.Subeffects.Hanging
             var effs = new List<HangingEffect>();
 
             IEnumerable<GameCard> cards
-                = ServerGame.Cards.Where(c => cardRestriction.IsValidCard(c, CurrentContext));
+                = ServerGame.Cards.Where(c => cardRestriction.IsValidCard(c, ResolutionContext));
 
             //First make sure are allowed to set their stats.
             //Don't affect any card unless all that should be affected, can be.
@@ -42,21 +42,18 @@ namespace KompasServer.Effects.Subeffects.Hanging
             }
 
             var buff = Buff;
-            var contextCopy = CurrentContext.Copy;
-            contextCopy.SetResumeInfo(Effect.CardTargets, Effect.SpaceTargets, Effect.stackableTargets,
-                CardTarget, SpaceTarget, StackableTarget);
 
             foreach (var card in cards)
             {
                 var temp = new ChangeCardStatsEffect(game: ServerGame,
-                                                 triggerRestriction: triggerRestriction,
-                                                 endCondition: endCondition,
-                                                 fallOffCondition: fallOffCondition,
-                                                 fallOffRestriction: CreateFallOffRestriction(card),
-                                                 sourceEff: Effect,
-                                                 currentContext: contextCopy,
-                                                 buffRecipient: card,
-                                                 buff: buff);
+                                                    triggerRestriction: triggerRestriction,
+                                                    endCondition: endCondition,
+                                                    fallOffCondition: fallOffCondition,
+                                                    fallOffRestriction: CreateFallOffRestriction(card),
+                                                    sourceEff: Effect,
+                                                    currentContext: ResolutionContext,
+                                                    buffRecipient: card,
+                                                    buff: buff);
 
                 effs.Add(temp);
             }

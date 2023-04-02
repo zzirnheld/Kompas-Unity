@@ -167,9 +167,9 @@ namespace KompasServer.Cards
 
         public override void AddAugment(GameCard augment, IStackable stackSrc = null)
         {
-            var attachedContext = new ActivationContext(game: ServerGame, mainCardBefore: augment, secondaryCardBefore: this,
+            var attachedContext = new TriggeringEventContext(game: ServerGame, mainCardBefore: augment, secondaryCardBefore: this,
                 space: Position, stackableCause: stackSrc, player: stackSrc?.Controller ?? Controller);
-            var augmentedContext = new ActivationContext(game: ServerGame, mainCardBefore: this, secondaryCardBefore: augment,
+            var augmentedContext = new TriggeringEventContext(game: ServerGame, mainCardBefore: this, secondaryCardBefore: augment,
                 space: Position, stackableCause: stackSrc, player: stackSrc?.Controller ?? Controller);
             bool wasKnown = augment.KnownToEnemy;
             base.AddAugment(augment, stackSrc);
@@ -183,7 +183,7 @@ namespace KompasServer.Cards
         protected override void Detach(IStackable stackSrc = null)
         {
             var formerlyAugmentedCard = AugmentedCard;
-            var context = new ActivationContext(game: ServerGame, mainCardBefore: this, secondaryCardBefore: formerlyAugmentedCard,
+            var context = new TriggeringEventContext(game: ServerGame, mainCardBefore: this, secondaryCardBefore: formerlyAugmentedCard,
                 stackableCause: stackSrc, player: stackSrc?.Controller ?? Controller);
             base.Detach(stackSrc);
             context.CacheCardInfoAfter();
@@ -196,13 +196,13 @@ namespace KompasServer.Cards
 
             //proc the trigger before actually removing anything
             var player = stackSrc?.Controller ?? Controller;
-            var context = new ActivationContext(game: ServerGame, mainCardBefore: this, stackableCause: stackSrc, player: player);
+            var context = new TriggeringEventContext(game: ServerGame, mainCardBefore: this, stackableCause: stackSrc, player: player);
 
             var cardsThisLeft = Location == CardLocation.Board ?
                 Game.BoardController.CardsAndAugsWhere(c => c != null && c.CardInAOE(this)).ToList() :
                 new List<GameCard>();
             var leaveContexts = cardsThisLeft.Select(c =>
-                new ActivationContext(game: ServerGame, mainCardBefore: this, secondaryCardBefore: c, stackableCause: stackSrc, player: player)).ToArray();
+                new TriggeringEventContext(game: ServerGame, mainCardBefore: this, secondaryCardBefore: c, stackableCause: stackSrc, player: player)).ToArray();
 
             var ret = base.Remove(stackSrc);
 
@@ -221,7 +221,7 @@ namespace KompasServer.Cards
 
         public override void Reveal(IStackable stackSrc = null)
         {
-            var context = new ActivationContext(game: ServerGame, mainCardBefore: this, stackableCause: stackSrc, player: stackSrc?.Controller);
+            var context = new TriggeringEventContext(game: ServerGame, mainCardBefore: this, stackableCause: stackSrc, player: stackSrc?.Controller);
             base.Reveal(stackSrc);
             context.CacheCardInfoAfter();
             EffectsController.TriggerForCondition(Trigger.Revealed, context);
@@ -234,7 +234,7 @@ namespace KompasServer.Cards
         public override void SetN(int n, IStackable stackSrc, bool onlyStatBeingSet = true)
         {
             if (n == N) return;
-            var context = new ActivationContext(game: ServerGame, mainCardBefore: this, stackableCause: stackSrc, player: stackSrc?.Controller, x: n - N);
+            var context = new TriggeringEventContext(game: ServerGame, mainCardBefore: this, stackableCause: stackSrc, player: stackSrc?.Controller, x: n - N);
             base.SetN(n, stackSrc);
             context.CacheCardInfoAfter();
             EffectsController?.TriggerForCondition(Trigger.NChange, context);
@@ -246,7 +246,7 @@ namespace KompasServer.Cards
         {
             if (e == E) return;
             int oldE = E;
-            var context = new ActivationContext(game: ServerGame, mainCardBefore: this, stackableCause: stackSrc, player: stackSrc?.Controller, x: e - E);
+            var context = new TriggeringEventContext(game: ServerGame, mainCardBefore: this, stackableCause: stackSrc, player: stackSrc?.Controller, x: e - E);
             base.SetE(e, stackSrc);
             context.CacheCardInfoAfter();
             EffectsController?.TriggerForCondition(Trigger.EChange, context);
@@ -261,7 +261,7 @@ namespace KompasServer.Cards
         public override void SetS(int s, IStackable stackSrc, bool onlyStatBeingSet = true)
         {
             if (s == S) return;
-            var context = new ActivationContext(game: ServerGame, mainCardBefore: this, stackableCause: stackSrc, player: stackSrc?.Controller, x: s - S);
+            var context = new TriggeringEventContext(game: ServerGame, mainCardBefore: this, stackableCause: stackSrc, player: stackSrc?.Controller, x: s - S);
             base.SetS(s, stackSrc);
             context.CacheCardInfoAfter();
             EffectsController?.TriggerForCondition(Trigger.SChange, context);
@@ -272,7 +272,7 @@ namespace KompasServer.Cards
         public override void SetW(int w, IStackable stackSrc, bool onlyStatBeingSet = true)
         {
             if (w == W) return;
-            var context = new ActivationContext(game: ServerGame, mainCardBefore: this, stackableCause: stackSrc, player: stackSrc?.Controller, x: w - W);
+            var context = new TriggeringEventContext(game: ServerGame, mainCardBefore: this, stackableCause: stackSrc, player: stackSrc?.Controller, x: w - W);
             base.SetW(w, stackSrc);
             context.CacheCardInfoAfter();
             EffectsController?.TriggerForCondition(Trigger.WChange, context);
@@ -283,7 +283,7 @@ namespace KompasServer.Cards
         public override void SetC(int c, IStackable stackSrc, bool onlyStatBeingSet = true)
         {
             if (c == C) return;
-            var context = new ActivationContext(game: ServerGame, mainCardBefore: this, stackableCause: stackSrc, player: stackSrc?.Controller, x: c - C);
+            var context = new TriggeringEventContext(game: ServerGame, mainCardBefore: this, stackableCause: stackSrc, player: stackSrc?.Controller, x: c - C);
             base.SetC(c, stackSrc);
             context.CacheCardInfoAfter();
             EffectsController?.TriggerForCondition(Trigger.CChange, context);
@@ -294,7 +294,7 @@ namespace KompasServer.Cards
         public override void SetA(int a, IStackable stackSrc, bool onlyStatBeingSet = true)
         {
             if (a == A) return;
-            var context = new ActivationContext(game: ServerGame, mainCardBefore: this, stackableCause: stackSrc, player: stackSrc?.Controller, x: a - A);
+            var context = new TriggeringEventContext(game: ServerGame, mainCardBefore: this, stackableCause: stackSrc, player: stackSrc?.Controller, x: a - A);
             base.SetA(a, stackSrc);
             context.CacheCardInfoAfter();
             EffectsController?.TriggerForCondition(Trigger.AChange, context);
@@ -328,7 +328,7 @@ namespace KompasServer.Cards
                 //so that the client can know how many negations a card has
                 ServerNotifier.NotifySetNegated(this, negated);
 
-                var context = new ActivationContext(game: ServerGame, mainCardBefore: this, stackableCause: stackSrc, player: stackSrc?.Controller);
+                var context = new TriggeringEventContext(game: ServerGame, mainCardBefore: this, stackableCause: stackSrc, player: stackSrc?.Controller);
                 context.CacheCardInfoAfter();
                 if (negated) EffectsController.TriggerForCondition(Trigger.Negate, context);
             }
@@ -337,7 +337,7 @@ namespace KompasServer.Cards
 
         public override void SetActivated(bool activated, IStackable stackSrc = null)
         {
-            var context = new ActivationContext(game: ServerGame, mainCardBefore: this, stackableCause: stackSrc, player: stackSrc?.Controller);
+            var context = new TriggeringEventContext(game: ServerGame, mainCardBefore: this, stackableCause: stackSrc, player: stackSrc?.Controller);
             if (Activated != activated)
             {
                 //Notify of value being set to, even if it won't actually change whether the card is activated or not,

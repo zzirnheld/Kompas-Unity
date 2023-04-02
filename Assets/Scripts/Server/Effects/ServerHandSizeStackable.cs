@@ -26,14 +26,14 @@ namespace KompasServer.Effects
             //tell the players this is here now
             ServerController.notifier.NotifyHandSizeToStack();
         }
-        public async Task StartResolution(ActivationContext context) => await RequestTargets();
+        public async Task StartResolution(ResolutionContext context) => await RequestTargets();
 
         private async Task RequestTargets()
         {
             Debug.Log("Trying to request hand size targets");
             awaitingChoices = true;
 
-            var context = new ActivationContext(game: serverGame, stackableCause: this, stackableEvent: this);
+            var context = new ResolutionContext(new TriggeringEventContext(game: serverGame, stackableCause: this, stackableEvent: this));
             int[] cardIds = serverGame.Cards
                 .Where(c => HandSizeCardRestriction.IsValidCard(c, context))
                 .Select(c => c.ID)
@@ -70,7 +70,7 @@ namespace KompasServer.Effects
                 .ToArray();
 
             int count = cards.Count();
-            var context = new ActivationContext(game: serverGame, stackableCause: this, stackableEvent: this);
+            var context = new ResolutionContext(new TriggeringEventContext(game: serverGame, stackableCause: this, stackableEvent: this));
             int correctCount = serverGame.Cards.Count(c => HandSizeCardRestriction.IsValidCard(c, context)) - Controller.HandSizeLimit;
 
             if (count != correctCount || cards.Any(c => !HandSizeCardRestriction.IsValidCard(c, context))) return false;
