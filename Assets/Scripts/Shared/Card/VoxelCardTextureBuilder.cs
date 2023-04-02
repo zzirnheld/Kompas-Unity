@@ -405,9 +405,9 @@ public static class VoxelCardTextureBuilder
                     samplePosition = new Vector2Int(CharacterArtSamplingStartIndex.x + (int)(CharacterArtSamplingIncrement * x),
                         CharacterArtSamplingStartIndex.y + (int)(CharacterArtSamplingIncrement * y));
                 }
-                else if (y > TextureResolution * artRightBound)
+                else if (y > TextureResolution + TextureResolution * artRightBound)
                 {
-                    if (x > TextureResolution * CharacterArtLowerBound && x < TextureResolution * CharacterArtUpperBound)
+                    if (x > TextureResolution + TextureResolution * CharacterArtLowerBound && x < TextureResolution + TextureResolution * CharacterArtUpperBound)
                     {
                         samplePosition = new Vector2Int(CharacterArtSamplingStartIndex.x + (int)(CharacterArtSamplingIncrement * x), CharacterArtSamplingStartIndex.y + (int)(CharacterArtSamplingIncrement * y));
                     }

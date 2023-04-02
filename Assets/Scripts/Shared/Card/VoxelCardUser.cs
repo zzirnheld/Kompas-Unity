@@ -87,7 +87,7 @@ public class VoxelCardUser : MonoBehaviour
             SaveAsPng(zoomedMetPortion, zoomedMetalnessName);
             SaveAsPng(unzoomedTexPortion, unzoomedTextureName);
             SaveAsPng(unzoomedMetPortion, unzoomedMetalnessName);
-            if(i++ > skip) break;
+            //if(i++ > skip) break;
         }
     }
 

@@ -75,10 +75,10 @@ namespace KompasCore.GameCore
             MaxDepth = null,
             ReferenceLoopHandling = ReferenceLoopHandling.Serialize
         };
-        private const string ZoomedTextureFolder = "Resources/Card Textures/Zoomed/Texture";
-        private const string ZoomedMetalnessFolder = "Resources/Card Textures/Zoomed/Metalness";
-        private const string UnzoomedTextureFolder = "Resources/Card Textures/Unzoomed/Texture";
-        private const string UnzoomedMetalnessFolder = "Resources/Card Textures/Unzoomed/Metalness";
+        private const string ZoomedTextureFolder = "Card Textures/Zoomed/Texture";
+        private const string ZoomedMetalnessFolder = "Card Textures/Zoomed/Metalness";
+        private const string UnzoomedTextureFolder = "Card Textures/Unzoomed/Texture";
+        private const string UnzoomedMetalnessFolder = "Card Textures/Unzoomed/Metalness";
 
         public class CardTextures
         {
