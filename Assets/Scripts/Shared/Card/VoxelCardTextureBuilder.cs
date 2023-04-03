@@ -8,9 +8,9 @@ public static class VoxelCardTextureBuilder
     public const float CharacterArtUpperBoundHasText = 1f;// 19.0f / 24.0f;
 
     public const float CharacterArtSamplingIncrementRatioFullArt = 1f;//24.0f / 19.0f;
-    public const float CharacterArtSamplingIncrementRatioHasText = 1f;//24.0f / 21.0f;
+    public const float CharacterArtSamplingIncrementRatioHasText = 1f; //19.0f / 24.0f; //24.0f / 19.0f;
 
-    public const float CharacterArtSamplingStartIndexRatioBase = 1.0f / 17.0f;
+    public const float CharacterArtSamplingStartIndexRatioBase = 1f;//1.0f / 17.0f;
 
     private const string MainTextureName = "_MainTex";
     private const string MainMetalnessName = "_MetallicGlossMap";
@@ -381,8 +381,9 @@ public static class VoxelCardTextureBuilder
             + (Vector2Int.down * (int)(shorterDimension * 2.0f * CharacterArtSamplingStartIndexRatio));
         //Debug.Log($"Character art {CharacterArtSamplingIncrement}, {CharacterArtSamplingStartIndex}");
 
-        if (fullArt) CharacterArtSamplingStartIndex = new Vector2Int(-2 * CharacterArtSamplingStartIndex.x, CharacterArtSamplingStartIndex.y);
-        Debug.Log($"Character art sampling increment {CharacterArtSamplingIncrement}, ratio {CharacterArtSamplingStartIndexRatio} start index {CharacterArtSamplingStartIndex}");
+        //if (fullArt) CharacterArtSamplingStartIndex = new Vector2Int(-2 * CharacterArtSamplingStartIndex.x, CharacterArtSamplingStartIndex.y);
+        Debug.Log($"fullart? {fullArt}; increment ratio {CharacterArtSamplingIncrementRatio}"
+            + $"Character art sampling increment {CharacterArtSamplingIncrement}, ratio {CharacterArtSamplingStartIndexRatio} start index {CharacterArtSamplingStartIndex}");
 
         float effTextZoneRatio = 0.37f;
         float artRightBound = fullArt ? 1.0f : effTextZoneRatio * (1f + FrameThickness);
