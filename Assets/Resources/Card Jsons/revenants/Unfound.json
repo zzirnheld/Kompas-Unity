@@ -7,10 +7,10 @@
 		"Revenant Die",
 		"Revenant Revive"
 	],
-	"n": 2,
-	"e": 3,
+	"n": 3,
+	"e": 1,
 	"s": 6,
-	"w": 1,
+	"w": 4,
 	"subtypes": [
 		"Ethereal",
 		"Revenant"

@@ -7,8 +7,8 @@
 		"Revenant Die",
 		"Revenant Revive"
 	],
-	"n": 0,
-	"e": 4,
+	"n": 2,
+	"e": 1,
 	"s": 4,
 	"w": 2,
 	"subtypes": [

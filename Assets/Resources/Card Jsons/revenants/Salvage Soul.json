@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Salvage Soul",
-	"effText": "Rehand a friendly Revenant. Rummage.",
+	"effText": "Rehand a friendly Revenant. Rummage, rummage, rummage.",
 	"effects": [
 		{
 			"triggerData": {
@@ -32,6 +32,14 @@
 				},
 				{
 					"$type": "Subeffect:Hand:"
+				},
+				{
+					"$type": "Subeffect:Keyword:",
+					"keyword": "Rummage"
+				},
+				{
+					"$type": "Subeffect:Keyword:",
+					"keyword": "Rummage"
 				},
 				{
 					"$type": "Subeffect:Keyword:",
