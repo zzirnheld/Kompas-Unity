@@ -14,9 +14,11 @@
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Is Defending From Source"
-						]
+						"cardRestrictionElements": [ {
+							"$type": "Core.CardRestriction:Fighting:",
+							"defending": true,
+							"fightingWho": { "$type": "Cards:ThisCard:" }
+						} ]
 					}
 				}
 			},

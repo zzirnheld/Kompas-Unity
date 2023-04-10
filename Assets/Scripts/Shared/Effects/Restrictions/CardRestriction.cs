@@ -120,8 +120,6 @@ namespace KompasCore.Effects
         public const string CanPlayToTargetSpace = "Can be Played to Target Space";
 
         public const string EffectControllerCanPayCost = "Effect Controller can Afford Cost";
-        public const string IsDefendingFromSource = "Is Defending From Source";
-        public const string CanPlayTargetToThisCharactersSpace = "Can Play Target to This Character's Space";
 
         #endregion restrictions
 
@@ -331,8 +329,6 @@ namespace KompasCore.Effects
                     => Game.ExistsEffectPlaySpace(potentialTarget?.PlayRestriction, Effect),
                 CanPlayToTargetSpace
                     => potentialTarget?.PlayRestriction.IsValidEffectPlay(Subeffect.SpaceTarget, Effect, Subeffect.PlayerTarget, context, ignoring: canPlayIgnoring) ?? false,
-                CanPlayTargetToThisCharactersSpace
-                    => Subeffect.CardTarget.PlayRestriction.IsValidEffectPlay(potentialTarget?.Position ?? default, Effect, Subeffect.PlayerTarget, context),
 
                 EffectControllerCanPayCost => Subeffect.Effect.Controller.Pips >= potentialTarget?.Cost * costMultiplier / costDivisor,
 

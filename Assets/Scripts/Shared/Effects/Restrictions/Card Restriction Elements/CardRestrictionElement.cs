@@ -11,7 +11,6 @@ namespace KompasCore.Effects.Restrictions
 
     namespace CardRestrictionElements
     {
-
         public class Not : CardRestrictionElement
         {
             public IRestrictionElement<GameCardBase> negated;
