@@ -126,9 +126,6 @@ namespace KompasCore.Effects
         public const string EffectControllerCanPayCost = "Effect Controller can Afford Cost";
         public const string IsDefendingFromSource = "Is Defending From Source";
         public const string CanPlayTargetToThisCharactersSpace = "Can Play Target to This Character's Space";
-        public const string SpaceRestrictionValidIfThisTargetChosen = "Space Restriction Valid With This Target Chosen";
-        public const string AttackingCardFittingRestriction = "Attacking Card Fitting Restriction";
-        public const string EffectIsOnTheStack = "Effect is on the Stack";
 
         #endregion restrictions
 
@@ -336,10 +333,6 @@ namespace KompasCore.Effects
                 IndexInListLTX => potentialTarget?.IndexInList < x,
 
                 //fights
-                AttackingCardFittingRestriction
-                    => Source.Game.StackEntries.Any(e => e is Attack atk
-                        && atk.attacker == potentialTarget?.Card
-                        && attackedCardRestriction.IsValidCard(atk.defender, context)),
                 IsDefendingFromSource
                     => Source.Game.StackEntries.Any(s => s is Attack atk && atk.attacker == Source && atk.defender == potentialTarget?.Card)
                     || (Source.Game.CurrStackEntry is Attack atk2 && atk2.attacker == Source && atk2.defender == potentialTarget?.Card),
@@ -355,11 +348,6 @@ namespace KompasCore.Effects
                     => Subeffect.CardTarget.PlayRestriction.IsValidEffectPlay(potentialTarget?.Position ?? default, Effect, Subeffect.PlayerTarget, context),
 
                 EffectControllerCanPayCost => Subeffect.Effect.Controller.Pips >= potentialTarget?.Cost * costMultiplier / costDivisor,
-                EffectIsOnTheStack => Source.Game.StackEntries.Any(e => e is Effect eff && eff.Source == potentialTarget?.Card),
-
-                SpaceRestrictionValidIfThisTargetChosen
-                    => Effect.Subeffects[spaceRestrictionIndex] is SpaceTarget spaceTgtSubeff
-                    && spaceTgtSubeff.WillBePossibleIfCardTargeted(theoreticalTarget: potentialTarget?.Card),
 
                 _ => throw new ArgumentException($"Invalid card restriction {restriction}", "restriction"),
             };

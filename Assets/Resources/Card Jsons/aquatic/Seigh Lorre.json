@@ -19,16 +19,18 @@
 					"cardRestriction": {
 						"blurb": "what will sail",
 						"cardRestrictions": [
-							"Space Fits Restriction",
-							"Space Restriction Valid With This Target Chosen"
+							"Space Fits Restriction"
 						],
 						"cardRestrictionElements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:SpaceRestrictionWillBeValid:",
+								"subeffectIndex": 1
 							}
 						],
-						"spaceRestrictionIndex":1,
 						"spaceRestriction": {
 							"spaceRestrictionElements": [
 								{

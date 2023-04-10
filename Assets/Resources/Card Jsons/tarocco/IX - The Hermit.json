@@ -21,15 +21,17 @@
 					"cardRestriction": {
 						"blurb": "for Hermit to move",
 						"cardRestrictions": [
-							"Character",
-							"Space Restriction Valid With This Target Chosen"
+							"Character"
 						],
-						"spaceRestrictionIndex":1,
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Enemy:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:SpaceRestrictionWillBeValid:",
+								"subeffectIndex": 1
 							}
 						]
 					}

@@ -43258,6 +43258,9 @@ MonoBehaviour:
     type: 2}
   meshRenderer: {fileID: 944419445071788997}
   cardRepository: {fileID: 0}
+  used: {fileID: 0}
+  copied: {fileID: 0}
+  last: {fileID: 0}
 --- !u!223 &5775958695288391404
 Canvas:
   m_ObjectHideFlags: 0
