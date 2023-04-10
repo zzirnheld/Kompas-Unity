@@ -10,7 +10,6 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"Main Card Fits Restriction Before",
-						"Space Fits Restriction",
 						"This Card in Play"
 					],
 					"cardRestriction": {
@@ -26,19 +25,14 @@
 							},
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
-                                "spaceRestriction": {
+								"spaceRestriction": {
 									"spaceRestrictions": [
-										"Adjacent to Source"
-									]
-                                }
+										"In Source's AOE"
+									],
+									"mustBeEmpty": false
+								}
                             }
 						]
-					}
-					"spaceRestriction": {
-						"spaceRestrictions": [
-							"In Source's AOE"
-						],
-						"mustBeEmpty": false
 					}
 				}
 			},

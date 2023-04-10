@@ -18,8 +18,7 @@
 					"cardRestriction": {
 						"blurb": "to convert",
 						"cardRestrictions": [
-							"Character",
-							"Space Fits Restriction"
+							"Character"
 						],
 						"cardRestrictionElements": [
 							{
@@ -28,27 +27,22 @@
 							},
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
-                                "spaceRestriction": {
+								"spaceRestriction": {
 									"spaceRestrictions": [
-										"In Card Target's AOE"
-									]
-                                }
+										"Adjacent to Source",
+										"Adjacent to a Card that Fits Restriction"
+									],
+									"adjacencyRestriction": {
+										"cardRestrictionElements": [
+											{
+												"$type": "Core.CardRestriction:Subtypes:",
+												"subtypes": [ "Cultist" ]
+											}
+										]
+									}
+								}
                             }
 						]
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Source",
-								"Adjacent to a Card that Fits Restriction"
-							],
-							"adjacencyRestriction": {
-								"cardRestrictionElements": [
-									{
-										"$type": "Core.CardRestriction:Subtypes:",
-										"subtypes": [ "Cultist" ]
-									}
-								]
-							}
-						}
 					}
 				},
 				{

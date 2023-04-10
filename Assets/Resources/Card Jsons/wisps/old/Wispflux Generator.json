@@ -58,15 +58,9 @@
 						"blurb": "where to generate Wispflux",
 						"spaceRestrictions": [
 							"Can Play Card Target to This Space",
-							"Space Fits Restriction",
-							"Empty"
+							"Empty",
+							"Adjacent to Source"
 						]
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Source"
-							],
-							"mustBeEmpty": false
-						}
 					}
 				},
 				{

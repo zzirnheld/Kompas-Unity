@@ -19,8 +19,7 @@
 					"cardRestriction": {
 						"blurb": "Avatar to castle",
 						"cardRestrictions": [
-							"Avatar",
-							"Space Fits Restriction"
+							"Avatar"
 						],
 						"cardRestrictionElements": [
 							{
@@ -29,19 +28,14 @@
 							},
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
-                                "spaceRestriction": {
+								"spaceRestriction": {
 									"spaceRestrictions": [
-										"In Card Target's AOE"
+										"Surrounded",
+										"Empty"
 									]
-                                }
+								}
                             }
 						]
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Surrounded",
-								"Empty"
-							]
-						}
 					}
 				},
 				{

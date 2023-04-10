@@ -21,14 +21,8 @@
 					"$type": "Subeffect:ChangeAllCardStats:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Character",
-							"Space Fits Restriction"
+							"Character"
 						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Space Target"
-							]
-						}
 						"cardRestrictionElements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
@@ -36,11 +30,11 @@
 							},
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
-                                "spaceRestriction": {
+								"spaceRestriction": {
 									"spaceRestrictions": [
-										"Adjacent to Source"
+										"Adjacent to Space Target"
 									]
-                                }
+								}
                             }
 						]
 					},

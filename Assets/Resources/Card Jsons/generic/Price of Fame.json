@@ -16,10 +16,9 @@
 				{
 					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
-						"blurb": "Ethereal for Soulselfdestruct to kill",
+						"blurb": "Who pays the price of fame?",
 						"cardRestrictions": [
-                            "Unique",
-							"Space Fits Restriction"
+                            "Unique"
 						],
 						"cardRestrictionElements": [
 							{
@@ -28,18 +27,13 @@
 							},
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
-                                "spaceRestriction": {
+								"spaceRestriction": {
 									"spaceRestrictions": [
-										"In Card Target's AOE"
+										"Adjacent to Source"
 									]
-                                }
+								}
                             }
 						]
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Source"
-							]
-						}
 					}
 				},
 				{

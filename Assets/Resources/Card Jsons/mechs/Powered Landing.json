@@ -48,20 +48,8 @@
 						"blurb": "character within 4 spaces to have this Mech attack",
 						"cardRestrictions": [
 							"Character",
-							"Different from Source",
-							"Space Fits Restriction"
+							"Different from Source"
 						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Distance to Source Fits X Restriction"
-							],
-							"distanceXRestriction": {
-								"numberRestrictions": [
-									"<=Constant"
-								],
-								"constant": 2
-							}
-						}
 						"cardRestrictionElements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
@@ -69,11 +57,17 @@
 							},
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
-                                "spaceRestriction": {
+								"spaceRestriction": {
 									"spaceRestrictions": [
-										"Adjacent to Source"
-									]
-                                }
+										"Distance to Source Fits X Restriction"
+									],
+									"distanceXRestriction": {
+										"numberRestrictions": [
+											"<=Constant"
+										],
+										"constant": 2
+									}
+								}
                             }
 						]
 					}

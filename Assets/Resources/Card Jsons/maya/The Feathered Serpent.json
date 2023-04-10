@@ -20,8 +20,7 @@
 						"blurb": "ritual sacrifice",
 						"cardRestrictions": [
 							"Character",
-							"Summoned",
-                            "Space Fits Restriction"
+							"Summoned"
                         ],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
@@ -35,26 +34,21 @@
 							},
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
-                                "spaceRestriction": {
+								"spaceRestriction": {
 									"spaceRestrictions": [
-										"Adjacent to Source"
-									]
-                                }
+										"Adjacent to a Card that Fits Restriction"
+									],
+									"adjacencyRestriction": {
+										"cardRestrictionElements": [
+											{
+												"$type": "Core.CardRestriction:Subtypes:",
+												"subtypes": [ "Structure" ]
+											}
+										]
+									}
+								}
                             }
 						]
-                        "spaceRestriction": {
-                            "spaceRestrictions": [
-                                "Adjacent to a Card that Fits Restriction"
-                            ],
-                            "adjacencyRestriction": {
-								"cardRestrictionElements": [
-									{
-										"$type": "Core.CardRestriction:Subtypes:",
-										"subtypes": [ "Structure" ]
-									}
-								]
-                            }
-                        }
 					}
 				},
 				{

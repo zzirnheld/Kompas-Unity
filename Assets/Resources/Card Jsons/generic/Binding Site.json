@@ -18,8 +18,7 @@
 					"cardRestriction": {
 						"blurb": "for Binding Site to bind",
 						"cardRestrictions": [
-							"Character",
-							"Space Fits Restriction"
+							"Character"
 						],
 						"cardRestrictionElements": [
 							{
@@ -28,18 +27,13 @@
 							},
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
-                                "spaceRestriction": {
+								"spaceRestriction": {
 									"spaceRestrictions": [
-										"In Card Target's AOE"
+										"Adjacent to Source"
 									]
-                                }
+								}
                             }
 						]
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Source"
-							]
-						}
 					}
 				},
 				{

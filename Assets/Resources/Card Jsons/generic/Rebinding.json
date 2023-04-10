@@ -18,9 +18,6 @@
 					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "for Rebinding to kill",
-						"cardRestrictions": [
-							"Space Fits Restriction"
-						],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
@@ -29,18 +26,13 @@
 							},
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
-                                "spaceRestriction": {
+								"spaceRestriction": {
 									"spaceRestrictions": [
-										"In Card Target's AOE"
+										"Adjacent to Source"
 									]
-                                }
+								}
                             }
 						]
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Source"
-							]
-						}
 					}
 				},
 				{

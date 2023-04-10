@@ -21,14 +21,8 @@
 					"blurb": "card to boing boing",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Different from Source",
-							"Space Fits Restriction"
+							"Different from Source"
 						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Space Target"
-							]
-						}
 						"cardRestrictionElements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
@@ -36,11 +30,11 @@
 							},
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
-                                "spaceRestriction": {
+								"spaceRestriction": {
 									"spaceRestrictions": [
-										"Adjacent to Source"
+										"Adjacent to Space Target"
 									]
-                                }
+								}
                             }
 						]
 					}

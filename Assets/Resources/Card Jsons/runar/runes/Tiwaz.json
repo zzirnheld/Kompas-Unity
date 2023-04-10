@@ -16,12 +16,6 @@
 							"Character",
 							"Space Fits Restriction"
 						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"In Source's AOE"
-							],
-							"mustBeEmpty": false
-						}
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
@@ -30,11 +24,12 @@
 							},
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
-                                "spaceRestriction": {
+								"spaceRestriction": {
 									"spaceRestrictions": [
-										"Adjacent to Source"
-									]
-                                }
+										"In Source's AOE"
+									],
+									"mustBeEmpty": false
+								}
                             }
 						]
 					}

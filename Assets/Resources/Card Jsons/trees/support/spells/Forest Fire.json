@@ -40,11 +40,6 @@
 							"Character",
 							"Space Fits Restriction"
 						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Card Target"
-							]
-						}
 						"cardRestrictionElements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
@@ -52,11 +47,11 @@
 							},
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
-                                "spaceRestriction": {
+								"spaceRestriction": {
 									"spaceRestrictions": [
-										"Adjacent to Source"
+										"Adjacent to Card Target"
 									]
-                                }
+								}
                             }
 						]
 					},

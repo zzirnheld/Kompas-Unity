@@ -18,8 +18,7 @@
 					"cardRestriction": {
 						"blurb": "spell for Chain Dispel to Dispel",
 						"cardRestrictions": [
-							"Spell",
-							"Space Fits Restriction"
+							"Spell"
 						],
 						"cardRestrictionElements": [
 							{
@@ -28,18 +27,13 @@
 							},
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
-                                "spaceRestriction": {
+								"spaceRestriction": {
 									"spaceRestrictions": [
-										"In Card Target's AOE"
+										"Adjacent to Source"
 									]
-                                }
+								}
                             }
 						]
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Source"
-							]
-						}
 					}
 				},
 				{
@@ -54,7 +48,6 @@
 						"blurb": "spell for Chain Dispel to Dispel",
 						"cardRestrictions": [
 							"Spell",
-							"Space Fits Restriction",
 							"Different from Other Targets"
 						],
 						"cardRestrictionElements": [
@@ -64,18 +57,13 @@
 							},
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
-                                "spaceRestriction": {
+								"spaceRestriction": {
 									"spaceRestrictions": [
-										"In Card Target's AOE"
+										"Adjacent to Card Target"
 									]
-                                }
+								}
                             }
 						]
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Card Target"
-							]
-						}
 					}
 				},
 				{

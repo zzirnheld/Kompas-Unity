@@ -34,8 +34,7 @@
 					"$type": "Subeffect:ChangeAllCardStats:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Character",
-							"Space Fits Restriction"
+							"Character"
 						],
 						"cardRestrictionElements": [
 							{
@@ -46,16 +45,11 @@
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
                                 "spaceRestriction": {
 									"spaceRestrictions": [
-										"In Card Target's AOE"
+										"Adjacent to Space Target"
 									]
                                 }
                             }
 						]
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Space Target"
-							]
-						}
 					},
 					"eModifier": 1,
 					"wModifier": 1

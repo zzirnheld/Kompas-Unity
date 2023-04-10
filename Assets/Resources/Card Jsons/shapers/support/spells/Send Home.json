@@ -18,23 +18,8 @@
 					"cardRestriction": {
 						"blurb": "character to ANNIHILATE",
 						"cardRestrictions": [
-							"Character",
-							"Space Fits Restriction"
+							"Character"
 						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Source",
-								"Adjacent to a Card that Fits Restriction"
-							],
-							"adjacencyRestriction": {
-								"cardRestrictionElements": [
-									{
-										"$type": "Core.CardRestriction:Subtypes:",
-										"subtypes": [ "Shaper" ]
-									}
-								]
-							}
-						}
 						"cardRestrictionElements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
@@ -42,11 +27,20 @@
 							},
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
-                                "spaceRestriction": {
+								"spaceRestriction": {
 									"spaceRestrictions": [
-										"Adjacent to Source"
-									]
-                                }
+										"Adjacent to Source",
+										"Adjacent to a Card that Fits Restriction"
+									],
+									"adjacencyRestriction": {
+										"cardRestrictionElements": [
+											{
+												"$type": "Core.CardRestriction:Subtypes:",
+												"subtypes": [ "Shaper" ]
+											}
+										]
+									}
+								}
                             }
 						]
 					}

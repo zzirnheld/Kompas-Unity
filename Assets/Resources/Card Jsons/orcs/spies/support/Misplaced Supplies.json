@@ -13,13 +13,15 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Character",
-							"Space Fits Restriction"
+							"Character"
 						],
 						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" }
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:PositionFitsRestriction:",
+								"spaceRestriction": { "spaceRestrictions": [ "In Source's AOE" ] }
+							}
 						]
-						"spaceRestriction": { "spaceRestrictions": [ "In Source's AOE" ] }
 					}
 				}
 			},

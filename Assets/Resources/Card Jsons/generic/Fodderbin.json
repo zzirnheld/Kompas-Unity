@@ -15,26 +15,20 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Character",
-							"Space Fits Restriction"
+							"Character"
 						],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
-                                "spaceRestriction": {
+								"spaceRestriction": {
 									"spaceRestrictions": [
-										"In Card Target's AOE"
-									]
-                                }
+										"In Source's AOE"
+									],
+									"mustBeEmpty": false
+								}
                             }
 						]
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"In Source's AOE"
-							],
-							"mustBeEmpty": false
-						}
 					}
 				}
 			},

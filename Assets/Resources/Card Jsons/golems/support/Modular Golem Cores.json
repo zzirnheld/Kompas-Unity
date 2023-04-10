@@ -47,8 +47,7 @@
 						"blurb": "Golem to swap out modules",
 						"cardRestrictions": [
 							"Character",
-							"Augmented",
-							"Space Fits Restriction"
+							"Augmented"
 						],
 						"cardRestrictionElements": [
 							{
@@ -61,18 +60,13 @@
 							},
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
-                                "spaceRestriction": {
+								"spaceRestriction": {
 									"spaceRestrictions": [
-										"Adjacent to Source"
+										"Adjacent to Card Target"
 									]
-                                }
+								}
                             }
 						]
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Card Target"
-							]
-						}
 					}
 				},
 				{

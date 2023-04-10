@@ -14,10 +14,8 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Different from Source",
-							"Character",
-							"Space Fits Restriction"
+							"Character"
 						],
-						"spaceRestriction": { "spaceRestrictions": [ "In Source's AOE" ] }
 						"cardRestrictionElements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
@@ -25,11 +23,7 @@
 							},
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
-                                "spaceRestriction": {
-									"spaceRestrictions": [
-										"Adjacent to Source"
-									]
-                                }
+								"spaceRestriction": { "spaceRestrictions": [ "In Source's AOE" ] }
                             }
 						]
 					}

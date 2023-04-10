@@ -37,8 +37,7 @@
 					"cardRestriction": {
 						"blurb": "enemy character to attack",
 						"cardRestrictions": [
-							"Character",
-							"Space Fits Restriction"
+							"Character"
 						],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Enemy:" },
@@ -50,16 +49,11 @@
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
                                 "spaceRestriction": {
 									"spaceRestrictions": [
-										"In Card Target's AOE"
+										"Adjacent to Card Target"
 									]
                                 }
                             }
 						]
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Card Target"
-							]
-						}
 					}
 				},
 				{

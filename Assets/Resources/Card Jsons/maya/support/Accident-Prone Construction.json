@@ -40,20 +40,8 @@
 					"$type": "Subeffect:ChangeAllCardStats:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Character",
-							"Space Fits Restriction"
+							"Character"
 						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Distance to Card Target Fits X Restriction"
-							],
-							"distanceXRestriction": {
-								"numberRestrictions": [
-									"<=Constant"
-								],
-								"constant": 1
-							}
-						}
 						"cardRestrictionElements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
@@ -61,11 +49,17 @@
 							},
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
-                                "spaceRestriction": {
+								"spaceRestriction": {
 									"spaceRestrictions": [
-										"Adjacent to Source"
-									]
-                                }
+										"Distance to Card Target Fits X Restriction"
+									],
+									"distanceXRestriction": {
+										"numberRestrictions": [
+											"<=Constant"
+										],
+										"constant": 1
+									}
+								}
                             }
 						]
 					},

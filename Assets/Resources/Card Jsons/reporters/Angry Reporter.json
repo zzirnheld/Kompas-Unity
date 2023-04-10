@@ -95,14 +95,8 @@
 						"blurb": "enemy character to attack",
 						"cardRestrictions": [
 							"Character",
-							"Controller Isn't Player Target",
-							"Space Fits Restriction"
+							"Controller Isn't Player Target"
 						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Card Target"
-							]
-						}
 						"cardRestrictionElements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
@@ -110,11 +104,11 @@
 							},
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
-                                "spaceRestriction": {
+								"spaceRestriction": {
 									"spaceRestrictions": [
-										"Adjacent to Source"
+										"Adjacent to Card Target"
 									]
-                                }
+								}
                             }
 						]
 					},

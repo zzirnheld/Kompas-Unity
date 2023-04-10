@@ -18,8 +18,7 @@
 						"blurb": "Which character will die",
 						"cardRestrictions": [
 							"Character",
-							"Summoned",
-							"Space Fits Restriction"
+							"Summoned"
 						],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
@@ -29,18 +28,13 @@
 							},
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
-                                "spaceRestriction": {
+								"spaceRestriction": {
 									"spaceRestrictions": [
-										"In Card Target's AOE"
+										"In Source's AOE"
 									]
-                                }
+								}
                             }
 						]
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"In Source's AOE"
-							]
-						}
 					}
 				},
 				{
@@ -55,8 +49,7 @@
 						"blurb": "Whose stats will get set",
 						"cardRestrictions": [
 							"Character",
-							"Summoned",
-							"Space Fits Restriction"
+							"Summoned"
 						],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
@@ -66,18 +59,13 @@
 							},
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
-                                "spaceRestriction": {
+								"spaceRestriction": {
 									"spaceRestrictions": [
-										"In Card Target's AOE"
+										"In Source's AOE"
 									]
-                                }
+								}
                             }
 						]
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"In Source's AOE"
-							]
-						}
 					}
 				},
 				{

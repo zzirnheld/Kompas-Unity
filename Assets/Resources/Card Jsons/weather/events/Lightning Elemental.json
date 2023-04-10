@@ -18,24 +18,9 @@
 				{
 					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
-						"blurb": "character to strike with lightning",
 						"cardRestrictions": [
-							"Character",
-							"Space Fits Restriction"
+							"Character"
 						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"In AOE Source is Also In"
-							],
-							"alsoInAOEOfRestriction": {
-								"cardRestrictionElements": [
-									{
-										"$type": "Core.CardRestriction:Subtypes:",
-										"subtypes": [ "Weather" ]
-									}
-								]
-							}
-						}
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Enemy:" },
 							{
@@ -44,11 +29,19 @@
 							},
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
-                                "spaceRestriction": {
+								"spaceRestriction": {
 									"spaceRestrictions": [
-										"Adjacent to Source"
-									]
-                                }
+										"In AOE Source is Also In"
+									],
+									"alsoInAOEOfRestriction": {
+										"cardRestrictionElements": [
+											{
+												"$type": "Core.CardRestriction:Subtypes:",
+												"subtypes": [ "Weather" ]
+											}
+										]
+									}
+								}
                             }
 						]
 					}
