@@ -20,20 +20,24 @@
         ],
         "defenderRestriction" : {
             "cardRestrictions": [
-                "Different from Source",
-                "Space Fits Restriction"
-            ]
-            "spaceRestriction": {
-                "spaceRestrictions": [
-                    "Distance to Source Fits X Restriction"
-                ],
-                "distanceXRestriction": {
-                    "numberRestrictions": [
-                        "<=Constant"
-                    ],
-                    "constant": 2
-                }
-            }
+                "Different from Source"
+            ],
+			"cardRestrictionElements": [
+				{
+					"$type": "Core.CardRestriction:PositionFitsRestriction:",
+					"spaceRestriction": {
+						"spaceRestrictions": [
+							"Distance to Source Fits X Restriction"
+						],
+						"distanceXRestriction": {
+							"numberRestrictions": [
+								"<=Constant"
+							],
+							"constant": 2
+						}
+					}
+				}
+			]
         }
 	},
 	"n": 4,

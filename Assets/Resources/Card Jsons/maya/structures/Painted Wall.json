@@ -39,14 +39,16 @@
 					{
 						"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 						"cardRestriction": {
-							"cardRestrictions": [
-								"Space Fits Restriction"
+							"cardRestrictionElements": [
+								{
+									"$type": "Core.CardRestriction:PositionFitsRestriction:",
+									"spaceRestriction": {
+										"spaceRestrictions": [
+											"Corner"
+										]
+									}
+								}
 							]
-							"spaceRestriction": {
-								"spaceRestrictions": [
-									"Corner"
-								]
-							}
 						},
 						"card": { "$type": "Cards:ThisCard:" }
 					}

@@ -14,15 +14,17 @@
 						"This Card Fits Restriction Now"
 					],
 					"selfRestriction": {
-						"cardRestrictions": [
-							"Space Fits Restriction"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:PositionFitsRestriction:",
+								"spaceRestriction": {
+									"spaceRestrictions": [
+										"Corner"
+									],
+									"mustBeEmpty": false
+								}
+							}
 						]
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Corner"
-							],
-							"mustBeEmpty": false
-						}
 					}
 				}
 			},

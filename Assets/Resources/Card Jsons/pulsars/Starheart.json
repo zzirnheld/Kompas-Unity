@@ -51,26 +51,28 @@
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Space Fits Restriction"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:PositionFitsRestriction:",
+								"spaceRestriction": {
+									"spaceRestrictions": [
+										"Adjacent to a Card that Fits Restriction"
+									],
+									"adjacencyRestriction": {
+										"cardRestrictions": [
+											"Not Context Card"
+										],
+										"cardRestrictionElements": [
+											{
+												"$type": "Core.CardRestriction:Subtypes:",
+												"subtypes": [ "Pulsar" ]
+											}
+										]
+									},
+									"mustBeEmpty": false
+								}
+							}
 						]
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to a Card that Fits Restriction"
-							],
-							"adjacencyRestriction": {
-								"cardRestrictions": [
-									"Not Context Card"
-								],
-								"cardRestrictionElements": [
-									{
-										"$type": "Core.CardRestriction:Subtypes:",
-										"subtypes": [ "Pulsar" ]
-									}
-								]
-							},
-							"mustBeEmpty": false
-						}
 					}
 				}
 			},

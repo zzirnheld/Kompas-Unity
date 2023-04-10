@@ -20,25 +20,29 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Spell",
-							"Subtypes Exclude",
-							"Space Fits Restriction"
+							"Subtypes Exclude"
 						],
 						"subtypesExclude": [
 							"Weather"
-						]
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"In AOE Source is Also In"
-							],
-							"alsoInAOEOfRestriction": {
-								"cardRestrictionElements": [
-									{
-										"$type": "Core.CardRestriction:Subtypes:",
-										"subtypes": [ "Weather" ]
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:PositionFitsRestriction:",
+								"spaceRestriction": {
+									"spaceRestrictions": [
+										"In AOE Source is Also In"
+									],
+									"alsoInAOEOfRestriction": {
+										"cardRestrictionElements": [
+											{
+												"$type": "Core.CardRestriction:Subtypes:",
+												"subtypes": [ "Weather" ]
+											}
+										]
 									}
-								]
+								}
 							}
-						}
+						]
 					}
 				},
 				{

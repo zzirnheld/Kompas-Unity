@@ -15,24 +15,28 @@
 					],
 					"nowRestriction": {
 						"cardRestrictions": [
-							"Spell",
-							"Space Fits Restriction"
-						]
-						"spaceRestriction":
-						{
-							"spaceRestrictionElements": [ {
-								"$type": "Core.SpaceRestriction:InAOEOf:",
-								"anyOf": {
-									"$type": "ManyCards:FittingRestriction:",
-									"cardRestriction": {
-									"cardRestrictionElements": [ {
-											"$type": "Core.CardRestriction:Subtypes:",
-											"subtypes": [ "Weather" ]
-										} ]
-									}
+							"Spell"
+						],
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:PositionFitsRestriction:",
+								"spaceRestriction":
+								{
+									"spaceRestrictionElements": [ {
+										"$type": "Core.SpaceRestriction:InAOEOf:",
+										"anyOf": {
+											"$type": "ManyCards:FittingRestriction:",
+											"cardRestriction": {
+											"cardRestrictionElements": [ {
+													"$type": "Core.CardRestriction:Subtypes:",
+													"subtypes": [ "Weather" ]
+												} ]
+											}
+										}
+									}]
 								}
-							}]
-						}
+							}
+						]
 					}
 				}
 			},

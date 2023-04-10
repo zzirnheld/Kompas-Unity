@@ -13,15 +13,17 @@
 						"Main Card Fits Restriction After"
 					],
 					"nowRestriction": {
-						"cardRestrictions": [
-							"Space Fits Restriction"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:PositionFitsRestriction:",
+								"spaceRestriction": {
+									"spaceRestrictions": [
+										"On Source's Diagonal"
+									],
+									"mustBeEmpty": false
+								}
+							}
 						]
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"On Source's Diagonal"
-							],
-							"mustBeEmpty": false
-						}
 					}
 				}
 			},

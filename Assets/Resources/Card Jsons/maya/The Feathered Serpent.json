@@ -81,14 +81,16 @@
 			"Number of Cards Exist"
 		],
 		"countCardRestriction": {
-			"cardRestrictions": [
-				"Space Fits Restriction"
+			"cardRestrictionElements": [
+				{
+					"$type": "Core.CardRestriction:PositionFitsRestriction:",
+					"spaceRestriction": {
+						"spaceRestrictions": [
+							"On Edge of Board"
+						]
+					}
+				}
 			]
-			"spaceRestriction": {
-				"spaceRestrictions": [
-					"On Edge of Board"
-				]
-			}
 		},
 		"countCardNumberRestriction": {
 			"numberRestrictions": [">=Constant"],

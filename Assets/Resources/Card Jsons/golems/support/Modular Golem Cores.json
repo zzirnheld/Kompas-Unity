@@ -14,26 +14,28 @@
 						"Main Card Fits Restriction After"
 					],
 					"nowRestriction": {
-						"cardRestrictions": [
-							"Space Fits Restriction"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:PositionFitsRestriction:",
+								"spaceRestriction": {
+									"spaceRestrictions": [
+										"Adjacent to a Card that Fits Restriction"
+									],
+									"adjacencyRestriction": {
+										"cardRestrictions": [
+											"Augmented"
+										],
+										"cardRestrictionElements": [
+											{
+												"$type": "Core.CardRestriction:Subtypes:",
+												"subtypes": [ "Golem" ]
+											}
+										]
+									},
+									"mustBeEmpty": false
+								}
+							}
 						]
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to a Card that Fits Restriction"
-							],
-							"adjacencyRestriction": {
-								"cardRestrictions": [
-									"Augmented"
-								],
-								"cardRestrictionElements": [
-									{
-										"$type": "Core.CardRestriction:Subtypes:",
-										"subtypes": [ "Golem" ]
-									}
-								]
-							},
-							"mustBeEmpty": false
-						}
 					}
 				}
 			},
