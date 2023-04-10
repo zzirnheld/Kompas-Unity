@@ -2,11 +2,11 @@ using KompasCore.Cards;
 
 namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 {
-    public class CardType : CardRestrictionElement
+    public class CardType : RestrictionElementBase<GameCardBase>
     {
         public char cardType;
 
-        protected override bool FitsRestrictionLogic(GameCardBase card, IResolutionContext context)
+        protected override bool IsValidLogic(GameCardBase card, IResolutionContext context)
             => card.CardType == cardType;
     }
 

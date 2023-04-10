@@ -51,7 +51,7 @@ namespace KompasServer.Effects.Subeffects
             return await ServerPlayer.awaiter.GetCardListTargets(name, blurb, targetIds, JsonConvert.SerializeObject(listRestriction));
         }
 
-        protected virtual bool IsValidTarget(GameCard card) => cardRestriction.IsValidCard(card, ResolutionContext);
+        protected virtual bool IsValidTarget(GameCard card) => cardRestriction.IsValid(card, ResolutionContext);
 
         private IEnumerable<GameCard> GetPossibleTargets()
         {
@@ -114,7 +114,7 @@ namespace KompasServer.Effects.Subeffects
         {
             Debug.Log($"Potentially adding list {string.Join(",", choices ?? new List<GameCard>())}");
 
-            if (!listRestriction.IsValidCardList(choices, potentialTargets)) return false;
+            if (!listRestriction.IsValidList(choices, potentialTargets)) return false;
 
             //add all cards in the chosen list to targets
             AddList(choices);

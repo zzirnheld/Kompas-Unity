@@ -1,15 +1,12 @@
 ﻿using KompasCore.Cards;
 using KompasCore.GameCore;
-using KompasCore.Effects.Restrictions;
-using KompasServer.Effects;
 using System;
 using System.Linq;
 using UnityEngine;
-using KompasServer.Effects.Subeffects;
 
 namespace KompasCore.Effects
 {
-    public class CardRestriction : ContextInitializeableBase
+    public class CardRestriction : RestrictionBase<GameCardBase>
     {
         public Subeffect Subeffect => InitializationContext.subeffect;
 
@@ -161,8 +158,6 @@ namespace KompasCore.Effects
 
         public string[] canPlayIgnoring;
 
-        public CardRestrictionElement[] cardRestrictionElements = { };
-
         public string blurb = "";
 
         public GameCard Source => InitializationContext.source;
@@ -188,23 +183,18 @@ namespace KompasCore.Effects
             cardValueNumberRestriction?.Initialize(initializationContext);
 
             cardValue?.Initialize(initializationContext);
-
-            foreach (var cre in cardRestrictionElements)
-            {
-                cre.Initialize(initializationContext);
-            }
         }
 
         public override string ToString() => $"Card Restriction of {Source?.CardName}." +
             $"\nRestrictions: {string.Join(", ", cardRestrictions)}" +
-            $"\nRestriction Elements: {string.Join(", ", cardRestrictionElements.Select(r => r))}";
+            $"\nRestriction Elements: {string.Join(", ", elements.Select(r => r))}";
 
-        private bool HasCardRestrictionInAOE(GameCardBase cardToTest, int x, IResolutionContext context)
+        private bool HasCardRestrictionInAOE(GameCardBase cardToTest, IResolutionContext context)
         {
             if (cardToTest == null) return false;
             if (cardToTest.Location != CardLocation.Board) return false;
 
-            return Source.Game.Cards.Any(c => cardToTest.CardInAOE(c) && hasInAOERestriction.IsValidCard(c, x, context));
+            return Source.Game.Cards.Any(c => cardToTest.CardInAOE(c) && hasInAOERestriction.IsValid(c, context));
         }
 
         private bool WouldCardBeInAOEOfCardTargetIfCardTargetWereAtSpaceTarget(GameCardBase cardToTest, GameCardBase cardTarget, Space space)
@@ -231,7 +221,7 @@ namespace KompasCore.Effects
         /// <param name="x">The value of x for which to consider the restriction</param>
         /// <param name="context">The activation context relevant here - the context for the Effect or for this triggering event</param>
         /// <returns><see langword="true"/> if the card fits the restriction for the given value of x, <see langword="false"/> otherwise.</returns>
-        private bool IsRestrictionValid(string restriction, GameCardBase potentialTarget, int x, IResolutionContext context)
+        private bool IsRestrictionValid(string restriction, GameCardBase potentialTarget, IResolutionContext context)
             => restriction != null && restriction switch
             {
                 //targets
@@ -293,10 +283,10 @@ namespace KompasCore.Effects
                 //If the potential target is null, then it's not augmented by Source
                 NotAugmentedBySource => !(potentialTarget?.Augments.Contains(Source) ?? true),
 
-                AugmentsCardRestriction => augmentRestriction.IsValidCard(potentialTarget?.AugmentedCard, x, context),
+                AugmentsCardRestriction => augmentRestriction.IsValid(potentialTarget?.AugmentedCard, context),
 
-                WieldsAugmentFittingRestriction => potentialTarget?.Augments.Any(c => augmentRestriction.IsValidCard(c, context)) ?? false,
-                WieldsNoAugmentFittingRestriction => !(potentialTarget?.Augments.Any(c => augmentRestriction.IsValidCard(c, context)) ?? false),
+                WieldsAugmentFittingRestriction => potentialTarget?.Augments.Any(c => augmentRestriction.IsValid(c, context)) ?? false,
+                WieldsNoAugmentFittingRestriction => !(potentialTarget?.Augments.Any(c => augmentRestriction.IsValid(c, context)) ?? false),
 
                 //location
                 Hand => potentialTarget?.Location == CardLocation.Hand,
@@ -320,15 +310,14 @@ namespace KompasCore.Effects
 
                 //positioning
                 SourceInThisAOE => potentialTarget?.CardInAOE(Source) ?? false,
-                CardHasCardRestrictionInAOE => HasCardRestrictionInAOE(potentialTarget, x, context),
-                CardDoesntHaveCardRestrictionInAOE => !HasCardRestrictionInAOE(potentialTarget, x, context),
+                CardHasCardRestrictionInAOE => HasCardRestrictionInAOE(potentialTarget, context),
+                CardDoesntHaveCardRestrictionInAOE => !HasCardRestrictionInAOE(potentialTarget, context),
                 WouldBeInAOEOfCardTargetIfCardTargetWereAtSpaceTarget 
                     => WouldCardBeInAOEOfCardTargetIfCardTargetWereAtSpaceTarget(potentialTarget, Subeffect.CardTarget, Subeffect.SpaceTarget),
                 WouldOverlapCardTargetIfCardTargetWereAtSpaceTarget
                     => WouldCardOverlapCardTargetIfCardTargetWereAtSpaceTarget(potentialTarget, Subeffect.CardTarget, Subeffect.SpaceTarget),
                 IndexInListGTC => potentialTarget?.IndexInList > constant,
                 IndexInListLTC => potentialTarget?.IndexInList < constant,
-                IndexInListLTX => potentialTarget?.IndexInList < x,
 
                 //fights
                 IsDefendingFromSource
@@ -352,52 +341,17 @@ namespace KompasCore.Effects
 
         /* This exists to debug a card restriction,
          * but should not be usually used because it prints a ton*/
-        private bool IsRestrictionValidDebug(string restriction, GameCardBase potentialTarget, int x, IResolutionContext context)
+        private bool IsRestrictionValidDebug(string restriction, GameCardBase potentialTarget, IResolutionContext context)
         {
-            bool answer = IsRestrictionValid(restriction, potentialTarget, x, context);
+            bool answer = IsRestrictionValid(restriction, potentialTarget, context);
             //if (!answer) Debug.Log($"{potentialTarget} flouts {restriction} in effect of {Source} in context {InitializationContext}");
             return answer;
         }
 
-        private bool IsRestrictionElemValidDebug(CardRestrictionElement restriction, GameCardBase potentialTarget, IResolutionContext context)
+        protected override bool IsValidLogic(GameCardBase item, IResolutionContext context)
         {
-            bool answer = restriction.FitsRestriction(potentialTarget, context);
-            //if (!answer) Debug.Log($"{potentialTarget} flouts {restriction} in effect of {Source} in context {InitializationContext}");
-            return answer;
-
+            return base.IsValidLogic(item, context)
+                && cardRestrictions.All(r => IsRestrictionValidDebug(r, item, context));
         }
-
-        /// <summary>
-        /// Checks whether the card in question fits the relevant retrictions, for the given value of X
-        /// </summary>
-        /// <param name="potentialTarget">The card to see if it fits all restrictions</param>
-        /// <param name="x">The value of X for which to consider this effect's restriction</param>
-        /// <returns><see langword="true"/> if the card fits all restrictions, <see langword="false"/> if it doesn't fit at least one</returns>
-        private bool IsValidCard(GameCardBase potentialTarget, int x, IResolutionContext context)
-        {
-            ComplainIfNotInitialized();
-            //Debug.Log($"Checking valid target for card while init context is {InitializationContext}");
-
-            try
-            {
-                return cardRestrictions.All(r => IsRestrictionValidDebug(r, potentialTarget, x, context))
-                    && cardRestrictionElements.All(r => IsRestrictionElemValidDebug(r, potentialTarget, context));
-            }
-            catch (SystemException exception) when (exception is NullReferenceException || exception is ArgumentException)
-            {
-                Debug.LogError(exception);
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Checks whether the card in question fits the relevant retrictions, for the current effect value of X
-        /// </summary>
-        /// <param name="potentialTarget">The card to see if it fits all restrictions</param>
-        /// <param name="context">The activation context relevant here - the context for the Effect or for this triggering event</param>
-        /// <returns><see langword="true"/> if the card fits all restrictions, <see langword="false"/> if it doesn't fit at least one</returns>
-        public bool IsValidCard(GameCardBase potentialTarget, IResolutionContext context)
-            => IsValidCard(potentialTarget, Subeffect?.Count ?? 0, context);
-
     }
 }

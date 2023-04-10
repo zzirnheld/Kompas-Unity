@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 {
-    public class Fighting : CardRestrictionElement
+    public class Fighting : RestrictionElementBase<GameCardBase>
     {
         /// <summary>
         /// Can be null to represent checking whether the card is in any fight at all
@@ -45,7 +45,7 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
             return attack.attacker == fightingWhoCard || attack.defender == fightingWhoCard;
         }
 
-        protected override bool FitsRestrictionLogic(GameCardBase card, IResolutionContext context)
+        protected override bool IsValidLogic(GameCardBase card, IResolutionContext context)
             => InitializationContext.game.StackEntries.Any(stackEntry => IsValidFight(card, context, stackEntry));
     }
 }

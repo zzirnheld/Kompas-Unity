@@ -29,7 +29,7 @@ namespace KompasServer.Effects.Subeffects.Hanging
             var effs = new List<HangingEffect>();
 
             IEnumerable<GameCard> cards
-                = ServerGame.Cards.Where(c => cardRestriction.IsValidCard(c, ResolutionContext));
+                = ServerGame.Cards.Where(c => cardRestriction.IsValid(c, ResolutionContext));
 
             //First make sure are allowed to set their stats.
             //Don't affect any card unless all that should be affected, can be.

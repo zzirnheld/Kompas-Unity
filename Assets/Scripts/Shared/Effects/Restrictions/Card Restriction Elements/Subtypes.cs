@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 {
-    public class Subtypes : CardRestrictionElement
+    public class Subtypes : RestrictionElementBase<GameCardBase>
     {
         public string[] subtypes;
 
@@ -15,7 +15,7 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
             if (subtypes == null) throw new System.ArgumentNullException("subtypes");
         }
 
-        protected override bool FitsRestrictionLogic(GameCardBase card, IResolutionContext context)
+        protected override bool IsValidLogic(GameCardBase card, IResolutionContext context)
         //If you're excluding all subtypes (exclude = true) you want all subtypes to not be present on the card (all = false)
         //If you're including all subtypes (exclude = false) you want all subtypes to be present on the card (all = true)
             => exclude != subtypes.All(card.HasSubtype);

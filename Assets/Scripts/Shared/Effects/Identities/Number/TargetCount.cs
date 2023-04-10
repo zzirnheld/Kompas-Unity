@@ -15,7 +15,7 @@ namespace KompasCore.Effects.Identities.Numbers
         }
 
         private System.Func<GameCardBase, bool> Selector(IResolutionContext context)
-            => card => cardRestriction?.IsValidCard(card, context) ?? true;
+            => card => cardRestriction?.IsValid(card, context) ?? true;
 
         protected override int AbstractItemFrom(IResolutionContext context, IResolutionContext secondaryContext)
             => InitializationContext.subeffect.Effect.CardTargets.Count(Selector(ContextToConsider(context, secondaryContext)));

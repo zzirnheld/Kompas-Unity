@@ -19,7 +19,7 @@ namespace KompasServer.Effects.Subeffects
 
         protected override Task<ResolutionInfo> NoPossibleTargets()
         {
-            var rest = ServerGame.Cards.Where(c => restRestriction.IsValidCard(c, ResolutionContext));
+            var rest = ServerGame.Cards.Where(c => restRestriction.IsValid(c, ResolutionContext));
             ServerEffect.rest.AddRange(rest);
             return base.NoPossibleTargets();
         }
@@ -27,7 +27,7 @@ namespace KompasServer.Effects.Subeffects
         protected override void AddList(IEnumerable<GameCard> choices)
         {
             base.AddList(choices);
-            var rest = ServerGame.Cards.Where(c => restRestriction.IsValidCard(c, ResolutionContext) && !choices.Contains(c));
+            var rest = ServerGame.Cards.Where(c => restRestriction.IsValid(c, ResolutionContext) && !choices.Contains(c));
             ServerEffect.rest.AddRange(rest);
         }
     }

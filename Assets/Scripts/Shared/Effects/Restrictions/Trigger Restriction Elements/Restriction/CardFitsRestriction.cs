@@ -21,7 +21,7 @@ namespace KompasCore.Effects.Restrictions
             protected override bool AbstractIsValidContext(TriggeringEventContext context, IResolutionContext secondaryContext)
             {
                 var card = this.card.From(context, secondaryContext);
-                return cardRestriction.IsValidCard(card, ContextToConsider(context, secondaryContext));
+                return cardRestriction.IsValid(card, ContextToConsider(context, secondaryContext));
             }
         }
     }

@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 {
-    public class Location : CardRestrictionElement
+    public class Location : RestrictionElementBase<GameCardBase>
     {
         public string[] locations;
 
@@ -16,7 +16,7 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
             if (locations == null) throw new System.ArgumentNullException("locations");
         }
 
-        protected override bool FitsRestrictionLogic(GameCardBase card, IResolutionContext context)
+        protected override bool IsValidLogic(GameCardBase card, IResolutionContext context)
             => Locations.Any(loc => card.Location == loc);
     }
 }

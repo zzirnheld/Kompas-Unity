@@ -30,10 +30,10 @@ namespace KompasServer.Effects.Subeffects
             toLinkWith?.Initialize(DefaultInitializationContext);
         }
 
-        public override bool IsImpossible() => !Game.Cards.Any(c => cardRestriction.IsValidCard(c, ResolutionContext));
+        public override bool IsImpossible() => !Game.Cards.Any(c => cardRestriction.IsValid(c, ResolutionContext));
 
         protected virtual IEnumerable<GameCard> TargetCardsSource => Game.Cards;
-        protected virtual IEnumerable<GameCard> PotentialTargets => TargetCardsSource.Where(c => cardRestriction.IsValidCard(c, ResolutionContext));
+        protected virtual IEnumerable<GameCard> PotentialTargets => TargetCardsSource.Where(c => cardRestriction.IsValid(c, ResolutionContext));
         protected virtual int[] PotentialTargetIds => PotentialTargets.Select(c => c.ID).ToArray();
 
         protected virtual async Task<GameCard> GetTargets(int[] potentialTargetIds)
@@ -72,7 +72,7 @@ namespace KompasServer.Effects.Subeffects
         public virtual bool AddTargetIfLegal(GameCard card)
         {
             //evaluate the target. if it's valid, confirm it as the target (that's what the true is for)
-            if (cardRestriction.IsValidCard(card, ResolutionContext))
+            if (cardRestriction.IsValid(card, ResolutionContext))
             {
                 ServerEffect.AddTarget(card);
                 ServerPlayer.notifier.AcceptTarget();

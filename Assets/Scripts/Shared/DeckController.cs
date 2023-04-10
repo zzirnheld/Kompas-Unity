@@ -86,7 +86,7 @@ namespace KompasCore.GameCore
             List<GameCard> cards = new List<GameCard>();
             foreach (GameCard c in deck)
             {
-                if (c != null && cardRestriction.IsValidCard(c, context))
+                if (c != null && cardRestriction.IsValid(c, context))
                     cards.Add(c);
             }
             return cards;

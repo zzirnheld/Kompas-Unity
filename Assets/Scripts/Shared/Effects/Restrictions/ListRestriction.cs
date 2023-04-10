@@ -133,7 +133,7 @@ namespace KompasCore.Effects
         /// <param name="choices">The list of cards to collectively evaluate.</param>
         /// <returns><see langword="true"/> if the cards fit all the required restrictions collectively, 
         /// <see langword="false"/> otherwise</returns>
-        public bool IsValidCardList(IEnumerable<GameCard> choices, IEnumerable<GameCard> potentialTargets)
+        public bool IsValidList(IEnumerable<GameCard> choices, IEnumerable<GameCard> potentialTargets)
         {
             ComplainIfNotInitialized();
             return choices != null

@@ -149,13 +149,13 @@ namespace KompasCore.Effects
 
         private bool InAOEOfNumberOfCardsFittingRestriction(Space space, IResolutionContext context)
         {
-            var count = Game.Cards.Count(c => c.SpaceInAOE(space) && inAOEOfRestriction.IsValidCard(c, context));
+            var count = Game.Cards.Count(c => c.SpaceInAOE(space) && inAOEOfRestriction.IsValid(c, context));
             return numberOfCardsInAOEOfRestriction.IsValidNumber(count);
         }
 
         private bool CardInSpaceOverlapsCardRestriction(GameCard card, Space potentialSpace, IResolutionContext context)
         {
-            return Game.Cards.Any(c => overlapRestriction.IsValidCard(c, context) && card.Overlaps(c, potentialSpace));
+            return Game.Cards.Any(c => overlapRestriction.IsValid(c, context) && card.Overlaps(c, potentialSpace));
         }
 
         /// <summary>
@@ -182,7 +182,7 @@ namespace KompasCore.Effects
                 AdjacentToSource => Source.IsAdjacentTo(space),
                 AdjacentToCardTarget => target.IsAdjacentTo(space),
                 AdjacentToSpaceTarget => space.AdjacentTo(Subeffect.SpaceTarget),
-                AdjacentToCardRestriction => Game.BoardController.CardsAdjacentTo(space).Any(c => adjacencyRestriction.IsValidCard(c, context)),
+                AdjacentToCardRestriction => Game.BoardController.CardsAdjacentTo(space).Any(c => adjacencyRestriction.IsValid(c, context)),
 
                 ConnectedToSourceBy => Game.BoardController.AreConnectedBySpaces(Subeffect.Source.Position, space, connectednessRestriction, context),
                 ConnectedToSourceBySpaces
@@ -196,12 +196,12 @@ namespace KompasCore.Effects
                 InSourcesAOE => Source.SpaceInAOE(space),
                 NotInAOE => !Source.SpaceInAOE(space),
                 InCardTargetsAOE => target.SpaceInAOE(space),
-                InAOEOfCardFittingRestriction => Game.Cards.Any(c => c != null && c.SpaceInAOE(space) && inAOEOfRestriction.IsValidCard(c, context)),
-                NotInAOEOf => !Game.Cards.Any(c => c.SpaceInAOE(space) && inAOEOfRestriction.IsValidCard(c, context)),
+                InAOEOfCardFittingRestriction => Game.Cards.Any(c => c != null && c.SpaceInAOE(space) && inAOEOfRestriction.IsValid(c, context)),
+                NotInAOEOf => !Game.Cards.Any(c => c.SpaceInAOE(space) && inAOEOfRestriction.IsValid(c, context)),
                 InAOEOfNumberFittingRestriction => InAOEOfNumberOfCardsFittingRestriction(space, context),
-                InAOESourceAlsoIn => Game.Cards.Any(c => c.SpaceInAOE(space) && c.CardInAOE(Source) && alsoInAOEOfRestriction.IsValidCard(c, context)),
-                InAOECardTargetAlsoIn => Game.Cards.Any(c => c.SpaceInAOE(space) && c.CardInAOE(target) && alsoInAOEOfRestriction.IsValidCard(c, context)),
-                InAOESpaceTargetAlsoIn => Game.Cards.Any(c => c.SpaceInAOE(space) && c.SpaceInAOE(Subeffect.SpaceTarget) && alsoInAOEOfRestriction.IsValidCard(c, context)),
+                InAOESourceAlsoIn => Game.Cards.Any(c => c.SpaceInAOE(space) && c.CardInAOE(Source) && alsoInAOEOfRestriction.IsValid(c, context)),
+                InAOECardTargetAlsoIn => Game.Cards.Any(c => c.SpaceInAOE(space) && c.CardInAOE(target) && alsoInAOEOfRestriction.IsValid(c, context)),
+                InAOESpaceTargetAlsoIn => Game.Cards.Any(c => c.SpaceInAOE(space) && c.SpaceInAOE(Subeffect.SpaceTarget) && alsoInAOEOfRestriction.IsValid(c, context)),
                 SourceInSpaceOverlapsCardRestriction => CardInSpaceOverlapsCardRestriction(Source, space, context),
 
                 SourceDisplacementToSpaceMatchesSpaceTarget => Source.Position.DisplacementTo(space) == Subeffect.SpaceTarget,
@@ -232,7 +232,7 @@ namespace KompasCore.Effects
                 Empty => Game.BoardController.IsEmpty(space),
                 Occupied => !Game.BoardController.IsEmpty(space),
                 Surrounded => Game.BoardController.Surrounded(space),
-                CardHereFitsRestriction => hereFitsRestriction.IsValidCard(Game.BoardController.GetCardAt(space), context),
+                CardHereFitsRestriction => hereFitsRestriction.IsValid(Game.BoardController.GetCardAt(space), context),
 
                 OnSourcesDiagonal => Source.SameDiagonal(space),
                 OnCardTargetsDiagonal => target.SameDiagonal(space),

@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 {
-    public abstract class AugmentRestrictionBase : CardRestrictionElement
+    public abstract class AugmentRestrictionBase : RestrictionElementBase<GameCardBase>
     {
         public CardRestriction cardRestriction;
         public IIdentity<IReadOnlyCollection<GameCardBase>> augments;
@@ -16,7 +16,7 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 
         protected Func<GameCardBase, bool> IsValidAug(IResolutionContext context) => card =>
         {
-            if (cardRestriction != null) return cardRestriction.IsValidCard(card, context);
+            if (cardRestriction != null) return cardRestriction.IsValid(card, context);
             if (augments != null) return augments.From(context, null).Contains(card);
             if (augment != null) return augment.From(context, null) == card;
             throw new System.ArgumentNullException("augment", $"No augment provided for {this.GetType()} CardRestrictionElement");
@@ -40,13 +40,13 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
     {
         public bool all = false; //default to any
 
-        protected override bool FitsRestrictionLogic(GameCardBase card, IResolutionContext context) 
+        protected override bool IsValidLogic(GameCardBase card, IResolutionContext context) 
             => all ? card.Augments.All(IsValidAug(context)) : card.Augments.Any(IsValidAug(context));
     }
 
     public class Augments : AugmentRestrictionBase
     {
-        protected override bool FitsRestrictionLogic(GameCardBase card, IResolutionContext context)
+        protected override bool IsValidLogic(GameCardBase card, IResolutionContext context)
             => IsValidAug(context)(card.AugmentedCard);
     }
 }

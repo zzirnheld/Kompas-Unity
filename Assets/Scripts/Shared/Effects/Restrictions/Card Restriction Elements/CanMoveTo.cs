@@ -3,7 +3,7 @@ using KompasCore.Effects.Identities;
 
 namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 {
-    public class CanMoveTo : CardRestrictionElement
+    public class CanMoveTo : RestrictionElementBase<GameCardBase>
     {
         //public IIdentity<Space> contextDestination;
         public IIdentity<Space> destination;
@@ -18,7 +18,7 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
             destination?.Initialize(initializationContext);
         }
 
-        protected override bool FitsRestrictionLogic(GameCardBase card, IResolutionContext context)
+        protected override bool IsValidLogic(GameCardBase card, IResolutionContext context)
             => card.MovementRestriction.IsValidEffectMove(destination.From(context, default), context);
     }
 }

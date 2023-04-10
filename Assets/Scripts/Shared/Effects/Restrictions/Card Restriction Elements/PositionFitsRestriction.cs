@@ -3,7 +3,7 @@ using KompasCore.Effects.Identities;
 
 namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 {
-    public class PositionFitsRestriction : CardRestrictionElement
+    public class PositionFitsRestriction : RestrictionElementBase<GameCardBase>
     {
         public SpaceRestriction spaceRestriction;
 
@@ -13,7 +13,7 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
             spaceRestriction.Initialize(initializationContext);
         }
 
-        protected override bool FitsRestrictionLogic(GameCardBase card, IResolutionContext context)
+        protected override bool IsValidLogic(GameCardBase card, IResolutionContext context)
             => spaceRestriction.IsValidSpace(card.Position, context);
     }
 
@@ -33,7 +33,7 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
             base.Initialize(initializationContext);
         }
 
-        protected override bool FitsRestrictionLogic(GameCardBase card, IResolutionContext context)
+        protected override bool IsValidLogic(GameCardBase card, IResolutionContext context)
             => adjacentTo.From(context, default).IsAdjacentTo(card);
     }
 }

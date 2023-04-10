@@ -63,7 +63,7 @@ namespace KompasCore.Effects.Restrictions
             protected override bool AbstractIsValidSpace(Space space, IResolutionContext context)
             {
                 var card = InitializationContext.game.BoardController.GetCardAt(space);
-                return restriction.IsValidCard(card, context);
+                return restriction.IsValid(card, context);
             }
         }
 

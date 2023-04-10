@@ -17,7 +17,7 @@ namespace KompasServer.Effects.Subeffects
 
         public override Task<ResolutionInfo> Resolve()
         {
-            foreach (var c in Game.BoardController.CardsWhere(c => cardRestriction.IsValidCard(c, ResolutionContext)))
+            foreach (var c in Game.BoardController.CardsWhere(c => cardRestriction.IsValid(c, ResolutionContext)))
             {
                 var ctxt = new TriggeringEventContext(game: ServerGame, mainCardBefore: c, stackableCause: Effect, player: EffectController, space: c.Position);
                 ctxt.CacheCardInfoAfter();

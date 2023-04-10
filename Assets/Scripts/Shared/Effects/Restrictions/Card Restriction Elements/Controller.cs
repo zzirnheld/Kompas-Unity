@@ -4,7 +4,7 @@ using KompasCore.Effects.Identities.Players;
 
 namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 {
-    public class Controller : CardRestrictionElement
+    public class Controller : RestrictionElementBase<GameCardBase>
     {
         public IIdentity<Player> playerIdentity;
 
@@ -14,7 +14,7 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
             playerIdentity.Initialize(initializationContext);
         }
 
-        protected override bool FitsRestrictionLogic(GameCardBase card, IResolutionContext context)
+        protected override bool IsValidLogic(GameCardBase card, IResolutionContext context)
             => playerIdentity.From(context, default) == card.Controller;
     }
 
