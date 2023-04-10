@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace KompasCore.Effects
 {
-    public class SpaceRestriction : ContextInitializeableBase
+    public class SpaceRestriction : RestrictionBase<Space>
     {
         public Subeffect Subeffect => InitializationContext.subeffect;
         public GameCard Source => InitializationContext.source;
@@ -271,7 +271,7 @@ namespace KompasCore.Effects
             if (!space.IsValid) throw new InvalidSpaceException(space, "Invalid space to consider for restriction!");
 
             return spaceRestrictions.All(r => IsRestrictionValidWithDebug(r, space, theoreticalTarget, context))
-                && spaceRestrictionElements.All(sre => sre.IsValidSpace(space, context));
+                && spaceRestrictionElements.All(sre => sre.IsValid(space, context));
         }
 
         public Func<Space, bool> IsValidFor(IResolutionContext context) => s => IsValidSpace(s, context);

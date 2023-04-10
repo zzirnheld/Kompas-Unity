@@ -3,7 +3,7 @@ using KompasServer.Effects.Subeffects;
 
 namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 {
-    public class SpaceRestrictionWillBeValid : RestrictionElementBase<GameCardBase>
+    public class SpaceRestrictionWillBeValid : CardRestrictionElement
     {
         public int subeffectIndex;
 

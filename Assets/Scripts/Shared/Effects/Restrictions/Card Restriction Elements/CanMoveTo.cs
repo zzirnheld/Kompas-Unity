@@ -3,7 +3,7 @@ using KompasCore.Effects.Identities;
 
 namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 {
-    public class CanMoveTo : RestrictionElementBase<GameCardBase>
+    public class CanMoveTo : CardRestrictionElement
     {
         //public IIdentity<Space> contextDestination;
         public IIdentity<Space> destination;

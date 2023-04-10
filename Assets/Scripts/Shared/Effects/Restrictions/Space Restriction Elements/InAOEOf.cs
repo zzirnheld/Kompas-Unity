@@ -28,7 +28,7 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
             minAnyOfCount.Initialize(initializationContext);
         }
 
-        protected override bool AbstractIsValidSpace(Space space, IResolutionContext context)
+        protected override bool IsValidLogic(Space space, IResolutionContext context)
         {
             if (card != null && !ValidateCard(space, context)) return false;
 

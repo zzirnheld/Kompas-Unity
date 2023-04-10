@@ -21,7 +21,7 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
             number.Initialize(initializationContext);
         }
 
-        protected override bool AbstractIsValidSpace(Space space, IResolutionContext context)
+        protected override bool IsValidLogic(Space space, IResolutionContext context)
         {
             var origin = this.distanceTo.From(context, default);
             int distance = origin.DistanceTo(space);

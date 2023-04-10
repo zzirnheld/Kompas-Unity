@@ -3,7 +3,7 @@ using KompasCore.Effects.Identities;
 
 namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 {
-    public class PositionFitsRestriction : RestrictionElementBase<GameCardBase>
+    public class PositionFitsRestriction : CardRestrictionElement
     {
         public SpaceRestriction spaceRestriction;
 

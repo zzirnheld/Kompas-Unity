@@ -2,7 +2,7 @@ using KompasCore.Cards;
 
 namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 {
-    public class CardType : RestrictionElementBase<GameCardBase>
+    public class CardType : CardRestrictionElement
     {
         public char cardType;
 

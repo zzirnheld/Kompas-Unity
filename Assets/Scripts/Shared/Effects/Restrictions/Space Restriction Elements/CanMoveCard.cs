@@ -43,7 +43,7 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
             => InitializationContext.game.BoardController.AreConnectedByNumberOfSpacesFittingPredicate(source, dest,
                 s => throughRestriction.IsValidSpace(s, context), distanceRestriction.IsValidNumber);
 
-        protected override bool AbstractIsValidSpace(Space space, IResolutionContext context)
+        protected override bool IsValidLogic(Space space, IResolutionContext context)
         {
             var card = toMove.From(context, default).Card;
             return FitsMovementRestriction(card, space, context) && FitsThroughRestriction(card.Position, space, context);

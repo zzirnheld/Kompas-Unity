@@ -55,18 +55,4 @@ namespace KompasCore.Effects
 
         protected abstract bool IsValidLogic(Type item, IResolutionContext context);
     }
-
-    public abstract class NegateRestrictionElementBase<Type> : RestrictionElementBase<Type>
-    {
-        public IRestrictionElement<Type> element;
-
-        public override void Initialize(EffectInitializationContext initializationContext)
-        {
-            base.Initialize(initializationContext);
-            element.Initialize(initializationContext);
-        }
-
-        protected override bool IsValidLogic(Type item, IResolutionContext context)
-            => !element.IsValid(item, context);
-    }
 }

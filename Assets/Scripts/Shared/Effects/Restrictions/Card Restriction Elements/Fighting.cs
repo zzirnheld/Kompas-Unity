@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 {
-    public class Fighting : RestrictionElementBase<GameCardBase>
+    public class Fighting : CardRestrictionElement
     {
         /// <summary>
         /// Can be null to represent checking whether the card is in any fight at all

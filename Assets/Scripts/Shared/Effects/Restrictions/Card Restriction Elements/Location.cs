@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 {
-    public class Location : RestrictionElementBase<GameCardBase>
+    public class Location : CardRestrictionElement
     {
         public string[] locations;
 

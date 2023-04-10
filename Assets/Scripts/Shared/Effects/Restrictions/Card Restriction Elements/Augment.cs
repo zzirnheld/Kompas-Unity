@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 {
-    public abstract class AugmentRestrictionBase : RestrictionElementBase<GameCardBase>
+    public abstract class AugmentRestrictionBase : CardRestrictionElement
     {
         public CardRestriction cardRestriction;
         public IIdentity<IReadOnlyCollection<GameCardBase>> augments;

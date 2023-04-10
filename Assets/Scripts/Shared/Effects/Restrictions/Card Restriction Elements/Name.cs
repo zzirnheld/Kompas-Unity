@@ -3,7 +3,7 @@ using KompasCore.Effects.Identities;
 
 namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 {
-    public class Name : RestrictionElementBase<GameCardBase>
+    public class Name : CardRestrictionElement
     {
         public string nameIs;
         public string nameIncludes;
@@ -17,7 +17,7 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
         }
     }
 
-    public class DistinctName : RestrictionElementBase<GameCardBase>
+    public class DistinctName : CardRestrictionElement
     {
         public IIdentity<GameCardBase> from = new Identities.Cards.ThisCard();
 

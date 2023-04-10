@@ -18,7 +18,7 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
             toPlay.Initialize(initializationContext);
         }
 
-        protected override bool AbstractIsValidSpace(Space space, IResolutionContext context)
+        protected override bool IsValidLogic(Space space, IResolutionContext context)
         {
             var restriction = toPlay.From(context, default).PlayRestriction;
         

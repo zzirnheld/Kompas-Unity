@@ -30,7 +30,7 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
                     $"in the effect of {InitializationContext.source}");
         }
 
-        protected override bool AbstractIsValidSpace(Space toTest, IResolutionContext context)
+        protected override bool IsValidLogic(Space toTest, IResolutionContext context)
         {
             if (anyOfTheseCards != null) return anyOfTheseCards.From(context, default).Any(c => c.IsAdjacentTo(toTest));
             else if (card != null) return card.From(context, default).IsAdjacentTo(toTest);

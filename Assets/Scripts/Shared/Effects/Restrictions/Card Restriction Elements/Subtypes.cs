@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 {
-    public class Subtypes : RestrictionElementBase<GameCardBase>
+    public class Subtypes : CardRestrictionElement
     {
         public string[] subtypes;
 

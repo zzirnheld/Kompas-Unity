@@ -12,7 +12,7 @@ namespace KompasServer.Effects.Subeffects
     {
         public CardRestriction cardRestriction = new CardRestriction()
         {
-            cardRestrictionElements = new CardRestrictionElement[] { new Character() }
+            elements = new CardRestrictionElement[] { new Character() }
         };
 
         public IIdentity<IReadOnlyCollection<GameCardBase>> cardsSource = new Board();
