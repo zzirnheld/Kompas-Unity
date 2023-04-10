@@ -29,8 +29,7 @@
 					"cardRestriction": {
 						"blurb": "character within N spaces of Pneumatic Golem for it to rehand",
 						"cardRestrictions": [
-							"Character",
-							"Space Fits Restriction"
+							"Character"
 						],
 						"cardRestrictionElements": [
 							{

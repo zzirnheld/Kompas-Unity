@@ -105,7 +105,6 @@ namespace KompasCore.Effects
         public const string OutOfMovement = "Out of Movement";
 
         //positioning
-        public const string SpaceFitsRestriction = "Space Fits Restriction";
 
         public const string SourceInThisAOE = "Source in This' AOE"; //whether the source card is in the potential target's aoe
         public const string CardHasCardRestrictionInAOE = "Card has Card Restriction in its AOE";
@@ -320,7 +319,6 @@ namespace KompasCore.Effects
                 OutOfMovement => potentialTarget?.SpacesCanMove <= 0,
 
                 //positioning
-                SpaceFitsRestriction => potentialTarget.Position != null && spaceRestriction.IsValidSpace(potentialTarget.Position, context),
                 SourceInThisAOE => potentialTarget?.CardInAOE(Source) ?? false,
                 CardHasCardRestrictionInAOE => HasCardRestrictionInAOE(potentialTarget, x, context),
                 CardDoesntHaveCardRestrictionInAOE => !HasCardRestrictionInAOE(potentialTarget, x, context),
