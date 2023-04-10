@@ -25,8 +25,16 @@
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
-							}
-						],
+							},
+                            {
+                                "$type": "Core.CardRestriction:PositionFitsRestriction:",
+                                "spaceRestriction": {
+									"spaceRestrictions": [
+										"In Card Target's AOE"
+									]
+                                }
+                            }
+						]
 						"spaceRestriction": {
 							"spaceRestrictions": [
 								"Adjacent to Source",

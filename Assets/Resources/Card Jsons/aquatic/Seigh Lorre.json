@@ -18,9 +18,6 @@
 					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "what will sail",
-						"cardRestrictions": [
-							"Space Fits Restriction"
-						],
 						"cardRestrictionElements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
@@ -29,26 +26,29 @@
 							{
 								"$type": "Core.CardRestriction:SpaceRestrictionWillBeValid:",
 								"subeffectIndex": 1
-							}
-						],
-						"spaceRestriction": {
-							"spaceRestrictionElements": [
-								{
-									"$type": "Core.SpaceRestriction:InAOEOf:",
-									"anyOf": {
-										"$type": "ManyCards:FittingRestriction:",
-										"cardRestriction": {
-											"cardRestrictionElements": [
-												{
-													"$type": "Core.CardRestriction:Subtypes:",
-													"subtypes": [ "Water" ]
+							},
+                            {
+                                "$type": "Core.CardRestriction:PositionFitsRestriction:",
+                                "spaceRestriction": {
+									"spaceRestrictionElements": [
+										{
+											"$type": "Core.SpaceRestriction:InAOEOf:",
+											"anyOf": {
+												"$type": "ManyCards:FittingRestriction:",
+												"cardRestriction": {
+													"cardRestrictionElements": [
+														{
+															"$type": "Core.CardRestriction:Subtypes:",
+															"subtypes": [ "Water" ]
+														}
+													]
 												}
-											]
+											}
 										}
-									}
-								}
-							]
-						}
+									]
+                                }
+                            }
+						]
 					}
 				},
 				{

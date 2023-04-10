@@ -18,7 +18,7 @@
 							"Character",
 							"Enemy"
 						]
-					},
+					}
 					"spaceRestriction": {
 						"spaceRestrictions": [
 							"Adjacent to a Card that Fits Restriction"

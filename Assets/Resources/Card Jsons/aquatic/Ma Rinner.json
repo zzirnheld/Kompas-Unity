@@ -25,27 +25,29 @@
 					"$type": "Subeffect:ConditionalEnd:",
 					"condition": "Target Fits Restriction",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictionElements": [
-								{
-									"$type": "Core.SpaceRestriction:InAOEOf:",
-									"anyOf": {
-										"$type": "ManyCards:FittingRestriction:",
-										"cardRestriction": {
-											"cardRestrictionElements": [
-												{
-													"$type": "Core.CardRestriction:Subtypes:",
-													"subtypes": [ "Water" ]
+						"cardRestrictionElements": [
+                            {
+                                "$type": "Core.CardRestriction:PositionFitsRestriction:",
+                                "spaceRestriction": {
+									"spaceRestrictionElements": [
+										{
+											"$type": "Core.SpaceRestriction:InAOEOf:",
+											"anyOf": {
+												"$type": "ManyCards:FittingRestriction:",
+												"cardRestriction": {
+													"cardRestrictionElements": [
+														{
+															"$type": "Core.CardRestriction:Subtypes:",
+															"subtypes": [ "Water" ]
+														}
+													]
 												}
-											]
+											}
 										}
-									}
-								}
-							]
-						}
+									]
+                                }
+                            }
+						]
 					}
 				},
 				{

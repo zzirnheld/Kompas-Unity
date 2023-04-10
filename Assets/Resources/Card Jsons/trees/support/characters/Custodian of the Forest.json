@@ -20,7 +20,7 @@
 						"cardRestrictions": [
 							"Hurt",
 							"Space Fits Restriction"
-						],
+						]
 						"spaceRestriction": {
 							"spaceRestrictions": [
 								"Adjacent to Source"

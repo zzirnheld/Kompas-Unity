@@ -14,7 +14,7 @@
 					"selfRestriction": {
 						"cardRestrictions": [
 							"Space Fits Restriction"
-						],
+						]
 						"spaceRestriction": {
 							"spaceRestrictions": [
 								"Adjacent to a Card that Fits Restriction"

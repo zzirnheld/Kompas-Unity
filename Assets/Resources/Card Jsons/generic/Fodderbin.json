@@ -19,8 +19,16 @@
 							"Space Fits Restriction"
 						],
 						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" }
-						],
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:PositionFitsRestriction:",
+                                "spaceRestriction": {
+									"spaceRestrictions": [
+										"In Card Target's AOE"
+									]
+                                }
+                            }
+						]
 						"spaceRestriction": {
 							"spaceRestrictions": [
 								"In Source's AOE"

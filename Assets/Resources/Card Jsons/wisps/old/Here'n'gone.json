@@ -38,7 +38,7 @@
 							"Can Play Card Target to This Space",
 							"Space Fits Restriction",
 							"Empty"
-						],
+						]
 						"spaceRestriction": {
 							"spaceRestrictions": [
 								"Adjacent to Source"
@@ -84,7 +84,7 @@
 							"Can Play Card Target to This Space",
 							"Space Fits Restriction",
 							"Empty"
-						],
+						]
 						"spaceRestriction": {
 							"spaceRestrictions": [
 								"Adjacent to Source"
@@ -130,7 +130,7 @@
 							"Can Play Card Target to This Space",
 							"Space Fits Restriction",
 							"Empty"
-						],
+						]
 						"spaceRestriction": {
 							"spaceRestrictions": [
 								"Adjacent to Source"

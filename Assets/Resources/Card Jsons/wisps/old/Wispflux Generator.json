@@ -16,7 +16,7 @@
 					"selfRestriction": {
 						"cardRestrictions": [
 							"Space Fits Restriction"
-						],
+						]
 						"spaceRestriction": {
 							"spaceRestrictions": [
 								"Corner"
@@ -60,7 +60,7 @@
 							"Can Play Card Target to This Space",
 							"Space Fits Restriction",
 							"Empty"
-						],
+						]
 						"spaceRestriction": {
 							"spaceRestrictions": [
 								"Adjacent to Source"

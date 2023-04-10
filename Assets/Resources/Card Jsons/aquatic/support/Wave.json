@@ -75,14 +75,18 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Summoned",
-							"Character",
-							"Space Fits Restriction"
+							"Character"
 						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"In Card Target's AOE"
-							]
-						}
+						"cardRestrictionElements": [
+                            {
+                                "$type": "Core.CardRestriction:PositionFitsRestriction:",
+                                "spaceRestriction": {
+									"spaceRestrictions": [
+										"In Card Target's AOE"
+									]
+                                }
+                            }
+						]
 					}
 				},
 				{

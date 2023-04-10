@@ -18,14 +18,7 @@
 					"cardRestriction": {
 						"blurb": "Friendly Shaper to move",
 						"cardRestrictions": [
-							"Character",
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Source"
-							]
-						},
+							"Character" ],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
@@ -35,7 +28,15 @@
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Shaper" ]
-							}
+							},
+                            {
+                                "$type": "Core.CardRestriction:PositionFitsRestriction:",
+                                "spaceRestriction": {
+									"spaceRestrictions": [
+										"Adjacent to Source"
+									]
+                                }
+                            }
 						]
 					}
 				},

@@ -14,14 +14,8 @@
 					],
 					"nowRestriction": {
 						"cardRestrictions": [
-							"Space Fits Restriction",
                             "Augments Card Fitting Restriction"
 						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Source"
-							]
-						},
 						"augmentRestriction": {
 							"cardRestrictionElements": [
 								{
@@ -34,7 +28,15 @@
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Module" ]
-							}
+							},
+                            {
+                                "$type": "Core.CardRestriction:PositionFitsRestriction:",
+                                "spaceRestriction": {
+									"spaceRestrictions": [
+										"Adjacent to Source"
+									]
+                                }
+                            }
 						]
 					}
 				}

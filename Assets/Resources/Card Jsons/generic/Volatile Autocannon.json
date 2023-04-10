@@ -39,7 +39,7 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Space Fits Restriction"
-						],
+						]
 						"spaceRestriction": {
 							"spaceRestrictions": [
 								"Direction from Source is Space Target"

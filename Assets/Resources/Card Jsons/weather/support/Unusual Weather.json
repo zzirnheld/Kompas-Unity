@@ -33,7 +33,7 @@
 							"Not Already Target",
 							"Character",
 							"Space Fits Restriction"
-						],
+						]
 						"spaceRestriction": {
 							"spaceRestrictions": [
 								"In AOE Source is Also In"

@@ -75,6 +75,16 @@
 							"Character",
 							"Space Fits Restriction"
 						],
+						"cardRestrictionElements": [
+                            {
+                                "$type": "Core.CardRestriction:PositionFitsRestriction:",
+                                "spaceRestriction": {
+									"spaceRestrictions": [
+										"In Card Target's AOE"
+									]
+                                }
+                            }
+						]
 						"spaceRestriction": {
 							"spaceRestrictions": [
 								"On Axis of Last Two Spaces"

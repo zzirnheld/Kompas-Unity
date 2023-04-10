@@ -19,7 +19,7 @@
 							"Character",
 							"Different from Source"
 						]
-					},
+					}
 					"spaceRestriction": {
 						"mustBeEmpty": false,
 						"spaceRestrictions": [

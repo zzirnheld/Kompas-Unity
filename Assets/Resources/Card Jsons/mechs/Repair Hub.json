@@ -23,9 +23,17 @@
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Mech", "Golem" ]
-							}
+							},
+                            {
+                                "$type": "Core.CardRestriction:PositionFitsRestriction:",
+                                "spaceRestriction": {
+									"spaceRestrictions": [
+										"Adjacent to Source"
+									]
+                                }
+                            }
 						]
-					},
+					}
 					"spaceRestriction": {
 						"spaceRestrictions": [
 							"In Source's AOE"
