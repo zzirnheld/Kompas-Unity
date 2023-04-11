@@ -17,14 +17,11 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "enemy character to attack",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							},
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
                                 "spaceRestriction": {

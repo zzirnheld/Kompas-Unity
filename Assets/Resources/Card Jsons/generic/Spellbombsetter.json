@@ -15,15 +15,12 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:TargetAll:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Spell"
 						],
 						"elements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							},
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
                                 "spaceRestriction": {
@@ -54,15 +51,12 @@
 				},
 				{
 					"$type": "Subeffect:TargetAll:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Spell"
 						],
 						"elements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							},
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
                                 "spaceRestriction": {

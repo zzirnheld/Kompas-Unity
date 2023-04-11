@@ -15,16 +15,13 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:ChangeAllCardStats:",
+					"cardsSource": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character"
 						],
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							},
 							{
 								"$type": "Core.CardRestriction:Name:",
 								"nameIs": "Lengthening Elk"
@@ -35,16 +32,13 @@
 				},
 				{
 					"$type": "Subeffect:ChangeAllCardStats:",
+					"cardsSource": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character"
 						],
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							},
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Bone" ]

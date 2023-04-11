@@ -14,16 +14,11 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "angry WX character that might attack",
 						"cardRestrictions": [
 							"Controller Matches Player Target"
-						],
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							}
 						]
 					}
 				},
@@ -91,6 +86,7 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "enemy character to attack",
 						"cardRestrictions": [
@@ -98,10 +94,6 @@
 							"Controller Isn't Player Target"
 						],
 						"elements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							},
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
 								"spaceRestriction": {

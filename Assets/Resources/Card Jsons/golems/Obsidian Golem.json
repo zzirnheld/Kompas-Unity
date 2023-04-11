@@ -16,17 +16,12 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "summon for Obsidian Golem to give -5 E",
 						"cardRestrictions": [
 							"Character",
 							"Summoned"
-						],
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							}
 						]
 					}
 				},

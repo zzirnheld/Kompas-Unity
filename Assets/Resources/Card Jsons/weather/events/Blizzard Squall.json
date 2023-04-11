@@ -23,10 +23,6 @@
 						],
 						"elements": [
 							{ "$type": "Core.CardRestriction:Enemy:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							},
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
 								"spaceRestriction": {

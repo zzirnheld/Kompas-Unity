@@ -16,6 +16,7 @@
 				{
 					"$type": "Subeffect:CardTarget:",
 					"blurb": "card to slightly yeet",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"cardRestrictions": [
                             "Subtypes Include Any Of"
@@ -23,12 +24,6 @@
 						"subtypesIncludeAnyOf": [
                             "Light",
 							"Shade"
-						],
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							}
 						]
 					}
 				},

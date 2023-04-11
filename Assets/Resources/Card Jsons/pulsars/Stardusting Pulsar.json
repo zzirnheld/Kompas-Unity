@@ -35,17 +35,12 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "summon for Stardusting Pulsar to buff",
 						"cardRestrictions": [
 							"Character",
 							"Summoned"
-						],
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							}
 						]
 					}
 				},
@@ -90,17 +85,12 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "summon for Stardusting Pulsar to debuff",
 						"cardRestrictions": [
 							"Character",
 							"Summoned"
-						],
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							}
 						]
 					}
 				},

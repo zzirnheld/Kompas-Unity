@@ -17,6 +17,7 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Avatar",
@@ -26,13 +27,7 @@
 							"spaceRestrictions": [
 								"Adjacent to Source"
 							]
-						},
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							}
-						]
+						}
 					}
 				},
 				{

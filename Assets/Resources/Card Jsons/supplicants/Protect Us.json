@@ -39,10 +39,6 @@
 						"cardRestrictions":["Character"],
 						"elements": [
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							},
-							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Supplicant" ]
 							}
@@ -58,10 +54,6 @@
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{ "$type": "Core.CardRestriction:Negated:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							},
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Supplicant" ]

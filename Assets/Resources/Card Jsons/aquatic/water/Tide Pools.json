@@ -19,28 +19,21 @@
 								"locations": [ "Board" ]
 							},
                             {
-                                "$type": "Core.CardRestriction:PositionFitsRestriction:",
-                                "spaceRestriction": {
-									"spaceRestrictionElements": [
-										{
-											"$type": "Core.SpaceRestriction:InAOEOf:",
-											"anyOf": {
-												"$type": "ManyCards:FittingRestriction:",
-												"cardRestriction": {
-													"cardRestrictions": [
-														"Distinct Name from Source"
-													],
-													"elements": [
-														{
-															"$type": "Core.CardRestriction:Subtypes:",
-															"subtypes": [ "Water" ]
-														}
-													]
-												}
+								"$type": "Core.SpaceRestriction:InAOEOf:",
+								"anyOf": {
+									"$type": "ManyCards:FittingRestriction:",
+									"cardRestriction": {
+										"cardRestrictions": [
+											"Distinct Name from Source"
+										],
+										"elements": [
+											{
+												"$type": "Core.CardRestriction:Subtypes:",
+												"subtypes": [ "Water" ]
 											}
-										}
-									]
-                                }
+										]
+									}
+								}
                             }
 						]
 					}

@@ -22,6 +22,7 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "for Mother of Dragons to kill",
 						"cardRestrictions": [
@@ -29,11 +30,7 @@
 							"Not Already Target"
 						],
 						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							}
+							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					}
 				},

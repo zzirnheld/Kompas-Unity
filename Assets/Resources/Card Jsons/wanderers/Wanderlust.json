@@ -15,6 +15,7 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "friendly character to wander",
 						"cardRestrictions": [
@@ -22,11 +23,7 @@
 							"Summoned"
 						],
 						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							}
+							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					}
 				},

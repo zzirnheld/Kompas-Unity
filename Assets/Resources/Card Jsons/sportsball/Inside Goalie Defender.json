@@ -40,6 +40,7 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "character to goal-kick Augment to",
 						"cardRestrictions": [
@@ -51,13 +52,7 @@
 							"spaceRestrictions": [
 								"Adjacent to Source"
 							]
-						},
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							}
-						]
+						}
 					}
 				},
 				{

@@ -19,15 +19,12 @@
 				{
 					"$type": "Subeffect:CardTarget:",
 					"blurb": "card to boing boing",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Different from Source"
 						],
 						"elements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							},
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
 								"spaceRestriction": {

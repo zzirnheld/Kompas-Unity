@@ -19,6 +19,7 @@
                 },
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "I don't want to remember!",
 						"cardRestrictions": [
@@ -26,10 +27,6 @@
 							"Augments Current Target"
 						],
 						"elements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							},
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Memory" ]

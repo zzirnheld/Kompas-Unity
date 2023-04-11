@@ -13,6 +13,7 @@
 			"subeffects": [
 				{
 					"$type":"Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction":
 					{
 						"blurb": "character whose Module to swap out",
@@ -29,13 +30,7 @@
                                     "subtypes": [ "Module" ]
                                 }
 							]
-						},
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							}
-						]
+						}
 					}
 				},
                 {
@@ -43,14 +38,9 @@
                     "cardRestriction": {
                         "blurb": "Module to swap out",
                         "cardRestrictions": [
-                            "Augment",
                             "Augments Current Target"
                         ],
                         "elements": [
-                            {
-                                "$type": "Core.CardRestriction:Location:",
-                                "locations": [ "Board" ]
-                            },
                             {
                                 "$type": "Core.CardRestriction:Subtypes:",
                                 "subtypes": [ "Module" ]

@@ -16,15 +16,10 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:ChangeAllCardStats:",
+					"cardsSource": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character"
-						],
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							}
 						]
 					},
 					"eModifier": 1
@@ -44,15 +39,10 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:ChangeAllCardStats:",
+					"cardsSource": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character"
-						],
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							}
 						]
 					},
 					"eModifier": -1

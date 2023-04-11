@@ -41,15 +41,12 @@
 				{
 					"$type": "Subeffect:CardTarget:",
 					"blurb": "Vessel to get a copy of the memory",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Wields No Augment Fitting Restriction"
 						],
 						"elements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							},
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Vessel" ]

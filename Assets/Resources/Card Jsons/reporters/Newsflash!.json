@@ -69,6 +69,7 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"playerIndex": -2,
 					"cardRestriction": {
 						"blurb": "friendly Reporter to move",
@@ -76,10 +77,6 @@
 							"Character" ],
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							},
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Reporter" ]

@@ -17,10 +17,6 @@
 					"cardRestrictions":["Character"],
 					"elements": [
 						{
-							"$type": "Core.CardRestriction:Location:",
-							"locations": [ "Board" ]
-						},
-						{
 							"$type": "Core.CardRestriction:Subtypes:",
 							"subtypes": [ "Ethereal" ]
 						}

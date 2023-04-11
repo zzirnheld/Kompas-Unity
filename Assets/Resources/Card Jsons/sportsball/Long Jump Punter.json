@@ -18,6 +18,7 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "character within 4 spaces to punt Augment to",
 						"cardRestrictions": [
@@ -35,13 +36,7 @@
 								],
 								"constant": 4
 							}
-						},
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							}
-						]
+						}
 					}
 				},
 				{

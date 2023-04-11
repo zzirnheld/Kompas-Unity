@@ -17,6 +17,7 @@
 				},
 				{
 					"$type":"Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction":
 					{
 						"blurb":"character to put in TIME OUT!",
@@ -31,13 +32,7 @@
 							"elements": [
 								{ "$type": "Core.CardRestriction:Friendly:" }
 							]
-						},
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							}
-						]
+						}
 					}
 				},
 				{

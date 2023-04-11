@@ -16,7 +16,7 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
-					"toSearch": { "$type": "ManyCards:Discard:" },
+					"toSearch": { "$type": "ManyCards:Discard:" }
 				},
 				{
 					"$type": "Subeffect:TargetAll:",

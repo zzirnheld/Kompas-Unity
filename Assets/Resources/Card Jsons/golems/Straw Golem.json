@@ -16,17 +16,14 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "enemy card for Straw Golem to move.",
 						"cardRestrictions": [
 							"Not Augment"
 						],
 						"elements": [
-							{ "$type": "Core.CardRestriction:Enemy:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							}
+							{ "$type": "Core.CardRestriction:Enemy:" }
 						]
 					}
 				},
@@ -51,6 +48,7 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "enemy card for Straw Golem to move.",
 						"cardRestrictions": [
@@ -58,11 +56,7 @@
 							"Not Augment"
 						],
 						"elements": [
-							{ "$type": "Core.CardRestriction:Enemy:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							}
+							{ "$type": "Core.CardRestriction:Enemy:" }
 						]
 					}
 				},

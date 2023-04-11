@@ -22,11 +22,7 @@
 							"Character"
 						],
 						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							}
+							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					},
 					"wModifier": 1
@@ -52,11 +48,7 @@
 							"Character"
 						],
 						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							}
+							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					},
 					"eModifier": 1
