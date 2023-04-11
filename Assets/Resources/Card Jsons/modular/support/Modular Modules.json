@@ -92,15 +92,9 @@
                 },
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Discard:" },
 					"cardRestriction": {
-						"blurb": "cards to reshuffle",
-						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Discard" ]
-							}
-						]
+						"blurb": "cards to reshuffle"
 					},
 					"listRestriction": {
 						"listRestrictions": [
