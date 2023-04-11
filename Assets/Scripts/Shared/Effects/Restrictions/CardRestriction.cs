@@ -112,8 +112,6 @@ namespace KompasCore.Effects
             = "Would Overlap Card Target If Card Target Were At Space Target";
 
         public const string IndexInListGTC = "Index>C";
-        public const string IndexInListLTC = "Index<C";
-        public const string IndexInListLTX = "Index<X";
         #endregion restrictions
 
         public string[] cardRestrictions = { };
@@ -301,7 +299,6 @@ namespace KompasCore.Effects
                 WouldOverlapCardTargetIfCardTargetWereAtSpaceTarget
                     => WouldCardOverlapCardTargetIfCardTargetWereAtSpaceTarget(potentialTarget, Subeffect.CardTarget, Subeffect.SpaceTarget),
                 IndexInListGTC => potentialTarget?.IndexInList > constant,
-                IndexInListLTC => potentialTarget?.IndexInList < constant,
 
                 //misc
                 Augmented => potentialTarget?.Augments.Any() ?? false,

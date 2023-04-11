@@ -25,23 +25,37 @@
 						"blurb": "spell for Perthro to search (to hand)",
 						"cardRestrictions": [
 							"Spell",
-							"Deck",
-							"Index<C"
+							"Deck"
 						],
-						"constant": 10,
 						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" }
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": { "value": "Index" },
+								"numberRestriction": { "elements": [{
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:LessThan:" },
+									"other": { "$type": "Numbers:Constant:", "constant": 10 }
+								}]}
+							}
 						]
 					},
 					"restRestriction": {
 						"cardRestrictions": [
 							"Deck",
-							"Index<C",
 							"Not Already Target"
 						],
-						"constant": 10,
 						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" }
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": { "value": "Index" },
+								"numberRestriction": { "elements": [{
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:LessThan:" },
+									"other": { "$type": "Numbers:Constant:", "constant": 10 }
+								}]}
+							}
 						]
 					},
 					"listRestriction": {

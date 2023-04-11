@@ -28,13 +28,20 @@
 					"cardRestriction": {
 						"blurb": "for Haemopoten to draw",
 						"cardRestrictions": [
-							"Deck",
-							"Index<C"
+							"Deck"
 						],
 						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" }
-						],
-						"constant": 1
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": { "value": "Index" },
+								"numberRestriction": { "elements": [{
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:LessThan:" },
+									"other": { "$type": "Numbers:Constant:", "constant": 1 }
+								}]}
+							}
+						]
 					}
 				},
 				{
