@@ -23,7 +23,7 @@
 						"cardRestrictions": [
 							"Avatar"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
@@ -41,7 +41,7 @@
 						"cardRestrictions": [
 							"Different from Source"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
@@ -92,7 +92,7 @@
 						"cardRestrictions": [
 							"Avatar"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
@@ -110,7 +110,7 @@
 						"cardRestrictions": [
 							"Different from Source"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]

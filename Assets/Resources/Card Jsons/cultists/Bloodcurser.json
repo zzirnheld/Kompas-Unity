@@ -18,7 +18,7 @@
 						"cardRestrictions": [
 							"Character"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
@@ -41,14 +41,14 @@
 					"eModifier": -2
 				},
 				{
-					"$type": "Subeffect:ChooseFromList:",
+					"$type": "Subeffect:CardTarget:",
 					"maxCanChoose": 1,
 					"cardRestriction": {
 						"blurb": "Silent Cult Follower to bloodcurse (1/2)",
 						"cardRestrictions": [
 							"Character"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
                             {
                                 "$type": "Core.CardRestriction:Location:",
@@ -78,14 +78,14 @@
 					"$type": "Subeffect:Play:"
 				},
 				{
-					"$type": "Subeffect:ChooseFromList:",
+					"$type": "Subeffect:CardTarget:",
 					"maxCanChoose": 1,
 					"cardRestriction": {
 						"blurb": "Silent Cult Follower to bloodcurse (2/2)",
 						"cardRestrictions": [
 							"Character"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
                             {
                                 "$type": "Core.CardRestriction:Location:",

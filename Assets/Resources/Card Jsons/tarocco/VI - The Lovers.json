@@ -28,14 +28,14 @@
 					"targetIndex": -1
 				},
 				{
-					"$type": "Subeffect:DeckTarget:",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Tarocco for Lovers to become",
+						"toSearch": { "$type": "ManyCards:Deck:" },
 						"cardRestrictions": [
-							"Character",
-							"Deck"
+							"Character"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Tarocco" ]

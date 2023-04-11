@@ -17,7 +17,7 @@
 				{
 					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
@@ -32,7 +32,7 @@
 						"cardRestrictions": [
 							"Not Already Target"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",

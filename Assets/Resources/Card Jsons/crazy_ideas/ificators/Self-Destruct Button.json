@@ -20,7 +20,7 @@
 						"cardRestrictions": [
 							"Different from Source"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
@@ -42,7 +42,7 @@
 				{
 					"$type": "Subeffect:TargetAll:",
 					"cardRestriction": {
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
@@ -66,10 +66,10 @@
 					]
 				},
 				{
-					"$type": "Subeffect:ChooseFromList:",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "oh, and the self-destruct button on the -ificator in my hand, too. Curse you.",
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",

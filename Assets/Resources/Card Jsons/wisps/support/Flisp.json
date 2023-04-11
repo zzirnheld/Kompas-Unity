@@ -14,12 +14,12 @@
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:TargetAllCardsIdentity:",
-					"cardsIdentity": {
+					"$type": "Subeffect:TargetAll:",
+					"toSearch": {
 						"$type": "ManyCards:FittingRestriction:",
 						"cards": { "$type": "ManyCards:Board:" },
 						"cardRestriction": {
-							"cardRestrictionElements": [
+							"elements": [
                                 { "$type": "Core.CardRestriction:Friendly:" },
 								{
 									"$type": "Core.CardRestriction:Subtypes:",
@@ -45,7 +45,7 @@
                                 "cards": {
                                     "$type": "ManyCards:FittingRestriction:",
                                     "cardRestriction": {
-                                        "cardRestrictionElements": [ { "$type": "Core.CardRestriction:Enemy:" } ]
+                                        "elements": [ { "$type": "Core.CardRestriction:Enemy:" } ]
                                     }
                                 }
                             }

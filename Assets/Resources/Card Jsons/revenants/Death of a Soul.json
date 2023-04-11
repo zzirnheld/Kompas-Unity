@@ -23,7 +23,7 @@
 						"cardRestrictions": [
 							"Not Already Target"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
@@ -57,7 +57,7 @@
 						"cardRestrictions": [
 							"Character"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]

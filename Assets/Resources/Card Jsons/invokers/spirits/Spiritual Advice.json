@@ -17,7 +17,7 @@
 					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "for Spiritual Advice to reshuffle",
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",

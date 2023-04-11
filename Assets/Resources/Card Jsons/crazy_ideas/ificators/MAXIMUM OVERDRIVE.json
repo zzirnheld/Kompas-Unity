@@ -21,7 +21,7 @@
 						"cardRestrictions": [
 							"Character"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
@@ -45,7 +45,7 @@
 					"$type": "Subeffect:ConditionalEnd:",
 					"condition": "Target Violates Restriction",
 					"cardRestriction": {
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Crazy" ]

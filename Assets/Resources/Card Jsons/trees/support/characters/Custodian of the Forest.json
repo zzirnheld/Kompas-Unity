@@ -17,7 +17,7 @@
 				{
 					"$type": "Subeffect:TargetAll:",
 					"cardRestriction": {
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Hurt:" },
 							{
 								"$type": "Core.CardRestriction:PositionFitsRestriction:",

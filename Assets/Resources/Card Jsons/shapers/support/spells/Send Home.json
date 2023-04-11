@@ -20,7 +20,7 @@
 						"cardRestrictions": [
 							"Character"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
@@ -33,7 +33,7 @@
 										"Adjacent to a Card that Fits Restriction"
 									],
 									"adjacencyRestriction": {
-										"cardRestrictionElements": [
+										"elements": [
 											{
 												"$type": "Core.CardRestriction:Subtypes:",
 												"subtypes": [ "Shaper" ]
@@ -61,7 +61,7 @@
 			"Adjacent to Card Fitting Restriction"
 		],
 		"adjacentCardRestriction": {
-			"cardRestrictionElements": [
+			"elements": [
 				{
 					"$type": "Core.CardRestriction:Subtypes:",
 					"subtypes": [ "Shaper" ]

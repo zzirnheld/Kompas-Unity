@@ -16,7 +16,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:ChooseFromList:",
+					"$type": "Subeffect:CardTarget:",
 					"maxCanChoose": 1,
 					"cardRestriction": {
 						"blurb": "New Silent Devotee",
@@ -24,7 +24,7 @@
 							"Deck",
 							"Character"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",

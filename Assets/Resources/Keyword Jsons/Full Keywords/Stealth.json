@@ -22,7 +22,7 @@
                         "anyOf": {
                             "$type": "ManyCards:FittingRestriction:",
                             "cardRestriction": {
-                            "cardRestrictionElements": [ {
+                            "elements": [ {
                                     "$type": "Core.CardRestriction:Subtypes:",
                                     "subtypes": [ "Shade" ]
                                 } ]
@@ -49,7 +49,7 @@
                     "Main Card Fits Restriction After"
                 ],
                 "nowRestriction": {
-					"cardRestrictionElements": [
+					"elements": [
 						{
 							"$type": "Core.CardRestriction:Subtypes:",
 							"subtypes": [ "Light" ]
@@ -84,7 +84,7 @@
                 "cardRestrictions": [
                     "Character"
                 ],
-                "cardRestrictionElements": [
+                "elements": [
                     { "$type": "Core.CardRestriction:Enemy:" },
                     {
                         "$type": "Core.CardRestriction:Location:",

@@ -36,7 +36,7 @@
 						"This Card Fits Restriction Now"
 					],
 					"selfRestriction": {
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Discard" ]
@@ -53,7 +53,7 @@
 					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "for Buffer Shield to attach to",
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]

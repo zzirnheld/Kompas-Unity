@@ -14,7 +14,7 @@
 						"Main Card Fits Restriction After"
 					],
 					"nowRestriction": {
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Memory" ]

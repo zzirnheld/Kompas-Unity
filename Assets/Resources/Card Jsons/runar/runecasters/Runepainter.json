@@ -19,7 +19,7 @@
 						"cardRestrictions": [
 							"Spell"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
                             {
                                 "$type": "Core.CardRestriction:Location:",
@@ -71,14 +71,14 @@
 					]
 				},
 				{
-					"$type": "Subeffect:ChooseFromListSaveRest:",
+					"$type": "Subeffect:CardTargetSaveRest:",
 					"cardRestriction": {
 						"blurb": "Rune for Runepainter to search (to hand)",
 						"cardRestrictions": [
 							"Same Name as Target",
 							"Deck"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
@@ -100,7 +100,7 @@
 							"Deck",
 							"Not Already Target"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:CardValueFits:",

@@ -44,7 +44,7 @@
 						"cardRestrictions": [
 							"Controller Matches Player Target"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Hand" ]

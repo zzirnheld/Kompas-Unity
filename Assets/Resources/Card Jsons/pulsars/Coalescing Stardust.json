@@ -17,7 +17,7 @@
 						"cardRestrictions": [
 							"Avatar"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
@@ -67,7 +67,7 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "Subeffect:ChooseFromList:",
+					"$type": "Subeffect:CardTarget:",
 					"maxCanChoose": 1,
 					"cardRestriction": {
 						"blurb": "Pulsar to coalesce",
@@ -75,7 +75,7 @@
 							"Deck",
 							"Character"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",

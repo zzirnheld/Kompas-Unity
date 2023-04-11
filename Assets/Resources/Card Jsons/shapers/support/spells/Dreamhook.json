@@ -19,7 +19,7 @@
 						"blurb": "Friendly Shaper to move",
 						"cardRestrictions": [
 							"Character" ],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
@@ -47,7 +47,7 @@
 						"cardRestrictions": [
 							"Character"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Enemy:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
@@ -86,7 +86,7 @@
 			"cardRestrictions": [
 				"Character"
 			],
-			"cardRestrictionElements": [
+			"elements": [
 				{
 					"$type": "Core.CardRestriction:Subtypes:",
 					"subtypes": [ "Shaper" ]

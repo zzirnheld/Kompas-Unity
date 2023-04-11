@@ -24,17 +24,14 @@
 					"$type": "Subeffect:Discard:"
 				},
 				{
-					"$type": "Subeffect:DeckTarget:",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "for Clay Golem to summon",
+						"toSearch": { "$type": "ManyCards:Deck:" },
 						"cardRestrictions": [
-							"Character",
-							"Deck"
+							"Character"
 						],
-						"cardValue": {
-							"value": "S"
-						},
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Golem" ]

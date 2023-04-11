@@ -15,7 +15,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:ChooseFromList:",
+					"$type": "Subeffect:CardTarget:",
 					"maxCanChoose": 1,
 					"cardRestriction": {
 						"blurb": "RAIN PLEASE",
@@ -27,7 +27,7 @@
 						"cardRestrictions": [
 							"Spell"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Water" ]

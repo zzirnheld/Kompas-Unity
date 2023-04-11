@@ -14,7 +14,7 @@
 						"Space Fits Restriction"
 					],
 					"cardRestriction": {
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Vessel" ]

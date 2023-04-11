@@ -13,7 +13,7 @@
                 ],
                 "thisCardRestriction":
                 {
-					"cardRestrictionElements": [
+					"elements": [
 						{
 							"$type": "Core.CardRestriction:CardValueFits:",
 							"cardValue": { "value": "Spaces Can Move" },
@@ -43,7 +43,7 @@
 							"Adjacent to a Card that Fits Restriction"
 						],
 						"cardRestriction": {
-							"cardRestrictionElements": [
+							"elements": [
                                 { "$type": "Core.CardRestriction:Friendly:" },
 								{
 									"$type": "Core.CardRestriction:Subtypes:",

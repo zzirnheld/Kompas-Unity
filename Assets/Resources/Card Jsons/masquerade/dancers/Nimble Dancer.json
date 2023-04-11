@@ -19,7 +19,7 @@
 					{
 						"blurb": "Mask to attach to the Nimble Dancer",
 						"cardRestrictions": [ "Augment" ],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Hand" ]

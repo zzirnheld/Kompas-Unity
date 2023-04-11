@@ -18,7 +18,7 @@
 						"cardRestrictions": [
 							"Different from Source"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Fungus" ]

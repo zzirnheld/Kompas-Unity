@@ -28,7 +28,7 @@
 							"Character",
 							"Not Already Target"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]

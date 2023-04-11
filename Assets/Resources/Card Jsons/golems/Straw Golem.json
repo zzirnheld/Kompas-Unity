@@ -21,7 +21,7 @@
 						"cardRestrictions": [
 							"Not Augment"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Enemy:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
@@ -57,7 +57,7 @@
 							"Not Already Target",
 							"Not Augment"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Enemy:" },
 							{
 								"$type": "Core.CardRestriction:Location:",

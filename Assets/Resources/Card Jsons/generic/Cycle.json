@@ -16,7 +16,7 @@
 					"$type":"Subeffect:CardTarget:",
 					"cardRestriction":{
 						"blurb":"Card to Cycle",
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",

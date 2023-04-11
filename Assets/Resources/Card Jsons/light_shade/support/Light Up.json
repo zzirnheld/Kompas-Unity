@@ -29,7 +29,7 @@
 							"Deck",
 							"Spell"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",

@@ -12,12 +12,12 @@
 			"$type":"Subeffect:TargetThisSpace:"
 		},
 		{
-			"$type":"Subeffect:DeckTarget:",
+			"$type":"Subeffect:CardTarget:",
 			"cardRestriction":{
 				"blurb":"Weather to deck-cast",
-				"cardRestrictions":["Deck","Spell","Distinct Name from Source"],
-				"cardRestrictionElements": [
-					{ "$type": "Core.CardRestriction:Friendly:" },
+				"toSearch": { "$type": "ManyCards:Deck:" },
+				"cardRestrictions":[ "Spell", "Distinct Name from Source" ],
+				"elements": [
 					{
 						"$type": "Core.CardRestriction:Subtypes:",
 						"subtypes": [ "Weather" ]

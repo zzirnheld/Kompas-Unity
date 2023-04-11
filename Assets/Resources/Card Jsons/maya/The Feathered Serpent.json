@@ -22,7 +22,7 @@
 							"Character",
 							"Summoned"
                         ],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
@@ -39,7 +39,7 @@
 										"Adjacent to a Card that Fits Restriction"
 									],
 									"adjacencyRestriction": {
-										"cardRestrictionElements": [
+										"elements": [
 											{
 												"$type": "Core.CardRestriction:Subtypes:",
 												"subtypes": [ "Structure" ]
@@ -81,7 +81,7 @@
 			"Number of Cards Exist"
 		],
 		"countCardRestriction": {
-			"cardRestrictionElements": [
+			"elements": [
 				{
 					"$type": "Core.CardRestriction:PositionFitsRestriction:",
 					"spaceRestriction": {

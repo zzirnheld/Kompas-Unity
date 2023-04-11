@@ -21,15 +21,14 @@
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:DeckTarget:",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "How does the mist condense?",
+						"toSearch": { "$type": "ManyCards:Deck:" },
 						"cardRestrictions": [
-							"Character",
-							"Deck"
+							"Character"
 						],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Shaper" ]

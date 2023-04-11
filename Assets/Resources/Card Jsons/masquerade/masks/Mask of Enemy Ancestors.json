@@ -23,7 +23,7 @@
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
                             "card": { "$type": "Cards:MainCardBefore:" },
                             "cardRestriction": {
-                                "cardRestrictionElements": [ { "$type": "Core.CardRestriction:Summoned:" } ]
+                                "elements": [ { "$type": "Core.CardRestriction:Summoned:" } ]
                             }
                         }
                     ]
@@ -43,7 +43,7 @@
 						"cardRestrictions": [
                             "Controller Matches Player Target"
 						],
-						"cardRestrictionElements": [
+						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Location:",

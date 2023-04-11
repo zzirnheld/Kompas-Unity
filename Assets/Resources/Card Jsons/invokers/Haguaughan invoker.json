@@ -16,7 +16,7 @@
 						"cardRestrictions": [
 							"Avatar"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Enemy:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
@@ -56,7 +56,7 @@
 						"cardRestrictions": [
 							"Character"
 						],
-						"cardRestrictionElements": [ {
+						"elements": [ {
 							"$type": "Core.CardRestriction:CardValueFits:",
 							"cardValue": { "value": "Cost" },
 							"numberRestriction": { "elements": [ {

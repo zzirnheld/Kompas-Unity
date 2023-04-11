@@ -28,7 +28,7 @@
 					"anyOf": {
 						"$type": "ManyCards:FittingRestriction:",
 						"cardRestriction": {
-							"cardRestrictionElements": [
+							"elements": [
 								{
 									"$type": "Core.CardRestriction:Subtypes:",
 									"subtypes": [ "Water" ]

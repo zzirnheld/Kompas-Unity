@@ -26,7 +26,7 @@
 							"Adjacent to a Card that Fits Restriction"
 						],
 						"adjacencyRestriction": {
-							"cardRestrictionElements": [
+							"elements": [
 								{
 									"$type": "Core.CardRestriction:Subtypes:",
 									"subtypes": [ "Supplicant" ]
@@ -49,7 +49,7 @@
 							"Empty"
 						],
 						"adjacencyRestriction": {
-							"cardRestrictionElements": [
+							"elements": [
 								{
 									"$type": "Core.CardRestriction:Subtypes:",
 									"subtypes": [ "Supplicant" ]

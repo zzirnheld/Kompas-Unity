@@ -14,7 +14,7 @@
 						"Controller Triggered"
 					],
 					"cardRestriction": {
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Hand" ]

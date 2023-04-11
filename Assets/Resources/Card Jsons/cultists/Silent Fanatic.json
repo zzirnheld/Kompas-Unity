@@ -16,7 +16,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:ChooseFromList:",
+					"$type": "Subeffect:CardTarget:",
 					"maxCanChoose": 1,
 					"cardRestriction": {
 						"blurb": "Silent Cult Follower to bloodcurse (1/2)",
@@ -24,7 +24,7 @@
 							"Deck",
 							"Character"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
@@ -50,7 +50,7 @@
 					"$type": "Subeffect:Play:"
 				},
 				{
-					"$type": "Subeffect:ChooseFromList:",
+					"$type": "Subeffect:CardTarget:",
 					"maxCanChoose": 1,
 					"cardRestriction": {
 						"blurb": "Silent Cult Follower to bloodcurse (2/2)",
@@ -58,7 +58,7 @@
 							"Deck",
 							"Character"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",

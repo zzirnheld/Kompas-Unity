@@ -23,7 +23,7 @@
 							"Character",
 							"Summoned"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
@@ -40,7 +40,7 @@
 							"Summoned",
 							"Not Already Target"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]

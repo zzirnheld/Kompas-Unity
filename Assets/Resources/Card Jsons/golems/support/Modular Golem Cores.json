@@ -14,7 +14,7 @@
 						"Main Card Fits Restriction After"
 					],
 					"nowRestriction": {
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:PositionFitsRestriction:",
 								"spaceRestriction": {
@@ -25,7 +25,7 @@
 										"cardRestrictions": [
 											"Augmented"
 										],
-										"cardRestrictionElements": [
+										"elements": [
 											{
 												"$type": "Core.CardRestriction:Subtypes:",
 												"subtypes": [ "Golem" ]
@@ -51,7 +51,7 @@
 							"Character",
 							"Augmented"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
@@ -99,7 +99,7 @@
 						"cardRestrictions": [
 							"Augment"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Hand" ]

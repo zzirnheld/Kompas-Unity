@@ -1,18 +1,32 @@
-﻿using KompasCore.Cards;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using KompasCore.Cards;
 using KompasCore.Effects;
 using KompasCore.Effects.Identities;
 using KompasCore.Effects.Identities.ManyCards;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using KompasCore.GameCore;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace KompasServer.Effects.Subeffects
 {
     public class CardTarget : ServerSubeffect
     {
+        public const string NoOrder = "No Order";
+        public const string Closest = "Closest";
+
         public IIdentity<IReadOnlyCollection<GameCardBase>> toSearch = new All();
-        public CardRestriction cardRestriction;
+
+        /// <summary>
+        /// Restriction that each card must fulfill
+        /// </summary>
+        public CardRestriction cardRestriction = new CardRestriction();
+
+        /// <summary>
+        /// Restriction that the list collectively must fulfill
+        /// </summary>
+        public ListRestriction listRestriction = ListRestriction.Default;
 
         /// <summary>
         /// Identifies a card that this target should be linked with.
@@ -20,74 +34,122 @@ namespace KompasServer.Effects.Subeffects
         /// </summary>
         public IIdentity<GameCardBase> toLinkWith;
 
-        public enum TargetType { Normal = 0, Debuff = 1 }
-        public TargetType targetType;
+
+        public string orderBy = NoOrder;
+
+        protected IReadOnlyCollection<GameCard> stashedPotentialTargets;
 
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
             base.Initialize(eff, subeffIndex);
-
-            Debug.Log($"DEFAULT INIT CONTEXT {DefaultInitializationContext}");
-            cardRestriction.Initialize(DefaultInitializationContext);
+            
             toSearch.Initialize(DefaultInitializationContext);
+            cardRestriction.Initialize(DefaultInitializationContext);
+            listRestriction.Initialize(DefaultInitializationContext);
+
             toLinkWith?.Initialize(DefaultInitializationContext);
         }
 
-        public override bool IsImpossible() => !Game.Cards.Any(c => cardRestriction.IsValid(c, ResolutionContext));
-        
-        protected virtual IEnumerable<GameCard> PotentialTargets
-            => toSearch.From(ResolutionContext, default)
-                .Where(c => cardRestriction.IsValid(c, ResolutionContext))
-                .Select(c => c.Card);
-        protected virtual int[] PotentialTargetIds => PotentialTargets.Select(c => c.ID).ToArray();
-
-        protected virtual async Task<GameCard> GetTargets(int[] potentialTargetIds)
+        protected IReadOnlyCollection<GameCard> DeterminePossibleTargets()
         {
-            Debug.Log($"Asking {ServerPlayer.index} (note: controlled by {Controller} for card target among ids {string.Join(", ", potentialTargetIds)}");
-            return await ServerPlayer.awaiter.GetCardTarget(Source.CardName, cardRestriction.blurb, potentialTargetIds, null);
+            var possibleTargets = from card in toSearch.From(ResolutionContext, default)
+                                    where cardRestriction.IsValid(card, ResolutionContext)
+                                    select card.Card;
+            if (!possibleTargets.Any()) return new GameCard[0];
+
+            return (orderBy switch
+            {
+                NoOrder => possibleTargets,
+                Closest => ClosestCards(possibleTargets),
+
+                _ => throw new System.ArgumentException($"Invalid ordering in choose from list")
+            }).ToArray();
         }
+
+        private IEnumerable<GameCard> ClosestCards(IEnumerable<GameCard> possibleTargets)
+        {
+            int minDist = possibleTargets.Min(c => c.DistanceTo(Source));
+            return possibleTargets.Where(c => c.DistanceTo(Source) == minDist);
+        }
+
+        protected virtual Task<ResolutionInfo> NoPossibleTargets()
+            => Task.FromResult(ResolutionInfo.Impossible(NoValidCardTarget));
+
+        public override bool IsImpossible() => !listRestriction.ExistsValidChoice(DeterminePossibleTargets());
 
         public override async Task<ResolutionInfo> Resolve()
         {
-            var potentialTargetIds = PotentialTargetIds;
-
-            //check first that there exist valid targets. if there exist no valid targets, finish resolution here
-            if (!potentialTargetIds.Any())
+            stashedPotentialTargets = DeterminePossibleTargets();
+            listRestriction.PrepareForSending(Effect.X);
+            //if there's no possible valid combo, throw effect impossible
+            if (!listRestriction.ExistsValidChoice(stashedPotentialTargets))
             {
-                Debug.Log($"No target exists for {ThisCard.CardName} effect");
-                return ResolutionInfo.Impossible(NoValidCardTarget);
+                Debug.Log($"List restriction {listRestriction} finds no possible list of targets among potential targets" +
+                    $"{string.Join(",", stashedPotentialTargets.Select(c => c.CardName))}");
+                return await NoPossibleTargets();
             }
 
-            GameCard card = null;
-            //while the target is invalid (and null cards, the default value, are invalid), ask the client for a new target.
-            //awaiting this means that the potential new target will be evaluated once there is indeed a new target
-            while (!AddTargetIfLegal(card))
+            //If there's no potential targets, but no targets is a valid choice, then just go to the next effect
+            if (!stashedPotentialTargets.Any())
             {
-                card = await GetTargets(potentialTargetIds);
-                if (ServerEffect.CanDeclineTarget) Debug.Log($"Client is permitted to decline target. Have they done so? {card == null}");
-                if (card == null && ServerEffect.CanDeclineTarget) return ResolutionInfo.Impossible(DeclinedFurtherTargets);
+                Debug.Log("An empty list of targets was a valid choice, but there's no targets that can be chosen. Skipping to next effect...");
+                return ResolutionInfo.Next;
             }
+            else if (listRestriction.HasMax && listRestriction.maxCanChoose == 0)
+            {
+                Debug.Log("An empty list of targets was a valid choice, and the max to be chosen was 0. Skipping to next effect...");
+                return ResolutionInfo.Next;
+            }
+
+            IEnumerable<GameCard> targets = null;
+            do
+            {
+                targets = await RequestTargets();
+                if (targets == null && ServerEffect.CanDeclineTarget) return ResolutionInfo.Impossible(DeclinedFurtherTargets);
+            } while (!AddListIfLegal(targets));
 
             return ResolutionInfo.Next;
         }
 
-        /// <summary>
-        /// Check if the card passed is a valid target, and if it is, continue the effect
-        /// </summary>
-        public virtual bool AddTargetIfLegal(GameCard card)
+        protected async Task<IEnumerable<GameCard>> RequestTargets()
         {
-            //evaluate the target. if it's valid, confirm it as the target (that's what the true is for)
-            if (cardRestriction.IsValid(card, ResolutionContext))
+            string name = Source.CardName;
+            string blurb = cardRestriction.blurb;
+            int[] targetIds = stashedPotentialTargets.Select(c => c.ID).ToArray();
+            Debug.Log($"Potential targets {string.Join(", ", targetIds)}");
+            return await ServerPlayer.awaiter.GetCardListTargets(name, blurb, targetIds, JsonConvert.SerializeObject(listRestriction));
+        }
+
+        public bool AddListIfLegal(IEnumerable<GameCard> choices)
+        {
+            Debug.Log($"Potentially adding list {string.Join(",", choices ?? new List<GameCard>())}");
+
+            if (!listRestriction.IsValidList(choices, stashedPotentialTargets)) return false;
+            ShuffleIfAppropriate(stashedPotentialTargets);
+
+            //add all cards in the chosen list to targets
+            AddList(choices);
+            //everything's cool
+            ServerPlayer.notifier.AcceptTarget();
+            return true;
+        }
+
+        private static void ShuffleIfAppropriate(IEnumerable<GameCard> potentialTargets)
+        {
+            var decksViewed = potentialTargets.Where(c => c.Location == CardLocation.Deck)
+                            .GroupBy(c => c.GameLocation)
+                            .Select(grouping => grouping.FirstOrDefault())
+                            .Cast<DeckController>(); //If this cast fails, we have a non-deck controller trying to act like one. If you do this, make it an interface
+            foreach (var deck in decksViewed) deck.Shuffle();
+        }
+
+        protected virtual void AddList(IEnumerable<GameCard> choices)
+        {
+            var cardToLinkWith = toLinkWith?.From(ResolutionContext, default)?.Card;
+            foreach (var c in choices)
             {
-                ServerEffect.AddTarget(card);
-                ServerPlayer.notifier.AcceptTarget();
-                if (toLinkWith != null) ServerEffect.CreateCardLink(card, toLinkWith.From(ResolutionContext, default)?.Card);
-                return true;
-            }
-            else
-            {
-                Debug.Log($"{card?.CardName} not a valid target for {cardRestriction}");
-                return false;
+                ServerEffect.AddTarget(c);
+                if (cardToLinkWith != null) ServerEffect.CreateCardLink(c, cardToLinkWith);
             }
         }
     }

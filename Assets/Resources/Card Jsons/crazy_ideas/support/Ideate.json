@@ -15,15 +15,11 @@
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:DeckTarget:",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Crazy Idea to ideate",
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-                            {
-                                "$type": "Core.CardRestriction:Location:",
-                                "locations": [ "Deck" ]
-                            },
+						"toSearch": { "$type": "ManyCards:Deck:" },
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Crazy", "Idea" ]

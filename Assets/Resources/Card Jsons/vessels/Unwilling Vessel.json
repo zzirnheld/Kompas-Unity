@@ -25,7 +25,7 @@
 							"Augment",
 							"Augments Current Target"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]

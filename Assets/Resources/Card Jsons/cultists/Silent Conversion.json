@@ -20,7 +20,7 @@
 						"cardRestrictions": [
 							"Character"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
@@ -33,7 +33,7 @@
 										"Adjacent to a Card that Fits Restriction"
 									],
 									"adjacencyRestriction": {
-										"cardRestrictionElements": [
+										"elements": [
 											{
 												"$type": "Core.CardRestriction:Subtypes:",
 												"subtypes": [ "Cultist" ]
@@ -52,7 +52,7 @@
 					"$type": "Subeffect:Discard:"
 				},
 				{
-					"$type": "Subeffect:ChooseFromList:",
+					"$type": "Subeffect:CardTarget:",
 					"maxCanChoose": 1,
 					"cardRestriction": {
 						"blurb": "Silent convert",
@@ -60,7 +60,7 @@
 							"Deck",
 							"Character"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",

@@ -13,7 +13,7 @@
 				{
 					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
                             {
                                 "$type": "Core.CardRestriction:Location:",
@@ -33,7 +33,7 @@
 					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "card to slightly yeet",
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]

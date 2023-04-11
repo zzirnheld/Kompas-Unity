@@ -9,7 +9,7 @@ namespace KompasCore.Effects.Restrictions
             => IsValid(InitializationContext.game.BoardController.GetCardAt(item), context);
     }
 
-    namespace CardRestrictionElements
+    namespace elements
     {
         public class Not : CardRestrictionElement
         {

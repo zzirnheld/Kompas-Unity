@@ -17,7 +17,7 @@
 					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "for Cyclical Sacrifice to reshuffle",
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Discard" ]

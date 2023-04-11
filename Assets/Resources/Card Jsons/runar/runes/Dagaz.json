@@ -16,7 +16,7 @@
 							"Different from Source",
 							"Spell"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Rune" ]

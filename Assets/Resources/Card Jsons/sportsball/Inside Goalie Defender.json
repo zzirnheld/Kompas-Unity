@@ -24,7 +24,7 @@
 							],
 							"mustBeEmpty": false
 						},
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
@@ -52,7 +52,7 @@
 								"Adjacent to Source"
 							]
 						},
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]

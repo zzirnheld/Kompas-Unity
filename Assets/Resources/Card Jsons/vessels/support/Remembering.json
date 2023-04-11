@@ -14,7 +14,7 @@
 						"Stackable Source Fits Restriction Now"
 					],
 					"sourceRestriction": {
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Vessel" ]

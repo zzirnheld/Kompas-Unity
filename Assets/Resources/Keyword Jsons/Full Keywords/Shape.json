@@ -15,7 +15,7 @@
 				"spaceRestrictions":["Connected to Source by Cards Fitting Restriction"],
 				"connectednessRestriction":{
 					"cardRestrictions":["Character"],
-					"cardRestrictionElements": [
+					"elements": [
 						{
 							"$type": "Core.CardRestriction:Location:",
 							"locations": [ "Board" ]
@@ -40,7 +40,7 @@
 			"whatToCount":"Distance to Coords Through",
 			"throughRestriction":{
 				"cardRestrictions":["Character"],
-				"cardRestrictionElements": [
+				"elements": [
 					{
 						"$type": "Core.CardRestriction:Location:",
 						"locations": [ "Board" ]

@@ -19,7 +19,7 @@
 						"blurb": "othercharacter to wander home",
 						"cardRestrictions": [
 							"Character" ],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
@@ -51,15 +51,19 @@
 					"$type": "Subeffect:Reshuffle:"
 				},
 				{
-					"$type": "Subeffect:DeckTarget:",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "character to wander out",
+						"toSearch": {
+							"$type": "ManyCards:Deck:",
+							"friendly": true,
+							"enemy": true
+						},
 						"cardRestrictions": [
 							"Character",
-							"Controller Matches Player Target",
-							"Deck"
+							"Controller Matches Player Target"
 						],
-						"cardRestrictionElements": [ {
+						"elements": [ {
 							"$type": "Core.CardRestriction:CardValueFits:",
 							"cardValue": { "value": "S" },
 							"numberRestriction": { "elements": [{
@@ -74,7 +78,7 @@
 				{
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
-						"blurb": "where Ificator to play targeted Crazy Idea",
+						"blurb": "where to wander out",
                         "spaceRestrictionElements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {
@@ -93,7 +97,7 @@
 						"blurb": "other character to wander home",
 						"cardRestrictions": [
 							"Character" ],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
@@ -123,15 +127,19 @@
 					"$type": "Subeffect:Reshuffle:"
 				},
 				{
-					"$type": "Subeffect:DeckTarget:",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "character to summon",
+						"toSearch": {
+							"$type": "ManyCards:Deck:",
+							"friendly": true,
+							"enemy": true
+						},
 						"cardRestrictions": [
 							"Character",
-							"Controller Matches Player Target",
-							"Deck"
+							"Controller Matches Player Target"
 						],
-						"cardRestrictionElements": [ {
+						"elements": [ {
 							"$type": "Core.CardRestriction:CardValueFits:",
 							"cardValue": { "value": "S" },
 							"numberRestriction": { "elements": [{
@@ -170,7 +178,7 @@
 			"cardRestrictions": [
 				"Character"
 			],
-			"cardRestrictionElements": [
+			"elements": [
 				{
 					"$type": "Core.CardRestriction:Subtypes:",
 					"subtypes": [ "Wanderer" ]

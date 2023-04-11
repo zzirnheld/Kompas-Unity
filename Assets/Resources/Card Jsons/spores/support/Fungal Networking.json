@@ -15,14 +15,14 @@
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:DeckTarget:",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "to network (1/2)",
+						"toSearch": { "$type": "ManyCards:Deck:" },
 						"cardRestrictions": [
-							"Character",
-							"Deck"
+							"Character"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Mycelium" ]
@@ -48,14 +48,14 @@
 					"$type": "Subeffect:Play:"
 				},
 				{
-					"$type": "Subeffect:DeckTarget:",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "to network (2/2)",
+						"toSearch": { "$type": "ManyCards:Deck:" },
 						"cardRestrictions": [
-							"Character",
-							"Deck"
+							"Character"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Mycelium" ]

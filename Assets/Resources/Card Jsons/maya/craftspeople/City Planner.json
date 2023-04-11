@@ -17,7 +17,7 @@
 				{
 					"$type": "Subeffect:SetXBoardRestriction:",
 					"cardRestriction": {
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Structure" ]
@@ -35,13 +35,13 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "Subeffect:ChooseFromList:",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Structure to plan out",
 						"cardRestrictions": [
 							"Deck"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",

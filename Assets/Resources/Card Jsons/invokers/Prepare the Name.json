@@ -18,7 +18,7 @@
 					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Spirit whose name to prepare",
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
                             {
                                 "$type": "Core.CardRestriction:Location:",

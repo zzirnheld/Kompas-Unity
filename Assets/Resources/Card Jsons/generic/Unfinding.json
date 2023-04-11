@@ -17,7 +17,7 @@
 					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Ethereal for Unfinding to discard",
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
                             {
                                 "$type": "Core.CardRestriction:Location:",

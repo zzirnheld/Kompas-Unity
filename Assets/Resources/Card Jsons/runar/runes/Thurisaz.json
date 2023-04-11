@@ -19,7 +19,7 @@
 						"blurb": "character for Thurisaz to double their W",
 						"cardRestrictions": [
 							"Character" ],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]

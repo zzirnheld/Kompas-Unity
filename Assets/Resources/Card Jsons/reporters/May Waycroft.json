@@ -20,7 +20,7 @@
 					"$type": "Subeffect:ConditionalJump:",
 					"condition": "Main Triggering Card Flouted Restriction Before",
 					"cardRestriction": {
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Hidden:", "hidden": false }
 						]
 					},
@@ -34,7 +34,7 @@
 						"cardRestrictions": [
 							"Character"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
@@ -58,7 +58,7 @@
 						"cardRestrictions": [
 							"Controller Matches Player Target"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Hand" ]

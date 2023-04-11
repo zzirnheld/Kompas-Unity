@@ -13,7 +13,7 @@
 						"This Card in Play"
 					],
 					"cardRestriction": {
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Pulsar" ]
@@ -51,7 +51,7 @@
 						"This Card in Play"
 					],
 					"cardRestriction": {
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Pulsar" ]

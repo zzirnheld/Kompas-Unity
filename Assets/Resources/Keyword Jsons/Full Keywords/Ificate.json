@@ -21,7 +21,7 @@
 			{
 				"blurb":"Crazy Idea for Ificator to Ificate",
 				"cardRestrictions":["Discard","Different from Source"],
-				"cardRestrictionElements": [
+				"elements": [
 					{ "$type": "Core.CardRestriction:Friendly:" },
 					{
 						"$type": "Core.CardRestriction:Subtypes:",

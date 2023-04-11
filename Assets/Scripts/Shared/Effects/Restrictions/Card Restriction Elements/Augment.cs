@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace KompasCore.Effects.Restrictions.CardRestrictionElements
+namespace KompasCore.Effects.Restrictions.elements
 {
     public abstract class AugmentRestrictionBase : CardRestrictionElement
     {

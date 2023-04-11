@@ -19,7 +19,7 @@
 						"cardRestrictions": [
 							"Controller Matches Player Target"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
@@ -64,7 +64,7 @@
 						"cardRestrictions": [
 							"Controller Matches Player Target"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Hand" ]
@@ -97,7 +97,7 @@
 							"Character",
 							"Controller Isn't Player Target"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]

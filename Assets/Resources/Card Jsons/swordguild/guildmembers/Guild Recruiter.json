@@ -27,7 +27,7 @@
                                         "$type": "Numbers:Constant:",
                                         "constant": 2
                                     },
-                                    "cardRestrictionElements": [
+                                    "elements": [
                                         {
                                             "$type": "Core.CardRestriction:Subtypes:",
                                             "subtypes": [ "Warrior" ]
@@ -43,15 +43,14 @@
 					}
 				},
 				{
-					"$type": "Subeffect:DeckTarget:",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "New Squire",
+						"toSearch": { "$type": "ManyCards:Deck:" },
 						"cardRestrictions": [
-							"Deck",
 							"Character"
 						],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Squire" ]

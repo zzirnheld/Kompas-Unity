@@ -28,11 +28,11 @@
 						},
 						"augmentRestriction":
 						{
-							"cardRestrictionElements": [
+							"elements": [
 								{ "$type": "Core.CardRestriction:Friendly:" }
 							]
 						},
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]

@@ -13,7 +13,7 @@
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Weather", "Event" ]
@@ -33,7 +33,7 @@
 							"Not Already Target",
 							"Character"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:PositionFitsRestriction:",
 								"spaceRestriction": {
@@ -41,7 +41,7 @@
 										"In AOE Source is Also In"
 									],
 									"alsoInAOEOfRestriction": {
-										"cardRestrictionElements": [
+										"elements": [
 											{
 												"$type": "Core.CardRestriction:Subtypes:",
 												"subtypes": [ "Weather" ]

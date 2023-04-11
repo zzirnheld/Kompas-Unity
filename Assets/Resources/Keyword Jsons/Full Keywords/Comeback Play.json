@@ -12,7 +12,7 @@
 			"existsRestriction":
 			{
 				"cardRestrictions":["Augment"],
-				"cardRestrictionElements": [
+				"elements": [
 					{ "$type": "Core.CardRestriction:Friendly:" },
 					{
 						"$type": "Core.CardRestriction:Location:",

@@ -17,7 +17,7 @@
 						"cardRestrictions": [
 							"Character"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
@@ -39,7 +39,7 @@
 					"$type": "Subeffect:TargetTriggeringCardsSpace:"
 				},
 				{
-					"$type": "Subeffect:ChooseFromList:",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Next Dancer for the Dance",
 						"cardRestrictions": [
@@ -47,7 +47,7 @@
 							"Character",
 							"Distinct Name from Other Targets"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",

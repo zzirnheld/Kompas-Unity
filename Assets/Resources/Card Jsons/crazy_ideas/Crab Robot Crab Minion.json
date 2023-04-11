@@ -11,7 +11,7 @@
 					"triggerRestrictions":["This Card in Play","Card Exists Now"],
 					"existsRestriction":
 					{
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Enemy:" },
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
@@ -30,7 +30,7 @@
 					{
 						"blurb":"friendly character for Crab Robot Crab Minion to give intel",
 						"cardRestrictions":["Character"],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",

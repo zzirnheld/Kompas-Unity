@@ -65,7 +65,7 @@
 			"Adjacent to Card Fitting Restriction"
 		],
 		"adjacentCardRestriction": {
-			"cardRestrictionElements": [
+			"elements": [
 				{
 					"$type": "Core.CardRestriction:Subtypes:",
 					"subtypes": [ "Invoker" ]

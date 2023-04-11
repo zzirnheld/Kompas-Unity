@@ -18,7 +18,7 @@
 					"cardRestriction":
 					{
 						"cardRestrictions": [ "Character" ],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Hurt:" },
 							{
 								"$type": "Core.CardRestriction:Location:",

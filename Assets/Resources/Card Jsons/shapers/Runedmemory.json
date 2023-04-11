@@ -20,7 +20,7 @@
 						"cardRestrictions": [
 							"Spell"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
                             {
                                 "$type": "Core.CardRestriction:Location:",

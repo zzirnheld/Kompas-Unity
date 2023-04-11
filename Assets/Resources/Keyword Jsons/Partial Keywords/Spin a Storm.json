@@ -8,7 +8,7 @@
                 "In AOE Space Target is Also In"
             ],
             "alsoInAOEOfRestriction": {
-                "cardRestrictionElements": [
+                "elements": [
                     {
                         "$type": "Core.CardRestriction:Subtypes:",
                         "subtypes": [ "Weather" ]
@@ -20,7 +20,7 @@
 				"anyOf": {
 					"$type": "ManyCards:FittingRestriction:",
 					"cardRestriction": {
-					"cardRestrictionElements": [ {
+					"elements": [ {
 							"$type": "Core.CardRestriction:Subtypes:",
 							"subtypes": [ "Weather" ]
 						} ]
@@ -40,7 +40,7 @@
             "cardRestrictions": [
                 "Character"
             ],
-            "cardRestrictionElements": [
+            "elements": [
                 { "$type": "Core.CardRestriction:Friendly:" },
                 {
                     "$type": "Core.CardRestriction:Location:",
@@ -61,7 +61,7 @@
                 "In AOE Space Target is Also In"
             ],
             "alsoInAOEOfRestriction": {
-                "cardRestrictionElements": [
+                "elements": [
                     {
                         "$type": "Core.CardRestriction:Subtypes:",
                         "subtypes": [ "Weather" ]
@@ -73,7 +73,7 @@
 				"anyOf": {
 					"$type": "ManyCards:FittingRestriction:",
 					"cardRestriction": {
-					"cardRestrictionElements": [ {
+					"elements": [ {
 							"$type": "Core.CardRestriction:Subtypes:",
 							"subtypes": [ "Weather" ]
 						} ]

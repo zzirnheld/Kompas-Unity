@@ -22,7 +22,7 @@
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
                             "card": { "$type": "Cards:MainCardBefore:" },
                             "cardRestriction": {
-                                "cardRestrictionElements": [ { "$type": "Core.CardRestriction:Enemy:" } ]
+                                "elements": [ { "$type": "Core.CardRestriction:Enemy:" } ]
                             }
                         }
 					]

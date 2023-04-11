@@ -14,12 +14,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:DeckTarget:",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "card to research",
-						"cardRestrictions": [
-							"Deck"
-						]
+						"toSearch": { "$type": "ManyCards:Deck:" }
 					}
 				},
 				{

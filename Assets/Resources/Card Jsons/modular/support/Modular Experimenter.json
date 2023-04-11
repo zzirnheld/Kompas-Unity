@@ -22,7 +22,7 @@
                         ],
 						"augmentRestriction":
 						{
-							"cardRestrictionElements": [
+							"elements": [
 								{ "$type": "Core.CardRestriction:Friendly:" },
                                 {
                                     "$type": "Core.CardRestriction:Subtypes:",
@@ -30,7 +30,7 @@
                                 }
 							]
 						},
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
@@ -46,7 +46,7 @@
                             "Augment",
                             "Augments Current Target"
                         ],
-                        "cardRestrictionElements": [
+                        "elements": [
                             {
                                 "$type": "Core.CardRestriction:Location:",
                                 "locations": [ "Board" ]
@@ -59,11 +59,11 @@
                     }
                 },
 				{
-					"$type": "Subeffect:ChooseFromList:",
+					"$type": "Subeffect:CardTarget:",
                     "cardRestriction":
                     {
                         "cardRestrictions": [ "Augment" ],
-                        "cardRestrictionElements": [
+                        "elements": [
                             {
                                 "$type": "Core.CardRestriction:Location:",
                                 "locations": [ "Hand" ]

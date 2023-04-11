@@ -13,10 +13,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:ChooseFromList:",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Rune for Runewriter to reshuffle",
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
                             {
                                 "$type": "Core.CardRestriction:Location:",
@@ -40,13 +40,13 @@
 					]
 				},
 				{
-					"$type": "Subeffect:ChooseFromListSaveRest:",
+					"$type": "Subeffect:CardTargetSaveRest:",
 					"cardRestriction": {
 						"blurb": "Runar for Runewriter to search (to hand)",
 						"cardRestrictions": [
 							"Deck"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
@@ -68,7 +68,7 @@
 							"Deck",
 							"Not Already Target"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:CardValueFits:",

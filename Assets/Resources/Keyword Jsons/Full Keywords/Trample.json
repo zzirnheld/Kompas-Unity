@@ -7,7 +7,7 @@
                 "Main Card Fits Restriction Before"
             ],
             "cardRestriction": {
-                "cardRestrictionElements": [ {
+                "elements": [ {
                     "$type": "Core.CardRestriction:Fighting:",
                     "defending": true,
                     "fightingWho": { "$type": "Cards:ThisCard:" }
@@ -41,7 +41,7 @@
                 "cardRestrictions": [
                     "Character"
                 ],
-                "cardRestrictionElements": [
+                "elements": [
                     {
                         "$type": "Core.CardRestriction:Location:",
                         "locations": [ "Board" ]

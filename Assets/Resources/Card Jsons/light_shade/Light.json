@@ -12,7 +12,7 @@
                 "triggerRestriction":{
                     "triggerRestrictions":["This Card Fits Restriction Now"],
                     "selfRestriction":{
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
@@ -23,7 +23,7 @@
 									"$type": "Core.CardRestriction:AOEContains:",
 									"cardRestriction": {
 										"cardRestrictions": [ "Character" ],
-										"cardRestrictionElements": [
+										"elements": [
 											{ "$type": "Core.CardRestriction:Enemy:" }
 										]
 									}
@@ -50,7 +50,7 @@
 							"Deck",
 							"Spell"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",

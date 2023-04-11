@@ -23,7 +23,7 @@
 				{
 					"$type": "Subeffect:TargetAll:",
 					"cardRestriction": {
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Shade" ]
@@ -44,7 +44,7 @@
 				{
 					"$type": "Subeffect:TargetAll:",
 					"cardRestriction": {
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Light" ]
@@ -76,7 +76,7 @@
 							"Deck",
 							"Spell"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",

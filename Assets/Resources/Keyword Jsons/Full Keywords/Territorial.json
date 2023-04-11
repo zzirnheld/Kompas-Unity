@@ -15,7 +15,7 @@
 			{
 				"blurb":"for Dragon to move and attack",
 				"cardRestrictions":["Character"],
-				"cardRestrictionElements": [
+				"elements": [
 					{
 						"$type": "Core.CardRestriction:Location:",
 						"locations": [ "Board" ]

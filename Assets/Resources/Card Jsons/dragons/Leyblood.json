@@ -14,7 +14,7 @@
 						"cardRestrictions":["Character"]
 					},
 					"sourceRestriction":{
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Dragon" ]

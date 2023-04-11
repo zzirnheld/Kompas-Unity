@@ -21,7 +21,7 @@
 							"Deck"
 						],
 						"constant": 1,
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Enemy:" },
 							{
 								"$type": "Core.CardRestriction:CardValueFits:",
@@ -70,7 +70,7 @@
                             {
                                 "$type": "Core.SpaceRestriction:WithinDistanceOfNumberOfCards:",
                                 "cardRestriction": {
-									"cardRestrictionElements": [
+									"elements": [
 										{ "$type": "Core.CardRestriction:Friendly:" },
 										{
 											"$type": "Core.CardRestriction:Subtypes:",

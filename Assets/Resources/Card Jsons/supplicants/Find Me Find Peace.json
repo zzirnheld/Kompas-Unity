@@ -20,7 +20,7 @@
 						"cardRestrictions": [
 							"Deck"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
@@ -45,7 +45,7 @@
 							"Deck",
 							"Not Already Target"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:CardValueFits:",

@@ -17,14 +17,14 @@
                             "Augments Card Fitting Restriction"
 						],
 						"augmentRestriction": {
-							"cardRestrictionElements": [
+							"elements": [
 								{
 									"$type": "Core.CardRestriction:Subtypes:",
 									"subtypes": [ "Vessel" ]
 								}
 							]
                         },
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Module" ]
@@ -35,8 +35,8 @@
 			},
 			"subeffects":[
 				{
-					"$type": "Subeffect:TargetAllCardsIdentity:",
-					"cardsIdentity": {
+					"$type": "Subeffect:TargetAll:",
+					"toSearch": {
 						"$type": "ManyCards:Limit:",
 						"cards": { "$type": "ManyCards:Discard:" },
 						"limit": {

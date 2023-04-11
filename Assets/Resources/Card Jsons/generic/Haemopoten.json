@@ -30,7 +30,7 @@
 						"cardRestrictions": [
 							"Deck"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:CardValueFits:",

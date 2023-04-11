@@ -22,7 +22,7 @@
 							"Character",
 							"Summoned"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
@@ -38,15 +38,14 @@
 					"$type": "Subeffect:Discard:"
 				},
 				{
-					"$type": "Subeffect:DeckTarget:",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Silent convert",
+						"toSearch": { "$type": "ManyCards:Deck:" },
 						"cardRestrictions": [
-							"Deck",
 							"Spell"
 						],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Silent" ]

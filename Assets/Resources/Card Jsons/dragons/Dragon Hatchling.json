@@ -33,7 +33,7 @@
 					{
 						"blurb":"for Dragon Hatchling to eat (discard)",
 						"cardRestrictions":["Character"],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
@@ -55,7 +55,7 @@
 					{
 						"blurb":"for Dragon Hatchling to become (play)",
 						"cardRestrictions":["Character"],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",

@@ -14,7 +14,7 @@
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 							"card": { "$type": "Cards:MainCardBefore:" },
 							"cardRestriction": {
-								"cardRestrictionElements": [
+								"elements": [
 									{
 										"$type": "Core.CardRestriction:Subtypes:",
 										"subtypes": [ "Shaper" ]

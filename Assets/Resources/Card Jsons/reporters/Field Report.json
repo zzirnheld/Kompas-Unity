@@ -19,7 +19,7 @@
 						"blurb": "friendly Reporter to set X by S of",
 						"cardRestrictions": [
 							"Character" ],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
@@ -78,7 +78,7 @@
 							"Controller Matches Player Target",
 							"Character"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Hand" ]
@@ -108,15 +108,14 @@
 					"$type": "Subeffect:EndResolution:"
 				},
 				{
-					"$type": "Subeffect:DeckTarget:",
+					"$type": "Subeffect:CardTarget:",
 					"playerIndex": -2,
 					"cardRestriction": {
+						"toSearch": { "$type": "ManyCards:Deck:" },
 						"cardRestrictions": [
-							"Character",
-							"Deck"
+							"Character"
 						],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Reporter" ]
@@ -145,7 +144,7 @@
 			"Adjacent to Card Fitting Restriction"
 		],
 		"adjacentCardRestriction": {
-			"cardRestrictionElements": [
+			"elements": [
 				{
 					"$type": "Core.CardRestriction:Subtypes:",
 					"subtypes": [ "Reporter" ]

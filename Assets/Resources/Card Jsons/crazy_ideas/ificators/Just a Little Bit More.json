@@ -24,7 +24,7 @@
 						"cardRestrictions": [
 							"Not Avatar"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]

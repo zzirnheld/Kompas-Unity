@@ -36,7 +36,7 @@
                             {
                                 "$type": "Core.SpaceRestriction:CardFitsRestriction:",
                                 "restriction": {
-                                    "cardRestrictionElements": [
+                                    "elements": [
                                         {
                                             "$type": "Core.CardRestriction:Subtypes:",
                                             "subtypes": [ "Ethereal" ]
@@ -62,7 +62,7 @@
                             {
                                 "$type": "Core.SpaceRestriction:CardFitsRestriction:",
                                 "restriction": {
-                                    "cardRestrictionElements": [
+                                    "elements": [
                                         {
                                             "$type": "Core.CardRestriction:Subtypes:",
                                             "subtypes": [ "Ethereal" ]
@@ -90,7 +90,7 @@
                     {
                         "$type": "Core.SpaceRestriction:CardFitsRestriction:",
                         "restriction": {
-                            "cardRestrictionElements": [
+                            "elements": [
                                 {
                                     "$type": "Core.CardRestriction:Subtypes:",
                                     "subtypes": [ "Ethereal" ]

@@ -28,7 +28,7 @@
 							"Summoned",
 							"Not Already Target"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
@@ -62,14 +62,14 @@
 					]
 				},
 				{
-					"$type": "Subeffect:ChooseFromListSaveRest:",
+					"$type": "Subeffect:CardTargetSaveRest:",
 					"cardRestriction": {
 						"blurb": "for Mother of Dragons to birth",
 						"cardRestrictions": [
 							"Deck",
 							"Character"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
@@ -100,7 +100,7 @@
 							"Deck",
 							"Not Already Target"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:CardValueFits:",

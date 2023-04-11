@@ -19,7 +19,7 @@
 						"blurb": "character for Sowilo to give -1 E.",
 						"cardRestrictions": [
 							"Character" ],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
@@ -46,7 +46,7 @@
 						"cardRestrictions": [
 							"Character",
 							"Not Already Target" ],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]

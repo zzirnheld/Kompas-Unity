@@ -13,7 +13,7 @@
 						"This Card Fits Restriction Now"
 					],
 					"selfRestriction": {
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
@@ -30,7 +30,7 @@
 													"cardRestrictions": [
 														"Distinct Name from Source"
 													],
-													"cardRestrictionElements": [
+													"elements": [
 														{
 															"$type": "Core.CardRestriction:Subtypes:",
 															"subtypes": [ "Water" ]

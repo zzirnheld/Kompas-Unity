@@ -59,7 +59,7 @@
 							"Controller Matches Player Target",
 							"Spell"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Hand" ]

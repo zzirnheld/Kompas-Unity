@@ -21,7 +21,7 @@
 							"Character",
 							"Wields Augment Fitting Restriction"
                         ],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
@@ -37,7 +37,7 @@
                             }
 						],
                         "augmentRestriction": {
-							"cardRestrictionElements": [
+							"elements": [
 								{
 									"$type": "Core.CardRestriction:Subtypes:",
 									"subtypes": [ "Memory" ]
@@ -54,7 +54,7 @@
 							"Augment",
 							"Augments Current Target"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
@@ -75,15 +75,14 @@
                     "targetIndex": 0
 				},
 				{
-					"$type": "Subeffect:DeckTarget:",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Corporeal form to recall",
+						"toSearch": { "$type": "ManyCards:Deck:" },
 						"cardRestrictions": [
-							"Character",
-							"Deck"
+							"Character"
 						],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Vessel" ]

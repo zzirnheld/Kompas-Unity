@@ -14,13 +14,13 @@
 			},
 			"subeffects":[
 				{
-					"$type":"Subeffect:ChooseFromList:",
+					"$type":"Subeffect:CardTarget:",
 					"maxCanChoose":1,
 					"cardRestriction":
 					{
 						"blurb":"Supplicant to give safe haven",
 						"cardRestrictions":["Discard","Character"],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",

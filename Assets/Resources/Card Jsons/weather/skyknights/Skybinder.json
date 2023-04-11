@@ -17,7 +17,7 @@
 						"cardRestrictions": [
 							"Different from Source"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Weather", "Event" ]
@@ -44,7 +44,7 @@
 				{
 					"$type": "Subeffect:TargetAll:",
 					"cardRestriction": {
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",

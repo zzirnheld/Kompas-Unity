@@ -20,14 +20,14 @@
 					]
 				},
 				{
-					"$type": "Subeffect:ChooseFromListSaveRest:",
+					"$type": "Subeffect:CardTargetSaveRest:",
 					"cardRestriction": {
 						"blurb": "spell for Perthro to search (to hand)",
 						"cardRestrictions": [
 							"Spell",
 							"Deck"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:CardValueFits:",
@@ -45,7 +45,7 @@
 							"Deck",
 							"Not Already Target"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:CardValueFits:",

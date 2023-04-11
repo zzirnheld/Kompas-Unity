@@ -18,7 +18,7 @@
 							"Augments Card Fitting Restriction"
 						],
 						"augmentRestriction": {
-							"cardRestrictionElements": [
+							"elements": [
 								{ "$type": "Core.CardRestriction:Enemy:" }
 							]
 						}

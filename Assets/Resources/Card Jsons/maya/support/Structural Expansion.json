@@ -20,7 +20,7 @@
 					{
 						"blurb":"friendly Maya Structure to duplicate",
 						"cardRestrictions":["Character"],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
@@ -34,14 +34,14 @@
 					}
 				},
 				{
-					"$type": "Subeffect:ChooseFromList:",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "copies of Structure to decksummon",
 						"cardRestrictions": [
 							"Same Name as Target",
 							"Deck"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					},

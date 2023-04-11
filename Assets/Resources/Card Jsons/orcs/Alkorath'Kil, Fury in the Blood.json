@@ -15,7 +15,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:ChooseFromList:",
+					"$type": "Subeffect:CardTarget:",
 					"listRestriction": {
 						"listRestrictions": [
 							"Min Can Choose"
@@ -25,7 +25,7 @@
 					"cardRestriction": {
 						"blurb": "Return Orcs to the Fray",
 						"cardRestrictions": [ "Discard" ],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
@@ -60,7 +60,7 @@
 					"$type": "Subeffect:TargetAll:",
 					"cardRestriction": {
 						"cardRestrictions": [ "Character" ],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
@@ -99,7 +99,7 @@
 							"Different from Source",
 							"Character"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
@@ -113,7 +113,7 @@
 					"$type": "Subeffect:TargetAll:",
 					"cardRestriction": {
 						"cardRestrictions": [ "Character" ],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]

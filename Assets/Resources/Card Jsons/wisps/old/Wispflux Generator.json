@@ -14,7 +14,7 @@
 						"This Card Fits Restriction Now"
 					],
 					"selfRestriction": {
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:PositionFitsRestriction:",
 								"spaceRestriction": {
@@ -37,14 +37,14 @@
 					"eModifier": -1
 				},
 				{
-					"$type": "Subeffect:ChooseFromList:",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Wispflux to deck->summon",
 						"cardRestrictions": [
 							"Deck",
 							"Character"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",

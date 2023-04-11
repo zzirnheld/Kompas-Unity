@@ -17,14 +17,14 @@
                             "Augments Card Fitting Restriction"
 						],
 						"augmentRestriction": {
-							"cardRestrictionElements": [
+							"elements": [
 								{
 									"$type": "Core.CardRestriction:Subtypes:",
 									"subtypes": [ "Vessel" ]
 								}
 							]
                         },
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Module" ]
@@ -54,7 +54,7 @@
 					{
 						"blurb": "Module to attach to the Modular character",
 						"cardRestrictions": [ "Augment" ],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Discard" ]

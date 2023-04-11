@@ -17,7 +17,7 @@
 					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "adjacent Aquatic card to annihilate",
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
@@ -43,18 +43,14 @@
 					"$type": "Subeffect:Annihilate:"
 				},
 				{
-					"$type": "Subeffect:DeckTarget:",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Tide that Shifts In",
+						"toSearch": { "$type": "ManyCards:Deck:" },
 						"cardRestrictions": [
 							"Spell"
 						],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-                            {
-                                "$type": "Core.CardRestriction:Location:",
-                                "locations": [ "Deck" ]
-                            },
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Water" ]

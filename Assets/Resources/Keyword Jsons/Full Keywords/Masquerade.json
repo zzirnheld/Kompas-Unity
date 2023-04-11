@@ -19,7 +19,7 @@
                     "Augment",
                     "Augments Current Target"
                 ],
-                "cardRestrictionElements": [
+                "elements": [
                     {
                         "$type": "Core.CardRestriction:Location:",
                         "locations": [ "Board" ]
@@ -37,7 +37,7 @@
             {
                 "blurb": "Mask to swap for",
                 "cardRestrictions": [ "Augment" ],
-                "cardRestrictionElements": [
+                "elements": [
                     {
                         "$type": "Core.CardRestriction:Location:",
                         "locations": [ "Hand" ]

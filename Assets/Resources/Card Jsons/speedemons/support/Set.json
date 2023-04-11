@@ -21,7 +21,7 @@
 							"Name Is"
 						],
 						"nameIs": "Ready",
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Discard" ]
@@ -34,17 +34,14 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "Subeffect:DeckTarget:",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Ready for Set to search",
 						"cardRestrictions": [
-							"Deck",
 							"Name Is"
 						],
 						"nameIs": "Ready",
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" }
-						]
+						"toSearch": { "$type": "ManyCards:Deck:" }
 					}
 				},
 				{
@@ -65,7 +62,7 @@
 						"blurb": "character to set",
 						"cardRestrictions": [
 							"Character" ],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
@@ -86,17 +83,14 @@
 					"nModifier": 1
 				},
 				{
-					"$type": "Subeffect:DeckTarget:",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "GO for Ready to search",
 						"cardRestrictions": [
-							"Deck",
 							"Name Is"
 						],
 						"nameIs": "GO",
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" }
-						]
+						"toSearch": { "$type": "ManyCards:Deck:" }
 					}
 				},
 				{

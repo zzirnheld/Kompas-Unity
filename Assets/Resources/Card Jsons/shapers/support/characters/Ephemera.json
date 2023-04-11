@@ -23,7 +23,7 @@
 							"Same Name as Target",
 							"Deck"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					},

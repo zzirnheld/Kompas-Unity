@@ -20,7 +20,7 @@
 						"cardRestrictions": [
 							"Character"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
@@ -42,15 +42,18 @@
 					"$type": "Subeffect:TargetEnemy:"
 				},
 				{
-					"$type": "Subeffect:DeckTarget:",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "character to summon",
+						"toSearch": {
+							"$type": "ManyCards:Deck:",
+							"friendly": false,
+							"enemy": true
+						},
 						"cardRestrictions": [
-							"Character",
-							"Deck"
+							"Character"
 						],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Enemy:" },
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:CardValueFits:",
 								"cardValue": { "value": "Cost" },

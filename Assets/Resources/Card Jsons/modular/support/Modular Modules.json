@@ -17,7 +17,7 @@
 					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Module to discard",
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
                             {
                                 "$type": "Core.CardRestriction:Location:",
@@ -41,11 +41,11 @@
 					"$type": "Subeffect:Discard:"
 				},
 				{
-					"$type": "Subeffect:ChooseFromList:",
+					"$type": "Subeffect:CardTarget:",
                     "cardRestriction":
                     {
                         "cardRestrictions": [ "Augment" ],
-                        "cardRestrictionElements": [
+                        "elements": [
                             {
                                 "$type": "Core.CardRestriction:Location:",
                                 "locations": [ "Deck" ]
@@ -95,10 +95,10 @@
                     "subeffIndices": [ 2, 5 ]
                 },
 				{
-					"$type": "Subeffect:ChooseFromList:",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "cards to reshuffle",
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",

@@ -15,14 +15,14 @@
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:DeckTarget:",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Fungus to Among Us",
+						"toSearch": { "$type": "ManyCards:Deck:" },
 						"cardRestrictions": [
-							"Character",
-							"Deck"
+							"Character"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Fungus" ]
@@ -50,7 +50,7 @@
 				{
 					"$type": "Subeffect:SetXBoardRestriction:",
 					"cardRestriction": {
-						"cardRestrictionElements": [ { "$type": "Core.CardRestriction:Enemy:" },
+						"elements": [ { "$type": "Core.CardRestriction:Enemy:" },
 							{
 								"$type": "Core.CardRestriction:PositionFitsRestriction:",
 								"spaceRestriction": { "spaceRestrictions": [ "Adjacent to Card Target" ] }

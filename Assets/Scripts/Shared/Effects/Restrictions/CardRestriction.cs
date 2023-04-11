@@ -230,8 +230,6 @@ namespace KompasCore.Effects
                 Hand => potentialTarget?.Location == CardLocation.Hand,
                 Deck => potentialTarget?.Location == CardLocation.Deck,
                 Discard => potentialTarget?.Location == CardLocation.Discard,
-                Board => potentialTarget?.Location == CardLocation.Board,
-                Annihilated => potentialTarget?.Location == CardLocation.Annihilation,
 
                 //misc
                 Augmented => potentialTarget?.Augments.Any() ?? false,

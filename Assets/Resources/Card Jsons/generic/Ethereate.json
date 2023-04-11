@@ -21,7 +21,7 @@
 					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Ethereal to revive",
-                        "cardRestrictionElements": [
+                        "elements": [
                             { "$type": "Core.CardRestriction:FriendlyCard:" },
                             { "$type": "Core.CardRestriction:Character:" },
                             {

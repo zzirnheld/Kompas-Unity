@@ -20,8 +20,8 @@
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:TargetAllCardsIdentity:",
-					"cardsIdentity": {
+					"$type": "Subeffect:TargetAll:",
+					"toSearch": {
 						"$type": "ManyCards:CardsInPositions:",
 						"positions": {
 							"$type": "ManySpaces:ThreeSpaceRelationship:",

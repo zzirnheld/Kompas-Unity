@@ -16,11 +16,11 @@
 						"cardRestrictions": [
 							"Augments Card Fitting Restriction"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" }
 						],
 						"augmentRestriction": {
-							"cardRestrictionElements": [
+							"elements": [
 								{ "$type": "Core.CardRestriction:Enemy:" }
 							]
 						}

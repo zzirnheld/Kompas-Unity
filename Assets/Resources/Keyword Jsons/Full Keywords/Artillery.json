@@ -17,7 +17,7 @@
 			"cardRestriction": {
 				"blurb": "Pick a target to barrage",
 				"cardRestrictions": [ "Character" ],
-				"cardRestrictionElements": [
+				"elements": [
 					{ "$type": "Core.CardRestriction:Enemy:" },
 					{
 						"$type": "Core.CardRestriction:Location:",

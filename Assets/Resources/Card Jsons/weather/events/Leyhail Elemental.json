@@ -18,7 +18,7 @@
 				{
 					"$type": "Subeffect:TargetAll:",
 					"cardRestriction": {
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:PositionFitsRestriction:",
 								"spaceRestriction": {
@@ -26,7 +26,7 @@
 										"In AOE Source is Also In"
 									],
 									"alsoInAOEOfRestriction": {
-										"cardRestrictionElements": [
+										"elements": [
 											{
 												"$type": "Core.CardRestriction:Subtypes:",
 												"subtypes": [ "Weather" ]
@@ -76,7 +76,7 @@
 				"anyOf": {
 					"$type": "ManyCards:FittingRestriction:",
 					"cardRestriction": {
-					"cardRestrictionElements": [ {
+					"elements": [ {
 							"$type": "Core.CardRestriction:Subtypes:",
 							"subtypes": [ "Weather" ]
 						} ]

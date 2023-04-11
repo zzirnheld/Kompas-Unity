@@ -26,12 +26,13 @@
 			"$type":"Subeffect:Reshuffle:"
 		},
 		{
-			"$type":"Subeffect:DeckTarget:",
+			"$type":"Subeffect:CardTarget:",
 			"cardRestriction":
 			{
 				"blurb":"Wanderer to Wander into",
-				"cardRestrictions":[ "Character", "Deck" ],
-				"cardRestrictionElements": [
+				"toSearch": { "$type": "ManyCards:Deck:" },
+				"cardRestrictions":[ "Character" ],
+				"elements": [
 					{
 						"$type": "Core.CardRestriction:Subtypes:",
 						"subtypes": [ "Wanderer" ]

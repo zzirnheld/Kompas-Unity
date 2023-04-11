@@ -20,7 +20,7 @@
 							"cardRestrictions": [
 								"Not Context Card"
 							],
-							"cardRestrictionElements": [
+							"elements": [
 								{
 									"$type": "Core.CardRestriction:Subtypes:",
 									"subtypes": [ "Pulsar" ]
@@ -51,7 +51,7 @@
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:PositionFitsRestriction:",
 								"spaceRestriction": {
@@ -62,7 +62,7 @@
 										"cardRestrictions": [
 											"Not Context Card"
 										],
-										"cardRestrictionElements": [
+										"elements": [
 											{
 												"$type": "Core.CardRestriction:Subtypes:",
 												"subtypes": [ "Pulsar" ]

@@ -8,7 +8,7 @@
 		],
 		"thisCardRestriction":
 		{
-			"cardRestrictionElements": [
+			"elements": [
 				{
 					"$type": "Core.CardRestriction:CardValueFits:",
 					"cardValue": { "value": "Spaces Can Move" },

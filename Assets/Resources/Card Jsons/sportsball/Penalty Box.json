@@ -25,14 +25,14 @@
 							"mustBeEmpty": false
 						},
 						"augmentRestriction": {
-							"cardRestrictionElements": [
+							"elements": [
 								{
 									"$type": "Core.CardRestriction:Subtypes:",
 									"subtypes": [ "Sportsball" ]
 								}
 							]
 						},
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Enemy:" }
 						]
 					}

@@ -17,7 +17,7 @@
 						"cardRestrictions": [
 							"Different from Source"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Structure" ]
@@ -31,14 +31,14 @@
 					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "Subeffect:ChooseFromList:",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "copy of the Structure to deck->summon",
 						"cardRestrictions": [
 							"Same Name as Target",
 							"Deck"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					},

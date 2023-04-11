@@ -10,7 +10,7 @@
 				"triggerRestriction": {
 					"triggerRestrictions": ["This Card in Play","Main Card Fits Restriction Before"],
 					"cardRestriction": {
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Supplicant" ]

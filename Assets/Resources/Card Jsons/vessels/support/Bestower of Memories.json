@@ -17,14 +17,14 @@
 						"cardRestrictions": [
                             "Augments Card Fitting Restriction"
                         ],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Memory" ]
 							}
 						],
 						"augmentRestriction": {
-							"cardRestrictionElements": [
+							"elements": [
 								{
 									"$type": "Core.CardRestriction:Subtypes:",
 									"subtypes": [ "Vessel" ]
@@ -45,7 +45,7 @@
 						"cardRestrictions": [
 							"Wields No Augment Fitting Restriction"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
@@ -69,7 +69,7 @@
 						"cardRestrictions": [
                             "Same Name as Target"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
                             { "$type": "Core.CardRestriction:CanPlay:" },
                             {

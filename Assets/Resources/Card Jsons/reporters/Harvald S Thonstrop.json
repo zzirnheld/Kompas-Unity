@@ -14,7 +14,7 @@
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Enemy:" }
 						]
 					}
@@ -42,7 +42,7 @@
 						"cardRestrictions": [
 							"Character"
 						],
-						"cardRestrictionElements": [ {
+						"elements": [ {
 							"$type": "Core.CardRestriction:CardValueFits:",
 							"cardValue": { "value": "S" },
 							"numberRestriction": { "elements": [ {

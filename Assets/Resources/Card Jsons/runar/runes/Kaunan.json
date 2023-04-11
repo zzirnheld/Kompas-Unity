@@ -19,7 +19,7 @@
 						"blurb": "for Kaunan to give -3 EW",
 						"cardRestrictions": [
 							"Character" ],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]

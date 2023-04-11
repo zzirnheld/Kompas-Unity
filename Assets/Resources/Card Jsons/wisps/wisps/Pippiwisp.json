@@ -20,7 +20,7 @@
 				{
 					"$type": "Subeffect:SetXBoardRestriction:",
 					"cardRestriction": {
-						"cardRestrictionElements": [ { "$type": "Core.CardRestriction:Enemy:" },
+						"elements": [ { "$type": "Core.CardRestriction:Enemy:" },
 							{
 								"$type": "Core.CardRestriction:PositionFitsRestriction:",
 								"spaceRestriction": {

@@ -52,7 +52,7 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "Subeffect:ChooseFromList:",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Speedemon to resonate",
 						"cardRestrictions": [
@@ -60,7 +60,7 @@
 							"Deck",
 							"Distinct Name from Other Targets"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Speedemon" ]

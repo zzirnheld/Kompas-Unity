@@ -1,7 +1,7 @@
 
 using KompasCore.Cards;
 
-namespace KompasCore.Effects.Restrictions.CardRestrictionElements
+namespace KompasCore.Effects.Restrictions.elements
 {
     public class CardValueFits : CardRestrictionElement
     {

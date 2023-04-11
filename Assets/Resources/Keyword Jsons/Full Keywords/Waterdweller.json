@@ -8,7 +8,7 @@
 			"triggerRestrictions":["This Card Fits Restriction Now"],
 			"selfRestriction":{
 				"cardRestrictions":["Not Avatar"],
-				"cardRestrictionElements": [
+				"elements": [
 					{
 						"$type": "Core.CardRestriction:Location:",
 						"locations": [ "Board" ]
@@ -24,7 +24,7 @@
 									"anyOf": {
 										"$type": "ManyCards:FittingRestriction:",
 										"cardRestriction": {
-										"cardRestrictionElements": [ {
+										"elements": [ {
 												"$type": "Core.CardRestriction:Subtypes:",
 												"subtypes": [ "Water" ]
 											} ]

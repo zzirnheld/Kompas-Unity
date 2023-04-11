@@ -15,15 +15,14 @@
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:DeckTarget:",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Mech plan",
+						"toSearch": { "$type": "ManyCards:Deck:" },
 						"cardRestrictions": [
-							"Character",
-							"Deck"
+							"Character"
 						],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Mech" ]
@@ -52,7 +51,7 @@
 							"Main Card Fits Restriction Before"
 						],
 						"cardRestriction": {
-							"cardRestrictionElements": [
+							"elements": [
 								{ "$type": "Core.CardRestriction:Friendly:" },
 								{
 									"$type": "Core.CardRestriction:Location:",
@@ -73,7 +72,7 @@
 							"Deck",
 							"Same Name as Target"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					},

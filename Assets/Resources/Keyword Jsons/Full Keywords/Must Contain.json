@@ -19,7 +19,7 @@
                         "In Source's AOE"
                     ]
                 },
-                "cardRestrictionElements": [
+                "elements": [
                     {
                         "$type": "Core.CardRestriction:Location:",
                         "locations": [ "Board" ]

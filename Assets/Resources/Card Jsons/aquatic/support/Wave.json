@@ -20,7 +20,7 @@
 						"cardRestrictions": [
 							"Spell"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
@@ -47,7 +47,7 @@
 									"anyOf": {
 										"$type": "ManyCards:FittingRestriction:",
 										"cardRestriction": {
-											"cardRestrictionElements": [
+											"elements": [
 												{
 													"$type": "Core.CardRestriction:Subtypes:",
 													"subtypes": [ "Water" ]
@@ -77,7 +77,7 @@
 							"Summoned",
 							"Character"
 						],
-						"cardRestrictionElements": [
+						"elements": [
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
                                 "spaceRestriction": {

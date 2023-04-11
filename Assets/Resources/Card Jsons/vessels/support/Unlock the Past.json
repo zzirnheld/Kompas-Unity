@@ -20,7 +20,7 @@
 						"cardRestrictions": [
 							"Augment"
                         ],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
@@ -29,7 +29,7 @@
 							{
 								"$type": "Core.CardRestriction:Augments:",
                                 "cardRestriction": {
-                                    "cardRestrictionElements": [
+                                    "elements": [
                                         {
                                             "$type": "Core.CardRestriction:Subtypes:",
                                             "subtypes": [ "Vessel" ]
@@ -56,13 +56,13 @@
                     "targetIndex": -2
 				},
 				{
-					"$type": "Subeffect:ChooseFromList:",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Memories to search for",
 						"cardRestrictions": [
 							"Deck"
                         ],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",

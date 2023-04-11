@@ -19,7 +19,7 @@
 					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Who to heal",
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Hurt:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",

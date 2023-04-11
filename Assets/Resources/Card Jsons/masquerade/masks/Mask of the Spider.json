@@ -23,7 +23,7 @@
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
                             "card": { "$type": "Cards:MainCardBefore:" },
                             "cardRestriction": {
-                                "cardRestrictionElements": [ { "$type": "Core.CardRestriction:Summoned:" } ]
+                                "elements": [ { "$type": "Core.CardRestriction:Summoned:" } ]
                             }
                         }
                     ]

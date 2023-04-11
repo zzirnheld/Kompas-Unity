@@ -42,14 +42,14 @@
 						"cardRestrictions": [
                             "Augments Card Fitting Restriction"
                         ],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Mask" ]
 							}
 						],
 						"augmentRestriction": {
-							"cardRestrictionElements": [
+							"elements": [
                                 { "$type": "Core.CardRestriction:Friendly:" },
 								{
 									"$type": "Core.CardRestriction:Subtypes:",
@@ -59,7 +59,7 @@
 						}
 					},
 					"selfRestriction": {
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Discard" ]

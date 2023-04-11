@@ -22,7 +22,7 @@
 					"$type": "Subeffect:ConditionalJump:",
 					"condition": "Target Violates Restriction",
 					"cardRestriction": {
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",

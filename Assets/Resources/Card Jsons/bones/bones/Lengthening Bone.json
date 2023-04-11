@@ -20,7 +20,7 @@
 						"cardRestrictions": [
 							"Character"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
@@ -55,18 +55,14 @@
                     "$type":"Subeffect:Move:"
                 },
 				{
-					"$type": "Subeffect:DeckTarget:",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Elk bone",
+						"toSearch": { "$type": "ManyCards:Deck:" },
 						"cardRestrictions": [
 							"Character"
 						],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-                            {
-                                "$type": "Core.CardRestriction:Location:",
-                                "locations": [ "Deck" ]
-                            },
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Bone" ]

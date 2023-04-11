@@ -11,7 +11,7 @@
 					"triggerRestrictions":["This Card in Play","Controller Triggered","Main Card Fits Restriction Before"],
 					"cardRestriction":{
 						"cardRestrictions":["Hand"],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Ificator" ]
@@ -22,15 +22,11 @@
 			},
 			"subeffects":[
 				{
-					"$type":"Subeffect:DeckTarget:",
+					"$type":"Subeffect:CardTarget:",
 					"cardRestriction":{
 						"blurb":"the idea that 'failed'",
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-                            {
-                                "$type": "Core.CardRestriction:Location:",
-                                "locations": [ "Deck" ]
-                            },
+						"toSearch": { "$type": "ManyCards:Deck:" },
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Crazy", "Idea" ]

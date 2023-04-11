@@ -18,7 +18,7 @@
 						"cardRestrictions": [
 							"Character"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Enemy:" },
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
@@ -30,7 +30,7 @@
 										"cardRestrictions": [
 											"Summoned"
 										],
-										"cardRestrictionElements": [
+										"elements": [
 											{
 												"$type": "Core.CardRestriction:Subtypes:",
 												"subtypes": [ "Tarocco" ]
@@ -50,7 +50,7 @@
 				{
 					"$type": "Subeffect:SetXBoardRestriction:",
 					"cardRestriction": {
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]

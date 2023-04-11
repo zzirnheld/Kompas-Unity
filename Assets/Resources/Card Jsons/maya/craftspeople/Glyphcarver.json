@@ -17,7 +17,7 @@
 				{
 					"$type": "Subeffect:SetXBoardRestriction:",
 					"cardRestriction": {
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Structure" ]

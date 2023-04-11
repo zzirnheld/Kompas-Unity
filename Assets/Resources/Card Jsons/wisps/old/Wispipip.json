@@ -18,7 +18,7 @@
 					"cardRestriction":
 					{
 						"cardRestrictions":["Discard"],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",

@@ -21,7 +21,7 @@
 							"Spell",
 							"Distinct Name from Source"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",

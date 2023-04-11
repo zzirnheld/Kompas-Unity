@@ -17,7 +17,7 @@
 						"cardRestrictions": [
 							"Character"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Enemy:" },
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
@@ -30,7 +30,7 @@
 											"anyOf": {
 												"$type": "ManyCards:FittingRestriction:",
 												"cardRestriction": {
-												"cardRestrictionElements": [ {
+												"elements": [ {
 														"$type": "Core.CardRestriction:Subtypes:",
 														"subtypes": [ "Weather" ]
 													} ]
@@ -43,7 +43,7 @@
 						]
 					},
 					"nowRestriction": {
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:PositionFitsRestriction:",
 								"spaceRestriction":
@@ -53,7 +53,7 @@
 										"anyOf": {
 											"$type": "ManyCards:FittingRestriction:",
 											"cardRestriction": {
-											"cardRestrictionElements": [ {
+											"elements": [ {
 													"$type": "Core.CardRestriction:Subtypes:",
 													"subtypes": [ "Weather" ]
 												} ]

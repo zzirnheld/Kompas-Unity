@@ -19,7 +19,7 @@
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
                             "card": { "$type": "Cards:CauseAfter:" },
                             "cardRestriction": {
-                                "cardRestrictionElements": [
+                                "elements": [
                                     {
                                         "$type": "Core.CardRestriction:Location:",
                                         "locations": [ "Board" ]
@@ -69,12 +69,13 @@
 					"$type":"Subeffect:Discard:"
 				},
 				{
-					"$type":"Subeffect:DeckTarget:",
+					"$type":"Subeffect:CardTarget:",
 					"cardRestriction":
 					{
 						"blurb":"for Squire to become",
-						"cardRestrictions": [ "Character", "Deck" ],
-						"cardRestrictionElements": [
+						"toSearch": { "$type": "ManyCards:Deck:" },
+						"cardRestrictions": [ "Character" ],
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Warrior" ]

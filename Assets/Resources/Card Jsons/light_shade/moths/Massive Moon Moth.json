@@ -14,7 +14,7 @@
                         "Secondary Card Fits Restriction Before"
 					],
 					"cardRestriction": {
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
@@ -27,7 +27,7 @@
 						]
 					},
                     "secondaryCardRestriction": {
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:PositionFitsRestriction:",
 								"spaceRestriction": {
@@ -37,7 +37,7 @@
 											"anyOf": {
 												"$type": "ManyCards:FittingRestriction:",
 												"cardRestriction": {
-													"cardRestrictionElements": [
+													"elements": [
 														{
 															"$type": "Core.CardRestriction:Subtypes:",
 															"subtypes": [ "Light" ]
@@ -61,7 +61,7 @@
 						"cardRestrictions": [
 							"Character"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
@@ -77,7 +77,7 @@
 							"Character",
 							"Not Already Target"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]

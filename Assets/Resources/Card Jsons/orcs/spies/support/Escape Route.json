@@ -21,7 +21,7 @@
 							"Different from Source",
 							"Character"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:PositionFitsRestriction:",

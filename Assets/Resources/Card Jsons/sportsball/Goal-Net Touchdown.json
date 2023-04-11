@@ -26,7 +26,7 @@
 							"cardRestrictions": [
 								"Avatar"
 							],
-							"cardRestrictionElements": [
+							"elements": [
 								{ "$type": "Core.CardRestriction:Enemy:" }
 							]
 						},
@@ -59,7 +59,7 @@
 								"Adjacent to Card Target"
 							]
 						},
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Enemy:" }
 						]
 					}

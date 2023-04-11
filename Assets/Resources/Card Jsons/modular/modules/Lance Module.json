@@ -19,7 +19,7 @@
 					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "enemy character to attack",
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Location:",

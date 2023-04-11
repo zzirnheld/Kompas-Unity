@@ -36,7 +36,7 @@
 							"Character",
 							"Distinct Name from Source"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]

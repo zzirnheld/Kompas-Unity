@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KompasServer.Effects.Subeffects
 {
-    public class ChooseFromListSaveRest : ChooseFromList
+    public class CardTargetSaveRest : CardTarget
     {
         public CardRestriction restRestriction;
 

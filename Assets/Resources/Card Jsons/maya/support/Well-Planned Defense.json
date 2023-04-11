@@ -20,7 +20,7 @@
 					{
 						"blurb":"for Well-Planned Defense to summon",
 						"cardRestrictions":["Character"],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",

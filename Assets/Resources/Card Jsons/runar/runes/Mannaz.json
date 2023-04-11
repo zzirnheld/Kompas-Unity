@@ -20,7 +20,7 @@
 					]
 				},
 				{
-					"$type": "Subeffect:ChooseFromListSaveRest:",
+					"$type": "Subeffect:CardTargetSaveRest:",
 					"cardRestriction": {
 						"blurb": "spell for Mannaz to search (to hand)",
 						"cardRestrictions": [
@@ -28,7 +28,7 @@
 							"Deck"
 						],
 						"constant": 10,
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:CardValueFits:",
@@ -46,7 +46,7 @@
 							"Deck",
 							"Not Already Target"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:CardValueFits:",

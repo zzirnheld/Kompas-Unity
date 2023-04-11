@@ -16,7 +16,7 @@
 							"Character",
 							"Space Fits Restriction"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",

@@ -10,7 +10,7 @@
                 "spaceRestrictions":["Adjacent to Source","Card Here Fits Restriction"],
                 "hereFitsRestriction":
                 {
-                    "cardRestrictionElements": [
+                    "elements": [
                         { "$type": "Core.CardRestriction:Friendly:" },
                         {
                             "$type": "Core.CardRestriction:Subtypes:",

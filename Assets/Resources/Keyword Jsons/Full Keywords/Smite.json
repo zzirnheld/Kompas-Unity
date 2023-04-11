@@ -11,7 +11,7 @@
 	},
 	"subeffects": [
 		{
-			"$type": "Subeffect:ChooseFromList:",
+			"$type": "Subeffect:CardTarget:",
 			"listRestriction": {
 				"listRestrictions": [
 					"Min Can Choose"
@@ -20,7 +20,7 @@
 			},
 			"cardRestriction": {
 				"blurb": "Burn cards for smite",
-				"cardRestrictionElements": [
+				"elements": [
 					{ "$type": "Core.CardRestriction:Friendly:" },
 					{
 						"$type": "Core.CardRestriction:Location:",

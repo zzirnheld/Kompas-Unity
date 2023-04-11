@@ -19,7 +19,7 @@
 						"blurb": "adjacent character for Pricklewisp to give -1 E",
 						"cardRestrictions": [
 							"Character" ],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]

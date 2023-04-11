@@ -12,7 +12,7 @@
 					"Default"
 				],
 				"existsRestriction": {
-					"cardRestrictionElements": [
+					"elements": [
 						{ "$type": "Core.CardRestriction:Enemy:" },
 						{
 							"$type": "Core.CardRestriction:PositionFitsRestriction:",
@@ -28,7 +28,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:ChooseFromList:",
+					"$type": "Subeffect:CardTarget:",
 					"maxCanChoose": 1,
 					"cardRestriction": {
 						"blurb": "Silent Cult Follower to recruit",
@@ -36,7 +36,7 @@
 							"Deck",
 							"Character"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",

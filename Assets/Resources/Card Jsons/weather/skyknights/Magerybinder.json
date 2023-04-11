@@ -17,7 +17,7 @@
 						"cardRestrictions": [
 							"Spell"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:PositionFitsRestriction:",
 								"spaceRestriction":
@@ -27,7 +27,7 @@
 										"anyOf": {
 											"$type": "ManyCards:FittingRestriction:",
 											"cardRestriction": {
-											"cardRestrictionElements": [ {
+											"elements": [ {
 													"$type": "Core.CardRestriction:Subtypes:",
 													"subtypes": [ "Weather" ]
 												} ]

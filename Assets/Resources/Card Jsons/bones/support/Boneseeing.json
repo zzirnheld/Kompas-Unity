@@ -20,7 +20,7 @@
 					{
 						"blurb":"Bone to see pips in",
 						"cardRestrictions":["Character"],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",

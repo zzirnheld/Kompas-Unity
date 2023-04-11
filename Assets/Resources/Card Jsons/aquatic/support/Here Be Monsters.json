@@ -18,7 +18,7 @@
 					"whatToCount": "Total Card Value of Cards Fitting Restriction",
 					"cardValue": { "value": "Cost" },
 					"cardRestriction": {
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Water" ]
@@ -44,18 +44,14 @@
 					"$type": "Subeffect:Annihilate:"
 				},
 				{
-					"$type": "Subeffect:DeckTarget:",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Monster here",
-						"cards": {
-							"$type": "ManyCards:Deck:",
-							"friendly": true,
-							"enemy": false
-						},
+						"toSearch": { "$type": "ManyCards:Deck:" },
 						"cardRestrictions": [
 							"Character"
 						],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Aquatic" ]

@@ -1,7 +1,7 @@
 using KompasCore.Cards;
 using KompasCore.Effects.Identities;
 
-namespace KompasCore.Effects.Restrictions.CardRestrictionElements
+namespace KompasCore.Effects.Restrictions.elements
 {
     public class Name : CardRestrictionElement
     {
