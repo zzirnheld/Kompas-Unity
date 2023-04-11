@@ -104,10 +104,6 @@ namespace KompasCore.Effects
         //positioning
 
         public const string SourceInThisAOE = "Source in This' AOE"; //whether the source card is in the potential target's aoe
-        public const string CardHasCardRestrictionInAOE = "Card has Card Restriction in its AOE";
-        public const string CardDoesntHaveCardRestrictionInAOE = "Card doesn't have Card Restriction in its AOE";
-        public const string WouldBeInAOEOfCardTargetIfCardTargetWereAtSpaceTarget 
-            = "Would Be In AOE Of Card Target If Card Target Were At Space Target";
         #endregion restrictions
 
         public string[] cardRestrictions = { };
@@ -280,10 +276,6 @@ namespace KompasCore.Effects
 
                 //positioning
                 SourceInThisAOE => potentialTarget?.CardInAOE(Source) ?? false,
-                CardHasCardRestrictionInAOE => HasCardRestrictionInAOE(potentialTarget, context),
-                CardDoesntHaveCardRestrictionInAOE => !HasCardRestrictionInAOE(potentialTarget, context),
-                WouldBeInAOEOfCardTargetIfCardTargetWereAtSpaceTarget 
-                    => WouldCardBeInAOEOfCardTargetIfCardTargetWereAtSpaceTarget(potentialTarget, Subeffect.CardTarget, Subeffect.SpaceTarget),
 
                 //misc
                 Augmented => potentialTarget?.Augments.Any() ?? false,

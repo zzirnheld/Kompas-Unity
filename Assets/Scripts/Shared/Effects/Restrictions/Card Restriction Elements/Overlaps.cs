@@ -1,4 +1,3 @@
-using System.Linq;
 using KompasCore.Cards;
 using KompasCore.Effects.Identities;
 
