@@ -50,10 +50,8 @@
 						]
 					},
 					"nowRestriction": {
-						"cardRestrictions": [
-							"Hurt"
-						],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Hurt:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]

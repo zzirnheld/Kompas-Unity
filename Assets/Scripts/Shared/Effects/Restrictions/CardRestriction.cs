@@ -89,10 +89,6 @@ namespace KompasCore.Effects
 
         //stats
         public const string CardValueFitsNumberRestriction = "Card Value Fits Number Restriction";
-
-        //misc statlike
-        public const string Hurt = "Hurt";
-        public const string Unhurt = "Unhurt";
         #endregion restrictions
 
         public string[] cardRestrictions = { };
@@ -252,8 +248,6 @@ namespace KompasCore.Effects
 
                 //stats
                 CardValueFitsNumberRestriction => cardValueNumberRestriction.IsValid(cardValue.GetValueOf(potentialTarget), context),
-                Hurt => potentialTarget?.Hurt ?? false,
-                Unhurt => !(potentialTarget?.Hurt ?? true),
 
                 //misc
                 Augmented => potentialTarget?.Augments.Any() ?? false,

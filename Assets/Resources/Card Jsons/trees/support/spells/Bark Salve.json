@@ -17,8 +17,9 @@
 					"$type":"Subeffect:CardTarget:",
 					"cardRestriction":
 					{
-						"cardRestrictions": [ "Character", "Hurt" ],
+						"cardRestrictions": [ "Character" ],
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Hurt:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]

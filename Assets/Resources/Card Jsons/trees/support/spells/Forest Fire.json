@@ -17,11 +17,9 @@
 				{
 					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
-						"blurb": "Who to heal",
-						"cardRestrictions": [
-							"Hurt"
-						],
+						"blurb": "Who to burn",
 						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Tree" ]
