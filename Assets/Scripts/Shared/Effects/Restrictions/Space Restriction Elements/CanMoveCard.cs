@@ -41,7 +41,7 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 
         private bool FitsThroughRestriction(Space source, Space dest, IResolutionContext context)
             => InitializationContext.game.BoardController.AreConnectedByNumberOfSpacesFittingPredicate(source, dest,
-                s => throughRestriction.IsValidSpace(s, context), distanceRestriction.IsValidNumber);
+                s => throughRestriction.IsValidSpace(s, context), d => distanceRestriction.IsValid(d, context));
 
         protected override bool IsValidLogic(Space space, IResolutionContext context)
         {

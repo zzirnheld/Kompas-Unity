@@ -18,8 +18,7 @@
 						"blurb": "Rune for Runespeaker to cast",
 						"cardRestrictions": [
 							"Spell",
-							"Can Be Played",
-							"Effect Controller can Afford Cost"
+							"Can Be Played"
 						],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
@@ -30,6 +29,18 @@
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Rune" ]
+							},
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": { "value": "Cost" },
+								"numberRestriction": { "elements": [{
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:LessThanEqual:" },
+									"other": {
+										"$type": "Numbers:Pips:",
+										"player": { "$type": "Players:TargetIndex:" }
+									}
+								}]}
 							}
 						]
 					}

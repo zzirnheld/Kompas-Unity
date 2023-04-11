@@ -144,13 +144,13 @@ namespace KompasCore.Effects
         {
             return Game.BoardController.AreConnectedByNumberOfSpacesFittingPredicate(target.Position, space,
                             s => spaceConnectednessRestriction.IsValidSpace(s, context),
-                            connectedSpacesXRestriction.IsValidNumber);
+                            dist => connectedSpacesXRestriction.IsValid(dist, context));
         }
 
         private bool InAOEOfNumberOfCardsFittingRestriction(Space space, IResolutionContext context)
         {
             var count = Game.Cards.Count(c => c.SpaceInAOE(space) && inAOEOfRestriction.IsValid(c, context));
-            return numberOfCardsInAOEOfRestriction.IsValidNumber(count);
+            return numberOfCardsInAOEOfRestriction.IsValid(count, context);
         }
 
         private bool CardInSpaceOverlapsCardRestriction(GameCard card, Space potentialSpace, IResolutionContext context)
@@ -212,9 +212,9 @@ namespace KompasCore.Effects
                 BehindSource => Source.SpaceBehind(space),
 
                 //distance
-                DistanceToSourceFitsXRestriction => distanceXRestriction.IsValidNumber(Source.DistanceTo(space)),
-                DistanceToCardTargetFitsXRestriction => distanceXRestriction.IsValidNumber(target.DistanceTo(space)),
-                DistanceToSpaceTargetFitsXRestriction => distanceXRestriction.IsValidNumber(Subeffect.SpaceTarget.DistanceTo(space)),
+                DistanceToSourceFitsXRestriction => distanceXRestriction.IsValid(Source.DistanceTo(space), context),
+                DistanceToCardTargetFitsXRestriction => distanceXRestriction.IsValid(target.DistanceTo(space), context),
+                DistanceToSpaceTargetFitsXRestriction => distanceXRestriction.IsValid(Subeffect.SpaceTarget.DistanceTo(space), context),
 
                 FurtherFromSourceThanCardTarget => Source.DistanceTo(space) > Source.DistanceTo(target),
                 FurtherFromSourceThanSpaceTarget => Source.DistanceTo(space) > Source.DistanceTo(Subeffect.SpaceTarget),

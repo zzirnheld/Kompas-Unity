@@ -21,8 +21,7 @@
 						"cardRestrictions": [
 							"Deck",
 							"Spell",
-							"Can Be Played",
-							"Effect Controller can Afford Cost"
+							"Can Be Played"
 						],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },

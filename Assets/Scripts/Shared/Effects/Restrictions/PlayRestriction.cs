@@ -146,7 +146,7 @@ namespace KompasCore.Effects
             SpaceFitsRestriction => spaceRestriction.IsValidSpace(space, context),
             SpaceMustFloutRestriction => !floutedSpaceRestriction.IsValidSpace(space, context),
 
-            CountExistingCards => countCardNumberRestriction.IsValidNumber(Card.Game.Cards.Count(c => countCardRestriction.IsValid(c, context))),
+            CountExistingCards => countCardNumberRestriction.IsValid(Card.Game.Cards.Count(c => countCardRestriction.IsValid(c, context)), context),
 
             _ => throw new System.ArgumentException($"You forgot to check play restriction {r}", "r"),
         };

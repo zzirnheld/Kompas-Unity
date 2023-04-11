@@ -16,9 +16,7 @@
 				{
 					"$type": "Subeffect:SetXByGamestate:",
 					"whatToCount": "Total Card Value of Cards Fitting Restriction",
-					"cardValue": {
-						"value": "Cost"
-					},
+					"cardValue": { "value": "Cost" },
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Source in This' AOE"

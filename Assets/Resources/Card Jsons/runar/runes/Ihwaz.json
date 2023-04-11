@@ -19,15 +19,28 @@
 						"blurb": "for Ihwaz to recast",
 						"cardRestrictions": [
 							"Character",
-							"Can Be Played",
-							"Effect Controller can Afford Cost"
+							"Can Be Played"
 						],
-						"costDivisor": 2,
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Discard" ]
+							},
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": {
+									"value": "Cost",
+									"divisor": 2
+								},
+								"numberRestriction": { "elements": [{
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:LessThanEqual:" },
+									"other": {
+										"$type": "Numbers:Pips:",
+										"player": { "$type": "Players:TargetIndex:" }
+									}
+								}]}
 							}
 						]
 					}

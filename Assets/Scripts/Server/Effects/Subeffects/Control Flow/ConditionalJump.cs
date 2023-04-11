@@ -48,7 +48,7 @@ namespace KompasServer.Effects.Subeffects
                     MainTriggeringCardFloutedRestrictionBefore => !cardRestriction.IsValid(ResolutionContext.TriggerContext.mainCardInfoBefore, ResolutionContext),
 
                     XGreaterEqualConstant => Effect.X >= constant,
-                    XFitsRestriction => xRestriction.IsValidNumber(Effect.X),
+                    XFitsRestriction => xRestriction.IsValid(Effect.X, ResolutionContext),
                     _ => throw new System.ArgumentException($"Invalid conditional jump condition {condition}"),
                 };
             }

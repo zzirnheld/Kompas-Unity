@@ -119,8 +119,6 @@ namespace KompasCore.Effects
         public const string CanBePlayed = "Can Be Played";
         public const string CanPlayToTargetSpace = "Can be Played to Target Space";
 
-        public const string EffectControllerCanPayCost = "Effect Controller can Afford Cost";
-
         #endregion restrictions
 
         public string[] cardRestrictions = { };
@@ -132,13 +130,6 @@ namespace KompasCore.Effects
         public int constant;
         public CardLocation[] locations;
         public string[] spellSubtypes;
-
-        //used for "can afford cost"
-        public int costMultiplier = 1;
-        public int costDivisor = 1;
-
-        //used for "space restriction valid if this target chosen"
-        public int spaceRestrictionIndex;
 
         public CardValue cardValue;
         public NumberRestriction cardValueNumberRestriction;
@@ -297,7 +288,7 @@ namespace KompasCore.Effects
                 Revealed => potentialTarget?.KnownToEnemy ?? false,
 
                 //stats
-                CardValueFitsNumberRestriction => cardValueNumberRestriction.IsValidNumber(cardValue.GetValueOf(potentialTarget)),
+                CardValueFitsNumberRestriction => cardValueNumberRestriction.IsValid(cardValue.GetValueOf(potentialTarget), context),
                 Hurt => potentialTarget?.Hurt ?? false,
                 Unhurt => !(potentialTarget?.Hurt ?? true),
                 Activated => potentialTarget?.Activated ?? false,
@@ -317,11 +308,6 @@ namespace KompasCore.Effects
                 IndexInListGTC => potentialTarget?.IndexInList > constant,
                 IndexInListLTC => potentialTarget?.IndexInList < constant,
 
-                //fights
-                IsDefendingFromSource
-                    => Source.Game.StackEntries.Any(s => s is Attack atk && atk.attacker == Source && atk.defender == potentialTarget?.Card)
-                    || (Source.Game.CurrStackEntry is Attack atk2 && atk2.attacker == Source && atk2.defender == potentialTarget?.Card),
-
                 //misc
                 Augmented => potentialTarget?.Augments.Any() ?? false,
 
@@ -329,8 +315,6 @@ namespace KompasCore.Effects
                     => Game.ExistsEffectPlaySpace(potentialTarget?.PlayRestriction, Effect),
                 CanPlayToTargetSpace
                     => potentialTarget?.PlayRestriction.IsValidEffectPlay(Subeffect.SpaceTarget, Effect, Subeffect.PlayerTarget, context, ignoring: canPlayIgnoring) ?? false,
-
-                EffectControllerCanPayCost => Subeffect.Effect.Controller.Pips >= potentialTarget?.Cost * costMultiplier / costDivisor,
 
                 _ => throw new ArgumentException($"Invalid card restriction {restriction}", "restriction"),
             };

@@ -20,7 +20,6 @@
 						"cardRestrictions": [
 							"Spell",
 							"Can Be Played",
-							"Effect Controller can Afford Cost",
 							"Distinct Name from Source"
 						],
 						"cardRestrictionElements": [
@@ -32,9 +31,23 @@
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Rune" ]
+							},
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": {
+									"value": "Cost",
+									"divisor": 2
+								},
+								"numberRestriction": { "elements": [{
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:LessThanEqual:" },
+									"other": {
+										"$type": "Numbers:Pips:",
+										"player": { "$type": "Players:TargetIndex:" }
+									}
+								}]}
 							}
-						],
-						"costDivisor": 2
+						]
 					}
 				},
 				{

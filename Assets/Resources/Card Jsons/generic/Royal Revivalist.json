@@ -17,13 +17,24 @@
 					"cardRestriction": {
 						"blurb": "Sire, who shall we revive?",
 						"cardRestrictions": [
-							"Character",
-							"Effect Controller can Afford Cost"
+							"Character"
 						],
 						"cardRestrictionElements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Discard" ]
+							},
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": { "value": "Cost" },
+								"numberRestriction": { "elements": [{
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:LessThanEqual:" },
+									"other": {
+										"$type": "Numbers:Pips:",
+										"player": { "$type": "Players:TargetIndex:" }
+									}
+								}]}
 							}
 						]
 					},

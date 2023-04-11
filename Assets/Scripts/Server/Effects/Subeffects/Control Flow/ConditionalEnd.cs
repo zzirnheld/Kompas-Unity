@@ -56,7 +56,7 @@ namespace KompasServer.Effects.Subeffects
         private bool doesNumberOfCardsFittingRestrictionFitNumberRestriction()
         {
             int number = ServerGame.Cards.Where(c => cardRestriction.IsValid(c, ResolutionContext)).Count();
-            return numberRestriction.IsValidNumber(number);
+            return numberRestriction.IsValid(number, ResolutionContext);
         }
 
         private bool ShouldEnd
@@ -89,8 +89,8 @@ namespace KompasServer.Effects.Subeffects
                     SourceViolatesRestriction => !cardRestriction.IsValid(Source, ResolutionContext),
                     NumTargetsLTEConstant => Effect.CardTargets.Count() <= constant,
                     HandFull => PlayerTarget.HandFull,
-                    PlayerValueFitsNumberRestriction => playerValueNumberRestriction.IsValidNumber(playerValue.GetValueOf(PlayerTarget)),
-                    PlayerValueFloutsNumberRestriction => !playerValueNumberRestriction.IsValidNumber(playerValue.GetValueOf(PlayerTarget)),
+                    PlayerValueFitsNumberRestriction => playerValueNumberRestriction.IsValid(playerValue.GetValueOf(PlayerTarget), ResolutionContext),
+                    PlayerValueFloutsNumberRestriction => !playerValueNumberRestriction.IsValid(playerValue.GetValueOf(PlayerTarget), ResolutionContext),
                     _ => throw new System.ArgumentException($"Condition {condition} invalid for conditional end subeffect"),
                 };
             }

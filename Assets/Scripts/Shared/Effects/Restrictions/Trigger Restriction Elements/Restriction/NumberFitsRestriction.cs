@@ -18,7 +18,7 @@ namespace KompasCore.Effects.Restrictions
             }
 
             protected override bool AbstractIsValidContext(TriggeringEventContext context, IResolutionContext secondaryContext)
-                => restriction.IsValidNumber(number.From(context, secondaryContext));
+                => restriction.IsValid(number.From(context, secondaryContext), secondaryContext);
         }
     }
 }

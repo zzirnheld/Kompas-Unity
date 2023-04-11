@@ -174,7 +174,7 @@ namespace KompasCore.Effects
             //other non-card triggering things
             SpaceFitsRestriction => triggeringContext.space != null && spaceRestriction.IsValidSpace(triggeringContext.space, new ResolutionContext(triggeringContext)),
 
-            XFitsRestriction => triggeringContext.x.HasValue && xRestriction.IsValidNumber(triggeringContext.x.Value),
+            XFitsRestriction => triggeringContext.x.HasValue && xRestriction.IsValid(triggeringContext.x.Value, context: stashedResolutionContext),
             StackableSourceIsMainCard => triggeringContext.stackableCause is Effect eff && eff.Source == triggeringContext.mainCardInfoBefore.Card,
 
             ControllerTriggered => triggeringContext.player == ThisCard.Controller,
