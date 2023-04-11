@@ -1,5 +1,6 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects.Identities;
+using KompasCore.Effects.Identities.ManyCards;
 using KompasCore.GameCore;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,11 @@ namespace KompasServer.Effects.Subeffects
     /// </summary>
     public class DeckTarget : CardTarget
     {
-        protected override IEnumerable<GameCard> TargetCardsSource => Controller.deckCtrl.Cards;
+        public override void Initialize(ServerEffect eff, int subeffIndex)
+        {
+            toSearch ??= new Deck();
+            base.Initialize(eff, subeffIndex);
+        }
 
         public override bool AddTargetIfLegal(GameCard card)
         {

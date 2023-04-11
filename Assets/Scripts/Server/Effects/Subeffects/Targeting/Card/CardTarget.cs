@@ -1,6 +1,7 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
 using KompasCore.Effects.Identities;
+using KompasCore.Effects.Identities.ManyCards;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,6 +11,7 @@ namespace KompasServer.Effects.Subeffects
 {
     public class CardTarget : ServerSubeffect
     {
+        public IIdentity<IReadOnlyCollection<GameCardBase>> toSearch = new All();
         public CardRestriction cardRestriction;
 
         /// <summary>
@@ -27,13 +29,16 @@ namespace KompasServer.Effects.Subeffects
 
             Debug.Log($"DEFAULT INIT CONTEXT {DefaultInitializationContext}");
             cardRestriction.Initialize(DefaultInitializationContext);
+            toSearch.Initialize(DefaultInitializationContext);
             toLinkWith?.Initialize(DefaultInitializationContext);
         }
 
         public override bool IsImpossible() => !Game.Cards.Any(c => cardRestriction.IsValid(c, ResolutionContext));
-
-        protected virtual IEnumerable<GameCard> TargetCardsSource => Game.Cards;
-        protected virtual IEnumerable<GameCard> PotentialTargets => TargetCardsSource.Where(c => cardRestriction.IsValid(c, ResolutionContext));
+        
+        protected virtual IEnumerable<GameCard> PotentialTargets
+            => toSearch.From(ResolutionContext, default)
+                .Where(c => cardRestriction.IsValid(c, ResolutionContext))
+                .Select(c => c.Card);
         protected virtual int[] PotentialTargetIds => PotentialTargets.Select(c => c.ID).ToArray();
 
         protected virtual async Task<GameCard> GetTargets(int[] potentialTargetIds)

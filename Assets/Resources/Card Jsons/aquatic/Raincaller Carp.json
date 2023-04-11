@@ -19,12 +19,15 @@
 					"maxCanChoose": 1,
 					"cardRestriction": {
 						"blurb": "RAIN PLEASE",
+						"cards": {
+							"$type": "ManyCards:Deck:",
+							"friendly": true,
+							"enemy": false
+						},
 						"cardRestrictions": [
-							"Deck",
 							"Spell"
 						],
 						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Water" ]

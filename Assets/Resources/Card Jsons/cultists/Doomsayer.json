@@ -18,11 +18,12 @@
 					"maxCanChoose": 1,
 					"cardRestriction": {
 						"blurb": "Cultist for Doomsayer to search",
-						"cardRestrictions": [
-							"Deck"
-						],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Deck" ]
+                            },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Cultist" ]

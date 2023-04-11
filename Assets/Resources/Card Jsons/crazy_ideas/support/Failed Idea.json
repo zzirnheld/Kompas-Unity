@@ -24,10 +24,13 @@
 				{
 					"$type":"Subeffect:DeckTarget:",
 					"cardRestriction":{
-						"blurb":"card for Failed Idea to mill",
-						"cardRestrictions":["Deck"],
+						"blurb":"the idea that 'failed'",
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Deck" ]
+                            },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Crazy", "Idea" ]

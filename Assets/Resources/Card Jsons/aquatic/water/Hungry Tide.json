@@ -52,11 +52,14 @@
 					"cardRestriction": {
 						"blurb": "for the tide to belch",
 						"cardRestrictions": [
-							"Character",
-							"Deck"
+							"Character"
 						],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Deck" ]
+                            },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Aquatic" ]

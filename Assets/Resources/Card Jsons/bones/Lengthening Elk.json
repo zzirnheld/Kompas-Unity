@@ -43,11 +43,14 @@
 					"cardRestriction": {
 						"blurb": "Elk bone",
 						"cardRestrictions": [
-							"Deck",
 							"Character"
 						],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Deck" ]
+                            },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Bone" ]

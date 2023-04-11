@@ -80,8 +80,6 @@ namespace KompasCore.Effects
         public const string Hand = "Hand";
         public const string Discard = "Discard";
         public const string Deck = "Deck";
-        public const string Board = "Board";
-        public const string Annihilated = "Annihilated";
         #endregion restrictions
 
         public string[] cardRestrictions = { };

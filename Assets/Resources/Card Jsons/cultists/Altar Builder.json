@@ -59,11 +59,14 @@
 					"cardRestriction": {
 						"blurb": "Altar for Altar Builder to play",
 						"cardRestrictions": [
-							"Deck",
 							"Spell"
 						],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Deck" ]
+                            },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Altar" ]

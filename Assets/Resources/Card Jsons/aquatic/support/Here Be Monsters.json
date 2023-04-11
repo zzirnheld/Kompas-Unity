@@ -47,12 +47,15 @@
 					"$type": "Subeffect:DeckTarget:",
 					"cardRestriction": {
 						"blurb": "Monster here",
+						"cards": {
+							"$type": "ManyCards:Deck:",
+							"friendly": true,
+							"enemy": false
+						},
 						"cardRestrictions": [
-							"Character",
-							"Deck"
+							"Character"
 						],
 						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Aquatic" ]
