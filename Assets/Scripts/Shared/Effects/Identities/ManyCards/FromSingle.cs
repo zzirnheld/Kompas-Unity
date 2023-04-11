@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace KompasCore.Effects.Identities.ManyCards
 {
-    public class Multiple : ContextualParentIdentityBase<IReadOnlyCollection<GameCardBase>>
+    public class FromSingle : ContextualParentIdentityBase<IReadOnlyCollection<GameCardBase>>
     {
         public IIdentity<GameCardBase>[] cards;
 

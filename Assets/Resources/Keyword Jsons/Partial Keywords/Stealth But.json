@@ -36,13 +36,17 @@
                 "Main Card Fits Restriction After"
             ],
             "nowRestriction": {
-                "cardRestrictions": [
-                    "Source in This' AOE"
-                ],
                 "cardRestrictionElements": [
                     {
                         "$type": "Core.CardRestriction:Subtypes:",
                         "subtypes": [ "Light" ]
+                    },
+                    {
+                        "$type": "Core.CardRestriction:AOEContains:",
+                        "cards": {
+                            "$type": "ManyCards:FromSingle:",
+                            "cards": [ { "$type": "Cards:ThisCard:" } ]
+                        }
                     }
                 ]
             }

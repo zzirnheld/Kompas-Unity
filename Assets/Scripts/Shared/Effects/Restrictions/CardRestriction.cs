@@ -100,10 +100,6 @@ namespace KompasCore.Effects
 
         public const string HasMovement = "Has Movement";
         public const string OutOfMovement = "Out of Movement";
-
-        //positioning
-
-        public const string SourceInThisAOE = "Source in This' AOE"; //whether the source card is in the potential target's aoe
         #endregion restrictions
 
         public string[] cardRestrictions = { };
@@ -273,9 +269,6 @@ namespace KompasCore.Effects
                 Unnegated => !(potentialTarget?.Negated ?? true),
                 HasMovement => potentialTarget?.SpacesCanMove > 0,
                 OutOfMovement => potentialTarget?.SpacesCanMove <= 0,
-
-                //positioning
-                SourceInThisAOE => potentialTarget?.CardInAOE(Source) ?? false,
 
                 //misc
                 Augmented => potentialTarget?.Augments.Any() ?? false,

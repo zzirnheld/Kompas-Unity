@@ -18,13 +18,17 @@
 					"whatToCount": "Total Card Value of Cards Fitting Restriction",
 					"cardValue": { "value": "Cost" },
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Source in This' AOE"
-						],
 						"cardRestrictionElements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Water" ]
+							},
+							{
+								"$type": "Core.CardRestriction:AOEContains:",
+								"cards": {
+									"$type": "ManyCards:FromSingle:",
+									"cards": [ { "$type": "Cards:ThisCard:" } ]
+								}
 							}
 						]
 					},
