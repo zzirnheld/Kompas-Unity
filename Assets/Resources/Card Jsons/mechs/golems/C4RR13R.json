@@ -33,8 +33,7 @@
 					"condition": "Target Violates Restriction",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Character",
-							"Card Value Fits Number Restriction"
+							"Character"
 						],
 						"cardRestrictionElements": [
 							{

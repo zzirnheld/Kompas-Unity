@@ -34,21 +34,21 @@
 						"blurb": "for Leybinder to hand-summon",
 						"cardRestrictions": [
 							"Character",
-							"Controller Matches Player Target",
-							"Card Value Fits Number Restriction"
+							"Controller Matches Player Target"
 						],
-						"cardValue": {
-							"value": "S"
-						},
-						"cardValueNumberRestriction": {
-							"numberRestrictions": [
-								"=X"
-							]
-						},
 						"cardRestrictionElements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Hand" ]
+							},
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": { "value": "S" },
+								"numberRestriction": { "elements": [{
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:Equal:" },
+									"other": { "$type": "Numbers:X:" }
+								}]}
 							}
 						]
 					},

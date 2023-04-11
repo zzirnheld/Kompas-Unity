@@ -14,20 +14,20 @@
                         "Secondary Card Fits Restriction Before"
 					],
                     "secondaryCardRestriction": {
-						"cardRestrictions": [
-							"Card Value Fits Number Restriction"
-						],
-						"cardValue": {
-							"value": "W"
-						},
-						"cardValueNumberRestriction": {
-							"numberRestrictions": [
-								">Source"
-							],
-							"cardValue": {
-								"value": "E"
+						"cardRestrictionElements": [
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": { "value": "W" },
+								"numberRestriction": { "elements": [{
+									"numberRestrictions": [
+										">Source"
+									],
+									"cardValue": {
+										"value": "E"
+									}
+								}]}
 							}
-						}
+						]
                     }
                 }
             },

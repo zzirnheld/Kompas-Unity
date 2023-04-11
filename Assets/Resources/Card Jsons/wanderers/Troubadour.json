@@ -46,23 +46,23 @@
 						"blurb": "Wanderer to inspire with music",
 						"cardRestrictions": [
 							"Character",
-							"Deck",
-							"Card Value Fits Number Restriction"
+							"Deck"
 						],
 						"cardRestrictionElements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Wanderer" ]
+							},
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": { "value": "Cost" },
+								"numberRestriction": { "elements": [{
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:LessThan:" },
+									"other": { "$type": "Numbers:X:" }
+								}]}
 							}
-						],
-						"cardValue": {
-							"value": "S"
-						},
-						"cardValueNumberRestriction": {
-							"numberRestrictions": [
-								"<X"
-							]
-						}
+						]
 					},
 					"xMultiplier": 1
 				},

@@ -46,21 +46,21 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Character",
-							"Multiple Possible Locations",
-							"Card Value Fits Number Restriction"
+							"Multiple Possible Locations"
 						],
-						"cardValue": {
-							"value": "S"
-						},
-						"cardValueNumberRestriction": {
-							"numberRestrictions": [
-								"<=X"
-							]
-						},
 						"cardRestrictionElements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Golem" ]
+							},
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": { "value": "Cost" },
+								"numberRestriction": { "elements": [{
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:LessThanEqual:" },
+									"other": { "$type": "Numbers:X:" }
+								}]}
 							}
 						],
 						"locations": [

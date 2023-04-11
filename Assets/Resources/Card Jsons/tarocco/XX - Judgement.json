@@ -20,21 +20,21 @@
 					"cardRestriction": {
 						"blurb": "character for Judgement to kill",
 						"cardRestrictions": [
-							"Character",
-							"Card Value Fits Number Restriction"
+							"Character"
 						],
-						"cardValue": {
-							"value": "S"
-						},
-						"cardValueNumberRestriction": {
-							"numberRestrictions": [
-								"<=X"
-							]
-						},
 						"cardRestrictionElements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": { "value": "Cost" },
+								"numberRestriction": { "elements": [{
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:LessThanEqual:" },
+									"other": { "$type": "Numbers:X:" }
+								}]}
 							}
 						]
 					},

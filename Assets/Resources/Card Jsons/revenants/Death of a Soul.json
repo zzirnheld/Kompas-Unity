@@ -55,17 +55,8 @@
 					"cardRestriction": {
 						"blurb": "character whose soul to kill",
 						"cardRestrictions": [
-							"Character",
-							"Card Value Fits Number Restriction"
+							"Character"
 						],
-						"cardValue": {
-							"value": "S"
-						},
-						"cardValueNumberRestriction": {
-							"numberRestrictions": [
-								"<=X"
-							]
-						},
 						"cardRestrictionElements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
@@ -78,7 +69,16 @@
 										"Adjacent to Source"
 									]
                                 }
-                            }
+                            },
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": { "value": "S" },
+								"numberRestriction": { "elements": [{
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:LessThanEqual:" },
+									"other": { "$type": "Numbers:X:" }
+								}]}
+							}
 						]
 					},
 					"xMultiplier": 1,

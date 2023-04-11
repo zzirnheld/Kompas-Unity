@@ -20,23 +20,23 @@
 					"cardRestriction": {
 						"blurb": "for Empress to hand-summon",
 						"cardRestrictions": [
-							"Character",
-							"Card Value Fits Number Restriction"
+							"Character"
 						],
-						"cardValue": {
-							"value": "S"
-						},
-						"cardValueNumberRestriction": {
-							"numberRestrictions": [
-								"<=X"
-							]
-						},
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
                             {
                                 "$type": "Core.CardRestriction:Location:",
                                 "locations": [ "Hand" ]
-                            }
+                            },
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": { "value": "Cost" },
+								"numberRestriction": { "elements": [{
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:LessThanEqual:" },
+									"other": { "$type": "Numbers:X:" }
+								}]}
+							}
 						]
 					},
 					"xMultiplier": 1

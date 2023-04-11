@@ -35,8 +35,7 @@
 					"cardRestriction": {
 						"blurb": "Warrior for the rites to summon",
 						"cardRestrictions": [
-							"Character",
-							"Card Value Fits Number Restriction"
+							"Character"
 						],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
@@ -48,16 +47,17 @@
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Warrior" ]
 							},
-                            { "$type": "Core.CardRestriction:CanPlay:" }
-						],
-						"cardValue": {
-							"value": "S"
-						},
-						"cardValueNumberRestriction": {
-							"numberRestrictions": [
-								"<=X"
-							]
-						}
+                            { "$type": "Core.CardRestriction:CanPlay:" },
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": { "value": "S" },
+								"numberRestriction": { "elements": [{
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:LessThanEqual:" },
+									"other": { "$type": "Numbers:X:" }
+								}]}
+							}
+						]
 					},
 					"xMultiplier": 1
 				},

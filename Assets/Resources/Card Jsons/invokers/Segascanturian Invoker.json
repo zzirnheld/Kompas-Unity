@@ -41,17 +41,17 @@
 					"condition": "Target Violates Restriction",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Character",
-							"Card Value Fits Number Restriction"
+							"Character"
 						],
-						"cardValue": {
-							"value": "S"
-						},
-						"cardValueNumberRestriction": {
-							"numberRestrictions": [
-								"<X"
-							]
-						}
+						"cardRestrictionElements": [ {
+							"$type": "Core.CardRestriction:CardValueFits:",
+							"cardValue": { "value": "Cost" },
+							"numberRestriction": { "elements": [ {
+								"$type": "Core.NumberRestriction:Compare:",
+								"comparison": { "$type": "Relationships.Number:LessThan:" },
+								"other": { "$type": "Numbers:X:" }
+							} ] }
+						} ]
 					},
 					"jumpIndices": [
 						2

@@ -14,20 +14,21 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Spell",
-							"Card Value Fits Number Restriction"
+							"Spell"
 						],
-						"cardValue": {
-							"value": "Cost"
-						},
-						"cardValueNumberRestriction": {
-							"numberRestrictions": [ "==Constant" ],
-							"constant": 0
-						},
 						"cardRestrictionElements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Hand" ]
+							},
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": { "value": "Cost" },
+								"numberRestriction": { "elements": [{
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:LessThanEqual:" },
+									"other": { "$type": "Numbers:Constant:", "constant": 0 }
+								}]}
 							}
 						]
 					}

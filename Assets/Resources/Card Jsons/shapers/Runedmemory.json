@@ -16,19 +16,10 @@
 				{
 					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
-						"blurb": "Shaping for He Who Knew Runes to cast",
+						"blurb": "Shaping for Runedmemory to cast",
 						"cardRestrictions": [
-							"Spell",
-							"Card Value Fits Number Restriction"
+							"Spell"
 						],
-						"cardValue": {
-							"value": "C"
-						},
-						"cardValueNumberRestriction": {
-							"numberRestrictions": [
-								"=X"
-							]
-						},
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
                             {
@@ -39,7 +30,16 @@
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Shaping" ]
 							},
-                            { "$type": "Core.CardRestriction:CanPlay:" }
+                            { "$type": "Core.CardRestriction:CanPlay:" },
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": { "value": "C" },
+								"numberRestriction": { "elements": [{
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:Equal:" },
+									"other": { "$type": "Numbers:X:" }
+								}]}
+							}
 						]
 					},
 					"xMultiplier": 1
@@ -47,7 +47,7 @@
 				{
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
-						"blurb": "where for He Who Knew Runes to cast its target Shaping",
+						"blurb": "where for Runedmemory to cast its target Shaping",
                         "spaceRestrictionElements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {

@@ -35,8 +35,7 @@
 					"cardRestriction": {
 						"blurb": "Rune for Runechanneler to cast",
 						"cardRestrictions": [
-							"Spell",
-							"Card Value Fits Number Restriction"
+							"Spell"
 						],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
@@ -48,16 +47,17 @@
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Rune" ]
 							},
-                            { "$type": "Core.CardRestriction:CanPlay:" }
-						],
-						"cardValue": {
-							"value": "C"
-						},
-						"cardValueNumberRestriction": {
-							"numberRestrictions": [
-								"<=X"
-							]
-						}
+                            { "$type": "Core.CardRestriction:CanPlay:" },
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": { "value": "C" },
+								"numberRestriction": { "elements": [{
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:LessThanEqual:" },
+									"other": { "$type": "Numbers:X:" }
+								}]}
+							}
+						]
 					},
 					"xMultiplier": 1
 				},

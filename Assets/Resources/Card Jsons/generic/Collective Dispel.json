@@ -38,23 +38,23 @@
 					"cardRestriction": {
 						"blurb": "C <= X spell to dispel",
 						"cardRestrictions": [
-							"Spell",
-							"Card Value Fits Number Restriction"
+							"Spell"
 						],
 						"cardRestrictionElements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": { "value": "Cost" },
+								"numberRestriction": { "elements": [{
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:LessThanEqual:" },
+									"other": { "$type": "Numbers:X:" }
+								}]}
 							}
-						],
-						"cardValue": {
-							"value": "C"
-						},
-						"cardValueNumberRestriction": {
-							"numberRestrictions": [
-								"<=X"
-							]
-						}
+						]
 					},
 					"xMultiplier": 1
 				},

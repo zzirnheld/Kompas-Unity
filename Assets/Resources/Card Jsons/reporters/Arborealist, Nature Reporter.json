@@ -57,22 +57,22 @@
 						"blurb": "E > X character to reveal",
 						"cardRestrictions": [
 							"Controller Matches Player Target",
-							"Card Value Fits Number Restriction",
 							"Hidden",
 							"Character"
 						],
-						"cardValue": {
-							"value": "E"
-						},
-						"cardValueNumberRestriction": {
-							"numberRestrictions": [
-								">X"
-							]
-						},
 						"cardRestrictionElements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Hand" ]
+							},
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": { "value": "E" },
+								"numberRestriction": { "elements": [{
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:GreaterThan:" },
+									"other": { "$type": "Numbers:X:" }
+								}]}
 							}
 						]
 					},

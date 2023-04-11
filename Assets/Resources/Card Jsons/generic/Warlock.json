@@ -17,16 +17,17 @@
                     "cardRestriction":
                     {
                         "cardRestrictions":[
-                            "Different from Source",
-                            "Card Value Fits Number Restriction"
+                            "Different from Source"
                         ],
-                        "cardValue":{
-                            "value":"Cost"
-                        },
-                        "cardValueNumberRestriction":{
-                            "numberRestrictions":["==Constant"],
-                            "constant":1
-                        }
+						"cardRestrictionElements": [ {
+							"$type": "Core.CardRestriction:CardValueFits:",
+							"cardValue": { "value": "Cost" },
+							"numberRestriction": { "elements": [{
+								"$type": "Core.NumberRestriction:Compare:",
+								"comparison": { "$type": "Relationships.Number:LessThan:" },
+								"other": { "$type": "Numbers:Constant:", "constant": 1 }
+							}]}
+						} ]
                     }
                 }
             },

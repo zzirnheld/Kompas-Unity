@@ -49,8 +49,7 @@
 						"blurb": "Monster here",
 						"cardRestrictions": [
 							"Character",
-							"Deck",
-							"Card Value Fits Number Restriction"
+							"Deck"
 						],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
@@ -58,16 +57,17 @@
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Aquatic" ]
 							},
-                            { "$type": "Core.CardRestriction:CanPlay:" }
-						],
-						"cardValue": {
-							"value": "S"
-						},
-						"cardValueNumberRestriction": {
-							"numberRestrictions": [
-								"<=X"
-							]
-						}
+                            { "$type": "Core.CardRestriction:CanPlay:" },
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": { "value": "S" },
+								"numberRestriction": { "elements": [{
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:LessThanEqual:" },
+									"other": { "$type": "Numbers:X:" }
+								}]}
+							}
+						]
 					},
 					"xMultiplier": 1
 				},

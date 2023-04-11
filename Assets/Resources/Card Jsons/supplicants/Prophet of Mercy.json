@@ -44,22 +44,22 @@
 						"blurb": "Supplicants' Plea",
 						"cardRestrictions": [
 							"Deck",
-							"Spell",
-							"Card Value Fits Number Restriction"
+							"Spell"
 						],
-						"cardValue": {
-							"value": "C"
-						},
-						"cardValueNumberRestriction": {
-							"numberRestrictions": [
-								"<=X"
-							]
-						},
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Plea" ]
+							},
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": { "value": "C" },
+								"numberRestriction": { "elements": [{
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:LessThanEqual:" },
+									"other": { "$type": "Numbers:X:" }
+								}]}
 							}
 						]
 					},

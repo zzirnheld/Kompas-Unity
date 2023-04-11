@@ -19,22 +19,23 @@
                     {
 						"blurb": "for Havengranter to hand-summon",
                         "cardRestrictions": [
-							"Character",
-                            "Card Value Fits Number Restriction"
+							"Character"
                         ],
-                        "cardValue": {
-                            "value": "S"
-                        },
-                        "cardValueNumberRestriction": {
-                            "numberRestrictions": ["==Constant"],
-                            "constant": 1
-                        },
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
                             {
                                 "$type": "Core.CardRestriction:Location:",
                                 "locations": [ "Hand" ]
-                            }
+                            },
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": { "value": "S" },
+								"numberRestriction": { "elements": [{
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:Equal:" },
+									"other": { "$type": "Numbers:Constant:", "constant": 1 }
+								}]}
+							}
 						]
                     }
 				},

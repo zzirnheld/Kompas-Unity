@@ -42,22 +42,21 @@
 						"blurb": "fast card to reveal",
 						"cardRestrictions": [
 							"Controller Matches Player Target",
-							"Hidden",
-							"Card Value Fits Number Restriction"
+							"Hidden"
 						],
-						"cardValue": {
-							"value": "Cost"
-						},
-						"cardValueNumberRestriction": {
-							"numberRestrictions": [
-								"==Constant"
-							],
-							"constant": 1
-						},
 						"cardRestrictionElements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Hand" ]
+							},
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": { "value": "Cost" },
+								"numberRestriction": { "elements": [{
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:Equal:" },
+									"other": { "$type": "Numbers:Constant:", "constant": 1 }
+								}]}
 							}
 						]
 					}

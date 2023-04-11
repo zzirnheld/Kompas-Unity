@@ -47,19 +47,19 @@
 						"blurb": "character to summon",
 						"cardRestrictions": [
 							"Character",
-							"Deck",
-							"Card Value Fits Number Restriction"
+							"Deck"
 						],
-						"cardValue": {
-							"value": "S"
-						},
-						"cardValueNumberRestriction": {
-							"numberRestrictions": [
-								"=X"
-							]
-						},
 						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Enemy:" }
+							{ "$type": "Core.CardRestriction:Enemy:" },
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": { "value": "Cost" },
+								"numberRestriction": { "elements": [{
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:Equal:" },
+									"other": { "$type": "Numbers:X:" }
+								}]}
+							}
 						]
 					},
 					"xMultiplier": 1,

@@ -57,17 +57,17 @@
 						"cardRestrictions": [
 							"Character",
 							"Controller Matches Player Target",
-							"Deck",
-							"Card Value Fits Number Restriction"
+							"Deck"
 						],
-						"cardValue": {
-							"value": "S"
-						},
-						"cardValueNumberRestriction": {
-							"numberRestrictions": [
-								"<X"
-							]
-						}
+						"cardRestrictionElements": [ {
+							"$type": "Core.CardRestriction:CardValueFits:",
+							"cardValue": { "value": "S" },
+							"numberRestriction": { "elements": [{
+								"$type": "Core.NumberRestriction:Compare:",
+								"comparison": { "$type": "Relationships.Number:LessThan:" },
+								"other": { "$type": "Numbers:X:" }
+							}]}
+						} ]
 					},
 					"xMultiplier": 1
 				},
@@ -129,17 +129,17 @@
 						"cardRestrictions": [
 							"Character",
 							"Controller Matches Player Target",
-							"Deck",
-							"Card Value Fits Number Restriction"
+							"Deck"
 						],
-						"cardValue": {
-							"value": "S"
-						},
-						"cardValueNumberRestriction": {
-							"numberRestrictions": [
-								"<X"
-							]
-						}
+						"cardRestrictionElements": [ {
+							"$type": "Core.CardRestriction:CardValueFits:",
+							"cardValue": { "value": "S" },
+							"numberRestriction": { "elements": [{
+								"$type": "Core.NumberRestriction:Compare:",
+								"comparison": { "$type": "Relationships.Number:LessThan:" },
+								"other": { "$type": "Numbers:X:" }
+							}]}
+						} ]
 					},
 					"xMultiplier": 1
 				},

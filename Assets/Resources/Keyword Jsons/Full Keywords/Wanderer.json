@@ -30,19 +30,21 @@
 			"cardRestriction":
 			{
 				"blurb":"Wanderer to Wander into",
-				"cardRestrictions":["Character","Deck","Card Value Fits Number Restriction"],
+				"cardRestrictions":[ "Character", "Deck" ],
 				"cardRestrictionElements": [
 					{
 						"$type": "Core.CardRestriction:Subtypes:",
 						"subtypes": [ "Wanderer" ]
-					}
-				],
-				"cardValue":{
-					"value":"S"
-				},
-				"cardValueNumberRestriction":{
-					"numberRestrictions":["<X"]
-				}
+					},
+					{
+					"$type": "Core.CardRestriction:CardValueFits:",
+					"cardValue": { "value": "S" },
+					"numberRestriction": { "elements": [{
+						"$type": "Core.NumberRestriction:Compare:",
+						"comparison": { "$type": "Relationships.Number:LessThan:" },
+						"other": { "$type": "Numbers:X:" }
+					}]}
+				} ]
 			},
 			"xMultiplier":1
 		},

@@ -55,20 +55,20 @@
 					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "card to hand",
-						"cardRestrictions": [
-                            "Card Value Fits Number Restriction"
-                        ],
-                        "cardValue":{
-                            "value":"Cost"
-                        },
-                        "cardValueNumberRestriction":{
-                            "numberRestrictions":["<=X"]
-                        },
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Discard" ]
+							},
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": { "value": "Cost" },
+								"numberRestriction": { "elements": [{
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:LessThanEqual:" },
+									"other": { "$type": "Numbers:X:" }
+								}]}
 							}
 						]
 					},

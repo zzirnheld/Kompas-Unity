@@ -58,21 +58,21 @@
 						"cardRestrictions": [
 							"Controller Matches Player Target",
 							"Hidden",
-							"Spell",
-							"Card Value Fits Number Restriction"
+							"Spell"
 						],
-						"cardValue": {
-							"value": "C"
-						},
-						"cardValueNumberRestriction": {
-							"numberRestrictions": [
-								">X"
-							]
-						},
 						"cardRestrictionElements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Hand" ]
+							},
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": { "value": "C" },
+								"numberRestriction": { "elements": [{
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:GreaterThan:" },
+									"other": { "$type": "Numbers:X:" }
+								}]}
 							}
 						]
 					},
