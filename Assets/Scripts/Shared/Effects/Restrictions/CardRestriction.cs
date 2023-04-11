@@ -75,11 +75,6 @@ namespace KompasCore.Effects
 
         public const string WieldsAugmentFittingRestriction = "Wields Augment Fitting Restriction";
         public const string WieldsNoAugmentFittingRestriction = "Wields No Augment Fitting Restriction";
-
-        //location
-        public const string Hand = "Hand";
-        public const string Discard = "Discard";
-        public const string Deck = "Deck";
         #endregion restrictions
 
         public string[] cardRestrictions = { };
@@ -225,11 +220,6 @@ namespace KompasCore.Effects
 
                 WieldsAugmentFittingRestriction => potentialTarget?.Augments.Any(c => augmentRestriction.IsValid(c, context)) ?? false,
                 WieldsNoAugmentFittingRestriction => !(potentialTarget?.Augments.Any(c => augmentRestriction.IsValid(c, context)) ?? false),
-
-                //location
-                Hand => potentialTarget?.Location == CardLocation.Hand,
-                Deck => potentialTarget?.Location == CardLocation.Deck,
-                Discard => potentialTarget?.Location == CardLocation.Discard,
 
                 //misc
                 Augmented => potentialTarget?.Augments.Any() ?? false,
