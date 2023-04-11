@@ -16,15 +16,7 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:TargetAll:",
-					"cardRestriction": {
-						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-                            {
-                                "$type": "Core.CardRestriction:Location:",
-                                "locations": [ "Hand" ]
-                            }
-						]
-					}
+					"toSearch": { "$type": "ManyCards:Hand:" }
 				},
 				{
 					"$type": "Subeffect:SkipToEffectOnImpossible:",
@@ -47,14 +39,10 @@
 				},
 				{
 					"$type": "Subeffect:TargetAll:",
+					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
 						"cardRestrictions": [ "Character" ],
 						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-                            {
-                                "$type": "Core.CardRestriction:Location:",
-                                "locations": [ "Hand" ]
-                            },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Orc" ]

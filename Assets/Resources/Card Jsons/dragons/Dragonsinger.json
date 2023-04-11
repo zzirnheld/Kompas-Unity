@@ -20,17 +20,13 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
 						"blurb": "for Dragonseeker to reshuffle",
 						"cardRestrictions": [
 							"Character"
 						],
 						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Hand" ]
-							},
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Dragon" ]

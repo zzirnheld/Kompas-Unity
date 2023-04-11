@@ -47,15 +47,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
-						"blurb": "unworthy card in hand",
-						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Hand" ]
-							}
-						]
+						"blurb": "unworthy card in hand"
 					}
 				},
 				{

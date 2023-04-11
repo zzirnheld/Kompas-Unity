@@ -52,15 +52,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
-						"blurb": "cards for Ma Rinner to bottomdeck",
-						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Hand" ]
-							}
-						]
+						"blurb": "cards for Ma Rinner to bottomdeck"
 					},
 					"listRestriction": {
 						"listRestrictions": [

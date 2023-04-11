@@ -41,6 +41,7 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
 						"blurb": "Rune for Runesaga to cast",
 						"cardRestrictions": [
@@ -48,11 +49,6 @@
 							"Not Already Target"
 						],
 						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-                            {
-                                "$type": "Core.CardRestriction:Location:",
-                                "locations": [ "Hand" ]
-                            },
                             { "$type": "Core.CardRestriction:CanPlay:" }
 						]
 					}

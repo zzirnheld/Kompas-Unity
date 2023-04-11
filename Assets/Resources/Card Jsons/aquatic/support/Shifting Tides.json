@@ -52,17 +52,13 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
 						"blurb": "Tide that Shifts In",
 						"cardRestrictions": [
 							"Spell"
 						],
 						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Hand" ]
-							},
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Water" ]

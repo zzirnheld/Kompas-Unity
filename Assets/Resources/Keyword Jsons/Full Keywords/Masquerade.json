@@ -33,15 +33,12 @@
         },
         {
             "$type":"Subeffect:CardTarget:",
+            "toSearch": { "$type": "ManyCards:Hand:" },
             "cardRestriction":
             {
                 "blurb": "Mask to swap for",
                 "cardRestrictions": [ "Augment" ],
                 "elements": [
-                    {
-                        "$type": "Core.CardRestriction:Location:",
-                        "locations": [ "Hand" ]
-                    },
                     {
                         "$type": "Core.CardRestriction:Subtypes:",
                         "subtypes": [ "Mask" ]

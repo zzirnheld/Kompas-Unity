@@ -10,16 +10,12 @@
     },
     {
         "$type":"Subeffect:CardTarget:",
+        "toSearch": { "$type": "ManyCards:Hand:" },
         "cardRestriction":
         {
             "blurb":"Mech to Pilot",
             "cardRestrictions":["Character"],
             "elements": [
-                { "$type": "Core.CardRestriction:Friendly:" },
-                {
-                    "$type": "Core.CardRestriction:Location:",
-                    "locations": [ "Hand" ]
-                },
                 {
                     "$type": "Core.CardRestriction:Subtypes:",
                     "subtypes": [ "Mech", "Golem" ]

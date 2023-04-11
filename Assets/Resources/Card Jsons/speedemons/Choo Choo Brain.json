@@ -15,15 +15,9 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
-						"blurb": "fuel for the Choo Choo Brain",
-						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-                            {
-                                "$type": "Core.CardRestriction:Location:",
-                                "locations": [ "Hand" ]
-                            }
-						]
+						"blurb": "fuel for the Choo Choo Brain"
 					}
 				},
 				{

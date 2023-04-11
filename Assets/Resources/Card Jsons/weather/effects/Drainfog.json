@@ -35,16 +35,15 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": {
+						"$type": "ManyCards:Hand:",
+						"friendly": true,
+						"enemy": true
+					},
 					"cardRestriction": {
 						"blurb": "The fog is draining",
 						"cardRestrictions": [
 							"Controller Matches Player Target"
-						],
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Hand" ]
-							}
 						]
 					},
 					"listRestriction": {

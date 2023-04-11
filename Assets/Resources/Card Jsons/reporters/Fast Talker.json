@@ -39,16 +39,16 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": {
+						"$type": "ManyCards:Hand:",
+						"friendly": true, "enemy": true
+					},
 					"cardRestriction": {
 						"blurb": "cards to reveal",
 						"cardRestrictions": [
 							"Controller Matches Player Target"
 						],
 						"elements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Hand" ]
-							},
 							{ "$type": "Core.CardRestriction:Hidden:" }
 						]
 					},

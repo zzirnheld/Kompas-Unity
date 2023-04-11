@@ -14,17 +14,13 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
 						"blurb": "to feed the tide",
 						"cardRestrictions": [
 							"Spell"
 						],
 						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Hand" ]
-							},
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Water" ]

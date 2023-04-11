@@ -26,15 +26,9 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
-						"blurb": "for Maya to discard",
-						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-                            {
-                                "$type": "Core.CardRestriction:Location:",
-                                "locations": [ "Hand" ]
-                            }
-						]
+						"blurb": "for Maya to discard"
 					}
 				},
 				{

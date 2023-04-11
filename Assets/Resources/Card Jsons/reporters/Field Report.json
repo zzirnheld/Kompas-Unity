@@ -72,6 +72,10 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": {
+						"$type": "ManyCards:Hand:",
+						"friendly": true, "enemy": true
+					},
 					"cardRestriction": {
 						"blurb": "character to reveal",
 						"cardRestrictions": [
@@ -79,10 +83,6 @@
 							"Character"
 						],
 						"elements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Hand" ]
-							},
 							{ "$type": "Core.CardRestriction:Hidden:" },
 							{
 								"$type": "Core.CardRestriction:CardValueFits:",

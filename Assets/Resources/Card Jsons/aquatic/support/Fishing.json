@@ -25,14 +25,10 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
 						"blurb": "Aquatic for Fishing to annihilate",
 						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Hand" ]
-							},
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Aquatic" ]
@@ -51,15 +47,7 @@
 				},
 				{
 					"$type": "Subeffect:TargetAll:",
-					"cardRestriction": {
-						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Hand" ]
-							}
-						]
-					}
+					"toSearch": { "$type": "ManyCards:Hand:" }
 				},
 				{
 					"$type": "Subeffect:Annihilate:"

@@ -15,15 +15,9 @@
 			"subeffects": [
 				{
 					"$type":"Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction":{
-						"blurb":"Card to discard",
-						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-                            {
-                                "$type": "Core.CardRestriction:Location:",
-                                "locations": [ "Hand" ]
-                            }
-						]
+						"blurb":"Card to discard"
 					}
 				},
 				{

@@ -15,17 +15,13 @@
 			"subeffects":[
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
-						"blurb": "unworthy card in hand",
+						"blurb": "linewalker to reshuffle",
 						"cardRestrictions": [
 							"Distinct Name from Source"
 						],
 						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-                            {
-                                "$type": "Core.CardRestriction:Location:",
-                                "locations": [ "Hand" ]
-                            },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Linewalker" ]

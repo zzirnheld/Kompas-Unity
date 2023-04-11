@@ -40,6 +40,7 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
 						"blurb": "Wanderer to inspire with music",
 						"cardRestrictions": [
@@ -47,11 +48,6 @@
 							"Distinct Name from Other Targets"
 						],
 						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-                            {
-                                "$type": "Core.CardRestriction:Location:",
-                                "locations": [ "Hand" ]
-                            },
 							{
 								"$type": "Core.CardRestriction:CardValueFits:",
 								"cardValue": { "value": "Cost" },

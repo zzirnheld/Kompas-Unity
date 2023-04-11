@@ -34,15 +34,7 @@
 				},
 				{
 					"$type": "Subeffect:TargetAll:",
-					"cardRestriction": {
-						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Hand" ]
-							}
-						]
-					}
+					"toSearch": { "$type": "ManyCards:Hand:" }
 				},
 				{
 					"$type": "Subeffect:Discard:"

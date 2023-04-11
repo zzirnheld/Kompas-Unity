@@ -15,6 +15,7 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Hand:" },
                     "cardRestriction":
                     {
 						"blurb": "for Havengranter to hand-summon",
@@ -22,11 +23,6 @@
 							"Character"
                         ],
 						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-                            {
-                                "$type": "Core.CardRestriction:Location:",
-                                "locations": [ "Hand" ]
-                            },
 							{
 								"$type": "Core.CardRestriction:CardValueFits:",
 								"cardValue": { "value": "S" },

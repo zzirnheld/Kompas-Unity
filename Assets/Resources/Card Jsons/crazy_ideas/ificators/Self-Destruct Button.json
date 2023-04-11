@@ -67,15 +67,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
-						"blurb": "oh, and the self-destruct button on the -ificator in my hand, too. Curse you.",
-						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Hand" ]
-							}
-						]
+						"blurb": "oh, and the self-destruct button on the -ificator in my hand, too. Curse you."
 					},
 					"listRestriction": {
 						"listRestrictions": [

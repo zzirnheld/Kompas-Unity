@@ -53,6 +53,10 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": {
+						"$type": "ManyCards:Hand:",
+						"friendly": true, "enemy": true
+					},
 					"cardRestriction": {
 						"blurb": "C > X spell to reveal",
 						"cardRestrictions": [
@@ -60,10 +64,6 @@
 							"Spell"
 						],
 						"elements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Hand" ]
-							},
 							{ "$type": "Core.CardRestriction:Hidden:" },
 							{
 								"$type": "Core.CardRestriction:CardValueFits:",

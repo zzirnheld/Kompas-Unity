@@ -37,13 +37,13 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Discard:" },
 					"cardRestriction": {
 						"blurb": "Structures to salvage",
 						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Hand" ]
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Structure" ]
 							}
 						]
 					},

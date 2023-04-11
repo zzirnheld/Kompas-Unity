@@ -15,17 +15,13 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
 						"blurb": "Shaping for Runedmemory to cast",
 						"cardRestrictions": [
 							"Spell"
 						],
 						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-                            {
-                                "$type": "Core.CardRestriction:Location:",
-                                "locations": [ "Hand" ]
-                            },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Shaping" ]

@@ -18,17 +18,13 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
 						"blurb": "What creature does the camouflage look like?",
 						"cardRestrictions": [
 							"Character"
 						],
 						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-                            {
-                                "$type": "Core.CardRestriction:Location:",
-                                "locations": [ "Hand" ]
-                            },
 							{ "$type": "Core.CardRestriction:Hidden:" }
 						]
 					}

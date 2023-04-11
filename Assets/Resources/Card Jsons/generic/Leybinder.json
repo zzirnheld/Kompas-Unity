@@ -30,6 +30,11 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": {
+						"$type": "ManyCards:Hand:",
+						"friendly": true,
+						"enemy": true
+					},
 					"cardRestriction": {
 						"blurb": "for Leybinder to hand-summon",
 						"cardRestrictions": [
@@ -37,10 +42,6 @@
 							"Controller Matches Player Target"
 						],
 						"elements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Hand" ]
-							},
 							{
 								"$type": "Core.CardRestriction:CardValueFits:",
 								"cardValue": { "value": "S" },

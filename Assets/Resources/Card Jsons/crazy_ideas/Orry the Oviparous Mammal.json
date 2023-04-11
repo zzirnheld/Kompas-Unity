@@ -22,15 +22,9 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
-						"blurb": "An oviparous mamal? ORRY THE OVIPAROUS MAMMAL?",
-						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Hand" ]
-							}
-						]
+						"blurb": "An oviparous mamal? ORRY THE OVIPAROUS MAMMAL?"
 					}
 				},
 				{

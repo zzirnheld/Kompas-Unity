@@ -14,15 +14,9 @@
 			"subeffects":[
 				{
 					"$type":"Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction":{
-						"blurb":"Card to Cycle",
-						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Hand" ]
-							}
-						]
+						"blurb":"Card to Cycle"
 					}
 				},
 				{

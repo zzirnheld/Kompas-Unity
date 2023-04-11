@@ -19,15 +19,11 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
 						"blurb": "Ethereal to revive",
                         "elements": [
-                            { "$type": "Core.CardRestriction:FriendlyCard:" },
                             { "$type": "Core.CardRestriction:Character:" },
-                            {
-                                "$type": "Core.CardRestriction:Location:",
-                                "locations": [ "Hand" ]
-                            },
                             {
                                 "$type": "Core.CardRestriction:Subtypes:",
                                 "subtypes": [ "Ethereal" ]

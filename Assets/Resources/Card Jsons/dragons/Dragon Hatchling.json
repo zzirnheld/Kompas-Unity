@@ -29,16 +29,12 @@
 				},
 				{
 					"$type":"Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction":
 					{
 						"blurb":"for Dragon Hatchling to eat (discard)",
 						"cardRestrictions":["Character"],
 						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Hand" ]
-							},
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Dragon" ]
@@ -51,16 +47,12 @@
 				},
 				{
 					"$type":"Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction":
 					{
 						"blurb":"for Dragon Hatchling to become (play)",
 						"cardRestrictions":["Character"],
 						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Hand" ]
-							},
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Dragon" ]

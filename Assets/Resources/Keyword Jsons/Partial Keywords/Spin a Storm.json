@@ -35,17 +35,13 @@
     },
     {
         "$type": "Subeffect:CardTarget:",
+        "toSearch": { "$type": "ManyCards:Hand:" },
         "cardRestriction": {
             "blurb": "Weather Event to hand->summon",
             "cardRestrictions": [
                 "Character"
             ],
             "elements": [
-                { "$type": "Core.CardRestriction:Friendly:" },
-                {
-                    "$type": "Core.CardRestriction:Location:",
-                    "locations": [ "Hand" ]
-                },
                 {
                     "$type": "Core.CardRestriction:Subtypes:",
                     "subtypes": [ "Weather", "Event" ]
