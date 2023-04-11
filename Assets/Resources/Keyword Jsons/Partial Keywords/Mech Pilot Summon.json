@@ -13,7 +13,7 @@
         "cardRestriction":
         {
             "blurb":"Mech to Pilot",
-            "cardRestrictions":["Character","Can Be Played"],
+            "cardRestrictions":["Character"],
             "cardRestrictionElements": [
                 { "$type": "Core.CardRestriction:Friendly:" },
                 {
@@ -23,7 +23,8 @@
                 {
                     "$type": "Core.CardRestriction:Subtypes:",
                     "subtypes": [ "Mech", "Golem" ]
-                }
+                },
+                { "$type": "Core.CardRestriction:CanPlay:" }
             ]
         },
         "toLinkWith": { "$type": "Cards:ThisCard:" }

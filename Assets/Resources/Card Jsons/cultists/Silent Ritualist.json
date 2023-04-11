@@ -43,18 +43,19 @@
 						"blurb": "Silent convert",
 						"cardRestrictions": [
 							"Deck",
-							"Spell",
-							"Can be Played to Target Space"
+							"Spell"
 						],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Silent" ]
-							}
-						],
-						"canPlayIgnoring": [
-							"Adjacent to Friendly Card"
+							},
+                            {
+                                "$type": "Core.CardRestriction:CanPlay:",
+                                "destination": { "$type": "Spaces:TargetIndex:" },
+								"ignoring": [ "Adjacent to Friendly Card" ]
+                            }
 						]
 					}
 				},

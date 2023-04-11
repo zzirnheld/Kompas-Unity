@@ -19,8 +19,7 @@
 					"cardRestriction": {
 						"blurb": "Rune for Runeloremaster to cast",
 						"cardRestrictions": [
-							"Spell",
-							"Can Be Played"
+							"Spell"
 						],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
@@ -43,7 +42,8 @@
 										"player": { "$type": "Players:TargetIndex:" }
 									}
 								}]}
-							}
+							},
+                            { "$type": "Core.CardRestriction:CanPlay:" }
 						]
 					}
 				},

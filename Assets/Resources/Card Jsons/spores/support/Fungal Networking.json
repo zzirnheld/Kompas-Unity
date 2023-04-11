@@ -20,14 +20,14 @@
 						"blurb": "to network (1/2)",
 						"cardRestrictions": [
 							"Character",
-							"Deck",
-							"Can Be Played"
+							"Deck"
 						],
 						"cardRestrictionElements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Mycelium" ]
-							}
+							},
+                            { "$type": "Core.CardRestriction:CanPlay:" }
 						]
 					}
 				},
@@ -53,14 +53,14 @@
 						"blurb": "to network (2/2)",
 						"cardRestrictions": [
 							"Character",
-							"Deck",
-							"Can Be Played"
+							"Deck"
 						],
 						"cardRestrictionElements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Mycelium" ]
-							}
+							},
+                            { "$type": "Core.CardRestriction:CanPlay:" }
 						]
 					}
 				},

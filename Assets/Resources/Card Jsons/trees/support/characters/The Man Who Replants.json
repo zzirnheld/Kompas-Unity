@@ -20,8 +20,7 @@
 					"cardRestriction": {
 						"blurb": "Tree for the Man to Replant",
 						"cardRestrictions": [
-							"Character",
-							"Can Be Played"
+							"Character"
 						],
 						"cardRestrictionElements": [
 							{
@@ -31,7 +30,8 @@
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Tree" ]
-							}
+							},
+                            { "$type": "Core.CardRestriction:CanPlay:" }
 						]
 					},
 					"xMultiplier": 1

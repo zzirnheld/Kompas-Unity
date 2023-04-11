@@ -21,8 +21,7 @@
 						"blurb": "RAIN PLEASE",
 						"cardRestrictions": [
 							"Deck",
-							"Spell",
-							"Can Be Played"
+							"Spell"
 						],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
@@ -41,7 +40,8 @@
 										"player": { "$type": "Players:TargetIndex:" }
 									}
 								}]}
-							}
+							},
+                            { "$type": "Core.CardRestriction:CanPlay:" }
 						]
 					}
 				},

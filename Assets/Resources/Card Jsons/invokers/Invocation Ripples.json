@@ -56,14 +56,14 @@
 						"blurb": "Spirit to ripple into",
 						"cardRestrictions": [
 							"Character",
-							"Can Be Played",
 							"Already Target"
 						],
 						"cardRestrictionElements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Spirit" ]
-							}
+							},
+                            { "$type": "Core.CardRestriction:CanPlay:" }
 						]
 					},
 					"xMultiplier": 1

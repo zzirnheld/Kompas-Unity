@@ -36,7 +36,6 @@
 						"blurb": "Rune for Runechanneler to cast",
 						"cardRestrictions": [
 							"Spell",
-							"Can Be Played",
 							"Card Value Fits Number Restriction"
 						],
 						"cardRestrictionElements": [
@@ -48,7 +47,8 @@
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Rune" ]
-							}
+							},
+                            { "$type": "Core.CardRestriction:CanPlay:" }
 						],
 						"cardValue": {
 							"value": "C"

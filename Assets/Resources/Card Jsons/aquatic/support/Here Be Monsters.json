@@ -46,7 +46,6 @@
 						"cardRestrictions": [
 							"Character",
 							"Deck",
-							"Can Be Played",
 							"Card Value Fits Number Restriction"
 						],
 						"cardRestrictionElements": [
@@ -54,7 +53,8 @@
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Aquatic" ]
-							}
+							},
+                            { "$type": "Core.CardRestriction:CanPlay:" }
 						],
 						"cardValue": {
 							"value": "S"

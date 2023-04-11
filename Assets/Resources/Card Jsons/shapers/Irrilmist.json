@@ -41,7 +41,7 @@
                                 "subtypes": [ "Ethereal" ]
                             },
                             {
-                                "$type": "Core.CardRestriction:CanMoveTo:",
+                                "$type": "Core.CardRestriction:CanMove:",
                                 "destination": { "$type": "Spaces:TargetIndex:" }
                             }
                         ]

@@ -20,14 +20,14 @@
 						"blurb": "Fungus to Among Us",
 						"cardRestrictions": [
 							"Character",
-							"Deck",
-							"Can Be Played"
+							"Deck"
 						],
 						"cardRestrictionElements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Fungus" ]
-							}
+							},
+                            { "$type": "Core.CardRestriction:CanPlay:" }
 						]
 					}
 				},

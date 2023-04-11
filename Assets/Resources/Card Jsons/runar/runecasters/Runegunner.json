@@ -17,8 +17,7 @@
 					"cardRestriction": {
 						"blurb": "Rune for Runegunner to cast",
 						"cardRestrictions": [
-							"Spell",
-							"Can Be Played"
+							"Spell"
 						],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
@@ -29,7 +28,8 @@
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Rune" ]
-							}
+							},
+                            { "$type": "Core.CardRestriction:CanPlay:" }
 						]
 					}
 				},

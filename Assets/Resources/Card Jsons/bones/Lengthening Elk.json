@@ -44,18 +44,19 @@
 						"blurb": "Elk bone",
 						"cardRestrictions": [
 							"Deck",
-							"Character",
-							"Can be Played to Target Space"
+							"Character"
 						],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Bone" ]
-							}
-						],
-						"canPlayIgnoring": [
-							"Adjacent to Friendly Card"
+							},
+                            {
+                                "$type": "Core.CardRestriction:CanPlay:",
+                                "destination": { "$type": "Spaces:TargetIndex:" },
+								"ignoring": [ "Adjacent to Friendly Card" ]
+                            }
 						]
 					},
                     "spaceIndex": -2

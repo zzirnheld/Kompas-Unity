@@ -23,14 +23,14 @@
 						"blurb": "for Seedling to become",
 						"cardRestrictions": [
 							"Character",
-							"Deck",
-							"Can Be Played"
+							"Deck"
 						],
 						"cardRestrictionElements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Tree" ]
-							}
+							},
+                            { "$type": "Core.CardRestriction:CanPlay:" }
 						]
 					}
 				},

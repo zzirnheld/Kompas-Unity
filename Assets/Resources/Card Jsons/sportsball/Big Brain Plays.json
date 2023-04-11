@@ -20,15 +20,15 @@
 						"blurb": "Big Brain Play?",
 						"cardRestrictions": [
 							"Deck",
-							"Spell",
-							"Can Be Played"
+							"Spell"
 						],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Team", "Play" ]
-							}
+							},
+                            { "$type": "Core.CardRestriction:CanPlay:" }
 						]
 					}
 				},

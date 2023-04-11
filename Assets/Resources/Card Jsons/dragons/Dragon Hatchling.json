@@ -54,7 +54,7 @@
 					"cardRestriction":
 					{
 						"blurb":"for Dragon Hatchling to become (play)",
-						"cardRestrictions":["Character","Can Be Played"],
+						"cardRestrictions":["Character"],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
@@ -64,7 +64,8 @@
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Dragon" ]
-							}
+							},
+                            { "$type": "Core.CardRestriction:CanPlay:" }
 						]
 					}
 				},

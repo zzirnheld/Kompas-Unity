@@ -73,14 +73,15 @@
 					"cardRestriction":
 					{
 						"blurb":"for Squire to become",
-						"cardRestrictions": [ "Character", "Deck", "Can Be Played", "Card Value Fits Number Restriction" ],
+						"cardRestrictions": [ "Character", "Deck", "Card Value Fits Number Restriction" ],
 						"cardValue": { "value": "S" },
 						"cardValueNumberRestriction": { "numberRestrictions": [ "<=X" ] },
 						"cardRestrictionElements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Warrior" ]
-							}
+							},
+                            { "$type": "Core.CardRestriction:CanPlay:" }
 						]
 					}
 				},

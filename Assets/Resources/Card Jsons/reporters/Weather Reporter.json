@@ -25,10 +25,8 @@
 					"cardRestriction": {
 						"blurb": "for Weather Reporter to hand-summon",
 						"cardRestrictions": [
-							"Character",
-							"Can Be Played"
+							"Character"
 						],
-						"costDivisor": 2,
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
                             {
@@ -49,7 +47,8 @@
 										"player": { "$type": "Players:TargetIndex:" }
 									}
 								}]}
-							}
+							},
+                            { "$type": "Core.CardRestriction:CanPlay:" }
 						]
 					}
 				},

@@ -36,7 +36,6 @@
 						"blurb": "Warrior for the rites to summon",
 						"cardRestrictions": [
 							"Character",
-							"Can Be Played",
 							"Card Value Fits Number Restriction"
 						],
 						"cardRestrictionElements": [
@@ -48,7 +47,8 @@
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Warrior" ]
-							}
+							},
+                            { "$type": "Core.CardRestriction:CanPlay:" }
 						],
 						"cardValue": {
 							"value": "S"

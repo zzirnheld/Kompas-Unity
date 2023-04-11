@@ -114,11 +114,6 @@ namespace KompasCore.Effects
         public const string IndexInListGTC = "Index>C";
         public const string IndexInListLTC = "Index<C";
         public const string IndexInListLTX = "Index<X";
-
-        //misc
-        public const string CanBePlayed = "Can Be Played";
-        public const string CanPlayToTargetSpace = "Can be Played to Target Space";
-
         #endregion restrictions
 
         public string[] cardRestrictions = { };
@@ -310,11 +305,6 @@ namespace KompasCore.Effects
 
                 //misc
                 Augmented => potentialTarget?.Augments.Any() ?? false,
-
-                CanBePlayed
-                    => Game.ExistsEffectPlaySpace(potentialTarget?.PlayRestriction, Effect),
-                CanPlayToTargetSpace
-                    => potentialTarget?.PlayRestriction.IsValidEffectPlay(Subeffect.SpaceTarget, Effect, Subeffect.PlayerTarget, context, ignoring: canPlayIgnoring) ?? false,
 
                 _ => throw new ArgumentException($"Invalid card restriction {restriction}", "restriction"),
             };

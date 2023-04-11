@@ -19,7 +19,6 @@
 						"blurb": "for Ingwaz to recast",
 						"cardRestrictions": [
 							"Spell",
-							"Can Be Played",
 							"Distinct Name from Source"
 						],
 						"cardRestrictionElements": [
@@ -46,7 +45,8 @@
 										"player": { "$type": "Players:TargetIndex:" }
 									}
 								}]}
-							}
+							},
+                            { "$type": "Core.CardRestriction:CanPlay:" }
 						]
 					}
 				},

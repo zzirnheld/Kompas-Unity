@@ -95,7 +95,6 @@
 						"cardRestrictions": [
 							"Character",
 							"Deck",
-							"Can Be Played",
 							"Card Value Fits Number Restriction"
 						],
 						"cardRestrictionElements": [
@@ -103,7 +102,8 @@
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Swordguild", "Warrior" ]
-							}
+							},
+                            { "$type": "Core.CardRestriction:CanPlay:" }
 						],
 						"cardValue": { "value": "S" },
 						"cardValueNumberRestriction": { "numberRestrictions": [ "<X" ] }

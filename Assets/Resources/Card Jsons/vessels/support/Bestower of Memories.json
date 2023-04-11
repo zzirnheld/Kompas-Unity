@@ -68,15 +68,15 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Multiple Possible Locations",
-                            "Same Name as Target",
-							"Can Be Played"
+                            "Same Name as Target"
 						],
 						"locations": [
 							2,
 							4
 						],
 						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" }
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            { "$type": "Core.CardRestriction:CanPlay:" }
 						]
 					},
 					"targetIndex": -2

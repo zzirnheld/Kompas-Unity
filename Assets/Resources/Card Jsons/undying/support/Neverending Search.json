@@ -23,15 +23,15 @@
 					"cardRestriction": {
 						"blurb": "Who to revive, then kill",
 						"cardRestrictions": [
-							"Character",
-							"Can Be Played"
+							"Character"
 						],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Discard" ]
-							}
+							},
+                            { "$type": "Core.CardRestriction:CanPlay:" }
 						]
 					}
 				},

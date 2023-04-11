@@ -18,8 +18,7 @@
 					"cardRestriction": {
 						"blurb": "for Ihwaz to recast",
 						"cardRestrictions": [
-							"Character",
-							"Can Be Played"
+							"Character"
 						],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
@@ -41,7 +40,8 @@
 										"player": { "$type": "Players:TargetIndex:" }
 									}
 								}]}
-							}
+							},
+                            { "$type": "Core.CardRestriction:CanPlay:" }
 						]
 					}
 				},

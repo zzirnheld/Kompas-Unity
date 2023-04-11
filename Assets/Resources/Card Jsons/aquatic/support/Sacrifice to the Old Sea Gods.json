@@ -48,15 +48,15 @@
 						"blurb": "Tide that Shifts In",
 						"cardRestrictions": [
 							"Spell",
-							"Deck",
-							"Can Be Played"
+							"Deck"
 						],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Water" ]
-							}
+							},
+                            { "$type": "Core.CardRestriction:CanPlay:" }
 						]
 					}
 				},
