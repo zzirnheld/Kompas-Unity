@@ -14,6 +14,7 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
         {
             base.Initialize(initializationContext);
             destination?.Initialize(initializationContext);
+            player.Initialize(initializationContext);
         }
 
         protected override bool IsValidLogic(GameCardBase card, IResolutionContext context)

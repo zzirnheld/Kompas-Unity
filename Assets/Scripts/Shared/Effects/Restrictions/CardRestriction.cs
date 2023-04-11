@@ -108,10 +108,6 @@ namespace KompasCore.Effects
         public const string CardDoesntHaveCardRestrictionInAOE = "Card doesn't have Card Restriction in its AOE";
         public const string WouldBeInAOEOfCardTargetIfCardTargetWereAtSpaceTarget 
             = "Would Be In AOE Of Card Target If Card Target Were At Space Target";
-        public const string WouldOverlapCardTargetIfCardTargetWereAtSpaceTarget
-            = "Would Overlap Card Target If Card Target Were At Space Target";
-
-        public const string IndexInListGTC = "Index>C";
         #endregion restrictions
 
         public string[] cardRestrictions = { };
@@ -185,14 +181,6 @@ namespace KompasCore.Effects
             if (space == null) return false;
 
             return cardTarget.CardInAOE(cardToTest, space);
-        }
-
-        private bool WouldCardOverlapCardTargetIfCardTargetWereAtSpaceTarget(GameCardBase cardToTest, GameCardBase cardTarget, Space space)
-        {
-            if (cardToTest == null) return false;
-            if (space == null) return false;
-
-            return cardTarget.Overlaps(cardToTest, space);
         }
 
         /// <summary>
@@ -296,9 +284,6 @@ namespace KompasCore.Effects
                 CardDoesntHaveCardRestrictionInAOE => !HasCardRestrictionInAOE(potentialTarget, context),
                 WouldBeInAOEOfCardTargetIfCardTargetWereAtSpaceTarget 
                     => WouldCardBeInAOEOfCardTargetIfCardTargetWereAtSpaceTarget(potentialTarget, Subeffect.CardTarget, Subeffect.SpaceTarget),
-                WouldOverlapCardTargetIfCardTargetWereAtSpaceTarget
-                    => WouldCardOverlapCardTargetIfCardTargetWereAtSpaceTarget(potentialTarget, Subeffect.CardTarget, Subeffect.SpaceTarget),
-                IndexInListGTC => potentialTarget?.IndexInList > constant,
 
                 //misc
                 Augmented => potentialTarget?.Augments.Any() ?? false,

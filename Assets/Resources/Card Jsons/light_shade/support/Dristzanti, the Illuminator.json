@@ -49,13 +49,15 @@
 				{
 					"$type": "Subeffect:TargetAll:",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Would Overlap Card Target If Card Target Were At Space Target"
-						],
 						"cardRestrictionElements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Shade" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Overlaps:",
+								"other": { "$type": "Cards:TargetIndex:" },
+								"overrideOtherSpace": { "$type": "Spaces:TargetIndex:" }
 							}
 						]
 					}
