@@ -67,16 +67,15 @@
 					"blurb": "Copy of the memory to attach",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Multiple Possible Locations",
                             "Same Name as Target"
-						],
-						"locations": [
-							2,
-							4
 						],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
-                            { "$type": "Core.CardRestriction:CanPlay:" }
+                            { "$type": "Core.CardRestriction:CanPlay:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Deck", "Discard" ]
+                            }
 						]
 					},
 					"targetIndex": -2

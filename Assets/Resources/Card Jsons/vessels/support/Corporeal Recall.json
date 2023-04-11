@@ -19,19 +19,18 @@
 					"cardRestriction": {
 						"blurb": "for Corporeal Recall to reshuffle",
 						"cardRestrictions": [
-							"Multiple Possible Locations",
 							"Augment"
                         ],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand", "Discard" ]
+                            },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Memory" ]
 							}
-						],
-						"locations": [
-							2,
-							3
 						]
 					}
 				},

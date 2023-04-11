@@ -37,15 +37,12 @@
 					"$type": "Subeffect:CardTarget:",
 					"blurb": "Mycelium to summon",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Multiple Possible Locations"
-						],
-						"locations": [
-							2,
-							4
-						],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Deck", "Discard" ]
+                            },
                             {
                                 "$type": "Core.CardRestriction:Subtypes:",
                                 "subtypes": [ "Mycelium" ]

@@ -45,14 +45,17 @@
 					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Character",
-							"Multiple Possible Locations"
+							"Character"
 						],
 						"cardRestrictionElements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Golem" ]
 							},
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand", "Discard" ]
+                            },
 							{
 								"$type": "Core.CardRestriction:CardValueFits:",
 								"cardValue": { "value": "Cost" },
@@ -62,10 +65,6 @@
 									"other": { "$type": "Numbers:X:" }
 								}]}
 							}
-						],
-						"locations": [
-							2,
-							3
 						]
 					},
 					"xMultiplier": 1,

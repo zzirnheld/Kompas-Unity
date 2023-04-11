@@ -110,15 +110,14 @@
 					"cardRestriction": {
 						"blurb": "culmination of the Silent Altar Ritual",
 						"cardRestrictions": [
-							"Multiple Possible Locations",
 							"Character"
 						],
-						"locations": [
-							3,
-							4
-						],
 						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" }
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand", "Deck" ]
+                            }
 						]
 					}
 				},

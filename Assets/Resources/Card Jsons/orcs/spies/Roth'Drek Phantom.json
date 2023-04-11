@@ -29,13 +29,10 @@
 						"This Card Fits Restriction Now"
 					],
 					"selfRestriction": {
-						"cardRestrictions":[
-							"Multiple Possible Locations"
-						],
-						"locations": [
-							1,
-							2
-						]
+						"elements": [ {
+							"$type": "Core.CardRestriction:Location:",
+							"locations": [ "Board", "Discard" ]
+						} ]
 					}
 				}
 			},

@@ -82,7 +82,6 @@ namespace KompasCore.Effects
         public const string Deck = "Deck";
         public const string Board = "Board";
         public const string Annihilated = "Annihilated";
-        public const string LocationInList = "Multiple Possible Locations";
         #endregion restrictions
 
         public string[] cardRestrictions = { };
@@ -235,7 +234,6 @@ namespace KompasCore.Effects
                 Discard => potentialTarget?.Location == CardLocation.Discard,
                 Board => potentialTarget?.Location == CardLocation.Board,
                 Annihilated => potentialTarget?.Location == CardLocation.Annihilation,
-                LocationInList => locations.Contains(potentialTarget?.Location ?? CardLocation.Nowhere),
 
                 //misc
                 Augmented => potentialTarget?.Augments.Any() ?? false,

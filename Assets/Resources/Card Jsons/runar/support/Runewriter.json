@@ -16,16 +16,12 @@
 					"$type": "Subeffect:ChooseFromList:",
 					"cardRestriction": {
 						"blurb": "Rune for Runewriter to reshuffle",
-						"cardRestrictions": [
-							"Multiple Possible Locations"
-						],
-						"locations": [
-							1,
-							2,
-							3
-						],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand", "Board", "Discard" ]
+                            },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Rune" ]

@@ -38,19 +38,18 @@
 					"cardRestriction": {
 						"blurb": "for Whirlwind of Emotions to summon",
 						"cardRestrictions": [
-							"Multiple Possible Locations",
 							"Character"
                         ],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand", "Discard" ]
+                            },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Spirit" ]
 							}
-						],
-						"locations": [
-							2,
-							3
 						]
 					},
 					"numberRestriction": {
@@ -65,19 +64,18 @@
 					"cardRestriction": {
 						"blurb": "for Whirlwind of Emotions to summon",
 						"cardRestrictions": [
-							"Multiple Possible Locations",
 							"Character"
                         ],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand", "Discard" ]
+                            },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Spirit" ]
 							}
-						],
-						"locations": [
-							2,
-							3
 						]
 					}
 				},
@@ -102,19 +100,18 @@
 					"cardRestriction": {
 						"blurb": "for Whirlwind of Emotions to summon",
 						"cardRestrictions": [
-							"Multiple Possible Locations",
 							"Character"
                         ],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand", "Discard" ]
+                            },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Spirit" ]
 							}
-						],
-						"locations": [
-							2,
-							3
 						]
 					}
 				},

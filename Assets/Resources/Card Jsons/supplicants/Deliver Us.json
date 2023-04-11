@@ -18,19 +18,18 @@
 					"whatToCount": "Cards Fitting Restriction",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Character",
-							"Multiple Possible Locations"
+							"Character"
 						],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Board", "Discard" ]
+                            },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Supplicant" ]
 							}
-						],
-						"locations": [
-							1,
-							2
 						]
 					},
 					"xMultiplier": 1
@@ -46,17 +45,15 @@
 					"cardRestriction": {
 						"blurb": "God of the Supplicants",
 						"cardRestrictions": [
-							"Name Is",
-							"Multiple Possible Locations"
+							"Name Is"
 						],
 						"nameIs": "God of Mercy",
-						"locations": [
-							2,
-							3,
-							4
-						],
 						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" }
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand", "Deck", "Discard" ]
+                            }
 						]
 					}
 				},

@@ -42,15 +42,12 @@
 					"$type": "Subeffect:ChooseFromList:",
 					"cardRestriction": {
 						"blurb": "Craftspeople move to the cities",
-						"cardRestrictions": [
-							"Multiple Possible Locations"
-						],
-						"locations": [
-							3,
-							4
-						],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Deck" ]
+                            },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Maya", "Craft", "Person" ]
