@@ -76,14 +76,14 @@
 						"blurb": "character to reveal",
 						"cardRestrictions": [
 							"Controller Matches Player Target",
-							"Character",
-							"Hidden"
+							"Character"
 						],
 						"cardRestrictionElements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Hand" ]
 							},
+							{ "$type": "Core.CardRestriction:Hidden:" },
 							{
 								"$type": "Core.CardRestriction:CardValueFits:",
 								"cardValue": { "value": "S" },

@@ -40,14 +40,14 @@
 					"cardRestriction": {
 						"blurb": "cards to reveal",
 						"cardRestrictions": [
-							"Controller Matches Player Target",
-							"Hidden"
+							"Controller Matches Player Target"
 						],
 						"cardRestrictionElements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Hand" ]
-							}
+							},
+							{ "$type": "Core.CardRestriction:Hidden:" }
 						]
 					},
 					"listRestriction": {

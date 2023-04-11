@@ -17,9 +17,6 @@
 					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Can't ID this frikkin moth!",
-						"cardRestrictions": [
-							"Hidden"
-						],
 						"cardRestrictionElements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
                             {
@@ -29,7 +26,8 @@
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Moth" ]
-							}
+							},
+							{ "$type": "Core.CardRestriction:Hidden:" }
 						]
 					}
 				},

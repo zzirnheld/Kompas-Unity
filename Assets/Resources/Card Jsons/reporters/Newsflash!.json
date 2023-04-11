@@ -41,14 +41,14 @@
 					"cardRestriction": {
 						"blurb": "fast card to reveal",
 						"cardRestrictions": [
-							"Controller Matches Player Target",
-							"Hidden"
+							"Controller Matches Player Target"
 						],
 						"cardRestrictionElements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Hand" ]
 							},
+							{ "$type": "Core.CardRestriction:Hidden:" },
 							{
 								"$type": "Core.CardRestriction:CardValueFits:",
 								"cardValue": { "value": "Cost" },

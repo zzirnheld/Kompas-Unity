@@ -18,8 +18,7 @@
 					"cardRestriction": {
 						"blurb": "Mask to reveal",
 						"cardRestrictions": [
-							"Friendly",
-							"Hidden"
+							"Friendly"
 						],
 						"cardRestrictionElements": [
 							{
@@ -29,7 +28,8 @@
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Mask" ]
-							}
+							},
+							{ "$type": "Core.CardRestriction:Hidden:" }
 						]
 					}
 				},

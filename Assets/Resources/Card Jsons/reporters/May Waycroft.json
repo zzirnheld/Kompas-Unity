@@ -20,8 +20,8 @@
 					"$type": "Subeffect:ConditionalJump:",
 					"condition": "Main Triggering Card Flouted Restriction Before",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Revealed"
+						"cardRestrictionElements": [
+							{ "$type": "Core.CardRestriction:Hidden:", "hidden": false }
 						]
 					},
 					"jumpIndices": [
@@ -56,14 +56,14 @@
 					"cardRestriction": {
 						"blurb": "card to reveal",
 						"cardRestrictions": [
-							"Controller Matches Player Target",
-							"Hidden"
+							"Controller Matches Player Target"
 						],
 						"cardRestrictionElements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Hand" ]
-							}
+							},
+							{ "$type": "Core.CardRestriction:Hidden:" }
 						]
 					}
 				},

@@ -17,8 +17,7 @@
 					"cardRestriction": {
 						"blurb": "spell to reveal",
 						"cardRestrictions": [
-							"Controller Matches Player Target",
-							"Hidden"
+							"Controller Matches Player Target"
 						],
 						"cardRestrictionElements": [
 							{
@@ -28,7 +27,8 @@
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Reporter" ]
-							}
+							},
+							{ "$type": "Core.CardRestriction:Hidden:" }
 						]
 					}
 				},
@@ -71,14 +71,14 @@
 						"blurb": "character to reveal",
 						"cardRestrictions": [
 							"Controller Matches Player Target",
-							"Character",
-							"Hidden"
+							"Character"
 						],
 						"cardRestrictionElements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Hand" ]
 							},
+							{ "$type": "Core.CardRestriction:Hidden:" },
 							{
 								"$type": "Core.CardRestriction:CardValueFits:",
 								"cardValue": { "value": "Cost" },

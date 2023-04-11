@@ -57,7 +57,6 @@
 						"blurb": "C > X spell to reveal",
 						"cardRestrictions": [
 							"Controller Matches Player Target",
-							"Hidden",
 							"Spell"
 						],
 						"cardRestrictionElements": [
@@ -65,6 +64,7 @@
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Hand" ]
 							},
+							{ "$type": "Core.CardRestriction:Hidden:" },
 							{
 								"$type": "Core.CardRestriction:CardValueFits:",
 								"cardValue": { "value": "C" },

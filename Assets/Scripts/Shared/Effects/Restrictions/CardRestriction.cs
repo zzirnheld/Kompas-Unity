@@ -83,12 +83,6 @@ namespace KompasCore.Effects
         public const string Board = "Board";
         public const string Annihilated = "Annihilated";
         public const string LocationInList = "Multiple Possible Locations";
-
-        public const string Hidden = "Hidden";
-        public const string Revealed = "Revealed";
-
-        //stats
-        public const string CardValueFitsNumberRestriction = "Card Value Fits Number Restriction";
         #endregion restrictions
 
         public string[] cardRestrictions = { };
@@ -97,7 +91,6 @@ namespace KompasCore.Effects
         public string[] subtypesInclude;
         public string[] subtypesExclude;
         public string[] subtypesIncludeAnyOf;
-        public int constant;
         public CardLocation[] locations;
         public string[] spellSubtypes;
 
@@ -243,11 +236,6 @@ namespace KompasCore.Effects
                 Board => potentialTarget?.Location == CardLocation.Board,
                 Annihilated => potentialTarget?.Location == CardLocation.Annihilation,
                 LocationInList => locations.Contains(potentialTarget?.Location ?? CardLocation.Nowhere),
-                Hidden => !potentialTarget?.KnownToEnemy ?? false,
-                Revealed => potentialTarget?.KnownToEnemy ?? false,
-
-                //stats
-                CardValueFitsNumberRestriction => cardValueNumberRestriction.IsValid(cardValue.GetValueOf(potentialTarget), context),
 
                 //misc
                 Augmented => potentialTarget?.Augments.Any() ?? false,
