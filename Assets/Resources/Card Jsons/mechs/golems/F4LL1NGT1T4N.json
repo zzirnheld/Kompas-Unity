@@ -13,7 +13,15 @@
                 ],
                 "thisCardRestriction":
                 {
-                    "cardRestrictions":["Has Movement"]
+					"cardRestrictionElements": [
+						{
+							"$type": "Core.CardRestriction:CardValueFits:",
+							"cardValue": { "value": "Spaces Can Move" },
+							"numberRestriction": { "elements": [
+								{ "$type": "Core.NumberRestriction:Positive:" }
+							]}
+						}
+					]
                 }
             },
             "subeffects":[

@@ -16,7 +16,7 @@
 				"triggerRestrictionElements": [
 					{
 						"$type": "Core.TriggerRestriction:CardFitsRestriction:",
-						"cardRestriction": { "cardRestrictions": [ "Activated" ] },
+						"cardRestriction": { "cardRestrictionElements": [ { "$type": "Core.CardRestriction:Active:" } ] },
 						"card": { "$type": "Cards:ThisCard:" }
 					}
 				]

@@ -18,4 +18,14 @@ namespace KompasCore.Effects.Restrictions.NumberRestrictionElements
         protected override bool IsValidLogic(int item, IResolutionContext context)
             => comparison.Compare(item, other.From(context, default));
     }
+
+    public class Positive : Compare
+    {
+        public override void Initialize(EffectInitializationContext initializationContext)
+        {
+            other ??= Identities.Numbers.Constant.Zero;
+            comparison ??= new Relationships.NumberRelationships.GreaterThan();
+            base.Initialize(initializationContext);
+        }
+    }
 }

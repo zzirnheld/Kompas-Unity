@@ -20,6 +20,7 @@ namespace KompasCore.Effects
         public const string NumberOfAugments = "Number of Augments";
         public const string DistanceToSource = "Distance to Source";
         public const string Index = "Index";
+        public const string SpacesCanMove = "Spaces Can Move";
         #endregion values
 
         public string value;
@@ -50,6 +51,7 @@ namespace KompasCore.Effects
                 NumberOfAugments => card.Augments.Count(),
                 DistanceToSource => card.DistanceTo(Source),
                 Index => card.IndexInList,
+                SpacesCanMove => card.SpacesCanMove,
                 
                 _ => throw new ArgumentException($"Invalid value string {value}", "value"),
             };

@@ -93,13 +93,6 @@ namespace KompasCore.Effects
         //misc statlike
         public const string Hurt = "Hurt";
         public const string Unhurt = "Unhurt";
-
-        public const string Negated = "Negated";
-        public const string Unnegated = "Unnegated";
-        public const string Activated = "Activated";
-
-        public const string HasMovement = "Has Movement";
-        public const string OutOfMovement = "Out of Movement";
         #endregion restrictions
 
         public string[] cardRestrictions = { };
@@ -126,14 +119,11 @@ namespace KompasCore.Effects
 
         public SpaceRestriction spaceRestriction;
 
-        public string[] canPlayIgnoring;
-
         public string blurb = "";
 
         public GameCard Source => InitializationContext.source;
         public Player Controller => InitializationContext.Controller;
         public Effect Effect => InitializationContext.effect;
-        public Game Game => InitializationContext.game;
 
         public override void Initialize(EffectInitializationContext initializationContext)
         {
@@ -264,11 +254,6 @@ namespace KompasCore.Effects
                 CardValueFitsNumberRestriction => cardValueNumberRestriction.IsValid(cardValue.GetValueOf(potentialTarget), context),
                 Hurt => potentialTarget?.Hurt ?? false,
                 Unhurt => !(potentialTarget?.Hurt ?? true),
-                Activated => potentialTarget?.Activated ?? false,
-                Negated => potentialTarget?.Negated ?? false,
-                Unnegated => !(potentialTarget?.Negated ?? true),
-                HasMovement => potentialTarget?.SpacesCanMove > 0,
-                OutOfMovement => potentialTarget?.SpacesCanMove <= 0,
 
                 //misc
                 Augmented => potentialTarget?.Augments.Any() ?? false,
