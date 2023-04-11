@@ -19,6 +19,7 @@ namespace KompasCore.Effects
         public const string Cost = "Cost";
         public const string NumberOfAugments = "Number of Augments";
         public const string DistanceToSource = "Distance to Source";
+        public const string Index = "Index";
         #endregion values
 
         public string value;
@@ -48,6 +49,8 @@ namespace KompasCore.Effects
                 Cost => card.Cost,
                 NumberOfAugments => card.Augments.Count(),
                 DistanceToSource => card.DistanceTo(Source),
+                Index => card.IndexInList,
+                
                 _ => throw new ArgumentException($"Invalid value string {value}", "value"),
             };
             return intermediateValue * multiplier / divisor + modifier;
