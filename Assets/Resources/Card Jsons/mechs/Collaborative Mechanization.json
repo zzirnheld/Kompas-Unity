@@ -45,11 +45,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
 						"blurb": "Sign up here, future Pilots!",
-						"cardRestrictions": [
-							"Deck"
-						],
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{

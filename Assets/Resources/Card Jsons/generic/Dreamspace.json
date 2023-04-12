@@ -18,11 +18,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
 						"blurb": "copy of Dreamspace to decksummon",
-						"cardRestrictions": [
-							"Deck"
-						],
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{

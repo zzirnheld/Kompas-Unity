@@ -31,11 +31,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
 						"blurb": "Invocation to search",
-						"cardRestrictions": [
-							"Deck"
-						],
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{

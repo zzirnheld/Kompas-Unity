@@ -18,7 +18,12 @@
 			"condition":"Target Violates Restriction",
 			"cardRestriction":
 			{
-				"cardRestrictions":["Discard"]
+				"elements": [
+					{
+						"$type": "Core.CardRestriction:Location:",
+						"locations": [ "Hand" ]
+					}
+				]
 			}
 		},
 		{

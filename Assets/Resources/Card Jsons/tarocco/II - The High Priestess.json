@@ -30,8 +30,11 @@
 					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
 						"blurb": "for High Priestess to topdeck (2/3)",
-						"cardRestrictions": [
-							"Not Already Target"
+						"elements": [
+							{
+								"$type": "Core.CardRestriction:Not:",
+								"negated": { "$type": "Core.CardRestriction:Target:" }
+							}
 						]
 					}
 				},
@@ -43,8 +46,11 @@
 					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
 						"blurb": "for High Priestess to topdeck (3/3)",
-						"cardRestrictions": [
-							"Not Already Target"
+						"elements": [
+							{
+								"$type": "Core.CardRestriction:Not:",
+								"negated": { "$type": "Core.CardRestriction:Target:" }
+							}
 						]
 					}
 				},

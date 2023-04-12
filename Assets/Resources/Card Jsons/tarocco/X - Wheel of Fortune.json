@@ -28,10 +28,13 @@
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "character for Wheel of Fortune to swap N of (2/2)",
-						"cardRestrictions": [
-							"Not Already Target"
-						],
-						"elements": [ { "$type": "Core.CardRestriction:Character:" } ]
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
+							{
+								"$type": "Core.CardRestriction:Not:",
+								"negated": { "$type": "Core.CardRestriction:Target:" }
+							}
+						]
 					}
 				},
 				{

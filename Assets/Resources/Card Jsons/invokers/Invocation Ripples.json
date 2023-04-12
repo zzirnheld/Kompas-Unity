@@ -52,10 +52,8 @@
 					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Spirit to ripple into",
-						"cardRestrictions": [
-							"Already Target"
-						],
 						"elements": [
+							{ "$type": "Core.CardRestriction:Target:" },
 							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",

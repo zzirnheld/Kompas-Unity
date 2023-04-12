@@ -91,10 +91,6 @@
 						]
 					},
 					"restRestriction": {
-						"cardRestrictions": [
-							"Deck",
-							"Not Already Target"
-						],
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
@@ -105,6 +101,10 @@
 									"comparison": { "$type": "Relationships.Number:LessThan:" },
 									"other": { "$type": "Numbers:Constant:", "constant": 10 }
 								}]}
+							},
+							{
+								"$type": "Core.CardRestriction:Not:",
+								"negated": { "$type": "Core.CardRestriction:Target:" }
 							}
 						]
 					}

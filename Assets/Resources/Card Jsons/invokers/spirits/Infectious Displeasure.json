@@ -60,9 +60,7 @@
 				{
 					"$type": "Subeffect:ChangeAllCardStats:",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Already Target"
-						]
+						"elements": [ { "$type": "Core.CardRestriction:Target:" } ]
 					},
 					"nMultiplier": -1,
 					"eMultiplier": -1,

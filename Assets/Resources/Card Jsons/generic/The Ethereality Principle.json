@@ -46,9 +46,7 @@
 					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Remnant to put back on top",
-						"cardRestrictions": [
-							"Already Target"
-						]
+						"elements": [ { "$type": "Core.CardRestriction:Target:" } ]
 					}
 				},
 				{

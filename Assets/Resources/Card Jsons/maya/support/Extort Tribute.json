@@ -15,12 +15,9 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:AutoTarget:",
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
 						"blurb": "for Haemopoten to draw",
-						"cardRestrictions": [
-							"Deck"
-						],
-						"constant": 1,
 						"elements": [
 							{ "$type": "Core.CardRestriction:Enemy:" },
 							{

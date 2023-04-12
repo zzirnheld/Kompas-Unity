@@ -25,10 +25,13 @@
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "who to next be brought low by the Lines",
-						"cardRestrictions": [
-							"Not Already Target"
-						],
-						"elements": [ { "$type": "Core.CardRestriction:Character:" } ]
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
+							{
+								"$type": "Core.CardRestriction:Not:",
+								"negated": { "$type": "Core.CardRestriction:Target:" }
+							}
+						]
 					}
 				},
 				{

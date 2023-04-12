@@ -13,11 +13,9 @@
 						"From Field"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Negated"
-						],
 						"elements": [
-							{ "$type": "Core.CardRestriction:Character:" }
+							{ "$type": "Core.CardRestriction:Character:" },
+							{ "$type": "Core.CardRestriction:Negated:" }
 						]
 					}
 				}

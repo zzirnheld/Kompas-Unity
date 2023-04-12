@@ -10,12 +10,15 @@
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Controller Triggered","Main Card Fits Restriction Before"],
 					"cardRestriction":{
-						"cardRestrictions":["Hand"],
 						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Ificator" ]
-							}
+							},
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand" ]
+                            }
 						]
 					}
 				}

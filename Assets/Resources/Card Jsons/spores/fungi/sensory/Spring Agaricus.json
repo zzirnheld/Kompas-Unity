@@ -14,11 +14,9 @@
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Enemy"
-						],
 						"elements": [
-							{ "$type": "Core.CardRestriction:Character:" }
+							{ "$type": "Core.CardRestriction:Character:" },
+							{ "$type": "Core.CardRestriction:Enemy:" }
 						]
 					},
 					"spaceRestriction": {

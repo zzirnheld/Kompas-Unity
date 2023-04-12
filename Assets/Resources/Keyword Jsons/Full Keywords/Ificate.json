@@ -6,7 +6,12 @@
 		"triggerRestriction":{
 			"triggerRestrictions":["This Card is Main Card","Main Card Fits Restriction Before"],
 			"cardRestriction":{
-				"cardRestrictions":["Hand"]
+				"elements":[ 
+					{
+						"$type": "Core.CardRestriction:Location:",
+						"locations": [ "Hand" ]
+					}
+				]
 			}
 		}
 	},
@@ -17,10 +22,10 @@
 		},
 		{
 			"$type":"Subeffect:CardTarget:",
+			"toSearch": { "$type": "ManyCards:Discard:" },
 			"cardRestriction":
 			{
 				"blurb":"Crazy Idea for Ificator to Ificate",
-				"cardRestrictions":[ "Discard" ],
 				"elements": [
 					{ "$type": "Core.CardRestriction:Friendly:" },
 					{

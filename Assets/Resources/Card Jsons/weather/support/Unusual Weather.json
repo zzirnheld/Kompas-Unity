@@ -29,9 +29,6 @@
 				{
 					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Not Already Target"
-						],
 						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
 							{
@@ -49,6 +46,10 @@
 										]
 									}
 								}
+							},
+							{
+								"$type": "Core.CardRestriction:Not:",
+								"negated": { "$type": "Core.CardRestriction:Target:" }
 							}
 						]
 					}

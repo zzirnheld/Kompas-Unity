@@ -40,7 +40,6 @@
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "other character for Sowilo to give +1 E.",
-						"cardRestrictions": [ "Not Already Target" ],
 						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
                             {
@@ -50,7 +49,11 @@
 										"Adjacent to Source"
 									]
                                 }
-                            }
+                            },
+							{
+								"$type": "Core.CardRestriction:Not:",
+								"negated": { "$type": "Core.CardRestriction:Target:" }
+							}
 						]
 					}
 				},

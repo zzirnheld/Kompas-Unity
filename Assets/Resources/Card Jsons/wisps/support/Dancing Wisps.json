@@ -19,9 +19,7 @@
                     "mustBeEmpty": false
                 },
                 "cardRestriction": {
-                    "cardRestrictions": [
-                        "Enemy"
-                    ]
+                    "elements": [ { "$type": "Core.CardRestriction:Enemy:" } ]
                 }
             },
 			"subeffects": [

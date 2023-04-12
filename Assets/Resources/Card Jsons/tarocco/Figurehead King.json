@@ -29,8 +29,11 @@
 					"$type": "Subeffect:TargetAll:",
 					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Not Already Target"
+						"elements": [
+							{
+								"$type": "Core.CardRestriction:Not:",
+								"negated": { "$type": "Core.CardRestriction:Target:" }
+							}
 						]
 					}
 				},

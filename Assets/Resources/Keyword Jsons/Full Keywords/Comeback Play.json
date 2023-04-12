@@ -7,7 +7,12 @@
 		"triggerRestriction":{
 			"triggerRestrictions":["Friendly Turn","This Card Fits Restriction Now","Card Exists Now"],
 			"selfRestriction":{
-				"cardRestrictions":["Discard"]
+				"elements": [ 
+					{
+						"$type": "Core.CardRestriction:Location:",
+						"locations": [ "Discard" ]
+					}
+				]
 			},
 			"existsRestriction":
 			{

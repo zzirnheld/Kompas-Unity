@@ -18,12 +18,13 @@
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "for Gyfu to give +1 EW",
-						"cardRestrictions": [
-							"Not Already Target"
-						],
 						"elements": [
 							{ "$type": "Core.CardRestriction:Enemy:" },
-							{ "$type": "Core.CardRestriction:Character:" }
+							{ "$type": "Core.CardRestriction:Character:" },
+							{
+								"$type": "Core.CardRestriction:Not:",
+								"negated": { "$type": "Core.CardRestriction:Target:" }
+							}
 						]
 					}
 				},
