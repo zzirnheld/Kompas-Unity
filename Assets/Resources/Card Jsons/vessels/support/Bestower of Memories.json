@@ -14,23 +14,23 @@
 						"Main Card Fits Restriction After"
 					],
 					"nowRestriction": {
-						"cardRestrictions": [
-                            "Augments Card Fitting Restriction"
-                        ],
 						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Memory" ]
-							}
-						],
-						"augmentRestriction": {
-							"elements": [
-								{
-									"$type": "Core.CardRestriction:Subtypes:",
-									"subtypes": [ "Vessel" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Augments:",
+								"cardRestriction": {
+									"elements": [
+										{
+											"$type": "Core.CardRestriction:Subtypes:",
+											"subtypes": [ "Vessel" ]
+										}
+									]
 								}
-							]
-						}
+							}
+						]
 					}
 				}
 			},

@@ -14,14 +14,14 @@
 						"Controller Triggered"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Augments Card Fitting Restriction"
-						],
-						"augmentRestriction": {
-							"elements": [
-								{ "$type": "Core.CardRestriction:Enemy:" }
-							]
-						}
+						"elements": [ {
+							"$type": "Core.CardRestriction:Augments:",
+							"cardRestriction": {
+								"elements": [
+									{ "$type": "Core.CardRestriction:Enemy:" }
+								]
+							}
+						} ]
 					}
 				}
 			},

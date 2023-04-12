@@ -13,21 +13,21 @@
 						"Main Card Fits Restriction After"
 					],
 					"nowRestriction": {
-						"cardRestrictions": [
-                            "Augments Card Fitting Restriction"
-						],
-						"augmentRestriction": {
-							"elements": [
-								{
-									"$type": "Core.CardRestriction:Subtypes:",
-									"subtypes": [ "Vessel" ]
-								}
-							]
-                        },
 						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Module" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Augments:",
+                                "cardRestriction": {
+									"elements": [
+										{
+											"$type": "Core.CardRestriction:Subtypes:",
+											"subtypes": [ "Modular" ]
+										}
+									]
+                                }
 							},
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
@@ -38,7 +38,14 @@
                                 }
                             }
 						]
-					}
+					},
+					"triggerRestrictionElements": [
+                        {
+                            "$type": "Core.TriggerRestriction:CardsMatch:",
+                            "firstCard": { "$type": "Cards:CauseBefore:" },
+                            "secondCard": { "$type": "Cards:MainCardBefore:" }
+                        }
+					]
 				}
 			},
 			"subeffects": [

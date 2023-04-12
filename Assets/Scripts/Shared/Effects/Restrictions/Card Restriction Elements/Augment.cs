@@ -6,6 +6,8 @@ using System.Linq;
 
 namespace KompasCore.Effects.Restrictions.elements
 {
+    //TODO: this can probably be merged with/generalized to a "card is" sort of restriction,
+    // where there's an additional IIdentity<GameCardBase> that defines the card to actually be tested in terms of the incoming card?
     public abstract class AugmentRestrictionBase : CardRestrictionElement
     {
         public CardRestriction cardRestriction;
@@ -14,6 +16,12 @@ namespace KompasCore.Effects.Restrictions.elements
 
         private static bool AllNull(params object[] objs) => objs.All(o => o == null);
 
+        /// <summary>
+        /// Returns a predicate that tests the test card with the following order of priorities:
+        /// If the cardRestriction is defined, checks that the test card fits that restriction.
+        /// If no CardRestriction is defined, but a list of cards is defined, checks if the test card is one of those cards.
+        /// If neither is defined, but a single card identity is defined, checks if the test card is that card.
+        /// </summary>
         protected Func<GameCardBase, bool> IsValidAug(IResolutionContext context) => card =>
         {
             if (cardRestriction != null) return cardRestriction.IsValid(card, context);
@@ -41,7 +49,9 @@ namespace KompasCore.Effects.Restrictions.elements
         public bool all = false; //default to any
 
         protected override bool IsValidLogic(GameCardBase card, IResolutionContext context) 
-            => all ? card.Augments.All(IsValidAug(context)) : card.Augments.Any(IsValidAug(context));
+            => all
+                ? card.Augments.All(IsValidAug(context))
+                : card.Augments.Any(IsValidAug(context));
     }
 
     public class Augments : AugmentRestrictionBase
