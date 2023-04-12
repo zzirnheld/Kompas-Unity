@@ -34,27 +34,11 @@ namespace KompasCore.Effects
 
         public const string NotCharacter = "Not Character";
         public const string NotAugment = "Not Augment";
-
-        public const string SpellSubtypes = "Spell Subtypes";
-
-        //control
-        public const string Friendly = "Friendly";
-        public const string Enemy = "Enemy";
-
-        public const string SameOwner = "Same Owner as Source";
-        public const string TurnPlayerControls = "Turn Player Controls";
-
-        public const string ControllerMatchesCardTarget = "Controller Matches Card Target's";
-        public const string ControllerDoesntMatchCardTarget = "Controller Doesn't Match Card Target's";
         #endregion restrictions
 
         public string[] cardRestrictions = { };
 
         public string nameIs;
-        public string[] subtypesInclude;
-        public string[] subtypesExclude;
-        public string[] subtypesIncludeAnyOf;
-        public string[] spellSubtypes;
 
         public string blurb = "";
 
@@ -102,16 +86,6 @@ namespace KompasCore.Effects
 
                 NotCharacter => potentialTarget?.CardType != 'C',
                 NotAugment => potentialTarget?.CardType != 'A',
-                SpellSubtypes => potentialTarget?.SpellSubtypes.Intersect(spellSubtypes).Any() ?? false,
-
-                //control
-                Friendly => potentialTarget?.Controller == Controller,
-                Enemy => potentialTarget?.Controller != Controller,
-                SameOwner => potentialTarget?.Owner == Controller,
-                TurnPlayerControls => potentialTarget?.Controller == Subeffect.Game.TurnPlayer,
-
-                ControllerMatchesCardTarget => potentialTarget?.Controller == Subeffect.CardTarget.Controller,
-                ControllerDoesntMatchCardTarget => potentialTarget?.Controller != Subeffect.CardTarget.Controller,
 
                 _ => throw new ArgumentException($"Invalid card restriction {restriction}", "restriction"),
             };

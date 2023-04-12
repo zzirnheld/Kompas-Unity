@@ -45,18 +45,19 @@
 						"cardRestrictions": [
 							"Deck",
 							"Spell",
-							"Distinct Name from Other Targets",
-							"Spell Subtypes"
+							"Distinct Name from Other Targets"
 						],
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Weather" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"spell": true,
+								"subtypes": [ "Radial" ]
 							}
-						],
-						"spellSubtypes": [
-							"Radial"
 						]
 					},
 					"maxCanChoose": 1
