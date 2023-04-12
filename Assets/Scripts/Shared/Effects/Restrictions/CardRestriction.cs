@@ -1,8 +1,6 @@
 ﻿using KompasCore.Cards;
-using KompasCore.GameCore;
 using System;
 using System.Linq;
-using UnityEngine;
 
 namespace KompasCore.Effects
 {
@@ -55,11 +53,6 @@ namespace KompasCore.Effects
         public const string Summoned = "Summoned"; //non-avatar character
         public const string Avatar = "Avatar";
         public const string NotAvatar = "Not Avatar";
-
-        //subtypes
-        public const string SubtypesInclude = "Subtypes Include";
-        public const string SubtypesExclude = "Subtypes Exclude";
-        public const string SubtypesIncludeAnyOf = "Subtypes Include Any Of";
         #endregion restrictions
 
         public string[] cardRestrictions = { };
@@ -70,65 +63,15 @@ namespace KompasCore.Effects
         public string[] subtypesIncludeAnyOf;
         public string[] spellSubtypes;
 
-        public CardValue cardValue;
-        public NumberRestriction cardValueNumberRestriction;
-
-        public CardRestriction secondaryRestriction;
-
-        public CardRestriction adjacentCardRestriction;
-        public CardRestriction connectednessRestriction;
-        public CardRestriction attackedCardRestriction;
-        public CardRestriction inAOEOfRestriction;
-        public CardRestriction hasInAOERestriction;
-        public CardRestriction augmentRestriction;
-
-        public SpaceRestriction spaceRestriction;
-
         public string blurb = "";
 
         public GameCard Source => InitializationContext.source;
         public Player Controller => InitializationContext.Controller;
         public Effect Effect => InitializationContext.effect;
 
-        public override void Initialize(EffectInitializationContext initializationContext)
-        {
-            Debug.Log($"Initializing card restriction with context {initializationContext}");
-            base.Initialize(initializationContext);
-
-            spaceRestriction?.Initialize(initializationContext);
-
-            augmentRestriction?.Initialize(initializationContext);
-            secondaryRestriction?.Initialize(initializationContext);
-            adjacentCardRestriction?.Initialize(initializationContext);
-            connectednessRestriction?.Initialize(initializationContext);
-            attackedCardRestriction?.Initialize(initializationContext);
-            inAOEOfRestriction?.Initialize(initializationContext);
-            hasInAOERestriction?.Initialize(initializationContext);
-
-            cardValueNumberRestriction?.Initialize(initializationContext);
-
-            cardValue?.Initialize(initializationContext);
-        }
-
         public override string ToString() => $"Card Restriction of {Source?.CardName}." +
             $"\nRestrictions: {string.Join(", ", cardRestrictions)}" +
             $"\nRestriction Elements: {string.Join(", ", elements.Select(r => r))}";
-
-        private bool HasCardRestrictionInAOE(GameCardBase cardToTest, IResolutionContext context)
-        {
-            if (cardToTest == null) return false;
-            if (cardToTest.Location != CardLocation.Board) return false;
-
-            return Source.Game.Cards.Any(c => cardToTest.CardInAOE(c) && hasInAOERestriction.IsValid(c, context));
-        }
-
-        private bool WouldCardBeInAOEOfCardTargetIfCardTargetWereAtSpaceTarget(GameCardBase cardToTest, GameCardBase cardTarget, Space space)
-        {
-            if (cardToTest == null) return false;
-            if (space == null) return false;
-
-            return cardTarget.CardInAOE(cardToTest, space);
-        }
 
         /// <summary>
         /// Determines whether the given restriction is true for a given card, with a given value of x.
@@ -183,11 +126,6 @@ namespace KompasCore.Effects
                 Summoned => potentialTarget?.Summoned ?? false,
                 Avatar => potentialTarget?.IsAvatar ?? false,
                 NotAvatar => !potentialTarget?.IsAvatar ?? false,
-
-                //subtypes
-                SubtypesInclude => subtypesInclude.All(s => potentialTarget?.HasSubtype(s) ?? false),
-                SubtypesExclude => subtypesExclude.All(s => !potentialTarget?.HasSubtype(s) ?? false),
-                SubtypesIncludeAnyOf => subtypesIncludeAnyOf.Any(s => potentialTarget?.HasSubtype(s) ?? false),
 
                 _ => throw new ArgumentException($"Invalid card restriction {restriction}", "restriction"),
             };

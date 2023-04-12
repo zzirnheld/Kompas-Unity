@@ -22,10 +22,14 @@
 					"condition": "Target Violates Restriction",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Subtypes Exclude"
+							"Character"
 						],
-						"subtypesExclude": [
-							"Spirit"
+						"elements": [
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"exclude": true,
+								"subtypes": [ "Spirit" ]
+							}
 						]
 					},
 					"jumpIndices": [
@@ -36,7 +40,7 @@
 				{
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
-						"blurb": "where to Invoke the Spirit",
+						"blurb": "where to Invoke the non-Spirit",
                         "spaceRestrictionElements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {

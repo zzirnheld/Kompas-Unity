@@ -19,11 +19,7 @@
 					"$type": "Subeffect:TargetAll:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Spell",
-							"Subtypes Exclude"
-						],
-						"subtypesExclude": [
-							"Weather"
+							"Spell"
 						],
 						"elements": [
 							{
@@ -41,6 +37,11 @@
 										]
 									}
 								}
+							},
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"exclude": true,
+								"subtypes": [ "Weather" ]
 							}
 						]
 					}

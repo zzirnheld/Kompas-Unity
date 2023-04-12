@@ -8,6 +8,7 @@ namespace KompasCore.Effects.Restrictions.elements
         public string[] subtypes;
 
         public bool exclude = false; //default to include
+        public bool any = false; //default to all
 
         public override void Initialize(EffectInitializationContext initializationContext)
         {
@@ -16,8 +17,13 @@ namespace KompasCore.Effects.Restrictions.elements
         }
 
         protected override bool IsValidLogic(GameCardBase card, IResolutionContext context)
-        //If you're excluding all subtypes (exclude = true) you want all subtypes to not be present on the card (all = false)
-        //If you're including all subtypes (exclude = false) you want all subtypes to be present on the card (all = true)
-            => exclude != subtypes.All(card.HasSubtype);
+        {
+            bool includes = any
+                ? subtypes.Any(card.HasSubtype)
+                : subtypes.All(card.HasSubtype);
+            //If you're excluding all subtypes (exclude = true) you want all subtypes to not be present on the card (all = false)
+            //If you're including all subtypes (exclude = false) you want all subtypes to be present on the card (all = true)
+            return includes != exclude;
+        }
     }
 }
