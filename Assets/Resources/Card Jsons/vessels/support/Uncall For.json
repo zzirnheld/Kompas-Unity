@@ -18,8 +18,7 @@
 					"cardRestriction": {
 						"blurb": "Vessel to read as an augury",
 						"cardRestrictions": [
-							"Character",
-							"Wields Augment Fitting Restriction"
+							"Character"
                         ],
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
@@ -34,16 +33,19 @@
 										"Adjacent to Source"
 									]
                                 }
-                            }
-						],
-                        "augmentRestriction": {
-							"elements": [
-								{
-									"$type": "Core.CardRestriction:Subtypes:",
-									"subtypes": [ "Memory" ]
+                            },
+							{
+								"$type": "Core.CardRestriction:HasAugment:",
+								"cardRestriction": {
+									"elements": [
+										{
+											"$type": "Core.CardRestriction:Subtypes:",
+											"subtypes": [ "Memory" ]
+										}
+									]
 								}
-							]
-                        }
+							}
+						]
 					}
 				},
 				{

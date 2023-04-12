@@ -17,20 +17,23 @@
 					"cardRestriction":
 					{
 						"blurb": "character whose Module to swap out",
+						"elements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:HasAugment:",
+								"cardRestriction": {
+									"elements": [
+										{
+											"$type": "Core.CardRestriction:Subtypes:",
+											"subtypes": [ "Module" ]
+										}
+									]
+								}
+							}
+						],
 						"cardRestrictions": [
-                            "Character",
-                            "Wields Augment Fitting Restriction"
-                        ],
-						"augmentRestriction":
-						{
-							"elements": [
-								{ "$type": "Core.CardRestriction:Friendly:" },
-                                {
-                                    "$type": "Core.CardRestriction:Subtypes:",
-                                    "subtypes": [ "Module" ]
-                                }
-							]
-						}
+                            "Character"
+                        ]
 					}
 				},
                 {

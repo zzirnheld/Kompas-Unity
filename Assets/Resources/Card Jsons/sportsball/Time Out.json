@@ -21,18 +21,20 @@
 					"cardRestriction":
 					{
 						"blurb":"character to put in TIME OUT!",
-						"cardRestrictions":["Character","Wields Augment Fitting Restriction","Space Fits Restriction"],
+						"cardRestrictions":[ "Character", "Space Fits Restriction" ],
 						"spaceRestriction":
 						{
 							"spaceRestrictions":["Adjacent to Source"],
 							"mustBeEmpty":false
 						},
-						"augmentRestriction":
-						{
-							"elements": [
-								{ "$type": "Core.CardRestriction:Friendly:" }
-							]
-						}
+						"elements": [
+							{
+								"$type": "Core.CardRestriction:HasAugment:",
+								"cardRestriction": {
+									"elements": [ { "$type": "Core.CardRestriction:Friendly:" } ]
+								}
+							}
+						]
 					}
 				},
 				{

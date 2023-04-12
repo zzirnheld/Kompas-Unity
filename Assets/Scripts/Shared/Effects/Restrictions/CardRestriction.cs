@@ -72,8 +72,6 @@ namespace KompasCore.Effects
         public const string AugmentedBySource = "Source Augments";
         public const string NotAugmentedBySource = "Source Doesn't Augment";
         public const string AugmentsCardRestriction = "Augments Card Fitting Restriction";
-
-        public const string WieldsAugmentFittingRestriction = "Wields Augment Fitting Restriction";
         #endregion restrictions
 
         public string[] cardRestrictions = { };
@@ -216,8 +214,6 @@ namespace KompasCore.Effects
                 NotAugmentedBySource => !(potentialTarget?.Augments.Contains(Source) ?? true),
 
                 AugmentsCardRestriction => augmentRestriction.IsValid(potentialTarget?.AugmentedCard, context),
-
-                WieldsAugmentFittingRestriction => potentialTarget?.Augments.Any(c => augmentRestriction.IsValid(c, context)) ?? false,
 
                 //misc
                 Augmented => potentialTarget?.Augments.Any() ?? false,

@@ -15,7 +15,6 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Wields Augment Fitting Restriction",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
@@ -24,16 +23,19 @@
 							],
 							"mustBeEmpty": false
 						},
-						"augmentRestriction": {
-							"elements": [
-								{
-									"$type": "Core.CardRestriction:Subtypes:",
-									"subtypes": [ "Sportsball" ]
-								}
-							]
-						},
 						"elements": [
-							{ "$type": "Core.CardRestriction:Enemy:" }
+							{ "$type": "Core.CardRestriction:Enemy:" },
+							{
+								"$type": "Core.CardRestriction:HasAugment:",
+								"cardRestriction": {
+									"elements": [
+										{
+											"$type": "Core.CardRestriction:Subtypes:",
+											"subtypes": [ "Sportsball" ]
+										}
+									]
+								}
+							}
 						]
 					}
 				}
