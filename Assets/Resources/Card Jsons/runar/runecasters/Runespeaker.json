@@ -66,12 +66,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTargetSaveRest:",
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
 						"blurb": "Rune for Runespeaker to search (to hand)",
-						"cardRestrictions": [
-							"Distinct Name from Other Targets",
-							"Deck"
-						],
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
@@ -86,6 +83,10 @@
 									"comparison": { "$type": "Relationships.Number:LessThan:" },
 									"other": { "$type": "Numbers:Constant:", "constant": 10 }
 								}]}
+							},
+							{
+								"$type": "Core.CardRestriction:DistinctName:",
+								"cards": { "$type": "ManyCards:Targets:" }
 							}
 						]
 					},

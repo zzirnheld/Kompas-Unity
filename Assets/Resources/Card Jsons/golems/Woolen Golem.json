@@ -33,11 +33,9 @@
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "character for Woolen Golem to give -XW",
-						"cardRestrictions": [
-							"Distinct Name from Source"
-						],
 						"elements": [
-							{ "$type": "Core.CardRestriction:Character:" }
+							{ "$type": "Core.CardRestriction:Character:" },
+							{ "$type": "Core.CardRestriction:DistinctName:" }
 						]
 					}
 				},

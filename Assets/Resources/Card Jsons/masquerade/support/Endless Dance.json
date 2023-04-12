@@ -41,15 +41,16 @@
 					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
 						"blurb": "Next Dancer for the Dance",
-						"cardRestrictions": [
-							"Distinct Name from Other Targets"
-						],
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Masked", "Dancer" ]
+							},
+							{
+								"$type": "Core.CardRestriction:DistinctName:",
+								"cards": { "$type": "ManyCards:Targets:" }
 							}
 						]
 					}

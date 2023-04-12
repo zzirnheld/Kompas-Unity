@@ -33,12 +33,10 @@
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "summon for Gunpowder Golem to give -X E",
-						"cardRestrictions": [
-							"Distinct Name from Source"
-						],
 						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
-                            { "$type": "Core.CardRestriction:Summoned:" }
+                            { "$type": "Core.CardRestriction:Summoned:" },
+							{ "$type": "Core.CardRestriction:DistinctName:" }
 						]
 					}
 				},

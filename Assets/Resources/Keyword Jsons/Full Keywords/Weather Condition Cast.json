@@ -16,9 +16,9 @@
 			"toSearch": { "$type": "ManyCards:Deck:" },
 			"cardRestriction":{
 				"blurb":"Weather to deck-cast",
-				"cardRestrictions":[ "Distinct Name from Source" ],
 				"elements": [
 					{ "$type": "Core.CardRestriction:Spell:" },
+					{ "$type": "Core.CardRestriction:DistinctName:" },
 					{
 						"$type": "Core.CardRestriction:Subtypes:",
 						"subtypes": [ "Weather" ]

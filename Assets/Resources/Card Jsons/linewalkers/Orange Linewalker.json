@@ -18,10 +18,8 @@
 					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
 						"blurb": "linewalker to reshuffle",
-						"cardRestrictions": [
-							"Distinct Name from Source"
-						],
 						"elements": [
+							{ "$type": "Core.CardRestriction:DistinctName:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Linewalker" ]

@@ -28,16 +28,17 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
 						"blurb": "for Iterative Analysis to produce",
-						"toSearch": { "$type": "ManyCards:Deck:" },
-						"cardRestrictions": [
-							"Distinct Name from Other Targets"
-						],
 						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Mech", "Golem" ]
+							},
+							{
+								"$type": "Core.CardRestriction:DistinctName:",
+								"cards": { "$type": "ManyCards:Targets:" }
 							}
 						]
 					}

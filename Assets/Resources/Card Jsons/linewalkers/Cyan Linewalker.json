@@ -19,13 +19,13 @@
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "for Cyan to move",
-						"cardRestrictions": [
-							"Distinct Name from Source"
-						],
-						"elements": [ {
-							"$type": "Core.CardRestriction:CanMove:",
-							"spaceRestrictionSubeffectIndex": 1
-						} ]
+						"elements": [
+							{ "$type": "Core.CardRestriction:DistinctName:" },
+							{
+								"$type": "Core.CardRestriction:CanMove:",
+								"spaceRestrictionSubeffectIndex": 1
+							}
+						]
 					}
 				},
 				{

@@ -23,10 +23,8 @@
 								"anyOf": {
 									"$type": "ManyCards:FittingRestriction:",
 									"cardRestriction": {
-										"cardRestrictions": [
-											"Distinct Name from Source"
-										],
 										"elements": [
+											{ "$type": "Core.CardRestriction:DistinctName:" },
 											{
 												"$type": "Core.CardRestriction:Subtypes:",
 												"subtypes": [ "Water" ]

@@ -38,9 +38,6 @@
 					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
 						"blurb": "Wanderer to inspire with music",
-						"cardRestrictions": [
-							"Distinct Name from Other Targets"
-						],
 						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
 							{
@@ -51,6 +48,10 @@
 									"comparison": { "$type": "Relationships.Number:LessThanEqual:" },
 									"other": { "$type": "Numbers:X:" }
 								}]}
+							},
+							{
+								"$type": "Core.CardRestriction:DistinctName:",
+								"cards": { "$type": "ManyCards:Targets:" }
 							}
 						]
 					},

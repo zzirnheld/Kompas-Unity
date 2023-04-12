@@ -23,13 +23,13 @@
 					"blurb": "card to sympa",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Distinct Name from Source"
-						],
-						"elements": [ {
-							"$type": "Core.CardRestriction:CanMove:",
-							"spaceRestrictionSubeffectIndex": 2
-						} ]
+						"elements": [
+							{ "$type": "Core.CardRestriction:DistinctName:" },
+							{
+								"$type": "Core.CardRestriction:CanMove:",
+								"spaceRestrictionSubeffectIndex": 2
+							}
+						]
 					}
 				},
 				{

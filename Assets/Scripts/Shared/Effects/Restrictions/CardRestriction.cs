@@ -17,8 +17,6 @@ namespace KompasCore.Effects
         public const string NameIs = "Name Is";
         public const string SameNameAsTarget = "Same Name as Target";
         public const string SameNameAsSource = "Same Name as Source";
-        public const string DistinctNameFromTargets = "Distinct Name from Other Targets";
-        public const string DistinctNameFromSource = "Distinct Name from Source";
         public const string Unique = "Unique";
         #endregion restrictions
 
@@ -55,8 +53,6 @@ namespace KompasCore.Effects
                 NameIs => potentialTarget?.CardName == nameIs,
                 SameNameAsTarget => Subeffect.CardTarget.CardName == potentialTarget?.CardName,
                 SameNameAsSource => potentialTarget?.CardName == Source.CardName,
-                DistinctNameFromTargets => Effect.CardTargets.All(card => card.CardName != potentialTarget?.CardName),
-                DistinctNameFromSource => Source.CardName != potentialTarget?.CardName,
                 Unique => potentialTarget?.Unique ?? false,
 
                 _ => throw new ArgumentException($"Invalid card restriction {restriction}", "restriction"),

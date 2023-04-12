@@ -43,9 +43,6 @@
 					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
 						"blurb": "Weather to deck-cast",
-						"cardRestrictions": [
-							"Distinct Name from Other Targets"
-						],
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{ "$type": "Core.CardRestriction:Spell:" },
@@ -57,6 +54,10 @@
 								"$type": "Core.CardRestriction:Subtypes:",
 								"spell": true,
 								"subtypes": [ "Radial" ]
+							},
+							{
+								"$type": "Core.CardRestriction:DistinctName:",
+								"cards": { "$type": "ManyCards:Targets:" }
 							}
 						]
 					},
