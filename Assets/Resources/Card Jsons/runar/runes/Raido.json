@@ -26,7 +26,11 @@
 										"Adjacent to Source"
 									]
                                 }
-                            }
+                            },
+							{
+								"$type": "Core.CardRestriction:CanMove:",
+								"spaceRestrictionSubeffectIndex": 1
+							}
 						]
 					}
 				},

@@ -21,7 +21,11 @@
 						"blurb": "Spell to yank",
 						"cardRestrictions": [
 							"Spell"
-                        ]
+                        ],
+						"elements": [ {
+							"$type": "Core.CardRestriction:CanMove:",
+							"spaceRestrictionSubeffectIndex": 1
+						} ]
 					}
 				},
 				{

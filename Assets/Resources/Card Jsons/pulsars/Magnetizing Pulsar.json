@@ -38,7 +38,11 @@
 						"blurb": "for Magnetizing to attract",
 						"cardRestrictions": [
 							"Different from Source"
-						]
+						],
+						"elements": [ {
+							"$type": "Core.CardRestriction:CanMove:",
+							"spaceRestrictionSubeffectIndex": 1
+						} ]
 					}
 				},
 				{
@@ -99,7 +103,11 @@
 						"blurb": "for Magnetizing to repel",
 						"cardRestrictions": [
 							"Different from Source"
-						]
+						],
+						"elements": [ {
+							"$type": "Core.CardRestriction:CanMove:",
+							"spaceRestrictionSubeffectIndex": 1
+						} ]
 					}
 				},
 				{

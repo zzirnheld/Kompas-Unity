@@ -21,7 +21,11 @@
 						"blurb": "for Cyan to move",
 						"cardRestrictions": [
 							"Distinct Name from Source"
-						]
+						],
+						"elements": [ {
+							"$type": "Core.CardRestriction:CanMove:",
+							"spaceRestrictionSubeffectIndex": 1
+						} ]
 					}
 				},
 				{

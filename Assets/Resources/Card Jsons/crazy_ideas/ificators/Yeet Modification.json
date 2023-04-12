@@ -19,8 +19,8 @@
 					"cardRestriction": {
 						"elements": [
 							{
-								"$type": "Core.CardRestriction:SpaceRestrictionWillBeValid:",
-								"subeffectIndex": 1
+								"$type": "Core.CardRestriction:CanMove:",
+								"spaceRestrictionSubeffectIndex": 1
 							}
 						]
 					}

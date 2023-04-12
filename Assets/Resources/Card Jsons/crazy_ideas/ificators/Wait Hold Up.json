@@ -24,7 +24,11 @@
 					"cardRestriction": {
 						"blurb": "Wait, Hold Up, what are you moving?",
 						"elements": [
-							{ "$type": "Core.CardRestriction:Enemy:" }
+							{ "$type": "Core.CardRestriction:Enemy:" },
+							{
+								"$type": "Core.CardRestriction:CanMove:",
+								"spaceRestrictionSubeffectIndex": 2
+							}
 						]
 					}
 				},

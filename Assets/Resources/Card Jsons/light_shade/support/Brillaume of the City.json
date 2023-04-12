@@ -23,6 +23,10 @@
 								"$type": "Core.CardRestriction:Subtypes:",
 								"any": true,
 								"subtypes": [ "Light", "Shade" ]
+							},
+							{
+								"$type": "Core.CardRestriction:CanMove:",
+								"spaceRestrictionSubeffectIndex": 1
 							}
 						]
 					}

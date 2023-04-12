@@ -29,7 +29,11 @@
 										"Empty"
 									]
 								}
-                            }
+                            },
+							{
+								"$type": "Core.CardRestriction:CanMove:",
+								"spaceRestrictionSubeffectIndex": 1
+							}
 						]
 					}
 				},

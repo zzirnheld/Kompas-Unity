@@ -23,6 +23,9 @@
 			},
 			"subeffects": [
 				{
+					"$type":"Subeffect:TargetTriggeringCard:"
+				},
+				{
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"spaceRestrictionElements": [

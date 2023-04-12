@@ -32,7 +32,11 @@
 										"Adjacent to Space Target"
 									]
 								}
-                            }
+                            },
+							{
+								"$type": "Core.CardRestriction:CanMove:",
+								"spaceRestrictionSubeffectIndex": 2
+							}
 						]
 					}
 				},

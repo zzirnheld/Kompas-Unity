@@ -25,7 +25,11 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Distinct Name from Source"
-						]
+						],
+						"elements": [ {
+							"$type": "Core.CardRestriction:CanMove:",
+							"spaceRestrictionSubeffectIndex": 2
+						} ]
 					}
 				},
 				{

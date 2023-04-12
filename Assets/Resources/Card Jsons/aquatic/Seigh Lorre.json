@@ -20,10 +20,6 @@
 					"cardRestriction": {
 						"blurb": "what will sail",
 						"elements": [
-							{
-								"$type": "Core.CardRestriction:SpaceRestrictionWillBeValid:",
-								"subeffectIndex": 1
-							},
                             {
 								"$type": "Core.SpaceRestriction:InAOEOf:",
 								"anyOf": {
@@ -37,7 +33,11 @@
 										]
 									}
 								}
-                            }
+                            },
+							{
+								"$type": "Core.CardRestriction:CanMove:",
+								"spaceRestrictionSubeffectIndex": 1
+							}
 						]
 					}
 				},

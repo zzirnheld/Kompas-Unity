@@ -26,6 +26,10 @@
                             {
 								"$type": "Core.CardRestriction:AdjacentTo:",
 								"card": { "$type": "Cards:ThisCard:" }
+							},
+							{
+								"$type": "Core.CardRestriction:CanMove:",
+								"spaceRestrictionSubeffectIndex": 1
 							}
 						]
 					}
