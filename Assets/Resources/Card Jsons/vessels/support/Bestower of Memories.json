@@ -43,20 +43,23 @@
 					"blurb": "Vessel to get a copy of the memory",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Wields No Augment Fitting Restriction"
-						],
 						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Vessel" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Not:",
+								"negated": {
+									"$type": "Core.CardRestriction:HasAugment:",
+									"cardRestriction": {
+										"cardRestrictions": [
+											"Same Name as Target"
+										]
+									}
+								}
 							}
-						],
-						"augmentRestriction": {
-							"cardRestrictions": [
-								"Same Name as Target"
-							]
-						}
+						]
 					}
 				},
 				{
