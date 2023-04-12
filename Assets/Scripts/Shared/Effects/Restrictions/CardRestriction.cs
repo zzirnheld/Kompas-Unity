@@ -66,8 +66,6 @@ namespace KompasCore.Effects
         public const string NotSource = "Not Source";
         public const string IsCardTarget = "Is Card Target";
         public const string NotContextCard = "Not Context Card";
-
-        public const string Augmented = "Augmented";
         #endregion restrictions
 
         public string[] cardRestrictions = { };
@@ -76,7 +74,6 @@ namespace KompasCore.Effects
         public string[] subtypesInclude;
         public string[] subtypesExclude;
         public string[] subtypesIncludeAnyOf;
-        public CardLocation[] locations;
         public string[] spellSubtypes;
 
         public CardValue cardValue;
@@ -203,9 +200,6 @@ namespace KompasCore.Effects
                 NotSource => potentialTarget?.Card != Source,
                 IsCardTarget => potentialTarget?.Card == Subeffect.CardTarget,
                 NotContextCard => potentialTarget?.Card != context?.TriggerContext?.mainCardInfoBefore?.Card,
-
-                //misc
-                Augmented => potentialTarget?.Augments.Any() ?? false,
 
                 _ => throw new ArgumentException($"Invalid card restriction {restriction}", "restriction"),
             };

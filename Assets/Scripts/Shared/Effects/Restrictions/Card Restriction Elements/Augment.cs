@@ -11,8 +11,8 @@ namespace KompasCore.Effects.Restrictions.elements
     public abstract class AugmentRestrictionBase : CardRestrictionElement
     {
         public CardRestriction cardRestriction;
-        public IIdentity<IReadOnlyCollection<GameCardBase>> augments;
-        public IIdentity<GameCardBase> augment;
+        public IIdentity<IReadOnlyCollection<GameCardBase>> manyCards;
+        public IIdentity<GameCardBase> singleCard;
 
         private static bool AllNull(params object[] objs) => objs.All(o => o == null);
 
@@ -25,8 +25,8 @@ namespace KompasCore.Effects.Restrictions.elements
         protected Func<GameCardBase, bool> IsValidAug(IResolutionContext context) => card =>
         {
             if (cardRestriction != null) return cardRestriction.IsValid(card, context);
-            if (augments != null) return augments.From(context, null).Contains(card);
-            if (augment != null) return augment.From(context, null) == card;
+            if (manyCards != null) return manyCards.From(context, null).Contains(card);
+            if (singleCard != null) return singleCard.From(context, null) == card;
             throw new System.ArgumentNullException("augment", $"No augment provided for {this.GetType()} CardRestrictionElement");
         };
 
@@ -34,12 +34,12 @@ namespace KompasCore.Effects.Restrictions.elements
         {
             base.Initialize(initializationContext);
 
-            if (AllNull(cardRestriction, augment, augments))
+            if (AllNull(cardRestriction, singleCard, manyCards))
                 throw new System.ArgumentNullException("augment", $"No augment provided for {this.GetType()} CardRestrictionElement");
 
             cardRestriction?.Initialize(initializationContext);
-            augments?.Initialize(initializationContext);
-            augment?.Initialize(initializationContext);
+            manyCards?.Initialize(initializationContext);
+            singleCard?.Initialize(initializationContext);
         }
 
     }

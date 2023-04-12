@@ -42,9 +42,10 @@
 					"$type": "Subeffect:ConditionalEnd:",
 					"condition": "Target Violates Restriction",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Augmented"
-						]
+						"elements": [ {
+							"$type": "Core.CardRestriction:HasAugment:",
+							"elements": [ ]
+						} ]
 					}
 				},
 				{

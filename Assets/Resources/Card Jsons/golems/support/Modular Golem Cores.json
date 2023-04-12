@@ -22,13 +22,14 @@
 										"Adjacent to a Card that Fits Restriction"
 									],
 									"adjacencyRestriction": {
-										"cardRestrictions": [
-											"Augmented"
-										],
 										"elements": [
 											{
 												"$type": "Core.CardRestriction:Subtypes:",
 												"subtypes": [ "Golem" ]
+											},
+											{
+												"$type": "Core.CardRestriction:HasAugment:",
+												"elements": [ ]
 											}
 										]
 									},
@@ -49,8 +50,7 @@
 					"cardRestriction": {
 						"blurb": "Golem to swap out modules",
 						"cardRestrictions": [
-							"Character",
-							"Augmented"
+							"Character"
 						],
 						"elements": [
 							{
@@ -64,7 +64,11 @@
 										"Adjacent to Card Target"
 									]
 								}
-                            }
+                            },
+							{
+								"$type": "Core.CardRestriction:HasAugment:",
+								"elements": [ ]
+							}
 						]
 					}
 				},

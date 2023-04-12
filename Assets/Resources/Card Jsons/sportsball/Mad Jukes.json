@@ -14,11 +14,14 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Character",
-							"Augmented"
+							"Character"
 						],
 						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" }
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:HasAugment:",
+								"elements": [ ]
+							}
 						]
 					}
 				}
