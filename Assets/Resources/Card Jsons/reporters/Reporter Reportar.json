@@ -20,15 +20,16 @@
 					},
 					"cardRestriction": {
 						"blurb": "spell to reveal",
-						"cardRestrictions": [
-							"Controller Matches Player Target"
-						],
 						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Reporter" ]
 							},
-							{ "$type": "Core.CardRestriction:Hidden:" }
+							{ "$type": "Core.CardRestriction:Hidden:" },
+							{
+								"$type": "Core.PlayerRestriction:PlayersMatch:",
+								"player": { "$type": "Players:TargetIndex:" }
+							}
 						]
 					}
 				},
@@ -73,12 +74,12 @@
 					},
 					"cardRestriction": {
 						"blurb": "character to reveal",
-						"cardRestrictions": [
-							"Controller Matches Player Target",
-							"Character"
-						],
 						"elements": [
 							{ "$type": "Core.CardRestriction:Hidden:" },
+							{
+								"$type": "Core.PlayerRestriction:PlayersMatch:",
+								"player": { "$type": "Players:TargetIndex:" }
+							},
 							{
 								"$type": "Core.CardRestriction:CardValueFits:",
 								"cardValue": { "value": "Cost" },

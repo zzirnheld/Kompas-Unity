@@ -44,11 +44,12 @@
 					},
 					"cardRestriction": {
 						"blurb": "fast card to reveal",
-						"cardRestrictions": [
-							"Controller Matches Player Target"
-						],
 						"elements": [
 							{ "$type": "Core.CardRestriction:Hidden:" },
+							{
+								"$type": "Core.PlayerRestriction:PlayersMatch:",
+								"player": { "$type": "Players:TargetIndex:" }
+							},
 							{
 								"$type": "Core.CardRestriction:CardValueFits:",
 								"cardValue": { "value": "Cost" },

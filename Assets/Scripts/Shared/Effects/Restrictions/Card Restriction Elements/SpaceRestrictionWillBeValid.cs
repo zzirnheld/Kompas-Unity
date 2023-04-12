@@ -1,7 +1,7 @@
 using KompasCore.Cards;
 using KompasServer.Effects.Subeffects;
 
-namespace KompasCore.Effects.Restrictions.elements
+namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 {
     public class SpaceRestrictionWillBeValid : CardRestrictionElement
     {

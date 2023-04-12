@@ -17,9 +17,10 @@
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "angry WX character that might attack",
-						"cardRestrictions": [
-							"Controller Matches Player Target"
-						]
+						"elements": [ {
+							"$type": "Core.PlayerRestriction:PlayersMatch:",
+							"player": { "$type": "Players:TargetIndex:" }
+						} ]
 					}
 				},
 				{
@@ -60,11 +61,12 @@
 					},
 					"cardRestriction": {
 						"blurb": "cost > X card to reveal",
-						"cardRestrictions": [
-							"Controller Matches Player Target"
-						],
 						"elements": [
 							{ "$type": "Core.CardRestriction:Hidden:" },
+							{
+								"$type": "Core.PlayerRestriction:PlayersMatch:",
+								"player": { "$type": "Players:TargetIndex:" }
+							},
 							{
 								"$type": "Core.CardRestriction:CardValueFits:",
 								"cardValue": { "value": "Cost" },
@@ -90,8 +92,7 @@
 					"cardRestriction": {
 						"blurb": "enemy character to attack",
 						"cardRestrictions": [
-							"Character",
-							"Controller Isn't Player Target"
+							"Character"
 						],
 						"elements": [
                             {
@@ -101,7 +102,14 @@
 										"Adjacent to Card Target"
 									]
 								}
-                            }
+                            },
+                            {
+                                "$type": "Core.PlayerRestriction:Not:",
+								"negated": {
+									"$type": "Core.PlayerRestriction:PlayersMatch:",
+									"player": { "$type": "Players:TargetIndex:" }
+								}
+							}
 						]
 					},
 					"playerIndex": -2

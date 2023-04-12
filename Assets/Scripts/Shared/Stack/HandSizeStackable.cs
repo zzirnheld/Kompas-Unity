@@ -1,5 +1,5 @@
 ﻿using KompasCore.Cards;
-using KompasCore.Effects.Restrictions.elements;
+using KompasCore.Effects.Restrictions.CardRestrictionElements;
 
 namespace KompasCore.Effects
 {

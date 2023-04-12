@@ -1,7 +1,7 @@
 using KompasCore.Cards;
 using System.Linq;
 
-namespace KompasCore.Effects.Restrictions.elements
+namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 {
     public class Subtypes : CardRestrictionElement
     {

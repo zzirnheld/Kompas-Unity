@@ -3,7 +3,7 @@ using KompasCore.Effects;
 using KompasCore.Effects.Identities;
 using KompasCore.Effects.Identities.ManyCards;
 using KompasCore.Effects.Restrictions;
-using KompasCore.Effects.Restrictions.elements;
+using KompasCore.Effects.Restrictions.CardRestrictionElements;
 using System.Collections.Generic;
 
 namespace KompasServer.Effects.Subeffects

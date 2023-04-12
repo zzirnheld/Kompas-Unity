@@ -38,8 +38,7 @@
 					"cardRestriction": {
 						"blurb": "for Leybinder to hand-summon",
 						"cardRestrictions": [
-							"Character",
-							"Controller Matches Player Target"
+							"Character"
 						],
 						"elements": [
 							{
@@ -50,6 +49,10 @@
 									"comparison": { "$type": "Relationships.Number:Equal:" },
 									"other": { "$type": "Numbers:X:" }
 								}]}
+							},
+							{
+								"$type": "Core.PlayerRestriction:PlayersMatch:",
+								"player": { "$type": "Players:TargetIndex:" }
 							}
 						]
 					},

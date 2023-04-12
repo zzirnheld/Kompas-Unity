@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace KompasCore.Effects.Restrictions.elements
+namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 {
     //TODO: this can probably be merged with/generalized to a "card is" sort of restriction,
     // where there's an additional IIdentity<GameCardBase> that defines the card to actually be tested in terms of the incoming card?

@@ -2,7 +2,7 @@ using KompasCore.Cards;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace KompasCore.Effects.Restrictions.elements
+namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 {
     public class Location : CardRestrictionElement
     {

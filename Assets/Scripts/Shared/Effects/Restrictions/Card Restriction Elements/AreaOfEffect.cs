@@ -3,7 +3,7 @@ using System.Linq;
 using KompasCore.Cards;
 using KompasCore.Effects.Identities;
 
-namespace KompasCore.Effects.Restrictions.elements
+namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 {
     public class AOEContains : CardRestrictionElement
     {

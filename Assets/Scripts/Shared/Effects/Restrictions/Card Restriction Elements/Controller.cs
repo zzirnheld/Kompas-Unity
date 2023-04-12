@@ -2,7 +2,7 @@ using KompasCore.Cards;
 using KompasCore.Effects.Identities;
 using KompasCore.Effects.Identities.Players;
 
-namespace KompasCore.Effects.Restrictions.elements
+namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 {
     public class Controller : CardRestrictionElement
     {
