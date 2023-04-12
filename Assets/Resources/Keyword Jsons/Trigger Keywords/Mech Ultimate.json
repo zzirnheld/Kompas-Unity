@@ -2,7 +2,7 @@
     {
         "$type": "Core.TriggerRestriction:CardsMatch:",
         "firstCard": { "$type": "Cards:ThisCard:" },
-        "secondCard": { "$type": "Cards:MainCardBefore:" }
+        "secondCard": { "$type": "Cards:CardBefore:" }
     },
     {
         "$type": "Core.TriggerRestriction:NumberFitsRestriction:",
@@ -14,7 +14,7 @@
         },
         "number": {
             "$type": "Numbers:FromCardValue:",
-            "card": { "$type": "Cards:MainCardBefore:" },
+            "card": { "$type": "Cards:CardBefore:" },
             "cardValue": { "value": "S" }
         }
     }

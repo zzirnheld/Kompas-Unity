@@ -15,7 +15,7 @@ namespace KompasServer.GameCore
 
         public override bool Hand(GameCard card, IStackable stackSrc = null)
         {
-            var context = new TriggeringEventContext(game: ServerGame, mainCardBefore: card, stackableCause: stackSrc, player: Owner);
+            var context = new TriggeringEventContext(game: ServerGame, CardBefore: card, stackableCause: stackSrc, player: Owner);
             bool wasKnown = card.KnownToEnemy;
             bool successful = base.Hand(card, stackSrc);
             if (successful)

@@ -12,7 +12,7 @@
                         { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "card": { "$type": "Cards:MainCardBefore:" },
+                            "card": { "$type": "Cards:CardBefore:" },
                             "cardRestriction": {
                                 "elements": [ { "$type": "Core.CardRestriction:Enemy:" } ]
                             }
@@ -22,7 +22,7 @@
                             "restrictions": [
                                 {
                                     "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                                    "card": { "$type": "Cards:MainCardBefore:" },
+                                    "card": { "$type": "Cards:CardBefore:" },
                                     "cardRestriction": {
                                         "elements": [
                                             {
@@ -41,7 +41,7 @@
                                 },
                                 {
                                     "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                                    "card": { "$type": "Cards:MainCardAfter:" },
+                                    "card": { "$type": "Cards:CardAfter:" },
                                     "cardRestriction": {
                                         "elements": [
                                             {

@@ -31,7 +31,7 @@ namespace KompasCore.Effects
         private const string MainCardFitsRestrictionBefore = "Main Card Fits Restriction Before";
         private const string MainCardsAugmentedCardBeforeFitsRestriction = "Main Card's Augmented Card Before Fits Restriction";
         private const string MainCardFitsRestrictionAfter = "Main Card Fits Restriction After";
-        private const string MainCardAfterFurtherFromSourceThanBefore = "Main Card After is Further from Source than Before";
+        private const string CardAfterFurtherFromSourceThanBefore = "Main Card After is Further from Source than Before";
 
         private const string SecondaryCardFitsRestrictionBefore = "Secondary Card Fits Restriction Before";
 
@@ -168,7 +168,7 @@ namespace KompasCore.Effects
             StackableIsThisEffect => triggeringContext.stackableCause == SourceEffect,
             NoStackable => triggeringContext.stackableCause == null,
 
-            MainCardAfterFurtherFromSourceThanBefore
+            CardAfterFurtherFromSourceThanBefore
                 => ThisCard.DistanceTo(triggeringContext.MainCardInfoAfter.Position) > ThisCard.DistanceTo(triggeringContext.mainCardInfoBefore.Position),
 
             //other non-card triggering things

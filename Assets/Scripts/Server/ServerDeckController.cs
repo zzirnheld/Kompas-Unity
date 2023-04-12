@@ -19,7 +19,7 @@ namespace KompasServer.GameCore
 
         protected override bool AddToDeck(GameCard card, int? index = null, IStackable stackSrc = null)
         {
-            var context = new TriggeringEventContext(game: ServerGame, mainCardBefore: card, stackableCause: stackSrc, player: Owner);
+            var context = new TriggeringEventContext(game: ServerGame, CardBefore: card, stackableCause: stackSrc, player: Owner);
             bool successfulAdd = base.AddToDeck(card, index, stackSrc);
             if (successfulAdd)
             {
@@ -32,7 +32,7 @@ namespace KompasServer.GameCore
 
         public override bool PushBottomdeck(GameCard card, IStackable stackSrc = null)
         {
-            var context = new TriggeringEventContext(game: ServerGame, mainCardBefore: card, stackableCause: stackSrc, player: Owner);
+            var context = new TriggeringEventContext(game: ServerGame, CardBefore: card, stackableCause: stackSrc, player: Owner);
             bool wasKnown = card.KnownToEnemy;
             bool successful = base.PushBottomdeck(card, stackSrc);
             if (successful)
@@ -46,7 +46,7 @@ namespace KompasServer.GameCore
 
         public override bool PushTopdeck(GameCard card, IStackable stackSrc = null)
         {
-            var context = new TriggeringEventContext(game: ServerGame, mainCardBefore: card, stackableCause: stackSrc, player: Owner);
+            var context = new TriggeringEventContext(game: ServerGame, CardBefore: card, stackableCause: stackSrc, player: Owner);
             bool wasKnown = card.KnownToEnemy;
             bool successful = base.PushTopdeck(card, stackSrc);
             if (successful)
@@ -60,7 +60,7 @@ namespace KompasServer.GameCore
 
         public override bool ShuffleIn(GameCard card, IStackable stackSrc = null)
         {
-            var context = new TriggeringEventContext(game: ServerGame, mainCardBefore: card, stackableCause: stackSrc, player: Owner);
+            var context = new TriggeringEventContext(game: ServerGame, CardBefore: card, stackableCause: stackSrc, player: Owner);
             bool wasKnown = card.KnownToEnemy;
             bool successful = base.ShuffleIn(card, stackSrc);
             if (successful)

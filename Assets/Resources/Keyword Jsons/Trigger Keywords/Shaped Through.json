@@ -29,7 +29,7 @@
                     },
                     "secondSpace": {
                         "$type": "Spaces:PositionOf:",
-                        "ofThisCard": { "$type": "Cards:MainCardBefore:" }
+                        "ofThisCard": { "$type": "Cards:CardBefore:" }
                     },
                     "throughRestriction": {
                         "spaceRestrictionElements": [
@@ -55,7 +55,7 @@
                     },
                     "secondSpace": {
                         "$type": "Spaces:PositionOf:",
-                        "ofThisCard": { "$type": "Cards:MainCardAfter:" }
+                        "ofThisCard": { "$type": "Cards:CardAfter:" }
                     },
                     "throughRestriction": {
                         "spaceRestrictionElements": [
@@ -79,11 +79,11 @@
             "$type": "Numbers:Distance:",
             "firstSpace": {
                 "$type": "Spaces:PositionOf:",
-                "ofThisCard": { "$type": "Cards:MainCardBefore:" }
+                "ofThisCard": { "$type": "Cards:CardBefore:" }
             },
             "secondSpace": {
                 "$type": "Spaces:PositionOf:",
-                "ofThisCard": { "$type": "Cards:MainCardAfter:" }
+                "ofThisCard": { "$type": "Cards:CardAfter:" }
             },
             "throughRestriction": {
                 "spaceRestrictionElements": [

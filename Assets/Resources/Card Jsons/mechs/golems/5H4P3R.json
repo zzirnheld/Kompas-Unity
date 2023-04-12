@@ -13,7 +13,7 @@
                         {
                             "$type": "Core.TriggerRestriction:CardsMatch:",
                             "firstCard": { "$type": "Cards:ThisCard:" },
-                            "secondCard": { "$type": "Cards:MainCardBefore:" }
+                            "secondCard": { "$type": "Cards:CardBefore:" }
                         }
 					]
 				}
@@ -28,7 +28,7 @@
 							"firstSpace": {
 								"$type": "Spaces:PositionOf:",
 								"ofThisCard": {
-									"$type": "Cards:MainCardBefore:"
+									"$type": "Cards:CardBefore:"
 								}
 							},
 							"secondSpace": { "$type": "Spaces:ContextSpace:" },

@@ -53,7 +53,7 @@
                                 "$type": "Players:ControllerOf:",
                                 "card": {
                                     "$type": "Cards:AugmentedCard:",
-                                    "ofThisCard": { "$type": "Cards:MainCardBefore:" }
+                                    "ofThisCard": { "$type": "Cards:CardBefore:" }
                                 }
                             },
                             "secondCard": {

@@ -12,7 +12,7 @@
                         { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "card": { "$type": "Cards:MainCardBefore:" },
+                            "card": { "$type": "Cards:CardBefore:" },
                             "cardRestriction": { "cardRestrictions": [ "Character" ] }
                         },
                         {

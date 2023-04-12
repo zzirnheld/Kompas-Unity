@@ -256,7 +256,7 @@ namespace KompasServer.GameCore
                 var toDraw = controller.deckCtrl.Topdeck;
                 if (toDraw == null) break;
 
-                var eachDrawContext = new TriggeringEventContext(game: this, mainCardBefore: toDraw, stackableCause: stackSrc, player: controller);
+                var eachDrawContext = new TriggeringEventContext(game: this, CardBefore: toDraw, stackableCause: stackSrc, player: controller);
                 toDraw.Hand(controller, stackSrc);
                 eachDrawContext.CacheCardInfoAfter();
                 effectsController.TriggerForCondition(Trigger.EachDraw, eachDrawContext);

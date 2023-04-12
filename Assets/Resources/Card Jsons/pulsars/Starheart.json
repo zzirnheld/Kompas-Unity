@@ -17,13 +17,17 @@
 							"Adjacent to a Card that Fits Restriction"
 						],
 						"adjacencyRestriction": {
-							"cardRestrictions": [
-								"Not Context Card"
-							],
 							"elements": [
 								{
 									"$type": "Core.CardRestriction:Subtypes:",
 									"subtypes": [ "Pulsar" ]
+								},
+								{
+									"$type": "Core.CardRestriction:Not:",
+									"negated": {
+										"$type": "Core.CardRestriction:CardsMatch:",
+										"card": { "$type": "Cards:CardBefore:" }
+									}
 								}
 							]
 						},
@@ -59,13 +63,17 @@
 										"Adjacent to a Card that Fits Restriction"
 									],
 									"adjacencyRestriction": {
-										"cardRestrictions": [
-											"Not Context Card"
-										],
 										"elements": [
 											{
 												"$type": "Core.CardRestriction:Subtypes:",
 												"subtypes": [ "Pulsar" ]
+											},
+											{
+												"$type": "Core.CardRestriction:Not:",
+												"negated": {
+													"$type": "Core.CardRestriction:CardsMatch:",
+													"card": { "$type": "Cards:CardBefore:" }
+												}
 											}
 										]
 									},

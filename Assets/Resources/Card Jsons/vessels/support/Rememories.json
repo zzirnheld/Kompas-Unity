@@ -11,7 +11,7 @@
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
-							"card": { "$type": "Cards:MainCardBefore:" },
+							"card": { "$type": "Cards:CardBefore:" },
 							"cardRestriction": {
 								"elements": [
 									{
@@ -24,7 +24,7 @@
 						{
 							"$type": "Core.TriggerRestriction:CardsMatch:",
 							"firstCard": { "$type": "Cards:CauseBefore:" },
-							"secondCard": { "$type": "Cards:MainCardBefore:" }
+							"secondCard": { "$type": "Cards:CardBefore:" }
 						}
 					]
 				}

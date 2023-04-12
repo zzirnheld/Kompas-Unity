@@ -43,14 +43,15 @@
 					"endCondition": "Leave AOE",
 					"triggerRestriction": {
 						"triggerRestrictions": [
-							"Main Card is a Secondary Context Card Target",
-							"Secondary Card Fits Restriction Before"
+							"Main Card is a Secondary Context Card Target"
 						],
-						"secondaryCardRestriction": {
-							"cardRestrictions": [
-								"Is Source"
-							]
-						}
+						"triggerRestrictionElements": [
+							{
+								"$type": "Core.TriggerRestriction:CardsMatch:",
+								"firstCard": { "$type": "Cards:CardBefore:", "secondaryCard": true },
+								"secondCard": { "$type": "Cards:ThisCard:" }
+							}
+						]
 					}
 				}
 			]

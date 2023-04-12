@@ -16,7 +16,7 @@
                                 "$type": "Cards:AugmentedCard:",
                                 "ofThisCard": { "$type": "Cards:ThisCard:" }
                             },
-                            "secondCard": { "$type": "Cards:MainCardBefore:" }
+                            "secondCard": { "$type": "Cards:CardBefore:" }
                         },
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
@@ -28,7 +28,7 @@
                                     }
                                 ]
                             },
-                            "card": { "$type": "Cards:MainCardBefore:" }
+                            "card": { "$type": "Cards:CardBefore:" }
                         }
 					]
 				}

@@ -60,12 +60,6 @@ namespace KompasCore.Effects
         public const string SubtypesInclude = "Subtypes Include";
         public const string SubtypesExclude = "Subtypes Exclude";
         public const string SubtypesIncludeAnyOf = "Subtypes Include Any Of";
-
-        //is
-        public const string IsSource = "Is Source";
-        public const string NotSource = "Not Source";
-        public const string IsCardTarget = "Is Card Target";
-        public const string NotContextCard = "Not Context Card";
         #endregion restrictions
 
         public string[] cardRestrictions = { };
@@ -194,12 +188,6 @@ namespace KompasCore.Effects
                 SubtypesInclude => subtypesInclude.All(s => potentialTarget?.HasSubtype(s) ?? false),
                 SubtypesExclude => subtypesExclude.All(s => !potentialTarget?.HasSubtype(s) ?? false),
                 SubtypesIncludeAnyOf => subtypesIncludeAnyOf.Any(s => potentialTarget?.HasSubtype(s) ?? false),
-
-                //is
-                IsSource => potentialTarget?.Card == Source,
-                NotSource => potentialTarget?.Card != Source,
-                IsCardTarget => potentialTarget?.Card == Subeffect.CardTarget,
-                NotContextCard => potentialTarget?.Card != context?.TriggerContext?.mainCardInfoBefore?.Card,
 
                 _ => throw new ArgumentException($"Invalid card restriction {restriction}", "restriction"),
             };
