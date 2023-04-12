@@ -38,13 +38,14 @@
 					"$type": "Subeffect:TargetTargetsController:"
 				},
 				{
-					"$type": "Subeffect:AutoTarget:",
-					"cardRestriction": {
-						"cardRestrictions": [
-                            "Controller Matches Player Target",
-							"Avatar"
-						]
-					}
+					"$type": "Subeffect:AutoTargetCardIdentity:",
+                    "subeffectCardIdentity": {
+						"$type": "Cards:Avatar:",
+                        "player": {
+							"$type": "Players:ControllerOf:",
+							"card": { "$type": "Cards:TargetIndex:" }
+						}
+                    }
 				},
 				{
 					"$type": "Subeffect:ChangeCardStats:",

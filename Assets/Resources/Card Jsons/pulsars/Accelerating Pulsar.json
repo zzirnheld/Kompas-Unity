@@ -9,27 +9,24 @@
 				"triggerCondition": "S Change",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card in Play",
-						"X Fits Restriction",
-						"Main Card Fits Restriction Before"
+						"X Fits Restriction"
 					],
 					"xRestriction": {
 						"numberRestrictions": [
 							">0"
 						]
 					},
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Avatar"
-						],
-						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+                    "triggerRestrictionElements": [
+                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardsMatch:",
+                            "firstCard": { "$type": "Cards:MainCardBefore:" },
+                            "secondCard": {
+								"$type": "Cards:Avatar:",
+								"player": { "$type": "Players:FriendlyPlayer:" }
 							}
-						]
-					}
+                        }
+                    ]
 				}
 			},
 			"subeffects": [
@@ -61,27 +58,24 @@
 				"triggerCondition": "S Change",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card in Play",
-						"X Fits Restriction",
-						"Main Card Fits Restriction Before"
+						"X Fits Restriction"
 					],
 					"xRestriction": {
 						"numberRestrictions": [
 							"<0"
 						]
 					},
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Avatar"
-						],
-						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+                    "triggerRestrictionElements": [
+                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardsMatch:",
+                            "firstCard": { "$type": "Cards:MainCardBefore:" },
+                            "secondCard": {
+								"$type": "Cards:Avatar:",
+								"player": { "$type": "Players:FriendlyPlayer:" }
 							}
-						]
-					}
+                        }
+                    ]
 				}
 			},
 			"subeffects": [

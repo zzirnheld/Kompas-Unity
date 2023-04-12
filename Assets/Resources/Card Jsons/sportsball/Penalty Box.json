@@ -14,15 +14,6 @@
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"In Source's AOE"
-							],
-							"mustBeEmpty": false
-						},
 						"elements": [
 							{ "$type": "Core.CardRestriction:Enemy:" },
 							{
@@ -35,7 +26,16 @@
 										}
 									]
 								}
-							}
+							},
+                            {
+                                "$type": "Core.CardRestriction:PositionFitsRestriction:",
+								"spaceRestriction": {
+									"spaceRestrictions": [
+										"In Source's AOE"
+									],
+									"mustBeEmpty": false
+								}
+                            }
 						]
 					}
 				}

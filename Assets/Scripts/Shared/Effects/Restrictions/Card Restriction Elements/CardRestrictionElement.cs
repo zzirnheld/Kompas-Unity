@@ -30,17 +30,5 @@ namespace KompasCore.Effects.Restrictions
             protected override bool IsValidLogic(GameCardBase card, IResolutionContext context)
                 => card != null;
         }
-
-        public class Avatar : CardRestrictionElement
-        {
-            protected override bool IsValidLogic(GameCardBase card, IResolutionContext context)
-                => card.IsAvatar;
-        }
-
-        public class Summoned : CardRestrictionElement
-        {
-            protected override bool IsValidLogic(GameCardBase card, IResolutionContext context)
-                => card.Summoned;
-        }
     }
 }

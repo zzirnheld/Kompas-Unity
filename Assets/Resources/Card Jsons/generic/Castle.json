@@ -19,10 +19,8 @@
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "Avatar to castle",
-						"cardRestrictions": [
-							"Avatar"
-						],
 						"elements": [
+							{ "$type": "Core.CardRestriction:Avatar:" },
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
 								"spaceRestriction": {

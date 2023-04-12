@@ -51,8 +51,6 @@ namespace KompasCore.Effects
 
         //summoned
         public const string Summoned = "Summoned"; //non-avatar character
-        public const string Avatar = "Avatar";
-        public const string NotAvatar = "Not Avatar";
         #endregion restrictions
 
         public string[] cardRestrictions = { };

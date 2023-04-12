@@ -56,11 +56,9 @@
 					"$type": "Subeffect:ConditionalEnd:",
 					"condition": "Target Violates Restriction",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Avatar"
-						],
 						"elements": [
-							{ "$type": "Core.CardRestriction:Enemy:" }
+							{ "$type": "Core.CardRestriction:Enemy:" },
+							{ "$type": "Core.CardRestriction:Avatar:" }
 						]
 					}
 				},

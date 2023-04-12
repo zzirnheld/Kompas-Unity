@@ -19,16 +19,18 @@
 					"$type": "Subeffect:AutoTarget:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Character",
-							"Space Fits Restriction"
+							"Character"
 						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Constant Subjective Displacement from Source"
-							],
-							"displacementX": 1,
-							"displacementY": 1
-						}
+						"elements": [ {
+							"$type": "Core.CardRestriction:PositionFitsRestriction:",
+							"spaceRestriction": {
+								"spaceRestrictions": [
+									"Constant Subjective Displacement from Source"
+								],
+								"displacementX": 1,
+								"displacementY": 1
+							}
+						}]
 					}
 				},
 				{

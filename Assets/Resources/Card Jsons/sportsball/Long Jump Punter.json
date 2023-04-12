@@ -23,20 +23,22 @@
 						"blurb": "character within 4 spaces to punt Augment to",
 						"cardRestrictions": [
 							"Character",
-							"Different from Source",
-							"Space Fits Restriction"
+							"Different from Source"
 						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Distance to Source Fits X Restriction"
-							],
-							"distanceXRestriction": {
-								"numberRestrictions": [
-									"<=Constant"
+						"elements": [ {
+							"$type": "Core.CardRestriction:PositionFitsRestriction:",
+								"spaceRestriction": {
+								"spaceRestrictions": [
+									"Distance to Source Fits X Restriction"
 								],
-								"constant": 4
+								"distanceXRestriction": {
+									"numberRestrictions": [
+										"<=Constant"
+									],
+									"constant": 4
+								}
 							}
-						}
+						} ]
 					}
 				},
 				{

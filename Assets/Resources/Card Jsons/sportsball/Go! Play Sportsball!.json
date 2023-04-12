@@ -32,15 +32,11 @@
 					}
 				},
 				{
-					"$type": "Subeffect:AutoTarget:",
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Avatar"
-						],
-						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" }
-						]
-					}
+					"$type": "Subeffect:AutoTargetCardIdentity:",
+                    "subeffectCardIdentity": {
+						"$type": "Cards:Avatar:",
+                        "player": { "$type": "Players:TargetIndex:" }
+                    }
 				},
 				{
 					"$type": "Subeffect:TargetTargetsSpace:"

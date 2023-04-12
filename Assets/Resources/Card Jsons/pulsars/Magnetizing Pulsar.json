@@ -8,29 +8,26 @@
 				"blurb": "Attract",
 				"triggerCondition": "S Change",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"X Fits Restriction",
-						"Main Card Fits Restriction Before",
-						"Max Per Stack"
-					],
 					"xRestriction": {
 						"numberRestrictions": [
 							">0"
 						]
 					},
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Avatar"
-						],
-						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+                    "triggerRestrictionElements": [
+                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardsMatch:",
+                            "firstCard": { "$type": "Cards:MainCardBefore:" },
+                            "secondCard": {
+								"$type": "Cards:Avatar:",
+								"player": { "$type": "Players:FriendlyPlayer:" }
 							}
-						]
-					}
+                        }
+                    ],
+					"triggerRestrictions": [
+						"X Fits Restriction",
+						"Max Per Stack"
+					]
 				}
 			},
 			"subeffects": [
@@ -72,27 +69,24 @@
 				"blurb": "Repel",
 				"triggerCondition": "S Change",
 				"triggerRestriction": {
+                    "triggerRestrictionElements": [
+                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardsMatch:",
+                            "firstCard": { "$type": "Cards:MainCardBefore:" },
+                            "secondCard": {
+								"$type": "Cards:Avatar:",
+								"player": { "$type": "Players:FriendlyPlayer:" }
+							}
+                        }
+                    ],
 					"triggerRestrictions": [
-						"This Card in Play",
 						"X Fits Restriction",
-						"Main Card Fits Restriction Before",
 						"Max Per Stack"
 					],
 					"xRestriction": {
 						"numberRestrictions": [
 							"<0"
-						]
-					},
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Avatar"
-						],
-						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							}
 						]
 					}
 				}

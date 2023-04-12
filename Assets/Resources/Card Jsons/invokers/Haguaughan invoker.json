@@ -8,30 +8,28 @@
 				"blurb": "Invoke",
 				"triggerCondition": "Turn Start",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Card Exists Now"
-					],
-					"existsRestriction": {
-						"cardRestrictions": [
-							"Avatar"
-						],
-						"elements": [
-							{ "$type": "Core.CardRestriction:Enemy:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							},
-                            {
-                                "$type": "Core.CardRestriction:PositionFitsRestriction:",
-                                "spaceRestriction": {
-									"spaceRestrictions": [
-										"Adjacent to Source"
-									]
-                                }
-                            }
-						]
-					}
+					"triggerRestrictionElements": [
+                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "cardRestriction": {
+								"elements": [
+									{
+										"$type": "Core.CardRestriction:PositionFitsRestriction:",
+										"spaceRestriction": {
+											"spaceRestrictions": [
+												"Adjacent to Source"
+											]
+										}
+									}
+								]
+                            },
+                            "card": {
+								"$type": "Cards:Avatar:",
+								"player": { "$type": "Players:EnemyPlayer:" }
+							}
+                        }
+					]
 				}
 			},
 			"subeffects": [

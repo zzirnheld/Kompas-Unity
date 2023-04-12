@@ -13,8 +13,7 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Character",
-							"Space Fits Restriction"
+							"Character"
 						],
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },

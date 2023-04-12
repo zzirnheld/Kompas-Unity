@@ -56,14 +56,17 @@
 					"$type": "Subeffect:ChangeAllCardStats:",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Character",
-							"Space Fits Restriction"
+							"Character"
 						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Card Target"
-							]
-						}
+						"elements": [ {
+							"$type": "Core.CardRestriction:PositionFitsRestriction:",
+							"spaceRestriction": {
+								"spaceRestrictions": [
+									"Adjacent to Card Target"
+								],
+								"mustBeEmpty": false
+							}
+						}]
 					},
 					"wMultiplier": -1
 				}

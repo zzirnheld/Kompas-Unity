@@ -6,11 +6,14 @@
 		"triggerRestriction":{
 			"triggerRestrictions":["This Card Fits Restriction Now","Number of Cards Fitting Restriction Fits X Restriction"],
 			"selfRestriction":{
-				"cardRestrictions":["Not Avatar"],
 				"elements": [
 					{
 						"$type": "Core.CardRestriction:Location:",
 						"locations": [ "Board" ]
+					},
+					{
+						"$type": "Core.CardRestriction:Not:",
+						"negated": { "$type": "Core.CardRestriction:Avatar:" }
 					}
 				]
 			},

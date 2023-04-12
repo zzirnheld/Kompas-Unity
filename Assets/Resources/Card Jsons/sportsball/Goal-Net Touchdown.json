@@ -23,11 +23,9 @@
 							"Adjacent to a Card that Fits Restriction"
 						],
 						"adjacencyRestriction": {
-							"cardRestrictions": [
-								"Avatar"
-							],
 							"elements": [
-								{ "$type": "Core.CardRestriction:Enemy:" }
+								{ "$type": "Core.CardRestriction:Enemy:" },
+								{ "$type": "Core.CardRestriction:Avatar:" }
 							]
 						},
 						"mustBeEmpty": false
@@ -51,17 +49,18 @@
 				{
 					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Avatar",
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Card Target"
-							]
-						},
 						"elements": [
-							{ "$type": "Core.CardRestriction:Enemy:" }
+							{ "$type": "Core.CardRestriction:Enemy:" },
+							{ "$type": "Core.CardRestriction:Avatar:" },
+                            {
+                                "$type": "Core.CardRestriction:PositionFitsRestriction:",
+								"spaceRestriction": {
+									"spaceRestrictions": [
+										"Adjacent to Card Target"
+									],
+									"mustBeEmpty": false
+								}
+                            }
 						]
 					}
 				},

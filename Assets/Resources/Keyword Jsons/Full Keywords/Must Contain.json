@@ -11,14 +11,8 @@
             "existsRestriction":
             {
                 "cardRestrictions": [
-                    "Character",
-                    "Space Fits Restriction"
+                    "Character"
                 ],
-                "spaceRestriction": {
-                    "spaceRestrictions": [
-                        "In Source's AOE"
-                    ]
-                },
                 "elements": [
                     {
                         "$type": "Core.CardRestriction:Location:",
@@ -27,6 +21,15 @@
                     {
                         "$type": "Core.CardRestriction:Subtypes:",
                         "subtypes": [ "Structure" ]
+                    },
+                    {
+                        "$type": "Core.CardRestriction:PositionFitsRestriction:",
+                        "spaceRestriction": {
+                            "spaceRestrictions": [
+                                "In Source's AOE"
+                            ],
+                            "mustBeEmpty": false
+                        }
                     }
                 ]
             }
