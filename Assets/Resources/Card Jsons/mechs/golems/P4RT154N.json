@@ -19,10 +19,14 @@
             "Defender is Adjacent"
         ],
         "defenderRestriction" : {
-            "cardRestrictions": [
-                "Different from Source"
-            ],
 			"elements": [
+				{
+					"$type": "Core.CardRestriction:Not:",
+					"negated": {
+						"$type": "Core.CardRestriction:CardsMatch:",
+						"card": { "$type": "Cards:ThisCard:" }
+					}
+				},
 				{
 					"$type": "Core.CardRestriction:PositionFitsRestriction:",
 					"spaceRestriction": {

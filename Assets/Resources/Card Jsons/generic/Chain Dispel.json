@@ -42,9 +42,6 @@
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "spell for Chain Dispel to Dispel",
-						"cardRestrictions": [
-							"Different from Other Targets"
-						],
 						"elements": [
 							{ "$type": "Core.CardRestriction:Spell:" },
                             {
@@ -54,7 +51,14 @@
 										"Adjacent to Card Target"
 									]
 								}
-                            }
+                            },
+							{
+								"$type": "Core.CardRestriction:Not:",
+								"negated": {
+									"$type": "Core.CardRestriction:CardsMatch:",
+									"cards": { "$type": "ManyCards:Targets:" }
+								}
+							}
 						]
 					}
 				},

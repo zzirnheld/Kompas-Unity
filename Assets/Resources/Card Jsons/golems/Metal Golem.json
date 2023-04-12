@@ -32,8 +32,10 @@
 					"cardRestriction": {
 						"blurb": "second character for Metal Golem to set N to 0",
 						"cardRestrictions": [
-							"Character",
 							"Not Already Target"
+						],
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" }
 						]
 					}
 				},

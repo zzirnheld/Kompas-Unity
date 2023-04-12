@@ -16,11 +16,18 @@
 					],
 					"maxTimesPerTurn": 2,
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Different from Augmented Card"
-						],
 						"elements": [
-							{ "$type": "Core.CardRestriction:Character:" }
+							{ "$type": "Core.CardRestriction:Character:" },
+							{
+								"$type": "Core.CardRestriction:Not:",
+								"negated": {
+									"$type": "Core.CardRestriction:CardsMatch:",
+									"card": {
+										"$type": "Cards:AugmentedCard:",
+										"ofThisCard": { "$type": "Cards:ThisCard:" }
+									}
+								}
+							}
 						]
 					},
 					"spaceRestriction": {

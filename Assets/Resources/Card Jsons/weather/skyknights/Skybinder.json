@@ -14,10 +14,14 @@
 						"Controller Triggered"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Different from Source"
-						],
 						"elements": [
+							{
+								"$type": "Core.CardRestriction:Not:",
+								"negated": {
+									"$type": "Core.CardRestriction:CardsMatch:",
+									"card": { "$type": "Cards:ThisCard:" }
+								}
+							},
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Weather", "Event" ]

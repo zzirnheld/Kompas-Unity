@@ -20,12 +20,6 @@ namespace KompasCore.Effects
         public const string DistinctNameFromTargets = "Distinct Name from Other Targets";
         public const string DistinctNameFromSource = "Distinct Name from Source";
         public const string Unique = "Unique";
-
-        //different
-        public const string DifferentFromSource = "Different from Source";
-        public const string DifferentFromTarget = "Different from Target";
-        public const string DifferentFromOtherTargets = "Different from Other Targets";
-        public const string DifferentFromAugmentedCard = "Different from Augmented Card";
         #endregion restrictions
 
         public string[] cardRestrictions = { };
@@ -64,12 +58,6 @@ namespace KompasCore.Effects
                 DistinctNameFromTargets => Effect.CardTargets.All(card => card.CardName != potentialTarget?.CardName),
                 DistinctNameFromSource => Source.CardName != potentialTarget?.CardName,
                 Unique => potentialTarget?.Unique ?? false,
-
-                //different
-                DifferentFromSource => potentialTarget?.Card != Source,
-                DifferentFromTarget => potentialTarget?.Card != Subeffect.CardTarget,
-                DifferentFromOtherTargets => Subeffect.Effect.CardTargets.All(c => !c.Equals(potentialTarget)),
-                DifferentFromAugmentedCard => potentialTarget?.Card != Source.AugmentedCard,
 
                 _ => throw new ArgumentException($"Invalid card restriction {restriction}", "restriction"),
             };

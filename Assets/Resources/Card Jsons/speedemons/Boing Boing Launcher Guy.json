@@ -21,10 +21,14 @@
 					"blurb": "card to boing boing",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Different from Source"
-						],
 						"elements": [
+							{
+								"$type": "Core.CardRestriction:Not:",
+								"negated": {
+									"$type": "Core.CardRestriction:CardsMatch:",
+									"card": { "$type": "Cards:ThisCard:" }
+								}
+							},
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
 								"spaceRestriction": {

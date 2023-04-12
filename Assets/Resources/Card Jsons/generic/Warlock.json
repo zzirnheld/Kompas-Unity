@@ -16,18 +16,24 @@
                                            "No Stackable"],
                     "cardRestriction":
                     {
-                        "cardRestrictions":[
-                            "Different from Source"
-                        ],
-						"elements": [ {
-							"$type": "Core.CardRestriction:CardValueFits:",
-							"cardValue": { "value": "Cost" },
-							"numberRestriction": { "elements": [{
-								"$type": "Core.NumberRestriction:Compare:",
-								"comparison": { "$type": "Relationships.Number:LessThan:" },
-								"other": { "$type": "Numbers:Constant:", "constant": 1 }
-							}]}
-						} ]
+						"elements": [
+                            {
+                                "$type": "Core.CardRestriction:Not:",
+                                "negated": {
+                                    "$type": "Core.CardRestriction:CardsMatch:",
+                                    "card": { "$type": "Cards:ThisCard:" }
+                                }
+                            },
+                            {
+                                "$type": "Core.CardRestriction:CardValueFits:",
+                                "cardValue": { "value": "Cost" },
+                                "numberRestriction": { "elements": [{
+                                    "$type": "Core.NumberRestriction:Compare:",
+                                    "comparison": { "$type": "Relationships.Number:LessThan:" },
+                                    "other": { "$type": "Numbers:Constant:", "constant": 1 }
+                                }]}
+                            }
+                        ]
                     }
                 }
             },

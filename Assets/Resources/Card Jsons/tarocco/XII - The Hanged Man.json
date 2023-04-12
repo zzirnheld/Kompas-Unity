@@ -23,12 +23,16 @@
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "summon for Hanged Man to also give -X E",
-						"cardRestrictions": [
-							"Different from Source"
-						],
 						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
-                            { "$type": "Core.CardRestriction:Summoned:" }
+                            { "$type": "Core.CardRestriction:Summoned:" },
+							{
+								"$type": "Core.CardRestriction:Not:",
+								"negated": {
+									"$type": "Core.CardRestriction:CardsMatch:",
+									"card": { "$type": "Cards:ThisCard:" }
+								}
+							}
 						]
 					}
 				},

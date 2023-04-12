@@ -36,13 +36,19 @@
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "for Magnetizing to attract",
-						"cardRestrictions": [
-							"Different from Source"
-						],
-						"elements": [ {
-							"$type": "Core.CardRestriction:CanMove:",
-							"spaceRestrictionSubeffectIndex": 1
-						} ]
+						"elements": [
+							{
+								"$type": "Core.CardRestriction:Not:",
+								"negated": {
+									"$type": "Core.CardRestriction:CardsMatch:",
+									"card": { "$type": "Cards:ThisCard:" }
+								}
+							},
+							{
+								"$type": "Core.CardRestriction:CanMove:",
+								"spaceRestrictionSubeffectIndex": 1
+							}
+						]
 					}
 				},
 				{
@@ -101,13 +107,19 @@
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "for Magnetizing to repel",
-						"cardRestrictions": [
-							"Different from Source"
-						],
-						"elements": [ {
-							"$type": "Core.CardRestriction:CanMove:",
-							"spaceRestrictionSubeffectIndex": 1
-						} ]
+						"elements": [
+							{
+								"$type": "Core.CardRestriction:Not:",
+								"negated": {
+									"$type": "Core.CardRestriction:CardsMatch:",
+									"card": { "$type": "Cards:ThisCard:" }
+								}
+							}, 
+							{
+								"$type": "Core.CardRestriction:CanMove:",
+								"spaceRestrictionSubeffectIndex": 1
+							}
+						]
 					}
 				},
 				{

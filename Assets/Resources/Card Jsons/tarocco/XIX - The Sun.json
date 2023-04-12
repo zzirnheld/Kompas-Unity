@@ -35,12 +35,16 @@
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "character for Sun to give +1 E",
-						"cardRestrictions": [
-							"Different from Target"
-						],
 						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
-                            { "$type": "Core.CardRestriction:Summoned:" }
+                            { "$type": "Core.CardRestriction:Summoned:" },
+							{
+								"$type": "Core.CardRestriction:Not:",
+								"negated": {
+									"$type": "Core.CardRestriction:CardsMatch:",
+									"card": { "$type": "Cards:TargetIndex:" }
+								}
+							}
 						]
 					}
 				},

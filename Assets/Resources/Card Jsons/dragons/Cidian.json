@@ -38,11 +38,15 @@
 					"$type": "Subeffect:ChangeAllCardStats:",
 					"cardsSource": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Different from Source"
-						],
 						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
+							{
+								"$type": "Core.CardRestriction:Not:",
+								"negated": {
+									"$type": "Core.CardRestriction:CardsMatch:",
+									"card": { "$type": "Cards:ThisCard:" }
+								}
+							},
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
 								"spaceRestriction": {

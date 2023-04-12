@@ -15,9 +15,13 @@
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Different from Source"
-						]
+						"elements": [ {
+							"$type": "Core.CardRestriction:Not:",
+							"negated": {
+								"$type": "Core.CardRestriction:CardsMatch:",
+								"card": { "$type": "Cards:ThisCard:" }
+							}
+						} ]
 					},
 					"spaceRestriction": {
 						"spaceRestrictions": [

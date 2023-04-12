@@ -43,9 +43,6 @@
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "character to goal-kick Augment to",
-						"cardRestrictions": [
-							"Different from Target"
-						],
 						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
 							{
@@ -55,6 +52,13 @@
 										"Adjacent to Source"
 									],
 									"mustBeEmpty": false
+								}
+							},
+							{
+								"$type": "Core.CardRestriction:Not:",
+								"negated": {
+									"$type": "Core.CardRestriction:CardsMatch:",
+									"card": { "$type": "Cards:TargetIndex:" }
 								}
 							}
 						]

@@ -20,9 +20,16 @@
 			"cardRestriction":
 			{
 				"blurb":"Crazy Idea for Ificator to Ificate",
-				"cardRestrictions":["Discard","Different from Source"],
+				"cardRestrictions":[ "Discard" ],
 				"elements": [
 					{ "$type": "Core.CardRestriction:Friendly:" },
+					{
+						"$type": "Core.CardRestriction:Not:",
+						"negated": {
+							"$type": "Core.CardRestriction:CardsMatch:",
+							"card": { "$type": "Cards:ThisCard:" }
+						}
+					},
 					{
 						"$type": "Core.CardRestriction:Subtypes:",
 						"subtypes": [ "Crazy", "Idea" ]
