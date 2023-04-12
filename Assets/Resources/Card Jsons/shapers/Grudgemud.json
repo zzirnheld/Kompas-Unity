@@ -19,11 +19,11 @@
 					"cardRestriction": {
 						"blurb": "Ethereal for Grudges Unforgotten to annihilate and absorb",
 						"cardRestrictions": [
-							"Character",
-							"Summoned"
+							"Character"
 						],
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+                            { "$type": "Core.CardRestriction:Summoned:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Ethereal" ]

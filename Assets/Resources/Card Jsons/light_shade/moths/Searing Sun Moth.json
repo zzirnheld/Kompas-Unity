@@ -60,8 +60,10 @@
 					"cardRestriction": {
 						"blurb": "character for Sun to give -1 E",
 						"cardRestrictions": [
-							"Character",
-							"Summoned"
+							"Character"
+						],
+						"elements": [
+                            { "$type": "Core.CardRestriction:Summoned:" }
 						]
 					}
 				},
@@ -76,8 +78,10 @@
 						"blurb": "character for Sun to give +1 E",
 						"cardRestrictions": [
 							"Character",
-							"Summoned",
 							"Not Already Target"
+						],
+						"elements": [
+                            { "$type": "Core.CardRestriction:Summoned:" }
 						]
 					}
 				},

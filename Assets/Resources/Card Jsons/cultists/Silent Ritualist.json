@@ -20,11 +20,11 @@
 					"cardRestriction": {
 						"blurb": "ritual sacrifice",
 						"cardRestrictions": [
-							"Character",
-							"Summoned"
+							"Character"
 						],
 						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" }
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            { "$type": "Core.CardRestriction:Summoned:" }
 						]
 					}
 				},

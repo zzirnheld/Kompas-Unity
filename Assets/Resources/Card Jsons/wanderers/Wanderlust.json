@@ -19,11 +19,11 @@
 					"cardRestriction": {
 						"blurb": "friendly character to wander",
 						"cardRestrictions": [
-							"Character",
-							"Summoned"
+							"Character"
 						],
 						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" }
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            { "$type": "Core.CardRestriction:Summoned:" }
 						]
 					}
 				},

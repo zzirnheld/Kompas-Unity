@@ -25,12 +25,9 @@
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "for Mother of Dragons to kill",
-						"cardRestrictions": [
-							"Summoned",
-							"Not Already Target"
-						],
 						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" }
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            { "$type": "Core.CardRestriction:Summoned:" }
 						]
 					}
 				},

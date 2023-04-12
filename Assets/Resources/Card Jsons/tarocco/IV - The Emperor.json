@@ -20,10 +20,10 @@
 					"cardRestriction": {
 						"blurb": "summon for Emperor to buff",
 						"cardRestrictions": [
-							"Character",
-							"Summoned"
+							"Character"
 						],
 						"elements": [
+                            { "$type": "Core.CardRestriction:Summoned:" },
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
                                 "spaceRestriction": {

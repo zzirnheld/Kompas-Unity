@@ -19,11 +19,11 @@
 					"cardRestriction": {
 						"blurb": "unworthy Cultist",
 						"cardRestrictions": [
-							"Character",
-							"Summoned"
+							"Character"
 						],
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+                            { "$type": "Core.CardRestriction:Summoned:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Cultist" ]

@@ -60,8 +60,8 @@
 			"On Card that Fits Restriction"
 		],
 		"onCardRestriction": {
-			"cardRestrictions": [
-				"Summoned"
+			"elements": [
+				{ "$type": "Core.CardRestriction:Summoned:" }
 			]
 		},
 		"augSubtypes": [

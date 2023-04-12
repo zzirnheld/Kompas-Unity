@@ -48,9 +48,6 @@ namespace KompasCore.Effects
         public const string ControllerDoesntMatchCardTarget = "Controller Doesn't Match Card Target's";
         public const string ControllerMatchesPlayerTarget = "Controller Matches Player Target";
         public const string ControllerIsntPlayerTarget = "Controller Isn't Player Target";
-
-        //summoned
-        public const string Summoned = "Summoned"; //non-avatar character
         #endregion restrictions
 
         public string[] cardRestrictions = { };
@@ -119,11 +116,6 @@ namespace KompasCore.Effects
                 ControllerDoesntMatchCardTarget => potentialTarget?.Controller != Subeffect.CardTarget.Controller,
                 ControllerMatchesPlayerTarget => potentialTarget?.Controller == Subeffect.PlayerTarget,
                 ControllerIsntPlayerTarget => potentialTarget?.Controller != Subeffect.PlayerTarget,
-
-                //summoned
-                Summoned => potentialTarget?.Summoned ?? false,
-                Avatar => potentialTarget?.IsAvatar ?? false,
-                NotAvatar => !potentialTarget?.IsAvatar ?? false,
 
                 _ => throw new ArgumentException($"Invalid card restriction {restriction}", "restriction"),
             };

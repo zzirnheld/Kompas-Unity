@@ -21,8 +21,10 @@
 					"cardRestriction": {
 						"blurb": "character to swap",
 						"cardRestrictions": [
-							"Character",
-							"Summoned"
+							"Character"
+						],
+						"elements": [
+                            { "$type": "Core.CardRestriction:Summoned:" }
 						]
 					}
 				},
@@ -33,10 +35,10 @@
 						"blurb": "other character to swap",
 						"cardRestrictions": [
 							"Character",
-							"Summoned",
 							"Not Already Target"
 						],
 						"elements": [
+                            { "$type": "Core.CardRestriction:Summoned:" },
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
 								"spaceRestriction": {

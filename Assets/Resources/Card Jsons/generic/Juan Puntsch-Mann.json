@@ -13,9 +13,7 @@
                         "Secondary Card Fits Restriction Before"
 					],
                     "secondaryCardRestriction": {
-						"cardRestrictions": [
-							"Summoned"
-						]
+						"elements": [ { "$type": "Core.CardRestriction:Summoned:" } ]
                     }
 				}
 			},

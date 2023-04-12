@@ -35,8 +35,10 @@
 						"blurb": "summon for Gunpowder Golem to give -X E",
 						"cardRestrictions": [
 							"Character",
-							"Summoned",
 							"Distinct Name from Source"
+						],
+						"elements": [
+                            { "$type": "Core.CardRestriction:Summoned:" }
 						]
 					}
 				},
