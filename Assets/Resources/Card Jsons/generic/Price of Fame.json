@@ -18,10 +18,8 @@
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "Who pays the price of fame?",
-						"cardRestrictions": [
-                            "Unique"
-						],
 						"elements": [
+                            { "$type": "Core.CardRestriction:Unique:" },
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
 								"spaceRestriction": {
@@ -44,10 +42,10 @@
 			"Adjacent to Card Fitting Restriction"
 		],
 		"adjacentCardRestriction": {
-			"cardRestrictions": [
-				"Unique"
-			],
-			"elements": [ { "$type": "Core.CardRestriction:Character:" } ]
+			"elements": [
+				{ "$type": "Core.CardRestriction:Character:" },
+				{ "$type": "Core.CardRestriction:Unique:" }
+			]
 		}
 	},
 	"c": 3,

@@ -15,7 +15,6 @@ namespace KompasCore.Effects
 
         //names
         public const string NameIs = "Name Is";
-        public const string Unique = "Unique";
         #endregion restrictions
 
         public string[] cardRestrictions = { };
@@ -49,7 +48,6 @@ namespace KompasCore.Effects
 
                 //names
                 NameIs => potentialTarget?.CardName == nameIs,
-                Unique => potentialTarget?.Unique ?? false,
 
                 _ => throw new ArgumentException($"Invalid card restriction {restriction}", "restriction"),
             };

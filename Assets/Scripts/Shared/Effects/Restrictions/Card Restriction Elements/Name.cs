@@ -49,4 +49,10 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
                 .All(name => name != card.CardName);
         }
     }
+
+    public class Unique : CardRestrictionElement
+    {
+        protected override bool IsValidLogic(GameCardBase item, IResolutionContext context)
+            => item.Unique;
+    }
 }
