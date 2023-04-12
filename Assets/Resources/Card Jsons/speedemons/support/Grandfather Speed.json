@@ -16,13 +16,15 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
 						"blurb": "Ready for Set to search",
-						"toSearch": { "$type": "ManyCards:Deck:" },
-						"cardRestrictions": [
-							"Name Is"
-						],
-						"nameIs": "Ready"
+						"elements": [
+							{
+								"$type": "Core.CardRestriction:Name:",
+								"nameIs": "Ready"
+							}
+						]
 					}
 				},
 				{

@@ -42,16 +42,16 @@
 					"maxCanChoose": 1,
 					"cardRestriction": {
 						"blurb": "God of the Supplicants",
-						"cardRestrictions": [
-							"Name Is"
-						],
-						"nameIs": "God of Mercy",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
                             {
                                 "$type": "Core.CardRestriction:Location:",
                                 "locations": [ "Hand", "Deck", "Discard" ]
-                            }
+                            },
+							{
+								"$type": "Core.CardRestriction:Name:",
+								"nameIs": "God of Mercy"
+							}
 						]
 					}
 				},

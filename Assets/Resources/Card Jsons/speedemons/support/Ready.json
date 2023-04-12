@@ -15,13 +15,14 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"blurb": "Linewalker for Leypathmaking to search",
-						"cardRestrictions": [
-							"Name Is"
-						],
-						"nameIs": "Set",
-						"toSearch": { "$type": "ManyCards:Deck:" }
+						"elements": [
+							{
+								"$type": "Core.CardRestriction:Name:",
+								"nameIs": "Set"
+							}
+						]
 					}
 				},
 				{

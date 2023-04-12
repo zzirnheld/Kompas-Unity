@@ -12,9 +12,6 @@ namespace KompasCore.Effects
         //targets
         public const string AlreadyTarget = "Already Target";
         public const string NotAlreadyTarget = "Not Already Target";
-
-        //names
-        public const string NameIs = "Name Is";
         #endregion restrictions
 
         public string[] cardRestrictions = { };
@@ -45,10 +42,6 @@ namespace KompasCore.Effects
                 //targets
                 AlreadyTarget => Effect.CardTargets.Contains(potentialTarget),
                 NotAlreadyTarget => !Effect.CardTargets.Contains(potentialTarget),
-
-                //names
-                NameIs => potentialTarget?.CardName == nameIs,
-
                 _ => throw new ArgumentException($"Invalid card restriction {restriction}", "restriction"),
             };
 

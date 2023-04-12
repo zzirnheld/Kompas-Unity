@@ -17,15 +17,15 @@
 					"$type": "Subeffect:ConditionalJump:",
 					"condition": "Card Fits Restriction",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Name Is"
-						],
-						"nameIs": "Ready",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Discard" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Name:",
+								"nameIs": "Ready"
 							}
 						]
 					},
@@ -36,13 +36,15 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
 						"blurb": "Ready for Set to search",
-						"cardRestrictions": [
-							"Name Is"
-						],
-						"nameIs": "Ready",
-						"toSearch": { "$type": "ManyCards:Deck:" }
+						"elements": [
+							{
+								"$type": "Core.CardRestriction:Name:",
+								"nameIs": "Ready"
+							}
+						]
 					}
 				},
 				{

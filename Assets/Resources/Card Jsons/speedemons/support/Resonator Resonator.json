@@ -16,13 +16,15 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
 						"blurb": "Ready to resonate?",
-						"cardRestrictions": [
-							"Name Is"
-						],
-						"nameIs": "Sonic Resonator",
-						"toSearch": { "$type": "ManyCards:Deck:" }
+						"elements": [
+							{
+								"$type": "Core.CardRestriction:Name:",
+								"nameIs": "Sonic Resonator"
+							}
+						]
 					}
 				},
 				{

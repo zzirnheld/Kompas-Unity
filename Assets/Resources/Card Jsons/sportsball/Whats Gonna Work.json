@@ -15,16 +15,15 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
-					"maxCanChoose": 1,
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
 						"blurb": "Teamwork",
-						"cardRestrictions": [
-							"Deck",
-							"Name Is"
-						],
-						"nameIs": "Teamwork!",
 						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" }
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Name:",
+								"nameIs": "Teamwork!"
+							}
 						]
 					}
 				},
