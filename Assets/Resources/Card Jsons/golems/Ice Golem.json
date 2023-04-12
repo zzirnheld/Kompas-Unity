@@ -29,10 +29,8 @@
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "for Ice Golem to temporarily negate",
-						"cardRestrictions": [
-							"Character"
-						],
 						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
 								"spaceRestriction": {

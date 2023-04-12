@@ -17,10 +17,8 @@
 					"$type": "Subeffect:CardTarget:",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Character"
-						],
 						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
                             { "$type": "Core.CardRestriction:Summoned:" },
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
@@ -49,9 +47,7 @@
 			"Adjacent to Card Fitting Restriction"
 		],
 		"adjacentCardRestriction": {
-			"cardRestrictions": [
-				"Character"
-			]
+			"elements": [ { "$type": "Core.CardRestriction:Character:" } ]
 		}
 	},
 	"c": 2,

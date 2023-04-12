@@ -18,10 +18,9 @@
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "friendly Reporter to set X by S of",
-						"cardRestrictions": [
-							"Character" ],
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Reporter" ]
@@ -75,10 +74,8 @@
 					},
 					"cardRestriction": {
 						"blurb": "character to reveal",
-						"cardRestrictions": [
-							"Character"
-						],
 						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Hidden:" },
 							{
 								"$type": "Core.PlayerRestriction:PlayersMatch:",
@@ -112,10 +109,8 @@
 					"playerIndex": -2,
 					"cardRestriction": {
 						"toSearch": { "$type": "ManyCards:Deck:" },
-						"cardRestrictions": [
-							"Character"
-						],
 						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Reporter" ]

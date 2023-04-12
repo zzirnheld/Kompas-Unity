@@ -57,14 +57,12 @@
 				},
 				{
 					"$type": "Subeffect:CardTargetSaveRest:",
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
 						"blurb": "for Mother of Dragons to birth",
-						"cardRestrictions": [
-							"Deck",
-							"Character"
-						],
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Dragon" ]

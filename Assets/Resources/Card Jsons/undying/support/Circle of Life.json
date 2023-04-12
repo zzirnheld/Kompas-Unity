@@ -19,10 +19,8 @@
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "Haeomomantic sacrifice",
-						"cardRestrictions": [
-							"Character"
-						],
 						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Friendly:" },
                             { "$type": "Core.CardRestriction:Summoned:" }
 						]
@@ -43,10 +41,8 @@
 					"toSearch": { "$type": "ManyCards:Discard:" },
 					"cardRestriction": {
 						"blurb": "Circle of Life",
-						"cardRestrictions": [
-							"Character"
-						],
 						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
                             { "$type": "Core.CardRestriction:CanPlay:" },
 							{
 								"$type": "Core.CardRestriction:CardValueFits:",

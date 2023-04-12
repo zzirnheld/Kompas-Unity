@@ -10,10 +10,8 @@
             ],
             "existsRestriction":
             {
-                "cardRestrictions": [
-                    "Character"
-                ],
                 "elements": [
+                    { "$type": "Core.CardRestriction:Character:" },
                     {
                         "$type": "Core.CardRestriction:Location:",
                         "locations": [ "Board" ]

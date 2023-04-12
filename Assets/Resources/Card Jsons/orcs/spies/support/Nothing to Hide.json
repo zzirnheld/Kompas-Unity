@@ -41,8 +41,8 @@
 					"$type": "Subeffect:TargetAll:",
 					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
-						"cardRestrictions": [ "Character" ],
 						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Orc" ]
@@ -66,9 +66,9 @@
 					"$type": "Subeffect:SetXByGamestate:",
 					"whatToCount": "Cards Fitting Restriction",
 					"cardRestriction": {
-						"cardRestrictions": [ "Character" ],
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+							{ "$type": "Core.CardRestriction:Character:" },
                             {
                                 "$type": "Core.CardRestriction:Location:",
                                 "locations": [ "Hand" ]

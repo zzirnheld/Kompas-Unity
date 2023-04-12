@@ -24,10 +24,8 @@
 					"$type": "Subeffect:ChangeAllCardStats:",
 					"cardsSource": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Character"
-						],
 						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					},
@@ -38,10 +36,8 @@
 					"$type": "Subeffect:ChangeAllCardStats:",
 					"cardsSource": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Character"
-						],
 						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Enemy:" }
 						]
 					},

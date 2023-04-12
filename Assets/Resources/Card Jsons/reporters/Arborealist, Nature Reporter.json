@@ -59,10 +59,8 @@
 					},
 					"cardRestriction": {
 						"blurb": "E > X character to reveal",
-						"cardRestrictions": [
-							"Character"
-						],
 						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Hidden:" },
 							{
 								"$type": "Core.PlayerRestriction:PlayersMatch:",
@@ -91,10 +89,8 @@
 					"$type": "Subeffect:ChangeAllCardStats:",
 					"cardsSource": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Character"
-						],
 						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					},

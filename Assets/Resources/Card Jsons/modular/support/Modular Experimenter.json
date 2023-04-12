@@ -18,6 +18,7 @@
 					{
 						"blurb": "character whose Module to swap out",
 						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:HasAugment:",
@@ -30,10 +31,7 @@
 									]
 								}
 							}
-						],
-						"cardRestrictions": [
-                            "Character"
-                        ]
+						]
 					}
 				},
                 {

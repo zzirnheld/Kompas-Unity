@@ -14,9 +14,7 @@
 						"Space Fits Restriction"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Character"
-						]
+						"elements": [ { "$type": "Core.CardRestriction:Character:" } ]
 					},
 					"spaceRestriction": {
 						"mustBeEmpty": false,

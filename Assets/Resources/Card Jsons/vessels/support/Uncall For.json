@@ -17,11 +17,9 @@
 					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Vessel to read as an augury",
-						"cardRestrictions": [
-							"Character"
-                        ],
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Vessel" ]
@@ -77,10 +75,8 @@
 					"cardRestriction": {
 						"blurb": "Corporeal form to recall",
 						"toSearch": { "$type": "ManyCards:Deck:" },
-						"cardRestrictions": [
-							"Character"
-						],
 						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Vessel" ]

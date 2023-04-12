@@ -23,10 +23,8 @@
 						]
                     },
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Character"
-						],
 						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Ethereal" ]
@@ -55,10 +53,10 @@
 					"cardRestriction": {
 						"blurb": "Spirit to ripple into",
 						"cardRestrictions": [
-							"Character",
 							"Already Target"
 						],
 						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Spirit" ]

@@ -106,10 +106,8 @@
 					"maxCanChoose": 1,
 					"cardRestriction": {
 						"blurb": "culmination of the Silent Altar Ritual",
-						"cardRestrictions": [
-							"Character"
-						],
 						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Friendly:" },
                             {
                                 "$type": "Core.CardRestriction:Location:",

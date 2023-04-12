@@ -20,10 +20,8 @@
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "character to swap",
-						"cardRestrictions": [
-							"Character"
-						],
 						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
                             { "$type": "Core.CardRestriction:Summoned:" }
 						]
 					}
@@ -34,10 +32,10 @@
 					"cardRestriction": {
 						"blurb": "other character to swap",
 						"cardRestrictions": [
-							"Character",
 							"Not Already Target"
 						],
 						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
                             { "$type": "Core.CardRestriction:Summoned:" },
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",

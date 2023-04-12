@@ -11,7 +11,9 @@
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Main Card Fits Restriction Before","Space Fits Restriction"],
 					"cardRestriction":{
-						"cardRestrictions":["Character"]
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" }
+						]
 					},
 					"spaceRestriction":
 					{

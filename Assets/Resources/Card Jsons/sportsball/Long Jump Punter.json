@@ -22,23 +22,25 @@
 					"cardRestriction": {
 						"blurb": "character within 4 spaces to punt Augment to",
 						"cardRestrictions": [
-							"Character",
 							"Different from Source"
 						],
-						"elements": [ {
-							"$type": "Core.CardRestriction:PositionFitsRestriction:",
-								"spaceRestriction": {
-								"spaceRestrictions": [
-									"Distance to Source Fits X Restriction"
-								],
-								"distanceXRestriction": {
-									"numberRestrictions": [
-										"<=Constant"
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
+							{
+								"$type": "Core.CardRestriction:PositionFitsRestriction:",
+									"spaceRestriction": {
+									"spaceRestrictions": [
+										"Distance to Source Fits X Restriction"
 									],
-									"constant": 4
+									"distanceXRestriction": {
+										"numberRestrictions": [
+											"<=Constant"
+										],
+										"constant": 4
+									}
 								}
 							}
-						} ]
+						]
 					}
 				},
 				{

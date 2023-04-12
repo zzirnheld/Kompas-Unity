@@ -21,8 +21,8 @@
 					"cardRestriction":
 					{
 						"blurb":"character to put in TIME OUT!",
-						"cardRestrictions":[ "Character" ],
 						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:HasAugment:",
 								"cardRestriction": {

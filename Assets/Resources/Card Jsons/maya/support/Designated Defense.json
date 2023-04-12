@@ -32,10 +32,8 @@
 					"cardRestriction": {
 						"blurb": "Designated build site",
 						"toSearch": { "$type": "ManyCards:Deck:" },
-						"cardRestrictions": [
-							"Character"
-						],
 						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Structure" ]

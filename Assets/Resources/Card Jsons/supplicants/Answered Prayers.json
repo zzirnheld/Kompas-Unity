@@ -14,8 +14,10 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Character",
 							"Negated"
+						],
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" }
 						]
 					}
 				}

@@ -26,9 +26,6 @@ namespace KompasCore.Effects
         public const string DifferentFromTarget = "Different from Target";
         public const string DifferentFromOtherTargets = "Different from Other Targets";
         public const string DifferentFromAugmentedCard = "Different from Augmented Card";
-
-        //card types
-        public const string Character = "Character";
         #endregion restrictions
 
         public string[] cardRestrictions = { };
@@ -73,9 +70,6 @@ namespace KompasCore.Effects
                 DifferentFromTarget => potentialTarget?.Card != Subeffect.CardTarget,
                 DifferentFromOtherTargets => Subeffect.Effect.CardTargets.All(c => !c.Equals(potentialTarget)),
                 DifferentFromAugmentedCard => potentialTarget?.Card != Source.AugmentedCard,
-
-                //card types
-                Character => potentialTarget?.CardType == 'C',
 
                 _ => throw new ArgumentException($"Invalid card restriction {restriction}", "restriction"),
             };

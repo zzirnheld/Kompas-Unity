@@ -15,13 +15,15 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Character",
 							"Different from Source"
 						],
-						"elements": [ {
-							"$type": "Core.CardRestriction:HasAugment:",
-							"elements": [ ]
-						} ]
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
+							{
+								"$type": "Core.CardRestriction:HasAugment:",
+								"elements": [ ]
+							}
+						]
 					},
 					"spaceRestriction": {
 						"spaceRestrictions": [

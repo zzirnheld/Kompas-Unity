@@ -56,10 +56,8 @@
 					"cardRestriction": {
 						"blurb": "Corporeal form to recall",
 						"toSearch": { "$type": "ManyCards:Deck:" },
-						"cardRestrictions": [
-							"Character"
-						],
 						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Vessel" ]

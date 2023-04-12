@@ -19,10 +19,8 @@
 					"blurb": "character to MAXIMUM OVERDRIVE",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Character"
-						],
 						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
                                 "spaceRestriction": {
@@ -62,8 +60,8 @@
 			"Adjacent to Card Fitting Restriction"
 		],
 		"adjacentCardRestriction": {
-			"cardRestrictions": [
-				"Character"
+			"elements": [
+				{ "$type": "Core.CardRestriction:Character:" }
 			]
 		}
 	},

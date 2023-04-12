@@ -19,10 +19,8 @@
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "summon for Obsidian Golem to give -5 E",
-						"cardRestrictions": [
-							"Character"
-						],
 						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
                             { "$type": "Core.CardRestriction:Summoned:" }
 						]
 					}

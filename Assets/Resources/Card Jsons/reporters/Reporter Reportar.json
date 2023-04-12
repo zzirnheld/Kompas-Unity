@@ -101,17 +101,14 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"playerIndex": -2,
-					"maxCanChoose": 1,
 					"xMultiplier": 1,
 					"cardRestriction": {
 						"blurb": "character to report",
-						"cardRestrictions": [
-							"Deck",
-							"Character"
-						],
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:CardValueFits:",
 								"cardValue": {

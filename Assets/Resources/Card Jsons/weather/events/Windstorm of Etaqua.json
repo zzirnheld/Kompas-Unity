@@ -21,10 +21,10 @@
 					"cardRestriction": {
 						"blurb": "who next to blow away",
 						"cardRestrictions": [
-							"Character",
 							"Not Already Target"
 						],
 						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
 								"spaceRestriction": {

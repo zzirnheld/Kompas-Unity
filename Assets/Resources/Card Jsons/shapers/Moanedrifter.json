@@ -25,10 +25,8 @@
 					"cardRestriction": {
 						"blurb": "How does the mist condense?",
 						"toSearch": { "$type": "ManyCards:Deck:" },
-						"cardRestrictions": [
-							"Character"
-						],
 						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Shaper" ]

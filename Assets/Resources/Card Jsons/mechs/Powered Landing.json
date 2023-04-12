@@ -48,10 +48,10 @@
 					"cardRestriction": {
 						"blurb": "character within 4 spaces to have this Mech attack",
 						"cardRestrictions": [
-							"Character",
 							"Different from Source"
 						],
 						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
 								"spaceRestriction": {

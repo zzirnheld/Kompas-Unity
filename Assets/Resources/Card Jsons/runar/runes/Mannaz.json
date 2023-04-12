@@ -21,15 +21,13 @@
 				},
 				{
 					"$type": "Subeffect:CardTargetSaveRest:",
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
 						"blurb": "spell for Mannaz to search (to hand)",
-						"cardRestrictions": [
-							"Character",
-							"Deck"
-						],
 						"constant": 10,
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:CardValueFits:",
 								"cardValue": { "value": "Index" },

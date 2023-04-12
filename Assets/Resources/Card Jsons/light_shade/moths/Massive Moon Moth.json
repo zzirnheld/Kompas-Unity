@@ -59,9 +59,7 @@
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "character whose W to swap",
-						"cardRestrictions": [
-							"Character"
-						]
+						"elements": [ { "$type": "Core.CardRestriction:Character:" } ]
 					}
 				},
 				{
@@ -70,10 +68,10 @@
 					"cardRestriction": {
 						"blurb": "other character whose W to swap",
 						"cardRestrictions": [
-							"Character",
 							"Not Already Target"
 						],
 						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
 								"spaceRestriction": {

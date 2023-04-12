@@ -53,14 +53,14 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
 						"blurb": "Speedemon to resonate",
 						"cardRestrictions": [
-							"Character",
-							"Deck",
 							"Distinct Name from Other Targets"
 						],
 						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Speedemon" ]

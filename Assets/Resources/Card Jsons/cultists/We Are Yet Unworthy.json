@@ -18,10 +18,8 @@
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "unworthy Cultist",
-						"cardRestrictions": [
-							"Character"
-						],
 						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Friendly:" },
                             { "$type": "Core.CardRestriction:Summoned:" },
 							{
@@ -74,10 +72,8 @@
 			"Adjacent to Card Fitting Restriction"
 		],
 		"adjacentCardRestriction": {
-			"cardRestrictions": [
-				"Character"
-			],
 			"elements": [
+				{ "$type": "Core.CardRestriction:Character:" },
 				{
 					"$type": "Core.CardRestriction:Subtypes:",
 					"subtypes": [ "Cultist" ]

@@ -19,10 +19,8 @@
 					"$type": "Subeffect:TargetAll:",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Character"
-						],
 						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Enemy:" },
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",

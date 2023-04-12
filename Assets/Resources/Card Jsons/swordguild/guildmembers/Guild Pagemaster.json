@@ -15,10 +15,10 @@
 					],
 					"nowRestriction": {
 						"cardRestrictions": [
-							"Different from Source",
-							"Character"
+							"Different from Source"
 						],
 						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Swordguild", "Warrior" ]
@@ -53,10 +53,8 @@
 					"cardRestriction": {
 						"blurb": "New Squire",
 						"toSearch": { "$type": "ManyCards:Deck:" },
-						"cardRestrictions": [
-							"Character"
-						],
 						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Squire" ]

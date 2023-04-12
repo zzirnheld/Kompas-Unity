@@ -15,8 +15,10 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Character",
 							"Enemy"
+						],
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" }
 						]
 					},
 					"spaceRestriction": {

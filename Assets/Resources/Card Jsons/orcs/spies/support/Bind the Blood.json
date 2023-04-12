@@ -13,10 +13,10 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Different from Source",
-							"Character"
+							"Different from Source"
 						],
 						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Orc" ]

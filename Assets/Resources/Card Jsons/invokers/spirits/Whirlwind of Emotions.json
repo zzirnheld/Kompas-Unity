@@ -13,10 +13,8 @@
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Character"
-						],
 						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Discard" ]
@@ -37,11 +35,9 @@
 					"condition": "Number of Cards Fitting CardRestriction Fits NumberRestriction",
 					"cardRestriction": {
 						"blurb": "for Whirlwind of Emotions to summon",
-						"cardRestrictions": [
-							"Character"
-                        ],
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+							{ "$type": "Core.CardRestriction:Character:" },
                             {
                                 "$type": "Core.CardRestriction:Location:",
                                 "locations": [ "Hand", "Discard" ]
@@ -63,11 +59,9 @@
 					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "for Whirlwind of Emotions to summon",
-						"cardRestrictions": [
-							"Character"
-                        ],
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+							{ "$type": "Core.CardRestriction:Character:" },
                             {
                                 "$type": "Core.CardRestriction:Location:",
                                 "locations": [ "Hand", "Discard" ]
@@ -99,11 +93,9 @@
 					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "for Whirlwind of Emotions to summon",
-						"cardRestrictions": [
-							"Character"
-                        ],
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+							{ "$type": "Core.CardRestriction:Character:" },
                             {
                                 "$type": "Core.CardRestriction:Location:",
                                 "locations": [ "Hand", "Discard" ]

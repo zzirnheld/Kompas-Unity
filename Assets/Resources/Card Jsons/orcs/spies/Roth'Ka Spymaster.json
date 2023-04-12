@@ -19,11 +19,11 @@
 					"cardRestriction": {
 						"blurb": "Hand a friendly summon",
 						"cardRestrictions": [
-							"Different from Source",
-							"Character"
+							"Different from Source"
 						],
 						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" }
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{ "$type": "Core.CardRestriction:Character:" }
 						]
 					}
 				},

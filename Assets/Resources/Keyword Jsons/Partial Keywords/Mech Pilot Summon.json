@@ -14,8 +14,8 @@
         "cardRestriction":
         {
             "blurb":"Mech to Pilot",
-            "cardRestrictions":["Character"],
             "elements": [
+                { "$type": "Core.CardRestriction:Character:" },
                 {
                     "$type": "Core.CardRestriction:Subtypes:",
                     "subtypes": [ "Mech", "Golem" ]

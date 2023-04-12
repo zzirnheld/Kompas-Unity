@@ -13,7 +13,7 @@
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
                             "card": { "$type": "Cards:CardBefore:" },
-                            "cardRestriction": { "cardRestrictions": [ "Character" ] }
+                            "cardRestriction": { "elements": [ { "$type": "Core.CardRestriction:Character:" } ] }
                         },
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
@@ -74,8 +74,8 @@
 					{
 						"blurb":"for Squire to become",
 						"toSearch": { "$type": "ManyCards:Deck:" },
-						"cardRestrictions": [ "Character" ],
 						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Warrior" ]

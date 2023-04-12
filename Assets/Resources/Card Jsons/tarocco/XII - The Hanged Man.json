@@ -24,10 +24,10 @@
 					"cardRestriction": {
 						"blurb": "summon for Hanged Man to also give -X E",
 						"cardRestrictions": [
-							"Character",
 							"Different from Source"
 						],
 						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
                             { "$type": "Core.CardRestriction:Summoned:" }
 						]
 					}

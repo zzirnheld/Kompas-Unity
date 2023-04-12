@@ -19,11 +19,11 @@
 					"cardRestriction": {
 						"blurb": "for Gyfu to give +1 EW",
 						"cardRestrictions": [
-							"Character",
 							"Not Already Target"
 						],
 						"elements": [
-							{ "$type": "Core.CardRestriction:Enemy:" }
+							{ "$type": "Core.CardRestriction:Enemy:" },
+							{ "$type": "Core.CardRestriction:Character:" }
 						]
 					}
 				},

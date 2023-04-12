@@ -24,9 +24,6 @@
 					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
 						"blurb": "spell for Perthro to search (to hand)",
-						"cardRestrictions": [
-							"Deck"
-						],
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{ "$type": "Core.CardRestriction:Spell:" },

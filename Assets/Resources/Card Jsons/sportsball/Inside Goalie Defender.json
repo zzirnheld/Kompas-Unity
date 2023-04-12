@@ -44,18 +44,20 @@
 					"cardRestriction": {
 						"blurb": "character to goal-kick Augment to",
 						"cardRestrictions": [
-							"Character",
 							"Different from Target"
 						],
-						"elements": [ {
-							"$type": "Core.CardRestriction:PositionFitsRestriction:",
-							"spaceRestriction": {
-								"spaceRestrictions": [
-									"Adjacent to Source"
-								],
-								"mustBeEmpty": false
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
+							{
+								"$type": "Core.CardRestriction:PositionFitsRestriction:",
+								"spaceRestriction": {
+									"spaceRestrictions": [
+										"Adjacent to Source"
+									],
+									"mustBeEmpty": false
+								}
 							}
-						} ]
+						]
 					}
 				},
 				{

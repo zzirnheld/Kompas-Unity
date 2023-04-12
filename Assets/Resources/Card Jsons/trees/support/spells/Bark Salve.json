@@ -18,8 +18,8 @@
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction":
 					{
-						"cardRestrictions": [ "Character" ],
 						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Hurt:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
@@ -49,7 +49,9 @@
 		"recommendationRestrictions":["Adjacent to Card Fitting Restriction"],
 		"adjacentCardRestriction":
 		{
-			"cardRestrictions":["Character"]
+			"elements": [
+				{ "$type": "Core.CardRestriction:Character:" }
+			]
 		}
 	},
 	"c":1,

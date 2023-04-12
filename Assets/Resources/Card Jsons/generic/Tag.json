@@ -16,9 +16,9 @@
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Character",
 							"Different from Augmented Card"
-						]
+						],
+						"elements": [ { "$type": "Core.CardRestriction:Character:" } ]
 					},
 					"spaceRestriction": {
 						"spaceRestrictions": [

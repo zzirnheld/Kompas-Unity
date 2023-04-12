@@ -39,10 +39,10 @@
 					"cardsSource": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Character",
 							"Different from Source"
 						],
 						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
 								"spaceRestriction": {

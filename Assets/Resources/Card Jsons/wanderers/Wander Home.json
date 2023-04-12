@@ -18,10 +18,9 @@
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "character to wander home",
-						"cardRestrictions": [
-							"Character" ],
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Wanderer" ]
@@ -56,10 +55,8 @@
 					},
 					"cardRestriction": {
 						"blurb": "character to wander out",
-						"cardRestrictions": [
-							"Character"
-						],
 						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.PlayerRestriction:PlayersMatch:",
 								"player": { "$type": "Players:TargetIndex:" }
@@ -98,9 +95,8 @@
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "other character to wander home",
-						"cardRestrictions": [
-							"Character" ],
 						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
                                 "spaceRestriction": {
@@ -179,10 +175,8 @@
 			"Adjacent to Card Fitting Restriction"
 		],
 		"adjacentCardRestriction": {
-			"cardRestrictions": [
-				"Character"
-			],
 			"elements": [
+				{ "$type": "Core.CardRestriction:Character:" },
 				{
 					"$type": "Core.CardRestriction:Subtypes:",
 					"subtypes": [ "Wanderer" ]

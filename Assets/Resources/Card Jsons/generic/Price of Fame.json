@@ -45,9 +45,9 @@
 		],
 		"adjacentCardRestriction": {
 			"cardRestrictions": [
-				"Character",
 				"Unique"
-			]
+			],
+			"elements": [ { "$type": "Core.CardRestriction:Character:" } ]
 		}
 	},
 	"c": 3,

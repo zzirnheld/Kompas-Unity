@@ -74,10 +74,9 @@
 					"playerIndex": -2,
 					"cardRestriction": {
 						"blurb": "friendly Reporter to move",
-						"cardRestrictions": [
-							"Character" ],
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Reporter" ]

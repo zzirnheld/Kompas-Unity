@@ -33,8 +33,7 @@
 					{
 						"blurb":"for Dragon Egg to become",
 						"toSearch": { "$type": "ManyCards:Deck:" },
-						"cardRestrictions":["Character"],
-						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Dragon" ]

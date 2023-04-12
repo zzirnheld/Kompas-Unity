@@ -20,8 +20,7 @@
 					"cardRestriction":
 					{
 						"blurb":"for Well-Planned Defense to summon",
-						"cardRestrictions":["Character"],
-						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Maya", "Structure" ]
