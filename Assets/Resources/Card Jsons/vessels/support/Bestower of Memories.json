@@ -53,8 +53,11 @@
 								"negated": {
 									"$type": "Core.CardRestriction:HasAugment:",
 									"cardRestriction": {
-										"cardRestrictions": [
-											"Same Name as Target"
+										"elements": [
+											{
+												"$type": "Core.CardRestriction:Name:",
+												"sameAs": { "$type": "Cards:TargetIndex:" }
+											}
 										]
 									}
 								}
@@ -66,16 +69,17 @@
 					"$type": "Subeffect:CardTarget:",
 					"blurb": "Copy of the memory to attach",
 					"cardRestriction": {
-						"cardRestrictions": [
-                            "Same Name as Target"
-						],
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
                             { "$type": "Core.CardRestriction:CanPlay:" },
                             {
                                 "$type": "Core.CardRestriction:Location:",
                                 "locations": [ "Deck", "Discard" ]
-                            }
+                            },
+							{
+								"$type": "Core.CardRestriction:Name:",
+								"sameAs": { "$type": "Cards:TargetIndex:" }
+							}
 						]
 					},
 					"targetIndex": -2

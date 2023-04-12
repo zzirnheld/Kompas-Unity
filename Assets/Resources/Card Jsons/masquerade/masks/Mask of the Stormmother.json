@@ -54,8 +54,11 @@
 				"negated": {
 					"$type": "Core.CardRestriction:HasAugment:",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Same Name as Source"
+						"elements": [
+							{
+								"$type": "Core.CardRestriction:Name:",
+								"sameAs": { "$type": "Cards:ThisCard:" }
+							}
 						]
 					}
 				}

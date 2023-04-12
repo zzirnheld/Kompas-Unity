@@ -21,11 +21,14 @@
 					"cardRestriction": {
 						"blurb": "copy of Dreamspace to decksummon",
 						"cardRestrictions": [
-							"Same Name as Target",
 							"Deck"
 						],
 						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" }
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Name:",
+								"sameAs": { "$type": "Cards:TargetIndex:" }
+							}
 						]
 					},
 					"maxCanChoose": 1

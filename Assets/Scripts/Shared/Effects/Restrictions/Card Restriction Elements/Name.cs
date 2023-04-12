@@ -10,10 +10,19 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
         public string nameIs;
         public string nameIncludes;
 
+        public IIdentity<GameCardBase> sameAs;
+
+        public override void Initialize(EffectInitializationContext initializationContext)
+        {
+            base.Initialize(initializationContext);
+            sameAs.Initialize(initializationContext);
+        }
+
         protected override bool IsValidLogic(GameCardBase card, IResolutionContext context)
         {
             if (nameIs != null && card.CardName != nameIs) return false;
             if (nameIncludes != null && !card.CardName.Contains(nameIncludes)) return false;
+            if (sameAs != null && card.CardName != sameAs.From(context, default).CardName) return false;
 
             return true;
         }
