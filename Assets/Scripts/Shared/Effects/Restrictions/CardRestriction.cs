@@ -68,7 +68,6 @@ namespace KompasCore.Effects
         public const string NotContextCard = "Not Context Card";
 
         public const string Augmented = "Augmented";
-        public const string AugmentsTarget = "Augments Current Target";
         #endregion restrictions
 
         public string[] cardRestrictions = { };
@@ -204,8 +203,6 @@ namespace KompasCore.Effects
                 NotSource => potentialTarget?.Card != Source,
                 IsCardTarget => potentialTarget?.Card == Subeffect.CardTarget,
                 NotContextCard => potentialTarget?.Card != context?.TriggerContext?.mainCardInfoBefore?.Card,
-
-                AugmentsTarget => potentialTarget?.AugmentedCard == Subeffect.CardTarget,
 
                 //misc
                 Augmented => potentialTarget?.Augments.Any() ?? false,

@@ -40,14 +40,15 @@
                     "$type": "Subeffect:CardTarget:",
                     "cardRestriction": {
                         "blurb": "Module to swap out",
-                        "cardRestrictions": [
-                            "Augments Current Target"
-                        ],
                         "elements": [
                             {
                                 "$type": "Core.CardRestriction:Subtypes:",
                                 "subtypes": [ "Module" ]
-                            }
+                            },
+							{
+								"$type": "Core.CardRestriction:Augments:",
+								"singleCard": { "$type": "Cards:TargetIndex:" }
+							}
                         ]
                     }
                 },

@@ -22,14 +22,14 @@
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "I don't want to remember!",
-						"cardRestrictions": [
-							"Augment",
-							"Augments Current Target"
-						],
 						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Memory" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Augments:",
+								"singleCard": { "$type": "Cards:ThisCard:" }
 							}
 						]
 					}

@@ -14,14 +14,14 @@
 			"cardRestriction":
 			{
 				"blurb":"to destroy",
-				"cardRestrictions":[
-					"Augment",
-					"Augments Current Target"
-				],
 				"elements": [
 					{
 						"$type": "Core.CardRestriction:Subtypes:",
 						"subtypes": [ "Memory" ]
+					},
+					{
+						"$type": "Core.CardRestriction:Augments:",
+						"singleCard": { "$type": "Cards:TargetIndex:" }
 					}
 				]
 			}
