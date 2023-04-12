@@ -1,21 +1,23 @@
 {
 	"cardType":65,
 	"cardName":"Super Nitro Powered Rocket Shoes",
-	"effText":"When this character moves, move them 1 space in the same direction.",
+	"effText":"When this character moves, move them 1 space in the same direction. (This will trigger me again.)",
 	"effects":[
         {
             "blurb":"Speed Shoes",
             "triggerCondition":"Move",
             "triggerRestriction":{
-                "triggerRestrictions":[
-                    "This Card in Play",
-                    "Stackable Source Fits Restriction Now"
-                ],
-                "sourceRestriction": {
-                    "cardRestrictions": [
-                        "Source Augments"
-                    ]
-                }
+                "triggerRestrictionElements": [
+                    { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                    {
+                        "$type": "Core.TriggerRestriction:CardsMatch:",
+                        "firstCard": { "$type": "Cards:MainCardBefore:" },
+                        "secondCard": {
+                            "$type": "Cards:AugmentedCard:",
+                            "ofThisCard": { "$type": "Cards:ThisCard:" }
+                        }
+                    }
+                ]
             },
             "subeffects":[
                 {
@@ -50,6 +52,6 @@
 		"normalRestrictions":["Augment Normal Restrictions"],
 		"effectRestrictions":["Augment Effect Restrictions"]
 	},
-	"a":2,
+	"a": 4,
 	"subtypeText":"Shoes"
 }

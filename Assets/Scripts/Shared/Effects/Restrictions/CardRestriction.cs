@@ -69,8 +69,6 @@ namespace KompasCore.Effects
 
         public const string Augmented = "Augmented";
         public const string AugmentsTarget = "Augments Current Target";
-        public const string AugmentedBySource = "Source Augments";
-        public const string NotAugmentedBySource = "Source Doesn't Augment";
         #endregion restrictions
 
         public string[] cardRestrictions = { };
@@ -208,9 +206,6 @@ namespace KompasCore.Effects
                 NotContextCard => potentialTarget?.Card != context?.TriggerContext?.mainCardInfoBefore?.Card,
 
                 AugmentsTarget => potentialTarget?.AugmentedCard == Subeffect.CardTarget,
-                AugmentedBySource => potentialTarget?.Augments.Contains(Source) ?? false,
-                //If the potential target is null, then it's not augmented by Source
-                NotAugmentedBySource => !(potentialTarget?.Augments.Contains(Source) ?? true),
 
                 //misc
                 Augmented => potentialTarget?.Augments.Any() ?? false,
