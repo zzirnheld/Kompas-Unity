@@ -38,14 +38,11 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Deck:" },
                     "cardRestriction":
                     {
-                        "cardRestrictions": [ "Augment" ],
                         "elements": [
-                            {
-                                "$type": "Core.CardRestriction:Location:",
-                                "locations": [ "Deck" ]
-                            },
+							{ "$type": "Core.CardRestriction:Augment:" },
                             {
                                 "$type": "Core.CardRestriction:Subtypes:",
                                 "subtypes": [ "Module" ]

@@ -18,11 +18,9 @@
 					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "for Corporeal Recall to reshuffle",
-						"cardRestrictions": [
-							"Augment"
-                        ],
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+							{ "$type": "Core.CardRestriction:Augment:" },
                             {
                                 "$type": "Core.CardRestriction:Location:",
                                 "locations": [ "Hand", "Discard" ]

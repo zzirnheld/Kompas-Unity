@@ -30,10 +30,6 @@ namespace KompasCore.Effects
         //card types
         public const string Character = "Character";
         public const string Spell = "Spell";
-        public const string Augment = "Augment";
-
-        public const string NotCharacter = "Not Character";
-        public const string NotAugment = "Not Augment";
         #endregion restrictions
 
         public string[] cardRestrictions = { };

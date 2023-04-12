@@ -98,10 +98,8 @@
 					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
 						"blurb": "Golem core for Modular Golem Cores to attach",
-						"cardRestrictions": [
-							"Augment"
-						],
 						"elements": [
+							{ "$type": "Core.CardRestriction:Augment:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Golem", "Core" ]

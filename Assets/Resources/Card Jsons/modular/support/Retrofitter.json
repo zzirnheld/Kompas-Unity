@@ -61,8 +61,8 @@
 					"cardRestriction":
 					{
 						"blurb": "Module to attach to the Modular character",
-						"cardRestrictions": [ "Augment" ],
 						"elements": [
+							{ "$type": "Core.CardRestriction:Augment:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Module" ]

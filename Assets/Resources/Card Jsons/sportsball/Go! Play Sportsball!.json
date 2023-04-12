@@ -15,15 +15,12 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
-					"maxCanChoose": 1,
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
 						"blurb": "Sportsball",
-						"cardRestrictions": [
-							"Deck",
-							"Augment"
-						],
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+							{ "$type": "Core.CardRestriction:Augment:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Sportsball" ]

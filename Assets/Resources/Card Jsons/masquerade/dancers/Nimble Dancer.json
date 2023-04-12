@@ -15,12 +15,11 @@
 			"subeffects": [
 				{
 					"$type":"Subeffect:CardTarget:",
-					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction":
 					{
 						"blurb": "Mask to attach to the Nimble Dancer",
-						"cardRestrictions": [ "Augment" ],
 						"elements": [
+							{ "$type": "Core.CardRestriction:Augment:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Mask" ]

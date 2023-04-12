@@ -11,9 +11,9 @@
 			},
 			"existsRestriction":
 			{
-				"cardRestrictions":["Augment"],
 				"elements": [
 					{ "$type": "Core.CardRestriction:Friendly:" },
+					{ "$type": "Core.CardRestriction:Augment:" },
 					{
 						"$type": "Core.CardRestriction:Location:",
 						"locations": [ "Board" ]

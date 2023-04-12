@@ -33,8 +33,8 @@
             "cardRestriction":
             {
                 "blurb": "Mask to swap for",
-                "cardRestrictions": [ "Augment" ],
                 "elements": [
+                    { "$type": "Core.CardRestriction:Augment:" },
                     {
                         "$type": "Core.CardRestriction:Subtypes:",
                         "subtypes": [ "Mask" ]
