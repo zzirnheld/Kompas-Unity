@@ -55,11 +55,11 @@
 					"cardRestriction": {
 						"blurb": "Altar(s) to sacrifice",
 						"cardRestrictions": [
-							"Spell",
 							"Not Already Target"
 						],
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+							{ "$type": "Core.CardRestriction:Spell:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Altar" ]

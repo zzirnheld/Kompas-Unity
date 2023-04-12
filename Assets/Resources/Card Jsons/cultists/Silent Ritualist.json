@@ -36,13 +36,11 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
 						"blurb": "Silent convert",
-						"toSearch": { "$type": "ManyCards:Deck:" },
-						"cardRestrictions": [
-							"Spell"
-						],
 						"elements": [
+							{ "$type": "Core.CardRestriction:Spell:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Silent" ]

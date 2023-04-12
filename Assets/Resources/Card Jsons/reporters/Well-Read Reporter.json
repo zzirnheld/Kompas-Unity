@@ -14,8 +14,8 @@
 						"Controller Triggered"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Spell"
+						"elements": [
+							{ "$type": "Core.CardRestriction:Spell:" }
 						]
 					}
 				}
@@ -59,10 +59,8 @@
 					},
 					"cardRestriction": {
 						"blurb": "C > X spell to reveal",
-						"cardRestrictions": [
-							"Spell"
-						],
 						"elements": [
+							{ "$type": "Core.CardRestriction:Spell:" },
 							{ "$type": "Core.CardRestriction:Hidden:" },
 							{
 								"$type": "Core.PlayerRestriction:PlayersMatch:",

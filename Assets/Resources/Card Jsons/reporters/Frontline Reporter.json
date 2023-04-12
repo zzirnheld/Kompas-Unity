@@ -43,11 +43,9 @@
 					},
 					"cardRestriction": {
 						"blurb": "spell to reveal",
-						"cardRestrictions": [
-							"Spell"
-						],
 						"elements": [
 							{ "$type": "Core.CardRestriction:Hidden:" },
+							{ "$type": "Core.CardRestriction:Spell:" },
 							{
 								"$type": "Core.PlayerRestriction:PlayersMatch:",
 								"player": { "$type": "Players:TargetIndex:" }

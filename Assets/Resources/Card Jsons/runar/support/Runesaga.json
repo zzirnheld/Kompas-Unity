@@ -41,11 +41,8 @@
 					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
 						"blurb": "Rune for Runesaga to cast",
-						"cardRestrictions": [
-							"Spell",
-							"Not Already Target"
-						],
 						"elements": [
+							{ "$type": "Core.CardRestriction:Spell:" },
                             { "$type": "Core.CardRestriction:CanPlay:" }
 						]
 					}

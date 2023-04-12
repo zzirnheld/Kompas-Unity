@@ -29,7 +29,6 @@ namespace KompasCore.Effects
 
         //card types
         public const string Character = "Character";
-        public const string Spell = "Spell";
         #endregion restrictions
 
         public string[] cardRestrictions = { };
@@ -77,11 +76,6 @@ namespace KompasCore.Effects
 
                 //card types
                 Character => potentialTarget?.CardType == 'C',
-                Spell => potentialTarget?.CardType == 'S',
-                Augment => potentialTarget?.CardType == 'A',
-
-                NotCharacter => potentialTarget?.CardType != 'C',
-                NotAugment => potentialTarget?.CardType != 'A',
 
                 _ => throw new ArgumentException($"Invalid card restriction {restriction}", "restriction"),
             };

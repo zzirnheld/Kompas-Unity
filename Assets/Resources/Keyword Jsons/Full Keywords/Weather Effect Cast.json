@@ -19,11 +19,12 @@
 		},
 		{
 			"$type":"Subeffect:CardTarget:",
+			"toSearch": { "$type": "ManyCards:Deck:" },
 			"cardRestriction":{
 				"blurb":"Weather to deck-cast",
-				"toSearch": { "$type": "ManyCards:Deck:" },
-				"cardRestrictions":[ "Spell", "Distinct Name from Source"],
+				"cardRestrictions":[ "Distinct Name from Source"],
 				"elements": [
+					{ "$type": "Core.CardRestriction:Spell:" },
 					{
 						"$type": "Core.CardRestriction:Subtypes:",
 						"subtypes": [ "Weather" ]

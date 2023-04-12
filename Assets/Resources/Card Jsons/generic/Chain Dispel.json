@@ -18,10 +18,8 @@
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "spell for Chain Dispel to Dispel",
-						"cardRestrictions": [
-							"Spell"
-						],
 						"elements": [
+							{ "$type": "Core.CardRestriction:Spell:" },
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
 								"spaceRestriction": {
@@ -45,10 +43,10 @@
 					"cardRestriction": {
 						"blurb": "spell for Chain Dispel to Dispel",
 						"cardRestrictions": [
-							"Spell",
 							"Different from Other Targets"
 						],
 						"elements": [
+							{ "$type": "Core.CardRestriction:Spell:" },
                             {
                                 "$type": "Core.CardRestriction:PositionFitsRestriction:",
 								"spaceRestriction": {
@@ -88,8 +86,8 @@
 			"Adjacent to Card Fitting Restriction"
 		],
 		"adjacentCardRestriction": {
-			"cardRestrictions": [
-				"Spell"
+			"elements": [
+				{ "$type": "Core.CardRestriction:Spell:" }
 			]
 		}
 	},
