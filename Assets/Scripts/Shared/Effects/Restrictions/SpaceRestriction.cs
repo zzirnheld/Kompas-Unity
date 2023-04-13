@@ -62,10 +62,6 @@ namespace KompasCore.Effects
         public const string TowardsSourceFromCardTarget = "Towards Source from Card Target";
         public const string TowardsCardTargetFromSource = "Towards Card Target from Source";
         public const string DirectlyAwayFromCardTarget = "Directly Away from Card Target";
-
-        //misc
-        public const string CanPlayCardTarget = "Can Play Card Target to This Space";
-        public const string CanMoveSource = "Can Move Source to This Space";
         #endregion space restrictions
 
         public string[] spaceRestrictions = { };
@@ -200,11 +196,6 @@ namespace KompasCore.Effects
                 TowardsCardTargetFromSource => target.DistanceTo(space) < target.DistanceTo(Source),
 
                 DirectlyAwayFromCardTarget => target.SpaceDirectlyAwayFrom(space, Source),
-
-                //misc
-                CanPlayCardTarget => target?.PlayRestriction?.IsValidEffectPlay(space, Subeffect?.Effect, Subeffect?.PlayerTarget, context,
-                    ignoring: playRestrictionsToIgnore) ?? false,
-                CanMoveSource => Source?.MovementRestriction?.IsValidEffectMove(space, context) ?? false,
 
                 _ => throw new ArgumentException($"Invalid space restriction {restriction}", "restriction"),
             };

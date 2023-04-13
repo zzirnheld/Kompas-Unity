@@ -12,6 +12,8 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 
         public bool normalPlay = false;
 
+        public string[] ignoring;
+
         public override void Initialize(EffectInitializationContext initializationContext)
         {
             base.Initialize(initializationContext);
@@ -23,8 +25,8 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
             var restriction = toPlay.From(context, default).PlayRestriction;
         
             return normalPlay
-                ? restriction.IsValidNormalPlay(space, InitializationContext.Controller)
-                : restriction.IsValidEffectPlay(space, InitializationContext.effect, InitializationContext.Controller, context);
+                ? restriction.IsValidNormalPlay(space, InitializationContext.Controller, ignoring: ignoring)
+                : restriction.IsValidEffectPlay(space, InitializationContext.effect, InitializationContext.Controller, context, ignoring: ignoring);
         }
     }
 }

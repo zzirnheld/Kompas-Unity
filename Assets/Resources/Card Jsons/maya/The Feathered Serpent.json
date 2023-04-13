@@ -57,7 +57,12 @@
 					"spaceRestriction":
 					{
 						"blurb":"where to revive the Feathered Serpent",
-						"spaceRestrictions":["Can Play Card Target to This Space"]
+						"spaceRestrictionElements": [
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            }
+						]
 					}
 				},
 				{

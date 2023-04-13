@@ -40,7 +40,12 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "Choose space to cast the spell",
-						"spaceRestrictions": [ "Can Play Card Target to This Space" ]
+						"spaceRestrictionElements": [
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            }
+						]
 					}
 				},
 				{

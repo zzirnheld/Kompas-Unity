@@ -51,11 +51,14 @@
 					"spaceRestriction": {
 						"blurb": "to move Fanatic Follower to",
 						"spaceRestrictions": [
-							"Adjacent to Card Target",
-							"Can Move Source to This Space"
+							"Adjacent to Card Target"
 						],
 						"spaceRestrictionElements": [
-							{ "$type": "Core.SpaceRestriction:Empty:" }
+							{ "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanMoveCard:",
+								"toMove": { "$type": "Cards:ThisCard:" }
+							}
 						]
 					}
 				},
