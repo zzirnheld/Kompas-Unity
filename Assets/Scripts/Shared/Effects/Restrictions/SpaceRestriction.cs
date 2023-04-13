@@ -43,14 +43,6 @@ namespace KompasCore.Effects
         public const string InAOESpaceTargetAlsoIn = "In AOE Space Target is Also In";
         public const string SourceInSpaceOverlapsCardRestriction 
             = "If Source Were In The Targeted Space, It Would Overlap Card Restriction";
-
-        public const string SourceDisplacementToSpaceMatchesSpaceTarget = "Source Displacement to Space Matches Space Target";
-        public const string SourceDisplacementToSpaceSameDirectionAsSpaceTarget
-            = "Source Displacement to Space Same Direction as Space Target";
-        public const string SourceDisplacementToCardTargetSameDirectionAsSpaceTarget
-            = "Source Displacement to Card Target Same Direction as Space Target";
-        public const string ConstantSubjectiveDisplacementFromSource = "Constant Subjective Displacement from Source";
-        public const string BehindSource = "Behind Source";
         #endregion space restrictions
 
         public string[] spaceRestrictions = { };
@@ -165,13 +157,6 @@ namespace KompasCore.Effects
                 InAOECardTargetAlsoIn => Game.Cards.Any(c => c.SpaceInAOE(space) && c.CardInAOE(target) && alsoInAOEOfRestriction.IsValid(c, context)),
                 InAOESpaceTargetAlsoIn => Game.Cards.Any(c => c.SpaceInAOE(space) && c.SpaceInAOE(Subeffect.SpaceTarget) && alsoInAOEOfRestriction.IsValid(c, context)),
                 SourceInSpaceOverlapsCardRestriction => CardInSpaceOverlapsCardRestriction(Source, space, context),
-
-                SourceDisplacementToSpaceMatchesSpaceTarget => Source.Position.DisplacementTo(space) == Subeffect.SpaceTarget,
-                SourceDisplacementToSpaceSameDirectionAsSpaceTarget => Source.Position.DirectionFromThisTo(space) == Subeffect.SpaceTarget,
-                SourceDisplacementToCardTargetSameDirectionAsSpaceTarget => target.Position.DirectionFromThisTo(space) == Subeffect.SpaceTarget,
-                ConstantSubjectiveDisplacementFromSource
-                    => Controller.SubjectiveCoords(Source.Position).DisplacementTo(Controller.SubjectiveCoords(space)) == (displacementX, displacementY),
-                BehindSource => Source.SpaceBehind(space),
 
                 _ => throw new ArgumentException($"Invalid space restriction {restriction}", "restriction"),
             };

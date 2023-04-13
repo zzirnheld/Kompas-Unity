@@ -21,6 +21,8 @@ namespace KompasCore.Effects.Identities.Spaces
         public IIdentity<Space> from;
         public IIdentity<Space> to;
 
+        public bool subjective = false;
+
         public override void Initialize(EffectInitializationContext initializationContext)
         {
             base.Initialize(initializationContext);
@@ -29,6 +31,17 @@ namespace KompasCore.Effects.Identities.Spaces
         }
 
         protected override Space AbstractItemFrom(IResolutionContext context, IResolutionContext secondaryContext)
-            => from.From(context, secondaryContext).DisplacementTo(to.From(context, secondaryContext));
+        {
+            var origin = from.From(context, secondaryContext);
+            var destination = to.From(context, secondaryContext);
+
+            if (subjective)
+            {
+                origin = InitializationContext.Controller.SubjectiveCoords(origin);
+                destination = InitializationContext.Controller.SubjectiveCoords(destination);
+            }
+
+            return origin.DisplacementTo(destination);
+        }
     }
 }

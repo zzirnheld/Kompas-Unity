@@ -20,16 +20,10 @@
 			"after":true
 		},
 		{
-			"$type":"Subeffect:TargetDirection:"
-		},
-		{
 			"$type":"Subeffect:AutoSpaceTarget:",
 			"spaceRestriction":
 			{
 				"blurb":"speeeeeeeeeeeeeeeed",
-				"spaceRestrictions":[
-					"Source Displacement to Space Same Direction as Space Target"
-				],
 				"spaceRestrictionElements": [
 					{
 						"$type": "Core.SpaceRestriction:CanMoveCard:",
@@ -43,6 +37,18 @@
 						},
 						"number": { "$type": "Numbers:Constant:", "constant": 1 },
 						"comparison": { "$type": "Relationships.Number:Equal:" }
+					},
+					{
+						"$type": "Core.SpaceRestriction:Direction:",
+                        "from": {
+							"$type": "Spaces:PositionOf:",
+							"ofThisCard": { "$type": "Cards:ThisCard:" }
+						},
+						"direction": {
+							"$type": "Spaces:Direction:",
+							"from": { "$type": "Spaces:TargetIndex:", "index": -2 },
+							"to": { "$type": "Spaces:TargetIndex:", "index": -1 }
+						}
 					}
 				]
 			}
