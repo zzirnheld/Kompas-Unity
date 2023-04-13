@@ -8,6 +8,11 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
     public class CanMove : CardRestrictionElement
     {
         public IIdentity<Space> destination;
+        /// <summary>
+        /// Index of a subeffect whose space restriction should be considered for whether you'll be able to move this card there.
+        /// Be warned! If there's any additional targeting in the meantime (on which the valid movement depends) this might not work as expected.
+        /// I'll need to figure out a better solution, if one is possible.
+        /// </summary>
         public int spaceRestrictionSubeffectIndex;
 
         public override void Initialize(EffectInitializationContext initializationContext)

@@ -31,8 +31,7 @@
 				{
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
-						"spaceRestrictionElements": [ 
-                            { "$type": "Core.SpaceRestriction:Empty:" },
+						"spaceRestrictionElements": [
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
 								"toMove": { "$type": "Cards:TargetIndex:" },
@@ -68,8 +67,7 @@
 				{
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
-						"spaceRestrictionElements": [ 
-                            { "$type": "Core.SpaceRestriction:Empty:" },
+						"spaceRestrictionElements": [
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
 								"toMove": { "$type": "Cards:TargetIndex:" },

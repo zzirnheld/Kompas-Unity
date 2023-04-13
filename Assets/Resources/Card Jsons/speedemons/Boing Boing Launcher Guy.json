@@ -52,7 +52,6 @@
 							"Further from Source than Space Target"
 						],
 						"spaceRestrictionElements": [
-							{ "$type": "Core.SpaceRestriction:Empty:" }
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
 								"toMove": { "$type": "Cards:TargetIndex:" },

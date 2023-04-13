@@ -35,8 +35,7 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where Hermit to move its target",
-						"spaceRestrictionElements": [ 
-                            { "$type": "Core.SpaceRestriction:Empty:" },
+						"spaceRestrictionElements": [
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
 								"toMove": { "$type": "Cards:TargetIndex:" },

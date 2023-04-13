@@ -26,8 +26,7 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to show them speed",
-						"spaceRestrictionElements": [ 
-                            { "$type": "Core.SpaceRestriction:Empty:" },
+						"spaceRestrictionElements": [
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
 								"toMove": { "$type": "Cards:TargetIndex:" },

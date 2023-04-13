@@ -50,11 +50,7 @@
                                     "$type": "Spaces:PositionOf:",
                                     "ofThisCard": { "$type": "Cards:TargetIndex:" }
                                 },
-                                "number": { 
-                                    "$type": "Numbers:X:",
-                                    "multiplier": 0,
-                                    "modifier": 1
-                                },
+                                "number": { "$type": "Numbers:Constant:", "constant": 1 },
                                 "comparison": { "$type": "Relationships.Number:Equal:" }
                             }
                         ]

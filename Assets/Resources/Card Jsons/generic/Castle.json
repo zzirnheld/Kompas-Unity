@@ -34,7 +34,6 @@
 					"spaceRestriction": {
 						"blurb": "Corner to move them to",
 						"spaceRestrictionElements": [
-							{ "$type": "Core.SpaceRestriction:Empty:" },
 							{ "$type": "Core.SpaceRestriction:Corner:" },
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",

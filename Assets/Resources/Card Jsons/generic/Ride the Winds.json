@@ -34,8 +34,7 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to ride",
-						"spaceRestrictionElements": [ 
-                            { "$type": "Core.SpaceRestriction:Empty:" },
+						"spaceRestrictionElements": [
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
 								"toMove": { "$type": "Cards:TargetIndex:" },

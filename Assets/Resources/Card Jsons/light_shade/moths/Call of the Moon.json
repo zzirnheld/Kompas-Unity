@@ -73,7 +73,6 @@
 							"In Card Target's AOE"
 						],
 						"spaceRestrictionElements": [
-							{ "$type": "Core.SpaceRestriction:Empty:" },
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
 								"toMove": { "$type": "Cards:TargetIndex:" }

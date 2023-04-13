@@ -101,8 +101,7 @@
 					"playerIndex": -2,
 					"spaceRestriction": {
 						"blurb": "where for Newsflash! to move it starget",
-						"spaceRestrictionElements": [ 
-                            { "$type": "Core.SpaceRestriction:Empty:" },
+						"spaceRestrictionElements": [
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
 								"toMove": { "$type": "Cards:TargetIndex:" }

@@ -34,7 +34,6 @@
 					"spaceRestriction": {
 						"blurb": "where for speed victim to move",
 						"spaceRestrictionElements": [
-							{ "$type": "Core.SpaceRestriction:Empty:" },
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
 								"toMove": { "$type": "Cards:TargetIndex:" },
