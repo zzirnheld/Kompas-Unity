@@ -17,9 +17,11 @@
 						"elements": [ { "$type": "Core.CardRestriction:Character:" } ]
 					},
 					"spaceRestriction": {
-						"mustBeEmpty": false,
-						"spaceRestrictions": [
-							"In Source's AOE"
+						"spaceRestrictionElements": [
+							{
+								"$type": "Core.SpaceRestriction:InAOEOf:",
+								"card": { "$type": "Cards:ThisCard:" }
+							}
 						]
 					}
 				}

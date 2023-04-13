@@ -24,10 +24,12 @@
 						} ]
 					},
 					"spaceRestriction": {
-						"spaceRestrictions": [
-							"In Source's AOE"
-						],
-						"mustBeEmpty": false
+						"spaceRestrictionElements": [
+							{
+								"$type": "Core.SpaceRestriction:InAOEOf:",
+								"card": { "$type": "Cards:ThisCard:" }
+							}
+						]
 					}
 				}
 			},

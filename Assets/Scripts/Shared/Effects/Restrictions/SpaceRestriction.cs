@@ -31,32 +31,16 @@ namespace KompasCore.Effects
         public const string ConnectedToCardTargetBy = "Connected to Card Target by Cards Fitting Restriction";
         public const string ConnectedToCardTargetBySpaces = "Connected to Card Target by Spaces Fitting Restriction";
         public const string ConnectedToCardTargetByXSpaces = "Connected to Card Target by X Spaces Fitting Restriction";
-
-        public const string InSourcesAOE = "In Source's AOE";
-        public const string NotInAOE = "Not In AOE";
-        public const string InCardTargetsAOE = "In Card Target's AOE";
-        public const string InAOEOfCardFittingRestriction = "In AOE of Card Fitting Restriction";
-        public const string NotInAOEOf = "Not In AOE of Card Fitting Restriction";
-        public const string InAOEOfNumberFittingRestriction = "In AOE of Number of Cards Fitting Restriction";
         #endregion space restrictions
 
         public string[] spaceRestrictions = { };
         public CardRestriction adjacencyRestriction;
         public CardRestriction connectednessRestriction;
         public SpaceRestriction spaceConnectednessRestriction;
-        public CardRestriction hereFitsRestriction;
         public CardRestriction inAOEOfRestriction;
         public CardRestriction overlapRestriction;
-        public CardRestriction alsoInAOEOfRestriction;
-
-        public NumberRestriction distanceXRestriction;
         public NumberRestriction connectedSpacesXRestriction;
         public NumberRestriction numberOfCardsInAOEOfRestriction;
-
-        public string[] playRestrictionsToIgnore = new string[0];
-
-        public int displacementX;
-        public int displacementY;
 
         public string blurb = "";
 
@@ -74,12 +58,9 @@ namespace KompasCore.Effects
             adjacencyRestriction?.Initialize(initializationContext);
             connectednessRestriction?.Initialize(initializationContext);
             spaceConnectednessRestriction?.Initialize(initializationContext);
-            hereFitsRestriction?.Initialize(initializationContext);
             inAOEOfRestriction?.Initialize(initializationContext);
             overlapRestriction?.Initialize(initializationContext);
-            alsoInAOEOfRestriction?.Initialize(initializationContext);
-
-            distanceXRestriction?.Initialize(initializationContext);
+            
             connectedSpacesXRestriction?.Initialize(initializationContext);
             numberOfCardsInAOEOfRestriction?.Initialize(initializationContext);
 
@@ -141,13 +122,6 @@ namespace KompasCore.Effects
                 ConnectedToCardTargetBy => Game.BoardController.AreConnectedBySpaces(target.Position, space, connectednessRestriction, context),
                 ConnectedToCardTargetBySpaces => Game.BoardController.AreConnectedBySpaces(target.Position, space, spaceConnectednessRestriction, context),
                 ConnectedToCardTargetByXSpaces => IsConnectedToTargetByXSpaces(space, target, context),
-
-                InSourcesAOE => Source.SpaceInAOE(space),
-                NotInAOE => !Source.SpaceInAOE(space),
-                InCardTargetsAOE => target.SpaceInAOE(space),
-                InAOEOfCardFittingRestriction => Game.Cards.Any(c => c != null && c.SpaceInAOE(space) && inAOEOfRestriction.IsValid(c, context)),
-                NotInAOEOf => !Game.Cards.Any(c => c.SpaceInAOE(space) && inAOEOfRestriction.IsValid(c, context)),
-                InAOEOfNumberFittingRestriction => InAOEOfNumberOfCardsFittingRestriction(space, context),
 
                 _ => throw new ArgumentException($"Invalid space restriction {restriction}", "restriction"),
             };

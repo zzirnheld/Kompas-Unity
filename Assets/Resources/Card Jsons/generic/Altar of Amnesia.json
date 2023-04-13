@@ -21,14 +21,10 @@
                             { "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Friendly:" },
                             { "$type": "Core.CardRestriction:Summoned:" },
-                            {
-                                "$type": "Core.CardRestriction:PositionFitsRestriction:",
-								"spaceRestriction": {
-									"spaceRestrictions": [
-										"In Source's AOE"
-									]
-								}
-                            }
+							{
+								"$type": "Core.SpaceRestriction:InAOEOf:",
+								"card": { "$type": "Cards:ThisCard:" }
+							}
 						]
 					}
 				},
@@ -47,14 +43,10 @@
                             { "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Friendly:" },
                             { "$type": "Core.CardRestriction:Summoned:" },
-                            {
-                                "$type": "Core.CardRestriction:PositionFitsRestriction:",
-								"spaceRestriction": {
-									"spaceRestrictions": [
-										"In Source's AOE"
-									]
-								}
-                            }
+							{
+								"$type": "Core.SpaceRestriction:InAOEOf:",
+								"card": { "$type": "Cards:ThisCard:" }
+							}
 						]
 					}
 				},

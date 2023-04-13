@@ -35,14 +35,10 @@
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Moth" ]
 							},
-                            {
-                                "$type": "Core.CardRestriction:PositionFitsRestriction:",
-								"spaceRestriction": {
-									"spaceRestrictions": [
-										"In Card Target's AOE"
-									]
-								}
-                            }
+							{
+								"$type": "Core.SpaceRestriction:InAOEOf:",
+								"card": { "$type": "Cards:TargetIndex:" }
+							}
 						]
 					},
 					"nModifier": 1,
