@@ -18,24 +18,18 @@
                             { "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Enemy:" },
                             {
-                                "$type": "Core.CardRestriction:PositionFitsRestriction:",
-								"spaceRestriction":
-								{
-									"spaceRestrictionElements": [ {
-										"$type": "Core.SpaceRestriction:Not:",
-										"negated": {
-											"$type": "Core.SpaceRestriction:InAOEOf:",
-											"anyOf": {
-												"$type": "ManyCards:FittingRestriction:",
-												"cardRestriction": {
-												"elements": [ {
-														"$type": "Core.CardRestriction:Subtypes:",
-														"subtypes": [ "Weather" ]
-													} ]
-												}
-											}
+								"$type": "Core.SpaceRestriction:Not:",
+								"negated": {
+									"$type": "Core.SpaceRestriction:InAOEOf:",
+									"anyOf": {
+										"$type": "ManyCards:FittingRestriction:",
+										"cardRestriction": {
+										"elements": [ {
+												"$type": "Core.CardRestriction:Subtypes:",
+												"subtypes": [ "Weather" ]
+											} ]
 										}
-									} ]
+									}
 								}
                             }
 						]
@@ -43,21 +37,15 @@
 					"nowRestriction": {
 						"elements": [
 							{
-								"$type": "Core.CardRestriction:PositionFitsRestriction:",
-								"spaceRestriction":
-								{
-									"spaceRestrictionElements": [ {
-										"$type": "Core.SpaceRestriction:InAOEOf:",
-										"anyOf": {
-											"$type": "ManyCards:FittingRestriction:",
-											"cardRestriction": {
-											"elements": [ {
-													"$type": "Core.CardRestriction:Subtypes:",
-													"subtypes": [ "Weather" ]
-												} ]
-											}
-										}
-									}]
+								"$type": "Core.SpaceRestriction:InAOEOf:",
+								"anyOf": {
+									"$type": "ManyCards:FittingRestriction:",
+									"cardRestriction": {
+									"elements": [ {
+											"$type": "Core.CardRestriction:Subtypes:",
+											"subtypes": [ "Weather" ]
+										} ]
+									}
 								}
 							}
 						]

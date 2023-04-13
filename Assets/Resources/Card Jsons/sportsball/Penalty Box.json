@@ -28,16 +28,9 @@
 								}
 							},
                             {
-                                "$type": "Core.CardRestriction:PositionFitsRestriction:",
-								"spaceRestriction": {
-									"spaceRestrictionElements": [
-										{
-											"$type": "Core.SpaceRestriction:InAOEOf:",
-											"card": { "$type": "Cards:ThisCard:" }
-										}
-									]
-								}
-                            }
+								"$type": "Core.SpaceRestriction:InAOEOf:",
+								"card": { "$type": "Cards:ThisCard:" }
+							}
 						]
 					}
 				}

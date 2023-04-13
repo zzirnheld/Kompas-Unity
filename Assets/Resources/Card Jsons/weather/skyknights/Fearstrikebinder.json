@@ -15,25 +15,17 @@
 					"nowRestriction": {
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
-                            {
-                                "$type": "Core.CardRestriction:PositionFitsRestriction:",
-                                "spaceRestriction": {
-									"spaceRestriction":
-									{
-										"spaceRestrictionElements": [ {
-											"$type": "Core.SpaceRestriction:InAOEOf:",
-											"anyOf": {
-												"$type": "ManyCards:FittingRestriction:",
-												"cardRestriction": {
-												"elements": [ {
-														"$type": "Core.CardRestriction:Subtypes:",
-														"subtypes": [ "Weather" ]
-													} ]
-												}
-											}
-										}]
+                            {											
+								"$type": "Core.SpaceRestriction:InAOEOf:",
+								"anyOf": {
+									"$type": "ManyCards:FittingRestriction:",
+									"cardRestriction": {
+									"elements": [ {
+											"$type": "Core.CardRestriction:Subtypes:",
+											"subtypes": [ "Weather" ]
+										} ]
 									}
-                                }
+								}
                             }
 						]
 					}

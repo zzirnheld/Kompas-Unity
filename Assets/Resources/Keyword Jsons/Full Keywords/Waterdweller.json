@@ -17,24 +17,18 @@
 						"negated": { "$type": "Core.CardRestriction:Avatar:" }
 					},
 					{
-						"$type": "Core.CardRestriction:PositionFitsRestriction:",
-						"spaceRestriction":
-						{
-							"spaceRestrictionElements": [ {
-								"$type": "Core.SpaceRestriction:Not:",
-								"negated": {
-									"$type": "Core.SpaceRestriction:InAOEOf:",
-									"anyOf": {
-										"$type": "ManyCards:FittingRestriction:",
-										"cardRestriction": {
-										"elements": [ {
-												"$type": "Core.CardRestriction:Subtypes:",
-												"subtypes": [ "Water" ]
-											} ]
-										}
-									}
+						"$type": "Core.SpaceRestriction:Not:",
+						"negated": {
+							"$type": "Core.SpaceRestriction:InAOEOf:",
+							"anyOf": {
+								"$type": "ManyCards:FittingRestriction:",
+								"cardRestriction": {
+								"elements": [ {
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Water" ]
+									} ]
 								}
-							} ]
+							}
 						}
 					}
 				]

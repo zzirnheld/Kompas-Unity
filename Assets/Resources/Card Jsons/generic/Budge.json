@@ -23,9 +23,12 @@
 					"cardRestriction": {
 						"blurb": "Card to budge",
 						"elements": [
-                            {
-								"$type": "Core.CardRestriction:AdjacentTo:",
-								"card": { "$type": "Cards:ThisCard:" }
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": {
+									"$type": "Spaces:PositionOf:",
+									"ofThisCard": { "$type": "Cards:ThisCard:" }
+								}
 							},
 							{
 								"$type": "Core.CardRestriction:CanMove:",

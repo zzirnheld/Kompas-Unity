@@ -15,17 +15,10 @@
 					"nowRestriction": {
 						"elements": [
 							{
-								"$type": "Core.CardRestriction:PositionFitsRestriction:",
-								"spaceRestriction": {
-									"elements": [
-										{
-											"$type": "Core.SpaceRestriction:SameDiagonal:",
-											"other": {
-												"$type": "Spaces:PositionOf:",
-												"card": { "$type": "Cards:ThisCard:" }
-											}
-										}
-									]
+								"$type": "Core.SpaceRestriction:SameDiagonal:",
+								"other": {
+									"$type": "Spaces:PositionOf:",
+									"card": { "$type": "Cards:ThisCard:" }
 								}
 							}
 						]

@@ -26,15 +26,8 @@
                                     "cardRestriction": {
                                         "elements": [
                                             {
-                                                "$type": "Core.CardRestriction:PositionFitsRestriction:",
-                                                "spaceRestriction": {
-                                                    "spaceRestrictionElements": [
-                                                        {
-                                                            "$type": "Core.SpaceRestriction:AdjacentTo:",
-                                                            "card": { "$type": "Cards:ThisCard:" }
-                                                        }
-                                                    ]
-                                                }
+                                                "$type": "Core.SpaceRestriction:AdjacentTo:",
+                                                "card": { "$type": "Cards:ThisCard:" }
                                             }
                                         ]
                                     }
@@ -45,15 +38,8 @@
                                     "cardRestriction": {
                                         "elements": [
                                             {
-                                                "$type": "Core.CardRestriction:PositionFitsRestriction:",
-                                                "spaceRestriction": {
-                                                    "spaceRestrictionElements": [
-                                                        {
-                                                            "$type": "Core.SpaceRestriction:AdjacentTo:",
-                                                            "card": { "$type": "Cards:ThisCard:" }
-                                                        }
-                                                    ]
-                                                }
+                                                "$type": "Core.SpaceRestriction:AdjacentTo:",
+                                                "card": { "$type": "Cards:ThisCard:" }
                                             }
                                         ]
                                     }

@@ -23,7 +23,7 @@
 							"$type": "Spaces:PositionOf:",
 							"ofThisCard": { "$type": "Cards:ThisCard:" }
 						}
-					}
+					},
 					{
 						"$type": "Core.CardRestriction:CanMove:",
 						"spaceRestrictionSubeffectIndex": 1

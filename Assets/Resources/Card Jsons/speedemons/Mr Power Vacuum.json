@@ -53,17 +53,10 @@
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"elements": [
-                            {
-                                "$type": "Core.CardRestriction:PositionFitsRestriction:",
-								"spaceRestriction": {
-									"spaceRestrictionElements": [
-										{
-											"$type": "Core.SpaceRestriction:AdjacentTo:",
-											"space": { "$type": "Spaces:TargetIndex:" }
-										}
-									]
-								}
-                            }
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": { "$type": "Spaces:TargetIndex:" }
+							}
 						]
 					},
 					"xMultiplier": 1

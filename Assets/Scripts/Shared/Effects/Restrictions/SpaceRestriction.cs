@@ -12,8 +12,6 @@ namespace KompasCore.Effects
 {
     public class SpaceRestriction : RestrictionBase<Space>
     {
-        public Subeffect Subeffect => InitializationContext.subeffect;
-        public GameCard Source => InitializationContext.source;
 
         public string blurb = "";
 
@@ -43,8 +41,5 @@ namespace KompasCore.Effects
         }
 
         public Func<Space, bool> IsValidFor(IResolutionContext context) => s => IsValidSpace(s, context);
-
-        public override string ToString()
-            => $"Space restriction of card {Source} on subeff {Subeffect}, restrictions {string.Join(",", spaceRestrictions)}";
     }
 }
