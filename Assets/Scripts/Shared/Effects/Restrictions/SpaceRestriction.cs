@@ -83,13 +83,10 @@ namespace KompasCore.Effects
             = "Same Direction from Space to Card Target as Space Target to Source";
         public const string OppositeDirectionFromSourceToSpaceAsSourceToSpaceTarget
             = "Opposite Direction from Source to Space as Source to Space Target";
-        public const string DirectionFromSourceIsSpaceTarget = "Direction from Source is Space Target"; //In the direction of Subeffect.Space from source
         #endregion space restrictions
 
         public string[] spaceRestrictions = { };
         public CardRestriction adjacencyRestriction;
-        public CardRestriction limitAdjacencyRestriction;
-        public int adjacencyLimit;
         public CardRestriction connectednessRestriction;
         public SpaceRestriction spaceConnectednessRestriction;
         public CardRestriction hereFitsRestriction;
@@ -102,8 +99,6 @@ namespace KompasCore.Effects
         public NumberRestriction numberOfCardsInAOEOfRestriction;
 
         public string[] playRestrictionsToIgnore = new string[0];
-
-        public int constant;
 
         public int displacementX;
         public int displacementY;
@@ -124,7 +119,6 @@ namespace KompasCore.Effects
             adjacencyRestriction?.Initialize(initializationContext);
             connectednessRestriction?.Initialize(initializationContext);
             spaceConnectednessRestriction?.Initialize(initializationContext);
-            limitAdjacencyRestriction?.Initialize(initializationContext);
             hereFitsRestriction?.Initialize(initializationContext);
             inAOEOfRestriction?.Initialize(initializationContext);
             overlapRestriction?.Initialize(initializationContext);
@@ -244,7 +238,6 @@ namespace KompasCore.Effects
                     => target.Position.DirectionFromThisTo(space) == Subeffect.SpaceTarget.DirectionFromThisTo(Source.Position),
                 OppositeDirectionFromSourceToSpaceAsSourceToSpaceTarget
                     => Source.Position.DirectionFromThisTo(space) * -1 == Source.Position.DirectionFromThisTo(Subeffect.SpaceTarget),
-                DirectionFromSourceIsSpaceTarget => Source.Position.DirectionFromThisTo(space) == Subeffect.SpaceTarget,
 
                 _ => throw new ArgumentException($"Invalid space restriction {restriction}", "restriction"),
             };

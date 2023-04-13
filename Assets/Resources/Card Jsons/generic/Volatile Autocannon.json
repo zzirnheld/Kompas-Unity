@@ -39,11 +39,10 @@
 					"cardRestriction": {
 						"elements": [
 							{
-								"$type": "Core.CardRestriction:PositionFitsRestriction:",
-								"spaceRestriction": {
-									"spaceRestrictions": [
-										"Direction from Source is Space Target"
-									]
+								"$type": "Core.SpaceRestriction:Direction:",
+								"from": {
+									"$type": "Spaces:PositionOf:",
+									"ofThisCard": { "$type": "Cards:ThisCard:" }
 								}
 							}
 						]

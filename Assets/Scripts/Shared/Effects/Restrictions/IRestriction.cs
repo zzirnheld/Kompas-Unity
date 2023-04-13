@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using KompasCore.Cards;
 using UnityEngine;
 
 namespace KompasCore.Effects
@@ -38,21 +39,15 @@ namespace KompasCore.Effects
         protected virtual bool IsValidLogic(Type item, IResolutionContext context)
             => elements.All(r => r.IsValid(item, context));
     }
-
-    public interface IRestrictionElement<Type> : IContextInitializeable
+    
+    public class CardRestriction : RestrictionBase<GameCardBase>
     {
-        public bool IsValid(Type item, IResolutionContext context);
-    }
+        public string blurb = "";
 
-    public abstract class RestrictionElementBase<Type> : ContextInitializeableBase, IRestrictionElement<Type>
-    {
-        public bool IsValid(Type item, IResolutionContext context)
-        {
-            ComplainIfNotInitialized();
+        public GameCard Source => InitializationContext.source;
 
-            return item != null && IsValidLogic(item, context);
-        }
+        public override string ToString() => $"Card Restriction of {Source?.CardName}." +
+            $"\nRestriction Elements: {string.Join(", ", elements.Select(r => r))}";
 
-        protected abstract bool IsValidLogic(Type item, IResolutionContext context);
     }
 }
