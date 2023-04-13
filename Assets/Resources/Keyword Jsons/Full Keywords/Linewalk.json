@@ -32,23 +32,7 @@
 			"spaceRestriction":
 			{
 				"blurb":"to Linewalk to",
-				"spaceRestrictions": [
-					"Connected to Card Target by Spaces Fitting Restriction"
-				],
-				"spaceConnectednessRestriction": {
-					"spaceRestrictionElements": [
-						{ "$type": "Core.SpaceRestriction:Empty:" },
-						{
-							"$type": "Core.SpaceRestriction:SameDiagonal:",
-							"other": {
-								"$type": "Spaces:PositionOf:",
-								"card": { "$type": "Cards:TargetIndex:" }
-							}
-						}
-					]
-				},
 				"spaceRestrictionElements": [
-					{ "$type": "Core.SpaceRestriction:Empty:" },
 					{
 						"$type": "Core.SpaceRestriction:CanMoveCard:",
 						"toMove": { "$type": "Cards:TargetIndex:" }
@@ -58,6 +42,25 @@
 						"other": {
 							"$type": "Spaces:PositionOf:",
 							"card": { "$type": "Cards:TargetIndex:" }
+						}
+					},
+					{
+						"$type": "Core.SpaceRestriction:ConnectedTo:",
+						"space": {
+							"$type": "Spaces:PositionOf:",
+							"ofThisCard": { "$type": "Cards:TargetIndex:" }
+						},
+						"byRestriction": {
+							"spaceRestrictionElements": [
+								{ "$type": "Core.SpaceRestriction:Empty:" },
+								{
+									"$type": "Core.SpaceRestriction:SameDiagonal:",
+									"other": {
+										"$type": "Spaces:PositionOf:",
+										"card": { "$type": "Cards:TargetIndex:" }
+									}
+								}
+							]
 						}
 					}
 				]

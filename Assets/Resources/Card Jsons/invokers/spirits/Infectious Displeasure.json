@@ -30,25 +30,23 @@
 					"cardRestriction": {
 						"elements": [
 							{ "$type": "Core.CardRestriction:Enemy:" },
-                            {
-                                "$type": "Core.CardRestriction:PositionFitsRestriction:",
-								"spaceRestriction":
-								{
-									"spaceRestrictions": [
-										"Connected to Card Target by Cards Fitting Restriction"
-									],
-									"connectednessRestriction": {
-										"elements": [
-											{ "$type": "Core.CardRestriction:Enemy:" },
-											{ "$type": "Core.CardRestriction:Character:" },
-											{
-												"$type": "Core.CardRestriction:Location:",
-												"locations": [ "Board" ]
-											}
-										]
-									}
+							{
+								"$type": "Core.SpaceRestriction:ConnectedTo:",
+								"space": {
+                                    "$type": "Spaces:PositionOf:",
+                                    "ofThisCard": { "$type": "Cards:TargetIndex:" }
+                                },
+								"byRestriction":{
+									"spaceRestrictionElements": [
+										{ "$type": "Core.CardRestriction:Enemy:" },
+										{ "$type": "Core.CardRestriction:Character:" },
+										{
+											"$type": "Core.CardRestriction:Location:",
+											"locations": [ "Board" ]
+										}
+									]
 								}
-                            }
+							}
 						]
 					}
 				},

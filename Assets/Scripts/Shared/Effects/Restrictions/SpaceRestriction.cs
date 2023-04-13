@@ -27,10 +27,6 @@ namespace KompasCore.Effects
 
         public const string ConnectedToSourceBy = "Connected to Source by Cards Fitting Restriction";
         public const string ConnectedToSourceBySpaces = "Connected to Source by Spaces Fitting Restriction";
-
-        public const string ConnectedToCardTargetBy = "Connected to Card Target by Cards Fitting Restriction";
-        public const string ConnectedToCardTargetBySpaces = "Connected to Card Target by Spaces Fitting Restriction";
-        public const string ConnectedToCardTargetByXSpaces = "Connected to Card Target by X Spaces Fitting Restriction";
         #endregion space restrictions
 
         public string[] spaceRestrictions = { };
@@ -117,11 +113,7 @@ namespace KompasCore.Effects
                 ConnectedToSourceBy => Game.BoardController.AreConnectedBySpaces(Subeffect.Source.Position, space, connectednessRestriction, context),
                 ConnectedToSourceBySpaces
                     => Game.BoardController.AreConnectedBySpaces(Subeffect.Source.Position, space,
-                            s => spaceConnectednessRestriction.IsValidSpace(s, context)),
-
-                ConnectedToCardTargetBy => Game.BoardController.AreConnectedBySpaces(target.Position, space, connectednessRestriction, context),
-                ConnectedToCardTargetBySpaces => Game.BoardController.AreConnectedBySpaces(target.Position, space, spaceConnectednessRestriction, context),
-                ConnectedToCardTargetByXSpaces => IsConnectedToTargetByXSpaces(space, target, context),
+                            s => spaceConnectednessRestriction.IsValidSpace(s, context));
 
                 _ => throw new ArgumentException($"Invalid space restriction {restriction}", "restriction"),
             };
