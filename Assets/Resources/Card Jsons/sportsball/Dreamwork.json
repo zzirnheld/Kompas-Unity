@@ -44,14 +44,13 @@
 						"blurb": "adjacent character to attach augment to",
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
-                            {
-                                "$type": "Core.CardRestriction:PositionFitsRestriction:",
-								"spaceRestriction": {
-									"spaceRestrictions": [
-										"Adjacent to Card Target"
-									]
-								}
-                            }
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": {
+                                    "$type": "Spaces:PositionOf:",
+                                    "ofThisCard": { "$type": "Cards:TargetIndex:" }
+                                }
+							}
 						]
 					}
 				},

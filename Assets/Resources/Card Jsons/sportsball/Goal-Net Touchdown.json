@@ -49,15 +49,13 @@
 						"elements": [
 							{ "$type": "Core.CardRestriction:Enemy:" },
 							{ "$type": "Core.CardRestriction:Avatar:" },
-                            {
-                                "$type": "Core.CardRestriction:PositionFitsRestriction:",
-								"spaceRestriction": {
-									"spaceRestrictions": [
-										"Adjacent to Card Target"
-									],
-									"mustBeEmpty": false
-								}
-                            }
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": {
+                                    "$type": "Spaces:PositionOf:",
+                                    "ofThisCard": { "$type": "Cards:TargetIndex:" }
+                                }
+							}
 						]
 					}
 				},

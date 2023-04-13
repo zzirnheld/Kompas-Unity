@@ -26,9 +26,6 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "e n t e r t h e h o l e",
-						"spaceRestrictions": [
-							"Adjacent to Card Target"
-						],
 						"spaceRestrictionElements": [
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
@@ -41,6 +38,13 @@
                                     "ofThisCard": { "$type": "Cards:ThisCard:" }
                                 },
 								"origin": {
+                                    "$type": "Spaces:PositionOf:",
+                                    "ofThisCard": { "$type": "Cards:TargetIndex:" }
+                                }
+							},
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": {
                                     "$type": "Spaces:PositionOf:",
                                     "ofThisCard": { "$type": "Cards:TargetIndex:" }
                                 }

@@ -52,18 +52,16 @@
 				},
 				{
 					"$type": "Subeffect:ChangeAllCardStats:",
-					"cardRestriction": {
-						"elements": [
-                            { "$type": "Core.CardRestriction:Character:" }, {
-							"$type": "Core.CardRestriction:PositionFitsRestriction:",
-							"spaceRestriction": {
-								"spaceRestrictions": [
-									"Adjacent to Card Target"
-								],
-								"mustBeEmpty": false
+					"cardRestriction": { "elements": [
+						{ "$type": "Core.CardRestriction:Character:" },
+						{
+							"$type": "Core.SpaceRestriction:AdjacentTo:",
+							"space": {
+								"$type": "Spaces:PositionOf:",
+								"ofThisCard": { "$type": "Cards:TargetIndex:" }
 							}
-						}]
-					},
+						}
+					] },
 					"wMultiplier": -1
 				}
 			]

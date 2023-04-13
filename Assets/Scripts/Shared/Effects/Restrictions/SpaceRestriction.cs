@@ -21,7 +21,6 @@ namespace KompasCore.Effects
         #region space restrictions
         //adjacency
         public const string AdjacentToSource = "Adjacent to Source";
-        public const string AdjacentToCardTarget = "Adjacent to Card Target";
         #endregion space restrictions
 
         public string[] spaceRestrictions = { };
@@ -70,9 +69,6 @@ namespace KompasCore.Effects
             {
                 //adjacency
                 AdjacentToSource => Source.IsAdjacentTo(space),
-                AdjacentToCardTarget => target.IsAdjacentTo(space),
-                AdjacentToSpaceTarget => space.IsAdjacentTo(Subeffect.SpaceTarget),
-                AdjacentToCardRestriction => Game.BoardController.CardsAdjacentTo(space).Any(c => adjacencyRestriction.IsValid(c, context)),
 
                 _ => throw new ArgumentException($"Invalid space restriction {restriction}", "restriction"),
             };
