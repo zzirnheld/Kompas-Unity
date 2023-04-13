@@ -3,17 +3,6 @@
         "$type": "Subeffect:ConditionalEnd:",
         "condition": "No Space Fits Restriction",
 		"spaceRestriction": {
-            "spaceRestrictions": [
-                "In AOE Space Target is Also In"
-            ],
-            "alsoInAOEOfRestriction": {
-                "elements": [
-                    {
-                        "$type": "Core.CardRestriction:Subtypes:",
-                        "subtypes": [ "Weather" ]
-                    }
-                ]
-            },
 			"spaceRestrictionElements": [
                 { "$type": "Core.SpaceRestriction:Empty:" },
                 {
@@ -31,6 +20,19 @@
                         "$type": "Numbers:Constant:",
                         "constant": 2
                     }
+                },
+                {
+                    "$type": "Core.SpaceRestriction:InAOEOf:",
+                    "anyOf": {
+                        "$type": "ManyCards:FittingRestriction:",
+                        "cardRestriction": {
+                        "elements": [ {
+                                "$type": "Core.CardRestriction:Subtypes:",
+                                "subtypes": [ "Weather" ]
+                            } ]
+                        }
+                    },
+                    "sameAs": { "$type": "Spaces:TargetIndex:" }
                 }
             ]
 		}
@@ -52,17 +54,6 @@
     {
         "$type": "Subeffect:SpaceTarget:",
 		"spaceRestriction": {
-            "spaceRestrictions": [
-                "In AOE Space Target is Also In"
-            ],
-            "alsoInAOEOfRestriction": {
-                "elements": [
-                    {
-                        "$type": "Core.CardRestriction:Subtypes:",
-                        "subtypes": [ "Weather" ]
-                    }
-                ]
-            },
 			"spaceRestrictionElements": [
                 { "$type": "Core.SpaceRestriction:Empty:" },
                 {
@@ -80,6 +71,19 @@
                         "$type": "Numbers:Constant:",
                         "constant": 2
                     }
+                },
+                {
+                    "$type": "Core.SpaceRestriction:InAOEOf:",
+                    "anyOf": {
+                        "$type": "ManyCards:FittingRestriction:",
+                        "cardRestriction": {
+                        "elements": [ {
+                                "$type": "Core.CardRestriction:Subtypes:",
+                                "subtypes": [ "Weather" ]
+                            } ]
+                        }
+                    },
+                    "sameAs": { "$type": "Spaces:TargetIndex:" }
                 }
             ]
 		},

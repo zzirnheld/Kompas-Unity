@@ -6,21 +6,25 @@
         "$type": "Subeffect:SpaceTarget:",
         "spaceRestriction": {
             "blurb": "Stealth position to 'actually' be in",
-            "spaceRestrictions": [
-                "In AOE Source is Also In"
-            ],
-            "alsoInAOEOfRestriction": {
-                "elements": [
-                    {
-                        "$type": "Core.CardRestriction:Subtypes:",
-                        "subtypes": [ "Shade" ]
-                    }
-                ]
-            },
-            "spaceRestrictionElements": [ {
-                "$type": "Core.SpaceRestriction:CanMoveCard:",
-                "toMove": { "$type": "Cards:TargetIndex:" }
-            } ]
+            "spaceRestrictionElements": [
+                {
+                    "$type": "Core.SpaceRestriction:CanMoveCard:",
+                    "toMove": { "$type": "Cards:TargetIndex:" }
+                },
+                {
+                    "$type": "Core.SpaceRestriction:InAOEOf:",
+                    "anyOf": {
+                        "$type": "ManyCards:FittingRestriction:",
+                        "cardRestriction": {
+                        "elements": [ {
+                                "$type": "Core.CardRestriction:Subtypes:",
+                                "subtypes": [ "Shade" ]
+                            } ]
+                        }
+                    },
+                    "sameAs": { "$type": "Spaces:ThisCard:" }
+                }
+            ]
         }
     },
     {

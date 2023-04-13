@@ -21,20 +21,17 @@
 						"elements": [
 							{ "$type": "Core.CardRestriction:Spell:" },
 							{
-								"$type": "Core.CardRestriction:PositionFitsRestriction:",
-								"spaceRestriction": {
-									"spaceRestrictions": [
-										"In AOE Source is Also In"
-									],
-									"alsoInAOEOfRestriction": {
-										"elements": [
-											{
-												"$type": "Core.CardRestriction:Subtypes:",
-												"subtypes": [ "Weather" ]
-											}
-										]
+								"$type": "Core.SpaceRestriction:InAOEOf:",
+								"anyOf": {
+									"$type": "ManyCards:FittingRestriction:",
+									"cardRestriction": {
+									"elements": [ {
+											"$type": "Core.CardRestriction:Subtypes:",
+											"subtypes": [ "Weather", "Condition" ]
+										} ]
 									}
-								}
+								},
+								"sameAs": { "$type": "Spaces:ThisCard:" }
 							},
 							{
 								"$type": "Core.CardRestriction:Subtypes:",

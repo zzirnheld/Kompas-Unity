@@ -14,8 +14,6 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
         public IIdentity<IReadOnlyCollection<GameCardBase>> manyCards;
         public IIdentity<GameCardBase> singleCard;
 
-        private static bool AllNull(params object[] objs) => objs.All(o => o == null);
-
         /// <summary>
         /// Returns a predicate that tests the test card with the following order of priorities:
         /// If the cardRestriction is defined, checks that the test card fits that restriction.

@@ -1,4 +1,6 @@
 
+using System.Linq;
+
 namespace KompasCore.Effects
 {
 
@@ -9,6 +11,8 @@ namespace KompasCore.Effects
 
     public abstract class RestrictionElementBase<Type> : ContextInitializeableBase, IRestrictionElement<Type>
     {
+        protected static bool AllNull(params object[] objs) => objs.All(o => o == null);
+
         public bool IsValid(Type item, IResolutionContext context)
         {
             ComplainIfNotInitialized();
