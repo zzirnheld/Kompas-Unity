@@ -17,16 +17,15 @@
 						"elements": [ { "$type": "Core.CardRestriction:Character:" } ]
 					},
 					"spaceRestriction": {
-						"spaceRestrictions": [
-							"Adjacent to a Card that Fits Restriction"
-						],
-						"adjacencyRestriction": {
-							"elements": [
-								{ "$type": "Core.CardRestriction:Enemy:" },
-								{ "$type": "Core.CardRestriction:Avatar:" }
-							]
-						},
-						"mustBeEmpty": false
+						"spaceRestrictionElements": [
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"cardRestriction": { "elements": [
+									{ "$type": "Core.CardRestriction:Enemy:" },
+									{ "$type": "Core.CardRestriction:Avatar:" }
+								] }
+							}
+						]
 					}
 				}
 			},

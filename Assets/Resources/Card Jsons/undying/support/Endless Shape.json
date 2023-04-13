@@ -18,17 +18,17 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
                         "blurb": "Space to move an Ethereal to",
-						"spaceRestrictions": [
-							"Adjacent to a Card that Fits Restriction"
-						],
-						"adjacencyRestriction": {
-							"elements": [
-								{
-									"$type": "Core.CardRestriction:Subtypes:",
-									"subtypes": [ "Ethereal" ]
-								}
-							]
-						}
+						"spaceRestrictionElements": [
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"cardRestriction": { "elements": [
+									{
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Ethereal" ]
+									}
+								] }
+							}
+						]
 					}
 				},
 				{

@@ -27,18 +27,17 @@
 						]
 					},
 					"spaceRestriction": {
-						"mustBeEmpty": false,
-						"spaceRestrictions": [
-							"Adjacent to a Card that Fits Restriction"
-						],
-						"adjacencyRestriction": {
-							"elements": [
-								{
-									"$type": "Core.CardRestriction:Subtypes:",
-									"subtypes": [ "Supplicant" ]
-								}
-							]
-						}
+						"spaceRestrictionElements": [
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"cardRestriction": { "elements": [
+									{
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Supplicant" ]
+									}
+								] }
+							}
+						]
 					}
 				}
 			},

@@ -13,25 +13,24 @@
 						"Space Fits Restriction"
 					],
 					"spaceRestriction": {
-						"spaceRestrictions": [
-							"Adjacent to a Card that Fits Restriction"
-						],
-						"adjacencyRestriction": {
-							"elements": [
-								{
-									"$type": "Core.CardRestriction:Subtypes:",
-									"subtypes": [ "Pulsar" ]
-								},
-								{
-									"$type": "Core.CardRestriction:Not:",
-									"negated": {
-										"$type": "Core.CardRestriction:CardsMatch:",
-										"card": { "$type": "Cards:CardBefore:" }
+						"spaceRestrictionElements": [
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"cardRestriction": { "elements": [
+									{
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Pulsar" ]
+									},
+									{
+										"$type": "Core.CardRestriction:Not:",
+										"negated": {
+											"$type": "Core.CardRestriction:CardsMatch:",
+											"card": { "$type": "Cards:CardBefore:" }
+										}
 									}
-								}
-							]
-						},
-						"mustBeEmpty": false
+								] }
+							}
+						]
 					}
 				}
 			},
@@ -54,34 +53,24 @@
 						"This Card in Play",
 						"Main Card Fits Restriction Before"
 					],
-					"cardRestriction": {
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:PositionFitsRestriction:",
-								"spaceRestriction": {
-									"spaceRestrictions": [
-										"Adjacent to a Card that Fits Restriction"
-									],
-									"adjacencyRestriction": {
-										"elements": [
-											{
-												"$type": "Core.CardRestriction:Subtypes:",
-												"subtypes": [ "Pulsar" ]
-											},
-											{
-												"$type": "Core.CardRestriction:Not:",
-												"negated": {
-													"$type": "Core.CardRestriction:CardsMatch:",
-													"card": { "$type": "Cards:CardBefore:" }
-												}
-											}
-										]
-									},
-									"mustBeEmpty": false
+					"cardRestriction": { "elements": [
+						{
+							"$type": "Core.SpaceRestriction:AdjacentTo:",
+							"cardRestriction": { "elements": [
+								{
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Pulsar" ]
+								},
+								{
+									"$type": "Core.CardRestriction:Not:",
+									"negated": {
+										"$type": "Core.CardRestriction:CardsMatch:",
+										"card": { "$type": "Cards:CardBefore:" }
+									}
 								}
-							}
-						]
-					}
+							] }
+						}
+					] }
 				}
 			},
 			"subeffects": [

@@ -27,22 +27,17 @@
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Person" ]
 							},
-                            {
-                                "$type": "Core.CardRestriction:PositionFitsRestriction:",
-								"spaceRestriction": {
-									"spaceRestrictions": [
-										"Adjacent to a Card that Fits Restriction"
-									],
-									"adjacencyRestriction": {
-										"elements": [
-											{
-												"$type": "Core.CardRestriction:Subtypes:",
-												"subtypes": [ "Structure" ]
-											}
-										]
-									}
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"cardRestriction": {
+									"elements": [
+										{
+											"$type": "Core.CardRestriction:Subtypes:",
+											"subtypes": [ "Structure" ]
+										}
+									]
 								}
-                            }
+							}
 						]
 					}
 				},

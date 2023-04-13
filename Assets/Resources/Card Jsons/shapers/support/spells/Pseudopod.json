@@ -32,22 +32,15 @@
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {
                                 "$type": "Core.SpaceRestriction:AdjacentTo:",
-                                "anyOfTheseCards": { 
-									"$type": "ManyCards:FittingRestriction:",
-									"cardRestriction": {
-										"elements": [
-											{ "$type": "Core.CardRestriction:FriendlyCard:" },
-											{ "$type": "Core.CardRestriction:Character:" },
-											{
-												"$type": "Core.CardRestriction:Location:",
-												"locations": [ "Board" ]
-											},
-											{
-												"$type": "Core.CardRestriction:Subtypes:",
-												"subtypes": [ "Shaper" ]
-											}
-										]
-									}
+                                "cardRestriction": {
+									"elements": [
+										{ "$type": "Core.CardRestriction:Friendly:" },
+										{ "$type": "Core.CardRestriction:Character:" },
+										{
+											"$type": "Core.CardRestriction:Subtypes:",
+											"subtypes": [ "Shaper" ]
+										}
+									]
 								}
                             }
                         ]

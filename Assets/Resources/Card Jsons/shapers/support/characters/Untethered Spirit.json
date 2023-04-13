@@ -12,25 +12,17 @@
 						"This Card Fits Restriction Now"
 					],
 					"selfRestriction": {
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:PositionFitsRestriction:",
-								"spaceRestriction": {
-									"spaceRestrictions": [
-										"Adjacent to a Card that Fits Restriction"
-									],
-									"adjacencyRestriction": {
-										"elements": [
-											{
-												"$type": "Core.CardRestriction:Subtypes:",
-												"subtypes": [ "Shaper" ]
-											}
-										]
-									},
-									"mustBeEmpty": false
-								}
+						"elements": [ {
+							"$type": "Core.SpaceRestriction:AdjacentTo:",
+							"cardRestriction": {
+								"elements": [
+									{
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Shaper" ]
+									}
+								]
 							}
-						]
+						} ]
 					}
 				}
 			},

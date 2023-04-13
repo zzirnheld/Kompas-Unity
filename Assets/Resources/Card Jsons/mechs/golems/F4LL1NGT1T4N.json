@@ -38,23 +38,23 @@
                     "spaceRestriction":
                     {
                         "blurb":"to teleport F4LL1NGT1T4N to",
-                        "spaceRestrictions":[
-							"Adjacent to a Card that Fits Restriction"
-						],
-						"cardRestriction": {
-							"elements": [
-                                { "$type": "Core.CardRestriction:Friendly:" },
-								{
-									"$type": "Core.CardRestriction:Subtypes:",
-									"subtypes": [ "Mech" ]
-								}
-							]
-						},
 						"spaceRestrictionElements": [
 							{ "$type": "Core.SpaceRestriction:Empty:" },
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
 								"toMove": { "$type": "Cards:TargetIndex:" }
+							},
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"cardRestriction": {
+									"elements": [
+										{ "$type": "Core.CardRestriction:Friendly:" },
+										{
+											"$type": "Core.CardRestriction:Subtypes:",
+											"subtypes": [ "Mech" ]
+										}
+									]
+								}
 							}
 						]
                     }

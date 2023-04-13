@@ -20,17 +20,19 @@
 						]
 					},
 					"spaceRestriction": {
-						"spaceRestrictions": [
-							"Adjacent to a Card that Fits Restriction"
-						],
-						"cardRestriction": {
-							"elements": [
-								{
-									"$type": "Core.CardRestriction:Subtypes:",
-									"subtypes": [ "Crazy" ]
+						"spaceRestrictionElements": [
+                            {
+                                "$type": "Core.SpaceRestriction:AdjacentTo:",
+                                "cardRestriction": {
+									"elements": [
+										{
+											"$type": "Core.CardRestriction:Subtypes:",
+											"subtypes": [ "Crazy" ]
+										}
+									]
 								}
-							]
-						}
+                            }
+						]
 					}
 				}
 			},

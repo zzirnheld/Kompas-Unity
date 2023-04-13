@@ -23,17 +23,10 @@ namespace KompasCore.Effects
         public const string AdjacentToSource = "Adjacent to Source";
         public const string AdjacentToCardTarget = "Adjacent to Card Target";
         public const string AdjacentToSpaceTarget = "Adjacent to Space Target";
-        public const string AdjacentToCardRestriction = "Adjacent to a Card that Fits Restriction";
         #endregion space restrictions
 
         public string[] spaceRestrictions = { };
         public CardRestriction adjacencyRestriction;
-        public CardRestriction connectednessRestriction;
-        public SpaceRestriction spaceConnectednessRestriction;
-        public CardRestriction inAOEOfRestriction;
-        public CardRestriction overlapRestriction;
-        public NumberRestriction connectedSpacesXRestriction;
-        public NumberRestriction numberOfCardsInAOEOfRestriction;
 
         public string blurb = "";
 
@@ -49,36 +42,11 @@ namespace KompasCore.Effects
             base.Initialize(initializationContext);
 
             adjacencyRestriction?.Initialize(initializationContext);
-            connectednessRestriction?.Initialize(initializationContext);
-            spaceConnectednessRestriction?.Initialize(initializationContext);
-            inAOEOfRestriction?.Initialize(initializationContext);
-            overlapRestriction?.Initialize(initializationContext);
-            
-            connectedSpacesXRestriction?.Initialize(initializationContext);
-            numberOfCardsInAOEOfRestriction?.Initialize(initializationContext);
 
             foreach (var sre in spaceRestrictionElements)
             {
                 sre.Initialize(initializationContext);
             }
-        }
-
-        private bool IsConnectedToTargetByXSpaces(Space space, GameCard target, IResolutionContext context)
-        {
-            return Game.BoardController.AreConnectedByNumberOfSpacesFittingPredicate(target.Position, space,
-                            s => spaceConnectednessRestriction.IsValidSpace(s, context),
-                            dist => connectedSpacesXRestriction.IsValid(dist, context));
-        }
-
-        private bool InAOEOfNumberOfCardsFittingRestriction(Space space, IResolutionContext context)
-        {
-            var count = Game.Cards.Count(c => c.SpaceInAOE(space) && inAOEOfRestriction.IsValid(c, context));
-            return numberOfCardsInAOEOfRestriction.IsValid(count, context);
-        }
-
-        private bool CardInSpaceOverlapsCardRestriction(GameCard card, Space potentialSpace, IResolutionContext context)
-        {
-            return Game.Cards.Any(c => overlapRestriction.IsValid(c, context) && card.Overlaps(c, potentialSpace));
         }
 
         /// <summary>
@@ -104,7 +72,7 @@ namespace KompasCore.Effects
                 //adjacency
                 AdjacentToSource => Source.IsAdjacentTo(space),
                 AdjacentToCardTarget => target.IsAdjacentTo(space),
-                AdjacentToSpaceTarget => space.AdjacentTo(Subeffect.SpaceTarget),
+                AdjacentToSpaceTarget => space.IsAdjacentTo(Subeffect.SpaceTarget),
                 AdjacentToCardRestriction => Game.BoardController.CardsAdjacentTo(space).Any(c => adjacencyRestriction.IsValid(c, context)),
 
                 _ => throw new ArgumentException($"Invalid space restriction {restriction}", "restriction"),

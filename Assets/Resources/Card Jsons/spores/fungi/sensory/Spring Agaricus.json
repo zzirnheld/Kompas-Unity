@@ -20,19 +20,18 @@
 						]
 					},
 					"spaceRestriction": {
-						"spaceRestrictions": [
-							"Adjacent to a Card that Fits Restriction"
-						],
-						"adjacencyRestriction": {
-							"elements": [
-								{ "$type": "Core.CardRestriction:Friendly:" },
-                                {
-                                    "$type": "Core.CardRestriction:Subtypes:",
-                                    "subtypes": [ "Fungus" ]
-                                }
-							]
-						},
-						"mustBeEmpty": false
+						"spaceRestrictionElements": [
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"cardRestriction": { "elements": [
+									{ "$type": "Core.CardRestriction:Friendly:" },
+									{
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Fungus" ]
+									}
+								] }
+							}
+						]
 					}
 				}
 			},

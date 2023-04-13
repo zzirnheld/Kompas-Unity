@@ -57,8 +57,8 @@ namespace KompasCore.Cards
             => card != null && card.Location == CardLocation.Board && Location == CardLocation.Board && DistanceTo(card) <= numSpaces;
 
         public bool IsAdjacentTo(GameCardBase card) => Location == CardLocation.Board && card != null
-            && card.Location == CardLocation.Board && Position.AdjacentTo(card.Position);
-        public bool IsAdjacentTo(Space space) => Location == CardLocation.Board && Position.AdjacentTo(space);
+            && card.Location == CardLocation.Board && Position.IsAdjacentTo(card.Position);
+        public bool IsAdjacentTo(Space space) => Location == CardLocation.Board && Position.IsAdjacentTo(space);
 
         /// <summary>
         /// Whether <paramref name="space"/> is in this card's AOE if this card is at <paramref name="mySpace"/>

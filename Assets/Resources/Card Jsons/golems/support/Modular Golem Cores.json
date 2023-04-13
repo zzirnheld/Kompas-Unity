@@ -16,24 +16,18 @@
 					"nowRestriction": {
 						"elements": [
 							{
-								"$type": "Core.CardRestriction:PositionFitsRestriction:",
-								"spaceRestriction": {
-									"spaceRestrictions": [
-										"Adjacent to a Card that Fits Restriction"
-									],
-									"adjacencyRestriction": {
-										"elements": [
-											{
-												"$type": "Core.CardRestriction:Subtypes:",
-												"subtypes": [ "Golem" ]
-											},
-											{
-												"$type": "Core.CardRestriction:HasAugment:",
-												"elements": [ ]
-											}
-										]
-									},
-									"mustBeEmpty": false
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"cardRestriction": {
+									"elements": [
+										{
+											"$type": "Core.CardRestriction:Subtypes:",
+											"subtypes": [ "Golem" ]
+										},
+										{
+											"$type": "Core.CardRestriction:HasAugment:",
+											"elements": [ ]
+										}
+									]
 								}
 							}
 						]

@@ -62,7 +62,7 @@ public class Space
     public int DistanceTo(Space other) => TaxicabDistanceTo(other);
     public Space DisplacementTo(Space other) => new Space(other.x - x, other.y - y);
 
-    public bool AdjacentTo(Space other) => DistanceTo(other) == 1;
+    public bool IsAdjacentTo(Space other) => DistanceTo(other) == 1;
     public IReadOnlyCollection<Space> AdjacentSpaces
     {
         get
