@@ -57,20 +57,20 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to move the Unwilling Vessel",
-						"spaceRestrictions": [
-							"Distance to Source Fits X Restriction"
-						],
-						"distanceXRestriction": {
-							"numberRestrictions": [
-								"<=X"
-							]
-						},
 						"spaceRestrictionElements": [
-							{ "$type": "Core.SpaceRestriction:Empty:" },
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
 								"toMove": { "$type": "Cards:TargetIndex:" }
-							}
+							},
+                            {
+                                "$type": "Core.SpaceRestriction:CompareDistance:",
+                                "distanceTo": {
+                                    "$type": "Spaces:PositionOf:",
+                                    "ofThisCard": { "$type": "Cards:ThisCard:" }
+                                },
+                                "number": { "$type": "Numbers:X:" },
+                                "comparison": { "$type": "Relationships.Number:LessThanEqual:" }
+                            }
 						]
 					},
 					"xMultiplier": 1

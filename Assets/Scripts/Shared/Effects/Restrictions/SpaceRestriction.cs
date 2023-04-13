@@ -51,11 +51,6 @@ namespace KompasCore.Effects
             = "Source Displacement to Card Target Same Direction as Space Target";
         public const string ConstantSubjectiveDisplacementFromSource = "Constant Subjective Displacement from Source";
         public const string BehindSource = "Behind Source";
-
-        //distance
-        public const string DistanceToSourceFitsXRestriction = "Distance to Source Fits X Restriction";
-        public const string DistanceToCardTargetFitsXRestriction = "Distance to Card Target Fits X Restriction";
-        public const string DistanceToSpaceTargetFitsXRestriction = "Distance to Space Target Fits X Restriction";
         #endregion space restrictions
 
         public string[] spaceRestrictions = { };
@@ -177,11 +172,6 @@ namespace KompasCore.Effects
                 ConstantSubjectiveDisplacementFromSource
                     => Controller.SubjectiveCoords(Source.Position).DisplacementTo(Controller.SubjectiveCoords(space)) == (displacementX, displacementY),
                 BehindSource => Source.SpaceBehind(space),
-
-                //distance
-                DistanceToSourceFitsXRestriction => distanceXRestriction.IsValid(Source.DistanceTo(space), context),
-                DistanceToCardTargetFitsXRestriction => distanceXRestriction.IsValid(target.DistanceTo(space), context),
-                DistanceToSpaceTargetFitsXRestriction => distanceXRestriction.IsValid(Subeffect.SpaceTarget.DistanceTo(space), context),
 
                 _ => throw new ArgumentException($"Invalid space restriction {restriction}", "restriction"),
             };

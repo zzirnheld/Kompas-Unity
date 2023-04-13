@@ -32,18 +32,13 @@
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
                             {
-                                "$type": "Core.CardRestriction:PositionFitsRestriction:",
-								"spaceRestriction": {
-									"spaceRestrictions": [
-										"Distance to Source Fits X Restriction"
-									],
-									"distanceXRestriction": {
-										"numberRestrictions": [
-											"<=X"
-										],
-										"constant": 1
-									}
-								}
+                                "$type": "Core.SpaceRestriction:CompareDistance:",
+                                "distanceTo": {
+                                    "$type": "Spaces:PositionOf:",
+                                    "ofThisCard": { "$type": "Cards:ThisCard:" }
+                                },
+                                "number": { "$type": "Numbers:X:" },
+                                "comparison": { "$type": "Relationships.Number:LessThanEqual:" }
                             }
 						]
 					},

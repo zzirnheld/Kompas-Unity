@@ -70,18 +70,13 @@
 						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
                             {
-                                "$type": "Core.CardRestriction:PositionFitsRestriction:",
-								"spaceRestriction": {
-									"spaceRestrictions": [
-										"Distance to Card Target Fits X Restriction"
-									],
-									"distanceXRestriction": {
-										"numberRestrictions": [
-											"<=Constant"
-										],
-										"constant": 2
-									}
-								}
+                                "$type": "Core.SpaceRestriction:CompareDistance:",
+                                "distanceTo": {
+                                    "$type": "Spaces:PositionOf:",
+                                    "ofThisCard": { "$type": "Cards:TargetIndex:" }
+                                },
+                                "number": { "$type": "Numbers:Constant:", "constant": 2 },
+                                "comparison": { "$type": "Relationships.Number:LessThanEqual:" }
                             },
 							{
 								"$type": "Core.CardRestriction:Not:",
