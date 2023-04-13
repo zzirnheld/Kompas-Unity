@@ -117,7 +117,7 @@ namespace KompasCore.Effects
         private bool CanMoveThroughEmptyOrRestrictedSpacesTo(Space destination)
         {
             bool predicate(Space s) => Card.Game.BoardController.IsEmpty(s)
-                                    || throughSpacesRestriction.IsValidSpace(s, default);
+                                    || throughSpacesRestriction.IsValid(s, default);
             return Card.SpacesCanMove >= Card.Game.BoardController.ShortestPath(Card.Position, destination, predicate);
         }
 
@@ -138,7 +138,7 @@ namespace KompasCore.Effects
             //special effect restrictions
             IsActive => Card.Activated,
             CanMoveEnoughThroughEmptyOrRestrictedSpaces => CanMoveThroughEmptyOrRestrictedSpacesTo(destination),
-            DestinationMustFloutRestriction => !floutedDestinationSpaceRestriction.IsValidSpace(destination, default),
+            DestinationMustFloutRestriction => !floutedDestinationSpaceRestriction.IsValid(destination, default),
             NotNormally => context != default,
 
             _ => throw new System.ArgumentException($"Could not understand movement restriction {restriction}"),

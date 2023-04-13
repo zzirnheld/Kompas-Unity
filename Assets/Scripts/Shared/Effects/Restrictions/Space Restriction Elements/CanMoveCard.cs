@@ -2,7 +2,7 @@ using KompasCore.Cards;
 using KompasCore.Effects.Identities;
 using System.Collections.Generic;
 
-namespace KompasCore.Effects.Restrictions.elements
+namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 {
     /// <summary>
     /// Whether a card can be moved to that space. Presumes from effect
@@ -15,7 +15,7 @@ namespace KompasCore.Effects.Restrictions.elements
         /// Describes any restriction on the spaces between the card and where it needs to go (the space being tested)
         /// </summary>
         public SpaceRestriction throughRestriction = new SpaceRestriction() {
-            elements = new List<SpaceRestrictionElement> {
+            elements = new List<IRestrictionElement<Space>> {
                 new Empty()
             }
         };
@@ -41,7 +41,7 @@ namespace KompasCore.Effects.Restrictions.elements
 
         private bool FitsThroughRestriction(Space source, Space dest, IResolutionContext context)
             => InitializationContext.game.BoardController.AreConnectedByNumberOfSpacesFittingPredicate(source, dest,
-                s => throughRestriction.IsValidSpace(s, context), d => distanceRestriction.IsValid(d, context));
+                s => throughRestriction.IsValid(s, context), d => distanceRestriction.IsValid(d, context));
 
         protected override bool IsValidLogic(Space space, IResolutionContext context)
         {

@@ -38,7 +38,7 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
                     throw new System.ArgumentException($"{spaceRestrictionSubeffectIndex} isn't a space target subeffect! resolving {InitializationContext.effect}");
                 }
 
-                bool IsSubeffectRestrictionValid(Space space) => spaceTargetSubeffect.spaceRestriction.IsValidSpace(space, context);
+                bool IsSubeffectRestrictionValid(Space space) => spaceTargetSubeffect.spaceRestriction.IsValid(space, context);
                 return InitializationContext.effect.identityOverrides.WithTargetCardOverride(card,
                     () => Space.Spaces.Where(IsSubeffectRestrictionValid).Any(IsValidMoveSpace));
             }

@@ -1,4 +1,4 @@
-namespace KompasCore.Effects.Restrictions.elements
+namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 {
     public class Corner : SpaceRestrictionElement
     {

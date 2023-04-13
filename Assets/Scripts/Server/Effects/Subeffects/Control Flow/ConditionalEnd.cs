@@ -75,7 +75,7 @@ namespace KompasServer.Effects.Subeffects
                     AnyFitRestriction => ServerGame.Cards.Any(c => cardRestriction.IsValid(c, ResolutionContext)),
                     NumberOfCardsFittingRestrictionFitsNumberRestriction => doesNumberOfCardsFittingRestrictionFitNumberRestriction(),
 
-                    NoSpaceFitsRestriction => !Space.Spaces.Any(s => spaceRestriction.IsValidSpace(s, ResolutionContext, CardTarget)),
+                    NoSpaceFitsRestriction => !Space.Spaces.Any(s => spaceRestriction.IsValid(s, ResolutionContext)),
 
                     MustBeFriendlyTurn => ServerGame.TurnPlayer != Effect.Controller,
                     MustBeEnemyTurn => ServerGame.TurnPlayer == Effect.Controller,
@@ -83,8 +83,8 @@ namespace KompasServer.Effects.Subeffects
                     TargetViolatesRestriction => !cardRestriction.IsValid(CardTarget, ResolutionContext),
                     TargetFitsRestriction => cardRestriction.IsValid(CardTarget, ResolutionContext),
 
-                    SpaceTargetViolatesRestriction => !spaceRestriction.IsValidSpace(SpaceTarget, ResolutionContext),
-                    SpaceTargetFitsRestriction => spaceRestriction.IsValidSpace(SpaceTarget, ResolutionContext),
+                    SpaceTargetViolatesRestriction => !spaceRestriction.IsValid(SpaceTarget, ResolutionContext),
+                    SpaceTargetFitsRestriction => spaceRestriction.IsValid(SpaceTarget, ResolutionContext),
 
                     SourceViolatesRestriction => !cardRestriction.IsValid(Source, ResolutionContext),
                     NumTargetsLTEConstant => Effect.CardTargets.Count() <= constant,

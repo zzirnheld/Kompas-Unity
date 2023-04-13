@@ -1,6 +1,6 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
-using KompasCore.Effects.Restrictions.elements;
+using KompasCore.Effects.Restrictions.SpaceRestrictionElements;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -21,7 +21,7 @@ namespace KompasServer.Effects.Subeffects
         }
 
         public IEnumerable<Space> ValidSpaces => Space.Spaces
-                .Where(s => spaceRestriction.IsValidSpace(s, ResolutionContext, theoreticalTarget: CardTarget))
+                .Where(s => spaceRestriction.IsValid(s, ResolutionContext))
                 .Select(s => PlayerTarget.SubjectiveCoords(s));
 
         public override bool IsImpossible() => ValidSpaces.Count() == 0;
@@ -35,12 +35,11 @@ namespace KompasServer.Effects.Subeffects
         /// <see langword="false"/> otherwise</returns>
         public bool WillBePossibleIfCardTargeted(GameCard theoreticalTarget)
         {
-            for (int x = 0; x < 7; x++)
+            foreach (var space in Space.Spaces)
             {
-                for (int y = 0; y < 7; y++)
-                {
-                    if (spaceRestriction.IsValidSpace((x, y), ResolutionContext, theoreticalTarget)) return true;
-                }
+                if (Effect.identityOverrides.WithTargetCardOverride(theoreticalTarget,
+                    () => spaceRestriction.IsValid(space, ResolutionContext)))
+                    return true;
             }
 
             return false;
@@ -72,11 +71,12 @@ namespace KompasServer.Effects.Subeffects
 
         public bool SetTargetIfValid(int x, int y)
         {
+            Space space = (x, y);
             //evaluate the target. if it's valid, confirm it as the target (that's what the true is for)
-            if (Space.IsValidSpace(x, y) && spaceRestriction.IsValidSpace((x, y), ResolutionContext))
+            if (space.IsValid && spaceRestriction.IsValid(space, ResolutionContext))
             {
                 Debug.Log($"Adding {x}, {y} as coords");
-                ServerEffect.AddSpace((x, y));
+                ServerEffect.AddSpace(space);
                 ServerPlayer.notifier.AcceptTarget();
                 return true;
             }

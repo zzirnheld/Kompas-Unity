@@ -172,7 +172,7 @@ namespace KompasCore.Effects
                 => ThisCard.DistanceTo(triggeringContext.MainCardInfoAfter.Position) > ThisCard.DistanceTo(triggeringContext.mainCardInfoBefore.Position),
 
             //other non-card triggering things
-            SpaceFitsRestriction => triggeringContext.space != null && spaceRestriction.IsValidSpace(triggeringContext.space, new ResolutionContext(triggeringContext)),
+            SpaceFitsRestriction => triggeringContext.space != null && spaceRestriction.IsValid(triggeringContext.space, new ResolutionContext(triggeringContext)),
 
             XFitsRestriction => triggeringContext.x.HasValue && xRestriction.IsValid(triggeringContext.x.Value, context: stashedResolutionContext),
             StackableSourceIsMainCard => triggeringContext.stackableCause is Effect eff && eff.Source == triggeringContext.mainCardInfoBefore.Card,

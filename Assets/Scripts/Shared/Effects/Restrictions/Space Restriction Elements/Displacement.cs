@@ -1,7 +1,7 @@
 using System;
 using KompasCore.Effects.Identities;
 
-namespace KompasCore.Effects.Restrictions.elements
+namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 {
     public class Displacement : SpaceRestrictionElement
     {

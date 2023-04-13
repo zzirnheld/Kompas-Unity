@@ -113,7 +113,7 @@ namespace KompasCore.GameCore
             => AreConnectedBySpaces(source, destination, s => throughPredicate(GetCardAt(s)));
 
         public bool AreConnectedBySpaces(Space source, Space destination, SpaceRestriction restriction, IResolutionContext context)
-            => AreConnectedBySpaces(source, destination, s => restriction.IsValidSpace(s, context));
+            => AreConnectedBySpaces(source, destination, s => restriction.IsValid(s, context));
 
         public bool AreConnectedBySpaces(Space source, Space destination, Func<Space, bool> predicate)
             => destination.AdjacentSpaces.Any(destAdj => ShortestPath(source, destAdj, predicate) < NoPathExists);

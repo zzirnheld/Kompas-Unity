@@ -2,7 +2,7 @@ using KompasCore.Effects.Identities;
 using KompasCore.Effects.Identities.Numbers;
 using System.Linq;
 
-namespace KompasCore.Effects.Restrictions.elements
+namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 {
     public class WithinDistanceOfNumberOfCards : SpaceRestrictionElement
     {

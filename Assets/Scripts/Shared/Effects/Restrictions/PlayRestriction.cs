@@ -143,8 +143,8 @@ namespace KompasCore.Effects
 
             CheckUnique => !(Card.Unique && InitializationContext.game.BoardHasCopyOf(Card)),
             AdjacentToCardFittingRestriction => Card.Game.BoardController.CardsAdjacentTo(space).Any(c => adjacentCardRestriction.IsValid(c, context)),
-            SpaceFitsRestriction => spaceRestriction.IsValidSpace(space, context),
-            SpaceMustFloutRestriction => !floutedSpaceRestriction.IsValidSpace(space, context),
+            SpaceFitsRestriction => spaceRestriction.IsValid(space, context),
+            SpaceMustFloutRestriction => !floutedSpaceRestriction.IsValid(space, context),
 
             CountExistingCards => countCardNumberRestriction.IsValid(Card.Game.Cards.Count(c => countCardRestriction.IsValid(c, context)), context),
 
