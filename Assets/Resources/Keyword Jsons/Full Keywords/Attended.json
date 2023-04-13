@@ -21,11 +21,10 @@
 				"elements": [
 					{ "$type": "Core.CardRestriction:Friendly:" },
 					{
-						"$type": "Core.CardRestriction:PositionFitsRestriction:",
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Source"
-							]
+						"$type": "Core.SpaceRestriction:AdjacentTo:",
+						"space": {
+							"$type": "Spaces:PositionOf:",
+							"ofThisCard": { "$type": "Cards:ThisCard:" }
 						}
 					}
 				]

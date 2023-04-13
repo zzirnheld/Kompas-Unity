@@ -7,9 +7,15 @@
             "triggerRestrictions":["This Card in Play","Space Fits Restriction"],
             "spaceRestriction":
             {
-                "spaceRestrictions":["Adjacent to Source"],
                 "elements": [
                     { "$type": "Core.CardRestriction:Friendly:" },
+                    {
+                        "$type": "Core.SpaceRestriction:AdjacentTo:",
+                        "space": {
+                            "$type": "Spaces:PositionOf:",
+                            "ofThisCard": { "$type": "Cards:ThisCard:" }
+                        }
+                    },
                     {
                         "$type": "Core.CardRestriction:Subtypes:",
                         "subtypes": [ "Music" ]

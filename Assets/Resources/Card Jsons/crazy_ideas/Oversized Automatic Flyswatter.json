@@ -10,11 +10,15 @@
 				"triggerCondition":"Arrive",
 				"triggerRestriction":{
 					"triggerRestrictions":["Space Fits Restriction"],
-					"spaceRestriction":
-					{
-						"spaceRestrictions":["Adjacent to Source"],
-						"mustBeEmpty":false
-					}
+					"spaceRestriction": { "spaceRestrictionElements":[ 
+						{
+							"$type": "Core.SpaceRestriction:AdjacentTo:",
+							"space": {
+								"$type": "Spaces:PositionOf:",
+								"ofThisCard": { "$type": "Cards:ThisCard:" }
+							}
+						}
+					] }
 				}
 			},
 			"subeffects":[

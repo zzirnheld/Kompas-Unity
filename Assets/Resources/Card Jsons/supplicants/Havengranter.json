@@ -37,10 +37,14 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where Havengranter to hand-summon",
-						"spaceRestrictions": [
-							"Adjacent to Source"
-						],
 						"spaceRestrictionElements": [
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": {
+									"$type": "Spaces:PositionOf:",
+									"ofThisCard": { "$type": "Cards:ThisCard:" }
+								}
+							},
                             {
                                 "$type": "Core.SpaceRestriction:CanPlayCard:",
                                 "toPlay": { "$type": "Cards:TargetIndex:" }

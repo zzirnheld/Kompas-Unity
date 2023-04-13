@@ -15,9 +15,15 @@
 						"Space Fits Restriction"
 					],
 					"spaceRestriction": {
-						"spaceRestrictions": [
-							"Adjacent to Source"
-						]
+                        "spaceRestrictionElements": [
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": {
+									"$type": "Spaces:PositionOf:",
+									"ofThisCard": { "$type": "Cards:ThisCard:" }
+								}
+							}
+                        ]
 					},
 					"cardRestriction": {
 						"elements": [

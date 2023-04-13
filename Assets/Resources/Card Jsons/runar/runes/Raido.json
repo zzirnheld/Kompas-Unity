@@ -19,14 +19,13 @@
 					"cardRestriction": {
 						"blurb": "card for Raido to move",
 						"elements": [
-                            {
-                                "$type": "Core.CardRestriction:PositionFitsRestriction:",
-                                "spaceRestriction": {
-									"spaceRestrictions": [
-										"Adjacent to Source"
-									]
-                                }
-                            },
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": {
+									"$type": "Spaces:PositionOf:",
+									"ofThisCard": { "$type": "Cards:ThisCard:" }
+								}
+							},
 							{
 								"$type": "Core.CardRestriction:CanMove:",
 								"spaceRestrictionSubeffectIndex": 1

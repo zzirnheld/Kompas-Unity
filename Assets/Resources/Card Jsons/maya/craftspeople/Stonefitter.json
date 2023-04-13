@@ -53,9 +53,15 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where for the Temple Builder to decksummon a copy of the Structure",
-						"spaceRestrictions": [ "Adjacent to Source" ],
                         "spaceRestrictionElements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": {
+									"$type": "Spaces:PositionOf:",
+									"ofThisCard": { "$type": "Cards:ThisCard:" }
+								}
+							},
                             {
                                 "$type": "Core.SpaceRestriction:CanPlayCard:",
                                 "toPlay": { "$type": "Cards:TargetIndex:" }

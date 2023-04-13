@@ -25,10 +25,15 @@
 						]
 					},
 					"spaceRestriction": {
-						"spaceRestrictions": [
-							"Adjacent to Source"
-						],
-						"mustBeEmpty": false
+						"elements": [
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": {
+									"$type": "Spaces:PositionOf:",
+									"ofThisCard": { "$type": "Cards:ThisCard:" }
+								}
+							}
+						]
 					}
 				}
 			},

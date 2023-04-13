@@ -32,13 +32,17 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "Space to yank it to",
-						"spaceRestrictions": [
-                            "Adjacent to Source"
-						],
 						"spaceRestrictionElements": [
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
 								"toMove": { "$type": "Cards:TargetIndex:" }
+							},
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": {
+									"$type": "Spaces:PositionOf:",
+									"ofThisCard": { "$type": "Cards:ThisCard:" }
+								}
 							}
 						]
 					}

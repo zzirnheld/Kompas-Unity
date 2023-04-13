@@ -36,10 +36,14 @@
 					"spaceRestriction":
 					{
 						"blurb": "where to summon the other Fleeing Lover",
-						"spaceRestrictions": [
-							"Adjacent to Source"
-						],
 						"spaceRestrictionElements": [
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": {
+									"$type": "Spaces:PositionOf:",
+									"ofThisCard": { "$type": "Cards:ThisCard:" }
+								}
+							},
                             {
                                 "$type": "Core.SpaceRestriction:CanPlayCard:",
                                 "toPlay": { "$type": "Cards:TargetIndex:" }
