@@ -34,7 +34,8 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
                 }
 
                 bool IsSubeffectRestrictionValid(Space space) => spaceTargetSubeffect.spaceRestriction.IsValidSpace(space, context);
-                return Space.Spaces.Where(IsSubeffectRestrictionValid).Any(IsValidMoveSpace);
+                return InitializationContext.effect.identityOverrides.WithTargetCardOverride(card,
+                    () => Space.Spaces.Where(IsSubeffectRestrictionValid).Any(IsValidMoveSpace));
             }
             else return Space.Spaces.Any(IsValidMoveSpace);
         }

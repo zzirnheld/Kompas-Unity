@@ -39,6 +39,8 @@ namespace KompasCore.Effects
         public readonly List<IStackable> stackableTargets = new List<IStackable>();
         public readonly List<GameCard> rest = new List<GameCard>();
 
+        public IdentityOverrides identityOverrides = new IdentityOverrides();
+
         /// <summary>
         /// X value for card effect text (not coordinates)
         /// </summary>
