@@ -35,8 +35,10 @@
 					"spaceRestriction": {
 						"blurb": "to move Outpoured Anger to",
 						"spaceRestrictions": [
-							"Adjacent to Card Target",
-							"Empty"
+							"Adjacent to Card Target"
+						],
+						"spaceRestrictionElements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" }
 						]
 					},
 					"targetIndex": -2

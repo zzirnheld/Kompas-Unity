@@ -37,14 +37,11 @@
 					"spaceRestriction": {
 						"blurb": "to Linewalk to",
 						"spaceRestrictions": [
-							"Empty",
 							"Connected to Card Target by Spaces Fitting Restriction"
 						],
 						"spaceConnectednessRestriction": {
-							"spaceRestrictions": [
-								"Empty"
-							],
 							"spaceRestrictionElements": [
+								{ "$type": "Core.SpaceRestriction:Empty:" },
 								{
 									"$type": "Core.SpaceRestriction:SameDiagonal:",
 									"other": {
@@ -55,6 +52,7 @@
 							]
 						},
 						"spaceRestrictionElements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" },
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
 								"toMove": { "$type": "Cards:TargetIndex:" }

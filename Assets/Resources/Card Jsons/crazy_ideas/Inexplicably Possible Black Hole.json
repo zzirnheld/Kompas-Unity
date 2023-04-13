@@ -28,13 +28,15 @@
 						"blurb": "e n t e r t h e h o l e",
 						"spaceRestrictions": [
 							"Adjacent to Card Target",
-							"Towards Source from Card Target",
-							"Empty"
+							"Towards Source from Card Target"
 						],
-						"spaceRestrictionElements": [ {
-							"$type": "Core.SpaceRestriction:CanMoveCard:",
-							"toMove": { "$type": "Cards:TargetIndex:" }
-						} ]
+						"spaceRestrictionElements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanMoveCard:",
+								"toMove": { "$type": "Cards:TargetIndex:" }
+							}
+						]
 					}
 				},
 				{

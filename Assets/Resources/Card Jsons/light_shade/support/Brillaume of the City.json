@@ -36,7 +36,6 @@
 					"spaceRestriction": {
 						"blurb": "where to slightly yeet target card",
 						"spaceRestrictions": [
-							"Empty",
                             "Adjacent to a Card that Fits Restriction"
                         ],
                         "adjacencyRestriction": {
@@ -44,10 +43,13 @@
 								{ "$type": "Core.CardRestriction:Friendly:" }
 							]
                         },
-						"spaceRestrictionElements": [ {
-							"$type": "Core.SpaceRestriction:CanMoveCard:",
-							"toMove": { "$type": "Cards:TargetIndex:" }
-						} ]
+						"spaceRestrictionElements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanMoveCard:",
+								"toMove": { "$type": "Cards:TargetIndex:" }
+							}
+						]
 					}
 				},
 				{

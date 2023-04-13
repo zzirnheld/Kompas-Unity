@@ -75,7 +75,10 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "Drop your loot!",
-						"spaceRestrictions": [ "Empty", "Adjacent to Card Target" ]
+						"spaceRestrictions": [ "Adjacent to Card Target" ],
+						"spaceRestrictionElements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" }
+						]
 					}
 				},
 				{

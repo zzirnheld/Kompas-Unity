@@ -33,13 +33,15 @@
 					"spaceRestriction": {
 						"blurb": "Space to yank it to",
 						"spaceRestrictions": [
-							"Empty",
                             "Adjacent to Source"
 						],
-						"spaceRestrictionElements": [ {
-							"$type": "Core.SpaceRestriction:CanMoveCard:",
-							"toMove": { "$type": "Cards:TargetIndex:" }
-						} ]
+						"spaceRestrictionElements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanMoveCard:",
+								"toMove": { "$type": "Cards:TargetIndex:" }
+							}
+						]
 					}
 				},
 				{

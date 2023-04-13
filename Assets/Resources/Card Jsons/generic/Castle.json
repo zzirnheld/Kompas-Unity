@@ -22,14 +22,6 @@
 						"elements": [
 							{ "$type": "Core.CardRestriction:Avatar:" },
 							{ "$type": "Core.SpaceRestriction:Surrounded:" },
-                            {
-                                "$type": "Core.CardRestriction:PositionFitsRestriction:",
-								"spaceRestriction": {
-									"spaceRestrictions": [
-										"Empty"
-									]
-								}
-                            },
 							{
 								"$type": "Core.CardRestriction:CanMove:",
 								"spaceRestrictionSubeffectIndex": 1
@@ -41,10 +33,8 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "Corner to move them to",
-						"spaceRestrictions": [
-							"Empty"
-						],
 						"spaceRestrictionElements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" },
 							{ "$type": "Core.SpaceRestriction:Corner:" },
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",

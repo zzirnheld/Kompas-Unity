@@ -49,17 +49,19 @@
 					"spaceRestriction": {
 						"blurb": "where to boing boing launch that guy",
 						"spaceRestrictions": [
-							"Further from Source than Space Target",
-							"Empty"
+							"Further from Source than Space Target"
 						],
-						"spaceRestrictionElements": [ {
-							"$type": "Core.SpaceRestriction:CanMoveCard:",
-							"toMove": { "$type": "Cards:TargetIndex:" },
-							"distanceRestriction": {
-								"numberRestrictions": [ "==Constant" ],
-								"constant": 1
+						"spaceRestrictionElements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" }
+							{
+								"$type": "Core.SpaceRestriction:CanMoveCard:",
+								"toMove": { "$type": "Cards:TargetIndex:" },
+								"distanceRestriction": {
+									"numberRestrictions": [ "==Constant" ],
+									"constant": 1
+								}
 							}
-						} ]
+						]
 					}
 				},
 				{

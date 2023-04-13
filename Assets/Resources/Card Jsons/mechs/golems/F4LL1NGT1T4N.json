@@ -39,7 +39,6 @@
                     {
                         "blurb":"to teleport F4LL1NGT1T4N to",
                         "spaceRestrictions":[
-                            "Empty",
 							"Adjacent to a Card that Fits Restriction"
 						],
 						"cardRestriction": {
@@ -51,10 +50,13 @@
 								}
 							]
 						},
-						"spaceRestrictionElements": [ {
-							"$type": "Core.SpaceRestriction:CanMoveCard:",
-							"toMove": { "$type": "Cards:TargetIndex:" }
-						} ]
+						"spaceRestrictionElements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanMoveCard:",
+								"toMove": { "$type": "Cards:TargetIndex:" }
+							}
+						]
                     }
                 },
                 {

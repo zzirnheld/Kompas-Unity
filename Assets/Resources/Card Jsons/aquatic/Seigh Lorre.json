@@ -46,8 +46,10 @@
 					"spaceRestriction": {
 						"blurb": "where to sail them to",
 						"spaceRestrictions": [
-							"Connected to Card Target by Spaces Fitting Restriction",
-							"Empty"
+							"Connected to Card Target by Spaces Fitting Restriction"
+						],
+						"spaceRestrictionElements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" }
 						],
 						"spaceConnectednessRestriction": {
 							"spaceRestrictionElements": [

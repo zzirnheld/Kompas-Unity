@@ -45,10 +45,8 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where for Yeeterator to move its target",
-						"spaceRestrictions": [
-							"Empty"
-						],
 						"spaceRestrictionElements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" },
 							{ "$type": "Core.SpaceRestriction:Corner:" },
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",

@@ -44,10 +44,8 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where on the Lines to bring them",
-						"spaceRestrictions": [
-							"Empty"
-						],
 						"spaceRestrictionElements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" },
 							{ "$type": "Core.SpaceRestriction:Edge:" },
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",

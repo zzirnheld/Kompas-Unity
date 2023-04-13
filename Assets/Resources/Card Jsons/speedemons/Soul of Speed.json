@@ -50,14 +50,16 @@
 						"blurb": "speeeeeeeeeeeeeeeed",
 						"spaceRestrictions": [
 							"Source Displacement to Space Same Direction as Space Target",
-							"Distance to Source Fits X Restriction",
-							"Empty"
+							"Distance to Source Fits X Restriction"
 						],
 						"distanceXRestriction": {
 							"numberRestrictions": [
 								"=X"
 							]
-						}
+						},
+						"spaceRestrictionElements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" }
+						]
 					},
 					"xModifier": 1
 				},

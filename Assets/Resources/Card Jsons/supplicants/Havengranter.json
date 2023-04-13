@@ -39,8 +39,10 @@
 						"blurb": "where Havengranter to hand-summon",
 						"spaceRestrictions": [
 							"Adjacent to Source",
-							"Can Play Card Target to This Space",
-							"Empty"
+							"Can Play Card Target to This Space"
+						],
+						"spaceRestrictionElements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" }
 						]
 					}
 				},

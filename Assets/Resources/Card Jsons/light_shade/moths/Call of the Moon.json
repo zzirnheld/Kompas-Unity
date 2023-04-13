@@ -70,13 +70,15 @@
 					"spaceRestriction": {
 						"blurb": "mOOn",
 						"spaceRestrictions": [
-							"Empty",
 							"In Card Target's AOE"
 						],
-						"spaceRestrictionElements": [ {
-							"$type": "Core.SpaceRestriction:CanMoveCard:",
-							"toMove": { "$type": "Cards:TargetIndex:" }
-						} ]
+						"spaceRestrictionElements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanMoveCard:",
+								"toMove": { "$type": "Cards:TargetIndex:" }
+							}
+						]
 					}
 				},
 				{

@@ -56,17 +56,19 @@
 					"spaceRestriction": {
 						"blurb": "to move Magnetizing's target to",
 						"spaceRestrictions": [
-							"Towards Source from Card Target",
-							"Empty"
+							"Towards Source from Card Target"
 						],
-						"spaceRestrictionElements": [ {
-							"$type": "Core.SpaceRestriction:CanMoveCard:",
-							"toMove": { "$type": "Cards:TargetIndex:" },
-							"distanceRestriction": {
-								"numberRestrictions": [ "==Constant" ],
-								"constant": 1
+						"spaceRestrictionElements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanMoveCard:",
+								"toMove": { "$type": "Cards:TargetIndex:" },
+								"distanceRestriction": {
+									"numberRestrictions": [ "==Constant" ],
+									"constant": 1
+								}
 							}
-						} ]
+						]
 					}
 				},
 				{
@@ -127,17 +129,19 @@
 					"spaceRestriction": {
 						"blurb": "to move Magnetizing's target to",
 						"spaceRestrictions": [
-							"Further from Source than Card Target",
-							"Empty"
+							"Further from Source than Card Target"
 						],
-						"spaceRestrictionElements": [ {
-							"$type": "Core.SpaceRestriction:CanMoveCard:",
-							"toMove": { "$type": "Cards:TargetIndex:" },
-							"distanceRestriction": {
-								"numberRestrictions": [ "==Constant" ],
-								"constant": 1
+						"spaceRestrictionElements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanMoveCard:",
+								"toMove": { "$type": "Cards:TargetIndex:" },
+								"distanceRestriction": {
+									"numberRestrictions": [ "==Constant" ],
+									"constant": 1
+								}
 							}
-						} ]
+						]
 					}
 				},
 				{

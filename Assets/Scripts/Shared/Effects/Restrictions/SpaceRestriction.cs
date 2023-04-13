@@ -66,7 +66,6 @@ namespace KompasCore.Effects
         //misc
         public const string CanPlayCardTarget = "Can Play Card Target to This Space";
         public const string CanMoveSource = "Can Move Source to This Space";
-        public const string Empty = "Empty";
         #endregion space restrictions
 
         public string[] spaceRestrictions = { };
@@ -88,8 +87,8 @@ namespace KompasCore.Effects
         public int displacementY;
 
         public string blurb = "";
-        //Using rather than an "Empty" restriction for, at this point, historical reasons - TODO fix
-        public bool mustBeEmpty = true;
+
+        //TODO correct any places still using mustBeEmpty
 
         public List<SpaceRestrictionElement> spaceRestrictionElements = new List<SpaceRestrictionElement>();
 
@@ -206,9 +205,6 @@ namespace KompasCore.Effects
                 CanPlayCardTarget => target?.PlayRestriction?.IsValidEffectPlay(space, Subeffect?.Effect, Subeffect?.PlayerTarget, context,
                     ignoring: playRestrictionsToIgnore) ?? false,
                 CanMoveSource => Source?.MovementRestriction?.IsValidEffectMove(space, context) ?? false,
-
-                Empty => Game.BoardController.IsEmpty(space),
-                Occupied => !Game.BoardController.IsEmpty(space),
 
                 _ => throw new ArgumentException($"Invalid space restriction {restriction}", "restriction"),
             };

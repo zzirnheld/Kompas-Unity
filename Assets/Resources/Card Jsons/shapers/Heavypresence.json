@@ -28,17 +28,19 @@
 					"spaceRestriction": {
 						"blurb": "to move Whose Anger Draws Fear's attack target to",
 						"spaceRestrictions": [
-							"Directly Away from Card Target",
-							"Empty"
+							"Directly Away from Card Target"
 						],
-						"spaceRestrictionElements": [ {
-							"$type": "Core.SpaceRestriction:CanMoveCard:",
-							"toMove": { "$type": "Cards:TargetIndex:" },
-							"distanceRestriction": {
-								"numberRestrictions": [ "==Constant" ],
-								"constant": 1
+						"spaceRestrictionElements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanMoveCard:",
+								"toMove": { "$type": "Cards:TargetIndex:" },
+								"distanceRestriction": {
+									"numberRestrictions": [ "==Constant" ],
+									"constant": 1
+								}
 							}
-						} ]
+						]
 					}
 				},
 				{

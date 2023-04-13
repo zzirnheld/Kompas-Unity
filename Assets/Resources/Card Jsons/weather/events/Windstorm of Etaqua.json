@@ -49,7 +49,6 @@
 					"$type": "Subeffect:SpaceTarget:",
                     "spaceRestriction": {
                         "spaceRestrictions": [
-                            "Empty",
                             "In AOE Source is Also In"
                         ],
                         "alsoInAOEOfRestriction": {
@@ -59,7 +58,10 @@
 									"subtypes": [ "Weather" ]
 								}
 							]
-                        }
+                        },
+						"spaceRestrictionElements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" }
+						]
                     }
 				},
 				{
