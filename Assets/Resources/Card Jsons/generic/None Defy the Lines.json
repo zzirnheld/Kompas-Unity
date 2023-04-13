@@ -46,13 +46,15 @@
 						"blurb": "where on the Lines to bring them",
 						"spaceRestrictions": [
 							"Empty",
-							"On Card Target's Diagonal",
-							"On Edge of Board"
+							"On Card Target's Diagonal"
 						],
-						"spaceRestrictionElements": [ {
-							"$type": "Core.SpaceRestriction:CanMoveCard:",
-							"toMove": { "$type": "Cards:TargetIndex:" }
-						} ]
+						"spaceRestrictionElements": [
+							{ "$type": "Core.SpaceRestriction:Edge:" },
+							{
+								"$type": "Core.SpaceRestriction:CanMoveCard:",
+								"toMove": { "$type": "Cards:TargetIndex:" }
+							}
+						]
 					}
 				},
 				{

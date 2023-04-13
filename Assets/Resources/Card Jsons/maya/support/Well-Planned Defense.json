@@ -20,6 +20,7 @@
 					"cardRestriction":
 					{
 						"blurb":"for Well-Planned Defense to summon",
+						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
@@ -32,9 +33,9 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "Space on the edge of the board to play the Structure to",
-						"spaceRestrictions": [ "On Edge of Board" ],
                         "spaceRestrictionElements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
+							{ "$type": "Core.SpaceRestriction:Edge:" },
                             {
                                 "$type": "Core.SpaceRestriction:CanPlayCard:",
                                 "toPlay": { "$type": "Cards:TargetIndex:" }

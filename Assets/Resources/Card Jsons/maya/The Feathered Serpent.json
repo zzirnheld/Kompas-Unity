@@ -75,18 +75,9 @@
 			"Default Effect Restrictions",
 			"Number of Cards Exist"
 		],
-		"countCardRestriction": {
-			"elements": [
-				{
-					"$type": "Core.CardRestriction:PositionFitsRestriction:",
-					"spaceRestriction": {
-						"spaceRestrictions": [
-							"On Edge of Board"
-						]
-					}
-				}
-			]
-		},
+		"countCardRestriction": { "elements": [
+			{ "$type": "Core.SpaceRestriction:Edge:" }
+		] },
 		"countCardNumberRestriction": {
 			"numberRestrictions": [">=Constant"],
 			"constant": 14

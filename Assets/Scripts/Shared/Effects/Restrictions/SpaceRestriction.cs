@@ -74,8 +74,6 @@ namespace KompasCore.Effects
         public const string OnSourcesDiagonal = "On Source's Diagonal";
         public const string OnCardTargetsDiagonal = "On Card Target's Diagonal";
         public const string OnAxisOfLastTwoSpaces = "On Axis of Last Two Spaces";
-
-        public const string OnEdge = "On Edge of Board";
         #endregion space restrictions
 
         public string[] spaceRestrictions = { };
@@ -224,9 +222,6 @@ namespace KompasCore.Effects
                 OnSourcesDiagonal => Source.SameDiagonal(space),
                 OnCardTargetsDiagonal => target.SameDiagonal(space),
                 OnAxisOfLastTwoSpaces => space.SameAxis(Subeffect.SpaceTarget, Subeffect.Effect.GetSpace(-2)),
-
-                OnEdge => space.IsEdge,
-                Corner => space.IsCorner,
 
                 _ => throw new ArgumentException($"Invalid space restriction {restriction}", "restriction"),
             };
