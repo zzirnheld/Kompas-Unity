@@ -22,7 +22,6 @@ namespace KompasCore.Effects
         //adjacency
         public const string AdjacentToSource = "Adjacent to Source";
         public const string AdjacentToCardTarget = "Adjacent to Card Target";
-        public const string AdjacentToSpaceTarget = "Adjacent to Space Target";
         #endregion space restrictions
 
         public string[] spaceRestrictions = { };

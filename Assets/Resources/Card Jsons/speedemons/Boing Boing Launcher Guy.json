@@ -29,14 +29,10 @@
 									"card": { "$type": "Cards:ThisCard:" }
 								}
 							},
-                            {
-                                "$type": "Core.CardRestriction:PositionFitsRestriction:",
-								"spaceRestriction": {
-									"spaceRestrictions": [
-										"Adjacent to Space Target"
-									]
-								}
-                            },
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": { "$type": "Spaces:TargetIndex:" }
+							},
 							{
 								"$type": "Core.CardRestriction:CanMove:",
 								"spaceRestrictionSubeffectIndex": 2

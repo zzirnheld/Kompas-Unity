@@ -39,12 +39,15 @@
 			"spaceRestriction":
 			{
 				"blurb":"where to cast the Weather",
-				"spaceRestrictions":["Adjacent to Space Target"],
 				"spaceRestrictionElements": [
 					{
 						"$type": "Core.SpaceRestriction:CanPlayCard:",
 						"toPlay": { "$type": "Cards:TargetIndex:" },
 						"ignoring": ["Adjacent to Friendly Card"]
+					},
+					{
+						"$type": "Core.SpaceRestriction:AdjacentTo:",
+						"space": { "$type": "Spaces:TargetIndex:" }
 					}
 				]
 			}

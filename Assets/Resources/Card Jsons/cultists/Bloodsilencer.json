@@ -35,12 +35,8 @@
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
                             {
-                                "$type": "Core.CardRestriction:PositionFitsRestriction:",
-                                "spaceRestriction": {
-									"spaceRestrictions": [
-										"Adjacent to Space Target"
-									]
-                                }
+                                "$type": "Core.SpaceRestriction:AdjacentTo:",
+                                "space": { "$type": "Spaces:TargetIndex:" }
                             }
 						]
 					},
