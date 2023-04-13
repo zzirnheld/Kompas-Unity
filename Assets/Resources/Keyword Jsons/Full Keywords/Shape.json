@@ -12,16 +12,25 @@
 			"spaceRestriction":
 			{
 				"blurb":"to move Shaper to",
-				"spaceRestrictions":["Connected to Source by Cards Fitting Restriction"],
-				"connectednessRestriction":{
-					"elements": [
-						{ "$type": "Core.CardRestriction:Character:" },
-						{
-							"$type": "Core.CardRestriction:Subtypes:",
-							"subtypes": [ "Ethereal" ]
+				"spaceRestrictionElements": [
+					{
+						"$type": "Core.SpaceRestriction:ConnectedTo:",
+						"space": {
+							"$type": "Spaces:PositionOf:",
+							"ofThisCard": { "$type": "Cards:ThisCard:" }
+						},
+						"byRestriction":{
+							"spaceRestrictionElements": [
+								{ "$type": "Core.CardRestriction:Character:" },
+								{
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Ethereal" ]
+								}
+							]
 						}
-					]
-				}
+					}
+					
+				]
 			}
 		},
 		{
