@@ -76,7 +76,6 @@ namespace KompasCore.Effects
         public const string OnAxisOfLastTwoSpaces = "On Axis of Last Two Spaces";
 
         public const string OnEdge = "On Edge of Board";
-        public const string Corner = "Corner";
         #endregion space restrictions
 
         public string[] spaceRestrictions = { };
