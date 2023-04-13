@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Heavypresence",
-	"effText": "Shape.\nWhen I attack a character, I push them 1 space away. If I can't, annihilate them.",
+	"effText": "Shape.\nWhen I attack a character, I push them 1 space directly away. If I can't, annihilate them.",
 	"effects": [
 		{
 			"triggerData": {
@@ -24,22 +24,32 @@
 					]
 				},
 				{
-					"$type": "Subeffect:SpaceTarget:",
+					"$type": "Subeffect:AutoTargetSpaceIdentity:",
+                    "spaceIdentity": {
+                        "$type": "Spaces:ApplyDisplacement:",
+                        "from": {
+							"$type": "Spaces:PositionOf:",
+							"ofThisCard": { "$type": "Spaces:TargetIndex:" }
+						},
+						"displacement": {
+							"$type": "Spaces:Displacement:",
+							"from": {
+								"$type": "Spaces:PositionOf:",
+								"ofThisCard": { "$type": "Cards:ThisCard:" }
+							},
+							"to": { "$type": "Spaces:TargetIndex:" }
+						}
+                    },
 					"spaceRestriction": {
-						"blurb": "to move Whose Anger Draws Fear's attack target to",
-						"spaceRestrictions": [
-							"Directly Away from Card Target"
-						],
 						"spaceRestrictionElements": [
-							{ "$type": "Core.SpaceRestriction:Empty:" },
-							{
-								"$type": "Core.SpaceRestriction:CanMoveCard:",
-								"toMove": { "$type": "Cards:TargetIndex:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CanMoveCard:",
+                                "toMove": { "$type": "Cards:TargetIndex:" },
 								"distanceRestriction": {
 									"numberRestrictions": [ "==Constant" ],
 									"constant": 1
 								}
-							}
+                            }
 						]
 					}
 				},

@@ -15,9 +15,6 @@
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:TargetTriggeringCardsSpace:"
-				},
-				{
 					"$type": "Subeffect:TargetAll:",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
@@ -34,22 +31,32 @@
 					}
 				},
 				{
-					"$type": "Subeffect:SpaceTarget:",
+					"$type": "Subeffect:SkipToEffectOnImpossible:",
+					"jumpIndices": [ 4 ]
+				},
+				{
+					"$type": "Subeffect:AutoTargetSpaceIdentity:",
+                    "spaceIdentity": {
+                        "$type": "Spaces:ApplyDisplacement:",
+                        "from": {
+							"$type": "Spaces:PositionOf:",
+							"ofThisCard": { "$type": "Spaces:TargetIndex:" }
+						},
+						"displacement": {
+							"$type": "Spaces:Displacement:",
+							"from": {
+								"$type": "Spaces:PositionOf:",
+								"ofThisCard": { "$type": "Cards:ThisCard:" }
+							},
+							"to": { "$type": "Spaces:TargetIndex:" }
+						}
+                    },
 					"spaceRestriction": {
-						"blurb": "to move Whose Anger Draws Fear's attack target to",
-						"spaceRestrictions": [
-							"Directly Away from Card Target"
-						],
 						"spaceRestrictionElements": [
-							{ "$type": "Core.SpaceRestriction:Empty:" },
-							{
-								"$type": "Core.SpaceRestriction:CanMoveCard:",
-								"toMove": { "$type": "Cards:TargetIndex:" },
-								"distanceRestriction": {
-									"numberRestrictions": [ "==Constant" ],
-									"constant": 1
-								}
-							}
+                            {
+                                "$type": "Core.SpaceRestriction:CanMoveCard:",
+                                "toMove": { "$type": "Cards:TargetIndex:" }
+                            }
 						]
 					}
 				},
@@ -57,11 +64,12 @@
 					"$type": "Subeffect:Move:"
 				},
 				{
+					"$type": "Subeffect:ClearOnImpossible:"
+				},
+				{
 					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"delete": true,
-					"jumpIndices": [
-						2
-					]
+					"jumpIndices": [ 1 ]
 				}
 			]
 		}

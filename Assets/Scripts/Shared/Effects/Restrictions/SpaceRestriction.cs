@@ -61,7 +61,6 @@ namespace KompasCore.Effects
         public const string FurtherFromSourceThanSpaceTarget = "Further from Source than Space Target";
         public const string TowardsSourceFromCardTarget = "Towards Source from Card Target";
         public const string TowardsCardTargetFromSource = "Towards Card Target from Source";
-        public const string DirectlyAwayFromCardTarget = "Directly Away from Card Target";
         #endregion space restrictions
 
         public string[] spaceRestrictions = { };
