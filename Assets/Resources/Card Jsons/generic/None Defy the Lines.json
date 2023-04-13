@@ -45,14 +45,20 @@
 					"spaceRestriction": {
 						"blurb": "where on the Lines to bring them",
 						"spaceRestrictions": [
-							"Empty",
-							"On Card Target's Diagonal"
+							"Empty"
 						],
 						"spaceRestrictionElements": [
 							{ "$type": "Core.SpaceRestriction:Edge:" },
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
 								"toMove": { "$type": "Cards:TargetIndex:" }
+							},
+							{
+								"$type": "Core.SpaceRestriction:SameDiagonal:",
+								"other": {
+									"$type": "Spaces:PositionOf:",
+									"card": { "$type": "Cards:TargetIndex:" }
+								}
 							}
 						]
 					}

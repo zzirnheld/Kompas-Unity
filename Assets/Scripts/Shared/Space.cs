@@ -146,6 +146,7 @@ public class Space
     }
 
     public static Space operator *(Space s, int i) => (s.x * i, s.y * i);
+    public static Space operator +(Space a, Space b) => (a.x + b.x, a.y + b.y);
 
     public static bool operator ==(Space a, Space b)
     {

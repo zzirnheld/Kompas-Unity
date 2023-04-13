@@ -19,18 +19,11 @@
 								"subtypes": [ "Structure" ]
 							},
                             {
-                                "$type": "Core.CardRestriction:PositionFitsRestriction:",
-                                "spaceRestriction": {
-                                    "spaceRestrictionElements": [
-										{
-											"$type": "Core.SpaceRestriction:SameDiagonal:",
-											"space": {
-												"$type": "KompasCore.Effects.Identities.Spaces.PositionOf, Assembly-CSharp",
-												"card": { "$type": "Cards:ThisCard:" }
-											}
-										}
-									]
-                                }
+								"$type": "Core.SpaceRestriction:SameDiagonal:",
+								"other": {
+									"$type": "Spaces:PositionOf:",
+									"card": { "$type": "Cards:ThisCard:" }
+								}
                             }
 						]
 					}

@@ -70,10 +70,6 @@ namespace KompasCore.Effects
         public const string Occupied = "Occupied";
         public const string Surrounded = "Surrounded";
         public const string CardHereFitsRestriction = "Card Here Fits Restriction";
-
-        public const string OnSourcesDiagonal = "On Source's Diagonal";
-        public const string OnCardTargetsDiagonal = "On Card Target's Diagonal";
-        public const string OnAxisOfLastTwoSpaces = "On Axis of Last Two Spaces";
         #endregion space restrictions
 
         public string[] spaceRestrictions = { };
@@ -218,10 +214,6 @@ namespace KompasCore.Effects
                 Occupied => !Game.BoardController.IsEmpty(space),
                 Surrounded => Game.BoardController.Surrounded(space),
                 CardHereFitsRestriction => hereFitsRestriction.IsValid(Game.BoardController.GetCardAt(space), context),
-
-                OnSourcesDiagonal => Source.SameDiagonal(space),
-                OnCardTargetsDiagonal => target.SameDiagonal(space),
-                OnAxisOfLastTwoSpaces => space.SameAxis(Subeffect.SpaceTarget, Subeffect.Effect.GetSpace(-2)),
 
                 _ => throw new ArgumentException($"Invalid space restriction {restriction}", "restriction"),
             };
