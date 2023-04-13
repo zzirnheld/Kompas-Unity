@@ -67,9 +67,6 @@ namespace KompasCore.Effects
         public const string CanPlayCardTarget = "Can Play Card Target to This Space";
         public const string CanMoveSource = "Can Move Source to This Space";
         public const string Empty = "Empty";
-        public const string Occupied = "Occupied";
-        public const string Surrounded = "Surrounded";
-        public const string CardHereFitsRestriction = "Card Here Fits Restriction";
         #endregion space restrictions
 
         public string[] spaceRestrictions = { };
@@ -212,8 +209,6 @@ namespace KompasCore.Effects
 
                 Empty => Game.BoardController.IsEmpty(space),
                 Occupied => !Game.BoardController.IsEmpty(space),
-                Surrounded => Game.BoardController.Surrounded(space),
-                CardHereFitsRestriction => hereFitsRestriction.IsValid(Game.BoardController.GetCardAt(space), context),
 
                 _ => throw new ArgumentException($"Invalid space restriction {restriction}", "restriction"),
             };

@@ -1,8 +1,8 @@
 namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 {
-    public class Edge : SpaceRestrictionElement
+    public class Surrounded : SpaceRestrictionElement
     {
         protected override bool IsValidLogic(Space toTest, IResolutionContext context)
-            => toTest.IsEdge;
+            => InitializationContext.game.BoardController.Surrounded(toTest);
     }
 }

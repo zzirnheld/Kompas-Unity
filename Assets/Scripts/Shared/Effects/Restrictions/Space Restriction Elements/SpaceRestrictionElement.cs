@@ -61,19 +61,5 @@ namespace KompasCore.Effects.Restrictions
                 return restriction.IsValid(card, context);
             }
         }
-
-        public class SameDiagonal : SpaceRestrictionElement
-        {
-            public IIdentity<Space> space;
-
-            public override void Initialize(EffectInitializationContext initializationContext)
-            {
-                base.Initialize(initializationContext);
-                space.Initialize(initializationContext);
-            }
-
-            protected override bool IsValidLogic(Space space, IResolutionContext context)
-                => space.SameDiagonal(this.space.From(context, default));
-        }
     }
 }
