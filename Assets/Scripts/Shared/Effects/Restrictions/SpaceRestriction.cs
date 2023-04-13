@@ -77,12 +77,6 @@ namespace KompasCore.Effects
 
         public const string OnEdge = "On Edge of Board";
         public const string Corner = "Corner";
-        //TODO: eventually make a "targetdirection" subeffect that appends the direction as a Space to the list of coords,
-        // then replace these with something comparing directions
-        public const string SameDirectionFromSpaceToCardTargetAsSpaceTargetToSource
-            = "Same Direction from Space to Card Target as Space Target to Source";
-        public const string OppositeDirectionFromSourceToSpaceAsSourceToSpaceTarget
-            = "Opposite Direction from Source to Space as Source to Space Target";
         #endregion space restrictions
 
         public string[] spaceRestrictions = { };
@@ -234,10 +228,6 @@ namespace KompasCore.Effects
 
                 OnEdge => space.IsEdge,
                 Corner => space.IsCorner,
-                SameDirectionFromSpaceToCardTargetAsSpaceTargetToSource
-                    => target.Position.DirectionFromThisTo(space) == Subeffect.SpaceTarget.DirectionFromThisTo(Source.Position),
-                OppositeDirectionFromSourceToSpaceAsSourceToSpaceTarget
-                    => Source.Position.DirectionFromThisTo(space) * -1 == Source.Position.DirectionFromThisTo(Subeffect.SpaceTarget),
 
                 _ => throw new ArgumentException($"Invalid space restriction {restriction}", "restriction"),
             };
