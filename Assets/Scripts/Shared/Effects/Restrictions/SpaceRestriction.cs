@@ -56,11 +56,6 @@ namespace KompasCore.Effects
         public const string DistanceToSourceFitsXRestriction = "Distance to Source Fits X Restriction";
         public const string DistanceToCardTargetFitsXRestriction = "Distance to Card Target Fits X Restriction";
         public const string DistanceToSpaceTargetFitsXRestriction = "Distance to Space Target Fits X Restriction";
-
-        public const string FurtherFromSourceThanCardTarget = "Further from Source than Card Target";
-        public const string FurtherFromSourceThanSpaceTarget = "Further from Source than Space Target";
-        public const string TowardsSourceFromCardTarget = "Towards Source from Card Target";
-        public const string TowardsCardTargetFromSource = "Towards Card Target from Source";
         #endregion space restrictions
 
         public string[] spaceRestrictions = { };
@@ -187,14 +182,6 @@ namespace KompasCore.Effects
                 DistanceToSourceFitsXRestriction => distanceXRestriction.IsValid(Source.DistanceTo(space), context),
                 DistanceToCardTargetFitsXRestriction => distanceXRestriction.IsValid(target.DistanceTo(space), context),
                 DistanceToSpaceTargetFitsXRestriction => distanceXRestriction.IsValid(Subeffect.SpaceTarget.DistanceTo(space), context),
-
-                FurtherFromSourceThanCardTarget => Source.DistanceTo(space) > Source.DistanceTo(target),
-                FurtherFromSourceThanSpaceTarget => Source.DistanceTo(space) > Source.DistanceTo(Subeffect.SpaceTarget),
-
-                TowardsSourceFromCardTarget => Source.DistanceTo(space) < Source.DistanceTo(target),
-                TowardsCardTargetFromSource => target.DistanceTo(space) < target.DistanceTo(Source),
-
-                DirectlyAwayFromCardTarget => target.SpaceDirectlyAwayFrom(space, Source),
 
                 _ => throw new ArgumentException($"Invalid space restriction {restriction}", "restriction"),
             };

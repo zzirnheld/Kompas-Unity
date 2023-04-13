@@ -48,9 +48,6 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to boing boing launch that guy",
-						"spaceRestrictions": [
-							"Further from Source than Space Target"
-						],
 						"spaceRestrictionElements": [
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
@@ -59,6 +56,14 @@
 									"numberRestrictions": [ "==Constant" ],
 									"constant": 1
 								}
+							},
+							{
+								"$type": "Core.SpaceRestriction:AwayFrom:",
+								"destination": {
+                                    "$type": "Spaces:PositionOf:",
+                                    "ofThisCard": { "$type": "Cards:ThisCard:" }
+                                },
+								"origin": { "$type": "Spaces:TargetIndex:" }
 							}
 						]
 					}

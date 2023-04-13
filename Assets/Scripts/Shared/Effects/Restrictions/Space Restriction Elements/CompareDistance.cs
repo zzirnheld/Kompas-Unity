@@ -31,4 +31,46 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
             return comparison.Compare(distance, number);
         }
     }
+
+    public class Towards : SpaceRestrictionElement
+    {
+        //Whether the space to be tested's distance to the destination
+        //is closer than other's distance to the destination
+        public IIdentity<Space> destination;
+        public IIdentity<Space> origin;
+
+        public override void Initialize(EffectInitializationContext initializationContext)
+        {
+            base.Initialize(initializationContext);
+            destination.Initialize(initializationContext);
+            origin.Initialize(initializationContext);
+        }
+
+        protected override bool IsValidLogic(Space item, IResolutionContext context)
+        {
+            var destination = this.destination.From(context, default);
+            return destination.DistanceTo(item) < destination.DistanceTo(origin.From(context, default));
+        }
+    }
+
+    public class AwayFrom : SpaceRestrictionElement
+    {
+        //Whether the space to be tested's distance to the destination
+        //is further than other's distance to the destination
+        public IIdentity<Space> destination;
+        public IIdentity<Space> origin;
+
+        public override void Initialize(EffectInitializationContext initializationContext)
+        {
+            base.Initialize(initializationContext);
+            destination.Initialize(initializationContext);
+            origin.Initialize(initializationContext);
+        }
+
+        protected override bool IsValidLogic(Space item, IResolutionContext context)
+        {
+            var destination = this.destination.From(context, default);
+            return destination.DistanceTo(item) > destination.DistanceTo(origin.From(context, default));
+        }
+    }
 }

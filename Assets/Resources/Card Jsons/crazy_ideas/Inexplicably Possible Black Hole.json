@@ -27,14 +27,23 @@
 					"spaceRestriction": {
 						"blurb": "e n t e r t h e h o l e",
 						"spaceRestrictions": [
-							"Adjacent to Card Target",
-							"Towards Source from Card Target"
+							"Adjacent to Card Target"
 						],
 						"spaceRestrictionElements": [
-							{ "$type": "Core.SpaceRestriction:Empty:" },
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
 								"toMove": { "$type": "Cards:TargetIndex:" }
+							},
+							{
+								"$type": "Core.SpaceRestriction:Towards:",
+								"destination": {
+                                    "$type": "Spaces:PositionOf:",
+                                    "ofThisCard": { "$type": "Cards:ThisCard:" }
+                                },
+								"origin": {
+                                    "$type": "Spaces:PositionOf:",
+                                    "ofThisCard": { "$type": "Cards:TargetIndex:" }
+                                }
 							}
 						]
 					}
