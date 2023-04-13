@@ -12,7 +12,7 @@
 			"spaceRestriction":
 			{
 				"blurb":"to move Shaper to",
-				"spaceRestrictionElements": [
+				"elements": [
 					{
 						"$type": "Core.SpaceRestriction:ConnectedTo:",
 						"space": {
@@ -20,7 +20,7 @@
 							"ofThisCard": { "$type": "Cards:ThisCard:" }
 						},
 						"byRestriction":{
-							"spaceRestrictionElements": [
+							"elements": [
 								{ "$type": "Core.CardRestriction:Character:" },
 								{
 									"$type": "Core.CardRestriction:Subtypes:",

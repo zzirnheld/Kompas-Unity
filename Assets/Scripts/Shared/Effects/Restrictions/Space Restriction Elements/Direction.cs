@@ -1,7 +1,7 @@
 using System;
 using KompasCore.Effects.Identities;
 
-namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
+namespace KompasCore.Effects.Restrictions.elements
 {
     public class Direction : SpaceRestrictionElement
     {

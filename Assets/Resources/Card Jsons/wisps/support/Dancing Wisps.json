@@ -13,7 +13,7 @@
                     "Main Card Fits Restriction Before"
                 ],
                 "spaceRestriction": {
-                    "spaceRestrictionElements": [
+                    "elements": [
                         {
                             "$type": "Core.SpaceRestriction:AdjacentTo:",
                             "space": {
@@ -52,7 +52,7 @@
                         "spaces": {
                             "$type": "ManySpaces:FittingRestriction:",
                             "restriction": {
-                                "spaceRestrictionElements": [ { "$type": "Core.SpaceRestriction:Empty:" } ]
+                                "elements": [ { "$type": "Core.SpaceRestriction:Empty:" } ]
                             },
                             "spaces": {
                                 "$type": "ManySpaces:AdjacentSpaces:",

@@ -10,7 +10,7 @@
 				"triggerCondition":"Arrive",
 				"triggerRestriction":{
 					"triggerRestrictions":["Space Fits Restriction"],
-					"spaceRestriction": { "spaceRestrictionElements":[ 
+					"spaceRestriction": { "elements":[ 
 						{
 							"$type": "Core.SpaceRestriction:AdjacentTo:",
 							"space": {

@@ -6,7 +6,7 @@
         "$type": "Subeffect:SpaceTarget:",
         "spaceRestriction": {
             "blurb": "Stealth position to 'actually' be in",
-            "spaceRestrictionElements": [
+            "elements": [
                 {
                     "$type": "Core.SpaceRestriction:CanMoveCard:",
                     "toMove": { "$type": "Cards:TargetIndex:" }

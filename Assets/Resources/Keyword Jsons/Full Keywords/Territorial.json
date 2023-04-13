@@ -36,7 +36,7 @@
 			"spaceRestriction":
 			{
 				"blurb":"where Dragon to move its target",
-				"spaceRestrictionElements": [ {
+				"elements": [ {
 					"$type": "Core.SpaceRestriction:CanMoveCard:",
 					"toMove": { "$type": "Cards:TargetIndex:" },
 					"distanceRestriction": {

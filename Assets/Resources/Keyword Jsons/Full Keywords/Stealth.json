@@ -16,7 +16,7 @@
         {
             "$type": "Subeffect:SpaceTarget:",
             "spaceRestriction": {
-                "spaceRestrictionElements": [
+                "elements": [
                     {
                         "$type": "Core.SpaceRestriction:InAOEOf:",
                         "anyOf": {

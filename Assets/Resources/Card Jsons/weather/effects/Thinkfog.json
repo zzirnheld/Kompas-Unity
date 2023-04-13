@@ -17,7 +17,7 @@
 					},
 					"spaceRestriction":
 					{
-						"spaceRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.SpaceRestriction:InAOEOf:",
 								"card": { "$type": "Cards:ThisCard:" }

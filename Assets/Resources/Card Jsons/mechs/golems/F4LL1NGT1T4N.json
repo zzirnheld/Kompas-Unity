@@ -38,7 +38,7 @@
                     "spaceRestriction":
                     {
                         "blurb":"to teleport F4LL1NGT1T4N to",
-						"spaceRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.SpaceRestriction:Empty:" },
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",

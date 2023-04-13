@@ -1,6 +1,6 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
-using KompasCore.Effects.Restrictions.SpaceRestrictionElements;
+using KompasCore.Effects.Restrictions.elements;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,7 +12,7 @@ namespace KompasServer.Effects.Subeffects
     {
         public SpaceRestriction spaceRestriction;
 
-        private bool ForPlay => spaceRestriction.spaceRestrictionElements.Any(elem => elem is CanPlayCard);
+        private bool ForPlay => spaceRestriction.elements.Any(elem => elem is CanPlayCard);
 
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {

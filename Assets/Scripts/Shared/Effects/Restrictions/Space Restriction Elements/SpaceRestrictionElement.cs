@@ -9,7 +9,7 @@ namespace KompasCore.Effects.Restrictions
         public bool IsValid(GameCardBase item, IResolutionContext context) => IsValid(item?.Position, context);
     }
 
-    namespace SpaceRestrictionElements
+    namespace elements
     {
         public class Not : SpaceRestrictionElement
         {

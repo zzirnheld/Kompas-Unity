@@ -1,7 +1,7 @@
 using KompasCore.Cards;
 using KompasCore.Effects.Identities;
 
-namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
+namespace KompasCore.Effects.Restrictions.elements
 {
     /// <summary>
     /// Whether a card can be moved to that space. Presumes from effect

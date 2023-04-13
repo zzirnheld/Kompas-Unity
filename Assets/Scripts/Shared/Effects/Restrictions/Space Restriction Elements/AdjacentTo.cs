@@ -3,7 +3,7 @@ using KompasCore.Effects.Identities;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
+namespace KompasCore.Effects.Restrictions.elements
 {
     /// <summary>
     /// Simplifies the adjacency case, even though it could just be done with "compare distance to 1".

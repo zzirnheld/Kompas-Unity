@@ -24,7 +24,7 @@
 						} ]
 					},
 					"spaceRestriction": {
-						"spaceRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.SpaceRestriction:InAOEOf:",
 								"card": { "$type": "Cards:ThisCard:" }
@@ -47,7 +47,7 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where for Yeeterator to move its target",
-						"spaceRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.SpaceRestriction:Empty:" },
 							{ "$type": "Core.SpaceRestriction:Corner:" },
 							{

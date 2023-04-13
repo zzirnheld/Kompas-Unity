@@ -37,7 +37,7 @@
                                     "ofThisCard": { "$type": "Cards:TargetIndex:" }
                                 },
 								"byRestriction":{
-									"spaceRestrictionElements": [
+									"elements": [
 										{ "$type": "Core.CardRestriction:Enemy:" },
 										{ "$type": "Core.CardRestriction:Character:" },
 										{

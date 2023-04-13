@@ -141,7 +141,7 @@
 					"playerIndex": -2,
 					"spaceRestriction": {
 						"blurb": "where for new Reporter to report",
-                        "spaceRestrictionElements": [
+                        "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {
                                 "$type": "Core.SpaceRestriction:CanPlayCard:",

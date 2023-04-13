@@ -36,7 +36,7 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "to Linewalk to",
-						"spaceRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
 								"toMove": { "$type": "Cards:TargetIndex:" }
@@ -55,7 +55,7 @@
                                     "ofThisCard": { "$type": "Cards:TargetIndex:" }
                                 },
 								"byRestriction": {
-									"spaceRestrictionElements": [
+									"elements": [
 										{ "$type": "Core.SpaceRestriction:Empty:" },
 										{
 											"$type": "Core.SpaceRestriction:SameDiagonal:",

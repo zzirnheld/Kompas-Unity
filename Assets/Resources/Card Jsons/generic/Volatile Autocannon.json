@@ -24,7 +24,7 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "Direction to fire the cannon",
-						"spaceRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.SpaceRestriction:Empty:" },
                             {
 								"$type": "Core.SpaceRestriction:SameDiagonal:",

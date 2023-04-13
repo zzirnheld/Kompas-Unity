@@ -14,7 +14,7 @@
 						"Not From Effect"
 					],
 					"spaceRestriction": {
-						"spaceRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.SpaceRestriction:InAOEOf:",
 								"card": { "$type": "Cards:ThisCard:" }
@@ -30,7 +30,7 @@
 				{
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
-						"spaceRestrictionElements": [
+						"elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",

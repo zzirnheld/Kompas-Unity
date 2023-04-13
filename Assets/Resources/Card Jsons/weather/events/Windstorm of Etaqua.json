@@ -48,7 +48,7 @@
 				{
 					"$type": "Subeffect:SpaceTarget:",
                     "spaceRestriction": {
-						"spaceRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.SpaceRestriction:Empty:" },
 							{
 								"$type": "Core.SpaceRestriction:InAOEOf:",
@@ -97,7 +97,7 @@
 			"Adjacent to Friendly Card"
 		],
 		"spaceRestriction": {
-			"spaceRestrictionElements": [ {
+			"elements": [ {
 				"$type": "Core.SpaceRestriction:InAOEOf:",
 				"anyOf": {
 					"$type": "ManyCards:FittingRestriction:",

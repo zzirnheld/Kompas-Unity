@@ -32,7 +32,7 @@
                         "ofThisCard": { "$type": "Cards:CardBefore:" }
                     },
                     "throughRestriction": {
-                        "spaceRestrictionElements": [
+                        "elements": [
                             {
                                 "$type": "Core.SpaceRestriction:CardFitsRestriction:",
                                 "restriction": {
@@ -58,7 +58,7 @@
                         "ofThisCard": { "$type": "Cards:CardAfter:" }
                     },
                     "throughRestriction": {
-                        "spaceRestrictionElements": [
+                        "elements": [
                             {
                                 "$type": "Core.SpaceRestriction:CardFitsRestriction:",
                                 "restriction": {
@@ -86,7 +86,7 @@
                 "ofThisCard": { "$type": "Cards:CardAfter:" }
             },
             "throughRestriction": {
-                "spaceRestrictionElements": [
+                "elements": [
                     {
                         "$type": "Core.SpaceRestriction:CardFitsRestriction:",
                         "restriction": {

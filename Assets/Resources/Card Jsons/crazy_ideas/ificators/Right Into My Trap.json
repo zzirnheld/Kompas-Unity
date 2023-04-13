@@ -20,7 +20,7 @@
 						]
 					},
 					"spaceRestriction": {
-						"spaceRestrictionElements": [
+						"elements": [
                             {
                                 "$type": "Core.SpaceRestriction:AdjacentTo:",
                                 "cardRestriction": {

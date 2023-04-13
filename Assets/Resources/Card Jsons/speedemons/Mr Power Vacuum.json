@@ -12,7 +12,7 @@
 						"Space Fits Restriction"
 					],
 					"spaceRestriction": {
-						"spaceRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.SpaceRestriction:AdjacentTo:",
 								"cardRestriction": { "elements": [

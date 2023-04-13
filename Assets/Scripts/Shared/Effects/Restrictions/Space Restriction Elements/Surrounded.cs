@@ -1,4 +1,4 @@
-namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
+namespace KompasCore.Effects.Restrictions.elements
 {
     public class Surrounded : SpaceRestrictionElement
     {

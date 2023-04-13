@@ -2,7 +2,7 @@ using System;
 using KompasCore.Cards;
 using KompasCore.Effects.Identities;
 
-namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
+namespace KompasCore.Effects.Restrictions.elements
 {
     public class Behind : SpaceRestrictionElement
     {

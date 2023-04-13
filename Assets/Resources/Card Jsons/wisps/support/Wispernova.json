@@ -43,7 +43,7 @@
                         "spaces": {
                             "$type": "ManySpaces:FittingRestriction:",
                             "restriction": {
-                                "spaceRestrictionElements": [ {
+                                "elements": [ {
                                     "$type": "Core.SpaceRestriction:CanPlayCard:",
                                     "toPlay": { "$type": "Cards:TargetIndex:" }
                                 } ]

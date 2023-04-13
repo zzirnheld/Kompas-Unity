@@ -33,7 +33,7 @@
 					"spaceRestriction":
 					{
 						"blurb":"haven to play the Supplicant",
-						"spaceRestrictionElements": [
+						"elements": [
                             {
                                 "$type": "Core.SpaceRestriction:CanPlayCard:",
                                 "toPlay": { "$type": "Cards:TargetIndex:" }

@@ -45,7 +45,7 @@
                             "$type": "Core.TriggerRestriction:SpacesFitRestriction:",
                             "spaces": { "$type": "ManySpaces:Corners:" },
                             "spaceRestriction": {
-                                "spaceRestrictionElements": [
+                                "elements": [
                                     {
                                         "$type": "Core.SpaceRestriction:Not:",
                                         "negated": { "$type": "Core.SpaceRestriction:Empty:" }

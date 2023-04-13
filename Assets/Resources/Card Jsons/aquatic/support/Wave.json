@@ -35,7 +35,7 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where will the wave crash",
-						"spaceRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
 								"toMove": { "$type": "Cards:TargetIndex:" }
@@ -47,7 +47,7 @@
                                     "ofThisCard": { "$type": "Cards:TargetIndex:" }
                                 },
 								"byRestriction":{
-									"spaceRestrictionElements": [
+									"elements": [
 										{
 											"$type": "Core.SpaceRestriction:InAOEOf:",
 											"anyOf": {
@@ -94,7 +94,7 @@
 				{
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
-						"spaceRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.SpaceRestriction:Empty:" },
 							{
 								"$type": "Core.SpaceRestriction:InAOEOf:",

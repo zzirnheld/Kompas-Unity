@@ -25,7 +25,7 @@
                     "spaceRestriction":
                     {
                         "blurb":"where Elk will lengthen to",
-						"spaceRestrictionElements": [ {
+						"elements": [ {
 							"$type": "Core.SpaceRestriction:CanMoveCard:",
 							"toMove": { "$type": "Cards:TargetIndex:" },
 							"distanceRestriction": {

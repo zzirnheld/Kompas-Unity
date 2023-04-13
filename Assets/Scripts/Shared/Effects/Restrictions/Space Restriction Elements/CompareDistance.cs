@@ -1,7 +1,7 @@
 using KompasCore.Effects.Identities;
 using KompasCore.Effects.Relationships;
 
-namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
+namespace KompasCore.Effects.Restrictions.elements
 {
     /// <summary>
     /// Gets the distance between the described origin point and the space to be tested,

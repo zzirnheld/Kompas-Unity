@@ -17,7 +17,7 @@
 						"elements": [ { "$type": "Core.CardRestriction:Character:" } ]
 					},
 					"spaceRestriction": {
-						"spaceRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.SpaceRestriction:AdjacentTo:",
 								"cardRestriction": { "elements": [

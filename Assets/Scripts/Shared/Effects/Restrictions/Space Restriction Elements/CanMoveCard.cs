@@ -2,7 +2,7 @@ using KompasCore.Cards;
 using KompasCore.Effects.Identities;
 using System.Collections.Generic;
 
-namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
+namespace KompasCore.Effects.Restrictions.elements
 {
     /// <summary>
     /// Whether a card can be moved to that space. Presumes from effect
@@ -15,7 +15,7 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
         /// Describes any restriction on the spaces between the card and where it needs to go (the space being tested)
         /// </summary>
         public SpaceRestriction throughRestriction = new SpaceRestriction() {
-            spaceRestrictionElements = new List<SpaceRestrictionElement> {
+            elements = new List<SpaceRestrictionElement> {
                 new Empty()
             }
         };

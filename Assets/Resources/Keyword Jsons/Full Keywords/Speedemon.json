@@ -24,7 +24,7 @@
 			"spaceRestriction":
 			{
 				"blurb":"speeeeeeeeeeeeeeeed",
-				"spaceRestrictionElements": [
+				"elements": [
 					{
 						"$type": "Core.SpaceRestriction:CanMoveCard:",
 						"toMove": { "$type": "Cards:TargetIndex:" }

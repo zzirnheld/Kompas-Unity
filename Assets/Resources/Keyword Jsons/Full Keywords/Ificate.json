@@ -52,7 +52,7 @@
 			"spaceRestriction":
 			{
 				"blurb":"where Ificator to play targeted Crazy Idea",
-				"spaceRestrictionElements": [
+				"elements": [
 					{
 						"$type": "Core.SpaceRestriction:CanPlayCard:",
 						"toPlay": { "$type": "Cards:TargetIndex:" }

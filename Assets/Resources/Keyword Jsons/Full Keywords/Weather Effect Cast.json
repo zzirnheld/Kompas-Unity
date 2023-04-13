@@ -39,7 +39,7 @@
 			"spaceRestriction":
 			{
 				"blurb":"where to cast the Weather",
-				"spaceRestrictionElements": [
+				"elements": [
 					{
 						"$type": "Core.SpaceRestriction:CanPlayCard:",
 						"toPlay": { "$type": "Cards:TargetIndex:" },

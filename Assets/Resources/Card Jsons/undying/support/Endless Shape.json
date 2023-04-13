@@ -18,7 +18,7 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
                         "blurb": "Space to move an Ethereal to",
-						"spaceRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.SpaceRestriction:AdjacentTo:",
 								"cardRestriction": { "elements": [

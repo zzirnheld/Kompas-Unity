@@ -35,7 +35,7 @@
 			"spaceRestriction":
 			{
 				"blurb":"where to Flashback the card",
-				"spaceRestrictionElements": [
+				"elements": [
 					{
 						"$type": "Core.SpaceRestriction:CanPlayCard:",
 						"toPlay": { "$type": "Cards:TargetIndex:" }
