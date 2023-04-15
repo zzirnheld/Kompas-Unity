@@ -14,7 +14,7 @@
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Enemy:" }
 						]
 					}
@@ -39,18 +39,16 @@
 					"$type": "Subeffect:ConditionalJump:",
 					"condition": "Target Violates Restriction",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Character",
-							"Card Value Fits Number Restriction"
-						],
-						"cardValue": {
-							"value": "S"
-						},
-						"cardValueNumberRestriction": {
-							"numberRestrictions": [
-								"<X"
-							]
-						}
+						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" }, {
+							"$type": "Core.CardRestriction:CardValueFits:",
+							"cardValue": { "value": "S" },
+							"numberRestriction": { "elements": [ {
+								"$type": "Core.NumberRestriction:Compare:",
+								"comparison": { "$type": "Relationships.Number:LessThan:" },
+								"other": { "$type": "Numbers:X:" }
+							} ] }
+						} ]
 					},
 					"jumpIndices": [
 						2
@@ -61,7 +59,7 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to Invoke",
-                        "spaceRestrictionElements": [
+                        "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {
                                 "$type": "Core.SpaceRestriction:CanPlayCard:",

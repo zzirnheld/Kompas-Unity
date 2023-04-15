@@ -20,8 +20,8 @@
 					"$type": "Subeffect:ConditionalJump:",
 					"condition": "Main Triggering Card Flouted Restriction Before",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Revealed"
+						"elements": [
+							{ "$type": "Core.CardRestriction:Hidden:", "hidden": false }
 						]
 					},
 					"jumpIndices": [
@@ -30,16 +30,11 @@
 				},
 				{
 					"$type": "Subeffect:ChangeAllCardStats:",
+					"cardsSource": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Character"
-						],
-						"cardRestrictionElements": [
+						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							},
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Reporter" ]
@@ -53,16 +48,17 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": {
+						"$type": "ManyCards:Hand:",
+						"friendly": true, "enemy": true
+					},
 					"cardRestriction": {
 						"blurb": "card to reveal",
-						"cardRestrictions": [
-							"Controller Matches Player Target",
-							"Hidden"
-						],
-						"cardRestrictionElements": [
+						"elements": [
+							{ "$type": "Core.CardRestriction:Hidden:" },
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Hand" ]
+								"$type": "Core.PlayerRestriction:PlayersMatch:",
+								"player": { "$type": "Players:TargetIndex:" }
 							}
 						]
 					}

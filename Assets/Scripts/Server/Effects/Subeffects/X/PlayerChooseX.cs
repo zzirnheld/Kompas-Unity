@@ -28,7 +28,7 @@ namespace KompasServer.Effects.Subeffects
 
         public bool SetXIfLegal(int x)
         {
-            if (XRest.IsValidNumber(x))
+            if (XRest.IsValid(x, ResolutionContext))
             {
                 ServerEffect.X = x;
                 return true;

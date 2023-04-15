@@ -12,14 +12,14 @@
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Character",
-							"Space Fits Restriction"
-						],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" }
-						],
-						"spaceRestriction": { "spaceRestrictions": [ "In Source's AOE" ] }
+						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.SpaceRestriction:InAOEOf:",
+								"card": { "$type": "Cards:ThisCard:" }
+							}
+						]
 					}
 				}
 			},
@@ -50,12 +50,12 @@
 						"This Card Fits Restriction Now"
 					],
 					"cardRestriction": {
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Enemy:" }
 						]
 					},
 					"selfRestriction": {
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Discard" ]
@@ -75,7 +75,16 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "Drop your loot!",
-						"spaceRestrictions": [ "Empty", "Adjacent to Card Target" ]
+						"elements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": {
+                                    "$type": "Spaces:PositionOf:",
+                                    "ofThisCard": { "$type": "Cards:TargetIndex:" }
+                                }
+							}
+						]
 					}
 				},
 				{

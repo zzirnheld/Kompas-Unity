@@ -29,14 +29,14 @@
                     },
                     "secondSpace": {
                         "$type": "Spaces:PositionOf:",
-                        "ofThisCard": { "$type": "Cards:MainCardBefore:" }
+                        "ofThisCard": { "$type": "Cards:CardBefore:" }
                     },
                     "throughRestriction": {
-                        "spaceRestrictionElements": [
+                        "elements": [
                             {
                                 "$type": "Core.SpaceRestriction:CardFitsRestriction:",
                                 "restriction": {
-                                    "cardRestrictionElements": [
+                                    "elements": [
                                         {
                                             "$type": "Core.CardRestriction:Subtypes:",
                                             "subtypes": [ "Ethereal" ]
@@ -55,14 +55,14 @@
                     },
                     "secondSpace": {
                         "$type": "Spaces:PositionOf:",
-                        "ofThisCard": { "$type": "Cards:MainCardAfter:" }
+                        "ofThisCard": { "$type": "Cards:CardAfter:" }
                     },
                     "throughRestriction": {
-                        "spaceRestrictionElements": [
+                        "elements": [
                             {
                                 "$type": "Core.SpaceRestriction:CardFitsRestriction:",
                                 "restriction": {
-                                    "cardRestrictionElements": [
+                                    "elements": [
                                         {
                                             "$type": "Core.CardRestriction:Subtypes:",
                                             "subtypes": [ "Ethereal" ]
@@ -79,18 +79,18 @@
             "$type": "Numbers:Distance:",
             "firstSpace": {
                 "$type": "Spaces:PositionOf:",
-                "ofThisCard": { "$type": "Cards:MainCardBefore:" }
+                "ofThisCard": { "$type": "Cards:CardBefore:" }
             },
             "secondSpace": {
                 "$type": "Spaces:PositionOf:",
-                "ofThisCard": { "$type": "Cards:MainCardAfter:" }
+                "ofThisCard": { "$type": "Cards:CardAfter:" }
             },
             "throughRestriction": {
-                "spaceRestrictionElements": [
+                "elements": [
                     {
                         "$type": "Core.SpaceRestriction:CardFitsRestriction:",
                         "restriction": {
-                            "cardRestrictionElements": [
+                            "elements": [
                                 {
                                     "$type": "Core.CardRestriction:Subtypes:",
                                     "subtypes": [ "Ethereal" ]

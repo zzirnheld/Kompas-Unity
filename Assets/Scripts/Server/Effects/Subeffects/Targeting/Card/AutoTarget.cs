@@ -1,5 +1,7 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
+using KompasCore.Effects.Identities;
+using KompasCore.Effects.Identities.ManyCards;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,6 +15,7 @@ namespace KompasServer.Effects.Subeffects
         public const string Any = "Any";
         public const string RandomCard = "Random";
 
+        public IIdentity<IReadOnlyCollection<GameCardBase>> toSearch = new All();
         public CardRestriction cardRestriction;
         public CardValue tiebreakerValue;
         public string tiebreakerDirection;
@@ -25,7 +28,7 @@ namespace KompasServer.Effects.Subeffects
             tiebreakerValue?.Initialize(DefaultInitializationContext);
         }
 
-        public override bool IsImpossible() => !Game.Cards.Any(c => cardRestriction.IsValidCard(c, ResolutionContext));
+        public override bool IsImpossible() => !Game.Cards.Any(c => cardRestriction.IsValid(c, ResolutionContext));
 
         private GameCard GetRandomCard(GameCard[] cards)
         {
@@ -39,7 +42,9 @@ namespace KompasServer.Effects.Subeffects
             IEnumerable<GameCard> potentialTargets = null;
             try
             {
-                potentialTargets = Game.Cards.Where(c => cardRestriction.IsValidCard(c, ResolutionContext));
+                potentialTargets = toSearch.From(ResolutionContext, default)
+                    .Where(c => cardRestriction.IsValid(c, ResolutionContext))
+                    .Select(c => c.Card);
                 potentialTarget = tiebreakerDirection switch
                 {
                     Maximum => potentialTargets.OrderByDescending(tiebreakerValue.GetValueOf).First(),

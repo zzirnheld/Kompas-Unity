@@ -16,18 +16,13 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "Haeomomantic sacrifice",
-						"cardRestrictions": [
-							"Character",
-							"Summoned"
-						],
-						"cardRestrictionElements": [
+						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							}
+                            { "$type": "Core.CardRestriction:Summoned:" }
 						]
 					}
 				},
@@ -43,26 +38,20 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Discard:" },
 					"cardRestriction": {
 						"blurb": "Circle of Life",
-						"cardRestrictions": [
-							"Character",
-							"Can Be Played",
-							"Card Value Fits Number Restriction"
-						],
-						"cardValue": {
-							"value": "S"
-						},
-						"cardValueNumberRestriction": {
-							"numberRestrictions": [
-								"<X"
-							]
-						},
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
+						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
+                            { "$type": "Core.CardRestriction:CanPlay:" },
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Discard" ]
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": { "value": "Cost" },
+								"numberRestriction": { "elements": [{
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:LessThan:" },
+									"other": { "$type": "Numbers:X:" }
+								}]}
 							}
 						]
 					},
@@ -72,7 +61,7 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to continue the circle",
-                        "spaceRestrictionElements": [
+                        "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {
                                 "$type": "Core.SpaceRestriction:CanPlayCard:",

@@ -13,10 +13,8 @@
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Character"
-						],
-						"cardRestrictionElements": [
+						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Discard" ]
@@ -38,20 +36,16 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Character",
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Source"
-							]
-						},
-						"cardRestrictionElements": [
+						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": {
+									"$type": "Spaces:PositionOf:",
+									"ofThisCard": { "$type": "Cards:ThisCard:" }
+								}
 							}
 						]
 					}

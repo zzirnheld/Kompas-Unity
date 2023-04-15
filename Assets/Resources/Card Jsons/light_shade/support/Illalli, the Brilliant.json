@@ -15,13 +15,17 @@
 				{
 					"$type": "Subeffect:AutoTarget:",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Source in This' AOE"
-						],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Light" ]
+							},
+							{
+								"$type": "Core.CardRestriction:AOEContains:",
+								"cards": {
+									"$type": "ManyCards:FromSingle:",
+									"cards": [ { "$type": "Cards:ThisCard:" } ]
+								}
 							}
 						]
 					},
@@ -35,13 +39,11 @@
 				},
 				{
 					"$type": "Subeffect:AutoTarget:",
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Deck",
-							"Spell"
-						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+							{ "$type": "Core.CardRestriction:Spell:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Shade" ]
@@ -65,7 +67,7 @@
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Light" ]
@@ -80,21 +82,14 @@
 				},
 				{
 					"$type": "Subeffect:ChangeAllCardStats:",
+					"cardsSource": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Character",
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"In Card Target's AOE"
-							]
-						},
-						"cardRestrictionElements": [
+						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Enemy:" },
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+								"$type": "Core.SpaceRestriction:InAOEOf:",
+								"card": { "$type": "Cards:TargetIndex:" }
 							}
 						]
 					},

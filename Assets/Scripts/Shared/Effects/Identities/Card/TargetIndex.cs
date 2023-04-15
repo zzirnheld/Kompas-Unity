@@ -7,6 +7,9 @@ namespace KompasCore.Effects.Identities.Cards
         public int index = -1;
 
         protected override GameCardBase AbstractItemFrom(IResolutionContext contextToConsider)
-            => EffectHelpers.GetItem(contextToConsider.CardTargets, index);
+        {
+            return InitializationContext.effect?.identityOverrides.TargetCardOverride
+                ?? EffectHelpers.GetItem(contextToConsider.CardTargets, index);
+        } 
     }
 }

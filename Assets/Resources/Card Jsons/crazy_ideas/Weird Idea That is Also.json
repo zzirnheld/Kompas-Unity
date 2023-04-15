@@ -21,15 +21,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
-						"blurb": "card in hand that is also discard",
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Hand" ]
-							}
-						]
+						"blurb": "card in hand that is also discard"
 					}
 				},
 				{
@@ -37,17 +31,10 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "character that is also +1 W",
-						"cardRestrictions": [
-							"Character"
-						],
-						"cardRestrictionElements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							}
-						]
+						"elements": [ { "$type": "Core.CardRestriction:Character:" } ]
 					}
 				},
 				{

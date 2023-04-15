@@ -13,7 +13,7 @@
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Weather", "Event" ]
@@ -29,24 +29,29 @@
 				{
 					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Not Already Target",
-							"Character",
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"In AOE Source is Also In"
-							],
-							"alsoInAOEOfRestriction": {
-								"cardRestrictionElements": [
-									{
-										"$type": "Core.CardRestriction:Subtypes:",
-										"subtypes": [ "Weather" ]
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
+							{
+								"$type": "Core.SpaceRestriction:InAOEOf:",
+								"anyOf": {
+									"$type": "ManyCards:FittingRestriction:",
+									"cardRestriction": {
+									"elements": [ {
+											"$type": "Core.CardRestriction:Subtypes:",
+											"subtypes": [ "Weather", "Condition" ]
+										} ]
 									}
-								]
+								},
+								"sameAs": {
+                                    "$type": "Spaces:PositionOf:",
+                                    "ofThisCard": { "$type": "Cards:ThisCard:" }
+                                }
+							},
+							{
+								"$type": "Core.CardRestriction:Not:",
+								"negated": { "$type": "Core.CardRestriction:Target:" }
 							}
-						}
+						]
 					}
 				},
 				{

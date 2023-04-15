@@ -7,15 +7,17 @@
 			"triggerData": {
 				"triggerCondition": "Discard",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Stackable Source Fits Restriction Now"
-					],
-					"sourceRestriction": {
-						"cardRestrictions": [
-							"Source Augments"
-						]
-					}
+                    "triggerRestrictionElements": [
+                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardsMatch:",
+                            "firstCard": { "$type": "Cards:CauseBefore:" },
+                            "secondCard": {
+                                "$type": "Cards:AugmentedCard:",
+                                "ofThisCard": { "$type": "Cards:ThisCard:" }
+                            }
+                        }
+                    ]
 				}
 			},
 			"subeffects": [

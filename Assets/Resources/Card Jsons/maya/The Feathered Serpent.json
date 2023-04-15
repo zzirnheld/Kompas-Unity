@@ -16,37 +16,29 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "ritual sacrifice",
-						"cardRestrictions": [
-							"Character",
-							"Summoned",
-                            "Space Fits Restriction"
-                        ],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							},
+							{ "$type": "Core.CardRestriction:Character:" },
+                            { "$type": "Core.CardRestriction:Summoned:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Person" ]
+							},
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"cardRestriction": {
+									"elements": [
+										{
+											"$type": "Core.CardRestriction:Subtypes:",
+											"subtypes": [ "Structure" ]
+										}
+									]
+								}
 							}
-						],
-                        "spaceRestriction": {
-                            "spaceRestrictions": [
-                                "Adjacent to a Card that Fits Restriction"
-                            ],
-                            "adjacencyRestriction": {
-								"cardRestrictionElements": [
-									{
-										"$type": "Core.CardRestriction:Subtypes:",
-										"subtypes": [ "Structure" ]
-									}
-								]
-                            }
-                        }
+						]
 					}
 				},
 				{
@@ -60,7 +52,12 @@
 					"spaceRestriction":
 					{
 						"blurb":"where to revive the Feathered Serpent",
-						"spaceRestrictions":["Can Play Card Target to This Space"]
+						"elements": [
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            }
+						]
 					}
 				},
 				{
@@ -78,16 +75,9 @@
 			"Default Effect Restrictions",
 			"Number of Cards Exist"
 		],
-		"countCardRestriction": {
-			"cardRestrictions": [
-				"Space Fits Restriction"
-			],
-			"spaceRestriction": {
-				"spaceRestrictions": [
-					"On Edge of Board"
-				]
-			}
-		},
+		"countCardRestriction": { "elements": [
+			{ "$type": "Core.SpaceRestriction:Edge:" }
+		] },
 		"countCardNumberRestriction": {
 			"numberRestrictions": [">=Constant"],
 			"constant": 14

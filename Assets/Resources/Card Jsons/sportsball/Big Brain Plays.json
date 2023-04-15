@@ -14,22 +14,18 @@
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:ChooseFromList:",
-					"maxCanChoose": 1,
+					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
 						"blurb": "Big Brain Play?",
-						"cardRestrictions": [
-							"Deck",
-							"Spell",
-							"Can Be Played",
-							"Effect Controller can Afford Cost"
-						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+							{ "$type": "Core.CardRestriction:Spell:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Team", "Play" ]
-							}
+							},
+                            { "$type": "Core.CardRestriction:CanPlay:" }
 						]
 					}
 				},
@@ -37,7 +33,7 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "Big Brain Play!",
-                        "spaceRestrictionElements": [
+                        "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {
                                 "$type": "Core.SpaceRestriction:CanPlayCard:",

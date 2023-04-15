@@ -18,16 +18,18 @@
 			"$type":"Subeffect:Annihilate:"
 		},
 		{
-			"$type":"Subeffect:DeckTarget:",
+			"$type":"Subeffect:CardTarget:",
+			"toSearch": { "$type": "ManyCards:Deck:" },
 			"cardRestriction":{
 				"blurb":"Weather to deck-cast",
-				"cardRestrictions":["Deck","Spell","Distinct Name from Source","Can Be Played"],
-				"cardRestrictionElements": [
-					{ "$type": "Core.CardRestriction:Friendly:" },
+				"elements": [
+					{ "$type": "Core.CardRestriction:Spell:" },
+					{ "$type": "Core.CardRestriction:DistinctName:" },
 					{
 						"$type": "Core.CardRestriction:Subtypes:",
 						"subtypes": [ "Weather" ]
-					}
+					},
+					{ "$type": "Core.CardRestriction:CanPlay:" }
 				]
 			},
 			"maxCanChoose":1
@@ -37,8 +39,17 @@
 			"spaceRestriction":
 			{
 				"blurb":"where to cast the Weather",
-				"spaceRestrictions":["Can Play Card Target to This Space","Adjacent to Space Target"],
-				"playRestrictionsToIgnore":["Adjacent to Friendly Card"]
+				"elements": [
+					{
+						"$type": "Core.SpaceRestriction:CanPlayCard:",
+						"toPlay": { "$type": "Cards:TargetIndex:" },
+						"ignoring": ["Adjacent to Friendly Card"]
+					},
+					{
+						"$type": "Core.SpaceRestriction:AdjacentTo:",
+						"space": { "$type": "Spaces:TargetIndex:" }
+					}
+				]
 			}
 		},
 		{

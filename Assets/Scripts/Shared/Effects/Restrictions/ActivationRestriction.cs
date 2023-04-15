@@ -76,8 +76,8 @@ namespace KompasCore.Effects
 
             NotNegated => !Effect.Negated,
 
-            CardExists => Effect.Game.Cards.Any(c => existsRestriction.IsValidCard(c, Effect?.ResolutionContext)),
-            ThisFitsRestriction => thisCardRestriction.IsValidCard(Card, Effect?.ResolutionContext),
+            CardExists => Effect.Game.Cards.Any(c => existsRestriction.IsValid(c, Effect?.ResolutionContext)),
+            ThisFitsRestriction => thisCardRestriction.IsValid(Card, Effect?.ResolutionContext),
 
             NotCurrentlyActivated => !Effect.Game.StackEntries.Any(e => e == Effect),
             NothingHappening => Effect.Game.NothingHappening,

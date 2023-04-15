@@ -13,21 +13,24 @@
 						"Space Fits Restriction"
 					],
 					"spaceRestriction": {
-						"spaceRestrictions": [
-							"Adjacent to a Card that Fits Restriction"
-						],
-						"adjacencyRestriction": {
-							"cardRestrictions": [
-								"Not Context Card"
-							],
-							"cardRestrictionElements": [
-								{
-									"$type": "Core.CardRestriction:Subtypes:",
-									"subtypes": [ "Pulsar" ]
-								}
-							]
-						},
-						"mustBeEmpty": false
+						"elements": [
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"cardRestriction": { "elements": [
+									{
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Pulsar" ]
+									},
+									{
+										"$type": "Core.CardRestriction:Not:",
+										"negated": {
+											"$type": "Core.CardRestriction:CardsMatch:",
+											"card": { "$type": "Cards:CardBefore:" }
+										}
+									}
+								] }
+							}
+						]
 					}
 				}
 			},
@@ -50,28 +53,24 @@
 						"This Card in Play",
 						"Main Card Fits Restriction Before"
 					],
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to a Card that Fits Restriction"
-							],
-							"adjacencyRestriction": {
-								"cardRestrictions": [
-									"Not Context Card"
-								],
-								"cardRestrictionElements": [
-									{
-										"$type": "Core.CardRestriction:Subtypes:",
-										"subtypes": [ "Pulsar" ]
+					"cardRestriction": { "elements": [
+						{
+							"$type": "Core.SpaceRestriction:AdjacentTo:",
+							"cardRestriction": { "elements": [
+								{
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Pulsar" ]
+								},
+								{
+									"$type": "Core.CardRestriction:Not:",
+									"negated": {
+										"$type": "Core.CardRestriction:CardsMatch:",
+										"card": { "$type": "Cards:CardBefore:" }
 									}
-								]
-							},
-							"mustBeEmpty": false
+								}
+							] }
 						}
-					}
+					] }
 				}
 			},
 			"subeffects": [

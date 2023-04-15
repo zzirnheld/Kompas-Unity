@@ -6,24 +6,28 @@
 		"triggerRestriction":{
 			"triggerRestrictions":["This Card Fits Restriction Now","Number of Cards Fitting Restriction Fits X Restriction"],
 			"selfRestriction":{
-				"cardRestrictions":["Not Avatar"],
-				"cardRestrictionElements": [
+				"elements": [
 					{
 						"$type": "Core.CardRestriction:Location:",
 						"locations": [ "Board" ]
+					},
+					{
+						"$type": "Core.CardRestriction:Not:",
+						"negated": { "$type": "Core.CardRestriction:Avatar:" }
 					}
 				]
 			},
             "cardsFittingCardRestriction":{
-				"cardRestrictions":["Space Fits Restriction"],
-				"cardRestrictionElements": [
-					{ "$type": "Core.CardRestriction:Friendly:" }
-				],
-                "spaceRestriction":
-                {
-                    "spaceRestrictions":["Adjacent to Source"],
-                    "mustBeEmpty":false
-                }
+				"elements": [
+					{ "$type": "Core.CardRestriction:Friendly:" },
+					{
+						"$type": "Core.SpaceRestriction:AdjacentTo:",
+						"space": {
+							"$type": "Spaces:PositionOf:",
+							"ofThisCard": { "$type": "Cards:ThisCard:" }
+						}
+					}
+				]
             },
             "cardsFittingXRestriction":{
                 "numberRestrictions":["<Arg"]

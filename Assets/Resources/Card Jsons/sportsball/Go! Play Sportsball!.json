@@ -14,16 +14,13 @@
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:ChooseFromList:",
-					"maxCanChoose": 1,
+					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
 						"blurb": "Sportsball",
-						"cardRestrictions": [
-							"Deck",
-							"Augment"
-						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+							{ "$type": "Core.CardRestriction:Augment:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Sportsball" ]
@@ -32,15 +29,11 @@
 					}
 				},
 				{
-					"$type": "Subeffect:AutoTarget:",
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Avatar"
-						],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" }
-						]
-					}
+					"$type": "Subeffect:AutoTargetCardIdentity:",
+                    "subeffectCardIdentity": {
+						"$type": "Cards:Avatar:",
+                        "player": { "$type": "Players:TargetIndex:" }
+                    }
 				},
 				{
 					"$type": "Subeffect:TargetTargetsSpace:"

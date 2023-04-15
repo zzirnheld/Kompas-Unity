@@ -15,17 +15,15 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "for Gyfu to give +1 EW",
-						"cardRestrictions": [
-							"Character",
-							"Not Already Target"
-						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Enemy:" },
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+								"$type": "Core.CardRestriction:Not:",
+								"negated": { "$type": "Core.CardRestriction:Target:" }
 							}
 						]
 					}

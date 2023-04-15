@@ -13,17 +13,15 @@
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Character",
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictionElements": [ {
+						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
+							{ "$type": "Core.CardRestriction:Enemy:" },
+                            {
 								"$type": "Core.SpaceRestriction:InAOEOf:",
 								"anyOf": {
 									"$type": "ManyCards:FittingRestriction:",
 									"cardRestriction": {
-									"cardRestrictionElements": [ {
+									"elements": [ {
 											"$type": "Core.CardRestriction:Subtypes:",
 											"subtypes": [ "Weather" ]
 										} ]
@@ -33,10 +31,7 @@
 									"$type": "Numbers:Constant:",
 									"constant": 2
 								}
-							} ]
-						},
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Enemy:" }
+                            }
 						]
 					}
 				}

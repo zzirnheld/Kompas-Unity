@@ -15,30 +15,24 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
-						"blurb": "Shaping for He Who Knew Runes to cast",
-						"cardRestrictions": [
-							"Spell",
-							"Can Be Played",
-							"Card Value Fits Number Restriction"
-						],
-						"cardValue": {
-							"value": "C"
-						},
-						"cardValueNumberRestriction": {
-							"numberRestrictions": [
-								"=X"
-							]
-						},
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-                            {
-                                "$type": "Core.CardRestriction:Location:",
-                                "locations": [ "Hand" ]
-                            },
+						"blurb": "Shaping for Runedmemory to cast",
+						"elements": [
+							{ "$type": "Core.CardRestriction:Spell:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Shaping" ]
+							},
+                            { "$type": "Core.CardRestriction:CanPlay:" },
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": { "value": "C" },
+								"numberRestriction": { "elements": [{
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:Equal:" },
+									"other": { "$type": "Numbers:X:" }
+								}]}
 							}
 						]
 					},
@@ -47,8 +41,8 @@
 				{
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
-						"blurb": "where for He Who Knew Runes to cast its target Shaping",
-                        "spaceRestrictionElements": [
+						"blurb": "where for Runedmemory to cast its target Shaping",
+                        "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {
                                 "$type": "Core.SpaceRestriction:CanPlayCard:",

@@ -20,27 +20,38 @@
 			"after":true
 		},
 		{
-			"$type":"Subeffect:TargetDirection:"
-		},
-		{
 			"$type":"Subeffect:AutoSpaceTarget:",
 			"spaceRestriction":
 			{
 				"blurb":"speeeeeeeeeeeeeeeed",
-				"spaceRestrictions":[
-					"Source Displacement to Space Same Direction as Space Target",
-					"Distance to Source Fits X Restriction",
-					"Empty"
-				],
-				"distanceXRestriction":{
-					"numberRestrictions":["=X"]
-				},
-				"spaceRestrictionElements": [ {
-					"$type": "Core.SpaceRestriction:CanMoveCard:",
-					"toMove": { "$type": "Cards:TargetIndex:" }
-				} ]
-			},
-			"xModifier":1
+				"elements": [
+					{
+						"$type": "Core.SpaceRestriction:CanMoveCard:",
+						"toMove": { "$type": "Cards:TargetIndex:" }
+					},
+					{
+						"$type": "Core.SpaceRestriction:CompareDistance:",
+						"distanceTo": {
+							"$type": "Spaces:PositionOf:",
+							"ofThisCard": { "$type": "Cards:ThisCard:" }
+						},
+						"number": { "$type": "Numbers:Constant:", "constant": 1 },
+						"comparison": { "$type": "Relationships.Number:Equal:" }
+					},
+					{
+						"$type": "Core.SpaceRestriction:Direction:",
+                        "from": {
+							"$type": "Spaces:PositionOf:",
+							"ofThisCard": { "$type": "Cards:ThisCard:" }
+						},
+						"direction": {
+							"$type": "Spaces:Direction:",
+							"from": { "$type": "Spaces:TargetIndex:", "index": -2 },
+							"to": { "$type": "Spaces:TargetIndex:", "index": -1 }
+						}
+					}
+				]
+			}
 		},
 		{
 			"$type":"Subeffect:Move:"

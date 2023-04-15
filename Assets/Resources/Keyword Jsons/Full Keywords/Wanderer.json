@@ -26,23 +26,26 @@
 			"$type":"Subeffect:Reshuffle:"
 		},
 		{
-			"$type":"Subeffect:DeckTarget:",
+			"$type":"Subeffect:CardTarget:",
+			"toSearch": { "$type": "ManyCards:Deck:" },
 			"cardRestriction":
 			{
 				"blurb":"Wanderer to Wander into",
-				"cardRestrictions":["Character","Deck","Card Value Fits Number Restriction"],
-				"cardRestrictionElements": [
+				"elements": [
+					{ "$type": "Core.CardRestriction:Character:" },
 					{
 						"$type": "Core.CardRestriction:Subtypes:",
 						"subtypes": [ "Wanderer" ]
-					}
-				],
-				"cardValue":{
-					"value":"S"
-				},
-				"cardValueNumberRestriction":{
-					"numberRestrictions":["<X"]
-				}
+					},
+					{
+						"$type": "Core.CardRestriction:CardValueFits:",
+						"cardValue": { "value": "S" },
+						"numberRestriction": { "elements": [{
+							"$type": "Core.NumberRestriction:Compare:",
+							"comparison": { "$type": "Relationships.Number:LessThan:" },
+							"other": { "$type": "Numbers:X:" }
+					}]}
+				} ]
 			},
 			"xMultiplier":1
 		},

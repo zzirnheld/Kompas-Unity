@@ -21,28 +21,20 @@
 				},
 				{
 					"$type": "Subeffect:ChangeAllCardStats:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Character",
-							"Space Fits Restriction"
-						],
-						"cardRestrictionElements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							}
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Distance to Card Target Fits X Restriction"
-							],
-							"distanceXRestriction": {
-								"numberRestrictions": [
-									"<=Constant"
-								],
-								"constant": 1
-							}
-						}
+						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CompareDistance:",
+                                "distanceTo": {
+                                    "$type": "Spaces:PositionOf:",
+                                    "ofThisCard": { "$type": "Cards:TargetIndex:" }
+                                },
+                                "number": { "$type": "Numbers:Constant:", "constant": 1 },
+                                "comparison": { "$type": "Relationships.Number:LessThanEqual:" }
+                            }
+						]
 					},
 					"eModifier": -3
 				}

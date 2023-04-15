@@ -19,11 +19,16 @@
 				},
 				{
 					"$type": "Subeffect:SetXBoardRestriction:",
-					"cardRestriction": {
-						"cardRestrictions": [ "Space Fits Restriction" ],
-						"spaceRestriction": { "spaceRestrictions": [ "Adjacent to Source" ] },
-						"cardRestrictionElements": [ { "$type": "Core.CardRestriction:Enemy:" } ]
-					},
+					"cardRestriction": { "elements": [
+						{ "$type": "Core.CardRestriction:Enemy:" },
+						{
+							"$type": "Core.SpaceRestriction:AdjacentTo:",
+							"space": {
+								"$type": "Spaces:PositionOf:",
+								"ofThisCard": { "$type": "Cards:ThisCard:" }
+							}
+						}
+					] },
 					"xMultiplier": 1
 				},
 				{

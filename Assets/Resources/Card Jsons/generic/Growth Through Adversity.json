@@ -13,8 +13,8 @@
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Hurt"
+						"elements": [
+							{ "$type": "Core.CardRestriction:Hurt:" }
 						]
 					},
 					"xRestriction": {

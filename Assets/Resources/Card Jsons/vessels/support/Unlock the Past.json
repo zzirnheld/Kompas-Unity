@@ -17,17 +17,9 @@
 					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Vessel's Memory to unlock",
-						"cardRestrictions": [
-							"Augment",
-							"Space Fits Restriction"
-                        ],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Source"
-							]
-						},
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+							{ "$type": "Core.CardRestriction:Augment:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Memory" ]
@@ -35,13 +27,20 @@
 							{
 								"$type": "Core.CardRestriction:Augments:",
                                 "cardRestriction": {
-                                    "cardRestrictionElements": [
+                                    "elements": [
                                         {
                                             "$type": "Core.CardRestriction:Subtypes:",
                                             "subtypes": [ "Vessel" ]
                                         }
                                     ]
                                 }
+							},
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": {
+									"$type": "Spaces:PositionOf:",
+									"ofThisCard": { "$type": "Cards:ThisCard:" }
+								}
 							}
 						]
 					}
@@ -54,14 +53,11 @@
                     "targetIndex": -2
 				},
 				{
-					"$type": "Subeffect:ChooseFromList:",
+					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
 						"blurb": "Memories to search for",
-						"cardRestrictions": [
-							"Deck"
-                        ],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Memory" ]

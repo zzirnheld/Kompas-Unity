@@ -12,20 +12,16 @@
 						"This Card in Play"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Space Fits Restriction"
-						],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.SpaceRestriction:InAOEOf:",
+								"card": { "$type": "Cards:ThisCard:" }
 							}
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"In Source's AOE"
-							]
-						}
+						]
 					}
 				}
 			},
@@ -51,21 +47,19 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "Altar(s) to sacrifice",
-						"cardRestrictions": [
-							"Spell",
-							"Not Already Target"
-						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							},
+							{ "$type": "Core.CardRestriction:Spell:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Altar" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Not:",
+								"negated": { "$type": "Core.CardRestriction:Target:" }
 							}
 						]
 					}
@@ -105,20 +99,17 @@
 					]
 				},
 				{
-					"$type": "Subeffect:ChooseFromList:",
+					"$type": "Subeffect:CardTarget:",
 					"maxCanChoose": 1,
 					"cardRestriction": {
 						"blurb": "culmination of the Silent Altar Ritual",
-						"cardRestrictions": [
-							"Multiple Possible Locations",
-							"Character"
-						],
-						"locations": [
-							3,
-							4
-						],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" }
+						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Hand", "Deck" ]
+                            }
 						]
 					}
 				},
@@ -126,7 +117,7 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to play the result Silent Altar Ritual",
-                        "spaceRestrictionElements": [
+                        "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {
                                 "$type": "Core.SpaceRestriction:CanPlayCard:",

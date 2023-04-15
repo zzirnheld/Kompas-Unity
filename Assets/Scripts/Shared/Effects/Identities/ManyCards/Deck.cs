@@ -6,7 +6,7 @@ namespace KompasCore.Effects.Identities.ManyCards
     public class Deck : ContextlessLeafIdentityBase<IReadOnlyCollection<GameCardBase>>
     {
         public bool friendly = true;
-        public bool enemy = true;
+        public bool enemy = false;
 
         protected override IReadOnlyCollection<GameCardBase> AbstractItem
         {

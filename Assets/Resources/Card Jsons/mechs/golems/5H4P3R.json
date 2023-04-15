@@ -13,22 +13,22 @@
                         {
                             "$type": "Core.TriggerRestriction:CardsMatch:",
                             "firstCard": { "$type": "Cards:ThisCard:" },
-                            "secondCard": { "$type": "Cards:MainCardBefore:" }
+                            "secondCard": { "$type": "Cards:CardBefore:" }
                         }
 					]
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:TargetAllCardsIdentity:",
-					"cardsIdentity": {
+					"$type": "Subeffect:TargetAll:",
+					"toSearch": {
 						"$type": "ManyCards:CardsInPositions:",
 						"positions": {
 							"$type": "ManySpaces:ThreeSpaceRelationship:",
 							"firstSpace": {
 								"$type": "Spaces:PositionOf:",
 								"ofThisCard": {
-									"$type": "Cards:MainCardBefore:"
+									"$type": "Cards:CardBefore:"
 								}
 							},
 							"secondSpace": { "$type": "Spaces:ContextSpace:" },

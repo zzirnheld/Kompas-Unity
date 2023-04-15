@@ -16,25 +16,33 @@
 				"triggerRestrictionElements": [
 					{
 						"$type": "Core.TriggerRestriction:CardFitsRestriction:",
-						"cardRestriction": { "cardRestrictions": [ "Activated" ] },
+						"cardRestriction": { "elements": [ { "$type": "Core.CardRestriction:Active:" } ] },
 						"card": { "$type": "Cards:ThisCard:" }
 					}
 				]
 			},
 			"subeffects": [
 				{
+					"$type":"Subeffect:TargetThis:"
+				},
+				{
 					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
-						"blurb": "where to move the Shaper",
-						"spaceRestrictions": [
-							"Adjacent to Card Target",
-							"Empty"
+						"blurb": "where to move the H0KUT0",
+						"elements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": {
+                                    "$type": "Spaces:PositionOf:",
+                                    "ofThisCard": { "$type": "Cards:TargetIndex:" }
+                                }
+							}
 						]
-					},
-					"targetIndex": -2
+					}
 				},
 				{
 					"$type": "Subeffect:Move:"

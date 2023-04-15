@@ -14,7 +14,7 @@
                         "Secondary Card Fits Restriction Before"
 					],
 					"cardRestriction": {
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
@@ -26,71 +26,52 @@
 							}
 						]
 					},
-                    "secondaryCardRestriction": {
-						"cardRestrictions": [
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictionElements": [
-								{
-									"$type": "Core.SpaceRestriction:InAOEOf:",
-									"anyOf": {
-										"$type": "ManyCards:FittingRestriction:",
-										"cardRestriction": {
-											"cardRestrictionElements": [
-												{
-													"$type": "Core.CardRestriction:Subtypes:",
-													"subtypes": [ "Light" ]
-												}
-											]
+                    "secondaryCardRestriction": { "elements": [
+						{
+							"$type": "Core.SpaceRestriction:InAOEOf:",
+							"anyOf": {
+								"$type": "ManyCards:FittingRestriction:",
+								"cardRestriction": {
+									"elements": [
+										{
+											"$type": "Core.CardRestriction:Subtypes:",
+											"subtypes": [ "Light" ]
 										}
-									}
+									]
 								}
-							]
+							}
 						}
-                    }
+					] }
 				}
 			},
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "character whose W to swap",
-						"cardRestrictions": [
-							"Character"
-						],
-						"cardRestrictionElements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							}
-						]
+						"elements": [ { "$type": "Core.CardRestriction:Character:" } ]
 					}
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "other character whose W to swap",
-						"cardRestrictions": [
-							"Character",
-							"Not Already Target",
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Distance to Card Target Fits X Restriction"
-							],
-							"distanceXRestriction": {
-								"numberRestrictions": [
-									"<=Constant"
-								],
-								"constant": 2
-							}
-						},
-						"cardRestrictionElements": [
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CompareDistance:",
+                                "distanceTo": {
+                                    "$type": "Spaces:PositionOf:",
+                                    "ofThisCard": { "$type": "Cards:TargetIndex:" }
+                                },
+                                "number": { "$type": "Numbers:Constant:", "constant": 2 },
+                                "comparison": { "$type": "Relationships.Number:LessThanEqual:" }
+                            },
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+								"$type": "Core.CardRestriction:Not:",
+								"negated": { "$type": "Core.CardRestriction:Target:" }
 							}
 						]
 					}

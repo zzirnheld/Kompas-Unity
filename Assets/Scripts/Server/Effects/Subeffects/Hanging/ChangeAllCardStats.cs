@@ -1,5 +1,6 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
+using KompasCore.Effects.Restrictions.CardRestrictionElements;
 using KompasCore.Exceptions;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,10 +17,7 @@ namespace KompasServer.Effects.Subeffects.Hanging
             base.Initialize(eff, subeffIndex);
             cardRestriction ??= new CardRestriction()
             {
-                cardRestrictions = new string[]
-                {
-                    CardRestriction.Character
-                }
+                elements = new IRestrictionElement<GameCardBase>[] { new Character() }
             };
             cardRestriction.Initialize(DefaultInitializationContext);
         }
@@ -29,7 +27,7 @@ namespace KompasServer.Effects.Subeffects.Hanging
             var effs = new List<HangingEffect>();
 
             IEnumerable<GameCard> cards
-                = ServerGame.Cards.Where(c => cardRestriction.IsValidCard(c, ResolutionContext));
+                = ServerGame.Cards.Where(c => cardRestriction.IsValid(c, ResolutionContext));
 
             //First make sure are allowed to set their stats.
             //Don't affect any card unless all that should be affected, can be.

@@ -17,30 +17,30 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "who next to blow away",
-						"cardRestrictions": [
-							"Character",
-							"Not Already Target",
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"In AOE Source is Also In"
-							],
-							"alsoInAOEOfRestriction": {
-								"cardRestrictionElements": [
-									{
-										"$type": "Core.CardRestriction:Subtypes:",
-										"subtypes": [ "Weather" ]
-									}
-								]
-							}
-						},
-						"cardRestrictionElements": [
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+								"$type": "Core.SpaceRestriction:InAOEOf:",
+								"anyOf": {
+									"$type": "ManyCards:FittingRestriction:",
+									"cardRestriction": {
+									"elements": [ {
+											"$type": "Core.CardRestriction:Subtypes:",
+											"subtypes": [ "Weather", "Condition" ]
+										} ]
+									}
+								},
+								"sameAs": {
+                                    "$type": "Spaces:PositionOf:",
+                                    "ofThisCard": { "$type": "Cards:ThisCard:" }
+                                }
+							},
+							{
+								"$type": "Core.CardRestriction:Not:",
+								"negated": { "$type": "Core.CardRestriction:Target:" }
 							}
 						]
 					}
@@ -48,18 +48,25 @@
 				{
 					"$type": "Subeffect:SpaceTarget:",
                     "spaceRestriction": {
-                        "spaceRestrictions": [
-                            "Empty",
-                            "In AOE Source is Also In"
-                        ],
-                        "alsoInAOEOfRestriction": {
-							"cardRestrictionElements": [
-								{
-									"$type": "Core.CardRestriction:Subtypes:",
-									"subtypes": [ "Weather" ]
-								}
-							]
-                        }
+						"elements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:InAOEOf:",
+								"anyOf": {
+									"$type": "ManyCards:FittingRestriction:",
+									"cardRestriction": {
+									"elements": [ {
+											"$type": "Core.CardRestriction:Subtypes:",
+											"subtypes": [ "Weather", "Condition" ]
+										} ]
+									}
+								},
+								"sameAs": {
+                                    "$type": "Spaces:PositionOf:",
+                                    "ofThisCard": { "$type": "Cards:ThisCard:" }
+                                }
+							}
+						]
                     }
 				},
 				{
@@ -90,12 +97,12 @@
 			"Adjacent to Friendly Card"
 		],
 		"spaceRestriction": {
-			"spaceRestrictionElements": [ {
+			"elements": [ {
 				"$type": "Core.SpaceRestriction:InAOEOf:",
 				"anyOf": {
 					"$type": "ManyCards:FittingRestriction:",
 					"cardRestriction": {
-					"cardRestrictionElements": [ {
+					"elements": [ {
 							"$type": "Core.CardRestriction:Subtypes:",
 							"subtypes": [ "Weather" ]
 						} ]

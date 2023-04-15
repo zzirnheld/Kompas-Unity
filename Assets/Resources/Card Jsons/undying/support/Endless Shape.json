@@ -18,29 +18,26 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
                         "blurb": "Space to move an Ethereal to",
-						"spaceRestrictions": [
-							"Adjacent to a Card that Fits Restriction"
-						],
-						"adjacencyRestriction": {
-							"cardRestrictionElements": [
-								{
-									"$type": "Core.CardRestriction:Subtypes:",
-									"subtypes": [ "Ethereal" ]
-								}
-							]
-						}
+						"elements": [
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"cardRestriction": { "elements": [
+									{
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Ethereal" ]
+									}
+								] }
+							}
+						]
 					}
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "Friendly Ethereal to move",
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							},
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Ethereal" ]

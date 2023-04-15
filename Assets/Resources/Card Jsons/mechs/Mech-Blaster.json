@@ -29,21 +29,17 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "who to Mechblast",
-						"cardRestrictions": [
-							"Character",
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"On Card Target's Diagonal"
-							]
-						},
-						"cardRestrictionElements": [
+						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+								"$type": "Core.SpaceRestriction:SameDiagonal:",
+								"other": {
+									"$type": "Spaces:PositionOf:",
+									"card": { "$type": "Cards:TargetIndex:" }
+								}
 							}
 						]
 					}
@@ -67,7 +63,7 @@
 			"Augment Effect Restrictions"
 		],
 		"onCardRestriction": {
-			"cardRestrictionElements": [
+			"elements": [
 				{
 					"$type": "Core.CardRestriction:Subtypes:",
 					"subtypes": [ "Mech" ]

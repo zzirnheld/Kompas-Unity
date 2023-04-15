@@ -7,9 +7,11 @@
                 "Main Card Fits Restriction Before"
             ],
             "cardRestriction": {
-                "cardRestrictions": [
-                    "Is Defending From Source"
-                ]
+                "elements": [ {
+                    "$type": "Core.CardRestriction:Fighting:",
+                    "defending": true,
+                    "fightingWho": { "$type": "Cards:ThisCard:" }
+                } ]
             }
         }
     },
@@ -36,21 +38,13 @@
         {
             "$type": "Subeffect:ChangeAllCardStats:",
             "cardRestriction": {
-                "cardRestrictions": [
-                    "Character",
-                    "Space Fits Restriction"
-                ],
-                "cardRestrictionElements": [
+                "elements": [
+                    { "$type": "Core.CardRestriction:Character:" },
                     {
-                        "$type": "Core.CardRestriction:Location:",
-                        "locations": [ "Board" ]
+                        "$type": "Core.SpaceRestriction:AdjacentTo:",
+                        "space": { "$type": "Spaces:TargetIndex:" }
                     }
-                ],
-                "spaceRestriction": {
-                    "spaceRestrictions": [
-                        "Adjacent to Space Target"
-                    ]
-                }
+                ]
             },
             "eMultiplier": -1
         }

@@ -15,7 +15,7 @@
                     ],
                     "sourceRestriction":
                     {
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Invoker" ]
@@ -23,10 +23,8 @@
 						]
                     },
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Character"
-						],
-						"cardRestrictionElements": [
+						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Ethereal" ]
@@ -54,16 +52,14 @@
 					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Spirit to ripple into",
-						"cardRestrictions": [
-							"Character",
-							"Can Be Played",
-							"Already Target"
-						],
-						"cardRestrictionElements": [
+						"elements": [
+							{ "$type": "Core.CardRestriction:Target:" },
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Spirit" ]
-							}
+							},
+                            { "$type": "Core.CardRestriction:CanPlay:" }
 						]
 					},
 					"xMultiplier": 1
@@ -72,7 +68,7 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to ripple the spirit into",
-                        "spaceRestrictionElements": [
+                        "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {
                                 "$type": "Core.SpaceRestriction:CanPlayCard:",

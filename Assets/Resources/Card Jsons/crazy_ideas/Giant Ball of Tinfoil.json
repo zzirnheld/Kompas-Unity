@@ -25,14 +25,20 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "rollinnnnnnnn",
-						"spaceRestrictions": [
-							"Adjacent to Source",
-							"Empty"
-						],
-						"spaceRestrictionElements": [ {
-							"$type": "Core.SpaceRestriction:CanMoveCard:",
-							"toMove": { "$type": "Cards:TargetIndex:" }
-						} ]
+						"elements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanMoveCard:",
+								"toMove": { "$type": "Cards:TargetIndex:" }
+							},
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": {
+									"$type": "Spaces:PositionOf:",
+									"ofThisCard": { "$type": "Cards:ThisCard:" }
+								}
+							}
+						]
 					}
 				},
 				{
@@ -45,19 +51,19 @@
 					]
 				},
 				{
-					"$type": "Subeffect:SpaceTarget:",
-					"spaceRestriction": {
-						"blurb": "rollinnnnnnnn",
-						"spaceRestrictions": [
-							"Adjacent to Source",
-							"On Axis of Last Two Spaces",
-							"Empty"
-						],
-						"spaceRestrictionElements": [ {
-							"$type": "Core.SpaceRestriction:CanMoveCard:",
-							"toMove": { "$type": "Cards:TargetIndex:" }
-						} ]
-					}
+					"$type": "Subeffect:AutoTargetSpaceIdentity:",
+                    "spaceIdentity": {
+                        "$type": "Spaces:ApplyDisplacement:",
+                        "from": {
+							"$type": "Spaces:PositionOf:",
+							"ofThisCard": { "$type": "Cards:ThisCard:" }
+						},
+						"displacement": {
+							"$type": "Spaces:Displacement:",
+							"from": { "$type": "Spaces:TargetIndex:", "index": -2 },
+							"to": { "$type": "Spaces:TargetIndex:", "index": -1 }
+						}
+                    }
 				},
 				{
 					"$type": "Subeffect:Move:"
@@ -69,16 +75,20 @@
 					]
 				},
 				{
-					"$type": "Subeffect:AutoTarget:",
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Character",
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"On Axis of Last Two Spaces"
-							]
+					"$type": "Subeffect:AutoTargetCardIdentity:",
+					"subeffectCardIdentity": {
+						"$type": "Cards:CardAtPosition:",
+						"position": {
+							"$type": "Spaces:ApplyDisplacement:",
+							"from": {
+								"$type": "Spaces:PositionOf:",
+								"ofThisCard": { "$type": "Cards:ThisCard:" }
+							},
+							"displacement": {
+								"$type": "Spaces:Displacement:",
+								"from": { "$type": "Spaces:TargetIndex:", "index": -2 },
+								"to": { "$type": "Spaces:TargetIndex:", "index": -1 }
+							}
 						}
 					}
 				},

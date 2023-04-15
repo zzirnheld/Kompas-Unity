@@ -15,26 +15,21 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Hand:" },
                     "cardRestriction":
                     {
 						"blurb": "for Havengranter to hand-summon",
-                        "cardRestrictions": [
-							"Character",
-                            "Card Value Fits Number Restriction"
-                        ],
-                        "cardValue": {
-                            "value": "S"
-                        },
-                        "cardValueNumberRestriction": {
-                            "numberRestrictions": ["==Constant"],
-                            "constant": 1
-                        },
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-                            {
-                                "$type": "Core.CardRestriction:Location:",
-                                "locations": [ "Hand" ]
-                            }
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": { "value": "S" },
+								"numberRestriction": { "elements": [{
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:Equal:" },
+									"other": { "$type": "Numbers:Constant:", "constant": 1 }
+								}]}
+							}
 						]
                     }
 				},
@@ -42,10 +37,18 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where Havengranter to hand-summon",
-						"spaceRestrictions": [
-							"Adjacent to Source",
-							"Can Play Card Target to This Space",
-							"Empty"
+						"elements": [
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": {
+									"$type": "Spaces:PositionOf:",
+									"ofThisCard": { "$type": "Cards:ThisCard:" }
+								}
+							},
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            }
 						]
 					}
 				},

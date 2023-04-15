@@ -15,16 +15,30 @@
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Character",
-							"Different from Augmented Card"
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
+							{
+								"$type": "Core.CardRestriction:Not:",
+								"negated": {
+									"$type": "Core.CardRestriction:CardsMatch:",
+									"card": {
+										"$type": "Cards:AugmentedCard:",
+										"ofThisCard": { "$type": "Cards:ThisCard:" }
+									}
+								}
+							}
 						]
 					},
 					"spaceRestriction": {
-						"spaceRestrictions": [
-							"Adjacent to Source"
-						],
-						"mustBeEmpty": false
+						"elements": [
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": {
+									"$type": "Spaces:PositionOf:",
+									"ofThisCard": { "$type": "Cards:ThisCard:" }
+								}
+							}
+						]
 					}
 				}
 			},
@@ -53,7 +67,7 @@
                                 "$type": "Players:ControllerOf:",
                                 "card": {
                                     "$type": "Cards:AugmentedCard:",
-                                    "ofThisCard": { "$type": "Cards:MainCardBefore:" }
+                                    "ofThisCard": { "$type": "Cards:CardBefore:" }
                                 }
                             },
                             "secondCard": {

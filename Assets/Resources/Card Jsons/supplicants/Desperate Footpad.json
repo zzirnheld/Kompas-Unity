@@ -15,24 +15,29 @@
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Character",
-							"Different from Source"
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
+							{
+								"$type": "Core.CardRestriction:Not:",
+								"negated": {
+									"$type": "Core.CardRestriction:CardsMatch:",
+									"card": { "$type": "Cards:ThisCard:" }
+								}
+							}
 						]
 					},
 					"spaceRestriction": {
-						"mustBeEmpty": false,
-						"spaceRestrictions": [
-							"Adjacent to a Card that Fits Restriction"
-						],
-						"adjacencyRestriction": {
-							"cardRestrictionElements": [
-								{
-									"$type": "Core.CardRestriction:Subtypes:",
-									"subtypes": [ "Supplicant" ]
-								}
-							]
-						}
+						"elements": [
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"cardRestriction": { "elements": [
+									{
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Supplicant" ]
+									}
+								] }
+							}
+						]
 					}
 				}
 			},
@@ -44,22 +49,22 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to escape the footpad",
-						"spaceRestrictions": [
-							"Adjacent to a Card that Fits Restriction",
-							"Empty"
-						],
-						"adjacencyRestriction": {
-							"cardRestrictionElements": [
-								{
-									"$type": "Core.CardRestriction:Subtypes:",
-									"subtypes": [ "Supplicant" ]
-								}
-							]
-						},
-						"spaceRestrictionElements": [ {
-							"$type": "Core.SpaceRestriction:CanMoveCard:",
-							"toMove": { "$type": "Cards:TargetIndex:" }
-						} ]
+						"elements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanMoveCard:",
+								"toMove": { "$type": "Cards:TargetIndex:" }
+							},
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"cardRestriction": { "elements": [
+									{
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Supplicant" ]
+									}
+								] }
+							}
+						]
 					}
 				},
 				{

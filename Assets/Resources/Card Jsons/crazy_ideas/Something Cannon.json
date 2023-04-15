@@ -18,17 +18,10 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "character for Something Cannon to blast",
-						"cardRestrictions": [
-							"Character"
-						],
-						"cardRestrictionElements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							}
-						]
+						"elements": [ { "$type": "Core.CardRestriction:Character:" } ]
 					}
 				},
 				{

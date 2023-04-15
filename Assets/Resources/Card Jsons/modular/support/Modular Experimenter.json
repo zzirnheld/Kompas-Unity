@@ -13,27 +13,23 @@
 			"subeffects": [
 				{
 					"$type":"Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction":
 					{
 						"blurb": "character whose Module to swap out",
-						"cardRestrictions": [
-                            "Character",
-                            "Wields Augment Fitting Restriction"
-                        ],
-						"augmentRestriction":
-						{
-							"cardRestrictionElements": [
-								{ "$type": "Core.CardRestriction:Friendly:" },
-                                {
-                                    "$type": "Core.CardRestriction:Subtypes:",
-                                    "subtypes": [ "Module" ]
-                                }
-							]
-						},
-						"cardRestrictionElements": [
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+								"$type": "Core.CardRestriction:HasAugment:",
+								"cardRestriction": {
+									"elements": [
+										{
+											"$type": "Core.CardRestriction:Subtypes:",
+											"subtypes": [ "Module" ]
+										}
+									]
+								}
 							}
 						]
 					}
@@ -42,32 +38,25 @@
                     "$type": "Subeffect:CardTarget:",
                     "cardRestriction": {
                         "blurb": "Module to swap out",
-                        "cardRestrictions": [
-                            "Augment",
-                            "Augments Current Target"
-                        ],
-                        "cardRestrictionElements": [
-                            {
-                                "$type": "Core.CardRestriction:Location:",
-                                "locations": [ "Board" ]
-                            },
+                        "elements": [
                             {
                                 "$type": "Core.CardRestriction:Subtypes:",
                                 "subtypes": [ "Module" ]
-                            }
+                            },
+							{
+								"$type": "Core.CardRestriction:Augments:",
+								"singleCard": { "$type": "Cards:TargetIndex:" }
+							}
                         ]
                     }
                 },
 				{
-					"$type": "Subeffect:ChooseFromList:",
+					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Hand:" },
                     "cardRestriction":
                     {
-                        "cardRestrictions": [ "Augment" ],
-                        "cardRestrictionElements": [
-                            {
-                                "$type": "Core.CardRestriction:Location:",
-                                "locations": [ "Hand" ]
-                            },
+                        "elements": [
+							{ "$type": "Core.CardRestriction:Augment:" },
                             {
                                 "$type": "Core.CardRestriction:Subtypes:",
                                 "subtypes": [ "Module" ]

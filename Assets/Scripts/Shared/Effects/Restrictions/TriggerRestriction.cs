@@ -31,7 +31,7 @@ namespace KompasCore.Effects
         private const string MainCardFitsRestrictionBefore = "Main Card Fits Restriction Before";
         private const string MainCardsAugmentedCardBeforeFitsRestriction = "Main Card's Augmented Card Before Fits Restriction";
         private const string MainCardFitsRestrictionAfter = "Main Card Fits Restriction After";
-        private const string MainCardAfterFurtherFromSourceThanBefore = "Main Card After is Further from Source than Before";
+        private const string CardAfterFurtherFromSourceThanBefore = "Main Card After is Further from Source than Before";
 
         private const string SecondaryCardFitsRestrictionBefore = "Secondary Card Fits Restriction Before";
 
@@ -151,30 +151,30 @@ namespace KompasCore.Effects
             AugmentedCardIsMainCard => triggeringContext.mainCardInfoBefore.Augments.Contains(ThisCard),
 
             ThisCardInPlay => ThisCard.Location == CardLocation.Board,
-            CardExistsNow => ThisCard.Game.Cards.Any(c => existsRestriction.IsValidCard(c, new ResolutionContext(triggeringContext))),
-            NoCardExistsNow => !ThisCard.Game.Cards.Any(c => existsRestriction.IsValidCard(c, new ResolutionContext(triggeringContext))),
+            CardExistsNow => ThisCard.Game.Cards.Any(c => existsRestriction.IsValid(c, new ResolutionContext(triggeringContext))),
+            NoCardExistsNow => !ThisCard.Game.Cards.Any(c => existsRestriction.IsValid(c, new ResolutionContext(triggeringContext))),
 
-            ThisCardFitsRestriction => selfRestriction.IsValidCard(ThisCard, new ResolutionContext(triggeringContext)),
+            ThisCardFitsRestriction => selfRestriction.IsValid(ThisCard, new ResolutionContext(triggeringContext)),
 
-            MainCardFitsRestrictionBefore => cardRestriction.IsValidCard(triggeringContext.mainCardInfoBefore, new ResolutionContext(triggeringContext)),
-            SecondaryCardFitsRestrictionBefore => secondaryCardRestriction.IsValidCard(triggeringContext.secondaryCardInfoBefore, new ResolutionContext(triggeringContext)),
-            MainCardFitsRestrictionAfter => nowRestriction.IsValidCard(triggeringContext.MainCardInfoAfter, new ResolutionContext(triggeringContext)),
-            MainCardsAugmentedCardBeforeFitsRestriction => cardRestriction.IsValidCard(triggeringContext.mainCardInfoBefore.AugmentedCard, new ResolutionContext(triggeringContext)),
+            MainCardFitsRestrictionBefore => cardRestriction.IsValid(triggeringContext.mainCardInfoBefore, new ResolutionContext(triggeringContext)),
+            SecondaryCardFitsRestrictionBefore => secondaryCardRestriction.IsValid(triggeringContext.secondaryCardInfoBefore, new ResolutionContext(triggeringContext)),
+            MainCardFitsRestrictionAfter => nowRestriction.IsValid(triggeringContext.MainCardInfoAfter, new ResolutionContext(triggeringContext)),
+            MainCardsAugmentedCardBeforeFitsRestriction => cardRestriction.IsValid(triggeringContext.mainCardInfoBefore.AugmentedCard, new ResolutionContext(triggeringContext)),
 
             MainCardIsStackableSource => triggeringContext.stackableCause?.Source == triggeringContext.mainCardInfoBefore.Card,
-            StackableSourceFitsRestriction => sourceRestriction.IsValidCard(triggeringContext.stackableCause?.Source, new ResolutionContext(triggeringContext)),
+            StackableSourceFitsRestriction => sourceRestriction.IsValid(triggeringContext.stackableCause?.Source, new ResolutionContext(triggeringContext)),
             StackableSourceNotThisEffect => triggeringContext.stackableCause != SourceEffect,
             ContextsStackablesMatch => StackablesMatch(triggeringContext, stashedResolutionContext),
             StackableIsThisEffect => triggeringContext.stackableCause == SourceEffect,
             NoStackable => triggeringContext.stackableCause == null,
 
-            MainCardAfterFurtherFromSourceThanBefore
+            CardAfterFurtherFromSourceThanBefore
                 => ThisCard.DistanceTo(triggeringContext.MainCardInfoAfter.Position) > ThisCard.DistanceTo(triggeringContext.mainCardInfoBefore.Position),
 
             //other non-card triggering things
-            SpaceFitsRestriction => triggeringContext.space != null && spaceRestriction.IsValidSpace(triggeringContext.space, new ResolutionContext(triggeringContext)),
+            SpaceFitsRestriction => triggeringContext.space != null && spaceRestriction.IsValid(triggeringContext.space, new ResolutionContext(triggeringContext)),
 
-            XFitsRestriction => triggeringContext.x.HasValue && xRestriction.IsValidNumber(triggeringContext.x.Value),
+            XFitsRestriction => triggeringContext.x.HasValue && xRestriction.IsValid(triggeringContext.x.Value, context: stashedResolutionContext),
             StackableSourceIsMainCard => triggeringContext.stackableCause is Effect eff && eff.Source == triggeringContext.mainCardInfoBefore.Card,
 
             ControllerTriggered => triggeringContext.player == ThisCard.Controller,

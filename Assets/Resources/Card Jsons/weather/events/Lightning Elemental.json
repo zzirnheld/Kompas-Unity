@@ -17,30 +17,26 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "character to strike with lightning",
-						"cardRestrictions": [
-							"Character",
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"In AOE Source is Also In"
-							],
-							"alsoInAOEOfRestriction": {
-								"cardRestrictionElements": [
-									{
-										"$type": "Core.CardRestriction:Subtypes:",
-										"subtypes": [ "Weather" ]
-									}
-								]
-							}
-						},
-						"cardRestrictionElements": [
+						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Enemy:" },
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+								"$type": "Core.SpaceRestriction:InAOEOf:",
+								"anyOf": {
+									"$type": "ManyCards:FittingRestriction:",
+									"cardRestriction": {
+									"elements": [ {
+											"$type": "Core.CardRestriction:Subtypes:",
+											"subtypes": [ "Weather", "Condition" ]
+										} ]
+									}
+								},
+								"sameAs": {
+                                    "$type": "Spaces:PositionOf:",
+                                    "ofThisCard": { "$type": "Cards:ThisCard:" }
+                                }
 							}
 						]
 					}
@@ -68,12 +64,12 @@
 			"Adjacent to Friendly Card"
 		],
 		"spaceRestriction": {
-			"spaceRestrictionElements": [ {
+			"elements": [ {
 				"$type": "Core.SpaceRestriction:InAOEOf:",
 				"anyOf": {
 					"$type": "ManyCards:FittingRestriction:",
 					"cardRestriction": {
-					"cardRestrictionElements": [ {
+					"elements": [ {
 							"$type": "Core.CardRestriction:Subtypes:",
 							"subtypes": [ "Weather" ]
 						} ]

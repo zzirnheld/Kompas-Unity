@@ -21,30 +21,27 @@
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:DeckTarget:",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "How does the mist condense?",
-						"cardRestrictions": [
-							"Character",
-							"Deck",
-							"Can Be Played",
-							"Card Value Fits Number Restriction"
-						],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
+						"toSearch": { "$type": "ManyCards:Deck:" },
+						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Shaper" ]
+							},
+                            { "$type": "Core.CardRestriction:CanPlay:" },
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": { "value": "E" },
+								"numberRestriction": { "elements": [{
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:Equal:" },
+									"other": { "$type": "Numbers:X:" }
+								}]}
 							}
-						],
-						"cardValue": {
-							"value": "E"
-						},
-						"cardValueNumberRestriction": {
-							"numberRestrictions": [
-								"=X"
-							]
-						}
+						]
 					},
 					"xMultiplier": 1
 				},
@@ -52,7 +49,7 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "Where does the mist condense?",
-                        "spaceRestrictionElements": [
+                        "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {
                                 "$type": "Core.SpaceRestriction:CanPlayCard:",

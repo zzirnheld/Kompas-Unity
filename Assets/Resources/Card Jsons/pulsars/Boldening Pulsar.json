@@ -9,46 +9,39 @@
 				"triggerCondition": "S Change",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card in Play",
-						"X Fits Restriction",
-						"Main Card Fits Restriction Before"
+						"X Fits Restriction"
 					],
 					"xRestriction": {
 						"numberRestrictions": [
 							">0"
 						]
 					},
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Avatar"
-						],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+                    "triggerRestrictionElements": [
+                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardsMatch:",
+                            "firstCard": { "$type": "Cards:MainCardBefore:" },
+                            "secondCard": {
+								"$type": "Cards:Avatar:",
+								"player": { "$type": "Players:FriendlyPlayer:" }
 							}
-						]
-					}
+                        }
+                    ]
 				}
 			},
 			"subeffects": [
 				{
 					"$type": "Subeffect:ChangeAllCardStats:",
+					"cardsSource": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Character",
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Source"
-							]
-						},
-						"cardRestrictionElements": [
+						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": {
+									"$type": "Spaces:PositionOf:",
+									"ofThisCard": { "$type": "Cards:ThisCard:" }
+								}
 							}
 						]
 					},
@@ -62,46 +55,39 @@
 				"triggerCondition": "S Change",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card in Play",
-						"X Fits Restriction",
-						"Main Card Fits Restriction Before"
+						"X Fits Restriction"
 					],
 					"xRestriction": {
 						"numberRestrictions": [
 							"<0"
 						]
 					},
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Avatar"
-						],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+                    "triggerRestrictionElements": [
+                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardsMatch:",
+                            "firstCard": { "$type": "Cards:MainCardBefore:" },
+                            "secondCard": {
+								"$type": "Cards:Avatar:",
+								"player": { "$type": "Players:FriendlyPlayer:" }
 							}
-						]
-					}
+                        }
+                    ]
 				}
 			},
 			"subeffects": [
 				{
 					"$type": "Subeffect:ChangeAllCardStats:",
+					"cardsSource": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Character",
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Source"
-							]
-						},
-						"cardRestrictionElements": [
+						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": {
+									"$type": "Spaces:PositionOf:",
+									"ofThisCard": { "$type": "Cards:ThisCard:" }
+								}
 							}
 						]
 					},

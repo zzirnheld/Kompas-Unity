@@ -15,19 +15,18 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "What water moves?",
-						"cardRestrictions": [
-							"Spell"
-						],
-						"cardRestrictionElements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							},
+						"elements": [
+							{ "$type": "Core.CardRestriction:Spell:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Water" ]
+							},
+							{
+								"$type": "Core.CardRestriction:CanMove:",
+								"spaceRestrictionSubeffectIndex": 1
 							}
 						]
 					}
@@ -36,32 +35,37 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where will the wave crash",
-						"spaceRestrictions": [
-							"Connected to Card Target by Spaces Fitting Restriction",
-							"Empty"
-						],
-						"spaceConnectednessRestriction": {
-							"spaceRestrictionElements": [
-								{
-									"$type": "Core.SpaceRestriction:InAOEOf:",
-									"anyOf": {
-										"$type": "ManyCards:FittingRestriction:",
-										"cardRestriction": {
-											"cardRestrictionElements": [
-												{
-													"$type": "Core.CardRestriction:Subtypes:",
-													"subtypes": [ "Water" ]
+						"elements": [
+							{
+								"$type": "Core.SpaceRestriction:CanMoveCard:",
+								"toMove": { "$type": "Cards:TargetIndex:" }
+							},
+							{
+								"$type": "Core.SpaceRestriction:ConnectedTo:",
+								"space": {
+                                    "$type": "Spaces:PositionOf:",
+                                    "ofThisCard": { "$type": "Cards:TargetIndex:" }
+                                },
+								"byRestriction":{
+									"elements": [
+										{
+											"$type": "Core.SpaceRestriction:InAOEOf:",
+											"anyOf": {
+												"$type": "ManyCards:FittingRestriction:",
+												"cardRestriction": {
+													"elements": [
+														{
+															"$type": "Core.CardRestriction:Subtypes:",
+															"subtypes": [ "Water" ]
+														}
+													]
 												}
-											]
+											}
 										}
-									}
-								},
-								{
-									"$type": "Core.SpaceRestriction:CanMoveCard:",
-									"toMove": { "$type": "Cards:TargetIndex:" }
+									]
 								}
-							]
-						}
+							}
+						]
 					}
 				},
 				{
@@ -73,16 +77,14 @@
 				{
 					"$type": "Subeffect:TargetAll:",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Summoned",
-							"Character",
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"In Card Target's AOE"
-							]
-						}
+						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
+                            { "$type": "Core.CardRestriction:Summoned:" },
+							{
+								"$type": "Core.SpaceRestriction:InAOEOf:",
+								"card": { "$type": "Cards:TargetIndex:" }
+							}
+						]
 					}
 				},
 				{
@@ -92,9 +94,12 @@
 				{
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
-						"spaceRestrictions": [
-							"In Card Target's AOE",
-							"Empty"
+						"elements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:InAOEOf:",
+								"card": { "$type": "Cards:TargetIndex:" }
+							}
 						]
 					},
 					"targetIndex": 0

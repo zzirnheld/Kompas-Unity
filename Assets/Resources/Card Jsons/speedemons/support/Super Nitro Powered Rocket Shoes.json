@@ -1,43 +1,61 @@
 {
 	"cardType":65,
 	"cardName":"Super Nitro Powered Rocket Shoes",
-	"effText":"When this character moves, move them 1 space in the same direction.",
+	"effText":"When this character moves, move them 1 space in the same direction. (This will trigger me again.)",
 	"effects":[
         {
             "blurb":"Speed Shoes",
             "triggerCondition":"Move",
             "triggerRestriction":{
-                "triggerRestrictions":[
-                    "This Card in Play",
-                    "Stackable Source Fits Restriction Now"
-                ],
-                "sourceRestriction": {
-                    "cardRestrictions": [
-                        "Source Augments"
-                    ]
-                }
+                "triggerRestrictionElements": [
+                    { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                    {
+                        "$type": "Core.TriggerRestriction:CardsMatch:",
+                        "firstCard": { "$type": "Cards:CardBefore:" },
+                        "secondCard": {
+                            "$type": "Cards:AugmentedCard:",
+                            "ofThisCard": { "$type": "Cards:ThisCard:" }
+                        }
+                    }
+                ]
             },
             "subeffects":[
                 {
                     "$type":"Subeffect:TargetAugmentedCard:"
                 },
                 {
-                    "$type":"Subeffect:TargetTriggeringCardsSpace:"
-                },
-                {
                     "$type":"Subeffect:SpaceTarget:",
                     "spaceRestriction":
                     {
                         "blurb":"where for speed victim to move",
-                        "spaceRestrictions":["Opposite Direction from Source to Space as Source to Space Target"],
-						"spaceRestrictionElements": [ {
-							"$type": "Core.SpaceRestriction:CanMoveCard:",
-							"toMove": { "$type": "Cards:TargetIndex:" },
-							"distanceRestriction": {
-								"numberRestrictions": [ "==Constant" ],
-								"constant": 1
+						"elements": [
+                            {
+                                "$type": "Core.SpaceRestriction:CanMoveCard:",
+                                "toMove": { "$type": "Cards:TargetIndex:" },
+                                "distanceRestriction": {
+                                    "numberRestrictions": [ "==Constant" ],
+                                    "constant": 1
+                                }
+                            },
+							{
+								"$type": "Core.SpaceRestriction:Direction:",
+								"from": {
+									"$type": "Spaces:PositionOf:",
+									"ofThisCard": { "$type": "Cards:ThisCard:" }
+								},
+                                "directionToMatch": {
+                                    "$type": "Spaces:Direction:",
+                                    "from": {
+                                        "$type": "Spaces:PositionOf:",
+                                        "ofThisCard": { "$type": "Cards:CardBefore:" }
+                                    },
+                                    "to": {
+                                        "$type": "Spaces:PositionOf:",
+                                        "ofThisCard": { "$type": "Cards:ThisCard:" }
+                                    }
+                                }
 							}
-						} ]
+                        ]
 					}
                 },
                 {
@@ -50,6 +68,6 @@
 		"normalRestrictions":["Augment Normal Restrictions"],
 		"effectRestrictions":["Augment Effect Restrictions"]
 	},
-	"a":2,
+	"a": 4,
 	"subtypeText":"Shoes"
 }

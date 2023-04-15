@@ -13,9 +13,7 @@
 						"Stackable Source Fits Restriction Now"
 					],
 					"sourceRestriction": {
-						"cardRestrictions": [
-							"Distinct Name from Source"
-						]
+						"elements": [ { "$type": "Core.CardRestriction:DistinctName:" } ]
 					}
 				}
 			},

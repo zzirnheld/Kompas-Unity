@@ -17,15 +17,15 @@
 					"$type": "Subeffect:ConditionalJump:",
 					"condition": "Card Fits Restriction",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Name Is"
-						],
-						"nameIs": "Ready",
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Discard" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Name:",
+								"nameIs": "Ready"
 							}
 						]
 					},
@@ -35,16 +35,15 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "Subeffect:DeckTarget:",
+					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
 						"blurb": "Ready for Set to search",
-						"cardRestrictions": [
-							"Deck",
-							"Name Is"
-						],
-						"nameIs": "Ready",
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" }
+						"elements": [
+							{
+								"$type": "Core.CardRestriction:Name:",
+								"nameIs": "Ready"
+							}
 						]
 					}
 				},
@@ -62,13 +61,10 @@
 				},
 				{
 					"$type": "Subeffect:TargetAll:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							},
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Speedemon" ]
@@ -87,7 +83,7 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "ok, now GO!",
-						"spaceRestrictionElements": [
+						"elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",

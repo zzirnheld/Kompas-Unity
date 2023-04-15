@@ -19,24 +19,20 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "you! move a little bit to the left...",
-						"cardRestrictions": [
-							"Not Avatar"
-						],
-						"cardRestrictionElements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							}
-						]
+						"elements": [ {
+							"$type": "Core.CardRestriction:CanMove:",
+							"spaceRestrictionSubeffectIndex": 2
+						} ]
 					}
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "ok, now move just a little bit more",
-						"spaceRestrictionElements": [ 
+						"elements": [ 
                             { "$type": "Core.SpaceRestriction:Empty:" },
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",

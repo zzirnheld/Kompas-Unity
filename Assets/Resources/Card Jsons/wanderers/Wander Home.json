@@ -15,26 +15,22 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "othercharacter to wander home",
-						"cardRestrictions": [
-							"Character",
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Source"
-							]
-						},
-						"cardRestrictionElements": [
+						"blurb": "character to wander home",
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							},
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Wanderer" ]
+							},
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": {
+									"$type": "Spaces:PositionOf:",
+									"ofThisCard": { "$type": "Cards:ThisCard:" }
+								}
 							}
 						]
 					}
@@ -50,31 +46,38 @@
 					"$type": "Subeffect:Reshuffle:"
 				},
 				{
-					"$type": "Subeffect:DeckTarget:",
+					"$type": "Subeffect:CardTarget:",
+					"toSearch": {
+						"$type": "ManyCards:Deck:",
+						"friendly": true,
+						"enemy": true
+					},
 					"cardRestriction": {
 						"blurb": "character to wander out",
-						"cardRestrictions": [
-							"Character",
-							"Controller Matches Player Target",
-							"Deck",
-							"Card Value Fits Number Restriction"
-						],
-						"cardValue": {
-							"value": "S"
-						},
-						"cardValueNumberRestriction": {
-							"numberRestrictions": [
-								"<X"
-							]
-						}
+						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
+							{
+								"$type": "Core.PlayerRestriction:PlayersMatch:",
+								"player": { "$type": "Players:TargetIndex:" }
+							},
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": { "value": "S" },
+								"numberRestriction": { "elements": [{
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:LessThan:" },
+									"other": { "$type": "Numbers:X:" }
+								}]}
+							}
+						]
 					},
 					"xMultiplier": 1
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
-						"blurb": "where Ificator to play targeted Crazy Idea",
-                        "spaceRestrictionElements": [
+						"blurb": "where to wander out",
+                        "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {
                                 "$type": "Core.SpaceRestriction:CanPlayCard:",
@@ -88,21 +91,17 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "other character to wander home",
-						"cardRestrictions": [
-							"Character",
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Source"
-							]
-						},
-						"cardRestrictionElements": [
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": {
+									"$type": "Spaces:PositionOf:",
+									"ofThisCard": { "$type": "Cards:ThisCard:" }
+								}
 							}
 						]
 					}
@@ -121,23 +120,29 @@
 					"$type": "Subeffect:Reshuffle:"
 				},
 				{
-					"$type": "Subeffect:DeckTarget:",
+					"$type": "Subeffect:CardTarget:",
+					"toSearch": {
+						"$type": "ManyCards:Deck:",
+						"friendly": true,
+						"enemy": true
+					},
 					"cardRestriction": {
 						"blurb": "character to summon",
-						"cardRestrictions": [
-							"Character",
-							"Controller Matches Player Target",
-							"Deck",
-							"Card Value Fits Number Restriction"
-						],
-						"cardValue": {
-							"value": "S"
-						},
-						"cardValueNumberRestriction": {
-							"numberRestrictions": [
-								"<X"
-							]
-						}
+						"elements": [
+							{
+								"$type": "Core.PlayerRestriction:PlayersMatch:",
+								"player": { "$type": "Players:TargetIndex:" }
+							},
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": { "value": "S" },
+								"numberRestriction": { "elements": [{
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:LessThan:" },
+									"other": { "$type": "Numbers:X:" }
+								}]}
+							}
+						]
 					},
 					"xMultiplier": 1
 				},
@@ -145,7 +150,7 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to play who is wandering home",
-                        "spaceRestrictionElements": [
+                        "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {
                                 "$type": "Core.SpaceRestriction:CanPlayCard:",
@@ -165,10 +170,8 @@
 			"Adjacent to Card Fitting Restriction"
 		],
 		"adjacentCardRestriction": {
-			"cardRestrictions": [
-				"Character"
-			],
-			"cardRestrictionElements": [
+			"elements": [
+				{ "$type": "Core.CardRestriction:Character:" },
 				{
 					"$type": "Core.CardRestriction:Subtypes:",
 					"subtypes": [ "Wanderer" ]

@@ -32,7 +32,7 @@ namespace KompasServer.Effects.Subeffects
             base.Initialize(eff, subeffIndex);
 
             card ??= new TargetIndex() { index = targetIndex };
-            cards ??= new Multiple() { cards = new IIdentity<GameCardBase>[] { card } };
+            cards ??= new FromSingle() { cards = new IIdentity<GameCardBase>[] { card } };
 
             var initContext = DefaultInitializationContext;
             cards.Initialize(initContext);

@@ -1,24 +1,19 @@
+using KompasCore.Cards;
 using KompasCore.Effects.Identities;
 using System.Linq;
 
 namespace KompasCore.Effects.Restrictions
 {
-    public abstract class SpaceRestrictionElement : ContextInitializeableBase, IContextInitializeable
+    public abstract class SpaceRestrictionElement : RestrictionElementBase<Space>, IRestrictionElement<GameCardBase>
     {
-        public bool IsValidSpace(Space space, IResolutionContext context)
-        {
-            ComplainIfNotInitialized();
-            return AbstractIsValidSpace(space, context);
-        }
-
-        protected abstract bool AbstractIsValidSpace(Space space, IResolutionContext context);
+        public bool IsValid(GameCardBase item, IResolutionContext context) => IsValid(item?.Position, context);
     }
 
     namespace SpaceRestrictionElements
     {
         public class Not : SpaceRestrictionElement
         {
-            public SpaceRestrictionElement negated;
+            public IRestrictionElement<Space> negated;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {
@@ -26,13 +21,13 @@ namespace KompasCore.Effects.Restrictions
                 negated.Initialize(initializationContext);
             }
 
-            protected override bool AbstractIsValidSpace(Space space, IResolutionContext context)
-                => !negated.IsValidSpace(space, context);
+            protected override bool IsValidLogic(Space space, IResolutionContext context)
+                => !negated.IsValid(space, context);
         }
 
         public class AnyOf : SpaceRestrictionElement
         {
-            public SpaceRestrictionElement[] restrictions;
+            public IRestrictionElement<Space>[] restrictions;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {
@@ -40,19 +35,19 @@ namespace KompasCore.Effects.Restrictions
                 foreach (var r in restrictions) r.Initialize(initializationContext);
             }
 
-            protected override bool AbstractIsValidSpace(Space space, IResolutionContext context)
-                => restrictions.Any(r => r.IsValidSpace(space, context));
+            protected override bool IsValidLogic(Space space, IResolutionContext context)
+                => restrictions.Any(r => r.IsValid(space, context));
         }
 
         public class Empty : SpaceRestrictionElement
         {
-            protected override bool AbstractIsValidSpace(Space space, IResolutionContext context)
+            protected override bool IsValidLogic(Space space, IResolutionContext context)
                 => InitializationContext.game.BoardController.IsEmpty(space);
         }
 
         public class CardFitsRestriction : SpaceRestrictionElement
         {
-            public CardRestriction restriction;
+            public IRestriction<GameCardBase> restriction;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {
@@ -60,25 +55,11 @@ namespace KompasCore.Effects.Restrictions
                 restriction.Initialize(initializationContext);
             }
 
-            protected override bool AbstractIsValidSpace(Space space, IResolutionContext context)
+            protected override bool IsValidLogic(Space space, IResolutionContext context)
             {
                 var card = InitializationContext.game.BoardController.GetCardAt(space);
-                return restriction.IsValidCard(card, context);
+                return restriction.IsValid(card, context);
             }
-        }
-
-        public class SameDiagonal : SpaceRestrictionElement
-        {
-            public IIdentity<Space> space;
-
-            public override void Initialize(EffectInitializationContext initializationContext)
-            {
-                base.Initialize(initializationContext);
-                space.Initialize(initializationContext);
-            }
-
-            protected override bool AbstractIsValidSpace(Space space, IResolutionContext context)
-                => space.SameDiagonal(this.space.From(context, default));
         }
     }
 }

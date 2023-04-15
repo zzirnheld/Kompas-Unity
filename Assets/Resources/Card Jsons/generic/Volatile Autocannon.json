@@ -24,9 +24,15 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "Direction to fire the cannon",
-						"spaceRestrictions": [
-							"On Source's Diagonal",
-							"Empty"
+						"elements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" },
+                            {
+								"$type": "Core.SpaceRestriction:SameDiagonal:",
+								"other": {
+									"$type": "Spaces:PositionOf:",
+									"card": { "$type": "Cards:ThisCard:" }
+								}
+                            }
 						]
 					},
 					"xModifier": 1
@@ -37,14 +43,15 @@
 				{
 					"$type": "Subeffect:AutoTarget:",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Direction from Source is Space Target"
-							]
-						}
+						"elements": [
+							{
+								"$type": "Core.SpaceRestriction:Direction:",
+								"from": {
+									"$type": "Spaces:PositionOf:",
+									"ofThisCard": { "$type": "Cards:ThisCard:" }
+								}
+							}
+						]
 					},
 					"tiebreakerValue": {
 						"value": "Distance to Source"

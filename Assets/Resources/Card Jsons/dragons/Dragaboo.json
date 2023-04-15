@@ -11,7 +11,7 @@
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card is Main Card","Stackable Source Fits Restriction Now"],
 					"sourceRestriction":{
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Dragon" ]
@@ -29,15 +29,11 @@
 				},
 				{
 					"$type":"Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction":
 					{
 						"blurb":"OWO SO DRAGONNNNNNNNN",
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Hand" ]
-							},
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Dragon" ]

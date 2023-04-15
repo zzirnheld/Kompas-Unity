@@ -39,27 +39,27 @@
 						"This Card Fits Restriction Now"
 					],
 					"nowRestriction": {
-						"cardRestrictions": [
-                            "Augments Card Fitting Restriction"
-                        ],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Mask" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Augments:",
+                                "cardRestriction": {
+									"elements": [
+										{ "$type": "Core.CardRestriction:Friendly:" },
+										{
+											"$type": "Core.CardRestriction:Subtypes:",
+											"subtypes": [ "Dancer" ]
+										}
+									]
+                                }
 							}
-						],
-						"augmentRestriction": {
-							"cardRestrictionElements": [
-                                { "$type": "Core.CardRestriction:Friendly:" },
-								{
-									"$type": "Core.CardRestriction:Subtypes:",
-									"subtypes": [ "Dancer" ]
-								}
-							]
-						}
+						]
 					},
 					"selfRestriction": {
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Discard" ]

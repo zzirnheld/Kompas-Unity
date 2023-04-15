@@ -14,10 +14,12 @@
 						"This Card in Play"
 					],
 					"spaceRestriction": {
-						"spaceRestrictions": [
-							"In Source's AOE"
-						],
-						"mustBeEmpty": false
+						"elements": [
+							{
+								"$type": "Core.SpaceRestriction:InAOEOf:",
+								"card": { "$type": "Cards:ThisCard:" }
+							}
+						]
 					}
 				}
 			},

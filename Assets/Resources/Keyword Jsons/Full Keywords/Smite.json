@@ -11,7 +11,8 @@
 	},
 	"subeffects": [
 		{
-			"$type": "Subeffect:ChooseFromList:",
+			"$type": "Subeffect:CardTarget:",
+			"toSearch": { "$type": "ManyCards:Hand:" },
 			"listRestriction": {
 				"listRestrictions": [
 					"Min Can Choose"
@@ -19,23 +20,14 @@
 				"minCanChoose": 0
 			},
 			"cardRestriction": {
-				"blurb": "Burn cards for smite",
-				"cardRestrictionElements": [
-					{ "$type": "Core.CardRestriction:Friendly:" },
-					{
-						"$type": "Core.CardRestriction:Location:",
-						"locations": [ "Hand" ]
-					}
-				]
+				"blurb": "Burn cards for smite"
 			}
 		},
 		{
 			"$type": "Subeffect:SetXByGamestate:",
 			"whatToCount": "Cards Fitting Restriction",
 			"cardRestriction": {
-				"cardRestrictions": [
-					"Already Target"
-				]
+				"elements": [ { "$type": "Core.CardRestriction:Target:" } ]
 			},
 			"xMultiplier": 1
 		},

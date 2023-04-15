@@ -16,13 +16,21 @@
 					"$type": "Subeffect:CardTarget:",
 					"blurb": "card to slightly yeet",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Source in This' AOE"
-						],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Shape" ]
+								"subtypes": [ "Shade" ]
+							},
+							{
+								"$type": "Core.CardRestriction:AOEContains:",
+								"cards": {
+									"$type": "ManyCards:FromSingle:",
+									"cards": [ { "$type": "Cards:ThisCard:" } ]
+								}
+							},
+							{
+								"$type": "Core.CardRestriction:CanMove:",
+								"spaceRestrictionSubeffectIndex": 1
 							}
 						]
 					}
@@ -31,8 +39,7 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to slightly yeet target card",
-						"spaceRestrictionElements": [ 
-                            { "$type": "Core.SpaceRestriction:Empty:" },
+						"elements": [
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
 								"toMove": { "$type": "Cards:TargetIndex:" },

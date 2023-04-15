@@ -14,25 +14,18 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "Which character will die",
-						"cardRestrictions": [
-							"Character",
-							"Summoned",
-							"Space Fits Restriction"
-						],
-						"cardRestrictionElements": [
+						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Friendly:" },
+                            { "$type": "Core.CardRestriction:Summoned:" },
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+								"$type": "Core.SpaceRestriction:InAOEOf:",
+								"card": { "$type": "Cards:ThisCard:" }
 							}
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"In Source's AOE"
-							]
-						}
+						]
 					}
 				},
 				{
@@ -43,25 +36,18 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "Whose stats will get set",
-						"cardRestrictions": [
-							"Character",
-							"Summoned",
-							"Space Fits Restriction"
-						],
-						"cardRestrictionElements": [
+						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Friendly:" },
+                            { "$type": "Core.CardRestriction:Summoned:" },
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+								"$type": "Core.SpaceRestriction:InAOEOf:",
+								"card": { "$type": "Cards:ThisCard:" }
 							}
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"In Source's AOE"
-							]
-						}
+						]
 					}
 				},
 				{

@@ -55,8 +55,8 @@ namespace KompasServer.Effects.Subeffects
 
         private bool doesNumberOfCardsFittingRestrictionFitNumberRestriction()
         {
-            int number = ServerGame.Cards.Where(c => cardRestriction.IsValidCard(c, ResolutionContext)).Count();
-            return numberRestriction.IsValidNumber(number);
+            int number = ServerGame.Cards.Where(c => cardRestriction.IsValid(c, ResolutionContext)).Count();
+            return numberRestriction.IsValid(number, ResolutionContext);
         }
 
         private bool ShouldEnd
@@ -71,26 +71,26 @@ namespace KompasServer.Effects.Subeffects
                     XGreaterThanConst => ServerEffect.X > constant,
                     XLessThanConst => ServerEffect.X < constant,
 
-                    NoneFitRestriction => !ServerGame.Cards.Any(c => cardRestriction.IsValidCard(c, ResolutionContext)),
-                    AnyFitRestriction => ServerGame.Cards.Any(c => cardRestriction.IsValidCard(c, ResolutionContext)),
+                    NoneFitRestriction => !ServerGame.Cards.Any(c => cardRestriction.IsValid(c, ResolutionContext)),
+                    AnyFitRestriction => ServerGame.Cards.Any(c => cardRestriction.IsValid(c, ResolutionContext)),
                     NumberOfCardsFittingRestrictionFitsNumberRestriction => doesNumberOfCardsFittingRestrictionFitNumberRestriction(),
 
-                    NoSpaceFitsRestriction => !Space.Spaces.Any(s => spaceRestriction.IsValidSpace(s, ResolutionContext, CardTarget)),
+                    NoSpaceFitsRestriction => !Space.Spaces.Any(s => spaceRestriction.IsValid(s, ResolutionContext)),
 
                     MustBeFriendlyTurn => ServerGame.TurnPlayer != Effect.Controller,
                     MustBeEnemyTurn => ServerGame.TurnPlayer == Effect.Controller,
 
-                    TargetViolatesRestriction => !cardRestriction.IsValidCard(CardTarget, ResolutionContext),
-                    TargetFitsRestriction => cardRestriction.IsValidCard(CardTarget, ResolutionContext),
+                    TargetViolatesRestriction => !cardRestriction.IsValid(CardTarget, ResolutionContext),
+                    TargetFitsRestriction => cardRestriction.IsValid(CardTarget, ResolutionContext),
 
-                    SpaceTargetViolatesRestriction => !spaceRestriction.IsValidSpace(SpaceTarget, ResolutionContext),
-                    SpaceTargetFitsRestriction => spaceRestriction.IsValidSpace(SpaceTarget, ResolutionContext),
+                    SpaceTargetViolatesRestriction => !spaceRestriction.IsValid(SpaceTarget, ResolutionContext),
+                    SpaceTargetFitsRestriction => spaceRestriction.IsValid(SpaceTarget, ResolutionContext),
 
-                    SourceViolatesRestriction => !cardRestriction.IsValidCard(Source, ResolutionContext),
+                    SourceViolatesRestriction => !cardRestriction.IsValid(Source, ResolutionContext),
                     NumTargetsLTEConstant => Effect.CardTargets.Count() <= constant,
                     HandFull => PlayerTarget.HandFull,
-                    PlayerValueFitsNumberRestriction => playerValueNumberRestriction.IsValidNumber(playerValue.GetValueOf(PlayerTarget)),
-                    PlayerValueFloutsNumberRestriction => !playerValueNumberRestriction.IsValidNumber(playerValue.GetValueOf(PlayerTarget)),
+                    PlayerValueFitsNumberRestriction => playerValueNumberRestriction.IsValid(playerValue.GetValueOf(PlayerTarget), ResolutionContext),
+                    PlayerValueFloutsNumberRestriction => !playerValueNumberRestriction.IsValid(playerValue.GetValueOf(PlayerTarget), ResolutionContext),
                     _ => throw new System.ArgumentException($"Condition {condition} invalid for conditional end subeffect"),
                 };
             }

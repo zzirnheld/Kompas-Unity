@@ -14,7 +14,7 @@
                         "Secondary Card Fits Restriction Before"
 					],
 					"cardRestriction": {
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
@@ -27,40 +27,34 @@
 						]
 					},
                     "secondaryCardRestriction": {
-						"cardRestrictions": [
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictionElements": [ {
+						"elements": [
+							{
 								"$type": "Core.SpaceRestriction:InAOEOf:",
 								"anyOf": {
 									"$type": "ManyCards:FittingRestriction:",
 									"cardRestriction": {
-									"cardRestrictionElements": [ {
-											"$type": "Core.CardRestriction:Subtypes:",
-											"subtypes": [ "Light" ]
-										} ]
+										"elements": [
+											{
+												"$type": "Core.CardRestriction:Subtypes:",
+												"subtypes": [ "Light" ]
+											}
+										]
 									}
 								}
-							} ]
-						}
-                    }
+							}
+						]
+					}
 				}
 			},
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "character for Sun to give -1 E",
-						"cardRestrictions": [
-							"Character",
-							"Summoned"
-						],
-						"cardRestrictionElements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							}
+						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
+                            { "$type": "Core.CardRestriction:Summoned:" }
 						]
 					}
 				},
@@ -70,17 +64,15 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "character for Sun to give +1 E",
-						"cardRestrictions": [
-							"Character",
-							"Summoned",
-							"Not Already Target"
-						],
-						"cardRestrictionElements": [
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
+                            { "$type": "Core.CardRestriction:Summoned:" },
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+								"$type": "Core.CardRestriction:Not:",
+								"negated": { "$type": "Core.CardRestriction:Target:" }
 							}
 						]
 					}

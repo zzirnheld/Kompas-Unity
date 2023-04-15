@@ -22,16 +22,14 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "who to next be brought low by the Lines",
-						"cardRestrictions": [
-							"Character",
-							"Not Already Target"
-						],
-						"cardRestrictionElements": [
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+								"$type": "Core.CardRestriction:Not:",
+								"negated": { "$type": "Core.CardRestriction:Target:" }
 							}
 						]
 					}
@@ -46,15 +44,21 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where on the Lines to bring them",
-						"spaceRestrictions": [
-							"Empty",
-							"On Card Target's Diagonal",
-							"On Edge of Board"
-						],
-						"spaceRestrictionElements": [ {
-							"$type": "Core.SpaceRestriction:CanMoveCard:",
-							"toMove": { "$type": "Cards:TargetIndex:" }
-						} ]
+						"elements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" },
+							{ "$type": "Core.SpaceRestriction:Edge:" },
+							{
+								"$type": "Core.SpaceRestriction:CanMoveCard:",
+								"toMove": { "$type": "Cards:TargetIndex:" }
+							},
+							{
+								"$type": "Core.SpaceRestriction:SameDiagonal:",
+								"other": {
+									"$type": "Spaces:PositionOf:",
+									"card": { "$type": "Cards:TargetIndex:" }
+								}
+							}
+						]
 					}
 				},
 				{

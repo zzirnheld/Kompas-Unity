@@ -15,26 +15,33 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Discard:" },
 					"cardRestriction": {
 						"blurb": "for Ingwaz to recast",
-						"cardRestrictions": [
-							"Spell",
-							"Can Be Played",
-							"Effect Controller can Afford Cost",
-							"Distinct Name from Source"
-						],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Discard" ]
-							},
+						"elements": [
+							{ "$type": "Core.CardRestriction:Spell:" },
+							{ "$type": "Core.CardRestriction:DistinctName:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Rune" ]
-							}
-						],
-						"costDivisor": 2
+							},
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": {
+									"value": "Cost",
+									"divisor": 2
+								},
+								"numberRestriction": { "elements": [{
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:LessThanEqual:" },
+									"other": {
+										"$type": "Numbers:Pips:",
+										"player": { "$type": "Players:TargetIndex:" }
+									}
+								}]}
+							},
+                            { "$type": "Core.CardRestriction:CanPlay:" }
+						]
 					}
 				},
 				{
@@ -45,7 +52,7 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where Ingwaz to recast",
-                        "spaceRestrictionElements": [
+                        "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {
                                 "$type": "Core.SpaceRestriction:CanPlayCard:",

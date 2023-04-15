@@ -22,13 +22,13 @@
 			"Adjacent to Friendly Card"
 		],
 		"spaceRestriction": {
-			"spaceRestrictionElements": [
+			"elements": [
 				{
 					"$type": "Core.SpaceRestriction:InAOEOf:",
 					"anyOf": {
 						"$type": "ManyCards:FittingRestriction:",
 						"cardRestriction": {
-							"cardRestrictionElements": [
+							"elements": [
 								{
 									"$type": "Core.CardRestriction:Subtypes:",
 									"subtypes": [ "Water" ]

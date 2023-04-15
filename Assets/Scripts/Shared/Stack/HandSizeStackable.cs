@@ -1,4 +1,5 @@
 ﻿using KompasCore.Cards;
+using KompasCore.Effects.Restrictions.CardRestrictionElements;
 
 namespace KompasCore.Effects
 {
@@ -36,9 +37,10 @@ namespace KompasCore.Effects
                 {
                     handSizeCardRestriction = new CardRestriction()
                     {
-                        cardRestrictions = new string[]
+                        elements = new IRestrictionElement<GameCardBase>[]
                         {
-                            CardRestriction.Friendly, CardRestriction.Hand
+                            new Friendly(),
+                            new Location() { locations = new string[]{ "Hand" } }
                         }
                     };
                     handSizeCardRestriction.Initialize(new EffectInitializationContext(game: Source.Game, source: default, controller: Controller));

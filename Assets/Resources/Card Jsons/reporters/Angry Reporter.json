@@ -14,17 +14,13 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "angry WX character that might attack",
-						"cardRestrictions": [
-							"Controller Matches Player Target"
-						],
-						"cardRestrictionElements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							}
-						]
+						"elements": [ {
+							"$type": "Core.PlayerRestriction:PlayersMatch:",
+							"player": { "$type": "Players:TargetIndex:" }
+						} ]
 					}
 				},
 				{
@@ -59,25 +55,26 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": {
+						"$type": "ManyCards:Hand:",
+						"friendly": true, "enemy": true
+					},
 					"cardRestriction": {
 						"blurb": "cost > X card to reveal",
-						"cardRestrictions": [
-							"Controller Matches Player Target",
-							"Hidden",
-							"Card Value Fits Number Restriction"
-						],
-						"cardValue": {
-							"value": "Cost"
-						},
-						"cardValueNumberRestriction": {
-							"numberRestrictions": [
-								">X"
-							]
-						},
-						"cardRestrictionElements": [
+						"elements": [
+							{ "$type": "Core.CardRestriction:Hidden:" },
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Hand" ]
+								"$type": "Core.PlayerRestriction:PlayersMatch:",
+								"player": { "$type": "Players:TargetIndex:" }
+							},
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": { "value": "Cost" },
+								"numberRestriction": { "elements": [{
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:GreaterThan:" },
+									"other": { "$type": "Numbers:X:" }
+								}]}
 							}
 						]
 					},
@@ -91,22 +88,24 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "enemy character to attack",
-						"cardRestrictions": [
-							"Character",
-							"Controller Isn't Player Target",
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Card Target"
-							]
-						},
-						"cardRestrictionElements": [
+						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": {
+                                    "$type": "Spaces:PositionOf:",
+                                    "ofThisCard": { "$type": "Cards:TargetIndex:" }
+                                }
+							},
+                            {
+                                "$type": "Core.PlayerRestriction:Not:",
+								"negated": {
+									"$type": "Core.PlayerRestriction:PlayersMatch:",
+									"player": { "$type": "Players:TargetIndex:" }
+								}
 							}
 						]
 					},

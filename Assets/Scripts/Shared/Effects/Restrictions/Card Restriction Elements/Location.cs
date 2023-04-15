@@ -8,7 +8,7 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
     {
         public string[] locations;
 
-        private ICollection<CardLocation> Locations => locations.Select(CardLocationHelpers.FromString).ToArray();
+        protected virtual IReadOnlyCollection<CardLocation> Locations => locations.Select(CardLocationHelpers.FromString).ToArray();
 
         public override void Initialize(EffectInitializationContext initializationContext)
         {
@@ -16,7 +16,7 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
             if (locations == null) throw new System.ArgumentNullException("locations");
         }
 
-        protected override bool FitsRestrictionLogic(GameCardBase card, IResolutionContext context)
+        protected override bool IsValidLogic(GameCardBase card, IResolutionContext context)
             => Locations.Any(loc => card.Location == loc);
     }
 }

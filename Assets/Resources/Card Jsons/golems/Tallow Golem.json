@@ -15,17 +15,10 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "character for Tallow Golem to temporarily activate",
-						"cardRestrictions": [
-							"Character"
-						],
-						"cardRestrictionElements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							}
-						]
+						"elements": [ { "$type": "Core.CardRestriction:Character:" } ]
 					}
 				},
 				{

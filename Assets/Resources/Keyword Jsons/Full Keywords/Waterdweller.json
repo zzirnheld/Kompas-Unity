@@ -7,29 +7,29 @@
 		"triggerRestriction":{
 			"triggerRestrictions":["This Card Fits Restriction Now"],
 			"selfRestriction":{
-				"cardRestrictions":["Not Avatar","Space Fits Restriction"],
-				"spaceRestriction":
-				{
-					"spaceRestrictionElements": [ {
+				"elements": [
+					{
+						"$type": "Core.CardRestriction:Location:",
+						"locations": [ "Board" ]
+					},
+					{
+						"$type": "Core.CardRestriction:Not:",
+						"negated": { "$type": "Core.CardRestriction:Avatar:" }
+					},
+					{
 						"$type": "Core.SpaceRestriction:Not:",
 						"negated": {
 							"$type": "Core.SpaceRestriction:InAOEOf:",
 							"anyOf": {
 								"$type": "ManyCards:FittingRestriction:",
 								"cardRestriction": {
-								"cardRestrictionElements": [ {
+								"elements": [ {
 										"$type": "Core.CardRestriction:Subtypes:",
 										"subtypes": [ "Water" ]
 									} ]
 								}
 							}
 						}
-					} ]
-				},
-				"cardRestrictionElements": [
-					{
-						"$type": "Core.CardRestriction:Location:",
-						"locations": [ "Board" ]
 					}
 				]
 			}

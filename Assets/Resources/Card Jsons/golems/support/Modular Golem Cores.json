@@ -14,26 +14,23 @@
 						"Main Card Fits Restriction After"
 					],
 					"nowRestriction": {
-						"cardRestrictions": [
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to a Card that Fits Restriction"
-							],
-							"adjacencyRestriction": {
-								"cardRestrictions": [
-									"Augmented"
-								],
-								"cardRestrictionElements": [
-									{
-										"$type": "Core.CardRestriction:Subtypes:",
-										"subtypes": [ "Golem" ]
-									}
-								]
-							},
-							"mustBeEmpty": false
-						}
+						"elements": [
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"cardRestriction": {
+									"elements": [
+										{
+											"$type": "Core.CardRestriction:Subtypes:",
+											"subtypes": [ "Golem" ]
+										},
+										{
+											"$type": "Core.CardRestriction:HasAugment:",
+											"elements": [ ]
+										}
+									]
+								}
+							}
+						]
 					}
 				}
 			},
@@ -43,28 +40,27 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "Golem to swap out modules",
-						"cardRestrictions": [
-							"Character",
-							"Augmented",
-							"Space Fits Restriction"
-						],
-						"cardRestrictionElements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							},
+						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Golem" ]
+							},
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": {
+                                    "$type": "Spaces:PositionOf:",
+                                    "ofThisCard": { "$type": "Cards:TargetIndex:" }
+                                }
+							},
+							{
+								"$type": "Core.CardRestriction:HasAugment:",
+								"elements": [ ]
 							}
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Card Target"
-							]
-						}
+						]
 					}
 				},
 				{
@@ -90,16 +86,11 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
 						"blurb": "Golem core for Modular Golem Cores to attach",
-						"cardRestrictions": [
-							"Augment"
-						],
-						"cardRestrictionElements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Hand" ]
-							},
+						"elements": [
+							{ "$type": "Core.CardRestriction:Augment:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Golem", "Core" ]

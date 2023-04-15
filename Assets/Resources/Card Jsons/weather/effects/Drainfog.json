@@ -14,14 +14,14 @@
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Character"
-						]
+						"elements": [ { "$type": "Core.CardRestriction:Character:" } ]
 					},
 					"spaceRestriction": {
-						"mustBeEmpty": false,
-						"spaceRestrictions": [
-							"In Source's AOE"
+						"elements": [
+							{
+								"$type": "Core.SpaceRestriction:InAOEOf:",
+								"card": { "$type": "Cards:ThisCard:" }
+							}
 						]
 					}
 				}
@@ -34,18 +34,18 @@
 					"$type":"Subeffect:TargetTargetsController:"
 				},
 				{
-					"$type": "Subeffect:ChooseFromList:",
+					"$type": "Subeffect:CardTarget:",
+					"toSearch": {
+						"$type": "ManyCards:Hand:",
+						"friendly": true,
+						"enemy": true
+					},
 					"cardRestriction": {
 						"blurb": "The fog is draining",
-						"cardRestrictions": [
-							"Controller Matches Player Target"
-						],
-						"cardRestrictionElements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Hand" ]
-							}
-						]
+						"elements": [ {
+							"$type": "Core.PlayerRestriction:PlayersMatch:",
+							"player": { "$type": "Players:TargetIndex:" }
+						} ]
 					},
 					"listRestriction": {
 						"listRestrictions": [

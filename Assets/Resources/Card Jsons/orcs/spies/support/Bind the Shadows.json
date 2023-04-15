@@ -13,16 +13,22 @@
 						"Main Card Fits Restriction After"
 					],
 					"nowRestriction": {
-						"cardRestrictions": [
-							"Different from Source",
-							"Character",
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": { "spaceRestrictions": [ "In Source's AOE" ] },
-						"cardRestrictionElements": [
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
+							{
+								"$type": "Core.CardRestriction:Not:",
+								"negated": {
+									"$type": "Core.CardRestriction:CardsMatch:",
+									"card": { "$type": "Cards:ThisCard:" }
+								}
+							},
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Orc" ]
+							},
+                            {
+								"$type": "Core.SpaceRestriction:InAOEOf:",
+								"card": { "$type": "Cards:ThisCard:" }
 							}
 						]
 					}
@@ -57,10 +63,10 @@
 							},
 							{
 								"$type": "Core.TriggerRestriction:CardsMatch:",
-								"firstCard": { "$type": "Cards:MainCardBefore:" },
+								"firstCard": { "$type": "Cards:CardBefore:" },
 								"secondCard": {
 									"secondary": true,
-									"$type": "Cards:MainCardBefore:"
+									"$type": "Cards:CardBefore:"
 								}
 							}
 						]
@@ -68,14 +74,10 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
 						"blurb": "Bind blood to a card",
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-                            {
-                                "$type": "Core.CardRestriction:Location:",
-                                "locations": [ "Hand" ]
-                            },
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Orc" ]

@@ -11,25 +11,19 @@
 						"This Card is Main Card",
 						"This Card Fits Restriction Now"
 					],
-					"selfRestriction": {
-						"cardRestrictions": [
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to a Card that Fits Restriction"
-							],
-							"adjacencyRestriction": {
-								"cardRestrictionElements": [
+					"selfRestriction": { "elements": [
+						{
+							"$type": "Core.SpaceRestriction:AdjacentTo:",
+							"cardRestriction": {
+								"elements": [
 									{
 										"$type": "Core.CardRestriction:Subtypes:",
 										"subtypes": [ "Shaper" ]
 									}
 								]
-							},
-							"mustBeEmpty": false
+							}
 						}
-					}
+					] }
 				}
 			},
 			"subeffects": [

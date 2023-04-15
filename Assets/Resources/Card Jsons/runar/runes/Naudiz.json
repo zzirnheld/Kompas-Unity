@@ -16,15 +16,9 @@
 				{
 					"$type": "Subeffect:ChangeAllCardStats:",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Character"
-						],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Enemy:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							}
+						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
+							{ "$type": "Core.CardRestriction:Enemy:" }
 						]
 					},
 					"eModifier": -3

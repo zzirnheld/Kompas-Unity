@@ -13,7 +13,7 @@
                         { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
                         {
                             "$type": "Core.TriggerRestriction:CardsMatch:",
-                            "firstCard": { "$type": "Cards:MainCardBefore:" },
+                            "firstCard": { "$type": "Cards:CardBefore:" },
                             "secondCard": {
                                 "$type": "Cards:AugmentedCard:",
                                 "ofThisCard": { "$type": "Cards:ThisCard:" }
@@ -21,9 +21,9 @@
                         },
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "card": { "$type": "Cards:MainCardBefore:" },
+                            "card": { "$type": "Cards:CardBefore:" },
                             "cardRestriction": {
-                                "cardRestrictionElements": [ { "$type": "Core.CardRestriction:Summoned:" } ]
+                                "elements": [ { "$type": "Core.CardRestriction:Summoned:" } ]
                             }
                         }
                     ]
@@ -52,14 +52,20 @@
 			"On Card that Fits Restriction"
 		],
 		"onCardRestriction": {
-            "cardRestrictions": [
-                "Wields No Augment Fitting Restriction"
-            ],
-            "augmentRestriction": {
-                "cardRestrictions": [
-                    "Same Name as Source"
-                ]
-            }
+			"elements": [ {
+				"$type": "Core.CardRestriction:Not:",
+				"negated": {
+					"$type": "Core.CardRestriction:HasAugment:",
+					"cardRestriction": {
+						"elements": [
+							{
+								"$type": "Core.CardRestriction:Name:",
+								"sameAs": { "$type": "Cards:ThisCard:" }
+							}
+						]
+					}
+				}
+			} ]
 		}
 	},
 	"a": 3,

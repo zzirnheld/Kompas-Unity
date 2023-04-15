@@ -16,18 +16,17 @@
 				{
 					"$type": "Subeffect:CardTarget:",
 					"blurb": "card to slightly yeet",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"cardRestrictions": [
-                            "Subtypes Include Any Of"
-						],
-						"subtypesIncludeAnyOf": [
-                            "Light",
-							"Shade"
-						],
-						"cardRestrictionElements": [
+						"elements": [
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+								"$type": "Core.CardRestriction:Subtypes:",
+								"any": true,
+								"subtypes": [ "Light", "Shade" ]
+							},
+							{
+								"$type": "Core.CardRestriction:CanMove:",
+								"spaceRestrictionSubeffectIndex": 1
 							}
 						]
 					}
@@ -36,19 +35,18 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to slightly yeet target card",
-						"spaceRestrictions": [
-							"Empty",
-                            "Adjacent to a Card that Fits Restriction"
-                        ],
-                        "adjacencyRestriction": {
-							"cardRestrictionElements": [
-								{ "$type": "Core.CardRestriction:Friendly:" }
-							]
-                        },
-						"spaceRestrictionElements": [ {
-							"$type": "Core.SpaceRestriction:CanMoveCard:",
-							"toMove": { "$type": "Cards:TargetIndex:" }
-						} ]
+						"elements": [
+							{
+								"$type": "Core.SpaceRestriction:CanMoveCard:",
+								"toMove": { "$type": "Cards:TargetIndex:" }
+							},
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"cardRestriction": { "elements": [
+									{ "$type": "Core.CardRestriction:Friendly:" }
+								] }
+							}
+						]
 					}
 				},
 				{

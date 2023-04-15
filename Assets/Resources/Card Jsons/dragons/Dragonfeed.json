@@ -11,10 +11,10 @@
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Main Card Fits Restriction Before","Stackable Source Fits Restriction Now"],
 					"cardRestriction":{
-						"cardRestrictions":["Character"]
+						"elements": [ { "$type": "Core.CardRestriction:Character:" } ]
 					},
 					"sourceRestriction":{
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Dragon" ]

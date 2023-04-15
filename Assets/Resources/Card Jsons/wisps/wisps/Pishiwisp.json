@@ -15,54 +15,60 @@
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:TargetTriggeringCardsSpace:"
-				},
-				{
 					"$type": "Subeffect:TargetAll:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Space Fits Restriction"
-						],
-						"cardRestrictionElements": [
+						"elements": [
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": {
+									"$type": "Spaces:PositionOf:",
+									"ofThisCard": { "$type": "Cards:ThisCard:" }
+								}
 							}
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Source"
-							]
-						}
+						]
 					}
 				},
 				{
-					"$type": "Subeffect:SpaceTarget:",
+					"$type": "Subeffect:SkipToEffectOnImpossible:",
+					"jumpIndices": [ 4 ]
+				},
+				{
+					"$type": "Subeffect:AutoTargetSpaceIdentity:",
+                    "spaceIdentity": {
+                        "$type": "Spaces:ApplyDisplacement:",
+                        "from": {
+							"$type": "Spaces:PositionOf:",
+							"ofThisCard": { "$type": "Spaces:TargetIndex:" }
+						},
+						"displacement": {
+							"$type": "Spaces:Displacement:",
+							"from": {
+								"$type": "Spaces:PositionOf:",
+								"ofThisCard": { "$type": "Cards:ThisCard:" }
+							},
+							"to": { "$type": "Spaces:TargetIndex:" }
+						}
+                    },
 					"spaceRestriction": {
-						"blurb": "to move Whose Anger Draws Fear's attack target to",
-						"spaceRestrictions": [
-							"Directly Away from Card Target",
-							"Empty"
-						],
-						"spaceRestrictionElements": [ {
-							"$type": "Core.SpaceRestriction:CanMoveCard:",
-							"toMove": { "$type": "Cards:TargetIndex:" },
-							"distanceRestriction": {
-								"numberRestrictions": [ "==Constant" ],
-								"constant": 1
-							}
-						} ]
+						"elements": [
+                            {
+                                "$type": "Core.SpaceRestriction:CanMoveCard:",
+                                "toMove": { "$type": "Cards:TargetIndex:" }
+                            }
+						]
 					}
 				},
 				{
 					"$type": "Subeffect:Move:"
 				},
 				{
+					"$type": "Subeffect:ClearOnImpossible:"
+				},
+				{
 					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"delete": true,
-					"jumpIndices": [
-						2
-					]
+					"jumpIndices": [ 1 ]
 				}
 			]
 		}

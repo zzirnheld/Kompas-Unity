@@ -15,12 +15,12 @@
 				{
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
-						"spaceRestrictionElements": [ {
+						"elements": [ {
 							"$type": "Core.SpaceRestriction:InAOEOf:",
 							"anyOf": {
 								"$type": "ManyCards:FittingRestriction:",
 								"cardRestriction": {
-								"cardRestrictionElements": [ {
+								"elements": [ {
 										"$type": "Core.CardRestriction:Subtypes:",
 										"subtypes": [ "Shade" ]
 									} ]
@@ -31,13 +31,11 @@
 				},
 				{
 					"$type": "Subeffect:AutoTarget:",
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Deck",
-							"Spell"
-						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+							{ "$type": "Core.CardRestriction:Spell:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Light" ]
@@ -49,13 +47,15 @@
 				{
 					"$type": "Subeffect:TargetAll:",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Would Overlap Card Target If Card Target Were At Space Target"
-						],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Shade" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Overlaps:",
+								"other": { "$type": "Cards:TargetIndex:" },
+								"overrideOtherSpace": { "$type": "Spaces:TargetIndex:" }
 							}
 						]
 					}

@@ -1,5 +1,6 @@
 using KompasCore.Cards;
 using KompasCore.Effects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,15 +18,12 @@ namespace KompasServer.Effects.Subeffects
 
             spaceRestriction.Initialize(DefaultInitializationContext);
         }
-        public IEnumerable<Space> ValidSpaces => Space.Spaces
-                .Where(s => spaceRestriction.IsValidSpace(s, ResolutionContext, theoreticalTarget: CardTarget))
-                .Select(s => PlayerTarget.SubjectiveCoords(s));
 
         public override Task<ResolutionInfo> Resolve()
         {
             try
             {
-                Space potentialTarget = Space.Spaces.Single(s => spaceRestriction.IsValidSpace(s, ResolutionContext));
+                Space potentialTarget = Space.Spaces.Single(s => spaceRestriction.IsValid(s, ResolutionContext));
                 ServerEffect.AddSpace(potentialTarget);
                 return Task.FromResult(ResolutionInfo.Next);
             }

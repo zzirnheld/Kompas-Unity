@@ -13,36 +13,27 @@
 						"This Card Fits Restriction Now"
 					],
 					"selfRestriction": {
-						"cardRestrictions": [
-							"Space Fits Restriction"
-						],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
-							}
-						],
-						"spaceRestriction": {
-							"spaceRestrictionElements": [
-								{
-									"$type": "Core.SpaceRestriction:InAOEOf:",
-									"anyOf": {
-										"$type": "ManyCards:FittingRestriction:",
-										"cardRestriction": {
-											"cardRestrictions": [
-												"Distinct Name from Source"
-											],
-											"cardRestrictionElements": [
-												{
-													"$type": "Core.CardRestriction:Subtypes:",
-													"subtypes": [ "Water" ]
-												}
-											]
-										}
+							},
+                            {
+								"$type": "Core.SpaceRestriction:InAOEOf:",
+								"anyOf": {
+									"$type": "ManyCards:FittingRestriction:",
+									"cardRestriction": {
+										"elements": [
+											{ "$type": "Core.CardRestriction:DistinctName:" },
+											{
+												"$type": "Core.CardRestriction:Subtypes:",
+												"subtypes": [ "Water" ]
+											}
+										]
 									}
 								}
-							]
-						}
+                            }
+						]
 					}
 				}
 			},

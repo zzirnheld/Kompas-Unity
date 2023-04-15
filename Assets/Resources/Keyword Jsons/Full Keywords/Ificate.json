@@ -6,7 +6,12 @@
 		"triggerRestriction":{
 			"triggerRestrictions":["This Card is Main Card","Main Card Fits Restriction Before"],
 			"cardRestriction":{
-				"cardRestrictions":["Hand"]
+				"elements":[ 
+					{
+						"$type": "Core.CardRestriction:Location:",
+						"locations": [ "Hand" ]
+					}
+				]
 			}
 		}
 	},
@@ -17,12 +22,19 @@
 		},
 		{
 			"$type":"Subeffect:CardTarget:",
+			"toSearch": { "$type": "ManyCards:Discard:" },
 			"cardRestriction":
 			{
 				"blurb":"Crazy Idea for Ificator to Ificate",
-				"cardRestrictions":["Discard","Different from Source"],
-				"cardRestrictionElements": [
+				"elements": [
 					{ "$type": "Core.CardRestriction:Friendly:" },
+					{
+						"$type": "Core.CardRestriction:Not:",
+						"negated": {
+							"$type": "Core.CardRestriction:CardsMatch:",
+							"card": { "$type": "Cards:ThisCard:" }
+						}
+					},
 					{
 						"$type": "Core.CardRestriction:Subtypes:",
 						"subtypes": [ "Crazy", "Idea" ]
@@ -40,7 +52,12 @@
 			"spaceRestriction":
 			{
 				"blurb":"where Ificator to play targeted Crazy Idea",
-				"spaceRestrictions":["Can Play Card Target to This Space"]
+				"elements": [
+					{
+						"$type": "Core.SpaceRestriction:CanPlayCard:",
+						"toPlay": { "$type": "Cards:TargetIndex:" }
+					}
+				]
 			}
 		},
 		{

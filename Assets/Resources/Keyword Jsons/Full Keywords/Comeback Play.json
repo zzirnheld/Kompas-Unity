@@ -7,13 +7,18 @@
 		"triggerRestriction":{
 			"triggerRestrictions":["Friendly Turn","This Card Fits Restriction Now","Card Exists Now"],
 			"selfRestriction":{
-				"cardRestrictions":["Discard"]
+				"elements": [ 
+					{
+						"$type": "Core.CardRestriction:Location:",
+						"locations": [ "Discard" ]
+					}
+				]
 			},
 			"existsRestriction":
 			{
-				"cardRestrictions":["Augment"],
-				"cardRestrictionElements": [
+				"elements": [
 					{ "$type": "Core.CardRestriction:Friendly:" },
+					{ "$type": "Core.CardRestriction:Augment:" },
 					{
 						"$type": "Core.CardRestriction:Location:",
 						"locations": [ "Board" ]
@@ -35,7 +40,12 @@
 			"spaceRestriction":
 			{
 				"blurb":"where to make a Comeback Play",
-				"spaceRestrictions":["Can Play Card Target to This Space"]
+				"elements": [
+					{
+						"$type": "Core.SpaceRestriction:CanPlayCard:",
+						"toPlay": { "$type": "Cards:TargetIndex:" }
+					}
+				]
 			}
 		},
 		{

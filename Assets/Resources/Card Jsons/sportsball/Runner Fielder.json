@@ -18,17 +18,18 @@
 				{
 					"$type": "Subeffect:AutoTarget:",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Character",
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Constant Subjective Displacement from Source"
-							],
-							"displacementX": 1,
-							"displacementY": 1
-						}
+						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
+							{
+								"$type": "Core.SpaceRestriction:Displacement:",
+								"from": {
+                                    "$type": "Spaces:PositionOf:",
+                                    "ofThisCard": { "$type": "Cards:ThisCard:" }
+                                },
+								"displacement": { "$type": "Spaces:Constant:", "x": 1, "y": 1 },
+								"subjective": true
+							}
+						]
 					}
 				},
 				{

@@ -17,17 +17,12 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "character for Sun to give -1 E",
-						"cardRestrictions": [
-							"Character",
-							"Summoned"
-						],
-						"cardRestrictionElements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							}
+						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
+                            { "$type": "Core.CardRestriction:Summoned:" }
 						]
 					}
 				},
@@ -37,17 +32,18 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "character for Sun to give +1 E",
-						"cardRestrictions": [
-							"Character",
-							"Summoned",
-							"Different from Target"
-						],
-						"cardRestrictionElements": [
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
+                            { "$type": "Core.CardRestriction:Summoned:" },
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+								"$type": "Core.CardRestriction:Not:",
+								"negated": {
+									"$type": "Core.CardRestriction:CardsMatch:",
+									"card": { "$type": "Cards:TargetIndex:" }
+								}
 							}
 						]
 					}

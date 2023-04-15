@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using KompasCore.Cards;
 using KompasCore.Effects.Identities;
 
@@ -8,10 +10,19 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
         public string nameIs;
         public string nameIncludes;
 
-        protected override bool FitsRestrictionLogic(GameCardBase card, IResolutionContext context)
+        public IIdentity<GameCardBase> sameAs;
+
+        public override void Initialize(EffectInitializationContext initializationContext)
+        {
+            base.Initialize(initializationContext);
+            sameAs.Initialize(initializationContext);
+        }
+
+        protected override bool IsValidLogic(GameCardBase card, IResolutionContext context)
         {
             if (nameIs != null && card.CardName != nameIs) return false;
             if (nameIncludes != null && !card.CardName.Contains(nameIncludes)) return false;
+            if (sameAs != null && card.CardName != sameAs.From(context, default).CardName) return false;
 
             return true;
         }
@@ -20,14 +31,28 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
     public class DistinctName : CardRestrictionElement
     {
         public IIdentity<GameCardBase> from = new Identities.Cards.ThisCard();
+        public IIdentity<IReadOnlyCollection<GameCardBase>> cards;
 
         public override void Initialize(EffectInitializationContext initializationContext)
         {
             base.Initialize(initializationContext);
             from.Initialize(initializationContext);
+            cards.Initialize(initializationContext);
         }
 
-        protected override bool FitsRestrictionLogic(GameCardBase card, IResolutionContext context)
-            => from.From(context, default).CardName != card.CardName;
+        protected override bool IsValidLogic(GameCardBase card, IResolutionContext context)
+        {
+            if (cards == default) return from.From(context, default).CardName != card.CardName;
+
+            return cards.From(context, default)
+                .Select(c => c.CardName)
+                .All(name => name != card.CardName);
+        }
+    }
+
+    public class Unique : CardRestrictionElement
+    {
+        protected override bool IsValidLogic(GameCardBase item, IResolutionContext context)
+            => item.Unique;
     }
 }

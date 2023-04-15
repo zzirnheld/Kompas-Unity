@@ -29,19 +29,16 @@
 					"$type": "Subeffect:ConditionalEnd:",
 					"condition": "Target Fits Restriction",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Card Value Fits Number Restriction"
-						],
-						"cardValue": {
-							"value": "C"
-						},
-						"cardValueNumberRestriction": {
-							"numberRestrictions": [
-								"<=X"
-							]
-						}
-					},
-					"xModifier": 30
+						"elements": [ {
+							"$type": "Core.CardRestriction:CardValueFits:",
+							"cardValue": { "value": "C" },
+							"numberRestriction": { "elements": [ {
+								"$type": "Core.NumberRestriction:Compare:",
+								"comparison": { "$type": "Relationships.Number:LessThanEqual:" },
+								"other": { "$type": "Numbers:Constant:", "constant": 30 }
+							} ] }
+						} ]
+					}
 				},
 				{
 					"$type": "Subeffect:Annihilate:"

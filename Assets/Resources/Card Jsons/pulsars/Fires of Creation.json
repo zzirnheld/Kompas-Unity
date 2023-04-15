@@ -13,24 +13,22 @@
 						"This Card in Play"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Card Value Fits Number Restriction"
-						],
-						"cardValue": {
-							"value": "S"
-						},
-						"xRestriction": {
-							"numberRestrictions": [
-								">Avatar"
-							],
-							"cardValue": {
-								"value": "S"
-							}
-						},
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Pulsar" ]
+							},
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": { "value": "S" },
+								"numberRestriction": { "elements": [{
+									"numberRestrictions": [
+										">Avatar"
+									],
+									"cardValue": {
+										"value": "S"
+									}
+								}]}
 							}
 						]
 					}
@@ -53,24 +51,22 @@
 						"This Card in Play"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Card Value Fits Number Restriction"
-						],
-						"cardValue": {
-							"value": "S"
-						},
-						"xRestriction": {
-							"numberRestrictions": [
-								"<Avatar"
-							],
-							"cardValue": {
-								"value": "S"
-							}
-						},
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Pulsar" ]
+							},
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": { "value": "Cost" },
+								"numberRestriction": { "elements": [{
+									"numberRestrictions": [
+										"<Avatar"
+									],
+									"cardValue": {
+										"value": "S"
+									}
+								}]}
 							}
 						]
 					}

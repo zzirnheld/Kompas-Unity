@@ -30,9 +30,7 @@
 			"Adjacent to Card Fitting Restriction"
 		],
 		"adjacentCardRestriction": {
-			"cardRestrictions": [
-				"Character"
-			]
+			"elements": [ { "$type": "Core.CardRestriction:Character:" } ]
 		}
 	},
 	"c": 0,

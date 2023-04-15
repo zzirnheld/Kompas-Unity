@@ -16,19 +16,19 @@
                                 "$type": "Cards:AugmentedCard:",
                                 "ofThisCard": { "$type": "Cards:ThisCard:" }
                             },
-                            "secondCard": { "$type": "Cards:MainCardBefore:" }
+                            "secondCard": { "$type": "Cards:CardBefore:" }
                         },
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
                             "cardRestriction": {
-                                "cardRestrictionElements": [
+                                "elements": [
                                     {
                                         "$type": "Core.CardRestriction:Subtypes:",
                                         "subtypes": [ "Vessel" ]
                                     }
                                 ]
                             },
-                            "card": { "$type": "Cards:MainCardBefore:" }
+                            "card": { "$type": "Cards:CardBefore:" }
                         }
 					]
 				}

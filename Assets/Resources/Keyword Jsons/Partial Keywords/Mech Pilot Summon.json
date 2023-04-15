@@ -10,20 +10,17 @@
     },
     {
         "$type":"Subeffect:CardTarget:",
+        "toSearch": { "$type": "ManyCards:Hand:" },
         "cardRestriction":
         {
             "blurb":"Mech to Pilot",
-            "cardRestrictions":["Character","Can Be Played"],
-            "cardRestrictionElements": [
-                { "$type": "Core.CardRestriction:Friendly:" },
-                {
-                    "$type": "Core.CardRestriction:Location:",
-                    "locations": [ "Hand" ]
-                },
+            "elements": [
+                { "$type": "Core.CardRestriction:Character:" },
                 {
                     "$type": "Core.CardRestriction:Subtypes:",
                     "subtypes": [ "Mech", "Golem" ]
-                }
+                },
+                { "$type": "Core.CardRestriction:CanPlay:" }
             ]
         },
         "toLinkWith": { "$type": "Cards:ThisCard:" }

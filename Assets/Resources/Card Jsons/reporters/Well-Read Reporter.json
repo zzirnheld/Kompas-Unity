@@ -14,8 +14,8 @@
 						"Controller Triggered"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Spell"
+						"elements": [
+							{ "$type": "Core.CardRestriction:Spell:" }
 						]
 					}
 				}
@@ -53,26 +53,27 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": {
+						"$type": "ManyCards:Hand:",
+						"friendly": true, "enemy": true
+					},
 					"cardRestriction": {
 						"blurb": "C > X spell to reveal",
-						"cardRestrictions": [
-							"Controller Matches Player Target",
-							"Hidden",
-							"Spell",
-							"Card Value Fits Number Restriction"
-						],
-						"cardValue": {
-							"value": "C"
-						},
-						"cardValueNumberRestriction": {
-							"numberRestrictions": [
-								">X"
-							]
-						},
-						"cardRestrictionElements": [
+						"elements": [
+							{ "$type": "Core.CardRestriction:Spell:" },
+							{ "$type": "Core.CardRestriction:Hidden:" },
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Hand" ]
+								"$type": "Core.PlayerRestriction:PlayersMatch:",
+								"player": { "$type": "Players:TargetIndex:" }
+							},
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": { "value": "C" },
+								"numberRestriction": { "elements": [{
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:GreaterThan:" },
+									"other": { "$type": "Numbers:X:" }
+								}]}
 							}
 						]
 					},

@@ -16,34 +16,24 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:TargetAll:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-                        "cardRestrictionElements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							},
+                        "elements": [
                             { "$type": "Core.CardRestriction:Character:" },
                             {
-                                "$type": "Core.CardRestriction:PositionFitsRestriction:",
-                                "spaceRestriction": {
-                                    "spaceRestrictionElements": [
-                                        {
-                                            "$type": "Core.SpaceRestriction:InAOEOf:",
-                                            "anyOf": {
-                                                "$type": "ManyCards:FittingRestriction:",
-                                                "cardRestriction": {
-                                                    "cardRestrictionElements": [
-                                                        {
-                                                            "$type": "Core.CardRestriction:Subtypes:",
-                                                            "subtypes": [ "Water" ]
-                                                        }
-                                                    ]
-                                                }
-                                            }
-                                        }
-                                    ]
-                                }
-                            }
+								"$type": "Core.SpaceRestriction:InAOEOf:",
+								"anyOf": {
+									"$type": "ManyCards:FittingRestriction:",
+									"cardRestriction": {
+										"elements": [
+											{
+												"$type": "Core.CardRestriction:Subtypes:",
+												"subtypes": [ "Water" ]
+											}
+										]
+									}
+								}
+							}
                         ]
 					}
 				},
@@ -83,13 +73,13 @@
 			"Adjacent to Friendly Card"
 		],
 		"spaceRestriction": {
-			"spaceRestrictionElements": [
+			"elements": [
 				{
 					"$type": "Core.SpaceRestriction:InAOEOf:",
 					"anyOf": {
 						"$type": "ManyCards:FittingRestriction:",
 						"cardRestriction": {
-							"cardRestrictionElements": [
+							"elements": [
 								{
 									"$type": "Core.CardRestriction:Subtypes:",
 									"subtypes": [ "Water" ]

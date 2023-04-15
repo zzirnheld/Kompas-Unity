@@ -12,32 +12,27 @@
 					"Default"
 				],
 				"existsRestriction": {
-					"cardRestrictions": [
-						"Space Fits Restriction"
-					],
-					"cardRestrictionElements": [
-						{ "$type": "Core.CardRestriction:Enemy:" }
-					],
-					"spaceRestriction": {
-						"spaceRestrictions": [
-							"Adjacent to Source"
-						],
-						"mustBeEmpty": false
-					}
+					"elements": [
+						{ "$type": "Core.CardRestriction:Enemy:" },
+						{
+							"$type": "Core.SpaceRestriction:AdjacentTo:",
+							"space": {
+								"$type": "Spaces:PositionOf:",
+								"ofThisCard": { "$type": "Cards:ThisCard:" }
+							}
+						}
+					]
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:ChooseFromList:",
-					"maxCanChoose": 1,
+					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
 						"blurb": "Silent Cult Follower to recruit",
-						"cardRestrictions": [
-							"Deck",
-							"Character"
-						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Cultist", "Follower" ]
@@ -49,7 +44,7 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to play Silent Recruiter's new recruit",
-                        "spaceRestrictionElements": [
+                        "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {
                                 "$type": "Core.SpaceRestriction:CanPlayCard:",

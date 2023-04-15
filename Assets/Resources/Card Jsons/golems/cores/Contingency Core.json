@@ -13,14 +13,14 @@
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
                             "cardRestriction": {
-                                "cardRestrictionElements": [
+                                "elements": [
                                     {
                                         "$type": "Core.CardRestriction:Subtypes:",
                                         "subtypes": [ "Golem" ]
                                     }
                                 ]
                             },
-                            "card": { "$type": "Cards:MainCardBefore:" }
+                            "card": { "$type": "Cards:CardBefore:" }
                         }
 					]
 				}
@@ -57,19 +57,19 @@
                                 "$type": "Cards:AugmentedCard:",
                                 "ofThisCard": { "$type": "Cards:ThisCard:" }
                             },
-                            "secondCard": { "$type": "Cards:MainCardBefore:" }
+                            "secondCard": { "$type": "Cards:CardBefore:" }
                         },
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
                             "cardRestriction": {
-                                "cardRestrictionElements": [
+                                "elements": [
                                     {
                                         "$type": "Core.CardRestriction:Subtypes:",
                                         "subtypes": [ "Golem" ]
                                     }
                                 ]
                             },
-                            "card": { "$type": "Cards:MainCardBefore:" }
+                            "card": { "$type": "Cards:CardBefore:" }
                         }
 					]
 				}
@@ -77,13 +77,13 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:AutoTargetCardIdentity:",
-                    "subeffectCardIdentity": { "$type": "Cards:MainCardBefore:" }
+                    "subeffectCardIdentity": { "$type": "Cards:CardBefore:" }
 				},
 				{
 					"$type": "Subeffect:AutoTargetSpaceIdentity:",
                     "spaceIdentity": {
                         "$type": "Spaces:PositionOf:",
-                        "ofThisCard": { "$type": "Cards:MainCardBefore:" }
+                        "ofThisCard": { "$type": "Cards:CardBefore:" }
                     }
 				},
 				{

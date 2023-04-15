@@ -14,7 +14,7 @@
                         "Secondary Card Fits Restriction Before"
 					],
 					"cardRestriction": {
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
@@ -27,37 +27,37 @@
 						]
 					},
                     "secondaryCardRestriction": {
-						"cardRestrictions": [
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictionElements": [ {
+						"elements": [
+							{
 								"$type": "Core.SpaceRestriction:InAOEOf:",
 								"anyOf": {
 									"$type": "ManyCards:FittingRestriction:",
 									"cardRestriction": {
-									"cardRestrictionElements": [ {
-											"$type": "Core.CardRestriction:Subtypes:",
-											"subtypes": [ "Light" ]
-										} ]
+										"elements": [
+											{
+												"$type": "Core.CardRestriction:Subtypes:",
+												"subtypes": [ "Light" ]
+											}
+										]
 									}
 								}
-							} ]
-						}
+							}
+						]
                     }
 				}
 			},
 			"subeffects": [
 				{
 					"$type": "Subeffect:AutoTarget:",
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Deck",
-							"Character",
-							"Same Name as Target"
-						],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" }
+						"elements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{ "$type": "Core.CardRestriction:Character:" },
+							{
+								"$type": "Core.CardRestriction:Name:",
+								"sameAs": { "$type": "Cards:TargetIndex:" }
+							}
 						]
 					},
 					"tiebreakerDirection":"Any"

@@ -18,18 +18,12 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
 						"blurb": "What creature does the camouflage look like?",
-						"cardRestrictions": [
-							"Character",
-							"Hidden"
-						],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-                            {
-                                "$type": "Core.CardRestriction:Location:",
-                                "locations": [ "Hand" ]
-                            }
+						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
+							{ "$type": "Core.CardRestriction:Hidden:" }
 						]
 					}
 				},
@@ -64,8 +58,8 @@
 			"On Card that Fits Restriction"
 		],
 		"onCardRestriction": {
-			"cardRestrictions": [
-				"Summoned"
+			"elements": [
+				{ "$type": "Core.CardRestriction:Summoned:" }
 			]
 		},
 		"augSubtypes": [

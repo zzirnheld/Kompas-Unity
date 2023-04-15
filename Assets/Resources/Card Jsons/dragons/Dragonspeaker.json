@@ -13,18 +13,13 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "for Dragonspeaker to kill",
-						"cardRestrictions": [
-							"Character",
-							"Distinct Name from Source"
-						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							}
+							{ "$type": "Core.CardRestriction:Character:" },
+							{ "$type": "Core.CardRestriction:DistinctName:" }
 						]
 					}
 				},
@@ -52,10 +47,12 @@
 					"$type": "Subeffect:ConditionalEnd:",
 					"condition": "Target Violates Restriction",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Name Is"
-						],
-						"nameIs": "Mother of Dragons"
+						"elements": [
+							{
+								"$type": "Core.CardRestriction:Name:",
+								"nameIs": "Mother of Dragons"
+							}
+						]
 					}
 				},
 				{

@@ -13,10 +13,8 @@
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Character"
-						],
-						"cardRestrictionElements": [
+						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Discard" ]
@@ -28,35 +26,28 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:TargetAll:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Space Fits Restriction"
-						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Enemy:" },
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+								"$type": "Core.SpaceRestriction:ConnectedTo:",
+								"space": {
+                                    "$type": "Spaces:PositionOf:",
+                                    "ofThisCard": { "$type": "Cards:TargetIndex:" }
+                                },
+								"byRestriction":{
+									"elements": [
+										{ "$type": "Core.CardRestriction:Enemy:" },
+										{ "$type": "Core.CardRestriction:Character:" },
+										{
+											"$type": "Core.CardRestriction:Location:",
+											"locations": [ "Board" ]
+										}
+									]
+								}
 							}
-						],
-                        "spaceRestriction":
-                        {
-                            "spaceRestrictions": [
-                                "Connected to Card Target by Cards Fitting Restriction"
-                            ],
-                            "connectednessRestriction": {
-                                "cardRestrictions": [
-                                    "Character"
-                                ],
-								"cardRestrictionElements": [
-									{ "$type": "Core.CardRestriction:Enemy:" },
-									{
-										"$type": "Core.CardRestriction:Location:",
-										"locations": [ "Board" ]
-									}
-								]
-                            }
-                        }
+						]
 					}
 				},
 				{
@@ -67,9 +58,7 @@
 				{
 					"$type": "Subeffect:ChangeAllCardStats:",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Already Target"
-						]
+						"elements": [ { "$type": "Core.CardRestriction:Target:" } ]
 					},
 					"nMultiplier": -1,
 					"eMultiplier": -1,

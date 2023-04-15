@@ -26,29 +26,21 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "spell to stab with green rocks and thereby dispel",
-						"cardRestrictions": [
-							"Spell",
-							"Space Fits Restriction"
-						],
-						"cardRestrictionElements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							}
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Distance to Source Fits X Restriction"
-							],
-							"distanceXRestriction": {
-								"numberRestrictions": [
-									"<=X"
-								],
-								"constant": 1
-							}
-						}
+						"elements": [
+							{ "$type": "Core.CardRestriction:Spell:" },
+                            {
+                                "$type": "Core.SpaceRestriction:CompareDistance:",
+                                "distanceTo": {
+                                    "$type": "Spaces:PositionOf:",
+                                    "ofThisCard": { "$type": "Cards:ThisCard:" }
+                                },
+                                "number": { "$type": "Numbers:X:" },
+                                "comparison": { "$type": "Relationships.Number:LessThanEqual:" }
+                            }
+						]
 					},
 					"xMultiplier": 1
 				},

@@ -18,14 +18,15 @@
 			"subeffects":[
 				{
 					"$type": "Subeffect:AutoTarget:",
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Deck",
-							"Character",
-							"Same Name as Target"
-						],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" }
+						"elements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{ "$type": "Core.CardRestriction:Character:" },
+							{
+								"$type": "Core.CardRestriction:Name:",
+								"sameAs": { "$type": "Cards:TargetIndex:" }
+							}
 						]
 					},
 					"tiebreakerDirection":"Any"
@@ -35,9 +36,18 @@
 					"spaceRestriction":
 					{
 						"blurb": "where to summon the other Fleeing Lover",
-						"spaceRestrictions": [
-							"Can Play Card Target to This Space",
-							"Adjacent to Source"
+						"elements": [
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": {
+									"$type": "Spaces:PositionOf:",
+									"ofThisCard": { "$type": "Cards:ThisCard:" }
+								}
+							},
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            }
 						]
 					}
 				},

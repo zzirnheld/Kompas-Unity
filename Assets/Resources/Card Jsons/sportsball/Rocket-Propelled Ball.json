@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Rocket-Propelled Ball",
-	"effText": "Comeback Play.\nWhen you attach an Augment an enemy character, move them 1 space.",
+	"effText": "Comeback Play.\nWhen you augment an enemy character, move them 1 space.",
 	"effects": [
 		{
 			"triggerData": {
@@ -10,19 +10,19 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Main Card Fits Restriction Before"
+						"Main Card Fits Restriction Before",
+						"Controller Triggered"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Augments Card Fitting Restriction"
-						],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" }
-						],
-						"augmentRestriction": {
-							"cardRestrictionElements": [
-								{ "$type": "Core.CardRestriction:Enemy:" }
-							]
+						"cardRestriction": {
+							"elements": [ {
+								"$type": "Core.CardRestriction:Augments:",
+								"cardRestriction": {
+									"elements": [
+										{ "$type": "Core.CardRestriction:Enemy:" }
+									]
+								}
+							} ]
 						}
 					}
 				}
@@ -35,7 +35,7 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "go",
-						"spaceRestrictionElements": [ 
+						"elements": [ 
                             { "$type": "Core.SpaceRestriction:Empty:" },
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",

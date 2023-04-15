@@ -14,51 +14,41 @@
 						"Main Card Fits Restriction After"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Character",
-							"Space Fits Restriction"
-						],
-						"spaceRestriction":
-						{
-							"spaceRestrictionElements": [ {
+						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
+							{ "$type": "Core.CardRestriction:Enemy:" },
+                            {
 								"$type": "Core.SpaceRestriction:Not:",
 								"negated": {
 									"$type": "Core.SpaceRestriction:InAOEOf:",
 									"anyOf": {
 										"$type": "ManyCards:FittingRestriction:",
 										"cardRestriction": {
-										"cardRestrictionElements": [ {
+										"elements": [ {
 												"$type": "Core.CardRestriction:Subtypes:",
 												"subtypes": [ "Weather" ]
 											} ]
 										}
 									}
 								}
-							} ]
-						},
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Enemy:" }
+                            }
 						]
 					},
 					"nowRestriction": {
-						"cardRestrictions": [
-							"Space Fits Restriction"
-						],
-						"spaceRestriction":
-						{
-							"spaceRestrictionElements": [ {
+						"elements": [
+							{
 								"$type": "Core.SpaceRestriction:InAOEOf:",
 								"anyOf": {
 									"$type": "ManyCards:FittingRestriction:",
 									"cardRestriction": {
-									"cardRestrictionElements": [ {
+									"elements": [ {
 											"$type": "Core.CardRestriction:Subtypes:",
 											"subtypes": [ "Weather" ]
 										} ]
 									}
 								}
-							}]
-						}
+							}
+						]
 					}
 				}
 			},

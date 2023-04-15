@@ -14,23 +14,18 @@
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Character"
-						]
+						"elements": [ { "$type": "Core.CardRestriction:Character:" } ]
 					},
 					"spaceRestriction": {
-						"spaceRestrictions": [
-							"Adjacent to a Card that Fits Restriction"
-						],
-						"adjacencyRestriction": {
-							"cardRestrictions": [
-								"Avatar"
-							],
-							"cardRestrictionElements": [
-								{ "$type": "Core.CardRestriction:Enemy:" }
-							]
-						},
-						"mustBeEmpty": false
+						"elements": [
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"cardRestriction": { "elements": [
+									{ "$type": "Core.CardRestriction:Enemy:" },
+									{ "$type": "Core.CardRestriction:Avatar:" }
+								] }
+							}
+						]
 					}
 				}
 			},
@@ -42,25 +37,25 @@
 					"$type": "Subeffect:ConditionalEnd:",
 					"condition": "Target Violates Restriction",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Augmented"
-						]
+						"elements": [ {
+							"$type": "Core.CardRestriction:HasAugment:",
+							"elements": [ ]
+						} ]
 					}
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Avatar",
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Card Target"
-							]
-						},
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Enemy:" }
+						"elements": [
+							{ "$type": "Core.CardRestriction:Enemy:" },
+							{ "$type": "Core.CardRestriction:Avatar:" },
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": {
+                                    "$type": "Spaces:PositionOf:",
+                                    "ofThisCard": { "$type": "Cards:TargetIndex:" }
+                                }
+							}
 						]
 					}
 				},

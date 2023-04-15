@@ -20,7 +20,7 @@ namespace KompasCore.Effects.Restrictions
             }
 
             protected override bool AbstractIsValidContext(TriggeringEventContext context, IResolutionContext secondaryContext)
-                => spaceRestriction.IsValidSpace(space.From(context, secondaryContext), ContextToConsider(context, secondaryContext));
+                => spaceRestriction.IsValid(space.From(context, secondaryContext), ContextToConsider(context, secondaryContext));
         }
     }
 

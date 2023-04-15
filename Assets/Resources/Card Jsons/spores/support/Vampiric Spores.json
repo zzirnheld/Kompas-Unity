@@ -20,9 +20,9 @@
                         },
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "card": { "$type": "Cards:MainCardBefore:" },
+                            "card": { "$type": "Cards:CardBefore:" },
                             "cardRestriction": {
-                                "cardRestrictionElements": [ { "$type": "Core.CardRestriction:Enemy:" } ]
+                                "elements": [ { "$type": "Core.CardRestriction:Enemy:" } ]
                             }
                         }
 					]

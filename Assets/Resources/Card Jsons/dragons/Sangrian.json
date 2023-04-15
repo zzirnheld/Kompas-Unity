@@ -14,9 +14,11 @@
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Is Defending From Source"
-						]
+						"elements": [ {
+							"$type": "Core.CardRestriction:Fighting:",
+							"defending": true,
+							"fightingWho": { "$type": "Cards:ThisCard:" }
+						} ]
 					}
 				}
 			},
@@ -30,17 +32,10 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "for Sangrian to feed",
-						"cardRestrictions": [
-							"Character"
-						],
-						"cardRestrictionElements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							}
-						]
+						"elements": [ { "$type": "Core.CardRestriction:Character:" } ]
 					}
 				},
 				{

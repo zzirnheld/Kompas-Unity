@@ -17,11 +17,9 @@
 				{
 					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
-						"blurb": "Who to heal",
-						"cardRestrictions": [
-							"Hurt"
-						],
-						"cardRestrictionElements": [
+						"blurb": "Who to burn",
+						"elements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Tree" ]
@@ -36,19 +34,14 @@
 				{
 					"$type": "Subeffect:ChangeAllCardStats:",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Character",
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Card Target"
-							]
-						},
-						"cardRestrictionElements": [
+						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": {
+                                    "$type": "Spaces:PositionOf:",
+                                    "ofThisCard": { "$type": "Cards:TargetIndex:" }
+                                }
 							}
 						]
 					},

@@ -89,24 +89,27 @@
 					"$type": "Subeffect:Reshuffle:"
 				},
 				{
-					"$type": "Subeffect:DeckTarget:",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Guild Title",
-						"cardRestrictions": [
-							"Character",
-							"Deck",
-							"Can Be Played",
-							"Card Value Fits Number Restriction"
-						],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
+						"toSearch": { "$type": "ManyCards:Deck:" },
+						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Swordguild", "Warrior" ]
+							},
+                            { "$type": "Core.CardRestriction:CanPlay:" },
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": { "value": "S" },
+								"numberRestriction": { "elements": [{
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:LessThan:" },
+									"other": { "$type": "Numbers:X:" }
+								}]}
 							}
-						],
-						"cardValue": { "value": "S" },
-						"cardValueNumberRestriction": { "numberRestrictions": [ "<X" ] }
+						]
 					},
 					"xMultiplier": 1
 				},

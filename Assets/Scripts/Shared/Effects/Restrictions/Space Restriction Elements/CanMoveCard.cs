@@ -15,7 +15,7 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
         /// Describes any restriction on the spaces between the card and where it needs to go (the space being tested)
         /// </summary>
         public SpaceRestriction throughRestriction = new SpaceRestriction() {
-            spaceRestrictionElements = new List<SpaceRestrictionElement> {
+            elements = new List<IRestrictionElement<Space>> {
                 new Empty()
             }
         };
@@ -41,9 +41,9 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 
         private bool FitsThroughRestriction(Space source, Space dest, IResolutionContext context)
             => InitializationContext.game.BoardController.AreConnectedByNumberOfSpacesFittingPredicate(source, dest,
-                s => throughRestriction.IsValidSpace(s, context), distanceRestriction.IsValidNumber);
+                s => throughRestriction.IsValid(s, context), d => distanceRestriction.IsValid(d, context));
 
-        protected override bool AbstractIsValidSpace(Space space, IResolutionContext context)
+        protected override bool IsValidLogic(Space space, IResolutionContext context)
         {
             var card = toMove.From(context, default).Card;
             return FitsMovementRestriction(card, space, context) && FitsThroughRestriction(card.Position, space, context);

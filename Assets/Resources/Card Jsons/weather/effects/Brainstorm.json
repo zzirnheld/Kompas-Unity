@@ -14,14 +14,14 @@
 						"Space Fits Restriction"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Character"
-						]
+						"elements": [ { "$type": "Core.CardRestriction:Character:" } ]
 					},
 					"spaceRestriction": {
-						"mustBeEmpty": false,
-						"spaceRestrictions": [
-							"In Source's AOE"
+						"elements": [
+							{
+								"$type": "Core.SpaceRestriction:InAOEOf:",
+								"card": { "$type": "Cards:ThisCard:" }
+							}
 						]
 					}
 				}
@@ -35,15 +35,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
-						"blurb": "the idea struck from your head",
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-                            {
-                                "$type": "Core.CardRestriction:Location:",
-                                "locations": [ "Hand" ]
-                            }
-						]
+						"blurb": "the idea struck from your head"
 					}
 				},
 				{

@@ -13,27 +13,21 @@
 						"Main Card Fits Restriction After"
 					],
 					"nowRestriction": {
-						"cardRestrictions": [
-							"Space Fits Restriction"
-						],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" }
-						],
-						"spaceRestriction":
-						{
-							"spaceRestrictionElements": [ {
+						"elements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {											
 								"$type": "Core.SpaceRestriction:InAOEOf:",
 								"anyOf": {
 									"$type": "ManyCards:FittingRestriction:",
 									"cardRestriction": {
-									"cardRestrictionElements": [ {
+									"elements": [ {
 											"$type": "Core.CardRestriction:Subtypes:",
 											"subtypes": [ "Weather" ]
 										} ]
 									}
 								}
-							}]
-						}
+                            }
+						]
 					}
 				}
 			},

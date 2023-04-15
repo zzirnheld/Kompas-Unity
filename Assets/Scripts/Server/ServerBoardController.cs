@@ -20,7 +20,7 @@ namespace KompasServer.GameCore
 
         public override void Play(GameCard toPlay, Space to, Player controller, IStackable stackSrc = null)
         {
-            var context = new TriggeringEventContext(game: ServerGame, mainCardBefore: toPlay, stackableCause: stackSrc, player: controller, space: to);
+            var context = new TriggeringEventContext(game: ServerGame, CardBefore: toPlay, stackableCause: stackSrc, player: controller, space: to);
             bool wasKnown = toPlay.KnownToEnemy;
             base.Play(toPlay, to, controller);
             context.CacheCardInfoAfter();
@@ -42,26 +42,26 @@ namespace KompasServer.GameCore
             var cardsMoverLeftBehind = CardsAndAugsWhere(c => c != null && card.CardInAOE(c) && !card.CardInAOE(c, to));
 
             //Add contexts for 
-            moveContexts.Add(new TriggeringEventContext(game: ServerGame, mainCardBefore: card, stackableCause: stackSrc, space: to,
+            moveContexts.Add(new TriggeringEventContext(game: ServerGame, CardBefore: card, stackableCause: stackSrc, space: to,
                 player: player, x: distance));
             //Cards that from card is no longer in the AOE of
             leaveContexts.AddRange(cardsMoverLeft.Select(c =>
-                new TriggeringEventContext(game: ServerGame, mainCardBefore: card, secondaryCardBefore: c, stackableCause: stackSrc, player: player)));
+                new TriggeringEventContext(game: ServerGame, CardBefore: card, secondaryCardBefore: c, stackableCause: stackSrc, player: player)));
             //Cards that from card no longer has in its aoe
             leaveContexts.AddRange(cardsMoverLeftBehind.Select(c =>
-                new TriggeringEventContext(game: ServerGame, mainCardBefore: c, secondaryCardBefore: card, stackableCause: stackSrc, player: player)));
+                new TriggeringEventContext(game: ServerGame, CardBefore: c, secondaryCardBefore: card, stackableCause: stackSrc, player: player)));
             //trigger for first card's augments
             foreach (var aug in card.Augments)
             {
                 //Add contexts for 
-                moveContexts.Add(new TriggeringEventContext(game: ServerGame, mainCardBefore: aug, stackableCause: stackSrc, space: to,
+                moveContexts.Add(new TriggeringEventContext(game: ServerGame, CardBefore: aug, stackableCause: stackSrc, space: to,
                     player: player, x: distance));
                 //Cards that from aug is no longer in the AOE of
                 leaveContexts.AddRange(cardsMoverLeft.Select(c =>
-                    new TriggeringEventContext(game: ServerGame, mainCardBefore: aug, secondaryCardBefore: c, stackableCause: stackSrc, player: player)));
+                    new TriggeringEventContext(game: ServerGame, CardBefore: aug, secondaryCardBefore: c, stackableCause: stackSrc, player: player)));
                 //Cards that from aug no longer has in its aoe
                 leaveContexts.AddRange(cardsMoverLeftBehind.Select(c =>
-                    new TriggeringEventContext(game: ServerGame, mainCardBefore: c, secondaryCardBefore: aug, stackableCause: stackSrc, player: player)));
+                    new TriggeringEventContext(game: ServerGame, CardBefore: c, secondaryCardBefore: aug, stackableCause: stackSrc, player: player)));
             }
             return (moveContexts, leaveContexts);
         }
@@ -124,7 +124,7 @@ namespace KompasServer.GameCore
                         case CardBase.VanishingSubtype:
                             if (c.TurnsOnBoard >= c.Duration)
                             {
-                                TriggeringEventContext context = new TriggeringEventContext(game: ServerGame, mainCardBefore: c);
+                                TriggeringEventContext context = new TriggeringEventContext(game: ServerGame, CardBefore: c);
                                 c.Discard();
                                 context.CacheCardInfoAfter();
                                 EffectsController.TriggerForCondition(Trigger.Vanish, context);

@@ -4,13 +4,11 @@ using KompasCore.Effects.Identities.ManyCards;
 
 namespace KompasServer.Effects.Subeffects
 {
-    public class TargetAugments : TargetAllCardsIdentity
+    public class TargetAugments : TargetAll
     {
-        public CardRestriction cardRestriction;
-
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
-            cardsIdentity = new FittingRestriction() {
+            toSearch = new FittingRestriction() {
                 cardRestriction = cardRestriction ?? new CardRestriction(),
                 cards = new Augments() { card = new TargetIndex() } };
             base.Initialize(eff, subeffIndex);

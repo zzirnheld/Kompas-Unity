@@ -38,17 +38,17 @@ namespace KompasServer.Effects.Subeffects
             {
                 return condition switch
                 {
-                    CardFitsRestriction => Game.Cards.Any(c => cardRestriction.IsValidCard(c, ResolutionContext)),
-                    NoCardFitsRestriction => !Game.Cards.Any(c => cardRestriction.IsValidCard(c, ResolutionContext)),
+                    CardFitsRestriction => Game.Cards.Any(c => cardRestriction.IsValid(c, ResolutionContext)),
+                    NoCardFitsRestriction => !Game.Cards.Any(c => cardRestriction.IsValid(c, ResolutionContext)),
 
-                    TargetFitsRestriction => cardRestriction.IsValidCard(CardTarget, ResolutionContext),
-                    TargetViolatesRestriction => !cardRestriction.IsValidCard(CardTarget, ResolutionContext),
+                    TargetFitsRestriction => cardRestriction.IsValid(CardTarget, ResolutionContext),
+                    TargetViolatesRestriction => !cardRestriction.IsValid(CardTarget, ResolutionContext),
 
-                    MainTriggeringCardFitRestrictionBefore => cardRestriction.IsValidCard(ResolutionContext.TriggerContext.mainCardInfoBefore, ResolutionContext),
-                    MainTriggeringCardFloutedRestrictionBefore => !cardRestriction.IsValidCard(ResolutionContext.TriggerContext.mainCardInfoBefore, ResolutionContext),
+                    MainTriggeringCardFitRestrictionBefore => cardRestriction.IsValid(ResolutionContext.TriggerContext.mainCardInfoBefore, ResolutionContext),
+                    MainTriggeringCardFloutedRestrictionBefore => !cardRestriction.IsValid(ResolutionContext.TriggerContext.mainCardInfoBefore, ResolutionContext),
 
                     XGreaterEqualConstant => Effect.X >= constant,
-                    XFitsRestriction => xRestriction.IsValidNumber(Effect.X),
+                    XFitsRestriction => xRestriction.IsValid(Effect.X, ResolutionContext),
                     _ => throw new System.ArgumentException($"Invalid conditional jump condition {condition}"),
                 };
             }

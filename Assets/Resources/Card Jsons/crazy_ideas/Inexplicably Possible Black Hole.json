@@ -14,9 +14,7 @@
 						"No Stackable"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Character"
-						]
+						"elements": [ { "$type": "Core.CardRestriction:Character:" } ]
 					}
 				}
 			},
@@ -28,15 +26,30 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "e n t e r t h e h o l e",
-						"spaceRestrictions": [
-							"Adjacent to Card Target",
-							"Towards Source from Card Target",
-							"Empty"
-						],
-						"spaceRestrictionElements": [ {
-							"$type": "Core.SpaceRestriction:CanMoveCard:",
-							"toMove": { "$type": "Cards:TargetIndex:" }
-						} ]
+						"elements": [
+							{
+								"$type": "Core.SpaceRestriction:CanMoveCard:",
+								"toMove": { "$type": "Cards:TargetIndex:" }
+							},
+							{
+								"$type": "Core.SpaceRestriction:Towards:",
+								"destination": {
+                                    "$type": "Spaces:PositionOf:",
+                                    "ofThisCard": { "$type": "Cards:ThisCard:" }
+                                },
+								"origin": {
+                                    "$type": "Spaces:PositionOf:",
+                                    "ofThisCard": { "$type": "Cards:TargetIndex:" }
+                                }
+							},
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": {
+                                    "$type": "Spaces:PositionOf:",
+                                    "ofThisCard": { "$type": "Cards:TargetIndex:" }
+                                }
+							}
+						]
 					}
 				},
 				{

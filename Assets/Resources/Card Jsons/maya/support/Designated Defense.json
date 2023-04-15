@@ -21,30 +21,28 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "Space for your enemy to play a Structure to",
-						"spaceRestrictions": [ "On Edge of Board" ],
-                        "spaceRestrictionElements": [
-                            { "$type": "Core.SpaceRestriction:Empty:" }
+                        "elements": [
+                            { "$type": "Core.SpaceRestriction:Empty:" },
+							{ "$type": "Core.SpaceRestriction:Edge:" }
                         ]
 					}
 				},
 				{
-					"$type": "Subeffect:DeckTarget:",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Designated build site",
-						"cardRestrictions": [
-							"Deck",
-							"Character",
-							"Can be Played to Target Space"
-						],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
+						"toSearch": { "$type": "ManyCards:Deck:" },
+						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Structure" ]
-							}
-						],
-						"canPlayIgnoring": [
-							"Adjacent to Friendly Card"
+							},
+                            {
+                                "$type": "Core.CardRestriction:CanPlay:",
+                                "destination": { "$type": "Spaces:TargetIndex:" },
+								"ignoring": [ "Adjacent to Friendly Card" ]
+                            }
 						]
 					},
 					"playerIndex": 0

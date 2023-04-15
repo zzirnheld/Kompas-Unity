@@ -19,20 +19,17 @@
                 },
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "I don't want to remember!",
-						"cardRestrictions": [
-							"Augment",
-							"Augments Current Target"
-						],
-						"cardRestrictionElements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							},
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Memory" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Augments:",
+								"singleCard": { "$type": "Cards:ThisCard:" }
 							}
 						]
 					}
@@ -60,19 +57,21 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to move the Unwilling Vessel",
-						"spaceRestrictions": [
-							"Distance to Source Fits X Restriction",
-							"Empty"
-						],
-						"distanceXRestriction": {
-							"numberRestrictions": [
-								"<=X"
-							]
-						},
-						"spaceRestrictionElements": [ {
-							"$type": "Core.SpaceRestriction:CanMoveCard:",
-							"toMove": { "$type": "Cards:TargetIndex:" }
-						} ]
+						"elements": [
+							{
+								"$type": "Core.SpaceRestriction:CanMoveCard:",
+								"toMove": { "$type": "Cards:TargetIndex:" }
+							},
+                            {
+                                "$type": "Core.SpaceRestriction:CompareDistance:",
+                                "distanceTo": {
+                                    "$type": "Spaces:PositionOf:",
+                                    "ofThisCard": { "$type": "Cards:ThisCard:" }
+                                },
+                                "number": { "$type": "Numbers:X:" },
+                                "comparison": { "$type": "Relationships.Number:LessThanEqual:" }
+                            }
+						]
 					},
 					"xMultiplier": 1
 				},

@@ -10,14 +10,15 @@
 					"triggerRestrictions": [
 						"Max Per Stack",
 						"This Card is Main Card",
-						"Stackable Source isn't This Effect",
-						"Stackable Source Fits Restriction Now"
+						"Stackable Source isn't This Effect"
 					],
-					"sourceRestriction": {
-						"cardRestrictions": [
-							"Is Source"
-						]
-					}
+                    "triggerRestrictionElements": [
+                        {
+                            "$type": "Core.TriggerRestriction:CardsMatch:",
+                            "firstCard": { "$type": "Cards:CauseBefore:" },
+                            "secondCard": { "$type": "Cards:ThisCard:" }
+                        }
+					]
 				}
 			},
 			"subeffects": [
@@ -66,16 +67,17 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": {
+						"$type": "ManyCards:Hand:",
+						"friendly": true, "enemy": true
+					},
 					"cardRestriction": {
 						"blurb": "spell to reveal",
-						"cardRestrictions": [
-							"Controller Matches Player Target",
-							"Hidden"
-						],
-						"cardRestrictionElements": [
+						"elements": [
+							{ "$type": "Core.CardRestriction:Hidden:" },
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Hand" ]
+								"$type": "Core.PlayerRestriction:PlayersMatch:",
+								"player": { "$type": "Players:TargetIndex:" }
 							}
 						]
 					}

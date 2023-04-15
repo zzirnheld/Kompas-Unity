@@ -11,7 +11,7 @@
                         {
                             "$type": "Core.TriggerRestriction:CardsMatch:",
                             "firstCard": { "$type": "Cards:ThisCard:" },
-                            "secondCard": { "$type": "Cards:MainCardBefore:" }
+                            "secondCard": { "$type": "Cards:CardBefore:" }
                         }
 					]
 				}
@@ -19,15 +19,11 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
 						"blurb": "Ethereal to revive",
-                        "cardRestrictionElements": [
-                            { "$type": "Core.CardRestriction:FriendlyCard:" },
+                        "elements": [
                             { "$type": "Core.CardRestriction:Character:" },
-                            {
-                                "$type": "Core.CardRestriction:Location:",
-                                "locations": [ "Hand" ]
-                            },
                             {
                                 "$type": "Core.CardRestriction:Subtypes:",
                                 "subtypes": [ "Ethereal" ]
@@ -39,7 +35,7 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to revive the Ethereal",
-                        "spaceRestrictionElements": [
+                        "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {
                                 "$type": "Core.SpaceRestriction:CanPlayCard:",

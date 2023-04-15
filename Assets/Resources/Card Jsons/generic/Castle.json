@@ -16,38 +16,30 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "Avatar to castle",
-						"cardRestrictions": [
-							"Avatar",
-							"Space Fits Restriction"
-						],
-						"cardRestrictionElements": [
+						"elements": [
+							{ "$type": "Core.CardRestriction:Avatar:" },
+							{ "$type": "Core.SpaceRestriction:Surrounded:" },
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+								"$type": "Core.CardRestriction:CanMove:",
+								"spaceRestrictionSubeffectIndex": 1
 							}
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Surrounded",
-								"Empty"
-							]
-						}
+						]
 					}
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "Corner to move them to",
-						"spaceRestrictions": [
-							"Corner",
-							"Empty"
-						],
-						"spaceRestrictionElements": [ {
-							"$type": "Core.SpaceRestriction:CanMoveCard:",
-							"toMove": { "$type": "Cards:TargetIndex:" }
-						} ]
+						"elements": [
+							{ "$type": "Core.SpaceRestriction:Corner:" },
+							{
+								"$type": "Core.SpaceRestriction:CanMoveCard:",
+								"toMove": { "$type": "Cards:TargetIndex:" }
+							}
+						]
 					}
 				},
 				{

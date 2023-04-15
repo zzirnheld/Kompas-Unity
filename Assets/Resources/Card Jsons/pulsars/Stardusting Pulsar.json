@@ -9,43 +9,35 @@
 				"triggerCondition": "S Change",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card in Play",
-						"X Fits Restriction",
-						"Main Card Fits Restriction Before"
+						"X Fits Restriction"
 					],
 					"xRestriction": {
 						"numberRestrictions": [
 							">0"
 						]
 					},
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Avatar"
-						],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+                    "triggerRestrictionElements": [
+                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardsMatch:",
+                            "firstCard": { "$type": "Cards:MainCardBefore:" },
+                            "secondCard": {
+								"$type": "Cards:Avatar:",
+								"player": { "$type": "Players:FriendlyPlayer:" }
 							}
-						]
-					}
+                        }
+                    ]
 				}
 			},
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "summon for Stardusting Pulsar to buff",
-						"cardRestrictions": [
-							"Character",
-							"Summoned"
-						],
-						"cardRestrictionElements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							}
+						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
+                            { "$type": "Core.CardRestriction:Summoned:" }
 						]
 					}
 				},
@@ -64,43 +56,35 @@
 				"triggerCondition": "S Change",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card in Play",
-						"X Fits Restriction",
-						"Main Card Fits Restriction Before"
+						"X Fits Restriction"
 					],
 					"xRestriction": {
 						"numberRestrictions": [
 							"<0"
 						]
 					},
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Avatar"
-						],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+                    "triggerRestrictionElements": [
+                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardsMatch:",
+                            "firstCard": { "$type": "Cards:MainCardBefore:" },
+                            "secondCard": {
+								"$type": "Cards:Avatar:",
+								"player": { "$type": "Players:FriendlyPlayer:" }
 							}
-						]
-					}
+                        }
+                    ]
 				}
 			},
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "summon for Stardusting Pulsar to debuff",
-						"cardRestrictions": [
-							"Character",
-							"Summoned"
-						],
-						"cardRestrictionElements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							}
+						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
+                            { "$type": "Core.CardRestriction:Summoned:" }
 						]
 					}
 				},

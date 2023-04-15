@@ -15,14 +15,11 @@
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:ChooseFromList:",
-					"maxCanChoose": 1,
+					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
 						"blurb": "Brilliant Mage who was inspired",
-						"cardRestrictions": [
-							"Deck"
-						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
@@ -47,12 +44,12 @@
 			"Space Must Fit Restriction"
 		],
 		"spaceRestriction": {
-			"spaceRestrictionElements": [ {
+			"elements": [ {
 				"$type": "Core.SpaceRestriction:InAOEOf:",
 				"anyOf": {
 					"$type": "ManyCards:FittingRestriction:",
 					"cardRestriction": {
-					"cardRestrictionElements": [ {
+					"elements": [ {
 							"$type": "Core.CardRestriction:Subtypes:",
 							"subtypes": [ "Light" ]
 						} ]

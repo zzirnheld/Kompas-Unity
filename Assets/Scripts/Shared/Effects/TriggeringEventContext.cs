@@ -107,7 +107,7 @@ namespace KompasCore.Effects
         }
 
         public TriggeringEventContext(Game game,
-                                 GameCard mainCardBefore = null,
+                                 GameCard CardBefore = null,
                                  GameCard secondaryCardBefore = null,
                                  GameCard eventCauseOverride = null,
                                  IStackable stackableCause = null,
@@ -116,11 +116,11 @@ namespace KompasCore.Effects
                                  int? x = null,
                                  Space space = null)
             : this(game: game,
-                   mainCardInfoBefore: GameCardInfo.CardInfoOf(mainCardBefore),
+                   mainCardInfoBefore: GameCardInfo.CardInfoOf(CardBefore),
                    secondaryCardInfoBefore: GameCardInfo.CardInfoOf(secondaryCardBefore),
                    //Set the event cause either as the override if one is provided,
                    //or as the stackable's cause if not.
-                   cardCause: GameCardInfo.CardInfoOf(eventCauseOverride ?? stackableCause?.GetCause(mainCardBefore)),
+                   cardCause: GameCardInfo.CardInfoOf(eventCauseOverride ?? stackableCause?.GetCause(CardBefore)),
                    stackableCause: stackableCause,
                    stackableEvent: stackableEvent,
                    player: player,

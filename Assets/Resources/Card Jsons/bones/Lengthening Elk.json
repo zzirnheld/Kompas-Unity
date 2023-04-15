@@ -25,7 +25,7 @@
                     "spaceRestriction":
                     {
                         "blurb":"where Elk will lengthen to",
-						"spaceRestrictionElements": [ {
+						"elements": [ {
 							"$type": "Core.SpaceRestriction:CanMoveCard:",
 							"toMove": { "$type": "Cards:TargetIndex:" },
 							"distanceRestriction": {
@@ -39,23 +39,21 @@
                     "$type":"Subeffect:Move:"
                 },
 				{
-					"$type": "Subeffect:DeckTarget:",
+					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Elk bone",
-						"cardRestrictions": [
-							"Deck",
-							"Character",
-							"Can be Played to Target Space"
-						],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
+						"toSearch": { "$type": "ManyCards:Deck:" },
+						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Bone" ]
-							}
-						],
-						"canPlayIgnoring": [
-							"Adjacent to Friendly Card"
+							},
+                            {
+                                "$type": "Core.CardRestriction:CanPlay:",
+                                "destination": { "$type": "Spaces:TargetIndex:" },
+								"ignoring": [ "Adjacent to Friendly Card" ]
+                            }
 						]
 					},
                     "spaceIndex": -2

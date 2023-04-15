@@ -47,11 +47,11 @@ namespace KompasServer.Effects.Subeffects
                     DistanceFromSourceToTarget => Source.DistanceTo(CardTarget),
 
                     CardsFittingRestriction
-                        => Game.Cards.Where(c => cardRestriction.IsValidCard(c, ResolutionContext)).Count(),
+                        => Game.Cards.Where(c => cardRestriction.IsValid(c, ResolutionContext)).Count(),
                     TotalCardValueOfCardsFittingRestriction
-                        => Game.Cards.Where(c => cardRestriction.IsValidCard(c, ResolutionContext)).Sum(cardValue.GetValueOf),
+                        => Game.Cards.Where(c => cardRestriction.IsValid(c, ResolutionContext)).Sum(cardValue.GetValueOf),
                     MaxCardValueOfCardsFittingRestriction
-                        => Game.Cards.Where(c => cardRestriction.IsValidCard(c, ResolutionContext)).Max(cardValue.GetValueOf),
+                        => Game.Cards.Where(c => cardRestriction.IsValid(c, ResolutionContext)).Max(cardValue.GetValueOf),
 
                     EffectUsesThisTurn => Effect.TimesUsedThisTurn,
                     NumberOfTargets => Effect.CardTargets.Count(),

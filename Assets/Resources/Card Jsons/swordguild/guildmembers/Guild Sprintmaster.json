@@ -15,12 +15,18 @@
 						"Space Fits Restriction"
 					],
 					"spaceRestriction": {
-						"spaceRestrictions": [
-							"Adjacent to Source"
-						]
+                        "elements": [
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": {
+									"$type": "Spaces:PositionOf:",
+									"ofThisCard": { "$type": "Cards:ThisCard:" }
+								}
+							}
+                        ]
 					},
 					"cardRestriction": {
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Warrior" ]

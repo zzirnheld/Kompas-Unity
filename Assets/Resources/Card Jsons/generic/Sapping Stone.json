@@ -15,22 +15,15 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:ChangeAllCardStats:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Character",
-							"Space Fits Restriction"
-						],
-						"cardRestrictionElements": [
+						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+								"$type": "Core.SpaceRestriction:InAOEOf:",
+								"card": { "$type": "Cards:ThisCard:" }
 							}
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"In Source's AOE"
-							]
-						}
+						]
 					},
 					"eModifier": -1,
 					"wModifier": -1

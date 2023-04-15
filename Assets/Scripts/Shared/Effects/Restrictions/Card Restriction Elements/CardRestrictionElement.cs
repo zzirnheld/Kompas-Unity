@@ -3,51 +3,32 @@ using System.Linq;
 
 namespace KompasCore.Effects.Restrictions
 {
-    public abstract class CardRestrictionElement : ContextInitializeableBase
+    public abstract class CardRestrictionElement : RestrictionElementBase<GameCardBase>, IRestrictionElement<Space>
     {
-        public bool FitsRestriction(GameCardBase card, IResolutionContext context)
-        {
-            ComplainIfNotInitialized();
-
-            return card != null && FitsRestrictionLogic(card, context);
-        }
-
-        protected abstract bool FitsRestrictionLogic(GameCardBase card, IResolutionContext context);
+        public bool IsValid(Space item, IResolutionContext context)
+            => IsValid(InitializationContext.game.BoardController.GetCardAt(item), context);
     }
 
     namespace CardRestrictionElements
     {
-
         public class Not : CardRestrictionElement
         {
-            public CardRestrictionElement element;
+            public IRestrictionElement<GameCardBase> negated;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {
                 base.Initialize(initializationContext);
-                element.Initialize(initializationContext);
+                negated.Initialize(initializationContext);
             }
 
-            protected override bool FitsRestrictionLogic(GameCardBase card, IResolutionContext context)
-                => !element.FitsRestriction(card, context);
+            protected override bool IsValidLogic(GameCardBase item, IResolutionContext context)
+                => !negated.IsValid(item, context);
         }
 
         public class CardExists : CardRestrictionElement
         {
-            protected override bool FitsRestrictionLogic(GameCardBase card, IResolutionContext context)
+            protected override bool IsValidLogic(GameCardBase card, IResolutionContext context)
                 => card != null;
-        }
-
-        public class Avatar : CardRestrictionElement
-        {
-            protected override bool FitsRestrictionLogic(GameCardBase card, IResolutionContext context)
-                => card.IsAvatar;
-        }
-
-        public class Summoned : CardRestrictionElement
-        {
-            protected override bool FitsRestrictionLogic(GameCardBase card, IResolutionContext context)
-                => card.Summoned;
         }
     }
 }

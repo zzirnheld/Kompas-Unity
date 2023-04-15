@@ -15,33 +15,26 @@
             "$type": "Subeffect:CardTarget:",
             "cardRestriction": {
                 "blurb": "Mask to swap out",
-                "cardRestrictions": [
-                    "Augment",
-                    "Augments Current Target"
-                ],
-                "cardRestrictionElements": [
-                    {
-                        "$type": "Core.CardRestriction:Location:",
-                        "locations": [ "Board" ]
-                    },
+                "elements": [
                     {
                         "$type": "Core.CardRestriction:Subtypes:",
                         "subtypes": [ "Mask" ]
+                    },
+                    {
+                        "$type": "Core.CardRestriction:Augments:",
+                        "singleCard": { "$type": "Cards:TargetIndex:" }
                     }
                 ]
             }
         },
         {
             "$type":"Subeffect:CardTarget:",
+            "toSearch": { "$type": "ManyCards:Hand:" },
             "cardRestriction":
             {
                 "blurb": "Mask to swap for",
-                "cardRestrictions": [ "Augment" ],
-                "cardRestrictionElements": [
-                    {
-                        "$type": "Core.CardRestriction:Location:",
-                        "locations": [ "Hand" ]
-                    },
+                "elements": [
+                    { "$type": "Core.CardRestriction:Augment:" },
                     {
                         "$type": "Core.CardRestriction:Subtypes:",
                         "subtypes": [ "Mask" ]

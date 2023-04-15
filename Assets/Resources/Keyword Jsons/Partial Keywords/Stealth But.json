@@ -6,21 +6,28 @@
         "$type": "Subeffect:SpaceTarget:",
         "spaceRestriction": {
             "blurb": "Stealth position to 'actually' be in",
-            "spaceRestrictions": [
-                "In AOE Source is Also In"
-            ],
-            "alsoInAOEOfRestriction": {
-                "cardRestrictionElements": [
-                    {
-                        "$type": "Core.CardRestriction:Subtypes:",
-                        "subtypes": [ "Shade" ]
+            "elements": [
+                {
+                    "$type": "Core.SpaceRestriction:CanMoveCard:",
+                    "toMove": { "$type": "Cards:TargetIndex:" }
+                },
+                {
+                    "$type": "Core.SpaceRestriction:InAOEOf:",
+                    "anyOf": {
+                        "$type": "ManyCards:FittingRestriction:",
+                        "cardRestriction": {
+                        "elements": [ {
+                                "$type": "Core.CardRestriction:Subtypes:",
+                                "subtypes": [ "Shade" ]
+                            } ]
+                        }
+                    },
+                    "sameAs": {
+                        "$type": "Spaces:PositionOf:",
+                        "ofThisCard": { "$type": "Cards:ThisCard:" }
                     }
-                ]
-            },
-            "spaceRestrictionElements": [ {
-                "$type": "Core.SpaceRestriction:CanMoveCard:",
-                "toMove": { "$type": "Cards:TargetIndex:" }
-            } ]
+                }
+            ]
         }
     },
     {
@@ -36,13 +43,17 @@
                 "Main Card Fits Restriction After"
             ],
             "nowRestriction": {
-                "cardRestrictions": [
-                    "Source in This' AOE"
-                ],
-                "cardRestrictionElements": [
+                "elements": [
                     {
                         "$type": "Core.CardRestriction:Subtypes:",
                         "subtypes": [ "Light" ]
+                    },
+                    {
+                        "$type": "Core.CardRestriction:AOEContains:",
+                        "cards": {
+                            "$type": "ManyCards:FromSingle:",
+                            "cards": [ { "$type": "Cards:ThisCard:" } ]
+                        }
                     }
                 ]
             }

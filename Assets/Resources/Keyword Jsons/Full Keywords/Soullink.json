@@ -7,9 +7,11 @@
                 "Main Card Fits Restriction Before"
             ],
             "cardRestriction": {
-                "cardRestrictions": [
-                    "Is Defending From Source"
-                ]
+                "elements": [ {
+                    "$type": "Core.CardRestriction:Fighting:",
+                    "defending": true,
+                    "fightingWho": { "$type": "Cards:ThisCard:" }
+                } ]
             }
         }
     },
@@ -31,12 +33,13 @@
             "condition": "X<0"
         },
         {
-            "$type": "Subeffect:AutoTarget:",
-            "cardRestriction": {
-                "cardRestrictions": [
-                    "Avatar",
-                    "Controller Matches Card Target's"
-                ]
+            "$type": "Subeffect:AutoTargetCardIdentity:",
+            "subeffectCardIdentity": {
+                "$type": "Cards:Avatar:",
+                "player": {
+                    "$type": "Players:ControllerOf:",
+                    "card": { "$type": "Cards:TargetIndex:" }
+                }
             }
         },
         {

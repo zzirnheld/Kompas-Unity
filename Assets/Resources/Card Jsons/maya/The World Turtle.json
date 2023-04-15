@@ -10,14 +10,15 @@
 					"triggerRestrictions": [
 						"Max Per Stack",
 						"This Card is Main Card",
-						"Stackable Source isn't This Effect",
-						"Stackable Source Fits Restriction Now"
+						"Stackable Source isn't This Effect"
 					],
-					"sourceRestriction": {
-						"cardRestrictions": [
-							"Is Source"
-						]
-					}
+                    "triggerRestrictionElements": [
+                        {
+                            "$type": "Core.TriggerRestriction:CardsMatch:",
+                            "firstCard": { "$type": "Cards:CauseBefore:" },
+                            "secondCard": { "$type": "Cards:ThisCard:" }
+                        }
+					]
 				}
 			},
 			"subeffects": [
@@ -44,7 +45,7 @@
                             "$type": "Core.TriggerRestriction:SpacesFitRestriction:",
                             "spaces": { "$type": "ManySpaces:Corners:" },
                             "spaceRestriction": {
-                                "spaceRestrictionElements": [
+                                "elements": [
                                     {
                                         "$type": "Core.SpaceRestriction:Not:",
                                         "negated": { "$type": "Core.SpaceRestriction:Empty:" }
@@ -59,20 +60,15 @@
 				{
 					"$type": "Subeffect:ChangeAllCardStats:",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Character",
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Source"
-							]
-						},
-						"cardRestrictionElements": [
+						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Enemy:" },
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": {
+									"$type": "Spaces:PositionOf:",
+									"ofThisCard": { "$type": "Cards:ThisCard:" }
+								}
 							}
 						]
 					},

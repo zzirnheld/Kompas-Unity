@@ -10,11 +10,10 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"Main Card Fits Restriction Before",
-						"Space Fits Restriction",
 						"This Card in Play"
 					],
 					"cardRestriction": {
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
@@ -23,14 +22,12 @@
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Mech", "Golem" ]
+							},
+							{
+								"$type": "Core.SpaceRestriction:InAOEOf:",
+								"card": { "$type": "Cards:ThisCard:" }
 							}
 						]
-					},
-					"spaceRestriction": {
-						"spaceRestrictions": [
-							"In Source's AOE"
-						],
-						"mustBeEmpty": false
 					}
 				}
 			},

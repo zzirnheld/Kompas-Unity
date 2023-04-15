@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
 public class Space
 {
@@ -63,7 +62,7 @@ public class Space
     public int DistanceTo(Space other) => TaxicabDistanceTo(other);
     public Space DisplacementTo(Space other) => new Space(other.x - x, other.y - y);
 
-    public bool AdjacentTo(Space other) => DistanceTo(other) == 1;
+    public bool IsAdjacentTo(Space other) => DistanceTo(other) == 1;
     public IReadOnlyCollection<Space> AdjacentSpaces
     {
         get
@@ -147,6 +146,7 @@ public class Space
     }
 
     public static Space operator *(Space s, int i) => (s.x * i, s.y * i);
+    public static Space operator +(Space a, Space b) => (a.x + b.x, a.y + b.y);
 
     public static bool operator ==(Space a, Space b)
     {

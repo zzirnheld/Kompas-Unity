@@ -16,15 +16,11 @@
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:AutoTarget:",
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Avatar"
-						],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Enemy:" }
-						]
-					}
+					"$type": "Subeffect:AutoTargetCardIdentity:",
+                    "subeffectCardIdentity": {
+						"$type": "Cards:Avatar:",
+                        "player": { "$type": "Players:EnemyPlayer:" }
+                    }
 				},
 				{
 					"$type": "Subeffect:PlayerChooseX:",

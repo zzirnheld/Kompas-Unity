@@ -14,7 +14,7 @@
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
                             "card": { "$type": "Cards:CauseBefore:" },
                             "cardRestriction": {
-                                "cardRestrictionElements": [
+                                "elements": [
                                     {
                                         "$type": "Core.CardRestriction:Subtypes:",
                                         "subtypes": [ "Fungus" ]
@@ -24,9 +24,9 @@
                         },
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "card": { "$type": "Cards:MainCardBefore:" },
+                            "card": { "$type": "Cards:CardBefore:" },
                             "cardRestriction": {
-                                "cardRestrictionElements": [ { "$type": "Core.CardRestriction:Enemy:" } ]
+                                "elements": [ { "$type": "Core.CardRestriction:Enemy:" } ]
                             }
                         }
 					]
@@ -37,20 +37,17 @@
 					"$type": "Subeffect:CardTarget:",
 					"blurb": "Mycelium to summon",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Multiple Possible Locations",
-							"Can Be Played"
-						],
-						"locations": [
-							2,
-							4
-						],
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Deck", "Discard" ]
+                            },
                             {
                                 "$type": "Core.CardRestriction:Subtypes:",
                                 "subtypes": [ "Mycelium" ]
-                            }
+                            },
+                            { "$type": "Core.CardRestriction:CanPlay:" }
 						]
 					},
 					"targetIndex": -2
@@ -59,7 +56,7 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "Where to summon the Mycelium",
-                        "spaceRestrictionElements": [
+                        "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {
                                 "$type": "Core.SpaceRestriction:CanPlayCard:",

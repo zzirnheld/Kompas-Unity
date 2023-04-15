@@ -29,7 +29,7 @@
                                 "card": { "$type": "Cards:TargetIndex:" }
                             },
                             "cardRestriction": {
-                                "cardRestrictionElements": [
+                                "elements": [
                                     {
                                         "$type": "Core.CardRestriction:Subtypes:",
                                         "subtypes": [ "Module" ]

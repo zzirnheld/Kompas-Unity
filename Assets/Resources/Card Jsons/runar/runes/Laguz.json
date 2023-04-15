@@ -14,18 +14,23 @@
 						"Not From Effect"
 					],
 					"spaceRestriction": {
-						"spaceRestrictions": [
-							"In Source's AOE"
-						],
-						"mustBeEmpty": false
+						"elements": [
+							{
+								"$type": "Core.SpaceRestriction:InAOEOf:",
+								"card": { "$type": "Cards:ThisCard:" }
+							}
+						]
 					}
 				}
 			},
 			"subeffects": [
 				{
+					"$type":"Subeffect:TargetTriggeringCard:"
+				},
+				{
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
-						"spaceRestrictionElements": [
+						"elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",

@@ -8,7 +8,15 @@
 		],
 		"thisCardRestriction":
 		{
-			"cardRestrictions":["Has Movement"]
+			"elements": [
+				{
+					"$type": "Core.CardRestriction:CardValueFits:",
+					"cardValue": { "value": "Spaces Can Move" },
+					"numberRestriction": { "elements": [
+						{ "$type": "Core.NumberRestriction:Positive:" }
+					]}
+				}
+			]
 		}
 	},
 	"subeffects":[
@@ -24,21 +32,38 @@
 			"spaceRestriction":
 			{
 				"blurb":"to Linewalk to",
-				"spaceRestrictions":[
-					"Empty",
-					"On Card Target's Diagonal",
-					"Connected to Card Target by Spaces Fitting Restriction"
-				],
-				"spaceConnectednessRestriction": {
-					"spaceRestrictions": [
-						"Empty",
-						"On Card Target's Diagonal"
-					]
-				},
-				"spaceRestrictionElements": [ {
-					"$type": "Core.SpaceRestriction:CanMoveCard:",
-					"toMove": { "$type": "Cards:TargetIndex:" }
-				} ]
+				"elements": [
+					{
+						"$type": "Core.SpaceRestriction:CanMoveCard:",
+						"toMove": { "$type": "Cards:TargetIndex:" }
+					},
+					{
+						"$type": "Core.SpaceRestriction:SameDiagonal:",
+						"other": {
+							"$type": "Spaces:PositionOf:",
+							"card": { "$type": "Cards:TargetIndex:" }
+						}
+					},
+					{
+						"$type": "Core.SpaceRestriction:ConnectedTo:",
+						"space": {
+							"$type": "Spaces:PositionOf:",
+							"ofThisCard": { "$type": "Cards:TargetIndex:" }
+						},
+						"byRestriction": {
+							"elements": [
+								{ "$type": "Core.SpaceRestriction:Empty:" },
+								{
+									"$type": "Core.SpaceRestriction:SameDiagonal:",
+									"other": {
+										"$type": "Spaces:PositionOf:",
+										"card": { "$type": "Cards:TargetIndex:" }
+									}
+								}
+							]
+						}
+					}
+				]
 			}
 		},
 		{

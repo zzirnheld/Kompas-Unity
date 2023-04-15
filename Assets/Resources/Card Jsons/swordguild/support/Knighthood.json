@@ -12,14 +12,14 @@
                         { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "card": { "$type": "Cards:MainCardBefore:" },
-                            "cardRestriction": { "cardRestrictions": [ "Character" ] }
+                            "card": { "$type": "Cards:CardBefore:" },
+                            "cardRestriction": { "elements": [ { "$type": "Core.CardRestriction:Character:" } ] }
                         },
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
                             "card": { "$type": "Cards:CauseAfter:" },
                             "cardRestriction": {
-                                "cardRestrictionElements": [
+                                "elements": [
                                     {
                                         "$type": "Core.CardRestriction:Location:",
                                         "locations": [ "Board" ]
@@ -69,17 +69,26 @@
 					"$type":"Subeffect:Discard:"
 				},
 				{
-					"$type":"Subeffect:DeckTarget:",
+					"$type":"Subeffect:CardTarget:",
 					"cardRestriction":
 					{
 						"blurb":"for Squire to become",
-						"cardRestrictions": [ "Character", "Deck", "Can Be Played", "Card Value Fits Number Restriction" ],
-						"cardValue": { "value": "S" },
-						"cardValueNumberRestriction": { "numberRestrictions": [ "<=X" ] },
-						"cardRestrictionElements": [
+						"toSearch": { "$type": "ManyCards:Deck:" },
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Warrior" ]
+							},
+                            { "$type": "Core.CardRestriction:CanPlay:" },
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": { "value": "S" },
+								"numberRestriction": { "elements": [{
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:LessThanEqual:" },
+									"other": { "$type": "Numbers:X:" }
+								}]}
 							}
 						]
 					}

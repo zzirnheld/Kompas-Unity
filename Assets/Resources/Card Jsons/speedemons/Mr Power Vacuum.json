@@ -12,21 +12,24 @@
 						"Space Fits Restriction"
 					],
 					"spaceRestriction": {
-						"spaceRestrictions": [
-							"Adjacent to a Card that Fits Restriction"
-						],
-						"adjacencyRestriction": {
-							"cardRestrictions": [
-								"Different from Source"
-							],
-							"cardRestrictionElements": [
-								{
-									"$type": "Core.CardRestriction:Subtypes:",
-									"subtypes": [ "Speedemon" ]
-								}
-							]
-						},
-						"mustBeEmpty": false
+						"elements": [
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"cardRestriction": { "elements": [
+									{
+										"$type": "Core.CardRestriction:Not:",
+										"negated": {
+											"$type": "Core.CardRestriction:CardsMatch:",
+											"card": { "$type": "Cards:ThisCard:" }
+										}
+									},
+									{
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Speedemon" ]
+									}
+								] }
+							}
+						]
 					}
 				}
 			},
@@ -47,19 +50,12 @@
 				{
 					"$type": "Subeffect:CardTarget:",
 					"blurb": "card to vakoom",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Space Target"
-							]
-						},
-						"cardRestrictionElements": [
+						"elements": [
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": { "$type": "Spaces:TargetIndex:" }
 							}
 						]
 					},

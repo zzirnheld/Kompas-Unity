@@ -35,16 +35,9 @@
 				{
 					"$type": "Subeffect:ConditionalEnd:",
 					"condition": "Target Violates Restriction",
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Corner"
-							]
-						}
-					}
+					"cardRestriction": { "elements": [
+						{ "$type": "Core.SpaceRestriction:Corner:" }
+					] }
 				},
 				{
 					"$type": "Subeffect:TargetTargetsAugmentedCard:",
@@ -54,11 +47,9 @@
 					"$type": "Subeffect:ConditionalEnd:",
 					"condition": "Target Violates Restriction",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Avatar"
-						],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Enemy:" }
+						"elements": [
+							{ "$type": "Core.CardRestriction:Enemy:" },
+							{ "$type": "Core.CardRestriction:Avatar:" }
 						]
 					}
 				},

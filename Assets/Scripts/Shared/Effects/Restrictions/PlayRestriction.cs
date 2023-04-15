@@ -134,19 +134,19 @@ namespace KompasCore.Effects
             EnemyTurn => Card.Game.TurnPlayer != Card.Controller,
 
             OnCharacter => Card.Game.BoardController.GetCardAt(space)?.CardType == 'C',
-            OnCardFittingRestriction => onCardRestriction.IsValidCard(Card.Game.BoardController.GetCardAt(space), context),
+            OnCardFittingRestriction => onCardRestriction.IsValid(Card.Game.BoardController.GetCardAt(space), context),
             OnAugmentSubtypes => IsOnAugmentSubtypes(space),
-            OnCardFloutingRestriction => onCardFloutedRestriction.IsValidCard(Card.Game.BoardController.GetCardAt(space), context),
+            OnCardFloutingRestriction => onCardFloutedRestriction.IsValid(Card.Game.BoardController.GetCardAt(space), context),
 
             NotNormally => !normal,
             MustNormally => normal,
 
             CheckUnique => !(Card.Unique && InitializationContext.game.BoardHasCopyOf(Card)),
-            AdjacentToCardFittingRestriction => Card.Game.BoardController.CardsAdjacentTo(space).Any(c => adjacentCardRestriction.IsValidCard(c, context)),
-            SpaceFitsRestriction => spaceRestriction.IsValidSpace(space, context),
-            SpaceMustFloutRestriction => !floutedSpaceRestriction.IsValidSpace(space, context),
+            AdjacentToCardFittingRestriction => Card.Game.BoardController.CardsAdjacentTo(space).Any(c => adjacentCardRestriction.IsValid(c, context)),
+            SpaceFitsRestriction => spaceRestriction.IsValid(space, context),
+            SpaceMustFloutRestriction => !floutedSpaceRestriction.IsValid(space, context),
 
-            CountExistingCards => countCardNumberRestriction.IsValidNumber(Card.Game.Cards.Count(c => countCardRestriction.IsValidCard(c, context))),
+            CountExistingCards => countCardNumberRestriction.IsValid(Card.Game.Cards.Count(c => countCardRestriction.IsValid(c, context)), context),
 
             _ => throw new System.ArgumentException($"You forgot to check play restriction {r}", "r"),
         };

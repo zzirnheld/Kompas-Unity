@@ -28,16 +28,17 @@
 					"$type":"Subeffect:Discard:"
 				},
 				{
-					"$type":"Subeffect:DeckTarget:",
+					"$type":"Subeffect:CardTarget:",
 					"cardRestriction":
 					{
 						"blurb":"for Dragon Egg to become",
-						"cardRestrictions":["Character","Deck","Can Be Played"],
-						"cardRestrictionElements": [
+						"toSearch": { "$type": "ManyCards:Deck:" },
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Dragon" ]
-							}
+							},
+                            { "$type": "Core.CardRestriction:CanPlay:" }
 						]
 					}
 				},

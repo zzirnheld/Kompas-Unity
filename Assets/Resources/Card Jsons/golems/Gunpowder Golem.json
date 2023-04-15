@@ -30,18 +30,13 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "summon for Gunpowder Golem to give -X E",
-						"cardRestrictions": [
-							"Character",
-							"Summoned",
-							"Distinct Name from Source"
-						],
-						"cardRestrictionElements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							}
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
+                            { "$type": "Core.CardRestriction:Summoned:" },
+							{ "$type": "Core.CardRestriction:DistinctName:" }
 						]
 					}
 				},

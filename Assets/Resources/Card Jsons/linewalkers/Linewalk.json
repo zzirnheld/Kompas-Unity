@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Linewalk",
-	"effText": "Move a friendly Linewalker to an empty space on their diagonal. Draw 1 card.",
+	"effText": "Move a friendly Linewalker along their diagonal to an empty space. Draw 1 card.",
 	"effects": [
 		{
 			"blurb": "Simple Effect",
@@ -16,17 +16,18 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "Character to Linewalk",
-						"cardRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							},
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Linewalker" ]
+							},
+							{
+								"$type": "Core.CardRestriction:CanMove:",
+								"spaceRestrictionSubeffectIndex": 1
 							}
 						]
 					}
@@ -35,21 +36,38 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "to Linewalk to",
-						"spaceRestrictions": [
-							"Empty",
-							"On Card Target's Diagonal",
-							"Connected to Card Target by Spaces Fitting Restriction"
-						],
-						"spaceConnectednessRestriction": {
-							"spaceRestrictions": [
-								"Empty",
-								"On Card Target's Diagonal"
-							]
-						},
-						"spaceRestrictionElements": [ {
-							"$type": "Core.SpaceRestriction:CanMoveCard:",
-							"toMove": { "$type": "Cards:TargetIndex:" }
-						} ]
+						"elements": [
+							{
+								"$type": "Core.SpaceRestriction:CanMoveCard:",
+								"toMove": { "$type": "Cards:TargetIndex:" }
+							},
+							{
+								"$type": "Core.SpaceRestriction:SameDiagonal:",
+								"other": {
+									"$type": "Spaces:PositionOf:",
+									"card": { "$type": "Cards:TargetIndex:" }
+								}
+							},
+							{
+								"$type": "Core.SpaceRestriction:ConnectedTo:",
+								"space": {
+                                    "$type": "Spaces:PositionOf:",
+                                    "ofThisCard": { "$type": "Cards:TargetIndex:" }
+                                },
+								"byRestriction": {
+									"elements": [
+										{ "$type": "Core.SpaceRestriction:Empty:" },
+										{
+											"$type": "Core.SpaceRestriction:SameDiagonal:",
+											"other": {
+												"$type": "Spaces:PositionOf:",
+												"card": { "$type": "Cards:TargetIndex:" }
+											}
+										}
+									]
+								}
+							}
+						]
 					}
 				},
 				{

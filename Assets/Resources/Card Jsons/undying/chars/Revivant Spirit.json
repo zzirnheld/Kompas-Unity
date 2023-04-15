@@ -26,7 +26,12 @@
                     "spaceRestriction":
                     {
                         "blurb": "where to revive the Spirit",
-                        "spaceRestrictions": [ "Can Play Card Target to This Space" ]
+						"elements": [
+                            {
+                                "$type": "Core.SpaceRestriction:CanPlayCard:",
+                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                            }
+						]
                     }
                 },
                 {

@@ -11,19 +11,22 @@
 	"subeffects":[
 		{
 			"$type":"Subeffect:CardTarget:",
+			"toSearch": { "$type": "ManyCards:Board:" },
 			"cardRestriction":
 			{
 				"blurb":"for Dragon to move and attack",
-				"cardRestrictions":["Character","Space Fits Restriction"],
-				"spaceRestriction":
-				{
-					"spaceRestrictions":["Adjacent to Source"],
-					"mustBeEmpty":false
-				},
-				"cardRestrictionElements": [
+				"elements": [
+					{ "$type": "Core.CardRestriction:Character:" },
 					{
-						"$type": "Core.CardRestriction:Location:",
-						"locations": [ "Board" ]
+						"$type": "Core.SpaceRestriction:AdjacentTo:",
+						"space": {
+							"$type": "Spaces:PositionOf:",
+							"ofThisCard": { "$type": "Cards:ThisCard:" }
+						}
+					},
+					{
+						"$type": "Core.CardRestriction:CanMove:",
+						"spaceRestrictionSubeffectIndex": 1
 					}
 				]
 			}
@@ -33,7 +36,7 @@
 			"spaceRestriction":
 			{
 				"blurb":"where Dragon to move its target",
-				"spaceRestrictionElements": [ {
+				"elements": [ {
 					"$type": "Core.SpaceRestriction:CanMoveCard:",
 					"toMove": { "$type": "Cards:TargetIndex:" },
 					"distanceRestriction": {

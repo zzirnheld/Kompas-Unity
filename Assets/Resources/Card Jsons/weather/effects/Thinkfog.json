@@ -11,12 +11,18 @@
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Main Card Fits Restriction Before","Space Fits Restriction"],
 					"cardRestriction":{
-						"cardRestrictions":["Character"]
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" }
+						]
 					},
 					"spaceRestriction":
 					{
-						"mustBeEmpty":false,
-						"spaceRestrictions":["In Source's AOE"]
+						"elements": [
+							{
+								"$type": "Core.SpaceRestriction:InAOEOf:",
+								"card": { "$type": "Cards:ThisCard:" }
+							}
+						]
 					}
 				}
 			},

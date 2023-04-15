@@ -13,15 +13,18 @@
                     "Main Card Fits Restriction Before"
                 ],
                 "spaceRestriction": {
-                    "spaceRestrictions": [
-                        "Adjacent to Source"
-                    ],
-                    "mustBeEmpty": false
+                    "elements": [
+                        {
+                            "$type": "Core.SpaceRestriction:AdjacentTo:",
+                            "space": {
+                                "$type": "Spaces:PositionOf:",
+                                "ofThisCard": { "$type": "Cards:ThisCard:" }
+                            }
+                        }
+                    ]
                 },
                 "cardRestriction": {
-                    "cardRestrictions": [
-                        "Enemy"
-                    ]
+                    "elements": [ { "$type": "Core.CardRestriction:Enemy:" } ]
                 }
             },
 			"subeffects": [
@@ -29,8 +32,8 @@
 					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "Subeffect:TargetAllCardsIdentity:",
-					"cardsIdentity": {
+					"$type": "Subeffect:TargetAll:",
+					"toSearch": {
 						"$type": "ManyCards:CardsInPositions:",
 						"positions": {
                             "$type": "ManySpaces:AdjacentSpaces:",
@@ -49,7 +52,7 @@
                         "spaces": {
                             "$type": "ManySpaces:FittingRestriction:",
                             "restriction": {
-                                "spaceRestrictionElements": [ { "$type": "Core.SpaceRestriction:Empty:" } ]
+                                "elements": [ { "$type": "Core.SpaceRestriction:Empty:" } ]
                             },
                             "spaces": {
                                 "$type": "ManySpaces:AdjacentSpaces:",

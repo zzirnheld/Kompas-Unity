@@ -14,25 +14,24 @@
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Character",
-							"Enemy"
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
+							{ "$type": "Core.CardRestriction:Enemy:" }
 						]
 					},
 					"spaceRestriction": {
-						"spaceRestrictions": [
-							"Adjacent to a Card that Fits Restriction"
-						],
-						"adjacencyRestriction": {
-							"cardRestrictionElements": [
-								{ "$type": "Core.CardRestriction:Friendly:" },
-                                {
-                                    "$type": "Core.CardRestriction:Subtypes:",
-                                    "subtypes": [ "Fungus" ]
-                                }
-							]
-						},
-						"mustBeEmpty": false
+						"elements": [
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"cardRestriction": { "elements": [
+									{ "$type": "Core.CardRestriction:Friendly:" },
+									{
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Fungus" ]
+									}
+								] }
+							}
+						]
 					}
 				}
 			},

@@ -13,12 +13,13 @@
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Character",
-							"Augmented"
-						],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" }
+						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:HasAugment:",
+								"elements": [ ]
+							}
 						]
 					}
 				}
@@ -51,17 +52,16 @@
 				},
 				{
 					"$type": "Subeffect:ChangeAllCardStats:",
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Character",
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Card Target"
-							]
+					"cardRestriction": { "elements": [
+						{ "$type": "Core.CardRestriction:Character:" },
+						{
+							"$type": "Core.SpaceRestriction:AdjacentTo:",
+							"space": {
+								"$type": "Spaces:PositionOf:",
+								"ofThisCard": { "$type": "Cards:TargetIndex:" }
+							}
 						}
-					},
+					] },
 					"wMultiplier": -1
 				}
 			]

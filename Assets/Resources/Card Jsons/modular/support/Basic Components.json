@@ -14,8 +14,8 @@
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:TargetAllCardsIdentity:",
-					"cardsIdentity": {
+					"$type": "Subeffect:TargetAll:",
+					"toSearch": {
 						"$type": "ManyCards:Distinct:",
 						"cards": {
                             "$type": "ManyCards:FittingRestriction:",
@@ -25,7 +25,7 @@
                                 "enemy": false
                             },
                             "cardRestriction": {
-                                "cardRestrictionElements": [
+                                "elements": [
                                     {
                                         "$type": "Core.CardRestriction:Subtypes:",
                                         "subtypes": [ "Basic", "Module" ]

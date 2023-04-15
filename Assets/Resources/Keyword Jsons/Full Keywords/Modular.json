@@ -20,15 +20,11 @@
             "$type": "Subeffect:TargetThis:"
         },
         {
-            "$type": "Subeffect:ChooseFromList:",
+            "$type": "Subeffect:CardTarget:",
+            "toSearch": { "$type": "ManyCards:Hand:" },
             "cardRestriction": {
                 "blurb": "Modules to attach",
-                "cardRestrictionElements": [
-                    { "$type": "Core.CardRestriction:Friendly:" },
-                    {
-                        "$type": "Core.CardRestriction:Location:",
-                        "locations": [ "Hand" ]
-                    },
+                "elements": [
                     {
                         "$type": "Core.CardRestriction:Subtypes:",
                         "subtypes": [ "Module" ]

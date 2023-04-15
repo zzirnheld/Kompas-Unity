@@ -14,23 +14,23 @@
 						"Main Card Fits Restriction After"
 					],
 					"nowRestriction": {
-						"cardRestrictions": [
-                            "Augments Card Fitting Restriction"
-                        ],
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Memory" ]
-							}
-						],
-						"augmentRestriction": {
-							"cardRestrictionElements": [
-								{
-									"$type": "Core.CardRestriction:Subtypes:",
-									"subtypes": [ "Vessel" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Augments:",
+								"cardRestriction": {
+									"elements": [
+										{
+											"$type": "Core.CardRestriction:Subtypes:",
+											"subtypes": [ "Vessel" ]
+										}
+									]
 								}
-							]
-						}
+							}
+						]
 					}
 				}
 			},
@@ -41,42 +41,45 @@
 				{
 					"$type": "Subeffect:CardTarget:",
 					"blurb": "Vessel to get a copy of the memory",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Wields No Augment Fitting Restriction"
-						],
-						"cardRestrictionElements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							},
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Vessel" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Not:",
+								"negated": {
+									"$type": "Core.CardRestriction:HasAugment:",
+									"cardRestriction": {
+										"elements": [
+											{
+												"$type": "Core.CardRestriction:Name:",
+												"sameAs": { "$type": "Cards:TargetIndex:" }
+											}
+										]
+									}
+								}
 							}
-						],
-						"augmentRestriction": {
-							"cardRestrictions": [
-								"Same Name as Target"
-							]
-						}
+						]
 					}
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
 					"blurb": "Copy of the memory to attach",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Multiple Possible Locations",
-                            "Same Name as Target",
-							"Can Be Played"
-						],
-						"locations": [
-							2,
-							4
-						],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" }
+						"elements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+                            { "$type": "Core.CardRestriction:CanPlay:" },
+                            {
+                                "$type": "Core.CardRestriction:Location:",
+                                "locations": [ "Deck", "Discard" ]
+                            },
+							{
+								"$type": "Core.CardRestriction:Name:",
+								"sameAs": { "$type": "Cards:TargetIndex:" }
+							}
 						]
 					},
 					"targetIndex": -2

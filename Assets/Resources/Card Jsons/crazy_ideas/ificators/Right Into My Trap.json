@@ -14,25 +14,25 @@
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Character"
-						],
-						"cardRestrictionElements": [
+						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Enemy:" }
 						]
 					},
 					"spaceRestriction": {
-						"spaceRestrictions": [
-							"Adjacent to a Card that Fits Restriction"
-						],
-						"cardRestriction": {
-							"cardRestrictionElements": [
-								{
-									"$type": "Core.CardRestriction:Subtypes:",
-									"subtypes": [ "Crazy" ]
+						"elements": [
+                            {
+                                "$type": "Core.SpaceRestriction:AdjacentTo:",
+                                "cardRestriction": {
+									"elements": [
+										{
+											"$type": "Core.CardRestriction:Subtypes:",
+											"subtypes": [ "Crazy" ]
+										}
+									]
 								}
-							]
-						}
+                            }
+						]
 					}
 				}
 			},

@@ -16,7 +16,7 @@
                                 "$type": "Cards:AugmentedCard:",
                                 "ofThisCard": { "$type": "Cards:ThisCard:" }
                             },
-                            "secondCard": { "$type": "Cards:MainCardBefore:" }
+                            "secondCard": { "$type": "Cards:CardBefore:" }
                         }
 					]
 				}
@@ -50,14 +50,20 @@
 			"On Card that Fits Restriction"
 		],
 		"onCardRestriction": {
-            "cardRestrictions": [
-                "Wields No Augment Fitting Restriction"
-            ],
-            "augmentRestriction": {
-                "cardRestrictions": [
-                    "Same Name as Source"
-                ]
-            }
+			"elements": [ {
+				"$type": "Core.CardRestriction:Not:",
+				"negated": {
+					"$type": "Core.CardRestriction:HasAugment:",
+					"cardRestriction": {
+						"elements": [
+							{
+								"$type": "Core.CardRestriction:Name:",
+								"sameAs": { "$type": "Cards:ThisCard:" }
+							}
+						]
+					}
+				}
+			} ]
 		}
 	},
 	"a": 5,

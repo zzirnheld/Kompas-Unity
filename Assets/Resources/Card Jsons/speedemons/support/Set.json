@@ -17,14 +17,14 @@
 					"$type": "Subeffect:ConditionalJump:",
 					"condition": "Card Fits Restriction",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Name Is"
-						],
-						"nameIs": "Ready",
-						"cardRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Discard" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Name:",
+								"nameIs": "Ready"
 							}
 						]
 					},
@@ -34,16 +34,15 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "Subeffect:DeckTarget:",
+					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
 						"blurb": "Ready for Set to search",
-						"cardRestrictions": [
-							"Deck",
-							"Name Is"
-						],
-						"nameIs": "Ready",
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" }
+						"elements": [
+							{
+								"$type": "Core.CardRestriction:Name:",
+								"nameIs": "Ready"
+							}
 						]
 					}
 				},
@@ -61,21 +60,17 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "character to set",
-						"cardRestrictions": [
-							"Character",
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Source"
-							]
-						},
-						"cardRestrictionElements": [
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": {
+									"$type": "Spaces:PositionOf:",
+									"ofThisCard": { "$type": "Cards:ThisCard:" }
+								}
 							}
 						]
 					}
@@ -85,16 +80,15 @@
 					"nModifier": 1
 				},
 				{
-					"$type": "Subeffect:DeckTarget:",
+					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
 						"blurb": "GO for Ready to search",
-						"cardRestrictions": [
-							"Deck",
-							"Name Is"
-						],
-						"nameIs": "GO",
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" }
+						"elements": [
+							{
+								"$type": "Core.CardRestriction:Name:",
+								"nameIs": "GO"
+							}
 						]
 					}
 				},

@@ -10,7 +10,13 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
         /// Can be null to represent checking whether the card is in any fight at all
         /// </summary>
         public IIdentity<GameCardBase> fightingWho;
+        /// <summary>
+        /// Whether the character must be the defender in the fight in question
+        /// </summary>
         public bool defending = false;
+        /// <summary>
+        /// Whether the character must be the attacker in the fight in question
+        /// </summary>
         public bool attacking = false;
 
         public override void Initialize(EffectInitializationContext initializationContext)
@@ -45,7 +51,7 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
             return attack.attacker == fightingWhoCard || attack.defender == fightingWhoCard;
         }
 
-        protected override bool FitsRestrictionLogic(GameCardBase card, IResolutionContext context)
+        protected override bool IsValidLogic(GameCardBase card, IResolutionContext context)
             => InitializationContext.game.StackEntries.Any(stackEntry => IsValidFight(card, context, stackEntry));
     }
 }

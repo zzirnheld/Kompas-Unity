@@ -21,7 +21,7 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
             number.Initialize(initializationContext);
         }
 
-        protected override bool AbstractIsValidSpace(Space space, IResolutionContext context)
+        protected override bool IsValidLogic(Space space, IResolutionContext context)
         {
             var origin = this.distanceTo.From(context, default);
             int distance = origin.DistanceTo(space);
@@ -29,6 +29,48 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
             int number = this.number.From(context, default);
 
             return comparison.Compare(distance, number);
+        }
+    }
+
+    public class Towards : SpaceRestrictionElement
+    {
+        //Whether the space to be tested's distance to the destination
+        //is closer than other's distance to the destination
+        public IIdentity<Space> destination;
+        public IIdentity<Space> origin;
+
+        public override void Initialize(EffectInitializationContext initializationContext)
+        {
+            base.Initialize(initializationContext);
+            destination.Initialize(initializationContext);
+            origin.Initialize(initializationContext);
+        }
+
+        protected override bool IsValidLogic(Space item, IResolutionContext context)
+        {
+            var destination = this.destination.From(context, default);
+            return destination.DistanceTo(item) < destination.DistanceTo(origin.From(context, default));
+        }
+    }
+
+    public class AwayFrom : SpaceRestrictionElement
+    {
+        //Whether the space to be tested's distance to the destination
+        //is further than other's distance to the destination
+        public IIdentity<Space> destination;
+        public IIdentity<Space> origin;
+
+        public override void Initialize(EffectInitializationContext initializationContext)
+        {
+            base.Initialize(initializationContext);
+            destination.Initialize(initializationContext);
+            origin.Initialize(initializationContext);
+        }
+
+        protected override bool IsValidLogic(Space item, IResolutionContext context)
+        {
+            var destination = this.destination.From(context, default);
+            return destination.DistanceTo(item) > destination.DistanceTo(origin.From(context, default));
         }
     }
 }
