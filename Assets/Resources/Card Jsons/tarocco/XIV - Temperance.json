@@ -11,8 +11,10 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Controller Triggered",
-						"Max Per Round"
+						"Controller Triggered"
+					],
+					"triggerRestrictionElements": [
+						{ "$type": "Core.TriggerRestriction:MaxPerRound:" }
 					]
 				}
 			},

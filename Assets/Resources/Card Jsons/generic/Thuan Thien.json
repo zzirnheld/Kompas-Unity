@@ -8,8 +8,10 @@
 				"triggerCondition": "Battle Start",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"Augmented Card is Main Card",
-						"Max Per Round"
+						"Augmented Card is Main Card"
+					],
+					"triggerRestrictionElements": [
+						{ "$type": "Core.TriggerRestriction:MaxPerRound:" }
 					]
 				}
 			},

@@ -2,11 +2,14 @@
 using KompasCore.Effects;
 using KompasCore.Cards;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace KompasServer.Effects.Subeffects.Hanging
 {
     public abstract class HangingEffectSubeffect : ServerSubeffect
     {
+        //BEWARE: once per turn might not work for these as impl rn, because it's kind of ill-defined.
+        //this is only a problem if I one day start creating hanging effects that can later trigger once each turn.
         public TriggerRestriction triggerRestriction;
         public string endCondition;
         public virtual bool ContinueResolution => true;
@@ -33,6 +36,16 @@ namespace KompasServer.Effects.Subeffects.Hanging
             base.Initialize(eff, subeffIndex);
             triggerRestriction ??= new TriggerRestriction();
             triggerRestriction.Initialize(DefaultInitializationContext);
+
+            if (TriggerRestriction.ReevalationRestrictions
+                .Intersect(triggerRestriction.elements.Select(elem => elem.GetType()))
+                .Any())
+            {
+                //TODO: test this. it might be that since they're pushed back to the stack it works fine,
+                //but then I need to make sure there's no collision between resume 1/turn and initial trigger 1/turn.
+                throw new System.ArgumentException("Hanging effect conditions might not currently support once per turns," +
+                    "or any other restriction type that would need to be reevaluated after being pushed to stack!");
+            }
         }
 
         public override Task<ResolutionInfo> Resolve()

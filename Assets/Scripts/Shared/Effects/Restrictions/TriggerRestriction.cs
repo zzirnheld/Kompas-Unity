@@ -1,5 +1,6 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects.Restrictions;
+using KompasCore.Effects.Restrictions.TriggerRestrictionElements;
 using KompasCore.GameCore;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using UnityEngine;
 
 namespace KompasCore.Effects
 {
-    public class TriggerRestriction : ContextInitializeableBase
+    public class TriggerRestriction : RestrictionBase<TriggeringEventContext>
     {
         //public Game Game { get; private set; }
 
@@ -60,10 +61,6 @@ namespace KompasCore.Effects
         private const string FromField = "From Field";
         private const string FromDeck = "From Deck";
 
-        private const string MaxPerTurn = "Max Per Turn";
-        private const string MaxPerRound = "Max Per Round";
-        private const string MaxPerStack = "Max Per Stack";
-
         #endregion trigger conditions
 
         private static readonly string[] RequiringCardRestriction =
@@ -75,7 +72,8 @@ namespace KompasCore.Effects
         private static readonly string[] RequiringNumberRestriction = { XFitsRestriction };
         private static readonly string[] RequiringSpaceRestriction = { SpaceFitsRestriction };
 
-        private static readonly ISet<string> ReevalationRestrictions = new HashSet<string>(new string[] { MaxPerTurn, MaxPerRound, MaxPerStack });
+        public static readonly ISet<Type> ReevalationRestrictions
+            = new HashSet<Type>(new Type[] { typeof(MaxPerTurn), typeof(MaxPerRound), typeof(MaxPerStack) });
 
         public static readonly string[] DefaultFallOffRestrictions = { ThisCardIsMainCard, ThisCardInPlay };
 
@@ -90,9 +88,6 @@ namespace KompasCore.Effects
         public NumberRestriction xRestriction;
         public SpaceRestriction spaceRestriction;
 
-        public int maxTimesPerTurn = 1;
-        public int maxPerRound = 1;
-        public int maxPerStack = 1;
         public int distance = 1;
 
         public TriggerRestrictionElement[] triggerRestrictionElements = { };
@@ -184,11 +179,6 @@ namespace KompasCore.Effects
             NotFromEffect => !(triggeringContext.stackableCause is Effect),
             FromAttack => triggeringContext.stackableCause is Attack,
 
-            //max
-            MaxPerRound => ThisTrigger.Effect.TimesUsedThisRound < maxPerRound,
-            MaxPerTurn => ThisTrigger.Effect.TimesUsedThisTurn < maxTimesPerTurn,
-            MaxPerStack => ThisTrigger.Effect.TimesUsedThisStack < maxPerStack,
-
             //misc
             _ => throw new ArgumentException($"Invalid trigger restriction {restriction}"),
         };
@@ -240,9 +230,11 @@ namespace KompasCore.Effects
         /// <summary>
         /// Reevaluates the trigger to check that any restrictions that could change between it being triggered
         /// and it being ordered on the stack, are still true.
+        /// (Not relevant to delayed things, since those expire after a given number of uses (if at all), so yeah
         /// </summary>
         /// <returns></returns>
         public bool IsStillValidTriggeringContext(TriggeringEventContext context)
-            => ReevalationRestrictions.Intersect(triggerRestrictions).All(r => IsRestrictionValid(r, context));
+            => elements.Where(elem => ReevalationRestrictions.Contains(elem.GetType()))
+                       .All(elem => elem.IsValid(context, default));
     }
 }

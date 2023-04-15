@@ -10,14 +10,16 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Max Per Round",
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
 						"elements": [
 							{ "$type": "Core.CardRestriction:Enemy:" }
 						]
-					}
+					},
+					"triggerRestrictionElements": [
+						{ "$type": "Core.TriggerRestriction:MaxPerRound:" }
+					]
 				}
 			},
 			"subeffects": [

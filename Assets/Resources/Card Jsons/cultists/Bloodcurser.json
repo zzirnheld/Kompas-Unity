@@ -11,8 +11,7 @@
 					"triggerRestrictions": [
 						"This Card in Play",
 						"Main Card Fits Restriction Before",
-						"From Field",
-						"Max Per Round"
+						"From Field"
 					],
 					"cardRestriction": {
 						"elements": [
@@ -27,7 +26,10 @@
 								"subtypes": [ "Cultist" ]
 							}
 						]
-					}
+					},
+					"triggerRestrictionElements": [
+						{ "$type": "Core.TriggerRestriction:MaxPerRound:" }
+					]
 				}
 			},
 			"subeffects": [
