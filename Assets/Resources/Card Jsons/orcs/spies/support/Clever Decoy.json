@@ -34,8 +34,12 @@
 					"wMultiplier": -1,
 					"endCondition": "Battle End",
 					"triggerRestriction": {
-						"triggerRestrictions": [
-							"Contexts Stackables Match"
+						"triggerRestrictionElements": [
+							{
+								"$type": "Core.TriggerRestriction:StackablesMatch:",
+								"firstStackable": { "$type": "Stackables:StackableEvent:", "secondary": true },
+								"secondStackable": { "$type": "Stackables:StackableEvent:" }
+							}
 						]
 					}
 				},
@@ -49,8 +53,12 @@
 					],
 					"endCondition": "Battle End",
 					"triggerRestriction": {
-						"triggerRestrictions": [
-							"Contexts Stackables Match"
+						"triggerRestrictionElements": [
+							{
+								"$type": "Core.TriggerRestriction:StackablesMatch:",
+								"firstStackable": { "$type": "Stackables:StackableEvent:", "secondary": true },
+								"secondStackable": { "$type": "Stackables:StackableEvent:" }
+							}
 						]
 					}
 				},

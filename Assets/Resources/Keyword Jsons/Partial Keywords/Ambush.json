@@ -36,8 +36,12 @@
         "wMultiplier": -1,
         "endCondition": "Battle End",
         "triggerRestriction": {
-            "triggerRestrictions": [
-                "Stackable is Secondary Delayed Stackable Target"
+            "triggerRestrictionElements": [
+                {
+                    "$type": "Core.TriggerRestriction:StackablesMatch:",
+                    "firstStackable": { "$type": "Stackables:StackableIndex:", "secondary": true },
+                    "secondStackable": { "$type": "Stackables:StackableEvent:" }
+                }
             ]
         }
     },
