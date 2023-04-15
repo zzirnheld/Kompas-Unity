@@ -48,7 +48,6 @@ namespace KompasCore.Effects
         private const string NotFromEffect = "Not From Effect"; //But can be from attack
         private const string FromAttack = "From Attack";
 
-        private const string ContextsStackablesMatch = "Contexts Stackables Match";
         private const string StackableIsThisEffect = "Stackable is This Effect";
 
         private const string ControllerTriggered = "Controller Triggered";
@@ -65,8 +64,6 @@ namespace KompasCore.Effects
         private const string MaxPerRound = "Max Per Round";
         private const string MaxPerStack = "Max Per Stack";
 
-        private const string MainCardIsASecondaryContextCardTarget = "Main Card is a Secondary Context Card Target";
-        private const string StackableIsTheSecondaryDelayedStackableTarget = "Stackable is Secondary Delayed Stackable Target";
         #endregion trigger conditions
 
         private static readonly string[] RequiringCardRestriction =
@@ -164,7 +161,6 @@ namespace KompasCore.Effects
             MainCardIsStackableSource => triggeringContext.stackableCause?.Source == triggeringContext.mainCardInfoBefore.Card,
             StackableSourceFitsRestriction => sourceRestriction.IsValid(triggeringContext.stackableCause?.Source, new ResolutionContext(triggeringContext)),
             StackableSourceNotThisEffect => triggeringContext.stackableCause != SourceEffect,
-            ContextsStackablesMatch => StackablesMatch(triggeringContext, stashedResolutionContext),
             StackableIsThisEffect => triggeringContext.stackableCause == SourceEffect,
             NoStackable => triggeringContext.stackableCause == null,
 
@@ -192,9 +188,6 @@ namespace KompasCore.Effects
             MaxPerRound => ThisTrigger.Effect.TimesUsedThisRound < maxPerRound,
             MaxPerTurn => ThisTrigger.Effect.TimesUsedThisTurn < maxTimesPerTurn,
             MaxPerStack => ThisTrigger.Effect.TimesUsedThisStack < maxPerStack,
-
-            MainCardIsASecondaryContextCardTarget => stashedResolutionContext?.CardTargets.Contains(triggeringContext.mainCardInfoBefore.Card) ?? false,
-            StackableIsTheSecondaryDelayedStackableTarget => triggeringContext.stackableCause == stashedResolutionContext?.DelayedStackableTarget,
 
             //misc
             _ => throw new ArgumentException($"Invalid trigger restriction {restriction}"),
@@ -228,7 +221,7 @@ namespace KompasCore.Effects
             try
             {
                 return triggerRestrictions.All(r => IsRestrictionValidDebug(r, context, stashedResolutionContext: secondary))
-                    && triggerRestrictionElements.All(tre => tre.IsValidContext(context, secondaryContext: secondary));
+                    && triggerRestrictionElements.All(tre => tre.IsValid(context, secondaryContext: secondary));
             }
             catch (NullReferenceException nullref)
             {

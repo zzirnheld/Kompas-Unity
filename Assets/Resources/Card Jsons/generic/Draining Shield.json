@@ -20,7 +20,7 @@
 				},
 				{
 					"$type":"Subeffect:TargetTriggeringCard:",
-					"secondary":true
+					"contextSecondaryCard":true
 				},
                 {
                     "$type":"Subeffect:TargetThis:"

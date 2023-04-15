@@ -24,8 +24,8 @@
 						},
 						{
 							"$type": "Core.TriggerRestriction:CardsMatch:",
-							"firstCard": { "$type": "Cards:CauseBefore:" },
-							"secondCard": { "$type": "Cards:CardBefore:" }
+							"card": { "$type": "Cards:CauseBefore:" },
+							"other": { "$type": "Cards:CardBefore:" }
 						}
 					]
 				}

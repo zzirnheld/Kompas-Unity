@@ -12,11 +12,11 @@
     "subeffects": [
         {
             "$type":"Subeffect:TargetTriggeringCard:",
-            "secondary":true
+            "contextSecondaryCard":true
         },
         {
             "$type": "Subeffect:SetXByTriggeringCardValue:",
-            "secondary":true,
+            "contextSecondaryCard":true,
             "cardValue": {
                 "value": "W"
             },
@@ -30,7 +30,7 @@
                 "triggerRestrictionElements": [
                     {
                         "$type": "Core.TriggerRestriction:StackablesMatch:",
-                        "firstStackable": { "$type": "Stackables:StackableEvent:", "secondary": true },
+                        "firstStackable": { "$type": "Stackables:StackableEvent:", "secondaryContext": true },
                         "secondStackable": { "$type": "Stackables:StackableEvent:" }
                     }
                 ]

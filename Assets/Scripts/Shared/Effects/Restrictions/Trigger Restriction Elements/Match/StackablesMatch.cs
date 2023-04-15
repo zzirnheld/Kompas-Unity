@@ -17,7 +17,7 @@ namespace KompasCore.Effects.Restrictions
                 secondStackable.Initialize(initializationContext);
             }
 
-            protected override bool AbstractIsValidContext(TriggeringEventContext context, IResolutionContext secondaryContext)
+            protected override bool IsValidLogic(TriggeringEventContext context, IResolutionContext secondaryContext)
                 => firstStackable.From(context, secondaryContext) == secondStackable.From(context, secondaryContext);
         }
     }

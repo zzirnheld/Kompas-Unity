@@ -1,8 +1,8 @@
 [
     {
         "$type": "Core.TriggerRestriction:CardsMatch:",
-        "firstCard": { "$type": "Cards:ThisCard:" },
-        "secondCard": { "$type": "Cards:CardBefore:" }
+        "card": { "$type": "Cards:ThisCard:" },
+        "other": { "$type": "Cards:CardBefore:" }
     },
     {
         "$type": "Core.TriggerRestriction:NumberFitsRestriction:",

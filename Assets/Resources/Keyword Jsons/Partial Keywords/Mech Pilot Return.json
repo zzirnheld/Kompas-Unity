@@ -6,7 +6,14 @@
         "fallOffCondition":"",
         "endCondition":"Discard",
         "triggerRestriction":{
-            "triggerRestrictions":["Main Card is a Secondary Context Card Target","From Field"]
+            "triggerRestrictions": ["From Field"],
+            "triggerRestrictionElements": [
+                {
+                    "$type": "Core.TriggerRestriction:CardsMatch:",
+                    "card": { "$type": "Cards:CardBefore:" },
+                    "other": { "$type": "Cards:TargetIndex:", "secondaryContext": true }
+                }
+            ]
         }
     },
     {

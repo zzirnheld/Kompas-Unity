@@ -37,7 +37,7 @@
 						"triggerRestrictionElements": [
 							{
 								"$type": "Core.TriggerRestriction:StackablesMatch:",
-								"firstStackable": { "$type": "Stackables:StackableEvent:", "secondary": true },
+								"firstStackable": { "$type": "Stackables:StackableEvent:", "secondaryContext": true },
 								"secondStackable": { "$type": "Stackables:StackableEvent:" }
 							}
 						]
@@ -56,7 +56,7 @@
 						"triggerRestrictionElements": [
 							{
 								"$type": "Core.TriggerRestriction:StackablesMatch:",
-								"firstStackable": { "$type": "Stackables:StackableEvent:", "secondary": true },
+								"firstStackable": { "$type": "Stackables:StackableEvent:", "secondaryContext": true },
 								"secondStackable": { "$type": "Stackables:StackableEvent:" }
 							}
 						]

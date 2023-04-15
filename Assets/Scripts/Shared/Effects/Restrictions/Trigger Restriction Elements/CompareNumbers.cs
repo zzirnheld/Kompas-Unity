@@ -19,7 +19,7 @@ namespace KompasCore.Effects.Restrictions
                 secondNumber.Initialize(initializationContext);
             }
 
-            protected override bool AbstractIsValidContext(TriggeringEventContext context, IResolutionContext secondaryContext)
+            protected override bool IsValidLogic(TriggeringEventContext context, IResolutionContext secondaryContext)
             {
                 int first = firstNumber.From(context, secondaryContext);
                 int second = secondNumber.From(context, secondaryContext);

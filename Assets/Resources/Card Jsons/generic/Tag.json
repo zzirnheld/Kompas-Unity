@@ -63,14 +63,14 @@
                         { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
                         {
                             "$type": "Core.TriggerRestriction:PlayersMatch:",
-                            "firstCard": { 
+                            "card": { 
                                 "$type": "Players:ControllerOf:",
                                 "card": {
                                     "$type": "Cards:AugmentedCard:",
                                     "ofThisCard": { "$type": "Cards:CardBefore:" }
                                 }
                             },
-                            "secondCard": {
+                            "other": {
                                 "$type": "Players:ControllerOf:",
                                 "card": {
                                     "$type": "Cards:AugmentedCard:",

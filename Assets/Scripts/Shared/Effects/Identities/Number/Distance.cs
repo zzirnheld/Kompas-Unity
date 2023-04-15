@@ -26,7 +26,7 @@ namespace KompasCore.Effects.Identities.Numbers
 
             if (throughRestriction == null) return first.DistanceTo(second);
 
-            var contextToConsider = secondary ? secondaryContext : context;
+            var contextToConsider = base.secondaryContext ? secondaryContext : context;
             var predicate = throughRestriction.AsThroughPredicate(contextToConsider);
             return InitializationContext.game.BoardController.ShortestPath(first, second, predicate);
         }

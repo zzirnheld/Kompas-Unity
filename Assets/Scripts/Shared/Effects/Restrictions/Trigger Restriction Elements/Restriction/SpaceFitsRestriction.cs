@@ -19,7 +19,7 @@ namespace KompasCore.Effects.Restrictions
                 spaceRestriction.Initialize(initializationContext);
             }
 
-            protected override bool AbstractIsValidContext(TriggeringEventContext context, IResolutionContext secondaryContext)
+            protected override bool IsValidLogic(TriggeringEventContext context, IResolutionContext secondaryContext)
                 => spaceRestriction.IsValid(space.From(context, secondaryContext), ContextToConsider(context, secondaryContext));
         }
     }
@@ -38,7 +38,7 @@ namespace KompasCore.Effects.Restrictions
                 spaceRestriction.Initialize(initializationContext);
             }
 
-            protected override bool AbstractIsValidContext(TriggeringEventContext context, IResolutionContext secondaryContext)
+            protected override bool IsValidLogic(TriggeringEventContext context, IResolutionContext secondaryContext)
             {
                 var spacesItem = spaces.From(context, secondaryContext);
                 return any

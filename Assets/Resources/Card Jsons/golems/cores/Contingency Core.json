@@ -53,11 +53,11 @@
                         { "$type": "Core.TriggerRestriction:EnemyTurn:" },
                         {
                             "$type": "Core.TriggerRestriction:CardsMatch:",
-                            "firstCard": {
+                            "card": {
                                 "$type": "Cards:AugmentedCard:",
                                 "ofThisCard": { "$type": "Cards:ThisCard:" }
                             },
-                            "secondCard": { "$type": "Cards:CardBefore:" }
+                            "other": { "$type": "Cards:CardBefore:" }
                         },
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",

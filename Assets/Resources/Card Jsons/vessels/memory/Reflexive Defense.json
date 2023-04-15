@@ -12,8 +12,8 @@
                         { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
                         {
                             "$type": "Core.TriggerRestriction:CardsMatch:",
-                            "firstCard": { "$type": "Cards:CardBefore:" },
-                            "secondCard": {
+                            "card": { "$type": "Cards:CardBefore:" },
+                            "other": {
                                 "$type": "Cards:AugmentedCard:",
                                 "ofThisCard": { "$type": "Cards:ThisCard:" }
                             }
@@ -47,8 +47,8 @@
                         { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
                         {
                             "$type": "Core.TriggerRestriction:CardsMatch:",
-                            "firstCard": { "$type": "Cards:CardBefore:" },
-                            "secondCard": {
+                            "card": { "$type": "Cards:CardBefore:" },
+                            "other": {
                                 "$type": "Cards:AugmentedCard:",
                                 "ofThisCard": { "$type": "Cards:ThisCard:" }
                             }

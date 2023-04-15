@@ -63,9 +63,9 @@
 							},
 							{
 								"$type": "Core.TriggerRestriction:CardsMatch:",
-								"firstCard": { "$type": "Cards:CardBefore:" },
-								"secondCard": {
-									"secondary": true,
+								"card": { "$type": "Cards:CardBefore:" },
+								"other": {
+									"contextSecondaryCard": true,
 									"$type": "Cards:CardBefore:"
 								}
 							}

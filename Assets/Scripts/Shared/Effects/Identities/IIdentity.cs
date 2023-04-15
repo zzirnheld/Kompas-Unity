@@ -23,10 +23,10 @@ namespace KompasCore.Effects.Identities
     public abstract class ContextualParentIdentityBase<ReturnType> : ContextInitializeableBase,
         IIdentity<ReturnType>
     {
-        public bool secondary = false;
+        public bool secondaryContext = false;
 
         protected IResolutionContext ContextToConsider(IResolutionContext context, IResolutionContext secondaryContext)
-            => secondary ? secondaryContext : context;
+            => this.secondaryContext ? secondaryContext : context;
 
         /// <summary>
         /// Override this one if you need to pass on BOTH contexts.

@@ -12,7 +12,7 @@ namespace KompasCore.Effects.Restrictions.TriggerRestrictionElements
             turnPlayer.Initialize(initializationContext);
         }
 
-        protected override bool AbstractIsValidContext(TriggeringEventContext context, IResolutionContext secondaryContext)
+        protected override bool IsValidLogic(TriggeringEventContext context, IResolutionContext secondaryContext)
             => InitializationContext.game.TurnPlayer == turnPlayer.From(context, secondaryContext);
     }
 

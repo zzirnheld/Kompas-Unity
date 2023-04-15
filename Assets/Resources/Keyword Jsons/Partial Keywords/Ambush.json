@@ -39,7 +39,7 @@
             "triggerRestrictionElements": [
                 {
                     "$type": "Core.TriggerRestriction:StackablesMatch:",
-                    "firstStackable": { "$type": "Stackables:StackableIndex:", "secondary": true },
+                    "firstStackable": { "$type": "Stackables:StackableIndex:", "secondaryContext": true },
                     "secondStackable": { "$type": "Stackables:StackableEvent:" }
                 }
             ]
