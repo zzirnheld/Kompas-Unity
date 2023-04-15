@@ -10,14 +10,16 @@
 					"triggerRestrictions": [
 						"This Card in Play",
 						"X Fits Restriction",
-						"This Card is Main Card",
-						"Max Per Turn"
+						"This Card is Main Card"
 					],
 					"xRestriction": {
 						"numberRestrictions": [
 							">0"
 						]
-					}
+					},
+					"triggerRestrictionElements": [
+						{ "$type": "Core.TriggerRestriction:MaxPerTurn:" }
+					]
 				}
 			},
 			"subeffects": [

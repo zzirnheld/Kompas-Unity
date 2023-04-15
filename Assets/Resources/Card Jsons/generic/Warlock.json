@@ -12,7 +12,6 @@
                     "triggerRestrictions":["This Card in Play",
                                            "Controller Triggered",
                                            "Main Card Fits Restriction Before",
-                                           "Max Per Turn",
                                            "No Stackable"],
                     "cardRestriction":
                     {
@@ -34,7 +33,10 @@
                                 }]}
                             }
                         ]
-                    }
+                    },
+					"triggerRestrictionElements": [
+						{ "$type": "Core.TriggerRestriction:MaxPerTurn:" }
+					]
                 }
             },
             "subeffects":[

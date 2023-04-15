@@ -9,7 +9,6 @@
 				"triggerCondition": "Arrive",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"Max Per Turn",
 						"This Card in Play",
 						"Space Fits Restriction",
 						"Main Card Fits Restriction Before"
@@ -25,7 +24,9 @@
 							}
 						]
 					},
-					"maxTimesPerTurn": 5
+					"triggerRestrictionElements": [
+						{ "$type": "Core.TriggerRestriction:MaxPerTurn:", "max": 5 }
+					]
 				}
 			},
 			"subeffects": [

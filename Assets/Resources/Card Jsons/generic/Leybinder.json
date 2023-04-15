@@ -9,8 +9,10 @@
 				"triggerCondition": "Move",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card in Play",
-						"Max Per Turn"
+						"This Card in Play"
+					],
+					"triggerRestrictionElements": [
+						{ "$type": "Core.TriggerRestriction:MaxPerTurn:" }
 					]
 				}
 			},

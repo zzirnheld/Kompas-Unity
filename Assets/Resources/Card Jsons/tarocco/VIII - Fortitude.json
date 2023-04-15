@@ -9,15 +9,16 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Main Card Fits Restriction Before",
-						"Max Per Turn"
+						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					},
-					"maxTimesPerTurn": 3
+					"triggerRestrictionElements": [
+						{ "$type": "Core.TriggerRestriction:MaxPerTurn:", "max": 3 }
+					]
 				}
 			},
 			"subeffects": [

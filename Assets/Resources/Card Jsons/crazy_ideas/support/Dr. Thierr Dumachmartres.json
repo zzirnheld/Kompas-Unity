@@ -10,10 +10,11 @@
 					"triggerRestrictions": [
 						"This Card in Play",
 						"Enemy Triggered",
-						"No Stackable",
-						"Max Per Turn"
+						"No Stackable"
 					],
-					"maxTimesPerTurn": 3
+					"triggerRestrictionElements": [
+						{ "$type": "Core.TriggerRestriction:MaxPerTurn:", "max": 3 }
+					]
 				}
 			},
 			"subeffects": [

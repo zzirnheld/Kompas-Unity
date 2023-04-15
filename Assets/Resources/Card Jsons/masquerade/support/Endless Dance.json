@@ -10,7 +10,6 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Max Per Turn",
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
@@ -26,7 +25,10 @@
 								"subtypes": [ "Dancer" ]
 							}
 						]
-					}
+					},
+					"triggerRestrictionElements": [
+						{ "$type": "Core.TriggerRestriction:MaxPerTurn:" }
+					]
 				}
 			},
 			"subeffects": [

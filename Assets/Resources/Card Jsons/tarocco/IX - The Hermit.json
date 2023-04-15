@@ -10,8 +10,10 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Controller Triggered",
-						"Max Per Turn"
+						"Controller Triggered"
+					],
+					"triggerRestrictionElements": [
+						{ "$type": "Core.TriggerRestriction:MaxPerTurn:" }
 					]
 				}
 			},

@@ -10,7 +10,6 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Max Per Turn",
 						"Space Fits Restriction",
 						"Main Card Fits Restriction Before"
 					],
@@ -39,7 +38,10 @@
 								}
 							}
 						]
-					}
+					},
+					"triggerRestrictionElements": [
+						{ "$type": "Core.TriggerRestriction:MaxPerTurn:" }
+					]
 				}
 			},
 			"subeffects": [

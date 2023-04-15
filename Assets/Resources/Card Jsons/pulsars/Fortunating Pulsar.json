@@ -10,6 +10,7 @@
 				"triggerRestriction": {
                     "triggerRestrictionElements": [
                         { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{ "$type": "Core.TriggerRestriction:MaxPerTurn:", "max": 3 },
                         {
                             "$type": "Core.TriggerRestriction:CardsMatch:",
                             "card": { "$type": "Cards:MainCardBefore:" },
@@ -18,11 +19,7 @@
 								"player": { "$type": "Players:FriendlyPlayer:" }
 							}
                         }
-                    ],
-					"triggerRestrictions": [
-						"Max Per Turn"
-					],
-					"maxTimesPerTurn": 3
+                    ]
 				}
 			},
 			"subeffects": [

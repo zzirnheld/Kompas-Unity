@@ -9,10 +9,11 @@
 				"triggerCondition": "Move",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"Augmented Card is Main Card",
-						"Max Per Turn"
+						"Augmented Card is Main Card"
 					],
-					"maxTimesPerTurn": 2
+					"triggerRestrictionElements": [
+						{ "$type": "Core.TriggerRestriction:MaxPerTurn:", "max": 2 }
+					]
 				}
 			},
 			"subeffects": [
