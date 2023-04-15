@@ -8,11 +8,11 @@
 				"triggerCondition": "Move",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"Max Per Stack",
 						"This Card is Main Card",
 						"Stackable Source isn't This Effect"
 					],
-                    "triggerRestrictionElements": [
+					"triggerRestrictionElements": [
+						{ "$type": "Core.TriggerRestriction:MaxPerStack:" },
                         {
                             "$type": "Core.TriggerRestriction:CardsMatch:",
                             "card": { "$type": "Cards:CauseBefore:" },

@@ -221,7 +221,7 @@ namespace KompasCore.Effects
             try
             {
                 return triggerRestrictions.All(r => IsRestrictionValidDebug(r, context, stashedResolutionContext: secondary))
-                    && triggerRestrictionElements.All(tre => tre.IsValid(context, secondaryContext: secondary));
+                    && triggerRestrictionElements.All(tre => tre.IsValid(context, secondary));
             }
             catch (NullReferenceException nullref)
             {

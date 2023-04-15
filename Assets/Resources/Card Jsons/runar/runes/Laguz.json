@@ -10,7 +10,6 @@
 					"triggerRestrictions": [
 						"This Card in Play",
 						"Space Fits Restriction",
-						"Max Per Stack",
 						"Not From Effect"
 					],
 					"spaceRestriction": {
@@ -20,7 +19,10 @@
 								"card": { "$type": "Cards:ThisCard:" }
 							}
 						]
-					}
+					},
+					"triggerRestrictionElements": [
+						{ "$type": "Core.TriggerRestriction:MaxPerStack:" }
+					]
 				}
 			},
 			"subeffects": [

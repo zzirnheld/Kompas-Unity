@@ -8,11 +8,9 @@
 			"triggerData": {
 				"triggerCondition": "Activate",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"Max Per Stack"
-					],
 					"triggerRestrictionElements": [
                         { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{ "$type": "Core.TriggerRestriction:MaxPerStack:" },
                         {
                             "$type": "Core.TriggerRestriction:CardsMatch:",
                             "card": {

@@ -9,8 +9,10 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Max Per Stack",
 						"Controller Triggered"
+					],
+					"triggerRestrictionElements": [
+						{ "$type": "Core.TriggerRestriction:MaxPerStack:" }
 					]
 				}
 			},

@@ -10,7 +10,6 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"Space Fits Restriction",
-						"Max Per Stack",
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
@@ -35,7 +34,10 @@
 								}
 							}
 						]
-					}
+					},
+					"triggerRestrictionElements": [
+						{ "$type": "Core.TriggerRestriction:MaxPerStack:" }
+					]
 				}
 			},
 			"subeffects": [

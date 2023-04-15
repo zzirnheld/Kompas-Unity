@@ -9,7 +9,6 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Max Per Stack",
 						"X Fits Restriction",
 						"This Card is Main Card"
 					],
@@ -17,7 +16,10 @@
 						"numberRestrictions": [
 							">0"
 						]
-					}
+					},
+					"triggerRestrictionElements": [
+						{ "$type": "Core.TriggerRestriction:MaxPerStack:" }
+					]
 				}
 			},
 			"subeffects": [

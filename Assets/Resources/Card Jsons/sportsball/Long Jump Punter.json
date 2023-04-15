@@ -9,9 +9,11 @@
 				"triggerCondition": "Augmented",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"Max Per Stack",
 						"This Card is Main Card",
 						"Controller Triggered"
+					],
+					"triggerRestrictionElements": [
+						{ "$type": "Core.TriggerRestriction:MaxPerStack:" }
 					]
 				}
 			},

@@ -10,6 +10,7 @@
 				"triggerRestriction": {
                     "triggerRestrictionElements": [
                         { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{ "$type": "Core.TriggerRestriction:MaxPerStack:" },
                         {
                             "$type": "Core.TriggerRestriction:CardsMatch:",
                             "card": { "$type": "Cards:MainCardBefore:" },
@@ -20,8 +21,7 @@
                         }
                     ],
 					"triggerRestrictions": [
-						"X Fits Restriction",
-						"Max Per Stack"
+						"X Fits Restriction"
 					],
 					"xRestriction": {
 						"numberRestrictions": [
@@ -47,6 +47,7 @@
 				"triggerRestriction": {
                     "triggerRestrictionElements": [
                         { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{ "$type": "Core.TriggerRestriction:MaxPerStack:" },
                         {
                             "$type": "Core.TriggerRestriction:CardsMatch:",
                             "card": { "$type": "Cards:MainCardBefore:" },
@@ -57,8 +58,7 @@
                         }
                     ],
 					"triggerRestrictions": [
-						"X Fits Restriction",
-						"Max Per Stack"
+						"X Fits Restriction"
 					],
 					"xRestriction": {
 						"numberRestrictions": [

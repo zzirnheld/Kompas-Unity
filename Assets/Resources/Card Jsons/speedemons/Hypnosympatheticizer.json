@@ -9,8 +9,10 @@
 				"triggerCondition": "Move",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card is Main Card",
-						"Max Per Stack"
+						"This Card is Main Card"
+					],
+					"triggerRestrictionElements": [
+						{ "$type": "Core.TriggerRestriction:MaxPerStack:" }
 					]
 				}
 			},

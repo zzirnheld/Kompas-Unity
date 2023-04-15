@@ -8,7 +8,6 @@
 				"triggerCondition": "Discard",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"Max Per Stack",
 						"This Card in Play",
 						"Enemy Turn",
 						"Main Card Fits Restriction Before"
@@ -22,7 +21,10 @@
 								"card": { "$type": "Cards:ThisCard:" }
 							}
 						]
-					}
+					},
+					"triggerRestrictionElements": [
+						{ "$type": "Core.TriggerRestriction:MaxPerStack:" }
+					]
 				}
 			},
 			"subeffects": [
