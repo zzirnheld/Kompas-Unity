@@ -45,9 +45,7 @@ namespace KompasClient.UI
 
         private string oldFileName;
 
-        public CardModelController cardModelController;
         public GameObject rawImageShowing;
-        public GameObject charOnlyUI;
         public TMP_Text costLabel;
 
         private GameCard lastFocus;
@@ -138,10 +136,6 @@ namespace KompasClient.UI
                 activatedObject.SetActive(ShownGameCard.Activated);
             }
             alreadySelectedMarker.SetActive(searchUICtrl.CardCurrentlyTargeted(ShownGameCard));
-
-            bool isChar = ShownCard.CardType == 'C';
-            charOnlyUI.SetActive(isChar);
-            cardModelController.ShowZoom(isChar: isChar, zoomLevel: UIController.ZoomLevel.ZoomedInWithEffectText);
         }
 
         private void ClearShownUniqueCopies()
@@ -200,18 +194,5 @@ namespace KompasClient.UI
         protected override string DisplayW(int w) => $"{w}";
         protected override string DisplayC(int c) => $"{c}";
         protected override string DisplayA(int a) => $"{a}";
-
-        protected override void DisplayCardImage(Sprite cardImageSprite, Texture texture)
-        {
-            if (oldFileName == ShownCard.FileName) return;
-
-            base.DisplayCardImage(cardImageSprite, texture);
-            bool isChar = ShownCard.CardType == 'C';
-            //TODO split this out if I ever make chars able to become spells or vice versa
-            var shownVoxelCardUser = ShownGameCard.CardController.gameCardViewController.cardModelController;
-            cardModelController.ShowImage(texture);
-
-            oldFileName = ShownCard.FileName;
-        }
     }
 }

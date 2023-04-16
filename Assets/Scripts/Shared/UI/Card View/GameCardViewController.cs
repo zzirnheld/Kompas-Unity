@@ -49,8 +49,6 @@ namespace KompasCore.UI
         public OscillatingController attackOscillator;
         public OscillatingController effectOscillator;
 
-        public CardModelController cardModelController;
-
         public GameObject zoomedInNoEffTextUI;
         public GameObject unzoomedUI;
         public GameObject zoomedInWithTextUI;
@@ -72,12 +70,6 @@ namespace KompasCore.UI
             set => base.ShowingInfo = value
                 && (ShownGameCard.CardController.ShownInSearch
                     || (ShownGameCard?.Location != CardLocation.Deck && ShownGameCard?.Location != CardLocation.Nowhere));
-        }
-
-        protected override void DisplayCardImage(Sprite cardImageSprite, Texture texture)
-        {
-            base.DisplayCardImage(cardImageSprite, texture);
-            cardModelController.ShowImage(texture);
         }
 
         protected virtual void HandleZoom()

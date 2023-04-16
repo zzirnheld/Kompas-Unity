@@ -19,9 +19,8 @@ namespace KompasCore.UI
         public TMP_Text nameText;
         public TMP_Text subtypesText;
         public TMP_Text effText;
-
-        [Header("Card face image")]
-        public Image cardImageImage;
+        
+        public CardModelController cardModelController;
 
         [Header("Stat fonts")]
         [Tooltip("Default stat font")]
@@ -151,14 +150,8 @@ namespace KompasCore.UI
         protected sealed override void DisplayCardImage()
         {
             string cardFileName = shownCard.FileName;
-            var cardImageSprite = CardRepository.LoadSprite(cardFileName);
             var cardImageTexture = CardRepository.LoadTexture(cardFileName);
-            DisplayCardImage(cardImageSprite, cardImageTexture);
-        }
-
-        protected virtual void DisplayCardImage(Sprite cardImageSprite, Texture texture)
-        {
-            if (cardImageImage != null) cardImageImage.sprite = cardImageSprite;
+            cardModelController.ShowImage(cardImageTexture);
         }
     }
 }

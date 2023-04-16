@@ -33,6 +33,7 @@ namespace KompasCore.UI
             base.Display();
 
             boardUIController.ShowForCard(ShownGameCard);
+            cardModelController.ShowZoom(UIController.ZoomLevel.ZoomedInWithEffectText, ShownGameCard.CardType == 'C');
         }
     }
 }
