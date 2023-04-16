@@ -225,6 +225,7 @@ GameObject:
   - component: {fileID: 2461222595277313129}
   - component: {fileID: 8794207661139705144}
   - component: {fileID: 2875369370555411164}
+  - component: {fileID: 420882689431355649}
   m_Layer: 0
   m_Name: Basic New Card Model Prefab
   m_TagString: Untagged
@@ -349,6 +350,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameCardViewController: {fileID: 1617663616346560671}
   stackedAugmentsController: {fileID: 481778268937333711}
+--- !u!65 &420882689431355649
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2501930806235952257}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 0.25, z: 2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3079151362526704576
 GameObject:
   m_ObjectHideFlags: 0
@@ -1544,6 +1558,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ZI WT Char
+      objectReference: {fileID: 0}
+    - target: {fileID: 952924498822545002, guid: a97280f447ca2a1019c040e0fe2e5cd0,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1400836802308577494, guid: a97280f447ca2a1019c040e0fe2e5cd0,
         type: 3}
