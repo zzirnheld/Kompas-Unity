@@ -10,6 +10,7 @@ using KompasCore.UI;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static KompasCore.UI.UIController;
 
 namespace KompasClient.GameCore
 {
@@ -168,7 +169,7 @@ namespace KompasClient.GameCore
 
         public override GameCard GetCardWithID(int id) => cardsByID.ContainsKey(id) ? cardsByID[id] : null;
 
-        public void ShowCardsByZoom(bool zoomed)
+        public void ShowCardsByZoom(ZoomLevel zoomed)
         {
             //TODO make this better with a dirty list
             foreach (var c in Cards.Where(c => c != null && c.CardController.gameObject.activeSelf))
@@ -182,7 +183,7 @@ namespace KompasClient.GameCore
         /// </summary>
         public void Refresh()
         {
-            ShowCardsByZoom(ClientCameraController.Main.Zoomed);
+            ShowCardsByZoom(ClientCameraController.Main.ZoomLevel);
             clientUIController.cardInfoViewUIController.Refresh();
         }
 

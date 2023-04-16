@@ -151,11 +151,12 @@ namespace KompasCore.UI
         protected sealed override void DisplayCardImage()
         {
             string cardFileName = shownCard.FileName;
-            var cardImageSprite = Resources.Load<Sprite>($"Simple Sprites/{cardFileName}");
-            DisplayCardImage(cardImageSprite);
+            var cardImageSprite = CardRepository.LoadSprite(cardFileName);
+            var cardImageTexture = CardRepository.LoadTexture(cardFileName);
+            DisplayCardImage(cardImageSprite, cardImageTexture);
         }
 
-        protected virtual void DisplayCardImage(Sprite cardImageSprite)
+        protected virtual void DisplayCardImage(Sprite cardImageSprite, Texture texture)
         {
             if (cardImageImage != null) cardImageImage.sprite = cardImageSprite;
         }

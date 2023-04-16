@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 namespace KompasClient.UI
 {
@@ -46,7 +45,7 @@ namespace KompasClient.UI
 
         private string oldFileName;
 
-        public VoxelCardUser voxelCardUser;
+        public CardModelController cardModelController;
         public GameObject rawImageShowing;
         public GameObject charOnlyUI;
         public TMP_Text costLabel;
@@ -140,7 +139,9 @@ namespace KompasClient.UI
             }
             alreadySelectedMarker.SetActive(searchUICtrl.CardCurrentlyTargeted(ShownGameCard));
 
-            charOnlyUI.SetActive(ShownCard.CardType == 'C');
+            bool isChar = ShownCard.CardType == 'C';
+            charOnlyUI.SetActive(isChar);
+            cardModelController.ShowZoom(isChar: isChar, zoomLevel: UIController.ZoomLevel.ZoomedInWithEffectText);
         }
 
         private void ClearShownUniqueCopies()
@@ -200,15 +201,15 @@ namespace KompasClient.UI
         protected override string DisplayC(int c) => $"{c}";
         protected override string DisplayA(int a) => $"{a}";
 
-        protected override void DisplayCardImage(Sprite cardImageSprite)
+        protected override void DisplayCardImage(Sprite cardImageSprite, Texture texture)
         {
             if (oldFileName == ShownCard.FileName) return;
 
-            base.DisplayCardImage(cardImageSprite);
+            base.DisplayCardImage(cardImageSprite, texture);
             bool isChar = ShownCard.CardType == 'C';
             //TODO split this out if I ever make chars able to become spells or vice versa
-            var shownVoxelCardUser = ShownGameCard.CardController.gameCardViewController.voxelCardUser;
-            this.voxelCardUser.Set(isChar, true, shownVoxelCardUser.ZoomedTex, shownVoxelCardUser.ZoomedMet);
+            var shownVoxelCardUser = ShownGameCard.CardController.gameCardViewController.cardModelController;
+            cardModelController.ShowImage(texture);
 
             oldFileName = ShownCard.FileName;
         }
