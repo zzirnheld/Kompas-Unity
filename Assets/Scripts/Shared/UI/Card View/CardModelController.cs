@@ -28,6 +28,7 @@ namespace KompasCore.UI
 
         public void ShowZoom(ZoomLevel zoomLevel, bool isChar)
         {
+            Debug.Log($"Showing zoom level {zoomLevel}");
             zoomedOutAll.SetActive(zoomLevel == ZoomLevel.ZoomedOut);
             zoomedOutChar.SetActive(zoomLevel == ZoomLevel.ZoomedOut && isChar);
             zoomedOutNonChar.SetActive(zoomLevel == ZoomLevel.ZoomedOut && !isChar);

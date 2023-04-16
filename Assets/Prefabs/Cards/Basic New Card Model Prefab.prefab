@@ -268,7 +268,7 @@ MonoBehaviour:
   nameText: {fileID: 9095003697266456074}
   subtypesText: {fileID: 6634032586019542104}
   effText: {fileID: 2885618867244878617}
-  cardImageImage: {fileID: 0}
+  cardModelController: {fileID: 6449626273828778645}
   neutralStatFontMaterial: {fileID: 2100000, guid: 0b4b432a7da6e644ba50b37e8ba6e5bb,
     type: 2}
   buffStatFontMaterial: {fileID: 2100000, guid: 4c63f89d5150b1b14a55695fabe17027,
@@ -302,7 +302,6 @@ MonoBehaviour:
   secondaryStackableObject: {fileID: 3079151362526704576}
   attackOscillator: {fileID: 5689715733918769813}
   effectOscillator: {fileID: 5689715733918769813}
-  cardModelController: {fileID: 6449626273828778645}
   zoomedInNoEffTextUI: {fileID: 231537150721727604}
   unzoomedUI: {fileID: 3551785326116938489}
   zoomedInWithTextUI: {fileID: 1970808999101389067}
@@ -1541,10 +1540,35 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3022887745140600379}
     m_Modifications:
+    - target: {fileID: 252587523225466321, guid: a97280f447ca2a1019c040e0fe2e5cd0,
+        type: 3}
+      propertyPath: m_Name
+      value: ZI WT Char
+      objectReference: {fileID: 0}
     - target: {fileID: 1400836802308577494, guid: a97280f447ca2a1019c040e0fe2e5cd0,
         type: 3}
       propertyPath: m_Name
       value: Card Model and Text
+      objectReference: {fileID: 0}
+    - target: {fileID: 1506911044384262301, guid: a97280f447ca2a1019c040e0fe2e5cd0,
+        type: 3}
+      propertyPath: m_Name
+      value: ZI WT Non Char
+      objectReference: {fileID: 0}
+    - target: {fileID: 3170814524241272738, guid: a97280f447ca2a1019c040e0fe2e5cd0,
+        type: 3}
+      propertyPath: m_Name
+      value: ZI WT All
+      objectReference: {fileID: 0}
+    - target: {fileID: 3445811367653343104, guid: a97280f447ca2a1019c040e0fe2e5cd0,
+        type: 3}
+      propertyPath: m_Name
+      value: ZI NT All
+      objectReference: {fileID: 0}
+    - target: {fileID: 3668502505012272332, guid: a97280f447ca2a1019c040e0fe2e5cd0,
+        type: 3}
+      propertyPath: m_Name
+      value: ZO All
       objectReference: {fileID: 0}
     - target: {fileID: 3984027921308840737, guid: a97280f447ca2a1019c040e0fe2e5cd0,
         type: 3}
@@ -1600,6 +1624,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4832587897579387775, guid: a97280f447ca2a1019c040e0fe2e5cd0,
+        type: 3}
+      propertyPath: m_Name
+      value: ZI NT Non Char
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291095069596053582, guid: a97280f447ca2a1019c040e0fe2e5cd0,
+        type: 3}
+      propertyPath: m_Name
+      value: ZO Non Char
+      objectReference: {fileID: 0}
+    - target: {fileID: 5483508270793601764, guid: a97280f447ca2a1019c040e0fe2e5cd0,
+        type: 3}
+      propertyPath: m_Name
+      value: ZI NT Char
+      objectReference: {fileID: 0}
+    - target: {fileID: 6641593389470770371, guid: a97280f447ca2a1019c040e0fe2e5cd0,
+        type: 3}
+      propertyPath: zoomedInWithTextAll
+      value: 
+      objectReference: {fileID: 3002491454831921652}
+    - target: {fileID: 8037819520009599052, guid: a97280f447ca2a1019c040e0fe2e5cd0,
+        type: 3}
+      propertyPath: m_Name
+      value: ZO Char
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a97280f447ca2a1019c040e0fe2e5cd0, type: 3}
@@ -1657,6 +1706,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &3002491454831921652 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3170814524241272738, guid: a97280f447ca2a1019c040e0fe2e5cd0,
+    type: 3}
+  m_PrefabInstance: {fileID: 408139899098355286}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &3095197220398729951 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3413262781624835209, guid: a97280f447ca2a1019c040e0fe2e5cd0,

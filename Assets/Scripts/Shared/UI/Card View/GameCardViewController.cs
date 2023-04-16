@@ -15,10 +15,7 @@ namespace KompasCore.UI
         public const float SmallUnzoomedTextFontSize = 22f;
         private static float UnzoomedFontSizeForValue(int value) => value < 10 ? LargeUnzoomedTextFontSize : SmallUnzoomedTextFontSize;
 
-        private ZoomLevel ZoomLevel => overrideZoom ? zoomOverrideValue : ClientCameraController.MainZoomLevel;
-
-        private bool overrideZoom;
-        private ZoomLevel zoomOverrideValue;
+        private ZoomLevel ZoomLevel => ClientCameraController.MainZoomLevel;
 
         public CardAOEController aoeController;
 
@@ -72,7 +69,14 @@ namespace KompasCore.UI
                     || (ShownGameCard?.Location != CardLocation.Deck && ShownGameCard?.Location != CardLocation.Nowhere));
         }
 
-        protected virtual void HandleZoom()
+        protected override void DisplayCardRulesText()
+        {
+            base.DisplayCardRulesText();
+            zoomedInWithTextName.text = shownCard.CardName;
+            zoomedInWithTextSubtype.text = shownCard.QualifiedSubtypeText;
+        }
+
+        protected void HandleZoom()
         {
             handleStatColors(nText, eText, costText, wText);
             for (int i = 0; i < zoomedInNTexts.Length; i++)
