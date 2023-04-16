@@ -13,7 +13,7 @@ namespace KompasCore.Effects
 
     public abstract class RestrictionBase<Type> : ContextInitializeableBase, IRestriction<Type>
     {
-        public IList<IRestrictionElement<Type>> elements;
+        public IList<IRestrictionElement<Type>> elements = new IRestrictionElement<Type>[] { };
 
         public override void Initialize(EffectInitializationContext initializationContext)
         {

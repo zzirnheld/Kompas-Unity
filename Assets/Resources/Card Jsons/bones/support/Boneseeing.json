@@ -20,6 +20,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Bone to see pips in",
+						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",

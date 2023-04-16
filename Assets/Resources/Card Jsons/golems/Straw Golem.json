@@ -55,7 +55,7 @@
 							{ "$type": "Core.CardRestriction:Enemy:" },
 							{
 								"$type": "Core.CardRestriction:CanMove:",
-								"spaceRestrictionSubeffectIndex": 3
+								"spaceRestrictionSubeffectIndex": 4
 							},
 							{
 								"$type": "Core.CardRestriction:Not:",

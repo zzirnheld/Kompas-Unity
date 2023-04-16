@@ -50,6 +50,7 @@ namespace KompasCore.GameCore
 
         protected TGameCard InstantiateGameCard<TGameCard>(string json, ConstructCard<TGameCard> cardConstructor, Action<SerializableCard> validation = null)
         {
+            Debug.Log($"Loading {json}");
             TSerializableCard cardInfo;
             var effects = new List<TEffect>();
 
