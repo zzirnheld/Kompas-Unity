@@ -27,7 +27,9 @@ namespace KompasServer.Effects.Subeffects
         protected override void AddList(IEnumerable<GameCard> choices)
         {
             base.AddList(choices);
-            var rest = ServerGame.Cards.Where(c => restRestriction.IsValid(c, ResolutionContext) && !choices.Contains(c));
+            var rest = toSearch.From(ResolutionContext, default)
+                .Where(c => restRestriction.IsValid(c, ResolutionContext) && !choices.Contains(c))
+                .Select(c => c.Card);
             ServerEffect.rest.AddRange(rest);
         }
     }

@@ -138,7 +138,7 @@ namespace KompasServer.Effects.Subeffects
         {
             var decksViewed = potentialTargets.Where(c => c.Location == CardLocation.Deck)
                             .GroupBy(c => c.GameLocation)
-                            .Select(grouping => grouping.FirstOrDefault())
+                            .Select(grouping => grouping.Key)
                             .Cast<DeckController>(); //If this cast fails, we have a non-deck controller trying to act like one. If you do this, make it an interface
             foreach (var deck in decksViewed) deck.Shuffle();
         }
