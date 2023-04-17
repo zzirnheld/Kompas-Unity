@@ -2,6 +2,7 @@
 using KompasClient.GameCore;
 using System.Linq;
 using KompasClient.Effects;
+using UnityEngine;
 
 namespace KompasCore.Networking
 {
@@ -31,6 +32,7 @@ namespace KompasClient.Networking
         public void Execute(ClientGame clientGame)
         {
             var card = clientGame.GetCardWithID(sourceCardId);
+            Debug.Log($"Trying to activate effect of {sourceCardId}, which is {card}. its effect{effIndex} is {card?.Effects?.ElementAt(effIndex)}");
             if (card == null) return;
             var eff = card.Effects.ElementAt(effIndex) as ClientEffect;
             eff?.Activated();

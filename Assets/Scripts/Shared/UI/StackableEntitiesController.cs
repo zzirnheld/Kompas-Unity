@@ -73,14 +73,14 @@ namespace KompasCore.UI
 
         public void Refresh()
         {
-            Debug.Log($"Refreshing {name}");
+            //Debug.Log($"Refreshing {name}");
             if (collapsed) Collapse();
             else Expand();
         }
 
         public void Collapse()
         {
-            Debug.Log($"Collapsing {name}");
+            //Debug.Log($"Collapsing {name}");
             if (ShownObjects == null) throw new System.ArgumentException("Tried to collapse a StackableEntitiesController that wasn't initialized!");
             OffsetSelf(0f);
             ShowCollapsed();
@@ -90,7 +90,7 @@ namespace KompasCore.UI
 
         public void Expand()
         {
-            Debug.Log($"Expanding {name}");
+            //Debug.Log($"Expanding {name}");
             if (ShownObjects == null) throw new System.ArgumentException("Tried to expand a StackableEntitiesController that wasn't initialized!");
             OffsetSelf(whileExpandedOffset);
             ShowExpanded();

@@ -84,7 +84,7 @@ namespace KompasCore.UI
             var (x, y) = CueIndexMapping(cueIndex);
             var (i, j) = (flipX ? 6 - x : x, flipZ ? 6 - y : y);
 
-            Debug.Log($"Index {cueIndex} out of range of {spaceCueControllerSampling.Length}");
+            //Debug.Log($"Index {cueIndex} out of range of {spaceCueControllerSampling.Length}");
             var position = spaceCueControllerSampling[(int)cueIndex].transform.localPosition;
             var flippedPosition = new Vector3(flipX ? -position.x : position.x, position.y, flipZ ? -position.z : position.z);
             InstantiateCue(i, j, flippedPosition);

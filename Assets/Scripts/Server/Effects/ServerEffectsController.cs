@@ -95,16 +95,21 @@ namespace KompasServer.Effects
         public void PushToStack(IServerStackable eff, TriggeringEventContext context)
             => PushToStack(eff, new ResolutionContext(context));
 
-        public void PushToStack(IServerStackable eff, ResolutionContext context)
+        public void PushToStack(ServerEffect eff, ServerPlayer controller, TriggeringEventContext triggerContext)
         {
-            ResetPassingPriority();
-            stack.Push((eff, context));
+            PushToStack(eff, controller, new ResolutionContext(triggerContext));
         }
 
         public void PushToStack(ServerEffect eff, ServerPlayer controller, ResolutionContext context)
         {
             eff.PushedToStack(ServerGame, controller);
             PushToStack(eff as IServerStackable, context);
+        }
+
+        public void PushToStack(IServerStackable eff, ResolutionContext context)
+        {
+            ResetPassingPriority();
+            stack.Push((eff, context));
         }
 
         public void PushToStack(ServerEffect eff, ResolutionContext context) => PushToStack(eff, eff.ServerController, context);
@@ -245,9 +250,9 @@ namespace KompasServer.Effects
 
             //finally, push the triggers to the stack, in the proscribed order, starting with the turn player's
             foreach (var t in confirmed.Where(t => t.serverEffect.Controller == turnPlayer).OrderBy(t => t.Order))
-                PushToStack(t.serverEffect, triggered.context);
+                PushToStack(t.serverEffect, t.serverEffect.ServerController, triggered.context);
             foreach (var t in confirmed.Where(t => t.serverEffect.Controller == turnPlayer.Enemy).OrderBy(t => t.Order))
-                PushToStack(t.serverEffect, triggered.context);
+                PushToStack(t.serverEffect, t.serverEffect.ServerController, triggered.context);
         }
 
         /// <summary>
