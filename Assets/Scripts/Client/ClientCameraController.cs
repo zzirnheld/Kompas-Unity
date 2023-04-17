@@ -21,7 +21,7 @@ namespace KompasClient.UI
 
         public float PanFactor => Mathf.Log10(transform.position.y) * PanFactorBase;
         public float RotationAngle => Mathf.Log10(transform.position.y) * RotationFactorBase;
-        public ZoomLevel ZoomLevel => transform.position.y <= ZoomThreshold
+        public ZoomLevel ZoomLevel => this != null && transform.position.y <= ZoomThreshold
             ? ZoomLevel.ZoomedInNoEffectText
             : ZoomLevel.ZoomedOut;
 

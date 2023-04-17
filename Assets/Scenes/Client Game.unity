@@ -29976,6 +29976,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1708428137
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1708428138}
+  m_Layer: 0
+  m_Name: Already Selected (PLACEHOLDER)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1708428138
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1708428137}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2878731448299248345}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1724049166
 GameObject:
   m_ObjectHideFlags: 0
@@ -38496,6 +38527,7 @@ Transform:
   m_Children:
   - {fileID: 1342849794}
   - {fileID: 1543462903}
+  - {fileID: 1708428138}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -38531,7 +38563,7 @@ MonoBehaviour:
   effectsUIController: {fileID: 0}
   pipsUIController: {fileID: 561498308}
   searchUICtrl: {fileID: 892030876}
-  alreadySelectedMarker: {fileID: 0}
+  alreadySelectedMarker: {fileID: 1708428137}
   conditionParentObject: {fileID: 0}
   negatedObject: {fileID: 0}
   activatedObject: {fileID: 0}

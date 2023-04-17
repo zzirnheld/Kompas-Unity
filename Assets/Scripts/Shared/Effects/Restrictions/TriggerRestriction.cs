@@ -210,7 +210,7 @@ namespace KompasCore.Effects
         {
             var success = IsRestrictionValid(r, triggeringContext, stashedResolutionContext);
             //TODO: tie this to a compiler flag/ifdef sort of thing
-            if (!success) Debug.Log($"Trigger for {ThisCard.CardName} invalid at restriction {r} for {triggeringContext}");
+            //if (!success) Debug.Log($"Trigger for {ThisCard.CardName} invalid at restriction {r} for {triggeringContext}");
             return success;
         }
 

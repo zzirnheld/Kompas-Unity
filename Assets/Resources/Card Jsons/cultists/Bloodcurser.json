@@ -40,16 +40,11 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
-					"maxCanChoose": 1,
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
 						"blurb": "Silent Cult Follower to bloodcurse (1/2)",
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
-							{ "$type": "Core.CardRestriction:Friendly:" },
-                            {
-                                "$type": "Core.CardRestriction:Location:",
-                                "locations": [ "Deck" ]
-                            },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Cultist", "Follower" ]
@@ -75,16 +70,11 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
-					"maxCanChoose": 1,
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
 						"blurb": "Silent Cult Follower to bloodcurse (2/2)",
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
-							{ "$type": "Core.CardRestriction:Friendly:" },
-                            {
-                                "$type": "Core.CardRestriction:Location:",
-                                "locations": [ "Deck" ]
-                            },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Cultist", "Follower" ]
