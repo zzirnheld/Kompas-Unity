@@ -52,7 +52,7 @@ namespace KompasServer.Effects
                 && defender.Position == defenderInitialSpace;
         }
 
-        public Task StartResolution(ResolutionContext context)
+        public Task StartResolution(IResolutionContext context)
         {
             var attackerContext = new TriggeringEventContext(game: ServerGame, CardBefore: attacker, secondaryCardBefore: defender, 
                 stackableCause: this, stackableEvent: this, eventCauseOverride: attacker, player: Controller);

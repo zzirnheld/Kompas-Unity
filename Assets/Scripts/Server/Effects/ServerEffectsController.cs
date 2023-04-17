@@ -100,19 +100,19 @@ namespace KompasServer.Effects
             PushToStack(eff, controller, new ResolutionContext(triggerContext));
         }
 
-        public void PushToStack(ServerEffect eff, ServerPlayer controller, ResolutionContext context)
+        public void PushToStack(ServerEffect eff, ServerPlayer controller, IResolutionContext context)
         {
             eff.PushedToStack(ServerGame, controller);
             PushToStack(eff as IServerStackable, context);
         }
 
-        public void PushToStack(IServerStackable eff, ResolutionContext context)
+        public void PushToStack(IServerStackable eff, IResolutionContext context)
         {
             ResetPassingPriority();
             stack.Push((eff, context));
         }
 
-        public void PushToStack(ServerEffect eff, ResolutionContext context) => PushToStack(eff, eff.ServerController, context);
+        public void PushToStack(ServerEffect eff, IResolutionContext context) => PushToStack(eff, eff.ServerController, context);
 
         private async Task StackEmptied()
         {

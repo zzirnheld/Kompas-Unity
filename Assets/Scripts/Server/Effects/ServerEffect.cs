@@ -128,7 +128,7 @@ namespace KompasServer.Effects
         }
 
         #region resolution
-        public async Task StartResolution(ResolutionContext context)
+        public async Task StartResolution(IResolutionContext context)
         {
             Debug.Log($"Resolving effect {EffectIndex} of {Source.CardName} in context {context}");
             serverGame.CurrEffect = this;
