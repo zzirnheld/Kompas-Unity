@@ -29,14 +29,18 @@
                     {
                         "blurb":"where for speed victim to move",
 						"elements": [
-                            {
-                                "$type": "Core.SpaceRestriction:CanMoveCard:",
-                                "toMove": { "$type": "Cards:TargetIndex:" },
-                                "distanceRestriction": {
-                                    "numberRestrictions": [ "==Constant" ],
-                                    "constant": 1
-                                }
-                            },
+							{
+								"$type": "Core.SpaceRestriction:CanMoveCard:",
+								"toMove": { "$type": "Cards:TargetIndex:" }
+							},
+							{
+								"$type": "Core.SpaceRestriction:CompareDistance:",
+								"distanceTo": {
+									"$type": "Spaces:PositionOf:",
+									"ofThisCard": { "$type": "Cards:TargetIndex:" }
+								},
+								"number": { "$type": "Numbers:Constant:", "constant": 1 }
+							},
 							{
 								"$type": "Core.SpaceRestriction:Direction:",
 								"from": {

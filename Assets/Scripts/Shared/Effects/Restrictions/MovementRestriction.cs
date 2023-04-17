@@ -17,6 +17,7 @@ namespace KompasCore.Effects
         private const string IsCharacter = "Is Character";
         //Does the character have enough N?
         private const string CanMoveEnoughSpaces = "Can Move Enough Spaces";
+        private const string Empty = "Empty";
         //If the space to be moved to isn't empty, can the other card there move to here?
         //In other words, if we're swapping, can the other card also move here?
         //Also checks that that other card is friendly
@@ -49,6 +50,7 @@ namespace KompasCore.Effects
         public static readonly string[] DefaultEffectMovementRestrictions = new string[]
         {
             InPlay,
+            Empty,
             DistinctSpace,
             StandardSpellMoveRestiction
         };
@@ -133,6 +135,7 @@ namespace KompasCore.Effects
             StandardSpellMoveRestiction => Card.Game.ValidSpellSpaceFor(Card, destination),
             NothingHappening => Card.Game.NothingHappening,
             IsFriendlyTurn => Card.Game.TurnPlayer == Card.Controller,
+            Empty => Card.Game.BoardController.GetCardAt(destination) == null,
             DestinationCanMoveHere => isSwapTarget || CardAtDestinationCanMoveHere(destination, context),
 
             //special effect restrictions

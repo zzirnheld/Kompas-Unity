@@ -17,7 +17,7 @@
             "$type": "Numbers:Operation:",
             "numbers": [
                 {
-                    "$type": "Numbers:X:",
+                    "$type": "Numbers:TriggerX:",
                     "multiplier": 0,
                     "modifier": 1
                 },

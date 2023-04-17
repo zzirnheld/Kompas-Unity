@@ -200,7 +200,12 @@ namespace KompasClient.GameCore
             clientGame.clientUIController.TargetMode = TargetMode.OnHold;
         }
 
-        public bool IsCurrentlyTargeted(GameCard card) => CurrSearchData?.searched.Contains(card) ?? false;
+        //public bool IsCurrentlyTargeted(GameCard card) => CurrSearchData?.searched.Contains(card) ?? false;
+        public bool IsCurrentlyTargeted(GameCard card)
+        {
+            Debug.Log($"Curr search data contains {card}? {CurrSearchData?.searched.Contains(card)}");
+            return CurrSearchData?.searched.Contains(card) ?? false;
+        }
 
         public bool IsValidTarget(GameCard card) => (CurrSearchData?.toSearch.Contains(card) ?? false) && !IsCurrentlyTargeted(card);
     }

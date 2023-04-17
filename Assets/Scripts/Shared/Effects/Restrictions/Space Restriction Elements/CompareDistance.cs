@@ -12,7 +12,7 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
     {
         public IIdentity<Space> distanceTo;
         public IIdentity<int> number;
-        public INumberRelationship comparison;
+        public INumberRelationship comparison = new Relationships.NumberRelationships.Equal();
 
         public override void Initialize(EffectInitializationContext initializationContext)
         {

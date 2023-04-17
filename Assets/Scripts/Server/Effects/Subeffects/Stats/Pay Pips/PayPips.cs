@@ -10,7 +10,13 @@ namespace KompasServer.Effects.Subeffects
 
         private int ToPay => pipCost.From(ResolutionContext, default);
 
-        public IIdentity<int> pipCost = new X();
+        public IIdentity<int> pipCost = new EffectX();
+
+        public override void Initialize(ServerEffect eff, int subeffIndex)
+        {
+            base.Initialize(eff, subeffIndex);
+            pipCost.Initialize(DefaultInitializationContext);
+        }
 
         public override Task<ResolutionInfo> Resolve()
         {

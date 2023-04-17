@@ -38,10 +38,15 @@
 						"elements": [
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
-								"toMove": { "$type": "Cards:TargetIndex:" },
-								"distanceRestriction": {
-									"numberRestrictions": [ "=X" ]
-								}
+								"toMove": { "$type": "Cards:TargetIndex:" }
+							},
+							{
+								"$type": "Core.SpaceRestriction:CompareDistance:",
+								"distanceTo": {
+									"$type": "Spaces:PositionOf:",
+									"ofThisCard": { "$type": "Cards:TargetIndex:" }
+								},
+								"number": { "$type": "Numbers:EffectX:" }
 							}
 						]
 					},

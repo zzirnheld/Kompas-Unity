@@ -86,7 +86,7 @@
 								"numberRestriction": { "elements": [{
 									"$type": "Core.NumberRestriction:Compare:",
 									"comparison": { "$type": "Relationships.Number:Equal:" },
-									"other": { "$type": "Numbers:X:" }
+									"other": { "$type": "Numbers:EffectX:" }
 								}]}
 							}
 						]
@@ -130,7 +130,7 @@
 								"numberRestriction": { "elements": [ {
 									"$type": "Core.NumberRestriction:Compare:",
 									"comparison": { "$type": "Relationships.Number:LessThanEqual:" },
-									"other": { "$type": "Numbers:X:" }
+									"other": { "$type": "Numbers:EffectX:" }
 								}]}
 							}
 						]

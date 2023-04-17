@@ -37,7 +37,7 @@
                                     "$type": "Spaces:PositionOf:",
                                     "ofThisCard": { "$type": "Cards:ThisCard:" }
                                 },
-                                "number": { "$type": "Numbers:X:" },
+                                "number": { "$type": "Numbers:EffectX:" },
                                 "comparison": { "$type": "Relationships.Number:LessThanEqual:" }
                             }
 						]

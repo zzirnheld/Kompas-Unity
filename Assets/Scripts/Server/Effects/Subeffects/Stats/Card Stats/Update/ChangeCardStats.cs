@@ -27,12 +27,12 @@ namespace KompasServer.Effects.Subeffects
 
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
-            n ??= new X() { multiplier = nMultiplier, modifier = nModifier, divisor = nDivisor };
-            e ??= new X() { multiplier = eMultiplier, modifier = eModifier, divisor = eDivisor };
-            s ??= new X() { multiplier = sMultiplier, modifier = sModifier, divisor = sDivisor };
-            w ??= new X() { multiplier = wMultiplier, modifier = wModifier, divisor = wDivisor };
-            c ??= new X() { multiplier = cMultiplier, modifier = cModifier, divisor = cDivisor };
-            a ??= new X() { multiplier = aMultiplier, modifier = aModifier, divisor = aDivisor };
+            n ??= new EffectX() { multiplier = nMultiplier, modifier = nModifier, divisor = nDivisor };
+            e ??= new EffectX() { multiplier = eMultiplier, modifier = eModifier, divisor = eDivisor };
+            s ??= new EffectX() { multiplier = sMultiplier, modifier = sModifier, divisor = sDivisor };
+            w ??= new EffectX() { multiplier = wMultiplier, modifier = wModifier, divisor = wDivisor };
+            c ??= new EffectX() { multiplier = cMultiplier, modifier = cModifier, divisor = cDivisor };
+            a ??= new EffectX() { multiplier = aMultiplier, modifier = aModifier, divisor = aDivisor };
 
             base.Initialize(eff, subeffIndex);
         }

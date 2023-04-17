@@ -39,19 +39,7 @@
 							},
 							"to": { "$type": "Spaces:TargetIndex:" }
 						}
-                    },
-					"spaceRestriction": {
-						"elements": [
-                            {
-                                "$type": "Core.SpaceRestriction:CanMoveCard:",
-                                "toMove": { "$type": "Cards:TargetIndex:" },
-								"distanceRestriction": {
-									"numberRestrictions": [ "==Constant" ],
-									"constant": 1
-								}
-                            }
-						]
-					}
+                    }
 				},
 				{
 					"$type": "Subeffect:Move:"

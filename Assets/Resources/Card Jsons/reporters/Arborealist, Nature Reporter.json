@@ -72,7 +72,7 @@
 								"numberRestriction": { "elements": [{
 									"$type": "Core.NumberRestriction:Compare:",
 									"comparison": { "$type": "Relationships.Number:GreaterThan:" },
-									"other": { "$type": "Numbers:X:" }
+									"other": { "$type": "Numbers:EffectX:" }
 								}]}
 							}
 						]

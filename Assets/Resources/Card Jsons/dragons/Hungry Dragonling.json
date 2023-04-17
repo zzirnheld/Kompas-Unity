@@ -19,7 +19,7 @@
 				},
 				{
 					"$type": "Subeffect:ChangeCardStats:",
-					"sModifier": 5
+					"sModifier": 7
 				}
 			]
 		}

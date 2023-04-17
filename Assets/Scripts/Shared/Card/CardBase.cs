@@ -120,9 +120,9 @@ namespace KompasCore.Cards
                 {
                     return (SpellSubtypes.FirstOrDefault()) switch
                     {
-                        RadialSubtype => $" Radius {Radius}",
-                        DelayedSubtype => $" Delayed {Duration}",
-                        VanishingSubtype => $" Vanishing {Duration}",
+                        RadialSubtype => $" Radius {Radius} ",
+                        DelayedSubtype => $" Delayed {Duration} ",
+                        VanishingSubtype => $" Vanishing {Duration} ",
                         _ => "",
                     };
                 }
