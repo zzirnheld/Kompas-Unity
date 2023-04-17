@@ -20,7 +20,9 @@ namespace KompasCore.Effects
         public Space DelayedSpaceTarget { get; }
         public List<IStackable> StackableTargets { get; }
         public IStackable DelayedStackableTarget { get; }
-        public int X { get; }
+        public int X { get; set; }
+
+        public IResolutionContext Copy { get; }
 
 
         /// <summary>
@@ -38,7 +40,9 @@ namespace KompasCore.Effects
             public Space DelayedSpaceTarget => throw new System.NotImplementedException(NotImplementedMessage);
             public List<IStackable> StackableTargets => throw new System.NotImplementedException(NotImplementedMessage);
             public IStackable DelayedStackableTarget => throw new System.NotImplementedException(NotImplementedMessage);
-            public int X => throw new System.NotImplementedException(NotImplementedMessage);
+            public int X { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+
+            public IResolutionContext Copy => new DummyResolutionContext(TriggerContext);
 
             public DummyResolutionContext(TriggeringEventContext triggerContext)
             {

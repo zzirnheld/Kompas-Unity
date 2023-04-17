@@ -30,7 +30,7 @@ namespace KompasServer.Effects.Subeffects.Hanging
 
             public AnnihilationEffect(ServerGame serverGame, TriggerRestriction triggerRestriction, string endCondition,
                 string fallOffCondition, TriggerRestriction fallOffRestriction,
-                Effect sourceEff, ResolutionContext resolutionContext, GameCard target)
+                Effect sourceEff, IResolutionContext resolutionContext, GameCard target)
                 : base(serverGame, triggerRestriction, endCondition, fallOffCondition, fallOffRestriction, sourceEff, resolutionContext, removeIfEnd: true)
             {
                 this.target = target;

@@ -71,7 +71,7 @@ namespace KompasServer.Effects.Subeffects.Hanging
 
             public ChangeCardStatsEffect(ServerGame game, TriggerRestriction triggerRestriction, string endCondition,
                 string fallOffCondition, TriggerRestriction fallOffRestriction, Effect sourceEff,
-                ResolutionContext currentContext, GameCard buffRecipient, CardStats buff)
+                IResolutionContext currentContext, GameCard buffRecipient, CardStats buff)
                 : base(game, triggerRestriction, endCondition, fallOffCondition, fallOffRestriction, sourceEff, currentContext, removeIfEnd: true)
             {
                 this.buffRecipient = buffRecipient ?? throw new System.ArgumentNullException(nameof(buffRecipient), "Null characcter card in temporary nesw buff");

@@ -35,8 +35,7 @@ namespace KompasClient.Networking
             var card = clientGame.GetCardWithID(sourceCardId);
             if (card != null)
             {
-                if (card.Effects == null) Debug.Log($"Effects of {card} are null");
-                if (card.Effects.ElementAt(effIndex) == null) Debug.Log($"Effect {effIndex} of {card} ({card.Effects}) are null");
+                Debug.Log($"{card} ;;;;\n {card?.Effects} ;;;;\n {card?.Effects?.ElementAt(effIndex)}");
                 card.Effects.ElementAt(effIndex).X = x;
             }
         }
