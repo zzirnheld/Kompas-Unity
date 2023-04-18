@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Silent Twin",
-	"effText": "When you summon me, deck->summon a Cultist Follower, but kill them immediately.",
+	"effText": "When you summon me, deck->summon a Cultist Mook, but kill them immediately.",
 	"effects": [
 		{
 			"triggerData": {
@@ -22,7 +22,7 @@
 							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Cultist", "Follower" ]
+								"subtypes": [ "Cultist", "Mook" ]
 							}
 						]
 					},

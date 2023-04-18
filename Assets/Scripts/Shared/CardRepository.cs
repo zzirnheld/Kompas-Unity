@@ -7,7 +7,6 @@ using System.Text.RegularExpressions;
 using UnityEngine;
 using System.IO;
 using UnityEditor;
-using static VoxelCardTextureBuilder;
 
 namespace KompasCore.GameCore
 {
@@ -182,8 +181,6 @@ namespace KompasCore.GameCore
                 Reminders = JsonConvert.DeserializeObject<ReminderTextsContainer>(reminderJsonAsset.text);
                 Reminders.Initialize();
                 Keywords = Reminders.keywordReminderTexts.Select(rti => rti.keyword).ToArray();
-
-                InitializeTextures();
             }
         }
 
@@ -283,41 +280,6 @@ namespace KompasCore.GameCore
             return json;
         }
 
-        private void InitializeTextures()
-        {
-            Debug.Log("Initializing textures");
-            var textures = new TextureParams.Textures()
-            {
-                NamePlacardTexture = namePlacardTexture,
-                TypePlacardTexture = typePlacardTexture,
-                EffectTextTexture = effectTextTexture,
-                CharacterArt = LoadSprite(cardFileNames.Keys.FirstOrDefault()),
-                CardBackTexture = cardBackTexture,
-                NTexture = nTexture,
-                ETexture = eTexture,
-                SACTexture = sacTexture,
-                WTexture = wTexture,
-                RTexture = rTexture,
-                DTexture = dTexture,
-            };
-
-            textures.FrameColorOverride = Settings?.FriendlyColor ?? Settings.DefaultFriendlyBlue;
-            (friendlyZoomedCharTexture, friendlyZoomedCharMetalness) = VoxelCardTextureBuilder.BuildTexture(default, default, TextureParams.Params(isZoomed: true, isChar: true, textures), true);
-            (friendlyZoomedNonCharTexture, friendlyZoomedNonCharMetalness) = VoxelCardTextureBuilder.BuildTexture(default, default, TextureParams.Params(isZoomed: true, isChar: false, textures), true);
-            (friendlyUnzoomedCharTexture, friendlyUnzoomedCharMetalness) = VoxelCardTextureBuilder.BuildTexture(default, default, TextureParams.Params(isZoomed: false, isChar: true, textures), true);
-            (friendlyUnzoomedNonCharTexture, friendlyUnzoomedNonCharMetalness) = VoxelCardTextureBuilder.BuildTexture(default, default, TextureParams.Params(isZoomed: false, isChar: false, textures), true);
-
-            Debug.Log("Friendly textures initialized");
-
-            textures.FrameColorOverride = Settings?.EnemyColor ?? Settings.DefaultEnemyRed;
-            (enemyZoomedCharTexture, enemyZoomedCharMetalness) = VoxelCardTextureBuilder.BuildTexture(default, default, TextureParams.Params(isZoomed: true, isChar: true, textures), true);
-            (enemyZoomedNonCharTexture, enemyZoomedNonCharMetalness) = VoxelCardTextureBuilder.BuildTexture(default, default, TextureParams.Params(isZoomed: true, isChar: false, textures), true);
-            (enemyUnzoomedCharTexture, enemyUnzoomedCharMetalness) = VoxelCardTextureBuilder.BuildTexture(default, default, TextureParams.Params(isZoomed: false, isChar: true, textures), true);
-            (enemyUnzoomedNonCharTexture, enemyUnzoomedNonCharMetalness) = VoxelCardTextureBuilder.BuildTexture(default, default, TextureParams.Params(isZoomed: false, isChar: false, textures), true);
-
-            Debug.Log("enemy textures initialized");
-        }
-
         public CardTextures GetTextures(string cardFileName, bool isChar, bool friendly)
         {
             CardTextures ret;
@@ -389,6 +351,7 @@ namespace KompasCore.GameCore
         public static string FileNameFor(string cardName) => cardFileNames[cardName];
 
         public static Sprite LoadSprite(string cardFileName) => Resources.Load<Sprite>(Path.Combine("Simple Sprites", cardFileName));
+        public static Texture LoadTexture(string cardFileName) => Resources.Load<Texture>(Path.Combine("Card Textures", cardFileName));
 
         public static IEnumerable<SerializableCard> SerializableCards => cardJsons.Values.Select(json => JsonConvert.DeserializeObject<SerializableCard>(json, cardLoadingSettings));
     }

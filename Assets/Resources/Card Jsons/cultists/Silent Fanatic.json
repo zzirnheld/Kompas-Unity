@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Silent Fanatic",
-	"effText": "When I die, deck->summon 2 Cultist Followers.",
+	"effText": "When I die, deck->summon 2 Cultist Mooks.",
 	"effects": [
 		{
 			"triggerData": {
@@ -25,7 +25,7 @@
 							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Cultist", "Follower" ]
+								"subtypes": [ "Cultist", "Mook" ]
 							}
 						]
 					}
@@ -56,7 +56,7 @@
 							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Cultist", "Follower" ]
+								"subtypes": [ "Cultist", "Mook" ]
 							}
 						]
 					}

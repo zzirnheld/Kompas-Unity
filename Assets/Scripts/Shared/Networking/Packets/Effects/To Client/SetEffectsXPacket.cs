@@ -1,6 +1,7 @@
 ﻿using KompasCore.Networking;
 using KompasClient.GameCore;
 using System.Linq;
+using UnityEngine;
 
 namespace KompasCore.Networking
 {
@@ -32,7 +33,11 @@ namespace KompasClient.Networking
         public void Execute(ClientGame clientGame)
         {
             var card = clientGame.GetCardWithID(sourceCardId);
-            if (card != null) card.Effects.ElementAt(effIndex).X = x;
+            if (card != null)
+            {
+                Debug.Log($"{card} ;;;;\n {card?.Effects} ;;;;\n {card?.Effects?.ElementAt(effIndex)}");
+                card.Effects.ElementAt(effIndex).X = x;
+            }
         }
     }
 }

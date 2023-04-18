@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 namespace KompasClient.UI
 {
@@ -46,9 +45,7 @@ namespace KompasClient.UI
 
         private string oldFileName;
 
-        public VoxelCardUser voxelCardUser;
         public GameObject rawImageShowing;
-        public GameObject charOnlyUI;
         public TMP_Text costLabel;
 
         private GameCard lastFocus;
@@ -139,8 +136,6 @@ namespace KompasClient.UI
                 activatedObject.SetActive(ShownGameCard.Activated);
             }
             alreadySelectedMarker.SetActive(searchUICtrl.CardCurrentlyTargeted(ShownGameCard));
-
-            charOnlyUI.SetActive(ShownCard.CardType == 'C');
         }
 
         private void ClearShownUniqueCopies()
@@ -199,18 +194,5 @@ namespace KompasClient.UI
         protected override string DisplayW(int w) => $"{w}";
         protected override string DisplayC(int c) => $"{c}";
         protected override string DisplayA(int a) => $"{a}";
-
-        protected override void DisplayCardImage(Sprite cardImageSprite)
-        {
-            if (oldFileName == ShownCard.FileName) return;
-
-            base.DisplayCardImage(cardImageSprite);
-            bool isChar = ShownCard.CardType == 'C';
-            //TODO split this out if I ever make chars able to become spells or vice versa
-            var shownVoxelCardUser = ShownGameCard.CardController.gameCardViewController.voxelCardUser;
-            this.voxelCardUser.Set(isChar, true, shownVoxelCardUser.ZoomedTex, shownVoxelCardUser.ZoomedMet);
-
-            oldFileName = ShownCard.FileName;
-        }
     }
 }

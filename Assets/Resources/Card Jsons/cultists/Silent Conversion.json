@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Silent Conversion",
-	"effText": "Kill a character adjacent to me and a Cultist. Deck->summon a Cultist Follower where they were.",
+	"effText": "Kill a character adjacent to me and a Cultist. Deck->summon a Cultist Mook where they were.",
 	"effects": [
 		{
 			"triggerData": {
@@ -57,7 +57,7 @@
 							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Cultist", "Follower" ]
+								"subtypes": [ "Cultist", "Mook" ]
 							}
 						]
 					}

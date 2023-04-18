@@ -48,7 +48,7 @@ namespace KompasCore.Effects
         public int SubeffIndex { get; protected set; }
 
         public GameCard Source => Effect.Source;
-        public ResolutionContext ResolutionContext => Effect.ResolutionContext;
+        public IResolutionContext ResolutionContext => Effect.ResolutionContext;
         public TriggeringEventContext CurrentTriggerContext => Effect.CurrTriggerContext;
 
         /// <summary>

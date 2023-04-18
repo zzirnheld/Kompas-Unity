@@ -218,6 +218,135 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1001 &137552596
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1400836802308577494, guid: a97280f447ca2a1019c040e0fe2e5cd0,
+        type: 3}
+      propertyPath: m_Name
+      value: Card Model and Text
+      objectReference: {fileID: 0}
+    - target: {fileID: 3984027921308840737, guid: a97280f447ca2a1019c040e0fe2e5cd0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3984027921308840737, guid: a97280f447ca2a1019c040e0fe2e5cd0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3984027921308840737, guid: a97280f447ca2a1019c040e0fe2e5cd0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3984027921308840737, guid: a97280f447ca2a1019c040e0fe2e5cd0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3984027921308840737, guid: a97280f447ca2a1019c040e0fe2e5cd0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3984027921308840737, guid: a97280f447ca2a1019c040e0fe2e5cd0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3984027921308840737, guid: a97280f447ca2a1019c040e0fe2e5cd0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3984027921308840737, guid: a97280f447ca2a1019c040e0fe2e5cd0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3984027921308840737, guid: a97280f447ca2a1019c040e0fe2e5cd0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3984027921308840737, guid: a97280f447ca2a1019c040e0fe2e5cd0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3984027921308840737, guid: a97280f447ca2a1019c040e0fe2e5cd0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a97280f447ca2a1019c040e0fe2e5cd0, type: 3}
+--- !u!114 &137552597 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6641593389470770371, guid: a97280f447ca2a1019c040e0fe2e5cd0,
+    type: 3}
+  m_PrefabInstance: {fileID: 137552596}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26f999db4c6950935af3a97294713a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &137552598 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3871983573789725639, guid: a97280f447ca2a1019c040e0fe2e5cd0,
+    type: 3}
+  m_PrefabInstance: {fileID: 137552596}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &137552599 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6656319565220119337, guid: a97280f447ca2a1019c040e0fe2e5cd0,
+    type: 3}
+  m_PrefabInstance: {fileID: 137552596}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &137552600 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2540643851768200923, guid: a97280f447ca2a1019c040e0fe2e5cd0,
+    type: 3}
+  m_PrefabInstance: {fileID: 137552596}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &137552601 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7281270643798490499, guid: a97280f447ca2a1019c040e0fe2e5cd0,
+    type: 3}
+  m_PrefabInstance: {fileID: 137552596}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &158661238
 GameObject:
   m_ObjectHideFlags: 0
@@ -434,19 +563,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3212847d426e8144a6b3c18e2ec9437, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nText: {fileID: 0}
-  eText: {fileID: 0}
-  costText: {fileID: 0}
-  wText: {fileID: 0}
+  nText: {fileID: 137552600}
+  eText: {fileID: 137552599}
+  costText: {fileID: 137552601}
+  wText: {fileID: 137552598}
   nameText: {fileID: 723357000}
   subtypesText: {fileID: 1440359589}
   effText: {fileID: 628447411}
-  cardImageImage: {fileID: 1678456122}
-  neutralStatFontMaterial: {fileID: 0}
-  buffStatFontMaterial: {fileID: 0}
-  debuffStatFontMaterial: {fileID: 0}
+  cardModelController: {fileID: 137552597}
+  neutralStatFontMaterial: {fileID: 2100000, guid: 0b4b432a7da6e644ba50b37e8ba6e5bb,
+    type: 2}
+  buffStatFontMaterial: {fileID: 2100000, guid: 4c63f89d5150b1b14a55695fabe17027,
+    type: 2}
+  debuffStatFontMaterial: {fileID: 2100000, guid: e64d09d49b235b084874920f4893dbcd,
+    type: 2}
   boardUIController: {fileID: 0}
-  reminderTextsUIController: {fileID: 0}
+  reminderTextsUIController: {fileID: 1567958903}
 --- !u!1 &265800159
 GameObject:
   m_ObjectHideFlags: 0
@@ -3986,7 +4118,7 @@ MonoBehaviour:
   rTexture: {fileID: 21300000, guid: e1c97e2c4f16ee21798ea6f10822feca, type: 3}
   dTexture: {fileID: 21300000, guid: e1c97e2c4f16ee21798ea6f10822feca, type: 3}
   game: {fileID: 0}
-  CardPrefab: {fileID: 732231206546897811, guid: 87f8eebfa85da1101a5ac83cb123b212,
+  CardPrefab: {fileID: 2501930806235952257, guid: 0ddadecc534c3dede833b1eda98f4b59,
     type: 3}
 --- !u!1 &1515742811
 GameObject:

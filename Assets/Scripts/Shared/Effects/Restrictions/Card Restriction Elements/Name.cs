@@ -37,7 +37,7 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
         {
             base.Initialize(initializationContext);
             from.Initialize(initializationContext);
-            cards.Initialize(initializationContext);
+            cards?.Initialize(initializationContext);
         }
 
         protected override bool IsValidLogic(GameCardBase card, IResolutionContext context)

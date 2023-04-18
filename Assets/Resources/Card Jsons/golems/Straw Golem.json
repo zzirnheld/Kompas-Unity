@@ -34,11 +34,15 @@
 						"elements": [
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
-								"toMove": { "$type": "Cards:TargetIndex:" },
-								"distanceRestriction": {
-									"numberRestrictions": [ "==Constant" ],
-									"constant": 3
-								}
+								"toMove": { "$type": "Cards:TargetIndex:" }
+							},
+							{
+								"$type": "Core.SpaceRestriction:CompareDistance:",
+								"distanceTo": {
+									"$type": "Spaces:PositionOf:",
+									"ofThisCard": { "$type": "Cards:TargetIndex:" }
+								},
+								"number": { "$type": "Numbers:Constant:", "constant": 3 }
 							}
 						]
 					}
@@ -55,7 +59,7 @@
 							{ "$type": "Core.CardRestriction:Enemy:" },
 							{
 								"$type": "Core.CardRestriction:CanMove:",
-								"spaceRestrictionSubeffectIndex": 3
+								"spaceRestrictionSubeffectIndex": 4
 							},
 							{
 								"$type": "Core.CardRestriction:Not:",
@@ -70,11 +74,15 @@
 						"elements": [
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
-								"toMove": { "$type": "Cards:TargetIndex:" },
-								"distanceRestriction": {
-									"numberRestrictions": [ "==Constant" ],
-									"constant": 3
-								}
+								"toMove": { "$type": "Cards:TargetIndex:" }
+							},
+							{
+								"$type": "Core.SpaceRestriction:CompareDistance:",
+								"distanceTo": {
+									"$type": "Spaces:PositionOf:",
+									"ofThisCard": { "$type": "Cards:TargetIndex:" }
+								},
+								"number": { "$type": "Numbers:Constant:", "constant": 3 }
 							}
 						]
 					}

@@ -32,24 +32,6 @@
 			}
 		},
 		{
-			"$type":"Subeffect:SpaceTarget:",
-			"spaceRestriction":
-			{
-				"blurb":"where Dragon to move its target",
-				"elements": [ {
-					"$type": "Core.SpaceRestriction:CanMoveCard:",
-					"toMove": { "$type": "Cards:TargetIndex:" },
-					"distanceRestriction": {
-						"numberRestrictions": [ "==Constant" ],
-						"constant": 1
-					}
-				} ]
-			}
-		},
-		{
-			"$type":"Subeffect:Move:"
-		},
-		{
 			"$type":"Subeffect:TargetThis:"
 		},
 		{

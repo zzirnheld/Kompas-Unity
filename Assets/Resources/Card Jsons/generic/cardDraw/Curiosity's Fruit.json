@@ -1,7 +1,7 @@
 {
 	"cardType": 65,
 	"cardName": "Curiosity's Fruit",
-	"effText": "When this character deals X combat damage, draw X cards.",
+	"effText": "When this character deals X damage, draw X cards.",
 	"effects": [
 		{
             "blurb": "Curiosity Bears Fruit",

@@ -6,7 +6,7 @@ namespace KompasServer.Effects
 {
     public interface IServerStackable : IStackable
     {
-        Task StartResolution(ResolutionContext context);
+        Task StartResolution(IResolutionContext context);
 
         ServerPlayer ServerController { get; }
     }

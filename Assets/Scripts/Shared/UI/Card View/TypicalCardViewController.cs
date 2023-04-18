@@ -19,9 +19,8 @@ namespace KompasCore.UI
         public TMP_Text nameText;
         public TMP_Text subtypesText;
         public TMP_Text effText;
-
-        [Header("Card face image")]
-        public Image cardImageImage;
+        
+        public CardModelController cardModelController;
 
         [Header("Stat fonts")]
         [Tooltip("Default stat font")]
@@ -141,23 +140,18 @@ namespace KompasCore.UI
             else return neutralStatFontMaterial;
         }
 
-        protected virtual string DisplayN(int n) => $"N\n{n}";
-        protected virtual string DisplayE(int e) => $"E\n{e}";
-        protected virtual string DisplayS(int s) => $"S\n{s}";
-        protected virtual string DisplayW(int w) => $"W\n{w}";
-        protected virtual string DisplayC(int c) => $"C\n{c}";
-        protected virtual string DisplayA(int a) => $"A\n{a}";
+        protected virtual string DisplayN(int n) => $"{n}";
+        protected virtual string DisplayE(int e) => $"{e}";
+        protected virtual string DisplayS(int s) => $"{s}";
+        protected virtual string DisplayW(int w) => $"{w}";
+        protected virtual string DisplayC(int c) => $"{c}";
+        protected virtual string DisplayA(int a) => $"{a}";
 
         protected sealed override void DisplayCardImage()
         {
             string cardFileName = shownCard.FileName;
-            var cardImageSprite = Resources.Load<Sprite>($"Simple Sprites/{cardFileName}");
-            DisplayCardImage(cardImageSprite);
-        }
-
-        protected virtual void DisplayCardImage(Sprite cardImageSprite)
-        {
-            if (cardImageImage != null) cardImageImage.sprite = cardImageSprite;
+            var cardImageTexture = CardRepository.LoadTexture(cardFileName);
+            cardModelController.ShowImage(cardImageTexture);
         }
     }
 }

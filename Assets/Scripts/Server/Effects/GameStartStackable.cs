@@ -15,7 +15,7 @@ namespace KompasServer.Effects
 
         public GameCard GetCause(GameCardBase withRespectTo) => Source;
 
-        public Task StartResolution(ResolutionContext context)
+        public Task StartResolution(IResolutionContext context)
         {
             throw new System.NotImplementedException();
         }

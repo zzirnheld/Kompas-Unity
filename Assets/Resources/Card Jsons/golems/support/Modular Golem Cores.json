@@ -24,7 +24,7 @@
 										},
 										{
 											"$type": "Core.CardRestriction:HasAugment:",
-											"elements": [ ]
+											"cardRestriction": { "elements": [] }
 										}
 									]
 								}
@@ -60,7 +60,7 @@
 							},
 							{
 								"$type": "Core.CardRestriction:HasAugment:",
-								"elements": [ ]
+								"cardRestriction": { "elements": [] }
 							}
 						]
 					}

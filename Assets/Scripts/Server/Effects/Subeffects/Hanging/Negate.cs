@@ -31,7 +31,7 @@ namespace KompasServer.Effects.Subeffects.Hanging
 
             public NegationEffect(ServerGame serverGame, TriggerRestriction triggerRestriction, string endCondition,
                 string fallOffCondition, TriggerRestriction fallOffRestriction,
-                ResolutionContext currentContext, GameCard target, ServerSubeffect source, bool negated)
+                IResolutionContext currentContext, GameCard target, ServerSubeffect source, bool negated)
                 : base(serverGame, triggerRestriction, endCondition, fallOffCondition, fallOffRestriction, source.Effect, currentContext, removeIfEnd: false)
             {
                 this.target = target ?? throw new System.ArgumentNullException(nameof(target), "Cannot target a null card for a hanging negation");

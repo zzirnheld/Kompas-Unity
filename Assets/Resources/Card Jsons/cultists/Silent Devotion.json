@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Silent Devotion",
-	"effText": "When friendly turns start, deck->summon a Cultist Follower.",
+	"effText": "When friendly turns start, deck->summon a Cultist Mook.",
 	"effects": [
 		{
 			"triggerData": {
@@ -25,7 +25,7 @@
 							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Cultist", "Follower" ]
+								"subtypes": [ "Cultist", "Mook" ]
 							}
 						]
 					}

@@ -24,10 +24,6 @@
 			"$type":"Subeffect:TargetThis:"
 		},
 		{
-			"$type":"Subeffect:SpendRemainingMovement:",
-			"mult":1
-		},
-		{
 			"$type":"Subeffect:SpaceTarget:",
 			"spaceRestriction":
 			{
@@ -68,6 +64,10 @@
 		},
 		{
 			"$type":"Subeffect:Move:"
+		},
+		{
+			"$type":"Subeffect:SpendMovement:",
+			"xModifier":1
 		}
 	]
 }

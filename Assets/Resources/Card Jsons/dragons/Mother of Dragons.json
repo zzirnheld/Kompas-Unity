@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Mother of Dragons",
-	"effText": "When enemy turns start, tribute summons with total S X. Summon an S <= X Dragon from your deck's top X cards, then move it 1 space.",
+	"effText": "When enemy turns start, tribute summons with total S X. From your deck's top X cards, summon an S <= X Dragon, 1 space from me.",
 	"effects": [
 		{
 			"blurb": "Dragonbirth",
@@ -73,7 +73,7 @@
 								"numberRestriction": { "elements": [{
 									"$type": "Core.NumberRestriction:Compare:",
 									"comparison": { "$type": "Relationships.Number:LessThan:" },
-									"other": { "$type": "Numbers:X:" }
+									"other": { "$type": "Numbers:EffectX:" }
 								}]}
 							},
 							{
@@ -82,7 +82,7 @@
 								"numberRestriction": { "elements": [{
 									"$type": "Core.NumberRestriction:Compare:",
 									"comparison": { "$type": "Relationships.Number:LessThanEqual:" },
-									"other": { "$type": "Numbers:X:" }
+									"other": { "$type": "Numbers:EffectX:" }
 								}]}
 							}
 						]
@@ -96,7 +96,7 @@
 								"numberRestriction": { "elements": [{
 									"$type": "Core.NumberRestriction:Compare:",
 									"comparison": { "$type": "Relationships.Number:LessThan:" },
-									"other": { "$type": "Numbers:X:" }
+									"other": { "$type": "Numbers:EffectX:" }
 								}]}
 							},
 							{
@@ -115,7 +115,17 @@
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {
                                 "$type": "Core.SpaceRestriction:CanPlayCard:",
-                                "toPlay": { "$type": "Cards:TargetIndex:" }
+                                "toPlay": { "$type": "Cards:TargetIndex:" },
+								"ignoring": [ "Adjacent to Friendly Card" ]
+                            },
+                            {
+                                "$type": "Core.SpaceRestriction:CompareDistance:",
+                                "distanceTo": {
+                                    "$type": "Spaces:PositionOf:",
+                                    "ofThisCard": { "$type": "Cards:ThisCard:" }
+                                },
+                                "number": { "$type": "Numbers:Constant:", "constant": 2 },
+                                "comparison": { "$type": "Relationships.Number:Equal:" }
                             }
                         ]
 					}
@@ -128,26 +138,6 @@
 				},
 				{
 					"$type": "Subeffect:BottomdeckRest:"
-				},
-				{
-					"$type": "Subeffect:SpaceTarget:",
-					"spaceRestriction": {
-						"blurb": "Fly, beloved, fly!",
-						"elements": [ 
-                            { "$type": "Core.SpaceRestriction:Empty:" },
-							{
-								"$type": "Core.SpaceRestriction:CanMoveCard:",
-								"toMove": { "$type": "Cards:TargetIndex:" },
-								"distanceRestriction": {
-									"numberRestrictions": [ "==Constant" ],
-									"constant": 1
-								}
-							}
-						]
-					}
-				},
-				{
-					"$type": "Subeffect:Move:"
 				}
 			]
 		}

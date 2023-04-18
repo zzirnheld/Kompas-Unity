@@ -57,7 +57,7 @@ namespace KompasCore.Effects
             else return new List<T>(list);
         }
 
-        public ResolutionContext Copy => new ResolutionContext(TriggerContext, StartIndex,
+        public IResolutionContext Copy => new ResolutionContext(TriggerContext, StartIndex,
             CardTargets, DelayedCardTarget,
             SpaceTargets, DelayedSpaceTarget,
             StackableTargets, DelayedStackableTarget);

@@ -23,6 +23,7 @@ namespace KompasServer.Effects.Subeffects
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
             base.Initialize(eff, subeffIndex);
+            toSearch.Initialize(DefaultInitializationContext);
             cardRestriction ??= new CardRestriction();
             cardRestriction.Initialize(DefaultInitializationContext);
             tiebreakerValue?.Initialize(DefaultInitializationContext);

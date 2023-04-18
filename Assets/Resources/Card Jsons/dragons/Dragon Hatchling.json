@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Dragon Hatchling",
-	"effText":"1 turn after I'm summoned, tribute me, hand->discard a Dragon, and hand->summon a Dragon where I was.",
+	"effText":"1 turn after I'm summoned, tribute me, hand->discard a Dragon, and HAND->summon a Dragon where I was.",
 	"effects":[
 		{
 			"triggerData":
@@ -33,6 +33,7 @@
 					"cardRestriction":
 					{
 						"blurb":"for Dragon Hatchling to eat (discard)",
+						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
@@ -50,6 +51,7 @@
 					"cardRestriction":
 					{
 						"blurb":"for Dragon Hatchling to become (play)",
+						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",

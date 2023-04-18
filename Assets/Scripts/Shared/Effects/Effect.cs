@@ -59,7 +59,12 @@ namespace KompasCore.Effects
         public string blurb;
         public int arg; //used for keyword arguments, and such
 
-        public ResolutionContext ResolutionContext { get; protected set; }
+        private IResolutionContext resolutionContext;
+        public virtual IResolutionContext ResolutionContext
+        {
+            get => resolutionContext;
+            protected set => resolutionContext = value;
+        }
         public TriggeringEventContext CurrTriggerContext => ResolutionContext.TriggerContext;
         public int TimesUsedThisTurn { get; protected set; }
         public int TimesUsedThisRound { get; protected set; }

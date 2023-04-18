@@ -32,7 +32,7 @@ namespace KompasClient.UI
         public void StopSearching()
         {
             Debug.Log($"Stopping searching {string.Join(", ", toShow.Select(c => c.CardName))}");
-            foreach (var c in toShow) c.CardController.ShownInSearch = true;
+            foreach (var c in toShow) c.CardController.ShownInSearch = false;
             toShow = Enumerable.Empty<GameCard>();
         }
 

@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using UnityEngine;
 
 namespace KompasServer.Effects.Subeffects
 {
@@ -13,6 +14,7 @@ namespace KompasServer.Effects.Subeffects
         public override Task<ResolutionInfo> Resolve()
         {
             Effect.X = TrueCount;
+            Debug.Log($"Setting X to {Effect.X}");
             return Task.FromResult(ResolutionInfo.Next);
         }
     }

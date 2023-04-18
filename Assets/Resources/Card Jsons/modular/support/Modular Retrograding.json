@@ -40,7 +40,7 @@
 						"$type": "ManyCards:Limit:",
 						"cards": { "$type": "ManyCards:Discard:" },
 						"limit": {
-							"$type": "Numbers:X:",
+							"$type": "Numbers:EffectX:",
 							"multiplier": 1
 						}
 					}

@@ -15,6 +15,12 @@ namespace KompasDeckbuilder.UI
         //Null to use screen space overlay for intersecting links
         protected override Camera Camera => null;
 
+        protected override void Display()
+        {
+            base.Display();
+            cardModelController.ShowZoom(UIController.ZoomLevel.ZoomedInWithEffectText, ShownCard.CardType == 'C');
+        }
+
         //Show all keywords at all times
         protected override void DisplayReminderTextBlurb()
         {

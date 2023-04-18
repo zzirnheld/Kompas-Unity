@@ -11,8 +11,8 @@ namespace KompasClient.Effects
         public ClientPlayer ClientController;
         public override Player Controller
         {
-            get { return ClientController; }
-            set { ClientController = value as ClientPlayer; }
+            get => ClientController;
+            set => ClientController = value as ClientPlayer;
         }
         public ClientGame ClientGame { get; private set; }
         public override Game Game => ClientGame;
@@ -27,6 +27,16 @@ namespace KompasClient.Effects
 
         public Sprite SecondarySprite => default;
         public CardController SecondaryCardController => default;
+
+        public override IResolutionContext ResolutionContext
+        {
+            get
+            {
+                if (base.ResolutionContext == null) ResolutionContext = KompasCore.Effects.ResolutionContext.PlayerTrigger(this, Game);
+                return base.ResolutionContext;
+            }
+            protected set => base.ResolutionContext = value;
+        }
 
         public string StackableBlurb => blurb;
 

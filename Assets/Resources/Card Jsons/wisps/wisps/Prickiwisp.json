@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Prickiwisp",
-	"effText": "Wisp.\nAfter I move, give adjacent enemies -1 E.",
+	"effText": "Wisp: Give adjacent enemies -1 E.",
 	"effects": [
 		{
 			"blurb": "prick",

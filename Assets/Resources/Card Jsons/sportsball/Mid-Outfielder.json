@@ -22,15 +22,19 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "wher?",
-						"elements": [ 
-                            { "$type": "Core.SpaceRestriction:Empty:" },
+						"elements": [
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
-								"toMove": { "$type": "Cards:TargetIndex:" },
-								"distanceRestriction": {
-									"numberRestrictions": [ "<=Constant" ],
-									"constant": 2
-								}
+								"toMove": { "$type": "Cards:TargetIndex:" }
+							},
+							{
+								"$type": "Core.SpaceRestriction:CompareDistance:",
+								"distanceTo": {
+									"$type": "Spaces:PositionOf:",
+									"ofThisCard": { "$type": "Cards:TargetIndex:" }
+								},
+								"number": { "$type": "Numbers:Constant:", "constant": 2 },
+								"comparison": { "$type": "Relationships.Number:LessThanEqual:" }
 							}
 						]
 					}

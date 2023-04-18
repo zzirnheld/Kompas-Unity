@@ -2,7 +2,7 @@
 	"keywordReminderTexts": [
 		{
 			"keyword": "Linewalk.",
-			"reminder": "During friendly turns, you can move me through empty spaces, to any space along my diagonal. This counts as moving as many spaces as I can."
+			"reminder": "You can move me through any number of empty spaces on my diagonal, as if it were 1 space (for N purposes)."
 		},
 		{
 			"keyword": "Shape.",
@@ -14,7 +14,7 @@
 		},
 		{
 			"keyword": "Revenant.",
-			"reminder": "When I die, annihilate me.\nDuring friendly turns, you can pip revive me at half cost."
+			"reminder": "When I die, annihilate me.\nYou can pip revive me at half cost."
 		},
 		{
 			"keyword": "Ificate.",
@@ -22,23 +22,23 @@
 		},
 		{
 			"keyword": "Recoverable.",
-			"reminder": "When this character dies (while I'm equipped), rehand me."
+			"reminder": "When this character dies (while I'm equipped), discard->hand me."
 		},
 		{
 			"keyword": "Territorial.",
-			"reminder": "When turns start, move an adjacent character 1 space, then I attack them."
+			"reminder": "When turns start, I attack an adjacent character."
 		},
 		{
 			"keyword": "Comeback Play.",
-			"reminder": "When friendly turns start while there's a friendly Sportsball augment, discard->cast me."
+			"reminder": "When you start friendly turns controlling a Sportsball, discard->cast me."
 		},
 		{
-			"keyword":"Runic.",
-			"reminder":"Can't be cast normally."
+			"keyword": "Runic.",
+			"reminder": "Can't be cast normally."
 		},
 		{
-			"keyword":"Golem.",
-			"reminder":"While I'm inactive, I can't attack or move."
+			"keyword": "Golem.",
+			"reminder": "While I'm inactive, I can't attack or move."
 		},
 		{
 			"keyword": "Supplicant.",
@@ -58,27 +58,23 @@
 		},
 		{
 			"keyword": "martyr",
-			"reminder": "A character is martyred when they die during an enemy turn."
+			"reminder": "Dying during an enemy turn."
 		},
 		{
-			"keyword":"Wisp.",
-			"reminder":"When I'm summoned, or when turns start, move me 1 space. When I move:"
+			"keyword": "Wisp.",
+			"reminder": "When I'm summoned, or when turns start, move me 1 space. When I move:"
 		},
 		{
-			"keyword":"Invoke",
-			"reminder":"Discard your deck's top card until you discard an appropriate character. Revive them."
+			"keyword": "Invoke",
+			"reminder": "Discard your deck's top card until you discard an appropriate character. Revive them."
 		},
 		{
-			"keyword":"Flashback.",
-			"reminder":"You can pip discard->cast me, then annihilate me."
+			"keyword": "Flashback.",
+			"reminder": "You can pip discard->cast me, then immediately annihilate me."
 		},
 		{
-			"keyword":"Wanderer.",
-			"reminder":"When turns start, swap me for a Wanderer in your deck with less S. (They won't wander until next turn.)"
-		},
-		{
-			"keyword":"Agile",
-			"reminder":"I can move during enemy turns. (Otherwise, the same rules apply as normal: nothing must be happening, I must have enough N, etc.)"
+			"keyword": "Wanderer.",
+			"reminder": "When turns start, swap me for a Wanderer in your deck with less S. (They won't wander until next turn.)"
 		},
 		{
 			"keyword": "Waterborn",
@@ -90,15 +86,11 @@
 		},
 		{
 			"keyword": "Speedemon",
-			"reminder": "After I move in a straight line by something other than this effect, move me 1 space in the same direction."
-		},
-		{
-			"keyword": "Instrument",
-			"reminder": "Can only be attached to a character not already wielding an Instrument.\nAfter Music is cast adjacent to me, delay until the stack ends. Dispel it."
+			"reminder": "After something else moves me in a straight line, move me 1 space in the same direction."
 		},
 		{
 			"keyword": "Pass Back",
-			"reminder": "When this character defends, attach me to your Avatar."
+			"reminder": "When this character defends, pass me to your Avatar."
 		},
 		{
 			"keyword": "Attended",
@@ -110,7 +102,7 @@
 		},
 		{
 			"keyword": "Collectible",
-			"reminder": "When a character kills this character, attach me to the killer."
+			"reminder": "When a character kills this one, they pick me up."
 		},
 		{
 			"keyword": "Pilot a Mech",
@@ -130,32 +122,19 @@
 		},
 		{
 			"keyword": "Smite.",
-			"reminder": "When I attack, hand->discard X cards. Give me +2X W until the battle ends."
+			"reminder": "When I attack, hand->discard X cards. Give me +2*X W until the battle ends."
 		},
 		{
-			"keyword": "Artillery",
-			"reminder": "Once per turn, pay 1 pip to give -X E to an enemy on the board."
+			"keyword": "Evasive",
+			"reminder": "The first time each round I fight a W X character, give them -X W for that fight."
 		},
 		{
-			"keyword":"Stealth",
-			"reminder":"When enemy turns start, choose a space in Shade. If it gets lit up this turn, move/swap me with anything there. Once everyone has unstealthed, I attack an adjacent enemy character.",
-			"technicalReminder":"When enemy turns start, choose a space in Shade. If Light arrvies encompassing it this turn, move me there, swapping me with any card already there. After the stack ends, I attack an adjacent enemy character, if I can."
+			"keyword": "Must contain",
+			"reminder": "If there's no appropriate cards here, dispel me."
 		},
 		{
-			"keyword":"Evasive",
-			"reminder":"The first time each round I fight a W X character, give them -X W for that fight."
-		},
-		{
-			"keyword":"Must contain",
-			"reminder":"If there's no appropriate cards here, dispel me."
-		},
-		{
-			"keyword":"Mech Ultimate",
-			"reminder":"When I attack, give me +10 S. When my S becomes at least 30, do the following, then negate me:"
-		},
-		{
-			"keyword":"Runecast",
-			"reminder":"Once each turn, you can pip hand->cast a Rune."
+			"keyword": "Runecast",
+			"reminder": "Once each turn, you can pip hand->cast a Rune."
 		},
 		{
 			"keyword": "Rummage",

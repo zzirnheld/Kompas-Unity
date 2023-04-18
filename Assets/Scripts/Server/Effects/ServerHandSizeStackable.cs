@@ -26,7 +26,7 @@ namespace KompasServer.Effects
             //tell the players this is here now
             ServerController.notifier.NotifyHandSizeToStack();
         }
-        public async Task StartResolution(ResolutionContext context) => await RequestTargets();
+        public async Task StartResolution(IResolutionContext context) => await RequestTargets();
 
         private async Task RequestTargets()
         {

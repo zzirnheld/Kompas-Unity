@@ -4,7 +4,7 @@ using KompasCore.Cards;
 using System.Linq;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+using static KompasCore.UI.UIController;
 
 namespace KompasCore.UI
 {
@@ -15,19 +15,25 @@ namespace KompasCore.UI
         public const float SmallUnzoomedTextFontSize = 22f;
         private static float UnzoomedFontSizeForValue(int value) => value < 10 ? LargeUnzoomedTextFontSize : SmallUnzoomedTextFontSize;
 
-        private bool Zoomed => overrideZoom ? zoomOverrideValue : ClientCameraController.MainZoomed;
-
-        private bool overrideZoom;
-        private bool zoomOverrideValue;
+        private ZoomLevel ZoomLevel => ClientCameraController.MainZoomLevel;
 
         public CardAOEController aoeController;
 
         //Zoomed-in text is handled by base class
-        [Header("Zoomed-out card numeric stats")]
-        public TMP_Text unzoomedNText;
-        public TMP_Text unzoomedEText;
-        public TMP_Text unzoomedCostText;
-        public TMP_Text unzoomedWText;
+        [Header("Zoomed-in card numeric stats")]
+        [EnumNamedArray(typeof(ZoomLevel))]
+        public TMP_Text[] zoomedInNTexts;
+        [EnumNamedArray(typeof(ZoomLevel))]
+        public TMP_Text[] zoomedInETexts;
+        [EnumNamedArray(typeof(ZoomLevel))]
+        public TMP_Text[] zoomedInCostTexts;
+        [EnumNamedArray(typeof(ZoomLevel))]
+        public TMP_Text[] zoomedInWTexts;
+        [EnumNamedArray(typeof(ZoomLevel))]
+        public TMP_Text[] costLabels;
+
+        public TMP_Text zoomedInWithTextName;
+        public TMP_Text zoomedInWithTextSubtype;
 
         //TODO give these to dummy cards, as empties probably
         [Header("Card highlighting")]
@@ -40,13 +46,9 @@ namespace KompasCore.UI
         public OscillatingController attackOscillator;
         public OscillatingController effectOscillator;
 
-        public VoxelCardUser voxelCardUser;
-
-        public GameObject zoomedUI;
+        public GameObject zoomedInNoEffTextUI;
         public GameObject unzoomedUI;
-        public GameObject[] charUIs;
-        public TMP_Text costLabel;
-        //public GameObject[] nonCharUIs;
+        public GameObject zoomedInWithTextUI;
 
         /// <summary>
         /// Used to make sure we don't regenerate the texture unnecessarily
@@ -55,8 +57,6 @@ namespace KompasCore.UI
 
         protected override void Display()
         {
-            //Debug.Log($"{voxelCardUser}, {voxelCardUser?.cardRepository}, {ShownGameCard}, {ShownGameCard?.Game}, {ShownGameCard?.Game?.CardRepository}");
-            voxelCardUser.cardRepository = ShownGameCard.Game.CardRepository;
             base.Display();
 
             HandleZoom();
@@ -69,18 +69,25 @@ namespace KompasCore.UI
                     || (ShownGameCard?.Location != CardLocation.Deck && ShownGameCard?.Location != CardLocation.Nowhere));
         }
 
-        protected virtual void HandleZoom()
+        protected override void DisplayCardRulesText()
+        {
+            base.DisplayCardRulesText();
+            zoomedInWithTextName.text = shownCard.CardName;
+            zoomedInWithTextSubtype.text = shownCard.QualifiedSubtypeText;
+        }
+
+        protected void HandleZoom()
         {
             handleStatColors(nText, eText, costText, wText);
-            handleStatColors(unzoomedNText, unzoomedEText, unzoomedCostText, unzoomedWText);
+            for (int i = 0; i < zoomedInNTexts.Length; i++)
+                handleStatColors(zoomedInNTexts[i], zoomedInETexts[i], zoomedInCostTexts[i], zoomedInWTexts[i]);
 
             bool isChar = ShownCard.CardType == 'C';
-            voxelCardUser.Set(ShownCard.FileName, isChar: isChar, zoomed: Zoomed, friendly: ShownGameCard.ControllerIndex == 0);
+            cardModelController.ShowZoom(isChar: isChar, zoomLevel: ZoomLevel);
 
-            unzoomedUI.SetActive(!Zoomed);
-            zoomedUI.SetActive(Zoomed);
-            foreach (var go in charUIs) go.SetActive(isChar);
-            //foreach (var go in nonCharUIs) go.SetActive(!isChar);
+            unzoomedUI.SetActive(ZoomLevel == ZoomLevel.ZoomedOut);
+            zoomedInNoEffTextUI.SetActive(ZoomLevel == ZoomLevel.ZoomedInNoEffectText);
+            zoomedInWithTextUI.SetActive(ZoomLevel == ZoomLevel.ZoomedInWithEffectText);
         }
 
         private static bool HasCurrentlyActivateableEffect(GameCard card)
@@ -116,50 +123,21 @@ namespace KompasCore.UI
                 effectOscillator.Disable();
                 aoeController.Hide();
             }
-
-            //TODO move settings off of client and into shared
-            if (ShownGameCard.Game is ClientGame clientGame)
-            {
-                var settings = clientGame.clientUIController.clientUISettingsController.ClientSettings;
-                /*
-                switch (settings.statHighlight)
-                {
-                    case StatHighlight.NoHighlight:
-                        nUnzoomedImage.gameObject.SetActive(false);
-                        eUnzoomedImage.gameObject.SetActive(false);
-                        sUnzoomedImage.gameObject.SetActive(false);
-                        wUnzoomedImage.gameObject.SetActive(false);
-                        cUnzoomedImage.gameObject.SetActive(false);
-                        aUnzoomedImage.gameObject.SetActive(false);
-                        break;
-                    case StatHighlight.ColoredBack:
-                        nUnzoomedImage.gameObject.SetActive(true);
-                        eUnzoomedImage.gameObject.SetActive(true);
-                        sUnzoomedImage.gameObject.SetActive(true);
-                        wUnzoomedImage.gameObject.SetActive(true);
-                        cUnzoomedImage.gameObject.SetActive(true);
-                        aUnzoomedImage.gameObject.SetActive(true);
-                        break;
-                    default: throw new System.ArgumentException($"Invalid stat highlight setting {settings.statHighlight}");
-                }
-
-                //Debug.Log($"setting color to {settings.FriendlyColor}");
-                friendlyCardFrameMaterial.color = settings.FriendlyColor;
-                enemyCardFrameMaterial.color = settings.EnemyColor;*/
-            }
         }
 
         protected override void DisplayCardNumericStats()
         {
             base.DisplayCardNumericStats();
 
-            unzoomedNText.text = $"{shownCard.N}";
-            unzoomedEText.text = $"{shownCard.E}";
-            unzoomedWText.text = $"{shownCard.W}";
+            for (int i = 0; i < zoomedInNTexts.Length; i++)
+            {
+                zoomedInNTexts[i].text = $"{shownCard.N}";
+                zoomedInETexts[i].text = $"{shownCard.E}";
+                zoomedInWTexts[i].text = $"{shownCard.W}";
 
-            unzoomedCostText.text = $"{shownCard.Cost}";
-
-            costLabel.text = ShownCard.CostCardValue.DisplayName;
+                zoomedInCostTexts[i].text = $"{shownCard.Cost}";
+                costLabels[i].text = ShownCard.CostCardValue.DisplayName;
+            }
         }
 
         protected override string DisplayN(int n) => $"{n}";
@@ -168,19 +146,6 @@ namespace KompasCore.UI
         protected override string DisplayW(int w) => $"{w}";
         protected override string DisplayC(int c) => $"{c}";
         protected override string DisplayA(int a) => $"{a}";
-
-        protected override void DisplayCardImage(Sprite cardImageSprite)
-        {
-            if (oldFileName == ShownCard.FileName) return;
-
-            Debug.Log($"Displaying {ShownCard.CardName} aka {ShownCard.FileName}");
-
-            base.DisplayCardImage(cardImageSprite);
-            //TODO split this out if I ever make chars able to become spells or vice versa
-            voxelCardUser.Set(ShownCard.FileName, isChar: ShownCard.CardType == 'C', zoomed: Zoomed, friendly: ShownGameCard.ControllerIndex == 0);
-
-            oldFileName = ShownCard.FileName;
-        }
 
         public virtual void ShowUniqueCopy(bool copy = true) => uniqueCopyObject.SetActive(copy);
 

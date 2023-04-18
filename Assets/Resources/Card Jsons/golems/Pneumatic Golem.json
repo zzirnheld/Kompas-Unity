@@ -28,7 +28,7 @@
 					"$type": "Subeffect:CardTarget:",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "character within N spaces of Pneumatic Golem for it to rehand",
+						"blurb": "character within N spaces of Pneumatic Golem for it to hand",
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
                             {
@@ -37,7 +37,7 @@
                                     "$type": "Spaces:PositionOf:",
                                     "ofThisCard": { "$type": "Cards:ThisCard:" }
                                 },
-                                "number": { "$type": "Numbers:X:" },
+                                "number": { "$type": "Numbers:EffectX:" },
                                 "comparison": { "$type": "Relationships.Number:LessThanEqual:" }
                             }
 						]

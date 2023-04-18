@@ -29,10 +29,11 @@
 				},
 				{
 					"$type":"Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction":
 					{
 						"blurb":"for Dragon Egg to become",
-						"toSearch": { "$type": "ManyCards:Deck:" },
+						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
@@ -54,6 +55,6 @@
 	"e":9,
 	"s":4,
 	"w":0,
-	"subtypes":[],
-	"subtypeText":""
+	"subtypes": [ "Egg" ],
+	"subtypeText": "Egg"
 }
