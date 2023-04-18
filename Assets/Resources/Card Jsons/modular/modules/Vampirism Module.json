@@ -1,7 +1,7 @@
 {
 	"cardType": 65,
 	"cardName": "Vampirism Module",
-	"effText": "When this character survives dealing X combat damage, give them +X EW.",
+	"effText": "When this character survives dealing X damage, give them +X EW.",
 	"effects": [
 		{
             "blurb": "Vampirism",

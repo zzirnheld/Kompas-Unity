@@ -23,6 +23,10 @@ namespace KompasCore.UI
         [Header("Zoom-agnostic arrays")]
         public MeshRenderer[] cardArtImages;
 
+        [Header("Char vs Spell Indicators")]
+        public GameObject[] charOnlyUI;
+        public GameObject[] nonCharOnlyUI;
+
         /*[Tooltip("Every GameObject whose frame material needs to be updated (i.e. for friendly vs enemy color)")]
         public GameObject[] frameObjects;*/
 
@@ -40,6 +44,9 @@ namespace KompasCore.UI
             zoomedInWithTextAll.SetActive(zoomLevel == ZoomLevel.ZoomedInWithEffectText);
             zoomedInWithTextChar.SetActive(zoomLevel == ZoomLevel.ZoomedInWithEffectText && isChar);
             zoomedInWithTextNonChar.SetActive(zoomLevel == ZoomLevel.ZoomedInWithEffectText && !isChar);
+
+            foreach(var c in charOnlyUI) c.SetActive(isChar);
+            foreach(var c in nonCharOnlyUI) c.SetActive(!isChar);
         }
 
         public void ShowImage(Texture cardImageTexture)

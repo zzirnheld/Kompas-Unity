@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Pippiwisp",
-	"effText": "Wisp.\nAfter I move, gain 1 pip for each adjacent enemy.",
+	"effText": "Wisp: Gain 1 pip for each adjacent enemy.",
 	"effects": [
 		{
 			"blurb": "pipp",

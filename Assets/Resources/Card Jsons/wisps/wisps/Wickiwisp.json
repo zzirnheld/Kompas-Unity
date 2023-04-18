@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Wickiwisp",
-	"effText": "Wisp.\nAfter I move, give adjacent enemies -1 W.",
+	"effText": "Wisp: Give adjacent enemies -1 W.",
 	"effects": [
 		{
 			"blurb": "wick",

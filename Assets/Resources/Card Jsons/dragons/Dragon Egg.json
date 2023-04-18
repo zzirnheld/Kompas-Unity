@@ -55,6 +55,6 @@
 	"e":9,
 	"s":4,
 	"w":0,
-	"subtypes":[],
-	"subtypeText":""
+	"subtypes": [ "Egg" ],
+	"subtypeText": "Egg"
 }

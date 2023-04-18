@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Nippiwisp",
-	"effText": "Wisp.\nAfter I move, give adjacent enemies -1 N.",
+	"effText": "Wisp: Give adjacent enemies -1 N.",
 	"effects": [
 		{
 			"blurb": "nipp",

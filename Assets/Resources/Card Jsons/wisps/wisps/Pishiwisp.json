@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Pishiwisp",
-	"effText": "Wisp.\nAfter I move, gain 1 pip for each adjacent enemy.",
+	"effText": "Wisp: Push each adjacent character 1 space away.",
 	"effects": [
 		{
 			"blurb": "pish",
