@@ -10,12 +10,14 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Main Card Fits Restriction Before",
-						"No Stackable"
+						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
 						"elements": [ { "$type": "Core.CardRestriction:Character:" } ]
-					}
+					},
+					"triggerRestrictionElements": [
+						{ "$type": "Core.TriggerRestriction:Normally:" }
+					]
 				}
 			},
 			"subeffects": [

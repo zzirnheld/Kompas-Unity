@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Fleeing Lovers",
-	"effText":"Supplicant.\nWhen you summon me normally, deck->summon a copy of me adjacent to me.",
+	"effText":"Supplicant.\nWhen I'm summoned normally, deck->summon a copy of me adjacent to me.",
 	"effects":[
 		{
 			"triggerData":
@@ -10,8 +10,10 @@
 				"triggerCondition": "Play",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card is Main Card",
-						"No Stackable"
+						"This Card is Main Card"
+					],
+					"triggerRestrictionElements": [
+						{ "$type": "Core.TriggerRestriction:Normally:" }
 					]
 				}
 			},

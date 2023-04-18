@@ -10,7 +10,6 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card is Main Card",
-                        "From Attack",
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
@@ -20,7 +19,10 @@
 								"locations": [ "Board" ]
 							}
 						]
-					}
+					},
+					"triggerRestrictionElements": [
+						{ "$type": "Core.TriggerRestriction:IsAttack:" }
+					]
 				}
 			},
             "subeffects":[

@@ -10,7 +10,6 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"No Stackable",
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
@@ -27,7 +26,10 @@
 								"subtypes": [ "Structure" ]
 							}
 						]
-					}
+					},
+					"triggerRestrictionElements": [
+						{ "$type": "Core.TriggerRestriction:Normally:" }
+					]
 				}
 			},
 			"subeffects": [

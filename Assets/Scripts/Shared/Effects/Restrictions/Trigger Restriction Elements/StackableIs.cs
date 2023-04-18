@@ -1,0 +1,30 @@
+using KompasCore.Effects.Identities;
+
+namespace KompasCore.Effects.Restrictions.TriggerRestrictionElements
+{
+    public abstract class StackableIs : TriggerRestrictionElement
+    {
+        public IIdentity<IStackable> stackable = new Identities.Stackables.StackableCause();
+
+        public override void Initialize(EffectInitializationContext initializationContext)
+        {
+            base.Initialize(initializationContext);
+            stackable.Initialize(initializationContext);
+        }
+
+        protected override bool IsValidLogic(TriggeringEventContext context, IResolutionContext secondaryContext)
+            => Predicate(stackable.From(context, secondaryContext));
+
+        protected abstract bool Predicate(IStackable stackable);
+    }
+
+    public class IsAttack : StackableIs
+    {
+        protected override bool Predicate(IStackable stackable) => stackable is Attack;
+    }
+
+    public class Normally : StackableIs
+    {
+        protected override bool Predicate(IStackable stackable) => stackable == null;
+    }
+}

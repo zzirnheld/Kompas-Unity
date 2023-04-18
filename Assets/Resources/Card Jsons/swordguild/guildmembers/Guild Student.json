@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Guild Student",
-	"effText": "When you summon me normally, echo me.",
+	"effText": "When I'm summoned normally, echo me.",
 	"effects": [
 		{
             "blurb": "Study hard",
@@ -10,8 +10,10 @@
 				"triggerCondition": "Play",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card is Main Card",
-						"No Stackable"
+						"This Card is Main Card"
+					],
+					"triggerRestrictionElements": [
+						{ "$type": "Core.TriggerRestriction:Normally:" }
 					]
 				}
 			},

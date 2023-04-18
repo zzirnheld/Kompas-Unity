@@ -11,7 +11,7 @@
                 "triggerRestriction":{
                     "triggerRestrictions":["This Card in Play",
                                            "Main Card Fits Restriction Before",
-                                           "No Stackable"],
+                                           ],
                     "cardRestriction":
                     {
 						"elements": [
@@ -39,7 +39,8 @@
                             "$type": "Core.TriggerRestriction:PlayersMatch:",
                             "card": { "$type": "Players:TriggeringPlayer:" },
                             "other": { "$type": "Players:FriendlyPlayer:" }
-                        }
+                        },
+						{ "$type": "Core.TriggerRestriction:Normally:" }
 					]
                 }
             },

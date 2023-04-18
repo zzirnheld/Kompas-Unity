@@ -58,8 +58,7 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Main Card Fits Restriction Before",
-                        "From Attack"
+						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
 						"elements": [
@@ -73,7 +72,10 @@
 								"subtypes": [ "Warrior" ]
 							}
 						]
-					}
+					},
+					"triggerRestrictionElements": [
+						{ "$type": "Core.TriggerRestriction:IsAttack:" }
+					]
 				}
 			},
             "subeffects":[

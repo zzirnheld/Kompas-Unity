@@ -9,15 +9,15 @@
 				"triggerCondition": "Play",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card in Play",
-						"No Stackable"
+						"This Card in Play"
 					],
 					"triggerRestrictionElements": [
                         {
                             "$type": "Core.TriggerRestriction:PlayersMatch:",
                             "card": { "$type": "Players:TriggeringPlayer:" },
                             "other": { "$type": "Players:EnemyPlayer:" }
-                        }
+                        },
+						{ "$type": "Core.TriggerRestriction:Normally:" }
 					]
 				}
 			},

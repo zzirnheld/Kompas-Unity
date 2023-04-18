@@ -39,8 +39,12 @@
 					"nMultiplier": -1,
 					"endCondition": "Effect Pushed to Stack",
 					"triggerRestriction": {
-						"triggerRestrictions": [
-							"Stackable is This Effect"
+						"triggerRestrictionElements": [
+							{
+								"$type": "Core.TriggerRestriction:StackablesMatch:",
+								"firstStackable": { "$type": "Stackables:StackableEvent:" },
+								"secondStackable": { "$type": "Stackables:ThisEffect:" }
+							}
 						]
 					}
 				}

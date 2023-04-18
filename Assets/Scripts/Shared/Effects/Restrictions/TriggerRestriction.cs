@@ -44,12 +44,6 @@ namespace KompasCore.Effects
         private const string XFitsRestriction = "X Fits Restriction";
         private const string StackableSourceIsMainCard = "Stackable Source is Main Card";
         private const string StackableSourceNotThisEffect = "Stackable Source isn't This Effect";
-
-        private const string NoStackable = "No Stackable"; //Aka "Normally"
-        private const string NotFromEffect = "Not From Effect"; //But can be from attack
-        private const string FromAttack = "From Attack";
-
-        private const string StackableIsThisEffect = "Stackable is This Effect";
         #endregion trigger conditions
 
         private static readonly string[] RequiringCardRestriction =
@@ -145,9 +139,7 @@ namespace KompasCore.Effects
             MainCardIsStackableSource => triggeringContext.stackableCause?.Source == triggeringContext.mainCardInfoBefore.Card,
             StackableSourceFitsRestriction => sourceRestriction.IsValid(triggeringContext.stackableCause?.Source, new ResolutionContext(triggeringContext)),
             StackableSourceNotThisEffect => triggeringContext.stackableCause != SourceEffect,
-            StackableIsThisEffect => triggeringContext.stackableCause == SourceEffect,
-            NoStackable => triggeringContext.stackableCause == null,
-
+            
             CardAfterFurtherFromSourceThanBefore
                 => ThisCard.DistanceTo(triggeringContext.MainCardInfoAfter.Position) > ThisCard.DistanceTo(triggeringContext.mainCardInfoBefore.Position),
 
@@ -156,10 +148,6 @@ namespace KompasCore.Effects
 
             XFitsRestriction => triggeringContext.x.HasValue && xRestriction.IsValid(triggeringContext.x.Value, context: stashedResolutionContext),
             StackableSourceIsMainCard => triggeringContext.stackableCause is Effect eff && eff.Source == triggeringContext.mainCardInfoBefore.Card,
-
-            //gamestate
-            NotFromEffect => !(triggeringContext.stackableCause is Effect),
-            FromAttack => triggeringContext.stackableCause is Attack,
 
             //misc
             _ => throw new ArgumentException($"Invalid trigger restriction {restriction}"),
