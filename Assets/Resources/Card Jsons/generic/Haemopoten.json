@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Haemopoten",
-	"effText": "The Xth time each turn, you can give me -X E. Annihilate your topdeck. Delay 1. Rehand it.",
+	"effText": "The Xth time each turn, you can give me -X E. Annihilate your topdeck. 1 turn later, hand it.",
 	"effects": [
 		{
 			"activationRestriction": {

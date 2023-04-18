@@ -28,7 +28,7 @@
 					"$type": "Subeffect:CardTarget:",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "character within N spaces of Pneumatic Golem for it to rehand",
+						"blurb": "character within N spaces of Pneumatic Golem for it to hand",
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
                             {

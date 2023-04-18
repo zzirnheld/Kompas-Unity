@@ -22,7 +22,7 @@
 		},
 		{
 			"keyword": "Recoverable.",
-			"reminder": "When this character dies (while I'm equipped), rehand me."
+			"reminder": "When this character dies (while I'm equipped), discard->hand me."
 		},
 		{
 			"keyword": "Territorial.",

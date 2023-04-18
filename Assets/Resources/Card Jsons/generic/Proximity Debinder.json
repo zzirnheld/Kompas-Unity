@@ -1,7 +1,7 @@
 {
 	"cardType": 65,
 	"cardName": "Proximity Debinder",
-	"effText": "When this character dies fighting, rehand the character they were fighting.",
+	"effText": "When this character dies fighting, hand the character they were fighting.",
 	"effects": [
         {
             "blurb":"Debind",
