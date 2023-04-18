@@ -2,7 +2,7 @@
 	"keywordReminderTexts": [
 		{
 			"keyword": "Linewalk.",
-			"reminder": "You can move me through empty spaces, to any space along my diagonal. This counts as moving as many spaces as I can."
+			"reminder": "You can move me through any number of empty spaces on my diagonal, as if it were 1 space (for N purposes)."
 		},
 		{
 			"keyword": "Shape.",
