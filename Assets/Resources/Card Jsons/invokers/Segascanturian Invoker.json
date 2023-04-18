@@ -26,8 +26,8 @@
 					"triggerRestrictionElements": [
                         {
                             "$type": "Core.TriggerRestriction:PlayersMatch:",
-                            "card": { "$type": "Players:TriggeringPlayer:" },
-                            "other": { "$type": "Players:EnemyPlayer:" }
+                            "firstPlayer": { "$type": "Players:TriggeringPlayer:" },
+                            "secondPlayer": { "$type": "Players:FriendlyPlayer:" }
                         }
 					]
 				}

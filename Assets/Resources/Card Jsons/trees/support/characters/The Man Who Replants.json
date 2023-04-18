@@ -6,7 +6,6 @@
 		{
 			"triggerData": {
 				"blurb": "Replant Tree",
-				"optional": true,
 				"triggerCondition": "Turn Start",
 				"triggerRestriction": {
 					"triggerRestrictions": [

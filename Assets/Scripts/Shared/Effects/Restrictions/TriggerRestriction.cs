@@ -64,14 +64,11 @@ namespace KompasCore.Effects
         public CardRestriction cardRestriction;
         public CardRestriction nowRestriction;
         public CardRestriction secondaryCardRestriction;
-        public CardRestriction adjacencyRestriction;
         public CardRestriction selfRestriction;
         public CardRestriction sourceRestriction;
         public CardRestriction existsRestriction;
         public NumberRestriction xRestriction;
         public SpaceRestriction spaceRestriction;
-
-        public int distance = 1;
 
         public TriggerRestrictionElement[] triggerRestrictionElements = { };
 
@@ -139,7 +136,7 @@ namespace KompasCore.Effects
             MainCardIsStackableSource => triggeringContext.stackableCause?.Source == triggeringContext.mainCardInfoBefore.Card,
             StackableSourceFitsRestriction => sourceRestriction.IsValid(triggeringContext.stackableCause?.Source, new ResolutionContext(triggeringContext)),
             StackableSourceNotThisEffect => triggeringContext.stackableCause != SourceEffect,
-            
+
             CardAfterFurtherFromSourceThanBefore
                 => ThisCard.DistanceTo(triggeringContext.MainCardInfoAfter.Position) > ThisCard.DistanceTo(triggeringContext.mainCardInfoBefore.Position),
 

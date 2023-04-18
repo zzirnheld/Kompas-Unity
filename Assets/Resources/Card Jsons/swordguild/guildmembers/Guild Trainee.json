@@ -89,9 +89,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
 						"blurb": "Guild Title",
-						"toSearch": { "$type": "ManyCards:Deck:" },
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
 							{

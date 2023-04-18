@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Forest Fire",
-	"effText": "Any number of times: Give a friendly Tree, then all characters adjacent to it, -4 E.",
+	"effText": "Any number of times: Give a friendly Tree and all characters adjacent to it -4 E.",
 	"effects": [
 		{
 			"blurb": "Simple",
@@ -16,6 +16,7 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "Who to burn",
 						"elements": [
@@ -28,23 +29,26 @@
 					}
 				},
 				{
-					"$type": "Subeffect:ChangeCardStats:",
+					"$type": "Subeffect:ChangeAllCardStats:",
+					"cardsSource": {
+						"$type": "ManyCards:CardsInPositions:",
+						"positions": {
+                            "$type": "ManySpaces:AdjacentSpaces:",
+                            "adjacentTo": {
+                                "$type": "Spaces:PositionOf:",
+                                "ofThisCard": { "$type": "Cards:TargetIndex:" }
+                            }
+						}
+					},
+					"cardRestriction": {
+						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" }
+						]
+					},
 					"eModifier": -4
 				},
 				{
-					"$type": "Subeffect:ChangeAllCardStats:",
-					"cardRestriction": {
-						"elements": [
-                            { "$type": "Core.CardRestriction:Character:" },
-							{
-								"$type": "Core.SpaceRestriction:AdjacentTo:",
-								"space": {
-                                    "$type": "Spaces:PositionOf:",
-                                    "ofThisCard": { "$type": "Cards:TargetIndex:" }
-                                }
-							}
-						]
-					},
+					"$type": "Subeffect:ChangeCardStats:",
 					"eModifier": -4
 				},
 				{

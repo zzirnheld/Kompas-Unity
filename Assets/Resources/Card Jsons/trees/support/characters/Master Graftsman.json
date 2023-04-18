@@ -26,8 +26,8 @@
 					"triggerRestrictionElements": [
                         {
                             "$type": "Core.TriggerRestriction:PlayersMatch:",
-                            "card": { "$type": "Players:TriggeringPlayer:" },
-                            "other": { "$type": "Players:FriendlyPlayer:" }
+                            "firstPlayer": { "$type": "Players:TriggeringPlayer:" },
+                            "secondPlayer": { "$type": "Players:FriendlyPlayer:" }
                         }
 					]
 				}
@@ -76,8 +76,8 @@
 					"triggerRestrictionElements": [
                         {
                             "$type": "Core.TriggerRestriction:PlayersMatch:",
-                            "card": { "$type": "Players:TriggeringPlayer:" },
-                            "other": { "$type": "Players:FriendlyPlayer:" }
+                            "firstPlayer": { "$type": "Players:TriggeringPlayer:" },
+                            "secondPlayer": { "$type": "Players:FriendlyPlayer:" }
                         }
 					]
 				}
