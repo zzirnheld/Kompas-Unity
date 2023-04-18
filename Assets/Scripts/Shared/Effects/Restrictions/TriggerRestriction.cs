@@ -53,11 +53,6 @@ namespace KompasCore.Effects
 
         private const string ControllerTriggered = "Controller Triggered";
         private const string EnemyTriggered = "Enemy Triggered";
-
-        //Turns are checked "now", aka when the triggering event('s stackable, if any,) has resolved
-        private const string FriendlyTurn = "Friendly Turn";
-        private const string EnemyTurn = "Enemy Turn";
-
         #endregion trigger conditions
 
         private static readonly string[] RequiringCardRestriction =
@@ -171,8 +166,6 @@ namespace KompasCore.Effects
             //gamestate
             FriendlyTurn => Game.TurnPlayer == ThisCard.Controller,
             EnemyTurn => Game.TurnPlayer != ThisCard.Controller,
-            FromField => triggeringContext.mainCardInfoBefore.Location == CardLocation.Board,
-            FromDeck => triggeringContext.mainCardInfoBefore.Location == CardLocation.Deck,
             NotFromEffect => !(triggeringContext.stackableCause is Effect),
             FromAttack => triggeringContext.stackableCause is Attack,
 

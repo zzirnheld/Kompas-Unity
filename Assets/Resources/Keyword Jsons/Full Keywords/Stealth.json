@@ -4,8 +4,10 @@
         "triggerCondition": "Turn Start",
         "triggerRestriction": {
             "triggerRestrictions": [
-                "This Card in Play",
-                "Enemy Turn"
+                "This Card in Play"
+            ],
+            "triggerRestrictionElements": [
+                { "$type": "Core.TriggerRestriction:EnemyTurn:" }
             ]
         }
     },

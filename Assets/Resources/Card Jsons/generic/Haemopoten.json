@@ -6,7 +6,6 @@
 		{
 			"activationRestriction": {
 				"activationRestrictionArray": [
-					"Friendly Turn",
 					"Default"
 				]
 			},

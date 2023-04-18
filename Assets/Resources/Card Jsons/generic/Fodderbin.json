@@ -9,7 +9,6 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Enemy Turn",
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
@@ -23,7 +22,8 @@
 						]
 					},
 					"triggerRestrictionElements": [
-						{ "$type": "Core.TriggerRestriction:MaxPerStack:" }
+						{ "$type": "Core.TriggerRestriction:MaxPerStack:" },
+                        { "$type": "Core.TriggerRestriction:EnemyTurn:" }
 					]
 				}
 			},

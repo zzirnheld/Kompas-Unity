@@ -67,7 +67,6 @@
 			"blurb": "Training Complete",
 			"activationRestriction": {
 				"activationRestrictionArray": [
-					"Friendly Turn",
 					"Default"
 				]
 			},

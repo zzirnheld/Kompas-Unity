@@ -8,8 +8,10 @@
 				"triggerCondition": "Turn Start",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card in Play",
-						"Enemy Turn"
+						"This Card in Play"
+					],
+					"triggerRestrictionElements": [
+                        { "$type": "Core.TriggerRestriction:EnemyTurn:" }
 					]
 				}
 			},
@@ -29,8 +31,10 @@
 				"triggerCondition": "Turn Start",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card in Play",
-						"Friendly Turn"
+						"This Card in Play"
+					],
+					"triggerRestrictionElements": [
+						{ "$type": "Core.TriggerRestriction:FriendlyTurn:" }
 					]
 				}
 			},

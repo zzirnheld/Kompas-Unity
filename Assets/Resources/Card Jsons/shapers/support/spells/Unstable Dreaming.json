@@ -47,8 +47,8 @@
 					"$type": "Subeffect:Hanging.Annihilation:",
 					"endCondition": "Turn Start",
 					"triggerRestriction": {
-						"triggerRestrictions": [
-							"Friendly Turn"
+						"triggerRestrictionElements": [
+							{ "$type": "Core.TriggerRestriction:FriendlyTurn:" }
 						]
 					}
 				}

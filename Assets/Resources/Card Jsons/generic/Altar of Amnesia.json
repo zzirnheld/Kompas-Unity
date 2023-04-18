@@ -7,7 +7,6 @@
 			"blurb": "You are someone else",
 			"activationRestriction": {
 				"activationRestrictionArray": [
-					"Friendly Turn",
 					"Default"
 				]
 			},

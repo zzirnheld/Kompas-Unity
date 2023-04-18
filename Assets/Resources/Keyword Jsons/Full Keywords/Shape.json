@@ -2,7 +2,6 @@
 	"blurb":"Shape",
 	"activationRestriction":{
 		"activationRestrictionArray":[
-			"Friendly Turn",
 			"Default"
 		]
 	},

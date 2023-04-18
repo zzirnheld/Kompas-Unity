@@ -7,7 +7,6 @@
 			"blurb": "Careful Piloting",
 			"activationRestriction": {
 				"activationRestrictionArray": [
-					"Friendly Turn",
 					"Default"
 				]
 			},

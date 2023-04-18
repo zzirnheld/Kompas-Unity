@@ -7,7 +7,6 @@
 			"blurb": "T3L3P0RT",
             "activationRestriction":{
                 "activationRestrictionArray":[
-                    "Friendly Turn",
                     "This Card Fits Restriction",
                     "Default"
                 ],

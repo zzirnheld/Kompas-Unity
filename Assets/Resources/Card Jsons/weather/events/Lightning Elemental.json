@@ -9,8 +9,10 @@
 				"triggerCondition": "Play",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card is Main Card",
-						"Enemy Turn"
+						"This Card is Main Card"
+					],
+					"triggerRestrictionElements": [
+                        { "$type": "Core.TriggerRestriction:EnemyTurn:" }
 					]
 				}
 			},

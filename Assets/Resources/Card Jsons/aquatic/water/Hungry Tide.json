@@ -7,7 +7,6 @@
 			"blurb": "The Tide Hungers",
 			"activationRestriction": {
 				"activationRestrictionArray": [
-					"Friendly Turn",
 					"Default"
 				]
 			},

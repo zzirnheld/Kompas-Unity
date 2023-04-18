@@ -32,7 +32,6 @@
 				"triggerCondition": "Turn Start",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"Enemy Turn",
 						"This Card Fits Restriction Now"
 					],
 					"selfRestriction": {
@@ -42,7 +41,10 @@
 								"locations": [ "Discard" ]
 							}
 						]
-					}
+					},
+					"triggerRestrictionElements": [
+                        { "$type": "Core.TriggerRestriction:EnemyTurn:" }
+					]
 				}
 			},
 			"subeffects": [
