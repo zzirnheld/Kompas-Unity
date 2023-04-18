@@ -9,7 +9,6 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Controller Triggered",
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
@@ -23,7 +22,14 @@
 								}
 							}
 						]
-					}
+					},
+					"triggerRestrictionElements": [
+                        {
+                            "$type": "Core.TriggerRestriction:PlayersMatch:",
+                            "card": { "$type": "Players:TriggeringPlayer:" },
+                            "other": { "$type": "Players:FriendlyPlayer:" }
+                        }
+					]
 				}
 			},
 			"subeffects": [
@@ -45,7 +51,6 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Controller Triggered",
 						"X Fits Restriction",
 						"This Card is Main Card",
 						"Main Card Fits Restriction After"
@@ -67,7 +72,14 @@
 								"subtypes": [ "Tree" ]
 							}
 						]
-					}
+					},
+					"triggerRestrictionElements": [
+                        {
+                            "$type": "Core.TriggerRestriction:PlayersMatch:",
+                            "card": { "$type": "Players:TriggeringPlayer:" },
+                            "other": { "$type": "Players:FriendlyPlayer:" }
+                        }
+					]
 				}
 			},
 			"subeffects": [

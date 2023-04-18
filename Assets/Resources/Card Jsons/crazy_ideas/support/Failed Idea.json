@@ -8,7 +8,7 @@
 			{
 				"triggerCondition":"Discard",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Controller Triggered","Main Card Fits Restriction Before"],
+					"triggerRestrictions":["This Card in Play", "Main Card Fits Restriction Before"],
 					"cardRestriction":{
 						"elements": [
 							{
@@ -20,7 +20,14 @@
                                 "locations": [ "Hand" ]
                             }
 						]
-					}
+					},
+					"triggerRestrictionElements": [
+                        {
+                            "$type": "Core.TriggerRestriction:PlayersMatch:",
+                            "card": { "$type": "Players:TriggeringPlayer:" },
+                            "other": { "$type": "Players:FriendlyPlayer:" }
+                        }
+					]
 				}
 			},
 			"subeffects":[

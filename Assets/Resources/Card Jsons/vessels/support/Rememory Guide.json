@@ -9,7 +9,6 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Controller Triggered",
 						"Main Card Fits Restriction Before",
 						"Space Fits Restriction"
 					],
@@ -31,7 +30,14 @@
 								}
 							}
                         ]
-					}
+					},
+					"triggerRestrictionElements": [
+                        {
+                            "$type": "Core.TriggerRestriction:PlayersMatch:",
+                            "card": { "$type": "Players:TriggeringPlayer:" },
+                            "other": { "$type": "Players:FriendlyPlayer:" }
+                        }
+					]
 				}
 			},
 			"subeffects": [

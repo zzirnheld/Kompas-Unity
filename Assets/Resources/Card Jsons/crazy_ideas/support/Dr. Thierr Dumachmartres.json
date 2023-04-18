@@ -9,11 +9,15 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Enemy Triggered",
 						"No Stackable"
 					],
 					"triggerRestrictionElements": [
-						{ "$type": "Core.TriggerRestriction:MaxPerTurn:", "max": 3 }
+						{ "$type": "Core.TriggerRestriction:MaxPerTurn:", "max": 3 },
+                        {
+                            "$type": "Core.TriggerRestriction:PlayersMatch:",
+                            "card": { "$type": "Players:TriggeringPlayer:" },
+                            "other": { "$type": "Players:EnemyPlayer:" }
+                        }
 					]
 				}
 			},

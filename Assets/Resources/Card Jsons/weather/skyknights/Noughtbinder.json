@@ -23,9 +23,13 @@
 					"jumpIndices": [ 1 ],
 					"fallOffCondition": "Anything",
 					"fallOffRestriction": {
-                        "triggerRestrictions": [
-                            "Enemy Triggered"
-                        ]
+						"triggerRestrictionElements": [
+							{
+								"$type": "Core.TriggerRestriction:PlayersMatch:",
+								"card": { "$type": "Players:TriggeringPlayer:" },
+								"other": { "$type": "Players:EnemyPlayer:" }
+							}
+						]
 					},
 					"endCondition": "Turn Start"
 				},

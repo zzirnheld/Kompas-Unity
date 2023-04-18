@@ -1,17 +1,15 @@
 {
 	"cardType": 83,
 	"cardName": "Revenance",
-	"effText": "When you draw a Revenant, you can hand->discard it and draw 1.\n(Vanishes when a turn starts.)",
+	"effText": "When you draw a Revenant, hand->discard it and draw 1.\n(Vanishes when a turn starts.)",
 	"effects": [
 		{
 			"triggerData": {
 				"blurb": "Hand->discard the drawn Revenant to draw 1?",
-				"optional": true,
 				"triggerCondition": "Each Card Drawn",
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Controller Triggered",
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
@@ -21,7 +19,14 @@
 								"subtypes": [ "Revenant" ]
 							}
 						]
-					}
+					},
+					"triggerRestrictionElements": [
+                        {
+                            "$type": "Core.TriggerRestriction:PlayersMatch:",
+                            "card": { "$type": "Players:TriggeringPlayer:" },
+                            "other": { "$type": "Players:FriendlyPlayer:" }
+                        }
+					]
 				}
 			},
 			"subeffects": [

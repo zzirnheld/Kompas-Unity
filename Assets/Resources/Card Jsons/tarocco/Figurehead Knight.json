@@ -8,11 +8,15 @@
 				"triggerCondition": "Draw",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card in Play",
-						"Controller Triggered"
+						"This Card in Play"
 					],
 					"triggerRestrictionElements": [
-						{ "$type": "Core.TriggerRestriction:FriendlyTurn:" }
+						{ "$type": "Core.TriggerRestriction:FriendlyTurn:" },
+                        {
+                            "$type": "Core.TriggerRestriction:PlayersMatch:",
+                            "card": { "$type": "Players:TriggeringPlayer:" },
+                            "other": { "$type": "Players:FriendlyPlayer:" }
+                        }
 					]
 				}
 			},
@@ -34,11 +38,15 @@
 				"triggerCondition": "Draw",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card in Play",
-						"Controller Triggered"
+						"This Card in Play"
 					],
 					"triggerRestrictionElements": [
-                        { "$type": "Core.TriggerRestriction:EnemyTurn:" }
+                        { "$type": "Core.TriggerRestriction:EnemyTurn:" },
+                        {
+                            "$type": "Core.TriggerRestriction:PlayersMatch:",
+                            "card": { "$type": "Players:TriggeringPlayer:" },
+                            "other": { "$type": "Players:FriendlyPlayer:" }
+                        }
 					]
 				}
 			},

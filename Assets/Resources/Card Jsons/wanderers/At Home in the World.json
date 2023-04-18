@@ -8,7 +8,6 @@
 				"triggerCondition": "Reshuffle",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"Controller Triggered",
 						"Main Card Fits Restriction Before",
 						"This Card in Play"
 					],
@@ -23,7 +22,14 @@
 								"subtypes": [ "Wanderer" ]
 							}
 						]
-					}
+					},
+					"triggerRestrictionElements": [
+                        {
+                            "$type": "Core.TriggerRestriction:PlayersMatch:",
+                            "card": { "$type": "Players:TriggeringPlayer:" },
+                            "other": { "$type": "Players:FriendlyPlayer:" }
+                        }
+					]
 				}
 			},
 			"subeffects": [

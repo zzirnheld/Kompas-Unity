@@ -50,9 +50,6 @@ namespace KompasCore.Effects
         private const string FromAttack = "From Attack";
 
         private const string StackableIsThisEffect = "Stackable is This Effect";
-
-        private const string ControllerTriggered = "Controller Triggered";
-        private const string EnemyTriggered = "Enemy Triggered";
         #endregion trigger conditions
 
         private static readonly string[] RequiringCardRestriction =
@@ -160,12 +157,7 @@ namespace KompasCore.Effects
             XFitsRestriction => triggeringContext.x.HasValue && xRestriction.IsValid(triggeringContext.x.Value, context: stashedResolutionContext),
             StackableSourceIsMainCard => triggeringContext.stackableCause is Effect eff && eff.Source == triggeringContext.mainCardInfoBefore.Card,
 
-            ControllerTriggered => triggeringContext.player == ThisCard.Controller,
-            EnemyTriggered => triggeringContext.player != ThisCard.Controller,
-
             //gamestate
-            FriendlyTurn => Game.TurnPlayer == ThisCard.Controller,
-            EnemyTurn => Game.TurnPlayer != ThisCard.Controller,
             NotFromEffect => !(triggeringContext.stackableCause is Effect),
             FromAttack => triggeringContext.stackableCause is Attack,
 

@@ -9,8 +9,14 @@
 				"triggerCondition": "Augmented",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card is Main Card",
-						"Controller Triggered"
+						"This Card is Main Card"
+					],
+					"triggerRestrictionElements": [
+                        {
+                            "$type": "Core.TriggerRestriction:PlayersMatch:",
+                            "card": { "$type": "Players:TriggeringPlayer:" },
+                            "other": { "$type": "Players:FriendlyPlayer:" }
+                        }
 					]
 				}
 			},

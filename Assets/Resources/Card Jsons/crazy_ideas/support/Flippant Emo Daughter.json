@@ -9,8 +9,7 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Main Card Fits Restriction Before",
-						"Controller Triggered"
+						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
 						"elements": [
@@ -19,7 +18,14 @@
 								"subtypes": [ "Crazy", "Idea" ]
 							}
 						]
-					}
+					},
+					"triggerRestrictionElements": [
+                        {
+                            "$type": "Core.TriggerRestriction:PlayersMatch:",
+                            "card": { "$type": "Players:TriggeringPlayer:" },
+                            "other": { "$type": "Players:FriendlyPlayer:" }
+                        }
+					]
 				}
 			},
 			"subeffects": [

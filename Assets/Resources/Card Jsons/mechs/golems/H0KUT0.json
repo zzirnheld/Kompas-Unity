@@ -9,15 +9,19 @@
 				"triggerCondition": "Play",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card in Play",
-						"Enemy Triggered"
+						"This Card in Play"
 					]
 				},
 				"triggerRestrictionElements": [
 					{
 						"$type": "Core.TriggerRestriction:CardFitsRestriction:",
-						"cardRestriction": { "elements": [ { "$type": "Core.CardRestriction:Active:" } ] },
-						"card": { "$type": "Cards:ThisCard:" }
+						"card": { "$type": "Cards:ThisCard:" },
+						"cardRestriction": { "elements": [ { "$type": "Core.CardRestriction:Active:" } ] }
+					},
+					{
+						"$type": "Core.TriggerRestriction:PlayersMatch:",
+						"card": { "$type": "Players:TriggeringPlayer:" },
+						"other": { "$type": "Players:EnemyPlayer:" }
 					}
 				]
 			},

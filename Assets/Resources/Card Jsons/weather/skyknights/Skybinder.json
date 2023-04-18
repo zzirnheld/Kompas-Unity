@@ -1,6 +1,6 @@
 {
 	"cardType": 67,
-	"cardName": "Skyknight",
+	"cardName": "Skybinder",
 	"effText": "When you Spin a Storm, reshuffle all your annihilated Weather.",
 	"effects": [
 		{
@@ -10,8 +10,7 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Main Card Fits Restriction Before",
-						"Controller Triggered"
+						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
 						"elements": [
@@ -27,22 +26,27 @@
 								"subtypes": [ "Weather", "Event" ]
 							}
 						]
-					}
-				},
-                "triggerRestrictionElements": [
-                    {
-                        "$type": "Core.TriggerRestriction:StackableFitsRestriction:",
-                        "stackable": { "$type": "Stackables:StackableCause:" },
-                        "restriction": {
-                            "stackableRestrictionElements": [
-                                {
-                                    "$type": "Core.EffectRestriction:Keyword:",
-                                    "keyword": "Spin a Storm"
-                                }
-                            ]
-                        }
-                    }
-                ]
+					},
+					"triggerRestrictionElements": [
+                        {
+                            "$type": "Core.TriggerRestriction:PlayersMatch:",
+                            "card": { "$type": "Players:TriggeringPlayer:" },
+                            "other": { "$type": "Players:FriendlyPlayer:" }
+                        },
+						{
+							"$type": "Core.TriggerRestriction:StackableFitsRestriction:",
+							"stackable": { "$type": "Stackables:StackableCause:" },
+							"restriction": {
+								"stackableRestrictionElements": [
+									{
+										"$type": "Core.EffectRestriction:Keyword:",
+										"keyword": "Spin a Storm"
+									}
+								]
+							}
+						}
+					]
+				}
 			},
 			"subeffects": [
 				{

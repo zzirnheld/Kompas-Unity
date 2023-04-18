@@ -11,8 +11,7 @@
 					"triggerRestrictions": [
 						"This Card in Play",
 						"No Stackable",
-						"Main Card Fits Restriction Before",
-						"Controller Triggered"
+						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
 						"elements": [
@@ -28,7 +27,14 @@
 								"subtypes": [ "Skyknight" ]
 							}
 						]
-					}
+					},
+					"triggerRestrictionElements": [
+                        {
+                            "$type": "Core.TriggerRestriction:PlayersMatch:",
+                            "card": { "$type": "Players:TriggeringPlayer:" },
+                            "other": { "$type": "Players:FriendlyPlayer:" }
+                        }
+					]
 				}
 			},
 			"subeffects": [
@@ -58,8 +64,7 @@
 					"triggerRestrictions": [
 						"This Card in Play",
 						"No Stackable",
-						"Main Card Fits Restriction Before",
-						"Controller Triggered"
+						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
 						"elements": [
@@ -75,7 +80,14 @@
 								"subtypes": [ "Weather" ]
 							}
 						]
-					}
+					},
+					"triggerRestrictionElements": [
+                        {
+                            "$type": "Core.TriggerRestriction:PlayersMatch:",
+                            "card": { "$type": "Players:TriggeringPlayer:" },
+                            "other": { "$type": "Players:FriendlyPlayer:" }
+                        }
+					]
 				}
 			},
 			"subeffects": [
