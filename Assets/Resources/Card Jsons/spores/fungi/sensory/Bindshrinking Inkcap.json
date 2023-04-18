@@ -62,8 +62,7 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Main Card Fits Restriction Before",
-						"From Field"
+						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
 						"elements": [

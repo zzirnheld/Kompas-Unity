@@ -6,7 +6,17 @@
         "fallOffCondition":"",
         "endCondition":"Discard",
         "triggerRestriction":{
-            "triggerRestrictions": ["From Field"],
+            "triggerRestrictions": [
+                "Main Card Fits Restriction Before"
+            ],
+            "cardRestriction": {
+                "elements": [
+                    {
+                        "$type": "Core.CardRestriction:Location:",
+                        "locations": [ "Board" ]
+                    }
+                ]
+            },
             "triggerRestrictionElements": [
                 {
                     "$type": "Core.TriggerRestriction:CardsMatch:",

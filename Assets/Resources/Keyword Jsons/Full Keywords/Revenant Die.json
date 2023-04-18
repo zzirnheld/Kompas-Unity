@@ -4,7 +4,18 @@
 		"blurb":"Annihilate",
 		"triggerCondition":"Discard",
 		"triggerRestriction":{
-			"triggerRestrictions":["This Card is Main Card","From Field"]
+			"triggerRestrictions": [
+				"This Card is Main Card",
+				"Main Card Fits Restriction Before"
+			],
+			"cardRestriction": {
+				"elements": [
+					{
+						"$type": "Core.CardRestriction:Location:",
+						"locations": [ "Board" ]
+					}
+				]
+			}
 		}
 	},
 	"subeffects":[

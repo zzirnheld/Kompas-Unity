@@ -15,15 +15,10 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
-					"maxCanChoose": 1,
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
 						"blurb": "Cultist for Doomsayer to search",
 						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-                            {
-                                "$type": "Core.CardRestriction:Location:",
-                                "locations": [ "Deck" ]
-                            },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Cultist" ]

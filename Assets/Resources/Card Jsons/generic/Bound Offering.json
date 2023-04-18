@@ -10,8 +10,16 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card is Main Card",
-						"From Field"
-					]
+						"Main Card Fits Restriction Before"
+					],
+					"cardRestriction": {
+						"elements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+						]
+					}
 				}
 			},
 			"subeffects": [

@@ -58,9 +58,6 @@ namespace KompasCore.Effects
         private const string FriendlyTurn = "Friendly Turn";
         private const string EnemyTurn = "Enemy Turn";
 
-        private const string FromField = "From Field";
-        private const string FromDeck = "From Deck";
-
         #endregion trigger conditions
 
         private static readonly string[] RequiringCardRestriction =

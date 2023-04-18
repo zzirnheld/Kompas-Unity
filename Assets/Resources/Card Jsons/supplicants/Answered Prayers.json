@@ -9,13 +9,16 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Main Card Fits Restriction Before",
-						"From Field"
+						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
 						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
-							{ "$type": "Core.CardRestriction:Negated:" }
+							{ "$type": "Core.CardRestriction:Negated:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
 						]
 					}
 				}
