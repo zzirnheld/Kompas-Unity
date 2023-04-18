@@ -1,12 +1,12 @@
 {
 	"cardType": 67,
 	"cardName": "Hungry Dragonling",
-	"effText": "Territorial.\nWhen I attack, give me +7 S.",
+	"effText": "Territorial.\nWhen I fight, give me +7 S.",
 	"effects": [
 		{
 			"blurb": "Damage Boost",
 			"triggerData": {
-				"triggerCondition": "Attack",
+				"triggerCondition": "Battle Start",
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card is Main Card"

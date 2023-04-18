@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Silent Recruiter",
-	"effText": "Once each turn, if I'm adjacent to an enemy, you can deck->summon a Cultist Follower",
+	"effText": "Once each turn, if I'm adjacent to an enemy, you can deck->summon a Cultist Mook",
 	"effects": [
 		{
 			"blurb": "Recruit",
@@ -35,7 +35,7 @@
 							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Cultist", "Follower" ]
+								"subtypes": [ "Cultist", "Mook" ]
 							}
 						]
 					}

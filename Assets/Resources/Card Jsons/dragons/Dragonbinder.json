@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Dragonbinder",
-	"effText": "When I'm summoned, choose X. Give the enemy Avatar +2 * X E, then give me +X S (yes, X does have to be positive).",
+	"effText": "When I'm summoned, choose X (a positive number). Give the enemy Avatar +2*X E, then give me +X S.",
 	"effects": [
 		{
 			"blurb": "Dragonbind",

@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Mad Blood",
-	"effText": "When a friendly Cultist dies, annihilate me to deck->summon 2 Cultist Followers.",
+	"effText": "When a friendly Cultist dies, annihilate me to deck->summon 2 Cultist Mooks.",
 	"effects": [
 		{
 			"triggerData": {
@@ -45,7 +45,7 @@
 							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Cultist", "Follower" ]
+								"subtypes": [ "Cultist", "Mook" ]
 							}
 						]
 					},
@@ -60,7 +60,7 @@
 							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Cultist", "Follower" ]
+								"subtypes": [ "Cultist", "Mook" ]
 							},
 							{
 								"$type": "Core.CardRestriction:Not:",

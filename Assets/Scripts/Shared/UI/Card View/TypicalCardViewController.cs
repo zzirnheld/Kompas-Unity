@@ -140,12 +140,12 @@ namespace KompasCore.UI
             else return neutralStatFontMaterial;
         }
 
-        protected virtual string DisplayN(int n) => $"N\n{n}";
-        protected virtual string DisplayE(int e) => $"E\n{e}";
-        protected virtual string DisplayS(int s) => $"S\n{s}";
-        protected virtual string DisplayW(int w) => $"W\n{w}";
-        protected virtual string DisplayC(int c) => $"C\n{c}";
-        protected virtual string DisplayA(int a) => $"A\n{a}";
+        protected virtual string DisplayN(int n) => $"{n}";
+        protected virtual string DisplayE(int e) => $"{e}";
+        protected virtual string DisplayS(int s) => $"{s}";
+        protected virtual string DisplayW(int w) => $"{w}";
+        protected virtual string DisplayC(int c) => $"{c}";
+        protected virtual string DisplayA(int a) => $"{a}";
 
         protected sealed override void DisplayCardImage()
         {

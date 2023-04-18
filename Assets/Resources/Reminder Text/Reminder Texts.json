@@ -26,7 +26,7 @@
 		},
 		{
 			"keyword": "Territorial.",
-			"reminder": "When turns start, move an adjacent character 1 space, then I attack them."
+			"reminder": "When turns start, I attack an adjacent character."
 		},
 		{
 			"keyword": "Comeback Play.",
