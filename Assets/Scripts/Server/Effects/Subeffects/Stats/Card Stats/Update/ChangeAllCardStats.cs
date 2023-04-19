@@ -13,7 +13,7 @@ namespace KompasServer.Effects.Subeffects
         //default to making sure things are characters before changing their stats
         public CardRestriction cardRestriction = new CardRestriction()
         {
-            elements = new IRestrictionElement<GameCardBase>[] { new Character() }
+            elements = new IRestriction<GameCardBase>[] { new Character() }
         };
 
         public IIdentity<IReadOnlyCollection<GameCardBase>> cardsSource = new Board();

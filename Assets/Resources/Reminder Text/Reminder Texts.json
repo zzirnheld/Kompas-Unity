@@ -86,7 +86,7 @@
 		},
 		{
 			"keyword": "Speedemon",
-			"reminder": "After something else moves me in a straight line, move me 1 space in the same direction."
+			"reminder": "After I move in a straight line, except by this effect, move me 1 space in the same direction."
 		},
 		{
 			"keyword": "Pass Back",

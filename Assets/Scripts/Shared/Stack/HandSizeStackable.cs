@@ -37,7 +37,7 @@ namespace KompasCore.Effects
                 {
                     handSizeCardRestriction = new CardRestriction()
                     {
-                        elements = new IRestrictionElement<GameCardBase>[]
+                        elements = new IRestriction<GameCardBase>[]
                         {
                             new Friendly(),
                             new Location() { locations = new string[]{ "Hand" } }

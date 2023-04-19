@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace KompasCore.Effects.Restrictions
 {
-    public abstract class SpaceRestrictionElement : RestrictionElementBase<Space>, IRestrictionElement<GameCardBase>
+    public abstract class SpaceRestrictionElement : RestrictionElementBase<Space>, IRestriction<GameCardBase>
     {
         public bool IsValid(GameCardBase item, IResolutionContext context) => IsValid(item?.Position, context);
     }
@@ -13,7 +13,7 @@ namespace KompasCore.Effects.Restrictions
     {
         public class Not : SpaceRestrictionElement
         {
-            public IRestrictionElement<Space> negated;
+            public IRestriction<Space> negated;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {
@@ -27,7 +27,7 @@ namespace KompasCore.Effects.Restrictions
 
         public class AnyOf : SpaceRestrictionElement
         {
-            public IRestrictionElement<Space>[] restrictions;
+            public IRestriction<Space>[] restrictions;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {
