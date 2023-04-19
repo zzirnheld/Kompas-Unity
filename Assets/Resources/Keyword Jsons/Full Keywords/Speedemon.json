@@ -5,7 +5,18 @@
 		"blurb":"Speedemon",
 		"triggerCondition":"Move",
 		"triggerRestriction":{
-			"triggerRestrictions":["This Card is Main Card","Stackable Source isn't This Effect"]
+			"triggerRestrictions":["This Card is Main Card"],
+			"triggerRestrictionElements": [
+				{ "$type": "Core.TriggerRestriction:MaxPerStack:" },
+				{
+					"$type": "Core.TriggerRestriction:Not:",
+					"inverted": {
+						"$type": "Core.TriggerRestriction:StackablesMatch:",
+						"firstStackable": { "$type": "Stackables:StackableCause:" },
+						"secondStackable": { "$type": "Stackables:ThisEffect:" }
+					}
+				}
+			]
 		}
 	},
 	"subeffects":[

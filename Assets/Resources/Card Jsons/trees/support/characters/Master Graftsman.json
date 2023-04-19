@@ -45,21 +45,15 @@
 			]
 		},
 		{
-            "blurb": "Repair",
+            "blurb": "Graft Healing",
 			"triggerData": {
 				"triggerCondition": "E Change",
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"X Fits Restriction",
 						"This Card is Main Card",
 						"Main Card Fits Restriction After"
 					],
-					"xRestriction": {
-						"numberRestrictions": [
-							"<0"
-						]
-					},
 					"nowRestriction": {
 						"elements": [
 							{ "$type": "Core.CardRestriction:Hurt:" },
@@ -78,8 +72,17 @@
                             "$type": "Core.TriggerRestriction:PlayersMatch:",
                             "firstPlayer": { "$type": "Players:TriggeringPlayer:" },
                             "secondPlayer": { "$type": "Players:FriendlyPlayer:" }
-                        }
-					]
+                        },
+						{
+							"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
+							"number": { "$type": "Numbers:X:" },
+							"restriction": {
+								"$type": "Core.NumberRestriction:Compare:",
+								"comparison": { "$type": "Relationships.Number:LessThan:" },
+								"other": { "$type": "Numbers:Constant:", "constant": 0 }
+							}
+						}
+                    ]
 				}
 			},
 			"subeffects": [

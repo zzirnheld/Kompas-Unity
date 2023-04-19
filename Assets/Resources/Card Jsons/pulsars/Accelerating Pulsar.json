@@ -8,14 +8,6 @@
 				"blurb": "Accelerate",
 				"triggerCondition": "S Change",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"X Fits Restriction"
-					],
-					"xRestriction": {
-						"numberRestrictions": [
-							">0"
-						]
-					},
                     "triggerRestrictionElements": [
                         { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
                         {
@@ -25,8 +17,15 @@
 								"$type": "Cards:Avatar:",
 								"player": { "$type": "Players:FriendlyPlayer:" }
 							}
-                        }
-                    ]
+                        },
+						{
+							"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
+							"number": { "$type": "Numbers:X:" },
+							"restriction": {
+								"numberRestrictions": [ ">0" ]
+							}
+						}
+					]
 				}
 			},
 			"subeffects": [
@@ -54,14 +53,6 @@
 				"blurb": "Decelerate",
 				"triggerCondition": "S Change",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"X Fits Restriction"
-					],
-					"xRestriction": {
-						"numberRestrictions": [
-							"<0"
-						]
-					},
                     "triggerRestrictionElements": [
                         { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
                         {
@@ -71,8 +62,17 @@
 								"$type": "Cards:Avatar:",
 								"player": { "$type": "Players:FriendlyPlayer:" }
 							}
-                        }
-                    ]
+                        },
+						{
+							"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
+							"number": { "$type": "Numbers:X:" },
+							"restriction": {
+								"$type": "Core.NumberRestriction:Compare:",
+								"comparison": { "$type": "Relationships.Number:LessThan:" },
+								"other": { "$type": "Numbers:Constant:", "constant": 0 }
+							}
+						}
+					]
 				}
 			},
 			"subeffects": [

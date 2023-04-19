@@ -9,15 +9,22 @@
 				"triggerCondition": "Draw",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card in Play",
-						"Stackable Source isn't This Effect"
+						"This Card in Play"
 					],
 					"triggerRestrictionElements": [
                         {
                             "$type": "Core.TriggerRestriction:PlayersMatch:",
                             "firstPlayer": { "$type": "Players:TriggeringPlayer:" },
                             "secondPlayer": { "$type": "Players:FriendlyPlayer:" }
-                        }
+                        },
+						{
+							"$type": "Core.TriggerRestriction:Not:",
+							"inverted": {
+								"$type": "Core.TriggerRestriction:StackablesMatch:",
+								"firstStackable": { "$type": "Stackables:StackableCause:" },
+								"secondStackable": { "$type": "Stackables:ThisEffect:" }
+							}
+						}
 					]
 				}
 			},

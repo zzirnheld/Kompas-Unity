@@ -9,7 +9,6 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"X Fits Restriction",
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
@@ -17,11 +16,17 @@
 							{ "$type": "Core.CardRestriction:Hurt:" }
 						]
 					},
-					"xRestriction": {
-						"numberRestrictions": [
-							">0"
-						]
-					}
+					"triggerRestrictionElements": [
+						{
+							"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
+							"number": { "$type": "Numbers:X:" },
+							"restriction": {
+								"$type": "Core.NumberRestriction:Compare:",
+								"comparison": { "$type": "Relationships.Number:GreaterThan:" },
+								"other": { "$type": "Numbers:Constant:", "constant": 0 }
+							}
+						}
+					]
 				}
 			},
 			"subeffects": [

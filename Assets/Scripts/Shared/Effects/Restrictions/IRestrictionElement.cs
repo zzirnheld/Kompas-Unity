@@ -3,13 +3,7 @@ using System.Linq;
 
 namespace KompasCore.Effects
 {
-
-    public interface IRestrictionElement<Type> : IContextInitializeable
-    {
-        public bool IsValid(Type item, IResolutionContext context);
-    }
-
-    public abstract class RestrictionElementBase<Type> : ContextInitializeableBase, IRestrictionElement<Type>
+    public abstract class RestrictionElementBase<Type> : ContextInitializeableBase, IRestriction<Type>
     {
         protected static bool AllNull(params object[] objs) => objs.All(o => o == null);
         protected static bool MultipleNonNull(params object[] objs) => objs.Count(o => o != null) > 1;

@@ -9,17 +9,20 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"X Fits Restriction",
 						"This Card is Main Card"
 					],
-					"xRestriction": {
-						"numberRestrictions": [
-							">0"
-						]
-					},
 					"triggerRestrictionElements": [
-						{ "$type": "Core.TriggerRestriction:MaxPerStack:" }
-					]
+						{ "$type": "Core.TriggerRestriction:MaxPerStack:" },
+						{
+							"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
+							"number": { "$type": "Numbers:X:" },
+							"restriction": {
+								"$type": "Core.NumberRestriction:Compare:",
+								"comparison": { "$type": "Relationships.Number:GreaterThan:" },
+								"other": { "$type": "Numbers:Constant:", "constant": 0 }
+							}
+						}
+                    ]
 				}
 			},
 			"subeffects": [

@@ -8,15 +8,18 @@
 				"triggerCondition": "Move",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card is Main Card",
-						"X Fits Restriction"
+						"This Card is Main Card"
 					],
-					"xRestriction": {
-						"numberRestrictions": [
-							"==Constant"
-						],
-						"constant": 3
-					}
+					"triggerRestrictionElements": [
+						{
+							"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
+							"number": { "$type": "Numbers:X:" },
+							"restriction": {
+								"numberRestrictions": [ "==Constant" ],
+								"constant":3
+							}
+						}
+					]
 				}
 			},
 			"subeffects": [

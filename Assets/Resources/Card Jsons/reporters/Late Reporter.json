@@ -8,16 +8,22 @@
 				"triggerCondition": "Move",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card is Main Card",
-						"Stackable Source isn't This Effect"
+						"This Card is Main Card"
 					],
 					"triggerRestrictionElements": [
 						{ "$type": "Core.TriggerRestriction:MaxPerStack:" },
-                        {
-                            "$type": "Core.TriggerRestriction:CardsMatch:",
-                            "card": { "$type": "Cards:CauseBefore:" },
-                            "other": { "$type": "Cards:ThisCard:" }
-                        }
+						{
+							"$type": "Core.TriggerRestriction:StackableFitsRestriction:",
+							"stackable": { "$type": "Stackables:StackableCause:" },
+							"restriction": {
+								"stackableRestrictionElements": [
+									{
+										"$type": "Core.EffectRestriction:Keyword:",
+										"keyword": "Speedemon"
+									}
+								]
+							}
+						}
 					]
 				}
 			},

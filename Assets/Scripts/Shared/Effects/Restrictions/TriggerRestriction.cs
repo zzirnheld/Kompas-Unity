@@ -40,10 +40,6 @@ namespace KompasCore.Effects
         private const string NoCardExistsNow = "No Card Exists Now";
 
         private const string SpaceFitsRestriction = "Space Fits Restriction";
-
-        private const string XFitsRestriction = "X Fits Restriction";
-        private const string StackableSourceIsMainCard = "Stackable Source is Main Card";
-        private const string StackableSourceNotThisEffect = "Stackable Source isn't This Effect";
         #endregion trigger conditions
 
         private static readonly string[] RequiringCardRestriction =
@@ -52,7 +48,6 @@ namespace KompasCore.Effects
         private static readonly string[] RequiringSelfRestriction = { ThisCardFitsRestriction };
         private static readonly string[] RequiringExistsRestriction = { CardExistsNow };
         private static readonly string[] RequiringSourceRestriction = { StackableSourceFitsRestriction };
-        private static readonly string[] RequiringNumberRestriction = { XFitsRestriction };
         private static readonly string[] RequiringSpaceRestriction = { SpaceFitsRestriction };
 
         public static readonly ISet<Type> ReevalationRestrictions
@@ -106,8 +101,6 @@ namespace KompasCore.Effects
                 throw new ArgumentNullException("existsRestriction", $"Must be populated for any of these restrictions: {string.Join(",", RequiringExistsRestriction)}");
             if (triggerRestrictions.Intersect(RequiringSourceRestriction).Any() && sourceRestriction == null)
                 throw new ArgumentNullException("sourceRestriction", $"Must be populated for any of these restrictions: {string.Join(",", RequiringSourceRestriction)}");
-            if (triggerRestrictions.Intersect(RequiringNumberRestriction).Any() && xRestriction == null)
-                throw new ArgumentNullException("xRestriction", $"Must be populated for any of these restrictions: {string.Join(",", RequiringNumberRestriction)}");
             if (triggerRestrictions.Intersect(RequiringSpaceRestriction).Any() && spaceRestriction == null)
                 throw new ArgumentNullException("spaceRestriction", $"Must be populated for any of these restrictions: {string.Join(",", RequiringSpaceRestriction)}");
 
@@ -135,16 +128,11 @@ namespace KompasCore.Effects
 
             MainCardIsStackableSource => triggeringContext.stackableCause?.Source == triggeringContext.mainCardInfoBefore.Card,
             StackableSourceFitsRestriction => sourceRestriction.IsValid(triggeringContext.stackableCause?.Source, new ResolutionContext(triggeringContext)),
-            StackableSourceNotThisEffect => triggeringContext.stackableCause != SourceEffect,
-
             CardAfterFurtherFromSourceThanBefore
                 => ThisCard.DistanceTo(triggeringContext.MainCardInfoAfter.Position) > ThisCard.DistanceTo(triggeringContext.mainCardInfoBefore.Position),
 
             //other non-card triggering things
             SpaceFitsRestriction => triggeringContext.space != null && spaceRestriction.IsValid(triggeringContext.space, new ResolutionContext(triggeringContext)),
-
-            XFitsRestriction => triggeringContext.x.HasValue && xRestriction.IsValid(triggeringContext.x.Value, context: stashedResolutionContext),
-            StackableSourceIsMainCard => triggeringContext.stackableCause is Effect eff && eff.Source == triggeringContext.mainCardInfoBefore.Card,
 
             //misc
             _ => throw new ArgumentException($"Invalid trigger restriction {restriction}"),

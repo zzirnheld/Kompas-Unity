@@ -18,16 +18,17 @@
 								"$type": "Cards:Avatar:",
 								"player": { "$type": "Players:FriendlyPlayer:" }
 							}
-                        }
-                    ],
-					"triggerRestrictions": [
-						"X Fits Restriction"
-					],
-					"xRestriction": {
-						"numberRestrictions": [
-							">0"
-						]
-					}
+                        },
+						{
+							"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
+							"number": { "$type": "Numbers:X:" },
+							"restriction": {
+								"$type": "Core.NumberRestriction:Compare:",
+								"comparison": { "$type": "Relationships.Number:GreaterThan:" },
+								"other": { "$type": "Numbers:Constant:", "constant": 0 }
+							}
+						}
+                    ]
 				}
 			},
 			"subeffects": [
@@ -55,16 +56,17 @@
 								"$type": "Cards:Avatar:",
 								"player": { "$type": "Players:FriendlyPlayer:" }
 							}
-                        }
-                    ],
-					"triggerRestrictions": [
-						"X Fits Restriction"
-					],
-					"xRestriction": {
-						"numberRestrictions": [
-							"<0"
-						]
-					}
+                        },
+						{
+							"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
+							"number": { "$type": "Numbers:X:" },
+							"restriction": {
+								"$type": "Core.NumberRestriction:Compare:",
+								"comparison": { "$type": "Relationships.Number:LessThan:" },
+								"other": { "$type": "Numbers:Constant:", "constant": 0 }
+							}
+						}
+                    ]
 				}
 			},
 			"subeffects": [
