@@ -10,8 +10,7 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Main Card Fits Restriction Before",
-                        "Secondary Card Fits Restriction Before"
+						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
 						"elements": [
@@ -26,9 +25,11 @@
 							}
 						]
 					},
-                    "secondaryCardRestriction": {
-						"elements": [
-							{
+					"triggerRestrictionElements": [
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CardBefore:", "secondaryCard": true },
+                            "cardRestriction":  {
 								"$type": "Core.SpaceRestriction:InAOEOf:",
 								"anyOf": {
 									"$type": "ManyCards:FittingRestriction:",
@@ -42,8 +43,8 @@
 									}
 								}
 							}
-						]
-                    }
+                        }
+					]
 				}
 			},
 			"subeffects": [

@@ -10,12 +10,13 @@
                 "triggerCondition": "Defend",
                 "triggerRestriction": {
                     "triggerRestrictions": [
-                        "Augmented Card is Main Card",
-                        "Secondary Card Fits Restriction Before"
+                        "Augmented Card is Main Card"
 					],
-                    "secondaryCardRestriction": {
-						"elements": [
-							{
+					"triggerRestrictionElements": [
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CardBefore:", "secondaryCard": true },
+                            "cardRestriction":  {
 								"$type": "Core.CardRestriction:CardValueFits:",
 								"cardValue": { "value": "W" },
 								"numberRestriction": { "elements": [{
@@ -27,8 +28,8 @@
 									}
 								}]}
 							}
-						]
-                    }
+                        }
+					]
                 }
             },
             "subeffects":[

@@ -33,17 +33,12 @@ namespace KompasCore.Effects
         private const string MainCardsAugmentedCardBeforeFitsRestriction = "Main Card's Augmented Card Before Fits Restriction";
         private const string MainCardFitsRestrictionAfter = "Main Card Fits Restriction After";
         private const string CardAfterFurtherFromSourceThanBefore = "Main Card After is Further from Source than Before";
-
-        private const string SecondaryCardFitsRestrictionBefore = "Secondary Card Fits Restriction Before";
-
-        private const string CardExistsNow = "Card Exists Now";
         #endregion trigger conditions
 
         private static readonly string[] RequiringCardRestriction =
             { MainCardFitsRestrictionBefore, MainCardsAugmentedCardBeforeFitsRestriction };
         private static readonly string[] RequiringNowRestriction = { MainCardFitsRestrictionAfter };
         private static readonly string[] RequiringSelfRestriction = { ThisCardFitsRestriction };
-        private static readonly string[] RequiringExistsRestriction = { CardExistsNow };
         private static readonly string[] RequiringSourceRestriction = { StackableSourceFitsRestriction };
 
         public static readonly ISet<Type> ReevalationRestrictions
@@ -57,16 +52,11 @@ namespace KompasCore.Effects
         public CardRestriction secondaryCardRestriction;
         public CardRestriction selfRestriction;
         public CardRestriction sourceRestriction;
-        public CardRestriction existsRestriction;
-        public NumberRestriction xRestriction;
-        public SpaceRestriction spaceRestriction;
 
         public TriggerRestrictionElement[] triggerRestrictionElements = { };
 
         private GameCard ThisCard => InitializationContext.source;
-        private Effect SourceEffect => InitializationContext.effect;
         private Game Game => InitializationContext.game;
-        private Trigger ThisTrigger => InitializationContext.trigger;
 
         public override void Initialize(EffectInitializationContext initializationContext)
         {
@@ -75,11 +65,8 @@ namespace KompasCore.Effects
             cardRestriction?.Initialize(initializationContext);
             nowRestriction?.Initialize(initializationContext);
             secondaryCardRestriction?.Initialize(initializationContext);
-            existsRestriction?.Initialize(initializationContext);
             selfRestriction?.Initialize(initializationContext);
-            spaceRestriction?.Initialize(initializationContext);
             sourceRestriction?.Initialize(initializationContext);
-            xRestriction?.Initialize(initializationContext);
 
             foreach (var tre in triggerRestrictionElements)
             {
@@ -93,8 +80,6 @@ namespace KompasCore.Effects
                 throw new ArgumentNullException("nowRestriction", $"Must be populated for any of these restrictions: {string.Join(",", RequiringNowRestriction)}");
             if (triggerRestrictions.Intersect(RequiringSelfRestriction).Any() && selfRestriction == null)
                 throw new ArgumentNullException("selfRestriction", $"Must be populated for any of these restrictions: {string.Join(",", RequiringSelfRestriction)}");
-            if (triggerRestrictions.Intersect(RequiringExistsRestriction).Any() && existsRestriction == null)
-                throw new ArgumentNullException("existsRestriction", $"Must be populated for any of these restrictions: {string.Join(",", RequiringExistsRestriction)}");
             if (triggerRestrictions.Intersect(RequiringSourceRestriction).Any() && sourceRestriction == null)
                 throw new ArgumentNullException("sourceRestriction", $"Must be populated for any of these restrictions: {string.Join(",", RequiringSourceRestriction)}");
 
@@ -110,13 +95,10 @@ namespace KompasCore.Effects
             AugmentedCardIsMainCard => triggeringContext.mainCardInfoBefore.Augments.Contains(ThisCard),
 
             ThisCardInPlay => ThisCard.Location == CardLocation.Board,
-            CardExistsNow => ThisCard.Game.Cards.Any(c => existsRestriction.IsValid(c, new ResolutionContext(triggeringContext))),
-            NoCardExistsNow => !ThisCard.Game.Cards.Any(c => existsRestriction.IsValid(c, new ResolutionContext(triggeringContext))),
 
             ThisCardFitsRestriction => selfRestriction.IsValid(ThisCard, new ResolutionContext(triggeringContext)),
 
             MainCardFitsRestrictionBefore => cardRestriction.IsValid(triggeringContext.mainCardInfoBefore, new ResolutionContext(triggeringContext)),
-            SecondaryCardFitsRestrictionBefore => secondaryCardRestriction.IsValid(triggeringContext.secondaryCardInfoBefore, new ResolutionContext(triggeringContext)),
             MainCardFitsRestrictionAfter => nowRestriction.IsValid(triggeringContext.MainCardInfoAfter, new ResolutionContext(triggeringContext)),
             MainCardsAugmentedCardBeforeFitsRestriction => cardRestriction.IsValid(triggeringContext.mainCardInfoBefore.AugmentedCard, new ResolutionContext(triggeringContext)),
 
