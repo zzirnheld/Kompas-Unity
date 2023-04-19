@@ -61,7 +61,8 @@
                         ]
                     }
                 }
-            ]
+            ],
+            "operation": { "$type": "NumberOperations:Sum:" }
         },
         "secondNumber": {
             "$type": "Numbers:Distance:",

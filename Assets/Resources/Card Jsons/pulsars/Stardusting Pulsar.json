@@ -67,8 +67,8 @@
 							}
                         },
 						{
-							"$type": "Core.TriggerRestriction:CompareNumbers:",
-							"firstNumber": { "$type": "Numbers:X:" },
+							"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
+							"number": { "$type": "Numbers:X:" },
 							"restriction": {
 								"$type": "Core.NumberRestriction:Compare:",
 								"comparison": { "$type": "Relationships.Number:LessThan:" },
