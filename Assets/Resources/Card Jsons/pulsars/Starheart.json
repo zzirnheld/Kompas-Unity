@@ -9,29 +9,26 @@
 				"triggerCondition": "Move",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card in Play",
-						"Space Fits Restriction"
+						"This Card in Play"
 					],
-					"spaceRestriction": {
-						"elements": [
-							{
-								"$type": "Core.SpaceRestriction:AdjacentTo:",
-								"cardRestriction": { "elements": [
-									{
-										"$type": "Core.CardRestriction:Subtypes:",
-										"subtypes": [ "Pulsar" ]
-									},
-									{
-										"$type": "Core.CardRestriction:Not:",
-										"negated": {
-											"$type": "Core.CardRestriction:CardsMatch:",
-											"card": { "$type": "Cards:CardBefore:" }
-										}
+					"triggerRestrictionElements": [
+						{
+							"$type": "Core.SpaceRestriction:AdjacentTo:",
+							"cardRestriction": { "elements": [
+								{
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Pulsar" ]
+								},
+								{
+									"$type": "Core.CardRestriction:Not:",
+									"negated": {
+										"$type": "Core.CardRestriction:CardsMatch:",
+										"card": { "$type": "Cards:CardBefore:" }
 									}
-								] }
-							}
-						]
-					}
+								}
+							] }
+						}
+					]
 				}
 			},
 			"subeffects": [

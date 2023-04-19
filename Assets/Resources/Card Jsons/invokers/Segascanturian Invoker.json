@@ -9,21 +9,16 @@
 				"triggerCondition": "Arrive",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card in Play",
-						"Space Fits Restriction"
+						"This Card in Play"
 					],
-					"spaceRestriction": {
-						"elements": [
-							{
-								"$type": "Core.SpaceRestriction:AdjacentTo:",
-								"space": {
-									"$type": "Spaces:PositionOf:",
-									"ofThisCard": { "$type": "Cards:ThisCard:" }
-								}
-							}
-						]
-					},
 					"triggerRestrictionElements": [
+						{
+							"$type": "Core.SpaceRestriction:AdjacentTo:",
+							"space": {
+								"$type": "Spaces:PositionOf:",
+								"ofThisCard": { "$type": "Cards:ThisCard:" }
+							}
+						},
                         {
                             "$type": "Core.TriggerRestriction:PlayersMatch:",
                             "firstPlayer": { "$type": "Players:TriggeringPlayer:" },

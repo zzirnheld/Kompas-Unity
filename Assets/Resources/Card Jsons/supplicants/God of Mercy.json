@@ -9,22 +9,19 @@
 				"triggerCondition": "Arrive",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card is Main Card",
-						"Space Fits Restriction"
+						"This Card is Main Card"
 					],
-					"spaceRestriction": {
-						"elements": [
-							{
-								"$type": "Core.SpaceRestriction:AdjacentTo:",
-								"cardRestriction": { "elements": [
-									{
-										"$type": "Core.CardRestriction:Subtypes:",
-										"subtypes": [ "Supplicant" ]
-									}
-								] }
-							}
-						]
-					}
+					"triggerRestrictionElements": [
+						{
+							"$type": "Core.SpaceRestriction:AdjacentTo:",
+							"cardRestriction": { "elements": [
+								{
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Supplicant" ]
+								}
+							] }
+						}
+					]
 				}
 			},
 			"subeffects": [

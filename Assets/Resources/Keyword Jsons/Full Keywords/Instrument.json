@@ -4,24 +4,21 @@
     {
         "triggerCondition":"Play",
         "triggerRestriction":{
-            "triggerRestrictions":["This Card in Play","Space Fits Restriction"],
-            "spaceRestriction":
-            {
-                "elements": [
-                    { "$type": "Core.CardRestriction:Friendly:" },
-                    {
-                        "$type": "Core.SpaceRestriction:AdjacentTo:",
-                        "space": {
-                            "$type": "Spaces:PositionOf:",
-                            "ofThisCard": { "$type": "Cards:ThisCard:" }
-                        }
-                    },
-                    {
-                        "$type": "Core.CardRestriction:Subtypes:",
-                        "subtypes": [ "Music" ]
+            "triggerRestrictions":["This Card in Play"],
+            "triggerRestrictionElements": [
+                { "$type": "Core.CardRestriction:Friendly:" },
+                {
+                    "$type": "Core.SpaceRestriction:AdjacentTo:",
+                    "space": {
+                        "$type": "Spaces:PositionOf:",
+                        "ofThisCard": { "$type": "Cards:ThisCard:" }
                     }
-                ]
-            }
+                },
+                {
+                    "$type": "Core.CardRestriction:Subtypes:",
+                    "subtypes": [ "Music" ]
+                }
+            ]
         }
     },
 	"subeffects":[

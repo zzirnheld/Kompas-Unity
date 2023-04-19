@@ -10,7 +10,6 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Space Fits Restriction",
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
@@ -22,15 +21,11 @@
 							}
 						} ]
 					},
-					"spaceRestriction": {
-						"elements": [
-							{
-								"$type": "Core.SpaceRestriction:InAOEOf:",
-								"card": { "$type": "Cards:ThisCard:" }
-							}
-						]
-					},
 					"triggerRestrictionElements": [
+						{
+							"$type": "Core.SpaceRestriction:InAOEOf:",
+							"card": { "$type": "Cards:ThisCard:" }
+						},
 						{ "$type": "Core.TriggerRestriction:MaxPerStack:" }
 					]
 				}

@@ -9,21 +9,19 @@
 				"blurb":"Fog",
 				"triggerCondition":"Arrive",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Main Card Fits Restriction Before","Space Fits Restriction"],
+					"triggerRestrictions":[ "This Card in Play",
+					"Main Card Fits Restriction Before" ],
 					"cardRestriction":{
 						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" }
 						]
 					},
-					"spaceRestriction":
-					{
-						"elements": [
-							{
-								"$type": "Core.SpaceRestriction:InAOEOf:",
-								"card": { "$type": "Cards:ThisCard:" }
-							}
-						]
-					}
+					"triggerRestrictionElements": [
+						{
+							"$type": "Core.SpaceRestriction:InAOEOf:",
+							"card": { "$type": "Cards:ThisCard:" }
+						}
+					]
 				}
 			},
 			"subeffects": [

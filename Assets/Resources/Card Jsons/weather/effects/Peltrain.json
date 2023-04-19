@@ -10,20 +10,17 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Space Fits Restriction",
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
 						"elements": [ { "$type": "Core.CardRestriction:Character:" } ]
 					},
-					"spaceRestriction": {
-						"elements": [
-							{
-								"$type": "Core.SpaceRestriction:InAOEOf:",
-								"card": { "$type": "Cards:ThisCard:" }
-							}
-						]
-					}
+					"triggerRestrictionElements": [
+						{
+							"$type": "Core.SpaceRestriction:InAOEOf:",
+							"card": { "$type": "Cards:ThisCard:" }
+						}
+					]
 				}
 			},
 			"subeffects": [

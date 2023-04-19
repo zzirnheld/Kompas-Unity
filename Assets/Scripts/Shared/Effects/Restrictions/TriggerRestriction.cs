@@ -38,8 +38,6 @@ namespace KompasCore.Effects
 
         private const string CardExistsNow = "Card Exists Now";
         private const string NoCardExistsNow = "No Card Exists Now";
-
-        private const string SpaceFitsRestriction = "Space Fits Restriction";
         #endregion trigger conditions
 
         private static readonly string[] RequiringCardRestriction =
@@ -48,7 +46,6 @@ namespace KompasCore.Effects
         private static readonly string[] RequiringSelfRestriction = { ThisCardFitsRestriction };
         private static readonly string[] RequiringExistsRestriction = { CardExistsNow };
         private static readonly string[] RequiringSourceRestriction = { StackableSourceFitsRestriction };
-        private static readonly string[] RequiringSpaceRestriction = { SpaceFitsRestriction };
 
         public static readonly ISet<Type> ReevalationRestrictions
             = new HashSet<Type>(new Type[] { typeof(MaxPerTurn), typeof(MaxPerRound), typeof(MaxPerStack) });
@@ -101,8 +98,6 @@ namespace KompasCore.Effects
                 throw new ArgumentNullException("existsRestriction", $"Must be populated for any of these restrictions: {string.Join(",", RequiringExistsRestriction)}");
             if (triggerRestrictions.Intersect(RequiringSourceRestriction).Any() && sourceRestriction == null)
                 throw new ArgumentNullException("sourceRestriction", $"Must be populated for any of these restrictions: {string.Join(",", RequiringSourceRestriction)}");
-            if (triggerRestrictions.Intersect(RequiringSpaceRestriction).Any() && spaceRestriction == null)
-                throw new ArgumentNullException("spaceRestriction", $"Must be populated for any of these restrictions: {string.Join(",", RequiringSpaceRestriction)}");
 
             //Debug.Log($"Initializing trigger restriction for {thisCard?.CardName}. game is null? {game}");
         }
@@ -130,9 +125,6 @@ namespace KompasCore.Effects
             StackableSourceFitsRestriction => sourceRestriction.IsValid(triggeringContext.stackableCause?.Source, new ResolutionContext(triggeringContext)),
             CardAfterFurtherFromSourceThanBefore
                 => ThisCard.DistanceTo(triggeringContext.MainCardInfoAfter.Position) > ThisCard.DistanceTo(triggeringContext.mainCardInfoBefore.Position),
-
-            //other non-card triggering things
-            SpaceFitsRestriction => triggeringContext.space != null && spaceRestriction.IsValid(triggeringContext.space, new ResolutionContext(triggeringContext)),
 
             //misc
             _ => throw new ArgumentException($"Invalid trigger restriction {restriction}"),

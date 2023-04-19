@@ -9,8 +9,7 @@
 				"blurb":"BEGONE! SWAT!",
 				"triggerCondition":"Arrive",
 				"triggerRestriction":{
-					"triggerRestrictions":["Space Fits Restriction"],
-					"spaceRestriction": { "elements":[ 
+					"triggerRestrictionElements": [
 						{
 							"$type": "Core.SpaceRestriction:AdjacentTo:",
 							"space": {
@@ -18,7 +17,7 @@
 								"ofThisCard": { "$type": "Cards:ThisCard:" }
 							}
 						}
-					] }
+					]
 				}
 			},
 			"subeffects":[

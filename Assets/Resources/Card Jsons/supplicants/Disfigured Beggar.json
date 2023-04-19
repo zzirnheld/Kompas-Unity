@@ -10,7 +10,6 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Space Fits Restriction",
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
@@ -25,20 +24,16 @@
 							}
 						]
 					},
-					"spaceRestriction": {
-						"elements": [
-							{
-								"$type": "Core.SpaceRestriction:AdjacentTo:",
-								"cardRestriction": { "elements": [
-									{
-										"$type": "Core.CardRestriction:Subtypes:",
-										"subtypes": [ "Supplicant" ]
-									}
-								] }
-							}
-						]
-					},
 					"triggerRestrictionElements": [
+						{
+							"$type": "Core.SpaceRestriction:AdjacentTo:",
+							"cardRestriction": { "elements": [
+								{
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Supplicant" ]
+								}
+							] }
+						},
 						{ "$type": "Core.TriggerRestriction:MaxPerTurn:" }
 					]
 				}

@@ -10,23 +10,20 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Space Fits Restriction",
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
 						"elements": [ { "$type": "Core.CardRestriction:Character:" } ]
 					},
-					"spaceRestriction": {
-						"elements": [
-							{
-								"$type": "Core.SpaceRestriction:AdjacentTo:",
-								"cardRestriction": { "elements": [
-									{ "$type": "Core.CardRestriction:Enemy:" },
-									{ "$type": "Core.CardRestriction:Avatar:" }
-								] }
-							}
-						]
-					}
+					"triggerRestrictionElements": [
+						{
+							"$type": "Core.SpaceRestriction:AdjacentTo:",
+							"cardRestriction": { "elements": [
+								{ "$type": "Core.CardRestriction:Enemy:" },
+								{ "$type": "Core.CardRestriction:Avatar:" }
+							] }
+						}
+					]
 				}
 			},
 			"subeffects": [

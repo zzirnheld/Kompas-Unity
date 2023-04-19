@@ -8,18 +8,13 @@
 				"triggerCondition": "Move",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card in Play",
-						"Space Fits Restriction"
+						"This Card in Play"
 					],
-					"spaceRestriction": {
-						"elements": [
-							{
-								"$type": "Core.SpaceRestriction:InAOEOf:",
-								"card": { "$type": "Cards:ThisCard:" }
-							}
-						]
-					},
 					"triggerRestrictionElements": [
+						{
+							"$type": "Core.SpaceRestriction:InAOEOf:",
+							"card": { "$type": "Cards:ThisCard:" }
+						},
 						{ "$type": "Core.TriggerRestriction:MaxPerStack:" },
 						{ "$type": "Core.TriggerRestriction:Normally:" }
 					]

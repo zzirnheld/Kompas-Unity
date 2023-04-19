@@ -1,12 +1,12 @@
 using KompasCore.Cards;
-using KompasCore.Effects.Identities;
 using System.Linq;
 
 namespace KompasCore.Effects.Restrictions
 {
-    public abstract class SpaceRestrictionElement : RestrictionElementBase<Space>, IRestriction<GameCardBase>
+    public abstract class SpaceRestrictionElement : RestrictionElementBase<Space>, IRestriction<GameCardBase>, IRestriction<TriggeringEventContext>
     {
         public bool IsValid(GameCardBase item, IResolutionContext context) => IsValid(item?.Position, context);
+        public bool IsValid(TriggeringEventContext item, IResolutionContext context) => IsValid(item?.space, context);
     }
 
     namespace SpaceRestrictionElements

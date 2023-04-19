@@ -10,7 +10,6 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Space Fits Restriction",
 						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
@@ -19,20 +18,18 @@
 							{ "$type": "Core.CardRestriction:Enemy:" }
 						]
 					},
-					"spaceRestriction": {
-						"elements": [
-							{
-								"$type": "Core.SpaceRestriction:AdjacentTo:",
-								"cardRestriction": { "elements": [
-									{ "$type": "Core.CardRestriction:Friendly:" },
-									{
-										"$type": "Core.CardRestriction:Subtypes:",
-										"subtypes": [ "Fungus" ]
-									}
-								] }
-							}
-						]
-					}
+					"triggerRestrictionElements": [
+						{
+							"$type": "Core.SpaceRestriction:AdjacentTo:",
+							"cardRestriction": { "elements": [
+								{ "$type": "Core.CardRestriction:Friendly:" },
+								{
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Fungus" ]
+								}
+							] }
+						}
+					]
 				}
 			},
 			"subeffects": [
