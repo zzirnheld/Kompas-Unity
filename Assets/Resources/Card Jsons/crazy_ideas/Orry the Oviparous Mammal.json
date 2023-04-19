@@ -13,7 +13,7 @@
 					"triggerRestrictionElements": [
 						{
 							"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
-							"number": { "$type": "Numbers:X:" },
+							"number": { "$type": "Numbers:TriggerX:" },
 							"restriction": {
 								"numberRestrictions": [ "==Constant" ],
 								"constant":3

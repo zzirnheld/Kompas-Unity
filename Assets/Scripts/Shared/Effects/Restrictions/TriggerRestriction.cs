@@ -52,7 +52,7 @@ namespace KompasCore.Effects
         public CardRestriction selfRestriction;
         public CardRestriction sourceRestriction;
 
-        public TriggerRestrictionElement[] triggerRestrictionElements = { };
+        public IRestriction<TriggeringEventContext>[] triggerRestrictionElements = { };
 
         private GameCard ThisCard => InitializationContext.source;
         private Game Game => InitializationContext.game;

@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Guild Armsmaster",
-	"effText": "Warrior Trainer: +1 W.",
+	"effText": "Warrior Trainer: +2 W.",
 	"effects": [
 		{
 			"blurb": "Train W",
@@ -39,14 +39,14 @@
 				},
 				{
 					"$type": "Subeffect:ChangeCardStats:",
-					"wModifier": 1
+					"wModifier": 2
 				}
 			]
 		}
 	],
-	"n": 1,
-	"e": 1,
-	"s": 2,
+	"n": 3,
+	"e": 3,
+	"s": 3,
 	"w": 3,
 	"subtypeText": "Swordguild Warrior Trainer"
 }

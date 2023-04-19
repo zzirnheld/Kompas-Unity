@@ -20,7 +20,7 @@
                         },
 						{
 							"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
-							"number": { "$type": "Numbers:X:" },
+							"number": { "$type": "Numbers:TriggerX:" },
 							"restriction": {
 								"$type": "Core.NumberRestriction:Compare:",
 								"comparison": { "$type": "Relationships.Number:GreaterThan:" },
@@ -68,7 +68,7 @@
                         },
 						{
 							"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
-							"number": { "$type": "Numbers:X:" },
+							"number": { "$type": "Numbers:TriggerX:" },
 							"restriction": {
 								"$type": "Core.NumberRestriction:Compare:",
 								"comparison": { "$type": "Relationships.Number:LessThan:" },
