@@ -53,10 +53,7 @@
 							},
 							{
 								"$type": "Core.SpaceRestriction:SameDiagonal:",
-								"other": {
-									"$type": "Spaces:PositionOf:",
-									"card": { "$type": "Cards:TargetIndex:" }
-								}
+								"other": { "$type": "Cards:TargetIndex:" }
 							}
 						]
 					}

@@ -122,10 +122,7 @@
                             },
                             {
                                 "$type": "Core.SpaceRestriction:CompareDistance:",
-                                "distanceTo": {
-                                    "$type": "Spaces:PositionOf:",
-                                    "ofThisCard": { "$type": "Cards:ThisCard:" }
-                                },
+                                "distanceTo": { "$type": "Cards:ThisCard:" },
                                 "number": { "$type": "Numbers:Constant:", "constant": 2 },
                                 "comparison": { "$type": "Relationships.Number:Equal:" }
                             }

@@ -28,10 +28,7 @@
                             { "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.SpaceRestriction:Displacement:",
-								"from": {
-                                    "$type": "Spaces:PositionOf:",
-                                    "ofThisCard": { "$type": "Cards:ThisCard:" }
-                                },
+								"from": { "$type": "Cards:ThisCard:" },
 								"displacement": { "$type": "Spaces:Constant:", "x": 1, "y": 1 },
 								"subjective": true
 							}

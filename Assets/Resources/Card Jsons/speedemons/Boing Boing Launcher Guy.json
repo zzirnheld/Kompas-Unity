@@ -51,18 +51,12 @@
 							},
 							{
 								"$type": "Core.SpaceRestriction:CompareDistance:",
-								"distanceTo": {
-									"$type": "Spaces:PositionOf:",
-									"ofThisCard": { "$type": "Cards:TargetIndex:" }
-								},
+								"distanceTo": { "$type": "Cards:TargetIndex:" },
 								"number": { "$type": "Numbers:Constant:", "constant": 1 }
 							},
 							{
 								"$type": "Core.SpaceRestriction:AwayFrom:",
-								"destination": {
-                                    "$type": "Spaces:PositionOf:",
-                                    "ofThisCard": { "$type": "Cards:ThisCard:" }
-                                },
+								"destination": { "$type": "Cards:ThisCard:" },
 								"origin": { "$type": "Spaces:TargetIndex:" }
 							}
 						]

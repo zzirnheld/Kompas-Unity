@@ -56,10 +56,7 @@
 						{ "$type": "Core.CardRestriction:Character:" },
 						{
 							"$type": "Core.SpaceRestriction:AdjacentTo:",
-							"space": {
-								"$type": "Spaces:PositionOf:",
-								"ofThisCard": { "$type": "Cards:TargetIndex:" }
-							}
+							"space": { "$type": "Cards:TargetIndex:" }
 						}
 					] },
 					"wMultiplier": -1

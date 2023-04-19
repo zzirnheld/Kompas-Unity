@@ -34,10 +34,7 @@
 										} ]
 									}
 								},
-								"sameAs": {
-                                    "$type": "Spaces:PositionOf:",
-                                    "ofThisCard": { "$type": "Cards:ThisCard:" }
-                                }
+								"sameAs": { "$type": "Cards:ThisCard:" }
 							}
 						]
 					},

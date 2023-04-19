@@ -36,10 +36,7 @@
                         "selector": { "$type": "KompasCore.Effects.Selectors.RandomSpace, Assembly-CSharp" },
                         "spaces": {
                             "$type": "ManySpaces:CompareDistance:",
-                            "distanceTo": { 
-                                "$type": "Spaces:PositionOf:",
-                                "ofThisCard": { "$type": "Cards:TargetIndex:" }
-                            },
+                            "distanceTo": { "$type": "Cards:TargetIndex:" },
                             "spaces": {
                                 "$type": "ManySpaces:PositionsOfEach:",
                                 "cards": {
@@ -62,10 +59,7 @@
                             "distanceTo": { "$type": "Cards:TargetIndex:" },
                             "spaces": {
                                 "$type": "ManySpaces:AdjacentSpaces:",
-                                "adjacentTo": {
-                                    "$type": "Spaces:PositionOf:",
-                                    "ofThisCard": { "$type": "Cards:TargetIndex:" }
-                                }
+                                "adjacentTo": { "$type": "Cards:TargetIndex:" }
                             }
                         }
                     }

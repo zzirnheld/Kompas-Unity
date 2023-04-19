@@ -28,10 +28,7 @@
 							{ "$type": "Core.SpaceRestriction:Empty:" },
                             {
 								"$type": "Core.SpaceRestriction:SameDiagonal:",
-								"other": {
-									"$type": "Spaces:PositionOf:",
-									"card": { "$type": "Cards:ThisCard:" }
-								}
+								"other": { "$type": "Cards:ThisCard:" }
                             }
 						]
 					},
@@ -46,10 +43,7 @@
 						"elements": [
 							{
 								"$type": "Core.SpaceRestriction:Direction:",
-								"from": {
-									"$type": "Spaces:PositionOf:",
-									"ofThisCard": { "$type": "Cards:ThisCard:" }
-								}
+								"from": { "$type": "Cards:ThisCard:" }
 							}
 						]
 					},

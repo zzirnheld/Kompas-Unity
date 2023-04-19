@@ -81,10 +81,7 @@
 				},
 				{
 					"$type": "Subeffect:AutoTargetSpaceIdentity:",
-                    "spaceIdentity": {
-                        "$type": "Spaces:PositionOf:",
-                        "ofThisCard": { "$type": "Cards:CardBefore:" }
-                    }
+                    "spaceIdentity": { "$type": "Cards:CardBefore:" }
 				},
 				{
 					"$type": "Subeffect:Play:"

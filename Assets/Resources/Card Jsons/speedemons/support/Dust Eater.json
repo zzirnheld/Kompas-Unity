@@ -16,10 +16,7 @@
 						"elements": [
 							{
 								"$type": "Core.SpaceRestriction:SameDiagonal:",
-								"other": {
-									"$type": "Spaces:PositionOf:",
-									"card": { "$type": "Cards:ThisCard:" }
-								}
+								"other": { "$type": "Cards:ThisCard:" }
 							}
 						]
 					}

@@ -23,14 +23,8 @@
                 },
                 {
                     "$type": "Numbers:Distance:",
-                    "firstSpace": {
-                        "$type": "Spaces:PositionOf:",
-                        "ofThisCard": { "$type": "Cards:ThisCard:" }
-                    },
-                    "secondSpace": {
-                        "$type": "Spaces:PositionOf:",
-                        "ofThisCard": { "$type": "Cards:CardBefore:" }
-                    },
+                    "firstSpace": { "$type": "Cards:ThisCard:" },
+                    "secondSpace": { "$type": "Cards:CardBefore:" },
                     "throughRestriction": {
                         "elements": [
                             {
@@ -49,14 +43,8 @@
                 },
                 {
                     "$type": "Numbers:Distance:",
-                    "firstSpace": {
-                        "$type": "Spaces:PositionOf:",
-                        "ofThisCard": { "$type": "Cards:ThisCard:" }
-                    },
-                    "secondSpace": {
-                        "$type": "Spaces:PositionOf:",
-                        "ofThisCard": { "$type": "Cards:CardAfter:" }
-                    },
+                    "firstSpace": { "$type": "Cards:ThisCard:" },
+                    "secondSpace": { "$type": "Cards:CardAfter:" },
                     "throughRestriction": {
                         "elements": [
                             {
@@ -77,14 +65,8 @@
         },
         "secondNumber": {
             "$type": "Numbers:Distance:",
-            "firstSpace": {
-                "$type": "Spaces:PositionOf:",
-                "ofThisCard": { "$type": "Cards:CardBefore:" }
-            },
-            "secondSpace": {
-                "$type": "Spaces:PositionOf:",
-                "ofThisCard": { "$type": "Cards:CardAfter:" }
-            },
+            "firstSpace": { "$type": "Cards:CardBefore:" },
+            "secondSpace": { "$type": "Cards:CardAfter:" },
             "throughRestriction": {
                 "elements": [
                     {

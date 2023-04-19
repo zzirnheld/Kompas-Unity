@@ -32,10 +32,7 @@
 							{ "$type": "Core.CardRestriction:Enemy:" },
 							{
 								"$type": "Core.SpaceRestriction:ConnectedTo:",
-								"space": {
-                                    "$type": "Spaces:PositionOf:",
-                                    "ofThisCard": { "$type": "Cards:TargetIndex:" }
-                                },
+								"space": { "$type": "Cards:TargetIndex:" },
 								"byRestriction":{
 									"elements": [
 										{ "$type": "Core.CardRestriction:Enemy:" },

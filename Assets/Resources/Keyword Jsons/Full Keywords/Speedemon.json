@@ -42,19 +42,13 @@
 					},
 					{
 						"$type": "Core.SpaceRestriction:CompareDistance:",
-						"distanceTo": {
-							"$type": "Spaces:PositionOf:",
-							"ofThisCard": { "$type": "Cards:ThisCard:" }
-						},
+						"distanceTo": { "$type": "Cards:ThisCard:" },
 						"number": { "$type": "Numbers:Constant:", "constant": 1 },
 						"comparison": { "$type": "Relationships.Number:Equal:" }
 					},
 					{
 						"$type": "Core.SpaceRestriction:Direction:",
-                        "from": {
-							"$type": "Spaces:PositionOf:",
-							"ofThisCard": { "$type": "Cards:ThisCard:" }
-						},
+                        "from": { "$type": "Cards:ThisCard:" },
 						"direction": {
 							"$type": "Spaces:Direction:",
 							"from": { "$type": "Spaces:TargetIndex:", "index": -2 },

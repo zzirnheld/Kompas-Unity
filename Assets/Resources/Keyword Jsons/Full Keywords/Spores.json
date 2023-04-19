@@ -18,10 +18,7 @@
                 "$type": "ManyCards:CardsInPositions:",
                 "positions": {
                     "$type": "ManySpaces:AdjacentSpaces:",
-                    "adjacentTo": {
-                        "$type": "Spaces:PositionOf:",
-                        "ofThisCard": { "$type": "Cards:ThisCard:" }
-                    }
+                    "adjacentTo": { "$type": "Cards:ThisCard:" }
                 }
             }
         },

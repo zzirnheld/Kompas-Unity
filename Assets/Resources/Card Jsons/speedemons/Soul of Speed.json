@@ -47,10 +47,7 @@
 					"$type": "Subeffect:AutoTargetSpaceIdentity:",
                     "spaceIdentity": {
                         "$type": "Spaces:ApplyDisplacement:",
-                        "from": {
-							"$type": "Spaces:PositionOf:",
-							"ofThisCard": { "$type": "Cards:ThisCard:" }
-						},
+                        "from": { "$type": "Cards:ThisCard:" },
 						"displacement": {
 							"$type": "Spaces:Displacement:",
 							"from": { "$type": "Spaces:TargetIndex:", "index": -2 },

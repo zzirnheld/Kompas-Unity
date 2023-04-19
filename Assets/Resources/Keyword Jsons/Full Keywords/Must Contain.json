@@ -4,28 +4,29 @@
 	{
 		"triggerCondition":"Stack End",
 		"triggerRestriction":{
-			"triggerRestrictions": [
-                "This Card in Play",
-                "No Card Exists Now"
-            ],
-            "existsRestriction":
-            {
-                "elements": [
-                    { "$type": "Core.CardRestriction:Character:" },
-                    {
-                        "$type": "Core.CardRestriction:Location:",
-                        "locations": [ "Board" ]
-                    },
-                    {
-                        "$type": "Core.CardRestriction:Subtypes:",
-                        "subtypes": [ "Structure" ]
-                    },
-                    {
-                        "$type": "Core.SpaceRestriction:InAOEOf:",
-                        "card": { "$type": "Cards:ThisCard:" }
+            "triggerRestrictionElements": [
+                { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                {
+                    "$type": "Core.TriggerRestriction:Not:",
+                    "inverted": {
+                        "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                        "cardRestriction": {
+                            "elements": [
+                                { "$type": "Core.CardRestriction:Character:" },
+                                {
+                                    "$type": "Core.CardRestriction:Subtypes:",
+                                    "subtypes": [ "Structure" ]
+                                },
+                                {
+                                    "$type": "Core.SpaceRestriction:InAOEOf:",
+                                    "card": { "$type": "Cards:ThisCard:" }
+                                }
+                            ]
+                        },
+                        "anyOf": { "$type": "ManyCards:Board:" }
                     }
-                ]
-            }
+                }
+            ]
 		}
 	},
 	"subeffects":[

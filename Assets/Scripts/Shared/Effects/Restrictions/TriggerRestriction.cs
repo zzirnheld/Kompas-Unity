@@ -37,7 +37,6 @@ namespace KompasCore.Effects
         private const string SecondaryCardFitsRestrictionBefore = "Secondary Card Fits Restriction Before";
 
         private const string CardExistsNow = "Card Exists Now";
-        private const string NoCardExistsNow = "No Card Exists Now";
         #endregion trigger conditions
 
         private static readonly string[] RequiringCardRestriction =

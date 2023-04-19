@@ -14,10 +14,7 @@
                 "triggerRestrictionElements": [
                     {
                         "$type": "Core.SpaceRestriction:AdjacentTo:",
-                        "space": {
-                            "$type": "Spaces:PositionOf:",
-                            "ofThisCard": { "$type": "Cards:ThisCard:" }
-                        }
+                        "space": { "$type": "Cards:ThisCard:" }
                     }
                 ],
                 "cardRestriction": {
@@ -34,10 +31,7 @@
 						"$type": "ManyCards:CardsInPositions:",
 						"positions": {
                             "$type": "ManySpaces:AdjacentSpaces:",
-                            "adjacentTo": {
-                                "$type": "Spaces:PositionOf:",
-                                "ofThisCard": { "$type": "Cards:TargetIndex:" }
-                            }
+                            "adjacentTo": { "$type": "Cards:TargetIndex:" }
 						}
 					}
                 },
@@ -54,11 +48,8 @@
                             "spaces": {
                                 "$type": "ManySpaces:AdjacentSpaces:",
                                 "adjacentTo": {
-                                    "$type": "Spaces:PositionOf:",
-                                    "ofThisCard": {
-                                        "$type": "Cards:TargetIndex:",
-                                        "index": 0
-                                    }
+                                    "$type": "Cards:TargetIndex:",
+                                    "index": 0
                                 }
                             }
                         }
