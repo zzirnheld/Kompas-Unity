@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Master Graftsman",
-	"effText": "When you summon another character, give them -3 E, but +1 NW.\nWhen you hurt a friendly Tree, heal it.",
+	"effText": "When you summon another character, give them -3 E, but +1 NW.",
 	"effects": [
 		{
 			"triggerData": {
@@ -41,56 +41,6 @@
 					"eModifier": -3,
 					"nModifier": 1,
 					"wModifier": 1
-				}
-			]
-		},
-		{
-            "blurb": "Graft Healing",
-			"triggerData": {
-				"triggerCondition": "E Change",
-				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Main Card Fits Restriction After"
-					],
-					"nowRestriction": {
-						"elements": [
-							{ "$type": "Core.CardRestriction:Hurt:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							},
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Tree" ]
-							}
-						]
-					},
-					"triggerRestrictionElements": [
-                        {
-                            "$type": "Core.TriggerRestriction:PlayersMatch:",
-                            "firstPlayer": { "$type": "Players:TriggeringPlayer:" },
-                            "secondPlayer": { "$type": "Players:FriendlyPlayer:" }
-                        },
-						{
-							"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
-							"number": { "$type": "Numbers:TriggerX:" },
-							"restriction": {
-								"$type": "Core.NumberRestriction:Compare:",
-								"comparison": { "$type": "Relationships.Number:LessThan:" },
-								"other": { "$type": "Numbers:Constant:", "constant": 0 }
-							}
-						},
-                        { "$type": "Core.TriggerRestriction:IsEffect:" }
-                    ]
-				}
-			},
-			"subeffects": [
-				{
-					"$type": "Subeffect:TargetTriggeringCard:"
-				},
-				{
-					"$type": "Subeffect:Heal:"
 				}
 			]
 		}
