@@ -17,6 +17,7 @@
 							"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
 							"number": { "$type": "Numbers:TriggerX:" },
 							"restriction": {
+								"$type": "KompasCore.Effects.NumberRestriction, Assembly-CSharp",
 								"numberRestrictions": [ "==Constant" ],
 								"constant":3
 							}

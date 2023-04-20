@@ -75,8 +75,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where for Altar Builder to cast its target Altar",
 					"spaceRestriction": {
-						"blurb": "where for Altar Builder to cast its target Altar",
+						"$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {

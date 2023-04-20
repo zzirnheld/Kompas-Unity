@@ -20,9 +20,8 @@
 				{
 					"$type": "Subeffect:AutoTarget:",
 					"toSearch": { "$type": "ManyCards:Deck:" },
-					
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
+					"cardRestriction": {
+						"$type": "Core.CardRestriction:AllOf:",
 							"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{ "$type": "Core.CardRestriction:Character:" },
@@ -36,8 +35,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where to play Silent Twin's new convert",
 					"spaceRestriction": {
-						"blurb": "where to play Silent Twin's new convert",
+						"$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {

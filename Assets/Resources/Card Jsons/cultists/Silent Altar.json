@@ -106,9 +106,8 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
-					"maxCanChoose": 1,
+					"blurb": "culmination of the Silent Altar Ritual",
 					"cardRestriction": {
-						"blurb": "culmination of the Silent Altar Ritual",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
@@ -122,8 +121,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where to play the result Silent Altar Ritual",
 					"spaceRestriction": {
-						"blurb": "where to play the result Silent Altar Ritual",
+						"$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {

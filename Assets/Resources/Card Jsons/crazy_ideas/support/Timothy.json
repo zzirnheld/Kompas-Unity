@@ -14,10 +14,9 @@
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
                             "card": { "$type": "Cards:CardBefore:" },
-                            
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:AllOf:",
+								"elements": [
 									{
 										"$type": "Core.CardRestriction:Location:",
 										"locations": [ "Hand" ]
@@ -38,8 +37,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where, Timothy. Where? Where can I put THIS one?",
 					"spaceRestriction": {
-						"blurb": "where, Timothy. Where? Where can I put THIS one?",
+						"$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {

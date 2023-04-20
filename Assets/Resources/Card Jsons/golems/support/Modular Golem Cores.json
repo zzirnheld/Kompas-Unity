@@ -14,29 +14,22 @@
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
                             "card": { "$type": "Cards:CardAfter:" },
-                            
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
-									{
-										"$type": "Core.SpaceRestriction:AdjacentTo:",
-										
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
-												{
-													"$type": "Core.CardRestriction:Subtypes:",
-													"subtypes": [ "Golem" ]
-												},
-												{
-													"$type": "Core.CardRestriction:HasAugment:",
-													"cardRestriction": { "elements": [] }
-												}
-											]
+							"cardRestriction": {
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"cardRestriction": {
+									"$type": "Core.CardRestriction:AllOf:",
+									"elements": [
+										{
+											"$type": "Core.CardRestriction:Subtypes:",
+											"subtypes": [ "Golem" ]
+										},
+										{
+											"$type": "Core.CardRestriction:HasAugment:",
+											"cardRestriction": { "elements": [] }
 										}
-									}
-								]
-                            }
+									]
+								}
+							}
                         }
 					]
 				}
@@ -47,9 +40,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Golem to swap out modules",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "Golem to swap out modules",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
@@ -91,9 +84,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Golem core for Modular Golem Cores to attach",
 					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
-						"blurb": "Golem core for Modular Golem Cores to attach",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Augment:" },

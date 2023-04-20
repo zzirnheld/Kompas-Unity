@@ -58,8 +58,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where to play Bloodcurser's new bloodcurse (1/2)",
 					"spaceRestriction": {
-						"blurb": "where to play Bloodcurser's new bloodcurse (1/2)",
+						"$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {
@@ -74,9 +75,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Silent Cult Follower to bloodcurse (2/2)",
 					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"blurb": "Silent Cult Follower to bloodcurse (2/2)",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
@@ -89,8 +90,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where to play Bloodcurser's new bloodcurse (2/2)",
 					"spaceRestriction": {
-						"blurb": "where to play Bloodcurser's new bloodcurse (2/2)",
+						"$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {

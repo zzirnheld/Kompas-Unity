@@ -35,19 +35,20 @@
 				{
 					"$type": "Subeffect:ConditionalJump:",
 					"condition": "Target Violates Restriction",
-					
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
-                            { "$type": "Core.CardRestriction:Character:" }, {
-							"$type": "Core.CardRestriction:CardValueFits:",
-							"cardValue": { "value": "Cost" },
-							"numberRestriction": { "elements": [ {
-								"$type": "Core.NumberRestriction:Compare:",
-								"comparison": { "$type": "Relationships.Number:LessThan:" },
-								"other": { "$type": "Numbers:EffectX:" }
-							} ] }
-						} ]
+					"cardRestriction": {
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": { "value": "Cost" },
+								"numberRestriction": {
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:LessThan:" },
+									"other": { "$type": "Numbers:EffectX:" }
+								}
+							}
+						]
 					},
 					"jumpIndices": [
 						2
