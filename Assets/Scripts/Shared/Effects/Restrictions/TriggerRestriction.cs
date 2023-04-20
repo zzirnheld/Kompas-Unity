@@ -30,11 +30,7 @@ namespace KompasCore.Effects
         private const string MainCardIsStackableSource = "Main Card is Stackable Source";
 
         private const string MainCardFitsRestrictionBefore = "Main Card Fits Restriction Before";
-        private const string MainCardsAugmentedCardBeforeFitsRestriction = "Main Card's Augmented Card Before Fits Restriction";
         #endregion trigger conditions
-
-        private static readonly string[] RequiringCardRestriction =
-            { MainCardFitsRestrictionBefore, MainCardsAugmentedCardBeforeFitsRestriction };
         private static readonly string[] RequiringSelfRestriction = { ThisCardFitsRestriction };
         private static readonly string[] RequiringSourceRestriction = { StackableSourceFitsRestriction };
 

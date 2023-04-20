@@ -8,19 +8,20 @@
 			{
 				"blurb":"Fog",
 				"triggerCondition":"Arrive",
-				"triggerRestriction":{
-					"triggerRestrictions":[ "This Card in Play",
-					"Main Card Fits Restriction Before" ],
-					"cardRestriction":{
-						"elements": [
-							{ "$type": "Core.CardRestriction:Character:" }
-						]
-					},
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play"
+					],
 					"triggerRestrictionElements": [
 						{
 							"$type": "Core.SpaceRestriction:InAOEOf:",
 							"card": { "$type": "Cards:ThisCard:" }
-						}
+						},
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CardBefore:" },
+                            "cardRestriction": { "$type": "Core.CardRestriction:Character:" }
+                        }
 					]
 				}
 			},

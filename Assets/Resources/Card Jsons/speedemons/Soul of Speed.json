@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Soul of Speed",
-	"effText": "Speedemon.\nWhen another Speedemon moves normally, move me the same direction and distance, and give me +1 EW.",
+	"effText": "When a Speedemon moves, move me the same direction and distance, and give me +1 EW.",
 	"effects": [
 		{
 			"blurb": "Speedsoul",
@@ -9,26 +9,29 @@
 				"triggerCondition": "Move",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card in Play",
-						"Main Card Fits Restriction Before"
+						"This Card in Play"
 					],
-					"cardRestriction": {
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Not:",
-								"negated": {
-									"$type": "Core.CardRestriction:CardsMatch:",
-									"card": { "$type": "Cards:ThisCard:" }
-								}
-							},
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Speedemon" ]
-							}
-						]
-					},
 					"triggerRestrictionElements": [
-						{ "$type": "Core.TriggerRestriction:Normally:" }
+						{ "$type": "Core.TriggerRestriction:Normally:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CardBefore:" },
+                            "cardRestriction": {
+								"elements": [
+									{
+										"$type": "Core.CardRestriction:Not:",
+										"negated": {
+											"$type": "Core.CardRestriction:CardsMatch:",
+											"card": { "$type": "Cards:ThisCard:" }
+										}
+									},
+									{
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Speedemon" ]
+									}
+								]
+                            }
+                        }
 					]
 				}
 			},
@@ -66,12 +69,9 @@
 			]
 		}
 	],
-	"keywords": [
-		"Speedemon"
-	],
 	"n": 0,
 	"e": 1,
 	"s": 5,
 	"w": 1,
-	"subtypeText": "Speedemon"
+	"subtypeText": "Speed"
 }

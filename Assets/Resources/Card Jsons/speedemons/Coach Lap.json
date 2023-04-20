@@ -1,34 +1,35 @@
 {
 	"cardType": 67,
 	"cardName": "Coach Lap",
-	"effText": "Speedemon.\nThe first time each stack another character arrives adjacent to me, their controller moves them 1 space.",
+	"effText": "Speedemon.\nThe first time each stack a character arrives adjacent to me, their controller moves them 1 space.",
 	"effects": [
 		{
 			"blurb": "Lap! Yeah!",
 			"triggerData": {
 				"triggerCondition": "Arrive",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"Main Card Fits Restriction Before"
-					],
-					"cardRestriction": {
-						"elements": [
-							{ "$type": "Core.CardRestriction:Character:" },
-							{
-								"$type": "Core.CardRestriction:Not:",
-								"negated": {
-									"$type": "Core.CardRestriction:CardsMatch:",
-									"card": { "$type": "Cards:ThisCard:" }
-								}
-							}
-						]
-					},
 					"triggerRestrictionElements": [
 						{
 							"$type": "Core.SpaceRestriction:AdjacentTo:",
 							"space": { "$type": "Cards:ThisCard:" }
 						},
-						{ "$type": "Core.TriggerRestriction:MaxPerStack:" }
+						{ "$type": "Core.TriggerRestriction:MaxPerStack:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CardBefore:" },
+                            "cardRestriction": {
+								"elements": [
+									{ "$type": "Core.CardRestriction:Character:" },
+									{
+										"$type": "Core.CardRestriction:Not:",
+										"negated": {
+											"$type": "Core.CardRestriction:CardsMatch:",
+											"card": { "$type": "Cards:ThisCard:" }
+										}
+									}
+								]
+                            }
+                        }
 					]
 				}
 			},

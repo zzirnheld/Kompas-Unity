@@ -8,14 +8,8 @@
 				"triggerCondition": "E Change",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card in Play",
-						"Main Card Fits Restriction Before"
+						"This Card in Play"
 					],
-					"cardRestriction": {
-						"elements": [
-							{ "$type": "Core.CardRestriction:Hurt:" }
-						]
-					},
 					"triggerRestrictionElements": [
 						{
 							"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
@@ -25,7 +19,12 @@
 								"comparison": { "$type": "Relationships.Number:GreaterThan:" },
 								"other": { "$type": "Numbers:Constant:", "constant": 0 }
 							}
-						}
+						},
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CardBefore:" },
+                            "cardRestriction": { "$type": "Core.CardRestriction:Hurt:" }
+                        }
 					]
 				}
 			},

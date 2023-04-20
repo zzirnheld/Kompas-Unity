@@ -9,30 +9,8 @@
 				"triggerCondition": "Arrive",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card in Play",
-						"Main Card Fits Restriction Before"
+						"This Card in Play"
 					],
-					"cardRestriction": {
-						"elements": [
-                            { "$type": "Core.CardRestriction:Character:" },
-							{ "$type": "Core.CardRestriction:Enemy:" },
-                            {
-								"$type": "Core.SpaceRestriction:Not:",
-								"negated": {
-									"$type": "Core.SpaceRestriction:InAOEOf:",
-									"anyOf": {
-										"$type": "ManyCards:FittingRestriction:",
-										"cardRestriction": {
-										"elements": [ {
-												"$type": "Core.CardRestriction:Subtypes:",
-												"subtypes": [ "Weather" ]
-											} ]
-										}
-									}
-								}
-                            }
-						]
-					},
 					"triggerRestrictionElements": [
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
@@ -53,7 +31,30 @@
 									}
 								]
 							}
-						}
+						},
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CardBefore:" },
+                            "cardRestriction": {
+								"elements": [
+									{ "$type": "Core.CardRestriction:Character:" },
+									{ "$type": "Core.CardRestriction:Enemy:" },
+									{
+										"$type": "Core.SpaceRestriction:Not:",
+										"negated": {
+											"$type": "Core.SpaceRestriction:InAOEOf:",
+											"anyOf": {
+												"$type": "ManyCards:FittingRestriction:",
+												"cardRestriction": {
+													"$type": "Core.CardRestriction:Subtypes:",
+													"subtypes": [ "Weather" ]
+												}
+											}
+										}
+									}
+								]
+                            }
+                        }
 					]
 				}
 			},

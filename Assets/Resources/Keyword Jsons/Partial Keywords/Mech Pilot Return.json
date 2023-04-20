@@ -6,22 +6,19 @@
         "fallOffCondition":"",
         "endCondition":"Discard",
         "triggerRestriction":{
-            "triggerRestrictions": [
-                "Main Card Fits Restriction Before"
-            ],
-            "cardRestriction": {
-                "elements": [
-                    {
-                        "$type": "Core.CardRestriction:Location:",
-                        "locations": [ "Board" ]
-                    }
-                ]
-            },
             "triggerRestrictionElements": [
                 {
                     "$type": "Core.TriggerRestriction:CardsMatch:",
                     "card": { "$type": "Cards:CardBefore:" },
                     "other": { "$type": "Cards:TargetIndex:", "secondaryContext": true }
+                },
+                {
+                    "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                    "card": { "$type": "Cards:CardBefore:" },
+                    "cardRestriction": {
+                        "$type": "Core.CardRestriction:Location:",
+                        "locations": [ "Board" ]
+                    }
                 }
             ]
         }

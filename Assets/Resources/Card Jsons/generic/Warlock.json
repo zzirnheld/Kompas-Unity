@@ -9,30 +9,7 @@
 				"orderPriority": 5,
                 "triggerCondition":"Play",
                 "triggerRestriction":{
-                    "triggerRestrictions":["This Card in Play",
-                                           "Main Card Fits Restriction Before"
-                                           ],
-                    "cardRestriction":
-                    {
-						"elements": [
-                            {
-                                "$type": "Core.CardRestriction:Not:",
-                                "negated": {
-                                    "$type": "Core.CardRestriction:CardsMatch:",
-                                    "card": { "$type": "Cards:ThisCard:" }
-                                }
-                            },
-                            {
-                                "$type": "Core.CardRestriction:CardValueFits:",
-                                "cardValue": { "value": "Cost" },
-                                "numberRestriction": { "elements": [{
-                                    "$type": "Core.NumberRestriction:Compare:",
-                                    "comparison": { "$type": "Relationships.Number:LessThan:" },
-                                    "other": { "$type": "Numbers:Constant:", "constant": 1 }
-                                }]}
-                            }
-                        ]
-                    },
+                    "triggerRestrictions":["This Card in Play" ],
 					"triggerRestrictionElements": [
 						{ "$type": "Core.TriggerRestriction:MaxPerTurn:" },
                         {
@@ -40,7 +17,31 @@
                             "firstPlayer": { "$type": "Players:TriggeringPlayer:" },
                             "secondPlayer": { "$type": "Players:FriendlyPlayer:" }
                         },
-						{ "$type": "Core.TriggerRestriction:Normally:" }
+						{ "$type": "Core.TriggerRestriction:Normally:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CardBefore:" },
+                            "cardRestriction": {
+                                "elements": [
+                                    {
+                                        "$type": "Core.CardRestriction:Not:",
+                                        "negated": {
+                                            "$type": "Core.CardRestriction:CardsMatch:",
+                                            "card": { "$type": "Cards:ThisCard:" }
+                                        }
+                                    },
+                                    {
+                                        "$type": "Core.CardRestriction:CardValueFits:",
+                                        "cardValue": { "value": "Cost" },
+                                        "numberRestriction": { "elements": [{
+                                            "$type": "Core.NumberRestriction:Compare:",
+                                            "comparison": { "$type": "Relationships.Number:LessThan:" },
+                                            "other": { "$type": "Numbers:Constant:", "constant": 1 }
+                                        }]}
+                                    }
+                                ]
+                            }
+                        }
 					]
                 }
             },

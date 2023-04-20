@@ -9,24 +9,21 @@
 				"triggerCondition": "Augment Attached",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card in Play",
-						"Main Card Fits Restriction Before"
+						"This Card in Play"
 					],
-					"cardRestriction": {
-						"elements": [ {
-							"$type": "Core.CardRestriction:Augments:",
-							"cardRestriction": {
-								"elements": [
-									{ "$type": "Core.CardRestriction:Enemy:" }
-								]
-							}
-						} ]
-					},
 					"triggerRestrictionElements": [
                         {
                             "$type": "Core.TriggerRestriction:PlayersMatch:",
                             "firstPlayer": { "$type": "Players:TriggeringPlayer:" },
                             "secondPlayer": { "$type": "Players:FriendlyPlayer:" }
+                        },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CardBefore:" },
+                            "cardRestriction": {
+								"$type": "Core.CardRestriction:Augments:",
+								"cardRestriction": { "$type": "Core.CardRestriction:Enemy:" }
+							}
                         }
 					]
 				}

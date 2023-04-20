@@ -8,34 +8,37 @@
 				"triggerCondition": "Play",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"Main Card Fits Restriction Before",
 						"This Card in Play"
 					],
-					"cardRestriction": {
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Pulsar" ]
-							},
-							{
-								"$type": "Core.CardRestriction:CardValueFits:",
-								"cardValue": { "value": "S" },
-								"numberRestriction": { "elements": [{
-									"numberRestrictions": [
-										">Avatar"
-									],
-									"cardValue": {
-										"value": "S"
-									}
-								}]}
-							}
-						]
-					},
 					"triggerRestrictionElements": [
                         {
                             "$type": "Core.TriggerRestriction:PlayersMatch:",
                             "firstPlayer": { "$type": "Players:TriggeringPlayer:" },
                             "secondPlayer": { "$type": "Players:FriendlyPlayer:" }
+                        },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CardBefore:" },
+                            "cardRestriction": {
+								"elements": [
+									{
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Pulsar" ]
+									},
+									{
+										"$type": "Core.CardRestriction:CardValueFits:",
+										"cardValue": { "value": "S" },
+										"numberRestriction": { "elements": [{
+											"numberRestrictions": [
+												">Avatar"
+											],
+											"cardValue": {
+												"value": "S"
+											}
+										}]}
+									}
+								]
+                            }
                         }
 					]
 				}
@@ -52,34 +55,37 @@
 				"triggerCondition": "Play",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"Main Card Fits Restriction Before",
 						"This Card in Play"
 					],
-					"cardRestriction": {
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Pulsar" ]
-							},
-							{
-								"$type": "Core.CardRestriction:CardValueFits:",
-								"cardValue": { "value": "Cost" },
-								"numberRestriction": { "elements": [{
-									"numberRestrictions": [
-										"<Avatar"
-									],
-									"cardValue": {
-										"value": "S"
-									}
-								}]}
-							}
-						]
-					},
 					"triggerRestrictionElements": [
                         {
                             "$type": "Core.TriggerRestriction:PlayersMatch:",
                             "firstPlayer": { "$type": "Players:TriggeringPlayer:" },
                             "secondPlayer": { "$type": "Players:FriendlyPlayer:" }
+                        },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CardBefore:" },
+                            "cardRestriction": {
+								"elements": [
+									{
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Pulsar" ]
+									},
+									{
+										"$type": "Core.CardRestriction:CardValueFits:",
+										"cardValue": { "value": "S" },
+										"numberRestriction": { "elements": [{
+											"numberRestrictions": [
+												"<Avatar"
+											],
+											"cardValue": {
+												"value": "S"
+											}
+										}]}
+									}
+								]
+                            }
                         }
 					]
 				}

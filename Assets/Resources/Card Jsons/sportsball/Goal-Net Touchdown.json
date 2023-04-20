@@ -9,12 +9,8 @@
 				"triggerCondition": "Arrive",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card in Play",
-						"Main Card Fits Restriction Before"
+						"This Card in Play"
 					],
-					"cardRestriction": {
-						"elements": [ { "$type": "Core.CardRestriction:Character:" } ]
-					},
 					"triggerRestrictionElements": [
 						{
 							"$type": "Core.SpaceRestriction:AdjacentTo:",
@@ -22,7 +18,12 @@
 								{ "$type": "Core.CardRestriction:Enemy:" },
 								{ "$type": "Core.CardRestriction:Avatar:" }
 							] }
-						}
+						},
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CardBefore:" },
+                            "cardRestriction": { "$type": "Core.CardRestriction:Character:" }
+                        }
 					]
 				}
 			},

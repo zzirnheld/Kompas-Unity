@@ -9,24 +9,25 @@
 				"triggerCondition": "Move",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card in Play",
-						"Main Card Fits Restriction Before"
+						"This Card in Play"
 					],
-					"cardRestriction": {
-						"elements": [ {
-							"$type": "Core.CardRestriction:Not:",
-							"negated": {
-								"$type": "Core.CardRestriction:CardsMatch:",
-								"card": { "$type": "Cards:ThisCard:" }
-							}
-						} ]
-					},
 					"triggerRestrictionElements": [
 						{
 							"$type": "Core.SpaceRestriction:InAOEOf:",
 							"card": { "$type": "Cards:ThisCard:" }
 						},
-						{ "$type": "Core.TriggerRestriction:MaxPerStack:" }
+						{ "$type": "Core.TriggerRestriction:MaxPerStack:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CardBefore:" },
+                            "cardRestriction": {
+								"$type": "Core.CardRestriction:Not:",
+								"negated": {
+									"$type": "Core.CardRestriction:CardsMatch:",
+									"card": { "$type": "Cards:ThisCard:" }
+								}
+							}
+                        }
 					]
 				}
 			},

@@ -8,32 +8,35 @@
 				"triggerCondition": "Discard",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card in Play",
-						"Main Card Fits Restriction Before"
+						"This Card in Play"
 					],
-					"cardRestriction": {
-						"elements": [
-							{ "$type": "Core.CardRestriction:Spell:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Hand" ]
-							},
-							{
-								"$type": "Core.CardRestriction:CardValueFits:",
-								"cardValue": { "value": "Cost" },
-								"numberRestriction": { "elements": [{
-									"$type": "Core.NumberRestriction:Compare:",
-									"comparison": { "$type": "Relationships.Number:LessThanEqual:" },
-									"other": { "$type": "Numbers:Constant:", "constant": 0 }
-								}]}
-							}
-						]
-					},
 					"triggerRestrictionElements": [
                         {
                             "$type": "Core.TriggerRestriction:PlayersMatch:",
                             "firstPlayer": { "$type": "Players:TriggeringPlayer:" },
                             "secondPlayer": { "$type": "Players:FriendlyPlayer:" }
+                        },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CardBefore:" },
+                            "cardRestriction": {
+								"elements": [
+									{ "$type": "Core.CardRestriction:Spell:" },
+									{
+										"$type": "Core.CardRestriction:Location:",
+										"locations": [ "Hand" ]
+									},
+									{
+										"$type": "Core.CardRestriction:CardValueFits:",
+										"cardValue": { "value": "Cost" },
+										"numberRestriction": { "elements": [{
+											"$type": "Core.NumberRestriction:Compare:",
+											"comparison": { "$type": "Relationships.Number:LessThanEqual:" },
+											"other": { "$type": "Numbers:Constant:", "constant": 0 }
+										}]}
+									}
+								]
+                            }
                         }
 					]
 				}
