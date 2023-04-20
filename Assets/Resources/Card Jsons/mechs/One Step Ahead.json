@@ -45,22 +45,25 @@
 					],
 					"endCondition": "Discard",
 					"triggerRestriction": {
-						"triggerRestrictions": [
-							"Main Card Fits Restriction Before"
-						],
-						"cardRestriction": {
-							"elements": [
-								{ "$type": "Core.CardRestriction:Friendly:" },
-								{
-									"$type": "Core.CardRestriction:Location:",
-									"locations": [ "Board" ]
-								},
-								{
-									"$type": "Core.CardRestriction:Subtypes:",
-									"subtypes": [ "Mech" ]
+						"triggerRestrictionElements": [
+							{
+								"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+								"card": { "$type": "Cards:CardBefore:" },
+								"cardRestriction": {
+									"elements": [
+										{ "$type": "Core.CardRestriction:Friendly:" },
+										{
+											"$type": "Core.CardRestriction:Location:",
+											"locations": [ "Board" ]
+										},
+										{
+											"$type": "Core.CardRestriction:Subtypes:",
+											"subtypes": [ "Mech" ]
+										}
+									]
 								}
-							]
-						}
+							}
+						]
 					}
 				},
 				{

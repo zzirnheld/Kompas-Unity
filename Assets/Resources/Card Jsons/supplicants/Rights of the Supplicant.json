@@ -8,15 +8,17 @@
 			{
 				"triggerCondition": "Defend",
 				"triggerRestriction": {
-					"triggerRestrictions": ["This Card in Play","Main Card Fits Restriction Before"],
-					"cardRestriction": {
-						"elements": [
-							{
+					"triggerRestrictions": ["This Card in Play"],
+					"triggerRestrictionElements": [
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"cardRestriction": {
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Supplicant" ]
 							}
-						]
-					}
+						}
+					]
 				}
 			},
 			"subeffects":[

@@ -4,15 +4,17 @@
 		"blurb":"Ificate",
 		"triggerCondition":"Discard",
 		"triggerRestriction":{
-			"triggerRestrictions":["This Card is Main Card","Main Card Fits Restriction Before"],
-			"cardRestriction":{
-				"elements":[ 
-					{
+			"triggerRestrictions":["This Card is Main Card"],
+			"triggerRestrictionElements": [
+				{
+					"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+					"card": { "$type": "Cards:CardBefore:" },
+					"cardRestriction": {
 						"$type": "Core.CardRestriction:Location:",
 						"locations": [ "Hand" ]
 					}
-				]
-			}
+				}
+			]
 		}
 	},
 	"subeffects":[

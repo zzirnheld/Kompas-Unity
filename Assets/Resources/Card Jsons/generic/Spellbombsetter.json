@@ -31,17 +31,18 @@
 					"endCondition": "Discard",
 					"triggerRestriction": {
 						"triggerRestrictions": [
-							"This Card is Main Card",
-							"Main Card Fits Restriction Before"
+							"This Card is Main Card"
 						],
-						"cardRestriction": {
-							"elements": [
-								{
+						"triggerRestrictionElements": [
+							{
+								"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+								"card": { "$type": "Cards:CardBefore:" },
+								"cardRestriction": {
 									"$type": "Core.CardRestriction:Location:",
 									"locations": [ "Board" ]
 								}
-							]
-						}
+							}
+						]
 					}
 				},
 				{

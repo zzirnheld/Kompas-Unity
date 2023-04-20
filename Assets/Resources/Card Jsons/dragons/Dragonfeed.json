@@ -9,10 +9,14 @@
 				"blurb":"Dragonfeed",
 				"triggerCondition":"Discard",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Main Card Fits Restriction Before","Stackable Source Fits Restriction Now"],
-					"cardRestriction":{
-						"elements": [ { "$type": "Core.CardRestriction:Character:" } ]
-					},
+					"triggerRestrictions":["This Card in Play", "Stackable Source Fits Restriction Now"],
+					"triggerRestrictionElements": [
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"cardRestriction": { "$type": "Core.CardRestriction:Character:" }
+						}
+					],
 					"sourceRestriction":{
 						"elements": [
 							{

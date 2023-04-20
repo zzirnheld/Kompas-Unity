@@ -9,17 +9,18 @@
 				"triggerCondition": "Play",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"Main Card Fits Restriction Before",
 						"This Card Fits Restriction Now"
 					],
-					"cardRestriction": {
-						"elements": [
-							{
+					"triggerRestrictionElements": [
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"cardRestriction": {
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Mech", "Golem" ]
 							}
-						]
-					},
+						}
+					],
 					"selfRestriction": {
 						"elements": [
 							{

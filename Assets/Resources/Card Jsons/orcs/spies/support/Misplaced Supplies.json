@@ -51,14 +51,15 @@
 				"triggerCondition": "Defend",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"Main Card Fits Restriction Before",
 						"This Card Fits Restriction Now"
 					],
-					"cardRestriction": {
-						"elements": [
-							{ "$type": "Core.CardRestriction:Enemy:" }
-						]
-					},
+					"triggerRestrictionElements": [
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"cardRestriction": { "$type": "Core.CardRestriction:Enemy:" }
+						}
+					],
 					"selfRestriction": {
 						"elements": [
 							{

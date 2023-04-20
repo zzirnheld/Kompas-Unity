@@ -28,8 +28,6 @@ namespace KompasCore.Effects
 
         private const string StackableSourceFitsRestriction = "Stackable Source Fits Restriction Now";
         private const string MainCardIsStackableSource = "Main Card is Stackable Source";
-
-        private const string MainCardFitsRestrictionBefore = "Main Card Fits Restriction Before";
         #endregion trigger conditions
         private static readonly string[] RequiringSelfRestriction = { ThisCardFitsRestriction };
         private static readonly string[] RequiringSourceRestriction = { StackableSourceFitsRestriction };
@@ -40,7 +38,6 @@ namespace KompasCore.Effects
         public static readonly string[] DefaultFallOffRestrictions = { ThisCardIsMainCard, ThisCardInPlay };
 
         public string[] triggerRestrictions = new string[0];
-        public CardRestriction cardRestriction;
         public CardRestriction selfRestriction;
         public CardRestriction sourceRestriction;
 
@@ -53,7 +50,6 @@ namespace KompasCore.Effects
         {
             base.Initialize(initializationContext);
 
-            cardRestriction?.Initialize(initializationContext);
             selfRestriction?.Initialize(initializationContext);
             sourceRestriction?.Initialize(initializationContext);
 
@@ -62,9 +58,6 @@ namespace KompasCore.Effects
                 tre.Initialize(initializationContext);
             }
 
-            //Verify that any relevant restrictions exist
-            if (triggerRestrictions.Intersect(RequiringCardRestriction).Any() && cardRestriction == null)
-                throw new ArgumentNullException("cardRestriction", $"Must be populated for any of these restrictions: {string.Join(",", RequiringCardRestriction)}");
             if (triggerRestrictions.Intersect(RequiringSelfRestriction).Any() && selfRestriction == null)
                 throw new ArgumentNullException("selfRestriction", $"Must be populated for any of these restrictions: {string.Join(",", RequiringSelfRestriction)}");
             if (triggerRestrictions.Intersect(RequiringSourceRestriction).Any() && sourceRestriction == null)
@@ -84,9 +77,6 @@ namespace KompasCore.Effects
             ThisCardInPlay => ThisCard.Location == CardLocation.Board,
 
             ThisCardFitsRestriction => selfRestriction.IsValid(ThisCard, new ResolutionContext(triggeringContext)),
-
-            MainCardFitsRestrictionBefore => cardRestriction.IsValid(triggeringContext.mainCardInfoBefore, new ResolutionContext(triggeringContext)),
-            MainCardsAugmentedCardBeforeFitsRestriction => cardRestriction.IsValid(triggeringContext.mainCardInfoBefore.AugmentedCard, new ResolutionContext(triggeringContext)),
 
             MainCardIsStackableSource => triggeringContext.stackableCause?.Source == triggeringContext.mainCardInfoBefore.Card,
             StackableSourceFitsRestriction => sourceRestriction.IsValid(triggeringContext.stackableCause?.Source, new ResolutionContext(triggeringContext)),
