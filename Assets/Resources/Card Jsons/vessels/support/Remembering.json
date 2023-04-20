@@ -8,19 +8,22 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Main Card is Stackable Source",
-						"Stackable Source Fits Restriction Now"
-					],
-					"sourceRestriction": {
-						"elements": [
-							{
+                    "triggerRestrictionElements": [
+                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardsMatch:",
+                            "card": { "$type": "Cards:CauseBefore:" },
+                            "other": { "$type": "Cards:CardBefore:" }
+                        },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CauseBefore:" },
+                            "cardRestriction": {
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Vessel" ]
 							}
-						]
-					}
+                        }
+                    ]
 				}
 			},
 			"subeffects": [

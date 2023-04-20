@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Leyblood",
-	"effText":"When a friendly Dragon kills a character, gain 1 pip.",
+	"effText":"When a Dragon kills a character, gain 1 pip.",
 	"effects":[
 		{
 			"triggerData":
@@ -9,22 +9,22 @@
 				"blurb":"Leyblood",
 				"triggerCondition":"Discard",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play", "Stackable Source Fits Restriction Now"],
+					"triggerRestrictions":["This Card in Play"],
 					"triggerRestrictionElements": [
 						{
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 							"card": { "$type": "Cards:CardBefore:" },
 							"cardRestriction": { "$type": "Core.CardRestriction:Character:" }
-						}
-					],
-					"sourceRestriction":{
-						"elements": [
-							{
+						},
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CauseBefore:" },
+                            "cardRestriction": {
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Dragon" ]
 							}
-						]
-					}
+                        }
+					]
 				}
 			},
 			"subeffects":[

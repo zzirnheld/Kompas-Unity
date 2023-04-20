@@ -8,18 +8,8 @@
 				"triggerCondition": "Play",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card in Play",
-                        "Stackable Source Fits Restriction Now"
+						"This Card in Play"
                     ],
-                    "sourceRestriction":
-                    {
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Invoker" ]
-							}
-						]
-                    },
 					"triggerRestrictionElements": [
                         {
                             "$type": "Core.TriggerRestriction:PlayersMatch:",
@@ -38,6 +28,14 @@
 									}
 								]
                             }
+                        },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CauseBefore:" },
+                            "cardRestriction": {
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Invoker" ]
+							}
                         }
 					]
 				}

@@ -25,12 +25,8 @@ namespace KompasCore.Effects
         //Before: Immediately before the triggering event
         //After: Immediately after the triggering event
         private const string ThisCardFitsRestriction = "This Card Fits Restriction Now";
-
-        private const string StackableSourceFitsRestriction = "Stackable Source Fits Restriction Now";
-        private const string MainCardIsStackableSource = "Main Card is Stackable Source";
         #endregion trigger conditions
         private static readonly string[] RequiringSelfRestriction = { ThisCardFitsRestriction };
-        private static readonly string[] RequiringSourceRestriction = { StackableSourceFitsRestriction };
 
         public static readonly ISet<Type> ReevalationRestrictions
             = new HashSet<Type>(new Type[] { typeof(MaxPerTurn), typeof(MaxPerRound), typeof(MaxPerStack) });
@@ -39,7 +35,6 @@ namespace KompasCore.Effects
 
         public string[] triggerRestrictions = new string[0];
         public CardRestriction selfRestriction;
-        public CardRestriction sourceRestriction;
 
         public IRestriction<TriggeringEventContext>[] triggerRestrictionElements = { };
 
@@ -51,7 +46,6 @@ namespace KompasCore.Effects
             base.Initialize(initializationContext);
 
             selfRestriction?.Initialize(initializationContext);
-            sourceRestriction?.Initialize(initializationContext);
 
             foreach (var tre in triggerRestrictionElements)
             {
@@ -60,8 +54,6 @@ namespace KompasCore.Effects
 
             if (triggerRestrictions.Intersect(RequiringSelfRestriction).Any() && selfRestriction == null)
                 throw new ArgumentNullException("selfRestriction", $"Must be populated for any of these restrictions: {string.Join(",", RequiringSelfRestriction)}");
-            if (triggerRestrictions.Intersect(RequiringSourceRestriction).Any() && sourceRestriction == null)
-                throw new ArgumentNullException("sourceRestriction", $"Must be populated for any of these restrictions: {string.Join(",", RequiringSourceRestriction)}");
 
             //Debug.Log($"Initializing trigger restriction for {thisCard?.CardName}. game is null? {game}");
         }
@@ -77,9 +69,6 @@ namespace KompasCore.Effects
             ThisCardInPlay => ThisCard.Location == CardLocation.Board,
 
             ThisCardFitsRestriction => selfRestriction.IsValid(ThisCard, new ResolutionContext(triggeringContext)),
-
-            MainCardIsStackableSource => triggeringContext.stackableCause?.Source == triggeringContext.mainCardInfoBefore.Card,
-            StackableSourceFitsRestriction => sourceRestriction.IsValid(triggeringContext.stackableCause?.Source, new ResolutionContext(triggeringContext)),
 
             //misc
             _ => throw new ArgumentException($"Invalid trigger restriction {restriction}"),

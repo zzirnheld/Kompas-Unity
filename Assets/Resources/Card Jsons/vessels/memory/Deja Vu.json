@@ -9,12 +9,15 @@
 				"triggerCondition": "Play",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"Augmented Card is Main Card",
-						"Stackable Source Fits Restriction Now"
+						"Augmented Card is Main Card"
 					],
-					"sourceRestriction": {
-						"elements": [ { "$type": "Core.CardRestriction:DistinctName:" } ]
-					}
+					"triggerRestrictionElements": [
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CauseBefore:" },
+                            "cardRestriction": { "$type": "Core.CardRestriction:DistinctName:" }
+						}
+					]
 				}
 			},
 			"subeffects": [
