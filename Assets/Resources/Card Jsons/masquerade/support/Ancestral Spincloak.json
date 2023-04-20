@@ -35,29 +35,8 @@
 				"triggerCondition": "Augment Attached",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"Main Card Fits Restriction After",
 						"This Card Fits Restriction Now"
 					],
-					"nowRestriction": {
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Mask" ]
-							},
-							{
-								"$type": "Core.CardRestriction:Augments:",
-                                "cardRestriction": {
-									"elements": [
-										{ "$type": "Core.CardRestriction:Friendly:" },
-										{
-											"$type": "Core.CardRestriction:Subtypes:",
-											"subtypes": [ "Dancer" ]
-										}
-									]
-                                }
-							}
-						]
-					},
 					"selfRestriction": {
 						"elements": [
 							{
@@ -65,7 +44,33 @@
 								"locations": [ "Discard" ]
 							}
 						]
-					}
+					},
+					"triggerRestrictionElements": [
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CardAfter:" },
+                            "cardRestriction": {
+								"elements": [
+									{
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Mask" ]
+									},
+									{
+										"$type": "Core.CardRestriction:Augments:",
+										"cardRestriction": {
+											"elements": [
+												{ "$type": "Core.CardRestriction:Friendly:" },
+												{
+													"$type": "Core.CardRestriction:Subtypes:",
+													"subtypes": [ "Dancer" ]
+												}
+											]
+										}
+									}
+								]
+                            }
+                        }
+					]
 				}
 			},
 			"subeffects": [

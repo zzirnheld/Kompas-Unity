@@ -31,12 +31,10 @@ namespace KompasCore.Effects
 
         private const string MainCardFitsRestrictionBefore = "Main Card Fits Restriction Before";
         private const string MainCardsAugmentedCardBeforeFitsRestriction = "Main Card's Augmented Card Before Fits Restriction";
-        private const string MainCardFitsRestrictionAfter = "Main Card Fits Restriction After";
         #endregion trigger conditions
 
         private static readonly string[] RequiringCardRestriction =
             { MainCardFitsRestrictionBefore, MainCardsAugmentedCardBeforeFitsRestriction };
-        private static readonly string[] RequiringNowRestriction = { MainCardFitsRestrictionAfter };
         private static readonly string[] RequiringSelfRestriction = { ThisCardFitsRestriction };
         private static readonly string[] RequiringSourceRestriction = { StackableSourceFitsRestriction };
 
@@ -47,8 +45,6 @@ namespace KompasCore.Effects
 
         public string[] triggerRestrictions = new string[0];
         public CardRestriction cardRestriction;
-        public CardRestriction nowRestriction;
-        public CardRestriction secondaryCardRestriction;
         public CardRestriction selfRestriction;
         public CardRestriction sourceRestriction;
 
@@ -62,8 +58,6 @@ namespace KompasCore.Effects
             base.Initialize(initializationContext);
 
             cardRestriction?.Initialize(initializationContext);
-            nowRestriction?.Initialize(initializationContext);
-            secondaryCardRestriction?.Initialize(initializationContext);
             selfRestriction?.Initialize(initializationContext);
             sourceRestriction?.Initialize(initializationContext);
 
@@ -75,8 +69,6 @@ namespace KompasCore.Effects
             //Verify that any relevant restrictions exist
             if (triggerRestrictions.Intersect(RequiringCardRestriction).Any() && cardRestriction == null)
                 throw new ArgumentNullException("cardRestriction", $"Must be populated for any of these restrictions: {string.Join(",", RequiringCardRestriction)}");
-            if (triggerRestrictions.Intersect(RequiringNowRestriction).Any() && nowRestriction == null)
-                throw new ArgumentNullException("nowRestriction", $"Must be populated for any of these restrictions: {string.Join(",", RequiringNowRestriction)}");
             if (triggerRestrictions.Intersect(RequiringSelfRestriction).Any() && selfRestriction == null)
                 throw new ArgumentNullException("selfRestriction", $"Must be populated for any of these restrictions: {string.Join(",", RequiringSelfRestriction)}");
             if (triggerRestrictions.Intersect(RequiringSourceRestriction).Any() && sourceRestriction == null)
@@ -98,7 +90,6 @@ namespace KompasCore.Effects
             ThisCardFitsRestriction => selfRestriction.IsValid(ThisCard, new ResolutionContext(triggeringContext)),
 
             MainCardFitsRestrictionBefore => cardRestriction.IsValid(triggeringContext.mainCardInfoBefore, new ResolutionContext(triggeringContext)),
-            MainCardFitsRestrictionAfter => nowRestriction.IsValid(triggeringContext.MainCardInfoAfter, new ResolutionContext(triggeringContext)),
             MainCardsAugmentedCardBeforeFitsRestriction => cardRestriction.IsValid(triggeringContext.mainCardInfoBefore.AugmentedCard, new ResolutionContext(triggeringContext)),
 
             MainCardIsStackableSource => triggeringContext.stackableCause?.Source == triggeringContext.mainCardInfoBefore.Card,

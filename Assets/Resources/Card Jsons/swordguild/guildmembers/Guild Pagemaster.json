@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Guild Pagemaster",
-	"effText": "When you summon a Swordguild Warrior, deck->summon a Squire adjacent to them.",
+	"effText": "When you summon another Swordguild Warrior, deck->summon a Squire adjacent to them.",
 	"effects": [
 		{
 			"blurb": "Recruit",
@@ -9,30 +9,33 @@
 				"triggerCondition": "Play",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card in Play",
-						"Main Card Fits Restriction After"
+						"This Card in Play"
 					],
-					"nowRestriction": {
-						"elements": [
-							{ "$type": "Core.CardRestriction:Character:" },
-							{
-								"$type": "Core.CardRestriction:Not:",
-								"negated": {
-									"$type": "Core.CardRestriction:CardsMatch:",
-									"card": { "$type": "Cards:ThisCard:" }
-								}
-							},
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Swordguild", "Warrior" ]
-							}
-						]
-					},
 					"triggerRestrictionElements": [
                         {
                             "$type": "Core.TriggerRestriction:PlayersMatch:",
                             "firstPlayer": { "$type": "Players:TriggeringPlayer:" },
                             "secondPlayer": { "$type": "Players:FriendlyPlayer:" }
+                        },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CardAfter:" },
+                            "cardRestriction": {
+								"elements": [
+									{ "$type": "Core.CardRestriction:Character:" },
+									{
+										"$type": "Core.CardRestriction:Not:",
+										"negated": {
+											"$type": "Core.CardRestriction:CardsMatch:",
+											"card": { "$type": "Cards:ThisCard:" }
+										}
+									},
+									{
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Swordguild", "Warrior" ]
+									}
+								]
+                            }
                         }
 					]
 				}

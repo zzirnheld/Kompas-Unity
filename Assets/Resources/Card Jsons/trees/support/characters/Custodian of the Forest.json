@@ -9,18 +9,8 @@
 				"triggerCondition": "E Change",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card in Play",
-						"Main Card Fits Restriction After"
+						"This Card in Play"
 					],
-					"nowRestriction": {
-						"elements": [
-							{ "$type": "Core.CardRestriction:Hurt:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							}
-						]
-					},
 					"triggerRestrictionElements": [
                         {
                             "$type": "Core.TriggerRestriction:PlayersMatch:",
@@ -36,7 +26,20 @@
 								"other": { "$type": "Numbers:Constant:", "constant": 0 }
 							}
 						},
-                        { "$type": "Core.TriggerRestriction:IsEffect:" }
+                        { "$type": "Core.TriggerRestriction:IsEffect:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CardAfter:" },
+                            "cardRestriction": {
+								"elements": [
+									{ "$type": "Core.CardRestriction:Hurt:" },
+									{
+										"$type": "Core.CardRestriction:Location:",
+										"locations": [ "Board" ]
+									}
+								]
+                            }
+                        }
                     ]
 				}
 			},

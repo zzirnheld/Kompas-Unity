@@ -10,8 +10,7 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Main Card Fits Restriction Before",
-						"Main Card Fits Restriction After"
+						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
 						"elements": [
@@ -34,22 +33,28 @@
                             }
 						]
 					},
-					"nowRestriction": {
-						"elements": [
-							{
-								"$type": "Core.SpaceRestriction:InAOEOf:",
-								"anyOf": {
-									"$type": "ManyCards:FittingRestriction:",
-									"cardRestriction": {
-									"elements": [ {
-											"$type": "Core.CardRestriction:Subtypes:",
-											"subtypes": [ "Weather" ]
-										} ]
+					"triggerRestrictionElements": [
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CardAfter:" },
+                            "cardRestriction": {
+								"elements": [
+									{
+										"$type": "Core.SpaceRestriction:InAOEOf:",
+										"anyOf": {
+											"$type": "ManyCards:FittingRestriction:",
+											"cardRestriction": {
+											"elements": [ {
+													"$type": "Core.CardRestriction:Subtypes:",
+													"subtypes": [ "Weather" ]
+												} ]
+											}
+										}
 									}
-								}
+								]
 							}
-						]
-					}
+						}
+					]
 				}
 			},
 			"subeffects": [

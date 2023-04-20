@@ -10,25 +10,8 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"This Card is Main Card",
-						"Main Card Fits Restriction After"
+						"This Card is Main Card"
 					],
-					"nowRestriction": {
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							},
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Structure" ]
-							},
-							{
-								"$type": "Core.SpaceRestriction:AdjacentTo:",
-								"space": { "$type": "Cards:ThisCard:" }
-							}
-						]
-					},
 					"triggerRestrictionElements": [
 						{
 							"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
@@ -38,7 +21,27 @@
 								"comparison": { "$type": "Relationships.Number:GreaterThan:" },
 								"other": { "$type": "Numbers:Constant:", "constant": 0 }
 							}
-						}
+						},
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CardAfter:" },
+                            "cardRestriction": {
+								"elements": [
+									{
+										"$type": "Core.CardRestriction:Location:",
+										"locations": [ "Board" ]
+									},
+									{
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Structure" ]
+									},
+									{
+										"$type": "Core.SpaceRestriction:AdjacentTo:",
+										"space": { "$type": "Cards:ThisCard:" }
+									}
+								]
+                            }
+                        }
 					]
 				}
 			},
