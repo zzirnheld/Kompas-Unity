@@ -20,10 +20,7 @@
 				{
 					"$type": "Subeffect:Hanging.ChangeCardStats:",
 					"cModifier": 1,
-					"endCondition": "Turn Start",
-					"triggerRestriction": {
-						"triggerRestrictions": []
-					}
+					"endCondition": "Turn Start"
 				},
 				{
 					"$type": "Subeffect:ConditionalEnd:",

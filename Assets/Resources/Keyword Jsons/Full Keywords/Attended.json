@@ -4,7 +4,6 @@
 	{
 		"triggerCondition":"Stack End",
 		"triggerRestriction":{
-			"triggerRestrictions":["Number of Cards Fitting Restriction Fits X Restriction"],
 			"triggerRestrictionElements": [
 				{
 					"$type": "Core.TriggerRestriction:CardFitsRestriction:",
@@ -21,20 +20,30 @@
 							}
 						]
 					}
-				}
-			],
-            "cardsFittingCardRestriction":{
-				"elements": [
-					{ "$type": "Core.CardRestriction:Friendly:" },
-					{
-						"$type": "Core.SpaceRestriction:AdjacentTo:",
-						"space": { "$type": "Cards:ThisCard:" }
+				},
+				{
+					"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
+					"number": {
+                        "$type": "Numbers:CountCards:",
+                        "cards": {
+                            "$type": "ManyCards:FittingRestriction:",
+                            "cardRestriction": {
+								"elements": [
+									{ "$type": "Core.CardRestriction:Friendly:" },
+									{
+										"$type": "Core.SpaceRestriction:AdjacentTo:",
+										"space": { "$type": "Cards:ThisCard:" }
+									}
+								]
+                            }
+                        }
+                    },
+					"restriction": {
+						"numberRestrictions": [ "<Arg" ],
+						"constant":3
 					}
-				]
-            },
-            "cardsFittingXRestriction":{
-                "numberRestrictions":["<Arg"]
-            }
+				}
+			]
 		}
 	},
 	"subeffects":[

@@ -48,10 +48,7 @@
 				{
 					"$type": "Subeffect:Hanging.ChangeCardStats:",
 					"wModifier": 3,
-					"endCondition": "Turn Start",
-					"triggerRestriction": {
-						"triggerRestrictions": []
-					}
+					"endCondition": "Turn Start"
 				},
 				{
 					"$type": "Subeffect:Hanging.Delay:",

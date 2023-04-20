@@ -38,9 +38,6 @@
     },
     {
         "$type":"Subeffect:Hanging.Negate:",
-        "endCondition":"Turn Start",
-        "triggerRestriction":{
-            "triggerRestrictions":[]
-        }
+        "endCondition":"Turn Start"
     }
 ]

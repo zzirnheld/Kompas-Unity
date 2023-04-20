@@ -29,10 +29,7 @@
 				{
 					"$type": "Subeffect:Hanging.Negate:",
 					"endCondition": "Turn Start",
-					"negated": false,
-					"triggerRestriction": {
-						"triggerRestrictions": []
-					}
+					"negated": false
 				}
 			]
 		}
