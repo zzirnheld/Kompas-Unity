@@ -24,9 +24,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Wait, Hold Up, what are you moving?",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "Wait, Hold Up, what are you moving?",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Enemy:" },
@@ -39,8 +39,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "Wait Hold Up, WHERE",
 					"spaceRestriction": {
-						"blurb": "Wait Hold Up, WHERE",
+						"$type": "Core.SpaceRestriction:AllOf:",
 						"elements": [
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",

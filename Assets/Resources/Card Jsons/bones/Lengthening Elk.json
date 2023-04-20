@@ -22,9 +22,10 @@
 				},
                 {
                     "$type":"Subeffect:SpaceTarget:",
+					"blurb":"where Elk will lengthen to",
                     "spaceRestriction":
                     {
-                        "blurb":"where Elk will lengthen to",
+						"$type": "Core.SpaceRestriction:AllOf:",
 						"elements": [
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",

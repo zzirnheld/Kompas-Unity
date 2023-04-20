@@ -38,10 +38,7 @@
 				{
 					"$type": "Subeffect:CardTarget:",
 					"toSearch": { "$type": "ManyCards:Board:" },
-					"cardRestriction": {
-						"blurb": "for Sangrian to feed",
-						"elements": [ { "$type": "Core.CardRestriction:Character:" } ]
-					}
+					"cardRestriction": { "$type": "Core.CardRestriction:Character:" }
 				},
 				{
 					"$type": "Subeffect:ChangeCardStats:",

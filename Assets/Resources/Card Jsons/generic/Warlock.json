@@ -21,10 +21,9 @@
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
                             "card": { "$type": "Cards:CardBefore:" },
-                            
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
+                            "cardRestriction": {
+                                "$type": "Core.CardRestriction:AllOf:",
+                                "elements": [
                                     {
                                         "$type": "Core.CardRestriction:Not:",
                                         "negated": {
@@ -35,11 +34,11 @@
                                     {
                                         "$type": "Core.CardRestriction:CardValueFits:",
                                         "cardValue": { "value": "Cost" },
-                                        "numberRestriction": { "elements": [{
+                                        "numberRestriction": {
                                             "$type": "Core.NumberRestriction:Compare:",
                                             "comparison": { "$type": "Relationships.Number:LessThan:" },
                                             "other": { "$type": "Numbers:Constant:", "constant": 1 }
-                                        }]}
+                                        }
                                     }
                                 ]
                             }

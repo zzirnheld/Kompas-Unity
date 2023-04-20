@@ -29,9 +29,10 @@
 		{
 			"$type":"Subeffect:CardTarget:",
 			"toSearch": { "$type": "ManyCards:Discard:" },
+			"blurb":"Crazy Idea for Ificator to Ificate",
 			"cardRestriction":
 			{
-				"blurb":"Crazy Idea for Ificator to Ificate",
+				"$type": "Core.CardRestriction:AllOf:",
 				"elements": [
 					{ "$type": "Core.CardRestriction:Friendly:" },
 					{
@@ -55,9 +56,10 @@
 		},
 		{
 			"$type":"Subeffect:SpaceTarget:",
+			"blurb":"where Ificator to play targeted Crazy Idea",
 			"spaceRestriction":
 			{
-				"blurb":"where Ificator to play targeted Crazy Idea",
+				"$type": "Core.SpaceRestriction:AllOf:",
 				"elements": [
 					{
 						"$type": "Core.SpaceRestriction:CanPlayCard:",

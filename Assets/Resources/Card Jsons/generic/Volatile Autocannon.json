@@ -22,9 +22,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "Direction to fire the cannon",
 					"spaceRestriction": {
-						"blurb": "Direction to fire the cannon",
-						"$type": "Core.CardRestriction:AllOf:",
+						"$type": "Core.SpaceRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.SpaceRestriction:Empty:" },
                             {
@@ -40,15 +40,9 @@
 				},
 				{
 					"$type": "Subeffect:AutoTarget:",
-					
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
-							{
-								"$type": "Core.SpaceRestriction:Direction:",
-								"from": { "$type": "Cards:ThisCard:" }
-							}
-						]
+					"cardRestriction": {
+						"$type": "Core.SpaceRestriction:Direction:",
+						"from": { "$type": "Cards:ThisCard:" }
 					},
 					"tiebreakerValue": {
 						"value": "Distance to Source"

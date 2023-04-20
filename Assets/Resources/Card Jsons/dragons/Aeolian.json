@@ -28,7 +28,6 @@
 					"spaceRestriction": {
 						"blurb": "where for Aeolian to move its target",
 						"$type": "Core.CardRestriction:AllOf:",
-						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [ 
                             { "$type": "Core.SpaceRestriction:Empty:" },
 							{

@@ -42,6 +42,7 @@
                         }
                     },
 					"restriction": {
+						"$type": "KompasCore.Effects.NumberRestriction, Assembly-CSharp",
 						"numberRestrictions": [ "<Arg" ],
 						"constant":3
 					}

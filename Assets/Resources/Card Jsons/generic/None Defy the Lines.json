@@ -26,9 +26,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "who to next be brought low by the Lines",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "who to next be brought low by the Lines",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
@@ -47,9 +47,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where on the Lines to bring them",
 					"spaceRestriction": {
-						"blurb": "where on the Lines to bring them",
-						"$type": "Core.CardRestriction:AllOf:",
+						"$type": "Core.SpaceRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.SpaceRestriction:Empty:" },
 							{ "$type": "Core.SpaceRestriction:Edge:" },

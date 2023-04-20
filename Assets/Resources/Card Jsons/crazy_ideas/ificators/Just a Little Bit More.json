@@ -32,8 +32,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "ok, now move just a little bit more",
 					"spaceRestriction": {
-						"blurb": "ok, now move just a little bit more",
+						"$type": "Core.SpaceRestriction:AllOf:",
 						"elements": [
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",

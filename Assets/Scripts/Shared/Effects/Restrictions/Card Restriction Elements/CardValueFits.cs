@@ -6,7 +6,7 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
     public class CardValueFits : CardRestrictionElement
     {
         public CardValue cardValue;
-        public NumberRestriction numberRestriction;
+        public IRestriction<int> numberRestriction;
 
         public override void Initialize(EffectInitializationContext initializationContext)
         {

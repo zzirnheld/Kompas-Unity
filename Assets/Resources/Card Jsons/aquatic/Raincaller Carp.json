@@ -33,14 +33,14 @@
 							{
 								"$type": "Core.CardRestriction:CardValueFits:",
 								"cardValue": { "value": "Cost" },
-								"numberRestriction": { "elements": [{
+								"numberRestriction": {
 									"$type": "Core.NumberRestriction:Compare:",
 									"comparison": { "$type": "Relationships.Number:LessThanEqual:" },
 									"other": {
 										"$type": "Numbers:Pips:",
 										"player": { "$type": "Players:TargetIndex:" }
 									}
-								}]}
+								}
 							},
                             { "$type": "Core.CardRestriction:CanPlay:" }
 						]
@@ -48,8 +48,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "RAAAAAAAAAAIN!",
 					"spaceRestriction": {
-						"blurb": "RAAAAAAAAAAIN!",
+						"$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {

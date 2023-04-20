@@ -19,10 +19,11 @@
 			"subeffects": [
 				{
 					"$type":"Subeffect:CardTarget:",
+					"blurb":"Bonus Bone to summon",
 					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction":
 					{
-						"blurb":"Bonus Bone to summon",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
 							{
@@ -34,8 +35,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "Space to summon the Bone at",
 					"spaceRestriction": {
-						"blurb": "Space to summon the Bone at",
+						"$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {

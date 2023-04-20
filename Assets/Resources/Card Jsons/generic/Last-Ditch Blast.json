@@ -24,14 +24,15 @@
                             "cardRestriction":  {
 								"$type": "Core.CardRestriction:CardValueFits:",
 								"cardValue": { "value": "W" },
-								"numberRestriction": { "elements": [{
+								"numberRestriction": {
+									"$type": "KompasCore.Effects.NumberRestriction, Assembly-CSharp",
 									"numberRestrictions": [
 										">Source"
 									],
 									"cardValue": {
 										"value": "E"
 									}
-								}]}
+								}
 							}
                         }
 					]
