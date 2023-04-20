@@ -24,8 +24,8 @@ namespace KompasServer.Effects.Subeffects.Hanging
             if (triggerRest == null)
             {
                 triggerRest = fallOffCondition == Trigger.Remove ?
-                    new TriggerRestriction() { triggerRestrictions = TriggerRestriction.DefaultFallOffRestrictions } :
-                    new TriggerRestriction() { triggerRestrictions = { } };
+                    new TriggerRestriction() { triggerRestrictionElements = TriggerRestriction.DefaultFallOffRestrictions } :
+                    new TriggerRestriction() { triggerRestrictionElements = { } };
             }
             triggerRest.Initialize(DefaultInitializationContext);
             return triggerRest;
