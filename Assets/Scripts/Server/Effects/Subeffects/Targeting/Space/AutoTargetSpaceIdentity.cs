@@ -1,5 +1,6 @@
 using KompasCore.Effects;
 using KompasCore.Effects.Identities;
+using KompasCore.Effects.Restrictions.SpaceRestrictionElements;
 using System.Threading.Tasks;
 
 namespace KompasServer.Effects.Subeffects
@@ -8,7 +9,7 @@ namespace KompasServer.Effects.Subeffects
     {
         public IIdentity<Space> subeffectSpaceIdentity;
 
-        public SpaceRestriction spaceRestriction = new SpaceRestriction();
+        public IRestriction<Space> spaceRestriction = new AlwaysValid();
 
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {

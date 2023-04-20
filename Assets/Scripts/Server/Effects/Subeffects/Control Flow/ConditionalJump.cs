@@ -1,4 +1,5 @@
-﻿using KompasCore.Effects;
+﻿using KompasCore.Cards;
+using KompasCore.Effects;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -20,7 +21,7 @@ namespace KompasServer.Effects.Subeffects
 
         public string condition;
 
-        public CardRestriction cardRestriction = new CardRestriction();
+        public IRestriction<GameCardBase> cardRestriction = new CardRestriction();
         public NumberRestriction xRestriction = new NumberRestriction();
         public int constant;
 

@@ -28,8 +28,8 @@ namespace KompasCore.Effects
             }
         }
 
-        private CardRestriction handSizeCardRestriction;
-        public CardRestriction HandSizeCardRestriction
+        private IRestriction<GameCardBase> handSizeCardRestriction;
+        public IRestriction<GameCardBase> HandSizeCardRestriction
         {
             get
             {

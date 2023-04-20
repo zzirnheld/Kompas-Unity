@@ -11,6 +11,11 @@ namespace KompasCore.Effects.Restrictions
 
     namespace CardRestrictionElements
     {
+        public class AlwaysValid : CardRestrictionElement
+        {
+            protected override bool IsValidLogic(GameCardBase item, IResolutionContext context) => true;
+        }
+
         public class Not : CardRestrictionElement
         {
             public IRestriction<GameCardBase> negated;

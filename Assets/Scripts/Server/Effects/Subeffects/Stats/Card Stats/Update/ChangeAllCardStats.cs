@@ -10,7 +10,7 @@ namespace KompasServer.Effects.Subeffects
     public class ChangeAllCardStats : ChangeCardStats
     {
         //default to making sure things are characters before changing their stats
-        public CardRestriction cardRestriction = new CardRestriction()
+        public IRestriction<GameCardBase> cardRestriction = new CardRestriction()
         {
             elements = new IRestriction<GameCardBase>[] { new Character() }
         };

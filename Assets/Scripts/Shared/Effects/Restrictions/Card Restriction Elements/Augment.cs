@@ -10,7 +10,7 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
     // where there's an additional IIdentity<GameCardBase> that defines the card to actually be tested in terms of the incoming card?
     public abstract class AugmentRestrictionBase : CardRestrictionElement
     {
-        public CardRestriction cardRestriction;
+        public IRestriction<GameCardBase> cardRestriction;
         public IIdentity<IReadOnlyCollection<GameCardBase>> manyCards;
         public IIdentity<GameCardBase> singleCard;
 

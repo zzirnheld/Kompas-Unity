@@ -16,7 +16,7 @@ namespace KompasServer.Effects.Subeffects
         public const string RandomCard = "Random";
 
         public IIdentity<IReadOnlyCollection<GameCardBase>> toSearch = new All();
-        public CardRestriction cardRestriction;
+        public IRestriction<GameCardBase> cardRestriction;
         public CardValue tiebreakerValue;
         public string tiebreakerDirection;
 

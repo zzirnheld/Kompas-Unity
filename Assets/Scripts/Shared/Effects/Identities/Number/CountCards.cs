@@ -9,7 +9,7 @@ namespace KompasCore.Effects.Identities.Numbers
     {
         public IIdentity<IReadOnlyCollection<GameCardBase>> cards = new ManyCards.All();
 
-        public CardRestriction cardRestriction = new CardRestriction();
+        public IRestriction<GameCardBase> cardRestriction = new CardRestriction();
 
         public override void Initialize(EffectInitializationContext initializationContext)
         {

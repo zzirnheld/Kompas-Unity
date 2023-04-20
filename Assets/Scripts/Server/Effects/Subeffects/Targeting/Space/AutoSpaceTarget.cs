@@ -1,7 +1,4 @@
-using KompasCore.Cards;
 using KompasCore.Effects;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -10,7 +7,7 @@ namespace KompasServer.Effects.Subeffects
 {
     public class AutoSpaceTarget : ServerSubeffect
     {
-        public SpaceRestriction spaceRestriction;
+        public IRestriction<Space> spaceRestriction;
 
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {

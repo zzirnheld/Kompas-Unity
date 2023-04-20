@@ -10,9 +10,11 @@ namespace KompasServer.Effects.Subeffects
 {
     public class SpaceTarget : ServerSubeffect
     {
-        public SpaceRestriction spaceRestriction;
+        public string blurb;
 
-        private bool ForPlay => spaceRestriction.elements.Any(elem => elem is CanPlayCard);
+        public IRestriction<Space> spaceRestriction;
+
+        private bool ForPlay => spaceRestriction is AllOf allOf && allOf.elements.Any(elem => elem is CanPlayCard);
 
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
@@ -57,7 +59,7 @@ namespace KompasServer.Effects.Subeffects
                 var (a, b) = (-1, -1);
                 while (!SetTargetIfValid(a, b))
                 {
-                    (a, b) = await ServerPlayer.awaiter.GetSpaceTarget(Source.CardName, spaceRestriction.blurb, spaces, recommendedSpaces);
+                    (a, b) = await ServerPlayer.awaiter.GetSpaceTarget(Source.CardName, blurb, spaces, recommendedSpaces);
                     if ((a, b) == (-1, -1) && ServerEffect.CanDeclineTarget) return ResolutionInfo.Impossible(DeclinedFurtherTargets);
                 }
                 return ResolutionInfo.Next;

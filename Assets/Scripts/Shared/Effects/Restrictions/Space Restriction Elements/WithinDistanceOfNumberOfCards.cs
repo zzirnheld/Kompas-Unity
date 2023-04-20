@@ -1,3 +1,4 @@
+using KompasCore.Cards;
 using KompasCore.Effects.Identities;
 using KompasCore.Effects.Identities.Numbers;
 using System.Linq;
@@ -6,7 +7,7 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 {
     public class WithinDistanceOfNumberOfCards : SpaceRestrictionElement
     {
-        public CardRestriction cardRestriction;
+        public IRestriction<GameCardBase> cardRestriction;
 
         public IIdentity<int> numberOfCards = Constant.One;
         public IIdentity<int> distance = Constant.One;

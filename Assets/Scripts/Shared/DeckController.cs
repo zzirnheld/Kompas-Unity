@@ -81,7 +81,7 @@ namespace KompasCore.GameCore
             foreach (var card in toShuffleInOrder) card.Bottomdeck(stackSrc);
         }
 
-        public List<GameCard> CardsThatFitRestriction(CardRestriction cardRestriction, ResolutionContext context)
+        public List<GameCard> CardsThatFitRestriction(IRestriction<GameCardBase> cardRestriction, ResolutionContext context)
         {
             List<GameCard> cards = new List<GameCard>();
             foreach (GameCard c in deck)
