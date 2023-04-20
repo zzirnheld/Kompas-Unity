@@ -20,11 +20,6 @@ namespace KompasCore.Effects
 
         //This is technically redundant, but so gosh darn common that I'm not deprecating it
         private const string ThisCardInPlay = "This Card in Play";
-
-        //Now: At the moment the trigger is evaluated, aka after the triggering event('s stackable, if any,) resolves
-        //Before: Immediately before the triggering event
-        //After: Immediately after the triggering event
-        private const string ThisCardFitsRestriction = "This Card Fits Restriction Now";
         #endregion trigger conditions
         private static readonly string[] RequiringSelfRestriction = { ThisCardFitsRestriction };
 

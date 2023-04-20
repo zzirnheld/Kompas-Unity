@@ -4,19 +4,25 @@
 	{
 		"triggerCondition":"Stack End",
 		"triggerRestriction":{
-			"triggerRestrictions":["This Card Fits Restriction Now","Number of Cards Fitting Restriction Fits X Restriction"],
-			"selfRestriction":{
-				"elements": [
-					{
-						"$type": "Core.CardRestriction:Location:",
-						"locations": [ "Board" ]
-					},
-					{
-						"$type": "Core.CardRestriction:Not:",
-						"negated": { "$type": "Core.CardRestriction:Avatar:" }
+			"triggerRestrictions":["Number of Cards Fitting Restriction Fits X Restriction"],
+			"triggerRestrictionElements": [
+				{
+					"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+					"card": { "$type": "Cards:CardBefore:" },
+					"cardRestriction": {
+						"elements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Not:",
+								"negated": { "$type": "Core.CardRestriction:Avatar:" }
+							}
+						]
 					}
-				]
-			},
+				}
+			],
             "cardsFittingCardRestriction":{
 				"elements": [
 					{ "$type": "Core.CardRestriction:Friendly:" },

@@ -39,17 +39,16 @@
 				"blurb": "Recur",
 				"triggerCondition": "Turn Start",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card Fits Restriction Now"
-					],
-					"selfRestriction": {
-						"elements": [
-							{
+					"triggerRestrictionElements": [
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"cardRestriction": {
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Discard" ]
 							}
-						]
-					}
+						}
+					]
 				}
 			},
 			"subeffects": [

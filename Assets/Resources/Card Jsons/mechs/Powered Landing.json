@@ -8,9 +8,6 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card Fits Restriction Now"
-					],
 					"triggerRestrictionElements": [
 						{
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
@@ -19,16 +16,16 @@
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Mech", "Golem" ]
 							}
-						}
-					],
-					"selfRestriction": {
-						"elements": [
-							{
+						},
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:ThisCard:" },
+                            "cardRestriction": {
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Discard" ]
 							}
-						]
-					}
+                        }
+					]
 				}
 			},
 			"subeffects": [

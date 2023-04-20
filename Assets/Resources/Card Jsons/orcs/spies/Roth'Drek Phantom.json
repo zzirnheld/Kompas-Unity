@@ -25,15 +25,18 @@
 				"triggerCondition": "Rehand",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card is Main Card",
-						"This Card Fits Restriction Now"
+						"This Card is Main Card"
 					],
-					"selfRestriction": {
-						"elements": [ {
-							"$type": "Core.CardRestriction:Location:",
-							"locations": [ "Board", "Discard" ]
-						} ]
-					}
+					"triggerRestrictionElements": [
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board", "Discard" ]
+							}
+						}
+					]
 				}
 			},
 			"subeffects": [

@@ -31,19 +31,16 @@
 				"blurb": "Buffer Recharge",
 				"triggerCondition": "Turn Start",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card Fits Restriction Now"
-					],
-					"selfRestriction": {
-						"elements": [
-							{
+					"triggerRestrictionElements": [
+                        { "$type": "Core.TriggerRestriction:EnemyTurn:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:ThisCard:" },
+                            "cardRestriction": {
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Discard" ]
 							}
-						]
-					},
-					"triggerRestrictionElements": [
-                        { "$type": "Core.TriggerRestriction:EnemyTurn:" }
+                        }
 					]
 				}
 			},

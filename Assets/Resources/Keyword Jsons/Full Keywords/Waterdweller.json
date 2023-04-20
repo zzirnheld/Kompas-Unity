@@ -5,34 +5,39 @@
 		"blurb":"Waterdweller",
 		"triggerCondition":"Stack End",
 		"triggerRestriction":{
-			"triggerRestrictions":["This Card Fits Restriction Now"],
-			"selfRestriction":{
-				"elements": [
-					{
-						"$type": "Core.CardRestriction:Location:",
-						"locations": [ "Board" ]
-					},
-					{
-						"$type": "Core.CardRestriction:Not:",
-						"negated": { "$type": "Core.CardRestriction:Avatar:" }
-					},
-					{
-						"$type": "Core.SpaceRestriction:Not:",
-						"negated": {
-							"$type": "Core.SpaceRestriction:InAOEOf:",
-							"anyOf": {
-								"$type": "ManyCards:FittingRestriction:",
-								"cardRestriction": {
-								"elements": [ {
-										"$type": "Core.CardRestriction:Subtypes:",
-										"subtypes": [ "Water" ]
-									} ]
+			"triggerRestrictionElements": [
+				{
+					"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+					"card": { "$type": "Cards:CardBefore:" },
+					"cardRestriction": {
+						"elements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Not:",
+								"negated": { "$type": "Core.CardRestriction:Avatar:" }
+							},
+							{
+								"$type": "Core.SpaceRestriction:Not:",
+								"negated": {
+									"$type": "Core.SpaceRestriction:InAOEOf:",
+									"anyOf": {
+										"$type": "ManyCards:FittingRestriction:",
+										"cardRestriction": {
+										"elements": [ {
+												"$type": "Core.CardRestriction:Subtypes:",
+												"subtypes": [ "Water" ]
+											} ]
+										}
+									}
 								}
 							}
-						}
+						]
 					}
-				]
-			}
+				}
+			]
 		}
 	},
 	"subeffects":[

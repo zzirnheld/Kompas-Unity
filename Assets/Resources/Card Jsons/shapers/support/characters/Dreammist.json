@@ -8,22 +8,21 @@
 				"triggerCondition": "Play",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card is Main Card",
-						"This Card Fits Restriction Now"
+						"This Card is Main Card"
 					],
-					"selfRestriction": { "elements": [
+					"triggerRestrictionElements": [
 						{
-							"$type": "Core.SpaceRestriction:AdjacentTo:",
-							"cardRestriction": {
-								"elements": [
-									{
-										"$type": "Core.CardRestriction:Subtypes:",
-										"subtypes": [ "Shaper" ]
-									}
-								]
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+								"cardRestriction": {
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"cardRestriction": {
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Shaper" ]
+								}
 							}
 						}
-					] }
+					]
 				}
 			},
 			"subeffects": [
