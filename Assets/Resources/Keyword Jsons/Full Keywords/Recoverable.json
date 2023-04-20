@@ -5,7 +5,16 @@
 		"blurb":"Recoverable",
 		"triggerCondition":"Discard",
 		"triggerRestriction":{
-			"triggerRestrictions":["Augmented Card is Main Card"]
+			"triggerRestrictionElements": [
+				{
+					"$type": "Core.TriggerRestriction:CardsMatch:",
+					"card": { "$type": "Cards:CardBefore:" },
+					"other": {
+						"$type": "Cards:AugmentedCard:",
+						"ofThisCard": { "$type": "Cards:ThisCard:" }
+					}
+				}
+			]
 		}
 	},
 	"subeffects":[

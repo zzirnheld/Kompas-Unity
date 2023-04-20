@@ -36,7 +36,6 @@
 				"triggerCondition": "Defend",
 				"triggerRestriction": {
 					"triggerRestrictionElements": [
-						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
                         {
                             "$type": "Core.TriggerRestriction:CardsMatch:",
                             "card": { "$type": "Cards:CardBefore:" },

@@ -16,13 +16,17 @@ namespace KompasCore.Effects
         #region trigger restrictions
         private const string ThisCardIsMainCard = "This Card is Main Card";
         private const string ThisCardIsSecondaryCard = "This Card is Secondary Card";
-        private const string AugmentedCardIsMainCard = "Augmented Card is Main Card";
         #endregion trigger conditions
 
         public static readonly ISet<Type> ReevalationRestrictions
             = new HashSet<Type>(new Type[] { typeof(MaxPerTurn), typeof(MaxPerRound), typeof(MaxPerStack) });
 
-        public static readonly string[] DefaultFallOffRestrictions = { ThisCardIsMainCard, ThisCardInPlay };
+        public static readonly IRestriction<TriggeringEventContext>[] DefaultFallOffRestrictions = {
+            new CardsMatch(){
+                card = new Identities.Cards.ThisCard(),
+                other = new Identities.Cards.CardBefore()
+            },
+            new ThisCardInPlay() };
 
         public string[] triggerRestrictions = new string[0];
 
@@ -50,8 +54,6 @@ namespace KompasCore.Effects
             ThisCardIsMainCard => triggeringContext.mainCardInfoBefore?.Card == ThisCard,
             ThisCardIsSecondaryCard => triggeringContext.secondaryCardInfoBefore.Card == ThisCard,
             AugmentedCardIsMainCard => triggeringContext.mainCardInfoBefore.Augments.Contains(ThisCard),
-
-            ThisCardInPlay => ThisCard.Location == CardLocation.Board,
 
             //misc
             _ => throw new ArgumentException($"Invalid trigger restriction {restriction}"),
