@@ -52,22 +52,14 @@
 			"On Card that Fits Restriction"
 		],
 		"onCardRestriction": {
-			"elements": [ {
-				"$type": "Core.CardRestriction:Not:",
-				"negated": {
-					"$type": "Core.CardRestriction:HasAugment:",
-					
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
-							{
-								"$type": "Core.CardRestriction:Name:",
-								"sameAs": { "$type": "Cards:ThisCard:" }
-							}
-						]
-					}
+			"$type": "Core.CardRestriction:Not:",
+			"negated": {
+				"$type": "Core.CardRestriction:HasAugment:",
+				"cardRestriction": {
+					"$type": "Core.CardRestriction:Name:",
+					"sameAs": { "$type": "Cards:ThisCard:" }
 				}
-			} ]
+			}
 		}
 	},
 	"a": 3,

@@ -46,7 +46,8 @@
 			"Adjacent to Card Fitting Restriction"
 		],
 		"adjacentCardRestriction": {
-			"elements": [ { "$type": "Core.CardRestriction:Character:" } ]
+			"$type": "Core.CardRestriction:AllOf:",
+			"elements":[ { "$type": "Core.CardRestriction:Character:" } ]
 		}
 	},
 	"c": 1,

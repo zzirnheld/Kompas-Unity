@@ -53,7 +53,8 @@
 			"Adjacent to Card Fitting Restriction"
 		],
 		"adjacentCardRestriction": {
-			"elements": [
+			"$type": "Core.CardRestriction:AllOf:",
+			"elements":[
 				{ "$type": "Core.CardRestriction:Spell:" }
 			]
 		}

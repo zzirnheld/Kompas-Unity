@@ -41,6 +41,7 @@
 				{
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
+						"$type": "Core.SpaceRestriction:AllOf:",
 						"blurb": "Sire, where shall we revive them?",
                         "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },

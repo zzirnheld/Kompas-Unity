@@ -35,7 +35,7 @@ namespace KompasCore.Effects
             {
                 if (handSizeCardRestriction == null)
                 {
-                    handSizeCardRestriction = new CardRestriction()
+                    handSizeCardRestriction = new AllOf()
                     {
                         elements = new IRestriction<GameCardBase>[]
                         {

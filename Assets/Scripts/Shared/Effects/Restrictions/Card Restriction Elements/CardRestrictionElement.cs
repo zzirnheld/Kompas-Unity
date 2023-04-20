@@ -15,6 +15,14 @@ namespace KompasCore.Effects.Restrictions
         {
             protected override bool IsValidLogic(GameCardBase item, IResolutionContext context) => true;
         }
+    
+        public class AllOf : RestrictionBase<GameCardBase>
+        {
+            public GameCard Source => InitializationContext.source;
+
+            public override string ToString() => $"Card Restriction of {Source?.CardName}." +
+                $"\nRestriction Elements: {string.Join(", ", elements.Select(r => r))}";
+        }
 
         public class Not : CardRestrictionElement
         {

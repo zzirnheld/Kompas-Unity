@@ -68,12 +68,8 @@
 			"Augment Effect Restrictions"
 		],
 		"onCardRestriction": {
-			"elements": [
-				{
-					"$type": "Core.CardRestriction:Subtypes:",
-					"subtypes": [ "Mech" ]
-				}
-			]
+			"$type": "Core.CardRestriction:Subtypes:",
+			"subtypes": [ "Mech" ]
 		}
 	},
 	"a": 3,

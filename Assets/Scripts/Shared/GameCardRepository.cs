@@ -48,9 +48,21 @@ namespace KompasCore.GameCore
 
         protected delegate TGameCard ConstructCard<TGameCard>(TSerializableCard cardInfo, TEffect[] effects, TCardController ctrl);
 
+        public static string JsonPrettify(string json)
+        {
+            using (var stringReader = new StringReader(json))
+            using (var stringWriter = new StringWriter())
+            {
+                var jsonReader = new JsonTextReader(stringReader);
+                var jsonWriter = new JsonTextWriter(stringWriter) { Formatting = Formatting.Indented };
+                jsonWriter.WriteToken(jsonReader);
+                return stringWriter.ToString();
+            }
+        }
+
         protected TGameCard InstantiateGameCard<TGameCard>(string json, ConstructCard<TGameCard> cardConstructor, Action<SerializableCard> validation = null)
         {
-            Debug.Log($"Loading {json}");
+            Debug.Log($"Loading {JsonPrettify(json)}");
             TSerializableCard cardInfo;
             var effects = new List<TEffect>();
 

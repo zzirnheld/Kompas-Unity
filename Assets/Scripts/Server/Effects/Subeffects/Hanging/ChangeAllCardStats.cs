@@ -15,10 +15,7 @@ namespace KompasServer.Effects.Subeffects.Hanging
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
             base.Initialize(eff, subeffIndex);
-            cardRestriction ??= new CardRestriction()
-            {
-                elements = new IRestriction<GameCardBase>[] { new Character() }
-            };
+            cardRestriction ??= new Character();
             cardRestriction.Initialize(DefaultInitializationContext);
         }
 

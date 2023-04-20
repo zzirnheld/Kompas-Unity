@@ -29,10 +29,9 @@
                         "$type": "Numbers:CountCards:",
                         "cards": {
                             "$type": "ManyCards:FittingRestriction:",
-                            
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:AllOf:",
+								"elements": [
 									{ "$type": "Core.CardRestriction:Friendly:" },
 									{
 										"$type": "Core.SpaceRestriction:AdjacentTo:",

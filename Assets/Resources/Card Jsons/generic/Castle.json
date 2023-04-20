@@ -37,8 +37,8 @@
 				{
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
+						"$type": "Core.SpaceRestriction:AllOf:",
 						"blurb": "Corner to move them to",
-						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.SpaceRestriction:Corner:" },
 							{

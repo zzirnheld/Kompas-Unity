@@ -5,6 +5,7 @@ using KompasCore.Cards;
 using KompasCore.Effects;
 using KompasCore.Effects.Identities;
 using KompasCore.Effects.Identities.ManyCards;
+using KompasCore.Effects.Restrictions.CardRestrictionElements;
 using KompasCore.GameCore;
 using Newtonsoft.Json;
 using UnityEngine;
@@ -21,7 +22,7 @@ namespace KompasServer.Effects.Subeffects
         /// <summary>
         /// Restriction that each card must fulfill
         /// </summary>
-        public IRestriction<GameCardBase> cardRestriction = new CardRestriction();
+        public IRestriction<GameCardBase> cardRestriction = new AlwaysValid();
 
         /// <summary>
         /// Restriction that the list collectively must fulfill

@@ -19,6 +19,7 @@ namespace KompasCore.Effects
         {
             base.Initialize(initializationContext);
             foreach (var element in elements) element.Initialize(initializationContext);
+            if (elements.Count == 1) Debug.Log($"only one element on {GetType()} on eff of {initializationContext.effect}");
         }
 
         public bool IsValid(Type item, IResolutionContext context)
@@ -38,16 +39,5 @@ namespace KompasCore.Effects
 
         protected virtual bool IsValidLogic(Type item, IResolutionContext context)
             => elements.All(r => r.IsValid(item, context));
-    }
-    
-    public class CardRestriction : RestrictionBase<GameCardBase>
-    {
-        public string blurb = "";
-
-        public GameCard Source => InitializationContext.source;
-
-        public override string ToString() => $"Card Restriction of {Source?.CardName}." +
-            $"\nRestriction Elements: {string.Join(", ", elements.Select(r => r))}";
-
     }
 }

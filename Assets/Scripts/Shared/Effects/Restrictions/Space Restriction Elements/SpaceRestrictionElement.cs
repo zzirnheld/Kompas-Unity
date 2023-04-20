@@ -19,14 +19,6 @@ namespace KompasCore.Effects.Restrictions
     
         public class AllOf : RestrictionBase<Space>
         {
-            public string blurb = "";
-
-            //TODO correct any places still using mustBeEmpty
-
-            public Func<Space, bool> AsThroughPredicate(IResolutionContext context)
-                => s => IsValid(s, context);
-
-            public Func<Space, bool> IsValidFor(IResolutionContext context) => s => IsValid(s, context);
         }
 
         public class Not : SpaceRestrictionElement

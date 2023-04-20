@@ -19,6 +19,7 @@
             "Defender is Adjacent"
         ],
         "defenderRestriction" : {
+			"$type": "Core.CardRestriction:AllOf:",
 			"elements": [
 				{
 					"$type": "Core.CardRestriction:Not:",

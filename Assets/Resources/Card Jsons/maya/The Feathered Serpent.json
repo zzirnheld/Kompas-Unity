@@ -30,15 +30,9 @@
 							},
 							{
 								"$type": "Core.SpaceRestriction:AdjacentTo:",
-								
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
-										{
-											"$type": "Core.CardRestriction:Subtypes:",
-											"subtypes": [ "Structure" ]
-										}
-									]
+								"cardRestriction": {
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Structure" ]
 								}
 							}
 						]
@@ -55,7 +49,7 @@
 					"spaceRestriction":
 					{
 						"blurb":"where to revive the Feathered Serpent",
-						"$type": "Core.CardRestriction:AllOf:",
+						"$type": "Core.SpaceRestriction:AllOf:",
 						"elements": [
                             {
                                 "$type": "Core.SpaceRestriction:CanPlayCard:",
@@ -79,9 +73,7 @@
 			"Default Effect Restrictions",
 			"Number of Cards Exist"
 		],
-		"countCardRestriction": { "elements": [
-			{ "$type": "Core.SpaceRestriction:Edge:" }
-		] },
+		"countCardRestriction": { "$type": "Core.SpaceRestriction:Edge:" },
 		"countCardNumberRestriction": {
 			"numberRestrictions": [">=Constant"],
 			"constant": 14

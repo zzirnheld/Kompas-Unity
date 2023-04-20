@@ -74,59 +74,12 @@ namespace KompasCore.GameCore
             MaxDepth = null,
             ReferenceLoopHandling = ReferenceLoopHandling.Serialize
         };
-        private const string ZoomedTextureFolder = "Card Textures/Zoomed/Texture";
-        private const string ZoomedMetalnessFolder = "Card Textures/Zoomed/Metalness";
-        private const string UnzoomedTextureFolder = "Card Textures/Unzoomed/Texture";
-        private const string UnzoomedMetalnessFolder = "Card Textures/Unzoomed/Metalness";
-
-        public class CardTextures
-        {
-            public readonly Texture2D zoomedTex;
-            public readonly Texture2D zoomedMet;
-            public readonly Texture2D unzoomedTex;
-            public readonly Texture2D unzoomedMet;
-
-            public CardTextures(Texture2D zoomedTex, Texture2D zoomedMet, Texture2D unzoomedTex, Texture2D unzoomedMet)
-            {
-                this.zoomedTex = zoomedTex;
-                this.zoomedMet = zoomedMet;
-                this.unzoomedTex = unzoomedTex;
-                this.unzoomedMet = unzoomedMet;
-            }
-
-            internal void Deconstruct(out Texture2D zoomedTex, out Texture2D zoomedMet, out Texture2D unzoomedTex, out Texture2D unzoomedMet)
-            {
-                zoomedTex = this.zoomedTex;
-                zoomedMet = this.zoomedMet;
-                unzoomedTex = this.unzoomedTex;
-                unzoomedMet = this.unzoomedMet;
-            }
-        }
-
-        private static IDictionary<string, CardTextures> cardFileNameToTextures = new Dictionary<string, CardTextures>();
-        private static Texture2D friendlyZoomedCharTexture;
-        private static Texture2D friendlyZoomedNonCharTexture;
-        private static Texture2D friendlyUnzoomedCharTexture;
-        private static Texture2D friendlyUnzoomedNonCharTexture;
-        private static Texture2D friendlyZoomedCharMetalness;
-        private static Texture2D friendlyZoomedNonCharMetalness;
-        private static Texture2D friendlyUnzoomedCharMetalness;
-        private static Texture2D friendlyUnzoomedNonCharMetalness;
-
-        private static Texture2D enemyZoomedCharTexture;
-        private static Texture2D enemyZoomedNonCharTexture;
-        private static Texture2D enemyUnzoomedCharTexture;
-        private static Texture2D enemyUnzoomedNonCharTexture;
-        private static Texture2D enemyZoomedCharMetalness;
-        private static Texture2D enemyZoomedNonCharMetalness;
-        private static Texture2D enemyUnzoomedCharMetalness;
-        private static Texture2D enemyUnzoomedNonCharMetalness;
 
         private static readonly string[] cardNamesToIgnore = new string[] { "Square Kompas Logo" };
 
         protected static readonly Dictionary<string, string> cardJsons = new Dictionary<string, string>();
         protected static readonly Dictionary<string, string> cardFileNames = new Dictionary<string, string>();
-        private static IReadOnlyCollection<string> CardNames => cardJsons.Keys;
+        public static IReadOnlyCollection<string> CardNames => cardJsons.Keys;
 
         protected static readonly Dictionary<string, string> keywordJsons = new Dictionary<string, string>();
         protected static readonly Dictionary<string, string> partialKeywordJsons = new Dictionary<string, string>();
@@ -137,18 +90,6 @@ namespace KompasCore.GameCore
 
         private static bool initalized = false;
         private static readonly object initializationLock = new object();
-
-        public Sprite frameTexture;
-        public Sprite namePlacardTexture;
-        public Sprite typePlacardTexture;
-        public Sprite effectTextTexture;
-        public Sprite cardBackTexture;
-        public Sprite nTexture;
-        public Sprite eTexture;
-        public Sprite sacTexture;
-        public Sprite wTexture;
-        public Sprite rTexture;
-        public Sprite dTexture;
 
         public Game game;
         public Settings Settings
@@ -223,6 +164,11 @@ namespace KompasCore.GameCore
                     Debug.LogError($"Failed to load {json}. Error\n{e}");
                     continue;
                 }
+                catch (JsonSerializationException e)
+                {
+                    Debug.LogError($"Failed to load {json}. Error\n{e}");
+                    continue;
+                }
                 string cardName = card.cardName;
 
                 //add the cleaned json to the dictionary
@@ -278,46 +224,6 @@ namespace KompasCore.GameCore
             json = threeSpaceRelationshipRegex.Replace(json, threeSpaceRelationshipReplacement);
 
             return json;
-        }
-
-        public CardTextures GetTextures(string cardFileName, bool isChar, bool friendly)
-        {
-            CardTextures ret;
-            if (cardFileNameToTextures.ContainsKey(cardFileName)) ret = cardFileNameToTextures[cardFileName];
-            else
-            {
-                CardTextures baseline = DetermineBaselineTextures(isChar, friendly);
-
-                var zoomedTexCharArt = Resources.Load<Texture2D>(Path.Combine(ZoomedTextureFolder, $"{cardFileName}"));
-                var zoomedMetCharArt = Resources.Load<Texture2D>(Path.Combine(ZoomedMetalnessFolder, $"{cardFileName}"));
-                var unzoomedTexCharArt = Resources.Load<Texture2D>(Path.Combine(UnzoomedTextureFolder, $"{cardFileName}"));
-                var unzoomedMetCharArt = Resources.Load<Texture2D>(Path.Combine(UnzoomedMetalnessFolder, $"{cardFileName}"));
-
-                Debug.Log($"Loading fresh {Path.Combine(ZoomedTextureFolder, $"{cardFileName}")}. Is it null? {zoomedTexCharArt == null}");
-
-                var copiedZoomedTex = Copy(baseline.zoomedTex, zoomedTexCharArt);
-                var copiedZoomedMet = Copy(baseline.zoomedMet, zoomedMetCharArt);
-                var copiedUnzoomedTex = Copy(baseline.unzoomedTex, unzoomedTexCharArt);
-                var copiedUnzoomedMet = Copy(baseline.unzoomedMet, unzoomedMetCharArt);
-                ret = new CardTextures(copiedZoomedTex, copiedZoomedMet, copiedUnzoomedTex, copiedUnzoomedMet);
-                cardFileNameToTextures[cardFileName] = ret;
-            }
-
-            return ret;
-        }
-
-        private static CardTextures DetermineBaselineTextures(bool isChar, bool friendly)
-        {
-            if (friendly) return isChar
-                    ? new CardTextures(friendlyZoomedCharTexture, friendlyZoomedCharMetalness,
-                        friendlyUnzoomedCharTexture, friendlyUnzoomedCharMetalness)
-                    : new CardTextures(friendlyZoomedNonCharTexture, friendlyZoomedNonCharMetalness,
-                        friendlyUnzoomedNonCharTexture, friendlyUnzoomedNonCharMetalness);
-            else return isChar
-                    ? new CardTextures(enemyZoomedCharTexture, enemyZoomedCharMetalness,
-                        enemyUnzoomedCharTexture, enemyUnzoomedCharMetalness)
-                    : new CardTextures(enemyZoomedNonCharTexture, enemyZoomedNonCharMetalness,
-                        enemyUnzoomedNonCharTexture, enemyUnzoomedNonCharMetalness);
         }
 
         private Texture2D Copy(Texture2D baseTexture, Texture2D cardSpecificTexture)
