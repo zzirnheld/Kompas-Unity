@@ -19,9 +19,9 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Mask to reveal",
 					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
-						"blurb": "Mask to reveal",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{
@@ -37,9 +37,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Dancer to summon",
 					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"blurb": "Dancer to summon",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
@@ -47,23 +47,23 @@
 							{
 								"$type": "Core.CardRestriction:CardValueFits:",
 								"cardValue": { "value": "Cost" },
-								"numberRestriction": { "elements": [{
+								"numberRestriction": {
 									"$type": "Core.NumberRestriction:Compare:",
 									"comparison": { "$type": "Relationships.Number:LessThanEqual:" },
 									"other": {
 										"$type": "Numbers:Pips:",
 										"player": { "$type": "Players:TargetIndex:" }
 									}
-								}]}
+								}
 							}
 						]
 					}
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
-					"playerIndex": -2,
+					"blurb": "where for the Dancer to start the masquerade",
 					"spaceRestriction": {
-						"blurb": "where for the Dancer to start the masquerade",
+						"$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {

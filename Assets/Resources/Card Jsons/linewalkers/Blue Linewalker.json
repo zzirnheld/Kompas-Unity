@@ -21,10 +21,9 @@
 				{
 					"$type": "Subeffect:ChangeAllCardStats:",
 					"cardsSource": { "$type": "ManyCards:Board:" },
-					
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
+					"cardRestriction": {
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
                             {
                                 "$type": "Core.SpaceRestriction:CompareDistance:",

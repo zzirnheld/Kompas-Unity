@@ -33,8 +33,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where to Invoke the Spirit",
 					"spaceRestriction": {
-						"blurb": "where to Invoke the Spirit",
+						"$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {

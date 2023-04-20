@@ -43,8 +43,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where to Invoke the non-Spirit",
 					"spaceRestriction": {
-						"blurb": "where to Invoke the non-Spirit",
+						"$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {

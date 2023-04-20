@@ -36,9 +36,10 @@
 		},
 		{
 			"$type":"Subeffect:AutoSpaceTarget:",
+			"blurb":"speeeeeeeeeeeeeeeed",
 			"spaceRestriction":
 			{
-				"blurb":"speeeeeeeeeeeeeeeed",
+				"$type": "Core.SpaceRestriction:AllOf:",
 				"elements": [
 					{
 						"$type": "Core.SpaceRestriction:CanMoveCard:",

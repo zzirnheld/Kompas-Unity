@@ -12,11 +12,7 @@
 						{
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 							"card": { "$type": "Cards:CardBefore:" },
-							
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [ { "$type": "Core.CardRestriction:Character:" } ]
-							}
+							"cardRestriction": { "$type": "Core.CardRestriction:Character:" }
 						}
 					]
 				}
@@ -27,9 +23,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "who will Leygrapple",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "who will Leygrapple",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
@@ -46,9 +42,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "to move that Linewalker to",
 					"spaceRestriction": {
-						"blurb": "to move that Linewalker to",
-						"$type": "Core.CardRestriction:AllOf:",
+						"$type": "Core.SpaceRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.SpaceRestriction:Empty:" },
 							{
