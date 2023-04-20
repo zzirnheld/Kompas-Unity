@@ -9,17 +9,22 @@
 				"triggerCondition": "Discard",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card is Main Card",
-						"Main Card Fits Restriction Before"
+						"This Card is Main Card"
 					],
-					"cardRestriction": {
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+					"triggerRestrictionElements": [
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"cardRestriction": {
+								"elements": [
+									{
+										"$type": "Core.CardRestriction:Location:",
+										"locations": [ "Board" ]
+									}
+								]
 							}
-						]
-					}
+						}
+					]
 				}
 			},
 			"subeffects": [

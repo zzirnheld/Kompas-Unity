@@ -10,29 +10,34 @@
 				"triggerCondition": "Defend",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card in Play",
-						"Main Card Fits Restriction Before"
+						"This Card in Play"
 					],
-					"cardRestriction": {
-						"elements": [
-							{ "$type": "Core.CardRestriction:Enemy:" },
-							{
-								"$type": "Core.CardRestriction:HasAugment:",
-								"cardRestriction": {
-									"elements": [
-										{
-											"$type": "Core.CardRestriction:Subtypes:",
-											"subtypes": [ "Sportsball" ]
+					"triggerRestrictionElements": [
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"cardRestriction": {
+								"elements": [
+									{ "$type": "Core.CardRestriction:Enemy:" },
+									{
+										"$type": "Core.CardRestriction:HasAugment:",
+										"cardRestriction": {
+											"elements": [
+												{
+													"$type": "Core.CardRestriction:Subtypes:",
+													"subtypes": [ "Sportsball" ]
+												}
+											]
 										}
-									]
-								}
-							},
-                            {
-								"$type": "Core.SpaceRestriction:InAOEOf:",
-								"card": { "$type": "Cards:ThisCard:" }
+									},
+									{
+										"$type": "Core.SpaceRestriction:InAOEOf:",
+										"card": { "$type": "Cards:ThisCard:" }
+									}
+								]
 							}
-						]
-					}
+						}
+					]
 				}
 			},
 			"subeffects": [

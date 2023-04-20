@@ -9,17 +9,22 @@
 				"triggerCondition": "Discard",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"Augmented Card is Main Card",
-						"Main Card Fits Restriction Before"
+						"Augmented Card is Main Card"
 					],
-					"cardRestriction": {
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Mech" ]
+					"triggerRestrictionElements": [
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"cardRestriction": {
+								"elements": [
+									{
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Mech" ]
+									}
+								]
 							}
-						]
-					}
+						}
+					]
 				}
 			},
 			"subeffects": [

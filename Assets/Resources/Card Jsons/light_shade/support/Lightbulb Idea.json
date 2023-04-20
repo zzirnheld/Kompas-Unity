@@ -9,17 +9,22 @@
 				"triggerCondition": "Play",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card in Play",
-						"Main Card Fits Restriction Before"
+						"This Card in Play"
 					],
-					"cardRestriction": {
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Light" ]
+					"triggerRestrictionElements": [
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"cardRestriction": {
+								"elements": [
+									{
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Light" ]
+									}
+								]
 							}
-						]
-					}
+						}
+					]
 				}
 			},
 			"subeffects": [

@@ -47,28 +47,33 @@
 				"triggerCondition": "Move",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card in Play",
-						"Main Card Fits Restriction Before"
+						"This Card in Play"
 					],
-					"cardRestriction": { "elements": [
+					"triggerRestrictionElements": [
 						{
-							"$type": "Core.SpaceRestriction:AdjacentTo:",
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
 							"cardRestriction": { "elements": [
-								{
-									"$type": "Core.CardRestriction:Subtypes:",
-									"subtypes": [ "Pulsar" ]
-								},
-								{
-									"$type": "Core.CardRestriction:Not:",
-									"negated": {
-										"$type": "Core.CardRestriction:CardsMatch:",
-										"card": { "$type": "Cards:CardBefore:" }
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"cardRestriction": { "elements": [
+									{
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Pulsar" ]
+									},
+									{
+										"$type": "Core.CardRestriction:Not:",
+										"negated": {
+											"$type": "Core.CardRestriction:CardsMatch:",
+											"card": { "$type": "Cards:CardBefore:" }
+										}
 									}
-								}
-							] }
-						}
-					] }
-				}
+								] }
+							}
+						] }
+					}
+				]
+			}
 			},
 			"subeffects": [
 				{

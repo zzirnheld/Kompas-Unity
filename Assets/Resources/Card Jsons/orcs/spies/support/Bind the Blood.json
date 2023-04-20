@@ -8,29 +8,34 @@
 				"triggerCondition": "Attack",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card in Play",
-						"Main Card Fits Restriction Before"
+						"This Card in Play"
 					],
-					"cardRestriction": {
-						"elements": [
-							{ "$type": "Core.CardRestriction:Character:" },
-							{
-								"$type": "Core.CardRestriction:Not:",
-								"negated": {
-									"$type": "Core.CardRestriction:CardsMatch:",
-									"card": { "$type": "Cards:ThisCard:" }
-								}
-							},
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Orc" ]
-							},
-                            {
-								"$type": "Core.SpaceRestriction:InAOEOf:",
-								"card": { "$type": "Cards:ThisCard:" }
+					"triggerRestrictionElements": [
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"cardRestriction": {
+								"elements": [
+									{ "$type": "Core.CardRestriction:Character:" },
+									{
+										"$type": "Core.CardRestriction:Not:",
+										"negated": {
+											"$type": "Core.CardRestriction:CardsMatch:",
+											"card": { "$type": "Cards:ThisCard:" }
+										}
+									},
+									{
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Orc" ]
+									},
+									{
+										"$type": "Core.SpaceRestriction:InAOEOf:",
+										"card": { "$type": "Cards:ThisCard:" }
+									}
+								]
 							}
-						]
-					}
+						}
+					]
 				}
 			},
 			"subeffects": [
