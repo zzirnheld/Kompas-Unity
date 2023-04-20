@@ -1,5 +1,4 @@
 ﻿using KompasCore.Cards;
-using KompasCore.Effects.Restrictions;
 using KompasCore.Effects.Restrictions.TriggerRestrictionElements;
 using KompasCore.GameCore;
 using System;
@@ -13,11 +12,6 @@ namespace KompasCore.Effects
     {
         //public Game Game { get; private set; }
 
-        #region trigger restrictions
-        private const string ThisCardIsMainCard = "This Card is Main Card";
-        private const string ThisCardIsSecondaryCard = "This Card is Secondary Card";
-        #endregion trigger conditions
-
         public static readonly ISet<Type> ReevalationRestrictions
             = new HashSet<Type>(new Type[] { typeof(MaxPerTurn), typeof(MaxPerRound), typeof(MaxPerStack) });
 
@@ -27,8 +21,6 @@ namespace KompasCore.Effects
                 other = new Identities.Cards.CardBefore()
             },
             new ThisCardInPlay() };
-
-        public string[] triggerRestrictions = new string[0];
 
         public IRestriction<TriggeringEventContext>[] triggerRestrictionElements = { };
 
@@ -47,32 +39,6 @@ namespace KompasCore.Effects
             //Debug.Log($"Initializing trigger restriction for {thisCard?.CardName}. game is null? {game}");
         }
 
-
-        private bool IsRestrictionValid(string restriction, TriggeringEventContext triggeringContext, IResolutionContext stashedResolutionContext = default) => restriction switch
-        {
-            //card triggering stuff
-            ThisCardIsMainCard => triggeringContext.mainCardInfoBefore?.Card == ThisCard,
-            ThisCardIsSecondaryCard => triggeringContext.secondaryCardInfoBefore.Card == ThisCard,
-            AugmentedCardIsMainCard => triggeringContext.mainCardInfoBefore.Augments.Contains(ThisCard),
-
-            //misc
-            _ => throw new ArgumentException($"Invalid trigger restriction {restriction}"),
-        };
-
-        private static bool StackablesMatch(TriggeringEventContext context, IResolutionContext secondary)
-        {
-            //Debug.Log($"Comparing {context}'s {context.stackableEvent} and {secondary}'s {secondary?.stackableEvent}");
-            return context.stackableEvent == secondary?.TriggerContext.stackableEvent;
-        }
-
-        private bool IsRestrictionValidDebug(string r, TriggeringEventContext triggeringContext, IResolutionContext stashedResolutionContext)
-        {
-            var success = IsRestrictionValid(r, triggeringContext, stashedResolutionContext);
-            //TODO: tie this to a compiler flag/ifdef sort of thing
-            //if (!success) Debug.Log($"Trigger for {ThisCard.CardName} invalid at restriction {r} for {triggeringContext}");
-            return success;
-        }
-
         /// <summary>
         /// Checks whether this trigger restriction is valid for the given context where the trigger occurred.
         /// Can optionally be triggered w/r/t a secondary activation context, for various reasons. See <paramref name="secondary"/>
@@ -86,8 +52,7 @@ namespace KompasCore.Effects
 
             try
             {
-                return triggerRestrictions.All(r => IsRestrictionValidDebug(r, context, stashedResolutionContext: secondary))
-                    && triggerRestrictionElements.All(tre => tre.IsValid(context, secondary));
+                return triggerRestrictionElements.All(tre => tre.IsValid(context, secondary));
             }
             catch (NullReferenceException nullref)
             {

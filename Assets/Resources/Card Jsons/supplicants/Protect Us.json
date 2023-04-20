@@ -8,7 +8,15 @@
 			{
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": ["This Card is Main Card"]
+					"triggerRestriction": {
+						"triggerRestrictionElements": [
+							{
+								"$type": "Core.TriggerRestriction:CardsMatch:",
+								"card": { "$type": "Cards:CardBefore:" },
+								"other": { "$type": "Cards:ThisCard:" }
+							}
+						]
+					}
 				}
 			},
 			"subeffects": [
@@ -17,6 +25,7 @@
 					"whatToCount":"Cards Fitting Restriction",
 					"cardRestriction":
 					{
+						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
@@ -35,6 +44,7 @@
 					"$type":"Subeffect:ChangeAllCardStats:",
 					"cardRestriction":
 					{
+						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
@@ -48,6 +58,7 @@
 					"$type":"Subeffect:ChangeAllCardStats:",
 					"cardRestriction":
 					{
+						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{ "$type": "Core.CardRestriction:Negated:" },

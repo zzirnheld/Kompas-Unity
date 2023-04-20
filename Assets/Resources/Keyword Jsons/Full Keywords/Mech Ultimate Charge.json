@@ -3,8 +3,12 @@
 	"triggerData": {
 		"triggerCondition": "Attack",
 		"triggerRestriction": {
-			"triggerRestrictions": [
-				"This Card is Main Card"
+			"triggerRestrictionElements": [
+				{
+					"$type": "Core.TriggerRestriction:CardsMatch:",
+					"card": { "$type": "Cards:CardBefore:" },
+					"other": { "$type": "Cards:ThisCard:" }
+				}
 			]
 		}
 	},

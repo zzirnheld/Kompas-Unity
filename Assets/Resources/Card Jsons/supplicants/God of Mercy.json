@@ -8,10 +8,12 @@
 				"blurb": "Mercy",
 				"triggerCondition": "Arrive",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
-					],
 					"triggerRestrictionElements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCard:" }
+						},
 						{
 							"$type": "Core.SpaceRestriction:AdjacentTo:",
 							"cardRestriction": { "elements": [
@@ -43,8 +45,12 @@
 					"$type": "Subeffect:Hanging.Negate:",
 					"endCondition": "Remove",
 					"triggerRestriction": {
-						"triggerRestrictions": [
-							"This Card is Main Card"
+						"triggerRestrictionElements": [
+							{
+								"$type": "Core.TriggerRestriction:CardsMatch:",
+								"card": { "$type": "Cards:CardBefore:" },
+								"other": { "$type": "Cards:ThisCard:" }
+							}
 						]
 					}
 				},

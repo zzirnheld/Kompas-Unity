@@ -8,8 +8,14 @@
 			"triggerData":
 			{
 				"triggerCondition":"Augment Attached",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card is Main Card"]
+				"triggerRestriction": {
+					"triggerRestrictionElements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCard:" }
+						}
+					]
 				}
 			},
 			"subeffects":[
@@ -23,8 +29,14 @@
 					"sModifier":5,
 					"wModifier":5,
 					"endCondition":"Augment Detached",
-					"triggerRestriction":{
-						"triggerRestrictions":["This Card is Main Card"]
+					"triggerRestriction": {
+						"triggerRestrictionElements": [
+							{
+								"$type": "Core.TriggerRestriction:CardsMatch:",
+								"card": { "$type": "Cards:CardBefore:" },
+								"other": { "$type": "Cards:ThisCard:" }
+							}
+						]
 					}
 				}
 			]
