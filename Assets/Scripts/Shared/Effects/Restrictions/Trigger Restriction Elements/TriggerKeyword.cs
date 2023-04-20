@@ -10,7 +10,7 @@ namespace KompasCore.Effects.Restrictions
         {
             public string keyword;
 
-            private TriggerRestrictionElement[] triggerRestrictionElements;
+            private IRestriction<TriggeringEventContext> [] triggerRestrictionElements;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {

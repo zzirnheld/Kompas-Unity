@@ -84,7 +84,8 @@
 				{
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
-                        "elements": [
+						"$type": "Core.SpaceRestriction:AllOf:",
+						"elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {
                                 "$type": "Core.SpaceRestriction:CanPlayCard:",

@@ -16,6 +16,7 @@
 						"$type": "Core.SpaceRestriction:ConnectedTo:",
 						"space": { "$type": "Cards:ThisCard:" },
 						"byRestriction":{
+							"$type": "Core.SpaceRestriction:AllOf:",
 							"elements": [
 								{ "$type": "Core.CardRestriction:Character:" },
 								{
@@ -40,6 +41,7 @@
 			"$type":"Subeffect:SetXByGamestate:",
 			"whatToCount":"Distance to Coords Through",
 			"throughRestriction":{
+				"$type": "Core.SpaceRestriction:AllOf:",
 				"elements": [
 					{ "$type": "Core.CardRestriction:Character:" },
 					{

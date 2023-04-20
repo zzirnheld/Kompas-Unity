@@ -54,6 +54,7 @@
 								"$type": "Core.SpaceRestriction:ConnectedTo:",
 								"space": { "$type": "Cards:TargetIndex:" },
 								"byRestriction":{
+									"$type": "Core.SpaceRestriction:AllOf:",
 									"elements": [
 										{
 											"$type": "Core.SpaceRestriction:InAOEOf:",
@@ -97,6 +98,7 @@
 			"Adjacent to Friendly Card"
 		],
 		"spaceRestriction": {
+			"$type": "Core.SpaceRestriction:AllOf:",
 			"elements": [
 				{
 					"$type": "Core.SpaceRestriction:InAOEOf:",

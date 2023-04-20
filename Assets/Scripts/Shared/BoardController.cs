@@ -112,7 +112,7 @@ namespace KompasCore.GameCore
         public bool AreConnectedBySpaces(Space source, Space destination, Func<GameCard, bool> throughPredicate)
             => AreConnectedBySpaces(source, destination, s => throughPredicate(GetCardAt(s)));
 
-        public bool AreConnectedBySpaces(Space source, Space destination, SpaceRestriction restriction, IResolutionContext context)
+        public bool AreConnectedBySpaces(Space source, Space destination, IRestriction<Space> restriction, IResolutionContext context)
             => AreConnectedBySpaces(source, destination, s => restriction.IsValid(s, context));
 
         public bool AreConnectedBySpaces(Space source, Space destination, Func<Space, bool> predicate)

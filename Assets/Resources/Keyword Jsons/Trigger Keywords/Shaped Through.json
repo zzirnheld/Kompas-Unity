@@ -26,6 +26,7 @@
                     "firstSpace": { "$type": "Cards:ThisCard:" },
                     "secondSpace": { "$type": "Cards:CardBefore:" },
                     "throughRestriction": {
+                        "$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             {
                                 "$type": "Core.SpaceRestriction:CardFitsRestriction:",
@@ -46,6 +47,7 @@
                     "firstSpace": { "$type": "Cards:ThisCard:" },
                     "secondSpace": { "$type": "Cards:CardAfter:" },
                     "throughRestriction": {
+                        "$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             {
                                 "$type": "Core.SpaceRestriction:CardFitsRestriction:",
@@ -69,6 +71,7 @@
             "firstSpace": { "$type": "Cards:CardBefore:" },
             "secondSpace": { "$type": "Cards:CardAfter:" },
             "throughRestriction": {
+                "$type": "Core.SpaceRestriction:AllOf:",
                 "elements": [
                     {
                         "$type": "Core.SpaceRestriction:CardFitsRestriction:",

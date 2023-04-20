@@ -48,6 +48,7 @@
 								"$type": "Core.SpaceRestriction:ConnectedTo:",
 								"space": { "$type": "Cards:TargetIndex:" },
 								"byRestriction":{
+									"$type": "Core.SpaceRestriction:AllOf:",
 									"elements": [
 										{
 											"$type": "Core.SpaceRestriction:InAOEOf:",
@@ -95,6 +96,7 @@
 				{
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
+						"$type": "Core.SpaceRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.SpaceRestriction:Empty:" },
 							{

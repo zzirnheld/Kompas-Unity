@@ -6,7 +6,7 @@ namespace KompasCore.Effects.Restrictions.TriggerRestrictionElements
 {
     public class SpacesFitRestriction : TriggerRestrictionElement
     {
-        public SpaceRestriction spaceRestriction;
+        public IRestriction<Space> spaceRestriction;
         public IIdentity<IReadOnlyCollection<Space>> spaces;
 
         public bool any = false;
@@ -22,8 +22,8 @@ namespace KompasCore.Effects.Restrictions.TriggerRestrictionElements
         {
             var spacesItem = spaces.From(context, secondaryContext);
             return any
-                ? spacesItem.Any(spaceRestriction.IsValidFor(ContextToConsider(context, secondaryContext)))
-                : spacesItem.All(spaceRestriction.IsValidFor(ContextToConsider(context, secondaryContext)));
+                ? spacesItem.Any(s => spaceRestriction.IsValid(s, ContextToConsider(context, secondaryContext)))
+                : spacesItem.All(s => spaceRestriction.IsValid(s, ContextToConsider(context, secondaryContext)));
         }
     }
 }

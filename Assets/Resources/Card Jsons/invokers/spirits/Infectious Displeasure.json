@@ -41,6 +41,7 @@
 								"$type": "Core.SpaceRestriction:ConnectedTo:",
 								"space": { "$type": "Cards:TargetIndex:" },
 								"byRestriction":{
+									"$type": "Core.SpaceRestriction:AllOf:",
 									"elements": [
 										{ "$type": "Core.CardRestriction:Enemy:" },
 										{ "$type": "Core.CardRestriction:Character:" },

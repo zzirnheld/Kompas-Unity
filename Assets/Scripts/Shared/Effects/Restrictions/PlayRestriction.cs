@@ -56,8 +56,8 @@ namespace KompasCore.Effects
         public CardRestriction onCardFloutedRestriction;
         public CardRestriction adjacentCardRestriction;
 
-        public SpaceRestriction spaceRestriction;
-        public SpaceRestriction floutedSpaceRestriction;
+        public Restrictions.SpaceRestrictionElements.AllOf spaceRestriction;
+        public Restrictions.SpaceRestrictionElements.AllOf floutedSpaceRestriction;
 
         public NumberRestriction countCardNumberRestriction;
         public CardRestriction countCardRestriction;

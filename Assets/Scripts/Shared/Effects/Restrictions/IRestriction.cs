@@ -11,7 +11,7 @@ namespace KompasCore.Effects
         bool IsValid(Type item, IResolutionContext context);
     }
 
-    public abstract class RestrictionBase<Type> : ContextInitializeableBase, IRestriction<Type>
+    public class RestrictionBase<Type> : ContextInitializeableBase, IRestriction<Type>
     {
         public IList<IRestriction<Type>> elements = new IRestriction<Type>[] { };
 
@@ -49,18 +49,5 @@ namespace KompasCore.Effects
         public override string ToString() => $"Card Restriction of {Source?.CardName}." +
             $"\nRestriction Elements: {string.Join(", ", elements.Select(r => r))}";
 
-    }
-    
-    public class SpaceRestriction : RestrictionBase<Space>
-    {
-
-        public string blurb = "";
-
-        //TODO correct any places still using mustBeEmpty
-
-        public Func<Space, bool> AsThroughPredicate(IResolutionContext context)
-            => s => IsValid(s, context);
-
-        public Func<Space, bool> IsValidFor(IResolutionContext context) => s => IsValid(s, context);
     }
 }

@@ -74,6 +74,7 @@
 			"Adjacent to Friendly Card"
 		],
 		"spaceRestriction": {
+			"$type": "Core.SpaceRestriction:AllOf:",
 			"elements": [ {
 				"$type": "Core.SpaceRestriction:InAOEOf:",
 				"anyOf": {

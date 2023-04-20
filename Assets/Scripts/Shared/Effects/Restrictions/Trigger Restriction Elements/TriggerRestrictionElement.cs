@@ -18,7 +18,7 @@ namespace KompasCore.Effects.Restrictions
     {
         public class Not : TriggerRestrictionElement
         {
-            public TriggerRestrictionElement inverted;
+            public IRestriction<TriggeringEventContext>  inverted;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {
@@ -32,7 +32,7 @@ namespace KompasCore.Effects.Restrictions
 
         public class AnyOf : TriggerRestrictionElement
         {
-            public TriggerRestrictionElement[] restrictions;
+            public IRestriction<TriggeringEventContext> [] restrictions;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {

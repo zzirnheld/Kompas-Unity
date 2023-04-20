@@ -3,6 +3,7 @@
         "$type": "Subeffect:ConditionalEnd:",
         "condition": "No Space Fits Restriction",
 		"spaceRestriction": {
+			"$type": "Core.SpaceRestriction:AllOf:",
 			"elements": [
                 { "$type": "Core.SpaceRestriction:Empty:" },
                 {
@@ -54,6 +55,7 @@
     {
         "$type": "Subeffect:SpaceTarget:",
 		"spaceRestriction": {
+			"$type": "Core.SpaceRestriction:AllOf:",
 			"elements": [
                 { "$type": "Core.SpaceRestriction:Empty:" },
                 {

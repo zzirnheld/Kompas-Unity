@@ -1,3 +1,5 @@
+using System;
+
 namespace KompasCore.Effects.Identities.Numbers
 {
     public class Distance : ContextualParentIdentityBase<int>
@@ -5,7 +7,7 @@ namespace KompasCore.Effects.Identities.Numbers
         public IIdentity<Space> firstSpace;
         public IIdentity<Space> secondSpace;
 
-        public SpaceRestriction throughRestriction;
+        public IRestriction<Space> throughRestriction;
 
         public override void Initialize(EffectInitializationContext initializationContext)
         {
@@ -27,7 +29,7 @@ namespace KompasCore.Effects.Identities.Numbers
             if (throughRestriction == null) return first.DistanceTo(second);
 
             var contextToConsider = base.secondaryContext ? secondaryContext : context;
-            var predicate = throughRestriction.AsThroughPredicate(contextToConsider);
+            Func<Space, bool> predicate = s => throughRestriction.IsValid(s, contextToConsider);
             return InitializationContext.game.BoardController.ShortestPath(first, second, predicate);
         }
     }

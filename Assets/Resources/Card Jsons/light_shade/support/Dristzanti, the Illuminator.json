@@ -15,18 +15,16 @@
 				{
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
-						"elements": [ {
-							"$type": "Core.SpaceRestriction:InAOEOf:",
-							"anyOf": {
-								"$type": "ManyCards:FittingRestriction:",
-								"cardRestriction": {
-								"elements": [ {
-										"$type": "Core.CardRestriction:Subtypes:",
-										"subtypes": [ "Shade" ]
-									} ]
-								}
+						"$type": "Core.SpaceRestriction:InAOEOf:",
+						"anyOf": {
+							"$type": "ManyCards:FittingRestriction:",
+							"cardRestriction": {
+							"elements": [ {
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Shade" ]
+								} ]
 							}
-						} ]
+						}
 					}
 				},
 				{
