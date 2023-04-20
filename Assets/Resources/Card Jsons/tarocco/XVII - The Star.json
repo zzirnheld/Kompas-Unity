@@ -19,14 +19,18 @@
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
                             "card": { "$type": "Cards:CardAfter:" },
-                            "cardRestriction": {
-								"elements": [
+                            
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 									{ "$type": "Core.CardRestriction:Character:" },
 									{ "$type": "Core.CardRestriction:Enemy:" },
 									{
 										"$type": "Core.SpaceRestriction:AdjacentTo:",
-										"cardRestriction": {
-											"elements": [
+										
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 												{ "$type": "Core.CardRestriction:Summoned:" },
 												{
 													"$type": "Core.CardRestriction:Subtypes:",
@@ -47,8 +51,10 @@
 				},
 				{
 					"$type": "Subeffect:SetXBoardRestriction:",
-					"cardRestriction": {
-						"elements": [
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]

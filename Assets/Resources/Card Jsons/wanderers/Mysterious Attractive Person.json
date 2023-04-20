@@ -22,6 +22,7 @@
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "character to attract",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [ { "$type": "Core.CardRestriction:Character:" } ]
 					}
 				},
@@ -47,6 +48,8 @@
 							"friendly": false,
 							"enemy": true
 						},
+						"$type": "Core.CardRestriction:AllOf:",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
 							{

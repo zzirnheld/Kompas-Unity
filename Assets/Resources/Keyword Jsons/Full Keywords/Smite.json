@@ -30,8 +30,10 @@
 		{
 			"$type": "Subeffect:SetXByGamestate:",
 			"whatToCount": "Cards Fitting Restriction",
-			"cardRestriction": {
-				"elements": [ { "$type": "Core.CardRestriction:Target:" } ]
+			
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [ { "$type": "Core.CardRestriction:Target:" } ]
 			},
 			"xMultiplier": 1
 		},

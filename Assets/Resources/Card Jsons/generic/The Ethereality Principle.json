@@ -17,8 +17,10 @@
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
                             "card": { "$type": "Cards:CardBefore:" },
-                            "cardRestriction": {
-								"elements": [
+                            
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 									{ "$type": "Core.CardRestriction:Character:" },
 									{
 										"$type": "Core.CardRestriction:Location:",
@@ -53,6 +55,7 @@
 					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Remnant to put back on top",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [ { "$type": "Core.CardRestriction:Target:" } ]
 					}
 				},

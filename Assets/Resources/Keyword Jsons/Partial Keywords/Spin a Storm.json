@@ -10,8 +10,10 @@
                     "$type": "Core.SpaceRestriction:InAOEOf:",
                     "anyOf": {
                         "$type": "ManyCards:FittingRestriction:",
-                        "cardRestriction": {
-                        "elements": [ {
+                        
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [ {
                                 "$type": "Core.CardRestriction:Subtypes:",
                                 "subtypes": [ "Weather" ]
                             } ]
@@ -26,8 +28,10 @@
                     "$type": "Core.SpaceRestriction:InAOEOf:",
                     "anyOf": {
                         "$type": "ManyCards:FittingRestriction:",
-                        "cardRestriction": {
-                        "elements": [ {
+                        
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [ {
                                 "$type": "Core.CardRestriction:Subtypes:",
                                 "subtypes": [ "Weather" ]
                             } ]
@@ -62,8 +66,10 @@
                     "$type": "Core.SpaceRestriction:InAOEOf:",
                     "anyOf": {
                         "$type": "ManyCards:FittingRestriction:",
-                        "cardRestriction": {
-                        "elements": [ {
+                        
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [ {
                                 "$type": "Core.CardRestriction:Subtypes:",
                                 "subtypes": [ "Weather" ]
                             } ]
@@ -78,8 +84,10 @@
                     "$type": "Core.SpaceRestriction:InAOEOf:",
                     "anyOf": {
                         "$type": "ManyCards:FittingRestriction:",
-                        "cardRestriction": {
-                        "elements": [ {
+                        
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [ {
                                 "$type": "Core.CardRestriction:Subtypes:",
                                 "subtypes": [ "Weather" ]
                             } ]

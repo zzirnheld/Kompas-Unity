@@ -8,8 +8,10 @@
 				{
 					"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 					"card": { "$type": "Cards:CardBefore:" },
-					"cardRestriction": {
-						"elements": [
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
@@ -27,8 +29,10 @@
                         "$type": "Numbers:CountCards:",
                         "cards": {
                             "$type": "ManyCards:FittingRestriction:",
-                            "cardRestriction": {
-								"elements": [
+                            
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 									{ "$type": "Core.CardRestriction:Friendly:" },
 									{
 										"$type": "Core.SpaceRestriction:AdjacentTo:",

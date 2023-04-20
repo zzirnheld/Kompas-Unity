@@ -22,6 +22,7 @@
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "zoom",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [ {
 							"$type": "Core.CardRestriction:CanMove:",
 							"spaceRestrictionSubeffectIndex": 1
@@ -32,6 +33,7 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "zoom",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
@@ -53,6 +55,7 @@
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "Zoom!",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [ {
 							"$type": "Core.CardRestriction:CanMove:",
 							"spaceRestrictionSubeffectIndex": 4
@@ -63,6 +66,7 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "Zoom!",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
@@ -84,6 +88,7 @@
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "ZOOM!",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [ {
 							"$type": "Core.CardRestriction:CanMove:",
 							"spaceRestrictionSubeffectIndex": 7
@@ -94,6 +99,7 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "ZOOM!",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",

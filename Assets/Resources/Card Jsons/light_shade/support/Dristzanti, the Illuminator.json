@@ -18,7 +18,9 @@
 						"$type": "Core.SpaceRestriction:InAOEOf:",
 						"anyOf": {
 							"$type": "ManyCards:FittingRestriction:",
-							"cardRestriction": {
+							
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
 							"elements": [ {
 									"$type": "Core.CardRestriction:Subtypes:",
 									"subtypes": [ "Shade" ]
@@ -30,8 +32,10 @@
 				{
 					"$type": "Subeffect:AutoTarget:",
 					"toSearch": { "$type": "ManyCards:Deck:" },
-					"cardRestriction": {
-						"elements": [
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{ "$type": "Core.CardRestriction:Spell:" },
 							{
@@ -44,8 +48,10 @@
 				},
 				{
 					"$type": "Subeffect:TargetAll:",
-					"cardRestriction": {
-						"elements": [
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Shade" ]

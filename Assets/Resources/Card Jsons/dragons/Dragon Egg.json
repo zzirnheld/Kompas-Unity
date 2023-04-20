@@ -39,6 +39,7 @@
 					"cardRestriction":
 					{
 						"blurb":"for Dragon Egg to become",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
 							{

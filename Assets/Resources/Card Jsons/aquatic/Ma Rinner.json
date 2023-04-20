@@ -24,14 +24,18 @@
 				{
 					"$type": "Subeffect:ConditionalEnd:",
 					"condition": "Target Fits Restriction",
-					"cardRestriction": {
-						"elements": [
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
                             {
 								"$type": "Core.SpaceRestriction:InAOEOf:",
 								"anyOf": {
 									"$type": "ManyCards:FittingRestriction:",
-									"cardRestriction": {
-										"elements": [
+									
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 											{
 												"$type": "Core.CardRestriction:Subtypes:",
 												"subtypes": [ "Water" ]
@@ -45,10 +49,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "cards for Ma Rinner to bottomdeck",
 					"toSearch": { "$type": "ManyCards:Hand:" },
-					"cardRestriction": {
-						"blurb": "cards for Ma Rinner to bottomdeck"
-					},
+					"cardRestriction": { "$type": "Core.CardRestriction:AlwaysValid:" },
 					"listRestriction": {
 						"listRestrictions": [
 							"Min Can Choose",
@@ -95,7 +98,9 @@
 					"$type": "Core.SpaceRestriction:InAOEOf:",
 					"anyOf": {
 						"$type": "ManyCards:FittingRestriction:",
+						
 						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
 							"elements": [
 								{
 									"$type": "Core.CardRestriction:Subtypes:",

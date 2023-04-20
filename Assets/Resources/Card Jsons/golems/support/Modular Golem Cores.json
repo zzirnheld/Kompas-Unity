@@ -14,12 +14,16 @@
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
                             "card": { "$type": "Cards:CardAfter:" },
-                            "cardRestriction": {
-								"elements": [
+                            
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 									{
 										"$type": "Core.SpaceRestriction:AdjacentTo:",
-										"cardRestriction": {
-											"elements": [
+										
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 												{
 													"$type": "Core.CardRestriction:Subtypes:",
 													"subtypes": [ "Golem" ]
@@ -46,6 +50,7 @@
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "Golem to swap out modules",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
 							{
@@ -89,6 +94,7 @@
 					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
 						"blurb": "Golem core for Modular Golem Cores to attach",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Augment:" },
 							{

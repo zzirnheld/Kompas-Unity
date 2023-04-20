@@ -22,8 +22,10 @@
 				{
 					"$type": "Subeffect:TargetAll:",
 					"toSearch": { "$type": "ManyCards:Board:" },
-					"cardRestriction": {
-						"elements": [
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 							{ "$type": "Core.CardRestriction:Spell:" },
 							{
 								"$type": "Core.SpaceRestriction:AdjacentTo:",
@@ -70,7 +72,9 @@
 					"$type": "Core.SpaceRestriction:InAOEOf:",
 					"anyOf": {
 						"$type": "ManyCards:FittingRestriction:",
+						
 						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
 							"elements": [
 								{
 									"$type": "Core.CardRestriction:Subtypes:",

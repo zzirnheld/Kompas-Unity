@@ -14,8 +14,10 @@
 						{
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 							"card": { "$type": "Cards:CardBefore:" },
-							"cardRestriction": {
-								"elements": [
+							
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 									{
 										"$type": "Core.CardRestriction:Location:",
 										"locations": [ "Board" ]
@@ -24,8 +26,10 @@
 										"$type": "Core.CardRestriction:Not:",
 										"negated": {
 											"$type": "Core.CardRestriction:AOEContains:",
-											"cardRestriction": {
-												"elements": [
+											
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 													{ "$type": "Core.CardRestriction:Enemy:" },
 													{ "$type": "Core.CardRestriction:Character:" }
 												]
@@ -51,8 +55,10 @@
 				{
 					"$type": "Subeffect:AutoTarget:",
 					"toSearch": { "$type": "ManyCards:Deck:" },
-					"cardRestriction": {
-						"elements": [
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{ "$type": "Core.CardRestriction:Spell:" },
 							{

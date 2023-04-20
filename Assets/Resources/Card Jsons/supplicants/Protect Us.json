@@ -25,6 +25,7 @@
 					"whatToCount":"Cards Fitting Restriction",
 					"cardRestriction":
 					{
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Friendly:" },
@@ -44,6 +45,7 @@
 					"$type":"Subeffect:ChangeAllCardStats:",
 					"cardRestriction":
 					{
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
 							{
@@ -58,6 +60,7 @@
 					"$type":"Subeffect:ChangeAllCardStats:",
 					"cardRestriction":
 					{
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Friendly:" },

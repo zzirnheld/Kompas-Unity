@@ -17,13 +17,16 @@
 					"cardRestriction":
 					{
 						"blurb": "character whose Module to swap out",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:HasAugment:",
-								"cardRestriction": {
-									"elements": [
+								
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 										{
 											"$type": "Core.CardRestriction:Subtypes:",
 											"subtypes": [ "Module" ]

@@ -14,8 +14,10 @@
 						{
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 							"card": { "$type": "Cards:CardBefore:" },
-							"cardRestriction": {
-								"elements": [ {
+							
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [ {
 									"$type": "Core.CardRestriction:Fighting:",
 									"defending": true,
 									"fightingWho": { "$type": "Cards:ThisCard:" }

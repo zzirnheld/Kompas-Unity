@@ -16,6 +16,7 @@
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "card to teach speed",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [ {
 							"$type": "Core.CardRestriction:CanMove:",
 							"spaceRestrictionSubeffectIndex": 1
@@ -26,6 +27,7 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to show them speed",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",

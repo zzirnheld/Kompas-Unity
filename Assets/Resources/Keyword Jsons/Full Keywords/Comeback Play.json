@@ -10,8 +10,10 @@
 				{
 					"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 					"anyOf": { "$type": "ManyCards:Board:" },
-					"cardRestriction": {
-						"elements": [
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{ "$type": "Core.CardRestriction:Augment:" },
 							{

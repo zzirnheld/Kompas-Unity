@@ -20,8 +20,10 @@
 				{
 					"$type": "Subeffect:SetXByGamestate:",
 					"whatToCount": "Cards Fitting Restriction",
-					"cardRestriction": {
-						"elements": [
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
@@ -38,11 +40,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "character to deafen with silence",
 					"toSearch": { "$type": "ManyCards:Board:" },
-					"cardRestriction": {
-						"blurb": "character to deafen with silence",
-						"elements": [ { "$type": "Core.CardRestriction:Character:" } ]
-					}
+					"cardRestriction": { "$type": "Core.CardRestriction:Character:" }
 				},
 				{
 					"$type": "Subeffect:ChangeCardStats:",

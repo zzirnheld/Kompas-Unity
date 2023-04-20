@@ -22,6 +22,7 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
                         "blurb": "Space to move an Ethereal to",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{
 								"$type": "Core.SpaceRestriction:AdjacentTo:",
@@ -40,6 +41,7 @@
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "Friendly Ethereal to move",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{

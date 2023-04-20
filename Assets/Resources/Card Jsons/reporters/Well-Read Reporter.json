@@ -62,6 +62,7 @@
 					},
 					"cardRestriction": {
 						"blurb": "C > X spell to reveal",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Spell:" },
 							{ "$type": "Core.CardRestriction:Hidden:" },

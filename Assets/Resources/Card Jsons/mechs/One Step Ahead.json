@@ -23,6 +23,7 @@
 					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
 						"blurb": "Mech plan",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
 							{
@@ -53,8 +54,10 @@
 							{
 								"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 								"card": { "$type": "Cards:CardBefore:" },
-								"cardRestriction": {
-									"elements": [
+								
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 										{ "$type": "Core.CardRestriction:Friendly:" },
 										{
 											"$type": "Core.CardRestriction:Location:",
@@ -73,8 +76,10 @@
 				{
 					"$type": "Subeffect:AutoTarget:",
 					"toSearch": { "$type": "ManyCards:Deck:" },
-					"cardRestriction": {
-						"elements": [
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Name:",

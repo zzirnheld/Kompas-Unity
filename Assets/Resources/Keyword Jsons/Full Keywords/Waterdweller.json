@@ -9,8 +9,10 @@
 				{
 					"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 					"card": { "$type": "Cards:CardBefore:" },
-					"cardRestriction": {
-						"elements": [
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
@@ -25,8 +27,10 @@
 									"$type": "Core.SpaceRestriction:InAOEOf:",
 									"anyOf": {
 										"$type": "ManyCards:FittingRestriction:",
-										"cardRestriction": {
-										"elements": [ {
+										
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [ {
 												"$type": "Core.CardRestriction:Subtypes:",
 												"subtypes": [ "Water" ]
 											} ]

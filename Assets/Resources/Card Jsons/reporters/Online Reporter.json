@@ -49,6 +49,7 @@
 					},
 					"cardRestriction": {
 						"blurb": "cost < X card to reveal",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Hidden:" },
 							{

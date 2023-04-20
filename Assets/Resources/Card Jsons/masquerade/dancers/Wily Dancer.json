@@ -23,6 +23,7 @@
 					"cardRestriction":
 					{
 						"blurb": "Mask to attach to the Nimble Dancer",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Augment:" },
 							{

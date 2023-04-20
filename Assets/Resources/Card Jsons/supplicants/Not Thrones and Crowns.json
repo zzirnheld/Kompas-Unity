@@ -20,8 +20,10 @@
 				{
 					"$type": "Subeffect:TargetAll:",
 					"toSearch": { "$type": "ManyCards:Board:" },
-					"cardRestriction": {
-						"elements": [
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 							{ "$type": "Core.CardRestriction:Enemy:" },
 							{
 								"$type": "Core.SpaceRestriction:AdjacentTo:",
@@ -45,6 +47,7 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to move the supplicant's attacker",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [ 
                             { "$type": "Core.SpaceRestriction:Empty:" },
 							{

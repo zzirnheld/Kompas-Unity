@@ -10,8 +10,10 @@
                     "$type": "Core.TriggerRestriction:Not:",
                     "inverted": {
                         "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                        "cardRestriction": {
-                            "elements": [
+                        
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
                                 { "$type": "Core.CardRestriction:Character:" },
                                 {
                                     "$type": "Core.CardRestriction:Subtypes:",

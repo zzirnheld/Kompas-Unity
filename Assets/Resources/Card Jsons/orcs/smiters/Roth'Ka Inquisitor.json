@@ -17,8 +17,10 @@
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
                             "card": { "$type": "Cards:CardBefore:" },
-                            "cardRestriction": {
-								"elements": [
+                            
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 									{ "$type": "Core.CardRestriction:Spell:" },
 									{
 										"$type": "Core.CardRestriction:Location:",
@@ -47,6 +49,7 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "Choose space to cast the spell",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
                             {
                                 "$type": "Core.SpaceRestriction:CanPlayCard:",

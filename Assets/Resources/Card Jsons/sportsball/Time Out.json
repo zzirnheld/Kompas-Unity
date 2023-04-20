@@ -27,12 +27,15 @@
 					"cardRestriction":
 					{
 						"blurb":"character to put in TIME OUT!",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:HasAugment:",
-								"cardRestriction": {
-									"elements": [ { "$type": "Core.CardRestriction:Friendly:" } ]
+								
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [ { "$type": "Core.CardRestriction:Friendly:" } ]
 								}
 							},
 							{

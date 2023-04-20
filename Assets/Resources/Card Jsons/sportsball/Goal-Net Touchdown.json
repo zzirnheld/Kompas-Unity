@@ -32,8 +32,10 @@
 				{
 					"$type": "Subeffect:ConditionalEnd:",
 					"condition": "Target Violates Restriction",
-					"cardRestriction": {
-						"elements": [ {
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [ {
 							"$type": "Core.CardRestriction:HasAugment:",
 							"elements": [ ]
 						} ]
@@ -41,8 +43,10 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
-					"cardRestriction": {
-						"elements": [
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 							{ "$type": "Core.CardRestriction:Enemy:" },
 							{ "$type": "Core.CardRestriction:Avatar:" },
 							{

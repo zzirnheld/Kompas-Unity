@@ -13,16 +13,20 @@
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
                             "card": { "$type": "Cards:CardAfter:" },
-                            "cardRestriction": {
-								"elements": [
+                            
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 									{
 										"$type": "Core.CardRestriction:Subtypes:",
 										"subtypes": [ "Module" ]
 									},
 									{
 										"$type": "Core.CardRestriction:Augments:",
-										"cardRestriction": {
-											"elements": [
+										
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 												{
 													"$type": "Core.CardRestriction:Subtypes:",
 													"subtypes": [ "Modular" ]

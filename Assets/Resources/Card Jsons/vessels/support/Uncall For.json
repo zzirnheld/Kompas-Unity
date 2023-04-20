@@ -21,6 +21,8 @@
 					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"blurb": "Vessel to read as an augury",
+						"$type": "Core.CardRestriction:AllOf:",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{ "$type": "Core.CardRestriction:Character:" },
@@ -34,8 +36,10 @@
 							},
 							{
 								"$type": "Core.CardRestriction:HasAugment:",
-								"cardRestriction": {
-									"elements": [
+								
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 										{
 											"$type": "Core.CardRestriction:Subtypes:",
 											"subtypes": [ "Memory" ]
@@ -49,8 +53,10 @@
 				{
 					"$type": "Subeffect:SetXByGamestate:",
 					"whatToCount": "Cards Fitting Restriction",
-					"cardRestriction": {
-						"elements": [
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Memory" ]
@@ -75,6 +81,7 @@
 					"cardRestriction": {
 						"blurb": "Corporeal form to recall",
 						"toSearch": { "$type": "ManyCards:Deck:" },
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
 							{

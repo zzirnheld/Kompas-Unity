@@ -18,16 +18,20 @@
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
                             "card": { "$type": "Cards:CardAfter:" },
-                            "cardRestriction": {
-								"elements": [
+                            
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 									{
 										"$type": "Core.CardRestriction:Subtypes:",
 										"subtypes": [ "Memory" ]
 									},
 									{
 										"$type": "Core.CardRestriction:Augments:",
-										"cardRestriction": {
-											"elements": [
+										
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 												{
 													"$type": "Core.CardRestriction:Subtypes:",
 													"subtypes": [ "Vessel" ]
@@ -49,8 +53,10 @@
 					"$type": "Subeffect:CardTarget:",
 					"blurb": "Vessel to get a copy of the memory",
 					"toSearch": { "$type": "ManyCards:Board:" },
-					"cardRestriction": {
-						"elements": [
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Vessel" ]
@@ -59,8 +65,10 @@
 								"$type": "Core.CardRestriction:Not:",
 								"negated": {
 									"$type": "Core.CardRestriction:HasAugment:",
-									"cardRestriction": {
-										"elements": [
+									
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 											{
 												"$type": "Core.CardRestriction:Name:",
 												"sameAs": { "$type": "Cards:TargetIndex:" }
@@ -75,8 +83,10 @@
 				{
 					"$type": "Subeffect:CardTarget:",
 					"blurb": "Copy of the memory to attach",
-					"cardRestriction": {
-						"elements": [
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
                             { "$type": "Core.CardRestriction:CanPlay:" },
                             {

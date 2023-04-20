@@ -49,6 +49,7 @@
 					},
 					"cardRestriction": {
 						"blurb": "cards to reveal",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Hidden:" },
 							{

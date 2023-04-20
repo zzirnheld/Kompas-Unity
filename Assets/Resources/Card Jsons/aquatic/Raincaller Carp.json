@@ -20,10 +20,10 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "RAIN PLEASE",
 					"toSearch": { "$type": "ManyCards:Deck:" },
-					"maxCanChoose": 1,
 					"cardRestriction": {
-						"blurb": "RAIN PLEASE",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Spell:" },
 							{

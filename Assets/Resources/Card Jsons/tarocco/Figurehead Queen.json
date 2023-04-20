@@ -62,6 +62,7 @@
 					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"toSearch": { "$type": "ManyCards:Deck:" },
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
 							{

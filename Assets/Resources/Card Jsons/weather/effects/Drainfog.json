@@ -38,6 +38,7 @@
 					},
 					"cardRestriction": {
 						"blurb": "The fog is draining",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [ {
 							"$type": "Core.PlayerRestriction:PlayersMatch:",
 							"player": { "$type": "Players:TargetIndex:" }

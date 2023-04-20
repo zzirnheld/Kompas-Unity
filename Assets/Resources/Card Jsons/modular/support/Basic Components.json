@@ -28,8 +28,10 @@
                                 "friendly": true,
                                 "enemy": false
                             },
-                            "cardRestriction": {
-                                "elements": [
+                            
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
                                     {
                                         "$type": "Core.CardRestriction:Subtypes:",
                                         "subtypes": [ "Basic", "Module" ]

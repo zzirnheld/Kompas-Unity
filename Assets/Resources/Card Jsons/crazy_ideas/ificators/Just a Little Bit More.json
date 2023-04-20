@@ -23,13 +23,11 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "you! move a little bit to the left...",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "you! move a little bit to the left...",
-						"elements": [ {
-							"$type": "Core.CardRestriction:CanMove:",
-							"spaceRestrictionSubeffectIndex": 2
-						} ]
+						"$type": "Core.CardRestriction:CanMove:",
+						"spaceRestrictionSubeffectIndex": 2
 					}
 				},
 				{

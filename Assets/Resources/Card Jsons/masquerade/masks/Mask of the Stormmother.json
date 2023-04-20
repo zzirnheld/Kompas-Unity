@@ -53,8 +53,10 @@
 				"$type": "Core.CardRestriction:Not:",
 				"negated": {
 					"$type": "Core.CardRestriction:HasAugment:",
-					"cardRestriction": {
-						"elements": [
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 							{
 								"$type": "Core.CardRestriction:Name:",
 								"sameAs": { "$type": "Cards:ThisCard:" }

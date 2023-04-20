@@ -21,6 +21,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Supplicant to give safe haven",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
 							{
@@ -35,6 +36,7 @@
 					"spaceRestriction":
 					{
 						"blurb":"haven to play the Supplicant",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
                             {
                                 "$type": "Core.SpaceRestriction:CanPlayCard:",

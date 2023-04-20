@@ -19,6 +19,7 @@
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "ritual sacrifice",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{ "$type": "Core.CardRestriction:Character:" },
@@ -29,8 +30,10 @@
 							},
 							{
 								"$type": "Core.SpaceRestriction:AdjacentTo:",
-								"cardRestriction": {
-									"elements": [
+								
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 										{
 											"$type": "Core.CardRestriction:Subtypes:",
 											"subtypes": [ "Structure" ]
@@ -52,6 +55,7 @@
 					"spaceRestriction":
 					{
 						"blurb":"where to revive the Feathered Serpent",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
                             {
                                 "$type": "Core.SpaceRestriction:CanPlayCard:",

@@ -37,6 +37,7 @@
 					},
 					"cardRestriction": {
 						"blurb": "for Leybinder to hand-summon",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
 							{

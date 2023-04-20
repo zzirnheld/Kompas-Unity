@@ -20,6 +20,7 @@
 					"cardRestriction":
 					{
 						"blurb":"for Well-Planned Defense to summon",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
 							{

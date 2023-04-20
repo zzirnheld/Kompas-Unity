@@ -39,6 +39,7 @@
 					"cardRestriction":
 					{
 						"blurb":"OWO SO DRAGONNNNNNNNN",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",

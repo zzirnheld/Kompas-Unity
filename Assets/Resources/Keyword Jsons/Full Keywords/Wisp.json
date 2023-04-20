@@ -23,8 +23,10 @@
 						"$type": "ManySpaces:PositionsOfEach:",
 						"cards": {
 							"$type": "ManyCards:FittingRestriction:",
-							"cardRestriction": {
-								"elements": [ { "$type": "Core.CardRestriction:Enemy:" } ]
+							
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [ { "$type": "Core.CardRestriction:Enemy:" } ]
 							}
 						}
 					}

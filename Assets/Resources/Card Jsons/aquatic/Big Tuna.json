@@ -29,6 +29,7 @@
 					"anyOf": {
 						"$type": "ManyCards:FittingRestriction:",
 						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
 							"elements": [
 								{
 									"$type": "Core.CardRestriction:Subtypes:",

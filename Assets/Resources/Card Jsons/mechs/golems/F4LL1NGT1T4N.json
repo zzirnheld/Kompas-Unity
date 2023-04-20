@@ -37,6 +37,7 @@
                     "spaceRestriction":
                     {
                         "blurb":"to teleport F4LL1NGT1T4N to",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.SpaceRestriction:Empty:" },
 							{
@@ -45,8 +46,10 @@
 							},
 							{
 								"$type": "Core.SpaceRestriction:AdjacentTo:",
-								"cardRestriction": {
-									"elements": [
+								
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 										{ "$type": "Core.CardRestriction:Friendly:" },
 										{
 											"$type": "Core.CardRestriction:Subtypes:",

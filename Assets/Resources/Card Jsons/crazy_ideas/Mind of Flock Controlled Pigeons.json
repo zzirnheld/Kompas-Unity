@@ -21,14 +21,10 @@
 				{
 					"$type": "Subeffect:CardTarget:",
 					"toSearch": { "$type": "ManyCards:Hand:" },
+					"blurb": "Mind bawk bawk Controlled Pigeons",
 					"cardRestriction": {
-						"blurb": "Mind bawk bawk Controlled Pigeons",
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Crazy", "Idea" ]
-							}
-						]
+						"$type": "Core.CardRestriction:Subtypes:",
+						"subtypes": [ "Crazy", "Idea" ]
 					}
 				},
 				{
