@@ -28,9 +28,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "copy of the Structure to deck->summon",
 					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"blurb": "copy of the Structure to deck->summon",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
@@ -44,8 +44,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where for the Temple Builder to decksummon a copy of the Structure",
 					"spaceRestriction": {
-						"blurb": "where for the Temple Builder to decksummon a copy of the Structure",
+						"$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
 							{

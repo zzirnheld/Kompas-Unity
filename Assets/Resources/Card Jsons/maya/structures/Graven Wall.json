@@ -12,18 +12,15 @@
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
-							"cardRestriction": { "elements": [
-								{ "$type": "Core.SpaceRestriction:Corner:" }
-							] },
+							"cardRestriction": { "$type": "Core.SpaceRestriction:Corner:" },
 							"card": { "$type": "Cards:ThisCard:" }
 						},
 						{
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 							"card": { "$type": "Cards:CardBefore:" },
-							
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:AllOf:",
+								"elements": [
 									{
 										"$type": "Core.CardRestriction:Subtypes:",
 										"subtypes": [ "Structure" ]

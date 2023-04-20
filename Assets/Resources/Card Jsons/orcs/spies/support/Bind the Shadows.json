@@ -17,10 +17,9 @@
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
                             "card": { "$type": "Cards:CardAfter:" },
-                            
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:AllOf:",
+								"elements": [
 									{ "$type": "Core.CardRestriction:Character:" },
 									{
 										"$type": "Core.CardRestriction:Not:",
@@ -71,8 +70,8 @@
 								"$type": "Core.TriggerRestriction:CardsMatch:",
 								"card": { "$type": "Cards:CardBefore:" },
 								"other": {
-									"contextSecondaryCard": true,
-									"$type": "Cards:CardBefore:"
+									"$type": "Cards:CardBefore:",
+									"contextSecondaryCard": true
 								}
 							}
 						]

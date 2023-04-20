@@ -17,10 +17,9 @@
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
                             "card": { "$type": "Cards:CardBefore:" },
-                            
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:AllOf:",
+								"elements": [
 									{ "$type": "Core.CardRestriction:Spell:" },
 									{
 										"$type": "Core.CardRestriction:Location:",
@@ -29,11 +28,11 @@
 									{
 										"$type": "Core.CardRestriction:CardValueFits:",
 										"cardValue": { "value": "Cost" },
-										"numberRestriction": { "elements": [{
+										"numberRestriction": {
 											"$type": "Core.NumberRestriction:Compare:",
 											"comparison": { "$type": "Relationships.Number:LessThanEqual:" },
 											"other": { "$type": "Numbers:Constant:", "constant": 0 }
-										}]}
+										}
 									}
 								]
                             }
@@ -47,15 +46,10 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "Choose space to cast the spell",
 					"spaceRestriction": {
-						"blurb": "Choose space to cast the spell",
-						"$type": "Core.CardRestriction:AllOf:",
-						"elements": [
-                            {
-                                "$type": "Core.SpaceRestriction:CanPlayCard:",
-                                "toPlay": { "$type": "Cards:TargetIndex:" }
-                            }
-						]
+						"$type": "Core.SpaceRestriction:CanPlayCard:",
+						"toPlay": { "$type": "Cards:TargetIndex:" }
 					}
 				},
 				{

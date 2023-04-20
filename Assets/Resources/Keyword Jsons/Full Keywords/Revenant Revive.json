@@ -18,15 +18,11 @@
 		},
 		{
 			"$type":"Subeffect:SpaceTarget:",
+			"blurb":"where to revive the Revenant",
 			"spaceRestriction":
 			{
-				"blurb":"where to revive the Revenant",
-				"elements": [
-					{
-						"$type": "Core.SpaceRestriction:CanPlayCard:",
-						"toPlay": { "$type": "Cards:TargetIndex:" }
-					}
-				]
+				"$type": "Core.SpaceRestriction:CanPlayCard:",
+				"toPlay": { "$type": "Cards:TargetIndex:" }
 			}
 		},
 		{

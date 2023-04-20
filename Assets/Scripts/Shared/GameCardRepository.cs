@@ -37,7 +37,9 @@ namespace KompasCore.GameCore
             var effects = new List<T>();
             foreach (var (index, keyword) in card.keywords.Enumerate())
             {
-                if (!keywordJsons.ContainsKey(keyword)) Debug.LogError($"Failed to add {keyword} length {keyword.Length} to {card.cardName}");
+                if (!keywordJsons.ContainsKey(keyword))
+                    Debug.LogError($"Failed to add {keyword} length {keyword.Length} to {card.cardName}"
+                    + $"Not present in {string.Join(", ", keywordJsons.Keys)}");
                 var keywordJson = keywordJsons[keyword];
                 var eff = JsonConvert.DeserializeObject<T>(keywordJson, cardLoadingSettings);
                 eff.arg = card.keywordArgs.Length > index ? card.keywordArgs[index] : 0;
