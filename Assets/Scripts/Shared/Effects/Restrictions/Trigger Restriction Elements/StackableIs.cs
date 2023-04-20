@@ -23,6 +23,11 @@ namespace KompasCore.Effects.Restrictions.TriggerRestrictionElements
         protected override bool Predicate(IStackable stackable) => stackable is Attack;
     }
 
+    public class IsEffect : StackableIs
+    {
+        protected override bool Predicate(IStackable stackable) => stackable is Effect;
+    }
+
     public class Normally : StackableIs
     {
         protected override bool Predicate(IStackable stackable) => stackable == null;

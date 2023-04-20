@@ -7,7 +7,7 @@ namespace KompasCore.Effects.Identities.ManySpaces
     /// Spaces where they are in some defined relationship with respect to the other two defined spaces.
     /// For example, spaces that are between (relationship) the source card's space and the target space (two defined spaces).
     /// </summary>
-    public class ThreeSpaceRelationship : ContextualParentIdentityBase<ICollection<Space>>
+    public class ThreeSpaceRelationship : ContextualParentIdentityBase<IReadOnlyCollection<Space>>
     {
         public IIdentity<Space> firstSpace;
         public IIdentity<Space> secondSpace;
@@ -21,7 +21,7 @@ namespace KompasCore.Effects.Identities.ManySpaces
             secondSpace.Initialize(initializationContext);
         }
 
-        protected override ICollection<Space> AbstractItemFrom(IResolutionContext context, IResolutionContext secondaryContext)
+        protected override IReadOnlyCollection<Space> AbstractItemFrom(IResolutionContext context, IResolutionContext secondaryContext)
         {
             Space first = firstSpace.From(context, secondaryContext);
             Space second = secondSpace.From(context, secondaryContext);

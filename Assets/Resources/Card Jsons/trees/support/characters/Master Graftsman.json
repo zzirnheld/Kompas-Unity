@@ -51,7 +51,6 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"This Card is Main Card",
 						"Main Card Fits Restriction After"
 					],
 					"nowRestriction": {
@@ -81,7 +80,8 @@
 								"comparison": { "$type": "Relationships.Number:LessThan:" },
 								"other": { "$type": "Numbers:Constant:", "constant": 0 }
 							}
-						}
+						},
+                        { "$type": "Core.TriggerRestriction:IsEffect:" }
                     ]
 				}
 			},

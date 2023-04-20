@@ -18,6 +18,8 @@ public static class CardLocationHelpers
                 return CardLocation.Discard;
             case "Annihilation":
                 return CardLocation.Annihilation;
+            case "Deck":
+                return CardLocation.Deck;
             default:
                 throw new System.NotImplementedException($"Unknown string to convert to CardLocation {str}");
         }

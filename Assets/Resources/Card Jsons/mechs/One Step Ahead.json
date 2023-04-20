@@ -16,9 +16,9 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
 						"blurb": "Mech plan",
-						"toSearch": { "$type": "ManyCards:Deck:" },
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
 							{

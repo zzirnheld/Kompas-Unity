@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace KompasCore.Effects.Restrictions.TriggerRestrictionElements
 {
     public abstract class MaxPer : TriggerRestrictionElement
@@ -9,7 +11,9 @@ namespace KompasCore.Effects.Restrictions.TriggerRestrictionElements
         protected abstract int Uses { get; }
 
         protected override bool IsValidLogic(TriggeringEventContext item, IResolutionContext context)
-            => Uses < Max;
+            => Uses < Max; // ? true : LogFalse();
+
+        //private bool LogFalse() { Debug.Log($"{Uses} exceeded {max} in {InitializationContext.effect}"); return false; }
     }
 
     public class MaxPerTurn : MaxPer
