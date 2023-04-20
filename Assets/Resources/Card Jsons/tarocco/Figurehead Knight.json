@@ -7,10 +7,8 @@
 			"triggerData": {
 				"triggerCondition": "Draw",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play"
-					],
 					"triggerRestrictionElements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{ "$type": "Core.TriggerRestriction:FriendlyTurn:" },
                         {
                             "$type": "Core.TriggerRestriction:PlayersMatch:",
@@ -37,10 +35,8 @@
 			"triggerData": {
 				"triggerCondition": "Draw",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play"
-					],
 					"triggerRestrictionElements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
                         { "$type": "Core.TriggerRestriction:EnemyTurn:" },
                         {
                             "$type": "Core.TriggerRestriction:PlayersMatch:",

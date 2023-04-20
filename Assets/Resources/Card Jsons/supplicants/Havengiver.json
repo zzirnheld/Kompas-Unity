@@ -9,7 +9,9 @@
 				"blurb":"Give Safe Haven",
 				"triggerCondition":"Turn Start",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play"]
+					"triggerRestrictionElements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" }
+					]
 				}
 			},
 			"subeffects":[

@@ -7,11 +7,13 @@
 			"triggerData": {
 				"triggerCondition": "N Change",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"This Card is Main Card"
-					],
-                    "triggerRestrictionElements": [
+					"triggerRestrictionElements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardsMatch:",
+                            "card": { "$type": "Cards:ThisCard:" },
+                            "other": { "$type": "Cards:CardBefore:" }
+                        },
 						{
 							"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
 							"number": { "$type": "Numbers:TriggerX:" },
@@ -34,11 +36,13 @@
 			"triggerData": {
 				"triggerCondition": "E Change",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"This Card is Main Card"
-					],
-                    "triggerRestrictionElements": [
+					"triggerRestrictionElements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardsMatch:",
+                            "card": { "$type": "Cards:ThisCard:" },
+                            "other": { "$type": "Cards:CardBefore:" }
+                        },
 						{
 							"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
 							"number": { "$type": "Numbers:TriggerX:" },
@@ -61,11 +65,13 @@
 			"triggerData": {
 				"triggerCondition": "W Change",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"This Card is Main Card"
-					],
-                    "triggerRestrictionElements": [
+					"triggerRestrictionElements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardsMatch:",
+                            "card": { "$type": "Cards:ThisCard:" },
+                            "other": { "$type": "Cards:CardBefore:" }
+                        },
 						{
 							"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
 							"number": { "$type": "Numbers:TriggerX:" },

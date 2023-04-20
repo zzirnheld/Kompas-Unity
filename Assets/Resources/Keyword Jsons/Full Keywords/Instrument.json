@@ -4,8 +4,8 @@
     {
         "triggerCondition":"Play",
         "triggerRestriction":{
-            "triggerRestrictions":["This Card in Play"],
             "triggerRestrictionElements": [
+                { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
                 { "$type": "Core.CardRestriction:Friendly:" },
                 {
                     "$type": "Core.SpaceRestriction:AdjacentTo:",

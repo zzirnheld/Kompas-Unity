@@ -8,10 +8,8 @@
 				"blurb": "Play discarded Crazy",
 				"triggerCondition": "Discard",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play"
-					],
 					"triggerRestrictionElements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{ "$type": "Core.TriggerRestriction:MaxPerTurn:" },
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",

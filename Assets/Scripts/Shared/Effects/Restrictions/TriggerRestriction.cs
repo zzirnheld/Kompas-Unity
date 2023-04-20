@@ -17,11 +17,7 @@ namespace KompasCore.Effects
         private const string ThisCardIsMainCard = "This Card is Main Card";
         private const string ThisCardIsSecondaryCard = "This Card is Secondary Card";
         private const string AugmentedCardIsMainCard = "Augmented Card is Main Card";
-
-        //This is technically redundant, but so gosh darn common that I'm not deprecating it
-        private const string ThisCardInPlay = "This Card in Play";
         #endregion trigger conditions
-        private static readonly string[] RequiringSelfRestriction = { ThisCardFitsRestriction };
 
         public static readonly ISet<Type> ReevalationRestrictions
             = new HashSet<Type>(new Type[] { typeof(MaxPerTurn), typeof(MaxPerRound), typeof(MaxPerStack) });
@@ -29,7 +25,6 @@ namespace KompasCore.Effects
         public static readonly string[] DefaultFallOffRestrictions = { ThisCardIsMainCard, ThisCardInPlay };
 
         public string[] triggerRestrictions = new string[0];
-        public CardRestriction selfRestriction;
 
         public IRestriction<TriggeringEventContext>[] triggerRestrictionElements = { };
 
@@ -40,15 +35,10 @@ namespace KompasCore.Effects
         {
             base.Initialize(initializationContext);
 
-            selfRestriction?.Initialize(initializationContext);
-
             foreach (var tre in triggerRestrictionElements)
             {
                 tre.Initialize(initializationContext);
             }
-
-            if (triggerRestrictions.Intersect(RequiringSelfRestriction).Any() && selfRestriction == null)
-                throw new ArgumentNullException("selfRestriction", $"Must be populated for any of these restrictions: {string.Join(",", RequiringSelfRestriction)}");
 
             //Debug.Log($"Initializing trigger restriction for {thisCard?.CardName}. game is null? {game}");
         }
@@ -62,8 +52,6 @@ namespace KompasCore.Effects
             AugmentedCardIsMainCard => triggeringContext.mainCardInfoBefore.Augments.Contains(ThisCard),
 
             ThisCardInPlay => ThisCard.Location == CardLocation.Board,
-
-            ThisCardFitsRestriction => selfRestriction.IsValid(ThisCard, new ResolutionContext(triggeringContext)),
 
             //misc
             _ => throw new ArgumentException($"Invalid trigger restriction {restriction}"),

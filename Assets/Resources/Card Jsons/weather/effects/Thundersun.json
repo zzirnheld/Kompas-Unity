@@ -8,10 +8,8 @@
 				"blurb": "Thundersun",
 				"triggerCondition": "Arrive",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play"
-					],
 					"triggerRestrictionElements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{ "$type": "Core.TriggerRestriction:MaxPerTurn:", "max": 5 },
 						{
 							"$type": "Core.SpaceRestriction:InAOEOf:",
