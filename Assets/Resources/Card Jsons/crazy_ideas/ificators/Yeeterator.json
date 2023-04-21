@@ -15,17 +15,17 @@
 							"card": { "$type": "Cards:ThisCard:" }
 						},
 						{ "$type": "Core.TriggerRestriction:MaxPerStack:" },
-                        {
-                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "card": { "$type": "Cards:CardBefore:" },
-                            "cardRestriction": {
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"cardRestriction": {
 								"$type": "Core.CardRestriction:Not:",
 								"negated": {
 									"$type": "Core.CardRestriction:CardsMatch:",
 									"card": { "$type": "Cards:ThisCard:" }
 								}
 							}
-                        }
+						}
 					]
 				}
 			},

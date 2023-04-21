@@ -9,32 +9,32 @@
 					"card": { "$type": "Cards:CardBefore:" },
 					"other": { "$type": "Cards:ThisCard:" }
 				},
-                { "$type": "Core.TriggerRestriction:MaxPerStack:" }
-            ]
+				{ "$type": "Core.TriggerRestriction:MaxPerStack:" }
+			]
 		}
 	},
 	"subeffects":[
-        {
-            "$type": "Subeffect:TargetAll:",
-            "toSearch": {
-                "$type": "ManyCards:CardsInPositions:",
-                "positions": {
-                    "$type": "ManySpaces:AdjacentSpaces:",
-                    "adjacentTo": { "$type": "Cards:ThisCard:" }
-                }
-            }
-        },
-        {
-            "$type":"Subeffect:Activate:"
-        },
-        {
-            "$type":"Subeffect:Activate:",
-            "activate":false
-        },
-        {
-            "$type":"Subeffect:LoopWhileHaveTargets:",
-            "delete":true,
-            "jumpIndices":[1]
-        }
+		{
+			"$type": "Subeffect:TargetAll:",
+			"toSearch": {
+				"$type": "ManyCards:CardsInPositions:",
+				"positions": {
+					"$type": "ManySpaces:AdjacentSpaces:",
+					"adjacentTo": { "$type": "Cards:ThisCard:" }
+				}
+			}
+		},
+		{
+			"$type":"Subeffect:Activate:"
+		},
+		{
+			"$type":"Subeffect:Activate:",
+			"activate":false
+		},
+		{
+			"$type":"Subeffect:LoopWhileHaveTargets:",
+			"delete":true,
+			"jumpIndices":[1]
+		}
 	]
 }

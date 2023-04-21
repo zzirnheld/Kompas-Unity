@@ -46,7 +46,7 @@
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Dragon" ]
 							},
-                            { "$type": "Core.CardRestriction:CanPlay:" }
+							{ "$type": "Core.CardRestriction:CanPlay:" }
 						]
 					}
 				},

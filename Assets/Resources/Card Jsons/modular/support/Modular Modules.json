@@ -39,24 +39,24 @@
 				{
 					"$type": "Subeffect:CardTarget:",
 					"toSearch": { "$type": "ManyCards:Deck:" },
-                    "cardRestriction":
-                    {
-                        "elements": [
+					"cardRestriction":
+					{
+						"elements": [
 							{ "$type": "Core.CardRestriction:Augment:" },
-                            {
-                                "$type": "Core.CardRestriction:Subtypes:",
-                                "subtypes": [ "Module" ]
-                            }
-                        ]
-                    },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Module" ]
+							}
+						]
+					},
 					"listRestriction": {
 						"listRestrictions": [
 							"Min Can Choose: X",
 							"Max Can Choose: X",
-                            "Distinct"
+							"Distinct"
 						]
 					},
-                    "xMultiplier": 1
+					"xMultiplier": 1
 				},
 				{
 					"$type": "Subeffect:Hand:"
@@ -69,24 +69,24 @@
 				}
 			]
 		},
-        {
-            "blurb": "Recover me",
-            "activationRestriction": {
-                "activationRestrictionArray":[
-                    "Location",
-                    "Controller Activates",
-                    "Not Negated"
-                ],
-                "location":2
-            },
-            "subeffects": [
-                {
-                    "$type": "Subeffect:TargetThis:"
-                },
-                {
-                    "$type": "Subeffect:CanResolve:",
-                    "subeffIndices": [ 2, 5 ]
-                },
+		{
+			"blurb": "Recover me",
+			"activationRestriction": {
+				"activationRestrictionArray":[
+					"Location",
+					"Controller Activates",
+					"Not Negated"
+				],
+				"location":2
+			},
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetThis:"
+				},
+				{
+					"$type": "Subeffect:CanResolve:",
+					"subeffIndices": [ 2, 5 ]
+				},
 				{
 					"$type": "Subeffect:CardTarget:",
 					"blurb": "cards to reshuffle",
@@ -114,12 +114,12 @@
 					"xMultiplier":0,
 					"xModifier":1
 				},
-                {
-                    "$type":"Subeffect:Hand:",
-                    "targetIndex": 0
-                }
-            ]
-        }
+				{
+					"$type":"Subeffect:Hand:",
+					"targetIndex": 0
+				}
+			]
+		}
 	],
 	"c": 1,
 	"spellTypes": [

@@ -38,8 +38,8 @@
 					"cardsSource": {
 						"$type": "ManyCards:CardsInPositions:",
 						"positions": {
-                            "$type": "ManySpaces:AdjacentSpaces:",
-                            "adjacentTo": { "$type": "Cards:TargetIndex:" }
+							"$type": "ManySpaces:AdjacentSpaces:",
+							"adjacentTo": { "$type": "Cards:TargetIndex:" }
 						}
 					},
 					"eModifier": -4

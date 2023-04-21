@@ -21,7 +21,7 @@
 						"cardRestriction": {
 							"$type": "Core.CardRestriction:AllOf:",
 							"elements": [
-                            { "$type": "Core.CardRestriction:Character:" },
+							{ "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Name:",
@@ -33,11 +33,11 @@
 				{
 					"$type": "Subeffect:TargetTargetsSpace:"
 				},
-                {
-                    "$type":"Subeffect:SpaceTarget:",
+				{
+					"$type":"Subeffect:SpaceTarget:",
 					"blurb":"where Elk will lengthen to",
-                    "spaceRestriction":
-                    {
+					"spaceRestriction":
+					{
 						"$type": "Core.SpaceRestriction:AllOf:",
 						"elements": [
 							{
@@ -50,11 +50,11 @@
 								"number": { "$type": "Numbers:Constant:", "constant": 1 }
 							}
 						]
-                    }
-                },
-                {
-                    "$type":"Subeffect:Move:"
-                },
+					}
+				},
+				{
+					"$type":"Subeffect:Move:"
+				},
 				{
 					"$type": "Subeffect:CardTarget:",
 					"blurb": "Elk bone",
@@ -62,23 +62,23 @@
 					"cardRestriction": {
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
-                            { "$type": "Core.CardRestriction:Character:" },
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Bone" ]
 							},
-                            {
-                                "$type": "Core.CardRestriction:CanPlay:",
-                                "destination": { "$type": "Spaces:TargetIndex:" },
+							{
+								"$type": "Core.CardRestriction:CanPlay:",
+								"destination": { "$type": "Spaces:TargetIndex:" },
 								"ignoring": [ "Adjacent to Friendly Card" ]
-                            }
+							}
 						]
 					},
-                    "spaceIndex": -2
+					"spaceIndex": -2
 				},
 				{
 					"$type": "Subeffect:Play:",
-                    "spaceIndex": -2
+					"spaceIndex": -2
 				}
 			]
 		}

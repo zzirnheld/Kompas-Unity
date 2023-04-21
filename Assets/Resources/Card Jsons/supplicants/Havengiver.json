@@ -38,10 +38,10 @@
 						"blurb":"haven to play the Supplicant",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
-                            {
-                                "$type": "Core.SpaceRestriction:CanPlayCard:",
-                                "toPlay": { "$type": "Cards:TargetIndex:" }
-                            }
+							{
+								"$type": "Core.SpaceRestriction:CanPlayCard:",
+								"toPlay": { "$type": "Cards:TargetIndex:" }
+							}
 						]
 					}
 				},

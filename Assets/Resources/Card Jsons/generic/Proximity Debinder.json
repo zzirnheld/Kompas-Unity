@@ -3,8 +3,8 @@
 	"cardName": "Proximity Debinder",
 	"effText": "When this character dies fighting, hand the character they were fighting.",
 	"effects": [
-        {
-            "blurb":"Debind",
+		{
+			"blurb":"Debind",
 			"triggerData": {
 				"triggerCondition": "Discard",
 				"triggerRestriction": {
@@ -15,18 +15,18 @@
 							"other": { "$type": "Cards:ThisCard:" }
 						},
 						{ "$type": "Core.TriggerRestriction:IsAttack:" },
-                        {
-                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "card": { "$type": "Cards:CardBefore:" },
-                            "cardRestriction": {
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"cardRestriction": {
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
 							}
-                        }
+						}
 					]
 				}
 			},
-            "subeffects":[
+			"subeffects":[
 				{
 					"$type":"Subeffect:TargetTriggeringCard:",
 					"contextSecondaryCard":true
@@ -34,8 +34,8 @@
 				{
 					"$type": "Subeffect:Hand:"
 				}
-            ]
-        }
+			]
+		}
 	],
 	"PlayRestriction": {
 		"normalRestrictions": [

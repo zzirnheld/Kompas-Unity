@@ -4,31 +4,31 @@
 	{
 		"triggerCondition":"Stack End",
 		"triggerRestriction":{
-            "elements": [
-                { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-                {
-                    "$type": "Core.TriggerRestriction:Not:",
-                    "inverted": {
-                        "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                        
+			"elements": [
+				{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+				{
+					"$type": "Core.TriggerRestriction:Not:",
+					"inverted": {
+						"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+						
 						"cardRestriction": {
 							"$type": "Core.CardRestriction:AllOf:",
 							"elements": [
-                                { "$type": "Core.CardRestriction:Character:" },
-                                {
-                                    "$type": "Core.CardRestriction:Subtypes:",
-                                    "subtypes": [ "Structure" ]
-                                },
-                                {
-                                    "$type": "Core.SpaceRestriction:InAOEOf:",
-                                    "card": { "$type": "Cards:ThisCard:" }
-                                }
-                            ]
-                        },
-                        "anyOf": { "$type": "ManyCards:Board:" }
-                    }
-                }
-            ]
+								{ "$type": "Core.CardRestriction:Character:" },
+								{
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Structure" ]
+								},
+								{
+									"$type": "Core.SpaceRestriction:InAOEOf:",
+									"card": { "$type": "Cards:ThisCard:" }
+								}
+							]
+						},
+						"anyOf": { "$type": "ManyCards:Board:" }
+					}
+				}
+			]
 		}
 	},
 	"subeffects":[

@@ -45,7 +45,7 @@
 		"normalRestrictionsFromJson": [
 			"Default",
 			"Activated"
-        ]
+		]
 	},
 	"AttackRestriction": {
 		"attackRestrictions": [
@@ -62,8 +62,8 @@
 	"s": 10,
 	"w": 11,
 	"subtypes": [
-        "Ethereal",
-        "Revenant",
+		"Ethereal",
+		"Revenant",
 		"Mech",
 		"Golem"
 	],

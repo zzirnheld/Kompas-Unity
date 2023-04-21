@@ -12,7 +12,7 @@
 				"triggerRestriction": {
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-                        { "$type": "Core.TriggerRestriction:EnemyTurn:" }
+						{ "$type": "Core.TriggerRestriction:EnemyTurn:" }
 					]
 				}
 			},
@@ -28,7 +28,7 @@
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
-                            { "$type": "Core.CardRestriction:Summoned:" }
+							{ "$type": "Core.CardRestriction:Summoned:" }
 						]
 					}
 				},
@@ -115,20 +115,20 @@
 					"blurb": "where Mother of Dragons to birth",
 					"spaceRestriction": {
 						"$type": "Core.SpaceRestriction:AllOf:",
-                        "elements": [
-                            { "$type": "Core.SpaceRestriction:Empty:" },
-                            {
-                                "$type": "Core.SpaceRestriction:CanPlayCard:",
-                                "toPlay": { "$type": "Cards:TargetIndex:" },
+						"elements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanPlayCard:",
+								"toPlay": { "$type": "Cards:TargetIndex:" },
 								"ignoring": [ "Adjacent to Friendly Card" ]
-                            },
-                            {
-                                "$type": "Core.SpaceRestriction:CompareDistance:",
-                                "distanceTo": { "$type": "Cards:ThisCard:" },
-                                "number": { "$type": "Numbers:Constant:", "constant": 2 },
-                                "comparison": { "$type": "Relationships.Number:Equal:" }
-                            }
-                        ]
+							},
+							{
+								"$type": "Core.SpaceRestriction:CompareDistance:",
+								"distanceTo": { "$type": "Cards:ThisCard:" },
+								"number": { "$type": "Numbers:Constant:", "constant": 2 },
+								"comparison": { "$type": "Relationships.Number:Equal:" }
+							}
+						]
 					}
 				},
 				{

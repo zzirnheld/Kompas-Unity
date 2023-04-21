@@ -15,11 +15,11 @@
 							"other": { "$type": "Cards:ThisCard:" }
 						},
 						{ "$type": "Core.TriggerRestriction:MaxPerStack:" },
-                        {
-                            "$type": "Core.TriggerRestriction:PlayersMatch:",
-                            "firstPlayer": { "$type": "Players:TriggeringPlayer:" },
-                            "secondPlayer": { "$type": "Players:FriendlyPlayer:" }
-                        }
+						{
+							"$type": "Core.TriggerRestriction:PlayersMatch:",
+							"firstPlayer": { "$type": "Players:TriggeringPlayer:" },
+							"secondPlayer": { "$type": "Players:FriendlyPlayer:" }
+						}
 					]
 				}
 			},
@@ -39,12 +39,12 @@
 									"card": { "$type": "Cards:ThisCard:" }
 								}
 							},
-                            {
-                                "$type": "Core.SpaceRestriction:CompareDistance:",
-                                "distanceTo": { "$type": "Cards:ThisCard:" },
-                                "number": { "$type": "Numbers:Constant:", "constant": 4 },
-                                "comparison": { "$type": "Relationships.Number:LessThanEqual:" }
-                            }
+							{
+								"$type": "Core.SpaceRestriction:CompareDistance:",
+								"distanceTo": { "$type": "Cards:ThisCard:" },
+								"number": { "$type": "Numbers:Constant:", "constant": 4 },
+								"comparison": { "$type": "Relationships.Number:LessThanEqual:" }
+							}
 						]
 					}
 				},

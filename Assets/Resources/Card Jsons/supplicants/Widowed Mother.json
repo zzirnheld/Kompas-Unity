@@ -19,10 +19,10 @@
 								}
 							] }
 						},
-                        {
-                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "card": { "$type": "Cards:CardBefore:" },
-                            
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							
 						"cardRestriction": {
 							"$type": "Core.CardRestriction:AllOf:",
 							"elements": [
@@ -35,8 +35,8 @@
 										}
 									}
 								]
-                            }
-                        }
+							}
+						}
 					]
 				}
 			},

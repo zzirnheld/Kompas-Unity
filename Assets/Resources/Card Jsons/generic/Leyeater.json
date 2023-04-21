@@ -35,13 +35,13 @@
 				}
 			]
 		}
-    ],
+	],
 	"AttackRestriction": {
 		"attackRestrictions": [
 			"Default",
 			"This is Activated"
 		],
-        "maxAttacks": 3
+		"maxAttacks": 3
 	},
 	"n": 7,
 	"e": 11,

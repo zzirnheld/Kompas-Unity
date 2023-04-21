@@ -4,17 +4,17 @@
 	"effText": "When an enemy plays a card normally, give friendly Reporters +1 NEWS if the card was revealed. Regardless, they reveal a card.",
 	"effects": [
 		{
-            "blurb":"The Value of Accountability",
+			"blurb":"The Value of Accountability",
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-                        {
-                            "$type": "Core.TriggerRestriction:PlayersMatch:",
-                            "firstPlayer": { "$type": "Players:TriggeringPlayer:" },
-                            "secondPlayer": { "$type": "Players:FriendlyPlayer:" }
-                        },
+						{
+							"$type": "Core.TriggerRestriction:PlayersMatch:",
+							"firstPlayer": { "$type": "Players:TriggeringPlayer:" },
+							"secondPlayer": { "$type": "Players:FriendlyPlayer:" }
+						},
 						{ "$type": "Core.TriggerRestriction:Normally:" }
 					]
 				}
@@ -41,7 +41,7 @@
 						"cardRestriction": {
 							"$type": "Core.CardRestriction:AllOf:",
 							"elements": [
-                            { "$type": "Core.CardRestriction:Character:" },
+							{ "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",

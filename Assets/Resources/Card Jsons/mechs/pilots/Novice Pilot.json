@@ -13,7 +13,7 @@
 			"subeffects":[
 				{
 					"$type":"Subeffect:Keyword:",
-                    "keyword":"Mech Pilot Summon"
+					"keyword":"Mech Pilot Summon"
 				},
 				{
 					"$type":"Subeffect:ChangeCardStats:",
@@ -24,7 +24,7 @@
 				},
 				{
 					"$type":"Subeffect:Keyword:",
-                    "keyword":"Mech Pilot Return"
+					"keyword":"Mech Pilot Return"
 				}
 			]
 		}

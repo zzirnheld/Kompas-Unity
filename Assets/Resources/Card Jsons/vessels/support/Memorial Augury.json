@@ -57,7 +57,7 @@
 					"listRestriction": {
 						"listRestrictions": [
 							"Max Can Choose: X",
-                            "Distinct"
+							"Distinct"
 						]
 					},
 					"xMultiplier": 1

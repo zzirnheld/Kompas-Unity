@@ -17,17 +17,17 @@
 		}
 	},
 	"subeffects":[
-        {
-            "$type":"Subeffect:TargetTriggeringCard:",
-            "contextSecondaryCard":true
-        },
+		{
+			"$type":"Subeffect:TargetTriggeringCard:",
+			"contextSecondaryCard":true
+		},
 		{
 			"$type":"Subeffect:TargetThis:"
 		},
-        {
-            "$type":"Subeffect:Attach:",
-            "targetToAttachTo":-2,
-            "targetIndex":-1
-        }
+		{
+			"$type":"Subeffect:Attach:",
+			"targetToAttachTo":-2,
+			"targetIndex":-1
+		}
 	]
 }

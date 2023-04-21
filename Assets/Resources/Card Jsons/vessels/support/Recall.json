@@ -47,7 +47,7 @@
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Vessel" ]
 							},
-                            { "$type": "Core.CardRestriction:CanPlay:" },
+							{ "$type": "Core.CardRestriction:CanPlay:" },
 							{
 								"$type": "Core.CardRestriction:DistinctName:",
 								"cards": { "$type": "ManyCards:Targets:" }
@@ -61,13 +61,13 @@
 					"blurb": "where to recall corporeal form",
 					"spaceRestriction": {
 						"$type": "Core.SpaceRestriction:AllOf:",
-                        "elements": [
-                            { "$type": "Core.SpaceRestriction:Empty:" },
-                            {
-                                "$type": "Core.SpaceRestriction:CanPlayCard:",
-                                "toPlay": { "$type": "Cards:TargetIndex:" }
-                            }
-                        ]
+						"elements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanPlayCard:",
+								"toPlay": { "$type": "Cards:TargetIndex:" }
+							}
+						]
 					}
 				},
 				{

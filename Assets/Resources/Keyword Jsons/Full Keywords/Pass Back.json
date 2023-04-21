@@ -18,14 +18,14 @@
 		}
 	},
 	"subeffects":[
-        {
-            "$type":"Subeffect:TargetAvatar:"
-        },
+		{
+			"$type":"Subeffect:TargetAvatar:"
+		},
 		{
 			"$type":"Subeffect:TargetThis:"
 		},
-        {
-            "$type":"Subeffect:Attach:"
-        }
+		{
+			"$type":"Subeffect:Attach:"
+		}
 	]
 }

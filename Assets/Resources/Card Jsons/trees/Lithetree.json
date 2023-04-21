@@ -9,11 +9,11 @@
 				"triggerRestriction": {
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-                        {
-                            "$type": "Core.TriggerRestriction:CardsMatch:",
-                            "card": { "$type": "Cards:ThisCard:" },
-                            "other": { "$type": "Cards:CardBefore:" }
-                        },
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:ThisCard:" },
+							"other": { "$type": "Cards:CardBefore:" }
+						},
 						{ "$type": "Core.TriggerRestriction:MaxPerTurn:" },
 						{
 							"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
@@ -24,7 +24,7 @@
 								"other": { "$type": "Numbers:Constant:", "constant": 0 }
 							}
 						}
-                    ]
+					]
 				}
 			},
 			"subeffects": [

@@ -24,7 +24,7 @@
 					"cardRestriction": {
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
-                            { "$type": "Core.CardRestriction:Character:" },
+							{ "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Enemy:" }
 						]
 					}
@@ -34,10 +34,10 @@
 					"blurb": "where to move the enemy character",
 					"spaceRestriction": {
 						"$type": "Core.SpaceRestriction:AllOf:",
-                        "elements": [
-                            { "$type": "Core.SpaceRestriction:Empty:" },
-                            {
-                                "$type": "Core.SpaceRestriction:AdjacentTo:",
+						"elements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
 								"cardRestriction": {
 									"$type": "Core.CardRestriction:AllOf:",
 									"elements": [
@@ -49,8 +49,8 @@
 										}
 									]
 								}
-                            }
-                        ]
+							}
+						]
 					}
 				},
 				{

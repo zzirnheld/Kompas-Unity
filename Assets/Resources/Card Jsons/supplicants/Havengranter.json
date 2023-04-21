@@ -16,8 +16,8 @@
 				{
 					"$type": "Subeffect:CardTarget:",
 					"toSearch": { "$type": "ManyCards:Hand:" },
-                    "cardRestriction":
-                    {
+					"cardRestriction":
+					{
 						"blurb": "for Havengranter to hand-summon",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
@@ -32,7 +32,7 @@
 								}
 							}
 						]
-                    }
+					}
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
@@ -44,10 +44,10 @@
 								"$type": "Core.SpaceRestriction:AdjacentTo:",
 								"space": { "$type": "Cards:ThisCard:" }
 							},
-                            {
-                                "$type": "Core.SpaceRestriction:CanPlayCard:",
-                                "toPlay": { "$type": "Cards:TargetIndex:" }
-                            }
+							{
+								"$type": "Core.SpaceRestriction:CanPlayCard:",
+								"toPlay": { "$type": "Cards:TargetIndex:" }
+							}
 						]
 					}
 				},

@@ -4,16 +4,16 @@
 	"effText": "When a Modular creature attaches an A X Module to themselves, discard->reshuffle X random cards to gain 1 pip.",
 	"effects": [
 		{
-            "blurb": "Modules in Retrograde",
+			"blurb": "Modules in Retrograde",
 			"triggerData": {
 				"triggerCondition": "Augment Attached",
 				"triggerRestriction": {
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-                        {
-                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "card": { "$type": "Cards:CardAfter:" },
-                            
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardAfter:" },
+							
 						"cardRestriction": {
 							"$type": "Core.CardRestriction:AllOf:",
 							"elements": [

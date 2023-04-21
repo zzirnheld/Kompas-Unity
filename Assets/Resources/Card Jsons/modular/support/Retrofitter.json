@@ -4,24 +4,24 @@
 	"effText": "When an adjacent Modular character attaches a Module to themselves, discard->attach a Module to them.",
 	"effects": [
 		{
-            "blurb": "Retrofit Module",
+			"blurb": "Retrofit Module",
 			"triggerData": {
 				"triggerCondition": "Augment Attached",
 				"triggerRestriction": {
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-                        {
-                            "$type": "Core.TriggerRestriction:CardsMatch:",
-                            "card": { "$type": "Cards:CauseBefore:" },
-                            "other": {
-                                "$type": "Cards:AugmentedCard:",
-                                "ofThisCard": { "$type": "Cards:CardBefore:" }
-                            }
-                        },
-                        {
-                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "card": { "$type": "Cards:CardAfter:" },
-                            
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CauseBefore:" },
+							"other": {
+								"$type": "Cards:AugmentedCard:",
+								"ofThisCard": { "$type": "Cards:CardBefore:" }
+							}
+						},
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardAfter:" },
+							
 						"cardRestriction": {
 							"$type": "Core.CardRestriction:AllOf:",
 							"elements": [
@@ -41,8 +41,8 @@
 										"space": { "$type": "Cards:ThisCard:" }
 									}
 								]
-                            }
-                        }
+							}
+						}
 					]
 				}
 			},

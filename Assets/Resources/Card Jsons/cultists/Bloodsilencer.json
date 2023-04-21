@@ -39,11 +39,11 @@
 						"cardRestriction": {
 							"$type": "Core.CardRestriction:AllOf:",
 							"elements": [
-                            { "$type": "Core.CardRestriction:Character:" },
-                            {
-                                "$type": "Core.SpaceRestriction:AdjacentTo:",
-                                "space": { "$type": "Spaces:TargetIndex:" }
-                            }
+							{ "$type": "Core.CardRestriction:Character:" },
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": { "$type": "Spaces:TargetIndex:" }
+							}
 						]
 					},
 					"eModifier": 1,

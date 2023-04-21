@@ -9,11 +9,11 @@
 				"triggerCondition": "Move",
 				"triggerRestriction": {
 					"elements": [
-                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-                        {
-                            "$type": "Core.TriggerRestriction:TriggerKeyword:",
-                            "keyword": "Shaped Through"
-                        }
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.TriggerRestriction:TriggerKeyword:",
+							"keyword": "Shaped Through"
+						}
 					]
 				}
 			},
@@ -45,7 +45,7 @@
 	"w": 1,
 	"subtypes": [
 		"Ethereal",
-        "Shaper"
+		"Shaper"
 	],
 	"subtypeText": "Ethereal Shaper"
 }

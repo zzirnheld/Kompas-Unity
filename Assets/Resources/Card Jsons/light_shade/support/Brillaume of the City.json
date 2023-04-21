@@ -10,7 +10,7 @@
 					"Max Times Per Turn",
 					"Default"
 				],
-                "maxTimes":3
+				"maxTimes":3
 			},
 			"subeffects": [
 				{

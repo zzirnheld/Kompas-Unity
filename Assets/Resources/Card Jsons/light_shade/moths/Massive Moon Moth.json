@@ -10,9 +10,9 @@
 				"triggerRestriction": {
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-                        {
-                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "card": { "$type": "Cards:CardBefore:" },
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
 							"elements": [
 								{ "$type": "Core.CardRestriction:Friendly:" },
 								{
@@ -24,11 +24,11 @@
 									"subtypes": [ "Moth" ]
 								}
 							]
-                        },
-                        {
-                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "card": { "$type": "Cards:CardBefore:", "secondaryCard": true },
-                            "cardRestriction":  {
+						},
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:", "secondaryCard": true },
+							"cardRestriction": {
 								"$type": "Core.SpaceRestriction:InAOEOf:",
 								"anyOf": {
 									"$type": "ManyCards:FittingRestriction:",
@@ -44,7 +44,7 @@
 									}
 								}
 							}
-                        }
+						}
 					]
 				}
 			},
@@ -63,12 +63,12 @@
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
-                            {
-                                "$type": "Core.SpaceRestriction:CompareDistance:",
-                                "distanceTo": { "$type": "Cards:TargetIndex:" },
-                                "number": { "$type": "Numbers:Constant:", "constant": 2 },
-                                "comparison": { "$type": "Relationships.Number:LessThanEqual:" }
-                            },
+							{
+								"$type": "Core.SpaceRestriction:CompareDistance:",
+								"distanceTo": { "$type": "Cards:TargetIndex:" },
+								"number": { "$type": "Numbers:Constant:", "constant": 2 },
+								"comparison": { "$type": "Relationships.Number:LessThanEqual:" }
+							},
 							{
 								"$type": "Core.CardRestriction:Not:",
 								"negated": { "$type": "Core.CardRestriction:Target:" }

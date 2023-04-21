@@ -3,41 +3,41 @@
 	"cardName": "Revivant Spirit",
 	"effText": "Undying.\nYou can pip revive me.",
 	"effects": [
-        {
-            "blurb": "Revive",
-            "activationRestriction":{
-                "activationRestrictionArray":[
-                    "Location",
-                    "Controller Activates",
-                    "Not Negated"
-                ],
-                "location":2
-            },
-            "subeffects":[
-                {
-                    "$type": "Subeffect:TargetThis:"
-                },
-                {
-                    "$type": "Subeffect:CanResolve:",
-                    "subeffIndices": [ 3, 4 ]
-                },
-                {
-                    "$type": "Subeffect:SpaceTarget:",
-                    "blurb": "where to revive the Spirit",
-                    "spaceRestriction":
-                    {
-                        "$type": "Core.SpaceRestriction:CanPlayCard:",
-                        "toPlay": { "$type": "Cards:TargetIndex:" }
-                    }
-                },
-                {
-                    "$type": "Subeffect:PayPipsTargetCost:"
-                },
-                {
-                    "$type": "Subeffect:Play:"
-                }
-            ]
-        }
+		{
+			"blurb": "Revive",
+			"activationRestriction":{
+				"activationRestrictionArray":[
+					"Location",
+					"Controller Activates",
+					"Not Negated"
+				],
+				"location":2
+			},
+			"subeffects":[
+				{
+					"$type": "Subeffect:TargetThis:"
+				},
+				{
+					"$type": "Subeffect:CanResolve:",
+					"subeffIndices": [ 3, 4 ]
+				},
+				{
+					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where to revive the Spirit",
+					"spaceRestriction":
+					{
+						"$type": "Core.SpaceRestriction:CanPlayCard:",
+						"toPlay": { "$type": "Cards:TargetIndex:" }
+					}
+				},
+				{
+					"$type": "Subeffect:PayPipsTargetCost:"
+				},
+				{
+					"$type": "Subeffect:Play:"
+				}
+			]
+		}
 	],
 	"keywords": [
 		"Undying"

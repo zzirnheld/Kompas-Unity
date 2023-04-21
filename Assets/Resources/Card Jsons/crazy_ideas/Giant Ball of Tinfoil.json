@@ -50,15 +50,15 @@
 				},
 				{
 					"$type": "Subeffect:AutoTargetSpaceIdentity:",
-                    "spaceIdentity": {
-                        "$type": "Spaces:ApplyDisplacement:",
-                        "from": { "$type": "Cards:ThisCard:" },
+					"spaceIdentity": {
+						"$type": "Spaces:ApplyDisplacement:",
+						"from": { "$type": "Cards:ThisCard:" },
 						"displacement": {
 							"$type": "Spaces:Displacement:",
 							"from": { "$type": "Spaces:TargetIndex:", "index": -2 },
 							"to": { "$type": "Spaces:TargetIndex:", "index": -1 }
 						}
-                    }
+					}
 				},
 				{
 					"$type": "Subeffect:Move:"

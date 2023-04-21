@@ -1,69 +1,69 @@
 [
-    {
-        "$type": "Subeffect:TargetThis:"
-    },
-    {
-        "$type": "Subeffect:SpaceTarget:",
-        "spaceRestriction": {
-            "blurb": "Stealth position to 'actually' be in",
-            "elements": [
-                {
-                    "$type": "Core.SpaceRestriction:CanMoveCard:",
-                    "toMove": { "$type": "Cards:TargetIndex:" }
-                },
-                {
-                    "$type": "Core.SpaceRestriction:InAOEOf:",
-                    "anyOf": {
-                        "$type": "ManyCards:FittingRestriction:",
-                        
+	{
+		"$type": "Subeffect:TargetThis:"
+	},
+	{
+		"$type": "Subeffect:SpaceTarget:",
+		"spaceRestriction": {
+			"blurb": "Stealth position to 'actually' be in",
+			"elements": [
+				{
+					"$type": "Core.SpaceRestriction:CanMoveCard:",
+					"toMove": { "$type": "Cards:TargetIndex:" }
+				},
+				{
+					"$type": "Core.SpaceRestriction:InAOEOf:",
+					"anyOf": {
+						"$type": "ManyCards:FittingRestriction:",
+						
 						"cardRestriction": {
 							"$type": "Core.CardRestriction:AllOf:",
 							"elements": [ {
-                                "$type": "Core.CardRestriction:Subtypes:",
-                                "subtypes": [ "Shade" ]
-                            } ]
-                        }
-                    },
-                    "sameAs": { "$type": "Cards:ThisCard:" }
-                }
-            ]
-        }
-    },
-    {
-        "$type": "Subeffect:Hanging.Delay:",
-        "numTimesToDelay": 0,
-        "jumpIndices": [
-            3
-        ],
-        "fallOffCondition": "Turn Start",
-        "endCondition": "Arrive",
-        "triggerRestriction": {
-            "elements": [
-                {
-                    "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                    "card": { "$type": "Cards:CardAfter:" },
-                    
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Shade" ]
+							} ]
+						}
+					},
+					"sameAs": { "$type": "Cards:ThisCard:" }
+				}
+			]
+		}
+	},
+	{
+		"$type": "Subeffect:Hanging.Delay:",
+		"numTimesToDelay": 0,
+		"jumpIndices": [
+			3
+		],
+		"fallOffCondition": "Turn Start",
+		"endCondition": "Arrive",
+		"triggerRestriction": {
+			"elements": [
+				{
+					"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+					"card": { "$type": "Cards:CardAfter:" },
+					
 						"cardRestriction": {
 							"$type": "Core.CardRestriction:AllOf:",
 							"elements": [
-                            {
-                                "$type": "Core.CardRestriction:Subtypes:",
-                                "subtypes": [ "Light" ]
-                            },
-                            {
-                                "$type": "Core.CardRestriction:AOEContains:",
-                                "cards": {
-                                    "$type": "ManyCards:FromSingle:",
-                                    "cards": [ { "$type": "Cards:ThisCard:" } ]
-                                }
-                            }
-                        ]
-                    }
-                }
-            ]
-        }
-    },
-    {
-        "$type": "Subeffect:Move:"
-    }
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Light" ]
+							},
+							{
+								"$type": "Core.CardRestriction:AOEContains:",
+								"cards": {
+									"$type": "ManyCards:FromSingle:",
+									"cards": [ { "$type": "Cards:ThisCard:" } ]
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	},
+	{
+		"$type": "Subeffect:Move:"
+	}
 ]

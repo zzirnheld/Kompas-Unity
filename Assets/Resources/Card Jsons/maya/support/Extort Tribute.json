@@ -40,10 +40,10 @@
 				{
 					"$type": "Subeffect:Discard:"
 				},
-                {
-                    "$type":"Subeffect:CanResolve:",
-                    "subeffIndices": [ 4, 5 ]
-                },
+				{
+					"$type":"Subeffect:CanResolve:",
+					"subeffIndices": [ 4, 5 ]
+				},
 				{
 					"$type": "Subeffect:ChooseOption:",
 					"choiceBlurb": "Pip play that card?",
@@ -63,15 +63,15 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "Where to play that card",
-                        "elements": [
-                            { "$type": "Core.SpaceRestriction:Empty:" },
-                            {
-                                "$type": "Core.SpaceRestriction:CanPlayCard:",
-                                "toPlay": { "$type": "Cards:TargetIndex:" }
-                            },
-                            {
-                                "$type": "Core.SpaceRestriction:WithinDistanceOfNumberOfCards:",
-                                
+						"elements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanPlayCard:",
+								"toPlay": { "$type": "Cards:TargetIndex:" }
+							},
+							{
+								"$type": "Core.SpaceRestriction:WithinDistanceOfNumberOfCards:",
+								
 						"cardRestriction": {
 							"$type": "Core.CardRestriction:AllOf:",
 							"elements": [
@@ -81,13 +81,13 @@
 											"subtypes": [ "Structure" ]
 										}
 									]
-                                },
-                                "number": { 
-                                    "$type": "Numbers:Constant:",
-                                    "constant": 2
-                                }
-                            }
-                        ]
+								},
+								"number": { 
+									"$type": "Numbers:Constant:",
+									"constant": 2
+								}
+							}
+						]
 					}
 				},
 				{

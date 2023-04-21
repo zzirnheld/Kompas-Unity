@@ -96,7 +96,7 @@
 						"cardRestriction": {
 							"$type": "Core.CardRestriction:AllOf:",
 							"elements": [
-                            { "$type": "Core.CardRestriction:Character:" },
+							{ "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Enemy:" },
 							{
 								"$type": "Core.SpaceRestriction:InAOEOf:",
@@ -109,7 +109,7 @@
 			]
 		}
 	],
-    "unique":true,
+	"unique":true,
 	"n": 6,
 	"e": 6,
 	"s": 6,

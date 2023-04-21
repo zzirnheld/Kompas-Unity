@@ -6,7 +6,7 @@
 	],
 	"keywords": [
 		"Undying",
-        "Shape"
+		"Shape"
 	],
 	"n": 2,
 	"e": 4,
@@ -14,7 +14,7 @@
 	"w": 4,
 	"subtypes": [
 		"Ethereal",
-        "Shaper",
+		"Shaper",
 		"Spirit"
 	],
 	"subtypeText": "Ethereal Shaper Spirit"

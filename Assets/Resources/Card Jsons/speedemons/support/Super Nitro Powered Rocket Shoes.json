@@ -3,31 +3,31 @@
 	"cardName":"Super Nitro Powered Rocket Shoes",
 	"effText":"When this character moves, move them 1 space in the same direction. (This will trigger me again.)",
 	"effects":[
-        {
-            "blurb":"Speed Shoes",
-            "triggerCondition":"Move",
-            "triggerRestriction":{
-                "elements": [
-                    { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-                    {
-                        "$type": "Core.TriggerRestriction:CardsMatch:",
-                        "card": { "$type": "Cards:CardBefore:" },
-                        "other": {
-                            "$type": "Cards:AugmentedCard:",
-                            "ofThisCard": { "$type": "Cards:ThisCard:" }
-                        }
-                    }
-                ]
-            },
-            "subeffects":[
-                {
-                    "$type":"Subeffect:TargetAugmentedCard:"
-                },
-                {
-                    "$type":"Subeffect:SpaceTarget:",
-                    "spaceRestriction":
-                    {
-                        "blurb":"where for speed victim to move",
+		{
+			"blurb":"Speed Shoes",
+			"triggerCondition":"Move",
+			"triggerRestriction":{
+				"elements": [
+					{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+					{
+						"$type": "Core.TriggerRestriction:CardsMatch:",
+						"card": { "$type": "Cards:CardBefore:" },
+						"other": {
+							"$type": "Cards:AugmentedCard:",
+							"ofThisCard": { "$type": "Cards:ThisCard:" }
+						}
+					}
+				]
+			},
+			"subeffects":[
+				{
+					"$type":"Subeffect:TargetAugmentedCard:"
+				},
+				{
+					"$type":"Subeffect:SpaceTarget:",
+					"spaceRestriction":
+					{
+						"blurb":"where for speed victim to move",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{
@@ -42,20 +42,20 @@
 							{
 								"$type": "Core.SpaceRestriction:Direction:",
 								"from": { "$type": "Cards:ThisCard:" },
-                                "directionToMatch": {
-                                    "$type": "Spaces:Direction:",
-                                    "from": { "$type": "Cards:CardBefore:" },
-                                    "to": { "$type": "Cards:ThisCard:" }
-                                }
+								"directionToMatch": {
+									"$type": "Spaces:Direction:",
+									"from": { "$type": "Cards:CardBefore:" },
+									"to": { "$type": "Cards:ThisCard:" }
+								}
 							}
-                        ]
+						]
 					}
-                },
-                {
-                    "$type":"Subeffect:Move:"
-                }
-            ]
-        }	
+				},
+				{
+					"$type":"Subeffect:Move:"
+				}
+			]
+		}	
 	],
 	"PlayRestriction":{
 		"normalRestrictions":["Augment Normal Restrictions"],

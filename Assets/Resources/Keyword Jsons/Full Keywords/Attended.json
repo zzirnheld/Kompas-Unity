@@ -26,9 +26,9 @@
 				{
 					"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
 					"number": {
-                        "$type": "Numbers:CountCards:",
-                        "cards": {
-                            "$type": "ManyCards:FittingRestriction:",
+						"$type": "Numbers:CountCards:",
+						"cards": {
+							"$type": "ManyCards:FittingRestriction:",
 							"cardRestriction": {
 								"$type": "Core.CardRestriction:AllOf:",
 								"elements": [
@@ -38,9 +38,9 @@
 										"space": { "$type": "Cards:ThisCard:" }
 									}
 								]
-                            }
-                        }
-                    },
+							}
+						}
+					},
 					"restriction": {
 						"$type": "KompasCore.Effects.NumberRestriction, Assembly-CSharp",
 						"numberRestrictions": [ "<Arg" ],

@@ -13,12 +13,12 @@
 		"attackRestrictions": [
 			"Default",
 			"This is Activated",
-            "Defender Fits Card Restriction"
+			"Defender Fits Card Restriction"
 		],
-        "attackRestrictionsToIgnore": [
-            "Defender is Adjacent"
-        ],
-        "defenderRestriction" : {
+		"attackRestrictionsToIgnore": [
+			"Defender is Adjacent"
+		],
+		"defenderRestriction" : {
 			"$type": "Core.CardRestriction:AllOf:",
 			"elements": [
 				{
@@ -35,7 +35,7 @@
 					"comparison": { "$type": "Relationships.Number:LessThanEqual:" }
 				}
 			]
-        }
+		}
 	},
 	"n": 4,
 	"e": 4,

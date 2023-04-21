@@ -49,7 +49,7 @@
 						"blurb": "where to move the supplicant's attacker",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [ 
-                            { "$type": "Core.SpaceRestriction:Empty:" },
+							{ "$type": "Core.SpaceRestriction:Empty:" },
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
 								"toMove": { "$type": "Cards:TargetIndex:" }

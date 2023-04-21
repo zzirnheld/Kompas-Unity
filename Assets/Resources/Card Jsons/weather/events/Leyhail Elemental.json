@@ -14,7 +14,7 @@
 							"card": { "$type": "Cards:CardBefore:" },
 							"other": { "$type": "Cards:ThisCard:" }
 						},
-                        { "$type": "Core.TriggerRestriction:EnemyTurn:" }
+						{ "$type": "Core.TriggerRestriction:EnemyTurn:" }
 					]
 				}
 			},

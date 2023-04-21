@@ -63,7 +63,7 @@
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Water" ]
 							},
-                            { "$type": "Core.CardRestriction:CanPlay:" }
+							{ "$type": "Core.CardRestriction:CanPlay:" }
 						]
 					}
 				},

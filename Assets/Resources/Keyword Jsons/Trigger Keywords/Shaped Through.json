@@ -1,92 +1,92 @@
 [
-    {
-        "$type": "Core.TriggerRestriction:StackableFitsRestriction:",
-        "stackable": { "$type": "Stackables:StackableCause:" },
-        "restriction": {
-            "stackableRestrictionElements": [
-                {
-                    "$type": "Core.EffectRestriction:Keyword:",
-                    "keyword": "Shape"
-                }
-            ]
-        }
-    },
-    {
-        "$type": "Core.TriggerRestriction:CompareNumbers:",
-        "firstNumber": {
-            "$type": "Numbers:Operation:",
-            "numbers": [
-                {
-                    "$type": "Numbers:TriggerX:",
-                    "multiplier": 0,
-                    "modifier": 1
-                },
-                {
-                    "$type": "Numbers:Distance:",
-                    "firstSpace": { "$type": "Cards:ThisCard:" },
-                    "secondSpace": { "$type": "Cards:CardBefore:" },
-                    "throughRestriction": {
-                        "$type": "Core.SpaceRestriction:AllOf:",
-                        "elements": [
-                            {
-                                "$type": "Core.SpaceRestriction:CardFitsRestriction:",
-                                "restriction": {
-                                    "elements": [
-                                        {
-                                            "$type": "Core.CardRestriction:Subtypes:",
-                                            "subtypes": [ "Ethereal" ]
-                                        }
-                                    ]
-                                }
-                            }
-                        ]
-                    }
-                },
-                {
-                    "$type": "Numbers:Distance:",
-                    "firstSpace": { "$type": "Cards:ThisCard:" },
-                    "secondSpace": { "$type": "Cards:CardAfter:" },
-                    "throughRestriction": {
-                        "$type": "Core.SpaceRestriction:AllOf:",
-                        "elements": [
-                            {
-                                "$type": "Core.SpaceRestriction:CardFitsRestriction:",
-                                "restriction": {
-                                    "elements": [
-                                        {
-                                            "$type": "Core.CardRestriction:Subtypes:",
-                                            "subtypes": [ "Ethereal" ]
-                                        }
-                                    ]
-                                }
-                            }
-                        ]
-                    }
-                }
-            ],
-            "operation": { "$type": "NumberOperations:Sum:" }
-        },
-        "secondNumber": {
-            "$type": "Numbers:Distance:",
-            "firstSpace": { "$type": "Cards:CardBefore:" },
-            "secondSpace": { "$type": "Cards:CardAfter:" },
-            "throughRestriction": {
-                "$type": "Core.SpaceRestriction:AllOf:",
-                "elements": [
-                    {
-                        "$type": "Core.SpaceRestriction:CardFitsRestriction:",
-                        "restriction": {
-                            "elements": [
-                                {
-                                    "$type": "Core.CardRestriction:Subtypes:",
-                                    "subtypes": [ "Ethereal" ]
-                                }
-                            ]
-                        }
-                    }
-                ]
-            }
-        },
-        "comparison": { "$type": "Relationships.Number:Equal:" }
-    }
+	{
+		"$type": "Core.TriggerRestriction:StackableFitsRestriction:",
+		"stackable": { "$type": "Stackables:StackableCause:" },
+		"restriction": {
+			"stackableRestrictionElements": [
+				{
+					"$type": "Core.EffectRestriction:Keyword:",
+					"keyword": "Shape"
+				}
+			]
+		}
+	},
+	{
+		"$type": "Core.TriggerRestriction:CompareNumbers:",
+		"firstNumber": {
+			"$type": "Numbers:Operation:",
+			"numbers": [
+				{
+					"$type": "Numbers:TriggerX:",
+					"multiplier": 0,
+					"modifier": 1
+				},
+				{
+					"$type": "Numbers:Distance:",
+					"firstSpace": { "$type": "Cards:ThisCard:" },
+					"secondSpace": { "$type": "Cards:CardBefore:" },
+					"throughRestriction": {
+						"$type": "Core.SpaceRestriction:AllOf:",
+						"elements": [
+							{
+								"$type": "Core.SpaceRestriction:CardFitsRestriction:",
+								"restriction": {
+									"elements": [
+										{
+											"$type": "Core.CardRestriction:Subtypes:",
+											"subtypes": [ "Ethereal" ]
+										}
+									]
+								}
+							}
+						]
+					}
+				},
+				{
+					"$type": "Numbers:Distance:",
+					"firstSpace": { "$type": "Cards:ThisCard:" },
+					"secondSpace": { "$type": "Cards:CardAfter:" },
+					"throughRestriction": {
+						"$type": "Core.SpaceRestriction:AllOf:",
+						"elements": [
+							{
+								"$type": "Core.SpaceRestriction:CardFitsRestriction:",
+								"restriction": {
+									"elements": [
+										{
+											"$type": "Core.CardRestriction:Subtypes:",
+											"subtypes": [ "Ethereal" ]
+										}
+									]
+								}
+							}
+						]
+					}
+				}
+			],
+			"operation": { "$type": "NumberOperations:Sum:" }
+		},
+		"secondNumber": {
+			"$type": "Numbers:Distance:",
+			"firstSpace": { "$type": "Cards:CardBefore:" },
+			"secondSpace": { "$type": "Cards:CardAfter:" },
+			"throughRestriction": {
+				"$type": "Core.SpaceRestriction:AllOf:",
+				"elements": [
+					{
+						"$type": "Core.SpaceRestriction:CardFitsRestriction:",
+						"restriction": {
+							"elements": [
+								{
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Ethereal" ]
+								}
+							]
+						}
+					}
+				]
+			}
+		},
+		"comparison": { "$type": "Relationships.Number:Equal:" }
+	}
 ]
