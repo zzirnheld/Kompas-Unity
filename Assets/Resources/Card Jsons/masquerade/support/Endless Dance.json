@@ -8,25 +8,30 @@
 			"triggerData": {
 				"triggerCondition": "Discard",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Max Per Turn",
-						"Main Card Fits Restriction Before"
-					],
-					"cardRestriction": {
-						"elements": [
-                            { "$type": "Core.CardRestriction:Character:" },
-							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							},
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Dancer" ]
-							}
-						]
-					}
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{ "$type": "Core.TriggerRestriction:MaxPerTurn:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CardBefore:" },
+                            
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+									{ "$type": "Core.CardRestriction:Character:" },
+									{ "$type": "Core.CardRestriction:Friendly:" },
+									{
+										"$type": "Core.CardRestriction:Location:",
+										"locations": [ "Board" ]
+									},
+									{
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Dancer" ]
+									}
+								]
+                            }
+                        }
+					]
 				}
 			},
 			"subeffects": [
@@ -41,6 +46,7 @@
 					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
 						"blurb": "Next Dancer for the Dance",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{ "$type": "Core.CardRestriction:Character:" },

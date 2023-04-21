@@ -8,25 +8,27 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCard:" }
+						}
 					]
 				}
 			},
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "to Fanatically Follow",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "to Fanatically Follow",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.SpaceRestriction:AdjacentTo:",
-								"space": {
-									"$type": "Spaces:PositionOf:",
-									"ofThisCard": { "$type": "Cards:ThisCard:" }
-								}
+								"space": { "$type": "Cards:ThisCard:" }
 							}
 						]
 					}
@@ -38,8 +40,12 @@
 					],
 					"endCondition": "Move",
 					"triggerRestriction": {
-						"triggerRestrictions": [
-							"Main Card is a Secondary Context Card Target"
+						"elements": [
+							{
+								"$type": "Core.TriggerRestriction:StackablesMatch:",
+								"firstStackable": { "$type": "Stackables:StackableEvent:", "secondaryContext": true },
+								"secondStackable": { "$type": "Stackables:StackableEvent:" }
+							}
 						]
 					},
 					"clearWhenResume": false,
@@ -47,8 +53,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "to move Fanatic Follower to",
 					"spaceRestriction": {
-						"blurb": "to move Fanatic Follower to",
+						"$type": "Core.SpaceRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.SpaceRestriction:Empty:" },
 							{
@@ -57,10 +64,7 @@
 							},
 							{
 								"$type": "Core.SpaceRestriction:AdjacentTo:",
-								"space": {
-                                    "$type": "Spaces:PositionOf:",
-                                    "ofThisCard": { "$type": "Cards:TargetIndex:" }
-                                }
+								"space": { "$type": "Cards:TargetIndex:" }
 							}
 						]
 					}

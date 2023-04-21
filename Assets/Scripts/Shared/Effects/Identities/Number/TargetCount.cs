@@ -6,7 +6,7 @@ namespace KompasCore.Effects.Identities.Numbers
 
     public class TargetCount : ContextualParentIdentityBase<int>
     {
-        public CardRestriction cardRestriction;
+        public IRestriction<GameCardBase> cardRestriction;
 
         public override void Initialize(EffectInitializationContext initializationContext)
         {

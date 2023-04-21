@@ -7,9 +7,9 @@
             "blurb": "Designate construction",
 			"triggerData": {
 				"triggerCondition": "Turn Start",
-				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play"
+				"triggerRestriction":{
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" }
 					]
 				}
 			},
@@ -19,8 +19,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "Space for your enemy to play a Structure to",
 					"spaceRestriction": {
-						"blurb": "Space for your enemy to play a Structure to",
+						"$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
 							{ "$type": "Core.SpaceRestriction:Edge:" }
@@ -29,9 +30,10 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Designated build site",
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"blurb": "Designated build site",
-						"toSearch": { "$type": "ManyCards:Deck:" },
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
 							{

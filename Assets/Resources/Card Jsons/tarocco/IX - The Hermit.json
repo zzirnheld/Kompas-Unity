@@ -8,19 +8,24 @@
 			"triggerData": {
 				"triggerCondition": "Draw",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Controller Triggered",
-						"Max Per Turn"
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{ "$type": "Core.TriggerRestriction:MaxPerTurn:" },
+                        {
+                            "$type": "Core.TriggerRestriction:PlayersMatch:",
+                            "firstPlayer": { "$type": "Players:TriggeringPlayer:" },
+                            "secondPlayer": { "$type": "Players:FriendlyPlayer:" }
+                        }
 					]
 				}
 			},
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "for Hermit to move",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "for Hermit to move",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Enemy:" },
@@ -33,8 +38,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where Hermit to move its target",
 					"spaceRestriction": {
-						"blurb": "where Hermit to move its target",
+						"$type": "Core.SpaceRestriction:AllOf:",
 						"elements": [
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
@@ -42,10 +48,7 @@
 							},
 							{
 								"$type": "Core.SpaceRestriction:CompareDistance:",
-								"distanceTo": {
-									"$type": "Spaces:PositionOf:",
-									"ofThisCard": { "$type": "Cards:TargetIndex:" }
-								},
+								"distanceTo": { "$type": "Cards:TargetIndex:" },
 								"number": { "$type": "Numbers:EffectX:" }
 							}
 						]

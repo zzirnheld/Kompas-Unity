@@ -8,28 +8,34 @@
 				"blurb": "Goal Kick",
 				"triggerCondition": "Augmented",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Main Card Fits Restriction Before",
-						"Controller Triggered"
-					],
-					"cardRestriction": {
-						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							},
-							{ "$type": "Core.CardRestriction:Avatar:" },
-							{
-								"$type": "Core.SpaceRestriction:AdjacentTo:",
-								"space": {
-									"$type": "Spaces:PositionOf:",
-									"ofThisCard": { "$type": "Cards:ThisCard:" }
-								}
-							}
-						]
-					}
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        {
+                            "$type": "Core.TriggerRestriction:PlayersMatch:",
+                            "firstPlayer": { "$type": "Players:TriggeringPlayer:" },
+                            "secondPlayer": { "$type": "Players:FriendlyPlayer:" }
+                        },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CardBefore:" },
+                            
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+									{ "$type": "Core.CardRestriction:Friendly:" },
+									{
+										"$type": "Core.CardRestriction:Location:",
+										"locations": [ "Board" ]
+									},
+									{ "$type": "Core.CardRestriction:Avatar:" },
+									{
+										"$type": "Core.SpaceRestriction:AdjacentTo:",
+										"space": { "$type": "Cards:ThisCard:" }
+									}
+								]
+                            }
+                        }
+					]
 				}
 			},
 			"subeffects": [
@@ -41,14 +47,12 @@
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "character to goal-kick Augment to",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.SpaceRestriction:AdjacentTo:",
-								"space": {
-									"$type": "Spaces:PositionOf:",
-									"ofThisCard": { "$type": "Cards:ThisCard:" }
-								}
+								"space": { "$type": "Cards:ThisCard:" }
 							},
 							{
 								"$type": "Core.CardRestriction:Not:",

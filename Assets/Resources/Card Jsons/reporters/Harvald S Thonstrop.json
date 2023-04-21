@@ -8,16 +8,15 @@
 			"triggerData": {
 				"triggerCondition": "Revealed",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Max Per Round",
-						"Main Card Fits Restriction Before"
-					],
-					"cardRestriction": {
-						"elements": [
-							{ "$type": "Core.CardRestriction:Enemy:" }
-						]
-					}
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{ "$type": "Core.TriggerRestriction:MaxPerRound:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CardBefore:" },
+                            "cardRestriction": { "$type": "Core.CardRestriction:Enemy:" }
+                        }
+					]
 				}
 			},
 			"subeffects": [
@@ -38,17 +37,21 @@
 				{
 					"$type": "Subeffect:ConditionalJump:",
 					"condition": "Target Violates Restriction",
-					"cardRestriction": {
-						"elements": [
-                            { "$type": "Core.CardRestriction:Character:" }, {
-							"$type": "Core.CardRestriction:CardValueFits:",
-							"cardValue": { "value": "S" },
-							"numberRestriction": { "elements": [ {
-								"$type": "Core.NumberRestriction:Compare:",
-								"comparison": { "$type": "Relationships.Number:LessThan:" },
-								"other": { "$type": "Numbers:EffectX:" }
-							} ] }
-						} ]
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+                            { "$type": "Core.CardRestriction:Character:" },
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": { "value": "S" },
+								"numberRestriction": {
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:LessThan:" },
+									"other": { "$type": "Numbers:EffectX:" }
+								}
+							}
+						]
 					},
 					"jumpIndices": [
 						2
@@ -57,8 +60,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where to Invoke",
 					"spaceRestriction": {
-						"blurb": "where to Invoke",
+						"$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {

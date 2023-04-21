@@ -8,13 +8,21 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"Augmented Card is Main Card",
-						"Stackable Source Fits Restriction Now"
-					],
-					"sourceRestriction": {
-						"elements": [ { "$type": "Core.CardRestriction:DistinctName:" } ]
-					}
+					"elements": [
+                        {
+                            "$type": "Core.TriggerRestriction:CardsMatch:",
+                            "card": { "$type": "Cards:CardBefore:" },
+                            "other": {
+                                "$type": "Cards:AugmentedCard:",
+                                "ofThisCard": { "$type": "Cards:ThisCard:" }
+                            }
+                        },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CauseBefore:" },
+                            "cardRestriction": { "$type": "Core.CardRestriction:DistinctName:" }
+						}
+					]
 				}
 			},
 			"subeffects": [

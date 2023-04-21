@@ -1,4 +1,5 @@
 using KompasCore.Cards;
+using KompasCore.Effects;
 using KompasCore.Effects.Restrictions;
 using KompasCore.GameCore;
 using KompasServer.Effects;
@@ -31,16 +32,16 @@ namespace KompasServer.Cards
             return JsonConvert.DeserializeObject<ServerSubeffect[]>(partialKeywordJsons[keyword], cardLoadingSettings);
         }
         
-        public static TriggerRestrictionElement[] InstantiateTriggerKeyword(string keyword)
+        public static IRestriction<TriggeringEventContext>[] InstantiateTriggerKeyword(string keyword)
         {
             if (!triggerKeywordJsons.ContainsKey(keyword))
             {
                 Debug.LogError($"No trigger keyword json found for {keyword}");
-                return new TriggerRestrictionElement[0];
+                return new IRestriction<TriggeringEventContext>[0];
             }
             try
             {
-                return JsonConvert.DeserializeObject<TriggerRestrictionElement[]>(triggerKeywordJsons[keyword], cardLoadingSettings);
+                return JsonConvert.DeserializeObject<IRestriction<TriggeringEventContext>[]>(triggerKeywordJsons[keyword], cardLoadingSettings);
             }
             catch (JsonReaderException)
             {

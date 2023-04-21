@@ -7,9 +7,16 @@
 			"triggerData": {
 				"triggerCondition": "Battle Start",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"Augmented Card is Main Card",
-						"Max Per Round"
+					"elements": [
+                        {
+                            "$type": "Core.TriggerRestriction:CardsMatch:",
+                            "card": { "$type": "Cards:CardBefore:" },
+                            "other": {
+                                "$type": "Cards:AugmentedCard:",
+                                "ofThisCard": { "$type": "Cards:ThisCard:" }
+                            }
+                        },
+						{ "$type": "Core.TriggerRestriction:MaxPerRound:" }
 					]
 				}
 			},

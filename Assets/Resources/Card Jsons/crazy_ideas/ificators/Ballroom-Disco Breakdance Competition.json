@@ -9,18 +9,13 @@
 				"blurb": "LET'S BREAKDANCE",
 				"triggerCondition": "Arrive",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"Space Fits Restriction",
-						"This Card in Play"
-					],
-					"spaceRestriction": {
-						"elements": [
-							{
-								"$type": "Core.SpaceRestriction:InAOEOf:",
-								"card": { "$type": "Cards:ThisCard:" }
-							}
-						]
-					}
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.SpaceRestriction:InAOEOf:",
+							"card": { "$type": "Cards:ThisCard:" }
+						}
+					]
 				}
 			},
 			"subeffects": [
@@ -39,8 +34,12 @@
 					"nMultiplier": -1,
 					"endCondition": "Effect Pushed to Stack",
 					"triggerRestriction": {
-						"triggerRestrictions": [
-							"Stackable is This Effect"
+						"elements": [
+							{
+								"$type": "Core.TriggerRestriction:StackablesMatch:",
+								"firstStackable": { "$type": "Stackables:StackableEvent:" },
+								"secondStackable": { "$type": "Stackables:ThisEffect:" }
+							}
 						]
 					}
 				}

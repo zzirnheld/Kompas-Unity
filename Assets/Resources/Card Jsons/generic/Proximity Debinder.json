@@ -8,17 +8,28 @@
 			"triggerData": {
 				"triggerCondition": "Discard",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card",
-						"From Field",
-                        "From Attack"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCard:" }
+						},
+						{ "$type": "Core.TriggerRestriction:IsAttack:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CardBefore:" },
+                            "cardRestriction": {
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							}
+                        }
 					]
 				}
 			},
             "subeffects":[
 				{
 					"$type":"Subeffect:TargetTriggeringCard:",
-					"secondary":true
+					"contextSecondaryCard":true
 				},
 				{
 					"$type": "Subeffect:Hand:"

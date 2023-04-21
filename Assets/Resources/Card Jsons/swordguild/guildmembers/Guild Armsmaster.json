@@ -1,38 +1,33 @@
 {
 	"cardType": 67,
 	"cardName": "Guild Armsmaster",
-	"effText": "Warrior Trainer: +1 W.",
+	"effText": "Warrior Trainer: +2 W.",
 	"effects": [
 		{
 			"blurb": "Train W",
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Controller Triggered",
-						"Main Card Fits Restriction Before",
-						"Space Fits Restriction"
-					],
-					"spaceRestriction": {
-						"elements": [
-							{
-								"$type": "Core.SpaceRestriction:AdjacentTo:",
-								"space": {
-									"$type": "Spaces:PositionOf:",
-									"ofThisCard": { "$type": "Cards:ThisCard:" }
-								}
-							}
-						]
-					},
-					"cardRestriction": {
-						"elements": [
-							{
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        {
+                            "$type": "Core.TriggerRestriction:PlayersMatch:",
+                            "firstPlayer": { "$type": "Players:TriggeringPlayer:" },
+                            "secondPlayer": { "$type": "Players:FriendlyPlayer:" }
+                        },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CardBefore:" },
+                            "cardRestriction": {
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Warrior" ]
 							}
-						]
-					}
+                        },
+						{
+							"$type": "Core.SpaceRestriction:AdjacentTo:",
+							"space": { "$type": "Cards:ThisCard:" }
+						}
+					]
 				}
 			},
 			"subeffects": [
@@ -41,14 +36,14 @@
 				},
 				{
 					"$type": "Subeffect:ChangeCardStats:",
-					"wModifier": 1
+					"wModifier": 2
 				}
 			]
 		}
 	],
-	"n": 1,
-	"e": 1,
-	"s": 2,
+	"n": 3,
+	"e": 3,
+	"s": 3,
 	"w": 3,
 	"subtypeText": "Swordguild Warrior Trainer"
 }

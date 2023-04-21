@@ -7,12 +7,23 @@
 			"triggerData": {
 				"triggerCondition": "N Change",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"X Fits Restriction",
-						"This Card is Main Card"
-					],
-					"xRestriction": { "numberRestrictions": [ ">0" ] }
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardsMatch:",
+                            "card": { "$type": "Cards:ThisCard:" },
+                            "other": { "$type": "Cards:CardBefore:" }
+                        },
+						{
+							"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
+							"number": { "$type": "Numbers:TriggerX:" },
+							"restriction": {
+								"$type": "Core.NumberRestriction:Compare:",
+								"comparison": { "$type": "Relationships.Number:GreaterThan:" },
+								"other": { "$type": "Numbers:Constant:", "constant": 0 }
+							}
+						}
+                    ]
 				}
 			},
 			"subeffects": [
@@ -27,12 +38,23 @@
 			"triggerData": {
 				"triggerCondition": "E Change",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"X Fits Restriction",
-						"This Card is Main Card"
-					],
-					"xRestriction": { "numberRestrictions": [ ">0" ] }
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardsMatch:",
+                            "card": { "$type": "Cards:ThisCard:" },
+                            "other": { "$type": "Cards:CardBefore:" }
+                        },
+						{
+							"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
+							"number": { "$type": "Numbers:TriggerX:" },
+							"restriction": {
+								"$type": "Core.NumberRestriction:Compare:",
+								"comparison": { "$type": "Relationships.Number:GreaterThan:" },
+								"other": { "$type": "Numbers:Constant:", "constant": 0 }
+							}
+						}
+                    ]
 				}
 			},
 			"subeffects": [
@@ -47,12 +69,23 @@
 			"triggerData": {
 				"triggerCondition": "W Change",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"X Fits Restriction",
-						"This Card is Main Card"
-					],
-					"xRestriction": { "numberRestrictions": [ ">0" ] }
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardsMatch:",
+                            "card": { "$type": "Cards:ThisCard:" },
+                            "other": { "$type": "Cards:CardBefore:" }
+                        },
+						{
+							"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
+							"number": { "$type": "Numbers:TriggerX:" },
+							"restriction": {
+								"$type": "Core.NumberRestriction:Compare:",
+								"comparison": { "$type": "Relationships.Number:GreaterThan:" },
+								"other": { "$type": "Numbers:Constant:", "constant": 0 }
+							}
+						}
+                    ]
 				}
 			},
 			"subeffects": [
@@ -67,7 +100,6 @@
 			"blurb": "Training Complete",
 			"activationRestriction": {
 				"activationRestrictionArray": [
-					"Friendly Turn",
 					"Default"
 				]
 			},
@@ -90,9 +122,10 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
 						"blurb": "Guild Title",
-						"toSearch": { "$type": "ManyCards:Deck:" },
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
 							{
@@ -103,11 +136,11 @@
 							{
 								"$type": "Core.CardRestriction:CardValueFits:",
 								"cardValue": { "value": "S" },
-								"numberRestriction": { "elements": [{
+								"numberRestriction": {
 									"$type": "Core.NumberRestriction:Compare:",
 									"comparison": { "$type": "Relationships.Number:LessThan:" },
 									"other": { "$type": "Numbers:EffectX:" }
-								}]}
+								}
 							}
 						]
 					},

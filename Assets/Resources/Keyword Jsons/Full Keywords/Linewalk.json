@@ -2,21 +2,14 @@
 	"blurb":"Linewalk",
 	"activationRestriction":{
 		"activationRestrictionArray":[
-			"Friendly Turn",
 			"This Card Fits Restriction",
 			"Default"
 		],
 		"thisCardRestriction":
 		{
-			"elements": [
-				{
-					"$type": "Core.CardRestriction:CardValueFits:",
-					"cardValue": { "value": "Spaces Can Move" },
-					"numberRestriction": { "elements": [
-						{ "$type": "Core.NumberRestriction:Positive:" }
-					]}
-				}
-			]
+			"$type": "Core.CardRestriction:CardValueFits:",
+			"cardValue": { "value": "Spaces Can Move" },
+			"numberRestriction": { "$type": "Core.NumberRestriction:Positive:" }
 		}
 	},
 	"subeffects":[
@@ -25,9 +18,10 @@
 		},
 		{
 			"$type":"Subeffect:SpaceTarget:",
+			"blurb":"to Linewalk to",
 			"spaceRestriction":
 			{
-				"blurb":"to Linewalk to",
+				"$type": "Core.SpaceRestriction:AllOf:",
 				"elements": [
 					{
 						"$type": "Core.SpaceRestriction:CanMoveCard:",
@@ -35,26 +29,18 @@
 					},
 					{
 						"$type": "Core.SpaceRestriction:SameDiagonal:",
-						"other": {
-							"$type": "Spaces:PositionOf:",
-							"card": { "$type": "Cards:TargetIndex:" }
-						}
+						"other": { "$type": "Cards:TargetIndex:" }
 					},
 					{
 						"$type": "Core.SpaceRestriction:ConnectedTo:",
-						"space": {
-							"$type": "Spaces:PositionOf:",
-							"ofThisCard": { "$type": "Cards:TargetIndex:" }
-						},
+						"space": { "$type": "Cards:TargetIndex:" },
 						"byRestriction": {
+							"$type": "Core.SpaceRestriction:AllOf:",
 							"elements": [
 								{ "$type": "Core.SpaceRestriction:Empty:" },
 								{
 									"$type": "Core.SpaceRestriction:SameDiagonal:",
-									"other": {
-										"$type": "Spaces:PositionOf:",
-										"card": { "$type": "Cards:TargetIndex:" }
-									}
+									"other": { "$type": "Cards:TargetIndex:" }
 								}
 							]
 						}

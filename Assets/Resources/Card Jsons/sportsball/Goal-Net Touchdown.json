@@ -8,25 +8,24 @@
 				"blurb": "Touchdown!",
 				"triggerCondition": "Arrive",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Space Fits Restriction",
-						"Main Card Fits Restriction Before"
-					],
-					"cardRestriction": {
-						"elements": [ { "$type": "Core.CardRestriction:Character:" } ]
-					},
-					"spaceRestriction": {
-						"elements": [
-							{
-								"$type": "Core.SpaceRestriction:AdjacentTo:",
-								"cardRestriction": { "elements": [
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.SpaceRestriction:AdjacentTo:",
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:AllOf:",
+								"elements": [
 									{ "$type": "Core.CardRestriction:Enemy:" },
 									{ "$type": "Core.CardRestriction:Avatar:" }
-								] }
+								]
 							}
-						]
-					}
+						},
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CardBefore:" },
+                            "cardRestriction": { "$type": "Core.CardRestriction:Character:" }
+                        }
+					]
 				}
 			},
 			"subeffects": [
@@ -36,8 +35,10 @@
 				{
 					"$type": "Subeffect:ConditionalEnd:",
 					"condition": "Target Violates Restriction",
-					"cardRestriction": {
-						"elements": [ {
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [ {
 							"$type": "Core.CardRestriction:HasAugment:",
 							"elements": [ ]
 						} ]
@@ -46,15 +47,13 @@
 				{
 					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Enemy:" },
 							{ "$type": "Core.CardRestriction:Avatar:" },
 							{
 								"$type": "Core.SpaceRestriction:AdjacentTo:",
-								"space": {
-                                    "$type": "Spaces:PositionOf:",
-                                    "ofThisCard": { "$type": "Cards:TargetIndex:" }
-                                }
+								"space": { "$type": "Cards:TargetIndex:" }
 							}
 						]
 					}

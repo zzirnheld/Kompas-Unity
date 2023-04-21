@@ -7,8 +7,12 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCard:" }
+						}
 					]
 				}
 			},
@@ -18,14 +22,12 @@
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "for Grandparent to support (i.e. with cookies)",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.SpaceRestriction:AdjacentTo:",
-								"space": {
-									"$type": "Spaces:PositionOf:",
-									"ofThisCard": { "$type": "Cards:ThisCard:" }
-								}
+								"space": { "$type": "Cards:ThisCard:" }
 							}
 						]
 					}
@@ -37,8 +39,12 @@
 					],
 					"endCondition": "Move",
 					"triggerRestriction": {
-						"triggerRestrictions": [
-							"Main Card is a Secondary Context Card Target"
+						"elements": [
+							{
+								"$type": "Core.TriggerRestriction:CardsMatch:",
+								"card": { "$type": "Cards:CardBefore:" },
+								"other": { "$type": "Cards:TargetIndex:", "secondaryContext": true }
+							}
 						]
 					},
 					"clearWhenResume": false

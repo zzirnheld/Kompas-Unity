@@ -5,4 +5,9 @@ namespace KompasCore.Effects.Identities.Stackables
         protected override IStackable AbstractItemFrom(TriggeringEventContext contextToConsider)
             => contextToConsider.stackableCause;
     }
+    public class StackableEvent : TriggerContextualLeafIdentityBase<IStackable>
+    {
+        protected override IStackable AbstractItemFrom(TriggeringEventContext contextToConsider)
+            => contextToConsider.stackableEvent;
+    }
 }

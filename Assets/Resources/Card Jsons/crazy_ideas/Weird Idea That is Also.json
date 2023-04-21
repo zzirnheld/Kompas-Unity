@@ -7,7 +7,6 @@
 			"activationRestriction": {
 				"activationRestrictionArray": [
 					"Max Times Per Turn",
-					"Friendly Turn",
 					"Default"
 				]
 			},
@@ -21,9 +20,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "card in hand that is also discard",
 					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
-						"blurb": "card in hand that is also discard"
 					}
 				},
 				{
@@ -31,11 +30,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "character that is also +1 W",
 					"toSearch": { "$type": "ManyCards:Board:" },
-					"cardRestriction": {
-						"blurb": "character that is also +1 W",
-						"elements": [ { "$type": "Core.CardRestriction:Character:" } ]
-					}
+					"cardRestriction": { "$type": "Core.CardRestriction:Character:" }
 				},
 				{
 					"$type": "Subeffect:ChangeCardStats:",

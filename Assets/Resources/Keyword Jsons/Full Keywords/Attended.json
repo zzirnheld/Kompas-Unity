@@ -4,34 +4,50 @@
 	{
 		"triggerCondition":"Stack End",
 		"triggerRestriction":{
-			"triggerRestrictions":["This Card Fits Restriction Now","Number of Cards Fitting Restriction Fits X Restriction"],
-			"selfRestriction":{
-				"elements": [
-					{
-						"$type": "Core.CardRestriction:Location:",
-						"locations": [ "Board" ]
-					},
-					{
-						"$type": "Core.CardRestriction:Not:",
-						"negated": { "$type": "Core.CardRestriction:Avatar:" }
+			"elements": [
+				{
+					"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+					"card": { "$type": "Cards:CardBefore:" },
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Not:",
+								"negated": { "$type": "Core.CardRestriction:Avatar:" }
+							}
+						]
 					}
-				]
-			},
-            "cardsFittingCardRestriction":{
-				"elements": [
-					{ "$type": "Core.CardRestriction:Friendly:" },
-					{
-						"$type": "Core.SpaceRestriction:AdjacentTo:",
-						"space": {
-							"$type": "Spaces:PositionOf:",
-							"ofThisCard": { "$type": "Cards:ThisCard:" }
-						}
+				},
+				{
+					"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
+					"number": {
+                        "$type": "Numbers:CountCards:",
+                        "cards": {
+                            "$type": "ManyCards:FittingRestriction:",
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:AllOf:",
+								"elements": [
+									{ "$type": "Core.CardRestriction:Friendly:" },
+									{
+										"$type": "Core.SpaceRestriction:AdjacentTo:",
+										"space": { "$type": "Cards:ThisCard:" }
+									}
+								]
+                            }
+                        }
+                    },
+					"restriction": {
+						"$type": "KompasCore.Effects.NumberRestriction, Assembly-CSharp",
+						"numberRestrictions": [ "<Arg" ],
+						"constant":3
 					}
-				]
-            },
-            "cardsFittingXRestriction":{
-                "numberRestrictions":["<Arg"]
-            }
+				}
+			]
 		}
 	},
 	"subeffects":[

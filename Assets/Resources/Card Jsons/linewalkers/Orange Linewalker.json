@@ -8,8 +8,14 @@
 			"triggerData":
 			{
 				"triggerCondition":"Move",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card is Main Card"]
+				"triggerRestriction": {
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCard:" }
+						}
+					]
 				}
 			},
 			"subeffects":[
@@ -18,6 +24,7 @@
 					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
 						"blurb": "linewalker to reshuffle",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:DistinctName:" },
 							{

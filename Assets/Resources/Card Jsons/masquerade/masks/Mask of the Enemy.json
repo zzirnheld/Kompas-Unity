@@ -9,12 +9,12 @@
             {
                 "triggerCondition": "Defend",
                 "triggerRestriction": {
-                    "triggerRestrictionElements": [
+                    "elements": [
                         { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
                         {
                             "$type": "Core.TriggerRestriction:CardsMatch:",
-                            "firstCard": { "$type": "Cards:CardBefore:" },
-                            "secondCard": {
+                            "card": { "$type": "Cards:CardBefore:" },
+                            "other": {
                                 "$type": "Cards:AugmentedCard:",
                                 "ofThisCard": { "$type": "Cards:ThisCard:" }
                             }
@@ -22,8 +22,10 @@
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
                             "card": { "$type": "Cards:CardBefore:" },
-                            "cardRestriction": {
-                                "elements": [ { "$type": "Core.CardRestriction:Summoned:" } ]
+                            
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [ { "$type": "Core.CardRestriction:Summoned:" } ]
                             }
                         }
                     ]
@@ -32,7 +34,7 @@
             "subeffects":[
 				{
 					"$type":"Subeffect:TargetTriggeringCard:",
-                    "secondary": true
+                    "contextSecondaryCard": true
 				},
 				{
 					"$type": "Subeffect:TargetTargetsController:"
@@ -64,20 +66,14 @@
 			"On Card that Fits Restriction"
 		],
 		"onCardRestriction": {
-			"elements": [ {
-				"$type": "Core.CardRestriction:Not:",
-				"negated": {
-					"$type": "Core.CardRestriction:HasAugment:",
-					"cardRestriction": {
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Name:",
-								"sameAs": { "$type": "Cards:ThisCard:" }
-							}
-						]
-					}
+			"$type": "Core.CardRestriction:Not:",
+			"negated": {
+				"$type": "Core.CardRestriction:HasAugment:",
+				"cardRestriction": {
+					"$type": "Core.CardRestriction:Name:",
+					"sameAs": { "$type": "Cards:ThisCard:" }
 				}
-			} ]
+			}
 		}
 	},
 	"a": 3,

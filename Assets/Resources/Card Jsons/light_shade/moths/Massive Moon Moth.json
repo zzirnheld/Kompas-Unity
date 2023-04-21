@@ -1,47 +1,51 @@
 {
 	"cardType": 67,
 	"cardName": "Massive Moon Moth",
-	"effText": "Stealth.\nWhen a Moth attacks a character in Light, swap the W of two characters within 2 spaces of each other.",
+	"effText": "Stealth.\nWhen a friendly Moth attacks a character in Light, swap the W of two characters within 2 spaces of each other.",
 	"effects": [
 		{
 			"blurb": "this is my friend the moon moth",
 			"triggerData": {
 				"triggerCondition": "Attack",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Main Card Fits Restriction Before",
-                        "Secondary Card Fits Restriction Before"
-					],
-					"cardRestriction": {
-						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							},
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Moth" ]
-							}
-						]
-					},
-                    "secondaryCardRestriction": { "elements": [
-						{
-							"$type": "Core.SpaceRestriction:InAOEOf:",
-							"anyOf": {
-								"$type": "ManyCards:FittingRestriction:",
-								"cardRestriction": {
-									"elements": [
-										{
-											"$type": "Core.CardRestriction:Subtypes:",
-											"subtypes": [ "Light" ]
-										}
-									]
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CardBefore:" },
+							"elements": [
+								{ "$type": "Core.CardRestriction:Friendly:" },
+								{
+									"$type": "Core.CardRestriction:Location:",
+									"locations": [ "Board" ]
+								},
+								{
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Moth" ]
+								}
+							]
+                        },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CardBefore:", "secondaryCard": true },
+                            "cardRestriction":  {
+								"$type": "Core.SpaceRestriction:InAOEOf:",
+								"anyOf": {
+									"$type": "ManyCards:FittingRestriction:",
+									
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+											{
+												"$type": "Core.CardRestriction:Subtypes:",
+												"subtypes": [ "Light" ]
+											}
+										]
+									}
 								}
 							}
-						}
-					] }
+                        }
+					]
 				}
 			},
 			"subeffects": [
@@ -50,6 +54,7 @@
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "character whose W to swap",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [ { "$type": "Core.CardRestriction:Character:" } ]
 					}
 				},
@@ -58,14 +63,12 @@
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "other character whose W to swap",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
                             {
                                 "$type": "Core.SpaceRestriction:CompareDistance:",
-                                "distanceTo": {
-                                    "$type": "Spaces:PositionOf:",
-                                    "ofThisCard": { "$type": "Cards:TargetIndex:" }
-                                },
+                                "distanceTo": { "$type": "Cards:TargetIndex:" },
                                 "number": { "$type": "Numbers:Constant:", "constant": 2 },
                                 "comparison": { "$type": "Relationships.Number:LessThanEqual:" }
                             },

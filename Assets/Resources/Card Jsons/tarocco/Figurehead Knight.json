@@ -7,18 +7,24 @@
 			"triggerData": {
 				"triggerCondition": "Draw",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Friendly Turn",
-						"Controller Triggered"
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{ "$type": "Core.TriggerRestriction:FriendlyTurn:" },
+                        {
+                            "$type": "Core.TriggerRestriction:PlayersMatch:",
+                            "firstPlayer": { "$type": "Players:TriggeringPlayer:" },
+                            "secondPlayer": { "$type": "Players:FriendlyPlayer:" }
+                        }
 					]
 				}
 			},
 			"subeffects": [
 				{
 					"$type": "Subeffect:ChangeAllCardStats:",
-					"cardRestriction": {
-						"elements": [
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
@@ -31,18 +37,24 @@
 			"triggerData": {
 				"triggerCondition": "Draw",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Enemy Turn",
-						"Controller Triggered"
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        { "$type": "Core.TriggerRestriction:EnemyTurn:" },
+                        {
+                            "$type": "Core.TriggerRestriction:PlayersMatch:",
+                            "firstPlayer": { "$type": "Players:TriggeringPlayer:" },
+                            "secondPlayer": { "$type": "Players:FriendlyPlayer:" }
+                        }
 					]
 				}
 			},
 			"subeffects": [
 				{
 					"$type": "Subeffect:ChangeAllCardStats:",
-					"cardRestriction": {
-						"elements": [
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Friendly:" }
 						]

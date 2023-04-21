@@ -9,8 +9,12 @@
 				"blurb": "Activate Golem",
 				"triggerCondition": "Augment Attached",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCard:" }
+						}
 					]
 				}
 			},
@@ -22,8 +26,12 @@
 					"$type": "Subeffect:Hanging.Activation:",
 					"endCondition": "Augment Detached",
 					"triggerRestriction": {
-						"triggerRestrictions": [
-							"This Card is Main Card"
+						"elements": [
+							{
+								"$type": "Core.TriggerRestriction:CardsMatch:",
+								"card": { "$type": "Cards:CardBefore:" },
+								"other": { "$type": "Cards:ThisCard:" }
+							}
 						]
 					}
 				},
@@ -32,8 +40,12 @@
 					"eModifier": 5,
 					"endCondition": "Augment Detached",
 					"triggerRestriction": {
-						"triggerRestrictions": [
-							"This Card is Main Card"
+						"elements": [
+							{
+								"$type": "Core.TriggerRestriction:CardsMatch:",
+								"card": { "$type": "Cards:CardBefore:" },
+								"other": { "$type": "Cards:ThisCard:" }
+							}
 						]
 					}
 				}

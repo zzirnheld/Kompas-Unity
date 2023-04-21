@@ -8,35 +8,32 @@
 			"triggerData": {
 				"triggerCondition": "Defend",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Main Card Fits Restriction Before"
-					],
-					"cardRestriction": {
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Structure" ]
-							},
-                            {
-								"$type": "Core.SpaceRestriction:SameDiagonal:",
-								"other": {
-									"$type": "Spaces:PositionOf:",
-									"card": { "$type": "Cards:ThisCard:" }
-								}
-                            }
-						]
-					}
-				},
-				"triggerRestrictionElements": [
-					{
-						"$type": "Core.TriggerRestriction:CardFitsRestriction:",
-						"cardRestriction": { "elements": [
-							{ "$type": "Core.SpaceRestriction:Corner:" }
-						] },
-						"card": { "$type": "Cards:ThisCard:" }
-					}
-				]
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"cardRestriction": { "$type": "Core.SpaceRestriction:Corner:" },
+							"card": { "$type": "Cards:ThisCard:" }
+						},
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:AllOf:",
+								"elements": [
+									{
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Structure" ]
+									},
+									{
+										"$type": "Core.SpaceRestriction:SameDiagonal:",
+										"other": { "$type": "Cards:ThisCard:" }
+									}
+								]
+							}
+						}
+					]
+				}
 			},
 			"subeffects": [
 				{

@@ -8,17 +8,22 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCard:" }
+						}
 					]
 				}
 			},
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Character to Linewalk",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "Character to Linewalk",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
@@ -34,8 +39,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "to Linewalk to",
 					"spaceRestriction": {
-						"blurb": "to Linewalk to",
+						"$type": "Core.SpaceRestriction:AllOf:",
 						"elements": [
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
@@ -43,26 +49,18 @@
 							},
 							{
 								"$type": "Core.SpaceRestriction:SameDiagonal:",
-								"other": {
-									"$type": "Spaces:PositionOf:",
-									"card": { "$type": "Cards:TargetIndex:" }
-								}
+								"other": { "$type": "Cards:TargetIndex:" }
 							},
 							{
 								"$type": "Core.SpaceRestriction:ConnectedTo:",
-								"space": {
-                                    "$type": "Spaces:PositionOf:",
-                                    "ofThisCard": { "$type": "Cards:TargetIndex:" }
-                                },
+								"space": { "$type": "Cards:TargetIndex:" },
 								"byRestriction": {
+									"$type": "Core.SpaceRestriction:AllOf:",
 									"elements": [
 										{ "$type": "Core.SpaceRestriction:Empty:" },
 										{
 											"$type": "Core.SpaceRestriction:SameDiagonal:",
-											"other": {
-												"$type": "Spaces:PositionOf:",
-												"card": { "$type": "Cards:TargetIndex:" }
-											}
+											"other": { "$type": "Cards:TargetIndex:" }
 										}
 									]
 								}

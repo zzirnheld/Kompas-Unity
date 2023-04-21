@@ -8,35 +8,47 @@
 			"triggerData": {
 				"triggerCondition": "Augment Attached",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCard:" }
+						}
 					]
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetAugmentedCard:"
 				},
 				{
-					"$type": "KompasServer.Effects.Hanging.NegateSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Hanging.Negate:",
 					"endCondition": "Augment Detached",
 					"triggerRestriction": {
-						"triggerRestrictions": [
-							"This Card is Main Card"
+						"elements": [
+							{
+								"$type": "Core.TriggerRestriction:CardsMatch:",
+								"card": { "$type": "Cards:CardBefore:" },
+								"other": { "$type": "Cards:ThisCard:" }
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Hanging.Delay:",
                     "endCondition": "Vanish",
                     "triggerRestriction": {
-                        "triggerRestrictions": [
-                            "This Card is Main Card"
-                        ]
+						"elements": [
+							{
+								"$type": "Core.TriggerRestriction:CardsMatch:",
+								"card": { "$type": "Cards:CardBefore:" },
+								"other": { "$type": "Cards:ThisCard:" }
+							}
+						]
                     }
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeCardStats:",
 					"eModifier": 10,
 					"sModifier": 10,
 					"wModifier": 10

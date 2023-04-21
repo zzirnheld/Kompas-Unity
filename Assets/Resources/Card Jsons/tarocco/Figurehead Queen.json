@@ -8,9 +8,13 @@
 			"triggerData": {
 				"triggerCondition": "Draw",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Controller Triggered"
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        {
+                            "$type": "Core.TriggerRestriction:PlayersMatch:",
+                            "firstPlayer": { "$type": "Players:TriggeringPlayer:" },
+                            "secondPlayer": { "$type": "Players:FriendlyPlayer:" }
+                        }
 					]
 				}
 			},
@@ -29,8 +33,12 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCard:" }
+						}
 					]
 				}
 			},
@@ -54,6 +62,7 @@
 					"$type": "Subeffect:CardTarget:",
 					"cardRestriction": {
 						"toSearch": { "$type": "ManyCards:Deck:" },
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
 							{
@@ -63,11 +72,11 @@
 							{
 								"$type": "Core.CardRestriction:CardValueFits:",
 								"cardValue": { "value": "Cost" },
-								"numberRestriction": { "elements": [{
+								"numberRestriction": {
 									"$type": "Core.NumberRestriction:Compare:",
 									"comparison": { "$type": "Relationships.Number:LessThanEqual:" },
 									"other": { "$type": "Numbers:EffectX:" }
-								}]}
+								}
 							}
 						]
 					},
@@ -76,7 +85,8 @@
 				{
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
-                        "elements": [
+						"$type": "Core.SpaceRestriction:AllOf:",
+						"elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {
                                 "$type": "Core.SpaceRestriction:CanPlayCard:",

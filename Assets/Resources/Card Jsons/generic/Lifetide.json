@@ -7,9 +7,9 @@
 			"triggerData": {
 				"triggerCondition": "Turn Start",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Enemy Turn"
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        { "$type": "Core.TriggerRestriction:EnemyTurn:" }
 					]
 				}
 			},
@@ -17,8 +17,10 @@
 				{
 					"$type": "Subeffect:ChangeAllCardStats:",
 					"cardsSource": { "$type": "ManyCards:Board:" },
-					"cardRestriction": {
-						"elements": [ { "$type": "Core.CardRestriction:Character:" } ]
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [ { "$type": "Core.CardRestriction:Character:" } ]
 					},
 					"eModifier": 1
 				}
@@ -28,9 +30,9 @@
 			"triggerData": {
 				"triggerCondition": "Turn Start",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Friendly Turn"
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{ "$type": "Core.TriggerRestriction:FriendlyTurn:" }
 					]
 				}
 			},
@@ -38,8 +40,10 @@
 				{
 					"$type": "Subeffect:ChangeAllCardStats:",
 					"cardsSource": { "$type": "ManyCards:Board:" },
-					"cardRestriction": {
-						"elements": [ { "$type": "Core.CardRestriction:Character:" } ]
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [ { "$type": "Core.CardRestriction:Character:" } ]
 					},
 					"eModifier": -1
 				}

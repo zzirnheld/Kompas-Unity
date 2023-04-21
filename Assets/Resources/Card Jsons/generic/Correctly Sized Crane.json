@@ -8,20 +8,23 @@
 			"triggerData": {
 				"triggerCondition": "Discard",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Main Card Fits Restriction Before",
-						"Max Per Turn",
-						"Controller Triggered"
-					],
-					"cardRestriction": {
-						"elements": [
-							{
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{ "$type": "Core.TriggerRestriction:MaxPerTurn:" },
+                        {
+                            "$type": "Core.TriggerRestriction:PlayersMatch:",
+                            "firstPlayer": { "$type": "Players:TriggeringPlayer:" },
+                            "secondPlayer": { "$type": "Players:FriendlyPlayer:" }
+                        },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CardBefore:" },
+                            "cardRestriction": {
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Hand" ]
 							}
-						]
-					}
+                        }
+					]
 				}
 			},
 			"subeffects": [

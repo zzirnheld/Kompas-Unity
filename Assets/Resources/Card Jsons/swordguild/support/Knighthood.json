@@ -8,18 +8,20 @@
 			"triggerData": {
 				"triggerCondition": "Discard",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
                         { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
                             "card": { "$type": "Cards:CardBefore:" },
-                            "cardRestriction": { "elements": [ { "$type": "Core.CardRestriction:Character:" } ] }
+                            "cardRestriction": { "$type": "Core.CardRestriction:Character:" }
                         },
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
                             "card": { "$type": "Cards:CauseAfter:" },
-                            "cardRestriction": {
-                                "elements": [
+                            
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
                                     {
                                         "$type": "Core.CardRestriction:Location:",
                                         "locations": [ "Board" ]
@@ -70,10 +72,11 @@
 				},
 				{
 					"$type":"Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction":
 					{
 						"blurb":"for Squire to become",
-						"toSearch": { "$type": "ManyCards:Deck:" },
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
 							{
@@ -84,11 +87,11 @@
 							{
 								"$type": "Core.CardRestriction:CardValueFits:",
 								"cardValue": { "value": "S" },
-								"numberRestriction": { "elements": [{
+								"numberRestriction": {
 									"$type": "Core.NumberRestriction:Compare:",
 									"comparison": { "$type": "Relationships.Number:LessThanEqual:" },
 									"other": { "$type": "Numbers:EffectX:" }
-								}]}
+								}
 							}
 						]
 					}

@@ -7,8 +7,12 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCard:" }
+						}
 					]
 				}
 			},
@@ -18,6 +22,7 @@
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "character to attract",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [ { "$type": "Core.CardRestriction:Character:" } ]
 					}
 				},
@@ -43,16 +48,17 @@
 							"friendly": false,
 							"enemy": true
 						},
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:CardValueFits:",
 								"cardValue": { "value": "Cost" },
-								"numberRestriction": { "elements": [{
+								"numberRestriction": {
 									"$type": "Core.NumberRestriction:Compare:",
 									"comparison": { "$type": "Relationships.Number:Equal:" },
 									"other": { "$type": "Numbers:EffectX:" }
-								}]}
+								}
 							}
 						]
 					},
@@ -61,8 +67,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where Person to charm out another person",
 					"spaceRestriction": {
-						"blurb": "where Person to charm out another person",
+						"$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {

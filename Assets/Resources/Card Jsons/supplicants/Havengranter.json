@@ -6,9 +6,9 @@
 		{
 			"triggerData": {
 				"triggerCondition": "Turn Start",
-				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play"
+				"triggerRestriction":{
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" }
 					]
 				}
 			},
@@ -19,16 +19,17 @@
                     "cardRestriction":
                     {
 						"blurb": "for Havengranter to hand-summon",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:CardValueFits:",
 								"cardValue": { "value": "S" },
-								"numberRestriction": { "elements": [{
+								"numberRestriction": {
 									"$type": "Core.NumberRestriction:Compare:",
 									"comparison": { "$type": "Relationships.Number:Equal:" },
 									"other": { "$type": "Numbers:Constant:", "constant": 1 }
-								}]}
+								}
 							}
 						]
                     }
@@ -37,13 +38,11 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where Havengranter to hand-summon",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{
 								"$type": "Core.SpaceRestriction:AdjacentTo:",
-								"space": {
-									"$type": "Spaces:PositionOf:",
-									"ofThisCard": { "$type": "Cards:ThisCard:" }
-								}
+								"space": { "$type": "Cards:ThisCard:" }
 							},
                             {
                                 "$type": "Core.SpaceRestriction:CanPlayCard:",

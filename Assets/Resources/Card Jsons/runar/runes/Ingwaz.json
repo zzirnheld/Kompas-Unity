@@ -7,17 +7,22 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCard:" }
+						}
 					]
 				}
 			},
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "for Ingwaz to recast",
 					"toSearch": { "$type": "ManyCards:Discard:" },
 					"cardRestriction": {
-						"blurb": "for Ingwaz to recast",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Spell:" },
 							{ "$type": "Core.CardRestriction:DistinctName:" },
@@ -31,14 +36,14 @@
 									"value": "Cost",
 									"divisor": 2
 								},
-								"numberRestriction": { "elements": [{
+								"numberRestriction": {
 									"$type": "Core.NumberRestriction:Compare:",
 									"comparison": { "$type": "Relationships.Number:LessThanEqual:" },
 									"other": {
 										"$type": "Numbers:Pips:",
 										"player": { "$type": "Players:TargetIndex:" }
 									}
-								}]}
+								}
 							},
                             { "$type": "Core.CardRestriction:CanPlay:" }
 						]
@@ -50,8 +55,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where Ingwaz to recast",
 					"spaceRestriction": {
-						"blurb": "where Ingwaz to recast",
+						"$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {

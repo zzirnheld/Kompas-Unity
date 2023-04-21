@@ -7,8 +7,14 @@
 			"triggerData":
 			{
 				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card is Main Card"]
+				"triggerRestriction": {
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCard:" }
+						}
+					]
 				}
 			},
 			"subeffects":[
@@ -16,6 +22,7 @@
 					"$type":"Subeffect:SetXBoardRestriction:",
 					"cardRestriction":
 					{
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{

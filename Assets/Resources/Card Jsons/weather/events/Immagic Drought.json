@@ -8,9 +8,13 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card",
-						"Enemy Turn"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCard:" }
+						},
+                        { "$type": "Core.TriggerRestriction:EnemyTurn:" }
 					]
 				}
 			},
@@ -18,35 +22,33 @@
 				{
 					"$type": "Subeffect:TargetAll:",
 					"toSearch": { "$type": "ManyCards:Board:" },
-					"cardRestriction": {
-						"elements": [
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Enemy:" },
 							{
 								"$type": "Core.SpaceRestriction:InAOEOf:",
 								"anyOf": {
 									"$type": "ManyCards:FittingRestriction:",
-									"cardRestriction": {
-									"elements": [ {
+									
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [ {
 											"$type": "Core.CardRestriction:Subtypes:",
 											"subtypes": [ "Weather", "Condition" ]
 										} ]
 									}
 								},
-								"sameAs": {
-                                    "$type": "Spaces:PositionOf:",
-                                    "ofThisCard": { "$type": "Cards:ThisCard:" }
-                                }
+								"sameAs": { "$type": "Cards:ThisCard:" }
 							}
 						]
                     }
 				},
 				{
 					"$type": "Subeffect:Hanging.Negate:",
-					"endCondition": "Turn Start",
-					"triggerRestriction": {
-						"triggerRestrictions": []
-					}
+					"endCondition": "Turn Start"
 				},
 				{
 					"$type": "Subeffect:LoopWhileHaveTargets:",
@@ -74,22 +76,18 @@
 			"Adjacent to Friendly Card"
 		],
 		"spaceRestriction": {
-			"elements": [ {
-				"$type": "Core.SpaceRestriction:InAOEOf:",
-				"anyOf": {
-					"$type": "ManyCards:FittingRestriction:",
-					"cardRestriction": {
-					"elements": [ {
-							"$type": "Core.CardRestriction:Subtypes:",
-							"subtypes": [ "Weather" ]
-						} ]
-					}
-				},
-				"minAnyOfCount": { 
-					"$type": "Numbers:Constant:",
-					"constant": 2
+			"$type": "Core.SpaceRestriction:InAOEOf:",
+			"anyOf": {
+				"$type": "ManyCards:FittingRestriction:",
+				"cardRestriction": {
+					"$type": "Core.CardRestriction:Subtypes:",
+					"subtypes": [ "Weather" ]
 				}
-			} ]
+			},
+			"minAnyOfCount": { 
+				"$type": "Numbers:Constant:",
+				"constant": 2
+			}
 		}
 	},
 	"n": 4,

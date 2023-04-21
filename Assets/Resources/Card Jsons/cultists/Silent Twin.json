@@ -7,8 +7,12 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCard:" }
+						}
 					]
 				}
 			},
@@ -17,7 +21,8 @@
 					"$type": "Subeffect:AutoTarget:",
 					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"elements": [
+						"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{ "$type": "Core.CardRestriction:Character:" },
 							{
@@ -30,8 +35,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where to play Silent Twin's new convert",
 					"spaceRestriction": {
-						"blurb": "where to play Silent Twin's new convert",
+						"$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {

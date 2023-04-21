@@ -9,29 +9,40 @@
 				"blurb": "When you [redacted] upon a XVII",
 				"triggerCondition": "Move",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Enemy Triggered",
-						"Main Card Fits Restriction After"
-					],
-					"nowRestriction": {
-						"elements": [
-                            { "$type": "Core.CardRestriction:Character:" },
-							{ "$type": "Core.CardRestriction:Enemy:" },
-							{
-								"$type": "Core.SpaceRestriction:AdjacentTo:",
-								"cardRestriction": {
-									"elements": [
-										{ "$type": "Core.CardRestriction:Summoned:" },
-										{
-											"$type": "Core.CardRestriction:Subtypes:",
-											"subtypes": [ "Tarocco" ]
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        {
+                            "$type": "Core.TriggerRestriction:PlayersMatch:",
+                            "firstPlayer": { "$type": "Players:TriggeringPlayer:" },
+                            "secondPlayer": { "$type": "Players:FriendlyPlayer:" }
+                        },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CardAfter:" },
+                            
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+									{ "$type": "Core.CardRestriction:Character:" },
+									{ "$type": "Core.CardRestriction:Enemy:" },
+									{
+										"$type": "Core.SpaceRestriction:AdjacentTo:",
+										
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+												{ "$type": "Core.CardRestriction:Summoned:" },
+												{
+													"$type": "Core.CardRestriction:Subtypes:",
+													"subtypes": [ "Tarocco" ]
+												}
+											]
 										}
-									]
-								}
-							}
-						]
-					}
+									}
+								]
+                            }
+                        }
+					]
 				}
 			},
 			"subeffects": [
@@ -40,8 +51,10 @@
 				},
 				{
 					"$type": "Subeffect:SetXBoardRestriction:",
-					"cardRestriction": {
-						"elements": [
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 							{
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Board" ]
@@ -52,10 +65,7 @@
 							},
 							{
 								"$type": "Core.SpaceRestriction:AdjacentTo:",
-								"space": {
-                                    "$type": "Spaces:PositionOf:",
-                                    "ofThisCard": { "$type": "Cards:TargetIndex:" }
-                                }
+								"space": { "$type": "Cards:TargetIndex:" }
 							}
 						]
 					},

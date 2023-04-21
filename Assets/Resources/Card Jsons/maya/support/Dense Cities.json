@@ -8,8 +8,12 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCard:" }
+						}
 					]
 				}
 			},
@@ -19,25 +23,21 @@
 				},
 				{
 					"$type":"Subeffect:SetXBoardRestriction:",
-					"cardRestriction": {
-						"elements": [
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Maya", "Structure" ]
 							},
 							{
 								"$type": "Core.SpaceRestriction:AdjacentTo:",
-								"space": {
-									"$type": "Spaces:PositionOf:",
-									"ofThisCard": { "$type": "Cards:ThisCard:" }
-								}
+								"space": { "$type": "Cards:ThisCard:" }
 							},
 							{
 								"$type": "Core.SpaceRestriction:SameDiagonal:",
-								"other": {
-									"$type": "Spaces:PositionOf:",
-									"card": { "$type": "Cards:TargetIndex:" }
-								}
+								"other": { "$type": "Cards:TargetIndex:" }
 							}
 						]
 					},
@@ -45,14 +45,11 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
 						"blurb": "Craftspeople move to the cities",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-                            {
-                                "$type": "Core.CardRestriction:Location:",
-                                "locations": [ "Deck" ]
-                            },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Maya", "Craft", "Person" ]

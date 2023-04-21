@@ -8,31 +8,33 @@
 			"triggerData": {
 				"triggerCondition": "Arrive",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Space Fits Restriction",
-						"Main Card Fits Restriction Before"
-					],
-					"cardRestriction": {
-						"elements": [
-							{ "$type": "Core.CardRestriction:Character:" },
-							{ "$type": "Core.CardRestriction:Enemy:" }
-						]
-					},
-					"spaceRestriction": {
-						"elements": [
-							{
-								"$type": "Core.SpaceRestriction:AdjacentTo:",
-								"cardRestriction": { "elements": [
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.SpaceRestriction:AdjacentTo:",
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:AllOf:",
+								"elements": [
 									{ "$type": "Core.CardRestriction:Friendly:" },
 									{
 										"$type": "Core.CardRestriction:Subtypes:",
 										"subtypes": [ "Fungus" ]
 									}
-								] }
+								]
 							}
-						]
-					}
+						},
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CardBefore:" },
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:AllOf:",
+								"elements": [
+									{ "$type": "Core.CardRestriction:Character:" },
+									{ "$type": "Core.CardRestriction:Enemy:" }
+								]
+                            }
+                        }
+					]
 				}
 			},
 			"subeffects": [

@@ -1,4 +1,6 @@
-﻿using KompasCore.Effects;
+﻿using KompasCore.Cards;
+using KompasCore.Effects;
+using KompasCore.Effects.Restrictions.CardRestrictionElements;
 using KompasCore.GameCore;
 using System.Threading.Tasks;
 
@@ -6,12 +8,12 @@ namespace KompasServer.Effects.Subeffects
 {
     public class ResummonAll : ServerSubeffect
     {
-        public CardRestriction cardRestriction;
+        public IRestriction<GameCardBase> cardRestriction;
 
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
             base.Initialize(eff, subeffIndex);
-            cardRestriction ??= new CardRestriction();
+            cardRestriction ??= new AlwaysValid();
             cardRestriction.Initialize(DefaultInitializationContext);
         }
 

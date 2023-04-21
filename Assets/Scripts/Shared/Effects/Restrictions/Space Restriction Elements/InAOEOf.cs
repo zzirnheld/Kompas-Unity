@@ -9,7 +9,7 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
     public class InAOEOf : SpaceRestrictionElement
     {
         public IIdentity<GameCardBase> card;
-        public CardRestriction cardRestriction;
+        public IRestriction<GameCardBase> cardRestriction;
         public IIdentity<IReadOnlyCollection<GameCardBase>> anyOf;
         public IIdentity<IReadOnlyCollection<GameCardBase>> allOf;
 

@@ -8,12 +8,12 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-                    "triggerRestrictionElements": [
+                    "elements": [
                         { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
                         {
                             "$type": "Core.TriggerRestriction:CardsMatch:",
-                            "firstCard": { "$type": "Cards:CardBefore:" },
-                            "secondCard": {
+                            "card": { "$type": "Cards:CardBefore:" },
+                            "other": {
                                 "$type": "Cards:AugmentedCard:",
                                 "ofThisCard": { "$type": "Cards:ThisCard:" }
                             }
@@ -21,8 +21,10 @@
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
                             "card": { "$type": "Cards:CardBefore:" },
-                            "cardRestriction": {
-                                "elements": [ { "$type": "Core.CardRestriction:Summoned:" } ]
+                            
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [ { "$type": "Core.CardRestriction:Summoned:" } ]
                             }
                         }
                     ]
@@ -32,15 +34,14 @@
 				{
 					"$type": "Subeffect:CardTarget:",
 					"toSearch": { "$type": "ManyCards:Board:" },
-					"cardRestriction": {
-						"elements": [
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 							{ "$type": "Core.CardRestriction:Spell:" },
 							{
 								"$type": "Core.SpaceRestriction:AdjacentTo:",
-								"space": {
-									"$type": "Spaces:PositionOf:",
-									"ofThisCard": { "$type": "Cards:ThisCard:" }
-								}
+								"space": { "$type": "Cards:ThisCard:" }
 							}
 						]
 					}
@@ -62,8 +63,15 @@
 			"triggerData": {
 				"triggerCondition": "Attack",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"Augmented Card is Main Card"
+					"elements": [
+                        {
+                            "$type": "Core.TriggerRestriction:CardsMatch:",
+                            "card": { "$type": "Cards:CardBefore:" },
+                            "other": {
+                                "$type": "Cards:AugmentedCard:",
+                                "ofThisCard": { "$type": "Cards:ThisCard:" }
+                            }
+                        }
 					]
 				}
 			},

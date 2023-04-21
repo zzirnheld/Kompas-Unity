@@ -8,29 +8,25 @@
 				"blurb": "Yeeterate",
 				"triggerCondition": "Move",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Space Fits Restriction",
-						"Max Per Stack",
-						"Main Card Fits Restriction Before"
-					],
-					"cardRestriction": {
-						"elements": [ {
-							"$type": "Core.CardRestriction:Not:",
-							"negated": {
-								"$type": "Core.CardRestriction:CardsMatch:",
-								"card": { "$type": "Cards:ThisCard:" }
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.SpaceRestriction:InAOEOf:",
+							"card": { "$type": "Cards:ThisCard:" }
+						},
+						{ "$type": "Core.TriggerRestriction:MaxPerStack:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CardBefore:" },
+                            "cardRestriction": {
+								"$type": "Core.CardRestriction:Not:",
+								"negated": {
+									"$type": "Core.CardRestriction:CardsMatch:",
+									"card": { "$type": "Cards:ThisCard:" }
+								}
 							}
-						} ]
-					},
-					"spaceRestriction": {
-						"elements": [
-							{
-								"$type": "Core.SpaceRestriction:InAOEOf:",
-								"card": { "$type": "Cards:ThisCard:" }
-							}
-						]
-					}
+                        }
+					]
 				}
 			},
 			"subeffects": [
@@ -45,8 +41,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where for Yeeterator to move its target",
 					"spaceRestriction": {
-						"blurb": "where for Yeeterator to move its target",
+						"$type": "Core.SpaceRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.SpaceRestriction:Empty:" },
 							{ "$type": "Core.SpaceRestriction:Corner:" },

@@ -2,7 +2,7 @@ using KompasCore.Cards;
 
 namespace KompasCore.Effects.Identities.Cards
 {
-    public class CardAfter : TriggerContextualLeafIdentityBase<GameCardBase>
+    public class CardAfter : TriggerContextualCardIdentityBase
     {
         public bool secondaryCard;
 

@@ -8,8 +8,12 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCard:" }
+						}
 					]
 				}
 			},
@@ -19,6 +23,7 @@
 					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
 						"blurb": "Cultist for Silentbellringer to search",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
@@ -37,9 +42,9 @@
 			"blurb": "The bell tolls...",
 			"triggerData": {
 				"triggerCondition": "Turn Start",
-				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play"
+				"triggerRestriction":{
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" }
 					]
 				}
 			},

@@ -7,8 +7,12 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCard:" }
+						}
 					]
 				}
 			},
@@ -20,6 +24,7 @@
 					"$type": "Subeffect:AutoTarget:",
 					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
@@ -32,8 +37,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where to summon Ephemera",
 					"spaceRestriction": {
-						"blurb": "where to summon Ephemera",
+						"$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {
@@ -53,7 +59,7 @@
 				"blurb": "Dissipate",
 				"triggerCondition": "Move",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
                         { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
                         {
                             "$type": "Core.TriggerRestriction:TriggerKeyword:",

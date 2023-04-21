@@ -8,27 +8,34 @@
 			"triggerData": {
 				"triggerCondition": "Defend",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Main Card Fits Restriction After"
-					],
-					"nowRestriction": {
-						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-                            {											
-								"$type": "Core.SpaceRestriction:InAOEOf:",
-								"anyOf": {
-									"$type": "ManyCards:FittingRestriction:",
-									"cardRestriction": {
-									"elements": [ {
-											"$type": "Core.CardRestriction:Subtypes:",
-											"subtypes": [ "Weather" ]
-										} ]
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CardAfter:" },
+                            
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+									{ "$type": "Core.CardRestriction:Friendly:" },
+									{											
+										"$type": "Core.SpaceRestriction:InAOEOf:",
+										"anyOf": {
+											"$type": "ManyCards:FittingRestriction:",
+											
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [ {
+													"$type": "Core.CardRestriction:Subtypes:",
+													"subtypes": [ "Weather" ]
+												} ]
+											}
+										}
 									}
-								}
-                            }
-						]
-					}
+								]
+							}
+						}
+					]
 				}
 			},
 			"subeffects": [

@@ -7,17 +7,22 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCard:" }
+						}
 					]
 				}
 			},
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "What water moves?",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "What water moves?",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Spell:" },
 							{
@@ -33,8 +38,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where will the wave crash",
 					"spaceRestriction": {
-						"blurb": "where will the wave crash",
+						"$type": "Core.SpaceRestriction:AllOf:",
 						"elements": [
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
@@ -42,18 +48,18 @@
 							},
 							{
 								"$type": "Core.SpaceRestriction:ConnectedTo:",
-								"space": {
-                                    "$type": "Spaces:PositionOf:",
-                                    "ofThisCard": { "$type": "Cards:TargetIndex:" }
-                                },
+								"space": { "$type": "Cards:TargetIndex:" },
 								"byRestriction":{
+									"$type": "Core.SpaceRestriction:AllOf:",
 									"elements": [
 										{
 											"$type": "Core.SpaceRestriction:InAOEOf:",
 											"anyOf": {
 												"$type": "ManyCards:FittingRestriction:",
-												"cardRestriction": {
-													"elements": [
+												
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 														{
 															"$type": "Core.CardRestriction:Subtypes:",
 															"subtypes": [ "Water" ]
@@ -76,8 +82,10 @@
 				},
 				{
 					"$type": "Subeffect:TargetAll:",
-					"cardRestriction": {
-						"elements": [
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
                             { "$type": "Core.CardRestriction:Summoned:" },
 							{
@@ -94,6 +102,7 @@
 				{
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
+						"$type": "Core.SpaceRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.SpaceRestriction:Empty:" },
 							{

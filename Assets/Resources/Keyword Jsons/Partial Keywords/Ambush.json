@@ -11,10 +11,7 @@
                 { "$type": "Core.CardRestriction:Character:" },
                 {
                     "$type": "Core.SpaceRestriction:AdjacentTo:",
-                    "space": {
-                        "$type": "Spaces:PositionOf:",
-                        "ofThisCard": { "$type": "Cards:ThisCard:" }
-                    }
+                    "space": { "$type": "Cards:ThisCard:" }
                 }
             ]
         }
@@ -36,8 +33,12 @@
         "wMultiplier": -1,
         "endCondition": "Battle End",
         "triggerRestriction": {
-            "triggerRestrictions": [
-                "Stackable is Secondary Delayed Stackable Target"
+            "elements": [
+                {
+                    "$type": "Core.TriggerRestriction:StackablesMatch:",
+                    "firstStackable": { "$type": "Stackables:StackableIndex:", "secondaryContext": true },
+                    "secondStackable": { "$type": "Stackables:StackableEvent:" }
+                }
             ]
         }
     },

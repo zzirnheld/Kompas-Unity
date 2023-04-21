@@ -7,21 +7,23 @@
 			"triggerData": {
 				"triggerCondition": "E Change",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"X Fits Restriction",
-						"Main Card Fits Restriction Before"
-					],
-					"cardRestriction": {
-						"elements": [
-							{ "$type": "Core.CardRestriction:Hurt:" }
-						]
-					},
-					"xRestriction": {
-						"numberRestrictions": [
-							">0"
-						]
-					}
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
+							"number": { "$type": "Numbers:TriggerX:" },
+							"restriction": {
+								"$type": "Core.NumberRestriction:Compare:",
+								"comparison": { "$type": "Relationships.Number:GreaterThan:" },
+								"other": { "$type": "Numbers:Constant:", "constant": 0 }
+							}
+						},
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CardBefore:" },
+                            "cardRestriction": { "$type": "Core.CardRestriction:Hurt:" }
+                        }
+					]
 				}
 			},
 			"subeffects": [

@@ -5,7 +5,7 @@ namespace KompasCore.Effects.Identities.ManySpaces
 {
     public class FittingRestriction : ContextualParentIdentityBase<IReadOnlyCollection<Space>>
     {
-        public SpaceRestriction restriction;
+        public IRestriction<Space> restriction;
         public IIdentity<IReadOnlyCollection<Space>> spaces = new ManySpaces.All();
 
         public override void Initialize(EffectInitializationContext initializationContext)

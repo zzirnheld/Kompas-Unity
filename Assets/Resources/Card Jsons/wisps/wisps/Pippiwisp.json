@@ -8,8 +8,12 @@
 			"triggerData": {
 				"triggerCondition": "Move",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCard:" }
+						}
 					]
 				}
 			},
@@ -19,14 +23,13 @@
 				},
 				{
 					"$type": "Subeffect:SetXBoardRestriction:",
-					"cardRestriction": { "elements": [
+					"cardRestriction": {
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
 						{ "$type": "Core.CardRestriction:Enemy:" },
 						{
 							"$type": "Core.SpaceRestriction:AdjacentTo:",
-							"space": {
-								"$type": "Spaces:PositionOf:",
-								"ofThisCard": { "$type": "Cards:ThisCard:" }
-							}
+							"space": { "$type": "Cards:ThisCard:" }
 						}
 					] },
 					"xMultiplier": 1

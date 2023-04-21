@@ -8,8 +8,12 @@
 				"blurb": "Invoke",
 				"triggerCondition": "Attack",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCard:" }
+						}
 					]
 				}
 			},
@@ -32,16 +36,19 @@
 					"$type": "Subeffect:ConditionalJump:",
 					"condition": "Target Violates Restriction",
 					"cardRestriction": {
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
-                            { "$type": "Core.CardRestriction:Character:" }, {
-							"$type": "Core.CardRestriction:CardValueFits:",
-							"cardValue": { "value": "Cost" },
-							"numberRestriction": { "elements": [ {
-								"$type": "Core.NumberRestriction:Compare:",
-								"comparison": { "$type": "Relationships.Number:LessThan:" },
-								"other": { "$type": "Numbers:EffectX:" }
-							} ] }
-						} ]
+                            { "$type": "Core.CardRestriction:Character:" },
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": { "value": "Cost" },
+								"numberRestriction": {
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:LessThan:" },
+									"other": { "$type": "Numbers:EffectX:" }
+								}
+							}
+						]
 					},
 					"jumpIndices": [
 						2
@@ -50,8 +57,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where to Invoke",
 					"spaceRestriction": {
-						"blurb": "where to Invoke",
+						"$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {

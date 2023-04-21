@@ -8,24 +8,19 @@
 				"blurb": "Thundersun",
 				"triggerCondition": "Arrive",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"Max Per Turn",
-						"This Card in Play",
-						"Space Fits Restriction",
-						"Main Card Fits Restriction Before"
-					],
-					"cardRestriction": {
-						"elements": [ { "$type": "Core.CardRestriction:Character:" } ]
-					},
-					"spaceRestriction": {
-						"elements": [
-							{
-								"$type": "Core.SpaceRestriction:InAOEOf:",
-								"card": { "$type": "Cards:ThisCard:" }
-							}
-						]
-					},
-					"maxTimesPerTurn": 5
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{ "$type": "Core.TriggerRestriction:MaxPerTurn:", "max": 5 },
+						{
+							"$type": "Core.SpaceRestriction:InAOEOf:",
+							"card": { "$type": "Cards:ThisCard:" }
+						},
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CardBefore:" },
+                            "cardRestriction": { "$type": "Core.CardRestriction:Character:" }
+                        }
+					]
 				}
 			},
 			"subeffects": [

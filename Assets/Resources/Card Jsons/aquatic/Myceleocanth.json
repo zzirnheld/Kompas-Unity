@@ -7,9 +7,9 @@
 			"blurb": "Waterborne Spores",
 			"triggerData": {
 				"triggerCondition": "Turn Start",
-				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play"
+				"triggerRestriction":{
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" }
 					]
 				}
 			},
@@ -17,15 +17,19 @@
 				{
 					"$type": "Subeffect:TargetAll:",
 					"toSearch": { "$type": "ManyCards:Board:" },
-					"cardRestriction": {
-                        "elements": [
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
                             {
 								"$type": "Core.SpaceRestriction:InAOEOf:",
 								"anyOf": {
 									"$type": "ManyCards:FittingRestriction:",
-									"cardRestriction": {
-										"elements": [
+									
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 											{
 												"$type": "Core.CardRestriction:Subtypes:",
 												"subtypes": [ "Water" ]
@@ -73,22 +77,14 @@
 			"Adjacent to Friendly Card"
 		],
 		"spaceRestriction": {
-			"elements": [
-				{
-					"$type": "Core.SpaceRestriction:InAOEOf:",
-					"anyOf": {
-						"$type": "ManyCards:FittingRestriction:",
-						"cardRestriction": {
-							"elements": [
-								{
-									"$type": "Core.CardRestriction:Subtypes:",
-									"subtypes": [ "Water" ]
-								}
-							]
-						}
-					}
+			"$type": "Core.SpaceRestriction:InAOEOf:",
+			"anyOf": {
+				"$type": "ManyCards:FittingRestriction:",
+				"cardRestriction": {
+					"$type": "Core.CardRestriction:Subtypes:",
+					"subtypes": [ "Water" ]
 				}
-			]
+			}
 		}
 	},
 	"n": 9,

@@ -8,8 +8,12 @@
 				"blurb": "bawk bawk bawk",
 				"triggerCondition": "Deal Combat Damage",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCard:" }
+						}
 					]
 				}
 			},
@@ -17,14 +21,10 @@
 				{
 					"$type": "Subeffect:CardTarget:",
 					"toSearch": { "$type": "ManyCards:Hand:" },
+					"blurb": "Mind bawk bawk Controlled Pigeons",
 					"cardRestriction": {
-						"blurb": "Mind bawk bawk Controlled Pigeons",
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Crazy", "Idea" ]
-							}
-						]
+						"$type": "Core.CardRestriction:Subtypes:",
+						"subtypes": [ "Crazy", "Idea" ]
 					}
 				},
 				{

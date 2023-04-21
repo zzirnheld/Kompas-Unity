@@ -2,7 +2,7 @@ using KompasCore.Cards;
 
 namespace KompasCore.Effects.Identities.Cards
 {
-    public class TargetIndex : EffectContextualLeafIdentityBase<GameCardBase>
+    public class TargetIndex : EffectContextualCardIdentityBase
     {
         public int index = -1;
 

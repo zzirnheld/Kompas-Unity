@@ -8,27 +8,35 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"No Stackable",
-						"Main Card Fits Restriction Before",
-						"Controller Triggered"
-					],
-					"cardRestriction": {
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Not:",
-								"negated": {
-									"$type": "Core.CardRestriction:CardsMatch:",
-									"card": { "$type": "Cards:ThisCard:" }
-								}
-							},
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Fungus" ]
-							}
-						]
-					}
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        {
+                            "$type": "Core.TriggerRestriction:PlayersMatch:",
+                            "firstPlayer": { "$type": "Players:TriggeringPlayer:" },
+                            "secondPlayer": { "$type": "Players:FriendlyPlayer:" }
+                        },
+						{ "$type": "Core.TriggerRestriction:Normally:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CardBefore:" },
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:AllOf:",
+								"elements": [
+									{
+										"$type": "Core.CardRestriction:Not:",
+										"negated": {
+											"$type": "Core.CardRestriction:CardsMatch:",
+											"card": { "$type": "Cards:ThisCard:" }
+										}
+									},
+									{
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Fungus" ]
+									}
+								]
+                            }
+                        }
+					]
 				}
 			},
 			"subeffects": [
@@ -49,10 +57,8 @@
 					"$type": "Subeffect:ConditionalJump:",
 					"condition": "Target Violates Restriction",
 					"cardRestriction": {
-						"elements": [ {
-							"$type": "Core.CardRestriction:Subtypes:",
-							"subtypes": [ "Fungus" ]
-						} ]
+						"$type": "Core.CardRestriction:Subtypes:",
+						"subtypes": [ "Fungus" ]
 					},
 					"jumpIndices": [
 						3
@@ -61,8 +67,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where to Invoke the Fungus",
 					"spaceRestriction": {
-						"blurb": "where to Invoke the Fungus",
+						"$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {

@@ -29,8 +29,8 @@ namespace KompasServer.Effects.Subeffects.Hanging
             private readonly ServerSubeffect source;
             private readonly bool negated;
 
-            public NegationEffect(ServerGame serverGame, TriggerRestriction triggerRestriction, string endCondition,
-                string fallOffCondition, TriggerRestriction fallOffRestriction,
+            public NegationEffect(ServerGame serverGame, IRestriction<TriggeringEventContext> triggerRestriction, string endCondition,
+                string fallOffCondition, IRestriction<TriggeringEventContext> fallOffRestriction,
                 IResolutionContext currentContext, GameCard target, ServerSubeffect source, bool negated)
                 : base(serverGame, triggerRestriction, endCondition, fallOffCondition, fallOffRestriction, source.Effect, currentContext, removeIfEnd: false)
             {

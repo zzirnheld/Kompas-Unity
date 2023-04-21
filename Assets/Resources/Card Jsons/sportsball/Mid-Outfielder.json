@@ -8,9 +8,17 @@
 				"blurb": "Run Augment Outfield",
 				"triggerCondition": "Augmented",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card",
-						"Controller Triggered"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCard:" }
+						},
+                        {
+                            "$type": "Core.TriggerRestriction:PlayersMatch:",
+                            "firstPlayer": { "$type": "Players:TriggeringPlayer:" },
+                            "secondPlayer": { "$type": "Players:FriendlyPlayer:" }
+                        }
 					]
 				}
 			},
@@ -20,8 +28,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "wher?",
 					"spaceRestriction": {
-						"blurb": "wher?",
+						"$type": "Core.SpaceRestriction:AllOf:",
 						"elements": [
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
@@ -29,10 +38,7 @@
 							},
 							{
 								"$type": "Core.SpaceRestriction:CompareDistance:",
-								"distanceTo": {
-									"$type": "Spaces:PositionOf:",
-									"ofThisCard": { "$type": "Cards:TargetIndex:" }
-								},
+								"distanceTo": { "$type": "Cards:TargetIndex:" },
 								"number": { "$type": "Numbers:Constant:", "constant": 2 },
 								"comparison": { "$type": "Relationships.Number:LessThanEqual:" }
 							}

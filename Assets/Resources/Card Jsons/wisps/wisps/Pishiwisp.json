@@ -8,8 +8,12 @@
 			"triggerData": {
 				"triggerCondition": "Move",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCard:" }
+						}
 					]
 				}
 			},
@@ -17,14 +21,13 @@
 				{
 					"$type": "Subeffect:TargetAll:",
 					"toSearch": { "$type": "ManyCards:Board:" },
-					"cardRestriction": {
-						"elements": [
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 							{
 								"$type": "Core.SpaceRestriction:AdjacentTo:",
-								"space": {
-									"$type": "Spaces:PositionOf:",
-									"ofThisCard": { "$type": "Cards:ThisCard:" }
-								}
+								"space": { "$type": "Cards:ThisCard:" }
 							}
 						]
 					}
@@ -37,26 +40,16 @@
 					"$type": "Subeffect:AutoTargetSpaceIdentity:",
                     "spaceIdentity": {
                         "$type": "Spaces:ApplyDisplacement:",
-                        "from": {
-							"$type": "Spaces:PositionOf:",
-							"ofThisCard": { "$type": "Spaces:TargetIndex:" }
-						},
+                        "from": { "$type": "Spaces:TargetIndex:" },
 						"displacement": {
 							"$type": "Spaces:Displacement:",
-							"from": {
-								"$type": "Spaces:PositionOf:",
-								"ofThisCard": { "$type": "Cards:ThisCard:" }
-							},
+							"from": { "$type": "Cards:ThisCard:" },
 							"to": { "$type": "Spaces:TargetIndex:" }
 						}
                     },
 					"spaceRestriction": {
-						"elements": [
-                            {
-                                "$type": "Core.SpaceRestriction:CanMoveCard:",
-                                "toMove": { "$type": "Cards:TargetIndex:" }
-                            }
-						]
+						"$type": "Core.SpaceRestriction:CanMoveCard:",
+						"toMove": { "$type": "Cards:TargetIndex:" }
 					}
 				},
 				{

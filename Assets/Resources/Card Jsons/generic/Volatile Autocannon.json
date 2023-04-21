@@ -7,9 +7,9 @@
 			"blurb": "Automaticfire",
 			"triggerData": {
 				"triggerCondition": "Turn Start",
-				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play"
+				"triggerRestriction":{
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" }
 					]
 				}
 			},
@@ -22,16 +22,14 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "Direction to fire the cannon",
 					"spaceRestriction": {
-						"blurb": "Direction to fire the cannon",
+						"$type": "Core.SpaceRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.SpaceRestriction:Empty:" },
                             {
 								"$type": "Core.SpaceRestriction:SameDiagonal:",
-								"other": {
-									"$type": "Spaces:PositionOf:",
-									"card": { "$type": "Cards:ThisCard:" }
-								}
+								"other": { "$type": "Cards:ThisCard:" }
                             }
 						]
 					},
@@ -43,15 +41,8 @@
 				{
 					"$type": "Subeffect:AutoTarget:",
 					"cardRestriction": {
-						"elements": [
-							{
-								"$type": "Core.SpaceRestriction:Direction:",
-								"from": {
-									"$type": "Spaces:PositionOf:",
-									"ofThisCard": { "$type": "Cards:ThisCard:" }
-								}
-							}
-						]
+						"$type": "Core.SpaceRestriction:Direction:",
+						"from": { "$type": "Cards:ThisCard:" }
 					},
 					"tiebreakerValue": {
 						"value": "Distance to Source"

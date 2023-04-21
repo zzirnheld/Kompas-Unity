@@ -8,16 +8,16 @@
 			"triggerData": {
 				"triggerCondition": "Arrive",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Max Per Turn",
-						"Main Card Fits Restriction After"
-					],
-					"nowRestriction": {
-						"elements": [
-							{
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{ "$type": "Core.TriggerRestriction:MaxPerTurn:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CardAfter:" },
+							"cardRestriction": {
 								"$type": "Core.SpaceRestriction:AdjacentTo:",
 								"cardRestriction": {
+									"$type": "Core.CardRestriction:AllOf:",
 									"elements": [
 										{
 											"$type": "Core.CardRestriction:Subtypes:",
@@ -25,13 +25,13 @@
 										},
 										{
 											"$type": "Core.CardRestriction:HasAugment:",
-											"cardRestriction": { "elements": [] }
+											"cardRestriction": { "$type": "Core.CardRestriction:AlwaysValid:" }
 										}
 									]
 								}
 							}
-						]
-					}
+                        }
+					]
 				}
 			},
 			"subeffects": [
@@ -40,9 +40,10 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Golem to swap out modules",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "Golem to swap out modules",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
 							{
@@ -51,14 +52,11 @@
 							},
 							{
 								"$type": "Core.SpaceRestriction:AdjacentTo:",
-								"space": {
-                                    "$type": "Spaces:PositionOf:",
-                                    "ofThisCard": { "$type": "Cards:TargetIndex:" }
-                                }
+								"space": { "$type": "Cards:TargetIndex:" }
 							},
 							{
 								"$type": "Core.CardRestriction:HasAugment:",
-								"cardRestriction": { "elements": [] }
+								"cardRestriction": { "$type": "Core.CardRestriction:AlwaysValid:" }
 							}
 						]
 					}
@@ -86,9 +84,10 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Golem core for Modular Golem Cores to attach",
 					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
-						"blurb": "Golem core for Modular Golem Cores to attach",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Augment:" },
 							{

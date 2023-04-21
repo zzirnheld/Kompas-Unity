@@ -6,7 +6,21 @@
         "fallOffCondition":"",
         "endCondition":"Discard",
         "triggerRestriction":{
-            "triggerRestrictions":["Main Card is a Secondary Context Card Target","From Field"]
+            "elements": [
+                {
+                    "$type": "Core.TriggerRestriction:CardsMatch:",
+                    "card": { "$type": "Cards:CardBefore:" },
+                    "other": { "$type": "Cards:TargetIndex:", "secondaryContext": true }
+                },
+                {
+                    "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                    "card": { "$type": "Cards:CardBefore:" },
+                    "cardRestriction": {
+                        "$type": "Core.CardRestriction:Location:",
+                        "locations": [ "Board" ]
+                    }
+                }
+            ]
         }
     },
     {
@@ -24,9 +38,6 @@
     },
     {
         "$type":"Subeffect:Hanging.Negate:",
-        "endCondition":"Turn Start",
-        "triggerRestriction":{
-            "triggerRestrictions":[]
-        }
+        "endCondition":"Turn Start"
     }
 ]

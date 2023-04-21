@@ -8,28 +8,31 @@
 			"triggerData": {
 				"triggerCondition": "Effect Pushed to Stack",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Stackable Source Fits Restriction Now"
-					],
-					"sourceRestriction": {
-						"elements": [
-                            { "$type": "Core.CardRestriction:Character:" },
-							{ "$type": "Core.CardRestriction:Enemy:" },
-                            {
-								"$type": "Core.SpaceRestriction:InAOEOf:",
-								"anyOf": {
-									"$type": "ManyCards:FittingRestriction:",
-									"cardRestriction": {
-									"elements": [ {
-											"$type": "Core.CardRestriction:Subtypes:",
-											"subtypes": [ "Weather" ]
-										} ]
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CauseBefore:" },
+                            
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+									{ "$type": "Core.CardRestriction:Character:" },
+									{ "$type": "Core.CardRestriction:Enemy:" },
+									{
+										"$type": "Core.SpaceRestriction:InAOEOf:",
+										"anyOf": {
+											"$type": "ManyCards:FittingRestriction:",
+											"cardRestriction": {
+												"$type": "Core.CardRestriction:Subtypes:",
+												"subtypes": [ "Weather" ]
+											}
+										}
 									}
-								}
-                            }
-						]
-					}
+								]
+							}
+						}
+					]
 				}
 			},
 			"subeffects": [

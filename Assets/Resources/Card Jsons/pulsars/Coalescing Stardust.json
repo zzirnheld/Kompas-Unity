@@ -8,12 +8,12 @@
 			"triggerData": {
 				"triggerCondition": "S Change",
 				"triggerRestriction": {
-                    "triggerRestrictionElements": [
+                    "elements": [
                         { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
                         {
                             "$type": "Core.TriggerRestriction:CardsMatch:",
-                            "firstCard": { "$type": "Cards:MainCardBefore:" },
-                            "secondCard": {
+                            "card": { "$type": "Cards:CardBefore:" },
+                            "other": {
 								"$type": "Cards:Avatar:",
 								"player": { "$type": "Players:FriendlyPlayer:" }
 							}
@@ -36,8 +36,12 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCard:" }
+						}
 					]
 				}
 			},
@@ -62,9 +66,10 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Pulsar to coalesce",
 					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"blurb": "Pulsar to coalesce",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{ "$type": "Core.CardRestriction:Character:" },
@@ -75,11 +80,11 @@
 							{
 								"$type": "Core.CardRestriction:CardValueFits:",
 								"cardValue": { "value": "S" },
-								"numberRestriction": { "elements": [ {
+								"numberRestriction": {
 									"$type": "Core.NumberRestriction:Compare:",
 									"comparison": { "$type": "Relationships.Number:LessThan:" },
 									"other": { "$type": "Numbers:EffectX:" }
-								} ] }
+								}
 							}
 						]
 					},
@@ -87,8 +92,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where to play newly coalesced Pulsar",
 					"spaceRestriction": {
-						"blurb": "where to play newly coalesced Pulsar",
+						"$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {

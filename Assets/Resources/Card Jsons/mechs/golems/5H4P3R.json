@@ -9,11 +9,11 @@
 			"triggerData": {
 				"triggerCondition": "Move",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
                         {
                             "$type": "Core.TriggerRestriction:CardsMatch:",
-                            "firstCard": { "$type": "Cards:ThisCard:" },
-                            "secondCard": { "$type": "Cards:CardBefore:" }
+                            "card": { "$type": "Cards:ThisCard:" },
+                            "other": { "$type": "Cards:CardBefore:" }
                         }
 					]
 				}
@@ -25,12 +25,7 @@
 						"$type": "ManyCards:CardsInPositions:",
 						"positions": {
 							"$type": "ManySpaces:ThreeSpaceRelationship:",
-							"firstSpace": {
-								"$type": "Spaces:PositionOf:",
-								"ofThisCard": {
-									"$type": "Cards:CardBefore:"
-								}
-							},
+							"firstSpace": { "$type": "Cards:CardBefore:" },
 							"secondSpace": { "$type": "Spaces:ContextSpace:" },
 							"thirdSpaceRelationship": { "$type": "ThreeSpaceRelationships:Between:" }
 						}

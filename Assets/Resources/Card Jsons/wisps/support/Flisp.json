@@ -7,8 +7,12 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCard:" }
+						}
 					]
 				}
 			},
@@ -18,7 +22,9 @@
 					"toSearch": {
 						"$type": "ManyCards:FittingRestriction:",
 						"cards": { "$type": "ManyCards:Board:" },
+						
 						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
 							"elements": [
                                 { "$type": "Core.CardRestriction:Friendly:" },
 								{
@@ -36,16 +42,15 @@
                         "selector": { "$type": "KompasCore.Effects.Selectors.RandomSpace, Assembly-CSharp" },
                         "spaces": {
                             "$type": "ManySpaces:CompareDistance:",
-                            "distanceTo": { 
-                                "$type": "Spaces:PositionOf:",
-                                "ofThisCard": { "$type": "Cards:TargetIndex:" }
-                            },
+                            "distanceTo": { "$type": "Cards:TargetIndex:" },
                             "spaces": {
                                 "$type": "ManySpaces:PositionsOfEach:",
                                 "cards": {
                                     "$type": "ManyCards:FittingRestriction:",
-                                    "cardRestriction": {
-                                        "elements": [ { "$type": "Core.CardRestriction:Enemy:" } ]
+                                    
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [ { "$type": "Core.CardRestriction:Enemy:" } ]
                                     }
                                 }
                             }
@@ -62,10 +67,7 @@
                             "distanceTo": { "$type": "Cards:TargetIndex:" },
                             "spaces": {
                                 "$type": "ManySpaces:AdjacentSpaces:",
-                                "adjacentTo": {
-                                    "$type": "Spaces:PositionOf:",
-                                    "ofThisCard": { "$type": "Cards:TargetIndex:" }
-                                }
+                                "adjacentTo": { "$type": "Cards:TargetIndex:" }
                             }
                         }
                     }

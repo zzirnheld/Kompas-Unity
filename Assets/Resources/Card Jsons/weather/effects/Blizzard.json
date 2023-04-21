@@ -8,22 +8,18 @@
 			"triggerData": {
 				"triggerCondition": "Arrive",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Space Fits Restriction",
-						"Main Card Fits Restriction Before"
-					],
-					"cardRestriction": {
-						"elements": [ { "$type": "Core.CardRestriction:Character:" } ]
-					},
-					"spaceRestriction": {
-						"elements": [
-							{
-								"$type": "Core.SpaceRestriction:InAOEOf:",
-								"card": { "$type": "Cards:ThisCard:" }
-							}
-						]
-					}
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.SpaceRestriction:InAOEOf:",
+							"card": { "$type": "Cards:ThisCard:" }
+						},
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CardBefore:" },
+                            "cardRestriction": { "$type": "Core.CardRestriction:Character:" }
+                        }
+					]
 				}
 			},
 			"subeffects": [
@@ -42,14 +38,16 @@
 					"nMultiplier": -1,
 					"endCondition": "Leave AOE",
 					"triggerRestriction": {
-						"triggerRestrictions": [
-							"Main Card is a Secondary Context Card Target"
-						],
-						"triggerRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.TriggerRestriction:CardsMatch:",
-								"firstCard": { "$type": "Cards:CardBefore:", "secondaryCard": true },
-								"secondCard": { "$type": "Cards:ThisCard:" }
+								"card": { "$type": "Cards:CardBefore:", "secondaryCard": true },
+								"other": { "$type": "Cards:ThisCard:" }
+							},
+							{
+								"$type": "Core.TriggerRestriction:CardsMatch:",
+								"card": { "$type": "Cards:CardBefore:" },
+								"other": { "$type": "Cards:TargetIndex:", "secondaryContext": true }
 							}
 						]
 					}

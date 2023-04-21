@@ -7,22 +7,15 @@
 			"blurb": "T3L3P0RT",
             "activationRestriction":{
                 "activationRestrictionArray":[
-                    "Friendly Turn",
                     "This Card Fits Restriction",
                     "Default"
                 ],
                 "thisCardRestriction":
                 {
-					"elements": [
-						{
-							"$type": "Core.CardRestriction:CardValueFits:",
-							"cardValue": { "value": "Spaces Can Move" },
-							"numberRestriction": { "elements": [
-								{ "$type": "Core.NumberRestriction:Positive:" }
-							]}
-						}
-					]
-                }
+					"$type": "Core.CardRestriction:CardValueFits:",
+					"cardValue": { "value": "Spaces Can Move" },
+					"numberRestriction": { "$type": "Core.NumberRestriction:Positive:" }
+				}
             },
             "subeffects":[
                 {
@@ -35,9 +28,10 @@
                 },
                 {
                     "$type":"Subeffect:SpaceTarget:",
+					"blurb":"to teleport F4LL1NGT1T4N to",
                     "spaceRestriction":
                     {
-                        "blurb":"to teleport F4LL1NGT1T4N to",
+						"$type": "Core.SpaceRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.SpaceRestriction:Empty:" },
 							{
@@ -47,6 +41,7 @@
 							{
 								"$type": "Core.SpaceRestriction:AdjacentTo:",
 								"cardRestriction": {
+									"$type": "Core.CardRestriction:AllOf:",
 									"elements": [
 										{ "$type": "Core.CardRestriction:Friendly:" },
 										{

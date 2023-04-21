@@ -7,16 +7,22 @@
 			"triggerData": {
 				"triggerCondition": "Move",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card",
-						"X Fits Restriction"
-					],
-					"xRestriction": {
-						"numberRestrictions": [
-							"==Constant"
-						],
-						"constant": 3
-					}
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCard:" }
+						},
+						{
+							"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
+							"number": { "$type": "Numbers:TriggerX:" },
+							"restriction": {
+								"$type": "KompasCore.Effects.NumberRestriction, Assembly-CSharp",
+								"numberRestrictions": [ "==Constant" ],
+								"constant":3
+							}
+						}
+					]
 				}
 			},
 			"subeffects": [

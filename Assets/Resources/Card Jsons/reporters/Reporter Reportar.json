@@ -7,19 +7,19 @@
 			"activationRestriction": {
 				"activationRestrictionArray": [
 					"Max Times Per Turn",
-					"Friendly Turn",
 					"Default"
 				]
 			},
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "spell to reveal",
 					"toSearch": {
 						"$type": "ManyCards:Hand:",
 						"friendly": true, "enemy": true
 					},
 					"cardRestriction": {
-						"blurb": "spell to reveal",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
@@ -68,12 +68,13 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "character to reveal",
 					"toSearch": {
 						"$type": "ManyCards:Hand:",
 						"friendly": true, "enemy": true
 					},
 					"cardRestriction": {
-						"blurb": "character to reveal",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Hidden:" },
 							{
@@ -83,11 +84,11 @@
 							{
 								"$type": "Core.CardRestriction:CardValueFits:",
 								"cardValue": { "value": "Cost" },
-								"numberRestriction": { "elements": [{
+								"numberRestriction": {
 									"$type": "Core.NumberRestriction:Compare:",
 									"comparison": { "$type": "Relationships.Number:Equal:" },
 									"other": { "$type": "Numbers:EffectX:" }
-								}]}
+								}
 							}
 						]
 					},
@@ -101,11 +102,11 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "character to report",
 					"toSearch": { "$type": "ManyCards:Deck:" },
 					"playerIndex": -2,
-					"xMultiplier": 1,
 					"cardRestriction": {
-						"blurb": "character to report",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{ "$type": "Core.CardRestriction:Character:" },
@@ -115,32 +116,33 @@
 									"value": "Cost",
 									"divisor": 2
 								},
-								"numberRestriction": { "elements": [{
+								"numberRestriction": {
 									"$type": "Core.NumberRestriction:Compare:",
 									"comparison": { "$type": "Relationships.Number:LessThanEqual:" },
 									"other": {
 										"$type": "Numbers:Pips:",
 										"player": { "$type": "Players:TargetIndex:" }
 									}
-								}]}
+								}
 							},
 							{
 								"$type": "Core.CardRestriction:CardValueFits:",
 								"cardValue": { "value": "Cost" },
-								"numberRestriction": { "elements": [ {
+								"numberRestriction": {
 									"$type": "Core.NumberRestriction:Compare:",
 									"comparison": { "$type": "Relationships.Number:LessThanEqual:" },
 									"other": { "$type": "Numbers:EffectX:" }
-								}]}
+								}
 							}
 						]
 					}
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where for new Reporter to report",
 					"playerIndex": -2,
 					"spaceRestriction": {
-						"blurb": "where for new Reporter to report",
+						"$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {

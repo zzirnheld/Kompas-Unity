@@ -4,8 +4,12 @@
 		"blurb": "Smite",
 		"triggerCondition": "Attack",
 		"triggerRestriction": {
-			"triggerRestrictions": [
-				"This Card is Main Card"
+			"elements": [
+				{
+					"$type": "Core.TriggerRestriction:CardsMatch:",
+					"card": { "$type": "Cards:CardBefore:" },
+					"other": { "$type": "Cards:ThisCard:" }
+				}
 			]
 		}
 	},
@@ -26,8 +30,10 @@
 		{
 			"$type": "Subeffect:SetXByGamestate:",
 			"whatToCount": "Cards Fitting Restriction",
-			"cardRestriction": {
-				"elements": [ { "$type": "Core.CardRestriction:Target:" } ]
+			
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [ { "$type": "Core.CardRestriction:Target:" } ]
 			},
 			"xMultiplier": 1
 		},
@@ -49,8 +55,12 @@
 			"wMultiplier": 2,
 			"endCondition": "Battle End",
 			"triggerRestriction": {
-				"triggerRestriction": [
-					"Contexts Stackables Match"
+				"elements": [
+					{
+						"$type": "Core.TriggerRestriction:StackablesMatch:",
+						"firstStackable": { "$type": "Stackables:StackableEvent:", "secondaryContext": true },
+						"secondStackable": { "$type": "Stackables:StackableEvent:" }
+					}
 				]
 			}
 		}

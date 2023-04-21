@@ -9,7 +9,7 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
         public IIdentity<Space> space;
         public IIdentity<IReadOnlyCollection<Space>> spaces;
         public IIdentity<IReadOnlyCollection<Space>> anyOfTheseSpaces;
-        public SpaceRestriction byRestriction;
+        public IRestriction<Space> byRestriction;
 
         public override void Initialize(EffectInitializationContext initializationContext)
         {

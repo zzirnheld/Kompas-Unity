@@ -8,13 +8,15 @@
 			"triggerData": {
 				"triggerCondition": "Discard",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 							"card": { "$type": "Cards:CardBefore:" },
-							"cardRestriction": {
-								"elements": [
+							
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 									{
 										"$type": "Core.CardRestriction:Subtypes:",
 										"subtypes": [ "Shaper" ]
@@ -24,8 +26,8 @@
 						},
 						{
 							"$type": "Core.TriggerRestriction:CardsMatch:",
-							"firstCard": { "$type": "Cards:CauseBefore:" },
-							"secondCard": { "$type": "Cards:CardBefore:" }
+							"card": { "$type": "Cards:CauseBefore:" },
+							"other": { "$type": "Cards:CardBefore:" }
 						}
 					]
 				}

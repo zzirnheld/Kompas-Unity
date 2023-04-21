@@ -8,20 +8,20 @@
 			{
 				"triggerCondition":"Play",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Card Exists Now"],
-					"existsRestriction":
-					{
-						"elements": [
-							{ "$type": "Core.CardRestriction:Enemy:" },
-							{
-								"$type": "Core.SpaceRestriction:AdjacentTo:",
-								"space": {
-									"$type": "Spaces:PositionOf:",
-									"ofThisCard": { "$type": "Cards:ThisCard:" }
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"anyOf": {
+								"$type": "ManyCards:CardsInPositions:",
+								"positions": {
+									"$type": "ManySpaces:AdjacentSpaces:",
+									"adjacentTo": { "$type": "Cards:ThisCard:" }
 								}
-							}
-						]
-					}
+							},
+							"cardRestriction": { "$type": "Core.CardRestriction:Enemy:" }
+						}
+					]
 				}
 			},
 			"subeffects":[

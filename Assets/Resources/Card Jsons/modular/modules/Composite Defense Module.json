@@ -8,9 +8,16 @@
 			"triggerData": {
 				"triggerCondition": "Defend",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Augmented Card is Main Card"
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardsMatch:",
+                            "card": { "$type": "Cards:CardBefore:" },
+                            "other": {
+                                "$type": "Cards:AugmentedCard:",
+                                "ofThisCard": { "$type": "Cards:ThisCard:" }
+                            }
+                        }
 					]
 				}
 			},
@@ -28,8 +35,10 @@
                                 "$type": "ManyCards:Augments:",
                                 "card": { "$type": "Cards:TargetIndex:" }
                             },
-                            "cardRestriction": {
-                                "elements": [
+                            
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
                                     {
                                         "$type": "Core.CardRestriction:Subtypes:",
                                         "subtypes": [ "Module" ]

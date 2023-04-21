@@ -1,33 +1,38 @@
 {
 	"cardType": 67,
 	"cardName": "Soul of Speed",
-	"effText": "Speedemon.\nWhen another Speedemon moves normally, move me the same direction and distance, and give me +1 EW.",
+	"effText": "When a Speedemon moves, move me the same direction and distance, and give me +1 EW.",
 	"effects": [
 		{
 			"blurb": "Speedsoul",
 			"triggerData": {
 				"triggerCondition": "Move",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"No Stackable",
-						"Main Card Fits Restriction Before"
-					],
-					"cardRestriction": {
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Not:",
-								"negated": {
-									"$type": "Core.CardRestriction:CardsMatch:",
-									"card": { "$type": "Cards:ThisCard:" }
-								}
-							},
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Speedemon" ]
-							}
-						]
-					}
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{ "$type": "Core.TriggerRestriction:Normally:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CardBefore:" },
+                            
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+									{
+										"$type": "Core.CardRestriction:Not:",
+										"negated": {
+											"$type": "Core.CardRestriction:CardsMatch:",
+											"card": { "$type": "Cards:ThisCard:" }
+										}
+									},
+									{
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Speedemon" ]
+									}
+								]
+                            }
+                        }
+					]
 				}
 			},
 			"subeffects": [
@@ -45,10 +50,7 @@
 					"$type": "Subeffect:AutoTargetSpaceIdentity:",
                     "spaceIdentity": {
                         "$type": "Spaces:ApplyDisplacement:",
-                        "from": {
-							"$type": "Spaces:PositionOf:",
-							"ofThisCard": { "$type": "Cards:ThisCard:" }
-						},
+                        "from": { "$type": "Cards:ThisCard:" },
 						"displacement": {
 							"$type": "Spaces:Displacement:",
 							"from": { "$type": "Spaces:TargetIndex:", "index": -2 },
@@ -67,12 +69,9 @@
 			]
 		}
 	],
-	"keywords": [
-		"Speedemon"
-	],
 	"n": 0,
 	"e": 1,
 	"s": 5,
 	"w": 1,
-	"subtypeText": "Speedemon"
+	"subtypeText": "Speed"
 }

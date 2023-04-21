@@ -12,14 +12,12 @@
 					"Default"
 				],
 				"existsRestriction": {
+					"$type": "Core.CardRestriction:AllOf:",
 					"elements": [
 						{ "$type": "Core.CardRestriction:Enemy:" },
 						{
 							"$type": "Core.SpaceRestriction:AdjacentTo:",
-							"space": {
-								"$type": "Spaces:PositionOf:",
-								"ofThisCard": { "$type": "Cards:ThisCard:" }
-							}
+							"space": { "$type": "Cards:ThisCard:" }
 						}
 					]
 				}
@@ -27,9 +25,10 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Silent Cult Follower to recruit",
 					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"blurb": "Silent Cult Follower to recruit",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{ "$type": "Core.CardRestriction:Character:" },
@@ -42,8 +41,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where to play Silent Recruiter's new recruit",
 					"spaceRestriction": {
-						"blurb": "where to play Silent Recruiter's new recruit",
+						"$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {

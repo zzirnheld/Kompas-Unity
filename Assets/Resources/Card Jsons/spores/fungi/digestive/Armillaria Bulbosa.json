@@ -8,26 +8,20 @@
 			"triggerData": {
 				"triggerCondition": "Activate",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
                         { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
                             "card": { "$type": "Cards:CauseBefore:" },
-                            "cardRestriction": {
-                                "elements": [
-                                    {
-                                        "$type": "Core.CardRestriction:Subtypes:",
-                                        "subtypes": [ "Fungus" ]
-                                    }
-                                ]
-                            }
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Fungus" ]
+							}
                         },
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
                             "card": { "$type": "Cards:CardBefore:" },
-                            "cardRestriction": {
-                                "elements": [ { "$type": "Core.CardRestriction:Enemy:" } ]
-                            }
+							"cardRestriction": { "$type": "Core.CardRestriction:Enemy:" }
                         }
 					]
 				}
@@ -36,8 +30,10 @@
 				{
 					"$type": "Subeffect:CardTarget:",
 					"blurb": "Mycelium to summon",
-					"cardRestriction": {
-						"elements": [
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
                             {
                                 "$type": "Core.CardRestriction:Location:",
@@ -54,8 +50,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "Where to summon the Mycelium",
 					"spaceRestriction": {
-						"blurb": "Where to summon the Mycelium",
+						"$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {

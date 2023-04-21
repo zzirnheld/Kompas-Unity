@@ -9,16 +9,21 @@
 				"blurb": "Acid Breath",
 				"triggerCondition": "Take Combat Damage",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"Main Card Fits Restriction Before"
-					],
-					"cardRestriction": {
-						"elements": [ {
-							"$type": "Core.CardRestriction:Fighting:",
-							"defending": true,
-							"fightingWho": { "$type": "Cards:ThisCard:" }
-						} ]
-					}
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [ {
+									"$type": "Core.CardRestriction:Fighting:",
+									"defending": true,
+									"fightingWho": { "$type": "Cards:ThisCard:" }
+								} ]
+							}
+						}
+					]
 				}
 			},
 			"subeffects": [
@@ -32,13 +37,15 @@
 				},
 				{
 					"$type":"Subeffect:TargetTriggeringCard:",
-					"secondary":true
+					"contextSecondaryCard":true
 				},
 				{
 					"$type": "Subeffect:ChangeAllCardStats:",
 					"cardsSource": { "$type": "ManyCards:Board:" },
-					"cardRestriction": {
-						"elements": [
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Not:",
@@ -49,10 +56,7 @@
 							},
 							{
 								"$type": "Core.SpaceRestriction:AdjacentTo:",
-								"space": {
-                                    "$type": "Spaces:PositionOf:",
-                                    "ofThisCard": { "$type": "Cards:TargetIndex:" }
-                                }
+								"space": { "$type": "Cards:TargetIndex:" }
 							}
 						]
 					},

@@ -1,29 +1,38 @@
 {
 	"cardType": 67,
 	"cardName": "Master Graftsman",
-	"effText": "When you summon another character, give them -3 E, but +1 NW.\nWhen you hurt a friendly Tree, heal it.",
+	"effText": "When you summon another character, give them -3 E, but +1 NW.",
 	"effects": [
 		{
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Controller Triggered",
-						"Main Card Fits Restriction Before"
-					],
-					"cardRestriction": {
-						"elements": [
-							{ "$type": "Core.CardRestriction:Character:" },
-							{
-								"$type": "Core.CardRestriction:Not:",
-								"negated": {
-									"$type": "Core.CardRestriction:CardsMatch:",
-									"card": { "$type": "Cards:ThisCard:" }
-								}
-							}
-						]
-					}
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        {
+                            "$type": "Core.TriggerRestriction:PlayersMatch:",
+                            "firstPlayer": { "$type": "Players:TriggeringPlayer:" },
+                            "secondPlayer": { "$type": "Players:FriendlyPlayer:" }
+                        },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CardBefore:" },
+                            
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+									{ "$type": "Core.CardRestriction:Character:" },
+									{
+										"$type": "Core.CardRestriction:Not:",
+										"negated": {
+											"$type": "Core.CardRestriction:CardsMatch:",
+											"card": { "$type": "Cards:ThisCard:" }
+										}
+									}
+								]
+                            }
+                        }
+					]
 				}
 			},
 			"subeffects": [
@@ -35,47 +44,6 @@
 					"eModifier": -3,
 					"nModifier": 1,
 					"wModifier": 1
-				}
-			]
-		},
-		{
-            "blurb": "Repair",
-			"triggerData": {
-				"triggerCondition": "E Change",
-				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Controller Triggered",
-						"X Fits Restriction",
-						"This Card is Main Card",
-						"Main Card Fits Restriction After"
-					],
-					"xRestriction": {
-						"numberRestrictions": [
-							"<0"
-						]
-					},
-					"nowRestriction": {
-						"elements": [
-							{ "$type": "Core.CardRestriction:Hurt:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							},
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Tree" ]
-							}
-						]
-					}
-				}
-			},
-			"subeffects": [
-				{
-					"$type": "Subeffect:TargetTriggeringCard:"
-				},
-				{
-					"$type": "Subeffect:Heal:"
 				}
 			]
 		}

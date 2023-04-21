@@ -31,7 +31,7 @@ namespace KompasCore.Effects
         public string[] attackRestrictionsToIgnore = { };
         public int maxAttacks = 1;
 
-        public CardRestriction defenderRestriction;
+        public IRestriction<GameCardBase> defenderRestriction;
 
         public GameCard Card => InitializationContext.source;
 

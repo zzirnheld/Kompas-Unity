@@ -7,13 +7,16 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Enemy Triggered",
-						"No Stackable",
-						"Max Per Turn"
-					],
-					"maxTimesPerTurn": 3
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{ "$type": "Core.TriggerRestriction:MaxPerTurn:", "max": 3 },
+                        {
+                            "$type": "Core.TriggerRestriction:PlayersMatch:",
+                            "firstPlayer": { "$type": "Players:TriggeringPlayer:" },
+                            "secondPlayer": { "$type": "Players:FriendlyPlayer:" }
+                        },
+						{ "$type": "Core.TriggerRestriction:Normally:" }
+					]
 				}
 			},
 			"subeffects": [

@@ -7,25 +7,18 @@
             "blurb": "The Wisps Dance",
             "triggerCondition": "Arrive",
             "triggerRestriction": {
-                "triggerRestrictions": [
-                    "This Card in Play",
-                    "Space Fits Restriction",
-                    "Main Card Fits Restriction Before"
-                ],
-                "spaceRestriction": {
-                    "elements": [
-                        {
-                            "$type": "Core.SpaceRestriction:AdjacentTo:",
-                            "space": {
-                                "$type": "Spaces:PositionOf:",
-                                "ofThisCard": { "$type": "Cards:ThisCard:" }
-                            }
-                        }
-                    ]
-                },
-                "cardRestriction": {
-                    "elements": [ { "$type": "Core.CardRestriction:Enemy:" } ]
-                }
+                "elements": [
+                    { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                    {
+                        "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                        "card": { "$type": "Cards:CardBefore:" },
+                        "cardRestriction": { "$type": "Core.CardRestriction:Enemy:" }
+                    },
+                    {
+                        "$type": "Core.SpaceRestriction:AdjacentTo:",
+                        "space": { "$type": "Cards:ThisCard:" }
+                    }
+                ]
             },
 			"subeffects": [
 				{
@@ -37,10 +30,7 @@
 						"$type": "ManyCards:CardsInPositions:",
 						"positions": {
                             "$type": "ManySpaces:AdjacentSpaces:",
-                            "adjacentTo": {
-                                "$type": "Spaces:PositionOf:",
-                                "ofThisCard": { "$type": "Cards:TargetIndex:" }
-                            }
+                            "adjacentTo": { "$type": "Cards:TargetIndex:" }
 						}
 					}
                 },
@@ -51,17 +41,12 @@
                         "selector": { "$type": "KompasCore.Effects.Selectors.RandomSpace, Assembly-CSharp" },
                         "spaces": {
                             "$type": "ManySpaces:FittingRestriction:",
-                            "restriction": {
-                                "elements": [ { "$type": "Core.SpaceRestriction:Empty:" } ]
-                            },
+                            "restriction": { "$type": "Core.SpaceRestriction:Empty:" },
                             "spaces": {
                                 "$type": "ManySpaces:AdjacentSpaces:",
                                 "adjacentTo": {
-                                    "$type": "Spaces:PositionOf:",
-                                    "ofThisCard": {
-                                        "$type": "Cards:TargetIndex:",
-                                        "index": 0
-                                    }
+                                    "$type": "Cards:TargetIndex:",
+                                    "index": 0
                                 }
                             }
                         }

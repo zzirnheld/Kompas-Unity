@@ -8,8 +8,12 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCard:" }
+						}
 					]
 				}
 			},
@@ -19,6 +23,7 @@
 					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
 						"blurb": "Brilliant Mage who was inspired",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
@@ -44,12 +49,15 @@
 			"Space Must Fit Restriction"
 		],
 		"spaceRestriction": {
+			"$type": "Core.SpaceRestriction:AllOf:",
 			"elements": [ {
 				"$type": "Core.SpaceRestriction:InAOEOf:",
 				"anyOf": {
 					"$type": "ManyCards:FittingRestriction:",
-					"cardRestriction": {
-					"elements": [ {
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [ {
 							"$type": "Core.CardRestriction:Subtypes:",
 							"subtypes": [ "Light" ]
 						} ]

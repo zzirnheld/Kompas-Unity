@@ -7,19 +7,20 @@
             "blurb": "Planned construction",
 			"triggerData": {
 				"triggerCondition": "Turn Start",
-				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play"
+				"triggerRestriction":{
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" }
 					]
 				}
 			},
 			"subeffects": [
 				{
 					"$type":"Subeffect:CardTarget:",
+					"blurb":"for Well-Planned Defense to summon",
 					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction":
 					{
-						"blurb":"for Well-Planned Defense to summon",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
 							{
@@ -31,8 +32,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "Space on the edge of the board to play the Structure to",
 					"spaceRestriction": {
-						"blurb": "Space on the edge of the board to play the Structure to",
+						"$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
 							{ "$type": "Core.SpaceRestriction:Edge:" },

@@ -22,22 +22,14 @@
 			"Adjacent to Friendly Card"
 		],
 		"spaceRestriction": {
-			"elements": [
-				{
-					"$type": "Core.SpaceRestriction:InAOEOf:",
-					"anyOf": {
-						"$type": "ManyCards:FittingRestriction:",
-						"cardRestriction": {
-							"elements": [
-								{
-									"$type": "Core.CardRestriction:Subtypes:",
-									"subtypes": [ "Water" ]
-								}
-							]
-						}
-					}
+			"$type": "Core.SpaceRestriction:InAOEOf:",
+			"anyOf": {
+				"$type": "ManyCards:FittingRestriction:",
+				"cardRestriction": {
+					"$type": "Core.CardRestriction:Subtypes:",
+					"subtypes": [ "Water" ]
 				}
-			]
+			}
 		}
 	},
 	"n": 1,

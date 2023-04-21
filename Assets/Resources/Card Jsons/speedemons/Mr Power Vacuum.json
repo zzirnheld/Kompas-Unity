@@ -7,15 +7,17 @@
 			"triggerData": {
 				"triggerCondition": "Move",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card",
-						"Space Fits Restriction"
-					],
-					"spaceRestriction": {
-						"elements": [
-							{
-								"$type": "Core.SpaceRestriction:AdjacentTo:",
-								"cardRestriction": { "elements": [
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCard:" }
+						},
+						{
+							"$type": "Core.SpaceRestriction:AdjacentTo:",
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:AllOf:",
+								"elements": [
 									{
 										"$type": "Core.CardRestriction:Not:",
 										"negated": {
@@ -27,10 +29,10 @@
 										"$type": "Core.CardRestriction:Subtypes:",
 										"subtypes": [ "Speedemon" ]
 									}
-								] }
+								]
 							}
-						]
-					}
+						}
+					]
 				}
 			},
 			"subeffects": [
@@ -52,14 +54,9 @@
 					"blurb": "card to vakoom",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"elements": [
-							{
-								"$type": "Core.SpaceRestriction:AdjacentTo:",
-								"space": { "$type": "Spaces:TargetIndex:" }
-							}
-						]
-					},
-					"xMultiplier": 1
+						"$type": "Core.SpaceRestriction:AdjacentTo:",
+						"space": { "$type": "Spaces:TargetIndex:" }
+					}
 				},
 				{
 					"$type": "Subeffect:Annihilate:"

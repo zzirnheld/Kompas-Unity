@@ -9,15 +9,21 @@
 				"blurb":"*notices your dragon*",
 				"triggerCondition":"Discard",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card is Main Card","Stackable Source Fits Restriction Now"],
-					"sourceRestriction":{
-						"elements": [
-							{
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCard:" }
+						},
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CauseBefore:" },
+                            "cardRestriction": {
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Dragon" ]
 							}
-						]
-					}
+                        }
+					]
 				}
 			},
 			"subeffects":[
@@ -33,6 +39,7 @@
 					"cardRestriction":
 					{
 						"blurb":"OWO SO DRAGONNNNNNNNN",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",

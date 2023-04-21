@@ -7,9 +7,9 @@
 			"blurb": "Fish",
 			"triggerData": {
 				"triggerCondition": "Turn Start",
-				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play"
+				"triggerRestriction":{
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" }
 					]
 				}
 			},
@@ -25,30 +25,21 @@
 					"$type": "Subeffect:ConditionalEnd:",
 					"condition": "Target Fits Restriction",
 					"cardRestriction": {
-						"elements": [
-                            {
-								"$type": "Core.SpaceRestriction:InAOEOf:",
-								"anyOf": {
-									"$type": "ManyCards:FittingRestriction:",
-									"cardRestriction": {
-										"elements": [
-											{
-												"$type": "Core.CardRestriction:Subtypes:",
-												"subtypes": [ "Water" ]
-											}
-										]
-									}
-								}
-                            }
-						]
+						"$type": "Core.SpaceRestriction:InAOEOf:",
+						"anyOf": {
+							"$type": "ManyCards:FittingRestriction:",
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Water" ]
+							}
+						}
 					}
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "cards for Ma Rinner to bottomdeck",
 					"toSearch": { "$type": "ManyCards:Hand:" },
-					"cardRestriction": {
-						"blurb": "cards for Ma Rinner to bottomdeck"
-					},
+					"cardRestriction": { "$type": "Core.CardRestriction:AlwaysValid:" },
 					"listRestriction": {
 						"listRestrictions": [
 							"Min Can Choose",
@@ -89,22 +80,14 @@
 			"Adjacent to Friendly Card"
 		],
 		"spaceRestriction": {
-			"elements": [
-				{
-					"$type": "Core.SpaceRestriction:InAOEOf:",
-					"anyOf": {
-						"$type": "ManyCards:FittingRestriction:",
-						"cardRestriction": {
-							"elements": [
-								{
-									"$type": "Core.CardRestriction:Subtypes:",
-									"subtypes": [ "Water" ]
-								}
-							]
-						}
-					}
+			"$type": "Core.SpaceRestriction:InAOEOf:",
+			"anyOf": {
+				"$type": "ManyCards:FittingRestriction:",
+				"cardRestriction": {
+					"$type": "Core.CardRestriction:Subtypes:",
+					"subtypes": [ "Water" ]
 				}
-			]
+			}
 		}
 	},
 	"unique": true,

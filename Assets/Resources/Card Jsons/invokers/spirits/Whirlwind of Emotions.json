@@ -8,19 +8,27 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card",
-						"Main Card Fits Restriction Before"
-					],
-					"cardRestriction": {
-						"elements": [
-                            { "$type": "Core.CardRestriction:Character:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Discard" ]
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCard:" }
+						},
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:AllOf:",
+								"elements": [
+									{ "$type": "Core.CardRestriction:Character:" },
+									{
+										"$type": "Core.CardRestriction:Location:",
+										"locations": [ "Discard" ]
+									}
+								]
 							}
-						]
-					}
+						}
+					]
 				}
 			},
 			"subeffects": [
@@ -34,7 +42,7 @@
 					"$type": "Subeffect:ConditionalEnd:",
 					"condition": "Number of Cards Fitting CardRestriction Fits NumberRestriction",
 					"cardRestriction": {
-						"blurb": "for Whirlwind of Emotions to summon",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{ "$type": "Core.CardRestriction:Character:" },
@@ -57,8 +65,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "for Whirlwind of Emotions to summon",
 					"cardRestriction": {
-						"blurb": "for Whirlwind of Emotions to summon",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{ "$type": "Core.CardRestriction:Character:" },
@@ -75,8 +84,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where to summon that Spirit",
 					"spaceRestriction": {
-						"blurb": "where to summon that Spirit",
+						"$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {
@@ -91,8 +101,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "for Whirlwind of Emotions to summon",
 					"cardRestriction": {
-						"blurb": "for Whirlwind of Emotions to summon",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{ "$type": "Core.CardRestriction:Character:" },
@@ -109,8 +120,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where to summon that Spirit",
 					"spaceRestriction": {
-						"blurb": "where to summon that Spirit",
+						"$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {

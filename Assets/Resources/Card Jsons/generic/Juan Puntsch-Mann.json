@@ -1,20 +1,25 @@
 {
 	"cardType": 67,
 	"cardName": "Juan Puntsch-Mann",
-	"effText": "When I attack a Summoned E X character, give me +X W.",
+	"effText": "When I attack an E X summon, give me +X W.",
 	"effects": [
 		{
 			"blurb": "Juan Puntsch",
 			"triggerData": {
 				"triggerCondition": "Attack",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card",
-                        "Secondary Card Fits Restriction Before"
-					],
-                    "secondaryCardRestriction": {
-						"elements": [ { "$type": "Core.CardRestriction:Summoned:" } ]
-                    }
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCard:" }
+						},
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CardBefore:", "secondaryCard": true },
+                            "cardRestriction":  { "$type": "Core.CardRestriction:Summoned:" }
+                        }
+					]
 				}
 			},
 			"subeffects": [

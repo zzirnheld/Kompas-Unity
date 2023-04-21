@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace KompasCore.Effects.Restrictions
 {
-    public abstract class CardRestrictionElement : RestrictionElementBase<GameCardBase>, IRestrictionElement<Space>
+    public abstract class CardRestrictionElement : RestrictionBase<GameCardBase>, IRestriction<Space>
     {
         public bool IsValid(Space item, IResolutionContext context)
             => IsValid(InitializationContext.game.BoardController.GetCardAt(item), context);
@@ -11,9 +11,22 @@ namespace KompasCore.Effects.Restrictions
 
     namespace CardRestrictionElements
     {
+        public class AlwaysValid : CardRestrictionElement
+        {
+            protected override bool IsValidLogic(GameCardBase item, IResolutionContext context) => true;
+        }
+    
+        public class AllOf : AllOfBase<GameCardBase>
+        {
+            public GameCard Source => InitializationContext.source;
+
+            public override string ToString() => $"Card Restriction of {Source?.CardName}." +
+                $"\nRestriction Elements: {string.Join(", ", elements.Select(r => r))}";
+        }
+
         public class Not : CardRestrictionElement
         {
-            public IRestrictionElement<GameCardBase> negated;
+            public IRestriction<GameCardBase> negated;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {

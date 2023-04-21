@@ -8,26 +8,24 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"Main Card Fits Restriction Before",
-						"This Card Fits Restriction Now"
-					],
-					"cardRestriction": {
-						"elements": [
-							{
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"cardRestriction": {
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Mech", "Golem" ]
 							}
-						]
-					},
-					"selfRestriction": {
-						"elements": [
-							{
+						},
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:ThisCard:" },
+                            "cardRestriction": {
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Discard" ]
 							}
-						]
-					}
+                        }
+					]
 				}
 			},
 			"subeffects": [
@@ -47,6 +45,7 @@
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "character within 4 spaces to have this Mech attack",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
 							{
@@ -58,10 +57,7 @@
 							},
                             {
                                 "$type": "Core.SpaceRestriction:CompareDistance:",
-                                "distanceTo": {
-                                    "$type": "Spaces:PositionOf:",
-                                    "ofThisCard": { "$type": "Cards:TargetIndex:" }
-                                },
+                                "distanceTo": { "$type": "Cards:TargetIndex:" },
                                 "number": { "$type": "Numbers:Constant:", "constant": 2 },
                                 "comparison": { "$type": "Relationships.Number:LessThanEqual:" }
                             }
@@ -80,8 +76,15 @@
 			"triggerData": {
 				"triggerCondition": "Attack",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"Augmented Card is Main Card"
+					"elements": [
+                        {
+                            "$type": "Core.TriggerRestriction:CardsMatch:",
+                            "card": { "$type": "Cards:CardBefore:" },
+                            "other": {
+                                "$type": "Cards:AugmentedCard:",
+                                "ofThisCard": { "$type": "Cards:ThisCard:" }
+                            }
+                        }
 					]
 				}
 			},

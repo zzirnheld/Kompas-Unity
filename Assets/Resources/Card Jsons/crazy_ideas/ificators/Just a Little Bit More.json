@@ -7,8 +7,12 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCard:" }
+						}
 					]
 				}
 			},
@@ -19,19 +23,18 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "you! move a little bit to the left...",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "you! move a little bit to the left...",
-						"elements": [ {
-							"$type": "Core.CardRestriction:CanMove:",
-							"spaceRestrictionSubeffectIndex": 2
-						} ]
+						"$type": "Core.CardRestriction:CanMove:",
+						"spaceRestrictionSubeffectIndex": 2
 					}
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "ok, now move just a little bit more",
 					"spaceRestriction": {
-						"blurb": "ok, now move just a little bit more",
+						"$type": "Core.SpaceRestriction:AllOf:",
 						"elements": [
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
@@ -39,10 +42,7 @@
 							},
 							{
 								"$type": "Core.SpaceRestriction:CompareDistance:",
-								"distanceTo": {
-									"$type": "Spaces:PositionOf:",
-									"ofThisCard": { "$type": "Cards:TargetIndex:" }
-								},
+								"distanceTo": { "$type": "Cards:TargetIndex:" },
 								"number": { "$type": "Numbers:Constant:", "constant": 1 }
 							}
 						]

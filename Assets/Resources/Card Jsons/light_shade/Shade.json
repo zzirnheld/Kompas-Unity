@@ -10,24 +10,33 @@
             {
                 "triggerCondition":"Stack End",
                 "triggerRestriction":{
-                    "triggerRestrictions":["This Card Fits Restriction Now"],
-                    "selfRestriction":{
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							},
-							{
-								"$type": "Core.CardRestriction:AOEContains:",
-								"cardRestriction": {
-									"elements": [
-										{ "$type": "Core.CardRestriction:Enemy:" },
-										{ "$type": "Core.CardRestriction:Character:" }
-									]
-								}
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+									{
+										"$type": "Core.CardRestriction:Location:",
+										"locations": [ "Board" ]
+									},
+									{
+										"$type": "Core.CardRestriction:AOEContains:",
+										
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+												{ "$type": "Core.CardRestriction:Enemy:" },
+												{ "$type": "Core.CardRestriction:Character:" }
+											]
+										}
+									}
+								]
 							}
-						]
-                    }
+						}
+					]
                 }
             },
             "subeffects":[
@@ -43,8 +52,10 @@
 				{
 					"$type": "Subeffect:AutoTarget:",
 					"toSearch": { "$type": "ManyCards:Deck:" },
-					"cardRestriction": {
-						"elements": [
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{ "$type": "Core.CardRestriction:Spell:" },
 							{

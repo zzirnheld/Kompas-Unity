@@ -18,12 +18,8 @@
 			"condition":"Target Violates Restriction",
 			"cardRestriction":
 			{
-				"elements": [
-					{
-						"$type": "Core.CardRestriction:Location:",
-						"locations": [ "Hand" ]
-					}
-				]
+				"$type": "Core.CardRestriction:Location:",
+				"locations": [ "Hand" ]
 			}
 		},
 		{
@@ -34,13 +30,8 @@
 			"$type":"Subeffect:SpaceTarget:",
 			"spaceRestriction":
 			{
-				"blurb":"where to Flashback the card",
-				"elements": [
-					{
-						"$type": "Core.SpaceRestriction:CanPlayCard:",
-						"toPlay": { "$type": "Cards:TargetIndex:" }
-					}
-				]
+				"$type": "Core.SpaceRestriction:CanPlayCard:",
+				"toPlay": { "$type": "Cards:TargetIndex:" }
 			}
 		},
 		{

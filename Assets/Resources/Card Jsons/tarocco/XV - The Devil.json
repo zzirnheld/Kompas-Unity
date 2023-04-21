@@ -7,16 +7,24 @@
 			"triggerData": {
 				"triggerCondition": "Rehand",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Main Card Fits Restriction Before",
-						"From Deck"
-					],
-					"cardRestriction": {
-						"elements": [
-							{ "$type": "Core.CardRestriction:Enemy:" }
-						]
-					}
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+									{ "$type": "Core.CardRestriction:Enemy:" },
+									{
+										"$type": "Core.CardRestriction:Location:",
+										"locations": [ "Deck" ]
+									}
+								]
+							}
+						}
+					]
 				}
 			},
 			"subeffects": [

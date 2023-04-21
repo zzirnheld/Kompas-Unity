@@ -8,18 +8,23 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCard:" }
+						}
 					]
 				}
 			},
 			"subeffects": [
 				{
 					"$type":"Subeffect:CardTarget:",
+					"blurb":"friendly Maya Structure to duplicate",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction":
 					{
-						"blurb":"friendly Maya Structure to duplicate",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Friendly:" },
@@ -32,9 +37,10 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "copies of Structure to decksummon",
 					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"blurb": "copies of Structure to decksummon",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
@@ -50,8 +56,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "Space for your enemy to play a Structure to",
 					"spaceRestriction": {
-						"blurb": "Space for your enemy to play a Structure to",
+						"$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
 							{ "$type": "Core.SpaceRestriction:Edge:" },

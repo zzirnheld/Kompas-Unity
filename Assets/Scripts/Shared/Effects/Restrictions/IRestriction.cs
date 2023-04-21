@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using KompasCore.Cards;
 using UnityEngine;
 
 namespace KompasCore.Effects
@@ -10,57 +9,40 @@ namespace KompasCore.Effects
     {
         bool IsValid(Type item, IResolutionContext context);
     }
-
+    
     public abstract class RestrictionBase<Type> : ContextInitializeableBase, IRestriction<Type>
     {
-        public IList<IRestrictionElement<Type>> elements = new IRestrictionElement<Type>[] { };
-
-        public override void Initialize(EffectInitializationContext initializationContext)
-        {
-            base.Initialize(initializationContext);
-            foreach (var element in elements) element.Initialize(initializationContext);
-        }
-
         public bool IsValid(Type item, IResolutionContext context)
         {
             ComplainIfNotInitialized();
 
             try
             {
-                return IsValidLogic(item, context);
+                return item != null && IsValidLogic(item, context);
             }
-            catch (SystemException exception) when (exception is NullReferenceException || exception is ArgumentException)
+            catch (SystemException exception)
+                when (exception is NullReferenceException || exception is ArgumentException)
             {
                 Debug.LogError(exception);
                 return false;
             }
         }
 
-        protected virtual bool IsValidLogic(Type item, IResolutionContext context)
+        protected abstract bool IsValidLogic(Type item, IResolutionContext context);
+    }
+
+    public abstract class AllOfBase<Type> : RestrictionBase<Type>
+    {
+        public IList<IRestriction<Type>> elements = new IRestriction<Type>[] { };
+
+        public override void Initialize(EffectInitializationContext initializationContext)
+        {
+            base.Initialize(initializationContext);
+            foreach (var element in elements) element.Initialize(initializationContext);
+            if (elements.Count == 1) Debug.LogWarning($"only one element on {GetType()} on eff of {initializationContext.source}");
+        }
+
+        protected override bool IsValidLogic(Type item, IResolutionContext context)
             => elements.All(r => r.IsValid(item, context));
-    }
-    
-    public class CardRestriction : RestrictionBase<GameCardBase>
-    {
-        public string blurb = "";
-
-        public GameCard Source => InitializationContext.source;
-
-        public override string ToString() => $"Card Restriction of {Source?.CardName}." +
-            $"\nRestriction Elements: {string.Join(", ", elements.Select(r => r))}";
-
-    }
-    
-    public class SpaceRestriction : RestrictionBase<Space>
-    {
-
-        public string blurb = "";
-
-        //TODO correct any places still using mustBeEmpty
-
-        public Func<Space, bool> AsThroughPredicate(IResolutionContext context)
-            => s => IsValid(s, context);
-
-        public Func<Space, bool> IsValidFor(IResolutionContext context) => s => IsValid(s, context);
     }
 }

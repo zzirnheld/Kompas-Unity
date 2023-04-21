@@ -7,15 +7,19 @@
 			"triggerData": {
 				"triggerCondition": "Attack",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCard:" }
+						}
 					]
 				}
 			},
 			"subeffects": [
 				{
 					"$type":"Subeffect:TargetTriggeringCard:",
-					"secondary":true
+					"contextSecondaryCard":true
 				},
 				{
 					"$type": "Subeffect:SkipToEffectOnImpossible:",
@@ -27,16 +31,10 @@
 					"$type": "Subeffect:AutoTargetSpaceIdentity:",
                     "spaceIdentity": {
                         "$type": "Spaces:ApplyDisplacement:",
-                        "from": {
-							"$type": "Spaces:PositionOf:",
-							"ofThisCard": { "$type": "Spaces:TargetIndex:" }
-						},
+                        "from": { "$type": "Spaces:TargetIndex:" },
 						"displacement": {
 							"$type": "Spaces:Displacement:",
-							"from": {
-								"$type": "Spaces:PositionOf:",
-								"ofThisCard": { "$type": "Cards:ThisCard:" }
-							},
+							"from": { "$type": "Cards:ThisCard:" },
 							"to": { "$type": "Spaces:TargetIndex:" }
 						}
                     }

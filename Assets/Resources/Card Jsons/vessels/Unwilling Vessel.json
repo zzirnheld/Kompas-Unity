@@ -7,9 +7,9 @@
 			"blurb": "No!",
 			"triggerData": {
 				"triggerCondition": "Turn Start",
-				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play"
+				"triggerRestriction":{
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" }
 					]
 				}
 			},
@@ -22,6 +22,7 @@
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "I don't want to remember!",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
@@ -55,8 +56,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where to move the Unwilling Vessel",
 					"spaceRestriction": {
-						"blurb": "where to move the Unwilling Vessel",
+						"$type": "Core.SpaceRestriction:AllOf:",
 						"elements": [
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
@@ -64,10 +66,7 @@
 							},
                             {
                                 "$type": "Core.SpaceRestriction:CompareDistance:",
-                                "distanceTo": {
-                                    "$type": "Spaces:PositionOf:",
-                                    "ofThisCard": { "$type": "Cards:ThisCard:" }
-                                },
+                                "distanceTo": { "$type": "Cards:ThisCard:" },
                                 "number": { "$type": "Numbers:EffectX:" },
                                 "comparison": { "$type": "Relationships.Number:LessThanEqual:" }
                             }

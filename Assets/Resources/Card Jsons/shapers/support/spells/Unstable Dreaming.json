@@ -7,17 +7,22 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCard:" }
+						}
 					]
 				}
 			},
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Shaper to hand-summon",
 					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
-						"blurb": "Shaper to hand-summon",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
 							{
@@ -29,8 +34,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where to handsummon the Shaper",
 					"spaceRestriction": {
-						"blurb": "where to handsummon the Shaper",
+						"$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {
@@ -47,8 +53,8 @@
 					"$type": "Subeffect:Hanging.Annihilation:",
 					"endCondition": "Turn Start",
 					"triggerRestriction": {
-						"triggerRestrictions": [
-							"Friendly Turn"
+						"elements": [
+							{ "$type": "Core.TriggerRestriction:FriendlyTurn:" }
 						]
 					}
 				}

@@ -8,7 +8,7 @@ namespace KompasCore.Effects.Identities.ManyCards
     {
         public IIdentity<IReadOnlyCollection<GameCardBase>> cards = new ManyCards.All();
 
-        public CardRestriction cardRestriction;
+        public IRestriction<GameCardBase> cardRestriction;
 
         public override void Initialize(EffectInitializationContext initializationContext)
         {

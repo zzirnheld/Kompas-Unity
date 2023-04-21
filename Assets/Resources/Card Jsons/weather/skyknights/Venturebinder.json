@@ -8,48 +8,58 @@
 			"triggerData": {
 				"triggerCondition": "Arrive",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Main Card Fits Restriction Before",
-						"Main Card Fits Restriction After"
-					],
-					"cardRestriction": {
-						"elements": [
-                            { "$type": "Core.CardRestriction:Character:" },
-							{ "$type": "Core.CardRestriction:Enemy:" },
-                            {
-								"$type": "Core.SpaceRestriction:Not:",
-								"negated": {
-									"$type": "Core.SpaceRestriction:InAOEOf:",
-									"anyOf": {
-										"$type": "ManyCards:FittingRestriction:",
-										"cardRestriction": {
-										"elements": [ {
-												"$type": "Core.CardRestriction:Subtypes:",
-												"subtypes": [ "Weather" ]
-											} ]
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CardAfter:" },
+                            
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+									{
+										"$type": "Core.SpaceRestriction:InAOEOf:",
+										"anyOf": {
+											"$type": "ManyCards:FittingRestriction:",
+											
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [ {
+													"$type": "Core.CardRestriction:Subtypes:",
+													"subtypes": [ "Weather" ]
+												} ]
+											}
 										}
 									}
-								}
-                            }
-						]
-					},
-					"nowRestriction": {
-						"elements": [
-							{
-								"$type": "Core.SpaceRestriction:InAOEOf:",
-								"anyOf": {
-									"$type": "ManyCards:FittingRestriction:",
-									"cardRestriction": {
-									"elements": [ {
-											"$type": "Core.CardRestriction:Subtypes:",
-											"subtypes": [ "Weather" ]
-										} ]
-									}
-								}
+								]
 							}
-						]
-					}
+						},
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CardBefore:" },
+                            
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+									{ "$type": "Core.CardRestriction:Character:" },
+									{ "$type": "Core.CardRestriction:Enemy:" },
+									{
+										"$type": "Core.SpaceRestriction:Not:",
+										"negated": {
+											"$type": "Core.SpaceRestriction:InAOEOf:",
+											"anyOf": {
+												"$type": "ManyCards:FittingRestriction:",
+												"cardRestriction": {
+													"$type": "Core.CardRestriction:Subtypes:",
+													"subtypes": [ "Weather" ]
+												}
+											}
+										}
+									}
+								]
+                            }
+                        }
+					]
 				}
 			},
 			"subeffects": [

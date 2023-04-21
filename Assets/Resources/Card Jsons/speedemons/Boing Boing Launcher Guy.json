@@ -7,8 +7,12 @@
 			"triggerData": {
 				"triggerCondition": "Move",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCard:" }
+						}
 					]
 				}
 			},
@@ -20,7 +24,9 @@
 					"$type": "Subeffect:CardTarget:",
 					"blurb": "card to boing boing",
 					"toSearch": { "$type": "ManyCards:Board:" },
+					
 					"cardRestriction": {
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{
 								"$type": "Core.CardRestriction:Not:",
@@ -42,8 +48,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where to boing boing launch that guy",
 					"spaceRestriction": {
-						"blurb": "where to boing boing launch that guy",
+						"$type": "Core.SpaceRestriction:AllOf:",
 						"elements": [
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
@@ -51,18 +58,12 @@
 							},
 							{
 								"$type": "Core.SpaceRestriction:CompareDistance:",
-								"distanceTo": {
-									"$type": "Spaces:PositionOf:",
-									"ofThisCard": { "$type": "Cards:TargetIndex:" }
-								},
+								"distanceTo": { "$type": "Cards:TargetIndex:" },
 								"number": { "$type": "Numbers:Constant:", "constant": 1 }
 							},
 							{
 								"$type": "Core.SpaceRestriction:AwayFrom:",
-								"destination": {
-                                    "$type": "Spaces:PositionOf:",
-                                    "ofThisCard": { "$type": "Cards:ThisCard:" }
-                                },
+								"destination": { "$type": "Cards:ThisCard:" },
 								"origin": { "$type": "Spaces:TargetIndex:" }
 							}
 						]

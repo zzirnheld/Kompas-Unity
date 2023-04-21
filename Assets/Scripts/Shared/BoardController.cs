@@ -106,13 +106,13 @@ namespace KompasCore.GameCore
             return list;
         }
 
-        public bool AreConnectedBySpaces(Space source, Space destination, CardRestriction restriction, IResolutionContext context)
+        public bool AreConnectedBySpaces(Space source, Space destination, IRestriction<GameCardBase> restriction, IResolutionContext context)
             => AreConnectedBySpaces(source, destination, c => restriction.IsValid(c, context));
 
         public bool AreConnectedBySpaces(Space source, Space destination, Func<GameCard, bool> throughPredicate)
             => AreConnectedBySpaces(source, destination, s => throughPredicate(GetCardAt(s)));
 
-        public bool AreConnectedBySpaces(Space source, Space destination, SpaceRestriction restriction, IResolutionContext context)
+        public bool AreConnectedBySpaces(Space source, Space destination, IRestriction<Space> restriction, IResolutionContext context)
             => AreConnectedBySpaces(source, destination, s => restriction.IsValid(s, context));
 
         public bool AreConnectedBySpaces(Space source, Space destination, Func<Space, bool> predicate)
@@ -125,7 +125,7 @@ namespace KompasCore.GameCore
         public int ShortestEmptyPath(GameCard src, Space destination)
             => Board[destination.x, destination.y] == null ? ShortestPath(src.Position, destination, IsEmpty) : NoPathExists;
 
-        public int ShortestPath(GameCard source, Space space, CardRestriction restriction, IResolutionContext context)
+        public int ShortestPath(GameCard source, Space space, IRestriction<GameCardBase> restriction, IResolutionContext context)
             => ShortestPath(source.Position, space, c => restriction.IsValid(c, context));
 
         public int ShortestPath(Space source, Space end, Func<GameCard, bool> throughPredicate)

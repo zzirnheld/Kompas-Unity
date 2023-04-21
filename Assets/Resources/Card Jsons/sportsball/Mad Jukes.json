@@ -8,20 +8,24 @@
 				"blurb": "Mad Jukes My Dude!",
 				"triggerCondition": "Arrive",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Main Card Fits Restriction Before"
-					],
-					"cardRestriction": {
-						"elements": [
-                            { "$type": "Core.CardRestriction:Character:" },
-							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:HasAugment:",
-								"elements": [ ]
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:AllOf:",
+								"elements": [
+									{ "$type": "Core.CardRestriction:Character:" },
+									{ "$type": "Core.CardRestriction:Friendly:" },
+									{
+										"$type": "Core.CardRestriction:HasAugment:",
+										"elements": [ ]
+									}
+								]
 							}
-						]
-					}
+						}
+					]
 				}
 			},
 			"subeffects": [
@@ -52,16 +56,16 @@
 				},
 				{
 					"$type": "Subeffect:ChangeAllCardStats:",
-					"cardRestriction": { "elements": [
-						{ "$type": "Core.CardRestriction:Character:" },
-						{
-							"$type": "Core.SpaceRestriction:AdjacentTo:",
-							"space": {
-								"$type": "Spaces:PositionOf:",
-								"ofThisCard": { "$type": "Cards:TargetIndex:" }
+					"cardRestriction": {
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": { "$type": "Cards:TargetIndex:" }
 							}
-						}
-					] },
+						]
+					},
 					"wMultiplier": -1
 				}
 			]

@@ -69,8 +69,8 @@ namespace KompasServer.Effects.Subeffects.Hanging
             private readonly GameCard buffRecipient;
             private readonly CardStats buff;
 
-            public ChangeCardStatsEffect(ServerGame game, TriggerRestriction triggerRestriction, string endCondition,
-                string fallOffCondition, TriggerRestriction fallOffRestriction, Effect sourceEff,
+            public ChangeCardStatsEffect(ServerGame game, IRestriction<TriggeringEventContext> triggerRestriction, string endCondition,
+                string fallOffCondition, IRestriction<TriggeringEventContext> fallOffRestriction, Effect sourceEff,
                 IResolutionContext currentContext, GameCard buffRecipient, CardStats buff)
                 : base(game, triggerRestriction, endCondition, fallOffCondition, fallOffRestriction, sourceEff, currentContext, removeIfEnd: true)
             {

@@ -1,25 +1,21 @@
 using System.Linq;
 using KompasServer.Cards;
 
-namespace KompasCore.Effects.Restrictions
+namespace KompasCore.Effects.Restrictions.TriggerRestrictionElements
 {
-
-    namespace TriggerRestrictionElements
+    public class TriggerKeyword : TriggerRestrictionBase
     {
-        public class TriggerKeyword : TriggerRestrictionElement
+        public string keyword;
+
+        private IRestriction<TriggeringEventContext> [] elements;
+
+        public override void Initialize(EffectInitializationContext initializationContext)
         {
-            public string keyword;
-
-            private TriggerRestrictionElement[] triggerRestrictionElements;
-
-            public override void Initialize(EffectInitializationContext initializationContext)
-            {
-                base.Initialize(initializationContext);
-                triggerRestrictionElements = ServerCardRepository.InstantiateTriggerKeyword(keyword);
-            }
-
-            protected override bool AbstractIsValidContext(TriggeringEventContext context, IResolutionContext secondaryContext)
-                => triggerRestrictionElements.All(tre => tre.IsValidContext(context, secondaryContext));
+            base.Initialize(initializationContext);
+            elements = ServerCardRepository.InstantiateTriggerKeyword(keyword);
         }
+
+        protected override bool IsValidLogic(TriggeringEventContext context, IResolutionContext secondaryContext)
+            => elements.All(tre => tre.IsValid(context, secondaryContext));
     }
 }

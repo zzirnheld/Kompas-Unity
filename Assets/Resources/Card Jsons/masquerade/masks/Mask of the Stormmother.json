@@ -8,15 +8,15 @@
 			"triggerData": {
 				"triggerCondition": "Attack",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
                         { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
                         {
                             "$type": "Core.TriggerRestriction:CardsMatch:",
-                            "firstCard": {
+                            "card": {
                                 "$type": "Cards:AugmentedCard:",
                                 "ofThisCard": { "$type": "Cards:ThisCard:" }
                             },
-                            "secondCard": { "$type": "Cards:CardBefore:" }
+                            "other": { "$type": "Cards:CardBefore:" }
                         }
 					]
 				}
@@ -49,20 +49,14 @@
 			"On Card that Fits Restriction"
 		],
 		"onCardRestriction": {
-			"elements": [ {
-				"$type": "Core.CardRestriction:Not:",
-				"negated": {
-					"$type": "Core.CardRestriction:HasAugment:",
-					"cardRestriction": {
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Name:",
-								"sameAs": { "$type": "Cards:ThisCard:" }
-							}
-						]
-					}
+			"$type": "Core.CardRestriction:Not:",
+			"negated": {
+				"$type": "Core.CardRestriction:HasAugment:",
+				"cardRestriction": {
+					"$type": "Core.CardRestriction:Name:",
+					"sameAs": { "$type": "Cards:ThisCard:" }
 				}
-			} ]
+			}
 		}
 	},
 	"a": 5,

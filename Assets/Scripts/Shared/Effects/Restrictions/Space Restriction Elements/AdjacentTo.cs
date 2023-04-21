@@ -10,7 +10,7 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
     /// </summary>
     public class AdjacentTo : SpaceRestrictionElement
     {
-        public CardRestriction cardRestriction;
+        public IRestriction<GameCardBase> cardRestriction;
         public IIdentity<IReadOnlyCollection<GameCardBase>> anyOfTheseCards;
         public IIdentity<GameCardBase> card;
         public IIdentity<Space> space;

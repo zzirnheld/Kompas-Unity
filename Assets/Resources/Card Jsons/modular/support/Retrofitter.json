@@ -8,41 +8,40 @@
 			"triggerData": {
 				"triggerCondition": "Augment Attached",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Main Card Fits Restriction After"
-					],
-					"nowRestriction": {
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Module" ]
-							},
-							{
-								"$type": "Core.CardRestriction:Augments:",
-                                "cardRestriction": {
-									"elements": [
-										{
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardsMatch:",
+                            "card": { "$type": "Cards:CauseBefore:" },
+                            "other": {
+                                "$type": "Cards:AugmentedCard:",
+                                "ofThisCard": { "$type": "Cards:CardBefore:" }
+                            }
+                        },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CardAfter:" },
+                            
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+									{
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Module" ]
+									},
+									{
+										"$type": "Core.CardRestriction:Augments:",
+										"cardRestriction": {
 											"$type": "Core.CardRestriction:Subtypes:",
 											"subtypes": [ "Modular" ]
 										}
-									]
-                                }
-							},
-							{
-								"$type": "Core.SpaceRestriction:AdjacentTo:",
-								"space": {
-									"$type": "Spaces:PositionOf:",
-									"ofThisCard": { "$type": "Cards:ThisCard:" }
-								}
-							}
-						]
-					},
-					"triggerRestrictionElements": [
-                        {
-                            "$type": "Core.TriggerRestriction:CardsMatch:",
-                            "firstCard": { "$type": "Cards:CauseBefore:" },
-                            "secondCard": { "$type": "Cards:CardBefore:" }
+									},
+									{
+										"$type": "Core.SpaceRestriction:AdjacentTo:",
+										"space": { "$type": "Cards:ThisCard:" }
+									}
+								]
+                            }
                         }
 					]
 				}
@@ -60,6 +59,7 @@
 					"cardRestriction":
 					{
 						"blurb": "Module to attach to the Modular character",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Augment:" },
 							{

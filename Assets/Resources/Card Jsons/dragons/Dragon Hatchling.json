@@ -7,8 +7,14 @@
 			"triggerData":
 			{
 				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card is Main Card"]
+				"triggerRestriction": {
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCard:" }
+						}
+					]
 				}
 			},
 			"subeffects":[
@@ -33,6 +39,7 @@
 					"cardRestriction":
 					{
 						"blurb":"for Dragon Hatchling to eat (discard)",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
 							{
@@ -51,6 +58,7 @@
 					"cardRestriction":
 					{
 						"blurb":"for Dragon Hatchling to become (play)",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
 							{

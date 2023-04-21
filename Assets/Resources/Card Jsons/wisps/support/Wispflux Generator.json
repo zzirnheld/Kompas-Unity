@@ -7,9 +7,9 @@
 			"triggerData": {
 				"blurb": "Invoke",
 				"triggerCondition": "Turn Start",
-				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play"
+				"triggerRestriction":{
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" }
 					]
 				}
 			},
@@ -22,6 +22,7 @@
 					"$type": "Subeffect:ConditionalJump:",
 					"condition": "Target Violates Restriction",
 					"cardRestriction": {
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
 							{
@@ -43,14 +44,12 @@
                         "spaces": {
                             "$type": "ManySpaces:FittingRestriction:",
                             "restriction": {
-                                "elements": [ {
-                                    "$type": "Core.SpaceRestriction:CanPlayCard:",
-                                    "toPlay": { "$type": "Cards:TargetIndex:" }
-                                } ]
-                            }
-                        }
-                    }
-                },
+								"$type": "Core.SpaceRestriction:CanPlayCard:",
+								"toPlay": { "$type": "Cards:TargetIndex:" }
+							}
+						}
+					}
+				},
 				{
 					"$type": "Subeffect:Play:"
 				}

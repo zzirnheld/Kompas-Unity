@@ -2,7 +2,6 @@
 using KompasCore.Effects;
 using KompasCore.Effects.Identities;
 using KompasCore.Effects.Identities.ManyCards;
-using KompasCore.Effects.Restrictions;
 using KompasCore.Effects.Restrictions.CardRestrictionElements;
 using System.Collections.Generic;
 
@@ -11,10 +10,7 @@ namespace KompasServer.Effects.Subeffects
     public class ChangeAllCardStats : ChangeCardStats
     {
         //default to making sure things are characters before changing their stats
-        public CardRestriction cardRestriction = new CardRestriction()
-        {
-            elements = new IRestrictionElement<GameCardBase>[] { new Character() }
-        };
+        public IRestriction<GameCardBase> cardRestriction = new Character();
 
         public IIdentity<IReadOnlyCollection<GameCardBase>> cardsSource = new Board();
 

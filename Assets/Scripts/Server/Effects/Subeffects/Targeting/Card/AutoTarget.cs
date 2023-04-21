@@ -2,6 +2,7 @@
 using KompasCore.Effects;
 using KompasCore.Effects.Identities;
 using KompasCore.Effects.Identities.ManyCards;
+using KompasCore.Effects.Restrictions.CardRestrictionElements;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace KompasServer.Effects.Subeffects
         public const string RandomCard = "Random";
 
         public IIdentity<IReadOnlyCollection<GameCardBase>> toSearch = new All();
-        public CardRestriction cardRestriction;
+        public IRestriction<GameCardBase> cardRestriction;
         public CardValue tiebreakerValue;
         public string tiebreakerDirection;
 
@@ -24,7 +25,7 @@ namespace KompasServer.Effects.Subeffects
         {
             base.Initialize(eff, subeffIndex);
             toSearch.Initialize(DefaultInitializationContext);
-            cardRestriction ??= new CardRestriction();
+            cardRestriction ??= new AlwaysValid();
             cardRestriction.Initialize(DefaultInitializationContext);
             tiebreakerValue?.Initialize(DefaultInitializationContext);
         }

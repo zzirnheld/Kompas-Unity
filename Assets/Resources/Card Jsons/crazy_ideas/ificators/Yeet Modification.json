@@ -17,18 +17,15 @@
 					"blurb": "card to slightly yeet",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:CanMove:",
-								"spaceRestrictionSubeffectIndex": 1
-							}
-						]
+						"$type": "Core.CardRestriction:CanMove:",
+						"spaceRestrictionSubeffectIndex": 1
 					}
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where to slightly yeet target card",
 					"spaceRestriction": {
-						"blurb": "where to slightly yeet target card",
+						"$type": "Core.SpaceRestriction:AllOf:",
 						"elements": [
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
@@ -36,10 +33,7 @@
 							},
 							{
 								"$type": "Core.SpaceRestriction:CompareDistance:",
-								"distanceTo": {
-									"$type": "Spaces:PositionOf:",
-									"ofThisCard": { "$type": "Cards:TargetIndex:" }
-								},
+								"distanceTo": { "$type": "Cards:TargetIndex:" },
 								"number": { "$type": "Numbers:Constant:", "constant": 1 }
 							}
 						]

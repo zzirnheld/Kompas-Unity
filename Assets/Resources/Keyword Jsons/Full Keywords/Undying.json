@@ -4,9 +4,20 @@
 		"blurb":"Undying",
 		"triggerCondition":"Discard",
 		"triggerRestriction":{
-			"triggerRestrictions": [
-                "This Card is Main Card",
-                "From Field"
+			"elements": [
+				{
+					"$type": "Core.TriggerRestriction:CardsMatch:",
+					"card": { "$type": "Cards:CardBefore:" },
+					"other": { "$type": "Cards:ThisCard:" }
+				},
+                {
+                    "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                    "card": { "$type": "Cards:CardBefore:" },
+                    "cardRestriction": {
+                        "$type": "Core.CardRestriction:Location:",
+                        "locations": [ "Board" ]
+                    }
+                }
             ]
 		}
 	},

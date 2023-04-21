@@ -7,23 +7,24 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card",
-						"This Card Fits Restriction Now"
-					],
-					"selfRestriction": {
-						"elements": [ {
-							"$type": "Core.SpaceRestriction:AdjacentTo:",
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCard:" }
+						},
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
 							"cardRestriction": {
-								"elements": [
-									{
-										"$type": "Core.CardRestriction:Subtypes:",
-										"subtypes": [ "Shaper" ]
-									}
-								]
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"cardRestriction": {
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Shaper" ]
+								}
 							}
-						} ]
-					}
+						}
+					]
 				}
 			},
 			"subeffects": [

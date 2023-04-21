@@ -7,19 +7,20 @@
             "blurb": "Bonecast",
 			"triggerData": {
 				"triggerCondition": "Turn Start",
-				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play"
+				"triggerRestriction":{
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" }
 					]
 				}
 			},
 			"subeffects": [
 				{
 					"$type":"Subeffect:CardTarget:",
+					"blurb":"Bone to see pips in",
 					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction":
 					{
-						"blurb":"Bone to see pips in",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
 							{
@@ -31,8 +32,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where to put the bone",
 					"spaceRestriction": {
-						"blurb": "where to put the bone",
+						"$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {

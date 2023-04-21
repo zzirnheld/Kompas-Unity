@@ -9,28 +9,31 @@
 				"triggerCondition": "Attack",
 				"blurb": "Fire Breath",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCard:" }
+						}
 					]
 				}
 			},
 			"subeffects": [
 				{
 					"$type":"Subeffect:TargetTriggeringCard:",
-					"secondary":true
+					"contextSecondaryCard":true
 				},
 				{
 					"$type": "Subeffect:ChangeAllCardStats:",
 					"toSearch": { "$type": "ManyCards:Board:" },
-					"cardRestriction": {
-						"elements": [
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
                             {
                                 "$type": "Core.SpaceRestriction:CompareDistance:",
-                                "distanceTo": {
-                                    "$type": "Spaces:PositionOf:",
-                                    "ofThisCard": { "$type": "Cards:TargetIndex:" }
-                                },
+                                "distanceTo": { "$type": "Cards:TargetIndex:" },
                                 "number": { "$type": "Numbers:Constant:", "constant": 1 },
                                 "comparison": { "$type": "Relationships.Number:LessThanEqual:" }
                             }

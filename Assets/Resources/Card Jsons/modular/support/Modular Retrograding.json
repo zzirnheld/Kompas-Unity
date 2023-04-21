@@ -8,29 +8,36 @@
 			"triggerData": {
 				"triggerCondition": "Augment Attached",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Main Card Fits Restriction After"
-					],
-					"nowRestriction": {
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Module" ]
-							},
-							{
-								"$type": "Core.CardRestriction:Augments:",
-                                "cardRestriction": {
-									"elements": [
-										{
-											"$type": "Core.CardRestriction:Subtypes:",
-											"subtypes": [ "Modular" ]
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CardAfter:" },
+                            
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+									{
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Module" ]
+									},
+									{
+										"$type": "Core.CardRestriction:Augments:",
+										
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+												{
+													"$type": "Core.CardRestriction:Subtypes:",
+													"subtypes": [ "Modular" ]
+												}
+											]
 										}
-									]
-                                }
+									}
+								]
 							}
-						]
-					}
+						}
+					]
 				}
 			},
 			"subeffects":[

@@ -79,8 +79,8 @@ namespace KompasCore.Effects
         /// </summary>
         public readonly List<string> effectRestrictions = new List<string>();
 
-        public SpaceRestriction throughSpacesRestriction;
-        public SpaceRestriction floutedDestinationSpaceRestriction;
+        public Restrictions.SpaceRestrictionElements.AllOf throughSpacesRestriction;
+        public Restrictions.SpaceRestrictionElements.AllOf floutedDestinationSpaceRestriction;
 
         public GameCard Card => InitializationContext.source;
 

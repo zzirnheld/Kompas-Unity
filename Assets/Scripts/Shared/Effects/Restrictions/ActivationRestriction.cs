@@ -33,8 +33,8 @@ namespace KompasCore.Effects
 
         public int maxTimes = 1;
         public int location = (int)CardLocation.Board;
-        public CardRestriction existsRestriction;
-        public CardRestriction thisCardRestriction;
+        public IRestriction<GameCardBase> existsRestriction;
+        public IRestriction<GameCardBase> thisCardRestriction;
 
         private readonly List<string> ActivationRestrictions = new List<string>();
         public string[] activationRestrictionArray = null;

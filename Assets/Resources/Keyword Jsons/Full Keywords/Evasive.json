@@ -3,20 +3,24 @@
     "triggerData": {
         "triggerCondition": "Battle Start",
         "triggerRestriction": {
-            "triggerRestrictions": [
-                "This Card is Main Card",
-                "Max Per Round"
+            "elements": [
+                {
+                    "$type": "Core.TriggerRestriction:CardsMatch:",
+                    "card": { "$type": "Cards:CardBefore:" },
+                    "other": { "$type": "Cards:ThisCard:" }
+                },
+                { "$type": "Core.TriggerRestriction:MaxPerRound:" }
             ]
         }
     },
     "subeffects": [
         {
             "$type":"Subeffect:TargetTriggeringCard:",
-            "secondary":true
+            "contextSecondaryCard":true
         },
         {
             "$type": "Subeffect:SetXByTriggeringCardValue:",
-            "secondary":true,
+            "contextSecondaryCard":true,
             "cardValue": {
                 "value": "W"
             },
@@ -27,8 +31,12 @@
             "wMultiplier": -1,
             "endCondition": "Battle End",
             "triggerRestriction": {
-                "triggerRestrictions": [
-                    "Contexts Stackables Match"
+                "elements": [
+                    {
+                        "$type": "Core.TriggerRestriction:StackablesMatch:",
+                        "firstStackable": { "$type": "Stackables:StackableEvent:", "secondaryContext": true },
+                        "secondStackable": { "$type": "Stackables:StackableEvent:" }
+                    }
                 ]
             }
         }

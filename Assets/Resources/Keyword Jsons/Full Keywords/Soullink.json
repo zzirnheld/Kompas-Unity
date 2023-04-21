@@ -3,16 +3,17 @@
     "triggerData": {
         "triggerCondition": "Take Combat Damage",
         "triggerRestriction": {
-            "triggerRestrictions": [
-                "Main Card Fits Restriction Before"
-            ],
-            "cardRestriction": {
-                "elements": [ {
-                    "$type": "Core.CardRestriction:Fighting:",
-                    "defending": true,
-                    "fightingWho": { "$type": "Cards:ThisCard:" }
-                } ]
-            }
+            "elements": [
+                {
+                    "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                    "card": { "$type": "Cards:CardBefore:" },
+                    "cardRestriction": {
+                        "$type": "Core.CardRestriction:Fighting:",
+                        "defending": true,
+                        "fightingWho": { "$type": "Cards:ThisCard:" }
+                    }
+                }
+            ]
         }
     },
     "subeffects": [
@@ -26,7 +27,7 @@
         },
         {
             "$type":"Subeffect:TargetTriggeringCard:",
-            "secondary":true
+            "contextSecondaryCard":true
         },
         {
             "$type": "Subeffect:ConditionalEnd:",

@@ -7,13 +7,14 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Main Card Fits Restriction Before"
-					],
-					"cardRestriction": {
-						"elements": [ { "$type": "Core.CardRestriction:Character:" } ]
-					}
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"cardRestriction": { "$type": "Core.CardRestriction:Character:" }
+						}
+					]
 				}
 			},
 			"subeffects": [
@@ -22,9 +23,10 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "who will Leygrapple",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "who will Leygrapple",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
 							{
@@ -33,26 +35,21 @@
 							},
 							{
 								"$type": "Core.SpaceRestriction:SameDiagonal:",
-								"other": {
-									"$type": "Spaces:PositionOf:",
-									"card": { "$type": "Cards:TargetIndex:" }
-								}
+								"other": { "$type": "Cards:TargetIndex:" }
 							}
 						]
 					}
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "to move that Linewalker to",
 					"spaceRestriction": {
-						"blurb": "to move that Linewalker to",
+						"$type": "Core.SpaceRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.SpaceRestriction:Empty:" },
 							{
 								"$type": "Core.SpaceRestriction:AdjacentTo:",
-								"space": {
-                                    "$type": "Spaces:PositionOf:",
-                                    "ofThisCard": { "$type": "Cards:TargetIndex:" }
-                                }
+								"space": { "$type": "Cards:TargetIndex:" }
 							}
 						]
 					},

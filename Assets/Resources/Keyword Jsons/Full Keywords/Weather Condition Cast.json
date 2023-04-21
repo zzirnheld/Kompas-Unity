@@ -4,7 +4,9 @@
 	{
 		"triggerCondition":"Turn Start",
 		"triggerRestriction":{
-			"triggerRestrictions":["This Card in Play"]
+			"elements": [
+				{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" }
+			]
 		}
 	},
 	"subeffects":[
@@ -30,9 +32,10 @@
 		},
 		{
 			"$type":"Subeffect:SpaceTarget:",
+			"blurb":"where to cast the Weather",
 			"spaceRestriction":
 			{
-				"blurb":"where to cast the Weather",
+				"$type": "Core.SpaceRestriction:AllOf:",
 				"elements": [
 					{
 						"$type": "Core.SpaceRestriction:CanPlayCard:",

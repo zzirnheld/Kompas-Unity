@@ -5,7 +5,9 @@
 		"blurb":"Wander",
 		"triggerCondition":"Turn Start",
 		"triggerRestriction":{
-			"triggerRestrictions":["This Card in Play"]
+			"elements": [
+				{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" }
+			]
 		}
 	},
 	"subeffects":[
@@ -40,11 +42,11 @@
 					{
 						"$type": "Core.CardRestriction:CardValueFits:",
 						"cardValue": { "value": "S" },
-						"numberRestriction": { "elements": [{
+						"numberRestriction": {
 							"$type": "Core.NumberRestriction:Compare:",
 							"comparison": { "$type": "Relationships.Number:LessThan:" },
 							"other": { "$type": "Numbers:EffectX:" }
-					}]}
+					}
 				} ]
 			},
 			"xMultiplier":1

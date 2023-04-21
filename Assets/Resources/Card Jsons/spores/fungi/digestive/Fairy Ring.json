@@ -8,16 +8,16 @@
 			"triggerData": {
 				"triggerCondition": "Activate",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"Max Per Stack"
-					],
-					"triggerRestrictionElements": [
+					"elements": [
                         { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{ "$type": "Core.TriggerRestriction:MaxPerStack:" },
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
                             "card": { "$type": "Cards:CauseBefore:" },
-                            "cardRestriction": {
-                                "elements": [
+                            
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
                                     {
                                         "$type": "Core.CardRestriction:Subtypes:",
                                         "subtypes": [ "Fungus" ]
@@ -28,8 +28,10 @@
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
                             "card": { "$type": "Cards:CardBefore:" },
-                            "cardRestriction": {
-                                "elements": [ { "$type": "Core.CardRestriction:Enemy:" } ]
+                            
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [ { "$type": "Core.CardRestriction:Enemy:" } ]
                             }
                         }
 					]
@@ -43,8 +45,10 @@
 				{
 					"$type": "Subeffect:ConditionalJump:",
 					"condition": "Target Violates Restriction",
-					"cardRestriction": {
-						"elements": [ {
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [ {
 							"$type": "Core.CardRestriction:Subtypes:",
 							"subtypes": [ "Fungus" ]
 						} ]
@@ -56,8 +60,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where to Invoke the Fungus",
 					"spaceRestriction": {
-						"blurb": "where to Invoke the Fungus",
+						"$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {

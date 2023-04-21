@@ -8,8 +8,12 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCard:" }
+						}
 					]
 				}
 			},
@@ -38,12 +42,13 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "fast card to reveal",
 					"toSearch": {
 						"$type": "ManyCards:Hand:",
 						"friendly": true, "enemy": true
 					},
 					"cardRestriction": {
-						"blurb": "fast card to reveal",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Hidden:" },
 							{
@@ -53,11 +58,11 @@
 							{
 								"$type": "Core.CardRestriction:CardValueFits:",
 								"cardValue": { "value": "Cost" },
-								"numberRestriction": { "elements": [{
+								"numberRestriction": {
 									"$type": "Core.NumberRestriction:Compare:",
 									"comparison": { "$type": "Relationships.Number:Equal:" },
 									"other": { "$type": "Numbers:Constant:", "constant": 1 }
-								}]}
+								}
 							}
 						]
 					}
@@ -70,10 +75,11 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "friendly Reporter to move",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"playerIndex": -2,
 					"cardRestriction": {
-						"blurb": "friendly Reporter to move",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{ "$type": "Core.CardRestriction:Character:" },
@@ -83,10 +89,7 @@
 							},
 							{
 								"$type": "Core.SpaceRestriction:AdjacentTo:",
-								"space": {
-									"$type": "Spaces:PositionOf:",
-									"ofThisCard": { "$type": "Cards:ThisCard:" }
-								}
+								"space": { "$type": "Cards:ThisCard:" }
 							},
 							{
 								"$type": "Core.CardRestriction:CanMove:",
@@ -97,15 +100,11 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where for Newsflash! to move it starget",
 					"playerIndex": -2,
 					"spaceRestriction": {
-						"blurb": "where for Newsflash! to move it starget",
-						"elements": [
-							{
-								"$type": "Core.SpaceRestriction:CanMoveCard:",
-								"toMove": { "$type": "Cards:TargetIndex:" }
-							}
-						]
+						"$type": "Core.SpaceRestriction:CanMoveCard:",
+						"toMove": { "$type": "Cards:TargetIndex:" }
 					}
 				},
 				{
@@ -120,12 +119,8 @@
 			"Adjacent to Card Fitting Restriction"
 		],
 		"adjacentCardRestriction": {
-			"elements": [
-				{
-					"$type": "Core.CardRestriction:Subtypes:",
-					"subtypes": [ "Reporter" ]
-				}
-			]
+			"$type": "Core.CardRestriction:Subtypes:",
+			"subtypes": [ "Reporter" ]
 		}
 	},
 	"c": 1,

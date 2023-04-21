@@ -2,7 +2,7 @@ using KompasCore.Effects.Identities;
 
 namespace KompasCore.Effects.Restrictions.TriggerRestrictionElements
 {
-    public class Turn : TriggerRestrictionElement
+    public class Turn : TriggerRestrictionBase
     {
         public IIdentity<Player> turnPlayer;
 
@@ -12,7 +12,7 @@ namespace KompasCore.Effects.Restrictions.TriggerRestrictionElements
             turnPlayer.Initialize(initializationContext);
         }
 
-        protected override bool AbstractIsValidContext(TriggeringEventContext context, IResolutionContext secondaryContext)
+        protected override bool IsValidLogic(TriggeringEventContext context, IResolutionContext secondaryContext)
             => InitializationContext.game.TurnPlayer == turnPlayer.From(context, secondaryContext);
     }
 

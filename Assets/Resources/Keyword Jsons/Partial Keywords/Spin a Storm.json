@@ -3,14 +3,17 @@
         "$type": "Subeffect:ConditionalEnd:",
         "condition": "No Space Fits Restriction",
 		"spaceRestriction": {
+			"$type": "Core.SpaceRestriction:AllOf:",
 			"elements": [
                 { "$type": "Core.SpaceRestriction:Empty:" },
                 {
                     "$type": "Core.SpaceRestriction:InAOEOf:",
                     "anyOf": {
                         "$type": "ManyCards:FittingRestriction:",
-                        "cardRestriction": {
-                        "elements": [ {
+                        
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [ {
                                 "$type": "Core.CardRestriction:Subtypes:",
                                 "subtypes": [ "Weather" ]
                             } ]
@@ -25,8 +28,10 @@
                     "$type": "Core.SpaceRestriction:InAOEOf:",
                     "anyOf": {
                         "$type": "ManyCards:FittingRestriction:",
-                        "cardRestriction": {
-                        "elements": [ {
+                        
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [ {
                                 "$type": "Core.CardRestriction:Subtypes:",
                                 "subtypes": [ "Weather" ]
                             } ]
@@ -54,14 +59,17 @@
     {
         "$type": "Subeffect:SpaceTarget:",
 		"spaceRestriction": {
+			"$type": "Core.SpaceRestriction:AllOf:",
 			"elements": [
                 { "$type": "Core.SpaceRestriction:Empty:" },
                 {
                     "$type": "Core.SpaceRestriction:InAOEOf:",
                     "anyOf": {
                         "$type": "ManyCards:FittingRestriction:",
-                        "cardRestriction": {
-                        "elements": [ {
+                        
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [ {
                                 "$type": "Core.CardRestriction:Subtypes:",
                                 "subtypes": [ "Weather" ]
                             } ]
@@ -76,8 +84,10 @@
                     "$type": "Core.SpaceRestriction:InAOEOf:",
                     "anyOf": {
                         "$type": "ManyCards:FittingRestriction:",
-                        "cardRestriction": {
-                        "elements": [ {
+                        
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [ {
                                 "$type": "Core.CardRestriction:Subtypes:",
                                 "subtypes": [ "Weather" ]
                             } ]

@@ -8,23 +8,22 @@
 				"blurb": "Rocket my balls!",
 				"triggerCondition": "Augment Attached",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Main Card Fits Restriction Before",
-						"Controller Triggered"
-					],
-					"cardRestriction": {
-						"cardRestriction": {
-							"elements": [ {
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        {
+                            "$type": "Core.TriggerRestriction:PlayersMatch:",
+                            "firstPlayer": { "$type": "Players:TriggeringPlayer:" },
+                            "secondPlayer": { "$type": "Players:FriendlyPlayer:" }
+                        },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CardBefore:" },
+                            "cardRestriction": {
 								"$type": "Core.CardRestriction:Augments:",
-								"cardRestriction": {
-									"elements": [
-										{ "$type": "Core.CardRestriction:Enemy:" }
-									]
-								}
-							} ]
-						}
-					}
+								"cardRestriction": { "$type": "Core.CardRestriction:Enemy:" }
+							}
+                        }
+					]
 				}
 			},
 			"subeffects": [
@@ -34,7 +33,7 @@
 				{
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
-						"blurb": "go",
+						"$type": "Core.SpaceRestriction:AllOf:",
 						"elements": [
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
@@ -42,10 +41,7 @@
 							},
 							{
 								"$type": "Core.SpaceRestriction:CompareDistance:",
-								"distanceTo": {
-									"$type": "Spaces:PositionOf:",
-									"ofThisCard": { "$type": "Cards:TargetIndex:" }
-								},
+								"distanceTo": { "$type": "Cards:TargetIndex:" },
 								"number": { "$type": "Numbers:Constant:", "constant": 1 }
 							}
 						]

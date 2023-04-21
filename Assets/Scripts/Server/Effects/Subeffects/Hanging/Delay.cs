@@ -50,8 +50,8 @@ namespace KompasServer.Effects.Subeffects.Hanging
             private readonly List<GameCard> targets;
             private readonly List<Space> spaces;
 
-            public DelayEffect(ServerGame game, TriggerRestriction triggerRestriction, string endCondition,
-                string fallOffCondition, TriggerRestriction fallOffRestriction, Effect sourceEff, IResolutionContext currentContext,
+            public DelayEffect(ServerGame game, IRestriction<TriggeringEventContext> triggerRestriction, string endCondition,
+                string fallOffCondition, IRestriction<TriggeringEventContext> fallOffRestriction, Effect sourceEff, IResolutionContext currentContext,
                 int numTimesToDelay, ServerEffect toResume, int indexToResumeResolution, ServerPlayer controller,
                 IEnumerable<GameCard> targets, IEnumerable<Space> spaces,
                 bool clearIfResolve)

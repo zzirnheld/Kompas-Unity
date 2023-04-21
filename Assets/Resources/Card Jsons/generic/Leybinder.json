@@ -8,9 +8,9 @@
 			"triggerData": {
 				"triggerCondition": "Move",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Max Per Turn"
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{ "$type": "Core.TriggerRestriction:MaxPerTurn:" }
 					]
 				}
 			},
@@ -30,23 +30,24 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "for Leybinder to hand-summon",
 					"toSearch": {
 						"$type": "ManyCards:Hand:",
 						"friendly": true,
 						"enemy": true
 					},
 					"cardRestriction": {
-						"blurb": "for Leybinder to hand-summon",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:CardValueFits:",
 								"cardValue": { "value": "S" },
-								"numberRestriction": { "elements": [{
+								"numberRestriction": {
 									"$type": "Core.NumberRestriction:Compare:",
 									"comparison": { "$type": "Relationships.Number:Equal:" },
 									"other": { "$type": "Numbers:EffectX:" }
-								}]}
+								}
 							},
 							{
 								"$type": "Core.PlayerRestriction:PlayersMatch:",
@@ -58,8 +59,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where Leybinder to hand-summon",
 					"spaceRestriction": {
-						"blurb": "where Leybinder to hand-summon",
+						"$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {

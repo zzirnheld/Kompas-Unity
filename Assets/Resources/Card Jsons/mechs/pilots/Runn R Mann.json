@@ -7,7 +7,6 @@
 			"blurb": "Fast Piloting",
 			"activationRestriction": {
 				"activationRestrictionArray": [
-					"Friendly Turn",
 					"Default"
 				]
 			},

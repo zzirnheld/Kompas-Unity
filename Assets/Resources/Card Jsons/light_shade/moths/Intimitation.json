@@ -7,8 +7,15 @@
 			"triggerData": {
 				"triggerCondition": "Defend",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"Augmented Card is Main Card"
+					"elements": [
+                        {
+                            "$type": "Core.TriggerRestriction:CardsMatch:",
+                            "card": { "$type": "Cards:CardBefore:" },
+                            "other": {
+                                "$type": "Cards:AugmentedCard:",
+                                "ofThisCard": { "$type": "Cards:ThisCard:" }
+                            }
+                        }
 					]
 				}
 			},
@@ -21,6 +28,7 @@
 					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
 						"blurb": "What creature does the camouflage look like?",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Hidden:" }
@@ -39,7 +47,7 @@
 				},
 				{
 					"$type":"Subeffect:TargetTriggeringCard:",
-					"secondary":true
+					"contextSecondaryCard":true
 				},
 				{
 					"$type": "Subeffect:ChangeCardStats:",

@@ -7,17 +7,25 @@
 			"triggerData": {
 				"triggerCondition": "Move",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"Max Per Stack",
-						"This Card is Main Card",
-						"Stackable Source isn't This Effect"
-					],
-                    "triggerRestrictionElements": [
-                        {
-                            "$type": "Core.TriggerRestriction:CardsMatch:",
-                            "firstCard": { "$type": "Cards:CauseBefore:" },
-                            "secondCard": { "$type": "Cards:ThisCard:" }
-                        }
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCard:" }
+						},
+						{ "$type": "Core.TriggerRestriction:MaxPerStack:" },
+						{
+							"$type": "Core.TriggerRestriction:StackableFitsRestriction:",
+							"stackable": { "$type": "Stackables:StackableCause:" },
+							"restriction": {
+								"stackableRestrictionElements": [
+									{
+										"$type": "Core.EffectRestriction:Keyword:",
+										"keyword": "Speedemon"
+									}
+								]
+							}
+						}
 					]
 				}
 			},
@@ -37,8 +45,12 @@
 			"triggerData": {
 				"triggerCondition": "Move",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCard:" }
+						}
 					]
 				}
 			},
@@ -73,6 +85,7 @@
 					},
 					"cardRestriction": {
 						"blurb": "spell to reveal",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Hidden:" },
 							{

@@ -28,16 +28,16 @@ namespace KompasCore.Effects
             }
         }
 
-        private CardRestriction handSizeCardRestriction;
-        public CardRestriction HandSizeCardRestriction
+        private IRestriction<GameCardBase> handSizeCardRestriction;
+        public IRestriction<GameCardBase> HandSizeCardRestriction
         {
             get
             {
                 if (handSizeCardRestriction == null)
                 {
-                    handSizeCardRestriction = new CardRestriction()
+                    handSizeCardRestriction = new AllOf()
                     {
-                        elements = new IRestrictionElement<GameCardBase>[]
+                        elements = new IRestriction<GameCardBase>[]
                         {
                             new Friendly(),
                             new Location() { locations = new string[]{ "Hand" } }

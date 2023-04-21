@@ -1,4 +1,5 @@
-﻿using KompasCore.Effects;
+﻿using KompasCore.Cards;
+using KompasCore.Effects;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -34,8 +35,8 @@ namespace KompasServer.Effects.Subeffects
         public const string PlayerValueFloutsNumberRestriction = "Player Value Flouts Number Restriction";
 
         public int constant = 0;
-        public CardRestriction cardRestriction;
-        public SpaceRestriction spaceRestriction;
+        public IRestriction<GameCardBase> cardRestriction;
+        public IRestriction<Space> spaceRestriction;
         public NumberRestriction numberRestriction;
 
         public PlayerValue playerValue;

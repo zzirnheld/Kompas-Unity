@@ -8,8 +8,14 @@
 			"triggerData":
 			{
 				"triggerCondition":"Augment Attached",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card is Main Card"]
+				"triggerRestriction": {
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCard:" }
+						}
+					]
 				}
 			},
 			"subeffects":[
@@ -23,8 +29,14 @@
 					"sModifier":5,
 					"wModifier":5,
 					"endCondition":"Augment Detached",
-					"triggerRestriction":{
-						"triggerRestrictions":["This Card is Main Card"]
+					"triggerRestriction": {
+						"elements": [
+							{
+								"$type": "Core.TriggerRestriction:CardsMatch:",
+								"card": { "$type": "Cards:CardBefore:" },
+								"other": { "$type": "Cards:ThisCard:" }
+							}
+						]
 					}
 				}
 			]
@@ -34,38 +46,44 @@
 			"triggerData": {
 				"triggerCondition": "Augment Attached",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"Main Card Fits Restriction After",
-						"This Card Fits Restriction Now"
-					],
-					"nowRestriction": {
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Mask" ]
-							},
-							{
-								"$type": "Core.CardRestriction:Augments:",
-                                "cardRestriction": {
-									"elements": [
-										{ "$type": "Core.CardRestriction:Friendly:" },
-										{
-											"$type": "Core.CardRestriction:Subtypes:",
-											"subtypes": [ "Dancer" ]
+					"elements": [
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:CardAfter:" },
+                            
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+									{
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Mask" ]
+									},
+									{
+										"$type": "Core.CardRestriction:Augments:",
+										
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+												{ "$type": "Core.CardRestriction:Friendly:" },
+												{
+													"$type": "Core.CardRestriction:Subtypes:",
+													"subtypes": [ "Dancer" ]
+												}
+											]
 										}
-									]
-                                }
-							}
-						]
-					},
-					"selfRestriction": {
-						"elements": [
-							{
+									}
+								]
+                            }
+                        },
+                        {
+                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+                            "card": { "$type": "Cards:ThisCard:" },
+                            "cardRestriction": {
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Discard" ]
 							}
-						]
-					}
+                        }
+					]
 				}
 			},
 			"subeffects": [

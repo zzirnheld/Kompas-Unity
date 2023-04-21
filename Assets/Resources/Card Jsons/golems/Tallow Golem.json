@@ -7,8 +7,12 @@
 			"triggerData": {
 				"triggerCondition": "Activate",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCard:" }
+						}
 					]
 				}
 			},
@@ -18,6 +22,7 @@
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "character for Tallow Golem to temporarily activate",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [ { "$type": "Core.CardRestriction:Character:" } ]
 					}
 				},
@@ -25,8 +30,8 @@
 					"$type": "Subeffect:Hanging.Activation:",
 					"endCondition": "Turn Start",
 					"triggerRestriction": {
-						"triggerRestrictions": [
-							"Friendly Turn"
+						"elements": [
+							{ "$type": "Core.TriggerRestriction:FriendlyTurn:" }
 						]
 					}
 				}

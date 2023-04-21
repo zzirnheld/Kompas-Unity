@@ -16,9 +16,10 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "ritual sacrifice",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "ritual sacrifice",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{ "$type": "Core.CardRestriction:Character:" },
@@ -30,12 +31,8 @@
 							{
 								"$type": "Core.SpaceRestriction:AdjacentTo:",
 								"cardRestriction": {
-									"elements": [
-										{
-											"$type": "Core.CardRestriction:Subtypes:",
-											"subtypes": [ "Structure" ]
-										}
-									]
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Structure" ]
 								}
 							}
 						]
@@ -49,15 +46,11 @@
 				},
 				{
 					"$type":"Subeffect:SpaceTarget:",
+					"blurb":"where to revive the Feathered Serpent",
 					"spaceRestriction":
 					{
-						"blurb":"where to revive the Feathered Serpent",
-						"elements": [
-                            {
-                                "$type": "Core.SpaceRestriction:CanPlayCard:",
-                                "toPlay": { "$type": "Cards:TargetIndex:" }
-                            }
-						]
+						"$type": "Core.SpaceRestriction:CanPlayCard:",
+						"toPlay": { "$type": "Cards:TargetIndex:" }
 					}
 				},
 				{
@@ -75,9 +68,7 @@
 			"Default Effect Restrictions",
 			"Number of Cards Exist"
 		],
-		"countCardRestriction": { "elements": [
-			{ "$type": "Core.SpaceRestriction:Edge:" }
-		] },
+		"countCardRestriction": { "$type": "Core.SpaceRestriction:Edge:" },
 		"countCardNumberRestriction": {
 			"numberRestrictions": [">=Constant"],
 			"constant": 14

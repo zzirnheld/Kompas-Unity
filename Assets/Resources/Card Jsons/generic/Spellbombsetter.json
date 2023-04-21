@@ -7,8 +7,12 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCard:" }
+						}
 					]
 				}
 			},
@@ -16,15 +20,14 @@
 				{
 					"$type": "Subeffect:TargetAll:",
 					"toSearch": { "$type": "ManyCards:Board:" },
-					"cardRestriction": {
-						"elements": [
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 							{ "$type": "Core.CardRestriction:Spell:" },
 							{
 								"$type": "Core.SpaceRestriction:AdjacentTo:",
-								"space": {
-									"$type": "Spaces:PositionOf:",
-									"ofThisCard": { "$type": "Cards:ThisCard:" }
-								}
+								"space": { "$type": "Cards:ThisCard:" }
 							}
 						]
 					}
@@ -33,10 +36,23 @@
 					"$type": "Subeffect:Hanging.Negate:",
 					"endCondition": "Discard",
 					"triggerRestriction": {
-						"triggerRestrictions": [
-							"This Card is Main Card",
-							"From Field"
-						]
+						"triggerRestriction": {
+							"elements": [
+								{
+									"$type": "Core.TriggerRestriction:CardsMatch:",
+									"card": { "$type": "Cards:CardBefore:" },
+									"other": { "$type": "Cards:ThisCard:" }
+								},
+								{
+									"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+									"card": { "$type": "Cards:CardBefore:" },
+									"cardRestriction": {
+										"$type": "Core.CardRestriction:Location:",
+										"locations": [ "Board" ]
+									}
+								}
+							]
+						}
 					}
 				},
 				{
@@ -49,15 +65,14 @@
 				{
 					"$type": "Subeffect:TargetAll:",
 					"toSearch": { "$type": "ManyCards:Board:" },
-					"cardRestriction": {
-						"elements": [
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 							{ "$type": "Core.CardRestriction:Spell:" },
 							{
 								"$type": "Core.SpaceRestriction:AdjacentTo:",
-								"space": {
-									"$type": "Spaces:PositionOf:",
-									"ofThisCard": { "$type": "Cards:ThisCard:" }
-								}
+								"space": { "$type": "Cards:ThisCard:" }
 							}
 						]
 					}

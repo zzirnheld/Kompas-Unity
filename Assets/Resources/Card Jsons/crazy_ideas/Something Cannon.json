@@ -7,8 +7,12 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCard:" }
+						}
 					]
 				}
 			},
@@ -19,10 +23,8 @@
 				{
 					"$type": "Subeffect:CardTarget:",
 					"toSearch": { "$type": "ManyCards:Board:" },
-					"cardRestriction": {
-						"blurb": "character for Something Cannon to blast",
-						"elements": [ { "$type": "Core.CardRestriction:Character:" } ]
-					}
+					"blurb": "character for Something Cannon to blast",
+					"cardRestriction": { "$type": "Core.CardRestriction:Character:" }
 				},
 				{
 					"$type": "Subeffect:Attack:",

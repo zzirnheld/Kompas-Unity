@@ -5,7 +5,9 @@
 		"blurb":"Wisp Turn Start",
 		"triggerCondition":"Turn Start",
 		"triggerRestriction":{
-			"triggerRestrictions":["This Card in Play"]
+			"elements": [
+				{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" }
+			]
 		}
 	},
 	"subeffects":[
@@ -16,16 +18,15 @@
 				"selector": { "$type": "KompasCore.Effects.Selectors.RandomSpace, Assembly-CSharp" },
 				"spaces": {
 					"$type": "ManySpaces:CompareDistance:",
-					"distanceTo": { 
-						"$type": "Spaces:PositionOf:",
-						"ofThisCard": { "$type": "Cards:ThisCard:" }
-					},
+					"distanceTo": { "$type": "Cards:ThisCard:" },
 					"spaces": {
 						"$type": "ManySpaces:PositionsOfEach:",
 						"cards": {
 							"$type": "ManyCards:FittingRestriction:",
-							"cardRestriction": {
-								"elements": [ { "$type": "Core.CardRestriction:Enemy:" } ]
+							
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [ { "$type": "Core.CardRestriction:Enemy:" } ]
 							}
 						}
 					}
@@ -42,10 +43,7 @@
 					"distanceTo": { "$type": "Spaces:TargetIndex:" },
 					"spaces": {
 						"$type": "ManySpaces:AdjacentSpaces:",
-						"adjacentTo": {
-							"$type": "Spaces:PositionOf:",
-							"ofThisCard": { "$type": "Cards:ThisCard:" }
-						}
+						"adjacentTo": { "$type": "Cards:ThisCard:" }
 					}
 				}
 			}

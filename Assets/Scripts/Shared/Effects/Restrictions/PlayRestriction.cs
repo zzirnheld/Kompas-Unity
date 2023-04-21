@@ -52,15 +52,15 @@ namespace KompasCore.Effects
         public string[] effectRestrictionsToIgnore = { };
         public List<string> recommendationRestrictions = null;
 
-        public CardRestriction onCardRestriction;
-        public CardRestriction onCardFloutedRestriction;
-        public CardRestriction adjacentCardRestriction;
+        public IRestriction<GameCardBase> onCardRestriction;
+        public IRestriction<GameCardBase> onCardFloutedRestriction;
+        public IRestriction<GameCardBase> adjacentCardRestriction;
 
-        public SpaceRestriction spaceRestriction;
-        public SpaceRestriction floutedSpaceRestriction;
+        public IRestriction<Space> spaceRestriction;
+        public IRestriction<Space> floutedSpaceRestriction;
 
         public NumberRestriction countCardNumberRestriction;
-        public CardRestriction countCardRestriction;
+        public IRestriction<GameCardBase> countCardRestriction;
 
         public string[] augSubtypes;
 

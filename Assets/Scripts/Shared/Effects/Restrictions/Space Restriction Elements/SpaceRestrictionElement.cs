@@ -1,19 +1,29 @@
 using KompasCore.Cards;
-using KompasCore.Effects.Identities;
+using System;
 using System.Linq;
 
 namespace KompasCore.Effects.Restrictions
 {
-    public abstract class SpaceRestrictionElement : RestrictionElementBase<Space>, IRestrictionElement<GameCardBase>
+    public abstract class SpaceRestrictionElement : RestrictionBase<Space>, IRestriction<GameCardBase>, IRestriction<TriggeringEventContext>
     {
         public bool IsValid(GameCardBase item, IResolutionContext context) => IsValid(item?.Position, context);
+        public bool IsValid(TriggeringEventContext item, IResolutionContext context) => IsValid(item?.space, context);
     }
 
     namespace SpaceRestrictionElements
     {
+        public class AlwaysValid : SpaceRestrictionElement 
+        {
+            protected override bool IsValidLogic(Space item, IResolutionContext context) => true;
+        }
+    
+        public class AllOf : AllOfBase<Space>
+        {
+        }
+
         public class Not : SpaceRestrictionElement
         {
-            public IRestrictionElement<Space> negated;
+            public IRestriction<Space> negated;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {
@@ -27,7 +37,7 @@ namespace KompasCore.Effects.Restrictions
 
         public class AnyOf : SpaceRestrictionElement
         {
-            public IRestrictionElement<Space>[] restrictions;
+            public IRestriction<Space>[] restrictions;
 
             public override void Initialize(EffectInitializationContext initializationContext)
             {

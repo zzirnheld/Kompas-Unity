@@ -8,9 +8,9 @@
 			"triggerData": {
 				"triggerCondition": "Turn Start",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Enemy Turn"
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+                        { "$type": "Core.TriggerRestriction:EnemyTurn:" }
 					]
 				}
 			},
@@ -21,9 +21,13 @@
 					"jumpIndices": [ 1 ],
 					"fallOffCondition": "Anything",
 					"fallOffRestriction": {
-                        "triggerRestrictions": [
-                            "Enemy Triggered"
-                        ]
+						"elements": [
+							{
+								"$type": "Core.TriggerRestriction:PlayersMatch:",
+								"card": { "$type": "Players:TriggeringPlayer:" },
+								"other": { "$type": "Players:EnemyPlayer:" }
+							}
+						]
 					},
 					"endCondition": "Turn Start"
 				},

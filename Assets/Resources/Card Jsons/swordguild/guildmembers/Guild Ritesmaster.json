@@ -17,20 +17,17 @@
 					"whatToCount": "Cards Fitting Restriction",
 					"toSearch": { "$type": "ManyCards:Discard:" },
 					"cardRestriction": {
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Warrior" ]
-							}
-						]
+						"$type": "Core.CardRestriction:Subtypes:",
+						"subtypes": [ "Warrior" ]
 					},
 					"xMultiplier": 1
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Warrior for the rites to summon",
 					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
-						"blurb": "Warrior for the rites to summon",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
 							{
@@ -41,11 +38,11 @@
 							{
 								"$type": "Core.CardRestriction:CardValueFits:",
 								"cardValue": { "value": "S" },
-								"numberRestriction": { "elements": [{
+								"numberRestriction": {
 									"$type": "Core.NumberRestriction:Compare:",
 									"comparison": { "$type": "Relationships.Number:LessThanEqual:" },
 									"other": { "$type": "Numbers:EffectX:" }
-								}]}
+								}
 							}
 						]
 					},
@@ -60,9 +57,10 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Warriors for Ritesmaster to reshuffle",
 					"toSearch": { "$type": "ManyCards:Discard:" },
 					"cardRestriction": {
-						"blurb": "Warriors for Ritesmaster to reshuffle",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
@@ -91,8 +89,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where for Ritesmaster to summon the Warrior",
 					"spaceRestriction": {
-						"blurb": "where for Ritesmaster to summon the Warrior",
+						"$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {

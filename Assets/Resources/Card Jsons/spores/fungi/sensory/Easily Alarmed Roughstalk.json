@@ -8,12 +8,12 @@
 			"triggerData": {
 				"triggerCondition": "Battle Start",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
                         { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
                         {
                             "$type": "Core.TriggerRestriction:CardsMatch:",
-                            "firstCard": { "$type": "Cards:ThisCard:" },
-                            "secondCard": { "$type": "Cards:CardBefore:" }
+                            "card": { "$type": "Cards:ThisCard:" },
+                            "other": { "$type": "Cards:CardBefore:" }
                         }
 					]
 				}
@@ -21,7 +21,7 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:TargetTriggeringCard:",
-					"secondary":true
+					"contextSecondaryCard":true
 				},
                 {
                     "$type":"Subeffect:Activate:"

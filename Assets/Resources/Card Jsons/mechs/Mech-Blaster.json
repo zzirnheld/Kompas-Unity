@@ -8,8 +8,15 @@
 			"triggerData": {
 				"triggerCondition": "Attack",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"Augmented Card is Main Card"
+					"elements": [
+                        {
+                            "$type": "Core.TriggerRestriction:CardsMatch:",
+                            "card": { "$type": "Cards:CardBefore:" },
+                            "other": {
+                                "$type": "Cards:AugmentedCard:",
+                                "ofThisCard": { "$type": "Cards:ThisCard:" }
+                            }
+                        }
 					]
 				}
 			},
@@ -32,14 +39,12 @@
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
 						"blurb": "who to Mechblast",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.SpaceRestriction:SameDiagonal:",
-								"other": {
-									"$type": "Spaces:PositionOf:",
-									"card": { "$type": "Cards:TargetIndex:" }
-								}
+								"other": { "$type": "Cards:TargetIndex:" }
 							}
 						]
 					}
@@ -63,12 +68,8 @@
 			"Augment Effect Restrictions"
 		],
 		"onCardRestriction": {
-			"elements": [
-				{
-					"$type": "Core.CardRestriction:Subtypes:",
-					"subtypes": [ "Mech" ]
-				}
-			]
+			"$type": "Core.CardRestriction:Subtypes:",
+			"subtypes": [ "Mech" ]
 		}
 	},
 	"a": 3,

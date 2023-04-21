@@ -7,12 +7,12 @@
 			"triggerData": {
 				"triggerCondition": "Discard",
 				"triggerRestriction": {
-                    "triggerRestrictionElements": [
+                    "elements": [
                         { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
                         {
                             "$type": "Core.TriggerRestriction:CardsMatch:",
-                            "firstCard": { "$type": "Cards:CauseBefore:" },
-                            "secondCard": {
+                            "card": { "$type": "Cards:CauseBefore:" },
+                            "other": {
                                 "$type": "Cards:AugmentedCard:",
                                 "ofThisCard": { "$type": "Cards:ThisCard:" }
                             }

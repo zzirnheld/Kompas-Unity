@@ -3,7 +3,10 @@
 	"triggerData": {
 		"triggerCondition": "Turn Start",
 		"triggerRestriction": {
-			"triggerRestrictions": [ "This Card in Play", "Friendly Turn" ]
+			"elements": [
+				{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+				{ "$type": "Core.TriggerRestriction:FriendlyTurn:" }
+			]
 		}
 	},
 	"subeffects": [

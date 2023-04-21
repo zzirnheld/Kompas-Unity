@@ -33,6 +33,9 @@ namespace KompasCore.Effects
         {
             if (!Initialized) throw new NotImplementedException($"You forgot to initialize a {GetType()}!\n{this}");
         }
+        
+        protected static bool AllNull(params object[] objs) => objs.All(o => o == null);
+        protected static bool MultipleNonNull(params object[] objs) => objs.Count(o => o != null) > 1;
 
         public override string ToString()
         {

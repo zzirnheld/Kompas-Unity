@@ -14,11 +14,7 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
         /// <summary>
         /// Describes any restriction on the spaces between the card and where it needs to go (the space being tested)
         /// </summary>
-        public SpaceRestriction throughRestriction = new SpaceRestriction() {
-            elements = new List<IRestrictionElement<Space>> {
-                new Empty()
-            }
-        };
+        public IRestriction<Space> throughRestriction = new Empty();
 
         public NumberRestriction distanceRestriction = new NumberRestriction() {
             numberRestrictions = { }

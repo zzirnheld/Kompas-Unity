@@ -9,7 +9,9 @@
 				"blurb":"Give Safe Haven",
 				"triggerCondition":"Turn Start",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play"]
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" }
+					]
 				}
 			},
 			"subeffects":[
@@ -19,6 +21,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Supplicant to give safe haven",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
 							{
@@ -33,6 +36,7 @@
 					"spaceRestriction":
 					{
 						"blurb":"haven to play the Supplicant",
+						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
                             {
                                 "$type": "Core.SpaceRestriction:CanPlayCard:",

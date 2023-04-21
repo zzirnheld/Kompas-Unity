@@ -13,12 +13,15 @@
 			"Space Must Fit Restriction"
 		],
 		"spaceRestriction": {
+			"$type": "Core.SpaceRestriction:AllOf:",
 			"elements": [
 				{
 					"$type": "Core.SpaceRestriction:InAOEOf:",
 					"anyOf": {
 						"$type": "ManyCards:FittingRestriction:",
+						
 						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
 							"elements": [
 								{
 									"$type": "Core.CardRestriction:Subtypes:",

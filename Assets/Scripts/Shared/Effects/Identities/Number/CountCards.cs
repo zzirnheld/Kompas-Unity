@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using KompasCore.Cards;
+using KompasCore.Effects.Restrictions.CardRestrictionElements;
 
 namespace KompasCore.Effects.Identities.Numbers
 {
@@ -9,7 +10,7 @@ namespace KompasCore.Effects.Identities.Numbers
     {
         public IIdentity<IReadOnlyCollection<GameCardBase>> cards = new ManyCards.All();
 
-        public CardRestriction cardRestriction = new CardRestriction();
+        public IRestriction<GameCardBase> cardRestriction = new AlwaysValid();
 
         public override void Initialize(EffectInitializationContext initializationContext)
         {
