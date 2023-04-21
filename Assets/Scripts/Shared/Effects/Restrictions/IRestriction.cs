@@ -5,14 +5,14 @@ using UnityEngine;
 
 namespace KompasCore.Effects
 {
-    public interface IRestriction<Type> : IContextInitializeable
+    public interface IRestriction<RestrictedType> : IContextInitializeable
     {
-        bool IsValid(Type item, IResolutionContext context);
+        bool IsValid(RestrictedType item, IResolutionContext context);
     }
     
-    public abstract class RestrictionBase<Type> : ContextInitializeableBase, IRestriction<Type>
+    public abstract class RestrictionBase<RestrictedType> : ContextInitializeableBase, IRestriction<RestrictedType>
     {
-        public bool IsValid(Type item, IResolutionContext context)
+        public bool IsValid(RestrictedType item, IResolutionContext context)
         {
             ComplainIfNotInitialized();
 
@@ -28,12 +28,12 @@ namespace KompasCore.Effects
             }
         }
 
-        protected abstract bool IsValidLogic(Type item, IResolutionContext context);
+        protected abstract bool IsValidLogic(RestrictedType item, IResolutionContext context);
     }
 
-    public abstract class AllOfBase<Type> : RestrictionBase<Type>
+    public abstract class AllOfBase<RestrictedType> : RestrictionBase<RestrictedType>
     {
-        public IList<IRestriction<Type>> elements = new IRestriction<Type>[] { };
+        public IList<IRestriction<RestrictedType>> elements = new IRestriction<RestrictedType>[] { };
 
         public override void Initialize(EffectInitializationContext initializationContext)
         {
@@ -42,7 +42,7 @@ namespace KompasCore.Effects
             if (elements.Count == 1) Debug.LogWarning($"only one element on {GetType()} on eff of {initializationContext.source}");
         }
 
-        protected override bool IsValidLogic(Type item, IResolutionContext context)
+        protected override bool IsValidLogic(RestrictedType item, IResolutionContext context)
             => elements.All(r => r.IsValid(item, context));
     }
 }

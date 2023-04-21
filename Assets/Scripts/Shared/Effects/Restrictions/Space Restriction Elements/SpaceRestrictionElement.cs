@@ -12,13 +12,12 @@ namespace KompasCore.Effects.Restrictions
 
     namespace SpaceRestrictionElements
     {
+
+        public class AllOf : AllOfBase<Space> { }
+        
         public class AlwaysValid : SpaceRestrictionElement 
         {
             protected override bool IsValidLogic(Space item, IResolutionContext context) => true;
-        }
-    
-        public class AllOf : AllOfBase<Space>
-        {
         }
 
         public class Not : SpaceRestrictionElement
