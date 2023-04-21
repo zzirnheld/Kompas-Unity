@@ -43,12 +43,12 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "cards to reveal",
 					"toSearch": {
 						"$type": "ManyCards:Hand:",
 						"friendly": true, "enemy": true
 					},
 					"cardRestriction": {
-						"blurb": "cards to reveal",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Hidden:" },

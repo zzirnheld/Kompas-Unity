@@ -35,9 +35,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Structures to salvage",
 					"toSearch": { "$type": "ManyCards:Discard:" },
 					"cardRestriction": {
-						"blurb": "Structures to salvage",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{

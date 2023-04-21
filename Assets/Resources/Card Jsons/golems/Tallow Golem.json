@@ -19,21 +19,14 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "character for Tallow Golem to temporarily activate",
 					"toSearch": { "$type": "ManyCards:Board:" },
-					"cardRestriction": {
-						"blurb": "character for Tallow Golem to temporarily activate",
-						"$type": "Core.CardRestriction:AllOf:",
-						"elements": [ { "$type": "Core.CardRestriction:Character:" } ]
-					}
+					"cardRestriction": { "$type": "Core.CardRestriction:Character:" }
 				},
 				{
 					"$type": "Subeffect:Hanging.Activation:",
 					"endCondition": "Turn Start",
-					"triggerRestriction": {
-						"elements": [
-							{ "$type": "Core.TriggerRestriction:FriendlyTurn:" }
-						]
-					}
+					"triggerRestriction": {  "$type": "Core.TriggerRestriction:FriendlyTurn:" }
 				}
 			]
 		}

@@ -13,14 +13,11 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "angry WX character that might attack",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "angry WX character that might attack",
-						"$type": "Core.CardRestriction:AllOf:",
-						"elements": [ {
-							"$type": "Core.PlayerRestriction:PlayersMatch:",
-							"player": { "$type": "Players:TargetIndex:" }
-						} ]
+						"$type": "Core.PlayerRestriction:PlayersMatch:",
+						"player": { "$type": "Players:TargetIndex:" }
 					}
 				},
 				{
@@ -55,12 +52,12 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "cost > X card to reveal",
 					"toSearch": {
 						"$type": "ManyCards:Hand:",
 						"friendly": true, "enemy": true
 					},
 					"cardRestriction": {
-						"blurb": "cost > X card to reveal",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Hidden:" },
@@ -89,9 +86,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "enemy character to attack",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "enemy character to attack",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },

@@ -17,9 +17,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "enemy character to attack",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "enemy character to attack",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },

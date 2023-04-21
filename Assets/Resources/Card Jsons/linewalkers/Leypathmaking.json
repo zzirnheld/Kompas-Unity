@@ -19,9 +19,9 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Linewalker for Leypathmaking to reshuffle",
 					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
-						"blurb": "Linewalker for Leypathmaking to reshuffle",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{
@@ -36,9 +36,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Linewalker for Leypathmaking to search",
 					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"blurb": "Linewalker for Leypathmaking to search",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
@@ -55,9 +55,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Linewalker for Leypathmaking to search",
 					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"blurb": "Linewalker for Leypathmaking to search",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },

@@ -1,5 +1,6 @@
 using KompasCore.Cards;
 using System.Linq;
+using UnityEngine;
 
 namespace KompasCore.Effects.Restrictions
 {
@@ -14,6 +15,14 @@ namespace KompasCore.Effects.Restrictions
     
         public class AllOf : AllOfBase<GameCardBase>
         {
+            public string blurb;
+
+            public override void Initialize(EffectInitializationContext initializationContext)
+            {
+                base.Initialize(initializationContext);
+                if (blurb != null) Debug.LogWarning($"{GetType()} blurb is on the card restriction. move it to the card target of {initializationContext.source}");
+            }
+
             public GameCard Source => InitializationContext.source;
 
             public override string ToString() => $"Card Restriction of {Source?.CardName}." +

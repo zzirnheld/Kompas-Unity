@@ -79,16 +79,11 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Bind blood to a card",
 					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
-						"blurb": "Bind blood to a card",
-						"$type": "Core.CardRestriction:AllOf:",
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Orc" ]
-							}
-						]
+						"$type": "Core.CardRestriction:Subtypes:",
+						"subtypes": [ "Orc" ]
 					}
 				},
 				{

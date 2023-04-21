@@ -59,9 +59,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Altar for Altar Builder to play",
 					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"blurb": "Altar for Altar Builder to play",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },

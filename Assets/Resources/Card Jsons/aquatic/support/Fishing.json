@@ -29,9 +29,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Aquatic for Fishing to annihilate",
 					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
-						"blurb": "Aquatic for Fishing to annihilate",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{
@@ -60,9 +60,7 @@
 				{
 					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"delete": true,
-					"jumpIndices": [
-						7
-					]
+					"jumpIndices": [ 7 ]
 				}
 			]
 		}

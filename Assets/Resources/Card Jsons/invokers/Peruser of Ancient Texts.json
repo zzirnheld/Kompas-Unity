@@ -24,9 +24,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Invocation to find",
 					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"blurb": "Invocation to find",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{

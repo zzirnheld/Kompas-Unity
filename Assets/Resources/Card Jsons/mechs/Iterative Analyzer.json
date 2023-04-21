@@ -40,9 +40,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "for Iterative Analysis to produce",
 					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"blurb": "for Iterative Analysis to produce",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{

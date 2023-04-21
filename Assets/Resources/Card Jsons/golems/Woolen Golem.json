@@ -34,9 +34,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "character for Woolen Golem to give -XW",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "character for Woolen Golem to give -XW",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },

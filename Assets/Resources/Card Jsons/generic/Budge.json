@@ -20,8 +20,8 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Card to budge",
 					"cardRestriction": {
-						"blurb": "Card to budge",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{

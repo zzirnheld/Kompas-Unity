@@ -37,8 +37,8 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "CORE!!!1!",
 					"cardRestriction": {
-						"blurb": "CORE!!!1!",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },

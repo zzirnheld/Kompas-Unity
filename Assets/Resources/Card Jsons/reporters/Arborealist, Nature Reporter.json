@@ -60,12 +60,12 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "E > X character to reveal",
 					"toSearch": {
 						"$type": "ManyCards:Hand:",
 						"friendly": true, "enemy": true
 					},
 					"cardRestriction": {
-						"blurb": "E > X character to reveal",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },

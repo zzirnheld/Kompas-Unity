@@ -30,10 +30,8 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
-					"toSearch": { "$type": "ManyCards:Discard:" },
-					"cardRestriction": {
-						"blurb": "card for Correctly Sized Crane to grab"
-					}
+					"blurb": "card for Correctly Sized Crane to grab",
+					"toSearch": { "$type": "ManyCards:Discard:" }
 				},
 				{
 					"$type": "Subeffect:Hand:"

@@ -28,10 +28,9 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "An oviparous mamal? ORRY THE OVIPAROUS MAMMAL?",
 					"toSearch": { "$type": "ManyCards:Hand:" },
-					"cardRestriction": {
-						"blurb": "An oviparous mamal? ORRY THE OVIPAROUS MAMMAL?"
-					}
+					"cardRestriction": { "$type": "Core.CardRestriction:AlwaysValid:" }
 				},
 				{
 					"$type": "Subeffect:Discard:"

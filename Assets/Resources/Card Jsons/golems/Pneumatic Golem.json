@@ -30,9 +30,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "character within N spaces of Pneumatic Golem for it to hand",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "character within N spaces of Pneumatic Golem for it to hand",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },

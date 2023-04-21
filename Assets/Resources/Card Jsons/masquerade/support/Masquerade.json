@@ -14,9 +14,9 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Mask to be replaced",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "Mask to be replaced",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
@@ -27,16 +27,10 @@
                             },
 							{
 								"$type": "Core.CardRestriction:Augments:",
-                                
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
-                                        {
-                                            "$type": "Core.CardRestriction:Subtypes:",
-                                            "subtypes": [ "Dancer" ]
-                                        }
-                                    ]
-                                }
+								"cardRestriction": {
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Dancer" ]
+								}
 							}
 						]
 					}
@@ -53,9 +47,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "new Mask",
 					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"blurb": "new Mask",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },

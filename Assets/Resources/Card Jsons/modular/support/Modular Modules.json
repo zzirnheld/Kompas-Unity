@@ -19,16 +19,11 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Module to discard",
 					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
-						"blurb": "Module to discard",
-						"$type": "Core.CardRestriction:AllOf:",
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Module" ]
-							}
-						]
+						"$type": "Core.CardRestriction:Subtypes:",
+						"subtypes": [ "Module" ]
 					}
 				},
 				{
@@ -94,10 +89,8 @@
                 },
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "cards to reshuffle",
 					"toSearch": { "$type": "ManyCards:Discard:" },
-					"cardRestriction": {
-						"blurb": "cards to reshuffle"
-					},
 					"listRestriction": {
 						"listRestrictions": [
 							"Min Can Choose",

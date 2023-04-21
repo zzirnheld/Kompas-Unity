@@ -19,9 +19,9 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "adjacent Aquatic card to annihilate",
 					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
-						"blurb": "adjacent Aquatic card to annihilate",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{
@@ -45,9 +45,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Tide that Shifts In",
 					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"blurb": "Tide that Shifts In",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Spell:" },

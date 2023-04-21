@@ -34,9 +34,9 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "for Magnetizing to attract",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "for Magnetizing to attract",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{

@@ -45,9 +45,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Craftspeople move to the cities",
 					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"blurb": "Craftspeople move to the cities",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{

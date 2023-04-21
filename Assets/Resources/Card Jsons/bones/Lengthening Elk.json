@@ -44,9 +44,9 @@
                 },
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Elk bone",
 					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"blurb": "Elk bone",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },

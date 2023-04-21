@@ -14,8 +14,8 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Hand a friendly summon",
 					"cardRestriction": {
-						"blurb": "Hand a friendly summon",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },

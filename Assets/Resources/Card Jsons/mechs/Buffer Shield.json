@@ -62,16 +62,11 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "for Buffer Shield to attach to",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "for Buffer Shield to attach to",
-						"$type": "Core.CardRestriction:AllOf:",
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Mech" ]
-							}
-						]
+						"$type": "Core.CardRestriction:Subtypes:",
+						"subtypes": [ "Mech" ]
 					}
 				},
 				{

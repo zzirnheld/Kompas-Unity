@@ -21,9 +21,9 @@
 			"subeffects":[
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "linewalker to reshuffle",
 					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
-						"blurb": "linewalker to reshuffle",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:DistinctName:" },

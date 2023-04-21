@@ -42,7 +42,6 @@
                             "adjacentTo": { "$type": "Cards:TargetIndex:" }
 						}
 					},
-					"cardRestriction": { "$type": "Core.CardRestriction:Character:" },
 					"eModifier": -4
 				},
 				{

@@ -43,9 +43,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Next Dancer for the Dance",
 					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
-						"blurb": "Next Dancer for the Dance",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },

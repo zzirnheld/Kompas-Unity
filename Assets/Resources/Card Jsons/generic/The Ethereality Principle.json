@@ -53,11 +53,8 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
-					"cardRestriction": {
-						"blurb": "Remnant to put back on top",
-						"$type": "Core.CardRestriction:AllOf:",
-						"elements": [ { "$type": "Core.CardRestriction:Target:" } ]
-					}
+					"blurb": "Remnant to put back on top",
+					"cardRestriction": { "$type": "Core.CardRestriction:Target:" }
 				},
 				{
 					"$type": "Subeffect:Topdeck:"

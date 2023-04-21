@@ -20,9 +20,9 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Spirit whose name to prepare",
 					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
-						"blurb": "Spirit whose name to prepare",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{
