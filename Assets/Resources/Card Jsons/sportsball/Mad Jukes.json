@@ -20,7 +20,7 @@
 									{ "$type": "Core.CardRestriction:Friendly:" },
 									{
 										"$type": "Core.CardRestriction:HasAugment:",
-										"elements": [ ]
+										"cardRestriction": { "$type": "Core.CardRestriction:AlwaysValid:" }
 									}
 								]
 							}

@@ -35,13 +35,9 @@
 				{
 					"$type": "Subeffect:ConditionalEnd:",
 					"condition": "Target Violates Restriction",
-					
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [ {
-							"$type": "Core.CardRestriction:HasAugment:",
-							"elements": [ ]
-						} ]
+					"cardRestriction": {
+						"$type": "Core.CardRestriction:HasAugment:",
+						"cardRestriction": { "$type": "Core.CardRestriction:AlwaysValid:" }	
 					}
 				},
 				{

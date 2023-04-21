@@ -37,6 +37,8 @@
 				{
 					"$type": "Subeffect:Hanging.Delay:",
 					"endCondition": "Vanish",
+					"numTimesToDelay": 0,
+					"jumpIndices": [ 3 ],
 					"triggerRestriction": {
 						"elements": [
 							{

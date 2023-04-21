@@ -28,8 +28,8 @@
 		},
 		{
 			"$type":"Subeffect:CardTarget:",
-			"toSearch": { "$type": "ManyCards:Discard:" },
 			"blurb":"Crazy Idea for Ificator to Ificate",
+			"toSearch": { "$type": "ManyCards:Discard:" },
 			"cardRestriction":
 			{
 				"$type": "Core.CardRestriction:AllOf:",
