@@ -29,8 +29,7 @@
 						"$type": "Core.CardRestriction:Subtypes:",
 						"subtypes": [ "Spirit" ]
 					},
-					"jumpIndices": [ 0 ],
-					"xMultiplier": 1
+					"jumpIndices": [ 0 ]
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",

@@ -27,8 +27,7 @@
 					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "S"
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:Annihilate:"
@@ -79,8 +78,7 @@
 						"listRestrictions": [
 							"Max Can Choose: X"
 						]
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:Hand:"

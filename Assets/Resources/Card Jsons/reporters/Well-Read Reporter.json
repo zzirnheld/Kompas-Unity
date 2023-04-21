@@ -28,8 +28,7 @@
 					"$type": "Subeffect:SetXByTriggeringCardValue:",
 					"cardValue": {
 						"value": "Cost"
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:TargetEnemy:"
@@ -80,8 +79,7 @@
 								}
 							}
 						]
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:Reveal:"

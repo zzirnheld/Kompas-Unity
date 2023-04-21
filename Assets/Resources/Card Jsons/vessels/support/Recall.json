@@ -53,8 +53,7 @@
 								"cards": { "$type": "ManyCards:Targets:" }
 							}
 						]
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",

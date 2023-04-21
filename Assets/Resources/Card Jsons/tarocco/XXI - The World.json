@@ -38,8 +38,7 @@
 				},
 				{
 					"$type": "Subeffect:SetXByGamestate:",
-					"whatToCount": "Hand Size",
-					"xMultiplier": 1
+					"whatToCount": "Hand Size"
 				},
 				{
 					"$type": "Subeffect:SetXByGamestate:",
@@ -49,8 +48,7 @@
 				},
 				{
 					"$type": "Subeffect:ConditionalEnd:",
-					"condition": "X<=0",
-					"xMultiplier": 1
+					"condition": "X<=0"
 				},
 				{
 					"$type": "Subeffect:Bottomdeck:",

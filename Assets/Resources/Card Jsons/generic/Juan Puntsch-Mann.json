@@ -27,8 +27,7 @@
 					"$type": "Subeffect:SetXByTriggeringCardValue:",
 					"cardValue": {
 						"value": "E"
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:TargetThis:"

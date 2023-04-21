@@ -60,8 +60,7 @@
 						"listRestrictions": [
 							"Max Can Choose: X"
 						]
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:Hand:"

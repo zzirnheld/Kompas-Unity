@@ -31,8 +31,7 @@
 								"locations": [ "Board" ]
 							}
 						]
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:ChangeAllCardStats:",

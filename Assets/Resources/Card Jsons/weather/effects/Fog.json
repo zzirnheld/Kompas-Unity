@@ -30,8 +30,7 @@
 					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "W"
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:Hanging.ChangeCardStats:",

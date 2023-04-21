@@ -34,8 +34,7 @@
 					"cardValue": {
 						"value": "Cost"
 					},
-					"change": true,
-					"xMultiplier": 1
+					"change": true
 				},
 				{
 					"$type": "Subeffect:Discard:"

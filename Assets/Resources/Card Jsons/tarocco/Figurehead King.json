@@ -63,8 +63,7 @@
 					]
 				},
 				{
-					"$type": "Subeffect:AddPips:",
-					"xMultiplier": 1
+					"$type": "Subeffect:AddPips:"
 				}
 			]
 		}

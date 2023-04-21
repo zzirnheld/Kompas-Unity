@@ -31,8 +31,7 @@
 								"subtypes": [ "Mech" ]
 							}
 						]
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:Hanging.Delay:",

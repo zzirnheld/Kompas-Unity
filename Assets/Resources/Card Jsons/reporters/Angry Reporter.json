@@ -24,8 +24,7 @@
 					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "W"
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:TargetEnemy:"
@@ -75,8 +74,7 @@
 								}
 							}
 						]
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:Reveal:"

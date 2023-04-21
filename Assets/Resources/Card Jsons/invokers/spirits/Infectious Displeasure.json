@@ -61,8 +61,7 @@
 				},
 				{
 					"$type": "Subeffect:SetXByGamestate:",
-					"whatToCount": "Number of Targets",
-					"xMultiplier": 1
+					"whatToCount": "Number of Targets"
 				},
 				{
 					"$type": "Subeffect:ChangeAllCardStats:",

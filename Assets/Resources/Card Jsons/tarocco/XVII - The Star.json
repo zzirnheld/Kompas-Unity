@@ -68,8 +68,7 @@
 								"space": { "$type": "Cards:TargetIndex:" }
 							}
 						]
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:Draw:"

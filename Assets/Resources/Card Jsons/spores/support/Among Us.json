@@ -62,8 +62,7 @@
 								"space": { "$type": "Cards:TargetIndex:" }
 							}
 						]
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:Activate:"
@@ -74,8 +73,7 @@
 				},
 				{
 					"$type": "Subeffect:XTimes:",
-					"jumpIndices": [ 4 ],
-					"xMultiplier": 1
+					"jumpIndices": [ 4 ]
 				}
 			]
 		}

@@ -29,8 +29,7 @@
 								"space": { "$type": "Cards:ThisCard:" }
 							}
 						]
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
@@ -51,8 +50,7 @@
 							"Min Can Choose: X",
 							"Max Can Choose: X"
 						]
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:Hand:"

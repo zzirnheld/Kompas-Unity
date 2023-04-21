@@ -65,8 +65,7 @@
 					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "Number of Augments"
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:TargetAugments:"

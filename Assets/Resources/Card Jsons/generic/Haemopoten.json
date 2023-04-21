@@ -12,8 +12,7 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:SetXByGamestate:",
-					"whatToCount": "Effect Uses This Turn",
-					"xMultiplier": 1
+					"whatToCount": "Effect Uses This Turn"
 				},
 				{
 					"$type": "Subeffect:TargetThis:"

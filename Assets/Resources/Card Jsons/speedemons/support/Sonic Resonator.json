@@ -52,8 +52,7 @@
 					"$type": "Subeffect:SetXByTriggeringCardValue:",
 					"cardValue": {
 						"value": "C"
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
@@ -81,8 +80,7 @@
 								"cards": { "$type": "ManyCards:Targets:" }
 							}
 						]
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:SetXByTargetCardValue:",

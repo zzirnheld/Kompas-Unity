@@ -27,8 +27,7 @@
 					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "S"
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:Mill:",
@@ -56,8 +55,7 @@
 					},
 					"jumpIndices": [
 						2
-					],
-					"xMultiplier": 1
+					]
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",

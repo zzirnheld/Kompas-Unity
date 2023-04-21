@@ -50,8 +50,7 @@
 								}
 							}
 						]
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",

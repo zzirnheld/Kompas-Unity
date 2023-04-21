@@ -39,26 +39,22 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:SetXByTriggeringCardValue:",
-					"cardValue": { "value": "N" },
-					"xMultiplier": 1
+					"cardValue": { "value": "N" }
 				},
 				{
 					"$type": "Subeffect:SetXByTriggeringCardValue:",
 					"cardValue": { "value": "E" },
-					"change": true,
-					"xMultiplier": 1
+					"change": true
 				},
 				{
 					"$type": "Subeffect:SetXByTriggeringCardValue:",
 					"cardValue": { "value": "S" },
-					"change": true,
-					"xMultiplier": 1
+					"change": true
 				},
 				{
 					"$type": "Subeffect:SetXByTriggeringCardValue:",
 					"cardValue": { "value": "W" },
-					"change": true,
-					"xMultiplier": 1
+					"change": true
 				},
 				{
 					"$type": "Subeffect:TargetTriggeringCard:",

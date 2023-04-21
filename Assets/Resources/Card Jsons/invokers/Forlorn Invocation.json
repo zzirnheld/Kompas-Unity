@@ -38,8 +38,7 @@
 					},
 					"jumpIndices": [
 						0
-					],
-					"xMultiplier": 1
+					]
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",

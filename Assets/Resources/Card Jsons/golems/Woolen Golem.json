@@ -25,8 +25,7 @@
 					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "E"
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:ChangeCardStats:",

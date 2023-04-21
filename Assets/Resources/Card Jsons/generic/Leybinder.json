@@ -19,8 +19,7 @@
 					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "Subeffect:Damage:",
-					"xMultiplier": 1
+					"$type": "Subeffect:Damage:"
 				},
 				{
 					"$type": "Subeffect:TargetTriggeringCard:"
@@ -54,8 +53,7 @@
 								"player": { "$type": "Players:TargetIndex:" }
 							}
 						]
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",

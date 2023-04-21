@@ -39,8 +39,7 @@
 					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "A"
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:Discard:"
@@ -71,8 +70,7 @@
 								"comparison": { "$type": "Relationships.Number:LessThanEqual:" }
 							}
 						]
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:Move:"

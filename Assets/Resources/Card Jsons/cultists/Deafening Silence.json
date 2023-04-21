@@ -35,8 +35,7 @@
 								"subtypes": [ "Cultist" ]
 							}
 						]
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:CardTarget:",

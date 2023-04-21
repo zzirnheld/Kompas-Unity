@@ -16,8 +16,7 @@
 				},
 				{
 					"$type": "Subeffect:SetXByGamestate:",
-					"whatToCount": "Hand Size",
-					"xMultiplier": 1
+					"whatToCount": "Hand Size"
 				},
 				{
 					"$type": "Subeffect:SetXByGamestate:",
@@ -32,8 +31,7 @@
 				},
 				{
 					"$type": "Subeffect:Draw:",
-					"playerIndex": -2,
-					"xMultiplier": 1
+					"playerIndex": -2
 				},
 				{
 					"$type": "Subeffect:Loop:",

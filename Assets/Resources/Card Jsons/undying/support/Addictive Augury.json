@@ -35,15 +35,13 @@
 					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "S"
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:Discard:"
 				},
 				{
-					"$type": "Subeffect:DrawX:",
-					"xMultiplier": 1
+					"$type": "Subeffect:DrawX:"
 				}
 			]
 		}

@@ -39,8 +39,7 @@
 								}
 							}
 						]
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:Dispel:"

@@ -32,8 +32,7 @@
 								"space": { "$type": "Cards:ThisCard:" }
 							}
 						]
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
@@ -58,8 +57,7 @@
 								}
 							}
 						]
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",

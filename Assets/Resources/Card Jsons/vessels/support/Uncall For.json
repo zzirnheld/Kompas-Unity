@@ -64,8 +64,7 @@
 								"singleCard": { "$type": "Cards:TargetIndex:" }
 							}
 						]
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:TargetAugments:"
@@ -97,8 +96,7 @@
 								}
 							}
 						]
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",

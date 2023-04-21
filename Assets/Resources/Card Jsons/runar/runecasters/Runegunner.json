@@ -47,8 +47,7 @@
 				},
 				{
 					"$type": "Subeffect:SetXByGamestate:",
-					"whatToCount": "Distance From Source to Target",
-					"xMultiplier": 1
+					"whatToCount": "Distance From Source to Target"
 				},
 				{
 					"$type": "Subeffect:PayPipsTargetCost:"

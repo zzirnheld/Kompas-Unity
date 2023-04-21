@@ -14,8 +14,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:Mill:",
-					"xMultiplier": 1
+					"$type": "Subeffect:Mill:"
 				},
 				{
 					"$type": "Subeffect:ConditionalEnd:",

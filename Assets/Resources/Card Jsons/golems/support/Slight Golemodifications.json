@@ -30,8 +30,7 @@
 					}
 				},
 				{
-					"$type": "Subeffect:SetXByTargetCost:",
-					"xMultiplier": 1
+					"$type": "Subeffect:SetXByTargetCost:"
 				},
 				{
 					"$type": "Subeffect:Discard:",

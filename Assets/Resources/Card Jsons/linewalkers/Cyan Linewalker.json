@@ -49,8 +49,7 @@
 								"number": { "$type": "Numbers:Constant:", "constant": 1 }
 							}
 						]
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:Move:"

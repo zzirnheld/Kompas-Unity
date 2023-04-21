@@ -38,8 +38,7 @@
 							},
 							{ "$type": "Core.CardRestriction:CanPlay:" }
 						]
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:PayPipsTargetCost:"

@@ -52,8 +52,7 @@
 								"number": { "$type": "Numbers:EffectX:" }
 							}
 						]
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:Move:"

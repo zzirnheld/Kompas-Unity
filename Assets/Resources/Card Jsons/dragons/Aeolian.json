@@ -39,8 +39,7 @@
 				},
 				{
 					"$type": "Subeffect:SetXByGamestate:",
-					"whatToCount": "Distance Between Target and Target Space",
-					"xMultiplier": 1
+					"whatToCount": "Distance Between Target and Target Space"
 				},
 				{
 					"$type": "Subeffect:Move:"

@@ -34,8 +34,7 @@
 						"cardRestriction": {
 							"$type": "Core.CardRestriction:AllOf:",
 							"elements": [ { "$type": "Core.CardRestriction:Target:" } ]
-			},
-			"xMultiplier": 1
+			}
 		},
 		{
 			"$type": "Subeffect:Discard:"

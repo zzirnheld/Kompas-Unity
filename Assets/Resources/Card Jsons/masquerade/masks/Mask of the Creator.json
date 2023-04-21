@@ -30,12 +30,10 @@
 					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "S"
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
-					"$type": "Subeffect:AddPips:",
-					"xMultiplier": 1
+					"$type": "Subeffect:AddPips:"
 				}
 			]
 		}

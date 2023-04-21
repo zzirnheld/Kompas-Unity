@@ -35,8 +35,7 @@
 								"subtypes": [ "Supplicant" ]
 							}
 						]
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:ConditionalEnd:",

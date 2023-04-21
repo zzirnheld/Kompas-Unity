@@ -44,8 +44,7 @@
 					"cardValue": {
 						"value": "A"
 					},
-					"change": true,
-					"xMultiplier": 1
+					"change": true
 				},
 				{
 					"$type": "Subeffect:LoopWhileHaveTargets:",

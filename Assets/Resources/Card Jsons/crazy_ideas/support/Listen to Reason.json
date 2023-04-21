@@ -35,8 +35,7 @@
 								"subtypes": [ "Crazy", "Idea" ]
 							}
 						]
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:TargetAll:",
@@ -55,8 +54,7 @@
 					]
 				},
 				{
-					"$type": "Subeffect:DrawX:",
-					"xMultiplier": 1
+					"$type": "Subeffect:DrawX:"
 				}
 			]
 		}

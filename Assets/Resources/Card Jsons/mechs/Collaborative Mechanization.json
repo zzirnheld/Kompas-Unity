@@ -62,8 +62,7 @@
 							"Min Can Choose: X",
 							"Max Can Choose: X"
 						]
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:Hand:"
@@ -82,8 +81,7 @@
 					"$type": "Subeffect:Annihilate:"
 				},
 				{
-					"$type": "Subeffect:AddPips:",
-					"xMultiplier": 1
+					"$type": "Subeffect:AddPips:"
 				}
 			]
 		}

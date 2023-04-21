@@ -30,8 +30,7 @@
 								"space": { "$type": "Cards:ThisCard:" }
 							}
 						]
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
@@ -56,8 +55,7 @@
 				},
 				{
 					"$type": "Subeffect:SetXByGamestate:",
-					"whatToCount": "Number of Targets",
-					"xMultiplier": 1
+					"whatToCount": "Number of Targets"
 				},
 				{
 					"$type": "Subeffect:Reshuffle:"
@@ -68,8 +66,7 @@
 					"jumpIndices": [ 3 ]
 				},
 				{
-					"$type": "Subeffect:AddPips:",
-					"xMultiplier": 1
+					"$type": "Subeffect:AddPips:"
 				}
 			]
 		}

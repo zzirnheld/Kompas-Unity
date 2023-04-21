@@ -36,8 +36,7 @@
 					},
 					"jumpIndices": [
 						6
-					],
-					"xMultiplier": 1
+					]
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
