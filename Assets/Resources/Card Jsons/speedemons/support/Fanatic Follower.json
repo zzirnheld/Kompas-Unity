@@ -20,9 +20,9 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "to Fanatically Follow",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "to Fanatically Follow",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
@@ -53,9 +53,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "to move Fanatic Follower to",
 					"spaceRestriction": {
-						"blurb": "to move Fanatic Follower to",
-						"$type": "Core.CardRestriction:AllOf:",
+						"$type": "Core.SpaceRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.SpaceRestriction:Empty:" },
 							{

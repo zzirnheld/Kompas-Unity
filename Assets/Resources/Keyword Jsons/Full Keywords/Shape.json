@@ -42,7 +42,7 @@
 			"$type":"Subeffect:SetXByGamestate:",
 			"whatToCount":"Distance to Coords Through",
 			"throughRestriction":{
-				"$type": "Core.SpaceRestriction:AllOf:",
+				"$type": "Core.CardRestriction:AllOf:",
 				"elements": [
 					{ "$type": "Core.CardRestriction:Character:" },
 					{

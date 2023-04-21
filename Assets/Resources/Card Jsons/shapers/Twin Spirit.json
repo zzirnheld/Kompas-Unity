@@ -15,16 +15,10 @@
 						},
 						{
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
-							"card": { "$type": "Cards:CardBefore:" },
-							
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
-									{
-										"$type": "Core.CardRestriction:Location:",
-										"locations": [ "Hand" ]
-									}
-								]
+							"card": { "$type": "Cards:CardBefore:" },		
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Hand" ]
 							}
 						}
 					]
@@ -36,9 +30,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "copy of Twin Spirit to decksummon",
 					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"blurb": "copy of Twin Spirit to decksummon",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
@@ -52,8 +46,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where for Twin Spirit to decksummon a copy of itself",
 					"spaceRestriction": {
-						"blurb": "where for Twin Spirit to decksummon a copy of itself",
+						"$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {

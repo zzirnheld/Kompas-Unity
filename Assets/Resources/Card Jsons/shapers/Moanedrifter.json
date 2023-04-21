@@ -29,9 +29,9 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "How does the mist condense?",
 					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"blurb": "How does the mist condense?",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
@@ -55,8 +55,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "Where does the mist condense?",
 					"spaceRestriction": {
-						"blurb": "Where does the mist condense?",
+						"$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {

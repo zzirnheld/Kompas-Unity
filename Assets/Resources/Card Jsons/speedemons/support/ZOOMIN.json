@@ -19,9 +19,9 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "zoom",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "zoom",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [ {
 							"$type": "Core.CardRestriction:CanMove:",
@@ -31,9 +31,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "zoom",
 					"spaceRestriction": {
-						"blurb": "zoom",
-						"$type": "Core.CardRestriction:AllOf:",
+						"$type": "Core.SpaceRestriction:AllOf:",
 						"elements": [
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
@@ -52,9 +52,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Zoom!",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "Zoom!",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [ {
 							"$type": "Core.CardRestriction:CanMove:",
@@ -64,9 +64,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "Zoom!",
 					"spaceRestriction": {
-						"blurb": "Zoom!",
-						"$type": "Core.CardRestriction:AllOf:",
+						"$type": "Core.SpaceRestriction:AllOf:",
 						"elements": [
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
@@ -85,9 +85,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "ZOOM!",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "ZOOM!",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [ {
 							"$type": "Core.CardRestriction:CanMove:",
@@ -97,9 +97,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "ZOOM!",
 					"spaceRestriction": {
-						"blurb": "ZOOM!",
-						"$type": "Core.CardRestriction:AllOf:",
+						"$type": "Core.SpaceRestriction:AllOf:",
 						"elements": [
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",

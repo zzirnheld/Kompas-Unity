@@ -12,10 +12,9 @@
 						{
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 							"card": { "$type": "Cards:CardBefore:" },
-							
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:AllOf:",
+								"elements": [
 									{ "$type": "Core.CardRestriction:Friendly:" },
 									{ "$type": "Core.CardRestriction:DistinctName:" },
 									{
@@ -37,9 +36,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "to move Outpoured Anger to",
 					"spaceRestriction": {
-						"blurb": "to move Outpoured Anger to",
-						"$type": "Core.CardRestriction:AllOf:",
+						"$type": "Core.SpaceRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.SpaceRestriction:Empty:" },
 							{

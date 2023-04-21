@@ -57,9 +57,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Speedemon to resonate",
 					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"blurb": "Speedemon to resonate",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
@@ -95,8 +95,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where to play newly resonated Speedemon",
 					"spaceRestriction": {
-						"blurb": "where to play newly resonated Speedemon",
+						"$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {
