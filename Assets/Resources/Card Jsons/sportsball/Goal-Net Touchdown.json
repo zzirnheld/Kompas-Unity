@@ -12,10 +12,13 @@
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{
 							"$type": "Core.SpaceRestriction:AdjacentTo:",
-							"cardRestriction": { "elements": [
-								{ "$type": "Core.CardRestriction:Enemy:" },
-								{ "$type": "Core.CardRestriction:Avatar:" }
-							] }
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:AllOf:",
+								"elements": [
+									{ "$type": "Core.CardRestriction:Enemy:" },
+									{ "$type": "Core.CardRestriction:Avatar:" }
+								]
+							}
 						},
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
@@ -43,10 +46,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
-					
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
+					"cardRestriction": {
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
 							{ "$type": "Core.CardRestriction:Enemy:" },
 							{ "$type": "Core.CardRestriction:Avatar:" },
 							{

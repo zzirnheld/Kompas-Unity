@@ -10,10 +10,9 @@
 				{
 					"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 					"anyOf": { "$type": "ManyCards:Board:" },
-					
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
+					"cardRestriction": {
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{ "$type": "Core.CardRestriction:Augment:" },
 							{
@@ -40,9 +39,10 @@
 		},
 		{
 			"$type":"Subeffect:SpaceTarget:",
+			"blurb":"where to make a Comeback Play",
 			"spaceRestriction":
 			{
-				"blurb":"where to make a Comeback Play",
+				"$type": "Core.SpaceRestriction:AllOf:",
 				"elements": [
 					{
 						"$type": "Core.SpaceRestriction:CanPlayCard:",

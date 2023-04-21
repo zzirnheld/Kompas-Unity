@@ -16,8 +16,9 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where to play the Squire",
 					"spaceRestriction": {
-						"blurb": "where to play the Squire",
+						"$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {
@@ -44,9 +45,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "New Squire",
 					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"blurb": "New Squire",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },

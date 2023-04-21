@@ -13,10 +13,9 @@
 						{
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 							"card": { "$type": "Cards:CardBefore:" },
-							
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:AllOf:",
+								"elements": [
 									{ "$type": "Core.CardRestriction:Character:" },
 									{ "$type": "Core.CardRestriction:Friendly:" },
 									{
@@ -57,13 +56,16 @@
 				},
 				{
 					"$type": "Subeffect:ChangeAllCardStats:",
-					"cardRestriction": { "elements": [
-						{ "$type": "Core.CardRestriction:Character:" },
-						{
-							"$type": "Core.SpaceRestriction:AdjacentTo:",
-							"space": { "$type": "Cards:TargetIndex:" }
-						}
-					] },
+					"cardRestriction": {
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": { "$type": "Cards:TargetIndex:" }
+							}
+						]
+					},
 					"wMultiplier": -1
 				}
 			]
