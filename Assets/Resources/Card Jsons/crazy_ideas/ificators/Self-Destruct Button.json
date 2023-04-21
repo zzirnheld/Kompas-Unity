@@ -48,15 +48,9 @@
 				{
 					"$type": "Subeffect:TargetAll:",
 					"toSearch": { "$type": "ManyCards:Discard:" },
-					
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Crazy", "Idea" ]
-							}
-						]
+					"cardRestriction": {
+						"$type": "Core.CardRestriction:Subtypes:",
+						"subtypes": [ "Crazy", "Idea" ]
 					}
 				},
 				{
@@ -65,9 +59,7 @@
 				{
 					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"delete": true,
-					"jumpIndices": [
-						4
-					]
+					"jumpIndices": [ 4 ]
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
@@ -89,9 +81,7 @@
 				{
 					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"delete": true,
-					"jumpIndices": [
-						7
-					]
+					"jumpIndices": [ 7 ]
 				}
 			]
 		}

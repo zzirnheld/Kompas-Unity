@@ -38,6 +38,7 @@
 				},
 				{
 					"$type": "Subeffect:AddPips:",
+					"xMultiplier": 0,
 					"xModifier": 1
 				},
 				{
@@ -67,7 +68,7 @@
 		],
 		"spaceRestriction": {
 			"$type": "Core.SpaceRestriction:InAOEOf:",
-			"anyOf": {
+			"cardRestriction": {
 				"$type": "Core.CardRestriction:Subtypes:",
 				"subtypes": [ "Weather" ]
 			},

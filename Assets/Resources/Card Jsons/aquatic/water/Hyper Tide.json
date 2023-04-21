@@ -17,6 +17,7 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:ChangeLeyload:",
+					"xMultiplier": 0,
 					"xModifier": 1
 				}
 			]

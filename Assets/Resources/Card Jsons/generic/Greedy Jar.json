@@ -19,6 +19,7 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:DrawX:",
+					"xMultiplier": 0,
 					"xModifier": 2
 				}
 			]

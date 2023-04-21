@@ -3,10 +3,11 @@ using KompasCore.Effects;
 using KompasCore.GameCore;
 using KompasServer.GameCore;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace KompasServer.Effects.Subeffects
 {
-	public abstract class ServerSubeffect : KompasCore.Effects.Subeffect
+	public abstract class ServerSubeffect : Subeffect
 	{
 		public override Player Controller => EffectController;
 		public override Effect Effect => ServerEffect;
@@ -33,6 +34,7 @@ namespace KompasServer.Effects.Subeffects
 			//Debug.Log($"Finishing setup for new subeffect of type {GetType()}");
 			ServerEffect = eff;
 			SubeffIndex = subeffIndex;
+			//if (xMultiplier == 0 && xModifier != 0) Debug.LogWarning($"x mulitplier {xMultiplier}, relies on default on eff of {Source}");
 		}
 
 		/// <summary>

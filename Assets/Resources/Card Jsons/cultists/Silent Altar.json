@@ -48,7 +48,8 @@
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:SetX:"
+					"$type": "Subeffect:SetX:",
+					"xMultiplier": 0
 				},
 				{
 					"$type": "Subeffect:CardTarget:",

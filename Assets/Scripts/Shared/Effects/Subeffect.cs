@@ -104,9 +104,9 @@ namespace KompasCore.Effects
 
 		#region effect x
 		/// <summary>
-		/// If the effect uses X, this is the multiplier to X. Default: 0
+		/// If the effect uses X, this is the multiplier to X. Default: 1
 		/// </summary>
-		public int xMultiplier = 0;
+		public int xMultiplier = 1;
 
 		/// <summary>
 		/// If the effect uses X, this is the divisor to X. Default: 1

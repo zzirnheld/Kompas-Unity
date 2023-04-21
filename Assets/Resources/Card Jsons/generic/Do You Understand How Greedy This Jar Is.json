@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Do You Understand How Greedy This Jar Is",
-	"effText": "Draw 4 cards.",
+	"effText": "Draw 7 cards.",
 	"effects": [
 		{
 			"triggerData": {
@@ -19,6 +19,7 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:DrawX:",
+					"xMultiplier": 0,
 					"xModifier": 7
 				}
 			]

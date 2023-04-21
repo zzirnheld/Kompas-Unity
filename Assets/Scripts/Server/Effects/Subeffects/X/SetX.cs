@@ -17,13 +17,5 @@ namespace KompasServer.Effects.Subeffects
 			Debug.Log($"Setting X to {Effect.X}");
 			return Task.FromResult(ResolutionInfo.Next);
 		}
-
-		public override void Initialize(ServerEffect eff, int subeffIndex)
-		{
-			base.Initialize(eff, subeffIndex);
-			if (xModifier != 0) Debug.LogWarning($"X modifier {xModifier}nonstandard");
-			if (xMultiplier != 0) Debug.LogWarning($"x mulitplier {xMultiplier},  nonstandard");
-			if (xDivisor != 1) Debug.LogWarning($"xDivisor {xDivisor} nonstandard");
-		}
 	}
 }

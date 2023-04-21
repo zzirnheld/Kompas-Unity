@@ -28,9 +28,7 @@
 				{
 					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"delete": true,
-					"jumpIndices": [
-						1
-					]
+					"jumpIndices": [ 1 ]
 				}
 			]
 		}

@@ -49,7 +49,8 @@
 			"subeffects":[
 				{
 					"$type":"Subeffect:AddPips:",
-					"xModifier":1
+					"xMultiplier": 0,
+					"xModifier": 1
 				}
 			]
 		}

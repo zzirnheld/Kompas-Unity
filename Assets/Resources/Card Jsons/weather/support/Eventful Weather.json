@@ -37,6 +37,7 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:Mill:",
+					"xMultiplier": 0,
 					"xModifier": 1
 				},
 				{

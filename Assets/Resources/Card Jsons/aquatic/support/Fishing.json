@@ -19,26 +19,20 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:DrawX:",
+					"xMultiplier": 0,
 					"xModifier": 3
 				},
 				{
 					"$type": "Subeffect:SkipToEffectOnImpossible:",
-					"jumpIndices": [
-						6
-					]
+					"jumpIndices": [ 6 ]
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
 					"blurb": "Aquatic for Fishing to annihilate",
 					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
-						"$type": "Core.CardRestriction:AllOf:",
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Aquatic" ]
-							}
-						]
+						"$type": "Core.CardRestriction:Subtypes:",
+						"subtypes": [ "Aquatic" ]
 					}
 				},
 				{

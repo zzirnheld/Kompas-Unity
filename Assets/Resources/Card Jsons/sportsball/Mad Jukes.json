@@ -33,7 +33,8 @@
 					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "Subeffect:SetX:"
+					"$type": "Subeffect:SetX:",
+					"xMultiplier": 0
 				},
 				{
 					"$type": "Subeffect:TargetAugments:"

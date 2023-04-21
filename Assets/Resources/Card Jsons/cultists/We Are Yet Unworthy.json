@@ -57,10 +57,12 @@
 				},
 				{
 					"$type": "Subeffect:DrawX:",
+					"xMultiplier": 0,
 					"xModifier": 2
 				},
 				{
 					"$type": "Subeffect:AddPips:",
+					"xMultiplier": 0,
 					"xModifier": 2
 				}
 			]
