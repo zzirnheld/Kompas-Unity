@@ -21,7 +21,6 @@
 				},
 				{
 					"$type": "Subeffect:DrawX:",
-					"xMultiplier": 1,
 					"xModifier": 1
 				}
 			]

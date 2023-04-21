@@ -47,7 +47,6 @@
 				},
 				{
 					"$type": "Subeffect:AddPips:",
-					"xMultiplier": 1,
 					"xDivisor": 2
 				},
 				{

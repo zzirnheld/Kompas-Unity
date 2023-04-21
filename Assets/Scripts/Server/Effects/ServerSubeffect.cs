@@ -34,7 +34,7 @@ namespace KompasServer.Effects.Subeffects
 			//Debug.Log($"Finishing setup for new subeffect of type {GetType()}");
 			ServerEffect = eff;
 			SubeffIndex = subeffIndex;
-			//if (xMultiplier == 0 && xModifier != 0) Debug.LogWarning($"x mulitplier {xMultiplier}, relies on default on eff of {Source}");
+			if (xMultiplier == 1 && xModifier != 0) Debug.LogWarning($"x mulitplier {xMultiplier}, relies on default on eff of {Source}");
 		}
 
 		/// <summary>
