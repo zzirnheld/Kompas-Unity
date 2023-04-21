@@ -13,25 +13,15 @@
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
                             "card": { "$type": "Cards:CauseBefore:" },
-                            
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
-                                    {
-                                        "$type": "Core.CardRestriction:Subtypes:",
-                                        "subtypes": [ "Fungus" ]
-                                    }
-                                ]
-                            }
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Fungus" ]
+							}
                         },
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
                             "card": { "$type": "Cards:CardBefore:" },
-                            
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [ { "$type": "Core.CardRestriction:Enemy:" } ]
-                            }
+							"cardRestriction": { "$type": "Core.CardRestriction:Enemy:" }
                         }
 					]
 				}

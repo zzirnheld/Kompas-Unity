@@ -15,19 +15,22 @@
 						},
 						{
 							"$type": "Core.SpaceRestriction:AdjacentTo:",
-							"cardRestriction": { "elements": [
-								{
-									"$type": "Core.CardRestriction:Not:",
-									"negated": {
-										"$type": "Core.CardRestriction:CardsMatch:",
-										"card": { "$type": "Cards:ThisCard:" }
+							"cardRestriction": {
+								"$type": "Core.SpaceRestriction:AllOf:",
+								"elements": [
+									{
+										"$type": "Core.CardRestriction:Not:",
+										"negated": {
+											"$type": "Core.CardRestriction:CardsMatch:",
+											"card": { "$type": "Cards:ThisCard:" }
+										}
+									},
+									{
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Speedemon" ]
 									}
-								},
-								{
-									"$type": "Core.CardRestriction:Subtypes:",
-									"subtypes": [ "Speedemon" ]
-								}
-							] }
+								]
+							}
 						}
 					]
 				}
@@ -50,10 +53,9 @@
 					"$type": "Subeffect:CardTarget:",
 					"blurb": "card to vakoom",
 					"toSearch": { "$type": "ManyCards:Board:" },
-					
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
+					"cardRestriction": {
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
 							{
 								"$type": "Core.SpaceRestriction:AdjacentTo:",
 								"space": { "$type": "Spaces:TargetIndex:" }

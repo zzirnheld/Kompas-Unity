@@ -60,8 +60,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where to Invoke the Fungus",
 					"spaceRestriction": {
-						"blurb": "where to Invoke the Fungus",
+						"$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {

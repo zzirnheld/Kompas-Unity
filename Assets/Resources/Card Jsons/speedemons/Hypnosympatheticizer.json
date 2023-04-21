@@ -23,10 +23,9 @@
 					"$type": "Subeffect:CardTarget:",
 					"blurb": "card to sympa",
 					"toSearch": { "$type": "ManyCards:Board:" },
-					
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
+					"cardRestriction": {
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
 							{ "$type": "Core.CardRestriction:DistinctName:" },
 							{
 								"$type": "Core.CardRestriction:CanMove:",
@@ -37,9 +36,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where for speed victim to move",
 					"spaceRestriction": {
-						"blurb": "where for speed victim to move",
-						"$type": "Core.CardRestriction:AllOf:",
+						"$type": "Core.SpaceRestriction:AllOf:",
 						"elements": [
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
