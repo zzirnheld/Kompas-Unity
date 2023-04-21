@@ -55,8 +55,8 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "to move Magnetizing's target to",
 					"spaceRestriction": {
-						"blurb": "to move Magnetizing's target to",
 						"$type": "Core.SpaceRestriction:AllOf:",
 						"elements": [
 							{
@@ -112,9 +112,9 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "for Magnetizing to repel",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "for Magnetizing to repel",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{
@@ -133,8 +133,8 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "to move Magnetizing's target to",
 					"spaceRestriction": {
-						"blurb": "to move Magnetizing's target to",
 						"$type": "Core.SpaceRestriction:AllOf:",
 						"elements": [
 							{

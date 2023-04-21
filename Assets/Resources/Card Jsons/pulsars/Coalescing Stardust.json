@@ -66,9 +66,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Pulsar to coalesce",
 					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"blurb": "Pulsar to coalesce",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
@@ -92,8 +92,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where to play newly coalesced Pulsar",
 					"spaceRestriction": {
-						"blurb": "where to play newly coalesced Pulsar",
+						"$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {
