@@ -8,7 +8,7 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
 						{
 							"$type": "Core.TriggerRestriction:CardsMatch:",
 							"card": { "$type": "Cards:CardBefore:" },
@@ -40,7 +40,7 @@
 					],
 					"endCondition": "Move",
 					"triggerRestriction": {
-						"triggerRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.TriggerRestriction:StackablesMatch:",
 								"firstStackable": { "$type": "Stackables:StackableEvent:", "secondaryContext": true },

@@ -9,7 +9,7 @@
 				"orderPriority": 5,
 				"triggerCondition": "Discard",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",

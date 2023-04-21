@@ -8,7 +8,7 @@
 				"blurb": "Dreamwork! Pass!",
 				"triggerCondition": "Turn Start",
 				"triggerRestriction":{
-					"triggerRestrictionElements": [
+					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" }
 					]
 				}

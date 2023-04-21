@@ -8,7 +8,7 @@
 				"blurb": "Fortune-card",
 				"triggerCondition": "S Change",
 				"triggerRestriction": {
-                    "triggerRestrictionElements": [
+                    "elements": [
                         { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{ "$type": "Core.TriggerRestriction:MaxPerTurn:", "max": 3 },
                         {

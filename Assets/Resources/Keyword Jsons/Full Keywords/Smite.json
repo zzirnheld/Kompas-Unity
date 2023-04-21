@@ -4,7 +4,7 @@
 		"blurb": "Smite",
 		"triggerCondition": "Attack",
 		"triggerRestriction": {
-			"triggerRestrictionElements": [
+			"elements": [
 				{
 					"$type": "Core.TriggerRestriction:CardsMatch:",
 					"card": { "$type": "Cards:CardBefore:" },
@@ -55,7 +55,7 @@
 			"wMultiplier": 2,
 			"endCondition": "Battle End",
 			"triggerRestriction": {
-				"triggerRestrictionElements": [
+				"elements": [
 					{
 						"$type": "Core.TriggerRestriction:StackablesMatch:",
 						"firstStackable": { "$type": "Stackables:StackableEvent:", "secondaryContext": true },

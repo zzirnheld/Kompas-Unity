@@ -7,7 +7,7 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
                         {
                             "$type": "Core.TriggerRestriction:PlayersMatch:",
@@ -60,7 +60,7 @@
 					"fallOffCondition": "Turn Start",
 					"endCondition": "Hand",
 					"triggerRestriction": {
-						"triggerRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.TriggerRestriction:StackablesMatch:",
 								"firstStackable": { "$type": "Stackables:StackableIndex:" },

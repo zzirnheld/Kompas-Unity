@@ -8,7 +8,7 @@
 				"blurb": "Hand-summon character with S <= X?",
 				"triggerCondition": "Draw",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
                         {
                             "$type": "Core.TriggerRestriction:PlayersMatch:",

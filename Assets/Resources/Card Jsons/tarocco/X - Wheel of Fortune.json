@@ -8,7 +8,7 @@
 				"blurb": "Swap two characters' N?",
 				"triggerCondition": "Draw",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
                         {
                             "$type": "Core.TriggerRestriction:PlayersMatch:",

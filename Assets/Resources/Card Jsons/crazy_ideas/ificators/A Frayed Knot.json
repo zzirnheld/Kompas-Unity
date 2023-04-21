@@ -8,7 +8,7 @@
 				"triggerCondition": "Play",
 				"blurb": "A Frayed Knot",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
 						{
 							"$type": "Core.TriggerRestriction:CardsMatch:",
 							"card": { "$type": "Cards:CardBefore:" },

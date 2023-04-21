@@ -5,7 +5,7 @@
 		"blurb":"Comeback Play",
 		"triggerCondition":"Turn Start",
 		"triggerRestriction":{
-			"triggerRestrictionElements": [
+			"elements": [
 				{ "$type": "Core.TriggerRestriction:FriendlyTurn:" },
 				{
 					"$type": "Core.TriggerRestriction:CardFitsRestriction:",

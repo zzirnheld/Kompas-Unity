@@ -7,7 +7,7 @@
 			"triggerData": {
 				"triggerCondition": "Activate",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
 						{
 							"$type": "Core.TriggerRestriction:CardsMatch:",
 							"card": { "$type": "Cards:CardBefore:" },
@@ -30,7 +30,7 @@
 					"$type": "Subeffect:Hanging.Activation:",
 					"endCondition": "Turn Start",
 					"triggerRestriction": {
-						"triggerRestrictionElements": [
+						"elements": [
 							{ "$type": "Core.TriggerRestriction:FriendlyTurn:" }
 						]
 					}

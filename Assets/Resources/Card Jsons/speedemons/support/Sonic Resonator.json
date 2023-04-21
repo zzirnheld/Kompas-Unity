@@ -9,7 +9,7 @@
 				"blurb": "Sonic +C",
 				"triggerCondition": "Move",
 				"triggerRestriction":{
-					"triggerRestrictionElements": [
+					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" }
 					]
 				}
@@ -35,7 +35,7 @@
 				"blurb": "Resound",
 				"triggerCondition": "Vanish",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
 						{
 							"$type": "Core.TriggerRestriction:CardsMatch:",
 							"card": { "$type": "Cards:CardBefore:" },

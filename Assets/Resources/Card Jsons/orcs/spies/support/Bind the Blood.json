@@ -7,7 +7,7 @@
 			"triggerData": {
 				"triggerCondition": "Attack",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
@@ -54,7 +54,7 @@
 					],
 					"fallOffCondition": "Battle End",
 					"fallOffRestriction": {
-						"triggerRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.TriggerRestriction:StackablesMatch:",
 								"firstStackable": { "$type": "Stackables:StackableIndex:" },
@@ -64,7 +64,7 @@
 					},
 					"endCondition": "Discard",
 					"triggerRestriction": {
-						"triggerRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.TriggerRestriction:StackablesMatch:",
 								"firstStackable": { "$type": "Stackables:StackableIndex:" },

@@ -3,7 +3,7 @@
     "triggerData": {
         "triggerCondition": "Turn Start",
         "triggerRestriction": {
-            "triggerRestrictionElements": [
+            "elements": [
                 { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
                 { "$type": "Core.TriggerRestriction:EnemyTurn:" }
             ]
@@ -48,7 +48,7 @@
             "fallOffCondition": "Turn Start",
             "endCondition": "Arrive",
             "triggerRestriction": {
-                "triggerRestrictionElements": [
+                "elements": [
                     {
                         "$type": "Core.TriggerRestriction:CardFitsRestriction:",
                         "card": { "$type": "Cards:CardAfter:" },

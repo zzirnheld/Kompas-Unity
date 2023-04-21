@@ -7,7 +7,7 @@
 			"triggerData": {
 				"triggerCondition": "Discard",
 				"triggerRestriction": {
-                    "triggerRestrictionElements": [
+                    "elements": [
                         {
                             "$type": "Core.TriggerRestriction:CardsMatch:",
                             "card": { "$type": "Cards:CauseBefore:" },

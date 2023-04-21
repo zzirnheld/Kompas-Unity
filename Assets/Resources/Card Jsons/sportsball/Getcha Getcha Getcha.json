@@ -8,7 +8,7 @@
 				"blurb": "Getcha Getcha Getcha",
 				"triggerCondition": "Augmented",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
                         {
                             "$type": "Core.TriggerRestriction:PlayersMatch:",

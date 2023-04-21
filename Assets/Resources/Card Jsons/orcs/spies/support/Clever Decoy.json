@@ -9,7 +9,7 @@
 				"blurb": "It's just a piece of wood!?",
 				"triggerCondition": "Defend",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
                         {
                             "$type": "Core.TriggerRestriction:CardsMatch:",
@@ -41,7 +41,7 @@
 					"wMultiplier": -1,
 					"endCondition": "Battle End",
 					"triggerRestriction": {
-						"triggerRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.TriggerRestriction:StackablesMatch:",
 								"firstStackable": { "$type": "Stackables:StackableEvent:", "secondaryContext": true },
@@ -60,7 +60,7 @@
 					],
 					"endCondition": "Battle End",
 					"triggerRestriction": {
-						"triggerRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.TriggerRestriction:StackablesMatch:",
 								"firstStackable": { "$type": "Stackables:StackableEvent:", "secondaryContext": true },

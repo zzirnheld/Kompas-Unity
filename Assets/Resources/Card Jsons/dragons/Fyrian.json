@@ -9,7 +9,7 @@
 				"triggerCondition": "Attack",
 				"blurb": "Fire Breath",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
 						{
 							"$type": "Core.TriggerRestriction:CardsMatch:",
 							"card": { "$type": "Cards:CardBefore:" },

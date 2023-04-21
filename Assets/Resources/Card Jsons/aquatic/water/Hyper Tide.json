@@ -9,7 +9,7 @@
 				"blurb": "HYPER TIIIIIIDE",
 				"triggerCondition": "Turn Start",
 				"triggerRestriction":{
-					"triggerRestrictionElements": [
+					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" }
 					]
 				}

@@ -5,7 +5,7 @@
 		"blurb":"Wisp Turn Start",
 		"triggerCondition":"Turn Start",
 		"triggerRestriction":{
-			"triggerRestrictionElements": [
+			"elements": [
 				{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" }
 			]
 		}

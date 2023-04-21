@@ -8,7 +8,7 @@
 				"blurb": "Enfocus",
 				"triggerCondition": "S Change",
 				"triggerRestriction": {
-                    "triggerRestrictionElements": [
+                    "elements": [
                         { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
                         {
                             "$type": "Core.TriggerRestriction:CardsMatch:",
@@ -54,7 +54,7 @@
 				"blurb": "Unfocus",
 				"triggerCondition": "S Change",
 				"triggerRestriction": {
-                    "triggerRestrictionElements": [
+                    "elements": [
                         { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
                         {
                             "$type": "Core.TriggerRestriction:CardsMatch:",

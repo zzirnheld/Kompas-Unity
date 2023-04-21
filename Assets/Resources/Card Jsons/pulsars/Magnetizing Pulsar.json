@@ -8,7 +8,7 @@
 				"blurb": "Attract",
 				"triggerCondition": "S Change",
 				"triggerRestriction": {
-                    "triggerRestrictionElements": [
+                    "elements": [
                         { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{ "$type": "Core.TriggerRestriction:MaxPerStack:" },
                         {
@@ -86,7 +86,7 @@
 				"blurb": "Repel",
 				"triggerCondition": "S Change",
 				"triggerRestriction": {
-                    "triggerRestrictionElements": [
+                    "elements": [
                         { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{ "$type": "Core.TriggerRestriction:MaxPerStack:" },
                         {

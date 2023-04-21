@@ -8,7 +8,7 @@
 			"triggerData": {
 				"triggerCondition": "S Change",
 				"triggerRestriction": {
-                    "triggerRestrictionElements": [
+                    "elements": [
                         { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
                         {
                             "$type": "Core.TriggerRestriction:CardsMatch:",
@@ -36,7 +36,7 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
 						{
 							"$type": "Core.TriggerRestriction:CardsMatch:",
 							"card": { "$type": "Cards:CardBefore:" },

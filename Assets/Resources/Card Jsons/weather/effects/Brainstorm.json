@@ -8,7 +8,7 @@
 				"blurb": "Inspiration strikes",
 				"triggerCondition": "Arrive",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{
 							"$type": "Core.SpaceRestriction:InAOEOf:",

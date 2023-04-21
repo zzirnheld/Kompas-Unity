@@ -9,7 +9,7 @@
 				"blurb": "Dispel a C <= X spell?",
 				"triggerCondition": "Draw",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{ "$type": "Core.TriggerRestriction:MaxPerRound:" },
                         {

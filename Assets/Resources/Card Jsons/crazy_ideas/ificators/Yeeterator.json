@@ -8,7 +8,7 @@
 				"blurb": "Yeeterate",
 				"triggerCondition": "Move",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{
 							"$type": "Core.SpaceRestriction:InAOEOf:",

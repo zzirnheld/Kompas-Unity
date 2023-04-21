@@ -8,7 +8,7 @@
 			"triggerData": {
 				"triggerCondition": "Augment Attached",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
 						{
 							"$type": "Core.TriggerRestriction:CardsMatch:",
 							"card": { "$type": "Cards:CardBefore:" },
@@ -26,7 +26,7 @@
 					"wModifier": 2,
 					"endCondition": "Augment Detached",
 					"triggerRestriction": {
-						"triggerRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.TriggerRestriction:CardsMatch:",
 								"card": { "$type": "Cards:CardBefore:" },

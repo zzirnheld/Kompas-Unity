@@ -7,7 +7,7 @@
 			"triggerData": {
 				"triggerCondition": "N Change",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
                         {
                             "$type": "Core.TriggerRestriction:CardsMatch:",
@@ -36,7 +36,7 @@
 			"triggerData": {
 				"triggerCondition": "E Change",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
                         {
                             "$type": "Core.TriggerRestriction:CardsMatch:",
@@ -65,7 +65,7 @@
 			"triggerData": {
 				"triggerCondition": "W Change",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
                         {
                             "$type": "Core.TriggerRestriction:CardsMatch:",

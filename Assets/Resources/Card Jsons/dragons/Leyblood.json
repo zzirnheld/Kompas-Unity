@@ -9,7 +9,7 @@
 				"blurb":"Leyblood",
 				"triggerCondition":"Discard",
 				"triggerRestriction":{
-					"triggerRestrictionElements": [
+					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",

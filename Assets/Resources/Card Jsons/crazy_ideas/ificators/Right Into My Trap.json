@@ -8,7 +8,7 @@
 				"blurb": "Right Into My Trap",
 				"triggerCondition": "Move",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{
 							"$type": "Core.SpaceRestriction:AdjacentTo:",

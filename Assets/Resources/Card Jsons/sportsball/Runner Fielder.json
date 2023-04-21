@@ -8,7 +8,7 @@
 				"blurb": "Run Forward!",
 				"triggerCondition": "Augmented",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
 						{
 							"$type": "Core.TriggerRestriction:CardsMatch:",
 							"card": { "$type": "Cards:CardBefore:" },

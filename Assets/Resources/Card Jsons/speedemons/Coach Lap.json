@@ -8,7 +8,7 @@
 			"triggerData": {
 				"triggerCondition": "Arrive",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
 						{
 							"$type": "Core.SpaceRestriction:AdjacentTo:",
 							"space": { "$type": "Cards:ThisCard:" }

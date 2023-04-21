@@ -9,7 +9,7 @@
 				"blurb": "Discard->apply a core?",
 				"triggerCondition": "Defend",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",

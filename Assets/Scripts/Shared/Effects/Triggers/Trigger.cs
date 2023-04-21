@@ -73,7 +73,7 @@ namespace KompasCore.Effects
         public abstract Effect Effect { get; protected set; }
 
         public string TriggerCondition => TriggerData.triggerCondition;
-        public TriggerRestriction TriggerRestriction => TriggerData.triggerRestriction;
+        public Restrictions.TriggerRestrictionElements.AllOf TriggerRestriction => TriggerData.triggerRestriction;
         public bool Optional => TriggerData.optional;
         public string Blurb => TriggerData.blurb ?? Effect.blurb;
 

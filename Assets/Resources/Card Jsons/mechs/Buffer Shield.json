@@ -9,7 +9,7 @@
 			{
 				"triggerCondition":"Augment Attached",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
 						{
 							"$type": "Core.TriggerRestriction:CardsMatch:",
 							"card": { "$type": "Cards:CardBefore:" },
@@ -27,7 +27,7 @@
 					"eModifier":3,
 					"endCondition":"Augment Detached",
 					"triggerRestriction": {
-						"triggerRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.TriggerRestriction:CardsMatch:",
 								"card": { "$type": "Cards:CardBefore:" },
@@ -43,7 +43,7 @@
 				"blurb": "Buffer Recharge",
 				"triggerCondition": "Turn Start",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
                         { "$type": "Core.TriggerRestriction:EnemyTurn:" },
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",

@@ -8,7 +8,7 @@
 				"blurb": "Sticky!",
 				"triggerCondition": "Arrive",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{
 							"$type": "Core.SpaceRestriction:AdjacentTo:",
@@ -56,7 +56,7 @@
 				"blurb": "Tag! You're IT!",
 				"triggerCondition": "Augment Detached",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
                         { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
                         {
                             "$type": "Core.TriggerRestriction:PlayersMatch:",

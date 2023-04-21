@@ -7,7 +7,7 @@
 			"triggerData": {
 				"triggerCondition": "Turn Start",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
                         { "$type": "Core.TriggerRestriction:EnemyTurn:" }
 					]
@@ -30,7 +30,7 @@
 			"triggerData": {
 				"triggerCondition": "Turn Start",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{ "$type": "Core.TriggerRestriction:FriendlyTurn:" }
 					]

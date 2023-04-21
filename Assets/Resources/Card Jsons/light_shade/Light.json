@@ -10,7 +10,7 @@
             {
                 "triggerCondition":"Stack End",
                 "triggerRestriction":{
-					"triggerRestrictionElements": [
+					"elements": [
 						{
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 							"card": { "$type": "Cards:CardBefore:" },

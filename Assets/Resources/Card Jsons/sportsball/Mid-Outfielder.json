@@ -8,7 +8,7 @@
 				"blurb": "Run Augment Outfield",
 				"triggerCondition": "Augmented",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
 						{
 							"$type": "Core.TriggerRestriction:CardsMatch:",
 							"card": { "$type": "Cards:CardBefore:" },

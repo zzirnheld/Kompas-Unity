@@ -7,7 +7,7 @@
 			"triggerData": {
 				"triggerCondition": "Turn Start",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{ "$type": "Core.TriggerRestriction:FriendlyTurn:" }
 					]
@@ -50,7 +50,7 @@
 			"triggerData": {
 				"triggerCondition": "Battle Start",
 				"triggerRestriction":{
-					"triggerRestrictionElements": [
+					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" }
 					]
 				}
@@ -89,7 +89,7 @@
 			"triggerData": {
 				"triggerCondition": "Discard",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",

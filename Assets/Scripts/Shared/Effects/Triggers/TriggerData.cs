@@ -1,9 +1,9 @@
-﻿using KompasCore.Effects;
+﻿using KompasCore.Effects.Restrictions.TriggerRestrictionElements;
 
 public class TriggerData
 {
     public string triggerCondition;
-    public TriggerRestriction triggerRestriction;
+    public AllOf triggerRestriction;
 
     public bool optional = false;
     public string blurb = "Trigger";

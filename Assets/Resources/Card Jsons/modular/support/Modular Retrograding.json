@@ -8,7 +8,7 @@
 			"triggerData": {
 				"triggerCondition": "Augment Attached",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",

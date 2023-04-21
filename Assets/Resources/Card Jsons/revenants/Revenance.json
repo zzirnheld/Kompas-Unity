@@ -8,7 +8,7 @@
 				"blurb": "Hand->discard the drawn Revenant to draw 1?",
 				"triggerCondition": "Each Card Drawn",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
                         {
                             "$type": "Core.TriggerRestriction:PlayersMatch:",

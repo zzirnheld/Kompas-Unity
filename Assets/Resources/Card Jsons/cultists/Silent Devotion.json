@@ -8,7 +8,7 @@
 				"blurb": "New Silent Devotee",
 				"triggerCondition": "Turn Start",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{ "$type": "Core.TriggerRestriction:FriendlyTurn:" }
 					]

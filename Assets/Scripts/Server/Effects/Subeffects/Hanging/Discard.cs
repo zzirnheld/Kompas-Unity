@@ -28,8 +28,8 @@ namespace KompasServer.Effects.Subeffects.Hanging
         {
             private readonly GameCard target;
 
-            public DiscardEffect(ServerGame serverGame, TriggerRestriction triggerRestriction, string endCondition,
-                string fallOffCondition, TriggerRestriction fallOffRestriction,
+            public DiscardEffect(ServerGame serverGame, IRestriction<TriggeringEventContext> triggerRestriction, string endCondition,
+                string fallOffCondition, IRestriction<TriggeringEventContext> fallOffRestriction,
                 Effect sourceEff, IResolutionContext resolutionContext, GameCard target)
                 : base(serverGame, triggerRestriction, endCondition, fallOffCondition, fallOffRestriction, sourceEff, resolutionContext, removeIfEnd: false)
             {

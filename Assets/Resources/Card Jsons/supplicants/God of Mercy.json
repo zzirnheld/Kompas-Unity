@@ -8,7 +8,7 @@
 				"blurb": "Mercy",
 				"triggerCondition": "Arrive",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
 						{
 							"$type": "Core.TriggerRestriction:CardsMatch:",
 							"card": { "$type": "Cards:CardBefore:" },
@@ -46,7 +46,7 @@
 					"$type": "Subeffect:Hanging.Negate:",
 					"endCondition": "Remove",
 					"triggerRestriction": {
-						"triggerRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.TriggerRestriction:CardsMatch:",
 								"card": { "$type": "Cards:CardBefore:" },

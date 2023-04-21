@@ -7,7 +7,7 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
 						{
 							"$type": "Core.TriggerRestriction:CardsMatch:",
 							"card": { "$type": "Cards:CardBefore:" },
@@ -46,7 +46,7 @@
 			"triggerData": {
 				"triggerCondition": "Turn Start",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
 						{
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 							"card": { "$type": "Cards:CardBefore:" },

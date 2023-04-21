@@ -9,7 +9,7 @@
 				"blurb": "Activate Golem",
 				"triggerCondition": "Augment Attached",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
 						{
 							"$type": "Core.TriggerRestriction:CardsMatch:",
 							"card": { "$type": "Cards:CardBefore:" },
@@ -26,7 +26,7 @@
 					"$type": "Subeffect:Hanging.Activation:",
 					"endCondition": "Augment Detached",
 					"triggerRestriction": {
-						"triggerRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.TriggerRestriction:CardsMatch:",
 								"card": { "$type": "Cards:CardBefore:" },
@@ -40,7 +40,7 @@
 					"eModifier": 5,
 					"endCondition": "Augment Detached",
 					"triggerRestriction": {
-						"triggerRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.TriggerRestriction:CardsMatch:",
 								"card": { "$type": "Cards:CardBefore:" },

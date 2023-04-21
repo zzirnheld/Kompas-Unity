@@ -9,7 +9,7 @@
 				"blurb": "Acid Breath",
 				"triggerCondition": "Take Combat Damage",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
 						{
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 							"card": { "$type": "Cards:CardBefore:" },

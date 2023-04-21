@@ -3,7 +3,7 @@
     "triggerData": {
         "triggerCondition": "Battle Start",
         "triggerRestriction": {
-            "triggerRestrictionElements": [
+            "elements": [
                 {
                     "$type": "Core.TriggerRestriction:CardsMatch:",
                     "card": { "$type": "Cards:CardBefore:" },
@@ -31,7 +31,7 @@
             "wMultiplier": -1,
             "endCondition": "Battle End",
             "triggerRestriction": {
-                "triggerRestrictionElements": [
+                "elements": [
                     {
                         "$type": "Core.TriggerRestriction:StackablesMatch:",
                         "firstStackable": { "$type": "Stackables:StackableEvent:", "secondaryContext": true },

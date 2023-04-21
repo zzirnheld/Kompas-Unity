@@ -3,7 +3,7 @@
 		"triggerCondition": "Play",
 		"blurb": "C to 0",
 		"triggerRestriction": {
-			"triggerRestrictionElements": [
+			"elements": [
 				{
 					"$type": "Core.TriggerRestriction:CardsMatch:",
 					"card": { "$type": "Cards:CardBefore:" },

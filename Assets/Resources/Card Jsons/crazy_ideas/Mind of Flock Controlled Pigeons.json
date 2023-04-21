@@ -8,7 +8,7 @@
 				"blurb": "bawk bawk bawk",
 				"triggerCondition": "Deal Combat Damage",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
 						{
 							"$type": "Core.TriggerRestriction:CardsMatch:",
 							"card": { "$type": "Cards:CardBefore:" },

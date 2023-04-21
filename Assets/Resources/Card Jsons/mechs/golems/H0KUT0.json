@@ -8,11 +8,11 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction":{
-					"triggerRestrictionElements": [
+					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" }
 					]
 				},
-				"triggerRestrictionElements": [
+				"elements": [
 					{
 						"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 						"card": { "$type": "Cards:ThisCard:" },

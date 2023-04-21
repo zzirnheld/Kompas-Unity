@@ -9,17 +9,17 @@ namespace KompasServer.Effects.Subeffects.Hanging
         public readonly Effect sourceEff;
         public readonly string endCondition;
         public readonly string fallOffCondition;
-        public readonly TriggerRestriction fallOffRestriction;
+        public readonly IRestriction<TriggeringEventContext> fallOffRestriction;
 
         public bool RemoveIfEnd { get; }
 
         private bool ended = false;
-        private readonly TriggerRestriction triggerRestriction;
+        private readonly IRestriction<TriggeringEventContext> triggerRestriction;
         protected readonly ServerGame serverGame;
         private readonly IResolutionContext savedContext;
 
-        public HangingEffect(ServerGame serverGame, TriggerRestriction triggerRestriction, string endCondition,
-            string fallOffCondition, TriggerRestriction fallOffRestriction,
+        public HangingEffect(ServerGame serverGame, IRestriction<TriggeringEventContext> triggerRestriction, string endCondition,
+            string fallOffCondition, IRestriction<TriggeringEventContext> fallOffRestriction,
             Effect sourceEff, IResolutionContext currentContext, bool removeIfEnd)
         {
             this.serverGame = serverGame != null ? serverGame : throw new System.ArgumentNullException(nameof(serverGame), "ServerGame in HangingEffect must not be null");
@@ -34,14 +34,14 @@ namespace KompasServer.Effects.Subeffects.Hanging
             RemoveIfEnd = removeIfEnd;
         }
 
-        public virtual bool ShouldBeCanceled(TriggeringEventContext context) => fallOffRestriction.IsValidTriggeringContext(context);
+        public virtual bool ShouldBeCanceled(TriggeringEventContext context) => fallOffRestriction.IsValid(context, default);
 
         public virtual bool ShouldResolve(TriggeringEventContext context)
         {
             //if we've already ended this hanging effect, we shouldn't end it again.
             if (ended) return false;
             Debug.Log($"Checking whether {this} should end for context {context}, with saved context {savedContext}");
-            return triggerRestriction.IsValidTriggeringContext(context, secondary: savedContext);
+            return triggerRestriction.IsValid(context, savedContext);
         }
 
         /// <summary>
