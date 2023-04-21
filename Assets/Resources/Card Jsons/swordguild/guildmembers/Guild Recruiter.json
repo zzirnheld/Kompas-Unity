@@ -23,18 +23,14 @@
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {
                                 "$type": "Core.SpaceRestriction:WithinDistanceOfNumberOfCards:",
+								"numberOfCards": { 
+									"$type": "Numbers:Constant:",
+									"constant": 2
+								},
                                 "cardRestriction": {
-                                    "numberOfCards": { 
-                                        "$type": "Numbers:Constant:",
-                                        "constant": 2
-                                    },
-                                    "elements": [
-                                        {
-                                            "$type": "Core.CardRestriction:Subtypes:",
-                                            "subtypes": [ "Warrior" ]
-                                        }
-                                    ]
-                                }
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Warrior" ]
+								}
                             },
                             {
                                 "$type": "Core.SpaceRestriction:CanPlayCard:",

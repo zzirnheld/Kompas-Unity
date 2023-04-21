@@ -23,16 +23,11 @@
                 },
                 {
                     "$type": "Subeffect:SpaceTarget:",
+                    "blurb": "where to revive the Spirit",
                     "spaceRestriction":
                     {
-                        "blurb": "where to revive the Spirit",
-						"$type": "Core.CardRestriction:AllOf:",
-						"elements": [
-                            {
-                                "$type": "Core.SpaceRestriction:CanPlayCard:",
-                                "toPlay": { "$type": "Cards:TargetIndex:" }
-                            }
-						]
+                        "$type": "Core.SpaceRestriction:CanPlayCard:",
+                        "toPlay": { "$type": "Cards:TargetIndex:" }
                     }
                 },
                 {

@@ -16,23 +16,17 @@
 					"$type": "Subeffect:SetXByGamestate:",
 					"whatToCount": "Cards Fitting Restriction",
 					"toSearch": { "$type": "ManyCards:Discard:" },
-					
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Warrior" ]
-							}
-						]
+					"cardRestriction": {
+						"$type": "Core.CardRestriction:Subtypes:",
+						"subtypes": [ "Warrior" ]
 					},
 					"xMultiplier": 1
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Warrior for the rites to summon",
 					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
-						"blurb": "Warrior for the rites to summon",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
@@ -63,9 +57,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Warriors for Ritesmaster to reshuffle",
 					"toSearch": { "$type": "ManyCards:Discard:" },
 					"cardRestriction": {
-						"blurb": "Warriors for Ritesmaster to reshuffle",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{
@@ -95,8 +89,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where for Ritesmaster to summon the Warrior",
 					"spaceRestriction": {
-						"blurb": "where for Ritesmaster to summon the Warrior",
+						"$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {
