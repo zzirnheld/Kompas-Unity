@@ -45,9 +45,8 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
-					"maxCanChoose": 1,
+					"blurb": "God of the Supplicants",
 					"cardRestriction": {
-						"blurb": "God of the Supplicants",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },

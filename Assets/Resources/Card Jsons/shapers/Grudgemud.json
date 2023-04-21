@@ -19,9 +19,9 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Ethereal for Grudges Unforgotten to annihilate and absorb",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "Ethereal for Grudges Unforgotten to annihilate and absorb",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },

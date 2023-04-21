@@ -24,9 +24,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "summon for Hanged Man to also give -X E",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "summon for Hanged Man to also give -X E",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },

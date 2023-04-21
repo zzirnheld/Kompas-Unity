@@ -67,9 +67,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTargetSaveRest:",
+					"blurb": "Rune for Runespeaker to search (to hand)",
 					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"blurb": "Rune for Runespeaker to search (to hand)",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },

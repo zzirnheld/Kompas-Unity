@@ -19,16 +19,11 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Memory whose bearers will be echoed",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "Memory whose bearers will be echoed",
-						"$type": "Core.CardRestriction:AllOf:",
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Memory" ]
-							}
-						]
+						"$type": "Core.CardRestriction:Subtypes:",
+						"subtypes": [ "Memory" ]
 					}
 				},
 				{

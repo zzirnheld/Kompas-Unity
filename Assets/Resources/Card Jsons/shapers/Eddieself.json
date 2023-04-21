@@ -23,9 +23,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "for Trailing Dreammist to hand-summon",
 					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
-						"blurb": "for Trailing Dreammist to hand-summon",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },

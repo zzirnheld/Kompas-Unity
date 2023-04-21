@@ -19,10 +19,8 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
-					"cardRestriction": {
-						"blurb": "card to research",
-						"toSearch": { "$type": "ManyCards:Deck:" }
-					}
+					"blurb": "card to research",
+					"toSearch": { "$type": "ManyCards:Deck:" }
 				},
 				{
 					"$type": "Subeffect:Annihilate:"

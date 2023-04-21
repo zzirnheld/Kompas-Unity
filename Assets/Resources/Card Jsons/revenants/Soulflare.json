@@ -19,16 +19,11 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "for Soulflare to annihilate",
 					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
-						"blurb": "for Soulflare to annihilate",
-						"$type": "Core.CardRestriction:AllOf:",
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Revenant" ]
-							}
-						]
+						"$type": "Core.CardRestriction:Subtypes:",
+						"subtypes": [ "Revenant" ]
 					}
 				},
 				{

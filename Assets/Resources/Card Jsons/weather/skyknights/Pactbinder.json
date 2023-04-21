@@ -43,16 +43,11 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Weather for the Pactbinder to bind",
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"blurb": "Weather for the Pactbinder to bind",
-						"toSearch": { "$type": "ManyCards:Deck:" },
-						"$type": "Core.CardRestriction:AllOf:",
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Weather" ]
-							}
-						]
+						"$type": "Core.CardRestriction:Subtypes:",
+						"subtypes": [ "Weather" ]
 					}
 				},
 				{
@@ -100,16 +95,11 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Skyknight for the Pactbinder to bind",
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"blurb": "Skyknight for the Pactbinder to bind",
-						"toSearch": { "$type": "ManyCards:Deck:" },
-						"$type": "Core.CardRestriction:AllOf:",
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Skyknight" ]
-							}
-						]
+						"$type": "Core.CardRestriction:Subtypes:",
+						"subtypes": [ "Skyknight" ]
 					}
 				},
 				{

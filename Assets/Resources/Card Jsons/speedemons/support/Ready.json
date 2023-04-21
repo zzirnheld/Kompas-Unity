@@ -36,16 +36,11 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Linewalker for Leypathmaking to search",
 					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"blurb": "Linewalker for Leypathmaking to search",
-						"$type": "Core.CardRestriction:AllOf:",
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Speedemon" ]
-							}
-						]
+						"$type": "Core.CardRestriction:Subtypes:",
+						"subtypes": [ "Speedemon" ]
 					}
 				},
 				{

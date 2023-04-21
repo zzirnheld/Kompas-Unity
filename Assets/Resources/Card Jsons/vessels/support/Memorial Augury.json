@@ -19,8 +19,8 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Vessel to read as an augury",
 					"cardRestriction": {
-						"blurb": "Vessel to read as an augury",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
@@ -48,16 +48,11 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Memories to search for",
 					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"blurb": "Memories to search for",
-						"$type": "Core.CardRestriction:AllOf:",
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Memory" ]
-							}
-						]
+						"$type": "Core.CardRestriction:Subtypes:",
+						"subtypes": [ "Memory" ]
 					},
 					"listRestriction": {
 						"listRestrictions": [

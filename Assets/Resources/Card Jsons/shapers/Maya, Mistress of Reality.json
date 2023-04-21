@@ -31,10 +31,8 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
-					"toSearch": { "$type": "ManyCards:Hand:" },
-					"cardRestriction": {
-						"blurb": "for Maya to discard"
-					}
+					"blurb": "for Maya to discard",
+					"toSearch": { "$type": "ManyCards:Hand:" }
 				},
 				{
 					"$type": "Subeffect:Discard:"

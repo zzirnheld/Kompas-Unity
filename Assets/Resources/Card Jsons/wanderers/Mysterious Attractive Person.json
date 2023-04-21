@@ -19,12 +19,9 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "character to attract",
 					"toSearch": { "$type": "ManyCards:Board:" },
-					"cardRestriction": {
-						"blurb": "character to attract",
-						"$type": "Core.CardRestriction:AllOf:",
-						"elements": [ { "$type": "Core.CardRestriction:Character:" } ]
-					}
+					"cardRestriction": { "$type": "Core.CardRestriction:Character:" }
 				},
 				{
 					"$type": "Subeffect:SetXByTargetCardValue:",
@@ -41,8 +38,8 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "character to summon",
 					"cardRestriction": {
-						"blurb": "character to summon",
 						"toSearch": {
 							"$type": "ManyCards:Deck:",
 							"friendly": false,

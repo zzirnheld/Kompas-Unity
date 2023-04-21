@@ -19,9 +19,9 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Memories to recall",
 					"toSearch": { "$type": "ManyCards:Discard:" },
 					"cardRestriction": {
-						"blurb": "Memories to recall",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{
@@ -37,9 +37,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Corporeal form to recall",
 					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"blurb": "Corporeal form to recall",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },

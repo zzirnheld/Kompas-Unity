@@ -19,9 +19,9 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "character to wander home",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "character to wander home",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
@@ -49,13 +49,12 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "character to wander out",
 					"toSearch": {
 						"$type": "ManyCards:Deck:",
-						"friendly": true,
-						"enemy": true
+						"friendly": true, "enemy": true
 					},
 					"cardRestriction": {
-						"blurb": "character to wander out",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
@@ -95,9 +94,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "other character to wander home",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "other character to wander home",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
@@ -123,13 +122,12 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "character to summon",
 					"toSearch": {
 						"$type": "ManyCards:Deck:",
-						"friendly": true,
-						"enemy": true
+						"friendly": true, "enemy": true
 					},
 					"cardRestriction": {
-						"blurb": "character to summon",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{

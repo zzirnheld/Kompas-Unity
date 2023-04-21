@@ -16,8 +16,8 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "for Corporeal Recall to reshuffle",
 					"cardRestriction": {
-						"blurb": "for Corporeal Recall to reshuffle",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
@@ -54,9 +54,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Corporeal form to recall",
 					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"blurb": "Corporeal form to recall",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },

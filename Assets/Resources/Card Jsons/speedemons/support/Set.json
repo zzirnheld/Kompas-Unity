@@ -41,16 +41,11 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Ready for Set to search",
 					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"blurb": "Ready for Set to search",
-						"$type": "Core.CardRestriction:AllOf:",
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Name:",
-								"nameIs": "Ready"
-							}
-						]
+						"$type": "Core.CardRestriction:Name:",
+						"nameIs": "Ready"
 					}
 				},
 				{
@@ -67,9 +62,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "character to set",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "character to set",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
@@ -86,9 +81,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "GO for Ready to search",
 					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"blurb": "GO for Ready to search",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{

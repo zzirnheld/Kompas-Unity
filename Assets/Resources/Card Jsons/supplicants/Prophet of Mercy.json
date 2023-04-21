@@ -37,9 +37,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Supplicants' Plea",
 					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"blurb": "Supplicants' Plea",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },

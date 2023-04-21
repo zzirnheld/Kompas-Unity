@@ -19,9 +19,9 @@
                 },
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "I don't want to remember!",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "I don't want to remember!",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{

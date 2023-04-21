@@ -22,8 +22,8 @@
 				{
 					"$type": "Subeffect:CardTarget:",
 					"toSearch": { "$type": "ManyCards:Board:" },
+					"blurb": "character to swap",
 					"cardRestriction": {
-						"blurb": "character to swap",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
@@ -33,9 +33,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "other character to swap",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "other character to swap",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },

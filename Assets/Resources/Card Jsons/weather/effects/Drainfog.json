@@ -31,18 +31,15 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "The fog is draining",
 					"toSearch": {
 						"$type": "ManyCards:Hand:",
 						"friendly": true,
 						"enemy": true
 					},
 					"cardRestriction": {
-						"blurb": "The fog is draining",
-						"$type": "Core.CardRestriction:AllOf:",
-						"elements": [ {
-							"$type": "Core.PlayerRestriction:PlayersMatch:",
-							"player": { "$type": "Players:TargetIndex:" }
-						} ]
+						"$type": "Core.PlayerRestriction:PlayersMatch:",
+						"player": { "$type": "Players:TargetIndex:" }
 					},
 					"listRestriction": {
 						"listRestrictions": [

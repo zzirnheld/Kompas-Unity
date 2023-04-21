@@ -39,10 +39,8 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Grudges",
 					"toSearch": { "$type": "ManyCards:Hand:" },
-					"cardRestriction": {
-						"blurb": "Grudges"
-					},
 					"listRestriction": {
 						"listRestrictions": [
 							"Min Can Choose",

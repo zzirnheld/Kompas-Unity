@@ -56,12 +56,12 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "C > X spell to reveal",
 					"toSearch": {
 						"$type": "ManyCards:Hand:",
 						"friendly": true, "enemy": true
 					},
 					"cardRestriction": {
-						"blurb": "C > X spell to reveal",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Spell:" },

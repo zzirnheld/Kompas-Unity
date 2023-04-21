@@ -19,8 +19,8 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Vessel's Memory to unlock",
 					"cardRestriction": {
-						"blurb": "Vessel's Memory to unlock",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
@@ -31,16 +31,10 @@
 							},
 							{
 								"$type": "Core.CardRestriction:Augments:",
-                                
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
-                                        {
-                                            "$type": "Core.CardRestriction:Subtypes:",
-                                            "subtypes": [ "Vessel" ]
-                                        }
-                                    ]
-                                }
+								"cardRestriction": {
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Vessel" ]
+								}
 							},
 							{
 								"$type": "Core.SpaceRestriction:AdjacentTo:",
@@ -58,16 +52,11 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Memories to search for",
 					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"blurb": "Memories to search for",
-						"$type": "Core.CardRestriction:AllOf:",
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Memory" ]
-							}
-						]
+						"$type": "Core.CardRestriction:Subtypes:",
+						"subtypes": [ "Memory" ]
 					},
 					"listRestriction": {
 						"listRestrictions": [

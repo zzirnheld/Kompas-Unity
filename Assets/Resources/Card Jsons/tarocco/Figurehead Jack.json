@@ -22,16 +22,11 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "for Jack to hand-bottomdeck",
 					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
-						"blurb": "for Jack to hand-bottomdeck",
-						"$type": "Core.CardRestriction:AllOf:",
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Tarocco" ]
-							}
-						]
+						"$type": "Core.CardRestriction:Subtypes:",
+						"subtypes": [ "Tarocco" ]
 					}
 				},
 				{

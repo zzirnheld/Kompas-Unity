@@ -33,9 +33,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Tarocco for Lovers to become",
 					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"blurb": "Tarocco for Lovers to become",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },

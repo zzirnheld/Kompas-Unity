@@ -13,8 +13,8 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Rune for Runecarver to reshuffle",
 					"cardRestriction": {
-						"blurb": "Rune for Runecarver to reshuffle",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },

@@ -46,9 +46,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "adjacent character for Death to kill",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "adjacent character for Death to kill",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },

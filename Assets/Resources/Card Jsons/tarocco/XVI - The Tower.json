@@ -59,10 +59,8 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "folly of the Tower",
 					"toSearch": { "$type": "ManyCards:Hand:" },
-					"cardRestriction": {
-						"blurb": "folly of the Tower"
-					},
 					"listRestriction": {
 						"listRestrictions": [
 							"Min Can Choose: X",

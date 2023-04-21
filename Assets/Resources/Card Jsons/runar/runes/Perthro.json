@@ -25,9 +25,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTargetSaveRest:",
+					"blurb": "spell for Perthro to search (to hand)",
 					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"blurb": "spell for Perthro to search (to hand)",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },

@@ -44,9 +44,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "character to goal-kick Augment to",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "character to goal-kick Augment to",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },

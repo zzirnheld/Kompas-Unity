@@ -19,10 +19,8 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
-					"toSearch": { "$type": "ManyCards:Hand:" },
-					"cardRestriction": {
-						"blurb": "fuel for the Choo Choo Brain"
-					}
+					"blurb": "fuel for the Choo Choo Brain",
+					"toSearch": { "$type": "ManyCards:Hand:" }
 				},
 				{
 					"$type": "Subeffect:Reshuffle:"

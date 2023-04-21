@@ -17,9 +17,19 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "for High Priestess to topdeck (1/3)",
+					"toSearch": { "$type": "ManyCards:Hand:" }
+				},
+				{
+					"$type": "Subeffect:Topdeck:"
+				},
+				{
+					"$type": "Subeffect:CardTarget:",
+					"blurb": "for High Priestess to topdeck (2/3)",
 					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
-						"blurb": "for High Priestess to topdeck (1/3)"
+						"$type": "Core.CardRestriction:Not:",
+						"negated": { "$type": "Core.CardRestriction:Target:" }
 					}
 				},
 				{
@@ -27,33 +37,11 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "for High Priestess to topdeck (3/3)",
 					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
-						"blurb": "for High Priestess to topdeck (2/3)",
-						"$type": "Core.CardRestriction:AllOf:",
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Not:",
-								"negated": { "$type": "Core.CardRestriction:Target:" }
-							}
-						]
-					}
-				},
-				{
-					"$type": "Subeffect:Topdeck:"
-				},
-				{
-					"$type": "Subeffect:CardTarget:",
-					"toSearch": { "$type": "ManyCards:Hand:" },
-					"cardRestriction": {
-						"blurb": "for High Priestess to topdeck (3/3)",
-						"$type": "Core.CardRestriction:AllOf:",
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Not:",
-								"negated": { "$type": "Core.CardRestriction:Target:" }
-							}
-						]
+						"$type": "Core.CardRestriction:Not:",
+						"negated": { "$type": "Core.CardRestriction:Target:" }
 					}
 				},
 				{

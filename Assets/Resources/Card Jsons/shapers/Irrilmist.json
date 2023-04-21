@@ -29,9 +29,10 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Ethereal to where Irrilmist was",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "Ethereal to where Irrilmist was",
+						"$type": "Core.CardRestriction:AllOf:",
                         "elements": [
                             {
                                 "$type": "Core.CardRestriction:Subtypes:",

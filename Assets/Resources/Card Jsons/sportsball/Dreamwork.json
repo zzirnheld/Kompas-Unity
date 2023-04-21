@@ -41,9 +41,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "adjacent character to attach augment to",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "adjacent character to attach augment to",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },

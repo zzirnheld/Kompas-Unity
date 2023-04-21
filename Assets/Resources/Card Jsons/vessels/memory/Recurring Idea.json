@@ -61,9 +61,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "for Bestower of Memories to attach to",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "for Bestower of Memories to attach to",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{

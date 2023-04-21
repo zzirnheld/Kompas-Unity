@@ -19,8 +19,8 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "character to ANNIHILATE",
 					"cardRestriction": {
-						"blurb": "character to ANNIHILATE",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },

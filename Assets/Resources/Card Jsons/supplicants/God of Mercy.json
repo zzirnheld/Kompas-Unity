@@ -29,9 +29,9 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:TargetAll:",
+					"blurb": "Supplicant to give safe haven",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "Supplicant to give safe haven",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },

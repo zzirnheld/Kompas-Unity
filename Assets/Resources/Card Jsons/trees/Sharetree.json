@@ -29,13 +29,8 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
-					"cardRestriction": {
-						"blurb": "Who to heal",
-						"$type": "Core.CardRestriction:AllOf:",
-						"elements": [
-							{ "$type": "Core.CardRestriction:Hurt:" }
-						]
-					}
+					"blurb": "Who to heal",
+					"cardRestriction": { "$type": "Core.CardRestriction:Hurt:" }
 				},
 				{
 					"$type": "Subeffect:Heal:"

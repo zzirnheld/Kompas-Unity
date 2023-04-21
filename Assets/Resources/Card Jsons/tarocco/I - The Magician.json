@@ -14,10 +14,8 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
-					"toSearch": { "$type": "ManyCards:Hand:" },
-					"cardRestriction": {
-						"blurb": "for Magician to hand-bottomdeck"
-					}
+					"blurb": "for Magician to hand-bottomdeck",
+					"toSearch": { "$type": "ManyCards:Hand:" }
 				},
 				{
 					"$type": "Subeffect:Bottomdeck:"
