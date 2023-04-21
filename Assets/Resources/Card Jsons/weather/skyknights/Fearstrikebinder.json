@@ -13,22 +13,17 @@
 						{
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 							"card": { "$type": "Cards:CardAfter:" },
-							
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:AllOf:",
+								"elements": [
 									{ "$type": "Core.CardRestriction:Friendly:" },
 									{											
 										"$type": "Core.SpaceRestriction:InAOEOf:",
 										"anyOf": {
 											"$type": "ManyCards:FittingRestriction:",
-											
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [ {
-													"$type": "Core.CardRestriction:Subtypes:",
-													"subtypes": [ "Weather" ]
-												} ]
+											"cardRestriction": {
+												"$type": "Core.CardRestriction:Subtypes:",
+												"subtypes": [ "Weather" ]
 											}
 										}
 									}

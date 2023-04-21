@@ -30,12 +30,8 @@
 							{
 								"$type": "Core.SpaceRestriction:InAOEOf:",
 								"anyOf": {
-									"$type": "ManyCards:FittingRestriction:",			
-									"cardRestriction":
-									{
-										"$type": "Core.CardRestriction:Subtypes:",
-										"subtypes": [ "Weather", "Condition" ]
-									}
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Weather", "Condition" ]
 								},
 								"sameAs": { "$type": "Cards:ThisCard:" }
 							},
@@ -55,15 +51,8 @@
 							{
 								"$type": "Core.SpaceRestriction:InAOEOf:",
 								"anyOf": {
-									"$type": "ManyCards:FittingRestriction:",
-									
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [ {
-											"$type": "Core.CardRestriction:Subtypes:",
-											"subtypes": [ "Weather", "Condition" ]
-										} ]
-									}
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Weather", "Condition" ]
 								},
 								"sameAs": { "$type": "Cards:ThisCard:" }
 							}
@@ -100,11 +89,8 @@
 		"spaceRestriction": {
 			"$type": "Core.SpaceRestriction:InAOEOf:",
 			"anyOf": {
-				"$type": "ManyCards:FittingRestriction:",
-				"cardRestriction": {
-					"$type": "Core.CardRestriction:Subtypes:",
-					"subtypes": [ "Weather" ]
-				}
+				"$type": "Core.CardRestriction:Subtypes:",
+				"subtypes": [ "Weather" ]
 			},
 			"minAnyOfCount": { 
 				"$type": "Numbers:Constant:",

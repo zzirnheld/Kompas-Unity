@@ -35,11 +35,13 @@ namespace KompasCore.Effects
 	{
 		public IList<IRestriction<RestrictedType>> elements = new IRestriction<RestrictedType>[] { };
 
-		public override void Initialize(EffectInitializationContext initializationContext)
+        protected virtual bool LogSoloElements => true;
+
+        public override void Initialize(EffectInitializationContext initializationContext)
 		{
 			base.Initialize(initializationContext);
 			foreach (var element in elements) element.Initialize(initializationContext);
-			if (elements.Count == 1) Debug.LogWarning($"only one element on {GetType()} on eff of {initializationContext.source}");
+			if (LogSoloElements && elements.Count == 1) Debug.LogWarning($"only one element on {GetType()} on eff of {initializationContext.source}");
 		}
 
 		protected override bool IsValidLogic(RestrictedType item, IResolutionContext context)

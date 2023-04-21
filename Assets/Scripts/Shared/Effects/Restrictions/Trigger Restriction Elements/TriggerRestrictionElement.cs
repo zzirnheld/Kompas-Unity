@@ -18,6 +18,8 @@ namespace KompasCore.Effects.Restrictions
 	{
 		public class AllOf : AllOfBase<TriggeringEventContext>
 		{
+        	protected override bool LogSoloElements => false;
+
 			public static readonly ISet<Type> ReevalationRestrictions
 				= new HashSet<Type>(new Type[] { typeof(MaxPerTurn), typeof(MaxPerRound), typeof(MaxPerStack) });
 

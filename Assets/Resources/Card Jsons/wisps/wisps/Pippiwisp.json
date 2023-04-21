@@ -26,12 +26,13 @@
 					"cardRestriction": {
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
-						{ "$type": "Core.CardRestriction:Enemy:" },
-						{
-							"$type": "Core.SpaceRestriction:AdjacentTo:",
-							"space": { "$type": "Cards:ThisCard:" }
-						}
-					] },
+							{ "$type": "Core.CardRestriction:Enemy:" },
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": { "$type": "Cards:ThisCard:" }
+							}
+						]
+					},
 					"xMultiplier": 1
 				},
 				{

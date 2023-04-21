@@ -67,11 +67,8 @@
 		"spaceRestriction": {
 			"$type": "Core.SpaceRestriction:InAOEOf:",
 			"anyOf": {
-				"$type": "ManyCards:FittingRestriction:",
-				"cardRestriction": {
-					"$type": "Core.CardRestriction:Subtypes:",
-					"subtypes": [ "Weather" ]
-				}
+				"$type": "Core.CardRestriction:Subtypes:",
+				"subtypes": [ "Weather" ]
 			},
 			"minAnyOfCount": { 
 				"$type": "Numbers:Constant:",
