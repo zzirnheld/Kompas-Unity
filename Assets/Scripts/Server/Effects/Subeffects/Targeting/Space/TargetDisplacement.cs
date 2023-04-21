@@ -5,22 +5,22 @@ using UnityEngine;
 
 namespace KompasServer.Effects.Subeffects
 {
-    public class TargetDisplacement : ServerSubeffect
-    {
-        public int secondarySpaceIndex = -2;
+	public class TargetDisplacement : ServerSubeffect
+	{
+		public int secondarySpaceIndex = -2;
 
-        public override Task<ResolutionInfo> Resolve()
-        {
-            var secondarySpace = Effect.GetSpace(secondarySpaceIndex);
+		public override Task<ResolutionInfo> Resolve()
+		{
+			var secondarySpace = Effect.GetSpace(secondarySpaceIndex);
 
-            if (SpaceTarget == null || secondarySpace == null)
-                return Task.FromResult(ResolutionInfo.Impossible(NoValidSpaceTarget));
+			if (SpaceTarget == null || secondarySpace == null)
+				return Task.FromResult(ResolutionInfo.Impossible(NoValidSpaceTarget));
 
-            var displacement = secondarySpace.DisplacementTo(SpaceTarget);
-            Debug.Log($"Displacement from {secondarySpace} to {SpaceTarget} is {displacement}");
+			var displacement = secondarySpace.DisplacementTo(SpaceTarget);
+			Debug.Log($"Displacement from {secondarySpace} to {SpaceTarget} is {displacement}");
 
-            Effect.AddSpace(displacement);
-            return Task.FromResult(ResolutionInfo.Next);
-        }
-    }
+			Effect.AddSpace(displacement);
+			return Task.FromResult(ResolutionInfo.Next);
+		}
+	}
 }

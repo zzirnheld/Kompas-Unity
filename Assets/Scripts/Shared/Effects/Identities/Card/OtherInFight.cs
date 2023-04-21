@@ -3,25 +3,25 @@ using KompasCore.Exceptions;
 
 namespace KompasCore.Effects.Identities.Cards
 {
-    public class OtherInFight : ContextualParentIdentityBase<GameCardBase>
-    {
-        public IIdentity<GameCardBase> other;
+	public class OtherInFight : ContextualParentIdentityBase<GameCardBase>
+	{
+		public IIdentity<GameCardBase> other;
 
-        public override void Initialize(EffectInitializationContext initializationContext)
-        {
-            base.Initialize(initializationContext);
-            other.Initialize(initializationContext);
-        }
+		public override void Initialize(EffectInitializationContext initializationContext)
+		{
+			base.Initialize(initializationContext);
+			other.Initialize(initializationContext);
+		}
 
-        protected override GameCardBase AbstractItemFrom(IResolutionContext context, IResolutionContext secondaryContext)
-        {
-            Attack attack = GetAttack(ContextToConsider(context, secondaryContext).TriggerContext);
-            var otherCard = other.From(context, secondaryContext);
+		protected override GameCardBase AbstractItemFrom(IResolutionContext context, IResolutionContext secondaryContext)
+		{
+			Attack attack = GetAttack(ContextToConsider(context, secondaryContext).TriggerContext);
+			var otherCard = other.From(context, secondaryContext);
 
-            if (attack.attacker == otherCard) return attack.defender;
-            if (attack.defender == otherCard) return attack.attacker;
+			if (attack.attacker == otherCard) return attack.defender;
+			if (attack.defender == otherCard) return attack.attacker;
 
-            throw new NullCardException($"Neither card of attack {attack} was {otherCard}");
-        }
-    }
+			throw new NullCardException($"Neither card of attack {attack} was {otherCard}");
+		}
+	}
 }

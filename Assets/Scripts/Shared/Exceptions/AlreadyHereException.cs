@@ -5,14 +5,14 @@ using UnityEngine;
 
 namespace KompasCore.Exceptions
 {
-    public class AlreadyHereException : KompasException
-    {
-        public readonly CardLocation location;
+	public class AlreadyHereException : KompasException
+	{
+		public readonly CardLocation location;
 
-        public AlreadyHereException(CardLocation location, string debugMessage = "", string message = "")
-            : base(debugMessage, message)
-        {
-            this.location = location;
-        }
-    }
+		public AlreadyHereException(CardLocation location, string debugMessage = "", string message = "")
+			: base(debugMessage, message)
+		{
+			this.location = location;
+		}
+	}
 }

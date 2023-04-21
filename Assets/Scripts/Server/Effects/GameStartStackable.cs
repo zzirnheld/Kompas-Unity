@@ -5,19 +5,19 @@ using System.Threading.Tasks;
 
 namespace KompasServer.Effects
 {
-    public class GameStartStackable : IStackable, IServerStackable
-    {
-        public Player Controller => null;
+	public class GameStartStackable : IStackable, IServerStackable
+	{
+		public Player Controller => null;
 
-        public GameCard Source => null;
+		public GameCard Source => null;
 
-        public ServerPlayer ServerController => null;
+		public ServerPlayer ServerController => null;
 
-        public GameCard GetCause(GameCardBase withRespectTo) => Source;
+		public GameCard GetCause(GameCardBase withRespectTo) => Source;
 
-        public Task StartResolution(IResolutionContext context)
-        {
-            throw new System.NotImplementedException();
-        }
-    }
+		public Task StartResolution(IResolutionContext context)
+		{
+			throw new System.NotImplementedException();
+		}
+	}
 }

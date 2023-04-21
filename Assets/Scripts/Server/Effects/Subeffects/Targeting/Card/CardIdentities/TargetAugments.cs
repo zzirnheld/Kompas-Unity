@@ -5,14 +5,14 @@ using KompasCore.Effects.Restrictions.CardRestrictionElements;
 
 namespace KompasServer.Effects.Subeffects
 {
-    public class TargetAugments : TargetAll
-    {
-        public override void Initialize(ServerEffect eff, int subeffIndex)
-        {
-            toSearch = new FittingRestriction() {
-                cardRestriction = cardRestriction ?? new AlwaysValid(),
-                cards = new KompasCore.Effects.Identities.ManyCards.Augments() { card = new TargetIndex() } };
-            base.Initialize(eff, subeffIndex);
-        }
-    }
+	public class TargetAugments : TargetAll
+	{
+		public override void Initialize(ServerEffect eff, int subeffIndex)
+		{
+			toSearch = new FittingRestriction() {
+				cardRestriction = cardRestriction ?? new AlwaysValid(),
+				cards = new KompasCore.Effects.Identities.ManyCards.Augments() { card = new TargetIndex() } };
+			base.Initialize(eff, subeffIndex);
+		}
+	}
 }

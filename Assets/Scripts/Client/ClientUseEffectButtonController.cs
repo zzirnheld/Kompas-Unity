@@ -3,25 +3,25 @@ using UnityEngine;
 
 namespace KompasClient.UI
 {
-    public class ClientUseEffectButtonController : MonoBehaviour
-    {
-        public const string EffDefaultUIString = "Use Effect";
+	public class ClientUseEffectButtonController : MonoBehaviour
+	{
+		public const string EffDefaultUIString = "Use Effect";
 
-        public TMPro.TMP_Text buttonText;
+		public TMPro.TMP_Text buttonText;
 
-        private Effect eff;
-        private ClientUIController clientUICtrl;
+		private Effect eff;
+		private ClientUIController clientUICtrl;
 
-        public void Initialize(Effect eff, ClientUIController clientUICtrl)
-        {
-            this.eff = eff;
-            buttonText.text = string.IsNullOrEmpty(eff.blurb) ? EffDefaultUIString : eff.blurb;
-            this.clientUICtrl = clientUICtrl;
-        }
+		public void Initialize(Effect eff, ClientUIController clientUICtrl)
+		{
+			this.eff = eff;
+			buttonText.text = string.IsNullOrEmpty(eff.blurb) ? EffDefaultUIString : eff.blurb;
+			this.clientUICtrl = clientUICtrl;
+		}
 
-        public void UseEffect()
-        {
-            clientUICtrl.ActivateCardEff(eff.Source, eff.EffectIndex);
-        }
-    }
+		public void UseEffect()
+		{
+			clientUICtrl.ActivateCardEff(eff.Source, eff.EffectIndex);
+		}
+	}
 }

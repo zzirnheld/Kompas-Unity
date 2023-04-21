@@ -5,20 +5,20 @@ using UnityEngine.UI;
 
 namespace KompasCore.UI
 {
-    public class AugmentImageController : MonoBehaviour, IPointerEnterHandler
-    {
-        private UIController uiCtrl;
-        private GameCard card;
+	public class AugmentImageController : MonoBehaviour, IPointerEnterHandler
+	{
+		private UIController uiCtrl;
+		private GameCard card;
 
-        public Image img;
+		public Image img;
 
-        public void Initialize(GameCard card, UIController uiCtrl)
-        {
-            this.card = card;
-            this.uiCtrl = uiCtrl;
-            img.sprite = card.SimpleSprite;
-        }
+		public void Initialize(GameCard card, UIController uiCtrl)
+		{
+			this.card = card;
+			this.uiCtrl = uiCtrl;
+			img.sprite = card.SimpleSprite;
+		}
 
-        public void OnPointerEnter(PointerEventData eventData) => uiCtrl.CardViewController.Focus(card);
-    }
+		public void OnPointerEnter(PointerEventData eventData) => uiCtrl.CardViewController.Focus(card);
+	}
 }

@@ -2,15 +2,15 @@
 
 namespace KompasServer.Effects.Subeffects
 {
-    public class TargetTargetsSpace : ServerSubeffect
-    {
-        public override Task<ResolutionInfo> Resolve()
-        {
-            if (CardTarget.Location != CardLocation.Board)
-                return Task.FromResult(ResolutionInfo.Impossible(NoValidCardTarget));
+	public class TargetTargetsSpace : ServerSubeffect
+	{
+		public override Task<ResolutionInfo> Resolve()
+		{
+			if (CardTarget.Location != CardLocation.Board)
+				return Task.FromResult(ResolutionInfo.Impossible(NoValidCardTarget));
 
-            Effect.AddSpace(CardTarget.Position.Copy);
-            return Task.FromResult(ResolutionInfo.Next);
-        }
-    }
+			Effect.AddSpace(CardTarget.Position.Copy);
+			return Task.FromResult(ResolutionInfo.Next);
+		}
+	}
 }

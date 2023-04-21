@@ -4,14 +4,14 @@ using KompasCore.Effects.Identities.Cards;
 
 namespace KompasServer.Effects.Subeffects
 {
-    public class TargetTargetsAugmentedCard : AutoTargetCardIdentity
-    {
-        public IIdentity<GameCardBase> card = new TargetIndex();
+	public class TargetTargetsAugmentedCard : AutoTargetCardIdentity
+	{
+		public IIdentity<GameCardBase> card = new TargetIndex();
 
-        public override void Initialize(ServerEffect eff, int subeffIndex)
-        {
-            subeffectCardIdentity = new AugmentedCard() { ofThisCard = card };
-            base.Initialize(eff, subeffIndex);
-        }
-    }
+		public override void Initialize(ServerEffect eff, int subeffIndex)
+		{
+			subeffectCardIdentity = new AugmentedCard() { ofThisCard = card };
+			base.Initialize(eff, subeffIndex);
+		}
+	}
 }

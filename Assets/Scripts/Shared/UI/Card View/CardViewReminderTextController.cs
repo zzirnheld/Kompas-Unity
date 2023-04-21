@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace KompasCore.UI
 {
-    public class CardViewReminderTextController : MonoBehaviour
-    {
-        public TMP_Text reminderText;
-    }
+	public class CardViewReminderTextController : MonoBehaviour
+	{
+		public TMP_Text reminderText;
+	}
 }

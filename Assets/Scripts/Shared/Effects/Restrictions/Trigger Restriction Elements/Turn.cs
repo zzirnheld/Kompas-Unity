@@ -2,35 +2,35 @@ using KompasCore.Effects.Identities;
 
 namespace KompasCore.Effects.Restrictions.TriggerRestrictionElements
 {
-    public class Turn : TriggerRestrictionBase
-    {
-        public IIdentity<Player> turnPlayer;
+	public class Turn : TriggerRestrictionBase
+	{
+		public IIdentity<Player> turnPlayer;
 
-        public override void Initialize(EffectInitializationContext initializationContext)
-        {
-            base.Initialize(initializationContext);
-            turnPlayer.Initialize(initializationContext);
-        }
+		public override void Initialize(EffectInitializationContext initializationContext)
+		{
+			base.Initialize(initializationContext);
+			turnPlayer.Initialize(initializationContext);
+		}
 
-        protected override bool IsValidLogic(TriggeringEventContext context, IResolutionContext secondaryContext)
-            => InitializationContext.game.TurnPlayer == turnPlayer.From(context, secondaryContext);
-    }
+		protected override bool IsValidLogic(TriggeringEventContext context, IResolutionContext secondaryContext)
+			=> InitializationContext.game.TurnPlayer == turnPlayer.From(context, secondaryContext);
+	}
 
-    public class FriendlyTurn : Turn
-    {
-        public override void Initialize(EffectInitializationContext initializationContext)
-        {
-            turnPlayer = new Identities.Players.FriendlyPlayer();
-            base.Initialize(initializationContext);
-        }
-    }
+	public class FriendlyTurn : Turn
+	{
+		public override void Initialize(EffectInitializationContext initializationContext)
+		{
+			turnPlayer = new Identities.Players.FriendlyPlayer();
+			base.Initialize(initializationContext);
+		}
+	}
 
-    public class EnemyTurn : Turn
-    {
-        public override void Initialize(EffectInitializationContext initializationContext)
-        {
-            turnPlayer = new Identities.Players.EnemyPlayer();
-            base.Initialize(initializationContext);
-        }
-    }
+	public class EnemyTurn : Turn
+	{
+		public override void Initialize(EffectInitializationContext initializationContext)
+		{
+			turnPlayer = new Identities.Players.EnemyPlayer();
+			base.Initialize(initializationContext);
+		}
+	}
 }

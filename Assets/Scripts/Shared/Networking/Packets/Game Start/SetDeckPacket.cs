@@ -4,28 +4,28 @@ using System.Threading.Tasks;
 
 namespace KompasCore.Networking
 {
-    public class SetDeckPacket : Packet
-    {
-        public string decklist = "";
+	public class SetDeckPacket : Packet
+	{
+		public string decklist = "";
 
-        public SetDeckPacket() : base(SetDeck) { }
+		public SetDeckPacket() : base(SetDeck) { }
 
-        public SetDeckPacket(string decklist) : this()
-        {
-            this.decklist = decklist;
-        }
+		public SetDeckPacket(string decklist) : this()
+		{
+			this.decklist = decklist;
+		}
 
-        public override Packet Copy() => new SetDeckPacket(decklist);
-    }
+		public override Packet Copy() => new SetDeckPacket(decklist);
+	}
 }
 
 namespace KompasServer.Networking
 {
-    public class SetDeckServerPacket : SetDeckPacket, IServerOrderPacket
-    {
-        public async Task Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
-        {
-            await serverGame.SetDeck(player, decklist);
-        }
-    }
+	public class SetDeckServerPacket : SetDeckPacket, IServerOrderPacket
+	{
+		public async Task Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
+		{
+			await serverGame.SetDeck(player, decklist);
+		}
+	}
 }

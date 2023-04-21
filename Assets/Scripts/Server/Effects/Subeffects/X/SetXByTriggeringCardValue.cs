@@ -2,20 +2,20 @@
 
 namespace KompasServer.Effects.Subeffects
 {
-    public class SetXByTriggeringCardValue : SetX
-    {
-        public CardValue cardValue;
-        public bool secondary = false;
+	public class SetXByTriggeringCardValue : SetX
+	{
+		public CardValue cardValue;
+		public bool secondary = false;
 
-        public override void Initialize(ServerEffect eff, int subeffIndex)
-        {
-            base.Initialize(eff, subeffIndex);
+		public override void Initialize(ServerEffect eff, int subeffIndex)
+		{
+			base.Initialize(eff, subeffIndex);
 
-            cardValue?.Initialize(DefaultInitializationContext);
-        }
+			cardValue?.Initialize(DefaultInitializationContext);
+		}
 
-        public override int BaseCount => cardValue.GetValueOf(secondary ? 
-            CurrentTriggerContext.secondaryCardInfoBefore :
-            CurrentTriggerContext.mainCardInfoBefore);
-    }
+		public override int BaseCount => cardValue.GetValueOf(secondary ? 
+			CurrentTriggerContext.secondaryCardInfoBefore :
+			CurrentTriggerContext.mainCardInfoBefore);
+	}
 }

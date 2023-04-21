@@ -10,255 +10,255 @@ using UnityEditor;
 
 namespace KompasCore.GameCore
 {
-    public class CardRepository : MonoBehaviour
-    {
-        public const string cardJsonsFolderPath = "Card Jsons";
-        public static readonly string cardListFilePath = Path.Combine(cardJsonsFolderPath, "Card List");
+	public class CardRepository : MonoBehaviour
+	{
+		public const string cardJsonsFolderPath = "Card Jsons";
+		public static readonly string cardListFilePath = Path.Combine(cardJsonsFolderPath, "Card List");
 
-        public static readonly string keywordJsonsFolderPath = Path.Combine("Keyword Jsons", "Full Keywords");
-        public static readonly string keywordListFilePath = Path.Combine(keywordJsonsFolderPath, "Keyword List");
+		public static readonly string keywordJsonsFolderPath = Path.Combine("Keyword Jsons", "Full Keywords");
+		public static readonly string keywordListFilePath = Path.Combine(keywordJsonsFolderPath, "Keyword List");
 
-        public static readonly string partialKeywordFolderPath = Path.Combine("Keyword Jsons", "Partial Keywords");
-        public static readonly string partialKeywordListFilePath = Path.Combine(partialKeywordFolderPath, "Keyword List");
+		public static readonly string partialKeywordFolderPath = Path.Combine("Keyword Jsons", "Partial Keywords");
+		public static readonly string partialKeywordListFilePath = Path.Combine(partialKeywordFolderPath, "Keyword List");
 
-        public static readonly string triggerKeywordFolderPath = Path.Combine("Keyword Jsons", "Trigger Keywords");
-        public static readonly string triggerKeywordListFilePath = Path.Combine(triggerKeywordFolderPath, "Keyword List");
+		public static readonly string triggerKeywordFolderPath = Path.Combine("Keyword Jsons", "Trigger Keywords");
+		public static readonly string triggerKeywordListFilePath = Path.Combine(triggerKeywordFolderPath, "Keyword List");
 
-        public static readonly string RemindersJsonPath = Path.Combine("Reminder Text", "Reminder Texts");
+		public static readonly string RemindersJsonPath = Path.Combine("Reminder Text", "Reminder Texts");
 
-        private static readonly Regex subeffRegex = new Regex(@"Subeffect:([^:]+):"); //Subeffect:*:
-        private const string subeffReplacement = @"KompasServer.Effects.Subeffects.$1, Assembly-CSharp";
+		private static readonly Regex subeffRegex = new Regex(@"Subeffect:([^:]+):"); //Subeffect:*:
+		private const string subeffReplacement = @"KompasServer.Effects.Subeffects.$1, Assembly-CSharp";
 
-        //restriction regexes
-        private static readonly Regex coreRestrictionRegex = new Regex(@"Core\.([^R]+)Restriction:([^:]+):"); //Core.*Restriction:*:
-        private const string coreRestrictionReplacement = @"KompasCore.Effects.Restrictions.$1RestrictionElements.$2, Assembly-CSharp";
+		//restriction regexes
+		private static readonly Regex coreRestrictionRegex = new Regex(@"Core\.([^R]+)Restriction:([^:]+):"); //Core.*Restriction:*:
+		private const string coreRestrictionReplacement = @"KompasCore.Effects.Restrictions.$1RestrictionElements.$2, Assembly-CSharp";
 
-        //identity regexes
-        private static readonly Regex cardsIdentityRegex = new Regex(@"""Cards:([^:]+):"); //"Cards:*:
-        private const string cardsIdentityReplacement = @"""KompasCore.Effects.Identities.Cards.$1, Assembly-CSharp";
+		//identity regexes
+		private static readonly Regex cardsIdentityRegex = new Regex(@"""Cards:([^:]+):"); //"Cards:*:
+		private const string cardsIdentityReplacement = @"""KompasCore.Effects.Identities.Cards.$1, Assembly-CSharp";
 
-        private static readonly Regex manyCardsIdentityRegex = new Regex(@"""ManyCards:([^:]+):"); //"ManyCards:*:
-        private const string manyCardsIdentityReplacement = @"""KompasCore.Effects.Identities.ManyCards.$1, Assembly-CSharp";
+		private static readonly Regex manyCardsIdentityRegex = new Regex(@"""ManyCards:([^:]+):"); //"ManyCards:*:
+		private const string manyCardsIdentityReplacement = @"""KompasCore.Effects.Identities.ManyCards.$1, Assembly-CSharp";
 
-        private static readonly Regex spacesIdentityRegex = new Regex(@"""Spaces:([^:]+):"); //"Spaces:*:
-        private const string spacesIdentityReplacement = @"""KompasCore.Effects.Identities.Spaces.$1, Assembly-CSharp";
+		private static readonly Regex spacesIdentityRegex = new Regex(@"""Spaces:([^:]+):"); //"Spaces:*:
+		private const string spacesIdentityReplacement = @"""KompasCore.Effects.Identities.Spaces.$1, Assembly-CSharp";
 
-        private static readonly Regex manySpacesIdentityRegex = new Regex(@"""ManySpaces:([^:]+):"); //"ManySpaces:*:
-        private const string manySpacesIdentityReplacement = @"""KompasCore.Effects.Identities.ManySpaces.$1, Assembly-CSharp";
+		private static readonly Regex manySpacesIdentityRegex = new Regex(@"""ManySpaces:([^:]+):"); //"ManySpaces:*:
+		private const string manySpacesIdentityReplacement = @"""KompasCore.Effects.Identities.ManySpaces.$1, Assembly-CSharp";
 
-        private static readonly Regex numbersIdentityRegex = new Regex(@"""Numbers:([^:]+):"); //"Numbers:*:
-        private const string numbersIdentityReplacement = @"""KompasCore.Effects.Identities.Numbers.$1, Assembly-CSharp";
+		private static readonly Regex numbersIdentityRegex = new Regex(@"""Numbers:([^:]+):"); //"Numbers:*:
+		private const string numbersIdentityReplacement = @"""KompasCore.Effects.Identities.Numbers.$1, Assembly-CSharp";
 
-        private static readonly Regex manyNumbersIdentityRegex = new Regex(@"""ManyNumbers:([^:]+):"); //"ManyNumbers:*:
-        private const string manyNumbersIdentityReplacement = @"""KompasCore.Effects.Identities.ManyNumbers.$1, Assembly-CSharp";
+		private static readonly Regex manyNumbersIdentityRegex = new Regex(@"""ManyNumbers:([^:]+):"); //"ManyNumbers:*:
+		private const string manyNumbersIdentityReplacement = @"""KompasCore.Effects.Identities.ManyNumbers.$1, Assembly-CSharp";
 
-        private static readonly Regex playersIdentityRegex = new Regex(@"""Players:([^:]+):"); //"Players:*:
-        private const string playersIdentityReplacement = @"""KompasCore.Effects.Identities.Players.$1, Assembly-CSharp";
+		private static readonly Regex playersIdentityRegex = new Regex(@"""Players:([^:]+):"); //"Players:*:
+		private const string playersIdentityReplacement = @"""KompasCore.Effects.Identities.Players.$1, Assembly-CSharp";
 
-        private static readonly Regex stackablesIdentityRegex = new Regex(@"""Stackables:([^:]+):"); //"Stackables:*:
-        private const string stackablesIdentityReplacement = @"""KompasCore.Effects.Identities.Stackables.$1, Assembly-CSharp";
+		private static readonly Regex stackablesIdentityRegex = new Regex(@"""Stackables:([^:]+):"); //"Stackables:*:
+		private const string stackablesIdentityReplacement = @"""KompasCore.Effects.Identities.Stackables.$1, Assembly-CSharp";
 
-        //relationships
-        private static readonly Regex relationshipRegex = new Regex(@"Relationships\.([^:]+):([^:]+):"); //Relationships.*:*:
-        private const string relationshipReplacement = @"KompasCore.Effects.Relationships.$1Relationships.$2, Assembly-CSharp";
+		//relationships
+		private static readonly Regex relationshipRegex = new Regex(@"Relationships\.([^:]+):([^:]+):"); //Relationships.*:*:
+		private const string relationshipReplacement = @"KompasCore.Effects.Relationships.$1Relationships.$2, Assembly-CSharp";
 
-        private static readonly Regex numberSelectorRegex = new Regex(@"NumberSelector:([^:]+):"); //NumberSelector:*:
-        private const string numberSelectorReplacement = @"KompasCore.Effects.Identities.NumberSelectors.$1, Assembly-CSharp";
+		private static readonly Regex numberSelectorRegex = new Regex(@"NumberSelector:([^:]+):"); //NumberSelector:*:
+		private const string numberSelectorReplacement = @"KompasCore.Effects.Identities.NumberSelectors.$1, Assembly-CSharp";
 
-        private static readonly Regex threeSpaceRelationshipRegex = new Regex(@"ThreeSpaceRelationships:([^:]+):"); //ThreeSpaceRelationships:*:
-        private const string threeSpaceRelationshipReplacement = @"KompasCore.Effects.Identities.ThreeSpaceRelationships.$1, Assembly-CSharp";
+		private static readonly Regex threeSpaceRelationshipRegex = new Regex(@"ThreeSpaceRelationships:([^:]+):"); //ThreeSpaceRelationships:*:
+		private const string threeSpaceRelationshipReplacement = @"KompasCore.Effects.Identities.ThreeSpaceRelationships.$1, Assembly-CSharp";
 
-        protected static readonly JsonSerializerSettings cardLoadingSettings = new JsonSerializerSettings
-        {
-            TypeNameHandling = TypeNameHandling.Auto,
-            MaxDepth = null,
-            ReferenceLoopHandling = ReferenceLoopHandling.Serialize
-        };
+		protected static readonly JsonSerializerSettings cardLoadingSettings = new JsonSerializerSettings
+		{
+			TypeNameHandling = TypeNameHandling.Auto,
+			MaxDepth = null,
+			ReferenceLoopHandling = ReferenceLoopHandling.Serialize
+		};
 
-        private static readonly string[] cardNamesToIgnore = new string[] { "Square Kompas Logo" };
+		private static readonly string[] cardNamesToIgnore = new string[] { "Square Kompas Logo" };
 
-        protected static readonly Dictionary<string, string> cardJsons = new Dictionary<string, string>();
-        protected static readonly Dictionary<string, string> cardFileNames = new Dictionary<string, string>();
-        public static IReadOnlyCollection<string> CardNames => cardJsons.Keys;
+		protected static readonly Dictionary<string, string> cardJsons = new Dictionary<string, string>();
+		protected static readonly Dictionary<string, string> cardFileNames = new Dictionary<string, string>();
+		public static IReadOnlyCollection<string> CardNames => cardJsons.Keys;
 
-        protected static readonly Dictionary<string, string> keywordJsons = new Dictionary<string, string>();
-        protected static readonly Dictionary<string, string> partialKeywordJsons = new Dictionary<string, string>();
-        protected static readonly Dictionary<string, string> triggerKeywordJsons = new Dictionary<string, string>();
+		protected static readonly Dictionary<string, string> keywordJsons = new Dictionary<string, string>();
+		protected static readonly Dictionary<string, string> partialKeywordJsons = new Dictionary<string, string>();
+		protected static readonly Dictionary<string, string> triggerKeywordJsons = new Dictionary<string, string>();
 
-        public static ReminderTextsContainer Reminders { get; private set; }
-        public static ICollection<string> Keywords { get; private set; }
+		public static ReminderTextsContainer Reminders { get; private set; }
+		public static ICollection<string> Keywords { get; private set; }
 
-        private static bool initalized = false;
-        private static readonly object initializationLock = new object();
+		private static bool initalized = false;
+		private static readonly object initializationLock = new object();
 
-        public Game game;
-        public Settings Settings
-        {
-            get
-            {
-                if (game != null) return game.Settings;
-                else return default;
-            }
-        }
+		public Game game;
+		public Settings Settings
+		{
+			get
+			{
+				if (game != null) return game.Settings;
+				else return default;
+			}
+		}
 
-        public static IEnumerable<string> CardJsons => cardJsons.Values;
+		public static IEnumerable<string> CardJsons => cardJsons.Values;
 
-        public static void Init() => InitializeCardJsons();
+		public static void Init() => InitializeCardJsons();
 
-        protected virtual void Awake()
-        {
-            lock (initializationLock)
-            {
-                if (initalized) return;
-                initalized = true;
+		protected virtual void Awake()
+		{
+			lock (initializationLock)
+			{
+				if (initalized) return;
+				initalized = true;
 
-                InitializeCardJsons();
+				InitializeCardJsons();
 
-                InitializeMapFromJsons(keywordListFilePath, keywordJsonsFolderPath, keywordJsons);
-                InitializeMapFromJsons(partialKeywordListFilePath, partialKeywordFolderPath, partialKeywordJsons);
-                InitializeMapFromJsons(triggerKeywordListFilePath, triggerKeywordFolderPath, triggerKeywordJsons);
+				InitializeMapFromJsons(keywordListFilePath, keywordJsonsFolderPath, keywordJsons);
+				InitializeMapFromJsons(partialKeywordListFilePath, partialKeywordFolderPath, partialKeywordJsons);
+				InitializeMapFromJsons(triggerKeywordListFilePath, triggerKeywordFolderPath, triggerKeywordJsons);
 
-                var reminderJsonAsset = Resources.Load<TextAsset>(RemindersJsonPath);
-                Reminders = JsonConvert.DeserializeObject<ReminderTextsContainer>(reminderJsonAsset.text);
-                Reminders.Initialize();
-                Keywords = Reminders.keywordReminderTexts.Select(rti => rti.keyword).ToArray();
-            }
-        }
+				var reminderJsonAsset = Resources.Load<TextAsset>(RemindersJsonPath);
+				Reminders = JsonConvert.DeserializeObject<ReminderTextsContainer>(reminderJsonAsset.text);
+				Reminders.Initialize();
+				Keywords = Reminders.keywordReminderTexts.Select(rti => rti.keyword).ToArray();
+			}
+		}
 
-        private static void InitializeCardJsons()
-        {
-            static bool isCardToIgnore(string name) => string.IsNullOrWhiteSpace(name) || cardNamesToIgnore.Contains(name);
+		private static void InitializeCardJsons()
+		{
+			static bool isCardToIgnore(string name) => string.IsNullOrWhiteSpace(name) || cardNamesToIgnore.Contains(name);
 
-            string cardFilenameList = Resources.Load<TextAsset>(cardListFilePath).text;
-            cardFilenameList = cardFilenameList.Replace('\r', '\n');
-            string[] cardFilenameArray = cardFilenameList.Split('\n');
+			string cardFilenameList = Resources.Load<TextAsset>(cardListFilePath).text;
+			cardFilenameList = cardFilenameList.Replace('\r', '\n');
+			string[] cardFilenameArray = cardFilenameList.Split('\n');
 
-            foreach (string filename in cardFilenameArray)
-            {
-                if (string.IsNullOrEmpty(filename)) continue;
-                //sanitize the filename. for some reason, doing substring fixes stuff
-                string filenameClean = filename.Substring(0, filename.Length);
-                //don't add duplicate cards
-                if (isCardToIgnore(filenameClean) || CardExists(filenameClean)) continue;
+			foreach (string filename in cardFilenameArray)
+			{
+				if (string.IsNullOrEmpty(filename)) continue;
+				//sanitize the filename. for some reason, doing substring fixes stuff
+				string filenameClean = filename.Substring(0, filename.Length);
+				//don't add duplicate cards
+				if (isCardToIgnore(filenameClean) || CardExists(filenameClean)) continue;
 
-                //load the json
-                var jsonAsset = Resources.Load<TextAsset>(Path.Combine(cardJsonsFolderPath, filenameClean));
-                if (jsonAsset == null)
-                {
-                    Debug.LogError($"Failed to load json file for {filenameClean}");
-                    continue;
-                }
-                string json = jsonAsset.text;
+				//load the json
+				var jsonAsset = Resources.Load<TextAsset>(Path.Combine(cardJsonsFolderPath, filenameClean));
+				if (jsonAsset == null)
+				{
+					Debug.LogError($"Failed to load json file for {filenameClean}");
+					continue;
+				}
+				string json = jsonAsset.text;
 
-                //handle tags like subeffs, etc.
-                json = ReplacePlaceholders(json);
+				//handle tags like subeffs, etc.
+				json = ReplacePlaceholders(json);
 
-                //load the cleaned json to get the card's name according to itself
-                SerializableCard card;
-                try
-                {
-                    card = JsonConvert.DeserializeObject<SerializableCard>(json, cardLoadingSettings);
-                }
-                catch (JsonReaderException e)
-                {
-                    Debug.LogError($"Failed to load {json}. Error\n{e}");
-                    continue;
-                }
-                catch (JsonSerializationException e)
-                {
-                    Debug.LogError($"Failed to load {json}. Error\n{e}");
-                    continue;
-                }
-                string cardName = card.cardName;
+				//load the cleaned json to get the card's name according to itself
+				SerializableCard card;
+				try
+				{
+					card = JsonConvert.DeserializeObject<SerializableCard>(json, cardLoadingSettings);
+				}
+				catch (JsonReaderException e)
+				{
+					Debug.LogError($"Failed to load {json}. Error\n{e}");
+					continue;
+				}
+				catch (JsonSerializationException e)
+				{
+					Debug.LogError($"Failed to load {json}. Error\n{e}");
+					continue;
+				}
+				string cardName = card.cardName;
 
-                //add the cleaned json to the dictionary
-                //if this throws a key existing exception, you probably have two cards with the same name field, but diff file names
-                if (cardJsons.ContainsKey(cardName)) continue;
-                cardJsons.Add(cardName, json);
-                cardFileNames.Add(cardName, filename);
-            }
+				//add the cleaned json to the dictionary
+				//if this throws a key existing exception, you probably have two cards with the same name field, but diff file names
+				if (cardJsons.ContainsKey(cardName)) continue;
+				cardJsons.Add(cardName, json);
+				cardFileNames.Add(cardName, filename);
+			}
 
-            Debug.Log(string.Join("\n", CardNames));
-        }
+			Debug.Log(string.Join("\n", CardNames));
+		}
 
-        private void InitializeMapFromJsons(string filePath, string folderPath, Dictionary<string, string> dict)
-        {
-            string keywordList = Resources.Load<TextAsset>(filePath).text;
-            var keywords = keywordList.Replace('\r', '\n').Split('\n').Where(s => !string.IsNullOrEmpty(s));
-            Debug.Log($"Keywords list: \n{string.Join("\n", keywords.Select(keyword => $"{keyword} length {keyword.Length}"))}");
-            foreach (string keyword in keywords)
-            {
-                Debug.Log($"Loading {keyword} from {Path.Combine(folderPath, keyword)}");
-                string json = Resources.Load<TextAsset>(Path.Combine(folderPath, keyword)).text;
-                json = ReplacePlaceholders(json);
-                dict.Add(keyword, json);
-            }
-        }
+		private void InitializeMapFromJsons(string filePath, string folderPath, Dictionary<string, string> dict)
+		{
+			string keywordList = Resources.Load<TextAsset>(filePath).text;
+			var keywords = keywordList.Replace('\r', '\n').Split('\n').Where(s => !string.IsNullOrEmpty(s));
+			Debug.Log($"Keywords list: \n{string.Join("\n", keywords.Select(keyword => $"{keyword} length {keyword.Length}"))}");
+			foreach (string keyword in keywords)
+			{
+				Debug.Log($"Loading {keyword} from {Path.Combine(folderPath, keyword)}");
+				string json = Resources.Load<TextAsset>(Path.Combine(folderPath, keyword)).text;
+				json = ReplacePlaceholders(json);
+				dict.Add(keyword, json);
+			}
+		}
 
-        private static string ReplacePlaceholders(string json)
-        {
-            //remove problematic chars for from json function
-            json = json.Replace('\n', ' ');
-            json = json.Replace("\r", "");
-            json = json.Replace("\t", "");
+		private static string ReplacePlaceholders(string json)
+		{
+			//remove problematic chars for from json function
+			json = json.Replace('\n', ' ');
+			json = json.Replace("\r", "");
+			json = json.Replace("\t", "");
 
-            json = subeffRegex.Replace(json, subeffReplacement);
+			json = subeffRegex.Replace(json, subeffReplacement);
 
-            json = coreRestrictionRegex.Replace(json, coreRestrictionReplacement);
+			json = coreRestrictionRegex.Replace(json, coreRestrictionReplacement);
 
-            //Many before single, to not replace the many with a broken thing
-            json = manyCardsIdentityRegex.Replace(json, manyCardsIdentityReplacement);
-            json = cardsIdentityRegex.Replace(json, cardsIdentityReplacement);
+			//Many before single, to not replace the many with a broken thing
+			json = manyCardsIdentityRegex.Replace(json, manyCardsIdentityReplacement);
+			json = cardsIdentityRegex.Replace(json, cardsIdentityReplacement);
 
-            json = manySpacesIdentityRegex.Replace(json, manySpacesIdentityReplacement);
-            json = spacesIdentityRegex.Replace(json, spacesIdentityReplacement);
+			json = manySpacesIdentityRegex.Replace(json, manySpacesIdentityReplacement);
+			json = spacesIdentityRegex.Replace(json, spacesIdentityReplacement);
 
-            json = manyNumbersIdentityRegex.Replace(json, manyNumbersIdentityReplacement);
-            json = numbersIdentityRegex.Replace(json, numbersIdentityReplacement);
+			json = manyNumbersIdentityRegex.Replace(json, manyNumbersIdentityReplacement);
+			json = numbersIdentityRegex.Replace(json, numbersIdentityReplacement);
 
-            json = playersIdentityRegex.Replace(json, playersIdentityReplacement);
-            json = stackablesIdentityRegex.Replace(json, stackablesIdentityReplacement);
+			json = playersIdentityRegex.Replace(json, playersIdentityReplacement);
+			json = stackablesIdentityRegex.Replace(json, stackablesIdentityReplacement);
 
-            json = relationshipRegex.Replace(json, relationshipReplacement);
-            json = numberSelectorRegex.Replace(json, numberSelectorReplacement);
-            json = threeSpaceRelationshipRegex.Replace(json, threeSpaceRelationshipReplacement);
+			json = relationshipRegex.Replace(json, relationshipReplacement);
+			json = numberSelectorRegex.Replace(json, numberSelectorReplacement);
+			json = threeSpaceRelationshipRegex.Replace(json, threeSpaceRelationshipReplacement);
 
-            return json;
-        }
+			return json;
+		}
 
-        private Texture2D Copy(Texture2D baseTexture, Texture2D cardSpecificTexture)
-        {
-            var texture = new Texture2D(baseTexture.width, baseTexture.height);
-            texture.SetPixels(baseTexture.GetPixels());
-            var width = cardSpecificTexture.width;
-            var height = cardSpecificTexture.height;
-            texture.SetPixels(width, height - 1, width, height, cardSpecificTexture.GetPixels(0, 0, width, height));
-            texture.Apply();
-            return texture;
-        }
+		private Texture2D Copy(Texture2D baseTexture, Texture2D cardSpecificTexture)
+		{
+			var texture = new Texture2D(baseTexture.width, baseTexture.height);
+			texture.SetPixels(baseTexture.GetPixels());
+			var width = cardSpecificTexture.width;
+			var height = cardSpecificTexture.height;
+			texture.SetPixels(width, height - 1, width, height, cardSpecificTexture.GetPixels(0, 0, width, height));
+			texture.Apply();
+			return texture;
+		}
 
-        public static bool CardExists(string cardName) => CardNames.Contains(cardName);
+		public static bool CardExists(string cardName) => CardNames.Contains(cardName);
 
-        public string GetJsonFromName(string name)
-        {
-            if (!cardJsons.ContainsKey(name))
-            {
-                //This log exists exclusively for debugging purposes
-                Debug.LogError($"No json found for name \"{name ?? "null"}\" of length {name?.Length ?? 0}");
-                return null;
-            }
+		public string GetJsonFromName(string name)
+		{
+			if (!cardJsons.ContainsKey(name))
+			{
+				//This log exists exclusively for debugging purposes
+				Debug.LogError($"No json found for name \"{name ?? "null"}\" of length {name?.Length ?? 0}");
+				return null;
+			}
 
-            return cardJsons[name];
-        }
+			return cardJsons[name];
+		}
 
-        public IEnumerable<string> GetJsonsFromNames(IEnumerable<string> names)
-            => names.Select(n => GetJsonFromName(n)).Where(json => json != null);
+		public IEnumerable<string> GetJsonsFromNames(IEnumerable<string> names)
+			=> names.Select(n => GetJsonFromName(n)).Where(json => json != null);
 
-        public static string FileNameFor(string cardName) => cardFileNames[cardName];
+		public static string FileNameFor(string cardName) => cardFileNames[cardName];
 
-        public static Sprite LoadSprite(string cardFileName) => Resources.Load<Sprite>(Path.Combine("Simple Sprites", cardFileName));
-        public static Texture LoadTexture(string cardFileName) => Resources.Load<Texture>(Path.Combine("Card Textures", cardFileName));
+		public static Sprite LoadSprite(string cardFileName) => Resources.Load<Sprite>(Path.Combine("Simple Sprites", cardFileName));
+		public static Texture LoadTexture(string cardFileName) => Resources.Load<Texture>(Path.Combine("Card Textures", cardFileName));
 
-        public static IEnumerable<SerializableCard> SerializableCards => cardJsons.Values.Select(json => JsonConvert.DeserializeObject<SerializableCard>(json, cardLoadingSettings));
-    }
+		public static IEnumerable<SerializableCard> SerializableCards => cardJsons.Values.Select(json => JsonConvert.DeserializeObject<SerializableCard>(json, cardLoadingSettings));
+	}
 }

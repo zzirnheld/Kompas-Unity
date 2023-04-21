@@ -5,14 +5,14 @@ using UnityEngine;
 
 namespace KompasCore.Exceptions
 {
-    public class KompasException : Exception
-    {
-        public string message;
+	public class KompasException : Exception
+	{
+		public string message;
 
-        public KompasException(string debugMessage, string message)
-            : base(debugMessage)
-        {
-            this.message = message;
-        }
-    }
+		public KompasException(string debugMessage, string message)
+			: base(debugMessage)
+		{
+			this.message = message;
+		}
+	}
 }

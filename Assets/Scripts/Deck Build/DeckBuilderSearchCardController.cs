@@ -4,24 +4,24 @@ using UnityEngine.UI;
 
 namespace KompasDeckbuilder.UI.Search
 {
-    public class DeckBuilderSearchCardController : MonoBehaviour
-    {
-        public Image image;
+	public class DeckBuilderSearchCardController : MonoBehaviour
+	{
+		public Image image;
 
-        private DeckBuilderCardController card;
-        private DeckPaneDeckController deckController;
+		private DeckBuilderCardController card;
+		private DeckPaneDeckController deckController;
 
-        public void Initialize(DeckBuilderCardController card, DeckPaneDeckController deckController)
-        {
-            image.sprite = card.CardSprite;
-            this.card = card;
-            this.deckController = deckController;
-        }
+		public void Initialize(DeckBuilderCardController card, DeckPaneDeckController deckController)
+		{
+			image.sprite = card.CardSprite;
+			this.card = card;
+			this.deckController = deckController;
+		}
 
-        public void OnDestroy() { if (card != null) Destroy(card.gameObject); }
+		public void OnDestroy() { if (card != null) Destroy(card.gameObject); }
 
-        public void Show() => card.Show();
+		public void Show() => card.Show();
 
-        public void AddToDeck() => deckController.AddToDeck(card.CardName);
-    }
+		public void AddToDeck() => deckController.AddToDeck(card.CardName);
+	}
 }

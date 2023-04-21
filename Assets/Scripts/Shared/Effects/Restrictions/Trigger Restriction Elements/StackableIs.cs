@@ -2,34 +2,34 @@ using KompasCore.Effects.Identities;
 
 namespace KompasCore.Effects.Restrictions.TriggerRestrictionElements
 {
-    public abstract class StackableIs : TriggerRestrictionBase
-    {
-        public IIdentity<IStackable> stackable = new Identities.Stackables.StackableCause();
+	public abstract class StackableIs : TriggerRestrictionBase
+	{
+		public IIdentity<IStackable> stackable = new Identities.Stackables.StackableCause();
 
-        public override void Initialize(EffectInitializationContext initializationContext)
-        {
-            base.Initialize(initializationContext);
-            stackable.Initialize(initializationContext);
-        }
+		public override void Initialize(EffectInitializationContext initializationContext)
+		{
+			base.Initialize(initializationContext);
+			stackable.Initialize(initializationContext);
+		}
 
-        protected override bool IsValidLogic(TriggeringEventContext context, IResolutionContext secondaryContext)
-            => Predicate(stackable.From(context, secondaryContext));
+		protected override bool IsValidLogic(TriggeringEventContext context, IResolutionContext secondaryContext)
+			=> Predicate(stackable.From(context, secondaryContext));
 
-        protected abstract bool Predicate(IStackable stackable);
-    }
+		protected abstract bool Predicate(IStackable stackable);
+	}
 
-    public class IsAttack : StackableIs
-    {
-        protected override bool Predicate(IStackable stackable) => stackable is Attack;
-    }
+	public class IsAttack : StackableIs
+	{
+		protected override bool Predicate(IStackable stackable) => stackable is Attack;
+	}
 
-    public class IsEffect : StackableIs
-    {
-        protected override bool Predicate(IStackable stackable) => stackable is Effect;
-    }
+	public class IsEffect : StackableIs
+	{
+		protected override bool Predicate(IStackable stackable) => stackable is Effect;
+	}
 
-    public class Normally : StackableIs
-    {
-        protected override bool Predicate(IStackable stackable) => stackable == null;
-    }
+	public class Normally : StackableIs
+	{
+		protected override bool Predicate(IStackable stackable) => stackable == null;
+	}
 }

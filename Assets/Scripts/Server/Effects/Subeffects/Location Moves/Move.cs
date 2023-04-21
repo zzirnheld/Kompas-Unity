@@ -4,14 +4,14 @@ using System.Threading.Tasks;
 
 namespace KompasServer.Effects.Subeffects
 {
-    public class Move : ServerSubeffect
-    {
-        public override Task<ResolutionInfo> Resolve()
-        {
-            if (CardTarget == null) throw new NullCardException(TargetWasNull);
+	public class Move : ServerSubeffect
+	{
+		public override Task<ResolutionInfo> Resolve()
+		{
+			if (CardTarget == null) throw new NullCardException(TargetWasNull);
 
-            CardTarget.Move(SpaceTarget, false, Effect);
-            return Task.FromResult(ResolutionInfo.Next);
-        }
-    }
+			CardTarget.Move(SpaceTarget, false, Effect);
+			return Task.FromResult(ResolutionInfo.Next);
+		}
+	}
 }
