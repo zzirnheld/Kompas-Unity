@@ -50,8 +50,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "Where to summon the Mycelium",
 					"spaceRestriction": {
-						"blurb": "Where to summon the Mycelium",
+						"$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {

@@ -39,9 +39,7 @@
 				{
 					"$type": "Subeffect:ConditionalEnd:",
 					"condition": "Target Violates Restriction",
-					"cardRestriction": { "elements": [
-						{ "$type": "Core.SpaceRestriction:Corner:" }
-					] }
+					"cardRestriction": { "$type": "Core.SpaceRestriction:Corner:" }
 				},
 				{
 					"$type": "Subeffect:TargetTargetsAugmentedCard:",
