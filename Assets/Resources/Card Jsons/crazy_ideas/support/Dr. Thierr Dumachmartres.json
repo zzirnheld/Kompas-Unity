@@ -10,11 +10,11 @@
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{ "$type": "Core.TriggerRestriction:MaxPerTurn:", "max": 3 },
-                        {
-                            "$type": "Core.TriggerRestriction:PlayersMatch:",
-                            "firstPlayer": { "$type": "Players:TriggeringPlayer:" },
-                            "secondPlayer": { "$type": "Players:FriendlyPlayer:" }
-                        },
+						{
+							"$type": "Core.TriggerRestriction:PlayersMatch:",
+							"firstPlayer": { "$type": "Players:TriggeringPlayer:" },
+							"secondPlayer": { "$type": "Players:FriendlyPlayer:" }
+						},
 						{ "$type": "Core.TriggerRestriction:Normally:" }
 					]
 				}

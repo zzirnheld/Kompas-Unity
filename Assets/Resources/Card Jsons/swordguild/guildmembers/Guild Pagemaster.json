@@ -10,14 +10,14 @@
 				"triggerRestriction": {
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-                        {
-                            "$type": "Core.TriggerRestriction:PlayersMatch:",
-                            "firstPlayer": { "$type": "Players:TriggeringPlayer:" },
-                            "secondPlayer": { "$type": "Players:FriendlyPlayer:" }
-                        },
-                        {
-                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "card": { "$type": "Cards:CardAfter:" },
+						{
+							"$type": "Core.TriggerRestriction:PlayersMatch:",
+							"firstPlayer": { "$type": "Players:TriggeringPlayer:" },
+							"secondPlayer": { "$type": "Players:FriendlyPlayer:" }
+						},
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardAfter:" },
 							"cardRestriction": {
 								"$type": "Core.CardRestriction:AllOf:",
 								"elements": [
@@ -34,8 +34,8 @@
 										"subtypes": [ "Swordguild", "Warrior" ]
 									}
 								]
-                            }
-                        }
+							}
+						}
 					]
 				}
 			},
@@ -48,17 +48,17 @@
 					"blurb": "where to play the Squire",
 					"spaceRestriction": {
 						"$type": "Core.SpaceRestriction:AllOf:",
-                        "elements": [
-                            { "$type": "Core.SpaceRestriction:Empty:" },
-                            {
-                                "$type": "Core.SpaceRestriction:AdjacentTo:",
-                                "card": { "$type": "Cards:TargetIndex:" }
-                            },
-                            {
-                                "$type": "Core.SpaceRestriction:CanPlayCard:",
-                                "toPlay": { "$type": "Cards:TargetIndex:" }
-                            }
-                        ]
+						"elements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"card": { "$type": "Cards:TargetIndex:" }
+							},
+							{
+								"$type": "Core.SpaceRestriction:CanPlayCard:",
+								"toPlay": { "$type": "Cards:TargetIndex:" }
+							}
+						]
 					}
 				},
 				{
@@ -68,7 +68,7 @@
 					"cardRestriction": {
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
-                            { "$type": "Core.CardRestriction:Character:" },
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Squire" ]

@@ -21,10 +21,10 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:AutoTargetCardIdentity:",
-                    "subeffectCardIdentity": {
+					"subeffectCardIdentity": {
 						"$type": "Cards:Avatar:",
-                        "player": { "$type": "Players:EnemyPlayer:" }
-                    }
+						"player": { "$type": "Players:EnemyPlayer:" }
+					}
 				},
 				{
 					"$type": "Subeffect:PlayerChooseX:",

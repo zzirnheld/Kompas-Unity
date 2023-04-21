@@ -9,21 +9,21 @@
 				"triggerCondition": "Activate",
 				"triggerRestriction": {
 					"elements": [
-                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-                        {
-                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "card": { "$type": "Cards:CauseBefore:" },
-                            
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CauseBefore:" },
+							
 						"cardRestriction": {
 							"$type": "Core.CardRestriction:AllOf:",
 							"elements": [
-                                    {
-                                        "$type": "Core.CardRestriction:Subtypes:",
-                                        "subtypes": [ "Fungus" ]
-                                    }
-                                ]
-                            }
-                        }
+									{
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Fungus" ]
+									}
+								]
+							}
+						}
 					]
 				}
 			},

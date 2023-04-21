@@ -5,43 +5,43 @@ using UnityEngine;
 
 namespace KompasDeckbuilder.UI.Deck
 {
-    public class DeckPaneSaveController : MonoBehaviour
-    {
-        public DeckPaneController deckPaneController;
-        public DeckPaneDeckController deckController;
-        public DeckPaneDropdownController dropdownController;
+	public class DeckPaneSaveController : MonoBehaviour
+	{
+		public DeckPaneController deckPaneController;
+		public DeckPaneDeckController deckController;
+		public DeckPaneDropdownController dropdownController;
 
-        public TMP_InputField deckNameText;
-        public GameObject saveAsView;
+		public TMP_InputField deckNameText;
+		public GameObject saveAsView;
 
-        public void SaveDeckAs(string deckName)
-        {
-            //write to a persistent file
-            string filePath = Path.Combine(DeckPaneController.DeckFilesFolderPath, $"{deckName}.txt");
+		public void SaveDeckAs(string deckName)
+		{
+			//write to a persistent file
+			string filePath = Path.Combine(DeckPaneController.DeckFilesFolderPath, $"{deckName}.txt");
 
-            var deckListArr = deckController.CurrDeckList.ToArray();
-            string deckList = string.Join("\n", deckListArr);
-            Debug.Log($"Saving deck to {filePath}:\n{deckList}");
-            File.WriteAllText(filePath, deckList);
+			var deckListArr = deckController.CurrDeckList.ToArray();
+			string deckList = string.Join("\n", deckListArr);
+			Debug.Log($"Saving deck to {filePath}:\n{deckList}");
+			File.WriteAllText(filePath, deckList);
 
-            deckPaneController.CreateDeck(deckName, deckListArr);
-        }
+			deckPaneController.CreateDeck(deckName, deckListArr);
+		}
 
-        public void SaveDeck() => SaveDeckAs(deckController.CurrDeckName);
+		public void SaveDeck() => SaveDeckAs(deckController.CurrDeckName);
 
-        public void ShowSaveAs() => saveAsView.SetActive(true);
+		public void ShowSaveAs() => saveAsView.SetActive(true);
 
-        public void HideSaveAs() => saveAsView.SetActive(false);
+		public void HideSaveAs() => saveAsView.SetActive(false);
 
-        public void Confirm()
-        {
-            SaveDeckAs(deckNameText.text);
-            HideSaveAs();
-        }
+		public void Confirm()
+		{
+			SaveDeckAs(deckNameText.text);
+			HideSaveAs();
+		}
 
-        public void Cancel(){
-            deckNameText.text = string.Empty;
-            HideSaveAs();
-        }
-    }
+		public void Cancel(){
+			deckNameText.text = string.Empty;
+			HideSaveAs();
+		}
+	}
 }

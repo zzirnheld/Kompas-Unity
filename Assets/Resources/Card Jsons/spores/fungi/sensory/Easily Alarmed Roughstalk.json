@@ -9,12 +9,12 @@
 				"triggerCondition": "Battle Start",
 				"triggerRestriction": {
 					"elements": [
-                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-                        {
-                            "$type": "Core.TriggerRestriction:CardsMatch:",
-                            "card": { "$type": "Cards:ThisCard:" },
-                            "other": { "$type": "Cards:CardBefore:" }
-                        }
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:ThisCard:" },
+							"other": { "$type": "Cards:CardBefore:" }
+						}
 					]
 				}
 			},
@@ -23,23 +23,23 @@
 					"$type": "Subeffect:TargetTriggeringCard:",
 					"contextSecondaryCard":true
 				},
-                {
-                    "$type":"Subeffect:Activate:"
-                },
-                {
-                    "$type":"Subeffect:Activate:",
-                    "activate":false
-                },
+				{
+					"$type":"Subeffect:Activate:"
+				},
+				{
+					"$type":"Subeffect:Activate:",
+					"activate":false
+				},
 				{
 					"$type": "Subeffect:TargetThis:"
 				},
-                {
-                    "$type":"Subeffect:Activate:"
-                },
-                {
-                    "$type":"Subeffect:Activate:",
-                    "activate":false
-                }
+				{
+					"$type":"Subeffect:Activate:"
+				},
+				{
+					"$type":"Subeffect:Activate:",
+					"activate":false
+				}
 			]
 		}
 	],

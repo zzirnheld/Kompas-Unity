@@ -21,9 +21,9 @@
 					"cardRestriction": {
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
-                            { "$type": "Core.CardRestriction:Character:" },
+							{ "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Friendly:" },
-                            { "$type": "Core.CardRestriction:Summoned:" }
+							{ "$type": "Core.CardRestriction:Summoned:" }
 						]
 					}
 				},
@@ -45,11 +45,11 @@
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Silent" ]
 							},
-                            {
-                                "$type": "Core.CardRestriction:CanPlay:",
-                                "destination": { "$type": "Spaces:TargetIndex:" },
+							{
+								"$type": "Core.CardRestriction:CanPlay:",
+								"destination": { "$type": "Spaces:TargetIndex:" },
 								"ignoring": [ "Adjacent to Friendly Card" ]
-                            }
+							}
 						]
 					}
 				},

@@ -36,13 +36,13 @@
 					"blurb": "where to play new Silent Devotee",
 					"spaceRestriction": {
 						"$type": "Core.SpaceRestriction:AllOf:",
-                        "elements": [
-                            { "$type": "Core.SpaceRestriction:Empty:" },
-                            {
-                                "$type": "Core.SpaceRestriction:CanPlayCard:",
-                                "toPlay": { "$type": "Cards:TargetIndex:" }
-                            }
-                        ]
+						"elements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanPlayCard:",
+								"toPlay": { "$type": "Cards:TargetIndex:" }
+							}
+						]
 					}
 				},
 				{

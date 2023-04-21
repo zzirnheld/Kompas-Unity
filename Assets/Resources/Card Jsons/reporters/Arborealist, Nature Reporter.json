@@ -9,11 +9,11 @@
 				"triggerRestriction": {
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-                        {
-                            "$type": "Core.TriggerRestriction:CardsMatch:",
-                            "card": { "$type": "Cards:ThisCard:" },
-                            "other": { "$type": "Cards:CardBefore:" }
-                        },
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:ThisCard:" },
+							"other": { "$type": "Cards:CardBefore:" }
+						},
 						{ "$type": "Core.TriggerRestriction:MaxPerStack:" },
 						{
 							"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
@@ -68,7 +68,7 @@
 					"cardRestriction": {
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
-                            { "$type": "Core.CardRestriction:Character:" },
+							{ "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Hidden:" },
 							{
 								"$type": "Core.PlayerRestriction:PlayersMatch:",
@@ -100,7 +100,7 @@
 						"cardRestriction": {
 							"$type": "Core.CardRestriction:AllOf:",
 							"elements": [
-                            { "$type": "Core.CardRestriction:Character:" },
+							{ "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					},

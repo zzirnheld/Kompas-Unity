@@ -37,7 +37,7 @@
 									}
 								}
 							},
-                            { "$type": "Core.CardRestriction:CanPlay:" }
+							{ "$type": "Core.CardRestriction:CanPlay:" }
 						]
 					}
 				},
@@ -46,13 +46,13 @@
 					"blurb": "where for Runeloremaster to cast its target Rune",
 					"spaceRestriction": {
 						"$type": "Core.SpaceRestriction:AllOf:",
-                        "elements": [
-                            { "$type": "Core.SpaceRestriction:Empty:" },
-                            {
-                                "$type": "Core.SpaceRestriction:CanPlayCard:",
-                                "toPlay": { "$type": "Cards:TargetIndex:" }
-                            }
-                        ]
+						"elements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanPlayCard:",
+								"toPlay": { "$type": "Cards:TargetIndex:" }
+							}
+						]
 					}
 				},
 				{

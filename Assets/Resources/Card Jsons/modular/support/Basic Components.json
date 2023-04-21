@@ -22,23 +22,23 @@
 					"toSearch": {
 						"$type": "ManyCards:Distinct:",
 						"cards": {
-                            "$type": "ManyCards:FittingRestriction:",
-                            "cards": {
-                                "$type": "ManyCards:Deck:",
-                                "friendly": true,
-                                "enemy": false
-                            },
-                            
+							"$type": "ManyCards:FittingRestriction:",
+							"cards": {
+								"$type": "ManyCards:Deck:",
+								"friendly": true,
+								"enemy": false
+							},
+							
 						"cardRestriction": {
 							"$type": "Core.CardRestriction:AllOf:",
 							"elements": [
-                                    {
-                                        "$type": "Core.CardRestriction:Subtypes:",
-                                        "subtypes": [ "Basic", "Module" ]
-                                    }
-                                ]
-                            }
-                        }
+									{
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Basic", "Module" ]
+									}
+								]
+							}
+						}
 					}
 				},
 				{

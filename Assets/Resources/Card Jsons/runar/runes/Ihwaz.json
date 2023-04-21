@@ -24,7 +24,7 @@
 					"cardRestriction": {
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
-                            { "$type": "Core.CardRestriction:Character:" },
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:CardValueFits:",
 								"cardValue": {
@@ -40,7 +40,7 @@
 									}
 								}
 							},
-                            { "$type": "Core.CardRestriction:CanPlay:" }
+							{ "$type": "Core.CardRestriction:CanPlay:" }
 						]
 					}
 				},
@@ -53,13 +53,13 @@
 					"blurb": "where Ihwaz to recast",
 					"spaceRestriction": {
 						"$type": "Core.SpaceRestriction:AllOf:",
-                        "elements": [
-                            { "$type": "Core.SpaceRestriction:Empty:" },
-                            {
-                                "$type": "Core.SpaceRestriction:CanPlayCard:",
-                                "toPlay": { "$type": "Cards:TargetIndex:" }
-                            }
-                        ]
+						"elements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanPlayCard:",
+								"toPlay": { "$type": "Cards:TargetIndex:" }
+							}
+						]
 					}
 				},
 				{

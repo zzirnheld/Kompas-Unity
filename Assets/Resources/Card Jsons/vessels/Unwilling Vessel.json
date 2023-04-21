@@ -14,9 +14,9 @@
 				}
 			},
 			"subeffects": [
-                {
-                    "$type":"Subeffect:TargetThis:"
-                },
+				{
+					"$type":"Subeffect:TargetThis:"
+				},
 				{
 					"$type": "Subeffect:CardTarget:",
 					"blurb": "I don't want to remember!",
@@ -64,12 +64,12 @@
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
 								"toMove": { "$type": "Cards:TargetIndex:" }
 							},
-                            {
-                                "$type": "Core.SpaceRestriction:CompareDistance:",
-                                "distanceTo": { "$type": "Cards:ThisCard:" },
-                                "number": { "$type": "Numbers:EffectX:" },
-                                "comparison": { "$type": "Relationships.Number:LessThanEqual:" }
-                            }
+							{
+								"$type": "Core.SpaceRestriction:CompareDistance:",
+								"distanceTo": { "$type": "Cards:ThisCard:" },
+								"number": { "$type": "Numbers:EffectX:" },
+								"comparison": { "$type": "Relationships.Number:LessThanEqual:" }
+							}
 						]
 					},
 					"xMultiplier": 1

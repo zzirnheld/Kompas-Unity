@@ -4,7 +4,7 @@
 	"effText": "When turns start, hand a friendly Bone, giving its stats to your \"Lengthening Bone\".",
 	"effects": [
 		{
-            "blurb": "Bonecast",
+			"blurb": "Bonecast",
 			"triggerData": {
 				"triggerCondition": "Turn Start",
 				"triggerRestriction":{
@@ -42,7 +42,7 @@
 						"cardRestriction": {
 							"$type": "Core.CardRestriction:AllOf:",
 							"elements": [
-                            { "$type": "Core.CardRestriction:Character:" },
+							{ "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Name:",

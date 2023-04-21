@@ -18,7 +18,7 @@
 					"cardRestriction": {
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
-                            { "$type": "Core.CardRestriction:Character:" },
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:CardValueFits:",
 								"cardValue": { "value": "Cost" },
@@ -43,13 +43,13 @@
 					"spaceRestriction": {
 						"$type": "Core.SpaceRestriction:AllOf:",
 						"blurb": "Sire, where shall we revive them?",
-                        "elements": [
-                            { "$type": "Core.SpaceRestriction:Empty:" },
-                            {
-                                "$type": "Core.SpaceRestriction:CanPlayCard:",
-                                "toPlay": { "$type": "Cards:TargetIndex:" }
-                            }
-                        ]
+						"elements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanPlayCard:",
+								"toPlay": { "$type": "Cards:TargetIndex:" }
+							}
+						]
 					}
 				},
 				{

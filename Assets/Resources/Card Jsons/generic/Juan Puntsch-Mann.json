@@ -14,11 +14,11 @@
 							"card": { "$type": "Cards:CardBefore:" },
 							"other": { "$type": "Cards:ThisCard:" }
 						},
-                        {
-                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "card": { "$type": "Cards:CardBefore:", "secondaryCard": true },
-                            "cardRestriction":  { "$type": "Core.CardRestriction:Summoned:" }
-                        }
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:", "secondaryCard": true },
+							"cardRestriction": { "$type": "Core.CardRestriction:Summoned:" }
+						}
 					]
 				}
 			},

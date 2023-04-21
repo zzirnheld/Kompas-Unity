@@ -16,14 +16,14 @@
 							"card": { "$type": "Cards:CardBefore:" },
 							"cardRestriction": { "$type": "Core.CardRestriction:Character:" }
 						},
-                        {
-                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "card": { "$type": "Cards:CauseBefore:" },
-                            "cardRestriction": {
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CauseBefore:" },
+							"cardRestriction": {
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Dragon" ]
 							}
-                        }
+						}
 					]
 				}
 			},

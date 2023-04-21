@@ -5,7 +5,7 @@ using KompasCore.Effects;
 
 public class ClientSerializableCard : SerializableGameCard
 {
-    public ClientEffect[] effects;
+	public ClientEffect[] effects;
 
-    public override IEnumerable<Effect> Effects => effects;
+	public override IEnumerable<Effect> Effects => effects;
 }

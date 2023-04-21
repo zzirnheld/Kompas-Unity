@@ -13,12 +13,12 @@
 		}
 	},
 	"subeffects": [
-        {
-            "$type": "Subeffect:TargetThis:"
-        },
-        {
-            "$type": "Subeffect:ChangeCardStats:",
-            "sModifier": 10
-        }
+		{
+			"$type": "Subeffect:TargetThis:"
+		},
+		{
+			"$type": "Subeffect:ChangeCardStats:",
+			"sModifier": 10
+		}
 	]
 }

@@ -17,14 +17,14 @@
 								"subtypes": [ "Mech", "Golem" ]
 							}
 						},
-                        {
-                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "card": { "$type": "Cards:ThisCard:" },
-                            "cardRestriction": {
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:ThisCard:" },
+							"cardRestriction": {
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Discard" ]
 							}
-                        }
+						}
 					]
 				}
 			},
@@ -55,12 +55,12 @@
 									"card": { "$type": "Cards:ThisCard:" }
 								}
 							},
-                            {
-                                "$type": "Core.SpaceRestriction:CompareDistance:",
-                                "distanceTo": { "$type": "Cards:TargetIndex:" },
-                                "number": { "$type": "Numbers:Constant:", "constant": 2 },
-                                "comparison": { "$type": "Relationships.Number:LessThanEqual:" }
-                            }
+							{
+								"$type": "Core.SpaceRestriction:CompareDistance:",
+								"distanceTo": { "$type": "Cards:TargetIndex:" },
+								"number": { "$type": "Numbers:Constant:", "constant": 2 },
+								"comparison": { "$type": "Relationships.Number:LessThanEqual:" }
+							}
 						]
 					}
 				},
@@ -71,24 +71,24 @@
 				}
 			]
 		},
-        {
-            "blurb":"Boom",
+		{
+			"blurb":"Boom",
 			"triggerData": {
 				"triggerCondition": "Attack",
 				"triggerRestriction": {
 					"elements": [
-                        {
-                            "$type": "Core.TriggerRestriction:CardsMatch:",
-                            "card": { "$type": "Cards:CardBefore:" },
-                            "other": {
-                                "$type": "Cards:AugmentedCard:",
-                                "ofThisCard": { "$type": "Cards:ThisCard:" }
-                            }
-                        }
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": {
+								"$type": "Cards:AugmentedCard:",
+								"ofThisCard": { "$type": "Cards:ThisCard:" }
+							}
+						}
 					]
 				}
 			},
-            "subeffects":[
+			"subeffects":[
 				{
 					"$type": "Subeffect:TargetAugmentedCard:"
 				},
@@ -96,8 +96,8 @@
 					"$type": "Subeffect:ChangeCardStats:",
 					"wModifier": 4
 				}
-            ]
-        }
+			]
+		}
 	],
 	"PlayRestriction": {
 		"normalRestrictions": [

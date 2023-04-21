@@ -9,24 +9,24 @@
 				"triggerCondition": "Activate",
 				"triggerRestriction": {
 					"elements": [
-                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-                        {
-                            "$type": "Core.TriggerRestriction:CardsMatch:",
-                            "card": {
-                                "$type": "Cards:AugmentedCard:",
-                                "ofThisCard": { "$type": "Cards:ThisCard:" }
-                            },
-                            "other": { "$type": "Cards:CauseBefore:" }
-                        },
-                        {
-                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "card": { "$type": "Cards:CardBefore:" },
-                            
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": {
+								"$type": "Cards:AugmentedCard:",
+								"ofThisCard": { "$type": "Cards:ThisCard:" }
+							},
+							"other": { "$type": "Cards:CauseBefore:" }
+						},
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							
 						"cardRestriction": {
 							"$type": "Core.CardRestriction:AllOf:",
 							"elements": [ { "$type": "Core.CardRestriction:Enemy:" } ]
-                            }
-                        }
+							}
+						}
 					]
 				}
 			},

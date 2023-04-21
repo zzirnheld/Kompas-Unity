@@ -23,7 +23,7 @@
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{ "$type": "Core.CardRestriction:Character:" },
-                            { "$type": "Core.CardRestriction:Summoned:" },
+							{ "$type": "Core.CardRestriction:Summoned:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Person" ]
@@ -58,7 +58,7 @@
 				}
 			]
 		}
-    ],
+	],
 	"PlayRestriction": {
 		"normalRestrictions": [
 			"Default Normal Restrictions",
@@ -74,7 +74,7 @@
 			"constant": 14
 		}
 	},
-    "unique": true,
+	"unique": true,
 	"n": 5,
 	"e": 1,
 	"s": 5,

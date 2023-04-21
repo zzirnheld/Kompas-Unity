@@ -3,19 +3,19 @@ using KompasCore.Networking;
 
 namespace KompasCore.Networking
 {
-    public class GetDeckPacket : Packet
-    {
-        public GetDeckPacket() : base(GetDeck) { }
+	public class GetDeckPacket : Packet
+	{
+		public GetDeckPacket() : base(GetDeck) { }
 
-        public override Packet Copy() => new GetDeckPacket();
-    }
+		public override Packet Copy() => new GetDeckPacket();
+	}
 }
 
 namespace KompasClient.Networking
 {
-    public class GetDeckClientPacket : GetDeckPacket, IClientOrderPacket
-    {
-        public void Execute(ClientGame clientGame)
-            => clientGame.clientUIController.connectionUIController.Show(UI.ConnectionUIController.ConnectionState.SelectDeck);
-    }
+	public class GetDeckClientPacket : GetDeckPacket, IClientOrderPacket
+	{
+		public void Execute(ClientGame clientGame)
+			=> clientGame.clientUIController.connectionUIController.Show(UI.ConnectionUIController.ConnectionState.SelectDeck);
+	}
 }

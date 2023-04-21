@@ -31,23 +31,23 @@
 				{
 					"$type": "Subeffect:TargetTriggeringCard:"
 				},
-                {
-                    "$type":"Subeffect:Activate:"
-                },
-                {
-                    "$type":"Subeffect:Activate:",
-                    "activate":false
-                },
+				{
+					"$type":"Subeffect:Activate:"
+				},
+				{
+					"$type":"Subeffect:Activate:",
+					"activate":false
+				},
 				{
 					"$type": "Subeffect:TargetThis:"
 				},
-                {
-                    "$type":"Subeffect:Activate:"
-                },
-                {
-                    "$type":"Subeffect:Activate:",
-                    "activate":false
-                }
+				{
+					"$type":"Subeffect:Activate:"
+				},
+				{
+					"$type":"Subeffect:Activate:",
+					"activate":false
+				}
 			]
 		}
 	],

@@ -10,11 +10,11 @@
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{ "$type": "Core.TriggerRestriction:MaxPerTurn:", "max": 3 },
-                        {
-                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "card": { "$type": "Cards:CardBefore:" },
-                            "cardRestriction": { "$type": "Core.CardRestriction:Friendly:" }
-                        }
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"cardRestriction": { "$type": "Core.CardRestriction:Friendly:" }
+						}
 					]
 				}
 			},

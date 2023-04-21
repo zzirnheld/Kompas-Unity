@@ -1,44 +1,44 @@
 {
-    "blurb": "Evasive",
-    "triggerData": {
-        "triggerCondition": "Battle Start",
-        "triggerRestriction": {
-            "elements": [
-                {
-                    "$type": "Core.TriggerRestriction:CardsMatch:",
-                    "card": { "$type": "Cards:CardBefore:" },
-                    "other": { "$type": "Cards:ThisCard:" }
-                },
-                { "$type": "Core.TriggerRestriction:MaxPerRound:" }
-            ]
-        }
-    },
-    "subeffects": [
-        {
-            "$type":"Subeffect:TargetTriggeringCard:",
-            "contextSecondaryCard":true
-        },
-        {
-            "$type": "Subeffect:SetXByTriggeringCardValue:",
-            "contextSecondaryCard":true,
-            "cardValue": {
-                "value": "W"
-            },
-            "xMultiplier": 1
-        },
-        {
-            "$type": "Subeffect:Hanging.ChangeCardStats:",
-            "wMultiplier": -1,
-            "endCondition": "Battle End",
-            "triggerRestriction": {
-                "elements": [
-                    {
-                        "$type": "Core.TriggerRestriction:StackablesMatch:",
-                        "firstStackable": { "$type": "Stackables:StackableEvent:", "secondaryContext": true },
-                        "secondStackable": { "$type": "Stackables:StackableEvent:" }
-                    }
-                ]
-            }
-        }
-    ]
+	"blurb": "Evasive",
+	"triggerData": {
+		"triggerCondition": "Battle Start",
+		"triggerRestriction": {
+			"elements": [
+				{
+					"$type": "Core.TriggerRestriction:CardsMatch:",
+					"card": { "$type": "Cards:CardBefore:" },
+					"other": { "$type": "Cards:ThisCard:" }
+				},
+				{ "$type": "Core.TriggerRestriction:MaxPerRound:" }
+			]
+		}
+	},
+	"subeffects": [
+		{
+			"$type":"Subeffect:TargetTriggeringCard:",
+			"contextSecondaryCard":true
+		},
+		{
+			"$type": "Subeffect:SetXByTriggeringCardValue:",
+			"contextSecondaryCard":true,
+			"cardValue": {
+				"value": "W"
+			},
+			"xMultiplier": 1
+		},
+		{
+			"$type": "Subeffect:Hanging.ChangeCardStats:",
+			"wMultiplier": -1,
+			"endCondition": "Battle End",
+			"triggerRestriction": {
+				"elements": [
+					{
+						"$type": "Core.TriggerRestriction:StackablesMatch:",
+						"firstStackable": { "$type": "Stackables:StackableEvent:", "secondaryContext": true },
+						"secondStackable": { "$type": "Stackables:StackableEvent:" }
+					}
+				]
+			}
+		}
+	]
 }

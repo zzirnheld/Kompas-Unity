@@ -4,7 +4,7 @@
 	"effText": "Negate this character.\nWhen I vanish, give them +10 ESW.",
 	"effects": [
 		{
-            "blurb": "Hibernation",
+			"blurb": "Hibernation",
 			"triggerData": {
 				"triggerCondition": "Augment Attached",
 				"triggerRestriction": {
@@ -36,8 +36,8 @@
 				},
 				{
 					"$type": "Subeffect:Hanging.Delay:",
-                    "endCondition": "Vanish",
-                    "triggerRestriction": {
+					"endCondition": "Vanish",
+					"triggerRestriction": {
 						"elements": [
 							{
 								"$type": "Core.TriggerRestriction:CardsMatch:",
@@ -45,7 +45,7 @@
 								"other": { "$type": "Cards:ThisCard:" }
 							}
 						]
-                    }
+					}
 				},
 				{
 					"$type": "Subeffect:ChangeCardStats:",

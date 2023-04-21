@@ -21,8 +21,8 @@
 						"cardRestriction": {
 							"$type": "Core.CardRestriction:AllOf:",
 							"elements": [
-                            { "$type": "Core.CardRestriction:Character:" },
-                            {
+							{ "$type": "Core.CardRestriction:Character:" },
+							{
 								"$type": "Core.SpaceRestriction:InAOEOf:",
 								"anyOf": {
 									"$type": "ManyCards:FittingRestriction:",
@@ -38,7 +38,7 @@
 									}
 								}
 							}
-                        ]
+						]
 					}
 				},
 				{

@@ -25,12 +25,12 @@
 					"cardRestriction": {
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
-                            { "$type": "Core.CardRestriction:Character:" },
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Mycelium" ]
 							},
-                            { "$type": "Core.CardRestriction:CanPlay:" }
+							{ "$type": "Core.CardRestriction:CanPlay:" }
 						]
 					}
 				},
@@ -39,13 +39,13 @@
 					"blurb": "where to network the first target",
 					"spaceRestriction": {
 						"$type": "Core.SpaceRestriction:AllOf:",
-                        "elements": [
-                            { "$type": "Core.SpaceRestriction:Empty:" },
-                            {
-                                "$type": "Core.SpaceRestriction:CanPlayCard:",
-                                "toPlay": { "$type": "Cards:TargetIndex:" }
-                            }
-                        ]
+						"elements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanPlayCard:",
+								"toPlay": { "$type": "Cards:TargetIndex:" }
+							}
+						]
 					}
 				},
 				{
@@ -58,12 +58,12 @@
 					"cardRestriction": {
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
-                            { "$type": "Core.CardRestriction:Character:" },
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Mycelium" ]
 							},
-                            { "$type": "Core.CardRestriction:CanPlay:" }
+							{ "$type": "Core.CardRestriction:CanPlay:" }
 						]
 					}
 				},
@@ -72,13 +72,13 @@
 					"blurb": "where to network the second target",
 					"spaceRestriction": {
 						"$type": "Core.SpaceRestriction:AllOf:",
-                        "elements": [
-                            { "$type": "Core.SpaceRestriction:Empty:" },
-                            {
-                                "$type": "Core.SpaceRestriction:CanPlayCard:",
-                                "toPlay": { "$type": "Cards:TargetIndex:" }
-                            }
-                        ]
+						"elements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanPlayCard:",
+								"toPlay": { "$type": "Cards:TargetIndex:" }
+							}
+						]
 					}
 				},
 				{

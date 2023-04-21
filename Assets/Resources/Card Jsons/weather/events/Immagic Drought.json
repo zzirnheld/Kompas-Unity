@@ -14,7 +14,7 @@
 							"card": { "$type": "Cards:CardBefore:" },
 							"other": { "$type": "Cards:ThisCard:" }
 						},
-                        { "$type": "Core.TriggerRestriction:EnemyTurn:" }
+						{ "$type": "Core.TriggerRestriction:EnemyTurn:" }
 					]
 				}
 			},
@@ -26,7 +26,7 @@
 						"cardRestriction": {
 							"$type": "Core.CardRestriction:AllOf:",
 							"elements": [
-                            { "$type": "Core.CardRestriction:Character:" },
+							{ "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Enemy:" },
 							{
 								"$type": "Core.SpaceRestriction:InAOEOf:",
@@ -44,7 +44,7 @@
 								"sameAs": { "$type": "Cards:ThisCard:" }
 							}
 						]
-                    }
+					}
 				},
 				{
 					"$type": "Subeffect:Hanging.Negate:",

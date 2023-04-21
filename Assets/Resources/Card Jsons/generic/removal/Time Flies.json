@@ -34,7 +34,7 @@
 				{
 					"$type": "Subeffect:ChangeCardStats:",
 					"aModifier": 1,
-                    "targetIndex": -2
+					"targetIndex": -2
 				}
 			]
 		}

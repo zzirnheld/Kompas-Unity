@@ -91,13 +91,13 @@
 					"cardRestriction": {
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
-                            { "$type": "Core.CardRestriction:Character:" },
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.SpaceRestriction:AdjacentTo:",
 								"space": { "$type": "Cards:TargetIndex:" }
 							},
-                            {
-                                "$type": "Core.PlayerRestriction:Not:",
+							{
+								"$type": "Core.PlayerRestriction:Not:",
 								"negated": {
 									"$type": "Core.PlayerRestriction:PlayersMatch:",
 									"player": { "$type": "Players:TargetIndex:" }

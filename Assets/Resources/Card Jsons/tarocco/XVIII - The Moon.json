@@ -10,11 +10,11 @@
 				"triggerRestriction": {
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-                        {
-                            "$type": "Core.TriggerRestriction:PlayersMatch:",
-                            "firstPlayer": { "$type": "Players:TriggeringPlayer:" },
-                            "secondPlayer": { "$type": "Players:FriendlyPlayer:" }
-                        }
+						{
+							"$type": "Core.TriggerRestriction:PlayersMatch:",
+							"firstPlayer": { "$type": "Players:TriggeringPlayer:" },
+							"secondPlayer": { "$type": "Players:FriendlyPlayer:" }
+						}
 					]
 				}
 			},
@@ -26,8 +26,8 @@
 					"cardRestriction": {
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
-                            { "$type": "Core.CardRestriction:Character:" },
-                            { "$type": "Core.CardRestriction:Summoned:" }
+							{ "$type": "Core.CardRestriction:Character:" },
+							{ "$type": "Core.CardRestriction:Summoned:" }
 						]
 					}
 				},
@@ -39,13 +39,13 @@
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
-                            { "$type": "Core.CardRestriction:Summoned:" },
-                            {
-                                "$type": "Core.SpaceRestriction:CompareDistance:",
-                                "distanceTo": { "$type": "Cards:TargetIndex:" },
-                                "number": { "$type": "Numbers:Constant:", "constant": 2 },
-                                "comparison": { "$type": "Relationships.Number:LessThanEqual:" }
-                            },
+							{ "$type": "Core.CardRestriction:Summoned:" },
+							{
+								"$type": "Core.SpaceRestriction:CompareDistance:",
+								"distanceTo": { "$type": "Cards:TargetIndex:" },
+								"number": { "$type": "Numbers:Constant:", "constant": 2 },
+								"comparison": { "$type": "Relationships.Number:LessThanEqual:" }
+							},
 							{
 								"$type": "Core.CardRestriction:Not:",
 								"negated": { "$type": "Core.CardRestriction:Target:" }

@@ -9,7 +9,7 @@
 				"triggerRestriction": {
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{
 							"$type": "Core.TriggerRestriction:CompareNumbers:",
 							"firstNumber": {
@@ -24,7 +24,7 @@
 								"secondSpace": { "$type": "Cards:CardAfter:" }
 							}
 						}
-                    ]
+					]
 				}
 			},
 			"subeffects": [

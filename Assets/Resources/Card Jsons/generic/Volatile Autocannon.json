@@ -27,10 +27,10 @@
 						"$type": "Core.SpaceRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.SpaceRestriction:Empty:" },
-                            {
+							{
 								"$type": "Core.SpaceRestriction:SameDiagonal:",
 								"other": { "$type": "Cards:ThisCard:" }
-                            }
+							}
 						]
 					},
 					"xModifier": 1

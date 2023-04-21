@@ -42,15 +42,15 @@
 			]
 		},
 		{
-            "blurb": "Inherit the costume",
+			"blurb": "Inherit the costume",
 			"triggerData": {
 				"triggerCondition": "Augment Attached",
 				"triggerRestriction": {
 					"elements": [
-                        {
-                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "card": { "$type": "Cards:CardAfter:" },
-                            
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardAfter:" },
+							
 						"cardRestriction": {
 							"$type": "Core.CardRestriction:AllOf:",
 							"elements": [
@@ -73,16 +73,16 @@
 										}
 									}
 								]
-                            }
-                        },
-                        {
-                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "card": { "$type": "Cards:ThisCard:" },
-                            "cardRestriction": {
+							}
+						},
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:ThisCard:" },
+							"cardRestriction": {
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Discard" ]
 							}
-                        }
+						}
 					]
 				}
 			},

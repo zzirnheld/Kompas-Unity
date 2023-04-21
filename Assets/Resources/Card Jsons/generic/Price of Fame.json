@@ -24,7 +24,7 @@
 					"cardRestriction": {
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
-                            { "$type": "Core.CardRestriction:Unique:" },
+							{ "$type": "Core.CardRestriction:Unique:" },
 							{
 								"$type": "Core.SpaceRestriction:AdjacentTo:",
 								"space": { "$type": "Cards:ThisCard:" }

@@ -18,11 +18,11 @@
 								"other": { "$type": "Numbers:Constant:", "constant": 0 }
 							}
 						},
-                        {
-                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "card": { "$type": "Cards:CardBefore:" },
-                            "cardRestriction": { "$type": "Core.CardRestriction:Hurt:" }
-                        }
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"cardRestriction": { "$type": "Core.CardRestriction:Hurt:" }
+						}
 					]
 				}
 			},

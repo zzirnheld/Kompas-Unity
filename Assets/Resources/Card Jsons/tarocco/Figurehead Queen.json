@@ -10,11 +10,11 @@
 				"triggerRestriction": {
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-                        {
-                            "$type": "Core.TriggerRestriction:PlayersMatch:",
-                            "firstPlayer": { "$type": "Players:TriggeringPlayer:" },
-                            "secondPlayer": { "$type": "Players:FriendlyPlayer:" }
-                        }
+						{
+							"$type": "Core.TriggerRestriction:PlayersMatch:",
+							"firstPlayer": { "$type": "Players:TriggeringPlayer:" },
+							"secondPlayer": { "$type": "Players:FriendlyPlayer:" }
+						}
 					]
 				}
 			},
@@ -64,7 +64,7 @@
 						"toSearch": { "$type": "ManyCards:Deck:" },
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
-                            { "$type": "Core.CardRestriction:Character:" },
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Tarocco" ]
@@ -87,12 +87,12 @@
 					"spaceRestriction": {
 						"$type": "Core.SpaceRestriction:AllOf:",
 						"elements": [
-                            { "$type": "Core.SpaceRestriction:Empty:" },
-                            {
-                                "$type": "Core.SpaceRestriction:CanPlayCard:",
-                                "toPlay": { "$type": "Cards:TargetIndex:" }
-                            }
-                        ]
+							{ "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanPlayCard:",
+								"toPlay": { "$type": "Cards:TargetIndex:" }
+							}
+						]
 					}
 				},
 				{

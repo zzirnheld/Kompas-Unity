@@ -77,10 +77,10 @@
 							"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{ "$type": "Core.CardRestriction:Character:" },
-                            {
-                                "$type": "Core.CardRestriction:Location:",
-                                "locations": [ "Hand" ]
-                            },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Hand" ]
+							},
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Spy" ]

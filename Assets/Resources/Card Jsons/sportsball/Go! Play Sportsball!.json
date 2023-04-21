@@ -35,10 +35,10 @@
 				},
 				{
 					"$type": "Subeffect:AutoTargetCardIdentity:",
-                    "subeffectCardIdentity": {
+					"subeffectCardIdentity": {
 						"$type": "Cards:Avatar:",
-                        "player": { "$type": "Players:TargetIndex:" }
-                    }
+						"player": { "$type": "Players:TargetIndex:" }
+					}
 				},
 				{
 					"$type": "Subeffect:TargetTargetsSpace:"

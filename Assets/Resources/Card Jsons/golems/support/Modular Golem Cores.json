@@ -11,9 +11,9 @@
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{ "$type": "Core.TriggerRestriction:MaxPerTurn:" },
-                        {
-                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "card": { "$type": "Cards:CardAfter:" },
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardAfter:" },
 							"cardRestriction": {
 								"$type": "Core.SpaceRestriction:AdjacentTo:",
 								"cardRestriction": {
@@ -30,7 +30,7 @@
 									]
 								}
 							}
-                        }
+						}
 					]
 				}
 			},
@@ -45,7 +45,7 @@
 					"cardRestriction": {
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
-                            { "$type": "Core.CardRestriction:Character:" },
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Golem" ]

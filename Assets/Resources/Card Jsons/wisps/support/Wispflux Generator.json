@@ -36,14 +36,14 @@
 					],
 					"xMultiplier": 1
 				},
-                {
-                    "$type": "Subeffect:AutoTargetSpaceIdentity:",
-                    "subeffectSpaceIdentity": {
-                        "$type": "Spaces:SelectFromMany:",
-                        "selector": { "$type": "KompasCore.Effects.Selectors.RandomSpace, Assembly-CSharp" },
-                        "spaces": {
-                            "$type": "ManySpaces:FittingRestriction:",
-                            "restriction": {
+				{
+					"$type": "Subeffect:AutoTargetSpaceIdentity:",
+					"subeffectSpaceIdentity": {
+						"$type": "Spaces:SelectFromMany:",
+						"selector": { "$type": "KompasCore.Effects.Selectors.RandomSpace, Assembly-CSharp" },
+						"spaces": {
+							"$type": "ManySpaces:FittingRestriction:",
+							"restriction": {
 								"$type": "Core.SpaceRestriction:CanPlayCard:",
 								"toPlay": { "$type": "Cards:TargetIndex:" }
 							}

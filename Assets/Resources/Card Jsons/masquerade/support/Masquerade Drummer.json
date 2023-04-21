@@ -11,10 +11,10 @@
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{ "$type": "Core.TriggerRestriction:Normally:" },
-                        {
-                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "card": { "$type": "Cards:CardBefore:" },
-                            
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							
 						"cardRestriction": {
 							"$type": "Core.CardRestriction:AllOf:",
 							"elements": [
@@ -28,8 +28,8 @@
 										"subtypes": [ "Dancer" ]
 									}
 								]
-                            }
-                        }
+							}
+						}
 					]
 				}
 			},
@@ -39,7 +39,7 @@
 				},
 				{
 					"$type": "Subeffect:TargetTriggeringCard:",
-                    "contextSecondaryCard": true
+					"contextSecondaryCard": true
 				},
 				{
 					"$type": "Subeffect:Attack:",

@@ -10,11 +10,11 @@
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{ "$type": "Core.TriggerRestriction:MaxPerStack:" },
-                        { "$type": "Core.TriggerRestriction:EnemyTurn:" },
-                        {
-                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "card": { "$type": "Cards:CardBefore:" },
-                            
+						{ "$type": "Core.TriggerRestriction:EnemyTurn:" },
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							
 						"cardRestriction": {
 							"$type": "Core.CardRestriction:AllOf:",
 							"elements": [
@@ -25,8 +25,8 @@
 										"card": { "$type": "Cards:ThisCard:" }
 									}
 								]
-                            }
-                        }
+							}
+						}
 					]
 				}
 			},

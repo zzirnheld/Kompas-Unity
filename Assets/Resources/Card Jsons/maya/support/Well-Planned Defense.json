@@ -4,7 +4,7 @@
 	"effText": "When turns start, hand->summon a Maya Structure to a space on the edge of the board, then draw 1 card.",
 	"effects": [
 		{
-            "blurb": "Planned construction",
+			"blurb": "Planned construction",
 			"triggerData": {
 				"triggerCondition": "Turn Start",
 				"triggerRestriction":{
@@ -35,14 +35,14 @@
 					"blurb": "Space on the edge of the board to play the Structure to",
 					"spaceRestriction": {
 						"$type": "Core.SpaceRestriction:AllOf:",
-                        "elements": [
-                            { "$type": "Core.SpaceRestriction:Empty:" },
+						"elements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" },
 							{ "$type": "Core.SpaceRestriction:Edge:" },
-                            {
-                                "$type": "Core.SpaceRestriction:CanPlayCard:",
-                                "toPlay": { "$type": "Cards:TargetIndex:" }
-                            }
-                        ]
+							{
+								"$type": "Core.SpaceRestriction:CanPlayCard:",
+								"toPlay": { "$type": "Cards:TargetIndex:" }
+							}
+						]
 					}
 				},
 				{

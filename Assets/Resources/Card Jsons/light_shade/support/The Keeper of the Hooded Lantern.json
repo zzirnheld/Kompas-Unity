@@ -4,7 +4,7 @@
 	"effText": "When I arrive, reshuffle all Light and Shade I'm in. Deck->cast Light adjacent to me.",
 	"effects": [
 		{
-            "blurb": "Who goes there?",
+			"blurb": "Who goes there?",
 			"triggerData": {
 				"triggerCondition": "Arrive",
 				"triggerRestriction": {
@@ -104,10 +104,10 @@
 								"$type": "Core.SpaceRestriction:AdjacentTo:",
 								"space": { "$type": "Cards:ThisCard:" }
 							},
-                            {
-                                "$type": "Core.SpaceRestriction:CanPlayCard:",
-                                "toPlay": { "$type": "Cards:TargetIndex:" }
-                            }
+							{
+								"$type": "Core.SpaceRestriction:CanPlayCard:",
+								"toPlay": { "$type": "Cards:TargetIndex:" }
+							}
 						]
 					}
 				},

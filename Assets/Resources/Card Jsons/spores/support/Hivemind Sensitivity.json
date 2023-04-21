@@ -9,16 +9,16 @@
 				"triggerCondition": "Activate",
 				"triggerRestriction": {
 					"elements": [
-                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{ "$type": "Core.TriggerRestriction:MaxPerStack:" },
-                        {
-                            "$type": "Core.TriggerRestriction:CardsMatch:",
-                            "card": {
-                                "$type": "Cards:AugmentedCard:",
-                                "ofThisCard": { "$type": "Cards:ThisCard:" }
-                            },
-                            "other": { "$type": "Cards:CardBefore:" }
-                        }
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": {
+								"$type": "Cards:AugmentedCard:",
+								"ofThisCard": { "$type": "Cards:ThisCard:" }
+							},
+							"other": { "$type": "Cards:CardBefore:" }
+						}
 					]
 				}
 			},
@@ -26,13 +26,13 @@
 				{
 					"$type":"Subeffect:TargetTriggeringCard:"
 				},
-                {
-                    "$type":"Subeffect:Activate:"
-                },
-                {
-                    "$type":"Subeffect:Activate:",
-                    "activate":false
-                }
+				{
+					"$type":"Subeffect:Activate:"
+				},
+				{
+					"$type":"Subeffect:Activate:",
+					"activate":false
+				}
 			]
 		}
 	],

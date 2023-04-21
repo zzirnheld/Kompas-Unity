@@ -5,11 +5,11 @@
 	"technicalEffText": "If there's NO enemy characters here and nothing else is happening, swap me for Shade in your deck.",
 	"effects": [
 		{
-            "blurb":"Become Shade",
-            "triggerData":
-            {
-                "triggerCondition":"Stack End",
-                "triggerRestriction":{
+			"blurb":"Become Shade",
+			"triggerData":
+			{
+				"triggerCondition":"Stack End",
+				"triggerRestriction":{
 					"elements": [
 						{
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
@@ -40,12 +40,12 @@
 							}
 						}
 					]
-                }
-            },
-            "subeffects":[
-                {
-                    "$type":"Subeffect:TargetThis:"
-                },
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"Subeffect:TargetThis:"
+				},
 				{
 					"$type": "Subeffect:TargetTargetsSpace:"
 				},
@@ -72,8 +72,8 @@
 				{
 					"$type": "Subeffect:Play:"
 				}
-            ]	
-        }
+			]	
+		}
 	],
 	"c": 1,
 	"spellTypes": [

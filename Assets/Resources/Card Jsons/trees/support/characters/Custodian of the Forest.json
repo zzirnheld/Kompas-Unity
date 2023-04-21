@@ -4,17 +4,17 @@
 	"effText": "When you hurt an adjacent friendly summon, heal it.",
 	"effects": [
 		{
-            "blurb": "Graft Healing",
+			"blurb": "Graft Healing",
 			"triggerData": {
 				"triggerCondition": "E Change",
 				"triggerRestriction": {
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-                        {
-                            "$type": "Core.TriggerRestriction:PlayersMatch:",
-                            "firstPlayer": { "$type": "Players:TriggeringPlayer:" },
-                            "secondPlayer": { "$type": "Players:FriendlyPlayer:" }
-                        },
+						{
+							"$type": "Core.TriggerRestriction:PlayersMatch:",
+							"firstPlayer": { "$type": "Players:TriggeringPlayer:" },
+							"secondPlayer": { "$type": "Players:FriendlyPlayer:" }
+						},
 						{
 							"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
 							"number": { "$type": "Numbers:TriggerX:" },
@@ -24,11 +24,11 @@
 								"other": { "$type": "Numbers:Constant:", "constant": 0 }
 							}
 						},
-                        { "$type": "Core.TriggerRestriction:IsEffect:" },
-                        {
-                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "card": { "$type": "Cards:CardAfter:" },
-                            
+						{ "$type": "Core.TriggerRestriction:IsEffect:" },
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardAfter:" },
+							
 						"cardRestriction": {
 							"$type": "Core.CardRestriction:AllOf:",
 							"elements": [
@@ -38,9 +38,9 @@
 										"locations": [ "Board" ]
 									}
 								]
-                            }
-                        }
-                    ]
+							}
+						}
+					]
 				}
 			},
 			"subeffects": [

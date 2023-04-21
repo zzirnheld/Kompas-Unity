@@ -4,17 +4,17 @@
 	"effText": "When an adjacent Structure survives losing E, heal it.",
 	"effects": [
 		{
-            "blurb": "Repair",
+			"blurb": "Repair",
 			"triggerData": {
 				"triggerCondition": "E Change",
 				"triggerRestriction": {
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-                        {
-                            "$type": "Core.TriggerRestriction:CardsMatch:",
-                            "card": { "$type": "Cards:ThisCard:" },
-                            "other": { "$type": "Cards:CardBefore:" }
-                        },
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:ThisCard:" },
+							"other": { "$type": "Cards:CardBefore:" }
+						},
 						{
 							"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
 							"number": { "$type": "Numbers:TriggerX:" },
@@ -24,10 +24,10 @@
 								"other": { "$type": "Numbers:Constant:", "constant": 0 }
 							}
 						},
-                        {
-                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "card": { "$type": "Cards:CardAfter:" },
-                            
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardAfter:" },
+							
 						"cardRestriction": {
 							"$type": "Core.CardRestriction:AllOf:",
 							"elements": [
@@ -44,8 +44,8 @@
 										"space": { "$type": "Cards:ThisCard:" }
 									}
 								]
-                            }
-                        }
+							}
+						}
 					]
 				}
 			},

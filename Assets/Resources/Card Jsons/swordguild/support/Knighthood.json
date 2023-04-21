@@ -4,36 +4,36 @@
 	"effText": "When a Squire with total NESW X survives killing a character, tribute them and deck->summon an S <= X Warrior where they were.",
 	"effects": [
 		{
-            "blurb": "Bestow Knighthood",
+			"blurb": "Bestow Knighthood",
 			"triggerData": {
 				"triggerCondition": "Discard",
 				"triggerRestriction": {
 					"elements": [
-                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-                        {
-                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "card": { "$type": "Cards:CardBefore:" },
-                            "cardRestriction": { "$type": "Core.CardRestriction:Character:" }
-                        },
-                        {
-                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "card": { "$type": "Cards:CauseAfter:" },
-                            
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"cardRestriction": { "$type": "Core.CardRestriction:Character:" }
+						},
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CauseAfter:" },
+							
 						"cardRestriction": {
 							"$type": "Core.CardRestriction:AllOf:",
 							"elements": [
-                                    {
-                                        "$type": "Core.CardRestriction:Location:",
-                                        "locations": [ "Board" ]
-                                    },
-                                    {
-                                        "$type": "Core.CardRestriction:Subtypes:",
-                                        "subtypes": [ "Squire" ]
-                                    }
-                                ]
-                             }
-                        }
-                    ]
+									{
+										"$type": "Core.CardRestriction:Location:",
+										"locations": [ "Board" ]
+									},
+									{
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Squire" ]
+									}
+								]
+							 }
+						}
+					]
 				}
 			},
 			"subeffects": [
@@ -83,7 +83,7 @@
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Warrior" ]
 							},
-                            { "$type": "Core.CardRestriction:CanPlay:" },
+							{ "$type": "Core.CardRestriction:CanPlay:" },
 							{
 								"$type": "Core.CardRestriction:CardValueFits:",
 								"cardValue": { "value": "S" },
@@ -102,7 +102,7 @@
 			]
 		}
 	],
-    "unique": true,
+	"unique": true,
 	"c": 1,
 	"spellTypes": [
 		"Enchant"

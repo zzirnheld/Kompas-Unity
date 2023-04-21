@@ -10,56 +10,56 @@ using UnityEngine;
 
 namespace KompasClient.Cards
 {
-    public class ClientCardRepository : GameCardRepository<ClientSerializableCard, ClientEffect, ClientCardController>
-    {
-        public GameObject DeckSelectCardPrefab;
+	public class ClientCardRepository : GameCardRepository<ClientSerializableCard, ClientEffect, ClientCardController>
+	{
+		public GameObject DeckSelectCardPrefab;
 
-        public AvatarClientGameCard InstantiateClientAvatar(string json, ClientPlayer owner, int id)
-        {
-            Action<SerializableCard> validation = cardInfo =>
-            {
-                if (cardInfo.cardType != 'C') throw new System.NotImplementedException("Card type for client avatar isn't character!");
-            };
+		public AvatarClientGameCard InstantiateClientAvatar(string json, ClientPlayer owner, int id)
+		{
+			Action<SerializableCard> validation = cardInfo =>
+			{
+				if (cardInfo.cardType != 'C') throw new System.NotImplementedException("Card type for client avatar isn't character!");
+			};
 
-            AvatarClientGameCard ConstructAvatar(ClientSerializableCard cardInfo, ClientEffect[] effects, ClientCardController ctrl)
-                => new AvatarClientGameCard(cardInfo, owner, effects, id, ctrl);
+			AvatarClientGameCard ConstructAvatar(ClientSerializableCard cardInfo, ClientEffect[] effects, ClientCardController ctrl)
+				=> new AvatarClientGameCard(cardInfo, owner, effects, id, ctrl);
 
-            return InstantiateGameCard<AvatarClientGameCard>(json, ConstructAvatar, validation);
-        }
+			return InstantiateGameCard<AvatarClientGameCard>(json, ConstructAvatar, validation);
+		}
 
-        public ClientGameCard InstantiateClientNonAvatar(string json, ClientPlayer owner, int id)
-        {
-            var card = InstantiateGameCard<ClientGameCard>(json, (cardInfo, effects, ctrl) => new ClientGameCard(cardInfo, id, owner, effects, ctrl));
+		public ClientGameCard InstantiateClientNonAvatar(string json, ClientPlayer owner, int id)
+		{
+			var card = InstantiateGameCard<ClientGameCard>(json, (cardInfo, effects, ctrl) => new ClientGameCard(cardInfo, id, owner, effects, ctrl));
 
-            card.ClientCardController.gameCardViewController.Refresh();
+			card.ClientCardController.gameCardViewController.Refresh();
 
-            //handle adding existing card links
-            foreach (var c in card.Game.Cards.ToArray())
-            {
-                foreach (var link in c.CardLinkHandler.Links.ToArray())
-                {
-                    if (link.CardIDs.Contains(id)) card.CardLinkHandler.AddLink(link);
-                }
-            }
+			//handle adding existing card links
+			foreach (var c in card.Game.Cards.ToArray())
+			{
+				foreach (var link in c.CardLinkHandler.Links.ToArray())
+				{
+					if (link.CardIDs.Contains(id)) card.CardLinkHandler.AddLink(link);
+				}
+			}
 
-            return card;
-        }
+			return card;
+		}
 
-        public DeckSelectCardController InstantiateDeckSelectCard(string json, Transform parent, DeckSelectCardController prefab, DeckSelectUIController uiCtrl)
-        {
-            try
-            {
-                SerializableCard serializableCard = JsonConvert.DeserializeObject<SerializableCard>(json, cardLoadingSettings);
-                DeckSelectCardController card = Instantiate(prefab, parent);
-                card.SetInfo(serializableCard, uiCtrl, cardFileNames[serializableCard.cardName]);
-                return card;
-            }
-            catch (System.ArgumentException argEx)
-            {
-                //Catch JSON parse error
-                Debug.LogError($"Failed to load {json}, argument exception with message {argEx.Message}");
-                return null;
-            }
-        }
-    }
+		public DeckSelectCardController InstantiateDeckSelectCard(string json, Transform parent, DeckSelectCardController prefab, DeckSelectUIController uiCtrl)
+		{
+			try
+			{
+				SerializableCard serializableCard = JsonConvert.DeserializeObject<SerializableCard>(json, cardLoadingSettings);
+				DeckSelectCardController card = Instantiate(prefab, parent);
+				card.SetInfo(serializableCard, uiCtrl, cardFileNames[serializableCard.cardName]);
+				return card;
+			}
+			catch (System.ArgumentException argEx)
+			{
+				//Catch JSON parse error
+				Debug.LogError($"Failed to load {json}, argument exception with message {argEx.Message}");
+				return null;
+			}
+		}
+	}
 }

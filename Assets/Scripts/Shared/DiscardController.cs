@@ -8,57 +8,57 @@ using UnityEngine;
 
 namespace KompasCore.GameCore
 {
-    public abstract class DiscardController : OwnedGameLocation
-    {
-        public DiscardUIController discardUIController;
+	public abstract class DiscardController : OwnedGameLocation
+	{
+		public DiscardUIController discardUIController;
 
-        protected readonly List<GameCard> discard = new List<GameCard>();
+		protected readonly List<GameCard> discard = new List<GameCard>();
 
-        public override CardLocation CardLocation => CardLocation.Discard;
-        public override IEnumerable<GameCard> Cards => discard;
+		public override CardLocation CardLocation => CardLocation.Discard;
+		public override IEnumerable<GameCard> Cards => discard;
 
-        public override void Refresh() => discardUIController.Refresh();
+		public override void Refresh() => discardUIController.Refresh();
 
-        //adding/removing cards
-        public virtual bool Discard(GameCard card, IStackable stackSrc = null)
-        {
-            if (card == null) throw new NullCardException("Cannot add null card to discard");
-            if (Equals(card.GameLocation)) throw new AlreadyHereException(CardLocation.Discard);
+		//adding/removing cards
+		public virtual bool Discard(GameCard card, IStackable stackSrc = null)
+		{
+			if (card == null) throw new NullCardException("Cannot add null card to discard");
+			if (Equals(card.GameLocation)) throw new AlreadyHereException(CardLocation.Discard);
 
-            //Check if the card is successfully removed (if it's not, it's probably an avatar)
-            bool successful = card.Remove(stackSrc);
-            if (successful)
-            {
-                Debug.Log($"Discarding {card.CardName}");
-                discard.Add(card);
-                card.Controller = Owner;
-                card.GameLocation = this;
-                card.Position = null;
-                discardUIController.Refresh();
-            }
-            return successful;
-        }
+			//Check if the card is successfully removed (if it's not, it's probably an avatar)
+			bool successful = card.Remove(stackSrc);
+			if (successful)
+			{
+				Debug.Log($"Discarding {card.CardName}");
+				discard.Add(card);
+				card.Controller = Owner;
+				card.GameLocation = this;
+				card.Position = null;
+				discardUIController.Refresh();
+			}
+			return successful;
+		}
 
-        public override void Remove(GameCard card)
-        {
-            if (!discard.Contains(card)) throw new CardNotHereException(CardLocation.Discard, card);
+		public override void Remove(GameCard card)
+		{
+			if (!discard.Contains(card)) throw new CardNotHereException(CardLocation.Discard, card);
 
-            discard.Remove(card);
-            discardUIController.Refresh();
-        }
+			discard.Remove(card);
+			discardUIController.Refresh();
+		}
 
-        public override int IndexOf(GameCard card) => discard.IndexOf(card);
+		public override int IndexOf(GameCard card) => discard.IndexOf(card);
 
-        public List<GameCard> CardsThatFit(Func<GameCardBase, bool> cardRestriction)
-        {
-            List<GameCard> cards = new List<GameCard>();
+		public List<GameCard> CardsThatFit(Func<GameCardBase, bool> cardRestriction)
+		{
+			List<GameCard> cards = new List<GameCard>();
 
-            foreach (GameCard c in discard)
-            {
-                if (cardRestriction(c)) cards.Add(c);
-            }
+			foreach (GameCard c in discard)
+			{
+				if (cardRestriction(c)) cards.Add(c);
+			}
 
-            return cards;
-        }
-    }
+			return cards;
+		}
+	}
 }

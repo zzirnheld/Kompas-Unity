@@ -37,35 +37,35 @@
 						]
 					}
 				},
-                {
-                    "$type": "Subeffect:CardTarget:",
-                    "cardRestriction": {
-                        "blurb": "Module to swap out",
-                        "elements": [
-                            {
-                                "$type": "Core.CardRestriction:Subtypes:",
-                                "subtypes": [ "Module" ]
-                            },
+				{
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "Module to swap out",
+						"elements": [
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Module" ]
+							},
 							{
 								"$type": "Core.CardRestriction:Augments:",
 								"singleCard": { "$type": "Cards:TargetIndex:" }
 							}
-                        ]
-                    }
-                },
+						]
+					}
+				},
 				{
 					"$type": "Subeffect:CardTarget:",
 					"toSearch": { "$type": "ManyCards:Hand:" },
-                    "cardRestriction":
-                    {
-                        "elements": [
+					"cardRestriction":
+					{
+						"elements": [
 							{ "$type": "Core.CardRestriction:Augment:" },
-                            {
-                                "$type": "Core.CardRestriction:Subtypes:",
-                                "subtypes": [ "Module" ]
-                            }
-                        ]
-                    },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Module" ]
+							}
+						]
+					},
 					"listRestriction": {
 						"listRestrictions": [
 							"Min Can Choose",
@@ -75,20 +75,20 @@
 						"maxCanChoose": 2
 					}
 				},
-                {
-                    "$type": "Subeffect:Hand:",
-                    "targetIndex": -3
-                },
-                {
-                    "$type": "Subeffect:Attach:",
-                    "targetIndex": -1,
-                    "targetToAttachTo": -4
-                },
-                {
-                    "$type": "Subeffect:Attach:",
-                    "targetIndex": -2,
-                    "targetToAttachTo": -4
-                }
+				{
+					"$type": "Subeffect:Hand:",
+					"targetIndex": -3
+				},
+				{
+					"$type": "Subeffect:Attach:",
+					"targetIndex": -1,
+					"targetToAttachTo": -4
+				},
+				{
+					"$type": "Subeffect:Attach:",
+					"targetIndex": -2,
+					"targetToAttachTo": -4
+				}
 			]
 		}
 	],

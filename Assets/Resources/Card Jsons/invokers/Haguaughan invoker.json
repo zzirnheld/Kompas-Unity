@@ -9,18 +9,18 @@
 				"triggerCondition": "Turn Start",
 				"triggerRestriction": {
 					"elements": [
-                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-                        {
-                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 							"cardRestriction": {
 								"$type": "Core.SpaceRestriction:AdjacentTo:",
 								"space": { "$type": "Cards:ThisCard:" }
 							},
-                            "card": {
+							"card": {
 								"$type": "Cards:Avatar:",
 								"player": { "$type": "Players:EnemyPlayer:" }
 							}
-                        }
+						}
 					]
 				}
 			},
@@ -67,13 +67,13 @@
 					"blurb": "where to Invoke",
 					"spaceRestriction": {
 						"$type": "Core.SpaceRestriction:AllOf:",
-                        "elements": [
-                            { "$type": "Core.SpaceRestriction:Empty:" },
-                            {
-                                "$type": "Core.SpaceRestriction:CanPlayCard:",
-                                "toPlay": { "$type": "Cards:TargetIndex:" }
-                            }
-                        ]
+						"elements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanPlayCard:",
+								"toPlay": { "$type": "Cards:TargetIndex:" }
+							}
+						]
 					}
 				},
 				{

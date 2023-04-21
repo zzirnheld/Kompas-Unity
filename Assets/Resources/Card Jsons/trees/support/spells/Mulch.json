@@ -4,7 +4,7 @@
 	"effText":"When a Tree dies, heal friendly Trees.",
 	"effects":[
 		{
-            "blurb":"Mulch",
+			"blurb":"Mulch",
 			"triggerData":
 			{
 				"blurb":"Mulch",

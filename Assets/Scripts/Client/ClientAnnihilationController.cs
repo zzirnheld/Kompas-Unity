@@ -3,10 +3,10 @@ using KompasCore.UI;
 
 namespace KompasClient.GameCore
 {
-    public class ClientAnnihilationController : AnnihilationController
-    {
-        public ClientPlayer owner;
+	public class ClientAnnihilationController : AnnihilationController
+	{
+		public ClientPlayer owner;
 
-        public override Player Owner => owner;
-    }
+		public override Player Owner => owner;
+	}
 }

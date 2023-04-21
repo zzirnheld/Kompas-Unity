@@ -1,105 +1,105 @@
 [
-    {
-        "$type": "Subeffect:ConditionalEnd:",
-        "condition": "No Space Fits Restriction",
+	{
+		"$type": "Subeffect:ConditionalEnd:",
+		"condition": "No Space Fits Restriction",
 		"spaceRestriction": {
 			"$type": "Core.SpaceRestriction:AllOf:",
 			"elements": [
-                { "$type": "Core.SpaceRestriction:Empty:" },
-                {
-                    "$type": "Core.SpaceRestriction:InAOEOf:",
-                    "anyOf": {
-                        "$type": "ManyCards:FittingRestriction:",
-                        
+				{ "$type": "Core.SpaceRestriction:Empty:" },
+				{
+					"$type": "Core.SpaceRestriction:InAOEOf:",
+					"anyOf": {
+						"$type": "ManyCards:FittingRestriction:",
+						
 						"cardRestriction": {
 							"$type": "Core.CardRestriction:AllOf:",
 							"elements": [ {
-                                "$type": "Core.CardRestriction:Subtypes:",
-                                "subtypes": [ "Weather" ]
-                            } ]
-                        }
-                    },
-                    "minAnyOfCount": { 
-                        "$type": "Numbers:Constant:",
-                        "constant": 2
-                    }
-                },
-                {
-                    "$type": "Core.SpaceRestriction:InAOEOf:",
-                    "anyOf": {
-                        "$type": "ManyCards:FittingRestriction:",
-                        
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Weather" ]
+							} ]
+						}
+					},
+					"minAnyOfCount": { 
+						"$type": "Numbers:Constant:",
+						"constant": 2
+					}
+				},
+				{
+					"$type": "Core.SpaceRestriction:InAOEOf:",
+					"anyOf": {
+						"$type": "ManyCards:FittingRestriction:",
+						
 						"cardRestriction": {
 							"$type": "Core.CardRestriction:AllOf:",
 							"elements": [ {
-                                "$type": "Core.CardRestriction:Subtypes:",
-                                "subtypes": [ "Weather" ]
-                            } ]
-                        }
-                    },
-                    "sameAs": { "$type": "Spaces:TargetIndex:" }
-                }
-            ]
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Weather" ]
+							} ]
+						}
+					},
+					"sameAs": { "$type": "Spaces:TargetIndex:" }
+				}
+			]
 		}
-    },
-    {
-        "$type": "Subeffect:CardTarget:",
-        "toSearch": { "$type": "ManyCards:Hand:" },
-        "cardRestriction": {
-            "blurb": "Weather Event to hand->summon",
-            "elements": [
-                { "$type": "Core.CardRestriction:Character:" },
-                {
-                    "$type": "Core.CardRestriction:Subtypes:",
-                    "subtypes": [ "Weather", "Event" ]
-                }
-            ]
-        }
-    },
-    {
-        "$type": "Subeffect:SpaceTarget:",
+	},
+	{
+		"$type": "Subeffect:CardTarget:",
+		"toSearch": { "$type": "ManyCards:Hand:" },
+		"cardRestriction": {
+			"blurb": "Weather Event to hand->summon",
+			"elements": [
+				{ "$type": "Core.CardRestriction:Character:" },
+				{
+					"$type": "Core.CardRestriction:Subtypes:",
+					"subtypes": [ "Weather", "Event" ]
+				}
+			]
+		}
+	},
+	{
+		"$type": "Subeffect:SpaceTarget:",
 		"spaceRestriction": {
 			"$type": "Core.SpaceRestriction:AllOf:",
 			"elements": [
-                { "$type": "Core.SpaceRestriction:Empty:" },
-                {
-                    "$type": "Core.SpaceRestriction:InAOEOf:",
-                    "anyOf": {
-                        "$type": "ManyCards:FittingRestriction:",
-                        
+				{ "$type": "Core.SpaceRestriction:Empty:" },
+				{
+					"$type": "Core.SpaceRestriction:InAOEOf:",
+					"anyOf": {
+						"$type": "ManyCards:FittingRestriction:",
+						
 						"cardRestriction": {
 							"$type": "Core.CardRestriction:AllOf:",
 							"elements": [ {
-                                "$type": "Core.CardRestriction:Subtypes:",
-                                "subtypes": [ "Weather" ]
-                            } ]
-                        }
-                    },
-                    "minAnyOfCount": { 
-                        "$type": "Numbers:Constant:",
-                        "constant": 2
-                    }
-                },
-                {
-                    "$type": "Core.SpaceRestriction:InAOEOf:",
-                    "anyOf": {
-                        "$type": "ManyCards:FittingRestriction:",
-                        
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Weather" ]
+							} ]
+						}
+					},
+					"minAnyOfCount": { 
+						"$type": "Numbers:Constant:",
+						"constant": 2
+					}
+				},
+				{
+					"$type": "Core.SpaceRestriction:InAOEOf:",
+					"anyOf": {
+						"$type": "ManyCards:FittingRestriction:",
+						
 						"cardRestriction": {
 							"$type": "Core.CardRestriction:AllOf:",
 							"elements": [ {
-                                "$type": "Core.CardRestriction:Subtypes:",
-                                "subtypes": [ "Weather" ]
-                            } ]
-                        }
-                    },
-                    "sameAs": { "$type": "Spaces:TargetIndex:" }
-                }
-            ]
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Weather" ]
+							} ]
+						}
+					},
+					"sameAs": { "$type": "Spaces:TargetIndex:" }
+				}
+			]
 		},
-        "targetIndex": -2
-    },
-    {
-        "$type": "Subeffect:Play:"
-    }
+		"targetIndex": -2
+	},
+	{
+		"$type": "Subeffect:Play:"
+	}
 ]

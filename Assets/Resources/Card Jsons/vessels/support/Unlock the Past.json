@@ -48,7 +48,7 @@
 				},
 				{
 					"$type": "Subeffect:Discard:",
-                    "targetIndex": -2
+					"targetIndex": -2
 				},
 				{
 					"$type": "Subeffect:CardTarget:",

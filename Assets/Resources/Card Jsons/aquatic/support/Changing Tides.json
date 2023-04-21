@@ -47,12 +47,12 @@
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
 								"toMove": { "$type": "Cards:TargetIndex:" }
 							},
-                            {
-                                "$type": "Core.SpaceRestriction:CompareDistance:",
-                                "distanceTo": { "$type": "Cards:TargetIndex:" },
-                                "number": { "$type": "Numbers:Constant:", "constant": 2 },
-                                "comparison": { "$type": "Relationships.Number:LessThanEqual:" }
-                            }
+							{
+								"$type": "Core.SpaceRestriction:CompareDistance:",
+								"distanceTo": { "$type": "Cards:TargetIndex:" },
+								"number": { "$type": "Numbers:Constant:", "constant": 2 },
+								"comparison": { "$type": "Relationships.Number:LessThanEqual:" }
+							}
 						]
 					}
 				},

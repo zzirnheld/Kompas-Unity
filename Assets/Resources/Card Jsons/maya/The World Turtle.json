@@ -51,14 +51,14 @@
 							"card": { "$type": "Cards:CardBefore:" },
 							"other": { "$type": "Cards:ThisCard:" }
 						},
-                        {
-                            "$type": "Core.TriggerRestriction:SpacesFitRestriction:",
-                            "spaces": { "$type": "ManySpaces:Corners:" },
-                            "spaceRestriction": {
+						{
+							"$type": "Core.TriggerRestriction:SpacesFitRestriction:",
+							"spaces": { "$type": "ManySpaces:Corners:" },
+							"spaceRestriction": {
 								"$type": "Core.SpaceRestriction:Not:",
 								"negated": { "$type": "Core.SpaceRestriction:Empty:" }
 							}
-                        }
+						}
 					]
 				}
 			},
@@ -68,7 +68,7 @@
 					"cardRestriction": {
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
-                            { "$type": "Core.CardRestriction:Character:" },
+							{ "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Enemy:" },
 							{
 								"$type": "Core.SpaceRestriction:AdjacentTo:",

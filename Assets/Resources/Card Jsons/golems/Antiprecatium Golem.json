@@ -36,12 +36,12 @@
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Spell:" },
-                            {
-                                "$type": "Core.SpaceRestriction:CompareDistance:",
-                                "distanceTo": { "$type": "Cards:ThisCard:" },
-                                "number": { "$type": "Numbers:EffectX:" },
-                                "comparison": { "$type": "Relationships.Number:LessThanEqual:" }
-                            }
+							{
+								"$type": "Core.SpaceRestriction:CompareDistance:",
+								"distanceTo": { "$type": "Cards:ThisCard:" },
+								"number": { "$type": "Numbers:EffectX:" },
+								"comparison": { "$type": "Relationships.Number:LessThanEqual:" }
+							}
 						]
 					},
 					"xMultiplier": 1

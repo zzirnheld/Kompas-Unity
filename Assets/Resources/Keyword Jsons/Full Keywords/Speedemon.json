@@ -53,7 +53,7 @@
 					},
 					{
 						"$type": "Core.SpaceRestriction:Direction:",
-                        "from": { "$type": "Cards:ThisCard:" },
+						"from": { "$type": "Cards:ThisCard:" },
 						"direction": {
 							"$type": "Spaces:Direction:",
 							"from": { "$type": "Spaces:TargetIndex:", "index": -2 },

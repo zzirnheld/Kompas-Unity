@@ -38,15 +38,15 @@
 				},
 				{
 					"$type": "Subeffect:AutoTargetSpaceIdentity:",
-                    "spaceIdentity": {
-                        "$type": "Spaces:ApplyDisplacement:",
-                        "from": { "$type": "Spaces:TargetIndex:" },
+					"spaceIdentity": {
+						"$type": "Spaces:ApplyDisplacement:",
+						"from": { "$type": "Spaces:TargetIndex:" },
 						"displacement": {
 							"$type": "Spaces:Displacement:",
 							"from": { "$type": "Cards:ThisCard:" },
 							"to": { "$type": "Spaces:TargetIndex:" }
 						}
-                    },
+					},
 					"spaceRestriction": {
 						"$type": "Core.SpaceRestriction:CanMoveCard:",
 						"toMove": { "$type": "Cards:TargetIndex:" }

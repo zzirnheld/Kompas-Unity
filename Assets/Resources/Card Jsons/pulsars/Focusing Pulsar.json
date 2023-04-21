@@ -8,16 +8,16 @@
 				"blurb": "Enfocus",
 				"triggerCondition": "S Change",
 				"triggerRestriction": {
-                    "elements": [
-                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-                        {
-                            "$type": "Core.TriggerRestriction:CardsMatch:",
-                            "card": { "$type": "Cards:CardBefore:" },
-                            "other": {
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": {
 								"$type": "Cards:Avatar:",
 								"player": { "$type": "Players:FriendlyPlayer:" }
 							}
-                        },
+						},
 						{
 							"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
 							"number": { "$type": "Numbers:TriggerX:" },
@@ -27,7 +27,7 @@
 								"other": { "$type": "Numbers:Constant:", "constant": 0 }
 							}
 						}
-                    ]
+					]
 				}
 			},
 			"subeffects": [
@@ -38,7 +38,7 @@
 						"cardRestriction": {
 							"$type": "Core.CardRestriction:AllOf:",
 							"elements": [
-                            { "$type": "Core.CardRestriction:Character:" },
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.SpaceRestriction:AdjacentTo:",
 								"space": { "$type": "Cards:ThisCard:" }
@@ -54,16 +54,16 @@
 				"blurb": "Unfocus",
 				"triggerCondition": "S Change",
 				"triggerRestriction": {
-                    "elements": [
-                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-                        {
-                            "$type": "Core.TriggerRestriction:CardsMatch:",
-                            "card": { "$type": "Cards:CardBefore:" },
-                            "other": {
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": {
 								"$type": "Cards:Avatar:",
 								"player": { "$type": "Players:FriendlyPlayer:" }
 							}
-                        },
+						},
 						{
 							"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
 							"number": { "$type": "Numbers:TriggerX:" },
@@ -73,7 +73,7 @@
 								"other": { "$type": "Numbers:Constant:", "constant": 0 }
 							}
 						}
-                    ]
+					]
 				}
 			},
 			"subeffects": [
@@ -84,7 +84,7 @@
 						"cardRestriction": {
 							"$type": "Core.CardRestriction:AllOf:",
 							"elements": [
-                            { "$type": "Core.CardRestriction:Character:" },
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.SpaceRestriction:AdjacentTo:",
 								"space": { "$type": "Cards:ThisCard:" }

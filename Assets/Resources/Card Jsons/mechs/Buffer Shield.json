@@ -44,15 +44,15 @@
 				"triggerCondition": "Turn Start",
 				"triggerRestriction": {
 					"elements": [
-                        { "$type": "Core.TriggerRestriction:EnemyTurn:" },
-                        {
-                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "card": { "$type": "Cards:ThisCard:" },
-                            "cardRestriction": {
+						{ "$type": "Core.TriggerRestriction:EnemyTurn:" },
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:ThisCard:" },
+							"cardRestriction": {
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Discard" ]
 							}
-                        }
+						}
 					]
 				}
 			},

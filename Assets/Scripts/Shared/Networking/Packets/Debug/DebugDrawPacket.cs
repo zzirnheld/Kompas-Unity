@@ -4,27 +4,27 @@ using System.Threading.Tasks;
 
 namespace KompasCore.Networking
 {
-    public class DebugDrawPacket : Packet
-    {
-        public DebugDrawPacket() : base(DebugDraw) { }
+	public class DebugDrawPacket : Packet
+	{
+		public DebugDrawPacket() : base(DebugDraw) { }
 
-        public override Packet Copy() => new DebugDrawPacket();
-    }
+		public override Packet Copy() => new DebugDrawPacket();
+	}
 }
 
 namespace KompasServer.Networking
 {
-    public class DebugDrawServerPacket : DebugDrawPacket, IServerOrderPacket
-    {
-        public Task Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
-        {
-            if (serverGame.UIController.DebugMode)
-            {
-                UnityEngine.Debug.LogWarning($"Debug drawing");
-                serverGame.Draw(player);
-            }
-            else UnityEngine.Debug.LogError($"Tried to debug draw while NOT in debug mode!");
-            return Task.CompletedTask;
-        }
-    }
+	public class DebugDrawServerPacket : DebugDrawPacket, IServerOrderPacket
+	{
+		public Task Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
+		{
+			if (serverGame.UIController.DebugMode)
+			{
+				UnityEngine.Debug.LogWarning($"Debug drawing");
+				serverGame.Draw(player);
+			}
+			else UnityEngine.Debug.LogError($"Tried to debug draw while NOT in debug mode!");
+			return Task.CompletedTask;
+		}
+	}
 }

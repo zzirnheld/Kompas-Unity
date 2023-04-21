@@ -6,27 +6,27 @@ using KompasServer.Networking;
 
 namespace KompasServer.GameCore
 {
-    public class ServerHandController : HandController
-    {
-        public ServerPlayer owner;
-        public override Player Owner => owner;
+	public class ServerHandController : HandController
+	{
+		public ServerPlayer owner;
+		public override Player Owner => owner;
 
-        public ServerGame ServerGame => owner.game;
+		public ServerGame ServerGame => owner.game;
 
-        public override bool Hand(GameCard card, IStackable stackSrc = null)
-        {
-            var context = new TriggeringEventContext(game: ServerGame, CardBefore: card, stackableCause: stackSrc, player: Owner);
-            bool wasKnown = card.KnownToEnemy;
-            bool successful = base.Hand(card, stackSrc);
-            if (successful)
-            {
-                context.CacheCardInfoAfter();
-                ServerGame.effectsController.TriggerForCondition(Trigger.Rehand, context);
-                owner.notifier.NotifyRehand(card, wasKnown);
-            }
-            return successful;
-        }
+		public override bool Hand(GameCard card, IStackable stackSrc = null)
+		{
+			var context = new TriggeringEventContext(game: ServerGame, CardBefore: card, stackableCause: stackSrc, player: Owner);
+			bool wasKnown = card.KnownToEnemy;
+			bool successful = base.Hand(card, stackSrc);
+			if (successful)
+			{
+				context.CacheCardInfoAfter();
+				ServerGame.effectsController.TriggerForCondition(Trigger.Rehand, context);
+				owner.notifier.NotifyRehand(card, wasKnown);
+			}
+			return successful;
+		}
 
-        public override void Refresh() { }
-    }
+		public override void Refresh() { }
+	}
 }

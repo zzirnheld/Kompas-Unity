@@ -4,7 +4,7 @@
 	"effText": "When turns start, hand->summon a Bone and draw 1 card.",
 	"effects": [
 		{
-            "blurb": "Bonecast",
+			"blurb": "Bonecast",
 			"triggerData": {
 				"triggerCondition": "Turn Start",
 				"triggerRestriction":{
@@ -35,13 +35,13 @@
 					"blurb": "where to put the bone",
 					"spaceRestriction": {
 						"$type": "Core.SpaceRestriction:AllOf:",
-                        "elements": [
-                            { "$type": "Core.SpaceRestriction:Empty:" },
-                            {
-                                "$type": "Core.SpaceRestriction:CanPlayCard:",
-                                "toPlay": { "$type": "Cards:TargetIndex:" }
-                            }
-                        ]
+						"elements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanPlayCard:",
+								"toPlay": { "$type": "Cards:TargetIndex:" }
+							}
+						]
 					}
 				},
 				{

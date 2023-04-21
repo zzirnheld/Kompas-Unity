@@ -1,21 +1,21 @@
 [
-    {
-        "$type": "Core.TriggerRestriction:CardsMatch:",
-        "card": { "$type": "Cards:ThisCard:" },
-        "other": { "$type": "Cards:CardBefore:" }
-    },
-    {
-        "$type": "Core.TriggerRestriction:NumberFitsRestriction:",
-        "restriction": {
-            "numberRestrictions": [
-                ">=Constant"
-            ],
-            "constant":30
-        },
-        "number": {
-            "$type": "Numbers:FromCardValue:",
-            "card": { "$type": "Cards:CardBefore:" },
-            "cardValue": { "value": "S" }
-        }
-    }
+	{
+		"$type": "Core.TriggerRestriction:CardsMatch:",
+		"card": { "$type": "Cards:ThisCard:" },
+		"other": { "$type": "Cards:CardBefore:" }
+	},
+	{
+		"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
+		"restriction": {
+			"numberRestrictions": [
+				">=Constant"
+			],
+			"constant":30
+		},
+		"number": {
+			"$type": "Numbers:FromCardValue:",
+			"card": { "$type": "Cards:CardBefore:" },
+			"cardValue": { "value": "S" }
+		}
+	}
 ]

@@ -2,12 +2,12 @@
 
 namespace KompasServer.Effects.Subeffects
 {
-    public class EndTurn : ServerSubeffect
-    {
-        public override async Task<ResolutionInfo> Resolve()
-        {
-            await ServerGame.SwitchTurn();
-            return ResolutionInfo.Next;
-        }
-    }
+	public class EndTurn : ServerSubeffect
+	{
+		public override async Task<ResolutionInfo> Resolve()
+		{
+			await ServerGame.SwitchTurn();
+			return ResolutionInfo.Next;
+		}
+	}
 }

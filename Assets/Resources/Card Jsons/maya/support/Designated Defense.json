@@ -4,7 +4,7 @@
 	"effText": "When turns start, an enemy chooses ANY space on the edge of the board. Deck->summon a Structure there (ignoring normal adjacency rules).",
 	"effects": [
 		{
-            "blurb": "Designate construction",
+			"blurb": "Designate construction",
 			"triggerData": {
 				"triggerCondition": "Turn Start",
 				"triggerRestriction":{
@@ -22,10 +22,10 @@
 					"blurb": "Space for your enemy to play a Structure to",
 					"spaceRestriction": {
 						"$type": "Core.SpaceRestriction:AllOf:",
-                        "elements": [
-                            { "$type": "Core.SpaceRestriction:Empty:" },
+						"elements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" },
 							{ "$type": "Core.SpaceRestriction:Edge:" }
-                        ]
+						]
 					}
 				},
 				{
@@ -35,16 +35,16 @@
 					"cardRestriction": {
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
-                            { "$type": "Core.CardRestriction:Character:" },
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Structure" ]
 							},
-                            {
-                                "$type": "Core.CardRestriction:CanPlay:",
-                                "destination": { "$type": "Spaces:TargetIndex:" },
+							{
+								"$type": "Core.CardRestriction:CanPlay:",
+								"destination": { "$type": "Spaces:TargetIndex:" },
 								"ignoring": [ "Adjacent to Friendly Card" ]
-                            }
+							}
 						]
 					},
 					"playerIndex": 0

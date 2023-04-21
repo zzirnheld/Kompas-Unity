@@ -41,8 +41,8 @@
 				}
 			]
 		},
-        {
-            "blurb": "Recur",
+		{
+			"blurb": "Recur",
 			"triggerData": {
 				"triggerCondition": "Turn Start",
 				"triggerRestriction": {
@@ -64,14 +64,14 @@
 					]
 				}
 			},
-            "subeffects": [
-                {
-                    "$type": "Subeffect:TargetThis:"
-                },
-                {
-                    "$type":"Subeffect:Hand:",
-                    "targetIndex": 0
-                },
+			"subeffects": [
+				{
+					"$type": "Subeffect:TargetThis:"
+				},
+				{
+					"$type":"Subeffect:Hand:",
+					"targetIndex": 0
+				},
 				{
 					"$type": "Subeffect:CardTarget:",
 					"toSearch": { "$type": "ManyCards:Hand:" }
@@ -79,8 +79,8 @@
 				{
 					"$type": "Subeffect:Discard:"
 				}
-            ]
-        }
+			]
+		}
 	],
 	"c": 2,
 	"spellTypes": [

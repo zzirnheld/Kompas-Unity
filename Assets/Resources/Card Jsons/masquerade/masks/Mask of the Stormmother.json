@@ -9,15 +9,15 @@
 				"triggerCondition": "Attack",
 				"triggerRestriction": {
 					"elements": [
-                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-                        {
-                            "$type": "Core.TriggerRestriction:CardsMatch:",
-                            "card": {
-                                "$type": "Cards:AugmentedCard:",
-                                "ofThisCard": { "$type": "Cards:ThisCard:" }
-                            },
-                            "other": { "$type": "Cards:CardBefore:" }
-                        }
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": {
+								"$type": "Cards:AugmentedCard:",
+								"ofThisCard": { "$type": "Cards:ThisCard:" }
+							},
+							"other": { "$type": "Cards:CardBefore:" }
+						}
 					]
 				}
 			},

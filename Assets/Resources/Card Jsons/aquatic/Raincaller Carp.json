@@ -42,7 +42,7 @@
 									}
 								}
 							},
-                            { "$type": "Core.CardRestriction:CanPlay:" }
+							{ "$type": "Core.CardRestriction:CanPlay:" }
 						]
 					}
 				},
@@ -51,13 +51,13 @@
 					"blurb": "RAAAAAAAAAAIN!",
 					"spaceRestriction": {
 						"$type": "Core.SpaceRestriction:AllOf:",
-                        "elements": [
-                            { "$type": "Core.SpaceRestriction:Empty:" },
-                            {
-                                "$type": "Core.SpaceRestriction:CanPlayCard:",
-                                "toPlay": { "$type": "Cards:TargetIndex:" }
-                            }
-                        ]
+						"elements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanPlayCard:",
+								"toPlay": { "$type": "Cards:TargetIndex:" }
+							}
+						]
 					}
 				},
 				{

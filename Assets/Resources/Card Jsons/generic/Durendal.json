@@ -8,14 +8,14 @@
 				"triggerCondition": "Battle Start",
 				"triggerRestriction": {
 					"elements": [
-                        {
-                            "$type": "Core.TriggerRestriction:CardsMatch:",
-                            "card": { "$type": "Cards:CardBefore:" },
-                            "other": {
-                                "$type": "Cards:AugmentedCard:",
-                                "ofThisCard": { "$type": "Cards:ThisCard:" }
-                            }
-                        },
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": {
+								"$type": "Cards:AugmentedCard:",
+								"ofThisCard": { "$type": "Cards:ThisCard:" }
+							}
+						},
 						{ "$type": "Core.TriggerRestriction:MaxPerRound:" }
 					]
 				}

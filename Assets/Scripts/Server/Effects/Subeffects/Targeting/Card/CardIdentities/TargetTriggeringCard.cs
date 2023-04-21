@@ -4,23 +4,23 @@ using UnityEngine;
 
 namespace KompasServer.Effects.Subeffects
 {
-    public class TargetTriggeringCard : ServerSubeffect
-    {
-        public bool contextSecondaryCard = false;
-        public bool info = false;
-        public bool cause = false;
+	public class TargetTriggeringCard : ServerSubeffect
+	{
+		public bool contextSecondaryCard = false;
+		public bool info = false;
+		public bool cause = false;
 
-        public override Task<ResolutionInfo> Resolve()
-        {
-            var cardInfoToTarget = ResolutionContext.TriggerContext.mainCardInfoBefore;
-            if (contextSecondaryCard) cardInfoToTarget = ResolutionContext.TriggerContext.secondaryCardInfoBefore;
-            if (cause) cardInfoToTarget = ResolutionContext.TriggerContext.cardCauseBefore;
-            if (cardInfoToTarget == null) throw new NullCardException(NoValidCardTarget);
+		public override Task<ResolutionInfo> Resolve()
+		{
+			var cardInfoToTarget = ResolutionContext.TriggerContext.mainCardInfoBefore;
+			if (contextSecondaryCard) cardInfoToTarget = ResolutionContext.TriggerContext.secondaryCardInfoBefore;
+			if (cause) cardInfoToTarget = ResolutionContext.TriggerContext.cardCauseBefore;
+			if (cardInfoToTarget == null) throw new NullCardException(NoValidCardTarget);
 
-            if (info) ServerEffect.cardInfoTargets.Add(cardInfoToTarget);
-            else ServerEffect.AddTarget(cardInfoToTarget.Card);
+			if (info) ServerEffect.cardInfoTargets.Add(cardInfoToTarget);
+			else ServerEffect.AddTarget(cardInfoToTarget.Card);
 
-            return Task.FromResult(ResolutionInfo.Next);
-        }
-    }
+			return Task.FromResult(ResolutionInfo.Next);
+		}
+	}
 }

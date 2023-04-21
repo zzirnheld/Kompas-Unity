@@ -21,7 +21,7 @@
 					"cardRestriction": {
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
-                            {
+							{
 								"$type": "Core.SpaceRestriction:InAOEOf:",
 								"anyOf": {
 									"$type": "ManyCards:FittingRestriction:",
@@ -30,7 +30,7 @@
 										"subtypes": [ "Water" ]
 									}
 								}
-                            },
+							},
 							{
 								"$type": "Core.CardRestriction:CanMove:",
 								"spaceRestrictionSubeffectIndex": 1

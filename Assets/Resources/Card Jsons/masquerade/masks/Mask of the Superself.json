@@ -3,35 +3,35 @@
 	"cardName": "Mask of the Superself",
 	"effText": "Mask.\nWhen this summon defends, give them +5 E.",
 	"effects": [
-        {
-            "blurb": "You underestimate me",
-            "triggerData":
-            {
-                "triggerCondition": "Defend",
-                "triggerRestriction": {
-                    "elements": [
-                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-                        {
-                            "$type": "Core.TriggerRestriction:CardsMatch:",
-                            "card": { "$type": "Cards:CardBefore:" },
-                            "other": {
-                                "$type": "Cards:AugmentedCard:",
-                                "ofThisCard": { "$type": "Cards:ThisCard:" }
-                            }
-                        },
-                        {
-                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "card": { "$type": "Cards:CardBefore:" },
-                            
+		{
+			"blurb": "You underestimate me",
+			"triggerData":
+			{
+				"triggerCondition": "Defend",
+				"triggerRestriction": {
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": {
+								"$type": "Cards:AugmentedCard:",
+								"ofThisCard": { "$type": "Cards:ThisCard:" }
+							}
+						},
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							
 						"cardRestriction": {
 							"$type": "Core.CardRestriction:AllOf:",
 							"elements": [ { "$type": "Core.CardRestriction:Summoned:" } ]
-                            }
-                        }
-                    ]
-                }
-            },
-            "subeffects":[
+							}
+						}
+					]
+				}
+			},
+			"subeffects":[
 				{
 					"$type":"Subeffect:TargetTriggeringCard:"
 				},
@@ -39,8 +39,8 @@
 					"$type": "Subeffect:ChangeCardStats:",
 					"eModifier": 5
 				}
-            ]
-        }
+			]
+		}
 	],
 	"PlayRestriction": {
 		"normalRestrictions": [

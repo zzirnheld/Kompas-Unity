@@ -3,18 +3,18 @@ using KompasCore.Networking;
 
 namespace KompasCore.Networking
 {
-    public class EffectImpossiblePacket : Packet
-    {
-        public EffectImpossiblePacket() : base(EffectImpossible) { }
+	public class EffectImpossiblePacket : Packet
+	{
+		public EffectImpossiblePacket() : base(EffectImpossible) { }
 
-        public override Packet Copy() => new EffectImpossiblePacket();
-    }
+		public override Packet Copy() => new EffectImpossiblePacket();
+	}
 }
 
 namespace KompasClient.Networking
 {
-    public class EffectImpossibleClientPacket : EffectImpossiblePacket, IClientOrderPacket
-    {
-        public void Execute(ClientGame clientGame) => clientGame.clientUIController.SetCurrState("Effect Impossible");
-    }
+	public class EffectImpossibleClientPacket : EffectImpossiblePacket, IClientOrderPacket
+	{
+		public void Execute(ClientGame clientGame) => clientGame.clientUIController.SetCurrState("Effect Impossible");
+	}
 }

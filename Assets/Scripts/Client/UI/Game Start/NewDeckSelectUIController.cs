@@ -9,77 +9,77 @@ using UnityEngine;
 
 namespace KompasClient.UI
 {
-    public class NewDeckSelectUIController : DeckDropdownControllerBase
-    {
-        public ClientNotifier clientNotifier;
-        public ClientCardRepository cardRepository;
-        public DeckSelectCardController deckSelectCardPrefab;
-        public Transform deckScrollAreaParentTransform;
-        public TMP_Text cardsInDeckText;
+	public class NewDeckSelectUIController : DeckDropdownControllerBase
+	{
+		public ClientNotifier clientNotifier;
+		public ClientCardRepository cardRepository;
+		public DeckSelectCardController deckSelectCardPrefab;
+		public Transform deckScrollAreaParentTransform;
+		public TMP_Text cardsInDeckText;
 
-        private IList<DeckSelectCardController> currDeck = new List<DeckSelectCardController>();
+		private IList<DeckSelectCardController> currDeck = new List<DeckSelectCardController>();
 
-        public string AvatarFileName => currDeck.Count < 1 ? null : currDeck[0].Card.FileName;
+		public string AvatarFileName => currDeck.Count < 1 ? null : currDeck[0].Card.FileName;
 
-        private void Start() => Load();
+		private void Start() => Load();
 
-        public void SelectionChanged(int index) => Show(dropdown.options[index].text);
+		public void SelectionChanged(int index) => Show(dropdown.options[index].text);
 
-        protected override void Show(string deckName)
-        {
-            var cardNames = DeckLoadHelper.LoadDeck(deckName); //TODO stash, using the override of LoadDeck in DeckDropdownControllerBase
+		protected override void Show(string deckName)
+		{
+			var cardNames = DeckLoadHelper.LoadDeck(deckName); //TODO stash, using the override of LoadDeck in DeckDropdownControllerBase
 
-            ClearDeck();
+			ClearDeck();
 
-            foreach (string name in cardNames)
-            {
-                if (!string.IsNullOrWhiteSpace(name)) AddToDeck(name);
-            }
+			foreach (string name in cardNames)
+			{
+				if (!string.IsNullOrWhiteSpace(name)) AddToDeck(name);
+			}
 
-            SetDeckCountText();
-        }
+			SetDeckCountText();
+		}
 
-        private void SetDeckCountText()
-        {
-            cardsInDeckText.text = $"Cards in Deck: {currDeck.Count}";
-        }
+		private void SetDeckCountText()
+		{
+			cardsInDeckText.text = $"Cards in Deck: {currDeck.Count}";
+		}
 
-        private void ClearDeck()
-        {
-            foreach (var card in currDeck) Destroy(card.gameObject);
-            currDeck.Clear();
-        }
+		private void ClearDeck()
+		{
+			foreach (var card in currDeck) Destroy(card.gameObject);
+			currDeck.Clear();
+		}
 
-        private void AddToDeck(string name)
-        {
-            string json = cardRepository.GetJsonFromName(name);
-            if (json == null)
-            {
-                Debug.LogError($"No json found for card name {name}");
-                return;
-            }
+		private void AddToDeck(string name)
+		{
+			string json = cardRepository.GetJsonFromName(name);
+			if (json == null)
+			{
+				Debug.LogError($"No json found for card name {name}");
+				return;
+			}
 
-            DeckSelectCardController toAdd = cardRepository.InstantiateDeckSelectCard(json, deckScrollAreaParentTransform, deckSelectCardPrefab, null);
-            if (toAdd == null)
-            {
-                Debug.LogError($"Somehow have a DeckbuilderCard with name {name} couldn't be re-instantiated");
-                return;
-            }
+			DeckSelectCardController toAdd = cardRepository.InstantiateDeckSelectCard(json, deckScrollAreaParentTransform, deckSelectCardPrefab, null);
+			if (toAdd == null)
+			{
+				Debug.LogError($"Somehow have a DeckbuilderCard with name {name} couldn't be re-instantiated");
+				return;
+			}
 
-            currDeck.Add(toAdd);
-            SetDeckCountText();
-        }
+			currDeck.Add(toAdd);
+			SetDeckCountText();
+		}
 
-        public void ConfirmSelectedDeck()
-        {
-            StringBuilder sb = new StringBuilder();
-            foreach (DeckSelectCardController card in currDeck)
-            {
-                sb.Append(card.Card.CardName);
-                sb.Append("\n");
-            }
+		public void ConfirmSelectedDeck()
+		{
+			StringBuilder sb = new StringBuilder();
+			foreach (DeckSelectCardController card in currDeck)
+			{
+				sb.Append(card.Card.CardName);
+				sb.Append("\n");
+			}
 
-            clientNotifier.RequestDecklistImport(sb.ToString());
-        }
-    }
+			clientNotifier.RequestDecklistImport(sb.ToString());
+		}
+	}
 }
