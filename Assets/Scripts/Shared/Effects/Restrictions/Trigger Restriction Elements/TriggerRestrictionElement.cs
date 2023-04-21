@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace KompasCore.Effects.Restrictions
 {
-    public abstract class TriggerRestrictionBase : RestrictionElementBase<TriggeringEventContext>, IContextInitializeable
+    public abstract class TriggerRestrictionBase : RestrictionBase<TriggeringEventContext>, IContextInitializeable
     {
         public bool useDummyResolutionContext = true;
 

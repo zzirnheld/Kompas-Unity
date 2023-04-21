@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace KompasCore.Effects.Restrictions
 {
-    public abstract class CardRestrictionElement : RestrictionElementBase<GameCardBase>, IRestriction<Space>
+    public abstract class CardRestrictionElement : RestrictionBase<GameCardBase>, IRestriction<Space>
     {
         public bool IsValid(Space item, IResolutionContext context)
             => IsValid(InitializationContext.game.BoardController.GetCardAt(item), context);

@@ -4,7 +4,7 @@ using KompasCore.Effects.Relationships;
 
 namespace KompasCore.Effects.Restrictions.NumberRestrictionElements
 {
-    public class Compare : RestrictionElementBase<int>
+    public class Compare : RestrictionBase<int>
     {
         public IIdentity<int> other;
         public INumberRelationship comparison;

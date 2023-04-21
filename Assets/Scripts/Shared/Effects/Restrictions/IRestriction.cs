@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using KompasCore.Cards;
 using UnityEngine;
 
 namespace KompasCore.Effects
@@ -11,7 +10,7 @@ namespace KompasCore.Effects
         bool IsValid(Type item, IResolutionContext context);
     }
     
-    public abstract class RestrictionElementBase<Type> : ContextInitializeableBase, IRestriction<Type>
+    public abstract class RestrictionBase<Type> : ContextInitializeableBase, IRestriction<Type>
     {
         public bool IsValid(Type item, IResolutionContext context)
         {
@@ -21,7 +20,8 @@ namespace KompasCore.Effects
             {
                 return item != null && IsValidLogic(item, context);
             }
-            catch (SystemException exception) when (exception is NullReferenceException || exception is ArgumentException)
+            catch (SystemException exception)
+                when (exception is NullReferenceException || exception is ArgumentException)
             {
                 Debug.LogError(exception);
                 return false;
@@ -31,7 +31,7 @@ namespace KompasCore.Effects
         protected abstract bool IsValidLogic(Type item, IResolutionContext context);
     }
 
-    public abstract class AllOfBase<Type> : RestrictionElementBase<Type>
+    public abstract class AllOfBase<Type> : RestrictionBase<Type>
     {
         public IList<IRestriction<Type>> elements = new IRestriction<Type>[] { };
 
