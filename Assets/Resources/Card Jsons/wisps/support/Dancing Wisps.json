@@ -41,9 +41,7 @@
                         "selector": { "$type": "KompasCore.Effects.Selectors.RandomSpace, Assembly-CSharp" },
                         "spaces": {
                             "$type": "ManySpaces:FittingRestriction:",
-                            "restriction": {
-                                "elements": [ { "$type": "Core.SpaceRestriction:Empty:" } ]
-                            },
+                            "restriction": { "$type": "Core.SpaceRestriction:Empty:" },
                             "spaces": {
                                 "$type": "ManySpaces:AdjacentSpaces:",
                                 "adjacentTo": {

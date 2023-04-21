@@ -21,10 +21,9 @@
 				{
 					"$type": "Subeffect:ConditionalJump:",
 					"condition": "Target Violates Restriction",
-					
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
+					"cardRestriction": {
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
@@ -45,14 +44,12 @@
                         "spaces": {
                             "$type": "ManySpaces:FittingRestriction:",
                             "restriction": {
-                                "elements": [ {
-                                    "$type": "Core.SpaceRestriction:CanPlayCard:",
-                                    "toPlay": { "$type": "Cards:TargetIndex:" }
-                                } ]
-                            }
-                        }
-                    }
-                },
+								"$type": "Core.SpaceRestriction:CanPlayCard:",
+								"toPlay": { "$type": "Cards:TargetIndex:" }
+							}
+						}
+					}
+				},
 				{
 					"$type": "Subeffect:Play:"
 				}

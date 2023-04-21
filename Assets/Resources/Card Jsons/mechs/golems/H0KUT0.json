@@ -16,7 +16,7 @@
 					{
 						"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 						"card": { "$type": "Cards:ThisCard:" },
-						"cardRestriction": { "elements": [ { "$type": "Core.CardRestriction:Active:" } ] }
+						"cardRestriction": { "$type": "Core.CardRestriction:Active:" }
 					},
 					{
 						"$type": "Core.TriggerRestriction:PlayersMatch:",

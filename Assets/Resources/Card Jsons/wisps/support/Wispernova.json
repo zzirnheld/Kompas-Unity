@@ -49,13 +49,11 @@
                         "spaces": {
                             "$type": "ManySpaces:FittingRestriction:",
                             "restriction": {
-                                "elements": [ {
-                                    "$type": "Core.SpaceRestriction:CanPlayCard:",
-                                    "toPlay": { "$type": "Cards:TargetIndex:" }
-                                } ]
-                            }
-                        }
-                    }
+								"$type": "Core.SpaceRestriction:CanPlayCard:",
+								"toPlay": { "$type": "Cards:TargetIndex:" }
+							}
+						}
+					}
                 },
                 {
                     "$type": "Subeffect:PayPips:",

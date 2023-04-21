@@ -31,11 +31,11 @@
 							"elements": [ {
 							"$type": "Core.CardRestriction:CardValueFits:",
 							"cardValue": { "value": "C" },
-							"numberRestriction": { "elements": [ {
+							"numberRestriction": {
 								"$type": "Core.NumberRestriction:Compare:",
 								"comparison": { "$type": "Relationships.Number:LessThanEqual:" },
 								"other": { "$type": "Numbers:Constant:", "constant": 30 }
-							} ] }
+							}
 						} ]
 					}
 				},

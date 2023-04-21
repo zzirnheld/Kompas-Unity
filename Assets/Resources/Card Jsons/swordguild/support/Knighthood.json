@@ -13,7 +13,7 @@
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
                             "card": { "$type": "Cards:CardBefore:" },
-                            "cardRestriction": { "elements": [ { "$type": "Core.CardRestriction:Character:" } ] }
+                            "cardRestriction": { "$type": "Core.CardRestriction:Character:" }
                         },
                         {
                             "$type": "Core.TriggerRestriction:CardFitsRestriction:",
@@ -87,11 +87,11 @@
 							{
 								"$type": "Core.CardRestriction:CardValueFits:",
 								"cardValue": { "value": "S" },
-								"numberRestriction": { "elements": [{
+								"numberRestriction": {
 									"$type": "Core.NumberRestriction:Compare:",
 									"comparison": { "$type": "Relationships.Number:LessThanEqual:" },
 									"other": { "$type": "Numbers:EffectX:" }
-								}]}
+								}
 							}
 						]
 					}

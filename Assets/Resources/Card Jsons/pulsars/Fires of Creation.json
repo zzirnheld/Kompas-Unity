@@ -28,14 +28,14 @@
 									{
 										"$type": "Core.CardRestriction:CardValueFits:",
 										"cardValue": { "value": "S" },
-										"numberRestriction": { "elements": [{
+										"numberRestriction": {
 											"numberRestrictions": [
 												">Avatar"
 											],
 											"cardValue": {
 												"value": "S"
 											}
-										}]}
+										}
 									}
 								]
                             }
@@ -75,14 +75,14 @@
 									{
 										"$type": "Core.CardRestriction:CardValueFits:",
 										"cardValue": { "value": "S" },
-										"numberRestriction": { "elements": [{
+										"numberRestriction": {
 											"numberRestrictions": [
 												"<Avatar"
 											],
 											"cardValue": {
 												"value": "S"
 											}
-										}]}
+										}
 									}
 								]
                             }

@@ -28,7 +28,7 @@
 							"elements": [ {
                                     "$type": "Core.CardRestriction:Subtypes:",
                                     "subtypes": [ "Shade" ]
-                                } ]
+                                }
                             }
                         }
                     },
