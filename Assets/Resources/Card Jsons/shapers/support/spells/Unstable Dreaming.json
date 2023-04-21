@@ -19,9 +19,9 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Shaper to hand-summon",
 					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
-						"blurb": "Shaper to hand-summon",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
@@ -34,8 +34,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where to handsummon the Shaper",
 					"spaceRestriction": {
-						"blurb": "where to handsummon the Shaper",
+						"$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {

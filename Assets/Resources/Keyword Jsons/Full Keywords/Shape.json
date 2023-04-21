@@ -8,9 +8,10 @@
 	"subeffects":[
 		{
 			"$type":"Subeffect:SpaceTarget:",
+			"blurb":"to move Shaper to",
 			"spaceRestriction":
 			{
-				"blurb":"to move Shaper to",
+				"$type": "Core.SpaceRestriction:AllOf:",
 				"elements": [
 					{
 						"$type": "Core.SpaceRestriction:ConnectedTo:",

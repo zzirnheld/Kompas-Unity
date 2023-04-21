@@ -19,9 +19,9 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Friendly Shaper to move",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "Friendly Shaper to move",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
@@ -39,9 +39,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "enemy character to move adjacent to",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "enemy character to move adjacent to",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
@@ -51,9 +51,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where to move the Shaper",
 					"spaceRestriction": {
-						"blurb": "where to move the Shaper",
-						"$type": "Core.CardRestriction:AllOf:",
+						"$type": "Core.SpaceRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.SpaceRestriction:Empty:" },
 							{

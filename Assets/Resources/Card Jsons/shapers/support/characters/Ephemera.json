@@ -23,10 +23,9 @@
 				{
 					"$type": "Subeffect:AutoTarget:",
 					"toSearch": { "$type": "ManyCards:Deck:" },
-					
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
+					"cardRestriction": {
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Name:",
@@ -38,8 +37,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where to summon Ephemera",
 					"spaceRestriction": {
-						"blurb": "where to summon Ephemera",
+						"$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {
