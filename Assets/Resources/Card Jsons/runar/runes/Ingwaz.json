@@ -19,9 +19,9 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "for Ingwaz to recast",
 					"toSearch": { "$type": "ManyCards:Discard:" },
 					"cardRestriction": {
-						"blurb": "for Ingwaz to recast",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Spell:" },
@@ -55,8 +55,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where Ingwaz to recast",
 					"spaceRestriction": {
-						"blurb": "where Ingwaz to recast",
+						"$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {

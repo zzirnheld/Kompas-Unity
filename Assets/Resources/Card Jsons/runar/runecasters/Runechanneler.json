@@ -14,10 +14,9 @@
 				{
 					"$type": "Subeffect:SetXByGamestate:",
 					"whatToCount": "Cards Fitting Restriction",
-					
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
+					"cardRestriction": {
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",
@@ -33,9 +32,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Rune for Runechanneler to cast",
 					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
-						"blurb": "Rune for Runechanneler to cast",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Spell:" },
@@ -66,9 +65,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Rune for Runechanneler to reshuffle",
 					"toSearch": { "$type": "ManyCards:Discard:" },
 					"cardRestriction": {
-						"blurb": "Rune for Runechanneler to reshuffle",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{
@@ -98,8 +97,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where for Runechanneler to cast its target Rune",
 					"spaceRestriction": {
-						"blurb": "where for Runechanneler to cast its target Rune",
+						"$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {

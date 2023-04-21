@@ -13,13 +13,7 @@
 						{
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 							"card": { "$type": "Cards:CardBefore:" },
-							
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
-									{ "$type": "Core.CardRestriction:Enemy:" }
-								]
-							}
+							"cardRestriction": { "$type": "Core.CardRestriction:Enemy:" }
 						}
 					]
 				}
@@ -27,9 +21,9 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "for Weather Reporter to hand-summon",
 					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
-						"blurb": "for Weather Reporter to hand-summon",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
@@ -58,8 +52,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where Weather Reporter to hand-summon",
 					"spaceRestriction": {
-						"blurb": "where Weather Reporter to hand-summon",
+						"$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {

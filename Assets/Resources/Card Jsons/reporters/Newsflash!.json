@@ -42,12 +42,12 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "fast card to reveal",
 					"toSearch": {
 						"$type": "ManyCards:Hand:",
 						"friendly": true, "enemy": true
 					},
 					"cardRestriction": {
-						"blurb": "fast card to reveal",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Hidden:" },
@@ -75,10 +75,10 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "friendly Reporter to move",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"playerIndex": -2,
 					"cardRestriction": {
-						"blurb": "friendly Reporter to move",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
@@ -100,10 +100,10 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where for Newsflash! to move it starget",
 					"playerIndex": -2,
 					"spaceRestriction": {
-						"blurb": "where for Newsflash! to move it starget",
-						"$type": "Core.CardRestriction:AllOf:",
+						"$type": "Core.SpaceRestriction:AllOf:",
 						"elements": [
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
