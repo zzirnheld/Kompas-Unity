@@ -2,7 +2,7 @@ using KompasCore.Effects.Identities;
 
 namespace KompasCore.Effects.Restrictions.TriggerRestrictionElements
 {
-    public class PlayersMatch : TriggerRestrictionElement
+    public class PlayersMatch : TriggerRestrictionBase
     {
         public IIdentity<Player> firstPlayer;
         public IIdentity<Player> secondPlayer;

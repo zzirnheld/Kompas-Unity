@@ -17,7 +17,7 @@ namespace KompasCore.Effects.Restrictions
             protected override bool IsValidLogic(Space item, IResolutionContext context) => true;
         }
     
-        public class AllOf : RestrictionBase<Space>
+        public class AllOf : AllOfBase<Space>
         {
         }
 

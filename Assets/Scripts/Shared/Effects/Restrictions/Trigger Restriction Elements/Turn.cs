@@ -2,7 +2,7 @@ using KompasCore.Effects.Identities;
 
 namespace KompasCore.Effects.Restrictions.TriggerRestrictionElements
 {
-    public class Turn : TriggerRestrictionElement
+    public class Turn : TriggerRestrictionBase
     {
         public IIdentity<Player> turnPlayer;
 

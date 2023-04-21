@@ -16,7 +16,7 @@ namespace KompasCore.Effects.Restrictions
             protected override bool IsValidLogic(GameCardBase item, IResolutionContext context) => true;
         }
     
-        public class AllOf : RestrictionBase<GameCardBase>
+        public class AllOf : AllOfBase<GameCardBase>
         {
             public GameCard Source => InitializationContext.source;
 

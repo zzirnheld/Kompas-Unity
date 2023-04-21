@@ -4,7 +4,7 @@ using KompasCore.Effects.Identities;
 
 namespace KompasCore.Effects.Restrictions.TriggerRestrictionElements
 {
-    public class SpacesFitRestriction : TriggerRestrictionElement
+    public class SpacesFitRestriction : TriggerRestrictionBase
     {
         public IRestriction<Space> spaceRestriction;
         public IIdentity<IReadOnlyCollection<Space>> spaces;

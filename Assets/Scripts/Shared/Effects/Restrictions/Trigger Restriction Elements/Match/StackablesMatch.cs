@@ -2,7 +2,7 @@ using KompasCore.Effects.Identities;
 
 namespace KompasCore.Effects.Restrictions.TriggerRestrictionElements
 {
-    public class StackablesMatch : TriggerRestrictionElement
+    public class StackablesMatch : TriggerRestrictionBase
     {
         public IIdentity<IStackable> firstStackable;
         public IIdentity<IStackable> secondStackable;

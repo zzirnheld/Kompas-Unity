@@ -2,7 +2,7 @@ using KompasCore.Effects.Identities;
 
 namespace KompasCore.Effects.Restrictions.TriggerRestrictionElements
 {
-    public class NumberFitsRestriction : TriggerRestrictionElement
+    public class NumberFitsRestriction : TriggerRestrictionBase
     {
         public IIdentity<int> number;
         public IRestriction<int> restriction;

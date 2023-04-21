@@ -3,7 +3,7 @@ using KompasServer.Cards;
 
 namespace KompasCore.Effects.Restrictions.TriggerRestrictionElements
 {
-    public class TriggerKeyword : TriggerRestrictionElement
+    public class TriggerKeyword : TriggerRestrictionBase
     {
         public string keyword;
 

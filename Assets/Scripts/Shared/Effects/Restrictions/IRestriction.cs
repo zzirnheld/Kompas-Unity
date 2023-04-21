@@ -10,8 +10,28 @@ namespace KompasCore.Effects
     {
         bool IsValid(Type item, IResolutionContext context);
     }
+    
+    public abstract class RestrictionElementBase<Type> : ContextInitializeableBase, IRestriction<Type>
+    {
+        public bool IsValid(Type item, IResolutionContext context)
+        {
+            ComplainIfNotInitialized();
 
-    public class RestrictionBase<Type> : ContextInitializeableBase, IRestriction<Type>
+            try
+            {
+                return item != null && IsValidLogic(item, context);
+            }
+            catch (SystemException exception) when (exception is NullReferenceException || exception is ArgumentException)
+            {
+                Debug.LogError(exception);
+                return false;
+            }
+        }
+
+        protected abstract bool IsValidLogic(Type item, IResolutionContext context);
+    }
+
+    public abstract class AllOfBase<Type> : RestrictionElementBase<Type>
     {
         public IList<IRestriction<Type>> elements = new IRestriction<Type>[] { };
 
@@ -22,22 +42,7 @@ namespace KompasCore.Effects
             if (elements.Count == 1) Debug.LogWarning($"only one element on {GetType()} on eff of {initializationContext.source}");
         }
 
-        public bool IsValid(Type item, IResolutionContext context)
-        {
-            ComplainIfNotInitialized();
-
-            try
-            {
-                return IsValidLogic(item, context);
-            }
-            catch (SystemException exception) when (exception is NullReferenceException || exception is ArgumentException)
-            {
-                Debug.LogError(exception);
-                return false;
-            }
-        }
-
-        protected virtual bool IsValidLogic(Type item, IResolutionContext context)
+        protected override bool IsValidLogic(Type item, IResolutionContext context)
             => elements.All(r => r.IsValid(item, context));
     }
 }

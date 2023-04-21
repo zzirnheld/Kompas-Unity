@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace KompasCore.Effects.Restrictions.TriggerRestrictionElements
 {
-    public class CardsMatch : TriggerRestrictionElement
+    public class CardsMatch : TriggerRestrictionBase
     {
         public IIdentity<GameCardBase> card;
         public IIdentity<GameCardBase> other;

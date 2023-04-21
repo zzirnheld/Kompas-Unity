@@ -3,7 +3,7 @@ using KompasCore.Effects.Relationships;
 
 namespace KompasCore.Effects.Restrictions.TriggerRestrictionElements
 {
-    public class CompareNumbers : TriggerRestrictionElement
+    public class CompareNumbers : TriggerRestrictionBase
     {
         public IIdentity<int> firstNumber;
         public IIdentity<int> secondNumber;

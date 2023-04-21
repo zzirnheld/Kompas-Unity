@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace KompasCore.Effects
 {
-    public class NumberRestriction : RestrictionBase<int>
+    public class NumberRestriction : AllOfBase<int>
     {
         public const string Positive = ">0";
         public const string Negative = "<0";

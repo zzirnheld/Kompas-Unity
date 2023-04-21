@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace KompasCore.Effects.Restrictions
 {
-    public abstract class TriggerRestrictionElement : RestrictionElementBase<TriggeringEventContext>, IContextInitializeable
+    public abstract class TriggerRestrictionBase : RestrictionElementBase<TriggeringEventContext>, IContextInitializeable
     {
         public bool useDummyResolutionContext = true;
 
@@ -16,12 +16,7 @@ namespace KompasCore.Effects.Restrictions
 
     namespace TriggerRestrictionElements
     {
-        public class AlwaysValid : TriggerRestrictionElement
-        {
-            protected override bool IsValidLogic(TriggeringEventContext item, IResolutionContext context) => true;
-        }
-
-        public class AllOf : RestrictionBase<TriggeringEventContext>
+        public class AllOf : AllOfBase<TriggeringEventContext>
         {
             public static readonly ISet<Type> ReevalationRestrictions
                 = new HashSet<Type>(new Type[] { typeof(MaxPerTurn), typeof(MaxPerRound), typeof(MaxPerStack) });
@@ -44,7 +39,12 @@ namespace KompasCore.Effects.Restrictions
                         .All(elem => elem.IsValid(context, default));
         }
 
-        public class AnyOf : TriggerRestrictionElement
+        public class AlwaysValid : TriggerRestrictionBase
+        {
+            protected override bool IsValidLogic(TriggeringEventContext item, IResolutionContext context) => true;
+        }
+
+        public class AnyOf : TriggerRestrictionBase
         {
             public IRestriction<TriggeringEventContext> [] restrictions;
 
@@ -58,7 +58,7 @@ namespace KompasCore.Effects.Restrictions
                 => restrictions.Any(r => r.IsValid(context, secondaryContext));
         }
 
-        public class Not : TriggerRestrictionElement
+        public class Not : TriggerRestrictionBase
         {
             public IRestriction<TriggeringEventContext>  inverted;
 
@@ -72,7 +72,7 @@ namespace KompasCore.Effects.Restrictions
                 => !inverted.IsValid(context, secondaryContext);
         }
 
-        public class ThisCardInPlay : TriggerRestrictionElement
+        public class ThisCardInPlay : TriggerRestrictionBase
         {
             protected override bool IsValidLogic(TriggeringEventContext context, IResolutionContext secondaryContext)
                 => InitializationContext.source.Location == CardLocation.Board;

@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace KompasCore.Effects.Restrictions.TriggerRestrictionElements
 {
-    public abstract class MaxPer : TriggerRestrictionElement
+    public abstract class MaxPer : TriggerRestrictionBase
     {
         public int max = 1;
 
