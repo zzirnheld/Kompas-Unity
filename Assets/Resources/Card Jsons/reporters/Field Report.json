@@ -142,13 +142,8 @@
 			"Adjacent to Card Fitting Restriction"
 		],
 		"adjacentCardRestriction": {
-			"$type": "Core.CardRestriction:AllOf:",
-			"elements":[
-				{
-					"$type": "Core.CardRestriction:Subtypes:",
-					"subtypes": [ "Reporter" ]
-				}
-			]
+			"$type": "Core.CardRestriction:Subtypes:",
+			"subtypes": [ "Reporter" ]
 		}
 	},
 	"c": 1,

@@ -53,10 +53,7 @@
 		"recommendationRestrictions": [
 			"Adjacent to Card Fitting Restriction"
 		],
-		"adjacentCardRestriction": {
-			"$type": "Core.CardRestriction:AllOf:",
-			"elements":[ { "$type": "Core.CardRestriction:Character:" } ]
-		}
+		"adjacentCardRestriction": { "$type": "Core.CardRestriction:Character:" }
 	},
 	"c": 4,
 	"spellTypes": [

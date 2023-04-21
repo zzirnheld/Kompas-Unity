@@ -22,23 +22,18 @@
 				{
 					"$type": "Subeffect:CardTarget:",
 					"toSearch": { "$type": "ManyCards:Board:" },
-					
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
+					"cardRestriction": {
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Enemy:" },
 							{
 								"$type": "Core.SpaceRestriction:InAOEOf:",
 								"anyOf": {
 									"$type": "ManyCards:FittingRestriction:",
-									
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [ {
-											"$type": "Core.CardRestriction:Subtypes:",
-											"subtypes": [ "Weather", "Condition" ]
-										} ]
+									"cardRestriction": {
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Weather", "Condition" ]
 									}
 								},
 								"sameAs": { "$type": "Cards:ThisCard:" }
@@ -69,25 +64,18 @@
 			"Adjacent to Friendly Card"
 		],
 		"spaceRestriction": {
-			"$type": "Core.SpaceRestriction:AllOf:",
-			"elements": [ {
-				"$type": "Core.SpaceRestriction:InAOEOf:",
-				"anyOf": {
-					"$type": "ManyCards:FittingRestriction:",
-					
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [ {
-							"$type": "Core.CardRestriction:Subtypes:",
-							"subtypes": [ "Weather" ]
-						} ]
-					}
-				},
-				"minAnyOfCount": { 
-					"$type": "Numbers:Constant:",
-					"constant": 2
+			"$type": "Core.SpaceRestriction:InAOEOf:",
+			"anyOf": {
+				"$type": "ManyCards:FittingRestriction:",
+				"cardRestriction": {
+					"$type": "Core.CardRestriction:Subtypes:",
+					"subtypes": [ "Weather" ]
 				}
-			} ]
+			},
+			"minAnyOfCount": { 
+				"$type": "Numbers:Constant:",
+				"constant": 2
+			}
 		}
 	},
 	"n": 5,

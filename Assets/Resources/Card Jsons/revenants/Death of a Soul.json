@@ -22,16 +22,11 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "discard->annihilate revenant",
 					"toSearch": { "$type": "ManyCards:Discard:" },
 					"cardRestriction": {
-						"blurb": "discard->annihilate revenant",
-						"$type": "Core.CardRestriction:AllOf:",
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Not:",
-								"negated": { "$type": "Core.CardRestriction:Target:" }
-							}
-						]
+						"$type": "Core.CardRestriction:Not:",
+						"negated": { "$type": "Core.CardRestriction:Target:" }
 					}
 				},
 				{
@@ -54,9 +49,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "character whose soul to kill",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "character whose soul to kill",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
@@ -88,10 +83,7 @@
 		"recommendationRestrictions": [
 			"Adjacent to Card Fitting Restriction"
 		],
-		"adjacentCardRestriction": {
-			"$type": "Core.CardRestriction:AllOf:",
-			"elements":[ { "$type": "Core.CardRestriction:Character:" } ]
-		}
+		"adjacentCardRestriction": { "$type": "Core.CardRestriction:Character:" }
 	},
 	"c": 2,
 	"spellTypes": [

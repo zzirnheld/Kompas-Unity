@@ -56,8 +56,8 @@ namespace KompasCore.Effects
         public IRestriction<GameCardBase> onCardFloutedRestriction;
         public IRestriction<GameCardBase> adjacentCardRestriction;
 
-        public Restrictions.SpaceRestrictionElements.AllOf spaceRestriction;
-        public Restrictions.SpaceRestrictionElements.AllOf floutedSpaceRestriction;
+        public IRestriction<Space> spaceRestriction;
+        public IRestriction<Space> floutedSpaceRestriction;
 
         public NumberRestriction countCardNumberRestriction;
         public IRestriction<GameCardBase> countCardRestriction;

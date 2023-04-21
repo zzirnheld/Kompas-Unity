@@ -22,11 +22,10 @@
 					"$type": "Subeffect:CardTarget:",
 					"blurb": "character to MAXIMUM OVERDRIVE",
 					"toSearch": { "$type": "ManyCards:Board:" },
-					
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
-                            { "$type": "Core.CardRestriction:Character:" },
+					"cardRestriction": {
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.SpaceRestriction:AdjacentTo:",
 								"space": { "$type": "Cards:ThisCard:" }
@@ -41,15 +40,9 @@
 				{
 					"$type": "Subeffect:ConditionalEnd:",
 					"condition": "Target Violates Restriction",
-					
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Crazy" ]
-							}
-						]
+					"cardRestriction": {
+						"$type": "Core.CardRestriction:Subtypes:",
+						"subtypes": [ "Crazy" ]
 					}
 				},
 				{
@@ -63,12 +56,7 @@
 		"recommendationRestrictions": [
 			"Adjacent to Card Fitting Restriction"
 		],
-		"adjacentCardRestriction": {
-			"$type": "Core.CardRestriction:AllOf:",
-			"elements":[
-				{ "$type": "Core.CardRestriction:Character:" }
-			]
-		}
+		"adjacentCardRestriction": { "$type": "Core.CardRestriction:Character:" }
 	},
 	"keywords": [
 		"Ificate"

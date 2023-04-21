@@ -39,13 +39,8 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"blurb": "where for Raido to move it starget",
 					"spaceRestriction": {
-						"$type": "Core.SpaceRestriction:AllOf:",
-						"elements": [
-							{
-								"$type": "Core.SpaceRestriction:CanMoveCard:",
-								"toMove": { "$type": "Cards:TargetIndex:" }
-							}
-						]
+						"$type": "Core.SpaceRestriction:CanMoveCard:",
+						"toMove": { "$type": "Cards:TargetIndex:" }
 					}
 				},
 				{
@@ -61,10 +56,7 @@
 		"recommendationRestrictions": [
 			"Adjacent to Card Fitting Restriction"
 		],
-		"adjacentCardRestriction": {
-			"$type": "Core.CardRestriction:AllOf:",
-			"elements":[ { "$type": "Core.CardRestriction:Character:" } ]
-		}
+		"adjacentCardRestriction": { "$type": "Core.CardRestriction:Character:" }
 	},
 	"c": 4,
 	"spellTypes": [

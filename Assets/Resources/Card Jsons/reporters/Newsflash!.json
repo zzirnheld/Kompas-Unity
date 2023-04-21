@@ -103,13 +103,8 @@
 					"blurb": "where for Newsflash! to move it starget",
 					"playerIndex": -2,
 					"spaceRestriction": {
-						"$type": "Core.SpaceRestriction:AllOf:",
-						"elements": [
-							{
-								"$type": "Core.SpaceRestriction:CanMoveCard:",
-								"toMove": { "$type": "Cards:TargetIndex:" }
-							}
-						]
+						"$type": "Core.SpaceRestriction:CanMoveCard:",
+						"toMove": { "$type": "Cards:TargetIndex:" }
 					}
 				},
 				{
@@ -124,13 +119,8 @@
 			"Adjacent to Card Fitting Restriction"
 		],
 		"adjacentCardRestriction": {
-			"$type": "Core.CardRestriction:AllOf:",
-			"elements":[
-				{
-					"$type": "Core.CardRestriction:Subtypes:",
-					"subtypes": [ "Reporter" ]
-				}
-			]
+			"$type": "Core.CardRestriction:Subtypes:",
+			"subtypes": [ "Reporter" ]
 		}
 	},
 	"c": 1,

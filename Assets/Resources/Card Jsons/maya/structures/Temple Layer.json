@@ -25,13 +25,8 @@
 			"Adjacent to Card Fitting Restriction"
 		],
 		"adjacentCardRestriction": {
-			"$type": "Core.CardRestriction:AllOf:",
-			"elements":[
-				{
-					"$type": "Core.CardRestriction:Subtypes:",
-					"subtypes": [ "Maya", "Structure" ]
-				}
-			]
+			"$type": "Core.CardRestriction:Subtypes:",
+			"subtypes": [ "Maya", "Structure" ]
 		}
 	},
 	"n": 0,

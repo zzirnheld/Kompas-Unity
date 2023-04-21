@@ -48,16 +48,11 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "card for Salvage Soul to discard",
 					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"blurb": "card for Salvage Soul to discard",
-						"$type": "Core.CardRestriction:AllOf:",
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Revenant" ]
-							}
-						]
+						"$type": "Core.CardRestriction:Subtypes:",
+						"subtypes": [ "Revenant" ]
 					}
 				},
 				{
@@ -77,13 +72,8 @@
 			"Adjacent to Card Fitting Restriction"
 		],
 		"adjacentCardRestriction": {
-			"$type": "Core.CardRestriction:AllOf:",
-			"elements":[
-				{
-					"$type": "Core.CardRestriction:Subtypes:",
-					"subtypes": [ "Ethereal" ]
-				}
-			]
+			"$type": "Core.CardRestriction:Subtypes:",
+			"subtypes": [ "Ethereal" ]
 		}
 	},
 	"c": 1,

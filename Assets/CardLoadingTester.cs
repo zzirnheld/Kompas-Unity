@@ -25,7 +25,7 @@ public class CardLoadingTester : MonoBehaviour
             }
             catch(NullReferenceException nre)
             {
-                Debug.Log($"Null ref {nre}");
+                //Debug.Log($"Null ref {nre}");
             }
             
         }

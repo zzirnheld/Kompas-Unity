@@ -64,13 +64,8 @@
 			"Adjacent to Card Fitting Restriction"
 		],
 		"adjacentCardRestriction": {
-			"$type": "Core.CardRestriction:AllOf:",
-			"elements":[
-				{
-					"$type": "Core.CardRestriction:Subtypes:",
-					"subtypes": [ "Invoker" ]
-				}
-			]
+			"$type": "Core.CardRestriction:Subtypes:",
+			"subtypes": [ "Invoker" ]
 		}
 	},
 	"c": 1,

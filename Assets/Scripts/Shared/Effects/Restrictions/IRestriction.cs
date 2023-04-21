@@ -19,7 +19,7 @@ namespace KompasCore.Effects
         {
             base.Initialize(initializationContext);
             foreach (var element in elements) element.Initialize(initializationContext);
-            if (elements.Count == 1) Debug.Log($"only one element on {GetType()} on eff of {initializationContext.effect}");
+            if (elements.Count == 1) Debug.LogWarning($"only one element on {GetType()} on eff of {initializationContext.source}");
         }
 
         public bool IsValid(Type item, IResolutionContext context)

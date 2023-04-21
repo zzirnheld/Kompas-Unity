@@ -21,10 +21,9 @@
 				{
 					"$type": "Subeffect:CardTarget:",
 					"toSearch": { "$type": "ManyCards:Board:" },
-					
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
+					"cardRestriction": {
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{ "$type": "Core.CardRestriction:Character:" },
 							{
@@ -50,10 +49,7 @@
 		"recommendationRestrictions": [
 			"Adjacent to Card Fitting Restriction"
 		],
-		"adjacentCardRestriction": {
-			"$type": "Core.CardRestriction:AllOf:",
-			"elements":[ { "$type": "Core.CardRestriction:Character:" } ]
-		}
+		"adjacentCardRestriction": { "$type": "Core.CardRestriction:Character:" }
 	},
 	"c": 1,
 	"spellTypes": [
