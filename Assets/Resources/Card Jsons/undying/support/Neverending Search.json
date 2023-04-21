@@ -24,9 +24,9 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Who to revive, then kill",
 					"toSearch": { "$type": "ManyCards:Discard:" },
 					"cardRestriction": {
-						"blurb": "Who to revive, then kill",
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
@@ -36,8 +36,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where to revive that character",
 					"spaceRestriction": {
-						"blurb": "where to revive that character",
+						"$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {

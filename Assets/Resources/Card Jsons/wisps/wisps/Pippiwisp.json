@@ -23,7 +23,9 @@
 				},
 				{
 					"$type": "Subeffect:SetXBoardRestriction:",
-					"cardRestriction": { "elements": [
+					"cardRestriction": {
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
 						{ "$type": "Core.CardRestriction:Enemy:" },
 						{
 							"$type": "Core.SpaceRestriction:AdjacentTo:",

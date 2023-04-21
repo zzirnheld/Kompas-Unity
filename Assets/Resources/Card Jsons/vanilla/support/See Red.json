@@ -19,10 +19,10 @@
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetAugmentedCard:"
 				},
 				{
-					"$type": "KompasServer.Effects.Hanging.NegateSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Hanging.Negate:",
 					"endCondition": "Augment Detached",
 					"triggerRestriction": {
 						"triggerRestrictionElements": [
@@ -35,7 +35,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.Hanging.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Hanging.ChangeCardStats:",
 					"wModifier": 6,
 					"endCondition": "Augment Detached",
 					"triggerRestriction": {

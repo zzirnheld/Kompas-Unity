@@ -49,7 +49,6 @@
 							"enemy": true
 						},
 						"$type": "Core.CardRestriction:AllOf:",
-						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
                             { "$type": "Core.CardRestriction:Character:" },
 							{
@@ -68,8 +67,9 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where Person to charm out another person",
 					"spaceRestriction": {
-						"blurb": "where Person to charm out another person",
+						"$type": "Core.SpaceRestriction:AllOf:",
                         "elements": [
                             { "$type": "Core.SpaceRestriction:Empty:" },
                             {
