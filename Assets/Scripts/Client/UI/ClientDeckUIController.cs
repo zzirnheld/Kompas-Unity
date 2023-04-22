@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace KompasClient.UI
 {
-	public class ClientDeckUIController : StackableGameLocationUIController
+	public class ClientDeckUIController : CircleStackableGameLocationUIController
 	{
 		public ClientDeckController deckController;
 

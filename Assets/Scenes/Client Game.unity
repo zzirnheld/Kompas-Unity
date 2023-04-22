@@ -3291,9 +3291,10 @@ MonoBehaviour:
   localXOffset: -2
   localXOffsetByRow: 0
   localZOffset: 2
-  discardController: {fileID: 116530641}
   bigCircleRadius: 0
   unitSize: 0
+  bufferBetweenArcsMultiplier: 1.1
+  discardController: {fileID: 116530641}
 --- !u!1 &118849580
 GameObject:
   m_ObjectHideFlags: 0
@@ -5126,14 +5127,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 242881461}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3, y: 0, z: 3}
+  m_LocalRotation: {x: 0, y: -0.38268343, z: 0, w: 0.92387956}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1546658926792687693}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -45, z: 0}
 --- !u!114 &242881463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5157,6 +5158,9 @@ MonoBehaviour:
   localXOffset: 2
   localXOffsetByRow: -4
   localZOffset: -2
+  bigCircleRadius: 10
+  unitSize: 2
+  bufferBetweenArcsMultiplier: 1.5
   deckController: {fileID: 2534840227050861151}
   deckCardBackObject: {fileID: 1413730457}
 --- !u!65 &242881464
@@ -9841,7 +9845,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 540378487}
   m_LocalRotation: {x: -0, y: -0.38268343, z: -0, w: 0.92387956}
-  m_LocalPosition: {x: 6, y: 0, z: -6}
+  m_LocalPosition: {x: 4.5, y: 0, z: -4.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -24274,7 +24278,7 @@ Transform:
   m_GameObject: {fileID: 1413730457}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1499788527183363863}
@@ -34770,6 +34774,9 @@ MonoBehaviour:
   localXOffset: 2
   localXOffsetByRow: -4
   localZOffset: -2
+  bigCircleRadius: 10
+  unitSize: 2
+  bufferBetweenArcsMultiplier: 1.1
   deckController: {fileID: 2534840227050861151}
   deckCardBackObject: {fileID: 1413730457}
 --- !u!65 &1973723542
@@ -36211,9 +36218,10 @@ MonoBehaviour:
   localXOffset: 2
   localXOffsetByRow: 0
   localZOffset: -2
-  discardController: {fileID: 540378492}
-  bigCircleRadius: 5
+  bigCircleRadius: 10
   unitSize: 2
+  bufferBetweenArcsMultiplier: 1.1
+  discardController: {fileID: 540378492}
 --- !u!4 &2079731169
 Transform:
   m_ObjectHideFlags: 0
@@ -38379,7 +38387,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2534840227050861150}
   m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
-  m_LocalPosition: {x: -6, y: 0, z: -6}
+  m_LocalPosition: {x: -4.5, y: 0, z: -4.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
