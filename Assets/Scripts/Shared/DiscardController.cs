@@ -29,13 +29,14 @@ namespace KompasCore.GameCore
 			bool successful = card.Remove(stackSrc);
 			if (successful)
 			{
-				Debug.Log($"Discarding {card.CardName}");
+				Debug.Log($"Discarding {card}");
 				discard.Add(card);
 				card.Controller = Owner;
 				card.GameLocation = this;
 				card.Position = null;
 				discardUIController.Refresh();
 			}
+			else Debug.LogWarning($"Failed to discard {card}");
 			return successful;
 		}
 

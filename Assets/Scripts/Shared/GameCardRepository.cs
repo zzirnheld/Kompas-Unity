@@ -63,6 +63,7 @@ namespace KompasCore.GameCore
 		}
 
 		protected TGameCard InstantiateGameCard<TGameCard>(string json, ConstructCard<TGameCard> cardConstructor, Action<SerializableCard> validation = null)
+			where TGameCard : GameCard
 		{
 			Debug.Log($"Loading {JsonPrettify(json)}");
 			TSerializableCard cardInfo;
@@ -85,7 +86,9 @@ namespace KompasCore.GameCore
 
 			var cardObj = Instantiate(CardPrefab);
 			var ctrl = GetCardController<TCardController>(cardObj);
-			return cardConstructor(cardInfo, effects.ToArray(), ctrl);
-		}
+			var card = cardConstructor(cardInfo, effects.ToArray(), ctrl);
+            cardObj.name = card.CardName + card.ID;
+            return card;
+        }
 	}
 }

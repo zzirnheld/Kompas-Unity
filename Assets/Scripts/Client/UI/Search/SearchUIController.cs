@@ -91,7 +91,7 @@ namespace KompasClient.UI.Search
 
 				if (shownCards.Count == 0)
 				{
-					Debug.Log($"None of {string.Join(", ", stackedCards)} are to be shown rn");
+					//Debug.Log($"None of {string.Join(", ", stackedCards)} are to be shown rn");
 					continue;
 				}
 

@@ -27,11 +27,14 @@ namespace KompasCore.UI
 		public override IEnumerable<GameObject> ShownObjects => Cards.Select(c => c.CardController.gameObject);
 		protected override bool ForceExpand => Cards.Any(c => c == CardViewController.FocusedCard);
 
-		private void TakeOwnershipOf(GameObject obj)
+        protected virtual bool Complain => false;
+
+        protected void TakeOwnershipOf(GameObject obj)
 		{
 			//Debug.Log($"{name} taking ownership of {obj}");
 			if (obj.transform.parent != transform) Debug.Log($"{name} Newly taking ownership of {obj}");
-			obj.transform.parent = transform;
+			if (Complain && !ShownObjects.Contains(obj)) Debug.LogWarning($"Taking ownership of object not shown");
+            obj.transform.parent = transform;
 			obj.SetActive(true);
 		}
 
@@ -48,6 +51,11 @@ namespace KompasCore.UI
 		{
 			TakeOwnership();
 			gameObject.SetActive(true);
+            Spread();
+        }
+
+		protected virtual void Spread()
+		{
 			int wrapLen = WrapLen(ShownObjects.Count());
 			int x = 0, y = 0;
 			foreach (var obj in ShownObjects)
