@@ -84,11 +84,24 @@ namespace KompasCore.UI
 
         protected override void Spread()
         {
+			if (unitSize == 0f || bufferBetweenArcsMultiplier == 0f)
+			{
+                Debug.LogError($"Unit size {unitSize} or buffer {bufferBetweenArcsMultiplier} is 0 for {GetType()}, so invalid. Base spread fallback");
+                base.Spread();
+                return;
+            }
+
             var arr = ShownObjects.ToArray();
             for (int objIdx = 0, numLoops = 1; objIdx < arr.Length; objIdx++, numLoops++)
 			{
 				// radius of the circle whose arc this is is numLoops * unitSize.
 				float smallCircleRadius = numLoops * unitSize * bufferBetweenArcsMultiplier;
+				if (smallCircleRadius == 0f)
+				{
+                	Debug.LogError($"Unit size {unitSize} or buffer {bufferBetweenArcsMultiplier} is 0 for {GetType()}, so small circle radius is {smallCircleRadius}, so invalid. Base spread fallback");
+                    base.Spread();
+                    return;
+                }
 
 				// an isoceles triangle is formed with side lengths bigCircleRadius, bigCircleRadius, and smallCircleRadius
 				// the angle of the arc we want is the matching angles of the isoceles triangle.

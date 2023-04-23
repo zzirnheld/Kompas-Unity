@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Guild Trainee",
-	"effText": "When a Trainer increases my N/E/W by X, also give me +X S.\nYou can swap me for a distinct Swordguild Warrior in your deck that costs less.",
+	"effText": "When a Warrior trains me, also give me +1 S.\nYou can swap me for a distinct Swordguild Warrior in your deck that costs less.",
 	"effects": [
 		{
 			"triggerData": {
@@ -22,6 +22,14 @@
 								"comparison": { "$type": "Relationships.Number:GreaterThan:" },
 								"other": { "$type": "Numbers:Constant:", "constant": 0 }
 							}
+						},
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CauseBefore:" },
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Warrior" ]
+							}
 						}
 					]
 				}
@@ -30,7 +38,7 @@
 				{ "$type": "Subeffect:TargetThis:" },
 				{
 					"$type": "Subeffect:ChangeCardStats:",
-					"sMultiplier": 1
+					"sModifier": 1
 				}
 			]
 		},
@@ -53,6 +61,14 @@
 								"comparison": { "$type": "Relationships.Number:GreaterThan:" },
 								"other": { "$type": "Numbers:Constant:", "constant": 0 }
 							}
+						},
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CauseBefore:" },
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Warrior" ]
+							}
 						}
 					]
 				}
@@ -61,7 +77,7 @@
 				{ "$type": "Subeffect:TargetThis:" },
 				{
 					"$type": "Subeffect:ChangeCardStats:",
-					"sMultiplier": 1
+					"sModifier": 1
 				}
 			]
 		},
@@ -84,6 +100,14 @@
 								"comparison": { "$type": "Relationships.Number:GreaterThan:" },
 								"other": { "$type": "Numbers:Constant:", "constant": 0 }
 							}
+						},
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CauseBefore:" },
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Warrior" ]
+							}
 						}
 					]
 				}
@@ -92,7 +116,7 @@
 				{ "$type": "Subeffect:TargetThis:" },
 				{
 					"$type": "Subeffect:ChangeCardStats:",
-					"sMultiplier": 1
+					"sModifier": 1
 				}
 			]
 		},

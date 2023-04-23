@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Guild Form Reviewer",
-	"effText": "When a Trainer increases my N/E/W, draw 1 card.",
+	"effText": "When a Warrior trains me, draw 1 card.",
 	"effects": [
 		{
 			"triggerData": {
@@ -21,6 +21,14 @@
 								"$type": "Core.NumberRestriction:Compare:",
 								"comparison": { "$type": "Relationships.Number:GreaterThan:" },
 								"other": { "$type": "Numbers:Constant:", "constant": 0 }
+							}
+						},
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CauseBefore:" },
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Warrior" ]
 							}
 						}
 					]
@@ -51,6 +59,14 @@
 								"comparison": { "$type": "Relationships.Number:GreaterThan:" },
 								"other": { "$type": "Numbers:Constant:", "constant": 0 }
 							}
+						},
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CauseBefore:" },
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Warrior" ]
+							}
 						}
 					]
 				}
@@ -80,6 +96,14 @@
 								"comparison": { "$type": "Relationships.Number:GreaterThan:" },
 								"other": { "$type": "Numbers:Constant:", "constant": 0 }
 							}
+						},
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CauseBefore:" },
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Warrior" ]
+							}
 						}
 					]
 				}
@@ -91,9 +115,9 @@
 			]
 		}
 	],
-	"n": 1,
-	"e": 1,
+	"n": 3,
+	"e": 3,
 	"s": 3,
-	"w": 1,
+	"w": 3,
 	"subtypeText": "Swordguild Warrior Bureaucrat"
 }

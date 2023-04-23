@@ -2,7 +2,6 @@
 using KompasCore.Effects;
 using KompasCore.Exceptions;
 using KompasCore.UI;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,7 +11,7 @@ namespace KompasCore.GameCore
 	{
 		public DiscardUIController discardUIController;
 
-		protected readonly List<GameCard> discard = new List<GameCard>();
+		protected readonly IList<GameCard> discard = new List<GameCard>();
 
 		public override CardLocation CardLocation => CardLocation.Discard;
 		public override IEnumerable<GameCard> Cards => discard;
@@ -49,17 +48,5 @@ namespace KompasCore.GameCore
 		}
 
 		public override int IndexOf(GameCard card) => discard.IndexOf(card);
-
-		public List<GameCard> CardsThatFit(Func<GameCardBase, bool> cardRestriction)
-		{
-			List<GameCard> cards = new List<GameCard>();
-
-			foreach (GameCard c in discard)
-			{
-				if (cardRestriction(c)) cards.Add(c);
-			}
-
-			return cards;
-		}
 	}
 }
