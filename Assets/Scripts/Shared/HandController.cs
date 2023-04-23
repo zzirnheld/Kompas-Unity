@@ -14,7 +14,10 @@ namespace KompasCore.GameCore
 
 		protected readonly List<GameCard> hand = new List<GameCard>();
 
-		public int HandSize => hand.Count;
+        public GameObject leftDummy;
+        public GameObject rightDummy;
+
+        public int HandSize => hand.Count;
 		public override int IndexOf(GameCard card) => hand.IndexOf(card);
 
 		public virtual bool Hand(GameCard card, IStackable stackSrc = null)
@@ -50,8 +53,10 @@ namespace KompasCore.GameCore
 
 		public void SpreadOutCards()
 		{
-			//iterate through children, set the z coord
-			for (int i = 0; i < hand.Count; i++)
+            leftDummy.transform.localPosition = new Vector3(2.25f * (((float)hand.Count / -2f) + -1f + 0.5f), 0, 0);
+            rightDummy.transform.localPosition = new Vector3(2.25f * (((float)hand.Count / -2f) + (float)hand.Count + 0.5f), 0, 0);
+            //iterate through children, set the z coord
+            for (int i = 0; i < hand.Count; i++)
 			{
 				hand[i].CardController.transform.parent = transform;
 				float offset = ((float)hand.Count / -2f) + (float)i + 0.5f;

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using KompasCore.GameCore;
 using UnityEngine;
@@ -11,7 +12,10 @@ namespace KompasClient.UI
 
         public HandController handController;
 
+        private const int MaxIterations = 10;
+        private const float Step = 0.25f;
         private int handCount = -1;
+        private int handDistance = 0;
 
 		private void Awake()
 		{
@@ -39,22 +43,16 @@ namespace KompasClient.UI
             handCount = handController.HandSize;
         }
 
-        private const int MaxIterations = 10;
-        private static readonly Vector3 UpStep = 0.5f * Vector3.up;
-
-        private int i = 0;
         private void PullCameraUp()
 		{
             Debug.Log("Updating height up");
             while (!IsHandAllVisible())
 			{
-				if (i++ > MaxIterations) break;
-                gridCamera.gameObject.transform.localPosition = i * Vector3.up;
+				if (handDistance++ > MaxIterations) break;
+                gridCamera.gameObject.transform.localPosition = handDistance * Step * Vector3.up;
                 Debug.Log("Moving up");
 			}
 		}
-
-        private static readonly Vector3 DownStep = 0.5f * Vector3.down;
         private const float MinHeight = 2f;
         private void PullCameraDown()
 		{
@@ -67,33 +65,43 @@ namespace KompasClient.UI
                     return;
                 }
 
-                i--;
-                gridCamera.gameObject.transform.localPosition = i * Vector3.up;
+                handDistance--;
+                gridCamera.gameObject.transform.localPosition = handDistance * Step * Vector3.up;
                 Debug.Log("Moving down");
             }
-                i++;
-                gridCamera.gameObject.transform.localPosition = i * Vector3.up;
+                handDistance++;
+                gridCamera.gameObject.transform.localPosition = handDistance * Step * Vector3.up;
         }
-
-        public BoxCollider debugCollider;
 
         private bool IsHandAllVisible()
 		{
-            var frustrumPlanes = GeometryUtility.CalculateFrustumPlanes(gridCamera);
+            Plane[] frustrumPlanes = GeometryUtility.CalculateFrustumPlanes(gridCamera);
 			//Invert the planes because intersect should not be considered valid
-            for (int i = 0; i < frustrumPlanes.Length; i++) frustrumPlanes[i] = frustrumPlanes[i].flipped;
+            //for (int i = 0; i < frustrumPlanes.Length; i++) frustrumPlanes[i] = frustrumPlanes[i].flipped;
 
-            Bounds bounds = new Bounds();
-            foreach(var c in handController.Cards.Select(c => c.CardController.gameCardViewController))
-			{
-                var boxCollider = c.cardModelController.boxCollider;
-				if (boxCollider == null) continue;
-				if (bounds == default) bounds = new Bounds(boxCollider.bounds.center, boxCollider.bounds.size);
-                else bounds.Encapsulate(boxCollider.bounds);
-			}
-            debugCollider.size = bounds.size;
-            Debug.Log($"Checking if {string.Join(", ", frustrumPlanes)} is within {bounds}");
-            return !GeometryUtility.TestPlanesAABB(frustrumPlanes, bounds);
+            var leftCollider = handController.leftDummy.GetComponent<BoxCollider>();
+            var rightCollider = handController.leftDummy.GetComponent<BoxCollider>();
+            return GeometryUtility.TestPlanesAABB(frustrumPlanes, leftCollider.bounds)
+				&& GeometryUtility.TestPlanesAABB(frustrumPlanes, rightCollider.bounds);
         }
+
+		/*
+        public BoxCollider debugCollider;
+
+        private List<GameObject> planes = new List<GameObject>();
+
+		private void VisualizePlanes(Plane[] frustrumPlanes)
+		{
+			foreach (var plane in planes) Destroy(plane);
+            for (int i = 0; i < 6; ++i)
+			{
+				GameObject p = GameObject.CreatePrimitive(PrimitiveType.Plane);
+				p.name = "Plane " + i.ToString();
+				p.transform.position = -frustrumPlanes[i].normal * frustrumPlanes[i].distance;
+				p.transform.rotation = Quaternion.FromToRotation(Vector3.up, frustrumPlanes[i].normal);
+                p.transform.parent = transform;
+                planes.Add(p);
+            }
+		}*/
     }
 }
