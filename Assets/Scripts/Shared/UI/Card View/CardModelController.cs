@@ -27,10 +27,12 @@ namespace KompasCore.UI
 		public GameObject[] charOnlyUI;
 		public GameObject[] nonCharOnlyUI;
 
-		/*[Tooltip("Every GameObject whose frame material needs to be updated (i.e. for friendly vs enemy color)")]
+        /*[Tooltip("Every GameObject whose frame material needs to be updated (i.e. for friendly vs enemy color)")]
 		public GameObject[] frameObjects;*/
 
-		public void ShowZoom(ZoomLevel zoomLevel, bool isChar)
+        public BoxCollider boxCollider;
+
+        public void ShowZoom(ZoomLevel zoomLevel, bool isChar)
 		{
 			//Debug.Log($"Showing zoom level {zoomLevel}");
 			zoomedOutAll.SetActive(zoomLevel == ZoomLevel.ZoomedOut);

@@ -27,11 +27,12 @@ namespace KompasClient.UI
 		protected override void Update()
 		{
             base.Update();
-            //if (handController.HandSize != handCount) UpdateCameraHeight();
+            if (handController.HandSize != handCount) UpdateCameraHeight();
         }
 
 		private void UpdateCameraHeight()
 		{
+			if (handController.HandSize == 0) return;
             Debug.Log("Updating height");
             if (handController.HandSize > handCount) PullCameraUp();
 			if (handController.HandSize < handCount) PullCameraDown();
@@ -40,14 +41,15 @@ namespace KompasClient.UI
 
         private const int MaxIterations = 10;
         private static readonly Vector3 UpStep = 0.5f * Vector3.up;
+
+        private int i = 0;
         private void PullCameraUp()
 		{
             Debug.Log("Updating height up");
-            int i = 0;
             while (!IsHandAllVisible())
 			{
 				if (i++ > MaxIterations) break;
-                gridCamera.gameObject.transform.Translate(UpStep);
+                gridCamera.gameObject.transform.localPosition = i * Vector3.up;
                 Debug.Log("Moving up");
 			}
 		}
@@ -57,36 +59,41 @@ namespace KompasClient.UI
         private void PullCameraDown()
 		{
             Debug.Log("Updating height down");
-            int i = 0;
 			while (IsHandAllVisible())
 			{
-				if (i++ > MaxIterations) break;
-				if (gridCamera.transform.position.y <= MinHeight)
+				if (gridCamera.transform.localPosition.y <= MinHeight)
 				{
-                    gridCamera.transform.position = MinHeight * Vector3.up;
+                    gridCamera.transform.localPosition = MinHeight * Vector3.up;
                     return;
                 }
-                gridCamera.gameObject.transform.Translate(DownStep);
+
+                i--;
+                gridCamera.gameObject.transform.localPosition = i * Vector3.up;
                 Debug.Log("Moving down");
             }
-            gridCamera.gameObject.transform.Translate(UpStep);
+                i++;
+                gridCamera.gameObject.transform.localPosition = i * Vector3.up;
         }
 
-		private bool IsHandAllVisible()
+        public BoxCollider debugCollider;
+
+        private bool IsHandAllVisible()
 		{
             var frustrumPlanes = GeometryUtility.CalculateFrustumPlanes(gridCamera);
 			//Invert the planes because intersect should not be considered valid
-            //for (int i = 0; i < frustrumPlanes.Length; i++) frustrumPlanes[i] = frustrumPlanes[i].flipped;
+            for (int i = 0; i < frustrumPlanes.Length; i++) frustrumPlanes[i] = frustrumPlanes[i].flipped;
 
             Bounds bounds = new Bounds();
             foreach(var c in handController.Cards.Select(c => c.CardController.gameCardViewController))
 			{
-                var boxCollider = c.gameObject.GetComponent<BoxCollider>();
+                var boxCollider = c.cardModelController.boxCollider;
 				if (boxCollider == null) continue;
-                bounds.Encapsulate(boxCollider.bounds);
+				if (bounds == default) bounds = new Bounds(boxCollider.bounds.center, boxCollider.bounds.size);
+                else bounds.Encapsulate(boxCollider.bounds);
 			}
+            debugCollider.size = bounds.size;
             Debug.Log($"Checking if {string.Join(", ", frustrumPlanes)} is within {bounds}");
-            return GeometryUtility.TestPlanesAABB(frustrumPlanes, bounds);
+            return !GeometryUtility.TestPlanesAABB(frustrumPlanes, bounds);
         }
     }
 }

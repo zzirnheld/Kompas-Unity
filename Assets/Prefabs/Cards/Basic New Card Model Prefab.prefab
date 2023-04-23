@@ -1661,6 +1661,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6641593389470770371, guid: a97280f447ca2a1019c040e0fe2e5cd0,
         type: 3}
+      propertyPath: boxCollider
+      value: 
+      objectReference: {fileID: 420882689431355649}
+    - target: {fileID: 6641593389470770371, guid: a97280f447ca2a1019c040e0fe2e5cd0,
+        type: 3}
       propertyPath: zoomedInWithTextAll
       value: 
       objectReference: {fileID: 3002491454831921652}
