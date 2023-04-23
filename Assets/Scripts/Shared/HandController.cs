@@ -53,8 +53,8 @@ namespace KompasCore.GameCore
 
 		public void SpreadOutCards()
 		{
-            leftDummy.transform.localPosition = new Vector3(2.25f * (((float)hand.Count / -2f) + -1f + 0.5f), 0, 0);
-            rightDummy.transform.localPosition = new Vector3(2.25f * (((float)hand.Count / -2f) + (float)hand.Count + 0.5f), 0, 0);
+            //leftDummy.transform.localPosition = new Vector3(2.25f * (((float)hand.Count / -2f) + -1f + 0.5f), 0, 0);
+            //rightDummy.transform.localPosition = new Vector3(2.25f * (((float)hand.Count / -2f) + (float)hand.Count + 0.5f), 0, 0);
             //iterate through children, set the z coord
             for (int i = 0; i < hand.Count; i++)
 			{

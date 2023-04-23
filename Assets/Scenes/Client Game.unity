@@ -18791,7 +18791,6 @@ MonoBehaviour:
   rawImage: {fileID: 1035165052}
   textureRectTransform: {fileID: 1035165051}
   handController: {fileID: 1921547573}
-  debugCollider: {fileID: 1921547575}
 --- !u!1 &1049328077
 GameObject:
   m_ObjectHideFlags: 0

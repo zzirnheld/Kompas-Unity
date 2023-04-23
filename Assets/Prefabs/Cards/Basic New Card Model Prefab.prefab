@@ -226,6 +226,10 @@ GameObject:
   - component: {fileID: 8794207661139705144}
   - component: {fileID: 2875369370555411164}
   - component: {fileID: 420882689431355649}
+  - component: {fileID: 4725681353513245149}
+  - component: {fileID: 568194619368525363}
+  - component: {fileID: 8679777234186298420}
+  - component: {fileID: 7736989218720918631}
   m_Layer: 0
   m_Name: Basic New Card Model Prefab
   m_TagString: Untagged
@@ -306,6 +310,11 @@ MonoBehaviour:
   zoomedInNoEffTextUI: {fileID: 231537150721727604}
   unzoomedUI: {fileID: 3551785326116938489}
   zoomedInWithTextUI: {fileID: 1970808999101389067}
+  outsideCardBoxColliders:
+  - {fileID: 4725681353513245149}
+  - {fileID: 568194619368525363}
+  - {fileID: 8679777234186298420}
+  - {fileID: 7736989218720918631}
 --- !u!114 &2461222595277313129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,6 +372,58 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 0.25, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &4725681353513245149
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2501930806235952257}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.01, y: 0.01, z: 0.01}
+  m_Center: {x: 0, y: 0.2, z: 1.1}
+--- !u!65 &568194619368525363
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2501930806235952257}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.01, y: 0.01, z: 0.01}
+  m_Center: {x: 0, y: 0.2, z: -1.1}
+--- !u!65 &8679777234186298420
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2501930806235952257}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.01, y: 0.01, z: 0.01}
+  m_Center: {x: -1.1, y: 0.2, z: 0}
+--- !u!65 &7736989218720918631
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2501930806235952257}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.01, y: 0.01, z: 0.01}
+  m_Center: {x: 1.1, y: 0.2, z: 0}
 --- !u!1 &3079151362526704576
 GameObject:
   m_ObjectHideFlags: 0

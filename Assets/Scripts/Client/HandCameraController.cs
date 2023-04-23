@@ -12,7 +12,7 @@ namespace KompasClient.UI
 
         public HandController handController;
 
-        private const int MaxIterations = 10;
+        private const int MaxIterations = 20;
         private const float Step = 0.25f;
         private int handCount = -1;
         private int handDistance = 0;
@@ -76,13 +76,19 @@ namespace KompasClient.UI
         private bool IsHandAllVisible()
 		{
             Plane[] frustrumPlanes = GeometryUtility.CalculateFrustumPlanes(gridCamera);
-			//Invert the planes because intersect should not be considered valid
-            //for (int i = 0; i < frustrumPlanes.Length; i++) frustrumPlanes[i] = frustrumPlanes[i].flipped;
+            //Invert the planes because intersect should not be considered valid
+            Plane[] invertedPlanes = new Plane[6];
+            for (int i = 0; i < frustrumPlanes.Length; i++) invertedPlanes[i] = frustrumPlanes[i].flipped;
 
-            var leftCollider = handController.leftDummy.GetComponent<BoxCollider>();
+            /*var leftCollider = handController.leftDummy.GetComponent<BoxCollider>();
             var rightCollider = handController.leftDummy.GetComponent<BoxCollider>();
             return GeometryUtility.TestPlanesAABB(frustrumPlanes, leftCollider.bounds)
-				&& GeometryUtility.TestPlanesAABB(frustrumPlanes, rightCollider.bounds);
+				&& GeometryUtility.TestPlanesAABB(frustrumPlanes, rightCollider.bounds);*/
+
+            return handController.Cards.Select(c => c.CardController.gameCardViewController)
+				.SelectMany(gcvc => gcvc.outsideCardBoxColliders)
+				.Select(collider => collider.bounds)
+                .All(bounds => GeometryUtility.TestPlanesAABB(frustrumPlanes, bounds));
         }
 
 		/*
