@@ -10,7 +10,7 @@ namespace KompasClient.UI
 		public RawImage rawImage;
 		public RectTransform textureRectTransform;
 
-		private void Update()
+		protected virtual void Update()
 		{
 			DoPointerStuff();
 		}
