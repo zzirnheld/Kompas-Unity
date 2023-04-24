@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Squid Ex Nihilo",
-	"effText": "Waterborn Waterdweller.\nWhen I attack, give me +6 W until the fight ends.",
+	"effText": "Waterborn Waterdweller.\nWhen I attack a summon, give me +6 W until the fight ends.",
 	"effects": [
 		{
 			"blurb": "Ex Nihilo",
@@ -13,6 +13,11 @@
 							"$type": "Core.TriggerRestriction:CardsMatch:",
 							"card": { "$type": "Cards:CardBefore:" },
 							"other": { "$type": "Cards:ThisCard:" }
+						},
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"cardRestriction": { "$type": "Core.CardRestriction:Summoned:" }
 						}
 					]
 				}
