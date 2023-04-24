@@ -10,7 +10,15 @@
 				"triggerCondition": "Turn Start",
 				"triggerRestriction":{
 					"elements": [
-						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" }
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Golem" ]
+							}
+						}
 					]
 				}
 			},

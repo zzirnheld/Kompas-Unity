@@ -192,6 +192,7 @@ golems/cores/Durability Core
 golems/cores/Speed Core
 golems/cores/Strength Core
 golems/cores/Contingency Core
+golems/cores/Modular Defense Core
 
 golems/Antiprecatium Golem
 golems/Clay Golem

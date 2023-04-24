@@ -1,15 +1,20 @@
 {
 	"cardType": 65,
-	"cardName": "Contingency Core",
-	"effText": "Recoverable.\nWhile equipped, activate this Golem.\nWhen this Golem dies, revive them where they were.",
+	"cardName": "Modular Defense Core",
+	"effText": "Recoverable.\nWhile equipped, activate this Golem. When they defend, swap me for a Golem Core in your hand.",
 	"effects": [
 		{
+			"blurb": "Defense Activate!",
 			"triggerData": {
 				"blurb": "Activate Golem",
 				"triggerCondition": "Augment Attached",
 				"triggerRestriction": {
 					"elements": [
-						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCard:" }
+						},
 						{
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 							"card": { "$type": "Cards:CardBefore:" },
@@ -23,11 +28,7 @@
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:AutoTargetCardIdentity:",
-					"subeffectCardIdentity": {
-						"$type": "Cards:AugmentedCard:",
-						"cardFromContext": { "$type": "Cards:ThisCard:" }
-					}
+					"$type": "Subeffect:TargetAugmentedCard:"
 				},
 				{
 					"$type": "Subeffect:Hanging.Activation:",
@@ -45,48 +46,53 @@
 			]
 		},
 		{
+			"blurb": "You Shouldn't Have Done That",
 			"triggerData": {
-				"triggerCondition": "Discard",
+				"blurb": "Golem Defense",
+				"triggerCondition": "Defend",
 				"triggerRestriction": {
 					"elements": [
-						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-						{ "$type": "Core.TriggerRestriction:EnemyTurn:" },
 						{
 							"$type": "Core.TriggerRestriction:CardsMatch:",
-							"card": {
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": {
 								"$type": "Cards:AugmentedCard:",
 								"ofThisCard": { "$type": "Cards:ThisCard:" }
-							},
-							"other": { "$type": "Cards:CardBefore:" }
-						},
-						{
-							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
-							
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
-									{
-										"$type": "Core.CardRestriction:Subtypes:",
-										"subtypes": [ "Golem" ]
-									}
-								]
-							},
-							"card": { "$type": "Cards:CardBefore:" }
+							}
 						}
 					]
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:AutoTargetCardIdentity:",
-					"subeffectCardIdentity": { "$type": "Cards:CardBefore:" }
+					"$type": "Subeffect:TargetThis:"
 				},
 				{
-					"$type": "Subeffect:AutoTargetSpaceIdentity:",
-					"spaceIdentity": { "$type": "Cards:CardBefore:" }
+					"$type": "Subeffect:TargetAugmentedCard:"
 				},
 				{
-					"$type": "Subeffect:Play:"
+					"$type": "Subeffect:CardTarget:",
+					"blurb": "Golem core for Modular Golem Cores to attach",
+					"toSearch": { "$type": "ManyCards:Hand:" },
+					"cardRestriction": {
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
+							{ "$type": "Core.CardRestriction:Augment:" },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Golem", "Core" ]
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:Hand:",
+					"targetIndex": -3
+				},
+				{
+					"$type": "Subeffect:Attach:",
+					"targetToAttachTo": -2,
+					"targetIndex": -1
 				}
 			]
 		}

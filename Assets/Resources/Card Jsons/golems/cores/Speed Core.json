@@ -1,7 +1,7 @@
 {
 	"cardType": 65,
 	"cardName": "Speed Core",
-	"effText": "Recoverable.\nWhile equipped, activate this character and give them +1 N.",
+	"effText": "Recoverable.\nWhile equipped, activate this Golem and give them +1 N.",
 	"effects": [
 		{
 			"triggerData": {
@@ -13,6 +13,14 @@
 							"$type": "Core.TriggerRestriction:CardsMatch:",
 							"card": { "$type": "Cards:CardBefore:" },
 							"other": { "$type": "Cards:ThisCard:" }
+						},
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Golem" ]
+							}
 						}
 					]
 				}

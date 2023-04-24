@@ -1,7 +1,7 @@
 {
 	"cardType": 65,
 	"cardName": "Durability Core",
-	"effText": "Recoverable.\nWhile equipped, activate this character and give them +5 E.",
+	"effText": "Recoverable.\nWhile equipped, activate this Golem and give them +5 E.",
 	"effects": [
 		{
 			"blurb": "Activate",
@@ -14,6 +14,17 @@
 							"$type": "Core.TriggerRestriction:CardsMatch:",
 							"card": { "$type": "Cards:CardBefore:" },
 							"other": { "$type": "Cards:ThisCard:" }
+						},
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": {
+								"$type": "Cards:AugmentedCard:",
+								"ofThisCard": { "$type": "Cards:ThisCard:" }
+							},
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Golem" ]
+							}
 						}
 					]
 				}

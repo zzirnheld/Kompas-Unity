@@ -1,7 +1,7 @@
 {
 	"cardType": 65,
 	"cardName": "Defense Core",
-	"effText": "Recoverable.\nWhile equipped, activate this character. When they defend, give them +4 EW.",
+	"effText": "Recoverable.\nWhile equipped, activate this Golem. When they defend, give them +4 EW.",
 	"effects": [
 		{
 			"blurb": "Defense Activate!",
@@ -14,6 +14,14 @@
 							"$type": "Core.TriggerRestriction:CardsMatch:",
 							"card": { "$type": "Cards:CardBefore:" },
 							"other": { "$type": "Cards:ThisCard:" }
+						},
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Golem" ]
+							}
 						}
 					]
 				}
@@ -50,6 +58,14 @@
 							"other": {
 								"$type": "Cards:AugmentedCard:",
 								"ofThisCard": { "$type": "Cards:ThisCard:" }
+							}
+						},
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Golem" ]
 							}
 						}
 					]
