@@ -12,15 +12,9 @@
 						{
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 							"card": { "$type": "Cards:CardBefore:" },
-							
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
-									{
-										"$type": "Core.CardRestriction:Subtypes:",
-										"subtypes": [ "Vessel" ]
-									}
-								]
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Vessel" ]
 							}
 						},
 						{
@@ -46,8 +40,6 @@
 		}
 	],
 	"c": 2,
-	"spellTypes": [
-		"Enchant"
-	],
+	"spellTypes": [ "Enchant" ],
 	"subtypeText": "Enchant"
 }
