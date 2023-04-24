@@ -262,11 +262,12 @@ namespace KompasCore.Cards
 		public virtual void SetStats(CardStats stats, IStackable stackSrc = null)
 		{
 			SetN(stats.n, stackSrc, onlyStatBeingSet: false);
-			SetE(stats.e, stackSrc, onlyStatBeingSet: false);
 			SetS(stats.s, stackSrc, onlyStatBeingSet: false);
 			SetW(stats.w, stackSrc, onlyStatBeingSet: false);
 			SetC(stats.c, stackSrc, onlyStatBeingSet: false);
 			SetA(stats.a, stackSrc, onlyStatBeingSet: false);
+			//E goes last in case the character should die.
+			SetE(stats.e, stackSrc, onlyStatBeingSet: false);
 		}
 
 		/// <summary>
@@ -276,9 +277,10 @@ namespace KompasCore.Cards
 		public virtual void SetCharStats(int n, int e, int s, int w, IStackable stackSrc = null)
 		{
 			SetN(n, stackSrc, onlyStatBeingSet: false);
-			SetE(e, stackSrc, onlyStatBeingSet: false);
 			SetS(s, stackSrc, onlyStatBeingSet: false);
 			SetW(w, stackSrc, onlyStatBeingSet: false);
+			//E goes last in case the character should die.
+			SetE(e, stackSrc, onlyStatBeingSet: false);
 		}
 
 		/// <summary>

@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Cultist of the Silent",
-	"effText": "When I die, discard->reshuffle me.",
+	"effText": "Restock.",
 	"effects": [
 		{
 			"triggerData": {

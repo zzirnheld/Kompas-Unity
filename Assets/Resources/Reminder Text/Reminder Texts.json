@@ -187,6 +187,10 @@
 		{
 			"keyword": "Repositionable",
 			"reminder": "Once each turn, you can teleport me to a space adjacent to a friendly."
+		},
+		{
+			"keyword": "Restock",
+			"reminder": "When I die, discard->reshuffle me."
 		}
 	]
 }

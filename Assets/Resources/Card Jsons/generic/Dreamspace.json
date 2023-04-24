@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Dreamspace",
-	"effText": "When I'm summoned, deck-summon a copy of me.",
+	"effText": "Restock.\nWhen I'm summoned, deck-summon a copy of me.",
 	"effects": [
 		{
 			"triggerData": {
@@ -33,8 +33,7 @@
 								"sameAs": { "$type": "Cards:TargetIndex:" }
 							}
 						]
-					},
-					"maxCanChoose": 1
+					}
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
