@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Slight Golemodifications",
-	"effText": "When turns start, tribute an S X Golem. Hand-> or discard-> summon an S <= X + 1 Golem, and pulse them.",
+	"effText": "Repositionable.\nWhen turns start, swap a friendly S X Golem here for an S <= X+1 one in your discard. The new Golem gets the old one's Cores.",
 	"effects": [
 		{
 			"blurb": "Modify Golem (Slightly)",
@@ -25,19 +25,21 @@
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Golem" ]
+							},
+							{
+								"$type": "Core.SpaceRestriction:InAOEOf:",
+								"card": { "$type": "Cards:ThisCard:" }
 							}
 						]
 					}
 				},
 				{
-					"$type": "Subeffect:SetXByTargetCost:"
-				},
-				{
-					"$type": "Subeffect:Discard:",
+					"$type": "Subeffect:SetXByTargetCost:",
 					"targetIndex": 0
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Discard:" },
 					"cardRestriction": {
 						"$type": "Core.CardRestriction:AllOf:",
 						"elements": [
@@ -47,51 +49,49 @@
 								"subtypes": [ "Golem" ]
 							},
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Hand", "Discard" ]
-							},
-							{
 								"$type": "Core.CardRestriction:CardValueFits:",
 								"cardValue": { "value": "Cost" },
 								"numberRestriction": {
 									"$type": "Core.NumberRestriction:Compare:",
 									"comparison": { "$type": "Relationships.Number:LessThanEqual:" },
-									"other": { "$type": "Numbers:EffectX:" }
+									"other": { "$type": "Numbers:EffectX:", "modifier": 1 }
 								}
-							}
-						]
-					},
-					"xModifier": 1
-				},
-				{
-					"$type": "Subeffect:SpaceTarget:",
-					"spaceRestriction": {
-						"$type": "Core.SpaceRestriction:AllOf:",
-						"elements": [
-							{ "$type": "Core.SpaceRestriction:Empty:" },
-							{
-								"$type": "Core.SpaceRestriction:CanPlayCard:",
-								"toPlay": { "$type": "Cards:TargetIndex:" }
 							}
 						]
 					}
 				},
 				{
+					"$type": "Subeffect:TargetAugments:",
+					"targetIndex": 0
+				},
+				{
+					"$type": "Subeffect:Discard:",
+					"targetIndex": 0
+				},
+				{
+					"$type": "Subeffect:TargetTargetsSpace:"
+				},
+				{
 					"$type": "Subeffect:Play:"
 				},
 				{
-					"$type": "Subeffect:Activate:"
+					"$type": "Subeffect:Attach:",
+					"targetToAttachTo": 1,
+					"targetIndex": -1
 				},
 				{
-					"$type": "Subeffect:Activate:",
-					"activate": false
+					"$type": "Subeffect:DeleteTarget:"
+				},
+				{
+					"$type": "Subeffect:LoopWhileHaveTargets:",
+					"jumpIndices": [ 7 ]
 				}
 			]
 		}
 	],
+	"keywords": [ "Repositionable" ],
 	"c": 3,
-	"spellTypes": [
-		"Enchant"
-	],
-	"subtypeText": "Enchant"
+	"spellTypes": [ "Radial" ],
+	"radius": 1,
+	"subtypeText": ""
 }

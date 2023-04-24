@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Linq;
 using KompasCore.GameCore;
 using UnityEngine;
@@ -14,6 +13,7 @@ namespace KompasClient.UI
 
         private const int MaxIterations = 20;
         private const float Step = 0.25f;
+        private const int MinHeight = (int)(2f / Step);
         private int handCount = -1;
         private int handDistance = 0;
 
@@ -49,11 +49,10 @@ namespace KompasClient.UI
             while (!IsHandAllVisible())
 			{
 				if (handDistance++ > MaxIterations) break;
-                gridCamera.gameObject.transform.localPosition = handDistance * Step * Vector3.up;
+                SetHeight();
                 Debug.Log("Moving up");
 			}
 		}
-        private const float MinHeight = 2f;
         private void PullCameraDown()
 		{
             Debug.Log("Updating height down");
@@ -61,24 +60,26 @@ namespace KompasClient.UI
 			{
 				if (gridCamera.transform.localPosition.y <= MinHeight)
 				{
-                    gridCamera.transform.localPosition = MinHeight * Vector3.up;
+                    handDistance = MinHeight;
                     return;
                 }
 
                 handDistance--;
-                gridCamera.gameObject.transform.localPosition = handDistance * Step * Vector3.up;
+                SetHeight();
                 Debug.Log("Moving down");
             }
-                handDistance++;
-                gridCamera.gameObject.transform.localPosition = handDistance * Step * Vector3.up;
+			handDistance++;
+			SetHeight();
         }
+
+		private void SetHeight() => gridCamera.gameObject.transform.localPosition = handDistance * Step * Vector3.up;
 
         private bool IsHandAllVisible()
 		{
             Plane[] frustrumPlanes = GeometryUtility.CalculateFrustumPlanes(gridCamera);
             //Invert the planes because intersect should not be considered valid
-            Plane[] invertedPlanes = new Plane[6];
-            for (int i = 0; i < frustrumPlanes.Length; i++) invertedPlanes[i] = frustrumPlanes[i].flipped;
+            //Plane[] invertedPlanes = new Plane[6];
+            //for (int i = 0; i < frustrumPlanes.Length; i++) invertedPlanes[i] = frustrumPlanes[i].flipped;
 
             /*var leftCollider = handController.leftDummy.GetComponent<BoxCollider>();
             var rightCollider = handController.leftDummy.GetComponent<BoxCollider>();

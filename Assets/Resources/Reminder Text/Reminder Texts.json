@@ -183,6 +183,10 @@
 		{
 			"keyword": "Mask",
 			"reminder": "Characters can only wear one Mask."
+		},
+		{
+			"keyword": "Repositionable",
+			"reminder": "Once each turn, you can teleport me to a space adjacent to a friendly."
 		}
 	]
 }

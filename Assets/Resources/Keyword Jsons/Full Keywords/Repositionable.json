@@ -1,0 +1,35 @@
+{
+	"blurb":"Repositionable",
+	"activationRestriction":{
+		"activationRestrictionArray":[
+			"Default"
+		]
+	},
+	"subeffects":[
+		{
+			"$type":"Subeffect:TargetThis:"
+		},
+		{
+			"$type":"Subeffect:SpaceTarget:",
+			"blurb":"to Linewalk to",
+			"spaceRestriction":
+			{
+				"$type": "Core.SpaceRestriction:AllOf:",
+				"elements": [
+                    { "$type": "Core.SpaceRestriction:Empty:" },
+					{
+						"$type": "Core.SpaceRestriction:CanMoveCard:",
+						"toMove": { "$type": "Cards:TargetIndex:" }
+					},
+                    {
+                        "$type": "Core.SpaceRestriction:AdjacentTo:",
+                        "cardRestriction": { "$type": "Core.CardRestriction:Friendly:" }
+                    }
+				]
+			}
+		},
+		{
+			"$type":"Subeffect:Move:"
+		}
+	]
+}

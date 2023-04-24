@@ -34,3 +34,4 @@ Trample
 Masquerade
 Modular
 Basic Modular
+Repositionable
