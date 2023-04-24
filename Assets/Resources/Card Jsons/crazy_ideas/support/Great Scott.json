@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Great Scott",
-	"effText": "The first time each turn a character moves, rummage. Move the character 1 space.",
+	"effText": "When an enemy moves normally, hand->discard a card and move them 1 space. 1 turn later, draw 1 card.",
 	"effects": [
 		{
 			"blurb": "SCARTY, THE MAR!!",
@@ -10,7 +10,7 @@
 				"triggerRestriction": {
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-						{ "$type": "Core.TriggerRestriction:MaxPerTurn:" },
+						{ "$type": "Core.TriggerRestriction:Normally:" },
 						{
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 							"card": { "$type": "Cards:CardBefore:" },
@@ -21,15 +21,20 @@
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:Keyword:",
-					"keyword": "Rummage"
+					"$type": "Subeffect:CardTarget:",
+					"blurb": "WHAT ARE WE DISCARDING, SCARMY!?",
+					"toSearch": { "$type": "ManyCards:Hand:" },
+					"cardRestriction": { "$type": "Core.CardRestriction:AlwaysValid:" }
+				},
+				{
+					"$type": "Subeffect:Discard:"
 				},
 				{
 					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
-					"blurb": "Great Scott, Marty, what card are we moving!?",
+					"blurb": "WHERE ARE WE MOVING THAT CARD THEY MOVED!?",
 					"spaceRestriction": {
 						"$type": "Core.SpaceRestriction:AllOf:",
 						"elements": [
@@ -47,14 +52,24 @@
 				},
 				{
 					"$type": "Subeffect:Move:"
+				},
+				{
+					"$type": "Subeffect:Hanging.Delay:",
+					"numTimesToDelay": 0,
+					"jumpIndices": [ 6 ],
+					"fallOffCondition": "",
+					"endCondition": "Turn Start"
+				},
+				{
+					"$type": "Subeffect:Draw:"
 				}
 			]
 		}
 	],
-	"n": 1,
-	"e": 4,
-	"s": 5,
-	"w": 4,
+	"n": 3,
+	"e": 5,
+	"s": 7,
+	"w": 5,
 	"unique": true,
-	"subtypeText": "Crazy Doctor"
+	"subtypeText": "Crazy Person"
 }

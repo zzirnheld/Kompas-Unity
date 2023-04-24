@@ -11,7 +11,8 @@
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" }
 					]
-				}
+				},
+				"orderPriority": -100
 			},
 			"subeffects": [
 				{

@@ -11,7 +11,8 @@
 				},
 				{ "$type": "Core.TriggerRestriction:MaxPerStack:" }
 			]
-		}
+		},
+		"orderPriority": -100
 	},
 	"subeffects":[
 		{
