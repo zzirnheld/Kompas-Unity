@@ -17,7 +17,9 @@ namespace KompasClient.UI
         private int handCount = -1;
         private int handDistance = 0;
 
-		private void Awake()
+        //protected override bool DebugControl => true;
+
+        private void Awake()
 		{
 			Main = this;
 			Debug.Log($"rawImage {textureRectTransform.rect}");

@@ -10,7 +10,9 @@ namespace KompasClient.UI
 		public RawImage rawImage;
 		public RectTransform textureRectTransform;
 
-		protected virtual void Update()
+        protected virtual bool DebugControl => false;
+
+        protected virtual void Update()
 		{
 			DoPointerStuff();
 		}
@@ -23,12 +25,12 @@ namespace KompasClient.UI
 
 			//I cast the ray from the camera which rends the texture
 			Ray ray = gridCamera.ViewportPointToRay(new Vector3(viewportClick.x, viewportClick.y, 0));
-			//Debug.Log($"Mouse at {position}, net {localClickUnnorm}, Normalized to {localClick}, ray {ray}");
+			if (DebugControl) Debug.Log($"Mouse at {viewportClick}, ray {ray}");
 
 			if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
 			{
 				var cardCtrl = hit.collider.gameObject.GetComponent<CardMouseController>();
-				//Debug.Log($"{hit.collider.gameObject.name}, card control? {cardCtrl}");
+				if (DebugControl) Debug.Log($"{hit.collider.gameObject.name}, card control? {cardCtrl}");
 				if (cardCtrl == null) return;
 				if (Input.GetMouseButtonUp(0)) cardCtrl.OnMouseUp();
 				else cardCtrl.OnMouseOver();
