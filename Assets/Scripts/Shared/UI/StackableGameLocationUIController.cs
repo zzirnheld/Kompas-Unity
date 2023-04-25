@@ -84,9 +84,9 @@ namespace KompasCore.UI
 
         protected override void Spread()
         {
-			if (unitSize == 0f || bufferBetweenArcsMultiplier == 0f)
+			if (unitSize == 0f || bufferBetweenArcsMultiplier == 0f || bigCircleRadius == 0f)
 			{
-                Debug.LogError($"Unit size {unitSize} or buffer {bufferBetweenArcsMultiplier} is 0 for {GetType()}, so invalid. Base spread fallback");
+                Debug.LogError($"Unit size {unitSize} or buffer {bufferBetweenArcsMultiplier} or big circle radius {bigCircleRadius} is 0 for {GetType()}, so invalid. Base spread fallback");
                 base.Spread();
                 return;
             }
@@ -106,13 +106,20 @@ namespace KompasCore.UI
 				// an isoceles triangle is formed with side lengths bigCircleRadius, bigCircleRadius, and smallCircleRadius
 				// the angle of the arc we want is the matching angles of the isoceles triangle.
 				// so via trig, that's given by:
-				double arcSpreadRadians = Math.Acos(smallCircleRadius / (2d * bigCircleRadius));
+				double arcSpreadRadians = Math.Acos(smallCircleRadius / (2f * bigCircleRadius));
 				// note: that angle is off from the line between the smaller and larger circle's centers
 
 				// the arc that we want has a chord of length unitSize.
 				// this forms an isoceles triangle with side lengths smallCircleRadius, smallCircleRadius, and unitSize
 				// so the angle of the arc we want is given
-				double arcSegmentRadians = 2d * Math.Asin(unitSize / (2d * smallCircleRadius));
+				double arcSegmentRadians = 2d * Math.Asin(unitSize / (2f * smallCircleRadius));
+
+				if (arcSpreadRadians == double.NaN || arcSegmentRadians == double.NaN)
+				{
+                    Debug.LogError($"Radians are NaN! One of those was invalid {arcSpreadRadians} or {arcSegmentRadians}");
+                    base.Spread();
+                    return;
+                }
 
 				//to get the number of cards we can fit on that arc, we need to take the floor of the arc spread / arc segment angles
 				int cardsOnArc = (int)((2d * arcSpreadRadians) / arcSegmentRadians);
