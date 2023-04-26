@@ -191,6 +191,14 @@
 		{
 			"keyword": "Restock",
 			"reminder": "When I die, discard->reshuffle me."
+		},
+		{
+			"keyword": "hurt",
+			"reminder": "A character with less E than printed (the E number is red)."
+		},
+		{
+			"keyword": "heal",
+			"reminder": "Increase a character's E to its starting value (the E number is black). If the character has more E than they started with, nothing happens."
 		}
 	]
 }

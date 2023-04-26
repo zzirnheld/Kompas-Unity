@@ -1,10 +1,10 @@
 {
 	"cardType": 67,
 	"cardName": "Custodian of the Forest",
-	"effText": "When you hurt an adjacent friendly summon, heal it.",
+	"effText": "When you hurt a summon, heal it.",
 	"effects": [
 		{
-			"blurb": "Graft Healing",
+			"blurb": "Nurse to health",
 			"triggerData": {
 				"triggerCondition": "E Change",
 				"triggerRestriction": {

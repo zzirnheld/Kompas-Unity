@@ -10,18 +10,18 @@
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{
-							"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
-							"number": { "$type": "Numbers:TriggerX:" },
-							"restriction": {
-								"$type": "Core.NumberRestriction:Compare:",
-								"comparison": { "$type": "Relationships.Number:GreaterThan:" },
-								"other": { "$type": "Numbers:Constant:", "constant": 0 }
-							}
-						},
-						{
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 							"card": { "$type": "Cards:CardBefore:" },
 							"cardRestriction": { "$type": "Core.CardRestriction:Hurt:" }
+						},
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardAfter:" },
+							"cardRestriction": 
+							{
+								"$type": "Core.CardRestriction:Not:",
+								"negated": { "$type": "Core.CardRestriction:Hurt:" }
+							}
 						}
 					]
 				}
