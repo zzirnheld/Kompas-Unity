@@ -7,8 +7,10 @@
 			"blurb": "What does this book say...",
 			"activationRestriction": {
 				"activationRestrictionArray": [
-					"Max Times Per Turn",
 					"Default"
+				],
+				"elements": [
+					{ "$type": "Core.GamestateRestriction:MaxPerTurn:" }
 				]
 			},
 			"subeffects": [

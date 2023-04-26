@@ -6,10 +6,11 @@
 		{
 			"activationRestriction": {
 				"activationRestrictionArray": [
-					"Max Times Per Turn",
 					"Default"
 				],
-				"maxTimes": 1
+				"elements": [
+					{ "$type": "Core.GamestateRestriction:MaxPerTurn:" }
+				]
 			},
 			"subeffects": [
 				{

@@ -11,7 +11,7 @@
 				"triggerRestriction": {
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-						{ "$type": "Core.TriggerRestriction:MaxPerRound:" },
+						{ "$type": "Core.GamestateRestriction:MaxPerRound:" },
 						{
 							"$type": "Core.TriggerRestriction:PlayersMatch:",
 							"firstPlayer": { "$type": "Players:TriggeringPlayer:" },

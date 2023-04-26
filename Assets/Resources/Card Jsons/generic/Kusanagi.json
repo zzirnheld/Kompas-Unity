@@ -16,7 +16,7 @@
 								"ofThisCard": { "$type": "Cards:ThisCardNow:" }
 							}
 						},
-						{ "$type": "Core.TriggerRestriction:MaxPerRound:" }
+						{ "$type": "Core.GamestateRestriction:MaxPerRound:" }
 					]
 				}
 			},

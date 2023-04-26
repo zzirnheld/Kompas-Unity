@@ -14,7 +14,7 @@
 							"card": { "$type": "Cards:ThisCardNow:" },
 							"other": { "$type": "Cards:CardBefore:" }
 						},
-						{ "$type": "Core.TriggerRestriction:MaxPerTurn:" },
+						{ "$type": "Core.GamestateRestriction:MaxPerTurn:" },
 						{
 							"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
 							"number": { "$type": "Numbers:TriggerX:" },

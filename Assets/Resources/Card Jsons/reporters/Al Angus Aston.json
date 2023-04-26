@@ -7,8 +7,10 @@
 			"blurb": "SHOW ME 2 CARDS",
 			"activationRestriction": {
 				"activationRestrictionArray": [
-					"Max Times Per Turn",
 					"Default"
+				],
+				"elements": [
+					{ "$type": "Core.GamestateRestriction:MaxPerTurn:" }
 				]
 			},
 			"subeffects": [

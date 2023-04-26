@@ -14,7 +14,7 @@
 							"card": { "$type": "Cards:CardBefore:" },
 							"other": { "$type": "Cards:ThisCardNow:" }
 						},
-						{ "$type": "Core.TriggerRestriction:MaxPerStack:" },
+						{ "$type": "Core.GamestateRestriction:MaxPerStack:" },
 						{
 							"$type": "Core.TriggerRestriction:PlayersMatch:",
 							"firstPlayer": { "$type": "Players:TriggeringPlayer:" },

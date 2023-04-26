@@ -19,13 +19,11 @@ namespace KompasCore.Effects
 		public const string FriendlyTurn = "Friendly Turn";
 		public const string NothingHappening = "Nothing Happening";
 
-		public const string TimesPerTurn = "Max Times Per Turn";
-
 		public const string Default = "Default";
 		public static readonly string[] DefaultRestrictions = { ControllerActivates, NotNegated, InPlay, NotCurrentlyActivated, FriendlyTurn, NothingHappening };
 
 		public static readonly string[] AtAllRestrictions =
-			{ TimesPerTurn, FriendlyTurn, NotNegated, InPlay,  NotCurrentlyActivated };
+			{ FriendlyTurn, NotNegated, InPlay,  NotCurrentlyActivated };
 
 		public int maxTimes = 1;
 		private readonly List<string> ActivationRestrictions = new List<string>();
@@ -51,8 +49,6 @@ namespace KompasCore.Effects
 		{
 			Never => false,
 			Default => true,
-
-			TimesPerTurn => Effect.TimesUsedThisTurn < maxTimes,
 
 			FriendlyTurn => Effect.Game.TurnPlayer == activator,
 

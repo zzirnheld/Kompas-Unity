@@ -7,10 +7,10 @@
 			"blurb": "Recruit",
 			"activationRestriction": {
 				"activationRestrictionArray": [
-					"Max Times Per Turn",
 					"Default"
 				],
 				"elements": [
+					{ "$type": "Core.GamestateRestriction:MaxPerTurn:" },
 					{
 						"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 						"anyOf": {

@@ -14,7 +14,7 @@
 							"$type": "Core.SpaceRestriction:AdjacentTo:",
 							"space": { "$type": "Cards:ThisCardNow:" }
 						},
-						{ "$type": "Core.TriggerRestriction:MaxPerTurn:", "max": 2 },
+						{ "$type": "Core.GamestateRestriction:MaxPerTurn:", "max": 2 },
 						{
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 							"card": { "$type": "Cards:CardBefore:" },

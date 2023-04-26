@@ -7,10 +7,11 @@
 			"blurb": "Master Runelore",
 			"activationRestriction": {
 				"activationRestrictionArray": [
-					"Max Times Per Turn",
 					"Default"
 				],
-				"maxTimes": 3
+				"elements": [
+					{ "$type": "Core.GamestateRestriction:MaxPerTurn:", "max": 3 }
+				]
 			},
 			"subeffects": [
 				{

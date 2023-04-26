@@ -13,7 +13,7 @@
 							"$type": "Core.SpaceRestriction:InAOEOf:",
 							"card": { "$type": "Cards:ThisCardNow:" }
 						},
-						{ "$type": "Core.TriggerRestriction:MaxPerStack:" },
+						{ "$type": "Core.GamestateRestriction:MaxPerStack:" },
 						{ "$type": "Core.TriggerRestriction:Normally:" }
 					]
 				}
