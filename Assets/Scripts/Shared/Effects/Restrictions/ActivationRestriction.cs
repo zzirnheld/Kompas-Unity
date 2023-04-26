@@ -20,19 +20,14 @@ namespace KompasCore.Effects
 		public const string NothingHappening = "Nothing Happening";
 
 		public const string TimesPerTurn = "Max Times Per Turn";
-		public const string TimesPerRound = "Max Times Per Round";
-		public const string EnemyTurn = "Enemy Turn";
-		public const string Location = "Location";
 
 		public const string Default = "Default";
 		public static readonly string[] DefaultRestrictions = { ControllerActivates, NotNegated, InPlay, NotCurrentlyActivated, FriendlyTurn, NothingHappening };
 
 		public static readonly string[] AtAllRestrictions =
-			{ TimesPerTurn, TimesPerRound, FriendlyTurn, EnemyTurn, NotNegated, InPlay, Location, NotCurrentlyActivated };
+			{ TimesPerTurn, FriendlyTurn, NotNegated, InPlay,  NotCurrentlyActivated };
 
 		public int maxTimes = 1;
-		public int location = (int)CardLocation.Board;
-
 		private readonly List<string> ActivationRestrictions = new List<string>();
 		public string[] activationRestrictionArray = null;
 
@@ -58,13 +53,10 @@ namespace KompasCore.Effects
 			Default => true,
 
 			TimesPerTurn => Effect.TimesUsedThisTurn < maxTimes,
-			TimesPerRound => Effect.TimesUsedThisRound < maxTimes,
 
 			FriendlyTurn => Effect.Game.TurnPlayer == activator,
-			EnemyTurn => Effect.Game.TurnPlayer != activator,
 
 			InPlay => Effect.Source.Location == CardLocation.Board,
-			Location => Effect.Source.Location == (CardLocation)location,
 
 			ControllerActivates => activator == Card.Controller,
 

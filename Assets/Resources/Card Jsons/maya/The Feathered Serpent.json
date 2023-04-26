@@ -6,12 +6,20 @@
 		{
 			"blurb": "Death Begets Life",
 			"activationRestriction":{
-				"activationRestrictionArray":[
-					"Location",
+				"activationRestrictionArray": [
 					"Controller Activates",
 					"Not Negated"
 				],
-				"location":2
+				"elements": [
+					{
+						"$type": "Core.GamestateRestriction:CardFitsRestriction:",
+						"card": { "$type": "Cards:ThisCardNow:" },
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:Location:",
+							"locations": [ "Discard" ]
+						}
+					}
+				]
 			},
 			"subeffects": [
 				{

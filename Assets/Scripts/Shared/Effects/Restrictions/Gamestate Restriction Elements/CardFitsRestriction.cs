@@ -1,3 +1,7 @@
+using System.Collections.Generic;
+using KompasCore.Cards;
+using KompasCore.Effects.Identities;
+
 namespace KompasCore.Effects.Restrictions.GamestateRestrictionElements
 {
     public class CardFitsRestriction : TriggerRestrictionBase

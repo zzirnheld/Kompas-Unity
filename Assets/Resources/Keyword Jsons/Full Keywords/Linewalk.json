@@ -6,7 +6,7 @@
 		],
 		"elements": [
 			{
-				"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+				"$type": "Core.GamestateRestriction:CardFitsRestriction:",
 				"card": { "$type": "Cards:ThisCardNow:" },
 				"cardRestriction": {
 					"$type": "Core.CardRestriction:CardValueFits:",
