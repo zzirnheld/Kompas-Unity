@@ -30,7 +30,7 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 		{
 			bool IsValidMoveSpace(Space space) => card.MovementRestriction.IsValidEffectMove(space, context);
 
-			if (destination != null) return IsValidMoveSpace(destination.From(context, default));
+			if (destination != null) return IsValidMoveSpace(destination.From(context));
 			else if (spaceRestrictionSubeffectIndex != default)
 			{
 				if (InitializationContext.effect.Subeffects[spaceRestrictionSubeffectIndex] is not SpaceTarget spaceTargetSubeffect)

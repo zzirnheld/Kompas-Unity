@@ -19,11 +19,11 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 
 		protected override bool IsValidLogic(GameCardBase card, IResolutionContext context)
 		{
-			var controller = player.From(context, default);
+			var controller = player.From(context);
 			bool IsValidEffectPlay(Space space) => card.PlayRestriction.IsValidEffectPlay(space, InitializationContext.effect, controller, context, ignoring: ignoring);
 
 			if (destination == null) return Space.Spaces.Any(IsValidEffectPlay);
-			else return IsValidEffectPlay(destination.From(context, default));
+			else return IsValidEffectPlay(destination.From(context));
 		}
 	}
 }

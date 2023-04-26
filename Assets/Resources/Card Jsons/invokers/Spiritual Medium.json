@@ -6,10 +6,8 @@
 		{
 			"blurb": "I hear a Spirit!",
 			"activationRestriction": {
-				"activationRestrictionArray": [
-					"Default"
-				],
 				"elements": [
+					{ "$type": "Core.PlayerRestriction:DefaultActivationRestrictions:" },
 					{ "$type": "Core.GamestateRestriction:MaxPerTurn:" }
 				]
 			},

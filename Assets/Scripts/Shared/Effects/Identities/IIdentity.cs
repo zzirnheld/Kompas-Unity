@@ -16,6 +16,10 @@ namespace KompasCore.Effects.Identities
 		public static ReturnType From<ReturnType>(this IIdentity<ReturnType> identity,
 			TriggeringEventContext triggeringContext, IResolutionContext resolutionContext)
 				=> identity.From(IResolutionContext.Dummy(triggeringContext), resolutionContext);
+
+		public static ReturnType From<ReturnType>(this IIdentity<ReturnType> identity,
+			IResolutionContext resolutionContext)
+				=> identity.From(resolutionContext, default);
 	}
 
 	/// <summary>

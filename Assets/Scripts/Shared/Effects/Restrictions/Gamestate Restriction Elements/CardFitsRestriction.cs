@@ -4,7 +4,7 @@ using KompasCore.Effects.Identities;
 
 namespace KompasCore.Effects.Restrictions.GamestateRestrictionElements
 {
-    public class CardFitsRestriction : TriggerRestrictionBase
+    public class CardFitsRestriction : GamestateRestrictionBase
     {
         public IRestriction<GameCardBase> cardRestriction;
         public IIdentity<GameCardBase> card;
@@ -20,10 +20,10 @@ namespace KompasCore.Effects.Restrictions.GamestateRestrictionElements
             if (AllNull(card, anyOf)) throw new System.ArgumentException($"No card to check against restriction in {initializationContext.effect}");
         }
 
-        protected override bool IsValidLogic(TriggeringEventContext context, IResolutionContext secondaryContext)
+        protected override bool IsValidLogic(IResolutionContext context)
         {
-            var card = this.card.From(context, secondaryContext);
-            return cardRestriction.IsValid(card, ContextToConsider(context, secondaryContext));
+            var card = this.card.From(context);
+            return cardRestriction.IsValid(card, context);
         }
     }
 }

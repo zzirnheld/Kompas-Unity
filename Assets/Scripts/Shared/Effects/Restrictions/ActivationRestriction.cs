@@ -12,18 +12,7 @@ namespace KompasCore.Effects
 
 		public const string Never = "Never";
 
-		public const string ControllerActivates = "Controller Activates";
-		public const string NotNegated = "Not Negated";
-		public const string InPlay = "In Play";
-		public const string NotCurrentlyActivated = "Not Currently Activated";
-		public const string FriendlyTurn = "Friendly Turn";
-		public const string NothingHappening = "Nothing Happening";
-
 		public const string Default = "Default";
-		public static readonly string[] DefaultRestrictions = { ControllerActivates, NotNegated, InPlay, NotCurrentlyActivated, FriendlyTurn, NothingHappening };
-
-		public static readonly string[] AtAllRestrictions =
-			{ FriendlyTurn, NotNegated, InPlay,  NotCurrentlyActivated };
 
 		public int maxTimes = 1;
 		private readonly List<string> ActivationRestrictions = new List<string>();
@@ -37,8 +26,6 @@ namespace KompasCore.Effects
 			else
 			{
 				ActivationRestrictions.AddRange(activationRestrictionArray);
-				if (activationRestrictionArray.Contains("Default"))
-					ActivationRestrictions.AddRange(DefaultRestrictions);
 
 				Debug.Log($"Initializing activation restriction for {Card.CardName} " +
 					$"with restrictions: {string.Join(", ", ActivationRestrictions)}");
@@ -49,17 +36,6 @@ namespace KompasCore.Effects
 		{
 			Never => false,
 			Default => true,
-
-			FriendlyTurn => Effect.Game.TurnPlayer == activator,
-
-			InPlay => Effect.Source.Location == CardLocation.Board,
-
-			ControllerActivates => activator == Card.Controller,
-
-			NotNegated => !Effect.Negated,
-
-			NotCurrentlyActivated => !Effect.Game.StackEntries.Any(e => e == Effect),
-			NothingHappening => Effect.Game.NothingHappening,
 
 			_ => throw new System.ArgumentException($"Invalid activation restriction {r}")
 		};
@@ -85,7 +61,6 @@ namespace KompasCore.Effects
 			return base.IsValidLogic(item, context) && IsValidActivation(item);
 		}
 
-		public bool IsPotentiallyValidActivation(Player activator)
-			=> IsGameSetUp() && ActivationRestrictions.Intersect(AtAllRestrictions).All(r => IsRestrictionValid(r, activator));
-	}
+        public bool IsPotentiallyValidActivation(Player activator) => throw new System.NotImplementedException(); //TODO with strings to type names?
+    }
 }

@@ -14,7 +14,6 @@ namespace KompasCore.Effects.Restrictions
 		bool IsValid(IResolutionContext context);
 	}
 
-	//TODO make this accept context by default, and have another intermediate base class that gets rid of the context (so can pass context to child restrictions)
 	public abstract class GamestateRestrictionBase : ContextInitializeableBase, IGamestateRestriction, IRestriction<TriggeringEventContext>, IRestriction<Player>
 	{
 		public bool IsValid(TriggeringEventContext item, IResolutionContext context) => IsValid(context);
@@ -56,6 +55,20 @@ namespace KompasCore.Effects.Restrictions
 
 			protected override bool IsValidLogic(IResolutionContext context)
 				=> elements.All(r => r.IsValid(context));
+		}
+
+		public class Not : GamestateRestrictionBase
+		{
+			public IGamestateRestriction negated;
+
+			public override void Initialize(EffectInitializationContext initializationContext)
+			{
+				base.Initialize(initializationContext);
+				negated.Initialize(initializationContext);
+			}
+
+			protected override bool IsValidLogic(IResolutionContext context)
+				=> !negated.IsValid(context);
 		}
 	}
 }

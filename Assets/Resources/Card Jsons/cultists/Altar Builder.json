@@ -13,10 +13,9 @@
 						{
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 							"card": { "$type": "Cards:CardBefore:" },
-							
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:AllOf:",
+								"elements": [
 									{ "$type": "Core.CardRestriction:Friendly:" },
 									{
 										"$type": "Core.CardRestriction:Location:",
@@ -45,8 +44,8 @@
 		{
 			"blurb": "Build Altar",
 			"activationRestriction": {
-				"activationRestrictionArray": [
-					"Default"
+				"elements": [
+					{ "$type": "Core.PlayerRestriction:DefaultActivationRestrictions:" }
 				]
 			},
 			"subeffects": [

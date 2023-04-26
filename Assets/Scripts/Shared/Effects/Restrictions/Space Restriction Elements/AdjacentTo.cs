@@ -38,15 +38,15 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 					.Any(c => cardRestriction.IsValid(c, context));
 			else if (anyOfTheseCards != null)
 				return anyOfTheseCards
-					.From(context, default)
+					.From(context)
 					.Any(c => c.IsAdjacentTo(toTest));
 			else if (card != null)
 				return card
-					.From(context, default)
+					.From(context)
 					.IsAdjacentTo(toTest);
 			else if (space != null)
 				return space
-					.From(context, default)
+					.From(context)
 					.IsAdjacentTo(toTest);
 			else throw new System.NotImplementedException($"You forgot to account for some weird case for {InitializationContext.source}");
 		}

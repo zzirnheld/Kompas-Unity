@@ -21,8 +21,11 @@ namespace KompasCore.Effects.Restrictions
 		{
 			protected override bool LogSoloElements => false;
 
-			public static readonly ISet<Type> ReevalationRestrictions
-				= new HashSet<Type>(new Type[] { typeof(MaxPerTurn), typeof(MaxPerRound), typeof(MaxPerStack) });
+			public static readonly ISet<Type> ReevalationRestrictions = new HashSet<Type>(new Type[] {
+				typeof(GamestateRestrictionElements.MaxPerTurn),
+				typeof(GamestateRestrictionElements.MaxPerRound),
+				typeof(GamestateRestrictionElements.MaxPerStack)
+			});
 
 			public static readonly IRestriction<TriggeringEventContext>[] DefaultFallOffRestrictions = {
 				new TriggerRestrictionElements.CardsMatch(){

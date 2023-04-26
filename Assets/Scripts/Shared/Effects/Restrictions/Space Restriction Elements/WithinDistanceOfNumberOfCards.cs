@@ -25,9 +25,9 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 		protected override bool IsValidLogic(Space space, IResolutionContext context)
 		{
 			return InitializationContext.game.Cards
-				.Where(c => c.DistanceTo(space) < distance.From(context, default))
+				.Where(c => c.DistanceTo(space) < distance.From(context))
 				.Where(c => cardRestriction.IsValid(c, context))
-				.Count() >= numberOfCards.From(context, default);
+				.Count() >= numberOfCards.From(context);
 		}
 	}
 }

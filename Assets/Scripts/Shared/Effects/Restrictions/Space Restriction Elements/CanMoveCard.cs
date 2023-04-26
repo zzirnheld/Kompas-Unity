@@ -41,7 +41,7 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 
 		protected override bool IsValidLogic(Space space, IResolutionContext context)
 		{
-			var card = toMove.From(context, default).Card;
+			var card = toMove.From(context).Card;
 			return FitsMovementRestriction(card, space, context) && FitsThroughRestriction(card.Position, space, context);
 		}
 

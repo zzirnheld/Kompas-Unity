@@ -6,8 +6,8 @@
 		{
 			"blurb": "00 BB",
 			"activationRestriction": {
-				"activationRestrictionArray": [
-					"Default"
+				"elements": [
+					{ "$type": "Core.PlayerRestriction:DefaultActivationRestrictions:" }
 				]
 			},
 			"subeffects": [

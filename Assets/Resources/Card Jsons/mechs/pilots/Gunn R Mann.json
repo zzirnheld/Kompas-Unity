@@ -6,8 +6,8 @@
 		{
 			"blurb": "Aggressive Piloting",
 			"activationRestriction": {
-				"activationRestrictionArray": [
-					"Default"
+				"elements": [
+					{ "$type": "Core.PlayerRestriction:DefaultActivationRestrictions:" }
 				]
 			},
 			"subeffects": [

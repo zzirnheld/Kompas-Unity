@@ -6,10 +6,8 @@
 		{
 			"blurb": "Redraw",
 			"activationRestriction": {
-				"activationRestrictionArray": [
-					"Default"
-				],
 				"elements": [
+					{ "$type": "Core.PlayerRestriction:DefaultActivationRestrictions:" },
 					{ "$type": "Core.GamestateRestriction:MaxPerTurn:" }
 				]
 			},

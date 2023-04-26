@@ -14,6 +14,6 @@ namespace KompasCore.Effects.Restrictions.PlayerRestrictionElements
 		}
 
 		protected override bool IsValidLogic(Player item, IResolutionContext context)
-		 => item == player.From(context, default);
+		 => item == player.From(context);
 	}
 }

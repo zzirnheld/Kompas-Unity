@@ -6,8 +6,8 @@
 		{
 			"blurb": "Dragoncall",
 			"activationRestriction": {
-				"activationRestrictionArray": [
-					"Default"
+				"elements": [
+					{ "$type": "Core.PlayerRestriction:DefaultActivationRestrictions:" }
 				]
 			},
 			"subeffects": [

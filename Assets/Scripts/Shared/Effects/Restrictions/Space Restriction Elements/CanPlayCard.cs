@@ -22,7 +22,7 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 
 		protected override bool IsValidLogic(Space space, IResolutionContext context)
 		{
-			var restriction = toPlay.From(context, default).PlayRestriction;
+			var restriction = toPlay.From(context).PlayRestriction;
 		
 			return normalPlay
 				? restriction.IsValidNormalPlay(space, InitializationContext.Controller, ignoring: ignoring)

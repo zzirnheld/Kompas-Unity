@@ -25,7 +25,7 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 
 		protected override bool IsValidLogic(Space space, IResolutionContext context)
 		{
-			return spaces.From(context, default)
+			return spaces.From(context)
 				.All(s => InitializationContext.game.BoardController.AreConnectedBySpaces(s, space, byRestriction, context));
 		}
 	}

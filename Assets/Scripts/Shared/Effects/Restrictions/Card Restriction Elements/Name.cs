@@ -22,7 +22,7 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 		{
 			if (nameIs != null && card.CardName != nameIs) return false;
 			if (nameIncludes != null && !card.CardName.Contains(nameIncludes)) return false;
-			if (sameAs != null && card.CardName != sameAs.From(context, default).CardName) return false;
+			if (sameAs != null && card.CardName != sameAs.From(context).CardName) return false;
 
 			return true;
 		}
@@ -42,9 +42,9 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 
 		protected override bool IsValidLogic(GameCardBase card, IResolutionContext context)
 		{
-			if (cards == default) return from.From(context, default).CardName != card.CardName;
+			if (cards == default) return from.From(context).CardName != card.CardName;
 
-			return cards.From(context, default)
+			return cards.From(context)
 				.Select(c => c.CardName)
 				.All(name => name != card.CardName);
 		}
