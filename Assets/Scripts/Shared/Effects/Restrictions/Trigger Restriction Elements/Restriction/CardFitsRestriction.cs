@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using KompasCore.Cards;
 using KompasCore.Effects.Identities;
 
@@ -22,8 +23,17 @@ namespace KompasCore.Effects.Restrictions.TriggerRestrictionElements
 
 		protected override bool IsValidLogic(TriggeringEventContext context, IResolutionContext secondaryContext)
 		{
-			var card = this.card.From(context, secondaryContext);
-			return cardRestriction.IsValid(card, ContextToConsider(context, secondaryContext));
-		}
-	}
+            var contextToConsider = ContextToConsider(context, secondaryContext);
+            bool IsValidCard(GameCardBase c) => !cardRestriction.IsValid(c, contextToConsider);
+
+            if (card != null && !IsValidCard(FromIdentity(card, context, secondaryContext))) return false;
+			if (anyOf != null && !FromIdentity(anyOf, context, secondaryContext).Any(IsValidCard)) return false;
+
+            return true;
+        }
+
+        protected virtual IdentityType FromIdentity<IdentityType>
+            (IIdentity<IdentityType> identity, TriggeringEventContext triggeringEventContext, IResolutionContext resolutionContext)
+            => identity.From(triggeringEventContext, resolutionContext);
+    }
 }

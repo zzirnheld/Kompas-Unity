@@ -5,6 +5,7 @@
 	"effects": [
 		{
 			"activationRestriction": {
+				"$type": "Core.PlayerRestriction:AllOf:",
 				"elements": [
 					{ "$type": "Core.PlayerRestriction:DefaultActivationRestrictions:" },
 					{ "$type": "Core.GamestateRestriction:MaxPerTurn:" }

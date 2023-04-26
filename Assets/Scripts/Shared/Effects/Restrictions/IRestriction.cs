@@ -12,13 +12,16 @@ namespace KompasCore.Effects
 	
 	public abstract class RestrictionBase<RestrictedType> : ContextInitializeableBase, IRestriction<RestrictedType>
 	{
-		public bool IsValid(RestrictedType item, IResolutionContext context)
+        protected virtual bool AllowNullItem => false;
+
+        public bool IsValid(RestrictedType item, IResolutionContext context)
 		{
 			ComplainIfNotInitialized();
 
 			try
 			{
-				return item != null && IsValidLogic(item, context);
+				if (item == null && !AllowNullItem) return false;
+                return IsValidLogic(item, context);
 			}
 			catch (SystemException exception)
 				when (exception is NullReferenceException || exception is ArgumentException)
@@ -31,7 +34,12 @@ namespace KompasCore.Effects
 		protected abstract bool IsValidLogic(RestrictedType item, IResolutionContext context);
 	}
 
-	public abstract class AllOfBase<RestrictedType> : RestrictionBase<RestrictedType>
+	public interface IAllOf<RestrictedType> : IRestriction<RestrictedType>
+	{
+        public bool IsValidIgnoring(RestrictedType item, IResolutionContext context, AllOfBase<RestrictedType>.ShouldIgnore ignorePredicate);
+    }
+
+	public abstract class AllOfBase<RestrictedType> : RestrictionBase<RestrictedType>, IAllOf<RestrictedType>
 	{
 		public IList<IRestriction<RestrictedType>> elements = new IRestriction<RestrictedType>[] { };
 

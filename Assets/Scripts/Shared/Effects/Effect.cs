@@ -53,7 +53,7 @@ namespace KompasCore.Effects
 		//Triggering and Activating
 		public abstract Trigger Trigger { get; }
 		public TriggerData triggerData;
-		public ActivationRestriction activationRestriction;
+		public IActivationRestriction activationRestriction;
 
 		//Misc effect info
 		public string blurb;

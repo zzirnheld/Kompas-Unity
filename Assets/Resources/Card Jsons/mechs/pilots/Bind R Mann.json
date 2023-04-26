@@ -6,6 +6,7 @@
 		{
 			"blurb": "Careful Piloting",
 			"activationRestriction": {
+				"$type": "Core.PlayerRestriction:AllOf:",
 				"elements": [
 					{ "$type": "Core.PlayerRestriction:DefaultActivationRestrictions:" }
 				]

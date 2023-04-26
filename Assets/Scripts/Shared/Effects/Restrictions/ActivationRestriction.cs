@@ -1,9 +1,13 @@
 ﻿namespace KompasCore.Effects
 {
-	public class ActivationRestriction : Restrictions.PlayerRestrictionElements.AllOf
+	public interface IActivationRestriction : IRestriction<Player>, IAllOf<Player>
 	{
-        public bool IsPotentiallyValidActivation(Player activator)
-            => IsValidIgnoring(activator, default,
+	}
+
+	public static class IActivationRestrictionExtensions
+	{
+		public static bool IsPotentiallyValidActivation(this IActivationRestriction restriction, Player activator)
+            => restriction.IsValidIgnoring(activator, default,
                 restriction => restriction is not Restrictions.GamestateRestrictionElements.NothingHappening);
-    }
+	}
 }

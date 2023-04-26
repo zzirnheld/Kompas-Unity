@@ -9,7 +9,7 @@ namespace KompasCore.Effects.Restrictions
 	{
 		public bool useDummyResolutionContext = true;
 
-		protected IResolutionContext ContextToConsider(TriggeringEventContext triggeringContext, IResolutionContext resolutionContext)
+		protected virtual IResolutionContext ContextToConsider(TriggeringEventContext triggeringContext, IResolutionContext resolutionContext)
 			=> useDummyResolutionContext
 				? IResolutionContext.Dummy(triggeringContext)
 				: resolutionContext;

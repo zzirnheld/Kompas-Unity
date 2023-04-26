@@ -1,29 +1,21 @@
-using System.Collections.Generic;
-using KompasCore.Cards;
 using KompasCore.Effects.Identities;
 
 namespace KompasCore.Effects.Restrictions.GamestateRestrictionElements
 {
-    public class CardFitsRestriction : GamestateRestrictionBase
+    public class CardFitsRestriction : Restrictions.TriggerRestrictionElements.CardFitsRestriction,
+        IGamestateRestriction, IRestriction<Player>
     {
-        public IRestriction<GameCardBase> cardRestriction;
-        public IIdentity<GameCardBase> card;
-        public IIdentity<IReadOnlyCollection<GameCardBase>> anyOf;
+        public bool IsValid(IResolutionContext context) => IsValid(default, context);
+        public bool IsValid(Player item, IResolutionContext context) => IsValid(context);
 
-        public override void Initialize(EffectInitializationContext initializationContext)
-        {
-            base.Initialize(initializationContext);
-            card?.Initialize(initializationContext);
-            anyOf?.Initialize(initializationContext);
-            cardRestriction.Initialize(initializationContext);
 
-            if (AllNull(card, anyOf)) throw new System.ArgumentException($"No card to check against restriction in {initializationContext.effect}");
-        }
+        //To get behavior consistent with gamestate "card fits restriction" (in which case there's no triggering context),
+        //have to override ContextToConsider and FromIdentity
+        protected override IResolutionContext ContextToConsider(TriggeringEventContext triggeringContext, IResolutionContext resolutionContext)
+            => resolutionContext;
 
-        protected override bool IsValidLogic(IResolutionContext context)
-        {
-            var card = this.card.From(context);
-            return cardRestriction.IsValid(card, context);
-        }
+        protected override IdentityType FromIdentity<IdentityType>
+            (IIdentity<IdentityType> identity, TriggeringEventContext triggeringEventContext, IResolutionContext resolutionContext)
+            => identity.From(resolutionContext);
     }
 }

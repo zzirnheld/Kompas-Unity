@@ -5,7 +5,7 @@
 	"effects": [
 		{
 			"blurb": "The Tide Shifts",
-			"activationRestriction": {
+			"triggerData": {
 				"triggerCondition": "Vanish",
 				"triggerRestriction": {
 					"elements": [
