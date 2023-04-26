@@ -23,7 +23,7 @@
 							{ "$type": "Core.CardRestriction:Summoned:" },
 							{
 								"$type": "Core.SpaceRestriction:InAOEOf:",
-								"card": { "$type": "Cards:ThisCard:" }
+								"card": { "$type": "Cards:ThisCardNow:" }
 							}
 						]
 					}
@@ -46,7 +46,7 @@
 							{ "$type": "Core.CardRestriction:Summoned:" },
 							{
 								"$type": "Core.SpaceRestriction:InAOEOf:",
-								"card": { "$type": "Cards:ThisCard:" }
+								"card": { "$type": "Cards:ThisCardNow:" }
 							}
 						]
 					}

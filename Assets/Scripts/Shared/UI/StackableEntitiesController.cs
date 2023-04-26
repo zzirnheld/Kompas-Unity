@@ -49,9 +49,9 @@ namespace KompasCore.UI
 		protected virtual bool ForceExpand => false;
 		protected virtual bool ForceCollapse => false;
 
-        protected virtual IEnumerable<GameObject> AdditionalGameObjects => Enumerable.Empty<GameObject>();
+		protected virtual IEnumerable<GameObject> AdditionalGameObjects => Enumerable.Empty<GameObject>();
 
-        protected void Update()
+		protected void Update()
 		{
 			if (ForceExpand)
 			{
@@ -154,7 +154,7 @@ namespace KompasCore.UI
 			foreach (GameObject go in AdditionalGameObjects)
 			{
 				if (go == null) continue;
-                var bounds = GetChildRendererBounds(go);
+				var bounds = GetChildRendererBounds(go);
 				if (firstLoop)
 				{
 					totalBounds = bounds;

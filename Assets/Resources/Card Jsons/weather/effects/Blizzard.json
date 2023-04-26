@@ -12,7 +12,7 @@
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{
 							"$type": "Core.SpaceRestriction:InAOEOf:",
-							"card": { "$type": "Cards:ThisCard:" }
+							"card": { "$type": "Cards:ThisCardNow:" }
 						},
 						{
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
@@ -41,7 +41,7 @@
 							{
 								"$type": "Core.TriggerRestriction:CardsMatch:",
 								"card": { "$type": "Cards:CardBefore:", "secondaryCard": true },
-								"other": { "$type": "Cards:ThisCard:" }
+								"other": { "$type": "Cards:ThisCardNow:" }
 							},
 							{
 								"$type": "Core.TriggerRestriction:CardsMatch:",

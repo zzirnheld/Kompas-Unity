@@ -12,7 +12,7 @@
 						{
 							"$type": "Core.TriggerRestriction:CardsMatch:",
 							"card": { "$type": "Cards:CardBefore:" },
-							"other": { "$type": "Cards:ThisCard:" }
+							"other": { "$type": "Cards:ThisCardNow:" }
 						},
 						{ "$type": "Core.TriggerRestriction:MaxPerStack:" }
 					]
@@ -55,7 +55,7 @@
 								"directionToMatch": {
 									"$type": "Spaces:Direction:",
 									"from": { "$type": "Cards:CardBefore:" },
-									"to": { "$type": "Cards:ThisCard:" }
+									"to": { "$type": "Cards:ThisCardNow:" }
 								}
 							}
 						]

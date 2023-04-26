@@ -15,7 +15,7 @@
 				"elements": [
 					{
 						"$type": "Core.SpaceRestriction:ConnectedTo:",
-						"space": { "$type": "Cards:ThisCard:" },
+						"space": { "$type": "Cards:ThisCardNow:" },
 						"byRestriction":{
 							"$type": "Core.SpaceRestriction:AllOf:",
 							"elements": [

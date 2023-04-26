@@ -23,7 +23,7 @@
 				},
 				{
 					"$type": "Numbers:Distance:",
-					"firstSpace": { "$type": "Cards:ThisCard:" },
+					"firstSpace": { "$type": "Cards:ThisCardNow:" },
 					"secondSpace": { "$type": "Cards:CardBefore:" },
 					"throughRestriction": {
 						"$type": "Core.CardRestriction:Subtypes:",
@@ -32,7 +32,7 @@
 				},
 				{
 					"$type": "Numbers:Distance:",
-					"firstSpace": { "$type": "Cards:ThisCard:" },
+					"firstSpace": { "$type": "Cards:ThisCardNow:" },
 					"secondSpace": { "$type": "Cards:CardAfter:" },
 					"throughRestriction": {
 						"$type": "Core.CardRestriction:Subtypes:",

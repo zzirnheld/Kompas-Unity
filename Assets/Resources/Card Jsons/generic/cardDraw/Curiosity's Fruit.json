@@ -15,7 +15,7 @@
 							"card": { "$type": "Cards:CardBefore:" },
 							"other": {
 								"$type": "Cards:AugmentedCard:",
-								"ofThisCard": { "$type": "Cards:ThisCard:" }
+								"ofThisCard": { "$type": "Cards:ThisCardNow:" }
 							}
 						}
 					]

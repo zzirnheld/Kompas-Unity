@@ -25,7 +25,7 @@
 						},
 						{
 							"$type": "Core.SpaceRestriction:AdjacentTo:",
-							"space": { "$type": "Cards:ThisCard:" }
+							"space": { "$type": "Cards:ThisCardNow:" }
 						}
 					]
 				}

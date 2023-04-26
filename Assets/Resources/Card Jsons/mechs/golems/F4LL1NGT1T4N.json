@@ -7,15 +7,19 @@
 			"blurb": "T3L3P0RT",
 			"activationRestriction":{
 				"activationRestrictionArray":[
-					"This Card Fits Restriction",
 					"Default"
 				],
-				"thisCardRestriction":
-				{
-					"$type": "Core.CardRestriction:CardValueFits:",
-					"cardValue": { "value": "Spaces Can Move" },
-					"numberRestriction": { "$type": "Core.NumberRestriction:Positive:" }
-				}
+				"elements": [
+					{
+						"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+						"card": { "$type": "Cards:ThisCardNow:" },
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:CardValueFits:",
+							"cardValue": { "value": "Spaces Can Move" },
+							"numberRestriction": { "$type": "Core.NumberRestriction:Positive:" }
+						}
+					}
+				]
 			},
 			"subeffects":[
 				{

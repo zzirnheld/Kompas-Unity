@@ -11,9 +11,9 @@ namespace KompasCore.Effects.Restrictions
 
 	namespace PlayerRestrictionElements
 	{
-        public class AllOf : AllOfBase<Player> { }
+		public class AllOf : AllOfBase<Player> { }
 
-        public class Not : PlayerRestrictionElement
+		public class Not : PlayerRestrictionElement
 		{
 			public IRestriction<Player> negated;
 

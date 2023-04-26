@@ -24,7 +24,7 @@
 									},
 									{
 										"$type": "Core.SpaceRestriction:InAOEOf:",
-										"card": { "$type": "Cards:ThisCard:" }
+										"card": { "$type": "Cards:ThisCardNow:" }
 									}
 								]
 							}

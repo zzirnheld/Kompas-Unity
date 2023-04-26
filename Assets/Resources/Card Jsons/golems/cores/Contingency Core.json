@@ -26,7 +26,7 @@
 					"$type": "Subeffect:AutoTargetCardIdentity:",
 					"subeffectCardIdentity": {
 						"$type": "Cards:AugmentedCard:",
-						"cardFromContext": { "$type": "Cards:ThisCard:" }
+						"cardFromContext": { "$type": "Cards:ThisCardNow:" }
 					}
 				},
 				{
@@ -37,7 +37,7 @@
 							{
 								"$type": "Core.TriggerRestriction:CardsMatch:",
 								"card": { "$type": "Cards:CardBefore:" },
-								"other": { "$type": "Cards:ThisCard:" }
+								"other": { "$type": "Cards:ThisCardNow:" }
 							}
 						]
 					}
@@ -55,7 +55,7 @@
 							"$type": "Core.TriggerRestriction:CardsMatch:",
 							"card": {
 								"$type": "Cards:AugmentedCard:",
-								"ofThisCard": { "$type": "Cards:ThisCard:" }
+								"ofThisCard": { "$type": "Cards:ThisCardNow:" }
 							},
 							"other": { "$type": "Cards:CardBefore:" }
 						},

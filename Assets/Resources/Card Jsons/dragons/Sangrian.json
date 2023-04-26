@@ -20,7 +20,7 @@
 							"elements": [ {
 									"$type": "Core.CardRestriction:Fighting:",
 									"defending": true,
-									"fightingWho": { "$type": "Cards:ThisCard:" }
+									"fightingWho": { "$type": "Cards:ThisCardNow:" }
 								} ]
 							}
 						}

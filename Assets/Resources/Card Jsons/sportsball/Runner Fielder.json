@@ -12,7 +12,7 @@
 						{
 							"$type": "Core.TriggerRestriction:CardsMatch:",
 							"card": { "$type": "Cards:CardBefore:" },
-							"other": { "$type": "Cards:ThisCard:" }
+							"other": { "$type": "Cards:ThisCardNow:" }
 						},
 						{
 							"$type": "Core.TriggerRestriction:PlayersMatch:",
@@ -32,7 +32,7 @@
 							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.SpaceRestriction:Displacement:",
-								"from": { "$type": "Cards:ThisCard:" },
+								"from": { "$type": "Cards:ThisCardNow:" },
 								"displacement": { "$type": "Spaces:Constant:", "x": 1, "y": 1 },
 								"subjective": true
 							}

@@ -13,20 +13,20 @@ namespace KompasCore.Effects.Restrictions
 			=> useDummyResolutionContext
 				? IResolutionContext.Dummy(triggeringContext)
 				: resolutionContext;
-    }
+	}
 
 	namespace TriggerRestrictionElements
 	{
 		public class AllOf : AllOfBase<TriggeringEventContext>
 		{
-        	protected override bool LogSoloElements => false;
+			protected override bool LogSoloElements => false;
 
 			public static readonly ISet<Type> ReevalationRestrictions
 				= new HashSet<Type>(new Type[] { typeof(MaxPerTurn), typeof(MaxPerRound), typeof(MaxPerStack) });
 
 			public static readonly IRestriction<TriggeringEventContext>[] DefaultFallOffRestrictions = {
 				new TriggerRestrictionElements.CardsMatch(){
-					card = new Identities.Cards.ThisCard(),
+					card = new Identities.Cards.ThisCardNow(),
 					other = new Identities.Cards.CardBefore()
 				},
 				new TriggerRestrictionElements.ThisCardInPlay() };

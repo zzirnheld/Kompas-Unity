@@ -19,7 +19,7 @@
 									{ "$type": "Core.CardRestriction:Friendly:" },
 									{
 										"$type": "Core.SpaceRestriction:InAOEOf:",
-										"card": { "$type": "Cards:ThisCard:" }
+										"card": { "$type": "Cards:ThisCardNow:" }
 									}
 								]
 							}
@@ -57,7 +57,7 @@
 						},
 						{
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
-							"card": { "$type": "Cards:ThisCard:" },
+							"card": { "$type": "Cards:ThisCardNow:" },
 							"cardRestriction": {
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Discard" ]

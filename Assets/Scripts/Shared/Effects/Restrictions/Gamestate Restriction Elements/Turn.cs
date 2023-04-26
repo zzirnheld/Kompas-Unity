@@ -5,7 +5,7 @@ namespace KompasCore.Effects.Restrictions.GamestateRestrictionElements
 		//If end up needing a version that can leverage trigger restriction elements, will need to split this back out to trigger/gamestate versions
 		protected abstract Player TurnPlayer { get; }
 
-		protected override bool IsValidLogic()
+		protected override bool IsValidLogic(IResolutionContext context)
 			=> InitializationContext.game.TurnPlayer == TurnPlayer;
 	}
 

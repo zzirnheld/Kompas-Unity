@@ -11,7 +11,7 @@
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{
 							"$type": "Core.SpaceRestriction:InAOEOf:",
-							"card": { "$type": "Cards:ThisCard:" }
+							"card": { "$type": "Cards:ThisCardNow:" }
 						},
 						{ "$type": "Core.TriggerRestriction:MaxPerStack:" },
 						{ "$type": "Core.TriggerRestriction:Normally:" }

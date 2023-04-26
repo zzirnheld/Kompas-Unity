@@ -12,7 +12,7 @@
 						{
 							"$type": "Core.TriggerRestriction:CardsMatch:",
 							"card": { "$type": "Cards:CardBefore:" },
-							"other": { "$type": "Cards:ThisCard:" }
+							"other": { "$type": "Cards:ThisCardNow:" }
 						},
 						{ "$type": "Core.TriggerRestriction:EnemyTurn:" }
 					]
@@ -39,7 +39,7 @@
 										} ]
 									}
 								},
-								"sameAs": { "$type": "Cards:ThisCard:" }
+								"sameAs": { "$type": "Cards:ThisCardNow:" }
 							},
 							{
 								"$type": "Core.CardRestriction:Subtypes:",

@@ -7,7 +7,7 @@
 				{
 					"$type": "Core.TriggerRestriction:CardsMatch:",
 					"card": { "$type": "Cards:CardBefore:" },
-					"other": { "$type": "Cards:ThisCard:" }
+					"other": { "$type": "Cards:ThisCardNow:" }
 				},
 				{ "$type": "Core.TriggerRestriction:MaxPerStack:" }
 			]
@@ -21,7 +21,7 @@
 				"$type": "ManyCards:CardsInPositions:",
 				"positions": {
 					"$type": "ManySpaces:AdjacentSpaces:",
-					"adjacentTo": { "$type": "Cards:ThisCard:" }
+					"adjacentTo": { "$type": "Cards:ThisCardNow:" }
 				}
 			}
 		},

@@ -25,12 +25,12 @@
 					"$type": "Core.CardRestriction:Not:",
 					"negated": {
 						"$type": "Core.CardRestriction:CardsMatch:",
-						"card": { "$type": "Cards:ThisCard:" }
+						"card": { "$type": "Cards:ThisCardNow:" }
 					}
 				},
 				{
 					"$type": "Core.SpaceRestriction:CompareDistance:",
-					"distanceTo": { "$type": "Cards:ThisCard:" },
+					"distanceTo": { "$type": "Cards:ThisCardNow:" },
 					"number": { "$type": "Numbers:Constant:", "constant": 2 },
 					"comparison": { "$type": "Relationships.Number:LessThanEqual:" }
 				}

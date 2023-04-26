@@ -14,13 +14,13 @@
 							"$type": "Core.TriggerRestriction:CompareNumbers:",
 							"firstNumber": {
 								"$type": "Numbers:Distance:",
-								"firstSpace": { "$type": "Cards:ThisCard:" },
+								"firstSpace": { "$type": "Cards:ThisCardNow:" },
 								"secondSpace": { "$type": "Cards:CardBefore:" }
 							},
 							"comparison": { "$type": "Relationships.Number:LessThan:" },
 							"secondNumber": {
 								"$type": "Numbers:Distance:",
-								"firstSpace": { "$type": "Cards:ThisCard:" },
+								"firstSpace": { "$type": "Cards:ThisCardNow:" },
 								"secondSpace": { "$type": "Cards:CardAfter:" }
 							}
 						}

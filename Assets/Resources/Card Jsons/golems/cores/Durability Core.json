@@ -13,13 +13,13 @@
 						{
 							"$type": "Core.TriggerRestriction:CardsMatch:",
 							"card": { "$type": "Cards:CardBefore:" },
-							"other": { "$type": "Cards:ThisCard:" }
+							"other": { "$type": "Cards:ThisCardNow:" }
 						},
 						{
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 							"card": {
 								"$type": "Cards:AugmentedCard:",
-								"ofThisCard": { "$type": "Cards:ThisCard:" }
+								"ofThisCard": { "$type": "Cards:ThisCardNow:" }
 							},
 							"cardRestriction": {
 								"$type": "Core.CardRestriction:Subtypes:",
@@ -41,7 +41,7 @@
 							{
 								"$type": "Core.TriggerRestriction:CardsMatch:",
 								"card": { "$type": "Cards:CardBefore:" },
-								"other": { "$type": "Cards:ThisCard:" }
+								"other": { "$type": "Cards:ThisCardNow:" }
 							}
 						]
 					}
@@ -55,7 +55,7 @@
 							{
 								"$type": "Core.TriggerRestriction:CardsMatch:",
 								"card": { "$type": "Cards:CardBefore:" },
-								"other": { "$type": "Cards:ThisCard:" }
+								"other": { "$type": "Cards:ThisCardNow:" }
 							}
 						]
 					}

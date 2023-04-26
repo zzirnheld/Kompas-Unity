@@ -13,7 +13,7 @@
 						{
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 							"cardRestriction": { "$type": "Core.SpaceRestriction:Corner:" },
-							"card": { "$type": "Cards:ThisCard:" }
+							"card": { "$type": "Cards:ThisCardNow:" }
 						},
 						{
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
@@ -27,7 +27,7 @@
 									},
 									{
 										"$type": "Core.SpaceRestriction:SameDiagonal:",
-										"other": { "$type": "Cards:ThisCard:" }
+										"other": { "$type": "Cards:ThisCardNow:" }
 									}
 								]
 							}

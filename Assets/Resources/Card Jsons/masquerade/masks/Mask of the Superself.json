@@ -16,7 +16,7 @@
 							"card": { "$type": "Cards:CardBefore:" },
 							"other": {
 								"$type": "Cards:AugmentedCard:",
-								"ofThisCard": { "$type": "Cards:ThisCard:" }
+								"ofThisCard": { "$type": "Cards:ThisCardNow:" }
 							}
 						},
 						{
@@ -57,7 +57,7 @@
 				"$type": "Core.CardRestriction:HasAugment:",
 				"cardRestriction": {
 					"$type": "Core.CardRestriction:Name:",
-					"sameAs": { "$type": "Cards:ThisCard:" }
+					"sameAs": { "$type": "Cards:ThisCardNow:" }
 				}
 			}
 		}

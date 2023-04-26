@@ -8,19 +8,21 @@
 			"activationRestriction": {
 				"activationRestrictionArray": [
 					"Max Times Per Turn",
-					"Card Exists Now",
 					"Default"
 				],
-				"existsRestriction": {
-					"$type": "Core.CardRestriction:AllOf:",
-					"elements": [
-						{ "$type": "Core.CardRestriction:Enemy:" },
-						{
-							"$type": "Core.SpaceRestriction:AdjacentTo:",
-							"space": { "$type": "Cards:ThisCard:" }
-						}
-					]
-				}
+				"elements": [
+					{
+						"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+						"anyOf": {
+							"$type": "ManyCards:CardsInPositions:",
+							"positions": {
+								"$type": "ManySpaces:AdjacentSpaces:",
+								"adjacentTo": { "$type": "Cards:ThisCardNow:" }
+							}
+						},
+						"cardRestriction": { "$type": "Core.CardRestriction:Enemy:" }
+					}
+				]
 			},
 			"subeffects": [
 				{

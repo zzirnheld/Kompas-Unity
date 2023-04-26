@@ -24,7 +24,7 @@
 				},
 				{
 					"$type": "Core.TriggerRestriction:CardFitsRestriction:",
-					"card": { "$type": "Cards:ThisCard:" },
+					"card": { "$type": "Cards:ThisCardNow:" },
 					"cardRestriction": {
 						"$type": "Core.CardRestriction:Location:",
 						"locations": [ "Discard" ]

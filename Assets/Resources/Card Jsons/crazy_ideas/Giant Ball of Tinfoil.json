@@ -34,7 +34,7 @@
 							},
 							{
 								"$type": "Core.SpaceRestriction:AdjacentTo:",
-								"space": { "$type": "Cards:ThisCard:" }
+								"space": { "$type": "Cards:ThisCardNow:" }
 							}
 						]
 					}
@@ -52,7 +52,7 @@
 					"$type": "Subeffect:AutoTargetSpaceIdentity:",
 					"spaceIdentity": {
 						"$type": "Spaces:ApplyDisplacement:",
-						"from": { "$type": "Cards:ThisCard:" },
+						"from": { "$type": "Cards:ThisCardNow:" },
 						"displacement": {
 							"$type": "Spaces:Displacement:",
 							"from": { "$type": "Spaces:TargetIndex:", "index": -2 },
@@ -75,7 +75,7 @@
 						"$type": "Cards:CardAtPosition:",
 						"position": {
 							"$type": "Spaces:ApplyDisplacement:",
-							"from": { "$type": "Cards:ThisCard:" },
+							"from": { "$type": "Cards:ThisCardNow:" },
 							"displacement": {
 								"$type": "Spaces:Displacement:",
 								"from": { "$type": "Spaces:TargetIndex:", "index": -2 },

@@ -31,7 +31,7 @@
 							"elements": [
 											{
 												"$type": "Core.SpaceRestriction:AdjacentTo:",
-												"card": { "$type": "Cards:ThisCard:" }
+												"card": { "$type": "Cards:ThisCardNow:" }
 											}
 										]
 									}
@@ -45,7 +45,7 @@
 							"elements": [
 											{
 												"$type": "Core.SpaceRestriction:AdjacentTo:",
-												"card": { "$type": "Cards:ThisCard:" }
+												"card": { "$type": "Cards:ThisCardNow:" }
 											}
 										]
 									}

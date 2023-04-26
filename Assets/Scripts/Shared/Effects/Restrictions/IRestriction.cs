@@ -35,9 +35,9 @@ namespace KompasCore.Effects
 	{
 		public IList<IRestriction<RestrictedType>> elements = new IRestriction<RestrictedType>[] { };
 
-        protected virtual bool LogSoloElements => true;
+		protected virtual bool LogSoloElements => true;
 
-        public override void Initialize(EffectInitializationContext initializationContext)
+		public override void Initialize(EffectInitializationContext initializationContext)
 		{
 			base.Initialize(initializationContext);
 			foreach (var element in elements) element.Initialize(initializationContext);

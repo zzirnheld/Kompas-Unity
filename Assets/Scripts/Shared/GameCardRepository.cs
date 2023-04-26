@@ -87,8 +87,8 @@ namespace KompasCore.GameCore
 			var cardObj = Instantiate(CardPrefab);
 			var ctrl = GetCardController<TCardController>(cardObj);
 			var card = cardConstructor(cardInfo, effects.ToArray(), ctrl);
-            cardObj.name = card.CardName + card.ID;
-            return card;
-        }
+			cardObj.name = card.CardName + card.ID;
+			return card;
+		}
 	}
 }

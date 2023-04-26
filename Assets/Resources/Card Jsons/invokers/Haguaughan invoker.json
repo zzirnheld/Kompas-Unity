@@ -14,7 +14,7 @@
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 							"cardRestriction": {
 								"$type": "Core.SpaceRestriction:AdjacentTo:",
-								"space": { "$type": "Cards:ThisCard:" }
+								"space": { "$type": "Cards:ThisCardNow:" }
 							},
 							"card": {
 								"$type": "Cards:Avatar:",

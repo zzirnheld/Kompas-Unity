@@ -50,12 +50,12 @@ namespace KompasCore.UI
 		public GameObject unzoomedUI;
 		public GameObject zoomedInWithTextUI;
 
-        public BoxCollider[] outsideCardBoxColliders;
+		public BoxCollider[] outsideCardBoxColliders;
 
-        /// <summary>
-        /// Used to make sure we don't regenerate the texture unnecessarily
-        /// </summary>
-        private string oldFileName;
+		/// <summary>
+		/// Used to make sure we don't regenerate the texture unnecessarily
+		/// </summary>
+		private string oldFileName;
 
 		protected override void Display()
 		{

@@ -6,35 +6,32 @@ using UnityEngine;
 namespace KompasCore.Effects
 {
 	public class ActivationRestriction : Restrictions.PlayerRestrictionElements.AllOf
-    {
+	{
 		public Effect Effect => InitializationContext.effect;
 		public GameCard Card => InitializationContext.source;
 
 		public const string Never = "Never";
 
-		public const string TimesPerTurn = "Max Times Per Turn";
-		public const string TimesPerRound = "Max Times Per Round";
-		public const string FriendlyTurn = "Friendly Turn";
-		public const string EnemyTurn = "Enemy Turn";
-		public const string InPlay = "In Play";
-		public const string Location = "Location";
 		public const string ControllerActivates = "Controller Activates";
 		public const string NotNegated = "Not Negated";
-		public const string CardExists = "Card Exists Now";
-		public const string ThisFitsRestriction = "This Card Fits Restriction";
+		public const string InPlay = "In Play";
 		public const string NotCurrentlyActivated = "Not Currently Activated";
+		public const string FriendlyTurn = "Friendly Turn";
 		public const string NothingHappening = "Nothing Happening";
+
+		public const string TimesPerTurn = "Max Times Per Turn";
+		public const string TimesPerRound = "Max Times Per Round";
+		public const string EnemyTurn = "Enemy Turn";
+		public const string Location = "Location";
 
 		public const string Default = "Default";
 		public static readonly string[] DefaultRestrictions = { ControllerActivates, NotNegated, InPlay, NotCurrentlyActivated, FriendlyTurn, NothingHappening };
 
 		public static readonly string[] AtAllRestrictions =
-			{ TimesPerTurn, TimesPerRound, FriendlyTurn, EnemyTurn, NotNegated, InPlay, Location, ThisFitsRestriction, NotCurrentlyActivated };
+			{ TimesPerTurn, TimesPerRound, FriendlyTurn, EnemyTurn, NotNegated, InPlay, Location, NotCurrentlyActivated };
 
 		public int maxTimes = 1;
 		public int location = (int)CardLocation.Board;
-		public IRestriction<GameCardBase> existsRestriction;
-		public IRestriction<GameCardBase> thisCardRestriction;
 
 		private readonly List<string> ActivationRestrictions = new List<string>();
 		public string[] activationRestrictionArray = null;
@@ -49,9 +46,6 @@ namespace KompasCore.Effects
 				ActivationRestrictions.AddRange(activationRestrictionArray);
 				if (activationRestrictionArray.Contains("Default"))
 					ActivationRestrictions.AddRange(DefaultRestrictions);
-
-				existsRestriction?.Initialize(initializationContext);
-				thisCardRestriction?.Initialize(initializationContext);
 
 				Debug.Log($"Initializing activation restriction for {Card.CardName} " +
 					$"with restrictions: {string.Join(", ", ActivationRestrictions)}");
@@ -75,9 +69,6 @@ namespace KompasCore.Effects
 			ControllerActivates => activator == Card.Controller,
 
 			NotNegated => !Effect.Negated,
-
-			CardExists => Effect.Game.Cards.Any(c => existsRestriction.IsValid(c, Effect?.ResolutionContext)),
-			ThisFitsRestriction => thisCardRestriction.IsValid(Card, Effect?.ResolutionContext),
 
 			NotCurrentlyActivated => !Effect.Game.StackEntries.Any(e => e == Effect),
 			NothingHappening => Effect.Game.NothingHappening,
@@ -103,8 +94,8 @@ namespace KompasCore.Effects
 
 		protected override bool IsValidLogic(Player item, IResolutionContext context)
 		{
-            return base.IsValidLogic(item, context) && IsValidActivation(item);
-        }
+			return base.IsValidLogic(item, context) && IsValidActivation(item);
+		}
 
 		public bool IsPotentiallyValidActivation(Player activator)
 			=> IsGameSetUp() && ActivationRestrictions.Intersect(AtAllRestrictions).All(r => IsRestrictionValid(r, activator));

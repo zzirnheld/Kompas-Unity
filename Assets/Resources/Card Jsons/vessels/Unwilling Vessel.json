@@ -30,7 +30,7 @@
 							},
 							{
 								"$type": "Core.CardRestriction:Augments:",
-								"singleCard": { "$type": "Cards:ThisCard:" }
+								"singleCard": { "$type": "Cards:ThisCardNow:" }
 							}
 						]
 					}
@@ -65,7 +65,7 @@
 							},
 							{
 								"$type": "Core.SpaceRestriction:CompareDistance:",
-								"distanceTo": { "$type": "Cards:ThisCard:" },
+								"distanceTo": { "$type": "Cards:ThisCardNow:" },
 								"number": { "$type": "Numbers:EffectX:" },
 								"comparison": { "$type": "Relationships.Number:LessThanEqual:" }
 							}

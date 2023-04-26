@@ -27,7 +27,7 @@
 										"$type": "Core.CardRestriction:Not:",
 										"negated": {
 											"$type": "Core.CardRestriction:CardsMatch:",
-											"card": { "$type": "Cards:ThisCard:" }
+											"card": { "$type": "Cards:ThisCardNow:" }
 										}
 									},
 									{
