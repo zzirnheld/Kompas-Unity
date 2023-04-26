@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace KompasCore.Effects.Restrictions
 {
-	public abstract class TriggerRestrictionBase : RestrictionBase<TriggeringEventContext>, IContextInitializeable
+	public abstract class TriggerRestrictionBase : RestrictionBase<TriggeringEventContext>
 	{
 		public bool useDummyResolutionContext = true;
 
@@ -12,7 +13,7 @@ namespace KompasCore.Effects.Restrictions
 			=> useDummyResolutionContext
 				? IResolutionContext.Dummy(triggeringContext)
 				: resolutionContext;
-	}
+    }
 
 	namespace TriggerRestrictionElements
 	{

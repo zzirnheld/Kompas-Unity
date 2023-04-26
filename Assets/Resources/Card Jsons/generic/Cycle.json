@@ -13,10 +13,8 @@
 			"subeffects":[
 				{
 					"$type":"Subeffect:CardTarget:",
-					"toSearch": { "$type": "ManyCards:Hand:" },
-					"cardRestriction":{
-						"blurb":"Card to Cycle"
-					}
+					"blurb":"Card to Cycle",
+					"toSearch": { "$type": "ManyCards:Hand:" }
 				},
 				{
 					"$type":"Subeffect:Discard:"

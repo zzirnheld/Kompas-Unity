@@ -5,8 +5,8 @@ using UnityEngine;
 
 namespace KompasCore.Effects
 {
-	public class ActivationRestriction : ContextInitializeableBase
-	{
+	public class ActivationRestriction : Restrictions.PlayerRestrictionElements.AllOf
+    {
 		public Effect Effect => InitializationContext.effect;
 		public GameCard Card => InitializationContext.source;
 
@@ -100,6 +100,11 @@ namespace KompasCore.Effects
 
 		public bool IsValidActivation(Player activator)
 			=> IsGameSetUp() && ActivationRestrictions.All(r => IsRestrictionValid(r, activator));
+
+		protected override bool IsValidLogic(Player item, IResolutionContext context)
+		{
+            return base.IsValidLogic(item, context) && IsValidActivation(item);
+        }
 
 		public bool IsPotentiallyValidActivation(Player activator)
 			=> IsGameSetUp() && ActivationRestrictions.Intersect(AtAllRestrictions).All(r => IsRestrictionValid(r, activator));
