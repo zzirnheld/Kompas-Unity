@@ -102,7 +102,7 @@ namespace KompasCore.Effects
 		}
 
 		public virtual bool CanBeActivatedBy(Player controller)
-			=> Trigger == null && activationRestriction != null && activationRestriction.IsValidActivation(controller);
+			=> Trigger == null && activationRestriction != null && activationRestriction.IsValid(controller, default);
 
 		public virtual bool CanBeActivatedAtAllBy(Player activator)
 			=> Trigger == null && activationRestriction != null && activationRestriction.IsPotentiallyValidActivation(activator);

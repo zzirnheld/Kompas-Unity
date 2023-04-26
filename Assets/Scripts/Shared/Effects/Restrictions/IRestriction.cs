@@ -37,14 +37,27 @@ namespace KompasCore.Effects
 
 		protected virtual bool LogSoloElements => true;
 
-		public override void Initialize(EffectInitializationContext initializationContext)
+        public delegate bool ShouldIgnore(IRestriction<RestrictedType> restriction);
+        private ShouldIgnore ignorePredicate = elem => false;
+
+		public bool IsValidIgnoring(RestrictedType item, IResolutionContext context, ShouldIgnore ignorePredicate)
+		{
+            ShouldIgnore oldVal = this.ignorePredicate;
+            this.ignorePredicate = ignorePredicate;
+            bool ret = IsValid(item, context);
+            this.ignorePredicate = oldVal;
+            return ret;
+        }
+
+        public override void Initialize(EffectInitializationContext initializationContext)
 		{
 			base.Initialize(initializationContext);
 			foreach (var element in elements) element.Initialize(initializationContext);
 			if (LogSoloElements && elements.Count == 1) Debug.LogWarning($"only one element on {GetType()} on eff of {initializationContext.source}");
 		}
 
-		protected override bool IsValidLogic(RestrictedType item, IResolutionContext context)
-			=> elements.All(r => r.IsValid(item, context));
+		protected override bool IsValidLogic(RestrictedType item, IResolutionContext context) => elements
+			.Where(r => !ignorePredicate(r))
+			.All(r => r.IsValid(item, context));
 	}
 }
