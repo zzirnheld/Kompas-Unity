@@ -24,10 +24,10 @@ namespace KompasCore.Effects.Restrictions.TriggerRestrictionElements
 
 		protected override bool IsValidLogic(TriggeringEventContext context, IResolutionContext secondaryContext)
 		{
-			var first = card.From(context, secondaryContext).Card;
+			var first = card.From(context, secondaryContext)?.Card;
 
-			if (other != null && first != other.From(context, secondaryContext).Card) return false;
-			if (anyOf != null && !anyOf.From(context, secondaryContext).Any(c => c.Card == first)) return false;
+			if (other != null && first != other.From(context, secondaryContext)?.Card) return false;
+			if (anyOf != null && !anyOf.From(context, secondaryContext).Any(c => c?.Card == first)) return false;
 
 			return true;
 		}

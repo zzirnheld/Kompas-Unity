@@ -35,15 +35,9 @@
 								"$type": "ManyCards:Augments:",
 								"card": { "$type": "Cards:TargetIndex:" }
 							},
-							
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
-									{
-										"$type": "Core.CardRestriction:Subtypes:",
-										"subtypes": [ "Module" ]
-									}
-								]
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Module" ]
 							}
 						}
 					}
