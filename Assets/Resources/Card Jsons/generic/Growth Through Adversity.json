@@ -37,13 +37,9 @@
 			]
 		}
 	],
+	"unique": true,
 	"c": 2,
-	"spellTypes": [
-		"Enchant"
-	],
-	"subtypes": [
-		"Enchant"
-	],
-	"subtypeText": "Enchant",
-	"radius": 1
+	"spellTypes": [ "Enchant" ],
+	"subtypes": [ ],
+	"subtypeText": ""
 }
