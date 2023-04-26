@@ -6,10 +6,8 @@
 		{
 			"blurb": "T3L3P0RT",
 			"activationRestriction":{
-				"activationRestrictionArray":[
-					"Default"
-				],
 				"elements": [
+					{ "$type": "Core.PlayerRestriction:DefaultActivationRestrictions:" },
 					{
 						"$type": "Core.GamestateRestriction:CardFitsRestriction:",
 						"card": { "$type": "Cards:ThisCardNow:" },

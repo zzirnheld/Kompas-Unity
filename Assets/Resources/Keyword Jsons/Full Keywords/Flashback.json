@@ -1,19 +1,10 @@
 {
 	"blurb":"Flashback",
 	"activationRestriction":{
-		"activationRestrictionArray":[
-			"Controller Activates",
-			"Not Negated",
-			"Not Currently Activated"
-		],
 		"elements": [
 			{
-				"$type": "Core.GamestateRestriction:CardFitsRestriction:",
-				"card": { "$type": "Cards:ThisCardNow:" },
-				"cardRestriction": {
-					"$type": "Core.CardRestriction:Location:",
-					"locations": [ "Discard" ]
-				}
+				"$type": "Core.PlayerRestriction:DefaultActivationRestrictions:",
+				"locations": [ "Discard" ]
 			}
 		]
 	},
