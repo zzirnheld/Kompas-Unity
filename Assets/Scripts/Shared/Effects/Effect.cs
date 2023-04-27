@@ -26,8 +26,8 @@ namespace KompasCore.Effects
 		public int SubeffectIndex { get; protected set; }
 
 		//Targets
-		protected List<GameCard> cardTargets => ResolutionContext.CardTargets;
-		protected List<Space> spaceTargets => ResolutionContext.SpaceTargets;
+		protected IList<GameCard> cardTargets => ResolutionContext.CardTargets;
+		protected IList<Space> spaceTargets => ResolutionContext.SpaceTargets;
 		public IList<GameCard> CardTargets => cardTargets;
 		public IList<Space> SpaceTargets => spaceTargets;
 
