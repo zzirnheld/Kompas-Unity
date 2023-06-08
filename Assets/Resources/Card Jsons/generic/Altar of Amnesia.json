@@ -6,8 +6,9 @@
 		{
 			"blurb": "You are someone else",
 			"activationRestriction": {
-				"activationRestrictionArray": [
-					"Default"
+				"$type": "Core.PlayerRestriction:AllOf:",
+				"elements": [
+					{ "$type": "Core.PlayerRestriction:DefaultActivationRestrictions:" }
 				]
 			},
 			"subeffects": [
@@ -23,7 +24,7 @@
 							{ "$type": "Core.CardRestriction:Summoned:" },
 							{
 								"$type": "Core.SpaceRestriction:InAOEOf:",
-								"card": { "$type": "Cards:ThisCard:" }
+								"card": { "$type": "Cards:ThisCardNow:" }
 							}
 						]
 					}
@@ -46,7 +47,7 @@
 							{ "$type": "Core.CardRestriction:Summoned:" },
 							{
 								"$type": "Core.SpaceRestriction:InAOEOf:",
-								"card": { "$type": "Cards:ThisCard:" }
+								"card": { "$type": "Cards:ThisCardNow:" }
 							}
 						]
 					}

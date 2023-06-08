@@ -47,7 +47,7 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 			//And if that card is in the fight, make sure any other card that needs to be in the fight, is in the fight.
 			if (fightingWho == null) return true;
 
-			var fightingWhoCard = fightingWho.From(context, default);
+			var fightingWhoCard = fightingWho.From(context);
 			return attack.attacker == fightingWhoCard || attack.defender == fightingWhoCard;
 		}
 

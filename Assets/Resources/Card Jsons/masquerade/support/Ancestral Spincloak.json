@@ -13,7 +13,7 @@
 						{
 							"$type": "Core.TriggerRestriction:CardsMatch:",
 							"card": { "$type": "Cards:CardBefore:" },
-							"other": { "$type": "Cards:ThisCard:" }
+							"other": { "$type": "Cards:ThisCardNow:" }
 						}
 					]
 				}
@@ -34,7 +34,7 @@
 							{
 								"$type": "Core.TriggerRestriction:CardsMatch:",
 								"card": { "$type": "Cards:CardBefore:" },
-								"other": { "$type": "Cards:ThisCard:" }
+								"other": { "$type": "Cards:ThisCardNow:" }
 							}
 						]
 					}
@@ -75,7 +75,7 @@
 						},
 						{
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
-							"card": { "$type": "Cards:ThisCard:" },
+							"card": { "$type": "Cards:ThisCardNow:" },
 							"cardRestriction": {
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Discard" ]

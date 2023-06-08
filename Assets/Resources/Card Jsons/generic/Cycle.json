@@ -5,18 +5,17 @@
 	"effects": [
 		{
 			"blurb":"Pass",
-			"activationRestriction":{
-				"activationRestrictionArray":[
-					"Default"
+			"activationRestriction": {
+				"$type": "Core.PlayerRestriction:AllOf:",
+				"elements": [
+					{ "$type": "Core.PlayerRestriction:DefaultActivationRestrictions:" }
 				]
 			},
 			"subeffects":[
 				{
 					"$type":"Subeffect:CardTarget:",
-					"toSearch": { "$type": "ManyCards:Hand:" },
-					"cardRestriction":{
-						"blurb":"Card to Cycle"
-					}
+					"blurb":"Card to Cycle",
+					"toSearch": { "$type": "ManyCards:Hand:" }
 				},
 				{
 					"$type":"Subeffect:Discard:"

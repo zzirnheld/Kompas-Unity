@@ -1,14 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace KompasCore.Effects.Restrictions
 {
-	public abstract class TriggerRestrictionBase : RestrictionBase<TriggeringEventContext>, IContextInitializeable
+	public abstract class TriggerRestrictionBase : RestrictionBase<TriggeringEventContext>
 	{
 		public bool useDummyResolutionContext = true;
 
-		protected IResolutionContext ContextToConsider(TriggeringEventContext triggeringContext, IResolutionContext resolutionContext)
+		protected virtual IResolutionContext ContextToConsider(TriggeringEventContext triggeringContext, IResolutionContext resolutionContext)
 			=> useDummyResolutionContext
 				? IResolutionContext.Dummy(triggeringContext)
 				: resolutionContext;
@@ -18,14 +19,17 @@ namespace KompasCore.Effects.Restrictions
 	{
 		public class AllOf : AllOfBase<TriggeringEventContext>
 		{
-        	protected override bool LogSoloElements => false;
+			protected override bool LogSoloElements => false;
 
-			public static readonly ISet<Type> ReevalationRestrictions
-				= new HashSet<Type>(new Type[] { typeof(MaxPerTurn), typeof(MaxPerRound), typeof(MaxPerStack) });
+			public static readonly ISet<Type> ReevalationRestrictions = new HashSet<Type>(new Type[] {
+				typeof(GamestateRestrictionElements.MaxPerTurn),
+				typeof(GamestateRestrictionElements.MaxPerRound),
+				typeof(GamestateRestrictionElements.MaxPerStack)
+			});
 
 			public static readonly IRestriction<TriggeringEventContext>[] DefaultFallOffRestrictions = {
 				new TriggerRestrictionElements.CardsMatch(){
-					card = new Identities.Cards.ThisCard(),
+					card = new Identities.Cards.ThisCardNow(),
 					other = new Identities.Cards.CardBefore()
 				},
 				new TriggerRestrictionElements.ThisCardInPlay() };

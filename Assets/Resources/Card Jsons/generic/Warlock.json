@@ -11,7 +11,7 @@
 				"triggerRestriction":{
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-						{ "$type": "Core.TriggerRestriction:MaxPerTurn:" },
+						{ "$type": "Core.GamestateRestriction:MaxPerTurn:" },
 						{
 							"$type": "Core.TriggerRestriction:PlayersMatch:",
 							"firstPlayer": { "$type": "Players:TriggeringPlayer:" },
@@ -27,7 +27,7 @@
 										"$type": "Core.CardRestriction:Not:",
 										"negated": {
 											"$type": "Core.CardRestriction:CardsMatch:",
-											"card": { "$type": "Cards:ThisCard:" }
+											"card": { "$type": "Cards:ThisCardNow:" }
 										}
 									},
 									{

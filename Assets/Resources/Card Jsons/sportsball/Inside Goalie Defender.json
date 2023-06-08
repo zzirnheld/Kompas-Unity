@@ -30,7 +30,7 @@
 									{ "$type": "Core.CardRestriction:Avatar:" },
 									{
 										"$type": "Core.SpaceRestriction:AdjacentTo:",
-										"space": { "$type": "Cards:ThisCard:" }
+										"space": { "$type": "Cards:ThisCardNow:" }
 									}
 								]
 							}
@@ -52,7 +52,7 @@
 							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.SpaceRestriction:AdjacentTo:",
-								"space": { "$type": "Cards:ThisCard:" }
+								"space": { "$type": "Cards:ThisCardNow:" }
 							},
 							{
 								"$type": "Core.CardRestriction:Not:",

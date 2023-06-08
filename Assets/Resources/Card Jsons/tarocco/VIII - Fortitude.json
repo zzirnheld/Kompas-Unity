@@ -9,7 +9,7 @@
 				"triggerRestriction": {
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-						{ "$type": "Core.TriggerRestriction:MaxPerTurn:", "max": 3 },
+						{ "$type": "Core.GamestateRestriction:MaxPerTurn:", "max": 3 },
 						{
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 							"card": { "$type": "Cards:CardBefore:" },

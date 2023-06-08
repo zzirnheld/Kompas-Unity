@@ -1,11 +1,11 @@
 {
 	"blurb": "Masquerade",
 	"activationRestriction": {
-		"activationRestrictionArray": [
-			"Max Times Per Turn",
-			"Default"
-		],
-		"maxTimes": 2
+		"$type": "Core.PlayerRestriction:AllOf:",
+		"elements": [
+			{ "$type": "Core.PlayerRestriction:DefaultActivationRestrictions:" },
+			{ "$type": "Core.GamestateRestriction:MaxPerTurn:", "max": 2 }
+		]
 	},
 	"subeffects":[
 		{

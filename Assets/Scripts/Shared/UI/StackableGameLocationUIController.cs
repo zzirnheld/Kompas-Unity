@@ -28,14 +28,14 @@ namespace KompasCore.UI
 		public override IEnumerable<GameObject> ShownObjects => Cards.Select(c => c.CardController.gameObject);
 		protected override bool ForceExpand => Cards.Any(c => c == CardViewController.FocusedCard);
 
-        protected virtual bool Complain => false;
+		protected virtual bool Complain => false;
 
-        protected void TakeOwnershipOf(GameObject obj)
+		protected void TakeOwnershipOf(GameObject obj)
 		{
 			//Debug.Log($"{name} taking ownership of {obj}");
 			if (obj.transform.parent != transform) Debug.Log($"{name} Newly taking ownership of {obj}");
 			if (Complain && !ShownObjects.Contains(obj)) Debug.LogWarning($"Taking ownership of object not shown");
-            obj.transform.parent = transform;
+			obj.transform.parent = transform;
 			obj.SetActive(true);
 		}
 
@@ -52,8 +52,8 @@ namespace KompasCore.UI
 		{
 			TakeOwnership();
 			gameObject.SetActive(true);
-            Spread();
-        }
+			Spread();
+		}
 
 		protected virtual void Spread()
 		{
@@ -77,31 +77,31 @@ namespace KompasCore.UI
 
 	public abstract class CircleStackableGameLocationUIController : StackableGameLocationUIController
 	{
-        public float bigCircleRadius = 10f;
-        public float unitSize = 2f;
+		public float bigCircleRadius = 10f;
+		public float unitSize = 2f;
 
-        public float bufferBetweenArcsMultiplier = 1.5f;
+		public float bufferBetweenArcsMultiplier = 1.5f;
 
-        protected override void Spread()
-        {
+		protected override void Spread()
+		{
 			if (unitSize == 0f || bufferBetweenArcsMultiplier == 0f || bigCircleRadius == 0f)
 			{
-                Debug.LogError($"Unit size {unitSize} or buffer {bufferBetweenArcsMultiplier} or big circle radius {bigCircleRadius} is 0 for {GetType()}, so invalid. Base spread fallback");
-                base.Spread();
-                return;
-            }
+				Debug.LogError($"Unit size {unitSize} or buffer {bufferBetweenArcsMultiplier} or big circle radius {bigCircleRadius} is 0 for {GetType()}, so invalid. Base spread fallback");
+				base.Spread();
+				return;
+			}
 
-            var arr = ShownObjects.ToArray();
-            for (int objIdx = 0, numLoops = 1; objIdx < arr.Length; objIdx++, numLoops++)
+			var arr = ShownObjects.ToArray();
+			for (int objIdx = 0, numLoops = 1; objIdx < arr.Length; objIdx++, numLoops++)
 			{
 				// radius of the circle whose arc this is is numLoops * unitSize.
 				float smallCircleRadius = numLoops * unitSize * bufferBetweenArcsMultiplier;
 				if (smallCircleRadius == 0f)
 				{
-                	Debug.LogError($"Unit size {unitSize} or buffer {bufferBetweenArcsMultiplier} is 0 for {GetType()}, so small circle radius is {smallCircleRadius}, so invalid. Base spread fallback");
-                    base.Spread();
-                    return;
-                }
+					Debug.LogError($"Unit size {unitSize} or buffer {bufferBetweenArcsMultiplier} is 0 for {GetType()}, so small circle radius is {smallCircleRadius}, so invalid. Base spread fallback");
+					base.Spread();
+					return;
+				}
 
 				// an isoceles triangle is formed with side lengths bigCircleRadius, bigCircleRadius, and smallCircleRadius
 				// the angle of the arc we want is the matching angles of the isoceles triangle.
@@ -116,19 +116,19 @@ namespace KompasCore.UI
 
 				if (arcSpreadRadians == double.NaN || arcSegmentRadians == double.NaN)
 				{
-                    Debug.LogError($"Radians are NaN! One of those was invalid {arcSpreadRadians} or {arcSegmentRadians}");
-                    base.Spread();
-                    return;
-                }
+					Debug.LogError($"Radians are NaN! One of those was invalid {arcSpreadRadians} or {arcSegmentRadians}");
+					base.Spread();
+					return;
+				}
 
 				//to get the number of cards we can fit on that arc, we need to take the floor of the arc spread / arc segment angles
 				int cardsOnArc = (int)((2d * arcSpreadRadians) / arcSegmentRadians);
 
-                double arcSegmentStaggeredRadians = (2d * arcSpreadRadians) / (double)cardsOnArc;
+				double arcSegmentStaggeredRadians = (2d * arcSpreadRadians) / (double)cardsOnArc;
 
-                Debug.Log($"Radius {smallCircleRadius}, arc spread rads {arcSpreadRadians}, segment is {arcSegmentRadians}. staggered mult is {arcSegmentStaggeredRadians} can fit {cardsOnArc}");
+				Debug.Log($"Radius {smallCircleRadius}, arc spread rads {arcSpreadRadians}, segment is {arcSegmentRadians}. staggered mult is {arcSegmentStaggeredRadians} can fit {cardsOnArc}");
 
-                Vector3 radiusBase = smallCircleRadius * Vector3.back;
+				Vector3 radiusBase = smallCircleRadius * Vector3.back;
 				//<= here because I want it to be symmetrical, and otherwise it doesn't go to the max of the other side
 				for (int i = 0; i <= cardsOnArc && objIdx < arr.Length; i++, objIdx++)
 				{
@@ -136,12 +136,12 @@ namespace KompasCore.UI
 					TakeOwnershipOf(obj);
 					//angle from the vertical for this next item to place
 					double angleFromVertical = arcSpreadRadians - ((double)i * arcSegmentStaggeredRadians);
-                	Debug.Log($"Placing {obj}, at {angleFromVertical}");
+					Debug.Log($"Placing {obj}, at {angleFromVertical}");
 					Vector3 offset = Quaternion.Euler(0, (float)(angleFromVertical * UnityEngine.Mathf.Rad2Deg), 0) * radiusBase;
 					obj.transform.localPosition = offset;
 				}
-                objIdx--;
-            }
-        }
-    }
+				objIdx--;
+			}
+		}
+	}
 }

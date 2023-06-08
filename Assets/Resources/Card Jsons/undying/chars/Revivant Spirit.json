@@ -5,13 +5,14 @@
 	"effects": [
 		{
 			"blurb": "Revive",
-			"activationRestriction":{
-				"activationRestrictionArray":[
-					"Location",
-					"Controller Activates",
-					"Not Negated"
-				],
-				"location":2
+			"activationRestriction": {
+				"$type": "Core.PlayerRestriction:AllOf:",
+				"elements": [
+					{
+						"$type": "Core.PlayerRestriction:DefaultActivationRestrictions:",
+						"locations": [ "Discard" ]
+					}
+				]
 			},
 			"subeffects":[
 				{

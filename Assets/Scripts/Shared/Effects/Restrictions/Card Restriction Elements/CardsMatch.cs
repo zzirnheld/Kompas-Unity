@@ -18,8 +18,8 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 
 		protected override bool IsValidLogic(GameCardBase item, IResolutionContext context)
 		{
-			if (card != null) return item?.Card == card.From(context, default).Card;
-			else return cards.From(context, default).Any(c => c.Card == item?.Card);
+			if (card != null) return item?.Card == card.From(context).Card;
+			else return cards.From(context).Any(c => c.Card == item?.Card);
 		}
 	}
 }

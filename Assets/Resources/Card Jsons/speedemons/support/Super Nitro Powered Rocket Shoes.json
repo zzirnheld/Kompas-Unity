@@ -14,7 +14,7 @@
 						"card": { "$type": "Cards:CardBefore:" },
 						"other": {
 							"$type": "Cards:AugmentedCard:",
-							"ofThisCard": { "$type": "Cards:ThisCard:" }
+							"ofThisCard": { "$type": "Cards:ThisCardNow:" }
 						}
 					}
 				]
@@ -41,11 +41,11 @@
 							},
 							{
 								"$type": "Core.SpaceRestriction:Direction:",
-								"from": { "$type": "Cards:ThisCard:" },
+								"from": { "$type": "Cards:ThisCardNow:" },
 								"directionToMatch": {
 									"$type": "Spaces:Direction:",
 									"from": { "$type": "Cards:CardBefore:" },
-									"to": { "$type": "Cards:ThisCard:" }
+									"to": { "$type": "Cards:ThisCardNow:" }
 								}
 							}
 						]

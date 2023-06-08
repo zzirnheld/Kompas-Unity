@@ -16,7 +16,7 @@
 								"$type": "ManyCards:CardsInPositions:",
 								"positions": {
 									"$type": "ManySpaces:AdjacentSpaces:",
-									"adjacentTo": { "$type": "Cards:ThisCard:" }
+									"adjacentTo": { "$type": "Cards:ThisCardNow:" }
 								}
 							},
 							"cardRestriction": { "$type": "Core.CardRestriction:Enemy:" }

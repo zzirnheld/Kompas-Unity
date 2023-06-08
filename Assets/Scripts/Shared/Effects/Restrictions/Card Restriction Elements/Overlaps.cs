@@ -23,8 +23,8 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 
 		protected override bool IsValidLogic(GameCardBase card, IResolutionContext context)
 		{
-			var otherCard = other.From(context, default);
-			var otherSpace = overrideOtherSpace?.From(context, default) ?? otherCard.Position;
+			var otherCard = other.From(context);
+			var otherSpace = overrideOtherSpace?.From(context) ?? otherCard.Position;
 
 			return otherCard.Overlaps(card, otherSpace);
 		}

@@ -12,7 +12,7 @@
 						{
 							"$type": "Core.TriggerRestriction:CardsMatch:",
 							"card": { "$type": "Cards:CardBefore:" },
-							"other": { "$type": "Cards:ThisCard:" }
+							"other": { "$type": "Cards:ThisCardNow:" }
 						}
 					]
 				}
@@ -27,7 +27,7 @@
 							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.SpaceRestriction:CompareDistance:",
-								"distanceTo": { "$type": "Cards:ThisCard:" },
+								"distanceTo": { "$type": "Cards:ThisCardNow:" },
 								"number": { "$type": "Numbers:Constant:", "constant": 1 },
 								"comparison": { "$type": "Relationships.Number:LessThanEqual:" }
 							}

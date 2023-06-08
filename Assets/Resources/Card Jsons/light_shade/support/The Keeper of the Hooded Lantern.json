@@ -12,7 +12,7 @@
 						{
 							"$type": "Core.TriggerRestriction:CardsMatch:",
 							"card": { "$type": "Cards:CardBefore:" },
-							"other": { "$type": "Cards:ThisCard:" }
+							"other": { "$type": "Cards:ThisCardNow:" }
 						}
 					]
 				}
@@ -38,7 +38,7 @@
 								"$type": "Core.CardRestriction:AOEContains:",
 								"cards": {
 									"$type": "ManyCards:FromSingle:",
-									"cards": [ { "$type": "Cards:ThisCard:" } ]
+									"cards": [ { "$type": "Cards:ThisCardNow:" } ]
 								}
 							}
 						]
@@ -61,7 +61,7 @@
 								"$type": "Core.CardRestriction:AOEContains:",
 								"cards": {
 									"$type": "ManyCards:FromSingle:",
-									"cards": [ { "$type": "Cards:ThisCard:" } ]
+									"cards": [ { "$type": "Cards:ThisCardNow:" } ]
 								}
 							}
 						]
@@ -102,7 +102,7 @@
 						"elements": [
 							{
 								"$type": "Core.SpaceRestriction:AdjacentTo:",
-								"space": { "$type": "Cards:ThisCard:" }
+								"space": { "$type": "Cards:ThisCardNow:" }
 							},
 							{
 								"$type": "Core.SpaceRestriction:CanPlayCard:",

@@ -11,7 +11,7 @@
 		//string to be deserialized
 		public string trigger;
 
-		public ActivationRestriction activationRestriction;
+		public IActivationRestriction activationRestriction;
 
 		public string blurb = "Effect";
 	}

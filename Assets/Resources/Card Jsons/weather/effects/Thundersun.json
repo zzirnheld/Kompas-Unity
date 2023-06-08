@@ -10,10 +10,10 @@
 				"triggerRestriction": {
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-						{ "$type": "Core.TriggerRestriction:MaxPerTurn:", "max": 5 },
+						{ "$type": "Core.GamestateRestriction:MaxPerTurn:", "max": 5 },
 						{
 							"$type": "Core.SpaceRestriction:InAOEOf:",
-							"card": { "$type": "Cards:ThisCard:" }
+							"card": { "$type": "Cards:ThisCardNow:" }
 						},
 						{
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",

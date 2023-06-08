@@ -44,19 +44,19 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 
 		private Func<GameCardBase, bool> IsValidAOE(Space space, IResolutionContext context)
 		{
-			var alsoInAOE = this.alsoInAOE?.From(context, default);
+			var alsoInAOE = this.alsoInAOE?.From(context);
 			if (alsoInAOE == null) return card => card.SpaceInAOE(space);
 			else return card => card.SpaceInAOE(space) && card.SpaceInAOE(alsoInAOE);
 		}
 
 		private bool ValidateCard(Func<GameCardBase, bool> IsValidCard, IResolutionContext context)
-			=> IsValidCard(card.From(context, default));
+			=> IsValidCard(card.From(context));
 
 		private bool ValidateAnyOf(Func<GameCardBase, bool> IsValidCard, IResolutionContext context) 
-			=> minAnyOfCount.From(context, default)
-				<= anyOf.From(context, default).Count(IsValidCard);
+			=> minAnyOfCount.From(context)
+				<= anyOf.From(context).Count(IsValidCard);
 
 		private bool ValidateAllOf(Func<GameCardBase, bool> IsValidCard, IResolutionContext context)
-			=> allOf.From(context, default).All(IsValidCard);
+			=> allOf.From(context).All(IsValidCard);
 	}
 }

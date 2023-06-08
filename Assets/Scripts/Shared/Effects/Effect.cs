@@ -26,8 +26,8 @@ namespace KompasCore.Effects
 		public int SubeffectIndex { get; protected set; }
 
 		//Targets
-		protected List<GameCard> cardTargets => ResolutionContext.CardTargets;
-		protected List<Space> spaceTargets => ResolutionContext.SpaceTargets;
+		protected IList<GameCard> cardTargets => ResolutionContext.CardTargets;
+		protected IList<Space> spaceTargets => ResolutionContext.SpaceTargets;
 		public IList<GameCard> CardTargets => cardTargets;
 		public IList<Space> SpaceTargets => spaceTargets;
 
@@ -53,7 +53,7 @@ namespace KompasCore.Effects
 		//Triggering and Activating
 		public abstract Trigger Trigger { get; }
 		public TriggerData triggerData;
-		public ActivationRestriction activationRestriction;
+		public IActivationRestriction activationRestriction;
 
 		//Misc effect info
 		public string blurb;
@@ -102,7 +102,7 @@ namespace KompasCore.Effects
 		}
 
 		public virtual bool CanBeActivatedBy(Player controller)
-			=> Trigger == null && activationRestriction != null && activationRestriction.IsValidActivation(controller);
+			=> Trigger == null && activationRestriction != null && activationRestriction.IsValid(controller, default);
 
 		public virtual bool CanBeActivatedAtAllBy(Player activator)
 			=> Trigger == null && activationRestriction != null && activationRestriction.IsPotentiallyValidActivation(activator);

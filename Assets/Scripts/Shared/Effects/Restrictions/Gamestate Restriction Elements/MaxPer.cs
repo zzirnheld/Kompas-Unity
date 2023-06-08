@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace KompasCore.Effects.Restrictions.TriggerRestrictionElements
+namespace KompasCore.Effects.Restrictions.GamestateRestrictionElements
 {
-	public abstract class MaxPer : TriggerRestrictionBase
+	public abstract class MaxPer : GamestateRestrictionBase
 	{
 		public int max = 1;
 
@@ -10,8 +10,7 @@ namespace KompasCore.Effects.Restrictions.TriggerRestrictionElements
 
 		protected abstract int Uses { get; }
 
-		protected override bool IsValidLogic(TriggeringEventContext item, IResolutionContext context)
-			=> Uses < Max; // ? true : LogFalse();
+		protected override bool IsValidLogic(IResolutionContext context) => Uses < Max; // ? true : LogFalse();
 
 		//private bool LogFalse() { Debug.Log($"{Uses} exceeded {max} in {InitializationContext.effect}"); return false; }
 	}

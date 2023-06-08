@@ -23,7 +23,7 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 
 		protected override bool IsValidLogic(GameCardBase card, IResolutionContext context)
 		{
-			var wantedCards = cards.From(context, default)
+			var wantedCards = cards.From(context)
 				.Where(c => cardRestriction.IsValid(c, context));
 
 			return all

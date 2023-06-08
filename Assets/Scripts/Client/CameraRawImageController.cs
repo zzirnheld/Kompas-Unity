@@ -10,9 +10,9 @@ namespace KompasClient.UI
 		public RawImage rawImage;
 		public RectTransform textureRectTransform;
 
-        protected virtual bool DebugControl => false;
+		protected virtual bool DebugControl => false;
 
-        protected virtual void Update()
+		protected virtual void Update()
 		{
 			DoPointerStuff();
 		}

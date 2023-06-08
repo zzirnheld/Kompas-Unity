@@ -10,7 +10,7 @@
 				"triggerRestriction": {
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-						{ "$type": "Core.TriggerRestriction:MaxPerStack:" },
+						{ "$type": "Core.GamestateRestriction:MaxPerStack:" },
 						{
 							"$type": "Core.TriggerRestriction:CardsMatch:",
 							"card": { "$type": "Cards:CardBefore:" },
@@ -43,7 +43,7 @@
 								"$type": "Core.CardRestriction:Not:",
 								"negated": {
 									"$type": "Core.CardRestriction:CardsMatch:",
-									"card": { "$type": "Cards:ThisCard:" }
+									"card": { "$type": "Cards:ThisCardNow:" }
 								}
 							},
 							{
@@ -70,7 +70,7 @@
 							},
 							{
 								"$type": "Core.SpaceRestriction:Towards:",
-								"destination": { "$type": "Cards:ThisCard:" },
+								"destination": { "$type": "Cards:ThisCardNow:" },
 								"origin": { "$type": "Cards:TargetIndex:" }
 							}
 						]
@@ -88,7 +88,7 @@
 				"triggerRestriction": {
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-						{ "$type": "Core.TriggerRestriction:MaxPerStack:" },
+						{ "$type": "Core.GamestateRestriction:MaxPerStack:" },
 						{
 							"$type": "Core.TriggerRestriction:CardsMatch:",
 							"card": { "$type": "Cards:CardBefore:" },
@@ -121,7 +121,7 @@
 								"$type": "Core.CardRestriction:Not:",
 								"negated": {
 									"$type": "Core.CardRestriction:CardsMatch:",
-									"card": { "$type": "Cards:ThisCard:" }
+									"card": { "$type": "Cards:ThisCardNow:" }
 								}
 							}, 
 							{
@@ -148,7 +148,7 @@
 							},
 							{
 								"$type": "Core.SpaceRestriction:AwayFrom:",
-								"destination": { "$type": "Cards:ThisCard:" },
+								"destination": { "$type": "Cards:ThisCardNow:" },
 								"origin": { "$type": "Cards:TargetIndex:" }
 							}
 						]

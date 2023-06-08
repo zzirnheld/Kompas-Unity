@@ -11,7 +11,7 @@
 						{
 							"$type": "Core.TriggerRestriction:CardsMatch:",
 							"card": { "$type": "Cards:CardBefore:" },
-							"other": { "$type": "Cards:ThisCard:" }
+							"other": { "$type": "Cards:ThisCardNow:" }
 						}
 					]
 				}
@@ -26,7 +26,7 @@
 						"elements": [
 							{
 								"$type": "Core.SpaceRestriction:AdjacentTo:",
-								"space": { "$type": "Cards:ThisCard:" }
+								"space": { "$type": "Cards:ThisCardNow:" }
 							},
 							{
 								"$type": "Core.CardRestriction:CanMove:",

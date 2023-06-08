@@ -12,9 +12,9 @@
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{
 							"$type": "Core.SpaceRestriction:AdjacentTo:",
-							"space": { "$type": "Cards:ThisCard:" }
+							"space": { "$type": "Cards:ThisCardNow:" }
 						},
-						{ "$type": "Core.TriggerRestriction:MaxPerTurn:", "max": 2 },
+						{ "$type": "Core.GamestateRestriction:MaxPerTurn:", "max": 2 },
 						{
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 							"card": { "$type": "Cards:CardBefore:" },
@@ -29,7 +29,7 @@
 											"$type": "Core.CardRestriction:CardsMatch:",
 											"card": {
 												"$type": "Cards:AugmentedCard:",
-												"ofThisCard": { "$type": "Cards:ThisCard:" }
+												"ofThisCard": { "$type": "Cards:ThisCardNow:" }
 											}
 										}
 									}

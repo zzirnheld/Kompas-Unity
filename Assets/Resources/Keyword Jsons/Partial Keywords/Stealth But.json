@@ -24,7 +24,7 @@
 							} ]
 						}
 					},
-					"sameAs": { "$type": "Cards:ThisCard:" }
+					"sameAs": { "$type": "Cards:ThisCardNow:" }
 				}
 			]
 		}
@@ -54,7 +54,7 @@
 								"$type": "Core.CardRestriction:AOEContains:",
 								"cards": {
 									"$type": "ManyCards:FromSingle:",
-									"cards": [ { "$type": "Cards:ThisCard:" } ]
+									"cards": [ { "$type": "Cards:ThisCardNow:" } ]
 								}
 							}
 						]

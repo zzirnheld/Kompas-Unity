@@ -24,10 +24,10 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 
 		protected override bool IsValidLogic(Space space, IResolutionContext context)
 		{
-			var origin = from?.From(context, default) ?? space;
-			var destination = to?.From(context, default) ?? space;
+			var origin = from?.From(context) ?? space;
+			var destination = to?.From(context) ?? space;
 
-			return origin.DirectionFromThisTo(destination) == direction.From(context, default);
+			return origin.DirectionFromThisTo(destination) == direction.From(context);
 		}
 	}
 }

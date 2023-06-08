@@ -16,7 +16,7 @@ namespace KompasCore.Effects.Restrictions.NumberRestrictionElements
 		}
 
 		protected override bool IsValidLogic(int item, IResolutionContext context)
-			=> comparison.Compare(item, other.From(context, default));
+			=> comparison.Compare(item, other.From(context));
 	}
 
 	public class Positive : Compare

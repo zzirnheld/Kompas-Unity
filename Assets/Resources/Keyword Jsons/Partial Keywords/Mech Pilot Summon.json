@@ -23,7 +23,7 @@
 				{ "$type": "Core.CardRestriction:CanPlay:" }
 			]
 		},
-		"toLinkWith": { "$type": "Cards:ThisCard:" }
+		"toLinkWith": { "$type": "Cards:ThisCardNow:" }
 	},
 	{
 		"$type":"Subeffect:Play:"

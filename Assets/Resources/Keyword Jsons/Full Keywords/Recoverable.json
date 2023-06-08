@@ -8,7 +8,7 @@
 			"elements": [
 				{
 					"$type": "Core.TriggerRestriction:CardsMatch:",
-					"card": { "$type": "Cards:ThisCard:" },
+					"card": { "$type": "Cards:ThisCardNow:" },
 					"anyOf": {
 						"$type": "ManyCards:Augments:",
 						"card": { "$type": "Cards:CardBefore:" }

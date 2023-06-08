@@ -10,7 +10,7 @@
 				"triggerRestriction": {
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-						{ "$type": "Core.TriggerRestriction:MaxPerTurn:" },
+						{ "$type": "Core.GamestateRestriction:MaxPerTurn:" },
 						{
 							"$type": "Core.SpaceRestriction:AdjacentTo:",
 							"cardRestriction": { "elements": [
@@ -32,7 +32,7 @@
 										"$type": "Core.CardRestriction:Not:",
 										"negated": {
 											"$type": "Core.CardRestriction:CardsMatch:",
-											"card": { "$type": "Cards:ThisCard:" }
+											"card": { "$type": "Cards:ThisCardNow:" }
 										}
 									}
 								]

@@ -12,9 +12,9 @@
 						{
 							"$type": "Core.TriggerRestriction:CardsMatch:",
 							"card": { "$type": "Cards:CardBefore:" },
-							"other": { "$type": "Cards:ThisCard:" }
+							"other": { "$type": "Cards:ThisCardNow:" }
 						},
-						{ "$type": "Core.TriggerRestriction:MaxPerStack:" },
+						{ "$type": "Core.GamestateRestriction:MaxPerStack:" },
 						{
 							"$type": "Core.TriggerRestriction:PlayersMatch:",
 							"firstPlayer": { "$type": "Players:TriggeringPlayer:" },
@@ -36,12 +36,12 @@
 								"$type": "Core.CardRestriction:Not:",
 								"negated": {
 									"$type": "Core.CardRestriction:CardsMatch:",
-									"card": { "$type": "Cards:ThisCard:" }
+									"card": { "$type": "Cards:ThisCardNow:" }
 								}
 							},
 							{
 								"$type": "Core.SpaceRestriction:CompareDistance:",
-								"distanceTo": { "$type": "Cards:ThisCard:" },
+								"distanceTo": { "$type": "Cards:ThisCardNow:" },
 								"number": { "$type": "Numbers:Constant:", "constant": 4 },
 								"comparison": { "$type": "Relationships.Number:LessThanEqual:" }
 							}

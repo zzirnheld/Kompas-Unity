@@ -10,12 +10,12 @@
 				"triggerRestriction": {
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-						{ "$type": "Core.TriggerRestriction:MaxPerStack:" },
+						{ "$type": "Core.GamestateRestriction:MaxPerStack:" },
 						{
 							"$type": "Core.TriggerRestriction:CardsMatch:",
 							"card": {
 								"$type": "Cards:AugmentedCard:",
-								"ofThisCard": { "$type": "Cards:ThisCard:" }
+								"ofThisCard": { "$type": "Cards:ThisCardNow:" }
 							},
 							"other": { "$type": "Cards:CardBefore:" }
 						}

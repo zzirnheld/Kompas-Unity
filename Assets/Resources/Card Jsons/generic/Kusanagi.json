@@ -13,10 +13,10 @@
 							"card": { "$type": "Cards:CardBefore:" },
 							"other": {
 								"$type": "Cards:AugmentedCard:",
-								"ofThisCard": { "$type": "Cards:ThisCard:" }
+								"ofThisCard": { "$type": "Cards:ThisCardNow:" }
 							}
 						},
-						{ "$type": "Core.TriggerRestriction:MaxPerRound:" }
+						{ "$type": "Core.GamestateRestriction:MaxPerRound:" }
 					]
 				}
 			},
@@ -34,7 +34,7 @@
 							"elements": [
 							{
 								"$type": "Core.SpaceRestriction:Behind:",
-								"card": { "$type": "Cards:ThisCard:" }
+								"card": { "$type": "Cards:ThisCardNow:" }
 							}
 						]
 					}

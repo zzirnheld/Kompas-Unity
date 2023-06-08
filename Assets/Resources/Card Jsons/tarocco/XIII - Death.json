@@ -29,8 +29,9 @@
 		},
 		{
 			"activationRestriction": {
-				"activationRestrictionArray": [
-					"Default"
+				"$type": "Core.PlayerRestriction:AllOf:",
+				"elements": [
+					{ "$type": "Core.PlayerRestriction:DefaultActivationRestrictions:" }
 				]
 			},
 			"subeffects": [
@@ -53,7 +54,7 @@
 							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.SpaceRestriction:AdjacentTo:",
-								"space": { "$type": "Cards:ThisCard:" }
+								"space": { "$type": "Cards:ThisCardNow:" }
 							},
 							{
 								"$type": "Core.CardRestriction:CardValueFits:",

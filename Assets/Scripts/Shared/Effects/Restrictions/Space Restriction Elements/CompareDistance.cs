@@ -23,10 +23,10 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 
 		protected override bool IsValidLogic(Space space, IResolutionContext context)
 		{
-			var origin = this.distanceTo.From(context, default);
+			var origin = this.distanceTo.From(context);
 			int distance = origin.DistanceTo(space);
 
-			int number = this.number.From(context, default);
+			int number = this.number.From(context);
 
 			return comparison.Compare(distance, number);
 		}
@@ -48,8 +48,8 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 
 		protected override bool IsValidLogic(Space item, IResolutionContext context)
 		{
-			var destination = this.destination.From(context, default);
-			return destination.DistanceTo(item) < destination.DistanceTo(origin.From(context, default));
+			var destination = this.destination.From(context);
+			return destination.DistanceTo(item) < destination.DistanceTo(origin.From(context));
 		}
 	}
 
@@ -69,8 +69,8 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 
 		protected override bool IsValidLogic(Space item, IResolutionContext context)
 		{
-			var destination = this.destination.From(context, default);
-			return destination.DistanceTo(item) > destination.DistanceTo(origin.From(context, default));
+			var destination = this.destination.From(context);
+			return destination.DistanceTo(item) > destination.DistanceTo(origin.From(context));
 		}
 	}
 }
