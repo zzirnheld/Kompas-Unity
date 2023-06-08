@@ -38,8 +38,7 @@
 	],
 	"AttackRestriction": {
 		"attackRestrictions": [
-			"Default",
-			"This is Activated"
+			"Default"
 		],
 		"maxAttacks": 3
 	},
