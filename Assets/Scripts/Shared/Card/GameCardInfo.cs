@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
 namespace KompasCore.Cards
 {
@@ -20,7 +19,10 @@ namespace KompasCore.Cards
 
 		public abstract PlayRestriction PlayRestriction { get; }
 		public abstract MovementRestriction MovementRestriction { get; }
-		public abstract AttackRestriction AttackRestriction { get; }
+		/// <summary>
+        /// When attacking, this restriction must be true of the defender.
+        /// </summary>
+		public abstract IRestriction<GameCardBase> AttackingDefenderRestriction { get; }
 		#endregion
 
 		#region mutable aspects
@@ -198,7 +200,7 @@ namespace KompasCore.Cards
 
 		public override PlayRestriction PlayRestriction { get; }
 		public override MovementRestriction MovementRestriction { get; }
-		public override AttackRestriction AttackRestriction { get; }
+		public override IRestriction<GameCardBase> AttackingDefenderRestriction { get; }
 
 
 		public override int BaseN { get; }
@@ -257,7 +259,7 @@ namespace KompasCore.Cards
 			KnownToEnemy = card.KnownToEnemy;
 			PlayRestriction = card.PlayRestriction;
 			MovementRestriction = card.MovementRestriction;
-			AttackRestriction = card.AttackRestriction;
+			AttackingDefenderRestriction = card.AttackingDefenderRestriction;
 
 			BaseN = card.BaseN;
 			BaseE = card.BaseE;

@@ -1,6 +1,5 @@
 using KompasCore.Cards;
-using System.Collections;
-using System.Collections.Generic;
+using KompasCore.Effects;
 using UnityEngine;
 
 namespace KompasServer.GameCore.Extensions
@@ -56,7 +55,7 @@ namespace KompasServer.GameCore.Extensions
 			}
 
 			//Debug.Log($"Checking validity of attack of {attacker.CardName} on {defender} by {instigator.index}");
-			return attacker.AttackRestriction.IsValidAttack(defender, stackSrc: null);
+			return attacker.AttackingDefenderRestriction.IsValid(defender, context: ResolutionContext.PlayerTrigger(null, game));
 		}
 	}
 }

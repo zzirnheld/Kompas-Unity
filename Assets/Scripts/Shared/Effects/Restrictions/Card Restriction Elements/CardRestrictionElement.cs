@@ -1,4 +1,6 @@
 using KompasCore.Cards;
+using KompasCore.Helpers;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -52,6 +54,40 @@ namespace KompasCore.Effects.Restrictions
 		{
 			protected override bool IsValidLogic(GameCardBase card, IResolutionContext context)
 				=> card != null;
+		}
+
+		/// <summary>
+		/// A specialized AllOf containing the default elements, plus 
+		/// </summary>
+		public class AttackingDefender : AllOf
+		{
+			protected override IEnumerable<IRestriction<GameCardBase>> DefaultElements
+			{
+				get
+				{
+					yield return new Restrictions.GamestateRestrictionElements.CardFitsRestriction()
+					{
+						card = new Identities.Cards.ThisCardNow(),
+						cardRestriction = new AllOf()
+						{
+							elements = new IRestriction<GameCardBase>[]
+							{
+								new Friendly(),
+								new Character(),
+								new Location(CardLocation.Board)
+							}
+						}
+					};
+					yield return new Character();
+					yield return new Enemy();
+					yield return new Restrictions.SpaceRestrictionElements.AdjacentTo()
+					{
+						card = new Identities.Cards.ThisCardNow()
+					};
+					yield return new Restrictions.GamestateRestrictionElements.MaxPerTurn();
+					yield return new Restrictions.GamestateRestrictionElements.NothingHappening();
+				}
+			}
 		}
 	}
 }

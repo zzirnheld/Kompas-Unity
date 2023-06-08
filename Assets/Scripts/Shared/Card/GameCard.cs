@@ -1,4 +1,5 @@
 ﻿using KompasCore.Effects;
+using KompasCore.Effects.Restrictions.CardRestrictionElements;
 using KompasCore.Exceptions;
 using KompasCore.GameCore;
 using System;
@@ -119,7 +120,7 @@ namespace KompasCore.Cards
 
 		//restrictions
 		public override MovementRestriction MovementRestriction { get; }
-		public override AttackRestriction AttackRestriction { get; }
+		public override IRestriction<GameCardBase> AttackingDefenderRestriction { get; }
 		public override PlayRestriction PlayRestriction { get; }
 
 		//controller/owners
@@ -197,10 +198,13 @@ namespace KompasCore.Cards
 			InitialCardValues = serializeableCard;
 
 			EffectInitializationContext initializationContext = new EffectInitializationContext(game, this); //Can't use property because constructor hasn't gotten there yet
+
 			MovementRestriction = serializeableCard.MovementRestriction ?? new MovementRestriction();
 			MovementRestriction.Initialize(initializationContext);
-			AttackRestriction = serializeableCard.AttackRestriction ?? new AttackRestriction();
-			AttackRestriction.Initialize(initializationContext);
+
+			AttackingDefenderRestriction = serializeableCard.AttackingDefenderRestriction ?? new AttackingDefender();
+			AttackingDefenderRestriction.Initialize(initializationContext);
+
 			PlayRestriction = serializeableCard.PlayRestriction ?? new PlayRestriction();
 			PlayRestriction.Initialize(initializationContext);
 

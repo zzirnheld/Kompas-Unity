@@ -106,9 +106,9 @@ namespace KompasCore.UI
 			if (ShownGameCard.Location == CardLocation.Board)
 			{
 				//if you can attack at all, enable the attack indicator
-				if (ShownGameCard.AttackRestriction.CouldAttackValidTarget(stackSrc: null))
+				if (ShownGameCard.AttackingDefenderRestriction.CouldAttackValidTarget(stackSrc: null))
 					//oscillate the attack indicator if can attack a card right now
-					attackOscillator.Enable(ShownGameCard.AttackRestriction.CanAttackAnyCard(stackSrc: null));
+					attackOscillator.Enable(ShownGameCard.AttackingDefenderRestriction.CanAttackAnyCard(stackSrc: null));
 				else attackOscillator.Disable();
 
 				//if you can activate any effect, enable the attack indicator

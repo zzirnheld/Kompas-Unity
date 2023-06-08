@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using KompasCore.Helpers;
 using UnityEngine;
 
 namespace KompasCore.Effects
@@ -44,6 +45,7 @@ namespace KompasCore.Effects
 		public IList<IRestriction<RestrictedType>> elements = new IRestriction<RestrictedType>[] { };
 
 		protected virtual bool LogSoloElements => true;
+		protected virtual IEnumerable<IRestriction<RestrictedType>> DefaultElements => Enumerable.Empty<IRestriction<RestrictedType>>();
 
 		public delegate bool ShouldIgnore(IRestriction<RestrictedType> restriction);
 		private ShouldIgnore ignorePredicate = elem => false;
@@ -59,6 +61,9 @@ namespace KompasCore.Effects
 
 		public override void Initialize(EffectInitializationContext initializationContext)
 		{
+			elements = elements.Safe()
+				.Concat(DefaultElements)
+				.ToList();
 			base.Initialize(initializationContext);
 			foreach (var element in elements) element.Initialize(initializationContext);
 			if (LogSoloElements && elements.Count == 1) Debug.LogWarning($"only one element on {GetType()} on eff of {initializationContext.source}");

@@ -121,7 +121,7 @@ namespace KompasCore.UI
 						cue.Show(SpaceCueController.CueType.Move);
 					else if (card.MovementRestriction.WouldBeValidNormalMove((i, j)))
 						cue.Show(SpaceCueController.CueType.MoveOpenGamestate);
-					else if (card.AttackRestriction.IsValidAttack(BoardController.GetCardAt((i, j)), stackSrc: null))
+					else if (card.AttackingDefenderRestriction.IsValidAttack(BoardController.GetCardAt((i, j)), stackSrc: null))
 						cue.Show(SpaceCueController.CueType.Attack);
 					else if (card.PlayRestriction.IsRecommendedNormalPlay((i, j), card.Controller))
 						cue.Show(SpaceCueController.CueType.Play);
