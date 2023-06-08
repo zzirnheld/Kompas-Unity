@@ -7,12 +7,7 @@
 			"blurb": "Death Begets Life",
 			"activationRestriction": {
 				"$type": "Core.PlayerRestriction:ActivationRestriction:",
-				"elements": [
-					{
-						"$type": "Core.PlayerRestriction:DefaultActivationRestrictions:",
-						"locations": [ "Discard" ]
-					}
-				]
+				"locations": [ "Discard" ]
 			},
 			"subeffects": [
 				{
