@@ -5,7 +5,7 @@ using KompasCore.Effects.Identities;
 
 namespace KompasCore.Effects.Restrictions.TriggerRestrictionElements
 {
-	public class CardFitsRestriction : TriggerRestrictionBase
+	public class CardFitsRestriction : TriggerGamestateRestrictionBase
 	{
 		public IRestriction<GameCardBase> cardRestriction;
 		public IIdentity<GameCardBase> card;

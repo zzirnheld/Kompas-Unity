@@ -46,7 +46,7 @@
 	"AttackingDefenderRestriction": {
 		"$type": "Core.CardRestriction:AttackingDefender:",
 		"elements": [ {
-			"$type": "Core.GamestateRestriction:CardFitsRestriction:",
+			"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 			"card": { "$type": "Cards:ThisCardNow:" },
 			"cardRestriction": { "$type": "Core.CardRestriction:Active:" }
 		} ]

@@ -19,7 +19,7 @@ namespace KompasCore.Effects.Restrictions
 	/// <summary>
 	/// Base class for trigger restrictions that can also act like gamestate restrictions
 	/// </summary>
-	public abstract class TriggerGamestateRestrictionBase : RestrictionBase<TriggeringEventContext>, IGamestateRestriction
+	public abstract class TriggerGamestateRestrictionBase : TriggerRestrictionBase, IGamestateRestriction
 	{
 		public bool IsValid(IResolutionContext context) => IsValid(context.TriggerContext, context);
 
