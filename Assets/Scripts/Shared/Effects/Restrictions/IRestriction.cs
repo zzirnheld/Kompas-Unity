@@ -12,16 +12,16 @@ namespace KompasCore.Effects
 	
 	public abstract class RestrictionBase<RestrictedType> : ContextInitializeableBase, IRestriction<RestrictedType>
 	{
-        protected virtual bool AllowNullItem => false;
+		protected virtual bool AllowNullItem => false;
 
-        public bool IsValid(RestrictedType item, IResolutionContext context)
+		public bool IsValid(RestrictedType item, IResolutionContext context)
 		{
 			ComplainIfNotInitialized();
 
 			try
 			{
 				if (item == null && !AllowNullItem) return false;
-                return IsValidLogic(item, context);
+				return IsValidLogic(item, context);
 			}
 			catch (SystemException exception)
 				when (exception is NullReferenceException || exception is ArgumentException)
@@ -36,8 +36,8 @@ namespace KompasCore.Effects
 
 	public interface IAllOf<RestrictedType> : IRestriction<RestrictedType>
 	{
-        public bool IsValidIgnoring(RestrictedType item, IResolutionContext context, AllOfBase<RestrictedType>.ShouldIgnore ignorePredicate);
-    }
+		public bool IsValidIgnoring(RestrictedType item, IResolutionContext context, AllOfBase<RestrictedType>.ShouldIgnore ignorePredicate);
+	}
 
 	public abstract class AllOfBase<RestrictedType> : RestrictionBase<RestrictedType>, IAllOf<RestrictedType>
 	{
@@ -45,19 +45,19 @@ namespace KompasCore.Effects
 
 		protected virtual bool LogSoloElements => true;
 
-        public delegate bool ShouldIgnore(IRestriction<RestrictedType> restriction);
-        private ShouldIgnore ignorePredicate = elem => false;
+		public delegate bool ShouldIgnore(IRestriction<RestrictedType> restriction);
+		private ShouldIgnore ignorePredicate = elem => false;
 
 		public bool IsValidIgnoring(RestrictedType item, IResolutionContext context, ShouldIgnore ignorePredicate)
 		{
-            ShouldIgnore oldVal = this.ignorePredicate;
-            this.ignorePredicate = ignorePredicate;
-            bool ret = IsValid(item, context);
-            this.ignorePredicate = oldVal;
-            return ret;
-        }
+			ShouldIgnore oldVal = this.ignorePredicate;
+			this.ignorePredicate = ignorePredicate;
+			bool ret = IsValid(item, context);
+			this.ignorePredicate = oldVal;
+			return ret;
+		}
 
-        public override void Initialize(EffectInitializationContext initializationContext)
+		public override void Initialize(EffectInitializationContext initializationContext)
 		{
 			base.Initialize(initializationContext);
 			foreach (var element in elements) element.Initialize(initializationContext);

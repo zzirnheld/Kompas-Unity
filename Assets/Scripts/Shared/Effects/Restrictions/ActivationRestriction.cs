@@ -7,7 +7,7 @@
 	public static class IActivationRestrictionExtensions
 	{
 		public static bool IsPotentiallyValidActivation(this IActivationRestriction restriction, Player activator)
-            => restriction.IsValidIgnoring(activator, default,
-                restriction => restriction is not Restrictions.GamestateRestrictionElements.NothingHappening);
+			=> restriction.IsValidIgnoring(activator, default,
+				restriction => restriction is not Restrictions.GamestateRestrictionElements.NothingHappening);
 	}
 }
