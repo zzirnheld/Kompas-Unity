@@ -1,9 +1,8 @@
 {
 	"blurb":"Linewalk",
 	"activationRestriction": {
-		"$type": "Core.PlayerRestriction:AllOf:",
+		"$type": "Core.PlayerRestriction:ActivationRestriction:",
 		"elements": [
-			{ "$type": "Core.PlayerRestriction:DefaultActivationRestrictions:" },
 			{
 				"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 				"card": { "$type": "Cards:ThisCardNow:" },

@@ -1,10 +1,7 @@
 {
 	"blurb":"Repositionable",
 	"activationRestriction": {
-		"$type": "Core.PlayerRestriction:AllOf:",
-		"elements": [
-			{ "$type": "Core.PlayerRestriction:DefaultActivationRestrictions:" }
-		]
+		"$type": "Core.PlayerRestriction:ActivationRestriction:"
 	},
 	"subeffects":[
 		{

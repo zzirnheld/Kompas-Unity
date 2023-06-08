@@ -74,33 +74,5 @@ namespace KompasCore.Effects.Restrictions
 			protected override bool IsValidLogic(IResolutionContext context)
 				=> !negated.IsValid(context);
 		}
-
-		//TODO deduplicate with TriggerRestrictionElements.CardFitsRestriction
-		public class CardFitsRestriction : GamestateRestrictionBase
-		{
-			public IRestriction<GameCardBase> cardRestriction;
-			public IIdentity<GameCardBase> card;
-			public IIdentity<IReadOnlyCollection<GameCardBase>> anyOf;
-
-			public override void Initialize(EffectInitializationContext initializationContext)
-			{
-				base.Initialize(initializationContext);
-				card?.Initialize(initializationContext);
-				anyOf?.Initialize(initializationContext);
-				cardRestriction.Initialize(initializationContext);
-
-				if (AllNull(card, anyOf)) throw new System.ArgumentException($"No card to check against restriction in {initializationContext.effect}");
-			}
-
-			protected override bool IsValidLogic(IResolutionContext contextToConsider)
-			{
-				bool IsValidCard(GameCardBase c) => !cardRestriction.IsValid(c, contextToConsider);
-
-				if (card != null && !IsValidCard(card.From(contextToConsider))) return false;
-				if (anyOf != null && !anyOf.From(contextToConsider).Any(IsValidCard)) return false;
-
-				return true;
-			}
-		}
 	}
 }
