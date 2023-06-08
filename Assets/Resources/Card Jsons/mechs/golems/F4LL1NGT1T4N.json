@@ -6,11 +6,10 @@
 		{
 			"blurb": "T3L3P0RT",
 			"activationRestriction": {
-				"$type": "Core.PlayerRestriction:AllOf:",
+				"$type": "Core.PlayerRestriction:ActivationRestriction:",
 				"elements": [
-					{ "$type": "Core.PlayerRestriction:DefaultActivationRestrictions:" },
 					{
-						"$type": "Core.GamestateRestriction:CardFitsRestriction:",
+						"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 						"card": { "$type": "Cards:ThisCardNow:" },
 						"cardRestriction": {
 							"$type": "Core.CardRestriction:CardValueFits:",
@@ -69,11 +68,13 @@
 			"Activated"
 		]
 	},
-	"AttackRestriction": {
-		"attackRestrictions": [
-			"Default",
-			"This is Activated"
-		]
+	"AttackingDefenderRestriction": {
+		"$type": "Core.CardRestriction:AttackingDefender:",
+		"elements": [ {
+			"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+			"card": { "$type": "Cards:ThisCardNow:" },
+			"cardRestriction": { "$type": "Core.CardRestriction:Active:" }
+		} ]
 	},
 	"n": 4,
 	"e": 8,

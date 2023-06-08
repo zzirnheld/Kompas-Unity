@@ -1,11 +1,10 @@
 {
 	"blurb":"Linewalk",
 	"activationRestriction": {
-		"$type": "Core.PlayerRestriction:AllOf:",
+		"$type": "Core.PlayerRestriction:ActivationRestriction:",
 		"elements": [
-			{ "$type": "Core.PlayerRestriction:DefaultActivationRestrictions:" },
 			{
-				"$type": "Core.GamestateRestriction:CardFitsRestriction:",
+				"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 				"card": { "$type": "Cards:ThisCardNow:" },
 				"cardRestriction": {
 					"$type": "Core.CardRestriction:CardValueFits:",

@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using KompasCore.Cards;
+using KompasCore.Effects.Identities;
 using UnityEngine;
 
 namespace KompasCore.Effects.Restrictions
@@ -9,15 +11,17 @@ namespace KompasCore.Effects.Restrictions
 	/// <summary>
 	/// Exists on its own as a version of a "restriction" that doesn't require any context
 	/// </summary>
-	public interface IGamestateRestriction : IContextInitializeable
+	public interface IGamestateRestriction : IContextInitializeable,
+		IRestriction<TriggeringEventContext>, IRestriction<Player>, IRestriction<GameCardBase>
 	{
 		bool IsValid(IResolutionContext context);
 	}
 
-	public abstract class GamestateRestrictionBase : ContextInitializeableBase, IGamestateRestriction, IRestriction<TriggeringEventContext>, IRestriction<Player>
+	public abstract class GamestateRestrictionBase : ContextInitializeableBase, IGamestateRestriction
 	{
 		public bool IsValid(TriggeringEventContext item, IResolutionContext context) => IsValid(context);
 		public bool IsValid(Player item, IResolutionContext context) => IsValid(context);
+		public bool IsValid(GameCardBase item, IResolutionContext context) => IsValid(context);
 
 		public bool IsValid(IResolutionContext context)
 		{

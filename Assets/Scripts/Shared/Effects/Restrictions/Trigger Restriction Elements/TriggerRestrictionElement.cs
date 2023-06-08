@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
+using KompasCore.Cards;
 
 namespace KompasCore.Effects.Restrictions
 {
@@ -13,6 +13,18 @@ namespace KompasCore.Effects.Restrictions
 			=> useDummyResolutionContext
 				? IResolutionContext.Dummy(triggeringContext)
 				: resolutionContext;
+	}
+
+	/// <summary>
+	/// Base class for trigger restrictions that can also act like gamestate restrictions
+	/// </summary>
+	public abstract class TriggerGamestateRestrictionBase : TriggerRestrictionBase, IGamestateRestriction
+	{
+		public bool IsValid(IResolutionContext context) => IsValid(context.TriggerContext, context);
+
+		public bool IsValid(Player item, IResolutionContext context) => IsValid(context.TriggerContext, context);
+
+		public bool IsValid(GameCardBase item, IResolutionContext context) => IsValid(context.TriggerContext, context);
 	}
 
 	namespace TriggerRestrictionElements

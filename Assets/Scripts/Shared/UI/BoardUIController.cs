@@ -1,4 +1,5 @@
 ﻿using KompasCore.Cards;
+using KompasCore.Effects;
 using KompasCore.GameCore;
 using System;
 using System.Collections.Generic;
@@ -121,7 +122,7 @@ namespace KompasCore.UI
 						cue.Show(SpaceCueController.CueType.Move);
 					else if (card.MovementRestriction.WouldBeValidNormalMove((i, j)))
 						cue.Show(SpaceCueController.CueType.MoveOpenGamestate);
-					else if (card.AttackRestriction.IsValidAttack(BoardController.GetCardAt((i, j)), stackSrc: null))
+					else if (card.AttackingDefenderRestriction.IsValid(BoardController.GetCardAt((i, j)), context: ResolutionContext.PlayerTrigger(null, BoardController.Game)))
 						cue.Show(SpaceCueController.CueType.Attack);
 					else if (card.PlayRestriction.IsRecommendedNormalPlay((i, j), card.Controller))
 						cue.Show(SpaceCueController.CueType.Play);

@@ -8,6 +8,12 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 	{
 		public string[] locations;
 
+		public Location() { }
+		public Location(CardLocation location)
+		{
+			locations = new string[] { CardLocationHelpers.StringVersion(location) };
+		}
+
 		protected virtual IReadOnlyCollection<CardLocation> Locations => locations.Select(CardLocationHelpers.FromString).ToArray();
 
 		public override void Initialize(EffectInitializationContext initializationContext)

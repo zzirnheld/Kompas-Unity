@@ -1,9 +1,9 @@
 ﻿using KompasCore.Cards;
 using KompasCore.GameCore;
 using System;
-using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using KompasCore.Effects.Restrictions;
 
 namespace KompasCore.Effects
 {

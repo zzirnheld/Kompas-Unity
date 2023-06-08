@@ -92,11 +92,12 @@
 			]
 		}
 	],
-	"AttackRestriction": {
-		"attackRestrictions": [
-			"Default",
-			"Not Normally"
-		]
+	"AttackingDefenderRestriction": {
+		"$type": "Core.CardRestriction:AttackingDefender:",
+		"elements": [ {
+			"$type": "Core.GamestateRestriction:Not:",
+			"negated": { "$type": "Core.GamestateRestriction:Normally:" }
+		} ]
 	},
 	"MovementRestriction": {
 		"normalRestrictionsFromJson": [
