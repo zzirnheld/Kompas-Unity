@@ -36,16 +36,14 @@
 			]
 		}
 	],
-	"AttackRestriction": {
-		"attackRestrictions": [
-			"Default"
-		],
-		"maxAttacks": 3
+	"AttackingDefenderRestriction": {
+		"$type": "Core.CardRestriction:AttackingDefender:",
+		"maxPerTurn": 3
 	},
 	"n": 7,
-	"e": 11,
+	"e": 6,
 	"s": 11,
 	"w": 5,
-	"subtypes": [ "Ethereal" ],
-	"subtypeText": "Ethereal Revenant"
+	"subtypes": [ "Ethereal", "Dragon" ],
+	"subtypeText": "Ethereal Dragon"
 }

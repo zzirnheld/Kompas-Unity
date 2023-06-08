@@ -101,11 +101,13 @@
 			"Activated"
 		]
 	},
-	"AttackRestriction": {
-		"attackRestrictions": [
-			"Default",
-			"This is Activated"
-		]
+	"AttackingDefenderRestriction": {
+		"$type": "Core.CardRestriction:AttackingDefender:",
+		"elements": [ {
+			"$type": "Core.GamestateRestriction:CardFitsRestriction:",
+			"card": { "$type": "Cards:ThisCardNow:" },
+			"cardRestriction": { "$type": "Core.CardRestriction:Active:" }
+		} ]
 	},
 	"n": 5,
 	"e": 2,

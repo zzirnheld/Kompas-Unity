@@ -9,12 +9,14 @@
 			"Activated"
 		]
 	},
-	"AttackRestriction": {
-		"attackRestrictions": [
-			"Default",
-			"This is Activated"
-		],
-		"maxAttacks": 3
+	"AttackingDefenderRestriction": {
+		"$type": "Core.CardRestriction:AttackingDefender:",
+		"maxPerTurn": 3,
+		"elements": [ {
+			"$type": "Core.GamestateRestriction:CardFitsRestriction:",
+			"card": { "$type": "Cards:ThisCardNow:" },
+			"cardRestriction": { "$type": "Core.CardRestriction:Active:" }
+		} ]
 	},
 	"n": 4,
 	"e": 16,

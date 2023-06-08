@@ -61,6 +61,9 @@ namespace KompasCore.Effects.Restrictions
 		/// </summary>
 		public class AttackingDefender : AllOf
 		{
+			public int maxPerTurn = 1;
+			public bool waiveAdjacencyRequirement = false;
+
 			protected override IEnumerable<IRestriction<GameCardBase>> DefaultElements
 			{
 				get
@@ -78,13 +81,19 @@ namespace KompasCore.Effects.Restrictions
 							}
 						}
 					};
+					
 					yield return new Character();
 					yield return new Enemy();
-					yield return new Restrictions.SpaceRestrictionElements.AdjacentTo()
+
+					if (!waiveAdjacencyRequirement)
 					{
-						card = new Identities.Cards.ThisCardNow()
-					};
-					yield return new Restrictions.GamestateRestrictionElements.MaxPerTurn();
+						yield return new Restrictions.SpaceRestrictionElements.AdjacentTo()
+						{
+							card = new Identities.Cards.ThisCardNow()
+						};
+					}
+
+					yield return new Restrictions.GamestateRestrictionElements.MaxPerTurn() { max = maxPerTurn };
 					yield return new Restrictions.GamestateRestrictionElements.NothingHappening();
 				}
 			}
