@@ -68,7 +68,7 @@ namespace KompasCore.Effects.Restrictions
 			{
 				get
 				{
-					yield return new Restrictions.GamestateRestrictionElements.CardFitsRestriction()
+					yield return new Restrictions.TriggerRestrictionElements.CardFitsRestriction()
 					{
 						card = new Identities.Cards.ThisCardNow(),
 						cardRestriction = new AllOf()
@@ -81,7 +81,7 @@ namespace KompasCore.Effects.Restrictions
 							}
 						}
 					};
-					
+
 					yield return new Character();
 					yield return new Enemy();
 

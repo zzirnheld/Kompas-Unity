@@ -1,4 +1,6 @@
-﻿namespace KompasCore.Effects
+﻿using KompasCore.Effects.Restrictions;
+
+namespace KompasCore.Effects
 {
 	public class SerializableEffect
 	{
