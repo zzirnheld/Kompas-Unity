@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Aeolian",
-	"effText": "Territorial.\nWhen I attack a character, move them X spaces, then give them -X E. (You can move them anywhere connected by empty spaces.)",
+	"effText": "Territorial.\nWhen I attack a character, move them X spaces (as far as you want), then give them -X E.",
 	"effects": [
 		{
 			"blurb": "Air Breath",
@@ -9,22 +9,27 @@
 				"blurb": "Air Breath",
 				"triggerCondition": "Attack",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCardNow:" }
+						}
 					]
 				}
 			},
 			"subeffects": [
 				{
 					"$type":"Subeffect:TargetTriggeringCard:",
-					"secondary":true
+					"contextSecondaryCard":true
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where for Aeolian to move its target",
 					"spaceRestriction": {
-						"blurb": "where for Aeolian to move its target",
-						"spaceRestrictionElements": [ 
-                            { "$type": "Core.SpaceRestriction:Empty:" },
+						"$type": "Core.SpaceRestriction:AllOf:",
+						"elements": [ 
+							{ "$type": "Core.SpaceRestriction:Empty:" },
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
 								"toMove": { "$type": "Cards:TargetIndex:" }
@@ -34,8 +39,7 @@
 				},
 				{
 					"$type": "Subeffect:SetXByGamestate:",
-					"whatToCount": "Distance Between Target and Target Space",
-					"xMultiplier": 1
+					"whatToCount": "Distance Between Target and Target Space"
 				},
 				{
 					"$type": "Subeffect:Move:"

@@ -3,29 +3,29 @@ using KompasCore.Networking;
 
 namespace KompasCore.Networking
 {
-    public class ToggleAllowResponsesPacket : Packet
-    {
-        public bool enabled;
+	public class ToggleAllowResponsesPacket : Packet
+	{
+		public bool enabled;
 
-        public ToggleAllowResponsesPacket() : base(ToggleAllowResponses) { }
+		public ToggleAllowResponsesPacket() : base(ToggleAllowResponses) { }
 
-        public ToggleAllowResponsesPacket(bool enabled) : this()
-        {
-            this.enabled = enabled;
-        }
+		public ToggleAllowResponsesPacket(bool enabled) : this()
+		{
+			this.enabled = enabled;
+		}
 
-        public override Packet Copy() => new ToggleAllowResponsesPacket(enabled);
-    }
+		public override Packet Copy() => new ToggleAllowResponsesPacket(enabled);
+	}
 }
 
 namespace KompasClient.Networking
 {
-    public class ToggleAllowResponsesClientPacket : ToggleAllowResponsesPacket, IClientOrderPacket
-    {
-        public void Execute(ClientGame clientGame)
-        {
-            if (enabled) clientGame.clientUIController.GetResponse();
-            else clientGame.clientUIController.UngetResponse();
-        }
-    }
+	public class ToggleAllowResponsesClientPacket : ToggleAllowResponsesPacket, IClientOrderPacket
+	{
+		public void Execute(ClientGame clientGame)
+		{
+			if (enabled) clientGame.clientUIController.GetResponse();
+			else clientGame.clientUIController.UngetResponse();
+		}
+	}
 }

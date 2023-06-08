@@ -8,54 +8,55 @@
 			"triggerData": {
 				"triggerCondition": "Attack",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
-                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-                        {
-                            "$type": "Core.TriggerRestriction:CardsMatch:",
-                            "firstCard": {
-                                "$type": "Cards:AugmentedCard:",
-                                "ofThisCard": { "$type": "Cards:ThisCard:" }
-                            },
-                            "secondCard": { "$type": "Cards:MainCardBefore:" }
-                        },
-                        {
-                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "cardRestriction": {
-                                "cardRestrictionElements": [
-                                    {
-                                        "$type": "Core.CardRestriction:Subtypes:",
-                                        "subtypes": [ "Vessel" ]
-                                    }
-                                ]
-                            },
-                            "card": { "$type": "Cards:MainCardBefore:" }
-                        }
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": {
+								"$type": "Cards:AugmentedCard:",
+								"ofThisCard": { "$type": "Cards:ThisCardNow:" }
+							},
+							"other": { "$type": "Cards:CardBefore:" }
+						},
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+									{
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Vessel" ]
+									}
+								]
+							},
+							"card": { "$type": "Cards:CardBefore:" }
+						}
 					]
 				}
 			},
 			"subeffects": [
-                {
-                    "$type":"Subeffect:TargetAugmentedCard:"
-                },
+				{
+					"$type":"Subeffect:TargetAugmentedCard:"
+				},
 				{
 					"$type":"Subeffect:TargetTriggeringCard:",
-					"secondary":true
+					"contextSecondaryCard":true
 				},
 				{
 					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "W"
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:ChangeCardStats:",
 					"eMultiplier": 1,
-                    "targetIndex": -2
+					"targetIndex": -2
 				},
 				{
 					"$type": "Subeffect:Resummon:",
-                    "targetIndex": -2
+					"targetIndex": -2
 				}
 			]
 		}

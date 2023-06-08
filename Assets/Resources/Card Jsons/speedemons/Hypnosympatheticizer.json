@@ -8,47 +8,57 @@
 			"triggerData": {
 				"triggerCondition": "Move",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card",
-						"Max Per Stack"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCardNow:" }
+						},
+						{ "$type": "Core.GamestateRestriction:MaxPerStack:" }
 					]
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:TargetTriggeringCardsSpace:"
-				},
-				{
 					"$type": "Subeffect:CardTarget:",
 					"blurb": "card to sympa",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Distinct Name from Source"
-						],
-						"cardRestrictionElements": [
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
+							{ "$type": "Core.CardRestriction:DistinctName:" },
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+								"$type": "Core.CardRestriction:CanMove:",
+								"spaceRestrictionSubeffectIndex": 1
 							}
 						]
 					}
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where for speed victim to move",
 					"spaceRestriction": {
-						"blurb": "where for speed victim to move",
-						"spaceRestrictions": [
-							"Same Direction from Space to Card Target as Space Target to Source",
-							"Empty"
-						],
-						"spaceRestrictionElements": [ {
-							"$type": "Core.SpaceRestriction:CanMoveCard:",
-							"toMove": { "$type": "Cards:TargetIndex:" },
-							"distanceRestriction": {
-								"numberRestrictions": [ "==Constant" ],
-								"constant": 1
+						"$type": "Core.SpaceRestriction:AllOf:",
+						"elements": [
+							{
+								"$type": "Core.SpaceRestriction:CanMoveCard:",
+								"toMove": { "$type": "Cards:TargetIndex:" }
+							},
+							{
+								"$type": "Core.SpaceRestriction:CompareDistance:",
+								"distanceTo": { "$type": "Cards:TargetIndex:" },
+								"number": { "$type": "Numbers:Constant:", "constant": 1 }
+							},
+							{
+								"$type": "Core.SpaceRestriction:Direction:",
+								"from": { "$type": "Cards:TargetIndex:" },
+								"directionToMatch": {
+									"$type": "Spaces:Direction:",
+									"from": { "$type": "Cards:CardBefore:" },
+									"to": { "$type": "Cards:ThisCardNow:" }
+								}
 							}
-						} ]
+						]
 					}
 				},
 				{

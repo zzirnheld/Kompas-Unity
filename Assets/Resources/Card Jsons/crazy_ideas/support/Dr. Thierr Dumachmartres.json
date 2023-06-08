@@ -1,25 +1,45 @@
 {
 	"cardType": 67,
 	"cardName": "Dr. Thierr Dumachmartres",
-	"effText": "The first 3 times each turn an enemy plays a card normally, rummage.",
+	"effText": "When an enemy plays a card normally, hand->discard 1 card. 1 turn later, draw 1 card.",
 	"effects": [
 		{
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Enemy Triggered",
-						"No Stackable",
-						"Max Per Turn"
-					],
-					"maxTimesPerTurn": 3
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.TriggerRestriction:PlayersMatch:",
+							"firstPlayer": { "$type": "Players:TriggeringPlayer:" },
+							"secondPlayer": { "$type": "Players:FriendlyPlayer:" }
+						},
+						{ "$type": "Core.TriggerRestriction:Normally:" }
+					]
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:Keyword:",
-					"keyword": "Rummage"
+					"$type": "Subeffect:CardTarget:",
+					"blurb": "Evil scheme!?",
+					"toSearch": { "$type": "ManyCards:Hand:" },
+					"cardRestriction": { "$type": "Core.CardRestriction:AlwaysValid:" }
+				},
+				{
+					"$type": "Subeffect:Discard:"
+				},
+				{
+					"$type": "Subeffect:TargetTriggeringCard:"
+				},
+				{
+					"$type": "Subeffect:Hanging.Delay:",
+					"numTimesToDelay": 0,
+					"jumpIndices": [ 4 ],
+					"fallOffCondition": "",
+					"endCondition": "Turn Start"
+				},
+				{
+					"$type": "Subeffect:Draw:"
 				}
 			]
 		}

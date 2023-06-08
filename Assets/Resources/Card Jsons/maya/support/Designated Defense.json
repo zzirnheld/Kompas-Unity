@@ -4,12 +4,12 @@
 	"effText": "When turns start, an enemy chooses ANY space on the edge of the board. Deck->summon a Structure there (ignoring normal adjacency rules).",
 	"effects": [
 		{
-            "blurb": "Designate construction",
+			"blurb": "Designate construction",
 			"triggerData": {
 				"triggerCondition": "Turn Start",
-				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play"
+				"triggerRestriction":{
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" }
 					]
 				}
 			},
@@ -19,32 +19,32 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "Space for your enemy to play a Structure to",
 					"spaceRestriction": {
-						"blurb": "Space for your enemy to play a Structure to",
-						"spaceRestrictions": [ "On Edge of Board" ],
-                        "spaceRestrictionElements": [
-                            { "$type": "Core.SpaceRestriction:Empty:" }
-                        ]
+						"$type": "Core.SpaceRestriction:AllOf:",
+						"elements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" },
+							{ "$type": "Core.SpaceRestriction:Edge:" }
+						]
 					}
 				},
 				{
-					"$type": "Subeffect:DeckTarget:",
+					"$type": "Subeffect:CardTarget:",
+					"blurb": "Designated build site",
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"blurb": "Designated build site",
-						"cardRestrictions": [
-							"Deck",
-							"Character",
-							"Can be Played to Target Space"
-						],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Structure" ]
+							},
+							{
+								"$type": "Core.CardRestriction:CanPlay:",
+								"destination": { "$type": "Spaces:TargetIndex:" },
+								"ignoring": [ "Adjacent to Friendly Card" ]
 							}
-						],
-						"canPlayIgnoring": [
-							"Adjacent to Friendly Card"
 						]
 					},
 					"playerIndex": 0
@@ -64,6 +64,6 @@
 		"Vanishing",
 		"Maya"
 	],
-	"subtypeText": "Maya Vanishing",
+	"subtypeText": "Maya",
 	"duration": 3
 }

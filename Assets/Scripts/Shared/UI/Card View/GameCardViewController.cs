@@ -4,206 +4,173 @@ using KompasCore.Cards;
 using System.Linq;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+using static KompasCore.UI.UIController;
 
 namespace KompasCore.UI
 {
-    [RequireComponent(typeof(CardController))]
-    public class GameCardViewController : GameCardlikeViewController
-    {
-        public const float LargeUnzoomedTextFontSize = 32f;
-        public const float SmallUnzoomedTextFontSize = 22f;
-        private static float UnzoomedFontSizeForValue(int value) => value < 10 ? LargeUnzoomedTextFontSize : SmallUnzoomedTextFontSize;
+	[RequireComponent(typeof(CardController))]
+	public class GameCardViewController : GameCardlikeViewController
+	{
+		public const float LargeUnzoomedTextFontSize = 32f;
+		public const float SmallUnzoomedTextFontSize = 22f;
+		private static float UnzoomedFontSizeForValue(int value) => value < 10 ? LargeUnzoomedTextFontSize : SmallUnzoomedTextFontSize;
 
-        private bool Zoomed => overrideZoom ? zoomOverrideValue : ClientCameraController.MainZoomed;
+		private ZoomLevel ZoomLevel => ClientCameraController.MainZoomLevel;
 
-        private bool overrideZoom;
-        private bool zoomOverrideValue;
+		public CardAOEController aoeController;
 
-        public CardAOEController aoeController;
+		//Zoomed-in text is handled by base class
+		[Header("Zoomed-in card numeric stats")]
+		[EnumNamedArray(typeof(ZoomLevel))]
+		public TMP_Text[] zoomedInNTexts;
+		[EnumNamedArray(typeof(ZoomLevel))]
+		public TMP_Text[] zoomedInETexts;
+		[EnumNamedArray(typeof(ZoomLevel))]
+		public TMP_Text[] zoomedInCostTexts;
+		[EnumNamedArray(typeof(ZoomLevel))]
+		public TMP_Text[] zoomedInWTexts;
+		[EnumNamedArray(typeof(ZoomLevel))]
+		public TMP_Text[] costLabels;
 
-        //public MeshRenderer cardFaceRenderer;
-        /*
-        [Header("Card frame")]
-        public GameObject zoomedCharFrame;
-        public GameObject zoomedAllFrame;
-        public GameObject unzoomedCharFrame;
-        public GameObject unzoomedAllFrame;
+		public TMP_Text zoomedInWithTextName;
+		public TMP_Text zoomedInWithTextSubtype;
 
-        [Header("Stat backgrounds (the colored things)")]
-        public GameObject zoomedCharStatBackgrounds;
-        public GameObject zoomedSpellStatBackgrounds;
-        public GameObject zoomedAugStatBackgrounds;
+		//TODO give these to dummy cards, as empties probably
+		[Header("Card highlighting")]
+		public GameObject uniqueCopyObject;
+		public GameObject linkedCardObject;
+		public GameObject primaryStackableObject;
+		public GameObject secondaryStackableObject;
 
-        public GameObject unzoomedCharStatBackgrounds;
-        public GameObject unzoomedSpellStatBackgrounds;
-        public GameObject unzoomedAugStatBackgrounds;
+		[Header("Can attack/effect indicators")]
+		public OscillatingController attackOscillator;
+		public OscillatingController effectOscillator;
 
-        public Image nUnzoomedImage;
-        public Image eUnzoomedImage;
-        public Image sUnzoomedImage;
-        public Image wUnzoomedImage;
-        public Image cUnzoomedImage;
-        public Image aUnzoomedImage;*/
+		public GameObject zoomedInNoEffTextUI;
+		public GameObject unzoomedUI;
+		public GameObject zoomedInWithTextUI;
 
-        //Zoomed-in text is handled by base class
-        [Header("Zoomed-out card numeric stats")]
-        public TMP_Text unzoomedNText;
-        public TMP_Text unzoomedEText;
-        public TMP_Text unzoomedCostText;
-        public TMP_Text unzoomedWText;
+		public BoxCollider[] outsideCardBoxColliders;
 
-        //TODO give these to dummy cards, as empties probably
-        [Header("Card highlighting")]
-        public GameObject uniqueCopyObject;
-        public GameObject linkedCardObject;
-        public GameObject primaryStackableObject;
-        public GameObject secondaryStackableObject;
+		/// <summary>
+		/// Used to make sure we don't regenerate the texture unnecessarily
+		/// </summary>
+		private string oldFileName;
 
-        [Header("Can attack/effect indicators")]
-        public OscillatingController attackOscillator;
-        public OscillatingController effectOscillator;
+		protected override void Display()
+		{
+			base.Display();
 
-        public VoxelCardBase zoomedVoxelCard;
-        public VoxelCardBase unzoomedVoxelCard;
+			HandleZoom();
+		}
 
-        /// <summary>
-        /// Used to make sure we don't regenerate the texture unnecessarily
-        /// </summary>
-        private string oldFileName;
+		protected override bool ShowingInfo
+		{
+			set => base.ShowingInfo = value
+				&& (ShownGameCard.CardController.ShownInSearch
+					|| (ShownGameCard?.Location != CardLocation.Deck && ShownGameCard?.Location != CardLocation.Nowhere));
+		}
 
-        protected override void Display()
-        {
-            base.Display();
+		protected override void DisplayCardRulesText()
+		{
+			base.DisplayCardRulesText();
+			zoomedInWithTextName.text = shownCard.CardName;
+			zoomedInWithTextSubtype.text = shownCard.QualifiedSubtypeText;
+		}
 
-            HandleZoom();
-        }
+		protected void HandleZoom()
+		{
+			handleStatColors(nText, eText, costText, wText);
+			for (int i = 0; i < zoomedInNTexts.Length; i++)
+				handleStatColors(zoomedInNTexts[i], zoomedInETexts[i], zoomedInCostTexts[i], zoomedInWTexts[i]);
 
-        protected override bool ShowingInfo
-        {
-            set => base.ShowingInfo = value && ShownGameCard?.Location != CardLocation.Deck && ShownGameCard?.Location != CardLocation.Nowhere;
-        }
+			bool isChar = ShownCard.CardType == 'C';
+			cardModelController.ShowZoom(isChar: isChar, zoomLevel: ZoomLevel);
 
-        protected virtual void HandleZoom()
-        {
-            handleStatColors(nText, eText, costText, wText);
-            handleStatColors(unzoomedNText, unzoomedEText, unzoomedCostText, unzoomedWText);
+			unzoomedUI.SetActive(ZoomLevel == ZoomLevel.ZoomedOut);
+			zoomedInNoEffTextUI.SetActive(ZoomLevel == ZoomLevel.ZoomedInNoEffectText);
+			zoomedInWithTextUI.SetActive(ZoomLevel == ZoomLevel.ZoomedInWithEffectText);
+		}
 
-            unzoomedVoxelCard.gameObject.SetActive(!Zoomed);
-            zoomedVoxelCard.gameObject.SetActive(Zoomed);
-        }
+		private static bool HasCurrentlyActivateableEffect(GameCard card)
+			=> card.Effects != null && card.Effects.Count(e => e.CanBeActivatedBy(card.Controller)) > 0;
 
-        private static bool HasCurrentlyActivateableEffect(GameCard card)
-            => card.Effects != null && card.Effects.Count(e => e.CanBeActivatedBy(card.Controller)) > 0;
+		private static bool HasAtAllActivateableEffect(GameCard card)
+			=> card.Effects != null && card.Effects.Count(e => e.CanBeActivatedAtAllBy(card.Controller)) > 0;
 
-        private static bool HasAtAllActivateableEffect(GameCard card)
-            => card.Effects != null && card.Effects.Count(e => e.CanBeActivatedAtAllBy(card.Controller)) > 0;
+		protected override void DisplaySpecialEffects()
+		{
+			base.DisplaySpecialEffects();
+			ShowFrameColor();
 
-        protected override void DisplaySpecialEffects()
-        {
-            base.DisplaySpecialEffects();
-            ShowFrameColor();
+			if (ShownGameCard.Location == CardLocation.Board)
+			{
+				//if you can attack at all, enable the attack indicator
+				if (ShownGameCard.AttackRestriction.CouldAttackValidTarget(stackSrc: null))
+					//oscillate the attack indicator if can attack a card right now
+					attackOscillator.Enable(ShownGameCard.AttackRestriction.CanAttackAnyCard(stackSrc: null));
+				else attackOscillator.Disable();
 
-            if (ShownGameCard.Location == CardLocation.Board)
-            {
-                //if you can attack at all, enable the attack indicator
-                if (ShownGameCard.AttackRestriction.CouldAttackValidTarget(stackSrc: null))
-                    //oscillate the attack indicator if can attack a card right now
-                    attackOscillator.Enable(ShownGameCard.AttackRestriction.CanAttackAnyCard(stackSrc: null));
-                else attackOscillator.Disable();
+				//if you can activate any effect, enable the attack indicator
+				if (HasAtAllActivateableEffect(ShownGameCard))
+					//oscillate the effect indicator if you can activate an effect right now
+					effectOscillator.Enable(HasCurrentlyActivateableEffect(ShownGameCard));
+				else effectOscillator.Disable();
 
-                //if you can activate any effect, enable the attack indicator
-                if (HasAtAllActivateableEffect(ShownGameCard))
-                    //oscillate the effect indicator if you can activate an effect right now
-                    effectOscillator.Enable(HasCurrentlyActivateableEffect(ShownGameCard));
-                else effectOscillator.Disable();
+				if (shownCard.SpellSubtypes.Any(CardBase.RadialSubtype.Equals)) aoeController.Show(shownCard.Radius);
+			}
+			else
+			{
+				attackOscillator.Disable();
+				effectOscillator.Disable();
+				aoeController.Hide();
+			}
+		}
 
-                if (shownCard.SpellSubtypes.Any(CardBase.RadialSubtype.Equals)) aoeController.Show(shownCard.Radius);
-            }
-            else
-            {
-                attackOscillator.Disable();
-                effectOscillator.Disable();
-                aoeController.Hide();
-            }
+		protected override void DisplayCardNumericStats()
+		{
+			base.DisplayCardNumericStats();
 
-            //TODO move settings off of client and into shared
-            if (ShownGameCard.Game is ClientGame clientGame)
-            {
-                var settings = clientGame.clientUIController.clientUISettingsController.ClientSettings;
-                /*
-                switch (settings.statHighlight)
-                {
-                    case StatHighlight.NoHighlight:
-                        nUnzoomedImage.gameObject.SetActive(false);
-                        eUnzoomedImage.gameObject.SetActive(false);
-                        sUnzoomedImage.gameObject.SetActive(false);
-                        wUnzoomedImage.gameObject.SetActive(false);
-                        cUnzoomedImage.gameObject.SetActive(false);
-                        aUnzoomedImage.gameObject.SetActive(false);
-                        break;
-                    case StatHighlight.ColoredBack:
-                        nUnzoomedImage.gameObject.SetActive(true);
-                        eUnzoomedImage.gameObject.SetActive(true);
-                        sUnzoomedImage.gameObject.SetActive(true);
-                        wUnzoomedImage.gameObject.SetActive(true);
-                        cUnzoomedImage.gameObject.SetActive(true);
-                        aUnzoomedImage.gameObject.SetActive(true);
-                        break;
-                    default: throw new System.ArgumentException($"Invalid stat highlight setting {settings.statHighlight}");
-                }
+			for (int i = 0; i < zoomedInNTexts.Length; i++)
+			{
+				zoomedInNTexts[i].text = $"{shownCard.N}";
+				zoomedInETexts[i].text = $"{shownCard.E}";
+				zoomedInWTexts[i].text = $"{shownCard.W}";
 
-                //Debug.Log($"setting color to {settings.FriendlyColor}");
-                friendlyCardFrameMaterial.color = settings.FriendlyColor;
-                enemyCardFrameMaterial.color = settings.EnemyColor;*/
-            }
-        }
+				zoomedInCostTexts[i].text = $"{shownCard.Cost}";
+				costLabels[i].text = ShownCard.CostCardValue.DisplayName;
+			}
+		}
 
-        protected override void DisplayCardNumericStats()
-        {
-            base.DisplayCardNumericStats();
+		protected override string DisplayN(int n) => $"{n}";
+		protected override string DisplayE(int e) => $"{e}";
+		protected override string DisplayS(int s) => $"{s}";
+		protected override string DisplayW(int w) => $"{w}";
+		protected override string DisplayC(int c) => $"{c}";
+		protected override string DisplayA(int a) => $"{a}";
 
-            unzoomedNText.text = $"{shownCard.N}";
-            unzoomedEText.text = $"{shownCard.E}";
-            unzoomedWText.text = $"{shownCard.W}";
+		public virtual void ShowUniqueCopy(bool copy = true) => uniqueCopyObject.SetActive(copy);
 
-            unzoomedCostText.text = $"{shownCard.Cost}";
-        }
+		public virtual void ShowLinkedCard(bool show = true) => linkedCardObject.SetActive(show);
 
-        protected override void DisplayCardImage(Sprite cardImageSprite)
-        {
-            if (oldFileName == ShownCard.FileName) return;
+		public virtual void ShowPrimaryOfStackable(bool show = true) => primaryStackableObject.SetActive(show);
+		public virtual void ShowSecondaryOfStackable(bool show = true) => secondaryStackableObject.SetActive(show);
 
-            base.DisplayCardImage(cardImageSprite);
-            //TODO split this out if I ever make chars able to become spells or vice versa
-            zoomedVoxelCard.Init(ShownCard.CardType == 'C', cardImageSprite);
-            unzoomedVoxelCard.Init(ShownCard.CardType == 'C', cardImageSprite);
+		private void ShowFrameColor()
+		{
+			if (ShownGameCard.Controller == null)
+			{
+				//no controller yet, don't bother showing color
+				return;
+			}
+			/*
+			Material material = ShownGameCard.Controller.Friendly ? friendlyCardFrameMaterial : enemyCardFrameMaterial;
+			if (material == null) return; //Could be an error (TODO handle) but could be just a server card
 
-            oldFileName = ShownCard.FileName;
-        }
-
-        public virtual void ShowUniqueCopy(bool copy = true) => uniqueCopyObject.SetActive(copy);
-
-        public virtual void ShowLinkedCard(bool show = true) => linkedCardObject.SetActive(show);
-
-        public virtual void ShowPrimaryOfStackable(bool show = true) => primaryStackableObject.SetActive(show);
-        public virtual void ShowSecondaryOfStackable(bool show = true) => secondaryStackableObject.SetActive(show);
-
-        private void ShowFrameColor()
-        {
-            if (ShownGameCard.Controller == null)
-            {
-                //no controller yet, don't bother showing color
-                return;
-            }
-            /*
-            Material material = ShownGameCard.Controller.Friendly ? friendlyCardFrameMaterial : enemyCardFrameMaterial;
-            if (material == null) return; //Could be an error (TODO handle) but could be just a server card
-
-            foreach (var obj in frameObjects)
-            {
-                obj.material = material;
-            }*/
-        }
-    }
+			foreach (var obj in frameObjects)
+			{
+				obj.material = material;
+			}*/
+		}
+	}
 }

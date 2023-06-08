@@ -4,28 +4,25 @@
 	"effText": "When turns start, hand->summon a Maya Structure to a space on the edge of the board, then draw 1 card.",
 	"effects": [
 		{
-            "blurb": "Planned construction",
+			"blurb": "Planned construction",
 			"triggerData": {
 				"triggerCondition": "Turn Start",
-				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play"
+				"triggerRestriction":{
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" }
 					]
 				}
 			},
 			"subeffects": [
 				{
 					"$type":"Subeffect:CardTarget:",
+					"blurb":"for Well-Planned Defense to summon",
+					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction":
 					{
-						"blurb":"for Well-Planned Defense to summon",
-						"cardRestrictions":["Character"],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Hand" ]
-							},
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Maya", "Structure" ]
@@ -35,16 +32,17 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "Space on the edge of the board to play the Structure to",
 					"spaceRestriction": {
-						"blurb": "Space on the edge of the board to play the Structure to",
-						"spaceRestrictions": [ "On Edge of Board" ],
-                        "spaceRestrictionElements": [
-                            { "$type": "Core.SpaceRestriction:Empty:" },
-                            {
-                                "$type": "Core.SpaceRestriction:CanPlayCard:",
-                                "toPlay": { "$type": "Cards:TargetIndex:" }
-                            }
-                        ]
+						"$type": "Core.SpaceRestriction:AllOf:",
+						"elements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" },
+							{ "$type": "Core.SpaceRestriction:Edge:" },
+							{
+								"$type": "Core.SpaceRestriction:CanPlayCard:",
+								"toPlay": { "$type": "Cards:TargetIndex:" }
+							}
+						]
 					}
 				},
 				{
@@ -64,6 +62,6 @@
 		"Vanishing",
 		"Maya"
 	],
-	"subtypeText": "Maya Vanishing",
+	"subtypeText": "Maya",
 	"duration": 3
 }

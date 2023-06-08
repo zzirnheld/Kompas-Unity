@@ -5,34 +5,27 @@
 	"effects": [
 		{
 			"activationRestriction": {
-				"activationRestrictionArray": [
-					"Max Times Per Turn",
-					"Friendly Turn",
-					"Default"
+				"$type": "Core.PlayerRestriction:AllOf:",
+				"elements": [
+					{ "$type": "Core.PlayerRestriction:DefaultActivationRestrictions:" },
+					{ "$type": "Core.GamestateRestriction:MaxPerTurn:" }
 				]
 			},
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "angry WX character that might attack",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "angry WX character that might attack",
-						"cardRestrictions": [
-							"Controller Matches Player Target"
-						],
-						"cardRestrictionElements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							}
-						]
+						"$type": "Core.PlayerRestriction:PlayersMatch:",
+						"player": { "$type": "Players:TargetIndex:" }
 					}
 				},
 				{
 					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "W"
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:TargetEnemy:"
@@ -59,29 +52,30 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "cost > X card to reveal",
+					"toSearch": {
+						"$type": "ManyCards:Hand:",
+						"friendly": true, "enemy": true
+					},
 					"cardRestriction": {
-						"blurb": "cost > X card to reveal",
-						"cardRestrictions": [
-							"Controller Matches Player Target",
-							"Hidden",
-							"Card Value Fits Number Restriction"
-						],
-						"cardValue": {
-							"value": "Cost"
-						},
-						"cardValueNumberRestriction": {
-							"numberRestrictions": [
-								">X"
-							]
-						},
-						"cardRestrictionElements": [
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
+							{ "$type": "Core.CardRestriction:Hidden:" },
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Hand" ]
+								"$type": "Core.PlayerRestriction:PlayersMatch:",
+								"player": { "$type": "Players:TargetIndex:" }
+							},
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": { "value": "Cost" },
+								"numberRestriction": {
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:GreaterThan:" },
+									"other": { "$type": "Numbers:EffectX:" }
+								}
 							}
 						]
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:Reveal:"
@@ -91,22 +85,22 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "enemy character to attack",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "enemy character to attack",
-						"cardRestrictions": [
-							"Character",
-							"Controller Isn't Player Target",
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Card Target"
-							]
-						},
-						"cardRestrictionElements": [
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": { "$type": "Cards:TargetIndex:" }
+							},
+							{
+								"$type": "Core.PlayerRestriction:Not:",
+								"negated": {
+									"$type": "Core.PlayerRestriction:PlayersMatch:",
+									"player": { "$type": "Players:TargetIndex:" }
+								}
 							}
 						]
 					},

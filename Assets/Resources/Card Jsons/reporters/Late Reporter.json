@@ -7,17 +7,26 @@
 			"triggerData": {
 				"triggerCondition": "Move",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"Max Per Stack",
-						"This Card is Main Card",
-						"Stackable Source isn't This Effect",
-						"Stackable Source Fits Restriction Now"
-					],
-					"sourceRestriction": {
-						"cardRestrictions": [
-							"Is Source"
-						]
-					}
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCardNow:" }
+						},
+						{ "$type": "Core.GamestateRestriction:MaxPerStack:" },
+						{
+							"$type": "Core.TriggerRestriction:StackableFitsRestriction:",
+							"stackable": { "$type": "Stackables:StackableCause:" },
+							"restriction": {
+								"stackableRestrictionElements": [
+									{
+										"$type": "Core.EffectRestriction:Keyword:",
+										"keyword": "Speedemon"
+									}
+								]
+							}
+						}
+					]
 				}
 			},
 			"subeffects": [
@@ -36,8 +45,12 @@
 			"triggerData": {
 				"triggerCondition": "Move",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCardNow:" }
+						}
 					]
 				}
 			},
@@ -66,16 +79,18 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "spell to reveal",
+					"toSearch": {
+						"$type": "ManyCards:Hand:",
+						"friendly": true, "enemy": true
+					},
 					"cardRestriction": {
-						"blurb": "spell to reveal",
-						"cardRestrictions": [
-							"Controller Matches Player Target",
-							"Hidden"
-						],
-						"cardRestrictionElements": [
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
+							{ "$type": "Core.CardRestriction:Hidden:" },
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Hand" ]
+								"$type": "Core.PlayerRestriction:PlayersMatch:",
+								"player": { "$type": "Players:TargetIndex:" }
 							}
 						]
 					}

@@ -9,9 +9,16 @@
 				"blurb": "It's just a piece of wood!?",
 				"triggerCondition": "Defend",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Augmented Card is Main Card"
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": {
+								"$type": "Cards:AugmentedCard:",
+								"ofThisCard": { "$type": "Cards:ThisCardNow:" }
+							}
+						}
 					]
 				}
 			},
@@ -26,16 +33,19 @@
 					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "W"
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:Hanging.ChangeCardStats:",
 					"wMultiplier": -1,
 					"endCondition": "Battle End",
 					"triggerRestriction": {
-						"triggerRestrictions": [
-							"Contexts Stackables Match"
+						"elements": [
+							{
+								"$type": "Core.TriggerRestriction:StackablesMatch:",
+								"firstStackable": { "$type": "Stackables:StackableEvent:", "secondaryContext": true },
+								"secondStackable": { "$type": "Stackables:StackableEvent:" }
+							}
 						]
 					}
 				},
@@ -43,14 +53,18 @@
 					"$type": "Subeffect:TargetAugmentedCard:"
 				},
 				{
-					"$type": "Subeffect:Delay:",
+					"$type": "Subeffect:Hanging.Delay:",
 					"jumpIndices": [
 						6
 					],
 					"endCondition": "Battle End",
 					"triggerRestriction": {
-						"triggerRestrictions": [
-							"Contexts Stackables Match"
+						"elements": [
+							{
+								"$type": "Core.TriggerRestriction:StackablesMatch:",
+								"firstStackable": { "$type": "Stackables:StackableEvent:", "secondaryContext": true },
+								"secondStackable": { "$type": "Stackables:StackableEvent:" }
+							}
 						]
 					}
 				},

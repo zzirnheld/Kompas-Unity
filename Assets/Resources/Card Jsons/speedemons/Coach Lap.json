@@ -1,30 +1,38 @@
 {
 	"cardType": 67,
 	"cardName": "Coach Lap",
-	"effText": "Speedemon.\nThe first time each stack another character arrives adjacent to me, their controller moves them 1 space.",
+	"effText": "Speedemon.\nThe first time each stack a character arrives adjacent to me, their controller moves them 1 space.",
 	"effects": [
 		{
 			"blurb": "Lap! Yeah!",
 			"triggerData": {
 				"triggerCondition": "Arrive",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"Space Fits Restriction",
-						"Max Per Stack",
-						"Main Card Fits Restriction Before"
-					],
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Character",
-							"Different from Source"
-						]
-					},
-					"spaceRestriction": {
-						"spaceRestrictions": [
-							"Adjacent to Source"
-						],
-						"mustBeEmpty": false
-					}
+					"elements": [
+						{
+							"$type": "Core.SpaceRestriction:AdjacentTo:",
+							"space": { "$type": "Cards:ThisCardNow:" }
+						},
+						{ "$type": "Core.GamestateRestriction:MaxPerStack:" },
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+									{ "$type": "Core.CardRestriction:Character:" },
+									{
+										"$type": "Core.CardRestriction:Not:",
+										"negated": {
+											"$type": "Core.CardRestriction:CardsMatch:",
+											"card": { "$type": "Cards:ThisCardNow:" }
+										}
+									}
+								]
+							}
+						}
+					]
 				}
 			},
 			"subeffects": [
@@ -36,17 +44,18 @@
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "next lap?",
 					"spaceRestriction": {
-						"blurb": "next lap?",
-						"spaceRestrictionElements": [ 
-                            { "$type": "Core.SpaceRestriction:Empty:" },
+						"$type": "Core.SpaceRestriction:AllOf:",
+						"elements": [
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
-								"toMove": { "$type": "Cards:TargetIndex:" },
-								"distanceRestriction": {
-									"numberRestrictions": [ "==Constant" ],
-									"constant": 1
-								}
+								"toMove": { "$type": "Cards:TargetIndex:" }
+							},
+							{
+								"$type": "Core.SpaceRestriction:CompareDistance:",
+								"distanceTo": { "$type": "Cards:TargetIndex:" },
+								"number": { "$type": "Numbers:Constant:", "constant": 1 }
 							}
 						]
 					}

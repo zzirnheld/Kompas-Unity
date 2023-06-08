@@ -119,82 +119,82 @@ public class FlexibleGridLayout : LayoutGroup
 		int rowCount = 0;
 
 		for (int i = 0; i < rectChildren.Count; i++)
-        {
-            var item = rectChildren[i];
-            float xPos;
-            float yPos;
-            float xLastItemOffset = 0;
+		{
+			var item = rectChildren[i];
+			float xPos;
+			float yPos;
+			float xLastItemOffset = 0;
 
-            switch (alignment)
-            {
-                case Alignment.Horizontal:
-                    rowCount = i / columns;
-                    columnCount = i % columns;
-                    if (NudgeLastItemsOver && rowCount == (rectChildren.Count / columns)) { xLastItemOffset = (cellSize.x + padding.left) / 2; }
-                    break;
-                case Alignment.Vertical:
-                default:
-                    rowCount = i / rows;
-                    columnCount = i % rows;
-                    if (NudgeLastItemsOver && rowCount == (rectChildren.Count / rows)) { xLastItemOffset = (cellSize.x + padding.left) / 2; }
-                    break;
-            }
+			switch (alignment)
+			{
+				case Alignment.Horizontal:
+					rowCount = i / columns;
+					columnCount = i % columns;
+					if (NudgeLastItemsOver && rowCount == (rectChildren.Count / columns)) { xLastItemOffset = (cellSize.x + padding.left) / 2; }
+					break;
+				case Alignment.Vertical:
+				default:
+					rowCount = i / rows;
+					columnCount = i % rows;
+					if (NudgeLastItemsOver && rowCount == (rectChildren.Count / rows)) { xLastItemOffset = (cellSize.x + padding.left) / 2; }
+					break;
+			}
 
-            xPos = (cellSize.x * columnCount) + (spacing.x * columnCount) + padding.left + xLastItemOffset;
-            yPos = (cellSize.y * rowCount) + (spacing.y * rowCount) + padding.top;
+			xPos = (cellSize.x * columnCount) + (spacing.x * columnCount) + padding.left + xLastItemOffset;
+			yPos = (cellSize.y * rowCount) + (spacing.y * rowCount) + padding.top;
 
-            ComputeChildAlignment(ref xPos, ref yPos);
+			ComputeChildAlignment(ref xPos, ref yPos);
 
-            SetChildAlongAxis(item, 0, xPos, cellSize.x);
-            SetChildAlongAxis(item, 1, yPos, cellSize.y);
-        }
-    }
+			SetChildAlongAxis(item, 0, xPos, cellSize.x);
+			SetChildAlongAxis(item, 1, yPos, cellSize.y);
+		}
+	}
 
-    private void ComputeChildAlignment(ref float xPos, ref float yPos)
-    {
-        switch (m_ChildAlignment)
-        {
-            case TextAnchor.UpperLeft:
-            default:
-                //No need to change xPos;
-                //No need to change yPos;
-                break;
-            case TextAnchor.UpperCenter:
-                xPos += (0.5f * (this.gameObject.GetComponent<RectTransform>().sizeDelta.x + (spacing.x + padding.left + padding.left) - (columns * (cellSize.x + spacing.x + padding.left)))); //Center xPos
-                                                                                                                                                                                                //No need to change yPos;
-                break;
-            case TextAnchor.UpperRight:
-                xPos = -xPos + this.gameObject.GetComponent<RectTransform>().sizeDelta.x - cellSize.x; //Flip xPos to go bottom-up
-                                                                                                       //No need to change yPos;
-                break;
-            case TextAnchor.MiddleLeft:
-                //No need to change xPos;
-                yPos += (0.5f * (this.gameObject.GetComponent<RectTransform>().sizeDelta.y + (spacing.y + padding.top + padding.top) - (rows * (cellSize.y + spacing.y + padding.top)))); //Center yPos
-                break;
-            case TextAnchor.MiddleCenter:
-                xPos += (0.5f * (this.gameObject.GetComponent<RectTransform>().sizeDelta.x + (spacing.x + padding.left + padding.left) - (columns * (cellSize.x + spacing.x + padding.left)))); //Center xPos
-                yPos += (0.5f * (this.gameObject.GetComponent<RectTransform>().sizeDelta.y + (spacing.y + padding.top + padding.top) - (rows * (cellSize.y + spacing.y + padding.top)))); //Center yPos
-                break;
-            case TextAnchor.MiddleRight:
-                xPos = -xPos + this.gameObject.GetComponent<RectTransform>().sizeDelta.x - cellSize.x; //Flip xPos to go bottom-up
-                yPos += (0.5f * (this.gameObject.GetComponent<RectTransform>().sizeDelta.y + (spacing.y + padding.top + padding.top) - (rows * (cellSize.y + spacing.y + padding.top)))); //Center yPos
-                break;
-            case TextAnchor.LowerLeft:
-                //No need to change xPos;
-                yPos = -yPos + this.gameObject.GetComponent<RectTransform>().sizeDelta.y - cellSize.y; //Flip yPos to go Right to Left
-                break;
-            case TextAnchor.LowerCenter:
-                xPos += (0.5f * (this.gameObject.GetComponent<RectTransform>().sizeDelta.x + (spacing.x + padding.left + padding.left) - (columns * (cellSize.x + spacing.x + padding.left)))); //Center xPos
-                yPos = -yPos + this.gameObject.GetComponent<RectTransform>().sizeDelta.y - cellSize.y; //Flip yPos to go Right to Left
-                break;
-            case TextAnchor.LowerRight:
-                xPos = -xPos + this.gameObject.GetComponent<RectTransform>().sizeDelta.x - cellSize.x; //Flip xPos to go bottom-up
-                yPos = -yPos + this.gameObject.GetComponent<RectTransform>().sizeDelta.y - cellSize.y; //Flip yPos to go Right to Left
-                break;
+	private void ComputeChildAlignment(ref float xPos, ref float yPos)
+	{
+		switch (m_ChildAlignment)
+		{
+			case TextAnchor.UpperLeft:
+			default:
+				//No need to change xPos;
+				//No need to change yPos;
+				break;
+			case TextAnchor.UpperCenter:
+				xPos += (0.5f * (this.gameObject.GetComponent<RectTransform>().sizeDelta.x + (spacing.x + padding.left + padding.left) - (columns * (cellSize.x + spacing.x + padding.left)))); //Center xPos
+																																																//No need to change yPos;
+				break;
+			case TextAnchor.UpperRight:
+				xPos = -xPos + this.gameObject.GetComponent<RectTransform>().sizeDelta.x - cellSize.x; //Flip xPos to go bottom-up
+																									   //No need to change yPos;
+				break;
+			case TextAnchor.MiddleLeft:
+				//No need to change xPos;
+				yPos += (0.5f * (this.gameObject.GetComponent<RectTransform>().sizeDelta.y + (spacing.y + padding.top + padding.top) - (rows * (cellSize.y + spacing.y + padding.top)))); //Center yPos
+				break;
+			case TextAnchor.MiddleCenter:
+				xPos += (0.5f * (this.gameObject.GetComponent<RectTransform>().sizeDelta.x + (spacing.x + padding.left + padding.left) - (columns * (cellSize.x + spacing.x + padding.left)))); //Center xPos
+				yPos += (0.5f * (this.gameObject.GetComponent<RectTransform>().sizeDelta.y + (spacing.y + padding.top + padding.top) - (rows * (cellSize.y + spacing.y + padding.top)))); //Center yPos
+				break;
+			case TextAnchor.MiddleRight:
+				xPos = -xPos + this.gameObject.GetComponent<RectTransform>().sizeDelta.x - cellSize.x; //Flip xPos to go bottom-up
+				yPos += (0.5f * (this.gameObject.GetComponent<RectTransform>().sizeDelta.y + (spacing.y + padding.top + padding.top) - (rows * (cellSize.y + spacing.y + padding.top)))); //Center yPos
+				break;
+			case TextAnchor.LowerLeft:
+				//No need to change xPos;
+				yPos = -yPos + this.gameObject.GetComponent<RectTransform>().sizeDelta.y - cellSize.y; //Flip yPos to go Right to Left
+				break;
+			case TextAnchor.LowerCenter:
+				xPos += (0.5f * (this.gameObject.GetComponent<RectTransform>().sizeDelta.x + (spacing.x + padding.left + padding.left) - (columns * (cellSize.x + spacing.x + padding.left)))); //Center xPos
+				yPos = -yPos + this.gameObject.GetComponent<RectTransform>().sizeDelta.y - cellSize.y; //Flip yPos to go Right to Left
+				break;
+			case TextAnchor.LowerRight:
+				xPos = -xPos + this.gameObject.GetComponent<RectTransform>().sizeDelta.x - cellSize.x; //Flip xPos to go bottom-up
+				yPos = -yPos + this.gameObject.GetComponent<RectTransform>().sizeDelta.y - cellSize.y; //Flip yPos to go Right to Left
+				break;
 
-        }
-    }
+		}
+	}
 
-    public override void SetLayoutHorizontal() { }
+	public override void SetLayoutHorizontal() { }
 	public override void SetLayoutVertical() { }
 }

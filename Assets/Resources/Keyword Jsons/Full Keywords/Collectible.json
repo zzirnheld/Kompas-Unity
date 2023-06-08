@@ -4,21 +4,30 @@
 	{
 		"triggerCondition":"Discard",
 		"triggerRestriction":{
-			"triggerRestrictions":["Augmented Card is Main Card"]
+			"elements": [
+				{
+					"$type": "Core.TriggerRestriction:CardsMatch:",
+					"card": { "$type": "Cards:CardBefore:" },
+					"other": {
+						"$type": "Cards:AugmentedCard:",
+						"ofThisCard": { "$type": "Cards:ThisCardNow:" }
+					}
+				}
+			]
 		}
 	},
 	"subeffects":[
-        {
-            "$type":"Subeffect:TargetTriggeringCard:",
-            "secondary":true
-        },
+		{
+			"$type":"Subeffect:TargetTriggeringCard:",
+			"contextSecondaryCard":true
+		},
 		{
 			"$type":"Subeffect:TargetThis:"
 		},
-        {
-            "$type":"Subeffect:Attach:",
-            "targetToAttachTo":-2,
-            "targetIndex":-1
-        }
+		{
+			"$type":"Subeffect:Attach:",
+			"targetToAttachTo":-2,
+			"targetIndex":-1
+		}
 	]
 }

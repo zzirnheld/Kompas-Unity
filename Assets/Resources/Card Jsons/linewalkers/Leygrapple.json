@@ -7,15 +7,14 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Main Card Fits Restriction Before"
-					],
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Character"
-						]
-					}
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"cardRestriction": { "$type": "Core.CardRestriction:Character:" }
+						}
+					]
 				}
 			},
 			"subeffects": [
@@ -24,36 +23,34 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "who will Leygrapple",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "who will Leygrapple",
-						"cardRestrictions": [
-							"Character",
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"On Card Target's Diagonal"
-							]
-						},
-						"cardRestrictionElements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							},
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Linewalker" ]
+							},
+							{
+								"$type": "Core.SpaceRestriction:SameDiagonal:",
+								"other": { "$type": "Cards:TargetIndex:" }
 							}
 						]
 					}
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "to move that Linewalker to",
 					"spaceRestriction": {
-						"blurb": "to move that Linewalker to",
-						"spaceRestrictions": [
-							"Adjacent to Card Target",
-							"Empty"
+						"$type": "Core.SpaceRestriction:AllOf:",
+						"elements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": { "$type": "Cards:TargetIndex:" }
+							}
 						]
 					},
 					"targetIndex": -2

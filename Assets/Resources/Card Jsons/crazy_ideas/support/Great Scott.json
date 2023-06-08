@@ -1,60 +1,75 @@
 {
 	"cardType": 67,
 	"cardName": "Great Scott",
-	"effText": "The first time each turn a character moves, rummage. Move the character 1 space.",
+	"effText": "When an enemy moves normally, hand->discard a card and move them 1 space. 1 turn later, draw 1 card.",
 	"effects": [
 		{
 			"blurb": "SCARTY, THE MAR!!",
 			"triggerData": {
 				"triggerCondition": "Move",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Main Card Fits Restriction Before",
-						"Max Per Turn"
-					],
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Character"
-						]
-					}
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{ "$type": "Core.TriggerRestriction:Normally:" },
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"cardRestriction": { "$type": "Core.CardRestriction:Character:" }
+						}
+					]
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:Keyword:",
-					"keyword": "Rummage"
+					"$type": "Subeffect:CardTarget:",
+					"blurb": "WHAT ARE WE DISCARDING, SCARMY!?",
+					"toSearch": { "$type": "ManyCards:Hand:" },
+					"cardRestriction": { "$type": "Core.CardRestriction:AlwaysValid:" }
+				},
+				{
+					"$type": "Subeffect:Discard:"
 				},
 				{
 					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "WHERE ARE WE MOVING THAT CARD THEY MOVED!?",
 					"spaceRestriction": {
-						"blurb": "Great Scott, Marty, what card are we moving!?",
-						"spaceRestrictionElements": [ 
-                            { "$type": "Core.SpaceRestriction:Empty:" },
+						"$type": "Core.SpaceRestriction:AllOf:",
+						"elements": [
 							{
 								"$type": "Core.SpaceRestriction:CanMoveCard:",
-								"toMove": { "$type": "Cards:TargetIndex:" },
-								"distanceRestriction": {
-									"numberRestrictions": [ "==Constant" ],
-									"constant": 1
-								}
-							} 
+								"toMove": { "$type": "Cards:TargetIndex:" }
+							},
+							{
+								"$type": "Core.SpaceRestriction:CompareDistance:",
+								"distanceTo": { "$type": "Cards:TargetIndex:" },
+								"number": { "$type": "Numbers:Constant:", "constant": 1 }
+							}
 						]
 					}
 				},
 				{
 					"$type": "Subeffect:Move:"
+				},
+				{
+					"$type": "Subeffect:Hanging.Delay:",
+					"numTimesToDelay": 0,
+					"jumpIndices": [ 6 ],
+					"fallOffCondition": "",
+					"endCondition": "Turn Start"
+				},
+				{
+					"$type": "Subeffect:Draw:"
 				}
 			]
 		}
 	],
-	"n": 1,
-	"e": 4,
-	"s": 5,
-	"w": 4,
+	"n": 3,
+	"e": 5,
+	"s": 7,
+	"w": 5,
 	"unique": true,
-	"subtypeText": "Crazy Doctor"
+	"subtypeText": "Crazy Person"
 }

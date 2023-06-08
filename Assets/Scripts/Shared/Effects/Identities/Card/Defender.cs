@@ -2,9 +2,9 @@ using KompasCore.Cards;
 
 namespace KompasCore.Effects.Identities.Cards
 {
-    public class Defender : ContextualLeafIdentityBase<GameCardBase>
-    {
-        protected override GameCardBase AbstractItemFrom(ActivationContext contextToConsider)
-            => GetAttack(contextToConsider).defender;
-    }
+	public class Defender : TriggerContextualCardIdentityBase
+	{
+		protected override GameCardBase AbstractItemFrom(TriggeringEventContext contextToConsider)
+			=> GetAttack(contextToConsider).defender;
+	}
 }

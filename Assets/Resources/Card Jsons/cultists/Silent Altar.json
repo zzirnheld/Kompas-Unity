@@ -7,26 +7,27 @@
 			"triggerData": {
 				"triggerCondition": "Discard",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"Main Card Fits Restriction Before",
-						"This Card in Play"
-					],
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Space Fits Restriction"
-						],
-						"cardRestrictionElements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+									{
+										"$type": "Core.CardRestriction:Location:",
+										"locations": [ "Board" ]
+									},
+									{
+										"$type": "Core.SpaceRestriction:InAOEOf:",
+										"card": { "$type": "Cards:ThisCardNow:" }
+									}
+								]
 							}
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"In Source's AOE"
-							]
 						}
-					}
+					]
 				}
 			},
 			"subeffects": [
@@ -41,31 +42,32 @@
 		},
 		{
 			"activationRestriction": {
-				"activationRestrictionArray": [
-					"Default"
+				"$type": "Core.PlayerRestriction:AllOf:",
+				"elements": [
+					{ "$type": "Core.PlayerRestriction:DefaultActivationRestrictions:" }
 				]
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:SetX:"
+					"$type": "Subeffect:SetX:",
+					"xMultiplier": 0
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Altar(s) to sacrifice",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "Altar(s) to sacrifice",
-						"cardRestrictions": [
-							"Spell",
-							"Not Already Target"
-						],
-						"cardRestrictionElements": [
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							},
+							{ "$type": "Core.CardRestriction:Spell:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Altar" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Not:",
+								"negated": { "$type": "Core.CardRestriction:Target:" }
 							}
 						]
 					}
@@ -75,8 +77,7 @@
 					"cardValue": {
 						"value": "Cost"
 					},
-					"change": true,
-					"xMultiplier": 1
+					"change": true
 				},
 				{
 					"$type": "Subeffect:ConditionalJump:",
@@ -105,34 +106,32 @@
 					]
 				},
 				{
-					"$type": "Subeffect:ChooseFromList:",
-					"maxCanChoose": 1,
+					"$type": "Subeffect:CardTarget:",
+					"blurb": "culmination of the Silent Altar Ritual",
 					"cardRestriction": {
-						"blurb": "culmination of the Silent Altar Ritual",
-						"cardRestrictions": [
-							"Multiple Possible Locations",
-							"Character"
-						],
-						"locations": [
-							3,
-							4
-						],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" }
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Hand", "Deck" ]
+							}
 						]
 					}
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where to play the result Silent Altar Ritual",
 					"spaceRestriction": {
-						"blurb": "where to play the result Silent Altar Ritual",
-                        "spaceRestrictionElements": [
-                            { "$type": "Core.SpaceRestriction:Empty:" },
-                            {
-                                "$type": "Core.SpaceRestriction:CanPlayCard:",
-                                "toPlay": { "$type": "Cards:TargetIndex:" }
-                            }
-                        ]
+						"$type": "Core.SpaceRestriction:AllOf:",
+						"elements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanPlayCard:",
+								"toPlay": { "$type": "Cards:TargetIndex:" }
+							}
+						]
 					}
 				},
 				{

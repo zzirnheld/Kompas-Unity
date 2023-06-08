@@ -5,27 +5,24 @@
 	"effects": [
 		{
 			"activationRestriction": {
-				"activationRestrictionArray": [
-					"Max Times Per Turn",
-					"Friendly Turn",
-					"Default"
+				"$type": "Core.PlayerRestriction:AllOf:",
+				"elements": [
+					{ "$type": "Core.PlayerRestriction:DefaultActivationRestrictions:" },
+					{ "$type": "Core.GamestateRestriction:MaxPerTurn:" }
 				]
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:ChooseFromList:",
+					"$type": "Subeffect:CardTarget:",
+					"blurb": "Rune for Runecarver to reshuffle",
 					"cardRestriction": {
-						"blurb": "Rune for Runecarver to reshuffle",
-						"cardRestrictions": [
-							"Multiple Possible Locations"
-						],
-						"locations": [
-							1,
-							2,
-							3
-						],
-						"cardRestrictionElements": [
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Hand", "Board", "Discard" ]
+							},
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Rune" ]
@@ -40,6 +37,7 @@
 				},
 				{
 					"$type": "Subeffect:DrawX:",
+					"xMultiplier": 0,
 					"xModifier": 2
 				}
 			]

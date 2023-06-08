@@ -8,58 +8,50 @@
 			"triggerData": {
 				"triggerCondition": "Move",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
-                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-                        {
-                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "card": { "$type": "Cards:MainCardBefore:" },
-                            "cardRestriction": {
-                                "cardRestrictionElements": [ { "$type": "Core.CardRestriction:Enemy:" } ]
-                            }
-                        },
-                        {
-                            "$type": "Core.TriggerRestriction:AnyOf:",
-                            "restrictions": [
-                                {
-                                    "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                                    "card": { "$type": "Cards:MainCardBefore:" },
-                                    "cardRestriction": {
-                                        "cardRestrictionElements": [
-                                            {
-                                                "$type": "Core.CardRestriction:PositionFitsRestriction:",
-                                                "spaceRestriction": {
-                                                    "spaceRestrictionElements": [
-                                                        {
-                                                            "$type": "Core.SpaceRestriction:AdjacentTo:",
-                                                            "card": { "$type": "Cards:ThisCard:" }
-                                                        }
-                                                    ]
-                                                }
-                                            }
-                                        ]
-                                    }
-                                },
-                                {
-                                    "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                                    "card": { "$type": "Cards:MainCardAfter:" },
-                                    "cardRestriction": {
-                                        "cardRestrictionElements": [
-                                            {
-                                                "$type": "Core.CardRestriction:PositionFitsRestriction:",
-                                                "spaceRestriction": {
-                                                    "spaceRestrictionElements": [
-                                                        {
-                                                            "$type": "Core.SpaceRestriction:AdjacentTo:",
-                                                            "card": { "$type": "Cards:ThisCard:" }
-                                                        }
-                                                    ]
-                                                }
-                                            }
-                                        ]
-                                    }
-                                }
-                            ]
-                        }
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [ { "$type": "Core.CardRestriction:Enemy:" } ]
+							}
+						},
+						{
+							"$type": "Core.TriggerRestriction:AnyOf:",
+							"restrictions": [
+								{
+									"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+									"card": { "$type": "Cards:CardBefore:" },
+									
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+											{
+												"$type": "Core.SpaceRestriction:AdjacentTo:",
+												"card": { "$type": "Cards:ThisCardNow:" }
+											}
+										]
+									}
+								},
+								{
+									"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+									"card": { "$type": "Cards:CardAfter:" },
+									
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+											{
+												"$type": "Core.SpaceRestriction:AdjacentTo:",
+												"card": { "$type": "Cards:ThisCardNow:" }
+											}
+										]
+									}
+								}
+							]
+						}
 					]
 				}
 			},
@@ -67,23 +59,23 @@
 				{
 					"$type": "Subeffect:TargetTriggeringCard:"
 				},
-                {
-                    "$type":"Subeffect:Activate:"
-                },
-                {
-                    "$type":"Subeffect:Activate:",
-                    "activate":false
-                },
+				{
+					"$type":"Subeffect:Activate:"
+				},
+				{
+					"$type":"Subeffect:Activate:",
+					"activate":false
+				},
 				{
 					"$type": "Subeffect:TargetThis:"
 				},
-                {
-                    "$type":"Subeffect:Activate:"
-                },
-                {
-                    "$type":"Subeffect:Activate:",
-                    "activate":false
-                }
+				{
+					"$type":"Subeffect:Activate:"
+				},
+				{
+					"$type":"Subeffect:Activate:",
+					"activate":false
+				}
 			]
 		}
 	],

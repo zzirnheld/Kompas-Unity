@@ -8,22 +8,19 @@ using System.Collections.Generic;
 
 namespace KompasServer.Effects.Subeffects
 {
-    public class SetAllCardStats : SetCardStatsOld
-    {
-        public CardRestriction cardRestriction = new CardRestriction()
-        {
-            cardRestrictionElements = new CardRestrictionElement[] { new Character() }
-        };
+	public class SetAllCardStats : SetCardStatsOld
+	{
+		public IRestriction<GameCardBase> cardRestriction = new Character();
 
-        public IIdentity<IReadOnlyCollection<GameCardBase>> cardsSource = new Board();
+		public IIdentity<IReadOnlyCollection<GameCardBase>> cardsSource = new Board();
 
-        public override void Initialize(ServerEffect eff, int subeffIndex)
-        {
-            cards ??= new FittingRestriction() {
-                cardRestriction = cardRestriction,
-                cards = cardsSource
-            };
-            base.Initialize(eff, subeffIndex);
-        }
-    }
+		public override void Initialize(ServerEffect eff, int subeffIndex)
+		{
+			cards ??= new FittingRestriction() {
+				cardRestriction = cardRestriction,
+				cards = cardsSource
+			};
+			base.Initialize(eff, subeffIndex);
+		}
+	}
 }

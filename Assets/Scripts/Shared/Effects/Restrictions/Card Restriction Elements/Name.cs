@@ -1,33 +1,58 @@
+using System.Collections.Generic;
+using System.Linq;
 using KompasCore.Cards;
 using KompasCore.Effects.Identities;
 
 namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 {
-    public class Name : CardRestrictionElement
-    {
-        public string nameIs;
-        public string nameIncludes;
+	public class Name : CardRestrictionElement
+	{
+		public string nameIs;
+		public string nameIncludes;
 
-        protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
-        {
-            if (nameIs != null && card.CardName != nameIs) return false;
-            if (nameIncludes != null && !card.CardName.Contains(nameIncludes)) return false;
+		public IIdentity<GameCardBase> sameAs;
 
-            return true;
-        }
-    }
+		public override void Initialize(EffectInitializationContext initializationContext)
+		{
+			base.Initialize(initializationContext);
+			sameAs.Initialize(initializationContext);
+		}
 
-    public class DistinctName : CardRestrictionElement
-    {
-        public IIdentity<GameCardBase> from = new Identities.Cards.ThisCard();
+		protected override bool IsValidLogic(GameCardBase card, IResolutionContext context)
+		{
+			if (nameIs != null && card.CardName != nameIs) return false;
+			if (nameIncludes != null && !card.CardName.Contains(nameIncludes)) return false;
+			if (sameAs != null && card.CardName != sameAs.From(context).CardName) return false;
 
-        public override void Initialize(EffectInitializationContext initializationContext)
-        {
-            base.Initialize(initializationContext);
-            from.Initialize(initializationContext);
-        }
+			return true;
+		}
+	}
 
-        protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
-            => from.From(context, default).CardName != card.CardName;
-    }
+	public class DistinctName : CardRestrictionElement
+	{
+		public IIdentity<GameCardBase> from = new Identities.Cards.ThisCardNow();
+		public IIdentity<IReadOnlyCollection<GameCardBase>> cards;
+
+		public override void Initialize(EffectInitializationContext initializationContext)
+		{
+			base.Initialize(initializationContext);
+			from.Initialize(initializationContext);
+			cards?.Initialize(initializationContext);
+		}
+
+		protected override bool IsValidLogic(GameCardBase card, IResolutionContext context)
+		{
+			if (cards == default) return from.From(context).CardName != card.CardName;
+
+			return cards.From(context)
+				.Select(c => c.CardName)
+				.All(name => name != card.CardName);
+		}
+	}
+
+	public class Unique : CardRestrictionElement
+	{
+		protected override bool IsValidLogic(GameCardBase item, IResolutionContext context)
+			=> item.Unique;
+	}
 }

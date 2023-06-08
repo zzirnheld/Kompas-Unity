@@ -8,21 +8,22 @@
 				"blurb": "My balls are SKILLED!",
 				"triggerCondition": "Augment Attached",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Main Card Fits Restriction Before",
-						"Controller Triggered"
-					],
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Augments Card Fitting Restriction"
-						],
-						"augmentRestriction": {
-							"cardRestrictionElements": [
-								{ "$type": "Core.CardRestriction:Enemy:" }
-							]
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.TriggerRestriction:PlayersMatch:",
+							"firstPlayer": { "$type": "Players:TriggeringPlayer:" },
+							"secondPlayer": { "$type": "Players:FriendlyPlayer:" }
+						},
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:Augments:",
+								"cardRestriction": { "$type": "Core.CardRestriction:Enemy:" }
+							}
 						}
-					}
+					]
 				}
 			},
 			"subeffects": [
@@ -45,5 +46,5 @@
 		"Vanishing"
 	],
 	"duration": 1,
-	"subtypeText": "Team Play Vanishing"
+	"subtypeText": "Team Play"
 }

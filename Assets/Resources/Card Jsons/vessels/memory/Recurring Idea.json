@@ -8,15 +8,33 @@
 				"blurb": "Pip",
 				"triggerCondition": "Discard",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card",
-						"From Field"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCardNow:" }
+						},
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+									{
+										"$type": "Core.CardRestriction:Location:",
+										"locations": [ "Board" ]
+									}
+								]
+							}
+						}
 					]
 				}
 			},
 			"subeffects": [
 				{
 					"$type": "Subeffect:AddPips:",
+					"xMultiplier": 0,
 					"xModifier": 1
 				}
 			]
@@ -26,17 +44,16 @@
 				"blurb": "Recur",
 				"triggerCondition": "Turn Start",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card Fits Restriction Now"
-					],
-					"selfRestriction": {
-						"cardRestrictionElements": [
-							{
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"cardRestriction": {
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Discard" ]
 							}
-						]
-					}
+						}
+					]
 				}
 			},
 			"subeffects": [
@@ -45,13 +62,11 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "for Bestower of Memories to attach to",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "for Buffer Shield to attach to",
-						"cardRestrictionElements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							},
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Vessel" ]

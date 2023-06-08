@@ -1,53 +1,87 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace KompasCore.Effects.Restrictions
 {
-    public abstract class TriggerRestrictionElement : ContextInitializeableBase, IContextInitializeable
-    {
-        public bool IsValidContext(ActivationContext context, ActivationContext secondaryContext = default)
-        {
-            ComplainIfNotInitialized();
-            return AbstractIsValidContext(context, secondaryContext);
-        }
+	public abstract class TriggerRestrictionBase : RestrictionBase<TriggeringEventContext>
+	{
+		public bool useDummyResolutionContext = true;
 
-        protected abstract bool AbstractIsValidContext(ActivationContext context, ActivationContext secondaryContext);
-    }
+		protected virtual IResolutionContext ContextToConsider(TriggeringEventContext triggeringContext, IResolutionContext resolutionContext)
+			=> useDummyResolutionContext
+				? IResolutionContext.Dummy(triggeringContext)
+				: resolutionContext;
+	}
 
-    namespace TriggerRestrictionElements
-    {
-        public class Not : TriggerRestrictionElement
-        {
-            public TriggerRestrictionElement inverted;
+	namespace TriggerRestrictionElements
+	{
+		public class AllOf : AllOfBase<TriggeringEventContext>
+		{
+			protected override bool LogSoloElements => false;
 
-            public override void Initialize(EffectInitializationContext initializationContext)
-            {
-                base.Initialize(initializationContext);
-                inverted.Initialize(initializationContext);
-            }
+			public static readonly ISet<Type> ReevalationRestrictions = new HashSet<Type>(new Type[] {
+				typeof(GamestateRestrictionElements.MaxPerTurn),
+				typeof(GamestateRestrictionElements.MaxPerRound),
+				typeof(GamestateRestrictionElements.MaxPerStack)
+			});
 
-            protected override bool AbstractIsValidContext(ActivationContext context, ActivationContext secondaryContext)
-                => !inverted.IsValidContext(context, secondaryContext);
-        }
+			public static readonly IRestriction<TriggeringEventContext>[] DefaultFallOffRestrictions = {
+				new TriggerRestrictionElements.CardsMatch(){
+					card = new Identities.Cards.ThisCardNow(),
+					other = new Identities.Cards.CardBefore()
+				},
+				new TriggerRestrictionElements.ThisCardInPlay() };
 
-        public class AnyOf : TriggerRestrictionElement
-        {
-            public TriggerRestrictionElement[] restrictions;
+			/// <summary>
+			/// Reevaluates the trigger to check that any restrictions that could change between it being triggered
+			/// and it being ordered on the stack, are still true.
+			/// (Not relevant to delayed things, since those expire after a given number of uses (if at all), so yeah
+			/// </summary>
+			/// <returns></returns>
+			public bool IsStillValidTriggeringContext(TriggeringEventContext context)
+				=> elements.Where(elem => ReevalationRestrictions.Contains(elem.GetType()))
+						.All(elem => elem.IsValid(context, default));
+		}
 
-            public override void Initialize(EffectInitializationContext initializationContext)
-            {
-                base.Initialize(initializationContext);
-                foreach (var r in restrictions) r.Initialize(initializationContext);
-            }
+		public class AlwaysValid : TriggerRestrictionBase
+		{
+			protected override bool IsValidLogic(TriggeringEventContext item, IResolutionContext context) => true;
+		}
 
-            protected override bool AbstractIsValidContext(ActivationContext context, ActivationContext secondaryContext)
-                => restrictions.Any(r => r.IsValidContext(context, secondaryContext));
-        }
+		public class AnyOf : TriggerRestrictionBase
+		{
+			public IRestriction<TriggeringEventContext> [] restrictions;
 
-        public class ThisCardInPlay : TriggerRestrictionElement
-        {
-            protected override bool AbstractIsValidContext(ActivationContext context, ActivationContext secondaryContext)
-                => InitializationContext.source.Location == CardLocation.Board;
-        }
-    }
+			public override void Initialize(EffectInitializationContext initializationContext)
+			{
+				base.Initialize(initializationContext);
+				foreach (var r in restrictions) r.Initialize(initializationContext);
+			}
+
+			protected override bool IsValidLogic(TriggeringEventContext context, IResolutionContext secondaryContext)
+				=> restrictions.Any(r => r.IsValid(context, secondaryContext));
+		}
+
+		public class Not : TriggerRestrictionBase
+		{
+			public IRestriction<TriggeringEventContext>  inverted;
+
+			public override void Initialize(EffectInitializationContext initializationContext)
+			{
+				base.Initialize(initializationContext);
+				inverted.Initialize(initializationContext);
+			}
+
+			protected override bool IsValidLogic(TriggeringEventContext context, IResolutionContext secondaryContext)
+				=> !inverted.IsValid(context, secondaryContext);
+		}
+
+		public class ThisCardInPlay : TriggerRestrictionBase
+		{
+			protected override bool IsValidLogic(TriggeringEventContext context, IResolutionContext secondaryContext)
+				=> InitializationContext.source.Location == CardLocation.Board;
+		}
+	}
 }

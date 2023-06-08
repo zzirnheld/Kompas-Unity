@@ -1,15 +1,24 @@
 {
 	"cardType": 67,
 	"cardName": "Squid Ex Nihilo",
-	"effText": "Waterborn Waterdweller.\nWhen I attack, give me +6 W until the fight ends.",
+	"effText": "Waterborn Waterdweller.\nWhen I attack a summon, give me +6 W until the fight ends.",
 	"effects": [
 		{
 			"blurb": "Ex Nihilo",
 			"triggerData": {
 				"triggerCondition": "Attack",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCardNow:" }
+						},
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"cardRestriction": { "$type": "Core.CardRestriction:Summoned:" }
+						}
 					]
 				}
 			},
@@ -22,8 +31,12 @@
 					"wModifier": 6,
 					"endCondition": "Battle End",
 					"triggerRestriction": {
-						"triggerRestrictions": [
-							"Contexts Stackables Match"
+						"elements": [
+							{
+								"$type": "Core.TriggerRestriction:StackablesMatch:",
+								"firstStackable": { "$type": "Stackables:StackableEvent:", "secondaryContext": true },
+								"secondStackable": { "$type": "Stackables:StackableEvent:" }
+							}
 						]
 					}
 				}
@@ -49,22 +62,14 @@
 			"Adjacent to Friendly Card"
 		],
 		"spaceRestriction": {
-			"spaceRestrictionElements": [
-				{
-					"$type": "Core.SpaceRestriction:InAOEOf:",
-					"anyOf": {
-						"$type": "ManyCards:FittingRestriction:",
-						"cardRestriction": {
-							"cardRestrictionElements": [
-								{
-									"$type": "Core.CardRestriction:Subtypes:",
-									"subtypes": [ "Water" ]
-								}
-							]
-						}
-					}
+			"$type": "Core.SpaceRestriction:InAOEOf:",
+			"anyOf": {
+				"$type": "ManyCards:FittingRestriction:",
+				"cardRestriction": {
+					"$type": "Core.CardRestriction:Subtypes:",
+					"subtypes": [ "Water" ]
 				}
-			]
+			}
 		}
 	},
 	"n": 5,

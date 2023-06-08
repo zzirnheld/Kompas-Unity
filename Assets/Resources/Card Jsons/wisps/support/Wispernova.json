@@ -7,55 +7,59 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCardNow:" }
+						}
 					]
 				}
 			},
 			"subeffects": [
 				{
 					"$type": "Subeffect:AutoTargetCardIdentity:",
-                    "subeffectCardIdentity": {
+					"subeffectCardIdentity": {
 						"$type": "Cards:SelectFromMany:",
-                        "cards": {
-                            "$type": "ManyCards:FittingRestriction:",
-                            "cards": {
-                                "$type": "ManyCards:Discard:",
-                                "friendly": true,
-                                "enemy": false
-                            },
-                            "cardRestriction": {
-                                "cardRestrictionElements": [
-                                    {
-                                        "$type": "Core.CardRestriction:Subtypes:",
-                                        "subtypes": [ "Wisp" ]
-                                    }
-                                ]
-                            }
-                        }
-                    }
+						"cards": {
+							"$type": "ManyCards:FittingRestriction:",
+							"cards": {
+								"$type": "ManyCards:Discard:",
+								"friendly": true,
+								"enemy": false
+							},
+							
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+									{
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Wisp" ]
+									}
+								]
+							}
+						}
+					}
 				},
-                {
-                    "$type": "Subeffect:AutoTargetSpaceIdentity:",
-                    "subeffectSpaceIdentity": {
-                        "$type": "Spaces:SelectFromMany:",
-                        "selector": { "$type": "KompasCore.Effects.Selectors.RandomSpace, Assembly-CSharp" },
-                        "spaces": {
-                            "$type": "ManySpaces:FittingRestriction:",
-                            "restriction": {
-                                "spaceRestrictionElements": [ {
-                                    "$type": "Core.SpaceRestriction:CanPlayCard:",
-                                    "toPlay": { "$type": "Cards:TargetIndex:" }
-                                } ]
-                            }
-                        }
-                    }
-                },
-                {
-                    "$type": "Subeffect:PayPips:",
-                    "xMultiplier": 0,
-                    "xModifier": 1
-                },
+				{
+					"$type": "Subeffect:AutoTargetSpaceIdentity:",
+					"subeffectSpaceIdentity": {
+						"$type": "Spaces:SelectFromMany:",
+						"selector": { "$type": "KompasCore.Effects.Selectors.RandomSpace, Assembly-CSharp" },
+						"spaces": {
+							"$type": "ManySpaces:FittingRestriction:",
+							"restriction": {
+								"$type": "Core.SpaceRestriction:CanPlayCard:",
+								"toPlay": { "$type": "Cards:TargetIndex:" }
+							}
+						}
+					}
+				},
+				{
+					"$type": "Subeffect:PayPips:",
+					"xMultiplier": 0,
+					"xModifier": 1
+				},
 				{
 					"$type": "Subeffect:Play:"
 				},

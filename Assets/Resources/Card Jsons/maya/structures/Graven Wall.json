@@ -8,53 +8,37 @@
 			"triggerData": {
 				"triggerCondition": "Defend",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Main Card Fits Restriction Before"
-					],
-					"cardRestriction": {
-						"cardRestrictionElements": [
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Structure" ]
-							},
-                            {
-                                "$type": "Core.CardRestriction:PositionFitsRestriction:",
-                                "spaceRestriction": {
-                                    "spaceRestrictionElements": [
-										{
-											"$type": "Core.SpaceRestriction:SameDiagonal:",
-											"space": {
-												"$type": "KompasCore.Effects.Identities.Spaces.PositionOf, Assembly-CSharp",
-												"card": { "$type": "Cards:ThisCard:" }
-											}
-										}
-									]
-                                }
-                            }
-						]
-					}
-				},
-				"triggerRestrictionElements": [
-					{
-						"$type": "Core.TriggerRestriction:CardFitsRestriction:",
-						"cardRestriction": {
-							"cardRestrictions": [
-								"Space Fits Restriction"
-							],
-							"spaceRestriction": {
-								"spaceRestrictions": [
-									"Corner"
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"cardRestriction": { "$type": "Core.SpaceRestriction:Corner:" },
+							"card": { "$type": "Cards:ThisCardNow:" }
+						},
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:AllOf:",
+								"elements": [
+									{
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Structure" ]
+									},
+									{
+										"$type": "Core.SpaceRestriction:SameDiagonal:",
+										"other": { "$type": "Cards:ThisCardNow:" }
+									}
 								]
 							}
-						},
-						"card": { "$type": "Cards:ThisCard:" }
-					}
-				]
+						}
+					]
+				}
 			},
 			"subeffects": [
 				{
 					"$type": "Subeffect:AddPips:",
+					"xMultiplier": 0,
 					"xModifier": 3
 				}
 			]

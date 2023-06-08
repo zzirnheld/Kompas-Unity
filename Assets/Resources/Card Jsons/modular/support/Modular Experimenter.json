@@ -5,75 +5,68 @@
 	"effects": [
 		{
 			"activationRestriction": {
-				"activationRestrictionArray": [
-					"Max Times Per Turn",
-					"Default"
+				"$type": "Core.PlayerRestriction:AllOf:",
+				"elements": [
+					{ "$type": "Core.PlayerRestriction:DefaultActivationRestrictions:" },
+					{ "$type": "Core.GamestateRestriction:MaxPerTurn:" }
 				]
 			},
 			"subeffects": [
 				{
 					"$type":"Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction":
 					{
 						"blurb": "character whose Module to swap out",
-						"cardRestrictions": [
-                            "Character",
-                            "Wields Augment Fitting Restriction"
-                        ],
-						"augmentRestriction":
-						{
-							"cardRestrictionElements": [
-								{ "$type": "Core.CardRestriction:Friendly:" },
-                                {
-                                    "$type": "Core.CardRestriction:Subtypes:",
-                                    "subtypes": [ "Module" ]
-                                }
-							]
-						},
-						"cardRestrictionElements": [
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+								"$type": "Core.CardRestriction:HasAugment:",
+								
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+										{
+											"$type": "Core.CardRestriction:Subtypes:",
+											"subtypes": [ "Module" ]
+										}
+									]
+								}
 							}
 						]
 					}
 				},
-                {
-                    "$type": "Subeffect:CardTarget:",
-                    "cardRestriction": {
-                        "blurb": "Module to swap out",
-                        "cardRestrictions": [
-                            "Augment",
-                            "Augments Current Target"
-                        ],
-                        "cardRestrictionElements": [
-                            {
-                                "$type": "Core.CardRestriction:Location:",
-                                "locations": [ "Board" ]
-                            },
-                            {
-                                "$type": "Core.CardRestriction:Subtypes:",
-                                "subtypes": [ "Module" ]
-                            }
-                        ]
-                    }
-                },
 				{
-					"$type": "Subeffect:ChooseFromList:",
-                    "cardRestriction":
-                    {
-                        "cardRestrictions": [ "Augment" ],
-                        "cardRestrictionElements": [
-                            {
-                                "$type": "Core.CardRestriction:Location:",
-                                "locations": [ "Hand" ]
-                            },
-                            {
-                                "$type": "Core.CardRestriction:Subtypes:",
-                                "subtypes": [ "Module" ]
-                            }
-                        ]
-                    },
+					"$type": "Subeffect:CardTarget:",
+					"cardRestriction": {
+						"blurb": "Module to swap out",
+						"elements": [
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Module" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Augments:",
+								"singleCard": { "$type": "Cards:TargetIndex:" }
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Hand:" },
+					"cardRestriction":
+					{
+						"elements": [
+							{ "$type": "Core.CardRestriction:Augment:" },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Module" ]
+							}
+						]
+					},
 					"listRestriction": {
 						"listRestrictions": [
 							"Min Can Choose",
@@ -83,20 +76,20 @@
 						"maxCanChoose": 2
 					}
 				},
-                {
-                    "$type": "Subeffect:Hand:",
-                    "targetIndex": -3
-                },
-                {
-                    "$type": "Subeffect:Attach:",
-                    "targetIndex": -1,
-                    "targetToAttachTo": -4
-                },
-                {
-                    "$type": "Subeffect:Attach:",
-                    "targetIndex": -2,
-                    "targetToAttachTo": -4
-                }
+				{
+					"$type": "Subeffect:Hand:",
+					"targetIndex": -3
+				},
+				{
+					"$type": "Subeffect:Attach:",
+					"targetIndex": -1,
+					"targetToAttachTo": -4
+				},
+				{
+					"$type": "Subeffect:Attach:",
+					"targetIndex": -2,
+					"targetToAttachTo": -4
+				}
 			]
 		}
 	],

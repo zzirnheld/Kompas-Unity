@@ -5,27 +5,33 @@
 	"effects": [
 		{
 			"activationRestriction": {
-				"activationRestrictionArray": [
-					"Max Times Per Turn",
-					"Default"
+				"$type": "Core.PlayerRestriction:AllOf:",
+				"elements": [
+					{ "$type": "Core.PlayerRestriction:DefaultActivationRestrictions:" },
+					{ "$type": "Core.GamestateRestriction:MaxPerTurn:" }
 				]
 			},
 			"subeffects": [
 				{
 					"$type": "Subeffect:DrawX:",
+					"xMultiplier": 0,
 					"xModifier": 3
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "for High Priestess to topdeck (1/3)",
+					"toSearch": { "$type": "ManyCards:Hand:" }
+				},
+				{
+					"$type": "Subeffect:Topdeck:"
+				},
+				{
+					"$type": "Subeffect:CardTarget:",
+					"blurb": "for High Priestess to topdeck (2/3)",
+					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
-						"blurb": "for High Priestess to topdeck (1/3)",
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-                            {
-                                "$type": "Core.CardRestriction:Location:",
-                                "locations": [ "Hand" ]
-                            }
-						]
+						"$type": "Core.CardRestriction:Not:",
+						"negated": { "$type": "Core.CardRestriction:Target:" }
 					}
 				},
 				{
@@ -33,37 +39,11 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "for High Priestess to topdeck (3/3)",
+					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
-						"blurb": "for High Priestess to topdeck (2/3)",
-						"cardRestrictions": [
-							"Not Already Target"
-						],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-                            {
-                                "$type": "Core.CardRestriction:Location:",
-                                "locations": [ "Hand" ]
-                            }
-						]
-					}
-				},
-				{
-					"$type": "Subeffect:Topdeck:"
-				},
-				{
-					"$type": "Subeffect:CardTarget:",
-					"cardRestriction": {
-						"blurb": "for High Priestess to topdeck (3/3)",
-						"cardRestrictions": [
-							"Not Already Target"
-						],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-                            {
-                                "$type": "Core.CardRestriction:Location:",
-                                "locations": [ "Hand" ]
-                            }
-						]
+						"$type": "Core.CardRestriction:Not:",
+						"negated": { "$type": "Core.CardRestriction:Target:" }
 					}
 				},
 				{

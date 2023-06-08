@@ -1,41 +1,36 @@
 {
 	"cardType": 67,
 	"cardName": "Red Linewalker",
-	"effText": "Linewalk.\nWhen I move X spaces, give characters within 1 space of me (including me) +X E.",
+	"effText": "Linewalk.\nWhen I move X spaces, give me and adjacent characters +X E.",
 	"effects": [
 		{
 			"blurb": "Red Linewalked",
 			"triggerData": {
 				"triggerCondition": "Move",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCardNow:" }
+						}
 					]
 				}
 			},
 			"subeffects": [
 				{
 					"$type": "Subeffect:ChangeAllCardStats:",
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Character",
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Distance to Source Fits X Restriction"
-							],
-							"distanceXRestriction": {
-								"numberRestrictions": [
-									"<=Constant"
-								],
-								"constant": 1
-							}
-						},
-						"cardRestrictionElements": [
+					"cardsSource": { "$type": "ManyCards:Board:" },
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+								"$type": "Core.SpaceRestriction:CompareDistance:",
+								"distanceTo": { "$type": "Cards:ThisCardNow:" },
+								"number": { "$type": "Numbers:Constant:", "constant": 1 },
+								"comparison": { "$type": "Relationships.Number:LessThanEqual:" }
 							}
 						]
 					},

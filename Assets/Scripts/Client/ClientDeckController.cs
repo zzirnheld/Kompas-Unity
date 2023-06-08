@@ -1,44 +1,32 @@
-﻿using KompasCore.GameCore;
+﻿using KompasClient.UI;
+using KompasCore.GameCore;
 using TMPro;
 
 namespace KompasClient.GameCore
 {
-    public class ClientDeckController : DeckController
-    {
-        public ClientGame ClientGame;
+	public class ClientDeckController : DeckController
+	{
+		public ClientPlayer owner;
 
-        public ClientPlayer owner;
-        public override Player Owner => owner;
+		public override Player Owner => owner;
 
-        public TMP_Text deckCountLabel;
-        public int DeckCount
-        {
-            set
-            {
-                deckCountLabel.text = $"{value}";
-            }
-        }
+		public ClientDeckUIController deckUIController;
 
-        public void OnMouseDown()
-        {
-            //request a draw
-            if (ClientGame.Players[0].deckCtrl == this) ClientGame.clientNotifier.RequestDraw();
-        }
+		public TMP_Text deckCountLabel;
+		public int DeckCount
+		{
+			set
+			{
+				deckCountLabel.text = $"{value}";
+			}
+		}
 
-        /*private void UpdateDeckCount() => DeckCount = Deck.Count;
+		public void OnMouseDown()
+		{
+			//request a draw
+			if (Game.Players[0].deckCtrl == this) owner.game.clientNotifier.RequestDraw();
+		}
 
-        protected override bool AddCard(GameCard card, IStackable stackSrc = null)
-        {
-            var success = base.AddCard(card, stackSrc);
-            UpdateDeckCount();
-            return success;
-        }
-
-        public override bool RemoveFromDeck(GameCard card)
-        {
-            var success = base.RemoveFromDeck(card);
-            UpdateDeckCount();
-            return success;
-        }*/
-    }
+		public override void Refresh() => deckUIController.Refresh();
+	}
 }

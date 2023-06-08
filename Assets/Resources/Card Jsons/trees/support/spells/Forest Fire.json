@@ -1,27 +1,31 @@
 {
 	"cardType": 83,
 	"cardName": "Forest Fire",
-	"effText": "Any number of times: Give a friendly Tree, then all characters adjacent to it, -4 E.",
+	"effText": "Any number of times: Give a friendly Tree and all characters adjacent to it -4 E.",
 	"effects": [
 		{
 			"blurb": "Simple",
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCardNow:" }
+						}
 					]
 				}
 			},
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Who to burn",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "Who to heal",
-						"cardRestrictions": [
-							"Hurt"
-						],
-						"cardRestrictionElements": [
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Tree" ]
@@ -30,28 +34,18 @@
 					}
 				},
 				{
-					"$type": "Subeffect:ChangeCardStats:",
+					"$type": "Subeffect:ChangeAllCardStats:",
+					"cardsSource": {
+						"$type": "ManyCards:CardsInPositions:",
+						"positions": {
+							"$type": "ManySpaces:AdjacentSpaces:",
+							"adjacentTo": { "$type": "Cards:TargetIndex:" }
+						}
+					},
 					"eModifier": -4
 				},
 				{
-					"$type": "Subeffect:ChangeAllCardStats:",
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Character",
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Card Target"
-							]
-						},
-						"cardRestrictionElements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							}
-						]
-					},
+					"$type": "Subeffect:ChangeCardStats:",
 					"eModifier": -4
 				},
 				{

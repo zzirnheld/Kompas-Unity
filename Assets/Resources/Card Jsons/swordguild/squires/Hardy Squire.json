@@ -3,9 +3,9 @@
 	"cardName": "Hardy Squire",
 	"effText": "",
 	"effects": [ ],
-	"n": 0,
-	"e": 3,
-	"s": 1,
-	"w": 0,
+	"n": 1,
+	"e": 4,
+	"s": 2,
+	"w": 2,
 	"subtypeText": "Warrior Squire"
 }

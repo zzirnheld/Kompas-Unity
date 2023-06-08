@@ -9,21 +9,24 @@
 				"orderPriority": 5,
 				"triggerCondition": "Discard",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Main Card Fits Restriction Before"
-					],
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Character"
-						],
-						"cardRestrictionElements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+									{ "$type": "Core.CardRestriction:Character:" },
+									{
+										"$type": "Core.CardRestriction:Location:",
+										"locations": [ "Board" ]
+									}
+								]
 							}
-						]
-					}
+						}
+					]
 				}
 			},
 			"subeffects": [
@@ -35,8 +38,7 @@
 				},
 				{
 					"$type": "Subeffect:SetXByGamestate:",
-					"whatToCount": "Hand Size",
-					"xMultiplier": 1
+					"whatToCount": "Hand Size"
 				},
 				{
 					"$type": "Subeffect:SetXByGamestate:",
@@ -46,8 +48,7 @@
 				},
 				{
 					"$type": "Subeffect:ConditionalEnd:",
-					"condition": "X<=0",
-					"xMultiplier": 1
+					"condition": "X<=0"
 				},
 				{
 					"$type": "Subeffect:Bottomdeck:",

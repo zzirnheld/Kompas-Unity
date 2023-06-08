@@ -9,18 +9,22 @@
 				"blurb":"Dragonfeed",
 				"triggerCondition":"Discard",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Main Card Fits Restriction Before","Stackable Source Fits Restriction Now"],
-					"cardRestriction":{
-						"cardRestrictions":["Character"]
-					},
-					"sourceRestriction":{
-						"cardRestrictionElements": [
-							{
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"cardRestriction": { "$type": "Core.CardRestriction:Character:" }
+						},
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CauseBefore:" },
+							"cardRestriction": {
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Dragon" ]
 							}
-						]
-					}
+						}
+					]
 				}
 			},
 			"subeffects":[

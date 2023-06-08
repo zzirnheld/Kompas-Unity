@@ -10,240 +10,244 @@ using KompasCore.UI;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static KompasCore.UI.UIController;
 
 namespace KompasClient.GameCore
 {
-    public class ClientGame : Game
-    {
-        public ClientCardRepository cardRepo;
-        public override CardRepository CardRepository => cardRepo;
+	public class ClientGame : Game
+	{
+		public ClientCardRepository cardRepo;
+		public override CardRepository CardRepository => cardRepo;
 
-        [Header("Prefabs")]
-        public GameObject AvatarPrefab;
+		[Header("Prefabs")]
+		public GameObject AvatarPrefab;
 
-        [Header("Networking MonoBehaviours")]
-        public ClientNetworkController clientNetworkCtrl;
-        public ClientNotifier clientNotifier;
+		[Header("Networking MonoBehaviours")]
+		public ClientNetworkController clientNetworkCtrl;
+		public ClientNotifier clientNotifier;
 
-        [Header("Game location controllers")]
-        public ClientBoardController clientBoardController;
-        public override BoardController BoardController => clientBoardController;
+		[Header("Game location controllers")]
+		public ClientBoardController clientBoardController;
+		public override BoardController BoardController => clientBoardController;
 
-        [Header("Effects")]
-        public ClientEffectsController clientEffectsCtrl;
+		[Header("Effects")]
+		public ClientEffectsController clientEffectsCtrl;
 
-        [Header("Players")]
-        public ClientPlayer[] clientPlayers;
-        public override Player[] Players => clientPlayers;
-        public ClientPlayer FriendlyPlayer => clientPlayers[0];
+		[Header("Players")]
+		public ClientPlayer[] clientPlayers;
+		public override Player[] Players => clientPlayers;
+		public ClientPlayer FriendlyPlayer => clientPlayers[0];
 
-        [Header("UI")]
-        public ClientUIController clientUIController;
-        public override UIController UIController => clientUIController;
+		[Header("UI")]
+		public ClientUIController clientUIController;
+		public override UIController UIController => clientUIController;
 
 
-        private readonly Dictionary<int, ClientGameCard> cardsByID = new Dictionary<int, ClientGameCard>();
-        public override IReadOnlyCollection<GameCard> Cards => cardsByID.Values;
+		private readonly Dictionary<int, ClientGameCard> cardsByID = new Dictionary<int, ClientGameCard>();
+		public override IReadOnlyCollection<GameCard> Cards => cardsByID.Values;
 
-        public ClientSettings ClientSettings => clientUIController.clientUISettingsController.ClientSettings;
+		public ClientSettings ClientSettings => clientUIController.clientUISettingsController.ClientSettings;
+		public override Settings Settings => ClientSettings;
 
-        //turn players?
-        public bool FriendlyTurn => TurnPlayer == FriendlyPlayer;
+		//turn players?
+		public bool FriendlyTurn => TurnPlayer == FriendlyPlayer;
 
-        //search
-        public ClientSearchController searchCtrl;
+		//search
+		public ClientSearchController searchCtrl;
 
-        //targeting
-        public int targetsWanted;
-        private GameCard[] currentPotentialTargets;
-        public GameCard[] CurrentPotentialTargets
-        {
-            get => currentPotentialTargets;
-            private set
-            {
-                currentPotentialTargets = value;
-                ShowValidCardTargets();
-            }
-        }
+		//targeting
+		public int targetsWanted;
+		private GameCard[] currentPotentialTargets;
+		public GameCard[] CurrentPotentialTargets
+		{
+			get => currentPotentialTargets;
+			private set
+			{
+				currentPotentialTargets = value;
+				ShowValidCardTargets();
+			}
+		}
 
-        private (int, int)[] currentPotentialSpaces;
-        public (int, int)[] CurrentPotentialSpaces
-        {
-            get => currentPotentialSpaces;
-            set
-            {
-                currentPotentialSpaces = value;
-                if (value != null) clientUIController.boardUIController.ShowSpaceTargets(space => value.Contains(space));
-                else clientUIController.boardUIController.ShowSpaceTargets(_ => false);
-            }
-        }
+		private (int, int)[] currentPotentialSpaces;
+		public (int, int)[] CurrentPotentialSpaces
+		{
+			get => currentPotentialSpaces;
+			set
+			{
+				currentPotentialSpaces = value;
+				if (value != null) clientUIController.boardUIController.ShowSpaceTargets(space => value.Contains(space));
+				else clientUIController.boardUIController.ShowSpaceTargets(_ => false);
+			}
+		}
 
-        public override bool NothingHappening => !clientEffectsCtrl.StackEntries.Any();
-        public override IEnumerable<IStackable> StackEntries => clientEffectsCtrl.StackEntries;
+		public override bool NothingHappening => !clientEffectsCtrl.StackEntries.Any();
+		public override IEnumerable<IStackable> StackEntries => clientEffectsCtrl.StackEntries;
 
-        public bool canZoom = false;
+		public bool canZoom = false;
 
-        //dirty card set
-        private readonly HashSet<GameCard> dirtyCardList = new HashSet<GameCard>();
+		//dirty card set
+		private readonly HashSet<GameCard> dirtyCardList = new HashSet<GameCard>();
 
-        public override int Leyload
-        {
-            get => base.Leyload;
-            set
-            {
-                base.Leyload = value;
-                clientUIController.Leyload = Leyload;
-                //Refresh next turn pips shown.
-                foreach (var player in Players)
-                {
-                    player.Pips = player.Pips;
-                }
-            }
-        }
+		public override int Leyload
+		{
+			get => base.Leyload;
+			set
+			{
+				base.Leyload = value;
+				clientUIController.Leyload = Leyload;
+				//Refresh next turn pips shown.
+				foreach (var player in Players)
+				{
+					player.Pips = player.Pips;
+				}
+			}
+		}
 
-        private void Awake()
-        {
-            clientUIController.clientUISettingsController.LoadSettings();
-            ApplySettings();
-        }
+		private void Awake()
+		{
+			clientUIController.clientUISettingsController.LoadSettings();
+			ApplySettings();
+		}
 
-        public void AddCard(ClientGameCard card)
-        {
-            if (card.ID != -1) cardsByID.Add(card.ID, card);
-        }
+		public void AddCard(ClientGameCard card)
+		{
+			if (card.ID != -1) cardsByID.Add(card.ID, card);
+		}
 
-        public void MarkCardDirty(GameCard card) => dirtyCardList.Add(card);
+		public void MarkCardDirty(GameCard card) => dirtyCardList.Add(card);
 
-        public void PutCardsBack()
-        {
-            foreach (var c in dirtyCardList) if (c.CardController != null) c.CardController.PutBack();
-            dirtyCardList.Clear();
-        }
+		public void PutCardsBack()
+		{
+			foreach (var c in dirtyCardList) if (c.CardController != null) c.CardController.PutBack();
+			dirtyCardList.Clear();
+		}
 
-        public void SetAvatar(int player, string json, int avatarID)
-        {
-            if (player >= 2) throw new System.ArgumentException();
+		public void SetAvatar(int player, string json, int avatarID)
+		{
+			if (player >= 2) throw new System.ArgumentException();
 
-            var owner = clientPlayers[player];
-            var avatar = cardRepo.InstantiateClientAvatar(json, owner, avatarID);
-            avatar.KnownToEnemy = true;
-            owner.Avatar = avatar;
-            Space to = player == 0 ? Space.NearCorner : Space.FarCorner;
-            avatar.Play(to, owner);
-        }
+			var owner = clientPlayers[player];
+			var avatar = cardRepo.InstantiateClientAvatar(json, owner, avatarID);
+			avatar.KnownToEnemy = true;
+			owner.Avatar = avatar;
+			Space to = player == 0 ? Space.NearCorner : Space.FarCorner;
+			avatar.Play(to, owner);
 
-        public void Delete(GameCard card)
-        {
-            card.Remove();
-            cardsByID.Remove(card.ID);
-            Destroy(card.CardController.gameObject);
-        }
+			if (player == 1) clientUIController.connectionUIController.deckAcceptedUIController.ShowEnemyAvatar(avatar.FileName);
+		}
 
-        //requesting
-        public void SetFirstTurnPlayer(int playerIndex)
-        {
-            FirstTurnPlayer = TurnPlayerIndex = playerIndex;
-            clientUIController.ChangeTurn(playerIndex);
-            clientUIController.HideGetDecklistUI();
-            RoundCount = 1;
-            TurnCount = 1;
-            canZoom = true;
-            //force updating of pips to show correct messages.
-            //there's probably a better way to do this.
-            foreach (var player in Players) player.Pips = player.Pips;
-        }
+		public void Delete(GameCard card)
+		{
+			card.Remove();
+			cardsByID.Remove(card.ID);
+			Destroy(card.CardController.gameObject);
+		}
 
-        public void SetTurn(int index)
-        {
-            TurnPlayerIndex = index;
-            ResetCardsForTurn();
-            clientUIController.ChangeTurn(TurnPlayerIndex);
-            if (TurnPlayerIndex == FirstTurnPlayer) RoundCount++;
-            TurnCount++;
-            foreach (var player in Players) player.Pips = player.Pips;
-        }
+		//requesting
+		public void SetFirstTurnPlayer(int playerIndex)
+		{
+			FirstTurnPlayer = TurnPlayerIndex = playerIndex;
+			clientUIController.ChangeTurn(playerIndex);
+			clientUIController.connectionUIController.Hide();
+			RoundCount = 1;
+			TurnCount = 1;
+			canZoom = true;
+			//force updating of pips to show correct messages.
+			//there's probably a better way to do this.
+			foreach (var player in Players) player.Pips = player.Pips;
+		}
 
-        public override GameCard GetCardWithID(int id) => cardsByID.ContainsKey(id) ? cardsByID[id] : null;
+		public void SetTurn(int index)
+		{
+			TurnPlayerIndex = index;
+			ResetCardsForTurn();
+			clientUIController.ChangeTurn(TurnPlayerIndex);
+			if (TurnPlayerIndex == FirstTurnPlayer) RoundCount++;
+			TurnCount++;
+			foreach (var player in Players) player.Pips = player.Pips;
+		}
 
-        public void ShowCardsByZoom(bool zoomed)
-        {
-            //TODO make this better with a dirty list
-            foreach (var c in Cards.Where(c => c != null && c.CardController.gameObject.activeSelf))
-            {
-                c.CardController.gameCardViewController.Refresh();
-            }
-        }
+		public override GameCard GetCardWithID(int id) => cardsByID.ContainsKey(id) ? cardsByID[id] : null;
 
-        /// <summary>
-        /// Makes cards show again, in case information changed after the packet.
-        /// </summary>
-        public void Refresh()
-        {
-            ShowCardsByZoom(ClientCameraController.Main.Zoomed);
-            clientUIController.cardInfoViewUIController.Refresh();
-        }
+		public void ShowCardsByZoom(ZoomLevel zoomed)
+		{
+			//TODO make this better with a dirty list
+			foreach (var c in Cards.Where(c => c != null && c.CardController.gameObject.activeSelf))
+			{
+				c.CardController.gameCardViewController.Refresh();
+			}
+		}
 
-        public void EffectActivated(ClientEffect eff)
-        {
-            clientUIController.SetCurrState($"{(eff.Controller.Friendly ? "Friendly" : "Enemy")} {eff.Source.CardName} Effect Activated",
-                eff.blurb);
-        }
+		/// <summary>
+		/// Makes cards show again, in case information changed after the packet.
+		/// </summary>
+		public void Refresh()
+		{
+			ShowCardsByZoom(ClientCameraController.Main.ZoomLevel);
+			clientUIController.cardInfoViewUIController.Refresh();
+		}
 
-        public void StackEmptied()
-        {
-            clientUIController.TargetMode = TargetMode.Free;
-            clientUIController.SetCurrState("Stack Empty");
-            foreach (var c in Cards) c.ResetForStack();
-            ShowNoTargets();
-        }
+		public void EffectActivated(ClientEffect eff)
+		{
+			clientUIController.SetCurrState($"{(eff.Controller.Friendly ? "Friendly" : "Enemy")} {eff.Source.CardName} Effect Activated",
+				eff.blurb);
+		}
 
-        public void ApplySettings()
-        {
-            ClientCameraController.ZoomThreshold = ClientSettings.zoomThreshold;
-            clientUIController.ApplySettings(ClientSettings);
-            foreach (var card in Cards) card.CardController.gameCardViewController.Refresh();
-        }
+		public void StackEmptied()
+		{
+			clientUIController.TargetMode = TargetMode.Free;
+			clientUIController.SetCurrState("Stack Empty");
+			foreach (var c in Cards) c.ResetForStack();
+			ShowNoTargets();
+		}
 
-        #region targeting
-        /// <summary>
-        /// Sets up the client for the player to select targets
-        /// </summary>
-        public void SetPotentialTargets(int[] ids, ListRestriction listRestriction)
-        {
-            CurrentPotentialTargets = ids?.Select(i => GetCardWithID(i)).Where(c => c != null).ToArray();
-            searchCtrl.StartSearch(CurrentPotentialTargets, listRestriction);
-        }
+		public void ApplySettings()
+		{
+			ClientCameraController.ZoomThreshold = ClientSettings.zoomThreshold;
+			clientUIController.ApplySettings(ClientSettings);
+			foreach (var card in Cards) card.CardController.gameCardViewController.Refresh();
+		}
 
-        public void ClearPotentialTargets()
-        {
-            CurrentPotentialTargets = null;
-            searchCtrl.ResetSearch();
-        }
+		#region targeting
+		/// <summary>
+		/// Sets up the client for the player to select targets
+		/// </summary>
+		public void SetPotentialTargets(int[] ids, ListRestriction listRestriction)
+		{
+			CurrentPotentialTargets = ids?.Select(i => GetCardWithID(i)).Where(c => c != null).ToArray();
+			searchCtrl.StartSearch(CurrentPotentialTargets, listRestriction);
+		}
 
-        /// <summary>
-        /// Makes each card no longer show any highlight about its status as a target
-        /// </summary>
-        public void ShowNoTargets()
-        {
-            foreach (var card in Cards) card.CardController.gameCardViewController.Refresh();
-        }
+		public void ClearPotentialTargets()
+		{
+			CurrentPotentialTargets = null;
+			searchCtrl.ResetSearch();
+		}
 
-        /// <summary>
-        /// Show valid target highlight for current potential targets
-        /// </summary>
-        public void ShowValidCardTargets()
-        {
-            if (CurrentPotentialTargets != null)
-            {
-                foreach (var card in CurrentPotentialTargets) card.CardController.gameCardViewController.Refresh();
-            }
-            else ShowNoTargets();
-        }
+		/// <summary>
+		/// Makes each card no longer show any highlight about its status as a target
+		/// </summary>
+		public void ShowNoTargets()
+		{
+			foreach (var card in Cards) card.CardController.gameCardViewController.Refresh();
+		}
 
-        public override bool IsCurrentTarget(GameCard card) => searchCtrl.IsCurrentlyTargeted(card);
-        public override bool IsValidTarget(GameCard card) => searchCtrl.IsValidTarget(card);
+		/// <summary>
+		/// Show valid target highlight for current potential targets
+		/// </summary>
+		public void ShowValidCardTargets()
+		{
+			if (CurrentPotentialTargets != null)
+			{
+				foreach (var card in CurrentPotentialTargets) card.CardController.gameCardViewController.Refresh();
+			}
+			else ShowNoTargets();
+		}
 
-        public override CardBase FocusedCard => clientUIController.cardInfoViewUIController.FocusedCard;
-        #endregion targeting
-    }
+		public override bool IsCurrentTarget(GameCard card) => searchCtrl.IsCurrentlyTargeted(card);
+		public override bool IsValidTarget(GameCard card) => searchCtrl.IsValidTarget(card);
+
+		public override CardBase FocusedCard => clientUIController.cardInfoViewUIController.FocusedCard;
+		#endregion targeting
+	}
 }

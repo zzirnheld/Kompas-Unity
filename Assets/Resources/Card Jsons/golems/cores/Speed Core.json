@@ -1,15 +1,27 @@
 {
 	"cardType": 65,
 	"cardName": "Speed Core",
-	"effText": "Recoverable.\nWhile equipped, activate this character and give them +1 N.",
+	"effText": "Recoverable.\nWhile equipped, activate this Golem and give them +1 N.",
 	"effects": [
 		{
 			"triggerData": {
 				"blurb": "Activate Golem",
 				"triggerCondition": "Augment Attached",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCardNow:" }
+						},
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Golem" ]
+							}
+						}
 					]
 				}
 			},
@@ -21,8 +33,12 @@
 					"$type": "Subeffect:Hanging.Activation:",
 					"endCondition": "Augment Detached",
 					"triggerRestriction": {
-						"triggerRestrictions": [
-							"This Card is Main Card"
+						"elements": [
+							{
+								"$type": "Core.TriggerRestriction:CardsMatch:",
+								"card": { "$type": "Cards:CardBefore:" },
+								"other": { "$type": "Cards:ThisCardNow:" }
+							}
 						]
 					}
 				},
@@ -31,8 +47,12 @@
 					"nModifier": 1,
 					"endCondition": "Augment Detached",
 					"triggerRestriction": {
-						"triggerRestrictions": [
-							"This Card is Main Card"
+						"elements": [
+							{
+								"$type": "Core.TriggerRestriction:CardsMatch:",
+								"card": { "$type": "Cards:CardBefore:" },
+								"other": { "$type": "Cards:ThisCardNow:" }
+							}
 						]
 					}
 				}

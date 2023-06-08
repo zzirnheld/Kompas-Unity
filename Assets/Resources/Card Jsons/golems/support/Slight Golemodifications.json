@@ -1,104 +1,97 @@
 {
 	"cardType": 83,
 	"cardName": "Slight Golemodifications",
-	"effText": "When turns start, tribute an S X Golem. Hand-> or discard-> summon an S <= X + 1 Golem, and pulse them.",
+	"effText": "Repositionable.\nWhen turns start, swap a friendly S X Golem here for an S <= X+1 one in your discard. The new Golem gets the old one's Cores.",
 	"effects": [
 		{
 			"blurb": "Modify Golem (Slightly)",
 			"triggerData": {
 				"triggerCondition": "Turn Start",
-				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play"
+				"triggerRestriction":{
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" }
 					]
 				}
 			},
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Character"
-						],
-						"cardRestrictionElements": [
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							},
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Golem" ]
+							},
+							{
+								"$type": "Core.SpaceRestriction:InAOEOf:",
+								"card": { "$type": "Cards:ThisCardNow:" }
 							}
 						]
 					}
 				},
 				{
 					"$type": "Subeffect:SetXByTargetCost:",
-					"xMultiplier": 1
+					"targetIndex": 0
+				},
+				{
+					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Discard:" },
+					"cardRestriction": {
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Golem" ]
+							},
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": { "value": "Cost" },
+								"numberRestriction": {
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:LessThanEqual:" },
+									"other": { "$type": "Numbers:EffectX:", "modifier": 1 }
+								}
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:TargetAugments:",
+					"targetIndex": 0
 				},
 				{
 					"$type": "Subeffect:Discard:",
 					"targetIndex": 0
 				},
 				{
-					"$type": "Subeffect:CardTarget:",
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Character",
-							"Multiple Possible Locations",
-							"Card Value Fits Number Restriction"
-						],
-						"cardValue": {
-							"value": "S"
-						},
-						"cardValueNumberRestriction": {
-							"numberRestrictions": [
-								"<=X"
-							]
-						},
-						"cardRestrictionElements": [
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Golem" ]
-							}
-						],
-						"locations": [
-							2,
-							3
-						]
-					},
-					"xMultiplier": 1,
-					"xModifier": 1
-				},
-				{
-					"$type": "Subeffect:SpaceTarget:",
-					"spaceRestriction": {
-                        "spaceRestrictionElements": [
-                            { "$type": "Core.SpaceRestriction:Empty:" },
-                            {
-                                "$type": "Core.SpaceRestriction:CanPlayCard:",
-                                "toPlay": { "$type": "Cards:TargetIndex:" }
-                            }
-                        ]
-					}
+					"$type": "Subeffect:TargetTargetsSpace:"
 				},
 				{
 					"$type": "Subeffect:Play:"
 				},
 				{
-					"$type": "Subeffect:Activate:"
+					"$type": "Subeffect:Attach:",
+					"targetToAttachTo": 1,
+					"targetIndex": -1
 				},
 				{
-					"$type": "Subeffect:Activate:",
-					"activate": false
+					"$type": "Subeffect:DeleteTarget:"
+				},
+				{
+					"$type": "Subeffect:LoopWhileHaveTargets:",
+					"jumpIndices": [ 7 ]
 				}
 			]
 		}
 	],
+	"keywords": [ "Repositionable" ],
 	"c": 3,
-	"spellTypes": [
-		"Enchant"
-	],
-	"subtypeText": "Enchant"
+	"spellTypes": [ "Radial" ],
+	"radius": 1,
+	"subtypeText": ""
 }

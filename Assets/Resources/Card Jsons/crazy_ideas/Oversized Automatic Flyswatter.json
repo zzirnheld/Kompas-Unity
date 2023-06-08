@@ -9,12 +9,12 @@
 				"blurb":"BEGONE! SWAT!",
 				"triggerCondition":"Arrive",
 				"triggerRestriction":{
-					"triggerRestrictions":["Space Fits Restriction"],
-					"spaceRestriction":
-					{
-						"spaceRestrictions":["Adjacent to Source"],
-						"mustBeEmpty":false
-					}
+					"elements": [
+						{
+							"$type": "Core.SpaceRestriction:AdjacentTo:",
+							"space": { "$type": "Cards:ThisCardNow:" }
+						}
+					]
 				}
 			},
 			"subeffects":[

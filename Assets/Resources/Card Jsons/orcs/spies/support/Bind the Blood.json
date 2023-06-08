@@ -7,44 +7,54 @@
 			"triggerData": {
 				"triggerCondition": "Attack",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Main Card Fits Restriction Before"
-					],
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Different from Source",
-							"Character",
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": { "spaceRestrictions": [ "In Source's AOE" ] },
-						"cardRestrictionElements": [
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Orc" ]
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:AllOf:",
+								"elements": [
+									{ "$type": "Core.CardRestriction:Character:" },
+									{
+										"$type": "Core.CardRestriction:Not:",
+										"negated": {
+											"$type": "Core.CardRestriction:CardsMatch:",
+											"card": { "$type": "Cards:ThisCardNow:" }
+										}
+									},
+									{
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Orc" ]
+									},
+									{
+										"$type": "Core.SpaceRestriction:InAOEOf:",
+										"card": { "$type": "Cards:ThisCardNow:" }
+									}
+								]
 							}
-						]
-					}
+						}
+					]
 				}
 			},
 			"subeffects": [
 				{
 					"$type": "Subeffect:AutoTargetCardIdentity:",
-                    "subeffectCardIdentity": { "$type": "Cards:MainCardBefore:" }
+					"subeffectCardIdentity": { "$type": "Cards:CardBefore:" }
 				},
 				{
 					"$type": "Subeffect:ChangeCardStats:",
 					"wModifier": 1
 				},
 				{
-					"$type": "Subeffect:Delay:",
+					"$type": "Subeffect:Hanging.Delay:",
 					"numTimesToDelay": 0,
 					"jumpIndices": [
 						3
 					],
 					"fallOffCondition": "Battle End",
 					"fallOffRestriction": {
-						"triggerRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.TriggerRestriction:StackablesMatch:",
 								"firstStackable": { "$type": "Stackables:StackableIndex:" },
@@ -54,7 +64,7 @@
 					},
 					"endCondition": "Discard",
 					"triggerRestriction": {
-						"triggerRestrictionElements": [
+						"elements": [
 							{
 								"$type": "Core.TriggerRestriction:StackablesMatch:",
 								"firstStackable": { "$type": "Stackables:StackableIndex:" },
@@ -62,10 +72,10 @@
 							},
 							{
 								"$type": "Core.TriggerRestriction:CardsMatch:",
-								"firstCard": { "$type": "Cards:MainCardBefore:" },
-								"secondCard": {
-									"secondary": true,
-									"$type": "Cards:MainCardBefore:"
+								"card": { "$type": "Cards:CardBefore:" },
+								"other": {
+									"$type": "Cards:CardBefore:",
+									"contextSecondaryCard": true
 								}
 							}
 						]
@@ -73,14 +83,11 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Bind blood to a card",
+					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
-						"blurb": "Bind blood to a card",
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-                            {
-                                "$type": "Core.CardRestriction:Location:",
-                                "locations": [ "Hand" ]
-                            },
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Orc" ]

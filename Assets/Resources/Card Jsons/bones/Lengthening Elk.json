@@ -7,62 +7,65 @@
 			"blurb": "Lengthen",
 			"triggerData": {
 				"triggerCondition": "Turn Start",
-				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play"
+				"triggerRestriction":{
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" }
 					]
 				}
 			},
 			"subeffects": [
-                {
-                    "$type":"Subeffect:TargetThis:"
-                },
+				{
+					"$type":"Subeffect:TargetThis:"
+				},
 				{
 					"$type": "Subeffect:TargetTargetsSpace:"
 				},
-                {
-                    "$type":"Subeffect:SpaceTarget:",
-                    "spaceRestriction":
-                    {
-                        "blurb":"where Elk will lengthen to",
-						"spaceRestrictionElements": [ {
-							"$type": "Core.SpaceRestriction:CanMoveCard:",
-							"toMove": { "$type": "Cards:TargetIndex:" },
-							"distanceRestriction": {
-								"numberRestrictions": [ "==Constant" ],
-								"constant": 1
-							}
-						} ]
-                    }
-                },
-                {
-                    "$type":"Subeffect:Move:"
-                },
 				{
-					"$type": "Subeffect:DeckTarget:",
+					"$type":"Subeffect:SpaceTarget:",
+					"blurb":"where Elk will lengthen to",
+					"spaceRestriction":
+					{
+						"$type": "Core.SpaceRestriction:AllOf:",
+						"elements": [
+							{
+								"$type": "Core.SpaceRestriction:CanMoveCard:",
+								"toMove": { "$type": "Cards:TargetIndex:" }
+							},
+							{
+								"$type": "Core.SpaceRestriction:CompareDistance:",
+								"distanceTo": { "$type": "Cards:TargetIndex:" },
+								"number": { "$type": "Numbers:Constant:", "constant": 1 }
+							}
+						]
+					}
+				},
+				{
+					"$type":"Subeffect:Move:"
+				},
+				{
+					"$type": "Subeffect:CardTarget:",
+					"blurb": "Elk bone",
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"blurb": "Elk bone",
-						"cardRestrictions": [
-							"Deck",
-							"Character",
-							"Can be Played to Target Space"
-						],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Bone" ]
+							},
+							{
+								"$type": "Core.CardRestriction:CanPlay:",
+								"destination": { "$type": "Spaces:TargetIndex:" },
+								"ignoring": [ "Adjacent to Friendly Card" ]
 							}
-						],
-						"canPlayIgnoring": [
-							"Adjacent to Friendly Card"
 						]
 					},
-                    "spaceIndex": -2
+					"spaceIndex": -2
 				},
 				{
 					"$type": "Subeffect:Play:",
-                    "spaceIndex": -2
+					"spaceIndex": -2
 				}
 			]
 		}

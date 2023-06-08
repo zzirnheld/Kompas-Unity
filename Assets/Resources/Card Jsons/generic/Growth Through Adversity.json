@@ -7,21 +7,23 @@
 			"triggerData": {
 				"triggerCondition": "E Change",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"X Fits Restriction",
-						"Main Card Fits Restriction Before"
-					],
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Hurt"
-						]
-					},
-					"xRestriction": {
-						"numberRestrictions": [
-							">0"
-						]
-					}
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"cardRestriction": { "$type": "Core.CardRestriction:Hurt:" }
+						},
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardAfter:" },
+							"cardRestriction": 
+							{
+								"$type": "Core.CardRestriction:Not:",
+								"negated": { "$type": "Core.CardRestriction:Hurt:" }
+							}
+						}
+					]
 				}
 			},
 			"subeffects": [
@@ -35,13 +37,9 @@
 			]
 		}
 	],
+	"unique": true,
 	"c": 2,
-	"spellTypes": [
-		"Enchant"
-	],
-	"subtypes": [
-		"Enchant"
-	],
-	"subtypeText": "Enchant",
-	"radius": 1
+	"spellTypes": [ "Enchant" ],
+	"subtypes": [ ],
+	"subtypeText": ""
 }

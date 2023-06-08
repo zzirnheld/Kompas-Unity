@@ -1,37 +1,34 @@
 [
-    {
-        "$type":"Subeffect:TargetThis:"
-    },
-    {
-        "$type":"Subeffect:TargetThisSpace:"
-    },
-    {
-        "$type":"Subeffect:Annihilate:"
-    },
-    {
-        "$type":"Subeffect:CardTarget:",
-        "cardRestriction":
-        {
-            "blurb":"Mech to Pilot",
-            "cardRestrictions":["Character","Can Be Played"],
-            "cardRestrictionElements": [
-                { "$type": "Core.CardRestriction:Friendly:" },
-                {
-                    "$type": "Core.CardRestriction:Location:",
-                    "locations": [ "Hand" ]
-                },
-                {
-                    "$type": "Core.CardRestriction:Subtypes:",
-                    "subtypes": [ "Mech", "Golem" ]
-                }
-            ]
-        },
-        "toLinkWith": { "$type": "Cards:ThisCard:" }
-    },
-    {
-        "$type":"Subeffect:Play:"
-    },
-    {
-        "$type":"Subeffect:Activate:"
-    }
+	{
+		"$type":"Subeffect:TargetThis:"
+	},
+	{
+		"$type":"Subeffect:TargetThisSpace:"
+	},
+	{
+		"$type":"Subeffect:Annihilate:"
+	},
+	{
+		"$type":"Subeffect:CardTarget:",
+		"toSearch": { "$type": "ManyCards:Hand:" },
+		"cardRestriction":
+		{
+			"blurb":"Mech to Pilot",
+			"elements": [
+				{ "$type": "Core.CardRestriction:Character:" },
+				{
+					"$type": "Core.CardRestriction:Subtypes:",
+					"subtypes": [ "Mech", "Golem" ]
+				},
+				{ "$type": "Core.CardRestriction:CanPlay:" }
+			]
+		},
+		"toLinkWith": { "$type": "Cards:ThisCardNow:" }
+	},
+	{
+		"$type":"Subeffect:Play:"
+	},
+	{
+		"$type":"Subeffect:Activate:"
+	}
 ]

@@ -1,33 +1,25 @@
 {
 	"cardType": 67,
 	"cardName": "Soulcutter the Heartless",
-	"effText": "Revenant.\nWhen a card is annihilated, hand->discard a Revenant, draw 1, and if it's an enemy turn, gain 1 pip.",
+	"effText": "Revenant.\nWhen a card is annihilated, hand->discard a Revenant, then draw 1 card.",
 	"effects": [
 		{
 			"triggerData": {
 				"triggerCondition": "Annihilate",
-				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play"
+				"triggerRestriction":{
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" }
 					]
 				}
 			},
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "for Soulcutter to discard",
+					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
-						"blurb": "for Soulcutter to discard",
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-                            {
-                                "$type": "Core.CardRestriction:Location:",
-                                "locations": [ "Hand" ]
-                            },
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Revenant" ]
-							}
-						]
+						"$type": "Core.CardRestriction:Subtypes:",
+						"subtypes": [ "Revenant" ]
 					}
 				},
 				{
@@ -35,14 +27,6 @@
 				},
 				{
 					"$type": "Subeffect:Draw:"
-				},
-				{
-					"$type": "Subeffect:ConditionalEnd:",
-					"condition": "Must be Enemy Turn"
-				},
-				{
-					"$type": "Subeffect:AddPips:",
-					"xModifier": 1
 				}
 			]
 		}

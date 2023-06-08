@@ -5,7 +5,9 @@
 		"blurb":"Wander",
 		"triggerCondition":"Turn Start",
 		"triggerRestriction":{
-			"triggerRestrictions":["This Card in Play"]
+			"elements": [
+				{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" }
+			]
 		}
 	},
 	"subeffects":[
@@ -26,23 +28,26 @@
 			"$type":"Subeffect:Reshuffle:"
 		},
 		{
-			"$type":"Subeffect:DeckTarget:",
+			"$type":"Subeffect:CardTarget:",
+			"toSearch": { "$type": "ManyCards:Deck:" },
 			"cardRestriction":
 			{
 				"blurb":"Wanderer to Wander into",
-				"cardRestrictions":["Character","Deck","Card Value Fits Number Restriction"],
-				"cardRestrictionElements": [
+				"elements": [
+					{ "$type": "Core.CardRestriction:Character:" },
 					{
 						"$type": "Core.CardRestriction:Subtypes:",
 						"subtypes": [ "Wanderer" ]
+					},
+					{
+						"$type": "Core.CardRestriction:CardValueFits:",
+						"cardValue": { "value": "S" },
+						"numberRestriction": {
+							"$type": "Core.NumberRestriction:Compare:",
+							"comparison": { "$type": "Relationships.Number:LessThan:" },
+							"other": { "$type": "Numbers:EffectX:" }
 					}
-				],
-				"cardValue":{
-					"value":"S"
-				},
-				"cardValueNumberRestriction":{
-					"numberRestrictions":["<X"]
-				}
+				} ]
 			},
 			"xMultiplier":1
 		},

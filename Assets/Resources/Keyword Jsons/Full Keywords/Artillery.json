@@ -1,10 +1,10 @@
 {
 	"blurb": "Artillery",
 	"activationRestriction": {
-		"activationRestrictionArray": [
-			"Max Times Per Turn",
-			"Friendly Turn",
-			"Default"
+		"$type": "Core.PlayerRestriction:AllOf:",
+		"elements": [
+			{ "$type": "Core.PlayerRestriction:DefaultActivationRestrictions:" },
+			{ "$type": "Core.GamestateRestriction:MaxPerTurn:" }
 		]
 	},
 	"subeffects": [
@@ -14,15 +14,12 @@
 		},
 		{
 			"$type": "Subeffect:CardTarget:",
+			"toSearch": { "$type": "ManyCards:Board:" },
 			"cardRestriction": {
 				"blurb": "Pick a target to barrage",
-				"cardRestrictions": [ "Character" ],
-				"cardRestrictionElements": [
+				"elements": [
 					{ "$type": "Core.CardRestriction:Enemy:" },
-					{
-						"$type": "Core.CardRestriction:Location:",
-						"locations": [ "Board" ]
-					}
+					{ "$type": "Core.CardRestriction:Character:" }
 				]
 			}
 		},

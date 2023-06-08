@@ -1,30 +1,27 @@
 {
 	"cardType": 67,
 	"cardName": "Dragonspeaker",
-	"effText": "You can kill a distinct friendly S X character to give me +2 * X S. If you're \"Mother of Dragons\", draw 1.",
+	"effText": "You can tribute a distinct S X character to give me +2*X S. If you're \"Mother of Dragons\", draw 1.",
 	"effects": [
 		{
 			"blurb": "Dragonspeak",
 			"activationRestriction": {
-				"activationRestrictionArray": [
-					"Default"
+				"$type": "Core.PlayerRestriction:AllOf:",
+				"elements": [
+					{ "$type": "Core.PlayerRestriction:DefaultActivationRestrictions:" }
 				]
 			},
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "for Dragonspeaker to kill",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "for Dragonspeaker to kill",
-						"cardRestrictions": [
-							"Character",
-							"Distinct Name from Source"
-						],
-						"cardRestrictionElements": [
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							}
+							{ "$type": "Core.CardRestriction:Character:" },
+							{ "$type": "Core.CardRestriction:DistinctName:" }
 						]
 					}
 				},
@@ -32,8 +29,7 @@
 					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "S"
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:Discard:"
@@ -51,11 +47,15 @@
 				{
 					"$type": "Subeffect:ConditionalEnd:",
 					"condition": "Target Violates Restriction",
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Name Is"
-						],
-						"nameIs": "Mother of Dragons"
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+							{
+								"$type": "Core.CardRestriction:Name:",
+								"nameIs": "Mother of Dragons"
+							}
+						]
 					}
 				},
 				{

@@ -8,37 +8,37 @@
 				"blurb": "Activate Golem",
 				"triggerCondition": "Augment Attached",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
-                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-                        {
-                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "cardRestriction": {
-                                "cardRestrictionElements": [
-                                    {
-                                        "$type": "Core.CardRestriction:Subtypes:",
-                                        "subtypes": [ "Golem" ]
-                                    }
-                                ]
-                            },
-                            "card": { "$type": "Cards:MainCardBefore:" }
-                        }
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Golem" ]
+							}
+						}
 					]
 				}
 			},
 			"subeffects": [
 				{
 					"$type": "Subeffect:AutoTargetCardIdentity:",
-                    "subeffectCardIdentity": {
+					"subeffectCardIdentity": {
 						"$type": "Cards:AugmentedCard:",
-                        "cardFromContext": { "$type": "Cards:ThisCard:" }
-                    }
+						"cardFromContext": { "$type": "Cards:ThisCardNow:" }
+					}
 				},
 				{
 					"$type": "Subeffect:Hanging.Activation:",
 					"endCondition": "Augment Detached",
 					"triggerRestriction": {
-						"triggerRestrictions": [
-							"This Card is Main Card"
+						"elements": [
+							{
+								"$type": "Core.TriggerRestriction:CardsMatch:",
+								"card": { "$type": "Cards:CardBefore:" },
+								"other": { "$type": "Cards:ThisCardNow:" }
+							}
 						]
 					}
 				}
@@ -48,43 +48,42 @@
 			"triggerData": {
 				"triggerCondition": "Discard",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
-                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-                        { "$type": "Core.TriggerRestriction:EnemyTurn:" },
-                        {
-                            "$type": "Core.TriggerRestriction:CardsMatch:",
-                            "firstCard": {
-                                "$type": "Cards:AugmentedCard:",
-                                "ofThisCard": { "$type": "Cards:ThisCard:" }
-                            },
-                            "secondCard": { "$type": "Cards:MainCardBefore:" }
-                        },
-                        {
-                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "cardRestriction": {
-                                "cardRestrictionElements": [
-                                    {
-                                        "$type": "Core.CardRestriction:Subtypes:",
-                                        "subtypes": [ "Golem" ]
-                                    }
-                                ]
-                            },
-                            "card": { "$type": "Cards:MainCardBefore:" }
-                        }
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{ "$type": "Core.TriggerRestriction:EnemyTurn:" },
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": {
+								"$type": "Cards:AugmentedCard:",
+								"ofThisCard": { "$type": "Cards:ThisCardNow:" }
+							},
+							"other": { "$type": "Cards:CardBefore:" }
+						},
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+									{
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Golem" ]
+									}
+								]
+							},
+							"card": { "$type": "Cards:CardBefore:" }
+						}
 					]
 				}
 			},
 			"subeffects": [
 				{
 					"$type": "Subeffect:AutoTargetCardIdentity:",
-                    "subeffectCardIdentity": { "$type": "Cards:MainCardBefore:" }
+					"subeffectCardIdentity": { "$type": "Cards:CardBefore:" }
 				},
 				{
 					"$type": "Subeffect:AutoTargetSpaceIdentity:",
-                    "spaceIdentity": {
-                        "$type": "Spaces:PositionOf:",
-                        "ofThisCard": { "$type": "Cards:MainCardBefore:" }
-                    }
+					"spaceIdentity": { "$type": "Cards:CardBefore:" }
 				},
 				{
 					"$type": "Subeffect:Play:"

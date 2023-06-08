@@ -1,30 +1,27 @@
 {
 	"cardType": 67,
 	"cardName": "Dragoncaller",
-	"effText": "You can tribute an S X character to give me +2 * X ES or SW.",
+	"effText": "You can tribute an S X character to give me +2*X ES or SW.",
 	"effects": [
 		{
 			"blurb": "Dragoncall",
 			"activationRestriction": {
-				"activationRestrictionArray": [
-					"Default"
+				"$type": "Core.PlayerRestriction:AllOf:",
+				"elements": [
+					{ "$type": "Core.PlayerRestriction:DefaultActivationRestrictions:" }
 				]
 			},
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "for Dragoncaller to kill",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "for Dragoncaller to kill",
-						"cardRestrictions": [
-							"Character",
-							"Summoned"
-						],
-						"cardRestrictionElements": [
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							}
+							{ "$type": "Core.CardRestriction:Summoned:" }
 						]
 					}
 				},
@@ -32,8 +29,7 @@
 					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "S"
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:Discard:"

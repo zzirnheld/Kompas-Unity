@@ -8,8 +8,12 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCardNow:" }
+						}
 					]
 				}
 			},
@@ -25,10 +29,7 @@
 				{
 					"$type": "Subeffect:Hanging.Negate:",
 					"endCondition": "Turn Start",
-					"negated": false,
-					"triggerRestriction": {
-						"triggerRestrictions": []
-					}
+					"negated": false
 				}
 			]
 		}

@@ -1,30 +1,27 @@
 {
 	"cardType": 67,
 	"cardName": "Soulstealer the Lossless",
-	"effText": "Revenant.\nWhen a card is annihilated, give friendly Ethereals +1 E, and if it's an enemy turn, gain 1 pip.",
+	"effText": "Revenant.\nWhen a card is annihilated, give friendly Ethereals +1 E.",
 	"effects": [
 		{
 			"triggerData": {
 				"triggerCondition": "Annihilate",
-				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play"
+				"triggerRestriction":{
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" }
 					]
 				}
 			},
 			"subeffects": [
 				{
 					"$type": "Subeffect:ChangeAllCardStats:",
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Character"
-						],
-						"cardRestrictionElements": [
+					"toSearch": { "$type": "ManyCards:Board:" },
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							},
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Ethereal" ]
@@ -32,14 +29,6 @@
 						]
 					},
 					"eModifier": 1
-				},
-				{
-					"$type": "Subeffect:ConditionalEnd:",
-					"condition": "Must be Enemy Turn"
-				},
-				{
-					"$type": "Subeffect:AddPips:",
-					"xModifier": 1
 				}
 			]
 		}
@@ -49,7 +38,7 @@
 		"Revenant Revive"
 	],
 	"n": 2,
-	"e": 4,
+	"e": 5,
 	"s": 8,
 	"w": 3,
 	"unique": true,

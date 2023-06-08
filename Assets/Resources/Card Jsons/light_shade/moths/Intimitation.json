@@ -7,8 +7,15 @@
 			"triggerData": {
 				"triggerCondition": "Defend",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"Augmented Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": {
+								"$type": "Cards:AugmentedCard:",
+								"ofThisCard": { "$type": "Cards:ThisCardNow:" }
+							}
+						}
 					]
 				}
 			},
@@ -18,18 +25,13 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "What creature does the camouflage look like?",
+					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
-						"blurb": "What creature does the camouflage look like?",
-						"cardRestrictions": [
-							"Character",
-							"Hidden"
-						],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-                            {
-                                "$type": "Core.CardRestriction:Location:",
-                                "locations": [ "Hand" ]
-                            }
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
+							{ "$type": "Core.CardRestriction:Hidden:" }
 						]
 					}
 				},
@@ -40,12 +42,11 @@
 					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "W"
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type":"Subeffect:TargetTriggeringCard:",
-					"secondary":true
+					"contextSecondaryCard":true
 				},
 				{
 					"$type": "Subeffect:ChangeCardStats:",
@@ -64,8 +65,8 @@
 			"On Card that Fits Restriction"
 		],
 		"onCardRestriction": {
-			"cardRestrictions": [
-				"Summoned"
+			"elements": [
+				{ "$type": "Core.CardRestriction:Summoned:" }
 			]
 		},
 		"augSubtypes": [

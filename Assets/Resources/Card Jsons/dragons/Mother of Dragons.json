@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Mother of Dragons",
-	"effText": "When enemy turns start, tribute summons with total S X. Summon an S <= X Dragon from your deck's top X cards, then move it 1 space.",
+	"effText": "When enemy turns start, tribute summons with total S X. From your deck's top X cards, summon an S <= X Dragon, 1 space from me.",
 	"effects": [
 		{
 			"blurb": "Dragonbirth",
@@ -10,30 +10,26 @@
 				"optional": true,
 				"triggerCondition": "Turn Start",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Enemy Turn"
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{ "$type": "Core.TriggerRestriction:EnemyTurn:" }
 					]
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:SetX:"
+					"$type": "Subeffect:SetX:",
+					"xMultiplier": 0
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "for Mother of Dragons to kill",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "for Mother of Dragons to kill",
-						"cardRestrictions": [
-							"Summoned",
-							"Not Already Target"
-						],
-						"cardRestrictionElements": [
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							}
+							{ "$type": "Core.CardRestriction:Summoned:" }
 						]
 					}
 				},
@@ -42,8 +38,7 @@
 					"cardValue": {
 						"value": "S"
 					},
-					"change": true,
-					"xMultiplier": 1
+					"change": true
 				},
 				{
 					"$type": "Subeffect:Discard:"
@@ -62,54 +57,77 @@
 					]
 				},
 				{
-					"$type": "Subeffect:ChooseFromListSaveRest:",
+					"$type": "Subeffect:CardTargetSaveRest:",
+					"blurb": "for Mother of Dragons to birth",
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"blurb": "for Mother of Dragons to birth",
-						"cardRestrictions": [
-							"Deck",
-							"Character",
-							"Index<X",
-							"Card Value Fits Number Restriction"
-						],
-						"cardValue": {
-							"value": "S"
-						},
-						"cardValueNumberRestriction": {
-							"numberRestrictions": [
-								"<=X"
-							]
-						},
-						"cardRestrictionElements": [
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Dragon" ]
+							},
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": { "value": "Index" },
+								"numberRestriction": {
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:LessThan:" },
+									"other": { "$type": "Numbers:EffectX:" }
+								}
+							},
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": { "value": "S" },
+								"numberRestriction": {
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:LessThanEqual:" },
+									"other": { "$type": "Numbers:EffectX:" }
+								}
 							}
 						]
 					},
 					"restRestriction": {
-						"cardRestrictions": [
-							"Deck",
-							"Index<X",
-							"Not Already Target"
-						],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" }
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": { "value": "Index" },
+								"numberRestriction": {
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:LessThan:" },
+									"other": { "$type": "Numbers:EffectX:" }
+								}
+							},
+							{
+								"$type": "Core.CardRestriction:Not:",
+								"negated": { "$type": "Core.CardRestriction:Target:" }
+							}
 						]
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where Mother of Dragons to birth",
 					"spaceRestriction": {
-						"blurb": "where Mother of Dragons to birth",
-                        "spaceRestrictionElements": [
-                            { "$type": "Core.SpaceRestriction:Empty:" },
-                            {
-                                "$type": "Core.SpaceRestriction:CanPlayCard:",
-                                "toPlay": { "$type": "Cards:TargetIndex:" }
-                            }
-                        ]
+						"$type": "Core.SpaceRestriction:AllOf:",
+						"elements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanPlayCard:",
+								"toPlay": { "$type": "Cards:TargetIndex:" },
+								"ignoring": [ "Adjacent to Friendly Card" ]
+							},
+							{
+								"$type": "Core.SpaceRestriction:CompareDistance:",
+								"distanceTo": { "$type": "Cards:ThisCardNow:" },
+								"number": { "$type": "Numbers:Constant:", "constant": 2 },
+								"comparison": { "$type": "Relationships.Number:Equal:" }
+							}
+						]
 					}
 				},
 				{
@@ -120,26 +138,6 @@
 				},
 				{
 					"$type": "Subeffect:BottomdeckRest:"
-				},
-				{
-					"$type": "Subeffect:SpaceTarget:",
-					"spaceRestriction": {
-						"blurb": "Fly, beloved, fly!",
-						"spaceRestrictionElements": [ 
-                            { "$type": "Core.SpaceRestriction:Empty:" },
-							{
-								"$type": "Core.SpaceRestriction:CanMoveCard:",
-								"toMove": { "$type": "Cards:TargetIndex:" },
-								"distanceRestriction": {
-									"numberRestrictions": [ "==Constant" ],
-									"constant": 1
-								}
-							}
-						]
-					}
-				},
-				{
-					"$type": "Subeffect:Move:"
 				}
 			]
 		}

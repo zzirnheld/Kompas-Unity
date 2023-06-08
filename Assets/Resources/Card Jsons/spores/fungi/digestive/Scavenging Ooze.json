@@ -8,63 +8,67 @@
 			"triggerData": {
 				"triggerCondition": "Activate",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
-                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-                        {
-                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "card": { "$type": "Cards:CauseBefore:" },
-                            "cardRestriction": {
-                                "cardRestrictionElements": [
-                                    {
-                                        "$type": "Core.CardRestriction:Subtypes:",
-                                        "subtypes": [ "Fungus" ]
-                                    }
-                                ]
-                            }
-                        },
-                        {
-                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "card": { "$type": "Cards:MainCardBefore:" },
-                            "cardRestriction": {
-                                "cardRestrictionElements": [ { "$type": "Core.CardRestriction:Enemy:" } ]
-                            }
-                        }
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CauseBefore:" },
+							
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+									{
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Fungus" ]
+									}
+								]
+							}
+						},
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [ { "$type": "Core.CardRestriction:Enemy:" } ]
+							}
+						}
 					]
 				}
 			},
 			"subeffects": [
 				{
 					"$type": "Subeffect:AutoTargetCardIdentity:",
-                    "subeffectCardIdentity": {
+					"subeffectCardIdentity": {
 						"$type": "Cards:SelectFromMany:",
-                        "selector": { "$type": "KompasCore.Effects.Selectors.SortIndex, Assembly-CSharp" },
-                        "cards": {
-                            "$type": "ManyCards:FittingRestriction:",
-                            "cards": {
-                                "$type": "ManyCards:Discard:",
-                                "friendly": true,
-                                "enemy": false
-                            }
-                        }
-                    }
+						"selector": { "$type": "KompasCore.Effects.Selectors.SortIndex, Assembly-CSharp" },
+						"cards": {
+							"$type": "ManyCards:FittingRestriction:",
+							"cards": {
+								"$type": "ManyCards:Discard:",
+								"friendly": true,
+								"enemy": false
+							}
+						}
+					}
 				},
 				{
 					"$type": "Subeffect:Reshuffle:"
 				},
 				{
 					"$type": "Subeffect:AutoTargetCardIdentity:",
-                    "subeffectCardIdentity": {
+					"subeffectCardIdentity": {
 						"$type": "Cards:SelectFromMany:",
-                        "selector": { "$type": "KompasCore.Effects.Selectors.SortIndex, Assembly-CSharp" },
-                        "cards": {
-                            "$type": "ManyCards:FittingRestriction:",
-                            "cards": {
-                                "$type": "ManyCards:Discard:",
-                                "friendly": false,
-                                "enemy": true
-                            }
-                        }
-                    }
+						"selector": { "$type": "KompasCore.Effects.Selectors.SortIndex, Assembly-CSharp" },
+						"cards": {
+							"$type": "ManyCards:FittingRestriction:",
+							"cards": {
+								"$type": "ManyCards:Discard:",
+								"friendly": false,
+								"enemy": true
+							}
+						}
+					}
 				},
 				{
 					"$type": "Subeffect:Reshuffle:"

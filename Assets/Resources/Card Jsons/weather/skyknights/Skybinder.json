@@ -1,6 +1,6 @@
 {
 	"cardType": 67,
-	"cardName": "Skyknight",
+	"cardName": "Skybinder",
 	"effText": "When you Spin a Storm, reshuffle all your annihilated Weather.",
 	"effects": [
 		{
@@ -8,43 +8,35 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Main Card Fits Restriction Before",
-						"Controller Triggered"
-					],
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Different from Source"
-						],
-						"cardRestrictionElements": [
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Weather", "Event" ]
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.TriggerRestriction:PlayersMatch:",
+							"firstPlayer": { "$type": "Players:TriggeringPlayer:" },
+							"secondPlayer": { "$type": "Players:FriendlyPlayer:" }
+						},
+						{
+							"$type": "Core.TriggerRestriction:StackableFitsRestriction:",
+							"stackable": { "$type": "Stackables:StackableCause:" },
+							"restriction": {
+								"stackableRestrictionElements": [
+									{
+										"$type": "Core.EffectRestriction:Keyword:",
+										"keyword": "Spin a Storm"
+									}
+								]
 							}
-						]
-					}
-				},
-                "triggerRestrictionElements": [
-                    {
-                        "$type": "Core.TriggerRestriction:StackableFitsRestriction:",
-                        "stackable": { "$type": "Stackables:StackableCause:" },
-                        "restriction": {
-                            "stackableRestrictionElements": [
-                                {
-                                    "$type": "Core.EffectRestriction:Keyword:",
-                                    "keyword": "Spin a Storm"
-                                }
-                            ]
-                        }
-                    }
-                ]
+						}
+					]
+				}
 			},
 			"subeffects": [
 				{
 					"$type": "Subeffect:TargetAll:",
-					"cardRestriction": {
-						"cardRestrictionElements": [
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
 							{
 								"$type": "Core.CardRestriction:Location:",

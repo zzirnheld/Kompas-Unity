@@ -1,15 +1,15 @@
 {
 	"cardType": 67,
 	"cardName": "Notcropoten",
-	"effText": "When friendly turns start, you can have me pay X E. Annihilate your deck's top X. Delay 1. Rehand it.",
+	"effText": "When friendly turns start, I pay X E. Annihilate your deck's top X cards. 1 turn later, hand them.",
 	"effects": [
 		{
 			"triggerData": {
 				"triggerCondition": "Turn Start",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Friendly Turn"
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{ "$type": "Core.TriggerRestriction:FriendlyTurn:" }
 					]
 				}
 			},
@@ -21,13 +21,12 @@
 					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "E"
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:PlayerChooseX:",
 					"XRest": {
-						"cardRestrictions": [
+						"numberRestrictions": [
 							"<=X"
 						]
 					}
@@ -41,17 +40,23 @@
 				},
 				{
 					"$type": "Subeffect:TargetAll:",
+					"blurb": "for Haemopoten to draw",
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"blurb": "for Haemopoten to draw",
-						"cardRestrictions": [
-							"Deck",
-							"Index<X"
-						],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" }
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": { "value": "Index" },
+								"numberRestriction": {
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:LessThan:" },
+									"other": { "$type": "Numbers:EffectX:" }
+								}
+							}
 						]
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:Annihilate:"
@@ -63,7 +68,7 @@
 					]
 				},
 				{
-					"$type": "Subeffect:Delay:",
+					"$type": "Subeffect:Hanging.Delay:",
 					"numTimesToDelay": 0,
 					"jumpIndices": [
 						8

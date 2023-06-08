@@ -1,53 +1,57 @@
 using KompasCore.Cards;
 using System.Linq;
+using UnityEngine;
 
 namespace KompasCore.Effects.Restrictions
 {
-    public abstract class CardRestrictionElement : ContextInitializeableBase
-    {
-        public bool FitsRestriction(GameCardBase card, ActivationContext context)
-        {
-            ComplainIfNotInitialized();
+	public abstract class CardRestrictionElement : RestrictionBase<GameCardBase>, IRestriction<Space>
+	{
+		public bool IsValid(Space item, IResolutionContext context)
+			=> IsValid(InitializationContext.game.BoardController.GetCardAt(item), context);
+	}
 
-            return card != null && FitsRestrictionLogic(card, context);
-        }
+	namespace CardRestrictionElements
+	{
+	
+		public class AllOf : AllOfBase<GameCardBase>
+		{
+			public string blurb;
 
-        protected abstract bool FitsRestrictionLogic(GameCardBase card, ActivationContext context);
-    }
+			public override void Initialize(EffectInitializationContext initializationContext)
+			{
+				base.Initialize(initializationContext);
+				if (blurb != null) Debug.LogWarning($"{GetType()} blurb is on the card restriction. move it to the card target of {initializationContext.source}");
+			}
 
-    namespace CardRestrictionElements
-    {
+			public GameCard Source => InitializationContext.source;
 
-        public class Not : CardRestrictionElement
-        {
-            public CardRestrictionElement element;
+			public override string ToString() => $"Card Restriction of {Source?.CardName}." +
+				$"\nRestriction Elements: {string.Join(", ", elements.Select(r => r))}";
+		}
+		
+		public class AlwaysValid : CardRestrictionElement
+		{
+			protected override bool IsValidLogic(GameCardBase item, IResolutionContext context) => true;
+		}
 
-            public override void Initialize(EffectInitializationContext initializationContext)
-            {
-                base.Initialize(initializationContext);
-                element.Initialize(initializationContext);
-            }
+		public class Not : CardRestrictionElement
+		{
+			public IRestriction<GameCardBase> negated;
 
-            protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
-                => !element.FitsRestriction(card, context);
-        }
+			public override void Initialize(EffectInitializationContext initializationContext)
+			{
+				base.Initialize(initializationContext);
+				negated.Initialize(initializationContext);
+			}
 
-        public class CardExists : CardRestrictionElement
-        {
-            protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
-                => card != null;
-        }
+			protected override bool IsValidLogic(GameCardBase item, IResolutionContext context)
+				=> !negated.IsValid(item, context);
+		}
 
-        public class Avatar : CardRestrictionElement
-        {
-            protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
-                => card.IsAvatar;
-        }
-
-        public class Summoned : CardRestrictionElement
-        {
-            protected override bool FitsRestrictionLogic(GameCardBase card, ActivationContext context)
-                => card.Summoned;
-        }
-    }
+		public class CardExists : CardRestrictionElement
+		{
+			protected override bool IsValidLogic(GameCardBase card, IResolutionContext context)
+				=> card != null;
+		}
+	}
 }

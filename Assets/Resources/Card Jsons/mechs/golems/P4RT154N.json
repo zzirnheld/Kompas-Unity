@@ -13,28 +13,29 @@
 		"attackRestrictions": [
 			"Default",
 			"This is Activated",
-            "Defender Fits Card Restriction"
+			"Defender Fits Card Restriction"
 		],
-        "attackRestrictionsToIgnore": [
-            "Defender is Adjacent"
-        ],
-        "defenderRestriction" : {
-            "cardRestrictions": [
-                "Different from Source",
-                "Space Fits Restriction"
-            ],
-            "spaceRestriction": {
-                "spaceRestrictions": [
-                    "Distance to Source Fits X Restriction"
-                ],
-                "distanceXRestriction": {
-                    "numberRestrictions": [
-                        "<=Constant"
-                    ],
-                    "constant": 2
-                }
-            }
-        }
+		"attackRestrictionsToIgnore": [
+			"Defender is Adjacent"
+		],
+		"defenderRestriction" : {
+			"$type": "Core.CardRestriction:AllOf:",
+			"elements": [
+				{
+					"$type": "Core.CardRestriction:Not:",
+					"negated": {
+						"$type": "Core.CardRestriction:CardsMatch:",
+						"card": { "$type": "Cards:ThisCardNow:" }
+					}
+				},
+				{
+					"$type": "Core.SpaceRestriction:CompareDistance:",
+					"distanceTo": { "$type": "Cards:ThisCardNow:" },
+					"number": { "$type": "Numbers:Constant:", "constant": 2 },
+					"comparison": { "$type": "Relationships.Number:LessThanEqual:" }
+				}
+			]
+		}
 	},
 	"n": 4,
 	"e": 4,

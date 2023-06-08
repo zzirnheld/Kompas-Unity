@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Fleeing Lovers",
-	"effText":"Supplicant.\nWhen you summon me normally, deck->summon a copy of me adjacent to me.",
+	"effText":"Supplicant.\nWhen I'm summoned normally, deck->summon a copy of me adjacent to me.",
 	"effects":[
 		{
 			"triggerData":
@@ -9,23 +9,30 @@
 				"blurb": "Lovers fleeing together",
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card",
-						"No Stackable"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCardNow:" }
+						},
+						{ "$type": "Core.TriggerRestriction:Normally:" }
 					]
 				}
 			},
 			"subeffects":[
 				{
 					"$type": "Subeffect:AutoTarget:",
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Deck",
-							"Character",
-							"Same Name as Target"
-						],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" }
+					"toSearch": { "$type": "ManyCards:Deck:" },
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{ "$type": "Core.CardRestriction:Character:" },
+							{
+								"$type": "Core.CardRestriction:Name:",
+								"sameAs": { "$type": "Cards:TargetIndex:" }
+							}
 						]
 					},
 					"tiebreakerDirection":"Any"
@@ -35,9 +42,16 @@
 					"spaceRestriction":
 					{
 						"blurb": "where to summon the other Fleeing Lover",
-						"spaceRestrictions": [
-							"Can Play Card Target to This Space",
-							"Adjacent to Source"
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": { "$type": "Cards:ThisCardNow:" }
+							},
+							{
+								"$type": "Core.SpaceRestriction:CanPlayCard:",
+								"toPlay": { "$type": "Cards:TargetIndex:" }
+							}
 						]
 					}
 				},

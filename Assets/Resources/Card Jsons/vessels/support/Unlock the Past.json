@@ -7,41 +7,38 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCardNow:" }
+						}
 					]
 				}
 			},
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Vessel's Memory to unlock",
 					"cardRestriction": {
-						"blurb": "Vessel's Memory to unlock",
-						"cardRestrictions": [
-							"Augment",
-							"Space Fits Restriction"
-                        ],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Source"
-							]
-						},
-						"cardRestrictionElements": [
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+							{ "$type": "Core.CardRestriction:Augment:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Memory" ]
 							},
 							{
 								"$type": "Core.CardRestriction:Augments:",
-                                "cardRestriction": {
-                                    "cardRestrictionElements": [
-                                        {
-                                            "$type": "Core.CardRestriction:Subtypes:",
-                                            "subtypes": [ "Vessel" ]
-                                        }
-                                    ]
-                                }
+								"cardRestriction": {
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Vessel" ]
+								}
+							},
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": { "$type": "Cards:ThisCardNow:" }
 							}
 						]
 					}
@@ -51,22 +48,15 @@
 				},
 				{
 					"$type": "Subeffect:Discard:",
-                    "targetIndex": -2
+					"targetIndex": -2
 				},
 				{
-					"$type": "Subeffect:ChooseFromList:",
+					"$type": "Subeffect:CardTarget:",
+					"blurb": "Memories to search for",
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"blurb": "Memories to search for",
-						"cardRestrictions": [
-							"Deck"
-                        ],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Memory" ]
-							}
-						]
+						"$type": "Core.CardRestriction:Subtypes:",
+						"subtypes": [ "Memory" ]
 					},
 					"listRestriction": {
 						"listRestrictions": [

@@ -1,104 +1,109 @@
 {
 	"blurb":"Stealth",
-    "triggerData": {
-        "triggerCondition": "Turn Start",
-        "triggerRestriction": {
-            "triggerRestrictions": [
-                "This Card in Play",
-                "Enemy Turn"
-            ]
-        }
-    },
+	"triggerData": {
+		"triggerCondition": "Turn Start",
+		"triggerRestriction": {
+			"elements": [
+				{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+				{ "$type": "Core.TriggerRestriction:EnemyTurn:" }
+			]
+		}
+	},
 	"subeffects":[
-        {
-            "$type": "Subeffect:TargetThis:"
-        },
-        {
-            "$type": "Subeffect:SpaceTarget:",
-            "spaceRestriction": {
-                "spaceRestrictionElements": [
-                    {
-                        "$type": "Core.SpaceRestriction:InAOEOf:",
-                        "anyOf": {
-                            "$type": "ManyCards:FittingRestriction:",
-                            "cardRestriction": {
-                            "cardRestrictionElements": [ {
-                                    "$type": "Core.CardRestriction:Subtypes:",
-                                    "subtypes": [ "Shade" ]
-                                } ]
-                            }
-                        }
-                    },
-                    {
-                        "$type": "Core.SpaceRestriction:CanMoveCard:",
-                        "toMove": { "$type": "Cards:TargetIndex:" }
-                    }
-                ]
-            }
-        },
-        {
-            "$type": "Subeffect:Delay:",
-            "numTimesToDelay": 0,
-            "jumpIndices": [
-                3
-            ],
-            "fallOffCondition": "Turn Start",
-            "endCondition": "Arrive",
-            "triggerRestriction": {
-                "triggerRestrictions": [
-                    "Main Card Fits Restriction After"
-                ],
-                "nowRestriction": {
-                    "cardRestrictions": [
-                        "Source in This' AOE"
-                    ],
-					"cardRestrictionElements": [
-						{
-							"$type": "Core.CardRestriction:Subtypes:",
-							"subtypes": [ "Light" ]
+		{
+			"$type": "Subeffect:TargetThis:"
+		},
+		{
+			"$type": "Subeffect:SpaceTarget:",
+			"spaceRestriction": {
+				"$type": "Core.SpaceRestriction:AllOf:",
+				"elements": [
+					{
+						"$type": "Core.SpaceRestriction:InAOEOf:",
+						"anyOf": {
+							"$type": "ManyCards:FittingRestriction:",
+							
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [ {
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Shade" ]
+								}
+							}
 						}
-					]
-                }
-            }
-        },
-        {
-            "$type": "Subeffect:Move:"
-        },
-        {
-            "$type": "Subeffect:Delay:",
-            "numTimesToDelay": 0,
-            "jumpIndices": [
-                5
-            ],
-            "fallOffCondition": "",
-            "endCondition": "Stack End"
-        },
-        {
-            "$type": "Subeffect:CardTarget:",
-            "cardRestriction": {
-                "blurb": "enemy character to attack",
-                "cardRestrictions": [
-                    "Character",
-                    "Space Fits Restriction"
-                ],
-                "spaceRestriction": {
-                    "spaceRestrictions": [
-                        "Adjacent to Card Target"
-                    ]
-                },
-                "cardRestrictionElements": [
-                    { "$type": "Core.CardRestriction:Enemy:" },
-                    {
-                        "$type": "Core.CardRestriction:Location:",
-                        "locations": [ "Board" ]
-                    }
-                ]
-            }
-        },
-        {
-            "$type": "Subeffect:Attack:",
-            "targetIndex": -1,
-            "attackerIndex": -2
-        }
+					},
+					{
+						"$type": "Core.SpaceRestriction:CanMoveCard:",
+						"toMove": { "$type": "Cards:TargetIndex:" }
+					}
+				]
+			}
+		},
+		{
+			"$type": "Subeffect:Hanging.Delay:",
+			"numTimesToDelay": 0,
+			"jumpIndices": [
+				3
+			],
+			"fallOffCondition": "Turn Start",
+			"endCondition": "Arrive",
+			"triggerRestriction": {
+				"elements": [
+					{
+						"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+						"card": { "$type": "Cards:CardAfter:" },
+						
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+								{
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Light" ]
+								},
+								{
+									"$type": "Core.CardRestriction:AOEContains:",
+									"cards": {
+										"$type": "ManyCards:FromSingle:",
+										"cards": [ { "$type": "Cards:ThisCardNow:" } ]
+									}
+								}
+							]
+						}
+					}
+				]
+			}
+		},
+		{
+			"$type": "Subeffect:Move:"
+		},
+		{
+			"$type": "Subeffect:Hanging.Delay:",
+			"numTimesToDelay": 0,
+			"jumpIndices": [
+				5
+			],
+			"fallOffCondition": "",
+			"endCondition": "Stack End"
+		},
+		{
+			"$type": "Subeffect:CardTarget:",
+			"toSearch": { "$type": "ManyCards:Board:" },
+			"cardRestriction": {
+				"blurb": "enemy character to attack",
+				"elements": [
+					{ "$type": "Core.CardRestriction:Enemy:" },
+					{ "$type": "Core.CardRestriction:Character:" },
+					{
+						"$type": "Core.SpaceRestriction:AdjacentTo:",
+						"space": { "$type": "Cards:TargetIndex:" }
+					}
+				]
+			}
+		},
+		{
+			"$type": "Subeffect:Attack:",
+			"targetIndex": -1,
+			"attackerIndex": -2
+		}
 	]
 }

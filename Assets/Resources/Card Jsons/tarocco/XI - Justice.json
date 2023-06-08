@@ -5,10 +5,10 @@
 	"effects": [
 		{
 			"activationRestriction": {
-				"activationRestrictionArray": [
-					"Max Times Per Turn",
-					"Friendly Turn",
-					"Default"
+				"$type": "Core.PlayerRestriction:AllOf:",
+				"elements": [
+					{ "$type": "Core.PlayerRestriction:DefaultActivationRestrictions:" },
+					{ "$type": "Core.GamestateRestriction:MaxPerTurn:" }
 				]
 			},
 			"subeffects": [
@@ -17,8 +17,7 @@
 				},
 				{
 					"$type": "Subeffect:SetXByGamestate:",
-					"whatToCount": "Hand Size",
-					"xMultiplier": 1
+					"whatToCount": "Hand Size"
 				},
 				{
 					"$type": "Subeffect:SetXByGamestate:",
@@ -33,8 +32,7 @@
 				},
 				{
 					"$type": "Subeffect:Draw:",
-					"playerIndex": -2,
-					"xMultiplier": 1
+					"playerIndex": -2
 				},
 				{
 					"$type": "Subeffect:Loop:",

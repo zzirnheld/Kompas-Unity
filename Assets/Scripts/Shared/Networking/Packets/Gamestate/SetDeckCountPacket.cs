@@ -3,32 +3,32 @@ using KompasClient.GameCore;
 
 namespace KompasCore.Networking
 {
-    public class SetDeckCountPacket : Packet
-    {
-        public int playerIndex;
-        public int count;
+	public class SetDeckCountPacket : Packet
+	{
+		public int playerIndex;
+		public int count;
 
-        public SetDeckCountPacket() : base(SetDeckCount) { }
+		public SetDeckCountPacket() : base(SetDeckCount) { }
 
-        public SetDeckCountPacket(int playerIndex, int count, bool invert = false) : this()
-        {
-            this.playerIndex = invert ? 1 - playerIndex : playerIndex;
-            this.count = count;
-        }
+		public SetDeckCountPacket(int playerIndex, int count, bool invert = false) : this()
+		{
+			this.playerIndex = invert ? 1 - playerIndex : playerIndex;
+			this.count = count;
+		}
 
-        public override Packet Copy() => new SetDeckCountPacket(playerIndex, count, invert: false);
+		public override Packet Copy() => new SetDeckCountPacket(playerIndex, count, invert: false);
 
-        public override Packet GetInversion(bool known) => new SetDeckCountPacket(playerIndex, count, invert: true);
-    }
+		public override Packet GetInversion(bool known) => new SetDeckCountPacket(playerIndex, count, invert: true);
+	}
 }
 
 namespace KompasClient.Networking
 {
-    public class SetDeckCountClientPacket : SetDeckCountPacket, IClientOrderPacket
-    {
-        public void Execute(ClientGame clientGame)
-        {
-            clientGame.clientPlayers[playerIndex].clientDeckCtrl.DeckCount = count;
-        }
-    }
+	public class SetDeckCountClientPacket : SetDeckCountPacket, IClientOrderPacket
+	{
+		public void Execute(ClientGame clientGame)
+		{
+			clientGame.clientPlayers[playerIndex].deckController.DeckCount = count;
+		}
+	}
 }

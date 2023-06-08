@@ -8,24 +8,26 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-                    "triggerRestrictionElements": [
-                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-                        {
-                            "$type": "Core.TriggerRestriction:CardsMatch:",
-                            "firstCard": { "$type": "Cards:MainCardBefore:" },
-                            "secondCard": {
-                                "$type": "Cards:AugmentedCard:",
-                                "ofThisCard": { "$type": "Cards:ThisCard:" }
-                            }
-                        },
-                        {
-                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "card": { "$type": "Cards:MainCardBefore:" },
-                            "cardRestriction": {
-                                "cardRestrictionElements": [ { "$type": "Core.CardRestriction:Summoned:" } ]
-                            }
-                        }
-                    ]
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": {
+								"$type": "Cards:AugmentedCard:",
+								"ofThisCard": { "$type": "Cards:ThisCardNow:" }
+							}
+						},
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [ { "$type": "Core.CardRestriction:Summoned:" } ]
+							}
+						}
+					]
 				}
 			},
 			"subeffects": [
@@ -43,30 +45,32 @@
 			"triggerData": {
 				"triggerCondition": "Defend",
 				"triggerRestriction": {
-                    "triggerRestrictionElements": [
-                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-                        {
-                            "$type": "Core.TriggerRestriction:CardsMatch:",
-                            "firstCard": { "$type": "Cards:MainCardBefore:" },
-                            "secondCard": {
-                                "$type": "Cards:AugmentedCard:",
-                                "ofThisCard": { "$type": "Cards:ThisCard:" }
-                            }
-                        },
-                        {
-                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "card": { "$type": "Cards:MainCardBefore:" },
-                            "cardRestriction": {
-                                "cardRestrictionElements": [ { "$type": "Core.CardRestriction:Summoned:" } ]
-                            }
-                        }
-                    ]
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": {
+								"$type": "Cards:AugmentedCard:",
+								"ofThisCard": { "$type": "Cards:ThisCardNow:" }
+							}
+						},
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [ { "$type": "Core.CardRestriction:Summoned:" } ]
+							}
+						}
+					]
 				}
 			},
 			"subeffects": [
-                {
-                    "$type":"Subeffect:TargetAugmentedCard:"
-                },
+				{
+					"$type":"Subeffect:TargetAugmentedCard:"
+				},
 				{
 					"$type": "Subeffect:Resummon:"
 				},
@@ -88,11 +92,7 @@
 			"Augment Effect Restrictions",
 			"On Card that Fits Restriction"
 		],
-		"onCardRestriction": {
-			"cardRestrictions": [
-				"Summoned"
-			]
-		}
+		"onCardRestriction": { "$type": "Core.CardRestriction:Summoned:" }
 	},
 	"a": 2,
 	"subtypeText": "Sword: Summoned"

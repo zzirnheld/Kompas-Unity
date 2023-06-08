@@ -7,38 +7,46 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"Controller Triggered",
-						"Main Card Fits Restriction Before",
-						"This Card in Play"
-					],
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Card Value Fits Number Restriction"
-						],
-						"cardValue": {
-							"value": "S"
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.TriggerRestriction:PlayersMatch:",
+							"firstPlayer": { "$type": "Players:TriggeringPlayer:" },
+							"secondPlayer": { "$type": "Players:FriendlyPlayer:" }
 						},
-						"xRestriction": {
-							"numberRestrictions": [
-								">Avatar"
-							],
-							"cardValue": {
-								"value": "S"
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:AllOf:",
+								"elements": [
+									{
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Pulsar" ]
+									},
+									{
+										"$type": "Core.CardRestriction:CardValueFits:",
+										"cardValue": { "value": "S" },
+										"numberRestriction": {
+											"$type": "KompasCore.Effects.NumberRestriction, Assembly-CSharp",
+											"numberRestrictions": [
+												">Avatar"
+											],
+											"cardValue": {
+												"value": "S"
+											}
+										}
+									}
+								]
 							}
-						},
-						"cardRestrictionElements": [
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Pulsar" ]
-							}
-						]
-					}
+						}
+					]
 				}
 			},
 			"subeffects": [
 				{
 					"$type": "Subeffect:AddPips:",
+					"xMultiplier": 0,
 					"xModifier": 1
 				}
 			]
@@ -47,33 +55,40 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"Controller Triggered",
-						"Main Card Fits Restriction Before",
-						"This Card in Play"
-					],
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Card Value Fits Number Restriction"
-						],
-						"cardValue": {
-							"value": "S"
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.TriggerRestriction:PlayersMatch:",
+							"firstPlayer": { "$type": "Players:TriggeringPlayer:" },
+							"secondPlayer": { "$type": "Players:FriendlyPlayer:" }
 						},
-						"xRestriction": {
-							"numberRestrictions": [
-								"<Avatar"
-							],
-							"cardValue": {
-								"value": "S"
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:AllOf:",
+								"elements": [
+									{
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Pulsar" ]
+									},
+									{
+										"$type": "Core.CardRestriction:CardValueFits:",
+										"cardValue": { "value": "S" },
+										"numberRestriction": {
+											"$type": "KompasCore.Effects.NumberRestriction, Assembly-CSharp",
+											"numberRestrictions": [
+												"<Avatar"
+											],
+											"cardValue": {
+												"value": "S"
+											}
+										}
+									}
+								]
 							}
-						},
-						"cardRestrictionElements": [
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Pulsar" ]
-							}
-						]
-					}
+						}
+					]
 				}
 			},
 			"subeffects": [

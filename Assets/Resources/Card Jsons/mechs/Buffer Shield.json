@@ -8,8 +8,14 @@
 			"triggerData":
 			{
 				"triggerCondition":"Augment Attached",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card is Main Card"]
+				"triggerRestriction": {
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCardNow:" }
+						}
+					]
 				}
 			},
 			"subeffects":[
@@ -20,8 +26,14 @@
 					"$type":"Subeffect:Hanging.ChangeCardStats:",
 					"eModifier":3,
 					"endCondition":"Augment Detached",
-					"triggerRestriction":{
-						"triggerRestrictions":["This Card is Main Card"]
+					"triggerRestriction": {
+						"elements": [
+							{
+								"$type": "Core.TriggerRestriction:CardsMatch:",
+								"card": { "$type": "Cards:CardBefore:" },
+								"other": { "$type": "Cards:ThisCardNow:" }
+							}
+						]
 					}
 				}
 			]
@@ -31,18 +43,17 @@
 				"blurb": "Buffer Recharge",
 				"triggerCondition": "Turn Start",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"Enemy Turn",
-						"This Card Fits Restriction Now"
-					],
-					"selfRestriction": {
-						"cardRestrictionElements": [
-							{
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:EnemyTurn:" },
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:ThisCardNow:" },
+							"cardRestriction": {
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Discard" ]
 							}
-						]
-					}
+						}
+					]
 				}
 			},
 			"subeffects": [
@@ -51,18 +62,11 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "for Buffer Shield to attach to",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "for Buffer Shield to attach to",
-						"cardRestrictionElements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							},
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Mech" ]
-							}
-						]
+						"$type": "Core.CardRestriction:Subtypes:",
+						"subtypes": [ "Mech" ]
 					}
 				},
 				{

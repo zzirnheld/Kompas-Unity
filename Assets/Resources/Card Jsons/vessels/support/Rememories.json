@@ -7,24 +7,20 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
+					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
-							"card": { "$type": "Cards:MainCardBefore:" },
+							"card": { "$type": "Cards:CardBefore:" },
 							"cardRestriction": {
-								"cardRestrictionElements": [
-									{
-										"$type": "Core.CardRestriction:Subtypes:",
-										"subtypes": [ "Vessel" ]
-									}
-								]
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Vessel" ]
 							}
 						},
 						{
 							"$type": "Core.TriggerRestriction:CardsMatch:",
-							"firstCard": { "$type": "Cards:CauseBefore:" },
-							"secondCard": { "$type": "Cards:MainCardBefore:" }
+							"card": { "$type": "Cards:CauseBefore:" },
+							"other": { "$type": "Cards:CardBefore:" }
 						}
 					]
 				}
@@ -44,8 +40,6 @@
 		}
 	],
 	"c": 2,
-	"spellTypes": [
-		"Enchant"
-	],
+	"spellTypes": [ "Enchant" ],
 	"subtypeText": "Enchant"
 }

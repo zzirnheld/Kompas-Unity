@@ -8,21 +8,27 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"Augmented Card is Main Card",
-						"Stackable Source Fits Restriction Now"
-					],
-					"sourceRestriction": {
-						"cardRestrictions": [
-							"Distinct Name from Source"
-						]
-					}
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": {
+								"$type": "Cards:AugmentedCard:",
+								"ofThisCard": { "$type": "Cards:ThisCardNow:" }
+							}
+						},
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CauseBefore:" },
+							"cardRestriction": { "$type": "Core.CardRestriction:DistinctName:" }
+						}
+					]
 				}
 			},
 			"subeffects": [
-                {
-                    "$type":"Subeffect:TargetAugmentedCard:"
-                },
+				{
+					"$type":"Subeffect:TargetAugmentedCard:"
+				},
 				{
 					"$type": "Subeffect:Resummon:"
 				}

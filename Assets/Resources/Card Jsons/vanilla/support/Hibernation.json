@@ -4,39 +4,53 @@
 	"effText": "Negate this character.\nWhen I vanish, give them +10 ESW.",
 	"effects": [
 		{
-            "blurb": "Hibernation",
+			"blurb": "Hibernation",
 			"triggerData": {
 				"triggerCondition": "Augment Attached",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCardNow:" }
+						}
 					]
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+					"$type": "Subeffect:TargetAugmentedCard:"
 				},
 				{
-					"$type": "KompasServer.Effects.Hanging.NegateSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:Hanging.Negate:",
 					"endCondition": "Augment Detached",
 					"triggerRestriction": {
-						"triggerRestrictions": [
-							"This Card is Main Card"
+						"elements": [
+							{
+								"$type": "Core.TriggerRestriction:CardsMatch:",
+								"card": { "$type": "Cards:CardBefore:" },
+								"other": { "$type": "Cards:ThisCardNow:" }
+							}
 						]
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
-                    "endCondition": "Vanish",
-                    "triggerRestriction": {
-                        "triggerRestrictions": [
-                            "This Card is Main Card"
-                        ]
-                    }
+					"$type": "Subeffect:Hanging.Delay:",
+					"endCondition": "Vanish",
+					"numTimesToDelay": 0,
+					"jumpIndices": [ 3 ],
+					"triggerRestriction": {
+						"elements": [
+							{
+								"$type": "Core.TriggerRestriction:CardsMatch:",
+								"card": { "$type": "Cards:CardBefore:" },
+								"other": { "$type": "Cards:ThisCardNow:" }
+							}
+						]
+					}
 				},
 				{
-					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"$type": "Subeffect:ChangeCardStats:",
 					"eModifier": 10,
 					"sModifier": 10,
 					"wModifier": 10
@@ -57,6 +71,6 @@
 	],
 	"duration": 3,
 	"a": 1,
-	"subtypeText": "Vanishing 3",
+	"subtypeText": "",
 	"augSubtypes": []
 }

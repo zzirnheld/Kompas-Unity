@@ -8,26 +8,24 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"Main Card Fits Restriction Before",
-						"This Card Fits Restriction Now"
-					],
-					"cardRestriction": {
-						"cardRestrictionElements": [
-							{
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"cardRestriction": {
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Mech", "Golem" ]
 							}
-						]
-					},
-					"selfRestriction": {
-						"cardRestrictionElements": [
-							{
+						},
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:ThisCardNow:" },
+							"cardRestriction": {
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Discard" ]
 							}
-						]
-					}
+						}
+					]
 				}
 			},
 			"subeffects": [
@@ -44,28 +42,24 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "character within 4 spaces to have this Mech attack",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "character within 4 spaces to have this Mech attack",
-						"cardRestrictions": [
-							"Character",
-							"Different from Source",
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Distance to Source Fits X Restriction"
-							],
-							"distanceXRestriction": {
-								"numberRestrictions": [
-									"<=Constant"
-								],
-								"constant": 2
-							}
-						},
-						"cardRestrictionElements": [
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+								"$type": "Core.CardRestriction:Not:",
+								"negated": {
+									"$type": "Core.CardRestriction:CardsMatch:",
+									"card": { "$type": "Cards:ThisCardNow:" }
+								}
+							},
+							{
+								"$type": "Core.SpaceRestriction:CompareDistance:",
+								"distanceTo": { "$type": "Cards:TargetIndex:" },
+								"number": { "$type": "Numbers:Constant:", "constant": 2 },
+								"comparison": { "$type": "Relationships.Number:LessThanEqual:" }
 							}
 						]
 					}
@@ -77,17 +71,24 @@
 				}
 			]
 		},
-        {
-            "blurb":"Boom",
+		{
+			"blurb":"Boom",
 			"triggerData": {
 				"triggerCondition": "Attack",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"Augmented Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": {
+								"$type": "Cards:AugmentedCard:",
+								"ofThisCard": { "$type": "Cards:ThisCardNow:" }
+							}
+						}
 					]
 				}
 			},
-            "subeffects":[
+			"subeffects":[
 				{
 					"$type": "Subeffect:TargetAugmentedCard:"
 				},
@@ -95,8 +96,8 @@
 					"$type": "Subeffect:ChangeCardStats:",
 					"wModifier": 4
 				}
-            ]
-        }
+			]
+		}
 	],
 	"PlayRestriction": {
 		"normalRestrictions": [

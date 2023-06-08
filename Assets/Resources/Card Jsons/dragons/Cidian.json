@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Cidian",
-	"effText": "Territorial.\nWhen I deal X more combat damage than my defender's E, give other characters adjacent to them -X EW.",
+	"effText": "Territorial.\nWhen I deal X more damage than my defender's E, give other characters adjacent to them -X EW.",
 	"effects": [
 		{
 			"blurb": "Acid Breath",
@@ -9,14 +9,21 @@
 				"blurb": "Acid Breath",
 				"triggerCondition": "Take Combat Damage",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"Main Card Fits Restriction Before"
-					],
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Is Defending From Source"
-						]
-					}
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [ {
+									"$type": "Core.CardRestriction:Fighting:",
+									"defending": true,
+									"fightingWho": { "$type": "Cards:ThisCardNow:" }
+								} ]
+							}
+						}
+					]
 				}
 			},
 			"subeffects": [
@@ -30,27 +37,28 @@
 				},
 				{
 					"$type":"Subeffect:TargetTriggeringCard:",
-					"secondary":true
+					"contextSecondaryCard":true
 				},
 				{
 					"$type": "Subeffect:ChangeAllCardStats:",
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Character",
-							"Different from Source",
-							"Space Fits Restriction"
-						],
-						"cardRestrictionElements": [
+					"cardsSource": { "$type": "ManyCards:Board:" },
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+								"$type": "Core.CardRestriction:Not:",
+								"negated": {
+									"$type": "Core.CardRestriction:CardsMatch:",
+									"card": { "$type": "Cards:ThisCardNow:" }
+								}
+							},
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": { "$type": "Cards:TargetIndex:" }
 							}
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Card Target"
-							]
-						}
+						]
 					},
 					"eMultiplier": -1,
 					"wMultiplier": -1

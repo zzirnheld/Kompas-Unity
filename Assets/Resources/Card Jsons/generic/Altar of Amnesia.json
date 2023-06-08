@@ -6,33 +6,27 @@
 		{
 			"blurb": "You are someone else",
 			"activationRestriction": {
-				"activationRestrictionArray": [
-					"Friendly Turn",
-					"Default"
+				"$type": "Core.PlayerRestriction:AllOf:",
+				"elements": [
+					{ "$type": "Core.PlayerRestriction:DefaultActivationRestrictions:" }
 				]
 			},
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Which character will die",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "Which character will die",
-						"cardRestrictions": [
-							"Character",
-							"Summoned",
-							"Space Fits Restriction"
-						],
-						"cardRestrictionElements": [
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Friendly:" },
+							{ "$type": "Core.CardRestriction:Summoned:" },
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+								"$type": "Core.SpaceRestriction:InAOEOf:",
+								"card": { "$type": "Cards:ThisCardNow:" }
 							}
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"In Source's AOE"
-							]
-						}
+						]
 					}
 				},
 				{
@@ -43,25 +37,19 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Whose stats will get set",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "Whose stats will get set",
-						"cardRestrictions": [
-							"Character",
-							"Summoned",
-							"Space Fits Restriction"
-						],
-						"cardRestrictionElements": [
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Friendly:" },
+							{ "$type": "Core.CardRestriction:Summoned:" },
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+								"$type": "Core.SpaceRestriction:InAOEOf:",
+								"card": { "$type": "Cards:ThisCardNow:" }
 							}
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"In Source's AOE"
-							]
-						}
+						]
 					}
 				},
 				{
@@ -69,8 +57,7 @@
 					"cardValue": {
 						"value": "N"
 					},
-					"cardInfo": true,
-					"xMultiplier": 1
+					"cardInfo": true
 				},
 				{
 					"$type": "Subeffect:ChangeCardStats:",
@@ -81,8 +68,7 @@
 					"cardValue": {
 						"value": "E"
 					},
-					"cardInfo": true,
-					"xMultiplier": 1
+					"cardInfo": true
 				},
 				{
 					"$type": "Subeffect:ChangeCardStats:",
@@ -93,8 +79,7 @@
 					"cardValue": {
 						"value": "S"
 					},
-					"cardInfo": true,
-					"xMultiplier": 1
+					"cardInfo": true
 				},
 				{
 					"$type": "Subeffect:ChangeCardStats:",
@@ -105,8 +90,7 @@
 					"cardValue": {
 						"value": "W"
 					},
-					"cardInfo": true,
-					"xMultiplier": 1
+					"cardInfo": true
 				},
 				{
 					"$type": "Subeffect:ChangeCardStats:",

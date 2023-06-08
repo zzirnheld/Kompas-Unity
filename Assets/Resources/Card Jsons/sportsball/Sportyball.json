@@ -8,25 +8,35 @@
 				"blurb": "Sticky!",
 				"triggerCondition": "Arrive",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Max Per Turn",
-						"Space Fits Restriction",
-						"Main Card Fits Restriction Before"
-					],
-					"maxTimesPerTurn": 2,
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Character",
-							"Different from Augmented Card"
-						]
-					},
-					"spaceRestriction": {
-						"spaceRestrictions": [
-							"Adjacent to Source"
-						],
-						"mustBeEmpty": false
-					}
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.SpaceRestriction:AdjacentTo:",
+							"space": { "$type": "Cards:ThisCardNow:" }
+						},
+						{ "$type": "Core.GamestateRestriction:MaxPerTurn:", "max": 2 },
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+									{ "$type": "Core.CardRestriction:Character:" },
+									{
+										"$type": "Core.CardRestriction:Not:",
+										"negated": {
+											"$type": "Core.CardRestriction:CardsMatch:",
+											"card": {
+												"$type": "Cards:AugmentedCard:",
+												"ofThisCard": { "$type": "Cards:ThisCardNow:" }
+											}
+										}
+									}
+								]
+							}
+						}
+					]
 				}
 			},
 			"subeffects": [

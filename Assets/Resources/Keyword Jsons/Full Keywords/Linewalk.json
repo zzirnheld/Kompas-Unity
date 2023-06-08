@@ -1,48 +1,63 @@
 {
 	"blurb":"Linewalk",
-	"activationRestriction":{
-		"activationRestrictionArray":[
-			"Friendly Turn",
-			"This Card Fits Restriction",
-			"Default"
-		],
-		"thisCardRestriction":
-		{
-			"cardRestrictions":["Has Movement"]
-		}
+	"activationRestriction": {
+		"$type": "Core.PlayerRestriction:AllOf:",
+		"elements": [
+			{ "$type": "Core.PlayerRestriction:DefaultActivationRestrictions:" },
+			{
+				"$type": "Core.GamestateRestriction:CardFitsRestriction:",
+				"card": { "$type": "Cards:ThisCardNow:" },
+				"cardRestriction": {
+					"$type": "Core.CardRestriction:CardValueFits:",
+					"cardValue": { "value": "Spaces Can Move" },
+					"numberRestriction": { "$type": "Core.NumberRestriction:Positive:" }
+				}
+			}
+		]
 	},
 	"subeffects":[
 		{
 			"$type":"Subeffect:TargetThis:"
 		},
 		{
-			"$type":"Subeffect:SpendRemainingMovement:",
-			"mult":1
-		},
-		{
 			"$type":"Subeffect:SpaceTarget:",
+			"blurb":"to Linewalk to",
 			"spaceRestriction":
 			{
-				"blurb":"to Linewalk to",
-				"spaceRestrictions":[
-					"Empty",
-					"On Card Target's Diagonal",
-					"Connected to Card Target by Spaces Fitting Restriction"
-				],
-				"spaceConnectednessRestriction": {
-					"spaceRestrictions": [
-						"Empty",
-						"On Card Target's Diagonal"
-					]
-				},
-				"spaceRestrictionElements": [ {
-					"$type": "Core.SpaceRestriction:CanMoveCard:",
-					"toMove": { "$type": "Cards:TargetIndex:" }
-				} ]
+				"$type": "Core.SpaceRestriction:AllOf:",
+				"elements": [
+					{
+						"$type": "Core.SpaceRestriction:CanMoveCard:",
+						"toMove": { "$type": "Cards:TargetIndex:" }
+					},
+					{
+						"$type": "Core.SpaceRestriction:SameDiagonal:",
+						"other": { "$type": "Cards:TargetIndex:" }
+					},
+					{
+						"$type": "Core.SpaceRestriction:ConnectedTo:",
+						"space": { "$type": "Cards:TargetIndex:" },
+						"byRestriction": {
+							"$type": "Core.SpaceRestriction:AllOf:",
+							"elements": [
+								{ "$type": "Core.SpaceRestriction:Empty:" },
+								{
+									"$type": "Core.SpaceRestriction:SameDiagonal:",
+									"other": { "$type": "Cards:TargetIndex:" }
+								}
+							]
+						}
+					}
+				]
 			}
 		},
 		{
 			"$type":"Subeffect:Move:"
+		},
+		{
+			"$type":"Subeffect:SpendMovement:",
+					"xMultiplier": 0,
+					"xModifier":1
 		}
 	]
 }

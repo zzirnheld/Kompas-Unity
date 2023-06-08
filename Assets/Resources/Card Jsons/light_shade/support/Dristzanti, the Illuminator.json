@@ -6,38 +6,39 @@
 		{
 			"blurb": "Illuminate!",
 			"activationRestriction": {
-				"activationRestrictionArray": [
-					"Max Times Per Turn",
-					"Default"
+				"$type": "Core.PlayerRestriction:AllOf:",
+				"elements": [
+					{ "$type": "Core.PlayerRestriction:DefaultActivationRestrictions:" },
+					{ "$type": "Core.GamestateRestriction:MaxPerTurn:" }
 				]
 			},
 			"subeffects": [
 				{
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
-						"spaceRestrictionElements": [ {
-							"$type": "Core.SpaceRestriction:InAOEOf:",
-							"anyOf": {
-								"$type": "ManyCards:FittingRestriction:",
-								"cardRestriction": {
-								"cardRestrictionElements": [ {
-										"$type": "Core.CardRestriction:Subtypes:",
-										"subtypes": [ "Shade" ]
-									} ]
-								}
+						"$type": "Core.SpaceRestriction:InAOEOf:",
+						"anyOf": {
+							"$type": "ManyCards:FittingRestriction:",
+							
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [ {
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Shade" ]
+								} ]
 							}
-						} ]
+						}
 					}
 				},
 				{
 					"$type": "Subeffect:AutoTarget:",
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Deck",
-							"Spell"
-						],
-						"cardRestrictionElements": [
+					"toSearch": { "$type": "ManyCards:Deck:" },
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+							{ "$type": "Core.CardRestriction:Spell:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Light" ]
@@ -48,14 +49,18 @@
 				},
 				{
 					"$type": "Subeffect:TargetAll:",
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Would Overlap Card Target If Card Target Were At Space Target"
-						],
-						"cardRestrictionElements": [
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Shade" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Overlaps:",
+								"other": { "$type": "Cards:TargetIndex:" },
+								"overrideOtherSpace": { "$type": "Spaces:TargetIndex:" }
 							}
 						]
 					}
@@ -77,7 +82,7 @@
 			]
 		}
 	],
-    "unique":true,
+	"unique":true,
 	"n": 4,
 	"e": 3,
 	"s": 5,

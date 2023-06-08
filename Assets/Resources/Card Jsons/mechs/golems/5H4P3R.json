@@ -2,35 +2,30 @@
 	"cardType": 67,
 	"cardName": "5H4P3R",
 	"effText": "Nimble Golem.\nWhen I move across X cards in a line, destroy them and give me -X E.",
-    "technicalEffText": "Nimble Golem.\nWhen I move, destroy all X cards on a line between my origin and destination, and give me -X E.",
+	"technicalEffText": "Nimble Golem.\nWhen I move, destroy all X cards on a line between my origin and destination, and give me -X E.",
 	"effects": [
 		{
-            "blurb": "D35TR0Y!!!",
+			"blurb": "D35TR0Y!!!",
 			"triggerData": {
 				"triggerCondition": "Move",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
-                        {
-                            "$type": "Core.TriggerRestriction:CardsMatch:",
-                            "firstCard": { "$type": "Cards:ThisCard:" },
-                            "secondCard": { "$type": "Cards:MainCardBefore:" }
-                        }
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:ThisCardNow:" },
+							"other": { "$type": "Cards:CardBefore:" }
+						}
 					]
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:TargetAllCardsIdentity:",
-					"cardsIdentity": {
+					"$type": "Subeffect:TargetAll:",
+					"toSearch": {
 						"$type": "ManyCards:CardsInPositions:",
 						"positions": {
 							"$type": "ManySpaces:ThreeSpaceRelationship:",
-							"firstSpace": {
-								"$type": "Spaces:PositionOf:",
-								"ofThisCard": {
-									"$type": "Cards:MainCardBefore:"
-								}
-							},
+							"firstSpace": { "$type": "Cards:CardBefore:" },
 							"secondSpace": { "$type": "Spaces:ContextSpace:" },
 							"thirdSpaceRelationship": { "$type": "ThreeSpaceRelationships:Between:" }
 						}
@@ -38,8 +33,7 @@
 				},
 				{
 					"$type": "Subeffect:SetXByGamestate:",
-					"whatToCount": "Number of Targets",
-					"xMultiplier": 1
+					"whatToCount": "Number of Targets"
 				},
 				{
 					"$type": "Subeffect:Discard:"
@@ -60,7 +54,7 @@
 				}
 			]
 		}
-    ],
+	],
 	"MovementRestriction": {
 		"normalRestrictionsFromJson": [
 			"Default",

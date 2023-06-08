@@ -8,32 +8,33 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCardNow:" }
+						}
 					]
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:DeckTarget:",
+					"$type": "Subeffect:CardTarget:",
+					"blurb": "Mech plan",
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"blurb": "Mech plan",
-						"cardRestrictions": [
-							"Character",
-							"Deck"
-						],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Mech" ]
 							}
 						]
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
-					"$type": "Subeffect:Delay:",
+					"$type": "Subeffect:Hanging.Delay:",
 					"numTimesToDelay": 0,
 					"jumpIndices": [
 						2
@@ -41,40 +42,48 @@
 					"endCondition": "Turn Start"
 				},
 				{
-					"$type": "Subeffect:Delay:",
+					"$type": "Subeffect:Hanging.Delay:",
 					"numTimesToDelay": 0,
 					"jumpIndices": [
 						3
 					],
 					"endCondition": "Discard",
 					"triggerRestriction": {
-						"triggerRestrictions": [
-							"Main Card Fits Restriction Before"
-						],
+						"elements": [
+							{
+								"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+								"card": { "$type": "Cards:CardBefore:" },
+								
 						"cardRestriction": {
-							"cardRestrictionElements": [
-								{ "$type": "Core.CardRestriction:Friendly:" },
-								{
-									"$type": "Core.CardRestriction:Location:",
-									"locations": [ "Board" ]
-								},
-								{
-									"$type": "Core.CardRestriction:Subtypes:",
-									"subtypes": [ "Mech" ]
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+										{ "$type": "Core.CardRestriction:Friendly:" },
+										{
+											"$type": "Core.CardRestriction:Location:",
+											"locations": [ "Board" ]
+										},
+										{
+											"$type": "Core.CardRestriction:Subtypes:",
+											"subtypes": [ "Mech" ]
+										}
+									]
 								}
-							]
-						}
+							}
+						]
 					}
 				},
 				{
 					"$type": "Subeffect:AutoTarget:",
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Deck",
-							"Same Name as Target"
-						],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" }
+					"toSearch": { "$type": "ManyCards:Deck:" },
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+							{ "$type": "Core.CardRestriction:Friendly:" },
+							{
+								"$type": "Core.CardRestriction:Name:",
+								"sameAs": { "$type": "Cards:TargetIndex:" }
+							}
 						]
 					},
 					"tiebreakerDirection":"Any"

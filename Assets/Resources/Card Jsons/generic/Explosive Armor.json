@@ -3,17 +3,24 @@
 	"cardName": "Explosive Armor",
 	"effText": "When this character attacks, give them, then their target -7 E.",
 	"effects": [
-        {
-            "blurb":"Blast",
+		{
+			"blurb":"Blast",
 			"triggerData": {
 				"triggerCondition": "Attack",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"Augmented Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": {
+								"$type": "Cards:AugmentedCard:",
+								"ofThisCard": { "$type": "Cards:ThisCardNow:" }
+							}
+						}
 					]
 				}
 			},
-            "subeffects":[
+			"subeffects":[
 				{
 					"$type": "Subeffect:TargetAugmentedCard:"
 				},
@@ -23,14 +30,14 @@
 				},
 				{
 					"$type":"Subeffect:TargetTriggeringCard:",
-					"secondary":true
+					"contextSecondaryCard":true
 				},
 				{
 					"$type": "Subeffect:ChangeCardStats:",
 					"eModifier": -7
 				}
-            ]
-        }
+			]
+		}
 	],
 	"PlayRestriction": {
 		"normalRestrictions": [

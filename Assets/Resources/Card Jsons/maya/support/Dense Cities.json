@@ -1,15 +1,19 @@
 {
 	"cardType": 83,
 	"cardName": "Dense Cities",
-	"effText": "When I'm cast on the same diagonal as X Maya Structures, deck->hand up to X distinct Maya Craftspeople.",
+	"effText": "Deck->hand up to [number of Maya Structures on my diagonal] distinct Maya Craftspeople.",
 	"effects": [
 		{
 			"blurb": "Attract craftspeople",
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCardNow:" }
+						}
 					]
 				}
 			},
@@ -19,38 +23,33 @@
 				},
 				{
 					"$type":"Subeffect:SetXBoardRestriction:",
-					"cardRestriction": {
-						"cardRestrictions": [
-                            "Space Fits Restriction"
-                        ],
-						"cardRestrictionElements": [
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Maya", "Structure" ]
+							},
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": { "$type": "Cards:ThisCardNow:" }
+							},
+							{
+								"$type": "Core.SpaceRestriction:SameDiagonal:",
+								"other": { "$type": "Cards:TargetIndex:" }
 							}
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-                                "Adjacent to Source",
-								"On Card Target's Diagonal"
-                            ]
-						}
+						]
 					},
 					"xMultiplier":1
 				},
 				{
-					"$type": "Subeffect:ChooseFromList:",
+					"$type": "Subeffect:CardTarget:",
+					"blurb": "Craftspeople move to the cities",
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"blurb": "Craftspeople move to the cities",
-						"cardRestrictions": [
-							"Multiple Possible Locations"
-						],
-						"locations": [
-							3,
-							4
-						],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Maya", "Craft", "Person" ]
@@ -61,8 +60,7 @@
 						"listRestrictions": [
 							"Max Can Choose: X"
 						]
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:Hand:"

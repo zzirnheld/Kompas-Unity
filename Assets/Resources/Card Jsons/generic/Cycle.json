@@ -1,35 +1,28 @@
 {
-	"cardType":83,
-	"cardName":"Cycle",
-	"effText":"During friendly turns, you can hand->discard 1 to increase the leyload by 1.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Cycle",
+	"effText": "You can hand->discard 1 to increase the leyload by 1.",
+	"effects": [
 		{
 			"blurb":"Pass",
-			"activationRestriction":{
-				"activationRestrictionArray":[
- 					"Friendly Turn",
-					"Default"
+			"activationRestriction": {
+				"$type": "Core.PlayerRestriction:AllOf:",
+				"elements": [
+					{ "$type": "Core.PlayerRestriction:DefaultActivationRestrictions:" }
 				]
 			},
 			"subeffects":[
 				{
 					"$type":"Subeffect:CardTarget:",
-					"cardRestriction":{
-						"blurb":"Card to Cycle",
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Hand" ]
-							}
-						]
-					}
+					"blurb":"Card to Cycle",
+					"toSearch": { "$type": "ManyCards:Hand:" }
 				},
 				{
 					"$type":"Subeffect:Discard:"
 				},
 				{
 					"$type":"Subeffect:ChangeLeyload:",
+					"xMultiplier": 0,
 					"xModifier":1
 				}
 			]	

@@ -1,31 +1,35 @@
 {
 	"blurb":"Shape",
-	"activationRestriction":{
-		"activationRestrictionArray":[
-			"Friendly Turn",
-			"Default"
+	"activationRestriction": {
+		"$type": "Core.PlayerRestriction:AllOf:",
+		"elements": [
+			{ "$type": "Core.PlayerRestriction:DefaultActivationRestrictions:" }
 		]
 	},
 	"subeffects":[
 		{
 			"$type":"Subeffect:SpaceTarget:",
+			"blurb":"to move Shaper to",
 			"spaceRestriction":
 			{
-				"blurb":"to move Shaper to",
-				"spaceRestrictions":["Connected to Source by Cards Fitting Restriction"],
-				"connectednessRestriction":{
-					"cardRestrictions":["Character"],
-					"cardRestrictionElements": [
-						{
-							"$type": "Core.CardRestriction:Location:",
-							"locations": [ "Board" ]
-						},
-						{
-							"$type": "Core.CardRestriction:Subtypes:",
-							"subtypes": [ "Ethereal" ]
+				"$type": "Core.SpaceRestriction:AllOf:",
+				"elements": [
+					{
+						"$type": "Core.SpaceRestriction:ConnectedTo:",
+						"space": { "$type": "Cards:ThisCardNow:" },
+						"byRestriction":{
+							"$type": "Core.SpaceRestriction:AllOf:",
+							"elements": [
+								{ "$type": "Core.CardRestriction:Character:" },
+								{
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Ethereal" ]
+								}
+							]
 						}
-					]
-				}
+					}
+					
+				]
 			}
 		},
 		{
@@ -33,14 +37,16 @@
 		},
 		{
 			"$type":"Subeffect:SpendMovement:",
+			"xMultiplier": 0,
 			"xModifier":1
 		},
 		{
 			"$type":"Subeffect:SetXByGamestate:",
 			"whatToCount":"Distance to Coords Through",
 			"throughRestriction":{
-				"cardRestrictions":["Character"],
-				"cardRestrictionElements": [
+				"$type": "Core.CardRestriction:AllOf:",
+				"elements": [
+					{ "$type": "Core.CardRestriction:Character:" },
 					{
 						"$type": "Core.CardRestriction:Location:",
 						"locations": [ "Board" ]

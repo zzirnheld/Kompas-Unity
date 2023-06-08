@@ -1,36 +1,38 @@
 {
 	"cardType": 65,
 	"cardName": "Vampirism Module",
-	"effText": "When this character survives dealing X combat damage, give them +X EW.",
+	"effText": "When this character survives dealing X damage, give them +X EW.",
 	"effects": [
 		{
-            "blurb": "Vampirism",
+			"blurb": "Vampirism",
 			"triggerData": {
 				"triggerCondition": "Deal Combat Damage",
 				"triggerRestriction": {
-                    "triggerRestrictionElements": [
-                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-                        {
-                            "$type": "Core.TriggerRestriction:CardsMatch:",
-                            "firstCard": { "$type": "Cards:MainCardBefore:" },
-                            "secondCard": {
-                                "$type": "Cards:AugmentedCard:",
-                                "ofThisCard": { "$type": "Cards:ThisCard:" }
-                            }
-                        },
-                        {
-                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "card": { "$type": "Cards:MainCardAfter:" },
-                            "cardRestriction": {
-                                "cardRestrictionElements": [
-                                    {
-                                        "$type": "Core.CardRestriction:Location:",
-                                        "locations": [ "Board" ]
-                                    }
-                                ]
-                            }
-                        }
-                    ]
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": {
+								"$type": "Cards:AugmentedCard:",
+								"ofThisCard": { "$type": "Cards:ThisCardNow:" }
+							}
+						},
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardAfter:" },
+							
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+									{
+										"$type": "Core.CardRestriction:Location:",
+										"locations": [ "Board" ]
+									}
+								]
+							}
+						}
+					]
 				}
 			},
 			"subeffects": [

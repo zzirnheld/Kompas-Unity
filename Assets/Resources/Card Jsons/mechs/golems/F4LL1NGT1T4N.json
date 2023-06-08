@@ -5,54 +5,62 @@
 	"effects": [
 		{
 			"blurb": "T3L3P0RT",
-            "activationRestriction":{
-                "activationRestrictionArray":[
-                    "Friendly Turn",
-                    "This Card Fits Restriction",
-                    "Default"
-                ],
-                "thisCardRestriction":
-                {
-                    "cardRestrictions":["Has Movement"]
-                }
-            },
-            "subeffects":[
-                {
-                    "$type":"Subeffect:TargetThis:"
-                },
-                {
-                    "$type":"Subeffect:SpendRemainingMovement:",
-                    "mod":1,
-                    "mult":0
-                },
-                {
-                    "$type":"Subeffect:SpaceTarget:",
-                    "spaceRestriction":
-                    {
-                        "blurb":"to teleport F4LL1NGT1T4N to",
-                        "spaceRestrictions":[
-                            "Empty",
-							"Adjacent to a Card that Fits Restriction"
-						],
+			"activationRestriction": {
+				"$type": "Core.PlayerRestriction:AllOf:",
+				"elements": [
+					{ "$type": "Core.PlayerRestriction:DefaultActivationRestrictions:" },
+					{
+						"$type": "Core.GamestateRestriction:CardFitsRestriction:",
+						"card": { "$type": "Cards:ThisCardNow:" },
 						"cardRestriction": {
-							"cardRestrictionElements": [
-                                { "$type": "Core.CardRestriction:Friendly:" },
-								{
-									"$type": "Core.CardRestriction:Subtypes:",
-									"subtypes": [ "Mech" ]
+							"$type": "Core.CardRestriction:CardValueFits:",
+							"cardValue": { "value": "Spaces Can Move" },
+							"numberRestriction": { "$type": "Core.NumberRestriction:Positive:" }
+						}
+					}
+				]
+			},
+			"subeffects":[
+				{
+					"$type":"Subeffect:TargetThis:"
+				},
+				{
+					"$type":"Subeffect:SpendRemainingMovement:",
+					"mod":1,
+					"mult":0
+				},
+				{
+					"$type":"Subeffect:SpaceTarget:",
+					"blurb":"to teleport F4LL1NGT1T4N to",
+					"spaceRestriction":
+					{
+						"$type": "Core.SpaceRestriction:AllOf:",
+						"elements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanMoveCard:",
+								"toMove": { "$type": "Cards:TargetIndex:" }
+							},
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"cardRestriction": {
+									"$type": "Core.CardRestriction:AllOf:",
+									"elements": [
+										{ "$type": "Core.CardRestriction:Friendly:" },
+										{
+											"$type": "Core.CardRestriction:Subtypes:",
+											"subtypes": [ "Mech" ]
+										}
+									]
 								}
-							]
-						},
-						"spaceRestrictionElements": [ {
-							"$type": "Core.SpaceRestriction:CanMoveCard:",
-							"toMove": { "$type": "Cards:TargetIndex:" }
-						} ]
-                    }
-                },
-                {
-                    "$type":"Subeffect:Move:"
-                }
-            ]
+							}
+						]
+					}
+				},
+				{
+					"$type":"Subeffect:Move:"
+				}
+			]
 		}
 	],
 	"MovementRestriction": {

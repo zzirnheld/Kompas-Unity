@@ -5,48 +5,38 @@
 	"effects": [
 		{
 			"blurb": "Death Begets Life",
-			"activationRestriction":{
-				"activationRestrictionArray":[
-					"Location",
-					"Controller Activates",
-					"Not Negated"
-				],
-				"location":2
+			"activationRestriction": {
+				"$type": "Core.PlayerRestriction:AllOf:",
+				"elements": [
+					{
+						"$type": "Core.PlayerRestriction:DefaultActivationRestrictions:",
+						"locations": [ "Discard" ]
+					}
+				]
 			},
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "ritual sacrifice",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "ritual sacrifice",
-						"cardRestrictions": [
-							"Character",
-							"Summoned",
-                            "Space Fits Restriction"
-                        ],
-						"cardRestrictionElements": [
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							},
+							{ "$type": "Core.CardRestriction:Character:" },
+							{ "$type": "Core.CardRestriction:Summoned:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Person" ]
+							},
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"cardRestriction": {
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Structure" ]
+								}
 							}
-						],
-                        "spaceRestriction": {
-                            "spaceRestrictions": [
-                                "Adjacent to a Card that Fits Restriction"
-                            ],
-                            "adjacencyRestriction": {
-								"cardRestrictionElements": [
-									{
-										"$type": "Core.CardRestriction:Subtypes:",
-										"subtypes": [ "Structure" ]
-									}
-								]
-                            }
-                        }
+						]
 					}
 				},
 				{
@@ -57,10 +47,11 @@
 				},
 				{
 					"$type":"Subeffect:SpaceTarget:",
+					"blurb":"where to revive the Feathered Serpent",
 					"spaceRestriction":
 					{
-						"blurb":"where to revive the Feathered Serpent",
-						"spaceRestrictions":["Can Play Card Target to This Space"]
+						"$type": "Core.SpaceRestriction:CanPlayCard:",
+						"toPlay": { "$type": "Cards:TargetIndex:" }
 					}
 				},
 				{
@@ -68,7 +59,7 @@
 				}
 			]
 		}
-    ],
+	],
 	"PlayRestriction": {
 		"normalRestrictions": [
 			"Default Normal Restrictions",
@@ -78,22 +69,13 @@
 			"Default Effect Restrictions",
 			"Number of Cards Exist"
 		],
-		"countCardRestriction": {
-			"cardRestrictions": [
-				"Space Fits Restriction"
-			],
-			"spaceRestriction": {
-				"spaceRestrictions": [
-					"On Edge of Board"
-				]
-			}
-		},
+		"countCardRestriction": { "$type": "Core.SpaceRestriction:Edge:" },
 		"countCardNumberRestriction": {
 			"numberRestrictions": [">=Constant"],
 			"constant": 14
 		}
 	},
-    "unique": true,
+	"unique": true,
 	"n": 5,
 	"e": 1,
 	"s": 5,

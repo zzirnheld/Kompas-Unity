@@ -7,9 +7,9 @@
 			"blurb": "Sound Barrier",
 			"triggerData": {
 				"triggerCondition": "Move",
-				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play"
+				"triggerRestriction":{
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" }
 					]
 				}
 			},
@@ -20,28 +20,24 @@
 				{
 					"$type": "Subeffect:Hanging.ChangeCardStats:",
 					"cModifier": 1,
-					"endCondition": "Turn Start",
-					"triggerRestriction": {
-						"triggerRestrictions": []
-					}
+					"endCondition": "Turn Start"
 				},
 				{
 					"$type": "Subeffect:ConditionalEnd:",
 					"condition": "Target Fits Restriction",
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Card Value Fits Number Restriction"
-						],
-						"cardValue": {
-							"value": "C"
-						},
-						"cardValueNumberRestriction": {
-							"numberRestrictions": [
-								"<=X"
-							]
-						}
-					},
-					"xModifier": 30
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [ {
+							"$type": "Core.CardRestriction:CardValueFits:",
+							"cardValue": { "value": "C" },
+							"numberRestriction": {
+								"$type": "Core.NumberRestriction:Compare:",
+								"comparison": { "$type": "Relationships.Number:LessThanEqual:" },
+								"other": { "$type": "Numbers:Constant:", "constant": 30 }
+							}
+						} ]
+					}
 				},
 				{
 					"$type": "Subeffect:Annihilate:"

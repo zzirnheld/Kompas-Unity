@@ -1,15 +1,19 @@
 {
 	"cardType": 67,
 	"cardName": "Growing Boye",
-	"effText": "Territorial.\nWhen I attack, give me +11 S.",
+	"effText": "Territorial.\nWhen I fight, give me +11 S.",
 	"effects": [
 		{
 			"blurb": "Damage Boost",
 			"triggerData": {
-				"triggerCondition": "Attack",
+				"triggerCondition": "Battle Start",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCardNow:" }
+						}
 					]
 				}
 			},

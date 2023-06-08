@@ -7,9 +7,9 @@
 			"blurb": "doesn't it?",
 			"triggerData": {
 				"triggerCondition": "Turn Start",
-				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play"
+				"triggerRestriction":{
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" }
 					]
 				}
 			},
@@ -21,8 +21,7 @@
 					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "A"
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:TargetAugmentedCard:"
@@ -34,7 +33,7 @@
 				{
 					"$type": "Subeffect:ChangeCardStats:",
 					"aModifier": 1,
-                    "targetIndex": -2
+					"targetIndex": -2
 				}
 			]
 		}

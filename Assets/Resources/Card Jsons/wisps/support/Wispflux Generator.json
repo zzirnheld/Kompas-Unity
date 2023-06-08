@@ -7,22 +7,24 @@
 			"triggerData": {
 				"blurb": "Invoke",
 				"triggerCondition": "Turn Start",
-				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play"
+				"triggerRestriction":{
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" }
 					]
 				}
 			},
 			"subeffects": [
 				{
 					"$type": "Subeffect:Mill:",
+					"xMultiplier": 0,
 					"xModifier": 1
 				},
 				{
 					"$type": "Subeffect:ConditionalJump:",
 					"condition": "Target Violates Restriction",
 					"cardRestriction": {
-						"cardRestrictionElements": [
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
@@ -32,25 +34,22 @@
 					},
 					"jumpIndices": [
 						0
-					],
-					"xMultiplier": 1
+					]
 				},
-                {
-                    "$type": "Subeffect:AutoTargetSpaceIdentity:",
-                    "subeffectSpaceIdentity": {
-                        "$type": "Spaces:SelectFromMany:",
-                        "selector": { "$type": "KompasCore.Effects.Selectors.RandomSpace, Assembly-CSharp" },
-                        "spaces": {
-                            "$type": "ManySpaces:FittingRestriction:",
-                            "restriction": {
-                                "spaceRestrictionElements": [ {
-                                    "$type": "Core.SpaceRestriction:CanPlayCard:",
-                                    "toPlay": { "$type": "Cards:TargetIndex:" }
-                                } ]
-                            }
-                        }
-                    }
-                },
+				{
+					"$type": "Subeffect:AutoTargetSpaceIdentity:",
+					"subeffectSpaceIdentity": {
+						"$type": "Spaces:SelectFromMany:",
+						"selector": { "$type": "KompasCore.Effects.Selectors.RandomSpace, Assembly-CSharp" },
+						"spaces": {
+							"$type": "ManySpaces:FittingRestriction:",
+							"restriction": {
+								"$type": "Core.SpaceRestriction:CanPlayCard:",
+								"toPlay": { "$type": "Cards:TargetIndex:" }
+							}
+						}
+					}
+				},
 				{
 					"$type": "Subeffect:Play:"
 				}

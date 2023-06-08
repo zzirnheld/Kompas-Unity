@@ -1,40 +1,36 @@
 {
-    "blurb":"Instrument Dispel",
-    "triggerData":
-    {
-        "triggerCondition":"Play",
-        "triggerRestriction":{
-            "triggerRestrictions":["This Card in Play","Space Fits Restriction"],
-            "spaceRestriction":
-            {
-                "spaceRestrictions":["Adjacent to Source","Card Here Fits Restriction"],
-                "hereFitsRestriction":
-                {
-                    "cardRestrictionElements": [
-                        { "$type": "Core.CardRestriction:Friendly:" },
-                        {
-                            "$type": "Core.CardRestriction:Subtypes:",
-                            "subtypes": [ "Music" ]
-                        }
-                    ]
-                },
-                "mustBeEmpty":false
-            }
-        }
-    },
+	"blurb":"Instrument Dispel",
+	"triggerData":
+	{
+		"triggerCondition":"Play",
+		"triggerRestriction":{
+			"elements": [
+				{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+				{ "$type": "Core.CardRestriction:Friendly:" },
+				{
+					"$type": "Core.SpaceRestriction:AdjacentTo:",
+					"space": { "$type": "Cards:ThisCardNow:" }
+				},
+				{
+					"$type": "Core.CardRestriction:Subtypes:",
+					"subtypes": [ "Music" ]
+				}
+			]
+		}
+	},
 	"subeffects":[
-        {
-            "$type":"Subeffect:TargetTriggeringCard:"
-        },
-        {
-            "$type":"Subeffect:Delay:",
-            "numTimesToDelay":0,
-            "jumpIndices":[2],
-            "fallOffCondition":"",
-            "endCondition":"Stack End"
-        },
-        {
-            "$type":"Subeffect:Dispel:"
-        }
+		{
+			"$type":"Subeffect:TargetTriggeringCard:"
+		},
+		{
+			"$type":"Subeffect:Hanging.Delay:",
+			"numTimesToDelay":0,
+			"jumpIndices":[2],
+			"fallOffCondition":"",
+			"endCondition":"Stack End"
+		},
+		{
+			"$type":"Subeffect:Dispel:"
+		}
 	]	
 }

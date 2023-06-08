@@ -1,21 +1,25 @@
 {
 	"cardType": 67,
 	"cardName": "Heavypresence",
-	"effText": "Shape.\nWhen I attack a character, I push them 1 space away. If I can't, annihilate them.",
+	"effText": "Shape.\nWhen I attack a character, I push them 1 space directly away. If I can't, annihilate them.",
 	"effects": [
 		{
 			"triggerData": {
 				"triggerCondition": "Attack",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCardNow:" }
+						}
 					]
 				}
 			},
 			"subeffects": [
 				{
 					"$type":"Subeffect:TargetTriggeringCard:",
-					"secondary":true
+					"contextSecondaryCard":true
 				},
 				{
 					"$type": "Subeffect:SkipToEffectOnImpossible:",
@@ -24,21 +28,15 @@
 					]
 				},
 				{
-					"$type": "Subeffect:SpaceTarget:",
-					"spaceRestriction": {
-						"blurb": "to move Whose Anger Draws Fear's attack target to",
-						"spaceRestrictions": [
-							"Directly Away from Card Target",
-							"Empty"
-						],
-						"spaceRestrictionElements": [ {
-							"$type": "Core.SpaceRestriction:CanMoveCard:",
-							"toMove": { "$type": "Cards:TargetIndex:" },
-							"distanceRestriction": {
-								"numberRestrictions": [ "==Constant" ],
-								"constant": 1
-							}
-						} ]
+					"$type": "Subeffect:AutoTargetSpaceIdentity:",
+					"spaceIdentity": {
+						"$type": "Spaces:ApplyDisplacement:",
+						"from": { "$type": "Spaces:TargetIndex:" },
+						"displacement": {
+							"$type": "Spaces:Displacement:",
+							"from": { "$type": "Cards:ThisCardNow:" },
+							"to": { "$type": "Spaces:TargetIndex:" }
+						}
 					}
 				},
 				{

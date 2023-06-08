@@ -9,75 +9,75 @@ using UnityEngine;
 
 namespace KompasServer.Effects
 {
-    public class ServerHandSizeStackable : HandSizeStackable, IServerStackable
-    {
-        public ServerPlayer ServerController { get; }
-        public override Player Controller => ServerController;
+	public class ServerHandSizeStackable : HandSizeStackable, IServerStackable
+	{
+		public ServerPlayer ServerController { get; }
+		public override Player Controller => ServerController;
 
-        private readonly ServerGame serverGame;
+		private readonly ServerGame serverGame;
 
-        private bool awaitingChoices;
+		private bool awaitingChoices;
 
-        public ServerHandSizeStackable(ServerGame serverGame, ServerPlayer controller)
-        {
-            this.ServerController = controller;
-            this.serverGame = serverGame;
+		public ServerHandSizeStackable(ServerGame serverGame, ServerPlayer controller)
+		{
+			this.ServerController = controller;
+			this.serverGame = serverGame;
 
-            //tell the players this is here now
-            ServerController.ServerNotifier.NotifyHandSizeToStack();
-        }
-        public async Task StartResolution(ActivationContext context) => await RequestTargets();
+			//tell the players this is here now
+			ServerController.notifier.NotifyHandSizeToStack();
+		}
+		public async Task StartResolution(IResolutionContext context) => await RequestTargets();
 
-        private async Task RequestTargets()
-        {
-            Debug.Log("Trying to request hand size targets");
-            awaitingChoices = true;
+		private async Task RequestTargets()
+		{
+			Debug.Log("Trying to request hand size targets");
+			awaitingChoices = true;
 
-            var context = new ActivationContext(game: serverGame, stackableCause: this, stackableEvent: this);
-            int[] cardIds = serverGame.Cards
-                .Where(c => HandSizeCardRestriction.IsValidCard(c, context))
-                .Select(c => c.ID)
-                .ToArray();
+			var context = new ResolutionContext(new TriggeringEventContext(game: serverGame, stackableCause: this, stackableEvent: this));
+			int[] cardIds = serverGame.Cards
+				.Where(c => HandSizeCardRestriction.IsValid(c, context))
+				.Select(c => c.ID)
+				.ToArray();
 
-            int overHandSize = cardIds.Count() - Controller.HandSizeLimit;
-            if (overHandSize <= 0)
-            {
-                awaitingChoices = false;
-                return;
-            }
+			int overHandSize = cardIds.Count() - Controller.HandSizeLimit;
+			if (overHandSize <= 0)
+			{
+				awaitingChoices = false;
+				return;
+			}
 
-            var listRestriction = HandSizeListRestriction;
-            listRestriction.minCanChoose = overHandSize;
-            listRestriction.maxCanChoose = overHandSize;
-            string listRestrictionJson = JsonConvert.SerializeObject(listRestriction);
+			var listRestriction = HandSizeListRestriction;
+			listRestriction.minCanChoose = overHandSize;
+			listRestriction.maxCanChoose = overHandSize;
+			string listRestrictionJson = JsonConvert.SerializeObject(listRestriction);
 
-            int[] choices = null;
-            while (!TryAnswer(choices))
-            {
-                choices = await ServerController.serverAwaiter.GetHandSizeChoices(cardIds, listRestrictionJson);
-            }
-        }
+			int[] choices = null;
+			while (!TryAnswer(choices))
+			{
+				choices = await ServerController.awaiter.GetHandSizeChoices(cardIds, listRestrictionJson);
+			}
+		}
 
-        public bool TryAnswer(int[] cardIds)
-        {
-            if (!awaitingChoices) return false;
-            if (cardIds == null) return false;
+		public bool TryAnswer(int[] cardIds)
+		{
+			if (!awaitingChoices) return false;
+			if (cardIds == null) return false;
 
-            GameCard[] cards = cardIds
-                .Distinct()
-                .Select(i => serverGame.GetCardWithID(i))
-                .Where(c => c != null)
-                .ToArray();
+			GameCard[] cards = cardIds
+				.Distinct()
+				.Select(i => serverGame.GetCardWithID(i))
+				.Where(c => c != null)
+				.ToArray();
 
-            int count = cards.Count();
-            var context = new ActivationContext(game: serverGame, stackableCause: this, stackableEvent: this);
-            int correctCount = serverGame.Cards.Count(c => HandSizeCardRestriction.IsValidCard(c, context)) - Controller.HandSizeLimit;
+			int count = cards.Count();
+			var context = new ResolutionContext(new TriggeringEventContext(game: serverGame, stackableCause: this, stackableEvent: this));
+			int correctCount = serverGame.Cards.Count(c => HandSizeCardRestriction.IsValid(c, context)) - Controller.HandSizeLimit;
 
-            if (count != correctCount || cards.Any(c => !HandSizeCardRestriction.IsValidCard(c, context))) return false;
+			if (count != correctCount || cards.Any(c => !HandSizeCardRestriction.IsValid(c, context))) return false;
 
-            foreach (var card in cards) card.Reshuffle();
-            awaitingChoices = false;
-            return true;
-        }
-    }
+			foreach (var card in cards) card.Reshuffle();
+			awaitingChoices = false;
+			return true;
+		}
+	}
 }

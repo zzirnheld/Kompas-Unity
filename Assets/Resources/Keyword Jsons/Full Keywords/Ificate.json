@@ -4,10 +4,21 @@
 		"blurb":"Ificate",
 		"triggerCondition":"Discard",
 		"triggerRestriction":{
-			"triggerRestrictions":["This Card is Main Card","Main Card Fits Restriction Before"],
-			"cardRestriction":{
-				"cardRestrictions":["Hand"]
-			}
+			"elements": [
+				{
+					"$type": "Core.TriggerRestriction:CardsMatch:",
+					"card": { "$type": "Cards:CardBefore:" },
+					"other": { "$type": "Cards:ThisCardNow:" }
+				},
+				{
+					"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+					"card": { "$type": "Cards:CardBefore:" },
+					"cardRestriction": {
+						"$type": "Core.CardRestriction:Location:",
+						"locations": [ "Hand" ]
+					}
+				}
+			]
 		}
 	},
 	"subeffects":[
@@ -17,12 +28,20 @@
 		},
 		{
 			"$type":"Subeffect:CardTarget:",
+			"blurb":"Crazy Idea for Ificator to Ificate",
+			"toSearch": { "$type": "ManyCards:Discard:" },
 			"cardRestriction":
 			{
-				"blurb":"Crazy Idea for Ificator to Ificate",
-				"cardRestrictions":["Discard","Different from Source"],
-				"cardRestrictionElements": [
+				"$type": "Core.CardRestriction:AllOf:",
+				"elements": [
 					{ "$type": "Core.CardRestriction:Friendly:" },
+					{
+						"$type": "Core.CardRestriction:Not:",
+						"negated": {
+							"$type": "Core.CardRestriction:CardsMatch:",
+							"card": { "$type": "Cards:ThisCardNow:" }
+						}
+					},
 					{
 						"$type": "Core.CardRestriction:Subtypes:",
 						"subtypes": [ "Crazy", "Idea" ]
@@ -37,10 +56,16 @@
 		},
 		{
 			"$type":"Subeffect:SpaceTarget:",
+			"blurb":"where Ificator to play targeted Crazy Idea",
 			"spaceRestriction":
 			{
-				"blurb":"where Ificator to play targeted Crazy Idea",
-				"spaceRestrictions":["Can Play Card Target to This Space"]
+				"$type": "Core.SpaceRestriction:AllOf:",
+				"elements": [
+					{
+						"$type": "Core.SpaceRestriction:CanPlayCard:",
+						"toPlay": { "$type": "Cards:TargetIndex:" }
+					}
+				]
 			}
 		},
 		{

@@ -1,28 +1,30 @@
 {
 	"cardType": 67,
 	"cardName": "Dust Eater",
-	"effText": "When a character moves directly away from me, give me +2 W.",
+	"effText": "When a character moves away from me, give me +1 W.",
 	"effects": [
 		{
 			"triggerData": {
 				"triggerCondition": "Move",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Main Card After is Further from Source than Before",
-						"Main Card Fits Restriction After"
-					],
-					"nowRestriction": {
-						"cardRestrictions": [
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"On Source's Diagonal"
-							],
-							"mustBeEmpty": false
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.TriggerRestriction:CompareNumbers:",
+							"firstNumber": {
+								"$type": "Numbers:Distance:",
+								"firstSpace": { "$type": "Cards:ThisCardNow:" },
+								"secondSpace": { "$type": "Cards:CardBefore:" }
+							},
+							"comparison": { "$type": "Relationships.Number:LessThan:" },
+							"secondNumber": {
+								"$type": "Numbers:Distance:",
+								"firstSpace": { "$type": "Cards:ThisCardNow:" },
+								"secondSpace": { "$type": "Cards:CardAfter:" }
+							}
 						}
-					}
+					]
 				}
 			},
 			"subeffects": [
@@ -31,14 +33,14 @@
 				},
 				{
 					"$type": "Subeffect:ChangeCardStats:",
-					"wModifier": 2
+					"wModifier": 1
 				}
 			]
 		}
 	],
 	"n": 3,
 	"e": 1,
-	"s": 2,
+	"s": 3,
 	"w": 0,
 	"subtypeText": "Slowpoke"
 }

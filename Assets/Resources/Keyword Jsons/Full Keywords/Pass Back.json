@@ -5,18 +5,27 @@
 		"blurb":"Pass Back",
 		"triggerCondition":"Defend",
 		"triggerRestriction":{
-			"triggerRestrictions":["Augmented Card is Main Card"]
+			"elements": [
+				{
+					"$type": "Core.TriggerRestriction:CardsMatch:",
+					"card": { "$type": "Cards:CardBefore:" },
+					"other": {
+						"$type": "Cards:AugmentedCard:",
+						"ofThisCard": { "$type": "Cards:ThisCardNow:" }
+					}
+				}
+			]
 		}
 	},
 	"subeffects":[
-        {
-            "$type":"Subeffect:TargetAvatar:"
-        },
+		{
+			"$type":"Subeffect:TargetAvatar:"
+		},
 		{
 			"$type":"Subeffect:TargetThis:"
 		},
-        {
-            "$type":"Subeffect:Attach:"
-        }
+		{
+			"$type":"Subeffect:Attach:"
+		}
 	]
 }

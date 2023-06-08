@@ -5,66 +5,68 @@ using UnityEngine;
 
 public abstract class Player : MonoBehaviour
 {
-    public readonly int HandSizeLimit = 7;
+	public readonly int HandSizeLimit = 7;
 
-    public abstract Player Enemy { get; }
+	public abstract Game Game { get; }
 
-    //game mechanics data
-    private int pips = 3;
-    public virtual int Pips
-    {
-        get => pips;
-        set => pips = value;
-    }
-    private GameCard avatar;
-    public virtual GameCard Avatar
-    {
-        get => avatar;
-        set => avatar = value;
-    }
+	public abstract Player Enemy { get; }
 
-    //other game data
-    public abstract bool Friendly { get; }
-    //this is not a property so it can be assigned in the inspector for client players
-    public int index;
+	//game mechanics data
+	private int pips = 3;
+	public virtual int Pips
+	{
+		get => pips;
+		set => pips = value;
+	}
+	private GameCard avatar;
+	public virtual GameCard Avatar
+	{
+		get => avatar;
+		set => avatar = value;
+	}
 
-    public bool HandFull => handCtrl.HandSize >= HandSizeLimit;
-    public Space AvatarCorner => index == 0 ? Space.NearCorner : Space.FarCorner;
+	//other game data
+	public abstract bool Friendly { get; }
+	//this is not a property so it can be assigned in the inspector for client players
+	public int index;
 
-    //friendly
-    public DeckController deckCtrl;
-    public DiscardController discardCtrl;
-    public HandController handCtrl;
-    public AnnihilationController annihilationCtrl;
+	public bool HandFull => handCtrl.HandSize >= HandSizeLimit;
+	public Space AvatarCorner => index == 0 ? Space.NearCorner : Space.FarCorner;
 
-    //friendly
-    public GameObject deckObject;
-    public GameObject discardObject;
-    public GameObject handObject;
+	//friendly
+	public DeckController deckCtrl;
+	public DiscardController discardCtrl;
+	public HandController handCtrl;
+	public AnnihilationController annihilationCtrl;
 
-    public TcpClient TcpClient { get; private set; }
+	//friendly
+	public GameObject deckObject;
+	public GameObject discardObject;
+	public GameObject handObject;
 
-    /// <summary>
-    /// Whether the player has yet passed priority
-    /// </summary>
-    public bool PassedPriority { get; private set; } = false;
+	public TcpClient TcpClient { get; private set; }
 
-    public void ResetPassedPriority()
-    {
-        //NOTE: now that fast effects aren't a thing, don't waste time asking for players to pass priority
-        PassedPriority = true;
-    }
+	/// <summary>
+	/// Whether the player has yet passed priority
+	/// </summary>
+	public bool PassedPriority { get; private set; } = false;
 
-    public virtual void SetInfo(TcpClient tcpClient, int index)
-    {
-        TcpClient = tcpClient;
-        this.index = index;
-    }
+	public void ResetPassedPriority()
+	{
+		//NOTE: now that fast effects aren't a thing, don't waste time asking for players to pass priority
+		PassedPriority = true;
+	}
 
-    public Space SubjectiveCoords(Space space) => index == 0 ? space : space.Inverse;
+	public virtual void SetInfo(TcpClient tcpClient, int index)
+	{
+		TcpClient = tcpClient;
+		this.index = index;
+	}
 
-    public override string ToString()
-    {
-        return $"Player {index}";
-    }
+	public Space SubjectiveCoords(Space space) => index == 0 ? space : space.Inverse;
+
+	public override string ToString()
+	{
+		return $"Player {index}";
+	}
 }

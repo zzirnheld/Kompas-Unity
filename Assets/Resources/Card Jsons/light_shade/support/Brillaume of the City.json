@@ -6,28 +6,29 @@
 		{
 			"blurb": "Creep",
 			"activationRestriction": {
-				"activationRestrictionArray": [
-					"Max Times Per Turn",
-					"Default"
-				],
-                "maxTimes":3
+				"$type": "Core.PlayerRestriction:AllOf:",
+				"elements": [
+					{ "$type": "Core.PlayerRestriction:DefaultActivationRestrictions:" },
+					{ "$type": "Core.GamestateRestriction:MaxPerTurn:", "max": 3 }
+				]
 			},
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
 					"blurb": "card to slightly yeet",
-					"cardRestriction": {
-						"cardRestrictions": [
-                            "Subtypes Include Any Of"
-						],
-						"subtypesIncludeAnyOf": [
-                            "Light",
-							"Shade"
-						],
-						"cardRestrictionElements": [
+					"toSearch": { "$type": "ManyCards:Board:" },
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+								"$type": "Core.CardRestriction:Subtypes:",
+								"any": true,
+								"subtypes": [ "Light", "Shade" ]
+							},
+							{
+								"$type": "Core.CardRestriction:CanMove:",
+								"spaceRestrictionSubeffectIndex": 1
 							}
 						]
 					}
@@ -36,19 +37,19 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "where to slightly yeet target card",
-						"spaceRestrictions": [
-							"Empty",
-                            "Adjacent to a Card that Fits Restriction"
-                        ],
-                        "adjacencyRestriction": {
-							"cardRestrictionElements": [
-								{ "$type": "Core.CardRestriction:Friendly:" }
-							]
-                        },
-						"spaceRestrictionElements": [ {
-							"$type": "Core.SpaceRestriction:CanMoveCard:",
-							"toMove": { "$type": "Cards:TargetIndex:" }
-						} ]
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
+							{
+								"$type": "Core.SpaceRestriction:CanMoveCard:",
+								"toMove": { "$type": "Cards:TargetIndex:" }
+							},
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"cardRestriction": { "elements": [
+									{ "$type": "Core.CardRestriction:Friendly:" }
+								] }
+							}
+						]
 					}
 				},
 				{

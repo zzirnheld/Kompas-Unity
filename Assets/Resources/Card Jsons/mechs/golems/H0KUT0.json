@@ -7,34 +7,44 @@
 			"blurb": "0M43 W4 M0U 5H1ND31RU",
 			"triggerData": {
 				"triggerCondition": "Play",
-				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card in Play",
-						"Enemy Triggered"
+				"triggerRestriction":{
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" }
 					]
 				},
-				"triggerRestrictionElements": [
+				"elements": [
 					{
 						"$type": "Core.TriggerRestriction:CardFitsRestriction:",
-						"cardRestriction": { "cardRestrictions": [ "Activated" ] },
-						"card": { "$type": "Cards:ThisCard:" }
+						"card": { "$type": "Cards:ThisCardNow:" },
+						"cardRestriction": { "$type": "Core.CardRestriction:Active:" }
+					},
+					{
+						"$type": "Core.TriggerRestriction:PlayersMatch:",
+						"card": { "$type": "Players:TriggeringPlayer:" },
+						"other": { "$type": "Players:EnemyPlayer:" }
 					}
 				]
 			},
 			"subeffects": [
 				{
+					"$type":"Subeffect:TargetThis:"
+				},
+				{
 					"$type": "Subeffect:TargetTriggeringCard:"
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
+					"blurb": "where to move the H0KUT0",
 					"spaceRestriction": {
-						"blurb": "where to move the Shaper",
-						"spaceRestrictions": [
-							"Adjacent to Card Target",
-							"Empty"
+						"$type": "Core.SpaceRestriction:AllOf:",
+						"elements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": { "$type": "Cards:TargetIndex:" }
+							}
 						]
-					},
-					"targetIndex": -2
+					}
 				},
 				{
 					"$type": "Subeffect:Move:"

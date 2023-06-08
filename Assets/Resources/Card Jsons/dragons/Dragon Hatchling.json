@@ -1,19 +1,25 @@
 {
 	"cardType":67,
 	"cardName":"Dragon Hatchling",
-	"effText":"1 turn after I'm summoned, tribute me, hand->discard a Dragon, and hand->summon a Dragon where I was.",
+	"effText":"1 turn after I'm summoned, tribute me, hand->discard a Dragon, and HAND->summon a Dragon where I was.",
 	"effects":[
 		{
 			"triggerData":
 			{
 				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card is Main Card"]
+				"triggerRestriction": {
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCardNow:" }
+						}
+					]
 				}
 			},
 			"subeffects":[
 				{
-					"$type":"Subeffect:Delay:",
+					"$type":"Subeffect:Hanging.Delay:",
 					"numTimesToDelay":0,
 					"jumpIndices":[1],
 					"endCondition":"Turn Start"
@@ -29,16 +35,13 @@
 				},
 				{
 					"$type":"Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction":
 					{
 						"blurb":"for Dragon Hatchling to eat (discard)",
-						"cardRestrictions":["Character"],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Hand" ]
-							},
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Dragon" ]
@@ -51,20 +54,18 @@
 				},
 				{
 					"$type":"Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction":
 					{
 						"blurb":"for Dragon Hatchling to become (play)",
-						"cardRestrictions":["Character","Can Be Played"],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Hand" ]
-							},
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Dragon" ]
-							}
+							},
+							{ "$type": "Core.CardRestriction:CanPlay:" }
 						]
 					}
 				},

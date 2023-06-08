@@ -4,59 +4,57 @@
 	"effText": "When a Squire with total NESW X survives killing a character, tribute them and deck->summon an S <= X Warrior where they were.",
 	"effects": [
 		{
-            "blurb": "Bestow Knighthood",
+			"blurb": "Bestow Knighthood",
 			"triggerData": {
 				"triggerCondition": "Discard",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
-                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-                        {
-                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "card": { "$type": "Cards:MainCardBefore:" },
-                            "cardRestriction": { "cardRestrictions": [ "Character" ] }
-                        },
-                        {
-                            "$type": "Core.TriggerRestriction:CardFitsRestriction:",
-                            "card": { "$type": "Cards:CauseAfter:" },
-                            "cardRestriction": {
-                                "cardRestrictionElements": [
-                                    {
-                                        "$type": "Core.CardRestriction:Location:",
-                                        "locations": [ "Board" ]
-                                    },
-                                    {
-                                        "$type": "Core.CardRestriction:Subtypes:",
-                                        "subtypes": [ "Squire" ]
-                                    }
-                                ]
-                             }
-                        }
-                    ]
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"cardRestriction": { "$type": "Core.CardRestriction:Character:" }
+						},
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CauseAfter:" },
+							
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+									{
+										"$type": "Core.CardRestriction:Location:",
+										"locations": [ "Board" ]
+									},
+									{
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Squire" ]
+									}
+								]
+							 }
+						}
+					]
 				}
 			},
 			"subeffects": [
 				{
 					"$type": "Subeffect:SetXByTriggeringCardValue:",
-					"cardValue": { "value": "N" },
-					"xMultiplier": 1
+					"cardValue": { "value": "N" }
 				},
 				{
 					"$type": "Subeffect:SetXByTriggeringCardValue:",
 					"cardValue": { "value": "E" },
-					"change": true,
-					"xMultiplier": 1
+					"change": true
 				},
 				{
 					"$type": "Subeffect:SetXByTriggeringCardValue:",
 					"cardValue": { "value": "S" },
-					"change": true,
-					"xMultiplier": 1
+					"change": true
 				},
 				{
 					"$type": "Subeffect:SetXByTriggeringCardValue:",
 					"cardValue": { "value": "W" },
-					"change": true,
-					"xMultiplier": 1
+					"change": true
 				},
 				{
 					"$type": "Subeffect:TargetTriggeringCard:",
@@ -69,17 +67,27 @@
 					"$type":"Subeffect:Discard:"
 				},
 				{
-					"$type":"Subeffect:DeckTarget:",
+					"$type":"Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction":
 					{
 						"blurb":"for Squire to become",
-						"cardRestrictions": [ "Character", "Deck", "Can Be Played", "Card Value Fits Number Restriction" ],
-						"cardValue": { "value": "S" },
-						"cardValueNumberRestriction": { "numberRestrictions": [ "<=X" ] },
-						"cardRestrictionElements": [
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Warrior" ]
+							},
+							{ "$type": "Core.CardRestriction:CanPlay:" },
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": { "value": "S" },
+								"numberRestriction": {
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:LessThanEqual:" },
+									"other": { "$type": "Numbers:EffectX:" }
+								}
 							}
 						]
 					}
@@ -90,7 +98,7 @@
 			]
 		}
 	],
-    "unique": true,
+	"unique": true,
 	"c": 1,
 	"spellTypes": [
 		"Enchant"

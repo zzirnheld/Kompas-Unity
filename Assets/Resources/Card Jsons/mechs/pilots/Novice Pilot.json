@@ -5,16 +5,16 @@
 	"effects":[
 		{
 			"blurb":"Substandard Piloting",
-			"activationRestriction":{
-				"activationRestrictionArray":[
-					"Friendly Turn",
-					"Default"
+			"activationRestriction": {
+				"$type": "Core.PlayerRestriction:AllOf:",
+				"elements": [
+					{ "$type": "Core.PlayerRestriction:DefaultActivationRestrictions:" }
 				]
 			},
 			"subeffects":[
 				{
 					"$type":"Subeffect:Keyword:",
-                    "keyword":"Mech Pilot Summon"
+					"keyword":"Mech Pilot Summon"
 				},
 				{
 					"$type":"Subeffect:ChangeCardStats:",
@@ -25,7 +25,7 @@
 				},
 				{
 					"$type":"Subeffect:Keyword:",
-                    "keyword":"Mech Pilot Return"
+					"keyword":"Mech Pilot Return"
 				}
 			]
 		}

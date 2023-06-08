@@ -5,31 +5,44 @@
 	"tehnicalEffText": "If there's ANY enemy characters here and nothing else is happening, swap me for Light in your deck.",
 	"effects": [
 		{
-            "blurb":"Light Up",
-            "triggerData":
-            {
-                "triggerCondition":"Stack End",
-                "triggerRestriction":{
-                    "triggerRestrictions":["This Card Fits Restriction Now"],
-                    "selfRestriction":{
-                        "cardRestrictions":["Card has Card Restriction in its AOE"],
-                        "hasInAOERestriction":{
-                            "cardRestrictions":["Character"]
-                        },
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Enemy:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+			"blurb":"Light Up",
+			"triggerData":
+			{
+				"triggerCondition":"Stack End",
+				"triggerRestriction":{
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+									{
+										"$type": "Core.CardRestriction:Location:",
+										"locations": [ "Board" ]
+									},
+									{
+										"$type": "Core.CardRestriction:AOEContains:",
+										
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+												{ "$type": "Core.CardRestriction:Enemy:" },
+												{ "$type": "Core.CardRestriction:Character:" }
+											]
+										}
+									}
+								]
 							}
-						]
-                    }
-                }
-            },
-            "subeffects":[
-                {
-                    "$type":"Subeffect:TargetThis:"
-                },
+						}
+					]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"Subeffect:TargetThis:"
+				},
 				{
 					"$type": "Subeffect:TargetTargetsSpace:"
 				},
@@ -38,13 +51,13 @@
 				},
 				{
 					"$type": "Subeffect:AutoTarget:",
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Deck",
-							"Spell"
-						],
-						"cardRestrictionElements": [
+					"toSearch": { "$type": "ManyCards:Deck:" },
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 							{ "$type": "Core.CardRestriction:Friendly:" },
+							{ "$type": "Core.CardRestriction:Spell:" },
 							{
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Light" ]
@@ -56,8 +69,8 @@
 				{
 					"$type": "Subeffect:Play:"
 				}
-            ]	
-        }
+			]	
+		}
 	],
 	"c": 1,
 	"spellTypes": [

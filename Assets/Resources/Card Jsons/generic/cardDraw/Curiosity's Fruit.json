@@ -1,30 +1,29 @@
 {
 	"cardType": 65,
 	"cardName": "Curiosity's Fruit",
-	"effText": "When this character deals X combat damage, draw X cards.",
+	"effText": "When this character deals X damage, draw X cards.",
 	"effects": [
 		{
-            "blurb": "Curiosity Bears Fruit",
+			"blurb": "Curiosity Bears Fruit",
 			"triggerData": {
 				"triggerCondition": "Deal Combat Damage",
 				"triggerRestriction": {
-                    "triggerRestrictionElements": [
-                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-                        {
-                            "$type": "Core.TriggerRestriction:CardsMatch:",
-                            "firstCard": { "$type": "Cards:MainCardBefore:" },
-                            "secondCard": {
-                                "$type": "Cards:AugmentedCard:",
-                                "ofThisCard": { "$type": "Cards:ThisCard:" }
-                            }
-                        }
-                    ]
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": {
+								"$type": "Cards:AugmentedCard:",
+								"ofThisCard": { "$type": "Cards:ThisCardNow:" }
+							}
+						}
+					]
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:DrawX:",
-					"xMultiplier": 1
+					"$type": "Subeffect:DrawX:"
 				}
 			]
 		}

@@ -8,12 +8,12 @@
 				"blurb": "Condense",
 				"triggerCondition": "Move",
 				"triggerRestriction": {
-					"triggerRestrictionElements": [
-                        { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-                        {
-                            "$type": "Core.TriggerRestriction:TriggerKeyword:",
-                            "keyword": "Shaped Through"
-                        }
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{
+							"$type": "Core.TriggerRestriction:TriggerKeyword:",
+							"keyword": "Shaped Through"
+						}
 					]
 				}
 			},
@@ -29,22 +29,20 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Ethereal to where Irrilmist was",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
-						"blurb": "Ethereal to where Irrilmist was",
-                        "cardRestrictionElements": [
-                            {
-                                "$type": "Core.CardRestriction:Location:",
-                                "locations": [ "Board" ]
-                            },
-                            {
-                                "$type": "Core.CardRestriction:Subtypes:",
-                                "subtypes": [ "Ethereal" ]
-                            },
-                            {
-                                "$type": "Core.CardRestriction:CanMoveTo:",
-                                "destination": { "$type": "Spaces:TargetIndex:" }
-                            }
-                        ]
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Ethereal" ]
+							},
+							{
+								"$type": "Core.CardRestriction:CanMove:",
+								"destination": { "$type": "Spaces:TargetIndex:" }
+							}
+						]
 					}
 				},
 				{
@@ -63,7 +61,7 @@
 	"w": 1,
 	"subtypes": [
 		"Ethereal",
-        "Shaper"
+		"Shaper"
 	],
 	"subtypeText": "Ethereal Shaper"
 }

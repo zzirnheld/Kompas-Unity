@@ -6,10 +6,10 @@
 		{
 			"blurb": "Seek in Shadow",
 			"activationRestriction": {
-				"activationRestrictionArray": [
-					"Max Times Per Turn",
-					"Friendly Turn",
-					"Default"
+				"$type": "Core.PlayerRestriction:AllOf:",
+				"elements": [
+					{ "$type": "Core.PlayerRestriction:DefaultActivationRestrictions:" },
+					{ "$type": "Core.GamestateRestriction:MaxPerTurn:" }
 				]
 			},
 			"subeffects": [
@@ -22,7 +22,6 @@
 				},
 				{
 					"$type": "Subeffect:DrawX:",
-					"xMultiplier": 1,
 					"xModifier": 1
 				}
 			]

@@ -1,68 +1,67 @@
 {
 	"cardType": 67,
 	"cardName": "Pishiwisp",
-	"effText": "Wisp.\nAfter I move, gain 1 pip for each adjacent enemy.",
+	"effText": "Wisp: Push each adjacent character 1 space away.",
 	"effects": [
 		{
 			"blurb": "pish",
 			"triggerData": {
 				"triggerCondition": "Move",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCardNow:" }
+						}
 					]
 				}
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:TargetTriggeringCardsSpace:"
-				},
-				{
 					"$type": "Subeffect:TargetAll:",
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Space Fits Restriction"
-						],
-						"cardRestrictionElements": [
+					"toSearch": { "$type": "ManyCards:Board:" },
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": { "$type": "Cards:ThisCardNow:" }
 							}
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Source"
-							]
-						}
+						]
 					}
 				},
 				{
-					"$type": "Subeffect:SpaceTarget:",
+					"$type": "Subeffect:SkipToEffectOnImpossible:",
+					"jumpIndices": [ 4 ]
+				},
+				{
+					"$type": "Subeffect:AutoTargetSpaceIdentity:",
+					"spaceIdentity": {
+						"$type": "Spaces:ApplyDisplacement:",
+						"from": { "$type": "Spaces:TargetIndex:" },
+						"displacement": {
+							"$type": "Spaces:Displacement:",
+							"from": { "$type": "Cards:ThisCardNow:" },
+							"to": { "$type": "Spaces:TargetIndex:" }
+						}
+					},
 					"spaceRestriction": {
-						"blurb": "to move Whose Anger Draws Fear's attack target to",
-						"spaceRestrictions": [
-							"Directly Away from Card Target",
-							"Empty"
-						],
-						"spaceRestrictionElements": [ {
-							"$type": "Core.SpaceRestriction:CanMoveCard:",
-							"toMove": { "$type": "Cards:TargetIndex:" },
-							"distanceRestriction": {
-								"numberRestrictions": [ "==Constant" ],
-								"constant": 1
-							}
-						} ]
+						"$type": "Core.SpaceRestriction:CanMoveCard:",
+						"toMove": { "$type": "Cards:TargetIndex:" }
 					}
 				},
 				{
 					"$type": "Subeffect:Move:"
 				},
 				{
+					"$type": "Subeffect:ClearOnImpossible:"
+				},
+				{
 					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"delete": true,
-					"jumpIndices": [
-						2
-					]
+					"jumpIndices": [ 1 ]
 				}
 			]
 		}

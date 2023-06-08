@@ -7,17 +7,26 @@
 			"triggerData": {
 				"triggerCondition": "Move",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"Max Per Stack",
-						"This Card is Main Card",
-						"Stackable Source isn't This Effect",
-						"Stackable Source Fits Restriction Now"
-					],
-					"sourceRestriction": {
-						"cardRestrictions": [
-							"Is Source"
-						]
-					}
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCardNow:" }
+						},
+						{ "$type": "Core.GamestateRestriction:MaxPerStack:" },
+						{
+							"$type": "Core.TriggerRestriction:StackableFitsRestriction:",
+							"stackable": { "$type": "Stackables:StackableCause:" },
+							"restriction": {
+								"stackableRestrictionElements": [
+									{
+										"$type": "Core.EffectRestriction:Keyword:",
+										"keyword": "Speedemon"
+									}
+								]
+							}
+						}
+					]
 				}
 			},
 			"subeffects": [
@@ -36,22 +45,20 @@
 			"triggerData": {
 				"triggerCondition": "Move",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
-					],
-					"triggerRestrictionElements": [
-                        {
-                            "$type": "Core.TriggerRestriction:SpacesFitRestriction:",
-                            "spaces": { "$type": "ManySpaces:Corners:" },
-                            "spaceRestriction": {
-                                "spaceRestrictionElements": [
-                                    {
-                                        "$type": "Core.SpaceRestriction:Not:",
-                                        "negated": { "$type": "Core.SpaceRestriction:Empty:" }
-                                    }
-                                ]
-                            }
-                        }
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCardNow:" }
+						},
+						{
+							"$type": "Core.TriggerRestriction:SpacesFitRestriction:",
+							"spaces": { "$type": "ManySpaces:Corners:" },
+							"spaceRestriction": {
+								"$type": "Core.SpaceRestriction:Not:",
+								"negated": { "$type": "Core.SpaceRestriction:Empty:" }
+							}
+						}
 					]
 				}
 			},
@@ -59,20 +66,13 @@
 				{
 					"$type": "Subeffect:ChangeAllCardStats:",
 					"cardRestriction": {
-						"cardRestrictions": [
-							"Character",
-							"Space Fits Restriction"
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Source"
-							]
-						},
-						"cardRestrictionElements": [
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
 							{ "$type": "Core.CardRestriction:Enemy:" },
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": { "$type": "Cards:ThisCardNow:" }
 							}
 						]
 					},

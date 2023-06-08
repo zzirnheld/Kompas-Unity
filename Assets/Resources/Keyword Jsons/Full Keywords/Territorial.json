@@ -5,46 +5,30 @@
 		"blurb":"Territorial",
 		"triggerCondition":"Turn Start",
 		"triggerRestriction":{
-			"triggerRestrictions":["This Card in Play"]
+			"elements": [
+				{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" }
+			]
 		}
 	},
 	"subeffects":[
 		{
 			"$type":"Subeffect:CardTarget:",
+			"toSearch": { "$type": "ManyCards:Board:" },
 			"cardRestriction":
 			{
 				"blurb":"for Dragon to move and attack",
-				"cardRestrictions":["Character","Space Fits Restriction"],
-				"spaceRestriction":
-				{
-					"spaceRestrictions":["Adjacent to Source"],
-					"mustBeEmpty":false
-				},
-				"cardRestrictionElements": [
+				"elements": [
+					{ "$type": "Core.CardRestriction:Character:" },
 					{
-						"$type": "Core.CardRestriction:Location:",
-						"locations": [ "Board" ]
+						"$type": "Core.SpaceRestriction:AdjacentTo:",
+						"space": { "$type": "Cards:ThisCardNow:" }
+					},
+					{
+						"$type": "Core.CardRestriction:CanMove:",
+						"spaceRestrictionSubeffectIndex": 1
 					}
 				]
 			}
-		},
-		{
-			"$type":"Subeffect:SpaceTarget:",
-			"spaceRestriction":
-			{
-				"blurb":"where Dragon to move its target",
-				"spaceRestrictionElements": [ {
-					"$type": "Core.SpaceRestriction:CanMoveCard:",
-					"toMove": { "$type": "Cards:TargetIndex:" },
-					"distanceRestriction": {
-						"numberRestrictions": [ "==Constant" ],
-						"constant": 1
-					}
-				} ]
-			}
-		},
-		{
-			"$type":"Subeffect:Move:"
 		},
 		{
 			"$type":"Subeffect:TargetThis:"

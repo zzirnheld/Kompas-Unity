@@ -7,63 +7,54 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCardNow:" }
+						}
 					]
 				}
 			},
 			"subeffects": [
 				{
 					"$type": "Subeffect:CardTarget:",
+					"blurb": "Module to discard",
+					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": {
-						"blurb": "Module to discard",
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-                            {
-                                "$type": "Core.CardRestriction:Location:",
-                                "locations": [ "Hand" ]
-                            },
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Module" ]
-							}
-						]
+						"$type": "Core.CardRestriction:Subtypes:",
+						"subtypes": [ "Module" ]
 					}
 				},
 				{
 					"$type": "Subeffect:SetXByTargetCardValue:",
 					"cardValue": {
 						"value": "Cost"
-					},
-					"xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:Discard:"
 				},
 				{
-					"$type": "Subeffect:ChooseFromList:",
-                    "cardRestriction":
-                    {
-                        "cardRestrictions": [ "Augment" ],
-                        "cardRestrictionElements": [
-                            {
-                                "$type": "Core.CardRestriction:Location:",
-                                "locations": [ "Deck" ]
-                            },
-                            {
-                                "$type": "Core.CardRestriction:Subtypes:",
-                                "subtypes": [ "Module" ]
-                            }
-                        ]
-                    },
+					"$type": "Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Deck:" },
+					"cardRestriction":
+					{
+						"elements": [
+							{ "$type": "Core.CardRestriction:Augment:" },
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Module" ]
+							}
+						]
+					},
 					"listRestriction": {
 						"listRestrictions": [
 							"Min Can Choose: X",
 							"Max Can Choose: X",
-                            "Distinct"
+							"Distinct"
 						]
-					},
-                    "xMultiplier": 1
+					}
 				},
 				{
 					"$type": "Subeffect:Hand:"
@@ -76,36 +67,29 @@
 				}
 			]
 		},
-        {
-            "blurb": "Recover me",
-            "activationRestriction": {
-                "activationRestrictionArray":[
-                    "Location",
-                    "Controller Activates",
-                    "Not Negated"
-                ],
-                "location":2
-            },
-            "subeffects": [
-                {
-                    "$type": "Subeffect:TargetThis:"
-                },
-                {
-                    "$type": "Subeffect:CanResolve:",
-                    "subeffIndices": [ 2, 5 ]
-                },
+		{
+			"blurb": "Recover me",
+			"activationRestriction": {
+				"$type": "Core.PlayerRestriction:AllOf:",
+				"elements": [
+					{
+						"$type": "Core.PlayerRestriction:DefaultActivationRestrictions:",
+						"locations": [ "Discard" ]
+					}
+				]
+			},
+			"subeffects": [
 				{
-					"$type": "Subeffect:ChooseFromList:",
-					"cardRestriction": {
-						"blurb": "cards to reshuffle",
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Discard" ]
-							}
-						]
-					},
+					"$type": "Subeffect:TargetThis:"
+				},
+				{
+					"$type": "Subeffect:CanResolve:",
+					"subeffIndices": [ 2, 5 ]
+				},
+				{
+					"$type": "Subeffect:CardTarget:",
+					"blurb": "cards to reshuffle",
+					"toSearch": { "$type": "ManyCards:Discard:" },
 					"listRestriction": {
 						"listRestrictions": [
 							"Min Can Choose",
@@ -129,12 +113,12 @@
 					"xMultiplier":0,
 					"xModifier":1
 				},
-                {
-                    "$type":"Subeffect:Hand:",
-                    "targetIndex": 0
-                }
-            ]
-        }
+				{
+					"$type":"Subeffect:Hand:",
+					"targetIndex": 0
+				}
+			]
+		}
 	],
 	"c": 1,
 	"spellTypes": [

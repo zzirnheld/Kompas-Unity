@@ -1,36 +1,43 @@
 {
-    "blurb": "Evasive",
-    "triggerData": {
-        "triggerCondition": "Battle Start",
-        "triggerRestriction": {
-            "triggerRestrictions": [
-                "This Card is Main Card",
-                "Max Per Round"
-            ]
-        }
-    },
-    "subeffects": [
-        {
-            "$type":"Subeffect:TargetTriggeringCard:",
-            "secondary":true
-        },
-        {
-            "$type": "Subeffect:SetXByTriggeringCardValue:",
-            "secondary":true,
-            "cardValue": {
-                "value": "W"
-            },
-            "xMultiplier": 1
-        },
-        {
-            "$type": "Subeffect:Hanging.ChangeCardStats:",
-            "wMultiplier": -1,
-            "endCondition": "Battle End",
-            "triggerRestriction": {
-                "triggerRestrictions": [
-                    "Contexts Stackables Match"
-                ]
-            }
-        }
-    ]
+	"blurb": "Evasive",
+	"triggerData": {
+		"triggerCondition": "Battle Start",
+		"triggerRestriction": {
+			"elements": [
+				{
+					"$type": "Core.TriggerRestriction:CardsMatch:",
+					"card": { "$type": "Cards:CardBefore:" },
+					"other": { "$type": "Cards:ThisCardNow:" }
+				},
+				{ "$type": "Core.GamestateRestriction:MaxPerRound:" }
+			]
+		}
+	},
+	"subeffects": [
+		{
+			"$type":"Subeffect:TargetTriggeringCard:",
+			"contextSecondaryCard":true
+		},
+		{
+			"$type": "Subeffect:SetXByTriggeringCardValue:",
+			"contextSecondaryCard":true,
+			"cardValue": {
+				"value": "W"
+			}
+		},
+		{
+			"$type": "Subeffect:Hanging.ChangeCardStats:",
+			"wMultiplier": -1,
+			"endCondition": "Battle End",
+			"triggerRestriction": {
+				"elements": [
+					{
+						"$type": "Core.TriggerRestriction:StackablesMatch:",
+						"firstStackable": { "$type": "Stackables:StackableEvent:", "secondaryContext": true },
+						"secondStackable": { "$type": "Stackables:StackableEvent:" }
+					}
+				]
+			}
+		}
+	]
 }

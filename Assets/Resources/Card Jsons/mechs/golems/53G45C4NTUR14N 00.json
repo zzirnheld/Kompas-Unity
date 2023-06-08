@@ -6,9 +6,9 @@
 		{
 			"blurb": "00 BB",
 			"activationRestriction": {
-				"activationRestrictionArray": [
-					"Friendly Turn",
-					"Default"
+				"$type": "Core.PlayerRestriction:AllOf:",
+				"elements": [
+					{ "$type": "Core.PlayerRestriction:DefaultActivationRestrictions:" }
 				]
 			},
 			"subeffects": [
@@ -27,8 +27,7 @@
 					"cardValue": {
 						"value": "N"
 					},
-					"cardInfo": true,
-					"xMultiplier": 1
+					"cardInfo": true
 				},
 				{
 					"$type": "Subeffect:ChangeCardStats:",
@@ -39,8 +38,7 @@
 					"cardValue": {
 						"value": "E"
 					},
-					"cardInfo": true,
-					"xMultiplier": 1
+					"cardInfo": true
 				},
 				{
 					"$type": "Subeffect:ChangeCardStats:",
@@ -51,8 +49,7 @@
 					"cardValue": {
 						"value": "S"
 					},
-					"cardInfo": true,
-					"xMultiplier": 1
+					"cardInfo": true
 				},
 				{
 					"$type": "Subeffect:ChangeCardStats:",
@@ -63,8 +60,7 @@
 					"cardValue": {
 						"value": "W"
 					},
-					"cardInfo": true,
-					"xMultiplier": 1
+					"cardInfo": true
 				},
 				{
 					"$type": "Subeffect:ChangeCardStats:",

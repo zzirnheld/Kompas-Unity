@@ -4,10 +4,10 @@ using System.Threading.Tasks;
 
 namespace KompasServer.Effects
 {
-    public interface IServerStackable : IStackable
-    {
-        Task StartResolution(ActivationContext context);
+	public interface IServerStackable : IStackable
+	{
+		Task StartResolution(IResolutionContext context);
 
-        ServerPlayer ServerController { get; }
-    }
+		ServerPlayer ServerController { get; }
+	}
 }

@@ -1,65 +1,58 @@
 {
 	"blurb": "Masquerade",
-    "activationRestriction": {
-        "activationRestrictionArray": [
-            "Max Times Per Turn",
-            "Default"
-        ],
-        "maxTimes": 2
-    },
+	"activationRestriction": {
+		"$type": "Core.PlayerRestriction:AllOf:",
+		"elements": [
+			{ "$type": "Core.PlayerRestriction:DefaultActivationRestrictions:" },
+			{ "$type": "Core.GamestateRestriction:MaxPerTurn:", "max": 2 }
+		]
+	},
 	"subeffects":[
 		{
 			"$type":"Subeffect:TargetThis:"
-        },
-        {
-            "$type": "Subeffect:CardTarget:",
-            "cardRestriction": {
-                "blurb": "Mask to swap out",
-                "cardRestrictions": [
-                    "Augment",
-                    "Augments Current Target"
-                ],
-                "cardRestrictionElements": [
-                    {
-                        "$type": "Core.CardRestriction:Location:",
-                        "locations": [ "Board" ]
-                    },
-                    {
-                        "$type": "Core.CardRestriction:Subtypes:",
-                        "subtypes": [ "Mask" ]
-                    }
-                ]
-            }
-        },
-        {
-            "$type":"Subeffect:CardTarget:",
-            "cardRestriction":
-            {
-                "blurb": "Mask to swap for",
-                "cardRestrictions": [ "Augment" ],
-                "cardRestrictionElements": [
-                    {
-                        "$type": "Core.CardRestriction:Location:",
-                        "locations": [ "Hand" ]
-                    },
-                    {
-                        "$type": "Core.CardRestriction:Subtypes:",
-                        "subtypes": [ "Mask" ]
-                    }
-                ]
-            }
-        },
-        {
-            "$type": "Subeffect:TargetThis:"
-        },
-        {
-            "$type": "Subeffect:Hand:",
-            "targetIndex": -3
-        },
-        {
-            "$type": "Subeffect:Attach:",
-            "targetIndex": -2,
-            "targetToAttachTo": -1
-        }
-    ]
+		},
+		{
+			"$type": "Subeffect:CardTarget:",
+			"cardRestriction": {
+				"blurb": "Mask to swap out",
+				"elements": [
+					{
+						"$type": "Core.CardRestriction:Subtypes:",
+						"subtypes": [ "Mask" ]
+					},
+					{
+						"$type": "Core.CardRestriction:Augments:",
+						"singleCard": { "$type": "Cards:TargetIndex:" }
+					}
+				]
+			}
+		},
+		{
+			"$type":"Subeffect:CardTarget:",
+			"toSearch": { "$type": "ManyCards:Hand:" },
+			"cardRestriction":
+			{
+				"blurb": "Mask to swap for",
+				"elements": [
+					{ "$type": "Core.CardRestriction:Augment:" },
+					{
+						"$type": "Core.CardRestriction:Subtypes:",
+						"subtypes": [ "Mask" ]
+					}
+				]
+			}
+		},
+		{
+			"$type": "Subeffect:TargetThis:"
+		},
+		{
+			"$type": "Subeffect:Hand:",
+			"targetIndex": -3
+		},
+		{
+			"$type": "Subeffect:Attach:",
+			"targetIndex": -2,
+			"targetToAttachTo": -1
+		}
+	]
 }

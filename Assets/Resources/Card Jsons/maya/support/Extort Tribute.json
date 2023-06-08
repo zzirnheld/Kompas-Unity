@@ -7,33 +7,43 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCardNow:" }
+						}
 					]
 				}
 			},
 			"subeffects": [
 				{
 					"$type": "Subeffect:AutoTarget:",
+					"blurb": "for Haemopoten to draw",
+					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"blurb": "for Haemopoten to draw",
-						"cardRestrictions": [
-							"Deck",
-							"Index<C"
-						],
-						"constant": 1,
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Enemy:" }
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
+							{ "$type": "Core.CardRestriction:Enemy:" },
+							{
+								"$type": "Core.CardRestriction:CardValueFits:",
+								"cardValue": { "value": "Index" },
+								"numberRestriction": {
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:LessThan:" },
+									"other": { "$type": "Numbers:Constant:", "constant": 1 }
+								}
+							}
 						]
 					}
 				},
 				{
 					"$type": "Subeffect:Discard:"
 				},
-                {
-                    "$type":"Subeffect:CanResolve:",
-                    "subeffIndices": [ 4, 5 ]
-                },
+				{
+					"$type":"Subeffect:CanResolve:",
+					"subeffIndices": [ 4, 5 ]
+				},
 				{
 					"$type": "Subeffect:ChooseOption:",
 					"choiceBlurb": "Pip play that card?",
@@ -53,29 +63,31 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"blurb": "Where to play that card",
-                        "spaceRestrictionElements": [
-                            { "$type": "Core.SpaceRestriction:Empty:" },
-                            {
-                                "$type": "Core.SpaceRestriction:CanPlayCard:",
-                                "toPlay": { "$type": "Cards:TargetIndex:" }
-                            },
-                            {
-                                "$type": "Core.SpaceRestriction:WithinDistanceOfNumberOfCards:",
-                                "cardRestriction": {
-									"cardRestrictionElements": [
+						"elements": [
+							{ "$type": "Core.SpaceRestriction:Empty:" },
+							{
+								"$type": "Core.SpaceRestriction:CanPlayCard:",
+								"toPlay": { "$type": "Cards:TargetIndex:" }
+							},
+							{
+								"$type": "Core.SpaceRestriction:WithinDistanceOfNumberOfCards:",
+								
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
 										{ "$type": "Core.CardRestriction:Friendly:" },
 										{
 											"$type": "Core.CardRestriction:Subtypes:",
 											"subtypes": [ "Structure" ]
 										}
 									]
-                                },
-                                "number": { 
-                                    "$type": "Numbers:Constant:",
-                                    "constant": 2
-                                }
-                            }
-                        ]
+								},
+								"number": { 
+									"$type": "Numbers:Constant:",
+									"constant": 2
+								}
+							}
+						]
 					}
 				},
 				{

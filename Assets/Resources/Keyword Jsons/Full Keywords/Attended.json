@@ -4,30 +4,50 @@
 	{
 		"triggerCondition":"Stack End",
 		"triggerRestriction":{
-			"triggerRestrictions":["This Card Fits Restriction Now","Number of Cards Fitting Restriction Fits X Restriction"],
-			"selfRestriction":{
-				"cardRestrictions":["Not Avatar"],
-				"cardRestrictionElements": [
-					{
-						"$type": "Core.CardRestriction:Location:",
-						"locations": [ "Board" ]
+			"elements": [
+				{
+					"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+					"card": { "$type": "Cards:CardBefore:" },
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+							{
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board" ]
+							},
+							{
+								"$type": "Core.CardRestriction:Not:",
+								"negated": { "$type": "Core.CardRestriction:Avatar:" }
+							}
+						]
 					}
-				]
-			},
-            "cardsFittingCardRestriction":{
-				"cardRestrictions":["Space Fits Restriction"],
-				"cardRestrictionElements": [
-					{ "$type": "Core.CardRestriction:Friendly:" }
-				],
-                "spaceRestriction":
-                {
-                    "spaceRestrictions":["Adjacent to Source"],
-                    "mustBeEmpty":false
-                }
-            },
-            "cardsFittingXRestriction":{
-                "numberRestrictions":["<Arg"]
-            }
+				},
+				{
+					"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
+					"number": {
+						"$type": "Numbers:CountCards:",
+						"cards": {
+							"$type": "ManyCards:FittingRestriction:",
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:AllOf:",
+								"elements": [
+									{ "$type": "Core.CardRestriction:Friendly:" },
+									{
+										"$type": "Core.SpaceRestriction:AdjacentTo:",
+										"space": { "$type": "Cards:ThisCardNow:" }
+									}
+								]
+							}
+						}
+					},
+					"restriction": {
+						"$type": "KompasCore.Effects.NumberRestriction, Assembly-CSharp",
+						"numberRestrictions": [ "<Arg" ],
+						"constant":3
+					}
+				}
+			]
 		}
 	},
 	"subeffects":[

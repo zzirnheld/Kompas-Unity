@@ -8,35 +8,32 @@
 			{
 				"triggerCondition":"Play",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Card Exists Now"],
-					"existsRestriction":
-					{
-						"cardRestrictions": [
-							"Space Fits Restriction"
-						],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Enemy:" }
-						],
-						"spaceRestriction":
+					"elements": [
+						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{
-							"spaceRestrictions":["Adjacent to Source"]
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"anyOf": {
+								"$type": "ManyCards:CardsInPositions:",
+								"positions": {
+									"$type": "ManySpaces:AdjacentSpaces:",
+									"adjacentTo": { "$type": "Cards:ThisCardNow:" }
+								}
+							},
+							"cardRestriction": { "$type": "Core.CardRestriction:Enemy:" }
 						}
-					}
+					]
 				}
 			},
 			"subeffects":[
 				{
 					"$type":"Subeffect:CardTarget:",
+					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction":
 					{
 						"blurb":"friendly character for Crab Robot Crab Minion to give intel",
-						"cardRestrictions":["Character"],
-						"cardRestrictionElements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							}
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
+							{ "$type": "Core.CardRestriction:Friendly:" }
 						]
 					}
 				},

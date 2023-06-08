@@ -7,8 +7,12 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCardNow:" }
+						}
 					]
 				}
 			},
@@ -24,19 +28,21 @@
 			"triggerData": {
 				"triggerCondition": "Rehand",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card",
-						"This Card Fits Restriction Now"
-					],
-					"selfRestriction": {
-						"cardRestrictions":[
-							"Multiple Possible Locations"
-						],
-						"locations": [
-							1,
-							2
-						]
-					}
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCardNow:" }
+						},
+						{
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:Location:",
+								"locations": [ "Board", "Discard" ]
+							}
+						}
+					]
 				}
 			},
 			"subeffects": [
@@ -53,9 +59,6 @@
 				}
 			]
 		}
-	],
-	"keywords":[
-		"Ambush"
 	],
 	"n": 7,
 	"e": 7,

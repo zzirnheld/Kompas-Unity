@@ -7,40 +7,52 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"triggerRestrictions": [
-						"This Card is Main Card"
+					"elements": [
+						{
+							"$type": "Core.TriggerRestriction:CardsMatch:",
+							"card": { "$type": "Cards:CardBefore:" },
+							"other": { "$type": "Cards:ThisCardNow:" }
+						}
 					]
 				}
 			},
 			"subeffects": [
 				{
 					"$type": "Subeffect:TargetAll:",
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Spell",
-							"Space Fits Restriction"
-						],
-						"cardRestrictionElements": [
+					"toSearch": { "$type": "ManyCards:Board:" },
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+							{ "$type": "Core.CardRestriction:Spell:" },
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": { "$type": "Cards:ThisCardNow:" }
 							}
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Source"
-							]
-						}
+						]
 					}
 				},
 				{
 					"$type": "Subeffect:Hanging.Negate:",
 					"endCondition": "Discard",
 					"triggerRestriction": {
-						"triggerRestrictions": [
-							"This Card is Main Card",
-							"From Field"
-						]
+						"triggerRestriction": {
+							"elements": [
+								{
+									"$type": "Core.TriggerRestriction:CardsMatch:",
+									"card": { "$type": "Cards:CardBefore:" },
+									"other": { "$type": "Cards:ThisCardNow:" }
+								},
+								{
+									"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+									"card": { "$type": "Cards:CardBefore:" },
+									"cardRestriction": {
+										"$type": "Core.CardRestriction:Location:",
+										"locations": [ "Board" ]
+									}
+								}
+							]
+						}
 					}
 				},
 				{
@@ -52,26 +64,21 @@
 				},
 				{
 					"$type": "Subeffect:TargetAll:",
-					"cardRestriction": {
-						"cardRestrictions": [
-							"Spell",
-							"Space Fits Restriction"
-						],
-						"cardRestrictionElements": [
+					"toSearch": { "$type": "ManyCards:Board:" },
+					
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+							{ "$type": "Core.CardRestriction:Spell:" },
 							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
+								"$type": "Core.SpaceRestriction:AdjacentTo:",
+								"space": { "$type": "Cards:ThisCardNow:" }
 							}
-						],
-						"spaceRestriction": {
-							"spaceRestrictions": [
-								"Adjacent to Source"
-							]
-						}
+						]
 					}
 				},
 				{
-					"$type": "Subeffect:Delay:",
+					"$type": "Subeffect:Hanging.Delay:",
 					"numTimesToDelay": 1,
 					"jumpIndices": [
 						1
