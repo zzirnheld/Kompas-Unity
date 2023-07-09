@@ -1,4 +1,5 @@
 ﻿using KompasCore.Cards;
+using KompasCore.Effects.Restrictions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,6 +7,95 @@ using UnityEngine;
 
 namespace KompasCore.Effects
 {
+	namespace Restrictions
+	{
+		public class NewMovementRestriction : SpaceRestrictionElements.AllOf
+		{
+			private MovementSubRestriction normal;
+			private MovementSubRestriction effect;
+
+			public SpaceRestrictionElement[] normalOnly = new SpaceRestrictionElement[] { };
+			public SpaceRestrictionElement[] effectOnly = new SpaceRestrictionElement[] { };
+
+			protected override IEnumerable<IRestriction<Space>> DefaultElements
+			{
+				get
+				{
+					yield return new TriggerRestrictionElements.CardFitsRestriction()
+					{
+						card = new Identities.Cards.ThisCardNow(),
+						cardRestriction = new CardRestrictionElements.Location(CardLocation.Board)
+					};
+					yield return new SpaceRestrictionElements.Empty(); //TODO re-add swapping probably. will req DefaultEffectElements
+					yield return new SpaceRestrictionElements.Different()
+					{
+						from = new Identities.Cards.ThisCardNow()
+					};
+					yield return new SpaceRestrictionElements.Not
+					{
+						negated = new SpaceRestrictionElements.AllOf()
+						{
+							elements = new IRestriction<Space>[]
+							{
+								new TriggerRestrictionElements.CardFitsRestriction()
+								{
+									card = new Identities.Cards.ThisCardNow(),
+									cardRestriction = new CardRestrictionElements.Spell()
+								},
+								new SpaceRestrictionElements.AdjacentTo()
+								{
+									cardRestriction = new CardRestrictionElements.Spell(),
+									cardRestrictionMinimum = new Identities.Numbers.Constant() { constant = 2 }
+								}
+							}
+						}
+					};
+				}
+			}
+
+			private IEnumerable<IRestriction<Space>> DefaultNormalElements
+			{
+				get
+				{
+					yield return new TriggerRestrictionElements.CardFitsRestriction()
+					{
+						card = new Identities.Cards.ThisCardNow(),
+						cardRestriction = new CardRestrictionElements.Character()
+					};
+					yield return new SpaceRestrictionElements.CompareDistance()
+					{
+						distanceTo = new Identities.Cards.ThisCardNow(),
+						comparison = new Relationships.NumberRelationships.LessThanEqual(),
+						number = new Identities.Numbers.FromCardValue()
+						{
+							cardValue = new CardValue() { value = CardValue.SpacesCanMove },
+							card = new Identities.Cards.ThisCardNow()
+						}
+					};
+					yield return new TriggerRestrictionElements.NothingHappening();
+					yield return new TriggerRestrictionElements.FriendlyTurn();
+				}
+			}
+
+			private class MovementSubRestriction : SpaceRestrictionElements.AllOf
+			{
+				private readonly IReadOnlyList<IRestriction<Space>> restrictions;
+
+				public MovementSubRestriction(IReadOnlyList<IRestriction<Space>> restrictions)
+				{
+					this.restrictions = restrictions;
+				}
+			}
+
+			public override void Initialize(EffectInitializationContext initializationContext)
+			{
+				base.Initialize(initializationContext);
+				normal = new MovementSubRestriction(elements.Concat(normalOnly).ToArray());
+				effect = new MovementSubRestriction(elements.Concat(effectOnly).ToArray());
+			}
+		}
+	}
+
 	public class MovementRestriction : ContextInitializeableBase
 	{
 		private const string Default = "Default";
