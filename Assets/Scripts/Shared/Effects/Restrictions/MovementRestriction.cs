@@ -11,52 +11,55 @@ namespace KompasCore.Effects
 	{
 		public class NewMovementRestriction : SpaceRestrictionElements.AllOf
 		{
-			private MovementSubRestriction normal;
-			private MovementSubRestriction effect;
+			private ComponentMovementRestriction normal;
+			private ComponentMovementRestriction effect;
 
 			public SpaceRestrictionElement[] normalOnly = new SpaceRestrictionElement[] { };
 			public SpaceRestrictionElement[] effectOnly = new SpaceRestrictionElement[] { };
+
+			public bool moveThroughCards = false; //TODO check this flag when determining how much "movement" the move should cost
 
 			protected override IEnumerable<IRestriction<Space>> DefaultElements
 			{
 				get
 				{
+					//Card must be in play
 					yield return new TriggerRestrictionElements.CardFitsRestriction()
 					{
 						card = new Identities.Cards.ThisCardNow(),
 						cardRestriction = new CardRestrictionElements.Location(CardLocation.Board)
 					};
-					yield return new SpaceRestrictionElements.Empty(); //TODO re-add swapping probably. will req DefaultEffectElements
+
+					//TODO re-add swapping probably. will req DefaultEffectElements
+					yield return new SpaceRestrictionElements.Empty(); 
+
+					//Can't "move" to the space the card is in now
 					yield return new SpaceRestrictionElements.Different()
 					{
-						from = new Identities.Cards.ThisCardNow()
+						from = new Identities.Cards.ThisCardNow() 
 					};
-					yield return new SpaceRestrictionElements.Not
-					{
-						negated = new SpaceRestrictionElements.AllOf()
-						{
-							elements = new IRestriction<Space>[]
-							{
-								new TriggerRestrictionElements.CardFitsRestriction()
-								{
-									card = new Identities.Cards.ThisCardNow(),
-									cardRestriction = new CardRestrictionElements.Spell()
-								},
-								new SpaceRestrictionElements.AdjacentTo()
-								{
-									cardRestriction = new CardRestrictionElements.Spell(),
-									cardRestrictionMinimum = new Identities.Numbers.Constant() { constant = 2 }
-								}
-							}
-						}
-					};
+
+					yield return new SpellRule();
 				}
+			}
+
+			//TODO: move to shared spot with PlayRestriction?
+			/// <summary>
+            /// Spell rule: you can't place a spell where it would block a path, through spaces that don't contain a spell, between the avatars
+			/// So to be valid, a card has to either not be a spell, or it has to be a valid place to put a spell.
+            /// </summary>
+			private class SpellRule : SpaceRestrictionElement
+			{
+				protected override bool IsValidLogic(Space item, IResolutionContext context)
+					=> InitializationContext.source.CardType != 'S'
+					|| InitializationContext.game.BoardController.ValidSpellSpaceFor(InitializationContext.source, item);
 			}
 
 			private IEnumerable<IRestriction<Space>> DefaultNormalElements
 			{
 				get
 				{
+					//Only characters can move, normally
 					yield return new TriggerRestrictionElements.CardFitsRestriction()
 					{
 						card = new Identities.Cards.ThisCardNow(),
@@ -64,6 +67,9 @@ namespace KompasCore.Effects
 					};
 					yield return new SpaceRestrictionElements.CompareDistance()
 					{
+						//If you can move through cards, you just care about the taxicab distance.
+						//Most cards have to move through an empty path
+						shortestEmptyPath = !moveThroughCards,
 						distanceTo = new Identities.Cards.ThisCardNow(),
 						comparison = new Relationships.NumberRelationships.LessThanEqual(),
 						number = new Identities.Numbers.FromCardValue()
@@ -77,21 +83,29 @@ namespace KompasCore.Effects
 				}
 			}
 
-			private class MovementSubRestriction : SpaceRestrictionElements.AllOf
+			/// <summary>
+            /// A piece of a movement restriction.
+            /// Basically, a movement restriction is made up of two groups of restrictions -
+            /// one that's checked for a normal move (i.e. player-initiated during an open gamestate),
+            /// and one that's checked when the card moves by effect
+            /// </summary>
+			private class ComponentMovementRestriction : SpaceRestrictionElements.AllOf
 			{
 				private readonly IReadOnlyList<IRestriction<Space>> restrictions;
 
-				public MovementSubRestriction(IReadOnlyList<IRestriction<Space>> restrictions)
+				public ComponentMovementRestriction(IEnumerable<IRestriction<Space>> restrictions)
 				{
-					this.restrictions = restrictions;
+					this.restrictions = restrictions.ToArray();
 				}
+
+				protected override IEnumerable<IRestriction<Space>> DefaultElements => restrictions;
 			}
 
 			public override void Initialize(EffectInitializationContext initializationContext)
 			{
 				base.Initialize(initializationContext);
-				normal = new MovementSubRestriction(elements.Concat(normalOnly).ToArray());
-				effect = new MovementSubRestriction(elements.Concat(effectOnly).ToArray());
+				normal = new ComponentMovementRestriction(elements.Concat(normalOnly).Concat(DefaultNormalElements));
+				effect = new ComponentMovementRestriction(elements.Concat(effectOnly));
 			}
 		}
 	}

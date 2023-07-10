@@ -10,6 +10,7 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 	/// </summary>
 	public class CompareDistance : SpaceRestrictionElement
 	{
+		public bool shortestEmptyPath = false;
 		public IIdentity<Space> distanceTo;
 		public IIdentity<int> number;
 		public INumberRelationship comparison = new Relationships.NumberRelationships.Equal();
@@ -24,7 +25,9 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 		protected override bool IsValidLogic(Space space, IResolutionContext context)
 		{
 			var origin = this.distanceTo.From(context);
-			int distance = origin.DistanceTo(space);
+			int distance = shortestEmptyPath
+				? InitializationContext.game.BoardController.ShortestEmptyPath(origin, space)
+				: origin.DistanceTo(space);
 
 			int number = this.number.From(context);
 

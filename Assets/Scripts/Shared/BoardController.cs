@@ -122,14 +122,17 @@ namespace KompasCore.GameCore
 			(Space source, Space destination, Func<Space, bool> spacePredicate, Func<int, bool> distancePredicate)
 			=> destination.AdjacentSpaces.Any(destAdj => distancePredicate(ShortestPath(source, destAdj, spacePredicate)));
 
-		public int ShortestEmptyPath(GameCard src, Space destination)
-			=> Board[destination.x, destination.y] == null ? ShortestPath(src.Position, destination, IsEmpty) : NoPathExists;
+		public int ShortestEmptyPath(GameCard src, Space dest)
+			=> ShortestEmptyPath(src.Position, dest);
 
-		public int ShortestPath(GameCard source, Space space, IRestriction<GameCardBase> restriction, IResolutionContext context)
-			=> ShortestPath(source.Position, space, c => restriction.IsValid(c, context));
+		public int ShortestEmptyPath(Space src, Space dest)
+			=> Board[dest.x, dest.y] == null ? ShortestPath(src, dest, IsEmpty) : NoPathExists;
 
-		public int ShortestPath(Space source, Space end, Func<GameCard, bool> throughPredicate)
-			=> ShortestPath(source, end, s => throughPredicate(GetCardAt(s)));
+		public int ShortestPath(GameCard src, Space space, IRestriction<GameCardBase> restriction, IResolutionContext context)
+			=> ShortestPath(src.Position, space, c => restriction.IsValid(c, context));
+
+		public int ShortestPath(Space src, Space dest, Func<GameCard, bool> throughPredicate)
+			=> ShortestPath(src, dest, s => throughPredicate(GetCardAt(s)));
 
 		/// <summary>
 		/// A really bad Dijkstra's because this is a fun side project and I'm not feeling smart today
