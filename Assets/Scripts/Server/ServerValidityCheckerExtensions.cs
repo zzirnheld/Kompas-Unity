@@ -43,7 +43,7 @@ namespace KompasServer.GameCore.Extensions
 
 			//Debug.Log($"Checking validity of moving {toMove.CardName} to {to}");
 			if (toMove.Position == to) return false;
-			else return toMove.MovementRestriction.IsValidNormalMove(to);
+			else return toMove.MovementRestriction.IsValid(to, ResolutionContext.PlayerTrigger(null, game));
 		}
 
 		public static bool IsValidNormalAttack(this ServerGame game, GameCard attacker, GameCard defender, ServerPlayer instigator)

@@ -1,4 +1,5 @@
 ﻿using KompasCore.Effects;
+using KompasCore.Effects.Restrictions;
 using KompasCore.Effects.Restrictions.CardRestrictionElements;
 using KompasCore.Exceptions;
 using KompasCore.GameCore;

@@ -56,17 +56,12 @@
 		}
 	],
 	"MovementRestriction": {
-		"normalRestrictionsFromJson": [
-			"Default",
-			"Activated",
-			"Can Move Enough Through Empty or Restricted Spaces"
-		],
-		"normalRestrictionsToIgnore": [
-			"Can Move Enough Spaces"
-		],
-		"throughSpacesRestriction": {
-			"spaceRestrictions": []
-		}
+		"moveThroughCards": true,
+		"normalOnly": [ {
+			"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+			"card": { "$type": "Cards:ThisCardNow:" },
+			"cardRestriction": { "$type": "Core.CardRestriction:Active:" }
+		} ]
 	},
 	"AttackingDefenderRestriction": {
 		"$type": "Core.CardRestriction:AttackingDefender:",

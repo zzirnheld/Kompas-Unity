@@ -52,10 +52,7 @@
 		} ]
 	},
 	"MovementRestriction": {
-		"normalRestrictionsFromJson": [
-			"Default",
-			"Not Normally"
-		]
+		"normalOnly": [ { "$type": "Core.TriggerRestriction:NeverValid:" } ]
 	},
 	"n": 0,
 	"e": 10,

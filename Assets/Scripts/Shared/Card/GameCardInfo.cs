@@ -1,4 +1,5 @@
 ﻿using KompasCore.Effects;
+using KompasCore.Effects.Restrictions;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -9,15 +9,46 @@ namespace KompasCore.Effects
 {
 	namespace Restrictions
 	{
-		public class NewMovementRestriction : SpaceRestrictionElements.AllOf
+		public class MovementRestriction : SpaceRestrictionElements.AllOf
 		{
+			/// <summary>
+            /// A piece of a movement restriction.
+            /// Basically, a movement restriction is made up of two groups of restrictions -
+            /// one that's checked for a normal move (i.e. player-initiated during an open gamestate),
+            /// and one that's checked when the card moves by effect
+            /// </summary>
+			private class ComponentMovementRestriction : SpaceRestrictionElements.AllOf
+			{
+				private readonly IReadOnlyList<IRestriction<Space>> restrictions;
+
+				public ComponentMovementRestriction(IEnumerable<IRestriction<Space>> restrictions)
+				{
+					this.restrictions = restrictions.ToArray();
+				}
+
+				protected override IEnumerable<IRestriction<Space>> DefaultElements => restrictions;
+			}
+
+			//TODO: move to shared spot with PlayRestriction?
+			/// <summary>
+            /// Spell rule: you can't place a spell where it would block a path, through spaces that don't contain a spell, between the avatars
+			/// So to be valid, a card has to either not be a spell, or it has to be a valid place to put a spell.
+            /// </summary>
+			private class SpellRule : SpaceRestrictionElement
+			{
+				protected override bool IsValidLogic(Space item, IResolutionContext context)
+					=> InitializationContext.source.CardType != 'S'
+					|| InitializationContext.game.BoardController.ValidSpellSpaceFor(InitializationContext.source, item);
+			}
+
 			private ComponentMovementRestriction normal;
 			private ComponentMovementRestriction effect;
 
 			public SpaceRestrictionElement[] normalOnly = new SpaceRestrictionElement[] { };
 			public SpaceRestrictionElement[] effectOnly = new SpaceRestrictionElement[] { };
 
-			public bool moveThroughCards = false; //TODO check this flag when determining how much "movement" the move should cost
+			public bool moveThroughCards = false; //TODO check this flag when determining how much "movement" the move should cost.
+			//ideally implement some sort of "get move cost to" function here, which can be replaced by an Identity as applicable
 
 			protected override IEnumerable<IRestriction<Space>> DefaultElements
 			{
@@ -43,18 +74,9 @@ namespace KompasCore.Effects
 				}
 			}
 
-			//TODO: move to shared spot with PlayRestriction?
 			/// <summary>
-            /// Spell rule: you can't place a spell where it would block a path, through spaces that don't contain a spell, between the avatars
-			/// So to be valid, a card has to either not be a spell, or it has to be a valid place to put a spell.
-            /// </summary>
-			private class SpellRule : SpaceRestrictionElement
-			{
-				protected override bool IsValidLogic(Space item, IResolutionContext context)
-					=> InitializationContext.source.CardType != 'S'
-					|| InitializationContext.game.BoardController.ValidSpellSpaceFor(InitializationContext.source, item);
-			}
-
+			/// Restrictions that, by default, apply to a player moving a card normally (but not by effect)
+			/// </summary>
 			private IEnumerable<IRestriction<Space>> DefaultNormalElements
 			{
 				get
@@ -83,24 +105,6 @@ namespace KompasCore.Effects
 				}
 			}
 
-			/// <summary>
-            /// A piece of a movement restriction.
-            /// Basically, a movement restriction is made up of two groups of restrictions -
-            /// one that's checked for a normal move (i.e. player-initiated during an open gamestate),
-            /// and one that's checked when the card moves by effect
-            /// </summary>
-			private class ComponentMovementRestriction : SpaceRestrictionElements.AllOf
-			{
-				private readonly IReadOnlyList<IRestriction<Space>> restrictions;
-
-				public ComponentMovementRestriction(IEnumerable<IRestriction<Space>> restrictions)
-				{
-					this.restrictions = restrictions.ToArray();
-				}
-
-				protected override IEnumerable<IRestriction<Space>> DefaultElements => restrictions;
-			}
-
 			public override void Initialize(EffectInitializationContext initializationContext)
 			{
 				base.Initialize(initializationContext);
@@ -110,7 +114,7 @@ namespace KompasCore.Effects
 		}
 	}
 
-	public class MovementRestriction : ContextInitializeableBase
+	public class OldMovementRestriction : ContextInitializeableBase
 	{
 		private const string Default = "Default";
 

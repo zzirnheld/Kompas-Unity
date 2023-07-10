@@ -59,9 +59,32 @@ namespace KompasCore.Effects.Restrictions
 						.All(elem => elem.IsValid(context, default));
 		}
 
-		public class AlwaysValid : TriggerRestrictionBase
+		public class AlwaysValid : TriggerGamestateRestrictionBase
 		{
 			protected override bool IsValidLogic(TriggeringEventContext item, IResolutionContext context) => true;
+		}
+
+		public class NeverValid : TriggerGamestateRestrictionBase
+		{
+			protected override bool IsValidLogic(TriggeringEventContext item, IResolutionContext context) => false;
+		}
+
+		public class ThisCardInPlay : TriggerGamestateRestrictionBase
+		{
+			protected override bool IsValidLogic(TriggeringEventContext context, IResolutionContext secondaryContext)
+				=> InitializationContext.source.Location == CardLocation.Board;
+		}
+
+		public class NothingHappening : TriggerGamestateRestrictionBase
+		{
+			protected override bool IsValidLogic(TriggeringEventContext item, IResolutionContext context)
+				=> InitializationContext.game.NothingHappening;
+		}
+
+		public class FriendlyTurn : TriggerGamestateRestrictionBase
+		{
+			protected override bool IsValidLogic(TriggeringEventContext item, IResolutionContext context)
+				=> InitializationContext.game.TurnPlayer == InitializationContext.Controller;
 		}
 
 		public class AnyOf : TriggerRestrictionBase
@@ -90,24 +113,6 @@ namespace KompasCore.Effects.Restrictions
 
 			protected override bool IsValidLogic(TriggeringEventContext context, IResolutionContext secondaryContext)
 				=> !inverted.IsValid(context, secondaryContext);
-		}
-
-		public class ThisCardInPlay : TriggerRestrictionBase
-		{
-			protected override bool IsValidLogic(TriggeringEventContext context, IResolutionContext secondaryContext)
-				=> InitializationContext.source.Location == CardLocation.Board;
-		}
-
-		public class NothingHappening : TriggerGamestateRestrictionBase
-		{
-			protected override bool IsValidLogic(TriggeringEventContext item, IResolutionContext context)
-				=> InitializationContext.game.NothingHappening;
-		}
-
-		public class FriendlyTurn : TriggerGamestateRestrictionBase
-		{
-			protected override bool IsValidLogic(TriggeringEventContext item, IResolutionContext context)
-				=> InitializationContext.game.TurnPlayer == InitializationContext.Controller;
 		}
 	}
 }

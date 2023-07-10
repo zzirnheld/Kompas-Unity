@@ -4,10 +4,11 @@
 	"effText": "Trample. Golem.",
 	"effects": [],
 	"MovementRestriction": {
-		"normalRestrictionsFromJson": [
-			"Default",
-			"Activated"
-		]
+		"normalOnly": [ {
+			"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+			"card": { "$type": "Cards:ThisCardNow:" },
+			"cardRestriction": { "$type": "Core.CardRestriction:Active:" }
+		} ]
 	},
 	"AttackingDefenderRestriction": {
 		"$type": "Core.CardRestriction:AttackingDefender:",
