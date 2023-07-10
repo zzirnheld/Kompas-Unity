@@ -112,25 +112,34 @@ namespace KompasCore.UI
 		{
 			currShowingFor = card;
 
-			for (int i = 0; i < 7; i++)
+			foreach(var space in Space.Spaces)
 			{
-				for (int j = 0; j < 7; j++)
-				{
-					var cue = spaceCueControllers[i, j];
+				var (x, y) = space;
+				var cue = spaceCueControllers[x, y];
 
-					if (card.MovementRestriction.IsValidNormalMove((i, j)))
-						cue.Show(SpaceCueController.CueType.Move);
-					else if (card.MovementRestriction.WouldBeValidNormalMove((i, j)))
-						cue.Show(SpaceCueController.CueType.MoveOpenGamestate);
-					else if (card.AttackingDefenderRestriction.IsValid(BoardController.GetCardAt((i, j)), context: ResolutionContext.PlayerTrigger(null, BoardController.Game)))
-						cue.Show(SpaceCueController.CueType.Attack);
-					else if (card.PlayRestriction.IsRecommendedNormalPlay((i, j), card.Controller))
-						cue.Show(SpaceCueController.CueType.Play);
-					else
-						cue.Clear();
-				}
+				if (CardCanMoveToSpace(card, space))
+					cue.Show(SpaceCueController.CueType.Move);
+				else if (CardCouldMoveToSpaceInOpenGamestate(card, space))
+					cue.Show(SpaceCueController.CueType.MoveOpenGamestate);
+				else if (CardCanAttackSpace(card, space))
+					cue.Show(SpaceCueController.CueType.Attack);
+				else if (card.PlayRestriction.IsRecommendedNormalPlay(space, card.Controller))
+					cue.Show(SpaceCueController.CueType.Play);
+				else
+					cue.Clear();
 			}
 		}
+
+		private bool CardCanMoveToSpace(GameCardBase card, Space space)
+			=> card.MovementRestriction.IsValid(space,
+				context: ResolutionContext.PlayerTrigger(null, BoardController.Game));
+
+		private static bool CardCouldMoveToSpaceInOpenGamestate(GameCardBase card, Space space)
+			=> card.MovementRestriction.WouldBeValidNormalMoveInOpenGamestate(space);
+			
+		private bool CardCanAttackSpace(GameCardBase card, Space space)
+			=> card.AttackingDefenderRestriction.IsValid(BoardController.GetCardAt(space), 
+				context: ResolutionContext.PlayerTrigger(null, BoardController.Game));
 
 		public void RefreshShownCard() => ShowForCard(currShowingFor);
 

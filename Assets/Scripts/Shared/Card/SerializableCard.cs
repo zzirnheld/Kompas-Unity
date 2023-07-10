@@ -18,7 +18,7 @@ namespace KompasCore.Cards
 		public string[] keywords = new string[0];
 		public int[] keywordArgs = new int[0];
 
-		public MovementRestriction MovementRestriction = null;
+		public IMovementRestriction MovementRestriction = null;
 		public IRestriction<GameCardBase> AttackingDefenderRestriction = null;
 		public PlayRestriction PlayRestriction = null;
 

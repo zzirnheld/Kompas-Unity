@@ -120,7 +120,7 @@ namespace KompasCore.Cards
 		public virtual int AttacksThisTurn { get; set; }
 
 		//restrictions
-		public override MovementRestriction MovementRestriction { get; }
+		public override IMovementRestriction MovementRestriction { get; }
 		public override IRestriction<GameCardBase> AttackingDefenderRestriction { get; }
 		public override PlayRestriction PlayRestriction { get; }
 
@@ -200,7 +200,7 @@ namespace KompasCore.Cards
 
 			EffectInitializationContext initializationContext = new EffectInitializationContext(game, this); //Can't use property because constructor hasn't gotten there yet
 
-			MovementRestriction = serializeableCard.MovementRestriction ?? new MovementRestriction();
+			MovementRestriction = serializeableCard.MovementRestriction ?? MovementRestrictionFactory.CreateDefault();
 			MovementRestriction.Initialize(initializationContext);
 
 			AttackingDefenderRestriction = serializeableCard.AttackingDefenderRestriction ?? new AttackingDefender();

@@ -28,7 +28,7 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 
 		protected override bool IsValidLogic(GameCardBase card, IResolutionContext context)
 		{
-			bool IsValidMoveSpace(Space space) => card.MovementRestriction.IsValidEffectMove(space, context);
+			bool IsValidMoveSpace(Space space) => card.MovementRestriction.IsValid(space, context);
 
 			if (destination != null) return IsValidMoveSpace(destination.From(context));
 			else if (spaceRestrictionSubeffectIndex != default)
