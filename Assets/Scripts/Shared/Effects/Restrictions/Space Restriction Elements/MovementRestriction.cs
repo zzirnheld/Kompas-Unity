@@ -15,18 +15,6 @@ namespace KompasCore.Effects.Restrictions
 	{
 		public class MovementRestriction : DualRestrictionBase<Space>, IMovementRestriction
 		{
-			//TODO: move to shared spot with PlayRestriction?
-			/// <summary>
-			/// Spell rule: you can't place a spell where it would block a path, through spaces that don't contain a spell, between the avatars
-			/// So to be valid, a card has to either not be a spell, or it has to be a valid place to put a spell.
-			/// </summary>
-			private class SpellRule : SpaceRestrictionElement
-			{
-				protected override bool IsValidLogic(Space item, IResolutionContext context)
-					=> InitializationContext.source.CardType != 'S'
-					|| InitializationContext.game.BoardController.ValidSpellSpaceFor(InitializationContext.source, item);
-			}
-
 			public bool moveThroughCards = false; //TODO check this flag when determining how much "movement" the move should cost.
 												  //ideally implement some sort of "get move cost to" function here, which can be replaced by an Identity as applicable
 
@@ -57,7 +45,7 @@ namespace KompasCore.Effects.Restrictions
 			/// <summary>
 			/// Restrictions that, by default, apply to a player moving a card normally (but not by effect)
 			/// </summary>
-			protected override IEnumerable<IRestriction<Space>> DefaultNormalElements
+			protected override IEnumerable<IRestriction<Space>> DefaultNormalRestrictions
 			{
 				get
 				{

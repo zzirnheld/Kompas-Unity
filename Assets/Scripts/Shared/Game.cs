@@ -46,9 +46,9 @@ namespace KompasCore.GameCore
 		public bool BoardHasCopyOf(GameCard card)
 			=> Cards.Any(c => c != card && c.Location == CardLocation.Board && c.Controller == card.Controller && c.CardName == card.CardName);
 
-		public bool ValidSpellSpaceFor(GameCard card, Space space) => BoardController.ValidSpellSpaceFor(card, space);
+		public bool IsValidSpellSpaceFor(GameCard card, Space space) => BoardController.ValidSpellSpaceFor(card, space);
 
-		public bool ValidStandardPlaySpace(Space space, Player player)
+		public bool IsValidStandardPlaySpace(Space space, Player player)
 		{
 			/*Debug.Log($"Checking whether player {player?.index} can play a card to {space}. Cards adjacent to that space are" +
 				$"{string.Join(",", space.AdjacentSpaces.Select(BoardController.GetCardAt).Where(c => c != null).Select(c => c.CardName))}");*/

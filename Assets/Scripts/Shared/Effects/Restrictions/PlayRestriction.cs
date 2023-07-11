@@ -7,7 +7,7 @@ namespace KompasCore.Effects
 {
 	namespace Restrictions
 	{
-		public interface IPlayRestriction : IRestriction<(Space, Player)>
+		public interface IPlayRestriction : IRestriction<(Space s, Player p)>
 		{
 			public static IPlayRestriction CreateDefault() => new PlayRestrictionElements.PlayRestriction();
 
@@ -17,8 +17,60 @@ namespace KompasCore.Effects
 
 		namespace PlayRestrictionElements
 		{
-			public class PlayRestriction : DualRestrictionBase<(Space, Player)>, IPlayRestriction
+			public class Or : OrBase<(Space s, Player p)> { }
+
+			public class StandardPlayRestriction : RestrictionBase<(Space s, Player p)>
 			{
+				protected override bool IsValidLogic((Space s, Player p) item, IResolutionContext context)
+					=> InitializationContext.game.IsValidStandardPlaySpace(item.s, item.p);
+			}
+
+			public class PlayRestriction : DualRestrictionBase<(Space s, Player p)>, IPlayRestriction
+			{
+				public bool playAsAugment = false;
+				public string[] augmentOnSubtypes;
+
+				protected override IEnumerable<IRestriction<(Space s, Player p)>> DefaultRestrictions
+				{
+					get
+					{
+						yield return new SpaceRestrictionElements.SpellRule();
+
+						if (playAsAugment)
+						{
+							yield return new Or()
+							{
+								restrictions = new IRestriction<(Space s, Player p)>[] {
+									new CardRestrictionElements.Friendly(),
+									new SpaceRestrictionElements.AdjacentTo()
+									{
+										cardRestriction = new CardRestrictionElements.Friendly()
+									}
+								}
+							};
+							yield return new CardRestrictionElements.Subtypes()
+							{
+								subtypes = augmentOnSubtypes
+							};
+						}
+						else
+						{
+							yield return new 
+						}
+					}
+				}
+
+				protected override IEnumerable<IRestriction<(Space s, Player p)>> DefaultNormalRestrictions
+				{
+					get
+					{
+						yield return new PlayerRestrictionElements.PlayersMatch()
+						{
+							player = new Identities.Players.FriendlyPlayer()
+						};
+					}
+				}
+
 				public bool IsRecommendedEffectPlay(Space space, Player player)
 				{
 					throw new System.NotImplementedException();
@@ -149,8 +201,8 @@ namespace KompasCore.Effects
 
 			PlayedByCardOwner => player == Card.Owner,
 			FromHand => Card.Location == CardLocation.Hand,
-			StandardPlayRestriction => Card.Game.ValidStandardPlaySpace(space, Card.Controller),
-			StandardSpellRestriction => Card.Game.ValidSpellSpaceFor(Card, space),
+			StandardPlayRestriction => Card.Game.IsValidStandardPlaySpace(space, Card.Controller),
+			StandardSpellRestriction => Card.Game.IsValidSpellSpaceFor(Card, space),
 			HasCostInPips => PlayerCanAffordCost(Card.Controller),
 
 			EmptySpace => Card.Game.BoardController.IsEmpty(space),

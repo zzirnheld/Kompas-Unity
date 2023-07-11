@@ -1,12 +1,14 @@
-using System.Collections.Generic;
 using KompasCore.Cards;
 
 namespace KompasCore.Effects.Restrictions
 {
-	public abstract class PlayerRestrictionElement : RestrictionBase<Player>, IRestriction<GameCardBase>
+	public abstract class PlayerRestrictionElement : RestrictionBase<Player>, IRestriction<GameCardBase>, IRestriction<(Space s, Player p)>
 	{
 		public bool IsValid(GameCardBase item, IResolutionContext context)
 			=> IsValid(item.Controller, context);
+
+		public bool IsValid((Space s, Player p) item, IResolutionContext context)
+			=> IsValid(item.p, context);
 	}
 
 	namespace PlayerRestrictionElements

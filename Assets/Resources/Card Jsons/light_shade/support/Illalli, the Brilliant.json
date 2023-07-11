@@ -23,7 +23,7 @@
 							{
 								"$type": "Core.CardRestriction:AOEContains:",
 								"cards": {
-									"$type": "ManyCards:FromSingle:",
+									"$type": "ManyCards:Concat:",
 									"cards": [ { "$type": "Cards:ThisCardNow:" } ]
 								}
 							}

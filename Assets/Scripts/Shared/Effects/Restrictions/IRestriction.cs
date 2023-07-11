@@ -74,6 +74,20 @@ namespace KompasCore.Effects
 			.All(r => r.IsValid(item, context));
 	}
 
+	public abstract class OrBase<RestrictedType> : RestrictionBase<RestrictedType>
+	{
+		public IRestriction<RestrictedType>[] restrictions;
+
+		public override void Initialize(EffectInitializationContext initializationContext)
+		{
+			base.Initialize(initializationContext);
+			foreach (var restriction in restrictions) restriction.Initialize(initializationContext);
+		}
+
+		protected override bool IsValidLogic(RestrictedType item, IResolutionContext context)
+			=> restrictions.Any(r => r.IsValid(item, context));
+	}
+
 	public abstract class DualRestrictionBase<RestrictedType> : RestrictionBase<RestrictedType>
 	{
 		protected abstract IEnumerable<IRestriction<RestrictedType>> DefaultRestrictions { get; }
@@ -121,15 +135,19 @@ namespace KompasCore.Effects
 		/// <summary>
 		/// Restrictions that, by default, apply to a player moving a card normally (but not by effect)
 		/// </summary>
-		protected abstract IEnumerable<IRestriction<RestrictedType>> DefaultNormalElements { get; }
+		protected abstract IEnumerable<IRestriction<RestrictedType>> DefaultNormalRestrictions { get; }
 
 		public override void Initialize(EffectInitializationContext initializationContext)
 		{
 			base.Initialize(initializationContext);
+			
 			NormalRestriction = new DualComponentRestriction(sharedRestrictions: normalAndEffect, defaultRestrictions: DefaultRestrictions,
-				DefaultNormalElements, normalOnly);
+				DefaultNormalRestrictions, normalOnly);
+			NormalRestriction.Initialize(initializationContext);
+
 			EffectRestriction = new DualComponentRestriction(sharedRestrictions: normalAndEffect, defaultRestrictions: DefaultRestrictions,
 				effectOnly);
+			EffectRestriction.Initialize(initializationContext);
 		}
 
 		protected override bool IsValidLogic(RestrictedType item, IResolutionContext context)
