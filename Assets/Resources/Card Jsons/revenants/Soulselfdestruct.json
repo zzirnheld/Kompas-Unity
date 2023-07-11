@@ -67,13 +67,14 @@
 		}
 	],
 	"PlayRestriction": {
-		"recommendationRestrictions": [
-			"Adjacent to Card Fitting Restriction"
-		],
-		"adjacentCardRestriction": {
-			"$type": "Core.CardRestriction:Subtypes:",
-			"subtypes": [ "Ethereal" ]
-		}
+		"$type": "Core.PlayRestriction:PlayRestriction:",
+		"recommendations": [ {
+			"$type": "Core.SpaceRestriction:AdjacentTo:",
+			"cardRestriction": {
+				"$type": "Core.CardRestriction:Subtypes:",
+				"subtypes": [ "Ethereal" ]
+			}
+		} ]
 	},
 	"c": 1,
 	"spellTypes": [

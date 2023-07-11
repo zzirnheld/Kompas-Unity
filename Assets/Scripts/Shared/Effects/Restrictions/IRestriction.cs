@@ -74,7 +74,7 @@ namespace KompasCore.Effects
 			.All(r => r.IsValid(item, context));
 	}
 
-	public abstract class OrBase<RestrictedType> : RestrictionBase<RestrictedType>
+	public abstract class AnyOfBase<RestrictedType> : RestrictionBase<RestrictedType>
 	{
 		public IRestriction<RestrictedType>[] restrictions;
 

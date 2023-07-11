@@ -135,13 +135,14 @@
 		}
 	],
 	"PlayRestriction": {
-		"recommendationRestrictions": [
-			"Adjacent to Card Fitting Restriction"
-		],
-		"adjacentCardRestriction": {
-			"$type": "Core.CardRestriction:Subtypes:",
-			"subtypes": [ "Reporter" ]
-		}
+		"$type": "Core.PlayRestriction:PlayRestriction:",
+		"recommendations": [ {
+			"$type": "Core.SpaceRestriction:AdjacentTo:",
+			"cardRestriction": {
+				"$type": "Core.CardRestriction:Subtypes:",
+				"subtypes": [ "Reporter" ]
+			}
+		} ]
 	},
 	"c": 1,
 	"spellTypes": [

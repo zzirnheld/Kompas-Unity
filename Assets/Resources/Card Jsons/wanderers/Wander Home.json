@@ -164,19 +164,20 @@
 		}
 	],
 	"PlayRestriction": {
-		"recommendationRestrictions": [
-			"Adjacent to Card Fitting Restriction"
-		],
-		"adjacentCardRestriction": {
-			"$type": "Core.CardRestriction:AllOf:",
-			"elements":[
-				{ "$type": "Core.CardRestriction:Character:" },
-				{
-					"$type": "Core.CardRestriction:Subtypes:",
-					"subtypes": [ "Wanderer" ]
-				}
-			]
-		}
+		"$type": "Core.PlayRestriction:PlayRestriction:",
+		"recommendations": [ {
+			"$type": "Core.SpaceRestriction:AdjacentTo:",
+			"cardRestriction": {
+				"$type": "Core.CardRestriction:AllOf:",
+				"elements":[
+					{ "$type": "Core.CardRestriction:Character:" },
+					{
+						"$type": "Core.CardRestriction:Subtypes:",
+						"subtypes": [ "Wanderer" ]
+					}
+				]
+			}
+		} ]
 	},
 	"c": 1,
 	"spellTypes": [

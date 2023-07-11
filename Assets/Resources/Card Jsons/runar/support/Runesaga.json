@@ -79,9 +79,8 @@
 		}
 	],
 	"PlayRestriction": {
-		"EffectRestrictions": [
-			"Must be Played Normally"
-		]
+		"$type": "Core.PlayRestriction:PlayRestriction:",
+		"effectOnly": [ { "$type": "Core.TriggerRestriction:NeverValid:" } ]
 	},
 	"c": 25,
 	"spellTypes": [

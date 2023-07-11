@@ -20,10 +20,7 @@
 			]
 		}
 	],
-	"PlayRestriction": {
-		"normalRestrictions": [ "Augment Normal Restrictions" ],
-		"effectRestrictions": [ "Augment Effect Restrictions" ]
-	},
+	"PlayRestriction": { "playAsAugment": true },
 	"a": 3,
 	"subtypeText": "Module"
 }

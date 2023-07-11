@@ -90,14 +90,7 @@
 			]
 		}
 	],
-	"PlayRestriction": {
-		"normalRestrictions": [
-			"Augment Normal Restrictions"
-		],
-		"effectRestrictions": [
-			"Augment Effect Restrictions"
-		]
-	},
+	"PlayRestriction": { "playAsAugment": true },
 	"a": 1,
 	"subtypeText": ""
 }

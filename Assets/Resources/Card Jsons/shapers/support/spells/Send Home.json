@@ -38,18 +38,14 @@
 		}
 	],
 	"PlayRestriction": {
-		"normalRestrictions": [
-			"Default Normal Restrictions",
-			"Adjacent to Card Fitting Restriction"
-		],
-		"effectRestrictions": [
-			"Default Effect Restrictions",
-			"Adjacent to Card Fitting Restriction"
-		],
-		"adjacentCardRestriction": {
-			"$type": "Core.CardRestriction:Subtypes:",
-			"subtypes": [ "Shaper" ]
-		}
+		"$type": "Core.PlayRestriction:PlayRestriction:",
+		"normalAndEffect": [ {
+			"$type": "Core.SpaceRestriction:AdjacentTo:",
+			"cardRestriction": {
+				"$type": "Core.CardRestriction:Subtypes:",
+				"subtypes": [ "Shaper" ]
+			}
+		} ]
 	},
 	"c": 4,
 	"spellTypes": [

@@ -84,15 +84,8 @@
 		}
 	],
 	"PlayRestriction": {
-		"normalRestrictions": [
-			"Augment Normal Restrictions",
-			"On Card that Fits Restriction"
-		],
-		"effectRestrictions": [
-			"Augment Effect Restrictions",
-			"On Card that Fits Restriction"
-		],
-		"onCardRestriction": { "$type": "Core.CardRestriction:Summoned:" }
+		"playAsAugment": true,
+		"normalAndEffect": [ { "$type": "Core.CardRestriction:Summoned:" } ]
 	},
 	"a": 2,
 	"subtypeText": "Sword: Summoned"
