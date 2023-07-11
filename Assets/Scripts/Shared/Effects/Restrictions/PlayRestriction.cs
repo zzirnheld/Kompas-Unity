@@ -5,6 +5,33 @@ using UnityEngine;
 
 namespace KompasCore.Effects
 {
+	namespace Restrictions
+	{
+		public interface IPlayRestriction : IRestriction<(Space, Player)>
+		{
+			public static IPlayRestriction CreateDefault() => new PlayRestrictionElements.PlayRestriction();
+
+			public bool IsRecommendedNormalPlay(Space space, Player player);
+			public bool IsRecommendedEffectPlay(Space space, Player player);
+		}
+
+		namespace PlayRestrictionElements
+		{
+			public class PlayRestriction : DualRestrictionBase<(Space, Player)>, IPlayRestriction
+			{
+				public bool IsRecommendedEffectPlay(Space space, Player player)
+				{
+					throw new System.NotImplementedException();
+				}
+
+				public bool IsRecommendedNormalPlay(Space space, Player player)
+				{
+					throw new System.NotImplementedException();
+				}
+			}
+		}
+	}
+
 	public class PlayRestriction : ContextInitializeableBase
 	{
 		public const string PlayedByCardOwner = "Played By Card Owner";
