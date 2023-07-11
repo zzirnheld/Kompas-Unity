@@ -14,11 +14,11 @@ namespace KompasCore.Effects
 		public TriggeringEventContext TriggerContext { get; }
 
 		public int StartIndex { get; }
-		public List<GameCard> CardTargets { get; }
+		public IList<GameCard> CardTargets { get; }
 		public GameCard DelayedCardTarget { get; }
-		public List<Space> SpaceTargets { get; }
+		public IList<Space> SpaceTargets { get; }
 		public Space DelayedSpaceTarget { get; }
-		public List<IStackable> StackableTargets { get; }
+		public IList<IStackable> StackableTargets { get; }
 		public IStackable DelayedStackableTarget { get; }
 		public int X { get; set; }
 
@@ -34,11 +34,11 @@ namespace KompasCore.Effects
 			public TriggeringEventContext TriggerContext { get; }
 
 			public int StartIndex => throw new System.NotImplementedException(NotImplementedMessage);
-			public List<GameCard> CardTargets => throw new System.NotImplementedException(NotImplementedMessage);
+			public IList<GameCard> CardTargets => throw new System.NotImplementedException(NotImplementedMessage);
 			public GameCard DelayedCardTarget => throw new System.NotImplementedException(NotImplementedMessage);
-			public List<Space> SpaceTargets => throw new System.NotImplementedException(NotImplementedMessage);
+			public IList<Space> SpaceTargets => throw new System.NotImplementedException(NotImplementedMessage);
 			public Space DelayedSpaceTarget => throw new System.NotImplementedException(NotImplementedMessage);
-			public List<IStackable> StackableTargets => throw new System.NotImplementedException(NotImplementedMessage);
+			public IList<IStackable> StackableTargets => throw new System.NotImplementedException(NotImplementedMessage);
 			public IStackable DelayedStackableTarget => throw new System.NotImplementedException(NotImplementedMessage);
 			public int X { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 

@@ -11,11 +11,11 @@ namespace KompasCore.Effects
 
 		// Used for resuming delayed effects
 		public int StartIndex { get; }
-		public List<GameCard> CardTargets { get; }
+		public IList<GameCard> CardTargets { get; }
 		public GameCard DelayedCardTarget { get; }
-		public List<Space> SpaceTargets { get; }
+		public IList<Space> SpaceTargets { get; }
 		public Space DelayedSpaceTarget { get; }
-		public List<IStackable> StackableTargets { get; }
+		public IList<IStackable> StackableTargets { get; }
 		public IStackable DelayedStackableTarget { get; }
 
 		public int X { get; set; }

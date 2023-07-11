@@ -136,7 +136,7 @@ namespace KompasServer.Effects
 			//set context parameters
 			ResolutionContext = context;
 			//Notify the targets one by one so the client knows that they're current targets
-			if (context.CardTargets != null) context.CardTargets.ForEach(NotifyAddCardTarget);
+			if (context.CardTargets != null) foreach(var tgt in context.CardTargets) NotifyAddCardTarget(tgt);
 			
 			playerTargets.Add(Controller);
 			if (context.TriggerContext.stackableCause != null) stackableTargets.Add(context.TriggerContext.stackableCause);
