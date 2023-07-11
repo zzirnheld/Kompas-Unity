@@ -200,10 +200,10 @@ namespace KompasCore.Cards
 
 			EffectInitializationContext initializationContext = new EffectInitializationContext(game, this); //Can't use property because constructor hasn't gotten there yet
 
-			MovementRestriction = serializeableCard.MovementRestriction ?? MovementRestrictionFactory.CreateDefault();
+			MovementRestriction = serializeableCard.movementRestriction ?? IMovementRestriction.CreateDefault();
 			MovementRestriction.Initialize(initializationContext);
 
-			AttackingDefenderRestriction = serializeableCard.AttackingDefenderRestriction ?? new AttackingDefender();
+			AttackingDefenderRestriction = serializeableCard.attackingDefenderRestriction ?? IAttackingDefender.CreateDefault();
 			AttackingDefenderRestriction.Initialize(initializationContext);
 
 			PlayRestriction = serializeableCard.PlayRestriction ?? new PlayRestriction();

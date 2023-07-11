@@ -55,17 +55,18 @@
 			]
 		}
 	],
-	"MovementRestriction": {
-		"moveThroughCards": true,
-		"normalOnly": [ {
+	"attackingDefenderRestriction": {
+		"$type": "Core.CardRestriction:AttackingDefender:",
+		"elements": [ {
 			"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 			"card": { "$type": "Cards:ThisCardNow:" },
 			"cardRestriction": { "$type": "Core.CardRestriction:Active:" }
 		} ]
 	},
-	"AttackingDefenderRestriction": {
-		"$type": "Core.CardRestriction:AttackingDefender:",
-		"elements": [ {
+	"movementRestriction": {
+		"$type": "Core.SpaceRestriction:MovementRestriction:",
+		"moveThroughCards": true,
+		"normalOnly": [ {
 			"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 			"card": { "$type": "Cards:ThisCardNow:" },
 			"cardRestriction": { "$type": "Core.CardRestriction:Active:" }

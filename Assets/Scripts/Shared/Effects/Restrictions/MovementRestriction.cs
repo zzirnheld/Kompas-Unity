@@ -5,14 +5,11 @@ namespace KompasCore.Effects.Restrictions
 {
 	public interface IMovementRestriction : IRestriction<Space>
 	{
-		public bool WouldBeValidNormalMoveInOpenGamestate(Space space);
-	} //TODO add the get movement cost thing here
-
-	public static class MovementRestrictionFactory
-	{
 		public static IMovementRestriction CreateDefault()
 			=> new SpaceRestrictionElements.MovementRestriction();
-	}
+
+		public bool WouldBeValidNormalMoveInOpenGamestate(Space space);
+	} //TODO add the get movement cost thing here
 
 	namespace SpaceRestrictionElements
 	{

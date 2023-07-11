@@ -3,14 +3,7 @@
 	"cardName": "P4RT1S4N",
 	"effText": "Golem.\nI can attack characters 2 spaces from me, not just adjacent ones.",
 	"effects": [],
-	"MovementRestriction": {
-		"normalOnly": [ {
-			"$type": "Core.TriggerRestriction:CardFitsRestriction:",
-			"card": { "$type": "Cards:ThisCardNow:" },
-			"cardRestriction": { "$type": "Core.CardRestriction:Active:" }
-		} ]
-	},
-	"AttackingDefenderRestriction": {
+	"attackingDefenderRestriction": {
 		"$type": "Core.CardRestriction:AttackingDefender:",
 		"elements": [
 			{
@@ -25,6 +18,14 @@
 				"cardRestriction": { "$type": "Core.CardRestriction:Active:" }
 			}
 		]
+	},
+	"movementRestriction": {
+		"$type": "Core.SpaceRestriction:MovementRestriction:",
+		"normalOnly": [ {
+			"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+			"card": { "$type": "Cards:ThisCardNow:" },
+			"cardRestriction": { "$type": "Core.CardRestriction:Active:" }
+		} ]
 	},
 	"n": 4,
 	"e": 4,
