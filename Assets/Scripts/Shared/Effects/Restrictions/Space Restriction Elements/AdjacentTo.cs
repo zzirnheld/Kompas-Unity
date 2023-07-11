@@ -11,6 +11,7 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 	public class AdjacentTo : SpaceRestrictionElement
 	{
 		public IRestriction<GameCardBase> cardRestriction;
+		public IIdentity<int> cardRestrictionMinimum = Identities.Numbers.Constant.One;
 		public IIdentity<IReadOnlyCollection<GameCardBase>> anyOfTheseCards;
 		public IIdentity<GameCardBase> card;
 		public IIdentity<Space> space;
@@ -35,7 +36,8 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 			if (cardRestriction != null)
 				return toTest.AdjacentSpaces
 					.Select(InitializationContext.game.BoardController.GetCardAt)
-					.Any(c => cardRestriction.IsValid(c, context));
+					.Count(c => cardRestriction.IsValid(c, context))
+					>= cardRestrictionMinimum.From(context);
 			else if (anyOfTheseCards != null)
 				return anyOfTheseCards
 					.From(context)

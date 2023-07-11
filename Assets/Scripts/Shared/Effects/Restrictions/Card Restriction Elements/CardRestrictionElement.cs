@@ -1,5 +1,5 @@
 using KompasCore.Cards;
-using KompasCore.Helpers;
+using KompasCore.Effects.Restrictions.CardRestrictionElements;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -12,9 +12,14 @@ namespace KompasCore.Effects.Restrictions
 			=> IsValid(InitializationContext.game.BoardController.GetCardAt(item), context);
 	}
 
+	public interface IAttackingDefender : IRestriction<GameCardBase>
+	{
+		public static IAttackingDefender CreateDefault() => new AttackingDefender();
+	}
+
 	namespace CardRestrictionElements
 	{
-	
+
 		public class AllOf : AllOfBase<GameCardBase>
 		{
 			public string blurb;
@@ -59,7 +64,7 @@ namespace KompasCore.Effects.Restrictions
 		/// <summary>
 		/// A specialized AllOf containing the default elements, plus 
 		/// </summary>
-		public class AttackingDefender : AllOf
+		public class AttackingDefender : AllOf, IAttackingDefender
 		{
 			public int maxPerTurn = 1;
 			public bool waiveAdjacencyRequirement = false;

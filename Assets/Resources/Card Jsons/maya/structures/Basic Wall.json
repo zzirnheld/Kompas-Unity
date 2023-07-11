@@ -3,18 +3,16 @@
 	"cardName": "Basic Wall",
 	"effText": "Structure.",
 	"effects": [],
-	"AttackingDefenderRestriction": {
+	"attackingDefenderRestriction": {
 		"$type": "Core.CardRestriction:AttackingDefender:",
 		"elements": [ {
 			"$type": "Core.GamestateRestriction:Not:",
 			"negated": { "$type": "Core.GamestateRestriction:Normally:" }
 		} ]
 	},
-	"MovementRestriction": {
-		"normalRestrictionsFromJson": [
-			"Default",
-			"Not Normally"
-		]
+	"movementRestriction": {
+		"$type": "Core.SpaceRestriction:MovementRestriction:",
+		"normalOnly": [ { "$type": "Core.TriggerRestriction:NeverValid:" } ]
 	},
 	"n": 0,
 	"e": 5,

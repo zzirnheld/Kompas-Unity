@@ -92,18 +92,16 @@
 			]
 		}
 	],
-	"AttackingDefenderRestriction": {
+	"attackingDefenderRestriction": {
 		"$type": "Core.CardRestriction:AttackingDefender:",
 		"elements": [ {
 			"$type": "Core.GamestateRestriction:Not:",
-			"negated": { "$type": "Core.GamestateRestriction:Normally:" }
+			"negated": { "$type": "Core.TriggerRestriction:Normally:" }
 		} ]
 	},
-	"MovementRestriction": {
-		"normalRestrictionsFromJson": [
-			"Default",
-			"Not Normally"
-		]
+	"movementRestriction": {
+		"$type": "Core.SpaceRestriction:MovementRestriction:",
+		"normalOnly": [ { "$type": "Core.TriggerRestriction:NeverValid:" } ]
 	},
 	"n": 0,
 	"e": 9,

@@ -1,4 +1,5 @@
 using KompasCore.Cards;
+using KompasCore.Effects.Identities;
 using System;
 using System.Linq;
 
@@ -52,6 +53,20 @@ namespace KompasCore.Effects.Restrictions
 		{
 			protected override bool IsValidLogic(Space space, IResolutionContext context)
 				=> InitializationContext.game.BoardController.IsEmpty(space);
+		}
+
+		public class Different : SpaceRestrictionElement
+		{
+			public IIdentity<Space> from;
+
+			public override void Initialize(EffectInitializationContext initializationContext)
+			{
+				base.Initialize(initializationContext);
+				from.Initialize(initializationContext);
+			}
+
+			protected override bool IsValidLogic(Space item, IResolutionContext context)
+				=> from.From(context) != item;
 		}
 
 		public class CardFitsRestriction : SpaceRestrictionElement

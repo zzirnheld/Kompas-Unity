@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using KompasCore.Effects;
+using KompasCore.Effects.Restrictions;
 
 namespace KompasCore.Cards
 {
@@ -17,8 +18,8 @@ namespace KompasCore.Cards
 		public string[] keywords = new string[0];
 		public int[] keywordArgs = new int[0];
 
-		public MovementRestriction MovementRestriction = null;
-		public IRestriction<GameCardBase> AttackingDefenderRestriction = null;
+		public IMovementRestriction movementRestriction = null;
+		public IRestriction<GameCardBase> attackingDefenderRestriction = null;
 		public PlayRestriction PlayRestriction = null;
 
 		public int n;

@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Leapingfish",
-	"effText": "Agile Waterborn Waterdweller.",
+	"effText": "Nimble Waterborn Waterdweller.",
 	"effects": [],
 	"keywords": [
 		"Waterdweller"
@@ -31,11 +31,6 @@
 				}
 			}
 		}
-	},
-	"MovementRestriction": {
-		"normalRestrictionsToIgnore": [
-			"Is Friendly Turn"
-		]
 	},
 	"n": 6,
 	"e": 3,
