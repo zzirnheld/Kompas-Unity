@@ -35,6 +35,7 @@ namespace KompasCore.Effects
 					get
 					{
 						yield return new SpaceRestrictionElements.SpellRule();
+						yield return new GamestateRestrictionElements.NoUniqueCopyExists();
 
 						if (playAsAugment)
 						{
@@ -55,7 +56,8 @@ namespace KompasCore.Effects
 						}
 						else
 						{
-							yield return new 
+							yield return new StandardPlayRestriction();
+							yield return new SpaceRestrictionElements.Empty();
 						}
 					}
 				}
@@ -64,9 +66,30 @@ namespace KompasCore.Effects
 				{
 					get
 					{
+						yield return new GamestateRestrictionElements.NothingHappening();
+
+						//Can afford to play
+						yield return new TriggerRestrictionElements.NumberFitsRestriction()
+						{
+							number = new Identities.Numbers.FromCardValue()
+							{
+								card = new Identities.Cards.ThisCardNow(),
+								cardValue = new CardValue()
+								{
+									value = CardValue.Cost
+								}
+							}
+						};
+
+						//Currently controls the card in hand
 						yield return new PlayerRestrictionElements.PlayersMatch()
 						{
-							player = new Identities.Players.FriendlyPlayer()
+							player = new Identities.Players.ControllerOf()
+						};
+						yield return new TriggerRestrictionElements.CardFitsRestriction()
+						{
+							card = new Identities.Cards.ThisCardNow(),
+							cardRestriction = new CardRestrictionElements.Location(CardLocation.Hand)
 						};
 					}
 				}
