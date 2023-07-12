@@ -11,6 +11,8 @@ namespace KompasCore.Effects
 
 			public bool IsRecommendedNormalPlay((Space s, Player p) item);
 			public bool IsRecommendedPlay((Space s, Player p) item, IResolutionContext context);
+
+			public bool IsValidIgnoringAdjacency((Space s, Player p) item, IResolutionContext context);
 		}
 
 		namespace PlayRestrictionElements
@@ -107,6 +109,9 @@ namespace KompasCore.Effects
 				public bool IsRecommendedPlay((Space s, Player p) item, IResolutionContext context)
 					=> IsValid(item, context)
 					&& recommendations.All(r => r.IsValid(item, context));
+
+				public bool IsValidIgnoringAdjacency((Space s, Player p) item, IResolutionContext context)
+					=> IsValidIgnoring(item, context, r => r is StandardPlayRestriction);
 			}
 		}
 	}

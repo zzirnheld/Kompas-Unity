@@ -18,7 +18,7 @@ namespace KompasCore.Cards
 
 		public abstract IReadOnlyCollection<GameCard> AdjacentCards { get; }
 
-		public abstract PlayRestriction PlayRestriction { get; }
+		public abstract IPlayRestriction PlayRestriction { get; }
 		public abstract IMovementRestriction MovementRestriction { get; }
 		/// <summary>
         /// When attacking, this restriction must be true of the defender.
@@ -199,7 +199,7 @@ namespace KompasCore.Cards
 
 		public override IReadOnlyCollection<GameCard> AdjacentCards { get; }
 
-		public override PlayRestriction PlayRestriction { get; }
+		public override IPlayRestriction PlayRestriction { get; }
 		public override IMovementRestriction MovementRestriction { get; }
 		public override IRestriction<GameCardBase> AttackingDefenderRestriction { get; }
 

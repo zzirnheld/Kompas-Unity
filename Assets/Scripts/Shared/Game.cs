@@ -1,5 +1,6 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
+using KompasCore.Effects.Restrictions;
 using KompasCore.UI;
 using System.Collections.Generic;
 using System.Linq;
@@ -75,8 +76,8 @@ namespace KompasCore.GameCore
 			}
 		}
 
-		public bool ExistsEffectPlaySpace(PlayRestriction restriction, Effect eff)
-			=> Space.Spaces.Any(s => restriction.IsValidEffectPlay(s, eff, eff.Controller, eff.ResolutionContext));
+		public bool ExistsEffectPlaySpace(IPlayRestriction restriction, Effect eff)
+			=> Space.Spaces.Any(s => restriction.IsValid((s, eff.Controller), eff.ResolutionContext));
 
 
 		protected void ResetCardsForTurn()

@@ -10,9 +10,7 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 	{
 		public IIdentity<GameCardBase> toPlay;
 
-		public bool normalPlay = false;
-
-		public string[] ignoring;
+		public bool ignoreAdjacency;
 
 		public override void Initialize(EffectInitializationContext initializationContext)
 		{
@@ -24,9 +22,9 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 		{
 			var restriction = toPlay.From(context).PlayRestriction;
 		
-			return normalPlay
-				? restriction.IsValidNormalPlay(space, InitializationContext.Controller, ignoring: ignoring)
-				: restriction.IsValidEffectPlay(space, InitializationContext.effect, InitializationContext.Controller, context, ignoring: ignoring);
+			return ignoreAdjacency
+				? restriction.IsValidIgnoringAdjacency((space, InitializationContext.Controller), context)
+				: restriction.IsValid((space, InitializationContext.Controller), context);
 		}
 	}
 }

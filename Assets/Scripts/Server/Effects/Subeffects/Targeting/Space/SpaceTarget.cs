@@ -52,7 +52,7 @@ namespace KompasServer.Effects.Subeffects
 			var spaces = ValidSpaces.Select(s => (s.x, s.y)).ToArray();
 			var recommendedSpaces
 				= ForPlay
-				? spaces.Where(s => CardTarget.PlayRestriction.IsRecommendedPlay(s, PlayerTarget, ResolutionContext, normal: false)).ToArray()
+				? spaces.Where(s => CardTarget.PlayRestriction.IsRecommendedPlay((s, PlayerTarget), ResolutionContext)).ToArray()
 				: spaces;
 			if (spaces.Length > 0)
 			{
