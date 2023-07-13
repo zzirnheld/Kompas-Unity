@@ -24,7 +24,7 @@
 					"$type": "Subeffect:CardTarget:",
 					"blurb": "WHAT ARE WE DISCARDING, SCARMY!?",
 					"toSearch": { "$type": "ManyCards:Hand:" },
-					"cardRestriction": { "$type": "Core.CardRestriction:AlwaysValid:" }
+					"cardRestriction": { "$type": "Core.GamestateRestriction:AlwaysValid:" }
 				},
 				{
 					"$type": "Subeffect:Discard:"

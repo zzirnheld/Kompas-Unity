@@ -5,7 +5,7 @@ using KompasCore.Cards;
 using KompasCore.Effects;
 using KompasCore.Effects.Identities;
 using KompasCore.Effects.Identities.ManyCards;
-using KompasCore.Effects.Restrictions.CardRestrictionElements;
+using KompasCore.Effects.Restrictions.GamestateRestrictionElements;
 using KompasCore.GameCore;
 using Newtonsoft.Json;
 using UnityEngine;

@@ -12,7 +12,8 @@ namespace KompasCore.Effects.Restrictions
 	/// Exists on its own as a version of a "restriction" that doesn't require any context
 	/// </summary>
 	public interface IGamestateRestriction : IContextInitializeable,
-		IRestriction<TriggeringEventContext>, IRestriction<Player>, IRestriction<GameCardBase>, IRestriction<Space>, IRestriction<(Space s, Player p)>
+		IRestriction<TriggeringEventContext>, IRestriction<Player>, IRestriction<GameCardBase>, IRestriction<Space>,
+		IRestriction<(Space s, Player p)>, IRestriction<int>
 	{
 		bool IsValid(IResolutionContext context);
 	}
@@ -24,6 +25,7 @@ namespace KompasCore.Effects.Restrictions
 		public bool IsValid(GameCardBase item, IResolutionContext context) => IsValid(context);
 		public bool IsValid(Space item, IResolutionContext context) => IsValid(context);
 		public bool IsValid((Space s, Player p) item, IResolutionContext context) => IsValid(context);
+		public bool IsValid(int item, IResolutionContext context) => IsValid(context);
 
 		public bool IsValid(IResolutionContext context)
 		{
@@ -75,6 +77,11 @@ namespace KompasCore.Effects.Restrictions
 
 			protected override bool IsValidLogic(IResolutionContext context)
 				=> !negated.IsValid(context);
+		}
+		
+		public class AlwaysValid : GamestateRestrictionBase 
+		{
+			protected override bool IsValidLogic(IResolutionContext context) => true;
 		}
 	}
 }

@@ -16,11 +16,6 @@ namespace KompasCore.Effects.Restrictions
 	{
 
 		public class AllOf : AllOfBase<Space> { }
-		
-		public class AlwaysValid : SpaceRestrictionElement 
-		{
-			protected override bool IsValidLogic(Space item, IResolutionContext context) => true;
-		}
 
 		public class Not : SpaceRestrictionElement
 		{

@@ -26,9 +26,9 @@
 				{
 					"$type": "Subeffect:PlayerChooseX:",
 					"XRest": {
-						"numberRestrictions": [
-							"<=X"
-						]
+						"$type": "Core.NumberRestriction:Compare:",
+						"comparison": { "$type": "Relationships.Number:LessThanEqual:" },
+						"other": { "$type": "Numbers:EffectX:" }
 					}
 				},
 				{

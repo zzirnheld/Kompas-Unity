@@ -37,10 +37,10 @@ namespace KompasServer.Effects.Subeffects
 		public int constant = 0;
 		public IRestriction<GameCardBase> cardRestriction;
 		public IRestriction<Space> spaceRestriction;
-		public NumberRestriction numberRestriction;
+		public IRestriction<int> numberRestriction;
 
 		public PlayerValue playerValue;
-		public NumberRestriction playerValueNumberRestriction;
+		public IRestriction<int> playerValueNumberRestriction;
 
 		public string condition;
 

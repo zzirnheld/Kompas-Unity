@@ -17,9 +17,9 @@
 							"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
 							"number": { "$type": "Numbers:TriggerX:" },
 							"restriction": {
-								"$type": "KompasCore.Effects.NumberRestriction, Assembly-CSharp",
-								"numberRestrictions": [ "==Constant" ],
-								"constant":3
+								"$type": "Core.NumberRestriction:Compare:",
+								"comparison": { "$type": "Relationships.Number:Equal:" },
+								"other": { "$type": "Numbers:Constant:", "constant": 3 }
 							}
 						}
 					]
@@ -30,7 +30,7 @@
 					"$type": "Subeffect:CardTarget:",
 					"blurb": "An oviparous mamal? ORRY THE OVIPAROUS MAMMAL?",
 					"toSearch": { "$type": "ManyCards:Hand:" },
-					"cardRestriction": { "$type": "Core.CardRestriction:AlwaysValid:" }
+					"cardRestriction": { "$type": "Core.GamestateRestriction:AlwaysValid:" }
 				},
 				{
 					"$type": "Subeffect:Discard:"

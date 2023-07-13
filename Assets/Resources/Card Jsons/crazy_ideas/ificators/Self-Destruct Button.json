@@ -65,7 +65,7 @@
 					"$type": "Subeffect:CardTarget:",
 					"blurb": "oh, and the self-destruct button on the -ificator in my hand, too. Curse you.",
 					"toSearch": { "$type": "ManyCards:Hand:" },
-					"cardRestriction": { "$type": "Core.CardRestriction:AlwaysValid:" },
+					"cardRestriction": { "$type": "Core.GamestateRestriction:AlwaysValid:" },
 					"listRestriction": {
 						"listRestrictions": [
 							"Min Can Choose",

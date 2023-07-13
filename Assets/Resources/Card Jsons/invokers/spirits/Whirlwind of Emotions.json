@@ -57,10 +57,9 @@
 						]
 					},
 					"numberRestriction": {
-						"numberRestrictions": [
-							"<=Constant"
-						],
-						"constant": 1
+						"$type": "Core.NumberRestriction:Compare:",
+						"comparison": { "$type": "Relationships.Number:LessThan:" },
+						"other": { "$type": "Numbers:Constant:", "constant": 2 }
 					}
 				},
 				{

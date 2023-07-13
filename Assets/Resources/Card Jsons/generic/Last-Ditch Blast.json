@@ -25,12 +25,12 @@
 								"$type": "Core.CardRestriction:CardValueFits:",
 								"cardValue": { "value": "W" },
 								"numberRestriction": {
-									"$type": "KompasCore.Effects.NumberRestriction, Assembly-CSharp",
-									"numberRestrictions": [
-										">Source"
-									],
-									"cardValue": {
-										"value": "E"
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:GreaterThan:" },
+									"other": {
+										"$type": "Numbers:FromCardValue:",
+										"card": { "$type": "Cards:ThisCardNow:" },
+										"cardValue": { "value": "E" }
 									}
 								}
 							}

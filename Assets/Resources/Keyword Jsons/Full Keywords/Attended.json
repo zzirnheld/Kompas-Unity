@@ -42,9 +42,9 @@
 						}
 					},
 					"restriction": {
-						"$type": "KompasCore.Effects.NumberRestriction, Assembly-CSharp",
-						"numberRestrictions": [ "<Arg" ],
-						"constant":3
+						"$type": "Core.NumberRestriction:Compare:",
+						"comparison": { "$type": "Relationships.Number:LessThan:" },
+						"other": { "$type": "Numbers:Arg:" }
 					}
 				}
 			]

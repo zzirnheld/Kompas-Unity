@@ -2,7 +2,7 @@
 using KompasCore.Effects;
 using KompasCore.Effects.Identities;
 using KompasCore.Effects.Identities.ManyCards;
-using KompasCore.Effects.Restrictions.CardRestrictionElements;
+using KompasCore.Effects.Restrictions.GamestateRestrictionElements;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;

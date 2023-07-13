@@ -7,10 +7,11 @@
 	{
 		"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
 		"restriction": {
-			"numberRestrictions": [
-				">=Constant"
-			],
-			"constant":30
+			"XRest": {
+				"$type": "Core.NumberRestriction:Compare:",
+				"comparison": { "$type": "Relationships.Number:GreaterThanEqual:" },
+				"other": { "$type": "Numbers:Constant:", "constant": 30 }
+			}
 		},
 		"number": {
 			"$type": "Numbers:FromCardValue:",

@@ -1,7 +1,6 @@
-﻿using KompasCore.Effects;
-using KompasCore.Effects.Identities.Cards;
+﻿using KompasCore.Effects.Identities.Cards;
 using KompasCore.Effects.Identities.ManyCards;
-using KompasCore.Effects.Restrictions.CardRestrictionElements;
+using KompasCore.Effects.Restrictions.GamestateRestrictionElements;
 
 namespace KompasServer.Effects.Subeffects
 {
