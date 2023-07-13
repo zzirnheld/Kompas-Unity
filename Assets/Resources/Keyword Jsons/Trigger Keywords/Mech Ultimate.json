@@ -8,11 +8,9 @@
 		"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
 		"restriction": {
 			"XRest": {
-				"elements": [ {
-					"$type": "Core.NumberRestriction:Compare:",
-					"comparison": { "$type": "Relationships.Number:GreaterThanEqual:" },
-					"other": { "$type": "Numbers:Constant:", "constant": 30 }
-				} ]
+				"$type": "Core.NumberRestriction:Compare:",
+				"comparison": { "$type": "Relationships.Number:GreaterThanEqual:" },
+				"other": { "$type": "Numbers:Constant:", "constant": 30 }
 			}
 		},
 		"number": {

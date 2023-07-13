@@ -31,7 +31,7 @@
 									},
 									{
 										"$type": "Core.CardRestriction:HasAugment:",
-										"cardRestriction": { "$type": "Core.CardRestriction:AlwaysValid:" }
+										"cardRestriction": { "$type": "Core.GamestateRestriction:AlwaysValid:" }
 									}
 								]
 							}

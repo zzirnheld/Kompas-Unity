@@ -10,7 +10,7 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 		//If you want to specify the cards that you want to have at least one in AOE using an identity, you can use this one.
 		public IIdentity<IReadOnlyCollection<GameCardBase>> cards = new Identities.ManyCards.Board();
 		//If you just wanna restrict which of the cards on board have to fit, you can use this one.
-		public IRestriction<GameCardBase> cardRestriction = new AlwaysValid();
+		public IRestriction<GameCardBase> cardRestriction = new GamestateRestrictionElements.AlwaysValid();
 
 		public bool all = false; //false = any;
 

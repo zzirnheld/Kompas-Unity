@@ -1,6 +1,6 @@
 using KompasCore.Effects;
 using KompasCore.Effects.Identities;
-using KompasCore.Effects.Restrictions.SpaceRestrictionElements;
+using KompasCore.Effects.Restrictions.GamestateRestrictionElements;
 using System.Threading.Tasks;
 
 namespace KompasServer.Effects.Subeffects

@@ -28,12 +28,12 @@
 										"$type": "Core.CardRestriction:CardValueFits:",
 										"cardValue": { "value": "S" },
 										"numberRestriction": {
-											"$type": "KompasCore.Effects.NumberRestriction, Assembly-CSharp",
-											"numberRestrictions": [
-												">Avatar"
-											],
-											"cardValue": {
-												"value": "S"
+											"$type": "Core.NumberRestriction:Compare:",
+											"comparison": { "$type": "Relationships.Number:GreaterThan:" },
+											"other": {
+												"$type": "Numbers:FromCardValue:",
+												"card": { "$type": "Cards:Avatar:", "player": { "$type": "Players:FriendlyPlayer:" } },
+												"cardValue": { "value": "S" }
 											}
 										}
 									}
@@ -76,12 +76,12 @@
 										"$type": "Core.CardRestriction:CardValueFits:",
 										"cardValue": { "value": "S" },
 										"numberRestriction": {
-											"$type": "KompasCore.Effects.NumberRestriction, Assembly-CSharp",
-											"numberRestrictions": [
-												"<Avatar"
-											],
-											"cardValue": {
-												"value": "S"
+											"$type": "Core.NumberRestriction:Compare:",
+											"comparison": { "$type": "Relationships.Number:LessThan:" },
+											"other": {
+												"$type": "Numbers:FromCardValue:",
+												"card": { "$type": "Cards:Avatar:", "player": { "$type": "Players:FriendlyPlayer:" } },
+												"cardValue": { "value": "S" }
 											}
 										}
 									}

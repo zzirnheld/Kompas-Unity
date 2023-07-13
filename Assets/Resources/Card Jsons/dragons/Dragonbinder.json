@@ -29,11 +29,9 @@
 				{
 					"$type": "Subeffect:PlayerChooseX:",
 					"XRest": {
-						"elements": [ {
-							"$type": "Core.NumberRestriction:Compare:",
-							"comparison": { "$type": "Relationships.Number:GreaterThan:" },
-							"other": { "$type": "Numbers:Constant:", "constant": 0 }
-						} ]
+						"$type": "Core.NumberRestriction:Compare:",
+						"comparison": { "$type": "Relationships.Number:GreaterThan:" },
+						"other": { "$type": "Numbers:Constant:", "constant": 0 }
 					}
 				},
 				{

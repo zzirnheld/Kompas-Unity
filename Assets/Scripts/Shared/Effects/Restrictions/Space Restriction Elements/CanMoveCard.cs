@@ -15,9 +15,7 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 		/// </summary>
 		public IRestriction<Space> throughRestriction = new Empty();
 
-		public NumberRestriction distanceRestriction = new NumberRestriction() {
-			numberRestrictions = { }
-		};
+		public IRestriction<int> distanceRestriction = new GamestateRestrictionElements.AlwaysValid();
 
 		public bool normalMove = false;
 

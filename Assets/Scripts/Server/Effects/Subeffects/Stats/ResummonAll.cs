@@ -1,6 +1,6 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
-using KompasCore.Effects.Restrictions.CardRestrictionElements;
+using KompasCore.Effects.Restrictions.GamestateRestrictionElements;
 using KompasCore.GameCore;
 using System.Threading.Tasks;
 
