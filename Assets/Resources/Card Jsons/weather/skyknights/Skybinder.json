@@ -19,12 +19,8 @@
 							"$type": "Core.TriggerRestriction:StackableFitsRestriction:",
 							"stackable": { "$type": "Stackables:StackableCause:" },
 							"restriction": {
-								"stackableRestrictionElements": [
-									{
-										"$type": "Core.EffectRestriction:Keyword:",
-										"keyword": "Spin a Storm"
-									}
-								]
+								"$type": "Core.StackableRestriction:Keyword:",
+								"keyword": "Spin a Storm"
 							}
 						}
 					]

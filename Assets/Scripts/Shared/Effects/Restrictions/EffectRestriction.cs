@@ -1,32 +1,15 @@
-using System.Linq;
-
-namespace KompasCore.Effects.Restrictions
+namespace KompasCore.Effects.Restrictions.StackableRestrictionElements
 {
-	public class EffectRestriction : ContextInitializeableBase
+	public abstract class EffectRestrictionElementBase : RestrictionBase<IStackable>, IRestriction<Effect>
 	{
-		public IEffectRestrictionElement[] restrictionElements = { };
+		public bool IsValid(Effect item, IResolutionContext context) => base.IsValid(item, context);
 
-		public bool Evaluate(Effect effect)
+		protected override bool IsValidLogic(IStackable item, IResolutionContext context)
 		{
-			ComplainIfNotInitialized();
-			return restrictionElements.All(re => re.IsValidStackable(effect));
-		}
-	}
-
-	public interface IEffectRestrictionElement
-	{
-		public bool IsValidStackable(IStackable stackable);
-	}
-
-	public abstract class EffectRestrictionElementBase : StackableRestrictionElementBase,
-		IEffectRestrictionElement
-	{
-		protected override bool AbstractIsValidStackable(IStackable stackable)
-		{
-			return stackable is Effect effect && AbstractIsValidEffect(effect);
+			return item is Effect effect && IsValidLogic(effect);
 		}
 
-		protected abstract bool AbstractIsValidEffect(Effect effect);
+		protected abstract bool IsValidLogic(Effect effect);
 	}
 
 	namespace EffectRestrictionElements
@@ -35,7 +18,7 @@ namespace KompasCore.Effects.Restrictions
 		{
 			public string keyword;
 
-			protected override bool AbstractIsValidEffect(Effect effect)
+			protected override bool IsValidLogic(Effect effect)
 				=> effect.Keyword == keyword;
 		}
 	}

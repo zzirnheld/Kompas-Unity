@@ -4,7 +4,7 @@ namespace KompasCore.Effects.Restrictions.TriggerRestrictionElements
 {
 	public class StackableFitsRestriction : TriggerRestrictionBase
 	{
-		public StackableRestriction restriction;
+		public IRestriction<IStackable> restriction;
 		public IIdentity<IStackable> stackable;
 
 		public override void Initialize(EffectInitializationContext initializationContext)
@@ -15,6 +15,9 @@ namespace KompasCore.Effects.Restrictions.TriggerRestrictionElements
 		}
 
 		protected override bool IsValidLogic(TriggeringEventContext context, IResolutionContext secondaryContext)
-			=> restriction.Evaluate(stackable.From(IResolutionContext.Dummy(context), secondaryContext));
+		{
+			var item = stackable.From(IResolutionContext.Dummy(context), secondaryContext);
+			return restriction.IsValid(item, ContextToConsider(context, secondaryContext));
+		}
 	}
 }

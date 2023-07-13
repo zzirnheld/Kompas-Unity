@@ -3,12 +3,8 @@
 		"$type": "Core.TriggerRestriction:StackableFitsRestriction:",
 		"stackable": { "$type": "Stackables:StackableCause:" },
 		"restriction": {
-			"stackableRestrictionElements": [
-				{
-					"$type": "Core.EffectRestriction:Keyword:",
-					"keyword": "Shape"
-				}
-			]
+			"$type": "Core.StackableRestriction:Keyword:",
+			"keyword": "Shape"
 		}
 	},
 	{
