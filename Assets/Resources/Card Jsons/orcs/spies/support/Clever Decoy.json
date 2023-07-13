@@ -75,17 +75,8 @@
 		}
 	],
 	"PlayRestriction": {
-		"normalRestrictions": [
-			"Augment Normal Restrictions",
-			"On Card that Fits Restriction"
-		],
-		"effectRestrictions": [
-			"Augment Effect Restrictions",
-			"On Card that Fits Restriction"
-		],
-		"augSubtypes": [
-			"Spy"
-		]
+		"playAsAugment": true,
+		"augmentOnSubtypes": [ "Spy" ]
 	},
 	"a": 1,
 	"subtypeText": "Tool"

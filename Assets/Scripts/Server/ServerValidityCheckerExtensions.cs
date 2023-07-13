@@ -16,7 +16,7 @@ namespace KompasServer.GameCore.Extensions
 			}
 
 			//Debug.Log($"Checking validity of playing {card.CardName} to {to}");
-			return card.PlayRestriction.IsValidNormalPlay(to, player);
+			return card.PlayRestriction.IsValid((to, player), ResolutionContext.PlayerTrigger(null, game));
 		}
 
 		public static bool IsValidNormalAttach(this ServerGame game, GameCard card, Space to, ServerPlayer player)
@@ -30,7 +30,7 @@ namespace KompasServer.GameCore.Extensions
 			//Debug.Log($"Checking validity augment of {card.CardName} to {to}, on {boardCtrl.GetCardAt(to)}");
 			return card != null && card.CardType == 'A' && to.IsValid
 				&& !game.BoardController.IsEmpty(to)
-				&& card.PlayRestriction.IsValidNormalPlay(to, player);
+				&& card.PlayRestriction.IsValid((to, player), ResolutionContext.PlayerTrigger(null, game));
 		}
 
 		public static bool IsValidNormalMove(this ServerGame game, GameCard toMove, Space to, Player by)

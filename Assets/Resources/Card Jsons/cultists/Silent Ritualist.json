@@ -48,7 +48,7 @@
 							{
 								"$type": "Core.CardRestriction:CanPlay:",
 								"destination": { "$type": "Spaces:TargetIndex:" },
-								"ignoring": [ "Adjacent to Friendly Card" ]
+								"ignoreAdjacency": true
 							}
 						]
 					}

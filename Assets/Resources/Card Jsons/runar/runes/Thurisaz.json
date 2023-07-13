@@ -46,13 +46,12 @@
 		}
 	],
 	"PlayRestriction": {
-		"normalRestrictions": [
-			"Cannot be Played Normally"
-		],
-		"recommendationRestrictions": [
-			"Adjacent to Card Fitting Restriction"
-		],
-		"adjacentCardRestriction": { "$type": "Core.CardRestriction:Character:" }
+		"$type": "Core.PlayRestriction:PlayRestriction:",
+		"normalOnly": [ { "$type": "Core.TriggerRestriction:NeverValid:" } ],
+		"recommendations": [ {
+			"$type": "Core.SpaceRestriction:AdjacentTo:",
+			"cardRestriction": { "$type": "Core.CardRestriction:Character:" }
+		} ]
 	},
 	"c": 4,
 	"spellTypes": [

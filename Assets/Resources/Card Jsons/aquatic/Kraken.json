@@ -7,30 +7,15 @@
 		"Waterdweller"
 	],
 	"PlayRestriction": {
-		"normalRestrictions": [
-			"Default Normal Restrictions",
-			"Space Must Fit Restriction"
-		],
-		"normalRestrictionsToIgnore": [
-			"Adjacent to Friendly Card"
-		],
-		"effectRestrictions": [
-			"Default Effect Restrictions",
-			"Space Must Fit Restriction"
-		],
-		"effectRestrictionsToIgnore": [
-			"Adjacent to Friendly Card"
-		],
-		"spaceRestriction": {
+		"$type": "Core.PlayRestriction:PlayRestriction:",
+		"requireStandardAdjacency": false,
+		"normalAndEffect": [ {
 			"$type": "Core.SpaceRestriction:InAOEOf:",
-			"anyOf": {
-				"$type": "ManyCards:FittingRestriction:",
-				"cardRestriction": {
-					"$type": "Core.CardRestriction:Subtypes:",
-					"subtypes": [ "Water" ]
-				}
+			"cardRestriction": {
+				"$type": "Core.CardRestriction:Subtypes:",
+				"subtypes": [ "Water" ]
 			}
-		}
+		} ]
 	},
 	"n": 13,
 	"e": 15,

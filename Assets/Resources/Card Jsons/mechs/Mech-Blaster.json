@@ -59,17 +59,11 @@
 		"Collectible"
 	],
 	"PlayRestriction": {
-		"normalRestrictions": [
-			"Augment Normal Restrictions",
-			"On Card that Fits Restriction"
-		],
-		"effectRestrictions": [
-			"Augment Effect Restrictions"
-		],
-		"onCardRestriction": {
+		"playAsAugment": true,
+		"effectOnly": [ {
 			"$type": "Core.CardRestriction:Subtypes:",
 			"subtypes": [ "Mech" ]
-		}
+		} ]
 	},
 	"a": 3,
 	"subtypeText": "Bdaster"

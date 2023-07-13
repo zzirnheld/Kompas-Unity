@@ -122,7 +122,7 @@ namespace KompasCore.Cards
 		//restrictions
 		public override IMovementRestriction MovementRestriction { get; }
 		public override IRestriction<GameCardBase> AttackingDefenderRestriction { get; }
-		public override PlayRestriction PlayRestriction { get; }
+		public override IPlayRestriction PlayRestriction { get; }
 
 		//controller/owners
 		public int ControllerIndex => Controller?.index ?? 0;
@@ -206,7 +206,7 @@ namespace KompasCore.Cards
 			AttackingDefenderRestriction = serializeableCard.attackingDefenderRestriction ?? IAttackingDefender.CreateDefault();
 			AttackingDefenderRestriction.Initialize(initializationContext);
 
-			PlayRestriction = serializeableCard.PlayRestriction ?? new PlayRestriction();
+			PlayRestriction = serializeableCard.PlayRestriction ?? IPlayRestriction.CreateDefault();
 			PlayRestriction.Initialize(initializationContext);
 
 			Debug.Log($"Finished setting up info for card {CardName}");

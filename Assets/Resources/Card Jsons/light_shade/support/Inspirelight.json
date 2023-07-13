@@ -40,31 +40,14 @@
 		}
 	],
 	"PlayRestriction": {
-		"normalRestrictions": [
-			"Default Normal Restrictions",
-			"Space Must Fit Restriction"
-		],
-		"effectRestrictions": [
-			"Default Effect Restrictions",
-			"Space Must Fit Restriction"
-		],
-		"spaceRestriction": {
-			"$type": "Core.SpaceRestriction:AllOf:",
-			"elements": [ {
-				"$type": "Core.SpaceRestriction:InAOEOf:",
-				"anyOf": {
-					"$type": "ManyCards:FittingRestriction:",
-					
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [ {
-							"$type": "Core.CardRestriction:Subtypes:",
-							"subtypes": [ "Light" ]
-						} ]
-					}
-				}
-			} ]
-		}
+		"$type": "Core.PlayRestriction:PlayRestriction:",
+		"normalAndEffect": [ {
+			"$type": "Core.SpaceRestriction:InAOEOf:",
+			"cardRestriction": {
+				"$type": "Core.CardRestriction:Subtypes:",
+				"subtypes": [ "Light" ]
+			}
+		} ]
 	},
 	"c": 0,
 	"spellTypes": [

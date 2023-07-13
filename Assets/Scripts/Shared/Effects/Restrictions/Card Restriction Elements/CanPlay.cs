@@ -8,7 +8,6 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 	{
 		public IIdentity<Space> destination;
 		public IIdentity<Player> player = new Identities.Players.TargetIndex();
-		public string[] ignoring = { };
 
 		public override void Initialize(EffectInitializationContext initializationContext)
 		{
@@ -20,7 +19,7 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 		protected override bool IsValidLogic(GameCardBase card, IResolutionContext context)
 		{
 			var controller = player.From(context);
-			bool IsValidEffectPlay(Space space) => card.PlayRestriction.IsValidEffectPlay(space, InitializationContext.effect, controller, context, ignoring: ignoring);
+			bool IsValidEffectPlay(Space space) => card.PlayRestriction.IsValid((space, controller), context);
 
 			if (destination == null) return Space.Spaces.Any(IsValidEffectPlay);
 			else return IsValidEffectPlay(destination.From(context));

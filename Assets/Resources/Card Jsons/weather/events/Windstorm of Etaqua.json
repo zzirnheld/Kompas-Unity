@@ -72,21 +72,9 @@
 		}
 	],
 	"PlayRestriction": {
-		"normalRestrictions": [
-			"Default Normal Restrictions",
-			"Space Must Fit Restriction"
-		],
-		"normalRestrictionsToIgnore": [
-			"Adjacent to Friendly Card"
-		],
-		"effectRestrictions": [
-			"Default Effect Restrictions",
-			"Space Must Fit Restriction"
-		],
-		"effectRestrictionsToIgnore": [
-			"Adjacent to Friendly Card"
-		],
-		"spaceRestriction": {
+		"$type": "Core.PlayRestriction:PlayRestriction:",
+		"requireStandardAdjacency": false,
+		"normalAndEffect": [ {
 			"$type": "Core.SpaceRestriction:InAOEOf:",
 			"cardRestriction": {
 				"$type": "Core.CardRestriction:Subtypes:",
@@ -96,7 +84,7 @@
 				"$type": "Numbers:Constant:",
 				"constant": 2
 			}
-		}
+		} ]
 	},
 	"n": 9,
 	"e": 3,

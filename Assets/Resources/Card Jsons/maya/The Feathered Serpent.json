@@ -56,19 +56,21 @@
 		}
 	],
 	"PlayRestriction": {
-		"normalRestrictions": [
-			"Default Normal Restrictions",
-			"Number of Cards Exist"
-		],
-		"effectRestrictions": [
-			"Default Effect Restrictions",
-			"Number of Cards Exist"
-		],
-		"countCardRestriction": { "$type": "Core.SpaceRestriction:Edge:" },
-		"countCardNumberRestriction": {
-			"numberRestrictions": [">=Constant"],
-			"constant": 14
-		}
+		"normalAndEffect": [
+			{
+				"$type": "Core.TriggerRestriction:CompareNumbers:",
+				"firstNumber": {
+					"$type": "Numbers:CountCards:",
+					"cards": {
+						"$type": "ManyCards:FittingRestriction:",
+						"cards": { "$type": "ManyCards:Board:" },
+						"cardRestriction": { "$type": "Core.SpaceRestriction:Edge:" }
+					}
+				},
+				"comparison": { "$type": "Relationships.Number:GreaterThanEqual:" },
+				"secondNumber": { "$type": "Numbers:Constant:", "constant": 14 }
+			}
+		]
 	},
 	"unique": true,
 	"n": 5,

@@ -76,10 +76,11 @@
 		}
 	],
 	"PlayRestriction": {
-		"recommendationRestrictions": [
-			"Adjacent to Card Fitting Restriction"
-		],
-		"adjacentCardRestriction": { "$type": "Core.CardRestriction:Character:" }
+		"$type": "Core.PlayRestriction:PlayRestriction:",
+		"recommendations": [ {
+			"$type": "Core.SpaceRestriction:AdjacentTo:",
+			"cardRestriction": { "$type": "Core.CardRestriction:Character:" }
+		} ]
 	},
 	"c": 1,
 	"spellTypes": [

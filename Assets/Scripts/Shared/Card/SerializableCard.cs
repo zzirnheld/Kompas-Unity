@@ -20,7 +20,7 @@ namespace KompasCore.Cards
 
 		public IMovementRestriction movementRestriction = null;
 		public IRestriction<GameCardBase> attackingDefenderRestriction = null;
-		public PlayRestriction PlayRestriction = null;
+		public IPlayRestriction PlayRestriction = null;
 
 		public int n;
 		public int e;

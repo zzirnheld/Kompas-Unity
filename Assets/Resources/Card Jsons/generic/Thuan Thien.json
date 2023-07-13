@@ -38,15 +38,8 @@
 		}
 	],
 	"PlayRestriction": {
-		"normalRestrictions": [
-			"Augment Normal Restrictions"
-		],
-		"effectRestrictions": [
-			"Augment Effect Restrictions"
-		],
-		"augSubtypes": [
-			"Warrior"
-		]
+		"playAsAugment": true,
+		"augmentOnSubtypes": [ "Warrior" ]
 	},
 	"a": 3,
 	"subtypeText": "Sword"

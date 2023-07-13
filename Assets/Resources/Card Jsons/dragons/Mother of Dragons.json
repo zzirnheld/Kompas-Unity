@@ -119,7 +119,7 @@
 							{
 								"$type": "Core.SpaceRestriction:CanPlayCard:",
 								"toPlay": { "$type": "Cards:TargetIndex:" },
-								"ignoring": [ "Adjacent to Friendly Card" ]
+								"ignoreAdjacency": true
 							},
 							{
 								"$type": "Core.SpaceRestriction:CompareDistance:",

@@ -72,15 +72,9 @@
 		}
 	],
 	"PlayRestriction": {
-		"normalRestrictions": [
-			"Augment Normal Restrictions",
-			"On Card that Fits Restriction"
-		],
-		"effectRestrictions": [
-			"Augment Effect Restrictions",
-			"On Card that Fits Restriction"
-		],
-		"onCardRestriction": {
+		"$type": "Core.PlayRestriction:PlayRestriction:",
+		"playAsAugment": true,
+		"normalAndEffect": [ {
 			"$type": "Core.CardRestriction:Not:",
 			"negated": {
 				"$type": "Core.CardRestriction:HasAugment:",
@@ -89,7 +83,7 @@
 					"sameAs": { "$type": "Cards:ThisCardNow:" }
 				}
 			}
-		}
+		} ]
 	},
 	"a": 3,
 	"subtypeText": "Mask"

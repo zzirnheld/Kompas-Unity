@@ -57,15 +57,8 @@
 		"Recoverable"
 	],
 	"PlayRestriction": {
-		"normalRestrictions": [
-			"Augment Normal Restrictions"
-		],
-		"effectRestrictions": [
-			"Augment Effect Restrictions"
-		],
-		"augSubtypes": [
-			"Golem"
-		]
+		"playAsAugment": true,
+		"augmentOnSubtypes": [ "Golem" ]
 	},
 	"a": 1,
 	"subtypeText": "Golem Core"
