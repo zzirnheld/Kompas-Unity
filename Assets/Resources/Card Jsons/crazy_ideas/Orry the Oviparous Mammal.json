@@ -17,9 +17,11 @@
 							"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
 							"number": { "$type": "Numbers:TriggerX:" },
 							"restriction": {
-								"$type": "KompasCore.Effects.NumberRestriction, Assembly-CSharp",
-								"numberRestrictions": [ "==Constant" ],
-								"constant":3
+								"elements": [ {
+									"$type": "Core.NumberRestriction:Compare:",
+									"comparison": { "$type": "Relationships.Number:Equal:" },
+									"other": { "$type": "Numbers:Constant:", "constant": 3 }
+								} ]
 							}
 						}
 					]

@@ -6,14 +6,6 @@ namespace KompasCore.Effects
 {
 	public class NumberRestriction : AllOfBase<int>
 	{
-		public const string Positive = ">0";
-		public const string Negative = "<0";
-		public const string Nonnegative = ">=0";
-
-		public const string AtLeastConstant = ">=Constant";
-		public const string NoMoreThanConstant = "<=Constant";
-		public const string EqualsConstant = "==Constant";
-
 		public const string LessThanEffectX = "<X";
 		public const string GreaterThanEffectX = ">X";
 		public const string EqualsEffectX = "=X";
@@ -38,14 +30,6 @@ namespace KompasCore.Effects
 
 		private bool IsRestrictionValid(string r, int x) => r switch
 		{
-			Positive => x > 0,
-			Negative => x < 0,
-			Nonnegative => x >= 0,
-
-			AtLeastConstant => x >= constant,
-			NoMoreThanConstant => x <= constant,
-			EqualsConstant => x == constant,
-
 			LessThanEffectX => x < Subeffect.Count,
 			GreaterThanEffectX => x > Subeffect.Count,
 			EqualsEffectX => x == Subeffect.Count,
