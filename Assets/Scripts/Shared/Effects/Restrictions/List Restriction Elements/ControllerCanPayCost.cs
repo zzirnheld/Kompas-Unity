@@ -11,20 +11,13 @@ namespace KompasCore.Effects.Restrictions.ListRestrictionElements
 
 		public override bool AllowsValidChoice(IEnumerable<GameCardBase> options, IResolutionContext context)
 		{
-			if (!(InitializationContext.parent is AllOf parent)) return true;
-
-			int min = parent.elements
-				.Where(elem => elem is Minimum)
-				.Select(min => min as Minimum)
-				.Select(min => min.StashBound(context))
-				.DefaultIfEmpty(0)
-				.Max(); //We want the highest (i.e. most constraining) lower bound
+			if (!(InitializationContext.parent is IListRestriction parent)) return true;
 
 			//Accounts for all deduplicating of other possible things like distinct name, but doesn't check that there are enough (those deduplicators check that)
 			return parent.Deduplicate(options)
 				.Select(c => c.Cost)
 				.OrderBy(c => c)
-				.Take(min)
+				.Take(parent.GetMinimum(context))
 				.Sum() <= InitializationContext.Controller.Pips;
 		}
 	}

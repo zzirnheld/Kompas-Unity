@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using KompasCore.Cards;
 using System.Linq;
-using System.Text;
 using Newtonsoft.Json;
 
 namespace KompasCore.Effects.Restrictions
@@ -21,8 +20,8 @@ namespace KompasCore.Effects.Restrictions
 			return new ListRestrictionElements.AllOf()
 			{
 				elements = {
-					new ListRestrictionElements.Minimum() { bound = bound, stashedBound = count }, //TODO replace setting stashedBound here with prepare for sending func?
-					new ListRestrictionElements.Maximum() { bound = bound, stashedBound = count }
+					new ListRestrictionElements.Minimum() { bound = bound },
+					new ListRestrictionElements.Maximum() { bound = bound }
 				}
 			};
 		} 
@@ -48,15 +47,28 @@ namespace KompasCore.Effects.Restrictions
         /// If null is passed in, the stashed maximum is returned instead.
         /// </summary>
 		public int GetMaximum(IResolutionContext context);
+
+		public void PrepareForSending(IResolutionContext context);
 	}
 
 	public static class ListRestrictionExtensions
 	{
+		public static readonly JsonSerializerSettings jsonSerializerSettings = new JsonSerializerSettings
+		{
+			TypeNameHandling = TypeNameHandling.All
+		};
+		
 		public static bool HaveEnough(this IListRestriction restriction, int currCount)
 			=> restriction.GetMinimum(null) <= currCount && currCount <= restriction.GetMaximum(null);
 
 		public static int GetStashedMinimum(this IListRestriction restriction) => restriction.GetMinimum(null);
 		public static int GetStashedMaximum(this IListRestriction restriction) => restriction.GetMaximum(null);
+
+		public static string SerializeToJSON(this IListRestriction restriction, IResolutionContext context)
+		{
+			restriction.PrepareForSending(context);
+			return JsonConvert.SerializeObject(restriction, jsonSerializerSettings);
+		}
 	}
 
 	namespace ListRestrictionElements
@@ -73,7 +85,8 @@ namespace KompasCore.Effects.Restrictions
 			public bool AllowsValidChoice(IEnumerable<GameCardBase> options, IResolutionContext context)
 			{
 				ComplainIfNotInitialized();
-				return elements.All(elem => elem.AllowsValidChoice(options, context));
+				return GetMaximum(context) >= GetMinimum(context)
+					&& elements.All(elem => elem.AllowsValidChoice(options, context));
 			}
 
 			public bool IsValidClientSide(IEnumerable<GameCardBase> options, IResolutionContext context)
@@ -102,18 +115,22 @@ namespace KompasCore.Effects.Restrictions
 					.Select(elem => elem.GetMaximum(context))
 					.DefaultIfEmpty(int.MaxValue)
 					.Min();
+
+			public void PrepareForSending(IResolutionContext context)
+			{
+				foreach (var elem in elements) elem.PrepareForSending(context);
+			}
 		}
 
 		public abstract class ListRestrictionElementBase : RestrictionBase<IEnumerable<GameCardBase>>, IListRestriction
 		{
+			public abstract bool AllowsValidChoice(IEnumerable<GameCardBase> options, IResolutionContext context);
+			public virtual bool IsValidClientSide(IEnumerable<GameCardBase> options, IResolutionContext context) => IsValid(options, context);
+			public virtual IEnumerable<GameCardBase> Deduplicate(IEnumerable<GameCardBase> options) => options; //No dedup, by default
 			public virtual int GetMinimum(IResolutionContext context) => 0;
 			public virtual int GetMaximum(IResolutionContext context) => int.MaxValue;
 
-			public virtual IEnumerable<GameCardBase> Deduplicate(IEnumerable<GameCardBase> options) => options; //No dedup, by default
-
-			public virtual bool IsValidClientSide(IEnumerable<GameCardBase> options, IResolutionContext context) => IsValid(options, context);
-
-			public abstract bool AllowsValidChoice(IEnumerable<GameCardBase> options, IResolutionContext context);
+			public virtual void PrepareForSending(IResolutionContext context) { }
 		}
 	}
 }

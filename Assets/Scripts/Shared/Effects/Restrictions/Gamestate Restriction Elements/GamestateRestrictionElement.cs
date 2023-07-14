@@ -20,22 +20,19 @@ namespace KompasCore.Effects.Restrictions
 
 	public abstract class GamestateRestrictionBase : ContextInitializeableBase, IGamestateRestriction
 	{
-		public bool IsValid(TriggeringEventContext item, IResolutionContext context) => IsValid(context);
+		public bool IsValid(int item, IResolutionContext context) => IsValid(context);
+		public bool IsValid(Space item, IResolutionContext context) => IsValid(context);
 		public bool IsValid(Player item, IResolutionContext context) => IsValid(context);
 		public bool IsValid(GameCardBase item, IResolutionContext context) => IsValid(context);
-		public bool IsValid(Space item, IResolutionContext context) => IsValid(context);
 		public bool IsValid((Space s, Player p) item, IResolutionContext context) => IsValid(context);
-		public bool IsValid(int item, IResolutionContext context) => IsValid(context);
+		public bool IsValid(TriggeringEventContext item, IResolutionContext context) => IsValid(context);
 		public bool IsValid(IEnumerable<GameCardBase> item, IResolutionContext context) => IsValid(context);
 
 		public bool IsValid(IResolutionContext context)
 		{
 			ComplainIfNotInitialized();
 
-			try
-			{
-				return IsValidLogic(context);
-			}
+			try { return IsValidLogic(context); }
 			catch (SystemException exception)
 				when (exception is NullReferenceException || exception is ArgumentException)
 			{
@@ -52,6 +49,7 @@ namespace KompasCore.Effects.Restrictions
 		public int GetMinimum(IResolutionContext context) => 0;
 		public int GetMaximum(IResolutionContext context) => int.MaxValue;
 		public bool IsValidClientSide(IEnumerable<GameCardBase> options, IResolutionContext context) => IsValid(options, context);
+		public void PrepareForSending(IResolutionContext context) { }
 	}
 
 	namespace GamestateRestrictionElements

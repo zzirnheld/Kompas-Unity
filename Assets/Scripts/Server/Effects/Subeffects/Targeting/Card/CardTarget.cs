@@ -15,11 +15,6 @@ namespace KompasServer.Effects.Subeffects
 {
 	public class CardTarget : ServerSubeffect
 	{
-		public static readonly JsonSerializerSettings jsonSerializerSettings = new JsonSerializerSettings
-		{
-			TypeNameHandling = TypeNameHandling.All
-		};
-
 		public const string NoOrder = "No Order";
 		public const string Closest = "Closest";
 
@@ -110,8 +105,7 @@ namespace KompasServer.Effects.Subeffects
 			}
 
 			IEnumerable<GameCard> targets = null;
-			do
-			{
+			do {
 				targets = await RequestTargets();
 				if (targets == null && ServerEffect.CanDeclineTarget) return ResolutionInfo.Impossible(DeclinedFurtherTargets);
 			} while (!AddListIfLegal(targets));
@@ -124,7 +118,7 @@ namespace KompasServer.Effects.Subeffects
 			string name = Source.CardName;
 			int[] targetIds = stashedPotentialTargets.Select(c => c.ID).ToArray();
 			Debug.Log($"Potential targets {string.Join(", ", targetIds)}");
-			return await ServerPlayer.awaiter.GetCardListTargets(name, blurb, targetIds, JsonConvert.SerializeObject(listRestriction, jsonSerializerSettings));
+			return await ServerPlayer.awaiter.GetCardListTargets(name, blurb, targetIds, listRestriction.SerializeToJSON(ResolutionContext));
 		}
 
 		public bool AddListIfLegal(IEnumerable<GameCard> choices)

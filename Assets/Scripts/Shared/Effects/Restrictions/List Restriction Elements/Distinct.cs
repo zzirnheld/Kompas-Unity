@@ -25,7 +25,7 @@ namespace KompasCore.Effects.Restrictions.ListRestrictionElements
 		//Ensure there exists a selection that fits the required minimum count
 		public override bool AllowsValidChoice(IEnumerable<GameCardBase> options, IResolutionContext context)
 		{
-			if (!(InitializationContext.parent is AllOf parent)) return true;
+			if (!(InitializationContext.parent is IListRestriction parent)) return true;
 
 			return parent.Deduplicate(options)
 				.Count() >= parent.GetMinimum(context);

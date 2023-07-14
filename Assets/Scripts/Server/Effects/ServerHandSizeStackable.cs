@@ -48,7 +48,7 @@ namespace KompasServer.Effects
 			}
 
 			var listRestriction = IListRestriction.ConstantCount(overHandSize);
-			string listRestrictionJson = JsonConvert.SerializeObject(listRestriction, Subeffects.CardTarget.jsonSerializerSettings);
+			string listRestrictionJson = listRestriction.SerializeToJSON(context);
 
 			int[] choices = null;
 			while (!TryAnswer(choices))

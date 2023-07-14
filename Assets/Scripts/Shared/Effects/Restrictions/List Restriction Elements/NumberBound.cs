@@ -8,6 +8,12 @@ namespace KompasCore.Effects.Restrictions.ListRestrictionElements
 	public abstract class NumberBound : ListRestrictionElementBase
 	{
 		/// <summary>
+        /// The bound, as defined by the actual card json.
+        /// Might have to reference stuff about the current context, like the current effect X value.
+        /// </summary>
+		public IIdentity<int> bound;
+
+		/// <summary>
 		/// Used for sending a current minimum to the client.
 		/// Obviously, the simpler solution is to assume that we're always either a constant or X,
 		/// but that makes any other manipulation much harder than it needs to be.
@@ -15,26 +21,16 @@ namespace KompasCore.Effects.Restrictions.ListRestrictionElements
 		/// </summary>
 		public int stashedBound;
 
-		public IIdentity<int> bound;
-
-		/// <summary>
-		/// This function should always be called before the list restriction is sent over.
-		/// Consider replacing with a "prep for sending" function?
-		/// </summary>
-		public int StashBound(IResolutionContext context)
-		{
-			stashedBound = bound.From(context);
-			return stashedBound;
-		}
+		public override void PrepareForSending(IResolutionContext context) => stashedBound = bound.From(context);
 	}
 
 	public class Minimum : NumberBound
 	{
 		protected override bool IsValidLogic(IEnumerable<GameCardBase> item, IResolutionContext context)
-			=> item.Count() >= StashBound(context);
+			=> item.Count() >= bound.From(context);
 
 		public override bool AllowsValidChoice(IEnumerable<GameCardBase> options, IResolutionContext context)
-			=> options.Count() >= StashBound(context);
+			=> options.Count() >= bound.From(context);
 
 		public override bool IsValidClientSide(IEnumerable<GameCardBase> options, IResolutionContext context)
 			=> options.Count() >= stashedBound;
@@ -42,13 +38,13 @@ namespace KompasCore.Effects.Restrictions.ListRestrictionElements
 		public override int GetMinimum(IResolutionContext context)
 			=> context == null
 				? stashedBound
-				: StashBound(context);
+				: bound.From(context);
 	}
 
 	public class Maximum : NumberBound
 	{
 		protected override bool IsValidLogic(IEnumerable<GameCardBase> item, IResolutionContext context)
-			=> item.Count() <= StashBound(context);
+			=> item.Count() <= bound.From(context);
 
 		public override bool AllowsValidChoice(IEnumerable<GameCardBase> options, IResolutionContext context)
 			=> true;
@@ -59,6 +55,6 @@ namespace KompasCore.Effects.Restrictions.ListRestrictionElements
 		public override int GetMaximum(IResolutionContext context)
 			=> context == null
 				? stashedBound
-				: StashBound(context);
+				: bound.From(context);
 	}
 }
