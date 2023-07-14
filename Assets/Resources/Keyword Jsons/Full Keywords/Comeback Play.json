@@ -4,7 +4,8 @@
 	{
 		"blurb":"Comeback Play",
 		"triggerCondition":"Turn Start",
-		"triggerRestriction":{
+		"triggerRestriction": {
+			"$type": "Core.TriggerRestriction:AllOf:",
 			"elements": [
 				{ "$type": "Core.TriggerRestriction:FriendlyTurn:" },
 				{

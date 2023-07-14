@@ -9,6 +9,7 @@
 				"blurb": "Lovers fleeing together",
 				"triggerCondition": "Play",
 				"triggerRestriction": {
+					"$type": "Core.TriggerRestriction:AllOf:",
 					"elements": [
 						{
 							"$type": "Core.TriggerRestriction:CardsMatch:",

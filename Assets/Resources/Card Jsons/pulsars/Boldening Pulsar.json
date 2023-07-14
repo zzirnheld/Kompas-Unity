@@ -8,6 +8,7 @@
 				"blurb": "Embolden",
 				"triggerCondition": "S Change",
 				"triggerRestriction": {
+					"$type": "Core.TriggerRestriction:AllOf:",
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{
@@ -54,6 +55,7 @@
 				"blurb": "Unbolden",
 				"triggerCondition": "S Change",
 				"triggerRestriction": {
+					"$type": "Core.TriggerRestriction:AllOf:",
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{

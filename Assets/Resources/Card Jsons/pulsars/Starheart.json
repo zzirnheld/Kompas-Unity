@@ -8,6 +8,7 @@
 			"triggerData": {
 				"triggerCondition": "Move",
 				"triggerRestriction": {
+					"$type": "Core.TriggerRestriction:AllOf:",
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{
@@ -47,6 +48,7 @@
 			"triggerData": {
 				"triggerCondition": "Move",
 				"triggerRestriction": {
+					"$type": "Core.TriggerRestriction:AllOf:",
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{

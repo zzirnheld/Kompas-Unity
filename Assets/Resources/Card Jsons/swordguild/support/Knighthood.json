@@ -8,6 +8,7 @@
 			"triggerData": {
 				"triggerCondition": "Discard",
 				"triggerRestriction": {
+					"$type": "Core.TriggerRestriction:AllOf:",
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{

@@ -7,6 +7,7 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
+					"$type": "Core.TriggerRestriction:AllOf:",
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{
@@ -55,6 +56,7 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
+					"$type": "Core.TriggerRestriction:AllOf:",
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{

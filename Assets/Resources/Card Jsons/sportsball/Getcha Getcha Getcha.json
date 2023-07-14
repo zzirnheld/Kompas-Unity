@@ -8,6 +8,7 @@
 				"blurb": "Getcha Getcha Getcha",
 				"triggerCondition": "Augmented",
 				"triggerRestriction": {
+					"$type": "Core.TriggerRestriction:AllOf:",
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{

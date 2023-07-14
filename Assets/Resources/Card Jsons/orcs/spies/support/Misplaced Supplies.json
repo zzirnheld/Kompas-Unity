@@ -7,6 +7,7 @@
 			"triggerData": {
 				"triggerCondition": "Rehand",
 				"triggerRestriction": {
+					"$type": "Core.TriggerRestriction:AllOf:",
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{
@@ -49,6 +50,7 @@
 			"triggerData": {
 				"triggerCondition": "Defend",
 				"triggerRestriction": {
+					"$type": "Core.TriggerRestriction:AllOf:",
 					"elements": [
 						{
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",

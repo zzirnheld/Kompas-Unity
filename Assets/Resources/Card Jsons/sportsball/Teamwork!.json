@@ -8,6 +8,7 @@
 				"blurb": "Teamwork! Draw!",
 				"triggerCondition": "Augmented",
 				"triggerRestriction": {
+					"$type": "Core.TriggerRestriction:AllOf:",
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{ "$type": "Core.GamestateRestriction:MaxPerStack:" },

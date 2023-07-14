@@ -3,7 +3,8 @@
 	{
 		"blurb":"Undying",
 		"triggerCondition":"Discard",
-		"triggerRestriction":{
+		"triggerRestriction": {
+			"$type": "Core.TriggerRestriction:AllOf:",
 			"elements": [
 				{
 					"$type": "Core.TriggerRestriction:CardsMatch:",

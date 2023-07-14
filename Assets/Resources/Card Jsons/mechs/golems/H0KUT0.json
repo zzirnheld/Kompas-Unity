@@ -7,11 +7,7 @@
 			"blurb": "0M43 W4 M0U 5H1ND31RU",
 			"triggerData": {
 				"triggerCondition": "Play",
-				"triggerRestriction":{
-					"elements": [
-						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" }
-					]
-				},
+				"triggerRestriction": { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 				"elements": [
 					{
 						"$type": "Core.TriggerRestriction:CardFitsRestriction:",

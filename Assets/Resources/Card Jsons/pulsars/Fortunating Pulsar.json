@@ -8,6 +8,7 @@
 				"blurb": "Fortune-card",
 				"triggerCondition": "S Change",
 				"triggerRestriction": {
+					"$type": "Core.TriggerRestriction:AllOf:",
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{ "$type": "Core.GamestateRestriction:MaxPerTurn:", "max": 3 },

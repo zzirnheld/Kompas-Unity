@@ -8,6 +8,7 @@
 				"blurb": "Bloodcurse",
 				"triggerCondition": "Discard",
 				"triggerRestriction": {
+					"$type": "Core.TriggerRestriction:AllOf:",
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{ "$type": "Core.GamestateRestriction:MaxPerRound:" },

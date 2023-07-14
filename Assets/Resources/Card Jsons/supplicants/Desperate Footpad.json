@@ -8,6 +8,7 @@
 				"blurb": "Hunger",
 				"triggerCondition": "Arrive",
 				"triggerRestriction": {
+					"$type": "Core.TriggerRestriction:AllOf:",
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{ "$type": "Core.GamestateRestriction:MaxPerStack:" },

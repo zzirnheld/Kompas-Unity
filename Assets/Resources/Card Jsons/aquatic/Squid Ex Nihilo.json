@@ -8,6 +8,7 @@
 			"triggerData": {
 				"triggerCondition": "Attack",
 				"triggerRestriction": {
+					"$type": "Core.TriggerRestriction:AllOf:",
 					"elements": [
 						{
 							"$type": "Core.TriggerRestriction:CardsMatch:",
@@ -31,13 +32,9 @@
 					"wModifier": 6,
 					"endCondition": "Battle End",
 					"triggerRestriction": {
-						"elements": [
-							{
-								"$type": "Core.TriggerRestriction:StackablesMatch:",
-								"firstStackable": { "$type": "Stackables:StackableEvent:", "secondaryContext": true },
-								"secondStackable": { "$type": "Stackables:StackableEvent:" }
-							}
-						]
+						"$type": "Core.TriggerRestriction:StackablesMatch:",
+						"firstStackable": { "$type": "Stackables:StackableEvent:", "secondaryContext": true },
+						"secondStackable": { "$type": "Stackables:StackableEvent:" }
 					}
 				}
 			]

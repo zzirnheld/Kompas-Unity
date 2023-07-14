@@ -8,6 +8,7 @@
 				"blurb": "Hand-summon character with S <= X?",
 				"triggerCondition": "Draw",
 				"triggerRestriction": {
+					"$type": "Core.TriggerRestriction:AllOf:",
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{

@@ -7,6 +7,22 @@ namespace KompasCore.Effects.Restrictions
 {
 	public abstract class TriggerRestrictionBase : RestrictionBase<TriggeringEventContext>
 	{
+		public static readonly IRestriction<TriggeringEventContext>[] DefaultFallOffRestrictions = {
+			new TriggerRestrictionElements.CardsMatch(){
+				card = new Identities.Cards.ThisCardNow(),
+				other = new Identities.Cards.CardBefore()
+			},
+			new TriggerRestrictionElements.ThisCardInPlay() };
+
+		public static readonly ISet<Type> ReevalationRestrictions = new HashSet<Type>(new Type[] {
+			typeof(GamestateRestrictionElements.MaxPerTurn),
+			typeof(GamestateRestrictionElements.MaxPerRound),
+			typeof(GamestateRestrictionElements.MaxPerStack)
+		});
+
+		public static IRestriction<TriggeringEventContext> AllOf(IList<IRestriction<TriggeringEventContext>> elements)
+			=> new TriggerRestrictionElements.AllOf() { elements = elements };
+
 		public bool useDummyResolutionContext = true;
 
 		protected virtual IResolutionContext ContextToConsider(TriggeringEventContext triggeringContext, IResolutionContext resolutionContext)
@@ -44,19 +60,6 @@ namespace KompasCore.Effects.Restrictions
 		{
 			protected override bool LogSoloElements => false;
 
-			public static readonly ISet<Type> ReevalationRestrictions = new HashSet<Type>(new Type[] {
-				typeof(GamestateRestrictionElements.MaxPerTurn),
-				typeof(GamestateRestrictionElements.MaxPerRound),
-				typeof(GamestateRestrictionElements.MaxPerStack)
-			});
-
-			public static readonly IRestriction<TriggeringEventContext>[] DefaultFallOffRestrictions = {
-				new TriggerRestrictionElements.CardsMatch(){
-					card = new Identities.Cards.ThisCardNow(),
-					other = new Identities.Cards.CardBefore()
-				},
-				new TriggerRestrictionElements.ThisCardInPlay() };
-
 			/// <summary>
 			/// Reevaluates the trigger to check that any restrictions that could change between it being triggered
 			/// and it being ordered on the stack, are still true.
@@ -64,18 +67,8 @@ namespace KompasCore.Effects.Restrictions
 			/// </summary>
 			/// <returns></returns>
 			public bool IsStillValidTriggeringContext(TriggeringEventContext context)
-				=> elements.Where(elem => ReevalationRestrictions.Contains(elem.GetType()))
+				=> elements.Where(elem => TriggerRestrictionBase.ReevalationRestrictions.Contains(elem.GetType()))
 						.All(elem => elem.IsValid(context, default));
-		}
-
-		public class AlwaysValid : TriggerGamestateRestrictionBase
-		{
-			protected override bool IsValidLogic(TriggeringEventContext item, IResolutionContext context) => true;
-		}
-
-		public class NeverValid : TriggerGamestateRestrictionBase
-		{
-			protected override bool IsValidLogic(TriggeringEventContext item, IResolutionContext context) => false;
 		}
 
 		public class ThisCardInPlay : TriggerGamestateRestrictionBase

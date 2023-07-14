@@ -4,7 +4,8 @@
 	{
 		"blurb":"Pass Back",
 		"triggerCondition":"Defend",
-		"triggerRestriction":{
+		"triggerRestriction": {
+			"$type": "Core.TriggerRestriction:AllOf:",
 			"elements": [
 				{
 					"$type": "Core.TriggerRestriction:CardsMatch:",

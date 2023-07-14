@@ -8,6 +8,7 @@
 				"blurb": "bounce",
 				"triggerCondition": "Arrive",
 				"triggerRestriction": {
+					"$type": "Core.TriggerRestriction:AllOf:",
 					"elements": [
 						{
 							"$type": "Core.SpaceRestriction:AdjacentTo:",

@@ -4,7 +4,8 @@
 	{
 		"blurb":"Waterdweller",
 		"triggerCondition":"Stack End",
-		"triggerRestriction":{
+		"triggerRestriction": {
+			"$type": "Core.TriggerRestriction:AllOf:",
 			"elements": [
 				{
 					"$type": "Core.TriggerRestriction:CardFitsRestriction:",

@@ -6,11 +6,7 @@
 		{
 			"triggerData": {
 				"triggerCondition": "Annihilate",
-				"triggerRestriction":{
-					"elements": [
-						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" }
-					]
-				}
+				"triggerRestriction": { "$type": "Core.TriggerRestriction:ThisCardInPlay:" }
 			},
 			"subeffects": [
 				{

@@ -8,6 +8,7 @@
 			"triggerData": {
 				"triggerCondition": "Deal Combat Damage",
 				"triggerRestriction": {
+					"$type": "Core.TriggerRestriction:AllOf:",
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{

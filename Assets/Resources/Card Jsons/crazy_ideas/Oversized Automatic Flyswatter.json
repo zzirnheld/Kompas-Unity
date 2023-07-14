@@ -8,7 +8,8 @@
 			{
 				"blurb":"BEGONE! SWAT!",
 				"triggerCondition":"Arrive",
-				"triggerRestriction":{
+				"triggerRestriction": {
+					"$type": "Core.TriggerRestriction:AllOf:",
 					"elements": [
 						{
 							"$type": "Core.SpaceRestriction:AdjacentTo:",

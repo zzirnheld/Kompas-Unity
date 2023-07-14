@@ -9,13 +9,9 @@
 			{
 				"triggerCondition":"Augment Attached",
 				"triggerRestriction": {
-					"elements": [
-						{
-							"$type": "Core.TriggerRestriction:CardsMatch:",
-							"card": { "$type": "Cards:CardBefore:" },
-							"other": { "$type": "Cards:ThisCardNow:" }
-						}
-					]
+					"$type": "Core.TriggerRestriction:CardsMatch:",
+					"card": { "$type": "Cards:CardBefore:" },
+					"other": { "$type": "Cards:ThisCardNow:" }
 				}
 			},
 			"subeffects":[
@@ -43,6 +39,7 @@
 				"blurb": "Buffer Recharge",
 				"triggerCondition": "Turn Start",
 				"triggerRestriction": {
+					"$type": "Core.TriggerRestriction:AllOf:",
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:EnemyTurn:" },
 						{

@@ -8,6 +8,7 @@
 				"blurb": "Attract",
 				"triggerCondition": "S Change",
 				"triggerRestriction": {
+					"$type": "Core.TriggerRestriction:AllOf:",
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{ "$type": "Core.GamestateRestriction:MaxPerStack:" },
@@ -86,6 +87,7 @@
 				"blurb": "Repel",
 				"triggerCondition": "S Change",
 				"triggerRestriction": {
+					"$type": "Core.TriggerRestriction:AllOf:",
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{ "$type": "Core.GamestateRestriction:MaxPerStack:" },

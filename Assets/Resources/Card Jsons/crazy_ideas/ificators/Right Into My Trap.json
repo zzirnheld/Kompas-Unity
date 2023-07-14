@@ -8,6 +8,7 @@
 				"blurb": "Right Into My Trap",
 				"triggerCondition": "Move",
 				"triggerRestriction": {
+					"$type": "Core.TriggerRestriction:AllOf:",
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{

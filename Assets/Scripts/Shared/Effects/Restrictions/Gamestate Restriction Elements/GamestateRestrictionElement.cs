@@ -89,5 +89,10 @@ namespace KompasCore.Effects.Restrictions
 		{
 			protected override bool IsValidLogic(IResolutionContext context) => true;
 		}
+
+		public class NeverValid : GamestateRestrictionBase
+		{
+			protected override bool IsValidLogic(IResolutionContext context) => false;
+		}
 	}
 }

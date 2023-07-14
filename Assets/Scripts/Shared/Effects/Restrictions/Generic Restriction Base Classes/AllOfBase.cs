@@ -10,6 +10,8 @@ namespace KompasCore.Effects
 	{
 		public delegate bool ShouldIgnore(IRestriction<RestrictedType> restriction);
 		public bool IsValidIgnoring(RestrictedType item, IResolutionContext context, ShouldIgnore ignorePredicate);
+
+		public IEnumerable<IRestriction<RestrictedType>> GetElements();
 	}
 
 	public abstract class AllOfBase<RestrictedType> : AllOfBase<RestrictedType, IRestriction<RestrictedType>> { }
@@ -24,6 +26,11 @@ namespace KompasCore.Effects
 		protected virtual IEnumerable<ElementRestrictionType> DefaultElements => Enumerable.Empty<ElementRestrictionType>();
 
 		private IAllOf<RestrictedType>.ShouldIgnore ignorePredicate = elem => false;
+
+		public IEnumerable<IRestriction<RestrictedType>> GetElements()
+		{
+			foreach (var elem in elements) yield return elem;
+		}
 
 		public bool IsValidIgnoring(RestrictedType item, IResolutionContext context, IAllOf<RestrictedType>.ShouldIgnore ignorePredicate)
 		{

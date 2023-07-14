@@ -8,6 +8,7 @@
 				"blurb": "Unwavering Devotion",
 				"triggerCondition": "Discard",
 				"triggerRestriction": {
+					"$type": "Core.TriggerRestriction:AllOf:",
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{

@@ -9,6 +9,7 @@
 				"blurb": "It's just a piece of wood!?",
 				"triggerCondition": "Defend",
 				"triggerRestriction": {
+					"$type": "Core.TriggerRestriction:AllOf:",
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{

@@ -8,13 +8,9 @@
 				"triggerCondition": "Play",
 				"blurb": "Find Me, Find Peace",
 				"triggerRestriction": {
-					"elements": [
-						{
-							"$type": "Core.TriggerRestriction:CardsMatch:",
-							"card": { "$type": "Cards:CardBefore:" },
-							"other": { "$type": "Cards:ThisCardNow:" }
-						}
-					]
+					"$type": "Core.TriggerRestriction:CardsMatch:",
+					"card": { "$type": "Cards:CardBefore:" },
+					"other": { "$type": "Cards:ThisCardNow:" }
 				}
 			},
 			"subeffects": [

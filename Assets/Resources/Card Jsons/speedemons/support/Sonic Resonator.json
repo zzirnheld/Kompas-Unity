@@ -8,11 +8,7 @@
 			"triggerData": {
 				"blurb": "Sonic +C",
 				"triggerCondition": "Move",
-				"triggerRestriction":{
-					"elements": [
-						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" }
-					]
-				}
+				"triggerRestriction": { "$type": "Core.TriggerRestriction:ThisCardInPlay:" }
 			},
 			"subeffects": [
 				{
@@ -35,13 +31,9 @@
 				"blurb": "Resound",
 				"triggerCondition": "Vanish",
 				"triggerRestriction": {
-					"elements": [
-						{
-							"$type": "Core.TriggerRestriction:CardsMatch:",
-							"card": { "$type": "Cards:CardBefore:" },
-							"other": { "$type": "Cards:ThisCardNow:" }
-						}
-					]
+					"$type": "Core.TriggerRestriction:CardsMatch:",
+					"card": { "$type": "Cards:CardBefore:" },
+					"other": { "$type": "Cards:ThisCardNow:" }
 				}
 			},
 			"subeffects": [

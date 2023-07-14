@@ -9,6 +9,7 @@
 				"blurb": "Tribute Dreamfog to gain 1 pip?",
 				"triggerCondition": "Move",
 				"triggerRestriction": {
+					"$type": "Core.TriggerRestriction:AllOf:",
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{

@@ -8,6 +8,7 @@
 				"blurb": "Mad Jukes My Dude!",
 				"triggerCondition": "Arrive",
 				"triggerRestriction": {
+					"$type": "Core.TriggerRestriction:AllOf:",
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{

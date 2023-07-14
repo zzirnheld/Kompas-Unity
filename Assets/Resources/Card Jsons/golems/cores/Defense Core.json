@@ -9,6 +9,7 @@
 				"blurb": "Activate Golem",
 				"triggerCondition": "Augment Attached",
 				"triggerRestriction": {
+					"$type": "Core.TriggerRestriction:AllOf:",
 					"elements": [
 						{
 							"$type": "Core.TriggerRestriction:CardsMatch:",
@@ -51,6 +52,7 @@
 				"blurb": "Golem Defense",
 				"triggerCondition": "Defend",
 				"triggerRestriction": {
+					"$type": "Core.TriggerRestriction:AllOf:",
 					"elements": [
 						{
 							"$type": "Core.TriggerRestriction:CardsMatch:",

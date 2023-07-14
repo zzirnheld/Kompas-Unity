@@ -8,6 +8,7 @@
 				"blurb": "Pip",
 				"triggerCondition": "Discard",
 				"triggerRestriction": {
+					"$type": "Core.TriggerRestriction:AllOf:",
 					"elements": [
 						{
 							"$type": "Core.TriggerRestriction:CardsMatch:",
@@ -44,6 +45,7 @@
 				"blurb": "Recur",
 				"triggerCondition": "Turn Start",
 				"triggerRestriction": {
+					"$type": "Core.TriggerRestriction:AllOf:",
 					"elements": [
 						{
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",

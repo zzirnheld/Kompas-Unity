@@ -32,13 +32,9 @@
 		"wMultiplier": -1,
 		"endCondition": "Battle End",
 		"triggerRestriction": {
-			"elements": [
-				{
-					"$type": "Core.TriggerRestriction:StackablesMatch:",
-					"firstStackable": { "$type": "Stackables:StackableIndex:", "secondaryContext": true },
-					"secondStackable": { "$type": "Stackables:StackableEvent:" }
-				}
-			]
+			"$type": "Core.TriggerRestriction:StackablesMatch:",
+			"firstStackable": { "$type": "Stackables:StackableIndex:", "secondaryContext": true },
+			"secondStackable": { "$type": "Stackables:StackableEvent:" }
 		}
 	},
 	{

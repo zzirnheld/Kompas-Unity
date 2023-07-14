@@ -8,7 +8,8 @@
 			{
 				"orderPriority": 5,
 				"triggerCondition":"Play",
-				"triggerRestriction":{
+				"triggerRestriction": {
+					"$type": "Core.TriggerRestriction:AllOf:",
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{ "$type": "Core.GamestateRestriction:MaxPerTurn:" },

@@ -8,6 +8,7 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
+					"$type": "Core.TriggerRestriction:AllOf:",
 					"elements": [
 						{
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
@@ -76,6 +77,7 @@
 			"triggerData": {
 				"triggerCondition": "Attack",
 				"triggerRestriction": {
+					"$type": "Core.TriggerRestriction:AllOf:",
 					"elements": [
 						{
 							"$type": "Core.TriggerRestriction:CardsMatch:",

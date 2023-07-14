@@ -9,6 +9,7 @@
 				"blurb": "When you [redacted] upon a XVII",
 				"triggerCondition": "Move",
 				"triggerRestriction": {
+					"$type": "Core.TriggerRestriction:AllOf:",
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{

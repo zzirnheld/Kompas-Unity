@@ -4,11 +4,7 @@
 	{
 		"blurb":"Wander",
 		"triggerCondition":"Turn Start",
-		"triggerRestriction":{
-			"elements": [
-				{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" }
-			]
-		}
+		"triggerRestriction": { "$type": "Core.TriggerRestriction:ThisCardInPlay:" }
 	},
 	"subeffects":[
 		{

@@ -8,13 +8,9 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"elements": [
-						{
-							"$type": "Core.TriggerRestriction:CardsMatch:",
-							"card": { "$type": "Cards:CardBefore:" },
-							"other": { "$type": "Cards:ThisCardNow:" }
-						}
-					]
+					"$type": "Core.TriggerRestriction:CardsMatch:",
+					"card": { "$type": "Cards:CardBefore:" },
+					"other": { "$type": "Cards:ThisCardNow:" }
 				}
 			},
 			"subeffects": [
@@ -42,11 +38,7 @@
 			"blurb": "The bell tolls...",
 			"triggerData": {
 				"triggerCondition": "Turn Start",
-				"triggerRestriction":{
-					"elements": [
-						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" }
-					]
-				}
+				"triggerRestriction": { "$type": "Core.TriggerRestriction:ThisCardInPlay:" }
 			},
 			"subeffects": [
 				{

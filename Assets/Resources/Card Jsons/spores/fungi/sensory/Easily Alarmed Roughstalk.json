@@ -8,6 +8,7 @@
 			"triggerData": {
 				"triggerCondition": "Battle Start",
 				"triggerRestriction": {
+					"$type": "Core.TriggerRestriction:AllOf:",
 					"elements": [
 						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
 						{
