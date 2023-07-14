@@ -68,14 +68,14 @@ namespace KompasCore.Effects.Restrictions
 							card = new Identities.Cards.ThisCardNow()
 						}
 					};
-					yield return new TriggerRestrictionElements.NothingHappening();
-					yield return new TriggerRestrictionElements.FriendlyTurn();
+					yield return new GamestateRestrictionElements.NothingHappening();
+					yield return new GamestateRestrictionElements.FriendlyTurn();
 				}
 			}
 
 			public bool WouldBeValidNormalMoveInOpenGamestate(Space item)
 				=> NormalRestriction.IsValidIgnoring(item, ResolutionContext.PlayerTrigger(null, InitializationContext.game),
-					restriction => restriction is TriggerRestrictionElements.NothingHappening); //ignore req that nothing is happening
+					restriction => restriction is GamestateRestrictionElements.NothingHappening); //ignore req that nothing is happening
 		}
 	}
 }
