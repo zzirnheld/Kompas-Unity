@@ -94,5 +94,11 @@ namespace KompasCore.Effects.Restrictions
 		{
 			protected override bool IsValidLogic(IResolutionContext context) => false;
 		}
+
+		public class ThisCardInPlay : GamestateRestrictionBase
+		{
+			protected override bool IsValidLogic(IResolutionContext secondaryContext)
+				=> InitializationContext.source.Location == CardLocation.Board;
+		}
 	}
 }

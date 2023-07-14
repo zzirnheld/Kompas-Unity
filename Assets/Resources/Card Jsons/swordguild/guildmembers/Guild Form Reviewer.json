@@ -9,7 +9,7 @@
 				"triggerRestriction": {
 					"$type": "Core.TriggerRestriction:AllOf:",
 					"elements": [
-						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{ "$type": "Core.GamestateRestriction:ThisCardInPlay:" },
 						{
 							"$type": "Core.TriggerRestriction:CardsMatch:",
 							"card": { "$type": "Cards:ThisCardNow:" },
@@ -47,7 +47,7 @@
 				"triggerRestriction": {
 					"$type": "Core.TriggerRestriction:AllOf:",
 					"elements": [
-						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{ "$type": "Core.GamestateRestriction:ThisCardInPlay:" },
 						{
 							"$type": "Core.TriggerRestriction:CardsMatch:",
 							"card": { "$type": "Cards:ThisCardNow:" },
@@ -85,7 +85,7 @@
 				"triggerRestriction": {
 					"$type": "Core.TriggerRestriction:AllOf:",
 					"elements": [
-						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{ "$type": "Core.GamestateRestriction:ThisCardInPlay:" },
 						{
 							"$type": "Core.TriggerRestriction:CardsMatch:",
 							"card": { "$type": "Cards:ThisCardNow:" },

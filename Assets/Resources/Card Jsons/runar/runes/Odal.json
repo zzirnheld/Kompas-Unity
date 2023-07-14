@@ -24,7 +24,7 @@
 	],
 	"PlayRestriction": {
 		"$type": "Core.PlayRestriction:PlayRestriction:",
-		"normalOnly": [ { "$type": "Core.TriggerRestriction:NeverValid:" } ],
+		"normalOnly": [ { "$type": "Core.GamestateRestriction:NeverValid:" } ],
 		"recommendations": [ {
 			"$type": "Core.SpaceRestriction:AdjacentTo:",
 			"cardRestriction": { "$type": "Core.CardRestriction:Character:" }

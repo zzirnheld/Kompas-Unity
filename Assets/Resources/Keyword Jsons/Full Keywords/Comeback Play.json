@@ -7,7 +7,7 @@
 		"triggerRestriction": {
 			"$type": "Core.TriggerRestriction:AllOf:",
 			"elements": [
-				{ "$type": "Core.TriggerRestriction:FriendlyTurn:" },
+				{ "$type": "Core.GamestateRestriction:FriendlyTurn:" },
 				{
 					"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 					"anyOf": { "$type": "ManyCards:Board:" },

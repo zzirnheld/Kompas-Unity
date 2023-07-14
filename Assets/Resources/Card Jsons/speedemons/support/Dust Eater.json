@@ -9,8 +9,8 @@
 				"triggerRestriction": {
 					"$type": "Core.TriggerRestriction:AllOf:",
 					"elements": [
-						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{ "$type": "Core.GamestateRestriction:ThisCardInPlay:" },
+						{ "$type": "Core.GamestateRestriction:ThisCardInPlay:" },
 						{
 							"$type": "Core.TriggerRestriction:CompareNumbers:",
 							"firstNumber": {

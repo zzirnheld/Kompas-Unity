@@ -8,7 +8,7 @@
 			"triggerCondition": "Arrive",
 			"triggerRestriction": {
 				"elements": [
-					{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+					{ "$type": "Core.GamestateRestriction:ThisCardInPlay:" },
 					{
 						"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 						"card": { "$type": "Cards:CardBefore:" },

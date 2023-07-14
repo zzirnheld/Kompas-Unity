@@ -12,7 +12,7 @@
 	},
 	"movementRestriction": {
 		"$type": "Core.SpaceRestriction:MovementRestriction:",
-		"normalOnly": [ { "$type": "Core.TriggerRestriction:NeverValid:" } ]
+		"normalOnly": [ { "$type": "Core.GamestateRestriction:NeverValid:" } ]
 	},
 	"n": 0,
 	"e": 9,

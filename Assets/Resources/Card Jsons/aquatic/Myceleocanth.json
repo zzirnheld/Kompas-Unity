@@ -7,7 +7,7 @@
 			"blurb": "Waterborne Spores",
 			"triggerData": {
 				"triggerCondition": "Turn Start",
-				"triggerRestriction": { "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+				"triggerRestriction": { "$type": "Core.GamestateRestriction:ThisCardInPlay:" },
 				"orderPriority": -100
 			},
 			"subeffects": [

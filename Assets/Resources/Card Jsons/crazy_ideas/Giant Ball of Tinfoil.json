@@ -8,7 +8,7 @@
 			"blurb": "THE ENTIRE EASTERN SEABOARD",
 			"triggerData": {
 				"triggerCondition": "Turn Start",
-				"triggerRestriction": { "$type": "Core.TriggerRestriction:ThisCardInPlay:" }
+				"triggerRestriction": { "$type": "Core.GamestateRestriction:ThisCardInPlay:" }
 			},
 			"subeffects": [
 				{
@@ -97,7 +97,7 @@
 	},
 	"movementRestriction": {
 		"$type": "Core.SpaceRestriction:MovementRestriction:",
-		"normalOnly": [ { "$type": "Core.TriggerRestriction:NeverValid:" } ]
+		"normalOnly": [ { "$type": "Core.GamestateRestriction:NeverValid:" } ]
 	},
 	"n": 0,
 	"e": 9,

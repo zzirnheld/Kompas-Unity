@@ -76,7 +76,7 @@
 	],
 	"PlayRestriction": {
 		"$type": "Core.PlayRestriction:PlayRestriction:",
-		"effectOnly": [ { "$type": "Core.TriggerRestriction:NeverValid:" } ]
+		"effectOnly": [ { "$type": "Core.GamestateRestriction:NeverValid:" } ]
 	},
 	"c": 25,
 	"spellTypes": [

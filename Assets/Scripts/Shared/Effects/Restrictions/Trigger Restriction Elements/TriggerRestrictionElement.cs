@@ -12,7 +12,7 @@ namespace KompasCore.Effects.Restrictions
 				card = new Identities.Cards.ThisCardNow(),
 				other = new Identities.Cards.CardBefore()
 			},
-			new TriggerRestrictionElements.ThisCardInPlay() };
+			new GamestateRestrictionElements.ThisCardInPlay() };
 
 		public static readonly ISet<Type> ReevalationRestrictions = new HashSet<Type>(new Type[] {
 			typeof(GamestateRestrictionElements.MaxPerTurn),
@@ -71,41 +71,11 @@ namespace KompasCore.Effects.Restrictions
 						.All(elem => elem.IsValid(context, default));
 		}
 
-		public class ThisCardInPlay : TriggerGamestateRestrictionBase
-		{
-			protected override bool IsValidLogic(TriggeringEventContext context, IResolutionContext secondaryContext)
-				=> InitializationContext.source.Location == CardLocation.Board;
-		}
-
-		public class NothingHappening : TriggerGamestateRestrictionBase
-		{
-			protected override bool IsValidLogic(TriggeringEventContext item, IResolutionContext context)
-				=> InitializationContext.game.NothingHappening;
-		}
-
-		public class FriendlyTurn : TriggerGamestateRestrictionBase
-		{
-			protected override bool IsValidLogic(TriggeringEventContext item, IResolutionContext context)
-				=> InitializationContext.game.TurnPlayer == InitializationContext.Controller;
-		}
-
-		public class AnyOf : TriggerRestrictionBase
-		{
-			public IRestriction<TriggeringEventContext> [] restrictions;
-
-			public override void Initialize(EffectInitializationContext initializationContext)
-			{
-				base.Initialize(initializationContext);
-				foreach (var r in restrictions) r.Initialize(initializationContext);
-			}
-
-			protected override bool IsValidLogic(TriggeringEventContext context, IResolutionContext secondaryContext)
-				=> restrictions.Any(r => r.IsValid(context, secondaryContext));
-		}
+		public class AnyOf : AnyOfBase<TriggeringEventContext> { }
 
 		public class Not : TriggerRestrictionBase
 		{
-			public IRestriction<TriggeringEventContext>  inverted;
+			public IRestriction<TriggeringEventContext> inverted;
 
 			public override void Initialize(EffectInitializationContext initializationContext)
 			{

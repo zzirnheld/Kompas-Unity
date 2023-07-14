@@ -4,8 +4,8 @@
 		"triggerCondition": "Turn Start",
 		"triggerRestriction": {
 			"elements": [
-				{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-				{ "$type": "Core.TriggerRestriction:FriendlyTurn:" }
+				{ "$type": "Core.GamestateRestriction:ThisCardInPlay:" },
+				{ "$type": "Core.GamestateRestriction:FriendlyTurn:" }
 			]
 		}
 	},

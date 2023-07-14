@@ -9,8 +9,8 @@
 				"triggerRestriction": {
 					"$type": "Core.TriggerRestriction:AllOf:",
 					"elements": [
-						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
-						{ "$type": "Core.TriggerRestriction:FriendlyTurn:" }
+						{ "$type": "Core.GamestateRestriction:ThisCardInPlay:" },
+						{ "$type": "Core.GamestateRestriction:FriendlyTurn:" }
 					]
 				}
 			},
@@ -40,7 +40,7 @@
 		{
 			"triggerData": {
 				"triggerCondition": "Battle Start",
-				"triggerRestriction": { "$type": "Core.TriggerRestriction:ThisCardInPlay:" }
+				"triggerRestriction": { "$type": "Core.GamestateRestriction:ThisCardInPlay:" }
 			},
 			"subeffects": [
 				{
@@ -78,7 +78,7 @@
 				"triggerRestriction": {
 					"$type": "Core.TriggerRestriction:AllOf:",
 					"elements": [
-						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{ "$type": "Core.GamestateRestriction:ThisCardInPlay:" },
 						{
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 							"card": { "$type": "Cards:CardBefore:" },

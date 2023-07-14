@@ -10,7 +10,7 @@
 				"triggerRestriction": {
 					"$type": "Core.TriggerRestriction:AllOf:",
 					"elements": [
-						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{ "$type": "Core.GamestateRestriction:ThisCardInPlay:" },
 						{
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 							"card": { "$type": "Cards:CardBefore:" },
@@ -22,33 +22,21 @@
 						},
 						{
 							"$type": "Core.TriggerRestriction:AnyOf:",
-							"restrictions": [
+							"elements": [
 								{
 									"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 									"card": { "$type": "Cards:CardBefore:" },
-									
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
-											{
-												"$type": "Core.SpaceRestriction:AdjacentTo:",
-												"card": { "$type": "Cards:ThisCardNow:" }
-											}
-										]
+									"cardRestriction": {
+										"$type": "Core.SpaceRestriction:AdjacentTo:",
+										"card": { "$type": "Cards:ThisCardNow:" }
 									}
 								},
 								{
 									"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 									"card": { "$type": "Cards:CardAfter:" },
-									
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
-											{
-												"$type": "Core.SpaceRestriction:AdjacentTo:",
-												"card": { "$type": "Cards:ThisCardNow:" }
-											}
-										]
+									"cardRestriction": {
+										"$type": "Core.SpaceRestriction:AdjacentTo:",
+										"card": { "$type": "Cards:ThisCardNow:" }
 									}
 								}
 							]

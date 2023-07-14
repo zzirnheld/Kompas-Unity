@@ -42,7 +42,7 @@ namespace KompasCore.Effects
 
 				private static IRestriction<(Space s, Player p)> OnOrAdjacentToFriendly() => new AnyOf()
 					{
-						restrictions = new IRestriction<(Space s, Player p)>[] {
+						elements = new IRestriction<(Space s, Player p)>[] {
 							new CardRestrictionElements.Friendly(),
 							new SpaceRestrictionElements.AdjacentTo()
 							{

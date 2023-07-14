@@ -6,7 +6,7 @@
 		{
 			"triggerData": {
 				"triggerCondition": "Turn Start",
-				"triggerRestriction": { "$type": "Core.TriggerRestriction:ThisCardInPlay:" }
+				"triggerRestriction": { "$type": "Core.GamestateRestriction:ThisCardInPlay:" }
 			},
 			"subeffects": [
 				{
@@ -32,7 +32,7 @@
 	],
 	"PlayRestriction": {
 		"$type": "Core.PlayRestriction:PlayRestriction:",
-		"normalOnly": [ { "$type": "Core.TriggerRestriction:NeverValid:" } ]
+		"normalOnly": [ { "$type": "Core.GamestateRestriction:NeverValid:" } ]
 	},
 	"c": 1,
 	"spellTypes": [

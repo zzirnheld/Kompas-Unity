@@ -10,7 +10,7 @@
 				"triggerRestriction": {
 					"$type": "Core.TriggerRestriction:AllOf:",
 					"elements": [
-						{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+						{ "$type": "Core.GamestateRestriction:ThisCardInPlay:" },
 						{ "$type": "Core.TriggerRestriction:Normally:" },
 						{
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
@@ -61,7 +61,7 @@
 	},
 	"movementRestriction": {
 		"$type": "Core.SpaceRestriction:MovementRestriction:",
-		"normalOnly": [ { "$type": "Core.TriggerRestriction:NeverValid:" } ]
+		"normalOnly": [ { "$type": "Core.GamestateRestriction:NeverValid:" } ]
 	},
 	"n": 0,
 	"e": 2,

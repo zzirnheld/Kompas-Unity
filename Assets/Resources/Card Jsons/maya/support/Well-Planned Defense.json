@@ -7,7 +7,7 @@
 			"blurb": "Planned construction",
 			"triggerData": {
 				"triggerCondition": "Turn Start",
-				"triggerRestriction": { "$type": "Core.TriggerRestriction:ThisCardInPlay:" }
+				"triggerRestriction": { "$type": "Core.GamestateRestriction:ThisCardInPlay:" }
 			},
 			"subeffects": [
 				{

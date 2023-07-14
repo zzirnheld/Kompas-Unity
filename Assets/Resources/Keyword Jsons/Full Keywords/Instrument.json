@@ -6,7 +6,7 @@
 		"triggerRestriction": {
 			"$type": "Core.TriggerRestriction:AllOf:",
 			"elements": [
-				{ "$type": "Core.TriggerRestriction:ThisCardInPlay:" },
+				{ "$type": "Core.GamestateRestriction:ThisCardInPlay:" },
 				{ "$type": "Core.CardRestriction:Friendly:" },
 				{
 					"$type": "Core.SpaceRestriction:AdjacentTo:",
