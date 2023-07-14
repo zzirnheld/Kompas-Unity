@@ -64,9 +64,16 @@
 						]
 					},
 					"listRestriction": {
-						"listRestrictions": [
-							"Min Can Choose: X",
-							"Max Can Choose: X"
+						"$type": "Core.ListRestriction:AllOf:",
+						"elements": [
+							{
+								"$type": "Core.ListRestriction:Minimum:",
+								"bound": { "$type": "Numbers:EffectX:" }
+							},
+							{
+								"$type": "Core.ListRestriction:Maximum:",
+								"bound": { "$type": "Numbers:EffectX:" }
+							}
 						]
 					}
 				},

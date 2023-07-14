@@ -1,5 +1,6 @@
 ﻿using KompasClient.GameCore;
 using KompasCore.Effects;
+using KompasCore.Effects.Restrictions;
 using KompasCore.GameCore;
 using KompasCore.Networking;
 using Newtonsoft.Json;
@@ -31,12 +32,12 @@ namespace KompasClient.Networking
 		public void Execute(ClientGame clientGame)
 		{
 			clientGame.clientUIController.TargetMode = TargetMode.HandSize;
-			ListRestriction listRestriction = null;
+			IListRestriction listRestriction = null;
 
 			try
 			{
 				if (listRestrictionJson != null)
-					listRestriction = JsonConvert.DeserializeObject<ListRestriction>(listRestrictionJson);
+					listRestriction = JsonConvert.DeserializeObject<IListRestriction>(listRestrictionJson);
 			}
 			catch (System.ArgumentException)
 			{

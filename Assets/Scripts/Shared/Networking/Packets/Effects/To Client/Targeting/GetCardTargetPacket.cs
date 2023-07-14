@@ -4,6 +4,7 @@ using KompasCore.Effects;
 using KompasCore.GameCore;
 using UnityEngine;
 using Newtonsoft.Json;
+using KompasCore.Effects.Restrictions;
 
 namespace KompasCore.Networking
 {
@@ -37,12 +38,12 @@ namespace KompasClient.Networking
 		public void Execute(ClientGame clientGame)
 		{
 			clientGame.clientUIController.TargetMode = list ? TargetMode.CardTargetList : TargetMode.CardTarget;
-			ListRestriction listRestriction = null;
+			IListRestriction listRestriction = null;
 
 			try
 			{
-				if (string.IsNullOrEmpty(listRestrictionJson)) listRestriction = ListRestriction.Default;
-				else listRestriction = JsonConvert.DeserializeObject<ListRestriction>(listRestrictionJson);
+				if (string.IsNullOrEmpty(listRestrictionJson)) listRestriction = IListRestriction.SingleElement;
+				else listRestriction = JsonConvert.DeserializeObject<IListRestriction>(listRestrictionJson);
 
 				listRestriction.Initialize(new EffectInitializationContext(game: clientGame, source: default));
 			}

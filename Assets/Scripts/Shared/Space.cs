@@ -7,6 +7,7 @@ public class Space
 {
 	public const int BoardLen = 7;
 	public const int MaxIndex = BoardLen - 1;
+	public static readonly Space Invalid = (-1, -1);
 
 	public int x;
 	public int y;

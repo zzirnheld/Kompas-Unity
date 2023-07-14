@@ -13,28 +13,26 @@ namespace KompasCore.Effects.Restrictions
 	/// </summary>
 	public interface IGamestateRestriction : IContextInitializeable,
 		IRestriction<TriggeringEventContext>, IRestriction<Player>, IRestriction<GameCardBase>, IRestriction<Space>,
-		IRestriction<(Space s, Player p)>, IRestriction<int>
+		IRestriction<(Space s, Player p)>, IRestriction<int>, IListRestriction
 	{
 		bool IsValid(IResolutionContext context);
 	}
 
 	public abstract class GamestateRestrictionBase : ContextInitializeableBase, IGamestateRestriction
 	{
-		public bool IsValid(TriggeringEventContext item, IResolutionContext context) => IsValid(context);
+		public bool IsValid(int item, IResolutionContext context) => IsValid(context);
+		public bool IsValid(Space item, IResolutionContext context) => IsValid(context);
 		public bool IsValid(Player item, IResolutionContext context) => IsValid(context);
 		public bool IsValid(GameCardBase item, IResolutionContext context) => IsValid(context);
-		public bool IsValid(Space item, IResolutionContext context) => IsValid(context);
 		public bool IsValid((Space s, Player p) item, IResolutionContext context) => IsValid(context);
-		public bool IsValid(int item, IResolutionContext context) => IsValid(context);
+		public bool IsValid(TriggeringEventContext item, IResolutionContext context) => IsValid(context);
+		public bool IsValid(IEnumerable<GameCardBase> item, IResolutionContext context) => IsValid(context);
 
 		public bool IsValid(IResolutionContext context)
 		{
 			ComplainIfNotInitialized();
 
-			try
-			{
-				return IsValidLogic(context);
-			}
+			try { return IsValidLogic(context); }
 			catch (SystemException exception)
 				when (exception is NullReferenceException || exception is ArgumentException)
 			{
@@ -44,6 +42,14 @@ namespace KompasCore.Effects.Restrictions
 		}
 
 		protected abstract bool IsValidLogic(IResolutionContext context);
+
+		//Fulfill list restriction contract
+		public bool AllowsValidChoice(IEnumerable<GameCardBase> options, IResolutionContext context) => true;
+		public IEnumerable<GameCardBase> Deduplicate(IEnumerable<GameCardBase> options) => options;
+		public int GetMinimum(IResolutionContext context) => 0;
+		public int GetMaximum(IResolutionContext context) => int.MaxValue;
+		public bool IsValidClientSide(IEnumerable<GameCardBase> options, IResolutionContext context) => IsValid(options, context);
+		public void PrepareForSending(IResolutionContext context) { }
 	}
 
 	namespace GamestateRestrictionElements

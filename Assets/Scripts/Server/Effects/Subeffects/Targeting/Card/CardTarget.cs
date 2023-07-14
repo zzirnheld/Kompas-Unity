@@ -5,6 +5,7 @@ using KompasCore.Cards;
 using KompasCore.Effects;
 using KompasCore.Effects.Identities;
 using KompasCore.Effects.Identities.ManyCards;
+using KompasCore.Effects.Restrictions;
 using KompasCore.Effects.Restrictions.GamestateRestrictionElements;
 using KompasCore.GameCore;
 using Newtonsoft.Json;
@@ -27,7 +28,7 @@ namespace KompasServer.Effects.Subeffects
 		/// <summary>
 		/// Restriction that the list collectively must fulfill
 		/// </summary>
-		public ListRestriction listRestriction = ListRestriction.Default;
+		public IListRestriction listRestriction = IListRestriction.SingleElement;
 
 		/// <summary>
 		/// Identifies a card that this target should be linked with.
@@ -78,14 +79,13 @@ namespace KompasServer.Effects.Subeffects
 		protected virtual Task<ResolutionInfo> NoPossibleTargets()
 			=> Task.FromResult(ResolutionInfo.Impossible(NoValidCardTarget));
 
-		public override bool IsImpossible() => !listRestriction.ExistsValidChoice(DeterminePossibleTargets());
+		public override bool IsImpossible() => !listRestriction.AllowsValidChoice(DeterminePossibleTargets(), ResolutionContext);
 
 		public override async Task<ResolutionInfo> Resolve()
 		{
 			stashedPotentialTargets = DeterminePossibleTargets();
-			listRestriction.PrepareForSending(Effect.X);
 			//if there's no possible valid combo, throw effect impossible
-			if (!listRestriction.ExistsValidChoice(stashedPotentialTargets))
+			if (!listRestriction.AllowsValidChoice(stashedPotentialTargets, ResolutionContext))
 			{
 				Debug.Log($"List restriction {listRestriction} finds no possible list of targets among potential targets" +
 					$"{string.Join(",", stashedPotentialTargets.Select(c => c.CardName))}");
@@ -98,15 +98,14 @@ namespace KompasServer.Effects.Subeffects
 				Debug.Log("An empty list of targets was a valid choice, but there's no targets that can be chosen. Skipping to next effect...");
 				return ResolutionInfo.Next;
 			}
-			else if (listRestriction.HasMax && listRestriction.maxCanChoose == 0)
+			else if (listRestriction.GetMaximum(ResolutionContext) == 0)
 			{
 				Debug.Log("An empty list of targets was a valid choice, and the max to be chosen was 0. Skipping to next effect...");
 				return ResolutionInfo.Next;
 			}
 
 			IEnumerable<GameCard> targets = null;
-			do
-			{
+			do {
 				targets = await RequestTargets();
 				if (targets == null && ServerEffect.CanDeclineTarget) return ResolutionInfo.Impossible(DeclinedFurtherTargets);
 			} while (!AddListIfLegal(targets));
@@ -119,14 +118,15 @@ namespace KompasServer.Effects.Subeffects
 			string name = Source.CardName;
 			int[] targetIds = stashedPotentialTargets.Select(c => c.ID).ToArray();
 			Debug.Log($"Potential targets {string.Join(", ", targetIds)}");
-			return await ServerPlayer.awaiter.GetCardListTargets(name, blurb, targetIds, JsonConvert.SerializeObject(listRestriction));
+			return await ServerPlayer.awaiter.GetCardListTargets(name, blurb, targetIds, listRestriction.SerializeToJSON(ResolutionContext));
 		}
 
 		public bool AddListIfLegal(IEnumerable<GameCard> choices)
 		{
 			Debug.Log($"Potentially adding list {string.Join(",", choices ?? new List<GameCard>())}");
 
-			if (!listRestriction.IsValidList(choices, stashedPotentialTargets)) return false;
+			if (choices.Except(stashedPotentialTargets).Any()) return false; //Tried to choose cards that weren't allowed
+			if (!listRestriction.IsValid(choices, ResolutionContext)) return false;
 			ShuffleIfAppropriate(stashedPotentialTargets);
 
 			//add all cards in the chosen list to targets

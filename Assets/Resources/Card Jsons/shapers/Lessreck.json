@@ -42,12 +42,17 @@
 					"blurb": "Grudges",
 					"toSearch": { "$type": "ManyCards:Hand:" },
 					"listRestriction": {
-						"listRestrictions": [
-							"Min Can Choose",
-							"Max Can Choose"
-						],
-						"minCanChoose": 2,
-						"maxCanChoose": 2
+						"$type": "Core.ListRestriction:AllOf:",
+						"elements": [
+							{
+								"$type": "Core.ListRestriction:Minimum:",
+								"bound": { "$type": "Numbers:Constant:", "constant": 2 }
+							},
+							{
+								"$type": "Core.ListRestriction:Maximum:",
+								"bound": { "$type": "Numbers:Constant:", "constant": 2 }
+							}
+						]
 					}
 				},
 				{

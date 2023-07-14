@@ -37,22 +37,26 @@ namespace KompasCore.Effects
 
 	public interface IAllOf<RestrictedType> : IRestriction<RestrictedType>
 	{
-		public bool IsValidIgnoring(RestrictedType item, IResolutionContext context, AllOfBase<RestrictedType>.ShouldIgnore ignorePredicate);
+		public delegate bool ShouldIgnore(IRestriction<RestrictedType> restriction);
+		public bool IsValidIgnoring(RestrictedType item, IResolutionContext context, ShouldIgnore ignorePredicate);
 	}
 
-	public abstract class AllOfBase<RestrictedType> : RestrictionBase<RestrictedType>, IAllOf<RestrictedType>
+	public abstract class AllOfBase<RestrictedType> : AllOfBase<RestrictedType, IRestriction<RestrictedType>> { }
+
+	public abstract class AllOfBase<RestrictedType, ElementRestrictionType>
+		: RestrictionBase<RestrictedType>, IAllOf<RestrictedType>
+		where ElementRestrictionType : IRestriction<RestrictedType>	
 	{
-		public IList<IRestriction<RestrictedType>> elements = new IRestriction<RestrictedType>[] { };
+		public IList<ElementRestrictionType> elements = new ElementRestrictionType[] { };
 
 		protected virtual bool LogSoloElements => true;
-		protected virtual IEnumerable<IRestriction<RestrictedType>> DefaultElements => Enumerable.Empty<IRestriction<RestrictedType>>();
+		protected virtual IEnumerable<ElementRestrictionType> DefaultElements => Enumerable.Empty<ElementRestrictionType>();
 
-		public delegate bool ShouldIgnore(IRestriction<RestrictedType> restriction);
-		private ShouldIgnore ignorePredicate = elem => false;
+		private IAllOf<RestrictedType>.ShouldIgnore ignorePredicate = elem => false;
 
-		public bool IsValidIgnoring(RestrictedType item, IResolutionContext context, ShouldIgnore ignorePredicate)
+		public bool IsValidIgnoring(RestrictedType item, IResolutionContext context, IAllOf<RestrictedType>.ShouldIgnore ignorePredicate)
 		{
-			ShouldIgnore oldVal = this.ignorePredicate;
+			var oldVal = this.ignorePredicate;
 			this.ignorePredicate = ignorePredicate;
 			bool ret = IsValid(item, context);
 			this.ignorePredicate = oldVal;
@@ -65,13 +69,23 @@ namespace KompasCore.Effects
 				.Concat(DefaultElements)
 				.ToList();
 			base.Initialize(initializationContext);
-			foreach (var element in elements) element.Initialize(initializationContext);
+			var childInitializationContext = initializationContext.Child(this);
+			foreach (var element in elements) element.Initialize(childInitializationContext);
+
+			//Debug log for eliminiating trivial AllOfs
 			if (LogSoloElements && elements.Count == 1) Debug.LogWarning($"only one element on {GetType()} on eff of {initializationContext.source}");
 		}
 
 		protected override bool IsValidLogic(RestrictedType item, IResolutionContext context) => elements
 			.Where(r => !ignorePredicate(r))
-			.All(r => r.IsValid(item, context));
+			.All(r => Validate(r, item, context));
+
+		/// <summary>
+        /// Override if you want to change the validation function called on each child,
+        /// like have a client-side variant
+        /// </summary>
+		protected virtual bool Validate(ElementRestrictionType element, RestrictedType item, IResolutionContext context)
+			=> element.IsValid(item, context);
 	}
 
 	public abstract class AnyOfBase<RestrictedType> : RestrictionBase<RestrictedType>
@@ -153,7 +167,7 @@ namespace KompasCore.Effects
 		protected override bool IsValidLogic(RestrictedType item, IResolutionContext context)
 			=> IsValidIgnoring(item, context, r => false);
 
-		protected bool IsValidIgnoring(RestrictedType item, IResolutionContext context, AllOfBase<RestrictedType>.ShouldIgnore ignorePredicate)
+		protected bool IsValidIgnoring(RestrictedType item, IResolutionContext context, IAllOf<RestrictedType>.ShouldIgnore ignorePredicate)
 			=> context.TriggerContext.stackableCause == null
 				? NormalRestriction.IsValidIgnoring(item, context, ignorePredicate)
 				: EffectRestriction.IsValidIgnoring(item, context, ignorePredicate);

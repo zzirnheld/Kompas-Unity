@@ -5,6 +5,7 @@ using KompasClient.UI;
 using KompasCore.Cards;
 using KompasCore.Cards.Movement;
 using KompasCore.Effects;
+using KompasCore.Effects.Restrictions;
 using KompasCore.GameCore;
 using KompasCore.UI;
 using System.Collections.Generic;
@@ -212,7 +213,7 @@ namespace KompasClient.GameCore
 		/// <summary>
 		/// Sets up the client for the player to select targets
 		/// </summary>
-		public void SetPotentialTargets(int[] ids, ListRestriction listRestriction)
+		public void SetPotentialTargets(int[] ids, IListRestriction listRestriction)
 		{
 			CurrentPotentialTargets = ids?.Select(i => GetCardWithID(i)).Where(c => c != null).ToArray();
 			searchCtrl.StartSearch(CurrentPotentialTargets, listRestriction);

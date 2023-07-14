@@ -14,6 +14,9 @@ namespace KompasCore.Helpers
 
 			foreach (var item in source) yield return item;
 		}
+
+		public static IEnumerable<T> Append<T>(this IEnumerable<T> source, T elem)
+			=> source.Concat(new[] { elem });
 	}
 
 	public static class ListHelper

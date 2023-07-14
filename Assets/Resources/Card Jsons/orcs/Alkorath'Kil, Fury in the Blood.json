@@ -18,12 +18,7 @@
 					"$type": "Subeffect:CardTarget:",
 					"blurb": "Return Orcs to the Fray",
 					"toSearch": { "$type": "ManyCards:Discard:" },
-					"listRestriction": {
-						"listRestrictions": [
-							"Min Can Choose"
-						],
-						"minCanChoose": 0
-					},
+					"listRestriction": { "$type": "Core.GamestateRestriction:AlwaysValid:" },
 					"cardRestriction": {
 						"$type": "Core.CardRestriction:Subtypes:",
 						"subtypes": [ "Orc" ]

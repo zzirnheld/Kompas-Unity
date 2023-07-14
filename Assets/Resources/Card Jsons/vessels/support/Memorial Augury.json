@@ -54,9 +54,13 @@
 						"subtypes": [ "Memory" ]
 					},
 					"listRestriction": {
-						"listRestrictions": [
-							"Max Can Choose: X",
-							"Distinct"
+						"$type": "Core.ListRestriction:AllOf:",
+						"elements": [
+							{ "$type": "Core.ListRestriction:DistinctNames:" },
+							{
+								"$type": "Core.ListRestriction:Maximum:",
+								"bound": { "$type": "Numbers:EffectX:" }
+							}
 						]
 					}
 				},

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using UnityEngine;
 
 namespace KompasCore.Effects
@@ -10,6 +11,7 @@ namespace KompasCore.Effects
 		public void Initialize(EffectInitializationContext initializationContext);
 	}
 
+	[DataContract]
 	public abstract class ContextInitializeableBase : IContextInitializeable
 	{
 		protected bool Initialized { get; private set; }

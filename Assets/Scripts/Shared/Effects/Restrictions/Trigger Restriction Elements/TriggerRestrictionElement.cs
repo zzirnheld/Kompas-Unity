@@ -21,11 +21,21 @@ namespace KompasCore.Effects.Restrictions
 	public abstract class TriggerGamestateRestrictionBase : TriggerRestrictionBase, IGamestateRestriction
 	{
 		public bool IsValid(IResolutionContext context) => IsValid(context.TriggerContext, context);
+
+		public bool IsValid(int item, IResolutionContext context) => IsValid(context.TriggerContext, context);
+		public bool IsValid(Space item, IResolutionContext context) => IsValid(context.TriggerContext, context);
 		public bool IsValid(Player item, IResolutionContext context) => IsValid(context.TriggerContext, context);
 		public bool IsValid(GameCardBase item, IResolutionContext context) => IsValid(context.TriggerContext, context);
-		public bool IsValid(Space item, IResolutionContext context) => IsValid(context.TriggerContext, context);
 		public bool IsValid((Space s, Player p) item, IResolutionContext context) => IsValid(context.TriggerContext, context);
-		public bool IsValid(int item, IResolutionContext context) => IsValid(context.TriggerContext, context);
+		public bool IsValid(IEnumerable<GameCardBase> item, IResolutionContext context) => IsValid(context.TriggerContext, context);
+
+		//Fulfill IListRestriction contract
+		public bool AllowsValidChoice(IEnumerable<GameCardBase> options, IResolutionContext context) => true;
+		public IEnumerable<GameCardBase> Deduplicate(IEnumerable<GameCardBase> options) => options;
+		public int GetMinimum(IResolutionContext context) => 0;
+		public int GetMaximum(IResolutionContext context) => int.MaxValue;
+		public bool IsValidClientSide(IEnumerable<GameCardBase> options, IResolutionContext context) => IsValid(options, context);
+		public void PrepareForSending(IResolutionContext context) { }
 	}
 
 	namespace TriggerRestrictionElements

@@ -67,12 +67,8 @@
 					"toSearch": { "$type": "ManyCards:Hand:" },
 					"cardRestriction": { "$type": "Core.GamestateRestriction:AlwaysValid:" },
 					"listRestriction": {
-						"listRestrictions": [
-							"Min Can Choose",
-							"Max Can Choose"
-						],
-						"minCanChoose": 0,
-						"maxCanChoose": 3
+						"$type": "Core.ListRestriction:Maximum:",
+						"bound": { "$type": "Numbers:Constant:", "constant": 3 }
 					}
 				},
 				{

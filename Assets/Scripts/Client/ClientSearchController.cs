@@ -1,7 +1,7 @@
 ﻿using KompasClient.UI;
 using KompasClient.UI.Search;
 using KompasCore.Cards;
-using KompasCore.Effects;
+using KompasCore.Effects.Restrictions;
 using KompasCore.GameCore;
 using System;
 using System.Collections.Generic;
@@ -12,14 +12,14 @@ namespace KompasClient.GameCore
 {
 	public class ClientSearchController : MonoBehaviour
 	{
-		public struct SearchData
+		public class SearchData
 		{
 			public readonly GameCard[] toSearch;
-			public readonly ListRestriction listRestriction;
+			public readonly IListRestriction listRestriction;
 			public readonly bool targetingSearch;
 			public readonly List<GameCard> searched;
 
-			public SearchData(GameCard[] toSearch, ListRestriction listRestriction, bool targetingSearch, List<GameCard> searched)
+			public SearchData(GameCard[] toSearch, IListRestriction listRestriction, bool targetingSearch, List<GameCard> searched)
 			{
 				this.toSearch = toSearch;
 				Array.Sort(this.toSearch);
@@ -38,18 +38,21 @@ namespace KompasClient.GameCore
 			/// Whether any cards currently able to be searched can't currently be seen and clicked on.
 			/// </summary>
 			private bool AnyToSearchNotVisible => toSearch.Any(c => !c.Controller.gameObject.activeSelf);
-			public bool ShouldShowSearchUI => AnyToSearchNotVisible || HaveEnough || !listRestriction.HasMax;
+			public bool ShouldShowSearchUI => AnyToSearchNotVisible || HaveEnough || listRestriction.GetStashedMaximum() == int.MaxValue;
 
 			public string SearchProgress
 			{
 				get
 				{
 					int numSearched = searched.Count;
+					int min = listRestriction?.GetStashedMinimum() ?? 0;
+					int max = listRestriction?.GetStashedMaximum() ?? 0;
+
 					if (listRestriction == null) return null;
-					else if (listRestriction.HasMin && listRestriction.HasMax)
-						return $"{numSearched} / {listRestriction.minCanChoose} - {listRestriction.maxCanChoose}";
-					else if (listRestriction.HasMax) return $"{numSearched} / up to {listRestriction.maxCanChoose}";
-					else if (listRestriction.HasMin) return $"{numSearched} / at least {listRestriction.minCanChoose}";
+					else if (min > 0 && max < int.MaxValue)
+						return $"{numSearched} / {min} - {max}";
+					else if (max < int.MaxValue) return $"{numSearched} / up to {max}";
+					else if (min > 0) return $"{numSearched} / at least {min}";
 					else return null;
 				}
 			}
@@ -60,7 +63,7 @@ namespace KompasClient.GameCore
 		public SearchUIController clientSearchUICtrl;
 		public ConfirmTargetsUIController confirmTargetsCtrl;
 
-		public SearchData? CurrSearchData { get; private set; } = null;
+		public SearchData CurrSearchData { get; private set; } = null;
 		private readonly Stack<SearchData> searchStack = new Stack<SearchData>();
 
 		/// <summary>
@@ -68,7 +71,7 @@ namespace KompasClient.GameCore
 		/// </summary>
 		public bool ShouldShowSearchUI => CurrSearchData?.ShouldShowSearchUI ?? false;
 
-		public void StartSearch(GameCard[] list, ListRestriction listRestriction, bool targetingSearch = true)
+		public void StartSearch(GameCard[] list, IListRestriction listRestriction, bool targetingSearch = true)
 			=> StartSearch(new SearchData(list, listRestriction, targetingSearch, new List<GameCard>()));
 
 		public void StartSearch(SearchData data)
@@ -81,7 +84,7 @@ namespace KompasClient.GameCore
 			}
 
 			//if should search and already searching, remember current search
-			if (CurrSearchData.HasValue) searchStack.Push(CurrSearchData.Value);
+			if (CurrSearchData != null) searchStack.Push(CurrSearchData);
 
 			CurrSearchData = data;
 			Debug.Log($"Searching a list of {data.toSearch.Length} cards: {string.Join(",", data.toSearch.Select(c => c.CardName))}");
@@ -112,7 +115,7 @@ namespace KompasClient.GameCore
 		public void ToggleTarget(GameCard nextTarget)
 		{
 			//if it's already selected, deselect it
-			if (CurrSearchData.Value.searched.Contains(nextTarget)) RemoveTarget(nextTarget);
+			if (CurrSearchData.searched.Contains(nextTarget)) RemoveTarget(nextTarget);
 			//otherwise, deselect
 			else AddTarget(nextTarget);
 		}
@@ -131,30 +134,27 @@ namespace KompasClient.GameCore
 			}
 
 			//check if the target is a valid potential target
-			if (!CurrSearchData.Value.toSearch.Contains(nextTarget))
+			if (!CurrSearchData.toSearch.Contains(nextTarget))
 			{
 				Debug.LogError($"Tried to target card {nextTarget.CardName} that isn't a valid target");
 				return;
 			}
 
-			if (CurrSearchData.Value.listRestriction.listRestrictions.Contains(ListRestriction.Distinct)
-				&& CurrSearchData.Value.searched.Select(c => c.CardName).Contains(nextTarget.CardName))
+			var listRestriction = CurrSearchData.listRestriction;
+			if (listRestriction.Deduplicate(CurrSearchData.searched).Count()
+				== listRestriction.Deduplicate(CurrSearchData.searched.Append(nextTarget)).Count())
 			{
-				Debug.LogError($"Allowed user to target non-distinct card {nextTarget} when they had already seen {string.Join(",", CurrSearchData.Value.searched.Select(c => c.CardName))}");
+				Debug.LogError($"Allowed user to target non-distinct card {nextTarget} when they had already seen {string.Join(",", CurrSearchData.searched.Select(c => c.CardName))}");
 				return;
 			}
 
-			CurrSearchData.Value.searched.Add(nextTarget);
+			CurrSearchData.searched.Add(nextTarget);
 			//TODO make be handled by card view controller
 			// Debug.Log($"Added {nextTarget.CardName}, targets are now {string.Join(",", CurrSearchData.Value.searched.Select(c => c.CardName))}");
 
-			var listRestriction = CurrSearchData.Value.listRestriction;
-
 			if (listRestriction == null) SendTargets();
-			//only do the rest of the operations if adding it doesn't violate the list restriction
 			//if we were given a maximum number to be searched, and hit that number, no reason to keep asking
-			else if (listRestriction.HasMax && CurrSearchData.Value.searched.Count >= listRestriction.maxCanChoose)
-				SendTargets();
+			else if (CurrSearchData.searched.Count == listRestriction.GetStashedMaximum()) SendTargets();
 
 			clientGame.clientUIController.cardInfoViewUIController.Refresh();
 		}
@@ -162,13 +162,13 @@ namespace KompasClient.GameCore
 		public void RemoveTarget(GameCard target)
 		{
 			Debug.Log($"Tried to remove {target} as next target");
-			CurrSearchData.Value.searched.Remove(target);
+			CurrSearchData.searched.Remove(target);
 			clientGame.clientUIController.cardInfoViewUIController.Refresh();
 		}
 
 		public void ResetCurrentTargets()
 		{
-			var currTargets = CurrSearchData.Value.searched.ToArray();
+			var currTargets = CurrSearchData.searched.ToArray();
 			foreach (var c in currTargets) RemoveTarget(c);
 		}
 
@@ -176,23 +176,23 @@ namespace KompasClient.GameCore
 		{
 			if (clientGame.clientUIController.clientUISettingsController.ClientSettings.confirmTargets == ConfirmTargets.Prompt && !confirmed)
 			{
-				confirmTargetsCtrl.Show(CurrSearchData.Value.searched);
+				confirmTargetsCtrl.Show(CurrSearchData.searched);
 				return;
 			}
 
 			var targetMode = clientGame.clientUIController.TargetMode;
-			Debug.Log($"Sending targets {string.Join(",", CurrSearchData.Value.searched.Select(c => c.CardName))} " +
-				$"while in target mode {targetMode}, with a list restriction {CurrSearchData.Value.listRestriction}");
+			Debug.Log($"Sending targets {string.Join(",", CurrSearchData.searched.Select(c => c.CardName))} " +
+				$"while in target mode {targetMode}, with a list restriction {CurrSearchData.listRestriction}");
 			if (targetMode == TargetMode.HandSize)
-				clientGame.clientNotifier.RequestHandSizeChoices(CurrSearchData.Value.searched.Select(c => c.ID).ToArray());
+				clientGame.clientNotifier.RequestHandSizeChoices(CurrSearchData.searched.Select(c => c.ID).ToArray());
 			else if (targetMode == TargetMode.CardTarget)
-				clientGame.clientNotifier.RequestTarget(CurrSearchData.Value.searched.FirstOrDefault());
+				clientGame.clientNotifier.RequestTarget(CurrSearchData.searched.FirstOrDefault());
 			else if (targetMode == TargetMode.CardTargetList)
-				clientGame.clientNotifier.RequestListChoices(CurrSearchData.Value.searched);
+				clientGame.clientNotifier.RequestListChoices(CurrSearchData.searched);
 			else throw new System.ArgumentException($"Unknown target mode {targetMode} in search ctrl");
 
 			//put the relevant card back
-			foreach (var card in CurrSearchData.Value.searched) card.CardController.PutBack();
+			foreach (var card in CurrSearchData.searched) card.CardController.PutBack();
 
 			ResetSearch();
 

@@ -1,4 +1,5 @@
 ﻿using KompasCore.Cards;
+using KompasCore.Effects.Restrictions;
 using KompasCore.Effects.Restrictions.CardRestrictionElements;
 
 namespace KompasCore.Effects
@@ -8,25 +9,6 @@ namespace KompasCore.Effects
 		public abstract Player Controller { get; }
 
 		public GameCard Source => Controller.Avatar;
-
-		private ListRestriction handSizeListRestriction;
-		public ListRestriction HandSizeListRestriction
-		{
-			get
-			{
-				if (handSizeListRestriction == null)
-				{
-					handSizeListRestriction = new ListRestriction()
-					{
-						listRestrictions = new string[]
-						{
-							ListRestriction.MaxCanChoose, ListRestriction.MinCanChoose
-						}
-					};
-				}
-				return handSizeListRestriction;
-			}
-		}
 
 		private IRestriction<GameCardBase> handSizeCardRestriction;
 		public IRestriction<GameCardBase> HandSizeCardRestriction

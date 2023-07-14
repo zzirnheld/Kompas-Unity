@@ -149,40 +149,6 @@ namespace KompasServer.Networking
 
 		#region targeting
 		/// <summary>
-		/// Gets a card target, waiting until the client sends one or sends that they don't want to choose a target
-		/// </summary>
-		/// <param name="sourceCardName">The card whose effect is asking for a target</param>
-		/// <param name="blurb">The description of the target to get</param>
-		/// <param name="ids">The list of card ids of valid targets</param>
-		/// <param name="listRestrictionJson">The list resriction, if any</param>
-		/// <returns>The card the person chose and false if they chose a target;<br></br>
-		/// null and true if they declined to choose a target</returns>
-		public async Task<GameCard> GetCardTarget
-			(string sourceCardName, string blurb, int[] ids, string listRestrictionJson)
-		{
-			serverNotifier.GetCardTarget(sourceCardName, blurb, ids, listRestrictionJson, list: false);
-			while (true)
-			{
-				lock (CardTargetLock)
-				{
-					if (CardTarget != null)
-					{
-						var target = CardTarget;
-						CardTarget = null;
-						return target;
-					}
-					else if (DeclineTarget)
-					{
-						DeclineTarget = false;
-						return null;
-					}
-				}
-
-				await Task.Delay(TargetCheckDelay);
-			}
-		}
-
-		/// <summary>
 		/// Gets a list of card targets, waiting until the client sends one or sends that they don't want to choose targets
 		/// </summary>
 		/// <param name="sourceCardName">The card whose effect is asking for targets</param>
@@ -243,7 +209,7 @@ namespace KompasServer.Networking
 					else if (DeclineTarget)
 					{
 						DeclineTarget = false;
-						return (-1, -1); //TODO define somewhere as const
+						return Space.Invalid;
 					}
 				}
 

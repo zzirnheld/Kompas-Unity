@@ -30,12 +30,12 @@ namespace KompasClient.UI.Search
 		public ClientDeckUIController deckUIController;
 
 		private readonly List<GameObject> searchGameObjects = new List<GameObject>();
-		private bool Searching => searchController.CurrSearchData.HasValue;
-		private ClientSearchController.SearchData CurrSearchData => searchController.CurrSearchData.GetValueOrDefault();
+		private bool Searching => searchController.CurrSearchData != null;
+		private ClientSearchController.SearchData CurrSearchData => searchController.CurrSearchData;
 
 		private SearchCardViewController lastClicked;
 
-		public bool CardCurrentlyTargeted(GameCard card) => searchController.CurrSearchData.HasValue && searchController.CurrSearchData.Value.searched.Contains(card);
+		public bool CardCurrentlyTargeted(GameCard card) => searchController.CurrSearchData?.searched.Contains(card) ?? false;
 
 		public void HideSearch()
 		{
