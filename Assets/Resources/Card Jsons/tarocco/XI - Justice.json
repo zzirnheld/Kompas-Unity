@@ -10,26 +10,25 @@
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:TargetEnemy:"
-				},
-				{
-					"$type": "Subeffect:SetXByGamestate:",
-					"whatToCount": "Hand Size"
-				},
-				{
-					"$type": "Subeffect:SetXByGamestate:",
-					"whatToCount": "Hand Size",
-					"playerIndex": -2,
-					"change": true,
-					"xMultiplier": -1
-				},
-				{
 					"$type": "Subeffect:ConditionalEnd:",
-					"condition": "X<=0"
+					"endIfTrue": {
+						"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
+						"number": {
+							"$type": "Numbers:HandSize:",
+							"player": { "$type": "Players:EnemyPlayer:" }
+						},
+						"restriction": {
+							"$type": "Core.NumberRestriction:Compare:",
+							"comparison": { "$type": "Relationships.Number:LessThanEqual:" },
+							"other": {
+								"$type": "Numbers:HandSize:",
+								"player": { "$type": "Players:FriendlyPlayer:" }
+							}
+						}
+					}
 				},
 				{
-					"$type": "Subeffect:Draw:",
-					"playerIndex": -2
+					"$type": "Subeffect:Draw:"
 				},
 				{
 					"$type": "Subeffect:Loop:",

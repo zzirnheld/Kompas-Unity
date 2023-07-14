@@ -9,10 +9,6 @@ namespace KompasServer.Effects.Subeffects
 {
 	public class ConditionalEnd : ServerSubeffect
 	{
-		public const string XLessThanEqual0 = "X<=0";
-		public const string XGreaterThanConst = "X>C";
-		public const string XLessThanConst = "X<C";
-
 		public const string NoneFitRestriction = "None Fit Restriction";
 		public const string AnyFitRestriction = "Any Fit Restriction";
 		public const string NumberOfCardsFittingRestrictionFitsNumberRestriction =
@@ -71,11 +67,6 @@ namespace KompasServer.Effects.Subeffects
 				if (condition == null) throw new ArgumentNullException(nameof(condition));
 				return condition switch
 				{
-					XLessThan0 => ServerEffect.X < 0,
-					XLessThanEqual0 => ServerEffect.X <= 0,
-					XGreaterThanConst => ServerEffect.X > constant,
-					XLessThanConst => ServerEffect.X < constant,
-
 					NoneFitRestriction => !ServerGame.Cards.Any(c => cardRestriction.IsValid(c, ResolutionContext)),
 					AnyFitRestriction => ServerGame.Cards.Any(c => cardRestriction.IsValid(c, ResolutionContext)),
 					NumberOfCardsFittingRestrictionFitsNumberRestriction => doesNumberOfCardsFittingRestrictionFitNumberRestriction(),
