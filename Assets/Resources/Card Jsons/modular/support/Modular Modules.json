@@ -86,12 +86,17 @@
 					"blurb": "cards to reshuffle",
 					"toSearch": { "$type": "ManyCards:Discard:" },
 					"listRestriction": {
-						"listRestrictions": [
-							"Min Can Choose",
-							"Max Can Choose"
-						],
-						"minCanChoose": 5,
-						"maxCanChoose": 5
+						"$type": "Core.ListRestriction:AllOf:",
+						"elements": [
+							{
+								"$type": "Core.ListRestriction:Minimum:",
+								"bound": { "$type": "Numbers:Constant:", "constant": 5 }
+							},
+							{
+								"$type": "Core.ListRestriction:Maximum:",
+								"bound": { "$type": "Numbers:Constant:", "constant": 5 }
+							}
+						]
 					}
 				},
 				{

@@ -10,6 +10,14 @@ namespace KompasCore.Effects
 	{
 		public interface IListRestriction : IRestriction<IEnumerable<GameCardBase>>
 		{
+			public static IListRestriction GetDefault() => new ListRestrictionElements.AllOf()
+			{
+				elements = {
+					new ListRestrictionElements.Minimum() { bound = Identities.Numbers.Constant.One },
+					new ListRestrictionElements.Maximum() { bound = Identities.Numbers.Constant.One }
+				}
+			};
+
 			public bool AllowsValidChoice(IEnumerable<GameCardBase> options, IResolutionContext context);
 
 			public bool IsValidClientSide(IEnumerable<GameCardBase> options, IResolutionContext context);
@@ -86,7 +94,6 @@ namespace KompasCore.Effects
 		//they will probably be tiny little classes at the bottom of this.
 		//dang. that actually makes it sound mostly trivial.
 		#region restrictions
-		public const string MinCanChoose = "Min Can Choose";
 		public const string MaxCanChoose = "Max Can Choose";
 
 		public const string ControllerCanPayCost = "Can Pay Cost"; //effect's controller is able to pay the cost of all of them together

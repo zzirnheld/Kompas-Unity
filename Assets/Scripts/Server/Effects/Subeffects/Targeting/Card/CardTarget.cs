@@ -5,6 +5,7 @@ using KompasCore.Cards;
 using KompasCore.Effects;
 using KompasCore.Effects.Identities;
 using KompasCore.Effects.Identities.ManyCards;
+using KompasCore.Effects.Restrictions;
 using KompasCore.Effects.Restrictions.GamestateRestrictionElements;
 using KompasCore.GameCore;
 using Newtonsoft.Json;
@@ -27,7 +28,7 @@ namespace KompasServer.Effects.Subeffects
 		/// <summary>
 		/// Restriction that the list collectively must fulfill
 		/// </summary>
-		public IListRestriction listRestriction = IListRestriction.Default;
+		public IListRestriction listRestriction = IListRestriction.GetDefault();
 
 		/// <summary>
 		/// Identifies a card that this target should be linked with.

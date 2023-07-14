@@ -13,7 +13,7 @@ namespace KompasCore.Effects.Restrictions
 	/// </summary>
 	public interface IGamestateRestriction : IContextInitializeable,
 		IRestriction<TriggeringEventContext>, IRestriction<Player>, IRestriction<GameCardBase>, IRestriction<Space>,
-		IRestriction<(Space s, Player p)>, IRestriction<int>
+		IRestriction<(Space s, Player p)>, IRestriction<int>, IListRestriction
 	{
 		bool IsValid(IResolutionContext context);
 	}
@@ -26,6 +26,7 @@ namespace KompasCore.Effects.Restrictions
 		public bool IsValid(Space item, IResolutionContext context) => IsValid(context);
 		public bool IsValid((Space s, Player p) item, IResolutionContext context) => IsValid(context);
 		public bool IsValid(int item, IResolutionContext context) => IsValid(context);
+		public bool IsValid(IEnumerable<GameCardBase> item, IResolutionContext context) => IsValid(context);
 
 		public bool IsValid(IResolutionContext context)
 		{
@@ -44,6 +45,12 @@ namespace KompasCore.Effects.Restrictions
 		}
 
 		protected abstract bool IsValidLogic(IResolutionContext context);
+
+		//Fulfill list restriction contract
+		public bool AllowsValidChoice(IEnumerable<GameCardBase> options, IResolutionContext context) => true;
+		public IEnumerable<GameCardBase> Deduplicate(IEnumerable<GameCardBase> options) => options;
+		public int GetMinimum(IResolutionContext context) => 0;
+		public bool IsValidClientSide(IEnumerable<GameCardBase> options, IResolutionContext context) => IsValid(options, context);
 	}
 
 	namespace GamestateRestrictionElements
