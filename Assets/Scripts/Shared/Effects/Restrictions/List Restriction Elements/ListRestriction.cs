@@ -3,7 +3,6 @@ using KompasCore.Cards;
 using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
-using KompasCore.Effects.Identities;
 
 namespace KompasCore.Effects
 {
@@ -74,126 +73,6 @@ namespace KompasCore.Effects
 			public virtual bool IsValidClientSide(IEnumerable<GameCardBase> options, IResolutionContext context) => IsValid(options, context);
 
 			public abstract bool AllowsValidChoice(IEnumerable<GameCardBase> options, IResolutionContext context);
-		}
-
-		public abstract class NumberBound : ListRestrictionElementBase
-		{
-			/// <summary>
-            /// Used for sending a current minimum to the client.
-            /// Obviously, the simpler solution is to assume that we're always either a constant or X,
-            /// but that makes any other manipulation much harder than it needs to be.
-            /// This is more flexible long-term, even if it is more annoying.
-            /// </summary>
-			public int stashedBound;
-
-			public IIdentity<int> bound;
-
-			/// <summary>
-			/// This function should always be called before the list restriction is sent over.
-			/// Consider replacing with a "prep for sending" function?
-			/// </summary>
-			public int StashBound(IResolutionContext context)
-			{
-				stashedBound = bound.From(context);
-				return stashedBound;
-			}
-		}
-
-		public class Minimum : NumberBound
-		{
-			protected override bool IsValidLogic(IEnumerable<GameCardBase> item, IResolutionContext context)
-				=> item.Count() >= StashBound(context);
-
-			public override bool AllowsValidChoice(IEnumerable<GameCardBase> options, IResolutionContext context)
-				=> options.Count() >= StashBound(context);
-
-			public override bool IsValidClientSide(IEnumerable<GameCardBase> options, IResolutionContext context)
-				=> options.Count() >= stashedBound;
-
-			public override int GetMinimum(IResolutionContext context) => StashBound(context);
-		}
-
-		public class Maximum : NumberBound
-		{
-			protected override bool IsValidLogic(IEnumerable<GameCardBase> item, IResolutionContext context)
-				=> item.Count() <= StashBound(context);
-
-			public override bool AllowsValidChoice(IEnumerable<GameCardBase> options, IResolutionContext context)
-				=> true;
-
-			public override bool IsValidClientSide(IEnumerable<GameCardBase> options, IResolutionContext context)
-				=> options.Count() <= stashedBound;
-		}
-
-		public class ControllerCanPayCost : ListRestrictionElementBase
-		{
-			protected override bool IsValidLogic(IEnumerable<GameCardBase> item, IResolutionContext context)
-				=> item.Select(c => c.Cost).Sum() <= InitializationContext.Controller.Pips;
-
-			public override bool AllowsValidChoice(IEnumerable<GameCardBase> options, IResolutionContext context)
-			{
-				if (!(InitializationContext.parent is AllOf parent)) return true;
-
-				int min = parent.elements
-					.Where(elem => elem is Minimum)
-					.Select(min => min as Minimum)
-					.Select(min => min.StashBound(context))
-					.DefaultIfEmpty(0)
-					.Max(); //We want the highest (i.e. most constraining) lower bound
-
-				//Accounts for all deduplicating of other possible things like distinct name, but doesn't check that there are enough (those deduplicators check that)
-				return parent.Deduplicate(options)
-					.Select(c => c.Cost)
-					.OrderBy(c => c)
-					.Take(min)
-					.Sum() <= InitializationContext.Controller.Pips;
-			}
-		}
-
-		public abstract class Distinct : ListRestrictionElementBase
-		{
-			protected delegate object DistinguishingValueSelector(GameCardBase card);
-			protected abstract DistinguishingValueSelector SelectDistinguishingValue { get; }
-
-			private class DistinctCardComparer : IEqualityComparer<GameCardBase>
-			{
-				private readonly DistinguishingValueSelector selectDistinguishingValue;
-
-				public bool Equals(GameCardBase x, GameCardBase y) => selectDistinguishingValue(x) == selectDistinguishingValue(y);
-				public int GetHashCode(GameCardBase obj) => selectDistinguishingValue(obj).GetHashCode();
-
-				public DistinctCardComparer(DistinguishingValueSelector selectDistinguishingValue)
-				{
-					this.selectDistinguishingValue = selectDistinguishingValue;
-				}
-			}
-
-			public override bool AllowsValidChoice(IEnumerable<GameCardBase> options, IResolutionContext context)
-			{
-				if (!(InitializationContext.parent is AllOf parent)) return true;
-
-				//Ensure there exists a selection that fits the required minimum count
-				return options
-					.Select(card => SelectDistinguishingValue(card))
-					.Count() >= parent.GetMinimum(context);
-			}
-
-			protected override bool IsValidLogic(IEnumerable<GameCardBase> item, IResolutionContext context)
-				=> item.Count()
-				== item.Select(card => SelectDistinguishingValue(card)).Distinct().Count(); //Ensure that particular selection is distinct
-
-			public override IEnumerable<GameCardBase> Deduplicate(IEnumerable<GameCardBase> options)
-				=> options.Distinct(new DistinctCardComparer(SelectDistinguishingValue));
-		}
-
-		public class DistinctNames : Distinct
-		{
-			protected override DistinguishingValueSelector SelectDistinguishingValue => card => card.CardName;
-		}
-
-		public class DistinctCosts : Distinct
-		{
-			protected override DistinguishingValueSelector SelectDistinguishingValue => card => card.Cost;
 		}
 	}
 

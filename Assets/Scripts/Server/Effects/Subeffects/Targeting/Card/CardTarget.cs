@@ -27,7 +27,7 @@ namespace KompasServer.Effects.Subeffects
 		/// <summary>
 		/// Restriction that the list collectively must fulfill
 		/// </summary>
-		public ListRestriction listRestriction = ListRestriction.Default;
+		public IListRestriction listRestriction = IListRestriction.Default;
 
 		/// <summary>
 		/// Identifies a card that this target should be linked with.

@@ -1,0 +1,56 @@
+using System.Collections.Generic;
+using System.Linq;
+using KompasCore.Cards;
+using KompasCore.Effects.Identities;
+
+namespace KompasCore.Effects.Restrictions.ListRestrictionElements
+{
+	public abstract class NumberBound : ListRestrictionElementBase
+	{
+		/// <summary>
+		/// Used for sending a current minimum to the client.
+		/// Obviously, the simpler solution is to assume that we're always either a constant or X,
+		/// but that makes any other manipulation much harder than it needs to be.
+		/// This is more flexible long-term, even if it is more annoying.
+		/// </summary>
+		public int stashedBound;
+
+		public IIdentity<int> bound;
+
+		/// <summary>
+		/// This function should always be called before the list restriction is sent over.
+		/// Consider replacing with a "prep for sending" function?
+		/// </summary>
+		public int StashBound(IResolutionContext context)
+		{
+			stashedBound = bound.From(context);
+			return stashedBound;
+		}
+	}
+
+	public class Minimum : NumberBound
+	{
+		protected override bool IsValidLogic(IEnumerable<GameCardBase> item, IResolutionContext context)
+			=> item.Count() >= StashBound(context);
+
+		public override bool AllowsValidChoice(IEnumerable<GameCardBase> options, IResolutionContext context)
+			=> options.Count() >= StashBound(context);
+
+		public override bool IsValidClientSide(IEnumerable<GameCardBase> options, IResolutionContext context)
+			=> options.Count() >= stashedBound;
+
+		public override int GetMinimum(IResolutionContext context) => StashBound(context);
+	}
+
+	public class Maximum : NumberBound
+	{
+		protected override bool IsValidLogic(IEnumerable<GameCardBase> item, IResolutionContext context)
+			=> item.Count() <= StashBound(context);
+
+		public override bool AllowsValidChoice(IEnumerable<GameCardBase> options, IResolutionContext context)
+			=> true;
+
+		public override bool IsValidClientSide(IEnumerable<GameCardBase> options, IResolutionContext context)
+			=> options.Count() <= stashedBound;
+	}
+}
