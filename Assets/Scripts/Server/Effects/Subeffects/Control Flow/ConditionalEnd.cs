@@ -1,5 +1,6 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
+using KompasCore.Effects.Restrictions;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,7 +9,6 @@ namespace KompasServer.Effects.Subeffects
 {
 	public class ConditionalEnd : ServerSubeffect
 	{
-		public const string XLessThan0 = "X<0";
 		public const string XLessThanEqual0 = "X<=0";
 		public const string XGreaterThanConst = "X>C";
 		public const string XLessThanConst = "X<C";
@@ -44,6 +44,8 @@ namespace KompasServer.Effects.Subeffects
 
 		public string condition;
 
+		public IGamestateRestriction endIfTrue;
+
 		public override void Initialize(ServerEffect eff, int subeffIndex)
 		{
 			base.Initialize(eff, subeffIndex);
@@ -64,6 +66,8 @@ namespace KompasServer.Effects.Subeffects
 		{
 			get
 			{
+				if (endIfTrue != null) return endIfTrue.IsValid(ResolutionContext);
+
 				if (condition == null) throw new ArgumentNullException(nameof(condition));
 				return condition switch
 				{
