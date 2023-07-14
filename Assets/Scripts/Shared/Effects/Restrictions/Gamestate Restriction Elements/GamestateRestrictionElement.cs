@@ -50,6 +50,7 @@ namespace KompasCore.Effects.Restrictions
 		public bool AllowsValidChoice(IEnumerable<GameCardBase> options, IResolutionContext context) => true;
 		public IEnumerable<GameCardBase> Deduplicate(IEnumerable<GameCardBase> options) => options;
 		public int GetMinimum(IResolutionContext context) => 0;
+		public int GetMaximum(IResolutionContext context) => int.MaxValue;
 		public bool IsValidClientSide(IEnumerable<GameCardBase> options, IResolutionContext context) => IsValid(options, context);
 	}
 

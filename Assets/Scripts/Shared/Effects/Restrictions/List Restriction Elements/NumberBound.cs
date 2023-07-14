@@ -39,7 +39,10 @@ namespace KompasCore.Effects.Restrictions.ListRestrictionElements
 		public override bool IsValidClientSide(IEnumerable<GameCardBase> options, IResolutionContext context)
 			=> options.Count() >= stashedBound;
 
-		public override int GetMinimum(IResolutionContext context) => StashBound(context);
+		public override int GetMinimum(IResolutionContext context)
+			=> context == null
+				? stashedBound
+				: StashBound(context);
 	}
 
 	public class Maximum : NumberBound
@@ -52,5 +55,10 @@ namespace KompasCore.Effects.Restrictions.ListRestrictionElements
 
 		public override bool IsValidClientSide(IEnumerable<GameCardBase> options, IResolutionContext context)
 			=> options.Count() <= stashedBound;
+
+		public override int GetMaximum(IResolutionContext context)
+			=> context == null
+				? stashedBound
+				: StashBound(context);
 	}
 }

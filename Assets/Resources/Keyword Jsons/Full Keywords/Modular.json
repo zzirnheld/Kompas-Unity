@@ -35,9 +35,8 @@
 				]
 			},
 			"listRestriction": {
-				"listRestrictions": [
-					"Max Can Choose: X"
-				]
+				"$type": "Core.ListRestriction:Maximum:",
+				"bound": { "$type": "Numbers:EffectX:" }
 			}
 		},
 		{

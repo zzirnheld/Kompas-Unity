@@ -63,10 +63,8 @@
 						]
 					},
 					"listRestriction": {
-						"listRestrictions": [
-							"Max Can Choose"
-						],
-						"maxCanChoose": 3
+						"$type": "Core.ListRestriction:Maximum:",
+						"bound": { "$type": "Numbers:Constant:", "constant": 3 }
 					}
 				},
 				{

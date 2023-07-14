@@ -4,36 +4,62 @@ using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace KompasCore.Effects
+namespace KompasCore.Effects.Restrictions
 {
-	namespace Restrictions
+	/// <summary>
+	/// Special, because many list restrictions have to be aware of characteristics of each other when deciding whether it's even possible to select a valid target.
+	/// That is, deciding whether a valid target exists is more complicated than checking whether any one option fulfills the requirements.
+	/// For instance, a "can pay costs" restriction must also take into account that you can't just pay for 4 copies of a 1 cost, if the "distinct names" requirement is also specified.
+	/// </summary>
+	public interface IListRestriction : IRestriction<IEnumerable<GameCardBase>>
 	{
-		public interface IListRestriction : IRestriction<IEnumerable<GameCardBase>>
+		public static IListRestriction SingleElement { get; } = ConstantCount(1);
+
+		public static IListRestriction ConstantCount(int count)
 		{
-			public static IListRestriction GetDefault() => new ListRestrictionElements.AllOf()
+			var bound = new Identities.Numbers.Constant() { constant = count };
+			return new ListRestrictionElements.AllOf()
 			{
 				elements = {
-					new ListRestrictionElements.Minimum() { bound = Identities.Numbers.Constant.One },
-					new ListRestrictionElements.Maximum() { bound = Identities.Numbers.Constant.One }
+					new ListRestrictionElements.Minimum() { bound = bound, stashedBound = count }, //TODO replace setting stashedBound here with prepare for sending func?
+					new ListRestrictionElements.Maximum() { bound = bound, stashedBound = count }
 				}
 			};
+		} 
 
-			public bool AllowsValidChoice(IEnumerable<GameCardBase> options, IResolutionContext context);
+		public bool AllowsValidChoice(IEnumerable<GameCardBase> options, IResolutionContext context);
 
-			public bool IsValidClientSide(IEnumerable<GameCardBase> options, IResolutionContext context);
+		public bool IsValidClientSide(IEnumerable<GameCardBase> options, IResolutionContext context);
 
-			/// <summary>
-            /// If you don't specifically want to constrain the list (i.e. by deduplicating on a particular value),
-            /// have this just return the source sequence.
-            /// This will be overridden by restrictions like "distinct names" and "distinct costs"
-            /// </summary>
-			public IEnumerable<GameCardBase> Deduplicate(IEnumerable<GameCardBase> options);
+		/// <summary>
+		/// If you don't specifically want to constrain the list (i.e. by deduplicating on a particular value),
+		/// have this just return the source sequence.
+		/// This will be overridden by restrictions like "distinct names" and "distinct costs"
+		/// </summary>
+		public IEnumerable<GameCardBase> Deduplicate(IEnumerable<GameCardBase> options);
 
-			public int GetMinimum(IResolutionContext context);
-		}
+		/// <summary>
+        /// Get the current minimum for this resolution context.
+        /// If null is passed in, the stashed minimum is returned instead.
+        /// </summary>
+		public int GetMinimum(IResolutionContext context);
+		/// <summary>
+        /// Get the current maximum for this resolution context.
+        /// If null is passed in, the stashed maximum is returned instead.
+        /// </summary>
+		public int GetMaximum(IResolutionContext context);
 	}
 
-	namespace Restrictions.ListRestrictionElements
+	public static class ListRestrictionExtensions
+	{
+		public static bool HaveEnough(this IListRestriction restriction, int currCount)
+			=> restriction.GetMinimum(null) <= currCount && currCount <= restriction.GetMaximum(null);
+
+		public static int GetStashedMinimum(this IListRestriction restriction) => restriction.GetMinimum(null);
+		public static int GetStashedMaximum(this IListRestriction restriction) => restriction.GetMaximum(null);
+	}
+
+	namespace ListRestrictionElements
 	{
 		public class AllOf : AllOfBase<IEnumerable<GameCardBase>, IListRestriction>, IListRestriction
 		{
@@ -61,7 +87,7 @@ namespace KompasCore.Effects
 			public IEnumerable<GameCardBase> Deduplicate(IEnumerable<GameCardBase> options)
 			{
 				var localOptions = options;
-				foreach(var elem in elements) localOptions = elem.Deduplicate(localOptions);
+				foreach (var elem in elements) localOptions = elem.Deduplicate(localOptions);
 				return localOptions;
 			}
 
@@ -70,195 +96,24 @@ namespace KompasCore.Effects
 					.Select(elem => elem.GetMinimum(context))
 					.DefaultIfEmpty(0)
 					.Max();
+
+			public int GetMaximum(IResolutionContext context)
+				=> elements
+					.Select(elem => elem.GetMaximum(context))
+					.DefaultIfEmpty(int.MaxValue)
+					.Min();
 		}
 
 		public abstract class ListRestrictionElementBase : RestrictionBase<IEnumerable<GameCardBase>>, IListRestriction
 		{
 			public virtual int GetMinimum(IResolutionContext context) => 0;
+			public virtual int GetMaximum(IResolutionContext context) => int.MaxValue;
 
 			public virtual IEnumerable<GameCardBase> Deduplicate(IEnumerable<GameCardBase> options) => options; //No dedup, by default
 
 			public virtual bool IsValidClientSide(IEnumerable<GameCardBase> options, IResolutionContext context) => IsValid(options, context);
 
 			public abstract bool AllowsValidChoice(IEnumerable<GameCardBase> options, IResolutionContext context);
-		}
-	}
-
-	public class ListRestriction : ContextInitializeableBase
-	{
-		[JsonIgnore]
-		public Subeffect Subeffect => InitializationContext.subeffect;
-
-		//if i end up living towards the heat death of the universe,
-		//i will refactor this to instead be objects that get deserialized.
-		//they will probably be tiny little classes at the bottom of this.
-		//dang. that actually makes it sound mostly trivial.
-		#region restrictions
-		public const string MaxCanChoose = "Max Can Choose";
-
-		public const string ControllerCanPayCost = "Can Pay Cost"; //effect's controller is able to pay the cost of all of them together
-		public const string DistinctCosts = "Distinct Costs";
-		public const string Distinct = "Distinct";
-
-		public const string MinOfX = "Min Can Choose: X";
-		public const string MaxOfX = "Max Can Choose: X";
-		#endregion restrictions
-
-		public string[] listRestrictions = new string[0];
-
-		/// <summary>
-		/// A quick little property that tells you whether the list restriction has a limit to how many can be chosen.
-		/// </summary>
-		public bool HasMax => listRestrictions.Contains(MaxCanChoose) || listRestrictions.Contains(MaxOfX);
-
-		/// <summary>
-		/// Quick little property that informs you whether the list restriction has minimum
-		/// </summary>
-		public bool HasMin => listRestrictions.Contains(MinCanChoose) || listRestrictions.Contains(MinOfX);
-
-		/// <summary>
-		/// Quick little property to summarize whether or not we're choosing more than one card.
-		/// </summary>
-		public bool ChooseMultiple => !(HasMax && maxCanChoose <= 1);
-
-		/// <summary>
-		/// Quick little method that tells you if you have selected enough items.
-		/// </summary>
-		/// <param name="count">Number of items currently selected</param>
-		/// <returns>Whether the number of items currently selected is enough.</returns>
-		public bool HaveEnough(int count) => !HasMin || count >= minCanChoose;
-
-		/// <summary>
-		/// The maximum number of cards that can be chosen.
-		/// Default: one card can be chosen
-		/// </summary>
-		public int maxCanChoose = 1;
-
-		/// <summary>
-		/// The minimum number of cards that must be chosen.
-		/// If is < 0, gets set to maxCanChoose
-		/// Default: set to maxCanChoose
-		/// </summary>
-		public int minCanChoose = -1;
-
-		/// <summary>
-		/// Default ListRestriction. <br></br>
-		/// Specifies a max and min of 1 card.
-		/// </summary>
-		public static ListRestriction Default => new ListRestriction()
-		{
-			listRestrictions = new string[] { MinCanChoose, MaxCanChoose }
-		};
-
-		/// <summary>
-		/// Default ListRestriction Json. <br></br>
-		/// A json representation of <see cref="Default"/>
-		/// </summary>
-		public static readonly string DefaultJson = JsonConvert.SerializeObject(Default);
-
-		/// <summary>
-		/// You can read, you know what this does.
-		/// Initializes the list restriction to know who its daddy is, and make any shtuff match up
-		/// </summary>
-		/// <param name="subeffect"></param>
-		public override void Initialize(EffectInitializationContext initializationContext)
-		{
-			base.Initialize(initializationContext);
-			if (minCanChoose < 0 && listRestrictions.Contains(MaxCanChoose))
-				minCanChoose = maxCanChoose;
-		}
-
-		/// <summary>
-		/// Prepares the list restriction to be sent to a player alongside a get card target request.
-		/// This exists in case I ever need to add information, 
-		/// so I can make the compiler tell me where else needs to provide information.
-		/// </summary>
-		/// <param name="x">The value of x to use, in case the list restriction cares about X.</param>
-		public void PrepareForSending(int x)
-		{
-			if (listRestrictions.Contains(MinOfX)) minCanChoose = x;
-			if (listRestrictions.Contains(MaxOfX)) maxCanChoose = x;
-		}
-
-		private bool IsRestrictionValid(string restriction, IEnumerable<GameCard> cards) => restriction switch
-		{
-			MinCanChoose => cards.Count() >= minCanChoose,
-			MaxCanChoose => cards.Count() <= maxCanChoose,
-
-			ControllerCanPayCost => Subeffect.Controller.Pips >= cards.Sum(c => c.Cost),
-			DistinctCosts => cards.Select(c => c.Cost).Distinct().Count() == cards.Count(),
-			Distinct => cards.Select(c => c.CardName).Distinct().Count() == cards.Count(),
-
-			MinOfX => cards.Count() <= Subeffect.Effect.X,
-			MaxOfX => cards.Count() <= Subeffect.Effect.X,
-			_ => throw new System.ArgumentException($"Invalid list restriction {restriction}", "restriction"),
-		};
-
-		/*
-		//TODO use #ifdef to be able to turn on debug with a compile flag or something
-		private bool EvaluateRestrictionWithDebug(string restriction, IEnumerable<GameCard> cards)
-		{
-			bool valid = EvaluateRestriction(restriction, cards);
-			if (!valid) Debug.Log($"Invalid list of cards {string.Join(", ", cards.Select(c => c.CardName))} " +
-				$"flouts list restriction {restriction}");
-			return valid;
-		}*/
-
-		/// <summary>
-		/// Checks the list of cards passed into see if they collectively fit a restriction.
-		/// </summary>
-		/// <param name="choices">The list of cards to collectively evaluate.</param>
-		/// <returns><see langword="true"/> if the cards fit all the required restrictions collectively, 
-		/// <see langword="false"/> otherwise</returns>
-		public bool IsValidList(IEnumerable<GameCard> choices, IEnumerable<GameCard> potentialTargets)
-		{
-			ComplainIfNotInitialized();
-			return choices != null
-				&& !choices.Except(potentialTargets).Any() //Are there any choices that aren't potential targets?
-				&& listRestrictions.All(r => IsRestrictionValid(r, choices));
-		}
-
-		private bool CanPayCost(IEnumerable<GameCard> potentialTargets)
-		{
-			int costAccumulation = 0;
-			int i = 1;
-			foreach (var card in potentialTargets.OrderBy(c => c.Cost))
-			{
-				if (i > minCanChoose) break;
-				costAccumulation += card.Cost;
-				i++;
-			}
-			if (i < minCanChoose) return false;
-			return costAccumulation <= Subeffect.Controller.Pips;
-		}
-
-		private bool DoesRestrictionAllowValidChoice(string restriction, IEnumerable<GameCard> potentialTargets) => restriction switch
-		{
-			MinOfX => potentialTargets.Count() >= Subeffect.Effect.X,
-			MinCanChoose => potentialTargets.Count() >= minCanChoose,
-
-			ControllerCanPayCost => CanPayCost(potentialTargets),
-			DistinctCosts => potentialTargets.Select(c => c.Cost).Distinct().Count() > (HasMin ? minCanChoose : 0),
-			Distinct => potentialTargets.Select(c => c.CardName).Count() > (HasMin ? minCanChoose : 0),
-
-			MaxOfX => true,
-			MaxCanChoose => true,
-
-			_ => throw new System.ArgumentException($"Invalid list restriction {restriction}", "restriction"),
-		};
-
-		public bool ExistsValidChoice(IEnumerable<GameCard> potentialTargets)
-		{
-			ComplainIfNotInitialized();
-			return listRestrictions.All(r => DoesRestrictionAllowValidChoice(r, potentialTargets));
-		}
-
-		public override string ToString()
-		{
-			StringBuilder sb = new StringBuilder();
-			sb.AppendLine("List Restriction:");
-			foreach (var r in listRestrictions) sb.AppendLine(r);
-			return sb.ToString();
 		}
 	}
 }
