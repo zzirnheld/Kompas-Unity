@@ -9,7 +9,8 @@ namespace KompasServer.Effects.Subeffects
 	{
 		public int SecondTargetIndex = -2;
 		public GameCard SecondTarget => Effect.GetTarget(SecondTargetIndex);
-		public override bool IsImpossible() => CardTarget == null || SecondTarget == null;
+		public override bool IsImpossible(TargetingContext overrideContext = null)
+			=> GetCardTarget(overrideContext) == null || SecondTarget == null;
 
 		public override Task<ResolutionInfo> Resolve()
 		{

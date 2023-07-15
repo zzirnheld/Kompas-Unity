@@ -9,10 +9,13 @@ namespace KompasServer.Effects.Subeffects
 	/// </summary>
 	public abstract class ChangeGameLocation : ServerSubeffect
 	{
-		public override bool IsImpossible() => CardTarget == null || CardTarget.Location == destination;
+		public override bool IsImpossible(TargetingContext overrideContext = null)
+		{
+			var currLocation = GetCardTarget(overrideContext)?.Location;
+			return currLocation == null || currLocation == destination;
+		}
 
 		protected abstract CardLocation destination { get; }
-
 
 		public override Task<ResolutionInfo> Resolve()
 		{

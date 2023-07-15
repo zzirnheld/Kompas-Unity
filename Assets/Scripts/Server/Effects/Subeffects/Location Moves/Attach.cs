@@ -9,7 +9,9 @@ namespace KompasServer.Effects.Subeffects
 		//default is two targets ago
 		public int targetToAttachTo = -2;
 
-		public override bool IsImpossible() => CardTarget == null || Effect.GetTarget(targetToAttachTo) == null;
+		public override bool IsImpossible(TargetingContext overrideContext = null)
+			=> GetCardTarget(overrideContext) == null
+			|| Effect.GetTarget(targetToAttachTo) == null;
 
 		public override Task<ResolutionInfo> Resolve()
 		{

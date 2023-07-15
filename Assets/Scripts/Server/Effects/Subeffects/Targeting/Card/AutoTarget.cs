@@ -30,7 +30,8 @@ namespace KompasServer.Effects.Subeffects
 			tiebreakerValue?.Initialize(DefaultInitializationContext);
 		}
 
-		public override bool IsImpossible() => !Game.Cards.Any(c => cardRestriction.IsValid(c, ResolutionContext));
+		public override bool IsImpossible(TargetingContext overrideContext = null)
+			=> !Game.Cards.Any(c => cardRestriction.IsValid(c, ResolutionContext));
 
 		private GameCard GetRandomCard(GameCard[] cards)
 		{

@@ -47,7 +47,7 @@ namespace KompasServer.Effects.Subeffects
 		/// Whether this subeffect will be considered EffectImpossible at this point
 		/// </summary>
 		/// <returns></returns>
-		public virtual bool IsImpossible() => true;
+		public virtual bool IsImpossible(TargetingContext overrideContext = null) => true;
 
 
 		/// <summary>

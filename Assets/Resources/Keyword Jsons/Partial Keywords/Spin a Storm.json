@@ -1,45 +1,9 @@
 [
 	{
-		"$type": "Subeffect:ConditionalEnd:",
-		"condition": "No Space Fits Restriction",
-		"spaceRestriction": {
-			"$type": "Core.SpaceRestriction:AllOf:",
-			"elements": [
-				{ "$type": "Core.SpaceRestriction:Empty:" },
-				{
-					"$type": "Core.SpaceRestriction:InAOEOf:",
-					"anyOf": {
-						"$type": "ManyCards:FittingRestriction:",
-						
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [ {
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Weather" ]
-							} ]
-						}
-					},
-					"minAnyOfCount": { 
-						"$type": "Numbers:Constant:",
-						"constant": 2
-					}
-				},
-				{
-					"$type": "Core.SpaceRestriction:InAOEOf:",
-					"anyOf": {
-						"$type": "ManyCards:FittingRestriction:",
-						
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [ {
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Weather" ]
-							} ]
-						}
-					},
-					"sameAs": { "$type": "Spaces:TargetIndex:" }
-				}
-			]
+		"$type":"Subeffect:CanResolve:",
+		"subeffIndices": [ 2 ],
+		"overrideTargetingContext": {
+			"cardTargetIndex": -1
 		}
 	},
 	{
@@ -64,34 +28,17 @@
 				{ "$type": "Core.SpaceRestriction:Empty:" },
 				{
 					"$type": "Core.SpaceRestriction:InAOEOf:",
-					"anyOf": {
-						"$type": "ManyCards:FittingRestriction:",
-						
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [ {
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Weather" ]
-							} ]
-						}
+					"cardRestriction": {
+						"$type": "Core.CardRestriction:Subtypes:",
+						"subtypes": [ "Weather" ]
 					},
-					"minAnyOfCount": { 
-						"$type": "Numbers:Constant:",
-						"constant": 2
-					}
+					"minAnyOfCount": { "$type": "Numbers:Constant:", "constant": 2 }
 				},
 				{
 					"$type": "Core.SpaceRestriction:InAOEOf:",
-					"anyOf": {
-						"$type": "ManyCards:FittingRestriction:",
-						
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [ {
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Weather" ]
-							} ]
-						}
+					"cardRestriction": {
+						"$type": "Core.CardRestriction:Subtypes:",
+						"subtypes": [ "Weather" ]
 					},
 					"sameAs": { "$type": "Spaces:TargetIndex:" }
 				}

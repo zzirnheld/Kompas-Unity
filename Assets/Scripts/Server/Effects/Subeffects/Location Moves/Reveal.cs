@@ -5,7 +5,8 @@ namespace KompasServer.Effects.Subeffects
 {
 	public class Reveal : ServerSubeffect
 	{
-		public override bool IsImpossible() => CardTarget == null || CardTarget.KnownToEnemy;
+		public override bool IsImpossible(TargetingContext overrideContext = null)
+			=> GetCardTarget(overrideContext)?.KnownToEnemy != false; //account for null prop
 
 		public override Task<ResolutionInfo> Resolve()
 		{
