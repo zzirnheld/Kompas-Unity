@@ -9,11 +9,6 @@ namespace KompasServer.Effects.Subeffects
 {
 	public class ConditionalEnd : ServerSubeffect
 	{
-		public const string NoneFitRestriction = "None Fit Restriction";
-		public const string AnyFitRestriction = "Any Fit Restriction";
-		public const string NumberOfCardsFittingRestrictionFitsNumberRestriction =
-			"Number of Cards Fitting CardRestriction Fits NumberRestriction";
-
 		public const string NoSpaceFitsRestriction = "No Space Fits Restriction";
 
 		public const string MustBeFriendlyTurn = "Must be Friendly Turn";
@@ -67,10 +62,6 @@ namespace KompasServer.Effects.Subeffects
 				if (condition == null) throw new ArgumentNullException(nameof(condition));
 				return condition switch
 				{
-					NoneFitRestriction => !ServerGame.Cards.Any(c => cardRestriction.IsValid(c, ResolutionContext)),
-					AnyFitRestriction => ServerGame.Cards.Any(c => cardRestriction.IsValid(c, ResolutionContext)),
-					NumberOfCardsFittingRestrictionFitsNumberRestriction => doesNumberOfCardsFittingRestrictionFitNumberRestriction(),
-
 					NoSpaceFitsRestriction => !Space.Spaces.Any(s => spaceRestriction.IsValid(s, ResolutionContext)),
 
 					MustBeFriendlyTurn => ServerGame.TurnPlayer != Effect.Controller,
