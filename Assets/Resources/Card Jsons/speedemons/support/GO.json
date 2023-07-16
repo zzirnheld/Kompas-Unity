@@ -15,37 +15,24 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:ConditionalJump:",
-					"condition": "Card Fits Restriction",
-					"cardRestriction": {
-						"$type": "Core.CardRestriction:AllOf:",
-						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Discard" ]
-							},
-							{
-								"$type": "Core.CardRestriction:Name:",
-								"nameIs": "Ready"
-							}
-						]
+					"jumpIfTrue": {
+						"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+						"useDummyResolutionContext": false,
+						"anyOf": { "$type": "ManyCards:Discard:", "friendly": true, "enemy": false },
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:Name:",
+							"nameIs": "Set"
+						}
 					},
-					"jumpIndices": [
-						6
-					]
+					"jumpIndices": [ 6 ]
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
 					"blurb": "Ready for Set to search",
 					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"$type": "Core.CardRestriction:AllOf:",
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Name:",
-								"nameIs": "Ready"
-							}
-						]
+						"$type": "Core.CardRestriction:Name:",
+						"nameIs": "Ready"
 					}
 				},
 				{
@@ -76,9 +63,7 @@
 				},
 				{
 					"$type": "Subeffect:SkipToEffectOnImpossible:",
-					"jumpIndices": [
-						10
-					]
+					"jumpIndices": [ 10 ]
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",
@@ -107,9 +92,7 @@
 				{
 					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"delete": true,
-					"jumpIndices": [
-						7
-					]
+					"jumpIndices": [ 7 ]
 				}
 			]
 		}

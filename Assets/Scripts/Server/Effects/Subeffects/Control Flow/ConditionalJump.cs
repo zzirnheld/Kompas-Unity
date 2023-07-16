@@ -9,9 +9,6 @@ namespace KompasServer.Effects.Subeffects
 {
 	public class ConditionalJump : ServerSubeffect
 	{
-		public const string NoCardFitsRestriction = "No Card Fits Restriction";
-		public const string CardFitsRestriction = "Card Fits Restriction";
-
 		public const string TargetFitsRestriction = "Target Fits Restriction";
 		public const string TargetViolatesRestriction = "Target Violates Restriction";
 
