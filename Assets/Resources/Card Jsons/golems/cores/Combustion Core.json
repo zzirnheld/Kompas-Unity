@@ -32,16 +32,17 @@
 				},
 				{
 					"$type": "Subeffect:ConditionalEnd:",
-					"condition": "Target Violates Restriction",
-					
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
-							{
+					"endIfTrue": {
+						"$type": "Core.GamestateRestriction:Not:",
+						"negated": {
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"useDummyResolutionContext": false,
+							"card": { "$type": "Cards:TargetIndex:" },
+							"cardRestriction": {
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Golem" ]
 							}
-						]
+						}
 					}
 				},
 				{

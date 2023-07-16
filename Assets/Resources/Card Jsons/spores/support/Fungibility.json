@@ -57,14 +57,19 @@
 				},
 				{
 					"$type": "Subeffect:ConditionalJump:",
-					"condition": "Target Violates Restriction",
-					"cardRestriction": {
-						"$type": "Core.CardRestriction:Subtypes:",
-						"subtypes": [ "Fungus" ]
+					"jumpIfTrue": {
+						"$type": "Core.GamestateRestriction:Not:",
+						"negated": {
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"useDummyResolutionContext": false,
+							"card": { "$type": "Cards:TargetIndex:" },
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Fungus" ]
+							}
+						}
 					},
-					"jumpIndices": [
-						3
-					]
+					"jumpIndices": [ 3 ]
 				},
 				{
 					"$type": "Subeffect:SpaceTarget:",

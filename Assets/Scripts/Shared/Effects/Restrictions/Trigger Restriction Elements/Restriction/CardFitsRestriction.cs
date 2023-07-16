@@ -7,9 +7,10 @@ namespace KompasCore.Effects.Restrictions.TriggerRestrictionElements
 {
 	public class CardFitsRestriction : TriggerGamestateRestrictionBase
 	{
-		public IRestriction<GameCardBase> cardRestriction;
 		public IIdentity<GameCardBase> card;
 		public IIdentity<IReadOnlyCollection<GameCardBase>> anyOf;
+		
+		public IRestriction<GameCardBase> cardRestriction;
 
 		public override void Initialize(EffectInitializationContext initializationContext)
 		{

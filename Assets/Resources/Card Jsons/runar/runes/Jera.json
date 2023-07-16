@@ -15,7 +15,7 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:ConditionalEnd:",
-					"condition": "Must be Friendly Turn"
+					"endIfTrue": { "$type": "Core.GamestateRestriction:EnemyTurn:" }
 				},
 				{
 					"$type": "Subeffect:AddPips:",

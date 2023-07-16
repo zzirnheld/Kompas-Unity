@@ -1,5 +1,6 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
+using KompasCore.Effects.Restrictions;
 using KompasCore.Effects.Restrictions.GamestateRestrictionElements;
 using System.Linq;
 using System.Threading.Tasks;
@@ -25,6 +26,8 @@ namespace KompasServer.Effects.Subeffects
 		public IRestriction<GameCardBase> cardRestriction = new AlwaysValid();
 		public IRestriction<int> xRestriction = new AlwaysValid();
 		public int constant;
+
+		public IGamestateRestriction jumpIfTrue;
 
 		public override void Initialize(ServerEffect eff, int subeffIndex)
 		{
