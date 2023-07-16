@@ -35,8 +35,15 @@
 				},
 				{
 					"$type": "Subeffect:ConditionalEnd:",
-					"condition": "X<C",
-					"constant": 10
+					"endIfTrue": {
+						"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
+						"number": { "$type": "Numbers:EffectX:" },
+						"restriction": {
+							"$type": "Core.NumberRestriction:Compare:",
+							"comparison": { "$type": "Relationships.Number:LessThan:" },
+							"other": { "$type": "Numbers:Constant:", "constant": 10 }
+						}
+					}
 				},
 				{
 					"$type": "Subeffect:CardTarget:",

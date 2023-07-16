@@ -2,7 +2,6 @@
 using KompasCore.Effects;
 using KompasCore.Effects.Identities;
 using KompasCore.Effects.Identities.ManyCards;
-using KompasCore.Effects.Restrictions;
 using KompasCore.Effects.Restrictions.CardRestrictionElements;
 using System.Collections.Generic;
 
@@ -21,6 +20,12 @@ namespace KompasServer.Effects.Subeffects
 				cards = cardsSource
 			};
 			base.Initialize(eff, subeffIndex);
+		}
+
+		public override void AdjustSubeffectIndices(int increment, int startingAtIndex = 0)
+		{
+			base.AdjustSubeffectIndices(increment, startingAtIndex);
+			cardRestriction.AdjustSubeffectIndices(increment, startingAtIndex);
 		}
 	}
 }

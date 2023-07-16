@@ -19,6 +19,12 @@ namespace KompasServer.Effects.Subeffects.Hanging
 			cardRestriction.Initialize(DefaultInitializationContext);
 		}
 
+		public override void AdjustSubeffectIndices(int increment, int startingAtIndex = 0)
+		{
+			base.AdjustSubeffectIndices(increment, startingAtIndex);
+			cardRestriction?.AdjustSubeffectIndices(increment, startingAtIndex);
+		}
+
 		protected override IEnumerable<HangingEffect> CreateHangingEffects()
 		{
 			var effs = new List<HangingEffect>();

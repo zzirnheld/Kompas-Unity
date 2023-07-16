@@ -18,6 +18,12 @@ namespace KompasCore.Effects.Identities.Numbers
 			cardRestriction.Initialize(initializationContext);
 		}
 
+		public override void AdjustSubeffectIndices(int increment, int startingAtIndex = 0)
+		{
+			base.AdjustSubeffectIndices(increment, startingAtIndex);
+			cardRestriction.AdjustSubeffectIndices(increment, startingAtIndex);
+		}
+
 		protected override int AbstractItemFrom(IResolutionContext context, IResolutionContext secondaryContext)
 			=> cards.From(context, secondaryContext).Count(c => cardRestriction.IsValid(c, default));
 	}

@@ -11,9 +11,11 @@ namespace KompasServer.Effects.Subeffects
 
 		public int skipIndex = -1;
 
+		public TargetingContext overrideTargetingContext; //If later necessary, make this an array
+
 		public override Task<ResolutionInfo> Resolve()
 		{
-			var impossible = Subeffects.FirstOrDefault(s => s.IsImpossible());
+			var impossible = Subeffects.FirstOrDefault(s => s.IsImpossible(overrideTargetingContext));
 			if (impossible == default) return Task.FromResult(ResolutionInfo.Next);
 			else
 			{

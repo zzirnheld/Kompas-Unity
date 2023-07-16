@@ -23,5 +23,11 @@ namespace KompasServer.Effects.Subeffects
 			};
 			base.Initialize(eff, subeffIndex);
 		}
+
+		public override void AdjustSubeffectIndices(int increment, int startingAtIndex = 0)
+		{
+			base.AdjustSubeffectIndices(increment, startingAtIndex);
+			cardRestriction.AdjustSubeffectIndices(increment, startingAtIndex);
+		}
 	}
 }

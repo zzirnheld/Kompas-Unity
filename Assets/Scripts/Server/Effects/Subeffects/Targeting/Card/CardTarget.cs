@@ -54,6 +54,13 @@ namespace KompasServer.Effects.Subeffects
 			toLinkWith?.Initialize(DefaultInitializationContext);
 		}
 
+		public override void AdjustSubeffectIndices(int increment, int startingAtIndex = 0)
+		{
+			base.AdjustSubeffectIndices(increment, startingAtIndex);
+			cardRestriction.AdjustSubeffectIndices(increment, startingAtIndex);
+			listRestriction.AdjustSubeffectIndices(increment, startingAtIndex);
+		}
+
 		protected IReadOnlyCollection<GameCard> DeterminePossibleTargets()
 		{
 			var possibleTargets = from card in toSearch.From(ResolutionContext, default)
@@ -79,7 +86,8 @@ namespace KompasServer.Effects.Subeffects
 		protected virtual Task<ResolutionInfo> NoPossibleTargets()
 			=> Task.FromResult(ResolutionInfo.Impossible(NoValidCardTarget));
 
-		public override bool IsImpossible() => !listRestriction.AllowsValidChoice(DeterminePossibleTargets(), ResolutionContext);
+		public override bool IsImpossible(TargetingContext overrideContext = null)
+			=> !listRestriction.AllowsValidChoice(DeterminePossibleTargets(), ResolutionContext);
 
 		public override async Task<ResolutionInfo> Resolve()
 		{

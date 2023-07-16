@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Set",
-	"effText": "If you don't have a discarded \"Ready\", deck->hand one and reshuffle me. If there is, give an adjacent character +1 N and deck->hand \"GO\".",
+	"effText": "If you don't have a discarded \"Ready\", deck->hand one and reshuffle me. If you do, give an adjacent character +1 N and deck->hand \"GO\".",
 	"effects": [
 		{
 			"triggerData": {
@@ -15,24 +15,15 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:ConditionalJump:",
-					"condition": "Card Fits Restriction",
-					
+					"jumpIfTrue": {
+						"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+						"anyOf": { "$type": "ManyCards:Discard:", "friendly": true, "enemy": false },
 						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Discard" ]
-							},
-							{
-								"$type": "Core.CardRestriction:Name:",
-								"nameIs": "Ready"
-							}
-						]
+							"$type": "Core.CardRestriction:Name:",
+							"nameIs": "Ready"
+						}
 					},
-					"jumpIndices": [
-						6
-					]
+					"jumpIndices": [ 6 ]
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
@@ -79,13 +70,8 @@
 					"blurb": "GO for Ready to search",
 					"toSearch": { "$type": "ManyCards:Deck:" },
 					"cardRestriction": {
-						"$type": "Core.CardRestriction:AllOf:",
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Name:",
-								"nameIs": "GO"
-							}
-						]
+						"$type": "Core.CardRestriction:Name:",
+						"nameIs": "GO"
 					}
 				},
 				{

@@ -14,6 +14,12 @@ namespace KompasCore.Effects.Identities.Numbers
 			cardRestriction?.Initialize(initializationContext);
 		}
 
+		public override void AdjustSubeffectIndices(int increment, int startingAtIndex = 0)
+		{
+			base.AdjustSubeffectIndices(increment, startingAtIndex);
+			cardRestriction?.AdjustSubeffectIndices(increment, startingAtIndex);
+		}
+
 		private System.Func<GameCardBase, bool> Selector(IResolutionContext context)
 			=> card => cardRestriction?.IsValid(card, context) ?? true;
 

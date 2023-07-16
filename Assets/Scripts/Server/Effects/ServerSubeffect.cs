@@ -47,7 +47,7 @@ namespace KompasServer.Effects.Subeffects
 		/// Whether this subeffect will be considered EffectImpossible at this point
 		/// </summary>
 		/// <returns></returns>
-		public virtual bool IsImpossible() => true;
+		public virtual bool IsImpossible(TargetingContext overrideContext = null) => true;
 
 
 		/// <summary>
@@ -59,6 +59,9 @@ namespace KompasServer.Effects.Subeffects
 			ServerEffect.OnImpossible = null;
 			return Task.FromResult(ResolutionInfo.Impossible(why));
 		}
+
+		public virtual void AdjustSubeffectIndices(int increment, int startingAtIndex = 0)
+			=> ContextInitializeableBase.AdjustSubeffectIndices(jumpIndices, increment, startingAtIndex);
 	}
 
 	public struct ResolutionInfo

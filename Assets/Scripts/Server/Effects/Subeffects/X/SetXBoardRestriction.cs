@@ -13,6 +13,12 @@ namespace KompasServer.Effects.Subeffects
 			cardRestriction.Initialize(DefaultInitializationContext);
 		}
 
+		public override void AdjustSubeffectIndices(int increment, int startingAtIndex = 0)
+		{
+			base.AdjustSubeffectIndices(increment, startingAtIndex);
+			cardRestriction?.AdjustSubeffectIndices(increment, startingAtIndex);
+		}
+
 		public override int BaseCount
 			=> Game.BoardController.CardsAndAugsWhere(c => cardRestriction.IsValid(c, ResolutionContext)).Count;
 	}

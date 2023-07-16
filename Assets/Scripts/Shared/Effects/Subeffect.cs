@@ -41,6 +41,33 @@ namespace KompasCore.Effects
 		public const string TooMuchEForHeal = "Target already has at least their printed E";
 		#endregion reasons for impossible
 
+		public class TargetingContext
+		{
+			public int? cardTargetIndex;
+			public int? spaceTargetIndex;
+			public int? cardInfoTargetIndex;
+			public int? playerTargetIndex;
+			public int? stackableTargetIndex;
+
+			public TargetingContext OrElse(TargetingContext other) => new TargetingContext()
+			{
+				cardTargetIndex = cardTargetIndex ?? other.cardTargetIndex,
+				spaceTargetIndex = spaceTargetIndex ?? other.spaceTargetIndex,
+				cardInfoTargetIndex = cardInfoTargetIndex ?? other.cardInfoTargetIndex,
+				playerTargetIndex = playerTargetIndex ?? other.playerTargetIndex,
+				stackableTargetIndex = stackableTargetIndex ?? other.stackableTargetIndex,
+			};
+		}
+
+		public TargetingContext CurrTargetingContext => new TargetingContext()
+		{
+			cardTargetIndex = targetIndex,
+			spaceTargetIndex = spaceIndex,
+			cardInfoTargetIndex = cardInfoIndex,
+			playerTargetIndex = playerIndex,
+			stackableTargetIndex = stackableIndex
+		};
+
 		public virtual Effect Effect { get; }
 		public virtual Player Controller { get; }
 		public virtual Game Game { get; }
@@ -129,6 +156,17 @@ namespace KompasCore.Effects
 		public GameCardInfo CardInfoTarget => EffectHelpers.GetItem(Effect.cardInfoTargets, cardInfoIndex);
 		public Player PlayerTarget => Effect.GetPlayer(playerIndex);
 		public IStackable StackableTarget => EffectHelpers.GetItem(Effect.stackableTargets, stackableIndex);
+
+		public GameCard GetCardTarget(TargetingContext overrideContext = null)
+			=> Effect.GetTarget(overrideContext.OrElse(CurrTargetingContext).cardTargetIndex.Value);
+		public Space GetSpaceTarget(TargetingContext overrideContext = null)
+			=> Effect.GetSpace(overrideContext.OrElse(CurrTargetingContext).spaceTargetIndex.Value);
+		public Player GetPlayerTarget(TargetingContext overrideContext = null)
+			=> Effect.GetPlayer(overrideContext.OrElse(CurrTargetingContext).playerTargetIndex.Value);
+		public IStackable GetStackableTarget(TargetingContext overrideContext = null)
+			=> EffectHelpers.GetItem(Effect.stackableTargets, overrideContext.OrElse(CurrTargetingContext).stackableTargetIndex.Value);
+
+
 		public int JumpIndex => EffectHelpers.GetItem(jumpIndices, jumpIndicesIndex);
 
 		public void RemoveTarget()

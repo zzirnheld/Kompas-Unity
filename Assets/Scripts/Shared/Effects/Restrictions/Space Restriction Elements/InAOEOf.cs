@@ -9,7 +9,7 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 	public class InAOEOf : SpaceRestrictionElement
 	{
 		public IIdentity<GameCardBase> card;
-		public IRestriction<GameCardBase> cardRestriction;
+		public IRestriction<GameCardBase> cardRestriction; //Used to restrict anyOf. If non-null, but anyOf is null, will make anyOf default to All()
 		public IIdentity<IReadOnlyCollection<GameCardBase>> anyOf;
 		public IIdentity<IReadOnlyCollection<GameCardBase>> allOf;
 
@@ -19,6 +19,8 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 
 		public override void Initialize(EffectInitializationContext initializationContext)
 		{
+			if (cardRestriction != null && anyOf == null) anyOf = new Identities.ManyCards.All();
+
 			base.Initialize(initializationContext);
 			card?.Initialize(initializationContext);
 			cardRestriction?.Initialize(initializationContext);
@@ -31,6 +33,12 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 			minAnyOfCount.Initialize(initializationContext);
 
 			alsoInAOE?.Initialize(initializationContext);
+		}
+
+		public override void AdjustSubeffectIndices(int increment, int startingAtIndex = 0)
+		{
+			base.AdjustSubeffectIndices(increment, startingAtIndex);
+			cardRestriction?.AdjustSubeffectIndices(increment, startingAtIndex);
 		}
 
 		protected override bool IsValidLogic(Space space, IResolutionContext context)
@@ -53,8 +61,12 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 			=> IsValidCard(card.From(context));
 
 		private bool ValidateAnyOf(Func<GameCardBase, bool> IsValidCard, IResolutionContext context) 
-			=> minAnyOfCount.From(context)
-				<= anyOf.From(context).Count(IsValidCard);
+		{
+			IEnumerable<GameCardBase> cards = anyOf.From(context);
+			if (cardRestriction != null) cards = cards.Where(c => cardRestriction.IsValid(c, context));
+
+			return minAnyOfCount.From(context) <= cards.Count(IsValidCard);
+		}
 
 		private bool ValidateAllOf(Func<GameCardBase, bool> IsValidCard, IResolutionContext context)
 			=> allOf.From(context).All(IsValidCard);

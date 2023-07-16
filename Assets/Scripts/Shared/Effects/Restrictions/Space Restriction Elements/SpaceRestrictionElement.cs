@@ -86,6 +86,12 @@ namespace KompasCore.Effects.Restrictions
 				restriction.Initialize(initializationContext);
 			}
 
+			public override void AdjustSubeffectIndices(int increment, int startingAtIndex = 0)
+			{
+				base.AdjustSubeffectIndices(increment, startingAtIndex);
+				restriction.AdjustSubeffectIndices(increment, startingAtIndex);
+			}
+
 			protected override bool IsValidLogic(Space space, IResolutionContext context)
 			{
 				var card = InitializationContext.game.BoardController.GetCardAt(space);

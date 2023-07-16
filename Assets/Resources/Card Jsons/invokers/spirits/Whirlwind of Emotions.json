@@ -41,26 +41,32 @@
 				},
 				{
 					"$type": "Subeffect:ConditionalEnd:",
-					"condition": "Number of Cards Fitting CardRestriction Fits NumberRestriction",
-					"cardRestriction": {
-						"$type": "Core.CardRestriction:AllOf:",
-						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-							{ "$type": "Core.CardRestriction:Character:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Hand", "Discard" ]
-							},
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Spirit" ]
+					"endIfTrue":
+					{
+						"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
+						"number": {
+							"$type": "Numbers:CountCards:",
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:AllOf:",
+								"elements": [
+									{ "$type": "Core.CardRestriction:Friendly:" },
+									{ "$type": "Core.CardRestriction:Character:" },
+									{
+										"$type": "Core.CardRestriction:Location:",
+										"locations": [ "Hand", "Discard" ]
+									},
+									{
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Spirit" ]
+									}
+								]
 							}
-						]
-					},
-					"numberRestriction": {
-						"$type": "Core.NumberRestriction:Compare:",
-						"comparison": { "$type": "Relationships.Number:LessThan:" },
-						"other": { "$type": "Numbers:Constant:", "constant": 2 }
+						},
+						"restriction": {
+							"$type": "Core.NumberRestriction:Compare:",
+							"comparison": { "$type": "Relationships.Number:LessThan:" },
+							"other": { "$type": "Numbers:Constant:", "constant": 2 }
+						}
 					}
 				},
 				{

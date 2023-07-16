@@ -26,7 +26,8 @@ namespace KompasServer.Effects.Subeffects
 				.Where(s => spaceRestriction.IsValid(s, ResolutionContext))
 				.Select(s => PlayerTarget.SubjectiveCoords(s));
 
-		public override bool IsImpossible() => ValidSpaces.Count() == 0;
+		public override bool IsImpossible(TargetingContext overrideContext = null)
+			=> ValidSpaces.Count() == 0;
 
 		/// <summary>
 		/// Whether this space target subeffect will be valid if the given theoretical target is targeted.

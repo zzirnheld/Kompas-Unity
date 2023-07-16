@@ -52,8 +52,15 @@
 				},
 				{
 					"$type": "Subeffect:ConditionalEnd:",
-					"condition": "Number Targets <= Constant",
-					"constant": 2
+					"endIfTrue": {
+						"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
+						"number": { "$type": "Numbers:TargetCount:" },
+						"restriction": {
+							"$type": "Core.NumberRestriction:Compare:",
+							"comparison": { "$type": "Relationships.Number:LessThanEqual:" },
+							"other": { "$type": "Numbers:Constant:", "constant": 2 }
+						}
+					}
 				},
 				{
 					"$type": "Subeffect:Attach:",

@@ -6,7 +6,8 @@ namespace KompasServer.Effects.Subeffects
 {
 	public class PayPips : ServerSubeffect
 	{
-		public override bool IsImpossible() => PlayerTarget.Pips < ToPay;
+		public override bool IsImpossible(TargetingContext targetingContext = null)
+			=> GetPlayerTarget(targetingContext).Pips < ToPay;
 
 		private int ToPay => pipCost.From(ResolutionContext, default);
 

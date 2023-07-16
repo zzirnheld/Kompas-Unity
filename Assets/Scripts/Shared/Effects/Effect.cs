@@ -119,6 +119,14 @@ namespace KompasCore.Effects
 
 		public void AddSpace(Space space) => spaceTargets.Add(space.Copy);
 
+		public T TestWithCardTarget<T>(GameCard target, Func<T> toTest)
+		{
+			cardTargets.Add(target);
+			var ret = toTest();
+			cardTargets.RemoveAt(cardTargets.Count - 1);
+			return ret;
+		}
+
 
 		public override string ToString() => $"Effect of {(Source == null ? "Nothing???" : Source.CardName)}";
 

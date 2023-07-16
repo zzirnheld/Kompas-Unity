@@ -7,9 +7,10 @@ namespace KompasCore.Effects.Restrictions.TriggerRestrictionElements
 {
 	public class CardFitsRestriction : TriggerGamestateRestrictionBase
 	{
-		public IRestriction<GameCardBase> cardRestriction;
 		public IIdentity<GameCardBase> card;
 		public IIdentity<IReadOnlyCollection<GameCardBase>> anyOf;
+		
+		public IRestriction<GameCardBase> cardRestriction;
 
 		public override void Initialize(EffectInitializationContext initializationContext)
 		{
@@ -19,6 +20,12 @@ namespace KompasCore.Effects.Restrictions.TriggerRestrictionElements
 			cardRestriction.Initialize(initializationContext);
 
 			if (AllNull(card, anyOf)) throw new System.ArgumentException($"No card to check against restriction in {initializationContext.effect}");
+		}
+
+		public override void AdjustSubeffectIndices(int increment, int startingAtIndex = 0)
+		{
+			base.AdjustSubeffectIndices(increment, startingAtIndex);
+			cardRestriction.AdjustSubeffectIndices(increment, startingAtIndex);
 		}
 
 		protected override bool IsValidLogic(TriggeringEventContext context, IResolutionContext secondaryContext)

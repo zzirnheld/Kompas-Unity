@@ -31,7 +31,21 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:ConditionalEnd:",
-					"condition": "Hand Full"
+					"endIfTrue": {
+						"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
+						"number": {
+							"$type": "Numbers:HandSize:",
+							"player": { "$type": "Players:TargetIndex:" }
+						},
+						"restriction": {
+							"$type": "Core.NumberRestriction:Compare:",
+							"comparison": { "$type": "Relationships.Number:GreaterThanEqual:" },
+							"other": { 
+								"$type": "Numbers:HandSizeLimit:",
+								"player": { "$type": "Players:TargetIndex:" }
+							}
+						}
+					}
 				},
 				{
 					"$type": "Subeffect:Draw:"

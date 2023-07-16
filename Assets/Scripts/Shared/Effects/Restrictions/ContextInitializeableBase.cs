@@ -9,6 +9,15 @@ namespace KompasCore.Effects
 	public interface IContextInitializeable
 	{
 		public void Initialize(EffectInitializationContext initializationContext);
+
+		/// <summary>
+        /// This is separate from the rest of initialization because it can happen at an arbitrary later time,
+        /// i.e. when a partial keyword subeffect is expanded and now needs to affect other subeffects
+        /// </summary>
+        /// <param name="increment">How much the subeffect indices need to be adjusted by</param>
+        /// <param name="startingAtIndex">A threshold index for which ones need to be adjusted
+        /// (i.e. the starting index of the newly inserted subeffects)</param>
+		public void AdjustSubeffectIndices(int increment, int startingAtIndex = 0);
 	}
 
 	[DataContract]
@@ -43,6 +52,17 @@ namespace KompasCore.Effects
 		{
 			return GetType().ToString();
 		}
+
+		public virtual void AdjustSubeffectIndices(int increment, int startingAtIndex = 0) { }
+
+		public static void AdjustSubeffectIndices(int[] subeffectIndices, int increment, int startingAtIndex)
+		{
+			if (subeffectIndices == null) return;
+
+			for (int i = 0; i < subeffectIndices.Length; i++)
+				if (subeffectIndices[i] >= startingAtIndex)
+					subeffectIndices[i] += increment;
+		}
 	}
 
 	public interface IInitializationRequirement
@@ -55,6 +75,16 @@ namespace KompasCore.Effects
 		public bool Validate(EffectInitializationContext initializationContext)
 		{
 			if (initializationContext.subeffect == null) throw new ArgumentNullException($"{GetType()} must be initialized by/with a Subeffect");
+
+			return true;
+		}
+	}
+
+	public class EffectInitializationRequirement : IInitializationRequirement
+	{
+		public bool Validate(EffectInitializationContext initializationContext)
+		{
+			if (initializationContext.effect == null) throw new ArgumentNullException($"{GetType()} must be initialized by/with an Effect");
 
 			return true;
 		}

@@ -38,8 +38,15 @@
 				},
 				{
 					"$type": "Subeffect:ConditionalEnd:",
-					"condition": "Target Violates Restriction",
-					"cardRestriction": { "$type": "Core.SpaceRestriction:Corner:" }
+					"endIfTrue": {
+						"$type": "Core.GamestateRestriction:Not:",
+						"negated": {
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"useDummyResolutionContext": false,
+							"card": { "$type": "Cards:TargetIndex:" },
+							"cardRestriction": { "$type": "Core.SpaceRestriction:Corner:" }
+						}
+					}
 				},
 				{
 					"$type": "Subeffect:TargetTargetsAugmentedCard:",
@@ -47,14 +54,19 @@
 				},
 				{
 					"$type": "Subeffect:ConditionalEnd:",
-					"condition": "Target Violates Restriction",
-					
-						"cardRestriction": {
+					"endIfTrue": {
+						"$type": "Core.GamestateRestriction:Not:",
+						"negated": {
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"useDummyResolutionContext": false,
+							"card": { "$type": "Cards:TargetIndex:" },
+							"cardRestriction": {
 							"$type": "Core.CardRestriction:AllOf:",
 							"elements": [
-							{ "$type": "Core.CardRestriction:Enemy:" },
-							{ "$type": "Core.CardRestriction:Avatar:" }
-						]
+								{ "$type": "Core.CardRestriction:Enemy:" },
+								{ "$type": "Core.CardRestriction:Avatar:" }
+							]
+						}
 					}
 				},
 				{

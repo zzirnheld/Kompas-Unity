@@ -7,7 +7,7 @@ namespace KompasCore.Effects.Restrictions.TriggerRestrictionElements
 	public class SpacesFitRestriction : TriggerGamestateRestrictionBase
 	{
 		public IRestriction<Space> spaceRestriction;
-		public IIdentity<IReadOnlyCollection<Space>> spaces;
+		public IIdentity<IReadOnlyCollection<Space>> spaces = new Identities.ManySpaces.All();
 
 		public bool any = false;
 
@@ -24,6 +24,17 @@ namespace KompasCore.Effects.Restrictions.TriggerRestrictionElements
 			return any
 				? spacesItem.Any(s => spaceRestriction.IsValid(s, ContextToConsider(context, secondaryContext)))
 				: spacesItem.All(s => spaceRestriction.IsValid(s, ContextToConsider(context, secondaryContext)));
+		}
+	}
+
+	public class SpaceFitsRestriction : SpacesFitRestriction
+	{
+		public IIdentity<Space> space;
+
+		public override void Initialize(EffectInitializationContext initializationContext)
+		{
+			spaces = new Identities.ManySpaces.Multiple() { spaces = new[] { space } };
+			base.Initialize(initializationContext);
 		}
 	}
 }

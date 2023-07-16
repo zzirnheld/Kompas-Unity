@@ -73,23 +73,9 @@ namespace KompasServer.Effects
 
 			//First, update the subeffect jump indices
 			//Of the subeffects to be inserted
-			foreach (var s in newSubeffects)
-			{
-				if (s.jumpIndices == null) continue;
-				for (int i = 0; i < s.jumpIndices.Length; i++)
-				{
-					s.jumpIndices[i] += startingAtIndex;
-				}
-			}
+			foreach (var s in newSubeffects) s.AdjustSubeffectIndices(startingAtIndex);
 			//And of any extant subeffects whose indices would be after the insertion point
-			foreach (var s in subeffects)
-			{
-				if (s.jumpIndices == null) continue;
-				for (int i = 0; i < s.jumpIndices.Length; i++)
-				{
-					if (s.jumpIndices[i] >= startingAtIndex) s.jumpIndices[i] += newSubeffects.Length;
-				}
-			}
+			foreach (var s in subeffects) s.AdjustSubeffectIndices(newSubeffects.Length, startingAtIndex);
 
 			ServerSubeffect[] combinedSubeffects = new ServerSubeffect[subeffects.Length + newSubeffects.Length];
 			int oldIndex;

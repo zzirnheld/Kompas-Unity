@@ -42,6 +42,18 @@
 					"$type": "Subeffect:DrawX:"
 				},
 				{
+					"$type": "Subeffect:ConditionalEnd:",
+					"endIfTrue": {
+						"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
+						"number": { "$type": "Numbers:HandSize:" },
+						"restriction": {
+							"$type": "Core.NumberRestriction:Compare:",
+							"comparison": { "$type": "Relationships.Number:LessThanEqual:" },
+							"other": { "$type": "Numbers:HandSizeLimit:" }
+						}
+					}
+				},
+				{
 					"$type": "Subeffect:SetXByGamestate:",
 					"whatToCount": "Hand Size"
 				},
@@ -50,10 +62,6 @@
 					"whatToCount": "Hand Size Limit",
 					"change": true,
 					"xMultiplier": -1
-				},
-				{
-					"$type": "Subeffect:ConditionalEnd:",
-					"condition": "X<=0"
 				},
 				{
 					"$type": "Subeffect:CardTarget:",

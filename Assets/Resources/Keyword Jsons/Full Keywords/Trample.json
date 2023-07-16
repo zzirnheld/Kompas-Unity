@@ -27,7 +27,15 @@
 		},
 		{
 			"$type": "Subeffect:ConditionalEnd:",
-			"condition": "X<0"
+			"endIfTrue": {
+				"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
+				"number": { "$type": "Numbers:EffectX:" },
+				"restriction": {
+					"$type": "Core.NumberRestriction:Compare:",
+					"comparison": { "$type": "Relationships.Number:LessThan:" },
+					"other": { "$type": "Numbers:Constant:", "constant": 0 }
+				}
+			}
 		},
 		{
 			"$type": "Subeffect:TargetTriggeringCardsSpace:"

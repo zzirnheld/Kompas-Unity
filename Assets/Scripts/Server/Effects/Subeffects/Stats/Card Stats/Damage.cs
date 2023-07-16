@@ -1,14 +1,12 @@
 using KompasCore.Exceptions;
-using System.Collections;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using UnityEngine;
 
 namespace KompasServer.Effects.Subeffects
 {
 	public class Damage : ServerSubeffect
 	{
-		public override bool IsImpossible() => CardTarget == null;
+		public override bool IsImpossible(TargetingContext overrideContext = null)
+			=> GetCardTarget(overrideContext) == null;
 
 		public override Task<ResolutionInfo> Resolve()
 		{

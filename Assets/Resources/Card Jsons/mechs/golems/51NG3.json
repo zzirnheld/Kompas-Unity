@@ -20,16 +20,13 @@
 				},
 				{
 					"$type": "Subeffect:ConditionalEnd:",
-					"condition": "Target Fits Restriction",
-					
+					"endIfTrue": {
+						"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+						"card": { "$type": "Cards:TargetIndex:" },
 						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Discard" ]
-							}
-						]
+							"$type": "Core.CardRestriction:Location:",
+							"locations": [ "Discard" ]
+						}
 					}
 				},
 				{
@@ -38,16 +35,17 @@
 				},
 				{
 					"$type": "Subeffect:ConditionalEnd:",
-					"condition": "Target Violates Restriction",
-					
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
-							{
+					"endIfTrue": {
+						"$type": "Core.GamestateRestriction:Not:",
+						"negated": {
+							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+							"useDummyResolutionContext": false,
+							"card": { "$type": "Cards:TargetIndex:" },
+							"cardRestriction": {
 								"$type": "Core.CardRestriction:Location:",
 								"locations": [ "Discard" ]
 							}
-						]
+						}
 					}
 				},
 				{
