@@ -13,6 +13,7 @@
 					"$type": "Subeffect:ConditionalEnd:",
 					"endIfTrue": {
 						"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
+						"useDummyResolutionContext": false,
 						"number": {
 							"$type": "Numbers:HandSize:",
 							"player": { "$type": "Players:EnemyPlayer:" }

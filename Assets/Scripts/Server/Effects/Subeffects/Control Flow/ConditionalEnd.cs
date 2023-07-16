@@ -1,80 +1,22 @@
-﻿using KompasCore.Cards;
-using KompasCore.Effects;
-using KompasCore.Effects.Restrictions;
-using System;
-using System.Linq;
+﻿using KompasCore.Effects.Restrictions;
 using System.Threading.Tasks;
 
 namespace KompasServer.Effects.Subeffects
 {
 	public class ConditionalEnd : ServerSubeffect
 	{
-		public const string TargetFitsRestriction = "Target Fits Restriction";
-
-		public const string SpaceTargetViolatesRestriction = "Space Target Violates Restriction";
-		public const string SpaceTargetFitsRestriction = "Space Target Fits Restriction";
-
-		public const string SourceViolatesRestriction = "Source Violates Restriction";
-		public const string NumTargetsLTEConstant = "Number Targets <= Constant";
-		public const string HandFull = "Hand Full";
-		public const string PlayerValueFitsNumberRestriction = "Player Value Fits Number Restriction";
-		public const string PlayerValueFloutsNumberRestriction = "Player Value Flouts Number Restriction";
-
-		public int constant = 0;
-		public IRestriction<GameCardBase> cardRestriction;
-		public IRestriction<Space> spaceRestriction;
-		public IRestriction<int> numberRestriction;
-
-		public PlayerValue playerValue;
-		public IRestriction<int> playerValueNumberRestriction;
-
-		public string condition;
-
 		public IGamestateRestriction endIfTrue;
 
 		public override void Initialize(ServerEffect eff, int subeffIndex)
 		{
 			base.Initialize(eff, subeffIndex);
-
-			cardRestriction?.Initialize(DefaultInitializationContext);
-			spaceRestriction?.Initialize(DefaultInitializationContext);
-			numberRestriction?.Initialize(DefaultInitializationContext);
-			playerValueNumberRestriction?.Initialize(DefaultInitializationContext);
-		}
-
-		private bool doesNumberOfCardsFittingRestrictionFitNumberRestriction()
-		{
-			int number = ServerGame.Cards.Where(c => cardRestriction.IsValid(c, ResolutionContext)).Count();
-			return numberRestriction.IsValid(number, ResolutionContext);
-		}
-
-		private bool ShouldEnd
-		{
-			get
-			{
-				if (endIfTrue != null) return endIfTrue.IsValid(ResolutionContext);
-
-				if (condition == null) throw new ArgumentNullException(nameof(condition));
-				return condition switch
-				{
-					TargetFitsRestriction => cardRestriction.IsValid(CardTarget, ResolutionContext),
-
-					SpaceTargetViolatesRestriction => !spaceRestriction.IsValid(SpaceTarget, ResolutionContext),
-					SpaceTargetFitsRestriction => spaceRestriction.IsValid(SpaceTarget, ResolutionContext),
-
-					SourceViolatesRestriction => !cardRestriction.IsValid(Source, ResolutionContext),
-					NumTargetsLTEConstant => Effect.CardTargets.Count() <= constant,
-					HandFull => PlayerTarget.HandFull,
-					PlayerValueFitsNumberRestriction => playerValueNumberRestriction.IsValid(playerValue.GetValueOf(PlayerTarget), ResolutionContext),
-					PlayerValueFloutsNumberRestriction => !playerValueNumberRestriction.IsValid(playerValue.GetValueOf(PlayerTarget), ResolutionContext),
-					_ => throw new System.ArgumentException($"Condition {condition} invalid for conditional end subeffect"),
-				};
-			}
+			endIfTrue.Initialize(DefaultInitializationContext);
 		}
 
 		public override Task<ResolutionInfo> Resolve()
 		{
-			if (ShouldEnd) return Task.FromResult(ResolutionInfo.End(condition));
+			//TODO implement a ToHumanReadableString sort of thing to provide as a reason here
+			if (endIfTrue.IsValid(ResolutionContext)) return Task.FromResult(ResolutionInfo.End("I said so"));
 			else return Task.FromResult(ResolutionInfo.Next);
 		}
 	}

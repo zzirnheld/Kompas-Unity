@@ -20,11 +20,12 @@
 				},
 				{
 					"$type": "Subeffect:ConditionalEnd:",
-					"condition": "Target Fits Restriction",
-					"cardRestriction": {
-						"$type": "Core.SpaceRestriction:InAOEOf:",
-						"anyOf": {
-							"$type": "ManyCards:FittingRestriction:",
+					"endIfTrue": {
+						"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+						"useDummyResolutionContext": false,
+						"card": { "$type": "Cards:TargetIndex:" },
+						"cardRestriction": {
+							"$type": "Core.SpaceRestriction:InAOEOf:",
 							"cardRestriction": {
 								"$type": "Core.CardRestriction:Subtypes:",
 								"subtypes": [ "Water" ]
