@@ -22,7 +22,6 @@
 					"$type": "Subeffect:ConditionalEnd:",
 					"endIfTrue": {
 						"$type": "Core.TriggerRestriction:CardFitsRestriction:",
-						"useDummyResolutionContext": false,
 						"card": { "$type": "Cards:TargetIndex:" },
 						"cardRestriction": {
 							"$type": "Core.SpaceRestriction:InAOEOf:",

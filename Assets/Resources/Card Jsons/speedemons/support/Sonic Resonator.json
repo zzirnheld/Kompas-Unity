@@ -101,11 +101,17 @@
 				},
 				{
 					"$type": "Subeffect:ConditionalJump:",
-					"condition": "X >= Constant",
-					"constant": 1,
-					"jumpIndices": [
-						2
-					]
+					"jumpIfTrue":
+					{
+						"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
+						"number": { "$type": "Numbers:EffectX:" },
+						"restriction": {
+							"$type": "Core.NumberRestriction:Compare:",
+							"comparison": { "$type": "Relationships.Number:GreaterThanEqual:" },
+							"other": { "$type": "Numbers:Constant:", "constant": 1 }
+						}
+					},
+					"jumpIndices": [ 2 ]
 				}
 			]
 		}

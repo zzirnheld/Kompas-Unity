@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "May Waycroft",
-	"effText": "When an enemy plays a card normally, give friendly Reporters +1 NEWS if the card was revealed. Regardless, they reveal a card.",
+	"effText": "When an enemy plays a card normally, if it had been revealed, give friendly Reporters +1 NEWS. Regardless, they reveal a card.",
 	"effects": [
 		{
 			"blurb":"The Value of Accountability",
@@ -23,17 +23,12 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:ConditionalJump:",
-					"condition": "Main Triggering Card Flouted Restriction Before",
-					
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
-							{ "$type": "Core.CardRestriction:Hidden:", "hidden": false }
-						]
+					"jumpIfTrue": {
+						"$type": "Core.TriggerRestriction:CardFitsRestriction:",
+						"card": { "$type": "Cards:CardBefore:" },
+						"cardRestriction": { "$type": "Core.CardRestriction:Hidden:", "hidden": true }
 					},
-					"jumpIndices": [
-						3
-					]
+					"jumpIndices": [ 3 ]
 				},
 				{
 					"$type": "Subeffect:ChangeAllCardStats:",

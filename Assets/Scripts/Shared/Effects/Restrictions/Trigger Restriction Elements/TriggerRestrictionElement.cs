@@ -52,6 +52,13 @@ namespace KompasCore.Effects.Restrictions
 		public int GetMaximum(IResolutionContext context) => int.MaxValue;
 		public bool IsValidClientSide(IEnumerable<GameCardBase> options, IResolutionContext context) => IsValid(options, context);
 		public void PrepareForSending(IResolutionContext context) { }
+
+		public override void Initialize(EffectInitializationContext initializationContext)
+		{
+			if (initializationContext.subeffect != null) useDummyResolutionContext = false; //Default to false if it's part of a subeffect.
+			//TODO possibly reconsider this because it could be unintuitive in debugging, but it makes my life easier
+			base.Initialize(initializationContext);
+		}
 	}
 
 	namespace TriggerRestrictionElements

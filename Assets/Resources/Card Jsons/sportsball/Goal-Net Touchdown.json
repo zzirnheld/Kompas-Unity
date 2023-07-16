@@ -70,7 +70,6 @@
 					"$type": "Subeffect:ConditionalEnd:",
 					"endIfTrue": {
 						"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
-						"useDummyResolutionContext": false,
 						"number": { "$type": "Numbers:TargetCount:" },
 						"restriction": {
 							"$type": "Core.NumberRestriction:Compare:",

@@ -17,7 +17,6 @@
 					"$type": "Subeffect:ConditionalJump:",
 					"jumpIfTrue": {
 						"$type": "Core.TriggerRestriction:CardFitsRestriction:",
-						"useDummyResolutionContext": false,
 						"anyOf": { "$type": "ManyCards:Discard:", "friendly": true, "enemy": false },
 						"cardRestriction": {
 							"$type": "Core.CardRestriction:Name:",
