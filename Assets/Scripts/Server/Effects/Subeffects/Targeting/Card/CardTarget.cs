@@ -15,9 +15,6 @@ namespace KompasServer.Effects.Subeffects
 {
 	public class CardTarget : ServerSubeffect
 	{
-		public const string NoOrder = "No Order";
-		public const string Closest = "Closest";
-
 		public IIdentity<IReadOnlyCollection<GameCardBase>> toSearch = new All();
 
 		/// <summary>
@@ -38,8 +35,6 @@ namespace KompasServer.Effects.Subeffects
 
 		public string blurb;
 
-
-		public string orderBy = NoOrder;
 
 		protected IReadOnlyCollection<GameCard> stashedPotentialTargets;
 
@@ -66,15 +61,7 @@ namespace KompasServer.Effects.Subeffects
 			var possibleTargets = from card in toSearch.From(ResolutionContext, default)
 									where cardRestriction.IsValid(card, ResolutionContext)
 									select card.Card;
-			if (!possibleTargets.Any()) return new GameCard[0];
-
-			return (orderBy switch
-			{
-				NoOrder => possibleTargets,
-				Closest => ClosestCards(possibleTargets),
-
-				_ => throw new System.ArgumentException($"Invalid ordering in choose from list")
-			}).ToArray();
+			return possibleTargets.ToArray();
 		}
 
 		private IEnumerable<GameCard> ClosestCards(IEnumerable<GameCard> possibleTargets)

@@ -42,26 +42,15 @@
 					"$type": "Subeffect:DrawX:"
 				},
 				{
-					"$type": "Subeffect:ConditionalEnd:",
-					"endIfTrue": {
-						"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
-						"number": { "$type": "Numbers:HandSize:" },
-						"restriction": {
-							"$type": "Core.NumberRestriction:Compare:",
-							"comparison": { "$type": "Relationships.Number:LessThanEqual:" },
-							"other": { "$type": "Numbers:HandSizeLimit:" }
-						}
-					}
+					"$type": "Subeffect:SetXByNumberIdentity:",
+					"numberIdentity": { "$type": "Numbers:HandSize:" },
+					"xModifier": -1
 				},
 				{
-					"$type": "Subeffect:SetXByGamestate:",
-					"whatToCount": "Hand Size"
-				},
-				{
-					"$type": "Subeffect:SetXByGamestate:",
-					"whatToCount": "Hand Size Limit",
+					"$type": "Subeffect:SetXByNumberIdentity:",
+					"numberIdentity": { "$type": "Numbers:HandSizeLimit:" },
 					"change": true,
-					"xMultiplier": -1
+					"xModifier": -1
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
@@ -87,9 +76,7 @@
 				{
 					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"delete": true,
-					"jumpIndices": [
-						8
-					]
+					"jumpIndices": [ 7 ]
 				}
 			]
 		}

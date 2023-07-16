@@ -13,39 +13,24 @@
 	},
 	"subeffects": [
 		{
-			"$type": "Subeffect:SetXByNumberIdentity:",
-			"numberIdentity": {
-				"$type": "Numbers:Arg:",
-				"multiplier": 1
-			}
-		},
-		{
 			"$type": "Subeffect:TargetThis:"
 		},
 		{
 			"$type": "Subeffect:CardTarget:",
 			"toSearch": { "$type": "ManyCards:Hand:" },
 			"cardRestriction": {
-				"blurb": "Modules to attach",
-				"elements": [
-					{
-						"$type": "Core.CardRestriction:Subtypes:",
-						"subtypes": [ "Basic", "Module" ]
-					}
-				]
+				"$type": "Core.CardRestriction:Subtypes:",
+				"subtypes": [ "Basic", "Module" ]
 			},
 			"listRestriction": {
 				"$type": "Core.ListRestriction:Maximum:",
-				"bound": { "$type": "Numbers:EffectX:" }
+				"bound": { "$type": "Numbers:Arg:" }
 			}
 		},
 		{
 			"$type": "Subeffect:SetXByNumberIdentity:",
-			"numberIdentity": {
-				"$type": "Numbers:TargetCount:",
-				"multiplier": 1,
-				"modifier": -1
-			}
+			"numberIdentity": { "$type": "Numbers:TargetCount:" },
+			"xModifier": -1
 		},
 		{
 			"$type": "Subeffect:Attach:",
@@ -56,9 +41,7 @@
 			"$type": "Subeffect:LoopWhileHaveTargets:",
 			"delete": true,
 			"remainingTargets": 1,
-			"jumpIndices": [
-				4
-			]
+			"jumpIndices": [ 3 ]
 		},
 		{
 			"$type": "Subeffect:DrawX:"
