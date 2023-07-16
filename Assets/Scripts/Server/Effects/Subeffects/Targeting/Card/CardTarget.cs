@@ -54,6 +54,13 @@ namespace KompasServer.Effects.Subeffects
 			toLinkWith?.Initialize(DefaultInitializationContext);
 		}
 
+		public override void AdjustSubeffectIndices(int increment, int startingAtIndex = 0)
+		{
+			base.AdjustSubeffectIndices(increment, startingAtIndex);
+			cardRestriction.AdjustSubeffectIndices(increment, startingAtIndex);
+			listRestriction.AdjustSubeffectIndices(increment, startingAtIndex);
+		}
+
 		protected IReadOnlyCollection<GameCard> DeterminePossibleTargets()
 		{
 			var possibleTargets = from card in toSearch.From(ResolutionContext, default)

@@ -22,6 +22,12 @@ namespace KompasCore.Effects.Restrictions.TriggerRestrictionElements
 			if (AllNull(card, anyOf)) throw new System.ArgumentException($"No card to check against restriction in {initializationContext.effect}");
 		}
 
+		public override void AdjustSubeffectIndices(int increment, int startingAtIndex = 0)
+		{
+			base.AdjustSubeffectIndices(increment, startingAtIndex);
+			cardRestriction.AdjustSubeffectIndices(increment, startingAtIndex);
+		}
+
 		protected override bool IsValidLogic(TriggeringEventContext context, IResolutionContext secondaryContext)
 		{
 			var contextToConsider = ContextToConsider(context, secondaryContext);

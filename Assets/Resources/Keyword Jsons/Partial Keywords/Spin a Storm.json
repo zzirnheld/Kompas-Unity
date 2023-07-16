@@ -1,12 +1,5 @@
 [
 	{
-		"$type":"Subeffect:CanResolve:",
-		"subeffIndices": [ 2 ],
-		"overrideTargetingContext": {
-			"cardTargetIndex": -1
-		}
-	},
-	{
 		"$type": "Subeffect:CardTarget:",
 		"toSearch": { "$type": "ManyCards:Hand:" },
 		"cardRestriction": {
@@ -16,6 +9,10 @@
 				{
 					"$type": "Core.CardRestriction:Subtypes:",
 					"subtypes": [ "Weather", "Event" ]
+				},
+				{
+					"$type": "Core.CardRestriction:SubeffectValidIfTargeted:",
+					"subeffectIndices": [ 1 ]
 				}
 			]
 		}
@@ -41,10 +38,13 @@
 						"subtypes": [ "Weather" ]
 					},
 					"sameAs": { "$type": "Spaces:TargetIndex:" }
+				},
+				{
+					"$type": "Core.SpaceRestriction:CanPlayCard:",
+					"toPlay": { "$type": "Cards:TargetIndex:" }
 				}
 			]
-		},
-		"targetIndex": -2
+		}
 	},
 	{
 		"$type": "Subeffect:Play:"

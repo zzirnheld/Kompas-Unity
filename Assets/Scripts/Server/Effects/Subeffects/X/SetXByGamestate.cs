@@ -6,6 +6,7 @@ namespace KompasServer.Effects.Subeffects
 {
 	public class SetXByGamestate: SetX
 	{
+		//TODO refactor into "set x by number restriction"
 		public const string HandSize = "Hand Size";
 		public const string HandSizeLimit = "Hand Size Limit";
 		public const string DistanceToCoordsThrough = "Distance to Coords Through";

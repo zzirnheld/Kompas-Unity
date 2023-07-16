@@ -59,6 +59,9 @@ namespace KompasServer.Effects.Subeffects
 			ServerEffect.OnImpossible = null;
 			return Task.FromResult(ResolutionInfo.Impossible(why));
 		}
+
+		public virtual void AdjustSubeffectIndices(int increment, int startingAtIndex = 0)
+			=> ContextInitializeableBase.AdjustSubeffectIndices(jumpIndices, increment, startingAtIndex);
 	}
 
 	public struct ResolutionInfo

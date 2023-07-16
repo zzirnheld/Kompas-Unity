@@ -7,7 +7,7 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 {
 	public class WithinDistanceOfNumberOfCards : SpaceRestrictionElement
 	{
-		public IRestriction<GameCardBase> cardRestriction;
+		public IRestriction<GameCardBase> cardRestriction = new GamestateRestrictionElements.AlwaysValid();
 
 		public IIdentity<int> numberOfCards = Constant.One;
 		public IIdentity<int> distance = Constant.One;
@@ -20,6 +20,12 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 			cardRestriction.Initialize(initializationContext);
 			numberOfCards.Initialize(initializationContext);
 			distance.Initialize(initializationContext);
+		}
+
+		public override void AdjustSubeffectIndices(int increment, int startingAtIndex = 0)
+		{
+			base.AdjustSubeffectIndices(increment, startingAtIndex);
+			cardRestriction.AdjustSubeffectIndices(increment, startingAtIndex);
 		}
 
 		protected override bool IsValidLogic(Space space, IResolutionContext context)

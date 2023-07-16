@@ -17,6 +17,12 @@ namespace KompasServer.Effects.Subeffects
 			cardRestriction.Initialize(DefaultInitializationContext);
 		}
 
+		public override void AdjustSubeffectIndices(int increment, int startingAtIndex = 0)
+		{
+			base.AdjustSubeffectIndices(increment, startingAtIndex);
+			cardRestriction?.AdjustSubeffectIndices(increment, startingAtIndex);
+		}
+
 		public override Task<ResolutionInfo> Resolve()
 		{
 			foreach (var c in Game.BoardController.CardsWhere(c => cardRestriction.IsValid(c, ResolutionContext)))

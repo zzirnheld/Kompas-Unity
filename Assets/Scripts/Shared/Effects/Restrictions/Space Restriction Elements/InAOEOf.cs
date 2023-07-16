@@ -35,6 +35,12 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 			alsoInAOE?.Initialize(initializationContext);
 		}
 
+		public override void AdjustSubeffectIndices(int increment, int startingAtIndex = 0)
+		{
+			base.AdjustSubeffectIndices(increment, startingAtIndex);
+			cardRestriction?.AdjustSubeffectIndices(increment, startingAtIndex);
+		}
+
 		protected override bool IsValidLogic(Space space, IResolutionContext context)
 		{
 			var isValidCard = IsValidAOE(space, context);

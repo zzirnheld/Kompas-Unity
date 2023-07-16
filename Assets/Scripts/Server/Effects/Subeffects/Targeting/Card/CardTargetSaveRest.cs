@@ -17,6 +17,12 @@ namespace KompasServer.Effects.Subeffects
 			else restRestriction.Initialize(DefaultInitializationContext);
 		}
 
+		public override void AdjustSubeffectIndices(int increment, int startingAtIndex = 0)
+		{
+			base.AdjustSubeffectIndices(increment, startingAtIndex);
+			restRestriction?.AdjustSubeffectIndices(increment, startingAtIndex);
+		}
+
 		protected override Task<ResolutionInfo> NoPossibleTargets()
 		{
 			var rest = ServerGame.Cards.Where(c => restRestriction.IsValid(c, ResolutionContext));
