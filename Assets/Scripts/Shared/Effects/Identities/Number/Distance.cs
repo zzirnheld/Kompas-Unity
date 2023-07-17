@@ -23,7 +23,6 @@ namespace KompasCore.Effects.Identities.Numbers
 			Space first = firstSpace.From(context, secondaryContext);
 			Space second = secondSpace.From(context, secondaryContext);
 
-
 			if (first == null || second == null) return -1;
 
 			if (throughRestriction == null) return first.DistanceTo(second);

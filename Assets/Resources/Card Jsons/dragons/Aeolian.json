@@ -34,8 +34,12 @@
 					}
 				},
 				{
-					"$type": "Subeffect:SetXByGamestate:",
-					"whatToCount": "Distance Between Target and Target Space"
+					"$type": "Subeffect:SetXByNumberIdentity:",
+					"numberIdentity": {
+						"$type": "Numbers:Distance:",
+						"firstSpace": { "$type": "Cards:TargetIndex:" },
+						"secondSpace": { "$type": "Spaces:TargetIndex:" }
+					}
 				},
 				{
 					"$type": "Subeffect:Move:"

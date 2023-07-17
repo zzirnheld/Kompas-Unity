@@ -9,24 +9,12 @@
 			"blurb":"to move Shaper to",
 			"spaceRestriction":
 			{
-				"$type": "Core.SpaceRestriction:AllOf:",
-				"elements": [
-					{
-						"$type": "Core.SpaceRestriction:ConnectedTo:",
-						"space": { "$type": "Cards:ThisCardNow:" },
-						"byRestriction":{
-							"$type": "Core.SpaceRestriction:AllOf:",
-							"elements": [
-								{ "$type": "Core.CardRestriction:Character:" },
-								{
-									"$type": "Core.CardRestriction:Subtypes:",
-									"subtypes": [ "Ethereal" ]
-								}
-							]
-						}
-					}
-					
-				]
+				"$type": "Core.SpaceRestriction:ConnectedTo:",
+				"space": { "$type": "Cards:ThisCardNow:" },
+				"byRestriction":{
+					"$type": "Core.CardRestriction:Subtypes:",
+					"subtypes": [ "Ethereal" ]
+				}
 			}
 		},
 		{
@@ -35,26 +23,19 @@
 		{
 			"$type":"Subeffect:SpendMovement:",
 			"xMultiplier": 0,
-			"xModifier":1
+			"xModifier": 1
 		},
 		{
-			"$type":"Subeffect:SetXByGamestate:",
-			"whatToCount":"Distance to Coords Through",
-			"throughRestriction":{
-				"$type": "Core.CardRestriction:AllOf:",
-				"elements": [
-					{ "$type": "Core.CardRestriction:Character:" },
-					{
-						"$type": "Core.CardRestriction:Location:",
-						"locations": [ "Board" ]
-					},
-					{
-						"$type": "Core.CardRestriction:Subtypes:",
-						"subtypes": [ "Ethereal" ]
-					}
-				]
+			"$type": "Subeffect:SetXByNumberIdentity:",
+			"numberIdentity": {
+				"$type": "Numbers:Distance:",
+				"firstSpace": { "$type": "Cards:ThisCardNow:" },
+				"secondSpace": { "$type": "Spaces:TargetIndex:" },
+				"throughRestriction": {
+					"$type": "Core.CardRestriction:Subtypes:",
+					"subtypes": [ "Ethereal" ]
+				}
 			},
-			"xMultiplier":1,
 			"xModifier":-1
 		},
 		{

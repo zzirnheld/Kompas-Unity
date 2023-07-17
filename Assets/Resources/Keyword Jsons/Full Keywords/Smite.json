@@ -21,9 +21,11 @@
 			"listRestriction": { "$type": "Core.GamestateRestriction:AlwaysValid:" }
 		},
 		{
-			"$type": "Subeffect:SetXByGamestate:",
-			"whatToCount": "Cards Fitting Restriction",
-			"cardRestriction": { "$type": "Core.CardRestriction:Target:" }
+			"$type": "Subeffect:SetXByNumberIdentity:",
+			"numberIdentity": {
+				"$type": "Numbers:CountCards:",
+				"cards": { "$type": "ManyCards:Targets:" }
+			}
 		},
 		{
 			"$type": "Subeffect:Discard:"

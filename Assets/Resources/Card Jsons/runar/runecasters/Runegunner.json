@@ -43,8 +43,12 @@
 					"$type": "Subeffect:Play:"
 				},
 				{
-					"$type": "Subeffect:SetXByGamestate:",
-					"whatToCount": "Distance From Source to Target"
+					"$type": "Subeffect:SetXByNumberIdentity:",
+					"numberIdentity": {
+						"$type": "Numbers:Distance:",
+						"firstSpace": { "$type": "Cards:ThisCardNow:" },
+						"secondSpace": { "$type": "Cards:TargetIndex:" }
+					}
 				},
 				{
 					"$type": "Subeffect:PayPipsTargetCost:"

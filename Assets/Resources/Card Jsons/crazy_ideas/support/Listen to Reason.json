@@ -15,22 +15,14 @@
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:SetXByGamestate:",
-					"whatToCount": "Cards Fitting Restriction",
-					
+					"$type": "Subeffect:SetXByNumberIdentity:",
+					"numberIdentity": {
+						"$type": "Numbers:CountCards:",
+						"cards": { "$type": "ManyCards:Hand:" },
 						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Hand" ]
-							},
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Crazy", "Idea" ]
-							}
-						]
+							"$type": "Core.CardRestriction:Subtypes:",
+							"subtypes": [ "Crazy", "Idea" ]
+						}
 					}
 				},
 				{

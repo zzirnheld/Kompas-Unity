@@ -10,21 +10,14 @@
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:SetXByGamestate:",
-					"whatToCount": "Cards Fitting Restriction",
-					"cardRestriction": {
-						"$type": "Core.CardRestriction:AllOf:",
-						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Discard" ]
-							},
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Rune" ]
-							}
-						]
+					"$type": "Subeffect:SetXByNumberIdentity:",
+					"numberIdentity": {
+						"$type": "Numbers:CountCards:",
+						"cards": { "$type": "ManyCards:Discard:" },
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:Subtypes:",
+							"subtypes": [ "Rune" ]
+						}
 					}
 				},
 				{

@@ -11,12 +11,14 @@
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:SetXByGamestate:",
-					"whatToCount": "Cards Fitting Restriction",
-					"toSearch": { "$type": "ManyCards:Discard:" },
-					"cardRestriction": {
-						"$type": "Core.CardRestriction:Subtypes:",
-						"subtypes": [ "Warrior" ]
+					"$type": "Subeffect:SetXByNumberIdentity:",
+					"numberIdentity": {
+						"$type": "Numbers:CountCards:",
+						"cards": { "$type": "ManyCards:Discard:" },
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:Subtypes:",
+							"subtypes": [ "Warrior" ]
+						}
 					}
 				},
 				{

@@ -11,7 +11,6 @@
 		public const string C = "C";
 
 		public const string DistanceToTarget = "Distance to Target";
-		public const string DistanceBetweenTargetAndCoords = "Distance Between Target and Target Space";
 
 		public string whatToCount;
 
@@ -28,7 +27,6 @@
 					W => CardTarget.W,
 					C => CardTarget.C,
 					DistanceToTarget => Source.DistanceTo(CardTarget),
-					DistanceBetweenTargetAndCoords => CardTarget.DistanceTo(SpaceTarget),
 					_ => throw new System.ArgumentException($"Invalid 'what to count' string {whatToCount} in x by gamestate value subeffect"),
 				};
 			}

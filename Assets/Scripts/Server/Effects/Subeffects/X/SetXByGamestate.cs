@@ -6,14 +6,6 @@ namespace KompasServer.Effects.Subeffects
 {
 	public class SetXByGamestate: SetX
 	{
-		//TODO refactor into "set x by number restriction"
-		public const string HandSize = "Hand Size";
-		public const string HandSizeLimit = "Hand Size Limit";
-		public const string DistanceToCoordsThrough = "Distance to Coords Through";
-		public const string DistanceBetweenTargetAndCoords = "Distance Between Target and Target Space";
-		public const string DistanceFromSourceToTarget = "Distance From Source to Target";
-
-		public const string CardsFittingRestriction = "Cards Fitting Restriction";
 		public const string TotalCardValueOfCardsFittingRestriction = "Total Card Value of Cards Fitting Restriction";
 		public const string MaxCardValueOfCardsFittingRestriction = "Max Card Value of Cards Fitting Restriction";
 
@@ -42,14 +34,6 @@ namespace KompasServer.Effects.Subeffects
 			{
 				return whatToCount switch
 				{
-					HandSize => PlayerTarget.handCtrl.HandSize,
-					HandSizeLimit => PlayerTarget.HandSizeLimit,
-					DistanceToCoordsThrough => Game.BoardController.ShortestPath(Source, SpaceTarget, throughRestriction, ResolutionContext),
-					DistanceBetweenTargetAndCoords => CardTarget.DistanceTo(SpaceTarget),
-					DistanceFromSourceToTarget => Source.DistanceTo(CardTarget),
-
-					CardsFittingRestriction
-						=> Game.Cards.Where(c => cardRestriction.IsValid(c, ResolutionContext)).Count(),
 					TotalCardValueOfCardsFittingRestriction
 						=> Game.Cards.Where(c => cardRestriction.IsValid(c, ResolutionContext)).Sum(cardValue.GetValueOf),
 					MaxCardValueOfCardsFittingRestriction
