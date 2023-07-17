@@ -19,12 +19,9 @@
 						"elements": [
 							{
 								"$type": "Core.SpaceRestriction:InAOEOf:",
-								"anyOf": {
-									"$type": "ManyCards:FittingRestriction:",
-									"cardRestriction": {
-										"$type": "Core.CardRestriction:Subtypes:",
-										"subtypes": [ "Water" ]
-									}
+								"cardRestriction": {
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Water" ]
 								}
 							},
 							{
@@ -49,12 +46,9 @@
 								"space": { "$type": "Cards:TargetIndex:" },
 								"byRestriction":{
 									"$type": "Core.SpaceRestriction:InAOEOf:",
-									"anyOf": {
-										"$type": "ManyCards:FittingRestriction:",
-										"cardRestriction": {
-											"$type": "Core.CardRestriction:Subtypes:",
-											"subtypes": [ "Water" ]
-										}
+									"cardRestriction": {
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Water" ]
 									}
 								}
 							}

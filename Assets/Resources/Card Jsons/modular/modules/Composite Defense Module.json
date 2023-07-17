@@ -31,15 +31,12 @@
 					"numberIdentity": {
 						"$type": "Numbers:CountCards:",
 						"cards": {
-							"$type": "ManyCards:FittingRestriction:",
-							"cards": {
-								"$type": "ManyCards:Augments:",
-								"card": { "$type": "Cards:TargetIndex:" }
-							},
-							"cardRestriction": {
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Module" ]
-							}
+							"$type": "ManyCards:Augments:",
+							"card": { "$type": "Cards:TargetIndex:" }
+						},
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:Subtypes:",
+							"subtypes": [ "Module" ]
 						}
 					}
 				},

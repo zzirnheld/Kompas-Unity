@@ -6,9 +6,6 @@ namespace KompasServer.Effects.Subeffects
 {
 	public class SetXByGamestate: SetX
 	{
-		public const string TotalCardValueOfCardsFittingRestriction = "Total Card Value of Cards Fitting Restriction";
-		public const string MaxCardValueOfCardsFittingRestriction = "Max Card Value of Cards Fitting Restriction";
-
 		public const string EffectUsesThisTurn = "Effect Uses This Turn";
 		public const string NumberOfTargets = "Number of Targets";
 
@@ -34,11 +31,6 @@ namespace KompasServer.Effects.Subeffects
 			{
 				return whatToCount switch
 				{
-					TotalCardValueOfCardsFittingRestriction
-						=> Game.Cards.Where(c => cardRestriction.IsValid(c, ResolutionContext)).Sum(cardValue.GetValueOf),
-					MaxCardValueOfCardsFittingRestriction
-						=> Game.Cards.Where(c => cardRestriction.IsValid(c, ResolutionContext)).Max(cardValue.GetValueOf),
-
 					EffectUsesThisTurn => Effect.TimesUsedThisTurn,
 					NumberOfTargets => Effect.CardTargets.Count(),
 

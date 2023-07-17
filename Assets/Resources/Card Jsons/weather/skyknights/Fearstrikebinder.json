@@ -20,12 +20,9 @@
 									{ "$type": "Core.CardRestriction:Friendly:" },
 									{											
 										"$type": "Core.SpaceRestriction:InAOEOf:",
-										"anyOf": {
-											"$type": "ManyCards:FittingRestriction:",
-											"cardRestriction": {
-												"$type": "Core.CardRestriction:Subtypes:",
-												"subtypes": [ "Weather" ]
-											}
+										"cardRestriction": {
+											"$type": "Core.CardRestriction:Subtypes:",
+											"subtypes": [ "Weather" ]
 										}
 									}
 								]

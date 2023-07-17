@@ -46,19 +46,11 @@
 								"$type": "Core.SpaceRestriction:ConnectedTo:",
 								"space": { "$type": "Cards:TargetIndex:" },
 								"byRestriction":{
-									"$type": "Core.SpaceRestriction:AllOf:",
-									"elements": [
-										{
-											"$type": "Core.SpaceRestriction:InAOEOf:",
-											"anyOf": {
-												"$type": "ManyCards:FittingRestriction:",
-												"cardRestriction": {
-													"$type": "Core.CardRestriction:Subtypes:",
-													"subtypes": [ "Water" ]
-												}
-											}
-										}
-									]
+									"$type": "Core.SpaceRestriction:InAOEOf:",
+									"cardRestriction": {
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Water" ]
+									}
 								}
 							}
 						]

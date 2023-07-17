@@ -44,12 +44,9 @@
 						"$type": "Cards:SelectFromMany:",
 						"selector": { "$type": "KompasCore.Effects.Selectors.SortIndex, Assembly-CSharp" },
 						"cards": {
-							"$type": "ManyCards:FittingRestriction:",
-							"cards": {
-								"$type": "ManyCards:Discard:",
-								"friendly": true,
-								"enemy": false
-							}
+							"$type": "ManyCards:Discard:",
+							"friendly": true,
+							"enemy": false
 						}
 					}
 				},
@@ -62,12 +59,9 @@
 						"$type": "Cards:SelectFromMany:",
 						"selector": { "$type": "KompasCore.Effects.Selectors.SortIndex, Assembly-CSharp" },
 						"cards": {
-							"$type": "ManyCards:FittingRestriction:",
-							"cards": {
-								"$type": "ManyCards:Discard:",
-								"friendly": false,
-								"enemy": true
-							}
+							"$type": "ManyCards:Discard:",
+							"friendly": false,
+							"enemy": true
 						}
 					}
 				},

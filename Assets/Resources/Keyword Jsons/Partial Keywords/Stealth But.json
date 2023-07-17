@@ -13,16 +13,9 @@
 				},
 				{
 					"$type": "Core.SpaceRestriction:InAOEOf:",
-					"anyOf": {
-						"$type": "ManyCards:FittingRestriction:",
-						
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [ {
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Shade" ]
-							} ]
-						}
+					"cardRestriction": {
+						"$type": "Core.CardRestriction:Subtypes:",
+						"subtypes": [ "Shade" ]
 					},
 					"sameAs": { "$type": "Cards:ThisCardNow:" }
 				}

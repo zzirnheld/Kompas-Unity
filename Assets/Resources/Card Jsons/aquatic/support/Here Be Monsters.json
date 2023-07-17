@@ -14,24 +14,34 @@
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:SetXByGamestate:",
-					"whatToCount": "Total Card Value of Cards Fitting Restriction",
-					"cardValue": { "value": "Cost" },
-					"cardRestriction": {
-						"$type": "Core.CardRestriction:AllOf:",
-						"elements": [
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Water" ]
-							},
-							{
-								"$type": "Core.CardRestriction:AOEContains:",
-								"cards": {
-									"$type": "ManyCards:Concat:",
-									"cards": [ { "$type": "Cards:ThisCardNow:" } ]
+					"$type": "Subeffect:SetXByNumberIdentity:",
+					"numberIdentity": {
+						"$type": "Numbers:Operation:",
+						"operation": { "$type": "KompasCore.Effects.Identities.NumberOperations.Sum, Assembly-CSharp" },
+						"manyNumbers": {
+							"$type": "ManyNumbers:FromCardValue:",
+							"cardValue": { "value": "Cost" },
+							"cards": {
+								"$type": "ManyCards:FittingRestriction:",
+								"cards": { "$type": "ManyCards:Board:" },
+								"cardRestriction": {
+									"$type": "Core.CardRestriction:AllOf:",
+									"elements": [
+										{
+											"$type": "Core.CardRestriction:Subtypes:",
+											"subtypes": [ "Water" ]
+										},
+										{
+											"$type": "Core.CardRestriction:AOEContains:",
+											"cards": {
+												"$type": "ManyCards:Concat:",
+												"cards": [ { "$type": "Cards:ThisCardNow:" } ]
+											}
+										}
+									]
 								}
 							}
-						]
+						}
 					}
 				},
 				{

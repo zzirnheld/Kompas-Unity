@@ -24,12 +24,9 @@
 					"$type": "Subeffect:TargetAll:",
 					"cardRestriction": {
 						"$type": "Core.SpaceRestriction:InAOEOf:",
-						"anyOf": {
-							"$type": "ManyCards:FittingRestriction:",
-							"cardRestriction": {
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Weather", "Condition" ]
-							}
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:Subtypes:",
+							"subtypes": [ "Weather", "Condition" ]
 						},
 						"sameAs": { "$type": "Cards:ThisCardNow:" }
 					}

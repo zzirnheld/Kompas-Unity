@@ -34,23 +34,15 @@
 				},
 				{
 					"$type": "Subeffect:CardTarget:",
-					
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
+					"cardRestriction": {
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
 							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.SpaceRestriction:InAOEOf:",
-								"anyOf": {
-									"$type": "ManyCards:FittingRestriction:",
-									
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [ {
-											"$type": "Core.CardRestriction:Subtypes:",
-											"subtypes": [ "Weather", "Condition" ]
-										} ]
-									}
+								"cardRestriction": {
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Weather", "Condition" ]
 								},
 								"sameAs": { "$type": "Cards:ThisCardNow:" }
 							},

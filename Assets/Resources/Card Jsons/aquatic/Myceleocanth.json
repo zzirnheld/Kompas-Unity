@@ -20,12 +20,9 @@
 							{ "$type": "Core.CardRestriction:Character:" },
 							{
 								"$type": "Core.SpaceRestriction:InAOEOf:",
-								"anyOf": {
-									"$type": "ManyCards:FittingRestriction:",
-									"cardRestriction": {
-										"$type": "Core.CardRestriction:Subtypes:",
-										"subtypes": [ "Water" ]
-									}
+								"cardRestriction": {
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Water" ]
 								}
 							}
 						]

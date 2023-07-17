@@ -22,23 +22,16 @@
 			"subeffects": [
 				{
 					"$type": "Subeffect:TargetAll:",
-					
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
+					"cardRestriction": {
+						"$type": "Core.CardRestriction:AllOf:",
 							"elements": [
-							{ "$type": "Core.CardRestriction:Spell:" },
+							{ "$type": "Core.CardRestriction:Character:" },
+							{ "$type": "Core.CardRestriction:Enemy:" },
 							{
 								"$type": "Core.SpaceRestriction:InAOEOf:",
-								"anyOf": {
-									"$type": "ManyCards:FittingRestriction:",
-									
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [ {
-											"$type": "Core.CardRestriction:Subtypes:",
-											"subtypes": [ "Weather", "Condition" ]
-										} ]
-									}
+								"cardRestriction": {
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Weather", "Condition" ]
 								},
 								"sameAs": { "$type": "Cards:ThisCardNow:" }
 							},
