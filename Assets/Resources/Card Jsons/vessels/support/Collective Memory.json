@@ -48,8 +48,8 @@
 					"targetIndex": 0
 				},
 				{
-					"$type": "Subeffect:SetXByGamestate:",
-					"whatToCount": "Number of Targets"
+					"$type": "Subeffect:SetXByNumberIdentity:",
+					"numberIdentity": { "$type": "Numbers:TargetCount:" }
 				},
 				{
 					"$type": "Subeffect:Resummon:"
