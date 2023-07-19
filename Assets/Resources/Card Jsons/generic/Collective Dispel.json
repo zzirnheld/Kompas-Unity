@@ -18,18 +18,21 @@
 					"$type": "Subeffect:Draw:"
 				},
 				{
-					"$type":"Subeffect:SetXBoardRestriction:",
-					
+					"$type": "Subeffect:SetXByNumberIdentity:",
+					"numberIdentity": {
+						"$type": "Numbers:CountCards:",
+						"cards": { "$type": "ManyCards:Board:" },
 						"cardRestriction": {
 							"$type": "Core.CardRestriction:AllOf:",
 							"elements": [
-							{
-								"$type": "Core.SpaceRestriction:AdjacentTo:",
-								"space": { "$type": "Cards:ThisCardNow:" }
-							}
-						]
-					},
-					"xMultiplier":1
+								{
+									"$type": "Core.SpaceRestriction:AdjacentTo:",
+									"space": { "$type": "Cards:ThisCardNow:" }
+								},
+								{ "$type": "Core.SpaceRestriction:Character:" }
+							]
+						}
+					}
 				},
 				{
 					"$type": "Subeffect:CardTarget:",

@@ -10,24 +10,23 @@
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:SetXBoardRestriction:",
-					
+					"$type": "Subeffect:SetXByNumberIdentity:",
+					"numberIdentity": {
+						"$type": "Numbers:CountCards:",
+						"cards": { "$type": "ManyCards:Board:" },
 						"cardRestriction": {
 							"$type": "Core.CardRestriction:AllOf:",
 							"elements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							},
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Supplicant" ]
-							},
-							{
-								"$type": "Core.SpaceRestriction:AdjacentTo:",
-								"space": { "$type": "Cards:ThisCardNow:" }
-							}
-						]
+								{
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Supplicant" ]
+								},
+								{
+									"$type": "Core.SpaceRestriction:AdjacentTo:",
+									"space": { "$type": "Cards:ThisCardNow:" }
+								}
+							]
+						}
 					}
 				},
 				{

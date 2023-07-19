@@ -51,24 +51,23 @@
 					"$type":"Subeffect:TargetTriggeringCard:"
 				},
 				{
-					"$type": "Subeffect:SetXBoardRestriction:",
-					
+					"$type": "Subeffect:SetXByNumberIdentity:",
+					"numberIdentity": {
+						"$type": "Numbers:CountCards:",
+						"cards": { "$type": "ManyCards:Board:" },
 						"cardRestriction": {
 							"$type": "Core.CardRestriction:AllOf:",
 							"elements": [
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							},
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Tarocco" ]
-							},
-							{
-								"$type": "Core.SpaceRestriction:AdjacentTo:",
-								"space": { "$type": "Cards:TargetIndex:" }
-							}
-						]
+								{
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Tarocco" ]
+								},
+								{
+									"$type": "Core.SpaceRestriction:AdjacentTo:",
+									"space": { "$type": "Cards:TargetIndex:" }
+								}
+							]
+						}
 					}
 				},
 				{
@@ -76,9 +75,7 @@
 				},
 				{
 					"$type": "Subeffect:XTimes:",
-					"jumpIndices": [
-						2
-					]
+					"jumpIndices": [ 2 ]
 				}
 			]
 		}

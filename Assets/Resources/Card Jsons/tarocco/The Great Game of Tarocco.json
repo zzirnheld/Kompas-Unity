@@ -15,23 +15,21 @@
 			},
 			"subeffects":[
 				{
-					"$type":"Subeffect:SetXBoardRestriction:",
-					"cardRestriction":
-					{
-						"$type": "Core.CardRestriction:AllOf:",
-						"elements": [
-							{ "$type": "Core.CardRestriction:Friendly:" },
-							{
-								"$type": "Core.CardRestriction:Location:",
-								"locations": [ "Board" ]
-							},
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Tarocco" ]
-							}
-						]
-					},
-					"xMultiplier":1
+					"$type": "Subeffect:SetXByNumberIdentity:",
+					"numberIdentity": {
+						"$type": "Numbers:CountCards:",
+						"cards": { "$type": "ManyCards:Board:" },
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+								{ "$type": "Core.CardRestriction:Friendly:" },
+								{
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Tarocco" ]
+								}
+							]
+						}
+					}
 				},
 				{
 					"$type":"Subeffect:DrawX:",

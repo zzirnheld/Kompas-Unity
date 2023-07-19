@@ -25,22 +25,12 @@
 				{
 					"$type": "Subeffect:TargetAll:",
 					"toSearch": { "$type": "ManyCards:Board:" },
-					
+					"cardRestriction": {
+						"$type": "Core.CardRestriction:HasAugment:",
 						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
-							{
-								"$type": "Core.CardRestriction:HasAugment:",
-								
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [ {
-										"$type": "Core.CardRestriction:Name:",
-										"sameAs": { "$type": "Cards:TargetIndex:" }
-									} ]
-								}
-							}
-						]
+							"$type": "Core.CardRestriction:Name:",
+							"sameAs": { "$type": "Cards:TargetIndex:" }
+						}
 					}
 				},
 				{
