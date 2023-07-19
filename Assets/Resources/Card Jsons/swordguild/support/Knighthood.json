@@ -19,10 +19,9 @@
 						{
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 							"card": { "$type": "Cards:CauseAfter:" },
-							
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:AllOf:",
+								"elements": [
 									{
 										"$type": "Core.CardRestriction:Location:",
 										"locations": [ "Board" ]
@@ -39,22 +38,38 @@
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:SetXByTriggeringCardValue:",
-					"cardValue": { "value": "N" }
+					"$type": "Subeffect:SetXByNumberIdentity:",
+					"numberIdentity": { 
+						"$type": "Numbers:FromCardValue:",
+						"card": { "$type": "Cards:CauseAfter:" },
+						"cardValue": { "value": "N" }
+					}
 				},
 				{
-					"$type": "Subeffect:SetXByTriggeringCardValue:",
-					"cardValue": { "value": "E" },
+					"$type": "Subeffect:SetXByNumberIdentity:",
+					"numberIdentity": { 
+						"$type": "Numbers:FromCardValue:",
+						"card": { "$type": "Cards:CauseAfter:" },
+						"cardValue": { "value": "E" }
+					},
 					"change": true
 				},
 				{
-					"$type": "Subeffect:SetXByTriggeringCardValue:",
-					"cardValue": { "value": "S" },
+					"$type": "Subeffect:SetXByNumberIdentity:",
+					"numberIdentity": { 
+						"$type": "Numbers:FromCardValue:",
+						"card": { "$type": "Cards:CauseAfter:" },
+						"cardValue": { "value": "S" }
+					},
 					"change": true
 				},
 				{
-					"$type": "Subeffect:SetXByTriggeringCardValue:",
-					"cardValue": { "value": "W" },
+					"$type": "Subeffect:SetXByNumberIdentity:",
+					"numberIdentity": { 
+						"$type": "Numbers:FromCardValue:",
+						"card": { "$type": "Cards:CauseAfter:" },
+						"cardValue": { "value": "W" }
+					},
 					"change": true
 				},
 				{

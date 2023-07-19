@@ -30,9 +30,11 @@
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:SetXByTriggeringCardValue:",
-					"cardValue": {
-						"value": "S"
+					"$type": "Subeffect:SetXByNumberIdentity:",
+					"numberIdentity": { 
+						"$type": "Numbers:FromCardValue:",
+						"card": { "$type": "Cards:CardBefore:" },
+						"cardValue": { "value": "S" }
 					}
 				},
 				{
