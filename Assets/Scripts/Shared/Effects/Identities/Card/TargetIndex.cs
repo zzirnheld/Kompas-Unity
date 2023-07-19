@@ -12,4 +12,12 @@ namespace KompasCore.Effects.Identities.Cards
 				?? EffectHelpers.GetItem(contextToConsider.CardTargets, index);
 		} 
 	}
+
+	public class TargetCardInfoIndex : EffectContextualCardIdentityBase
+	{
+		public int index = -1;
+
+		protected override GameCardBase AbstractItemFrom(IResolutionContext contextToConsider)
+			=> EffectHelpers.GetItem(contextToConsider.CardInfoTargets, index);
+	}
 }

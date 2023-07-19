@@ -48,44 +48,48 @@
 					}
 				},
 				{
-					"$type": "Subeffect:SetXByTargetCardValue:",
-					"cardValue": {
-						"value": "N"
-					},
-					"cardInfo": true
+					"$type": "Subeffect:SetXByNumberIdentity:",
+					"numberIdentity": { 
+						"$type": "Numbers:FromCardValue:",
+						"card": { "$type": "Cards:TargetCardInfoIndex:" },
+						"cardValue": { "value": "N" }
+					}
 				},
 				{
 					"$type": "Subeffect:ChangeCardStats:",
 					"nMultiplier": 1
 				},
 				{
-					"$type": "Subeffect:SetXByTargetCardValue:",
-					"cardValue": {
-						"value": "E"
-					},
-					"cardInfo": true
+					"$type": "Subeffect:SetXByNumberIdentity:",
+					"numberIdentity": { 
+						"$type": "Numbers:FromCardValue:",
+						"card": { "$type": "Cards:TargetCardInfoIndex:" },
+						"cardValue": { "value": "E" }
+					}
 				},
 				{
 					"$type": "Subeffect:ChangeCardStats:",
 					"eMultiplier": 1
 				},
 				{
-					"$type": "Subeffect:SetXByTargetCardValue:",
-					"cardValue": {
-						"value": "S"
-					},
-					"cardInfo": true
+					"$type": "Subeffect:SetXByNumberIdentity:",
+					"numberIdentity": { 
+						"$type": "Numbers:FromCardValue:",
+						"card": { "$type": "Cards:TargetCardInfoIndex:" },
+						"cardValue": { "value": "S" }
+					}
 				},
 				{
 					"$type": "Subeffect:ChangeCardStats:",
 					"sMultiplier": 1
 				},
 				{
-					"$type": "Subeffect:SetXByTargetCardValue:",
-					"cardValue": {
-						"value": "W"
-					},
-					"cardInfo": true
+					"$type": "Subeffect:SetXByNumberIdentity:",
+					"numberIdentity": { 
+						"$type": "Numbers:FromCardValue:",
+						"card": { "$type": "Cards:TargetCardInfoIndex:" },
+						"cardValue": { "value": "W" }
+					}
 				},
 				{
 					"$type": "Subeffect:ChangeCardStats:",

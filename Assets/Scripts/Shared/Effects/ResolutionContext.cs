@@ -12,6 +12,7 @@ namespace KompasCore.Effects
 		// Used for resuming delayed effects
 		public int StartIndex { get; }
 		public IList<GameCard> CardTargets { get; }
+		public IList<GameCardInfo> CardInfoTargets { get; }
 		public GameCard DelayedCardTarget { get; }
 		public IList<Space> SpaceTargets { get; }
 		public Space DelayedSpaceTarget { get; }
@@ -26,6 +27,7 @@ namespace KompasCore.Effects
 		public ResolutionContext(TriggeringEventContext triggerContext)
 		: this(triggerContext, 0,
 			Enumerable.Empty<GameCard>(), default,
+			Enumerable.Empty<GameCardInfo>(),
 			Enumerable.Empty<Space>(), default,
 			Enumerable.Empty<IStackable>(), default)
 		{ }
@@ -33,6 +35,7 @@ namespace KompasCore.Effects
 		public ResolutionContext(TriggeringEventContext triggerContext,
 			int startIndex,
 			IEnumerable<GameCard> cardTargets, GameCard delayedCardTarget,
+			IEnumerable<GameCardInfo> cardInfoTargets,
 			IEnumerable<Space> spaceTargets, Space delayedSpaceTarget,
 			IEnumerable<IStackable> stackableTargets, IStackable delayedStackableTarget)
 		{
@@ -41,6 +44,8 @@ namespace KompasCore.Effects
 
 			CardTargets = Clone(cardTargets);
 			DelayedCardTarget = delayedCardTarget;
+
+			CardInfoTargets = Clone(cardInfoTargets);
 
 			SpaceTargets = Clone(spaceTargets);
 			DelayedSpaceTarget = delayedSpaceTarget;
@@ -59,6 +64,7 @@ namespace KompasCore.Effects
 
 		public IResolutionContext Copy => new ResolutionContext(TriggerContext, StartIndex,
 			CardTargets, DelayedCardTarget,
+			CardInfoTargets,
 			SpaceTargets, DelayedSpaceTarget,
 			StackableTargets, DelayedStackableTarget);
 

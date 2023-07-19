@@ -10,7 +10,7 @@ namespace KompasServer.Effects.Subeffects
 		{
 			if (CardTarget == null) throw new NullCardException(NoValidCardTarget);
 
-			ServerEffect.cardInfoTargets.Add(GameCardInfo.CardInfoOf(CardTarget));
+			ServerEffect.CardInfoTargets.Add(GameCardInfo.CardInfoOf(CardTarget));
 			return Task.FromResult(ResolutionInfo.Next);
 		}
 	}

@@ -17,7 +17,7 @@ namespace KompasServer.Effects.Subeffects
 			if (cause) cardInfoToTarget = ResolutionContext.TriggerContext.cardCauseBefore;
 			if (cardInfoToTarget == null) throw new NullCardException(NoValidCardTarget);
 
-			if (info) ServerEffect.cardInfoTargets.Add(cardInfoToTarget);
+			if (info) ServerEffect.CardInfoTargets.Add(cardInfoToTarget);
 			else ServerEffect.AddTarget(cardInfoToTarget.Card);
 
 			return Task.FromResult(ResolutionInfo.Next);

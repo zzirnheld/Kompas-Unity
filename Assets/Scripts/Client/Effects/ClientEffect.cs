@@ -74,7 +74,7 @@ namespace KompasClient.Effects
 		public void StartResolution(TriggeringEventContext context)
 		{
 			ClientGame.clientUIController.SetCurrState($"Resolving Effect of {Source.CardName}", $"{blurb}");
-			cardTargets.Clear();
+			CardTargets.Clear();
 
 			//in case any cards are still showing targets from the last effect, which they will if this happens after another effect in the stack.
 			//TODO move this behavior to a "effect end" packet and stuff?
