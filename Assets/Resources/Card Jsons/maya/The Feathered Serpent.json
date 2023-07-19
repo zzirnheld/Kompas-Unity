@@ -61,11 +61,8 @@
 				"$type": "Core.TriggerRestriction:CompareNumbers:",
 				"firstNumber": {
 					"$type": "Numbers:CountCards:",
-					"cards": {
-						"$type": "ManyCards:FittingRestriction:",
-						"cards": { "$type": "ManyCards:Board:" },
-						"cardRestriction": { "$type": "Core.SpaceRestriction:Edge:" }
-					}
+					"cards": { "$type": "ManyCards:Board:" },
+					"cardRestriction": { "$type": "Core.SpaceRestriction:Edge:" }
 				},
 				"comparison": { "$type": "Relationships.Number:GreaterThanEqual:" },
 				"secondNumber": { "$type": "Numbers:Constant:", "constant": 14 }

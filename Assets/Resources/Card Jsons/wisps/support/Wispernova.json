@@ -24,15 +24,9 @@
 								"friendly": true,
 								"enemy": false
 							},
-							
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [
-									{
-										"$type": "Core.CardRestriction:Subtypes:",
-										"subtypes": [ "Wisp" ]
-									}
-								]
+							"cardRestriction": {
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Wisp" ]
 							}
 						}
 					}

@@ -15,6 +15,7 @@ namespace KompasCore.Effects
 
 		public int StartIndex { get; }
 		public IList<GameCard> CardTargets { get; }
+		public IList<GameCardInfo> CardInfoTargets { get; }
 		public GameCard DelayedCardTarget { get; }
 		public IList<Space> SpaceTargets { get; }
 		public Space DelayedSpaceTarget { get; }
@@ -35,6 +36,7 @@ namespace KompasCore.Effects
 
 			public int StartIndex => throw new System.NotImplementedException(NotImplementedMessage);
 			public IList<GameCard> CardTargets => throw new System.NotImplementedException(NotImplementedMessage);
+			public IList<GameCardInfo> CardInfoTargets => throw new System.NotImplementedException(NotImplementedMessage);
 			public GameCard DelayedCardTarget => throw new System.NotImplementedException(NotImplementedMessage);
 			public IList<Space> SpaceTargets => throw new System.NotImplementedException(NotImplementedMessage);
 			public Space DelayedSpaceTarget => throw new System.NotImplementedException(NotImplementedMessage);

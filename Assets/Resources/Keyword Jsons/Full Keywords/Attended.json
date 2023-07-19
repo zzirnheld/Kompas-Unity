@@ -28,18 +28,15 @@
 					"$type": "Core.TriggerRestriction:NumberFitsRestriction:",
 					"number": {
 						"$type": "Numbers:CountCards:",
-						"cards": {
-							"$type": "ManyCards:FittingRestriction:",
-							"cardRestriction": {
-								"$type": "Core.CardRestriction:AllOf:",
-								"elements": [
-									{ "$type": "Core.CardRestriction:Friendly:" },
-									{
-										"$type": "Core.SpaceRestriction:AdjacentTo:",
-										"space": { "$type": "Cards:ThisCardNow:" }
-									}
-								]
-							}
+						"cardRestriction": {
+							"$type": "Core.CardRestriction:AllOf:",
+							"elements": [
+								{ "$type": "Core.CardRestriction:Friendly:" },
+								{
+									"$type": "Core.SpaceRestriction:AdjacentTo:",
+									"space": { "$type": "Cards:ThisCardNow:" }
+								}
+							]
 						}
 					},
 					"restriction": {

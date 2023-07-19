@@ -26,9 +26,11 @@
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:SetXByTriggeringCardValue:",
-					"cardValue": {
-						"value": "Cost"
+					"$type": "Subeffect:SetXByNumberIdentity:",
+					"numberIdentity": { 
+						"$type": "Numbers:FromCardValue:",
+						"card": { "$type": "Cards:CardBefore:" },
+						"cardValue": { "value": "C" }
 					}
 				},
 				{

@@ -85,7 +85,9 @@ namespace KompasCore.Effects.Restrictions
 			public bool AllowsValidChoice(IEnumerable<GameCardBase> options, IResolutionContext context)
 			{
 				ComplainIfNotInitialized();
-				return GetMaximum(context) >= GetMinimum(context)
+				return GetMinimum(context) <= GetMaximum(context)	//There exists a number of cards that both the min and max permit
+					&& GetMinimum(context) <= options.Count() 		//Enough options to hit the minimum
+					&& GetMaximum(context) >= 0						//Allowed to select a nonnegative amount of cards
 					&& elements.All(elem => elem.AllowsValidChoice(options, context));
 			}
 

@@ -31,7 +31,12 @@
 					}
 				},
 				{
-					"$type": "Subeffect:SetXByTargetCost:"
+					"$type": "Subeffect:SetXByNumberIdentity:",
+					"numberIdentity": { 
+						"$type": "Numbers:FromCardValue:",
+						"card": { "$type": "Cards:TargetIndex:" },
+						"cardValue": { "value": "Cost" }
+					}
 				},
 				{
 					"$type": "Subeffect:Dispel:"

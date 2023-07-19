@@ -14,16 +14,9 @@
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
 						"$type": "Core.SpaceRestriction:InAOEOf:",
-						"anyOf": {
-							"$type": "ManyCards:FittingRestriction:",
-							
 						"cardRestriction": {
-							"$type": "Core.CardRestriction:AllOf:",
-							"elements": [ {
-									"$type": "Core.CardRestriction:Subtypes:",
-									"subtypes": [ "Shade" ]
-								} ]
-							}
+							"$type": "Core.CardRestriction:Subtypes:",
+							"subtypes": [ "Shade" ]
 						}
 					}
 				},

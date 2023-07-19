@@ -19,10 +19,11 @@
 			"contextSecondaryCard":true
 		},
 		{
-			"$type": "Subeffect:SetXByTriggeringCardValue:",
-			"contextSecondaryCard":true,
-			"cardValue": {
-				"value": "W"
+			"$type": "Subeffect:SetXByNumberIdentity:",
+			"numberIdentity": { 
+				"$type": "Numbers:FromCardValue:",
+				"card": { "$type": "Cards:CardBefore:", "secondaryCard": true },
+				"cardValue": { "value": "W" }
 			}
 		},
 		{

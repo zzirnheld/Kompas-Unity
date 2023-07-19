@@ -16,12 +16,9 @@
 							"card": { "$type": "Cards:CardAfter:" },
 							"cardRestriction": {
 								"$type": "Core.SpaceRestriction:InAOEOf:",
-								"anyOf": {
-									"$type": "ManyCards:FittingRestriction:",
-									"cardRestriction": {
-										"$type": "Core.CardRestriction:Subtypes:",
-										"subtypes": [ "Weather" ]
-									}
+								"cardRestriction": {
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Weather" ]
 								}
 							}
 						},
@@ -37,12 +34,9 @@
 										"$type": "Core.SpaceRestriction:Not:",
 										"negated": {
 											"$type": "Core.SpaceRestriction:InAOEOf:",
-											"anyOf": {
-												"$type": "ManyCards:FittingRestriction:",
-												"cardRestriction": {
-													"$type": "Core.CardRestriction:Subtypes:",
-													"subtypes": [ "Weather" ]
-												}
+											"cardRestriction": {
+												"$type": "Core.CardRestriction:Subtypes:",
+												"subtypes": [ "Weather" ]
 											}
 										}
 									}

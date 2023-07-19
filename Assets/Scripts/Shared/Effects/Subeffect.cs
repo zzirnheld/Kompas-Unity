@@ -153,9 +153,9 @@ namespace KompasCore.Effects
 
 		public GameCard CardTarget => Effect.GetTarget(targetIndex);
 		public Space SpaceTarget => Effect.GetSpace(spaceIndex);
-		public GameCardInfo CardInfoTarget => EffectHelpers.GetItem(Effect.cardInfoTargets, cardInfoIndex);
+		public GameCardInfo CardInfoTarget => EffectHelpers.GetItem(Effect.CardInfoTargets, cardInfoIndex);
 		public Player PlayerTarget => Effect.GetPlayer(playerIndex);
-		public IStackable StackableTarget => EffectHelpers.GetItem(Effect.stackableTargets, stackableIndex);
+		public IStackable StackableTarget => EffectHelpers.GetItem(Effect.StackableTargets, stackableIndex);
 
 		public GameCard GetCardTarget(TargetingContext overrideContext = null)
 			=> Effect.GetTarget(overrideContext.OrElse(CurrTargetingContext).cardTargetIndex.Value);
@@ -164,7 +164,7 @@ namespace KompasCore.Effects
 		public Player GetPlayerTarget(TargetingContext overrideContext = null)
 			=> Effect.GetPlayer(overrideContext.OrElse(CurrTargetingContext).playerTargetIndex.Value);
 		public IStackable GetStackableTarget(TargetingContext overrideContext = null)
-			=> EffectHelpers.GetItem(Effect.stackableTargets, overrideContext.OrElse(CurrTargetingContext).stackableTargetIndex.Value);
+			=> EffectHelpers.GetItem(Effect.StackableTargets, overrideContext.OrElse(CurrTargetingContext).stackableTargetIndex.Value);
 
 
 		public int JumpIndex => EffectHelpers.GetItem(jumpIndices, jumpIndicesIndex);

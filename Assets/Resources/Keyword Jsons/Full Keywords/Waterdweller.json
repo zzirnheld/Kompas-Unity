@@ -25,12 +25,9 @@
 								"$type": "Core.SpaceRestriction:Not:",
 								"negated": {
 									"$type": "Core.SpaceRestriction:InAOEOf:",
-									"anyOf": {
-										"$type": "ManyCards:FittingRestriction:",
-										"cardRestriction": {
-												"$type": "Core.CardRestriction:Subtypes:",
-												"subtypes": [ "Water" ]
-										}
+									"cardRestriction": {
+										"$type": "Core.CardRestriction:Subtypes:",
+										"subtypes": [ "Water" ]
 									}
 								}
 							}

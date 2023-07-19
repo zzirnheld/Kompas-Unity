@@ -32,34 +32,30 @@
 							{
 								"$type": "Core.CardRestriction:HasAugment:",
 								"cardRestriction": {
-									"$type": "Core.CardRestriction:AllOf:",
-									"elements": [
-										{
-											"$type": "Core.CardRestriction:Subtypes:",
-											"subtypes": [ "Memory" ]
-										}
-									]
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Memory" ]
 								}
 							}
 						]
 					}
 				},
 				{
-					"$type": "Subeffect:SetXByGamestate:",
-					"whatToCount": "Cards Fitting Restriction",
-					
+					"$type": "Subeffect:SetXByNumberIdentity:",
+					"numberIdentity": {
+						"$type": "Numbers:CountCards:",
 						"cardRestriction": {
 							"$type": "Core.CardRestriction:AllOf:",
 							"elements": [
-							{
-								"$type": "Core.CardRestriction:Subtypes:",
-								"subtypes": [ "Memory" ]
-							},
-							{
-								"$type": "Core.CardRestriction:Augments:",
-								"singleCard": { "$type": "Cards:TargetIndex:" }
-							}
-						]
+								{
+									"$type": "Core.CardRestriction:Subtypes:",
+									"subtypes": [ "Memory" ]
+								},
+								{
+									"$type": "Core.CardRestriction:Augments:",
+									"singleCard": { "$type": "Cards:TargetIndex:" }
+								}
+							]
+						}
 					}
 				},
 				{

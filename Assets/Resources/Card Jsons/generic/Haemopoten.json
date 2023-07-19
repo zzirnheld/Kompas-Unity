@@ -9,8 +9,8 @@
 			},
 			"subeffects": [
 				{
-					"$type": "Subeffect:SetXByGamestate:",
-					"whatToCount": "Effect Uses This Turn"
+					"$type": "Subeffect:SetXByNumberIdentity:",
+					"numberIdentity": { "$type": "Numbers:EffectUsesThisTurn:" }
 				},
 				{
 					"$type": "Subeffect:TargetThis:"

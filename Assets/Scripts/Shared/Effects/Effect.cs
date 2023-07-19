@@ -26,17 +26,15 @@ namespace KompasCore.Effects
 		public int SubeffectIndex { get; protected set; }
 
 		//Targets
-		protected IList<GameCard> cardTargets => ResolutionContext.CardTargets;
-		protected IList<Space> spaceTargets => ResolutionContext.SpaceTargets;
-		public IList<GameCard> CardTargets => cardTargets;
-		public IList<Space> SpaceTargets => spaceTargets;
+		public IList<GameCard> CardTargets => ResolutionContext.CardTargets;
+		public IList<Space> SpaceTargets => ResolutionContext.SpaceTargets;
+		public IList<GameCardInfo> CardInfoTargets => ResolutionContext.CardInfoTargets;
+		public IList<IStackable> StackableTargets => ResolutionContext.StackableTargets;
 
 		protected readonly List<CardLink> cardLinks = new List<CardLink>();
 
 		//we don't care about informing players of the contents of these. yet. but we might later
-		public readonly List<GameCardInfo> cardInfoTargets = new List<GameCardInfo>();
 		public readonly List<Player> playerTargets = new List<Player>();
-		public readonly List<IStackable> stackableTargets = new List<IStackable>();
 		public readonly List<GameCard> rest = new List<GameCard>();
 
 		public IdentityOverrides identityOverrides = new IdentityOverrides();
@@ -107,23 +105,23 @@ namespace KompasCore.Effects
 		public virtual bool CanBeActivatedAtAllBy(Player activator)
 			=> Trigger == null && activationRestriction != null && activationRestriction.IsPotentiallyValidActivation(activator);
 
-		public GameCard GetTarget(int num) => EffectHelpers.GetItem(cardTargets, num);
-		public Space GetSpace(int num) => EffectHelpers.GetItem(spaceTargets, num);
+		public GameCard GetTarget(int num) => EffectHelpers.GetItem(CardTargets, num);
+		public Space GetSpace(int num) => EffectHelpers.GetItem(SpaceTargets, num);
 		public Player GetPlayer(int num) => EffectHelpers.GetItem(playerTargets, num);
 
 
 		public virtual void AddTarget(GameCard card) {
-			cardTargets.Add(card);
+			CardTargets.Add(card);
 		}
-		public virtual void RemoveTarget(GameCard card) => cardTargets.Remove(card);
+		public virtual void RemoveTarget(GameCard card) => CardTargets.Remove(card);
 
-		public void AddSpace(Space space) => spaceTargets.Add(space.Copy);
+		public void AddSpace(Space space) => SpaceTargets.Add(space.Copy);
 
 		public T TestWithCardTarget<T>(GameCard target, Func<T> toTest)
 		{
-			cardTargets.Add(target);
+			CardTargets.Add(target);
 			var ret = toTest();
-			cardTargets.RemoveAt(cardTargets.Count - 1);
+			CardTargets.RemoveAt(CardTargets.Count - 1);
 			return ret;
 		}
 

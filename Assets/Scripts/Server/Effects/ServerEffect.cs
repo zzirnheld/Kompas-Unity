@@ -125,7 +125,7 @@ namespace KompasServer.Effects
 			if (context.CardTargets != null) foreach(var tgt in context.CardTargets) NotifyAddCardTarget(tgt);
 			
 			playerTargets.Add(Controller);
-			if (context.TriggerContext.stackableCause != null) stackableTargets.Add(context.TriggerContext.stackableCause);
+			if (context.TriggerContext.stackableCause != null) StackableTargets.Add(context.TriggerContext.stackableCause);
 
 			//notify relevant to this effect starting
 			ServerController.notifier.NotifyEffectX(Source, EffectIndex, X);
@@ -205,7 +205,7 @@ namespace KompasServer.Effects
 		{
 			SubeffectIndex = 0;
 			X = 0;
-			cardTargets.Clear();
+			CardTargets.Clear();
 			rest.Clear();
 			OnImpossible = null;
 			ServerController.notifier.NotifyBothPutBack();
