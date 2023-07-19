@@ -50,8 +50,12 @@
 					}
 				},
 				{
-					"$type":"Subeffect:SetXByTargetCost:",
-					"xMultiplier":1
+					"$type": "Subeffect:SetXByNumberIdentity:",
+					"numberIdentity": { 
+						"$type": "Numbers:FromCardValue:",
+						"card": { "$type": "Cards:TargetIndex:" },
+						"cardValue": { "value": "Cost" }
+					}
 				},
 				{
 					"$type":"Subeffect:Discard:"
