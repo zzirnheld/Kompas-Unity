@@ -14,11 +14,12 @@
 			"$type":"Subeffect:TargetThis:"
 		},
 		{
-			"$type":"Subeffect:SetXByTargetCardValue:",
-			"cardValue":{
-				"value":"S"
-			},
-			"xMultiplier":1
+			"$type": "Subeffect:SetXByNumberIdentity:",
+			"numberIdentity": { 
+				"$type": "Numbers:FromCardValue:",
+				"card": { "$type": "Cards:TargetIndex:" },
+				"cardValue": { "value": "S" }
+			}
 		},
 		{
 			"$type":"Subeffect:Reshuffle:"

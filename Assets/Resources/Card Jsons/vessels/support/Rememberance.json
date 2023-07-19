@@ -20,9 +20,11 @@
 					"cardRestriction": {"$type": "Core.CardRestriction:Character:" }
 				},
 				{
-					"$type": "Subeffect:SetXByTargetCardValue:",
-					"cardValue": {
-						"value": "S"
+					"$type": "Subeffect:SetXByNumberIdentity:",
+					"numberIdentity": { 
+						"$type": "Numbers:FromCardValue:",
+						"card": { "$type": "Cards:TargetIndex:" },
+						"cardValue": { "value": "S" }
 					}
 				},
 				{

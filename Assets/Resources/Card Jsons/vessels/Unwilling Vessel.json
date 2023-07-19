@@ -32,9 +32,11 @@
 					}
 				},
 				{
-					"$type": "Subeffect:SetXByTargetCardValue:",
-					"cardValue": {
-						"value": "A"
+					"$type": "Subeffect:SetXByNumberIdentity:",
+					"numberIdentity": { 
+						"$type": "Numbers:FromCardValue:",
+						"card": { "$type": "Cards:TargetIndex:" },
+						"cardValue": { "value": "A" }
 					}
 				},
 				{

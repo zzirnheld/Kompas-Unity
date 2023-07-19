@@ -75,11 +75,13 @@
 					}
 				},
 				{
-					"$type": "Subeffect:SetXByTargetCardValue:",
-					"cardValue": {
-						"value": "S",
-						"multiplier": -1
+					"$type": "Subeffect:SetXByNumberIdentity:",
+					"numberIdentity": { 
+						"$type": "Numbers:FromCardValue:",
+						"card": { "$type": "Cards:TargetIndex:" },
+						"cardValue": { "value": "S" }
 					},
+					"xMultiplier": -1,
 					"change": true
 				},
 				{

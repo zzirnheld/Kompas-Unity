@@ -34,8 +34,9 @@ namespace KompasServer.Effects.Subeffects.Hanging
 												 toResume: ServerEffect,
 												 indexToResumeResolution: JumpIndex,
 												 controller: EffectController,
-												 targets: new List<GameCard>(Effect.CardTargets),
-												 spaces: new List<Space>(Effect.SpaceTargets),
+												 targets: Effect.CardTargets,
+												 cardInfoTargets: Effect.CardInfoTargets,
+												 spaces: Effect.SpaceTargets,
 												 clearIfResolve: clearWhenResume);
 			return new List<HangingEffect>() { delay };
 		}
@@ -48,12 +49,13 @@ namespace KompasServer.Effects.Subeffects.Hanging
 			private readonly int indexToResumeResolution;
 			private readonly ServerPlayer controller;
 			private readonly List<GameCard> targets;
+			private readonly List<GameCardInfo> cardInfoTargets;
 			private readonly List<Space> spaces;
 
 			public DelayEffect(ServerGame game, IRestriction<TriggeringEventContext> triggerRestriction, string endCondition,
 				string fallOffCondition, IRestriction<TriggeringEventContext> fallOffRestriction, Effect sourceEff, IResolutionContext currentContext,
 				int numTimesToDelay, ServerEffect toResume, int indexToResumeResolution, ServerPlayer controller,
-				IEnumerable<GameCard> targets, IEnumerable<Space> spaces,
+				IEnumerable<GameCard> targets, IEnumerable<GameCardInfo> cardInfoTargets, IEnumerable<Space> spaces,
 				bool clearIfResolve)
 				: base(game, triggerRestriction, endCondition, fallOffCondition, fallOffRestriction, sourceEff, currentContext, clearIfResolve)
 			{
@@ -63,6 +65,7 @@ namespace KompasServer.Effects.Subeffects.Hanging
 				this.controller = controller;
 				Debug.Log($"Targets are {string.Join(",", targets?.Select(c => c.ToString()) ?? new string[] { "Null" })}");
 				this.targets = new List<GameCard>(targets);
+				this.cardInfoTargets = new List<GameCardInfo>(cardInfoTargets);
 				this.spaces = new List<Space>(spaces);
 				numTimesDelayed = 0;
 			}
@@ -88,7 +91,7 @@ namespace KompasServer.Effects.Subeffects.Hanging
 
 			public override void Resolve(TriggeringEventContext context)
 			{
-				var myContext = new ResolutionContext(context, indexToResumeResolution, targets, default, default, spaces, default, default, default);
+				var myContext = new ResolutionContext(context, indexToResumeResolution, targets, default, cardInfoTargets, spaces, default, default, default);
 				serverGame.effectsController.PushToStack(toResume, controller, myContext);
 			}
 		}
