@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Roll of Leythunder",
-	"effText": "Weather Event: Dispel all non-Weather spells in the same Weather Condition as me.",
+	"effText": "Weather Event: Each dispels all enemy spells there.",
 	"effects": [
 		{
 			"blurb": "Leythunder",
@@ -49,9 +49,7 @@
 				{
 					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"delete": true,
-					"jumpIndices": [
-						1
-					]
+					"jumpIndices": [ 1 ]
 				}
 			]
 		}

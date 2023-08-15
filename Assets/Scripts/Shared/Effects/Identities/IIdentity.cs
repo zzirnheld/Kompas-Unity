@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using KompasCore.Cards;
 using KompasCore.Exceptions;
 
@@ -105,10 +106,13 @@ namespace KompasCore.Effects.Identities
 		public ReturnType From(IResolutionContext context, IResolutionContext secondaryContext) => Item;
 	}
 
-	public abstract class ContextlessLeafCardIdentityBase : ContextlessLeafIdentityBase<GameCardBase>, IIdentity<Space>
+	public abstract class ContextlessLeafCardIdentityBase : ContextlessLeafIdentityBase<GameCardBase>, IIdentity<Space>, IIdentity<IReadOnlyCollection<GameCardBase>>
 	{
 		Space IIdentity<Space>.From(IResolutionContext context, IResolutionContext secondaryContext)
 			=> Item.Position;
+
+		IReadOnlyCollection<GameCardBase> IIdentity<IReadOnlyCollection<GameCardBase>>.From(IResolutionContext context, IResolutionContext secondaryContext)
+			=> new [] { Item };
 	}
 
 	public abstract class TriggerContextualCardIdentityBase : TriggerContextualLeafIdentityBase<GameCardBase>, IIdentity<Space>

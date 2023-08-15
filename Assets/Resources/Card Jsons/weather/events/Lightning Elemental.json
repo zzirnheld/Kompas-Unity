@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Lightning Elemental",
-	"effText": "Weather Event: Give an enemy character in the same Weather Condition as me -7 E.",
+	"effText": "Weather Event: Each gives an enemy there -7 E.",
 	"effects": [
 		{
 			"blurb": "Strike Lightning",
@@ -21,6 +21,22 @@
 			},
 			"subeffects": [
 				{
+					"$type": "Subeffect:TargetAll:",
+					"cardRestriction": {
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Weather", "Condition" ]
+							},
+							{
+								"$type": "Core.CardRestriction:AOEContains:",
+								"cards": { "$type": "Cards:ThisCardNow:" }
+							}
+						]
+					}
+				},
+				{
 					"$type": "Subeffect:CardTarget:",
 					"toSearch": { "$type": "ManyCards:Board:" },
 					"cardRestriction": {
@@ -30,11 +46,7 @@
 							{ "$type": "Core.CardRestriction:Enemy:" },
 							{
 								"$type": "Core.SpaceRestriction:InAOEOf:",
-								"cardRestriction": {
-									"$type": "Core.CardRestriction:Subtypes:",
-									"subtypes": [ "Weather", "Condition" ]
-								},
-								"sameAs": { "$type": "Cards:ThisCardNow:" }
+								"card": { "$type": "Cards:TargetIndex:" }
 							}
 						]
 					}
@@ -42,6 +54,14 @@
 				{
 					"$type": "Subeffect:ChangeCardStats:",
 					"eModifier": -7
+				},
+				{
+					"$type": "Subeffect:DeleteTarget:"
+				},
+				{
+					"$type": "Subeffect:LoopWhileHaveTargets:",
+					"delete": true,
+					"jumpIndices": [ 1 ]
 				}
 			]
 		}
@@ -61,9 +81,9 @@
 			}
 		} ]
 	},
-	"n": 5,
+	"n": 6,
 	"e": 3,
-	"s": 4,
+	"s": 6,
 	"w": 7,
 	"subtypeText": "Weather Event Elemental"
 }

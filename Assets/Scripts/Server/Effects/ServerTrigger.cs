@@ -18,7 +18,8 @@ namespace KompasServer.Effects
 
 		private bool responded = false;
 		/// <summary>
-		/// Represents whether this trigger, if optional, has been responded to (to accept or decline)
+		/// Represents whether this trigger, if optional, has been responded to (to accept or decline).
+        /// If not optional, is true.
 		/// </summary>
 		public bool Responded
 		{

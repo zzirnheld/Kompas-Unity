@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Blizzard Squall",
-	"effText": "Weather Event: Set the N of all enemies in the same Weather Condition as me to 0.",
+	"effText": "Weather Event: Each sets the N of all enemies there to 0.",
 	"effects": [
 		{
 			"blurb": "Freeze",
@@ -21,6 +21,22 @@
 			},
 			"subeffects": [
 				{
+					"$type": "Subeffect:TargetAll:",
+					"cardRestriction": {
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Weather", "Condition" ]
+							},
+							{
+								"$type": "Core.CardRestriction:AOEContains:",
+								"cards": { "$type": "Cards:ThisCardNow:" }
+							}
+						]
+					}
+				},
+				{
 					"$type": "Subeffect:SetAllCardStats:",
 					"cardRestriction": {
 						"$type": "Core.CardRestriction:AllOf:",
@@ -29,15 +45,16 @@
 							{ "$type": "Core.CardRestriction:Enemy:" },
 							{
 								"$type": "Core.SpaceRestriction:InAOEOf:",
-								"cardRestriction": {
-									"$type": "Core.CardRestriction:Subtypes:",
-									"subtypes": [ "Weather", "Condition" ]
-								},
-								"sameAs": { "$type": "Cards:ThisCardNow:" }
+								"card": { "$type": "Cards:TargetIndex:" }
 							}
 						]
 					},
 					"nVal": 0
+				},
+				{
+					"$type": "Subeffect:LoopWhileHaveTargets:",
+					"delete": true,
+					"jumpIndices": [ 1 ]
 				}
 			]
 		}
@@ -59,7 +76,7 @@
 	},
 	"n": 4,
 	"e": 7,
-	"s": 4,
+	"s": 5,
 	"w": 5,
 	"subtypeText": "Weather Event Elemental"
 }

@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Leyhail Elemental",
-	"effText": "Weather Event: Repeat for each card in Weather I'm also in: give their controller 1 pip.",
+	"effText": "Weather Event: Each looks at each character there, and gives their controller 1 pip.",
 	"effects": [
 		{
 			"blurb": "Leyhailstones",
@@ -23,12 +23,34 @@
 				{
 					"$type": "Subeffect:TargetAll:",
 					"cardRestriction": {
-						"$type": "Core.SpaceRestriction:InAOEOf:",
-						"cardRestriction": {
-							"$type": "Core.CardRestriction:Subtypes:",
-							"subtypes": [ "Weather", "Condition" ]
-						},
-						"sameAs": { "$type": "Cards:ThisCardNow:" }
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
+							{
+								"$type": "Core.CardRestriction:Subtypes:",
+								"subtypes": [ "Weather", "Condition" ]
+							},
+							{
+								"$type": "Core.CardRestriction:AOEContains:",
+								"cards": { "$type": "Cards:ThisCardNow:" }
+							}
+						]
+					}
+				},
+				{
+					"$type": "Subeffect:SetXByNumberIdentity:",
+					"numberIdentity": { "$type": "Numbers:TargetCount:" }
+				},
+				{
+					"$type": "Subeffect:TargetAll:",
+					"cardRestriction": {
+						"$type": "Core.CardRestriction:AllOf:",
+						"elements": [
+							{ "$type": "Core.CardRestriction:Character:" },
+							{
+								"$type": "Core.SpaceRestriction:InAOEOf:",
+								"card": { "$type": "Cards:TargetIndex:" }
+							}
+						]
 					}
 				},
 				{
@@ -36,15 +58,18 @@
 				},
 				{
 					"$type": "Subeffect:AddPips:",
-					"xMultiplier": 0,
 					"xModifier": 1
 				},
 				{
 					"$type": "Subeffect:LoopWhileHaveTargets:",
 					"delete": true,
-					"jumpIndices": [
-						1
-					]
+					"jumpIndices": [ 3 ],
+					"leaveRemainingTargets": { "$type": "Numbers:EffectX:" }
+				},
+				{
+					"$type": "Subeffect:LoopWhileHaveTargets:",
+					"delete": true,
+					"jumpIndices": [ 2 ]
 				}
 			]
 		}
@@ -64,9 +89,9 @@
 			}
 		} ]
 	},
-	"n": 2,
-	"e": 5,
-	"s": 4,
+	"n": 3,
+	"e": 7,
+	"s": 5,
 	"w": 7,
 	"subtypeText": "Weather Event Elemental"
 }

@@ -50,11 +50,11 @@
 		},
 		{
 			"keyword": "Weather Event",
-			"reminder": "Summon me only in Weather overlap.\nWhen I'm summoned during an enemy turn, each Weather Condition I'm in does this to each card in it:"
+			"reminder": "Summon me only where Weather overlaps other Weather.\nWhen I'm summoned, each Weather Condition I'm in:"
 		},
 		{
 			"keyword": "Spin a Storm",
-			"reminder": "Hand->summon a Weather Event in that Weather Condition's overlap with another Weather Condition."
+			"reminder": "Hand->summon a Weather Event in that Weather Condition's overlap with other Weather."
 		},
 		{
 			"keyword": "martyr",
