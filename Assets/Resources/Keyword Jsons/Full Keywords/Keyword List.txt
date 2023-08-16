@@ -36,3 +36,5 @@ Modular
 Basic Modular
 Repositionable
 Restock
+Shadowy Figure Summon
+Shadowy Figure Vanish

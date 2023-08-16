@@ -146,6 +146,11 @@ cryptids/creatures/Thunderbird
 cryptids/creatures/Tsuchinoko
 cryptids/creatures/UFO
 
+cryptids/shadows/Long Shadow
+cryptids/shadows/Looming Shadow
+cryptids/shadows/Moving Shadow
+cryptids/shadows/Pervasive Shadow
+
 cultists/Altar Builder
 cultists/Bloodcurser
 cultists/Cultist of the Silent
