@@ -204,6 +204,14 @@
 			"keyword": "Modular",
 			"reminder": "When I'm summoned, hand->attach up to # Modules to me, then draw the same number of cards.",
 			"technicalReminder": "When I'm summoned, hand->attach [X <= #] Modules to me, then draw X cards."
+		},
+		{
+			"keyword": "Shadowy Figure",
+			"reminder": "When an enemy arrives here, I vanish.\nWhen I'm cast, show 2 Cryptids in your hand. Secretly choose one. When I vanish, hand->summon it where I was."
+		},
+		{
+			"keyword": "Aggressive",
+			"reminder": "When I'm summoned, I attack a character within my radius."
 		}
 	]
 }

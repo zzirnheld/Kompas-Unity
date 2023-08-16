@@ -232,13 +232,20 @@ namespace KompasServer.Effects
 		}
 		#endregion resolution
 
-		public override void AddTarget(GameCard card)
+		public override void AddTarget(GameCard card) => AddTarget(card, secret: false);
+
+		public void AddTarget(GameCard card, bool secret)
 		{
 			base.AddTarget(card);
-			NotifyAddCardTarget(card);
+			NotifyAddCardTarget(card, secret);
 		}
 
-		private void NotifyAddCardTarget(GameCard card) => serverGame.ServerControllerOf(card).notifier.SetTarget(Source, EffectIndex, card);
+		private void NotifyAddCardTarget(GameCard card, bool secret = false)
+		{
+			var notifier = serverGame.ServerControllerOf(card).notifier;
+			if (secret) notifier.AddHiddenTarget(Source, EffectIndex, card);
+			else notifier.AddTarget(Source, EffectIndex, card);
+		}
 
 		public override void RemoveTarget(GameCard card)
 		{

@@ -186,11 +186,14 @@ namespace KompasServer.Networking
 
 		public void StackEmpty() => SendToBoth(new StackEmptyPacket());
 
-		public void SetTarget(GameCard card, int effIndex, GameCard target)
-			=> SendToBoth(new AddTargetPacket(card.ID, effIndex, target.ID));
+		public void AddTarget(GameCard source, int effIndex, GameCard target)
+			=> SendToBoth(new AddTargetPacket(source.ID, effIndex, target.ID));
 
-		public void RemoveTarget(GameCard card, int effIndex, GameCard target)
-			=> SendToBoth(new RemoveTargetPacket(card.ID, effIndex, target.ID));
+		public void AddHiddenTarget(GameCard source, int effIndex, GameCard target)
+			=> SendPacket(new AddTargetPacket(source.ID, effIndex, target.ID));
+
+		public void RemoveTarget(GameCard source, int effIndex, GameCard target)
+			=> SendToBoth(new RemoveTargetPacket(source.ID, effIndex, target.ID));
 
 		public void GetXForEffect() => SendPacket(new GetPlayerChooseXPacket());
 

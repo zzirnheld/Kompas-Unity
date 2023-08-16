@@ -1,10 +1,13 @@
 {
-	"blurb":"Territorial",
+	"blurb":"Aggressive",
 	"triggerData":
 	{
-		"blurb":"Territorial",
-		"triggerCondition":"Turn Start",
-		"triggerRestriction": { "$type": "Core.GamestateRestriction:ThisCardInPlay:" }
+		"triggerCondition": "Play",
+		"triggerRestriction": {
+			"$type": "Core.TriggerRestriction:CardsMatch:",
+			"card": { "$type": "Cards:CardBefore:" },
+			"other": { "$type": "Cards:ThisCardNow:" }
+		}
 	},
 	"subeffects":[
 		{
@@ -12,12 +15,12 @@
 			"toSearch": { "$type": "ManyCards:Board:" },
 			"cardRestriction":
 			{
-				"blurb":"for Dragon to move and attack",
+				"blurb": "to take out aggression on",
 				"elements": [
 					{ "$type": "Core.CardRestriction:Character:" },
 					{
-						"$type": "Core.SpaceRestriction:AdjacentTo:",
-						"space": { "$type": "Cards:ThisCardNow:" }
+						"$type": "Core.SpaceRestriction:InAOEOf:",
+						"card": { "$type": "Cards:ThisCardNow:" }
 					}
 				]
 			}
