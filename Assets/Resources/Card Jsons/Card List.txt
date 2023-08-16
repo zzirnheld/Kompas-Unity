@@ -136,6 +136,16 @@ crazy_ideas/Orry the Oviparous Mammal
 crazy_ideas/Something Cannon
 crazy_ideas/Weird Idea That is Also
 
+cryptids/creatures/Bigfoot
+cryptids/creatures/Giursie Devil
+cryptids/creatures/Jackalope
+cryptids/creatures/Kraken
+cryptids/creatures/Lonness Monster
+cryptids/creatures/Ningen
+cryptids/creatures/Thunderbird
+cryptids/creatures/Tsuchinoko
+cryptids/creatures/UFO
+
 cultists/Altar Builder
 cultists/Bloodcurser
 cultists/Cultist of the Silent
