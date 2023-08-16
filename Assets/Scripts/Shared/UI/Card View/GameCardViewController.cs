@@ -38,9 +38,10 @@ namespace KompasCore.UI
 		//TODO give these to dummy cards, as empties probably
 		[Header("Card highlighting")]
 		public GameObject uniqueCopyObject;
-		public GameObject linkedCardObject;
 		public GameObject primaryStackableObject;
 		public GameObject secondaryStackableObject;
+
+		public MeshRenderer linkedCardRenderer;
 
 		[Header("Can attack/effect indicators")]
 		public OscillatingController attackOscillator;
@@ -148,7 +149,16 @@ namespace KompasCore.UI
 
 		public virtual void ShowUniqueCopy(bool copy = true) => uniqueCopyObject.SetActive(copy);
 
-		public virtual void ShowLinkedCard(bool show = true) => linkedCardObject.SetActive(show);
+		public virtual void ShowLinkedCard(Color32? color)
+		{
+			if (!color.HasValue)
+			{
+				linkedCardRenderer.gameObject.SetActive(false);
+				return;
+			}
+			linkedCardRenderer.gameObject.SetActive(true);
+			linkedCardRenderer.material.color = color.Value;
+		}
 
 		public virtual void ShowPrimaryOfStackable(bool show = true) => primaryStackableObject.SetActive(show);
 		public virtual void ShowSecondaryOfStackable(bool show = true) => secondaryStackableObject.SetActive(show);

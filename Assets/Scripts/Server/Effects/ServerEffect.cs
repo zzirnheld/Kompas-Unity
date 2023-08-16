@@ -246,14 +246,15 @@ namespace KompasServer.Effects
 			serverGame.ServerControllerOf(card).notifier.RemoveTarget(Source, EffectIndex, card);
 		}
 
-		public void CreateCardLink(params GameCard[] cards)
+		public void CreateCardLink(Color32 linkColor, bool hidden, params GameCard[] cards)
 		{
 			GameCard[] validCards = cards.Where(c => c != null).ToArray();
 			//if (validCards.Length <= 1) return; //Don't create a link between one non-null card? nah, do, so we can delete it as expected later
 
-			var link = new CardLink(new HashSet<int>(validCards.Select(c => c.ID)), this);
+			var link = new CardLink(new HashSet<int>(validCards.Select(c => c.ID)), this, linkColor);
 			cardLinks.Add(link);
-			ServerController.notifier.AddCardLink(link);
+			if (hidden) ServerController.notifier.AddHiddenCardLink(link);
+			else ServerController.notifier.AddCardLink(link);
 		}
 
 		public void DestroyCardLink(int index)

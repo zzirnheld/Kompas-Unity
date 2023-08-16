@@ -8,7 +8,6 @@ using KompasCore.Effects.Identities.ManyCards;
 using KompasCore.Effects.Restrictions;
 using KompasCore.Effects.Restrictions.GamestateRestrictionElements;
 using KompasCore.GameCore;
-using Newtonsoft.Json;
 using UnityEngine;
 
 namespace KompasServer.Effects.Subeffects
@@ -34,6 +33,9 @@ namespace KompasServer.Effects.Subeffects
 		public IIdentity<GameCardBase> toLinkWith;
 
 		public string blurb;
+
+		public bool hiddenLink = false;
+		public Color32 linkColor = CardLink.DefaultColor; // "r": #, "g" ... etc
 
 
 		protected IReadOnlyCollection<GameCard> stashedPotentialTargets;
@@ -146,7 +148,7 @@ namespace KompasServer.Effects.Subeffects
 			foreach (var c in choices)
 			{
 				ServerEffect.AddTarget(c);
-				if (cardToLinkWith != null) ServerEffect.CreateCardLink(c, cardToLinkWith);
+				if (cardToLinkWith != null) ServerEffect.CreateCardLink(linkColor, hiddenLink, c, cardToLinkWith);
 			}
 		}
 	}

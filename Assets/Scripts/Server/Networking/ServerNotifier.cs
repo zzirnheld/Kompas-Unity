@@ -215,6 +215,7 @@ namespace KompasServer.Networking
 		}
 
 		public void AddCardLink(CardLink link) => SendToBoth(new EditCardLinkPacket(link, add: true));
+		public void AddHiddenCardLink(CardLink link) => SendPacket(new EditCardLinkPacket(link, add: true));
 		public void RemoveCardLink(CardLink link) => SendToBoth(new EditCardLinkPacket(link, add: false));
 		#endregion other effect stuff
 	}

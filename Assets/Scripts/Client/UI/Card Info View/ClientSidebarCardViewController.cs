@@ -164,7 +164,7 @@ namespace KompasClient.UI
 
 		private void ClearShownCardLinks()
 		{
-			foreach (var c in shownLinkedCards) c.CardController.gameCardViewController.ShowLinkedCard(false);
+			foreach (var c in shownLinkedCards) c.CardController.gameCardViewController.ShowLinkedCard(null);
 			shownLinkedCards.Clear();
 		}
 
@@ -177,7 +177,7 @@ namespace KompasClient.UI
 				{
 					if (card == default) continue;
 					shownLinkedCards.Add(card);
-					card.CardController.gameCardViewController.ShowLinkedCard(true);
+					card.CardController.gameCardViewController.ShowLinkedCard(link.LinkColor);
 				}
 			}
 		}
