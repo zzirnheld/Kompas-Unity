@@ -151,6 +151,11 @@ cryptids/shadows/Looming Shadow
 cryptids/shadows/Moving Shadow
 cryptids/shadows/Pervasive Shadow
 
+cryptids/support/Allure of Darkness
+cryptids/support/Never Quite Light
+cryptids/support/The Many-Shadowed Man
+cryptids/support/The Woman of the Backwoods
+
 cultists/Altar Builder
 cultists/Bloodcurser
 cultists/Cultist of the Silent

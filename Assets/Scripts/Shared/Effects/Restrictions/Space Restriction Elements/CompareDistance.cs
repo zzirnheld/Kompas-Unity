@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using KompasCore.Effects.Identities;
 using KompasCore.Effects.Relationships;
 
@@ -53,6 +55,28 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 		{
 			var destination = this.destination.From(context);
 			return destination.DistanceTo(item) < destination.DistanceTo(origin.From(context));
+		}
+	}
+
+	public class TowardsAny : SpaceRestrictionElement
+	{
+		public IIdentity<IReadOnlyCollection<Space>> anyDestination;
+		public IRestriction<Space> anyDestinationRestriction;
+		public IIdentity<Space> origin;
+
+		public override void Initialize(EffectInitializationContext initializationContext)
+		{
+			base.Initialize(initializationContext);
+			anyDestination ??= new Identities.ManySpaces.FittingRestriction() { restriction = anyDestinationRestriction };
+			anyDestination.Initialize(initializationContext);
+			origin.Initialize(initializationContext);
+		}
+
+		protected override bool IsValidLogic(Space item, IResolutionContext context)
+		{
+			var origin = this.origin.From(context);
+			var destinations = anyDestination.From(context);
+			return destinations.Any(destination => destination.DistanceTo(item) < destination.DistanceTo(origin));
 		}
 	}
 
