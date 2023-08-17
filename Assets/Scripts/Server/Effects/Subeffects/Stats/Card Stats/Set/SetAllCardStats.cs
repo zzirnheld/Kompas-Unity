@@ -15,7 +15,7 @@ namespace KompasServer.Effects.Subeffects
 
 		public override void Initialize(ServerEffect eff, int subeffIndex)
 		{
-			cards ??= new FittingRestriction() {
+			cards ??= new Restricted() {
 				cardRestriction = cardRestriction,
 				cards = cardsSource
 			};

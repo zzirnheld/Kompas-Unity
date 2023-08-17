@@ -45,7 +45,7 @@
 						"$type": "Spaces:SelectFromMany:",
 						"selector": { "$type": "KompasCore.Effects.Selectors.RandomSpace, Assembly-CSharp" },
 						"spaces": {
-							"$type": "ManySpaces:FittingRestriction:",
+							"$type": "ManySpaces:Restricted:",
 							"restriction": {
 								"$type": "Core.SpaceRestriction:CanPlayCard:",
 								"toPlay": { "$type": "Cards:TargetIndex:" }

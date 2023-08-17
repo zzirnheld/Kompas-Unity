@@ -67,7 +67,7 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 		public override void Initialize(EffectInitializationContext initializationContext)
 		{
 			base.Initialize(initializationContext);
-			anyDestination ??= new Identities.ManySpaces.FittingRestriction() { restriction = anyDestinationRestriction };
+			anyDestination ??= new Identities.ManySpaces.Restricted() { restriction = anyDestinationRestriction };
 			anyDestination.Initialize(initializationContext);
 			origin.Initialize(initializationContext);
 		}

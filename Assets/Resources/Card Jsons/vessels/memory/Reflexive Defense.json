@@ -86,6 +86,7 @@
 		}
 	],
 	"PlayRestriction": {
+		"$type": "Core.PlayRestriction:PlayRestriction:",
 		"playAsAugment": true,
 		"normalAndEffect": [ { "$type": "Core.CardRestriction:Summoned:" } ]
 	},

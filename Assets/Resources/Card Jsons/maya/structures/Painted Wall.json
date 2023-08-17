@@ -53,6 +53,7 @@
 		} ]
 	},
 	"movementRestriction": {
+		"$type": "Core.SpaceRestriction:MovementRestriction:",
 		"normalOnly": [ { "$type": "Core.GamestateRestriction:NeverValid:" } ]
 	},
 	"n": 0,

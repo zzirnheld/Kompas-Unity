@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace KompasCore.Effects.Identities.ManyCards
 {
-	public class FittingRestriction : ContextualParentIdentityBase<IReadOnlyCollection<GameCardBase>>
+	public class Restricted : ContextualParentIdentityBase<IReadOnlyCollection<GameCardBase>>
 	{
 		public IIdentity<IReadOnlyCollection<GameCardBase>> cards = new ManyCards.All();
 

@@ -1,6 +1,5 @@
 Linewalk
 Shape
-Geminii
 Revenant Die
 Revenant Revive
 Ificate
@@ -22,7 +21,6 @@ Attended
 Collectible
 Spores
 Vessel Echo
-Vessel Cost Up
 Smite
 Stealth
 Evasive

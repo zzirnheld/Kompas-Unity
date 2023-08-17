@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace KompasCore.Effects.Identities.ManySpaces
 {
-	public class FittingRestriction : ContextualParentIdentityBase<IReadOnlyCollection<Space>>
+	public class Restricted : ContextualParentIdentityBase<IReadOnlyCollection<Space>>
 	{
 		public IRestriction<Space> restriction;
 		public IIdentity<IReadOnlyCollection<Space>> spaces = new ManySpaces.All();
