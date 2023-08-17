@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace KompasCore.Effects.Identities.ManySpaces
 {
@@ -9,9 +10,12 @@ namespace KompasCore.Effects.Identities.ManySpaces
 	/// </summary>
 	public class ThreeSpaceRelationship : ContextualParentIdentityBase<IReadOnlyCollection<Space>>
 	{
+		[JsonProperty(Required = Required.Always)]
 		public IIdentity<Space> firstSpace;
+		[JsonProperty(Required = Required.Always)]
 		public IIdentity<Space> secondSpace;
 
+		[JsonProperty(Required = Required.Always)]
 		public IThreeSpaceRelationship thirdSpaceRelationship;
 
 		public override void Initialize(EffectInitializationContext initializationContext)

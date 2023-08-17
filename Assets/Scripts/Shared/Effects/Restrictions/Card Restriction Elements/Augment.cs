@@ -1,5 +1,6 @@
 using KompasCore.Cards;
 using KompasCore.Effects.Identities;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +11,11 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 	// where there's an additional IIdentity<GameCardBase> that defines the card to actually be tested in terms of the incoming card?
 	public abstract class AugmentRestrictionBase : CardRestrictionElement
 	{
+		[JsonProperty]
 		public IRestriction<GameCardBase> cardRestriction;
+		[JsonProperty]
 		public IIdentity<IReadOnlyCollection<GameCardBase>> manyCards;
+		[JsonProperty]
 		public IIdentity<GameCardBase> singleCard;
 
 		/// <summary>
@@ -49,6 +53,7 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 
 	public class HasAugment : AugmentRestrictionBase
 	{
+		[JsonProperty]
 		public bool all = false; //default to any
 
 		protected override bool IsValidLogic(GameCardBase card, IResolutionContext context) 

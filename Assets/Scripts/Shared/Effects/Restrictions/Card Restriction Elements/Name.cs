@@ -2,14 +2,18 @@ using System.Collections.Generic;
 using System.Linq;
 using KompasCore.Cards;
 using KompasCore.Effects.Identities;
+using Newtonsoft.Json;
 
 namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 {
 	public class Name : CardRestrictionElement
 	{
+		[JsonProperty]
 		public string nameIs;
+		[JsonProperty]
 		public string nameIncludes;
 
+		[JsonProperty]
 		public IIdentity<GameCardBase> sameAs;
 
 		public override void Initialize(EffectInitializationContext initializationContext)

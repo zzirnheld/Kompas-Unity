@@ -1,5 +1,6 @@
 using KompasCore.Cards;
 using KompasCore.Effects.Identities;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -7,8 +8,11 @@ namespace KompasCore.Effects.Restrictions.TriggerRestrictionElements
 {
 	public class CardsMatch : TriggerGamestateRestrictionBase
 	{
+		[JsonProperty(Required = Required.Always)]
 		public IIdentity<GameCardBase> card;
+		[JsonProperty]
 		public IIdentity<GameCardBase> other;
+		[JsonProperty]
 		public IIdentity<IReadOnlyCollection<GameCardBase>> anyOf;
 
 		public override void Initialize(EffectInitializationContext initializationContext)

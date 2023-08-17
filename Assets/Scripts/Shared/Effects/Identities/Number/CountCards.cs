@@ -1,14 +1,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using KompasCore.Cards;
+using Newtonsoft.Json;
 
 namespace KompasCore.Effects.Identities.Numbers
 {
 
 	public class CountCards : ContextualParentIdentityBase<int>
 	{
+		[JsonProperty]
 		public IIdentity<IReadOnlyCollection<GameCardBase>> cards = new ManyCards.All();
 
+		[JsonProperty]
 		public IRestriction<GameCardBase> cardRestriction = new Restrictions.GamestateRestrictionElements.AlwaysValid();
 
 		public override void Initialize(EffectInitializationContext initializationContext)

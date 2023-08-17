@@ -1,5 +1,6 @@
 using KompasCore.Cards;
 using KompasCore.Effects.Identities;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,13 +9,19 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 {
 	public class InAOEOf : SpaceRestrictionElement
 	{
+		[JsonProperty]
 		public IIdentity<GameCardBase> card;
+		[JsonProperty]
 		public IRestriction<GameCardBase> cardRestriction; //Used to restrict anyOf. If non-null, but anyOf is null, will make anyOf default to All()
+		[JsonProperty]
 		public IIdentity<IReadOnlyCollection<GameCardBase>> anyOf;
+		[JsonProperty]
 		public IIdentity<IReadOnlyCollection<GameCardBase>> allOf;
 
+		[JsonProperty]
 		public IIdentity<int> minAnyOfCount = Identities.Numbers.Constant.One;
 
+		[JsonProperty]
 		public IIdentity<Space> alsoInAOE;
 
 		public override void Initialize(EffectInitializationContext initializationContext)

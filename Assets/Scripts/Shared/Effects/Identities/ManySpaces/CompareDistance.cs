@@ -1,13 +1,17 @@
 using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace KompasCore.Effects.Identities.ManySpaces
 {
 	public class CompareDistance : ContextualParentIdentityBase<IReadOnlyCollection<Space>>
 	{
+		[JsonProperty(Required = Required.Always)]
 		public IIdentity<IReadOnlyCollection<Space>> spaces;
+		[JsonProperty(Required = Required.Always)]
 		public IIdentity<Space> distanceTo;
 
+		[JsonProperty]
 		public bool closest = true;
 
 		public override void Initialize(EffectInitializationContext initializationContext)

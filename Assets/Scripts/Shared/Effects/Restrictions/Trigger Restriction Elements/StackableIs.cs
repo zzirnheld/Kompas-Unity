@@ -1,9 +1,11 @@
 using KompasCore.Effects.Identities;
+using Newtonsoft.Json;
 
 namespace KompasCore.Effects.Restrictions.TriggerRestrictionElements
 {
 	public abstract class StackableIs : TriggerGamestateRestrictionBase
 	{
+		[JsonProperty]
 		public IIdentity<IStackable> stackable = new Identities.Stackables.StackableCause();
 
 		public override void Initialize(EffectInitializationContext initializationContext)

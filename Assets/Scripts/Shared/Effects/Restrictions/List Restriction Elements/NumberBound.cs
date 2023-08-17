@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using KompasCore.Cards;
 using KompasCore.Effects.Identities;
+using Newtonsoft.Json;
 
 namespace KompasCore.Effects.Restrictions.ListRestrictionElements
 {
@@ -11,6 +12,7 @@ namespace KompasCore.Effects.Restrictions.ListRestrictionElements
         /// The bound, as defined by the actual card json.
         /// Might have to reference stuff about the current context, like the current effect X value.
         /// </summary>
+		[JsonProperty(Required = Required.Always)]
 		public IIdentity<int> bound;
 
 		/// <summary>
@@ -19,6 +21,7 @@ namespace KompasCore.Effects.Restrictions.ListRestrictionElements
 		/// but that makes any other manipulation much harder than it needs to be.
 		/// This is more flexible long-term, even if it is more annoying.
 		/// </summary>
+		[JsonProperty]
 		public int stashedBound;
 
 		public override void PrepareForSending(IResolutionContext context) => stashedBound = bound.From(context);

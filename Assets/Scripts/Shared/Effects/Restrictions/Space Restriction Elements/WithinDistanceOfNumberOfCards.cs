@@ -1,17 +1,22 @@
 using KompasCore.Cards;
 using KompasCore.Effects.Identities;
 using KompasCore.Effects.Identities.Numbers;
+using Newtonsoft.Json;
 using System.Linq;
 
 namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 {
 	public class WithinDistanceOfNumberOfCards : SpaceRestrictionElement
 	{
+		[JsonProperty]
 		public IRestriction<GameCardBase> cardRestriction = new GamestateRestrictionElements.AlwaysValid();
 
+		[JsonProperty]
 		public IIdentity<int> numberOfCards = Constant.One;
+		[JsonProperty]
 		public IIdentity<int> distance = Constant.One;
 
+		[JsonProperty]
 		public bool excludeSelf = true;
 
 		public override void Initialize(EffectInitializationContext initializationContext)
@@ -33,6 +38,7 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 			return InitializationContext.game.Cards
 				.Where(c => c.DistanceTo(space) < distance.From(context))
 				.Where(c => cardRestriction.IsValid(c, context))
+				.Where(c => !excludeSelf || c != InitializationContext.source)
 				.Count() >= numberOfCards.From(context);
 		}
 	}

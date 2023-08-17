@@ -1,10 +1,13 @@
 using KompasCore.Cards;
+using Newtonsoft.Json;
 
 namespace KompasCore.Effects.Identities.Numbers
 {
 	public class FromCardValue : ContextualParentIdentityBase<int>
 	{
+		[JsonProperty(Required = Required.Always)]
 		public IIdentity<GameCardBase> card;
+		[JsonProperty(Required = Required.Always)]
 		public CardValue cardValue;
 
 		public override void Initialize(EffectInitializationContext initializationContext)

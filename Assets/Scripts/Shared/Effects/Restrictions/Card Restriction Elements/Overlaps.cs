@@ -1,10 +1,12 @@
 using KompasCore.Cards;
 using KompasCore.Effects.Identities;
+using Newtonsoft.Json;
 
 namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 {
 	public class Overlaps : CardRestrictionElement
 	{
+		[JsonProperty(Required = Required.Always)]
 		public IIdentity<GameCardBase> other;
 		/// <summary>
 		/// An optional override to check if the card to be tested overlaps another, if that second one is at this specified space.

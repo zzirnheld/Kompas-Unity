@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using KompasCore.Helpers;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace KompasCore.Effects
@@ -20,7 +21,8 @@ namespace KompasCore.Effects
 		: RestrictionBase<RestrictedType>, IAllOf<RestrictedType>
 		where ElementRestrictionType : IRestriction<RestrictedType>	
 	{
-		public IList<ElementRestrictionType> elements = new ElementRestrictionType[] { };
+		[JsonProperty(Required = Required.Always)]
+		public IList<ElementRestrictionType> elements = new List<ElementRestrictionType>();
 
 		protected virtual bool LogSoloElements => true;
 		protected virtual IEnumerable<ElementRestrictionType> DefaultElements => Enumerable.Empty<ElementRestrictionType>();

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using KompasCore.Effects.Identities;
 using KompasCore.Effects.Relationships;
+using Newtonsoft.Json;
 
 namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 {
@@ -12,9 +13,13 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 	/// </summary>
 	public class CompareDistance : SpaceRestrictionElement
 	{
+		[JsonProperty]
 		public bool shortestEmptyPath = false;
+		[JsonProperty(Required = Required.Always)]
 		public IIdentity<Space> distanceTo;
+		[JsonProperty(Required = Required.Always)]
 		public IIdentity<int> number;
+		[JsonProperty]
 		public INumberRelationship comparison = new Relationships.NumberRelationships.Equal();
 
 		public override void Initialize(EffectInitializationContext initializationContext)

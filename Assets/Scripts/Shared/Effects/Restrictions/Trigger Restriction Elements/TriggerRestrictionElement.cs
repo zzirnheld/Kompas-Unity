@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using KompasCore.Cards;
+using Newtonsoft.Json;
 
 namespace KompasCore.Effects.Restrictions
 {
@@ -82,6 +83,7 @@ namespace KompasCore.Effects.Restrictions
 
 		public class Not : TriggerRestrictionBase
 		{
+			[JsonProperty(Required = Required.Always)]
 			public IRestriction<TriggeringEventContext> inverted;
 
 			public override void Initialize(EffectInitializationContext initializationContext)

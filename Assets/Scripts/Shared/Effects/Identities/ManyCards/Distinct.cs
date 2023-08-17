@@ -1,4 +1,5 @@
 using KompasCore.Cards;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,6 +7,7 @@ namespace KompasCore.Effects.Identities.ManyCards
 {
 	public class Distinct : ContextualParentIdentityBase<IReadOnlyCollection<GameCardBase>>
 	{
+		[JsonProperty(Required = Required.Always)]
 		public IIdentity<IReadOnlyCollection<GameCardBase>> cards;
 
 		public override void Initialize(EffectInitializationContext initializationContext)

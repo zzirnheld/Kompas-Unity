@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace KompasCore.Effects
 {
@@ -43,8 +44,11 @@ namespace KompasCore.Effects
 		protected DualComponentRestriction NormalRestriction { get; private set; }
 		protected DualComponentRestriction EffectRestriction { get; private set; }
 
+		[JsonProperty]
 		public IRestriction<RestrictedType>[] normalAndEffect = null;
+		[JsonProperty]
 		public IRestriction<RestrictedType>[] normalOnly = new IRestriction<RestrictedType>[] { };
+		[JsonProperty]
 		public IRestriction<RestrictedType>[] effectOnly = new IRestriction<RestrictedType>[] { };
 
 		/// <summary>

@@ -3,9 +3,12 @@ namespace KompasCore.Effects.Identities.Spaces
 
 	public class TwoSpaceIdentity : ContextualParentIdentityBase<Space>
 	{
+		[JsonProperty(Required = Required.Always)]
 		public IIdentity<Space> firstSpace;
+		[JsonProperty(Required = Required.Always)]
 		public IIdentity<Space> secondSpace;
 
+		[JsonProperty(Required = Required.Always)]
 		public ITwoSpaceIdentity relationship;
 
 		public override void Initialize(EffectInitializationContext initializationContext)

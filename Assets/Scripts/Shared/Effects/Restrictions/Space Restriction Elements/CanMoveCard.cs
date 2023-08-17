@@ -1,5 +1,6 @@
 using KompasCore.Cards;
 using KompasCore.Effects.Identities;
+using Newtonsoft.Json;
 
 namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 {
@@ -8,15 +9,19 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 	/// </summary>
 	public class CanMoveCard : SpaceRestrictionElement
 	{
+		[JsonProperty(Required = Required.Always)]
 		public IIdentity<GameCardBase> toMove;
 
 		/// <summary>
 		/// Describes any restriction on the spaces between the card and where it needs to go (the space being tested)
 		/// </summary>
+		[JsonProperty]
 		public IRestriction<Space> throughRestriction = new Empty();
 
+		[JsonProperty]
 		public IRestriction<int> distanceRestriction = new GamestateRestrictionElements.AlwaysValid();
 
+		[JsonProperty]
 		public bool normalMove = false;
 
 		public override void Initialize(EffectInitializationContext initializationContext)

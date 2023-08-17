@@ -1,9 +1,11 @@
 using KompasCore.Cards;
+using Newtonsoft.Json;
 
 namespace KompasCore.Effects.Identities.Cards
 {
 	public class CardAtPosition : ContextualParentIdentityBase<GameCardBase>
 	{
+		[JsonProperty(Required = Required.Always)]
 		public IIdentity<Space> position;
 
 		public override void Initialize(EffectInitializationContext initializationContext)

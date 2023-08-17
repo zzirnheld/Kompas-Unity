@@ -1,5 +1,6 @@
 using KompasCore.Cards;
 using KompasCore.Effects.Identities;
+using Newtonsoft.Json;
 using System;
 using System.Linq;
 
@@ -19,6 +20,7 @@ namespace KompasCore.Effects.Restrictions
 
 		public class Not : SpaceRestrictionElement
 		{
+			[JsonProperty(Required = Required.Always)]
 			public IRestriction<Space> negated;
 
 			public override void Initialize(EffectInitializationContext initializationContext)
@@ -31,19 +33,7 @@ namespace KompasCore.Effects.Restrictions
 				=> !negated.IsValid(space, context);
 		}
 
-		public class AnyOf : SpaceRestrictionElement
-		{
-			public IRestriction<Space>[] restrictions;
-
-			public override void Initialize(EffectInitializationContext initializationContext)
-			{
-				base.Initialize(initializationContext);
-				foreach (var r in restrictions) r.Initialize(initializationContext);
-			}
-
-			protected override bool IsValidLogic(Space space, IResolutionContext context)
-				=> restrictions.Any(r => r.IsValid(space, context));
-		}
+		public class AnyOf : AnyOfBase<Space> { }
 
 		public class Empty : SpaceRestrictionElement
 		{
@@ -53,6 +43,7 @@ namespace KompasCore.Effects.Restrictions
 
 		public class Different : SpaceRestrictionElement
 		{
+			[JsonProperty(Required = Required.Always)]
 			public IIdentity<Space> from;
 
 			public override void Initialize(EffectInitializationContext initializationContext)
@@ -78,6 +69,7 @@ namespace KompasCore.Effects.Restrictions
 
 		public class CardFitsRestriction : SpaceRestrictionElement
 		{
+			[JsonProperty(Required = Required.Always)]
 			public IRestriction<GameCardBase> restriction;
 
 			public override void Initialize(EffectInitializationContext initializationContext)

@@ -34,9 +34,12 @@
 			"triggerData": {
 				"triggerCondition": "Play",
 				"triggerRestriction": {
-					"$type": "Core.TriggerRestriction:CardsMatch:",
-					"card": { "$type": "Cards:CardBefore:" },
-					"other": { "$type": "Cards:ThisCardNow:" }
+					"$type": "Core.TriggerRestriction:AllOf:",
+					"elements": [ {
+						"$type": "Core.TriggerRestriction:CardsMatch:",
+						"card": { "$type": "Cards:CardBefore:" },
+						"other": { "$type": "Cards:ThisCardNow:" }
+					} ]
 				}
 			},
 			"subeffects": [

@@ -1,10 +1,13 @@
 using KompasCore.Effects.Identities;
+using Newtonsoft.Json;
 
 namespace KompasCore.Effects.Restrictions.TriggerRestrictionElements
 {
 	public class StackableFitsRestriction : TriggerGamestateRestrictionBase
 	{
+		[JsonProperty(Required = Required.Always)]
 		public IRestriction<IStackable> restriction;
+		[JsonProperty(Required = Required.Always)]
 		public IIdentity<IStackable> stackable;
 
 		public override void Initialize(EffectInitializationContext initializationContext)

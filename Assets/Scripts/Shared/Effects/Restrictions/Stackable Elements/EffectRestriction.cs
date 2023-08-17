@@ -1,3 +1,5 @@
+using Newtonsoft.Json;
+
 namespace KompasCore.Effects.Restrictions.StackableRestrictionElements
 {
 	public abstract class EffectRestrictionElementBase : RestrictionBase<IStackable>, IRestriction<Effect>
@@ -16,6 +18,7 @@ namespace KompasCore.Effects.Restrictions.StackableRestrictionElements
 	{
 		public class Keyword : EffectRestrictionElementBase
 		{
+			[JsonProperty(Required = Required.Always)]
 			public string keyword;
 
 			protected override bool IsValidLogic(Effect effect)

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace KompasCore.Effects
 {
@@ -27,11 +28,15 @@ namespace KompasCore.Effects
 
 			public class PlayRestriction : DualRestrictionBase<(Space s, Player p)>, IPlayRestriction
 			{
+				[JsonProperty]
 				public bool playAsAugment = false;
+				[JsonProperty]
 				public string[] augmentOnSubtypes;
 
+				[JsonProperty]
 				public bool requireStandardAdjacency = true;
 
+				[JsonProperty]
 				public IRestriction<(Space s, Player p)>[] recommendations = { };
 
 				public override void Initialize(EffectInitializationContext initializationContext)
@@ -87,13 +92,18 @@ namespace KompasCore.Effects
 							{
 								card = new Identities.Cards.ThisCardNow(),
 								cardValue = new CardValue() { value = CardValue.Cost }
+							},
+							restriction = new Restrictions.NumberRestrictionElements.Compare()
+							{
+								comparison = new Relationships.NumberRelationships.LessThanEqual(),
+								other = new Identities.Numbers.Pips() { player = new Identities.Players.FriendlyPlayer() }
 							}
 						};
 
 						//Currently controls the card in hand
 						yield return new PlayerRestrictionElements.PlayersMatch()
 						{
-							player = new Identities.Players.ControllerOf()
+							player = new Identities.Players.ControllerOf() { card = new Identities.Cards.ThisCardNow() }
 						};
 						yield return new TriggerRestrictionElements.CardFitsRestriction()
 						{

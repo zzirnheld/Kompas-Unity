@@ -1,14 +1,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using KompasCore.Effects.Identities;
+using Newtonsoft.Json;
 
 namespace KompasCore.Effects.Restrictions.TriggerRestrictionElements
 {
 	public class SpacesFitRestriction : TriggerGamestateRestrictionBase
 	{
+		[JsonProperty(Required = Required.Always)]
 		public IRestriction<Space> spaceRestriction;
+		[JsonProperty]
 		public IIdentity<IReadOnlyCollection<Space>> spaces = new Identities.ManySpaces.All();
 
+		[JsonProperty]
 		public bool any = false;
 
 		public override void Initialize(EffectInitializationContext initializationContext)
@@ -29,6 +33,7 @@ namespace KompasCore.Effects.Restrictions.TriggerRestrictionElements
 
 	public class SpaceFitsRestriction : SpacesFitRestriction
 	{
+		[JsonProperty(Required = Required.Always)]
 		public IIdentity<Space> space;
 
 		public override void Initialize(EffectInitializationContext initializationContext)

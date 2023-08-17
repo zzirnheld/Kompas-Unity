@@ -1,4 +1,5 @@
 using KompasCore.Cards;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,6 +7,7 @@ namespace KompasCore.Effects.Identities.ManySpaces
 {
 	public class PositionsOfEach : ContextualParentIdentityBase<IReadOnlyCollection<Space>>
 	{
+		[JsonProperty(Required = Required.Always)]
 		public IIdentity<IReadOnlyCollection<GameCardBase>> cards;
 
 		public override void Initialize(EffectInitializationContext initializationContext)

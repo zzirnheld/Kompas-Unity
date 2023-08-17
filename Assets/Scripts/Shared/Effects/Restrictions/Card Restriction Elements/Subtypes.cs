@@ -1,15 +1,20 @@
 using KompasCore.Cards;
+using Newtonsoft.Json;
 using System.Linq;
 
 namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 {
 	public class Subtypes : CardRestrictionElement
 	{
+		[JsonProperty(Required = Required.Always)]
 		public string[] subtypes;
 
+		[JsonProperty]
 		public bool exclude = false; //default to include
+		[JsonProperty]
 		public bool any = false; //default to all
 
+		[JsonProperty]
 		public bool spell = false; //whether to consider all or spell subtypes
 
 		public override void Initialize(EffectInitializationContext initializationContext)

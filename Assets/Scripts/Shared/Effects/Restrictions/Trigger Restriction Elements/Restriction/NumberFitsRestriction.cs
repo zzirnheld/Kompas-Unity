@@ -1,10 +1,13 @@
 using KompasCore.Effects.Identities;
+using Newtonsoft.Json;
 
 namespace KompasCore.Effects.Restrictions.TriggerRestrictionElements
 {
 	public class NumberFitsRestriction : TriggerGamestateRestrictionBase
 	{
+		[JsonProperty(Required = Required.Always)]
 		public IIdentity<int> number;
+		[JsonProperty(Required = Required.Always)]
 		public IRestriction<int> restriction;
 
 		public override void Initialize(EffectInitializationContext initializationContext)

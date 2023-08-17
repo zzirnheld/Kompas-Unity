@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using KompasCore.Cards;
 using KompasServer.Effects;
+using Newtonsoft.Json;
 
 //TODO: move this to the KompasServer package?
 //If I do, I'd probably want to have some tyupe of "server-only restriction" thing, where it just always returns true if it's client side.
@@ -12,7 +13,8 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 {
 	public class SubeffectValidIfTargeted : CardRestrictionElement
 	{
-		public int[] subeffectIndices; //TODO add a hook into ContextInitializeableBase for adjusting indices, just like for subeffects
+		[JsonProperty(Required = Required.Always)]
+		public int[] subeffectIndices;
 
 		protected override IEnumerable<IInitializationRequirement> InitializationRequirements
 			{ get { yield return new SubeffectInitializationRequirement(); } }

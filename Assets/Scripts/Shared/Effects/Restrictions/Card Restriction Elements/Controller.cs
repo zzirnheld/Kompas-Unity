@@ -1,11 +1,13 @@
 using KompasCore.Cards;
 using KompasCore.Effects.Identities;
 using KompasCore.Effects.Identities.Players;
+using Newtonsoft.Json;
 
 namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 {
 	public class Controller : CardRestrictionElement
 	{
+		[JsonProperty]
 		public IIdentity<Player> playerIdentity;
 
 		public override void Initialize(EffectInitializationContext initializationContext)

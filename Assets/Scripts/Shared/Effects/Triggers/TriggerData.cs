@@ -6,7 +6,7 @@ public class TriggerData
 	public IRestriction<TriggeringEventContext> triggerRestriction;
 
 	public bool optional = false;
-	public string blurb = "Trigger";
+	public string blurb;
 	public bool showX = false;
 	public int orderPriority = 0; //positive means it goes on the stack after anything, negative before
 }
