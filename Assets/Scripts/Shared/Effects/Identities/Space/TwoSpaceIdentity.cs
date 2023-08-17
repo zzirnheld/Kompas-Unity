@@ -1,3 +1,5 @@
+using Newtonsoft.Json;
+
 namespace KompasCore.Effects.Identities.Spaces
 {
 

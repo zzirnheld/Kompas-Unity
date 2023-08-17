@@ -21,7 +21,7 @@ namespace KompasCore.Effects
 		: RestrictionBase<RestrictedType>, IAllOf<RestrictedType>
 		where ElementRestrictionType : IRestriction<RestrictedType>	
 	{
-		[JsonProperty(Required = Required.Always)]
+		[JsonProperty] //Not always required because default elems exist
 		public IList<ElementRestrictionType> elements = new List<ElementRestrictionType>();
 
 		protected virtual bool LogSoloElements => true;

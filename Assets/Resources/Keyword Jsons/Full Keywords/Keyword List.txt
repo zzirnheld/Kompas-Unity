@@ -36,3 +36,4 @@ Repositionable
 Restock
 Shadowy Figure Summon
 Shadowy Figure Vanish
+Aggressive

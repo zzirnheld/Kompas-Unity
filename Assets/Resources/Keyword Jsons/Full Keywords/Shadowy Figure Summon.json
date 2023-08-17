@@ -61,13 +61,9 @@
 			"numTimesToDelay": 0,
 			"jumpIndices": [ 5 ],
 			"triggerRestriction": {
-				"elements": [
-					{
-						"$type": "Core.TriggerRestriction:CardsMatch:",
-						"card": { "$type": "Cards:CardBefore:" },
-						"other": { "$type": "Cards:ThisCardNow:" }
-					}
-				]
+				"$type": "Core.TriggerRestriction:CardsMatch:",
+				"card": { "$type": "Cards:CardBefore:" },
+				"other": { "$type": "Cards:ThisCardNow:" }
 			}
 		},
 		{

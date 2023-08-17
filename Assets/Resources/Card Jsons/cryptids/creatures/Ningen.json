@@ -59,6 +59,7 @@
 				{
 					"$type": "Subeffect:SpaceTarget:",
 					"spaceRestriction": {
+						"$type": "Core.SpaceRestriction:AllOf:",
 						"blurb": "where to play Supplicants' Plea",
 						"elements": [
 							{ "$type": "Core.SpaceRestriction:Empty:" },

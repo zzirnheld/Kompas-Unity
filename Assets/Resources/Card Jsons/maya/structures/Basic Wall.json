@@ -7,7 +7,7 @@
 		"$type": "Core.CardRestriction:AttackingDefender:",
 		"elements": [ {
 			"$type": "Core.GamestateRestriction:Not:",
-			"negated": { "$type": "Core.GamestateRestriction:Normally:" }
+			"negated": { "$type": "Core.TriggerRestriction:Normally:" }
 		} ]
 	},
 	"movementRestriction": {
