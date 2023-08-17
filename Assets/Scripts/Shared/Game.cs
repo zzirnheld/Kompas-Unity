@@ -77,7 +77,7 @@ namespace KompasCore.GameCore
 		}
 
 		public bool ExistsEffectPlaySpace(IPlayRestriction restriction, Effect eff)
-			=> Space.Spaces.Any(s => restriction.IsValid((s, eff.Controller), eff.ResolutionContext));
+			=> Space.Spaces.Any(s => restriction.IsValid((s, eff.Controller), eff.CurrentResolutionContext));
 
 
 		protected void ResetCardsForTurn()

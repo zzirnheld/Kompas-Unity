@@ -12,8 +12,8 @@ namespace KompasClient.UI
 {
 	public class ClientUIController : UIController
 	{
-		private const string FriendlyTurn = "Friendly Turn";
-		private const string EnemyTurn = "Enemy Turn";
+		private const string FriendlyTurn = "Friendly";
+		private const string EnemyTurn = "Enemy";
 
 		private const string GameStarting = "Game is Starting";
 
@@ -107,7 +107,7 @@ namespace KompasClient.UI
 		}
 		public int Leyload
 		{
-			set => LeyloadText.text = $"{value} Pips Leyload";
+			set => LeyloadText.text = $"{value}";
 		}
 
 		public override bool AllowDragging => TargetMode == TargetMode.Free;
@@ -134,8 +134,10 @@ namespace KompasClient.UI
 		public void ChangeTurn(int index)
 		{
 			CurrTurnText.text = index == 0 ? FriendlyTurn : EnemyTurn;
-			//Debug.Log($"{clientGame}, {clientGame?.ClientSettings}, {clientGame?.ClientSettings?.FriendlyColor}");
-			currTurnOutline.effectColor = index == 0 ? clientGame.ClientSettings.FriendlyColor : clientGame.ClientSettings.EnemyColor;
+			Debug.Log($"{clientGame}, {clientGame?.ClientSettings}, {clientGame?.ClientSettings?.FriendlyColor}");
+			currTurnOutline.effectColor = index == 0
+				? clientGame.ClientSettings.FriendlyColor
+				: clientGame.ClientSettings.EnemyColor;
 			EndTurnButton.SetActive(index == 0);
 		}
 

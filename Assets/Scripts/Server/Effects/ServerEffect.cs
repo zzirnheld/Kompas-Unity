@@ -47,9 +47,9 @@ namespace KompasServer.Effects
 
 		public void SetInfo(GameCard thisCard, ServerGame serverGame, ServerPlayer controller, int effectIndex)
 		{
-			base.SetInfo(thisCard, effectIndex, controller);
 			this.serverGame = serverGame;
 			this.ServerController = controller;
+			base.SetInfo(thisCard, effectIndex, controller);
 
 			if (triggerData != null && !string.IsNullOrEmpty(triggerData.triggerCondition))
 				ServerTrigger = new ServerTrigger(triggerData, this);
@@ -120,7 +120,7 @@ namespace KompasServer.Effects
 			serverGame.CurrEffect = this;
 
 			//set context parameters
-			ResolutionContext = context;
+			CurrentResolutionContext = context;
 			//Notify the targets one by one so the client knows that they're current targets
 			if (context.CardTargets != null) foreach(var tgt in context.CardTargets) NotifyAddCardTarget(tgt);
 			

@@ -145,6 +145,7 @@ namespace KompasCore.GameCore
 		public int ShortestPath(Space start, Space destination, Func<Space, bool> throughPredicate)
 		{
 			if (start == destination) return 0;
+			if (start == null || destination == null) return 50;
 
 			int[,] dist = new int[7, 7];
 			bool[,] seen = new bool[7, 7];

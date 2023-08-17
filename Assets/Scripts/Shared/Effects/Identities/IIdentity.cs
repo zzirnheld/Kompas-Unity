@@ -52,7 +52,7 @@ namespace KompasCore.Effects.Identities
 			return AbstractItemFrom(context, secondaryContext);
 		}
 
-		public ReturnType Item => From(InitializationContext.effect.ResolutionContext, default);
+		public ReturnType Item => From(InitializationContext.effect.CurrentResolutionContext, default);
 
 		protected Attack GetAttack(TriggeringEventContext effectContext)
 		{

@@ -20,6 +20,6 @@ namespace KompasCore.Effects.Identities.ManySpaces
 
 		protected override IReadOnlyCollection<Space> AbstractItemFrom(IResolutionContext context, IResolutionContext secondaryContext)
 			=> spaces.From(context, secondaryContext)
-				.Where(s => restriction.IsValid(s, InitializationContext.effect?.ResolutionContext)).ToList();
+				.Where(s => restriction.IsValid(s, InitializationContext.effect?.CurrentResolutionContext)).ToList();
 	}
 }

@@ -26,10 +26,10 @@ namespace KompasCore.Effects
 		public int SubeffectIndex { get; protected set; }
 
 		//Targets
-		public IList<GameCard> CardTargets => ResolutionContext.CardTargets;
-		public IList<Space> SpaceTargets => ResolutionContext.SpaceTargets;
-		public IList<GameCardInfo> CardInfoTargets => ResolutionContext.CardInfoTargets;
-		public IList<IStackable> StackableTargets => ResolutionContext.StackableTargets;
+		public IList<GameCard> CardTargets => CurrentResolutionContext.CardTargets;
+		public IList<Space> SpaceTargets => CurrentResolutionContext.SpaceTargets;
+		public IList<GameCardInfo> CardInfoTargets => CurrentResolutionContext.CardInfoTargets;
+		public IList<IStackable> StackableTargets => CurrentResolutionContext.StackableTargets;
 
 		protected readonly List<CardLink> cardLinks = new List<CardLink>();
 
@@ -44,8 +44,8 @@ namespace KompasCore.Effects
 		/// </summary>
 		public int X
 		{
-			get => ResolutionContext.X;
-			set => ResolutionContext.X = value;
+			get => CurrentResolutionContext.X;
+			set => CurrentResolutionContext.X = value;
 		}
 
 		//Triggering and Activating
@@ -58,12 +58,12 @@ namespace KompasCore.Effects
 		public int arg; //used for keyword arguments, and such
 
 		private IResolutionContext resolutionContext;
-		public virtual IResolutionContext ResolutionContext
+		public virtual IResolutionContext CurrentResolutionContext
 		{
 			get => resolutionContext;
 			protected set => resolutionContext = value;
 		}
-		public TriggeringEventContext CurrTriggerContext => ResolutionContext.TriggerContext;
+		public TriggeringEventContext CurrTriggerContext => CurrentResolutionContext.TriggerContext;
 		public int TimesUsedThisTurn { get; protected set; }
 		public int TimesUsedThisRound { get; protected set; }
 		public int TimesUsedThisStack { get; set; }
@@ -77,7 +77,7 @@ namespace KompasCore.Effects
 
 		protected void SetInfo(GameCard source, int effIndex, Player owner)
 		{
-			Debug.Log($"Trying to init eff of {source}");
+			Debug.Log($"Trying to init eff {effIndex} of {source}, with game {Game}");
 			Source = source ?? throw new ArgumentNullException("source", "Effect cannot be attached to null card");
 			EffectIndex = effIndex;
 			Controller = owner;
@@ -100,7 +100,7 @@ namespace KompasCore.Effects
 		}
 
 		public virtual bool CanBeActivatedBy(Player controller)
-			=> Trigger == null && activationRestriction != null && activationRestriction.IsValid(controller, default);
+			=> Trigger == null && activationRestriction != null && activationRestriction.IsValid(controller, ResolutionContext.PlayerTrigger(this, Game));
 
 		public virtual bool CanBeActivatedAtAllBy(Player activator)
 			=> Trigger == null && activationRestriction != null && activationRestriction.IsPotentiallyValidActivation(activator);

@@ -1,21 +1,31 @@
+using KompasCore.Effects.Identities;
+
 namespace KompasCore.Effects.Restrictions.GamestateRestrictionElements
 {
 	public abstract class Turn : GamestateRestrictionBase
 	{
 		//If end up needing a version that can leverage trigger restriction elements, will need to split this back out to trigger/gamestate versions
-		protected abstract Player TurnPlayer { get; }
+		protected abstract IIdentity<Player> TurnPlayer { get; }
+
+		public override void Initialize(EffectInitializationContext initializationContext)
+		{
+			base.Initialize(initializationContext);
+			TurnPlayer.Initialize(initializationContext);
+		}
 
 		protected override bool IsValidLogic(IResolutionContext context)
-			=> InitializationContext.game.TurnPlayer == TurnPlayer;
+			=> InitializationContext.game.TurnPlayer == TurnPlayer.From(context);
 	}
 
 	public class FriendlyTurn : Turn
 	{
-		protected override Player TurnPlayer => new Identities.Players.FriendlyPlayer().Item;
+		private IIdentity<Player> turnPlayer = new Identities.Players.FriendlyPlayer();
+		protected override IIdentity<Player> TurnPlayer => turnPlayer;
 	}
 
 	public class EnemyTurn : Turn
 	{
-		protected override Player TurnPlayer => new Identities.Players.EnemyPlayer().Item;
+		private IIdentity<Player> turnPlayer = new Identities.Players.EnemyPlayer();
+		protected override IIdentity<Player> TurnPlayer => turnPlayer;
 	}
 }
