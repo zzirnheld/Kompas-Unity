@@ -38,13 +38,9 @@
 					"$type": "Subeffect:Hanging.Activation:",
 					"endCondition": "Augment Detached",
 					"triggerRestriction": {
-						"elements": [
-							{
-								"$type": "Core.TriggerRestriction:CardsMatch:",
-								"card": { "$type": "Cards:CardBefore:" },
-								"other": { "$type": "Cards:ThisCardNow:" }
-							}
-						]
+						"$type": "Core.TriggerRestriction:CardsMatch:",
+						"card": { "$type": "Cards:CardBefore:" },
+						"other": { "$type": "Cards:ThisCardNow:" }
 					}
 				},
 				{
@@ -52,13 +48,9 @@
 					"eModifier": 5,
 					"endCondition": "Augment Detached",
 					"triggerRestriction": {
-						"elements": [
-							{
-								"$type": "Core.TriggerRestriction:CardsMatch:",
-								"card": { "$type": "Cards:CardBefore:" },
-								"other": { "$type": "Cards:ThisCardNow:" }
-							}
-						]
+						"$type": "Core.TriggerRestriction:CardsMatch:",
+						"card": { "$type": "Cards:CardBefore:" },
+						"other": { "$type": "Cards:ThisCardNow:" }
 					}
 				}
 			]
