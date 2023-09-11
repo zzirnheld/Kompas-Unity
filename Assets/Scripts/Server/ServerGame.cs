@@ -60,6 +60,8 @@ namespace KompasServer.GameCore
 
 		public bool GameHasStarted { get; private set; } = false;
 
+		public ServerPlayer Winner { get; private set; }
+
 		public override int TurnCount
 		{
 			get => base.TurnCount;
@@ -301,5 +303,11 @@ namespace KompasServer.GameCore
 
 		public override bool IsCurrentTarget(GameCard card) => false;
 		public override bool IsValidTarget(GameCard card) => false;
+
+		public void Lose(ServerPlayer player)
+		{
+			Winner = player.enemy;
+			Winner.notifier.NotifyWin();
+		}
 	}
 }

@@ -50,6 +50,8 @@ namespace KompasServer.Networking
 		}
 		#endregion game start
 
+		public void NotifyWin() => SendToBothInverting(new GameEndPacket(true));
+
 		public void NotifyPutBack() => SendPacket(new PutCardsBackPacket());
 
 		public void NotifyBothPutBack() => SendToBoth(new PutCardsBackPacket());

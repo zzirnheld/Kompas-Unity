@@ -104,6 +104,18 @@ namespace KompasClient.GameCore
 			}
 		}
 
+		public bool GameOver { get; private set; }
+
+		public void GameEnded(bool victory)
+		{
+			if (GameOver) return;
+
+			GameOver = true;
+			clientUIController.escapeMenuUIController.Enable();
+			//TODO display you win/lose
+			//TODO display rematch/main menu options? disallow user from closing menu?
+		}
+
 		private void Awake()
 		{
 			clientUIController.clientUISettingsController.LoadSettings();
@@ -197,7 +209,7 @@ namespace KompasClient.GameCore
 		public void StackEmptied()
 		{
 			clientUIController.TargetMode = TargetMode.Free;
-			clientUIController.SetCurrState("Stack Empty");
+			clientUIController.SetCurrState("Nothing Happening");
 			foreach (var c in Cards) c.ResetForStack();
 			ShowNoTargets();
 		}

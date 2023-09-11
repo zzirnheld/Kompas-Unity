@@ -36,7 +36,7 @@ namespace KompasServer.Cards
 
 		public void LoseIfDead()
 		{
-			if (E <= 0) ServerGame.Lose(ControllerIndex);
+			if (E <= 0) ServerController.Lose();
 		}
 
 		public AvatarServerGameCard(ServerSerializableCard card, int id, ServerCardController serverCardController, ServerPlayer owner, ServerEffect[] effects)
