@@ -24411,7 +24411,7 @@ MonoBehaviour:
   clientGame: {fileID: 492080563}
   connectionUIController: {fileID: 867960090}
   currentStateUIController: {fileID: 1615817261}
-  effectsUIController: {fileID: 0}
+  effectsUIController: {fileID: 456844505}
   rightClickUIController: {fileID: 71818826}
   escapeMenuUIController: {fileID: 357244920}
   cardInfoViewUIController: {fileID: 2878731448299248346}
