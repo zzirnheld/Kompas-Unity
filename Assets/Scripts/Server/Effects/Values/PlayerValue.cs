@@ -18,7 +18,7 @@ namespace KompasCore.Effects
 
 		public int GetValueOf(Player player)
 		{
-			if (player == null) throw new NullPlayerException("Cannot get value of null card");
+			if (player == null) throw new NullPlayerException("Cannot get value of null player!");
 
 			int intermediateValue = value switch
 			{
