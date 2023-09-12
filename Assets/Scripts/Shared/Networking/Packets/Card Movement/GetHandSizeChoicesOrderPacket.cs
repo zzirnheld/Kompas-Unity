@@ -46,7 +46,7 @@ namespace KompasClient.Networking
 
 			clientGame.SetPotentialTargets(cardIds, listRestriction);
 			//TODO make the blurb plural if asking for multiple targets
-			clientGame.clientUIController.SetCurrState("Reshuffle Down to Hand Size");
+			clientGame.clientUIController.currentStateUIController.ShuffleToHandSize();
 		}
 	}
 }

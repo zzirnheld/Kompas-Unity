@@ -11,13 +11,6 @@ namespace KompasClient.UI
 {
 	public class ClientUIController : UIController
 	{
-		private const string FriendlyTurn = "Friendly";
-		private const string EnemyTurn = "Enemy";
-
-		private const string GameStarting = "Game is Starting";
-
-		private const string AwaitingResponseMessage = "Awaiting Response";
-		private const string AwaitingEnemyResponse = "Awaiting Enemy Response";
 
 		public const int OptionalEffManual = 0;
 		public const int OptionalEffYes = 1;
@@ -29,25 +22,11 @@ namespace KompasClient.UI
 		public override IReminderTextParentController ReminderTextParentUIController => cardInfoViewUIController.ReminderTextsUIController;
 
 		public ConnectionUIController connectionUIController;
+		public CurrentStateUIController currentStateUIController;
 
 		[Header("Card Materials")]
 		public Material friendlyCardFrameMaterial;
 		public Material enemyCardFrameMaterial;
-
-		[Header("Turn")]
-		public TMP_Text CurrTurnText;
-		public Outline currTurnOutline;
-		public GameObject EndTurnButton;
-		public TMP_Text LeyloadText;
-
-		[Header("Current State")]
-		public TMP_Text currentStateText;
-		public GameObject CurrStateOverallObj;
-		public GameObject CurrStateBonusObj;
-		public TMP_Text CurrStateText;
-		public TMP_Text CurrStateBonusText;
-		private string primaryState;
-		private string secondaryState;
 
 		[Header("Effects")]
 		public InputField xInput;
@@ -79,21 +58,10 @@ namespace KompasClient.UI
 		public override SidebarCardViewController CardViewController => cardInfoViewUIController;
 		public ClientSettingsUIController clientUISettingsController;
 		public ClientBoardUIController boardUIController;
-
-		public int Leyload
-		{
-			set => LeyloadText.text = $"{value}";
-		}
-
 		private void Update()
 		{
 			//when the user presses escape, show the menu.
 			if (Input.GetKeyDown(KeyCode.Escape)) escapeMenuUIController.Enable();
-		}
-
-		private void Awake()
-		{
-			SetCurrState(GameStarting);
 		}
 
 		public void ApplySettings(ClientSettings clientSettings)
@@ -105,30 +73,6 @@ namespace KompasClient.UI
 			enemyCardFrameMaterial.color = clientSettings.EnemyColor;
 		}
 			//TODO if (fromClick && targetMode != Game.TargetMode.Free && card != null) clientGame.searchCtrl.ToggleTarget(card);
-
-
-		public void ChangeTurn(int index)
-		{
-			CurrTurnText.text = index == 0 ? FriendlyTurn : EnemyTurn;
-			Debug.Log($"{clientGame}, {clientGame?.ClientSettings}, {clientGame?.ClientSettings?.FriendlyColor}");
-			currTurnOutline.effectColor = index == 0
-				? clientGame.ClientSettings.FriendlyColor
-				: clientGame.ClientSettings.EnemyColor;
-			EndTurnButton.SetActive(index == 0);
-		}
-
-		public void SetCurrState(string primaryState, string secondaryState = "", string numTargetsChosen = "")
-		{
-			this.primaryState = primaryState;
-			this.secondaryState = secondaryState;
-			CurrStateOverallObj.SetActive(!string.IsNullOrEmpty(primaryState));
-			CurrStateText.text = primaryState + numTargetsChosen;
-			CurrStateBonusText.text = secondaryState;
-			CurrStateBonusObj.SetActive(!string.IsNullOrWhiteSpace(secondaryState));
-		}
-
-		public void UpdateCurrState(string primaryState = null, string secondaryState = null, string numTargetsChosen = null)
-			=> SetCurrState(primaryState ?? this.primaryState, secondaryState ?? this.secondaryState, numTargetsChosen ?? string.Empty);
 
 		#region effects
 		public void ActivateCardEff(GameCard card, int index)
@@ -173,14 +117,11 @@ namespace KompasClient.UI
 					//Debug.Log($"Showing eff response parent");
 					TriggerBlurbText.text = blurb;
 					ConfirmTriggerView.SetActive(true);
-					SetCurrState("Choose optional trigger");
+					currentStateUIController.AwaitingChoice(true, blurb);
 					currOptionalTrigger = t;
 				}
 			}
-			else
-			{
-				SetCurrState("Awaiting other player choice", secondaryState: blurb);
-			}
+			else currentStateUIController.AwaitingChoice(false, blurb);
 		}
 
 		public void ShowOptionalTriggerSource() => currOptionalTrigger?.Source.CardController.gameCardViewController.ShowPrimaryOfStackable(true);
@@ -200,17 +141,10 @@ namespace KompasClient.UI
 		public void GetResponse()
 		{
 			//get response as necessary 
-			if (Autodecline)
-			{
-				DeclineResponse();
-				currentStateText.text = AwaitingEnemyResponse;
-			}
-			else
-			{
-				declineEffectView.SetActive(true);
-				currentStateText.text = AwaitingResponseMessage;
-			}
+			if (Autodecline) DeclineResponse();
+			else declineEffectView.SetActive(true);
 
+			currentStateUIController.AwaitingResponse(Autodecline);
 		}
 
 		public void UngetResponse() => declineEffectView.SetActive(false);

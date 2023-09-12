@@ -15,6 +15,6 @@ namespace KompasClient.Networking
 {
 	public class EffectImpossibleClientPacket : EffectImpossiblePacket, IClientOrderPacket
 	{
-		public void Execute(ClientGame clientGame) => clientGame.clientUIController.SetCurrState("Effect Impossible");
+		public void Execute(ClientGame clientGame) => clientGame.clientUIController.currentStateUIController.EffectImpossible();
 	}
 }

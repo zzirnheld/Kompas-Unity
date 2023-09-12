@@ -19,7 +19,7 @@ namespace KompasClient.Cards
 			protected set
 			{
 				base.Location = value;
-				ClientGame.clientUIController.Leyload = Game.Leyload;
+				ClientGame.clientUIController.currentStateUIController.Leyload = Game.Leyload;
 				if (CardController != null)
 				{
 					CardController.gameCardViewController.Refresh();

@@ -54,7 +54,7 @@ namespace KompasClient.Networking
 
 			clientGame.SetPotentialTargets(potentialTargetIds, listRestriction);
 			//TODO make the blurb plural if asking for multiple targets
-			clientGame.clientUIController.SetCurrState($"Choose {sourceCardName}'s Card Target", targetBlurb);
+			clientGame.clientUIController.currentStateUIController.ChooseCardTarget(sourceCardName, targetBlurb);
 		}
 	}
 }

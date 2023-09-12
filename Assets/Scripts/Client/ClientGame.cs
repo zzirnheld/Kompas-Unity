@@ -95,7 +95,7 @@ namespace KompasClient.GameCore
 			set
 			{
 				base.Leyload = value;
-				clientUIController.Leyload = Leyload;
+				clientUIController.currentStateUIController.Leyload = Leyload;
 				//Refresh next turn pips shown.
 				foreach (var player in Players)
 				{
@@ -160,7 +160,7 @@ namespace KompasClient.GameCore
 		public void SetFirstTurnPlayer(int playerIndex)
 		{
 			FirstTurnPlayer = TurnPlayerIndex = playerIndex;
-			clientUIController.ChangeTurn(playerIndex);
+			clientUIController.currentStateUIController.ChangeTurn(playerIndex);
 			clientUIController.connectionUIController.Hide();
 			RoundCount = 1;
 			TurnCount = 1;
@@ -174,7 +174,7 @@ namespace KompasClient.GameCore
 		{
 			TurnPlayerIndex = index;
 			ResetCardsForTurn();
-			clientUIController.ChangeTurn(TurnPlayerIndex);
+			clientUIController.currentStateUIController.ChangeTurn(TurnPlayerIndex);
 			if (TurnPlayerIndex == FirstTurnPlayer) RoundCount++;
 			TurnCount++;
 			foreach (var player in Players) player.Pips = player.Pips;
@@ -202,14 +202,13 @@ namespace KompasClient.GameCore
 
 		public void EffectActivated(ClientEffect eff)
 		{
-			clientUIController.SetCurrState($"{(eff.Controller.Friendly ? "Friendly" : "Enemy")} {eff.Source.CardName} Effect Activated",
-				eff.blurb);
+			clientUIController.currentStateUIController.ActivatingEffect($"{eff.Source.CardName}", eff.blurb);
 		}
 
 		public void StackEmptied()
 		{
 			clientUIController.TargetMode = TargetMode.Free;
-			clientUIController.SetCurrState("Nothing Happening");
+			clientUIController.currentStateUIController.NothingHappening();
 			foreach (var c in Cards) c.ResetForStack();
 			ShowNoTargets();
 		}

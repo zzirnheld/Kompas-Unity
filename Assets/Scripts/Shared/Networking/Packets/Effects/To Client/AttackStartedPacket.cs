@@ -36,7 +36,7 @@ namespace KompasClient.Networking
 			var controller = clientGame.Players[controllerIndex];
 			if (attacker != null && defender != null)
 			{
-				clientGame.clientUIController.SetCurrState("Attack Started", $"{attacker.CardName} attacks {defender.CardName}");
+				clientGame.clientUIController.currentStateUIController.AttackStarted(attacker.CardName, defender.CardName);
 				clientGame.clientEffectsCtrl.Add(new ClientAttack(controller, attacker: attacker, defender: defender));
 			}
 

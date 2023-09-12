@@ -21,7 +21,7 @@ namespace KompasClient.Networking
 			clientGame.clientUIController.TargetMode = TargetMode.Free;
 			clientGame.ClearPotentialTargets();
 			clientGame.CurrentPotentialSpaces = null;
-			clientGame.clientUIController.SetCurrState("Target Accepted");
+			clientGame.clientUIController.currentStateUIController.TargetAccepted();
 		}
 	}
 }
