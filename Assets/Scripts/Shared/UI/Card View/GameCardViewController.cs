@@ -1,4 +1,3 @@
-using KompasClient.GameCore;
 using KompasClient.UI;
 using KompasCore.Cards;
 using System.Linq;
@@ -11,10 +10,6 @@ namespace KompasCore.UI
 	[RequireComponent(typeof(CardController))]
 	public class GameCardViewController : GameCardlikeViewController
 	{
-		public const float LargeUnzoomedTextFontSize = 32f;
-		public const float SmallUnzoomedTextFontSize = 22f;
-		private static float UnzoomedFontSizeForValue(int value) => value < 10 ? LargeUnzoomedTextFontSize : SmallUnzoomedTextFontSize;
-
 		private ZoomLevel ZoomLevel => ClientCameraController.MainZoomLevel;
 
 		public CardAOEController aoeController;
@@ -52,11 +47,6 @@ namespace KompasCore.UI
 		public GameObject zoomedInWithTextUI;
 
 		public BoxCollider[] outsideCardBoxColliders;
-
-		/// <summary>
-		/// Used to make sure we don't regenerate the texture unnecessarily
-		/// </summary>
-		private string oldFileName;
 
 		protected override void Display()
 		{

@@ -8898,6 +8898,9 @@ MonoBehaviour:
     type: 3}
   DeckSelectCardPrefab: {fileID: 1316274561394776498, guid: 3701dcd9e71748a4781c867a9608c51d,
     type: 3}
+  friendlyCardMaterial: {fileID: 2100000, guid: 1c2bbf1ca0c72ea46b21f07690a2f53a,
+    type: 2}
+  enemyCardMaterial: {fileID: 2100000, guid: a02188e681b853e4e963acf536e338d3, type: 2}
 --- !u!114 &492080565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9726,7 +9729,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bd1a8926c1751d543be7c51d1a0807e9, type: 2}
+  - {fileID: 2100000, guid: 1c2bbf1ca0c72ea46b21f07690a2f53a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13688,7 +13691,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1ef7c4f92266a324188a9fc43d99af1d, type: 2}
+  - {fileID: 2100000, guid: 1c2bbf1ca0c72ea46b21f07690a2f53a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -20981,7 +20984,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000091552734}
+  m_AnchoredPosition: {x: 0, y: -0.00012207031}
   m_SizeDelta: {x: 452.86, y: -597.3517}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1243629469
@@ -27800,6 +27803,10 @@ MonoBehaviour:
   debugToggle: {fileID: 0}
   clientGame: {fileID: 492080563}
   connectionUIController: {fileID: 867960090}
+  friendlyCardFrameMaterial: {fileID: 2100000, guid: 1c2bbf1ca0c72ea46b21f07690a2f53a,
+    type: 2}
+  enemyCardFrameMaterial: {fileID: 2100000, guid: a02188e681b853e4e963acf536e338d3,
+    type: 2}
   friendlyPipsText: {fileID: 1687662614}
   enemyPipsText: {fileID: 1006522080}
   CurrTurnText: {fileID: 1554178927}
@@ -29159,7 +29166,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 951565429ba5e70aebda27c97513db72, type: 2}
+  - {fileID: 2100000, guid: 527a4ce9b8baa4d49bfdf748b9f95bc3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

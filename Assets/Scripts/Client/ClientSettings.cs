@@ -18,7 +18,7 @@ namespace KompasClient
 		public bool showAdvancedEffectsSettings = false;
 		public string defaultIP;
 
-		public static ClientSettings Default => new ClientSettings()
+		public static ClientSettings Default => new()
 		{
 			statHighlight = StatHighlight.NoHighlight,
 			zoomThreshold = DefaultZoomThreshold,

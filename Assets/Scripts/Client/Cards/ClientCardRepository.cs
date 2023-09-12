@@ -4,7 +4,6 @@ using KompasClient.UI;
 using KompasCore.Cards;
 using KompasCore.GameCore;
 using Newtonsoft.Json;
-using System;
 using System.Linq;
 using UnityEngine;
 
@@ -14,23 +13,28 @@ namespace KompasClient.Cards
 	{
 		public GameObject DeckSelectCardPrefab;
 
+		public Material friendlyCardMaterial;
+		public Material enemyCardMaterial;
+
 		public AvatarClientGameCard InstantiateClientAvatar(string json, ClientPlayer owner, int id)
 		{
-			Action<SerializableCard> validation = cardInfo =>
+			void validation(SerializableCard cardInfo)
 			{
 				if (cardInfo.cardType != 'C') throw new System.NotImplementedException("Card type for client avatar isn't character!");
-			};
+			}
 
 			AvatarClientGameCard ConstructAvatar(ClientSerializableCard cardInfo, ClientEffect[] effects, ClientCardController ctrl)
-				=> new AvatarClientGameCard(cardInfo, owner, effects, id, ctrl);
+				=> new(cardInfo, owner, effects, id, ctrl);
 
-			return InstantiateGameCard<AvatarClientGameCard>(json, ConstructAvatar, validation);
+			return InstantiateGameCard(json, ConstructAvatar, validation);
 		}
 
 		public ClientGameCard InstantiateClientNonAvatar(string json, ClientPlayer owner, int id)
 		{
-			var card = InstantiateGameCard<ClientGameCard>(json, (cardInfo, effects, ctrl) => new ClientGameCard(cardInfo, id, owner, effects, ctrl));
+			var card = InstantiateGameCard(json,
+				(cardInfo, effects, ctrl) => new ClientGameCard(cardInfo, id, owner, effects, ctrl));
 
+			card.ClientCardController.gameCardViewController.cardModelController.SetFrameMaterial(owner.Friendly ? friendlyCardMaterial : enemyCardMaterial);
 			card.ClientCardController.gameCardViewController.Refresh();
 
 			//handle adding existing card links

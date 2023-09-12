@@ -31,6 +31,10 @@ namespace KompasClient.UI
 
 		public ConnectionUIController connectionUIController;
 
+
+		[Header("Card Materials")]
+		public Material friendlyCardFrameMaterial;
+		public Material enemyCardFrameMaterial;
 		[Header("Pips")]
 		public TMP_Text friendlyPipsText;
 		public TMP_Text enemyPipsText;
@@ -127,6 +131,9 @@ namespace KompasClient.UI
 		{
 			connectionUIController.ApplySettings(clientSettings);
 			detailedEffectsCtrlUIObject.SetActive(clientSettings.showAdvancedEffectsSettings);
+			Debug.Log($"Friendly {clientSettings.FriendlyColor}");
+			friendlyCardFrameMaterial.color = clientSettings.FriendlyColor;
+			enemyCardFrameMaterial.color = clientSettings.EnemyColor;
 		}
 			//TODO if (fromClick && targetMode != Game.TargetMode.Free && card != null) clientGame.searchCtrl.ToggleTarget(card);
 
