@@ -27,8 +27,8 @@ namespace KompasCore.UI
 		public GameObject[] charOnlyUI;
 		public GameObject[] nonCharOnlyUI;
 
-		/*[Tooltip("Every GameObject whose frame material needs to be updated (i.e. for friendly vs enemy color)")]
-		public GameObject[] frameObjects;*/
+		[Tooltip("Every GameObject whose frame material needs to be updated (i.e. for friendly vs enemy color)")]
+		public MeshRenderer[] frameRenderers;
 
 		public BoxCollider boxCollider;
 
@@ -58,20 +58,7 @@ namespace KompasCore.UI
 
 		public void SetFrameMaterial(Material material)
 		{
-			zoomedOutAll.GetComponent<MeshRenderer>().material = material;
-			zoomedOutChar.GetComponent<MeshRenderer>().material = material;
-			zoomedOutNonChar.GetComponent<MeshRenderer>().material = material;
-
-			zoomedInNoTextAll.GetComponent<MeshRenderer>().material = material;
-			zoomedInNoTextChar.GetComponent<MeshRenderer>().material = material;
-			zoomedInNoTextNonChar.GetComponent<MeshRenderer>().material = material;
-
-			zoomedInWithTextAll.GetComponent<MeshRenderer>().material = material;
-			zoomedInWithTextChar.GetComponent<MeshRenderer>().material = material;
-			zoomedInWithTextNonChar.GetComponent<MeshRenderer>().material = material;
-
-			//foreach(var c in charOnlyUI) c.SetActive(isChar);
-			//foreach(var c in nonCharOnlyUI) c.SetActive(!isChar);
+			foreach (var mr in frameRenderers) mr.material = material;
 		}
 	}
 }

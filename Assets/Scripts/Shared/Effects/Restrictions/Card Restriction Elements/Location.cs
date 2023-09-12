@@ -2,6 +2,7 @@ using KompasCore.Cards;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 {
@@ -16,7 +17,7 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 			locations = new string[] { CardLocationHelpers.StringVersion(location) };
 		}
 
-		protected virtual IReadOnlyCollection<CardLocation> Locations => locations.Select(CardLocationHelpers.FromString).ToArray();
+		protected IReadOnlyCollection<CardLocation> Locations => locations.Select(CardLocationHelpers.FromString).ToArray();
 
 		public override void Initialize(EffectInitializationContext initializationContext)
 		{
@@ -26,5 +27,7 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 
 		protected override bool IsValidLogic(GameCardBase card, IResolutionContext context)
 			=> Locations.Any(loc => card.Location == loc);
+
+		public override string ToString() => $"must be in {string.Join(", ", Locations)}";
 	}
 }

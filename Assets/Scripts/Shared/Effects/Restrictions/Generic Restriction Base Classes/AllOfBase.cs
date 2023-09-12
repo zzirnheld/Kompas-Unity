@@ -60,11 +60,17 @@ namespace KompasCore.Effects
 			.Where(r => !ignorePredicate(r))
 			.All(r => Validate(r, item, context));
 
+
+		private const bool DEBUG = false; //TODO factor out to global flag/checkbox
 		/// <summary>
-        /// Override if you want to change the validation function called on each child,
-        /// like have a client-side variant
-        /// </summary>
+		/// Override if you want to change the validation function called on each child,
+		/// like have a client-side variant
+		/// </summary>
 		protected virtual bool Validate(ElementRestrictionType element, RestrictedType item, IResolutionContext context)
-			=> element.IsValid(item, context);
+		{
+			bool ret = element.IsValid(item, context);
+			if (DEBUG && !ret) Debug.Log($"{item} failed by {element}");
+			return ret;
+		}
 	}
 }

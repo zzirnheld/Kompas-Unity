@@ -7,22 +7,15 @@ public static class CardLocationHelpers
 {
 	public static CardLocation FromString(string str)
 	{
-		switch (str)
+		return str switch
 		{
-			case "Board":
-			case "Field":
-				return CardLocation.Board;
-			case "Hand":
-				return CardLocation.Hand;
-			case "Discard":
-				return CardLocation.Discard;
-			case "Annihilation":
-				return CardLocation.Annihilation;
-			case "Deck":
-				return CardLocation.Deck;
-			default:
-				throw new System.NotImplementedException($"Unknown string to convert to CardLocation {str}");
-		}
+			"Board" or "Field" 	=> CardLocation.Board,
+			"Hand" 				=> CardLocation.Hand,
+			"Discard" 			=> CardLocation.Discard,
+			"Annihilation"		=> CardLocation.Annihilation,
+			"Deck" 				=> CardLocation.Deck,
+			_ => throw new System.NotImplementedException($"Unknown string to convert to CardLocation {str}"),
+		};
 	}
 
 	/// <summary>
@@ -30,12 +23,12 @@ public static class CardLocationHelpers
 	/// </summary>
 	public static string StringVersion(this CardLocation cardLocation) => cardLocation switch
 	{
-		CardLocation.Nowhere => "Nowhere",
-		CardLocation.Board => "Board",
-		CardLocation.Hand => "Hand",
-		CardLocation.Discard => "Discard",
+		CardLocation.Nowhere 	=> "Nowhere",
+		CardLocation.Board 		=> "Board",
+		CardLocation.Hand 		=> "Hand",
+		CardLocation.Discard 	=> "Discard",
 		CardLocation.Annihilation => "Annihilation",
-		CardLocation.Deck => "Deck",
+		CardLocation.Deck 		=> "Deck",
 
 		_ => throw new System.NotImplementedException($"Unknown CardLocation {cardLocation} to convert to string")
 	};
