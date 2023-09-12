@@ -31,7 +31,7 @@ namespace KompasCore.UI
 		public GameObject currStateBonusObj;
 		public TMP_Text currStateText;
 		public TMP_Text currStateBonusText;
-		
+
 		private string primaryState;
 		private string secondaryState;
 
@@ -54,6 +54,14 @@ namespace KompasCore.UI
 				? clientUIController.clientGame.ClientSettings.FriendlyColor
 				: clientUIController.clientGame.ClientSettings.EnemyColor;
 			endTurnButton.SetActive(index == 0);
+		}
+
+		public void PlayerEndsTurn()
+		{
+			if (clientUIController.clientGame.TurnPlayerIndex == 0)
+			{
+				clientUIController.clientGame.clientNotifier.RequestEndTurn();
+			}
 		}
 
 		public void SetCurrState(string primaryState, string secondaryState = "", string numTargetsChosen = "")
