@@ -64,6 +64,7 @@ namespace KompasCore.UI
 			}
 		}
 
+		//TODO reconcile this visually with asking for optional eff
 		public void SetCurrState(string primaryState, string secondaryState = "", string numTargetsChosen = "")
 		{
 			this.primaryState = primaryState;

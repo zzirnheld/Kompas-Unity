@@ -21,12 +21,12 @@ namespace KompasCore.UI
 		public InputField xInput;
 		public GameObject setXView;
 		public GameObject declineAnotherTargetView;
-		public GameObject declineEffectView;
-		public Toggle autodeclineEffects;
-		public bool Autodecline => autodeclineEffects.isOn;
-		public TMP_Dropdown autoOptionalEff;
-		public int OptionalEffAutoResponse => autoOptionalEff.value;
-		public GameObject detailedEffectsCtrlUIObject;
+		//public GameObject declineEffectView;
+		//public Toggle autodeclineEffects;
+		public bool Autodecline => false; // autodeclineEffects.isOn;
+		//public TMP_Dropdown autoOptionalEff;
+		public int OptionalEffAutoResponse => OptionalEffManual; //autoOptionalEff.value;
+		//public GameObject detailedEffectsCtrlUIObject;
 
 		[Header("Triggers")]
 		//confirm trigger
@@ -40,7 +40,7 @@ namespace KompasCore.UI
 
 		public void ApplySettings(ClientSettings settings)
 		{
-			detailedEffectsCtrlUIObject.SetActive(settings.showAdvancedEffectsSettings);
+			//detailedEffectsCtrlUIObject.SetActive(settings.showAdvancedEffectsSettings);
 		}
 
 		public void GetXForEffect() => setXView.SetActive(true);
@@ -107,16 +107,16 @@ namespace KompasCore.UI
 		{
 			//get response as necessary 
 			if (Autodecline) DeclineResponse();
-			else declineEffectView.SetActive(true);
+			else throw new System.NotImplementedException(); // declineEffectView.SetActive(true);
 
 			clientUIController.currentStateUIController.AwaitingResponse(Autodecline);
 		}
 
-		public void UngetResponse() => declineEffectView.SetActive(false);
+		public void UngetResponse() { } //=> declineEffectView.SetActive(false);
 
 		public void DeclineResponse()
 		{
-			declineEffectView.SetActive(false);
+			//declineEffectView.SetActive(false);
 			clientUIController.clientGame.clientNotifier.DeclineResponse();
 		}
 

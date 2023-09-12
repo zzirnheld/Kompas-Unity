@@ -29,7 +29,7 @@ namespace KompasClient.UI.Search
 		public ClientSearchController searchController;
 		public ClientDeckUIController deckUIController;
 
-		private readonly List<GameObject> searchGameObjects = new List<GameObject>();
+		private readonly List<GameObject> searchGameObjects = new();
 		private bool Searching => searchController.CurrSearchData != null;
 		private ClientSearchController.SearchData CurrSearchData => searchController.CurrSearchData;
 
@@ -112,7 +112,7 @@ namespace KompasClient.UI.Search
 
 				//Add the cards
 				var stackCtrl = stackObject.GetComponent<StackableEntitiesController>();
-				List<GameObject> cardObjects = new List<GameObject>();
+				List<GameObject> cardObjects = new();
 				foreach(var card in shownCards)
 				{
 					//Create the search view controller
