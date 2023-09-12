@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using KompasCore.Cards;
+using Newtonsoft.Json;
 
 namespace KompasCore.Effects.Restrictions
 {
@@ -18,6 +19,7 @@ namespace KompasCore.Effects.Restrictions
 	{
 		public class ActivationRestriction : AllOf, IActivationRestriction
 		{
+			[JsonProperty]
 			public string[] locations = { CardLocation.Board.StringVersion() };
 
 			protected override IEnumerable<IRestriction<Player>> DefaultElements

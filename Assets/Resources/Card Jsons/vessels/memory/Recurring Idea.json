@@ -84,7 +84,7 @@
 			]
 		}
 	],
-	"PlayRestriction": { "playAsAugment": true },
+	"PlayRestriction": { "$type": "Core.PlayRestriction:PlayRestriction:", "playAsAugment": true },
 	"a": 1,
 	"subtypeText": "Memory"
 }

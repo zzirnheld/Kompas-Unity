@@ -32,7 +32,6 @@
 						"$type": "Core.GamestateRestriction:Not:",
 						"negated": {
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
-							"useDummyResolutionContext": false,
 							"card": { "$type": "Cards:TargetIndex:" },
 							"cardRestriction": {
 								"$type": "Core.SpaceRestriction:Behind:",
@@ -49,6 +48,7 @@
 		}
 	],
 	"PlayRestriction": {
+		"$type": "Core.PlayRestriction:PlayRestriction:",
 		"playAsAugment": true,
 		"augmentOnSubtypes": [ "Warrior" ]
 	},

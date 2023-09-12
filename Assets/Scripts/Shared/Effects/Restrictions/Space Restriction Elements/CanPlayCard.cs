@@ -1,5 +1,6 @@
 using KompasCore.Cards;
 using KompasCore.Effects.Identities;
+using Newtonsoft.Json;
 
 namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 {
@@ -8,8 +9,10 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 	/// </summary>
 	public class CanPlayCard : SpaceRestrictionElement
 	{
+		[JsonProperty(Required = Required.Always)]
 		public IIdentity<GameCardBase> toPlay;
 
+		[JsonProperty]
 		public bool ignoreAdjacency;
 
 		public override void Initialize(EffectInitializationContext initializationContext)

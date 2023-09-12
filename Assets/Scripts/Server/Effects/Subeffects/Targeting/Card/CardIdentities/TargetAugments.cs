@@ -8,7 +8,7 @@ namespace KompasServer.Effects.Subeffects
 	{
 		public override void Initialize(ServerEffect eff, int subeffIndex)
 		{
-			toSearch = new FittingRestriction() {
+			toSearch = new Restricted() {
 				cardRestriction = cardRestriction ?? new AlwaysValid(),
 				cards = new KompasCore.Effects.Identities.ManyCards.Augments() { card = new TargetIndex() } };
 			base.Initialize(eff, subeffIndex);

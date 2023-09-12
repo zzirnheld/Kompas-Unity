@@ -1,10 +1,12 @@
 using KompasCore.Cards;
 using KompasCore.Exceptions;
+using Newtonsoft.Json;
 
 namespace KompasCore.Effects.Identities.Cards
 {
 	public class OtherInFight : ContextualParentIdentityBase<GameCardBase>
 	{
+		[JsonProperty(Required = Required.Always)]
 		public IIdentity<GameCardBase> other;
 
 		public override void Initialize(EffectInitializationContext initializationContext)

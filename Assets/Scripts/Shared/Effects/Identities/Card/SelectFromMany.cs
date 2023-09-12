@@ -1,12 +1,15 @@
 using KompasCore.Cards;
 using KompasCore.Effects.Selectors;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace KompasCore.Effects.Identities.Cards
 {
 	public class SelectFromMany : ContextualParentIdentityBase<GameCardBase>
 	{
+		[JsonProperty]
 		public ISelector<GameCardBase> selector = new RandomCard();
+		[JsonProperty]
 		public IIdentity<IReadOnlyCollection<GameCardBase>> cards = new ManyCards.All();
 
 		public override void Initialize(EffectInitializationContext initializationContext)

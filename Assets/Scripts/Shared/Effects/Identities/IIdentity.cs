@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using KompasCore.Cards;
 using KompasCore.Exceptions;
+using Newtonsoft.Json;
 
 namespace KompasCore.Effects.Identities
 {
@@ -29,6 +30,7 @@ namespace KompasCore.Effects.Identities
 	public abstract class ContextualParentIdentityBase<ReturnType> : ContextInitializeableBase,
 		IIdentity<ReturnType>
 	{
+		[JsonProperty]
 		public bool secondaryContext = false;
 
 		protected IResolutionContext ContextToConsider(IResolutionContext context, IResolutionContext secondaryContext)
@@ -50,7 +52,7 @@ namespace KompasCore.Effects.Identities
 			return AbstractItemFrom(context, secondaryContext);
 		}
 
-		public ReturnType Item => From(InitializationContext.effect.ResolutionContext, default);
+		public ReturnType Item => From(InitializationContext.effect.CurrentResolutionContext, default);
 
 		protected Attack GetAttack(TriggeringEventContext effectContext)
 		{

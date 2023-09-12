@@ -62,8 +62,9 @@
 		"Collectible"
 	],
 	"PlayRestriction": {
+		"$type": "Core.PlayRestriction:PlayRestriction:",
 		"playAsAugment": true,
-		"effectOnly": [ {
+		"normalOnly": [ {
 			"$type": "Core.CardRestriction:Subtypes:",
 			"subtypes": [ "Mech" ]
 		} ]

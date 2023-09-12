@@ -20,6 +20,10 @@ namespace KompasCore.Effects
 		public void AdjustSubeffectIndices(int increment, int startingAtIndex = 0);
 	}
 
+	/// <summary>
+	/// Base class for initializeable things, like restrictions or identities.
+    /// Since these are all being loaded from JSON, make sure to mark any relevant fields as [JsonProperty]
+	/// </summary>
 	[DataContract]
 	public abstract class ContextInitializeableBase : IContextInitializeable
 	{

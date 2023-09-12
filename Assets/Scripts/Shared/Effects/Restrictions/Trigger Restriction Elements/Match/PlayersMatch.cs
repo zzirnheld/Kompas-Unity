@@ -1,10 +1,13 @@
 using KompasCore.Effects.Identities;
+using Newtonsoft.Json;
 
 namespace KompasCore.Effects.Restrictions.TriggerRestrictionElements
 {
 	public class PlayersMatch : TriggerGamestateRestrictionBase
 	{
+		[JsonProperty(Required = Required.Always)]
 		public IIdentity<Player> firstPlayer;
+		[JsonProperty(Required = Required.Always)]
 		public IIdentity<Player> secondPlayer;
 
 		public override void Initialize(EffectInitializationContext initializationContext)

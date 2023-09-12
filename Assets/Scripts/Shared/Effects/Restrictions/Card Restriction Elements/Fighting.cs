@@ -1,5 +1,6 @@
 using KompasCore.Cards;
 using KompasCore.Effects.Identities;
+using Newtonsoft.Json;
 using System.Linq;
 
 namespace KompasCore.Effects.Restrictions.CardRestrictionElements
@@ -9,14 +10,17 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 		/// <summary>
 		/// Can be null to represent checking whether the card is in any fight at all
 		/// </summary>
+		[JsonProperty] //DisallowNull means the json can't specify null
 		public IIdentity<GameCardBase> fightingWho;
 		/// <summary>
 		/// Whether the character must be the defender in the fight in question
 		/// </summary>
+		[JsonProperty]
 		public bool defending = false;
 		/// <summary>
 		/// Whether the character must be the attacker in the fight in question
 		/// </summary>
+		[JsonProperty]
 		public bool attacking = false;
 
 		public override void Initialize(EffectInitializationContext initializationContext)

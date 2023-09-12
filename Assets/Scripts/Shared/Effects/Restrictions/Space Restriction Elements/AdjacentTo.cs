@@ -1,5 +1,6 @@
 using KompasCore.Cards;
 using KompasCore.Effects.Identities;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -10,10 +11,15 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 	/// </summary>
 	public class AdjacentTo : SpaceRestrictionElement
 	{
+		[JsonProperty]
 		public IRestriction<GameCardBase> cardRestriction;
+		[JsonProperty]
 		public IIdentity<int> cardRestrictionMinimum = Identities.Numbers.Constant.One;
+		[JsonProperty]
 		public IIdentity<IReadOnlyCollection<GameCardBase>> anyOfTheseCards;
+		[JsonProperty]
 		public IIdentity<GameCardBase> card;
+		[JsonProperty]
 		public IIdentity<Space> space;
 
 		public override void Initialize(EffectInitializationContext initializationContext)

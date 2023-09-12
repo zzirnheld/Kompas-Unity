@@ -29,7 +29,7 @@
 			]
 		}
 	],
-	"PlayRestriction": { "playAsAugment": true },
+	"PlayRestriction": { "$type": "Core.PlayRestriction:PlayRestriction:", "playAsAugment": true },
 	"a": 3,
 	"subtypeText": "Module"
 }

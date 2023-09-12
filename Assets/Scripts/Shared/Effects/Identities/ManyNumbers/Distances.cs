@@ -1,11 +1,14 @@
 using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace KompasCore.Effects.Identities.ManyNumbers
 {
 	public class Distances : ContextualParentIdentityBase<ICollection<int>>
 	{
+		[JsonProperty(Required = Required.Always)]
 		public IIdentity<Space> origin;
+		[JsonProperty(Required = Required.Always)]
 		public IIdentity<IReadOnlyCollection<Space>> destinations;
 
 		public override void Initialize(EffectInitializationContext initializationContext)

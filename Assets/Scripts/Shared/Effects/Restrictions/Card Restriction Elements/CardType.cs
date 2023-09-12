@@ -1,9 +1,11 @@
 using KompasCore.Cards;
+using Newtonsoft.Json;
 
 namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 {
 	public class CardType : CardRestrictionElement
 	{
+		[JsonProperty]
 		public char cardType;
 
 		protected override bool IsValidLogic(GameCardBase card, IResolutionContext context)

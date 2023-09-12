@@ -45,11 +45,7 @@
 				{
 					"$type": "Subeffect:Hanging.Negate:",
 					"endCondition": "Turn Start",
-					"triggerRestriction": {
-						"elements": [
-							{ "$type": "Core.GamestateRestriction:FriendlyTurn:" }
-						]
-					}
+					"triggerRestriction": { "$type": "Core.GamestateRestriction:FriendlyTurn:" }
 				}
 			]
 		}

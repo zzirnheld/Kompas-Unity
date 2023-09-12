@@ -1,4 +1,5 @@
 using KompasCore.Cards;
+using Newtonsoft.Json;
 
 namespace KompasCore.Effects.Restrictions
 {
@@ -17,6 +18,7 @@ namespace KompasCore.Effects.Restrictions
 
 		public class Not : PlayerRestrictionElement
 		{
+			[JsonProperty(Required = Required.Always)]
 			public IRestriction<Player> negated;
 
 			public override void Initialize(EffectInitializationContext initializationContext)

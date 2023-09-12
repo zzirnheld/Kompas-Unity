@@ -1,5 +1,6 @@
 using KompasCore.Cards;
 using KompasCore.Effects.Restrictions.CardRestrictionElements;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -24,6 +25,7 @@ namespace KompasCore.Effects.Restrictions
 
 		public class AllOf : AllOfBase<GameCardBase>
 		{
+			[JsonProperty]
 			public string blurb;
 
 			public override void Initialize(EffectInitializationContext initializationContext)
@@ -40,6 +42,7 @@ namespace KompasCore.Effects.Restrictions
 
 		public class Not : CardRestrictionElement
 		{
+			[JsonProperty(Required = Required.Always)]
 			public IRestriction<GameCardBase> negated;
 
 			public override void Initialize(EffectInitializationContext initializationContext)
@@ -63,7 +66,9 @@ namespace KompasCore.Effects.Restrictions
 		/// </summary>
 		public class AttackingDefender : AllOf, IAttackingDefender
 		{
+			[JsonProperty]
 			public int maxPerTurn = 1;
+			[JsonProperty]
 			public bool waiveAdjacencyRequirement = false;
 
 			protected override IEnumerable<IRestriction<GameCardBase>> DefaultElements

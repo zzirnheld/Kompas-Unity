@@ -28,22 +28,22 @@ namespace KompasClient.Effects
 		public Sprite SecondarySprite => default;
 		public CardController SecondaryCardController => default;
 
-		public override IResolutionContext ResolutionContext
+		public override IResolutionContext CurrentResolutionContext
 		{
 			get
 			{
-				if (base.ResolutionContext == null) ResolutionContext = KompasCore.Effects.ResolutionContext.PlayerTrigger(this, Game);
-				return base.ResolutionContext;
+				if (base.CurrentResolutionContext == null) CurrentResolutionContext = KompasCore.Effects.ResolutionContext.PlayerTrigger(this, Game);
+				return base.CurrentResolutionContext;
 			}
-			protected set => base.ResolutionContext = value;
+			protected set => base.CurrentResolutionContext = value;
 		}
 
 		public string StackableBlurb => blurb;
 
 		public void SetInfo(GameCard thisCard, ClientGame clientGame, int effectIndex, ClientPlayer owner)
 		{
-			base.SetInfo(thisCard, effectIndex, owner);
 			this.ClientGame = clientGame;
+			base.SetInfo(thisCard, effectIndex, owner);
 			if (triggerData != null && !string.IsNullOrEmpty(triggerData.triggerCondition))
 				ClientTrigger = new ClientTrigger(triggerData, this);
 		}

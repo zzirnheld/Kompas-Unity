@@ -6,11 +6,11 @@ namespace KompasCore.GameCore
 {
 	public abstract class Settings
 	{
-		public static readonly Color32 DefaultFriendlyBlue = new Color32(74, 78, 156, 255);
-		public static readonly Color32 DefaultEnemyRed = new Color32(255, 53, 49, 255);
+		public static readonly Color32 DefaultFriendlyBlue = new(74, 78, 156, 255);
+		public static readonly Color32 DefaultEnemyRed = new(255, 53, 49, 255);
 
-		public static readonly Color32 FriendlyGold = new Color32(226, 166, 0, 255);
-		public static readonly Color32 EnemySilver = new Color32(128, 128, 128, 255);
+		public static readonly Color32 FriendlyGold = new(226, 166, 0, 255);
+		public static readonly Color32 EnemySilver = new(128, 128, 128, 255);
 		public byte friendlyColorRed = DefaultFriendlyBlue.r;
 		public byte friendlyColorGreen = DefaultFriendlyBlue.g;
 		public byte friendlyColorBlue = DefaultFriendlyBlue.b;

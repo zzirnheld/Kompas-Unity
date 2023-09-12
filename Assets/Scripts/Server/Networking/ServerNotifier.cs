@@ -50,6 +50,8 @@ namespace KompasServer.Networking
 		}
 		#endregion game start
 
+		public void NotifyWin() => SendToBothInverting(new GameEndPacket(true));
+
 		public void NotifyPutBack() => SendPacket(new PutCardsBackPacket());
 
 		public void NotifyBothPutBack() => SendToBoth(new PutCardsBackPacket());
@@ -186,11 +188,14 @@ namespace KompasServer.Networking
 
 		public void StackEmpty() => SendToBoth(new StackEmptyPacket());
 
-		public void SetTarget(GameCard card, int effIndex, GameCard target)
-			=> SendToBoth(new AddTargetPacket(card.ID, effIndex, target.ID));
+		public void AddTarget(GameCard source, int effIndex, GameCard target)
+			=> SendToBoth(new AddTargetPacket(source.ID, effIndex, target.ID));
 
-		public void RemoveTarget(GameCard card, int effIndex, GameCard target)
-			=> SendToBoth(new RemoveTargetPacket(card.ID, effIndex, target.ID));
+		public void AddHiddenTarget(GameCard source, int effIndex, GameCard target)
+			=> SendPacket(new AddTargetPacket(source.ID, effIndex, target.ID));
+
+		public void RemoveTarget(GameCard source, int effIndex, GameCard target)
+			=> SendToBoth(new RemoveTargetPacket(source.ID, effIndex, target.ID));
 
 		public void GetXForEffect() => SendPacket(new GetPlayerChooseXPacket());
 
@@ -215,6 +220,7 @@ namespace KompasServer.Networking
 		}
 
 		public void AddCardLink(CardLink link) => SendToBoth(new EditCardLinkPacket(link, add: true));
+		public void AddHiddenCardLink(CardLink link) => SendPacket(new EditCardLinkPacket(link, add: true));
 		public void RemoveCardLink(CardLink link) => SendToBoth(new EditCardLinkPacket(link, add: false));
 		#endregion other effect stuff
 	}

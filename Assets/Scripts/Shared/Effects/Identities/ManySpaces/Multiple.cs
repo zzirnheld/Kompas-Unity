@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace KompasCore.Effects.Identities.ManySpaces
 {
 	public class Multiple : ContextualParentIdentityBase<IReadOnlyCollection<Space>>
 	{
+		[JsonProperty(Required = Required.Always)]
 		public IIdentity<Space>[] spaces;
 
 		public override void Initialize(EffectInitializationContext initializationContext)

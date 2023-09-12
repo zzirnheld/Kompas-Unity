@@ -21,7 +21,6 @@
 						"$type": "Core.GamestateRestriction:Not:",
 						"negated": {
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
-							"useDummyResolutionContext": false,
 							"card": { "$type": "Cards:TargetIndex:" },
 							"cardRestriction": {
 								"$type": "Core.CardRestriction:AllOf:",
@@ -45,7 +44,7 @@
 						"$type": "Spaces:SelectFromMany:",
 						"selector": { "$type": "KompasCore.Effects.Selectors.RandomSpace, Assembly-CSharp" },
 						"spaces": {
-							"$type": "ManySpaces:FittingRestriction:",
+							"$type": "ManySpaces:Restricted:",
 							"restriction": {
 								"$type": "Core.SpaceRestriction:CanPlayCard:",
 								"toPlay": { "$type": "Cards:TargetIndex:" }

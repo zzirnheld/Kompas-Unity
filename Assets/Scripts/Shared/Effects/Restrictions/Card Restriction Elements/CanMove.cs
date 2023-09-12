@@ -2,24 +2,27 @@ using System.Linq;
 using KompasCore.Cards;
 using KompasCore.Effects.Identities;
 using KompasServer.Effects.Subeffects;
+using Newtonsoft.Json;
 
 namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 {
 	public class CanMove : CardRestrictionElement
 	{
+		[JsonProperty]
 		public IIdentity<Space> destination;
 		/// <summary>
 		/// Index of a subeffect whose space restriction should be considered for whether you'll be able to move this card there.
 		/// Be warned! If there's any additional targeting in the meantime (on which the valid movement depends) this might not work as expected.
 		/// I'll need to figure out a better solution, if one is possible.
 		/// </summary>
-		public int spaceRestrictionSubeffectIndex;
+		[JsonProperty]
+		public int spaceRestrictionSubeffectIndex = int.MinValue;
 
 		public override void Initialize(EffectInitializationContext initializationContext)
 		{
 			base.Initialize(initializationContext);
 			destination?.Initialize(initializationContext);
-			if (spaceRestrictionSubeffectIndex != default
+			if (spaceRestrictionSubeffectIndex != int.MinValue
 				&& InitializationContext.effect.Subeffects[spaceRestrictionSubeffectIndex] is not SpaceTarget)
 			{
 				throw new System.ArgumentException($"{spaceRestrictionSubeffectIndex} isn't a space target subeffect! for {InitializationContext.effect}");

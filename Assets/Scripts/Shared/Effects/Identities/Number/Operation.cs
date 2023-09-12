@@ -1,12 +1,16 @@
 using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace KompasCore.Effects.Identities.Numbers
 {
 	public class Operation : ContextualParentIdentityBase<int>
 	{
+		[JsonProperty]
 		public IIdentity<int>[] numbers;
+		[JsonProperty]
 		public IIdentity<IReadOnlyCollection<int>> manyNumbers;
+		[JsonProperty(Required = Required.Always)]
 		public INumberOperation operation;
 
 		public override void Initialize(EffectInitializationContext initializationContext)

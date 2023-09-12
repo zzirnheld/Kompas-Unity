@@ -1,4 +1,3 @@
-using KompasClient.GameCore;
 using KompasClient.UI;
 using KompasCore.Cards;
 using System.Linq;
@@ -11,10 +10,6 @@ namespace KompasCore.UI
 	[RequireComponent(typeof(CardController))]
 	public class GameCardViewController : GameCardlikeViewController
 	{
-		public const float LargeUnzoomedTextFontSize = 32f;
-		public const float SmallUnzoomedTextFontSize = 22f;
-		private static float UnzoomedFontSizeForValue(int value) => value < 10 ? LargeUnzoomedTextFontSize : SmallUnzoomedTextFontSize;
-
 		private ZoomLevel ZoomLevel => ClientCameraController.MainZoomLevel;
 
 		public CardAOEController aoeController;
@@ -38,9 +33,10 @@ namespace KompasCore.UI
 		//TODO give these to dummy cards, as empties probably
 		[Header("Card highlighting")]
 		public GameObject uniqueCopyObject;
-		public GameObject linkedCardObject;
 		public GameObject primaryStackableObject;
 		public GameObject secondaryStackableObject;
+
+		public MeshRenderer linkedCardRenderer;
 
 		[Header("Can attack/effect indicators")]
 		public OscillatingController attackOscillator;
@@ -51,11 +47,6 @@ namespace KompasCore.UI
 		public GameObject zoomedInWithTextUI;
 
 		public BoxCollider[] outsideCardBoxColliders;
-
-		/// <summary>
-		/// Used to make sure we don't regenerate the texture unnecessarily
-		/// </summary>
-		private string oldFileName;
 
 		protected override void Display()
 		{
@@ -148,7 +139,16 @@ namespace KompasCore.UI
 
 		public virtual void ShowUniqueCopy(bool copy = true) => uniqueCopyObject.SetActive(copy);
 
-		public virtual void ShowLinkedCard(bool show = true) => linkedCardObject.SetActive(show);
+		public virtual void ShowLinkedCard(Color32? color)
+		{
+			if (!color.HasValue)
+			{
+				linkedCardRenderer.gameObject.SetActive(false);
+				return;
+			}
+			linkedCardRenderer.gameObject.SetActive(true);
+			linkedCardRenderer.material.color = color.Value;
+		}
 
 		public virtual void ShowPrimaryOfStackable(bool show = true) => primaryStackableObject.SetActive(show);
 		public virtual void ShowSecondaryOfStackable(bool show = true) => secondaryStackableObject.SetActive(show);

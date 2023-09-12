@@ -41,7 +41,7 @@
 			]
 		}
 	],
-	"PlayRestriction": { "playAsAugment": true },
+	"PlayRestriction": { "$type": "Core.PlayRestriction:PlayRestriction:", "playAsAugment": true },
 	"a": 5,
 	"subtypeText": "Explosive"
 }

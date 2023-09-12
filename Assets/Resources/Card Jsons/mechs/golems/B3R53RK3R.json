@@ -4,6 +4,7 @@
 	"effText": "Berserker. Golem.",
 	"effects": [],
 	"movementRestriction": {
+		"$type": "Core.SpaceRestriction:MovementRestriction:",
 		"normalOnly": [ {
 			"$type": "Core.TriggerRestriction:CardFitsRestriction:",
 			"card": { "$type": "Cards:ThisCardNow:" },

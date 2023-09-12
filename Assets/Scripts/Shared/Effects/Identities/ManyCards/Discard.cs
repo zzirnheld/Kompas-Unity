@@ -1,11 +1,14 @@
 using KompasCore.Cards;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace KompasCore.Effects.Identities.ManyCards
 {
 	public class Discard : ContextlessLeafIdentityBase<IReadOnlyCollection<GameCardBase>>
 	{
+		[JsonProperty]
 		public bool friendly = true;
+		[JsonProperty]
 		public bool enemy = true;
 
 		protected override IReadOnlyCollection<GameCardBase> AbstractItem

@@ -2,16 +2,20 @@ using System.Collections.Generic;
 using System.Linq;
 using KompasCore.Cards;
 using KompasCore.Effects.Identities;
+using Newtonsoft.Json;
 
 namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 {
 	public class AOEContains : CardRestrictionElement
 	{
 		//If you want to specify the cards that you want to have at least one in AOE using an identity, you can use this one.
+		[JsonProperty]
 		public IIdentity<IReadOnlyCollection<GameCardBase>> cards = new Identities.ManyCards.Board();
 		//If you just wanna restrict which of the cards on board have to fit, you can use this one.
+		[JsonProperty]
 		public IRestriction<GameCardBase> cardRestriction = new GamestateRestrictionElements.AlwaysValid();
 
+		[JsonProperty]
 		public bool all = false; //false = any;
 
 		public override void Initialize(EffectInitializationContext initializationContext)

@@ -1,9 +1,10 @@
-using UnityEngine;
+using Newtonsoft.Json;
 
 namespace KompasCore.Effects.Restrictions.GamestateRestrictionElements
 {
 	public abstract class MaxPer : GamestateRestrictionBase
 	{
+		[JsonProperty]
 		public int max = 1;
 
 		protected int Max => max; //Futureproofing in case I want to allow an identity instead, for "x times per turn"

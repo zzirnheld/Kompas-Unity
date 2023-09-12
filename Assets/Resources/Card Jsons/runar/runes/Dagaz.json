@@ -45,9 +45,8 @@
 		}
 	],
 	"PlayRestriction": {
-		"normalRestrictions": [
-			"Cannot be Played Normally"
-		]
+		"$type": "Core.PlayRestriction:PlayRestriction:",
+		"normalOnly": [ { "$type": "Core.GamestateRestriction:NeverValid:" } ]
 	},
 	"c": 1,
 	"unique": true,

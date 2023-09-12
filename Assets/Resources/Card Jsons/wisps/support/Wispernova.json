@@ -18,7 +18,7 @@
 					"subeffectCardIdentity": {
 						"$type": "Cards:SelectFromMany:",
 						"cards": {
-							"$type": "ManyCards:FittingRestriction:",
+							"$type": "ManyCards:Restricted:",
 							"cards": {
 								"$type": "ManyCards:Discard:",
 								"friendly": true,
@@ -37,7 +37,7 @@
 						"$type": "Spaces:SelectFromMany:",
 						"selector": { "$type": "KompasCore.Effects.Selectors.RandomSpace, Assembly-CSharp" },
 						"spaces": {
-							"$type": "ManySpaces:FittingRestriction:",
+							"$type": "ManySpaces:Restricted:",
 							"restriction": {
 								"$type": "Core.SpaceRestriction:CanPlayCard:",
 								"toPlay": { "$type": "Cards:TargetIndex:" }

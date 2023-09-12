@@ -49,7 +49,6 @@
 						"$type": "Core.GamestateRestriction:Not:",
 						"negated": {
 							"$type": "Core.TriggerRestriction:CardFitsRestriction:",
-							"useDummyResolutionContext": false,
 							"card": { "$type": "Cards:TargetIndex:" },
 							"cardRestriction": {
 								"$type": "Core.CardRestriction:Name:",

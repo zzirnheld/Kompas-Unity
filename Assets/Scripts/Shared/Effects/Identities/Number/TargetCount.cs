@@ -1,11 +1,12 @@
 using KompasCore.Cards;
+using Newtonsoft.Json;
 using System.Linq;
 
 namespace KompasCore.Effects.Identities.Numbers
 {
-
 	public class TargetCount : EffectContextualLeafIdentityBase<int>
 	{
+		[JsonProperty]
 		public IRestriction<GameCardBase> cardRestriction = new Restrictions.GamestateRestrictionElements.AlwaysValid();
 
 		public override void Initialize(EffectInitializationContext initializationContext)

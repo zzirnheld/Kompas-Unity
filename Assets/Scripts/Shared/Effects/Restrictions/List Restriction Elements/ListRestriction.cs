@@ -12,7 +12,7 @@ namespace KompasCore.Effects.Restrictions
 	/// </summary>
 	public interface IListRestriction : IRestriction<IEnumerable<GameCardBase>>
 	{
-		public static IListRestriction SingleElement { get; } = ConstantCount(1);
+		public static IListRestriction SingleElement => ConstantCount(1);
 
 		public static IListRestriction ConstantCount(int count)
 		{

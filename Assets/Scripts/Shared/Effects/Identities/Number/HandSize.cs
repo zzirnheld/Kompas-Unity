@@ -1,7 +1,10 @@
+using Newtonsoft.Json;
+
 namespace KompasCore.Effects.Identities.Numbers
 {
 	public class HandSize : ContextualParentIdentityBase<int>
 	{
+		[JsonProperty]
 		public IIdentity<Player> player = new Players.TargetIndex();
 
 		public override void Initialize(EffectInitializationContext initializationContext)
@@ -16,6 +19,7 @@ namespace KompasCore.Effects.Identities.Numbers
 	
 	public class HandSizeLimit : ContextualParentIdentityBase<int>
 	{
+		[JsonProperty]
 		public IIdentity<Player> player = new Players.TargetIndex();
 
 		public override void Initialize(EffectInitializationContext initializationContext)

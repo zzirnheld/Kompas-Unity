@@ -22,6 +22,8 @@ namespace KompasCore.Networking
 		public const string DeckAccepted = "Deck Accepted";
 		public const string SetAvatar = "Set Avatar";
 		public const string SetFirstTurnPlayer = "Set First Turn Player";
+		//game end
+		public const string GameEnd = "Game End";
 
 		//player action: things the player initiates (client to server)
 		public const string PlayAction = "Player Play Action";

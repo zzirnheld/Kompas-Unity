@@ -8,13 +8,15 @@ using KompasCore.Effects.Identities.ManyCards;
 using KompasCore.Effects.Restrictions;
 using KompasCore.Effects.Restrictions.GamestateRestrictionElements;
 using KompasCore.GameCore;
-using Newtonsoft.Json;
 using UnityEngine;
 
 namespace KompasServer.Effects.Subeffects
 {
 	public class CardTarget : ServerSubeffect
 	{
+		public string blurb;
+		public bool secretTarget = false;
+
 		public IIdentity<IReadOnlyCollection<GameCardBase>> toSearch = new All();
 
 		/// <summary>
@@ -32,8 +34,7 @@ namespace KompasServer.Effects.Subeffects
 		/// Usually null, but if you plan on having a delay later, probably a good idea
 		/// </summary>
 		public IIdentity<GameCardBase> toLinkWith;
-
-		public string blurb;
+		public Color32 linkColor = CardLink.DefaultColor; // "r": #, "g" ... etc
 
 
 		protected IReadOnlyCollection<GameCard> stashedPotentialTargets;
@@ -145,8 +146,8 @@ namespace KompasServer.Effects.Subeffects
 			var cardToLinkWith = toLinkWith?.From(ResolutionContext, default)?.Card;
 			foreach (var c in choices)
 			{
-				ServerEffect.AddTarget(c);
-				if (cardToLinkWith != null) ServerEffect.CreateCardLink(c, cardToLinkWith);
+				ServerEffect.AddTarget(c, secretTarget);
+				if (cardToLinkWith != null) ServerEffect.CreateCardLink(linkColor, secretTarget, c, cardToLinkWith);
 			}
 		}
 	}

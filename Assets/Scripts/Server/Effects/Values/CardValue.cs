@@ -23,9 +23,13 @@ namespace KompasCore.Effects
 		public const string SpacesCanMove = "Spaces Can Move";
 		#endregion values
 
+		[JsonProperty(Required = Required.Always)]
 		public string value;
+		[JsonProperty]
 		public int multiplier = 1;
+		[JsonProperty]
 		public int divisor = 1;
+		[JsonProperty]
 		public int modifier = 0;
 
 		public GameCard Source => InitializationContext.source;

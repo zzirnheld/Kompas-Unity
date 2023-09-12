@@ -47,9 +47,9 @@ namespace KompasServer.Effects
 
 		public void SetInfo(GameCard thisCard, ServerGame serverGame, ServerPlayer controller, int effectIndex)
 		{
-			base.SetInfo(thisCard, effectIndex, controller);
 			this.serverGame = serverGame;
 			this.ServerController = controller;
+			base.SetInfo(thisCard, effectIndex, controller);
 
 			if (triggerData != null && !string.IsNullOrEmpty(triggerData.triggerCondition))
 				ServerTrigger = new ServerTrigger(triggerData, this);
@@ -120,7 +120,7 @@ namespace KompasServer.Effects
 			serverGame.CurrEffect = this;
 
 			//set context parameters
-			ResolutionContext = context;
+			CurrentResolutionContext = context;
 			//Notify the targets one by one so the client knows that they're current targets
 			if (context.CardTargets != null) foreach(var tgt in context.CardTargets) NotifyAddCardTarget(tgt);
 			
@@ -232,13 +232,20 @@ namespace KompasServer.Effects
 		}
 		#endregion resolution
 
-		public override void AddTarget(GameCard card)
+		public override void AddTarget(GameCard card) => AddTarget(card, secret: false);
+
+		public void AddTarget(GameCard card, bool secret)
 		{
 			base.AddTarget(card);
-			NotifyAddCardTarget(card);
+			NotifyAddCardTarget(card, secret);
 		}
 
-		private void NotifyAddCardTarget(GameCard card) => serverGame.ServerControllerOf(card).notifier.SetTarget(Source, EffectIndex, card);
+		private void NotifyAddCardTarget(GameCard card, bool secret = false)
+		{
+			var notifier = serverGame.ServerControllerOf(card).notifier;
+			if (secret) notifier.AddHiddenTarget(Source, EffectIndex, card);
+			else notifier.AddTarget(Source, EffectIndex, card);
+		}
 
 		public override void RemoveTarget(GameCard card)
 		{
@@ -246,14 +253,15 @@ namespace KompasServer.Effects
 			serverGame.ServerControllerOf(card).notifier.RemoveTarget(Source, EffectIndex, card);
 		}
 
-		public void CreateCardLink(params GameCard[] cards)
+		public void CreateCardLink(Color32 linkColor, bool hidden, params GameCard[] cards)
 		{
 			GameCard[] validCards = cards.Where(c => c != null).ToArray();
 			//if (validCards.Length <= 1) return; //Don't create a link between one non-null card? nah, do, so we can delete it as expected later
 
-			var link = new CardLink(new HashSet<int>(validCards.Select(c => c.ID)), this);
+			var link = new CardLink(new HashSet<int>(validCards.Select(c => c.ID)), this, linkColor);
 			cardLinks.Add(link);
-			ServerController.notifier.AddCardLink(link);
+			if (hidden) ServerController.notifier.AddHiddenCardLink(link);
+			else ServerController.notifier.AddCardLink(link);
 		}
 
 		public void DestroyCardLink(int index)

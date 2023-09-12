@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using KompasCore.Cards;
-using KompasCore.Effects.Identities;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace KompasCore.Effects.Restrictions
@@ -56,6 +56,7 @@ namespace KompasCore.Effects.Restrictions
 	{
 		public class AllOf : GamestateRestrictionBase
 		{
+			[JsonProperty(Required = Required.Always)]
 			public IList<IGamestateRestriction> elements = new IGamestateRestriction[] { };
 
 			protected virtual bool LogSoloElements => true;
@@ -73,6 +74,7 @@ namespace KompasCore.Effects.Restrictions
 
 		public class Not : GamestateRestrictionBase
 		{
+			[JsonProperty(Required = Required.Always)]
 			public IGamestateRestriction negated;
 
 			public override void Initialize(EffectInitializationContext initializationContext)

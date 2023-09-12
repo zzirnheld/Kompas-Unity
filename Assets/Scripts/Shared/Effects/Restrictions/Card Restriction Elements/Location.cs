@@ -1,4 +1,5 @@
 using KompasCore.Cards;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,6 +7,7 @@ namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 {
 	public class Location : CardRestrictionElement
 	{
+		[JsonProperty(Required = Required.Always)]
 		public string[] locations;
 
 		public Location() { }

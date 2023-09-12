@@ -1,12 +1,15 @@
 using System.Linq;
 using KompasCore.Cards;
 using KompasCore.Effects.Identities;
+using Newtonsoft.Json;
 
 namespace KompasCore.Effects.Restrictions.CardRestrictionElements
 {
 	public class CanPlay : CardRestrictionElement
 	{
+		[JsonProperty]
 		public IIdentity<Space> destination;
+		[JsonProperty]
 		public IIdentity<Player> player = new Identities.Players.TargetIndex();
 
 		public override void Initialize(EffectInitializationContext initializationContext)

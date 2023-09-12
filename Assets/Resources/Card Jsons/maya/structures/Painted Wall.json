@@ -49,10 +49,11 @@
 		"$type": "Core.CardRestriction:AttackingDefender:",
 		"elements": [ {
 			"$type": "Core.GamestateRestriction:Not:",
-			"negated": { "$type": "Core.GamestateRestriction:Normally:" }
+			"negated": { "$type": "Core.TriggerRestriction:Normally:" }
 		} ]
 	},
 	"movementRestriction": {
+		"$type": "Core.SpaceRestriction:MovementRestriction:",
 		"normalOnly": [ { "$type": "Core.GamestateRestriction:NeverValid:" } ]
 	},
 	"n": 0,

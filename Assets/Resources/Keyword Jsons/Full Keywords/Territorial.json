@@ -18,10 +18,6 @@
 					{
 						"$type": "Core.SpaceRestriction:AdjacentTo:",
 						"space": { "$type": "Cards:ThisCardNow:" }
-					},
-					{
-						"$type": "Core.CardRestriction:CanMove:",
-						"spaceRestrictionSubeffectIndex": 1
 					}
 				]
 			}

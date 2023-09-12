@@ -1,6 +1,7 @@
 using KompasCore.Effects;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace KompasCore.Cards
 {
@@ -21,9 +22,9 @@ namespace KompasCore.Cards
 			links.Add(cardLink);
 		}
 
-		public void CreateLink(IEnumerable<int> cardIDs, Effect effect)
+		public void CreateLink(IEnumerable<int> cardIDs, Effect effect, Color32 linkColor)
 		{
-			var cardLink = new CardLink(new HashSet<int>(cardIDs), effect);
+			var cardLink = new CardLink(new HashSet<int>(cardIDs), effect, linkColor);
 			foreach(var card in cardIDs.Select(Card.Game.GetCardWithID))
 			{
 				card?.CardLinkHandler.AddLink(cardLink);

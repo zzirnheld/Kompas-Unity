@@ -1,8 +1,12 @@
+using Newtonsoft.Json;
+
 namespace KompasCore.Effects.Identities.Spaces
 {
 	public class ApplyDisplacement : ContextualParentIdentityBase<Space>
 	{
+		[JsonProperty(Required = Required.Always)]
 		public IIdentity<Space> from;
+		[JsonProperty(Required = Required.Always)]
 		public IIdentity<Space> displacement;
 
 		public override void Initialize(EffectInitializationContext initializationContext)
@@ -18,9 +22,12 @@ namespace KompasCore.Effects.Identities.Spaces
 
 	public class Displacement : ContextualParentIdentityBase<Space>
 	{
+		[JsonProperty(Required = Required.Always)]
 		public IIdentity<Space> from;
+		[JsonProperty(Required = Required.Always)]
 		public IIdentity<Space> to;
 
+		[JsonProperty]
 		public bool subjective = false;
 
 		public override void Initialize(EffectInitializationContext initializationContext)

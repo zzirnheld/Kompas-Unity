@@ -1,12 +1,16 @@
 using System;
+using Newtonsoft.Json;
 
 namespace KompasCore.Effects.Identities.Numbers
 {
 	public class Distance : ContextualParentIdentityBase<int>
 	{
+		[JsonProperty(Required = Required.Always)]
 		public IIdentity<Space> firstSpace;
+		[JsonProperty(Required = Required.Always)]
 		public IIdentity<Space> secondSpace;
 
+		[JsonProperty]
 		public IRestriction<Space> throughRestriction;
 
 		public override void Initialize(EffectInitializationContext initializationContext)

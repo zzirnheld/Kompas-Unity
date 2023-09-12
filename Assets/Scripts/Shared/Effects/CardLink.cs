@@ -1,5 +1,6 @@
 using KompasCore.Cards;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace KompasCore.Effects
 {
@@ -10,13 +11,17 @@ namespace KompasCore.Effects
 	/// </summary>
 	public class CardLink
 	{
+		public static readonly Color32 DefaultColor = new (195, 0, 195, 195);
+
 		public HashSet<int> CardIDs { get; }
 		public Effect LinkingEffect { get; }
+		public Color32 LinkColor { get; }
 
-		public CardLink(HashSet<int> cardIDs, Effect linkingEffect)
+		public CardLink(HashSet<int> cardIDs, Effect linkingEffect, Color32 linkColor)
 		{
 			CardIDs = cardIDs;
 			LinkingEffect = linkingEffect;
+			LinkColor = linkColor;
 		}
 
 		public bool Matches(IEnumerable<int> cardIDs, Effect linkingEffect)

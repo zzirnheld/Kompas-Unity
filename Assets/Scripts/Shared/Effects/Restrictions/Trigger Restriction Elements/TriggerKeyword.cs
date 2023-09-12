@@ -1,10 +1,12 @@
 using System.Linq;
 using KompasServer.Cards;
+using Newtonsoft.Json;
 
 namespace KompasCore.Effects.Restrictions.TriggerRestrictionElements
 {
 	public class TriggerKeyword : TriggerRestrictionBase
 	{
+		[JsonProperty(Required = Required.Always)]
 		public string keyword;
 
 		private IRestriction<TriggeringEventContext> [] elements;

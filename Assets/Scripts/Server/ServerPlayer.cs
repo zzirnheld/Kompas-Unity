@@ -150,5 +150,7 @@ namespace KompasServer.GameCore
 				await game.SwitchTurn();
 		}
 		#endregion Player Control Methods
+
+		public void Lose() => game.Lose(this);
 	}
 }

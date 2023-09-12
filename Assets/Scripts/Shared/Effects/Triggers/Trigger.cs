@@ -1,4 +1,6 @@
-﻿using KompasCore.Cards;
+﻿using System;
+using KompasCore.Cards;
+using UnityEngine;
 
 namespace KompasCore.Effects
 {
@@ -73,7 +75,7 @@ namespace KompasCore.Effects
 		public abstract Effect Effect { get; protected set; }
 
 		public string TriggerCondition => TriggerData.triggerCondition;
-		public Restrictions.TriggerRestrictionElements.AllOf TriggerRestriction => TriggerData.triggerRestriction;
+		public IRestriction<TriggeringEventContext> TriggerRestriction => TriggerData.triggerRestriction;
 		public bool Optional => TriggerData.optional;
 		public string Blurb => TriggerData.blurb ?? Effect.blurb;
 
@@ -81,7 +83,15 @@ namespace KompasCore.Effects
 		{
 			TriggerData = triggerData;
 			Effect = effect;
-			triggerData.triggerRestriction.Initialize(new EffectInitializationContext(game: effect.Game, source: effect.Source, effect: effect, trigger: this));
+			try
+			{
+				triggerData.triggerRestriction.Initialize(new EffectInitializationContext(game: effect.Game, source: effect.Source, effect: effect, trigger: this));
+			}
+			catch (NullReferenceException)
+			{
+				Debug.LogError($"Issue initializing {Blurb} trigger of {effect.Source}");
+				throw;
+			}
 		}
 	}
 }

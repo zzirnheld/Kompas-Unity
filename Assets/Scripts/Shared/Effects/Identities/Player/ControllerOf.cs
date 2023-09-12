@@ -1,10 +1,13 @@
 using KompasCore.Cards;
+using Newtonsoft.Json;
 
 namespace KompasCore.Effects.Identities.Players
 {
 	public class ControllerOf : ContextualParentIdentityBase<Player>
 	{
+		[JsonProperty]
 		public IIdentity<GameCardBase> card;
+		[JsonProperty]
 		public IIdentity<IStackable> stackable;
 
 		public override void Initialize(EffectInitializationContext initializationContext)

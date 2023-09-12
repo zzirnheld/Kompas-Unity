@@ -55,5 +55,23 @@ namespace KompasCore.UI
 		{
 			foreach(var img in cardArtImages) img.material.mainTexture = cardImageTexture;
 		}
+
+		public void SetFrameMaterial(Material material)
+		{
+			zoomedOutAll.GetComponent<MeshRenderer>().material = material;
+			zoomedOutChar.GetComponent<MeshRenderer>().material = material;
+			zoomedOutNonChar.GetComponent<MeshRenderer>().material = material;
+
+			zoomedInNoTextAll.GetComponent<MeshRenderer>().material = material;
+			zoomedInNoTextChar.GetComponent<MeshRenderer>().material = material;
+			zoomedInNoTextNonChar.GetComponent<MeshRenderer>().material = material;
+
+			zoomedInWithTextAll.GetComponent<MeshRenderer>().material = material;
+			zoomedInWithTextChar.GetComponent<MeshRenderer>().material = material;
+			zoomedInWithTextNonChar.GetComponent<MeshRenderer>().material = material;
+
+			//foreach(var c in charOnlyUI) c.SetActive(isChar);
+			//foreach(var c in nonCharOnlyUI) c.SetActive(!isChar);
+		}
 	}
 }

@@ -1,5 +1,8 @@
+using System.Collections.Generic;
+using System.Linq;
 using KompasCore.Effects.Identities;
 using KompasCore.Effects.Relationships;
+using Newtonsoft.Json;
 
 namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 {
@@ -10,9 +13,13 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 	/// </summary>
 	public class CompareDistance : SpaceRestrictionElement
 	{
+		[JsonProperty]
 		public bool shortestEmptyPath = false;
+		[JsonProperty(Required = Required.Always)]
 		public IIdentity<Space> distanceTo;
+		[JsonProperty(Required = Required.Always)]
 		public IIdentity<int> number;
+		[JsonProperty]
 		public INumberRelationship comparison = new Relationships.NumberRelationships.Equal();
 
 		public override void Initialize(EffectInitializationContext initializationContext)
@@ -53,6 +60,28 @@ namespace KompasCore.Effects.Restrictions.SpaceRestrictionElements
 		{
 			var destination = this.destination.From(context);
 			return destination.DistanceTo(item) < destination.DistanceTo(origin.From(context));
+		}
+	}
+
+	public class TowardsAny : SpaceRestrictionElement
+	{
+		public IIdentity<IReadOnlyCollection<Space>> anyDestination;
+		public IRestriction<Space> anyDestinationRestriction;
+		public IIdentity<Space> origin;
+
+		public override void Initialize(EffectInitializationContext initializationContext)
+		{
+			base.Initialize(initializationContext);
+			anyDestination ??= new Identities.ManySpaces.Restricted() { restriction = anyDestinationRestriction };
+			anyDestination.Initialize(initializationContext);
+			origin.Initialize(initializationContext);
+		}
+
+		protected override bool IsValidLogic(Space item, IResolutionContext context)
+		{
+			var origin = this.origin.From(context);
+			var destinations = anyDestination.From(context);
+			return destinations.Any(destination => destination.DistanceTo(item) < destination.DistanceTo(origin));
 		}
 	}
 

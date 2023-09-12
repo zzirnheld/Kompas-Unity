@@ -1,8 +1,12 @@
+using Newtonsoft.Json;
+
 namespace KompasCore.Effects.Identities.Spaces
 {
 	public class Direction : ContextualParentIdentityBase<Space>
 	{
+		[JsonProperty(Required = Required.Always)]
 		public IIdentity<Space> from;
+		[JsonProperty(Required = Required.Always)]
 		public IIdentity<Space> to;
 
 		public override void Initialize(EffectInitializationContext initializationContext)

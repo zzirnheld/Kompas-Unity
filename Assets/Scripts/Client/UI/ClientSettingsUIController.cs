@@ -37,6 +37,7 @@ namespace KompasClient.UI
 		void Awake()
 		{
 			LoadSettings();
+			ApplySettings();
 		}
 
 		public void SaveAndClose()
@@ -56,6 +57,7 @@ namespace KompasClient.UI
 			ClientSettings ret;
 			if (!File.Exists(ClientSettingsPath))
 			{
+				Debug.Log($"No settings found at {ClientSettingsPath}. Loading default.");
 				ret = ClientSettings.Default;
 				SaveSettings();
 			}
@@ -73,6 +75,7 @@ namespace KompasClient.UI
 					Debug.LogError($"Failed to load settings.\n{a.Message}.\n{a.StackTrace}");
 					ret = ClientSettings.Default;
 				}
+				Debug.Log($"Settings found at {ClientSettingsPath}: {ret}");
 			}
 
 			if (gameObject.activeSelf) Show();

@@ -1,9 +1,11 @@
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace KompasCore.Effects
 {
 	public abstract class AnyOfBase<RestrictedType> : RestrictionBase<RestrictedType>
 	{
+		[JsonProperty(Required = Required.Always)]
 		public IRestriction<RestrictedType>[] elements;
 
 		public override void Initialize(EffectInitializationContext initializationContext)

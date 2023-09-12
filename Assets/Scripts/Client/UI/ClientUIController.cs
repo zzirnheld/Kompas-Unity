@@ -12,8 +12,8 @@ namespace KompasClient.UI
 {
 	public class ClientUIController : UIController
 	{
-		private const string FriendlyTurn = "Friendly Turn";
-		private const string EnemyTurn = "Enemy Turn";
+		private const string FriendlyTurn = "Friendly";
+		private const string EnemyTurn = "Enemy";
 
 		private const string GameStarting = "Game is Starting";
 
@@ -31,6 +31,10 @@ namespace KompasClient.UI
 
 		public ConnectionUIController connectionUIController;
 
+
+		[Header("Card Materials")]
+		public Material friendlyCardFrameMaterial;
+		public Material enemyCardFrameMaterial;
 		[Header("Pips")]
 		public TMP_Text friendlyPipsText;
 		public TMP_Text enemyPipsText;
@@ -107,7 +111,7 @@ namespace KompasClient.UI
 		}
 		public int Leyload
 		{
-			set => LeyloadText.text = $"{value} Pips Leyload";
+			set => LeyloadText.text = $"{value}";
 		}
 
 		public override bool AllowDragging => TargetMode == TargetMode.Free;
@@ -127,6 +131,9 @@ namespace KompasClient.UI
 		{
 			connectionUIController.ApplySettings(clientSettings);
 			detailedEffectsCtrlUIObject.SetActive(clientSettings.showAdvancedEffectsSettings);
+			Debug.Log($"Friendly {clientSettings.FriendlyColor}");
+			friendlyCardFrameMaterial.color = clientSettings.FriendlyColor;
+			enemyCardFrameMaterial.color = clientSettings.EnemyColor;
 		}
 			//TODO if (fromClick && targetMode != Game.TargetMode.Free && card != null) clientGame.searchCtrl.ToggleTarget(card);
 
@@ -134,8 +141,10 @@ namespace KompasClient.UI
 		public void ChangeTurn(int index)
 		{
 			CurrTurnText.text = index == 0 ? FriendlyTurn : EnemyTurn;
-			//Debug.Log($"{clientGame}, {clientGame?.ClientSettings}, {clientGame?.ClientSettings?.FriendlyColor}");
-			currTurnOutline.effectColor = index == 0 ? clientGame.ClientSettings.FriendlyColor : clientGame.ClientSettings.EnemyColor;
+			Debug.Log($"{clientGame}, {clientGame?.ClientSettings}, {clientGame?.ClientSettings?.FriendlyColor}");
+			currTurnOutline.effectColor = index == 0
+				? clientGame.ClientSettings.FriendlyColor
+				: clientGame.ClientSettings.EnemyColor;
 			EndTurnButton.SetActive(index == 0);
 		}
 
