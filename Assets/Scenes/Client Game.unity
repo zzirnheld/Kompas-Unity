@@ -2123,9 +2123,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1615817260}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: PassTurn
+      - m_Target: {fileID: 1615817261}
+        m_TargetAssemblyTypeName: KompasCore.UI.CurrentStateUIController, Assembly-CSharp
+        m_MethodName: PlayerEndsTurn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7292,6 +7292,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 456844504}
+  - component: {fileID: 456844505}
   m_Layer: 5
   m_Name: Effect Interaction UI
   m_TagString: Untagged
@@ -7320,6 +7321,30 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &456844505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 456844503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adb17e696c58e52bdbe0e58e6521fe06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clientUIController: {fileID: 1615817260}
+  xInput: {fileID: 748852964}
+  setXView: {fileID: 887278827}
+  declineAnotherTargetView: {fileID: 869478636}
+  declineEffectView: {fileID: 1955749635}
+  autodeclineEffects: {fileID: 236373504}
+  autoOptionalEff: {fileID: 535984623}
+  detailedEffectsCtrlUIObject: {fileID: 1580719360}
+  ConfirmTriggerView: {fileID: 278156756}
+  TriggerBlurbText: {fileID: 659674731}
+  triggerOrderUI: {fileID: 1439636313}
+  chooseOptionUICtrl: {fileID: 1241039935}
 --- !u!1 &471354036
 GameObject:
   m_ObjectHideFlags: 0
@@ -24274,7 +24299,6 @@ GameObject:
   - component: {fileID: 1615817256}
   - component: {fileID: 1615817260}
   - component: {fileID: 1615817261}
-  - component: {fileID: 1615817262}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -24387,16 +24411,16 @@ MonoBehaviour:
   clientGame: {fileID: 492080563}
   connectionUIController: {fileID: 867960090}
   currentStateUIController: {fileID: 1615817261}
-  effectsUIController: {fileID: 1615817262}
+  effectsUIController: {fileID: 0}
+  rightClickUIController: {fileID: 71818826}
+  escapeMenuUIController: {fileID: 357244920}
+  cardInfoViewUIController: {fileID: 2878731448299248346}
+  boardUIController: {fileID: 1329577224}
   friendlyCardFrameMaterial: {fileID: 2100000, guid: 1c2bbf1ca0c72ea46b21f07690a2f53a,
     type: 2}
   enemyCardFrameMaterial: {fileID: 2100000, guid: a02188e681b853e4e963acf536e338d3,
     type: 2}
-  rightClickUIController: {fileID: 71818826}
-  escapeMenuUIController: {fileID: 357244920}
-  cardInfoViewUIController: {fileID: 2878731448299248346}
   clientUISettingsController: {fileID: 1411603331}
-  boardUIController: {fileID: 1329577224}
 --- !u!114 &1615817261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24418,30 +24442,6 @@ MonoBehaviour:
   currStateBonusObj: {fileID: 1135853834}
   currStateText: {fileID: 1847867117}
   currStateBonusText: {fileID: 630689856}
---- !u!114 &1615817262
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1615817254}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adb17e696c58e52bdbe0e58e6521fe06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clientUIController: {fileID: 1615817260}
-  xInput: {fileID: 748852964}
-  setXView: {fileID: 887278827}
-  declineAnotherTargetView: {fileID: 869478636}
-  declineEffectView: {fileID: 1955749635}
-  autodeclineEffects: {fileID: 236373504}
-  autoOptionalEff: {fileID: 535984623}
-  detailedEffectsCtrlUIObject: {fileID: 1580719360}
-  ConfirmTriggerView: {fileID: 278156756}
-  TriggerBlurbText: {fileID: 659674731}
-  triggerOrderUI: {fileID: 1439636313}
-  chooseOptionUICtrl: {fileID: 1241039935}
 --- !u!1 &1623620544
 GameObject:
   m_ObjectHideFlags: 0
