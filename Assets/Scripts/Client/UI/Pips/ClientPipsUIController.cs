@@ -23,7 +23,7 @@ namespace KompasClient.UI
 		public TMP_Text pipsText;
 		public TMP_Text nextTurnPipsText;
 
-		private readonly List<GameObject> objsList = new List<GameObject>();
+		private readonly List<GameObject> objsList = new();
 
 		//private readonly Dictionary<int, List<PipRingsController>> pipControllers = new Dictionary<int, List<PipRingsController>>();
 		public Dictionary<int, List<PipRingsController>> pipRingsControllers;

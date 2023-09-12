@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using KompasCore.UI;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

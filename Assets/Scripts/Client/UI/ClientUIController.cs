@@ -30,13 +30,9 @@ namespace KompasClient.UI
 
 		public ConnectionUIController connectionUIController;
 
-
 		[Header("Card Materials")]
 		public Material friendlyCardFrameMaterial;
 		public Material enemyCardFrameMaterial;
-		[Header("Pips")]
-		public TMP_Text friendlyPipsText;
-		public TMP_Text enemyPipsText;
 
 		[Header("Turn")]
 		public TMP_Text CurrTurnText;
@@ -84,17 +80,6 @@ namespace KompasClient.UI
 		public ClientSettingsUIController clientUISettingsController;
 		public ClientBoardUIController boardUIController;
 
-		public int FriendlyPips
-		{
-			set => friendlyPipsText.text
-				= $"{value} (+{clientGame.Leyload + (clientGame.FriendlyTurn ? 2 : 1)}) Friendly Pips";
-		}
-
-		public int EnemyPips
-		{
-			set => enemyPipsText.text
-				= $"{value} (+{clientGame.Leyload + (clientGame.FriendlyTurn ? 1 : 2)}) Enemy Pips";
-		}
 		public int Leyload
 		{
 			set => LeyloadText.text = $"{value}";
