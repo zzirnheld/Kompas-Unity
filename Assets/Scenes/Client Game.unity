@@ -24274,6 +24274,7 @@ GameObject:
   - component: {fileID: 1615817256}
   - component: {fileID: 1615817260}
   - component: {fileID: 1615817261}
+  - component: {fileID: 1615817262}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -24386,21 +24387,11 @@ MonoBehaviour:
   clientGame: {fileID: 492080563}
   connectionUIController: {fileID: 867960090}
   currentStateUIController: {fileID: 1615817261}
+  effectsUIController: {fileID: 1615817262}
   friendlyCardFrameMaterial: {fileID: 2100000, guid: 1c2bbf1ca0c72ea46b21f07690a2f53a,
     type: 2}
   enemyCardFrameMaterial: {fileID: 2100000, guid: a02188e681b853e4e963acf536e338d3,
     type: 2}
-  xInput: {fileID: 748852964}
-  setXView: {fileID: 887278827}
-  declineAnotherTargetView: {fileID: 869478636}
-  declineEffectView: {fileID: 1955749635}
-  autodeclineEffects: {fileID: 1049328079}
-  autoOptionalEff: {fileID: 535984623}
-  detailedEffectsCtrlUIObject: {fileID: 1580719360}
-  ConfirmTriggerView: {fileID: 278156756}
-  TriggerBlurbText: {fileID: 659674731}
-  triggerOrderUI: {fileID: 1439636313}
-  chooseOptionUICtrl: {fileID: 1241039935}
   rightClickUIController: {fileID: 71818826}
   escapeMenuUIController: {fileID: 357244920}
   cardInfoViewUIController: {fileID: 2878731448299248346}
@@ -24419,15 +24410,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clientUIController: {fileID: 1615817260}
-  CurrTurnText: {fileID: 1554178927}
+  currTurnText: {fileID: 1554178927}
   currTurnOutline: {fileID: 93767714}
-  EndTurnButton: {fileID: 93767712}
-  LeyloadText: {fileID: 84373022}
-  currentStateText: {fileID: 1847867117}
-  CurrStateOverallObj: {fileID: 65052156}
-  CurrStateBonusObj: {fileID: 1135853834}
-  CurrStateText: {fileID: 1847867117}
-  CurrStateBonusText: {fileID: 630689856}
+  endTurnButton: {fileID: 93767712}
+  leyloadText: {fileID: 84373022}
+  currStateOverallObj: {fileID: 65052156}
+  currStateBonusObj: {fileID: 1135853834}
+  currStateText: {fileID: 1847867117}
+  currStateBonusText: {fileID: 630689856}
+--- !u!114 &1615817262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615817254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adb17e696c58e52bdbe0e58e6521fe06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clientUIController: {fileID: 1615817260}
+  xInput: {fileID: 748852964}
+  setXView: {fileID: 887278827}
+  declineAnotherTargetView: {fileID: 869478636}
+  declineEffectView: {fileID: 1955749635}
+  autodeclineEffects: {fileID: 236373504}
+  autoOptionalEff: {fileID: 535984623}
+  detailedEffectsCtrlUIObject: {fileID: 1580719360}
+  ConfirmTriggerView: {fileID: 278156756}
+  TriggerBlurbText: {fileID: 659674731}
+  triggerOrderUI: {fileID: 1439636313}
+  chooseOptionUICtrl: {fileID: 1241039935}
 --- !u!1 &1623620544
 GameObject:
   m_ObjectHideFlags: 0

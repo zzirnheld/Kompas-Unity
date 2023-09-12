@@ -45,10 +45,10 @@ namespace KompasClient.Networking
 				Debug.LogWarning($"Could not find card with id {sourceCardId}");
 				return;
 			}
-			if (!(card.Effects.ElementAt(effIndex).Trigger is ClientTrigger trigger)) return;
+			if (card.Effects.ElementAt(effIndex).Trigger is not ClientTrigger trigger) return;
 
 			trigger.ClientEffect.ClientController = clientGame.clientPlayers[playerBeingAsked];
-			clientGame.clientUIController.ShowOptionalTrigger(trigger, showX, x);
+			clientGame.clientUIController.effectsUIController.ShowOptionalTrigger(trigger, showX, x);
 		}
 	}
 }

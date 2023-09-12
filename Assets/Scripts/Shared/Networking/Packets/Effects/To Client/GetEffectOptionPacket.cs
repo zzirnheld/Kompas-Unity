@@ -1,6 +1,7 @@
 ﻿using KompasCore.Networking;
 using KompasClient.GameCore;
 using KompasClient.UI;
+using KompasCore.UI;
 
 namespace KompasCore.Networking
 {
@@ -35,11 +36,11 @@ namespace KompasClient.Networking
 	{
 		public void Execute(ClientGame clientGame)
 		{
-			if (hasDefault && clientGame.clientUIController.OptionalEffAutoResponse == ClientUIController.OptionalEffYes)
+			if (hasDefault && clientGame.clientUIController.effectsUIController.OptionalEffAutoResponse == EffectsUIController.OptionalEffYes)
 				clientGame.clientNotifier.RequestChooseEffectOption(0);
-			else if (hasDefault && clientGame.clientUIController.OptionalEffAutoResponse == ClientUIController.OptionalEffNo)
+			else if (hasDefault && clientGame.clientUIController.effectsUIController.OptionalEffAutoResponse == EffectsUIController.OptionalEffNo)
 				clientGame.clientNotifier.RequestChooseEffectOption(1);
-			else clientGame.clientUIController.ShowEffectOptions(choiceBlurb, optionBlurbs, showX, x);
+			else clientGame.clientUIController.effectsUIController.ShowEffectOptions(choiceBlurb, optionBlurbs, showX, x);
 		}
 	}
 }

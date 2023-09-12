@@ -21,7 +21,7 @@ namespace KompasClient.UI
 
 		public void UseEffect()
 		{
-			clientUICtrl.ActivateCardEff(eff.Source, eff.EffectIndex);
+			clientUICtrl.effectsUIController.ActivateCardEff(eff.Source, eff.EffectIndex);
 		}
 	}
 }

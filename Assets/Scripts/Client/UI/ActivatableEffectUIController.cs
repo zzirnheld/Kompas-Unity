@@ -22,7 +22,7 @@ namespace KompasClient.UI
 
 		public void OnClick()
 		{
-			parentCtrl.clientUICtrl.ActivateCardEff(eff.Source, eff.EffectIndex);
+			parentCtrl.clientUICtrl.effectsUIController.ActivateCardEff(eff.Source, eff.EffectIndex);
 			parentCtrl.Clear();
 		}
 	}

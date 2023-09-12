@@ -27,9 +27,9 @@ namespace KompasClient.UI
 		public GameObject alreadySelectedMarker;
 
 		//TODO move to own controller
-		private readonly List<GameCard> shownUniqueCopies = new List<GameCard>();
+		private readonly List<GameCard> shownUniqueCopies = new();
 		//TODO move to own controller
-		private readonly HashSet<GameCard> shownLinkedCards = new HashSet<GameCard>();
+		private readonly HashSet<GameCard> shownLinkedCards = new();
 
 
 		//TODO move these to their own controller
@@ -42,8 +42,6 @@ namespace KompasClient.UI
 		/// Used primarily for searching
 		/// </summary>
 		private bool focusLocked;
-
-		private string oldFileName;
 
 		public GameObject rawImageShowing;
 		public TMP_Text costLabel;

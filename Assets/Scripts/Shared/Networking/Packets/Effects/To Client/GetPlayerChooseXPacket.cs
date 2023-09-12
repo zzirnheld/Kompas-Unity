@@ -17,7 +17,7 @@ namespace KompasClient.Networking
 	{
 		public void Execute(ClientGame clientGame)
 		{
-			clientGame.clientUIController.GetXForEffect();
+			clientGame.clientUIController.effectsUIController.GetXForEffect();
 		}
 	}
 }

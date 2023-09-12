@@ -24,8 +24,8 @@ namespace KompasClient.Networking
 	{
 		public void Execute(ClientGame clientGame)
 		{
-			if (enabled) clientGame.clientUIController.GetResponse();
-			else clientGame.clientUIController.UngetResponse();
+			if (enabled) clientGame.clientUIController.effectsUIController.GetResponse();
+			else clientGame.clientUIController.effectsUIController.UngetResponse();
 		}
 	}
 }
