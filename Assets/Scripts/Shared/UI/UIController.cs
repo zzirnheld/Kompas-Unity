@@ -14,7 +14,5 @@ namespace KompasCore.UI
 
 		public Toggle debugToggle;
 		public bool DebugMode { get { return debugToggle.isOn; } }
-
-		public abstract bool AllowDragging { get; }
 	}
 }

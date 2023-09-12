@@ -3,7 +3,6 @@ using KompasCore.Cards;
 using KompasCore.Effects;
 using KompasCore.GameCore;
 using KompasCore.UI;
-using System.Net;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -75,24 +74,11 @@ namespace KompasClient.UI
 		//choose effect option
 		public ClientChooseOptionUIController chooseOptionUICtrl;
 
-		[Header("Stack UI")]
-		public ClientStackPanelController clientStackUICtrl;
-
-		[Header("Deck Select Screen")]
-		public DeckSelectUIController DeckSelectCtrl;
-		public GameObject DeckSelectUIParent;
-		public GameObject ConnectToServerParent;
-		public GameObject DeckSelectorParent;
-		public GameObject DeckSelectConfirmParent;
-		public GameObject DeckWaitingParent;
-		public GameObject DeckAcceptedParent;
-		public GameObject ConnectedWaitingParent;
-
 		[Header("Effects Activation")]
 		public RightClickCardClientUIController rightClickUIController;
 
 		[Header("Misc")]
-		public ClientEscapeMenuUIController escapeMenuUIController;
+		public EscapeMenuUIController escapeMenuUIController;
 		public ClientSidebarCardViewController cardInfoViewUIController;
 		public override SidebarCardViewController CardViewController => cardInfoViewUIController;
 		public ClientSettingsUIController clientUISettingsController;
@@ -113,8 +99,6 @@ namespace KompasClient.UI
 		{
 			set => LeyloadText.text = $"{value}";
 		}
-
-		public override bool AllowDragging => TargetMode == TargetMode.Free;
 
 		private void Update()
 		{

@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 namespace KompasClient.UI
 {
-	public class ClientEscapeMenuUIController : MonoBehaviour
+	public class ClientEscapeMenuUIController : EscapeMenuUIController
 	{
 		public const string YouWon = "You Won!";
 		public const string YouLost = "You Lost!";
@@ -19,7 +19,7 @@ namespace KompasClient.UI
 
 		public ClientSettingsUIController settingsCtrl;
 
-		public void Enable() => gameObject.SetActive(true);
+		public override void Enable() => gameObject.SetActive(true);
 
 		public void Enable(bool won)
 		{
